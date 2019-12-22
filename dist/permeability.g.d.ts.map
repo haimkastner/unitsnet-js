@@ -1,0 +1,1 @@
+{"version":3,"file":"permeability.g.d.ts","sourceRoot":"","sources":["../src/permeability.g.ts"],"names":[],"mappings":"AAAA,oBAAY,iBAAiB;IACzB,eAAe,IAAA;CAClB;AAED,qBAAa,YAAY;IACrB,OAAO,CAAC,KAAK,CAAS;gBAEH,KAAK,EAAE,MAAM,EAAE,QAAQ,EAAE,iBAAiB;IAI7D,IAAW,eAAe,IAAI,MAAM,CAEnC;WAEa,mBAAmB,CAAC,KAAK,EAAE,MAAM,GAAG,YAAY;IAI9D,OAAO,CAAC,eAAe;IAcvB,OAAO,CAAC,aAAa;CAaxB"}

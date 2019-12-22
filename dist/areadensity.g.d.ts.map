@@ -1,0 +1,1 @@
+{"version":3,"file":"areadensity.g.d.ts","sourceRoot":"","sources":["../src/areadensity.g.ts"],"names":[],"mappings":"AAAA,oBAAY,gBAAgB;IACxB,uBAAuB,IAAA;CAC1B;AAED,qBAAa,WAAW;IACpB,OAAO,CAAC,KAAK,CAAS;gBAEH,KAAK,EAAE,MAAM,EAAE,QAAQ,EAAE,gBAAgB;IAI5D,IAAW,uBAAuB,IAAI,MAAM,CAE3C;WAEa,2BAA2B,CAAC,KAAK,EAAE,MAAM,GAAG,WAAW;IAIrE,OAAO,CAAC,eAAe;IAcvB,OAAO,CAAC,aAAa;CAaxB"}

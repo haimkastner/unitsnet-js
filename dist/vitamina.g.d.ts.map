@@ -1,0 +1,1 @@
+{"version":3,"file":"vitamina.g.d.ts","sourceRoot":"","sources":["../src/vitamina.g.ts"],"names":[],"mappings":"AAAA,oBAAY,aAAa;IACrB,kBAAkB,IAAA;CACrB;AAED,qBAAa,QAAQ;IACjB,OAAO,CAAC,KAAK,CAAS;gBAEH,KAAK,EAAE,MAAM,EAAE,QAAQ,EAAE,aAAa;IAIzD,IAAW,kBAAkB,IAAI,MAAM,CAEtC;WAEa,sBAAsB,CAAC,KAAK,EAAE,MAAM,GAAG,QAAQ;IAI7D,OAAO,CAAC,eAAe;IAcvB,OAAO,CAAC,aAAa;CAaxB"}

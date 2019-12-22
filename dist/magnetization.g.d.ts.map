@@ -1,0 +1,1 @@
+{"version":3,"file":"magnetization.g.d.ts","sourceRoot":"","sources":["../src/magnetization.g.ts"],"names":[],"mappings":"AAAA,oBAAY,kBAAkB;IAC1B,eAAe,IAAA;CAClB;AAED,qBAAa,aAAa;IACtB,OAAO,CAAC,KAAK,CAAS;gBAEH,KAAK,EAAE,MAAM,EAAE,QAAQ,EAAE,kBAAkB;IAI9D,IAAW,eAAe,IAAI,MAAM,CAEnC;WAEa,mBAAmB,CAAC,KAAK,EAAE,MAAM,GAAG,aAAa;IAI/D,OAAO,CAAC,eAAe;IAcvB,OAAO,CAAC,aAAa;CAaxB"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"electricfield.g.d.ts","sourceRoot":"","sources":["../src/electricfield.g.ts"],"names":[],"mappings":"AAAA,oBAAY,kBAAkB;IAC1B,aAAa,IAAA;CAChB;AAED,qBAAa,aAAa;IACtB,OAAO,CAAC,KAAK,CAAS;gBAEH,KAAK,EAAE,MAAM,EAAE,QAAQ,EAAE,kBAAkB;IAI9D,IAAW,aAAa,IAAI,MAAM,CAEjC;WAEa,iBAAiB,CAAC,KAAK,EAAE,MAAM,GAAG,aAAa;IAI7D,OAAO,CAAC,eAAe;IAcvB,OAAO,CAAC,aAAa;CAaxB"}
