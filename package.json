@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/haimkastner/units-js.git"
   },
+  "homepage": "https://github.com/haimkastner/units-js",
   "author": "Haim Kastner, Based on UnitsNet Project",
   "license": "MIT",
   "devDependencies": {
