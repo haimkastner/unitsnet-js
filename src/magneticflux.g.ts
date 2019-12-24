@@ -36,7 +36,7 @@ export class MagneticFlux {
                 switch (fromUnit) {
                     
                 case MagneticFluxUnits.Webers:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

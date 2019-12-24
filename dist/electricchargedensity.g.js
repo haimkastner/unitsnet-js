@@ -26,7 +26,7 @@ class ElectricChargeDensity {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                return this.value;
+                return value;
             default:
                 break;
         }

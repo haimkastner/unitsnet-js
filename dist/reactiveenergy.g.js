@@ -44,11 +44,11 @@ class ReactiveEnergy {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case ReactiveEnergyUnits.VoltampereReactiveHours:
-                return this.value;
+                return value;
             case ReactiveEnergyUnits.Kilovoltamperereactivehours:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case ReactiveEnergyUnits.Megavoltamperereactivehours:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             default:
                 break;
         }

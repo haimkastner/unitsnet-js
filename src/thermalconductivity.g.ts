@@ -34,7 +34,7 @@ export class ThermalConductivity {
                     return this.value;
                 
                 case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                    return this.value*1.73073467;
+                    return this.value/1.73073467;
                 
                 default:
                     break;
@@ -48,10 +48,10 @@ export class ThermalConductivity {
                 switch (fromUnit) {
                     
                 case ThermalConductivityUnits.WattsPerMeterKelvin:
-                    return this.value;
+                    return value;
                 
                 case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                    return this.value/1.73073467;
+                    return value*1.73073467;
                 
                     default:
                         break;

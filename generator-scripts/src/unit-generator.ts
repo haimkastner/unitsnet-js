@@ -45,7 +45,7 @@ function generateunitInitsMethods(unitName: string, enumName: string, units: Uni
     })
 }
 
-function buildFormulaCase(unitName: string, enumName: string, formulaDefenition: string): string {
+function buildFormulaCase(unitName: string, enumName: string, formulaDefenition: string, valueVarName: string): string {
     // Remove C# number types
     formulaDefenition = formulaDefenition.replace('d', '').replace('m', '');
 
@@ -54,7 +54,7 @@ function buildFormulaCase(unitName: string, enumName: string, formulaDefenition:
 
     return `
         case ${enumName}.${unitName}:
-            return ${formulaDefenition.replace('x', 'this.value')};
+            return ${formulaDefenition.replace('x', valueVarName)};
         `;
 }
 
@@ -66,7 +66,10 @@ function buildFormulaCases(enumName: string, units: UnitProperties[], isBaseToUn
             enumName,
             isBaseToUnit
                 ? unit.baseToUnitFormula
-                : unit.unitToBaseFormula);
+                : unit.unitToBaseFormula,
+            isBaseToUnit 
+            ? 'value'
+            : 'this.value');
     }
 
     return switchUnitsCode;
@@ -86,7 +89,7 @@ function generateConvertFromBaseMethod(enumName: string, units: UnitProperties[]
         returnType: 'number',
         statements: `
     switch (toUnit) {
-        ${buildFormulaCases(enumName, units, true)}
+        ${buildFormulaCases(enumName, units, false)}
         default:
             break;
     }
@@ -113,7 +116,7 @@ function generateConvertToBaseMethod(enumName: string, units: UnitProperties[]):
         returnType: 'number',
         statements: `
         switch (fromUnit) {
-            ${buildFormulaCases(enumName, units, false)}
+            ${buildFormulaCases(enumName, units, true)}
             default:
                 break;
         }
@@ -122,7 +125,7 @@ function generateConvertToBaseMethod(enumName: string, units: UnitProperties[]):
     };
 }
 
-export function generateUnitClass(project: Project, unitsTestinationDirectory: string, options: UnitGenerateOptions) {
+export function generateUnitClass(project: Project, unitsDestinationDirectory: string, options: UnitGenerateOptions) {
 
     const enumName = `${options.unitName}Units`;
     const unitsEnum: EnumDeclarationStructure = generateEnum(enumName, options.units);
@@ -169,7 +172,7 @@ export function generateUnitClass(project: Project, unitsTestinationDirectory: s
         isExported: true,
     }
 
-    const sourceFile = project.createSourceFile(`${unitsTestinationDirectory}/${options.unitName.toLowerCase()}.g.ts`, {
+    const sourceFile = project.createSourceFile(`${unitsDestinationDirectory}/${options.unitName.toLowerCase()}.g.ts`, {
         statements: [unitsEnum, unitClass]
     }, {
         overwrite: true

@@ -166,57 +166,6 @@ class Energy {
             case EnergyUnits.Joules:
                 return this.value;
             case EnergyUnits.Calories:
-                return this.value * 4.184;
-            case EnergyUnits.BritishThermalUnits:
-                return this.value * 1055.05585262;
-            case EnergyUnits.ElectronVolts:
-                return this.value * 1.602176565e-19;
-            case EnergyUnits.FootPounds:
-                return this.value * 1.355817948;
-            case EnergyUnits.Ergs:
-                return this.value * 1e-7;
-            case EnergyUnits.WattHours:
-                return this.value * 3600;
-            case EnergyUnits.ThermsEc:
-                return this.value * 1.05505585262e8;
-            case EnergyUnits.ThermsUs:
-                return this.value * 1.054804e8;
-            case EnergyUnits.ThermsImperial:
-                return this.value * 1.05505585257348e8;
-            case EnergyUnits.Kilojoules:
-                return (this.value) * 1000;
-            case EnergyUnits.Megajoules:
-                return (this.value) * 1000000;
-            case EnergyUnits.Gigajoules:
-                return (this.value) * 1000000000;
-            case EnergyUnits.Kilocalories:
-                return (this.value / 4.184) * 1000;
-            case EnergyUnits.Megacalories:
-                return (this.value / 4.184) * 1000000;
-            case EnergyUnits.Kilobritishthermalunits:
-                return (this.value / 1055.05585262) * 1000;
-            case EnergyUnits.Megabritishthermalunits:
-                return (this.value / 1055.05585262) * 1000000;
-            case EnergyUnits.Gigabritishthermalunits:
-                return (this.value / 1055.05585262) * 1000000000;
-            case EnergyUnits.Kilowatthours:
-                return (this.value / 3600) * 1000;
-            case EnergyUnits.Megawatthours:
-                return (this.value / 3600) * 1000000;
-            case EnergyUnits.Gigawatthours:
-                return (this.value / 3600) * 1000000000;
-            case EnergyUnits.Terawatthours:
-                return (this.value / 3600) * 1000000000000;
-            default:
-                break;
-        }
-        return NaN;
-    }
-    convertToBase(value, fromUnit) {
-        switch (fromUnit) {
-            case EnergyUnits.Joules:
-                return this.value;
-            case EnergyUnits.Calories:
                 return this.value / 4.184;
             case EnergyUnits.BritishThermalUnits:
                 return this.value / 1055.05585262;
@@ -235,29 +184,80 @@ class Energy {
             case EnergyUnits.ThermsImperial:
                 return this.value / 1.05505585257348e8;
             case EnergyUnits.Kilojoules:
-                return (this.value) / 1000;
+                return (this.value) * 1000;
             case EnergyUnits.Megajoules:
-                return (this.value) / 1000000;
+                return (this.value) * 1000000;
             case EnergyUnits.Gigajoules:
-                return (this.value) / 1000000000;
+                return (this.value) * 1000000000;
             case EnergyUnits.Kilocalories:
-                return (this.value * 4.184) / 1000;
+                return (this.value * 4.184) * 1000;
             case EnergyUnits.Megacalories:
-                return (this.value * 4.184) / 1000000;
+                return (this.value * 4.184) * 1000000;
             case EnergyUnits.Kilobritishthermalunits:
-                return (this.value * 1055.05585262) / 1000;
+                return (this.value * 1055.05585262) * 1000;
             case EnergyUnits.Megabritishthermalunits:
-                return (this.value * 1055.05585262) / 1000000;
+                return (this.value * 1055.05585262) * 1000000;
             case EnergyUnits.Gigabritishthermalunits:
-                return (this.value * 1055.05585262) / 1000000000;
+                return (this.value * 1055.05585262) * 1000000000;
             case EnergyUnits.Kilowatthours:
-                return (this.value * 3600) / 1000;
+                return (this.value * 3600) * 1000;
             case EnergyUnits.Megawatthours:
-                return (this.value * 3600) / 1000000;
+                return (this.value * 3600) * 1000000;
             case EnergyUnits.Gigawatthours:
-                return (this.value * 3600) / 1000000000;
+                return (this.value * 3600) * 1000000000;
             case EnergyUnits.Terawatthours:
-                return (this.value * 3600) / 1000000000000;
+                return (this.value * 3600) * 1000000000000;
+            default:
+                break;
+        }
+        return NaN;
+    }
+    convertToBase(value, fromUnit) {
+        switch (fromUnit) {
+            case EnergyUnits.Joules:
+                return value;
+            case EnergyUnits.Calories:
+                return value * 4.184;
+            case EnergyUnits.BritishThermalUnits:
+                return value * 1055.05585262;
+            case EnergyUnits.ElectronVolts:
+                return value * 1.602176565e-19;
+            case EnergyUnits.FootPounds:
+                return value * 1.355817948;
+            case EnergyUnits.Ergs:
+                return value * 1e-7;
+            case EnergyUnits.WattHours:
+                return value * 3600;
+            case EnergyUnits.ThermsEc:
+                return value * 1.05505585262e8;
+            case EnergyUnits.ThermsUs:
+                return value * 1.054804e8;
+            case EnergyUnits.ThermsImperial:
+                return value * 1.05505585257348e8;
+            case EnergyUnits.Kilojoules:
+                return (value) / 1000;
+            case EnergyUnits.Megajoules:
+                return (value) / 1000000;
+            case EnergyUnits.Gigajoules:
+                return (value) / 1000000000;
+            case EnergyUnits.Kilocalories:
+                return (value / 4.184) / 1000;
+            case EnergyUnits.Megacalories:
+                return (value / 4.184) / 1000000;
+            case EnergyUnits.Kilobritishthermalunits:
+                return (value / 1055.05585262) / 1000;
+            case EnergyUnits.Megabritishthermalunits:
+                return (value / 1055.05585262) / 1000000;
+            case EnergyUnits.Gigabritishthermalunits:
+                return (value / 1055.05585262) / 1000000000;
+            case EnergyUnits.Kilowatthours:
+                return (value / 3600) / 1000;
+            case EnergyUnits.Megawatthours:
+                return (value / 3600) / 1000000;
+            case EnergyUnits.Gigawatthours:
+                return (value / 3600) / 1000000000;
+            case EnergyUnits.Terawatthours:
+                return (value / 3600) / 1000000000000;
             default:
                 break;
         }

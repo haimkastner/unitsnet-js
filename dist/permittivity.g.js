@@ -26,7 +26,7 @@ class Permittivity {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case PermittivityUnits.FaradsPerMeter:
-                return this.value;
+                return value;
             default:
                 break;
         }

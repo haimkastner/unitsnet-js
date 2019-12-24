@@ -285,91 +285,6 @@ class Pressure {
             case PressureUnits.Pascals:
                 return this.value;
             case PressureUnits.Atmospheres:
-                return this.value * 1.01325 * 1e5;
-            case PressureUnits.Bars:
-                return this.value * 1e5;
-            case PressureUnits.KilogramsForcePerSquareMeter:
-                return this.value * 9.80665019960652;
-            case PressureUnits.KilogramsForcePerSquareCentimeter:
-                return this.value * 9.80665e4;
-            case PressureUnits.KilogramsForcePerSquareMillimeter:
-                return this.value * 9.80665e6;
-            case PressureUnits.NewtonsPerSquareMeter:
-                return this.value;
-            case PressureUnits.NewtonsPerSquareCentimeter:
-                return this.value * 1e4;
-            case PressureUnits.NewtonsPerSquareMillimeter:
-                return this.value * 1e6;
-            case PressureUnits.TechnicalAtmospheres:
-                return this.value * 9.80680592331 * 1e4;
-            case PressureUnits.Torrs:
-                return this.value * 1.3332266752 * 1e2;
-            case PressureUnits.PoundsForcePerSquareInch:
-                return this.value * 6.894757293168361e3;
-            case PressureUnits.PoundsForcePerSquareFoot:
-                return this.value * 4.788025898033584e1;
-            case PressureUnits.TonnesForcePerSquareMillimeter:
-                return this.value * 9.80665e9;
-            case PressureUnits.TonnesForcePerSquareMeter:
-                return this.value * 9.80665e3;
-            case PressureUnits.MetersOfHead:
-                return this.value * 9804.139432;
-            case PressureUnits.TonnesForcePerSquareCentimeter:
-                return this.value * 9.80665e7;
-            case PressureUnits.FeetOfHead:
-                return this.value * 2989.0669;
-            case PressureUnits.MillimetersOfMercury:
-                return this.value / 7.50061561302643e-3;
-            case PressureUnits.InchesOfMercury:
-                return this.value / 2.95299830714159e-4;
-            case PressureUnits.DynesPerSquareCentimeter:
-                return this.value * 1.0e-1;
-            case PressureUnits.PoundsPerInchSecondSquared:
-                return this.value * 1.785796732283465e1;
-            case PressureUnits.InchesOfWaterColumn:
-                return this.value * 249.08890833333;
-            case PressureUnits.Micropascals:
-                return (this.value) * 0.000001;
-            case PressureUnits.Hectopascals:
-                return (this.value) * 100;
-            case PressureUnits.Kilopascals:
-                return (this.value) * 1000;
-            case PressureUnits.Megapascals:
-                return (this.value) * 1000000;
-            case PressureUnits.Gigapascals:
-                return (this.value) * 1000000000;
-            case PressureUnits.Microbars:
-                return (this.value / 1e5) * 0.000001;
-            case PressureUnits.Centibars:
-                return (this.value / 1e5) * 0.01;
-            case PressureUnits.Decibars:
-                return (this.value / 1e5) * 0.1;
-            case PressureUnits.Kilobars:
-                return (this.value / 1e5) * 1000;
-            case PressureUnits.Megabars:
-                return (this.value / 1e5) * 1000000;
-            case PressureUnits.Kilonewtonspersquaremeter:
-                return (this.value) * 1000;
-            case PressureUnits.Meganewtonspersquaremeter:
-                return (this.value) * 1000000;
-            case PressureUnits.Kilonewtonspersquarecentimeter:
-                return (this.value / 1e4) * 1000;
-            case PressureUnits.Kilonewtonspersquaremillimeter:
-                return (this.value / 1e6) * 1000;
-            case PressureUnits.Kilopoundsforcepersquareinch:
-                return (this.value / 6.894757293168361e3) * 1000;
-            case PressureUnits.Kilopoundsforcepersquarefoot:
-                return (this.value / 4.788025898033584e1) * 1000;
-            default:
-                break;
-        }
-        return NaN;
-    }
-    convertToBase(value, fromUnit) {
-        switch (fromUnit) {
-            case PressureUnits.Pascals:
-                return this.value;
-            case PressureUnits.Atmospheres:
                 return this.value / (1.01325 * 1e5);
             case PressureUnits.Bars:
                 return this.value / 1e5;
@@ -414,37 +329,122 @@ class Pressure {
             case PressureUnits.InchesOfWaterColumn:
                 return this.value / 249.08890833333;
             case PressureUnits.Micropascals:
-                return (this.value) / 0.000001;
+                return (this.value) * 0.000001;
             case PressureUnits.Hectopascals:
-                return (this.value) / 100;
+                return (this.value) * 100;
             case PressureUnits.Kilopascals:
-                return (this.value) / 1000;
+                return (this.value) * 1000;
             case PressureUnits.Megapascals:
-                return (this.value) / 1000000;
+                return (this.value) * 1000000;
             case PressureUnits.Gigapascals:
-                return (this.value) / 1000000000;
+                return (this.value) * 1000000000;
             case PressureUnits.Microbars:
-                return (this.value * 1e5) / 0.000001;
+                return (this.value * 1e5) * 0.000001;
             case PressureUnits.Centibars:
-                return (this.value * 1e5) / 0.01;
+                return (this.value * 1e5) * 0.01;
             case PressureUnits.Decibars:
-                return (this.value * 1e5) / 0.1;
+                return (this.value * 1e5) * 0.1;
             case PressureUnits.Kilobars:
-                return (this.value * 1e5) / 1000;
+                return (this.value * 1e5) * 1000;
             case PressureUnits.Megabars:
-                return (this.value * 1e5) / 1000000;
+                return (this.value * 1e5) * 1000000;
             case PressureUnits.Kilonewtonspersquaremeter:
-                return (this.value) / 1000;
+                return (this.value) * 1000;
             case PressureUnits.Meganewtonspersquaremeter:
-                return (this.value) / 1000000;
+                return (this.value) * 1000000;
             case PressureUnits.Kilonewtonspersquarecentimeter:
-                return (this.value * 1e4) / 1000;
+                return (this.value * 1e4) * 1000;
             case PressureUnits.Kilonewtonspersquaremillimeter:
-                return (this.value * 1e6) / 1000;
+                return (this.value * 1e6) * 1000;
             case PressureUnits.Kilopoundsforcepersquareinch:
-                return (this.value * 6.894757293168361e3) / 1000;
+                return (this.value * 6.894757293168361e3) * 1000;
             case PressureUnits.Kilopoundsforcepersquarefoot:
-                return (this.value * 4.788025898033584e1) / 1000;
+                return (this.value * 4.788025898033584e1) * 1000;
+            default:
+                break;
+        }
+        return NaN;
+    }
+    convertToBase(value, fromUnit) {
+        switch (fromUnit) {
+            case PressureUnits.Pascals:
+                return value;
+            case PressureUnits.Atmospheres:
+                return value * 1.01325 * 1e5;
+            case PressureUnits.Bars:
+                return value * 1e5;
+            case PressureUnits.KilogramsForcePerSquareMeter:
+                return value * 9.80665019960652;
+            case PressureUnits.KilogramsForcePerSquareCentimeter:
+                return value * 9.80665e4;
+            case PressureUnits.KilogramsForcePerSquareMillimeter:
+                return value * 9.80665e6;
+            case PressureUnits.NewtonsPerSquareMeter:
+                return value;
+            case PressureUnits.NewtonsPerSquareCentimeter:
+                return value * 1e4;
+            case PressureUnits.NewtonsPerSquareMillimeter:
+                return value * 1e6;
+            case PressureUnits.TechnicalAtmospheres:
+                return value * 9.80680592331 * 1e4;
+            case PressureUnits.Torrs:
+                return value * 1.3332266752 * 1e2;
+            case PressureUnits.PoundsForcePerSquareInch:
+                return value * 6.894757293168361e3;
+            case PressureUnits.PoundsForcePerSquareFoot:
+                return value * 4.788025898033584e1;
+            case PressureUnits.TonnesForcePerSquareMillimeter:
+                return value * 9.80665e9;
+            case PressureUnits.TonnesForcePerSquareMeter:
+                return value * 9.80665e3;
+            case PressureUnits.MetersOfHead:
+                return value * 9804.139432;
+            case PressureUnits.TonnesForcePerSquareCentimeter:
+                return value * 9.80665e7;
+            case PressureUnits.FeetOfHead:
+                return value * 2989.0669;
+            case PressureUnits.MillimetersOfMercury:
+                return value / 7.50061561302643e-3;
+            case PressureUnits.InchesOfMercury:
+                return value / 2.95299830714159e-4;
+            case PressureUnits.DynesPerSquareCentimeter:
+                return value * 1.0e-1;
+            case PressureUnits.PoundsPerInchSecondSquared:
+                return value * 1.785796732283465e1;
+            case PressureUnits.InchesOfWaterColumn:
+                return value * 249.08890833333;
+            case PressureUnits.Micropascals:
+                return (value) / 0.000001;
+            case PressureUnits.Hectopascals:
+                return (value) / 100;
+            case PressureUnits.Kilopascals:
+                return (value) / 1000;
+            case PressureUnits.Megapascals:
+                return (value) / 1000000;
+            case PressureUnits.Gigapascals:
+                return (value) / 1000000000;
+            case PressureUnits.Microbars:
+                return (value / 1e5) / 0.000001;
+            case PressureUnits.Centibars:
+                return (value / 1e5) / 0.01;
+            case PressureUnits.Decibars:
+                return (value / 1e5) / 0.1;
+            case PressureUnits.Kilobars:
+                return (value / 1e5) / 1000;
+            case PressureUnits.Megabars:
+                return (value / 1e5) / 1000000;
+            case PressureUnits.Kilonewtonspersquaremeter:
+                return (value) / 1000;
+            case PressureUnits.Meganewtonspersquaremeter:
+                return (value) / 1000000;
+            case PressureUnits.Kilonewtonspersquarecentimeter:
+                return (value / 1e4) / 1000;
+            case PressureUnits.Kilonewtonspersquaremillimeter:
+                return (value / 1e6) / 1000;
+            case PressureUnits.Kilopoundsforcepersquareinch:
+                return (value / 6.894757293168361e3) / 1000;
+            case PressureUnits.Kilopoundsforcepersquarefoot:
+                return (value / 4.788025898033584e1) / 1000;
             default:
                 break;
         }

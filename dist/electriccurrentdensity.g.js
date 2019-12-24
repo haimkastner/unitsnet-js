@@ -33,9 +33,9 @@ class ElectricCurrentDensity {
             case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
                 return this.value;
             case ElectricCurrentDensityUnits.AmperesPerSquareInch:
-                return this.value * 1.5500031000062000e3;
+                return this.value / 1.5500031000062000e3;
             case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
-                return this.value * 1.0763910416709722e1;
+                return this.value / 1.0763910416709722e1;
             default:
                 break;
         }
@@ -44,11 +44,11 @@ class ElectricCurrentDensity {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
-                return this.value;
+                return value;
             case ElectricCurrentDensityUnits.AmperesPerSquareInch:
-                return this.value / 1.5500031000062000e3;
+                return value * 1.5500031000062000e3;
             case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
-                return this.value / 1.0763910416709722e1;
+                return value * 1.0763910416709722e1;
             default:
                 break;
         }

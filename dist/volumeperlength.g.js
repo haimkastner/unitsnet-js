@@ -33,9 +33,9 @@ class VolumePerLength {
             case VolumePerLengthUnits.CubicMetersPerMeter:
                 return this.value;
             case VolumePerLengthUnits.LitersPerMeter:
-                return this.value / 1000;
+                return this.value * 1000;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
-                return this.value / 1.91713408;
+                return this.value * 1.91713408;
             default:
                 break;
         }
@@ -44,11 +44,11 @@ class VolumePerLength {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case VolumePerLengthUnits.CubicMetersPerMeter:
-                return this.value;
+                return value;
             case VolumePerLengthUnits.LitersPerMeter:
-                return this.value * 1000;
+                return value / 1000;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
-                return this.value * 1.91713408;
+                return value / 1.91713408;
             default:
                 break;
         }

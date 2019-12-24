@@ -26,7 +26,7 @@ class LuminousIntensity {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case LuminousIntensityUnits.Candela:
-                return this.value;
+                return value;
             default:
                 break;
         }

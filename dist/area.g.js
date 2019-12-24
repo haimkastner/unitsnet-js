@@ -108,41 +108,6 @@ class Area {
     convertFromBase(toUnit) {
         switch (toUnit) {
             case AreaUnits.SquareKilometers:
-                return this.value * 1e6;
-            case AreaUnits.SquareMeters:
-                return this.value;
-            case AreaUnits.SquareDecimeters:
-                return this.value * 1e-2;
-            case AreaUnits.SquareCentimeters:
-                return this.value * 1e-4;
-            case AreaUnits.SquareMillimeters:
-                return this.value * 1e-6;
-            case AreaUnits.SquareMicrometers:
-                return this.value * 1e-12;
-            case AreaUnits.SquareMiles:
-                return this.value * 2.59e6;
-            case AreaUnits.SquareYards:
-                return this.value * 0.836127;
-            case AreaUnits.SquareFeet:
-                return this.value * 0.092903;
-            case AreaUnits.UsSurveySquareFeet:
-                return this.value * 0.09290341161;
-            case AreaUnits.SquareInches:
-                return this.value * 0.00064516;
-            case AreaUnits.Acres:
-                return this.value * 4046.85642;
-            case AreaUnits.Hectares:
-                return this.value * 1e4;
-            case AreaUnits.SquareNauticalMiles:
-                return this.value * 3429904;
-            default:
-                break;
-        }
-        return NaN;
-    }
-    convertToBase(value, fromUnit) {
-        switch (fromUnit) {
-            case AreaUnits.SquareKilometers:
                 return this.value / 1e6;
             case AreaUnits.SquareMeters:
                 return this.value;
@@ -170,6 +135,41 @@ class Area {
                 return this.value / 1e4;
             case AreaUnits.SquareNauticalMiles:
                 return this.value / 3429904;
+            default:
+                break;
+        }
+        return NaN;
+    }
+    convertToBase(value, fromUnit) {
+        switch (fromUnit) {
+            case AreaUnits.SquareKilometers:
+                return value * 1e6;
+            case AreaUnits.SquareMeters:
+                return value;
+            case AreaUnits.SquareDecimeters:
+                return value * 1e-2;
+            case AreaUnits.SquareCentimeters:
+                return value * 1e-4;
+            case AreaUnits.SquareMillimeters:
+                return value * 1e-6;
+            case AreaUnits.SquareMicrometers:
+                return value * 1e-12;
+            case AreaUnits.SquareMiles:
+                return value * 2.59e6;
+            case AreaUnits.SquareYards:
+                return value * 0.836127;
+            case AreaUnits.SquareFeet:
+                return value * 0.092903;
+            case AreaUnits.UsSurveySquareFeet:
+                return value * 0.09290341161;
+            case AreaUnits.SquareInches:
+                return value * 0.00064516;
+            case AreaUnits.Acres:
+                return value * 4046.85642;
+            case AreaUnits.Hectares:
+                return value * 1e4;
+            case AreaUnits.SquareNauticalMiles:
+                return value * 3429904;
             default:
                 break;
         }

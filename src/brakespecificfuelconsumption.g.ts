@@ -40,13 +40,13 @@ export class BrakeSpecificFuelConsumption {
             switch (toUnit) {
                 
                 case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                    return this.value/3.6e9;
+                    return this.value*3.6e9;
                 
                 case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
                     return this.value;
                 
                 case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                    return this.value*1.689659410672e-7;
+                    return this.value/1.689659410672e-7;
                 
                 default:
                     break;
@@ -60,13 +60,13 @@ export class BrakeSpecificFuelConsumption {
                 switch (fromUnit) {
                     
                 case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                    return this.value*3.6e9;
+                    return value/3.6e9;
                 
                 case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
-                    return this.value;
+                    return value;
                 
                 case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                    return this.value/1.689659410672e-7;
+                    return value*1.689659410672e-7;
                 
                     default:
                         break;

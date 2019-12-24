@@ -26,7 +26,7 @@ class LapseRate {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case LapseRateUnits.DegreesCelciusPerKilometer:
-                return this.value;
+                return value;
             default:
                 break;
         }

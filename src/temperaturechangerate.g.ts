@@ -88,7 +88,7 @@ export class TemperatureChangeRate {
                     return this.value;
                 
                 case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
-                    return this.value/60;
+                    return this.value*60;
                 
                 case TemperatureChangeRateUnits.Nanodegreescelsiuspersecond:
                     return (this.value) * 1e-9;
@@ -120,28 +120,28 @@ export class TemperatureChangeRate {
                 switch (fromUnit) {
                     
                 case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
-                    return this.value;
+                    return value;
                 
                 case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
-                    return this.value*60;
+                    return value/60;
                 
                 case TemperatureChangeRateUnits.Nanodegreescelsiuspersecond:
-                    return (this.value) / 1e-9;
+                    return (value) / 1e-9;
                 
                 case TemperatureChangeRateUnits.Microdegreescelsiuspersecond:
-                    return (this.value) / 0.000001;
+                    return (value) / 0.000001;
                 
                 case TemperatureChangeRateUnits.Centidegreescelsiuspersecond:
-                    return (this.value) / 0.01;
+                    return (value) / 0.01;
                 
                 case TemperatureChangeRateUnits.Decidegreescelsiuspersecond:
-                    return (this.value) / 0.1;
+                    return (value) / 0.1;
                 
                 case TemperatureChangeRateUnits.Hectodegreescelsiuspersecond:
-                    return (this.value) / 100;
+                    return (value) / 100;
                 
                 case TemperatureChangeRateUnits.Kilodegreescelsiuspersecond:
-                    return (this.value) / 1000;
+                    return (value) / 1000;
                 
                     default:
                         break;

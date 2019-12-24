@@ -36,7 +36,7 @@ export class ElectricCurrentGradient {
                 switch (fromUnit) {
                     
                 case ElectricCurrentGradientUnits.AmperesPerSecond:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

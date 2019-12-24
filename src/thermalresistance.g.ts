@@ -61,16 +61,16 @@ export class ThermalResistance {
                     return this.value;
                 
                 case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                    return this.value*1000.088056074108;
+                    return this.value/1000.088056074108;
                 
                 case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                    return this.value*0.0999964777570357;
+                    return this.value/0.0999964777570357;
                 
                 case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                    return this.value*0.0859779507590433;
+                    return this.value/0.0859779507590433;
                 
                 case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                    return this.value*176.1121482159839;
+                    return this.value/176.1121482159839;
                 
                 default:
                     break;
@@ -84,19 +84,19 @@ export class ThermalResistance {
                 switch (fromUnit) {
                     
                 case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
-                    return this.value;
+                    return value;
                 
                 case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                    return this.value/1000.088056074108;
+                    return value*1000.088056074108;
                 
                 case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                    return this.value/0.0999964777570357;
+                    return value*0.0999964777570357;
                 
                 case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                    return this.value/0.0859779507590433;
+                    return value*0.0859779507590433;
                 
                 case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                    return this.value/176.1121482159839;
+                    return value*176.1121482159839;
                 
                     default:
                         break;

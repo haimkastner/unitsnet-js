@@ -26,7 +26,7 @@ class ElectricField {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case ElectricFieldUnits.VoltsPerMeter:
-                return this.value;
+                return value;
             default:
                 break;
         }

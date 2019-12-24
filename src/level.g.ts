@@ -34,7 +34,7 @@ export class Level {
                     return this.value;
                 
                 case LevelUnits.Nepers:
-                    return (1/0.115129254)*this.value;
+                    return 0.115129254*this.value;
                 
                 default:
                     break;
@@ -48,10 +48,10 @@ export class Level {
                 switch (fromUnit) {
                     
                 case LevelUnits.Decibels:
-                    return this.value;
+                    return value;
                 
                 case LevelUnits.Nepers:
-                    return 0.115129254*this.value;
+                    return (1/0.115129254)*value;
                 
                     default:
                         break;

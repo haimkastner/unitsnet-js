@@ -44,11 +44,11 @@ class MolarEnergy {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case MolarEnergyUnits.JoulesPerMole:
-                return this.value;
+                return value;
             case MolarEnergyUnits.Kilojoulespermole:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case MolarEnergyUnits.Megajoulespermole:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             default:
                 break;
         }

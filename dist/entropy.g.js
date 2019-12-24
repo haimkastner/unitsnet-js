@@ -61,7 +61,7 @@ class Entropy {
             case EntropyUnits.JoulesPerKelvin:
                 return this.value;
             case EntropyUnits.CaloriesPerKelvin:
-                return this.value * 4.184;
+                return this.value / 4.184;
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return this.value;
             case EntropyUnits.Kilojoulesperkelvin:
@@ -69,7 +69,7 @@ class Entropy {
             case EntropyUnits.Megajoulesperkelvin:
                 return (this.value) * 1000000;
             case EntropyUnits.Kilocaloriesperkelvin:
-                return (this.value / 4.184) * 1000;
+                return (this.value * 4.184) * 1000;
             case EntropyUnits.Kilojoulesperdegreecelsius:
                 return (this.value) * 1000;
             default:
@@ -80,19 +80,19 @@ class Entropy {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case EntropyUnits.JoulesPerKelvin:
-                return this.value;
+                return value;
             case EntropyUnits.CaloriesPerKelvin:
-                return this.value / 4.184;
+                return value * 4.184;
             case EntropyUnits.JoulesPerDegreeCelsius:
-                return this.value;
+                return value;
             case EntropyUnits.Kilojoulesperkelvin:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case EntropyUnits.Megajoulesperkelvin:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             case EntropyUnits.Kilocaloriesperkelvin:
-                return (this.value * 4.184) / 1000;
+                return (value / 4.184) / 1000;
             case EntropyUnits.Kilojoulesperdegreecelsius:
-                return (this.value) / 1000;
+                return (value) / 1000;
             default:
                 break;
         }

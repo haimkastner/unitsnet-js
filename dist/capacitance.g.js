@@ -71,17 +71,17 @@ class Capacitance {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case CapacitanceUnits.Farads:
-                return this.value;
+                return value;
             case CapacitanceUnits.Picofarads:
-                return (this.value) / 1e-12;
+                return (value) / 1e-12;
             case CapacitanceUnits.Nanofarads:
-                return (this.value) / 1e-9;
+                return (value) / 1e-9;
             case CapacitanceUnits.Microfarads:
-                return (this.value) / 0.000001;
+                return (value) / 0.000001;
             case CapacitanceUnits.Kilofarads:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case CapacitanceUnits.Megafarads:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             default:
                 break;
         }

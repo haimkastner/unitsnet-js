@@ -53,13 +53,13 @@ class FuelEfficiency {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case FuelEfficiencyUnits.LitersPer100Kilometers:
-                return this.value;
+                return value;
             case FuelEfficiencyUnits.MilesPerUsGallon:
-                return (100 * 3.785411784) / (1.609344 * this.value);
+                return (100 * 3.785411784) / (1.609344 * value);
             case FuelEfficiencyUnits.MilesPerUkGallon:
-                return (100 * 4.54609188) / (1.609344 * this.value);
+                return (100 * 4.54609188) / (1.609344 * value);
             case FuelEfficiencyUnits.KilometersPerLiters:
-                return 100 / this.value;
+                return 100 / value;
             default:
                 break;
         }

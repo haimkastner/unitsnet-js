@@ -36,7 +36,7 @@ export class ElectricChargeDensity {
                 switch (fromUnit) {
                     
                 case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

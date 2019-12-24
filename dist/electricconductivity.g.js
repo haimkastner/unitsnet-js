@@ -33,9 +33,9 @@ class ElectricConductivity {
             case ElectricConductivityUnits.SiemensPerMeter:
                 return this.value;
             case ElectricConductivityUnits.SiemensPerInch:
-                return this.value * 3.937007874015748e1;
+                return this.value / 3.937007874015748e1;
             case ElectricConductivityUnits.SiemensPerFoot:
-                return this.value * 3.2808398950131234;
+                return this.value / 3.2808398950131234;
             default:
                 break;
         }
@@ -44,11 +44,11 @@ class ElectricConductivity {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case ElectricConductivityUnits.SiemensPerMeter:
-                return this.value;
+                return value;
             case ElectricConductivityUnits.SiemensPerInch:
-                return this.value / 3.937007874015748e1;
+                return value * 3.937007874015748e1;
             case ElectricConductivityUnits.SiemensPerFoot:
-                return this.value / 3.2808398950131234;
+                return value * 3.2808398950131234;
             default:
                 break;
         }

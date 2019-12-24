@@ -26,7 +26,7 @@ class Level {
             case LevelUnits.Decibels:
                 return this.value;
             case LevelUnits.Nepers:
-                return (1 / 0.115129254) * this.value;
+                return 0.115129254 * this.value;
             default:
                 break;
         }
@@ -35,9 +35,9 @@ class Level {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case LevelUnits.Decibels:
-                return this.value;
+                return value;
             case LevelUnits.Nepers:
-                return 0.115129254 * this.value;
+                return (1 / 0.115129254) * value;
             default:
                 break;
         }

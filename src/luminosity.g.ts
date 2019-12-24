@@ -115,7 +115,7 @@ export class Luminosity {
                     return this.value;
                 
                 case LuminosityUnits.SolarLuminosities:
-                    return this.value * 3.846e26;
+                    return this.value / 3.846e26;
                 
                 case LuminosityUnits.Picowatts:
                     return (this.value) * 1e-12;
@@ -156,37 +156,37 @@ export class Luminosity {
                 switch (fromUnit) {
                     
                 case LuminosityUnits.Watts:
-                    return this.value;
+                    return value;
                 
                 case LuminosityUnits.SolarLuminosities:
-                    return this.value / 3.846e26;
+                    return value * 3.846e26;
                 
                 case LuminosityUnits.Picowatts:
-                    return (this.value) / 1e-12;
+                    return (value) / 1e-12;
                 
                 case LuminosityUnits.Nanowatts:
-                    return (this.value) / 1e-9;
+                    return (value) / 1e-9;
                 
                 case LuminosityUnits.Microwatts:
-                    return (this.value) / 0.000001;
+                    return (value) / 0.000001;
                 
                 case LuminosityUnits.Deciwatts:
-                    return (this.value) / 0.1;
+                    return (value) / 0.1;
                 
                 case LuminosityUnits.Kilowatts:
-                    return (this.value) / 1000;
+                    return (value) / 1000;
                 
                 case LuminosityUnits.Megawatts:
-                    return (this.value) / 1000000;
+                    return (value) / 1000000;
                 
                 case LuminosityUnits.Gigawatts:
-                    return (this.value) / 1000000000;
+                    return (value) / 1000000000;
                 
                 case LuminosityUnits.Terawatts:
-                    return (this.value) / 1000000000000;
+                    return (value) / 1000000000000;
                 
                 case LuminosityUnits.Petawatts:
-                    return (this.value) / 1000000000000000;
+                    return (value) / 1000000000000000;
                 
                     default:
                         break;

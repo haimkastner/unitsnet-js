@@ -26,7 +26,7 @@ class Magnetization {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case MagnetizationUnits.AmperesPerMeter:
-                return this.value;
+                return value;
             default:
                 break;
         }

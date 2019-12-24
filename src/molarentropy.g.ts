@@ -60,13 +60,13 @@ export class MolarEntropy {
                 switch (fromUnit) {
                     
                 case MolarEntropyUnits.JoulesPerMoleKelvin:
-                    return this.value;
+                    return value;
                 
                 case MolarEntropyUnits.Kilojoulespermolekelvin:
-                    return (this.value) / 1000;
+                    return (value) / 1000;
                 
                 case MolarEntropyUnits.Megajoulespermolekelvin:
-                    return (this.value) / 1000000;
+                    return (value) / 1000000;
                 
                     default:
                         break;

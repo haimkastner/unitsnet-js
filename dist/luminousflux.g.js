@@ -26,7 +26,7 @@ class LuminousFlux {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case LuminousFluxUnits.Lumens:
-                return this.value;
+                return value;
             default:
                 break;
         }

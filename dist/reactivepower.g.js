@@ -53,13 +53,13 @@ class ReactivePower {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case ReactivePowerUnits.VoltamperesReactive:
-                return this.value;
+                return value;
             case ReactivePowerUnits.Kilovoltamperesreactive:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case ReactivePowerUnits.Megavoltamperesreactive:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             case ReactivePowerUnits.Gigavoltamperesreactive:
-                return (this.value) / 1000000000;
+                return (value) / 1000000000;
             default:
                 break;
         }

@@ -31,11 +31,11 @@ class LinearDensity {
     convertFromBase(toUnit) {
         switch (toUnit) {
             case LinearDensityUnits.GramsPerMeter:
-                return this.value * 1e-3;
+                return this.value / 1e-3;
             case LinearDensityUnits.PoundsPerFoot:
-                return this.value * 1.48816394;
+                return this.value / 1.48816394;
             case LinearDensityUnits.Kilogramspermeter:
-                return (this.value / 1e-3) * 1000;
+                return (this.value * 1e-3) * 1000;
             default:
                 break;
         }
@@ -44,11 +44,11 @@ class LinearDensity {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case LinearDensityUnits.GramsPerMeter:
-                return this.value / 1e-3;
+                return value * 1e-3;
             case LinearDensityUnits.PoundsPerFoot:
-                return this.value / 1.48816394;
+                return value * 1.48816394;
             case LinearDensityUnits.Kilogramspermeter:
-                return (this.value * 1e-3) / 1000;
+                return (value / 1e-3) / 1000;
             default:
                 break;
         }

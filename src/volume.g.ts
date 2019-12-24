@@ -427,155 +427,6 @@ export class Volume {
             switch (toUnit) {
                 
                 case VolumeUnits.Liters:
-                    return this.value/1e3;
-                
-                case VolumeUnits.CubicMeters:
-                    return this.value;
-                
-                case VolumeUnits.CubicKilometers:
-                    return this.value*1e9;
-                
-                case VolumeUnits.CubicHectometers:
-                    return this.value*1e6;
-                
-                case VolumeUnits.CubicDecimeters:
-                    return this.value/1e3;
-                
-                case VolumeUnits.CubicCentimeters:
-                    return this.value/1e6;
-                
-                case VolumeUnits.CubicMillimeters:
-                    return this.value/1e9;
-                
-                case VolumeUnits.CubicMicrometers:
-                    return this.value/1e18;
-                
-                case VolumeUnits.CubicMiles:
-                    return this.value*4.16818182544058e9;
-                
-                case VolumeUnits.CubicYards:
-                    return this.value*0.764554858;
-                
-                case VolumeUnits.CubicFeet:
-                    return this.value*0.0283168;
-                
-                case VolumeUnits.CubicInches:
-                    return this.value*1.6387*1e-5;
-                
-                case VolumeUnits.ImperialGallons:
-                    return this.value*0.00454609000000181429905810072407;
-                
-                case VolumeUnits.ImperialOunces:
-                    return this.value*2.8413062499962901241875439064617e-5;
-                
-                case VolumeUnits.UsGallons:
-                    return this.value*0.00378541;
-                
-                case VolumeUnits.UsOunces:
-                    return this.value*2.957352956253760505068307980135e-5;
-                
-                case VolumeUnits.UsTablespoons:
-                    return this.value*1.478676478125e-5;
-                
-                case VolumeUnits.AuTablespoons:
-                    return this.value*2e-5;
-                
-                case VolumeUnits.UkTablespoons:
-                    return this.value*1.5e-5;
-                
-                case VolumeUnits.MetricTeaspoons:
-                    return this.value*0.5e-5;
-                
-                case VolumeUnits.UsTeaspoons:
-                    return this.value*4.92892159375e-6;
-                
-                case VolumeUnits.MetricCups:
-                    return this.value*0.00025;
-                
-                case VolumeUnits.UsCustomaryCups:
-                    return this.value*0.0002365882365;
-                
-                case VolumeUnits.UsLegalCups:
-                    return this.value*0.00024;
-                
-                case VolumeUnits.OilBarrels:
-                    return this.value*0.158987294928;
-                
-                case VolumeUnits.UsBeerBarrels:
-                    return this.value*0.1173477658;
-                
-                case VolumeUnits.ImperialBeerBarrels:
-                    return this.value*0.16365924;
-                
-                case VolumeUnits.UsQuarts:
-                    return this.value*9.46352946e-4;
-                
-                case VolumeUnits.UsPints:
-                    return this.value*4.73176473e-4;
-                
-                case VolumeUnits.AcreFeet:
-                    return this.value/0.000810714;
-                
-                case VolumeUnits.ImperialPints:
-                    return this.value * 5.6826125e-4;
-                
-                case VolumeUnits.Microliters:
-                    return (this.value*1e3) * 0.000001;
-                
-                case VolumeUnits.Centiliters:
-                    return (this.value*1e3) * 0.01;
-                
-                case VolumeUnits.Deciliters:
-                    return (this.value*1e3) * 0.1;
-                
-                case VolumeUnits.Hectoliters:
-                    return (this.value*1e3) * 100;
-                
-                case VolumeUnits.Kiloliters:
-                    return (this.value*1e3) * 1000;
-                
-                case VolumeUnits.Megaliters:
-                    return (this.value*1e3) * 1000000;
-                
-                case VolumeUnits.Hectocubicmeters:
-                    return (this.value) * 100;
-                
-                case VolumeUnits.Kilocubicmeters:
-                    return (this.value) * 1000;
-                
-                case VolumeUnits.Hectocubicfeet:
-                    return (this.value/0.0283168) * 100;
-                
-                case VolumeUnits.Kilocubicfeet:
-                    return (this.value/0.0283168) * 1000;
-                
-                case VolumeUnits.Megacubicfeet:
-                    return (this.value/0.0283168) * 1000000;
-                
-                case VolumeUnits.Kiloimperialgallons:
-                    return (this.value/0.00454609000000181429905810072407) * 1000;
-                
-                case VolumeUnits.Megaimperialgallons:
-                    return (this.value/0.00454609000000181429905810072407) * 1000000;
-                
-                case VolumeUnits.Kilousgallons:
-                    return (this.value/0.00378541) * 1000;
-                
-                case VolumeUnits.Megausgallons:
-                    return (this.value/0.00378541) * 1000000;
-                
-                default:
-                    break;
-            }
-            return NaN;
-            
-    }
-
-    private convertToBase(value: number, fromUnit: VolumeUnits): number {
-
-                switch (fromUnit) {
-                    
-                case VolumeUnits.Liters:
                     return this.value*1e3;
                 
                 case VolumeUnits.CubicMeters:
@@ -669,49 +520,198 @@ export class Volume {
                     return this.value / 5.6826125e-4;
                 
                 case VolumeUnits.Microliters:
-                    return (this.value/1e3) / 0.000001;
+                    return (this.value/1e3) * 0.000001;
                 
                 case VolumeUnits.Centiliters:
-                    return (this.value/1e3) / 0.01;
+                    return (this.value/1e3) * 0.01;
                 
                 case VolumeUnits.Deciliters:
-                    return (this.value/1e3) / 0.1;
+                    return (this.value/1e3) * 0.1;
                 
                 case VolumeUnits.Hectoliters:
-                    return (this.value/1e3) / 100;
+                    return (this.value/1e3) * 100;
                 
                 case VolumeUnits.Kiloliters:
-                    return (this.value/1e3) / 1000;
+                    return (this.value/1e3) * 1000;
                 
                 case VolumeUnits.Megaliters:
-                    return (this.value/1e3) / 1000000;
+                    return (this.value/1e3) * 1000000;
                 
                 case VolumeUnits.Hectocubicmeters:
-                    return (this.value) / 100;
+                    return (this.value) * 100;
                 
                 case VolumeUnits.Kilocubicmeters:
-                    return (this.value) / 1000;
+                    return (this.value) * 1000;
                 
                 case VolumeUnits.Hectocubicfeet:
-                    return (this.value*0.0283168) / 100;
+                    return (this.value*0.0283168) * 100;
                 
                 case VolumeUnits.Kilocubicfeet:
-                    return (this.value*0.0283168) / 1000;
+                    return (this.value*0.0283168) * 1000;
                 
                 case VolumeUnits.Megacubicfeet:
-                    return (this.value*0.0283168) / 1000000;
+                    return (this.value*0.0283168) * 1000000;
                 
                 case VolumeUnits.Kiloimperialgallons:
-                    return (this.value*0.00454609000000181429905810072407) / 1000;
+                    return (this.value*0.00454609000000181429905810072407) * 1000;
                 
                 case VolumeUnits.Megaimperialgallons:
-                    return (this.value*0.00454609000000181429905810072407) / 1000000;
+                    return (this.value*0.00454609000000181429905810072407) * 1000000;
                 
                 case VolumeUnits.Kilousgallons:
-                    return (this.value*0.00378541) / 1000;
+                    return (this.value*0.00378541) * 1000;
                 
                 case VolumeUnits.Megausgallons:
-                    return (this.value*0.00378541) / 1000000;
+                    return (this.value*0.00378541) * 1000000;
+                
+                default:
+                    break;
+            }
+            return NaN;
+            
+    }
+
+    private convertToBase(value: number, fromUnit: VolumeUnits): number {
+
+                switch (fromUnit) {
+                    
+                case VolumeUnits.Liters:
+                    return value/1e3;
+                
+                case VolumeUnits.CubicMeters:
+                    return value;
+                
+                case VolumeUnits.CubicKilometers:
+                    return value*1e9;
+                
+                case VolumeUnits.CubicHectometers:
+                    return value*1e6;
+                
+                case VolumeUnits.CubicDecimeters:
+                    return value/1e3;
+                
+                case VolumeUnits.CubicCentimeters:
+                    return value/1e6;
+                
+                case VolumeUnits.CubicMillimeters:
+                    return value/1e9;
+                
+                case VolumeUnits.CubicMicrometers:
+                    return value/1e18;
+                
+                case VolumeUnits.CubicMiles:
+                    return value*4.16818182544058e9;
+                
+                case VolumeUnits.CubicYards:
+                    return value*0.764554858;
+                
+                case VolumeUnits.CubicFeet:
+                    return value*0.0283168;
+                
+                case VolumeUnits.CubicInches:
+                    return value*1.6387*1e-5;
+                
+                case VolumeUnits.ImperialGallons:
+                    return value*0.00454609000000181429905810072407;
+                
+                case VolumeUnits.ImperialOunces:
+                    return value*2.8413062499962901241875439064617e-5;
+                
+                case VolumeUnits.UsGallons:
+                    return value*0.00378541;
+                
+                case VolumeUnits.UsOunces:
+                    return value*2.957352956253760505068307980135e-5;
+                
+                case VolumeUnits.UsTablespoons:
+                    return value*1.478676478125e-5;
+                
+                case VolumeUnits.AuTablespoons:
+                    return value*2e-5;
+                
+                case VolumeUnits.UkTablespoons:
+                    return value*1.5e-5;
+                
+                case VolumeUnits.MetricTeaspoons:
+                    return value*0.5e-5;
+                
+                case VolumeUnits.UsTeaspoons:
+                    return value*4.92892159375e-6;
+                
+                case VolumeUnits.MetricCups:
+                    return value*0.00025;
+                
+                case VolumeUnits.UsCustomaryCups:
+                    return value*0.0002365882365;
+                
+                case VolumeUnits.UsLegalCups:
+                    return value*0.00024;
+                
+                case VolumeUnits.OilBarrels:
+                    return value*0.158987294928;
+                
+                case VolumeUnits.UsBeerBarrels:
+                    return value*0.1173477658;
+                
+                case VolumeUnits.ImperialBeerBarrels:
+                    return value*0.16365924;
+                
+                case VolumeUnits.UsQuarts:
+                    return value*9.46352946e-4;
+                
+                case VolumeUnits.UsPints:
+                    return value*4.73176473e-4;
+                
+                case VolumeUnits.AcreFeet:
+                    return value/0.000810714;
+                
+                case VolumeUnits.ImperialPints:
+                    return value * 5.6826125e-4;
+                
+                case VolumeUnits.Microliters:
+                    return (value*1e3) / 0.000001;
+                
+                case VolumeUnits.Centiliters:
+                    return (value*1e3) / 0.01;
+                
+                case VolumeUnits.Deciliters:
+                    return (value*1e3) / 0.1;
+                
+                case VolumeUnits.Hectoliters:
+                    return (value*1e3) / 100;
+                
+                case VolumeUnits.Kiloliters:
+                    return (value*1e3) / 1000;
+                
+                case VolumeUnits.Megaliters:
+                    return (value*1e3) / 1000000;
+                
+                case VolumeUnits.Hectocubicmeters:
+                    return (value) / 100;
+                
+                case VolumeUnits.Kilocubicmeters:
+                    return (value) / 1000;
+                
+                case VolumeUnits.Hectocubicfeet:
+                    return (value/0.0283168) / 100;
+                
+                case VolumeUnits.Kilocubicfeet:
+                    return (value/0.0283168) / 1000;
+                
+                case VolumeUnits.Megacubicfeet:
+                    return (value/0.0283168) / 1000000;
+                
+                case VolumeUnits.Kiloimperialgallons:
+                    return (value/0.00454609000000181429905810072407) / 1000;
+                
+                case VolumeUnits.Megaimperialgallons:
+                    return (value/0.00454609000000181429905810072407) / 1000000;
+                
+                case VolumeUnits.Kilousgallons:
+                    return (value/0.00378541) / 1000;
+                
+                case VolumeUnits.Megausgallons:
+                    return (value/0.00378541) / 1000000;
                 
                     default:
                         break;

@@ -72,16 +72,16 @@ export class ApparentPower {
                 switch (fromUnit) {
                     
                 case ApparentPowerUnits.Voltamperes:
-                    return this.value;
+                    return value;
                 
                 case ApparentPowerUnits.Kilovoltamperes:
-                    return (this.value) / 1000;
+                    return (value) / 1000;
                 
                 case ApparentPowerUnits.Megavoltamperes:
-                    return (this.value) / 1000000;
+                    return (value) / 1000000;
                 
                 case ApparentPowerUnits.Gigavoltamperes:
-                    return (this.value) / 1000000000;
+                    return (value) / 1000000000;
                 
                     default:
                         break;

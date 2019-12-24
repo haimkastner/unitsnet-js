@@ -77,9 +77,9 @@ class SpecificEntropy {
             case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
                 return this.value;
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return this.value * 4.184e3;
+                return this.value / 4.184e3;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
-                return this.value * 4.1868e3;
+                return this.value / 4.1868e3;
             case SpecificEntropyUnits.Kilojoulesperkilogramkelvin:
                 return (this.value) * 1000;
             case SpecificEntropyUnits.Megajoulesperkilogramkelvin:
@@ -89,7 +89,7 @@ class SpecificEntropy {
             case SpecificEntropyUnits.Megajoulesperkilogramdegreecelsius:
                 return (this.value) * 1000000;
             case SpecificEntropyUnits.Kilocaloriespergramkelvin:
-                return (this.value / 4.184e3) * 1000;
+                return (this.value * 4.184e3) * 1000;
             default:
                 break;
         }
@@ -98,23 +98,23 @@ class SpecificEntropy {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case SpecificEntropyUnits.JoulesPerKilogramKelvin:
-                return this.value;
+                return value;
             case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
-                return this.value;
+                return value;
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return this.value / 4.184e3;
+                return value * 4.184e3;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
-                return this.value / 4.1868e3;
+                return value * 4.1868e3;
             case SpecificEntropyUnits.Kilojoulesperkilogramkelvin:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case SpecificEntropyUnits.Megajoulesperkilogramkelvin:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             case SpecificEntropyUnits.Kilojoulesperkilogramdegreecelsius:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case SpecificEntropyUnits.Megajoulesperkilogramdegreecelsius:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             case SpecificEntropyUnits.Kilocaloriespergramkelvin:
-                return (this.value * 4.184e3) / 1000;
+                return (value / 4.184e3) / 1000;
             default:
                 break;
         }

@@ -112,50 +112,6 @@ export class Force {
             switch (toUnit) {
                 
                 case ForceUnits.Dyne:
-                    return this.value/1e5;
-                
-                case ForceUnits.KilogramsForce:
-                    return this.value*9.80665002864;
-                
-                case ForceUnits.TonnesForce:
-                    return this.value*9.80665002864e3;
-                
-                case ForceUnits.Newtons:
-                    return this.value;
-                
-                case ForceUnits.KiloPonds:
-                    return this.value*9.80665002864;
-                
-                case ForceUnits.Poundals:
-                    return this.value*0.13825502798973041652092282466083;
-                
-                case ForceUnits.PoundsForce:
-                    return this.value*4.4482216152605095551842641431421;
-                
-                case ForceUnits.OunceForce:
-                    return this.value*2.780138509537812e-1;
-                
-                case ForceUnits.Micronewtons:
-                    return (this.value) * 0.000001;
-                
-                case ForceUnits.Kilonewtons:
-                    return (this.value) * 1000;
-                
-                case ForceUnits.Meganewtons:
-                    return (this.value) * 1000000;
-                
-                default:
-                    break;
-            }
-            return NaN;
-            
-    }
-
-    private convertToBase(value: number, fromUnit: ForceUnits): number {
-
-                switch (fromUnit) {
-                    
-                case ForceUnits.Dyne:
                     return this.value*1e5;
                 
                 case ForceUnits.KilogramsForce:
@@ -180,13 +136,57 @@ export class Force {
                     return this.value/2.780138509537812e-1;
                 
                 case ForceUnits.Micronewtons:
-                    return (this.value) / 0.000001;
+                    return (this.value) * 0.000001;
                 
                 case ForceUnits.Kilonewtons:
-                    return (this.value) / 1000;
+                    return (this.value) * 1000;
                 
                 case ForceUnits.Meganewtons:
-                    return (this.value) / 1000000;
+                    return (this.value) * 1000000;
+                
+                default:
+                    break;
+            }
+            return NaN;
+            
+    }
+
+    private convertToBase(value: number, fromUnit: ForceUnits): number {
+
+                switch (fromUnit) {
+                    
+                case ForceUnits.Dyne:
+                    return value/1e5;
+                
+                case ForceUnits.KilogramsForce:
+                    return value*9.80665002864;
+                
+                case ForceUnits.TonnesForce:
+                    return value*9.80665002864e3;
+                
+                case ForceUnits.Newtons:
+                    return value;
+                
+                case ForceUnits.KiloPonds:
+                    return value*9.80665002864;
+                
+                case ForceUnits.Poundals:
+                    return value*0.13825502798973041652092282466083;
+                
+                case ForceUnits.PoundsForce:
+                    return value*4.4482216152605095551842641431421;
+                
+                case ForceUnits.OunceForce:
+                    return value*2.780138509537812e-1;
+                
+                case ForceUnits.Micronewtons:
+                    return (value) / 0.000001;
+                
+                case ForceUnits.Kilonewtons:
+                    return (value) / 1000;
+                
+                case ForceUnits.Meganewtons:
+                    return (value) / 1000000;
                 
                     default:
                         break;

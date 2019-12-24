@@ -36,7 +36,7 @@ export class Permittivity {
                 switch (fromUnit) {
                     
                 case PermittivityUnits.FaradsPerMeter:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

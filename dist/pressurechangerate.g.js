@@ -61,17 +61,17 @@ class PressureChangeRate {
             case PressureChangeRateUnits.PascalsPerSecond:
                 return this.value;
             case PressureChangeRateUnits.PascalsPerMinute:
-                return this.value / 60;
+                return this.value * 60;
             case PressureChangeRateUnits.AtmospheresPerSecond:
-                return this.value * 1.01325 * 1e5;
+                return this.value / (1.01325 * 1e5);
             case PressureChangeRateUnits.Kilopascalspersecond:
                 return (this.value) * 1000;
             case PressureChangeRateUnits.Megapascalspersecond:
                 return (this.value) * 1000000;
             case PressureChangeRateUnits.Kilopascalsperminute:
-                return (this.value * 60) * 1000;
+                return (this.value / 60) * 1000;
             case PressureChangeRateUnits.Megapascalsperminute:
-                return (this.value * 60) * 1000000;
+                return (this.value / 60) * 1000000;
             default:
                 break;
         }
@@ -80,19 +80,19 @@ class PressureChangeRate {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case PressureChangeRateUnits.PascalsPerSecond:
-                return this.value;
+                return value;
             case PressureChangeRateUnits.PascalsPerMinute:
-                return this.value * 60;
+                return value / 60;
             case PressureChangeRateUnits.AtmospheresPerSecond:
-                return this.value / (1.01325 * 1e5);
+                return value * 1.01325 * 1e5;
             case PressureChangeRateUnits.Kilopascalspersecond:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case PressureChangeRateUnits.Megapascalspersecond:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             case PressureChangeRateUnits.Kilopascalsperminute:
-                return (this.value / 60) / 1000;
+                return (value * 60) / 1000;
             case PressureChangeRateUnits.Megapascalsperminute:
-                return (this.value / 60) / 1000000;
+                return (value * 60) / 1000000;
             default:
                 break;
         }

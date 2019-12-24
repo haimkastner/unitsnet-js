@@ -96,7 +96,7 @@ class Irradiance {
             case IrradianceUnits.WattsPerSquareMeter:
                 return this.value;
             case IrradianceUnits.WattsPerSquareCentimeter:
-                return this.value * 10000;
+                return this.value * 0.0001;
             case IrradianceUnits.Picowattspersquaremeter:
                 return (this.value) * 1e-12;
             case IrradianceUnits.Nanowattspersquaremeter:
@@ -108,15 +108,15 @@ class Irradiance {
             case IrradianceUnits.Megawattspersquaremeter:
                 return (this.value) * 1000000;
             case IrradianceUnits.Picowattspersquarecentimeter:
-                return (this.value * 0.0001) * 1e-12;
+                return (this.value * 10000) * 1e-12;
             case IrradianceUnits.Nanowattspersquarecentimeter:
-                return (this.value * 0.0001) * 1e-9;
+                return (this.value * 10000) * 1e-9;
             case IrradianceUnits.Microwattspersquarecentimeter:
-                return (this.value * 0.0001) * 0.000001;
+                return (this.value * 10000) * 0.000001;
             case IrradianceUnits.Kilowattspersquarecentimeter:
-                return (this.value * 0.0001) * 1000;
+                return (this.value * 10000) * 1000;
             case IrradianceUnits.Megawattspersquarecentimeter:
-                return (this.value * 0.0001) * 1000000;
+                return (this.value * 10000) * 1000000;
             default:
                 break;
         }
@@ -125,29 +125,29 @@ class Irradiance {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case IrradianceUnits.WattsPerSquareMeter:
-                return this.value;
+                return value;
             case IrradianceUnits.WattsPerSquareCentimeter:
-                return this.value * 0.0001;
+                return value * 10000;
             case IrradianceUnits.Picowattspersquaremeter:
-                return (this.value) / 1e-12;
+                return (value) / 1e-12;
             case IrradianceUnits.Nanowattspersquaremeter:
-                return (this.value) / 1e-9;
+                return (value) / 1e-9;
             case IrradianceUnits.Microwattspersquaremeter:
-                return (this.value) / 0.000001;
+                return (value) / 0.000001;
             case IrradianceUnits.Kilowattspersquaremeter:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case IrradianceUnits.Megawattspersquaremeter:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             case IrradianceUnits.Picowattspersquarecentimeter:
-                return (this.value * 10000) / 1e-12;
+                return (value * 0.0001) / 1e-12;
             case IrradianceUnits.Nanowattspersquarecentimeter:
-                return (this.value * 10000) / 1e-9;
+                return (value * 0.0001) / 1e-9;
             case IrradianceUnits.Microwattspersquarecentimeter:
-                return (this.value * 10000) / 0.000001;
+                return (value * 0.0001) / 0.000001;
             case IrradianceUnits.Kilowattspersquarecentimeter:
-                return (this.value * 10000) / 1000;
+                return (value * 0.0001) / 1000;
             case IrradianceUnits.Megawattspersquarecentimeter:
-                return (this.value * 10000) / 1000000;
+                return (value * 0.0001) / 1000000;
             default:
                 break;
         }

@@ -97,44 +97,6 @@ export class Temperature {
                     return this.value;
                 
                 case TemperatureUnits.DegreesCelsius:
-                    return this.value + 273.15;
-                
-                case TemperatureUnits.DegreesDelisle:
-                    return this.value*-2/3 + 373.15;
-                
-                case TemperatureUnits.DegreesFahrenheit:
-                    return this.value*5/9 + 459.67*5/9;
-                
-                case TemperatureUnits.DegreesNewton:
-                    return this.value*100/33 + 273.15;
-                
-                case TemperatureUnits.DegreesRankine:
-                    return this.value*5/9;
-                
-                case TemperatureUnits.DegreesReaumur:
-                    return this.value*5/4 + 273.15;
-                
-                case TemperatureUnits.DegreesRoemer:
-                    return this.value*40/21 + 273.15 - 7.5*40/21;
-                
-                case TemperatureUnits.SolarTemperatures:
-                    return this.value * 5778;
-                
-                default:
-                    break;
-            }
-            return NaN;
-            
-    }
-
-    private convertToBase(value: number, fromUnit: TemperatureUnits): number {
-
-                switch (fromUnit) {
-                    
-                case TemperatureUnits.Kelvins:
-                    return this.value;
-                
-                case TemperatureUnits.DegreesCelsius:
                     return this.value - 273.15;
                 
                 case TemperatureUnits.DegreesDelisle:
@@ -157,6 +119,44 @@ export class Temperature {
                 
                 case TemperatureUnits.SolarTemperatures:
                     return this.value / 5778;
+                
+                default:
+                    break;
+            }
+            return NaN;
+            
+    }
+
+    private convertToBase(value: number, fromUnit: TemperatureUnits): number {
+
+                switch (fromUnit) {
+                    
+                case TemperatureUnits.Kelvins:
+                    return value;
+                
+                case TemperatureUnits.DegreesCelsius:
+                    return value + 273.15;
+                
+                case TemperatureUnits.DegreesDelisle:
+                    return value*-2/3 + 373.15;
+                
+                case TemperatureUnits.DegreesFahrenheit:
+                    return value*5/9 + 459.67*5/9;
+                
+                case TemperatureUnits.DegreesNewton:
+                    return value*100/33 + 273.15;
+                
+                case TemperatureUnits.DegreesRankine:
+                    return value*5/9;
+                
+                case TemperatureUnits.DegreesReaumur:
+                    return value*5/4 + 273.15;
+                
+                case TemperatureUnits.DegreesRoemer:
+                    return value*40/21 + 273.15 - 7.5*40/21;
+                
+                case TemperatureUnits.SolarTemperatures:
+                    return value * 5778;
                 
                     default:
                         break;

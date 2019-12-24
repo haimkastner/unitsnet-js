@@ -48,10 +48,10 @@ export class ElectricConductance {
                 switch (fromUnit) {
                     
                 case ElectricConductanceUnits.Siemens:
-                    return this.value;
+                    return value;
                 
                 case ElectricConductanceUnits.Microsiemens:
-                    return (this.value) / 0.000001;
+                    return (value) / 0.000001;
                 
                     default:
                         break;

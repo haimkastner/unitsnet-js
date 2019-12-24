@@ -36,7 +36,7 @@ export class Magnetization {
                 switch (fromUnit) {
                     
                 case MagnetizationUnits.AmperesPerMeter:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

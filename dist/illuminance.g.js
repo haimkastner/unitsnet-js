@@ -44,11 +44,11 @@ class Illuminance {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case IlluminanceUnits.Lux:
-                return this.value;
+                return value;
             case IlluminanceUnits.Kilolux:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case IlluminanceUnits.Megalux:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             default:
                 break;
         }

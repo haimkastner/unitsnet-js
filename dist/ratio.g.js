@@ -54,25 +54,6 @@ class Ratio {
             case RatioUnits.DecimalFractions:
                 return this.value;
             case RatioUnits.Percent:
-                return this.value / 1e2;
-            case RatioUnits.PartsPerThousand:
-                return this.value / 1e3;
-            case RatioUnits.PartsPerMillion:
-                return this.value / 1e6;
-            case RatioUnits.PartsPerBillion:
-                return this.value / 1e9;
-            case RatioUnits.PartsPerTrillion:
-                return this.value / 1e12;
-            default:
-                break;
-        }
-        return NaN;
-    }
-    convertToBase(value, fromUnit) {
-        switch (fromUnit) {
-            case RatioUnits.DecimalFractions:
-                return this.value;
-            case RatioUnits.Percent:
                 return this.value * 1e2;
             case RatioUnits.PartsPerThousand:
                 return this.value * 1e3;
@@ -82,6 +63,25 @@ class Ratio {
                 return this.value * 1e9;
             case RatioUnits.PartsPerTrillion:
                 return this.value * 1e12;
+            default:
+                break;
+        }
+        return NaN;
+    }
+    convertToBase(value, fromUnit) {
+        switch (fromUnit) {
+            case RatioUnits.DecimalFractions:
+                return value;
+            case RatioUnits.Percent:
+                return value / 1e2;
+            case RatioUnits.PartsPerThousand:
+                return value / 1e3;
+            case RatioUnits.PartsPerMillion:
+                return value / 1e6;
+            case RatioUnits.PartsPerBillion:
+                return value / 1e9;
+            case RatioUnits.PartsPerTrillion:
+                return value / 1e12;
             default:
                 break;
         }

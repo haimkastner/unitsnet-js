@@ -44,11 +44,11 @@ class ApparentEnergy {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case ApparentEnergyUnits.VoltampereHours:
-                return this.value;
+                return value;
             case ApparentEnergyUnits.Kilovoltamperehours:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case ApparentEnergyUnits.Megavoltamperehours:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             default:
                 break;
         }

@@ -26,7 +26,7 @@ class VitaminA {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case VitaminAUnits.InternationalUnits:
-                return this.value;
+                return value;
             default:
                 break;
         }

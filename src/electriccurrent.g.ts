@@ -108,25 +108,25 @@ export class ElectricCurrent {
                 switch (fromUnit) {
                     
                 case ElectricCurrentUnits.Amperes:
-                    return this.value;
+                    return value;
                 
                 case ElectricCurrentUnits.Picoamperes:
-                    return (this.value) / 1e-12;
+                    return (value) / 1e-12;
                 
                 case ElectricCurrentUnits.Nanoamperes:
-                    return (this.value) / 1e-9;
+                    return (value) / 1e-9;
                 
                 case ElectricCurrentUnits.Microamperes:
-                    return (this.value) / 0.000001;
+                    return (value) / 0.000001;
                 
                 case ElectricCurrentUnits.Centiamperes:
-                    return (this.value) / 0.01;
+                    return (value) / 0.01;
                 
                 case ElectricCurrentUnits.Kiloamperes:
-                    return (this.value) / 1000;
+                    return (value) / 1000;
                 
                 case ElectricCurrentUnits.Megaamperes:
-                    return (this.value) / 1000000;
+                    return (value) / 1000000;
                 
                     default:
                         break;

@@ -36,7 +36,7 @@ export class Permeability {
                 switch (fromUnit) {
                     
                 case PermeabilityUnits.HenriesPerMeter:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

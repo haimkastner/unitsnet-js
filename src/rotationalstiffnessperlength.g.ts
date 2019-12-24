@@ -60,13 +60,13 @@ export class RotationalStiffnessPerLength {
                 switch (fromUnit) {
                     
                 case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
-                    return this.value;
+                    return value;
                 
                 case RotationalStiffnessPerLengthUnits.Kilonewtonmetersperradianpermeter:
-                    return (this.value) / 1000;
+                    return (value) / 1000;
                 
                 case RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter:
-                    return (this.value) / 1000000;
+                    return (value) / 1000000;
                 
                     default:
                         break;

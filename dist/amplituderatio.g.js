@@ -40,11 +40,11 @@ class AmplitudeRatio {
             case AmplitudeRatioUnits.DecibelVolts:
                 return this.value;
             case AmplitudeRatioUnits.DecibelMicrovolts:
-                return this.value - 120;
+                return this.value + 120;
             case AmplitudeRatioUnits.DecibelMillivolts:
-                return this.value - 60;
+                return this.value + 60;
             case AmplitudeRatioUnits.DecibelsUnloaded:
-                return this.value - 2.218487499;
+                return this.value + 2.218487499;
             default:
                 break;
         }
@@ -53,13 +53,13 @@ class AmplitudeRatio {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case AmplitudeRatioUnits.DecibelVolts:
-                return this.value;
+                return value;
             case AmplitudeRatioUnits.DecibelMicrovolts:
-                return this.value + 120;
+                return value - 120;
             case AmplitudeRatioUnits.DecibelMillivolts:
-                return this.value + 60;
+                return value - 60;
             case AmplitudeRatioUnits.DecibelsUnloaded:
-                return this.value + 2.218487499;
+                return value - 2.218487499;
             default:
                 break;
         }

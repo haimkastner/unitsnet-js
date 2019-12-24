@@ -54,15 +54,15 @@ class Irradiation {
             case IrradiationUnits.JoulesPerSquareMeter:
                 return this.value;
             case IrradiationUnits.JoulesPerSquareCentimeter:
-                return this.value * 1e4;
+                return this.value / 1e4;
             case IrradiationUnits.JoulesPerSquareMillimeter:
-                return this.value * 1e6;
+                return this.value / 1e6;
             case IrradiationUnits.WattHoursPerSquareMeter:
-                return this.value * 3600;
+                return this.value / 3600;
             case IrradiationUnits.Kilojoulespersquaremeter:
                 return (this.value) * 1000;
             case IrradiationUnits.Kilowatthourspersquaremeter:
-                return (this.value / 3600) * 1000;
+                return (this.value * 3600) * 1000;
             default:
                 break;
         }
@@ -71,17 +71,17 @@ class Irradiation {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case IrradiationUnits.JoulesPerSquareMeter:
-                return this.value;
+                return value;
             case IrradiationUnits.JoulesPerSquareCentimeter:
-                return this.value / 1e4;
+                return value * 1e4;
             case IrradiationUnits.JoulesPerSquareMillimeter:
-                return this.value / 1e6;
+                return value * 1e6;
             case IrradiationUnits.WattHoursPerSquareMeter:
-                return this.value / 3600;
+                return value * 3600;
             case IrradiationUnits.Kilojoulespersquaremeter:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case IrradiationUnits.Kilowatthourspersquaremeter:
-                return (this.value * 3600) / 1000;
+                return (value / 3600) / 1000;
             default:
                 break;
         }

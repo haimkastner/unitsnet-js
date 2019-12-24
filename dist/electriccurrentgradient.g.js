@@ -26,7 +26,7 @@ class ElectricCurrentGradient {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case ElectricCurrentGradientUnits.AmperesPerSecond:
-                return this.value;
+                return value;
             default:
                 break;
         }

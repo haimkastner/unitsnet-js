@@ -60,13 +60,13 @@ export class MagneticField {
                 switch (fromUnit) {
                     
                 case MagneticFieldUnits.Teslas:
-                    return this.value;
+                    return value;
                 
                 case MagneticFieldUnits.Nanoteslas:
-                    return (this.value) / 1e-9;
+                    return (value) / 1e-9;
                 
                 case MagneticFieldUnits.Microteslas:
-                    return (this.value) / 0.000001;
+                    return (value) / 0.000001;
                 
                     default:
                         break;

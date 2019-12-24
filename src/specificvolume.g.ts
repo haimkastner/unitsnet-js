@@ -34,7 +34,7 @@ export class SpecificVolume {
                     return this.value;
                 
                 case SpecificVolumeUnits.CubicFeetPerPound:
-                    return this.value/16.01846353;
+                    return this.value*16.01846353;
                 
                 default:
                     break;
@@ -48,10 +48,10 @@ export class SpecificVolume {
                 switch (fromUnit) {
                     
                 case SpecificVolumeUnits.CubicMetersPerKilogram:
-                    return this.value;
+                    return value;
                 
                 case SpecificVolumeUnits.CubicFeetPerPound:
-                    return this.value*16.01846353;
+                    return value/16.01846353;
                 
                     default:
                         break;

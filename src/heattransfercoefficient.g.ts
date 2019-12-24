@@ -46,7 +46,7 @@ export class HeatTransferCoefficient {
                     return this.value;
                 
                 case HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit:
-                    return this.value * 5.6782633411134878;
+                    return this.value / 5.6782633411134878;
                 
                 default:
                     break;
@@ -60,13 +60,13 @@ export class HeatTransferCoefficient {
                 switch (fromUnit) {
                     
                 case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
-                    return this.value;
+                    return value;
                 
                 case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
-                    return this.value;
+                    return value;
                 
                 case HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit:
-                    return this.value / 5.6782633411134878;
+                    return value * 5.6782633411134878;
                 
                     default:
                         break;

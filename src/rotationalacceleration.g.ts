@@ -52,13 +52,13 @@ export class RotationalAcceleration {
                     return this.value;
                 
                 case RotationalAccelerationUnits.DegreesPerSecondSquared:
-                    return (Math.PI/180)*this.value;
+                    return (180/Math.PI)*this.value;
                 
                 case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
-                    return ((2*Math.PI)/60)*this.value;
+                    return (60/(2*Math.PI))*this.value;
                 
                 case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
-                    return (2*Math.PI)*this.value;
+                    return (1/(2*Math.PI))*this.value;
                 
                 default:
                     break;
@@ -72,16 +72,16 @@ export class RotationalAcceleration {
                 switch (fromUnit) {
                     
                 case RotationalAccelerationUnits.RadiansPerSecondSquared:
-                    return this.value;
+                    return value;
                 
                 case RotationalAccelerationUnits.DegreesPerSecondSquared:
-                    return (180/Math.PI)*this.value;
+                    return (Math.PI/180)*value;
                 
                 case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
-                    return (60/(2*Math.PI))*this.value;
+                    return ((2*Math.PI)/60)*value;
                 
                 case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
-                    return (1/(2*Math.PI))*this.value;
+                    return (2*Math.PI)*value;
                 
                     default:
                         break;

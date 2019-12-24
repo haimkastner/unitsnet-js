@@ -36,7 +36,7 @@ export class SolidAngle {
                 switch (fromUnit) {
                     
                 case SolidAngleUnits.Steradians:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

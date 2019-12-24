@@ -115,16 +115,16 @@ export class ForcePerLength {
                     return this.value;
                 
                 case ForcePerLengthUnits.KilogramsForcePerMeter:
-                    return this.value*9.80665002864;
+                    return this.value/9.80665002864;
                 
                 case ForcePerLengthUnits.PoundsForcePerFoot:
-                    return this.value*14.59390292;
+                    return this.value/14.59390292;
                 
                 case ForcePerLengthUnits.PoundsForcePerInch:
-                    return this.value*1.75126835e2;
+                    return this.value/1.75126835e2;
                 
                 case ForcePerLengthUnits.PoundsForcePerYard:
-                    return this.value*4.864634307;
+                    return this.value/4.864634307;
                 
                 case ForcePerLengthUnits.Nanonewtonspermeter:
                     return (this.value) * 1e-9;
@@ -156,37 +156,37 @@ export class ForcePerLength {
                 switch (fromUnit) {
                     
                 case ForcePerLengthUnits.NewtonsPerMeter:
-                    return this.value;
+                    return value;
                 
                 case ForcePerLengthUnits.KilogramsForcePerMeter:
-                    return this.value/9.80665002864;
+                    return value*9.80665002864;
                 
                 case ForcePerLengthUnits.PoundsForcePerFoot:
-                    return this.value/14.59390292;
+                    return value*14.59390292;
                 
                 case ForcePerLengthUnits.PoundsForcePerInch:
-                    return this.value/1.75126835e2;
+                    return value*1.75126835e2;
                 
                 case ForcePerLengthUnits.PoundsForcePerYard:
-                    return this.value/4.864634307;
+                    return value*4.864634307;
                 
                 case ForcePerLengthUnits.Nanonewtonspermeter:
-                    return (this.value) / 1e-9;
+                    return (value) / 1e-9;
                 
                 case ForcePerLengthUnits.Micronewtonspermeter:
-                    return (this.value) / 0.000001;
+                    return (value) / 0.000001;
                 
                 case ForcePerLengthUnits.Centinewtonspermeter:
-                    return (this.value) / 0.01;
+                    return (value) / 0.01;
                 
                 case ForcePerLengthUnits.Decinewtonspermeter:
-                    return (this.value) / 0.1;
+                    return (value) / 0.1;
                 
                 case ForcePerLengthUnits.Kilonewtonspermeter:
-                    return (this.value) / 1000;
+                    return (value) / 1000;
                 
                 case ForcePerLengthUnits.Meganewtonspermeter:
-                    return (this.value) / 1000000;
+                    return (value) / 1000000;
                 
                     default:
                         break;

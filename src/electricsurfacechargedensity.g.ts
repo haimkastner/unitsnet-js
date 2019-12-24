@@ -43,10 +43,10 @@ export class ElectricSurfaceChargeDensity {
                     return this.value;
                 
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
-                    return this.value * 1.0e4;
+                    return this.value / 1.0e4;
                 
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
-                    return this.value * 1.5500031000062000e3;
+                    return this.value / 1.5500031000062000e3;
                 
                 default:
                     break;
@@ -60,13 +60,13 @@ export class ElectricSurfaceChargeDensity {
                 switch (fromUnit) {
                     
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
-                    return this.value;
+                    return value;
                 
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
-                    return this.value / 1.0e4;
+                    return value * 1.0e4;
                 
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
-                    return this.value / 1.5500031000062000e3;
+                    return value * 1.5500031000062000e3;
                 
                     default:
                         break;

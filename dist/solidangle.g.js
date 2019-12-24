@@ -26,7 +26,7 @@ class SolidAngle {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case SolidAngleUnits.Steradians:
-                return this.value;
+                return value;
             default:
                 break;
         }

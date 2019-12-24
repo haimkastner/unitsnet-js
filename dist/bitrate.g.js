@@ -110,7 +110,7 @@ class BitRate {
             case BitRateUnits.BitsPerSecond:
                 return this.value;
             case BitRateUnits.BytesPerSecond:
-                return this.value * 8;
+                return this.value / 8;
             case BitRateUnits.Kilobitspersecond:
                 return (this.value) * 1000;
             case BitRateUnits.Megabitspersecond:
@@ -124,17 +124,17 @@ class BitRate {
             case BitRateUnits.Exabitspersecond:
                 return (this.value) * 1000000000000000000;
             case BitRateUnits.Kilobytespersecond:
-                return (this.value / 8) * 1000;
+                return (this.value * 8) * 1000;
             case BitRateUnits.Megabytespersecond:
-                return (this.value / 8) * 1000000;
+                return (this.value * 8) * 1000000;
             case BitRateUnits.Gigabytespersecond:
-                return (this.value / 8) * 1000000000;
+                return (this.value * 8) * 1000000000;
             case BitRateUnits.Terabytespersecond:
-                return (this.value / 8) * 1000000000000;
+                return (this.value * 8) * 1000000000000;
             case BitRateUnits.Petabytespersecond:
-                return (this.value / 8) * 1000000000000000;
+                return (this.value * 8) * 1000000000000000;
             case BitRateUnits.Exabytespersecond:
-                return (this.value / 8) * 1000000000000000000;
+                return (this.value * 8) * 1000000000000000000;
             default:
                 break;
         }
@@ -143,33 +143,33 @@ class BitRate {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case BitRateUnits.BitsPerSecond:
-                return this.value;
+                return value;
             case BitRateUnits.BytesPerSecond:
-                return this.value / 8;
+                return value * 8;
             case BitRateUnits.Kilobitspersecond:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case BitRateUnits.Megabitspersecond:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             case BitRateUnits.Gigabitspersecond:
-                return (this.value) / 1000000000;
+                return (value) / 1000000000;
             case BitRateUnits.Terabitspersecond:
-                return (this.value) / 1000000000000;
+                return (value) / 1000000000000;
             case BitRateUnits.Petabitspersecond:
-                return (this.value) / 1000000000000000;
+                return (value) / 1000000000000000;
             case BitRateUnits.Exabitspersecond:
-                return (this.value) / 1000000000000000000;
+                return (value) / 1000000000000000000;
             case BitRateUnits.Kilobytespersecond:
-                return (this.value * 8) / 1000;
+                return (value / 8) / 1000;
             case BitRateUnits.Megabytespersecond:
-                return (this.value * 8) / 1000000;
+                return (value / 8) / 1000000;
             case BitRateUnits.Gigabytespersecond:
-                return (this.value * 8) / 1000000000;
+                return (value / 8) / 1000000000;
             case BitRateUnits.Terabytespersecond:
-                return (this.value * 8) / 1000000000000;
+                return (value / 8) / 1000000000000;
             case BitRateUnits.Petabytespersecond:
-                return (this.value * 8) / 1000000000000000;
+                return (value / 8) / 1000000000000000;
             case BitRateUnits.Exabytespersecond:
-                return (this.value * 8) / 1000000000000000000;
+                return (value / 8) / 1000000000000000000;
             default:
                 break;
         }

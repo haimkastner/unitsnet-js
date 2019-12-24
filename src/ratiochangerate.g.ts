@@ -34,7 +34,7 @@ export class RatioChangeRate {
                     return this.value;
                 
                 case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                    return this.value*1e2;
+                    return this.value/1e2;
                 
                 default:
                     break;
@@ -48,10 +48,10 @@ export class RatioChangeRate {
                 switch (fromUnit) {
                     
                 case RatioChangeRateUnits.PercentsPerSecond:
-                    return this.value;
+                    return value;
                 
                 case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                    return this.value/1e2;
+                    return value*1e2;
                 
                     default:
                         break;

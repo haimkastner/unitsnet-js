@@ -60,13 +60,13 @@ export class ElectricAdmittance {
                 switch (fromUnit) {
                     
                 case ElectricAdmittanceUnits.Siemens:
-                    return this.value;
+                    return value;
                 
                 case ElectricAdmittanceUnits.Nanosiemens:
-                    return (this.value) / 1e-9;
+                    return (value) / 1e-9;
                 
                 case ElectricAdmittanceUnits.Microsiemens:
-                    return (this.value) / 0.000001;
+                    return (value) / 0.000001;
                 
                     default:
                         break;

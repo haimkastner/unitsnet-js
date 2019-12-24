@@ -26,7 +26,7 @@ class AreaDensity {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case AreaDensityUnits.KilogramsPerSquareMeter:
-                return this.value;
+                return value;
             default:
                 break;
         }

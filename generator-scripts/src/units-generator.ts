@@ -33,8 +33,8 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
             continue;
         }
 
-        let fromUnitToBaseFormula = `(${unit.FromBaseToUnitFunc}) * ${prefixesFactor[prefix]}`;
-        let toBaseToUnitFormula = `(${unit.FromUnitToBaseFunc}) / ${prefixesFactor[prefix]}`;
+        let fromUnitToBaseFormula = `(${unit.FromBaseToUnitFunc}) / ${prefixesFactor[prefix]}`;
+        let toBaseToUnitFormula = `(${unit.FromUnitToBaseFunc}) * ${prefixesFactor[prefix]}`;
 
         unitPrefixes.push({
             FromUnitToBaseFunc: fromUnitToBaseFormula,
@@ -58,7 +58,7 @@ function extandPrefixesUnits(units: UnitDefinition[]): UnitDefinition[] {
     return prefixesUnits;
 }
 
-export function generateUnitsFromUnitsDefinitions(rawUnitsDefinitions: UnitTypeDefinition[], unitsTestinationDirectory : string) {
+export function generateUnitsFromUnitsDefinitions(rawUnitsDefinitions: UnitTypeDefinition[], unitsDestinationDirectory : string) {
 
     const project = new Project({
         tsConfigFilePath: "./tsconfig.json"
@@ -68,7 +68,7 @@ export function generateUnitsFromUnitsDefinitions(rawUnitsDefinitions: UnitTypeD
 
         unitDefinitiion.Units.push(...extandPrefixesUnits(unitDefinitiion.Units));
 
-        generateUnitClass(project, unitsTestinationDirectory, {
+        generateUnitClass(project, unitsDestinationDirectory, {
             unitName: unitDefinitiion.Name,
             units: unitDefinitiion.Units.map((unit: UnitDefinition): UnitProperties => ({
                 name: unit.PluralName,

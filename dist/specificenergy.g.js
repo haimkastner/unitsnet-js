@@ -75,21 +75,21 @@ class SpecificEnergy {
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return this.value;
             case SpecificEnergyUnits.CaloriesPerGram:
-                return this.value * 4.184e3;
+                return this.value / 4.184e3;
             case SpecificEnergyUnits.WattHoursPerKilogram:
-                return this.value * 3.6e3;
+                return this.value / 3.6e3;
             case SpecificEnergyUnits.BtuPerPound:
-                return this.value * 2326.000075362;
+                return this.value / 2326.000075362;
             case SpecificEnergyUnits.Kilojoulesperkilogram:
                 return (this.value) * 1000;
             case SpecificEnergyUnits.Megajoulesperkilogram:
                 return (this.value) * 1000000;
             case SpecificEnergyUnits.Kilocaloriespergram:
-                return (this.value / 4.184e3) * 1000;
+                return (this.value * 4.184e3) * 1000;
             case SpecificEnergyUnits.Kilowatthoursperkilogram:
-                return (this.value / 3.6e3) * 1000;
+                return (this.value * 3.6e3) * 1000;
             case SpecificEnergyUnits.Megawatthoursperkilogram:
-                return (this.value / 3.6e3) * 1000000;
+                return (this.value * 3.6e3) * 1000000;
             default:
                 break;
         }
@@ -98,23 +98,23 @@ class SpecificEnergy {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case SpecificEnergyUnits.JoulesPerKilogram:
-                return this.value;
+                return value;
             case SpecificEnergyUnits.CaloriesPerGram:
-                return this.value / 4.184e3;
+                return value * 4.184e3;
             case SpecificEnergyUnits.WattHoursPerKilogram:
-                return this.value / 3.6e3;
+                return value * 3.6e3;
             case SpecificEnergyUnits.BtuPerPound:
-                return this.value / 2326.000075362;
+                return value * 2326.000075362;
             case SpecificEnergyUnits.Kilojoulesperkilogram:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case SpecificEnergyUnits.Megajoulesperkilogram:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             case SpecificEnergyUnits.Kilocaloriespergram:
-                return (this.value * 4.184e3) / 1000;
+                return (value / 4.184e3) / 1000;
             case SpecificEnergyUnits.Kilowatthoursperkilogram:
-                return (this.value * 3.6e3) / 1000;
+                return (value / 3.6e3) / 1000;
             case SpecificEnergyUnits.Megawatthoursperkilogram:
-                return (this.value * 3.6e3) / 1000000;
+                return (value / 3.6e3) / 1000000;
             default:
                 break;
         }

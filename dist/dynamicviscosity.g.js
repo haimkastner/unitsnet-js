@@ -70,29 +70,6 @@ class DynamicViscosity {
             case DynamicViscosityUnits.PascalSeconds:
                 return this.value;
             case DynamicViscosityUnits.Poise:
-                return this.value / 10;
-            case DynamicViscosityUnits.Reyns:
-                return this.value * 6.8947572931683613e3;
-            case DynamicViscosityUnits.PoundsForceSecondPerSquareInch:
-                return this.value * 6.8947572931683613e3;
-            case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
-                return this.value * 4.7880258980335843e1;
-            case DynamicViscosityUnits.Micropascalseconds:
-                return (this.value) * 0.000001;
-            case DynamicViscosityUnits.Centipoise:
-                return (this.value * 10) * 0.01;
-            default:
-                break;
-        }
-        return NaN;
-    }
-    convertToBase(value, fromUnit) {
-        switch (fromUnit) {
-            case DynamicViscosityUnits.NewtonSecondsPerMeterSquared:
-                return this.value;
-            case DynamicViscosityUnits.PascalSeconds:
-                return this.value;
-            case DynamicViscosityUnits.Poise:
                 return this.value * 10;
             case DynamicViscosityUnits.Reyns:
                 return this.value / 6.8947572931683613e3;
@@ -101,9 +78,32 @@ class DynamicViscosity {
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return this.value / 4.7880258980335843e1;
             case DynamicViscosityUnits.Micropascalseconds:
-                return (this.value) / 0.000001;
+                return (this.value) * 0.000001;
             case DynamicViscosityUnits.Centipoise:
-                return (this.value / 10) / 0.01;
+                return (this.value / 10) * 0.01;
+            default:
+                break;
+        }
+        return NaN;
+    }
+    convertToBase(value, fromUnit) {
+        switch (fromUnit) {
+            case DynamicViscosityUnits.NewtonSecondsPerMeterSquared:
+                return value;
+            case DynamicViscosityUnits.PascalSeconds:
+                return value;
+            case DynamicViscosityUnits.Poise:
+                return value / 10;
+            case DynamicViscosityUnits.Reyns:
+                return value * 6.8947572931683613e3;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareInch:
+                return value * 6.8947572931683613e3;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
+                return value * 4.7880258980335843e1;
+            case DynamicViscosityUnits.Micropascalseconds:
+                return (value) / 0.000001;
+            case DynamicViscosityUnits.Centipoise:
+                return (value * 10) / 0.01;
             default:
                 break;
         }

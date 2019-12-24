@@ -72,16 +72,16 @@ export class ElectricPotential {
                 switch (fromUnit) {
                     
                 case ElectricPotentialUnits.Volts:
-                    return this.value;
+                    return value;
                 
                 case ElectricPotentialUnits.Microvolts:
-                    return (this.value) / 0.000001;
+                    return (value) / 0.000001;
                 
                 case ElectricPotentialUnits.Kilovolts:
-                    return (this.value) / 1000;
+                    return (value) / 1000;
                 
                 case ElectricPotentialUnits.Megavolts:
-                    return (this.value) / 1000000;
+                    return (value) / 1000000;
                 
                     default:
                         break;

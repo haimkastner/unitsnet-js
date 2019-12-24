@@ -26,7 +26,7 @@ class RatioChangeRate {
             case RatioChangeRateUnits.PercentsPerSecond:
                 return this.value;
             case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                return this.value * 1e2;
+                return this.value / 1e2;
             default:
                 break;
         }
@@ -35,9 +35,9 @@ class RatioChangeRate {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case RatioChangeRateUnits.PercentsPerSecond:
-                return this.value;
+                return value;
             case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                return this.value / 1e2;
+                return value * 1e2;
             default:
                 break;
         }

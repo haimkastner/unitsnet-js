@@ -103,7 +103,7 @@ class AmountOfSubstance {
             case AmountOfSubstanceUnits.Moles:
                 return this.value;
             case AmountOfSubstanceUnits.PoundMoles:
-                return this.value * 453.59237;
+                return this.value / 453.59237;
             case AmountOfSubstanceUnits.Nanomoles:
                 return (this.value) * 1e-9;
             case AmountOfSubstanceUnits.Micromoles:
@@ -117,15 +117,15 @@ class AmountOfSubstance {
             case AmountOfSubstanceUnits.Megamoles:
                 return (this.value) * 1000000;
             case AmountOfSubstanceUnits.Nanopoundmoles:
-                return (this.value / 453.59237) * 1e-9;
+                return (this.value * 453.59237) * 1e-9;
             case AmountOfSubstanceUnits.Micropoundmoles:
-                return (this.value / 453.59237) * 0.000001;
+                return (this.value * 453.59237) * 0.000001;
             case AmountOfSubstanceUnits.Centipoundmoles:
-                return (this.value / 453.59237) * 0.01;
+                return (this.value * 453.59237) * 0.01;
             case AmountOfSubstanceUnits.Decipoundmoles:
-                return (this.value / 453.59237) * 0.1;
+                return (this.value * 453.59237) * 0.1;
             case AmountOfSubstanceUnits.Kilopoundmoles:
-                return (this.value / 453.59237) * 1000;
+                return (this.value * 453.59237) * 1000;
             default:
                 break;
         }
@@ -134,31 +134,31 @@ class AmountOfSubstance {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case AmountOfSubstanceUnits.Moles:
-                return this.value;
+                return value;
             case AmountOfSubstanceUnits.PoundMoles:
-                return this.value / 453.59237;
+                return value * 453.59237;
             case AmountOfSubstanceUnits.Nanomoles:
-                return (this.value) / 1e-9;
+                return (value) / 1e-9;
             case AmountOfSubstanceUnits.Micromoles:
-                return (this.value) / 0.000001;
+                return (value) / 0.000001;
             case AmountOfSubstanceUnits.Centimoles:
-                return (this.value) / 0.01;
+                return (value) / 0.01;
             case AmountOfSubstanceUnits.Decimoles:
-                return (this.value) / 0.1;
+                return (value) / 0.1;
             case AmountOfSubstanceUnits.Kilomoles:
-                return (this.value) / 1000;
+                return (value) / 1000;
             case AmountOfSubstanceUnits.Megamoles:
-                return (this.value) / 1000000;
+                return (value) / 1000000;
             case AmountOfSubstanceUnits.Nanopoundmoles:
-                return (this.value * 453.59237) / 1e-9;
+                return (value / 453.59237) / 1e-9;
             case AmountOfSubstanceUnits.Micropoundmoles:
-                return (this.value * 453.59237) / 0.000001;
+                return (value / 453.59237) / 0.000001;
             case AmountOfSubstanceUnits.Centipoundmoles:
-                return (this.value * 453.59237) / 0.01;
+                return (value / 453.59237) / 0.01;
             case AmountOfSubstanceUnits.Decipoundmoles:
-                return (this.value * 453.59237) / 0.1;
+                return (value / 453.59237) / 0.1;
             case AmountOfSubstanceUnits.Kilopoundmoles:
-                return (this.value * 453.59237) / 1000;
+                return (value / 453.59237) / 1000;
             default:
                 break;
         }

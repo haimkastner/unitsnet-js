@@ -36,7 +36,7 @@ export class LuminousFlux {
                 switch (fromUnit) {
                     
                 case LuminousFluxUnits.Lumens:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

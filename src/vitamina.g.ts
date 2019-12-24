@@ -36,7 +36,7 @@ export class VitaminA {
                 switch (fromUnit) {
                     
                 case VitaminAUnits.InternationalUnits:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

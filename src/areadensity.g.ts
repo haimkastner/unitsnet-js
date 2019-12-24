@@ -36,7 +36,7 @@ export class AreaDensity {
                 switch (fromUnit) {
                     
                 case AreaDensityUnits.KilogramsPerSquareMeter:
-                    return this.value;
+                    return value;
                 
                     default:
                         break;

@@ -94,22 +94,22 @@ export class Duration {
             switch (toUnit) {
                 
                 case DurationUnits.Years365:
-                    return this.value*365*24*3600;
+                    return this.value/(365*24*3600);
                 
                 case DurationUnits.Months30:
-                    return this.value*30*24*3600;
+                    return this.value/(30*24*3600);
                 
                 case DurationUnits.Weeks:
-                    return this.value*7*24*3600;
+                    return this.value/(7*24*3600);
                 
                 case DurationUnits.Days:
-                    return this.value*24*3600;
+                    return this.value/(24*3600);
                 
                 case DurationUnits.Hours:
-                    return this.value*3600;
+                    return this.value/3600;
                 
                 case DurationUnits.Minutes:
-                    return this.value*60;
+                    return this.value/60;
                 
                 case DurationUnits.Seconds:
                     return this.value;
@@ -132,31 +132,31 @@ export class Duration {
                 switch (fromUnit) {
                     
                 case DurationUnits.Years365:
-                    return this.value/(365*24*3600);
+                    return value*365*24*3600;
                 
                 case DurationUnits.Months30:
-                    return this.value/(30*24*3600);
+                    return value*30*24*3600;
                 
                 case DurationUnits.Weeks:
-                    return this.value/(7*24*3600);
+                    return value*7*24*3600;
                 
                 case DurationUnits.Days:
-                    return this.value/(24*3600);
+                    return value*24*3600;
                 
                 case DurationUnits.Hours:
-                    return this.value/3600;
+                    return value*3600;
                 
                 case DurationUnits.Minutes:
-                    return this.value/60;
+                    return value*60;
                 
                 case DurationUnits.Seconds:
-                    return this.value;
+                    return value;
                 
                 case DurationUnits.Nanoseconds:
-                    return (this.value) / 1e-9;
+                    return (value) / 1e-9;
                 
                 case DurationUnits.Microseconds:
-                    return (this.value) / 0.000001;
+                    return (value) / 0.000001;
                 
                     default:
                         break;

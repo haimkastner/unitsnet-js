@@ -66,11 +66,11 @@ class ForceChangeRate {
     convertFromBase(toUnit) {
         switch (toUnit) {
             case ForceChangeRateUnits.NewtonsPerMinute:
-                return this.value / 60;
+                return this.value * 60;
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return this.value;
             case ForceChangeRateUnits.Kilonewtonsperminute:
-                return (this.value * 60) * 1000;
+                return (this.value / 60) * 1000;
             case ForceChangeRateUnits.Nanonewtonspersecond:
                 return (this.value) * 1e-9;
             case ForceChangeRateUnits.Micronewtonspersecond:
@@ -89,21 +89,21 @@ class ForceChangeRate {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case ForceChangeRateUnits.NewtonsPerMinute:
-                return this.value * 60;
+                return value / 60;
             case ForceChangeRateUnits.NewtonsPerSecond:
-                return this.value;
+                return value;
             case ForceChangeRateUnits.Kilonewtonsperminute:
-                return (this.value / 60) / 1000;
+                return (value * 60) / 1000;
             case ForceChangeRateUnits.Nanonewtonspersecond:
-                return (this.value) / 1e-9;
+                return (value) / 1e-9;
             case ForceChangeRateUnits.Micronewtonspersecond:
-                return (this.value) / 0.000001;
+                return (value) / 0.000001;
             case ForceChangeRateUnits.Centinewtonspersecond:
-                return (this.value) / 0.01;
+                return (value) / 0.01;
             case ForceChangeRateUnits.Decinewtonspersecond:
-                return (this.value) / 0.1;
+                return (value) / 0.1;
             case ForceChangeRateUnits.Kilonewtonspersecond:
-                return (this.value) / 1000;
+                return (value) / 1000;
             default:
                 break;
         }

@@ -31,10 +31,10 @@ export class MassFlux {
             switch (toUnit) {
                 
                 case MassFluxUnits.GramsPerSecondPerSquareMeter:
-                    return this.value/1e3;
+                    return this.value*1e3;
                 
                 case MassFluxUnits.Kilogramspersecondpersquaremeter:
-                    return (this.value*1e3) * 1000;
+                    return (this.value/1e3) * 1000;
                 
                 default:
                     break;
@@ -48,10 +48,10 @@ export class MassFlux {
                 switch (fromUnit) {
                     
                 case MassFluxUnits.GramsPerSecondPerSquareMeter:
-                    return this.value*1e3;
+                    return value/1e3;
                 
                 case MassFluxUnits.Kilogramspersecondpersquaremeter:
-                    return (this.value/1e3) / 1000;
+                    return (value*1e3) / 1000;
                 
                     default:
                         break;

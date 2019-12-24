@@ -26,7 +26,7 @@ class MagneticFlux {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case MagneticFluxUnits.Webers:
-                return this.value;
+                return value;
             default:
                 break;
         }

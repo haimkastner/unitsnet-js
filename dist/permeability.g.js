@@ -26,7 +26,7 @@ class Permeability {
     convertToBase(value, fromUnit) {
         switch (fromUnit) {
             case PermeabilityUnits.HenriesPerMeter:
-                return this.value;
+                return value;
             default:
                 break;
         }

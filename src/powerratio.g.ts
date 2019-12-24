@@ -34,7 +34,7 @@ export class PowerRatio {
                     return this.value;
                 
                 case PowerRatioUnits.DecibelMilliwatts:
-                    return this.value - 30;
+                    return this.value + 30;
                 
                 default:
                     break;
@@ -48,10 +48,10 @@ export class PowerRatio {
                 switch (fromUnit) {
                     
                 case PowerRatioUnits.DecibelWatts:
-                    return this.value;
+                    return value;
                 
                 case PowerRatioUnits.DecibelMilliwatts:
-                    return this.value + 30;
+                    return value - 30;
                 
                     default:
                         break;

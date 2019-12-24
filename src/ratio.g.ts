@@ -70,35 +70,6 @@ export class Ratio {
                     return this.value;
                 
                 case RatioUnits.Percent:
-                    return this.value/1e2;
-                
-                case RatioUnits.PartsPerThousand:
-                    return this.value/1e3;
-                
-                case RatioUnits.PartsPerMillion:
-                    return this.value/1e6;
-                
-                case RatioUnits.PartsPerBillion:
-                    return this.value/1e9;
-                
-                case RatioUnits.PartsPerTrillion:
-                    return this.value/1e12;
-                
-                default:
-                    break;
-            }
-            return NaN;
-            
-    }
-
-    private convertToBase(value: number, fromUnit: RatioUnits): number {
-
-                switch (fromUnit) {
-                    
-                case RatioUnits.DecimalFractions:
-                    return this.value;
-                
-                case RatioUnits.Percent:
                     return this.value*1e2;
                 
                 case RatioUnits.PartsPerThousand:
@@ -112,6 +83,35 @@ export class Ratio {
                 
                 case RatioUnits.PartsPerTrillion:
                     return this.value*1e12;
+                
+                default:
+                    break;
+            }
+            return NaN;
+            
+    }
+
+    private convertToBase(value: number, fromUnit: RatioUnits): number {
+
+                switch (fromUnit) {
+                    
+                case RatioUnits.DecimalFractions:
+                    return value;
+                
+                case RatioUnits.Percent:
+                    return value/1e2;
+                
+                case RatioUnits.PartsPerThousand:
+                    return value/1e3;
+                
+                case RatioUnits.PartsPerMillion:
+                    return value/1e6;
+                
+                case RatioUnits.PartsPerBillion:
+                    return value/1e9;
+                
+                case RatioUnits.PartsPerTrillion:
+                    return value/1e12;
                 
                     default:
                         break;
