@@ -127,8 +127,8 @@ export class AmountOfSubstance {
 
     private convertFromBase(toUnit: AmountOfSubstanceUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case AmountOfSubstanceUnits.Moles:
                     return this.value;
                 
@@ -168,10 +168,10 @@ export class AmountOfSubstance {
                 case AmountOfSubstanceUnits.Kilopoundmoles:
                     return (this.value*453.59237) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

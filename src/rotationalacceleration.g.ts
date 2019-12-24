@@ -46,8 +46,8 @@ export class RotationalAcceleration {
 
     private convertFromBase(toUnit: RotationalAccelerationUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case RotationalAccelerationUnits.RadiansPerSecondSquared:
                     return this.value;
                 
@@ -60,10 +60,10 @@ export class RotationalAcceleration {
                 case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
                     return (1/(2*Math.PI))*this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

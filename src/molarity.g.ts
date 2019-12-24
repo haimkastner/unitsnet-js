@@ -73,8 +73,8 @@ export class Molarity {
 
     private convertFromBase(toUnit: MolarityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MolarityUnits.MolesPerCubicMeter:
                     return this.value;
                 
@@ -96,10 +96,10 @@ export class Molarity {
                 case MolarityUnits.Decimolesperliter:
                     return (this.value/1e-3) * 0.1;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

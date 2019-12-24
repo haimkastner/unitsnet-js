@@ -28,18 +28,18 @@ export class ElectricConductance {
 
     private convertFromBase(toUnit: ElectricConductanceUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricConductanceUnits.Siemens:
                     return this.value;
                 
                 case ElectricConductanceUnits.Microsiemens:
                     return (this.value) * 0.000001;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

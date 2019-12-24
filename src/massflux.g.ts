@@ -28,18 +28,18 @@ export class MassFlux {
 
     private convertFromBase(toUnit: MassFluxUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MassFluxUnits.GramsPerSecondPerSquareMeter:
                     return this.value*1e3;
                 
                 case MassFluxUnits.Kilogramspersecondpersquaremeter:
                     return (this.value/1e3) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

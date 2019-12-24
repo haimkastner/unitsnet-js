@@ -5,6 +5,7 @@ export enum TemperatureChangeRateUnits {
     Microdegreescelsiuspersecond,
     Centidegreescelsiuspersecond,
     Decidegreescelsiuspersecond,
+    Decadegreescelsiuspersecond,
     Hectodegreescelsiuspersecond,
     Kilodegreescelsiuspersecond
 }
@@ -40,6 +41,10 @@ export class TemperatureChangeRate {
         return this.convertFromBase(TemperatureChangeRateUnits.Decidegreescelsiuspersecond);
     }
 
+    public get Decadegreescelsiuspersecond(): number {
+        return this.convertFromBase(TemperatureChangeRateUnits.Decadegreescelsiuspersecond);
+    }
+
     public get Hectodegreescelsiuspersecond(): number {
         return this.convertFromBase(TemperatureChangeRateUnits.Hectodegreescelsiuspersecond);
     }
@@ -72,6 +77,10 @@ export class TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Decidegreescelsiuspersecond);
     }
 
+    public static FromDecadegreescelsiuspersecond(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Decadegreescelsiuspersecond);
+    }
+
     public static FromHectodegreescelsiuspersecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Hectodegreescelsiuspersecond);
     }
@@ -82,8 +91,8 @@ export class TemperatureChangeRate {
 
     private convertFromBase(toUnit: TemperatureChangeRateUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
                     return this.value;
                 
@@ -102,16 +111,19 @@ export class TemperatureChangeRate {
                 case TemperatureChangeRateUnits.Decidegreescelsiuspersecond:
                     return (this.value) * 0.1;
                 
+                case TemperatureChangeRateUnits.Decadegreescelsiuspersecond:
+                    return (this.value) * 10;
+                
                 case TemperatureChangeRateUnits.Hectodegreescelsiuspersecond:
                     return (this.value) * 100;
                 
                 case TemperatureChangeRateUnits.Kilodegreescelsiuspersecond:
                     return (this.value) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -136,6 +148,9 @@ export class TemperatureChangeRate {
                 
                 case TemperatureChangeRateUnits.Decidegreescelsiuspersecond:
                     return (value) / 0.1;
+                
+                case TemperatureChangeRateUnits.Decadegreescelsiuspersecond:
+                    return (value) / 10;
                 
                 case TemperatureChangeRateUnits.Hectodegreescelsiuspersecond:
                     return (value) / 100;

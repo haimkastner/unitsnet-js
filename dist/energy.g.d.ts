@@ -20,7 +20,10 @@ export declare enum EnergyUnits {
     Kilowatthours = 18,
     Megawatthours = 19,
     Gigawatthours = 20,
-    Terawatthours = 21
+    Terawatthours = 21,
+    Decathermsec = 22,
+    Decathermsus = 23,
+    Decathermsimperial = 24
 }
 export declare class Energy {
     private value;
@@ -47,6 +50,9 @@ export declare class Energy {
     get Megawatthours(): number;
     get Gigawatthours(): number;
     get Terawatthours(): number;
+    get Decathermsec(): number;
+    get Decathermsus(): number;
+    get Decathermsimperial(): number;
     static FromJoules(value: number): Energy;
     static FromCalories(value: number): Energy;
     static FromBritishThermalUnits(value: number): Energy;
@@ -69,6 +75,9 @@ export declare class Energy {
     static FromMegawatthours(value: number): Energy;
     static FromGigawatthours(value: number): Energy;
     static FromTerawatthours(value: number): Energy;
+    static FromDecathermsec(value: number): Energy;
+    static FromDecathermsus(value: number): Energy;
+    static FromDecathermsimperial(value: number): Energy;
     private convertFromBase;
     private convertToBase;
 }

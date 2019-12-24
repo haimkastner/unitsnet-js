@@ -37,8 +37,8 @@ export class ElectricInductance {
 
     private convertFromBase(toUnit: ElectricInductanceUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricInductanceUnits.Henries:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class ElectricInductance {
                 case ElectricInductanceUnits.Microhenries:
                     return (this.value) * 0.000001;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

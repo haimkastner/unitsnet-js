@@ -73,8 +73,8 @@ export class PressureChangeRate {
 
     private convertFromBase(toUnit: PressureChangeRateUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case PressureChangeRateUnits.PascalsPerSecond:
                     return this.value;
                 
@@ -96,10 +96,10 @@ export class PressureChangeRate {
                 case PressureChangeRateUnits.Megapascalsperminute:
                     return (this.value/60) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

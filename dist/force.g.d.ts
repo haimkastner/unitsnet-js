@@ -8,8 +8,9 @@ export declare enum ForceUnits {
     PoundsForce = 6,
     OunceForce = 7,
     Micronewtons = 8,
-    Kilonewtons = 9,
-    Meganewtons = 10
+    Decanewtons = 9,
+    Kilonewtons = 10,
+    Meganewtons = 11
 }
 export declare class Force {
     private value;
@@ -23,6 +24,7 @@ export declare class Force {
     get PoundsForce(): number;
     get OunceForce(): number;
     get Micronewtons(): number;
+    get Decanewtons(): number;
     get Kilonewtons(): number;
     get Meganewtons(): number;
     static FromDyne(value: number): Force;
@@ -34,6 +36,7 @@ export declare class Force {
     static FromPoundsForce(value: number): Force;
     static FromOunceForce(value: number): Force;
     static FromMicronewtons(value: number): Force;
+    static FromDecanewtons(value: number): Force;
     static FromKilonewtons(value: number): Force;
     static FromMeganewtons(value: number): Force;
     private convertFromBase;

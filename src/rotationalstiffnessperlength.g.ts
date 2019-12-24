@@ -37,8 +37,8 @@ export class RotationalStiffnessPerLength {
 
     private convertFromBase(toUnit: RotationalStiffnessPerLengthUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class RotationalStiffnessPerLength {
                 case RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

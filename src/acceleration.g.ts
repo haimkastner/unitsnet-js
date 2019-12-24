@@ -118,8 +118,8 @@ export class Acceleration {
 
     private convertFromBase(toUnit: AccelerationUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case AccelerationUnits.MetersPerSecondSquared:
                     return this.value;
                 
@@ -156,10 +156,10 @@ export class Acceleration {
                 case AccelerationUnits.Kilometerspersecondsquared:
                     return (this.value) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

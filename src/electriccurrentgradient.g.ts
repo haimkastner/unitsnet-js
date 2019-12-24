@@ -19,15 +19,15 @@ export class ElectricCurrentGradient {
 
     private convertFromBase(toUnit: ElectricCurrentGradientUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricCurrentGradientUnits.AmperesPerSecond:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

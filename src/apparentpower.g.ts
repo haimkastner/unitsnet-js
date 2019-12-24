@@ -46,8 +46,8 @@ export class ApparentPower {
 
     private convertFromBase(toUnit: ApparentPowerUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ApparentPowerUnits.Voltamperes:
                     return this.value;
                 
@@ -60,10 +60,10 @@ export class ApparentPower {
                 case ApparentPowerUnits.Gigavoltamperes:
                     return (this.value) * 1000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

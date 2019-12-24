@@ -289,8 +289,8 @@ export class Length {
 
     private convertFromBase(toUnit: LengthUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case LengthUnits.Meters:
                     return this.value;
                 
@@ -384,10 +384,10 @@ export class Length {
                 case LengthUnits.Megalightyears:
                     return (this.value * 9.46073047258e15) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

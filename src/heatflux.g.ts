@@ -163,8 +163,8 @@ export class HeatFlux {
 
     private convertFromBase(toUnit: HeatFluxUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case HeatFluxUnits.WattsPerSquareMeter:
                     return this.value;
                 
@@ -216,10 +216,10 @@ export class HeatFlux {
                 case HeatFluxUnits.Kilocaloriespersecondsquarecentimeter:
                     return (this.value*4.1868e4) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

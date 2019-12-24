@@ -82,8 +82,8 @@ export class DynamicViscosity {
 
     private convertFromBase(toUnit: DynamicViscosityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case DynamicViscosityUnits.NewtonSecondsPerMeterSquared:
                     return this.value;
                 
@@ -108,10 +108,10 @@ export class DynamicViscosity {
                 case DynamicViscosityUnits.Centipoise:
                     return (this.value/10) * 0.01;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

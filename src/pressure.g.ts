@@ -23,6 +23,7 @@ export enum PressureUnits {
     PoundsPerInchSecondSquared,
     InchesOfWaterColumn,
     Micropascals,
+    Decapascals,
     Hectopascals,
     Kilopascals,
     Megapascals,
@@ -141,6 +142,10 @@ export class Pressure {
 
     public get Micropascals(): number {
         return this.convertFromBase(PressureUnits.Micropascals);
+    }
+
+    public get Decapascals(): number {
+        return this.convertFromBase(PressureUnits.Decapascals);
     }
 
     public get Hectopascals(): number {
@@ -299,6 +304,10 @@ export class Pressure {
         return new Pressure(value, PressureUnits.Micropascals);
     }
 
+    public static FromDecapascals(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Decapascals);
+    }
+
     public static FromHectopascals(value: number): Pressure {
         return new Pressure(value, PressureUnits.Hectopascals);
     }
@@ -361,8 +370,8 @@ export class Pressure {
 
     private convertFromBase(toUnit: PressureUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case PressureUnits.Pascals:
                     return this.value;
                 
@@ -435,6 +444,9 @@ export class Pressure {
                 case PressureUnits.Micropascals:
                     return (this.value) * 0.000001;
                 
+                case PressureUnits.Decapascals:
+                    return (this.value) * 10;
+                
                 case PressureUnits.Hectopascals:
                     return (this.value) * 100;
                 
@@ -480,10 +492,10 @@ export class Pressure {
                 case PressureUnits.Kilopoundsforcepersquarefoot:
                     return (this.value*4.788025898033584e1) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -562,6 +574,9 @@ export class Pressure {
                 
                 case PressureUnits.Micropascals:
                     return (value) / 0.000001;
+                
+                case PressureUnits.Decapascals:
+                    return (value) / 10;
                 
                 case PressureUnits.Hectopascals:
                     return (value) / 100;

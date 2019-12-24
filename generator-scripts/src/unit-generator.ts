@@ -1,7 +1,25 @@
-import { Project, StructureKind, PropertyDeclarationStructure, Scope, EnumDeclarationStructure, ClassDeclarationStructure, GetAccessorDeclarationStructure, ConstructorDeclaration, ConstructorDeclarationStructure, MethodDeclarationStructure, WriterFunction, EnumMemberStructure } from "ts-morph";
+import {
+    Project,
+    StructureKind,
+    PropertyDeclarationStructure,
+    Scope,
+    EnumDeclarationStructure,
+    ClassDeclarationStructure,
+    GetAccessorDeclarationStructure,
+    ConstructorDeclarationStructure,
+    MethodDeclarationStructure,
+    EnumMemberStructure
+} from "ts-morph";
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
 
-function generateEnum(enumName: string, units: UnitProperties[]): EnumDeclarationStructure {
+/**
+ * Build the unit units Enum.
+ * For example for 'Angle' unit generate 'AngleEnum' with 'Degrees' 'Radiand' etc.
+ * @param enumName The name for the enum.
+ * @param units The units properties.
+ * @returns The enum structure
+ */
+function buildEnum(enumName: string, units: UnitProperties[]): EnumDeclarationStructure {
     return {
         kind: StructureKind.Enum,
         name: enumName,
@@ -13,7 +31,14 @@ function generateEnum(enumName: string, units: UnitProperties[]): EnumDeclaratio
     }
 }
 
-function generateUnitGetters(enumName: string, units: UnitProperties[]): GetAccessorDeclarationStructure[] {
+/**
+ * Build the unit properties get accessors.
+ * For example for 'Angle' unit generate a get 'Degrees' get 'Radiand' etc.
+ * @param enumName The unit enum name.
+ * @param units The units properties.
+ * @returns The accessors structure array.
+ */
+function buildUnitGetters(enumName: string, units: UnitProperties[]): GetAccessorDeclarationStructure[] {
     return units.map((unit: UnitProperties): GetAccessorDeclarationStructure => {
         return {
             kind: StructureKind.GetAccessor,
@@ -26,7 +51,15 @@ function generateUnitGetters(enumName: string, units: UnitProperties[]): GetAcce
     })
 }
 
-function generateunitInitsMethods(unitName: string, enumName: string, units: UnitProperties[]): MethodDeclarationStructure[] {
+/**
+ * Build the static unit creators.
+ * For example for 'Angle' unit generate a 'FromDegrees(number)' get 'FromRadiand(number)' etc. 
+ * @param unitName THe unit name (for example 'Degree' or 'Radian') .
+ * @param enumName The unit enum name.
+ * @param units The units properties.
+ * @returns The creators methods structure array.
+ */
+function buildUnitCreatorsMethods(unitName: string, enumName: string, units: UnitProperties[]): MethodDeclarationStructure[] {
     return units.map((unit: UnitProperties): MethodDeclarationStructure => {
         return {
             kind: StructureKind.Method,
@@ -45,6 +78,14 @@ function generateunitInitsMethods(unitName: string, enumName: string, units: Uni
     })
 }
 
+/**
+ * Build the case in a 'switch' with unit converting formula for the given unit.
+ * @param unitName The specific unit name. (for example 'Degree' or 'Radian') 
+ * @param enumName The unit enum name.
+ * @param formulaDefenition THe furmula code as string.
+ * @param valueVarName The valiable name to replace th 'x' in the formula.
+ * @returns The unit case as a string.
+ */
 function buildFormulaCase(unitName: string, enumName: string, formulaDefenition: string, valueVarName: string): string {
     // Remove C# number types
     formulaDefenition = formulaDefenition.replace('d', '').replace('m', '');
@@ -58,6 +99,13 @@ function buildFormulaCase(unitName: string, enumName: string, formulaDefenition:
         `;
 }
 
+/**
+ * Build a 'switch case' with converting formula for each unit.
+ * @param enumName The unit enum name.
+ * @param units The units to build cases for.
+ * @param isBaseToUnit The direction of the convertion.
+ * @returns The unit switch cases as a string.
+ */
 function buildFormulaCases(enumName: string, units: UnitProperties[], isBaseToUnit: boolean): string {
     let switchUnitsCode = '';
 
@@ -67,15 +115,21 @@ function buildFormulaCases(enumName: string, units: UnitProperties[], isBaseToUn
             isBaseToUnit
                 ? unit.baseToUnitFormula
                 : unit.unitToBaseFormula,
-            isBaseToUnit 
-            ? 'value'
-            : 'this.value');
+            isBaseToUnit
+                ? 'value'
+                : 'this.value');
     }
 
     return switchUnitsCode;
 }
 
-function generateConvertFromBaseMethod(enumName: string, units: UnitProperties[]): MethodDeclarationStructure {
+/**
+ * Build from base to unit convert method. 
+ * @param enumName The unit enum name.
+ * @param units The units to convert to.
+ * @returns The convert method strucure.
+ */
+function buildConvertFromBaseMethod(enumName: string, units: UnitProperties[]): MethodDeclarationStructure {
     return {
         kind: StructureKind.Method,
         name: 'convertFromBase',
@@ -88,17 +142,23 @@ function generateConvertFromBaseMethod(enumName: string, units: UnitProperties[]
         ],
         returnType: 'number',
         statements: `
-    switch (toUnit) {
-        ${buildFormulaCases(enumName, units, false)}
-        default:
-            break;
-    }
-    return NaN;
+        switch (toUnit) {
+            ${buildFormulaCases(enumName, units, false)}
+            default:
+                break;
+        }
+        return NaN;
     `
     };
 }
 
-function generateConvertToBaseMethod(enumName: string, units: UnitProperties[]): MethodDeclarationStructure {
+/**
+ * Build from unit to base convert method. 
+ * @param enumName The unit enum name.
+ * @param units The units to convert from.
+ * @returns The convert method strucure.
+ */
+function buildConvertToBaseMethod(enumName: string, units: UnitProperties[]): MethodDeclarationStructure {
     return {
         kind: StructureKind.Method,
         name: 'convertToBase',
@@ -125,11 +185,21 @@ function generateConvertToBaseMethod(enumName: string, units: UnitProperties[]):
     };
 }
 
-export function generateUnitClass(project: Project, unitsDestinationDirectory: string, options: UnitGenerateOptions) {
+/**
+ * Generate a TS class for the given unit (for example for Angle or Length etc).
+ * @param project The generating project (of ts-morph lib) object.
+ * @param unitsDestinationDirectory The generate file directory destination.
+ * @param unitProperties The unit properties.
+ */
+export function generateUnitClass(project: Project, unitsDestinationDirectory: string, unitProperties: UnitGenerateOptions) {
 
-    const enumName = `${options.unitName}Units`;
-    const unitsEnum: EnumDeclarationStructure = generateEnum(enumName, options.units);
+    // Generate the unit units enum anme 
+    const enumName = `${unitProperties.unitName}Units`;
 
+    // Build the enum stracture
+    const unitsEnum: EnumDeclarationStructure = buildEnum(enumName, unitProperties.units);
+
+    // Build the base value variable
     const valueMember: PropertyDeclarationStructure = {
         kind: StructureKind.Property,
         name: 'value',
@@ -137,8 +207,10 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
         type: 'number'
     };
 
-    const unitGetters: GetAccessorDeclarationStructure[] = generateUnitGetters(enumName, options.units);
+    // Build the units get-accessors
+    const unitGetters: GetAccessorDeclarationStructure[] = buildUnitGetters(enumName, unitProperties.units);
 
+    // Build the constractor
     const unitCtor: ConstructorDeclarationStructure = {
         kind: StructureKind.Constructor,
         scope: Scope.Public,
@@ -155,28 +227,33 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
         statements: 'this.value = this.convertToBase(value, fromUnit);'
     };
 
-    const unitInits: MethodDeclarationStructure[] = generateunitInitsMethods(options.unitName, enumName, options.units);
+    // Build the static creator mathods  
+    const unitCreators: MethodDeclarationStructure[] = buildUnitCreatorsMethods(unitProperties.unitName, enumName, unitProperties.units);
 
+    // Build the convert from base to unit method
+    const convertFromBaseMethod: MethodDeclarationStructure = buildConvertFromBaseMethod(enumName, unitProperties.units);
 
-    const convertFromBaseMethod: MethodDeclarationStructure = generateConvertFromBaseMethod(enumName, options.units);
+    // Build the convert from unit to base method
+    const convertToBaseMethod: MethodDeclarationStructure = buildConvertToBaseMethod(enumName, unitProperties.units);
 
-    const convertToBaseMethod: MethodDeclarationStructure = generateConvertToBaseMethod(enumName, options.units);
-
+    // Build the unit class 
     const unitClass: ClassDeclarationStructure = {
         kind: StructureKind.Class,
-        name: options.unitName,
+        name: unitProperties.unitName,
         properties: [valueMember],
         getAccessors: [...unitGetters],
         ctors: [unitCtor],
-        methods: [...unitInits, convertFromBaseMethod, convertToBaseMethod],
+        methods: [...unitCreators, convertFromBaseMethod, convertToBaseMethod],
         isExported: true,
     }
 
-    const sourceFile = project.createSourceFile(`${unitsDestinationDirectory}/${options.unitName.toLowerCase()}.g.ts`, {
+    // Build the unit file with the unit enum and class
+    const sourceFile = project.createSourceFile(`${unitsDestinationDirectory}/${unitProperties.unitName.toLowerCase()}.g.ts`, {
         statements: [unitsEnum, unitClass]
     }, {
         overwrite: true
     });
 
+    // Generate the unit file
     sourceFile.saveSync();
 }

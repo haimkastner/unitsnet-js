@@ -4,15 +4,17 @@ var LuminosityUnits;
 (function (LuminosityUnits) {
     LuminosityUnits[LuminosityUnits["Watts"] = 0] = "Watts";
     LuminosityUnits[LuminosityUnits["SolarLuminosities"] = 1] = "SolarLuminosities";
-    LuminosityUnits[LuminosityUnits["Picowatts"] = 2] = "Picowatts";
-    LuminosityUnits[LuminosityUnits["Nanowatts"] = 3] = "Nanowatts";
-    LuminosityUnits[LuminosityUnits["Microwatts"] = 4] = "Microwatts";
-    LuminosityUnits[LuminosityUnits["Deciwatts"] = 5] = "Deciwatts";
-    LuminosityUnits[LuminosityUnits["Kilowatts"] = 6] = "Kilowatts";
-    LuminosityUnits[LuminosityUnits["Megawatts"] = 7] = "Megawatts";
-    LuminosityUnits[LuminosityUnits["Gigawatts"] = 8] = "Gigawatts";
-    LuminosityUnits[LuminosityUnits["Terawatts"] = 9] = "Terawatts";
-    LuminosityUnits[LuminosityUnits["Petawatts"] = 10] = "Petawatts";
+    LuminosityUnits[LuminosityUnits["Femtowatts"] = 2] = "Femtowatts";
+    LuminosityUnits[LuminosityUnits["Picowatts"] = 3] = "Picowatts";
+    LuminosityUnits[LuminosityUnits["Nanowatts"] = 4] = "Nanowatts";
+    LuminosityUnits[LuminosityUnits["Microwatts"] = 5] = "Microwatts";
+    LuminosityUnits[LuminosityUnits["Deciwatts"] = 6] = "Deciwatts";
+    LuminosityUnits[LuminosityUnits["Decawatts"] = 7] = "Decawatts";
+    LuminosityUnits[LuminosityUnits["Kilowatts"] = 8] = "Kilowatts";
+    LuminosityUnits[LuminosityUnits["Megawatts"] = 9] = "Megawatts";
+    LuminosityUnits[LuminosityUnits["Gigawatts"] = 10] = "Gigawatts";
+    LuminosityUnits[LuminosityUnits["Terawatts"] = 11] = "Terawatts";
+    LuminosityUnits[LuminosityUnits["Petawatts"] = 12] = "Petawatts";
 })(LuminosityUnits = exports.LuminosityUnits || (exports.LuminosityUnits = {}));
 class Luminosity {
     constructor(value, fromUnit) {
@@ -23,6 +25,9 @@ class Luminosity {
     }
     get SolarLuminosities() {
         return this.convertFromBase(LuminosityUnits.SolarLuminosities);
+    }
+    get Femtowatts() {
+        return this.convertFromBase(LuminosityUnits.Femtowatts);
     }
     get Picowatts() {
         return this.convertFromBase(LuminosityUnits.Picowatts);
@@ -35,6 +40,9 @@ class Luminosity {
     }
     get Deciwatts() {
         return this.convertFromBase(LuminosityUnits.Deciwatts);
+    }
+    get Decawatts() {
+        return this.convertFromBase(LuminosityUnits.Decawatts);
     }
     get Kilowatts() {
         return this.convertFromBase(LuminosityUnits.Kilowatts);
@@ -57,6 +65,9 @@ class Luminosity {
     static FromSolarLuminosities(value) {
         return new Luminosity(value, LuminosityUnits.SolarLuminosities);
     }
+    static FromFemtowatts(value) {
+        return new Luminosity(value, LuminosityUnits.Femtowatts);
+    }
     static FromPicowatts(value) {
         return new Luminosity(value, LuminosityUnits.Picowatts);
     }
@@ -68,6 +79,9 @@ class Luminosity {
     }
     static FromDeciwatts(value) {
         return new Luminosity(value, LuminosityUnits.Deciwatts);
+    }
+    static FromDecawatts(value) {
+        return new Luminosity(value, LuminosityUnits.Decawatts);
     }
     static FromKilowatts(value) {
         return new Luminosity(value, LuminosityUnits.Kilowatts);
@@ -90,6 +104,8 @@ class Luminosity {
                 return this.value;
             case LuminosityUnits.SolarLuminosities:
                 return this.value / 3.846e26;
+            case LuminosityUnits.Femtowatts:
+                return (this.value) * 1e-15;
             case LuminosityUnits.Picowatts:
                 return (this.value) * 1e-12;
             case LuminosityUnits.Nanowatts:
@@ -98,6 +114,8 @@ class Luminosity {
                 return (this.value) * 0.000001;
             case LuminosityUnits.Deciwatts:
                 return (this.value) * 0.1;
+            case LuminosityUnits.Decawatts:
+                return (this.value) * 10;
             case LuminosityUnits.Kilowatts:
                 return (this.value) * 1000;
             case LuminosityUnits.Megawatts:
@@ -119,6 +137,8 @@ class Luminosity {
                 return value;
             case LuminosityUnits.SolarLuminosities:
                 return value * 3.846e26;
+            case LuminosityUnits.Femtowatts:
+                return (value) / 1e-15;
             case LuminosityUnits.Picowatts:
                 return (value) / 1e-12;
             case LuminosityUnits.Nanowatts:
@@ -127,6 +147,8 @@ class Luminosity {
                 return (value) / 0.000001;
             case LuminosityUnits.Deciwatts:
                 return (value) / 0.1;
+            case LuminosityUnits.Decawatts:
+                return (value) / 10;
             case LuminosityUnits.Kilowatts:
                 return (value) / 1000;
             case LuminosityUnits.Megawatts:

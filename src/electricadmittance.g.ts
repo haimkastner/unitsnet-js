@@ -37,8 +37,8 @@ export class ElectricAdmittance {
 
     private convertFromBase(toUnit: ElectricAdmittanceUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricAdmittanceUnits.Siemens:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class ElectricAdmittance {
                 case ElectricAdmittanceUnits.Microsiemens:
                     return (this.value) * 0.000001;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

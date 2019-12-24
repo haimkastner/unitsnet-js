@@ -15,12 +15,14 @@ export enum MassFlowUnits {
     Microgramspersecond,
     Centigramspersecond,
     Decigramspersecond,
+    Decagramspersecond,
     Hectogramspersecond,
     Kilogramspersecond,
     Nanogramsperday,
     Microgramsperday,
     Centigramsperday,
     Decigramsperday,
+    Decagramsperday,
     Hectogramsperday,
     Kilogramsperday,
     Megagramsperday,
@@ -101,6 +103,10 @@ export class MassFlow {
         return this.convertFromBase(MassFlowUnits.Decigramspersecond);
     }
 
+    public get Decagramspersecond(): number {
+        return this.convertFromBase(MassFlowUnits.Decagramspersecond);
+    }
+
     public get Hectogramspersecond(): number {
         return this.convertFromBase(MassFlowUnits.Hectogramspersecond);
     }
@@ -123,6 +129,10 @@ export class MassFlow {
 
     public get Decigramsperday(): number {
         return this.convertFromBase(MassFlowUnits.Decigramsperday);
+    }
+
+    public get Decagramsperday(): number {
+        return this.convertFromBase(MassFlowUnits.Decagramsperday);
     }
 
     public get Hectogramsperday(): number {
@@ -217,6 +227,10 @@ export class MassFlow {
         return new MassFlow(value, MassFlowUnits.Decigramspersecond);
     }
 
+    public static FromDecagramspersecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.Decagramspersecond);
+    }
+
     public static FromHectogramspersecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.Hectogramspersecond);
     }
@@ -239,6 +253,10 @@ export class MassFlow {
 
     public static FromDecigramsperday(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.Decigramsperday);
+    }
+
+    public static FromDecagramsperday(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.Decagramsperday);
     }
 
     public static FromHectogramsperday(value: number): MassFlow {
@@ -271,8 +289,8 @@ export class MassFlow {
 
     private convertFromBase(toUnit: MassFlowUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MassFlowUnits.GramsPerSecond:
                     return this.value;
                 
@@ -321,6 +339,9 @@ export class MassFlow {
                 case MassFlowUnits.Decigramspersecond:
                     return (this.value) * 0.1;
                 
+                case MassFlowUnits.Decagramspersecond:
+                    return (this.value) * 10;
+                
                 case MassFlowUnits.Hectogramspersecond:
                     return (this.value) * 100;
                 
@@ -338,6 +359,9 @@ export class MassFlow {
                 
                 case MassFlowUnits.Decigramsperday:
                     return (this.value/86400) * 0.1;
+                
+                case MassFlowUnits.Decagramsperday:
+                    return (this.value/86400) * 10;
                 
                 case MassFlowUnits.Hectogramsperday:
                     return (this.value/86400) * 100;
@@ -360,10 +384,10 @@ export class MassFlow {
                 case MassFlowUnits.Megapoundspersecond:
                     return (this.value * 453.59237) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -419,6 +443,9 @@ export class MassFlow {
                 case MassFlowUnits.Decigramspersecond:
                     return (value) / 0.1;
                 
+                case MassFlowUnits.Decagramspersecond:
+                    return (value) / 10;
+                
                 case MassFlowUnits.Hectogramspersecond:
                     return (value) / 100;
                 
@@ -436,6 +463,9 @@ export class MassFlow {
                 
                 case MassFlowUnits.Decigramsperday:
                     return (value*86400) / 0.1;
+                
+                case MassFlowUnits.Decagramsperday:
+                    return (value*86400) / 10;
                 
                 case MassFlowUnits.Hectogramsperday:
                     return (value*86400) / 100;

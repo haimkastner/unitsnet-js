@@ -199,8 +199,8 @@ export class TorquePerLength {
 
     private convertFromBase(toUnit: TorquePerLengthUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case TorquePerLengthUnits.NewtonMillimetersPerMeter:
                     return this.value*1000;
                 
@@ -264,10 +264,10 @@ export class TorquePerLength {
                 case TorquePerLengthUnits.Megapoundforcefeetperfoot:
                     return (this.value*4.44822161526) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

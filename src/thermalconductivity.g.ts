@@ -28,18 +28,18 @@ export class ThermalConductivity {
 
     private convertFromBase(toUnit: ThermalConductivityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ThermalConductivityUnits.WattsPerMeterKelvin:
                     return this.value;
                 
                 case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
                     return this.value/1.73073467;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

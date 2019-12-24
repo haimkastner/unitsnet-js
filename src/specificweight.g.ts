@@ -163,8 +163,8 @@ export class SpecificWeight {
 
     private convertFromBase(toUnit: SpecificWeightUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case SpecificWeightUnits.NewtonsPerCubicMillimeter:
                     return this.value*0.000000001;
                 
@@ -216,10 +216,10 @@ export class SpecificWeight {
                 case SpecificWeightUnits.Kilopoundsforcepercubicfoot:
                     return (this.value*1.570874638462462e2) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

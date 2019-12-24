@@ -11,14 +11,16 @@ export declare enum MassFractionUnits {
     Microgramspergram = 9,
     Centigramspergram = 10,
     Decigramspergram = 11,
-    Hectogramspergram = 12,
-    Kilogramspergram = 13,
-    Nanogramsperkilogram = 14,
-    Microgramsperkilogram = 15,
-    Centigramsperkilogram = 16,
-    Decigramsperkilogram = 17,
-    Hectogramsperkilogram = 18,
-    Kilogramsperkilogram = 19
+    Decagramspergram = 12,
+    Hectogramspergram = 13,
+    Kilogramspergram = 14,
+    Nanogramsperkilogram = 15,
+    Microgramsperkilogram = 16,
+    Centigramsperkilogram = 17,
+    Decigramsperkilogram = 18,
+    Decagramsperkilogram = 19,
+    Hectogramsperkilogram = 20,
+    Kilogramsperkilogram = 21
 }
 export declare class MassFraction {
     private value;
@@ -35,12 +37,14 @@ export declare class MassFraction {
     get Microgramspergram(): number;
     get Centigramspergram(): number;
     get Decigramspergram(): number;
+    get Decagramspergram(): number;
     get Hectogramspergram(): number;
     get Kilogramspergram(): number;
     get Nanogramsperkilogram(): number;
     get Microgramsperkilogram(): number;
     get Centigramsperkilogram(): number;
     get Decigramsperkilogram(): number;
+    get Decagramsperkilogram(): number;
     get Hectogramsperkilogram(): number;
     get Kilogramsperkilogram(): number;
     static FromDecimalFractions(value: number): MassFraction;
@@ -55,12 +59,14 @@ export declare class MassFraction {
     static FromMicrogramspergram(value: number): MassFraction;
     static FromCentigramspergram(value: number): MassFraction;
     static FromDecigramspergram(value: number): MassFraction;
+    static FromDecagramspergram(value: number): MassFraction;
     static FromHectogramspergram(value: number): MassFraction;
     static FromKilogramspergram(value: number): MassFraction;
     static FromNanogramsperkilogram(value: number): MassFraction;
     static FromMicrogramsperkilogram(value: number): MassFraction;
     static FromCentigramsperkilogram(value: number): MassFraction;
     static FromDecigramsperkilogram(value: number): MassFraction;
+    static FromDecagramsperkilogram(value: number): MassFraction;
     static FromHectogramsperkilogram(value: number): MassFraction;
     static FromKilogramsperkilogram(value: number): MassFraction;
     private convertFromBase;

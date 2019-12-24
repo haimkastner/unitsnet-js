@@ -226,8 +226,8 @@ export class MassMomentOfInertia {
 
     private convertFromBase(toUnit: MassMomentOfInertiaUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MassMomentOfInertiaUnits.GramSquareMeters:
                     return this.value*1e3;
                 
@@ -300,10 +300,10 @@ export class MassMomentOfInertia {
                 case MassMomentOfInertiaUnits.Megatonnesquaremilimeters:
                     return (this.value/1e3) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

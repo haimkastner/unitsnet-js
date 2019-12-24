@@ -46,8 +46,8 @@ export class ElectricCharge {
 
     private convertFromBase(toUnit: ElectricChargeUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricChargeUnits.Coulombs:
                     return this.value;
                 
@@ -60,10 +60,10 @@ export class ElectricCharge {
                 case ElectricChargeUnits.Megaamperehours:
                     return (this.value/2.77777777777e-4) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

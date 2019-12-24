@@ -73,8 +73,8 @@ export class ElectricCurrent {
 
     private convertFromBase(toUnit: ElectricCurrentUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricCurrentUnits.Amperes:
                     return this.value;
                 
@@ -96,10 +96,10 @@ export class ElectricCurrent {
                 case ElectricCurrentUnits.Megaamperes:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -73,8 +73,8 @@ export class Entropy {
 
     private convertFromBase(toUnit: EntropyUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case EntropyUnits.JoulesPerKelvin:
                     return this.value;
                 
@@ -96,10 +96,10 @@ export class Entropy {
                 case EntropyUnits.Kilojoulesperdegreecelsius:
                     return (this.value) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -64,8 +64,8 @@ export class Capacitance {
 
     private convertFromBase(toUnit: CapacitanceUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case CapacitanceUnits.Farads:
                     return this.value;
                 
@@ -84,10 +84,10 @@ export class Capacitance {
                 case CapacitanceUnits.Megafarads:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

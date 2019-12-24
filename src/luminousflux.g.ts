@@ -19,15 +19,15 @@ export class LuminousFlux {
 
     private convertFromBase(toUnit: LuminousFluxUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case LuminousFluxUnits.Lumens:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

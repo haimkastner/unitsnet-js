@@ -15,19 +15,21 @@ export declare enum MassFlowUnits {
     Microgramspersecond = 13,
     Centigramspersecond = 14,
     Decigramspersecond = 15,
-    Hectogramspersecond = 16,
-    Kilogramspersecond = 17,
-    Nanogramsperday = 18,
-    Microgramsperday = 19,
-    Centigramsperday = 20,
-    Decigramsperday = 21,
-    Hectogramsperday = 22,
-    Kilogramsperday = 23,
-    Megagramsperday = 24,
-    Megapoundsperday = 25,
-    Megapoundsperhour = 26,
-    Megapoundsperminute = 27,
-    Megapoundspersecond = 28
+    Decagramspersecond = 16,
+    Hectogramspersecond = 17,
+    Kilogramspersecond = 18,
+    Nanogramsperday = 19,
+    Microgramsperday = 20,
+    Centigramsperday = 21,
+    Decigramsperday = 22,
+    Decagramsperday = 23,
+    Hectogramsperday = 24,
+    Kilogramsperday = 25,
+    Megagramsperday = 26,
+    Megapoundsperday = 27,
+    Megapoundsperhour = 28,
+    Megapoundsperminute = 29,
+    Megapoundspersecond = 30
 }
 export declare class MassFlow {
     private value;
@@ -48,12 +50,14 @@ export declare class MassFlow {
     get Microgramspersecond(): number;
     get Centigramspersecond(): number;
     get Decigramspersecond(): number;
+    get Decagramspersecond(): number;
     get Hectogramspersecond(): number;
     get Kilogramspersecond(): number;
     get Nanogramsperday(): number;
     get Microgramsperday(): number;
     get Centigramsperday(): number;
     get Decigramsperday(): number;
+    get Decagramsperday(): number;
     get Hectogramsperday(): number;
     get Kilogramsperday(): number;
     get Megagramsperday(): number;
@@ -77,12 +81,14 @@ export declare class MassFlow {
     static FromMicrogramspersecond(value: number): MassFlow;
     static FromCentigramspersecond(value: number): MassFlow;
     static FromDecigramspersecond(value: number): MassFlow;
+    static FromDecagramspersecond(value: number): MassFlow;
     static FromHectogramspersecond(value: number): MassFlow;
     static FromKilogramspersecond(value: number): MassFlow;
     static FromNanogramsperday(value: number): MassFlow;
     static FromMicrogramsperday(value: number): MassFlow;
     static FromCentigramsperday(value: number): MassFlow;
     static FromDecigramsperday(value: number): MassFlow;
+    static FromDecagramsperday(value: number): MassFlow;
     static FromHectogramsperday(value: number): MassFlow;
     static FromKilogramsperday(value: number): MassFlow;
     static FromMegagramsperday(value: number): MassFlow;

@@ -1,7 +1,7 @@
 import fse from 'fs-extra';
 import { UnitTypeDefinition } from './models/units-definition';
 import { Project } from 'ts-morph';
-import { generateExportUnitsModule } from './export-units-generator';
+import { generateUnitsModuleExport } from './export-units-generator';
 import { generateUnitsFromUnitsDefinitions } from './units-generator';
 
 const unitsJs = `
@@ -20,13 +20,15 @@ const unitsJs = `
 
 console.info(unitsJs);
 
-
 const unitsDefinitionsDirectory = '../UnitDefinitions';
 const unitsTestinationDirectory = '../src'
+
+// Read the definition JSON files
 const unitsFiles = fse.readdirSync(unitsDefinitionsDirectory);
 
 const unitsDefinitions: UnitTypeDefinition[] = [];
 
+// Load the difinition files
 for (const unitFile of unitsFiles) {
     console.info(`Reading & Parsing '${unitFile}' File ...`);
 
@@ -40,11 +42,13 @@ const project = new Project({
     tsConfigFilePath: "./tsconfig.json"
 });
 
+// Generate the units classes
 generateUnitsFromUnitsDefinitions(project, unitsTestinationDirectory, unitsDefinitions);
 
 console.info(`Generating Units Export Module ...`);
 
-generateExportUnitsModule(project, unitsTestinationDirectory, unitsDefinitions);
+// Generate the module exports file
+generateUnitsModuleExport(project, unitsTestinationDirectory, unitsDefinitions);
 
 
 const success = `

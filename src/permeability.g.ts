@@ -19,15 +19,15 @@ export class Permeability {
 
     private convertFromBase(toUnit: PermeabilityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case PermeabilityUnits.HenriesPerMeter:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

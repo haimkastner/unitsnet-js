@@ -19,12 +19,13 @@ var MassUnits;
     MassUnits[MassUnits["Micrograms"] = 14] = "Micrograms";
     MassUnits[MassUnits["Centigrams"] = 15] = "Centigrams";
     MassUnits[MassUnits["Decigrams"] = 16] = "Decigrams";
-    MassUnits[MassUnits["Hectograms"] = 17] = "Hectograms";
-    MassUnits[MassUnits["Kilograms"] = 18] = "Kilograms";
-    MassUnits[MassUnits["Kilotonnes"] = 19] = "Kilotonnes";
-    MassUnits[MassUnits["Megatonnes"] = 20] = "Megatonnes";
-    MassUnits[MassUnits["Kilopounds"] = 21] = "Kilopounds";
-    MassUnits[MassUnits["Megapounds"] = 22] = "Megapounds";
+    MassUnits[MassUnits["Decagrams"] = 17] = "Decagrams";
+    MassUnits[MassUnits["Hectograms"] = 18] = "Hectograms";
+    MassUnits[MassUnits["Kilograms"] = 19] = "Kilograms";
+    MassUnits[MassUnits["Kilotonnes"] = 20] = "Kilotonnes";
+    MassUnits[MassUnits["Megatonnes"] = 21] = "Megatonnes";
+    MassUnits[MassUnits["Kilopounds"] = 22] = "Kilopounds";
+    MassUnits[MassUnits["Megapounds"] = 23] = "Megapounds";
 })(MassUnits = exports.MassUnits || (exports.MassUnits = {}));
 class Mass {
     constructor(value, fromUnit) {
@@ -80,6 +81,9 @@ class Mass {
     }
     get Decigrams() {
         return this.convertFromBase(MassUnits.Decigrams);
+    }
+    get Decagrams() {
+        return this.convertFromBase(MassUnits.Decagrams);
     }
     get Hectograms() {
         return this.convertFromBase(MassUnits.Hectograms);
@@ -150,6 +154,9 @@ class Mass {
     static FromDecigrams(value) {
         return new Mass(value, MassUnits.Decigrams);
     }
+    static FromDecagrams(value) {
+        return new Mass(value, MassUnits.Decagrams);
+    }
     static FromHectograms(value) {
         return new Mass(value, MassUnits.Hectograms);
     }
@@ -204,6 +211,8 @@ class Mass {
                 return (this.value / 1e3) * 0.01;
             case MassUnits.Decigrams:
                 return (this.value / 1e3) * 0.1;
+            case MassUnits.Decagrams:
+                return (this.value / 1e3) * 10;
             case MassUnits.Hectograms:
                 return (this.value / 1e3) * 100;
             case MassUnits.Kilograms:
@@ -257,6 +266,8 @@ class Mass {
                 return (value * 1e3) / 0.01;
             case MassUnits.Decigrams:
                 return (value * 1e3) / 0.1;
+            case MassUnits.Decagrams:
+                return (value * 1e3) / 10;
             case MassUnits.Hectograms:
                 return (value * 1e3) / 100;
             case MassUnits.Kilograms:

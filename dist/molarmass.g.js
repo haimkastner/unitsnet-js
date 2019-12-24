@@ -8,10 +8,11 @@ var MolarMassUnits;
     MolarMassUnits[MolarMassUnits["Microgramspermole"] = 3] = "Microgramspermole";
     MolarMassUnits[MolarMassUnits["Centigramspermole"] = 4] = "Centigramspermole";
     MolarMassUnits[MolarMassUnits["Decigramspermole"] = 5] = "Decigramspermole";
-    MolarMassUnits[MolarMassUnits["Hectogramspermole"] = 6] = "Hectogramspermole";
-    MolarMassUnits[MolarMassUnits["Kilogramspermole"] = 7] = "Kilogramspermole";
-    MolarMassUnits[MolarMassUnits["Kilopoundspermole"] = 8] = "Kilopoundspermole";
-    MolarMassUnits[MolarMassUnits["Megapoundspermole"] = 9] = "Megapoundspermole";
+    MolarMassUnits[MolarMassUnits["Decagramspermole"] = 6] = "Decagramspermole";
+    MolarMassUnits[MolarMassUnits["Hectogramspermole"] = 7] = "Hectogramspermole";
+    MolarMassUnits[MolarMassUnits["Kilogramspermole"] = 8] = "Kilogramspermole";
+    MolarMassUnits[MolarMassUnits["Kilopoundspermole"] = 9] = "Kilopoundspermole";
+    MolarMassUnits[MolarMassUnits["Megapoundspermole"] = 10] = "Megapoundspermole";
 })(MolarMassUnits = exports.MolarMassUnits || (exports.MolarMassUnits = {}));
 class MolarMass {
     constructor(value, fromUnit) {
@@ -34,6 +35,9 @@ class MolarMass {
     }
     get Decigramspermole() {
         return this.convertFromBase(MolarMassUnits.Decigramspermole);
+    }
+    get Decagramspermole() {
+        return this.convertFromBase(MolarMassUnits.Decagramspermole);
     }
     get Hectogramspermole() {
         return this.convertFromBase(MolarMassUnits.Hectogramspermole);
@@ -65,6 +69,9 @@ class MolarMass {
     static FromDecigramspermole(value) {
         return new MolarMass(value, MolarMassUnits.Decigramspermole);
     }
+    static FromDecagramspermole(value) {
+        return new MolarMass(value, MolarMassUnits.Decagramspermole);
+    }
     static FromHectogramspermole(value) {
         return new MolarMass(value, MolarMassUnits.Hectogramspermole);
     }
@@ -91,6 +98,8 @@ class MolarMass {
                 return (this.value / 1e3) * 0.01;
             case MolarMassUnits.Decigramspermole:
                 return (this.value / 1e3) * 0.1;
+            case MolarMassUnits.Decagramspermole:
+                return (this.value / 1e3) * 10;
             case MolarMassUnits.Hectogramspermole:
                 return (this.value / 1e3) * 100;
             case MolarMassUnits.Kilogramspermole:
@@ -118,6 +127,8 @@ class MolarMass {
                 return (value * 1e3) / 0.01;
             case MolarMassUnits.Decigramspermole:
                 return (value * 1e3) / 0.1;
+            case MolarMassUnits.Decagramspermole:
+                return (value * 1e3) / 10;
             case MolarMassUnits.Hectogramspermole:
                 return (value * 1e3) / 100;
             case MolarMassUnits.Kilogramspermole:

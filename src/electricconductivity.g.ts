@@ -37,8 +37,8 @@ export class ElectricConductivity {
 
     private convertFromBase(toUnit: ElectricConductivityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricConductivityUnits.SiemensPerMeter:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class ElectricConductivity {
                 case ElectricConductivityUnits.SiemensPerFoot:
                     return this.value / 3.2808398950131234;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -11,8 +11,9 @@ var ForceUnits;
     ForceUnits[ForceUnits["PoundsForce"] = 6] = "PoundsForce";
     ForceUnits[ForceUnits["OunceForce"] = 7] = "OunceForce";
     ForceUnits[ForceUnits["Micronewtons"] = 8] = "Micronewtons";
-    ForceUnits[ForceUnits["Kilonewtons"] = 9] = "Kilonewtons";
-    ForceUnits[ForceUnits["Meganewtons"] = 10] = "Meganewtons";
+    ForceUnits[ForceUnits["Decanewtons"] = 9] = "Decanewtons";
+    ForceUnits[ForceUnits["Kilonewtons"] = 10] = "Kilonewtons";
+    ForceUnits[ForceUnits["Meganewtons"] = 11] = "Meganewtons";
 })(ForceUnits = exports.ForceUnits || (exports.ForceUnits = {}));
 class Force {
     constructor(value, fromUnit) {
@@ -44,6 +45,9 @@ class Force {
     }
     get Micronewtons() {
         return this.convertFromBase(ForceUnits.Micronewtons);
+    }
+    get Decanewtons() {
+        return this.convertFromBase(ForceUnits.Decanewtons);
     }
     get Kilonewtons() {
         return this.convertFromBase(ForceUnits.Kilonewtons);
@@ -78,6 +82,9 @@ class Force {
     static FromMicronewtons(value) {
         return new Force(value, ForceUnits.Micronewtons);
     }
+    static FromDecanewtons(value) {
+        return new Force(value, ForceUnits.Decanewtons);
+    }
     static FromKilonewtons(value) {
         return new Force(value, ForceUnits.Kilonewtons);
     }
@@ -104,6 +111,8 @@ class Force {
                 return this.value / 2.780138509537812e-1;
             case ForceUnits.Micronewtons:
                 return (this.value) * 0.000001;
+            case ForceUnits.Decanewtons:
+                return (this.value) * 10;
             case ForceUnits.Kilonewtons:
                 return (this.value) * 1000;
             case ForceUnits.Meganewtons:
@@ -133,6 +142,8 @@ class Force {
                 return value * 2.780138509537812e-1;
             case ForceUnits.Micronewtons:
                 return (value) / 0.000001;
+            case ForceUnits.Decanewtons:
+                return (value) / 10;
             case ForceUnits.Kilonewtons:
                 return (value) / 1000;
             case ForceUnits.Meganewtons:

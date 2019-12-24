@@ -7,34 +7,38 @@ export declare enum PowerDensityUnits {
     Nanowattspercubicmeter = 5,
     Microwattspercubicmeter = 6,
     Deciwattspercubicmeter = 7,
-    Kilowattspercubicmeter = 8,
-    Megawattspercubicmeter = 9,
-    Gigawattspercubicmeter = 10,
-    Terawattspercubicmeter = 11,
-    Picowattspercubicinch = 12,
-    Nanowattspercubicinch = 13,
-    Microwattspercubicinch = 14,
-    Deciwattspercubicinch = 15,
-    Kilowattspercubicinch = 16,
-    Megawattspercubicinch = 17,
-    Gigawattspercubicinch = 18,
-    Terawattspercubicinch = 19,
-    Picowattspercubicfoot = 20,
-    Nanowattspercubicfoot = 21,
-    Microwattspercubicfoot = 22,
-    Deciwattspercubicfoot = 23,
-    Kilowattspercubicfoot = 24,
-    Megawattspercubicfoot = 25,
-    Gigawattspercubicfoot = 26,
-    Terawattspercubicfoot = 27,
-    Picowattsperliter = 28,
-    Nanowattsperliter = 29,
-    Microwattsperliter = 30,
-    Deciwattsperliter = 31,
-    Kilowattsperliter = 32,
-    Megawattsperliter = 33,
-    Gigawattsperliter = 34,
-    Terawattsperliter = 35
+    Decawattspercubicmeter = 8,
+    Kilowattspercubicmeter = 9,
+    Megawattspercubicmeter = 10,
+    Gigawattspercubicmeter = 11,
+    Terawattspercubicmeter = 12,
+    Picowattspercubicinch = 13,
+    Nanowattspercubicinch = 14,
+    Microwattspercubicinch = 15,
+    Deciwattspercubicinch = 16,
+    Decawattspercubicinch = 17,
+    Kilowattspercubicinch = 18,
+    Megawattspercubicinch = 19,
+    Gigawattspercubicinch = 20,
+    Terawattspercubicinch = 21,
+    Picowattspercubicfoot = 22,
+    Nanowattspercubicfoot = 23,
+    Microwattspercubicfoot = 24,
+    Deciwattspercubicfoot = 25,
+    Decawattspercubicfoot = 26,
+    Kilowattspercubicfoot = 27,
+    Megawattspercubicfoot = 28,
+    Gigawattspercubicfoot = 29,
+    Terawattspercubicfoot = 30,
+    Picowattsperliter = 31,
+    Nanowattsperliter = 32,
+    Microwattsperliter = 33,
+    Deciwattsperliter = 34,
+    Decawattsperliter = 35,
+    Kilowattsperliter = 36,
+    Megawattsperliter = 37,
+    Gigawattsperliter = 38,
+    Terawattsperliter = 39
 }
 export declare class PowerDensity {
     private value;
@@ -47,6 +51,7 @@ export declare class PowerDensity {
     get Nanowattspercubicmeter(): number;
     get Microwattspercubicmeter(): number;
     get Deciwattspercubicmeter(): number;
+    get Decawattspercubicmeter(): number;
     get Kilowattspercubicmeter(): number;
     get Megawattspercubicmeter(): number;
     get Gigawattspercubicmeter(): number;
@@ -55,6 +60,7 @@ export declare class PowerDensity {
     get Nanowattspercubicinch(): number;
     get Microwattspercubicinch(): number;
     get Deciwattspercubicinch(): number;
+    get Decawattspercubicinch(): number;
     get Kilowattspercubicinch(): number;
     get Megawattspercubicinch(): number;
     get Gigawattspercubicinch(): number;
@@ -63,6 +69,7 @@ export declare class PowerDensity {
     get Nanowattspercubicfoot(): number;
     get Microwattspercubicfoot(): number;
     get Deciwattspercubicfoot(): number;
+    get Decawattspercubicfoot(): number;
     get Kilowattspercubicfoot(): number;
     get Megawattspercubicfoot(): number;
     get Gigawattspercubicfoot(): number;
@@ -71,6 +78,7 @@ export declare class PowerDensity {
     get Nanowattsperliter(): number;
     get Microwattsperliter(): number;
     get Deciwattsperliter(): number;
+    get Decawattsperliter(): number;
     get Kilowattsperliter(): number;
     get Megawattsperliter(): number;
     get Gigawattsperliter(): number;
@@ -83,6 +91,7 @@ export declare class PowerDensity {
     static FromNanowattspercubicmeter(value: number): PowerDensity;
     static FromMicrowattspercubicmeter(value: number): PowerDensity;
     static FromDeciwattspercubicmeter(value: number): PowerDensity;
+    static FromDecawattspercubicmeter(value: number): PowerDensity;
     static FromKilowattspercubicmeter(value: number): PowerDensity;
     static FromMegawattspercubicmeter(value: number): PowerDensity;
     static FromGigawattspercubicmeter(value: number): PowerDensity;
@@ -91,6 +100,7 @@ export declare class PowerDensity {
     static FromNanowattspercubicinch(value: number): PowerDensity;
     static FromMicrowattspercubicinch(value: number): PowerDensity;
     static FromDeciwattspercubicinch(value: number): PowerDensity;
+    static FromDecawattspercubicinch(value: number): PowerDensity;
     static FromKilowattspercubicinch(value: number): PowerDensity;
     static FromMegawattspercubicinch(value: number): PowerDensity;
     static FromGigawattspercubicinch(value: number): PowerDensity;
@@ -99,6 +109,7 @@ export declare class PowerDensity {
     static FromNanowattspercubicfoot(value: number): PowerDensity;
     static FromMicrowattspercubicfoot(value: number): PowerDensity;
     static FromDeciwattspercubicfoot(value: number): PowerDensity;
+    static FromDecawattspercubicfoot(value: number): PowerDensity;
     static FromKilowattspercubicfoot(value: number): PowerDensity;
     static FromMegawattspercubicfoot(value: number): PowerDensity;
     static FromGigawattspercubicfoot(value: number): PowerDensity;
@@ -107,6 +118,7 @@ export declare class PowerDensity {
     static FromNanowattsperliter(value: number): PowerDensity;
     static FromMicrowattsperliter(value: number): PowerDensity;
     static FromDeciwattsperliter(value: number): PowerDensity;
+    static FromDecawattsperliter(value: number): PowerDensity;
     static FromKilowattsperliter(value: number): PowerDensity;
     static FromMegawattsperliter(value: number): PowerDensity;
     static FromGigawattsperliter(value: number): PowerDensity;

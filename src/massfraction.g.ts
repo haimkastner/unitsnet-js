@@ -11,12 +11,14 @@ export enum MassFractionUnits {
     Microgramspergram,
     Centigramspergram,
     Decigramspergram,
+    Decagramspergram,
     Hectogramspergram,
     Kilogramspergram,
     Nanogramsperkilogram,
     Microgramsperkilogram,
     Centigramsperkilogram,
     Decigramsperkilogram,
+    Decagramsperkilogram,
     Hectogramsperkilogram,
     Kilogramsperkilogram
 }
@@ -76,6 +78,10 @@ export class MassFraction {
         return this.convertFromBase(MassFractionUnits.Decigramspergram);
     }
 
+    public get Decagramspergram(): number {
+        return this.convertFromBase(MassFractionUnits.Decagramspergram);
+    }
+
     public get Hectogramspergram(): number {
         return this.convertFromBase(MassFractionUnits.Hectogramspergram);
     }
@@ -98,6 +104,10 @@ export class MassFraction {
 
     public get Decigramsperkilogram(): number {
         return this.convertFromBase(MassFractionUnits.Decigramsperkilogram);
+    }
+
+    public get Decagramsperkilogram(): number {
+        return this.convertFromBase(MassFractionUnits.Decagramsperkilogram);
     }
 
     public get Hectogramsperkilogram(): number {
@@ -156,6 +166,10 @@ export class MassFraction {
         return new MassFraction(value, MassFractionUnits.Decigramspergram);
     }
 
+    public static FromDecagramspergram(value: number): MassFraction {
+        return new MassFraction(value, MassFractionUnits.Decagramspergram);
+    }
+
     public static FromHectogramspergram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.Hectogramspergram);
     }
@@ -180,6 +194,10 @@ export class MassFraction {
         return new MassFraction(value, MassFractionUnits.Decigramsperkilogram);
     }
 
+    public static FromDecagramsperkilogram(value: number): MassFraction {
+        return new MassFraction(value, MassFractionUnits.Decagramsperkilogram);
+    }
+
     public static FromHectogramsperkilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.Hectogramsperkilogram);
     }
@@ -190,8 +208,8 @@ export class MassFraction {
 
     private convertFromBase(toUnit: MassFractionUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MassFractionUnits.DecimalFractions:
                     return this.value;
                 
@@ -228,6 +246,9 @@ export class MassFraction {
                 case MassFractionUnits.Decigramspergram:
                     return (this.value) * 0.1;
                 
+                case MassFractionUnits.Decagramspergram:
+                    return (this.value) * 10;
+                
                 case MassFractionUnits.Hectogramspergram:
                     return (this.value) * 100;
                 
@@ -246,16 +267,19 @@ export class MassFraction {
                 case MassFractionUnits.Decigramsperkilogram:
                     return (this.value/1e3) * 0.1;
                 
+                case MassFractionUnits.Decagramsperkilogram:
+                    return (this.value/1e3) * 10;
+                
                 case MassFractionUnits.Hectogramsperkilogram:
                     return (this.value/1e3) * 100;
                 
                 case MassFractionUnits.Kilogramsperkilogram:
                     return (this.value/1e3) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -299,6 +323,9 @@ export class MassFraction {
                 case MassFractionUnits.Decigramspergram:
                     return (value) / 0.1;
                 
+                case MassFractionUnits.Decagramspergram:
+                    return (value) / 10;
+                
                 case MassFractionUnits.Hectogramspergram:
                     return (value) / 100;
                 
@@ -316,6 +343,9 @@ export class MassFraction {
                 
                 case MassFractionUnits.Decigramsperkilogram:
                     return (value*1e3) / 0.1;
+                
+                case MassFractionUnits.Decagramsperkilogram:
+                    return (value*1e3) / 10;
                 
                 case MassFractionUnits.Hectogramsperkilogram:
                     return (value*1e3) / 100;

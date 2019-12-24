@@ -8,8 +8,9 @@ var TemperatureChangeRateUnits;
     TemperatureChangeRateUnits[TemperatureChangeRateUnits["Microdegreescelsiuspersecond"] = 3] = "Microdegreescelsiuspersecond";
     TemperatureChangeRateUnits[TemperatureChangeRateUnits["Centidegreescelsiuspersecond"] = 4] = "Centidegreescelsiuspersecond";
     TemperatureChangeRateUnits[TemperatureChangeRateUnits["Decidegreescelsiuspersecond"] = 5] = "Decidegreescelsiuspersecond";
-    TemperatureChangeRateUnits[TemperatureChangeRateUnits["Hectodegreescelsiuspersecond"] = 6] = "Hectodegreescelsiuspersecond";
-    TemperatureChangeRateUnits[TemperatureChangeRateUnits["Kilodegreescelsiuspersecond"] = 7] = "Kilodegreescelsiuspersecond";
+    TemperatureChangeRateUnits[TemperatureChangeRateUnits["Decadegreescelsiuspersecond"] = 6] = "Decadegreescelsiuspersecond";
+    TemperatureChangeRateUnits[TemperatureChangeRateUnits["Hectodegreescelsiuspersecond"] = 7] = "Hectodegreescelsiuspersecond";
+    TemperatureChangeRateUnits[TemperatureChangeRateUnits["Kilodegreescelsiuspersecond"] = 8] = "Kilodegreescelsiuspersecond";
 })(TemperatureChangeRateUnits = exports.TemperatureChangeRateUnits || (exports.TemperatureChangeRateUnits = {}));
 class TemperatureChangeRate {
     constructor(value, fromUnit) {
@@ -32,6 +33,9 @@ class TemperatureChangeRate {
     }
     get Decidegreescelsiuspersecond() {
         return this.convertFromBase(TemperatureChangeRateUnits.Decidegreescelsiuspersecond);
+    }
+    get Decadegreescelsiuspersecond() {
+        return this.convertFromBase(TemperatureChangeRateUnits.Decadegreescelsiuspersecond);
     }
     get Hectodegreescelsiuspersecond() {
         return this.convertFromBase(TemperatureChangeRateUnits.Hectodegreescelsiuspersecond);
@@ -57,6 +61,9 @@ class TemperatureChangeRate {
     static FromDecidegreescelsiuspersecond(value) {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Decidegreescelsiuspersecond);
     }
+    static FromDecadegreescelsiuspersecond(value) {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Decadegreescelsiuspersecond);
+    }
     static FromHectodegreescelsiuspersecond(value) {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Hectodegreescelsiuspersecond);
     }
@@ -77,6 +84,8 @@ class TemperatureChangeRate {
                 return (this.value) * 0.01;
             case TemperatureChangeRateUnits.Decidegreescelsiuspersecond:
                 return (this.value) * 0.1;
+            case TemperatureChangeRateUnits.Decadegreescelsiuspersecond:
+                return (this.value) * 10;
             case TemperatureChangeRateUnits.Hectodegreescelsiuspersecond:
                 return (this.value) * 100;
             case TemperatureChangeRateUnits.Kilodegreescelsiuspersecond:
@@ -100,6 +109,8 @@ class TemperatureChangeRate {
                 return (value) / 0.01;
             case TemperatureChangeRateUnits.Decidegreescelsiuspersecond:
                 return (value) / 0.1;
+            case TemperatureChangeRateUnits.Decadegreescelsiuspersecond:
+                return (value) / 10;
             case TemperatureChangeRateUnits.Hectodegreescelsiuspersecond:
                 return (value) / 100;
             case TemperatureChangeRateUnits.Kilodegreescelsiuspersecond:

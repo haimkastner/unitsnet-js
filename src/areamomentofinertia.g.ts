@@ -64,8 +64,8 @@ export class AreaMomentOfInertia {
 
     private convertFromBase(toUnit: AreaMomentOfInertiaUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case AreaMomentOfInertiaUnits.MetersToTheFourth:
                     return this.value;
                 
@@ -84,10 +84,10 @@ export class AreaMomentOfInertia {
                 case AreaMomentOfInertiaUnits.InchesToTheFourth:
                     return this.value/Math.pow(2.54e-2, 4);
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -19,15 +19,15 @@ export class ElectricChargeDensity {
 
     private convertFromBase(toUnit: ElectricChargeDensityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

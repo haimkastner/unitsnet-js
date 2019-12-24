@@ -37,8 +37,8 @@ export class BrakeSpecificFuelConsumption {
 
     private convertFromBase(toUnit: BrakeSpecificFuelConsumptionUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
                     return this.value*3.6e9;
                 
@@ -48,10 +48,10 @@ export class BrakeSpecificFuelConsumption {
                 case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
                     return this.value/1.689659410672e-7;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

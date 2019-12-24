@@ -424,8 +424,8 @@ export class Volume {
 
     private convertFromBase(toUnit: VolumeUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case VolumeUnits.Liters:
                     return this.value*1e3;
                 
@@ -564,10 +564,10 @@ export class Volume {
                 case VolumeUnits.Megausgallons:
                     return (this.value*0.00378541) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

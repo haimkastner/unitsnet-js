@@ -7,10 +7,12 @@ export enum PowerUnits {
     HydraulicHorsepower,
     BritishThermalUnitsPerHour,
     JoulesPerHour,
+    Femtowatts,
     Picowatts,
     Nanowatts,
     Microwatts,
     Deciwatts,
+    Decawatts,
     Kilowatts,
     Megawatts,
     Gigawatts,
@@ -61,6 +63,10 @@ export class Power {
         return this.convertFromBase(PowerUnits.JoulesPerHour);
     }
 
+    public get Femtowatts(): number {
+        return this.convertFromBase(PowerUnits.Femtowatts);
+    }
+
     public get Picowatts(): number {
         return this.convertFromBase(PowerUnits.Picowatts);
     }
@@ -75,6 +81,10 @@ export class Power {
 
     public get Deciwatts(): number {
         return this.convertFromBase(PowerUnits.Deciwatts);
+    }
+
+    public get Decawatts(): number {
+        return this.convertFromBase(PowerUnits.Decawatts);
     }
 
     public get Kilowatts(): number {
@@ -145,6 +155,10 @@ export class Power {
         return new Power(value, PowerUnits.JoulesPerHour);
     }
 
+    public static FromFemtowatts(value: number): Power {
+        return new Power(value, PowerUnits.Femtowatts);
+    }
+
     public static FromPicowatts(value: number): Power {
         return new Power(value, PowerUnits.Picowatts);
     }
@@ -159,6 +173,10 @@ export class Power {
 
     public static FromDeciwatts(value: number): Power {
         return new Power(value, PowerUnits.Deciwatts);
+    }
+
+    public static FromDecawatts(value: number): Power {
+        return new Power(value, PowerUnits.Decawatts);
     }
 
     public static FromKilowatts(value: number): Power {
@@ -199,8 +217,8 @@ export class Power {
 
     private convertFromBase(toUnit: PowerUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case PowerUnits.Watts:
                     return this.value;
                 
@@ -225,6 +243,9 @@ export class Power {
                 case PowerUnits.JoulesPerHour:
                     return this.value*3600;
                 
+                case PowerUnits.Femtowatts:
+                    return (this.value) * 1e-15;
+                
                 case PowerUnits.Picowatts:
                     return (this.value) * 1e-12;
                 
@@ -236,6 +257,9 @@ export class Power {
                 
                 case PowerUnits.Deciwatts:
                     return (this.value) * 0.1;
+                
+                case PowerUnits.Decawatts:
+                    return (this.value) * 10;
                 
                 case PowerUnits.Kilowatts:
                     return (this.value) * 1000;
@@ -264,10 +288,10 @@ export class Power {
                 case PowerUnits.Gigajoulesperhour:
                     return (this.value/3600) * 1000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -299,6 +323,9 @@ export class Power {
                 case PowerUnits.JoulesPerHour:
                     return value/3600;
                 
+                case PowerUnits.Femtowatts:
+                    return (value) / 1e-15;
+                
                 case PowerUnits.Picowatts:
                     return (value) / 1e-12;
                 
@@ -310,6 +337,9 @@ export class Power {
                 
                 case PowerUnits.Deciwatts:
                     return (value) / 0.1;
+                
+                case PowerUnits.Decawatts:
+                    return (value) / 10;
                 
                 case PowerUnits.Kilowatts:
                     return (value) / 1000;

@@ -37,8 +37,8 @@ export class CoefficientOfThermalExpansion {
 
     private convertFromBase(toUnit: CoefficientOfThermalExpansionUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case CoefficientOfThermalExpansionUnits.InverseKelvin:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class CoefficientOfThermalExpansion {
                 case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
                     return this.value*9/5;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -37,8 +37,8 @@ export class MolarEnergy {
 
     private convertFromBase(toUnit: MolarEnergyUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MolarEnergyUnits.JoulesPerMole:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class MolarEnergy {
                 case MolarEnergyUnits.Megajoulespermole:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

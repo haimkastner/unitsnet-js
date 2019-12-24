@@ -118,8 +118,8 @@ export class ElectricResistivity {
 
     private convertFromBase(toUnit: ElectricResistivityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricResistivityUnits.OhmMeters:
                     return this.value;
                 
@@ -156,10 +156,10 @@ export class ElectricResistivity {
                 case ElectricResistivityUnits.Megaohmscentimeter:
                     return (this.value/100) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

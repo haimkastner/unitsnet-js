@@ -118,8 +118,8 @@ export class Angle {
 
     private convertFromBase(toUnit: AngleUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case AngleUnits.Radians:
                     return this.value/180*Math.PI;
                 
@@ -156,10 +156,10 @@ export class Angle {
                 case AngleUnits.Microdegrees:
                     return (this.value) * 0.000001;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

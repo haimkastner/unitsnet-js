@@ -64,8 +64,8 @@ export class Ratio {
 
     private convertFromBase(toUnit: RatioUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case RatioUnits.DecimalFractions:
                     return this.value;
                 
@@ -84,10 +84,10 @@ export class Ratio {
                 case RatioUnits.PartsPerTrillion:
                     return this.value*1e12;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -334,8 +334,8 @@ export class MassConcentration {
 
     private convertFromBase(toUnit: MassConcentrationUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MassConcentrationUnits.GramsPerCubicMillimeter:
                     return this.value*1e-6;
                 
@@ -444,10 +444,10 @@ export class MassConcentration {
                 case MassConcentrationUnits.Kilopoundspercubicfoot:
                     return (this.value/0.062427961) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

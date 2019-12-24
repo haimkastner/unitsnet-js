@@ -20,7 +20,10 @@ export enum EnergyUnits {
     Kilowatthours,
     Megawatthours,
     Gigawatthours,
-    Terawatthours
+    Terawatthours,
+    Decathermsec,
+    Decathermsus,
+    Decathermsimperial
 }
 
 export class Energy {
@@ -118,6 +121,18 @@ export class Energy {
         return this.convertFromBase(EnergyUnits.Terawatthours);
     }
 
+    public get Decathermsec(): number {
+        return this.convertFromBase(EnergyUnits.Decathermsec);
+    }
+
+    public get Decathermsus(): number {
+        return this.convertFromBase(EnergyUnits.Decathermsus);
+    }
+
+    public get Decathermsimperial(): number {
+        return this.convertFromBase(EnergyUnits.Decathermsimperial);
+    }
+
     public static FromJoules(value: number): Energy {
         return new Energy(value, EnergyUnits.Joules);
     }
@@ -206,10 +221,22 @@ export class Energy {
         return new Energy(value, EnergyUnits.Terawatthours);
     }
 
+    public static FromDecathermsec(value: number): Energy {
+        return new Energy(value, EnergyUnits.Decathermsec);
+    }
+
+    public static FromDecathermsus(value: number): Energy {
+        return new Energy(value, EnergyUnits.Decathermsus);
+    }
+
+    public static FromDecathermsimperial(value: number): Energy {
+        return new Energy(value, EnergyUnits.Decathermsimperial);
+    }
+
     private convertFromBase(toUnit: EnergyUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case EnergyUnits.Joules:
                     return this.value;
                 
@@ -276,10 +303,19 @@ export class Energy {
                 case EnergyUnits.Terawatthours:
                     return (this.value*3600) * 1000000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                case EnergyUnits.Decathermsec:
+                    return (this.value*1.05505585262e8) * 10;
+                
+                case EnergyUnits.Decathermsus:
+                    return (this.value*1.054804e8) * 10;
+                
+                case EnergyUnits.Decathermsimperial:
+                    return (this.value*1.05505585257348e8) * 10;
+                
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -352,6 +388,15 @@ export class Energy {
                 
                 case EnergyUnits.Terawatthours:
                     return (value/3600) / 1000000000000;
+                
+                case EnergyUnits.Decathermsec:
+                    return (value/1.05505585262e8) / 10;
+                
+                case EnergyUnits.Decathermsus:
+                    return (value/1.054804e8) / 10;
+                
+                case EnergyUnits.Decathermsimperial:
+                    return (value/1.05505585257348e8) / 10;
                 
                     default:
                         break;

@@ -91,8 +91,8 @@ export class Duration {
 
     private convertFromBase(toUnit: DurationUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case DurationUnits.Years365:
                     return this.value/(365*24*3600);
                 
@@ -120,10 +120,10 @@ export class Duration {
                 case DurationUnits.Microseconds:
                     return (this.value) * 0.000001;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

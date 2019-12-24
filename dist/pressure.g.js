@@ -26,21 +26,22 @@ var PressureUnits;
     PressureUnits[PressureUnits["PoundsPerInchSecondSquared"] = 21] = "PoundsPerInchSecondSquared";
     PressureUnits[PressureUnits["InchesOfWaterColumn"] = 22] = "InchesOfWaterColumn";
     PressureUnits[PressureUnits["Micropascals"] = 23] = "Micropascals";
-    PressureUnits[PressureUnits["Hectopascals"] = 24] = "Hectopascals";
-    PressureUnits[PressureUnits["Kilopascals"] = 25] = "Kilopascals";
-    PressureUnits[PressureUnits["Megapascals"] = 26] = "Megapascals";
-    PressureUnits[PressureUnits["Gigapascals"] = 27] = "Gigapascals";
-    PressureUnits[PressureUnits["Microbars"] = 28] = "Microbars";
-    PressureUnits[PressureUnits["Centibars"] = 29] = "Centibars";
-    PressureUnits[PressureUnits["Decibars"] = 30] = "Decibars";
-    PressureUnits[PressureUnits["Kilobars"] = 31] = "Kilobars";
-    PressureUnits[PressureUnits["Megabars"] = 32] = "Megabars";
-    PressureUnits[PressureUnits["Kilonewtonspersquaremeter"] = 33] = "Kilonewtonspersquaremeter";
-    PressureUnits[PressureUnits["Meganewtonspersquaremeter"] = 34] = "Meganewtonspersquaremeter";
-    PressureUnits[PressureUnits["Kilonewtonspersquarecentimeter"] = 35] = "Kilonewtonspersquarecentimeter";
-    PressureUnits[PressureUnits["Kilonewtonspersquaremillimeter"] = 36] = "Kilonewtonspersquaremillimeter";
-    PressureUnits[PressureUnits["Kilopoundsforcepersquareinch"] = 37] = "Kilopoundsforcepersquareinch";
-    PressureUnits[PressureUnits["Kilopoundsforcepersquarefoot"] = 38] = "Kilopoundsforcepersquarefoot";
+    PressureUnits[PressureUnits["Decapascals"] = 24] = "Decapascals";
+    PressureUnits[PressureUnits["Hectopascals"] = 25] = "Hectopascals";
+    PressureUnits[PressureUnits["Kilopascals"] = 26] = "Kilopascals";
+    PressureUnits[PressureUnits["Megapascals"] = 27] = "Megapascals";
+    PressureUnits[PressureUnits["Gigapascals"] = 28] = "Gigapascals";
+    PressureUnits[PressureUnits["Microbars"] = 29] = "Microbars";
+    PressureUnits[PressureUnits["Centibars"] = 30] = "Centibars";
+    PressureUnits[PressureUnits["Decibars"] = 31] = "Decibars";
+    PressureUnits[PressureUnits["Kilobars"] = 32] = "Kilobars";
+    PressureUnits[PressureUnits["Megabars"] = 33] = "Megabars";
+    PressureUnits[PressureUnits["Kilonewtonspersquaremeter"] = 34] = "Kilonewtonspersquaremeter";
+    PressureUnits[PressureUnits["Meganewtonspersquaremeter"] = 35] = "Meganewtonspersquaremeter";
+    PressureUnits[PressureUnits["Kilonewtonspersquarecentimeter"] = 36] = "Kilonewtonspersquarecentimeter";
+    PressureUnits[PressureUnits["Kilonewtonspersquaremillimeter"] = 37] = "Kilonewtonspersquaremillimeter";
+    PressureUnits[PressureUnits["Kilopoundsforcepersquareinch"] = 38] = "Kilopoundsforcepersquareinch";
+    PressureUnits[PressureUnits["Kilopoundsforcepersquarefoot"] = 39] = "Kilopoundsforcepersquarefoot";
 })(PressureUnits = exports.PressureUnits || (exports.PressureUnits = {}));
 class Pressure {
     constructor(value, fromUnit) {
@@ -117,6 +118,9 @@ class Pressure {
     }
     get Micropascals() {
         return this.convertFromBase(PressureUnits.Micropascals);
+    }
+    get Decapascals() {
+        return this.convertFromBase(PressureUnits.Decapascals);
     }
     get Hectopascals() {
         return this.convertFromBase(PressureUnits.Hectopascals);
@@ -235,6 +239,9 @@ class Pressure {
     static FromMicropascals(value) {
         return new Pressure(value, PressureUnits.Micropascals);
     }
+    static FromDecapascals(value) {
+        return new Pressure(value, PressureUnits.Decapascals);
+    }
     static FromHectopascals(value) {
         return new Pressure(value, PressureUnits.Hectopascals);
     }
@@ -330,6 +337,8 @@ class Pressure {
                 return this.value / 249.08890833333;
             case PressureUnits.Micropascals:
                 return (this.value) * 0.000001;
+            case PressureUnits.Decapascals:
+                return (this.value) * 10;
             case PressureUnits.Hectopascals:
                 return (this.value) * 100;
             case PressureUnits.Kilopascals:
@@ -415,6 +424,8 @@ class Pressure {
                 return value * 249.08890833333;
             case PressureUnits.Micropascals:
                 return (value) / 0.000001;
+            case PressureUnits.Decapascals:
+                return (value) / 10;
             case PressureUnits.Hectopascals:
                 return (value) / 100;
             case PressureUnits.Kilopascals:

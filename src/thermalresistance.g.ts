@@ -55,8 +55,8 @@ export class ThermalResistance {
 
     private convertFromBase(toUnit: ThermalResistanceUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
                     return this.value;
                 
@@ -72,10 +72,10 @@ export class ThermalResistance {
                 case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
                     return this.value/176.1121482159839;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

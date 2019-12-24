@@ -10,34 +10,38 @@ var PowerDensityUnits;
     PowerDensityUnits[PowerDensityUnits["Nanowattspercubicmeter"] = 5] = "Nanowattspercubicmeter";
     PowerDensityUnits[PowerDensityUnits["Microwattspercubicmeter"] = 6] = "Microwattspercubicmeter";
     PowerDensityUnits[PowerDensityUnits["Deciwattspercubicmeter"] = 7] = "Deciwattspercubicmeter";
-    PowerDensityUnits[PowerDensityUnits["Kilowattspercubicmeter"] = 8] = "Kilowattspercubicmeter";
-    PowerDensityUnits[PowerDensityUnits["Megawattspercubicmeter"] = 9] = "Megawattspercubicmeter";
-    PowerDensityUnits[PowerDensityUnits["Gigawattspercubicmeter"] = 10] = "Gigawattspercubicmeter";
-    PowerDensityUnits[PowerDensityUnits["Terawattspercubicmeter"] = 11] = "Terawattspercubicmeter";
-    PowerDensityUnits[PowerDensityUnits["Picowattspercubicinch"] = 12] = "Picowattspercubicinch";
-    PowerDensityUnits[PowerDensityUnits["Nanowattspercubicinch"] = 13] = "Nanowattspercubicinch";
-    PowerDensityUnits[PowerDensityUnits["Microwattspercubicinch"] = 14] = "Microwattspercubicinch";
-    PowerDensityUnits[PowerDensityUnits["Deciwattspercubicinch"] = 15] = "Deciwattspercubicinch";
-    PowerDensityUnits[PowerDensityUnits["Kilowattspercubicinch"] = 16] = "Kilowattspercubicinch";
-    PowerDensityUnits[PowerDensityUnits["Megawattspercubicinch"] = 17] = "Megawattspercubicinch";
-    PowerDensityUnits[PowerDensityUnits["Gigawattspercubicinch"] = 18] = "Gigawattspercubicinch";
-    PowerDensityUnits[PowerDensityUnits["Terawattspercubicinch"] = 19] = "Terawattspercubicinch";
-    PowerDensityUnits[PowerDensityUnits["Picowattspercubicfoot"] = 20] = "Picowattspercubicfoot";
-    PowerDensityUnits[PowerDensityUnits["Nanowattspercubicfoot"] = 21] = "Nanowattspercubicfoot";
-    PowerDensityUnits[PowerDensityUnits["Microwattspercubicfoot"] = 22] = "Microwattspercubicfoot";
-    PowerDensityUnits[PowerDensityUnits["Deciwattspercubicfoot"] = 23] = "Deciwattspercubicfoot";
-    PowerDensityUnits[PowerDensityUnits["Kilowattspercubicfoot"] = 24] = "Kilowattspercubicfoot";
-    PowerDensityUnits[PowerDensityUnits["Megawattspercubicfoot"] = 25] = "Megawattspercubicfoot";
-    PowerDensityUnits[PowerDensityUnits["Gigawattspercubicfoot"] = 26] = "Gigawattspercubicfoot";
-    PowerDensityUnits[PowerDensityUnits["Terawattspercubicfoot"] = 27] = "Terawattspercubicfoot";
-    PowerDensityUnits[PowerDensityUnits["Picowattsperliter"] = 28] = "Picowattsperliter";
-    PowerDensityUnits[PowerDensityUnits["Nanowattsperliter"] = 29] = "Nanowattsperliter";
-    PowerDensityUnits[PowerDensityUnits["Microwattsperliter"] = 30] = "Microwattsperliter";
-    PowerDensityUnits[PowerDensityUnits["Deciwattsperliter"] = 31] = "Deciwattsperliter";
-    PowerDensityUnits[PowerDensityUnits["Kilowattsperliter"] = 32] = "Kilowattsperliter";
-    PowerDensityUnits[PowerDensityUnits["Megawattsperliter"] = 33] = "Megawattsperliter";
-    PowerDensityUnits[PowerDensityUnits["Gigawattsperliter"] = 34] = "Gigawattsperliter";
-    PowerDensityUnits[PowerDensityUnits["Terawattsperliter"] = 35] = "Terawattsperliter";
+    PowerDensityUnits[PowerDensityUnits["Decawattspercubicmeter"] = 8] = "Decawattspercubicmeter";
+    PowerDensityUnits[PowerDensityUnits["Kilowattspercubicmeter"] = 9] = "Kilowattspercubicmeter";
+    PowerDensityUnits[PowerDensityUnits["Megawattspercubicmeter"] = 10] = "Megawattspercubicmeter";
+    PowerDensityUnits[PowerDensityUnits["Gigawattspercubicmeter"] = 11] = "Gigawattspercubicmeter";
+    PowerDensityUnits[PowerDensityUnits["Terawattspercubicmeter"] = 12] = "Terawattspercubicmeter";
+    PowerDensityUnits[PowerDensityUnits["Picowattspercubicinch"] = 13] = "Picowattspercubicinch";
+    PowerDensityUnits[PowerDensityUnits["Nanowattspercubicinch"] = 14] = "Nanowattspercubicinch";
+    PowerDensityUnits[PowerDensityUnits["Microwattspercubicinch"] = 15] = "Microwattspercubicinch";
+    PowerDensityUnits[PowerDensityUnits["Deciwattspercubicinch"] = 16] = "Deciwattspercubicinch";
+    PowerDensityUnits[PowerDensityUnits["Decawattspercubicinch"] = 17] = "Decawattspercubicinch";
+    PowerDensityUnits[PowerDensityUnits["Kilowattspercubicinch"] = 18] = "Kilowattspercubicinch";
+    PowerDensityUnits[PowerDensityUnits["Megawattspercubicinch"] = 19] = "Megawattspercubicinch";
+    PowerDensityUnits[PowerDensityUnits["Gigawattspercubicinch"] = 20] = "Gigawattspercubicinch";
+    PowerDensityUnits[PowerDensityUnits["Terawattspercubicinch"] = 21] = "Terawattspercubicinch";
+    PowerDensityUnits[PowerDensityUnits["Picowattspercubicfoot"] = 22] = "Picowattspercubicfoot";
+    PowerDensityUnits[PowerDensityUnits["Nanowattspercubicfoot"] = 23] = "Nanowattspercubicfoot";
+    PowerDensityUnits[PowerDensityUnits["Microwattspercubicfoot"] = 24] = "Microwattspercubicfoot";
+    PowerDensityUnits[PowerDensityUnits["Deciwattspercubicfoot"] = 25] = "Deciwattspercubicfoot";
+    PowerDensityUnits[PowerDensityUnits["Decawattspercubicfoot"] = 26] = "Decawattspercubicfoot";
+    PowerDensityUnits[PowerDensityUnits["Kilowattspercubicfoot"] = 27] = "Kilowattspercubicfoot";
+    PowerDensityUnits[PowerDensityUnits["Megawattspercubicfoot"] = 28] = "Megawattspercubicfoot";
+    PowerDensityUnits[PowerDensityUnits["Gigawattspercubicfoot"] = 29] = "Gigawattspercubicfoot";
+    PowerDensityUnits[PowerDensityUnits["Terawattspercubicfoot"] = 30] = "Terawattspercubicfoot";
+    PowerDensityUnits[PowerDensityUnits["Picowattsperliter"] = 31] = "Picowattsperliter";
+    PowerDensityUnits[PowerDensityUnits["Nanowattsperliter"] = 32] = "Nanowattsperliter";
+    PowerDensityUnits[PowerDensityUnits["Microwattsperliter"] = 33] = "Microwattsperliter";
+    PowerDensityUnits[PowerDensityUnits["Deciwattsperliter"] = 34] = "Deciwattsperliter";
+    PowerDensityUnits[PowerDensityUnits["Decawattsperliter"] = 35] = "Decawattsperliter";
+    PowerDensityUnits[PowerDensityUnits["Kilowattsperliter"] = 36] = "Kilowattsperliter";
+    PowerDensityUnits[PowerDensityUnits["Megawattsperliter"] = 37] = "Megawattsperliter";
+    PowerDensityUnits[PowerDensityUnits["Gigawattsperliter"] = 38] = "Gigawattsperliter";
+    PowerDensityUnits[PowerDensityUnits["Terawattsperliter"] = 39] = "Terawattsperliter";
 })(PowerDensityUnits = exports.PowerDensityUnits || (exports.PowerDensityUnits = {}));
 class PowerDensity {
     constructor(value, fromUnit) {
@@ -67,6 +71,9 @@ class PowerDensity {
     get Deciwattspercubicmeter() {
         return this.convertFromBase(PowerDensityUnits.Deciwattspercubicmeter);
     }
+    get Decawattspercubicmeter() {
+        return this.convertFromBase(PowerDensityUnits.Decawattspercubicmeter);
+    }
     get Kilowattspercubicmeter() {
         return this.convertFromBase(PowerDensityUnits.Kilowattspercubicmeter);
     }
@@ -90,6 +97,9 @@ class PowerDensity {
     }
     get Deciwattspercubicinch() {
         return this.convertFromBase(PowerDensityUnits.Deciwattspercubicinch);
+    }
+    get Decawattspercubicinch() {
+        return this.convertFromBase(PowerDensityUnits.Decawattspercubicinch);
     }
     get Kilowattspercubicinch() {
         return this.convertFromBase(PowerDensityUnits.Kilowattspercubicinch);
@@ -115,6 +125,9 @@ class PowerDensity {
     get Deciwattspercubicfoot() {
         return this.convertFromBase(PowerDensityUnits.Deciwattspercubicfoot);
     }
+    get Decawattspercubicfoot() {
+        return this.convertFromBase(PowerDensityUnits.Decawattspercubicfoot);
+    }
     get Kilowattspercubicfoot() {
         return this.convertFromBase(PowerDensityUnits.Kilowattspercubicfoot);
     }
@@ -138,6 +151,9 @@ class PowerDensity {
     }
     get Deciwattsperliter() {
         return this.convertFromBase(PowerDensityUnits.Deciwattsperliter);
+    }
+    get Decawattsperliter() {
+        return this.convertFromBase(PowerDensityUnits.Decawattsperliter);
     }
     get Kilowattsperliter() {
         return this.convertFromBase(PowerDensityUnits.Kilowattsperliter);
@@ -175,6 +191,9 @@ class PowerDensity {
     static FromDeciwattspercubicmeter(value) {
         return new PowerDensity(value, PowerDensityUnits.Deciwattspercubicmeter);
     }
+    static FromDecawattspercubicmeter(value) {
+        return new PowerDensity(value, PowerDensityUnits.Decawattspercubicmeter);
+    }
     static FromKilowattspercubicmeter(value) {
         return new PowerDensity(value, PowerDensityUnits.Kilowattspercubicmeter);
     }
@@ -198,6 +217,9 @@ class PowerDensity {
     }
     static FromDeciwattspercubicinch(value) {
         return new PowerDensity(value, PowerDensityUnits.Deciwattspercubicinch);
+    }
+    static FromDecawattspercubicinch(value) {
+        return new PowerDensity(value, PowerDensityUnits.Decawattspercubicinch);
     }
     static FromKilowattspercubicinch(value) {
         return new PowerDensity(value, PowerDensityUnits.Kilowattspercubicinch);
@@ -223,6 +245,9 @@ class PowerDensity {
     static FromDeciwattspercubicfoot(value) {
         return new PowerDensity(value, PowerDensityUnits.Deciwattspercubicfoot);
     }
+    static FromDecawattspercubicfoot(value) {
+        return new PowerDensity(value, PowerDensityUnits.Decawattspercubicfoot);
+    }
     static FromKilowattspercubicfoot(value) {
         return new PowerDensity(value, PowerDensityUnits.Kilowattspercubicfoot);
     }
@@ -246,6 +271,9 @@ class PowerDensity {
     }
     static FromDeciwattsperliter(value) {
         return new PowerDensity(value, PowerDensityUnits.Deciwattsperliter);
+    }
+    static FromDecawattsperliter(value) {
+        return new PowerDensity(value, PowerDensityUnits.Decawattsperliter);
     }
     static FromKilowattsperliter(value) {
         return new PowerDensity(value, PowerDensityUnits.Kilowattsperliter);
@@ -277,6 +305,8 @@ class PowerDensity {
                 return (this.value) * 0.000001;
             case PowerDensityUnits.Deciwattspercubicmeter:
                 return (this.value) * 0.1;
+            case PowerDensityUnits.Decawattspercubicmeter:
+                return (this.value) * 10;
             case PowerDensityUnits.Kilowattspercubicmeter:
                 return (this.value) * 1000;
             case PowerDensityUnits.Megawattspercubicmeter:
@@ -293,6 +323,8 @@ class PowerDensity {
                 return (this.value * 6.102374409473228e4) * 0.000001;
             case PowerDensityUnits.Deciwattspercubicinch:
                 return (this.value * 6.102374409473228e4) * 0.1;
+            case PowerDensityUnits.Decawattspercubicinch:
+                return (this.value * 6.102374409473228e4) * 10;
             case PowerDensityUnits.Kilowattspercubicinch:
                 return (this.value * 6.102374409473228e4) * 1000;
             case PowerDensityUnits.Megawattspercubicinch:
@@ -309,6 +341,8 @@ class PowerDensity {
                 return (this.value * 3.531466672148859e1) * 0.000001;
             case PowerDensityUnits.Deciwattspercubicfoot:
                 return (this.value * 3.531466672148859e1) * 0.1;
+            case PowerDensityUnits.Decawattspercubicfoot:
+                return (this.value * 3.531466672148859e1) * 10;
             case PowerDensityUnits.Kilowattspercubicfoot:
                 return (this.value * 3.531466672148859e1) * 1000;
             case PowerDensityUnits.Megawattspercubicfoot:
@@ -325,6 +359,8 @@ class PowerDensity {
                 return (this.value * 1.0e3) * 0.000001;
             case PowerDensityUnits.Deciwattsperliter:
                 return (this.value * 1.0e3) * 0.1;
+            case PowerDensityUnits.Decawattsperliter:
+                return (this.value * 1.0e3) * 10;
             case PowerDensityUnits.Kilowattsperliter:
                 return (this.value * 1.0e3) * 1000;
             case PowerDensityUnits.Megawattsperliter:
@@ -356,6 +392,8 @@ class PowerDensity {
                 return (value) / 0.000001;
             case PowerDensityUnits.Deciwattspercubicmeter:
                 return (value) / 0.1;
+            case PowerDensityUnits.Decawattspercubicmeter:
+                return (value) / 10;
             case PowerDensityUnits.Kilowattspercubicmeter:
                 return (value) / 1000;
             case PowerDensityUnits.Megawattspercubicmeter:
@@ -372,6 +410,8 @@ class PowerDensity {
                 return (value / 6.102374409473228e4) / 0.000001;
             case PowerDensityUnits.Deciwattspercubicinch:
                 return (value / 6.102374409473228e4) / 0.1;
+            case PowerDensityUnits.Decawattspercubicinch:
+                return (value / 6.102374409473228e4) / 10;
             case PowerDensityUnits.Kilowattspercubicinch:
                 return (value / 6.102374409473228e4) / 1000;
             case PowerDensityUnits.Megawattspercubicinch:
@@ -388,6 +428,8 @@ class PowerDensity {
                 return (value / 3.531466672148859e1) / 0.000001;
             case PowerDensityUnits.Deciwattspercubicfoot:
                 return (value / 3.531466672148859e1) / 0.1;
+            case PowerDensityUnits.Decawattspercubicfoot:
+                return (value / 3.531466672148859e1) / 10;
             case PowerDensityUnits.Kilowattspercubicfoot:
                 return (value / 3.531466672148859e1) / 1000;
             case PowerDensityUnits.Megawattspercubicfoot:
@@ -404,6 +446,8 @@ class PowerDensity {
                 return (value / 1.0e3) / 0.000001;
             case PowerDensityUnits.Deciwattsperliter:
                 return (value / 1.0e3) / 0.1;
+            case PowerDensityUnits.Decawattsperliter:
+                return (value / 1.0e3) / 10;
             case PowerDensityUnits.Kilowattsperliter:
                 return (value / 1.0e3) / 1000;
             case PowerDensityUnits.Megawattsperliter:

@@ -37,8 +37,8 @@ export class Illuminance {
 
     private convertFromBase(toUnit: IlluminanceUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case IlluminanceUnits.Lux:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class Illuminance {
                 case IlluminanceUnits.Megalux:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -37,8 +37,8 @@ export class MagneticField {
 
     private convertFromBase(toUnit: MagneticFieldUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MagneticFieldUnits.Teslas:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class MagneticField {
                 case MagneticFieldUnits.Microteslas:
                     return (this.value) * 0.000001;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

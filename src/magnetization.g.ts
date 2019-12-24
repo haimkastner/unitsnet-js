@@ -19,15 +19,15 @@ export class Magnetization {
 
     private convertFromBase(toUnit: MagnetizationUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MagnetizationUnits.AmperesPerMeter:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

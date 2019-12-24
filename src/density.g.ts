@@ -334,8 +334,8 @@ export class Density {
 
     private convertFromBase(toUnit: DensityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case DensityUnits.GramsPerCubicMillimeter:
                     return this.value*1e-6;
                 
@@ -444,10 +444,10 @@ export class Density {
                 case DensityUnits.Decigramspermilliliter:
                     return (this.value/1e-3) * 0.1;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

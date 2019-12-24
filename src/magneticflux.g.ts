@@ -19,15 +19,15 @@ export class MagneticFlux {
 
     private convertFromBase(toUnit: MagneticFluxUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MagneticFluxUnits.Webers:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

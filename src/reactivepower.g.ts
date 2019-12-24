@@ -46,8 +46,8 @@ export class ReactivePower {
 
     private convertFromBase(toUnit: ReactivePowerUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ReactivePowerUnits.VoltamperesReactive:
                     return this.value;
                 
@@ -60,10 +60,10 @@ export class ReactivePower {
                 case ReactivePowerUnits.Gigavoltamperesreactive:
                     return (this.value) * 1000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

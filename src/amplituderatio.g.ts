@@ -46,8 +46,8 @@ export class AmplitudeRatio {
 
     private convertFromBase(toUnit: AmplitudeRatioUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case AmplitudeRatioUnits.DecibelVolts:
                     return this.value;
                 
@@ -60,10 +60,10 @@ export class AmplitudeRatio {
                 case AmplitudeRatioUnits.DecibelsUnloaded:
                     return this.value + 2.218487499;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

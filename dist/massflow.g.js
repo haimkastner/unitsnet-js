@@ -18,19 +18,21 @@ var MassFlowUnits;
     MassFlowUnits[MassFlowUnits["Microgramspersecond"] = 13] = "Microgramspersecond";
     MassFlowUnits[MassFlowUnits["Centigramspersecond"] = 14] = "Centigramspersecond";
     MassFlowUnits[MassFlowUnits["Decigramspersecond"] = 15] = "Decigramspersecond";
-    MassFlowUnits[MassFlowUnits["Hectogramspersecond"] = 16] = "Hectogramspersecond";
-    MassFlowUnits[MassFlowUnits["Kilogramspersecond"] = 17] = "Kilogramspersecond";
-    MassFlowUnits[MassFlowUnits["Nanogramsperday"] = 18] = "Nanogramsperday";
-    MassFlowUnits[MassFlowUnits["Microgramsperday"] = 19] = "Microgramsperday";
-    MassFlowUnits[MassFlowUnits["Centigramsperday"] = 20] = "Centigramsperday";
-    MassFlowUnits[MassFlowUnits["Decigramsperday"] = 21] = "Decigramsperday";
-    MassFlowUnits[MassFlowUnits["Hectogramsperday"] = 22] = "Hectogramsperday";
-    MassFlowUnits[MassFlowUnits["Kilogramsperday"] = 23] = "Kilogramsperday";
-    MassFlowUnits[MassFlowUnits["Megagramsperday"] = 24] = "Megagramsperday";
-    MassFlowUnits[MassFlowUnits["Megapoundsperday"] = 25] = "Megapoundsperday";
-    MassFlowUnits[MassFlowUnits["Megapoundsperhour"] = 26] = "Megapoundsperhour";
-    MassFlowUnits[MassFlowUnits["Megapoundsperminute"] = 27] = "Megapoundsperminute";
-    MassFlowUnits[MassFlowUnits["Megapoundspersecond"] = 28] = "Megapoundspersecond";
+    MassFlowUnits[MassFlowUnits["Decagramspersecond"] = 16] = "Decagramspersecond";
+    MassFlowUnits[MassFlowUnits["Hectogramspersecond"] = 17] = "Hectogramspersecond";
+    MassFlowUnits[MassFlowUnits["Kilogramspersecond"] = 18] = "Kilogramspersecond";
+    MassFlowUnits[MassFlowUnits["Nanogramsperday"] = 19] = "Nanogramsperday";
+    MassFlowUnits[MassFlowUnits["Microgramsperday"] = 20] = "Microgramsperday";
+    MassFlowUnits[MassFlowUnits["Centigramsperday"] = 21] = "Centigramsperday";
+    MassFlowUnits[MassFlowUnits["Decigramsperday"] = 22] = "Decigramsperday";
+    MassFlowUnits[MassFlowUnits["Decagramsperday"] = 23] = "Decagramsperday";
+    MassFlowUnits[MassFlowUnits["Hectogramsperday"] = 24] = "Hectogramsperday";
+    MassFlowUnits[MassFlowUnits["Kilogramsperday"] = 25] = "Kilogramsperday";
+    MassFlowUnits[MassFlowUnits["Megagramsperday"] = 26] = "Megagramsperday";
+    MassFlowUnits[MassFlowUnits["Megapoundsperday"] = 27] = "Megapoundsperday";
+    MassFlowUnits[MassFlowUnits["Megapoundsperhour"] = 28] = "Megapoundsperhour";
+    MassFlowUnits[MassFlowUnits["Megapoundsperminute"] = 29] = "Megapoundsperminute";
+    MassFlowUnits[MassFlowUnits["Megapoundspersecond"] = 30] = "Megapoundspersecond";
 })(MassFlowUnits = exports.MassFlowUnits || (exports.MassFlowUnits = {}));
 class MassFlow {
     constructor(value, fromUnit) {
@@ -84,6 +86,9 @@ class MassFlow {
     get Decigramspersecond() {
         return this.convertFromBase(MassFlowUnits.Decigramspersecond);
     }
+    get Decagramspersecond() {
+        return this.convertFromBase(MassFlowUnits.Decagramspersecond);
+    }
     get Hectogramspersecond() {
         return this.convertFromBase(MassFlowUnits.Hectogramspersecond);
     }
@@ -101,6 +106,9 @@ class MassFlow {
     }
     get Decigramsperday() {
         return this.convertFromBase(MassFlowUnits.Decigramsperday);
+    }
+    get Decagramsperday() {
+        return this.convertFromBase(MassFlowUnits.Decagramsperday);
     }
     get Hectogramsperday() {
         return this.convertFromBase(MassFlowUnits.Hectogramsperday);
@@ -171,6 +179,9 @@ class MassFlow {
     static FromDecigramspersecond(value) {
         return new MassFlow(value, MassFlowUnits.Decigramspersecond);
     }
+    static FromDecagramspersecond(value) {
+        return new MassFlow(value, MassFlowUnits.Decagramspersecond);
+    }
     static FromHectogramspersecond(value) {
         return new MassFlow(value, MassFlowUnits.Hectogramspersecond);
     }
@@ -188,6 +199,9 @@ class MassFlow {
     }
     static FromDecigramsperday(value) {
         return new MassFlow(value, MassFlowUnits.Decigramsperday);
+    }
+    static FromDecagramsperday(value) {
+        return new MassFlow(value, MassFlowUnits.Decagramsperday);
     }
     static FromHectogramsperday(value) {
         return new MassFlow(value, MassFlowUnits.Hectogramsperday);
@@ -244,6 +258,8 @@ class MassFlow {
                 return (this.value) * 0.01;
             case MassFlowUnits.Decigramspersecond:
                 return (this.value) * 0.1;
+            case MassFlowUnits.Decagramspersecond:
+                return (this.value) * 10;
             case MassFlowUnits.Hectogramspersecond:
                 return (this.value) * 100;
             case MassFlowUnits.Kilogramspersecond:
@@ -256,6 +272,8 @@ class MassFlow {
                 return (this.value / 86400) * 0.01;
             case MassFlowUnits.Decigramsperday:
                 return (this.value / 86400) * 0.1;
+            case MassFlowUnits.Decagramsperday:
+                return (this.value / 86400) * 10;
             case MassFlowUnits.Hectogramsperday:
                 return (this.value / 86400) * 100;
             case MassFlowUnits.Kilogramsperday:
@@ -309,6 +327,8 @@ class MassFlow {
                 return (value) / 0.01;
             case MassFlowUnits.Decigramspersecond:
                 return (value) / 0.1;
+            case MassFlowUnits.Decagramspersecond:
+                return (value) / 10;
             case MassFlowUnits.Hectogramspersecond:
                 return (value) / 100;
             case MassFlowUnits.Kilogramspersecond:
@@ -321,6 +341,8 @@ class MassFlow {
                 return (value * 86400) / 0.01;
             case MassFlowUnits.Decigramsperday:
                 return (value * 86400) / 0.1;
+            case MassFlowUnits.Decagramsperday:
+                return (value * 86400) / 10;
             case MassFlowUnits.Hectogramsperday:
                 return (value * 86400) / 100;
             case MassFlowUnits.Kilogramsperday:

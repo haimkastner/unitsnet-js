@@ -28,18 +28,18 @@ export class PowerRatio {
 
     private convertFromBase(toUnit: PowerRatioUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case PowerRatioUnits.DecibelWatts:
                     return this.value;
                 
                 case PowerRatioUnits.DecibelMilliwatts:
                     return this.value + 30;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

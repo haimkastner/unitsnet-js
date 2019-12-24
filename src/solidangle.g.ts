@@ -19,15 +19,15 @@ export class SolidAngle {
 
     private convertFromBase(toUnit: SolidAngleUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case SolidAngleUnits.Steradians:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

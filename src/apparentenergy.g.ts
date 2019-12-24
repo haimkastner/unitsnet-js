@@ -37,8 +37,8 @@ export class ApparentEnergy {
 
     private convertFromBase(toUnit: ApparentEnergyUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ApparentEnergyUnits.VoltampereHours:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class ApparentEnergy {
                 case ApparentEnergyUnits.Megavoltamperehours:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

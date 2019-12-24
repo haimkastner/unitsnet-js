@@ -199,8 +199,8 @@ export class Torque {
 
     private convertFromBase(toUnit: TorqueUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case TorqueUnits.NewtonMillimeters:
                     return this.value*1000;
                 
@@ -264,10 +264,10 @@ export class Torque {
                 case TorqueUnits.Megapoundforcefeet:
                     return (this.value*1.3558179483314) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

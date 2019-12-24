@@ -136,8 +136,8 @@ export class Area {
 
     private convertFromBase(toUnit: AreaUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case AreaUnits.SquareKilometers:
                     return this.value/1e6;
                 
@@ -180,10 +180,10 @@ export class Area {
                 case AreaUnits.SquareNauticalMiles:
                     return this.value/3429904;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

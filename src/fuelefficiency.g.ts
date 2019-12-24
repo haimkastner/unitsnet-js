@@ -46,8 +46,8 @@ export class FuelEfficiency {
 
     private convertFromBase(toUnit: FuelEfficiencyUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case FuelEfficiencyUnits.LitersPer100Kilometers:
                     return this.value;
                 
@@ -60,10 +60,10 @@ export class FuelEfficiency {
                 case FuelEfficiencyUnits.KilometersPerLiters:
                     return 100/this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

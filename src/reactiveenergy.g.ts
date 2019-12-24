@@ -37,8 +37,8 @@ export class ReactiveEnergy {
 
     private convertFromBase(toUnit: ReactiveEnergyUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ReactiveEnergyUnits.VoltampereReactiveHours:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class ReactiveEnergy {
                 case ReactiveEnergyUnits.Megavoltamperereactivehours:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

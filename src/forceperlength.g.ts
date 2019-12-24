@@ -109,8 +109,8 @@ export class ForcePerLength {
 
     private convertFromBase(toUnit: ForcePerLengthUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ForcePerLengthUnits.NewtonsPerMeter:
                     return this.value;
                 
@@ -144,10 +144,10 @@ export class ForcePerLength {
                 case ForcePerLengthUnits.Meganewtonspermeter:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

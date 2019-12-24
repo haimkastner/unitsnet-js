@@ -19,15 +19,15 @@ export class LapseRate {
 
     private convertFromBase(toUnit: LapseRateUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case LapseRateUnits.DegreesCelciusPerKilometer:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -24,6 +24,9 @@ var EnergyUnits;
     EnergyUnits[EnergyUnits["Megawatthours"] = 19] = "Megawatthours";
     EnergyUnits[EnergyUnits["Gigawatthours"] = 20] = "Gigawatthours";
     EnergyUnits[EnergyUnits["Terawatthours"] = 21] = "Terawatthours";
+    EnergyUnits[EnergyUnits["Decathermsec"] = 22] = "Decathermsec";
+    EnergyUnits[EnergyUnits["Decathermsus"] = 23] = "Decathermsus";
+    EnergyUnits[EnergyUnits["Decathermsimperial"] = 24] = "Decathermsimperial";
 })(EnergyUnits = exports.EnergyUnits || (exports.EnergyUnits = {}));
 class Energy {
     constructor(value, fromUnit) {
@@ -95,6 +98,15 @@ class Energy {
     get Terawatthours() {
         return this.convertFromBase(EnergyUnits.Terawatthours);
     }
+    get Decathermsec() {
+        return this.convertFromBase(EnergyUnits.Decathermsec);
+    }
+    get Decathermsus() {
+        return this.convertFromBase(EnergyUnits.Decathermsus);
+    }
+    get Decathermsimperial() {
+        return this.convertFromBase(EnergyUnits.Decathermsimperial);
+    }
     static FromJoules(value) {
         return new Energy(value, EnergyUnits.Joules);
     }
@@ -161,6 +173,15 @@ class Energy {
     static FromTerawatthours(value) {
         return new Energy(value, EnergyUnits.Terawatthours);
     }
+    static FromDecathermsec(value) {
+        return new Energy(value, EnergyUnits.Decathermsec);
+    }
+    static FromDecathermsus(value) {
+        return new Energy(value, EnergyUnits.Decathermsus);
+    }
+    static FromDecathermsimperial(value) {
+        return new Energy(value, EnergyUnits.Decathermsimperial);
+    }
     convertFromBase(toUnit) {
         switch (toUnit) {
             case EnergyUnits.Joules:
@@ -207,6 +228,12 @@ class Energy {
                 return (this.value * 3600) * 1000000000;
             case EnergyUnits.Terawatthours:
                 return (this.value * 3600) * 1000000000000;
+            case EnergyUnits.Decathermsec:
+                return (this.value * 1.05505585262e8) * 10;
+            case EnergyUnits.Decathermsus:
+                return (this.value * 1.054804e8) * 10;
+            case EnergyUnits.Decathermsimperial:
+                return (this.value * 1.05505585257348e8) * 10;
             default:
                 break;
         }
@@ -258,6 +285,12 @@ class Energy {
                 return (value / 3600) / 1000000000;
             case EnergyUnits.Terawatthours:
                 return (value / 3600) / 1000000000000;
+            case EnergyUnits.Decathermsec:
+                return (value / 1.05505585262e8) / 10;
+            case EnergyUnits.Decathermsus:
+                return (value / 1.054804e8) / 10;
+            case EnergyUnits.Decathermsimperial:
+                return (value / 1.05505585257348e8) / 10;
             default:
                 break;
         }

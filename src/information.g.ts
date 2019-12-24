@@ -136,8 +136,8 @@ export class Information {
 
     private convertFromBase(toUnit: InformationUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case InformationUnits.Bytes:
                     return this.value/8;
                 
@@ -180,10 +180,10 @@ export class Information {
                 case InformationUnits.Exabits:
                     return (this.value) * 1000000000000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -37,8 +37,8 @@ export class ElectricSurfaceChargeDensity {
 
     private convertFromBase(toUnit: ElectricSurfaceChargeDensityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class ElectricSurfaceChargeDensity {
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
                     return this.value / 1.5500031000062000e3;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

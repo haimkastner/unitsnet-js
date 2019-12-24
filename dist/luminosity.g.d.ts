@@ -1,25 +1,29 @@
 export declare enum LuminosityUnits {
     Watts = 0,
     SolarLuminosities = 1,
-    Picowatts = 2,
-    Nanowatts = 3,
-    Microwatts = 4,
-    Deciwatts = 5,
-    Kilowatts = 6,
-    Megawatts = 7,
-    Gigawatts = 8,
-    Terawatts = 9,
-    Petawatts = 10
+    Femtowatts = 2,
+    Picowatts = 3,
+    Nanowatts = 4,
+    Microwatts = 5,
+    Deciwatts = 6,
+    Decawatts = 7,
+    Kilowatts = 8,
+    Megawatts = 9,
+    Gigawatts = 10,
+    Terawatts = 11,
+    Petawatts = 12
 }
 export declare class Luminosity {
     private value;
     constructor(value: number, fromUnit: LuminosityUnits);
     get Watts(): number;
     get SolarLuminosities(): number;
+    get Femtowatts(): number;
     get Picowatts(): number;
     get Nanowatts(): number;
     get Microwatts(): number;
     get Deciwatts(): number;
+    get Decawatts(): number;
     get Kilowatts(): number;
     get Megawatts(): number;
     get Gigawatts(): number;
@@ -27,10 +31,12 @@ export declare class Luminosity {
     get Petawatts(): number;
     static FromWatts(value: number): Luminosity;
     static FromSolarLuminosities(value: number): Luminosity;
+    static FromFemtowatts(value: number): Luminosity;
     static FromPicowatts(value: number): Luminosity;
     static FromNanowatts(value: number): Luminosity;
     static FromMicrowatts(value: number): Luminosity;
     static FromDeciwatts(value: number): Luminosity;
+    static FromDecawatts(value: number): Luminosity;
     static FromKilowatts(value: number): Luminosity;
     static FromMegawatts(value: number): Luminosity;
     static FromGigawatts(value: number): Luminosity;

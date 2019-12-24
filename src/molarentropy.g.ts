@@ -37,8 +37,8 @@ export class MolarEntropy {
 
     private convertFromBase(toUnit: MolarEntropyUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MolarEntropyUnits.JoulesPerMoleKelvin:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class MolarEntropy {
                 case MolarEntropyUnits.Megajoulespermolekelvin:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

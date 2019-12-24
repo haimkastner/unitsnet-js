@@ -19,15 +19,15 @@ export class Permittivity {
 
     private convertFromBase(toUnit: PermittivityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case PermittivityUnits.FaradsPerMeter:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

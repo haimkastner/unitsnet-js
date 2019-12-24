@@ -433,8 +433,8 @@ export class VolumeFlow {
 
     private convertFromBase(toUnit: VolumeFlowUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case VolumeFlowUnits.CubicMetersPerSecond:
                     return this.value;
                 
@@ -576,10 +576,10 @@ export class VolumeFlow {
                 case VolumeFlowUnits.Megaukgallonspersecond:
                     return (this.value/219.969) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

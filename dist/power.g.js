@@ -10,19 +10,21 @@ var PowerUnits;
     PowerUnits[PowerUnits["HydraulicHorsepower"] = 5] = "HydraulicHorsepower";
     PowerUnits[PowerUnits["BritishThermalUnitsPerHour"] = 6] = "BritishThermalUnitsPerHour";
     PowerUnits[PowerUnits["JoulesPerHour"] = 7] = "JoulesPerHour";
-    PowerUnits[PowerUnits["Picowatts"] = 8] = "Picowatts";
-    PowerUnits[PowerUnits["Nanowatts"] = 9] = "Nanowatts";
-    PowerUnits[PowerUnits["Microwatts"] = 10] = "Microwatts";
-    PowerUnits[PowerUnits["Deciwatts"] = 11] = "Deciwatts";
-    PowerUnits[PowerUnits["Kilowatts"] = 12] = "Kilowatts";
-    PowerUnits[PowerUnits["Megawatts"] = 13] = "Megawatts";
-    PowerUnits[PowerUnits["Gigawatts"] = 14] = "Gigawatts";
-    PowerUnits[PowerUnits["Terawatts"] = 15] = "Terawatts";
-    PowerUnits[PowerUnits["Petawatts"] = 16] = "Petawatts";
-    PowerUnits[PowerUnits["Kilobritishthermalunitsperhour"] = 17] = "Kilobritishthermalunitsperhour";
-    PowerUnits[PowerUnits["Kilojoulesperhour"] = 18] = "Kilojoulesperhour";
-    PowerUnits[PowerUnits["Megajoulesperhour"] = 19] = "Megajoulesperhour";
-    PowerUnits[PowerUnits["Gigajoulesperhour"] = 20] = "Gigajoulesperhour";
+    PowerUnits[PowerUnits["Femtowatts"] = 8] = "Femtowatts";
+    PowerUnits[PowerUnits["Picowatts"] = 9] = "Picowatts";
+    PowerUnits[PowerUnits["Nanowatts"] = 10] = "Nanowatts";
+    PowerUnits[PowerUnits["Microwatts"] = 11] = "Microwatts";
+    PowerUnits[PowerUnits["Deciwatts"] = 12] = "Deciwatts";
+    PowerUnits[PowerUnits["Decawatts"] = 13] = "Decawatts";
+    PowerUnits[PowerUnits["Kilowatts"] = 14] = "Kilowatts";
+    PowerUnits[PowerUnits["Megawatts"] = 15] = "Megawatts";
+    PowerUnits[PowerUnits["Gigawatts"] = 16] = "Gigawatts";
+    PowerUnits[PowerUnits["Terawatts"] = 17] = "Terawatts";
+    PowerUnits[PowerUnits["Petawatts"] = 18] = "Petawatts";
+    PowerUnits[PowerUnits["Kilobritishthermalunitsperhour"] = 19] = "Kilobritishthermalunitsperhour";
+    PowerUnits[PowerUnits["Kilojoulesperhour"] = 20] = "Kilojoulesperhour";
+    PowerUnits[PowerUnits["Megajoulesperhour"] = 21] = "Megajoulesperhour";
+    PowerUnits[PowerUnits["Gigajoulesperhour"] = 22] = "Gigajoulesperhour";
 })(PowerUnits = exports.PowerUnits || (exports.PowerUnits = {}));
 class Power {
     constructor(value, fromUnit) {
@@ -52,6 +54,9 @@ class Power {
     get JoulesPerHour() {
         return this.convertFromBase(PowerUnits.JoulesPerHour);
     }
+    get Femtowatts() {
+        return this.convertFromBase(PowerUnits.Femtowatts);
+    }
     get Picowatts() {
         return this.convertFromBase(PowerUnits.Picowatts);
     }
@@ -63,6 +68,9 @@ class Power {
     }
     get Deciwatts() {
         return this.convertFromBase(PowerUnits.Deciwatts);
+    }
+    get Decawatts() {
+        return this.convertFromBase(PowerUnits.Decawatts);
     }
     get Kilowatts() {
         return this.convertFromBase(PowerUnits.Kilowatts);
@@ -115,6 +123,9 @@ class Power {
     static FromJoulesPerHour(value) {
         return new Power(value, PowerUnits.JoulesPerHour);
     }
+    static FromFemtowatts(value) {
+        return new Power(value, PowerUnits.Femtowatts);
+    }
     static FromPicowatts(value) {
         return new Power(value, PowerUnits.Picowatts);
     }
@@ -126,6 +137,9 @@ class Power {
     }
     static FromDeciwatts(value) {
         return new Power(value, PowerUnits.Deciwatts);
+    }
+    static FromDecawatts(value) {
+        return new Power(value, PowerUnits.Decawatts);
     }
     static FromKilowatts(value) {
         return new Power(value, PowerUnits.Kilowatts);
@@ -172,6 +186,8 @@ class Power {
                 return this.value / 0.293071;
             case PowerUnits.JoulesPerHour:
                 return this.value * 3600;
+            case PowerUnits.Femtowatts:
+                return (this.value) * 1e-15;
             case PowerUnits.Picowatts:
                 return (this.value) * 1e-12;
             case PowerUnits.Nanowatts:
@@ -180,6 +196,8 @@ class Power {
                 return (this.value) * 0.000001;
             case PowerUnits.Deciwatts:
                 return (this.value) * 0.1;
+            case PowerUnits.Decawatts:
+                return (this.value) * 10;
             case PowerUnits.Kilowatts:
                 return (this.value) * 1000;
             case PowerUnits.Megawatts:
@@ -221,6 +239,8 @@ class Power {
                 return value * 0.293071;
             case PowerUnits.JoulesPerHour:
                 return value / 3600;
+            case PowerUnits.Femtowatts:
+                return (value) / 1e-15;
             case PowerUnits.Picowatts:
                 return (value) / 1e-12;
             case PowerUnits.Nanowatts:
@@ -229,6 +249,8 @@ class Power {
                 return (value) / 0.000001;
             case PowerUnits.Deciwatts:
                 return (value) / 0.1;
+            case PowerUnits.Decawatts:
+                return (value) / 10;
             case PowerUnits.Kilowatts:
                 return (value) / 1000;
             case PowerUnits.Megawatts:

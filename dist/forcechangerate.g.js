@@ -4,12 +4,14 @@ var ForceChangeRateUnits;
 (function (ForceChangeRateUnits) {
     ForceChangeRateUnits[ForceChangeRateUnits["NewtonsPerMinute"] = 0] = "NewtonsPerMinute";
     ForceChangeRateUnits[ForceChangeRateUnits["NewtonsPerSecond"] = 1] = "NewtonsPerSecond";
-    ForceChangeRateUnits[ForceChangeRateUnits["Kilonewtonsperminute"] = 2] = "Kilonewtonsperminute";
-    ForceChangeRateUnits[ForceChangeRateUnits["Nanonewtonspersecond"] = 3] = "Nanonewtonspersecond";
-    ForceChangeRateUnits[ForceChangeRateUnits["Micronewtonspersecond"] = 4] = "Micronewtonspersecond";
-    ForceChangeRateUnits[ForceChangeRateUnits["Centinewtonspersecond"] = 5] = "Centinewtonspersecond";
-    ForceChangeRateUnits[ForceChangeRateUnits["Decinewtonspersecond"] = 6] = "Decinewtonspersecond";
-    ForceChangeRateUnits[ForceChangeRateUnits["Kilonewtonspersecond"] = 7] = "Kilonewtonspersecond";
+    ForceChangeRateUnits[ForceChangeRateUnits["Decanewtonsperminute"] = 2] = "Decanewtonsperminute";
+    ForceChangeRateUnits[ForceChangeRateUnits["Kilonewtonsperminute"] = 3] = "Kilonewtonsperminute";
+    ForceChangeRateUnits[ForceChangeRateUnits["Nanonewtonspersecond"] = 4] = "Nanonewtonspersecond";
+    ForceChangeRateUnits[ForceChangeRateUnits["Micronewtonspersecond"] = 5] = "Micronewtonspersecond";
+    ForceChangeRateUnits[ForceChangeRateUnits["Centinewtonspersecond"] = 6] = "Centinewtonspersecond";
+    ForceChangeRateUnits[ForceChangeRateUnits["Decinewtonspersecond"] = 7] = "Decinewtonspersecond";
+    ForceChangeRateUnits[ForceChangeRateUnits["Decanewtonspersecond"] = 8] = "Decanewtonspersecond";
+    ForceChangeRateUnits[ForceChangeRateUnits["Kilonewtonspersecond"] = 9] = "Kilonewtonspersecond";
 })(ForceChangeRateUnits = exports.ForceChangeRateUnits || (exports.ForceChangeRateUnits = {}));
 class ForceChangeRate {
     constructor(value, fromUnit) {
@@ -20,6 +22,9 @@ class ForceChangeRate {
     }
     get NewtonsPerSecond() {
         return this.convertFromBase(ForceChangeRateUnits.NewtonsPerSecond);
+    }
+    get Decanewtonsperminute() {
+        return this.convertFromBase(ForceChangeRateUnits.Decanewtonsperminute);
     }
     get Kilonewtonsperminute() {
         return this.convertFromBase(ForceChangeRateUnits.Kilonewtonsperminute);
@@ -36,6 +41,9 @@ class ForceChangeRate {
     get Decinewtonspersecond() {
         return this.convertFromBase(ForceChangeRateUnits.Decinewtonspersecond);
     }
+    get Decanewtonspersecond() {
+        return this.convertFromBase(ForceChangeRateUnits.Decanewtonspersecond);
+    }
     get Kilonewtonspersecond() {
         return this.convertFromBase(ForceChangeRateUnits.Kilonewtonspersecond);
     }
@@ -44,6 +52,9 @@ class ForceChangeRate {
     }
     static FromNewtonsPerSecond(value) {
         return new ForceChangeRate(value, ForceChangeRateUnits.NewtonsPerSecond);
+    }
+    static FromDecanewtonsperminute(value) {
+        return new ForceChangeRate(value, ForceChangeRateUnits.Decanewtonsperminute);
     }
     static FromKilonewtonsperminute(value) {
         return new ForceChangeRate(value, ForceChangeRateUnits.Kilonewtonsperminute);
@@ -60,6 +71,9 @@ class ForceChangeRate {
     static FromDecinewtonspersecond(value) {
         return new ForceChangeRate(value, ForceChangeRateUnits.Decinewtonspersecond);
     }
+    static FromDecanewtonspersecond(value) {
+        return new ForceChangeRate(value, ForceChangeRateUnits.Decanewtonspersecond);
+    }
     static FromKilonewtonspersecond(value) {
         return new ForceChangeRate(value, ForceChangeRateUnits.Kilonewtonspersecond);
     }
@@ -69,6 +83,8 @@ class ForceChangeRate {
                 return this.value * 60;
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return this.value;
+            case ForceChangeRateUnits.Decanewtonsperminute:
+                return (this.value / 60) * 10;
             case ForceChangeRateUnits.Kilonewtonsperminute:
                 return (this.value / 60) * 1000;
             case ForceChangeRateUnits.Nanonewtonspersecond:
@@ -79,6 +95,8 @@ class ForceChangeRate {
                 return (this.value) * 0.01;
             case ForceChangeRateUnits.Decinewtonspersecond:
                 return (this.value) * 0.1;
+            case ForceChangeRateUnits.Decanewtonspersecond:
+                return (this.value) * 10;
             case ForceChangeRateUnits.Kilonewtonspersecond:
                 return (this.value) * 1000;
             default:
@@ -92,6 +110,8 @@ class ForceChangeRate {
                 return value / 60;
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return value;
+            case ForceChangeRateUnits.Decanewtonsperminute:
+                return (value * 60) / 10;
             case ForceChangeRateUnits.Kilonewtonsperminute:
                 return (value * 60) / 1000;
             case ForceChangeRateUnits.Nanonewtonspersecond:
@@ -102,6 +122,8 @@ class ForceChangeRate {
                 return (value) / 0.01;
             case ForceChangeRateUnits.Decinewtonspersecond:
                 return (value) / 0.1;
+            case ForceChangeRateUnits.Decanewtonspersecond:
+                return (value) / 10;
             case ForceChangeRateUnits.Kilonewtonspersecond:
                 return (value) / 1000;
             default:

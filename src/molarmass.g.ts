@@ -5,6 +5,7 @@ export enum MolarMassUnits {
     Microgramspermole,
     Centigramspermole,
     Decigramspermole,
+    Decagramspermole,
     Hectogramspermole,
     Kilogramspermole,
     Kilopoundspermole,
@@ -40,6 +41,10 @@ export class MolarMass {
 
     public get Decigramspermole(): number {
         return this.convertFromBase(MolarMassUnits.Decigramspermole);
+    }
+
+    public get Decagramspermole(): number {
+        return this.convertFromBase(MolarMassUnits.Decagramspermole);
     }
 
     public get Hectogramspermole(): number {
@@ -82,6 +87,10 @@ export class MolarMass {
         return new MolarMass(value, MolarMassUnits.Decigramspermole);
     }
 
+    public static FromDecagramspermole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.Decagramspermole);
+    }
+
     public static FromHectogramspermole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.Hectogramspermole);
     }
@@ -100,8 +109,8 @@ export class MolarMass {
 
     private convertFromBase(toUnit: MolarMassUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MolarMassUnits.GramsPerMole:
                     return this.value*1e3;
                 
@@ -120,6 +129,9 @@ export class MolarMass {
                 case MolarMassUnits.Decigramspermole:
                     return (this.value/1e3) * 0.1;
                 
+                case MolarMassUnits.Decagramspermole:
+                    return (this.value/1e3) * 10;
+                
                 case MolarMassUnits.Hectogramspermole:
                     return (this.value/1e3) * 100;
                 
@@ -132,10 +144,10 @@ export class MolarMass {
                 case MolarMassUnits.Megapoundspermole:
                     return (this.value*0.45359237) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -160,6 +172,9 @@ export class MolarMass {
                 
                 case MolarMassUnits.Decigramspermole:
                     return (value*1e3) / 0.1;
+                
+                case MolarMassUnits.Decagramspermole:
+                    return (value*1e3) / 10;
                 
                 case MolarMassUnits.Hectogramspermole:
                     return (value*1e3) / 100;

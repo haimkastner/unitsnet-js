@@ -16,6 +16,7 @@ export enum MassUnits {
     Micrograms,
     Centigrams,
     Decigrams,
+    Decagrams,
     Hectograms,
     Kilograms,
     Kilotonnes,
@@ -97,6 +98,10 @@ export class Mass {
 
     public get Decigrams(): number {
         return this.convertFromBase(MassUnits.Decigrams);
+    }
+
+    public get Decagrams(): number {
+        return this.convertFromBase(MassUnits.Decagrams);
     }
 
     public get Hectograms(): number {
@@ -191,6 +196,10 @@ export class Mass {
         return new Mass(value, MassUnits.Decigrams);
     }
 
+    public static FromDecagrams(value: number): Mass {
+        return new Mass(value, MassUnits.Decagrams);
+    }
+
     public static FromHectograms(value: number): Mass {
         return new Mass(value, MassUnits.Hectograms);
     }
@@ -217,8 +226,8 @@ export class Mass {
 
     private convertFromBase(toUnit: MassUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case MassUnits.Grams:
                     return this.value*1e3;
                 
@@ -270,6 +279,9 @@ export class Mass {
                 case MassUnits.Decigrams:
                     return (this.value/1e3) * 0.1;
                 
+                case MassUnits.Decagrams:
+                    return (this.value/1e3) * 10;
+                
                 case MassUnits.Hectograms:
                     return (this.value/1e3) * 100;
                 
@@ -288,10 +300,10 @@ export class Mass {
                 case MassUnits.Megapounds:
                     return (this.value*0.45359237) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -349,6 +361,9 @@ export class Mass {
                 
                 case MassUnits.Decigrams:
                     return (value*1e3) / 0.1;
+                
+                case MassUnits.Decagrams:
+                    return (value*1e3) / 10;
                 
                 case MassUnits.Hectograms:
                     return (value*1e3) / 100;

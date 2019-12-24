@@ -37,8 +37,8 @@ export class VolumePerLength {
 
     private convertFromBase(toUnit: VolumePerLengthUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case VolumePerLengthUnits.CubicMetersPerMeter:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class VolumePerLength {
                 case VolumePerLengthUnits.OilBarrelsPerFoot:
                     return this.value*1.91713408;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

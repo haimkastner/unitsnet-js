@@ -8,6 +8,7 @@ export enum ForceUnits {
     PoundsForce,
     OunceForce,
     Micronewtons,
+    Decanewtons,
     Kilonewtons,
     Meganewtons
 }
@@ -55,6 +56,10 @@ export class Force {
         return this.convertFromBase(ForceUnits.Micronewtons);
     }
 
+    public get Decanewtons(): number {
+        return this.convertFromBase(ForceUnits.Decanewtons);
+    }
+
     public get Kilonewtons(): number {
         return this.convertFromBase(ForceUnits.Kilonewtons);
     }
@@ -99,6 +104,10 @@ export class Force {
         return new Force(value, ForceUnits.Micronewtons);
     }
 
+    public static FromDecanewtons(value: number): Force {
+        return new Force(value, ForceUnits.Decanewtons);
+    }
+
     public static FromKilonewtons(value: number): Force {
         return new Force(value, ForceUnits.Kilonewtons);
     }
@@ -109,8 +118,8 @@ export class Force {
 
     private convertFromBase(toUnit: ForceUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ForceUnits.Dyne:
                     return this.value*1e5;
                 
@@ -138,16 +147,19 @@ export class Force {
                 case ForceUnits.Micronewtons:
                     return (this.value) * 0.000001;
                 
+                case ForceUnits.Decanewtons:
+                    return (this.value) * 10;
+                
                 case ForceUnits.Kilonewtons:
                     return (this.value) * 1000;
                 
                 case ForceUnits.Meganewtons:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -181,6 +193,9 @@ export class Force {
                 
                 case ForceUnits.Micronewtons:
                     return (value) / 0.000001;
+                
+                case ForceUnits.Decanewtons:
+                    return (value) / 10;
                 
                 case ForceUnits.Kilonewtons:
                     return (value) / 1000;

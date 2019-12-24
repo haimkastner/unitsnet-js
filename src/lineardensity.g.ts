@@ -37,8 +37,8 @@ export class LinearDensity {
 
     private convertFromBase(toUnit: LinearDensityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case LinearDensityUnits.GramsPerMeter:
                     return this.value/1e-3;
                 
@@ -48,10 +48,10 @@ export class LinearDensity {
                 case LinearDensityUnits.Kilogramspermeter:
                     return (this.value*1e-3) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

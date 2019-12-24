@@ -14,14 +14,16 @@ var MassFractionUnits;
     MassFractionUnits[MassFractionUnits["Microgramspergram"] = 9] = "Microgramspergram";
     MassFractionUnits[MassFractionUnits["Centigramspergram"] = 10] = "Centigramspergram";
     MassFractionUnits[MassFractionUnits["Decigramspergram"] = 11] = "Decigramspergram";
-    MassFractionUnits[MassFractionUnits["Hectogramspergram"] = 12] = "Hectogramspergram";
-    MassFractionUnits[MassFractionUnits["Kilogramspergram"] = 13] = "Kilogramspergram";
-    MassFractionUnits[MassFractionUnits["Nanogramsperkilogram"] = 14] = "Nanogramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Microgramsperkilogram"] = 15] = "Microgramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Centigramsperkilogram"] = 16] = "Centigramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Decigramsperkilogram"] = 17] = "Decigramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Hectogramsperkilogram"] = 18] = "Hectogramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Kilogramsperkilogram"] = 19] = "Kilogramsperkilogram";
+    MassFractionUnits[MassFractionUnits["Decagramspergram"] = 12] = "Decagramspergram";
+    MassFractionUnits[MassFractionUnits["Hectogramspergram"] = 13] = "Hectogramspergram";
+    MassFractionUnits[MassFractionUnits["Kilogramspergram"] = 14] = "Kilogramspergram";
+    MassFractionUnits[MassFractionUnits["Nanogramsperkilogram"] = 15] = "Nanogramsperkilogram";
+    MassFractionUnits[MassFractionUnits["Microgramsperkilogram"] = 16] = "Microgramsperkilogram";
+    MassFractionUnits[MassFractionUnits["Centigramsperkilogram"] = 17] = "Centigramsperkilogram";
+    MassFractionUnits[MassFractionUnits["Decigramsperkilogram"] = 18] = "Decigramsperkilogram";
+    MassFractionUnits[MassFractionUnits["Decagramsperkilogram"] = 19] = "Decagramsperkilogram";
+    MassFractionUnits[MassFractionUnits["Hectogramsperkilogram"] = 20] = "Hectogramsperkilogram";
+    MassFractionUnits[MassFractionUnits["Kilogramsperkilogram"] = 21] = "Kilogramsperkilogram";
 })(MassFractionUnits = exports.MassFractionUnits || (exports.MassFractionUnits = {}));
 class MassFraction {
     constructor(value, fromUnit) {
@@ -63,6 +65,9 @@ class MassFraction {
     get Decigramspergram() {
         return this.convertFromBase(MassFractionUnits.Decigramspergram);
     }
+    get Decagramspergram() {
+        return this.convertFromBase(MassFractionUnits.Decagramspergram);
+    }
     get Hectogramspergram() {
         return this.convertFromBase(MassFractionUnits.Hectogramspergram);
     }
@@ -80,6 +85,9 @@ class MassFraction {
     }
     get Decigramsperkilogram() {
         return this.convertFromBase(MassFractionUnits.Decigramsperkilogram);
+    }
+    get Decagramsperkilogram() {
+        return this.convertFromBase(MassFractionUnits.Decagramsperkilogram);
     }
     get Hectogramsperkilogram() {
         return this.convertFromBase(MassFractionUnits.Hectogramsperkilogram);
@@ -123,6 +131,9 @@ class MassFraction {
     static FromDecigramspergram(value) {
         return new MassFraction(value, MassFractionUnits.Decigramspergram);
     }
+    static FromDecagramspergram(value) {
+        return new MassFraction(value, MassFractionUnits.Decagramspergram);
+    }
     static FromHectogramspergram(value) {
         return new MassFraction(value, MassFractionUnits.Hectogramspergram);
     }
@@ -140,6 +151,9 @@ class MassFraction {
     }
     static FromDecigramsperkilogram(value) {
         return new MassFraction(value, MassFractionUnits.Decigramsperkilogram);
+    }
+    static FromDecagramsperkilogram(value) {
+        return new MassFraction(value, MassFractionUnits.Decagramsperkilogram);
     }
     static FromHectogramsperkilogram(value) {
         return new MassFraction(value, MassFractionUnits.Hectogramsperkilogram);
@@ -173,6 +187,8 @@ class MassFraction {
                 return (this.value) * 0.01;
             case MassFractionUnits.Decigramspergram:
                 return (this.value) * 0.1;
+            case MassFractionUnits.Decagramspergram:
+                return (this.value) * 10;
             case MassFractionUnits.Hectogramspergram:
                 return (this.value) * 100;
             case MassFractionUnits.Kilogramspergram:
@@ -185,6 +201,8 @@ class MassFraction {
                 return (this.value / 1e3) * 0.01;
             case MassFractionUnits.Decigramsperkilogram:
                 return (this.value / 1e3) * 0.1;
+            case MassFractionUnits.Decagramsperkilogram:
+                return (this.value / 1e3) * 10;
             case MassFractionUnits.Hectogramsperkilogram:
                 return (this.value / 1e3) * 100;
             case MassFractionUnits.Kilogramsperkilogram:
@@ -220,6 +238,8 @@ class MassFraction {
                 return (value) / 0.01;
             case MassFractionUnits.Decigramspergram:
                 return (value) / 0.1;
+            case MassFractionUnits.Decagramspergram:
+                return (value) / 10;
             case MassFractionUnits.Hectogramspergram:
                 return (value) / 100;
             case MassFractionUnits.Kilogramspergram:
@@ -232,6 +252,8 @@ class MassFraction {
                 return (value * 1e3) / 0.01;
             case MassFractionUnits.Decigramsperkilogram:
                 return (value * 1e3) / 0.1;
+            case MassFractionUnits.Decagramsperkilogram:
+                return (value * 1e3) / 10;
             case MassFractionUnits.Hectogramsperkilogram:
                 return (value * 1e3) / 100;
             case MassFractionUnits.Kilogramsperkilogram:

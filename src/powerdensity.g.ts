@@ -7,6 +7,7 @@ export enum PowerDensityUnits {
     Nanowattspercubicmeter,
     Microwattspercubicmeter,
     Deciwattspercubicmeter,
+    Decawattspercubicmeter,
     Kilowattspercubicmeter,
     Megawattspercubicmeter,
     Gigawattspercubicmeter,
@@ -15,6 +16,7 @@ export enum PowerDensityUnits {
     Nanowattspercubicinch,
     Microwattspercubicinch,
     Deciwattspercubicinch,
+    Decawattspercubicinch,
     Kilowattspercubicinch,
     Megawattspercubicinch,
     Gigawattspercubicinch,
@@ -23,6 +25,7 @@ export enum PowerDensityUnits {
     Nanowattspercubicfoot,
     Microwattspercubicfoot,
     Deciwattspercubicfoot,
+    Decawattspercubicfoot,
     Kilowattspercubicfoot,
     Megawattspercubicfoot,
     Gigawattspercubicfoot,
@@ -31,6 +34,7 @@ export enum PowerDensityUnits {
     Nanowattsperliter,
     Microwattsperliter,
     Deciwattsperliter,
+    Decawattsperliter,
     Kilowattsperliter,
     Megawattsperliter,
     Gigawattsperliter,
@@ -76,6 +80,10 @@ export class PowerDensity {
         return this.convertFromBase(PowerDensityUnits.Deciwattspercubicmeter);
     }
 
+    public get Decawattspercubicmeter(): number {
+        return this.convertFromBase(PowerDensityUnits.Decawattspercubicmeter);
+    }
+
     public get Kilowattspercubicmeter(): number {
         return this.convertFromBase(PowerDensityUnits.Kilowattspercubicmeter);
     }
@@ -106,6 +114,10 @@ export class PowerDensity {
 
     public get Deciwattspercubicinch(): number {
         return this.convertFromBase(PowerDensityUnits.Deciwattspercubicinch);
+    }
+
+    public get Decawattspercubicinch(): number {
+        return this.convertFromBase(PowerDensityUnits.Decawattspercubicinch);
     }
 
     public get Kilowattspercubicinch(): number {
@@ -140,6 +152,10 @@ export class PowerDensity {
         return this.convertFromBase(PowerDensityUnits.Deciwattspercubicfoot);
     }
 
+    public get Decawattspercubicfoot(): number {
+        return this.convertFromBase(PowerDensityUnits.Decawattspercubicfoot);
+    }
+
     public get Kilowattspercubicfoot(): number {
         return this.convertFromBase(PowerDensityUnits.Kilowattspercubicfoot);
     }
@@ -170,6 +186,10 @@ export class PowerDensity {
 
     public get Deciwattsperliter(): number {
         return this.convertFromBase(PowerDensityUnits.Deciwattsperliter);
+    }
+
+    public get Decawattsperliter(): number {
+        return this.convertFromBase(PowerDensityUnits.Decawattsperliter);
     }
 
     public get Kilowattsperliter(): number {
@@ -220,6 +240,10 @@ export class PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.Deciwattspercubicmeter);
     }
 
+    public static FromDecawattspercubicmeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.Decawattspercubicmeter);
+    }
+
     public static FromKilowattspercubicmeter(value: number): PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.Kilowattspercubicmeter);
     }
@@ -250,6 +274,10 @@ export class PowerDensity {
 
     public static FromDeciwattspercubicinch(value: number): PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.Deciwattspercubicinch);
+    }
+
+    public static FromDecawattspercubicinch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.Decawattspercubicinch);
     }
 
     public static FromKilowattspercubicinch(value: number): PowerDensity {
@@ -284,6 +312,10 @@ export class PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.Deciwattspercubicfoot);
     }
 
+    public static FromDecawattspercubicfoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.Decawattspercubicfoot);
+    }
+
     public static FromKilowattspercubicfoot(value: number): PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.Kilowattspercubicfoot);
     }
@@ -316,6 +348,10 @@ export class PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.Deciwattsperliter);
     }
 
+    public static FromDecawattsperliter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.Decawattsperliter);
+    }
+
     public static FromKilowattsperliter(value: number): PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.Kilowattsperliter);
     }
@@ -334,8 +370,8 @@ export class PowerDensity {
 
     private convertFromBase(toUnit: PowerDensityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case PowerDensityUnits.WattsPerCubicMeter:
                     return this.value;
                 
@@ -359,6 +395,9 @@ export class PowerDensity {
                 
                 case PowerDensityUnits.Deciwattspercubicmeter:
                     return (this.value) * 0.1;
+                
+                case PowerDensityUnits.Decawattspercubicmeter:
+                    return (this.value) * 10;
                 
                 case PowerDensityUnits.Kilowattspercubicmeter:
                     return (this.value) * 1000;
@@ -384,6 +423,9 @@ export class PowerDensity {
                 case PowerDensityUnits.Deciwattspercubicinch:
                     return (this.value*6.102374409473228e4) * 0.1;
                 
+                case PowerDensityUnits.Decawattspercubicinch:
+                    return (this.value*6.102374409473228e4) * 10;
+                
                 case PowerDensityUnits.Kilowattspercubicinch:
                     return (this.value*6.102374409473228e4) * 1000;
                 
@@ -407,6 +449,9 @@ export class PowerDensity {
                 
                 case PowerDensityUnits.Deciwattspercubicfoot:
                     return (this.value*3.531466672148859e1) * 0.1;
+                
+                case PowerDensityUnits.Decawattspercubicfoot:
+                    return (this.value*3.531466672148859e1) * 10;
                 
                 case PowerDensityUnits.Kilowattspercubicfoot:
                     return (this.value*3.531466672148859e1) * 1000;
@@ -432,6 +477,9 @@ export class PowerDensity {
                 case PowerDensityUnits.Deciwattsperliter:
                     return (this.value*1.0e3) * 0.1;
                 
+                case PowerDensityUnits.Decawattsperliter:
+                    return (this.value*1.0e3) * 10;
+                
                 case PowerDensityUnits.Kilowattsperliter:
                     return (this.value*1.0e3) * 1000;
                 
@@ -444,10 +492,10 @@ export class PowerDensity {
                 case PowerDensityUnits.Terawattsperliter:
                     return (this.value*1.0e3) * 1000000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -479,6 +527,9 @@ export class PowerDensity {
                 case PowerDensityUnits.Deciwattspercubicmeter:
                     return (value) / 0.1;
                 
+                case PowerDensityUnits.Decawattspercubicmeter:
+                    return (value) / 10;
+                
                 case PowerDensityUnits.Kilowattspercubicmeter:
                     return (value) / 1000;
                 
@@ -502,6 +553,9 @@ export class PowerDensity {
                 
                 case PowerDensityUnits.Deciwattspercubicinch:
                     return (value/6.102374409473228e4) / 0.1;
+                
+                case PowerDensityUnits.Decawattspercubicinch:
+                    return (value/6.102374409473228e4) / 10;
                 
                 case PowerDensityUnits.Kilowattspercubicinch:
                     return (value/6.102374409473228e4) / 1000;
@@ -527,6 +581,9 @@ export class PowerDensity {
                 case PowerDensityUnits.Deciwattspercubicfoot:
                     return (value/3.531466672148859e1) / 0.1;
                 
+                case PowerDensityUnits.Decawattspercubicfoot:
+                    return (value/3.531466672148859e1) / 10;
+                
                 case PowerDensityUnits.Kilowattspercubicfoot:
                     return (value/3.531466672148859e1) / 1000;
                 
@@ -550,6 +607,9 @@ export class PowerDensity {
                 
                 case PowerDensityUnits.Deciwattsperliter:
                     return (value/1.0e3) / 0.1;
+                
+                case PowerDensityUnits.Decawattsperliter:
+                    return (value/1.0e3) / 10;
                 
                 case PowerDensityUnits.Kilowattsperliter:
                     return (value/1.0e3) / 1000;

@@ -46,8 +46,8 @@ export class ElectricPotentialDc {
 
     private convertFromBase(toUnit: ElectricPotentialDcUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricPotentialDcUnits.VoltsDc:
                     return this.value;
                 
@@ -60,10 +60,10 @@ export class ElectricPotentialDc {
                 case ElectricPotentialDcUnits.Megavoltsdc:
                     return (this.value) * 1000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

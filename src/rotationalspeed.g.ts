@@ -109,8 +109,8 @@ export class RotationalSpeed {
 
     private convertFromBase(toUnit: RotationalSpeedUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case RotationalSpeedUnits.RadiansPerSecond:
                     return this.value;
                 
@@ -144,10 +144,10 @@ export class RotationalSpeed {
                 case RotationalSpeedUnits.Microdegreespersecond:
                     return ((Math.PI/180)*this.value) * 0.000001;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

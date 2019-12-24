@@ -23,21 +23,22 @@ export declare enum PressureUnits {
     PoundsPerInchSecondSquared = 21,
     InchesOfWaterColumn = 22,
     Micropascals = 23,
-    Hectopascals = 24,
-    Kilopascals = 25,
-    Megapascals = 26,
-    Gigapascals = 27,
-    Microbars = 28,
-    Centibars = 29,
-    Decibars = 30,
-    Kilobars = 31,
-    Megabars = 32,
-    Kilonewtonspersquaremeter = 33,
-    Meganewtonspersquaremeter = 34,
-    Kilonewtonspersquarecentimeter = 35,
-    Kilonewtonspersquaremillimeter = 36,
-    Kilopoundsforcepersquareinch = 37,
-    Kilopoundsforcepersquarefoot = 38
+    Decapascals = 24,
+    Hectopascals = 25,
+    Kilopascals = 26,
+    Megapascals = 27,
+    Gigapascals = 28,
+    Microbars = 29,
+    Centibars = 30,
+    Decibars = 31,
+    Kilobars = 32,
+    Megabars = 33,
+    Kilonewtonspersquaremeter = 34,
+    Meganewtonspersquaremeter = 35,
+    Kilonewtonspersquarecentimeter = 36,
+    Kilonewtonspersquaremillimeter = 37,
+    Kilopoundsforcepersquareinch = 38,
+    Kilopoundsforcepersquarefoot = 39
 }
 export declare class Pressure {
     private value;
@@ -66,6 +67,7 @@ export declare class Pressure {
     get PoundsPerInchSecondSquared(): number;
     get InchesOfWaterColumn(): number;
     get Micropascals(): number;
+    get Decapascals(): number;
     get Hectopascals(): number;
     get Kilopascals(): number;
     get Megapascals(): number;
@@ -105,6 +107,7 @@ export declare class Pressure {
     static FromPoundsPerInchSecondSquared(value: number): Pressure;
     static FromInchesOfWaterColumn(value: number): Pressure;
     static FromMicropascals(value: number): Pressure;
+    static FromDecapascals(value: number): Pressure;
     static FromHectopascals(value: number): Pressure;
     static FromKilopascals(value: number): Pressure;
     static FromMegapascals(value: number): Pressure;

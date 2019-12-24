@@ -19,15 +19,15 @@ export class AreaDensity {
 
     private convertFromBase(toUnit: AreaDensityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case AreaDensityUnits.KilogramsPerSquareMeter:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

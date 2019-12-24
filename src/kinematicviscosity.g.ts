@@ -73,8 +73,8 @@ export class KinematicViscosity {
 
     private convertFromBase(toUnit: KinematicViscosityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case KinematicViscosityUnits.SquareMetersPerSecond:
                     return this.value;
                 
@@ -96,10 +96,10 @@ export class KinematicViscosity {
                 case KinematicViscosityUnits.Kilostokes:
                     return (this.value/1e4) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

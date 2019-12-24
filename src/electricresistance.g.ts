@@ -46,8 +46,8 @@ export class ElectricResistance {
 
     private convertFromBase(toUnit: ElectricResistanceUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricResistanceUnits.Ohms:
                     return this.value;
                 
@@ -60,10 +60,10 @@ export class ElectricResistance {
                 case ElectricResistanceUnits.Gigaohms:
                     return (this.value) * 1000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

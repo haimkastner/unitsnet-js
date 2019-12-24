@@ -19,15 +19,15 @@ export class ElectricField {
 
     private convertFromBase(toUnit: ElectricFieldUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricFieldUnits.VoltsPerMeter:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

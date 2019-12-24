@@ -64,8 +64,8 @@ export class Irradiation {
 
     private convertFromBase(toUnit: IrradiationUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case IrradiationUnits.JoulesPerSquareMeter:
                     return this.value;
                 
@@ -84,10 +84,10 @@ export class Irradiation {
                 case IrradiationUnits.Kilowatthourspersquaremeter:
                     return (this.value*3600) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

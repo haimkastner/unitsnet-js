@@ -1,10 +1,12 @@
 export enum LuminosityUnits {
     Watts,
     SolarLuminosities,
+    Femtowatts,
     Picowatts,
     Nanowatts,
     Microwatts,
     Deciwatts,
+    Decawatts,
     Kilowatts,
     Megawatts,
     Gigawatts,
@@ -27,6 +29,10 @@ export class Luminosity {
         return this.convertFromBase(LuminosityUnits.SolarLuminosities);
     }
 
+    public get Femtowatts(): number {
+        return this.convertFromBase(LuminosityUnits.Femtowatts);
+    }
+
     public get Picowatts(): number {
         return this.convertFromBase(LuminosityUnits.Picowatts);
     }
@@ -41,6 +47,10 @@ export class Luminosity {
 
     public get Deciwatts(): number {
         return this.convertFromBase(LuminosityUnits.Deciwatts);
+    }
+
+    public get Decawatts(): number {
+        return this.convertFromBase(LuminosityUnits.Decawatts);
     }
 
     public get Kilowatts(): number {
@@ -71,6 +81,10 @@ export class Luminosity {
         return new Luminosity(value, LuminosityUnits.SolarLuminosities);
     }
 
+    public static FromFemtowatts(value: number): Luminosity {
+        return new Luminosity(value, LuminosityUnits.Femtowatts);
+    }
+
     public static FromPicowatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Picowatts);
     }
@@ -85,6 +99,10 @@ export class Luminosity {
 
     public static FromDeciwatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Deciwatts);
+    }
+
+    public static FromDecawatts(value: number): Luminosity {
+        return new Luminosity(value, LuminosityUnits.Decawatts);
     }
 
     public static FromKilowatts(value: number): Luminosity {
@@ -109,13 +127,16 @@ export class Luminosity {
 
     private convertFromBase(toUnit: LuminosityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case LuminosityUnits.Watts:
                     return this.value;
                 
                 case LuminosityUnits.SolarLuminosities:
                     return this.value / 3.846e26;
+                
+                case LuminosityUnits.Femtowatts:
+                    return (this.value) * 1e-15;
                 
                 case LuminosityUnits.Picowatts:
                     return (this.value) * 1e-12;
@@ -128,6 +149,9 @@ export class Luminosity {
                 
                 case LuminosityUnits.Deciwatts:
                     return (this.value) * 0.1;
+                
+                case LuminosityUnits.Decawatts:
+                    return (this.value) * 10;
                 
                 case LuminosityUnits.Kilowatts:
                     return (this.value) * 1000;
@@ -144,10 +168,10 @@ export class Luminosity {
                 case LuminosityUnits.Petawatts:
                     return (this.value) * 1000000000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
@@ -161,6 +185,9 @@ export class Luminosity {
                 case LuminosityUnits.SolarLuminosities:
                     return value * 3.846e26;
                 
+                case LuminosityUnits.Femtowatts:
+                    return (value) / 1e-15;
+                
                 case LuminosityUnits.Picowatts:
                     return (value) / 1e-12;
                 
@@ -172,6 +199,9 @@ export class Luminosity {
                 
                 case LuminosityUnits.Deciwatts:
                     return (value) / 0.1;
+                
+                case LuminosityUnits.Decawatts:
+                    return (value) / 10;
                 
                 case LuminosityUnits.Kilowatts:
                     return (value) / 1000;

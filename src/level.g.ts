@@ -28,18 +28,18 @@ export class Level {
 
     private convertFromBase(toUnit: LevelUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case LevelUnits.Decibels:
                     return this.value;
                 
                 case LevelUnits.Nepers:
                     return 0.115129254*this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

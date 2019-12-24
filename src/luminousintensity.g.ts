@@ -19,15 +19,15 @@ export class LuminousIntensity {
 
     private convertFromBase(toUnit: LuminousIntensityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case LuminousIntensityUnits.Candela:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -28,18 +28,18 @@ export class RatioChangeRate {
 
     private convertFromBase(toUnit: RatioChangeRateUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case RatioChangeRateUnits.PercentsPerSecond:
                     return this.value;
                 
                 case RatioChangeRateUnits.DecimalFractionsPerSecond:
                     return this.value/1e2;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

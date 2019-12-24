@@ -172,8 +172,8 @@ export class VolumeConcentration {
 
     private convertFromBase(toUnit: VolumeConcentrationUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case VolumeConcentrationUnits.DecimalFractions:
                     return this.value;
                 
@@ -228,10 +228,10 @@ export class VolumeConcentration {
                 case VolumeConcentrationUnits.Deciliterspermililiter:
                     return (this.value/1e-3) * 0.1;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

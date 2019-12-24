@@ -7,19 +7,21 @@ export declare enum PowerUnits {
     HydraulicHorsepower = 5,
     BritishThermalUnitsPerHour = 6,
     JoulesPerHour = 7,
-    Picowatts = 8,
-    Nanowatts = 9,
-    Microwatts = 10,
-    Deciwatts = 11,
-    Kilowatts = 12,
-    Megawatts = 13,
-    Gigawatts = 14,
-    Terawatts = 15,
-    Petawatts = 16,
-    Kilobritishthermalunitsperhour = 17,
-    Kilojoulesperhour = 18,
-    Megajoulesperhour = 19,
-    Gigajoulesperhour = 20
+    Femtowatts = 8,
+    Picowatts = 9,
+    Nanowatts = 10,
+    Microwatts = 11,
+    Deciwatts = 12,
+    Decawatts = 13,
+    Kilowatts = 14,
+    Megawatts = 15,
+    Gigawatts = 16,
+    Terawatts = 17,
+    Petawatts = 18,
+    Kilobritishthermalunitsperhour = 19,
+    Kilojoulesperhour = 20,
+    Megajoulesperhour = 21,
+    Gigajoulesperhour = 22
 }
 export declare class Power {
     private value;
@@ -32,10 +34,12 @@ export declare class Power {
     get HydraulicHorsepower(): number;
     get BritishThermalUnitsPerHour(): number;
     get JoulesPerHour(): number;
+    get Femtowatts(): number;
     get Picowatts(): number;
     get Nanowatts(): number;
     get Microwatts(): number;
     get Deciwatts(): number;
+    get Decawatts(): number;
     get Kilowatts(): number;
     get Megawatts(): number;
     get Gigawatts(): number;
@@ -53,10 +57,12 @@ export declare class Power {
     static FromHydraulicHorsepower(value: number): Power;
     static FromBritishThermalUnitsPerHour(value: number): Power;
     static FromJoulesPerHour(value: number): Power;
+    static FromFemtowatts(value: number): Power;
     static FromPicowatts(value: number): Power;
     static FromNanowatts(value: number): Power;
     static FromMicrowatts(value: number): Power;
     static FromDeciwatts(value: number): Power;
+    static FromDecawatts(value: number): Power;
     static FromKilowatts(value: number): Power;
     static FromMegawatts(value: number): Power;
     static FromGigawatts(value: number): Power;

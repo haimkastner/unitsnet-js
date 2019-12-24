@@ -271,8 +271,8 @@ export class Speed {
 
     private convertFromBase(toUnit: SpeedUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case SpeedUnits.MetersPerSecond:
                     return this.value;
                 
@@ -360,10 +360,10 @@ export class Speed {
                 case SpeedUnits.Kilometersperhour:
                     return (this.value/3600) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -91,8 +91,8 @@ export class Frequency {
 
     private convertFromBase(toUnit: FrequencyUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case FrequencyUnits.Hertz:
                     return this.value;
                 
@@ -120,10 +120,10 @@ export class Frequency {
                 case FrequencyUnits.Terahertz:
                     return (this.value) * 1000000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -37,8 +37,8 @@ export class HeatTransferCoefficient {
 
     private convertFromBase(toUnit: HeatTransferCoefficientUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class HeatTransferCoefficient {
                 case HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit:
                     return this.value / 5.6782633411134878;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

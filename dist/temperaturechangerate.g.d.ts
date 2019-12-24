@@ -5,8 +5,9 @@ export declare enum TemperatureChangeRateUnits {
     Microdegreescelsiuspersecond = 3,
     Centidegreescelsiuspersecond = 4,
     Decidegreescelsiuspersecond = 5,
-    Hectodegreescelsiuspersecond = 6,
-    Kilodegreescelsiuspersecond = 7
+    Decadegreescelsiuspersecond = 6,
+    Hectodegreescelsiuspersecond = 7,
+    Kilodegreescelsiuspersecond = 8
 }
 export declare class TemperatureChangeRate {
     private value;
@@ -17,6 +18,7 @@ export declare class TemperatureChangeRate {
     get Microdegreescelsiuspersecond(): number;
     get Centidegreescelsiuspersecond(): number;
     get Decidegreescelsiuspersecond(): number;
+    get Decadegreescelsiuspersecond(): number;
     get Hectodegreescelsiuspersecond(): number;
     get Kilodegreescelsiuspersecond(): number;
     static FromDegreesCelsiusPerSecond(value: number): TemperatureChangeRate;
@@ -25,6 +27,7 @@ export declare class TemperatureChangeRate {
     static FromMicrodegreescelsiuspersecond(value: number): TemperatureChangeRate;
     static FromCentidegreescelsiuspersecond(value: number): TemperatureChangeRate;
     static FromDecidegreescelsiuspersecond(value: number): TemperatureChangeRate;
+    static FromDecadegreescelsiuspersecond(value: number): TemperatureChangeRate;
     static FromHectodegreescelsiuspersecond(value: number): TemperatureChangeRate;
     static FromKilodegreescelsiuspersecond(value: number): TemperatureChangeRate;
     private convertFromBase;

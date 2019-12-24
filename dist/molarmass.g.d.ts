@@ -5,10 +5,11 @@ export declare enum MolarMassUnits {
     Microgramspermole = 3,
     Centigramspermole = 4,
     Decigramspermole = 5,
-    Hectogramspermole = 6,
-    Kilogramspermole = 7,
-    Kilopoundspermole = 8,
-    Megapoundspermole = 9
+    Decagramspermole = 6,
+    Hectogramspermole = 7,
+    Kilogramspermole = 8,
+    Kilopoundspermole = 9,
+    Megapoundspermole = 10
 }
 export declare class MolarMass {
     private value;
@@ -19,6 +20,7 @@ export declare class MolarMass {
     get Microgramspermole(): number;
     get Centigramspermole(): number;
     get Decigramspermole(): number;
+    get Decagramspermole(): number;
     get Hectogramspermole(): number;
     get Kilogramspermole(): number;
     get Kilopoundspermole(): number;
@@ -29,6 +31,7 @@ export declare class MolarMass {
     static FromMicrogramspermole(value: number): MolarMass;
     static FromCentigramspermole(value: number): MolarMass;
     static FromDecigramspermole(value: number): MolarMass;
+    static FromDecagramspermole(value: number): MolarMass;
     static FromHectogramspermole(value: number): MolarMass;
     static FromKilogramspermole(value: number): MolarMass;
     static FromKilopoundspermole(value: number): MolarMass;

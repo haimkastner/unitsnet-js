@@ -37,8 +37,8 @@ export class ElectricCurrentDensity {
 
     private convertFromBase(toUnit: ElectricCurrentDensityUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
                     return this.value;
                 
@@ -48,10 +48,10 @@ export class ElectricCurrentDensity {
                 case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
                     return this.value / 1.0763910416709722e1;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

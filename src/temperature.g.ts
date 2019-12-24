@@ -91,8 +91,8 @@ export class Temperature {
 
     private convertFromBase(toUnit: TemperatureUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case TemperatureUnits.Kelvins:
                     return this.value;
                 
@@ -120,10 +120,10 @@ export class Temperature {
                 case TemperatureUnits.SolarTemperatures:
                     return this.value / 5778;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

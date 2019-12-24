@@ -91,8 +91,8 @@ export class SpecificEntropy {
 
     private convertFromBase(toUnit: SpecificEntropyUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case SpecificEntropyUnits.JoulesPerKilogramKelvin:
                     return this.value;
                 
@@ -120,10 +120,10 @@ export class SpecificEntropy {
                 case SpecificEntropyUnits.Kilocaloriespergramkelvin:
                     return (this.value*4.184e3) * 1000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

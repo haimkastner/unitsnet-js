@@ -136,8 +136,8 @@ export class BitRate {
 
     private convertFromBase(toUnit: BitRateUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case BitRateUnits.BitsPerSecond:
                     return this.value;
                 
@@ -180,10 +180,10 @@ export class BitRate {
                 case BitRateUnits.Exabytespersecond:
                     return (this.value*8) * 1000000000000000000;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

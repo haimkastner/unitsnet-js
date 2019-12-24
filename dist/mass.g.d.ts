@@ -16,12 +16,13 @@ export declare enum MassUnits {
     Micrograms = 14,
     Centigrams = 15,
     Decigrams = 16,
-    Hectograms = 17,
-    Kilograms = 18,
-    Kilotonnes = 19,
-    Megatonnes = 20,
-    Kilopounds = 21,
-    Megapounds = 22
+    Decagrams = 17,
+    Hectograms = 18,
+    Kilograms = 19,
+    Kilotonnes = 20,
+    Megatonnes = 21,
+    Kilopounds = 22,
+    Megapounds = 23
 }
 export declare class Mass {
     private value;
@@ -43,6 +44,7 @@ export declare class Mass {
     get Micrograms(): number;
     get Centigrams(): number;
     get Decigrams(): number;
+    get Decagrams(): number;
     get Hectograms(): number;
     get Kilograms(): number;
     get Kilotonnes(): number;
@@ -66,6 +68,7 @@ export declare class Mass {
     static FromMicrograms(value: number): Mass;
     static FromCentigrams(value: number): Mass;
     static FromDecigrams(value: number): Mass;
+    static FromDecagrams(value: number): Mass;
     static FromHectograms(value: number): Mass;
     static FromKilograms(value: number): Mass;
     static FromKilotonnes(value: number): Mass;

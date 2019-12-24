@@ -28,18 +28,18 @@ export class SpecificVolume {
 
     private convertFromBase(toUnit: SpecificVolumeUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case SpecificVolumeUnits.CubicMetersPerKilogram:
                     return this.value;
                 
                 case SpecificVolumeUnits.CubicFeetPerPound:
                     return this.value*16.01846353;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

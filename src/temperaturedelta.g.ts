@@ -82,8 +82,8 @@ export class TemperatureDelta {
 
     private convertFromBase(toUnit: TemperatureDeltaUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case TemperatureDeltaUnits.Kelvins:
                     return this.value;
                 
@@ -108,10 +108,10 @@ export class TemperatureDelta {
                 case TemperatureDeltaUnits.DegreesRoemer:
                     return this.value*21/40;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 

@@ -19,15 +19,15 @@ export class VitaminA {
 
     private convertFromBase(toUnit: VitaminAUnits): number {
 
-            switch (toUnit) {
-                
+                switch (toUnit) {
+                    
                 case VitaminAUnits.InternationalUnits:
                     return this.value;
                 
-                default:
-                    break;
-            }
-            return NaN;
+                    default:
+                        break;
+                }
+                return NaN;
             
     }
 
