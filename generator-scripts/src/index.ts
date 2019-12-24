@@ -1,6 +1,8 @@
 import fse from 'fs-extra';
-import { generateUnitsFromUnitsDefinitions } from './units-generator';
 import { UnitTypeDefinition } from './models/units-definition';
+import { Project } from 'ts-morph';
+import { generateExportUnitsModule } from './export-units-generator';
+import { generateUnitsFromUnitsDefinitions } from './units-generator';
 
 const unitsJs = `
 8 8888      88 b.             8  8 8888 8888888 8888888888 d888888o.             8 8888   d888888o.   
@@ -34,7 +36,16 @@ for (const unitFile of unitsFiles) {
 
 console.info(`Generating Units ...`);
 
-generateUnitsFromUnitsDefinitions(unitsDefinitions, unitsTestinationDirectory);
+const project = new Project({
+    tsConfigFilePath: "./tsconfig.json"
+});
+
+generateUnitsFromUnitsDefinitions(project, unitsTestinationDirectory, unitsDefinitions);
+
+console.info(`Generating Units Export Module ...`);
+
+generateExportUnitsModule(project, unitsTestinationDirectory, unitsDefinitions);
+
 
 const success = `
 _______ _     _ _______ _______ _______ _______ _______

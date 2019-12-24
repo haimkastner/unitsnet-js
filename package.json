@@ -6,6 +6,7 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "main": "dist/index.js",
   "directories": {
     "lib": "dist"
   },

@@ -29,7 +29,7 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
 
     for (const prefix of unit.Prefixes) {
 
-        if(!prefixesFactor[prefix]){
+        if (!prefixesFactor[prefix]) {
             continue;
         }
 
@@ -58,11 +58,7 @@ function extandPrefixesUnits(units: UnitDefinition[]): UnitDefinition[] {
     return prefixesUnits;
 }
 
-export function generateUnitsFromUnitsDefinitions(rawUnitsDefinitions: UnitTypeDefinition[], unitsDestinationDirectory : string) {
-
-    const project = new Project({
-        tsConfigFilePath: "./tsconfig.json"
-    });
+export function generateUnitsFromUnitsDefinitions(project: Project, unitsDestinationDirectory: string, rawUnitsDefinitions: UnitTypeDefinition[]) {
 
     for (const unitDefinitiion of rawUnitsDefinitions) {
 
