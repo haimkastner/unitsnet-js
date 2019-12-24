@@ -12,7 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/haimkastner/unitsnet-js.git"
+    "url": "git://github.com/haimkastner/unitsnet-js.git"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
   },
   "homepage": "https://github.com/haimkastner/unitsnet-js",
   "author": "Haim Kastner, Based on UnitsNet Project",
