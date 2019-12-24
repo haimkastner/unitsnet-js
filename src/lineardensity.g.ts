@@ -46,7 +46,7 @@ export class LinearDensity {
                     return this.value/1.48816394;
                 
                 case LinearDensityUnits.Kilogramspermeter:
-                    return (this.value*1e-3) * 1000;
+                    return (this.value/1e-3) / 1000;
                 
                     default:
                         break;
@@ -66,7 +66,7 @@ export class LinearDensity {
                     return value*1.48816394;
                 
                 case LinearDensityUnits.Kilogramspermeter:
-                    return (value/1e-3) / 1000;
+                    return (value*1e-3) * 1000;
                 
                     default:
                         break;

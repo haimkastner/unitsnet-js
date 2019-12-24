@@ -43,10 +43,10 @@ export class MolarEnergy {
                     return this.value;
                 
                 case MolarEnergyUnits.Kilojoulespermole:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case MolarEnergyUnits.Megajoulespermole:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                     default:
                         break;
@@ -63,10 +63,10 @@ export class MolarEnergy {
                     return value;
                 
                 case MolarEnergyUnits.Kilojoulespermole:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case MolarEnergyUnits.Megajoulespermole:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                     default:
                         break;

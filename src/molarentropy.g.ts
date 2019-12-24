@@ -43,10 +43,10 @@ export class MolarEntropy {
                     return this.value;
                 
                 case MolarEntropyUnits.Kilojoulespermolekelvin:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case MolarEntropyUnits.Megajoulespermolekelvin:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                     default:
                         break;
@@ -63,10 +63,10 @@ export class MolarEntropy {
                     return value;
                 
                 case MolarEntropyUnits.Kilojoulespermolekelvin:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case MolarEntropyUnits.Megajoulespermolekelvin:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                     default:
                         break;

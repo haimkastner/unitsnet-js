@@ -63,15 +63,15 @@ class Molarity {
             case MolarityUnits.MolesPerLiter:
                 return this.value * 1e-3;
             case MolarityUnits.Picomolesperliter:
-                return (this.value / 1e-3) * 1e-12;
+                return (this.value * 1e-3) / 1e-12;
             case MolarityUnits.Nanomolesperliter:
-                return (this.value / 1e-3) * 1e-9;
+                return (this.value * 1e-3) / 1e-9;
             case MolarityUnits.Micromolesperliter:
-                return (this.value / 1e-3) * 0.000001;
+                return (this.value * 1e-3) / 0.000001;
             case MolarityUnits.Centimolesperliter:
-                return (this.value / 1e-3) * 0.01;
+                return (this.value * 1e-3) / 0.01;
             case MolarityUnits.Decimolesperliter:
-                return (this.value / 1e-3) * 0.1;
+                return (this.value * 1e-3) / 0.1;
             default:
                 break;
         }
@@ -84,15 +84,15 @@ class Molarity {
             case MolarityUnits.MolesPerLiter:
                 return value / 1e-3;
             case MolarityUnits.Picomolesperliter:
-                return (value * 1e-3) / 1e-12;
+                return (value / 1e-3) * 1e-12;
             case MolarityUnits.Nanomolesperliter:
-                return (value * 1e-3) / 1e-9;
+                return (value / 1e-3) * 1e-9;
             case MolarityUnits.Micromolesperliter:
-                return (value * 1e-3) / 0.000001;
+                return (value / 1e-3) * 0.000001;
             case MolarityUnits.Centimolesperliter:
-                return (value * 1e-3) / 0.01;
+                return (value / 1e-3) * 0.01;
             case MolarityUnits.Decimolesperliter:
-                return (value * 1e-3) / 0.1;
+                return (value / 1e-3) * 0.1;
             default:
                 break;
         }

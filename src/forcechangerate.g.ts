@@ -109,28 +109,28 @@ export class ForceChangeRate {
                     return this.value;
                 
                 case ForceChangeRateUnits.Decanewtonsperminute:
-                    return (this.value/60) * 10;
+                    return (this.value*60) / 10;
                 
                 case ForceChangeRateUnits.Kilonewtonsperminute:
-                    return (this.value/60) * 1000;
+                    return (this.value*60) / 1000;
                 
                 case ForceChangeRateUnits.Nanonewtonspersecond:
-                    return (this.value) * 1e-9;
+                    return (this.value) / 1e-9;
                 
                 case ForceChangeRateUnits.Micronewtonspersecond:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case ForceChangeRateUnits.Centinewtonspersecond:
-                    return (this.value) * 0.01;
+                    return (this.value) / 0.01;
                 
                 case ForceChangeRateUnits.Decinewtonspersecond:
-                    return (this.value) * 0.1;
+                    return (this.value) / 0.1;
                 
                 case ForceChangeRateUnits.Decanewtonspersecond:
-                    return (this.value) * 10;
+                    return (this.value) / 10;
                 
                 case ForceChangeRateUnits.Kilonewtonspersecond:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                     default:
                         break;
@@ -150,28 +150,28 @@ export class ForceChangeRate {
                     return value;
                 
                 case ForceChangeRateUnits.Decanewtonsperminute:
-                    return (value*60) / 10;
+                    return (value/60) * 10;
                 
                 case ForceChangeRateUnits.Kilonewtonsperminute:
-                    return (value*60) / 1000;
+                    return (value/60) * 1000;
                 
                 case ForceChangeRateUnits.Nanonewtonspersecond:
-                    return (value) / 1e-9;
+                    return (value) * 1e-9;
                 
                 case ForceChangeRateUnits.Micronewtonspersecond:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case ForceChangeRateUnits.Centinewtonspersecond:
-                    return (value) / 0.01;
+                    return (value) * 0.01;
                 
                 case ForceChangeRateUnits.Decinewtonspersecond:
-                    return (value) / 0.1;
+                    return (value) * 0.1;
                 
                 case ForceChangeRateUnits.Decanewtonspersecond:
-                    return (value) / 10;
+                    return (value) * 10;
                 
                 case ForceChangeRateUnits.Kilonewtonspersecond:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                     default:
                         break;

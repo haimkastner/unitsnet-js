@@ -106,19 +106,19 @@ export class SpecificEnergy {
                     return this.value/2326.000075362;
                 
                 case SpecificEnergyUnits.Kilojoulesperkilogram:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case SpecificEnergyUnits.Megajoulesperkilogram:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                 case SpecificEnergyUnits.Kilocaloriespergram:
-                    return (this.value*4.184e3) * 1000;
+                    return (this.value/4.184e3) / 1000;
                 
                 case SpecificEnergyUnits.Kilowatthoursperkilogram:
-                    return (this.value*3.6e3) * 1000;
+                    return (this.value/3.6e3) / 1000;
                 
                 case SpecificEnergyUnits.Megawatthoursperkilogram:
-                    return (this.value*3.6e3) * 1000000;
+                    return (this.value/3.6e3) / 1000000;
                 
                     default:
                         break;
@@ -144,19 +144,19 @@ export class SpecificEnergy {
                     return value*2326.000075362;
                 
                 case SpecificEnergyUnits.Kilojoulesperkilogram:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case SpecificEnergyUnits.Megajoulesperkilogram:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                 case SpecificEnergyUnits.Kilocaloriespergram:
-                    return (value/4.184e3) / 1000;
+                    return (value*4.184e3) * 1000;
                 
                 case SpecificEnergyUnits.Kilowatthoursperkilogram:
-                    return (value/3.6e3) / 1000;
+                    return (value*3.6e3) * 1000;
                 
                 case SpecificEnergyUnits.Megawatthoursperkilogram:
-                    return (value/3.6e3) / 1000000;
+                    return (value*3.6e3) * 1000000;
                 
                     default:
                         break;

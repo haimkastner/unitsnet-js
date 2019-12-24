@@ -268,37 +268,37 @@ export class Mass {
                     return this.value / 5.9722E+24;
                 
                 case MassUnits.Nanograms:
-                    return (this.value/1e3) * 1e-9;
+                    return (this.value*1e3) / 1e-9;
                 
                 case MassUnits.Micrograms:
-                    return (this.value/1e3) * 0.000001;
+                    return (this.value*1e3) / 0.000001;
                 
                 case MassUnits.Centigrams:
-                    return (this.value/1e3) * 0.01;
+                    return (this.value*1e3) / 0.01;
                 
                 case MassUnits.Decigrams:
-                    return (this.value/1e3) * 0.1;
+                    return (this.value*1e3) / 0.1;
                 
                 case MassUnits.Decagrams:
-                    return (this.value/1e3) * 10;
+                    return (this.value*1e3) / 10;
                 
                 case MassUnits.Hectograms:
-                    return (this.value/1e3) * 100;
+                    return (this.value*1e3) / 100;
                 
                 case MassUnits.Kilograms:
-                    return (this.value/1e3) * 1000;
+                    return (this.value*1e3) / 1000;
                 
                 case MassUnits.Kilotonnes:
-                    return (this.value*1e3) * 1000;
+                    return (this.value/1e3) / 1000;
                 
                 case MassUnits.Megatonnes:
-                    return (this.value*1e3) * 1000000;
+                    return (this.value/1e3) / 1000000;
                 
                 case MassUnits.Kilopounds:
-                    return (this.value*0.45359237) * 1000;
+                    return (this.value/0.45359237) / 1000;
                 
                 case MassUnits.Megapounds:
-                    return (this.value*0.45359237) * 1000000;
+                    return (this.value/0.45359237) / 1000000;
                 
                     default:
                         break;
@@ -351,37 +351,37 @@ export class Mass {
                     return value * 5.9722E+24;
                 
                 case MassUnits.Nanograms:
-                    return (value*1e3) / 1e-9;
+                    return (value/1e3) * 1e-9;
                 
                 case MassUnits.Micrograms:
-                    return (value*1e3) / 0.000001;
+                    return (value/1e3) * 0.000001;
                 
                 case MassUnits.Centigrams:
-                    return (value*1e3) / 0.01;
+                    return (value/1e3) * 0.01;
                 
                 case MassUnits.Decigrams:
-                    return (value*1e3) / 0.1;
+                    return (value/1e3) * 0.1;
                 
                 case MassUnits.Decagrams:
-                    return (value*1e3) / 10;
+                    return (value/1e3) * 10;
                 
                 case MassUnits.Hectograms:
-                    return (value*1e3) / 100;
+                    return (value/1e3) * 100;
                 
                 case MassUnits.Kilograms:
-                    return (value*1e3) / 1000;
+                    return (value/1e3) * 1000;
                 
                 case MassUnits.Kilotonnes:
-                    return (value/1e3) / 1000;
+                    return (value*1e3) * 1000;
                 
                 case MassUnits.Megatonnes:
-                    return (value/1e3) / 1000000;
+                    return (value*1e3) * 1000000;
                 
                 case MassUnits.Kilopounds:
-                    return (value/0.45359237) / 1000;
+                    return (value*0.45359237) * 1000;
                 
                 case MassUnits.Megapounds:
-                    return (value/0.45359237) / 1000000;
+                    return (value*0.45359237) * 1000000;
                 
                     default:
                         break;

@@ -541,40 +541,40 @@ export class VolumeFlow {
                     return this.value*70.0457;
                 
                 case VolumeFlowUnits.Nanolitersperminute:
-                    return (this.value/60000.00000) * 1e-9;
+                    return (this.value*60000.00000) / 1e-9;
                 
                 case VolumeFlowUnits.Microlitersperminute:
-                    return (this.value/60000.00000) * 0.000001;
+                    return (this.value*60000.00000) / 0.000001;
                 
                 case VolumeFlowUnits.Centilitersperminute:
-                    return (this.value/60000.00000) * 0.01;
+                    return (this.value*60000.00000) / 0.01;
                 
                 case VolumeFlowUnits.Decilitersperminute:
-                    return (this.value/60000.00000) * 0.1;
+                    return (this.value*60000.00000) / 0.1;
                 
                 case VolumeFlowUnits.Kilolitersperminute:
-                    return (this.value/60000.00000) * 1000;
+                    return (this.value*60000.00000) / 1000;
                 
                 case VolumeFlowUnits.Nanolitersperday:
-                    return (this.value/86400000) * 1e-9;
+                    return (this.value*86400000) / 1e-9;
                 
                 case VolumeFlowUnits.Microlitersperday:
-                    return (this.value/86400000) * 0.000001;
+                    return (this.value*86400000) / 0.000001;
                 
                 case VolumeFlowUnits.Centilitersperday:
-                    return (this.value/86400000) * 0.01;
+                    return (this.value*86400000) / 0.01;
                 
                 case VolumeFlowUnits.Decilitersperday:
-                    return (this.value/86400000) * 0.1;
+                    return (this.value*86400000) / 0.1;
                 
                 case VolumeFlowUnits.Kilolitersperday:
-                    return (this.value/86400000) * 1000;
+                    return (this.value*86400000) / 1000;
                 
                 case VolumeFlowUnits.Megalitersperday:
-                    return (this.value/86400000) * 1000000;
+                    return (this.value*86400000) / 1000000;
                 
                 case VolumeFlowUnits.Megaukgallonspersecond:
-                    return (this.value/219.969) * 1000000;
+                    return (this.value*219.969) / 1000000;
                 
                     default:
                         break;
@@ -693,40 +693,40 @@ export class VolumeFlow {
                     return value/70.0457;
                 
                 case VolumeFlowUnits.Nanolitersperminute:
-                    return (value*60000.00000) / 1e-9;
+                    return (value/60000.00000) * 1e-9;
                 
                 case VolumeFlowUnits.Microlitersperminute:
-                    return (value*60000.00000) / 0.000001;
+                    return (value/60000.00000) * 0.000001;
                 
                 case VolumeFlowUnits.Centilitersperminute:
-                    return (value*60000.00000) / 0.01;
+                    return (value/60000.00000) * 0.01;
                 
                 case VolumeFlowUnits.Decilitersperminute:
-                    return (value*60000.00000) / 0.1;
+                    return (value/60000.00000) * 0.1;
                 
                 case VolumeFlowUnits.Kilolitersperminute:
-                    return (value*60000.00000) / 1000;
+                    return (value/60000.00000) * 1000;
                 
                 case VolumeFlowUnits.Nanolitersperday:
-                    return (value*86400000) / 1e-9;
+                    return (value/86400000) * 1e-9;
                 
                 case VolumeFlowUnits.Microlitersperday:
-                    return (value*86400000) / 0.000001;
+                    return (value/86400000) * 0.000001;
                 
                 case VolumeFlowUnits.Centilitersperday:
-                    return (value*86400000) / 0.01;
+                    return (value/86400000) * 0.01;
                 
                 case VolumeFlowUnits.Decilitersperday:
-                    return (value*86400000) / 0.1;
+                    return (value/86400000) * 0.1;
                 
                 case VolumeFlowUnits.Kilolitersperday:
-                    return (value*86400000) / 1000;
+                    return (value/86400000) * 1000;
                 
                 case VolumeFlowUnits.Megalitersperday:
-                    return (value*86400000) / 1000000;
+                    return (value/86400000) * 1000000;
                 
                 case VolumeFlowUnits.Megaukgallonspersecond:
-                    return (value*219.969) / 1000000;
+                    return (value/219.969) * 1000000;
                 
                     default:
                         break;

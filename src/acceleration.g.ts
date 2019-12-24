@@ -142,19 +142,19 @@ export class Acceleration {
                     return this.value/9.80665;
                 
                 case AccelerationUnits.Nanometerspersecondsquared:
-                    return (this.value) * 1e-9;
+                    return (this.value) / 1e-9;
                 
                 case AccelerationUnits.Micrometerspersecondsquared:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case AccelerationUnits.Centimeterspersecondsquared:
-                    return (this.value) * 0.01;
+                    return (this.value) / 0.01;
                 
                 case AccelerationUnits.Decimeterspersecondsquared:
-                    return (this.value) * 0.1;
+                    return (this.value) / 0.1;
                 
                 case AccelerationUnits.Kilometerspersecondsquared:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                     default:
                         break;
@@ -189,19 +189,19 @@ export class Acceleration {
                     return value*9.80665;
                 
                 case AccelerationUnits.Nanometerspersecondsquared:
-                    return (value) / 1e-9;
+                    return (value) * 1e-9;
                 
                 case AccelerationUnits.Micrometerspersecondsquared:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case AccelerationUnits.Centimeterspersecondsquared:
-                    return (value) / 0.01;
+                    return (value) * 0.01;
                 
                 case AccelerationUnits.Decimeterspersecondsquared:
-                    return (value) / 0.1;
+                    return (value) * 0.1;
                 
                 case AccelerationUnits.Kilometerspersecondsquared:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                     default:
                         break;

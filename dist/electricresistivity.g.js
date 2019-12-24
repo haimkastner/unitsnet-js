@@ -98,25 +98,25 @@ class ElectricResistivity {
             case ElectricResistivityUnits.OhmsCentimeter:
                 return this.value * 100;
             case ElectricResistivityUnits.Picoohmmeters:
-                return (this.value) * 1e-12;
+                return (this.value) / 1e-12;
             case ElectricResistivityUnits.Nanoohmmeters:
-                return (this.value) * 1e-9;
+                return (this.value) / 1e-9;
             case ElectricResistivityUnits.Microohmmeters:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             case ElectricResistivityUnits.Kiloohmmeters:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case ElectricResistivityUnits.Megaohmmeters:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             case ElectricResistivityUnits.Picoohmscentimeter:
-                return (this.value / 100) * 1e-12;
+                return (this.value * 100) / 1e-12;
             case ElectricResistivityUnits.Nanoohmscentimeter:
-                return (this.value / 100) * 1e-9;
+                return (this.value * 100) / 1e-9;
             case ElectricResistivityUnits.Microohmscentimeter:
-                return (this.value / 100) * 0.000001;
+                return (this.value * 100) / 0.000001;
             case ElectricResistivityUnits.Kiloohmscentimeter:
-                return (this.value / 100) * 1000;
+                return (this.value * 100) / 1000;
             case ElectricResistivityUnits.Megaohmscentimeter:
-                return (this.value / 100) * 1000000;
+                return (this.value * 100) / 1000000;
             default:
                 break;
         }
@@ -129,25 +129,25 @@ class ElectricResistivity {
             case ElectricResistivityUnits.OhmsCentimeter:
                 return value / 100;
             case ElectricResistivityUnits.Picoohmmeters:
-                return (value) / 1e-12;
+                return (value) * 1e-12;
             case ElectricResistivityUnits.Nanoohmmeters:
-                return (value) / 1e-9;
+                return (value) * 1e-9;
             case ElectricResistivityUnits.Microohmmeters:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             case ElectricResistivityUnits.Kiloohmmeters:
-                return (value) / 1000;
+                return (value) * 1000;
             case ElectricResistivityUnits.Megaohmmeters:
-                return (value) / 1000000;
+                return (value) * 1000000;
             case ElectricResistivityUnits.Picoohmscentimeter:
-                return (value * 100) / 1e-12;
+                return (value / 100) * 1e-12;
             case ElectricResistivityUnits.Nanoohmscentimeter:
-                return (value * 100) / 1e-9;
+                return (value / 100) * 1e-9;
             case ElectricResistivityUnits.Microohmscentimeter:
-                return (value * 100) / 0.000001;
+                return (value / 100) * 0.000001;
             case ElectricResistivityUnits.Kiloohmscentimeter:
-                return (value * 100) / 1000;
+                return (value / 100) * 1000;
             case ElectricResistivityUnits.Megaohmscentimeter:
-                return (value * 100) / 1000000;
+                return (value / 100) * 1000000;
             default:
                 break;
         }

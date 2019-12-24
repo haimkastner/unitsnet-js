@@ -81,15 +81,15 @@ class SpecificEntropy {
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return this.value / 4.1868e3;
             case SpecificEntropyUnits.Kilojoulesperkilogramkelvin:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case SpecificEntropyUnits.Megajoulesperkilogramkelvin:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             case SpecificEntropyUnits.Kilojoulesperkilogramdegreecelsius:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case SpecificEntropyUnits.Megajoulesperkilogramdegreecelsius:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             case SpecificEntropyUnits.Kilocaloriespergramkelvin:
-                return (this.value * 4.184e3) * 1000;
+                return (this.value / 4.184e3) / 1000;
             default:
                 break;
         }
@@ -106,15 +106,15 @@ class SpecificEntropy {
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return value * 4.1868e3;
             case SpecificEntropyUnits.Kilojoulesperkilogramkelvin:
-                return (value) / 1000;
+                return (value) * 1000;
             case SpecificEntropyUnits.Megajoulesperkilogramkelvin:
-                return (value) / 1000000;
+                return (value) * 1000000;
             case SpecificEntropyUnits.Kilojoulesperkilogramdegreecelsius:
-                return (value) / 1000;
+                return (value) * 1000;
             case SpecificEntropyUnits.Megajoulesperkilogramdegreecelsius:
-                return (value) / 1000000;
+                return (value) * 1000000;
             case SpecificEntropyUnits.Kilocaloriespergramkelvin:
-                return (value / 4.184e3) / 1000;
+                return (value * 4.184e3) * 1000;
             default:
                 break;
         }

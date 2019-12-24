@@ -145,40 +145,40 @@ export class Information {
                     return this.value;
                 
                 case InformationUnits.Kilobytes:
-                    return (this.value*8) * 1000;
+                    return (this.value/8) / 1000;
                 
                 case InformationUnits.Megabytes:
-                    return (this.value*8) * 1000000;
+                    return (this.value/8) / 1000000;
                 
                 case InformationUnits.Gigabytes:
-                    return (this.value*8) * 1000000000;
+                    return (this.value/8) / 1000000000;
                 
                 case InformationUnits.Terabytes:
-                    return (this.value*8) * 1000000000000;
+                    return (this.value/8) / 1000000000000;
                 
                 case InformationUnits.Petabytes:
-                    return (this.value*8) * 1000000000000000;
+                    return (this.value/8) / 1000000000000000;
                 
                 case InformationUnits.Exabytes:
-                    return (this.value*8) * 1000000000000000000;
+                    return (this.value/8) / 1000000000000000000;
                 
                 case InformationUnits.Kilobits:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case InformationUnits.Megabits:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                 case InformationUnits.Gigabits:
-                    return (this.value) * 1000000000;
+                    return (this.value) / 1000000000;
                 
                 case InformationUnits.Terabits:
-                    return (this.value) * 1000000000000;
+                    return (this.value) / 1000000000000;
                 
                 case InformationUnits.Petabits:
-                    return (this.value) * 1000000000000000;
+                    return (this.value) / 1000000000000000;
                 
                 case InformationUnits.Exabits:
-                    return (this.value) * 1000000000000000000;
+                    return (this.value) / 1000000000000000000;
                 
                     default:
                         break;
@@ -198,40 +198,40 @@ export class Information {
                     return value;
                 
                 case InformationUnits.Kilobytes:
-                    return (value/8) / 1000;
+                    return (value*8) * 1000;
                 
                 case InformationUnits.Megabytes:
-                    return (value/8) / 1000000;
+                    return (value*8) * 1000000;
                 
                 case InformationUnits.Gigabytes:
-                    return (value/8) / 1000000000;
+                    return (value*8) * 1000000000;
                 
                 case InformationUnits.Terabytes:
-                    return (value/8) / 1000000000000;
+                    return (value*8) * 1000000000000;
                 
                 case InformationUnits.Petabytes:
-                    return (value/8) / 1000000000000000;
+                    return (value*8) * 1000000000000000;
                 
                 case InformationUnits.Exabytes:
-                    return (value/8) / 1000000000000000000;
+                    return (value*8) * 1000000000000000000;
                 
                 case InformationUnits.Kilobits:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case InformationUnits.Megabits:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                 case InformationUnits.Gigabits:
-                    return (value) / 1000000000;
+                    return (value) * 1000000000;
                 
                 case InformationUnits.Terabits:
-                    return (value) / 1000000000000;
+                    return (value) * 1000000000000;
                 
                 case InformationUnits.Petabits:
-                    return (value) / 1000000000000000;
+                    return (value) * 1000000000000000;
                 
                 case InformationUnits.Exabits:
-                    return (value) / 1000000000000000000;
+                    return (value) * 1000000000000000000;
                 
                     default:
                         break;

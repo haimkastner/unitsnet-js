@@ -40,11 +40,11 @@ class ApparentPower {
             case ApparentPowerUnits.Voltamperes:
                 return this.value;
             case ApparentPowerUnits.Kilovoltamperes:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case ApparentPowerUnits.Megavoltamperes:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             case ApparentPowerUnits.Gigavoltamperes:
-                return (this.value) * 1000000000;
+                return (this.value) / 1000000000;
             default:
                 break;
         }
@@ -55,11 +55,11 @@ class ApparentPower {
             case ApparentPowerUnits.Voltamperes:
                 return value;
             case ApparentPowerUnits.Kilovoltamperes:
-                return (value) / 1000;
+                return (value) * 1000;
             case ApparentPowerUnits.Megavoltamperes:
-                return (value) / 1000000;
+                return (value) * 1000000;
             case ApparentPowerUnits.Gigavoltamperes:
-                return (value) / 1000000000;
+                return (value) * 1000000000;
             default:
                 break;
         }

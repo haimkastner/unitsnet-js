@@ -97,17 +97,17 @@ class ForcePerLength {
             case ForcePerLengthUnits.PoundsForcePerYard:
                 return this.value / 4.864634307;
             case ForcePerLengthUnits.Nanonewtonspermeter:
-                return (this.value) * 1e-9;
+                return (this.value) / 1e-9;
             case ForcePerLengthUnits.Micronewtonspermeter:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             case ForcePerLengthUnits.Centinewtonspermeter:
-                return (this.value) * 0.01;
+                return (this.value) / 0.01;
             case ForcePerLengthUnits.Decinewtonspermeter:
-                return (this.value) * 0.1;
+                return (this.value) / 0.1;
             case ForcePerLengthUnits.Kilonewtonspermeter:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case ForcePerLengthUnits.Meganewtonspermeter:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             default:
                 break;
         }
@@ -126,17 +126,17 @@ class ForcePerLength {
             case ForcePerLengthUnits.PoundsForcePerYard:
                 return value * 4.864634307;
             case ForcePerLengthUnits.Nanonewtonspermeter:
-                return (value) / 1e-9;
+                return (value) * 1e-9;
             case ForcePerLengthUnits.Micronewtonspermeter:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             case ForcePerLengthUnits.Centinewtonspermeter:
-                return (value) / 0.01;
+                return (value) * 0.01;
             case ForcePerLengthUnits.Decinewtonspermeter:
-                return (value) / 0.1;
+                return (value) * 0.1;
             case ForcePerLengthUnits.Kilonewtonspermeter:
-                return (value) / 1000;
+                return (value) * 1000;
             case ForcePerLengthUnits.Meganewtonspermeter:
-                return (value) / 1000000;
+                return (value) * 1000000;
             default:
                 break;
         }

@@ -145,16 +145,16 @@ export class Force {
                     return this.value/2.780138509537812e-1;
                 
                 case ForceUnits.Micronewtons:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case ForceUnits.Decanewtons:
-                    return (this.value) * 10;
+                    return (this.value) / 10;
                 
                 case ForceUnits.Kilonewtons:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case ForceUnits.Meganewtons:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                     default:
                         break;
@@ -192,16 +192,16 @@ export class Force {
                     return value*2.780138509537812e-1;
                 
                 case ForceUnits.Micronewtons:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case ForceUnits.Decanewtons:
-                    return (value) / 10;
+                    return (value) * 10;
                 
                 case ForceUnits.Kilonewtons:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case ForceUnits.Meganewtons:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                     default:
                         break;

@@ -97,17 +97,17 @@ class RotationalSpeed {
             case RotationalSpeedUnits.RevolutionsPerMinute:
                 return (this.value / 6.2831853072) * 60;
             case RotationalSpeedUnits.Nanoradianspersecond:
-                return (this.value) * 1e-9;
+                return (this.value) / 1e-9;
             case RotationalSpeedUnits.Microradianspersecond:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             case RotationalSpeedUnits.Centiradianspersecond:
-                return (this.value) * 0.01;
+                return (this.value) / 0.01;
             case RotationalSpeedUnits.Deciradianspersecond:
-                return (this.value) * 0.1;
+                return (this.value) / 0.1;
             case RotationalSpeedUnits.Nanodegreespersecond:
-                return ((Math.PI / 180) * this.value) * 1e-9;
+                return ((180 / Math.PI) * this.value) / 1e-9;
             case RotationalSpeedUnits.Microdegreespersecond:
-                return ((Math.PI / 180) * this.value) * 0.000001;
+                return ((180 / Math.PI) * this.value) / 0.000001;
             default:
                 break;
         }
@@ -126,17 +126,17 @@ class RotationalSpeed {
             case RotationalSpeedUnits.RevolutionsPerMinute:
                 return (value * 6.2831853072) / 60;
             case RotationalSpeedUnits.Nanoradianspersecond:
-                return (value) / 1e-9;
+                return (value) * 1e-9;
             case RotationalSpeedUnits.Microradianspersecond:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             case RotationalSpeedUnits.Centiradianspersecond:
-                return (value) / 0.01;
+                return (value) * 0.01;
             case RotationalSpeedUnits.Deciradianspersecond:
-                return (value) / 0.1;
+                return (value) * 0.1;
             case RotationalSpeedUnits.Nanodegreespersecond:
-                return ((180 / Math.PI) * value) / 1e-9;
+                return ((Math.PI / 180) * value) * 1e-9;
             case RotationalSpeedUnits.Microdegreespersecond:
-                return ((180 / Math.PI) * value) / 0.000001;
+                return ((Math.PI / 180) * value) * 0.000001;
             default:
                 break;
         }

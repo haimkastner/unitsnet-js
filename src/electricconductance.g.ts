@@ -34,7 +34,7 @@ export class ElectricConductance {
                     return this.value;
                 
                 case ElectricConductanceUnits.Microsiemens:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                     default:
                         break;
@@ -51,7 +51,7 @@ export class ElectricConductance {
                     return value;
                 
                 case ElectricConductanceUnits.Microsiemens:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                     default:
                         break;

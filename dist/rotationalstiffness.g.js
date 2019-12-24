@@ -33,9 +33,9 @@ class RotationalStiffness {
             case RotationalStiffnessUnits.NewtonMetersPerRadian:
                 return this.value;
             case RotationalStiffnessUnits.Kilonewtonmetersperradian:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case RotationalStiffnessUnits.Meganewtonmetersperradian:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             default:
                 break;
         }
@@ -46,9 +46,9 @@ class RotationalStiffness {
             case RotationalStiffnessUnits.NewtonMetersPerRadian:
                 return value;
             case RotationalStiffnessUnits.Kilonewtonmetersperradian:
-                return (value) / 1000;
+                return (value) * 1000;
             case RotationalStiffnessUnits.Meganewtonmetersperradian:
-                return (value) / 1000000;
+                return (value) * 1000000;
             default:
                 break;
         }

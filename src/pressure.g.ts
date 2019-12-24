@@ -442,55 +442,55 @@ export class Pressure {
                     return this.value/249.08890833333;
                 
                 case PressureUnits.Micropascals:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case PressureUnits.Decapascals:
-                    return (this.value) * 10;
+                    return (this.value) / 10;
                 
                 case PressureUnits.Hectopascals:
-                    return (this.value) * 100;
+                    return (this.value) / 100;
                 
                 case PressureUnits.Kilopascals:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case PressureUnits.Megapascals:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                 case PressureUnits.Gigapascals:
-                    return (this.value) * 1000000000;
+                    return (this.value) / 1000000000;
                 
                 case PressureUnits.Microbars:
-                    return (this.value*1e5) * 0.000001;
+                    return (this.value/1e5) / 0.000001;
                 
                 case PressureUnits.Centibars:
-                    return (this.value*1e5) * 0.01;
+                    return (this.value/1e5) / 0.01;
                 
                 case PressureUnits.Decibars:
-                    return (this.value*1e5) * 0.1;
+                    return (this.value/1e5) / 0.1;
                 
                 case PressureUnits.Kilobars:
-                    return (this.value*1e5) * 1000;
+                    return (this.value/1e5) / 1000;
                 
                 case PressureUnits.Megabars:
-                    return (this.value*1e5) * 1000000;
+                    return (this.value/1e5) / 1000000;
                 
                 case PressureUnits.Kilonewtonspersquaremeter:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case PressureUnits.Meganewtonspersquaremeter:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                 case PressureUnits.Kilonewtonspersquarecentimeter:
-                    return (this.value*1e4) * 1000;
+                    return (this.value/1e4) / 1000;
                 
                 case PressureUnits.Kilonewtonspersquaremillimeter:
-                    return (this.value*1e6) * 1000;
+                    return (this.value/1e6) / 1000;
                 
                 case PressureUnits.Kilopoundsforcepersquareinch:
-                    return (this.value*6.894757293168361e3) * 1000;
+                    return (this.value/6.894757293168361e3) / 1000;
                 
                 case PressureUnits.Kilopoundsforcepersquarefoot:
-                    return (this.value*4.788025898033584e1) * 1000;
+                    return (this.value/4.788025898033584e1) / 1000;
                 
                     default:
                         break;
@@ -573,55 +573,55 @@ export class Pressure {
                     return value*249.08890833333;
                 
                 case PressureUnits.Micropascals:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case PressureUnits.Decapascals:
-                    return (value) / 10;
+                    return (value) * 10;
                 
                 case PressureUnits.Hectopascals:
-                    return (value) / 100;
+                    return (value) * 100;
                 
                 case PressureUnits.Kilopascals:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case PressureUnits.Megapascals:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                 case PressureUnits.Gigapascals:
-                    return (value) / 1000000000;
+                    return (value) * 1000000000;
                 
                 case PressureUnits.Microbars:
-                    return (value/1e5) / 0.000001;
+                    return (value*1e5) * 0.000001;
                 
                 case PressureUnits.Centibars:
-                    return (value/1e5) / 0.01;
+                    return (value*1e5) * 0.01;
                 
                 case PressureUnits.Decibars:
-                    return (value/1e5) / 0.1;
+                    return (value*1e5) * 0.1;
                 
                 case PressureUnits.Kilobars:
-                    return (value/1e5) / 1000;
+                    return (value*1e5) * 1000;
                 
                 case PressureUnits.Megabars:
-                    return (value/1e5) / 1000000;
+                    return (value*1e5) * 1000000;
                 
                 case PressureUnits.Kilonewtonspersquaremeter:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case PressureUnits.Meganewtonspersquaremeter:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                 case PressureUnits.Kilonewtonspersquarecentimeter:
-                    return (value/1e4) / 1000;
+                    return (value*1e4) * 1000;
                 
                 case PressureUnits.Kilonewtonspersquaremillimeter:
-                    return (value/1e6) / 1000;
+                    return (value*1e6) * 1000;
                 
                 case PressureUnits.Kilopoundsforcepersquareinch:
-                    return (value/6.894757293168361e3) / 1000;
+                    return (value*6.894757293168361e3) * 1000;
                 
                 case PressureUnits.Kilopoundsforcepersquarefoot:
-                    return (value/4.788025898033584e1) / 1000;
+                    return (value*4.788025898033584e1) * 1000;
                 
                     default:
                         break;

@@ -118,31 +118,31 @@ export class MolarMass {
                     return this.value/0.45359237;
                 
                 case MolarMassUnits.Nanogramspermole:
-                    return (this.value/1e3) * 1e-9;
+                    return (this.value*1e3) / 1e-9;
                 
                 case MolarMassUnits.Microgramspermole:
-                    return (this.value/1e3) * 0.000001;
+                    return (this.value*1e3) / 0.000001;
                 
                 case MolarMassUnits.Centigramspermole:
-                    return (this.value/1e3) * 0.01;
+                    return (this.value*1e3) / 0.01;
                 
                 case MolarMassUnits.Decigramspermole:
-                    return (this.value/1e3) * 0.1;
+                    return (this.value*1e3) / 0.1;
                 
                 case MolarMassUnits.Decagramspermole:
-                    return (this.value/1e3) * 10;
+                    return (this.value*1e3) / 10;
                 
                 case MolarMassUnits.Hectogramspermole:
-                    return (this.value/1e3) * 100;
+                    return (this.value*1e3) / 100;
                 
                 case MolarMassUnits.Kilogramspermole:
-                    return (this.value/1e3) * 1000;
+                    return (this.value*1e3) / 1000;
                 
                 case MolarMassUnits.Kilopoundspermole:
-                    return (this.value*0.45359237) * 1000;
+                    return (this.value/0.45359237) / 1000;
                 
                 case MolarMassUnits.Megapoundspermole:
-                    return (this.value*0.45359237) * 1000000;
+                    return (this.value/0.45359237) / 1000000;
                 
                     default:
                         break;
@@ -162,31 +162,31 @@ export class MolarMass {
                     return value*0.45359237;
                 
                 case MolarMassUnits.Nanogramspermole:
-                    return (value*1e3) / 1e-9;
+                    return (value/1e3) * 1e-9;
                 
                 case MolarMassUnits.Microgramspermole:
-                    return (value*1e3) / 0.000001;
+                    return (value/1e3) * 0.000001;
                 
                 case MolarMassUnits.Centigramspermole:
-                    return (value*1e3) / 0.01;
+                    return (value/1e3) * 0.01;
                 
                 case MolarMassUnits.Decigramspermole:
-                    return (value*1e3) / 0.1;
+                    return (value/1e3) * 0.1;
                 
                 case MolarMassUnits.Decagramspermole:
-                    return (value*1e3) / 10;
+                    return (value/1e3) * 10;
                 
                 case MolarMassUnits.Hectogramspermole:
-                    return (value*1e3) / 100;
+                    return (value/1e3) * 100;
                 
                 case MolarMassUnits.Kilogramspermole:
-                    return (value*1e3) / 1000;
+                    return (value/1e3) * 1000;
                 
                 case MolarMassUnits.Kilopoundspermole:
-                    return (value/0.45359237) / 1000;
+                    return (value*0.45359237) * 1000;
                 
                 case MolarMassUnits.Megapoundspermole:
-                    return (value/0.45359237) / 1000000;
+                    return (value*0.45359237) * 1000000;
                 
                     default:
                         break;

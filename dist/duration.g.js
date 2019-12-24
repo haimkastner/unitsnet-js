@@ -87,9 +87,9 @@ class Duration {
             case DurationUnits.Seconds:
                 return this.value;
             case DurationUnits.Nanoseconds:
-                return (this.value) * 1e-9;
+                return (this.value) / 1e-9;
             case DurationUnits.Microseconds:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             default:
                 break;
         }
@@ -112,9 +112,9 @@ class Duration {
             case DurationUnits.Seconds:
                 return value;
             case DurationUnits.Nanoseconds:
-                return (value) / 1e-9;
+                return (value) * 1e-9;
             case DurationUnits.Microseconds:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             default:
                 break;
         }

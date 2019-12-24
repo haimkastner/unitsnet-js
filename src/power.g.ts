@@ -244,49 +244,49 @@ export class Power {
                     return this.value*3600;
                 
                 case PowerUnits.Femtowatts:
-                    return (this.value) * 1e-15;
+                    return (this.value) / 1e-15;
                 
                 case PowerUnits.Picowatts:
-                    return (this.value) * 1e-12;
+                    return (this.value) / 1e-12;
                 
                 case PowerUnits.Nanowatts:
-                    return (this.value) * 1e-9;
+                    return (this.value) / 1e-9;
                 
                 case PowerUnits.Microwatts:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case PowerUnits.Deciwatts:
-                    return (this.value) * 0.1;
+                    return (this.value) / 0.1;
                 
                 case PowerUnits.Decawatts:
-                    return (this.value) * 10;
+                    return (this.value) / 10;
                 
                 case PowerUnits.Kilowatts:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case PowerUnits.Megawatts:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                 case PowerUnits.Gigawatts:
-                    return (this.value) * 1000000000;
+                    return (this.value) / 1000000000;
                 
                 case PowerUnits.Terawatts:
-                    return (this.value) * 1000000000000;
+                    return (this.value) / 1000000000000;
                 
                 case PowerUnits.Petawatts:
-                    return (this.value) * 1000000000000000;
+                    return (this.value) / 1000000000000000;
                 
                 case PowerUnits.Kilobritishthermalunitsperhour:
-                    return (this.value*0.293071) * 1000;
+                    return (this.value/0.293071) / 1000;
                 
                 case PowerUnits.Kilojoulesperhour:
-                    return (this.value/3600) * 1000;
+                    return (this.value*3600) / 1000;
                 
                 case PowerUnits.Megajoulesperhour:
-                    return (this.value/3600) * 1000000;
+                    return (this.value*3600) / 1000000;
                 
                 case PowerUnits.Gigajoulesperhour:
-                    return (this.value/3600) * 1000000000;
+                    return (this.value*3600) / 1000000000;
                 
                     default:
                         break;
@@ -324,49 +324,49 @@ export class Power {
                     return value/3600;
                 
                 case PowerUnits.Femtowatts:
-                    return (value) / 1e-15;
+                    return (value) * 1e-15;
                 
                 case PowerUnits.Picowatts:
-                    return (value) / 1e-12;
+                    return (value) * 1e-12;
                 
                 case PowerUnits.Nanowatts:
-                    return (value) / 1e-9;
+                    return (value) * 1e-9;
                 
                 case PowerUnits.Microwatts:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case PowerUnits.Deciwatts:
-                    return (value) / 0.1;
+                    return (value) * 0.1;
                 
                 case PowerUnits.Decawatts:
-                    return (value) / 10;
+                    return (value) * 10;
                 
                 case PowerUnits.Kilowatts:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case PowerUnits.Megawatts:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                 case PowerUnits.Gigawatts:
-                    return (value) / 1000000000;
+                    return (value) * 1000000000;
                 
                 case PowerUnits.Terawatts:
-                    return (value) / 1000000000000;
+                    return (value) * 1000000000000;
                 
                 case PowerUnits.Petawatts:
-                    return (value) / 1000000000000000;
+                    return (value) * 1000000000000000;
                 
                 case PowerUnits.Kilobritishthermalunitsperhour:
-                    return (value/0.293071) / 1000;
+                    return (value*0.293071) * 1000;
                 
                 case PowerUnits.Kilojoulesperhour:
-                    return (value*3600) / 1000;
+                    return (value/3600) * 1000;
                 
                 case PowerUnits.Megajoulesperhour:
-                    return (value*3600) / 1000000;
+                    return (value/3600) * 1000000;
                 
                 case PowerUnits.Gigajoulesperhour:
-                    return (value*3600) / 1000000000;
+                    return (value/3600) * 1000000000;
                 
                     default:
                         break;

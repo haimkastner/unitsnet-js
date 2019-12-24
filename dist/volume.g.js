@@ -394,35 +394,35 @@ class Volume {
             case VolumeUnits.ImperialPints:
                 return this.value / 5.6826125e-4;
             case VolumeUnits.Microliters:
-                return (this.value / 1e3) * 0.000001;
+                return (this.value * 1e3) / 0.000001;
             case VolumeUnits.Centiliters:
-                return (this.value / 1e3) * 0.01;
+                return (this.value * 1e3) / 0.01;
             case VolumeUnits.Deciliters:
-                return (this.value / 1e3) * 0.1;
+                return (this.value * 1e3) / 0.1;
             case VolumeUnits.Hectoliters:
-                return (this.value / 1e3) * 100;
+                return (this.value * 1e3) / 100;
             case VolumeUnits.Kiloliters:
-                return (this.value / 1e3) * 1000;
+                return (this.value * 1e3) / 1000;
             case VolumeUnits.Megaliters:
-                return (this.value / 1e3) * 1000000;
+                return (this.value * 1e3) / 1000000;
             case VolumeUnits.Hectocubicmeters:
-                return (this.value) * 100;
+                return (this.value) / 100;
             case VolumeUnits.Kilocubicmeters:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case VolumeUnits.Hectocubicfeet:
-                return (this.value * 0.0283168) * 100;
+                return (this.value / 0.0283168) / 100;
             case VolumeUnits.Kilocubicfeet:
-                return (this.value * 0.0283168) * 1000;
+                return (this.value / 0.0283168) / 1000;
             case VolumeUnits.Megacubicfeet:
-                return (this.value * 0.0283168) * 1000000;
+                return (this.value / 0.0283168) / 1000000;
             case VolumeUnits.Kiloimperialgallons:
-                return (this.value * 0.00454609000000181429905810072407) * 1000;
+                return (this.value / 0.00454609000000181429905810072407) / 1000;
             case VolumeUnits.Megaimperialgallons:
-                return (this.value * 0.00454609000000181429905810072407) * 1000000;
+                return (this.value / 0.00454609000000181429905810072407) / 1000000;
             case VolumeUnits.Kilousgallons:
-                return (this.value * 0.00378541) * 1000;
+                return (this.value / 0.00378541) / 1000;
             case VolumeUnits.Megausgallons:
-                return (this.value * 0.00378541) * 1000000;
+                return (this.value / 0.00378541) / 1000000;
             default:
                 break;
         }
@@ -493,35 +493,35 @@ class Volume {
             case VolumeUnits.ImperialPints:
                 return value * 5.6826125e-4;
             case VolumeUnits.Microliters:
-                return (value * 1e3) / 0.000001;
+                return (value / 1e3) * 0.000001;
             case VolumeUnits.Centiliters:
-                return (value * 1e3) / 0.01;
+                return (value / 1e3) * 0.01;
             case VolumeUnits.Deciliters:
-                return (value * 1e3) / 0.1;
+                return (value / 1e3) * 0.1;
             case VolumeUnits.Hectoliters:
-                return (value * 1e3) / 100;
+                return (value / 1e3) * 100;
             case VolumeUnits.Kiloliters:
-                return (value * 1e3) / 1000;
+                return (value / 1e3) * 1000;
             case VolumeUnits.Megaliters:
-                return (value * 1e3) / 1000000;
+                return (value / 1e3) * 1000000;
             case VolumeUnits.Hectocubicmeters:
-                return (value) / 100;
+                return (value) * 100;
             case VolumeUnits.Kilocubicmeters:
-                return (value) / 1000;
+                return (value) * 1000;
             case VolumeUnits.Hectocubicfeet:
-                return (value / 0.0283168) / 100;
+                return (value * 0.0283168) * 100;
             case VolumeUnits.Kilocubicfeet:
-                return (value / 0.0283168) / 1000;
+                return (value * 0.0283168) * 1000;
             case VolumeUnits.Megacubicfeet:
-                return (value / 0.0283168) / 1000000;
+                return (value * 0.0283168) * 1000000;
             case VolumeUnits.Kiloimperialgallons:
-                return (value / 0.00454609000000181429905810072407) / 1000;
+                return (value * 0.00454609000000181429905810072407) * 1000;
             case VolumeUnits.Megaimperialgallons:
-                return (value / 0.00454609000000181429905810072407) / 1000000;
+                return (value * 0.00454609000000181429905810072407) * 1000000;
             case VolumeUnits.Kilousgallons:
-                return (value / 0.00378541) / 1000;
+                return (value * 0.00378541) * 1000;
             case VolumeUnits.Megausgallons:
-                return (value / 0.00378541) / 1000000;
+                return (value * 0.00378541) * 1000000;
             default:
                 break;
         }

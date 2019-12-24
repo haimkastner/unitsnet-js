@@ -52,13 +52,13 @@ export class ElectricPotentialDc {
                     return this.value;
                 
                 case ElectricPotentialDcUnits.Microvoltsdc:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case ElectricPotentialDcUnits.Kilovoltsdc:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case ElectricPotentialDcUnits.Megavoltsdc:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                     default:
                         break;
@@ -75,13 +75,13 @@ export class ElectricPotentialDc {
                     return value;
                 
                 case ElectricPotentialDcUnits.Microvoltsdc:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case ElectricPotentialDcUnits.Kilovoltsdc:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case ElectricPotentialDcUnits.Megavoltsdc:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                     default:
                         break;

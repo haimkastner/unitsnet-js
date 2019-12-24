@@ -26,7 +26,7 @@ class ElectricConductance {
             case ElectricConductanceUnits.Siemens:
                 return this.value;
             case ElectricConductanceUnits.Microsiemens:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             default:
                 break;
         }
@@ -37,7 +37,7 @@ class ElectricConductance {
             case ElectricConductanceUnits.Siemens:
                 return value;
             case ElectricConductanceUnits.Microsiemens:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             default:
                 break;
         }

@@ -65,13 +65,13 @@ class PressureChangeRate {
             case PressureChangeRateUnits.AtmospheresPerSecond:
                 return this.value / (1.01325 * 1e5);
             case PressureChangeRateUnits.Kilopascalspersecond:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case PressureChangeRateUnits.Megapascalspersecond:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             case PressureChangeRateUnits.Kilopascalsperminute:
-                return (this.value / 60) * 1000;
+                return (this.value * 60) / 1000;
             case PressureChangeRateUnits.Megapascalsperminute:
-                return (this.value / 60) * 1000000;
+                return (this.value * 60) / 1000000;
             default:
                 break;
         }
@@ -86,13 +86,13 @@ class PressureChangeRate {
             case PressureChangeRateUnits.AtmospheresPerSecond:
                 return value * 1.01325 * 1e5;
             case PressureChangeRateUnits.Kilopascalspersecond:
-                return (value) / 1000;
+                return (value) * 1000;
             case PressureChangeRateUnits.Megapascalspersecond:
-                return (value) / 1000000;
+                return (value) * 1000000;
             case PressureChangeRateUnits.Kilopascalsperminute:
-                return (value * 60) / 1000;
+                return (value / 60) * 1000;
             case PressureChangeRateUnits.Megapascalsperminute:
-                return (value * 60) / 1000000;
+                return (value / 60) * 1000000;
             default:
                 break;
         }

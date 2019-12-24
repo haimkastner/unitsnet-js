@@ -151,17 +151,17 @@ class HeatFlux {
             case HeatFluxUnits.PoundsPerSecondCubed:
                 return this.value / 4.5359237e-1;
             case HeatFluxUnits.Nanowattspersquaremeter:
-                return (this.value) * 1e-9;
+                return (this.value) / 1e-9;
             case HeatFluxUnits.Microwattspersquaremeter:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             case HeatFluxUnits.Centiwattspersquaremeter:
-                return (this.value) * 0.01;
+                return (this.value) / 0.01;
             case HeatFluxUnits.Deciwattspersquaremeter:
-                return (this.value) * 0.1;
+                return (this.value) / 0.1;
             case HeatFluxUnits.Kilowattspersquaremeter:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case HeatFluxUnits.Kilocaloriespersecondsquarecentimeter:
-                return (this.value * 4.1868e4) * 1000;
+                return (this.value / 4.1868e4) / 1000;
             default:
                 break;
         }
@@ -192,17 +192,17 @@ class HeatFlux {
             case HeatFluxUnits.PoundsPerSecondCubed:
                 return value * 4.5359237e-1;
             case HeatFluxUnits.Nanowattspersquaremeter:
-                return (value) / 1e-9;
+                return (value) * 1e-9;
             case HeatFluxUnits.Microwattspersquaremeter:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             case HeatFluxUnits.Centiwattspersquaremeter:
-                return (value) / 0.01;
+                return (value) * 0.01;
             case HeatFluxUnits.Deciwattspersquaremeter:
-                return (value) / 0.1;
+                return (value) * 0.1;
             case HeatFluxUnits.Kilowattspersquaremeter:
-                return (value) / 1000;
+                return (value) * 1000;
             case HeatFluxUnits.Kilocaloriespersecondsquarecentimeter:
-                return (value / 4.1868e4) / 1000;
+                return (value * 4.1868e4) * 1000;
             default:
                 break;
         }

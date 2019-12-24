@@ -83,13 +83,13 @@ class Frequency {
             case FrequencyUnits.BeatsPerMinute:
                 return this.value * 60;
             case FrequencyUnits.Kilohertz:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case FrequencyUnits.Megahertz:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             case FrequencyUnits.Gigahertz:
-                return (this.value) * 1000000000;
+                return (this.value) / 1000000000;
             case FrequencyUnits.Terahertz:
-                return (this.value) * 1000000000000;
+                return (this.value) / 1000000000000;
             default:
                 break;
         }
@@ -108,13 +108,13 @@ class Frequency {
             case FrequencyUnits.BeatsPerMinute:
                 return value / 60;
             case FrequencyUnits.Kilohertz:
-                return (value) / 1000;
+                return (value) * 1000;
             case FrequencyUnits.Megahertz:
-                return (value) / 1000000;
+                return (value) * 1000000;
             case FrequencyUnits.Gigahertz:
-                return (value) / 1000000000;
+                return (value) * 1000000000;
             case FrequencyUnits.Terahertz:
-                return (value) / 1000000000000;
+                return (value) * 1000000000000;
             default:
                 break;
         }

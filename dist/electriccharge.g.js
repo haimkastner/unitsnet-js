@@ -42,9 +42,9 @@ class ElectricCharge {
             case ElectricChargeUnits.AmpereHours:
                 return this.value * 2.77777777777e-4;
             case ElectricChargeUnits.Kiloamperehours:
-                return (this.value / 2.77777777777e-4) * 1000;
+                return (this.value * 2.77777777777e-4) / 1000;
             case ElectricChargeUnits.Megaamperehours:
-                return (this.value / 2.77777777777e-4) * 1000000;
+                return (this.value * 2.77777777777e-4) / 1000000;
             default:
                 break;
         }
@@ -57,9 +57,9 @@ class ElectricCharge {
             case ElectricChargeUnits.AmpereHours:
                 return value / 2.77777777777e-4;
             case ElectricChargeUnits.Kiloamperehours:
-                return (value * 2.77777777777e-4) / 1000;
+                return (value / 2.77777777777e-4) * 1000;
             case ElectricChargeUnits.Megaamperehours:
-                return (value * 2.77777777777e-4) / 1000000;
+                return (value / 2.77777777777e-4) * 1000000;
             default:
                 break;
         }

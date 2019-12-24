@@ -180,33 +180,33 @@ class MassFraction {
             case MassFractionUnits.PartsPerTrillion:
                 return this.value * 1e12;
             case MassFractionUnits.Nanogramspergram:
-                return (this.value) * 1e-9;
+                return (this.value) / 1e-9;
             case MassFractionUnits.Microgramspergram:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             case MassFractionUnits.Centigramspergram:
-                return (this.value) * 0.01;
+                return (this.value) / 0.01;
             case MassFractionUnits.Decigramspergram:
-                return (this.value) * 0.1;
+                return (this.value) / 0.1;
             case MassFractionUnits.Decagramspergram:
-                return (this.value) * 10;
+                return (this.value) / 10;
             case MassFractionUnits.Hectogramspergram:
-                return (this.value) * 100;
+                return (this.value) / 100;
             case MassFractionUnits.Kilogramspergram:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case MassFractionUnits.Nanogramsperkilogram:
-                return (this.value / 1e3) * 1e-9;
+                return (this.value * 1e3) / 1e-9;
             case MassFractionUnits.Microgramsperkilogram:
-                return (this.value / 1e3) * 0.000001;
+                return (this.value * 1e3) / 0.000001;
             case MassFractionUnits.Centigramsperkilogram:
-                return (this.value / 1e3) * 0.01;
+                return (this.value * 1e3) / 0.01;
             case MassFractionUnits.Decigramsperkilogram:
-                return (this.value / 1e3) * 0.1;
+                return (this.value * 1e3) / 0.1;
             case MassFractionUnits.Decagramsperkilogram:
-                return (this.value / 1e3) * 10;
+                return (this.value * 1e3) / 10;
             case MassFractionUnits.Hectogramsperkilogram:
-                return (this.value / 1e3) * 100;
+                return (this.value * 1e3) / 100;
             case MassFractionUnits.Kilogramsperkilogram:
-                return (this.value / 1e3) * 1000;
+                return (this.value * 1e3) / 1000;
             default:
                 break;
         }
@@ -231,33 +231,33 @@ class MassFraction {
             case MassFractionUnits.PartsPerTrillion:
                 return value / 1e12;
             case MassFractionUnits.Nanogramspergram:
-                return (value) / 1e-9;
+                return (value) * 1e-9;
             case MassFractionUnits.Microgramspergram:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             case MassFractionUnits.Centigramspergram:
-                return (value) / 0.01;
+                return (value) * 0.01;
             case MassFractionUnits.Decigramspergram:
-                return (value) / 0.1;
+                return (value) * 0.1;
             case MassFractionUnits.Decagramspergram:
-                return (value) / 10;
+                return (value) * 10;
             case MassFractionUnits.Hectogramspergram:
-                return (value) / 100;
+                return (value) * 100;
             case MassFractionUnits.Kilogramspergram:
-                return (value) / 1000;
+                return (value) * 1000;
             case MassFractionUnits.Nanogramsperkilogram:
-                return (value * 1e3) / 1e-9;
+                return (value / 1e3) * 1e-9;
             case MassFractionUnits.Microgramsperkilogram:
-                return (value * 1e3) / 0.000001;
+                return (value / 1e3) * 0.000001;
             case MassFractionUnits.Centigramsperkilogram:
-                return (value * 1e3) / 0.01;
+                return (value / 1e3) * 0.01;
             case MassFractionUnits.Decigramsperkilogram:
-                return (value * 1e3) / 0.1;
+                return (value / 1e3) * 0.1;
             case MassFractionUnits.Decagramsperkilogram:
-                return (value * 1e3) / 10;
+                return (value / 1e3) * 10;
             case MassFractionUnits.Hectogramsperkilogram:
-                return (value * 1e3) / 100;
+                return (value / 1e3) * 100;
             case MassFractionUnits.Kilogramsperkilogram:
-                return (value * 1e3) / 1000;
+                return (value / 1e3) * 1000;
             default:
                 break;
         }

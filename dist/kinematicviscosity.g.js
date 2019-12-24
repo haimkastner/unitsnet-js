@@ -63,15 +63,15 @@ class KinematicViscosity {
             case KinematicViscosityUnits.Stokes:
                 return this.value * 1e4;
             case KinematicViscosityUnits.Nanostokes:
-                return (this.value / 1e4) * 1e-9;
+                return (this.value * 1e4) / 1e-9;
             case KinematicViscosityUnits.Microstokes:
-                return (this.value / 1e4) * 0.000001;
+                return (this.value * 1e4) / 0.000001;
             case KinematicViscosityUnits.Centistokes:
-                return (this.value / 1e4) * 0.01;
+                return (this.value * 1e4) / 0.01;
             case KinematicViscosityUnits.Decistokes:
-                return (this.value / 1e4) * 0.1;
+                return (this.value * 1e4) / 0.1;
             case KinematicViscosityUnits.Kilostokes:
-                return (this.value / 1e4) * 1000;
+                return (this.value * 1e4) / 1000;
             default:
                 break;
         }
@@ -84,15 +84,15 @@ class KinematicViscosity {
             case KinematicViscosityUnits.Stokes:
                 return value / 1e4;
             case KinematicViscosityUnits.Nanostokes:
-                return (value * 1e4) / 1e-9;
+                return (value / 1e4) * 1e-9;
             case KinematicViscosityUnits.Microstokes:
-                return (value * 1e4) / 0.000001;
+                return (value / 1e4) * 0.000001;
             case KinematicViscosityUnits.Centistokes:
-                return (value * 1e4) / 0.01;
+                return (value / 1e4) * 0.01;
             case KinematicViscosityUnits.Decistokes:
-                return (value * 1e4) / 0.1;
+                return (value / 1e4) * 0.1;
             case KinematicViscosityUnits.Kilostokes:
-                return (value * 1e4) / 1000;
+                return (value / 1e4) * 1000;
             default:
                 break;
         }

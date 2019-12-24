@@ -33,9 +33,9 @@ class MolarEntropy {
             case MolarEntropyUnits.JoulesPerMoleKelvin:
                 return this.value;
             case MolarEntropyUnits.Kilojoulespermolekelvin:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case MolarEntropyUnits.Megajoulespermolekelvin:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             default:
                 break;
         }
@@ -46,9 +46,9 @@ class MolarEntropy {
             case MolarEntropyUnits.JoulesPerMoleKelvin:
                 return value;
             case MolarEntropyUnits.Kilojoulespermolekelvin:
-                return (value) / 1000;
+                return (value) * 1000;
             case MolarEntropyUnits.Megajoulespermolekelvin:
-                return (value) / 1000000;
+                return (value) * 1000000;
             default:
                 break;
         }

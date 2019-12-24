@@ -65,13 +65,13 @@ class Entropy {
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return this.value;
             case EntropyUnits.Kilojoulesperkelvin:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case EntropyUnits.Megajoulesperkelvin:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             case EntropyUnits.Kilocaloriesperkelvin:
-                return (this.value * 4.184) * 1000;
+                return (this.value / 4.184) / 1000;
             case EntropyUnits.Kilojoulesperdegreecelsius:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             default:
                 break;
         }
@@ -86,13 +86,13 @@ class Entropy {
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return value;
             case EntropyUnits.Kilojoulesperkelvin:
-                return (value) / 1000;
+                return (value) * 1000;
             case EntropyUnits.Megajoulesperkelvin:
-                return (value) / 1000000;
+                return (value) * 1000000;
             case EntropyUnits.Kilocaloriesperkelvin:
-                return (value / 4.184) / 1000;
+                return (value * 4.184) * 1000;
             case EntropyUnits.Kilojoulesperdegreecelsius:
-                return (value) / 1000;
+                return (value) * 1000;
             default:
                 break;
         }

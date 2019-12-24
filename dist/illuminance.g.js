@@ -33,9 +33,9 @@ class Illuminance {
             case IlluminanceUnits.Lux:
                 return this.value;
             case IlluminanceUnits.Kilolux:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case IlluminanceUnits.Megalux:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             default:
                 break;
         }
@@ -46,9 +46,9 @@ class Illuminance {
             case IlluminanceUnits.Lux:
                 return value;
             case IlluminanceUnits.Kilolux:
-                return (value) / 1000;
+                return (value) * 1000;
             case IlluminanceUnits.Megalux:
-                return (value) / 1000000;
+                return (value) * 1000000;
             default:
                 break;
         }

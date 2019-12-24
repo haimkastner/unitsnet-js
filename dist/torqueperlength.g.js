@@ -179,25 +179,25 @@ class TorquePerLength {
             case TorquePerLengthUnits.TonneForceMetersPerMeter:
                 return this.value * 0.000101971619222242;
             case TorquePerLengthUnits.Kilonewtonmillimeterspermeter:
-                return (this.value * 0.001) * 1000;
+                return (this.value * 1000) / 1000;
             case TorquePerLengthUnits.Meganewtonmillimeterspermeter:
-                return (this.value * 0.001) * 1000000;
+                return (this.value * 1000) / 1000000;
             case TorquePerLengthUnits.Kilonewtoncentimeterspermeter:
-                return (this.value * 0.01) * 1000;
+                return (this.value * 100) / 1000;
             case TorquePerLengthUnits.Meganewtoncentimeterspermeter:
-                return (this.value * 0.01) * 1000000;
+                return (this.value * 100) / 1000000;
             case TorquePerLengthUnits.Kilonewtonmeterspermeter:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case TorquePerLengthUnits.Meganewtonmeterspermeter:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             case TorquePerLengthUnits.Kilopoundforceinchesperfoot:
-                return (this.value * 0.370685147638) * 1000;
+                return (this.value / 0.370685147638) / 1000;
             case TorquePerLengthUnits.Megapoundforceinchesperfoot:
-                return (this.value * 0.370685147638) * 1000000;
+                return (this.value / 0.370685147638) / 1000000;
             case TorquePerLengthUnits.Kilopoundforcefeetperfoot:
-                return (this.value * 4.44822161526) * 1000;
+                return (this.value / 4.44822161526) / 1000;
             case TorquePerLengthUnits.Megapoundforcefeetperfoot:
-                return (this.value * 4.44822161526) * 1000000;
+                return (this.value / 4.44822161526) / 1000000;
             default:
                 break;
         }
@@ -228,25 +228,25 @@ class TorquePerLength {
             case TorquePerLengthUnits.TonneForceMetersPerMeter:
                 return value * 9806.65019960653;
             case TorquePerLengthUnits.Kilonewtonmillimeterspermeter:
-                return (value * 1000) / 1000;
+                return (value * 0.001) * 1000;
             case TorquePerLengthUnits.Meganewtonmillimeterspermeter:
-                return (value * 1000) / 1000000;
+                return (value * 0.001) * 1000000;
             case TorquePerLengthUnits.Kilonewtoncentimeterspermeter:
-                return (value * 100) / 1000;
+                return (value * 0.01) * 1000;
             case TorquePerLengthUnits.Meganewtoncentimeterspermeter:
-                return (value * 100) / 1000000;
+                return (value * 0.01) * 1000000;
             case TorquePerLengthUnits.Kilonewtonmeterspermeter:
-                return (value) / 1000;
+                return (value) * 1000;
             case TorquePerLengthUnits.Meganewtonmeterspermeter:
-                return (value) / 1000000;
+                return (value) * 1000000;
             case TorquePerLengthUnits.Kilopoundforceinchesperfoot:
-                return (value / 0.370685147638) / 1000;
+                return (value * 0.370685147638) * 1000;
             case TorquePerLengthUnits.Megapoundforceinchesperfoot:
-                return (value / 0.370685147638) / 1000000;
+                return (value * 0.370685147638) * 1000000;
             case TorquePerLengthUnits.Kilopoundforcefeetperfoot:
-                return (value / 4.44822161526) / 1000;
+                return (value * 4.44822161526) * 1000;
             case TorquePerLengthUnits.Megapoundforcefeetperfoot:
-                return (value / 4.44822161526) / 1000000;
+                return (value * 4.44822161526) * 1000000;
             default:
                 break;
         }

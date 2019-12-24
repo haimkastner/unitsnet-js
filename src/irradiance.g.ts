@@ -127,34 +127,34 @@ export class Irradiance {
                     return this.value*0.0001;
                 
                 case IrradianceUnits.Picowattspersquaremeter:
-                    return (this.value) * 1e-12;
+                    return (this.value) / 1e-12;
                 
                 case IrradianceUnits.Nanowattspersquaremeter:
-                    return (this.value) * 1e-9;
+                    return (this.value) / 1e-9;
                 
                 case IrradianceUnits.Microwattspersquaremeter:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case IrradianceUnits.Kilowattspersquaremeter:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case IrradianceUnits.Megawattspersquaremeter:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                 case IrradianceUnits.Picowattspersquarecentimeter:
-                    return (this.value*10000) * 1e-12;
+                    return (this.value*0.0001) / 1e-12;
                 
                 case IrradianceUnits.Nanowattspersquarecentimeter:
-                    return (this.value*10000) * 1e-9;
+                    return (this.value*0.0001) / 1e-9;
                 
                 case IrradianceUnits.Microwattspersquarecentimeter:
-                    return (this.value*10000) * 0.000001;
+                    return (this.value*0.0001) / 0.000001;
                 
                 case IrradianceUnits.Kilowattspersquarecentimeter:
-                    return (this.value*10000) * 1000;
+                    return (this.value*0.0001) / 1000;
                 
                 case IrradianceUnits.Megawattspersquarecentimeter:
-                    return (this.value*10000) * 1000000;
+                    return (this.value*0.0001) / 1000000;
                 
                     default:
                         break;
@@ -174,34 +174,34 @@ export class Irradiance {
                     return value*10000;
                 
                 case IrradianceUnits.Picowattspersquaremeter:
-                    return (value) / 1e-12;
+                    return (value) * 1e-12;
                 
                 case IrradianceUnits.Nanowattspersquaremeter:
-                    return (value) / 1e-9;
+                    return (value) * 1e-9;
                 
                 case IrradianceUnits.Microwattspersquaremeter:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case IrradianceUnits.Kilowattspersquaremeter:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case IrradianceUnits.Megawattspersquaremeter:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                 case IrradianceUnits.Picowattspersquarecentimeter:
-                    return (value*0.0001) / 1e-12;
+                    return (value*10000) * 1e-12;
                 
                 case IrradianceUnits.Nanowattspersquarecentimeter:
-                    return (value*0.0001) / 1e-9;
+                    return (value*10000) * 1e-9;
                 
                 case IrradianceUnits.Microwattspersquarecentimeter:
-                    return (value*0.0001) / 0.000001;
+                    return (value*10000) * 0.000001;
                 
                 case IrradianceUnits.Kilowattspersquarecentimeter:
-                    return (value*0.0001) / 1000;
+                    return (value*10000) * 1000;
                 
                 case IrradianceUnits.Megawattspersquarecentimeter:
-                    return (value*0.0001) / 1000000;
+                    return (value*10000) * 1000000;
                 
                     default:
                         break;

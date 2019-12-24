@@ -382,67 +382,67 @@ export class Density {
                     return this.value/1e3;
                 
                 case DensityUnits.Kilogramspercubicmillimeter:
-                    return (this.value/1e-6) * 1000;
+                    return (this.value*1e-6) / 1000;
                 
                 case DensityUnits.Kilogramspercubiccentimeter:
-                    return (this.value/1e-3) * 1000;
+                    return (this.value*1e-3) / 1000;
                 
                 case DensityUnits.Kilogramspercubicmeter:
-                    return (this.value/1e3) * 1000;
+                    return (this.value*1e3) / 1000;
                 
                 case DensityUnits.Microgramspercubicmeter:
-                    return (this.value/1e3) * 0.000001;
+                    return (this.value*1e3) / 0.000001;
                 
                 case DensityUnits.Kilopoundspercubicinch:
-                    return (this.value/3.6127298147753e-5) * 1000;
+                    return (this.value*3.6127298147753e-5) / 1000;
                 
                 case DensityUnits.Kilopoundspercubicfoot:
-                    return (this.value/0.062427961) * 1000;
+                    return (this.value*0.062427961) / 1000;
                 
                 case DensityUnits.Picogramsperliter:
-                    return (this.value/1) * 1e-12;
+                    return (this.value*1) / 1e-12;
                 
                 case DensityUnits.Nanogramsperliter:
-                    return (this.value/1) * 1e-9;
+                    return (this.value*1) / 1e-9;
                 
                 case DensityUnits.Microgramsperliter:
-                    return (this.value/1) * 0.000001;
+                    return (this.value*1) / 0.000001;
                 
                 case DensityUnits.Centigramsperliter:
-                    return (this.value/1) * 0.01;
+                    return (this.value*1) / 0.01;
                 
                 case DensityUnits.Decigramsperliter:
-                    return (this.value/1) * 0.1;
+                    return (this.value*1) / 0.1;
                 
                 case DensityUnits.Picogramsperdeciliter:
-                    return (this.value/1e-1) * 1e-12;
+                    return (this.value*1e-1) / 1e-12;
                 
                 case DensityUnits.Nanogramsperdeciliter:
-                    return (this.value/1e-1) * 1e-9;
+                    return (this.value*1e-1) / 1e-9;
                 
                 case DensityUnits.Microgramsperdeciliter:
-                    return (this.value/1e-1) * 0.000001;
+                    return (this.value*1e-1) / 0.000001;
                 
                 case DensityUnits.Centigramsperdeciliter:
-                    return (this.value/1e-1) * 0.01;
+                    return (this.value*1e-1) / 0.01;
                 
                 case DensityUnits.Decigramsperdeciliter:
-                    return (this.value/1e-1) * 0.1;
+                    return (this.value*1e-1) / 0.1;
                 
                 case DensityUnits.Picogramspermilliliter:
-                    return (this.value/1e-3) * 1e-12;
+                    return (this.value*1e-3) / 1e-12;
                 
                 case DensityUnits.Nanogramspermilliliter:
-                    return (this.value/1e-3) * 1e-9;
+                    return (this.value*1e-3) / 1e-9;
                 
                 case DensityUnits.Microgramspermilliliter:
-                    return (this.value/1e-3) * 0.000001;
+                    return (this.value*1e-3) / 0.000001;
                 
                 case DensityUnits.Centigramspermilliliter:
-                    return (this.value/1e-3) * 0.01;
+                    return (this.value*1e-3) / 0.01;
                 
                 case DensityUnits.Decigramspermilliliter:
-                    return (this.value/1e-3) * 0.1;
+                    return (this.value*1e-3) / 0.1;
                 
                     default:
                         break;
@@ -501,67 +501,67 @@ export class Density {
                     return value*1e3;
                 
                 case DensityUnits.Kilogramspercubicmillimeter:
-                    return (value*1e-6) / 1000;
+                    return (value/1e-6) * 1000;
                 
                 case DensityUnits.Kilogramspercubiccentimeter:
-                    return (value*1e-3) / 1000;
+                    return (value/1e-3) * 1000;
                 
                 case DensityUnits.Kilogramspercubicmeter:
-                    return (value*1e3) / 1000;
+                    return (value/1e3) * 1000;
                 
                 case DensityUnits.Microgramspercubicmeter:
-                    return (value*1e3) / 0.000001;
+                    return (value/1e3) * 0.000001;
                 
                 case DensityUnits.Kilopoundspercubicinch:
-                    return (value*3.6127298147753e-5) / 1000;
+                    return (value/3.6127298147753e-5) * 1000;
                 
                 case DensityUnits.Kilopoundspercubicfoot:
-                    return (value*0.062427961) / 1000;
+                    return (value/0.062427961) * 1000;
                 
                 case DensityUnits.Picogramsperliter:
-                    return (value*1) / 1e-12;
+                    return (value/1) * 1e-12;
                 
                 case DensityUnits.Nanogramsperliter:
-                    return (value*1) / 1e-9;
+                    return (value/1) * 1e-9;
                 
                 case DensityUnits.Microgramsperliter:
-                    return (value*1) / 0.000001;
+                    return (value/1) * 0.000001;
                 
                 case DensityUnits.Centigramsperliter:
-                    return (value*1) / 0.01;
+                    return (value/1) * 0.01;
                 
                 case DensityUnits.Decigramsperliter:
-                    return (value*1) / 0.1;
+                    return (value/1) * 0.1;
                 
                 case DensityUnits.Picogramsperdeciliter:
-                    return (value*1e-1) / 1e-12;
+                    return (value/1e-1) * 1e-12;
                 
                 case DensityUnits.Nanogramsperdeciliter:
-                    return (value*1e-1) / 1e-9;
+                    return (value/1e-1) * 1e-9;
                 
                 case DensityUnits.Microgramsperdeciliter:
-                    return (value*1e-1) / 0.000001;
+                    return (value/1e-1) * 0.000001;
                 
                 case DensityUnits.Centigramsperdeciliter:
-                    return (value*1e-1) / 0.01;
+                    return (value/1e-1) * 0.01;
                 
                 case DensityUnits.Decigramsperdeciliter:
-                    return (value*1e-1) / 0.1;
+                    return (value/1e-1) * 0.1;
                 
                 case DensityUnits.Picogramspermilliliter:
-                    return (value*1e-3) / 1e-12;
+                    return (value/1e-3) * 1e-12;
                 
                 case DensityUnits.Nanogramspermilliliter:
-                    return (value*1e-3) / 1e-9;
+                    return (value/1e-3) * 1e-9;
                 
                 case DensityUnits.Microgramspermilliliter:
-                    return (value*1e-3) / 0.000001;
+                    return (value/1e-3) * 0.000001;
                 
                 case DensityUnits.Centigramspermilliliter:
-                    return (value*1e-3) / 0.01;
+                    return (value/1e-3) * 0.01;
                 
                 case DensityUnits.Decigramspermilliliter:
-                    return (value*1e-3) / 0.1;
+                    return (value/1e-3) * 0.1;
                 
                     default:
                         break;

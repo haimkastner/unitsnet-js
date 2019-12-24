@@ -40,11 +40,11 @@ class ElectricPotential {
             case ElectricPotentialUnits.Volts:
                 return this.value;
             case ElectricPotentialUnits.Microvolts:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             case ElectricPotentialUnits.Kilovolts:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case ElectricPotentialUnits.Megavolts:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             default:
                 break;
         }
@@ -55,11 +55,11 @@ class ElectricPotential {
             case ElectricPotentialUnits.Volts:
                 return value;
             case ElectricPotentialUnits.Microvolts:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             case ElectricPotentialUnits.Kilovolts:
-                return (value) / 1000;
+                return (value) * 1000;
             case ElectricPotentialUnits.Megavolts:
-                return (value) / 1000000;
+                return (value) * 1000000;
             default:
                 break;
         }

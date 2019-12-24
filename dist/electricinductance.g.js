@@ -33,9 +33,9 @@ class ElectricInductance {
             case ElectricInductanceUnits.Henries:
                 return this.value;
             case ElectricInductanceUnits.Nanohenries:
-                return (this.value) * 1e-9;
+                return (this.value) / 1e-9;
             case ElectricInductanceUnits.Microhenries:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             default:
                 break;
         }
@@ -46,9 +46,9 @@ class ElectricInductance {
             case ElectricInductanceUnits.Henries:
                 return value;
             case ElectricInductanceUnits.Nanohenries:
-                return (value) / 1e-9;
+                return (value) * 1e-9;
             case ElectricInductanceUnits.Microhenries:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             default:
                 break;
         }

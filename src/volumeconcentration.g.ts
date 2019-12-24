@@ -199,34 +199,34 @@ export class VolumeConcentration {
                     return this.value*1e12;
                 
                 case VolumeConcentrationUnits.Picolitersperliter:
-                    return (this.value) * 1e-12;
+                    return (this.value) / 1e-12;
                 
                 case VolumeConcentrationUnits.Nanolitersperliter:
-                    return (this.value) * 1e-9;
+                    return (this.value) / 1e-9;
                 
                 case VolumeConcentrationUnits.Microlitersperliter:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case VolumeConcentrationUnits.Centilitersperliter:
-                    return (this.value) * 0.01;
+                    return (this.value) / 0.01;
                 
                 case VolumeConcentrationUnits.Decilitersperliter:
-                    return (this.value) * 0.1;
+                    return (this.value) / 0.1;
                 
                 case VolumeConcentrationUnits.Picoliterspermililiter:
-                    return (this.value/1e-3) * 1e-12;
+                    return (this.value*1e-3) / 1e-12;
                 
                 case VolumeConcentrationUnits.Nanoliterspermililiter:
-                    return (this.value/1e-3) * 1e-9;
+                    return (this.value*1e-3) / 1e-9;
                 
                 case VolumeConcentrationUnits.Microliterspermililiter:
-                    return (this.value/1e-3) * 0.000001;
+                    return (this.value*1e-3) / 0.000001;
                 
                 case VolumeConcentrationUnits.Centiliterspermililiter:
-                    return (this.value/1e-3) * 0.01;
+                    return (this.value*1e-3) / 0.01;
                 
                 case VolumeConcentrationUnits.Deciliterspermililiter:
-                    return (this.value/1e-3) * 0.1;
+                    return (this.value*1e-3) / 0.1;
                 
                     default:
                         break;
@@ -264,34 +264,34 @@ export class VolumeConcentration {
                     return value/1e12;
                 
                 case VolumeConcentrationUnits.Picolitersperliter:
-                    return (value) / 1e-12;
+                    return (value) * 1e-12;
                 
                 case VolumeConcentrationUnits.Nanolitersperliter:
-                    return (value) / 1e-9;
+                    return (value) * 1e-9;
                 
                 case VolumeConcentrationUnits.Microlitersperliter:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case VolumeConcentrationUnits.Centilitersperliter:
-                    return (value) / 0.01;
+                    return (value) * 0.01;
                 
                 case VolumeConcentrationUnits.Decilitersperliter:
-                    return (value) / 0.1;
+                    return (value) * 0.1;
                 
                 case VolumeConcentrationUnits.Picoliterspermililiter:
-                    return (value*1e-3) / 1e-12;
+                    return (value/1e-3) * 1e-12;
                 
                 case VolumeConcentrationUnits.Nanoliterspermililiter:
-                    return (value*1e-3) / 1e-9;
+                    return (value/1e-3) * 1e-9;
                 
                 case VolumeConcentrationUnits.Microliterspermililiter:
-                    return (value*1e-3) / 0.000001;
+                    return (value/1e-3) * 0.000001;
                 
                 case VolumeConcentrationUnits.Centiliterspermililiter:
-                    return (value*1e-3) / 0.01;
+                    return (value/1e-3) * 0.01;
                 
                 case VolumeConcentrationUnits.Deciliterspermililiter:
-                    return (value*1e-3) / 0.1;
+                    return (value/1e-3) * 0.1;
                 
                     default:
                         break;

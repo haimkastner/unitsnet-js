@@ -78,9 +78,9 @@ class DynamicViscosity {
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return this.value / 4.7880258980335843e1;
             case DynamicViscosityUnits.Micropascalseconds:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             case DynamicViscosityUnits.Centipoise:
-                return (this.value / 10) * 0.01;
+                return (this.value * 10) / 0.01;
             default:
                 break;
         }
@@ -101,9 +101,9 @@ class DynamicViscosity {
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return value * 4.7880258980335843e1;
             case DynamicViscosityUnits.Micropascalseconds:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             case DynamicViscosityUnits.Centipoise:
-                return (value * 10) / 0.01;
+                return (value / 10) * 0.01;
             default:
                 break;
         }

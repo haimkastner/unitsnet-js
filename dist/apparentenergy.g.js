@@ -33,9 +33,9 @@ class ApparentEnergy {
             case ApparentEnergyUnits.VoltampereHours:
                 return this.value;
             case ApparentEnergyUnits.Kilovoltamperehours:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case ApparentEnergyUnits.Megavoltamperehours:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             default:
                 break;
         }
@@ -46,9 +46,9 @@ class ApparentEnergy {
             case ApparentEnergyUnits.VoltampereHours:
                 return value;
             case ApparentEnergyUnits.Kilovoltamperehours:
-                return (value) / 1000;
+                return (value) * 1000;
             case ApparentEnergyUnits.Megavoltamperehours:
-                return (value) / 1000000;
+                return (value) * 1000000;
             default:
                 break;
         }

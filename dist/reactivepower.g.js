@@ -40,11 +40,11 @@ class ReactivePower {
             case ReactivePowerUnits.VoltamperesReactive:
                 return this.value;
             case ReactivePowerUnits.Kilovoltamperesreactive:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case ReactivePowerUnits.Megavoltamperesreactive:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             case ReactivePowerUnits.Gigavoltamperesreactive:
-                return (this.value) * 1000000000;
+                return (this.value) / 1000000000;
             default:
                 break;
         }
@@ -55,11 +55,11 @@ class ReactivePower {
             case ReactivePowerUnits.VoltamperesReactive:
                 return value;
             case ReactivePowerUnits.Kilovoltamperesreactive:
-                return (value) / 1000;
+                return (value) * 1000;
             case ReactivePowerUnits.Megavoltamperesreactive:
-                return (value) / 1000000;
+                return (value) * 1000000;
             case ReactivePowerUnits.Gigavoltamperesreactive:
-                return (value) / 1000000000;
+                return (value) * 1000000000;
             default:
                 break;
         }

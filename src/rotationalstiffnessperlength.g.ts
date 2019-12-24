@@ -43,10 +43,10 @@ export class RotationalStiffnessPerLength {
                     return this.value;
                 
                 case RotationalStiffnessPerLengthUnits.Kilonewtonmetersperradianpermeter:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                     default:
                         break;
@@ -63,10 +63,10 @@ export class RotationalStiffnessPerLength {
                     return value;
                 
                 case RotationalStiffnessPerLengthUnits.Kilonewtonmetersperradianpermeter:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                     default:
                         break;

@@ -79,10 +79,10 @@ export class Irradiation {
                     return this.value/3600;
                 
                 case IrradiationUnits.Kilojoulespersquaremeter:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case IrradiationUnits.Kilowatthourspersquaremeter:
-                    return (this.value*3600) * 1000;
+                    return (this.value/3600) / 1000;
                 
                     default:
                         break;
@@ -108,10 +108,10 @@ export class Irradiation {
                     return value*3600;
                 
                 case IrradiationUnits.Kilojoulespersquaremeter:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case IrradiationUnits.Kilowatthourspersquaremeter:
-                    return (value/3600) / 1000;
+                    return (value*3600) * 1000;
                 
                     default:
                         break;

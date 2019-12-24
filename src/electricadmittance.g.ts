@@ -43,10 +43,10 @@ export class ElectricAdmittance {
                     return this.value;
                 
                 case ElectricAdmittanceUnits.Nanosiemens:
-                    return (this.value) * 1e-9;
+                    return (this.value) / 1e-9;
                 
                 case ElectricAdmittanceUnits.Microsiemens:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                     default:
                         break;
@@ -63,10 +63,10 @@ export class ElectricAdmittance {
                     return value;
                 
                 case ElectricAdmittanceUnits.Nanosiemens:
-                    return (value) / 1e-9;
+                    return (value) * 1e-9;
                 
                 case ElectricAdmittanceUnits.Microsiemens:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                     default:
                         break;

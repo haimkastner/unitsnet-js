@@ -235,34 +235,34 @@ export class Torque {
                     return this.value*0.000101971619222242;
                 
                 case TorqueUnits.Kilonewtonmillimeters:
-                    return (this.value*0.001) * 1000;
+                    return (this.value*1000) / 1000;
                 
                 case TorqueUnits.Meganewtonmillimeters:
-                    return (this.value*0.001) * 1000000;
+                    return (this.value*1000) / 1000000;
                 
                 case TorqueUnits.Kilonewtoncentimeters:
-                    return (this.value*0.01) * 1000;
+                    return (this.value*100) / 1000;
                 
                 case TorqueUnits.Meganewtoncentimeters:
-                    return (this.value*0.01) * 1000000;
+                    return (this.value*100) / 1000000;
                 
                 case TorqueUnits.Kilonewtonmeters:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case TorqueUnits.Meganewtonmeters:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                 case TorqueUnits.Kilopoundforceinches:
-                    return (this.value*1.129848290276167e-1) * 1000;
+                    return (this.value/1.129848290276167e-1) / 1000;
                 
                 case TorqueUnits.Megapoundforceinches:
-                    return (this.value*1.129848290276167e-1) * 1000000;
+                    return (this.value/1.129848290276167e-1) / 1000000;
                 
                 case TorqueUnits.Kilopoundforcefeet:
-                    return (this.value*1.3558179483314) * 1000;
+                    return (this.value/1.3558179483314) / 1000;
                 
                 case TorqueUnits.Megapoundforcefeet:
-                    return (this.value*1.3558179483314) * 1000000;
+                    return (this.value/1.3558179483314) / 1000000;
                 
                     default:
                         break;
@@ -309,34 +309,34 @@ export class Torque {
                     return value*9806.65019960653;
                 
                 case TorqueUnits.Kilonewtonmillimeters:
-                    return (value*1000) / 1000;
+                    return (value*0.001) * 1000;
                 
                 case TorqueUnits.Meganewtonmillimeters:
-                    return (value*1000) / 1000000;
+                    return (value*0.001) * 1000000;
                 
                 case TorqueUnits.Kilonewtoncentimeters:
-                    return (value*100) / 1000;
+                    return (value*0.01) * 1000;
                 
                 case TorqueUnits.Meganewtoncentimeters:
-                    return (value*100) / 1000000;
+                    return (value*0.01) * 1000000;
                 
                 case TorqueUnits.Kilonewtonmeters:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case TorqueUnits.Meganewtonmeters:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                 case TorqueUnits.Kilopoundforceinches:
-                    return (value/1.129848290276167e-1) / 1000;
+                    return (value*1.129848290276167e-1) * 1000;
                 
                 case TorqueUnits.Megapoundforceinches:
-                    return (value/1.129848290276167e-1) / 1000000;
+                    return (value*1.129848290276167e-1) * 1000000;
                 
                 case TorqueUnits.Kilopoundforcefeet:
-                    return (value/1.3558179483314) / 1000;
+                    return (value*1.3558179483314) * 1000;
                 
                 case TorqueUnits.Megapoundforcefeet:
-                    return (value/1.3558179483314) / 1000000;
+                    return (value*1.3558179483314) * 1000000;
                 
                     default:
                         break;

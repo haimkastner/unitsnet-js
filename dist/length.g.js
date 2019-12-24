@@ -269,25 +269,25 @@ class Length {
             case LengthUnits.SolarRadiuses:
                 return this.value / 6.95510000E+08;
             case LengthUnits.Nanometers:
-                return (this.value) * 1e-9;
+                return (this.value) / 1e-9;
             case LengthUnits.Micrometers:
-                return (this.value) * 0.000001;
+                return (this.value) / 0.000001;
             case LengthUnits.Centimeters:
-                return (this.value) * 0.01;
+                return (this.value) / 0.01;
             case LengthUnits.Decimeters:
-                return (this.value) * 0.1;
+                return (this.value) / 0.1;
             case LengthUnits.Hectometers:
-                return (this.value) * 100;
+                return (this.value) / 100;
             case LengthUnits.Kilometers:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case LengthUnits.Kiloparsecs:
-                return (this.value * 3.08567758128e16) * 1000;
+                return (this.value / 3.08567758128e16) / 1000;
             case LengthUnits.Megaparsecs:
-                return (this.value * 3.08567758128e16) * 1000000;
+                return (this.value / 3.08567758128e16) / 1000000;
             case LengthUnits.Kilolightyears:
-                return (this.value * 9.46073047258e15) * 1000;
+                return (this.value / 9.46073047258e15) / 1000;
             case LengthUnits.Megalightyears:
-                return (this.value * 9.46073047258e15) * 1000000;
+                return (this.value / 9.46073047258e15) / 1000000;
             default:
                 break;
         }
@@ -338,25 +338,25 @@ class Length {
             case LengthUnits.SolarRadiuses:
                 return value * 6.95510000E+08;
             case LengthUnits.Nanometers:
-                return (value) / 1e-9;
+                return (value) * 1e-9;
             case LengthUnits.Micrometers:
-                return (value) / 0.000001;
+                return (value) * 0.000001;
             case LengthUnits.Centimeters:
-                return (value) / 0.01;
+                return (value) * 0.01;
             case LengthUnits.Decimeters:
-                return (value) / 0.1;
+                return (value) * 0.1;
             case LengthUnits.Hectometers:
-                return (value) / 100;
+                return (value) * 100;
             case LengthUnits.Kilometers:
-                return (value) / 1000;
+                return (value) * 1000;
             case LengthUnits.Kiloparsecs:
-                return (value / 3.08567758128e16) / 1000;
+                return (value * 3.08567758128e16) * 1000;
             case LengthUnits.Megaparsecs:
-                return (value / 3.08567758128e16) / 1000000;
+                return (value * 3.08567758128e16) * 1000000;
             case LengthUnits.Kilolightyears:
-                return (value / 9.46073047258e15) / 1000;
+                return (value * 9.46073047258e15) * 1000;
             case LengthUnits.Megalightyears:
-                return (value / 9.46073047258e15) / 1000000;
+                return (value * 9.46073047258e15) * 1000000;
             default:
                 break;
         }

@@ -46,13 +46,13 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
         }
 
         // Build the prefix formula based on the original unit faormula.
-        let fromUnitToBaseFormula = `(${unit.FromBaseToUnitFunc}) / ${prefixesFactor[prefix]}`;
-        let toBaseToUnitFormula = `(${unit.FromUnitToBaseFunc}) * ${prefixesFactor[prefix]}`;
+        let fromUnitPrefixToBaseFormula = `(${unit.FromUnitToBaseFunc}) * ${prefixesFactor[prefix]}`;
+        let fromBaseToUnitPrefixFormula = `(${unit.FromBaseToUnitFunc}) / ${prefixesFactor[prefix]}`;
 
         // Create the new unit and push it to the units collection.
         unitPrefixes.push({
-            FromUnitToBaseFunc: fromUnitToBaseFormula,
-            FromBaseToUnitFunc: toBaseToUnitFormula,
+            FromUnitToBaseFunc: fromUnitPrefixToBaseFormula,
+            FromBaseToUnitFunc: fromBaseToUnitPrefixFormula,
 
             SingularName: `${prefix}${unit.SingularName.toLowerCase()}`,
             PluralName: `${prefix}${unit.PluralName.toLowerCase()}`,

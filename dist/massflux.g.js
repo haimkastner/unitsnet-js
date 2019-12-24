@@ -26,7 +26,7 @@ class MassFlux {
             case MassFluxUnits.GramsPerSecondPerSquareMeter:
                 return this.value * 1e3;
             case MassFluxUnits.Kilogramspersecondpersquaremeter:
-                return (this.value / 1e3) * 1000;
+                return (this.value * 1e3) / 1000;
             default:
                 break;
         }
@@ -37,7 +37,7 @@ class MassFlux {
             case MassFluxUnits.GramsPerSecondPerSquareMeter:
                 return value / 1e3;
             case MassFluxUnits.Kilogramspersecondpersquaremeter:
-                return (value * 1e3) / 1000;
+                return (value / 1e3) * 1000;
             default:
                 break;
         }

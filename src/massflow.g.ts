@@ -328,61 +328,61 @@ export class MassFlow {
                     return this.value/251.9957611;
                 
                 case MassFlowUnits.Nanogramspersecond:
-                    return (this.value) * 1e-9;
+                    return (this.value) / 1e-9;
                 
                 case MassFlowUnits.Microgramspersecond:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case MassFlowUnits.Centigramspersecond:
-                    return (this.value) * 0.01;
+                    return (this.value) / 0.01;
                 
                 case MassFlowUnits.Decigramspersecond:
-                    return (this.value) * 0.1;
+                    return (this.value) / 0.1;
                 
                 case MassFlowUnits.Decagramspersecond:
-                    return (this.value) * 10;
+                    return (this.value) / 10;
                 
                 case MassFlowUnits.Hectogramspersecond:
-                    return (this.value) * 100;
+                    return (this.value) / 100;
                 
                 case MassFlowUnits.Kilogramspersecond:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case MassFlowUnits.Nanogramsperday:
-                    return (this.value/86400) * 1e-9;
+                    return (this.value*86400) / 1e-9;
                 
                 case MassFlowUnits.Microgramsperday:
-                    return (this.value/86400) * 0.000001;
+                    return (this.value*86400) / 0.000001;
                 
                 case MassFlowUnits.Centigramsperday:
-                    return (this.value/86400) * 0.01;
+                    return (this.value*86400) / 0.01;
                 
                 case MassFlowUnits.Decigramsperday:
-                    return (this.value/86400) * 0.1;
+                    return (this.value*86400) / 0.1;
                 
                 case MassFlowUnits.Decagramsperday:
-                    return (this.value/86400) * 10;
+                    return (this.value*86400) / 10;
                 
                 case MassFlowUnits.Hectogramsperday:
-                    return (this.value/86400) * 100;
+                    return (this.value*86400) / 100;
                 
                 case MassFlowUnits.Kilogramsperday:
-                    return (this.value/86400) * 1000;
+                    return (this.value*86400) / 1000;
                 
                 case MassFlowUnits.Megagramsperday:
-                    return (this.value/86400) * 1000000;
+                    return (this.value*86400) / 1000000;
                 
                 case MassFlowUnits.Megapoundsperday:
-                    return (this.value/190.47936) * 1000000;
+                    return (this.value*190.47936) / 1000000;
                 
                 case MassFlowUnits.Megapoundsperhour:
-                    return (this.value/7.93664) * 1000000;
+                    return (this.value*7.93664) / 1000000;
                 
                 case MassFlowUnits.Megapoundsperminute:
-                    return (this.value/0.132277) * 1000000;
+                    return (this.value*0.132277) / 1000000;
                 
                 case MassFlowUnits.Megapoundspersecond:
-                    return (this.value * 453.59237) * 1000000;
+                    return (this.value / 453.59237) / 1000000;
                 
                     default:
                         break;
@@ -432,61 +432,61 @@ export class MassFlow {
                     return value*251.9957611;
                 
                 case MassFlowUnits.Nanogramspersecond:
-                    return (value) / 1e-9;
+                    return (value) * 1e-9;
                 
                 case MassFlowUnits.Microgramspersecond:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case MassFlowUnits.Centigramspersecond:
-                    return (value) / 0.01;
+                    return (value) * 0.01;
                 
                 case MassFlowUnits.Decigramspersecond:
-                    return (value) / 0.1;
+                    return (value) * 0.1;
                 
                 case MassFlowUnits.Decagramspersecond:
-                    return (value) / 10;
+                    return (value) * 10;
                 
                 case MassFlowUnits.Hectogramspersecond:
-                    return (value) / 100;
+                    return (value) * 100;
                 
                 case MassFlowUnits.Kilogramspersecond:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case MassFlowUnits.Nanogramsperday:
-                    return (value*86400) / 1e-9;
+                    return (value/86400) * 1e-9;
                 
                 case MassFlowUnits.Microgramsperday:
-                    return (value*86400) / 0.000001;
+                    return (value/86400) * 0.000001;
                 
                 case MassFlowUnits.Centigramsperday:
-                    return (value*86400) / 0.01;
+                    return (value/86400) * 0.01;
                 
                 case MassFlowUnits.Decigramsperday:
-                    return (value*86400) / 0.1;
+                    return (value/86400) * 0.1;
                 
                 case MassFlowUnits.Decagramsperday:
-                    return (value*86400) / 10;
+                    return (value/86400) * 10;
                 
                 case MassFlowUnits.Hectogramsperday:
-                    return (value*86400) / 100;
+                    return (value/86400) * 100;
                 
                 case MassFlowUnits.Kilogramsperday:
-                    return (value*86400) / 1000;
+                    return (value/86400) * 1000;
                 
                 case MassFlowUnits.Megagramsperday:
-                    return (value*86400) / 1000000;
+                    return (value/86400) * 1000000;
                 
                 case MassFlowUnits.Megapoundsperday:
-                    return (value*190.47936) / 1000000;
+                    return (value/190.47936) * 1000000;
                 
                 case MassFlowUnits.Megapoundsperhour:
-                    return (value*7.93664) / 1000000;
+                    return (value/7.93664) * 1000000;
                 
                 case MassFlowUnits.Megapoundsperminute:
-                    return (value*0.132277) / 1000000;
+                    return (value/0.132277) * 1000000;
                 
                 case MassFlowUnits.Megapoundspersecond:
-                    return (value / 453.59237) / 1000000;
+                    return (value * 453.59237) * 1000000;
                 
                     default:
                         break;

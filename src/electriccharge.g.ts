@@ -55,10 +55,10 @@ export class ElectricCharge {
                     return this.value*2.77777777777e-4;
                 
                 case ElectricChargeUnits.Kiloamperehours:
-                    return (this.value/2.77777777777e-4) * 1000;
+                    return (this.value*2.77777777777e-4) / 1000;
                 
                 case ElectricChargeUnits.Megaamperehours:
-                    return (this.value/2.77777777777e-4) * 1000000;
+                    return (this.value*2.77777777777e-4) / 1000000;
                 
                     default:
                         break;
@@ -78,10 +78,10 @@ export class ElectricCharge {
                     return value/2.77777777777e-4;
                 
                 case ElectricChargeUnits.Kiloamperehours:
-                    return (value*2.77777777777e-4) / 1000;
+                    return (value/2.77777777777e-4) * 1000;
                 
                 case ElectricChargeUnits.Megaamperehours:
-                    return (value*2.77777777777e-4) / 1000000;
+                    return (value/2.77777777777e-4) * 1000000;
                 
                     default:
                         break;

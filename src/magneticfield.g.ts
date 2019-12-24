@@ -43,10 +43,10 @@ export class MagneticField {
                     return this.value;
                 
                 case MagneticFieldUnits.Nanoteslas:
-                    return (this.value) * 1e-9;
+                    return (this.value) / 1e-9;
                 
                 case MagneticFieldUnits.Microteslas:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                     default:
                         break;
@@ -63,10 +63,10 @@ export class MagneticField {
                     return value;
                 
                 case MagneticFieldUnits.Nanoteslas:
-                    return (value) / 1e-9;
+                    return (value) * 1e-9;
                 
                 case MagneticFieldUnits.Microteslas:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                     default:
                         break;

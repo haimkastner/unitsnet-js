@@ -33,9 +33,9 @@ class MolarEnergy {
             case MolarEnergyUnits.JoulesPerMole:
                 return this.value;
             case MolarEnergyUnits.Kilojoulespermole:
-                return (this.value) * 1000;
+                return (this.value) / 1000;
             case MolarEnergyUnits.Megajoulespermole:
-                return (this.value) * 1000000;
+                return (this.value) / 1000000;
             default:
                 break;
         }
@@ -46,9 +46,9 @@ class MolarEnergy {
             case MolarEnergyUnits.JoulesPerMole:
                 return value;
             case MolarEnergyUnits.Kilojoulespermole:
-                return (value) / 1000;
+                return (value) * 1000;
             case MolarEnergyUnits.Megajoulespermole:
-                return (value) / 1000000;
+                return (value) * 1000000;
             default:
                 break;
         }

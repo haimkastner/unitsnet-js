@@ -43,10 +43,10 @@ export class ReactiveEnergy {
                     return this.value;
                 
                 case ReactiveEnergyUnits.Kilovoltamperereactivehours:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case ReactiveEnergyUnits.Megavoltamperereactivehours:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                     default:
                         break;
@@ -63,10 +63,10 @@ export class ReactiveEnergy {
                     return value;
                 
                 case ReactiveEnergyUnits.Kilovoltamperereactivehours:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case ReactiveEnergyUnits.Megavoltamperereactivehours:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                     default:
                         break;

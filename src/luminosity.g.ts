@@ -136,37 +136,37 @@ export class Luminosity {
                     return this.value / 3.846e26;
                 
                 case LuminosityUnits.Femtowatts:
-                    return (this.value) * 1e-15;
+                    return (this.value) / 1e-15;
                 
                 case LuminosityUnits.Picowatts:
-                    return (this.value) * 1e-12;
+                    return (this.value) / 1e-12;
                 
                 case LuminosityUnits.Nanowatts:
-                    return (this.value) * 1e-9;
+                    return (this.value) / 1e-9;
                 
                 case LuminosityUnits.Microwatts:
-                    return (this.value) * 0.000001;
+                    return (this.value) / 0.000001;
                 
                 case LuminosityUnits.Deciwatts:
-                    return (this.value) * 0.1;
+                    return (this.value) / 0.1;
                 
                 case LuminosityUnits.Decawatts:
-                    return (this.value) * 10;
+                    return (this.value) / 10;
                 
                 case LuminosityUnits.Kilowatts:
-                    return (this.value) * 1000;
+                    return (this.value) / 1000;
                 
                 case LuminosityUnits.Megawatts:
-                    return (this.value) * 1000000;
+                    return (this.value) / 1000000;
                 
                 case LuminosityUnits.Gigawatts:
-                    return (this.value) * 1000000000;
+                    return (this.value) / 1000000000;
                 
                 case LuminosityUnits.Terawatts:
-                    return (this.value) * 1000000000000;
+                    return (this.value) / 1000000000000;
                 
                 case LuminosityUnits.Petawatts:
-                    return (this.value) * 1000000000000000;
+                    return (this.value) / 1000000000000000;
                 
                     default:
                         break;
@@ -186,37 +186,37 @@ export class Luminosity {
                     return value * 3.846e26;
                 
                 case LuminosityUnits.Femtowatts:
-                    return (value) / 1e-15;
+                    return (value) * 1e-15;
                 
                 case LuminosityUnits.Picowatts:
-                    return (value) / 1e-12;
+                    return (value) * 1e-12;
                 
                 case LuminosityUnits.Nanowatts:
-                    return (value) / 1e-9;
+                    return (value) * 1e-9;
                 
                 case LuminosityUnits.Microwatts:
-                    return (value) / 0.000001;
+                    return (value) * 0.000001;
                 
                 case LuminosityUnits.Deciwatts:
-                    return (value) / 0.1;
+                    return (value) * 0.1;
                 
                 case LuminosityUnits.Decawatts:
-                    return (value) / 10;
+                    return (value) * 10;
                 
                 case LuminosityUnits.Kilowatts:
-                    return (value) / 1000;
+                    return (value) * 1000;
                 
                 case LuminosityUnits.Megawatts:
-                    return (value) / 1000000;
+                    return (value) * 1000000;
                 
                 case LuminosityUnits.Gigawatts:
-                    return (value) / 1000000000;
+                    return (value) * 1000000000;
                 
                 case LuminosityUnits.Terawatts:
-                    return (value) / 1000000000000;
+                    return (value) * 1000000000000;
                 
                 case LuminosityUnits.Petawatts:
-                    return (value) / 1000000000000000;
+                    return (value) * 1000000000000000;
                 
                     default:
                         break;

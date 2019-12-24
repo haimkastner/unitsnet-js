@@ -34,7 +34,7 @@ export class MassFlux {
                     return this.value*1e3;
                 
                 case MassFluxUnits.Kilogramspersecondpersquaremeter:
-                    return (this.value/1e3) * 1000;
+                    return (this.value*1e3) / 1000;
                 
                     default:
                         break;
@@ -51,7 +51,7 @@ export class MassFlux {
                     return value/1e3;
                 
                 case MassFluxUnits.Kilogramspersecondpersquaremeter:
-                    return (value*1e3) / 1000;
+                    return (value/1e3) * 1000;
                 
                     default:
                         break;
