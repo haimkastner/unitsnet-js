@@ -1,7 +1,7 @@
 {
   "name": "unitsnet-js",
-  "version": "1.0.3",
-  "description": "Based on UnisNet Project",
+  "version": "1.0.4",
+  "description": "A better way to hold unit variables and easily convert to the destination unit",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,14 +12,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/haimkastner/units-js.git"
+    "url": "git+ssh://git@github.com/haimkastner/unitsnet-js.git"
   },
-  "homepage": "https://github.com/haimkastner/units-js",
+  "homepage": "https://github.com/haimkastner/unitsnet-js",
   "author": "Haim Kastner, Based on UnitsNet Project",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^12.12.21",
     "typescript": "^3.7.4"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "keywords": [
+    "conversion",
+    "units-of-measure",
+    "units",
+    "quantities",
+    "unit-converter",
+    "converter",
+    "unit",
+    "measure",
+    "measures",
+    "measurement",
+    "measurements"
+  ]
 }

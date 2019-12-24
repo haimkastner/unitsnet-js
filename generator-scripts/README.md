@@ -1,4 +1,4 @@
-# units-js generator script
+# unitsnet-js generator scripts
 
 A TS script to generate TS classes for each unit, based on [Units.NET](https://github.com/angularsen/UnitsNet) [definitions sources](https://github.com/angularsen/UnitsNet/tree/master/Common/UnitDefinitions).
 

@@ -27,3 +27,110 @@ console.info(angle.Gradians); // 200
 console.info(angle.Microdegrees); // 180000000
 
 ```
+
+### Supported units
+
+Currently, the package supports the following units:
+
+- Acceleration
+- AmountOfSubstance
+- AmplitudeRatio
+- Angle
+- ApparentEnergy
+- ApparentPower
+- Area
+- AreaDensity
+- AreaMomentOfInertia
+- BitRate
+- BrakeSpecificFuelConsumption
+- Capacitance
+- CoefficientOfThermalExpansion
+- Density
+- Duration
+- DynamicViscosity
+- ElectricAdmittance
+- ElectricCharge
+- ElectricChargeDensity
+- ElectricConductance
+- ElectricConductivity
+- ElectricCurrent
+- ElectricCurrentDensity
+- ElectricCurrentGradient
+- ElectricField
+- ElectricInductance
+- ElectricPotential
+- ElectricPotentialAc
+- ElectricPotentialDc
+- ElectricResistance
+- ElectricResistivity
+- ElectricSurfaceChargeDensity
+- Energy
+- Entropy
+- Force
+- ForceChangeRate
+- ForcePerLength
+- Frequency
+- FuelEfficiency
+- HeatFlux
+- HeatTransferCoefficient
+- Illuminance
+- Information
+- Irradiance
+- Irradiation
+- KinematicViscosity
+- LapseRate
+- Length
+- Level
+- LinearDensity
+- Luminosity
+- LuminousFlux
+- LuminousIntensity
+- MagneticField
+- MagneticFlux
+- Magnetization
+- Mass
+- MassConcentration
+- MassFlow
+- MassFlux
+- MassFraction
+- MassMomentOfInertia
+- MolarEnergy
+- MolarEntropy
+- Molarity
+- MolarMass
+- Permeability
+- Permittivity
+- Power
+- PowerDensity
+- PowerRatio
+- Pressure
+- PressureChangeRate
+- Ratio
+- RatioChangeRate
+- ReactiveEnergy
+- ReactivePower
+- RotationalAcceleration
+- RotationalSpeed
+- RotationalStiffness
+- RotationalStiffnessPerLength
+- SolidAngle
+- SpecificEnergy
+- SpecificEntropy
+- SpecificVolume
+- SpecificWeight
+- Speed
+- Temperature
+- TemperatureChangeRate
+- TemperatureDelta
+- ThermalConductivity
+- ThermalResistance
+- Torque
+- TorquePerLength
+- VitaminA
+- Volume
+- VolumeConcentration
+- VolumeFlow
+- VolumePerLength
+
+
+(This file generated from [README.t.md](./generator-scripts/src/assets/README.t.md) template file)

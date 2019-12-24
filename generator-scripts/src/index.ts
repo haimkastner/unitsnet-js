@@ -3,6 +3,7 @@ import { UnitTypeDefinition } from './models/units-definition';
 import { Project } from 'ts-morph';
 import { generateUnitsModuleExport } from './export-units-generator';
 import { generateUnitsFromUnitsDefinitions } from './units-generator';
+import { generateDocumentation } from './documentation-generatoe';
 
 const unitsJs = `
 8 8888      88 b.             8  8 8888 8888888 8888888888 d888888o.             8 8888   d888888o.   
@@ -21,6 +22,7 @@ const unitsJs = `
 console.info(unitsJs);
 
 const unitsDefinitionsDirectory = '../UnitDefinitions';
+const unitsDocumentationDefinitionsDirectory = '..';
 const unitsTestinationDirectory = '../src'
 
 // Read the definition JSON files
@@ -50,6 +52,9 @@ console.info(`Generating Units Export Module ...`);
 // Generate the module exports file
 generateUnitsModuleExport(project, unitsTestinationDirectory, unitsDefinitions);
 
+console.info(`Generating Units Documentation file ...`);
+
+generateDocumentation(unitsDocumentationDefinitionsDirectory, unitsDefinitions)
 
 const success = `
 _______ _     _ _______ _______ _______ _______ _______
