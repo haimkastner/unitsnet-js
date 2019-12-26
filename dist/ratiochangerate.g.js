@@ -7,13 +7,21 @@ var RatioChangeRateUnits;
 })(RatioChangeRateUnits = exports.RatioChangeRateUnits || (exports.RatioChangeRateUnits = {}));
 class RatioChangeRate {
     constructor(value, fromUnit) {
+        this.percentspersecondLazy = null;
+        this.decimalfractionspersecondLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get PercentsPerSecond() {
-        return this.convertFromBase(RatioChangeRateUnits.PercentsPerSecond);
+        if (this.percentspersecondLazy !== null) {
+            return this.percentspersecondLazy;
+        }
+        return this.percentspersecondLazy = this.convertFromBase(RatioChangeRateUnits.PercentsPerSecond);
     }
     get DecimalFractionsPerSecond() {
-        return this.convertFromBase(RatioChangeRateUnits.DecimalFractionsPerSecond);
+        if (this.decimalfractionspersecondLazy !== null) {
+            return this.decimalfractionspersecondLazy;
+        }
+        return this.decimalfractionspersecondLazy = this.convertFromBase(RatioChangeRateUnits.DecimalFractionsPerSecond);
     }
     static FromPercentsPerSecond(value) {
         return new RatioChangeRate(value, RatioChangeRateUnits.PercentsPerSecond);

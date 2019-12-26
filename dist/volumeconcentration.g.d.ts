@@ -20,6 +20,24 @@ export declare enum VolumeConcentrationUnits {
 }
 export declare class VolumeConcentration {
     private value;
+    private decimalfractionsLazy;
+    private litersperliterLazy;
+    private literspermililiterLazy;
+    private percentLazy;
+    private partsperthousandLazy;
+    private partspermillionLazy;
+    private partsperbillionLazy;
+    private partspertrillionLazy;
+    private picolitersperliterLazy;
+    private nanolitersperliterLazy;
+    private microlitersperliterLazy;
+    private centilitersperliterLazy;
+    private decilitersperliterLazy;
+    private picoliterspermililiterLazy;
+    private nanoliterspermililiterLazy;
+    private microliterspermililiterLazy;
+    private centiliterspermililiterLazy;
+    private deciliterspermililiterLazy;
     constructor(value: number, fromUnit: VolumeConcentrationUnits);
     get DecimalFractions(): number;
     get LitersPerLiter(): number;

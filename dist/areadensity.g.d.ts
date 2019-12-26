@@ -3,6 +3,7 @@ export declare enum AreaDensityUnits {
 }
 export declare class AreaDensity {
     private value;
+    private kilogramspersquaremeterLazy;
     constructor(value: number, fromUnit: AreaDensityUnits);
     get KilogramsPerSquareMeter(): number;
     static FromKilogramsPerSquareMeter(value: number): AreaDensity;

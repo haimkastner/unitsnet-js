@@ -3,6 +3,7 @@ export declare enum LuminousIntensityUnits {
 }
 export declare class LuminousIntensity {
     private value;
+    private candelaLazy;
     constructor(value: number, fromUnit: LuminousIntensityUnits);
     get Candela(): number;
     static FromCandela(value: number): LuminousIntensity;

@@ -6,10 +6,14 @@ var MagnetizationUnits;
 })(MagnetizationUnits = exports.MagnetizationUnits || (exports.MagnetizationUnits = {}));
 class Magnetization {
     constructor(value, fromUnit) {
+        this.amperespermeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get AmperesPerMeter() {
-        return this.convertFromBase(MagnetizationUnits.AmperesPerMeter);
+        if (this.amperespermeterLazy !== null) {
+            return this.amperespermeterLazy;
+        }
+        return this.amperespermeterLazy = this.convertFromBase(MagnetizationUnits.AmperesPerMeter);
     }
     static FromAmperesPerMeter(value) {
         return new Magnetization(value, MagnetizationUnits.AmperesPerMeter);

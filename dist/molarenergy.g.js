@@ -8,16 +8,28 @@ var MolarEnergyUnits;
 })(MolarEnergyUnits = exports.MolarEnergyUnits || (exports.MolarEnergyUnits = {}));
 class MolarEnergy {
     constructor(value, fromUnit) {
+        this.joulespermoleLazy = null;
+        this.kilojoulespermoleLazy = null;
+        this.megajoulespermoleLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get JoulesPerMole() {
-        return this.convertFromBase(MolarEnergyUnits.JoulesPerMole);
+        if (this.joulespermoleLazy !== null) {
+            return this.joulespermoleLazy;
+        }
+        return this.joulespermoleLazy = this.convertFromBase(MolarEnergyUnits.JoulesPerMole);
     }
     get Kilojoulespermole() {
-        return this.convertFromBase(MolarEnergyUnits.Kilojoulespermole);
+        if (this.kilojoulespermoleLazy !== null) {
+            return this.kilojoulespermoleLazy;
+        }
+        return this.kilojoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.Kilojoulespermole);
     }
     get Megajoulespermole() {
-        return this.convertFromBase(MolarEnergyUnits.Megajoulespermole);
+        if (this.megajoulespermoleLazy !== null) {
+            return this.megajoulespermoleLazy;
+        }
+        return this.megajoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.Megajoulespermole);
     }
     static FromJoulesPerMole(value) {
         return new MolarEnergy(value, MolarEnergyUnits.JoulesPerMole);

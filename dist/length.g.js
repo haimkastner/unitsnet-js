@@ -36,100 +36,224 @@ var LengthUnits;
 })(LengthUnits = exports.LengthUnits || (exports.LengthUnits = {}));
 class Length {
     constructor(value, fromUnit) {
+        this.metersLazy = null;
+        this.milesLazy = null;
+        this.yardsLazy = null;
+        this.feetLazy = null;
+        this.ussurveyfeetLazy = null;
+        this.inchesLazy = null;
+        this.milsLazy = null;
+        this.nauticalmilesLazy = null;
+        this.fathomsLazy = null;
+        this.shacklesLazy = null;
+        this.microinchesLazy = null;
+        this.printerpointsLazy = null;
+        this.dtppointsLazy = null;
+        this.printerpicasLazy = null;
+        this.dtppicasLazy = null;
+        this.twipsLazy = null;
+        this.handsLazy = null;
+        this.astronomicalunitsLazy = null;
+        this.parsecsLazy = null;
+        this.lightyearsLazy = null;
+        this.solarradiusesLazy = null;
+        this.nanometersLazy = null;
+        this.micrometersLazy = null;
+        this.centimetersLazy = null;
+        this.decimetersLazy = null;
+        this.hectometersLazy = null;
+        this.kilometersLazy = null;
+        this.kiloparsecsLazy = null;
+        this.megaparsecsLazy = null;
+        this.kilolightyearsLazy = null;
+        this.megalightyearsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Meters() {
-        return this.convertFromBase(LengthUnits.Meters);
+        if (this.metersLazy !== null) {
+            return this.metersLazy;
+        }
+        return this.metersLazy = this.convertFromBase(LengthUnits.Meters);
     }
     get Miles() {
-        return this.convertFromBase(LengthUnits.Miles);
+        if (this.milesLazy !== null) {
+            return this.milesLazy;
+        }
+        return this.milesLazy = this.convertFromBase(LengthUnits.Miles);
     }
     get Yards() {
-        return this.convertFromBase(LengthUnits.Yards);
+        if (this.yardsLazy !== null) {
+            return this.yardsLazy;
+        }
+        return this.yardsLazy = this.convertFromBase(LengthUnits.Yards);
     }
     get Feet() {
-        return this.convertFromBase(LengthUnits.Feet);
+        if (this.feetLazy !== null) {
+            return this.feetLazy;
+        }
+        return this.feetLazy = this.convertFromBase(LengthUnits.Feet);
     }
     get UsSurveyFeet() {
-        return this.convertFromBase(LengthUnits.UsSurveyFeet);
+        if (this.ussurveyfeetLazy !== null) {
+            return this.ussurveyfeetLazy;
+        }
+        return this.ussurveyfeetLazy = this.convertFromBase(LengthUnits.UsSurveyFeet);
     }
     get Inches() {
-        return this.convertFromBase(LengthUnits.Inches);
+        if (this.inchesLazy !== null) {
+            return this.inchesLazy;
+        }
+        return this.inchesLazy = this.convertFromBase(LengthUnits.Inches);
     }
     get Mils() {
-        return this.convertFromBase(LengthUnits.Mils);
+        if (this.milsLazy !== null) {
+            return this.milsLazy;
+        }
+        return this.milsLazy = this.convertFromBase(LengthUnits.Mils);
     }
     get NauticalMiles() {
-        return this.convertFromBase(LengthUnits.NauticalMiles);
+        if (this.nauticalmilesLazy !== null) {
+            return this.nauticalmilesLazy;
+        }
+        return this.nauticalmilesLazy = this.convertFromBase(LengthUnits.NauticalMiles);
     }
     get Fathoms() {
-        return this.convertFromBase(LengthUnits.Fathoms);
+        if (this.fathomsLazy !== null) {
+            return this.fathomsLazy;
+        }
+        return this.fathomsLazy = this.convertFromBase(LengthUnits.Fathoms);
     }
     get Shackles() {
-        return this.convertFromBase(LengthUnits.Shackles);
+        if (this.shacklesLazy !== null) {
+            return this.shacklesLazy;
+        }
+        return this.shacklesLazy = this.convertFromBase(LengthUnits.Shackles);
     }
     get Microinches() {
-        return this.convertFromBase(LengthUnits.Microinches);
+        if (this.microinchesLazy !== null) {
+            return this.microinchesLazy;
+        }
+        return this.microinchesLazy = this.convertFromBase(LengthUnits.Microinches);
     }
     get PrinterPoints() {
-        return this.convertFromBase(LengthUnits.PrinterPoints);
+        if (this.printerpointsLazy !== null) {
+            return this.printerpointsLazy;
+        }
+        return this.printerpointsLazy = this.convertFromBase(LengthUnits.PrinterPoints);
     }
     get DtpPoints() {
-        return this.convertFromBase(LengthUnits.DtpPoints);
+        if (this.dtppointsLazy !== null) {
+            return this.dtppointsLazy;
+        }
+        return this.dtppointsLazy = this.convertFromBase(LengthUnits.DtpPoints);
     }
     get PrinterPicas() {
-        return this.convertFromBase(LengthUnits.PrinterPicas);
+        if (this.printerpicasLazy !== null) {
+            return this.printerpicasLazy;
+        }
+        return this.printerpicasLazy = this.convertFromBase(LengthUnits.PrinterPicas);
     }
     get DtpPicas() {
-        return this.convertFromBase(LengthUnits.DtpPicas);
+        if (this.dtppicasLazy !== null) {
+            return this.dtppicasLazy;
+        }
+        return this.dtppicasLazy = this.convertFromBase(LengthUnits.DtpPicas);
     }
     get Twips() {
-        return this.convertFromBase(LengthUnits.Twips);
+        if (this.twipsLazy !== null) {
+            return this.twipsLazy;
+        }
+        return this.twipsLazy = this.convertFromBase(LengthUnits.Twips);
     }
     get Hands() {
-        return this.convertFromBase(LengthUnits.Hands);
+        if (this.handsLazy !== null) {
+            return this.handsLazy;
+        }
+        return this.handsLazy = this.convertFromBase(LengthUnits.Hands);
     }
     get AstronomicalUnits() {
-        return this.convertFromBase(LengthUnits.AstronomicalUnits);
+        if (this.astronomicalunitsLazy !== null) {
+            return this.astronomicalunitsLazy;
+        }
+        return this.astronomicalunitsLazy = this.convertFromBase(LengthUnits.AstronomicalUnits);
     }
     get Parsecs() {
-        return this.convertFromBase(LengthUnits.Parsecs);
+        if (this.parsecsLazy !== null) {
+            return this.parsecsLazy;
+        }
+        return this.parsecsLazy = this.convertFromBase(LengthUnits.Parsecs);
     }
     get LightYears() {
-        return this.convertFromBase(LengthUnits.LightYears);
+        if (this.lightyearsLazy !== null) {
+            return this.lightyearsLazy;
+        }
+        return this.lightyearsLazy = this.convertFromBase(LengthUnits.LightYears);
     }
     get SolarRadiuses() {
-        return this.convertFromBase(LengthUnits.SolarRadiuses);
+        if (this.solarradiusesLazy !== null) {
+            return this.solarradiusesLazy;
+        }
+        return this.solarradiusesLazy = this.convertFromBase(LengthUnits.SolarRadiuses);
     }
     get Nanometers() {
-        return this.convertFromBase(LengthUnits.Nanometers);
+        if (this.nanometersLazy !== null) {
+            return this.nanometersLazy;
+        }
+        return this.nanometersLazy = this.convertFromBase(LengthUnits.Nanometers);
     }
     get Micrometers() {
-        return this.convertFromBase(LengthUnits.Micrometers);
+        if (this.micrometersLazy !== null) {
+            return this.micrometersLazy;
+        }
+        return this.micrometersLazy = this.convertFromBase(LengthUnits.Micrometers);
     }
     get Centimeters() {
-        return this.convertFromBase(LengthUnits.Centimeters);
+        if (this.centimetersLazy !== null) {
+            return this.centimetersLazy;
+        }
+        return this.centimetersLazy = this.convertFromBase(LengthUnits.Centimeters);
     }
     get Decimeters() {
-        return this.convertFromBase(LengthUnits.Decimeters);
+        if (this.decimetersLazy !== null) {
+            return this.decimetersLazy;
+        }
+        return this.decimetersLazy = this.convertFromBase(LengthUnits.Decimeters);
     }
     get Hectometers() {
-        return this.convertFromBase(LengthUnits.Hectometers);
+        if (this.hectometersLazy !== null) {
+            return this.hectometersLazy;
+        }
+        return this.hectometersLazy = this.convertFromBase(LengthUnits.Hectometers);
     }
     get Kilometers() {
-        return this.convertFromBase(LengthUnits.Kilometers);
+        if (this.kilometersLazy !== null) {
+            return this.kilometersLazy;
+        }
+        return this.kilometersLazy = this.convertFromBase(LengthUnits.Kilometers);
     }
     get Kiloparsecs() {
-        return this.convertFromBase(LengthUnits.Kiloparsecs);
+        if (this.kiloparsecsLazy !== null) {
+            return this.kiloparsecsLazy;
+        }
+        return this.kiloparsecsLazy = this.convertFromBase(LengthUnits.Kiloparsecs);
     }
     get Megaparsecs() {
-        return this.convertFromBase(LengthUnits.Megaparsecs);
+        if (this.megaparsecsLazy !== null) {
+            return this.megaparsecsLazy;
+        }
+        return this.megaparsecsLazy = this.convertFromBase(LengthUnits.Megaparsecs);
     }
     get Kilolightyears() {
-        return this.convertFromBase(LengthUnits.Kilolightyears);
+        if (this.kilolightyearsLazy !== null) {
+            return this.kilolightyearsLazy;
+        }
+        return this.kilolightyearsLazy = this.convertFromBase(LengthUnits.Kilolightyears);
     }
     get Megalightyears() {
-        return this.convertFromBase(LengthUnits.Megalightyears);
+        if (this.megalightyearsLazy !== null) {
+            return this.megalightyearsLazy;
+        }
+        return this.megalightyearsLazy = this.convertFromBase(LengthUnits.Megalightyears);
     }
     static FromMeters(value) {
         return new Length(value, LengthUnits.Meters);

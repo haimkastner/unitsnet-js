@@ -5,6 +5,9 @@ export declare enum MagneticFieldUnits {
 }
 export declare class MagneticField {
     private value;
+    private teslasLazy;
+    private nanoteslasLazy;
+    private microteslasLazy;
     constructor(value: number, fromUnit: MagneticFieldUnits);
     get Teslas(): number;
     get Nanoteslas(): number;

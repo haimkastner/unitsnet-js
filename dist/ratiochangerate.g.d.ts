@@ -4,6 +4,8 @@ export declare enum RatioChangeRateUnits {
 }
 export declare class RatioChangeRate {
     private value;
+    private percentspersecondLazy;
+    private decimalfractionspersecondLazy;
     constructor(value: number, fromUnit: RatioChangeRateUnits);
     get PercentsPerSecond(): number;
     get DecimalFractionsPerSecond(): number;

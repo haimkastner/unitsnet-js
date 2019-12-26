@@ -14,34 +14,70 @@ var TemperatureChangeRateUnits;
 })(TemperatureChangeRateUnits = exports.TemperatureChangeRateUnits || (exports.TemperatureChangeRateUnits = {}));
 class TemperatureChangeRate {
     constructor(value, fromUnit) {
+        this.degreescelsiuspersecondLazy = null;
+        this.degreescelsiusperminuteLazy = null;
+        this.nanodegreescelsiuspersecondLazy = null;
+        this.microdegreescelsiuspersecondLazy = null;
+        this.centidegreescelsiuspersecondLazy = null;
+        this.decidegreescelsiuspersecondLazy = null;
+        this.decadegreescelsiuspersecondLazy = null;
+        this.hectodegreescelsiuspersecondLazy = null;
+        this.kilodegreescelsiuspersecondLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get DegreesCelsiusPerSecond() {
-        return this.convertFromBase(TemperatureChangeRateUnits.DegreesCelsiusPerSecond);
+        if (this.degreescelsiuspersecondLazy !== null) {
+            return this.degreescelsiuspersecondLazy;
+        }
+        return this.degreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.DegreesCelsiusPerSecond);
     }
     get DegreesCelsiusPerMinute() {
-        return this.convertFromBase(TemperatureChangeRateUnits.DegreesCelsiusPerMinute);
+        if (this.degreescelsiusperminuteLazy !== null) {
+            return this.degreescelsiusperminuteLazy;
+        }
+        return this.degreescelsiusperminuteLazy = this.convertFromBase(TemperatureChangeRateUnits.DegreesCelsiusPerMinute);
     }
     get Nanodegreescelsiuspersecond() {
-        return this.convertFromBase(TemperatureChangeRateUnits.Nanodegreescelsiuspersecond);
+        if (this.nanodegreescelsiuspersecondLazy !== null) {
+            return this.nanodegreescelsiuspersecondLazy;
+        }
+        return this.nanodegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Nanodegreescelsiuspersecond);
     }
     get Microdegreescelsiuspersecond() {
-        return this.convertFromBase(TemperatureChangeRateUnits.Microdegreescelsiuspersecond);
+        if (this.microdegreescelsiuspersecondLazy !== null) {
+            return this.microdegreescelsiuspersecondLazy;
+        }
+        return this.microdegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Microdegreescelsiuspersecond);
     }
     get Centidegreescelsiuspersecond() {
-        return this.convertFromBase(TemperatureChangeRateUnits.Centidegreescelsiuspersecond);
+        if (this.centidegreescelsiuspersecondLazy !== null) {
+            return this.centidegreescelsiuspersecondLazy;
+        }
+        return this.centidegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Centidegreescelsiuspersecond);
     }
     get Decidegreescelsiuspersecond() {
-        return this.convertFromBase(TemperatureChangeRateUnits.Decidegreescelsiuspersecond);
+        if (this.decidegreescelsiuspersecondLazy !== null) {
+            return this.decidegreescelsiuspersecondLazy;
+        }
+        return this.decidegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Decidegreescelsiuspersecond);
     }
     get Decadegreescelsiuspersecond() {
-        return this.convertFromBase(TemperatureChangeRateUnits.Decadegreescelsiuspersecond);
+        if (this.decadegreescelsiuspersecondLazy !== null) {
+            return this.decadegreescelsiuspersecondLazy;
+        }
+        return this.decadegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Decadegreescelsiuspersecond);
     }
     get Hectodegreescelsiuspersecond() {
-        return this.convertFromBase(TemperatureChangeRateUnits.Hectodegreescelsiuspersecond);
+        if (this.hectodegreescelsiuspersecondLazy !== null) {
+            return this.hectodegreescelsiuspersecondLazy;
+        }
+        return this.hectodegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Hectodegreescelsiuspersecond);
     }
     get Kilodegreescelsiuspersecond() {
-        return this.convertFromBase(TemperatureChangeRateUnits.Kilodegreescelsiuspersecond);
+        if (this.kilodegreescelsiuspersecondLazy !== null) {
+            return this.kilodegreescelsiuspersecondLazy;
+        }
+        return this.kilodegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Kilodegreescelsiuspersecond);
     }
     static FromDegreesCelsiusPerSecond(value) {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DegreesCelsiusPerSecond);

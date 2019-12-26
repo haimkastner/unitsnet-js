@@ -33,6 +33,37 @@ export declare enum MassFlowUnits {
 }
 export declare class MassFlow {
     private value;
+    private gramspersecondLazy;
+    private gramsperdayLazy;
+    private gramsperhourLazy;
+    private kilogramsperhourLazy;
+    private kilogramsperminuteLazy;
+    private tonnesperhourLazy;
+    private poundsperdayLazy;
+    private poundsperhourLazy;
+    private poundsperminuteLazy;
+    private poundspersecondLazy;
+    private tonnesperdayLazy;
+    private shorttonsperhourLazy;
+    private nanogramspersecondLazy;
+    private microgramspersecondLazy;
+    private centigramspersecondLazy;
+    private decigramspersecondLazy;
+    private decagramspersecondLazy;
+    private hectogramspersecondLazy;
+    private kilogramspersecondLazy;
+    private nanogramsperdayLazy;
+    private microgramsperdayLazy;
+    private centigramsperdayLazy;
+    private decigramsperdayLazy;
+    private decagramsperdayLazy;
+    private hectogramsperdayLazy;
+    private kilogramsperdayLazy;
+    private megagramsperdayLazy;
+    private megapoundsperdayLazy;
+    private megapoundsperhourLazy;
+    private megapoundsperminuteLazy;
+    private megapoundspersecondLazy;
     constructor(value: number, fromUnit: MassFlowUnits);
     get GramsPerSecond(): number;
     get GramsPerDay(): number;

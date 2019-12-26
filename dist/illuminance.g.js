@@ -8,16 +8,28 @@ var IlluminanceUnits;
 })(IlluminanceUnits = exports.IlluminanceUnits || (exports.IlluminanceUnits = {}));
 class Illuminance {
     constructor(value, fromUnit) {
+        this.luxLazy = null;
+        this.kiloluxLazy = null;
+        this.megaluxLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Lux() {
-        return this.convertFromBase(IlluminanceUnits.Lux);
+        if (this.luxLazy !== null) {
+            return this.luxLazy;
+        }
+        return this.luxLazy = this.convertFromBase(IlluminanceUnits.Lux);
     }
     get Kilolux() {
-        return this.convertFromBase(IlluminanceUnits.Kilolux);
+        if (this.kiloluxLazy !== null) {
+            return this.kiloluxLazy;
+        }
+        return this.kiloluxLazy = this.convertFromBase(IlluminanceUnits.Kilolux);
     }
     get Megalux() {
-        return this.convertFromBase(IlluminanceUnits.Megalux);
+        if (this.megaluxLazy !== null) {
+            return this.megaluxLazy;
+        }
+        return this.megaluxLazy = this.convertFromBase(IlluminanceUnits.Megalux);
     }
     static FromLux(value) {
         return new Illuminance(value, IlluminanceUnits.Lux);

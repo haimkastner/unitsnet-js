@@ -10,22 +10,42 @@ var ThermalResistanceUnits;
 })(ThermalResistanceUnits = exports.ThermalResistanceUnits || (exports.ThermalResistanceUnits = {}));
 class ThermalResistance {
     constructor(value, fromUnit) {
+        this.squaremeterkelvinsperkilowattLazy = null;
+        this.squaremeterdegreescelsiusperwattLazy = null;
+        this.squarecentimeterkelvinsperwattLazy = null;
+        this.squarecentimeterhourdegreescelsiusperkilocalorieLazy = null;
+        this.hoursquarefeetdegreesfahrenheitperbtuLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get SquareMeterKelvinsPerKilowatt() {
-        return this.convertFromBase(ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt);
+        if (this.squaremeterkelvinsperkilowattLazy !== null) {
+            return this.squaremeterkelvinsperkilowattLazy;
+        }
+        return this.squaremeterkelvinsperkilowattLazy = this.convertFromBase(ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt);
     }
     get SquareMeterDegreesCelsiusPerWatt() {
-        return this.convertFromBase(ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt);
+        if (this.squaremeterdegreescelsiusperwattLazy !== null) {
+            return this.squaremeterdegreescelsiusperwattLazy;
+        }
+        return this.squaremeterdegreescelsiusperwattLazy = this.convertFromBase(ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt);
     }
     get SquareCentimeterKelvinsPerWatt() {
-        return this.convertFromBase(ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt);
+        if (this.squarecentimeterkelvinsperwattLazy !== null) {
+            return this.squarecentimeterkelvinsperwattLazy;
+        }
+        return this.squarecentimeterkelvinsperwattLazy = this.convertFromBase(ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt);
     }
     get SquareCentimeterHourDegreesCelsiusPerKilocalorie() {
-        return this.convertFromBase(ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie);
+        if (this.squarecentimeterhourdegreescelsiusperkilocalorieLazy !== null) {
+            return this.squarecentimeterhourdegreescelsiusperkilocalorieLazy;
+        }
+        return this.squarecentimeterhourdegreescelsiusperkilocalorieLazy = this.convertFromBase(ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie);
     }
     get HourSquareFeetDegreesFahrenheitPerBtu() {
-        return this.convertFromBase(ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu);
+        if (this.hoursquarefeetdegreesfahrenheitperbtuLazy !== null) {
+            return this.hoursquarefeetdegreesfahrenheitperbtuLazy;
+        }
+        return this.hoursquarefeetdegreesfahrenheitperbtuLazy = this.convertFromBase(ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu);
     }
     static FromSquareMeterKelvinsPerKilowatt(value) {
         return new ThermalResistance(value, ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt);

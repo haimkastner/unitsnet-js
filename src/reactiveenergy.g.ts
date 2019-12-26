@@ -6,21 +6,33 @@ export enum ReactiveEnergyUnits {
 
 export class ReactiveEnergy {
     private value: number;
+    private voltamperereactivehoursLazy: number | null = null;
+    private kilovoltamperereactivehoursLazy: number | null = null;
+    private megavoltamperereactivehoursLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ReactiveEnergyUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get VoltampereReactiveHours(): number {
-        return this.convertFromBase(ReactiveEnergyUnits.VoltampereReactiveHours);
+        if(this.voltamperereactivehoursLazy !== null){
+            return this.voltamperereactivehoursLazy;
+        }
+        return this.voltamperereactivehoursLazy = this.convertFromBase(ReactiveEnergyUnits.VoltampereReactiveHours);
     }
 
     public get Kilovoltamperereactivehours(): number {
-        return this.convertFromBase(ReactiveEnergyUnits.Kilovoltamperereactivehours);
+        if(this.kilovoltamperereactivehoursLazy !== null){
+            return this.kilovoltamperereactivehoursLazy;
+        }
+        return this.kilovoltamperereactivehoursLazy = this.convertFromBase(ReactiveEnergyUnits.Kilovoltamperereactivehours);
     }
 
     public get Megavoltamperereactivehours(): number {
-        return this.convertFromBase(ReactiveEnergyUnits.Megavoltamperereactivehours);
+        if(this.megavoltamperereactivehoursLazy !== null){
+            return this.megavoltamperereactivehoursLazy;
+        }
+        return this.megavoltamperereactivehoursLazy = this.convertFromBase(ReactiveEnergyUnits.Megavoltamperereactivehours);
     }
 
     public static FromVoltampereReactiveHours(value: number): ReactiveEnergy {
@@ -36,42 +48,32 @@ export class ReactiveEnergy {
     }
 
     private convertFromBase(toUnit: ReactiveEnergyUnits): number {
-
-                switch (toUnit) {
-                    
-                case ReactiveEnergyUnits.VoltampereReactiveHours:
-                    return this.value;
+        switch (toUnit) {
                 
-                case ReactiveEnergyUnits.Kilovoltamperereactivehours:
-                    return (this.value) / 1000;
-                
-                case ReactiveEnergyUnits.Megavoltamperereactivehours:
-                    return (this.value) / 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case ReactiveEnergyUnits.VoltampereReactiveHours:
+                return this.value;
+            case ReactiveEnergyUnits.Kilovoltamperereactivehours:
+                return (this.value) / 1000;
+            case ReactiveEnergyUnits.Megavoltamperereactivehours:
+                return (this.value) / 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ReactiveEnergyUnits): number {
-
-                switch (fromUnit) {
-                    
-                case ReactiveEnergyUnits.VoltampereReactiveHours:
-                    return value;
+        switch (fromUnit) {
                 
-                case ReactiveEnergyUnits.Kilovoltamperereactivehours:
-                    return (value) * 1000;
-                
-                case ReactiveEnergyUnits.Megavoltamperereactivehours:
-                    return (value) * 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case ReactiveEnergyUnits.VoltampereReactiveHours:
+                return value;
+            case ReactiveEnergyUnits.Kilovoltamperereactivehours:
+                return (value) * 1000;
+            case ReactiveEnergyUnits.Megavoltamperereactivehours:
+                return (value) * 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

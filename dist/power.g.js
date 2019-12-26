@@ -28,76 +28,168 @@ var PowerUnits;
 })(PowerUnits = exports.PowerUnits || (exports.PowerUnits = {}));
 class Power {
     constructor(value, fromUnit) {
+        this.wattsLazy = null;
+        this.mechanicalhorsepowerLazy = null;
+        this.metrichorsepowerLazy = null;
+        this.electricalhorsepowerLazy = null;
+        this.boilerhorsepowerLazy = null;
+        this.hydraulichorsepowerLazy = null;
+        this.britishthermalunitsperhourLazy = null;
+        this.joulesperhourLazy = null;
+        this.femtowattsLazy = null;
+        this.picowattsLazy = null;
+        this.nanowattsLazy = null;
+        this.microwattsLazy = null;
+        this.deciwattsLazy = null;
+        this.decawattsLazy = null;
+        this.kilowattsLazy = null;
+        this.megawattsLazy = null;
+        this.gigawattsLazy = null;
+        this.terawattsLazy = null;
+        this.petawattsLazy = null;
+        this.kilobritishthermalunitsperhourLazy = null;
+        this.kilojoulesperhourLazy = null;
+        this.megajoulesperhourLazy = null;
+        this.gigajoulesperhourLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Watts() {
-        return this.convertFromBase(PowerUnits.Watts);
+        if (this.wattsLazy !== null) {
+            return this.wattsLazy;
+        }
+        return this.wattsLazy = this.convertFromBase(PowerUnits.Watts);
     }
     get MechanicalHorsepower() {
-        return this.convertFromBase(PowerUnits.MechanicalHorsepower);
+        if (this.mechanicalhorsepowerLazy !== null) {
+            return this.mechanicalhorsepowerLazy;
+        }
+        return this.mechanicalhorsepowerLazy = this.convertFromBase(PowerUnits.MechanicalHorsepower);
     }
     get MetricHorsepower() {
-        return this.convertFromBase(PowerUnits.MetricHorsepower);
+        if (this.metrichorsepowerLazy !== null) {
+            return this.metrichorsepowerLazy;
+        }
+        return this.metrichorsepowerLazy = this.convertFromBase(PowerUnits.MetricHorsepower);
     }
     get ElectricalHorsepower() {
-        return this.convertFromBase(PowerUnits.ElectricalHorsepower);
+        if (this.electricalhorsepowerLazy !== null) {
+            return this.electricalhorsepowerLazy;
+        }
+        return this.electricalhorsepowerLazy = this.convertFromBase(PowerUnits.ElectricalHorsepower);
     }
     get BoilerHorsepower() {
-        return this.convertFromBase(PowerUnits.BoilerHorsepower);
+        if (this.boilerhorsepowerLazy !== null) {
+            return this.boilerhorsepowerLazy;
+        }
+        return this.boilerhorsepowerLazy = this.convertFromBase(PowerUnits.BoilerHorsepower);
     }
     get HydraulicHorsepower() {
-        return this.convertFromBase(PowerUnits.HydraulicHorsepower);
+        if (this.hydraulichorsepowerLazy !== null) {
+            return this.hydraulichorsepowerLazy;
+        }
+        return this.hydraulichorsepowerLazy = this.convertFromBase(PowerUnits.HydraulicHorsepower);
     }
     get BritishThermalUnitsPerHour() {
-        return this.convertFromBase(PowerUnits.BritishThermalUnitsPerHour);
+        if (this.britishthermalunitsperhourLazy !== null) {
+            return this.britishthermalunitsperhourLazy;
+        }
+        return this.britishthermalunitsperhourLazy = this.convertFromBase(PowerUnits.BritishThermalUnitsPerHour);
     }
     get JoulesPerHour() {
-        return this.convertFromBase(PowerUnits.JoulesPerHour);
+        if (this.joulesperhourLazy !== null) {
+            return this.joulesperhourLazy;
+        }
+        return this.joulesperhourLazy = this.convertFromBase(PowerUnits.JoulesPerHour);
     }
     get Femtowatts() {
-        return this.convertFromBase(PowerUnits.Femtowatts);
+        if (this.femtowattsLazy !== null) {
+            return this.femtowattsLazy;
+        }
+        return this.femtowattsLazy = this.convertFromBase(PowerUnits.Femtowatts);
     }
     get Picowatts() {
-        return this.convertFromBase(PowerUnits.Picowatts);
+        if (this.picowattsLazy !== null) {
+            return this.picowattsLazy;
+        }
+        return this.picowattsLazy = this.convertFromBase(PowerUnits.Picowatts);
     }
     get Nanowatts() {
-        return this.convertFromBase(PowerUnits.Nanowatts);
+        if (this.nanowattsLazy !== null) {
+            return this.nanowattsLazy;
+        }
+        return this.nanowattsLazy = this.convertFromBase(PowerUnits.Nanowatts);
     }
     get Microwatts() {
-        return this.convertFromBase(PowerUnits.Microwatts);
+        if (this.microwattsLazy !== null) {
+            return this.microwattsLazy;
+        }
+        return this.microwattsLazy = this.convertFromBase(PowerUnits.Microwatts);
     }
     get Deciwatts() {
-        return this.convertFromBase(PowerUnits.Deciwatts);
+        if (this.deciwattsLazy !== null) {
+            return this.deciwattsLazy;
+        }
+        return this.deciwattsLazy = this.convertFromBase(PowerUnits.Deciwatts);
     }
     get Decawatts() {
-        return this.convertFromBase(PowerUnits.Decawatts);
+        if (this.decawattsLazy !== null) {
+            return this.decawattsLazy;
+        }
+        return this.decawattsLazy = this.convertFromBase(PowerUnits.Decawatts);
     }
     get Kilowatts() {
-        return this.convertFromBase(PowerUnits.Kilowatts);
+        if (this.kilowattsLazy !== null) {
+            return this.kilowattsLazy;
+        }
+        return this.kilowattsLazy = this.convertFromBase(PowerUnits.Kilowatts);
     }
     get Megawatts() {
-        return this.convertFromBase(PowerUnits.Megawatts);
+        if (this.megawattsLazy !== null) {
+            return this.megawattsLazy;
+        }
+        return this.megawattsLazy = this.convertFromBase(PowerUnits.Megawatts);
     }
     get Gigawatts() {
-        return this.convertFromBase(PowerUnits.Gigawatts);
+        if (this.gigawattsLazy !== null) {
+            return this.gigawattsLazy;
+        }
+        return this.gigawattsLazy = this.convertFromBase(PowerUnits.Gigawatts);
     }
     get Terawatts() {
-        return this.convertFromBase(PowerUnits.Terawatts);
+        if (this.terawattsLazy !== null) {
+            return this.terawattsLazy;
+        }
+        return this.terawattsLazy = this.convertFromBase(PowerUnits.Terawatts);
     }
     get Petawatts() {
-        return this.convertFromBase(PowerUnits.Petawatts);
+        if (this.petawattsLazy !== null) {
+            return this.petawattsLazy;
+        }
+        return this.petawattsLazy = this.convertFromBase(PowerUnits.Petawatts);
     }
     get Kilobritishthermalunitsperhour() {
-        return this.convertFromBase(PowerUnits.Kilobritishthermalunitsperhour);
+        if (this.kilobritishthermalunitsperhourLazy !== null) {
+            return this.kilobritishthermalunitsperhourLazy;
+        }
+        return this.kilobritishthermalunitsperhourLazy = this.convertFromBase(PowerUnits.Kilobritishthermalunitsperhour);
     }
     get Kilojoulesperhour() {
-        return this.convertFromBase(PowerUnits.Kilojoulesperhour);
+        if (this.kilojoulesperhourLazy !== null) {
+            return this.kilojoulesperhourLazy;
+        }
+        return this.kilojoulesperhourLazy = this.convertFromBase(PowerUnits.Kilojoulesperhour);
     }
     get Megajoulesperhour() {
-        return this.convertFromBase(PowerUnits.Megajoulesperhour);
+        if (this.megajoulesperhourLazy !== null) {
+            return this.megajoulesperhourLazy;
+        }
+        return this.megajoulesperhourLazy = this.convertFromBase(PowerUnits.Megajoulesperhour);
     }
     get Gigajoulesperhour() {
-        return this.convertFromBase(PowerUnits.Gigajoulesperhour);
+        if (this.gigajoulesperhourLazy !== null) {
+            return this.gigajoulesperhourLazy;
+        }
+        return this.gigajoulesperhourLazy = this.convertFromBase(PowerUnits.Gigajoulesperhour);
     }
     static FromWatts(value) {
         return new Power(value, PowerUnits.Watts);

@@ -16,40 +16,84 @@ var RotationalSpeedUnits;
 })(RotationalSpeedUnits = exports.RotationalSpeedUnits || (exports.RotationalSpeedUnits = {}));
 class RotationalSpeed {
     constructor(value, fromUnit) {
+        this.radianspersecondLazy = null;
+        this.degreespersecondLazy = null;
+        this.degreesperminuteLazy = null;
+        this.revolutionspersecondLazy = null;
+        this.revolutionsperminuteLazy = null;
+        this.nanoradianspersecondLazy = null;
+        this.microradianspersecondLazy = null;
+        this.centiradianspersecondLazy = null;
+        this.deciradianspersecondLazy = null;
+        this.nanodegreespersecondLazy = null;
+        this.microdegreespersecondLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get RadiansPerSecond() {
-        return this.convertFromBase(RotationalSpeedUnits.RadiansPerSecond);
+        if (this.radianspersecondLazy !== null) {
+            return this.radianspersecondLazy;
+        }
+        return this.radianspersecondLazy = this.convertFromBase(RotationalSpeedUnits.RadiansPerSecond);
     }
     get DegreesPerSecond() {
-        return this.convertFromBase(RotationalSpeedUnits.DegreesPerSecond);
+        if (this.degreespersecondLazy !== null) {
+            return this.degreespersecondLazy;
+        }
+        return this.degreespersecondLazy = this.convertFromBase(RotationalSpeedUnits.DegreesPerSecond);
     }
     get DegreesPerMinute() {
-        return this.convertFromBase(RotationalSpeedUnits.DegreesPerMinute);
+        if (this.degreesperminuteLazy !== null) {
+            return this.degreesperminuteLazy;
+        }
+        return this.degreesperminuteLazy = this.convertFromBase(RotationalSpeedUnits.DegreesPerMinute);
     }
     get RevolutionsPerSecond() {
-        return this.convertFromBase(RotationalSpeedUnits.RevolutionsPerSecond);
+        if (this.revolutionspersecondLazy !== null) {
+            return this.revolutionspersecondLazy;
+        }
+        return this.revolutionspersecondLazy = this.convertFromBase(RotationalSpeedUnits.RevolutionsPerSecond);
     }
     get RevolutionsPerMinute() {
-        return this.convertFromBase(RotationalSpeedUnits.RevolutionsPerMinute);
+        if (this.revolutionsperminuteLazy !== null) {
+            return this.revolutionsperminuteLazy;
+        }
+        return this.revolutionsperminuteLazy = this.convertFromBase(RotationalSpeedUnits.RevolutionsPerMinute);
     }
     get Nanoradianspersecond() {
-        return this.convertFromBase(RotationalSpeedUnits.Nanoradianspersecond);
+        if (this.nanoradianspersecondLazy !== null) {
+            return this.nanoradianspersecondLazy;
+        }
+        return this.nanoradianspersecondLazy = this.convertFromBase(RotationalSpeedUnits.Nanoradianspersecond);
     }
     get Microradianspersecond() {
-        return this.convertFromBase(RotationalSpeedUnits.Microradianspersecond);
+        if (this.microradianspersecondLazy !== null) {
+            return this.microradianspersecondLazy;
+        }
+        return this.microradianspersecondLazy = this.convertFromBase(RotationalSpeedUnits.Microradianspersecond);
     }
     get Centiradianspersecond() {
-        return this.convertFromBase(RotationalSpeedUnits.Centiradianspersecond);
+        if (this.centiradianspersecondLazy !== null) {
+            return this.centiradianspersecondLazy;
+        }
+        return this.centiradianspersecondLazy = this.convertFromBase(RotationalSpeedUnits.Centiradianspersecond);
     }
     get Deciradianspersecond() {
-        return this.convertFromBase(RotationalSpeedUnits.Deciradianspersecond);
+        if (this.deciradianspersecondLazy !== null) {
+            return this.deciradianspersecondLazy;
+        }
+        return this.deciradianspersecondLazy = this.convertFromBase(RotationalSpeedUnits.Deciradianspersecond);
     }
     get Nanodegreespersecond() {
-        return this.convertFromBase(RotationalSpeedUnits.Nanodegreespersecond);
+        if (this.nanodegreespersecondLazy !== null) {
+            return this.nanodegreespersecondLazy;
+        }
+        return this.nanodegreespersecondLazy = this.convertFromBase(RotationalSpeedUnits.Nanodegreespersecond);
     }
     get Microdegreespersecond() {
-        return this.convertFromBase(RotationalSpeedUnits.Microdegreespersecond);
+        if (this.microdegreespersecondLazy !== null) {
+            return this.microdegreespersecondLazy;
+        }
+        return this.microdegreespersecondLazy = this.convertFromBase(RotationalSpeedUnits.Microdegreespersecond);
     }
     static FromRadiansPerSecond(value) {
         return new RotationalSpeed(value, RotationalSpeedUnits.RadiansPerSecond);

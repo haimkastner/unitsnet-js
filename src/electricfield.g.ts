@@ -4,13 +4,17 @@ export enum ElectricFieldUnits {
 
 export class ElectricField {
     private value: number;
+    private voltspermeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricFieldUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get VoltsPerMeter(): number {
-        return this.convertFromBase(ElectricFieldUnits.VoltsPerMeter);
+        if(this.voltspermeterLazy !== null){
+            return this.voltspermeterLazy;
+        }
+        return this.voltspermeterLazy = this.convertFromBase(ElectricFieldUnits.VoltsPerMeter);
     }
 
     public static FromVoltsPerMeter(value: number): ElectricField {
@@ -18,30 +22,24 @@ export class ElectricField {
     }
 
     private convertFromBase(toUnit: ElectricFieldUnits): number {
-
-                switch (toUnit) {
-                    
-                case ElectricFieldUnits.VoltsPerMeter:
-                    return this.value;
+        switch (toUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case ElectricFieldUnits.VoltsPerMeter:
+                return this.value;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricFieldUnits): number {
-
-                switch (fromUnit) {
-                    
-                case ElectricFieldUnits.VoltsPerMeter:
-                    return value;
+        switch (fromUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case ElectricFieldUnits.VoltsPerMeter:
+                return value;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

@@ -11,6 +11,15 @@ export declare enum TemperatureChangeRateUnits {
 }
 export declare class TemperatureChangeRate {
     private value;
+    private degreescelsiuspersecondLazy;
+    private degreescelsiusperminuteLazy;
+    private nanodegreescelsiuspersecondLazy;
+    private microdegreescelsiuspersecondLazy;
+    private centidegreescelsiuspersecondLazy;
+    private decidegreescelsiuspersecondLazy;
+    private decadegreescelsiuspersecondLazy;
+    private hectodegreescelsiuspersecondLazy;
+    private kilodegreescelsiuspersecondLazy;
     constructor(value: number, fromUnit: TemperatureChangeRateUnits);
     get DegreesCelsiusPerSecond(): number;
     get DegreesCelsiusPerMinute(): number;

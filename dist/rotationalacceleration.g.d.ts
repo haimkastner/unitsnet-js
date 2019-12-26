@@ -6,6 +6,10 @@ export declare enum RotationalAccelerationUnits {
 }
 export declare class RotationalAcceleration {
     private value;
+    private radianspersecondsquaredLazy;
+    private degreespersecondsquaredLazy;
+    private revolutionsperminutepersecondLazy;
+    private revolutionspersecondsquaredLazy;
     constructor(value: number, fromUnit: RotationalAccelerationUnits);
     get RadiansPerSecondSquared(): number;
     get DegreesPerSecondSquared(): number;

@@ -5,6 +5,9 @@ export declare enum MolarEnergyUnits {
 }
 export declare class MolarEnergy {
     private value;
+    private joulespermoleLazy;
+    private kilojoulespermoleLazy;
+    private megajoulespermoleLazy;
     constructor(value: number, fromUnit: MolarEnergyUnits);
     get JoulesPerMole(): number;
     get Kilojoulespermole(): number;

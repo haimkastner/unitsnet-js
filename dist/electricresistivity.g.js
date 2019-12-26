@@ -17,43 +17,91 @@ var ElectricResistivityUnits;
 })(ElectricResistivityUnits = exports.ElectricResistivityUnits || (exports.ElectricResistivityUnits = {}));
 class ElectricResistivity {
     constructor(value, fromUnit) {
+        this.ohmmetersLazy = null;
+        this.ohmscentimeterLazy = null;
+        this.picoohmmetersLazy = null;
+        this.nanoohmmetersLazy = null;
+        this.microohmmetersLazy = null;
+        this.kiloohmmetersLazy = null;
+        this.megaohmmetersLazy = null;
+        this.picoohmscentimeterLazy = null;
+        this.nanoohmscentimeterLazy = null;
+        this.microohmscentimeterLazy = null;
+        this.kiloohmscentimeterLazy = null;
+        this.megaohmscentimeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get OhmMeters() {
-        return this.convertFromBase(ElectricResistivityUnits.OhmMeters);
+        if (this.ohmmetersLazy !== null) {
+            return this.ohmmetersLazy;
+        }
+        return this.ohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.OhmMeters);
     }
     get OhmsCentimeter() {
-        return this.convertFromBase(ElectricResistivityUnits.OhmsCentimeter);
+        if (this.ohmscentimeterLazy !== null) {
+            return this.ohmscentimeterLazy;
+        }
+        return this.ohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.OhmsCentimeter);
     }
     get Picoohmmeters() {
-        return this.convertFromBase(ElectricResistivityUnits.Picoohmmeters);
+        if (this.picoohmmetersLazy !== null) {
+            return this.picoohmmetersLazy;
+        }
+        return this.picoohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.Picoohmmeters);
     }
     get Nanoohmmeters() {
-        return this.convertFromBase(ElectricResistivityUnits.Nanoohmmeters);
+        if (this.nanoohmmetersLazy !== null) {
+            return this.nanoohmmetersLazy;
+        }
+        return this.nanoohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.Nanoohmmeters);
     }
     get Microohmmeters() {
-        return this.convertFromBase(ElectricResistivityUnits.Microohmmeters);
+        if (this.microohmmetersLazy !== null) {
+            return this.microohmmetersLazy;
+        }
+        return this.microohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.Microohmmeters);
     }
     get Kiloohmmeters() {
-        return this.convertFromBase(ElectricResistivityUnits.Kiloohmmeters);
+        if (this.kiloohmmetersLazy !== null) {
+            return this.kiloohmmetersLazy;
+        }
+        return this.kiloohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.Kiloohmmeters);
     }
     get Megaohmmeters() {
-        return this.convertFromBase(ElectricResistivityUnits.Megaohmmeters);
+        if (this.megaohmmetersLazy !== null) {
+            return this.megaohmmetersLazy;
+        }
+        return this.megaohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.Megaohmmeters);
     }
     get Picoohmscentimeter() {
-        return this.convertFromBase(ElectricResistivityUnits.Picoohmscentimeter);
+        if (this.picoohmscentimeterLazy !== null) {
+            return this.picoohmscentimeterLazy;
+        }
+        return this.picoohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.Picoohmscentimeter);
     }
     get Nanoohmscentimeter() {
-        return this.convertFromBase(ElectricResistivityUnits.Nanoohmscentimeter);
+        if (this.nanoohmscentimeterLazy !== null) {
+            return this.nanoohmscentimeterLazy;
+        }
+        return this.nanoohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.Nanoohmscentimeter);
     }
     get Microohmscentimeter() {
-        return this.convertFromBase(ElectricResistivityUnits.Microohmscentimeter);
+        if (this.microohmscentimeterLazy !== null) {
+            return this.microohmscentimeterLazy;
+        }
+        return this.microohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.Microohmscentimeter);
     }
     get Kiloohmscentimeter() {
-        return this.convertFromBase(ElectricResistivityUnits.Kiloohmscentimeter);
+        if (this.kiloohmscentimeterLazy !== null) {
+            return this.kiloohmscentimeterLazy;
+        }
+        return this.kiloohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.Kiloohmscentimeter);
     }
     get Megaohmscentimeter() {
-        return this.convertFromBase(ElectricResistivityUnits.Megaohmscentimeter);
+        if (this.megaohmscentimeterLazy !== null) {
+            return this.megaohmscentimeterLazy;
+        }
+        return this.megaohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.Megaohmscentimeter);
     }
     static FromOhmMeters(value) {
         return new ElectricResistivity(value, ElectricResistivityUnits.OhmMeters);

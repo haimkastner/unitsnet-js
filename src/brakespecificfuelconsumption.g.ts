@@ -6,21 +6,33 @@ export enum BrakeSpecificFuelConsumptionUnits {
 
 export class BrakeSpecificFuelConsumption {
     private value: number;
+    private gramsperkilowatthourLazy: number | null = null;
+    private kilogramsperjouleLazy: number | null = null;
+    private poundspermechanicalhorsepowerhourLazy: number | null = null;
 
     public constructor(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get GramsPerKiloWattHour(): number {
-        return this.convertFromBase(BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour);
+        if(this.gramsperkilowatthourLazy !== null){
+            return this.gramsperkilowatthourLazy;
+        }
+        return this.gramsperkilowatthourLazy = this.convertFromBase(BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour);
     }
 
     public get KilogramsPerJoule(): number {
-        return this.convertFromBase(BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule);
+        if(this.kilogramsperjouleLazy !== null){
+            return this.kilogramsperjouleLazy;
+        }
+        return this.kilogramsperjouleLazy = this.convertFromBase(BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule);
     }
 
     public get PoundsPerMechanicalHorsepowerHour(): number {
-        return this.convertFromBase(BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour);
+        if(this.poundspermechanicalhorsepowerhourLazy !== null){
+            return this.poundspermechanicalhorsepowerhourLazy;
+        }
+        return this.poundspermechanicalhorsepowerhourLazy = this.convertFromBase(BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour);
     }
 
     public static FromGramsPerKiloWattHour(value: number): BrakeSpecificFuelConsumption {
@@ -36,42 +48,32 @@ export class BrakeSpecificFuelConsumption {
     }
 
     private convertFromBase(toUnit: BrakeSpecificFuelConsumptionUnits): number {
-
-                switch (toUnit) {
-                    
-                case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                    return this.value*3.6e9;
+        switch (toUnit) {
                 
-                case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
-                    return this.value;
-                
-                case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                    return this.value/1.689659410672e-7;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
+                return this.value*3.6e9;
+            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
+                return this.value;
+            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
+                return this.value/1.689659410672e-7;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits): number {
-
-                switch (fromUnit) {
-                    
-                case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                    return value/3.6e9;
+        switch (fromUnit) {
                 
-                case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
-                    return value;
-                
-                case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                    return value*1.689659410672e-7;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
+                return value/3.6e9;
+            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
+                return value;
+            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
+                return value*1.689659410672e-7;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

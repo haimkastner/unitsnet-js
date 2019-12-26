@@ -6,6 +6,10 @@ export declare enum ElectricPotentialDcUnits {
 }
 export declare class ElectricPotentialDc {
     private value;
+    private voltsdcLazy;
+    private microvoltsdcLazy;
+    private kilovoltsdcLazy;
+    private megavoltsdcLazy;
     constructor(value: number, fromUnit: ElectricPotentialDcUnits);
     get VoltsDc(): number;
     get Microvoltsdc(): number;

@@ -6,6 +6,10 @@ export declare enum ReactivePowerUnits {
 }
 export declare class ReactivePower {
     private value;
+    private voltamperesreactiveLazy;
+    private kilovoltamperesreactiveLazy;
+    private megavoltamperesreactiveLazy;
+    private gigavoltamperesreactiveLazy;
     constructor(value: number, fromUnit: ReactivePowerUnits);
     get VoltamperesReactive(): number;
     get Kilovoltamperesreactive(): number;

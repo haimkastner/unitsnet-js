@@ -5,6 +5,9 @@ export declare enum ElectricAdmittanceUnits {
 }
 export declare class ElectricAdmittance {
     private value;
+    private siemensLazy;
+    private nanosiemensLazy;
+    private microsiemensLazy;
     constructor(value: number, fromUnit: ElectricAdmittanceUnits);
     get Siemens(): number;
     get Nanosiemens(): number;

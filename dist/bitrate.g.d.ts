@@ -16,6 +16,20 @@ export declare enum BitRateUnits {
 }
 export declare class BitRate {
     private value;
+    private bitspersecondLazy;
+    private bytespersecondLazy;
+    private kilobitspersecondLazy;
+    private megabitspersecondLazy;
+    private gigabitspersecondLazy;
+    private terabitspersecondLazy;
+    private petabitspersecondLazy;
+    private exabitspersecondLazy;
+    private kilobytespersecondLazy;
+    private megabytespersecondLazy;
+    private gigabytespersecondLazy;
+    private terabytespersecondLazy;
+    private petabytespersecondLazy;
+    private exabytespersecondLazy;
     constructor(value: number, fromUnit: BitRateUnits);
     get BitsPerSecond(): number;
     get BytesPerSecond(): number;

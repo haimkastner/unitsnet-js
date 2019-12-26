@@ -4,6 +4,8 @@ export declare enum ThermalConductivityUnits {
 }
 export declare class ThermalConductivity {
     private value;
+    private wattspermeterkelvinLazy;
+    private btusperhourfootfahrenheitLazy;
     constructor(value: number, fromUnit: ThermalConductivityUnits);
     get WattsPerMeterKelvin(): number;
     get BtusPerHourFootFahrenheit(): number;

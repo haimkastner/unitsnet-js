@@ -8,6 +8,12 @@ export declare enum RatioUnits {
 }
 export declare class Ratio {
     private value;
+    private decimalfractionsLazy;
+    private percentLazy;
+    private partsperthousandLazy;
+    private partspermillionLazy;
+    private partsperbillionLazy;
+    private partspertrillionLazy;
     constructor(value: number, fromUnit: RatioUnits);
     get DecimalFractions(): number;
     get Percent(): number;

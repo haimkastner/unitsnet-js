@@ -14,6 +14,18 @@ export declare enum IrradianceUnits {
 }
 export declare class Irradiance {
     private value;
+    private wattspersquaremeterLazy;
+    private wattspersquarecentimeterLazy;
+    private picowattspersquaremeterLazy;
+    private nanowattspersquaremeterLazy;
+    private microwattspersquaremeterLazy;
+    private kilowattspersquaremeterLazy;
+    private megawattspersquaremeterLazy;
+    private picowattspersquarecentimeterLazy;
+    private nanowattspersquarecentimeterLazy;
+    private microwattspersquarecentimeterLazy;
+    private kilowattspersquarecentimeterLazy;
+    private megawattspersquarecentimeterLazy;
     constructor(value: number, fromUnit: IrradianceUnits);
     get WattsPerSquareMeter(): number;
     get WattsPerSquareCentimeter(): number;

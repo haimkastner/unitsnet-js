@@ -6,6 +6,10 @@ export declare enum FuelEfficiencyUnits {
 }
 export declare class FuelEfficiency {
     private value;
+    private litersper100kilometersLazy;
+    private milesperusgallonLazy;
+    private milesperukgallonLazy;
+    private kilometersperlitersLazy;
     constructor(value: number, fromUnit: FuelEfficiencyUnits);
     get LitersPer100Kilometers(): number;
     get MilesPerUsGallon(): number;

@@ -36,100 +36,224 @@ var MassFlowUnits;
 })(MassFlowUnits = exports.MassFlowUnits || (exports.MassFlowUnits = {}));
 class MassFlow {
     constructor(value, fromUnit) {
+        this.gramspersecondLazy = null;
+        this.gramsperdayLazy = null;
+        this.gramsperhourLazy = null;
+        this.kilogramsperhourLazy = null;
+        this.kilogramsperminuteLazy = null;
+        this.tonnesperhourLazy = null;
+        this.poundsperdayLazy = null;
+        this.poundsperhourLazy = null;
+        this.poundsperminuteLazy = null;
+        this.poundspersecondLazy = null;
+        this.tonnesperdayLazy = null;
+        this.shorttonsperhourLazy = null;
+        this.nanogramspersecondLazy = null;
+        this.microgramspersecondLazy = null;
+        this.centigramspersecondLazy = null;
+        this.decigramspersecondLazy = null;
+        this.decagramspersecondLazy = null;
+        this.hectogramspersecondLazy = null;
+        this.kilogramspersecondLazy = null;
+        this.nanogramsperdayLazy = null;
+        this.microgramsperdayLazy = null;
+        this.centigramsperdayLazy = null;
+        this.decigramsperdayLazy = null;
+        this.decagramsperdayLazy = null;
+        this.hectogramsperdayLazy = null;
+        this.kilogramsperdayLazy = null;
+        this.megagramsperdayLazy = null;
+        this.megapoundsperdayLazy = null;
+        this.megapoundsperhourLazy = null;
+        this.megapoundsperminuteLazy = null;
+        this.megapoundspersecondLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get GramsPerSecond() {
-        return this.convertFromBase(MassFlowUnits.GramsPerSecond);
+        if (this.gramspersecondLazy !== null) {
+            return this.gramspersecondLazy;
+        }
+        return this.gramspersecondLazy = this.convertFromBase(MassFlowUnits.GramsPerSecond);
     }
     get GramsPerDay() {
-        return this.convertFromBase(MassFlowUnits.GramsPerDay);
+        if (this.gramsperdayLazy !== null) {
+            return this.gramsperdayLazy;
+        }
+        return this.gramsperdayLazy = this.convertFromBase(MassFlowUnits.GramsPerDay);
     }
     get GramsPerHour() {
-        return this.convertFromBase(MassFlowUnits.GramsPerHour);
+        if (this.gramsperhourLazy !== null) {
+            return this.gramsperhourLazy;
+        }
+        return this.gramsperhourLazy = this.convertFromBase(MassFlowUnits.GramsPerHour);
     }
     get KilogramsPerHour() {
-        return this.convertFromBase(MassFlowUnits.KilogramsPerHour);
+        if (this.kilogramsperhourLazy !== null) {
+            return this.kilogramsperhourLazy;
+        }
+        return this.kilogramsperhourLazy = this.convertFromBase(MassFlowUnits.KilogramsPerHour);
     }
     get KilogramsPerMinute() {
-        return this.convertFromBase(MassFlowUnits.KilogramsPerMinute);
+        if (this.kilogramsperminuteLazy !== null) {
+            return this.kilogramsperminuteLazy;
+        }
+        return this.kilogramsperminuteLazy = this.convertFromBase(MassFlowUnits.KilogramsPerMinute);
     }
     get TonnesPerHour() {
-        return this.convertFromBase(MassFlowUnits.TonnesPerHour);
+        if (this.tonnesperhourLazy !== null) {
+            return this.tonnesperhourLazy;
+        }
+        return this.tonnesperhourLazy = this.convertFromBase(MassFlowUnits.TonnesPerHour);
     }
     get PoundsPerDay() {
-        return this.convertFromBase(MassFlowUnits.PoundsPerDay);
+        if (this.poundsperdayLazy !== null) {
+            return this.poundsperdayLazy;
+        }
+        return this.poundsperdayLazy = this.convertFromBase(MassFlowUnits.PoundsPerDay);
     }
     get PoundsPerHour() {
-        return this.convertFromBase(MassFlowUnits.PoundsPerHour);
+        if (this.poundsperhourLazy !== null) {
+            return this.poundsperhourLazy;
+        }
+        return this.poundsperhourLazy = this.convertFromBase(MassFlowUnits.PoundsPerHour);
     }
     get PoundsPerMinute() {
-        return this.convertFromBase(MassFlowUnits.PoundsPerMinute);
+        if (this.poundsperminuteLazy !== null) {
+            return this.poundsperminuteLazy;
+        }
+        return this.poundsperminuteLazy = this.convertFromBase(MassFlowUnits.PoundsPerMinute);
     }
     get PoundsPerSecond() {
-        return this.convertFromBase(MassFlowUnits.PoundsPerSecond);
+        if (this.poundspersecondLazy !== null) {
+            return this.poundspersecondLazy;
+        }
+        return this.poundspersecondLazy = this.convertFromBase(MassFlowUnits.PoundsPerSecond);
     }
     get TonnesPerDay() {
-        return this.convertFromBase(MassFlowUnits.TonnesPerDay);
+        if (this.tonnesperdayLazy !== null) {
+            return this.tonnesperdayLazy;
+        }
+        return this.tonnesperdayLazy = this.convertFromBase(MassFlowUnits.TonnesPerDay);
     }
     get ShortTonsPerHour() {
-        return this.convertFromBase(MassFlowUnits.ShortTonsPerHour);
+        if (this.shorttonsperhourLazy !== null) {
+            return this.shorttonsperhourLazy;
+        }
+        return this.shorttonsperhourLazy = this.convertFromBase(MassFlowUnits.ShortTonsPerHour);
     }
     get Nanogramspersecond() {
-        return this.convertFromBase(MassFlowUnits.Nanogramspersecond);
+        if (this.nanogramspersecondLazy !== null) {
+            return this.nanogramspersecondLazy;
+        }
+        return this.nanogramspersecondLazy = this.convertFromBase(MassFlowUnits.Nanogramspersecond);
     }
     get Microgramspersecond() {
-        return this.convertFromBase(MassFlowUnits.Microgramspersecond);
+        if (this.microgramspersecondLazy !== null) {
+            return this.microgramspersecondLazy;
+        }
+        return this.microgramspersecondLazy = this.convertFromBase(MassFlowUnits.Microgramspersecond);
     }
     get Centigramspersecond() {
-        return this.convertFromBase(MassFlowUnits.Centigramspersecond);
+        if (this.centigramspersecondLazy !== null) {
+            return this.centigramspersecondLazy;
+        }
+        return this.centigramspersecondLazy = this.convertFromBase(MassFlowUnits.Centigramspersecond);
     }
     get Decigramspersecond() {
-        return this.convertFromBase(MassFlowUnits.Decigramspersecond);
+        if (this.decigramspersecondLazy !== null) {
+            return this.decigramspersecondLazy;
+        }
+        return this.decigramspersecondLazy = this.convertFromBase(MassFlowUnits.Decigramspersecond);
     }
     get Decagramspersecond() {
-        return this.convertFromBase(MassFlowUnits.Decagramspersecond);
+        if (this.decagramspersecondLazy !== null) {
+            return this.decagramspersecondLazy;
+        }
+        return this.decagramspersecondLazy = this.convertFromBase(MassFlowUnits.Decagramspersecond);
     }
     get Hectogramspersecond() {
-        return this.convertFromBase(MassFlowUnits.Hectogramspersecond);
+        if (this.hectogramspersecondLazy !== null) {
+            return this.hectogramspersecondLazy;
+        }
+        return this.hectogramspersecondLazy = this.convertFromBase(MassFlowUnits.Hectogramspersecond);
     }
     get Kilogramspersecond() {
-        return this.convertFromBase(MassFlowUnits.Kilogramspersecond);
+        if (this.kilogramspersecondLazy !== null) {
+            return this.kilogramspersecondLazy;
+        }
+        return this.kilogramspersecondLazy = this.convertFromBase(MassFlowUnits.Kilogramspersecond);
     }
     get Nanogramsperday() {
-        return this.convertFromBase(MassFlowUnits.Nanogramsperday);
+        if (this.nanogramsperdayLazy !== null) {
+            return this.nanogramsperdayLazy;
+        }
+        return this.nanogramsperdayLazy = this.convertFromBase(MassFlowUnits.Nanogramsperday);
     }
     get Microgramsperday() {
-        return this.convertFromBase(MassFlowUnits.Microgramsperday);
+        if (this.microgramsperdayLazy !== null) {
+            return this.microgramsperdayLazy;
+        }
+        return this.microgramsperdayLazy = this.convertFromBase(MassFlowUnits.Microgramsperday);
     }
     get Centigramsperday() {
-        return this.convertFromBase(MassFlowUnits.Centigramsperday);
+        if (this.centigramsperdayLazy !== null) {
+            return this.centigramsperdayLazy;
+        }
+        return this.centigramsperdayLazy = this.convertFromBase(MassFlowUnits.Centigramsperday);
     }
     get Decigramsperday() {
-        return this.convertFromBase(MassFlowUnits.Decigramsperday);
+        if (this.decigramsperdayLazy !== null) {
+            return this.decigramsperdayLazy;
+        }
+        return this.decigramsperdayLazy = this.convertFromBase(MassFlowUnits.Decigramsperday);
     }
     get Decagramsperday() {
-        return this.convertFromBase(MassFlowUnits.Decagramsperday);
+        if (this.decagramsperdayLazy !== null) {
+            return this.decagramsperdayLazy;
+        }
+        return this.decagramsperdayLazy = this.convertFromBase(MassFlowUnits.Decagramsperday);
     }
     get Hectogramsperday() {
-        return this.convertFromBase(MassFlowUnits.Hectogramsperday);
+        if (this.hectogramsperdayLazy !== null) {
+            return this.hectogramsperdayLazy;
+        }
+        return this.hectogramsperdayLazy = this.convertFromBase(MassFlowUnits.Hectogramsperday);
     }
     get Kilogramsperday() {
-        return this.convertFromBase(MassFlowUnits.Kilogramsperday);
+        if (this.kilogramsperdayLazy !== null) {
+            return this.kilogramsperdayLazy;
+        }
+        return this.kilogramsperdayLazy = this.convertFromBase(MassFlowUnits.Kilogramsperday);
     }
     get Megagramsperday() {
-        return this.convertFromBase(MassFlowUnits.Megagramsperday);
+        if (this.megagramsperdayLazy !== null) {
+            return this.megagramsperdayLazy;
+        }
+        return this.megagramsperdayLazy = this.convertFromBase(MassFlowUnits.Megagramsperday);
     }
     get Megapoundsperday() {
-        return this.convertFromBase(MassFlowUnits.Megapoundsperday);
+        if (this.megapoundsperdayLazy !== null) {
+            return this.megapoundsperdayLazy;
+        }
+        return this.megapoundsperdayLazy = this.convertFromBase(MassFlowUnits.Megapoundsperday);
     }
     get Megapoundsperhour() {
-        return this.convertFromBase(MassFlowUnits.Megapoundsperhour);
+        if (this.megapoundsperhourLazy !== null) {
+            return this.megapoundsperhourLazy;
+        }
+        return this.megapoundsperhourLazy = this.convertFromBase(MassFlowUnits.Megapoundsperhour);
     }
     get Megapoundsperminute() {
-        return this.convertFromBase(MassFlowUnits.Megapoundsperminute);
+        if (this.megapoundsperminuteLazy !== null) {
+            return this.megapoundsperminuteLazy;
+        }
+        return this.megapoundsperminuteLazy = this.convertFromBase(MassFlowUnits.Megapoundsperminute);
     }
     get Megapoundspersecond() {
-        return this.convertFromBase(MassFlowUnits.Megapoundspersecond);
+        if (this.megapoundspersecondLazy !== null) {
+            return this.megapoundspersecondLazy;
+        }
+        return this.megapoundspersecondLazy = this.convertFromBase(MassFlowUnits.Megapoundspersecond);
     }
     static FromGramsPerSecond(value) {
         return new MassFlow(value, MassFlowUnits.GramsPerSecond);

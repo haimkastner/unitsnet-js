@@ -3,6 +3,7 @@ export declare enum MagnetizationUnits {
 }
 export declare class Magnetization {
     private value;
+    private amperespermeterLazy;
     constructor(value: number, fromUnit: MagnetizationUnits);
     get AmperesPerMeter(): number;
     static FromAmperesPerMeter(value: number): Magnetization;

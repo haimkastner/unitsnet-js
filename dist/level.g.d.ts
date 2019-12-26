@@ -4,6 +4,8 @@ export declare enum LevelUnits {
 }
 export declare class Level {
     private value;
+    private decibelsLazy;
+    private nepersLazy;
     constructor(value: number, fromUnit: LevelUnits);
     get Decibels(): number;
     get Nepers(): number;

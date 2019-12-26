@@ -6,10 +6,14 @@ var PermeabilityUnits;
 })(PermeabilityUnits = exports.PermeabilityUnits || (exports.PermeabilityUnits = {}));
 class Permeability {
     constructor(value, fromUnit) {
+        this.henriespermeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get HenriesPerMeter() {
-        return this.convertFromBase(PermeabilityUnits.HenriesPerMeter);
+        if (this.henriespermeterLazy !== null) {
+            return this.henriespermeterLazy;
+        }
+        return this.henriespermeterLazy = this.convertFromBase(PermeabilityUnits.HenriesPerMeter);
     }
     static FromHenriesPerMeter(value) {
         return new Permeability(value, PermeabilityUnits.HenriesPerMeter);

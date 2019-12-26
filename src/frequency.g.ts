@@ -12,45 +12,81 @@ export enum FrequencyUnits {
 
 export class Frequency {
     private value: number;
+    private hertzLazy: number | null = null;
+    private radianspersecondLazy: number | null = null;
+    private cyclesperminuteLazy: number | null = null;
+    private cyclesperhourLazy: number | null = null;
+    private beatsperminuteLazy: number | null = null;
+    private kilohertzLazy: number | null = null;
+    private megahertzLazy: number | null = null;
+    private gigahertzLazy: number | null = null;
+    private terahertzLazy: number | null = null;
 
     public constructor(value: number, fromUnit: FrequencyUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get Hertz(): number {
-        return this.convertFromBase(FrequencyUnits.Hertz);
+        if(this.hertzLazy !== null){
+            return this.hertzLazy;
+        }
+        return this.hertzLazy = this.convertFromBase(FrequencyUnits.Hertz);
     }
 
     public get RadiansPerSecond(): number {
-        return this.convertFromBase(FrequencyUnits.RadiansPerSecond);
+        if(this.radianspersecondLazy !== null){
+            return this.radianspersecondLazy;
+        }
+        return this.radianspersecondLazy = this.convertFromBase(FrequencyUnits.RadiansPerSecond);
     }
 
     public get CyclesPerMinute(): number {
-        return this.convertFromBase(FrequencyUnits.CyclesPerMinute);
+        if(this.cyclesperminuteLazy !== null){
+            return this.cyclesperminuteLazy;
+        }
+        return this.cyclesperminuteLazy = this.convertFromBase(FrequencyUnits.CyclesPerMinute);
     }
 
     public get CyclesPerHour(): number {
-        return this.convertFromBase(FrequencyUnits.CyclesPerHour);
+        if(this.cyclesperhourLazy !== null){
+            return this.cyclesperhourLazy;
+        }
+        return this.cyclesperhourLazy = this.convertFromBase(FrequencyUnits.CyclesPerHour);
     }
 
     public get BeatsPerMinute(): number {
-        return this.convertFromBase(FrequencyUnits.BeatsPerMinute);
+        if(this.beatsperminuteLazy !== null){
+            return this.beatsperminuteLazy;
+        }
+        return this.beatsperminuteLazy = this.convertFromBase(FrequencyUnits.BeatsPerMinute);
     }
 
     public get Kilohertz(): number {
-        return this.convertFromBase(FrequencyUnits.Kilohertz);
+        if(this.kilohertzLazy !== null){
+            return this.kilohertzLazy;
+        }
+        return this.kilohertzLazy = this.convertFromBase(FrequencyUnits.Kilohertz);
     }
 
     public get Megahertz(): number {
-        return this.convertFromBase(FrequencyUnits.Megahertz);
+        if(this.megahertzLazy !== null){
+            return this.megahertzLazy;
+        }
+        return this.megahertzLazy = this.convertFromBase(FrequencyUnits.Megahertz);
     }
 
     public get Gigahertz(): number {
-        return this.convertFromBase(FrequencyUnits.Gigahertz);
+        if(this.gigahertzLazy !== null){
+            return this.gigahertzLazy;
+        }
+        return this.gigahertzLazy = this.convertFromBase(FrequencyUnits.Gigahertz);
     }
 
     public get Terahertz(): number {
-        return this.convertFromBase(FrequencyUnits.Terahertz);
+        if(this.terahertzLazy !== null){
+            return this.terahertzLazy;
+        }
+        return this.terahertzLazy = this.convertFromBase(FrequencyUnits.Terahertz);
     }
 
     public static FromHertz(value: number): Frequency {
@@ -90,78 +126,56 @@ export class Frequency {
     }
 
     private convertFromBase(toUnit: FrequencyUnits): number {
-
-                switch (toUnit) {
-                    
-                case FrequencyUnits.Hertz:
-                    return this.value;
+        switch (toUnit) {
                 
-                case FrequencyUnits.RadiansPerSecond:
-                    return this.value*6.2831853072;
-                
-                case FrequencyUnits.CyclesPerMinute:
-                    return this.value*60;
-                
-                case FrequencyUnits.CyclesPerHour:
-                    return this.value*3600;
-                
-                case FrequencyUnits.BeatsPerMinute:
-                    return this.value*60;
-                
-                case FrequencyUnits.Kilohertz:
-                    return (this.value) / 1000;
-                
-                case FrequencyUnits.Megahertz:
-                    return (this.value) / 1000000;
-                
-                case FrequencyUnits.Gigahertz:
-                    return (this.value) / 1000000000;
-                
-                case FrequencyUnits.Terahertz:
-                    return (this.value) / 1000000000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case FrequencyUnits.Hertz:
+                return this.value;
+            case FrequencyUnits.RadiansPerSecond:
+                return this.value*6.2831853072;
+            case FrequencyUnits.CyclesPerMinute:
+                return this.value*60;
+            case FrequencyUnits.CyclesPerHour:
+                return this.value*3600;
+            case FrequencyUnits.BeatsPerMinute:
+                return this.value*60;
+            case FrequencyUnits.Kilohertz:
+                return (this.value) / 1000;
+            case FrequencyUnits.Megahertz:
+                return (this.value) / 1000000;
+            case FrequencyUnits.Gigahertz:
+                return (this.value) / 1000000000;
+            case FrequencyUnits.Terahertz:
+                return (this.value) / 1000000000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: FrequencyUnits): number {
-
-                switch (fromUnit) {
-                    
-                case FrequencyUnits.Hertz:
-                    return value;
+        switch (fromUnit) {
                 
-                case FrequencyUnits.RadiansPerSecond:
-                    return value/6.2831853072;
-                
-                case FrequencyUnits.CyclesPerMinute:
-                    return value/60;
-                
-                case FrequencyUnits.CyclesPerHour:
-                    return value/3600;
-                
-                case FrequencyUnits.BeatsPerMinute:
-                    return value/60;
-                
-                case FrequencyUnits.Kilohertz:
-                    return (value) * 1000;
-                
-                case FrequencyUnits.Megahertz:
-                    return (value) * 1000000;
-                
-                case FrequencyUnits.Gigahertz:
-                    return (value) * 1000000000;
-                
-                case FrequencyUnits.Terahertz:
-                    return (value) * 1000000000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case FrequencyUnits.Hertz:
+                return value;
+            case FrequencyUnits.RadiansPerSecond:
+                return value/6.2831853072;
+            case FrequencyUnits.CyclesPerMinute:
+                return value/60;
+            case FrequencyUnits.CyclesPerHour:
+                return value/3600;
+            case FrequencyUnits.BeatsPerMinute:
+                return value/60;
+            case FrequencyUnits.Kilohertz:
+                return (value) * 1000;
+            case FrequencyUnits.Megahertz:
+                return (value) * 1000000;
+            case FrequencyUnits.Gigahertz:
+                return (value) * 1000000000;
+            case FrequencyUnits.Terahertz:
+                return (value) * 1000000000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

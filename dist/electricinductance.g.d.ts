@@ -5,6 +5,9 @@ export declare enum ElectricInductanceUnits {
 }
 export declare class ElectricInductance {
     private value;
+    private henriesLazy;
+    private nanohenriesLazy;
+    private microhenriesLazy;
     constructor(value: number, fromUnit: ElectricInductanceUnits);
     get Henries(): number;
     get Nanohenries(): number;

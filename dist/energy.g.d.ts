@@ -27,6 +27,31 @@ export declare enum EnergyUnits {
 }
 export declare class Energy {
     private value;
+    private joulesLazy;
+    private caloriesLazy;
+    private britishthermalunitsLazy;
+    private electronvoltsLazy;
+    private footpoundsLazy;
+    private ergsLazy;
+    private watthoursLazy;
+    private thermsecLazy;
+    private thermsusLazy;
+    private thermsimperialLazy;
+    private kilojoulesLazy;
+    private megajoulesLazy;
+    private gigajoulesLazy;
+    private kilocaloriesLazy;
+    private megacaloriesLazy;
+    private kilobritishthermalunitsLazy;
+    private megabritishthermalunitsLazy;
+    private gigabritishthermalunitsLazy;
+    private kilowatthoursLazy;
+    private megawatthoursLazy;
+    private gigawatthoursLazy;
+    private terawatthoursLazy;
+    private decathermsecLazy;
+    private decathermsusLazy;
+    private decathermsimperialLazy;
     constructor(value: number, fromUnit: EnergyUnits);
     get Joules(): number;
     get Calories(): number;

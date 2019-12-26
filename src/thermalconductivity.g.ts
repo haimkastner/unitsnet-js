@@ -5,17 +5,25 @@ export enum ThermalConductivityUnits {
 
 export class ThermalConductivity {
     private value: number;
+    private wattspermeterkelvinLazy: number | null = null;
+    private btusperhourfootfahrenheitLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ThermalConductivityUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get WattsPerMeterKelvin(): number {
-        return this.convertFromBase(ThermalConductivityUnits.WattsPerMeterKelvin);
+        if(this.wattspermeterkelvinLazy !== null){
+            return this.wattspermeterkelvinLazy;
+        }
+        return this.wattspermeterkelvinLazy = this.convertFromBase(ThermalConductivityUnits.WattsPerMeterKelvin);
     }
 
     public get BtusPerHourFootFahrenheit(): number {
-        return this.convertFromBase(ThermalConductivityUnits.BtusPerHourFootFahrenheit);
+        if(this.btusperhourfootfahrenheitLazy !== null){
+            return this.btusperhourfootfahrenheitLazy;
+        }
+        return this.btusperhourfootfahrenheitLazy = this.convertFromBase(ThermalConductivityUnits.BtusPerHourFootFahrenheit);
     }
 
     public static FromWattsPerMeterKelvin(value: number): ThermalConductivity {
@@ -27,36 +35,28 @@ export class ThermalConductivity {
     }
 
     private convertFromBase(toUnit: ThermalConductivityUnits): number {
-
-                switch (toUnit) {
-                    
-                case ThermalConductivityUnits.WattsPerMeterKelvin:
-                    return this.value;
+        switch (toUnit) {
                 
-                case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                    return this.value/1.73073467;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case ThermalConductivityUnits.WattsPerMeterKelvin:
+                return this.value;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
+                return this.value/1.73073467;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ThermalConductivityUnits): number {
-
-                switch (fromUnit) {
-                    
-                case ThermalConductivityUnits.WattsPerMeterKelvin:
-                    return value;
+        switch (fromUnit) {
                 
-                case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                    return value*1.73073467;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case ThermalConductivityUnits.WattsPerMeterKelvin:
+                return value;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
+                return value*1.73073467;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

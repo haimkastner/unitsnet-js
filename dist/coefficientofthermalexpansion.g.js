@@ -8,16 +8,28 @@ var CoefficientOfThermalExpansionUnits;
 })(CoefficientOfThermalExpansionUnits = exports.CoefficientOfThermalExpansionUnits || (exports.CoefficientOfThermalExpansionUnits = {}));
 class CoefficientOfThermalExpansion {
     constructor(value, fromUnit) {
+        this.inversekelvinLazy = null;
+        this.inversedegreecelsiusLazy = null;
+        this.inversedegreefahrenheitLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get InverseKelvin() {
-        return this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseKelvin);
+        if (this.inversekelvinLazy !== null) {
+            return this.inversekelvinLazy;
+        }
+        return this.inversekelvinLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseKelvin);
     }
     get InverseDegreeCelsius() {
-        return this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeCelsius);
+        if (this.inversedegreecelsiusLazy !== null) {
+            return this.inversedegreecelsiusLazy;
+        }
+        return this.inversedegreecelsiusLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeCelsius);
     }
     get InverseDegreeFahrenheit() {
-        return this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit);
+        if (this.inversedegreefahrenheitLazy !== null) {
+            return this.inversedegreefahrenheitLazy;
+        }
+        return this.inversedegreefahrenheitLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit);
     }
     static FromInverseKelvin(value) {
         return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.InverseKelvin);

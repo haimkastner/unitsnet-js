@@ -6,21 +6,33 @@ export enum VolumePerLengthUnits {
 
 export class VolumePerLength {
     private value: number;
+    private cubicmeterspermeterLazy: number | null = null;
+    private literspermeterLazy: number | null = null;
+    private oilbarrelsperfootLazy: number | null = null;
 
     public constructor(value: number, fromUnit: VolumePerLengthUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get CubicMetersPerMeter(): number {
-        return this.convertFromBase(VolumePerLengthUnits.CubicMetersPerMeter);
+        if(this.cubicmeterspermeterLazy !== null){
+            return this.cubicmeterspermeterLazy;
+        }
+        return this.cubicmeterspermeterLazy = this.convertFromBase(VolumePerLengthUnits.CubicMetersPerMeter);
     }
 
     public get LitersPerMeter(): number {
-        return this.convertFromBase(VolumePerLengthUnits.LitersPerMeter);
+        if(this.literspermeterLazy !== null){
+            return this.literspermeterLazy;
+        }
+        return this.literspermeterLazy = this.convertFromBase(VolumePerLengthUnits.LitersPerMeter);
     }
 
     public get OilBarrelsPerFoot(): number {
-        return this.convertFromBase(VolumePerLengthUnits.OilBarrelsPerFoot);
+        if(this.oilbarrelsperfootLazy !== null){
+            return this.oilbarrelsperfootLazy;
+        }
+        return this.oilbarrelsperfootLazy = this.convertFromBase(VolumePerLengthUnits.OilBarrelsPerFoot);
     }
 
     public static FromCubicMetersPerMeter(value: number): VolumePerLength {
@@ -36,42 +48,32 @@ export class VolumePerLength {
     }
 
     private convertFromBase(toUnit: VolumePerLengthUnits): number {
-
-                switch (toUnit) {
-                    
-                case VolumePerLengthUnits.CubicMetersPerMeter:
-                    return this.value;
+        switch (toUnit) {
                 
-                case VolumePerLengthUnits.LitersPerMeter:
-                    return this.value*1000;
-                
-                case VolumePerLengthUnits.OilBarrelsPerFoot:
-                    return this.value*1.91713408;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case VolumePerLengthUnits.CubicMetersPerMeter:
+                return this.value;
+            case VolumePerLengthUnits.LitersPerMeter:
+                return this.value*1000;
+            case VolumePerLengthUnits.OilBarrelsPerFoot:
+                return this.value*1.91713408;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: VolumePerLengthUnits): number {
-
-                switch (fromUnit) {
-                    
-                case VolumePerLengthUnits.CubicMetersPerMeter:
-                    return value;
+        switch (fromUnit) {
                 
-                case VolumePerLengthUnits.LitersPerMeter:
-                    return value/1000;
-                
-                case VolumePerLengthUnits.OilBarrelsPerFoot:
-                    return value/1.91713408;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case VolumePerLengthUnits.CubicMetersPerMeter:
+                return value;
+            case VolumePerLengthUnits.LitersPerMeter:
+                return value/1000;
+            case VolumePerLengthUnits.OilBarrelsPerFoot:
+                return value/1.91713408;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

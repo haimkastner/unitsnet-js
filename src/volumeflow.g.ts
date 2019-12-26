@@ -50,197 +50,385 @@ export enum VolumeFlowUnits {
 
 export class VolumeFlow {
     private value: number;
+    private cubicmeterspersecondLazy: number | null = null;
+    private cubicmetersperminuteLazy: number | null = null;
+    private cubicmetersperhourLazy: number | null = null;
+    private cubicmetersperdayLazy: number | null = null;
+    private cubicfeetpersecondLazy: number | null = null;
+    private cubicfeetperminuteLazy: number | null = null;
+    private cubicfeetperhourLazy: number | null = null;
+    private cubicyardspersecondLazy: number | null = null;
+    private cubicyardsperminuteLazy: number | null = null;
+    private cubicyardsperhourLazy: number | null = null;
+    private cubicyardsperdayLazy: number | null = null;
+    private millionusgallonsperdayLazy: number | null = null;
+    private usgallonsperdayLazy: number | null = null;
+    private literspersecondLazy: number | null = null;
+    private litersperminuteLazy: number | null = null;
+    private litersperhourLazy: number | null = null;
+    private litersperdayLazy: number | null = null;
+    private usgallonspersecondLazy: number | null = null;
+    private usgallonsperminuteLazy: number | null = null;
+    private ukgallonsperdayLazy: number | null = null;
+    private ukgallonsperhourLazy: number | null = null;
+    private ukgallonsperminuteLazy: number | null = null;
+    private ukgallonspersecondLazy: number | null = null;
+    private kilousgallonsperminuteLazy: number | null = null;
+    private usgallonsperhourLazy: number | null = null;
+    private cubicdecimetersperminuteLazy: number | null = null;
+    private oilbarrelsperdayLazy: number | null = null;
+    private oilbarrelsperminuteLazy: number | null = null;
+    private oilbarrelsperhourLazy: number | null = null;
+    private oilbarrelspersecondLazy: number | null = null;
+    private cubicmillimeterspersecondLazy: number | null = null;
+    private acrefeetpersecondLazy: number | null = null;
+    private acrefeetperminuteLazy: number | null = null;
+    private acrefeetperhourLazy: number | null = null;
+    private acrefeetperdayLazy: number | null = null;
+    private nanolitersperminuteLazy: number | null = null;
+    private microlitersperminuteLazy: number | null = null;
+    private centilitersperminuteLazy: number | null = null;
+    private decilitersperminuteLazy: number | null = null;
+    private kilolitersperminuteLazy: number | null = null;
+    private nanolitersperdayLazy: number | null = null;
+    private microlitersperdayLazy: number | null = null;
+    private centilitersperdayLazy: number | null = null;
+    private decilitersperdayLazy: number | null = null;
+    private kilolitersperdayLazy: number | null = null;
+    private megalitersperdayLazy: number | null = null;
+    private megaukgallonspersecondLazy: number | null = null;
 
     public constructor(value: number, fromUnit: VolumeFlowUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get CubicMetersPerSecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicMetersPerSecond);
+        if(this.cubicmeterspersecondLazy !== null){
+            return this.cubicmeterspersecondLazy;
+        }
+        return this.cubicmeterspersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerSecond);
     }
 
     public get CubicMetersPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicMetersPerMinute);
+        if(this.cubicmetersperminuteLazy !== null){
+            return this.cubicmetersperminuteLazy;
+        }
+        return this.cubicmetersperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerMinute);
     }
 
     public get CubicMetersPerHour(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicMetersPerHour);
+        if(this.cubicmetersperhourLazy !== null){
+            return this.cubicmetersperhourLazy;
+        }
+        return this.cubicmetersperhourLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerHour);
     }
 
     public get CubicMetersPerDay(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicMetersPerDay);
+        if(this.cubicmetersperdayLazy !== null){
+            return this.cubicmetersperdayLazy;
+        }
+        return this.cubicmetersperdayLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerDay);
     }
 
     public get CubicFeetPerSecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicFeetPerSecond);
+        if(this.cubicfeetpersecondLazy !== null){
+            return this.cubicfeetpersecondLazy;
+        }
+        return this.cubicfeetpersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicFeetPerSecond);
     }
 
     public get CubicFeetPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicFeetPerMinute);
+        if(this.cubicfeetperminuteLazy !== null){
+            return this.cubicfeetperminuteLazy;
+        }
+        return this.cubicfeetperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicFeetPerMinute);
     }
 
     public get CubicFeetPerHour(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicFeetPerHour);
+        if(this.cubicfeetperhourLazy !== null){
+            return this.cubicfeetperhourLazy;
+        }
+        return this.cubicfeetperhourLazy = this.convertFromBase(VolumeFlowUnits.CubicFeetPerHour);
     }
 
     public get CubicYardsPerSecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicYardsPerSecond);
+        if(this.cubicyardspersecondLazy !== null){
+            return this.cubicyardspersecondLazy;
+        }
+        return this.cubicyardspersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerSecond);
     }
 
     public get CubicYardsPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicYardsPerMinute);
+        if(this.cubicyardsperminuteLazy !== null){
+            return this.cubicyardsperminuteLazy;
+        }
+        return this.cubicyardsperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerMinute);
     }
 
     public get CubicYardsPerHour(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicYardsPerHour);
+        if(this.cubicyardsperhourLazy !== null){
+            return this.cubicyardsperhourLazy;
+        }
+        return this.cubicyardsperhourLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerHour);
     }
 
     public get CubicYardsPerDay(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicYardsPerDay);
+        if(this.cubicyardsperdayLazy !== null){
+            return this.cubicyardsperdayLazy;
+        }
+        return this.cubicyardsperdayLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerDay);
     }
 
     public get MillionUsGallonsPerDay(): number {
-        return this.convertFromBase(VolumeFlowUnits.MillionUsGallonsPerDay);
+        if(this.millionusgallonsperdayLazy !== null){
+            return this.millionusgallonsperdayLazy;
+        }
+        return this.millionusgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.MillionUsGallonsPerDay);
     }
 
     public get UsGallonsPerDay(): number {
-        return this.convertFromBase(VolumeFlowUnits.UsGallonsPerDay);
+        if(this.usgallonsperdayLazy !== null){
+            return this.usgallonsperdayLazy;
+        }
+        return this.usgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerDay);
     }
 
     public get LitersPerSecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.LitersPerSecond);
+        if(this.literspersecondLazy !== null){
+            return this.literspersecondLazy;
+        }
+        return this.literspersecondLazy = this.convertFromBase(VolumeFlowUnits.LitersPerSecond);
     }
 
     public get LitersPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.LitersPerMinute);
+        if(this.litersperminuteLazy !== null){
+            return this.litersperminuteLazy;
+        }
+        return this.litersperminuteLazy = this.convertFromBase(VolumeFlowUnits.LitersPerMinute);
     }
 
     public get LitersPerHour(): number {
-        return this.convertFromBase(VolumeFlowUnits.LitersPerHour);
+        if(this.litersperhourLazy !== null){
+            return this.litersperhourLazy;
+        }
+        return this.litersperhourLazy = this.convertFromBase(VolumeFlowUnits.LitersPerHour);
     }
 
     public get LitersPerDay(): number {
-        return this.convertFromBase(VolumeFlowUnits.LitersPerDay);
+        if(this.litersperdayLazy !== null){
+            return this.litersperdayLazy;
+        }
+        return this.litersperdayLazy = this.convertFromBase(VolumeFlowUnits.LitersPerDay);
     }
 
     public get UsGallonsPerSecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.UsGallonsPerSecond);
+        if(this.usgallonspersecondLazy !== null){
+            return this.usgallonspersecondLazy;
+        }
+        return this.usgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerSecond);
     }
 
     public get UsGallonsPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.UsGallonsPerMinute);
+        if(this.usgallonsperminuteLazy !== null){
+            return this.usgallonsperminuteLazy;
+        }
+        return this.usgallonsperminuteLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerMinute);
     }
 
     public get UkGallonsPerDay(): number {
-        return this.convertFromBase(VolumeFlowUnits.UkGallonsPerDay);
+        if(this.ukgallonsperdayLazy !== null){
+            return this.ukgallonsperdayLazy;
+        }
+        return this.ukgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerDay);
     }
 
     public get UkGallonsPerHour(): number {
-        return this.convertFromBase(VolumeFlowUnits.UkGallonsPerHour);
+        if(this.ukgallonsperhourLazy !== null){
+            return this.ukgallonsperhourLazy;
+        }
+        return this.ukgallonsperhourLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerHour);
     }
 
     public get UkGallonsPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.UkGallonsPerMinute);
+        if(this.ukgallonsperminuteLazy !== null){
+            return this.ukgallonsperminuteLazy;
+        }
+        return this.ukgallonsperminuteLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerMinute);
     }
 
     public get UkGallonsPerSecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.UkGallonsPerSecond);
+        if(this.ukgallonspersecondLazy !== null){
+            return this.ukgallonspersecondLazy;
+        }
+        return this.ukgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerSecond);
     }
 
     public get KilousGallonsPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.KilousGallonsPerMinute);
+        if(this.kilousgallonsperminuteLazy !== null){
+            return this.kilousgallonsperminuteLazy;
+        }
+        return this.kilousgallonsperminuteLazy = this.convertFromBase(VolumeFlowUnits.KilousGallonsPerMinute);
     }
 
     public get UsGallonsPerHour(): number {
-        return this.convertFromBase(VolumeFlowUnits.UsGallonsPerHour);
+        if(this.usgallonsperhourLazy !== null){
+            return this.usgallonsperhourLazy;
+        }
+        return this.usgallonsperhourLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerHour);
     }
 
     public get CubicDecimetersPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicDecimetersPerMinute);
+        if(this.cubicdecimetersperminuteLazy !== null){
+            return this.cubicdecimetersperminuteLazy;
+        }
+        return this.cubicdecimetersperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicDecimetersPerMinute);
     }
 
     public get OilBarrelsPerDay(): number {
-        return this.convertFromBase(VolumeFlowUnits.OilBarrelsPerDay);
+        if(this.oilbarrelsperdayLazy !== null){
+            return this.oilbarrelsperdayLazy;
+        }
+        return this.oilbarrelsperdayLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerDay);
     }
 
     public get OilBarrelsPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.OilBarrelsPerMinute);
+        if(this.oilbarrelsperminuteLazy !== null){
+            return this.oilbarrelsperminuteLazy;
+        }
+        return this.oilbarrelsperminuteLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerMinute);
     }
 
     public get OilBarrelsPerHour(): number {
-        return this.convertFromBase(VolumeFlowUnits.OilBarrelsPerHour);
+        if(this.oilbarrelsperhourLazy !== null){
+            return this.oilbarrelsperhourLazy;
+        }
+        return this.oilbarrelsperhourLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerHour);
     }
 
     public get OilBarrelsPerSecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.OilBarrelsPerSecond);
+        if(this.oilbarrelspersecondLazy !== null){
+            return this.oilbarrelspersecondLazy;
+        }
+        return this.oilbarrelspersecondLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerSecond);
     }
 
     public get CubicMillimetersPerSecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.CubicMillimetersPerSecond);
+        if(this.cubicmillimeterspersecondLazy !== null){
+            return this.cubicmillimeterspersecondLazy;
+        }
+        return this.cubicmillimeterspersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicMillimetersPerSecond);
     }
 
     public get AcreFeetPerSecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.AcreFeetPerSecond);
+        if(this.acrefeetpersecondLazy !== null){
+            return this.acrefeetpersecondLazy;
+        }
+        return this.acrefeetpersecondLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerSecond);
     }
 
     public get AcreFeetPerMinute(): number {
-        return this.convertFromBase(VolumeFlowUnits.AcreFeetPerMinute);
+        if(this.acrefeetperminuteLazy !== null){
+            return this.acrefeetperminuteLazy;
+        }
+        return this.acrefeetperminuteLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerMinute);
     }
 
     public get AcreFeetPerHour(): number {
-        return this.convertFromBase(VolumeFlowUnits.AcreFeetPerHour);
+        if(this.acrefeetperhourLazy !== null){
+            return this.acrefeetperhourLazy;
+        }
+        return this.acrefeetperhourLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerHour);
     }
 
     public get AcreFeetPerDay(): number {
-        return this.convertFromBase(VolumeFlowUnits.AcreFeetPerDay);
+        if(this.acrefeetperdayLazy !== null){
+            return this.acrefeetperdayLazy;
+        }
+        return this.acrefeetperdayLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerDay);
     }
 
     public get Nanolitersperminute(): number {
-        return this.convertFromBase(VolumeFlowUnits.Nanolitersperminute);
+        if(this.nanolitersperminuteLazy !== null){
+            return this.nanolitersperminuteLazy;
+        }
+        return this.nanolitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Nanolitersperminute);
     }
 
     public get Microlitersperminute(): number {
-        return this.convertFromBase(VolumeFlowUnits.Microlitersperminute);
+        if(this.microlitersperminuteLazy !== null){
+            return this.microlitersperminuteLazy;
+        }
+        return this.microlitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Microlitersperminute);
     }
 
     public get Centilitersperminute(): number {
-        return this.convertFromBase(VolumeFlowUnits.Centilitersperminute);
+        if(this.centilitersperminuteLazy !== null){
+            return this.centilitersperminuteLazy;
+        }
+        return this.centilitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Centilitersperminute);
     }
 
     public get Decilitersperminute(): number {
-        return this.convertFromBase(VolumeFlowUnits.Decilitersperminute);
+        if(this.decilitersperminuteLazy !== null){
+            return this.decilitersperminuteLazy;
+        }
+        return this.decilitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Decilitersperminute);
     }
 
     public get Kilolitersperminute(): number {
-        return this.convertFromBase(VolumeFlowUnits.Kilolitersperminute);
+        if(this.kilolitersperminuteLazy !== null){
+            return this.kilolitersperminuteLazy;
+        }
+        return this.kilolitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Kilolitersperminute);
     }
 
     public get Nanolitersperday(): number {
-        return this.convertFromBase(VolumeFlowUnits.Nanolitersperday);
+        if(this.nanolitersperdayLazy !== null){
+            return this.nanolitersperdayLazy;
+        }
+        return this.nanolitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Nanolitersperday);
     }
 
     public get Microlitersperday(): number {
-        return this.convertFromBase(VolumeFlowUnits.Microlitersperday);
+        if(this.microlitersperdayLazy !== null){
+            return this.microlitersperdayLazy;
+        }
+        return this.microlitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Microlitersperday);
     }
 
     public get Centilitersperday(): number {
-        return this.convertFromBase(VolumeFlowUnits.Centilitersperday);
+        if(this.centilitersperdayLazy !== null){
+            return this.centilitersperdayLazy;
+        }
+        return this.centilitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Centilitersperday);
     }
 
     public get Decilitersperday(): number {
-        return this.convertFromBase(VolumeFlowUnits.Decilitersperday);
+        if(this.decilitersperdayLazy !== null){
+            return this.decilitersperdayLazy;
+        }
+        return this.decilitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Decilitersperday);
     }
 
     public get Kilolitersperday(): number {
-        return this.convertFromBase(VolumeFlowUnits.Kilolitersperday);
+        if(this.kilolitersperdayLazy !== null){
+            return this.kilolitersperdayLazy;
+        }
+        return this.kilolitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Kilolitersperday);
     }
 
     public get Megalitersperday(): number {
-        return this.convertFromBase(VolumeFlowUnits.Megalitersperday);
+        if(this.megalitersperdayLazy !== null){
+            return this.megalitersperdayLazy;
+        }
+        return this.megalitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Megalitersperday);
     }
 
     public get Megaukgallonspersecond(): number {
-        return this.convertFromBase(VolumeFlowUnits.Megaukgallonspersecond);
+        if(this.megaukgallonspersecondLazy !== null){
+            return this.megaukgallonspersecondLazy;
+        }
+        return this.megaukgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.Megaukgallonspersecond);
     }
 
     public static FromCubicMetersPerSecond(value: number): VolumeFlow {
@@ -432,306 +620,208 @@ export class VolumeFlow {
     }
 
     private convertFromBase(toUnit: VolumeFlowUnits): number {
-
-                switch (toUnit) {
-                    
-                case VolumeFlowUnits.CubicMetersPerSecond:
-                    return this.value;
+        switch (toUnit) {
                 
-                case VolumeFlowUnits.CubicMetersPerMinute:
-                    return this.value*60;
-                
-                case VolumeFlowUnits.CubicMetersPerHour:
-                    return this.value*3600;
-                
-                case VolumeFlowUnits.CubicMetersPerDay:
-                    return this.value*86400;
-                
-                case VolumeFlowUnits.CubicFeetPerSecond:
-                    return this.value*35.314666721;
-                
-                case VolumeFlowUnits.CubicFeetPerMinute:
-                    return this.value*2118.88000326;
-                
-                case VolumeFlowUnits.CubicFeetPerHour:
-                    return this.value/7.8657907199999087346816086183876e-6;
-                
-                case VolumeFlowUnits.CubicYardsPerSecond:
-                    return this.value/0.764554857984;
-                
-                case VolumeFlowUnits.CubicYardsPerMinute:
-                    return this.value/0.0127425809664;
-                
-                case VolumeFlowUnits.CubicYardsPerHour:
-                    return this.value/2.1237634944E-4;
-                
-                case VolumeFlowUnits.CubicYardsPerDay:
-                    return this.value*113007;
-                
-                case VolumeFlowUnits.MillionUsGallonsPerDay:
-                    return this.value*22.824465227;
-                
-                case VolumeFlowUnits.UsGallonsPerDay:
-                    return this.value*22824465.227;
-                
-                case VolumeFlowUnits.LitersPerSecond:
-                    return this.value*1000;
-                
-                case VolumeFlowUnits.LitersPerMinute:
-                    return this.value*60000.00000;
-                
-                case VolumeFlowUnits.LitersPerHour:
-                    return this.value*3600000.000;
-                
-                case VolumeFlowUnits.LitersPerDay:
-                    return this.value*86400000;
-                
-                case VolumeFlowUnits.UsGallonsPerSecond:
-                    return this.value*264.1720523581484;
-                
-                case VolumeFlowUnits.UsGallonsPerMinute:
-                    return this.value*15850.323141489;
-                
-                case VolumeFlowUnits.UkGallonsPerDay:
-                    return this.value*19005304;
-                
-                case VolumeFlowUnits.UkGallonsPerHour:
-                    return this.value*791887.667;
-                
-                case VolumeFlowUnits.UkGallonsPerMinute:
-                    return this.value*13198.2;
-                
-                case VolumeFlowUnits.UkGallonsPerSecond:
-                    return this.value*219.969;
-                
-                case VolumeFlowUnits.KilousGallonsPerMinute:
-                    return this.value*15.850323141489;
-                
-                case VolumeFlowUnits.UsGallonsPerHour:
-                    return this.value*951019.38848933424;
-                
-                case VolumeFlowUnits.CubicDecimetersPerMinute:
-                    return this.value*60000.00000;
-                
-                case VolumeFlowUnits.OilBarrelsPerDay:
-                    return this.value/1.8401307283333333333333333333333e-6;
-                
-                case VolumeFlowUnits.OilBarrelsPerMinute:
-                    return this.value/2.64978825e-3;
-                
-                case VolumeFlowUnits.OilBarrelsPerHour:
-                    return this.value/4.41631375e-5;
-                
-                case VolumeFlowUnits.OilBarrelsPerSecond:
-                    return this.value*6.28981;
-                
-                case VolumeFlowUnits.CubicMillimetersPerSecond:
-                    return this.value/1e-9;
-                
-                case VolumeFlowUnits.AcreFeetPerSecond:
-                    return this.value*0.000810713194;
-                
-                case VolumeFlowUnits.AcreFeetPerMinute:
-                    return this.value*0.0486427916;
-                
-                case VolumeFlowUnits.AcreFeetPerHour:
-                    return this.value*2.91857;
-                
-                case VolumeFlowUnits.AcreFeetPerDay:
-                    return this.value*70.0457;
-                
-                case VolumeFlowUnits.Nanolitersperminute:
-                    return (this.value*60000.00000) / 1e-9;
-                
-                case VolumeFlowUnits.Microlitersperminute:
-                    return (this.value*60000.00000) / 0.000001;
-                
-                case VolumeFlowUnits.Centilitersperminute:
-                    return (this.value*60000.00000) / 0.01;
-                
-                case VolumeFlowUnits.Decilitersperminute:
-                    return (this.value*60000.00000) / 0.1;
-                
-                case VolumeFlowUnits.Kilolitersperminute:
-                    return (this.value*60000.00000) / 1000;
-                
-                case VolumeFlowUnits.Nanolitersperday:
-                    return (this.value*86400000) / 1e-9;
-                
-                case VolumeFlowUnits.Microlitersperday:
-                    return (this.value*86400000) / 0.000001;
-                
-                case VolumeFlowUnits.Centilitersperday:
-                    return (this.value*86400000) / 0.01;
-                
-                case VolumeFlowUnits.Decilitersperday:
-                    return (this.value*86400000) / 0.1;
-                
-                case VolumeFlowUnits.Kilolitersperday:
-                    return (this.value*86400000) / 1000;
-                
-                case VolumeFlowUnits.Megalitersperday:
-                    return (this.value*86400000) / 1000000;
-                
-                case VolumeFlowUnits.Megaukgallonspersecond:
-                    return (this.value*219.969) / 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case VolumeFlowUnits.CubicMetersPerSecond:
+                return this.value;
+            case VolumeFlowUnits.CubicMetersPerMinute:
+                return this.value*60;
+            case VolumeFlowUnits.CubicMetersPerHour:
+                return this.value*3600;
+            case VolumeFlowUnits.CubicMetersPerDay:
+                return this.value*86400;
+            case VolumeFlowUnits.CubicFeetPerSecond:
+                return this.value*35.314666721;
+            case VolumeFlowUnits.CubicFeetPerMinute:
+                return this.value*2118.88000326;
+            case VolumeFlowUnits.CubicFeetPerHour:
+                return this.value/7.8657907199999087346816086183876e-6;
+            case VolumeFlowUnits.CubicYardsPerSecond:
+                return this.value/0.764554857984;
+            case VolumeFlowUnits.CubicYardsPerMinute:
+                return this.value/0.0127425809664;
+            case VolumeFlowUnits.CubicYardsPerHour:
+                return this.value/2.1237634944E-4;
+            case VolumeFlowUnits.CubicYardsPerDay:
+                return this.value*113007;
+            case VolumeFlowUnits.MillionUsGallonsPerDay:
+                return this.value*22.824465227;
+            case VolumeFlowUnits.UsGallonsPerDay:
+                return this.value*22824465.227;
+            case VolumeFlowUnits.LitersPerSecond:
+                return this.value*1000;
+            case VolumeFlowUnits.LitersPerMinute:
+                return this.value*60000.00000;
+            case VolumeFlowUnits.LitersPerHour:
+                return this.value*3600000.000;
+            case VolumeFlowUnits.LitersPerDay:
+                return this.value*86400000;
+            case VolumeFlowUnits.UsGallonsPerSecond:
+                return this.value*264.1720523581484;
+            case VolumeFlowUnits.UsGallonsPerMinute:
+                return this.value*15850.323141489;
+            case VolumeFlowUnits.UkGallonsPerDay:
+                return this.value*19005304;
+            case VolumeFlowUnits.UkGallonsPerHour:
+                return this.value*791887.667;
+            case VolumeFlowUnits.UkGallonsPerMinute:
+                return this.value*13198.2;
+            case VolumeFlowUnits.UkGallonsPerSecond:
+                return this.value*219.969;
+            case VolumeFlowUnits.KilousGallonsPerMinute:
+                return this.value*15.850323141489;
+            case VolumeFlowUnits.UsGallonsPerHour:
+                return this.value*951019.38848933424;
+            case VolumeFlowUnits.CubicDecimetersPerMinute:
+                return this.value*60000.00000;
+            case VolumeFlowUnits.OilBarrelsPerDay:
+                return this.value/1.8401307283333333333333333333333e-6;
+            case VolumeFlowUnits.OilBarrelsPerMinute:
+                return this.value/2.64978825e-3;
+            case VolumeFlowUnits.OilBarrelsPerHour:
+                return this.value/4.41631375e-5;
+            case VolumeFlowUnits.OilBarrelsPerSecond:
+                return this.value*6.28981;
+            case VolumeFlowUnits.CubicMillimetersPerSecond:
+                return this.value/1e-9;
+            case VolumeFlowUnits.AcreFeetPerSecond:
+                return this.value*0.000810713194;
+            case VolumeFlowUnits.AcreFeetPerMinute:
+                return this.value*0.0486427916;
+            case VolumeFlowUnits.AcreFeetPerHour:
+                return this.value*2.91857;
+            case VolumeFlowUnits.AcreFeetPerDay:
+                return this.value*70.0457;
+            case VolumeFlowUnits.Nanolitersperminute:
+                return (this.value*60000.00000) / 1e-9;
+            case VolumeFlowUnits.Microlitersperminute:
+                return (this.value*60000.00000) / 0.000001;
+            case VolumeFlowUnits.Centilitersperminute:
+                return (this.value*60000.00000) / 0.01;
+            case VolumeFlowUnits.Decilitersperminute:
+                return (this.value*60000.00000) / 0.1;
+            case VolumeFlowUnits.Kilolitersperminute:
+                return (this.value*60000.00000) / 1000;
+            case VolumeFlowUnits.Nanolitersperday:
+                return (this.value*86400000) / 1e-9;
+            case VolumeFlowUnits.Microlitersperday:
+                return (this.value*86400000) / 0.000001;
+            case VolumeFlowUnits.Centilitersperday:
+                return (this.value*86400000) / 0.01;
+            case VolumeFlowUnits.Decilitersperday:
+                return (this.value*86400000) / 0.1;
+            case VolumeFlowUnits.Kilolitersperday:
+                return (this.value*86400000) / 1000;
+            case VolumeFlowUnits.Megalitersperday:
+                return (this.value*86400000) / 1000000;
+            case VolumeFlowUnits.Megaukgallonspersecond:
+                return (this.value*219.969) / 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: VolumeFlowUnits): number {
-
-                switch (fromUnit) {
-                    
-                case VolumeFlowUnits.CubicMetersPerSecond:
-                    return value;
+        switch (fromUnit) {
                 
-                case VolumeFlowUnits.CubicMetersPerMinute:
-                    return value/60;
-                
-                case VolumeFlowUnits.CubicMetersPerHour:
-                    return value/3600;
-                
-                case VolumeFlowUnits.CubicMetersPerDay:
-                    return value/86400;
-                
-                case VolumeFlowUnits.CubicFeetPerSecond:
-                    return value/35.314666721;
-                
-                case VolumeFlowUnits.CubicFeetPerMinute:
-                    return value/2118.88000326;
-                
-                case VolumeFlowUnits.CubicFeetPerHour:
-                    return value*7.8657907199999087346816086183876e-6;
-                
-                case VolumeFlowUnits.CubicYardsPerSecond:
-                    return value*0.764554857984;
-                
-                case VolumeFlowUnits.CubicYardsPerMinute:
-                    return value*0.0127425809664;
-                
-                case VolumeFlowUnits.CubicYardsPerHour:
-                    return value*2.1237634944E-4;
-                
-                case VolumeFlowUnits.CubicYardsPerDay:
-                    return value/113007;
-                
-                case VolumeFlowUnits.MillionUsGallonsPerDay:
-                    return value/22.824465227;
-                
-                case VolumeFlowUnits.UsGallonsPerDay:
-                    return value/22824465.227;
-                
-                case VolumeFlowUnits.LitersPerSecond:
-                    return value/1000;
-                
-                case VolumeFlowUnits.LitersPerMinute:
-                    return value/60000.00000;
-                
-                case VolumeFlowUnits.LitersPerHour:
-                    return value/3600000.000;
-                
-                case VolumeFlowUnits.LitersPerDay:
-                    return value/86400000;
-                
-                case VolumeFlowUnits.UsGallonsPerSecond:
-                    return value/264.1720523581484;
-                
-                case VolumeFlowUnits.UsGallonsPerMinute:
-                    return value/15850.323141489;
-                
-                case VolumeFlowUnits.UkGallonsPerDay:
-                    return value/19005304;
-                
-                case VolumeFlowUnits.UkGallonsPerHour:
-                    return value/791887.667;
-                
-                case VolumeFlowUnits.UkGallonsPerMinute:
-                    return value/13198.2;
-                
-                case VolumeFlowUnits.UkGallonsPerSecond:
-                    return value/219.969;
-                
-                case VolumeFlowUnits.KilousGallonsPerMinute:
-                    return value/15.850323141489;
-                
-                case VolumeFlowUnits.UsGallonsPerHour:
-                    return value/951019.38848933424;
-                
-                case VolumeFlowUnits.CubicDecimetersPerMinute:
-                    return value/60000.00000;
-                
-                case VolumeFlowUnits.OilBarrelsPerDay:
-                    return value*1.8401307283333333333333333333333e-6;
-                
-                case VolumeFlowUnits.OilBarrelsPerMinute:
-                    return value*2.64978825e-3;
-                
-                case VolumeFlowUnits.OilBarrelsPerHour:
-                    return value*4.41631375e-5;
-                
-                case VolumeFlowUnits.OilBarrelsPerSecond:
-                    return value/6.28981;
-                
-                case VolumeFlowUnits.CubicMillimetersPerSecond:
-                    return value*1e-9;
-                
-                case VolumeFlowUnits.AcreFeetPerSecond:
-                    return value/0.000810713194;
-                
-                case VolumeFlowUnits.AcreFeetPerMinute:
-                    return value/0.0486427916;
-                
-                case VolumeFlowUnits.AcreFeetPerHour:
-                    return value/2.91857;
-                
-                case VolumeFlowUnits.AcreFeetPerDay:
-                    return value/70.0457;
-                
-                case VolumeFlowUnits.Nanolitersperminute:
-                    return (value/60000.00000) * 1e-9;
-                
-                case VolumeFlowUnits.Microlitersperminute:
-                    return (value/60000.00000) * 0.000001;
-                
-                case VolumeFlowUnits.Centilitersperminute:
-                    return (value/60000.00000) * 0.01;
-                
-                case VolumeFlowUnits.Decilitersperminute:
-                    return (value/60000.00000) * 0.1;
-                
-                case VolumeFlowUnits.Kilolitersperminute:
-                    return (value/60000.00000) * 1000;
-                
-                case VolumeFlowUnits.Nanolitersperday:
-                    return (value/86400000) * 1e-9;
-                
-                case VolumeFlowUnits.Microlitersperday:
-                    return (value/86400000) * 0.000001;
-                
-                case VolumeFlowUnits.Centilitersperday:
-                    return (value/86400000) * 0.01;
-                
-                case VolumeFlowUnits.Decilitersperday:
-                    return (value/86400000) * 0.1;
-                
-                case VolumeFlowUnits.Kilolitersperday:
-                    return (value/86400000) * 1000;
-                
-                case VolumeFlowUnits.Megalitersperday:
-                    return (value/86400000) * 1000000;
-                
-                case VolumeFlowUnits.Megaukgallonspersecond:
-                    return (value/219.969) * 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case VolumeFlowUnits.CubicMetersPerSecond:
+                return value;
+            case VolumeFlowUnits.CubicMetersPerMinute:
+                return value/60;
+            case VolumeFlowUnits.CubicMetersPerHour:
+                return value/3600;
+            case VolumeFlowUnits.CubicMetersPerDay:
+                return value/86400;
+            case VolumeFlowUnits.CubicFeetPerSecond:
+                return value/35.314666721;
+            case VolumeFlowUnits.CubicFeetPerMinute:
+                return value/2118.88000326;
+            case VolumeFlowUnits.CubicFeetPerHour:
+                return value*7.8657907199999087346816086183876e-6;
+            case VolumeFlowUnits.CubicYardsPerSecond:
+                return value*0.764554857984;
+            case VolumeFlowUnits.CubicYardsPerMinute:
+                return value*0.0127425809664;
+            case VolumeFlowUnits.CubicYardsPerHour:
+                return value*2.1237634944E-4;
+            case VolumeFlowUnits.CubicYardsPerDay:
+                return value/113007;
+            case VolumeFlowUnits.MillionUsGallonsPerDay:
+                return value/22.824465227;
+            case VolumeFlowUnits.UsGallonsPerDay:
+                return value/22824465.227;
+            case VolumeFlowUnits.LitersPerSecond:
+                return value/1000;
+            case VolumeFlowUnits.LitersPerMinute:
+                return value/60000.00000;
+            case VolumeFlowUnits.LitersPerHour:
+                return value/3600000.000;
+            case VolumeFlowUnits.LitersPerDay:
+                return value/86400000;
+            case VolumeFlowUnits.UsGallonsPerSecond:
+                return value/264.1720523581484;
+            case VolumeFlowUnits.UsGallonsPerMinute:
+                return value/15850.323141489;
+            case VolumeFlowUnits.UkGallonsPerDay:
+                return value/19005304;
+            case VolumeFlowUnits.UkGallonsPerHour:
+                return value/791887.667;
+            case VolumeFlowUnits.UkGallonsPerMinute:
+                return value/13198.2;
+            case VolumeFlowUnits.UkGallonsPerSecond:
+                return value/219.969;
+            case VolumeFlowUnits.KilousGallonsPerMinute:
+                return value/15.850323141489;
+            case VolumeFlowUnits.UsGallonsPerHour:
+                return value/951019.38848933424;
+            case VolumeFlowUnits.CubicDecimetersPerMinute:
+                return value/60000.00000;
+            case VolumeFlowUnits.OilBarrelsPerDay:
+                return value*1.8401307283333333333333333333333e-6;
+            case VolumeFlowUnits.OilBarrelsPerMinute:
+                return value*2.64978825e-3;
+            case VolumeFlowUnits.OilBarrelsPerHour:
+                return value*4.41631375e-5;
+            case VolumeFlowUnits.OilBarrelsPerSecond:
+                return value/6.28981;
+            case VolumeFlowUnits.CubicMillimetersPerSecond:
+                return value*1e-9;
+            case VolumeFlowUnits.AcreFeetPerSecond:
+                return value/0.000810713194;
+            case VolumeFlowUnits.AcreFeetPerMinute:
+                return value/0.0486427916;
+            case VolumeFlowUnits.AcreFeetPerHour:
+                return value/2.91857;
+            case VolumeFlowUnits.AcreFeetPerDay:
+                return value/70.0457;
+            case VolumeFlowUnits.Nanolitersperminute:
+                return (value/60000.00000) * 1e-9;
+            case VolumeFlowUnits.Microlitersperminute:
+                return (value/60000.00000) * 0.000001;
+            case VolumeFlowUnits.Centilitersperminute:
+                return (value/60000.00000) * 0.01;
+            case VolumeFlowUnits.Decilitersperminute:
+                return (value/60000.00000) * 0.1;
+            case VolumeFlowUnits.Kilolitersperminute:
+                return (value/60000.00000) * 1000;
+            case VolumeFlowUnits.Nanolitersperday:
+                return (value/86400000) * 1e-9;
+            case VolumeFlowUnits.Microlitersperday:
+                return (value/86400000) * 0.000001;
+            case VolumeFlowUnits.Centilitersperday:
+                return (value/86400000) * 0.01;
+            case VolumeFlowUnits.Decilitersperday:
+                return (value/86400000) * 0.1;
+            case VolumeFlowUnits.Kilolitersperday:
+                return (value/86400000) * 1000;
+            case VolumeFlowUnits.Megalitersperday:
+                return (value/86400000) * 1000000;
+            case VolumeFlowUnits.Megaukgallonspersecond:
+                return (value/219.969) * 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

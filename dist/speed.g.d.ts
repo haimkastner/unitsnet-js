@@ -31,6 +31,35 @@ export declare enum SpeedUnits {
 }
 export declare class Speed {
     private value;
+    private meterspersecondLazy;
+    private metersperminutesLazy;
+    private metersperhourLazy;
+    private feetpersecondLazy;
+    private feetperminuteLazy;
+    private feetperhourLazy;
+    private ussurveyfeetpersecondLazy;
+    private ussurveyfeetperminuteLazy;
+    private ussurveyfeetperhourLazy;
+    private inchespersecondLazy;
+    private inchesperminuteLazy;
+    private inchesperhourLazy;
+    private yardspersecondLazy;
+    private yardsperminuteLazy;
+    private yardsperhourLazy;
+    private knotsLazy;
+    private milesperhourLazy;
+    private nanometerspersecondLazy;
+    private micrometerspersecondLazy;
+    private centimeterspersecondLazy;
+    private decimeterspersecondLazy;
+    private kilometerspersecondLazy;
+    private nanometersperminutesLazy;
+    private micrometersperminutesLazy;
+    private centimetersperminutesLazy;
+    private decimetersperminutesLazy;
+    private kilometersperminutesLazy;
+    private centimetersperhourLazy;
+    private kilometersperhourLazy;
     constructor(value: number, fromUnit: SpeedUnits);
     get MetersPerSecond(): number;
     get MetersPerMinutes(): number;

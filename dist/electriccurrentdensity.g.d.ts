@@ -5,6 +5,9 @@ export declare enum ElectricCurrentDensityUnits {
 }
 export declare class ElectricCurrentDensity {
     private value;
+    private amperespersquaremeterLazy;
+    private amperespersquareinchLazy;
+    private amperespersquarefootLazy;
     constructor(value: number, fromUnit: ElectricCurrentDensityUnits);
     get AmperesPerSquareMeter(): number;
     get AmperesPerSquareInch(): number;

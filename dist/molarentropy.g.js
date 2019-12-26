@@ -8,16 +8,28 @@ var MolarEntropyUnits;
 })(MolarEntropyUnits = exports.MolarEntropyUnits || (exports.MolarEntropyUnits = {}));
 class MolarEntropy {
     constructor(value, fromUnit) {
+        this.joulespermolekelvinLazy = null;
+        this.kilojoulespermolekelvinLazy = null;
+        this.megajoulespermolekelvinLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get JoulesPerMoleKelvin() {
-        return this.convertFromBase(MolarEntropyUnits.JoulesPerMoleKelvin);
+        if (this.joulespermolekelvinLazy !== null) {
+            return this.joulespermolekelvinLazy;
+        }
+        return this.joulespermolekelvinLazy = this.convertFromBase(MolarEntropyUnits.JoulesPerMoleKelvin);
     }
     get Kilojoulespermolekelvin() {
-        return this.convertFromBase(MolarEntropyUnits.Kilojoulespermolekelvin);
+        if (this.kilojoulespermolekelvinLazy !== null) {
+            return this.kilojoulespermolekelvinLazy;
+        }
+        return this.kilojoulespermolekelvinLazy = this.convertFromBase(MolarEntropyUnits.Kilojoulespermolekelvin);
     }
     get Megajoulespermolekelvin() {
-        return this.convertFromBase(MolarEntropyUnits.Megajoulespermolekelvin);
+        if (this.megajoulespermolekelvinLazy !== null) {
+            return this.megajoulespermolekelvinLazy;
+        }
+        return this.megajoulespermolekelvinLazy = this.convertFromBase(MolarEntropyUnits.Megajoulespermolekelvin);
     }
     static FromJoulesPerMoleKelvin(value) {
         return new MolarEntropy(value, MolarEntropyUnits.JoulesPerMoleKelvin);

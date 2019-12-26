@@ -5,6 +5,9 @@ export declare enum IlluminanceUnits {
 }
 export declare class Illuminance {
     private value;
+    private luxLazy;
+    private kiloluxLazy;
+    private megaluxLazy;
     constructor(value: number, fromUnit: IlluminanceUnits);
     get Lux(): number;
     get Kilolux(): number;

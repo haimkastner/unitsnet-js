@@ -5,6 +5,9 @@ export declare enum ElectricConductivityUnits {
 }
 export declare class ElectricConductivity {
     private value;
+    private siemenspermeterLazy;
+    private siemensperinchLazy;
+    private siemensperfootLazy;
     constructor(value: number, fromUnit: ElectricConductivityUnits);
     get SiemensPerMeter(): number;
     get SiemensPerInch(): number;

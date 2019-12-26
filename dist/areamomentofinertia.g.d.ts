@@ -8,6 +8,12 @@ export declare enum AreaMomentOfInertiaUnits {
 }
 export declare class AreaMomentOfInertia {
     private value;
+    private meterstothefourthLazy;
+    private decimeterstothefourthLazy;
+    private centimeterstothefourthLazy;
+    private millimeterstothefourthLazy;
+    private feettothefourthLazy;
+    private inchestothefourthLazy;
     constructor(value: number, fromUnit: AreaMomentOfInertiaUnits);
     get MetersToTheFourth(): number;
     get DecimetersToTheFourth(): number;

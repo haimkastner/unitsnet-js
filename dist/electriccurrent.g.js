@@ -12,28 +12,56 @@ var ElectricCurrentUnits;
 })(ElectricCurrentUnits = exports.ElectricCurrentUnits || (exports.ElectricCurrentUnits = {}));
 class ElectricCurrent {
     constructor(value, fromUnit) {
+        this.amperesLazy = null;
+        this.picoamperesLazy = null;
+        this.nanoamperesLazy = null;
+        this.microamperesLazy = null;
+        this.centiamperesLazy = null;
+        this.kiloamperesLazy = null;
+        this.megaamperesLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Amperes() {
-        return this.convertFromBase(ElectricCurrentUnits.Amperes);
+        if (this.amperesLazy !== null) {
+            return this.amperesLazy;
+        }
+        return this.amperesLazy = this.convertFromBase(ElectricCurrentUnits.Amperes);
     }
     get Picoamperes() {
-        return this.convertFromBase(ElectricCurrentUnits.Picoamperes);
+        if (this.picoamperesLazy !== null) {
+            return this.picoamperesLazy;
+        }
+        return this.picoamperesLazy = this.convertFromBase(ElectricCurrentUnits.Picoamperes);
     }
     get Nanoamperes() {
-        return this.convertFromBase(ElectricCurrentUnits.Nanoamperes);
+        if (this.nanoamperesLazy !== null) {
+            return this.nanoamperesLazy;
+        }
+        return this.nanoamperesLazy = this.convertFromBase(ElectricCurrentUnits.Nanoamperes);
     }
     get Microamperes() {
-        return this.convertFromBase(ElectricCurrentUnits.Microamperes);
+        if (this.microamperesLazy !== null) {
+            return this.microamperesLazy;
+        }
+        return this.microamperesLazy = this.convertFromBase(ElectricCurrentUnits.Microamperes);
     }
     get Centiamperes() {
-        return this.convertFromBase(ElectricCurrentUnits.Centiamperes);
+        if (this.centiamperesLazy !== null) {
+            return this.centiamperesLazy;
+        }
+        return this.centiamperesLazy = this.convertFromBase(ElectricCurrentUnits.Centiamperes);
     }
     get Kiloamperes() {
-        return this.convertFromBase(ElectricCurrentUnits.Kiloamperes);
+        if (this.kiloamperesLazy !== null) {
+            return this.kiloamperesLazy;
+        }
+        return this.kiloamperesLazy = this.convertFromBase(ElectricCurrentUnits.Kiloamperes);
     }
     get Megaamperes() {
-        return this.convertFromBase(ElectricCurrentUnits.Megaamperes);
+        if (this.megaamperesLazy !== null) {
+            return this.megaamperesLazy;
+        }
+        return this.megaamperesLazy = this.convertFromBase(ElectricCurrentUnits.Megaamperes);
     }
     static FromAmperes(value) {
         return new ElectricCurrent(value, ElectricCurrentUnits.Amperes);

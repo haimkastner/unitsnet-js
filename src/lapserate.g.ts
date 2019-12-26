@@ -4,13 +4,17 @@ export enum LapseRateUnits {
 
 export class LapseRate {
     private value: number;
+    private degreescelciusperkilometerLazy: number | null = null;
 
     public constructor(value: number, fromUnit: LapseRateUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get DegreesCelciusPerKilometer(): number {
-        return this.convertFromBase(LapseRateUnits.DegreesCelciusPerKilometer);
+        if(this.degreescelciusperkilometerLazy !== null){
+            return this.degreescelciusperkilometerLazy;
+        }
+        return this.degreescelciusperkilometerLazy = this.convertFromBase(LapseRateUnits.DegreesCelciusPerKilometer);
     }
 
     public static FromDegreesCelciusPerKilometer(value: number): LapseRate {
@@ -18,30 +22,24 @@ export class LapseRate {
     }
 
     private convertFromBase(toUnit: LapseRateUnits): number {
-
-                switch (toUnit) {
-                    
-                case LapseRateUnits.DegreesCelciusPerKilometer:
-                    return this.value;
+        switch (toUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case LapseRateUnits.DegreesCelciusPerKilometer:
+                return this.value;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LapseRateUnits): number {
-
-                switch (fromUnit) {
-                    
-                case LapseRateUnits.DegreesCelciusPerKilometer:
-                    return value;
+        switch (fromUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case LapseRateUnits.DegreesCelciusPerKilometer:
+                return value;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

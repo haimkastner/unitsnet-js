@@ -7,13 +7,21 @@ var ThermalConductivityUnits;
 })(ThermalConductivityUnits = exports.ThermalConductivityUnits || (exports.ThermalConductivityUnits = {}));
 class ThermalConductivity {
     constructor(value, fromUnit) {
+        this.wattspermeterkelvinLazy = null;
+        this.btusperhourfootfahrenheitLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get WattsPerMeterKelvin() {
-        return this.convertFromBase(ThermalConductivityUnits.WattsPerMeterKelvin);
+        if (this.wattspermeterkelvinLazy !== null) {
+            return this.wattspermeterkelvinLazy;
+        }
+        return this.wattspermeterkelvinLazy = this.convertFromBase(ThermalConductivityUnits.WattsPerMeterKelvin);
     }
     get BtusPerHourFootFahrenheit() {
-        return this.convertFromBase(ThermalConductivityUnits.BtusPerHourFootFahrenheit);
+        if (this.btusperhourfootfahrenheitLazy !== null) {
+            return this.btusperhourfootfahrenheitLazy;
+        }
+        return this.btusperhourfootfahrenheitLazy = this.convertFromBase(ThermalConductivityUnits.BtusPerHourFootFahrenheit);
     }
     static FromWattsPerMeterKelvin(value) {
         return new ThermalConductivity(value, ThermalConductivityUnits.WattsPerMeterKelvin);

@@ -11,6 +11,15 @@ export declare enum SpecificEnergyUnits {
 }
 export declare class SpecificEnergy {
     private value;
+    private joulesperkilogramLazy;
+    private caloriespergramLazy;
+    private watthoursperkilogramLazy;
+    private btuperpoundLazy;
+    private kilojoulesperkilogramLazy;
+    private megajoulesperkilogramLazy;
+    private kilocaloriespergramLazy;
+    private kilowatthoursperkilogramLazy;
+    private megawatthoursperkilogramLazy;
     constructor(value: number, fromUnit: SpecificEnergyUnits);
     get JoulesPerKilogram(): number;
     get CaloriesPerGram(): number;

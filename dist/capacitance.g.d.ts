@@ -8,6 +8,12 @@ export declare enum CapacitanceUnits {
 }
 export declare class Capacitance {
     private value;
+    private faradsLazy;
+    private picofaradsLazy;
+    private nanofaradsLazy;
+    private microfaradsLazy;
+    private kilofaradsLazy;
+    private megafaradsLazy;
     constructor(value: number, fromUnit: CapacitanceUnits);
     get Farads(): number;
     get Picofarads(): number;

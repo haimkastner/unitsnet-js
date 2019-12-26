@@ -4,6 +4,8 @@ export declare enum MassFluxUnits {
 }
 export declare class MassFlux {
     private value;
+    private gramspersecondpersquaremeterLazy;
+    private kilogramspersecondpersquaremeterLazy;
     constructor(value: number, fromUnit: MassFluxUnits);
     get GramsPerSecondPerSquareMeter(): number;
     get Kilogramspersecondpersquaremeter(): number;

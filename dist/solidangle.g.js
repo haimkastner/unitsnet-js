@@ -6,10 +6,14 @@ var SolidAngleUnits;
 })(SolidAngleUnits = exports.SolidAngleUnits || (exports.SolidAngleUnits = {}));
 class SolidAngle {
     constructor(value, fromUnit) {
+        this.steradiansLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Steradians() {
-        return this.convertFromBase(SolidAngleUnits.Steradians);
+        if (this.steradiansLazy !== null) {
+            return this.steradiansLazy;
+        }
+        return this.steradiansLazy = this.convertFromBase(SolidAngleUnits.Steradians);
     }
     static FromSteradians(value) {
         return new SolidAngle(value, SolidAngleUnits.Steradians);

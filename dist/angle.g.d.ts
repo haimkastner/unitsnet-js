@@ -14,6 +14,18 @@ export declare enum AngleUnits {
 }
 export declare class Angle {
     private value;
+    private radiansLazy;
+    private degreesLazy;
+    private arcminutesLazy;
+    private arcsecondsLazy;
+    private gradiansLazy;
+    private revolutionsLazy;
+    private nanoradiansLazy;
+    private microradiansLazy;
+    private centiradiansLazy;
+    private deciradiansLazy;
+    private nanodegreesLazy;
+    private microdegreesLazy;
     constructor(value: number, fromUnit: AngleUnits);
     get Radians(): number;
     get Degrees(): number;

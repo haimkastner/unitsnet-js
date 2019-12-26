@@ -6,10 +6,14 @@ var VitaminAUnits;
 })(VitaminAUnits = exports.VitaminAUnits || (exports.VitaminAUnits = {}));
 class VitaminA {
     constructor(value, fromUnit) {
+        this.internationalunitsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get InternationalUnits() {
-        return this.convertFromBase(VitaminAUnits.InternationalUnits);
+        if (this.internationalunitsLazy !== null) {
+            return this.internationalunitsLazy;
+        }
+        return this.internationalunitsLazy = this.convertFromBase(VitaminAUnits.InternationalUnits);
     }
     static FromInternationalUnits(value) {
         return new VitaminA(value, VitaminAUnits.InternationalUnits);

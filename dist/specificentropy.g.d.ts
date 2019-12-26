@@ -11,6 +11,15 @@ export declare enum SpecificEntropyUnits {
 }
 export declare class SpecificEntropy {
     private value;
+    private joulesperkilogramkelvinLazy;
+    private joulesperkilogramdegreecelsiusLazy;
+    private caloriespergramkelvinLazy;
+    private btusperpoundfahrenheitLazy;
+    private kilojoulesperkilogramkelvinLazy;
+    private megajoulesperkilogramkelvinLazy;
+    private kilojoulesperkilogramdegreecelsiusLazy;
+    private megajoulesperkilogramdegreecelsiusLazy;
+    private kilocaloriespergramkelvinLazy;
     constructor(value: number, fromUnit: SpecificEntropyUnits);
     get JoulesPerKilogramKelvin(): number;
     get JoulesPerKilogramDegreeCelsius(): number;

@@ -6,6 +6,10 @@ export declare enum AmplitudeRatioUnits {
 }
 export declare class AmplitudeRatio {
     private value;
+    private decibelvoltsLazy;
+    private decibelmicrovoltsLazy;
+    private decibelmillivoltsLazy;
+    private decibelsunloadedLazy;
     constructor(value: number, fromUnit: AmplitudeRatioUnits);
     get DecibelVolts(): number;
     get DecibelMicrovolts(): number;

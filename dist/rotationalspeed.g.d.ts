@@ -13,6 +13,17 @@ export declare enum RotationalSpeedUnits {
 }
 export declare class RotationalSpeed {
     private value;
+    private radianspersecondLazy;
+    private degreespersecondLazy;
+    private degreesperminuteLazy;
+    private revolutionspersecondLazy;
+    private revolutionsperminuteLazy;
+    private nanoradianspersecondLazy;
+    private microradianspersecondLazy;
+    private centiradianspersecondLazy;
+    private deciradianspersecondLazy;
+    private nanodegreespersecondLazy;
+    private microdegreespersecondLazy;
     constructor(value: number, fromUnit: RotationalSpeedUnits);
     get RadiansPerSecond(): number;
     get DegreesPerSecond(): number;

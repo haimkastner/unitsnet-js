@@ -8,16 +8,28 @@ var ApparentEnergyUnits;
 })(ApparentEnergyUnits = exports.ApparentEnergyUnits || (exports.ApparentEnergyUnits = {}));
 class ApparentEnergy {
     constructor(value, fromUnit) {
+        this.voltamperehoursLazy = null;
+        this.kilovoltamperehoursLazy = null;
+        this.megavoltamperehoursLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get VoltampereHours() {
-        return this.convertFromBase(ApparentEnergyUnits.VoltampereHours);
+        if (this.voltamperehoursLazy !== null) {
+            return this.voltamperehoursLazy;
+        }
+        return this.voltamperehoursLazy = this.convertFromBase(ApparentEnergyUnits.VoltampereHours);
     }
     get Kilovoltamperehours() {
-        return this.convertFromBase(ApparentEnergyUnits.Kilovoltamperehours);
+        if (this.kilovoltamperehoursLazy !== null) {
+            return this.kilovoltamperehoursLazy;
+        }
+        return this.kilovoltamperehoursLazy = this.convertFromBase(ApparentEnergyUnits.Kilovoltamperehours);
     }
     get Megavoltamperehours() {
-        return this.convertFromBase(ApparentEnergyUnits.Megavoltamperehours);
+        if (this.megavoltamperehoursLazy !== null) {
+            return this.megavoltamperehoursLazy;
+        }
+        return this.megavoltamperehoursLazy = this.convertFromBase(ApparentEnergyUnits.Megavoltamperehours);
     }
     static FromVoltampereHours(value) {
         return new ApparentEnergy(value, ApparentEnergyUnits.VoltampereHours);

@@ -11,6 +11,15 @@ export declare enum DurationUnits {
 }
 export declare class Duration {
     private value;
+    private years365Lazy;
+    private months30Lazy;
+    private weeksLazy;
+    private daysLazy;
+    private hoursLazy;
+    private minutesLazy;
+    private secondsLazy;
+    private nanosecondsLazy;
+    private microsecondsLazy;
     constructor(value: number, fromUnit: DurationUnits);
     get Years365(): number;
     get Months30(): number;

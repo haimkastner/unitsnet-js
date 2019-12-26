@@ -23,61 +23,133 @@ var VolumeConcentrationUnits;
 })(VolumeConcentrationUnits = exports.VolumeConcentrationUnits || (exports.VolumeConcentrationUnits = {}));
 class VolumeConcentration {
     constructor(value, fromUnit) {
+        this.decimalfractionsLazy = null;
+        this.litersperliterLazy = null;
+        this.literspermililiterLazy = null;
+        this.percentLazy = null;
+        this.partsperthousandLazy = null;
+        this.partspermillionLazy = null;
+        this.partsperbillionLazy = null;
+        this.partspertrillionLazy = null;
+        this.picolitersperliterLazy = null;
+        this.nanolitersperliterLazy = null;
+        this.microlitersperliterLazy = null;
+        this.centilitersperliterLazy = null;
+        this.decilitersperliterLazy = null;
+        this.picoliterspermililiterLazy = null;
+        this.nanoliterspermililiterLazy = null;
+        this.microliterspermililiterLazy = null;
+        this.centiliterspermililiterLazy = null;
+        this.deciliterspermililiterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get DecimalFractions() {
-        return this.convertFromBase(VolumeConcentrationUnits.DecimalFractions);
+        if (this.decimalfractionsLazy !== null) {
+            return this.decimalfractionsLazy;
+        }
+        return this.decimalfractionsLazy = this.convertFromBase(VolumeConcentrationUnits.DecimalFractions);
     }
     get LitersPerLiter() {
-        return this.convertFromBase(VolumeConcentrationUnits.LitersPerLiter);
+        if (this.litersperliterLazy !== null) {
+            return this.litersperliterLazy;
+        }
+        return this.litersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.LitersPerLiter);
     }
     get LitersPerMililiter() {
-        return this.convertFromBase(VolumeConcentrationUnits.LitersPerMililiter);
+        if (this.literspermililiterLazy !== null) {
+            return this.literspermililiterLazy;
+        }
+        return this.literspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.LitersPerMililiter);
     }
     get Percent() {
-        return this.convertFromBase(VolumeConcentrationUnits.Percent);
+        if (this.percentLazy !== null) {
+            return this.percentLazy;
+        }
+        return this.percentLazy = this.convertFromBase(VolumeConcentrationUnits.Percent);
     }
     get PartsPerThousand() {
-        return this.convertFromBase(VolumeConcentrationUnits.PartsPerThousand);
+        if (this.partsperthousandLazy !== null) {
+            return this.partsperthousandLazy;
+        }
+        return this.partsperthousandLazy = this.convertFromBase(VolumeConcentrationUnits.PartsPerThousand);
     }
     get PartsPerMillion() {
-        return this.convertFromBase(VolumeConcentrationUnits.PartsPerMillion);
+        if (this.partspermillionLazy !== null) {
+            return this.partspermillionLazy;
+        }
+        return this.partspermillionLazy = this.convertFromBase(VolumeConcentrationUnits.PartsPerMillion);
     }
     get PartsPerBillion() {
-        return this.convertFromBase(VolumeConcentrationUnits.PartsPerBillion);
+        if (this.partsperbillionLazy !== null) {
+            return this.partsperbillionLazy;
+        }
+        return this.partsperbillionLazy = this.convertFromBase(VolumeConcentrationUnits.PartsPerBillion);
     }
     get PartsPerTrillion() {
-        return this.convertFromBase(VolumeConcentrationUnits.PartsPerTrillion);
+        if (this.partspertrillionLazy !== null) {
+            return this.partspertrillionLazy;
+        }
+        return this.partspertrillionLazy = this.convertFromBase(VolumeConcentrationUnits.PartsPerTrillion);
     }
     get Picolitersperliter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Picolitersperliter);
+        if (this.picolitersperliterLazy !== null) {
+            return this.picolitersperliterLazy;
+        }
+        return this.picolitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Picolitersperliter);
     }
     get Nanolitersperliter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Nanolitersperliter);
+        if (this.nanolitersperliterLazy !== null) {
+            return this.nanolitersperliterLazy;
+        }
+        return this.nanolitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Nanolitersperliter);
     }
     get Microlitersperliter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Microlitersperliter);
+        if (this.microlitersperliterLazy !== null) {
+            return this.microlitersperliterLazy;
+        }
+        return this.microlitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Microlitersperliter);
     }
     get Centilitersperliter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Centilitersperliter);
+        if (this.centilitersperliterLazy !== null) {
+            return this.centilitersperliterLazy;
+        }
+        return this.centilitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Centilitersperliter);
     }
     get Decilitersperliter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Decilitersperliter);
+        if (this.decilitersperliterLazy !== null) {
+            return this.decilitersperliterLazy;
+        }
+        return this.decilitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Decilitersperliter);
     }
     get Picoliterspermililiter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Picoliterspermililiter);
+        if (this.picoliterspermililiterLazy !== null) {
+            return this.picoliterspermililiterLazy;
+        }
+        return this.picoliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Picoliterspermililiter);
     }
     get Nanoliterspermililiter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Nanoliterspermililiter);
+        if (this.nanoliterspermililiterLazy !== null) {
+            return this.nanoliterspermililiterLazy;
+        }
+        return this.nanoliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Nanoliterspermililiter);
     }
     get Microliterspermililiter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Microliterspermililiter);
+        if (this.microliterspermililiterLazy !== null) {
+            return this.microliterspermililiterLazy;
+        }
+        return this.microliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Microliterspermililiter);
     }
     get Centiliterspermililiter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Centiliterspermililiter);
+        if (this.centiliterspermililiterLazy !== null) {
+            return this.centiliterspermililiterLazy;
+        }
+        return this.centiliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Centiliterspermililiter);
     }
     get Deciliterspermililiter() {
-        return this.convertFromBase(VolumeConcentrationUnits.Deciliterspermililiter);
+        if (this.deciliterspermililiterLazy !== null) {
+            return this.deciliterspermililiterLazy;
+        }
+        return this.deciliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Deciliterspermililiter);
     }
     static FromDecimalFractions(value) {
         return new VolumeConcentration(value, VolumeConcentrationUnits.DecimalFractions);

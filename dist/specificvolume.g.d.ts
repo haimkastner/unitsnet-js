@@ -4,6 +4,8 @@ export declare enum SpecificVolumeUnits {
 }
 export declare class SpecificVolume {
     private value;
+    private cubicmetersperkilogramLazy;
+    private cubicfeetperpoundLazy;
     constructor(value: number, fromUnit: SpecificVolumeUnits);
     get CubicMetersPerKilogram(): number;
     get CubicFeetPerPound(): number;

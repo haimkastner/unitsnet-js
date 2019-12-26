@@ -6,10 +6,14 @@ var PermittivityUnits;
 })(PermittivityUnits = exports.PermittivityUnits || (exports.PermittivityUnits = {}));
 class Permittivity {
     constructor(value, fromUnit) {
+        this.faradspermeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get FaradsPerMeter() {
-        return this.convertFromBase(PermittivityUnits.FaradsPerMeter);
+        if (this.faradspermeterLazy !== null) {
+            return this.faradspermeterLazy;
+        }
+        return this.faradspermeterLazy = this.convertFromBase(PermittivityUnits.FaradsPerMeter);
     }
     static FromFaradsPerMeter(value) {
         return new Permittivity(value, PermittivityUnits.FaradsPerMeter);

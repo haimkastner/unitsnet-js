@@ -4,13 +4,17 @@ export enum VitaminAUnits {
 
 export class VitaminA {
     private value: number;
+    private internationalunitsLazy: number | null = null;
 
     public constructor(value: number, fromUnit: VitaminAUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get InternationalUnits(): number {
-        return this.convertFromBase(VitaminAUnits.InternationalUnits);
+        if(this.internationalunitsLazy !== null){
+            return this.internationalunitsLazy;
+        }
+        return this.internationalunitsLazy = this.convertFromBase(VitaminAUnits.InternationalUnits);
     }
 
     public static FromInternationalUnits(value: number): VitaminA {
@@ -18,30 +22,24 @@ export class VitaminA {
     }
 
     private convertFromBase(toUnit: VitaminAUnits): number {
-
-                switch (toUnit) {
-                    
-                case VitaminAUnits.InternationalUnits:
-                    return this.value;
+        switch (toUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case VitaminAUnits.InternationalUnits:
+                return this.value;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: VitaminAUnits): number {
-
-                switch (fromUnit) {
-                    
-                case VitaminAUnits.InternationalUnits:
-                    return value;
+        switch (fromUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case VitaminAUnits.InternationalUnits:
+                return value;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

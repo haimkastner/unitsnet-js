@@ -27,73 +27,161 @@ var MassFractionUnits;
 })(MassFractionUnits = exports.MassFractionUnits || (exports.MassFractionUnits = {}));
 class MassFraction {
     constructor(value, fromUnit) {
+        this.decimalfractionsLazy = null;
+        this.gramspergramLazy = null;
+        this.gramsperkilogramLazy = null;
+        this.percentLazy = null;
+        this.partsperthousandLazy = null;
+        this.partspermillionLazy = null;
+        this.partsperbillionLazy = null;
+        this.partspertrillionLazy = null;
+        this.nanogramspergramLazy = null;
+        this.microgramspergramLazy = null;
+        this.centigramspergramLazy = null;
+        this.decigramspergramLazy = null;
+        this.decagramspergramLazy = null;
+        this.hectogramspergramLazy = null;
+        this.kilogramspergramLazy = null;
+        this.nanogramsperkilogramLazy = null;
+        this.microgramsperkilogramLazy = null;
+        this.centigramsperkilogramLazy = null;
+        this.decigramsperkilogramLazy = null;
+        this.decagramsperkilogramLazy = null;
+        this.hectogramsperkilogramLazy = null;
+        this.kilogramsperkilogramLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get DecimalFractions() {
-        return this.convertFromBase(MassFractionUnits.DecimalFractions);
+        if (this.decimalfractionsLazy !== null) {
+            return this.decimalfractionsLazy;
+        }
+        return this.decimalfractionsLazy = this.convertFromBase(MassFractionUnits.DecimalFractions);
     }
     get GramsPerGram() {
-        return this.convertFromBase(MassFractionUnits.GramsPerGram);
+        if (this.gramspergramLazy !== null) {
+            return this.gramspergramLazy;
+        }
+        return this.gramspergramLazy = this.convertFromBase(MassFractionUnits.GramsPerGram);
     }
     get GramsPerKilogram() {
-        return this.convertFromBase(MassFractionUnits.GramsPerKilogram);
+        if (this.gramsperkilogramLazy !== null) {
+            return this.gramsperkilogramLazy;
+        }
+        return this.gramsperkilogramLazy = this.convertFromBase(MassFractionUnits.GramsPerKilogram);
     }
     get Percent() {
-        return this.convertFromBase(MassFractionUnits.Percent);
+        if (this.percentLazy !== null) {
+            return this.percentLazy;
+        }
+        return this.percentLazy = this.convertFromBase(MassFractionUnits.Percent);
     }
     get PartsPerThousand() {
-        return this.convertFromBase(MassFractionUnits.PartsPerThousand);
+        if (this.partsperthousandLazy !== null) {
+            return this.partsperthousandLazy;
+        }
+        return this.partsperthousandLazy = this.convertFromBase(MassFractionUnits.PartsPerThousand);
     }
     get PartsPerMillion() {
-        return this.convertFromBase(MassFractionUnits.PartsPerMillion);
+        if (this.partspermillionLazy !== null) {
+            return this.partspermillionLazy;
+        }
+        return this.partspermillionLazy = this.convertFromBase(MassFractionUnits.PartsPerMillion);
     }
     get PartsPerBillion() {
-        return this.convertFromBase(MassFractionUnits.PartsPerBillion);
+        if (this.partsperbillionLazy !== null) {
+            return this.partsperbillionLazy;
+        }
+        return this.partsperbillionLazy = this.convertFromBase(MassFractionUnits.PartsPerBillion);
     }
     get PartsPerTrillion() {
-        return this.convertFromBase(MassFractionUnits.PartsPerTrillion);
+        if (this.partspertrillionLazy !== null) {
+            return this.partspertrillionLazy;
+        }
+        return this.partspertrillionLazy = this.convertFromBase(MassFractionUnits.PartsPerTrillion);
     }
     get Nanogramspergram() {
-        return this.convertFromBase(MassFractionUnits.Nanogramspergram);
+        if (this.nanogramspergramLazy !== null) {
+            return this.nanogramspergramLazy;
+        }
+        return this.nanogramspergramLazy = this.convertFromBase(MassFractionUnits.Nanogramspergram);
     }
     get Microgramspergram() {
-        return this.convertFromBase(MassFractionUnits.Microgramspergram);
+        if (this.microgramspergramLazy !== null) {
+            return this.microgramspergramLazy;
+        }
+        return this.microgramspergramLazy = this.convertFromBase(MassFractionUnits.Microgramspergram);
     }
     get Centigramspergram() {
-        return this.convertFromBase(MassFractionUnits.Centigramspergram);
+        if (this.centigramspergramLazy !== null) {
+            return this.centigramspergramLazy;
+        }
+        return this.centigramspergramLazy = this.convertFromBase(MassFractionUnits.Centigramspergram);
     }
     get Decigramspergram() {
-        return this.convertFromBase(MassFractionUnits.Decigramspergram);
+        if (this.decigramspergramLazy !== null) {
+            return this.decigramspergramLazy;
+        }
+        return this.decigramspergramLazy = this.convertFromBase(MassFractionUnits.Decigramspergram);
     }
     get Decagramspergram() {
-        return this.convertFromBase(MassFractionUnits.Decagramspergram);
+        if (this.decagramspergramLazy !== null) {
+            return this.decagramspergramLazy;
+        }
+        return this.decagramspergramLazy = this.convertFromBase(MassFractionUnits.Decagramspergram);
     }
     get Hectogramspergram() {
-        return this.convertFromBase(MassFractionUnits.Hectogramspergram);
+        if (this.hectogramspergramLazy !== null) {
+            return this.hectogramspergramLazy;
+        }
+        return this.hectogramspergramLazy = this.convertFromBase(MassFractionUnits.Hectogramspergram);
     }
     get Kilogramspergram() {
-        return this.convertFromBase(MassFractionUnits.Kilogramspergram);
+        if (this.kilogramspergramLazy !== null) {
+            return this.kilogramspergramLazy;
+        }
+        return this.kilogramspergramLazy = this.convertFromBase(MassFractionUnits.Kilogramspergram);
     }
     get Nanogramsperkilogram() {
-        return this.convertFromBase(MassFractionUnits.Nanogramsperkilogram);
+        if (this.nanogramsperkilogramLazy !== null) {
+            return this.nanogramsperkilogramLazy;
+        }
+        return this.nanogramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Nanogramsperkilogram);
     }
     get Microgramsperkilogram() {
-        return this.convertFromBase(MassFractionUnits.Microgramsperkilogram);
+        if (this.microgramsperkilogramLazy !== null) {
+            return this.microgramsperkilogramLazy;
+        }
+        return this.microgramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Microgramsperkilogram);
     }
     get Centigramsperkilogram() {
-        return this.convertFromBase(MassFractionUnits.Centigramsperkilogram);
+        if (this.centigramsperkilogramLazy !== null) {
+            return this.centigramsperkilogramLazy;
+        }
+        return this.centigramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Centigramsperkilogram);
     }
     get Decigramsperkilogram() {
-        return this.convertFromBase(MassFractionUnits.Decigramsperkilogram);
+        if (this.decigramsperkilogramLazy !== null) {
+            return this.decigramsperkilogramLazy;
+        }
+        return this.decigramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Decigramsperkilogram);
     }
     get Decagramsperkilogram() {
-        return this.convertFromBase(MassFractionUnits.Decagramsperkilogram);
+        if (this.decagramsperkilogramLazy !== null) {
+            return this.decagramsperkilogramLazy;
+        }
+        return this.decagramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Decagramsperkilogram);
     }
     get Hectogramsperkilogram() {
-        return this.convertFromBase(MassFractionUnits.Hectogramsperkilogram);
+        if (this.hectogramsperkilogramLazy !== null) {
+            return this.hectogramsperkilogramLazy;
+        }
+        return this.hectogramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Hectogramsperkilogram);
     }
     get Kilogramsperkilogram() {
-        return this.convertFromBase(MassFractionUnits.Kilogramsperkilogram);
+        if (this.kilogramsperkilogramLazy !== null) {
+            return this.kilogramsperkilogramLazy;
+        }
+        return this.kilogramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Kilogramsperkilogram);
     }
     static FromDecimalFractions(value) {
         return new MassFraction(value, MassFractionUnits.DecimalFractions);

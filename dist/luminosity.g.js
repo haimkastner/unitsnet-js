@@ -18,46 +18,98 @@ var LuminosityUnits;
 })(LuminosityUnits = exports.LuminosityUnits || (exports.LuminosityUnits = {}));
 class Luminosity {
     constructor(value, fromUnit) {
+        this.wattsLazy = null;
+        this.solarluminositiesLazy = null;
+        this.femtowattsLazy = null;
+        this.picowattsLazy = null;
+        this.nanowattsLazy = null;
+        this.microwattsLazy = null;
+        this.deciwattsLazy = null;
+        this.decawattsLazy = null;
+        this.kilowattsLazy = null;
+        this.megawattsLazy = null;
+        this.gigawattsLazy = null;
+        this.terawattsLazy = null;
+        this.petawattsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Watts() {
-        return this.convertFromBase(LuminosityUnits.Watts);
+        if (this.wattsLazy !== null) {
+            return this.wattsLazy;
+        }
+        return this.wattsLazy = this.convertFromBase(LuminosityUnits.Watts);
     }
     get SolarLuminosities() {
-        return this.convertFromBase(LuminosityUnits.SolarLuminosities);
+        if (this.solarluminositiesLazy !== null) {
+            return this.solarluminositiesLazy;
+        }
+        return this.solarluminositiesLazy = this.convertFromBase(LuminosityUnits.SolarLuminosities);
     }
     get Femtowatts() {
-        return this.convertFromBase(LuminosityUnits.Femtowatts);
+        if (this.femtowattsLazy !== null) {
+            return this.femtowattsLazy;
+        }
+        return this.femtowattsLazy = this.convertFromBase(LuminosityUnits.Femtowatts);
     }
     get Picowatts() {
-        return this.convertFromBase(LuminosityUnits.Picowatts);
+        if (this.picowattsLazy !== null) {
+            return this.picowattsLazy;
+        }
+        return this.picowattsLazy = this.convertFromBase(LuminosityUnits.Picowatts);
     }
     get Nanowatts() {
-        return this.convertFromBase(LuminosityUnits.Nanowatts);
+        if (this.nanowattsLazy !== null) {
+            return this.nanowattsLazy;
+        }
+        return this.nanowattsLazy = this.convertFromBase(LuminosityUnits.Nanowatts);
     }
     get Microwatts() {
-        return this.convertFromBase(LuminosityUnits.Microwatts);
+        if (this.microwattsLazy !== null) {
+            return this.microwattsLazy;
+        }
+        return this.microwattsLazy = this.convertFromBase(LuminosityUnits.Microwatts);
     }
     get Deciwatts() {
-        return this.convertFromBase(LuminosityUnits.Deciwatts);
+        if (this.deciwattsLazy !== null) {
+            return this.deciwattsLazy;
+        }
+        return this.deciwattsLazy = this.convertFromBase(LuminosityUnits.Deciwatts);
     }
     get Decawatts() {
-        return this.convertFromBase(LuminosityUnits.Decawatts);
+        if (this.decawattsLazy !== null) {
+            return this.decawattsLazy;
+        }
+        return this.decawattsLazy = this.convertFromBase(LuminosityUnits.Decawatts);
     }
     get Kilowatts() {
-        return this.convertFromBase(LuminosityUnits.Kilowatts);
+        if (this.kilowattsLazy !== null) {
+            return this.kilowattsLazy;
+        }
+        return this.kilowattsLazy = this.convertFromBase(LuminosityUnits.Kilowatts);
     }
     get Megawatts() {
-        return this.convertFromBase(LuminosityUnits.Megawatts);
+        if (this.megawattsLazy !== null) {
+            return this.megawattsLazy;
+        }
+        return this.megawattsLazy = this.convertFromBase(LuminosityUnits.Megawatts);
     }
     get Gigawatts() {
-        return this.convertFromBase(LuminosityUnits.Gigawatts);
+        if (this.gigawattsLazy !== null) {
+            return this.gigawattsLazy;
+        }
+        return this.gigawattsLazy = this.convertFromBase(LuminosityUnits.Gigawatts);
     }
     get Terawatts() {
-        return this.convertFromBase(LuminosityUnits.Terawatts);
+        if (this.terawattsLazy !== null) {
+            return this.terawattsLazy;
+        }
+        return this.terawattsLazy = this.convertFromBase(LuminosityUnits.Terawatts);
     }
     get Petawatts() {
-        return this.convertFromBase(LuminosityUnits.Petawatts);
+        if (this.petawattsLazy !== null) {
+            return this.petawattsLazy;
+        }
+        return this.petawattsLazy = this.convertFromBase(LuminosityUnits.Petawatts);
     }
     static FromWatts(value) {
         return new Luminosity(value, LuminosityUnits.Watts);

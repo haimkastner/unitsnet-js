@@ -24,6 +24,28 @@ export declare enum MassFractionUnits {
 }
 export declare class MassFraction {
     private value;
+    private decimalfractionsLazy;
+    private gramspergramLazy;
+    private gramsperkilogramLazy;
+    private percentLazy;
+    private partsperthousandLazy;
+    private partspermillionLazy;
+    private partsperbillionLazy;
+    private partspertrillionLazy;
+    private nanogramspergramLazy;
+    private microgramspergramLazy;
+    private centigramspergramLazy;
+    private decigramspergramLazy;
+    private decagramspergramLazy;
+    private hectogramspergramLazy;
+    private kilogramspergramLazy;
+    private nanogramsperkilogramLazy;
+    private microgramsperkilogramLazy;
+    private centigramsperkilogramLazy;
+    private decigramsperkilogramLazy;
+    private decagramsperkilogramLazy;
+    private hectogramsperkilogramLazy;
+    private kilogramsperkilogramLazy;
     constructor(value: number, fromUnit: MassFractionUnits);
     get DecimalFractions(): number;
     get GramsPerGram(): number;

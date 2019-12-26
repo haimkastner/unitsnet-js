@@ -12,6 +12,16 @@ export declare enum ForceChangeRateUnits {
 }
 export declare class ForceChangeRate {
     private value;
+    private newtonsperminuteLazy;
+    private newtonspersecondLazy;
+    private decanewtonsperminuteLazy;
+    private kilonewtonsperminuteLazy;
+    private nanonewtonspersecondLazy;
+    private micronewtonspersecondLazy;
+    private centinewtonspersecondLazy;
+    private decinewtonspersecondLazy;
+    private decanewtonspersecondLazy;
+    private kilonewtonspersecondLazy;
     constructor(value: number, fromUnit: ForceChangeRateUnits);
     get NewtonsPerMinute(): number;
     get NewtonsPerSecond(): number;

@@ -9,19 +9,35 @@ var ElectricResistanceUnits;
 })(ElectricResistanceUnits = exports.ElectricResistanceUnits || (exports.ElectricResistanceUnits = {}));
 class ElectricResistance {
     constructor(value, fromUnit) {
+        this.ohmsLazy = null;
+        this.kiloohmsLazy = null;
+        this.megaohmsLazy = null;
+        this.gigaohmsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Ohms() {
-        return this.convertFromBase(ElectricResistanceUnits.Ohms);
+        if (this.ohmsLazy !== null) {
+            return this.ohmsLazy;
+        }
+        return this.ohmsLazy = this.convertFromBase(ElectricResistanceUnits.Ohms);
     }
     get Kiloohms() {
-        return this.convertFromBase(ElectricResistanceUnits.Kiloohms);
+        if (this.kiloohmsLazy !== null) {
+            return this.kiloohmsLazy;
+        }
+        return this.kiloohmsLazy = this.convertFromBase(ElectricResistanceUnits.Kiloohms);
     }
     get Megaohms() {
-        return this.convertFromBase(ElectricResistanceUnits.Megaohms);
+        if (this.megaohmsLazy !== null) {
+            return this.megaohmsLazy;
+        }
+        return this.megaohmsLazy = this.convertFromBase(ElectricResistanceUnits.Megaohms);
     }
     get Gigaohms() {
-        return this.convertFromBase(ElectricResistanceUnits.Gigaohms);
+        if (this.gigaohmsLazy !== null) {
+            return this.gigaohmsLazy;
+        }
+        return this.gigaohmsLazy = this.convertFromBase(ElectricResistanceUnits.Gigaohms);
     }
     static FromOhms(value) {
         return new ElectricResistance(value, ElectricResistanceUnits.Ohms);

@@ -14,6 +14,18 @@ export declare enum ElectricResistivityUnits {
 }
 export declare class ElectricResistivity {
     private value;
+    private ohmmetersLazy;
+    private ohmscentimeterLazy;
+    private picoohmmetersLazy;
+    private nanoohmmetersLazy;
+    private microohmmetersLazy;
+    private kiloohmmetersLazy;
+    private megaohmmetersLazy;
+    private picoohmscentimeterLazy;
+    private nanoohmscentimeterLazy;
+    private microohmscentimeterLazy;
+    private kiloohmscentimeterLazy;
+    private megaohmscentimeterLazy;
     constructor(value: number, fromUnit: ElectricResistivityUnits);
     get OhmMeters(): number;
     get OhmsCentimeter(): number;

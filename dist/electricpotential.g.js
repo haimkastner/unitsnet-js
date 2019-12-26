@@ -9,19 +9,35 @@ var ElectricPotentialUnits;
 })(ElectricPotentialUnits = exports.ElectricPotentialUnits || (exports.ElectricPotentialUnits = {}));
 class ElectricPotential {
     constructor(value, fromUnit) {
+        this.voltsLazy = null;
+        this.microvoltsLazy = null;
+        this.kilovoltsLazy = null;
+        this.megavoltsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Volts() {
-        return this.convertFromBase(ElectricPotentialUnits.Volts);
+        if (this.voltsLazy !== null) {
+            return this.voltsLazy;
+        }
+        return this.voltsLazy = this.convertFromBase(ElectricPotentialUnits.Volts);
     }
     get Microvolts() {
-        return this.convertFromBase(ElectricPotentialUnits.Microvolts);
+        if (this.microvoltsLazy !== null) {
+            return this.microvoltsLazy;
+        }
+        return this.microvoltsLazy = this.convertFromBase(ElectricPotentialUnits.Microvolts);
     }
     get Kilovolts() {
-        return this.convertFromBase(ElectricPotentialUnits.Kilovolts);
+        if (this.kilovoltsLazy !== null) {
+            return this.kilovoltsLazy;
+        }
+        return this.kilovoltsLazy = this.convertFromBase(ElectricPotentialUnits.Kilovolts);
     }
     get Megavolts() {
-        return this.convertFromBase(ElectricPotentialUnits.Megavolts);
+        if (this.megavoltsLazy !== null) {
+            return this.megavoltsLazy;
+        }
+        return this.megavoltsLazy = this.convertFromBase(ElectricPotentialUnits.Megavolts);
     }
     static FromVolts(value) {
         return new ElectricPotential(value, ElectricPotentialUnits.Volts);

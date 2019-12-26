@@ -52,148 +52,336 @@ var VolumeFlowUnits;
 })(VolumeFlowUnits = exports.VolumeFlowUnits || (exports.VolumeFlowUnits = {}));
 class VolumeFlow {
     constructor(value, fromUnit) {
+        this.cubicmeterspersecondLazy = null;
+        this.cubicmetersperminuteLazy = null;
+        this.cubicmetersperhourLazy = null;
+        this.cubicmetersperdayLazy = null;
+        this.cubicfeetpersecondLazy = null;
+        this.cubicfeetperminuteLazy = null;
+        this.cubicfeetperhourLazy = null;
+        this.cubicyardspersecondLazy = null;
+        this.cubicyardsperminuteLazy = null;
+        this.cubicyardsperhourLazy = null;
+        this.cubicyardsperdayLazy = null;
+        this.millionusgallonsperdayLazy = null;
+        this.usgallonsperdayLazy = null;
+        this.literspersecondLazy = null;
+        this.litersperminuteLazy = null;
+        this.litersperhourLazy = null;
+        this.litersperdayLazy = null;
+        this.usgallonspersecondLazy = null;
+        this.usgallonsperminuteLazy = null;
+        this.ukgallonsperdayLazy = null;
+        this.ukgallonsperhourLazy = null;
+        this.ukgallonsperminuteLazy = null;
+        this.ukgallonspersecondLazy = null;
+        this.kilousgallonsperminuteLazy = null;
+        this.usgallonsperhourLazy = null;
+        this.cubicdecimetersperminuteLazy = null;
+        this.oilbarrelsperdayLazy = null;
+        this.oilbarrelsperminuteLazy = null;
+        this.oilbarrelsperhourLazy = null;
+        this.oilbarrelspersecondLazy = null;
+        this.cubicmillimeterspersecondLazy = null;
+        this.acrefeetpersecondLazy = null;
+        this.acrefeetperminuteLazy = null;
+        this.acrefeetperhourLazy = null;
+        this.acrefeetperdayLazy = null;
+        this.nanolitersperminuteLazy = null;
+        this.microlitersperminuteLazy = null;
+        this.centilitersperminuteLazy = null;
+        this.decilitersperminuteLazy = null;
+        this.kilolitersperminuteLazy = null;
+        this.nanolitersperdayLazy = null;
+        this.microlitersperdayLazy = null;
+        this.centilitersperdayLazy = null;
+        this.decilitersperdayLazy = null;
+        this.kilolitersperdayLazy = null;
+        this.megalitersperdayLazy = null;
+        this.megaukgallonspersecondLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get CubicMetersPerSecond() {
-        return this.convertFromBase(VolumeFlowUnits.CubicMetersPerSecond);
+        if (this.cubicmeterspersecondLazy !== null) {
+            return this.cubicmeterspersecondLazy;
+        }
+        return this.cubicmeterspersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerSecond);
     }
     get CubicMetersPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.CubicMetersPerMinute);
+        if (this.cubicmetersperminuteLazy !== null) {
+            return this.cubicmetersperminuteLazy;
+        }
+        return this.cubicmetersperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerMinute);
     }
     get CubicMetersPerHour() {
-        return this.convertFromBase(VolumeFlowUnits.CubicMetersPerHour);
+        if (this.cubicmetersperhourLazy !== null) {
+            return this.cubicmetersperhourLazy;
+        }
+        return this.cubicmetersperhourLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerHour);
     }
     get CubicMetersPerDay() {
-        return this.convertFromBase(VolumeFlowUnits.CubicMetersPerDay);
+        if (this.cubicmetersperdayLazy !== null) {
+            return this.cubicmetersperdayLazy;
+        }
+        return this.cubicmetersperdayLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerDay);
     }
     get CubicFeetPerSecond() {
-        return this.convertFromBase(VolumeFlowUnits.CubicFeetPerSecond);
+        if (this.cubicfeetpersecondLazy !== null) {
+            return this.cubicfeetpersecondLazy;
+        }
+        return this.cubicfeetpersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicFeetPerSecond);
     }
     get CubicFeetPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.CubicFeetPerMinute);
+        if (this.cubicfeetperminuteLazy !== null) {
+            return this.cubicfeetperminuteLazy;
+        }
+        return this.cubicfeetperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicFeetPerMinute);
     }
     get CubicFeetPerHour() {
-        return this.convertFromBase(VolumeFlowUnits.CubicFeetPerHour);
+        if (this.cubicfeetperhourLazy !== null) {
+            return this.cubicfeetperhourLazy;
+        }
+        return this.cubicfeetperhourLazy = this.convertFromBase(VolumeFlowUnits.CubicFeetPerHour);
     }
     get CubicYardsPerSecond() {
-        return this.convertFromBase(VolumeFlowUnits.CubicYardsPerSecond);
+        if (this.cubicyardspersecondLazy !== null) {
+            return this.cubicyardspersecondLazy;
+        }
+        return this.cubicyardspersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerSecond);
     }
     get CubicYardsPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.CubicYardsPerMinute);
+        if (this.cubicyardsperminuteLazy !== null) {
+            return this.cubicyardsperminuteLazy;
+        }
+        return this.cubicyardsperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerMinute);
     }
     get CubicYardsPerHour() {
-        return this.convertFromBase(VolumeFlowUnits.CubicYardsPerHour);
+        if (this.cubicyardsperhourLazy !== null) {
+            return this.cubicyardsperhourLazy;
+        }
+        return this.cubicyardsperhourLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerHour);
     }
     get CubicYardsPerDay() {
-        return this.convertFromBase(VolumeFlowUnits.CubicYardsPerDay);
+        if (this.cubicyardsperdayLazy !== null) {
+            return this.cubicyardsperdayLazy;
+        }
+        return this.cubicyardsperdayLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerDay);
     }
     get MillionUsGallonsPerDay() {
-        return this.convertFromBase(VolumeFlowUnits.MillionUsGallonsPerDay);
+        if (this.millionusgallonsperdayLazy !== null) {
+            return this.millionusgallonsperdayLazy;
+        }
+        return this.millionusgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.MillionUsGallonsPerDay);
     }
     get UsGallonsPerDay() {
-        return this.convertFromBase(VolumeFlowUnits.UsGallonsPerDay);
+        if (this.usgallonsperdayLazy !== null) {
+            return this.usgallonsperdayLazy;
+        }
+        return this.usgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerDay);
     }
     get LitersPerSecond() {
-        return this.convertFromBase(VolumeFlowUnits.LitersPerSecond);
+        if (this.literspersecondLazy !== null) {
+            return this.literspersecondLazy;
+        }
+        return this.literspersecondLazy = this.convertFromBase(VolumeFlowUnits.LitersPerSecond);
     }
     get LitersPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.LitersPerMinute);
+        if (this.litersperminuteLazy !== null) {
+            return this.litersperminuteLazy;
+        }
+        return this.litersperminuteLazy = this.convertFromBase(VolumeFlowUnits.LitersPerMinute);
     }
     get LitersPerHour() {
-        return this.convertFromBase(VolumeFlowUnits.LitersPerHour);
+        if (this.litersperhourLazy !== null) {
+            return this.litersperhourLazy;
+        }
+        return this.litersperhourLazy = this.convertFromBase(VolumeFlowUnits.LitersPerHour);
     }
     get LitersPerDay() {
-        return this.convertFromBase(VolumeFlowUnits.LitersPerDay);
+        if (this.litersperdayLazy !== null) {
+            return this.litersperdayLazy;
+        }
+        return this.litersperdayLazy = this.convertFromBase(VolumeFlowUnits.LitersPerDay);
     }
     get UsGallonsPerSecond() {
-        return this.convertFromBase(VolumeFlowUnits.UsGallonsPerSecond);
+        if (this.usgallonspersecondLazy !== null) {
+            return this.usgallonspersecondLazy;
+        }
+        return this.usgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerSecond);
     }
     get UsGallonsPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.UsGallonsPerMinute);
+        if (this.usgallonsperminuteLazy !== null) {
+            return this.usgallonsperminuteLazy;
+        }
+        return this.usgallonsperminuteLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerMinute);
     }
     get UkGallonsPerDay() {
-        return this.convertFromBase(VolumeFlowUnits.UkGallonsPerDay);
+        if (this.ukgallonsperdayLazy !== null) {
+            return this.ukgallonsperdayLazy;
+        }
+        return this.ukgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerDay);
     }
     get UkGallonsPerHour() {
-        return this.convertFromBase(VolumeFlowUnits.UkGallonsPerHour);
+        if (this.ukgallonsperhourLazy !== null) {
+            return this.ukgallonsperhourLazy;
+        }
+        return this.ukgallonsperhourLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerHour);
     }
     get UkGallonsPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.UkGallonsPerMinute);
+        if (this.ukgallonsperminuteLazy !== null) {
+            return this.ukgallonsperminuteLazy;
+        }
+        return this.ukgallonsperminuteLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerMinute);
     }
     get UkGallonsPerSecond() {
-        return this.convertFromBase(VolumeFlowUnits.UkGallonsPerSecond);
+        if (this.ukgallonspersecondLazy !== null) {
+            return this.ukgallonspersecondLazy;
+        }
+        return this.ukgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerSecond);
     }
     get KilousGallonsPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.KilousGallonsPerMinute);
+        if (this.kilousgallonsperminuteLazy !== null) {
+            return this.kilousgallonsperminuteLazy;
+        }
+        return this.kilousgallonsperminuteLazy = this.convertFromBase(VolumeFlowUnits.KilousGallonsPerMinute);
     }
     get UsGallonsPerHour() {
-        return this.convertFromBase(VolumeFlowUnits.UsGallonsPerHour);
+        if (this.usgallonsperhourLazy !== null) {
+            return this.usgallonsperhourLazy;
+        }
+        return this.usgallonsperhourLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerHour);
     }
     get CubicDecimetersPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.CubicDecimetersPerMinute);
+        if (this.cubicdecimetersperminuteLazy !== null) {
+            return this.cubicdecimetersperminuteLazy;
+        }
+        return this.cubicdecimetersperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicDecimetersPerMinute);
     }
     get OilBarrelsPerDay() {
-        return this.convertFromBase(VolumeFlowUnits.OilBarrelsPerDay);
+        if (this.oilbarrelsperdayLazy !== null) {
+            return this.oilbarrelsperdayLazy;
+        }
+        return this.oilbarrelsperdayLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerDay);
     }
     get OilBarrelsPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.OilBarrelsPerMinute);
+        if (this.oilbarrelsperminuteLazy !== null) {
+            return this.oilbarrelsperminuteLazy;
+        }
+        return this.oilbarrelsperminuteLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerMinute);
     }
     get OilBarrelsPerHour() {
-        return this.convertFromBase(VolumeFlowUnits.OilBarrelsPerHour);
+        if (this.oilbarrelsperhourLazy !== null) {
+            return this.oilbarrelsperhourLazy;
+        }
+        return this.oilbarrelsperhourLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerHour);
     }
     get OilBarrelsPerSecond() {
-        return this.convertFromBase(VolumeFlowUnits.OilBarrelsPerSecond);
+        if (this.oilbarrelspersecondLazy !== null) {
+            return this.oilbarrelspersecondLazy;
+        }
+        return this.oilbarrelspersecondLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerSecond);
     }
     get CubicMillimetersPerSecond() {
-        return this.convertFromBase(VolumeFlowUnits.CubicMillimetersPerSecond);
+        if (this.cubicmillimeterspersecondLazy !== null) {
+            return this.cubicmillimeterspersecondLazy;
+        }
+        return this.cubicmillimeterspersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicMillimetersPerSecond);
     }
     get AcreFeetPerSecond() {
-        return this.convertFromBase(VolumeFlowUnits.AcreFeetPerSecond);
+        if (this.acrefeetpersecondLazy !== null) {
+            return this.acrefeetpersecondLazy;
+        }
+        return this.acrefeetpersecondLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerSecond);
     }
     get AcreFeetPerMinute() {
-        return this.convertFromBase(VolumeFlowUnits.AcreFeetPerMinute);
+        if (this.acrefeetperminuteLazy !== null) {
+            return this.acrefeetperminuteLazy;
+        }
+        return this.acrefeetperminuteLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerMinute);
     }
     get AcreFeetPerHour() {
-        return this.convertFromBase(VolumeFlowUnits.AcreFeetPerHour);
+        if (this.acrefeetperhourLazy !== null) {
+            return this.acrefeetperhourLazy;
+        }
+        return this.acrefeetperhourLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerHour);
     }
     get AcreFeetPerDay() {
-        return this.convertFromBase(VolumeFlowUnits.AcreFeetPerDay);
+        if (this.acrefeetperdayLazy !== null) {
+            return this.acrefeetperdayLazy;
+        }
+        return this.acrefeetperdayLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerDay);
     }
     get Nanolitersperminute() {
-        return this.convertFromBase(VolumeFlowUnits.Nanolitersperminute);
+        if (this.nanolitersperminuteLazy !== null) {
+            return this.nanolitersperminuteLazy;
+        }
+        return this.nanolitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Nanolitersperminute);
     }
     get Microlitersperminute() {
-        return this.convertFromBase(VolumeFlowUnits.Microlitersperminute);
+        if (this.microlitersperminuteLazy !== null) {
+            return this.microlitersperminuteLazy;
+        }
+        return this.microlitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Microlitersperminute);
     }
     get Centilitersperminute() {
-        return this.convertFromBase(VolumeFlowUnits.Centilitersperminute);
+        if (this.centilitersperminuteLazy !== null) {
+            return this.centilitersperminuteLazy;
+        }
+        return this.centilitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Centilitersperminute);
     }
     get Decilitersperminute() {
-        return this.convertFromBase(VolumeFlowUnits.Decilitersperminute);
+        if (this.decilitersperminuteLazy !== null) {
+            return this.decilitersperminuteLazy;
+        }
+        return this.decilitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Decilitersperminute);
     }
     get Kilolitersperminute() {
-        return this.convertFromBase(VolumeFlowUnits.Kilolitersperminute);
+        if (this.kilolitersperminuteLazy !== null) {
+            return this.kilolitersperminuteLazy;
+        }
+        return this.kilolitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Kilolitersperminute);
     }
     get Nanolitersperday() {
-        return this.convertFromBase(VolumeFlowUnits.Nanolitersperday);
+        if (this.nanolitersperdayLazy !== null) {
+            return this.nanolitersperdayLazy;
+        }
+        return this.nanolitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Nanolitersperday);
     }
     get Microlitersperday() {
-        return this.convertFromBase(VolumeFlowUnits.Microlitersperday);
+        if (this.microlitersperdayLazy !== null) {
+            return this.microlitersperdayLazy;
+        }
+        return this.microlitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Microlitersperday);
     }
     get Centilitersperday() {
-        return this.convertFromBase(VolumeFlowUnits.Centilitersperday);
+        if (this.centilitersperdayLazy !== null) {
+            return this.centilitersperdayLazy;
+        }
+        return this.centilitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Centilitersperday);
     }
     get Decilitersperday() {
-        return this.convertFromBase(VolumeFlowUnits.Decilitersperday);
+        if (this.decilitersperdayLazy !== null) {
+            return this.decilitersperdayLazy;
+        }
+        return this.decilitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Decilitersperday);
     }
     get Kilolitersperday() {
-        return this.convertFromBase(VolumeFlowUnits.Kilolitersperday);
+        if (this.kilolitersperdayLazy !== null) {
+            return this.kilolitersperdayLazy;
+        }
+        return this.kilolitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Kilolitersperday);
     }
     get Megalitersperday() {
-        return this.convertFromBase(VolumeFlowUnits.Megalitersperday);
+        if (this.megalitersperdayLazy !== null) {
+            return this.megalitersperdayLazy;
+        }
+        return this.megalitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Megalitersperday);
     }
     get Megaukgallonspersecond() {
-        return this.convertFromBase(VolumeFlowUnits.Megaukgallonspersecond);
+        if (this.megaukgallonspersecondLazy !== null) {
+            return this.megaukgallonspersecondLazy;
+        }
+        return this.megaukgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.Megaukgallonspersecond);
     }
     static FromCubicMetersPerSecond(value) {
         return new VolumeFlow(value, VolumeFlowUnits.CubicMetersPerSecond);

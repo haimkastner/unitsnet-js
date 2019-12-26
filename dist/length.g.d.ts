@@ -33,6 +33,37 @@ export declare enum LengthUnits {
 }
 export declare class Length {
     private value;
+    private metersLazy;
+    private milesLazy;
+    private yardsLazy;
+    private feetLazy;
+    private ussurveyfeetLazy;
+    private inchesLazy;
+    private milsLazy;
+    private nauticalmilesLazy;
+    private fathomsLazy;
+    private shacklesLazy;
+    private microinchesLazy;
+    private printerpointsLazy;
+    private dtppointsLazy;
+    private printerpicasLazy;
+    private dtppicasLazy;
+    private twipsLazy;
+    private handsLazy;
+    private astronomicalunitsLazy;
+    private parsecsLazy;
+    private lightyearsLazy;
+    private solarradiusesLazy;
+    private nanometersLazy;
+    private micrometersLazy;
+    private centimetersLazy;
+    private decimetersLazy;
+    private hectometersLazy;
+    private kilometersLazy;
+    private kiloparsecsLazy;
+    private megaparsecsLazy;
+    private kilolightyearsLazy;
+    private megalightyearsLazy;
     constructor(value: number, fromUnit: LengthUnits);
     get Meters(): number;
     get Miles(): number;

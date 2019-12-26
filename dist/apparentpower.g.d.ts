@@ -6,6 +6,10 @@ export declare enum ApparentPowerUnits {
 }
 export declare class ApparentPower {
     private value;
+    private voltamperesLazy;
+    private kilovoltamperesLazy;
+    private megavoltamperesLazy;
+    private gigavoltamperesLazy;
     constructor(value: number, fromUnit: ApparentPowerUnits);
     get Voltamperes(): number;
     get Kilovoltamperes(): number;

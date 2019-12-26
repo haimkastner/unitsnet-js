@@ -10,6 +10,14 @@ export declare enum DynamicViscosityUnits {
 }
 export declare class DynamicViscosity {
     private value;
+    private newtonsecondspermetersquaredLazy;
+    private pascalsecondsLazy;
+    private poiseLazy;
+    private reynsLazy;
+    private poundsforcesecondpersquareinchLazy;
+    private poundsforcesecondpersquarefootLazy;
+    private micropascalsecondsLazy;
+    private centipoiseLazy;
     constructor(value: number, fromUnit: DynamicViscosityUnits);
     get NewtonSecondsPerMeterSquared(): number;
     get PascalSeconds(): number;

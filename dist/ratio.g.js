@@ -11,25 +11,49 @@ var RatioUnits;
 })(RatioUnits = exports.RatioUnits || (exports.RatioUnits = {}));
 class Ratio {
     constructor(value, fromUnit) {
+        this.decimalfractionsLazy = null;
+        this.percentLazy = null;
+        this.partsperthousandLazy = null;
+        this.partspermillionLazy = null;
+        this.partsperbillionLazy = null;
+        this.partspertrillionLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get DecimalFractions() {
-        return this.convertFromBase(RatioUnits.DecimalFractions);
+        if (this.decimalfractionsLazy !== null) {
+            return this.decimalfractionsLazy;
+        }
+        return this.decimalfractionsLazy = this.convertFromBase(RatioUnits.DecimalFractions);
     }
     get Percent() {
-        return this.convertFromBase(RatioUnits.Percent);
+        if (this.percentLazy !== null) {
+            return this.percentLazy;
+        }
+        return this.percentLazy = this.convertFromBase(RatioUnits.Percent);
     }
     get PartsPerThousand() {
-        return this.convertFromBase(RatioUnits.PartsPerThousand);
+        if (this.partsperthousandLazy !== null) {
+            return this.partsperthousandLazy;
+        }
+        return this.partsperthousandLazy = this.convertFromBase(RatioUnits.PartsPerThousand);
     }
     get PartsPerMillion() {
-        return this.convertFromBase(RatioUnits.PartsPerMillion);
+        if (this.partspermillionLazy !== null) {
+            return this.partspermillionLazy;
+        }
+        return this.partspermillionLazy = this.convertFromBase(RatioUnits.PartsPerMillion);
     }
     get PartsPerBillion() {
-        return this.convertFromBase(RatioUnits.PartsPerBillion);
+        if (this.partsperbillionLazy !== null) {
+            return this.partsperbillionLazy;
+        }
+        return this.partsperbillionLazy = this.convertFromBase(RatioUnits.PartsPerBillion);
     }
     get PartsPerTrillion() {
-        return this.convertFromBase(RatioUnits.PartsPerTrillion);
+        if (this.partspertrillionLazy !== null) {
+            return this.partspertrillionLazy;
+        }
+        return this.partspertrillionLazy = this.convertFromBase(RatioUnits.PartsPerTrillion);
     }
     static FromDecimalFractions(value) {
         return new Ratio(value, RatioUnits.DecimalFractions);

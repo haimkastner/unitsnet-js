@@ -14,34 +14,70 @@ var SpecificEnergyUnits;
 })(SpecificEnergyUnits = exports.SpecificEnergyUnits || (exports.SpecificEnergyUnits = {}));
 class SpecificEnergy {
     constructor(value, fromUnit) {
+        this.joulesperkilogramLazy = null;
+        this.caloriespergramLazy = null;
+        this.watthoursperkilogramLazy = null;
+        this.btuperpoundLazy = null;
+        this.kilojoulesperkilogramLazy = null;
+        this.megajoulesperkilogramLazy = null;
+        this.kilocaloriespergramLazy = null;
+        this.kilowatthoursperkilogramLazy = null;
+        this.megawatthoursperkilogramLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get JoulesPerKilogram() {
-        return this.convertFromBase(SpecificEnergyUnits.JoulesPerKilogram);
+        if (this.joulesperkilogramLazy !== null) {
+            return this.joulesperkilogramLazy;
+        }
+        return this.joulesperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.JoulesPerKilogram);
     }
     get CaloriesPerGram() {
-        return this.convertFromBase(SpecificEnergyUnits.CaloriesPerGram);
+        if (this.caloriespergramLazy !== null) {
+            return this.caloriespergramLazy;
+        }
+        return this.caloriespergramLazy = this.convertFromBase(SpecificEnergyUnits.CaloriesPerGram);
     }
     get WattHoursPerKilogram() {
-        return this.convertFromBase(SpecificEnergyUnits.WattHoursPerKilogram);
+        if (this.watthoursperkilogramLazy !== null) {
+            return this.watthoursperkilogramLazy;
+        }
+        return this.watthoursperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.WattHoursPerKilogram);
     }
     get BtuPerPound() {
-        return this.convertFromBase(SpecificEnergyUnits.BtuPerPound);
+        if (this.btuperpoundLazy !== null) {
+            return this.btuperpoundLazy;
+        }
+        return this.btuperpoundLazy = this.convertFromBase(SpecificEnergyUnits.BtuPerPound);
     }
     get Kilojoulesperkilogram() {
-        return this.convertFromBase(SpecificEnergyUnits.Kilojoulesperkilogram);
+        if (this.kilojoulesperkilogramLazy !== null) {
+            return this.kilojoulesperkilogramLazy;
+        }
+        return this.kilojoulesperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.Kilojoulesperkilogram);
     }
     get Megajoulesperkilogram() {
-        return this.convertFromBase(SpecificEnergyUnits.Megajoulesperkilogram);
+        if (this.megajoulesperkilogramLazy !== null) {
+            return this.megajoulesperkilogramLazy;
+        }
+        return this.megajoulesperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.Megajoulesperkilogram);
     }
     get Kilocaloriespergram() {
-        return this.convertFromBase(SpecificEnergyUnits.Kilocaloriespergram);
+        if (this.kilocaloriespergramLazy !== null) {
+            return this.kilocaloriespergramLazy;
+        }
+        return this.kilocaloriespergramLazy = this.convertFromBase(SpecificEnergyUnits.Kilocaloriespergram);
     }
     get Kilowatthoursperkilogram() {
-        return this.convertFromBase(SpecificEnergyUnits.Kilowatthoursperkilogram);
+        if (this.kilowatthoursperkilogramLazy !== null) {
+            return this.kilowatthoursperkilogramLazy;
+        }
+        return this.kilowatthoursperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.Kilowatthoursperkilogram);
     }
     get Megawatthoursperkilogram() {
-        return this.convertFromBase(SpecificEnergyUnits.Megawatthoursperkilogram);
+        if (this.megawatthoursperkilogramLazy !== null) {
+            return this.megawatthoursperkilogramLazy;
+        }
+        return this.megawatthoursperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.Megawatthoursperkilogram);
     }
     static FromJoulesPerKilogram(value) {
         return new SpecificEnergy(value, SpecificEnergyUnits.JoulesPerKilogram);

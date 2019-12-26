@@ -13,6 +13,17 @@ export declare enum ForcePerLengthUnits {
 }
 export declare class ForcePerLength {
     private value;
+    private newtonspermeterLazy;
+    private kilogramsforcepermeterLazy;
+    private poundsforceperfootLazy;
+    private poundsforceperinchLazy;
+    private poundsforceperyardLazy;
+    private nanonewtonspermeterLazy;
+    private micronewtonspermeterLazy;
+    private centinewtonspermeterLazy;
+    private decinewtonspermeterLazy;
+    private kilonewtonspermeterLazy;
+    private meganewtonspermeterLazy;
     constructor(value: number, fromUnit: ForcePerLengthUnits);
     get NewtonsPerMeter(): number;
     get KilogramsForcePerMeter(): number;

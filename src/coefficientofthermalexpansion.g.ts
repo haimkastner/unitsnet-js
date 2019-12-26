@@ -6,21 +6,33 @@ export enum CoefficientOfThermalExpansionUnits {
 
 export class CoefficientOfThermalExpansion {
     private value: number;
+    private inversekelvinLazy: number | null = null;
+    private inversedegreecelsiusLazy: number | null = null;
+    private inversedegreefahrenheitLazy: number | null = null;
 
     public constructor(value: number, fromUnit: CoefficientOfThermalExpansionUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get InverseKelvin(): number {
-        return this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseKelvin);
+        if(this.inversekelvinLazy !== null){
+            return this.inversekelvinLazy;
+        }
+        return this.inversekelvinLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseKelvin);
     }
 
     public get InverseDegreeCelsius(): number {
-        return this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeCelsius);
+        if(this.inversedegreecelsiusLazy !== null){
+            return this.inversedegreecelsiusLazy;
+        }
+        return this.inversedegreecelsiusLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeCelsius);
     }
 
     public get InverseDegreeFahrenheit(): number {
-        return this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit);
+        if(this.inversedegreefahrenheitLazy !== null){
+            return this.inversedegreefahrenheitLazy;
+        }
+        return this.inversedegreefahrenheitLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit);
     }
 
     public static FromInverseKelvin(value: number): CoefficientOfThermalExpansion {
@@ -36,42 +48,32 @@ export class CoefficientOfThermalExpansion {
     }
 
     private convertFromBase(toUnit: CoefficientOfThermalExpansionUnits): number {
-
-                switch (toUnit) {
-                    
-                case CoefficientOfThermalExpansionUnits.InverseKelvin:
-                    return this.value;
+        switch (toUnit) {
                 
-                case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
-                    return this.value;
-                
-                case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
-                    return this.value*9/5;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case CoefficientOfThermalExpansionUnits.InverseKelvin:
+                return this.value;
+            case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
+                return this.value;
+            case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
+                return this.value*9/5;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: CoefficientOfThermalExpansionUnits): number {
-
-                switch (fromUnit) {
-                    
-                case CoefficientOfThermalExpansionUnits.InverseKelvin:
-                    return value;
+        switch (fromUnit) {
                 
-                case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
-                    return value;
-                
-                case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
-                    return value*5/9;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case CoefficientOfThermalExpansionUnits.InverseKelvin:
+                return value;
+            case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
+                return value;
+            case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
+                return value*5/9;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

@@ -4,13 +4,17 @@ export enum AreaDensityUnits {
 
 export class AreaDensity {
     private value: number;
+    private kilogramspersquaremeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: AreaDensityUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get KilogramsPerSquareMeter(): number {
-        return this.convertFromBase(AreaDensityUnits.KilogramsPerSquareMeter);
+        if(this.kilogramspersquaremeterLazy !== null){
+            return this.kilogramspersquaremeterLazy;
+        }
+        return this.kilogramspersquaremeterLazy = this.convertFromBase(AreaDensityUnits.KilogramsPerSquareMeter);
     }
 
     public static FromKilogramsPerSquareMeter(value: number): AreaDensity {
@@ -18,30 +22,24 @@ export class AreaDensity {
     }
 
     private convertFromBase(toUnit: AreaDensityUnits): number {
-
-                switch (toUnit) {
-                    
-                case AreaDensityUnits.KilogramsPerSquareMeter:
-                    return this.value;
+        switch (toUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case AreaDensityUnits.KilogramsPerSquareMeter:
+                return this.value;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AreaDensityUnits): number {
-
-                switch (fromUnit) {
-                    
-                case AreaDensityUnits.KilogramsPerSquareMeter:
-                    return value;
+        switch (fromUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case AreaDensityUnits.KilogramsPerSquareMeter:
+                return value;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

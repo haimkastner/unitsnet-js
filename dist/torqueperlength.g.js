@@ -26,70 +26,154 @@ var TorquePerLengthUnits;
 })(TorquePerLengthUnits = exports.TorquePerLengthUnits || (exports.TorquePerLengthUnits = {}));
 class TorquePerLength {
     constructor(value, fromUnit) {
+        this.newtonmillimeterspermeterLazy = null;
+        this.newtoncentimeterspermeterLazy = null;
+        this.newtonmeterspermeterLazy = null;
+        this.poundforceinchesperfootLazy = null;
+        this.poundforcefeetperfootLazy = null;
+        this.kilogramforcemillimeterspermeterLazy = null;
+        this.kilogramforcecentimeterspermeterLazy = null;
+        this.kilogramforcemeterspermeterLazy = null;
+        this.tonneforcemillimeterspermeterLazy = null;
+        this.tonneforcecentimeterspermeterLazy = null;
+        this.tonneforcemeterspermeterLazy = null;
+        this.kilonewtonmillimeterspermeterLazy = null;
+        this.meganewtonmillimeterspermeterLazy = null;
+        this.kilonewtoncentimeterspermeterLazy = null;
+        this.meganewtoncentimeterspermeterLazy = null;
+        this.kilonewtonmeterspermeterLazy = null;
+        this.meganewtonmeterspermeterLazy = null;
+        this.kilopoundforceinchesperfootLazy = null;
+        this.megapoundforceinchesperfootLazy = null;
+        this.kilopoundforcefeetperfootLazy = null;
+        this.megapoundforcefeetperfootLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get NewtonMillimetersPerMeter() {
-        return this.convertFromBase(TorquePerLengthUnits.NewtonMillimetersPerMeter);
+        if (this.newtonmillimeterspermeterLazy !== null) {
+            return this.newtonmillimeterspermeterLazy;
+        }
+        return this.newtonmillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.NewtonMillimetersPerMeter);
     }
     get NewtonCentimetersPerMeter() {
-        return this.convertFromBase(TorquePerLengthUnits.NewtonCentimetersPerMeter);
+        if (this.newtoncentimeterspermeterLazy !== null) {
+            return this.newtoncentimeterspermeterLazy;
+        }
+        return this.newtoncentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.NewtonCentimetersPerMeter);
     }
     get NewtonMetersPerMeter() {
-        return this.convertFromBase(TorquePerLengthUnits.NewtonMetersPerMeter);
+        if (this.newtonmeterspermeterLazy !== null) {
+            return this.newtonmeterspermeterLazy;
+        }
+        return this.newtonmeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.NewtonMetersPerMeter);
     }
     get PoundForceInchesPerFoot() {
-        return this.convertFromBase(TorquePerLengthUnits.PoundForceInchesPerFoot);
+        if (this.poundforceinchesperfootLazy !== null) {
+            return this.poundforceinchesperfootLazy;
+        }
+        return this.poundforceinchesperfootLazy = this.convertFromBase(TorquePerLengthUnits.PoundForceInchesPerFoot);
     }
     get PoundForceFeetPerFoot() {
-        return this.convertFromBase(TorquePerLengthUnits.PoundForceFeetPerFoot);
+        if (this.poundforcefeetperfootLazy !== null) {
+            return this.poundforcefeetperfootLazy;
+        }
+        return this.poundforcefeetperfootLazy = this.convertFromBase(TorquePerLengthUnits.PoundForceFeetPerFoot);
     }
     get KilogramForceMillimetersPerMeter() {
-        return this.convertFromBase(TorquePerLengthUnits.KilogramForceMillimetersPerMeter);
+        if (this.kilogramforcemillimeterspermeterLazy !== null) {
+            return this.kilogramforcemillimeterspermeterLazy;
+        }
+        return this.kilogramforcemillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilogramForceMillimetersPerMeter);
     }
     get KilogramForceCentimetersPerMeter() {
-        return this.convertFromBase(TorquePerLengthUnits.KilogramForceCentimetersPerMeter);
+        if (this.kilogramforcecentimeterspermeterLazy !== null) {
+            return this.kilogramforcecentimeterspermeterLazy;
+        }
+        return this.kilogramforcecentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilogramForceCentimetersPerMeter);
     }
     get KilogramForceMetersPerMeter() {
-        return this.convertFromBase(TorquePerLengthUnits.KilogramForceMetersPerMeter);
+        if (this.kilogramforcemeterspermeterLazy !== null) {
+            return this.kilogramforcemeterspermeterLazy;
+        }
+        return this.kilogramforcemeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilogramForceMetersPerMeter);
     }
     get TonneForceMillimetersPerMeter() {
-        return this.convertFromBase(TorquePerLengthUnits.TonneForceMillimetersPerMeter);
+        if (this.tonneforcemillimeterspermeterLazy !== null) {
+            return this.tonneforcemillimeterspermeterLazy;
+        }
+        return this.tonneforcemillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.TonneForceMillimetersPerMeter);
     }
     get TonneForceCentimetersPerMeter() {
-        return this.convertFromBase(TorquePerLengthUnits.TonneForceCentimetersPerMeter);
+        if (this.tonneforcecentimeterspermeterLazy !== null) {
+            return this.tonneforcecentimeterspermeterLazy;
+        }
+        return this.tonneforcecentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.TonneForceCentimetersPerMeter);
     }
     get TonneForceMetersPerMeter() {
-        return this.convertFromBase(TorquePerLengthUnits.TonneForceMetersPerMeter);
+        if (this.tonneforcemeterspermeterLazy !== null) {
+            return this.tonneforcemeterspermeterLazy;
+        }
+        return this.tonneforcemeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.TonneForceMetersPerMeter);
     }
     get Kilonewtonmillimeterspermeter() {
-        return this.convertFromBase(TorquePerLengthUnits.Kilonewtonmillimeterspermeter);
+        if (this.kilonewtonmillimeterspermeterLazy !== null) {
+            return this.kilonewtonmillimeterspermeterLazy;
+        }
+        return this.kilonewtonmillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Kilonewtonmillimeterspermeter);
     }
     get Meganewtonmillimeterspermeter() {
-        return this.convertFromBase(TorquePerLengthUnits.Meganewtonmillimeterspermeter);
+        if (this.meganewtonmillimeterspermeterLazy !== null) {
+            return this.meganewtonmillimeterspermeterLazy;
+        }
+        return this.meganewtonmillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Meganewtonmillimeterspermeter);
     }
     get Kilonewtoncentimeterspermeter() {
-        return this.convertFromBase(TorquePerLengthUnits.Kilonewtoncentimeterspermeter);
+        if (this.kilonewtoncentimeterspermeterLazy !== null) {
+            return this.kilonewtoncentimeterspermeterLazy;
+        }
+        return this.kilonewtoncentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Kilonewtoncentimeterspermeter);
     }
     get Meganewtoncentimeterspermeter() {
-        return this.convertFromBase(TorquePerLengthUnits.Meganewtoncentimeterspermeter);
+        if (this.meganewtoncentimeterspermeterLazy !== null) {
+            return this.meganewtoncentimeterspermeterLazy;
+        }
+        return this.meganewtoncentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Meganewtoncentimeterspermeter);
     }
     get Kilonewtonmeterspermeter() {
-        return this.convertFromBase(TorquePerLengthUnits.Kilonewtonmeterspermeter);
+        if (this.kilonewtonmeterspermeterLazy !== null) {
+            return this.kilonewtonmeterspermeterLazy;
+        }
+        return this.kilonewtonmeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Kilonewtonmeterspermeter);
     }
     get Meganewtonmeterspermeter() {
-        return this.convertFromBase(TorquePerLengthUnits.Meganewtonmeterspermeter);
+        if (this.meganewtonmeterspermeterLazy !== null) {
+            return this.meganewtonmeterspermeterLazy;
+        }
+        return this.meganewtonmeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Meganewtonmeterspermeter);
     }
     get Kilopoundforceinchesperfoot() {
-        return this.convertFromBase(TorquePerLengthUnits.Kilopoundforceinchesperfoot);
+        if (this.kilopoundforceinchesperfootLazy !== null) {
+            return this.kilopoundforceinchesperfootLazy;
+        }
+        return this.kilopoundforceinchesperfootLazy = this.convertFromBase(TorquePerLengthUnits.Kilopoundforceinchesperfoot);
     }
     get Megapoundforceinchesperfoot() {
-        return this.convertFromBase(TorquePerLengthUnits.Megapoundforceinchesperfoot);
+        if (this.megapoundforceinchesperfootLazy !== null) {
+            return this.megapoundforceinchesperfootLazy;
+        }
+        return this.megapoundforceinchesperfootLazy = this.convertFromBase(TorquePerLengthUnits.Megapoundforceinchesperfoot);
     }
     get Kilopoundforcefeetperfoot() {
-        return this.convertFromBase(TorquePerLengthUnits.Kilopoundforcefeetperfoot);
+        if (this.kilopoundforcefeetperfootLazy !== null) {
+            return this.kilopoundforcefeetperfootLazy;
+        }
+        return this.kilopoundforcefeetperfootLazy = this.convertFromBase(TorquePerLengthUnits.Kilopoundforcefeetperfoot);
     }
     get Megapoundforcefeetperfoot() {
-        return this.convertFromBase(TorquePerLengthUnits.Megapoundforcefeetperfoot);
+        if (this.megapoundforcefeetperfootLazy !== null) {
+            return this.megapoundforcefeetperfootLazy;
+        }
+        return this.megapoundforcefeetperfootLazy = this.convertFromBase(TorquePerLengthUnits.Megapoundforcefeetperfoot);
     }
     static FromNewtonMillimetersPerMeter(value) {
         return new TorquePerLength(value, TorquePerLengthUnits.NewtonMillimetersPerMeter);

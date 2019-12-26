@@ -8,16 +8,28 @@ var VolumePerLengthUnits;
 })(VolumePerLengthUnits = exports.VolumePerLengthUnits || (exports.VolumePerLengthUnits = {}));
 class VolumePerLength {
     constructor(value, fromUnit) {
+        this.cubicmeterspermeterLazy = null;
+        this.literspermeterLazy = null;
+        this.oilbarrelsperfootLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get CubicMetersPerMeter() {
-        return this.convertFromBase(VolumePerLengthUnits.CubicMetersPerMeter);
+        if (this.cubicmeterspermeterLazy !== null) {
+            return this.cubicmeterspermeterLazy;
+        }
+        return this.cubicmeterspermeterLazy = this.convertFromBase(VolumePerLengthUnits.CubicMetersPerMeter);
     }
     get LitersPerMeter() {
-        return this.convertFromBase(VolumePerLengthUnits.LitersPerMeter);
+        if (this.literspermeterLazy !== null) {
+            return this.literspermeterLazy;
+        }
+        return this.literspermeterLazy = this.convertFromBase(VolumePerLengthUnits.LitersPerMeter);
     }
     get OilBarrelsPerFoot() {
-        return this.convertFromBase(VolumePerLengthUnits.OilBarrelsPerFoot);
+        if (this.oilbarrelsperfootLazy !== null) {
+            return this.oilbarrelsperfootLazy;
+        }
+        return this.oilbarrelsperfootLazy = this.convertFromBase(VolumePerLengthUnits.OilBarrelsPerFoot);
     }
     static FromCubicMetersPerMeter(value) {
         return new VolumePerLength(value, VolumePerLengthUnits.CubicMetersPerMeter);

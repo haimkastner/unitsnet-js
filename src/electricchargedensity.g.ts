@@ -4,13 +4,17 @@ export enum ElectricChargeDensityUnits {
 
 export class ElectricChargeDensity {
     private value: number;
+    private coulombspercubicmeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricChargeDensityUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get CoulombsPerCubicMeter(): number {
-        return this.convertFromBase(ElectricChargeDensityUnits.CoulombsPerCubicMeter);
+        if(this.coulombspercubicmeterLazy !== null){
+            return this.coulombspercubicmeterLazy;
+        }
+        return this.coulombspercubicmeterLazy = this.convertFromBase(ElectricChargeDensityUnits.CoulombsPerCubicMeter);
     }
 
     public static FromCoulombsPerCubicMeter(value: number): ElectricChargeDensity {
@@ -18,30 +22,24 @@ export class ElectricChargeDensity {
     }
 
     private convertFromBase(toUnit: ElectricChargeDensityUnits): number {
-
-                switch (toUnit) {
-                    
-                case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                    return this.value;
+        switch (toUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
+                return this.value;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricChargeDensityUnits): number {
-
-                switch (fromUnit) {
-                    
-                case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                    return value;
+        switch (fromUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
+                return value;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

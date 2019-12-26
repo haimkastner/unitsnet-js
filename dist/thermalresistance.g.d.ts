@@ -7,6 +7,11 @@ export declare enum ThermalResistanceUnits {
 }
 export declare class ThermalResistance {
     private value;
+    private squaremeterkelvinsperkilowattLazy;
+    private squaremeterdegreescelsiusperwattLazy;
+    private squarecentimeterkelvinsperwattLazy;
+    private squarecentimeterhourdegreescelsiusperkilocalorieLazy;
+    private hoursquarefeetdegreesfahrenheitperbtuLazy;
     constructor(value: number, fromUnit: ThermalResistanceUnits);
     get SquareMeterKelvinsPerKilowatt(): number;
     get SquareMeterDegreesCelsiusPerWatt(): number;

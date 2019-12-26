@@ -6,6 +6,10 @@ export declare enum ElectricChargeUnits {
 }
 export declare class ElectricCharge {
     private value;
+    private coulombsLazy;
+    private amperehoursLazy;
+    private kiloamperehoursLazy;
+    private megaamperehoursLazy;
     constructor(value: number, fromUnit: ElectricChargeUnits);
     get Coulombs(): number;
     get AmpereHours(): number;

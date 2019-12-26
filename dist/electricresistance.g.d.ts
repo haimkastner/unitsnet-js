@@ -6,6 +6,10 @@ export declare enum ElectricResistanceUnits {
 }
 export declare class ElectricResistance {
     private value;
+    private ohmsLazy;
+    private kiloohmsLazy;
+    private megaohmsLazy;
+    private gigaohmsLazy;
     constructor(value: number, fromUnit: ElectricResistanceUnits);
     get Ohms(): number;
     get Kiloohms(): number;

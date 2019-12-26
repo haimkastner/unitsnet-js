@@ -25,6 +25,29 @@ export declare enum PowerUnits {
 }
 export declare class Power {
     private value;
+    private wattsLazy;
+    private mechanicalhorsepowerLazy;
+    private metrichorsepowerLazy;
+    private electricalhorsepowerLazy;
+    private boilerhorsepowerLazy;
+    private hydraulichorsepowerLazy;
+    private britishthermalunitsperhourLazy;
+    private joulesperhourLazy;
+    private femtowattsLazy;
+    private picowattsLazy;
+    private nanowattsLazy;
+    private microwattsLazy;
+    private deciwattsLazy;
+    private decawattsLazy;
+    private kilowattsLazy;
+    private megawattsLazy;
+    private gigawattsLazy;
+    private terawattsLazy;
+    private petawattsLazy;
+    private kilobritishthermalunitsperhourLazy;
+    private kilojoulesperhourLazy;
+    private megajoulesperhourLazy;
+    private gigajoulesperhourLazy;
     constructor(value: number, fromUnit: PowerUnits);
     get Watts(): number;
     get MechanicalHorsepower(): number;

@@ -15,6 +15,19 @@ export declare enum AmountOfSubstanceUnits {
 }
 export declare class AmountOfSubstance {
     private value;
+    private molesLazy;
+    private poundmolesLazy;
+    private nanomolesLazy;
+    private micromolesLazy;
+    private centimolesLazy;
+    private decimolesLazy;
+    private kilomolesLazy;
+    private megamolesLazy;
+    private nanopoundmolesLazy;
+    private micropoundmolesLazy;
+    private centipoundmolesLazy;
+    private decipoundmolesLazy;
+    private kilopoundmolesLazy;
     constructor(value: number, fromUnit: AmountOfSubstanceUnits);
     get Moles(): number;
     get PoundMoles(): number;

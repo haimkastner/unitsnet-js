@@ -6,21 +6,33 @@ export enum IlluminanceUnits {
 
 export class Illuminance {
     private value: number;
+    private luxLazy: number | null = null;
+    private kiloluxLazy: number | null = null;
+    private megaluxLazy: number | null = null;
 
     public constructor(value: number, fromUnit: IlluminanceUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get Lux(): number {
-        return this.convertFromBase(IlluminanceUnits.Lux);
+        if(this.luxLazy !== null){
+            return this.luxLazy;
+        }
+        return this.luxLazy = this.convertFromBase(IlluminanceUnits.Lux);
     }
 
     public get Kilolux(): number {
-        return this.convertFromBase(IlluminanceUnits.Kilolux);
+        if(this.kiloluxLazy !== null){
+            return this.kiloluxLazy;
+        }
+        return this.kiloluxLazy = this.convertFromBase(IlluminanceUnits.Kilolux);
     }
 
     public get Megalux(): number {
-        return this.convertFromBase(IlluminanceUnits.Megalux);
+        if(this.megaluxLazy !== null){
+            return this.megaluxLazy;
+        }
+        return this.megaluxLazy = this.convertFromBase(IlluminanceUnits.Megalux);
     }
 
     public static FromLux(value: number): Illuminance {
@@ -36,42 +48,32 @@ export class Illuminance {
     }
 
     private convertFromBase(toUnit: IlluminanceUnits): number {
-
-                switch (toUnit) {
-                    
-                case IlluminanceUnits.Lux:
-                    return this.value;
+        switch (toUnit) {
                 
-                case IlluminanceUnits.Kilolux:
-                    return (this.value) / 1000;
-                
-                case IlluminanceUnits.Megalux:
-                    return (this.value) / 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case IlluminanceUnits.Lux:
+                return this.value;
+            case IlluminanceUnits.Kilolux:
+                return (this.value) / 1000;
+            case IlluminanceUnits.Megalux:
+                return (this.value) / 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: IlluminanceUnits): number {
-
-                switch (fromUnit) {
-                    
-                case IlluminanceUnits.Lux:
-                    return value;
+        switch (fromUnit) {
                 
-                case IlluminanceUnits.Kilolux:
-                    return (value) * 1000;
-                
-                case IlluminanceUnits.Megalux:
-                    return (value) * 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case IlluminanceUnits.Lux:
+                return value;
+            case IlluminanceUnits.Kilolux:
+                return (value) * 1000;
+            case IlluminanceUnits.Megalux:
+                return (value) * 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

@@ -3,6 +3,7 @@ export declare enum MagneticFluxUnits {
 }
 export declare class MagneticFlux {
     private value;
+    private webersLazy;
     constructor(value: number, fromUnit: MagneticFluxUnits);
     get Webers(): number;
     static FromWebers(value: number): MagneticFlux;

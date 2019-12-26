@@ -6,10 +6,14 @@ var ElectricCurrentGradientUnits;
 })(ElectricCurrentGradientUnits = exports.ElectricCurrentGradientUnits || (exports.ElectricCurrentGradientUnits = {}));
 class ElectricCurrentGradient {
     constructor(value, fromUnit) {
+        this.amperespersecondLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get AmperesPerSecond() {
-        return this.convertFromBase(ElectricCurrentGradientUnits.AmperesPerSecond);
+        if (this.amperespersecondLazy !== null) {
+            return this.amperespersecondLazy;
+        }
+        return this.amperespersecondLazy = this.convertFromBase(ElectricCurrentGradientUnits.AmperesPerSecond);
     }
     static FromAmperesPerSecond(value) {
         return new ElectricCurrentGradient(value, ElectricCurrentGradientUnits.AmperesPerSecond);

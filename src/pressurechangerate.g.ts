@@ -10,37 +10,65 @@ export enum PressureChangeRateUnits {
 
 export class PressureChangeRate {
     private value: number;
+    private pascalspersecondLazy: number | null = null;
+    private pascalsperminuteLazy: number | null = null;
+    private atmospherespersecondLazy: number | null = null;
+    private kilopascalspersecondLazy: number | null = null;
+    private megapascalspersecondLazy: number | null = null;
+    private kilopascalsperminuteLazy: number | null = null;
+    private megapascalsperminuteLazy: number | null = null;
 
     public constructor(value: number, fromUnit: PressureChangeRateUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get PascalsPerSecond(): number {
-        return this.convertFromBase(PressureChangeRateUnits.PascalsPerSecond);
+        if(this.pascalspersecondLazy !== null){
+            return this.pascalspersecondLazy;
+        }
+        return this.pascalspersecondLazy = this.convertFromBase(PressureChangeRateUnits.PascalsPerSecond);
     }
 
     public get PascalsPerMinute(): number {
-        return this.convertFromBase(PressureChangeRateUnits.PascalsPerMinute);
+        if(this.pascalsperminuteLazy !== null){
+            return this.pascalsperminuteLazy;
+        }
+        return this.pascalsperminuteLazy = this.convertFromBase(PressureChangeRateUnits.PascalsPerMinute);
     }
 
     public get AtmospheresPerSecond(): number {
-        return this.convertFromBase(PressureChangeRateUnits.AtmospheresPerSecond);
+        if(this.atmospherespersecondLazy !== null){
+            return this.atmospherespersecondLazy;
+        }
+        return this.atmospherespersecondLazy = this.convertFromBase(PressureChangeRateUnits.AtmospheresPerSecond);
     }
 
     public get Kilopascalspersecond(): number {
-        return this.convertFromBase(PressureChangeRateUnits.Kilopascalspersecond);
+        if(this.kilopascalspersecondLazy !== null){
+            return this.kilopascalspersecondLazy;
+        }
+        return this.kilopascalspersecondLazy = this.convertFromBase(PressureChangeRateUnits.Kilopascalspersecond);
     }
 
     public get Megapascalspersecond(): number {
-        return this.convertFromBase(PressureChangeRateUnits.Megapascalspersecond);
+        if(this.megapascalspersecondLazy !== null){
+            return this.megapascalspersecondLazy;
+        }
+        return this.megapascalspersecondLazy = this.convertFromBase(PressureChangeRateUnits.Megapascalspersecond);
     }
 
     public get Kilopascalsperminute(): number {
-        return this.convertFromBase(PressureChangeRateUnits.Kilopascalsperminute);
+        if(this.kilopascalsperminuteLazy !== null){
+            return this.kilopascalsperminuteLazy;
+        }
+        return this.kilopascalsperminuteLazy = this.convertFromBase(PressureChangeRateUnits.Kilopascalsperminute);
     }
 
     public get Megapascalsperminute(): number {
-        return this.convertFromBase(PressureChangeRateUnits.Megapascalsperminute);
+        if(this.megapascalsperminuteLazy !== null){
+            return this.megapascalsperminuteLazy;
+        }
+        return this.megapascalsperminuteLazy = this.convertFromBase(PressureChangeRateUnits.Megapascalsperminute);
     }
 
     public static FromPascalsPerSecond(value: number): PressureChangeRate {
@@ -72,66 +100,48 @@ export class PressureChangeRate {
     }
 
     private convertFromBase(toUnit: PressureChangeRateUnits): number {
-
-                switch (toUnit) {
-                    
-                case PressureChangeRateUnits.PascalsPerSecond:
-                    return this.value;
+        switch (toUnit) {
                 
-                case PressureChangeRateUnits.PascalsPerMinute:
-                    return this.value*60;
-                
-                case PressureChangeRateUnits.AtmospheresPerSecond:
-                    return this.value / (1.01325*1e5);
-                
-                case PressureChangeRateUnits.Kilopascalspersecond:
-                    return (this.value) / 1000;
-                
-                case PressureChangeRateUnits.Megapascalspersecond:
-                    return (this.value) / 1000000;
-                
-                case PressureChangeRateUnits.Kilopascalsperminute:
-                    return (this.value*60) / 1000;
-                
-                case PressureChangeRateUnits.Megapascalsperminute:
-                    return (this.value*60) / 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case PressureChangeRateUnits.PascalsPerSecond:
+                return this.value;
+            case PressureChangeRateUnits.PascalsPerMinute:
+                return this.value*60;
+            case PressureChangeRateUnits.AtmospheresPerSecond:
+                return this.value / (1.01325*1e5);
+            case PressureChangeRateUnits.Kilopascalspersecond:
+                return (this.value) / 1000;
+            case PressureChangeRateUnits.Megapascalspersecond:
+                return (this.value) / 1000000;
+            case PressureChangeRateUnits.Kilopascalsperminute:
+                return (this.value*60) / 1000;
+            case PressureChangeRateUnits.Megapascalsperminute:
+                return (this.value*60) / 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PressureChangeRateUnits): number {
-
-                switch (fromUnit) {
-                    
-                case PressureChangeRateUnits.PascalsPerSecond:
-                    return value;
+        switch (fromUnit) {
                 
-                case PressureChangeRateUnits.PascalsPerMinute:
-                    return value/60;
-                
-                case PressureChangeRateUnits.AtmospheresPerSecond:
-                    return value * 1.01325*1e5;
-                
-                case PressureChangeRateUnits.Kilopascalspersecond:
-                    return (value) * 1000;
-                
-                case PressureChangeRateUnits.Megapascalspersecond:
-                    return (value) * 1000000;
-                
-                case PressureChangeRateUnits.Kilopascalsperminute:
-                    return (value/60) * 1000;
-                
-                case PressureChangeRateUnits.Megapascalsperminute:
-                    return (value/60) * 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case PressureChangeRateUnits.PascalsPerSecond:
+                return value;
+            case PressureChangeRateUnits.PascalsPerMinute:
+                return value/60;
+            case PressureChangeRateUnits.AtmospheresPerSecond:
+                return value * 1.01325*1e5;
+            case PressureChangeRateUnits.Kilopascalspersecond:
+                return (value) * 1000;
+            case PressureChangeRateUnits.Megapascalspersecond:
+                return (value) * 1000000;
+            case PressureChangeRateUnits.Kilopascalsperminute:
+                return (value/60) * 1000;
+            case PressureChangeRateUnits.Megapascalsperminute:
+                return (value/60) * 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

@@ -6,10 +6,14 @@ var LuminousFluxUnits;
 })(LuminousFluxUnits = exports.LuminousFluxUnits || (exports.LuminousFluxUnits = {}));
 class LuminousFlux {
     constructor(value, fromUnit) {
+        this.lumensLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Lumens() {
-        return this.convertFromBase(LuminousFluxUnits.Lumens);
+        if (this.lumensLazy !== null) {
+            return this.lumensLazy;
+        }
+        return this.lumensLazy = this.convertFromBase(LuminousFluxUnits.Lumens);
     }
     static FromLumens(value) {
         return new LuminousFlux(value, LuminousFluxUnits.Lumens);

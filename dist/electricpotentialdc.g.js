@@ -9,19 +9,35 @@ var ElectricPotentialDcUnits;
 })(ElectricPotentialDcUnits = exports.ElectricPotentialDcUnits || (exports.ElectricPotentialDcUnits = {}));
 class ElectricPotentialDc {
     constructor(value, fromUnit) {
+        this.voltsdcLazy = null;
+        this.microvoltsdcLazy = null;
+        this.kilovoltsdcLazy = null;
+        this.megavoltsdcLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get VoltsDc() {
-        return this.convertFromBase(ElectricPotentialDcUnits.VoltsDc);
+        if (this.voltsdcLazy !== null) {
+            return this.voltsdcLazy;
+        }
+        return this.voltsdcLazy = this.convertFromBase(ElectricPotentialDcUnits.VoltsDc);
     }
     get Microvoltsdc() {
-        return this.convertFromBase(ElectricPotentialDcUnits.Microvoltsdc);
+        if (this.microvoltsdcLazy !== null) {
+            return this.microvoltsdcLazy;
+        }
+        return this.microvoltsdcLazy = this.convertFromBase(ElectricPotentialDcUnits.Microvoltsdc);
     }
     get Kilovoltsdc() {
-        return this.convertFromBase(ElectricPotentialDcUnits.Kilovoltsdc);
+        if (this.kilovoltsdcLazy !== null) {
+            return this.kilovoltsdcLazy;
+        }
+        return this.kilovoltsdcLazy = this.convertFromBase(ElectricPotentialDcUnits.Kilovoltsdc);
     }
     get Megavoltsdc() {
-        return this.convertFromBase(ElectricPotentialDcUnits.Megavoltsdc);
+        if (this.megavoltsdcLazy !== null) {
+            return this.megavoltsdcLazy;
+        }
+        return this.megavoltsdcLazy = this.convertFromBase(ElectricPotentialDcUnits.Megavoltsdc);
     }
     static FromVoltsDc(value) {
         return new ElectricPotentialDc(value, ElectricPotentialDcUnits.VoltsDc);

@@ -8,16 +8,28 @@ var ElectricConductivityUnits;
 })(ElectricConductivityUnits = exports.ElectricConductivityUnits || (exports.ElectricConductivityUnits = {}));
 class ElectricConductivity {
     constructor(value, fromUnit) {
+        this.siemenspermeterLazy = null;
+        this.siemensperinchLazy = null;
+        this.siemensperfootLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get SiemensPerMeter() {
-        return this.convertFromBase(ElectricConductivityUnits.SiemensPerMeter);
+        if (this.siemenspermeterLazy !== null) {
+            return this.siemenspermeterLazy;
+        }
+        return this.siemenspermeterLazy = this.convertFromBase(ElectricConductivityUnits.SiemensPerMeter);
     }
     get SiemensPerInch() {
-        return this.convertFromBase(ElectricConductivityUnits.SiemensPerInch);
+        if (this.siemensperinchLazy !== null) {
+            return this.siemensperinchLazy;
+        }
+        return this.siemensperinchLazy = this.convertFromBase(ElectricConductivityUnits.SiemensPerInch);
     }
     get SiemensPerFoot() {
-        return this.convertFromBase(ElectricConductivityUnits.SiemensPerFoot);
+        if (this.siemensperfootLazy !== null) {
+            return this.siemensperfootLazy;
+        }
+        return this.siemensperfootLazy = this.convertFromBase(ElectricConductivityUnits.SiemensPerFoot);
     }
     static FromSiemensPerMeter(value) {
         return new ElectricConductivity(value, ElectricConductivityUnits.SiemensPerMeter);

@@ -14,34 +14,70 @@ var FrequencyUnits;
 })(FrequencyUnits = exports.FrequencyUnits || (exports.FrequencyUnits = {}));
 class Frequency {
     constructor(value, fromUnit) {
+        this.hertzLazy = null;
+        this.radianspersecondLazy = null;
+        this.cyclesperminuteLazy = null;
+        this.cyclesperhourLazy = null;
+        this.beatsperminuteLazy = null;
+        this.kilohertzLazy = null;
+        this.megahertzLazy = null;
+        this.gigahertzLazy = null;
+        this.terahertzLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Hertz() {
-        return this.convertFromBase(FrequencyUnits.Hertz);
+        if (this.hertzLazy !== null) {
+            return this.hertzLazy;
+        }
+        return this.hertzLazy = this.convertFromBase(FrequencyUnits.Hertz);
     }
     get RadiansPerSecond() {
-        return this.convertFromBase(FrequencyUnits.RadiansPerSecond);
+        if (this.radianspersecondLazy !== null) {
+            return this.radianspersecondLazy;
+        }
+        return this.radianspersecondLazy = this.convertFromBase(FrequencyUnits.RadiansPerSecond);
     }
     get CyclesPerMinute() {
-        return this.convertFromBase(FrequencyUnits.CyclesPerMinute);
+        if (this.cyclesperminuteLazy !== null) {
+            return this.cyclesperminuteLazy;
+        }
+        return this.cyclesperminuteLazy = this.convertFromBase(FrequencyUnits.CyclesPerMinute);
     }
     get CyclesPerHour() {
-        return this.convertFromBase(FrequencyUnits.CyclesPerHour);
+        if (this.cyclesperhourLazy !== null) {
+            return this.cyclesperhourLazy;
+        }
+        return this.cyclesperhourLazy = this.convertFromBase(FrequencyUnits.CyclesPerHour);
     }
     get BeatsPerMinute() {
-        return this.convertFromBase(FrequencyUnits.BeatsPerMinute);
+        if (this.beatsperminuteLazy !== null) {
+            return this.beatsperminuteLazy;
+        }
+        return this.beatsperminuteLazy = this.convertFromBase(FrequencyUnits.BeatsPerMinute);
     }
     get Kilohertz() {
-        return this.convertFromBase(FrequencyUnits.Kilohertz);
+        if (this.kilohertzLazy !== null) {
+            return this.kilohertzLazy;
+        }
+        return this.kilohertzLazy = this.convertFromBase(FrequencyUnits.Kilohertz);
     }
     get Megahertz() {
-        return this.convertFromBase(FrequencyUnits.Megahertz);
+        if (this.megahertzLazy !== null) {
+            return this.megahertzLazy;
+        }
+        return this.megahertzLazy = this.convertFromBase(FrequencyUnits.Megahertz);
     }
     get Gigahertz() {
-        return this.convertFromBase(FrequencyUnits.Gigahertz);
+        if (this.gigahertzLazy !== null) {
+            return this.gigahertzLazy;
+        }
+        return this.gigahertzLazy = this.convertFromBase(FrequencyUnits.Gigahertz);
     }
     get Terahertz() {
-        return this.convertFromBase(FrequencyUnits.Terahertz);
+        if (this.terahertzLazy !== null) {
+            return this.terahertzLazy;
+        }
+        return this.terahertzLazy = this.convertFromBase(FrequencyUnits.Terahertz);
     }
     static FromHertz(value) {
         return new Frequency(value, FrequencyUnits.Hertz);

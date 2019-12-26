@@ -16,6 +16,20 @@ export declare enum AreaUnits {
 }
 export declare class Area {
     private value;
+    private squarekilometersLazy;
+    private squaremetersLazy;
+    private squaredecimetersLazy;
+    private squarecentimetersLazy;
+    private squaremillimetersLazy;
+    private squaremicrometersLazy;
+    private squaremilesLazy;
+    private squareyardsLazy;
+    private squarefeetLazy;
+    private ussurveysquarefeetLazy;
+    private squareinchesLazy;
+    private acresLazy;
+    private hectaresLazy;
+    private squarenauticalmilesLazy;
     constructor(value: number, fromUnit: AreaUnits);
     get SquareKilometers(): number;
     get SquareMeters(): number;

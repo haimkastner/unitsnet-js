@@ -5,6 +5,9 @@ export declare enum BrakeSpecificFuelConsumptionUnits {
 }
 export declare class BrakeSpecificFuelConsumption {
     private value;
+    private gramsperkilowatthourLazy;
+    private kilogramsperjouleLazy;
+    private poundspermechanicalhorsepowerhourLazy;
     constructor(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits);
     get GramsPerKiloWattHour(): number;
     get KilogramsPerJoule(): number;

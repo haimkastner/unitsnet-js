@@ -14,34 +14,70 @@ var TemperatureUnits;
 })(TemperatureUnits = exports.TemperatureUnits || (exports.TemperatureUnits = {}));
 class Temperature {
     constructor(value, fromUnit) {
+        this.kelvinsLazy = null;
+        this.degreescelsiusLazy = null;
+        this.degreesdelisleLazy = null;
+        this.degreesfahrenheitLazy = null;
+        this.degreesnewtonLazy = null;
+        this.degreesrankineLazy = null;
+        this.degreesreaumurLazy = null;
+        this.degreesroemerLazy = null;
+        this.solartemperaturesLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Kelvins() {
-        return this.convertFromBase(TemperatureUnits.Kelvins);
+        if (this.kelvinsLazy !== null) {
+            return this.kelvinsLazy;
+        }
+        return this.kelvinsLazy = this.convertFromBase(TemperatureUnits.Kelvins);
     }
     get DegreesCelsius() {
-        return this.convertFromBase(TemperatureUnits.DegreesCelsius);
+        if (this.degreescelsiusLazy !== null) {
+            return this.degreescelsiusLazy;
+        }
+        return this.degreescelsiusLazy = this.convertFromBase(TemperatureUnits.DegreesCelsius);
     }
     get DegreesDelisle() {
-        return this.convertFromBase(TemperatureUnits.DegreesDelisle);
+        if (this.degreesdelisleLazy !== null) {
+            return this.degreesdelisleLazy;
+        }
+        return this.degreesdelisleLazy = this.convertFromBase(TemperatureUnits.DegreesDelisle);
     }
     get DegreesFahrenheit() {
-        return this.convertFromBase(TemperatureUnits.DegreesFahrenheit);
+        if (this.degreesfahrenheitLazy !== null) {
+            return this.degreesfahrenheitLazy;
+        }
+        return this.degreesfahrenheitLazy = this.convertFromBase(TemperatureUnits.DegreesFahrenheit);
     }
     get DegreesNewton() {
-        return this.convertFromBase(TemperatureUnits.DegreesNewton);
+        if (this.degreesnewtonLazy !== null) {
+            return this.degreesnewtonLazy;
+        }
+        return this.degreesnewtonLazy = this.convertFromBase(TemperatureUnits.DegreesNewton);
     }
     get DegreesRankine() {
-        return this.convertFromBase(TemperatureUnits.DegreesRankine);
+        if (this.degreesrankineLazy !== null) {
+            return this.degreesrankineLazy;
+        }
+        return this.degreesrankineLazy = this.convertFromBase(TemperatureUnits.DegreesRankine);
     }
     get DegreesReaumur() {
-        return this.convertFromBase(TemperatureUnits.DegreesReaumur);
+        if (this.degreesreaumurLazy !== null) {
+            return this.degreesreaumurLazy;
+        }
+        return this.degreesreaumurLazy = this.convertFromBase(TemperatureUnits.DegreesReaumur);
     }
     get DegreesRoemer() {
-        return this.convertFromBase(TemperatureUnits.DegreesRoemer);
+        if (this.degreesroemerLazy !== null) {
+            return this.degreesroemerLazy;
+        }
+        return this.degreesroemerLazy = this.convertFromBase(TemperatureUnits.DegreesRoemer);
     }
     get SolarTemperatures() {
-        return this.convertFromBase(TemperatureUnits.SolarTemperatures);
+        if (this.solartemperaturesLazy !== null) {
+            return this.solartemperaturesLazy;
+        }
+        return this.solartemperaturesLazy = this.convertFromBase(TemperatureUnits.SolarTemperatures);
     }
     static FromKelvins(value) {
         return new Temperature(value, TemperatureUnits.Kelvins);

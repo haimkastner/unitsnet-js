@@ -15,57 +15,105 @@ export enum AccelerationUnits {
 
 export class Acceleration {
     private value: number;
+    private meterspersecondsquaredLazy: number | null = null;
+    private inchespersecondsquaredLazy: number | null = null;
+    private feetpersecondsquaredLazy: number | null = null;
+    private knotspersecondLazy: number | null = null;
+    private knotsperminuteLazy: number | null = null;
+    private knotsperhourLazy: number | null = null;
+    private standardgravityLazy: number | null = null;
+    private nanometerspersecondsquaredLazy: number | null = null;
+    private micrometerspersecondsquaredLazy: number | null = null;
+    private centimeterspersecondsquaredLazy: number | null = null;
+    private decimeterspersecondsquaredLazy: number | null = null;
+    private kilometerspersecondsquaredLazy: number | null = null;
 
     public constructor(value: number, fromUnit: AccelerationUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get MetersPerSecondSquared(): number {
-        return this.convertFromBase(AccelerationUnits.MetersPerSecondSquared);
+        if(this.meterspersecondsquaredLazy !== null){
+            return this.meterspersecondsquaredLazy;
+        }
+        return this.meterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.MetersPerSecondSquared);
     }
 
     public get InchesPerSecondSquared(): number {
-        return this.convertFromBase(AccelerationUnits.InchesPerSecondSquared);
+        if(this.inchespersecondsquaredLazy !== null){
+            return this.inchespersecondsquaredLazy;
+        }
+        return this.inchespersecondsquaredLazy = this.convertFromBase(AccelerationUnits.InchesPerSecondSquared);
     }
 
     public get FeetPerSecondSquared(): number {
-        return this.convertFromBase(AccelerationUnits.FeetPerSecondSquared);
+        if(this.feetpersecondsquaredLazy !== null){
+            return this.feetpersecondsquaredLazy;
+        }
+        return this.feetpersecondsquaredLazy = this.convertFromBase(AccelerationUnits.FeetPerSecondSquared);
     }
 
     public get KnotsPerSecond(): number {
-        return this.convertFromBase(AccelerationUnits.KnotsPerSecond);
+        if(this.knotspersecondLazy !== null){
+            return this.knotspersecondLazy;
+        }
+        return this.knotspersecondLazy = this.convertFromBase(AccelerationUnits.KnotsPerSecond);
     }
 
     public get KnotsPerMinute(): number {
-        return this.convertFromBase(AccelerationUnits.KnotsPerMinute);
+        if(this.knotsperminuteLazy !== null){
+            return this.knotsperminuteLazy;
+        }
+        return this.knotsperminuteLazy = this.convertFromBase(AccelerationUnits.KnotsPerMinute);
     }
 
     public get KnotsPerHour(): number {
-        return this.convertFromBase(AccelerationUnits.KnotsPerHour);
+        if(this.knotsperhourLazy !== null){
+            return this.knotsperhourLazy;
+        }
+        return this.knotsperhourLazy = this.convertFromBase(AccelerationUnits.KnotsPerHour);
     }
 
     public get StandardGravity(): number {
-        return this.convertFromBase(AccelerationUnits.StandardGravity);
+        if(this.standardgravityLazy !== null){
+            return this.standardgravityLazy;
+        }
+        return this.standardgravityLazy = this.convertFromBase(AccelerationUnits.StandardGravity);
     }
 
     public get Nanometerspersecondsquared(): number {
-        return this.convertFromBase(AccelerationUnits.Nanometerspersecondsquared);
+        if(this.nanometerspersecondsquaredLazy !== null){
+            return this.nanometerspersecondsquaredLazy;
+        }
+        return this.nanometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Nanometerspersecondsquared);
     }
 
     public get Micrometerspersecondsquared(): number {
-        return this.convertFromBase(AccelerationUnits.Micrometerspersecondsquared);
+        if(this.micrometerspersecondsquaredLazy !== null){
+            return this.micrometerspersecondsquaredLazy;
+        }
+        return this.micrometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Micrometerspersecondsquared);
     }
 
     public get Centimeterspersecondsquared(): number {
-        return this.convertFromBase(AccelerationUnits.Centimeterspersecondsquared);
+        if(this.centimeterspersecondsquaredLazy !== null){
+            return this.centimeterspersecondsquaredLazy;
+        }
+        return this.centimeterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Centimeterspersecondsquared);
     }
 
     public get Decimeterspersecondsquared(): number {
-        return this.convertFromBase(AccelerationUnits.Decimeterspersecondsquared);
+        if(this.decimeterspersecondsquaredLazy !== null){
+            return this.decimeterspersecondsquaredLazy;
+        }
+        return this.decimeterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Decimeterspersecondsquared);
     }
 
     public get Kilometerspersecondsquared(): number {
-        return this.convertFromBase(AccelerationUnits.Kilometerspersecondsquared);
+        if(this.kilometerspersecondsquaredLazy !== null){
+            return this.kilometerspersecondsquaredLazy;
+        }
+        return this.kilometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Kilometerspersecondsquared);
     }
 
     public static FromMetersPerSecondSquared(value: number): Acceleration {
@@ -117,96 +165,68 @@ export class Acceleration {
     }
 
     private convertFromBase(toUnit: AccelerationUnits): number {
-
-                switch (toUnit) {
-                    
-                case AccelerationUnits.MetersPerSecondSquared:
-                    return this.value;
+        switch (toUnit) {
                 
-                case AccelerationUnits.InchesPerSecondSquared:
-                    return this.value/0.0254;
-                
-                case AccelerationUnits.FeetPerSecondSquared:
-                    return this.value/0.304800;
-                
-                case AccelerationUnits.KnotsPerSecond:
-                    return this.value/0.5144444444444;
-                
-                case AccelerationUnits.KnotsPerMinute:
-                    return this.value/0.5144444444444*60;
-                
-                case AccelerationUnits.KnotsPerHour:
-                    return this.value/0.5144444444444*3600;
-                
-                case AccelerationUnits.StandardGravity:
-                    return this.value/9.80665;
-                
-                case AccelerationUnits.Nanometerspersecondsquared:
-                    return (this.value) / 1e-9;
-                
-                case AccelerationUnits.Micrometerspersecondsquared:
-                    return (this.value) / 0.000001;
-                
-                case AccelerationUnits.Centimeterspersecondsquared:
-                    return (this.value) / 0.01;
-                
-                case AccelerationUnits.Decimeterspersecondsquared:
-                    return (this.value) / 0.1;
-                
-                case AccelerationUnits.Kilometerspersecondsquared:
-                    return (this.value) / 1000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case AccelerationUnits.MetersPerSecondSquared:
+                return this.value;
+            case AccelerationUnits.InchesPerSecondSquared:
+                return this.value/0.0254;
+            case AccelerationUnits.FeetPerSecondSquared:
+                return this.value/0.304800;
+            case AccelerationUnits.KnotsPerSecond:
+                return this.value/0.5144444444444;
+            case AccelerationUnits.KnotsPerMinute:
+                return this.value/0.5144444444444*60;
+            case AccelerationUnits.KnotsPerHour:
+                return this.value/0.5144444444444*3600;
+            case AccelerationUnits.StandardGravity:
+                return this.value/9.80665;
+            case AccelerationUnits.Nanometerspersecondsquared:
+                return (this.value) / 1e-9;
+            case AccelerationUnits.Micrometerspersecondsquared:
+                return (this.value) / 0.000001;
+            case AccelerationUnits.Centimeterspersecondsquared:
+                return (this.value) / 0.01;
+            case AccelerationUnits.Decimeterspersecondsquared:
+                return (this.value) / 0.1;
+            case AccelerationUnits.Kilometerspersecondsquared:
+                return (this.value) / 1000;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AccelerationUnits): number {
-
-                switch (fromUnit) {
-                    
-                case AccelerationUnits.MetersPerSecondSquared:
-                    return value;
+        switch (fromUnit) {
                 
-                case AccelerationUnits.InchesPerSecondSquared:
-                    return value*0.0254;
-                
-                case AccelerationUnits.FeetPerSecondSquared:
-                    return value*0.304800;
-                
-                case AccelerationUnits.KnotsPerSecond:
-                    return value*0.5144444444444;
-                
-                case AccelerationUnits.KnotsPerMinute:
-                    return value*0.5144444444444/60;
-                
-                case AccelerationUnits.KnotsPerHour:
-                    return value*0.5144444444444/3600;
-                
-                case AccelerationUnits.StandardGravity:
-                    return value*9.80665;
-                
-                case AccelerationUnits.Nanometerspersecondsquared:
-                    return (value) * 1e-9;
-                
-                case AccelerationUnits.Micrometerspersecondsquared:
-                    return (value) * 0.000001;
-                
-                case AccelerationUnits.Centimeterspersecondsquared:
-                    return (value) * 0.01;
-                
-                case AccelerationUnits.Decimeterspersecondsquared:
-                    return (value) * 0.1;
-                
-                case AccelerationUnits.Kilometerspersecondsquared:
-                    return (value) * 1000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case AccelerationUnits.MetersPerSecondSquared:
+                return value;
+            case AccelerationUnits.InchesPerSecondSquared:
+                return value*0.0254;
+            case AccelerationUnits.FeetPerSecondSquared:
+                return value*0.304800;
+            case AccelerationUnits.KnotsPerSecond:
+                return value*0.5144444444444;
+            case AccelerationUnits.KnotsPerMinute:
+                return value*0.5144444444444/60;
+            case AccelerationUnits.KnotsPerHour:
+                return value*0.5144444444444/3600;
+            case AccelerationUnits.StandardGravity:
+                return value*9.80665;
+            case AccelerationUnits.Nanometerspersecondsquared:
+                return (value) * 1e-9;
+            case AccelerationUnits.Micrometerspersecondsquared:
+                return (value) * 0.000001;
+            case AccelerationUnits.Centimeterspersecondsquared:
+                return (value) * 0.01;
+            case AccelerationUnits.Decimeterspersecondsquared:
+                return (value) * 0.1;
+            case AccelerationUnits.Kilometerspersecondsquared:
+                return (value) * 1000;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

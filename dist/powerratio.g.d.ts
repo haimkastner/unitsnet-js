@@ -4,6 +4,8 @@ export declare enum PowerRatioUnits {
 }
 export declare class PowerRatio {
     private value;
+    private decibelwattsLazy;
+    private decibelmilliwattsLazy;
     constructor(value: number, fromUnit: PowerRatioUnits);
     get DecibelWatts(): number;
     get DecibelMilliwatts(): number;

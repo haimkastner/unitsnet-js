@@ -5,6 +5,9 @@ export declare enum RotationalStiffnessPerLengthUnits {
 }
 export declare class RotationalStiffnessPerLength {
     private value;
+    private newtonmetersperradianpermeterLazy;
+    private kilonewtonmetersperradianpermeterLazy;
+    private meganewtonmetersperradianpermeterLazy;
     constructor(value: number, fromUnit: RotationalStiffnessPerLengthUnits);
     get NewtonMetersPerRadianPerMeter(): number;
     get Kilonewtonmetersperradianpermeter(): number;

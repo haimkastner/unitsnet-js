@@ -4,13 +4,17 @@ export enum MagneticFluxUnits {
 
 export class MagneticFlux {
     private value: number;
+    private webersLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MagneticFluxUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get Webers(): number {
-        return this.convertFromBase(MagneticFluxUnits.Webers);
+        if(this.webersLazy !== null){
+            return this.webersLazy;
+        }
+        return this.webersLazy = this.convertFromBase(MagneticFluxUnits.Webers);
     }
 
     public static FromWebers(value: number): MagneticFlux {
@@ -18,30 +22,24 @@ export class MagneticFlux {
     }
 
     private convertFromBase(toUnit: MagneticFluxUnits): number {
-
-                switch (toUnit) {
-                    
-                case MagneticFluxUnits.Webers:
-                    return this.value;
+        switch (toUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case MagneticFluxUnits.Webers:
+                return this.value;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MagneticFluxUnits): number {
-
-                switch (fromUnit) {
-                    
-                case MagneticFluxUnits.Webers:
-                    return value;
+        switch (fromUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case MagneticFluxUnits.Webers:
+                return value;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

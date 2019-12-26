@@ -15,57 +15,105 @@ export enum AngleUnits {
 
 export class Angle {
     private value: number;
+    private radiansLazy: number | null = null;
+    private degreesLazy: number | null = null;
+    private arcminutesLazy: number | null = null;
+    private arcsecondsLazy: number | null = null;
+    private gradiansLazy: number | null = null;
+    private revolutionsLazy: number | null = null;
+    private nanoradiansLazy: number | null = null;
+    private microradiansLazy: number | null = null;
+    private centiradiansLazy: number | null = null;
+    private deciradiansLazy: number | null = null;
+    private nanodegreesLazy: number | null = null;
+    private microdegreesLazy: number | null = null;
 
     public constructor(value: number, fromUnit: AngleUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get Radians(): number {
-        return this.convertFromBase(AngleUnits.Radians);
+        if(this.radiansLazy !== null){
+            return this.radiansLazy;
+        }
+        return this.radiansLazy = this.convertFromBase(AngleUnits.Radians);
     }
 
     public get Degrees(): number {
-        return this.convertFromBase(AngleUnits.Degrees);
+        if(this.degreesLazy !== null){
+            return this.degreesLazy;
+        }
+        return this.degreesLazy = this.convertFromBase(AngleUnits.Degrees);
     }
 
     public get Arcminutes(): number {
-        return this.convertFromBase(AngleUnits.Arcminutes);
+        if(this.arcminutesLazy !== null){
+            return this.arcminutesLazy;
+        }
+        return this.arcminutesLazy = this.convertFromBase(AngleUnits.Arcminutes);
     }
 
     public get Arcseconds(): number {
-        return this.convertFromBase(AngleUnits.Arcseconds);
+        if(this.arcsecondsLazy !== null){
+            return this.arcsecondsLazy;
+        }
+        return this.arcsecondsLazy = this.convertFromBase(AngleUnits.Arcseconds);
     }
 
     public get Gradians(): number {
-        return this.convertFromBase(AngleUnits.Gradians);
+        if(this.gradiansLazy !== null){
+            return this.gradiansLazy;
+        }
+        return this.gradiansLazy = this.convertFromBase(AngleUnits.Gradians);
     }
 
     public get Revolutions(): number {
-        return this.convertFromBase(AngleUnits.Revolutions);
+        if(this.revolutionsLazy !== null){
+            return this.revolutionsLazy;
+        }
+        return this.revolutionsLazy = this.convertFromBase(AngleUnits.Revolutions);
     }
 
     public get Nanoradians(): number {
-        return this.convertFromBase(AngleUnits.Nanoradians);
+        if(this.nanoradiansLazy !== null){
+            return this.nanoradiansLazy;
+        }
+        return this.nanoradiansLazy = this.convertFromBase(AngleUnits.Nanoradians);
     }
 
     public get Microradians(): number {
-        return this.convertFromBase(AngleUnits.Microradians);
+        if(this.microradiansLazy !== null){
+            return this.microradiansLazy;
+        }
+        return this.microradiansLazy = this.convertFromBase(AngleUnits.Microradians);
     }
 
     public get Centiradians(): number {
-        return this.convertFromBase(AngleUnits.Centiradians);
+        if(this.centiradiansLazy !== null){
+            return this.centiradiansLazy;
+        }
+        return this.centiradiansLazy = this.convertFromBase(AngleUnits.Centiradians);
     }
 
     public get Deciradians(): number {
-        return this.convertFromBase(AngleUnits.Deciradians);
+        if(this.deciradiansLazy !== null){
+            return this.deciradiansLazy;
+        }
+        return this.deciradiansLazy = this.convertFromBase(AngleUnits.Deciradians);
     }
 
     public get Nanodegrees(): number {
-        return this.convertFromBase(AngleUnits.Nanodegrees);
+        if(this.nanodegreesLazy !== null){
+            return this.nanodegreesLazy;
+        }
+        return this.nanodegreesLazy = this.convertFromBase(AngleUnits.Nanodegrees);
     }
 
     public get Microdegrees(): number {
-        return this.convertFromBase(AngleUnits.Microdegrees);
+        if(this.microdegreesLazy !== null){
+            return this.microdegreesLazy;
+        }
+        return this.microdegreesLazy = this.convertFromBase(AngleUnits.Microdegrees);
     }
 
     public static FromRadians(value: number): Angle {
@@ -117,96 +165,68 @@ export class Angle {
     }
 
     private convertFromBase(toUnit: AngleUnits): number {
-
-                switch (toUnit) {
-                    
-                case AngleUnits.Radians:
-                    return this.value/180*Math.PI;
+        switch (toUnit) {
                 
-                case AngleUnits.Degrees:
-                    return this.value;
-                
-                case AngleUnits.Arcminutes:
-                    return this.value*60;
-                
-                case AngleUnits.Arcseconds:
-                    return this.value*3600;
-                
-                case AngleUnits.Gradians:
-                    return this.value/0.9;
-                
-                case AngleUnits.Revolutions:
-                    return this.value/360;
-                
-                case AngleUnits.Nanoradians:
-                    return (this.value/180*Math.PI) / 1e-9;
-                
-                case AngleUnits.Microradians:
-                    return (this.value/180*Math.PI) / 0.000001;
-                
-                case AngleUnits.Centiradians:
-                    return (this.value/180*Math.PI) / 0.01;
-                
-                case AngleUnits.Deciradians:
-                    return (this.value/180*Math.PI) / 0.1;
-                
-                case AngleUnits.Nanodegrees:
-                    return (this.value) / 1e-9;
-                
-                case AngleUnits.Microdegrees:
-                    return (this.value) / 0.000001;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case AngleUnits.Radians:
+                return this.value/180*Math.PI;
+            case AngleUnits.Degrees:
+                return this.value;
+            case AngleUnits.Arcminutes:
+                return this.value*60;
+            case AngleUnits.Arcseconds:
+                return this.value*3600;
+            case AngleUnits.Gradians:
+                return this.value/0.9;
+            case AngleUnits.Revolutions:
+                return this.value/360;
+            case AngleUnits.Nanoradians:
+                return (this.value/180*Math.PI) / 1e-9;
+            case AngleUnits.Microradians:
+                return (this.value/180*Math.PI) / 0.000001;
+            case AngleUnits.Centiradians:
+                return (this.value/180*Math.PI) / 0.01;
+            case AngleUnits.Deciradians:
+                return (this.value/180*Math.PI) / 0.1;
+            case AngleUnits.Nanodegrees:
+                return (this.value) / 1e-9;
+            case AngleUnits.Microdegrees:
+                return (this.value) / 0.000001;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AngleUnits): number {
-
-                switch (fromUnit) {
-                    
-                case AngleUnits.Radians:
-                    return value*180/Math.PI;
+        switch (fromUnit) {
                 
-                case AngleUnits.Degrees:
-                    return value;
-                
-                case AngleUnits.Arcminutes:
-                    return value/60;
-                
-                case AngleUnits.Arcseconds:
-                    return value/3600;
-                
-                case AngleUnits.Gradians:
-                    return value*0.9;
-                
-                case AngleUnits.Revolutions:
-                    return value*360;
-                
-                case AngleUnits.Nanoradians:
-                    return (value*180/Math.PI) * 1e-9;
-                
-                case AngleUnits.Microradians:
-                    return (value*180/Math.PI) * 0.000001;
-                
-                case AngleUnits.Centiradians:
-                    return (value*180/Math.PI) * 0.01;
-                
-                case AngleUnits.Deciradians:
-                    return (value*180/Math.PI) * 0.1;
-                
-                case AngleUnits.Nanodegrees:
-                    return (value) * 1e-9;
-                
-                case AngleUnits.Microdegrees:
-                    return (value) * 0.000001;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case AngleUnits.Radians:
+                return value*180/Math.PI;
+            case AngleUnits.Degrees:
+                return value;
+            case AngleUnits.Arcminutes:
+                return value/60;
+            case AngleUnits.Arcseconds:
+                return value/3600;
+            case AngleUnits.Gradians:
+                return value*0.9;
+            case AngleUnits.Revolutions:
+                return value*360;
+            case AngleUnits.Nanoradians:
+                return (value*180/Math.PI) * 1e-9;
+            case AngleUnits.Microradians:
+                return (value*180/Math.PI) * 0.000001;
+            case AngleUnits.Centiradians:
+                return (value*180/Math.PI) * 0.01;
+            case AngleUnits.Deciradians:
+                return (value*180/Math.PI) * 0.1;
+            case AngleUnits.Nanodegrees:
+                return (value) * 1e-9;
+            case AngleUnits.Microdegrees:
+                return (value) * 0.000001;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

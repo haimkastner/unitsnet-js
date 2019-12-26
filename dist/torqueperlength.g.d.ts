@@ -23,6 +23,27 @@ export declare enum TorquePerLengthUnits {
 }
 export declare class TorquePerLength {
     private value;
+    private newtonmillimeterspermeterLazy;
+    private newtoncentimeterspermeterLazy;
+    private newtonmeterspermeterLazy;
+    private poundforceinchesperfootLazy;
+    private poundforcefeetperfootLazy;
+    private kilogramforcemillimeterspermeterLazy;
+    private kilogramforcecentimeterspermeterLazy;
+    private kilogramforcemeterspermeterLazy;
+    private tonneforcemillimeterspermeterLazy;
+    private tonneforcecentimeterspermeterLazy;
+    private tonneforcemeterspermeterLazy;
+    private kilonewtonmillimeterspermeterLazy;
+    private meganewtonmillimeterspermeterLazy;
+    private kilonewtoncentimeterspermeterLazy;
+    private meganewtoncentimeterspermeterLazy;
+    private kilonewtonmeterspermeterLazy;
+    private meganewtonmeterspermeterLazy;
+    private kilopoundforceinchesperfootLazy;
+    private megapoundforceinchesperfootLazy;
+    private kilopoundforcefeetperfootLazy;
+    private megapoundforcefeetperfootLazy;
     constructor(value: number, fromUnit: TorquePerLengthUnits);
     get NewtonMillimetersPerMeter(): number;
     get NewtonCentimetersPerMeter(): number;

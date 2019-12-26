@@ -6,21 +6,33 @@ export enum MolarEnergyUnits {
 
 export class MolarEnergy {
     private value: number;
+    private joulespermoleLazy: number | null = null;
+    private kilojoulespermoleLazy: number | null = null;
+    private megajoulespermoleLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MolarEnergyUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get JoulesPerMole(): number {
-        return this.convertFromBase(MolarEnergyUnits.JoulesPerMole);
+        if(this.joulespermoleLazy !== null){
+            return this.joulespermoleLazy;
+        }
+        return this.joulespermoleLazy = this.convertFromBase(MolarEnergyUnits.JoulesPerMole);
     }
 
     public get Kilojoulespermole(): number {
-        return this.convertFromBase(MolarEnergyUnits.Kilojoulespermole);
+        if(this.kilojoulespermoleLazy !== null){
+            return this.kilojoulespermoleLazy;
+        }
+        return this.kilojoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.Kilojoulespermole);
     }
 
     public get Megajoulespermole(): number {
-        return this.convertFromBase(MolarEnergyUnits.Megajoulespermole);
+        if(this.megajoulespermoleLazy !== null){
+            return this.megajoulespermoleLazy;
+        }
+        return this.megajoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.Megajoulespermole);
     }
 
     public static FromJoulesPerMole(value: number): MolarEnergy {
@@ -36,42 +48,32 @@ export class MolarEnergy {
     }
 
     private convertFromBase(toUnit: MolarEnergyUnits): number {
-
-                switch (toUnit) {
-                    
-                case MolarEnergyUnits.JoulesPerMole:
-                    return this.value;
+        switch (toUnit) {
                 
-                case MolarEnergyUnits.Kilojoulespermole:
-                    return (this.value) / 1000;
-                
-                case MolarEnergyUnits.Megajoulespermole:
-                    return (this.value) / 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case MolarEnergyUnits.JoulesPerMole:
+                return this.value;
+            case MolarEnergyUnits.Kilojoulespermole:
+                return (this.value) / 1000;
+            case MolarEnergyUnits.Megajoulespermole:
+                return (this.value) / 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MolarEnergyUnits): number {
-
-                switch (fromUnit) {
-                    
-                case MolarEnergyUnits.JoulesPerMole:
-                    return value;
+        switch (fromUnit) {
                 
-                case MolarEnergyUnits.Kilojoulespermole:
-                    return (value) * 1000;
-                
-                case MolarEnergyUnits.Megajoulespermole:
-                    return (value) * 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case MolarEnergyUnits.JoulesPerMole:
+                return value;
+            case MolarEnergyUnits.Kilojoulespermole:
+                return (value) * 1000;
+            case MolarEnergyUnits.Megajoulespermole:
+                return (value) * 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

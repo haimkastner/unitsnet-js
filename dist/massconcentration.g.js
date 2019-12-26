@@ -41,115 +41,259 @@ var MassConcentrationUnits;
 })(MassConcentrationUnits = exports.MassConcentrationUnits || (exports.MassConcentrationUnits = {}));
 class MassConcentration {
     constructor(value, fromUnit) {
+        this.gramspercubicmillimeterLazy = null;
+        this.gramspercubiccentimeterLazy = null;
+        this.gramspercubicmeterLazy = null;
+        this.gramspermilliliterLazy = null;
+        this.gramsperdeciliterLazy = null;
+        this.gramsperliterLazy = null;
+        this.tonnespercubicmillimeterLazy = null;
+        this.tonnespercubiccentimeterLazy = null;
+        this.tonnespercubicmeterLazy = null;
+        this.poundspercubicinchLazy = null;
+        this.poundspercubicfootLazy = null;
+        this.slugspercubicfootLazy = null;
+        this.poundsperusgallonLazy = null;
+        this.poundsperimperialgallonLazy = null;
+        this.kilogramspercubicmillimeterLazy = null;
+        this.kilogramspercubiccentimeterLazy = null;
+        this.kilogramspercubicmeterLazy = null;
+        this.microgramspercubicmeterLazy = null;
+        this.picogramspermilliliterLazy = null;
+        this.nanogramspermilliliterLazy = null;
+        this.microgramspermilliliterLazy = null;
+        this.centigramspermilliliterLazy = null;
+        this.decigramspermilliliterLazy = null;
+        this.picogramsperdeciliterLazy = null;
+        this.nanogramsperdeciliterLazy = null;
+        this.microgramsperdeciliterLazy = null;
+        this.centigramsperdeciliterLazy = null;
+        this.decigramsperdeciliterLazy = null;
+        this.picogramsperliterLazy = null;
+        this.nanogramsperliterLazy = null;
+        this.microgramsperliterLazy = null;
+        this.centigramsperliterLazy = null;
+        this.decigramsperliterLazy = null;
+        this.kilogramsperliterLazy = null;
+        this.kilopoundspercubicinchLazy = null;
+        this.kilopoundspercubicfootLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get GramsPerCubicMillimeter() {
-        return this.convertFromBase(MassConcentrationUnits.GramsPerCubicMillimeter);
+        if (this.gramspercubicmillimeterLazy !== null) {
+            return this.gramspercubicmillimeterLazy;
+        }
+        return this.gramspercubicmillimeterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerCubicMillimeter);
     }
     get GramsPerCubicCentimeter() {
-        return this.convertFromBase(MassConcentrationUnits.GramsPerCubicCentimeter);
+        if (this.gramspercubiccentimeterLazy !== null) {
+            return this.gramspercubiccentimeterLazy;
+        }
+        return this.gramspercubiccentimeterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerCubicCentimeter);
     }
     get GramsPerCubicMeter() {
-        return this.convertFromBase(MassConcentrationUnits.GramsPerCubicMeter);
+        if (this.gramspercubicmeterLazy !== null) {
+            return this.gramspercubicmeterLazy;
+        }
+        return this.gramspercubicmeterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerCubicMeter);
     }
     get GramsPerMilliliter() {
-        return this.convertFromBase(MassConcentrationUnits.GramsPerMilliliter);
+        if (this.gramspermilliliterLazy !== null) {
+            return this.gramspermilliliterLazy;
+        }
+        return this.gramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerMilliliter);
     }
     get GramsPerDeciliter() {
-        return this.convertFromBase(MassConcentrationUnits.GramsPerDeciliter);
+        if (this.gramsperdeciliterLazy !== null) {
+            return this.gramsperdeciliterLazy;
+        }
+        return this.gramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerDeciliter);
     }
     get GramsPerLiter() {
-        return this.convertFromBase(MassConcentrationUnits.GramsPerLiter);
+        if (this.gramsperliterLazy !== null) {
+            return this.gramsperliterLazy;
+        }
+        return this.gramsperliterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerLiter);
     }
     get TonnesPerCubicMillimeter() {
-        return this.convertFromBase(MassConcentrationUnits.TonnesPerCubicMillimeter);
+        if (this.tonnespercubicmillimeterLazy !== null) {
+            return this.tonnespercubicmillimeterLazy;
+        }
+        return this.tonnespercubicmillimeterLazy = this.convertFromBase(MassConcentrationUnits.TonnesPerCubicMillimeter);
     }
     get TonnesPerCubicCentimeter() {
-        return this.convertFromBase(MassConcentrationUnits.TonnesPerCubicCentimeter);
+        if (this.tonnespercubiccentimeterLazy !== null) {
+            return this.tonnespercubiccentimeterLazy;
+        }
+        return this.tonnespercubiccentimeterLazy = this.convertFromBase(MassConcentrationUnits.TonnesPerCubicCentimeter);
     }
     get TonnesPerCubicMeter() {
-        return this.convertFromBase(MassConcentrationUnits.TonnesPerCubicMeter);
+        if (this.tonnespercubicmeterLazy !== null) {
+            return this.tonnespercubicmeterLazy;
+        }
+        return this.tonnespercubicmeterLazy = this.convertFromBase(MassConcentrationUnits.TonnesPerCubicMeter);
     }
     get PoundsPerCubicInch() {
-        return this.convertFromBase(MassConcentrationUnits.PoundsPerCubicInch);
+        if (this.poundspercubicinchLazy !== null) {
+            return this.poundspercubicinchLazy;
+        }
+        return this.poundspercubicinchLazy = this.convertFromBase(MassConcentrationUnits.PoundsPerCubicInch);
     }
     get PoundsPerCubicFoot() {
-        return this.convertFromBase(MassConcentrationUnits.PoundsPerCubicFoot);
+        if (this.poundspercubicfootLazy !== null) {
+            return this.poundspercubicfootLazy;
+        }
+        return this.poundspercubicfootLazy = this.convertFromBase(MassConcentrationUnits.PoundsPerCubicFoot);
     }
     get SlugsPerCubicFoot() {
-        return this.convertFromBase(MassConcentrationUnits.SlugsPerCubicFoot);
+        if (this.slugspercubicfootLazy !== null) {
+            return this.slugspercubicfootLazy;
+        }
+        return this.slugspercubicfootLazy = this.convertFromBase(MassConcentrationUnits.SlugsPerCubicFoot);
     }
     get PoundsPerUSGallon() {
-        return this.convertFromBase(MassConcentrationUnits.PoundsPerUSGallon);
+        if (this.poundsperusgallonLazy !== null) {
+            return this.poundsperusgallonLazy;
+        }
+        return this.poundsperusgallonLazy = this.convertFromBase(MassConcentrationUnits.PoundsPerUSGallon);
     }
     get PoundsPerImperialGallon() {
-        return this.convertFromBase(MassConcentrationUnits.PoundsPerImperialGallon);
+        if (this.poundsperimperialgallonLazy !== null) {
+            return this.poundsperimperialgallonLazy;
+        }
+        return this.poundsperimperialgallonLazy = this.convertFromBase(MassConcentrationUnits.PoundsPerImperialGallon);
     }
     get Kilogramspercubicmillimeter() {
-        return this.convertFromBase(MassConcentrationUnits.Kilogramspercubicmillimeter);
+        if (this.kilogramspercubicmillimeterLazy !== null) {
+            return this.kilogramspercubicmillimeterLazy;
+        }
+        return this.kilogramspercubicmillimeterLazy = this.convertFromBase(MassConcentrationUnits.Kilogramspercubicmillimeter);
     }
     get Kilogramspercubiccentimeter() {
-        return this.convertFromBase(MassConcentrationUnits.Kilogramspercubiccentimeter);
+        if (this.kilogramspercubiccentimeterLazy !== null) {
+            return this.kilogramspercubiccentimeterLazy;
+        }
+        return this.kilogramspercubiccentimeterLazy = this.convertFromBase(MassConcentrationUnits.Kilogramspercubiccentimeter);
     }
     get Kilogramspercubicmeter() {
-        return this.convertFromBase(MassConcentrationUnits.Kilogramspercubicmeter);
+        if (this.kilogramspercubicmeterLazy !== null) {
+            return this.kilogramspercubicmeterLazy;
+        }
+        return this.kilogramspercubicmeterLazy = this.convertFromBase(MassConcentrationUnits.Kilogramspercubicmeter);
     }
     get Microgramspercubicmeter() {
-        return this.convertFromBase(MassConcentrationUnits.Microgramspercubicmeter);
+        if (this.microgramspercubicmeterLazy !== null) {
+            return this.microgramspercubicmeterLazy;
+        }
+        return this.microgramspercubicmeterLazy = this.convertFromBase(MassConcentrationUnits.Microgramspercubicmeter);
     }
     get Picogramspermilliliter() {
-        return this.convertFromBase(MassConcentrationUnits.Picogramspermilliliter);
+        if (this.picogramspermilliliterLazy !== null) {
+            return this.picogramspermilliliterLazy;
+        }
+        return this.picogramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.Picogramspermilliliter);
     }
     get Nanogramspermilliliter() {
-        return this.convertFromBase(MassConcentrationUnits.Nanogramspermilliliter);
+        if (this.nanogramspermilliliterLazy !== null) {
+            return this.nanogramspermilliliterLazy;
+        }
+        return this.nanogramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.Nanogramspermilliliter);
     }
     get Microgramspermilliliter() {
-        return this.convertFromBase(MassConcentrationUnits.Microgramspermilliliter);
+        if (this.microgramspermilliliterLazy !== null) {
+            return this.microgramspermilliliterLazy;
+        }
+        return this.microgramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.Microgramspermilliliter);
     }
     get Centigramspermilliliter() {
-        return this.convertFromBase(MassConcentrationUnits.Centigramspermilliliter);
+        if (this.centigramspermilliliterLazy !== null) {
+            return this.centigramspermilliliterLazy;
+        }
+        return this.centigramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.Centigramspermilliliter);
     }
     get Decigramspermilliliter() {
-        return this.convertFromBase(MassConcentrationUnits.Decigramspermilliliter);
+        if (this.decigramspermilliliterLazy !== null) {
+            return this.decigramspermilliliterLazy;
+        }
+        return this.decigramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.Decigramspermilliliter);
     }
     get Picogramsperdeciliter() {
-        return this.convertFromBase(MassConcentrationUnits.Picogramsperdeciliter);
+        if (this.picogramsperdeciliterLazy !== null) {
+            return this.picogramsperdeciliterLazy;
+        }
+        return this.picogramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.Picogramsperdeciliter);
     }
     get Nanogramsperdeciliter() {
-        return this.convertFromBase(MassConcentrationUnits.Nanogramsperdeciliter);
+        if (this.nanogramsperdeciliterLazy !== null) {
+            return this.nanogramsperdeciliterLazy;
+        }
+        return this.nanogramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.Nanogramsperdeciliter);
     }
     get Microgramsperdeciliter() {
-        return this.convertFromBase(MassConcentrationUnits.Microgramsperdeciliter);
+        if (this.microgramsperdeciliterLazy !== null) {
+            return this.microgramsperdeciliterLazy;
+        }
+        return this.microgramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.Microgramsperdeciliter);
     }
     get Centigramsperdeciliter() {
-        return this.convertFromBase(MassConcentrationUnits.Centigramsperdeciliter);
+        if (this.centigramsperdeciliterLazy !== null) {
+            return this.centigramsperdeciliterLazy;
+        }
+        return this.centigramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.Centigramsperdeciliter);
     }
     get Decigramsperdeciliter() {
-        return this.convertFromBase(MassConcentrationUnits.Decigramsperdeciliter);
+        if (this.decigramsperdeciliterLazy !== null) {
+            return this.decigramsperdeciliterLazy;
+        }
+        return this.decigramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.Decigramsperdeciliter);
     }
     get Picogramsperliter() {
-        return this.convertFromBase(MassConcentrationUnits.Picogramsperliter);
+        if (this.picogramsperliterLazy !== null) {
+            return this.picogramsperliterLazy;
+        }
+        return this.picogramsperliterLazy = this.convertFromBase(MassConcentrationUnits.Picogramsperliter);
     }
     get Nanogramsperliter() {
-        return this.convertFromBase(MassConcentrationUnits.Nanogramsperliter);
+        if (this.nanogramsperliterLazy !== null) {
+            return this.nanogramsperliterLazy;
+        }
+        return this.nanogramsperliterLazy = this.convertFromBase(MassConcentrationUnits.Nanogramsperliter);
     }
     get Microgramsperliter() {
-        return this.convertFromBase(MassConcentrationUnits.Microgramsperliter);
+        if (this.microgramsperliterLazy !== null) {
+            return this.microgramsperliterLazy;
+        }
+        return this.microgramsperliterLazy = this.convertFromBase(MassConcentrationUnits.Microgramsperliter);
     }
     get Centigramsperliter() {
-        return this.convertFromBase(MassConcentrationUnits.Centigramsperliter);
+        if (this.centigramsperliterLazy !== null) {
+            return this.centigramsperliterLazy;
+        }
+        return this.centigramsperliterLazy = this.convertFromBase(MassConcentrationUnits.Centigramsperliter);
     }
     get Decigramsperliter() {
-        return this.convertFromBase(MassConcentrationUnits.Decigramsperliter);
+        if (this.decigramsperliterLazy !== null) {
+            return this.decigramsperliterLazy;
+        }
+        return this.decigramsperliterLazy = this.convertFromBase(MassConcentrationUnits.Decigramsperliter);
     }
     get Kilogramsperliter() {
-        return this.convertFromBase(MassConcentrationUnits.Kilogramsperliter);
+        if (this.kilogramsperliterLazy !== null) {
+            return this.kilogramsperliterLazy;
+        }
+        return this.kilogramsperliterLazy = this.convertFromBase(MassConcentrationUnits.Kilogramsperliter);
     }
     get Kilopoundspercubicinch() {
-        return this.convertFromBase(MassConcentrationUnits.Kilopoundspercubicinch);
+        if (this.kilopoundspercubicinchLazy !== null) {
+            return this.kilopoundspercubicinchLazy;
+        }
+        return this.kilopoundspercubicinchLazy = this.convertFromBase(MassConcentrationUnits.Kilopoundspercubicinch);
     }
     get Kilopoundspercubicfoot() {
-        return this.convertFromBase(MassConcentrationUnits.Kilopoundspercubicfoot);
+        if (this.kilopoundspercubicfootLazy !== null) {
+            return this.kilopoundspercubicfootLazy;
+        }
+        return this.kilopoundspercubicfootLazy = this.convertFromBase(MassConcentrationUnits.Kilopoundspercubicfoot);
     }
     static FromGramsPerCubicMillimeter(value) {
         return new MassConcentration(value, MassConcentrationUnits.GramsPerCubicMillimeter);

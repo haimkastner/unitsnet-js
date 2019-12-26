@@ -15,6 +15,19 @@ export declare enum LuminosityUnits {
 }
 export declare class Luminosity {
     private value;
+    private wattsLazy;
+    private solarluminositiesLazy;
+    private femtowattsLazy;
+    private picowattsLazy;
+    private nanowattsLazy;
+    private microwattsLazy;
+    private deciwattsLazy;
+    private decawattsLazy;
+    private kilowattsLazy;
+    private megawattsLazy;
+    private gigawattsLazy;
+    private terawattsLazy;
+    private petawattsLazy;
     constructor(value: number, fromUnit: LuminosityUnits);
     get Watts(): number;
     get SolarLuminosities(): number;

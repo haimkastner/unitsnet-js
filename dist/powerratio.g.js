@@ -7,13 +7,21 @@ var PowerRatioUnits;
 })(PowerRatioUnits = exports.PowerRatioUnits || (exports.PowerRatioUnits = {}));
 class PowerRatio {
     constructor(value, fromUnit) {
+        this.decibelwattsLazy = null;
+        this.decibelmilliwattsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get DecibelWatts() {
-        return this.convertFromBase(PowerRatioUnits.DecibelWatts);
+        if (this.decibelwattsLazy !== null) {
+            return this.decibelwattsLazy;
+        }
+        return this.decibelwattsLazy = this.convertFromBase(PowerRatioUnits.DecibelWatts);
     }
     get DecibelMilliwatts() {
-        return this.convertFromBase(PowerRatioUnits.DecibelMilliwatts);
+        if (this.decibelmilliwattsLazy !== null) {
+            return this.decibelmilliwattsLazy;
+        }
+        return this.decibelmilliwattsLazy = this.convertFromBase(PowerRatioUnits.DecibelMilliwatts);
     }
     static FromDecibelWatts(value) {
         return new PowerRatio(value, PowerRatioUnits.DecibelWatts);

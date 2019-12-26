@@ -5,17 +5,25 @@ export enum PowerRatioUnits {
 
 export class PowerRatio {
     private value: number;
+    private decibelwattsLazy: number | null = null;
+    private decibelmilliwattsLazy: number | null = null;
 
     public constructor(value: number, fromUnit: PowerRatioUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get DecibelWatts(): number {
-        return this.convertFromBase(PowerRatioUnits.DecibelWatts);
+        if(this.decibelwattsLazy !== null){
+            return this.decibelwattsLazy;
+        }
+        return this.decibelwattsLazy = this.convertFromBase(PowerRatioUnits.DecibelWatts);
     }
 
     public get DecibelMilliwatts(): number {
-        return this.convertFromBase(PowerRatioUnits.DecibelMilliwatts);
+        if(this.decibelmilliwattsLazy !== null){
+            return this.decibelmilliwattsLazy;
+        }
+        return this.decibelmilliwattsLazy = this.convertFromBase(PowerRatioUnits.DecibelMilliwatts);
     }
 
     public static FromDecibelWatts(value: number): PowerRatio {
@@ -27,36 +35,28 @@ export class PowerRatio {
     }
 
     private convertFromBase(toUnit: PowerRatioUnits): number {
-
-                switch (toUnit) {
-                    
-                case PowerRatioUnits.DecibelWatts:
-                    return this.value;
+        switch (toUnit) {
                 
-                case PowerRatioUnits.DecibelMilliwatts:
-                    return this.value + 30;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case PowerRatioUnits.DecibelWatts:
+                return this.value;
+            case PowerRatioUnits.DecibelMilliwatts:
+                return this.value + 30;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PowerRatioUnits): number {
-
-                switch (fromUnit) {
-                    
-                case PowerRatioUnits.DecibelWatts:
-                    return value;
+        switch (fromUnit) {
                 
-                case PowerRatioUnits.DecibelMilliwatts:
-                    return value - 30;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case PowerRatioUnits.DecibelWatts:
+                return value;
+            case PowerRatioUnits.DecibelMilliwatts:
+                return value - 30;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

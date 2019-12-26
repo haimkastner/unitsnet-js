@@ -22,58 +22,126 @@ var HeatFluxUnits;
 })(HeatFluxUnits = exports.HeatFluxUnits || (exports.HeatFluxUnits = {}));
 class HeatFlux {
     constructor(value, fromUnit) {
+        this.wattspersquaremeterLazy = null;
+        this.wattspersquareinchLazy = null;
+        this.wattspersquarefootLazy = null;
+        this.btuspersecondsquareinchLazy = null;
+        this.btuspersecondsquarefootLazy = null;
+        this.btusperminutesquarefootLazy = null;
+        this.btusperhoursquarefootLazy = null;
+        this.caloriespersecondsquarecentimeterLazy = null;
+        this.kilocaloriesperhoursquaremeterLazy = null;
+        this.poundsforceperfootsecondLazy = null;
+        this.poundspersecondcubedLazy = null;
+        this.nanowattspersquaremeterLazy = null;
+        this.microwattspersquaremeterLazy = null;
+        this.centiwattspersquaremeterLazy = null;
+        this.deciwattspersquaremeterLazy = null;
+        this.kilowattspersquaremeterLazy = null;
+        this.kilocaloriespersecondsquarecentimeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get WattsPerSquareMeter() {
-        return this.convertFromBase(HeatFluxUnits.WattsPerSquareMeter);
+        if (this.wattspersquaremeterLazy !== null) {
+            return this.wattspersquaremeterLazy;
+        }
+        return this.wattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.WattsPerSquareMeter);
     }
     get WattsPerSquareInch() {
-        return this.convertFromBase(HeatFluxUnits.WattsPerSquareInch);
+        if (this.wattspersquareinchLazy !== null) {
+            return this.wattspersquareinchLazy;
+        }
+        return this.wattspersquareinchLazy = this.convertFromBase(HeatFluxUnits.WattsPerSquareInch);
     }
     get WattsPerSquareFoot() {
-        return this.convertFromBase(HeatFluxUnits.WattsPerSquareFoot);
+        if (this.wattspersquarefootLazy !== null) {
+            return this.wattspersquarefootLazy;
+        }
+        return this.wattspersquarefootLazy = this.convertFromBase(HeatFluxUnits.WattsPerSquareFoot);
     }
     get BtusPerSecondSquareInch() {
-        return this.convertFromBase(HeatFluxUnits.BtusPerSecondSquareInch);
+        if (this.btuspersecondsquareinchLazy !== null) {
+            return this.btuspersecondsquareinchLazy;
+        }
+        return this.btuspersecondsquareinchLazy = this.convertFromBase(HeatFluxUnits.BtusPerSecondSquareInch);
     }
     get BtusPerSecondSquareFoot() {
-        return this.convertFromBase(HeatFluxUnits.BtusPerSecondSquareFoot);
+        if (this.btuspersecondsquarefootLazy !== null) {
+            return this.btuspersecondsquarefootLazy;
+        }
+        return this.btuspersecondsquarefootLazy = this.convertFromBase(HeatFluxUnits.BtusPerSecondSquareFoot);
     }
     get BtusPerMinuteSquareFoot() {
-        return this.convertFromBase(HeatFluxUnits.BtusPerMinuteSquareFoot);
+        if (this.btusperminutesquarefootLazy !== null) {
+            return this.btusperminutesquarefootLazy;
+        }
+        return this.btusperminutesquarefootLazy = this.convertFromBase(HeatFluxUnits.BtusPerMinuteSquareFoot);
     }
     get BtusPerHourSquareFoot() {
-        return this.convertFromBase(HeatFluxUnits.BtusPerHourSquareFoot);
+        if (this.btusperhoursquarefootLazy !== null) {
+            return this.btusperhoursquarefootLazy;
+        }
+        return this.btusperhoursquarefootLazy = this.convertFromBase(HeatFluxUnits.BtusPerHourSquareFoot);
     }
     get CaloriesPerSecondSquareCentimeter() {
-        return this.convertFromBase(HeatFluxUnits.CaloriesPerSecondSquareCentimeter);
+        if (this.caloriespersecondsquarecentimeterLazy !== null) {
+            return this.caloriespersecondsquarecentimeterLazy;
+        }
+        return this.caloriespersecondsquarecentimeterLazy = this.convertFromBase(HeatFluxUnits.CaloriesPerSecondSquareCentimeter);
     }
     get KilocaloriesPerHourSquareMeter() {
-        return this.convertFromBase(HeatFluxUnits.KilocaloriesPerHourSquareMeter);
+        if (this.kilocaloriesperhoursquaremeterLazy !== null) {
+            return this.kilocaloriesperhoursquaremeterLazy;
+        }
+        return this.kilocaloriesperhoursquaremeterLazy = this.convertFromBase(HeatFluxUnits.KilocaloriesPerHourSquareMeter);
     }
     get PoundsForcePerFootSecond() {
-        return this.convertFromBase(HeatFluxUnits.PoundsForcePerFootSecond);
+        if (this.poundsforceperfootsecondLazy !== null) {
+            return this.poundsforceperfootsecondLazy;
+        }
+        return this.poundsforceperfootsecondLazy = this.convertFromBase(HeatFluxUnits.PoundsForcePerFootSecond);
     }
     get PoundsPerSecondCubed() {
-        return this.convertFromBase(HeatFluxUnits.PoundsPerSecondCubed);
+        if (this.poundspersecondcubedLazy !== null) {
+            return this.poundspersecondcubedLazy;
+        }
+        return this.poundspersecondcubedLazy = this.convertFromBase(HeatFluxUnits.PoundsPerSecondCubed);
     }
     get Nanowattspersquaremeter() {
-        return this.convertFromBase(HeatFluxUnits.Nanowattspersquaremeter);
+        if (this.nanowattspersquaremeterLazy !== null) {
+            return this.nanowattspersquaremeterLazy;
+        }
+        return this.nanowattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.Nanowattspersquaremeter);
     }
     get Microwattspersquaremeter() {
-        return this.convertFromBase(HeatFluxUnits.Microwattspersquaremeter);
+        if (this.microwattspersquaremeterLazy !== null) {
+            return this.microwattspersquaremeterLazy;
+        }
+        return this.microwattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.Microwattspersquaremeter);
     }
     get Centiwattspersquaremeter() {
-        return this.convertFromBase(HeatFluxUnits.Centiwattspersquaremeter);
+        if (this.centiwattspersquaremeterLazy !== null) {
+            return this.centiwattspersquaremeterLazy;
+        }
+        return this.centiwattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.Centiwattspersquaremeter);
     }
     get Deciwattspersquaremeter() {
-        return this.convertFromBase(HeatFluxUnits.Deciwattspersquaremeter);
+        if (this.deciwattspersquaremeterLazy !== null) {
+            return this.deciwattspersquaremeterLazy;
+        }
+        return this.deciwattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.Deciwattspersquaremeter);
     }
     get Kilowattspersquaremeter() {
-        return this.convertFromBase(HeatFluxUnits.Kilowattspersquaremeter);
+        if (this.kilowattspersquaremeterLazy !== null) {
+            return this.kilowattspersquaremeterLazy;
+        }
+        return this.kilowattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.Kilowattspersquaremeter);
     }
     get Kilocaloriespersecondsquarecentimeter() {
-        return this.convertFromBase(HeatFluxUnits.Kilocaloriespersecondsquarecentimeter);
+        if (this.kilocaloriespersecondsquarecentimeterLazy !== null) {
+            return this.kilocaloriespersecondsquarecentimeterLazy;
+        }
+        return this.kilocaloriespersecondsquarecentimeterLazy = this.convertFromBase(HeatFluxUnits.Kilocaloriespersecondsquarecentimeter);
     }
     static FromWattsPerSquareMeter(value) {
         return new HeatFlux(value, HeatFluxUnits.WattsPerSquareMeter);

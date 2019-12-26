@@ -8,16 +8,28 @@ var LinearDensityUnits;
 })(LinearDensityUnits = exports.LinearDensityUnits || (exports.LinearDensityUnits = {}));
 class LinearDensity {
     constructor(value, fromUnit) {
+        this.gramspermeterLazy = null;
+        this.poundsperfootLazy = null;
+        this.kilogramspermeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get GramsPerMeter() {
-        return this.convertFromBase(LinearDensityUnits.GramsPerMeter);
+        if (this.gramspermeterLazy !== null) {
+            return this.gramspermeterLazy;
+        }
+        return this.gramspermeterLazy = this.convertFromBase(LinearDensityUnits.GramsPerMeter);
     }
     get PoundsPerFoot() {
-        return this.convertFromBase(LinearDensityUnits.PoundsPerFoot);
+        if (this.poundsperfootLazy !== null) {
+            return this.poundsperfootLazy;
+        }
+        return this.poundsperfootLazy = this.convertFromBase(LinearDensityUnits.PoundsPerFoot);
     }
     get Kilogramspermeter() {
-        return this.convertFromBase(LinearDensityUnits.Kilogramspermeter);
+        if (this.kilogramspermeterLazy !== null) {
+            return this.kilogramspermeterLazy;
+        }
+        return this.kilogramspermeterLazy = this.convertFromBase(LinearDensityUnits.Kilogramspermeter);
     }
     static FromGramsPerMeter(value) {
         return new LinearDensity(value, LinearDensityUnits.GramsPerMeter);

@@ -14,34 +14,70 @@ var DurationUnits;
 })(DurationUnits = exports.DurationUnits || (exports.DurationUnits = {}));
 class Duration {
     constructor(value, fromUnit) {
+        this.years365Lazy = null;
+        this.months30Lazy = null;
+        this.weeksLazy = null;
+        this.daysLazy = null;
+        this.hoursLazy = null;
+        this.minutesLazy = null;
+        this.secondsLazy = null;
+        this.nanosecondsLazy = null;
+        this.microsecondsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Years365() {
-        return this.convertFromBase(DurationUnits.Years365);
+        if (this.years365Lazy !== null) {
+            return this.years365Lazy;
+        }
+        return this.years365Lazy = this.convertFromBase(DurationUnits.Years365);
     }
     get Months30() {
-        return this.convertFromBase(DurationUnits.Months30);
+        if (this.months30Lazy !== null) {
+            return this.months30Lazy;
+        }
+        return this.months30Lazy = this.convertFromBase(DurationUnits.Months30);
     }
     get Weeks() {
-        return this.convertFromBase(DurationUnits.Weeks);
+        if (this.weeksLazy !== null) {
+            return this.weeksLazy;
+        }
+        return this.weeksLazy = this.convertFromBase(DurationUnits.Weeks);
     }
     get Days() {
-        return this.convertFromBase(DurationUnits.Days);
+        if (this.daysLazy !== null) {
+            return this.daysLazy;
+        }
+        return this.daysLazy = this.convertFromBase(DurationUnits.Days);
     }
     get Hours() {
-        return this.convertFromBase(DurationUnits.Hours);
+        if (this.hoursLazy !== null) {
+            return this.hoursLazy;
+        }
+        return this.hoursLazy = this.convertFromBase(DurationUnits.Hours);
     }
     get Minutes() {
-        return this.convertFromBase(DurationUnits.Minutes);
+        if (this.minutesLazy !== null) {
+            return this.minutesLazy;
+        }
+        return this.minutesLazy = this.convertFromBase(DurationUnits.Minutes);
     }
     get Seconds() {
-        return this.convertFromBase(DurationUnits.Seconds);
+        if (this.secondsLazy !== null) {
+            return this.secondsLazy;
+        }
+        return this.secondsLazy = this.convertFromBase(DurationUnits.Seconds);
     }
     get Nanoseconds() {
-        return this.convertFromBase(DurationUnits.Nanoseconds);
+        if (this.nanosecondsLazy !== null) {
+            return this.nanosecondsLazy;
+        }
+        return this.nanosecondsLazy = this.convertFromBase(DurationUnits.Nanoseconds);
     }
     get Microseconds() {
-        return this.convertFromBase(DurationUnits.Microseconds);
+        if (this.microsecondsLazy !== null) {
+            return this.microsecondsLazy;
+        }
+        return this.microsecondsLazy = this.convertFromBase(DurationUnits.Microseconds);
     }
     static FromYears365(value) {
         return new Duration(value, DurationUnits.Years365);

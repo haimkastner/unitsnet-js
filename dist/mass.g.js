@@ -29,79 +29,175 @@ var MassUnits;
 })(MassUnits = exports.MassUnits || (exports.MassUnits = {}));
 class Mass {
     constructor(value, fromUnit) {
+        this.gramsLazy = null;
+        this.tonnesLazy = null;
+        this.shorttonsLazy = null;
+        this.longtonsLazy = null;
+        this.poundsLazy = null;
+        this.ouncesLazy = null;
+        this.slugsLazy = null;
+        this.stoneLazy = null;
+        this.shorthundredweightLazy = null;
+        this.longhundredweightLazy = null;
+        this.grainsLazy = null;
+        this.solarmassesLazy = null;
+        this.earthmassesLazy = null;
+        this.nanogramsLazy = null;
+        this.microgramsLazy = null;
+        this.centigramsLazy = null;
+        this.decigramsLazy = null;
+        this.decagramsLazy = null;
+        this.hectogramsLazy = null;
+        this.kilogramsLazy = null;
+        this.kilotonnesLazy = null;
+        this.megatonnesLazy = null;
+        this.kilopoundsLazy = null;
+        this.megapoundsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Grams() {
-        return this.convertFromBase(MassUnits.Grams);
+        if (this.gramsLazy !== null) {
+            return this.gramsLazy;
+        }
+        return this.gramsLazy = this.convertFromBase(MassUnits.Grams);
     }
     get Tonnes() {
-        return this.convertFromBase(MassUnits.Tonnes);
+        if (this.tonnesLazy !== null) {
+            return this.tonnesLazy;
+        }
+        return this.tonnesLazy = this.convertFromBase(MassUnits.Tonnes);
     }
     get ShortTons() {
-        return this.convertFromBase(MassUnits.ShortTons);
+        if (this.shorttonsLazy !== null) {
+            return this.shorttonsLazy;
+        }
+        return this.shorttonsLazy = this.convertFromBase(MassUnits.ShortTons);
     }
     get LongTons() {
-        return this.convertFromBase(MassUnits.LongTons);
+        if (this.longtonsLazy !== null) {
+            return this.longtonsLazy;
+        }
+        return this.longtonsLazy = this.convertFromBase(MassUnits.LongTons);
     }
     get Pounds() {
-        return this.convertFromBase(MassUnits.Pounds);
+        if (this.poundsLazy !== null) {
+            return this.poundsLazy;
+        }
+        return this.poundsLazy = this.convertFromBase(MassUnits.Pounds);
     }
     get Ounces() {
-        return this.convertFromBase(MassUnits.Ounces);
+        if (this.ouncesLazy !== null) {
+            return this.ouncesLazy;
+        }
+        return this.ouncesLazy = this.convertFromBase(MassUnits.Ounces);
     }
     get Slugs() {
-        return this.convertFromBase(MassUnits.Slugs);
+        if (this.slugsLazy !== null) {
+            return this.slugsLazy;
+        }
+        return this.slugsLazy = this.convertFromBase(MassUnits.Slugs);
     }
     get Stone() {
-        return this.convertFromBase(MassUnits.Stone);
+        if (this.stoneLazy !== null) {
+            return this.stoneLazy;
+        }
+        return this.stoneLazy = this.convertFromBase(MassUnits.Stone);
     }
     get ShortHundredweight() {
-        return this.convertFromBase(MassUnits.ShortHundredweight);
+        if (this.shorthundredweightLazy !== null) {
+            return this.shorthundredweightLazy;
+        }
+        return this.shorthundredweightLazy = this.convertFromBase(MassUnits.ShortHundredweight);
     }
     get LongHundredweight() {
-        return this.convertFromBase(MassUnits.LongHundredweight);
+        if (this.longhundredweightLazy !== null) {
+            return this.longhundredweightLazy;
+        }
+        return this.longhundredweightLazy = this.convertFromBase(MassUnits.LongHundredweight);
     }
     get Grains() {
-        return this.convertFromBase(MassUnits.Grains);
+        if (this.grainsLazy !== null) {
+            return this.grainsLazy;
+        }
+        return this.grainsLazy = this.convertFromBase(MassUnits.Grains);
     }
     get SolarMasses() {
-        return this.convertFromBase(MassUnits.SolarMasses);
+        if (this.solarmassesLazy !== null) {
+            return this.solarmassesLazy;
+        }
+        return this.solarmassesLazy = this.convertFromBase(MassUnits.SolarMasses);
     }
     get EarthMasses() {
-        return this.convertFromBase(MassUnits.EarthMasses);
+        if (this.earthmassesLazy !== null) {
+            return this.earthmassesLazy;
+        }
+        return this.earthmassesLazy = this.convertFromBase(MassUnits.EarthMasses);
     }
     get Nanograms() {
-        return this.convertFromBase(MassUnits.Nanograms);
+        if (this.nanogramsLazy !== null) {
+            return this.nanogramsLazy;
+        }
+        return this.nanogramsLazy = this.convertFromBase(MassUnits.Nanograms);
     }
     get Micrograms() {
-        return this.convertFromBase(MassUnits.Micrograms);
+        if (this.microgramsLazy !== null) {
+            return this.microgramsLazy;
+        }
+        return this.microgramsLazy = this.convertFromBase(MassUnits.Micrograms);
     }
     get Centigrams() {
-        return this.convertFromBase(MassUnits.Centigrams);
+        if (this.centigramsLazy !== null) {
+            return this.centigramsLazy;
+        }
+        return this.centigramsLazy = this.convertFromBase(MassUnits.Centigrams);
     }
     get Decigrams() {
-        return this.convertFromBase(MassUnits.Decigrams);
+        if (this.decigramsLazy !== null) {
+            return this.decigramsLazy;
+        }
+        return this.decigramsLazy = this.convertFromBase(MassUnits.Decigrams);
     }
     get Decagrams() {
-        return this.convertFromBase(MassUnits.Decagrams);
+        if (this.decagramsLazy !== null) {
+            return this.decagramsLazy;
+        }
+        return this.decagramsLazy = this.convertFromBase(MassUnits.Decagrams);
     }
     get Hectograms() {
-        return this.convertFromBase(MassUnits.Hectograms);
+        if (this.hectogramsLazy !== null) {
+            return this.hectogramsLazy;
+        }
+        return this.hectogramsLazy = this.convertFromBase(MassUnits.Hectograms);
     }
     get Kilograms() {
-        return this.convertFromBase(MassUnits.Kilograms);
+        if (this.kilogramsLazy !== null) {
+            return this.kilogramsLazy;
+        }
+        return this.kilogramsLazy = this.convertFromBase(MassUnits.Kilograms);
     }
     get Kilotonnes() {
-        return this.convertFromBase(MassUnits.Kilotonnes);
+        if (this.kilotonnesLazy !== null) {
+            return this.kilotonnesLazy;
+        }
+        return this.kilotonnesLazy = this.convertFromBase(MassUnits.Kilotonnes);
     }
     get Megatonnes() {
-        return this.convertFromBase(MassUnits.Megatonnes);
+        if (this.megatonnesLazy !== null) {
+            return this.megatonnesLazy;
+        }
+        return this.megatonnesLazy = this.convertFromBase(MassUnits.Megatonnes);
     }
     get Kilopounds() {
-        return this.convertFromBase(MassUnits.Kilopounds);
+        if (this.kilopoundsLazy !== null) {
+            return this.kilopoundsLazy;
+        }
+        return this.kilopoundsLazy = this.convertFromBase(MassUnits.Kilopounds);
     }
     get Megapounds() {
-        return this.convertFromBase(MassUnits.Megapounds);
+        if (this.megapoundsLazy !== null) {
+            return this.megapoundsLazy;
+        }
+        return this.megapoundsLazy = this.convertFromBase(MassUnits.Megapounds);
     }
     static FromGrams(value) {
         return new Mass(value, MassUnits.Grams);

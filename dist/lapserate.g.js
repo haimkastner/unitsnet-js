@@ -6,10 +6,14 @@ var LapseRateUnits;
 })(LapseRateUnits = exports.LapseRateUnits || (exports.LapseRateUnits = {}));
 class LapseRate {
     constructor(value, fromUnit) {
+        this.degreescelciusperkilometerLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get DegreesCelciusPerKilometer() {
-        return this.convertFromBase(LapseRateUnits.DegreesCelciusPerKilometer);
+        if (this.degreescelciusperkilometerLazy !== null) {
+            return this.degreescelciusperkilometerLazy;
+        }
+        return this.degreescelciusperkilometerLazy = this.convertFromBase(LapseRateUnits.DegreesCelciusPerKilometer);
     }
     static FromDegreesCelciusPerKilometer(value) {
         return new LapseRate(value, LapseRateUnits.DegreesCelciusPerKilometer);

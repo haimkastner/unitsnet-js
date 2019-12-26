@@ -10,6 +10,14 @@ export declare enum TemperatureDeltaUnits {
 }
 export declare class TemperatureDelta {
     private value;
+    private kelvinsLazy;
+    private degreescelsiusLazy;
+    private degreesdelisleLazy;
+    private degreesfahrenheitLazy;
+    private degreesnewtonLazy;
+    private degreesrankineLazy;
+    private degreesreaumurLazy;
+    private degreesroemerLazy;
     constructor(value: number, fromUnit: TemperatureDeltaUnits);
     get Kelvins(): number;
     get DegreesCelsius(): number;

@@ -8,16 +8,28 @@ var BrakeSpecificFuelConsumptionUnits;
 })(BrakeSpecificFuelConsumptionUnits = exports.BrakeSpecificFuelConsumptionUnits || (exports.BrakeSpecificFuelConsumptionUnits = {}));
 class BrakeSpecificFuelConsumption {
     constructor(value, fromUnit) {
+        this.gramsperkilowatthourLazy = null;
+        this.kilogramsperjouleLazy = null;
+        this.poundspermechanicalhorsepowerhourLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get GramsPerKiloWattHour() {
-        return this.convertFromBase(BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour);
+        if (this.gramsperkilowatthourLazy !== null) {
+            return this.gramsperkilowatthourLazy;
+        }
+        return this.gramsperkilowatthourLazy = this.convertFromBase(BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour);
     }
     get KilogramsPerJoule() {
-        return this.convertFromBase(BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule);
+        if (this.kilogramsperjouleLazy !== null) {
+            return this.kilogramsperjouleLazy;
+        }
+        return this.kilogramsperjouleLazy = this.convertFromBase(BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule);
     }
     get PoundsPerMechanicalHorsepowerHour() {
-        return this.convertFromBase(BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour);
+        if (this.poundspermechanicalhorsepowerhourLazy !== null) {
+            return this.poundspermechanicalhorsepowerhourLazy;
+        }
+        return this.poundspermechanicalhorsepowerhourLazy = this.convertFromBase(BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour);
     }
     static FromGramsPerKiloWattHour(value) {
         return new BrakeSpecificFuelConsumption(value, BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour);

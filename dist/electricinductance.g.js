@@ -8,16 +8,28 @@ var ElectricInductanceUnits;
 })(ElectricInductanceUnits = exports.ElectricInductanceUnits || (exports.ElectricInductanceUnits = {}));
 class ElectricInductance {
     constructor(value, fromUnit) {
+        this.henriesLazy = null;
+        this.nanohenriesLazy = null;
+        this.microhenriesLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Henries() {
-        return this.convertFromBase(ElectricInductanceUnits.Henries);
+        if (this.henriesLazy !== null) {
+            return this.henriesLazy;
+        }
+        return this.henriesLazy = this.convertFromBase(ElectricInductanceUnits.Henries);
     }
     get Nanohenries() {
-        return this.convertFromBase(ElectricInductanceUnits.Nanohenries);
+        if (this.nanohenriesLazy !== null) {
+            return this.nanohenriesLazy;
+        }
+        return this.nanohenriesLazy = this.convertFromBase(ElectricInductanceUnits.Nanohenries);
     }
     get Microhenries() {
-        return this.convertFromBase(ElectricInductanceUnits.Microhenries);
+        if (this.microhenriesLazy !== null) {
+            return this.microhenriesLazy;
+        }
+        return this.microhenriesLazy = this.convertFromBase(ElectricInductanceUnits.Microhenries);
     }
     static FromHenries(value) {
         return new ElectricInductance(value, ElectricInductanceUnits.Henries);

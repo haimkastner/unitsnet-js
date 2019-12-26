@@ -4,13 +4,17 @@ export enum LuminousIntensityUnits {
 
 export class LuminousIntensity {
     private value: number;
+    private candelaLazy: number | null = null;
 
     public constructor(value: number, fromUnit: LuminousIntensityUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get Candela(): number {
-        return this.convertFromBase(LuminousIntensityUnits.Candela);
+        if(this.candelaLazy !== null){
+            return this.candelaLazy;
+        }
+        return this.candelaLazy = this.convertFromBase(LuminousIntensityUnits.Candela);
     }
 
     public static FromCandela(value: number): LuminousIntensity {
@@ -18,30 +22,24 @@ export class LuminousIntensity {
     }
 
     private convertFromBase(toUnit: LuminousIntensityUnits): number {
-
-                switch (toUnit) {
-                    
-                case LuminousIntensityUnits.Candela:
-                    return this.value;
+        switch (toUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case LuminousIntensityUnits.Candela:
+                return this.value;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LuminousIntensityUnits): number {
-
-                switch (fromUnit) {
-                    
-                case LuminousIntensityUnits.Candela:
-                    return value;
+        switch (fromUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case LuminousIntensityUnits.Candela:
+                return value;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

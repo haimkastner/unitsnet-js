@@ -5,6 +5,9 @@ export declare enum MolarEntropyUnits {
 }
 export declare class MolarEntropy {
     private value;
+    private joulespermolekelvinLazy;
+    private kilojoulespermolekelvinLazy;
+    private megajoulespermolekelvinLazy;
     constructor(value: number, fromUnit: MolarEntropyUnits);
     get JoulesPerMoleKelvin(): number;
     get Kilojoulespermolekelvin(): number;

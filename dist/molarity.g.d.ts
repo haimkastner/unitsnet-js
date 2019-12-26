@@ -9,6 +9,13 @@ export declare enum MolarityUnits {
 }
 export declare class Molarity {
     private value;
+    private molespercubicmeterLazy;
+    private molesperliterLazy;
+    private picomolesperliterLazy;
+    private nanomolesperliterLazy;
+    private micromolesperliterLazy;
+    private centimolesperliterLazy;
+    private decimolesperliterLazy;
     constructor(value: number, fromUnit: MolarityUnits);
     get MolesPerCubicMeter(): number;
     get MolesPerLiter(): number;

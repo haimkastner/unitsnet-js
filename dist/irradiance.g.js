@@ -17,43 +17,91 @@ var IrradianceUnits;
 })(IrradianceUnits = exports.IrradianceUnits || (exports.IrradianceUnits = {}));
 class Irradiance {
     constructor(value, fromUnit) {
+        this.wattspersquaremeterLazy = null;
+        this.wattspersquarecentimeterLazy = null;
+        this.picowattspersquaremeterLazy = null;
+        this.nanowattspersquaremeterLazy = null;
+        this.microwattspersquaremeterLazy = null;
+        this.kilowattspersquaremeterLazy = null;
+        this.megawattspersquaremeterLazy = null;
+        this.picowattspersquarecentimeterLazy = null;
+        this.nanowattspersquarecentimeterLazy = null;
+        this.microwattspersquarecentimeterLazy = null;
+        this.kilowattspersquarecentimeterLazy = null;
+        this.megawattspersquarecentimeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get WattsPerSquareMeter() {
-        return this.convertFromBase(IrradianceUnits.WattsPerSquareMeter);
+        if (this.wattspersquaremeterLazy !== null) {
+            return this.wattspersquaremeterLazy;
+        }
+        return this.wattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.WattsPerSquareMeter);
     }
     get WattsPerSquareCentimeter() {
-        return this.convertFromBase(IrradianceUnits.WattsPerSquareCentimeter);
+        if (this.wattspersquarecentimeterLazy !== null) {
+            return this.wattspersquarecentimeterLazy;
+        }
+        return this.wattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.WattsPerSquareCentimeter);
     }
     get Picowattspersquaremeter() {
-        return this.convertFromBase(IrradianceUnits.Picowattspersquaremeter);
+        if (this.picowattspersquaremeterLazy !== null) {
+            return this.picowattspersquaremeterLazy;
+        }
+        return this.picowattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.Picowattspersquaremeter);
     }
     get Nanowattspersquaremeter() {
-        return this.convertFromBase(IrradianceUnits.Nanowattspersquaremeter);
+        if (this.nanowattspersquaremeterLazy !== null) {
+            return this.nanowattspersquaremeterLazy;
+        }
+        return this.nanowattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.Nanowattspersquaremeter);
     }
     get Microwattspersquaremeter() {
-        return this.convertFromBase(IrradianceUnits.Microwattspersquaremeter);
+        if (this.microwattspersquaremeterLazy !== null) {
+            return this.microwattspersquaremeterLazy;
+        }
+        return this.microwattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.Microwattspersquaremeter);
     }
     get Kilowattspersquaremeter() {
-        return this.convertFromBase(IrradianceUnits.Kilowattspersquaremeter);
+        if (this.kilowattspersquaremeterLazy !== null) {
+            return this.kilowattspersquaremeterLazy;
+        }
+        return this.kilowattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.Kilowattspersquaremeter);
     }
     get Megawattspersquaremeter() {
-        return this.convertFromBase(IrradianceUnits.Megawattspersquaremeter);
+        if (this.megawattspersquaremeterLazy !== null) {
+            return this.megawattspersquaremeterLazy;
+        }
+        return this.megawattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.Megawattspersquaremeter);
     }
     get Picowattspersquarecentimeter() {
-        return this.convertFromBase(IrradianceUnits.Picowattspersquarecentimeter);
+        if (this.picowattspersquarecentimeterLazy !== null) {
+            return this.picowattspersquarecentimeterLazy;
+        }
+        return this.picowattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.Picowattspersquarecentimeter);
     }
     get Nanowattspersquarecentimeter() {
-        return this.convertFromBase(IrradianceUnits.Nanowattspersquarecentimeter);
+        if (this.nanowattspersquarecentimeterLazy !== null) {
+            return this.nanowattspersquarecentimeterLazy;
+        }
+        return this.nanowattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.Nanowattspersquarecentimeter);
     }
     get Microwattspersquarecentimeter() {
-        return this.convertFromBase(IrradianceUnits.Microwattspersquarecentimeter);
+        if (this.microwattspersquarecentimeterLazy !== null) {
+            return this.microwattspersquarecentimeterLazy;
+        }
+        return this.microwattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.Microwattspersquarecentimeter);
     }
     get Kilowattspersquarecentimeter() {
-        return this.convertFromBase(IrradianceUnits.Kilowattspersquarecentimeter);
+        if (this.kilowattspersquarecentimeterLazy !== null) {
+            return this.kilowattspersquarecentimeterLazy;
+        }
+        return this.kilowattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.Kilowattspersquarecentimeter);
     }
     get Megawattspersquarecentimeter() {
-        return this.convertFromBase(IrradianceUnits.Megawattspersquarecentimeter);
+        if (this.megawattspersquarecentimeterLazy !== null) {
+            return this.megawattspersquarecentimeterLazy;
+        }
+        return this.megawattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.Megawattspersquarecentimeter);
     }
     static FromWattsPerSquareMeter(value) {
         return new Irradiance(value, IrradianceUnits.WattsPerSquareMeter);

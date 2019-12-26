@@ -6,10 +6,14 @@ var ElectricChargeDensityUnits;
 })(ElectricChargeDensityUnits = exports.ElectricChargeDensityUnits || (exports.ElectricChargeDensityUnits = {}));
 class ElectricChargeDensity {
     constructor(value, fromUnit) {
+        this.coulombspercubicmeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get CoulombsPerCubicMeter() {
-        return this.convertFromBase(ElectricChargeDensityUnits.CoulombsPerCubicMeter);
+        if (this.coulombspercubicmeterLazy !== null) {
+            return this.coulombspercubicmeterLazy;
+        }
+        return this.coulombspercubicmeterLazy = this.convertFromBase(ElectricChargeDensityUnits.CoulombsPerCubicMeter);
     }
     static FromCoulombsPerCubicMeter(value) {
         return new ElectricChargeDensity(value, ElectricChargeDensityUnits.CoulombsPerCubicMeter);

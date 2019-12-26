@@ -11,6 +11,15 @@ export declare enum FrequencyUnits {
 }
 export declare class Frequency {
     private value;
+    private hertzLazy;
+    private radianspersecondLazy;
+    private cyclesperminuteLazy;
+    private cyclesperhourLazy;
+    private beatsperminuteLazy;
+    private kilohertzLazy;
+    private megahertzLazy;
+    private gigahertzLazy;
+    private terahertzLazy;
     constructor(value: number, fromUnit: FrequencyUnits);
     get Hertz(): number;
     get RadiansPerSecond(): number;

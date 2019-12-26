@@ -3,6 +3,7 @@ export declare enum ElectricCurrentGradientUnits {
 }
 export declare class ElectricCurrentGradient {
     private value;
+    private amperespersecondLazy;
     constructor(value: number, fromUnit: ElectricCurrentGradientUnits);
     get AmperesPerSecond(): number;
     static FromAmperesPerSecond(value: number): ElectricCurrentGradient;

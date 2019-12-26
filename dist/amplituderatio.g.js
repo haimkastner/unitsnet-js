@@ -9,19 +9,35 @@ var AmplitudeRatioUnits;
 })(AmplitudeRatioUnits = exports.AmplitudeRatioUnits || (exports.AmplitudeRatioUnits = {}));
 class AmplitudeRatio {
     constructor(value, fromUnit) {
+        this.decibelvoltsLazy = null;
+        this.decibelmicrovoltsLazy = null;
+        this.decibelmillivoltsLazy = null;
+        this.decibelsunloadedLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get DecibelVolts() {
-        return this.convertFromBase(AmplitudeRatioUnits.DecibelVolts);
+        if (this.decibelvoltsLazy !== null) {
+            return this.decibelvoltsLazy;
+        }
+        return this.decibelvoltsLazy = this.convertFromBase(AmplitudeRatioUnits.DecibelVolts);
     }
     get DecibelMicrovolts() {
-        return this.convertFromBase(AmplitudeRatioUnits.DecibelMicrovolts);
+        if (this.decibelmicrovoltsLazy !== null) {
+            return this.decibelmicrovoltsLazy;
+        }
+        return this.decibelmicrovoltsLazy = this.convertFromBase(AmplitudeRatioUnits.DecibelMicrovolts);
     }
     get DecibelMillivolts() {
-        return this.convertFromBase(AmplitudeRatioUnits.DecibelMillivolts);
+        if (this.decibelmillivoltsLazy !== null) {
+            return this.decibelmillivoltsLazy;
+        }
+        return this.decibelmillivoltsLazy = this.convertFromBase(AmplitudeRatioUnits.DecibelMillivolts);
     }
     get DecibelsUnloaded() {
-        return this.convertFromBase(AmplitudeRatioUnits.DecibelsUnloaded);
+        if (this.decibelsunloadedLazy !== null) {
+            return this.decibelsunloadedLazy;
+        }
+        return this.decibelsunloadedLazy = this.convertFromBase(AmplitudeRatioUnits.DecibelsUnloaded);
     }
     static FromDecibelVolts(value) {
         return new AmplitudeRatio(value, AmplitudeRatioUnits.DecibelVolts);

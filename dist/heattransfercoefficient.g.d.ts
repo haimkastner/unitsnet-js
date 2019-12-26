@@ -5,6 +5,9 @@ export declare enum HeatTransferCoefficientUnits {
 }
 export declare class HeatTransferCoefficient {
     private value;
+    private wattspersquaremeterkelvinLazy;
+    private wattspersquaremetercelsiusLazy;
+    private btuspersquarefootdegreefahrenheitLazy;
     constructor(value: number, fromUnit: HeatTransferCoefficientUnits);
     get WattsPerSquareMeterKelvin(): number;
     get WattsPerSquareMeterCelsius(): number;

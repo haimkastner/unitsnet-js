@@ -8,16 +8,28 @@ var MagneticFieldUnits;
 })(MagneticFieldUnits = exports.MagneticFieldUnits || (exports.MagneticFieldUnits = {}));
 class MagneticField {
     constructor(value, fromUnit) {
+        this.teslasLazy = null;
+        this.nanoteslasLazy = null;
+        this.microteslasLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Teslas() {
-        return this.convertFromBase(MagneticFieldUnits.Teslas);
+        if (this.teslasLazy !== null) {
+            return this.teslasLazy;
+        }
+        return this.teslasLazy = this.convertFromBase(MagneticFieldUnits.Teslas);
     }
     get Nanoteslas() {
-        return this.convertFromBase(MagneticFieldUnits.Nanoteslas);
+        if (this.nanoteslasLazy !== null) {
+            return this.nanoteslasLazy;
+        }
+        return this.nanoteslasLazy = this.convertFromBase(MagneticFieldUnits.Nanoteslas);
     }
     get Microteslas() {
-        return this.convertFromBase(MagneticFieldUnits.Microteslas);
+        if (this.microteslasLazy !== null) {
+            return this.microteslasLazy;
+        }
+        return this.microteslasLazy = this.convertFromBase(MagneticFieldUnits.Microteslas);
     }
     static FromTeslas(value) {
         return new MagneticField(value, MagneticFieldUnits.Teslas);

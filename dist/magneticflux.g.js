@@ -6,10 +6,14 @@ var MagneticFluxUnits;
 })(MagneticFluxUnits = exports.MagneticFluxUnits || (exports.MagneticFluxUnits = {}));
 class MagneticFlux {
     constructor(value, fromUnit) {
+        this.webersLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Webers() {
-        return this.convertFromBase(MagneticFluxUnits.Webers);
+        if (this.webersLazy !== null) {
+            return this.webersLazy;
+        }
+        return this.webersLazy = this.convertFromBase(MagneticFluxUnits.Webers);
     }
     static FromWebers(value) {
         return new MagneticFlux(value, MagneticFluxUnits.Webers);

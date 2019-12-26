@@ -51,145 +51,329 @@ var VolumeUnits;
 })(VolumeUnits = exports.VolumeUnits || (exports.VolumeUnits = {}));
 class Volume {
     constructor(value, fromUnit) {
+        this.litersLazy = null;
+        this.cubicmetersLazy = null;
+        this.cubickilometersLazy = null;
+        this.cubichectometersLazy = null;
+        this.cubicdecimetersLazy = null;
+        this.cubiccentimetersLazy = null;
+        this.cubicmillimetersLazy = null;
+        this.cubicmicrometersLazy = null;
+        this.cubicmilesLazy = null;
+        this.cubicyardsLazy = null;
+        this.cubicfeetLazy = null;
+        this.cubicinchesLazy = null;
+        this.imperialgallonsLazy = null;
+        this.imperialouncesLazy = null;
+        this.usgallonsLazy = null;
+        this.usouncesLazy = null;
+        this.ustablespoonsLazy = null;
+        this.autablespoonsLazy = null;
+        this.uktablespoonsLazy = null;
+        this.metricteaspoonsLazy = null;
+        this.usteaspoonsLazy = null;
+        this.metriccupsLazy = null;
+        this.uscustomarycupsLazy = null;
+        this.uslegalcupsLazy = null;
+        this.oilbarrelsLazy = null;
+        this.usbeerbarrelsLazy = null;
+        this.imperialbeerbarrelsLazy = null;
+        this.usquartsLazy = null;
+        this.uspintsLazy = null;
+        this.acrefeetLazy = null;
+        this.imperialpintsLazy = null;
+        this.microlitersLazy = null;
+        this.centilitersLazy = null;
+        this.decilitersLazy = null;
+        this.hectolitersLazy = null;
+        this.kilolitersLazy = null;
+        this.megalitersLazy = null;
+        this.hectocubicmetersLazy = null;
+        this.kilocubicmetersLazy = null;
+        this.hectocubicfeetLazy = null;
+        this.kilocubicfeetLazy = null;
+        this.megacubicfeetLazy = null;
+        this.kiloimperialgallonsLazy = null;
+        this.megaimperialgallonsLazy = null;
+        this.kilousgallonsLazy = null;
+        this.megausgallonsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Liters() {
-        return this.convertFromBase(VolumeUnits.Liters);
+        if (this.litersLazy !== null) {
+            return this.litersLazy;
+        }
+        return this.litersLazy = this.convertFromBase(VolumeUnits.Liters);
     }
     get CubicMeters() {
-        return this.convertFromBase(VolumeUnits.CubicMeters);
+        if (this.cubicmetersLazy !== null) {
+            return this.cubicmetersLazy;
+        }
+        return this.cubicmetersLazy = this.convertFromBase(VolumeUnits.CubicMeters);
     }
     get CubicKilometers() {
-        return this.convertFromBase(VolumeUnits.CubicKilometers);
+        if (this.cubickilometersLazy !== null) {
+            return this.cubickilometersLazy;
+        }
+        return this.cubickilometersLazy = this.convertFromBase(VolumeUnits.CubicKilometers);
     }
     get CubicHectometers() {
-        return this.convertFromBase(VolumeUnits.CubicHectometers);
+        if (this.cubichectometersLazy !== null) {
+            return this.cubichectometersLazy;
+        }
+        return this.cubichectometersLazy = this.convertFromBase(VolumeUnits.CubicHectometers);
     }
     get CubicDecimeters() {
-        return this.convertFromBase(VolumeUnits.CubicDecimeters);
+        if (this.cubicdecimetersLazy !== null) {
+            return this.cubicdecimetersLazy;
+        }
+        return this.cubicdecimetersLazy = this.convertFromBase(VolumeUnits.CubicDecimeters);
     }
     get CubicCentimeters() {
-        return this.convertFromBase(VolumeUnits.CubicCentimeters);
+        if (this.cubiccentimetersLazy !== null) {
+            return this.cubiccentimetersLazy;
+        }
+        return this.cubiccentimetersLazy = this.convertFromBase(VolumeUnits.CubicCentimeters);
     }
     get CubicMillimeters() {
-        return this.convertFromBase(VolumeUnits.CubicMillimeters);
+        if (this.cubicmillimetersLazy !== null) {
+            return this.cubicmillimetersLazy;
+        }
+        return this.cubicmillimetersLazy = this.convertFromBase(VolumeUnits.CubicMillimeters);
     }
     get CubicMicrometers() {
-        return this.convertFromBase(VolumeUnits.CubicMicrometers);
+        if (this.cubicmicrometersLazy !== null) {
+            return this.cubicmicrometersLazy;
+        }
+        return this.cubicmicrometersLazy = this.convertFromBase(VolumeUnits.CubicMicrometers);
     }
     get CubicMiles() {
-        return this.convertFromBase(VolumeUnits.CubicMiles);
+        if (this.cubicmilesLazy !== null) {
+            return this.cubicmilesLazy;
+        }
+        return this.cubicmilesLazy = this.convertFromBase(VolumeUnits.CubicMiles);
     }
     get CubicYards() {
-        return this.convertFromBase(VolumeUnits.CubicYards);
+        if (this.cubicyardsLazy !== null) {
+            return this.cubicyardsLazy;
+        }
+        return this.cubicyardsLazy = this.convertFromBase(VolumeUnits.CubicYards);
     }
     get CubicFeet() {
-        return this.convertFromBase(VolumeUnits.CubicFeet);
+        if (this.cubicfeetLazy !== null) {
+            return this.cubicfeetLazy;
+        }
+        return this.cubicfeetLazy = this.convertFromBase(VolumeUnits.CubicFeet);
     }
     get CubicInches() {
-        return this.convertFromBase(VolumeUnits.CubicInches);
+        if (this.cubicinchesLazy !== null) {
+            return this.cubicinchesLazy;
+        }
+        return this.cubicinchesLazy = this.convertFromBase(VolumeUnits.CubicInches);
     }
     get ImperialGallons() {
-        return this.convertFromBase(VolumeUnits.ImperialGallons);
+        if (this.imperialgallonsLazy !== null) {
+            return this.imperialgallonsLazy;
+        }
+        return this.imperialgallonsLazy = this.convertFromBase(VolumeUnits.ImperialGallons);
     }
     get ImperialOunces() {
-        return this.convertFromBase(VolumeUnits.ImperialOunces);
+        if (this.imperialouncesLazy !== null) {
+            return this.imperialouncesLazy;
+        }
+        return this.imperialouncesLazy = this.convertFromBase(VolumeUnits.ImperialOunces);
     }
     get UsGallons() {
-        return this.convertFromBase(VolumeUnits.UsGallons);
+        if (this.usgallonsLazy !== null) {
+            return this.usgallonsLazy;
+        }
+        return this.usgallonsLazy = this.convertFromBase(VolumeUnits.UsGallons);
     }
     get UsOunces() {
-        return this.convertFromBase(VolumeUnits.UsOunces);
+        if (this.usouncesLazy !== null) {
+            return this.usouncesLazy;
+        }
+        return this.usouncesLazy = this.convertFromBase(VolumeUnits.UsOunces);
     }
     get UsTablespoons() {
-        return this.convertFromBase(VolumeUnits.UsTablespoons);
+        if (this.ustablespoonsLazy !== null) {
+            return this.ustablespoonsLazy;
+        }
+        return this.ustablespoonsLazy = this.convertFromBase(VolumeUnits.UsTablespoons);
     }
     get AuTablespoons() {
-        return this.convertFromBase(VolumeUnits.AuTablespoons);
+        if (this.autablespoonsLazy !== null) {
+            return this.autablespoonsLazy;
+        }
+        return this.autablespoonsLazy = this.convertFromBase(VolumeUnits.AuTablespoons);
     }
     get UkTablespoons() {
-        return this.convertFromBase(VolumeUnits.UkTablespoons);
+        if (this.uktablespoonsLazy !== null) {
+            return this.uktablespoonsLazy;
+        }
+        return this.uktablespoonsLazy = this.convertFromBase(VolumeUnits.UkTablespoons);
     }
     get MetricTeaspoons() {
-        return this.convertFromBase(VolumeUnits.MetricTeaspoons);
+        if (this.metricteaspoonsLazy !== null) {
+            return this.metricteaspoonsLazy;
+        }
+        return this.metricteaspoonsLazy = this.convertFromBase(VolumeUnits.MetricTeaspoons);
     }
     get UsTeaspoons() {
-        return this.convertFromBase(VolumeUnits.UsTeaspoons);
+        if (this.usteaspoonsLazy !== null) {
+            return this.usteaspoonsLazy;
+        }
+        return this.usteaspoonsLazy = this.convertFromBase(VolumeUnits.UsTeaspoons);
     }
     get MetricCups() {
-        return this.convertFromBase(VolumeUnits.MetricCups);
+        if (this.metriccupsLazy !== null) {
+            return this.metriccupsLazy;
+        }
+        return this.metriccupsLazy = this.convertFromBase(VolumeUnits.MetricCups);
     }
     get UsCustomaryCups() {
-        return this.convertFromBase(VolumeUnits.UsCustomaryCups);
+        if (this.uscustomarycupsLazy !== null) {
+            return this.uscustomarycupsLazy;
+        }
+        return this.uscustomarycupsLazy = this.convertFromBase(VolumeUnits.UsCustomaryCups);
     }
     get UsLegalCups() {
-        return this.convertFromBase(VolumeUnits.UsLegalCups);
+        if (this.uslegalcupsLazy !== null) {
+            return this.uslegalcupsLazy;
+        }
+        return this.uslegalcupsLazy = this.convertFromBase(VolumeUnits.UsLegalCups);
     }
     get OilBarrels() {
-        return this.convertFromBase(VolumeUnits.OilBarrels);
+        if (this.oilbarrelsLazy !== null) {
+            return this.oilbarrelsLazy;
+        }
+        return this.oilbarrelsLazy = this.convertFromBase(VolumeUnits.OilBarrels);
     }
     get UsBeerBarrels() {
-        return this.convertFromBase(VolumeUnits.UsBeerBarrels);
+        if (this.usbeerbarrelsLazy !== null) {
+            return this.usbeerbarrelsLazy;
+        }
+        return this.usbeerbarrelsLazy = this.convertFromBase(VolumeUnits.UsBeerBarrels);
     }
     get ImperialBeerBarrels() {
-        return this.convertFromBase(VolumeUnits.ImperialBeerBarrels);
+        if (this.imperialbeerbarrelsLazy !== null) {
+            return this.imperialbeerbarrelsLazy;
+        }
+        return this.imperialbeerbarrelsLazy = this.convertFromBase(VolumeUnits.ImperialBeerBarrels);
     }
     get UsQuarts() {
-        return this.convertFromBase(VolumeUnits.UsQuarts);
+        if (this.usquartsLazy !== null) {
+            return this.usquartsLazy;
+        }
+        return this.usquartsLazy = this.convertFromBase(VolumeUnits.UsQuarts);
     }
     get UsPints() {
-        return this.convertFromBase(VolumeUnits.UsPints);
+        if (this.uspintsLazy !== null) {
+            return this.uspintsLazy;
+        }
+        return this.uspintsLazy = this.convertFromBase(VolumeUnits.UsPints);
     }
     get AcreFeet() {
-        return this.convertFromBase(VolumeUnits.AcreFeet);
+        if (this.acrefeetLazy !== null) {
+            return this.acrefeetLazy;
+        }
+        return this.acrefeetLazy = this.convertFromBase(VolumeUnits.AcreFeet);
     }
     get ImperialPints() {
-        return this.convertFromBase(VolumeUnits.ImperialPints);
+        if (this.imperialpintsLazy !== null) {
+            return this.imperialpintsLazy;
+        }
+        return this.imperialpintsLazy = this.convertFromBase(VolumeUnits.ImperialPints);
     }
     get Microliters() {
-        return this.convertFromBase(VolumeUnits.Microliters);
+        if (this.microlitersLazy !== null) {
+            return this.microlitersLazy;
+        }
+        return this.microlitersLazy = this.convertFromBase(VolumeUnits.Microliters);
     }
     get Centiliters() {
-        return this.convertFromBase(VolumeUnits.Centiliters);
+        if (this.centilitersLazy !== null) {
+            return this.centilitersLazy;
+        }
+        return this.centilitersLazy = this.convertFromBase(VolumeUnits.Centiliters);
     }
     get Deciliters() {
-        return this.convertFromBase(VolumeUnits.Deciliters);
+        if (this.decilitersLazy !== null) {
+            return this.decilitersLazy;
+        }
+        return this.decilitersLazy = this.convertFromBase(VolumeUnits.Deciliters);
     }
     get Hectoliters() {
-        return this.convertFromBase(VolumeUnits.Hectoliters);
+        if (this.hectolitersLazy !== null) {
+            return this.hectolitersLazy;
+        }
+        return this.hectolitersLazy = this.convertFromBase(VolumeUnits.Hectoliters);
     }
     get Kiloliters() {
-        return this.convertFromBase(VolumeUnits.Kiloliters);
+        if (this.kilolitersLazy !== null) {
+            return this.kilolitersLazy;
+        }
+        return this.kilolitersLazy = this.convertFromBase(VolumeUnits.Kiloliters);
     }
     get Megaliters() {
-        return this.convertFromBase(VolumeUnits.Megaliters);
+        if (this.megalitersLazy !== null) {
+            return this.megalitersLazy;
+        }
+        return this.megalitersLazy = this.convertFromBase(VolumeUnits.Megaliters);
     }
     get Hectocubicmeters() {
-        return this.convertFromBase(VolumeUnits.Hectocubicmeters);
+        if (this.hectocubicmetersLazy !== null) {
+            return this.hectocubicmetersLazy;
+        }
+        return this.hectocubicmetersLazy = this.convertFromBase(VolumeUnits.Hectocubicmeters);
     }
     get Kilocubicmeters() {
-        return this.convertFromBase(VolumeUnits.Kilocubicmeters);
+        if (this.kilocubicmetersLazy !== null) {
+            return this.kilocubicmetersLazy;
+        }
+        return this.kilocubicmetersLazy = this.convertFromBase(VolumeUnits.Kilocubicmeters);
     }
     get Hectocubicfeet() {
-        return this.convertFromBase(VolumeUnits.Hectocubicfeet);
+        if (this.hectocubicfeetLazy !== null) {
+            return this.hectocubicfeetLazy;
+        }
+        return this.hectocubicfeetLazy = this.convertFromBase(VolumeUnits.Hectocubicfeet);
     }
     get Kilocubicfeet() {
-        return this.convertFromBase(VolumeUnits.Kilocubicfeet);
+        if (this.kilocubicfeetLazy !== null) {
+            return this.kilocubicfeetLazy;
+        }
+        return this.kilocubicfeetLazy = this.convertFromBase(VolumeUnits.Kilocubicfeet);
     }
     get Megacubicfeet() {
-        return this.convertFromBase(VolumeUnits.Megacubicfeet);
+        if (this.megacubicfeetLazy !== null) {
+            return this.megacubicfeetLazy;
+        }
+        return this.megacubicfeetLazy = this.convertFromBase(VolumeUnits.Megacubicfeet);
     }
     get Kiloimperialgallons() {
-        return this.convertFromBase(VolumeUnits.Kiloimperialgallons);
+        if (this.kiloimperialgallonsLazy !== null) {
+            return this.kiloimperialgallonsLazy;
+        }
+        return this.kiloimperialgallonsLazy = this.convertFromBase(VolumeUnits.Kiloimperialgallons);
     }
     get Megaimperialgallons() {
-        return this.convertFromBase(VolumeUnits.Megaimperialgallons);
+        if (this.megaimperialgallonsLazy !== null) {
+            return this.megaimperialgallonsLazy;
+        }
+        return this.megaimperialgallonsLazy = this.convertFromBase(VolumeUnits.Megaimperialgallons);
     }
     get Kilousgallons() {
-        return this.convertFromBase(VolumeUnits.Kilousgallons);
+        if (this.kilousgallonsLazy !== null) {
+            return this.kilousgallonsLazy;
+        }
+        return this.kilousgallonsLazy = this.convertFromBase(VolumeUnits.Kilousgallons);
     }
     get Megausgallons() {
-        return this.convertFromBase(VolumeUnits.Megausgallons);
+        if (this.megausgallonsLazy !== null) {
+            return this.megausgallonsLazy;
+        }
+        return this.megausgallonsLazy = this.convertFromBase(VolumeUnits.Megausgallons);
     }
     static FromLiters(value) {
         return new Volume(value, VolumeUnits.Liters);

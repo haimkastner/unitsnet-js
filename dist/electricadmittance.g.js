@@ -8,16 +8,28 @@ var ElectricAdmittanceUnits;
 })(ElectricAdmittanceUnits = exports.ElectricAdmittanceUnits || (exports.ElectricAdmittanceUnits = {}));
 class ElectricAdmittance {
     constructor(value, fromUnit) {
+        this.siemensLazy = null;
+        this.nanosiemensLazy = null;
+        this.microsiemensLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Siemens() {
-        return this.convertFromBase(ElectricAdmittanceUnits.Siemens);
+        if (this.siemensLazy !== null) {
+            return this.siemensLazy;
+        }
+        return this.siemensLazy = this.convertFromBase(ElectricAdmittanceUnits.Siemens);
     }
     get Nanosiemens() {
-        return this.convertFromBase(ElectricAdmittanceUnits.Nanosiemens);
+        if (this.nanosiemensLazy !== null) {
+            return this.nanosiemensLazy;
+        }
+        return this.nanosiemensLazy = this.convertFromBase(ElectricAdmittanceUnits.Nanosiemens);
     }
     get Microsiemens() {
-        return this.convertFromBase(ElectricAdmittanceUnits.Microsiemens);
+        if (this.microsiemensLazy !== null) {
+            return this.microsiemensLazy;
+        }
+        return this.microsiemensLazy = this.convertFromBase(ElectricAdmittanceUnits.Microsiemens);
     }
     static FromSiemens(value) {
         return new ElectricAdmittance(value, ElectricAdmittanceUnits.Siemens);

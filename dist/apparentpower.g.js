@@ -9,19 +9,35 @@ var ApparentPowerUnits;
 })(ApparentPowerUnits = exports.ApparentPowerUnits || (exports.ApparentPowerUnits = {}));
 class ApparentPower {
     constructor(value, fromUnit) {
+        this.voltamperesLazy = null;
+        this.kilovoltamperesLazy = null;
+        this.megavoltamperesLazy = null;
+        this.gigavoltamperesLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Voltamperes() {
-        return this.convertFromBase(ApparentPowerUnits.Voltamperes);
+        if (this.voltamperesLazy !== null) {
+            return this.voltamperesLazy;
+        }
+        return this.voltamperesLazy = this.convertFromBase(ApparentPowerUnits.Voltamperes);
     }
     get Kilovoltamperes() {
-        return this.convertFromBase(ApparentPowerUnits.Kilovoltamperes);
+        if (this.kilovoltamperesLazy !== null) {
+            return this.kilovoltamperesLazy;
+        }
+        return this.kilovoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Kilovoltamperes);
     }
     get Megavoltamperes() {
-        return this.convertFromBase(ApparentPowerUnits.Megavoltamperes);
+        if (this.megavoltamperesLazy !== null) {
+            return this.megavoltamperesLazy;
+        }
+        return this.megavoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Megavoltamperes);
     }
     get Gigavoltamperes() {
-        return this.convertFromBase(ApparentPowerUnits.Gigavoltamperes);
+        if (this.gigavoltamperesLazy !== null) {
+            return this.gigavoltamperesLazy;
+        }
+        return this.gigavoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Gigavoltamperes);
     }
     static FromVoltamperes(value) {
         return new ApparentPower(value, ApparentPowerUnits.Voltamperes);

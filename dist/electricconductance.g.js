@@ -7,13 +7,21 @@ var ElectricConductanceUnits;
 })(ElectricConductanceUnits = exports.ElectricConductanceUnits || (exports.ElectricConductanceUnits = {}));
 class ElectricConductance {
     constructor(value, fromUnit) {
+        this.siemensLazy = null;
+        this.microsiemensLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Siemens() {
-        return this.convertFromBase(ElectricConductanceUnits.Siemens);
+        if (this.siemensLazy !== null) {
+            return this.siemensLazy;
+        }
+        return this.siemensLazy = this.convertFromBase(ElectricConductanceUnits.Siemens);
     }
     get Microsiemens() {
-        return this.convertFromBase(ElectricConductanceUnits.Microsiemens);
+        if (this.microsiemensLazy !== null) {
+            return this.microsiemensLazy;
+        }
+        return this.microsiemensLazy = this.convertFromBase(ElectricConductanceUnits.Microsiemens);
     }
     static FromSiemens(value) {
         return new ElectricConductance(value, ElectricConductanceUnits.Siemens);

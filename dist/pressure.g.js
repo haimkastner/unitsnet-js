@@ -45,127 +45,287 @@ var PressureUnits;
 })(PressureUnits = exports.PressureUnits || (exports.PressureUnits = {}));
 class Pressure {
     constructor(value, fromUnit) {
+        this.pascalsLazy = null;
+        this.atmospheresLazy = null;
+        this.barsLazy = null;
+        this.kilogramsforcepersquaremeterLazy = null;
+        this.kilogramsforcepersquarecentimeterLazy = null;
+        this.kilogramsforcepersquaremillimeterLazy = null;
+        this.newtonspersquaremeterLazy = null;
+        this.newtonspersquarecentimeterLazy = null;
+        this.newtonspersquaremillimeterLazy = null;
+        this.technicalatmospheresLazy = null;
+        this.torrsLazy = null;
+        this.poundsforcepersquareinchLazy = null;
+        this.poundsforcepersquarefootLazy = null;
+        this.tonnesforcepersquaremillimeterLazy = null;
+        this.tonnesforcepersquaremeterLazy = null;
+        this.metersofheadLazy = null;
+        this.tonnesforcepersquarecentimeterLazy = null;
+        this.feetofheadLazy = null;
+        this.millimetersofmercuryLazy = null;
+        this.inchesofmercuryLazy = null;
+        this.dynespersquarecentimeterLazy = null;
+        this.poundsperinchsecondsquaredLazy = null;
+        this.inchesofwatercolumnLazy = null;
+        this.micropascalsLazy = null;
+        this.decapascalsLazy = null;
+        this.hectopascalsLazy = null;
+        this.kilopascalsLazy = null;
+        this.megapascalsLazy = null;
+        this.gigapascalsLazy = null;
+        this.microbarsLazy = null;
+        this.centibarsLazy = null;
+        this.decibarsLazy = null;
+        this.kilobarsLazy = null;
+        this.megabarsLazy = null;
+        this.kilonewtonspersquaremeterLazy = null;
+        this.meganewtonspersquaremeterLazy = null;
+        this.kilonewtonspersquarecentimeterLazy = null;
+        this.kilonewtonspersquaremillimeterLazy = null;
+        this.kilopoundsforcepersquareinchLazy = null;
+        this.kilopoundsforcepersquarefootLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Pascals() {
-        return this.convertFromBase(PressureUnits.Pascals);
+        if (this.pascalsLazy !== null) {
+            return this.pascalsLazy;
+        }
+        return this.pascalsLazy = this.convertFromBase(PressureUnits.Pascals);
     }
     get Atmospheres() {
-        return this.convertFromBase(PressureUnits.Atmospheres);
+        if (this.atmospheresLazy !== null) {
+            return this.atmospheresLazy;
+        }
+        return this.atmospheresLazy = this.convertFromBase(PressureUnits.Atmospheres);
     }
     get Bars() {
-        return this.convertFromBase(PressureUnits.Bars);
+        if (this.barsLazy !== null) {
+            return this.barsLazy;
+        }
+        return this.barsLazy = this.convertFromBase(PressureUnits.Bars);
     }
     get KilogramsForcePerSquareMeter() {
-        return this.convertFromBase(PressureUnits.KilogramsForcePerSquareMeter);
+        if (this.kilogramsforcepersquaremeterLazy !== null) {
+            return this.kilogramsforcepersquaremeterLazy;
+        }
+        return this.kilogramsforcepersquaremeterLazy = this.convertFromBase(PressureUnits.KilogramsForcePerSquareMeter);
     }
     get KilogramsForcePerSquareCentimeter() {
-        return this.convertFromBase(PressureUnits.KilogramsForcePerSquareCentimeter);
+        if (this.kilogramsforcepersquarecentimeterLazy !== null) {
+            return this.kilogramsforcepersquarecentimeterLazy;
+        }
+        return this.kilogramsforcepersquarecentimeterLazy = this.convertFromBase(PressureUnits.KilogramsForcePerSquareCentimeter);
     }
     get KilogramsForcePerSquareMillimeter() {
-        return this.convertFromBase(PressureUnits.KilogramsForcePerSquareMillimeter);
+        if (this.kilogramsforcepersquaremillimeterLazy !== null) {
+            return this.kilogramsforcepersquaremillimeterLazy;
+        }
+        return this.kilogramsforcepersquaremillimeterLazy = this.convertFromBase(PressureUnits.KilogramsForcePerSquareMillimeter);
     }
     get NewtonsPerSquareMeter() {
-        return this.convertFromBase(PressureUnits.NewtonsPerSquareMeter);
+        if (this.newtonspersquaremeterLazy !== null) {
+            return this.newtonspersquaremeterLazy;
+        }
+        return this.newtonspersquaremeterLazy = this.convertFromBase(PressureUnits.NewtonsPerSquareMeter);
     }
     get NewtonsPerSquareCentimeter() {
-        return this.convertFromBase(PressureUnits.NewtonsPerSquareCentimeter);
+        if (this.newtonspersquarecentimeterLazy !== null) {
+            return this.newtonspersquarecentimeterLazy;
+        }
+        return this.newtonspersquarecentimeterLazy = this.convertFromBase(PressureUnits.NewtonsPerSquareCentimeter);
     }
     get NewtonsPerSquareMillimeter() {
-        return this.convertFromBase(PressureUnits.NewtonsPerSquareMillimeter);
+        if (this.newtonspersquaremillimeterLazy !== null) {
+            return this.newtonspersquaremillimeterLazy;
+        }
+        return this.newtonspersquaremillimeterLazy = this.convertFromBase(PressureUnits.NewtonsPerSquareMillimeter);
     }
     get TechnicalAtmospheres() {
-        return this.convertFromBase(PressureUnits.TechnicalAtmospheres);
+        if (this.technicalatmospheresLazy !== null) {
+            return this.technicalatmospheresLazy;
+        }
+        return this.technicalatmospheresLazy = this.convertFromBase(PressureUnits.TechnicalAtmospheres);
     }
     get Torrs() {
-        return this.convertFromBase(PressureUnits.Torrs);
+        if (this.torrsLazy !== null) {
+            return this.torrsLazy;
+        }
+        return this.torrsLazy = this.convertFromBase(PressureUnits.Torrs);
     }
     get PoundsForcePerSquareInch() {
-        return this.convertFromBase(PressureUnits.PoundsForcePerSquareInch);
+        if (this.poundsforcepersquareinchLazy !== null) {
+            return this.poundsforcepersquareinchLazy;
+        }
+        return this.poundsforcepersquareinchLazy = this.convertFromBase(PressureUnits.PoundsForcePerSquareInch);
     }
     get PoundsForcePerSquareFoot() {
-        return this.convertFromBase(PressureUnits.PoundsForcePerSquareFoot);
+        if (this.poundsforcepersquarefootLazy !== null) {
+            return this.poundsforcepersquarefootLazy;
+        }
+        return this.poundsforcepersquarefootLazy = this.convertFromBase(PressureUnits.PoundsForcePerSquareFoot);
     }
     get TonnesForcePerSquareMillimeter() {
-        return this.convertFromBase(PressureUnits.TonnesForcePerSquareMillimeter);
+        if (this.tonnesforcepersquaremillimeterLazy !== null) {
+            return this.tonnesforcepersquaremillimeterLazy;
+        }
+        return this.tonnesforcepersquaremillimeterLazy = this.convertFromBase(PressureUnits.TonnesForcePerSquareMillimeter);
     }
     get TonnesForcePerSquareMeter() {
-        return this.convertFromBase(PressureUnits.TonnesForcePerSquareMeter);
+        if (this.tonnesforcepersquaremeterLazy !== null) {
+            return this.tonnesforcepersquaremeterLazy;
+        }
+        return this.tonnesforcepersquaremeterLazy = this.convertFromBase(PressureUnits.TonnesForcePerSquareMeter);
     }
     get MetersOfHead() {
-        return this.convertFromBase(PressureUnits.MetersOfHead);
+        if (this.metersofheadLazy !== null) {
+            return this.metersofheadLazy;
+        }
+        return this.metersofheadLazy = this.convertFromBase(PressureUnits.MetersOfHead);
     }
     get TonnesForcePerSquareCentimeter() {
-        return this.convertFromBase(PressureUnits.TonnesForcePerSquareCentimeter);
+        if (this.tonnesforcepersquarecentimeterLazy !== null) {
+            return this.tonnesforcepersquarecentimeterLazy;
+        }
+        return this.tonnesforcepersquarecentimeterLazy = this.convertFromBase(PressureUnits.TonnesForcePerSquareCentimeter);
     }
     get FeetOfHead() {
-        return this.convertFromBase(PressureUnits.FeetOfHead);
+        if (this.feetofheadLazy !== null) {
+            return this.feetofheadLazy;
+        }
+        return this.feetofheadLazy = this.convertFromBase(PressureUnits.FeetOfHead);
     }
     get MillimetersOfMercury() {
-        return this.convertFromBase(PressureUnits.MillimetersOfMercury);
+        if (this.millimetersofmercuryLazy !== null) {
+            return this.millimetersofmercuryLazy;
+        }
+        return this.millimetersofmercuryLazy = this.convertFromBase(PressureUnits.MillimetersOfMercury);
     }
     get InchesOfMercury() {
-        return this.convertFromBase(PressureUnits.InchesOfMercury);
+        if (this.inchesofmercuryLazy !== null) {
+            return this.inchesofmercuryLazy;
+        }
+        return this.inchesofmercuryLazy = this.convertFromBase(PressureUnits.InchesOfMercury);
     }
     get DynesPerSquareCentimeter() {
-        return this.convertFromBase(PressureUnits.DynesPerSquareCentimeter);
+        if (this.dynespersquarecentimeterLazy !== null) {
+            return this.dynespersquarecentimeterLazy;
+        }
+        return this.dynespersquarecentimeterLazy = this.convertFromBase(PressureUnits.DynesPerSquareCentimeter);
     }
     get PoundsPerInchSecondSquared() {
-        return this.convertFromBase(PressureUnits.PoundsPerInchSecondSquared);
+        if (this.poundsperinchsecondsquaredLazy !== null) {
+            return this.poundsperinchsecondsquaredLazy;
+        }
+        return this.poundsperinchsecondsquaredLazy = this.convertFromBase(PressureUnits.PoundsPerInchSecondSquared);
     }
     get InchesOfWaterColumn() {
-        return this.convertFromBase(PressureUnits.InchesOfWaterColumn);
+        if (this.inchesofwatercolumnLazy !== null) {
+            return this.inchesofwatercolumnLazy;
+        }
+        return this.inchesofwatercolumnLazy = this.convertFromBase(PressureUnits.InchesOfWaterColumn);
     }
     get Micropascals() {
-        return this.convertFromBase(PressureUnits.Micropascals);
+        if (this.micropascalsLazy !== null) {
+            return this.micropascalsLazy;
+        }
+        return this.micropascalsLazy = this.convertFromBase(PressureUnits.Micropascals);
     }
     get Decapascals() {
-        return this.convertFromBase(PressureUnits.Decapascals);
+        if (this.decapascalsLazy !== null) {
+            return this.decapascalsLazy;
+        }
+        return this.decapascalsLazy = this.convertFromBase(PressureUnits.Decapascals);
     }
     get Hectopascals() {
-        return this.convertFromBase(PressureUnits.Hectopascals);
+        if (this.hectopascalsLazy !== null) {
+            return this.hectopascalsLazy;
+        }
+        return this.hectopascalsLazy = this.convertFromBase(PressureUnits.Hectopascals);
     }
     get Kilopascals() {
-        return this.convertFromBase(PressureUnits.Kilopascals);
+        if (this.kilopascalsLazy !== null) {
+            return this.kilopascalsLazy;
+        }
+        return this.kilopascalsLazy = this.convertFromBase(PressureUnits.Kilopascals);
     }
     get Megapascals() {
-        return this.convertFromBase(PressureUnits.Megapascals);
+        if (this.megapascalsLazy !== null) {
+            return this.megapascalsLazy;
+        }
+        return this.megapascalsLazy = this.convertFromBase(PressureUnits.Megapascals);
     }
     get Gigapascals() {
-        return this.convertFromBase(PressureUnits.Gigapascals);
+        if (this.gigapascalsLazy !== null) {
+            return this.gigapascalsLazy;
+        }
+        return this.gigapascalsLazy = this.convertFromBase(PressureUnits.Gigapascals);
     }
     get Microbars() {
-        return this.convertFromBase(PressureUnits.Microbars);
+        if (this.microbarsLazy !== null) {
+            return this.microbarsLazy;
+        }
+        return this.microbarsLazy = this.convertFromBase(PressureUnits.Microbars);
     }
     get Centibars() {
-        return this.convertFromBase(PressureUnits.Centibars);
+        if (this.centibarsLazy !== null) {
+            return this.centibarsLazy;
+        }
+        return this.centibarsLazy = this.convertFromBase(PressureUnits.Centibars);
     }
     get Decibars() {
-        return this.convertFromBase(PressureUnits.Decibars);
+        if (this.decibarsLazy !== null) {
+            return this.decibarsLazy;
+        }
+        return this.decibarsLazy = this.convertFromBase(PressureUnits.Decibars);
     }
     get Kilobars() {
-        return this.convertFromBase(PressureUnits.Kilobars);
+        if (this.kilobarsLazy !== null) {
+            return this.kilobarsLazy;
+        }
+        return this.kilobarsLazy = this.convertFromBase(PressureUnits.Kilobars);
     }
     get Megabars() {
-        return this.convertFromBase(PressureUnits.Megabars);
+        if (this.megabarsLazy !== null) {
+            return this.megabarsLazy;
+        }
+        return this.megabarsLazy = this.convertFromBase(PressureUnits.Megabars);
     }
     get Kilonewtonspersquaremeter() {
-        return this.convertFromBase(PressureUnits.Kilonewtonspersquaremeter);
+        if (this.kilonewtonspersquaremeterLazy !== null) {
+            return this.kilonewtonspersquaremeterLazy;
+        }
+        return this.kilonewtonspersquaremeterLazy = this.convertFromBase(PressureUnits.Kilonewtonspersquaremeter);
     }
     get Meganewtonspersquaremeter() {
-        return this.convertFromBase(PressureUnits.Meganewtonspersquaremeter);
+        if (this.meganewtonspersquaremeterLazy !== null) {
+            return this.meganewtonspersquaremeterLazy;
+        }
+        return this.meganewtonspersquaremeterLazy = this.convertFromBase(PressureUnits.Meganewtonspersquaremeter);
     }
     get Kilonewtonspersquarecentimeter() {
-        return this.convertFromBase(PressureUnits.Kilonewtonspersquarecentimeter);
+        if (this.kilonewtonspersquarecentimeterLazy !== null) {
+            return this.kilonewtonspersquarecentimeterLazy;
+        }
+        return this.kilonewtonspersquarecentimeterLazy = this.convertFromBase(PressureUnits.Kilonewtonspersquarecentimeter);
     }
     get Kilonewtonspersquaremillimeter() {
-        return this.convertFromBase(PressureUnits.Kilonewtonspersquaremillimeter);
+        if (this.kilonewtonspersquaremillimeterLazy !== null) {
+            return this.kilonewtonspersquaremillimeterLazy;
+        }
+        return this.kilonewtonspersquaremillimeterLazy = this.convertFromBase(PressureUnits.Kilonewtonspersquaremillimeter);
     }
     get Kilopoundsforcepersquareinch() {
-        return this.convertFromBase(PressureUnits.Kilopoundsforcepersquareinch);
+        if (this.kilopoundsforcepersquareinchLazy !== null) {
+            return this.kilopoundsforcepersquareinchLazy;
+        }
+        return this.kilopoundsforcepersquareinchLazy = this.convertFromBase(PressureUnits.Kilopoundsforcepersquareinch);
     }
     get Kilopoundsforcepersquarefoot() {
-        return this.convertFromBase(PressureUnits.Kilopoundsforcepersquarefoot);
+        if (this.kilopoundsforcepersquarefootLazy !== null) {
+            return this.kilopoundsforcepersquarefootLazy;
+        }
+        return this.kilopoundsforcepersquarefootLazy = this.convertFromBase(PressureUnits.Kilopoundsforcepersquarefoot);
     }
     static FromPascals(value) {
         return new Pressure(value, PressureUnits.Pascals);

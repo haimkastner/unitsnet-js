@@ -7,13 +7,21 @@ var SpecificVolumeUnits;
 })(SpecificVolumeUnits = exports.SpecificVolumeUnits || (exports.SpecificVolumeUnits = {}));
 class SpecificVolume {
     constructor(value, fromUnit) {
+        this.cubicmetersperkilogramLazy = null;
+        this.cubicfeetperpoundLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get CubicMetersPerKilogram() {
-        return this.convertFromBase(SpecificVolumeUnits.CubicMetersPerKilogram);
+        if (this.cubicmetersperkilogramLazy !== null) {
+            return this.cubicmetersperkilogramLazy;
+        }
+        return this.cubicmetersperkilogramLazy = this.convertFromBase(SpecificVolumeUnits.CubicMetersPerKilogram);
     }
     get CubicFeetPerPound() {
-        return this.convertFromBase(SpecificVolumeUnits.CubicFeetPerPound);
+        if (this.cubicfeetperpoundLazy !== null) {
+            return this.cubicfeetperpoundLazy;
+        }
+        return this.cubicfeetperpoundLazy = this.convertFromBase(SpecificVolumeUnits.CubicFeetPerPound);
     }
     static FromCubicMetersPerKilogram(value) {
         return new SpecificVolume(value, SpecificVolumeUnits.CubicMetersPerKilogram);

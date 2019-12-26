@@ -6,10 +6,14 @@ var AreaDensityUnits;
 })(AreaDensityUnits = exports.AreaDensityUnits || (exports.AreaDensityUnits = {}));
 class AreaDensity {
     constructor(value, fromUnit) {
+        this.kilogramspersquaremeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get KilogramsPerSquareMeter() {
-        return this.convertFromBase(AreaDensityUnits.KilogramsPerSquareMeter);
+        if (this.kilogramspersquaremeterLazy !== null) {
+            return this.kilogramspersquaremeterLazy;
+        }
+        return this.kilogramspersquaremeterLazy = this.convertFromBase(AreaDensityUnits.KilogramsPerSquareMeter);
     }
     static FromKilogramsPerSquareMeter(value) {
         return new AreaDensity(value, AreaDensityUnits.KilogramsPerSquareMeter);

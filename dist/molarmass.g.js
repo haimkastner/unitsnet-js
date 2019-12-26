@@ -16,40 +16,84 @@ var MolarMassUnits;
 })(MolarMassUnits = exports.MolarMassUnits || (exports.MolarMassUnits = {}));
 class MolarMass {
     constructor(value, fromUnit) {
+        this.gramspermoleLazy = null;
+        this.poundspermoleLazy = null;
+        this.nanogramspermoleLazy = null;
+        this.microgramspermoleLazy = null;
+        this.centigramspermoleLazy = null;
+        this.decigramspermoleLazy = null;
+        this.decagramspermoleLazy = null;
+        this.hectogramspermoleLazy = null;
+        this.kilogramspermoleLazy = null;
+        this.kilopoundspermoleLazy = null;
+        this.megapoundspermoleLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get GramsPerMole() {
-        return this.convertFromBase(MolarMassUnits.GramsPerMole);
+        if (this.gramspermoleLazy !== null) {
+            return this.gramspermoleLazy;
+        }
+        return this.gramspermoleLazy = this.convertFromBase(MolarMassUnits.GramsPerMole);
     }
     get PoundsPerMole() {
-        return this.convertFromBase(MolarMassUnits.PoundsPerMole);
+        if (this.poundspermoleLazy !== null) {
+            return this.poundspermoleLazy;
+        }
+        return this.poundspermoleLazy = this.convertFromBase(MolarMassUnits.PoundsPerMole);
     }
     get Nanogramspermole() {
-        return this.convertFromBase(MolarMassUnits.Nanogramspermole);
+        if (this.nanogramspermoleLazy !== null) {
+            return this.nanogramspermoleLazy;
+        }
+        return this.nanogramspermoleLazy = this.convertFromBase(MolarMassUnits.Nanogramspermole);
     }
     get Microgramspermole() {
-        return this.convertFromBase(MolarMassUnits.Microgramspermole);
+        if (this.microgramspermoleLazy !== null) {
+            return this.microgramspermoleLazy;
+        }
+        return this.microgramspermoleLazy = this.convertFromBase(MolarMassUnits.Microgramspermole);
     }
     get Centigramspermole() {
-        return this.convertFromBase(MolarMassUnits.Centigramspermole);
+        if (this.centigramspermoleLazy !== null) {
+            return this.centigramspermoleLazy;
+        }
+        return this.centigramspermoleLazy = this.convertFromBase(MolarMassUnits.Centigramspermole);
     }
     get Decigramspermole() {
-        return this.convertFromBase(MolarMassUnits.Decigramspermole);
+        if (this.decigramspermoleLazy !== null) {
+            return this.decigramspermoleLazy;
+        }
+        return this.decigramspermoleLazy = this.convertFromBase(MolarMassUnits.Decigramspermole);
     }
     get Decagramspermole() {
-        return this.convertFromBase(MolarMassUnits.Decagramspermole);
+        if (this.decagramspermoleLazy !== null) {
+            return this.decagramspermoleLazy;
+        }
+        return this.decagramspermoleLazy = this.convertFromBase(MolarMassUnits.Decagramspermole);
     }
     get Hectogramspermole() {
-        return this.convertFromBase(MolarMassUnits.Hectogramspermole);
+        if (this.hectogramspermoleLazy !== null) {
+            return this.hectogramspermoleLazy;
+        }
+        return this.hectogramspermoleLazy = this.convertFromBase(MolarMassUnits.Hectogramspermole);
     }
     get Kilogramspermole() {
-        return this.convertFromBase(MolarMassUnits.Kilogramspermole);
+        if (this.kilogramspermoleLazy !== null) {
+            return this.kilogramspermoleLazy;
+        }
+        return this.kilogramspermoleLazy = this.convertFromBase(MolarMassUnits.Kilogramspermole);
     }
     get Kilopoundspermole() {
-        return this.convertFromBase(MolarMassUnits.Kilopoundspermole);
+        if (this.kilopoundspermoleLazy !== null) {
+            return this.kilopoundspermoleLazy;
+        }
+        return this.kilopoundspermoleLazy = this.convertFromBase(MolarMassUnits.Kilopoundspermole);
     }
     get Megapoundspermole() {
-        return this.convertFromBase(MolarMassUnits.Megapoundspermole);
+        if (this.megapoundspermoleLazy !== null) {
+            return this.megapoundspermoleLazy;
+        }
+        return this.megapoundspermoleLazy = this.convertFromBase(MolarMassUnits.Megapoundspermole);
     }
     static FromGramsPerMole(value) {
         return new MolarMass(value, MolarMassUnits.GramsPerMole);

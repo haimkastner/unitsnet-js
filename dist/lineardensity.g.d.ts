@@ -5,6 +5,9 @@ export declare enum LinearDensityUnits {
 }
 export declare class LinearDensity {
     private value;
+    private gramspermeterLazy;
+    private poundsperfootLazy;
+    private kilogramspermeterLazy;
     constructor(value: number, fromUnit: LinearDensityUnits);
     get GramsPerMeter(): number;
     get PoundsPerFoot(): number;

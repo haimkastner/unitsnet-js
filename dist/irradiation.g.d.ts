@@ -8,6 +8,12 @@ export declare enum IrradiationUnits {
 }
 export declare class Irradiation {
     private value;
+    private joulespersquaremeterLazy;
+    private joulespersquarecentimeterLazy;
+    private joulespersquaremillimeterLazy;
+    private watthourspersquaremeterLazy;
+    private kilojoulespersquaremeterLazy;
+    private kilowatthourspersquaremeterLazy;
     constructor(value: number, fromUnit: IrradiationUnits);
     get JoulesPerSquareMeter(): number;
     get JoulesPerSquareCentimeter(): number;

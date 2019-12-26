@@ -19,6 +19,23 @@ export declare enum HeatFluxUnits {
 }
 export declare class HeatFlux {
     private value;
+    private wattspersquaremeterLazy;
+    private wattspersquareinchLazy;
+    private wattspersquarefootLazy;
+    private btuspersecondsquareinchLazy;
+    private btuspersecondsquarefootLazy;
+    private btusperminutesquarefootLazy;
+    private btusperhoursquarefootLazy;
+    private caloriespersecondsquarecentimeterLazy;
+    private kilocaloriesperhoursquaremeterLazy;
+    private poundsforceperfootsecondLazy;
+    private poundspersecondcubedLazy;
+    private nanowattspersquaremeterLazy;
+    private microwattspersquaremeterLazy;
+    private centiwattspersquaremeterLazy;
+    private deciwattspersquaremeterLazy;
+    private kilowattspersquaremeterLazy;
+    private kilocaloriespersecondsquarecentimeterLazy;
     constructor(value: number, fromUnit: HeatFluxUnits);
     get WattsPerSquareMeter(): number;
     get WattsPerSquareInch(): number;

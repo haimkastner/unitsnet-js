@@ -8,16 +8,28 @@ var HeatTransferCoefficientUnits;
 })(HeatTransferCoefficientUnits = exports.HeatTransferCoefficientUnits || (exports.HeatTransferCoefficientUnits = {}));
 class HeatTransferCoefficient {
     constructor(value, fromUnit) {
+        this.wattspersquaremeterkelvinLazy = null;
+        this.wattspersquaremetercelsiusLazy = null;
+        this.btuspersquarefootdegreefahrenheitLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get WattsPerSquareMeterKelvin() {
-        return this.convertFromBase(HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin);
+        if (this.wattspersquaremeterkelvinLazy !== null) {
+            return this.wattspersquaremeterkelvinLazy;
+        }
+        return this.wattspersquaremeterkelvinLazy = this.convertFromBase(HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin);
     }
     get WattsPerSquareMeterCelsius() {
-        return this.convertFromBase(HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius);
+        if (this.wattspersquaremetercelsiusLazy !== null) {
+            return this.wattspersquaremetercelsiusLazy;
+        }
+        return this.wattspersquaremetercelsiusLazy = this.convertFromBase(HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius);
     }
     get BtusPerSquareFootDegreeFahrenheit() {
-        return this.convertFromBase(HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit);
+        if (this.btuspersquarefootdegreefahrenheitLazy !== null) {
+            return this.btuspersquarefootdegreefahrenheitLazy;
+        }
+        return this.btuspersquarefootdegreefahrenheitLazy = this.convertFromBase(HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit);
     }
     static FromWattsPerSquareMeterKelvin(value) {
         return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin);

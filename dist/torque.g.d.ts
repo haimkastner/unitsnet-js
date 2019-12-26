@@ -23,6 +23,27 @@ export declare enum TorqueUnits {
 }
 export declare class Torque {
     private value;
+    private newtonmillimetersLazy;
+    private newtoncentimetersLazy;
+    private newtonmetersLazy;
+    private poundforceinchesLazy;
+    private poundforcefeetLazy;
+    private kilogramforcemillimetersLazy;
+    private kilogramforcecentimetersLazy;
+    private kilogramforcemetersLazy;
+    private tonneforcemillimetersLazy;
+    private tonneforcecentimetersLazy;
+    private tonneforcemetersLazy;
+    private kilonewtonmillimetersLazy;
+    private meganewtonmillimetersLazy;
+    private kilonewtoncentimetersLazy;
+    private meganewtoncentimetersLazy;
+    private kilonewtonmetersLazy;
+    private meganewtonmetersLazy;
+    private kilopoundforceinchesLazy;
+    private megapoundforceinchesLazy;
+    private kilopoundforcefeetLazy;
+    private megapoundforcefeetLazy;
     constructor(value: number, fromUnit: TorqueUnits);
     get NewtonMillimeters(): number;
     get NewtonCentimeters(): number;

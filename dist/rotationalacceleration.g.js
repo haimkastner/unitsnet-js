@@ -9,19 +9,35 @@ var RotationalAccelerationUnits;
 })(RotationalAccelerationUnits = exports.RotationalAccelerationUnits || (exports.RotationalAccelerationUnits = {}));
 class RotationalAcceleration {
     constructor(value, fromUnit) {
+        this.radianspersecondsquaredLazy = null;
+        this.degreespersecondsquaredLazy = null;
+        this.revolutionsperminutepersecondLazy = null;
+        this.revolutionspersecondsquaredLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get RadiansPerSecondSquared() {
-        return this.convertFromBase(RotationalAccelerationUnits.RadiansPerSecondSquared);
+        if (this.radianspersecondsquaredLazy !== null) {
+            return this.radianspersecondsquaredLazy;
+        }
+        return this.radianspersecondsquaredLazy = this.convertFromBase(RotationalAccelerationUnits.RadiansPerSecondSquared);
     }
     get DegreesPerSecondSquared() {
-        return this.convertFromBase(RotationalAccelerationUnits.DegreesPerSecondSquared);
+        if (this.degreespersecondsquaredLazy !== null) {
+            return this.degreespersecondsquaredLazy;
+        }
+        return this.degreespersecondsquaredLazy = this.convertFromBase(RotationalAccelerationUnits.DegreesPerSecondSquared);
     }
     get RevolutionsPerMinutePerSecond() {
-        return this.convertFromBase(RotationalAccelerationUnits.RevolutionsPerMinutePerSecond);
+        if (this.revolutionsperminutepersecondLazy !== null) {
+            return this.revolutionsperminutepersecondLazy;
+        }
+        return this.revolutionsperminutepersecondLazy = this.convertFromBase(RotationalAccelerationUnits.RevolutionsPerMinutePerSecond);
     }
     get RevolutionsPerSecondSquared() {
-        return this.convertFromBase(RotationalAccelerationUnits.RevolutionsPerSecondSquared);
+        if (this.revolutionspersecondsquaredLazy !== null) {
+            return this.revolutionspersecondsquaredLazy;
+        }
+        return this.revolutionspersecondsquaredLazy = this.convertFromBase(RotationalAccelerationUnits.RevolutionsPerSecondSquared);
     }
     static FromRadiansPerSecondSquared(value) {
         return new RotationalAcceleration(value, RotationalAccelerationUnits.RadiansPerSecondSquared);

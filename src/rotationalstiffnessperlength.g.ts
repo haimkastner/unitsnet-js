@@ -6,21 +6,33 @@ export enum RotationalStiffnessPerLengthUnits {
 
 export class RotationalStiffnessPerLength {
     private value: number;
+    private newtonmetersperradianpermeterLazy: number | null = null;
+    private kilonewtonmetersperradianpermeterLazy: number | null = null;
+    private meganewtonmetersperradianpermeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: RotationalStiffnessPerLengthUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get NewtonMetersPerRadianPerMeter(): number {
-        return this.convertFromBase(RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter);
+        if(this.newtonmetersperradianpermeterLazy !== null){
+            return this.newtonmetersperradianpermeterLazy;
+        }
+        return this.newtonmetersperradianpermeterLazy = this.convertFromBase(RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter);
     }
 
     public get Kilonewtonmetersperradianpermeter(): number {
-        return this.convertFromBase(RotationalStiffnessPerLengthUnits.Kilonewtonmetersperradianpermeter);
+        if(this.kilonewtonmetersperradianpermeterLazy !== null){
+            return this.kilonewtonmetersperradianpermeterLazy;
+        }
+        return this.kilonewtonmetersperradianpermeterLazy = this.convertFromBase(RotationalStiffnessPerLengthUnits.Kilonewtonmetersperradianpermeter);
     }
 
     public get Meganewtonmetersperradianpermeter(): number {
-        return this.convertFromBase(RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter);
+        if(this.meganewtonmetersperradianpermeterLazy !== null){
+            return this.meganewtonmetersperradianpermeterLazy;
+        }
+        return this.meganewtonmetersperradianpermeterLazy = this.convertFromBase(RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter);
     }
 
     public static FromNewtonMetersPerRadianPerMeter(value: number): RotationalStiffnessPerLength {
@@ -36,42 +48,32 @@ export class RotationalStiffnessPerLength {
     }
 
     private convertFromBase(toUnit: RotationalStiffnessPerLengthUnits): number {
-
-                switch (toUnit) {
-                    
-                case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
-                    return this.value;
+        switch (toUnit) {
                 
-                case RotationalStiffnessPerLengthUnits.Kilonewtonmetersperradianpermeter:
-                    return (this.value) / 1000;
-                
-                case RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter:
-                    return (this.value) / 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
+                return this.value;
+            case RotationalStiffnessPerLengthUnits.Kilonewtonmetersperradianpermeter:
+                return (this.value) / 1000;
+            case RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter:
+                return (this.value) / 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RotationalStiffnessPerLengthUnits): number {
-
-                switch (fromUnit) {
-                    
-                case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
-                    return value;
+        switch (fromUnit) {
                 
-                case RotationalStiffnessPerLengthUnits.Kilonewtonmetersperradianpermeter:
-                    return (value) * 1000;
-                
-                case RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter:
-                    return (value) * 1000000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
+                return value;
+            case RotationalStiffnessPerLengthUnits.Kilonewtonmetersperradianpermeter:
+                return (value) * 1000;
+            case RotationalStiffnessPerLengthUnits.Meganewtonmetersperradianpermeter:
+                return (value) * 1000000;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

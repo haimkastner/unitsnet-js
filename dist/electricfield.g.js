@@ -6,10 +6,14 @@ var ElectricFieldUnits;
 })(ElectricFieldUnits = exports.ElectricFieldUnits || (exports.ElectricFieldUnits = {}));
 class ElectricField {
     constructor(value, fromUnit) {
+        this.voltspermeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get VoltsPerMeter() {
-        return this.convertFromBase(ElectricFieldUnits.VoltsPerMeter);
+        if (this.voltspermeterLazy !== null) {
+            return this.voltspermeterLazy;
+        }
+        return this.voltspermeterLazy = this.convertFromBase(ElectricFieldUnits.VoltsPerMeter);
     }
     static FromVoltsPerMeter(value) {
         return new ElectricField(value, ElectricFieldUnits.VoltsPerMeter);

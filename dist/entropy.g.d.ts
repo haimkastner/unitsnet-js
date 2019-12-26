@@ -9,6 +9,13 @@ export declare enum EntropyUnits {
 }
 export declare class Entropy {
     private value;
+    private joulesperkelvinLazy;
+    private caloriesperkelvinLazy;
+    private joulesperdegreecelsiusLazy;
+    private kilojoulesperkelvinLazy;
+    private megajoulesperkelvinLazy;
+    private kilocaloriesperkelvinLazy;
+    private kilojoulesperdegreecelsiusLazy;
     constructor(value: number, fromUnit: EntropyUnits);
     get JoulesPerKelvin(): number;
     get CaloriesPerKelvin(): number;

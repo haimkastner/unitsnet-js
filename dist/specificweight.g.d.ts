@@ -19,6 +19,23 @@ export declare enum SpecificWeightUnits {
 }
 export declare class SpecificWeight {
     private value;
+    private newtonspercubicmillimeterLazy;
+    private newtonspercubiccentimeterLazy;
+    private newtonspercubicmeterLazy;
+    private kilogramsforcepercubicmillimeterLazy;
+    private kilogramsforcepercubiccentimeterLazy;
+    private kilogramsforcepercubicmeterLazy;
+    private poundsforcepercubicinchLazy;
+    private poundsforcepercubicfootLazy;
+    private tonnesforcepercubicmillimeterLazy;
+    private tonnesforcepercubiccentimeterLazy;
+    private tonnesforcepercubicmeterLazy;
+    private kilonewtonspercubicmillimeterLazy;
+    private kilonewtonspercubiccentimeterLazy;
+    private kilonewtonspercubicmeterLazy;
+    private meganewtonspercubicmeterLazy;
+    private kilopoundsforcepercubicinchLazy;
+    private kilopoundsforcepercubicfootLazy;
     constructor(value: number, fromUnit: SpecificWeightUnits);
     get NewtonsPerCubicMillimeter(): number;
     get NewtonsPerCubicCentimeter(): number;

@@ -7,13 +7,21 @@ var MassFluxUnits;
 })(MassFluxUnits = exports.MassFluxUnits || (exports.MassFluxUnits = {}));
 class MassFlux {
     constructor(value, fromUnit) {
+        this.gramspersecondpersquaremeterLazy = null;
+        this.kilogramspersecondpersquaremeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get GramsPerSecondPerSquareMeter() {
-        return this.convertFromBase(MassFluxUnits.GramsPerSecondPerSquareMeter);
+        if (this.gramspersecondpersquaremeterLazy !== null) {
+            return this.gramspersecondpersquaremeterLazy;
+        }
+        return this.gramspersecondpersquaremeterLazy = this.convertFromBase(MassFluxUnits.GramsPerSecondPerSquareMeter);
     }
     get Kilogramspersecondpersquaremeter() {
-        return this.convertFromBase(MassFluxUnits.Kilogramspersecondpersquaremeter);
+        if (this.kilogramspersecondpersquaremeterLazy !== null) {
+            return this.kilogramspersecondpersquaremeterLazy;
+        }
+        return this.kilogramspersecondpersquaremeterLazy = this.convertFromBase(MassFluxUnits.Kilogramspersecondpersquaremeter);
     }
     static FromGramsPerSecondPerSquareMeter(value) {
         return new MassFlux(value, MassFluxUnits.GramsPerSecondPerSquareMeter);

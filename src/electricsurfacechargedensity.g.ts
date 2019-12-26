@@ -6,21 +6,33 @@ export enum ElectricSurfaceChargeDensityUnits {
 
 export class ElectricSurfaceChargeDensity {
     private value: number;
+    private coulombspersquaremeterLazy: number | null = null;
+    private coulombspersquarecentimeterLazy: number | null = null;
+    private coulombspersquareinchLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricSurfaceChargeDensityUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get CoulombsPerSquareMeter(): number {
-        return this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter);
+        if(this.coulombspersquaremeterLazy !== null){
+            return this.coulombspersquaremeterLazy;
+        }
+        return this.coulombspersquaremeterLazy = this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter);
     }
 
     public get CoulombsPerSquareCentimeter(): number {
-        return this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter);
+        if(this.coulombspersquarecentimeterLazy !== null){
+            return this.coulombspersquarecentimeterLazy;
+        }
+        return this.coulombspersquarecentimeterLazy = this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter);
     }
 
     public get CoulombsPerSquareInch(): number {
-        return this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch);
+        if(this.coulombspersquareinchLazy !== null){
+            return this.coulombspersquareinchLazy;
+        }
+        return this.coulombspersquareinchLazy = this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch);
     }
 
     public static FromCoulombsPerSquareMeter(value: number): ElectricSurfaceChargeDensity {
@@ -36,42 +48,32 @@ export class ElectricSurfaceChargeDensity {
     }
 
     private convertFromBase(toUnit: ElectricSurfaceChargeDensityUnits): number {
-
-                switch (toUnit) {
-                    
-                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
-                    return this.value;
+        switch (toUnit) {
                 
-                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
-                    return this.value / 1.0e4;
-                
-                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
-                    return this.value / 1.5500031000062000e3;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
+                return this.value;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
+                return this.value / 1.0e4;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
+                return this.value / 1.5500031000062000e3;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricSurfaceChargeDensityUnits): number {
-
-                switch (fromUnit) {
-                    
-                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
-                    return value;
+        switch (fromUnit) {
                 
-                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
-                    return value * 1.0e4;
-                
-                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
-                    return value * 1.5500031000062000e3;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
+                return value;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
+                return value * 1.0e4;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
+                return value * 1.5500031000062000e3;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

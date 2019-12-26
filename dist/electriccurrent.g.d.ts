@@ -9,6 +9,13 @@ export declare enum ElectricCurrentUnits {
 }
 export declare class ElectricCurrent {
     private value;
+    private amperesLazy;
+    private picoamperesLazy;
+    private nanoamperesLazy;
+    private microamperesLazy;
+    private centiamperesLazy;
+    private kiloamperesLazy;
+    private megaamperesLazy;
     constructor(value: number, fromUnit: ElectricCurrentUnits);
     get Amperes(): number;
     get Picoamperes(): number;

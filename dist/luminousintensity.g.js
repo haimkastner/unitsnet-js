@@ -6,10 +6,14 @@ var LuminousIntensityUnits;
 })(LuminousIntensityUnits = exports.LuminousIntensityUnits || (exports.LuminousIntensityUnits = {}));
 class LuminousIntensity {
     constructor(value, fromUnit) {
+        this.candelaLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Candela() {
-        return this.convertFromBase(LuminousIntensityUnits.Candela);
+        if (this.candelaLazy !== null) {
+            return this.candelaLazy;
+        }
+        return this.candelaLazy = this.convertFromBase(LuminousIntensityUnits.Candela);
     }
     static FromCandela(value) {
         return new LuminousIntensity(value, LuminousIntensityUnits.Candela);

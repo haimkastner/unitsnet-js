@@ -5,17 +5,25 @@ export enum MassFluxUnits {
 
 export class MassFlux {
     private value: number;
+    private gramspersecondpersquaremeterLazy: number | null = null;
+    private kilogramspersecondpersquaremeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MassFluxUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get GramsPerSecondPerSquareMeter(): number {
-        return this.convertFromBase(MassFluxUnits.GramsPerSecondPerSquareMeter);
+        if(this.gramspersecondpersquaremeterLazy !== null){
+            return this.gramspersecondpersquaremeterLazy;
+        }
+        return this.gramspersecondpersquaremeterLazy = this.convertFromBase(MassFluxUnits.GramsPerSecondPerSquareMeter);
     }
 
     public get Kilogramspersecondpersquaremeter(): number {
-        return this.convertFromBase(MassFluxUnits.Kilogramspersecondpersquaremeter);
+        if(this.kilogramspersecondpersquaremeterLazy !== null){
+            return this.kilogramspersecondpersquaremeterLazy;
+        }
+        return this.kilogramspersecondpersquaremeterLazy = this.convertFromBase(MassFluxUnits.Kilogramspersecondpersquaremeter);
     }
 
     public static FromGramsPerSecondPerSquareMeter(value: number): MassFlux {
@@ -27,36 +35,28 @@ export class MassFlux {
     }
 
     private convertFromBase(toUnit: MassFluxUnits): number {
-
-                switch (toUnit) {
-                    
-                case MassFluxUnits.GramsPerSecondPerSquareMeter:
-                    return this.value*1e3;
+        switch (toUnit) {
                 
-                case MassFluxUnits.Kilogramspersecondpersquaremeter:
-                    return (this.value*1e3) / 1000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case MassFluxUnits.GramsPerSecondPerSquareMeter:
+                return this.value*1e3;
+            case MassFluxUnits.Kilogramspersecondpersquaremeter:
+                return (this.value*1e3) / 1000;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MassFluxUnits): number {
-
-                switch (fromUnit) {
-                    
-                case MassFluxUnits.GramsPerSecondPerSquareMeter:
-                    return value/1e3;
+        switch (fromUnit) {
                 
-                case MassFluxUnits.Kilogramspersecondpersquaremeter:
-                    return (value/1e3) * 1000;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case MassFluxUnits.GramsPerSecondPerSquareMeter:
+                return value/1e3;
+            case MassFluxUnits.Kilogramspersecondpersquaremeter:
+                return (value/1e3) * 1000;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

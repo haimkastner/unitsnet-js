@@ -26,6 +26,30 @@ export declare enum MassMomentOfInertiaUnits {
 }
 export declare class MassMomentOfInertia {
     private value;
+    private gramsquaremetersLazy;
+    private gramsquaredecimetersLazy;
+    private gramsquarecentimetersLazy;
+    private gramsquaremillimetersLazy;
+    private tonnesquaremetersLazy;
+    private tonnesquaredecimetersLazy;
+    private tonnesquarecentimetersLazy;
+    private tonnesquaremilimetersLazy;
+    private poundsquarefeetLazy;
+    private poundsquareinchesLazy;
+    private slugsquarefeetLazy;
+    private slugsquareinchesLazy;
+    private kilogramsquaremetersLazy;
+    private kilogramsquaredecimetersLazy;
+    private kilogramsquarecentimetersLazy;
+    private kilogramsquaremillimetersLazy;
+    private kilotonnesquaremetersLazy;
+    private megatonnesquaremetersLazy;
+    private kilotonnesquaredecimetersLazy;
+    private megatonnesquaredecimetersLazy;
+    private kilotonnesquarecentimetersLazy;
+    private megatonnesquarecentimetersLazy;
+    private kilotonnesquaremilimetersLazy;
+    private megatonnesquaremilimetersLazy;
     constructor(value: number, fromUnit: MassMomentOfInertiaUnits);
     get GramSquareMeters(): number;
     get GramSquareDecimeters(): number;

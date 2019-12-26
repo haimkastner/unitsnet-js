@@ -13,31 +13,63 @@ var DynamicViscosityUnits;
 })(DynamicViscosityUnits = exports.DynamicViscosityUnits || (exports.DynamicViscosityUnits = {}));
 class DynamicViscosity {
     constructor(value, fromUnit) {
+        this.newtonsecondspermetersquaredLazy = null;
+        this.pascalsecondsLazy = null;
+        this.poiseLazy = null;
+        this.reynsLazy = null;
+        this.poundsforcesecondpersquareinchLazy = null;
+        this.poundsforcesecondpersquarefootLazy = null;
+        this.micropascalsecondsLazy = null;
+        this.centipoiseLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get NewtonSecondsPerMeterSquared() {
-        return this.convertFromBase(DynamicViscosityUnits.NewtonSecondsPerMeterSquared);
+        if (this.newtonsecondspermetersquaredLazy !== null) {
+            return this.newtonsecondspermetersquaredLazy;
+        }
+        return this.newtonsecondspermetersquaredLazy = this.convertFromBase(DynamicViscosityUnits.NewtonSecondsPerMeterSquared);
     }
     get PascalSeconds() {
-        return this.convertFromBase(DynamicViscosityUnits.PascalSeconds);
+        if (this.pascalsecondsLazy !== null) {
+            return this.pascalsecondsLazy;
+        }
+        return this.pascalsecondsLazy = this.convertFromBase(DynamicViscosityUnits.PascalSeconds);
     }
     get Poise() {
-        return this.convertFromBase(DynamicViscosityUnits.Poise);
+        if (this.poiseLazy !== null) {
+            return this.poiseLazy;
+        }
+        return this.poiseLazy = this.convertFromBase(DynamicViscosityUnits.Poise);
     }
     get Reyns() {
-        return this.convertFromBase(DynamicViscosityUnits.Reyns);
+        if (this.reynsLazy !== null) {
+            return this.reynsLazy;
+        }
+        return this.reynsLazy = this.convertFromBase(DynamicViscosityUnits.Reyns);
     }
     get PoundsForceSecondPerSquareInch() {
-        return this.convertFromBase(DynamicViscosityUnits.PoundsForceSecondPerSquareInch);
+        if (this.poundsforcesecondpersquareinchLazy !== null) {
+            return this.poundsforcesecondpersquareinchLazy;
+        }
+        return this.poundsforcesecondpersquareinchLazy = this.convertFromBase(DynamicViscosityUnits.PoundsForceSecondPerSquareInch);
     }
     get PoundsForceSecondPerSquareFoot() {
-        return this.convertFromBase(DynamicViscosityUnits.PoundsForceSecondPerSquareFoot);
+        if (this.poundsforcesecondpersquarefootLazy !== null) {
+            return this.poundsforcesecondpersquarefootLazy;
+        }
+        return this.poundsforcesecondpersquarefootLazy = this.convertFromBase(DynamicViscosityUnits.PoundsForceSecondPerSquareFoot);
     }
     get Micropascalseconds() {
-        return this.convertFromBase(DynamicViscosityUnits.Micropascalseconds);
+        if (this.micropascalsecondsLazy !== null) {
+            return this.micropascalsecondsLazy;
+        }
+        return this.micropascalsecondsLazy = this.convertFromBase(DynamicViscosityUnits.Micropascalseconds);
     }
     get Centipoise() {
-        return this.convertFromBase(DynamicViscosityUnits.Centipoise);
+        if (this.centipoiseLazy !== null) {
+            return this.centipoiseLazy;
+        }
+        return this.centipoiseLazy = this.convertFromBase(DynamicViscosityUnits.Centipoise);
     }
     static FromNewtonSecondsPerMeterSquared(value) {
         return new DynamicViscosity(value, DynamicViscosityUnits.NewtonSecondsPerMeterSquared);

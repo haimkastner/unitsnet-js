@@ -14,6 +14,18 @@ export declare enum ForceUnits {
 }
 export declare class Force {
     private value;
+    private dyneLazy;
+    private kilogramsforceLazy;
+    private tonnesforceLazy;
+    private newtonsLazy;
+    private kilopondsLazy;
+    private poundalsLazy;
+    private poundsforceLazy;
+    private ounceforceLazy;
+    private micronewtonsLazy;
+    private decanewtonsLazy;
+    private kilonewtonsLazy;
+    private meganewtonsLazy;
     constructor(value: number, fromUnit: ForceUnits);
     get Dyne(): number;
     get KilogramsForce(): number;

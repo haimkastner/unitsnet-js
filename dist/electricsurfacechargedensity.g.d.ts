@@ -5,6 +5,9 @@ export declare enum ElectricSurfaceChargeDensityUnits {
 }
 export declare class ElectricSurfaceChargeDensity {
     private value;
+    private coulombspersquaremeterLazy;
+    private coulombspersquarecentimeterLazy;
+    private coulombspersquareinchLazy;
     constructor(value: number, fromUnit: ElectricSurfaceChargeDensityUnits);
     get CoulombsPerSquareMeter(): number;
     get CoulombsPerSquareCentimeter(): number;

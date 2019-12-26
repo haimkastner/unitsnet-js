@@ -19,49 +19,105 @@ var InformationUnits;
 })(InformationUnits = exports.InformationUnits || (exports.InformationUnits = {}));
 class Information {
     constructor(value, fromUnit) {
+        this.bytesLazy = null;
+        this.bitsLazy = null;
+        this.kilobytesLazy = null;
+        this.megabytesLazy = null;
+        this.gigabytesLazy = null;
+        this.terabytesLazy = null;
+        this.petabytesLazy = null;
+        this.exabytesLazy = null;
+        this.kilobitsLazy = null;
+        this.megabitsLazy = null;
+        this.gigabitsLazy = null;
+        this.terabitsLazy = null;
+        this.petabitsLazy = null;
+        this.exabitsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Bytes() {
-        return this.convertFromBase(InformationUnits.Bytes);
+        if (this.bytesLazy !== null) {
+            return this.bytesLazy;
+        }
+        return this.bytesLazy = this.convertFromBase(InformationUnits.Bytes);
     }
     get Bits() {
-        return this.convertFromBase(InformationUnits.Bits);
+        if (this.bitsLazy !== null) {
+            return this.bitsLazy;
+        }
+        return this.bitsLazy = this.convertFromBase(InformationUnits.Bits);
     }
     get Kilobytes() {
-        return this.convertFromBase(InformationUnits.Kilobytes);
+        if (this.kilobytesLazy !== null) {
+            return this.kilobytesLazy;
+        }
+        return this.kilobytesLazy = this.convertFromBase(InformationUnits.Kilobytes);
     }
     get Megabytes() {
-        return this.convertFromBase(InformationUnits.Megabytes);
+        if (this.megabytesLazy !== null) {
+            return this.megabytesLazy;
+        }
+        return this.megabytesLazy = this.convertFromBase(InformationUnits.Megabytes);
     }
     get Gigabytes() {
-        return this.convertFromBase(InformationUnits.Gigabytes);
+        if (this.gigabytesLazy !== null) {
+            return this.gigabytesLazy;
+        }
+        return this.gigabytesLazy = this.convertFromBase(InformationUnits.Gigabytes);
     }
     get Terabytes() {
-        return this.convertFromBase(InformationUnits.Terabytes);
+        if (this.terabytesLazy !== null) {
+            return this.terabytesLazy;
+        }
+        return this.terabytesLazy = this.convertFromBase(InformationUnits.Terabytes);
     }
     get Petabytes() {
-        return this.convertFromBase(InformationUnits.Petabytes);
+        if (this.petabytesLazy !== null) {
+            return this.petabytesLazy;
+        }
+        return this.petabytesLazy = this.convertFromBase(InformationUnits.Petabytes);
     }
     get Exabytes() {
-        return this.convertFromBase(InformationUnits.Exabytes);
+        if (this.exabytesLazy !== null) {
+            return this.exabytesLazy;
+        }
+        return this.exabytesLazy = this.convertFromBase(InformationUnits.Exabytes);
     }
     get Kilobits() {
-        return this.convertFromBase(InformationUnits.Kilobits);
+        if (this.kilobitsLazy !== null) {
+            return this.kilobitsLazy;
+        }
+        return this.kilobitsLazy = this.convertFromBase(InformationUnits.Kilobits);
     }
     get Megabits() {
-        return this.convertFromBase(InformationUnits.Megabits);
+        if (this.megabitsLazy !== null) {
+            return this.megabitsLazy;
+        }
+        return this.megabitsLazy = this.convertFromBase(InformationUnits.Megabits);
     }
     get Gigabits() {
-        return this.convertFromBase(InformationUnits.Gigabits);
+        if (this.gigabitsLazy !== null) {
+            return this.gigabitsLazy;
+        }
+        return this.gigabitsLazy = this.convertFromBase(InformationUnits.Gigabits);
     }
     get Terabits() {
-        return this.convertFromBase(InformationUnits.Terabits);
+        if (this.terabitsLazy !== null) {
+            return this.terabitsLazy;
+        }
+        return this.terabitsLazy = this.convertFromBase(InformationUnits.Terabits);
     }
     get Petabits() {
-        return this.convertFromBase(InformationUnits.Petabits);
+        if (this.petabitsLazy !== null) {
+            return this.petabitsLazy;
+        }
+        return this.petabitsLazy = this.convertFromBase(InformationUnits.Petabits);
     }
     get Exabits() {
-        return this.convertFromBase(InformationUnits.Exabits);
+        if (this.exabitsLazy !== null) {
+            return this.exabitsLazy;
+        }
+        return this.exabitsLazy = this.convertFromBase(InformationUnits.Exabits);
     }
     static FromBytes(value) {
         return new Information(value, InformationUnits.Bytes);

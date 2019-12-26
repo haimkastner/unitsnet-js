@@ -17,43 +17,91 @@ var AngleUnits;
 })(AngleUnits = exports.AngleUnits || (exports.AngleUnits = {}));
 class Angle {
     constructor(value, fromUnit) {
+        this.radiansLazy = null;
+        this.degreesLazy = null;
+        this.arcminutesLazy = null;
+        this.arcsecondsLazy = null;
+        this.gradiansLazy = null;
+        this.revolutionsLazy = null;
+        this.nanoradiansLazy = null;
+        this.microradiansLazy = null;
+        this.centiradiansLazy = null;
+        this.deciradiansLazy = null;
+        this.nanodegreesLazy = null;
+        this.microdegreesLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Radians() {
-        return this.convertFromBase(AngleUnits.Radians);
+        if (this.radiansLazy !== null) {
+            return this.radiansLazy;
+        }
+        return this.radiansLazy = this.convertFromBase(AngleUnits.Radians);
     }
     get Degrees() {
-        return this.convertFromBase(AngleUnits.Degrees);
+        if (this.degreesLazy !== null) {
+            return this.degreesLazy;
+        }
+        return this.degreesLazy = this.convertFromBase(AngleUnits.Degrees);
     }
     get Arcminutes() {
-        return this.convertFromBase(AngleUnits.Arcminutes);
+        if (this.arcminutesLazy !== null) {
+            return this.arcminutesLazy;
+        }
+        return this.arcminutesLazy = this.convertFromBase(AngleUnits.Arcminutes);
     }
     get Arcseconds() {
-        return this.convertFromBase(AngleUnits.Arcseconds);
+        if (this.arcsecondsLazy !== null) {
+            return this.arcsecondsLazy;
+        }
+        return this.arcsecondsLazy = this.convertFromBase(AngleUnits.Arcseconds);
     }
     get Gradians() {
-        return this.convertFromBase(AngleUnits.Gradians);
+        if (this.gradiansLazy !== null) {
+            return this.gradiansLazy;
+        }
+        return this.gradiansLazy = this.convertFromBase(AngleUnits.Gradians);
     }
     get Revolutions() {
-        return this.convertFromBase(AngleUnits.Revolutions);
+        if (this.revolutionsLazy !== null) {
+            return this.revolutionsLazy;
+        }
+        return this.revolutionsLazy = this.convertFromBase(AngleUnits.Revolutions);
     }
     get Nanoradians() {
-        return this.convertFromBase(AngleUnits.Nanoradians);
+        if (this.nanoradiansLazy !== null) {
+            return this.nanoradiansLazy;
+        }
+        return this.nanoradiansLazy = this.convertFromBase(AngleUnits.Nanoradians);
     }
     get Microradians() {
-        return this.convertFromBase(AngleUnits.Microradians);
+        if (this.microradiansLazy !== null) {
+            return this.microradiansLazy;
+        }
+        return this.microradiansLazy = this.convertFromBase(AngleUnits.Microradians);
     }
     get Centiradians() {
-        return this.convertFromBase(AngleUnits.Centiradians);
+        if (this.centiradiansLazy !== null) {
+            return this.centiradiansLazy;
+        }
+        return this.centiradiansLazy = this.convertFromBase(AngleUnits.Centiradians);
     }
     get Deciradians() {
-        return this.convertFromBase(AngleUnits.Deciradians);
+        if (this.deciradiansLazy !== null) {
+            return this.deciradiansLazy;
+        }
+        return this.deciradiansLazy = this.convertFromBase(AngleUnits.Deciradians);
     }
     get Nanodegrees() {
-        return this.convertFromBase(AngleUnits.Nanodegrees);
+        if (this.nanodegreesLazy !== null) {
+            return this.nanodegreesLazy;
+        }
+        return this.nanodegreesLazy = this.convertFromBase(AngleUnits.Nanodegrees);
     }
     get Microdegrees() {
-        return this.convertFromBase(AngleUnits.Microdegrees);
+        if (this.microdegreesLazy !== null) {
+            return this.microdegreesLazy;
+        }
+        return this.microdegreesLazy = this.convertFromBase(AngleUnits.Microdegrees);
     }
     static FromRadians(value) {
         return new Angle(value, AngleUnits.Radians);

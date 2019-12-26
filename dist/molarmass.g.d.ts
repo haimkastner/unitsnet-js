@@ -13,6 +13,17 @@ export declare enum MolarMassUnits {
 }
 export declare class MolarMass {
     private value;
+    private gramspermoleLazy;
+    private poundspermoleLazy;
+    private nanogramspermoleLazy;
+    private microgramspermoleLazy;
+    private centigramspermoleLazy;
+    private decigramspermoleLazy;
+    private decagramspermoleLazy;
+    private hectogramspermoleLazy;
+    private kilogramspermoleLazy;
+    private kilopoundspermoleLazy;
+    private megapoundspermoleLazy;
     constructor(value: number, fromUnit: MolarMassUnits);
     get GramsPerMole(): number;
     get PoundsPerMole(): number;

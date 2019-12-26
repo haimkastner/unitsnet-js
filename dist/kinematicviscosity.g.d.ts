@@ -9,6 +9,13 @@ export declare enum KinematicViscosityUnits {
 }
 export declare class KinematicViscosity {
     private value;
+    private squaremeterspersecondLazy;
+    private stokesLazy;
+    private nanostokesLazy;
+    private microstokesLazy;
+    private centistokesLazy;
+    private decistokesLazy;
+    private kilostokesLazy;
     constructor(value: number, fromUnit: KinematicViscosityUnits);
     get SquareMetersPerSecond(): number;
     get Stokes(): number;

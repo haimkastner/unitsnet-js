@@ -4,13 +4,17 @@ export enum LuminousFluxUnits {
 
 export class LuminousFlux {
     private value: number;
+    private lumensLazy: number | null = null;
 
     public constructor(value: number, fromUnit: LuminousFluxUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get Lumens(): number {
-        return this.convertFromBase(LuminousFluxUnits.Lumens);
+        if(this.lumensLazy !== null){
+            return this.lumensLazy;
+        }
+        return this.lumensLazy = this.convertFromBase(LuminousFluxUnits.Lumens);
     }
 
     public static FromLumens(value: number): LuminousFlux {
@@ -18,30 +22,24 @@ export class LuminousFlux {
     }
 
     private convertFromBase(toUnit: LuminousFluxUnits): number {
-
-                switch (toUnit) {
-                    
-                case LuminousFluxUnits.Lumens:
-                    return this.value;
+        switch (toUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case LuminousFluxUnits.Lumens:
+                return this.value;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LuminousFluxUnits): number {
-
-                switch (fromUnit) {
-                    
-                case LuminousFluxUnits.Lumens:
-                    return value;
+        switch (fromUnit) {
                 
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case LuminousFluxUnits.Lumens:
+                return value;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

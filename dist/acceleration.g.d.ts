@@ -14,6 +14,18 @@ export declare enum AccelerationUnits {
 }
 export declare class Acceleration {
     private value;
+    private meterspersecondsquaredLazy;
+    private inchespersecondsquaredLazy;
+    private feetpersecondsquaredLazy;
+    private knotspersecondLazy;
+    private knotsperminuteLazy;
+    private knotsperhourLazy;
+    private standardgravityLazy;
+    private nanometerspersecondsquaredLazy;
+    private micrometerspersecondsquaredLazy;
+    private centimeterspersecondsquaredLazy;
+    private decimeterspersecondsquaredLazy;
+    private kilometerspersecondsquaredLazy;
     constructor(value: number, fromUnit: AccelerationUnits);
     get MetersPerSecondSquared(): number;
     get InchesPerSecondSquared(): number;

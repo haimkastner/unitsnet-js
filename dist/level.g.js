@@ -7,13 +7,21 @@ var LevelUnits;
 })(LevelUnits = exports.LevelUnits || (exports.LevelUnits = {}));
 class Level {
     constructor(value, fromUnit) {
+        this.decibelsLazy = null;
+        this.nepersLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Decibels() {
-        return this.convertFromBase(LevelUnits.Decibels);
+        if (this.decibelsLazy !== null) {
+            return this.decibelsLazy;
+        }
+        return this.decibelsLazy = this.convertFromBase(LevelUnits.Decibels);
     }
     get Nepers() {
-        return this.convertFromBase(LevelUnits.Nepers);
+        if (this.nepersLazy !== null) {
+            return this.nepersLazy;
+        }
+        return this.nepersLazy = this.convertFromBase(LevelUnits.Nepers);
     }
     static FromDecibels(value) {
         return new Level(value, LevelUnits.Decibels);

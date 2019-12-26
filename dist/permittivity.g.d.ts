@@ -3,6 +3,7 @@ export declare enum PermittivityUnits {
 }
 export declare class Permittivity {
     private value;
+    private faradspermeterLazy;
     constructor(value: number, fromUnit: PermittivityUnits);
     get FaradsPerMeter(): number;
     static FromFaradsPerMeter(value: number): Permittivity;

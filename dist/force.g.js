@@ -17,43 +17,91 @@ var ForceUnits;
 })(ForceUnits = exports.ForceUnits || (exports.ForceUnits = {}));
 class Force {
     constructor(value, fromUnit) {
+        this.dyneLazy = null;
+        this.kilogramsforceLazy = null;
+        this.tonnesforceLazy = null;
+        this.newtonsLazy = null;
+        this.kilopondsLazy = null;
+        this.poundalsLazy = null;
+        this.poundsforceLazy = null;
+        this.ounceforceLazy = null;
+        this.micronewtonsLazy = null;
+        this.decanewtonsLazy = null;
+        this.kilonewtonsLazy = null;
+        this.meganewtonsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Dyne() {
-        return this.convertFromBase(ForceUnits.Dyne);
+        if (this.dyneLazy !== null) {
+            return this.dyneLazy;
+        }
+        return this.dyneLazy = this.convertFromBase(ForceUnits.Dyne);
     }
     get KilogramsForce() {
-        return this.convertFromBase(ForceUnits.KilogramsForce);
+        if (this.kilogramsforceLazy !== null) {
+            return this.kilogramsforceLazy;
+        }
+        return this.kilogramsforceLazy = this.convertFromBase(ForceUnits.KilogramsForce);
     }
     get TonnesForce() {
-        return this.convertFromBase(ForceUnits.TonnesForce);
+        if (this.tonnesforceLazy !== null) {
+            return this.tonnesforceLazy;
+        }
+        return this.tonnesforceLazy = this.convertFromBase(ForceUnits.TonnesForce);
     }
     get Newtons() {
-        return this.convertFromBase(ForceUnits.Newtons);
+        if (this.newtonsLazy !== null) {
+            return this.newtonsLazy;
+        }
+        return this.newtonsLazy = this.convertFromBase(ForceUnits.Newtons);
     }
     get KiloPonds() {
-        return this.convertFromBase(ForceUnits.KiloPonds);
+        if (this.kilopondsLazy !== null) {
+            return this.kilopondsLazy;
+        }
+        return this.kilopondsLazy = this.convertFromBase(ForceUnits.KiloPonds);
     }
     get Poundals() {
-        return this.convertFromBase(ForceUnits.Poundals);
+        if (this.poundalsLazy !== null) {
+            return this.poundalsLazy;
+        }
+        return this.poundalsLazy = this.convertFromBase(ForceUnits.Poundals);
     }
     get PoundsForce() {
-        return this.convertFromBase(ForceUnits.PoundsForce);
+        if (this.poundsforceLazy !== null) {
+            return this.poundsforceLazy;
+        }
+        return this.poundsforceLazy = this.convertFromBase(ForceUnits.PoundsForce);
     }
     get OunceForce() {
-        return this.convertFromBase(ForceUnits.OunceForce);
+        if (this.ounceforceLazy !== null) {
+            return this.ounceforceLazy;
+        }
+        return this.ounceforceLazy = this.convertFromBase(ForceUnits.OunceForce);
     }
     get Micronewtons() {
-        return this.convertFromBase(ForceUnits.Micronewtons);
+        if (this.micronewtonsLazy !== null) {
+            return this.micronewtonsLazy;
+        }
+        return this.micronewtonsLazy = this.convertFromBase(ForceUnits.Micronewtons);
     }
     get Decanewtons() {
-        return this.convertFromBase(ForceUnits.Decanewtons);
+        if (this.decanewtonsLazy !== null) {
+            return this.decanewtonsLazy;
+        }
+        return this.decanewtonsLazy = this.convertFromBase(ForceUnits.Decanewtons);
     }
     get Kilonewtons() {
-        return this.convertFromBase(ForceUnits.Kilonewtons);
+        if (this.kilonewtonsLazy !== null) {
+            return this.kilonewtonsLazy;
+        }
+        return this.kilonewtonsLazy = this.convertFromBase(ForceUnits.Kilonewtons);
     }
     get Meganewtons() {
-        return this.convertFromBase(ForceUnits.Meganewtons);
+        if (this.meganewtonsLazy !== null) {
+            return this.meganewtonsLazy;
+        }
+        return this.meganewtonsLazy = this.convertFromBase(ForceUnits.Meganewtons);
     }
     static FromDyne(value) {
         return new Force(value, ForceUnits.Dyne);

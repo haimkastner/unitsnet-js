@@ -41,115 +41,259 @@ var DensityUnits;
 })(DensityUnits = exports.DensityUnits || (exports.DensityUnits = {}));
 class Density {
     constructor(value, fromUnit) {
+        this.gramspercubicmillimeterLazy = null;
+        this.gramspercubiccentimeterLazy = null;
+        this.gramspercubicmeterLazy = null;
+        this.poundspercubicinchLazy = null;
+        this.poundspercubicfootLazy = null;
+        this.tonnespercubicmillimeterLazy = null;
+        this.tonnespercubiccentimeterLazy = null;
+        this.tonnespercubicmeterLazy = null;
+        this.slugspercubicfootLazy = null;
+        this.gramsperliterLazy = null;
+        this.gramsperdeciliterLazy = null;
+        this.gramspermilliliterLazy = null;
+        this.poundsperusgallonLazy = null;
+        this.poundsperimperialgallonLazy = null;
+        this.kilogramsperliterLazy = null;
+        this.kilogramspercubicmillimeterLazy = null;
+        this.kilogramspercubiccentimeterLazy = null;
+        this.kilogramspercubicmeterLazy = null;
+        this.microgramspercubicmeterLazy = null;
+        this.kilopoundspercubicinchLazy = null;
+        this.kilopoundspercubicfootLazy = null;
+        this.picogramsperliterLazy = null;
+        this.nanogramsperliterLazy = null;
+        this.microgramsperliterLazy = null;
+        this.centigramsperliterLazy = null;
+        this.decigramsperliterLazy = null;
+        this.picogramsperdeciliterLazy = null;
+        this.nanogramsperdeciliterLazy = null;
+        this.microgramsperdeciliterLazy = null;
+        this.centigramsperdeciliterLazy = null;
+        this.decigramsperdeciliterLazy = null;
+        this.picogramspermilliliterLazy = null;
+        this.nanogramspermilliliterLazy = null;
+        this.microgramspermilliliterLazy = null;
+        this.centigramspermilliliterLazy = null;
+        this.decigramspermilliliterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get GramsPerCubicMillimeter() {
-        return this.convertFromBase(DensityUnits.GramsPerCubicMillimeter);
+        if (this.gramspercubicmillimeterLazy !== null) {
+            return this.gramspercubicmillimeterLazy;
+        }
+        return this.gramspercubicmillimeterLazy = this.convertFromBase(DensityUnits.GramsPerCubicMillimeter);
     }
     get GramsPerCubicCentimeter() {
-        return this.convertFromBase(DensityUnits.GramsPerCubicCentimeter);
+        if (this.gramspercubiccentimeterLazy !== null) {
+            return this.gramspercubiccentimeterLazy;
+        }
+        return this.gramspercubiccentimeterLazy = this.convertFromBase(DensityUnits.GramsPerCubicCentimeter);
     }
     get GramsPerCubicMeter() {
-        return this.convertFromBase(DensityUnits.GramsPerCubicMeter);
+        if (this.gramspercubicmeterLazy !== null) {
+            return this.gramspercubicmeterLazy;
+        }
+        return this.gramspercubicmeterLazy = this.convertFromBase(DensityUnits.GramsPerCubicMeter);
     }
     get PoundsPerCubicInch() {
-        return this.convertFromBase(DensityUnits.PoundsPerCubicInch);
+        if (this.poundspercubicinchLazy !== null) {
+            return this.poundspercubicinchLazy;
+        }
+        return this.poundspercubicinchLazy = this.convertFromBase(DensityUnits.PoundsPerCubicInch);
     }
     get PoundsPerCubicFoot() {
-        return this.convertFromBase(DensityUnits.PoundsPerCubicFoot);
+        if (this.poundspercubicfootLazy !== null) {
+            return this.poundspercubicfootLazy;
+        }
+        return this.poundspercubicfootLazy = this.convertFromBase(DensityUnits.PoundsPerCubicFoot);
     }
     get TonnesPerCubicMillimeter() {
-        return this.convertFromBase(DensityUnits.TonnesPerCubicMillimeter);
+        if (this.tonnespercubicmillimeterLazy !== null) {
+            return this.tonnespercubicmillimeterLazy;
+        }
+        return this.tonnespercubicmillimeterLazy = this.convertFromBase(DensityUnits.TonnesPerCubicMillimeter);
     }
     get TonnesPerCubicCentimeter() {
-        return this.convertFromBase(DensityUnits.TonnesPerCubicCentimeter);
+        if (this.tonnespercubiccentimeterLazy !== null) {
+            return this.tonnespercubiccentimeterLazy;
+        }
+        return this.tonnespercubiccentimeterLazy = this.convertFromBase(DensityUnits.TonnesPerCubicCentimeter);
     }
     get TonnesPerCubicMeter() {
-        return this.convertFromBase(DensityUnits.TonnesPerCubicMeter);
+        if (this.tonnespercubicmeterLazy !== null) {
+            return this.tonnespercubicmeterLazy;
+        }
+        return this.tonnespercubicmeterLazy = this.convertFromBase(DensityUnits.TonnesPerCubicMeter);
     }
     get SlugsPerCubicFoot() {
-        return this.convertFromBase(DensityUnits.SlugsPerCubicFoot);
+        if (this.slugspercubicfootLazy !== null) {
+            return this.slugspercubicfootLazy;
+        }
+        return this.slugspercubicfootLazy = this.convertFromBase(DensityUnits.SlugsPerCubicFoot);
     }
     get GramsPerLiter() {
-        return this.convertFromBase(DensityUnits.GramsPerLiter);
+        if (this.gramsperliterLazy !== null) {
+            return this.gramsperliterLazy;
+        }
+        return this.gramsperliterLazy = this.convertFromBase(DensityUnits.GramsPerLiter);
     }
     get GramsPerDeciLiter() {
-        return this.convertFromBase(DensityUnits.GramsPerDeciLiter);
+        if (this.gramsperdeciliterLazy !== null) {
+            return this.gramsperdeciliterLazy;
+        }
+        return this.gramsperdeciliterLazy = this.convertFromBase(DensityUnits.GramsPerDeciLiter);
     }
     get GramsPerMilliliter() {
-        return this.convertFromBase(DensityUnits.GramsPerMilliliter);
+        if (this.gramspermilliliterLazy !== null) {
+            return this.gramspermilliliterLazy;
+        }
+        return this.gramspermilliliterLazy = this.convertFromBase(DensityUnits.GramsPerMilliliter);
     }
     get PoundsPerUSGallon() {
-        return this.convertFromBase(DensityUnits.PoundsPerUSGallon);
+        if (this.poundsperusgallonLazy !== null) {
+            return this.poundsperusgallonLazy;
+        }
+        return this.poundsperusgallonLazy = this.convertFromBase(DensityUnits.PoundsPerUSGallon);
     }
     get PoundsPerImperialGallon() {
-        return this.convertFromBase(DensityUnits.PoundsPerImperialGallon);
+        if (this.poundsperimperialgallonLazy !== null) {
+            return this.poundsperimperialgallonLazy;
+        }
+        return this.poundsperimperialgallonLazy = this.convertFromBase(DensityUnits.PoundsPerImperialGallon);
     }
     get KilogramsPerLiter() {
-        return this.convertFromBase(DensityUnits.KilogramsPerLiter);
+        if (this.kilogramsperliterLazy !== null) {
+            return this.kilogramsperliterLazy;
+        }
+        return this.kilogramsperliterLazy = this.convertFromBase(DensityUnits.KilogramsPerLiter);
     }
     get Kilogramspercubicmillimeter() {
-        return this.convertFromBase(DensityUnits.Kilogramspercubicmillimeter);
+        if (this.kilogramspercubicmillimeterLazy !== null) {
+            return this.kilogramspercubicmillimeterLazy;
+        }
+        return this.kilogramspercubicmillimeterLazy = this.convertFromBase(DensityUnits.Kilogramspercubicmillimeter);
     }
     get Kilogramspercubiccentimeter() {
-        return this.convertFromBase(DensityUnits.Kilogramspercubiccentimeter);
+        if (this.kilogramspercubiccentimeterLazy !== null) {
+            return this.kilogramspercubiccentimeterLazy;
+        }
+        return this.kilogramspercubiccentimeterLazy = this.convertFromBase(DensityUnits.Kilogramspercubiccentimeter);
     }
     get Kilogramspercubicmeter() {
-        return this.convertFromBase(DensityUnits.Kilogramspercubicmeter);
+        if (this.kilogramspercubicmeterLazy !== null) {
+            return this.kilogramspercubicmeterLazy;
+        }
+        return this.kilogramspercubicmeterLazy = this.convertFromBase(DensityUnits.Kilogramspercubicmeter);
     }
     get Microgramspercubicmeter() {
-        return this.convertFromBase(DensityUnits.Microgramspercubicmeter);
+        if (this.microgramspercubicmeterLazy !== null) {
+            return this.microgramspercubicmeterLazy;
+        }
+        return this.microgramspercubicmeterLazy = this.convertFromBase(DensityUnits.Microgramspercubicmeter);
     }
     get Kilopoundspercubicinch() {
-        return this.convertFromBase(DensityUnits.Kilopoundspercubicinch);
+        if (this.kilopoundspercubicinchLazy !== null) {
+            return this.kilopoundspercubicinchLazy;
+        }
+        return this.kilopoundspercubicinchLazy = this.convertFromBase(DensityUnits.Kilopoundspercubicinch);
     }
     get Kilopoundspercubicfoot() {
-        return this.convertFromBase(DensityUnits.Kilopoundspercubicfoot);
+        if (this.kilopoundspercubicfootLazy !== null) {
+            return this.kilopoundspercubicfootLazy;
+        }
+        return this.kilopoundspercubicfootLazy = this.convertFromBase(DensityUnits.Kilopoundspercubicfoot);
     }
     get Picogramsperliter() {
-        return this.convertFromBase(DensityUnits.Picogramsperliter);
+        if (this.picogramsperliterLazy !== null) {
+            return this.picogramsperliterLazy;
+        }
+        return this.picogramsperliterLazy = this.convertFromBase(DensityUnits.Picogramsperliter);
     }
     get Nanogramsperliter() {
-        return this.convertFromBase(DensityUnits.Nanogramsperliter);
+        if (this.nanogramsperliterLazy !== null) {
+            return this.nanogramsperliterLazy;
+        }
+        return this.nanogramsperliterLazy = this.convertFromBase(DensityUnits.Nanogramsperliter);
     }
     get Microgramsperliter() {
-        return this.convertFromBase(DensityUnits.Microgramsperliter);
+        if (this.microgramsperliterLazy !== null) {
+            return this.microgramsperliterLazy;
+        }
+        return this.microgramsperliterLazy = this.convertFromBase(DensityUnits.Microgramsperliter);
     }
     get Centigramsperliter() {
-        return this.convertFromBase(DensityUnits.Centigramsperliter);
+        if (this.centigramsperliterLazy !== null) {
+            return this.centigramsperliterLazy;
+        }
+        return this.centigramsperliterLazy = this.convertFromBase(DensityUnits.Centigramsperliter);
     }
     get Decigramsperliter() {
-        return this.convertFromBase(DensityUnits.Decigramsperliter);
+        if (this.decigramsperliterLazy !== null) {
+            return this.decigramsperliterLazy;
+        }
+        return this.decigramsperliterLazy = this.convertFromBase(DensityUnits.Decigramsperliter);
     }
     get Picogramsperdeciliter() {
-        return this.convertFromBase(DensityUnits.Picogramsperdeciliter);
+        if (this.picogramsperdeciliterLazy !== null) {
+            return this.picogramsperdeciliterLazy;
+        }
+        return this.picogramsperdeciliterLazy = this.convertFromBase(DensityUnits.Picogramsperdeciliter);
     }
     get Nanogramsperdeciliter() {
-        return this.convertFromBase(DensityUnits.Nanogramsperdeciliter);
+        if (this.nanogramsperdeciliterLazy !== null) {
+            return this.nanogramsperdeciliterLazy;
+        }
+        return this.nanogramsperdeciliterLazy = this.convertFromBase(DensityUnits.Nanogramsperdeciliter);
     }
     get Microgramsperdeciliter() {
-        return this.convertFromBase(DensityUnits.Microgramsperdeciliter);
+        if (this.microgramsperdeciliterLazy !== null) {
+            return this.microgramsperdeciliterLazy;
+        }
+        return this.microgramsperdeciliterLazy = this.convertFromBase(DensityUnits.Microgramsperdeciliter);
     }
     get Centigramsperdeciliter() {
-        return this.convertFromBase(DensityUnits.Centigramsperdeciliter);
+        if (this.centigramsperdeciliterLazy !== null) {
+            return this.centigramsperdeciliterLazy;
+        }
+        return this.centigramsperdeciliterLazy = this.convertFromBase(DensityUnits.Centigramsperdeciliter);
     }
     get Decigramsperdeciliter() {
-        return this.convertFromBase(DensityUnits.Decigramsperdeciliter);
+        if (this.decigramsperdeciliterLazy !== null) {
+            return this.decigramsperdeciliterLazy;
+        }
+        return this.decigramsperdeciliterLazy = this.convertFromBase(DensityUnits.Decigramsperdeciliter);
     }
     get Picogramspermilliliter() {
-        return this.convertFromBase(DensityUnits.Picogramspermilliliter);
+        if (this.picogramspermilliliterLazy !== null) {
+            return this.picogramspermilliliterLazy;
+        }
+        return this.picogramspermilliliterLazy = this.convertFromBase(DensityUnits.Picogramspermilliliter);
     }
     get Nanogramspermilliliter() {
-        return this.convertFromBase(DensityUnits.Nanogramspermilliliter);
+        if (this.nanogramspermilliliterLazy !== null) {
+            return this.nanogramspermilliliterLazy;
+        }
+        return this.nanogramspermilliliterLazy = this.convertFromBase(DensityUnits.Nanogramspermilliliter);
     }
     get Microgramspermilliliter() {
-        return this.convertFromBase(DensityUnits.Microgramspermilliliter);
+        if (this.microgramspermilliliterLazy !== null) {
+            return this.microgramspermilliliterLazy;
+        }
+        return this.microgramspermilliliterLazy = this.convertFromBase(DensityUnits.Microgramspermilliliter);
     }
     get Centigramspermilliliter() {
-        return this.convertFromBase(DensityUnits.Centigramspermilliliter);
+        if (this.centigramspermilliliterLazy !== null) {
+            return this.centigramspermilliliterLazy;
+        }
+        return this.centigramspermilliliterLazy = this.convertFromBase(DensityUnits.Centigramspermilliliter);
     }
     get Decigramspermilliliter() {
-        return this.convertFromBase(DensityUnits.Decigramspermilliliter);
+        if (this.decigramspermilliliterLazy !== null) {
+            return this.decigramspermilliliterLazy;
+        }
+        return this.decigramspermilliliterLazy = this.convertFromBase(DensityUnits.Decigramspermilliliter);
     }
     static FromGramsPerCubicMillimeter(value) {
         return new Density(value, DensityUnits.GramsPerCubicMillimeter);

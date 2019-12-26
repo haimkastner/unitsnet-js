@@ -11,25 +11,49 @@ var IrradiationUnits;
 })(IrradiationUnits = exports.IrradiationUnits || (exports.IrradiationUnits = {}));
 class Irradiation {
     constructor(value, fromUnit) {
+        this.joulespersquaremeterLazy = null;
+        this.joulespersquarecentimeterLazy = null;
+        this.joulespersquaremillimeterLazy = null;
+        this.watthourspersquaremeterLazy = null;
+        this.kilojoulespersquaremeterLazy = null;
+        this.kilowatthourspersquaremeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get JoulesPerSquareMeter() {
-        return this.convertFromBase(IrradiationUnits.JoulesPerSquareMeter);
+        if (this.joulespersquaremeterLazy !== null) {
+            return this.joulespersquaremeterLazy;
+        }
+        return this.joulespersquaremeterLazy = this.convertFromBase(IrradiationUnits.JoulesPerSquareMeter);
     }
     get JoulesPerSquareCentimeter() {
-        return this.convertFromBase(IrradiationUnits.JoulesPerSquareCentimeter);
+        if (this.joulespersquarecentimeterLazy !== null) {
+            return this.joulespersquarecentimeterLazy;
+        }
+        return this.joulespersquarecentimeterLazy = this.convertFromBase(IrradiationUnits.JoulesPerSquareCentimeter);
     }
     get JoulesPerSquareMillimeter() {
-        return this.convertFromBase(IrradiationUnits.JoulesPerSquareMillimeter);
+        if (this.joulespersquaremillimeterLazy !== null) {
+            return this.joulespersquaremillimeterLazy;
+        }
+        return this.joulespersquaremillimeterLazy = this.convertFromBase(IrradiationUnits.JoulesPerSquareMillimeter);
     }
     get WattHoursPerSquareMeter() {
-        return this.convertFromBase(IrradiationUnits.WattHoursPerSquareMeter);
+        if (this.watthourspersquaremeterLazy !== null) {
+            return this.watthourspersquaremeterLazy;
+        }
+        return this.watthourspersquaremeterLazy = this.convertFromBase(IrradiationUnits.WattHoursPerSquareMeter);
     }
     get Kilojoulespersquaremeter() {
-        return this.convertFromBase(IrradiationUnits.Kilojoulespersquaremeter);
+        if (this.kilojoulespersquaremeterLazy !== null) {
+            return this.kilojoulespersquaremeterLazy;
+        }
+        return this.kilojoulespersquaremeterLazy = this.convertFromBase(IrradiationUnits.Kilojoulespersquaremeter);
     }
     get Kilowatthourspersquaremeter() {
-        return this.convertFromBase(IrradiationUnits.Kilowatthourspersquaremeter);
+        if (this.kilowatthourspersquaremeterLazy !== null) {
+            return this.kilowatthourspersquaremeterLazy;
+        }
+        return this.kilowatthourspersquaremeterLazy = this.convertFromBase(IrradiationUnits.Kilowatthourspersquaremeter);
     }
     static FromJoulesPerSquareMeter(value) {
         return new Irradiation(value, IrradiationUnits.JoulesPerSquareMeter);

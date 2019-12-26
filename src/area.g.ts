@@ -17,65 +17,121 @@ export enum AreaUnits {
 
 export class Area {
     private value: number;
+    private squarekilometersLazy: number | null = null;
+    private squaremetersLazy: number | null = null;
+    private squaredecimetersLazy: number | null = null;
+    private squarecentimetersLazy: number | null = null;
+    private squaremillimetersLazy: number | null = null;
+    private squaremicrometersLazy: number | null = null;
+    private squaremilesLazy: number | null = null;
+    private squareyardsLazy: number | null = null;
+    private squarefeetLazy: number | null = null;
+    private ussurveysquarefeetLazy: number | null = null;
+    private squareinchesLazy: number | null = null;
+    private acresLazy: number | null = null;
+    private hectaresLazy: number | null = null;
+    private squarenauticalmilesLazy: number | null = null;
 
     public constructor(value: number, fromUnit: AreaUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get SquareKilometers(): number {
-        return this.convertFromBase(AreaUnits.SquareKilometers);
+        if(this.squarekilometersLazy !== null){
+            return this.squarekilometersLazy;
+        }
+        return this.squarekilometersLazy = this.convertFromBase(AreaUnits.SquareKilometers);
     }
 
     public get SquareMeters(): number {
-        return this.convertFromBase(AreaUnits.SquareMeters);
+        if(this.squaremetersLazy !== null){
+            return this.squaremetersLazy;
+        }
+        return this.squaremetersLazy = this.convertFromBase(AreaUnits.SquareMeters);
     }
 
     public get SquareDecimeters(): number {
-        return this.convertFromBase(AreaUnits.SquareDecimeters);
+        if(this.squaredecimetersLazy !== null){
+            return this.squaredecimetersLazy;
+        }
+        return this.squaredecimetersLazy = this.convertFromBase(AreaUnits.SquareDecimeters);
     }
 
     public get SquareCentimeters(): number {
-        return this.convertFromBase(AreaUnits.SquareCentimeters);
+        if(this.squarecentimetersLazy !== null){
+            return this.squarecentimetersLazy;
+        }
+        return this.squarecentimetersLazy = this.convertFromBase(AreaUnits.SquareCentimeters);
     }
 
     public get SquareMillimeters(): number {
-        return this.convertFromBase(AreaUnits.SquareMillimeters);
+        if(this.squaremillimetersLazy !== null){
+            return this.squaremillimetersLazy;
+        }
+        return this.squaremillimetersLazy = this.convertFromBase(AreaUnits.SquareMillimeters);
     }
 
     public get SquareMicrometers(): number {
-        return this.convertFromBase(AreaUnits.SquareMicrometers);
+        if(this.squaremicrometersLazy !== null){
+            return this.squaremicrometersLazy;
+        }
+        return this.squaremicrometersLazy = this.convertFromBase(AreaUnits.SquareMicrometers);
     }
 
     public get SquareMiles(): number {
-        return this.convertFromBase(AreaUnits.SquareMiles);
+        if(this.squaremilesLazy !== null){
+            return this.squaremilesLazy;
+        }
+        return this.squaremilesLazy = this.convertFromBase(AreaUnits.SquareMiles);
     }
 
     public get SquareYards(): number {
-        return this.convertFromBase(AreaUnits.SquareYards);
+        if(this.squareyardsLazy !== null){
+            return this.squareyardsLazy;
+        }
+        return this.squareyardsLazy = this.convertFromBase(AreaUnits.SquareYards);
     }
 
     public get SquareFeet(): number {
-        return this.convertFromBase(AreaUnits.SquareFeet);
+        if(this.squarefeetLazy !== null){
+            return this.squarefeetLazy;
+        }
+        return this.squarefeetLazy = this.convertFromBase(AreaUnits.SquareFeet);
     }
 
     public get UsSurveySquareFeet(): number {
-        return this.convertFromBase(AreaUnits.UsSurveySquareFeet);
+        if(this.ussurveysquarefeetLazy !== null){
+            return this.ussurveysquarefeetLazy;
+        }
+        return this.ussurveysquarefeetLazy = this.convertFromBase(AreaUnits.UsSurveySquareFeet);
     }
 
     public get SquareInches(): number {
-        return this.convertFromBase(AreaUnits.SquareInches);
+        if(this.squareinchesLazy !== null){
+            return this.squareinchesLazy;
+        }
+        return this.squareinchesLazy = this.convertFromBase(AreaUnits.SquareInches);
     }
 
     public get Acres(): number {
-        return this.convertFromBase(AreaUnits.Acres);
+        if(this.acresLazy !== null){
+            return this.acresLazy;
+        }
+        return this.acresLazy = this.convertFromBase(AreaUnits.Acres);
     }
 
     public get Hectares(): number {
-        return this.convertFromBase(AreaUnits.Hectares);
+        if(this.hectaresLazy !== null){
+            return this.hectaresLazy;
+        }
+        return this.hectaresLazy = this.convertFromBase(AreaUnits.Hectares);
     }
 
     public get SquareNauticalMiles(): number {
-        return this.convertFromBase(AreaUnits.SquareNauticalMiles);
+        if(this.squarenauticalmilesLazy !== null){
+            return this.squarenauticalmilesLazy;
+        }
+        return this.squarenauticalmilesLazy = this.convertFromBase(AreaUnits.SquareNauticalMiles);
     }
 
     public static FromSquareKilometers(value: number): Area {
@@ -135,108 +191,76 @@ export class Area {
     }
 
     private convertFromBase(toUnit: AreaUnits): number {
-
-                switch (toUnit) {
-                    
-                case AreaUnits.SquareKilometers:
-                    return this.value/1e6;
+        switch (toUnit) {
                 
-                case AreaUnits.SquareMeters:
-                    return this.value;
-                
-                case AreaUnits.SquareDecimeters:
-                    return this.value/1e-2;
-                
-                case AreaUnits.SquareCentimeters:
-                    return this.value/1e-4;
-                
-                case AreaUnits.SquareMillimeters:
-                    return this.value/1e-6;
-                
-                case AreaUnits.SquareMicrometers:
-                    return this.value/1e-12;
-                
-                case AreaUnits.SquareMiles:
-                    return this.value/2.59e6;
-                
-                case AreaUnits.SquareYards:
-                    return this.value/0.836127;
-                
-                case AreaUnits.SquareFeet:
-                    return this.value/0.092903;
-                
-                case AreaUnits.UsSurveySquareFeet:
-                    return this.value/0.09290341161;
-                
-                case AreaUnits.SquareInches:
-                    return this.value/0.00064516;
-                
-                case AreaUnits.Acres:
-                    return this.value/4046.85642;
-                
-                case AreaUnits.Hectares:
-                    return this.value/1e4;
-                
-                case AreaUnits.SquareNauticalMiles:
-                    return this.value/3429904;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case AreaUnits.SquareKilometers:
+                return this.value/1e6;
+            case AreaUnits.SquareMeters:
+                return this.value;
+            case AreaUnits.SquareDecimeters:
+                return this.value/1e-2;
+            case AreaUnits.SquareCentimeters:
+                return this.value/1e-4;
+            case AreaUnits.SquareMillimeters:
+                return this.value/1e-6;
+            case AreaUnits.SquareMicrometers:
+                return this.value/1e-12;
+            case AreaUnits.SquareMiles:
+                return this.value/2.59e6;
+            case AreaUnits.SquareYards:
+                return this.value/0.836127;
+            case AreaUnits.SquareFeet:
+                return this.value/0.092903;
+            case AreaUnits.UsSurveySquareFeet:
+                return this.value/0.09290341161;
+            case AreaUnits.SquareInches:
+                return this.value/0.00064516;
+            case AreaUnits.Acres:
+                return this.value/4046.85642;
+            case AreaUnits.Hectares:
+                return this.value/1e4;
+            case AreaUnits.SquareNauticalMiles:
+                return this.value/3429904;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AreaUnits): number {
-
-                switch (fromUnit) {
-                    
-                case AreaUnits.SquareKilometers:
-                    return value*1e6;
+        switch (fromUnit) {
                 
-                case AreaUnits.SquareMeters:
-                    return value;
-                
-                case AreaUnits.SquareDecimeters:
-                    return value*1e-2;
-                
-                case AreaUnits.SquareCentimeters:
-                    return value*1e-4;
-                
-                case AreaUnits.SquareMillimeters:
-                    return value*1e-6;
-                
-                case AreaUnits.SquareMicrometers:
-                    return value*1e-12;
-                
-                case AreaUnits.SquareMiles:
-                    return value*2.59e6;
-                
-                case AreaUnits.SquareYards:
-                    return value*0.836127;
-                
-                case AreaUnits.SquareFeet:
-                    return value*0.092903;
-                
-                case AreaUnits.UsSurveySquareFeet:
-                    return value*0.09290341161;
-                
-                case AreaUnits.SquareInches:
-                    return value*0.00064516;
-                
-                case AreaUnits.Acres:
-                    return value*4046.85642;
-                
-                case AreaUnits.Hectares:
-                    return value*1e4;
-                
-                case AreaUnits.SquareNauticalMiles:
-                    return value*3429904;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case AreaUnits.SquareKilometers:
+                return value*1e6;
+            case AreaUnits.SquareMeters:
+                return value;
+            case AreaUnits.SquareDecimeters:
+                return value*1e-2;
+            case AreaUnits.SquareCentimeters:
+                return value*1e-4;
+            case AreaUnits.SquareMillimeters:
+                return value*1e-6;
+            case AreaUnits.SquareMicrometers:
+                return value*1e-12;
+            case AreaUnits.SquareMiles:
+                return value*2.59e6;
+            case AreaUnits.SquareYards:
+                return value*0.836127;
+            case AreaUnits.SquareFeet:
+                return value*0.092903;
+            case AreaUnits.UsSurveySquareFeet:
+                return value*0.09290341161;
+            case AreaUnits.SquareInches:
+                return value*0.00064516;
+            case AreaUnits.Acres:
+                return value*4046.85642;
+            case AreaUnits.Hectares:
+                return value*1e4;
+            case AreaUnits.SquareNauticalMiles:
+                return value*3429904;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

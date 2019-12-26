@@ -22,58 +22,126 @@ var SpecificWeightUnits;
 })(SpecificWeightUnits = exports.SpecificWeightUnits || (exports.SpecificWeightUnits = {}));
 class SpecificWeight {
     constructor(value, fromUnit) {
+        this.newtonspercubicmillimeterLazy = null;
+        this.newtonspercubiccentimeterLazy = null;
+        this.newtonspercubicmeterLazy = null;
+        this.kilogramsforcepercubicmillimeterLazy = null;
+        this.kilogramsforcepercubiccentimeterLazy = null;
+        this.kilogramsforcepercubicmeterLazy = null;
+        this.poundsforcepercubicinchLazy = null;
+        this.poundsforcepercubicfootLazy = null;
+        this.tonnesforcepercubicmillimeterLazy = null;
+        this.tonnesforcepercubiccentimeterLazy = null;
+        this.tonnesforcepercubicmeterLazy = null;
+        this.kilonewtonspercubicmillimeterLazy = null;
+        this.kilonewtonspercubiccentimeterLazy = null;
+        this.kilonewtonspercubicmeterLazy = null;
+        this.meganewtonspercubicmeterLazy = null;
+        this.kilopoundsforcepercubicinchLazy = null;
+        this.kilopoundsforcepercubicfootLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get NewtonsPerCubicMillimeter() {
-        return this.convertFromBase(SpecificWeightUnits.NewtonsPerCubicMillimeter);
+        if (this.newtonspercubicmillimeterLazy !== null) {
+            return this.newtonspercubicmillimeterLazy;
+        }
+        return this.newtonspercubicmillimeterLazy = this.convertFromBase(SpecificWeightUnits.NewtonsPerCubicMillimeter);
     }
     get NewtonsPerCubicCentimeter() {
-        return this.convertFromBase(SpecificWeightUnits.NewtonsPerCubicCentimeter);
+        if (this.newtonspercubiccentimeterLazy !== null) {
+            return this.newtonspercubiccentimeterLazy;
+        }
+        return this.newtonspercubiccentimeterLazy = this.convertFromBase(SpecificWeightUnits.NewtonsPerCubicCentimeter);
     }
     get NewtonsPerCubicMeter() {
-        return this.convertFromBase(SpecificWeightUnits.NewtonsPerCubicMeter);
+        if (this.newtonspercubicmeterLazy !== null) {
+            return this.newtonspercubicmeterLazy;
+        }
+        return this.newtonspercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.NewtonsPerCubicMeter);
     }
     get KilogramsForcePerCubicMillimeter() {
-        return this.convertFromBase(SpecificWeightUnits.KilogramsForcePerCubicMillimeter);
+        if (this.kilogramsforcepercubicmillimeterLazy !== null) {
+            return this.kilogramsforcepercubicmillimeterLazy;
+        }
+        return this.kilogramsforcepercubicmillimeterLazy = this.convertFromBase(SpecificWeightUnits.KilogramsForcePerCubicMillimeter);
     }
     get KilogramsForcePerCubicCentimeter() {
-        return this.convertFromBase(SpecificWeightUnits.KilogramsForcePerCubicCentimeter);
+        if (this.kilogramsforcepercubiccentimeterLazy !== null) {
+            return this.kilogramsforcepercubiccentimeterLazy;
+        }
+        return this.kilogramsforcepercubiccentimeterLazy = this.convertFromBase(SpecificWeightUnits.KilogramsForcePerCubicCentimeter);
     }
     get KilogramsForcePerCubicMeter() {
-        return this.convertFromBase(SpecificWeightUnits.KilogramsForcePerCubicMeter);
+        if (this.kilogramsforcepercubicmeterLazy !== null) {
+            return this.kilogramsforcepercubicmeterLazy;
+        }
+        return this.kilogramsforcepercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.KilogramsForcePerCubicMeter);
     }
     get PoundsForcePerCubicInch() {
-        return this.convertFromBase(SpecificWeightUnits.PoundsForcePerCubicInch);
+        if (this.poundsforcepercubicinchLazy !== null) {
+            return this.poundsforcepercubicinchLazy;
+        }
+        return this.poundsforcepercubicinchLazy = this.convertFromBase(SpecificWeightUnits.PoundsForcePerCubicInch);
     }
     get PoundsForcePerCubicFoot() {
-        return this.convertFromBase(SpecificWeightUnits.PoundsForcePerCubicFoot);
+        if (this.poundsforcepercubicfootLazy !== null) {
+            return this.poundsforcepercubicfootLazy;
+        }
+        return this.poundsforcepercubicfootLazy = this.convertFromBase(SpecificWeightUnits.PoundsForcePerCubicFoot);
     }
     get TonnesForcePerCubicMillimeter() {
-        return this.convertFromBase(SpecificWeightUnits.TonnesForcePerCubicMillimeter);
+        if (this.tonnesforcepercubicmillimeterLazy !== null) {
+            return this.tonnesforcepercubicmillimeterLazy;
+        }
+        return this.tonnesforcepercubicmillimeterLazy = this.convertFromBase(SpecificWeightUnits.TonnesForcePerCubicMillimeter);
     }
     get TonnesForcePerCubicCentimeter() {
-        return this.convertFromBase(SpecificWeightUnits.TonnesForcePerCubicCentimeter);
+        if (this.tonnesforcepercubiccentimeterLazy !== null) {
+            return this.tonnesforcepercubiccentimeterLazy;
+        }
+        return this.tonnesforcepercubiccentimeterLazy = this.convertFromBase(SpecificWeightUnits.TonnesForcePerCubicCentimeter);
     }
     get TonnesForcePerCubicMeter() {
-        return this.convertFromBase(SpecificWeightUnits.TonnesForcePerCubicMeter);
+        if (this.tonnesforcepercubicmeterLazy !== null) {
+            return this.tonnesforcepercubicmeterLazy;
+        }
+        return this.tonnesforcepercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.TonnesForcePerCubicMeter);
     }
     get Kilonewtonspercubicmillimeter() {
-        return this.convertFromBase(SpecificWeightUnits.Kilonewtonspercubicmillimeter);
+        if (this.kilonewtonspercubicmillimeterLazy !== null) {
+            return this.kilonewtonspercubicmillimeterLazy;
+        }
+        return this.kilonewtonspercubicmillimeterLazy = this.convertFromBase(SpecificWeightUnits.Kilonewtonspercubicmillimeter);
     }
     get Kilonewtonspercubiccentimeter() {
-        return this.convertFromBase(SpecificWeightUnits.Kilonewtonspercubiccentimeter);
+        if (this.kilonewtonspercubiccentimeterLazy !== null) {
+            return this.kilonewtonspercubiccentimeterLazy;
+        }
+        return this.kilonewtonspercubiccentimeterLazy = this.convertFromBase(SpecificWeightUnits.Kilonewtonspercubiccentimeter);
     }
     get Kilonewtonspercubicmeter() {
-        return this.convertFromBase(SpecificWeightUnits.Kilonewtonspercubicmeter);
+        if (this.kilonewtonspercubicmeterLazy !== null) {
+            return this.kilonewtonspercubicmeterLazy;
+        }
+        return this.kilonewtonspercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.Kilonewtonspercubicmeter);
     }
     get Meganewtonspercubicmeter() {
-        return this.convertFromBase(SpecificWeightUnits.Meganewtonspercubicmeter);
+        if (this.meganewtonspercubicmeterLazy !== null) {
+            return this.meganewtonspercubicmeterLazy;
+        }
+        return this.meganewtonspercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.Meganewtonspercubicmeter);
     }
     get Kilopoundsforcepercubicinch() {
-        return this.convertFromBase(SpecificWeightUnits.Kilopoundsforcepercubicinch);
+        if (this.kilopoundsforcepercubicinchLazy !== null) {
+            return this.kilopoundsforcepercubicinchLazy;
+        }
+        return this.kilopoundsforcepercubicinchLazy = this.convertFromBase(SpecificWeightUnits.Kilopoundsforcepercubicinch);
     }
     get Kilopoundsforcepercubicfoot() {
-        return this.convertFromBase(SpecificWeightUnits.Kilopoundsforcepercubicfoot);
+        if (this.kilopoundsforcepercubicfootLazy !== null) {
+            return this.kilopoundsforcepercubicfootLazy;
+        }
+        return this.kilopoundsforcepercubicfootLazy = this.convertFromBase(SpecificWeightUnits.Kilopoundsforcepercubicfoot);
     }
     static FromNewtonsPerCubicMillimeter(value) {
         return new SpecificWeight(value, SpecificWeightUnits.NewtonsPerCubicMillimeter);

@@ -11,25 +11,49 @@ var AreaMomentOfInertiaUnits;
 })(AreaMomentOfInertiaUnits = exports.AreaMomentOfInertiaUnits || (exports.AreaMomentOfInertiaUnits = {}));
 class AreaMomentOfInertia {
     constructor(value, fromUnit) {
+        this.meterstothefourthLazy = null;
+        this.decimeterstothefourthLazy = null;
+        this.centimeterstothefourthLazy = null;
+        this.millimeterstothefourthLazy = null;
+        this.feettothefourthLazy = null;
+        this.inchestothefourthLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get MetersToTheFourth() {
-        return this.convertFromBase(AreaMomentOfInertiaUnits.MetersToTheFourth);
+        if (this.meterstothefourthLazy !== null) {
+            return this.meterstothefourthLazy;
+        }
+        return this.meterstothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.MetersToTheFourth);
     }
     get DecimetersToTheFourth() {
-        return this.convertFromBase(AreaMomentOfInertiaUnits.DecimetersToTheFourth);
+        if (this.decimeterstothefourthLazy !== null) {
+            return this.decimeterstothefourthLazy;
+        }
+        return this.decimeterstothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.DecimetersToTheFourth);
     }
     get CentimetersToTheFourth() {
-        return this.convertFromBase(AreaMomentOfInertiaUnits.CentimetersToTheFourth);
+        if (this.centimeterstothefourthLazy !== null) {
+            return this.centimeterstothefourthLazy;
+        }
+        return this.centimeterstothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.CentimetersToTheFourth);
     }
     get MillimetersToTheFourth() {
-        return this.convertFromBase(AreaMomentOfInertiaUnits.MillimetersToTheFourth);
+        if (this.millimeterstothefourthLazy !== null) {
+            return this.millimeterstothefourthLazy;
+        }
+        return this.millimeterstothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.MillimetersToTheFourth);
     }
     get FeetToTheFourth() {
-        return this.convertFromBase(AreaMomentOfInertiaUnits.FeetToTheFourth);
+        if (this.feettothefourthLazy !== null) {
+            return this.feettothefourthLazy;
+        }
+        return this.feettothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.FeetToTheFourth);
     }
     get InchesToTheFourth() {
-        return this.convertFromBase(AreaMomentOfInertiaUnits.InchesToTheFourth);
+        if (this.inchestothefourthLazy !== null) {
+            return this.inchestothefourthLazy;
+        }
+        return this.inchestothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.InchesToTheFourth);
     }
     static FromMetersToTheFourth(value) {
         return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnits.MetersToTheFourth);

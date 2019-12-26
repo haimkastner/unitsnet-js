@@ -9,6 +9,13 @@ export declare enum PressureChangeRateUnits {
 }
 export declare class PressureChangeRate {
     private value;
+    private pascalspersecondLazy;
+    private pascalsperminuteLazy;
+    private atmospherespersecondLazy;
+    private kilopascalspersecondLazy;
+    private megapascalspersecondLazy;
+    private kilopascalsperminuteLazy;
+    private megapascalsperminuteLazy;
     constructor(value: number, fromUnit: PressureChangeRateUnits);
     get PascalsPerSecond(): number;
     get PascalsPerMinute(): number;

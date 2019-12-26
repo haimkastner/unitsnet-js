@@ -9,19 +9,35 @@ var ElectricPotentialAcUnits;
 })(ElectricPotentialAcUnits = exports.ElectricPotentialAcUnits || (exports.ElectricPotentialAcUnits = {}));
 class ElectricPotentialAc {
     constructor(value, fromUnit) {
+        this.voltsacLazy = null;
+        this.microvoltsacLazy = null;
+        this.kilovoltsacLazy = null;
+        this.megavoltsacLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get VoltsAc() {
-        return this.convertFromBase(ElectricPotentialAcUnits.VoltsAc);
+        if (this.voltsacLazy !== null) {
+            return this.voltsacLazy;
+        }
+        return this.voltsacLazy = this.convertFromBase(ElectricPotentialAcUnits.VoltsAc);
     }
     get Microvoltsac() {
-        return this.convertFromBase(ElectricPotentialAcUnits.Microvoltsac);
+        if (this.microvoltsacLazy !== null) {
+            return this.microvoltsacLazy;
+        }
+        return this.microvoltsacLazy = this.convertFromBase(ElectricPotentialAcUnits.Microvoltsac);
     }
     get Kilovoltsac() {
-        return this.convertFromBase(ElectricPotentialAcUnits.Kilovoltsac);
+        if (this.kilovoltsacLazy !== null) {
+            return this.kilovoltsacLazy;
+        }
+        return this.kilovoltsacLazy = this.convertFromBase(ElectricPotentialAcUnits.Kilovoltsac);
     }
     get Megavoltsac() {
-        return this.convertFromBase(ElectricPotentialAcUnits.Megavoltsac);
+        if (this.megavoltsacLazy !== null) {
+            return this.megavoltsacLazy;
+        }
+        return this.megavoltsacLazy = this.convertFromBase(ElectricPotentialAcUnits.Megavoltsac);
     }
     static FromVoltsAc(value) {
         return new ElectricPotentialAc(value, ElectricPotentialAcUnits.VoltsAc);

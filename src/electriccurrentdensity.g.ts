@@ -6,21 +6,33 @@ export enum ElectricCurrentDensityUnits {
 
 export class ElectricCurrentDensity {
     private value: number;
+    private amperespersquaremeterLazy: number | null = null;
+    private amperespersquareinchLazy: number | null = null;
+    private amperespersquarefootLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricCurrentDensityUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get AmperesPerSquareMeter(): number {
-        return this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareMeter);
+        if(this.amperespersquaremeterLazy !== null){
+            return this.amperespersquaremeterLazy;
+        }
+        return this.amperespersquaremeterLazy = this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareMeter);
     }
 
     public get AmperesPerSquareInch(): number {
-        return this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareInch);
+        if(this.amperespersquareinchLazy !== null){
+            return this.amperespersquareinchLazy;
+        }
+        return this.amperespersquareinchLazy = this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareInch);
     }
 
     public get AmperesPerSquareFoot(): number {
-        return this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareFoot);
+        if(this.amperespersquarefootLazy !== null){
+            return this.amperespersquarefootLazy;
+        }
+        return this.amperespersquarefootLazy = this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareFoot);
     }
 
     public static FromAmperesPerSquareMeter(value: number): ElectricCurrentDensity {
@@ -36,42 +48,32 @@ export class ElectricCurrentDensity {
     }
 
     private convertFromBase(toUnit: ElectricCurrentDensityUnits): number {
-
-                switch (toUnit) {
-                    
-                case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
-                    return this.value;
+        switch (toUnit) {
                 
-                case ElectricCurrentDensityUnits.AmperesPerSquareInch:
-                    return this.value / 1.5500031000062000e3;
-                
-                case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
-                    return this.value / 1.0763910416709722e1;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
+                return this.value;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch:
+                return this.value / 1.5500031000062000e3;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
+                return this.value / 1.0763910416709722e1;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricCurrentDensityUnits): number {
-
-                switch (fromUnit) {
-                    
-                case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
-                    return value;
+        switch (fromUnit) {
                 
-                case ElectricCurrentDensityUnits.AmperesPerSquareInch:
-                    return value * 1.5500031000062000e3;
-                
-                case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
-                    return value * 1.0763910416709722e1;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
+                return value;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch:
+                return value * 1.5500031000062000e3;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
+                return value * 1.0763910416709722e1;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

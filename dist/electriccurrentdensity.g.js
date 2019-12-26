@@ -8,16 +8,28 @@ var ElectricCurrentDensityUnits;
 })(ElectricCurrentDensityUnits = exports.ElectricCurrentDensityUnits || (exports.ElectricCurrentDensityUnits = {}));
 class ElectricCurrentDensity {
     constructor(value, fromUnit) {
+        this.amperespersquaremeterLazy = null;
+        this.amperespersquareinchLazy = null;
+        this.amperespersquarefootLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get AmperesPerSquareMeter() {
-        return this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareMeter);
+        if (this.amperespersquaremeterLazy !== null) {
+            return this.amperespersquaremeterLazy;
+        }
+        return this.amperespersquaremeterLazy = this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareMeter);
     }
     get AmperesPerSquareInch() {
-        return this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareInch);
+        if (this.amperespersquareinchLazy !== null) {
+            return this.amperespersquareinchLazy;
+        }
+        return this.amperespersquareinchLazy = this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareInch);
     }
     get AmperesPerSquareFoot() {
-        return this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareFoot);
+        if (this.amperespersquarefootLazy !== null) {
+            return this.amperespersquarefootLazy;
+        }
+        return this.amperespersquarefootLazy = this.convertFromBase(ElectricCurrentDensityUnits.AmperesPerSquareFoot);
     }
     static FromAmperesPerSquareMeter(value) {
         return new ElectricCurrentDensity(value, ElectricCurrentDensityUnits.AmperesPerSquareMeter);

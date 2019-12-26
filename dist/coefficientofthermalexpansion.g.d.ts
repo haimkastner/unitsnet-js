@@ -5,6 +5,9 @@ export declare enum CoefficientOfThermalExpansionUnits {
 }
 export declare class CoefficientOfThermalExpansion {
     private value;
+    private inversekelvinLazy;
+    private inversedegreecelsiusLazy;
+    private inversedegreefahrenheitLazy;
     constructor(value: number, fromUnit: CoefficientOfThermalExpansionUnits);
     get InverseKelvin(): number;
     get InverseDegreeCelsius(): number;

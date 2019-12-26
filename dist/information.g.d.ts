@@ -16,6 +16,20 @@ export declare enum InformationUnits {
 }
 export declare class Information {
     private value;
+    private bytesLazy;
+    private bitsLazy;
+    private kilobytesLazy;
+    private megabytesLazy;
+    private gigabytesLazy;
+    private terabytesLazy;
+    private petabytesLazy;
+    private exabytesLazy;
+    private kilobitsLazy;
+    private megabitsLazy;
+    private gigabitsLazy;
+    private terabitsLazy;
+    private petabitsLazy;
+    private exabitsLazy;
     constructor(value: number, fromUnit: InformationUnits);
     get Bytes(): number;
     get Bits(): number;

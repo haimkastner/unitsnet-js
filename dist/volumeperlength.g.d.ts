@@ -5,6 +5,9 @@ export declare enum VolumePerLengthUnits {
 }
 export declare class VolumePerLength {
     private value;
+    private cubicmeterspermeterLazy;
+    private literspermeterLazy;
+    private oilbarrelsperfootLazy;
     constructor(value: number, fromUnit: VolumePerLengthUnits);
     get CubicMetersPerMeter(): number;
     get LitersPerMeter(): number;

@@ -26,6 +26,30 @@ export declare enum MassUnits {
 }
 export declare class Mass {
     private value;
+    private gramsLazy;
+    private tonnesLazy;
+    private shorttonsLazy;
+    private longtonsLazy;
+    private poundsLazy;
+    private ouncesLazy;
+    private slugsLazy;
+    private stoneLazy;
+    private shorthundredweightLazy;
+    private longhundredweightLazy;
+    private grainsLazy;
+    private solarmassesLazy;
+    private earthmassesLazy;
+    private nanogramsLazy;
+    private microgramsLazy;
+    private centigramsLazy;
+    private decigramsLazy;
+    private decagramsLazy;
+    private hectogramsLazy;
+    private kilogramsLazy;
+    private kilotonnesLazy;
+    private megatonnesLazy;
+    private kilopoundsLazy;
+    private megapoundsLazy;
     constructor(value: number, fromUnit: MassUnits);
     get Grams(): number;
     get Tonnes(): number;

@@ -3,6 +3,7 @@ export declare enum SolidAngleUnits {
 }
 export declare class SolidAngle {
     private value;
+    private steradiansLazy;
     constructor(value: number, fromUnit: SolidAngleUnits);
     get Steradians(): number;
     static FromSteradians(value: number): SolidAngle;

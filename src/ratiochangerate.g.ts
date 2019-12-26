@@ -5,17 +5,25 @@ export enum RatioChangeRateUnits {
 
 export class RatioChangeRate {
     private value: number;
+    private percentspersecondLazy: number | null = null;
+    private decimalfractionspersecondLazy: number | null = null;
 
     public constructor(value: number, fromUnit: RatioChangeRateUnits) {
         this.value = this.convertToBase(value, fromUnit);
     }
 
     public get PercentsPerSecond(): number {
-        return this.convertFromBase(RatioChangeRateUnits.PercentsPerSecond);
+        if(this.percentspersecondLazy !== null){
+            return this.percentspersecondLazy;
+        }
+        return this.percentspersecondLazy = this.convertFromBase(RatioChangeRateUnits.PercentsPerSecond);
     }
 
     public get DecimalFractionsPerSecond(): number {
-        return this.convertFromBase(RatioChangeRateUnits.DecimalFractionsPerSecond);
+        if(this.decimalfractionspersecondLazy !== null){
+            return this.decimalfractionspersecondLazy;
+        }
+        return this.decimalfractionspersecondLazy = this.convertFromBase(RatioChangeRateUnits.DecimalFractionsPerSecond);
     }
 
     public static FromPercentsPerSecond(value: number): RatioChangeRate {
@@ -27,36 +35,28 @@ export class RatioChangeRate {
     }
 
     private convertFromBase(toUnit: RatioChangeRateUnits): number {
-
-                switch (toUnit) {
-                    
-                case RatioChangeRateUnits.PercentsPerSecond:
-                    return this.value;
+        switch (toUnit) {
                 
-                case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                    return this.value/1e2;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-            
+            case RatioChangeRateUnits.PercentsPerSecond:
+                return this.value;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond:
+                return this.value/1e2;
+            default:
+                break;
+        }
+        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RatioChangeRateUnits): number {
-
-                switch (fromUnit) {
-                    
-                case RatioChangeRateUnits.PercentsPerSecond:
-                    return value;
+        switch (fromUnit) {
                 
-                case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                    return value*1e2;
-                
-                    default:
-                        break;
-                }
-                return NaN;
-                
+            case RatioChangeRateUnits.PercentsPerSecond:
+                return value;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond:
+                return value*1e2;
+            default:
+                break;
+        }
+        return NaN;
     }
 }

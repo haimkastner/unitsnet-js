@@ -12,28 +12,56 @@ var KinematicViscosityUnits;
 })(KinematicViscosityUnits = exports.KinematicViscosityUnits || (exports.KinematicViscosityUnits = {}));
 class KinematicViscosity {
     constructor(value, fromUnit) {
+        this.squaremeterspersecondLazy = null;
+        this.stokesLazy = null;
+        this.nanostokesLazy = null;
+        this.microstokesLazy = null;
+        this.centistokesLazy = null;
+        this.decistokesLazy = null;
+        this.kilostokesLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get SquareMetersPerSecond() {
-        return this.convertFromBase(KinematicViscosityUnits.SquareMetersPerSecond);
+        if (this.squaremeterspersecondLazy !== null) {
+            return this.squaremeterspersecondLazy;
+        }
+        return this.squaremeterspersecondLazy = this.convertFromBase(KinematicViscosityUnits.SquareMetersPerSecond);
     }
     get Stokes() {
-        return this.convertFromBase(KinematicViscosityUnits.Stokes);
+        if (this.stokesLazy !== null) {
+            return this.stokesLazy;
+        }
+        return this.stokesLazy = this.convertFromBase(KinematicViscosityUnits.Stokes);
     }
     get Nanostokes() {
-        return this.convertFromBase(KinematicViscosityUnits.Nanostokes);
+        if (this.nanostokesLazy !== null) {
+            return this.nanostokesLazy;
+        }
+        return this.nanostokesLazy = this.convertFromBase(KinematicViscosityUnits.Nanostokes);
     }
     get Microstokes() {
-        return this.convertFromBase(KinematicViscosityUnits.Microstokes);
+        if (this.microstokesLazy !== null) {
+            return this.microstokesLazy;
+        }
+        return this.microstokesLazy = this.convertFromBase(KinematicViscosityUnits.Microstokes);
     }
     get Centistokes() {
-        return this.convertFromBase(KinematicViscosityUnits.Centistokes);
+        if (this.centistokesLazy !== null) {
+            return this.centistokesLazy;
+        }
+        return this.centistokesLazy = this.convertFromBase(KinematicViscosityUnits.Centistokes);
     }
     get Decistokes() {
-        return this.convertFromBase(KinematicViscosityUnits.Decistokes);
+        if (this.decistokesLazy !== null) {
+            return this.decistokesLazy;
+        }
+        return this.decistokesLazy = this.convertFromBase(KinematicViscosityUnits.Decistokes);
     }
     get Kilostokes() {
-        return this.convertFromBase(KinematicViscosityUnits.Kilostokes);
+        if (this.kilostokesLazy !== null) {
+            return this.kilostokesLazy;
+        }
+        return this.kilostokesLazy = this.convertFromBase(KinematicViscosityUnits.Kilostokes);
     }
     static FromSquareMetersPerSecond(value) {
         return new KinematicViscosity(value, KinematicViscosityUnits.SquareMetersPerSecond);

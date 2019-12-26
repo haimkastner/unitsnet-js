@@ -34,94 +34,210 @@ var SpeedUnits;
 })(SpeedUnits = exports.SpeedUnits || (exports.SpeedUnits = {}));
 class Speed {
     constructor(value, fromUnit) {
+        this.meterspersecondLazy = null;
+        this.metersperminutesLazy = null;
+        this.metersperhourLazy = null;
+        this.feetpersecondLazy = null;
+        this.feetperminuteLazy = null;
+        this.feetperhourLazy = null;
+        this.ussurveyfeetpersecondLazy = null;
+        this.ussurveyfeetperminuteLazy = null;
+        this.ussurveyfeetperhourLazy = null;
+        this.inchespersecondLazy = null;
+        this.inchesperminuteLazy = null;
+        this.inchesperhourLazy = null;
+        this.yardspersecondLazy = null;
+        this.yardsperminuteLazy = null;
+        this.yardsperhourLazy = null;
+        this.knotsLazy = null;
+        this.milesperhourLazy = null;
+        this.nanometerspersecondLazy = null;
+        this.micrometerspersecondLazy = null;
+        this.centimeterspersecondLazy = null;
+        this.decimeterspersecondLazy = null;
+        this.kilometerspersecondLazy = null;
+        this.nanometersperminutesLazy = null;
+        this.micrometersperminutesLazy = null;
+        this.centimetersperminutesLazy = null;
+        this.decimetersperminutesLazy = null;
+        this.kilometersperminutesLazy = null;
+        this.centimetersperhourLazy = null;
+        this.kilometersperhourLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get MetersPerSecond() {
-        return this.convertFromBase(SpeedUnits.MetersPerSecond);
+        if (this.meterspersecondLazy !== null) {
+            return this.meterspersecondLazy;
+        }
+        return this.meterspersecondLazy = this.convertFromBase(SpeedUnits.MetersPerSecond);
     }
     get MetersPerMinutes() {
-        return this.convertFromBase(SpeedUnits.MetersPerMinutes);
+        if (this.metersperminutesLazy !== null) {
+            return this.metersperminutesLazy;
+        }
+        return this.metersperminutesLazy = this.convertFromBase(SpeedUnits.MetersPerMinutes);
     }
     get MetersPerHour() {
-        return this.convertFromBase(SpeedUnits.MetersPerHour);
+        if (this.metersperhourLazy !== null) {
+            return this.metersperhourLazy;
+        }
+        return this.metersperhourLazy = this.convertFromBase(SpeedUnits.MetersPerHour);
     }
     get FeetPerSecond() {
-        return this.convertFromBase(SpeedUnits.FeetPerSecond);
+        if (this.feetpersecondLazy !== null) {
+            return this.feetpersecondLazy;
+        }
+        return this.feetpersecondLazy = this.convertFromBase(SpeedUnits.FeetPerSecond);
     }
     get FeetPerMinute() {
-        return this.convertFromBase(SpeedUnits.FeetPerMinute);
+        if (this.feetperminuteLazy !== null) {
+            return this.feetperminuteLazy;
+        }
+        return this.feetperminuteLazy = this.convertFromBase(SpeedUnits.FeetPerMinute);
     }
     get FeetPerHour() {
-        return this.convertFromBase(SpeedUnits.FeetPerHour);
+        if (this.feetperhourLazy !== null) {
+            return this.feetperhourLazy;
+        }
+        return this.feetperhourLazy = this.convertFromBase(SpeedUnits.FeetPerHour);
     }
     get UsSurveyFeetPerSecond() {
-        return this.convertFromBase(SpeedUnits.UsSurveyFeetPerSecond);
+        if (this.ussurveyfeetpersecondLazy !== null) {
+            return this.ussurveyfeetpersecondLazy;
+        }
+        return this.ussurveyfeetpersecondLazy = this.convertFromBase(SpeedUnits.UsSurveyFeetPerSecond);
     }
     get UsSurveyFeetPerMinute() {
-        return this.convertFromBase(SpeedUnits.UsSurveyFeetPerMinute);
+        if (this.ussurveyfeetperminuteLazy !== null) {
+            return this.ussurveyfeetperminuteLazy;
+        }
+        return this.ussurveyfeetperminuteLazy = this.convertFromBase(SpeedUnits.UsSurveyFeetPerMinute);
     }
     get UsSurveyFeetPerHour() {
-        return this.convertFromBase(SpeedUnits.UsSurveyFeetPerHour);
+        if (this.ussurveyfeetperhourLazy !== null) {
+            return this.ussurveyfeetperhourLazy;
+        }
+        return this.ussurveyfeetperhourLazy = this.convertFromBase(SpeedUnits.UsSurveyFeetPerHour);
     }
     get InchesPerSecond() {
-        return this.convertFromBase(SpeedUnits.InchesPerSecond);
+        if (this.inchespersecondLazy !== null) {
+            return this.inchespersecondLazy;
+        }
+        return this.inchespersecondLazy = this.convertFromBase(SpeedUnits.InchesPerSecond);
     }
     get InchesPerMinute() {
-        return this.convertFromBase(SpeedUnits.InchesPerMinute);
+        if (this.inchesperminuteLazy !== null) {
+            return this.inchesperminuteLazy;
+        }
+        return this.inchesperminuteLazy = this.convertFromBase(SpeedUnits.InchesPerMinute);
     }
     get InchesPerHour() {
-        return this.convertFromBase(SpeedUnits.InchesPerHour);
+        if (this.inchesperhourLazy !== null) {
+            return this.inchesperhourLazy;
+        }
+        return this.inchesperhourLazy = this.convertFromBase(SpeedUnits.InchesPerHour);
     }
     get YardsPerSecond() {
-        return this.convertFromBase(SpeedUnits.YardsPerSecond);
+        if (this.yardspersecondLazy !== null) {
+            return this.yardspersecondLazy;
+        }
+        return this.yardspersecondLazy = this.convertFromBase(SpeedUnits.YardsPerSecond);
     }
     get YardsPerMinute() {
-        return this.convertFromBase(SpeedUnits.YardsPerMinute);
+        if (this.yardsperminuteLazy !== null) {
+            return this.yardsperminuteLazy;
+        }
+        return this.yardsperminuteLazy = this.convertFromBase(SpeedUnits.YardsPerMinute);
     }
     get YardsPerHour() {
-        return this.convertFromBase(SpeedUnits.YardsPerHour);
+        if (this.yardsperhourLazy !== null) {
+            return this.yardsperhourLazy;
+        }
+        return this.yardsperhourLazy = this.convertFromBase(SpeedUnits.YardsPerHour);
     }
     get Knots() {
-        return this.convertFromBase(SpeedUnits.Knots);
+        if (this.knotsLazy !== null) {
+            return this.knotsLazy;
+        }
+        return this.knotsLazy = this.convertFromBase(SpeedUnits.Knots);
     }
     get MilesPerHour() {
-        return this.convertFromBase(SpeedUnits.MilesPerHour);
+        if (this.milesperhourLazy !== null) {
+            return this.milesperhourLazy;
+        }
+        return this.milesperhourLazy = this.convertFromBase(SpeedUnits.MilesPerHour);
     }
     get Nanometerspersecond() {
-        return this.convertFromBase(SpeedUnits.Nanometerspersecond);
+        if (this.nanometerspersecondLazy !== null) {
+            return this.nanometerspersecondLazy;
+        }
+        return this.nanometerspersecondLazy = this.convertFromBase(SpeedUnits.Nanometerspersecond);
     }
     get Micrometerspersecond() {
-        return this.convertFromBase(SpeedUnits.Micrometerspersecond);
+        if (this.micrometerspersecondLazy !== null) {
+            return this.micrometerspersecondLazy;
+        }
+        return this.micrometerspersecondLazy = this.convertFromBase(SpeedUnits.Micrometerspersecond);
     }
     get Centimeterspersecond() {
-        return this.convertFromBase(SpeedUnits.Centimeterspersecond);
+        if (this.centimeterspersecondLazy !== null) {
+            return this.centimeterspersecondLazy;
+        }
+        return this.centimeterspersecondLazy = this.convertFromBase(SpeedUnits.Centimeterspersecond);
     }
     get Decimeterspersecond() {
-        return this.convertFromBase(SpeedUnits.Decimeterspersecond);
+        if (this.decimeterspersecondLazy !== null) {
+            return this.decimeterspersecondLazy;
+        }
+        return this.decimeterspersecondLazy = this.convertFromBase(SpeedUnits.Decimeterspersecond);
     }
     get Kilometerspersecond() {
-        return this.convertFromBase(SpeedUnits.Kilometerspersecond);
+        if (this.kilometerspersecondLazy !== null) {
+            return this.kilometerspersecondLazy;
+        }
+        return this.kilometerspersecondLazy = this.convertFromBase(SpeedUnits.Kilometerspersecond);
     }
     get Nanometersperminutes() {
-        return this.convertFromBase(SpeedUnits.Nanometersperminutes);
+        if (this.nanometersperminutesLazy !== null) {
+            return this.nanometersperminutesLazy;
+        }
+        return this.nanometersperminutesLazy = this.convertFromBase(SpeedUnits.Nanometersperminutes);
     }
     get Micrometersperminutes() {
-        return this.convertFromBase(SpeedUnits.Micrometersperminutes);
+        if (this.micrometersperminutesLazy !== null) {
+            return this.micrometersperminutesLazy;
+        }
+        return this.micrometersperminutesLazy = this.convertFromBase(SpeedUnits.Micrometersperminutes);
     }
     get Centimetersperminutes() {
-        return this.convertFromBase(SpeedUnits.Centimetersperminutes);
+        if (this.centimetersperminutesLazy !== null) {
+            return this.centimetersperminutesLazy;
+        }
+        return this.centimetersperminutesLazy = this.convertFromBase(SpeedUnits.Centimetersperminutes);
     }
     get Decimetersperminutes() {
-        return this.convertFromBase(SpeedUnits.Decimetersperminutes);
+        if (this.decimetersperminutesLazy !== null) {
+            return this.decimetersperminutesLazy;
+        }
+        return this.decimetersperminutesLazy = this.convertFromBase(SpeedUnits.Decimetersperminutes);
     }
     get Kilometersperminutes() {
-        return this.convertFromBase(SpeedUnits.Kilometersperminutes);
+        if (this.kilometersperminutesLazy !== null) {
+            return this.kilometersperminutesLazy;
+        }
+        return this.kilometersperminutesLazy = this.convertFromBase(SpeedUnits.Kilometersperminutes);
     }
     get Centimetersperhour() {
-        return this.convertFromBase(SpeedUnits.Centimetersperhour);
+        if (this.centimetersperhourLazy !== null) {
+            return this.centimetersperhourLazy;
+        }
+        return this.centimetersperhourLazy = this.convertFromBase(SpeedUnits.Centimetersperhour);
     }
     get Kilometersperhour() {
-        return this.convertFromBase(SpeedUnits.Kilometersperhour);
+        if (this.kilometersperhourLazy !== null) {
+            return this.kilometersperhourLazy;
+        }
+        return this.kilometersperhourLazy = this.convertFromBase(SpeedUnits.Kilometersperhour);
     }
     static FromMetersPerSecond(value) {
         return new Speed(value, SpeedUnits.MetersPerSecond);

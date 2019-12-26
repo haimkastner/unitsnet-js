@@ -3,6 +3,7 @@ export declare enum VitaminAUnits {
 }
 export declare class VitaminA {
     private value;
+    private internationalunitsLazy;
     constructor(value: number, fromUnit: VitaminAUnits);
     get InternationalUnits(): number;
     static FromInternationalUnits(value: number): VitaminA;

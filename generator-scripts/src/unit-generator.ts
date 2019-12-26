@@ -13,6 +13,15 @@ import {
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
 
 /**
+ * Get the lazyload var name for the given unit.
+ * @param unit The unit name 
+ * @returns The var name
+ */
+function unitLazyVarName(unit: string) {
+    return `${unit.toLowerCase()}Lazy`;
+}
+
+/**
  * Build the unit units Enum.
  * For example for 'Angle' unit generate 'AngleEnum' with 'Degrees' 'Radiand' etc.
  * @param enumName The name for the enum.
@@ -45,8 +54,11 @@ function buildUnitGetters(enumName: string, units: UnitProperties[]): GetAccesso
             name: unit.name,
             scope: Scope.Public,
             returnType: 'number',
-            statements: `return this.convertFromBase(${enumName}.${unit.name});`,
-
+            statements: 
+`if(this.${unitLazyVarName(unit.name)} !== null){
+    return this.${unitLazyVarName(unit.name)};
+}
+return this.${unitLazyVarName(unit.name)} = this.convertFromBase(${enumName}.${unit.name});`,
         }
     })
 }
@@ -54,7 +66,7 @@ function buildUnitGetters(enumName: string, units: UnitProperties[]): GetAccesso
 /**
  * Build the static unit creators.
  * For example for 'Angle' unit generate a 'FromDegrees(number)' get 'FromRadiand(number)' etc. 
- * @param unitName THe unit name (for example 'Degree' or 'Radian') .
+ * @param unitName The unit name (for example 'Degree' or 'Radian') .
  * @param enumName The unit enum name.
  * @param units The units properties.
  * @returns The creators methods structure array.
@@ -94,9 +106,8 @@ function buildFormulaCase(unitName: string, enumName: string, formulaDefenition:
     formulaDefenition = formulaDefenition.replace('.Pow(', '.pow(');
 
     return `
-        case ${enumName}.${unitName}:
-            return ${formulaDefenition.replace('x', valueVarName)};
-        `;
+    case ${enumName}.${unitName}:
+        return ${formulaDefenition.replace('x', valueVarName)};`;
 }
 
 /**
@@ -141,15 +152,29 @@ function buildConvertFromBaseMethod(enumName: string, units: UnitProperties[]): 
             }
         ],
         returnType: 'number',
-        statements: `
-        switch (toUnit) {
-            ${buildFormulaCases(enumName, units, false)}
-            default:
-                break;
-        }
-        return NaN;
-    `
+        statements: 
+`switch (toUnit) {
+        ${buildFormulaCases(enumName, units, false)}
+    default:
+        break;
+}
+return NaN;`
     };
+}
+
+/**
+ * Build var for each unit to hold the converted value after first request.
+ * @param units The units to build a lazyload vars for. 
+ * @returns The vars strucure collection.
+ */
+function buildLazyloadVars(units: UnitProperties[]): PropertyDeclarationStructure[] {
+    return units.map((unit): PropertyDeclarationStructure => ({
+        kind: StructureKind.Property,
+        name: `${unitLazyVarName(unit.name)}`,
+        scope: Scope.Private,
+        type: 'number | null',
+        initializer: 'null',
+    }));
 }
 
 /**
@@ -174,14 +199,13 @@ function buildConvertToBaseMethod(enumName: string, units: UnitProperties[]): Me
             }
         ],
         returnType: 'number',
-        statements: `
-        switch (fromUnit) {
-            ${buildFormulaCases(enumName, units, true)}
-            default:
-                break;
-        }
-        return NaN;
-        `
+        statements: 
+`switch (fromUnit) {
+        ${buildFormulaCases(enumName, units, true)}
+    default:
+        break;
+}
+return NaN;`
     };
 }
 
@@ -206,6 +230,9 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
         scope: Scope.Private,
         type: 'number'
     };
+
+    // Build vars for loadzy load converted value 
+    const lazyVars = buildLazyloadVars(unitProperties.units);
 
     // Build the units get-accessors
     const unitGetters: GetAccessorDeclarationStructure[] = buildUnitGetters(enumName, unitProperties.units);
@@ -240,7 +267,7 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
     const unitClass: ClassDeclarationStructure = {
         kind: StructureKind.Class,
         name: unitProperties.unitName,
-        properties: [valueMember],
+        properties: [valueMember, ...lazyVars],
         getAccessors: [...unitGetters],
         ctors: [unitCtor],
         methods: [...unitCreators, convertFromBaseMethod, convertToBaseMethod],

@@ -12,28 +12,56 @@ var MolarityUnits;
 })(MolarityUnits = exports.MolarityUnits || (exports.MolarityUnits = {}));
 class Molarity {
     constructor(value, fromUnit) {
+        this.molespercubicmeterLazy = null;
+        this.molesperliterLazy = null;
+        this.picomolesperliterLazy = null;
+        this.nanomolesperliterLazy = null;
+        this.micromolesperliterLazy = null;
+        this.centimolesperliterLazy = null;
+        this.decimolesperliterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get MolesPerCubicMeter() {
-        return this.convertFromBase(MolarityUnits.MolesPerCubicMeter);
+        if (this.molespercubicmeterLazy !== null) {
+            return this.molespercubicmeterLazy;
+        }
+        return this.molespercubicmeterLazy = this.convertFromBase(MolarityUnits.MolesPerCubicMeter);
     }
     get MolesPerLiter() {
-        return this.convertFromBase(MolarityUnits.MolesPerLiter);
+        if (this.molesperliterLazy !== null) {
+            return this.molesperliterLazy;
+        }
+        return this.molesperliterLazy = this.convertFromBase(MolarityUnits.MolesPerLiter);
     }
     get Picomolesperliter() {
-        return this.convertFromBase(MolarityUnits.Picomolesperliter);
+        if (this.picomolesperliterLazy !== null) {
+            return this.picomolesperliterLazy;
+        }
+        return this.picomolesperliterLazy = this.convertFromBase(MolarityUnits.Picomolesperliter);
     }
     get Nanomolesperliter() {
-        return this.convertFromBase(MolarityUnits.Nanomolesperliter);
+        if (this.nanomolesperliterLazy !== null) {
+            return this.nanomolesperliterLazy;
+        }
+        return this.nanomolesperliterLazy = this.convertFromBase(MolarityUnits.Nanomolesperliter);
     }
     get Micromolesperliter() {
-        return this.convertFromBase(MolarityUnits.Micromolesperliter);
+        if (this.micromolesperliterLazy !== null) {
+            return this.micromolesperliterLazy;
+        }
+        return this.micromolesperliterLazy = this.convertFromBase(MolarityUnits.Micromolesperliter);
     }
     get Centimolesperliter() {
-        return this.convertFromBase(MolarityUnits.Centimolesperliter);
+        if (this.centimolesperliterLazy !== null) {
+            return this.centimolesperliterLazy;
+        }
+        return this.centimolesperliterLazy = this.convertFromBase(MolarityUnits.Centimolesperliter);
     }
     get Decimolesperliter() {
-        return this.convertFromBase(MolarityUnits.Decimolesperliter);
+        if (this.decimolesperliterLazy !== null) {
+            return this.decimolesperliterLazy;
+        }
+        return this.decimolesperliterLazy = this.convertFromBase(MolarityUnits.Decimolesperliter);
     }
     static FromMolesPerCubicMeter(value) {
         return new Molarity(value, MolarityUnits.MolesPerCubicMeter);

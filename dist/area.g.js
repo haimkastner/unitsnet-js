@@ -19,49 +19,105 @@ var AreaUnits;
 })(AreaUnits = exports.AreaUnits || (exports.AreaUnits = {}));
 class Area {
     constructor(value, fromUnit) {
+        this.squarekilometersLazy = null;
+        this.squaremetersLazy = null;
+        this.squaredecimetersLazy = null;
+        this.squarecentimetersLazy = null;
+        this.squaremillimetersLazy = null;
+        this.squaremicrometersLazy = null;
+        this.squaremilesLazy = null;
+        this.squareyardsLazy = null;
+        this.squarefeetLazy = null;
+        this.ussurveysquarefeetLazy = null;
+        this.squareinchesLazy = null;
+        this.acresLazy = null;
+        this.hectaresLazy = null;
+        this.squarenauticalmilesLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get SquareKilometers() {
-        return this.convertFromBase(AreaUnits.SquareKilometers);
+        if (this.squarekilometersLazy !== null) {
+            return this.squarekilometersLazy;
+        }
+        return this.squarekilometersLazy = this.convertFromBase(AreaUnits.SquareKilometers);
     }
     get SquareMeters() {
-        return this.convertFromBase(AreaUnits.SquareMeters);
+        if (this.squaremetersLazy !== null) {
+            return this.squaremetersLazy;
+        }
+        return this.squaremetersLazy = this.convertFromBase(AreaUnits.SquareMeters);
     }
     get SquareDecimeters() {
-        return this.convertFromBase(AreaUnits.SquareDecimeters);
+        if (this.squaredecimetersLazy !== null) {
+            return this.squaredecimetersLazy;
+        }
+        return this.squaredecimetersLazy = this.convertFromBase(AreaUnits.SquareDecimeters);
     }
     get SquareCentimeters() {
-        return this.convertFromBase(AreaUnits.SquareCentimeters);
+        if (this.squarecentimetersLazy !== null) {
+            return this.squarecentimetersLazy;
+        }
+        return this.squarecentimetersLazy = this.convertFromBase(AreaUnits.SquareCentimeters);
     }
     get SquareMillimeters() {
-        return this.convertFromBase(AreaUnits.SquareMillimeters);
+        if (this.squaremillimetersLazy !== null) {
+            return this.squaremillimetersLazy;
+        }
+        return this.squaremillimetersLazy = this.convertFromBase(AreaUnits.SquareMillimeters);
     }
     get SquareMicrometers() {
-        return this.convertFromBase(AreaUnits.SquareMicrometers);
+        if (this.squaremicrometersLazy !== null) {
+            return this.squaremicrometersLazy;
+        }
+        return this.squaremicrometersLazy = this.convertFromBase(AreaUnits.SquareMicrometers);
     }
     get SquareMiles() {
-        return this.convertFromBase(AreaUnits.SquareMiles);
+        if (this.squaremilesLazy !== null) {
+            return this.squaremilesLazy;
+        }
+        return this.squaremilesLazy = this.convertFromBase(AreaUnits.SquareMiles);
     }
     get SquareYards() {
-        return this.convertFromBase(AreaUnits.SquareYards);
+        if (this.squareyardsLazy !== null) {
+            return this.squareyardsLazy;
+        }
+        return this.squareyardsLazy = this.convertFromBase(AreaUnits.SquareYards);
     }
     get SquareFeet() {
-        return this.convertFromBase(AreaUnits.SquareFeet);
+        if (this.squarefeetLazy !== null) {
+            return this.squarefeetLazy;
+        }
+        return this.squarefeetLazy = this.convertFromBase(AreaUnits.SquareFeet);
     }
     get UsSurveySquareFeet() {
-        return this.convertFromBase(AreaUnits.UsSurveySquareFeet);
+        if (this.ussurveysquarefeetLazy !== null) {
+            return this.ussurveysquarefeetLazy;
+        }
+        return this.ussurveysquarefeetLazy = this.convertFromBase(AreaUnits.UsSurveySquareFeet);
     }
     get SquareInches() {
-        return this.convertFromBase(AreaUnits.SquareInches);
+        if (this.squareinchesLazy !== null) {
+            return this.squareinchesLazy;
+        }
+        return this.squareinchesLazy = this.convertFromBase(AreaUnits.SquareInches);
     }
     get Acres() {
-        return this.convertFromBase(AreaUnits.Acres);
+        if (this.acresLazy !== null) {
+            return this.acresLazy;
+        }
+        return this.acresLazy = this.convertFromBase(AreaUnits.Acres);
     }
     get Hectares() {
-        return this.convertFromBase(AreaUnits.Hectares);
+        if (this.hectaresLazy !== null) {
+            return this.hectaresLazy;
+        }
+        return this.hectaresLazy = this.convertFromBase(AreaUnits.Hectares);
     }
     get SquareNauticalMiles() {
-        return this.convertFromBase(AreaUnits.SquareNauticalMiles);
+        if (this.squarenauticalmilesLazy !== null) {
+            return this.squarenauticalmilesLazy;
+        }
+        return this.squarenauticalmilesLazy = this.convertFromBase(AreaUnits.SquareNauticalMiles);
     }
     static FromSquareKilometers(value) {
         return new Area(value, AreaUnits.SquareKilometers);

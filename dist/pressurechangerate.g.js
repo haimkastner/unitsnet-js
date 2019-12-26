@@ -12,28 +12,56 @@ var PressureChangeRateUnits;
 })(PressureChangeRateUnits = exports.PressureChangeRateUnits || (exports.PressureChangeRateUnits = {}));
 class PressureChangeRate {
     constructor(value, fromUnit) {
+        this.pascalspersecondLazy = null;
+        this.pascalsperminuteLazy = null;
+        this.atmospherespersecondLazy = null;
+        this.kilopascalspersecondLazy = null;
+        this.megapascalspersecondLazy = null;
+        this.kilopascalsperminuteLazy = null;
+        this.megapascalsperminuteLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get PascalsPerSecond() {
-        return this.convertFromBase(PressureChangeRateUnits.PascalsPerSecond);
+        if (this.pascalspersecondLazy !== null) {
+            return this.pascalspersecondLazy;
+        }
+        return this.pascalspersecondLazy = this.convertFromBase(PressureChangeRateUnits.PascalsPerSecond);
     }
     get PascalsPerMinute() {
-        return this.convertFromBase(PressureChangeRateUnits.PascalsPerMinute);
+        if (this.pascalsperminuteLazy !== null) {
+            return this.pascalsperminuteLazy;
+        }
+        return this.pascalsperminuteLazy = this.convertFromBase(PressureChangeRateUnits.PascalsPerMinute);
     }
     get AtmospheresPerSecond() {
-        return this.convertFromBase(PressureChangeRateUnits.AtmospheresPerSecond);
+        if (this.atmospherespersecondLazy !== null) {
+            return this.atmospherespersecondLazy;
+        }
+        return this.atmospherespersecondLazy = this.convertFromBase(PressureChangeRateUnits.AtmospheresPerSecond);
     }
     get Kilopascalspersecond() {
-        return this.convertFromBase(PressureChangeRateUnits.Kilopascalspersecond);
+        if (this.kilopascalspersecondLazy !== null) {
+            return this.kilopascalspersecondLazy;
+        }
+        return this.kilopascalspersecondLazy = this.convertFromBase(PressureChangeRateUnits.Kilopascalspersecond);
     }
     get Megapascalspersecond() {
-        return this.convertFromBase(PressureChangeRateUnits.Megapascalspersecond);
+        if (this.megapascalspersecondLazy !== null) {
+            return this.megapascalspersecondLazy;
+        }
+        return this.megapascalspersecondLazy = this.convertFromBase(PressureChangeRateUnits.Megapascalspersecond);
     }
     get Kilopascalsperminute() {
-        return this.convertFromBase(PressureChangeRateUnits.Kilopascalsperminute);
+        if (this.kilopascalsperminuteLazy !== null) {
+            return this.kilopascalsperminuteLazy;
+        }
+        return this.kilopascalsperminuteLazy = this.convertFromBase(PressureChangeRateUnits.Kilopascalsperminute);
     }
     get Megapascalsperminute() {
-        return this.convertFromBase(PressureChangeRateUnits.Megapascalsperminute);
+        if (this.megapascalsperminuteLazy !== null) {
+            return this.megapascalsperminuteLazy;
+        }
+        return this.megapascalsperminuteLazy = this.convertFromBase(PressureChangeRateUnits.Megapascalsperminute);
     }
     static FromPascalsPerSecond(value) {
         return new PressureChangeRate(value, PressureChangeRateUnits.PascalsPerSecond);

@@ -17,43 +17,91 @@ var AccelerationUnits;
 })(AccelerationUnits = exports.AccelerationUnits || (exports.AccelerationUnits = {}));
 class Acceleration {
     constructor(value, fromUnit) {
+        this.meterspersecondsquaredLazy = null;
+        this.inchespersecondsquaredLazy = null;
+        this.feetpersecondsquaredLazy = null;
+        this.knotspersecondLazy = null;
+        this.knotsperminuteLazy = null;
+        this.knotsperhourLazy = null;
+        this.standardgravityLazy = null;
+        this.nanometerspersecondsquaredLazy = null;
+        this.micrometerspersecondsquaredLazy = null;
+        this.centimeterspersecondsquaredLazy = null;
+        this.decimeterspersecondsquaredLazy = null;
+        this.kilometerspersecondsquaredLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get MetersPerSecondSquared() {
-        return this.convertFromBase(AccelerationUnits.MetersPerSecondSquared);
+        if (this.meterspersecondsquaredLazy !== null) {
+            return this.meterspersecondsquaredLazy;
+        }
+        return this.meterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.MetersPerSecondSquared);
     }
     get InchesPerSecondSquared() {
-        return this.convertFromBase(AccelerationUnits.InchesPerSecondSquared);
+        if (this.inchespersecondsquaredLazy !== null) {
+            return this.inchespersecondsquaredLazy;
+        }
+        return this.inchespersecondsquaredLazy = this.convertFromBase(AccelerationUnits.InchesPerSecondSquared);
     }
     get FeetPerSecondSquared() {
-        return this.convertFromBase(AccelerationUnits.FeetPerSecondSquared);
+        if (this.feetpersecondsquaredLazy !== null) {
+            return this.feetpersecondsquaredLazy;
+        }
+        return this.feetpersecondsquaredLazy = this.convertFromBase(AccelerationUnits.FeetPerSecondSquared);
     }
     get KnotsPerSecond() {
-        return this.convertFromBase(AccelerationUnits.KnotsPerSecond);
+        if (this.knotspersecondLazy !== null) {
+            return this.knotspersecondLazy;
+        }
+        return this.knotspersecondLazy = this.convertFromBase(AccelerationUnits.KnotsPerSecond);
     }
     get KnotsPerMinute() {
-        return this.convertFromBase(AccelerationUnits.KnotsPerMinute);
+        if (this.knotsperminuteLazy !== null) {
+            return this.knotsperminuteLazy;
+        }
+        return this.knotsperminuteLazy = this.convertFromBase(AccelerationUnits.KnotsPerMinute);
     }
     get KnotsPerHour() {
-        return this.convertFromBase(AccelerationUnits.KnotsPerHour);
+        if (this.knotsperhourLazy !== null) {
+            return this.knotsperhourLazy;
+        }
+        return this.knotsperhourLazy = this.convertFromBase(AccelerationUnits.KnotsPerHour);
     }
     get StandardGravity() {
-        return this.convertFromBase(AccelerationUnits.StandardGravity);
+        if (this.standardgravityLazy !== null) {
+            return this.standardgravityLazy;
+        }
+        return this.standardgravityLazy = this.convertFromBase(AccelerationUnits.StandardGravity);
     }
     get Nanometerspersecondsquared() {
-        return this.convertFromBase(AccelerationUnits.Nanometerspersecondsquared);
+        if (this.nanometerspersecondsquaredLazy !== null) {
+            return this.nanometerspersecondsquaredLazy;
+        }
+        return this.nanometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Nanometerspersecondsquared);
     }
     get Micrometerspersecondsquared() {
-        return this.convertFromBase(AccelerationUnits.Micrometerspersecondsquared);
+        if (this.micrometerspersecondsquaredLazy !== null) {
+            return this.micrometerspersecondsquaredLazy;
+        }
+        return this.micrometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Micrometerspersecondsquared);
     }
     get Centimeterspersecondsquared() {
-        return this.convertFromBase(AccelerationUnits.Centimeterspersecondsquared);
+        if (this.centimeterspersecondsquaredLazy !== null) {
+            return this.centimeterspersecondsquaredLazy;
+        }
+        return this.centimeterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Centimeterspersecondsquared);
     }
     get Decimeterspersecondsquared() {
-        return this.convertFromBase(AccelerationUnits.Decimeterspersecondsquared);
+        if (this.decimeterspersecondsquaredLazy !== null) {
+            return this.decimeterspersecondsquaredLazy;
+        }
+        return this.decimeterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Decimeterspersecondsquared);
     }
     get Kilometerspersecondsquared() {
-        return this.convertFromBase(AccelerationUnits.Kilometerspersecondsquared);
+        if (this.kilometerspersecondsquaredLazy !== null) {
+            return this.kilometerspersecondsquaredLazy;
+        }
+        return this.kilometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.Kilometerspersecondsquared);
     }
     static FromMetersPerSecondSquared(value) {
         return new Acceleration(value, AccelerationUnits.MetersPerSecondSquared);

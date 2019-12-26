@@ -11,25 +11,49 @@ var CapacitanceUnits;
 })(CapacitanceUnits = exports.CapacitanceUnits || (exports.CapacitanceUnits = {}));
 class Capacitance {
     constructor(value, fromUnit) {
+        this.faradsLazy = null;
+        this.picofaradsLazy = null;
+        this.nanofaradsLazy = null;
+        this.microfaradsLazy = null;
+        this.kilofaradsLazy = null;
+        this.megafaradsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Farads() {
-        return this.convertFromBase(CapacitanceUnits.Farads);
+        if (this.faradsLazy !== null) {
+            return this.faradsLazy;
+        }
+        return this.faradsLazy = this.convertFromBase(CapacitanceUnits.Farads);
     }
     get Picofarads() {
-        return this.convertFromBase(CapacitanceUnits.Picofarads);
+        if (this.picofaradsLazy !== null) {
+            return this.picofaradsLazy;
+        }
+        return this.picofaradsLazy = this.convertFromBase(CapacitanceUnits.Picofarads);
     }
     get Nanofarads() {
-        return this.convertFromBase(CapacitanceUnits.Nanofarads);
+        if (this.nanofaradsLazy !== null) {
+            return this.nanofaradsLazy;
+        }
+        return this.nanofaradsLazy = this.convertFromBase(CapacitanceUnits.Nanofarads);
     }
     get Microfarads() {
-        return this.convertFromBase(CapacitanceUnits.Microfarads);
+        if (this.microfaradsLazy !== null) {
+            return this.microfaradsLazy;
+        }
+        return this.microfaradsLazy = this.convertFromBase(CapacitanceUnits.Microfarads);
     }
     get Kilofarads() {
-        return this.convertFromBase(CapacitanceUnits.Kilofarads);
+        if (this.kilofaradsLazy !== null) {
+            return this.kilofaradsLazy;
+        }
+        return this.kilofaradsLazy = this.convertFromBase(CapacitanceUnits.Kilofarads);
     }
     get Megafarads() {
-        return this.convertFromBase(CapacitanceUnits.Megafarads);
+        if (this.megafaradsLazy !== null) {
+            return this.megafaradsLazy;
+        }
+        return this.megafaradsLazy = this.convertFromBase(CapacitanceUnits.Megafarads);
     }
     static FromFarads(value) {
         return new Capacitance(value, CapacitanceUnits.Farads);

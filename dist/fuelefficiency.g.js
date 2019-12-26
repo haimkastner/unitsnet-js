@@ -9,19 +9,35 @@ var FuelEfficiencyUnits;
 })(FuelEfficiencyUnits = exports.FuelEfficiencyUnits || (exports.FuelEfficiencyUnits = {}));
 class FuelEfficiency {
     constructor(value, fromUnit) {
+        this.litersper100kilometersLazy = null;
+        this.milesperusgallonLazy = null;
+        this.milesperukgallonLazy = null;
+        this.kilometersperlitersLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get LitersPer100Kilometers() {
-        return this.convertFromBase(FuelEfficiencyUnits.LitersPer100Kilometers);
+        if (this.litersper100kilometersLazy !== null) {
+            return this.litersper100kilometersLazy;
+        }
+        return this.litersper100kilometersLazy = this.convertFromBase(FuelEfficiencyUnits.LitersPer100Kilometers);
     }
     get MilesPerUsGallon() {
-        return this.convertFromBase(FuelEfficiencyUnits.MilesPerUsGallon);
+        if (this.milesperusgallonLazy !== null) {
+            return this.milesperusgallonLazy;
+        }
+        return this.milesperusgallonLazy = this.convertFromBase(FuelEfficiencyUnits.MilesPerUsGallon);
     }
     get MilesPerUkGallon() {
-        return this.convertFromBase(FuelEfficiencyUnits.MilesPerUkGallon);
+        if (this.milesperukgallonLazy !== null) {
+            return this.milesperukgallonLazy;
+        }
+        return this.milesperukgallonLazy = this.convertFromBase(FuelEfficiencyUnits.MilesPerUkGallon);
     }
     get KilometersPerLiters() {
-        return this.convertFromBase(FuelEfficiencyUnits.KilometersPerLiters);
+        if (this.kilometersperlitersLazy !== null) {
+            return this.kilometersperlitersLazy;
+        }
+        return this.kilometersperlitersLazy = this.convertFromBase(FuelEfficiencyUnits.KilometersPerLiters);
     }
     static FromLitersPer100Kilometers(value) {
         return new FuelEfficiency(value, FuelEfficiencyUnits.LitersPer100Kilometers);

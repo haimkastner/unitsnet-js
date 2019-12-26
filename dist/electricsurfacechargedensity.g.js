@@ -8,16 +8,28 @@ var ElectricSurfaceChargeDensityUnits;
 })(ElectricSurfaceChargeDensityUnits = exports.ElectricSurfaceChargeDensityUnits || (exports.ElectricSurfaceChargeDensityUnits = {}));
 class ElectricSurfaceChargeDensity {
     constructor(value, fromUnit) {
+        this.coulombspersquaremeterLazy = null;
+        this.coulombspersquarecentimeterLazy = null;
+        this.coulombspersquareinchLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get CoulombsPerSquareMeter() {
-        return this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter);
+        if (this.coulombspersquaremeterLazy !== null) {
+            return this.coulombspersquaremeterLazy;
+        }
+        return this.coulombspersquaremeterLazy = this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter);
     }
     get CoulombsPerSquareCentimeter() {
-        return this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter);
+        if (this.coulombspersquarecentimeterLazy !== null) {
+            return this.coulombspersquarecentimeterLazy;
+        }
+        return this.coulombspersquarecentimeterLazy = this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter);
     }
     get CoulombsPerSquareInch() {
-        return this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch);
+        if (this.coulombspersquareinchLazy !== null) {
+            return this.coulombspersquareinchLazy;
+        }
+        return this.coulombspersquareinchLazy = this.convertFromBase(ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch);
     }
     static FromCoulombsPerSquareMeter(value) {
         return new ElectricSurfaceChargeDensity(value, ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter);

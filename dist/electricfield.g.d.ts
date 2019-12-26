@@ -3,6 +3,7 @@ export declare enum ElectricFieldUnits {
 }
 export declare class ElectricField {
     private value;
+    private voltspermeterLazy;
     constructor(value: number, fromUnit: ElectricFieldUnits);
     get VoltsPerMeter(): number;
     static FromVoltsPerMeter(value: number): ElectricField;
