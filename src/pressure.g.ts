@@ -1,46 +1,88 @@
+/** PressureUnits enumeration */
 export enum PressureUnits {
+    /** */
     Pascals,
+    /** */
     Atmospheres,
+    /** */
     Bars,
+    /** */
     KilogramsForcePerSquareMeter,
+    /** */
     KilogramsForcePerSquareCentimeter,
+    /** */
     KilogramsForcePerSquareMillimeter,
+    /** */
     NewtonsPerSquareMeter,
+    /** */
     NewtonsPerSquareCentimeter,
+    /** */
     NewtonsPerSquareMillimeter,
+    /** */
     TechnicalAtmospheres,
+    /** */
     Torrs,
+    /** */
     PoundsForcePerSquareInch,
+    /** */
     PoundsForcePerSquareFoot,
+    /** */
     TonnesForcePerSquareMillimeter,
+    /** */
     TonnesForcePerSquareMeter,
+    /** */
     MetersOfHead,
+    /** */
     TonnesForcePerSquareCentimeter,
+    /** */
     FeetOfHead,
+    /** */
     MillimetersOfMercury,
+    /** */
     InchesOfMercury,
+    /** */
     DynesPerSquareCentimeter,
+    /** */
     PoundsPerInchSecondSquared,
+    /** */
     InchesOfWaterColumn,
+    /** */
     Micropascals,
+    /** */
     Decapascals,
+    /** */
     Hectopascals,
+    /** */
     Kilopascals,
+    /** */
     Megapascals,
+    /** */
     Gigapascals,
+    /** */
     Microbars,
+    /** */
     Centibars,
+    /** */
     Decibars,
+    /** */
     Kilobars,
+    /** */
     Megabars,
+    /** */
     KilonewtonsPerSquareMeter,
+    /** */
     MeganewtonsPerSquareMeter,
+    /** */
     KilonewtonsPerSquareCentimeter,
+    /** */
     KilonewtonsPerSquareMillimeter,
+    /** */
     KilopoundsForcePerSquareInch,
+    /** */
     KilopoundsForcePerSquareFoot
 }
 
+/** Pressure (symbol: P or p) is the ratio of force to the area over which that force is distributed. Pressure is force per unit area applied in a direction perpendicular to the surface of an object. Gauge pressure (also spelled gage pressure)[a] is the pressure relative to the local atmospheric or ambient pressure. Pressure is measured in any unit of force divided by any unit of area. The SI unit of pressure is the newton per square metre, which is called the pascal (Pa) after the seventeenth-century philosopher and scientist Blaise Pascal. A pressure of 1 Pa is small; it approximately equals the pressure exerted by a dollar bill resting flat on a table. Everyday pressures are often stated in kilopascals (1 kPa = 1000 Pa). */
 export class Pressure {
     private value: number;
     private pascalsLazy: number | null = null;
@@ -84,10 +126,26 @@ export class Pressure {
     private kilopoundsforcepersquareinchLazy: number | null = null;
     private kilopoundsforcepersquarefootLazy: number | null = null;
 
+    /**
+     * Create a new Pressure.
+     * @param value The value.
+     * @param fromUnit The ‘Pressure’ unit to create from.
+     */
     public constructor(value: number, fromUnit: PressureUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Pressure is Pascal.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Pascals(): number {
         if(this.pascalsLazy !== null){
             return this.pascalsLazy;
@@ -95,6 +153,7 @@ export class Pressure {
         return this.pascalsLazy = this.convertFromBase(PressureUnits.Pascals);
     }
 
+    /** */
     public get Atmospheres(): number {
         if(this.atmospheresLazy !== null){
             return this.atmospheresLazy;
@@ -102,6 +161,7 @@ export class Pressure {
         return this.atmospheresLazy = this.convertFromBase(PressureUnits.Atmospheres);
     }
 
+    /** */
     public get Bars(): number {
         if(this.barsLazy !== null){
             return this.barsLazy;
@@ -109,6 +169,7 @@ export class Pressure {
         return this.barsLazy = this.convertFromBase(PressureUnits.Bars);
     }
 
+    /** */
     public get KilogramsForcePerSquareMeter(): number {
         if(this.kilogramsforcepersquaremeterLazy !== null){
             return this.kilogramsforcepersquaremeterLazy;
@@ -116,6 +177,7 @@ export class Pressure {
         return this.kilogramsforcepersquaremeterLazy = this.convertFromBase(PressureUnits.KilogramsForcePerSquareMeter);
     }
 
+    /** */
     public get KilogramsForcePerSquareCentimeter(): number {
         if(this.kilogramsforcepersquarecentimeterLazy !== null){
             return this.kilogramsforcepersquarecentimeterLazy;
@@ -123,6 +185,7 @@ export class Pressure {
         return this.kilogramsforcepersquarecentimeterLazy = this.convertFromBase(PressureUnits.KilogramsForcePerSquareCentimeter);
     }
 
+    /** */
     public get KilogramsForcePerSquareMillimeter(): number {
         if(this.kilogramsforcepersquaremillimeterLazy !== null){
             return this.kilogramsforcepersquaremillimeterLazy;
@@ -130,6 +193,7 @@ export class Pressure {
         return this.kilogramsforcepersquaremillimeterLazy = this.convertFromBase(PressureUnits.KilogramsForcePerSquareMillimeter);
     }
 
+    /** */
     public get NewtonsPerSquareMeter(): number {
         if(this.newtonspersquaremeterLazy !== null){
             return this.newtonspersquaremeterLazy;
@@ -137,6 +201,7 @@ export class Pressure {
         return this.newtonspersquaremeterLazy = this.convertFromBase(PressureUnits.NewtonsPerSquareMeter);
     }
 
+    /** */
     public get NewtonsPerSquareCentimeter(): number {
         if(this.newtonspersquarecentimeterLazy !== null){
             return this.newtonspersquarecentimeterLazy;
@@ -144,6 +209,7 @@ export class Pressure {
         return this.newtonspersquarecentimeterLazy = this.convertFromBase(PressureUnits.NewtonsPerSquareCentimeter);
     }
 
+    /** */
     public get NewtonsPerSquareMillimeter(): number {
         if(this.newtonspersquaremillimeterLazy !== null){
             return this.newtonspersquaremillimeterLazy;
@@ -151,6 +217,7 @@ export class Pressure {
         return this.newtonspersquaremillimeterLazy = this.convertFromBase(PressureUnits.NewtonsPerSquareMillimeter);
     }
 
+    /** */
     public get TechnicalAtmospheres(): number {
         if(this.technicalatmospheresLazy !== null){
             return this.technicalatmospheresLazy;
@@ -158,6 +225,7 @@ export class Pressure {
         return this.technicalatmospheresLazy = this.convertFromBase(PressureUnits.TechnicalAtmospheres);
     }
 
+    /** */
     public get Torrs(): number {
         if(this.torrsLazy !== null){
             return this.torrsLazy;
@@ -165,6 +233,7 @@ export class Pressure {
         return this.torrsLazy = this.convertFromBase(PressureUnits.Torrs);
     }
 
+    /** */
     public get PoundsForcePerSquareInch(): number {
         if(this.poundsforcepersquareinchLazy !== null){
             return this.poundsforcepersquareinchLazy;
@@ -172,6 +241,7 @@ export class Pressure {
         return this.poundsforcepersquareinchLazy = this.convertFromBase(PressureUnits.PoundsForcePerSquareInch);
     }
 
+    /** */
     public get PoundsForcePerSquareFoot(): number {
         if(this.poundsforcepersquarefootLazy !== null){
             return this.poundsforcepersquarefootLazy;
@@ -179,6 +249,7 @@ export class Pressure {
         return this.poundsforcepersquarefootLazy = this.convertFromBase(PressureUnits.PoundsForcePerSquareFoot);
     }
 
+    /** */
     public get TonnesForcePerSquareMillimeter(): number {
         if(this.tonnesforcepersquaremillimeterLazy !== null){
             return this.tonnesforcepersquaremillimeterLazy;
@@ -186,6 +257,7 @@ export class Pressure {
         return this.tonnesforcepersquaremillimeterLazy = this.convertFromBase(PressureUnits.TonnesForcePerSquareMillimeter);
     }
 
+    /** */
     public get TonnesForcePerSquareMeter(): number {
         if(this.tonnesforcepersquaremeterLazy !== null){
             return this.tonnesforcepersquaremeterLazy;
@@ -193,6 +265,7 @@ export class Pressure {
         return this.tonnesforcepersquaremeterLazy = this.convertFromBase(PressureUnits.TonnesForcePerSquareMeter);
     }
 
+    /** */
     public get MetersOfHead(): number {
         if(this.metersofheadLazy !== null){
             return this.metersofheadLazy;
@@ -200,6 +273,7 @@ export class Pressure {
         return this.metersofheadLazy = this.convertFromBase(PressureUnits.MetersOfHead);
     }
 
+    /** */
     public get TonnesForcePerSquareCentimeter(): number {
         if(this.tonnesforcepersquarecentimeterLazy !== null){
             return this.tonnesforcepersquarecentimeterLazy;
@@ -207,6 +281,7 @@ export class Pressure {
         return this.tonnesforcepersquarecentimeterLazy = this.convertFromBase(PressureUnits.TonnesForcePerSquareCentimeter);
     }
 
+    /** */
     public get FeetOfHead(): number {
         if(this.feetofheadLazy !== null){
             return this.feetofheadLazy;
@@ -214,6 +289,7 @@ export class Pressure {
         return this.feetofheadLazy = this.convertFromBase(PressureUnits.FeetOfHead);
     }
 
+    /** */
     public get MillimetersOfMercury(): number {
         if(this.millimetersofmercuryLazy !== null){
             return this.millimetersofmercuryLazy;
@@ -221,6 +297,7 @@ export class Pressure {
         return this.millimetersofmercuryLazy = this.convertFromBase(PressureUnits.MillimetersOfMercury);
     }
 
+    /** */
     public get InchesOfMercury(): number {
         if(this.inchesofmercuryLazy !== null){
             return this.inchesofmercuryLazy;
@@ -228,6 +305,7 @@ export class Pressure {
         return this.inchesofmercuryLazy = this.convertFromBase(PressureUnits.InchesOfMercury);
     }
 
+    /** */
     public get DynesPerSquareCentimeter(): number {
         if(this.dynespersquarecentimeterLazy !== null){
             return this.dynespersquarecentimeterLazy;
@@ -235,6 +313,7 @@ export class Pressure {
         return this.dynespersquarecentimeterLazy = this.convertFromBase(PressureUnits.DynesPerSquareCentimeter);
     }
 
+    /** */
     public get PoundsPerInchSecondSquared(): number {
         if(this.poundsperinchsecondsquaredLazy !== null){
             return this.poundsperinchsecondsquaredLazy;
@@ -242,6 +321,7 @@ export class Pressure {
         return this.poundsperinchsecondsquaredLazy = this.convertFromBase(PressureUnits.PoundsPerInchSecondSquared);
     }
 
+    /** */
     public get InchesOfWaterColumn(): number {
         if(this.inchesofwatercolumnLazy !== null){
             return this.inchesofwatercolumnLazy;
@@ -249,6 +329,7 @@ export class Pressure {
         return this.inchesofwatercolumnLazy = this.convertFromBase(PressureUnits.InchesOfWaterColumn);
     }
 
+    /** */
     public get Micropascals(): number {
         if(this.micropascalsLazy !== null){
             return this.micropascalsLazy;
@@ -256,6 +337,7 @@ export class Pressure {
         return this.micropascalsLazy = this.convertFromBase(PressureUnits.Micropascals);
     }
 
+    /** */
     public get Decapascals(): number {
         if(this.decapascalsLazy !== null){
             return this.decapascalsLazy;
@@ -263,6 +345,7 @@ export class Pressure {
         return this.decapascalsLazy = this.convertFromBase(PressureUnits.Decapascals);
     }
 
+    /** */
     public get Hectopascals(): number {
         if(this.hectopascalsLazy !== null){
             return this.hectopascalsLazy;
@@ -270,6 +353,7 @@ export class Pressure {
         return this.hectopascalsLazy = this.convertFromBase(PressureUnits.Hectopascals);
     }
 
+    /** */
     public get Kilopascals(): number {
         if(this.kilopascalsLazy !== null){
             return this.kilopascalsLazy;
@@ -277,6 +361,7 @@ export class Pressure {
         return this.kilopascalsLazy = this.convertFromBase(PressureUnits.Kilopascals);
     }
 
+    /** */
     public get Megapascals(): number {
         if(this.megapascalsLazy !== null){
             return this.megapascalsLazy;
@@ -284,6 +369,7 @@ export class Pressure {
         return this.megapascalsLazy = this.convertFromBase(PressureUnits.Megapascals);
     }
 
+    /** */
     public get Gigapascals(): number {
         if(this.gigapascalsLazy !== null){
             return this.gigapascalsLazy;
@@ -291,6 +377,7 @@ export class Pressure {
         return this.gigapascalsLazy = this.convertFromBase(PressureUnits.Gigapascals);
     }
 
+    /** */
     public get Microbars(): number {
         if(this.microbarsLazy !== null){
             return this.microbarsLazy;
@@ -298,6 +385,7 @@ export class Pressure {
         return this.microbarsLazy = this.convertFromBase(PressureUnits.Microbars);
     }
 
+    /** */
     public get Centibars(): number {
         if(this.centibarsLazy !== null){
             return this.centibarsLazy;
@@ -305,6 +393,7 @@ export class Pressure {
         return this.centibarsLazy = this.convertFromBase(PressureUnits.Centibars);
     }
 
+    /** */
     public get Decibars(): number {
         if(this.decibarsLazy !== null){
             return this.decibarsLazy;
@@ -312,6 +401,7 @@ export class Pressure {
         return this.decibarsLazy = this.convertFromBase(PressureUnits.Decibars);
     }
 
+    /** */
     public get Kilobars(): number {
         if(this.kilobarsLazy !== null){
             return this.kilobarsLazy;
@@ -319,6 +409,7 @@ export class Pressure {
         return this.kilobarsLazy = this.convertFromBase(PressureUnits.Kilobars);
     }
 
+    /** */
     public get Megabars(): number {
         if(this.megabarsLazy !== null){
             return this.megabarsLazy;
@@ -326,6 +417,7 @@ export class Pressure {
         return this.megabarsLazy = this.convertFromBase(PressureUnits.Megabars);
     }
 
+    /** */
     public get KilonewtonsPerSquareMeter(): number {
         if(this.kilonewtonspersquaremeterLazy !== null){
             return this.kilonewtonspersquaremeterLazy;
@@ -333,6 +425,7 @@ export class Pressure {
         return this.kilonewtonspersquaremeterLazy = this.convertFromBase(PressureUnits.KilonewtonsPerSquareMeter);
     }
 
+    /** */
     public get MeganewtonsPerSquareMeter(): number {
         if(this.meganewtonspersquaremeterLazy !== null){
             return this.meganewtonspersquaremeterLazy;
@@ -340,6 +433,7 @@ export class Pressure {
         return this.meganewtonspersquaremeterLazy = this.convertFromBase(PressureUnits.MeganewtonsPerSquareMeter);
     }
 
+    /** */
     public get KilonewtonsPerSquareCentimeter(): number {
         if(this.kilonewtonspersquarecentimeterLazy !== null){
             return this.kilonewtonspersquarecentimeterLazy;
@@ -347,6 +441,7 @@ export class Pressure {
         return this.kilonewtonspersquarecentimeterLazy = this.convertFromBase(PressureUnits.KilonewtonsPerSquareCentimeter);
     }
 
+    /** */
     public get KilonewtonsPerSquareMillimeter(): number {
         if(this.kilonewtonspersquaremillimeterLazy !== null){
             return this.kilonewtonspersquaremillimeterLazy;
@@ -354,6 +449,7 @@ export class Pressure {
         return this.kilonewtonspersquaremillimeterLazy = this.convertFromBase(PressureUnits.KilonewtonsPerSquareMillimeter);
     }
 
+    /** */
     public get KilopoundsForcePerSquareInch(): number {
         if(this.kilopoundsforcepersquareinchLazy !== null){
             return this.kilopoundsforcepersquareinchLazy;
@@ -361,6 +457,7 @@ export class Pressure {
         return this.kilopoundsforcepersquareinchLazy = this.convertFromBase(PressureUnits.KilopoundsForcePerSquareInch);
     }
 
+    /** */
     public get KilopoundsForcePerSquareFoot(): number {
         if(this.kilopoundsforcepersquarefootLazy !== null){
             return this.kilopoundsforcepersquarefootLazy;
@@ -368,162 +465,402 @@ export class Pressure {
         return this.kilopoundsforcepersquarefootLazy = this.convertFromBase(PressureUnits.KilopoundsForcePerSquareFoot);
     }
 
+    /**
+     * Create a new Pressure instance from a Pascals
+     *
+     * @param value The unit as Pascals to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromPascals(value: number): Pressure {
         return new Pressure(value, PressureUnits.Pascals);
     }
 
+    /**
+     * Create a new Pressure instance from a Atmospheres
+     *
+     * @param value The unit as Atmospheres to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromAtmospheres(value: number): Pressure {
         return new Pressure(value, PressureUnits.Atmospheres);
     }
 
+    /**
+     * Create a new Pressure instance from a Bars
+     *
+     * @param value The unit as Bars to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromBars(value: number): Pressure {
         return new Pressure(value, PressureUnits.Bars);
     }
 
+    /**
+     * Create a new Pressure instance from a KilogramsForcePerSquareMeter
+     *
+     * @param value The unit as KilogramsForcePerSquareMeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilogramsForcePerSquareMeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.KilogramsForcePerSquareMeter);
     }
 
+    /**
+     * Create a new Pressure instance from a KilogramsForcePerSquareCentimeter
+     *
+     * @param value The unit as KilogramsForcePerSquareCentimeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilogramsForcePerSquareCentimeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.KilogramsForcePerSquareCentimeter);
     }
 
+    /**
+     * Create a new Pressure instance from a KilogramsForcePerSquareMillimeter
+     *
+     * @param value The unit as KilogramsForcePerSquareMillimeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilogramsForcePerSquareMillimeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.KilogramsForcePerSquareMillimeter);
     }
 
+    /**
+     * Create a new Pressure instance from a NewtonsPerSquareMeter
+     *
+     * @param value The unit as NewtonsPerSquareMeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromNewtonsPerSquareMeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.NewtonsPerSquareMeter);
     }
 
+    /**
+     * Create a new Pressure instance from a NewtonsPerSquareCentimeter
+     *
+     * @param value The unit as NewtonsPerSquareCentimeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromNewtonsPerSquareCentimeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.NewtonsPerSquareCentimeter);
     }
 
+    /**
+     * Create a new Pressure instance from a NewtonsPerSquareMillimeter
+     *
+     * @param value The unit as NewtonsPerSquareMillimeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromNewtonsPerSquareMillimeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.NewtonsPerSquareMillimeter);
     }
 
+    /**
+     * Create a new Pressure instance from a TechnicalAtmospheres
+     *
+     * @param value The unit as TechnicalAtmospheres to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromTechnicalAtmospheres(value: number): Pressure {
         return new Pressure(value, PressureUnits.TechnicalAtmospheres);
     }
 
+    /**
+     * Create a new Pressure instance from a Torrs
+     *
+     * @param value The unit as Torrs to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromTorrs(value: number): Pressure {
         return new Pressure(value, PressureUnits.Torrs);
     }
 
+    /**
+     * Create a new Pressure instance from a PoundsForcePerSquareInch
+     *
+     * @param value The unit as PoundsForcePerSquareInch to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromPoundsForcePerSquareInch(value: number): Pressure {
         return new Pressure(value, PressureUnits.PoundsForcePerSquareInch);
     }
 
+    /**
+     * Create a new Pressure instance from a PoundsForcePerSquareFoot
+     *
+     * @param value The unit as PoundsForcePerSquareFoot to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromPoundsForcePerSquareFoot(value: number): Pressure {
         return new Pressure(value, PressureUnits.PoundsForcePerSquareFoot);
     }
 
+    /**
+     * Create a new Pressure instance from a TonnesForcePerSquareMillimeter
+     *
+     * @param value The unit as TonnesForcePerSquareMillimeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromTonnesForcePerSquareMillimeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.TonnesForcePerSquareMillimeter);
     }
 
+    /**
+     * Create a new Pressure instance from a TonnesForcePerSquareMeter
+     *
+     * @param value The unit as TonnesForcePerSquareMeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromTonnesForcePerSquareMeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.TonnesForcePerSquareMeter);
     }
 
+    /**
+     * Create a new Pressure instance from a MetersOfHead
+     *
+     * @param value The unit as MetersOfHead to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromMetersOfHead(value: number): Pressure {
         return new Pressure(value, PressureUnits.MetersOfHead);
     }
 
+    /**
+     * Create a new Pressure instance from a TonnesForcePerSquareCentimeter
+     *
+     * @param value The unit as TonnesForcePerSquareCentimeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromTonnesForcePerSquareCentimeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.TonnesForcePerSquareCentimeter);
     }
 
+    /**
+     * Create a new Pressure instance from a FeetOfHead
+     *
+     * @param value The unit as FeetOfHead to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromFeetOfHead(value: number): Pressure {
         return new Pressure(value, PressureUnits.FeetOfHead);
     }
 
+    /**
+     * Create a new Pressure instance from a MillimetersOfMercury
+     *
+     * @param value The unit as MillimetersOfMercury to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromMillimetersOfMercury(value: number): Pressure {
         return new Pressure(value, PressureUnits.MillimetersOfMercury);
     }
 
+    /**
+     * Create a new Pressure instance from a InchesOfMercury
+     *
+     * @param value The unit as InchesOfMercury to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromInchesOfMercury(value: number): Pressure {
         return new Pressure(value, PressureUnits.InchesOfMercury);
     }
 
+    /**
+     * Create a new Pressure instance from a DynesPerSquareCentimeter
+     *
+     * @param value The unit as DynesPerSquareCentimeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromDynesPerSquareCentimeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.DynesPerSquareCentimeter);
     }
 
+    /**
+     * Create a new Pressure instance from a PoundsPerInchSecondSquared
+     *
+     * @param value The unit as PoundsPerInchSecondSquared to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromPoundsPerInchSecondSquared(value: number): Pressure {
         return new Pressure(value, PressureUnits.PoundsPerInchSecondSquared);
     }
 
+    /**
+     * Create a new Pressure instance from a InchesOfWaterColumn
+     *
+     * @param value The unit as InchesOfWaterColumn to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromInchesOfWaterColumn(value: number): Pressure {
         return new Pressure(value, PressureUnits.InchesOfWaterColumn);
     }
 
+    /**
+     * Create a new Pressure instance from a Micropascals
+     *
+     * @param value The unit as Micropascals to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromMicropascals(value: number): Pressure {
         return new Pressure(value, PressureUnits.Micropascals);
     }
 
+    /**
+     * Create a new Pressure instance from a Decapascals
+     *
+     * @param value The unit as Decapascals to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromDecapascals(value: number): Pressure {
         return new Pressure(value, PressureUnits.Decapascals);
     }
 
+    /**
+     * Create a new Pressure instance from a Hectopascals
+     *
+     * @param value The unit as Hectopascals to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromHectopascals(value: number): Pressure {
         return new Pressure(value, PressureUnits.Hectopascals);
     }
 
+    /**
+     * Create a new Pressure instance from a Kilopascals
+     *
+     * @param value The unit as Kilopascals to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilopascals(value: number): Pressure {
         return new Pressure(value, PressureUnits.Kilopascals);
     }
 
+    /**
+     * Create a new Pressure instance from a Megapascals
+     *
+     * @param value The unit as Megapascals to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromMegapascals(value: number): Pressure {
         return new Pressure(value, PressureUnits.Megapascals);
     }
 
+    /**
+     * Create a new Pressure instance from a Gigapascals
+     *
+     * @param value The unit as Gigapascals to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromGigapascals(value: number): Pressure {
         return new Pressure(value, PressureUnits.Gigapascals);
     }
 
+    /**
+     * Create a new Pressure instance from a Microbars
+     *
+     * @param value The unit as Microbars to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromMicrobars(value: number): Pressure {
         return new Pressure(value, PressureUnits.Microbars);
     }
 
+    /**
+     * Create a new Pressure instance from a Centibars
+     *
+     * @param value The unit as Centibars to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromCentibars(value: number): Pressure {
         return new Pressure(value, PressureUnits.Centibars);
     }
 
+    /**
+     * Create a new Pressure instance from a Decibars
+     *
+     * @param value The unit as Decibars to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromDecibars(value: number): Pressure {
         return new Pressure(value, PressureUnits.Decibars);
     }
 
+    /**
+     * Create a new Pressure instance from a Kilobars
+     *
+     * @param value The unit as Kilobars to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilobars(value: number): Pressure {
         return new Pressure(value, PressureUnits.Kilobars);
     }
 
+    /**
+     * Create a new Pressure instance from a Megabars
+     *
+     * @param value The unit as Megabars to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromMegabars(value: number): Pressure {
         return new Pressure(value, PressureUnits.Megabars);
     }
 
+    /**
+     * Create a new Pressure instance from a KilonewtonsPerSquareMeter
+     *
+     * @param value The unit as KilonewtonsPerSquareMeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilonewtonsPerSquareMeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.KilonewtonsPerSquareMeter);
     }
 
+    /**
+     * Create a new Pressure instance from a MeganewtonsPerSquareMeter
+     *
+     * @param value The unit as MeganewtonsPerSquareMeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromMeganewtonsPerSquareMeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.MeganewtonsPerSquareMeter);
     }
 
+    /**
+     * Create a new Pressure instance from a KilonewtonsPerSquareCentimeter
+     *
+     * @param value The unit as KilonewtonsPerSquareCentimeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilonewtonsPerSquareCentimeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.KilonewtonsPerSquareCentimeter);
     }
 
+    /**
+     * Create a new Pressure instance from a KilonewtonsPerSquareMillimeter
+     *
+     * @param value The unit as KilonewtonsPerSquareMillimeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilonewtonsPerSquareMillimeter(value: number): Pressure {
         return new Pressure(value, PressureUnits.KilonewtonsPerSquareMillimeter);
     }
 
+    /**
+     * Create a new Pressure instance from a KilopoundsForcePerSquareInch
+     *
+     * @param value The unit as KilopoundsForcePerSquareInch to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilopoundsForcePerSquareInch(value: number): Pressure {
         return new Pressure(value, PressureUnits.KilopoundsForcePerSquareInch);
     }
 
+    /**
+     * Create a new Pressure instance from a KilopoundsForcePerSquareFoot
+     *
+     * @param value The unit as KilopoundsForcePerSquareFoot to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
     public static FromKilopoundsForcePerSquareFoot(value: number): Pressure {
         return new Pressure(value, PressureUnits.KilopoundsForcePerSquareFoot);
     }
@@ -706,6 +1043,13 @@ export class Pressure {
         return NaN;
     }
 
+    /**
+     * Format the Pressure to string.
+     * Note! the default format for Pressure is Pascals.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Pressure.
+     * @returns The string format of the Pressure.
+     */
     public toString(toUnit: PressureUnits = PressureUnits.Pascals): string {
 
         switch (toUnit) {

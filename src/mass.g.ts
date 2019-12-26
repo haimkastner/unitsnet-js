@@ -1,30 +1,56 @@
+/** MassUnits enumeration */
 export enum MassUnits {
+    /** */
     Grams,
+    /** */
     Tonnes,
+    /** The short ton is a unit of mass equal to 2,000 pounds (907.18474 kg), that is most commonly used in the United States – known there simply as the ton. */
     ShortTons,
+    /** Long ton (weight ton or Imperial ton) is a unit of mass equal to 2,240 pounds (1,016 kg) and is the name for the unit called the "ton" in the avoirdupois or Imperial system of measurements that was used in the United Kingdom and several other Commonwealth countries before metrication. */
     LongTons,
+    /** The pound or pound-mass (abbreviations: lb, lbm) is a unit of mass used in the imperial, United States customary and other systems of measurement. A number of different definitions have been used, the most common today being the international avoirdupois pound which is legally defined as exactly 0.45359237 kilograms, and which is divided into 16 avoirdupois ounces. */
     Pounds,
+    /** An ounce (abbreviated oz) is usually the international avoirdupois ounce as used in the United States customary and British imperial systems, which is equal to one-sixteenth of a pound or approximately 28 grams. The abbreviation 'oz' derives from the Italian word onza (now spelled oncia). */
     Ounces,
+    /** The slug (abbreviation slug) is a unit of mass that is accelerated by 1 ft/s² when a force of one pound (lbf) is exerted on it. */
     Slugs,
+    /** The stone (abbreviation st) is a unit of mass equal to 14 pounds avoirdupois (about 6.35 kilograms) used in Great Britain and Ireland for measuring human body weight. */
     Stone,
+    /** The short hundredweight (abbreviation cwt) is a unit of mass equal to 100 pounds in US and Canada. In British English, the short hundredweight is referred to as the "cental". */
     ShortHundredweight,
+    /** The long or imperial hundredweight (abbreviation cwt) is a unit of mass equal to 112 pounds in US and Canada. */
     LongHundredweight,
+    /** A grain is a unit of measurement of mass, and in the troy weight, avoirdupois, and Apothecaries' system, equal to exactly 64.79891 milligrams. */
     Grains,
+    /** Solar mass is a ratio unit to the mass of the solar system star, the sun. */
     SolarMasses,
+    /** Earth mass is a ratio unit to the mass of planet Earth. */
     EarthMasses,
+    /** */
     Nanograms,
+    /** */
     Micrograms,
+    /** */
     Centigrams,
+    /** */
     Decigrams,
+    /** */
     Decagrams,
+    /** */
     Hectograms,
+    /** */
     Kilograms,
+    /** */
     Kilotonnes,
+    /** */
     Megatonnes,
+    /** */
     Kilopounds,
+    /** */
     Megapounds
 }
 
+/** In physics, mass (from Greek μᾶζα "barley cake, lump [of dough]") is a property of a physical system or body, giving rise to the phenomena of the body's resistance to being accelerated by a force and the strength of its mutual gravitational attraction with other bodies. Instruments such as mass balances or scales use those phenomena to measure mass. The SI unit of mass is the kilogram (kg). */
 export class Mass {
     private value: number;
     private gramsLazy: number | null = null;
@@ -52,10 +78,26 @@ export class Mass {
     private kilopoundsLazy: number | null = null;
     private megapoundsLazy: number | null = null;
 
+    /**
+     * Create a new Mass.
+     * @param value The value.
+     * @param fromUnit The ‘Mass’ unit to create from.
+     */
     public constructor(value: number, fromUnit: MassUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Mass is Kilogram.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Grams(): number {
         if(this.gramsLazy !== null){
             return this.gramsLazy;
@@ -63,6 +105,7 @@ export class Mass {
         return this.gramsLazy = this.convertFromBase(MassUnits.Grams);
     }
 
+    /** */
     public get Tonnes(): number {
         if(this.tonnesLazy !== null){
             return this.tonnesLazy;
@@ -70,6 +113,7 @@ export class Mass {
         return this.tonnesLazy = this.convertFromBase(MassUnits.Tonnes);
     }
 
+    /** The short ton is a unit of mass equal to 2,000 pounds (907.18474 kg), that is most commonly used in the United States – known there simply as the ton. */
     public get ShortTons(): number {
         if(this.shorttonsLazy !== null){
             return this.shorttonsLazy;
@@ -77,6 +121,7 @@ export class Mass {
         return this.shorttonsLazy = this.convertFromBase(MassUnits.ShortTons);
     }
 
+    /** Long ton (weight ton or Imperial ton) is a unit of mass equal to 2,240 pounds (1,016 kg) and is the name for the unit called the "ton" in the avoirdupois or Imperial system of measurements that was used in the United Kingdom and several other Commonwealth countries before metrication. */
     public get LongTons(): number {
         if(this.longtonsLazy !== null){
             return this.longtonsLazy;
@@ -84,6 +129,7 @@ export class Mass {
         return this.longtonsLazy = this.convertFromBase(MassUnits.LongTons);
     }
 
+    /** The pound or pound-mass (abbreviations: lb, lbm) is a unit of mass used in the imperial, United States customary and other systems of measurement. A number of different definitions have been used, the most common today being the international avoirdupois pound which is legally defined as exactly 0.45359237 kilograms, and which is divided into 16 avoirdupois ounces. */
     public get Pounds(): number {
         if(this.poundsLazy !== null){
             return this.poundsLazy;
@@ -91,6 +137,7 @@ export class Mass {
         return this.poundsLazy = this.convertFromBase(MassUnits.Pounds);
     }
 
+    /** An ounce (abbreviated oz) is usually the international avoirdupois ounce as used in the United States customary and British imperial systems, which is equal to one-sixteenth of a pound or approximately 28 grams. The abbreviation 'oz' derives from the Italian word onza (now spelled oncia). */
     public get Ounces(): number {
         if(this.ouncesLazy !== null){
             return this.ouncesLazy;
@@ -98,6 +145,7 @@ export class Mass {
         return this.ouncesLazy = this.convertFromBase(MassUnits.Ounces);
     }
 
+    /** The slug (abbreviation slug) is a unit of mass that is accelerated by 1 ft/s² when a force of one pound (lbf) is exerted on it. */
     public get Slugs(): number {
         if(this.slugsLazy !== null){
             return this.slugsLazy;
@@ -105,6 +153,7 @@ export class Mass {
         return this.slugsLazy = this.convertFromBase(MassUnits.Slugs);
     }
 
+    /** The stone (abbreviation st) is a unit of mass equal to 14 pounds avoirdupois (about 6.35 kilograms) used in Great Britain and Ireland for measuring human body weight. */
     public get Stone(): number {
         if(this.stoneLazy !== null){
             return this.stoneLazy;
@@ -112,6 +161,7 @@ export class Mass {
         return this.stoneLazy = this.convertFromBase(MassUnits.Stone);
     }
 
+    /** The short hundredweight (abbreviation cwt) is a unit of mass equal to 100 pounds in US and Canada. In British English, the short hundredweight is referred to as the "cental". */
     public get ShortHundredweight(): number {
         if(this.shorthundredweightLazy !== null){
             return this.shorthundredweightLazy;
@@ -119,6 +169,7 @@ export class Mass {
         return this.shorthundredweightLazy = this.convertFromBase(MassUnits.ShortHundredweight);
     }
 
+    /** The long or imperial hundredweight (abbreviation cwt) is a unit of mass equal to 112 pounds in US and Canada. */
     public get LongHundredweight(): number {
         if(this.longhundredweightLazy !== null){
             return this.longhundredweightLazy;
@@ -126,6 +177,7 @@ export class Mass {
         return this.longhundredweightLazy = this.convertFromBase(MassUnits.LongHundredweight);
     }
 
+    /** A grain is a unit of measurement of mass, and in the troy weight, avoirdupois, and Apothecaries' system, equal to exactly 64.79891 milligrams. */
     public get Grains(): number {
         if(this.grainsLazy !== null){
             return this.grainsLazy;
@@ -133,6 +185,7 @@ export class Mass {
         return this.grainsLazy = this.convertFromBase(MassUnits.Grains);
     }
 
+    /** Solar mass is a ratio unit to the mass of the solar system star, the sun. */
     public get SolarMasses(): number {
         if(this.solarmassesLazy !== null){
             return this.solarmassesLazy;
@@ -140,6 +193,7 @@ export class Mass {
         return this.solarmassesLazy = this.convertFromBase(MassUnits.SolarMasses);
     }
 
+    /** Earth mass is a ratio unit to the mass of planet Earth. */
     public get EarthMasses(): number {
         if(this.earthmassesLazy !== null){
             return this.earthmassesLazy;
@@ -147,6 +201,7 @@ export class Mass {
         return this.earthmassesLazy = this.convertFromBase(MassUnits.EarthMasses);
     }
 
+    /** */
     public get Nanograms(): number {
         if(this.nanogramsLazy !== null){
             return this.nanogramsLazy;
@@ -154,6 +209,7 @@ export class Mass {
         return this.nanogramsLazy = this.convertFromBase(MassUnits.Nanograms);
     }
 
+    /** */
     public get Micrograms(): number {
         if(this.microgramsLazy !== null){
             return this.microgramsLazy;
@@ -161,6 +217,7 @@ export class Mass {
         return this.microgramsLazy = this.convertFromBase(MassUnits.Micrograms);
     }
 
+    /** */
     public get Centigrams(): number {
         if(this.centigramsLazy !== null){
             return this.centigramsLazy;
@@ -168,6 +225,7 @@ export class Mass {
         return this.centigramsLazy = this.convertFromBase(MassUnits.Centigrams);
     }
 
+    /** */
     public get Decigrams(): number {
         if(this.decigramsLazy !== null){
             return this.decigramsLazy;
@@ -175,6 +233,7 @@ export class Mass {
         return this.decigramsLazy = this.convertFromBase(MassUnits.Decigrams);
     }
 
+    /** */
     public get Decagrams(): number {
         if(this.decagramsLazy !== null){
             return this.decagramsLazy;
@@ -182,6 +241,7 @@ export class Mass {
         return this.decagramsLazy = this.convertFromBase(MassUnits.Decagrams);
     }
 
+    /** */
     public get Hectograms(): number {
         if(this.hectogramsLazy !== null){
             return this.hectogramsLazy;
@@ -189,6 +249,7 @@ export class Mass {
         return this.hectogramsLazy = this.convertFromBase(MassUnits.Hectograms);
     }
 
+    /** */
     public get Kilograms(): number {
         if(this.kilogramsLazy !== null){
             return this.kilogramsLazy;
@@ -196,6 +257,7 @@ export class Mass {
         return this.kilogramsLazy = this.convertFromBase(MassUnits.Kilograms);
     }
 
+    /** */
     public get Kilotonnes(): number {
         if(this.kilotonnesLazy !== null){
             return this.kilotonnesLazy;
@@ -203,6 +265,7 @@ export class Mass {
         return this.kilotonnesLazy = this.convertFromBase(MassUnits.Kilotonnes);
     }
 
+    /** */
     public get Megatonnes(): number {
         if(this.megatonnesLazy !== null){
             return this.megatonnesLazy;
@@ -210,6 +273,7 @@ export class Mass {
         return this.megatonnesLazy = this.convertFromBase(MassUnits.Megatonnes);
     }
 
+    /** */
     public get Kilopounds(): number {
         if(this.kilopoundsLazy !== null){
             return this.kilopoundsLazy;
@@ -217,6 +281,7 @@ export class Mass {
         return this.kilopoundsLazy = this.convertFromBase(MassUnits.Kilopounds);
     }
 
+    /** */
     public get Megapounds(): number {
         if(this.megapoundsLazy !== null){
             return this.megapoundsLazy;
@@ -224,98 +289,242 @@ export class Mass {
         return this.megapoundsLazy = this.convertFromBase(MassUnits.Megapounds);
     }
 
+    /**
+     * Create a new Mass instance from a Grams
+     *
+     * @param value The unit as Grams to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromGrams(value: number): Mass {
         return new Mass(value, MassUnits.Grams);
     }
 
+    /**
+     * Create a new Mass instance from a Tonnes
+     *
+     * @param value The unit as Tonnes to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromTonnes(value: number): Mass {
         return new Mass(value, MassUnits.Tonnes);
     }
 
+    /**
+     * Create a new Mass instance from a ShortTons
+     * The short ton is a unit of mass equal to 2,000 pounds (907.18474 kg), that is most commonly used in the United States – known there simply as the ton.
+     * @param value The unit as ShortTons to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromShortTons(value: number): Mass {
         return new Mass(value, MassUnits.ShortTons);
     }
 
+    /**
+     * Create a new Mass instance from a LongTons
+     * Long ton (weight ton or Imperial ton) is a unit of mass equal to 2,240 pounds (1,016 kg) and is the name for the unit called the "ton" in the avoirdupois or Imperial system of measurements that was used in the United Kingdom and several other Commonwealth countries before metrication.
+     * @param value The unit as LongTons to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromLongTons(value: number): Mass {
         return new Mass(value, MassUnits.LongTons);
     }
 
+    /**
+     * Create a new Mass instance from a Pounds
+     * The pound or pound-mass (abbreviations: lb, lbm) is a unit of mass used in the imperial, United States customary and other systems of measurement. A number of different definitions have been used, the most common today being the international avoirdupois pound which is legally defined as exactly 0.45359237 kilograms, and which is divided into 16 avoirdupois ounces.
+     * @param value The unit as Pounds to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromPounds(value: number): Mass {
         return new Mass(value, MassUnits.Pounds);
     }
 
+    /**
+     * Create a new Mass instance from a Ounces
+     * An ounce (abbreviated oz) is usually the international avoirdupois ounce as used in the United States customary and British imperial systems, which is equal to one-sixteenth of a pound or approximately 28 grams. The abbreviation 'oz' derives from the Italian word onza (now spelled oncia).
+     * @param value The unit as Ounces to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromOunces(value: number): Mass {
         return new Mass(value, MassUnits.Ounces);
     }
 
+    /**
+     * Create a new Mass instance from a Slugs
+     * The slug (abbreviation slug) is a unit of mass that is accelerated by 1 ft/s² when a force of one pound (lbf) is exerted on it.
+     * @param value The unit as Slugs to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromSlugs(value: number): Mass {
         return new Mass(value, MassUnits.Slugs);
     }
 
+    /**
+     * Create a new Mass instance from a Stone
+     * The stone (abbreviation st) is a unit of mass equal to 14 pounds avoirdupois (about 6.35 kilograms) used in Great Britain and Ireland for measuring human body weight.
+     * @param value The unit as Stone to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromStone(value: number): Mass {
         return new Mass(value, MassUnits.Stone);
     }
 
+    /**
+     * Create a new Mass instance from a ShortHundredweight
+     * The short hundredweight (abbreviation cwt) is a unit of mass equal to 100 pounds in US and Canada. In British English, the short hundredweight is referred to as the "cental".
+     * @param value The unit as ShortHundredweight to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromShortHundredweight(value: number): Mass {
         return new Mass(value, MassUnits.ShortHundredweight);
     }
 
+    /**
+     * Create a new Mass instance from a LongHundredweight
+     * The long or imperial hundredweight (abbreviation cwt) is a unit of mass equal to 112 pounds in US and Canada.
+     * @param value The unit as LongHundredweight to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromLongHundredweight(value: number): Mass {
         return new Mass(value, MassUnits.LongHundredweight);
     }
 
+    /**
+     * Create a new Mass instance from a Grains
+     * A grain is a unit of measurement of mass, and in the troy weight, avoirdupois, and Apothecaries' system, equal to exactly 64.79891 milligrams.
+     * @param value The unit as Grains to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromGrains(value: number): Mass {
         return new Mass(value, MassUnits.Grains);
     }
 
+    /**
+     * Create a new Mass instance from a SolarMasses
+     * Solar mass is a ratio unit to the mass of the solar system star, the sun.
+     * @param value The unit as SolarMasses to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromSolarMasses(value: number): Mass {
         return new Mass(value, MassUnits.SolarMasses);
     }
 
+    /**
+     * Create a new Mass instance from a EarthMasses
+     * Earth mass is a ratio unit to the mass of planet Earth.
+     * @param value The unit as EarthMasses to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromEarthMasses(value: number): Mass {
         return new Mass(value, MassUnits.EarthMasses);
     }
 
+    /**
+     * Create a new Mass instance from a Nanograms
+     *
+     * @param value The unit as Nanograms to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromNanograms(value: number): Mass {
         return new Mass(value, MassUnits.Nanograms);
     }
 
+    /**
+     * Create a new Mass instance from a Micrograms
+     *
+     * @param value The unit as Micrograms to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromMicrograms(value: number): Mass {
         return new Mass(value, MassUnits.Micrograms);
     }
 
+    /**
+     * Create a new Mass instance from a Centigrams
+     *
+     * @param value The unit as Centigrams to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromCentigrams(value: number): Mass {
         return new Mass(value, MassUnits.Centigrams);
     }
 
+    /**
+     * Create a new Mass instance from a Decigrams
+     *
+     * @param value The unit as Decigrams to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromDecigrams(value: number): Mass {
         return new Mass(value, MassUnits.Decigrams);
     }
 
+    /**
+     * Create a new Mass instance from a Decagrams
+     *
+     * @param value The unit as Decagrams to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromDecagrams(value: number): Mass {
         return new Mass(value, MassUnits.Decagrams);
     }
 
+    /**
+     * Create a new Mass instance from a Hectograms
+     *
+     * @param value The unit as Hectograms to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromHectograms(value: number): Mass {
         return new Mass(value, MassUnits.Hectograms);
     }
 
+    /**
+     * Create a new Mass instance from a Kilograms
+     *
+     * @param value The unit as Kilograms to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromKilograms(value: number): Mass {
         return new Mass(value, MassUnits.Kilograms);
     }
 
+    /**
+     * Create a new Mass instance from a Kilotonnes
+     *
+     * @param value The unit as Kilotonnes to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromKilotonnes(value: number): Mass {
         return new Mass(value, MassUnits.Kilotonnes);
     }
 
+    /**
+     * Create a new Mass instance from a Megatonnes
+     *
+     * @param value The unit as Megatonnes to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromMegatonnes(value: number): Mass {
         return new Mass(value, MassUnits.Megatonnes);
     }
 
+    /**
+     * Create a new Mass instance from a Kilopounds
+     *
+     * @param value The unit as Kilopounds to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromKilopounds(value: number): Mass {
         return new Mass(value, MassUnits.Kilopounds);
     }
 
+    /**
+     * Create a new Mass instance from a Megapounds
+     *
+     * @param value The unit as Megapounds to create a new Mass from.
+     * @returns The new Mass instance.
+     */
     public static FromMegapounds(value: number): Mass {
         return new Mass(value, MassUnits.Megapounds);
     }
@@ -434,6 +643,13 @@ export class Mass {
         return NaN;
     }
 
+    /**
+     * Format the Mass to string.
+     * Note! the default format for Mass is Kilograms.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Mass.
+     * @returns The string format of the Mass.
+     */
     public toString(toUnit: MassUnits = MassUnits.Kilograms): string {
 
         switch (toUnit) {

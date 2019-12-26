@@ -1,15 +1,26 @@
+/** DurationUnits enumeration */
 export enum DurationUnits {
+    /** */
     Years365,
+    /** */
     Months30,
+    /** */
     Weeks,
+    /** */
     Days,
+    /** */
     Hours,
+    /** */
     Minutes,
+    /** */
     Seconds,
+    /** */
     Nanoseconds,
+    /** */
     Microseconds
 }
 
+/** Time is a dimension in which events can be ordered from the past through the present into the future, and also the measure of durations of events and the intervals between them. */
 export class Duration {
     private value: number;
     private years365Lazy: number | null = null;
@@ -22,10 +33,26 @@ export class Duration {
     private nanosecondsLazy: number | null = null;
     private microsecondsLazy: number | null = null;
 
+    /**
+     * Create a new Duration.
+     * @param value The value.
+     * @param fromUnit The ‘Duration’ unit to create from.
+     */
     public constructor(value: number, fromUnit: DurationUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Duration is Second.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Years365(): number {
         if(this.years365Lazy !== null){
             return this.years365Lazy;
@@ -33,6 +60,7 @@ export class Duration {
         return this.years365Lazy = this.convertFromBase(DurationUnits.Years365);
     }
 
+    /** */
     public get Months30(): number {
         if(this.months30Lazy !== null){
             return this.months30Lazy;
@@ -40,6 +68,7 @@ export class Duration {
         return this.months30Lazy = this.convertFromBase(DurationUnits.Months30);
     }
 
+    /** */
     public get Weeks(): number {
         if(this.weeksLazy !== null){
             return this.weeksLazy;
@@ -47,6 +76,7 @@ export class Duration {
         return this.weeksLazy = this.convertFromBase(DurationUnits.Weeks);
     }
 
+    /** */
     public get Days(): number {
         if(this.daysLazy !== null){
             return this.daysLazy;
@@ -54,6 +84,7 @@ export class Duration {
         return this.daysLazy = this.convertFromBase(DurationUnits.Days);
     }
 
+    /** */
     public get Hours(): number {
         if(this.hoursLazy !== null){
             return this.hoursLazy;
@@ -61,6 +92,7 @@ export class Duration {
         return this.hoursLazy = this.convertFromBase(DurationUnits.Hours);
     }
 
+    /** */
     public get Minutes(): number {
         if(this.minutesLazy !== null){
             return this.minutesLazy;
@@ -68,6 +100,7 @@ export class Duration {
         return this.minutesLazy = this.convertFromBase(DurationUnits.Minutes);
     }
 
+    /** */
     public get Seconds(): number {
         if(this.secondsLazy !== null){
             return this.secondsLazy;
@@ -75,6 +108,7 @@ export class Duration {
         return this.secondsLazy = this.convertFromBase(DurationUnits.Seconds);
     }
 
+    /** */
     public get Nanoseconds(): number {
         if(this.nanosecondsLazy !== null){
             return this.nanosecondsLazy;
@@ -82,6 +116,7 @@ export class Duration {
         return this.nanosecondsLazy = this.convertFromBase(DurationUnits.Nanoseconds);
     }
 
+    /** */
     public get Microseconds(): number {
         if(this.microsecondsLazy !== null){
             return this.microsecondsLazy;
@@ -89,38 +124,92 @@ export class Duration {
         return this.microsecondsLazy = this.convertFromBase(DurationUnits.Microseconds);
     }
 
+    /**
+     * Create a new Duration instance from a Years365
+     *
+     * @param value The unit as Years365 to create a new Duration from.
+     * @returns The new Duration instance.
+     */
     public static FromYears365(value: number): Duration {
         return new Duration(value, DurationUnits.Years365);
     }
 
+    /**
+     * Create a new Duration instance from a Months30
+     *
+     * @param value The unit as Months30 to create a new Duration from.
+     * @returns The new Duration instance.
+     */
     public static FromMonths30(value: number): Duration {
         return new Duration(value, DurationUnits.Months30);
     }
 
+    /**
+     * Create a new Duration instance from a Weeks
+     *
+     * @param value The unit as Weeks to create a new Duration from.
+     * @returns The new Duration instance.
+     */
     public static FromWeeks(value: number): Duration {
         return new Duration(value, DurationUnits.Weeks);
     }
 
+    /**
+     * Create a new Duration instance from a Days
+     *
+     * @param value The unit as Days to create a new Duration from.
+     * @returns The new Duration instance.
+     */
     public static FromDays(value: number): Duration {
         return new Duration(value, DurationUnits.Days);
     }
 
+    /**
+     * Create a new Duration instance from a Hours
+     *
+     * @param value The unit as Hours to create a new Duration from.
+     * @returns The new Duration instance.
+     */
     public static FromHours(value: number): Duration {
         return new Duration(value, DurationUnits.Hours);
     }
 
+    /**
+     * Create a new Duration instance from a Minutes
+     *
+     * @param value The unit as Minutes to create a new Duration from.
+     * @returns The new Duration instance.
+     */
     public static FromMinutes(value: number): Duration {
         return new Duration(value, DurationUnits.Minutes);
     }
 
+    /**
+     * Create a new Duration instance from a Seconds
+     *
+     * @param value The unit as Seconds to create a new Duration from.
+     * @returns The new Duration instance.
+     */
     public static FromSeconds(value: number): Duration {
         return new Duration(value, DurationUnits.Seconds);
     }
 
+    /**
+     * Create a new Duration instance from a Nanoseconds
+     *
+     * @param value The unit as Nanoseconds to create a new Duration from.
+     * @returns The new Duration instance.
+     */
     public static FromNanoseconds(value: number): Duration {
         return new Duration(value, DurationUnits.Nanoseconds);
     }
 
+    /**
+     * Create a new Duration instance from a Microseconds
+     *
+     * @param value The unit as Microseconds to create a new Duration from.
+     * @returns The new Duration instance.
+     */
     public static FromMicroseconds(value: number): Duration {
         return new Duration(value, DurationUnits.Microseconds);
     }
@@ -179,6 +268,13 @@ export class Duration {
         return NaN;
     }
 
+    /**
+     * Format the Duration to string.
+     * Note! the default format for Duration is Seconds.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Duration.
+     * @returns The string format of the Duration.
+     */
     public toString(toUnit: DurationUnits = DurationUnits.Seconds): string {
 
         switch (toUnit) {

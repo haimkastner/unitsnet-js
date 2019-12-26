@@ -1,53 +1,102 @@
+/** VolumeFlowUnits enumeration */
 export enum VolumeFlowUnits {
+    /** */
     CubicMetersPerSecond,
+    /** */
     CubicMetersPerMinute,
+    /** */
     CubicMetersPerHour,
+    /** */
     CubicMetersPerDay,
+    /** */
     CubicFeetPerSecond,
+    /** */
     CubicFeetPerMinute,
+    /** */
     CubicFeetPerHour,
+    /** */
     CubicYardsPerSecond,
+    /** */
     CubicYardsPerMinute,
+    /** */
     CubicYardsPerHour,
+    /** */
     CubicYardsPerDay,
+    /** */
     MillionUsGallonsPerDay,
+    /** */
     UsGallonsPerDay,
+    /** */
     LitersPerSecond,
+    /** */
     LitersPerMinute,
+    /** */
     LitersPerHour,
+    /** */
     LitersPerDay,
+    /** */
     UsGallonsPerSecond,
+    /** */
     UsGallonsPerMinute,
+    /** */
     UkGallonsPerDay,
+    /** */
     UkGallonsPerHour,
+    /** */
     UkGallonsPerMinute,
+    /** */
     UkGallonsPerSecond,
+    /** */
     KilousGallonsPerMinute,
+    /** */
     UsGallonsPerHour,
+    /** */
     CubicDecimetersPerMinute,
+    /** */
     OilBarrelsPerDay,
+    /** */
     OilBarrelsPerMinute,
+    /** */
     OilBarrelsPerHour,
+    /** */
     OilBarrelsPerSecond,
+    /** */
     CubicMillimetersPerSecond,
+    /** */
     AcreFeetPerSecond,
+    /** */
     AcreFeetPerMinute,
+    /** */
     AcreFeetPerHour,
+    /** */
     AcreFeetPerDay,
+    /** */
     NanolitersPerMinute,
+    /** */
     MicrolitersPerMinute,
+    /** */
     CentilitersPerMinute,
+    /** */
     DecilitersPerMinute,
+    /** */
     KilolitersPerMinute,
+    /** */
     NanolitersPerDay,
+    /** */
     MicrolitersPerDay,
+    /** */
     CentilitersPerDay,
+    /** */
     DecilitersPerDay,
+    /** */
     KilolitersPerDay,
+    /** */
     MegalitersPerDay,
+    /** */
     MegaukGallonsPerSecond
 }
 
+/** In physics and engineering, in particular fluid dynamics and hydrometry, the volumetric flow rate, (also known as volume flow rate, rate of fluid flow or volume velocity) is the volume of fluid which passes through a given surface per unit time. The SI unit is m³/s (cubic meters per second). In US Customary Units and British Imperial Units, volumetric flow rate is often expressed as ft³/s (cubic feet per second). It is usually represented by the symbol Q. */
 export class VolumeFlow {
     private value: number;
     private cubicmeterspersecondLazy: number | null = null;
@@ -98,10 +147,26 @@ export class VolumeFlow {
     private megalitersperdayLazy: number | null = null;
     private megaukgallonspersecondLazy: number | null = null;
 
+    /**
+     * Create a new VolumeFlow.
+     * @param value The value.
+     * @param fromUnit The ‘VolumeFlow’ unit to create from.
+     */
     public constructor(value: number, fromUnit: VolumeFlowUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of VolumeFlow is CubicMeterPerSecond.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get CubicMetersPerSecond(): number {
         if(this.cubicmeterspersecondLazy !== null){
             return this.cubicmeterspersecondLazy;
@@ -109,6 +174,7 @@ export class VolumeFlow {
         return this.cubicmeterspersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerSecond);
     }
 
+    /** */
     public get CubicMetersPerMinute(): number {
         if(this.cubicmetersperminuteLazy !== null){
             return this.cubicmetersperminuteLazy;
@@ -116,6 +182,7 @@ export class VolumeFlow {
         return this.cubicmetersperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerMinute);
     }
 
+    /** */
     public get CubicMetersPerHour(): number {
         if(this.cubicmetersperhourLazy !== null){
             return this.cubicmetersperhourLazy;
@@ -123,6 +190,7 @@ export class VolumeFlow {
         return this.cubicmetersperhourLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerHour);
     }
 
+    /** */
     public get CubicMetersPerDay(): number {
         if(this.cubicmetersperdayLazy !== null){
             return this.cubicmetersperdayLazy;
@@ -130,6 +198,7 @@ export class VolumeFlow {
         return this.cubicmetersperdayLazy = this.convertFromBase(VolumeFlowUnits.CubicMetersPerDay);
     }
 
+    /** */
     public get CubicFeetPerSecond(): number {
         if(this.cubicfeetpersecondLazy !== null){
             return this.cubicfeetpersecondLazy;
@@ -137,6 +206,7 @@ export class VolumeFlow {
         return this.cubicfeetpersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicFeetPerSecond);
     }
 
+    /** */
     public get CubicFeetPerMinute(): number {
         if(this.cubicfeetperminuteLazy !== null){
             return this.cubicfeetperminuteLazy;
@@ -144,6 +214,7 @@ export class VolumeFlow {
         return this.cubicfeetperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicFeetPerMinute);
     }
 
+    /** */
     public get CubicFeetPerHour(): number {
         if(this.cubicfeetperhourLazy !== null){
             return this.cubicfeetperhourLazy;
@@ -151,6 +222,7 @@ export class VolumeFlow {
         return this.cubicfeetperhourLazy = this.convertFromBase(VolumeFlowUnits.CubicFeetPerHour);
     }
 
+    /** */
     public get CubicYardsPerSecond(): number {
         if(this.cubicyardspersecondLazy !== null){
             return this.cubicyardspersecondLazy;
@@ -158,6 +230,7 @@ export class VolumeFlow {
         return this.cubicyardspersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerSecond);
     }
 
+    /** */
     public get CubicYardsPerMinute(): number {
         if(this.cubicyardsperminuteLazy !== null){
             return this.cubicyardsperminuteLazy;
@@ -165,6 +238,7 @@ export class VolumeFlow {
         return this.cubicyardsperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerMinute);
     }
 
+    /** */
     public get CubicYardsPerHour(): number {
         if(this.cubicyardsperhourLazy !== null){
             return this.cubicyardsperhourLazy;
@@ -172,6 +246,7 @@ export class VolumeFlow {
         return this.cubicyardsperhourLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerHour);
     }
 
+    /** */
     public get CubicYardsPerDay(): number {
         if(this.cubicyardsperdayLazy !== null){
             return this.cubicyardsperdayLazy;
@@ -179,6 +254,7 @@ export class VolumeFlow {
         return this.cubicyardsperdayLazy = this.convertFromBase(VolumeFlowUnits.CubicYardsPerDay);
     }
 
+    /** */
     public get MillionUsGallonsPerDay(): number {
         if(this.millionusgallonsperdayLazy !== null){
             return this.millionusgallonsperdayLazy;
@@ -186,6 +262,7 @@ export class VolumeFlow {
         return this.millionusgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.MillionUsGallonsPerDay);
     }
 
+    /** */
     public get UsGallonsPerDay(): number {
         if(this.usgallonsperdayLazy !== null){
             return this.usgallonsperdayLazy;
@@ -193,6 +270,7 @@ export class VolumeFlow {
         return this.usgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerDay);
     }
 
+    /** */
     public get LitersPerSecond(): number {
         if(this.literspersecondLazy !== null){
             return this.literspersecondLazy;
@@ -200,6 +278,7 @@ export class VolumeFlow {
         return this.literspersecondLazy = this.convertFromBase(VolumeFlowUnits.LitersPerSecond);
     }
 
+    /** */
     public get LitersPerMinute(): number {
         if(this.litersperminuteLazy !== null){
             return this.litersperminuteLazy;
@@ -207,6 +286,7 @@ export class VolumeFlow {
         return this.litersperminuteLazy = this.convertFromBase(VolumeFlowUnits.LitersPerMinute);
     }
 
+    /** */
     public get LitersPerHour(): number {
         if(this.litersperhourLazy !== null){
             return this.litersperhourLazy;
@@ -214,6 +294,7 @@ export class VolumeFlow {
         return this.litersperhourLazy = this.convertFromBase(VolumeFlowUnits.LitersPerHour);
     }
 
+    /** */
     public get LitersPerDay(): number {
         if(this.litersperdayLazy !== null){
             return this.litersperdayLazy;
@@ -221,6 +302,7 @@ export class VolumeFlow {
         return this.litersperdayLazy = this.convertFromBase(VolumeFlowUnits.LitersPerDay);
     }
 
+    /** */
     public get UsGallonsPerSecond(): number {
         if(this.usgallonspersecondLazy !== null){
             return this.usgallonspersecondLazy;
@@ -228,6 +310,7 @@ export class VolumeFlow {
         return this.usgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerSecond);
     }
 
+    /** */
     public get UsGallonsPerMinute(): number {
         if(this.usgallonsperminuteLazy !== null){
             return this.usgallonsperminuteLazy;
@@ -235,6 +318,7 @@ export class VolumeFlow {
         return this.usgallonsperminuteLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerMinute);
     }
 
+    /** */
     public get UkGallonsPerDay(): number {
         if(this.ukgallonsperdayLazy !== null){
             return this.ukgallonsperdayLazy;
@@ -242,6 +326,7 @@ export class VolumeFlow {
         return this.ukgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerDay);
     }
 
+    /** */
     public get UkGallonsPerHour(): number {
         if(this.ukgallonsperhourLazy !== null){
             return this.ukgallonsperhourLazy;
@@ -249,6 +334,7 @@ export class VolumeFlow {
         return this.ukgallonsperhourLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerHour);
     }
 
+    /** */
     public get UkGallonsPerMinute(): number {
         if(this.ukgallonsperminuteLazy !== null){
             return this.ukgallonsperminuteLazy;
@@ -256,6 +342,7 @@ export class VolumeFlow {
         return this.ukgallonsperminuteLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerMinute);
     }
 
+    /** */
     public get UkGallonsPerSecond(): number {
         if(this.ukgallonspersecondLazy !== null){
             return this.ukgallonspersecondLazy;
@@ -263,6 +350,7 @@ export class VolumeFlow {
         return this.ukgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.UkGallonsPerSecond);
     }
 
+    /** */
     public get KilousGallonsPerMinute(): number {
         if(this.kilousgallonsperminuteLazy !== null){
             return this.kilousgallonsperminuteLazy;
@@ -270,6 +358,7 @@ export class VolumeFlow {
         return this.kilousgallonsperminuteLazy = this.convertFromBase(VolumeFlowUnits.KilousGallonsPerMinute);
     }
 
+    /** */
     public get UsGallonsPerHour(): number {
         if(this.usgallonsperhourLazy !== null){
             return this.usgallonsperhourLazy;
@@ -277,6 +366,7 @@ export class VolumeFlow {
         return this.usgallonsperhourLazy = this.convertFromBase(VolumeFlowUnits.UsGallonsPerHour);
     }
 
+    /** */
     public get CubicDecimetersPerMinute(): number {
         if(this.cubicdecimetersperminuteLazy !== null){
             return this.cubicdecimetersperminuteLazy;
@@ -284,6 +374,7 @@ export class VolumeFlow {
         return this.cubicdecimetersperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicDecimetersPerMinute);
     }
 
+    /** */
     public get OilBarrelsPerDay(): number {
         if(this.oilbarrelsperdayLazy !== null){
             return this.oilbarrelsperdayLazy;
@@ -291,6 +382,7 @@ export class VolumeFlow {
         return this.oilbarrelsperdayLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerDay);
     }
 
+    /** */
     public get OilBarrelsPerMinute(): number {
         if(this.oilbarrelsperminuteLazy !== null){
             return this.oilbarrelsperminuteLazy;
@@ -298,6 +390,7 @@ export class VolumeFlow {
         return this.oilbarrelsperminuteLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerMinute);
     }
 
+    /** */
     public get OilBarrelsPerHour(): number {
         if(this.oilbarrelsperhourLazy !== null){
             return this.oilbarrelsperhourLazy;
@@ -305,6 +398,7 @@ export class VolumeFlow {
         return this.oilbarrelsperhourLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerHour);
     }
 
+    /** */
     public get OilBarrelsPerSecond(): number {
         if(this.oilbarrelspersecondLazy !== null){
             return this.oilbarrelspersecondLazy;
@@ -312,6 +406,7 @@ export class VolumeFlow {
         return this.oilbarrelspersecondLazy = this.convertFromBase(VolumeFlowUnits.OilBarrelsPerSecond);
     }
 
+    /** */
     public get CubicMillimetersPerSecond(): number {
         if(this.cubicmillimeterspersecondLazy !== null){
             return this.cubicmillimeterspersecondLazy;
@@ -319,6 +414,7 @@ export class VolumeFlow {
         return this.cubicmillimeterspersecondLazy = this.convertFromBase(VolumeFlowUnits.CubicMillimetersPerSecond);
     }
 
+    /** */
     public get AcreFeetPerSecond(): number {
         if(this.acrefeetpersecondLazy !== null){
             return this.acrefeetpersecondLazy;
@@ -326,6 +422,7 @@ export class VolumeFlow {
         return this.acrefeetpersecondLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerSecond);
     }
 
+    /** */
     public get AcreFeetPerMinute(): number {
         if(this.acrefeetperminuteLazy !== null){
             return this.acrefeetperminuteLazy;
@@ -333,6 +430,7 @@ export class VolumeFlow {
         return this.acrefeetperminuteLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerMinute);
     }
 
+    /** */
     public get AcreFeetPerHour(): number {
         if(this.acrefeetperhourLazy !== null){
             return this.acrefeetperhourLazy;
@@ -340,6 +438,7 @@ export class VolumeFlow {
         return this.acrefeetperhourLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerHour);
     }
 
+    /** */
     public get AcreFeetPerDay(): number {
         if(this.acrefeetperdayLazy !== null){
             return this.acrefeetperdayLazy;
@@ -347,6 +446,7 @@ export class VolumeFlow {
         return this.acrefeetperdayLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerDay);
     }
 
+    /** */
     public get NanolitersPerMinute(): number {
         if(this.nanolitersperminuteLazy !== null){
             return this.nanolitersperminuteLazy;
@@ -354,6 +454,7 @@ export class VolumeFlow {
         return this.nanolitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.NanolitersPerMinute);
     }
 
+    /** */
     public get MicrolitersPerMinute(): number {
         if(this.microlitersperminuteLazy !== null){
             return this.microlitersperminuteLazy;
@@ -361,6 +462,7 @@ export class VolumeFlow {
         return this.microlitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.MicrolitersPerMinute);
     }
 
+    /** */
     public get CentilitersPerMinute(): number {
         if(this.centilitersperminuteLazy !== null){
             return this.centilitersperminuteLazy;
@@ -368,6 +470,7 @@ export class VolumeFlow {
         return this.centilitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.CentilitersPerMinute);
     }
 
+    /** */
     public get DecilitersPerMinute(): number {
         if(this.decilitersperminuteLazy !== null){
             return this.decilitersperminuteLazy;
@@ -375,6 +478,7 @@ export class VolumeFlow {
         return this.decilitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.DecilitersPerMinute);
     }
 
+    /** */
     public get KilolitersPerMinute(): number {
         if(this.kilolitersperminuteLazy !== null){
             return this.kilolitersperminuteLazy;
@@ -382,6 +486,7 @@ export class VolumeFlow {
         return this.kilolitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.KilolitersPerMinute);
     }
 
+    /** */
     public get NanolitersPerDay(): number {
         if(this.nanolitersperdayLazy !== null){
             return this.nanolitersperdayLazy;
@@ -389,6 +494,7 @@ export class VolumeFlow {
         return this.nanolitersperdayLazy = this.convertFromBase(VolumeFlowUnits.NanolitersPerDay);
     }
 
+    /** */
     public get MicrolitersPerDay(): number {
         if(this.microlitersperdayLazy !== null){
             return this.microlitersperdayLazy;
@@ -396,6 +502,7 @@ export class VolumeFlow {
         return this.microlitersperdayLazy = this.convertFromBase(VolumeFlowUnits.MicrolitersPerDay);
     }
 
+    /** */
     public get CentilitersPerDay(): number {
         if(this.centilitersperdayLazy !== null){
             return this.centilitersperdayLazy;
@@ -403,6 +510,7 @@ export class VolumeFlow {
         return this.centilitersperdayLazy = this.convertFromBase(VolumeFlowUnits.CentilitersPerDay);
     }
 
+    /** */
     public get DecilitersPerDay(): number {
         if(this.decilitersperdayLazy !== null){
             return this.decilitersperdayLazy;
@@ -410,6 +518,7 @@ export class VolumeFlow {
         return this.decilitersperdayLazy = this.convertFromBase(VolumeFlowUnits.DecilitersPerDay);
     }
 
+    /** */
     public get KilolitersPerDay(): number {
         if(this.kilolitersperdayLazy !== null){
             return this.kilolitersperdayLazy;
@@ -417,6 +526,7 @@ export class VolumeFlow {
         return this.kilolitersperdayLazy = this.convertFromBase(VolumeFlowUnits.KilolitersPerDay);
     }
 
+    /** */
     public get MegalitersPerDay(): number {
         if(this.megalitersperdayLazy !== null){
             return this.megalitersperdayLazy;
@@ -424,6 +534,7 @@ export class VolumeFlow {
         return this.megalitersperdayLazy = this.convertFromBase(VolumeFlowUnits.MegalitersPerDay);
     }
 
+    /** */
     public get MegaukGallonsPerSecond(): number {
         if(this.megaukgallonspersecondLazy !== null){
             return this.megaukgallonspersecondLazy;
@@ -431,190 +542,472 @@ export class VolumeFlow {
         return this.megaukgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.MegaukGallonsPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicMetersPerSecond
+     *
+     * @param value The unit as CubicMetersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicMetersPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicMetersPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicMetersPerMinute
+     *
+     * @param value The unit as CubicMetersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicMetersPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicMetersPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicMetersPerHour
+     *
+     * @param value The unit as CubicMetersPerHour to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicMetersPerHour(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicMetersPerHour);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicMetersPerDay
+     *
+     * @param value The unit as CubicMetersPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicMetersPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicMetersPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicFeetPerSecond
+     *
+     * @param value The unit as CubicFeetPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicFeetPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicFeetPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicFeetPerMinute
+     *
+     * @param value The unit as CubicFeetPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicFeetPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicFeetPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicFeetPerHour
+     *
+     * @param value The unit as CubicFeetPerHour to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicFeetPerHour(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicFeetPerHour);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicYardsPerSecond
+     *
+     * @param value The unit as CubicYardsPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicYardsPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicYardsPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicYardsPerMinute
+     *
+     * @param value The unit as CubicYardsPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicYardsPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicYardsPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicYardsPerHour
+     *
+     * @param value The unit as CubicYardsPerHour to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicYardsPerHour(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicYardsPerHour);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicYardsPerDay
+     *
+     * @param value The unit as CubicYardsPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicYardsPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicYardsPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a MillionUsGallonsPerDay
+     *
+     * @param value The unit as MillionUsGallonsPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromMillionUsGallonsPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.MillionUsGallonsPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a UsGallonsPerDay
+     *
+     * @param value The unit as UsGallonsPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromUsGallonsPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.UsGallonsPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a LitersPerSecond
+     *
+     * @param value The unit as LitersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromLitersPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.LitersPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a LitersPerMinute
+     *
+     * @param value The unit as LitersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromLitersPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.LitersPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a LitersPerHour
+     *
+     * @param value The unit as LitersPerHour to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromLitersPerHour(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.LitersPerHour);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a LitersPerDay
+     *
+     * @param value The unit as LitersPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromLitersPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.LitersPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a UsGallonsPerSecond
+     *
+     * @param value The unit as UsGallonsPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromUsGallonsPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.UsGallonsPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a UsGallonsPerMinute
+     *
+     * @param value The unit as UsGallonsPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromUsGallonsPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.UsGallonsPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a UkGallonsPerDay
+     *
+     * @param value The unit as UkGallonsPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromUkGallonsPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.UkGallonsPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a UkGallonsPerHour
+     *
+     * @param value The unit as UkGallonsPerHour to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromUkGallonsPerHour(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.UkGallonsPerHour);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a UkGallonsPerMinute
+     *
+     * @param value The unit as UkGallonsPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromUkGallonsPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.UkGallonsPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a UkGallonsPerSecond
+     *
+     * @param value The unit as UkGallonsPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromUkGallonsPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.UkGallonsPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a KilousGallonsPerMinute
+     *
+     * @param value The unit as KilousGallonsPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromKilousGallonsPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.KilousGallonsPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a UsGallonsPerHour
+     *
+     * @param value The unit as UsGallonsPerHour to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromUsGallonsPerHour(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.UsGallonsPerHour);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicDecimetersPerMinute
+     *
+     * @param value The unit as CubicDecimetersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicDecimetersPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicDecimetersPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a OilBarrelsPerDay
+     *
+     * @param value The unit as OilBarrelsPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromOilBarrelsPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.OilBarrelsPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a OilBarrelsPerMinute
+     *
+     * @param value The unit as OilBarrelsPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromOilBarrelsPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.OilBarrelsPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a OilBarrelsPerHour
+     *
+     * @param value The unit as OilBarrelsPerHour to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromOilBarrelsPerHour(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.OilBarrelsPerHour);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a OilBarrelsPerSecond
+     *
+     * @param value The unit as OilBarrelsPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromOilBarrelsPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.OilBarrelsPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CubicMillimetersPerSecond
+     *
+     * @param value The unit as CubicMillimetersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCubicMillimetersPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CubicMillimetersPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a AcreFeetPerSecond
+     *
+     * @param value The unit as AcreFeetPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromAcreFeetPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.AcreFeetPerSecond);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a AcreFeetPerMinute
+     *
+     * @param value The unit as AcreFeetPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromAcreFeetPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.AcreFeetPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a AcreFeetPerHour
+     *
+     * @param value The unit as AcreFeetPerHour to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromAcreFeetPerHour(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.AcreFeetPerHour);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a AcreFeetPerDay
+     *
+     * @param value The unit as AcreFeetPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromAcreFeetPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.AcreFeetPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a NanolitersPerMinute
+     *
+     * @param value The unit as NanolitersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromNanolitersPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.NanolitersPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a MicrolitersPerMinute
+     *
+     * @param value The unit as MicrolitersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromMicrolitersPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.MicrolitersPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CentilitersPerMinute
+     *
+     * @param value The unit as CentilitersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCentilitersPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CentilitersPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a DecilitersPerMinute
+     *
+     * @param value The unit as DecilitersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromDecilitersPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.DecilitersPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a KilolitersPerMinute
+     *
+     * @param value The unit as KilolitersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromKilolitersPerMinute(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.KilolitersPerMinute);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a NanolitersPerDay
+     *
+     * @param value The unit as NanolitersPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromNanolitersPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.NanolitersPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a MicrolitersPerDay
+     *
+     * @param value The unit as MicrolitersPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromMicrolitersPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.MicrolitersPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a CentilitersPerDay
+     *
+     * @param value The unit as CentilitersPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromCentilitersPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.CentilitersPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a DecilitersPerDay
+     *
+     * @param value The unit as DecilitersPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromDecilitersPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.DecilitersPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a KilolitersPerDay
+     *
+     * @param value The unit as KilolitersPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromKilolitersPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.KilolitersPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a MegalitersPerDay
+     *
+     * @param value The unit as MegalitersPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromMegalitersPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.MegalitersPerDay);
     }
 
+    /**
+     * Create a new VolumeFlow instance from a MegaukGallonsPerSecond
+     *
+     * @param value The unit as MegaukGallonsPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
     public static FromMegaukGallonsPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.MegaukGallonsPerSecond);
     }
@@ -825,6 +1218,13 @@ export class VolumeFlow {
         return NaN;
     }
 
+    /**
+     * Format the VolumeFlow to string.
+     * Note! the default format for VolumeFlow is CubicMetersPerSecond.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the VolumeFlow.
+     * @returns The string format of the VolumeFlow.
+     */
     public toString(toUnit: VolumeFlowUnits = VolumeFlowUnits.CubicMetersPerSecond): string {
 
         switch (toUnit) {

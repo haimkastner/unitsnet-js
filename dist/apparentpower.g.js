@@ -1,53 +1,101 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** ApparentPowerUnits enumeration */
 var ApparentPowerUnits;
 (function (ApparentPowerUnits) {
+    /** */
     ApparentPowerUnits[ApparentPowerUnits["Voltamperes"] = 0] = "Voltamperes";
+    /** */
     ApparentPowerUnits[ApparentPowerUnits["Kilovoltamperes"] = 1] = "Kilovoltamperes";
+    /** */
     ApparentPowerUnits[ApparentPowerUnits["Megavoltamperes"] = 2] = "Megavoltamperes";
+    /** */
     ApparentPowerUnits[ApparentPowerUnits["Gigavoltamperes"] = 3] = "Gigavoltamperes";
 })(ApparentPowerUnits = exports.ApparentPowerUnits || (exports.ApparentPowerUnits = {}));
+/** Power engineers measure apparent power as the magnitude of the vector sum of active and reactive power. Apparent power is the product of the root-mean-square of voltage and current. */
 class ApparentPower {
+    /**
+     * Create a new ApparentPower.
+     * @param value The value.
+     * @param fromUnit The ‘ApparentPower’ unit to create from.
+     */
     constructor(value, fromUnit) {
         this.voltamperesLazy = null;
         this.kilovoltamperesLazy = null;
         this.megavoltamperesLazy = null;
         this.gigavoltamperesLazy = null;
+        if (isNaN(value))
+            throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
+    /**
+     * The base value of ApparentPower is Voltampere.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    get BaseValue() {
+        return this.value;
+    }
+    /** */
     get Voltamperes() {
         if (this.voltamperesLazy !== null) {
             return this.voltamperesLazy;
         }
         return this.voltamperesLazy = this.convertFromBase(ApparentPowerUnits.Voltamperes);
     }
+    /** */
     get Kilovoltamperes() {
         if (this.kilovoltamperesLazy !== null) {
             return this.kilovoltamperesLazy;
         }
         return this.kilovoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Kilovoltamperes);
     }
+    /** */
     get Megavoltamperes() {
         if (this.megavoltamperesLazy !== null) {
             return this.megavoltamperesLazy;
         }
         return this.megavoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Megavoltamperes);
     }
+    /** */
     get Gigavoltamperes() {
         if (this.gigavoltamperesLazy !== null) {
             return this.gigavoltamperesLazy;
         }
         return this.gigavoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Gigavoltamperes);
     }
+    /**
+     * Create a new ApparentPower instance from a Voltamperes
+     *
+     * @param value The unit as Voltamperes to create a new ApparentPower from.
+     * @returns The new ApparentPower instance.
+     */
     static FromVoltamperes(value) {
         return new ApparentPower(value, ApparentPowerUnits.Voltamperes);
     }
+    /**
+     * Create a new ApparentPower instance from a Kilovoltamperes
+     *
+     * @param value The unit as Kilovoltamperes to create a new ApparentPower from.
+     * @returns The new ApparentPower instance.
+     */
     static FromKilovoltamperes(value) {
         return new ApparentPower(value, ApparentPowerUnits.Kilovoltamperes);
     }
+    /**
+     * Create a new ApparentPower instance from a Megavoltamperes
+     *
+     * @param value The unit as Megavoltamperes to create a new ApparentPower from.
+     * @returns The new ApparentPower instance.
+     */
     static FromMegavoltamperes(value) {
         return new ApparentPower(value, ApparentPowerUnits.Megavoltamperes);
     }
+    /**
+     * Create a new ApparentPower instance from a Gigavoltamperes
+     *
+     * @param value The unit as Gigavoltamperes to create a new ApparentPower from.
+     * @returns The new ApparentPower instance.
+     */
     static FromGigavoltamperes(value) {
         return new ApparentPower(value, ApparentPowerUnits.Gigavoltamperes);
     }
@@ -81,6 +129,13 @@ class ApparentPower {
         }
         return NaN;
     }
+    /**
+     * Format the ApparentPower to string.
+     * Note! the default format for ApparentPower is Voltamperes.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the ApparentPower.
+     * @returns The string format of the ApparentPower.
+     */
     toString(toUnit = ApparentPowerUnits.Voltamperes) {
         switch (toUnit) {
             case ApparentPowerUnits.Voltamperes:

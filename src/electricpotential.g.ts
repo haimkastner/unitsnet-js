@@ -1,10 +1,16 @@
+/** ElectricPotentialUnits enumeration */
 export enum ElectricPotentialUnits {
+    /** */
     Volts,
+    /** */
     Microvolts,
+    /** */
     Kilovolts,
+    /** */
     Megavolts
 }
 
+/** In classical electromagnetism, the electric potential (a scalar quantity denoted by Φ, ΦE or V and also called the electric field potential or the electrostatic potential) at a point is the amount of electric potential energy that a unitary point charge would have when located at that point. */
 export class ElectricPotential {
     private value: number;
     private voltsLazy: number | null = null;
@@ -12,10 +18,26 @@ export class ElectricPotential {
     private kilovoltsLazy: number | null = null;
     private megavoltsLazy: number | null = null;
 
+    /**
+     * Create a new ElectricPotential.
+     * @param value The value.
+     * @param fromUnit The ‘ElectricPotential’ unit to create from.
+     */
     public constructor(value: number, fromUnit: ElectricPotentialUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of ElectricPotential is Volt.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Volts(): number {
         if(this.voltsLazy !== null){
             return this.voltsLazy;
@@ -23,6 +45,7 @@ export class ElectricPotential {
         return this.voltsLazy = this.convertFromBase(ElectricPotentialUnits.Volts);
     }
 
+    /** */
     public get Microvolts(): number {
         if(this.microvoltsLazy !== null){
             return this.microvoltsLazy;
@@ -30,6 +53,7 @@ export class ElectricPotential {
         return this.microvoltsLazy = this.convertFromBase(ElectricPotentialUnits.Microvolts);
     }
 
+    /** */
     public get Kilovolts(): number {
         if(this.kilovoltsLazy !== null){
             return this.kilovoltsLazy;
@@ -37,6 +61,7 @@ export class ElectricPotential {
         return this.kilovoltsLazy = this.convertFromBase(ElectricPotentialUnits.Kilovolts);
     }
 
+    /** */
     public get Megavolts(): number {
         if(this.megavoltsLazy !== null){
             return this.megavoltsLazy;
@@ -44,18 +69,42 @@ export class ElectricPotential {
         return this.megavoltsLazy = this.convertFromBase(ElectricPotentialUnits.Megavolts);
     }
 
+    /**
+     * Create a new ElectricPotential instance from a Volts
+     *
+     * @param value The unit as Volts to create a new ElectricPotential from.
+     * @returns The new ElectricPotential instance.
+     */
     public static FromVolts(value: number): ElectricPotential {
         return new ElectricPotential(value, ElectricPotentialUnits.Volts);
     }
 
+    /**
+     * Create a new ElectricPotential instance from a Microvolts
+     *
+     * @param value The unit as Microvolts to create a new ElectricPotential from.
+     * @returns The new ElectricPotential instance.
+     */
     public static FromMicrovolts(value: number): ElectricPotential {
         return new ElectricPotential(value, ElectricPotentialUnits.Microvolts);
     }
 
+    /**
+     * Create a new ElectricPotential instance from a Kilovolts
+     *
+     * @param value The unit as Kilovolts to create a new ElectricPotential from.
+     * @returns The new ElectricPotential instance.
+     */
     public static FromKilovolts(value: number): ElectricPotential {
         return new ElectricPotential(value, ElectricPotentialUnits.Kilovolts);
     }
 
+    /**
+     * Create a new ElectricPotential instance from a Megavolts
+     *
+     * @param value The unit as Megavolts to create a new ElectricPotential from.
+     * @returns The new ElectricPotential instance.
+     */
     public static FromMegavolts(value: number): ElectricPotential {
         return new ElectricPotential(value, ElectricPotentialUnits.Megavolts);
     }
@@ -94,6 +143,13 @@ export class ElectricPotential {
         return NaN;
     }
 
+    /**
+     * Format the ElectricPotential to string.
+     * Note! the default format for ElectricPotential is Volts.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the ElectricPotential.
+     * @returns The string format of the ElectricPotential.
+     */
     public toString(toUnit: ElectricPotentialUnits = ElectricPotentialUnits.Volts): string {
 
         switch (toUnit) {

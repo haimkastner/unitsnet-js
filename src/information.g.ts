@@ -1,20 +1,36 @@
+/** InformationUnits enumeration */
 export enum InformationUnits {
+    /** */
     Bytes,
+    /** */
     Bits,
+    /** */
     Kilobytes,
+    /** */
     Megabytes,
+    /** */
     Gigabytes,
+    /** */
     Terabytes,
+    /** */
     Petabytes,
+    /** */
     Exabytes,
+    /** */
     Kilobits,
+    /** */
     Megabits,
+    /** */
     Gigabits,
+    /** */
     Terabits,
+    /** */
     Petabits,
+    /** */
     Exabits
 }
 
+/** In computing and telecommunications, a unit of information is the capacity of some standard data storage system or communication channel, used to measure the capacities of other systems and channels. In information theory, units of information are also used to measure the information contents or entropy of random variables. */
 export class Information {
     private value: number;
     private bytesLazy: number | null = null;
@@ -32,10 +48,26 @@ export class Information {
     private petabitsLazy: number | null = null;
     private exabitsLazy: number | null = null;
 
+    /**
+     * Create a new Information.
+     * @param value The value.
+     * @param fromUnit The ‘Information’ unit to create from.
+     */
     public constructor(value: number, fromUnit: InformationUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Information is Bit.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Bytes(): number {
         if(this.bytesLazy !== null){
             return this.bytesLazy;
@@ -43,6 +75,7 @@ export class Information {
         return this.bytesLazy = this.convertFromBase(InformationUnits.Bytes);
     }
 
+    /** */
     public get Bits(): number {
         if(this.bitsLazy !== null){
             return this.bitsLazy;
@@ -50,6 +83,7 @@ export class Information {
         return this.bitsLazy = this.convertFromBase(InformationUnits.Bits);
     }
 
+    /** */
     public get Kilobytes(): number {
         if(this.kilobytesLazy !== null){
             return this.kilobytesLazy;
@@ -57,6 +91,7 @@ export class Information {
         return this.kilobytesLazy = this.convertFromBase(InformationUnits.Kilobytes);
     }
 
+    /** */
     public get Megabytes(): number {
         if(this.megabytesLazy !== null){
             return this.megabytesLazy;
@@ -64,6 +99,7 @@ export class Information {
         return this.megabytesLazy = this.convertFromBase(InformationUnits.Megabytes);
     }
 
+    /** */
     public get Gigabytes(): number {
         if(this.gigabytesLazy !== null){
             return this.gigabytesLazy;
@@ -71,6 +107,7 @@ export class Information {
         return this.gigabytesLazy = this.convertFromBase(InformationUnits.Gigabytes);
     }
 
+    /** */
     public get Terabytes(): number {
         if(this.terabytesLazy !== null){
             return this.terabytesLazy;
@@ -78,6 +115,7 @@ export class Information {
         return this.terabytesLazy = this.convertFromBase(InformationUnits.Terabytes);
     }
 
+    /** */
     public get Petabytes(): number {
         if(this.petabytesLazy !== null){
             return this.petabytesLazy;
@@ -85,6 +123,7 @@ export class Information {
         return this.petabytesLazy = this.convertFromBase(InformationUnits.Petabytes);
     }
 
+    /** */
     public get Exabytes(): number {
         if(this.exabytesLazy !== null){
             return this.exabytesLazy;
@@ -92,6 +131,7 @@ export class Information {
         return this.exabytesLazy = this.convertFromBase(InformationUnits.Exabytes);
     }
 
+    /** */
     public get Kilobits(): number {
         if(this.kilobitsLazy !== null){
             return this.kilobitsLazy;
@@ -99,6 +139,7 @@ export class Information {
         return this.kilobitsLazy = this.convertFromBase(InformationUnits.Kilobits);
     }
 
+    /** */
     public get Megabits(): number {
         if(this.megabitsLazy !== null){
             return this.megabitsLazy;
@@ -106,6 +147,7 @@ export class Information {
         return this.megabitsLazy = this.convertFromBase(InformationUnits.Megabits);
     }
 
+    /** */
     public get Gigabits(): number {
         if(this.gigabitsLazy !== null){
             return this.gigabitsLazy;
@@ -113,6 +155,7 @@ export class Information {
         return this.gigabitsLazy = this.convertFromBase(InformationUnits.Gigabits);
     }
 
+    /** */
     public get Terabits(): number {
         if(this.terabitsLazy !== null){
             return this.terabitsLazy;
@@ -120,6 +163,7 @@ export class Information {
         return this.terabitsLazy = this.convertFromBase(InformationUnits.Terabits);
     }
 
+    /** */
     public get Petabits(): number {
         if(this.petabitsLazy !== null){
             return this.petabitsLazy;
@@ -127,6 +171,7 @@ export class Information {
         return this.petabitsLazy = this.convertFromBase(InformationUnits.Petabits);
     }
 
+    /** */
     public get Exabits(): number {
         if(this.exabitsLazy !== null){
             return this.exabitsLazy;
@@ -134,58 +179,142 @@ export class Information {
         return this.exabitsLazy = this.convertFromBase(InformationUnits.Exabits);
     }
 
+    /**
+     * Create a new Information instance from a Bytes
+     *
+     * @param value The unit as Bytes to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromBytes(value: number): Information {
         return new Information(value, InformationUnits.Bytes);
     }
 
+    /**
+     * Create a new Information instance from a Bits
+     *
+     * @param value The unit as Bits to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromBits(value: number): Information {
         return new Information(value, InformationUnits.Bits);
     }
 
+    /**
+     * Create a new Information instance from a Kilobytes
+     *
+     * @param value The unit as Kilobytes to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromKilobytes(value: number): Information {
         return new Information(value, InformationUnits.Kilobytes);
     }
 
+    /**
+     * Create a new Information instance from a Megabytes
+     *
+     * @param value The unit as Megabytes to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromMegabytes(value: number): Information {
         return new Information(value, InformationUnits.Megabytes);
     }
 
+    /**
+     * Create a new Information instance from a Gigabytes
+     *
+     * @param value The unit as Gigabytes to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromGigabytes(value: number): Information {
         return new Information(value, InformationUnits.Gigabytes);
     }
 
+    /**
+     * Create a new Information instance from a Terabytes
+     *
+     * @param value The unit as Terabytes to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromTerabytes(value: number): Information {
         return new Information(value, InformationUnits.Terabytes);
     }
 
+    /**
+     * Create a new Information instance from a Petabytes
+     *
+     * @param value The unit as Petabytes to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromPetabytes(value: number): Information {
         return new Information(value, InformationUnits.Petabytes);
     }
 
+    /**
+     * Create a new Information instance from a Exabytes
+     *
+     * @param value The unit as Exabytes to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromExabytes(value: number): Information {
         return new Information(value, InformationUnits.Exabytes);
     }
 
+    /**
+     * Create a new Information instance from a Kilobits
+     *
+     * @param value The unit as Kilobits to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromKilobits(value: number): Information {
         return new Information(value, InformationUnits.Kilobits);
     }
 
+    /**
+     * Create a new Information instance from a Megabits
+     *
+     * @param value The unit as Megabits to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromMegabits(value: number): Information {
         return new Information(value, InformationUnits.Megabits);
     }
 
+    /**
+     * Create a new Information instance from a Gigabits
+     *
+     * @param value The unit as Gigabits to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromGigabits(value: number): Information {
         return new Information(value, InformationUnits.Gigabits);
     }
 
+    /**
+     * Create a new Information instance from a Terabits
+     *
+     * @param value The unit as Terabits to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromTerabits(value: number): Information {
         return new Information(value, InformationUnits.Terabits);
     }
 
+    /**
+     * Create a new Information instance from a Petabits
+     *
+     * @param value The unit as Petabits to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromPetabits(value: number): Information {
         return new Information(value, InformationUnits.Petabits);
     }
 
+    /**
+     * Create a new Information instance from a Exabits
+     *
+     * @param value The unit as Exabits to create a new Information from.
+     * @returns The new Information instance.
+     */
     public static FromExabits(value: number): Information {
         return new Information(value, InformationUnits.Exabits);
     }
@@ -264,6 +393,13 @@ export class Information {
         return NaN;
     }
 
+    /**
+     * Format the Information to string.
+     * Note! the default format for Information is Bits.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Information.
+     * @returns The string format of the Information.
+     */
     public toString(toUnit: InformationUnits = InformationUnits.Bits): string {
 
         switch (toUnit) {

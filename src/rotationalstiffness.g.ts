@@ -1,19 +1,40 @@
+/** RotationalStiffnessUnits enumeration */
 export enum RotationalStiffnessUnits {
+    /** */
     NewtonMetersPerRadian,
+    /** */
     KilonewtonMetersPerRadian,
+    /** */
     MeganewtonMetersPerRadian
 }
 
+/** https://en.wikipedia.org/wiki/Stiffness#Rotational_stiffness */
 export class RotationalStiffness {
     private value: number;
     private newtonmetersperradianLazy: number | null = null;
     private kilonewtonmetersperradianLazy: number | null = null;
     private meganewtonmetersperradianLazy: number | null = null;
 
+    /**
+     * Create a new RotationalStiffness.
+     * @param value The value.
+     * @param fromUnit The ‘RotationalStiffness’ unit to create from.
+     */
     public constructor(value: number, fromUnit: RotationalStiffnessUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of RotationalStiffness is NewtonMeterPerRadian.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get NewtonMetersPerRadian(): number {
         if(this.newtonmetersperradianLazy !== null){
             return this.newtonmetersperradianLazy;
@@ -21,6 +42,7 @@ export class RotationalStiffness {
         return this.newtonmetersperradianLazy = this.convertFromBase(RotationalStiffnessUnits.NewtonMetersPerRadian);
     }
 
+    /** */
     public get KilonewtonMetersPerRadian(): number {
         if(this.kilonewtonmetersperradianLazy !== null){
             return this.kilonewtonmetersperradianLazy;
@@ -28,6 +50,7 @@ export class RotationalStiffness {
         return this.kilonewtonmetersperradianLazy = this.convertFromBase(RotationalStiffnessUnits.KilonewtonMetersPerRadian);
     }
 
+    /** */
     public get MeganewtonMetersPerRadian(): number {
         if(this.meganewtonmetersperradianLazy !== null){
             return this.meganewtonmetersperradianLazy;
@@ -35,14 +58,32 @@ export class RotationalStiffness {
         return this.meganewtonmetersperradianLazy = this.convertFromBase(RotationalStiffnessUnits.MeganewtonMetersPerRadian);
     }
 
+    /**
+     * Create a new RotationalStiffness instance from a NewtonMetersPerRadian
+     *
+     * @param value The unit as NewtonMetersPerRadian to create a new RotationalStiffness from.
+     * @returns The new RotationalStiffness instance.
+     */
     public static FromNewtonMetersPerRadian(value: number): RotationalStiffness {
         return new RotationalStiffness(value, RotationalStiffnessUnits.NewtonMetersPerRadian);
     }
 
+    /**
+     * Create a new RotationalStiffness instance from a KilonewtonMetersPerRadian
+     *
+     * @param value The unit as KilonewtonMetersPerRadian to create a new RotationalStiffness from.
+     * @returns The new RotationalStiffness instance.
+     */
     public static FromKilonewtonMetersPerRadian(value: number): RotationalStiffness {
         return new RotationalStiffness(value, RotationalStiffnessUnits.KilonewtonMetersPerRadian);
     }
 
+    /**
+     * Create a new RotationalStiffness instance from a MeganewtonMetersPerRadian
+     *
+     * @param value The unit as MeganewtonMetersPerRadian to create a new RotationalStiffness from.
+     * @returns The new RotationalStiffness instance.
+     */
     public static FromMeganewtonMetersPerRadian(value: number): RotationalStiffness {
         return new RotationalStiffness(value, RotationalStiffnessUnits.MeganewtonMetersPerRadian);
     }
@@ -77,6 +118,13 @@ export class RotationalStiffness {
         return NaN;
     }
 
+    /**
+     * Format the RotationalStiffness to string.
+     * Note! the default format for RotationalStiffness is NewtonMetersPerRadian.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the RotationalStiffness.
+     * @returns The string format of the RotationalStiffness.
+     */
     public toString(toUnit: RotationalStiffnessUnits = RotationalStiffnessUnits.NewtonMetersPerRadian): string {
 
         switch (toUnit) {

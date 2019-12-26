@@ -1,10 +1,16 @@
+/** ElectricResistanceUnits enumeration */
 export enum ElectricResistanceUnits {
+    /** */
     Ohms,
+    /** */
     Kiloohms,
+    /** */
     Megaohms,
+    /** */
     Gigaohms
 }
 
+/** The electrical resistance of an electrical conductor is the opposition to the passage of an electric current through that conductor. */
 export class ElectricResistance {
     private value: number;
     private ohmsLazy: number | null = null;
@@ -12,10 +18,26 @@ export class ElectricResistance {
     private megaohmsLazy: number | null = null;
     private gigaohmsLazy: number | null = null;
 
+    /**
+     * Create a new ElectricResistance.
+     * @param value The value.
+     * @param fromUnit The ‘ElectricResistance’ unit to create from.
+     */
     public constructor(value: number, fromUnit: ElectricResistanceUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of ElectricResistance is Ohm.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Ohms(): number {
         if(this.ohmsLazy !== null){
             return this.ohmsLazy;
@@ -23,6 +45,7 @@ export class ElectricResistance {
         return this.ohmsLazy = this.convertFromBase(ElectricResistanceUnits.Ohms);
     }
 
+    /** */
     public get Kiloohms(): number {
         if(this.kiloohmsLazy !== null){
             return this.kiloohmsLazy;
@@ -30,6 +53,7 @@ export class ElectricResistance {
         return this.kiloohmsLazy = this.convertFromBase(ElectricResistanceUnits.Kiloohms);
     }
 
+    /** */
     public get Megaohms(): number {
         if(this.megaohmsLazy !== null){
             return this.megaohmsLazy;
@@ -37,6 +61,7 @@ export class ElectricResistance {
         return this.megaohmsLazy = this.convertFromBase(ElectricResistanceUnits.Megaohms);
     }
 
+    /** */
     public get Gigaohms(): number {
         if(this.gigaohmsLazy !== null){
             return this.gigaohmsLazy;
@@ -44,18 +69,42 @@ export class ElectricResistance {
         return this.gigaohmsLazy = this.convertFromBase(ElectricResistanceUnits.Gigaohms);
     }
 
+    /**
+     * Create a new ElectricResistance instance from a Ohms
+     *
+     * @param value The unit as Ohms to create a new ElectricResistance from.
+     * @returns The new ElectricResistance instance.
+     */
     public static FromOhms(value: number): ElectricResistance {
         return new ElectricResistance(value, ElectricResistanceUnits.Ohms);
     }
 
+    /**
+     * Create a new ElectricResistance instance from a Kiloohms
+     *
+     * @param value The unit as Kiloohms to create a new ElectricResistance from.
+     * @returns The new ElectricResistance instance.
+     */
     public static FromKiloohms(value: number): ElectricResistance {
         return new ElectricResistance(value, ElectricResistanceUnits.Kiloohms);
     }
 
+    /**
+     * Create a new ElectricResistance instance from a Megaohms
+     *
+     * @param value The unit as Megaohms to create a new ElectricResistance from.
+     * @returns The new ElectricResistance instance.
+     */
     public static FromMegaohms(value: number): ElectricResistance {
         return new ElectricResistance(value, ElectricResistanceUnits.Megaohms);
     }
 
+    /**
+     * Create a new ElectricResistance instance from a Gigaohms
+     *
+     * @param value The unit as Gigaohms to create a new ElectricResistance from.
+     * @returns The new ElectricResistance instance.
+     */
     public static FromGigaohms(value: number): ElectricResistance {
         return new ElectricResistance(value, ElectricResistanceUnits.Gigaohms);
     }
@@ -94,6 +143,13 @@ export class ElectricResistance {
         return NaN;
     }
 
+    /**
+     * Format the ElectricResistance to string.
+     * Note! the default format for ElectricResistance is Ohms.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the ElectricResistance.
+     * @returns The string format of the ElectricResistance.
+     */
     public toString(toUnit: ElectricResistanceUnits = ElectricResistanceUnits.Ohms): string {
 
         switch (toUnit) {

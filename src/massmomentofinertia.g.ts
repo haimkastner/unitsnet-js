@@ -1,30 +1,56 @@
+/** MassMomentOfInertiaUnits enumeration */
 export enum MassMomentOfInertiaUnits {
+    /** */
     GramSquareMeters,
+    /** */
     GramSquareDecimeters,
+    /** */
     GramSquareCentimeters,
+    /** */
     GramSquareMillimeters,
+    /** */
     TonneSquareMeters,
+    /** */
     TonneSquareDecimeters,
+    /** */
     TonneSquareCentimeters,
+    /** */
     TonneSquareMilimeters,
+    /** */
     PoundSquareFeet,
+    /** */
     PoundSquareInches,
+    /** */
     SlugSquareFeet,
+    /** */
     SlugSquareInches,
+    /** */
     KilogramSquareMeters,
+    /** */
     KilogramSquareDecimeters,
+    /** */
     KilogramSquareCentimeters,
+    /** */
     KilogramSquareMillimeters,
+    /** */
     KilotonneSquareMeters,
+    /** */
     MegatonneSquareMeters,
+    /** */
     KilotonneSquareDecimeters,
+    /** */
     MegatonneSquareDecimeters,
+    /** */
     KilotonneSquareCentimeters,
+    /** */
     MegatonneSquareCentimeters,
+    /** */
     KilotonneSquareMilimeters,
+    /** */
     MegatonneSquareMilimeters
 }
 
+/** A property of body reflects how its mass is distributed with regard to an axis. */
 export class MassMomentOfInertia {
     private value: number;
     private gramsquaremetersLazy: number | null = null;
@@ -52,10 +78,26 @@ export class MassMomentOfInertia {
     private kilotonnesquaremilimetersLazy: number | null = null;
     private megatonnesquaremilimetersLazy: number | null = null;
 
+    /**
+     * Create a new MassMomentOfInertia.
+     * @param value The value.
+     * @param fromUnit The ‘MassMomentOfInertia’ unit to create from.
+     */
     public constructor(value: number, fromUnit: MassMomentOfInertiaUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of MassMomentOfInertia is KilogramSquareMeter.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get GramSquareMeters(): number {
         if(this.gramsquaremetersLazy !== null){
             return this.gramsquaremetersLazy;
@@ -63,6 +105,7 @@ export class MassMomentOfInertia {
         return this.gramsquaremetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.GramSquareMeters);
     }
 
+    /** */
     public get GramSquareDecimeters(): number {
         if(this.gramsquaredecimetersLazy !== null){
             return this.gramsquaredecimetersLazy;
@@ -70,6 +113,7 @@ export class MassMomentOfInertia {
         return this.gramsquaredecimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.GramSquareDecimeters);
     }
 
+    /** */
     public get GramSquareCentimeters(): number {
         if(this.gramsquarecentimetersLazy !== null){
             return this.gramsquarecentimetersLazy;
@@ -77,6 +121,7 @@ export class MassMomentOfInertia {
         return this.gramsquarecentimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.GramSquareCentimeters);
     }
 
+    /** */
     public get GramSquareMillimeters(): number {
         if(this.gramsquaremillimetersLazy !== null){
             return this.gramsquaremillimetersLazy;
@@ -84,6 +129,7 @@ export class MassMomentOfInertia {
         return this.gramsquaremillimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.GramSquareMillimeters);
     }
 
+    /** */
     public get TonneSquareMeters(): number {
         if(this.tonnesquaremetersLazy !== null){
             return this.tonnesquaremetersLazy;
@@ -91,6 +137,7 @@ export class MassMomentOfInertia {
         return this.tonnesquaremetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.TonneSquareMeters);
     }
 
+    /** */
     public get TonneSquareDecimeters(): number {
         if(this.tonnesquaredecimetersLazy !== null){
             return this.tonnesquaredecimetersLazy;
@@ -98,6 +145,7 @@ export class MassMomentOfInertia {
         return this.tonnesquaredecimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.TonneSquareDecimeters);
     }
 
+    /** */
     public get TonneSquareCentimeters(): number {
         if(this.tonnesquarecentimetersLazy !== null){
             return this.tonnesquarecentimetersLazy;
@@ -105,6 +153,7 @@ export class MassMomentOfInertia {
         return this.tonnesquarecentimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.TonneSquareCentimeters);
     }
 
+    /** */
     public get TonneSquareMilimeters(): number {
         if(this.tonnesquaremilimetersLazy !== null){
             return this.tonnesquaremilimetersLazy;
@@ -112,6 +161,7 @@ export class MassMomentOfInertia {
         return this.tonnesquaremilimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.TonneSquareMilimeters);
     }
 
+    /** */
     public get PoundSquareFeet(): number {
         if(this.poundsquarefeetLazy !== null){
             return this.poundsquarefeetLazy;
@@ -119,6 +169,7 @@ export class MassMomentOfInertia {
         return this.poundsquarefeetLazy = this.convertFromBase(MassMomentOfInertiaUnits.PoundSquareFeet);
     }
 
+    /** */
     public get PoundSquareInches(): number {
         if(this.poundsquareinchesLazy !== null){
             return this.poundsquareinchesLazy;
@@ -126,6 +177,7 @@ export class MassMomentOfInertia {
         return this.poundsquareinchesLazy = this.convertFromBase(MassMomentOfInertiaUnits.PoundSquareInches);
     }
 
+    /** */
     public get SlugSquareFeet(): number {
         if(this.slugsquarefeetLazy !== null){
             return this.slugsquarefeetLazy;
@@ -133,6 +185,7 @@ export class MassMomentOfInertia {
         return this.slugsquarefeetLazy = this.convertFromBase(MassMomentOfInertiaUnits.SlugSquareFeet);
     }
 
+    /** */
     public get SlugSquareInches(): number {
         if(this.slugsquareinchesLazy !== null){
             return this.slugsquareinchesLazy;
@@ -140,6 +193,7 @@ export class MassMomentOfInertia {
         return this.slugsquareinchesLazy = this.convertFromBase(MassMomentOfInertiaUnits.SlugSquareInches);
     }
 
+    /** */
     public get KilogramSquareMeters(): number {
         if(this.kilogramsquaremetersLazy !== null){
             return this.kilogramsquaremetersLazy;
@@ -147,6 +201,7 @@ export class MassMomentOfInertia {
         return this.kilogramsquaremetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilogramSquareMeters);
     }
 
+    /** */
     public get KilogramSquareDecimeters(): number {
         if(this.kilogramsquaredecimetersLazy !== null){
             return this.kilogramsquaredecimetersLazy;
@@ -154,6 +209,7 @@ export class MassMomentOfInertia {
         return this.kilogramsquaredecimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilogramSquareDecimeters);
     }
 
+    /** */
     public get KilogramSquareCentimeters(): number {
         if(this.kilogramsquarecentimetersLazy !== null){
             return this.kilogramsquarecentimetersLazy;
@@ -161,6 +217,7 @@ export class MassMomentOfInertia {
         return this.kilogramsquarecentimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilogramSquareCentimeters);
     }
 
+    /** */
     public get KilogramSquareMillimeters(): number {
         if(this.kilogramsquaremillimetersLazy !== null){
             return this.kilogramsquaremillimetersLazy;
@@ -168,6 +225,7 @@ export class MassMomentOfInertia {
         return this.kilogramsquaremillimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilogramSquareMillimeters);
     }
 
+    /** */
     public get KilotonneSquareMeters(): number {
         if(this.kilotonnesquaremetersLazy !== null){
             return this.kilotonnesquaremetersLazy;
@@ -175,6 +233,7 @@ export class MassMomentOfInertia {
         return this.kilotonnesquaremetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilotonneSquareMeters);
     }
 
+    /** */
     public get MegatonneSquareMeters(): number {
         if(this.megatonnesquaremetersLazy !== null){
             return this.megatonnesquaremetersLazy;
@@ -182,6 +241,7 @@ export class MassMomentOfInertia {
         return this.megatonnesquaremetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MegatonneSquareMeters);
     }
 
+    /** */
     public get KilotonneSquareDecimeters(): number {
         if(this.kilotonnesquaredecimetersLazy !== null){
             return this.kilotonnesquaredecimetersLazy;
@@ -189,6 +249,7 @@ export class MassMomentOfInertia {
         return this.kilotonnesquaredecimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilotonneSquareDecimeters);
     }
 
+    /** */
     public get MegatonneSquareDecimeters(): number {
         if(this.megatonnesquaredecimetersLazy !== null){
             return this.megatonnesquaredecimetersLazy;
@@ -196,6 +257,7 @@ export class MassMomentOfInertia {
         return this.megatonnesquaredecimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MegatonneSquareDecimeters);
     }
 
+    /** */
     public get KilotonneSquareCentimeters(): number {
         if(this.kilotonnesquarecentimetersLazy !== null){
             return this.kilotonnesquarecentimetersLazy;
@@ -203,6 +265,7 @@ export class MassMomentOfInertia {
         return this.kilotonnesquarecentimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilotonneSquareCentimeters);
     }
 
+    /** */
     public get MegatonneSquareCentimeters(): number {
         if(this.megatonnesquarecentimetersLazy !== null){
             return this.megatonnesquarecentimetersLazy;
@@ -210,6 +273,7 @@ export class MassMomentOfInertia {
         return this.megatonnesquarecentimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MegatonneSquareCentimeters);
     }
 
+    /** */
     public get KilotonneSquareMilimeters(): number {
         if(this.kilotonnesquaremilimetersLazy !== null){
             return this.kilotonnesquaremilimetersLazy;
@@ -217,6 +281,7 @@ export class MassMomentOfInertia {
         return this.kilotonnesquaremilimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilotonneSquareMilimeters);
     }
 
+    /** */
     public get MegatonneSquareMilimeters(): number {
         if(this.megatonnesquaremilimetersLazy !== null){
             return this.megatonnesquaremilimetersLazy;
@@ -224,98 +289,242 @@ export class MassMomentOfInertia {
         return this.megatonnesquaremilimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MegatonneSquareMilimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a GramSquareMeters
+     *
+     * @param value The unit as GramSquareMeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromGramSquareMeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.GramSquareMeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a GramSquareDecimeters
+     *
+     * @param value The unit as GramSquareDecimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromGramSquareDecimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.GramSquareDecimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a GramSquareCentimeters
+     *
+     * @param value The unit as GramSquareCentimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromGramSquareCentimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.GramSquareCentimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a GramSquareMillimeters
+     *
+     * @param value The unit as GramSquareMillimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromGramSquareMillimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.GramSquareMillimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a TonneSquareMeters
+     *
+     * @param value The unit as TonneSquareMeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromTonneSquareMeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.TonneSquareMeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a TonneSquareDecimeters
+     *
+     * @param value The unit as TonneSquareDecimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromTonneSquareDecimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.TonneSquareDecimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a TonneSquareCentimeters
+     *
+     * @param value The unit as TonneSquareCentimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromTonneSquareCentimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.TonneSquareCentimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a TonneSquareMilimeters
+     *
+     * @param value The unit as TonneSquareMilimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromTonneSquareMilimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.TonneSquareMilimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a PoundSquareFeet
+     *
+     * @param value The unit as PoundSquareFeet to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromPoundSquareFeet(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.PoundSquareFeet);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a PoundSquareInches
+     *
+     * @param value The unit as PoundSquareInches to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromPoundSquareInches(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.PoundSquareInches);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a SlugSquareFeet
+     *
+     * @param value The unit as SlugSquareFeet to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromSlugSquareFeet(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.SlugSquareFeet);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a SlugSquareInches
+     *
+     * @param value The unit as SlugSquareInches to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromSlugSquareInches(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.SlugSquareInches);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a KilogramSquareMeters
+     *
+     * @param value The unit as KilogramSquareMeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromKilogramSquareMeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilogramSquareMeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a KilogramSquareDecimeters
+     *
+     * @param value The unit as KilogramSquareDecimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromKilogramSquareDecimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilogramSquareDecimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a KilogramSquareCentimeters
+     *
+     * @param value The unit as KilogramSquareCentimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromKilogramSquareCentimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilogramSquareCentimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a KilogramSquareMillimeters
+     *
+     * @param value The unit as KilogramSquareMillimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromKilogramSquareMillimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilogramSquareMillimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a KilotonneSquareMeters
+     *
+     * @param value The unit as KilotonneSquareMeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromKilotonneSquareMeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilotonneSquareMeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a MegatonneSquareMeters
+     *
+     * @param value The unit as MegatonneSquareMeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromMegatonneSquareMeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MegatonneSquareMeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a KilotonneSquareDecimeters
+     *
+     * @param value The unit as KilotonneSquareDecimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromKilotonneSquareDecimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilotonneSquareDecimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a MegatonneSquareDecimeters
+     *
+     * @param value The unit as MegatonneSquareDecimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromMegatonneSquareDecimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MegatonneSquareDecimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a KilotonneSquareCentimeters
+     *
+     * @param value The unit as KilotonneSquareCentimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromKilotonneSquareCentimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilotonneSquareCentimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a MegatonneSquareCentimeters
+     *
+     * @param value The unit as MegatonneSquareCentimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromMegatonneSquareCentimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MegatonneSquareCentimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a KilotonneSquareMilimeters
+     *
+     * @param value The unit as KilotonneSquareMilimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromKilotonneSquareMilimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilotonneSquareMilimeters);
     }
 
+    /**
+     * Create a new MassMomentOfInertia instance from a MegatonneSquareMilimeters
+     *
+     * @param value The unit as MegatonneSquareMilimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
     public static FromMegatonneSquareMilimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MegatonneSquareMilimeters);
     }
@@ -434,6 +643,13 @@ export class MassMomentOfInertia {
         return NaN;
     }
 
+    /**
+     * Format the MassMomentOfInertia to string.
+     * Note! the default format for MassMomentOfInertia is KilogramSquareMeters.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the MassMomentOfInertia.
+     * @returns The string format of the MassMomentOfInertia.
+     */
     public toString(toUnit: MassMomentOfInertiaUnits = MassMomentOfInertiaUnits.KilogramSquareMeters): string {
 
         switch (toUnit) {

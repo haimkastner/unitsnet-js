@@ -1,10 +1,16 @@
+/** RotationalAccelerationUnits enumeration */
 export enum RotationalAccelerationUnits {
+    /** */
     RadiansPerSecondSquared,
+    /** */
     DegreesPerSecondSquared,
+    /** */
     RevolutionsPerMinutePerSecond,
+    /** */
     RevolutionsPerSecondSquared
 }
 
+/** Angular acceleration is the rate of change of rotational speed. */
 export class RotationalAcceleration {
     private value: number;
     private radianspersecondsquaredLazy: number | null = null;
@@ -12,10 +18,26 @@ export class RotationalAcceleration {
     private revolutionsperminutepersecondLazy: number | null = null;
     private revolutionspersecondsquaredLazy: number | null = null;
 
+    /**
+     * Create a new RotationalAcceleration.
+     * @param value The value.
+     * @param fromUnit The ‘RotationalAcceleration’ unit to create from.
+     */
     public constructor(value: number, fromUnit: RotationalAccelerationUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of RotationalAcceleration is RadianPerSecondSquared.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get RadiansPerSecondSquared(): number {
         if(this.radianspersecondsquaredLazy !== null){
             return this.radianspersecondsquaredLazy;
@@ -23,6 +45,7 @@ export class RotationalAcceleration {
         return this.radianspersecondsquaredLazy = this.convertFromBase(RotationalAccelerationUnits.RadiansPerSecondSquared);
     }
 
+    /** */
     public get DegreesPerSecondSquared(): number {
         if(this.degreespersecondsquaredLazy !== null){
             return this.degreespersecondsquaredLazy;
@@ -30,6 +53,7 @@ export class RotationalAcceleration {
         return this.degreespersecondsquaredLazy = this.convertFromBase(RotationalAccelerationUnits.DegreesPerSecondSquared);
     }
 
+    /** */
     public get RevolutionsPerMinutePerSecond(): number {
         if(this.revolutionsperminutepersecondLazy !== null){
             return this.revolutionsperminutepersecondLazy;
@@ -37,6 +61,7 @@ export class RotationalAcceleration {
         return this.revolutionsperminutepersecondLazy = this.convertFromBase(RotationalAccelerationUnits.RevolutionsPerMinutePerSecond);
     }
 
+    /** */
     public get RevolutionsPerSecondSquared(): number {
         if(this.revolutionspersecondsquaredLazy !== null){
             return this.revolutionspersecondsquaredLazy;
@@ -44,18 +69,42 @@ export class RotationalAcceleration {
         return this.revolutionspersecondsquaredLazy = this.convertFromBase(RotationalAccelerationUnits.RevolutionsPerSecondSquared);
     }
 
+    /**
+     * Create a new RotationalAcceleration instance from a RadiansPerSecondSquared
+     *
+     * @param value The unit as RadiansPerSecondSquared to create a new RotationalAcceleration from.
+     * @returns The new RotationalAcceleration instance.
+     */
     public static FromRadiansPerSecondSquared(value: number): RotationalAcceleration {
         return new RotationalAcceleration(value, RotationalAccelerationUnits.RadiansPerSecondSquared);
     }
 
+    /**
+     * Create a new RotationalAcceleration instance from a DegreesPerSecondSquared
+     *
+     * @param value The unit as DegreesPerSecondSquared to create a new RotationalAcceleration from.
+     * @returns The new RotationalAcceleration instance.
+     */
     public static FromDegreesPerSecondSquared(value: number): RotationalAcceleration {
         return new RotationalAcceleration(value, RotationalAccelerationUnits.DegreesPerSecondSquared);
     }
 
+    /**
+     * Create a new RotationalAcceleration instance from a RevolutionsPerMinutePerSecond
+     *
+     * @param value The unit as RevolutionsPerMinutePerSecond to create a new RotationalAcceleration from.
+     * @returns The new RotationalAcceleration instance.
+     */
     public static FromRevolutionsPerMinutePerSecond(value: number): RotationalAcceleration {
         return new RotationalAcceleration(value, RotationalAccelerationUnits.RevolutionsPerMinutePerSecond);
     }
 
+    /**
+     * Create a new RotationalAcceleration instance from a RevolutionsPerSecondSquared
+     *
+     * @param value The unit as RevolutionsPerSecondSquared to create a new RotationalAcceleration from.
+     * @returns The new RotationalAcceleration instance.
+     */
     public static FromRevolutionsPerSecondSquared(value: number): RotationalAcceleration {
         return new RotationalAcceleration(value, RotationalAccelerationUnits.RevolutionsPerSecondSquared);
     }
@@ -94,6 +143,13 @@ export class RotationalAcceleration {
         return NaN;
     }
 
+    /**
+     * Format the RotationalAcceleration to string.
+     * Note! the default format for RotationalAcceleration is RadiansPerSecondSquared.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the RotationalAcceleration.
+     * @returns The string format of the RotationalAcceleration.
+     */
     public toString(toUnit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared): string {
 
         switch (toUnit) {

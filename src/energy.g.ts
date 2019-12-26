@@ -1,31 +1,58 @@
+/** EnergyUnits enumeration */
 export enum EnergyUnits {
+    /** */
     Joules,
+    /** */
     Calories,
+    /** */
     BritishThermalUnits,
+    /** */
     ElectronVolts,
+    /** */
     FootPounds,
+    /** */
     Ergs,
+    /** */
     WattHours,
+    /** */
     ThermsEc,
+    /** */
     ThermsUs,
+    /** */
     ThermsImperial,
+    /** */
     Kilojoules,
+    /** */
     Megajoules,
+    /** */
     Gigajoules,
+    /** */
     Kilocalories,
+    /** */
     Megacalories,
+    /** */
     KilobritishThermalUnits,
+    /** */
     MegabritishThermalUnits,
+    /** */
     GigabritishThermalUnits,
+    /** */
     KilowattHours,
+    /** */
     MegawattHours,
+    /** */
     GigawattHours,
+    /** */
     TerawattHours,
+    /** */
     DecathermsEc,
+    /** */
     DecathermsUs,
+    /** */
     DecathermsImperial
 }
 
+/** The joule, symbol J, is a derived unit of energy, work, or amount of heat in the International System of Units. It is equal to the energy transferred (or work done) when applying a force of one newton through a distance of one metre (1 newton metre or N·m), or in passing an electric current of one ampere through a resistance of one ohm for one second. Many other units of energy are included. Please do not confuse this definition of the calorie with the one colloquially used by the food industry, the large calorie, which is equivalent to 1 kcal. Thermochemical definition of the calorie is used. For BTU, the IT definition is used. */
 export class Energy {
     private value: number;
     private joulesLazy: number | null = null;
@@ -54,10 +81,26 @@ export class Energy {
     private decathermsusLazy: number | null = null;
     private decathermsimperialLazy: number | null = null;
 
+    /**
+     * Create a new Energy.
+     * @param value The value.
+     * @param fromUnit The ‘Energy’ unit to create from.
+     */
     public constructor(value: number, fromUnit: EnergyUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Energy is Joule.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Joules(): number {
         if(this.joulesLazy !== null){
             return this.joulesLazy;
@@ -65,6 +108,7 @@ export class Energy {
         return this.joulesLazy = this.convertFromBase(EnergyUnits.Joules);
     }
 
+    /** */
     public get Calories(): number {
         if(this.caloriesLazy !== null){
             return this.caloriesLazy;
@@ -72,6 +116,7 @@ export class Energy {
         return this.caloriesLazy = this.convertFromBase(EnergyUnits.Calories);
     }
 
+    /** */
     public get BritishThermalUnits(): number {
         if(this.britishthermalunitsLazy !== null){
             return this.britishthermalunitsLazy;
@@ -79,6 +124,7 @@ export class Energy {
         return this.britishthermalunitsLazy = this.convertFromBase(EnergyUnits.BritishThermalUnits);
     }
 
+    /** */
     public get ElectronVolts(): number {
         if(this.electronvoltsLazy !== null){
             return this.electronvoltsLazy;
@@ -86,6 +132,7 @@ export class Energy {
         return this.electronvoltsLazy = this.convertFromBase(EnergyUnits.ElectronVolts);
     }
 
+    /** */
     public get FootPounds(): number {
         if(this.footpoundsLazy !== null){
             return this.footpoundsLazy;
@@ -93,6 +140,7 @@ export class Energy {
         return this.footpoundsLazy = this.convertFromBase(EnergyUnits.FootPounds);
     }
 
+    /** */
     public get Ergs(): number {
         if(this.ergsLazy !== null){
             return this.ergsLazy;
@@ -100,6 +148,7 @@ export class Energy {
         return this.ergsLazy = this.convertFromBase(EnergyUnits.Ergs);
     }
 
+    /** */
     public get WattHours(): number {
         if(this.watthoursLazy !== null){
             return this.watthoursLazy;
@@ -107,6 +156,7 @@ export class Energy {
         return this.watthoursLazy = this.convertFromBase(EnergyUnits.WattHours);
     }
 
+    /** */
     public get ThermsEc(): number {
         if(this.thermsecLazy !== null){
             return this.thermsecLazy;
@@ -114,6 +164,7 @@ export class Energy {
         return this.thermsecLazy = this.convertFromBase(EnergyUnits.ThermsEc);
     }
 
+    /** */
     public get ThermsUs(): number {
         if(this.thermsusLazy !== null){
             return this.thermsusLazy;
@@ -121,6 +172,7 @@ export class Energy {
         return this.thermsusLazy = this.convertFromBase(EnergyUnits.ThermsUs);
     }
 
+    /** */
     public get ThermsImperial(): number {
         if(this.thermsimperialLazy !== null){
             return this.thermsimperialLazy;
@@ -128,6 +180,7 @@ export class Energy {
         return this.thermsimperialLazy = this.convertFromBase(EnergyUnits.ThermsImperial);
     }
 
+    /** */
     public get Kilojoules(): number {
         if(this.kilojoulesLazy !== null){
             return this.kilojoulesLazy;
@@ -135,6 +188,7 @@ export class Energy {
         return this.kilojoulesLazy = this.convertFromBase(EnergyUnits.Kilojoules);
     }
 
+    /** */
     public get Megajoules(): number {
         if(this.megajoulesLazy !== null){
             return this.megajoulesLazy;
@@ -142,6 +196,7 @@ export class Energy {
         return this.megajoulesLazy = this.convertFromBase(EnergyUnits.Megajoules);
     }
 
+    /** */
     public get Gigajoules(): number {
         if(this.gigajoulesLazy !== null){
             return this.gigajoulesLazy;
@@ -149,6 +204,7 @@ export class Energy {
         return this.gigajoulesLazy = this.convertFromBase(EnergyUnits.Gigajoules);
     }
 
+    /** */
     public get Kilocalories(): number {
         if(this.kilocaloriesLazy !== null){
             return this.kilocaloriesLazy;
@@ -156,6 +212,7 @@ export class Energy {
         return this.kilocaloriesLazy = this.convertFromBase(EnergyUnits.Kilocalories);
     }
 
+    /** */
     public get Megacalories(): number {
         if(this.megacaloriesLazy !== null){
             return this.megacaloriesLazy;
@@ -163,6 +220,7 @@ export class Energy {
         return this.megacaloriesLazy = this.convertFromBase(EnergyUnits.Megacalories);
     }
 
+    /** */
     public get KilobritishThermalUnits(): number {
         if(this.kilobritishthermalunitsLazy !== null){
             return this.kilobritishthermalunitsLazy;
@@ -170,6 +228,7 @@ export class Energy {
         return this.kilobritishthermalunitsLazy = this.convertFromBase(EnergyUnits.KilobritishThermalUnits);
     }
 
+    /** */
     public get MegabritishThermalUnits(): number {
         if(this.megabritishthermalunitsLazy !== null){
             return this.megabritishthermalunitsLazy;
@@ -177,6 +236,7 @@ export class Energy {
         return this.megabritishthermalunitsLazy = this.convertFromBase(EnergyUnits.MegabritishThermalUnits);
     }
 
+    /** */
     public get GigabritishThermalUnits(): number {
         if(this.gigabritishthermalunitsLazy !== null){
             return this.gigabritishthermalunitsLazy;
@@ -184,6 +244,7 @@ export class Energy {
         return this.gigabritishthermalunitsLazy = this.convertFromBase(EnergyUnits.GigabritishThermalUnits);
     }
 
+    /** */
     public get KilowattHours(): number {
         if(this.kilowatthoursLazy !== null){
             return this.kilowatthoursLazy;
@@ -191,6 +252,7 @@ export class Energy {
         return this.kilowatthoursLazy = this.convertFromBase(EnergyUnits.KilowattHours);
     }
 
+    /** */
     public get MegawattHours(): number {
         if(this.megawatthoursLazy !== null){
             return this.megawatthoursLazy;
@@ -198,6 +260,7 @@ export class Energy {
         return this.megawatthoursLazy = this.convertFromBase(EnergyUnits.MegawattHours);
     }
 
+    /** */
     public get GigawattHours(): number {
         if(this.gigawatthoursLazy !== null){
             return this.gigawatthoursLazy;
@@ -205,6 +268,7 @@ export class Energy {
         return this.gigawatthoursLazy = this.convertFromBase(EnergyUnits.GigawattHours);
     }
 
+    /** */
     public get TerawattHours(): number {
         if(this.terawatthoursLazy !== null){
             return this.terawatthoursLazy;
@@ -212,6 +276,7 @@ export class Energy {
         return this.terawatthoursLazy = this.convertFromBase(EnergyUnits.TerawattHours);
     }
 
+    /** */
     public get DecathermsEc(): number {
         if(this.decathermsecLazy !== null){
             return this.decathermsecLazy;
@@ -219,6 +284,7 @@ export class Energy {
         return this.decathermsecLazy = this.convertFromBase(EnergyUnits.DecathermsEc);
     }
 
+    /** */
     public get DecathermsUs(): number {
         if(this.decathermsusLazy !== null){
             return this.decathermsusLazy;
@@ -226,6 +292,7 @@ export class Energy {
         return this.decathermsusLazy = this.convertFromBase(EnergyUnits.DecathermsUs);
     }
 
+    /** */
     public get DecathermsImperial(): number {
         if(this.decathermsimperialLazy !== null){
             return this.decathermsimperialLazy;
@@ -233,102 +300,252 @@ export class Energy {
         return this.decathermsimperialLazy = this.convertFromBase(EnergyUnits.DecathermsImperial);
     }
 
+    /**
+     * Create a new Energy instance from a Joules
+     *
+     * @param value The unit as Joules to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromJoules(value: number): Energy {
         return new Energy(value, EnergyUnits.Joules);
     }
 
+    /**
+     * Create a new Energy instance from a Calories
+     *
+     * @param value The unit as Calories to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromCalories(value: number): Energy {
         return new Energy(value, EnergyUnits.Calories);
     }
 
+    /**
+     * Create a new Energy instance from a BritishThermalUnits
+     *
+     * @param value The unit as BritishThermalUnits to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromBritishThermalUnits(value: number): Energy {
         return new Energy(value, EnergyUnits.BritishThermalUnits);
     }
 
+    /**
+     * Create a new Energy instance from a ElectronVolts
+     *
+     * @param value The unit as ElectronVolts to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromElectronVolts(value: number): Energy {
         return new Energy(value, EnergyUnits.ElectronVolts);
     }
 
+    /**
+     * Create a new Energy instance from a FootPounds
+     *
+     * @param value The unit as FootPounds to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromFootPounds(value: number): Energy {
         return new Energy(value, EnergyUnits.FootPounds);
     }
 
+    /**
+     * Create a new Energy instance from a Ergs
+     *
+     * @param value The unit as Ergs to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromErgs(value: number): Energy {
         return new Energy(value, EnergyUnits.Ergs);
     }
 
+    /**
+     * Create a new Energy instance from a WattHours
+     *
+     * @param value The unit as WattHours to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromWattHours(value: number): Energy {
         return new Energy(value, EnergyUnits.WattHours);
     }
 
+    /**
+     * Create a new Energy instance from a ThermsEc
+     *
+     * @param value The unit as ThermsEc to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromThermsEc(value: number): Energy {
         return new Energy(value, EnergyUnits.ThermsEc);
     }
 
+    /**
+     * Create a new Energy instance from a ThermsUs
+     *
+     * @param value The unit as ThermsUs to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromThermsUs(value: number): Energy {
         return new Energy(value, EnergyUnits.ThermsUs);
     }
 
+    /**
+     * Create a new Energy instance from a ThermsImperial
+     *
+     * @param value The unit as ThermsImperial to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromThermsImperial(value: number): Energy {
         return new Energy(value, EnergyUnits.ThermsImperial);
     }
 
+    /**
+     * Create a new Energy instance from a Kilojoules
+     *
+     * @param value The unit as Kilojoules to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromKilojoules(value: number): Energy {
         return new Energy(value, EnergyUnits.Kilojoules);
     }
 
+    /**
+     * Create a new Energy instance from a Megajoules
+     *
+     * @param value The unit as Megajoules to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromMegajoules(value: number): Energy {
         return new Energy(value, EnergyUnits.Megajoules);
     }
 
+    /**
+     * Create a new Energy instance from a Gigajoules
+     *
+     * @param value The unit as Gigajoules to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromGigajoules(value: number): Energy {
         return new Energy(value, EnergyUnits.Gigajoules);
     }
 
+    /**
+     * Create a new Energy instance from a Kilocalories
+     *
+     * @param value The unit as Kilocalories to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromKilocalories(value: number): Energy {
         return new Energy(value, EnergyUnits.Kilocalories);
     }
 
+    /**
+     * Create a new Energy instance from a Megacalories
+     *
+     * @param value The unit as Megacalories to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromMegacalories(value: number): Energy {
         return new Energy(value, EnergyUnits.Megacalories);
     }
 
+    /**
+     * Create a new Energy instance from a KilobritishThermalUnits
+     *
+     * @param value The unit as KilobritishThermalUnits to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromKilobritishThermalUnits(value: number): Energy {
         return new Energy(value, EnergyUnits.KilobritishThermalUnits);
     }
 
+    /**
+     * Create a new Energy instance from a MegabritishThermalUnits
+     *
+     * @param value The unit as MegabritishThermalUnits to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromMegabritishThermalUnits(value: number): Energy {
         return new Energy(value, EnergyUnits.MegabritishThermalUnits);
     }
 
+    /**
+     * Create a new Energy instance from a GigabritishThermalUnits
+     *
+     * @param value The unit as GigabritishThermalUnits to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromGigabritishThermalUnits(value: number): Energy {
         return new Energy(value, EnergyUnits.GigabritishThermalUnits);
     }
 
+    /**
+     * Create a new Energy instance from a KilowattHours
+     *
+     * @param value The unit as KilowattHours to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromKilowattHours(value: number): Energy {
         return new Energy(value, EnergyUnits.KilowattHours);
     }
 
+    /**
+     * Create a new Energy instance from a MegawattHours
+     *
+     * @param value The unit as MegawattHours to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromMegawattHours(value: number): Energy {
         return new Energy(value, EnergyUnits.MegawattHours);
     }
 
+    /**
+     * Create a new Energy instance from a GigawattHours
+     *
+     * @param value The unit as GigawattHours to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromGigawattHours(value: number): Energy {
         return new Energy(value, EnergyUnits.GigawattHours);
     }
 
+    /**
+     * Create a new Energy instance from a TerawattHours
+     *
+     * @param value The unit as TerawattHours to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromTerawattHours(value: number): Energy {
         return new Energy(value, EnergyUnits.TerawattHours);
     }
 
+    /**
+     * Create a new Energy instance from a DecathermsEc
+     *
+     * @param value The unit as DecathermsEc to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromDecathermsEc(value: number): Energy {
         return new Energy(value, EnergyUnits.DecathermsEc);
     }
 
+    /**
+     * Create a new Energy instance from a DecathermsUs
+     *
+     * @param value The unit as DecathermsUs to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromDecathermsUs(value: number): Energy {
         return new Energy(value, EnergyUnits.DecathermsUs);
     }
 
+    /**
+     * Create a new Energy instance from a DecathermsImperial
+     *
+     * @param value The unit as DecathermsImperial to create a new Energy from.
+     * @returns The new Energy instance.
+     */
     public static FromDecathermsImperial(value: number): Energy {
         return new Energy(value, EnergyUnits.DecathermsImperial);
     }
@@ -451,6 +668,13 @@ export class Energy {
         return NaN;
     }
 
+    /**
+     * Format the Energy to string.
+     * Note! the default format for Energy is Joules.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Energy.
+     * @returns The string format of the Energy.
+     */
     public toString(toUnit: EnergyUnits = EnergyUnits.Joules): string {
 
         switch (toUnit) {

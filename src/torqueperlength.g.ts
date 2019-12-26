@@ -1,27 +1,50 @@
+/** TorquePerLengthUnits enumeration */
 export enum TorquePerLengthUnits {
+    /** */
     NewtonMillimetersPerMeter,
+    /** */
     NewtonCentimetersPerMeter,
+    /** */
     NewtonMetersPerMeter,
+    /** */
     PoundForceInchesPerFoot,
+    /** */
     PoundForceFeetPerFoot,
+    /** */
     KilogramForceMillimetersPerMeter,
+    /** */
     KilogramForceCentimetersPerMeter,
+    /** */
     KilogramForceMetersPerMeter,
+    /** */
     TonneForceMillimetersPerMeter,
+    /** */
     TonneForceCentimetersPerMeter,
+    /** */
     TonneForceMetersPerMeter,
+    /** */
     KilonewtonMillimetersPerMeter,
+    /** */
     MeganewtonMillimetersPerMeter,
+    /** */
     KilonewtonCentimetersPerMeter,
+    /** */
     MeganewtonCentimetersPerMeter,
+    /** */
     KilonewtonMetersPerMeter,
+    /** */
     MeganewtonMetersPerMeter,
+    /** */
     KilopoundForceInchesPerFoot,
+    /** */
     MegapoundForceInchesPerFoot,
+    /** */
     KilopoundForceFeetPerFoot,
+    /** */
     MegapoundForceFeetPerFoot
 }
 
+/** The magnitude of torque per unit length. */
 export class TorquePerLength {
     private value: number;
     private newtonmillimeterspermeterLazy: number | null = null;
@@ -46,10 +69,26 @@ export class TorquePerLength {
     private kilopoundforcefeetperfootLazy: number | null = null;
     private megapoundforcefeetperfootLazy: number | null = null;
 
+    /**
+     * Create a new TorquePerLength.
+     * @param value The value.
+     * @param fromUnit The ‘TorquePerLength’ unit to create from.
+     */
     public constructor(value: number, fromUnit: TorquePerLengthUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of TorquePerLength is NewtonMeterPerMeter.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get NewtonMillimetersPerMeter(): number {
         if(this.newtonmillimeterspermeterLazy !== null){
             return this.newtonmillimeterspermeterLazy;
@@ -57,6 +96,7 @@ export class TorquePerLength {
         return this.newtonmillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.NewtonMillimetersPerMeter);
     }
 
+    /** */
     public get NewtonCentimetersPerMeter(): number {
         if(this.newtoncentimeterspermeterLazy !== null){
             return this.newtoncentimeterspermeterLazy;
@@ -64,6 +104,7 @@ export class TorquePerLength {
         return this.newtoncentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.NewtonCentimetersPerMeter);
     }
 
+    /** */
     public get NewtonMetersPerMeter(): number {
         if(this.newtonmeterspermeterLazy !== null){
             return this.newtonmeterspermeterLazy;
@@ -71,6 +112,7 @@ export class TorquePerLength {
         return this.newtonmeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.NewtonMetersPerMeter);
     }
 
+    /** */
     public get PoundForceInchesPerFoot(): number {
         if(this.poundforceinchesperfootLazy !== null){
             return this.poundforceinchesperfootLazy;
@@ -78,6 +120,7 @@ export class TorquePerLength {
         return this.poundforceinchesperfootLazy = this.convertFromBase(TorquePerLengthUnits.PoundForceInchesPerFoot);
     }
 
+    /** */
     public get PoundForceFeetPerFoot(): number {
         if(this.poundforcefeetperfootLazy !== null){
             return this.poundforcefeetperfootLazy;
@@ -85,6 +128,7 @@ export class TorquePerLength {
         return this.poundforcefeetperfootLazy = this.convertFromBase(TorquePerLengthUnits.PoundForceFeetPerFoot);
     }
 
+    /** */
     public get KilogramForceMillimetersPerMeter(): number {
         if(this.kilogramforcemillimeterspermeterLazy !== null){
             return this.kilogramforcemillimeterspermeterLazy;
@@ -92,6 +136,7 @@ export class TorquePerLength {
         return this.kilogramforcemillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilogramForceMillimetersPerMeter);
     }
 
+    /** */
     public get KilogramForceCentimetersPerMeter(): number {
         if(this.kilogramforcecentimeterspermeterLazy !== null){
             return this.kilogramforcecentimeterspermeterLazy;
@@ -99,6 +144,7 @@ export class TorquePerLength {
         return this.kilogramforcecentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilogramForceCentimetersPerMeter);
     }
 
+    /** */
     public get KilogramForceMetersPerMeter(): number {
         if(this.kilogramforcemeterspermeterLazy !== null){
             return this.kilogramforcemeterspermeterLazy;
@@ -106,6 +152,7 @@ export class TorquePerLength {
         return this.kilogramforcemeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilogramForceMetersPerMeter);
     }
 
+    /** */
     public get TonneForceMillimetersPerMeter(): number {
         if(this.tonneforcemillimeterspermeterLazy !== null){
             return this.tonneforcemillimeterspermeterLazy;
@@ -113,6 +160,7 @@ export class TorquePerLength {
         return this.tonneforcemillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.TonneForceMillimetersPerMeter);
     }
 
+    /** */
     public get TonneForceCentimetersPerMeter(): number {
         if(this.tonneforcecentimeterspermeterLazy !== null){
             return this.tonneforcecentimeterspermeterLazy;
@@ -120,6 +168,7 @@ export class TorquePerLength {
         return this.tonneforcecentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.TonneForceCentimetersPerMeter);
     }
 
+    /** */
     public get TonneForceMetersPerMeter(): number {
         if(this.tonneforcemeterspermeterLazy !== null){
             return this.tonneforcemeterspermeterLazy;
@@ -127,6 +176,7 @@ export class TorquePerLength {
         return this.tonneforcemeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.TonneForceMetersPerMeter);
     }
 
+    /** */
     public get KilonewtonMillimetersPerMeter(): number {
         if(this.kilonewtonmillimeterspermeterLazy !== null){
             return this.kilonewtonmillimeterspermeterLazy;
@@ -134,6 +184,7 @@ export class TorquePerLength {
         return this.kilonewtonmillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilonewtonMillimetersPerMeter);
     }
 
+    /** */
     public get MeganewtonMillimetersPerMeter(): number {
         if(this.meganewtonmillimeterspermeterLazy !== null){
             return this.meganewtonmillimeterspermeterLazy;
@@ -141,6 +192,7 @@ export class TorquePerLength {
         return this.meganewtonmillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.MeganewtonMillimetersPerMeter);
     }
 
+    /** */
     public get KilonewtonCentimetersPerMeter(): number {
         if(this.kilonewtoncentimeterspermeterLazy !== null){
             return this.kilonewtoncentimeterspermeterLazy;
@@ -148,6 +200,7 @@ export class TorquePerLength {
         return this.kilonewtoncentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilonewtonCentimetersPerMeter);
     }
 
+    /** */
     public get MeganewtonCentimetersPerMeter(): number {
         if(this.meganewtoncentimeterspermeterLazy !== null){
             return this.meganewtoncentimeterspermeterLazy;
@@ -155,6 +208,7 @@ export class TorquePerLength {
         return this.meganewtoncentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.MeganewtonCentimetersPerMeter);
     }
 
+    /** */
     public get KilonewtonMetersPerMeter(): number {
         if(this.kilonewtonmeterspermeterLazy !== null){
             return this.kilonewtonmeterspermeterLazy;
@@ -162,6 +216,7 @@ export class TorquePerLength {
         return this.kilonewtonmeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilonewtonMetersPerMeter);
     }
 
+    /** */
     public get MeganewtonMetersPerMeter(): number {
         if(this.meganewtonmeterspermeterLazy !== null){
             return this.meganewtonmeterspermeterLazy;
@@ -169,6 +224,7 @@ export class TorquePerLength {
         return this.meganewtonmeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.MeganewtonMetersPerMeter);
     }
 
+    /** */
     public get KilopoundForceInchesPerFoot(): number {
         if(this.kilopoundforceinchesperfootLazy !== null){
             return this.kilopoundforceinchesperfootLazy;
@@ -176,6 +232,7 @@ export class TorquePerLength {
         return this.kilopoundforceinchesperfootLazy = this.convertFromBase(TorquePerLengthUnits.KilopoundForceInchesPerFoot);
     }
 
+    /** */
     public get MegapoundForceInchesPerFoot(): number {
         if(this.megapoundforceinchesperfootLazy !== null){
             return this.megapoundforceinchesperfootLazy;
@@ -183,6 +240,7 @@ export class TorquePerLength {
         return this.megapoundforceinchesperfootLazy = this.convertFromBase(TorquePerLengthUnits.MegapoundForceInchesPerFoot);
     }
 
+    /** */
     public get KilopoundForceFeetPerFoot(): number {
         if(this.kilopoundforcefeetperfootLazy !== null){
             return this.kilopoundforcefeetperfootLazy;
@@ -190,6 +248,7 @@ export class TorquePerLength {
         return this.kilopoundforcefeetperfootLazy = this.convertFromBase(TorquePerLengthUnits.KilopoundForceFeetPerFoot);
     }
 
+    /** */
     public get MegapoundForceFeetPerFoot(): number {
         if(this.megapoundforcefeetperfootLazy !== null){
             return this.megapoundforcefeetperfootLazy;
@@ -197,86 +256,212 @@ export class TorquePerLength {
         return this.megapoundforcefeetperfootLazy = this.convertFromBase(TorquePerLengthUnits.MegapoundForceFeetPerFoot);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a NewtonMillimetersPerMeter
+     *
+     * @param value The unit as NewtonMillimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromNewtonMillimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.NewtonMillimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a NewtonCentimetersPerMeter
+     *
+     * @param value The unit as NewtonCentimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromNewtonCentimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.NewtonCentimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a NewtonMetersPerMeter
+     *
+     * @param value The unit as NewtonMetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromNewtonMetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.NewtonMetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a PoundForceInchesPerFoot
+     *
+     * @param value The unit as PoundForceInchesPerFoot to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromPoundForceInchesPerFoot(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.PoundForceInchesPerFoot);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a PoundForceFeetPerFoot
+     *
+     * @param value The unit as PoundForceFeetPerFoot to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromPoundForceFeetPerFoot(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.PoundForceFeetPerFoot);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a KilogramForceMillimetersPerMeter
+     *
+     * @param value The unit as KilogramForceMillimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromKilogramForceMillimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.KilogramForceMillimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a KilogramForceCentimetersPerMeter
+     *
+     * @param value The unit as KilogramForceCentimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromKilogramForceCentimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.KilogramForceCentimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a KilogramForceMetersPerMeter
+     *
+     * @param value The unit as KilogramForceMetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromKilogramForceMetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.KilogramForceMetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a TonneForceMillimetersPerMeter
+     *
+     * @param value The unit as TonneForceMillimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromTonneForceMillimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.TonneForceMillimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a TonneForceCentimetersPerMeter
+     *
+     * @param value The unit as TonneForceCentimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromTonneForceCentimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.TonneForceCentimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a TonneForceMetersPerMeter
+     *
+     * @param value The unit as TonneForceMetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromTonneForceMetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.TonneForceMetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a KilonewtonMillimetersPerMeter
+     *
+     * @param value The unit as KilonewtonMillimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromKilonewtonMillimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.KilonewtonMillimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a MeganewtonMillimetersPerMeter
+     *
+     * @param value The unit as MeganewtonMillimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromMeganewtonMillimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.MeganewtonMillimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a KilonewtonCentimetersPerMeter
+     *
+     * @param value The unit as KilonewtonCentimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromKilonewtonCentimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.KilonewtonCentimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a MeganewtonCentimetersPerMeter
+     *
+     * @param value The unit as MeganewtonCentimetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromMeganewtonCentimetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.MeganewtonCentimetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a KilonewtonMetersPerMeter
+     *
+     * @param value The unit as KilonewtonMetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromKilonewtonMetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.KilonewtonMetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a MeganewtonMetersPerMeter
+     *
+     * @param value The unit as MeganewtonMetersPerMeter to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromMeganewtonMetersPerMeter(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.MeganewtonMetersPerMeter);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a KilopoundForceInchesPerFoot
+     *
+     * @param value The unit as KilopoundForceInchesPerFoot to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromKilopoundForceInchesPerFoot(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.KilopoundForceInchesPerFoot);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a MegapoundForceInchesPerFoot
+     *
+     * @param value The unit as MegapoundForceInchesPerFoot to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromMegapoundForceInchesPerFoot(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.MegapoundForceInchesPerFoot);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a KilopoundForceFeetPerFoot
+     *
+     * @param value The unit as KilopoundForceFeetPerFoot to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromKilopoundForceFeetPerFoot(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.KilopoundForceFeetPerFoot);
     }
 
+    /**
+     * Create a new TorquePerLength instance from a MegapoundForceFeetPerFoot
+     *
+     * @param value The unit as MegapoundForceFeetPerFoot to create a new TorquePerLength from.
+     * @returns The new TorquePerLength instance.
+     */
     public static FromMegapoundForceFeetPerFoot(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.MegapoundForceFeetPerFoot);
     }
@@ -383,6 +568,13 @@ export class TorquePerLength {
         return NaN;
     }
 
+    /**
+     * Format the TorquePerLength to string.
+     * Note! the default format for TorquePerLength is NewtonMetersPerMeter.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the TorquePerLength.
+     * @returns The string format of the TorquePerLength.
+     */
     public toString(toUnit: TorquePerLengthUnits = TorquePerLengthUnits.NewtonMetersPerMeter): string {
 
         switch (toUnit) {

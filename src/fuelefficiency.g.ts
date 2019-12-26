@@ -1,10 +1,16 @@
+/** FuelEfficiencyUnits enumeration */
 export enum FuelEfficiencyUnits {
+    /** */
     LitersPer100Kilometers,
+    /** */
     MilesPerUsGallon,
+    /** */
     MilesPerUkGallon,
+    /** */
     KilometersPerLiters
 }
 
+/** Fuel efficiency is a form of thermal efficiency, meaning the ratio from effort to result of a process that converts chemical potential energy contained in a carrier (fuel) into kinetic energy or work. Fuel economy is stated as "fuel consumption" in liters per 100 kilometers (L/100 km). In countries using non-metric system, fuel economy is expressed in miles per gallon (mpg) (imperial galon or US galon). */
 export class FuelEfficiency {
     private value: number;
     private litersper100kilometersLazy: number | null = null;
@@ -12,10 +18,26 @@ export class FuelEfficiency {
     private milesperukgallonLazy: number | null = null;
     private kilometersperlitersLazy: number | null = null;
 
+    /**
+     * Create a new FuelEfficiency.
+     * @param value The value.
+     * @param fromUnit The ‘FuelEfficiency’ unit to create from.
+     */
     public constructor(value: number, fromUnit: FuelEfficiencyUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of FuelEfficiency is LiterPer100Kilometers.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get LitersPer100Kilometers(): number {
         if(this.litersper100kilometersLazy !== null){
             return this.litersper100kilometersLazy;
@@ -23,6 +45,7 @@ export class FuelEfficiency {
         return this.litersper100kilometersLazy = this.convertFromBase(FuelEfficiencyUnits.LitersPer100Kilometers);
     }
 
+    /** */
     public get MilesPerUsGallon(): number {
         if(this.milesperusgallonLazy !== null){
             return this.milesperusgallonLazy;
@@ -30,6 +53,7 @@ export class FuelEfficiency {
         return this.milesperusgallonLazy = this.convertFromBase(FuelEfficiencyUnits.MilesPerUsGallon);
     }
 
+    /** */
     public get MilesPerUkGallon(): number {
         if(this.milesperukgallonLazy !== null){
             return this.milesperukgallonLazy;
@@ -37,6 +61,7 @@ export class FuelEfficiency {
         return this.milesperukgallonLazy = this.convertFromBase(FuelEfficiencyUnits.MilesPerUkGallon);
     }
 
+    /** */
     public get KilometersPerLiters(): number {
         if(this.kilometersperlitersLazy !== null){
             return this.kilometersperlitersLazy;
@@ -44,18 +69,42 @@ export class FuelEfficiency {
         return this.kilometersperlitersLazy = this.convertFromBase(FuelEfficiencyUnits.KilometersPerLiters);
     }
 
+    /**
+     * Create a new FuelEfficiency instance from a LitersPer100Kilometers
+     *
+     * @param value The unit as LitersPer100Kilometers to create a new FuelEfficiency from.
+     * @returns The new FuelEfficiency instance.
+     */
     public static FromLitersPer100Kilometers(value: number): FuelEfficiency {
         return new FuelEfficiency(value, FuelEfficiencyUnits.LitersPer100Kilometers);
     }
 
+    /**
+     * Create a new FuelEfficiency instance from a MilesPerUsGallon
+     *
+     * @param value The unit as MilesPerUsGallon to create a new FuelEfficiency from.
+     * @returns The new FuelEfficiency instance.
+     */
     public static FromMilesPerUsGallon(value: number): FuelEfficiency {
         return new FuelEfficiency(value, FuelEfficiencyUnits.MilesPerUsGallon);
     }
 
+    /**
+     * Create a new FuelEfficiency instance from a MilesPerUkGallon
+     *
+     * @param value The unit as MilesPerUkGallon to create a new FuelEfficiency from.
+     * @returns The new FuelEfficiency instance.
+     */
     public static FromMilesPerUkGallon(value: number): FuelEfficiency {
         return new FuelEfficiency(value, FuelEfficiencyUnits.MilesPerUkGallon);
     }
 
+    /**
+     * Create a new FuelEfficiency instance from a KilometersPerLiters
+     *
+     * @param value The unit as KilometersPerLiters to create a new FuelEfficiency from.
+     * @returns The new FuelEfficiency instance.
+     */
     public static FromKilometersPerLiters(value: number): FuelEfficiency {
         return new FuelEfficiency(value, FuelEfficiencyUnits.KilometersPerLiters);
     }
@@ -94,6 +143,13 @@ export class FuelEfficiency {
         return NaN;
     }
 
+    /**
+     * Format the FuelEfficiency to string.
+     * Note! the default format for FuelEfficiency is LitersPer100Kilometers.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the FuelEfficiency.
+     * @returns The string format of the FuelEfficiency.
+     */
     public toString(toUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers): string {
 
         switch (toUnit) {

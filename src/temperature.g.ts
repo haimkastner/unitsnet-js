@@ -1,15 +1,26 @@
+/** TemperatureUnits enumeration */
 export enum TemperatureUnits {
+    /** */
     Kelvins,
+    /** */
     DegreesCelsius,
+    /** */
     DegreesDelisle,
+    /** */
     DegreesFahrenheit,
+    /** */
     DegreesNewton,
+    /** */
     DegreesRankine,
+    /** */
     DegreesReaumur,
+    /** */
     DegreesRoemer,
+    /** */
     SolarTemperatures
 }
 
+/** A temperature is a numerical measure of hot or cold. Its measurement is by detection of heat radiation or particle velocity or kinetic energy, or by the bulk behavior of a thermometric material. It may be calibrated in any of various temperature scales, Celsius, Fahrenheit, Kelvin, etc. The fundamental physical definition of temperature is provided by thermodynamics. */
 export class Temperature {
     private value: number;
     private kelvinsLazy: number | null = null;
@@ -22,10 +33,26 @@ export class Temperature {
     private degreesroemerLazy: number | null = null;
     private solartemperaturesLazy: number | null = null;
 
+    /**
+     * Create a new Temperature.
+     * @param value The value.
+     * @param fromUnit The ‘Temperature’ unit to create from.
+     */
     public constructor(value: number, fromUnit: TemperatureUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Temperature is Kelvin.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Kelvins(): number {
         if(this.kelvinsLazy !== null){
             return this.kelvinsLazy;
@@ -33,6 +60,7 @@ export class Temperature {
         return this.kelvinsLazy = this.convertFromBase(TemperatureUnits.Kelvins);
     }
 
+    /** */
     public get DegreesCelsius(): number {
         if(this.degreescelsiusLazy !== null){
             return this.degreescelsiusLazy;
@@ -40,6 +68,7 @@ export class Temperature {
         return this.degreescelsiusLazy = this.convertFromBase(TemperatureUnits.DegreesCelsius);
     }
 
+    /** */
     public get DegreesDelisle(): number {
         if(this.degreesdelisleLazy !== null){
             return this.degreesdelisleLazy;
@@ -47,6 +76,7 @@ export class Temperature {
         return this.degreesdelisleLazy = this.convertFromBase(TemperatureUnits.DegreesDelisle);
     }
 
+    /** */
     public get DegreesFahrenheit(): number {
         if(this.degreesfahrenheitLazy !== null){
             return this.degreesfahrenheitLazy;
@@ -54,6 +84,7 @@ export class Temperature {
         return this.degreesfahrenheitLazy = this.convertFromBase(TemperatureUnits.DegreesFahrenheit);
     }
 
+    /** */
     public get DegreesNewton(): number {
         if(this.degreesnewtonLazy !== null){
             return this.degreesnewtonLazy;
@@ -61,6 +92,7 @@ export class Temperature {
         return this.degreesnewtonLazy = this.convertFromBase(TemperatureUnits.DegreesNewton);
     }
 
+    /** */
     public get DegreesRankine(): number {
         if(this.degreesrankineLazy !== null){
             return this.degreesrankineLazy;
@@ -68,6 +100,7 @@ export class Temperature {
         return this.degreesrankineLazy = this.convertFromBase(TemperatureUnits.DegreesRankine);
     }
 
+    /** */
     public get DegreesReaumur(): number {
         if(this.degreesreaumurLazy !== null){
             return this.degreesreaumurLazy;
@@ -75,6 +108,7 @@ export class Temperature {
         return this.degreesreaumurLazy = this.convertFromBase(TemperatureUnits.DegreesReaumur);
     }
 
+    /** */
     public get DegreesRoemer(): number {
         if(this.degreesroemerLazy !== null){
             return this.degreesroemerLazy;
@@ -82,6 +116,7 @@ export class Temperature {
         return this.degreesroemerLazy = this.convertFromBase(TemperatureUnits.DegreesRoemer);
     }
 
+    /** */
     public get SolarTemperatures(): number {
         if(this.solartemperaturesLazy !== null){
             return this.solartemperaturesLazy;
@@ -89,38 +124,92 @@ export class Temperature {
         return this.solartemperaturesLazy = this.convertFromBase(TemperatureUnits.SolarTemperatures);
     }
 
+    /**
+     * Create a new Temperature instance from a Kelvins
+     *
+     * @param value The unit as Kelvins to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
     public static FromKelvins(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.Kelvins);
     }
 
+    /**
+     * Create a new Temperature instance from a DegreesCelsius
+     *
+     * @param value The unit as DegreesCelsius to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
     public static FromDegreesCelsius(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.DegreesCelsius);
     }
 
+    /**
+     * Create a new Temperature instance from a DegreesDelisle
+     *
+     * @param value The unit as DegreesDelisle to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
     public static FromDegreesDelisle(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.DegreesDelisle);
     }
 
+    /**
+     * Create a new Temperature instance from a DegreesFahrenheit
+     *
+     * @param value The unit as DegreesFahrenheit to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
     public static FromDegreesFahrenheit(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.DegreesFahrenheit);
     }
 
+    /**
+     * Create a new Temperature instance from a DegreesNewton
+     *
+     * @param value The unit as DegreesNewton to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
     public static FromDegreesNewton(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.DegreesNewton);
     }
 
+    /**
+     * Create a new Temperature instance from a DegreesRankine
+     *
+     * @param value The unit as DegreesRankine to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
     public static FromDegreesRankine(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.DegreesRankine);
     }
 
+    /**
+     * Create a new Temperature instance from a DegreesReaumur
+     *
+     * @param value The unit as DegreesReaumur to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
     public static FromDegreesReaumur(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.DegreesReaumur);
     }
 
+    /**
+     * Create a new Temperature instance from a DegreesRoemer
+     *
+     * @param value The unit as DegreesRoemer to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
     public static FromDegreesRoemer(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.DegreesRoemer);
     }
 
+    /**
+     * Create a new Temperature instance from a SolarTemperatures
+     *
+     * @param value The unit as SolarTemperatures to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
     public static FromSolarTemperatures(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.SolarTemperatures);
     }
@@ -179,6 +268,13 @@ export class Temperature {
         return NaN;
     }
 
+    /**
+     * Format the Temperature to string.
+     * Note! the default format for Temperature is Kelvins.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Temperature.
+     * @returns The string format of the Temperature.
+     */
     public toString(toUnit: TemperatureUnits = TemperatureUnits.Kelvins): string {
 
         switch (toUnit) {

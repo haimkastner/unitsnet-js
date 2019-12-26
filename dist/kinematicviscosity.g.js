@@ -1,16 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** KinematicViscosityUnits enumeration */
 var KinematicViscosityUnits;
 (function (KinematicViscosityUnits) {
+    /** */
     KinematicViscosityUnits[KinematicViscosityUnits["SquareMetersPerSecond"] = 0] = "SquareMetersPerSecond";
+    /** */
     KinematicViscosityUnits[KinematicViscosityUnits["Stokes"] = 1] = "Stokes";
+    /** */
     KinematicViscosityUnits[KinematicViscosityUnits["Nanostokes"] = 2] = "Nanostokes";
+    /** */
     KinematicViscosityUnits[KinematicViscosityUnits["Microstokes"] = 3] = "Microstokes";
+    /** */
     KinematicViscosityUnits[KinematicViscosityUnits["Centistokes"] = 4] = "Centistokes";
+    /** */
     KinematicViscosityUnits[KinematicViscosityUnits["Decistokes"] = 5] = "Decistokes";
+    /** */
     KinematicViscosityUnits[KinematicViscosityUnits["Kilostokes"] = 6] = "Kilostokes";
 })(KinematicViscosityUnits = exports.KinematicViscosityUnits || (exports.KinematicViscosityUnits = {}));
+/** The viscosity of a fluid is a measure of its resistance to gradual deformation by shear stress or tensile stress. */
 class KinematicViscosity {
+    /**
+     * Create a new KinematicViscosity.
+     * @param value The value.
+     * @param fromUnit The ‘KinematicViscosity’ unit to create from.
+     */
     constructor(value, fromUnit) {
         this.squaremeterspersecondLazy = null;
         this.stokesLazy = null;
@@ -19,68 +33,126 @@ class KinematicViscosity {
         this.centistokesLazy = null;
         this.decistokesLazy = null;
         this.kilostokesLazy = null;
+        if (isNaN(value))
+            throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
+    /**
+     * The base value of KinematicViscosity is SquareMeterPerSecond.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    get BaseValue() {
+        return this.value;
+    }
+    /** */
     get SquareMetersPerSecond() {
         if (this.squaremeterspersecondLazy !== null) {
             return this.squaremeterspersecondLazy;
         }
         return this.squaremeterspersecondLazy = this.convertFromBase(KinematicViscosityUnits.SquareMetersPerSecond);
     }
+    /** */
     get Stokes() {
         if (this.stokesLazy !== null) {
             return this.stokesLazy;
         }
         return this.stokesLazy = this.convertFromBase(KinematicViscosityUnits.Stokes);
     }
+    /** */
     get Nanostokes() {
         if (this.nanostokesLazy !== null) {
             return this.nanostokesLazy;
         }
         return this.nanostokesLazy = this.convertFromBase(KinematicViscosityUnits.Nanostokes);
     }
+    /** */
     get Microstokes() {
         if (this.microstokesLazy !== null) {
             return this.microstokesLazy;
         }
         return this.microstokesLazy = this.convertFromBase(KinematicViscosityUnits.Microstokes);
     }
+    /** */
     get Centistokes() {
         if (this.centistokesLazy !== null) {
             return this.centistokesLazy;
         }
         return this.centistokesLazy = this.convertFromBase(KinematicViscosityUnits.Centistokes);
     }
+    /** */
     get Decistokes() {
         if (this.decistokesLazy !== null) {
             return this.decistokesLazy;
         }
         return this.decistokesLazy = this.convertFromBase(KinematicViscosityUnits.Decistokes);
     }
+    /** */
     get Kilostokes() {
         if (this.kilostokesLazy !== null) {
             return this.kilostokesLazy;
         }
         return this.kilostokesLazy = this.convertFromBase(KinematicViscosityUnits.Kilostokes);
     }
+    /**
+     * Create a new KinematicViscosity instance from a SquareMetersPerSecond
+     *
+     * @param value The unit as SquareMetersPerSecond to create a new KinematicViscosity from.
+     * @returns The new KinematicViscosity instance.
+     */
     static FromSquareMetersPerSecond(value) {
         return new KinematicViscosity(value, KinematicViscosityUnits.SquareMetersPerSecond);
     }
+    /**
+     * Create a new KinematicViscosity instance from a Stokes
+     *
+     * @param value The unit as Stokes to create a new KinematicViscosity from.
+     * @returns The new KinematicViscosity instance.
+     */
     static FromStokes(value) {
         return new KinematicViscosity(value, KinematicViscosityUnits.Stokes);
     }
+    /**
+     * Create a new KinematicViscosity instance from a Nanostokes
+     *
+     * @param value The unit as Nanostokes to create a new KinematicViscosity from.
+     * @returns The new KinematicViscosity instance.
+     */
     static FromNanostokes(value) {
         return new KinematicViscosity(value, KinematicViscosityUnits.Nanostokes);
     }
+    /**
+     * Create a new KinematicViscosity instance from a Microstokes
+     *
+     * @param value The unit as Microstokes to create a new KinematicViscosity from.
+     * @returns The new KinematicViscosity instance.
+     */
     static FromMicrostokes(value) {
         return new KinematicViscosity(value, KinematicViscosityUnits.Microstokes);
     }
+    /**
+     * Create a new KinematicViscosity instance from a Centistokes
+     *
+     * @param value The unit as Centistokes to create a new KinematicViscosity from.
+     * @returns The new KinematicViscosity instance.
+     */
     static FromCentistokes(value) {
         return new KinematicViscosity(value, KinematicViscosityUnits.Centistokes);
     }
+    /**
+     * Create a new KinematicViscosity instance from a Decistokes
+     *
+     * @param value The unit as Decistokes to create a new KinematicViscosity from.
+     * @returns The new KinematicViscosity instance.
+     */
     static FromDecistokes(value) {
         return new KinematicViscosity(value, KinematicViscosityUnits.Decistokes);
     }
+    /**
+     * Create a new KinematicViscosity instance from a Kilostokes
+     *
+     * @param value The unit as Kilostokes to create a new KinematicViscosity from.
+     * @returns The new KinematicViscosity instance.
+     */
     static FromKilostokes(value) {
         return new KinematicViscosity(value, KinematicViscosityUnits.Kilostokes);
     }
@@ -126,6 +198,13 @@ class KinematicViscosity {
         }
         return NaN;
     }
+    /**
+     * Format the KinematicViscosity to string.
+     * Note! the default format for KinematicViscosity is SquareMetersPerSecond.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the KinematicViscosity.
+     * @returns The string format of the KinematicViscosity.
+     */
     toString(toUnit = KinematicViscosityUnits.SquareMetersPerSecond) {
         switch (toUnit) {
             case KinematicViscosityUnits.SquareMetersPerSecond:

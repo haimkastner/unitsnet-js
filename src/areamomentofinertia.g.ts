@@ -1,12 +1,20 @@
+/** AreaMomentOfInertiaUnits enumeration */
 export enum AreaMomentOfInertiaUnits {
+    /** */
     MetersToTheFourth,
+    /** */
     DecimetersToTheFourth,
+    /** */
     CentimetersToTheFourth,
+    /** */
     MillimetersToTheFourth,
+    /** */
     FeetToTheFourth,
+    /** */
     InchesToTheFourth
 }
 
+/** A geometric property of an area that reflects how its points are distributed with regard to an axis. */
 export class AreaMomentOfInertia {
     private value: number;
     private meterstothefourthLazy: number | null = null;
@@ -16,10 +24,26 @@ export class AreaMomentOfInertia {
     private feettothefourthLazy: number | null = null;
     private inchestothefourthLazy: number | null = null;
 
+    /**
+     * Create a new AreaMomentOfInertia.
+     * @param value The value.
+     * @param fromUnit The ‘AreaMomentOfInertia’ unit to create from.
+     */
     public constructor(value: number, fromUnit: AreaMomentOfInertiaUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of AreaMomentOfInertia is MeterToTheFourth.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get MetersToTheFourth(): number {
         if(this.meterstothefourthLazy !== null){
             return this.meterstothefourthLazy;
@@ -27,6 +51,7 @@ export class AreaMomentOfInertia {
         return this.meterstothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.MetersToTheFourth);
     }
 
+    /** */
     public get DecimetersToTheFourth(): number {
         if(this.decimeterstothefourthLazy !== null){
             return this.decimeterstothefourthLazy;
@@ -34,6 +59,7 @@ export class AreaMomentOfInertia {
         return this.decimeterstothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.DecimetersToTheFourth);
     }
 
+    /** */
     public get CentimetersToTheFourth(): number {
         if(this.centimeterstothefourthLazy !== null){
             return this.centimeterstothefourthLazy;
@@ -41,6 +67,7 @@ export class AreaMomentOfInertia {
         return this.centimeterstothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.CentimetersToTheFourth);
     }
 
+    /** */
     public get MillimetersToTheFourth(): number {
         if(this.millimeterstothefourthLazy !== null){
             return this.millimeterstothefourthLazy;
@@ -48,6 +75,7 @@ export class AreaMomentOfInertia {
         return this.millimeterstothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.MillimetersToTheFourth);
     }
 
+    /** */
     public get FeetToTheFourth(): number {
         if(this.feettothefourthLazy !== null){
             return this.feettothefourthLazy;
@@ -55,6 +83,7 @@ export class AreaMomentOfInertia {
         return this.feettothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.FeetToTheFourth);
     }
 
+    /** */
     public get InchesToTheFourth(): number {
         if(this.inchestothefourthLazy !== null){
             return this.inchestothefourthLazy;
@@ -62,26 +91,62 @@ export class AreaMomentOfInertia {
         return this.inchestothefourthLazy = this.convertFromBase(AreaMomentOfInertiaUnits.InchesToTheFourth);
     }
 
+    /**
+     * Create a new AreaMomentOfInertia instance from a MetersToTheFourth
+     *
+     * @param value The unit as MetersToTheFourth to create a new AreaMomentOfInertia from.
+     * @returns The new AreaMomentOfInertia instance.
+     */
     public static FromMetersToTheFourth(value: number): AreaMomentOfInertia {
         return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnits.MetersToTheFourth);
     }
 
+    /**
+     * Create a new AreaMomentOfInertia instance from a DecimetersToTheFourth
+     *
+     * @param value The unit as DecimetersToTheFourth to create a new AreaMomentOfInertia from.
+     * @returns The new AreaMomentOfInertia instance.
+     */
     public static FromDecimetersToTheFourth(value: number): AreaMomentOfInertia {
         return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnits.DecimetersToTheFourth);
     }
 
+    /**
+     * Create a new AreaMomentOfInertia instance from a CentimetersToTheFourth
+     *
+     * @param value The unit as CentimetersToTheFourth to create a new AreaMomentOfInertia from.
+     * @returns The new AreaMomentOfInertia instance.
+     */
     public static FromCentimetersToTheFourth(value: number): AreaMomentOfInertia {
         return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnits.CentimetersToTheFourth);
     }
 
+    /**
+     * Create a new AreaMomentOfInertia instance from a MillimetersToTheFourth
+     *
+     * @param value The unit as MillimetersToTheFourth to create a new AreaMomentOfInertia from.
+     * @returns The new AreaMomentOfInertia instance.
+     */
     public static FromMillimetersToTheFourth(value: number): AreaMomentOfInertia {
         return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnits.MillimetersToTheFourth);
     }
 
+    /**
+     * Create a new AreaMomentOfInertia instance from a FeetToTheFourth
+     *
+     * @param value The unit as FeetToTheFourth to create a new AreaMomentOfInertia from.
+     * @returns The new AreaMomentOfInertia instance.
+     */
     public static FromFeetToTheFourth(value: number): AreaMomentOfInertia {
         return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnits.FeetToTheFourth);
     }
 
+    /**
+     * Create a new AreaMomentOfInertia instance from a InchesToTheFourth
+     *
+     * @param value The unit as InchesToTheFourth to create a new AreaMomentOfInertia from.
+     * @returns The new AreaMomentOfInertia instance.
+     */
     public static FromInchesToTheFourth(value: number): AreaMomentOfInertia {
         return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnits.InchesToTheFourth);
     }
@@ -128,6 +193,13 @@ export class AreaMomentOfInertia {
         return NaN;
     }
 
+    /**
+     * Format the AreaMomentOfInertia to string.
+     * Note! the default format for AreaMomentOfInertia is MetersToTheFourth.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the AreaMomentOfInertia.
+     * @returns The string format of the AreaMomentOfInertia.
+     */
     public toString(toUnit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth): string {
 
         switch (toUnit) {

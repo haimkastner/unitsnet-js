@@ -1,23 +1,42 @@
+/** HeatFluxUnits enumeration */
 export enum HeatFluxUnits {
+    /** */
     WattsPerSquareMeter,
+    /** */
     WattsPerSquareInch,
+    /** */
     WattsPerSquareFoot,
+    /** */
     BtusPerSecondSquareInch,
+    /** */
     BtusPerSecondSquareFoot,
+    /** */
     BtusPerMinuteSquareFoot,
+    /** */
     BtusPerHourSquareFoot,
+    /** */
     CaloriesPerSecondSquareCentimeter,
+    /** */
     KilocaloriesPerHourSquareMeter,
+    /** */
     PoundsForcePerFootSecond,
+    /** */
     PoundsPerSecondCubed,
+    /** */
     NanowattsPerSquareMeter,
+    /** */
     MicrowattsPerSquareMeter,
+    /** */
     CentiwattsPerSquareMeter,
+    /** */
     DeciwattsPerSquareMeter,
+    /** */
     KilowattsPerSquareMeter,
+    /** */
     KilocaloriesPerSecondSquareCentimeter
 }
 
+/** Heat flux is the flow of energy per unit of area per unit of time */
 export class HeatFlux {
     private value: number;
     private wattspersquaremeterLazy: number | null = null;
@@ -38,10 +57,26 @@ export class HeatFlux {
     private kilowattspersquaremeterLazy: number | null = null;
     private kilocaloriespersecondsquarecentimeterLazy: number | null = null;
 
+    /**
+     * Create a new HeatFlux.
+     * @param value The value.
+     * @param fromUnit The ‘HeatFlux’ unit to create from.
+     */
     public constructor(value: number, fromUnit: HeatFluxUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of HeatFlux is WattPerSquareMeter.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get WattsPerSquareMeter(): number {
         if(this.wattspersquaremeterLazy !== null){
             return this.wattspersquaremeterLazy;
@@ -49,6 +84,7 @@ export class HeatFlux {
         return this.wattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.WattsPerSquareMeter);
     }
 
+    /** */
     public get WattsPerSquareInch(): number {
         if(this.wattspersquareinchLazy !== null){
             return this.wattspersquareinchLazy;
@@ -56,6 +92,7 @@ export class HeatFlux {
         return this.wattspersquareinchLazy = this.convertFromBase(HeatFluxUnits.WattsPerSquareInch);
     }
 
+    /** */
     public get WattsPerSquareFoot(): number {
         if(this.wattspersquarefootLazy !== null){
             return this.wattspersquarefootLazy;
@@ -63,6 +100,7 @@ export class HeatFlux {
         return this.wattspersquarefootLazy = this.convertFromBase(HeatFluxUnits.WattsPerSquareFoot);
     }
 
+    /** */
     public get BtusPerSecondSquareInch(): number {
         if(this.btuspersecondsquareinchLazy !== null){
             return this.btuspersecondsquareinchLazy;
@@ -70,6 +108,7 @@ export class HeatFlux {
         return this.btuspersecondsquareinchLazy = this.convertFromBase(HeatFluxUnits.BtusPerSecondSquareInch);
     }
 
+    /** */
     public get BtusPerSecondSquareFoot(): number {
         if(this.btuspersecondsquarefootLazy !== null){
             return this.btuspersecondsquarefootLazy;
@@ -77,6 +116,7 @@ export class HeatFlux {
         return this.btuspersecondsquarefootLazy = this.convertFromBase(HeatFluxUnits.BtusPerSecondSquareFoot);
     }
 
+    /** */
     public get BtusPerMinuteSquareFoot(): number {
         if(this.btusperminutesquarefootLazy !== null){
             return this.btusperminutesquarefootLazy;
@@ -84,6 +124,7 @@ export class HeatFlux {
         return this.btusperminutesquarefootLazy = this.convertFromBase(HeatFluxUnits.BtusPerMinuteSquareFoot);
     }
 
+    /** */
     public get BtusPerHourSquareFoot(): number {
         if(this.btusperhoursquarefootLazy !== null){
             return this.btusperhoursquarefootLazy;
@@ -91,6 +132,7 @@ export class HeatFlux {
         return this.btusperhoursquarefootLazy = this.convertFromBase(HeatFluxUnits.BtusPerHourSquareFoot);
     }
 
+    /** */
     public get CaloriesPerSecondSquareCentimeter(): number {
         if(this.caloriespersecondsquarecentimeterLazy !== null){
             return this.caloriespersecondsquarecentimeterLazy;
@@ -98,6 +140,7 @@ export class HeatFlux {
         return this.caloriespersecondsquarecentimeterLazy = this.convertFromBase(HeatFluxUnits.CaloriesPerSecondSquareCentimeter);
     }
 
+    /** */
     public get KilocaloriesPerHourSquareMeter(): number {
         if(this.kilocaloriesperhoursquaremeterLazy !== null){
             return this.kilocaloriesperhoursquaremeterLazy;
@@ -105,6 +148,7 @@ export class HeatFlux {
         return this.kilocaloriesperhoursquaremeterLazy = this.convertFromBase(HeatFluxUnits.KilocaloriesPerHourSquareMeter);
     }
 
+    /** */
     public get PoundsForcePerFootSecond(): number {
         if(this.poundsforceperfootsecondLazy !== null){
             return this.poundsforceperfootsecondLazy;
@@ -112,6 +156,7 @@ export class HeatFlux {
         return this.poundsforceperfootsecondLazy = this.convertFromBase(HeatFluxUnits.PoundsForcePerFootSecond);
     }
 
+    /** */
     public get PoundsPerSecondCubed(): number {
         if(this.poundspersecondcubedLazy !== null){
             return this.poundspersecondcubedLazy;
@@ -119,6 +164,7 @@ export class HeatFlux {
         return this.poundspersecondcubedLazy = this.convertFromBase(HeatFluxUnits.PoundsPerSecondCubed);
     }
 
+    /** */
     public get NanowattsPerSquareMeter(): number {
         if(this.nanowattspersquaremeterLazy !== null){
             return this.nanowattspersquaremeterLazy;
@@ -126,6 +172,7 @@ export class HeatFlux {
         return this.nanowattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.NanowattsPerSquareMeter);
     }
 
+    /** */
     public get MicrowattsPerSquareMeter(): number {
         if(this.microwattspersquaremeterLazy !== null){
             return this.microwattspersquaremeterLazy;
@@ -133,6 +180,7 @@ export class HeatFlux {
         return this.microwattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.MicrowattsPerSquareMeter);
     }
 
+    /** */
     public get CentiwattsPerSquareMeter(): number {
         if(this.centiwattspersquaremeterLazy !== null){
             return this.centiwattspersquaremeterLazy;
@@ -140,6 +188,7 @@ export class HeatFlux {
         return this.centiwattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.CentiwattsPerSquareMeter);
     }
 
+    /** */
     public get DeciwattsPerSquareMeter(): number {
         if(this.deciwattspersquaremeterLazy !== null){
             return this.deciwattspersquaremeterLazy;
@@ -147,6 +196,7 @@ export class HeatFlux {
         return this.deciwattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.DeciwattsPerSquareMeter);
     }
 
+    /** */
     public get KilowattsPerSquareMeter(): number {
         if(this.kilowattspersquaremeterLazy !== null){
             return this.kilowattspersquaremeterLazy;
@@ -154,6 +204,7 @@ export class HeatFlux {
         return this.kilowattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.KilowattsPerSquareMeter);
     }
 
+    /** */
     public get KilocaloriesPerSecondSquareCentimeter(): number {
         if(this.kilocaloriespersecondsquarecentimeterLazy !== null){
             return this.kilocaloriespersecondsquarecentimeterLazy;
@@ -161,70 +212,172 @@ export class HeatFlux {
         return this.kilocaloriespersecondsquarecentimeterLazy = this.convertFromBase(HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter);
     }
 
+    /**
+     * Create a new HeatFlux instance from a WattsPerSquareMeter
+     *
+     * @param value The unit as WattsPerSquareMeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromWattsPerSquareMeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.WattsPerSquareMeter);
     }
 
+    /**
+     * Create a new HeatFlux instance from a WattsPerSquareInch
+     *
+     * @param value The unit as WattsPerSquareInch to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromWattsPerSquareInch(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.WattsPerSquareInch);
     }
 
+    /**
+     * Create a new HeatFlux instance from a WattsPerSquareFoot
+     *
+     * @param value The unit as WattsPerSquareFoot to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromWattsPerSquareFoot(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.WattsPerSquareFoot);
     }
 
+    /**
+     * Create a new HeatFlux instance from a BtusPerSecondSquareInch
+     *
+     * @param value The unit as BtusPerSecondSquareInch to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromBtusPerSecondSquareInch(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.BtusPerSecondSquareInch);
     }
 
+    /**
+     * Create a new HeatFlux instance from a BtusPerSecondSquareFoot
+     *
+     * @param value The unit as BtusPerSecondSquareFoot to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromBtusPerSecondSquareFoot(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.BtusPerSecondSquareFoot);
     }
 
+    /**
+     * Create a new HeatFlux instance from a BtusPerMinuteSquareFoot
+     *
+     * @param value The unit as BtusPerMinuteSquareFoot to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromBtusPerMinuteSquareFoot(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.BtusPerMinuteSquareFoot);
     }
 
+    /**
+     * Create a new HeatFlux instance from a BtusPerHourSquareFoot
+     *
+     * @param value The unit as BtusPerHourSquareFoot to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromBtusPerHourSquareFoot(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.BtusPerHourSquareFoot);
     }
 
+    /**
+     * Create a new HeatFlux instance from a CaloriesPerSecondSquareCentimeter
+     *
+     * @param value The unit as CaloriesPerSecondSquareCentimeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromCaloriesPerSecondSquareCentimeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.CaloriesPerSecondSquareCentimeter);
     }
 
+    /**
+     * Create a new HeatFlux instance from a KilocaloriesPerHourSquareMeter
+     *
+     * @param value The unit as KilocaloriesPerHourSquareMeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromKilocaloriesPerHourSquareMeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.KilocaloriesPerHourSquareMeter);
     }
 
+    /**
+     * Create a new HeatFlux instance from a PoundsForcePerFootSecond
+     *
+     * @param value The unit as PoundsForcePerFootSecond to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromPoundsForcePerFootSecond(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.PoundsForcePerFootSecond);
     }
 
+    /**
+     * Create a new HeatFlux instance from a PoundsPerSecondCubed
+     *
+     * @param value The unit as PoundsPerSecondCubed to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromPoundsPerSecondCubed(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.PoundsPerSecondCubed);
     }
 
+    /**
+     * Create a new HeatFlux instance from a NanowattsPerSquareMeter
+     *
+     * @param value The unit as NanowattsPerSquareMeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromNanowattsPerSquareMeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.NanowattsPerSquareMeter);
     }
 
+    /**
+     * Create a new HeatFlux instance from a MicrowattsPerSquareMeter
+     *
+     * @param value The unit as MicrowattsPerSquareMeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromMicrowattsPerSquareMeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.MicrowattsPerSquareMeter);
     }
 
+    /**
+     * Create a new HeatFlux instance from a CentiwattsPerSquareMeter
+     *
+     * @param value The unit as CentiwattsPerSquareMeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromCentiwattsPerSquareMeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.CentiwattsPerSquareMeter);
     }
 
+    /**
+     * Create a new HeatFlux instance from a DeciwattsPerSquareMeter
+     *
+     * @param value The unit as DeciwattsPerSquareMeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromDeciwattsPerSquareMeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.DeciwattsPerSquareMeter);
     }
 
+    /**
+     * Create a new HeatFlux instance from a KilowattsPerSquareMeter
+     *
+     * @param value The unit as KilowattsPerSquareMeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromKilowattsPerSquareMeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.KilowattsPerSquareMeter);
     }
 
+    /**
+     * Create a new HeatFlux instance from a KilocaloriesPerSecondSquareCentimeter
+     *
+     * @param value The unit as KilocaloriesPerSecondSquareCentimeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
     public static FromKilocaloriesPerSecondSquareCentimeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter);
     }
@@ -315,6 +468,13 @@ export class HeatFlux {
         return NaN;
     }
 
+    /**
+     * Format the HeatFlux to string.
+     * Note! the default format for HeatFlux is WattsPerSquareMeter.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the HeatFlux.
+     * @returns The string format of the HeatFlux.
+     */
     public toString(toUnit: HeatFluxUnits = HeatFluxUnits.WattsPerSquareMeter): string {
 
         switch (toUnit) {

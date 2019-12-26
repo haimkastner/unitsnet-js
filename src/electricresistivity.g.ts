@@ -1,18 +1,32 @@
+/** ElectricResistivityUnits enumeration */
 export enum ElectricResistivityUnits {
+    /** */
     OhmMeters,
+    /** */
     OhmsCentimeter,
+    /** */
     PicoohmMeters,
+    /** */
     NanoohmMeters,
+    /** */
     MicroohmMeters,
+    /** */
     KiloohmMeters,
+    /** */
     MegaohmMeters,
+    /** */
     PicoohmsCentimeter,
+    /** */
     NanoohmsCentimeter,
+    /** */
     MicroohmsCentimeter,
+    /** */
     KiloohmsCentimeter,
+    /** */
     MegaohmsCentimeter
 }
 
+/** Electrical resistivity (also known as resistivity, specific electrical resistance, or volume resistivity) is a fundamental property that quantifies how strongly a given material opposes the flow of electric current. */
 export class ElectricResistivity {
     private value: number;
     private ohmmetersLazy: number | null = null;
@@ -28,10 +42,26 @@ export class ElectricResistivity {
     private kiloohmscentimeterLazy: number | null = null;
     private megaohmscentimeterLazy: number | null = null;
 
+    /**
+     * Create a new ElectricResistivity.
+     * @param value The value.
+     * @param fromUnit The ‘ElectricResistivity’ unit to create from.
+     */
     public constructor(value: number, fromUnit: ElectricResistivityUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of ElectricResistivity is OhmMeter.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get OhmMeters(): number {
         if(this.ohmmetersLazy !== null){
             return this.ohmmetersLazy;
@@ -39,6 +69,7 @@ export class ElectricResistivity {
         return this.ohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.OhmMeters);
     }
 
+    /** */
     public get OhmsCentimeter(): number {
         if(this.ohmscentimeterLazy !== null){
             return this.ohmscentimeterLazy;
@@ -46,6 +77,7 @@ export class ElectricResistivity {
         return this.ohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.OhmsCentimeter);
     }
 
+    /** */
     public get PicoohmMeters(): number {
         if(this.picoohmmetersLazy !== null){
             return this.picoohmmetersLazy;
@@ -53,6 +85,7 @@ export class ElectricResistivity {
         return this.picoohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.PicoohmMeters);
     }
 
+    /** */
     public get NanoohmMeters(): number {
         if(this.nanoohmmetersLazy !== null){
             return this.nanoohmmetersLazy;
@@ -60,6 +93,7 @@ export class ElectricResistivity {
         return this.nanoohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.NanoohmMeters);
     }
 
+    /** */
     public get MicroohmMeters(): number {
         if(this.microohmmetersLazy !== null){
             return this.microohmmetersLazy;
@@ -67,6 +101,7 @@ export class ElectricResistivity {
         return this.microohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.MicroohmMeters);
     }
 
+    /** */
     public get KiloohmMeters(): number {
         if(this.kiloohmmetersLazy !== null){
             return this.kiloohmmetersLazy;
@@ -74,6 +109,7 @@ export class ElectricResistivity {
         return this.kiloohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.KiloohmMeters);
     }
 
+    /** */
     public get MegaohmMeters(): number {
         if(this.megaohmmetersLazy !== null){
             return this.megaohmmetersLazy;
@@ -81,6 +117,7 @@ export class ElectricResistivity {
         return this.megaohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.MegaohmMeters);
     }
 
+    /** */
     public get PicoohmsCentimeter(): number {
         if(this.picoohmscentimeterLazy !== null){
             return this.picoohmscentimeterLazy;
@@ -88,6 +125,7 @@ export class ElectricResistivity {
         return this.picoohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.PicoohmsCentimeter);
     }
 
+    /** */
     public get NanoohmsCentimeter(): number {
         if(this.nanoohmscentimeterLazy !== null){
             return this.nanoohmscentimeterLazy;
@@ -95,6 +133,7 @@ export class ElectricResistivity {
         return this.nanoohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.NanoohmsCentimeter);
     }
 
+    /** */
     public get MicroohmsCentimeter(): number {
         if(this.microohmscentimeterLazy !== null){
             return this.microohmscentimeterLazy;
@@ -102,6 +141,7 @@ export class ElectricResistivity {
         return this.microohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.MicroohmsCentimeter);
     }
 
+    /** */
     public get KiloohmsCentimeter(): number {
         if(this.kiloohmscentimeterLazy !== null){
             return this.kiloohmscentimeterLazy;
@@ -109,6 +149,7 @@ export class ElectricResistivity {
         return this.kiloohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.KiloohmsCentimeter);
     }
 
+    /** */
     public get MegaohmsCentimeter(): number {
         if(this.megaohmscentimeterLazy !== null){
             return this.megaohmscentimeterLazy;
@@ -116,50 +157,122 @@ export class ElectricResistivity {
         return this.megaohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.MegaohmsCentimeter);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a OhmMeters
+     *
+     * @param value The unit as OhmMeters to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromOhmMeters(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.OhmMeters);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a OhmsCentimeter
+     *
+     * @param value The unit as OhmsCentimeter to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromOhmsCentimeter(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.OhmsCentimeter);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a PicoohmMeters
+     *
+     * @param value The unit as PicoohmMeters to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromPicoohmMeters(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.PicoohmMeters);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a NanoohmMeters
+     *
+     * @param value The unit as NanoohmMeters to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromNanoohmMeters(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.NanoohmMeters);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a MicroohmMeters
+     *
+     * @param value The unit as MicroohmMeters to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromMicroohmMeters(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.MicroohmMeters);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a KiloohmMeters
+     *
+     * @param value The unit as KiloohmMeters to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromKiloohmMeters(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.KiloohmMeters);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a MegaohmMeters
+     *
+     * @param value The unit as MegaohmMeters to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromMegaohmMeters(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.MegaohmMeters);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a PicoohmsCentimeter
+     *
+     * @param value The unit as PicoohmsCentimeter to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromPicoohmsCentimeter(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.PicoohmsCentimeter);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a NanoohmsCentimeter
+     *
+     * @param value The unit as NanoohmsCentimeter to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromNanoohmsCentimeter(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.NanoohmsCentimeter);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a MicroohmsCentimeter
+     *
+     * @param value The unit as MicroohmsCentimeter to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromMicroohmsCentimeter(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.MicroohmsCentimeter);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a KiloohmsCentimeter
+     *
+     * @param value The unit as KiloohmsCentimeter to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromKiloohmsCentimeter(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.KiloohmsCentimeter);
     }
 
+    /**
+     * Create a new ElectricResistivity instance from a MegaohmsCentimeter
+     *
+     * @param value The unit as MegaohmsCentimeter to create a new ElectricResistivity from.
+     * @returns The new ElectricResistivity instance.
+     */
     public static FromMegaohmsCentimeter(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.MegaohmsCentimeter);
     }
@@ -230,6 +343,13 @@ export class ElectricResistivity {
         return NaN;
     }
 
+    /**
+     * Format the ElectricResistivity to string.
+     * Note! the default format for ElectricResistivity is OhmMeters.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the ElectricResistivity.
+     * @returns The string format of the ElectricResistivity.
+     */
     public toString(toUnit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters): string {
 
         switch (toUnit) {

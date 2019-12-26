@@ -1,19 +1,34 @@
+/** AmountOfSubstanceUnits enumeration */
 export enum AmountOfSubstanceUnits {
+    /** */
     Moles,
+    /** */
     PoundMoles,
+    /** */
     Nanomoles,
+    /** */
     Micromoles,
+    /** */
     Centimoles,
+    /** */
     Decimoles,
+    /** */
     Kilomoles,
+    /** */
     Megamoles,
+    /** */
     NanopoundMoles,
+    /** */
     MicropoundMoles,
+    /** */
     CentipoundMoles,
+    /** */
     DecipoundMoles,
+    /** */
     KilopoundMoles
 }
 
+/** Mole is the amount of substance containing Avagadro's Number (6.02 x 10 ^ 23) of real particles such as molecules,atoms, ions or radicals. */
 export class AmountOfSubstance {
     private value: number;
     private molesLazy: number | null = null;
@@ -30,10 +45,26 @@ export class AmountOfSubstance {
     private decipoundmolesLazy: number | null = null;
     private kilopoundmolesLazy: number | null = null;
 
+    /**
+     * Create a new AmountOfSubstance.
+     * @param value The value.
+     * @param fromUnit The ‘AmountOfSubstance’ unit to create from.
+     */
     public constructor(value: number, fromUnit: AmountOfSubstanceUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of AmountOfSubstance is Mole.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Moles(): number {
         if(this.molesLazy !== null){
             return this.molesLazy;
@@ -41,6 +72,7 @@ export class AmountOfSubstance {
         return this.molesLazy = this.convertFromBase(AmountOfSubstanceUnits.Moles);
     }
 
+    /** */
     public get PoundMoles(): number {
         if(this.poundmolesLazy !== null){
             return this.poundmolesLazy;
@@ -48,6 +80,7 @@ export class AmountOfSubstance {
         return this.poundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.PoundMoles);
     }
 
+    /** */
     public get Nanomoles(): number {
         if(this.nanomolesLazy !== null){
             return this.nanomolesLazy;
@@ -55,6 +88,7 @@ export class AmountOfSubstance {
         return this.nanomolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Nanomoles);
     }
 
+    /** */
     public get Micromoles(): number {
         if(this.micromolesLazy !== null){
             return this.micromolesLazy;
@@ -62,6 +96,7 @@ export class AmountOfSubstance {
         return this.micromolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Micromoles);
     }
 
+    /** */
     public get Centimoles(): number {
         if(this.centimolesLazy !== null){
             return this.centimolesLazy;
@@ -69,6 +104,7 @@ export class AmountOfSubstance {
         return this.centimolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Centimoles);
     }
 
+    /** */
     public get Decimoles(): number {
         if(this.decimolesLazy !== null){
             return this.decimolesLazy;
@@ -76,6 +112,7 @@ export class AmountOfSubstance {
         return this.decimolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Decimoles);
     }
 
+    /** */
     public get Kilomoles(): number {
         if(this.kilomolesLazy !== null){
             return this.kilomolesLazy;
@@ -83,6 +120,7 @@ export class AmountOfSubstance {
         return this.kilomolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Kilomoles);
     }
 
+    /** */
     public get Megamoles(): number {
         if(this.megamolesLazy !== null){
             return this.megamolesLazy;
@@ -90,6 +128,7 @@ export class AmountOfSubstance {
         return this.megamolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Megamoles);
     }
 
+    /** */
     public get NanopoundMoles(): number {
         if(this.nanopoundmolesLazy !== null){
             return this.nanopoundmolesLazy;
@@ -97,6 +136,7 @@ export class AmountOfSubstance {
         return this.nanopoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.NanopoundMoles);
     }
 
+    /** */
     public get MicropoundMoles(): number {
         if(this.micropoundmolesLazy !== null){
             return this.micropoundmolesLazy;
@@ -104,6 +144,7 @@ export class AmountOfSubstance {
         return this.micropoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.MicropoundMoles);
     }
 
+    /** */
     public get CentipoundMoles(): number {
         if(this.centipoundmolesLazy !== null){
             return this.centipoundmolesLazy;
@@ -111,6 +152,7 @@ export class AmountOfSubstance {
         return this.centipoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.CentipoundMoles);
     }
 
+    /** */
     public get DecipoundMoles(): number {
         if(this.decipoundmolesLazy !== null){
             return this.decipoundmolesLazy;
@@ -118,6 +160,7 @@ export class AmountOfSubstance {
         return this.decipoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.DecipoundMoles);
     }
 
+    /** */
     public get KilopoundMoles(): number {
         if(this.kilopoundmolesLazy !== null){
             return this.kilopoundmolesLazy;
@@ -125,54 +168,132 @@ export class AmountOfSubstance {
         return this.kilopoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.KilopoundMoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a Moles
+     *
+     * @param value The unit as Moles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromMoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.Moles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a PoundMoles
+     *
+     * @param value The unit as PoundMoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromPoundMoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.PoundMoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a Nanomoles
+     *
+     * @param value The unit as Nanomoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromNanomoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.Nanomoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a Micromoles
+     *
+     * @param value The unit as Micromoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromMicromoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.Micromoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a Centimoles
+     *
+     * @param value The unit as Centimoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromCentimoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.Centimoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a Decimoles
+     *
+     * @param value The unit as Decimoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromDecimoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.Decimoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a Kilomoles
+     *
+     * @param value The unit as Kilomoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromKilomoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.Kilomoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a Megamoles
+     *
+     * @param value The unit as Megamoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromMegamoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.Megamoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a NanopoundMoles
+     *
+     * @param value The unit as NanopoundMoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromNanopoundMoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.NanopoundMoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a MicropoundMoles
+     *
+     * @param value The unit as MicropoundMoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromMicropoundMoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.MicropoundMoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a CentipoundMoles
+     *
+     * @param value The unit as CentipoundMoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromCentipoundMoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.CentipoundMoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a DecipoundMoles
+     *
+     * @param value The unit as DecipoundMoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromDecipoundMoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.DecipoundMoles);
     }
 
+    /**
+     * Create a new AmountOfSubstance instance from a KilopoundMoles
+     *
+     * @param value The unit as KilopoundMoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
     public static FromKilopoundMoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.KilopoundMoles);
     }
@@ -247,6 +368,13 @@ export class AmountOfSubstance {
         return NaN;
     }
 
+    /**
+     * Format the AmountOfSubstance to string.
+     * Note! the default format for AmountOfSubstance is Moles.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the AmountOfSubstance.
+     * @returns The string format of the AmountOfSubstance.
+     */
     public toString(toUnit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles): string {
 
         switch (toUnit) {

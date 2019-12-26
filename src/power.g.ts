@@ -1,29 +1,54 @@
+/** PowerUnits enumeration */
 export enum PowerUnits {
+    /** */
     Watts,
+    /** */
     MechanicalHorsepower,
+    /** */
     MetricHorsepower,
+    /** */
     ElectricalHorsepower,
+    /** */
     BoilerHorsepower,
+    /** */
     HydraulicHorsepower,
+    /** */
     BritishThermalUnitsPerHour,
+    /** */
     JoulesPerHour,
+    /** */
     Femtowatts,
+    /** */
     Picowatts,
+    /** */
     Nanowatts,
+    /** */
     Microwatts,
+    /** */
     Deciwatts,
+    /** */
     Decawatts,
+    /** */
     Kilowatts,
+    /** */
     Megawatts,
+    /** */
     Gigawatts,
+    /** */
     Terawatts,
+    /** */
     Petawatts,
+    /** */
     KilobritishThermalUnitsPerHour,
+    /** */
     KilojoulesPerHour,
+    /** */
     MegajoulesPerHour,
+    /** */
     GigajoulesPerHour
 }
 
+/** In physics, power is the rate of doing work. It is equivalent to an amount of energy consumed per unit time. */
 export class Power {
     private value: number;
     private wattsLazy: number | null = null;
@@ -50,10 +75,26 @@ export class Power {
     private megajoulesperhourLazy: number | null = null;
     private gigajoulesperhourLazy: number | null = null;
 
+    /**
+     * Create a new Power.
+     * @param value The value.
+     * @param fromUnit The ‘Power’ unit to create from.
+     */
     public constructor(value: number, fromUnit: PowerUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Power is Watt.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Watts(): number {
         if(this.wattsLazy !== null){
             return this.wattsLazy;
@@ -61,6 +102,7 @@ export class Power {
         return this.wattsLazy = this.convertFromBase(PowerUnits.Watts);
     }
 
+    /** */
     public get MechanicalHorsepower(): number {
         if(this.mechanicalhorsepowerLazy !== null){
             return this.mechanicalhorsepowerLazy;
@@ -68,6 +110,7 @@ export class Power {
         return this.mechanicalhorsepowerLazy = this.convertFromBase(PowerUnits.MechanicalHorsepower);
     }
 
+    /** */
     public get MetricHorsepower(): number {
         if(this.metrichorsepowerLazy !== null){
             return this.metrichorsepowerLazy;
@@ -75,6 +118,7 @@ export class Power {
         return this.metrichorsepowerLazy = this.convertFromBase(PowerUnits.MetricHorsepower);
     }
 
+    /** */
     public get ElectricalHorsepower(): number {
         if(this.electricalhorsepowerLazy !== null){
             return this.electricalhorsepowerLazy;
@@ -82,6 +126,7 @@ export class Power {
         return this.electricalhorsepowerLazy = this.convertFromBase(PowerUnits.ElectricalHorsepower);
     }
 
+    /** */
     public get BoilerHorsepower(): number {
         if(this.boilerhorsepowerLazy !== null){
             return this.boilerhorsepowerLazy;
@@ -89,6 +134,7 @@ export class Power {
         return this.boilerhorsepowerLazy = this.convertFromBase(PowerUnits.BoilerHorsepower);
     }
 
+    /** */
     public get HydraulicHorsepower(): number {
         if(this.hydraulichorsepowerLazy !== null){
             return this.hydraulichorsepowerLazy;
@@ -96,6 +142,7 @@ export class Power {
         return this.hydraulichorsepowerLazy = this.convertFromBase(PowerUnits.HydraulicHorsepower);
     }
 
+    /** */
     public get BritishThermalUnitsPerHour(): number {
         if(this.britishthermalunitsperhourLazy !== null){
             return this.britishthermalunitsperhourLazy;
@@ -103,6 +150,7 @@ export class Power {
         return this.britishthermalunitsperhourLazy = this.convertFromBase(PowerUnits.BritishThermalUnitsPerHour);
     }
 
+    /** */
     public get JoulesPerHour(): number {
         if(this.joulesperhourLazy !== null){
             return this.joulesperhourLazy;
@@ -110,6 +158,7 @@ export class Power {
         return this.joulesperhourLazy = this.convertFromBase(PowerUnits.JoulesPerHour);
     }
 
+    /** */
     public get Femtowatts(): number {
         if(this.femtowattsLazy !== null){
             return this.femtowattsLazy;
@@ -117,6 +166,7 @@ export class Power {
         return this.femtowattsLazy = this.convertFromBase(PowerUnits.Femtowatts);
     }
 
+    /** */
     public get Picowatts(): number {
         if(this.picowattsLazy !== null){
             return this.picowattsLazy;
@@ -124,6 +174,7 @@ export class Power {
         return this.picowattsLazy = this.convertFromBase(PowerUnits.Picowatts);
     }
 
+    /** */
     public get Nanowatts(): number {
         if(this.nanowattsLazy !== null){
             return this.nanowattsLazy;
@@ -131,6 +182,7 @@ export class Power {
         return this.nanowattsLazy = this.convertFromBase(PowerUnits.Nanowatts);
     }
 
+    /** */
     public get Microwatts(): number {
         if(this.microwattsLazy !== null){
             return this.microwattsLazy;
@@ -138,6 +190,7 @@ export class Power {
         return this.microwattsLazy = this.convertFromBase(PowerUnits.Microwatts);
     }
 
+    /** */
     public get Deciwatts(): number {
         if(this.deciwattsLazy !== null){
             return this.deciwattsLazy;
@@ -145,6 +198,7 @@ export class Power {
         return this.deciwattsLazy = this.convertFromBase(PowerUnits.Deciwatts);
     }
 
+    /** */
     public get Decawatts(): number {
         if(this.decawattsLazy !== null){
             return this.decawattsLazy;
@@ -152,6 +206,7 @@ export class Power {
         return this.decawattsLazy = this.convertFromBase(PowerUnits.Decawatts);
     }
 
+    /** */
     public get Kilowatts(): number {
         if(this.kilowattsLazy !== null){
             return this.kilowattsLazy;
@@ -159,6 +214,7 @@ export class Power {
         return this.kilowattsLazy = this.convertFromBase(PowerUnits.Kilowatts);
     }
 
+    /** */
     public get Megawatts(): number {
         if(this.megawattsLazy !== null){
             return this.megawattsLazy;
@@ -166,6 +222,7 @@ export class Power {
         return this.megawattsLazy = this.convertFromBase(PowerUnits.Megawatts);
     }
 
+    /** */
     public get Gigawatts(): number {
         if(this.gigawattsLazy !== null){
             return this.gigawattsLazy;
@@ -173,6 +230,7 @@ export class Power {
         return this.gigawattsLazy = this.convertFromBase(PowerUnits.Gigawatts);
     }
 
+    /** */
     public get Terawatts(): number {
         if(this.terawattsLazy !== null){
             return this.terawattsLazy;
@@ -180,6 +238,7 @@ export class Power {
         return this.terawattsLazy = this.convertFromBase(PowerUnits.Terawatts);
     }
 
+    /** */
     public get Petawatts(): number {
         if(this.petawattsLazy !== null){
             return this.petawattsLazy;
@@ -187,6 +246,7 @@ export class Power {
         return this.petawattsLazy = this.convertFromBase(PowerUnits.Petawatts);
     }
 
+    /** */
     public get KilobritishThermalUnitsPerHour(): number {
         if(this.kilobritishthermalunitsperhourLazy !== null){
             return this.kilobritishthermalunitsperhourLazy;
@@ -194,6 +254,7 @@ export class Power {
         return this.kilobritishthermalunitsperhourLazy = this.convertFromBase(PowerUnits.KilobritishThermalUnitsPerHour);
     }
 
+    /** */
     public get KilojoulesPerHour(): number {
         if(this.kilojoulesperhourLazy !== null){
             return this.kilojoulesperhourLazy;
@@ -201,6 +262,7 @@ export class Power {
         return this.kilojoulesperhourLazy = this.convertFromBase(PowerUnits.KilojoulesPerHour);
     }
 
+    /** */
     public get MegajoulesPerHour(): number {
         if(this.megajoulesperhourLazy !== null){
             return this.megajoulesperhourLazy;
@@ -208,6 +270,7 @@ export class Power {
         return this.megajoulesperhourLazy = this.convertFromBase(PowerUnits.MegajoulesPerHour);
     }
 
+    /** */
     public get GigajoulesPerHour(): number {
         if(this.gigajoulesperhourLazy !== null){
             return this.gigajoulesperhourLazy;
@@ -215,94 +278,232 @@ export class Power {
         return this.gigajoulesperhourLazy = this.convertFromBase(PowerUnits.GigajoulesPerHour);
     }
 
+    /**
+     * Create a new Power instance from a Watts
+     *
+     * @param value The unit as Watts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromWatts(value: number): Power {
         return new Power(value, PowerUnits.Watts);
     }
 
+    /**
+     * Create a new Power instance from a MechanicalHorsepower
+     *
+     * @param value The unit as MechanicalHorsepower to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromMechanicalHorsepower(value: number): Power {
         return new Power(value, PowerUnits.MechanicalHorsepower);
     }
 
+    /**
+     * Create a new Power instance from a MetricHorsepower
+     *
+     * @param value The unit as MetricHorsepower to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromMetricHorsepower(value: number): Power {
         return new Power(value, PowerUnits.MetricHorsepower);
     }
 
+    /**
+     * Create a new Power instance from a ElectricalHorsepower
+     *
+     * @param value The unit as ElectricalHorsepower to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromElectricalHorsepower(value: number): Power {
         return new Power(value, PowerUnits.ElectricalHorsepower);
     }
 
+    /**
+     * Create a new Power instance from a BoilerHorsepower
+     *
+     * @param value The unit as BoilerHorsepower to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromBoilerHorsepower(value: number): Power {
         return new Power(value, PowerUnits.BoilerHorsepower);
     }
 
+    /**
+     * Create a new Power instance from a HydraulicHorsepower
+     *
+     * @param value The unit as HydraulicHorsepower to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromHydraulicHorsepower(value: number): Power {
         return new Power(value, PowerUnits.HydraulicHorsepower);
     }
 
+    /**
+     * Create a new Power instance from a BritishThermalUnitsPerHour
+     *
+     * @param value The unit as BritishThermalUnitsPerHour to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromBritishThermalUnitsPerHour(value: number): Power {
         return new Power(value, PowerUnits.BritishThermalUnitsPerHour);
     }
 
+    /**
+     * Create a new Power instance from a JoulesPerHour
+     *
+     * @param value The unit as JoulesPerHour to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromJoulesPerHour(value: number): Power {
         return new Power(value, PowerUnits.JoulesPerHour);
     }
 
+    /**
+     * Create a new Power instance from a Femtowatts
+     *
+     * @param value The unit as Femtowatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromFemtowatts(value: number): Power {
         return new Power(value, PowerUnits.Femtowatts);
     }
 
+    /**
+     * Create a new Power instance from a Picowatts
+     *
+     * @param value The unit as Picowatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromPicowatts(value: number): Power {
         return new Power(value, PowerUnits.Picowatts);
     }
 
+    /**
+     * Create a new Power instance from a Nanowatts
+     *
+     * @param value The unit as Nanowatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromNanowatts(value: number): Power {
         return new Power(value, PowerUnits.Nanowatts);
     }
 
+    /**
+     * Create a new Power instance from a Microwatts
+     *
+     * @param value The unit as Microwatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromMicrowatts(value: number): Power {
         return new Power(value, PowerUnits.Microwatts);
     }
 
+    /**
+     * Create a new Power instance from a Deciwatts
+     *
+     * @param value The unit as Deciwatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromDeciwatts(value: number): Power {
         return new Power(value, PowerUnits.Deciwatts);
     }
 
+    /**
+     * Create a new Power instance from a Decawatts
+     *
+     * @param value The unit as Decawatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromDecawatts(value: number): Power {
         return new Power(value, PowerUnits.Decawatts);
     }
 
+    /**
+     * Create a new Power instance from a Kilowatts
+     *
+     * @param value The unit as Kilowatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromKilowatts(value: number): Power {
         return new Power(value, PowerUnits.Kilowatts);
     }
 
+    /**
+     * Create a new Power instance from a Megawatts
+     *
+     * @param value The unit as Megawatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromMegawatts(value: number): Power {
         return new Power(value, PowerUnits.Megawatts);
     }
 
+    /**
+     * Create a new Power instance from a Gigawatts
+     *
+     * @param value The unit as Gigawatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromGigawatts(value: number): Power {
         return new Power(value, PowerUnits.Gigawatts);
     }
 
+    /**
+     * Create a new Power instance from a Terawatts
+     *
+     * @param value The unit as Terawatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromTerawatts(value: number): Power {
         return new Power(value, PowerUnits.Terawatts);
     }
 
+    /**
+     * Create a new Power instance from a Petawatts
+     *
+     * @param value The unit as Petawatts to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromPetawatts(value: number): Power {
         return new Power(value, PowerUnits.Petawatts);
     }
 
+    /**
+     * Create a new Power instance from a KilobritishThermalUnitsPerHour
+     *
+     * @param value The unit as KilobritishThermalUnitsPerHour to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromKilobritishThermalUnitsPerHour(value: number): Power {
         return new Power(value, PowerUnits.KilobritishThermalUnitsPerHour);
     }
 
+    /**
+     * Create a new Power instance from a KilojoulesPerHour
+     *
+     * @param value The unit as KilojoulesPerHour to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromKilojoulesPerHour(value: number): Power {
         return new Power(value, PowerUnits.KilojoulesPerHour);
     }
 
+    /**
+     * Create a new Power instance from a MegajoulesPerHour
+     *
+     * @param value The unit as MegajoulesPerHour to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromMegajoulesPerHour(value: number): Power {
         return new Power(value, PowerUnits.MegajoulesPerHour);
     }
 
+    /**
+     * Create a new Power instance from a GigajoulesPerHour
+     *
+     * @param value The unit as GigajoulesPerHour to create a new Power from.
+     * @returns The new Power instance.
+     */
     public static FromGigajoulesPerHour(value: number): Power {
         return new Power(value, PowerUnits.GigajoulesPerHour);
     }
@@ -417,6 +618,13 @@ export class Power {
         return NaN;
     }
 
+    /**
+     * Format the Power to string.
+     * Note! the default format for Power is Watts.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Power.
+     * @returns The string format of the Power.
+     */
     public toString(toUnit: PowerUnits = PowerUnits.Watts): string {
 
         switch (toUnit) {

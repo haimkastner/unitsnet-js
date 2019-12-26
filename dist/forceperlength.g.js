@@ -1,20 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** ForcePerLengthUnits enumeration */
 var ForcePerLengthUnits;
 (function (ForcePerLengthUnits) {
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["NewtonsPerMeter"] = 0] = "NewtonsPerMeter";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["KilogramsForcePerMeter"] = 1] = "KilogramsForcePerMeter";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["PoundsForcePerFoot"] = 2] = "PoundsForcePerFoot";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["PoundsForcePerInch"] = 3] = "PoundsForcePerInch";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["PoundsForcePerYard"] = 4] = "PoundsForcePerYard";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["NanonewtonsPerMeter"] = 5] = "NanonewtonsPerMeter";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["MicronewtonsPerMeter"] = 6] = "MicronewtonsPerMeter";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["CentinewtonsPerMeter"] = 7] = "CentinewtonsPerMeter";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["DecinewtonsPerMeter"] = 8] = "DecinewtonsPerMeter";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["KilonewtonsPerMeter"] = 9] = "KilonewtonsPerMeter";
+    /** */
     ForcePerLengthUnits[ForcePerLengthUnits["MeganewtonsPerMeter"] = 10] = "MeganewtonsPerMeter";
 })(ForcePerLengthUnits = exports.ForcePerLengthUnits || (exports.ForcePerLengthUnits = {}));
+/** The magnitude of force per unit length. */
 class ForcePerLength {
+    /**
+     * Create a new ForcePerLength.
+     * @param value The value.
+     * @param fromUnit The ‘ForcePerLength’ unit to create from.
+     */
     constructor(value, fromUnit) {
         this.newtonspermeterLazy = null;
         this.kilogramsforcepermeterLazy = null;
@@ -27,104 +45,190 @@ class ForcePerLength {
         this.decinewtonspermeterLazy = null;
         this.kilonewtonspermeterLazy = null;
         this.meganewtonspermeterLazy = null;
+        if (isNaN(value))
+            throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
+    /**
+     * The base value of ForcePerLength is NewtonPerMeter.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    get BaseValue() {
+        return this.value;
+    }
+    /** */
     get NewtonsPerMeter() {
         if (this.newtonspermeterLazy !== null) {
             return this.newtonspermeterLazy;
         }
         return this.newtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.NewtonsPerMeter);
     }
+    /** */
     get KilogramsForcePerMeter() {
         if (this.kilogramsforcepermeterLazy !== null) {
             return this.kilogramsforcepermeterLazy;
         }
         return this.kilogramsforcepermeterLazy = this.convertFromBase(ForcePerLengthUnits.KilogramsForcePerMeter);
     }
+    /** */
     get PoundsForcePerFoot() {
         if (this.poundsforceperfootLazy !== null) {
             return this.poundsforceperfootLazy;
         }
         return this.poundsforceperfootLazy = this.convertFromBase(ForcePerLengthUnits.PoundsForcePerFoot);
     }
+    /** */
     get PoundsForcePerInch() {
         if (this.poundsforceperinchLazy !== null) {
             return this.poundsforceperinchLazy;
         }
         return this.poundsforceperinchLazy = this.convertFromBase(ForcePerLengthUnits.PoundsForcePerInch);
     }
+    /** */
     get PoundsForcePerYard() {
         if (this.poundsforceperyardLazy !== null) {
             return this.poundsforceperyardLazy;
         }
         return this.poundsforceperyardLazy = this.convertFromBase(ForcePerLengthUnits.PoundsForcePerYard);
     }
+    /** */
     get NanonewtonsPerMeter() {
         if (this.nanonewtonspermeterLazy !== null) {
             return this.nanonewtonspermeterLazy;
         }
         return this.nanonewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.NanonewtonsPerMeter);
     }
+    /** */
     get MicronewtonsPerMeter() {
         if (this.micronewtonspermeterLazy !== null) {
             return this.micronewtonspermeterLazy;
         }
         return this.micronewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.MicronewtonsPerMeter);
     }
+    /** */
     get CentinewtonsPerMeter() {
         if (this.centinewtonspermeterLazy !== null) {
             return this.centinewtonspermeterLazy;
         }
         return this.centinewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.CentinewtonsPerMeter);
     }
+    /** */
     get DecinewtonsPerMeter() {
         if (this.decinewtonspermeterLazy !== null) {
             return this.decinewtonspermeterLazy;
         }
         return this.decinewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.DecinewtonsPerMeter);
     }
+    /** */
     get KilonewtonsPerMeter() {
         if (this.kilonewtonspermeterLazy !== null) {
             return this.kilonewtonspermeterLazy;
         }
         return this.kilonewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.KilonewtonsPerMeter);
     }
+    /** */
     get MeganewtonsPerMeter() {
         if (this.meganewtonspermeterLazy !== null) {
             return this.meganewtonspermeterLazy;
         }
         return this.meganewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.MeganewtonsPerMeter);
     }
+    /**
+     * Create a new ForcePerLength instance from a NewtonsPerMeter
+     *
+     * @param value The unit as NewtonsPerMeter to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromNewtonsPerMeter(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.NewtonsPerMeter);
     }
+    /**
+     * Create a new ForcePerLength instance from a KilogramsForcePerMeter
+     *
+     * @param value The unit as KilogramsForcePerMeter to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromKilogramsForcePerMeter(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.KilogramsForcePerMeter);
     }
+    /**
+     * Create a new ForcePerLength instance from a PoundsForcePerFoot
+     *
+     * @param value The unit as PoundsForcePerFoot to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromPoundsForcePerFoot(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.PoundsForcePerFoot);
     }
+    /**
+     * Create a new ForcePerLength instance from a PoundsForcePerInch
+     *
+     * @param value The unit as PoundsForcePerInch to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromPoundsForcePerInch(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.PoundsForcePerInch);
     }
+    /**
+     * Create a new ForcePerLength instance from a PoundsForcePerYard
+     *
+     * @param value The unit as PoundsForcePerYard to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromPoundsForcePerYard(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.PoundsForcePerYard);
     }
+    /**
+     * Create a new ForcePerLength instance from a NanonewtonsPerMeter
+     *
+     * @param value The unit as NanonewtonsPerMeter to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromNanonewtonsPerMeter(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.NanonewtonsPerMeter);
     }
+    /**
+     * Create a new ForcePerLength instance from a MicronewtonsPerMeter
+     *
+     * @param value The unit as MicronewtonsPerMeter to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromMicronewtonsPerMeter(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.MicronewtonsPerMeter);
     }
+    /**
+     * Create a new ForcePerLength instance from a CentinewtonsPerMeter
+     *
+     * @param value The unit as CentinewtonsPerMeter to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromCentinewtonsPerMeter(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.CentinewtonsPerMeter);
     }
+    /**
+     * Create a new ForcePerLength instance from a DecinewtonsPerMeter
+     *
+     * @param value The unit as DecinewtonsPerMeter to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromDecinewtonsPerMeter(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.DecinewtonsPerMeter);
     }
+    /**
+     * Create a new ForcePerLength instance from a KilonewtonsPerMeter
+     *
+     * @param value The unit as KilonewtonsPerMeter to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromKilonewtonsPerMeter(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.KilonewtonsPerMeter);
     }
+    /**
+     * Create a new ForcePerLength instance from a MeganewtonsPerMeter
+     *
+     * @param value The unit as MeganewtonsPerMeter to create a new ForcePerLength from.
+     * @returns The new ForcePerLength instance.
+     */
     static FromMeganewtonsPerMeter(value) {
         return new ForcePerLength(value, ForcePerLengthUnits.MeganewtonsPerMeter);
     }
@@ -186,6 +290,13 @@ class ForcePerLength {
         }
         return NaN;
     }
+    /**
+     * Format the ForcePerLength to string.
+     * Note! the default format for ForcePerLength is NewtonsPerMeter.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the ForcePerLength.
+     * @returns The string format of the ForcePerLength.
+     */
     toString(toUnit = ForcePerLengthUnits.NewtonsPerMeter) {
         switch (toUnit) {
             case ForcePerLengthUnits.NewtonsPerMeter:

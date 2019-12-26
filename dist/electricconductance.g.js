@@ -1,31 +1,63 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** ElectricConductanceUnits enumeration */
 var ElectricConductanceUnits;
 (function (ElectricConductanceUnits) {
+    /** */
     ElectricConductanceUnits[ElectricConductanceUnits["Siemens"] = 0] = "Siemens";
+    /** */
     ElectricConductanceUnits[ElectricConductanceUnits["Microsiemens"] = 1] = "Microsiemens";
 })(ElectricConductanceUnits = exports.ElectricConductanceUnits || (exports.ElectricConductanceUnits = {}));
+/** The electrical conductance of an electrical conductor is a measure of the easeness to pass an electric current through that conductor. */
 class ElectricConductance {
+    /**
+     * Create a new ElectricConductance.
+     * @param value The value.
+     * @param fromUnit The ‘ElectricConductance’ unit to create from.
+     */
     constructor(value, fromUnit) {
         this.siemensLazy = null;
         this.microsiemensLazy = null;
+        if (isNaN(value))
+            throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
+    /**
+     * The base value of ElectricConductance is Siemens.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    get BaseValue() {
+        return this.value;
+    }
+    /** */
     get Siemens() {
         if (this.siemensLazy !== null) {
             return this.siemensLazy;
         }
         return this.siemensLazy = this.convertFromBase(ElectricConductanceUnits.Siemens);
     }
+    /** */
     get Microsiemens() {
         if (this.microsiemensLazy !== null) {
             return this.microsiemensLazy;
         }
         return this.microsiemensLazy = this.convertFromBase(ElectricConductanceUnits.Microsiemens);
     }
+    /**
+     * Create a new ElectricConductance instance from a Siemens
+     *
+     * @param value The unit as Siemens to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
     static FromSiemens(value) {
         return new ElectricConductance(value, ElectricConductanceUnits.Siemens);
     }
+    /**
+     * Create a new ElectricConductance instance from a Microsiemens
+     *
+     * @param value The unit as Microsiemens to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
     static FromMicrosiemens(value) {
         return new ElectricConductance(value, ElectricConductanceUnits.Microsiemens);
     }
@@ -51,6 +83,13 @@ class ElectricConductance {
         }
         return NaN;
     }
+    /**
+     * Format the ElectricConductance to string.
+     * Note! the default format for ElectricConductance is Siemens.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the ElectricConductance.
+     * @returns The string format of the ElectricConductance.
+     */
     toString(toUnit = ElectricConductanceUnits.Siemens) {
         switch (toUnit) {
             case ElectricConductanceUnits.Siemens:

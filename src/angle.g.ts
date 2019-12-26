@@ -1,18 +1,32 @@
+/** AngleUnits enumeration */
 export enum AngleUnits {
+    /** */
     Radians,
+    /** */
     Degrees,
+    /** */
     Arcminutes,
+    /** */
     Arcseconds,
+    /** */
     Gradians,
+    /** */
     Revolutions,
+    /** */
     Nanoradians,
+    /** */
     Microradians,
+    /** */
     Centiradians,
+    /** */
     Deciradians,
+    /** */
     Nanodegrees,
+    /** */
     Microdegrees
 }
 
+/** In geometry, an angle is the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex of the angle. */
 export class Angle {
     private value: number;
     private radiansLazy: number | null = null;
@@ -28,10 +42,26 @@ export class Angle {
     private nanodegreesLazy: number | null = null;
     private microdegreesLazy: number | null = null;
 
+    /**
+     * Create a new Angle.
+     * @param value The value.
+     * @param fromUnit The ‘Angle’ unit to create from.
+     */
     public constructor(value: number, fromUnit: AngleUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Angle is Degree.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Radians(): number {
         if(this.radiansLazy !== null){
             return this.radiansLazy;
@@ -39,6 +69,7 @@ export class Angle {
         return this.radiansLazy = this.convertFromBase(AngleUnits.Radians);
     }
 
+    /** */
     public get Degrees(): number {
         if(this.degreesLazy !== null){
             return this.degreesLazy;
@@ -46,6 +77,7 @@ export class Angle {
         return this.degreesLazy = this.convertFromBase(AngleUnits.Degrees);
     }
 
+    /** */
     public get Arcminutes(): number {
         if(this.arcminutesLazy !== null){
             return this.arcminutesLazy;
@@ -53,6 +85,7 @@ export class Angle {
         return this.arcminutesLazy = this.convertFromBase(AngleUnits.Arcminutes);
     }
 
+    /** */
     public get Arcseconds(): number {
         if(this.arcsecondsLazy !== null){
             return this.arcsecondsLazy;
@@ -60,6 +93,7 @@ export class Angle {
         return this.arcsecondsLazy = this.convertFromBase(AngleUnits.Arcseconds);
     }
 
+    /** */
     public get Gradians(): number {
         if(this.gradiansLazy !== null){
             return this.gradiansLazy;
@@ -67,6 +101,7 @@ export class Angle {
         return this.gradiansLazy = this.convertFromBase(AngleUnits.Gradians);
     }
 
+    /** */
     public get Revolutions(): number {
         if(this.revolutionsLazy !== null){
             return this.revolutionsLazy;
@@ -74,6 +109,7 @@ export class Angle {
         return this.revolutionsLazy = this.convertFromBase(AngleUnits.Revolutions);
     }
 
+    /** */
     public get Nanoradians(): number {
         if(this.nanoradiansLazy !== null){
             return this.nanoradiansLazy;
@@ -81,6 +117,7 @@ export class Angle {
         return this.nanoradiansLazy = this.convertFromBase(AngleUnits.Nanoradians);
     }
 
+    /** */
     public get Microradians(): number {
         if(this.microradiansLazy !== null){
             return this.microradiansLazy;
@@ -88,6 +125,7 @@ export class Angle {
         return this.microradiansLazy = this.convertFromBase(AngleUnits.Microradians);
     }
 
+    /** */
     public get Centiradians(): number {
         if(this.centiradiansLazy !== null){
             return this.centiradiansLazy;
@@ -95,6 +133,7 @@ export class Angle {
         return this.centiradiansLazy = this.convertFromBase(AngleUnits.Centiradians);
     }
 
+    /** */
     public get Deciradians(): number {
         if(this.deciradiansLazy !== null){
             return this.deciradiansLazy;
@@ -102,6 +141,7 @@ export class Angle {
         return this.deciradiansLazy = this.convertFromBase(AngleUnits.Deciradians);
     }
 
+    /** */
     public get Nanodegrees(): number {
         if(this.nanodegreesLazy !== null){
             return this.nanodegreesLazy;
@@ -109,6 +149,7 @@ export class Angle {
         return this.nanodegreesLazy = this.convertFromBase(AngleUnits.Nanodegrees);
     }
 
+    /** */
     public get Microdegrees(): number {
         if(this.microdegreesLazy !== null){
             return this.microdegreesLazy;
@@ -116,50 +157,122 @@ export class Angle {
         return this.microdegreesLazy = this.convertFromBase(AngleUnits.Microdegrees);
     }
 
+    /**
+     * Create a new Angle instance from a Radians
+     *
+     * @param value The unit as Radians to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromRadians(value: number): Angle {
         return new Angle(value, AngleUnits.Radians);
     }
 
+    /**
+     * Create a new Angle instance from a Degrees
+     *
+     * @param value The unit as Degrees to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromDegrees(value: number): Angle {
         return new Angle(value, AngleUnits.Degrees);
     }
 
+    /**
+     * Create a new Angle instance from a Arcminutes
+     *
+     * @param value The unit as Arcminutes to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromArcminutes(value: number): Angle {
         return new Angle(value, AngleUnits.Arcminutes);
     }
 
+    /**
+     * Create a new Angle instance from a Arcseconds
+     *
+     * @param value The unit as Arcseconds to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromArcseconds(value: number): Angle {
         return new Angle(value, AngleUnits.Arcseconds);
     }
 
+    /**
+     * Create a new Angle instance from a Gradians
+     *
+     * @param value The unit as Gradians to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromGradians(value: number): Angle {
         return new Angle(value, AngleUnits.Gradians);
     }
 
+    /**
+     * Create a new Angle instance from a Revolutions
+     *
+     * @param value The unit as Revolutions to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromRevolutions(value: number): Angle {
         return new Angle(value, AngleUnits.Revolutions);
     }
 
+    /**
+     * Create a new Angle instance from a Nanoradians
+     *
+     * @param value The unit as Nanoradians to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromNanoradians(value: number): Angle {
         return new Angle(value, AngleUnits.Nanoradians);
     }
 
+    /**
+     * Create a new Angle instance from a Microradians
+     *
+     * @param value The unit as Microradians to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromMicroradians(value: number): Angle {
         return new Angle(value, AngleUnits.Microradians);
     }
 
+    /**
+     * Create a new Angle instance from a Centiradians
+     *
+     * @param value The unit as Centiradians to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromCentiradians(value: number): Angle {
         return new Angle(value, AngleUnits.Centiradians);
     }
 
+    /**
+     * Create a new Angle instance from a Deciradians
+     *
+     * @param value The unit as Deciradians to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromDeciradians(value: number): Angle {
         return new Angle(value, AngleUnits.Deciradians);
     }
 
+    /**
+     * Create a new Angle instance from a Nanodegrees
+     *
+     * @param value The unit as Nanodegrees to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromNanodegrees(value: number): Angle {
         return new Angle(value, AngleUnits.Nanodegrees);
     }
 
+    /**
+     * Create a new Angle instance from a Microdegrees
+     *
+     * @param value The unit as Microdegrees to create a new Angle from.
+     * @returns The new Angle instance.
+     */
     public static FromMicrodegrees(value: number): Angle {
         return new Angle(value, AngleUnits.Microdegrees);
     }
@@ -230,6 +343,13 @@ export class Angle {
         return NaN;
     }
 
+    /**
+     * Format the Angle to string.
+     * Note! the default format for Angle is Degrees.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Angle.
+     * @returns The string format of the Angle.
+     */
     public toString(toUnit: AngleUnits = AngleUnits.Degrees): string {
 
         switch (toUnit) {

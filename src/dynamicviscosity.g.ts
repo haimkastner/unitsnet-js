@@ -1,14 +1,24 @@
+/** DynamicViscosityUnits enumeration */
 export enum DynamicViscosityUnits {
+    /** */
     NewtonSecondsPerMeterSquared,
+    /** */
     PascalSeconds,
+    /** */
     Poise,
+    /** */
     Reyns,
+    /** */
     PoundsForceSecondPerSquareInch,
+    /** */
     PoundsForceSecondPerSquareFoot,
+    /** */
     MicropascalSeconds,
+    /** */
     Centipoise
 }
 
+/** The dynamic (shear) viscosity of a fluid expresses its resistance to shearing flows, where adjacent layers move parallel to each other with different speeds */
 export class DynamicViscosity {
     private value: number;
     private newtonsecondspermetersquaredLazy: number | null = null;
@@ -20,10 +30,26 @@ export class DynamicViscosity {
     private micropascalsecondsLazy: number | null = null;
     private centipoiseLazy: number | null = null;
 
+    /**
+     * Create a new DynamicViscosity.
+     * @param value The value.
+     * @param fromUnit The ‘DynamicViscosity’ unit to create from.
+     */
     public constructor(value: number, fromUnit: DynamicViscosityUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of DynamicViscosity is NewtonSecondPerMeterSquared.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get NewtonSecondsPerMeterSquared(): number {
         if(this.newtonsecondspermetersquaredLazy !== null){
             return this.newtonsecondspermetersquaredLazy;
@@ -31,6 +57,7 @@ export class DynamicViscosity {
         return this.newtonsecondspermetersquaredLazy = this.convertFromBase(DynamicViscosityUnits.NewtonSecondsPerMeterSquared);
     }
 
+    /** */
     public get PascalSeconds(): number {
         if(this.pascalsecondsLazy !== null){
             return this.pascalsecondsLazy;
@@ -38,6 +65,7 @@ export class DynamicViscosity {
         return this.pascalsecondsLazy = this.convertFromBase(DynamicViscosityUnits.PascalSeconds);
     }
 
+    /** */
     public get Poise(): number {
         if(this.poiseLazy !== null){
             return this.poiseLazy;
@@ -45,6 +73,7 @@ export class DynamicViscosity {
         return this.poiseLazy = this.convertFromBase(DynamicViscosityUnits.Poise);
     }
 
+    /** */
     public get Reyns(): number {
         if(this.reynsLazy !== null){
             return this.reynsLazy;
@@ -52,6 +81,7 @@ export class DynamicViscosity {
         return this.reynsLazy = this.convertFromBase(DynamicViscosityUnits.Reyns);
     }
 
+    /** */
     public get PoundsForceSecondPerSquareInch(): number {
         if(this.poundsforcesecondpersquareinchLazy !== null){
             return this.poundsforcesecondpersquareinchLazy;
@@ -59,6 +89,7 @@ export class DynamicViscosity {
         return this.poundsforcesecondpersquareinchLazy = this.convertFromBase(DynamicViscosityUnits.PoundsForceSecondPerSquareInch);
     }
 
+    /** */
     public get PoundsForceSecondPerSquareFoot(): number {
         if(this.poundsforcesecondpersquarefootLazy !== null){
             return this.poundsforcesecondpersquarefootLazy;
@@ -66,6 +97,7 @@ export class DynamicViscosity {
         return this.poundsforcesecondpersquarefootLazy = this.convertFromBase(DynamicViscosityUnits.PoundsForceSecondPerSquareFoot);
     }
 
+    /** */
     public get MicropascalSeconds(): number {
         if(this.micropascalsecondsLazy !== null){
             return this.micropascalsecondsLazy;
@@ -73,6 +105,7 @@ export class DynamicViscosity {
         return this.micropascalsecondsLazy = this.convertFromBase(DynamicViscosityUnits.MicropascalSeconds);
     }
 
+    /** */
     public get Centipoise(): number {
         if(this.centipoiseLazy !== null){
             return this.centipoiseLazy;
@@ -80,34 +113,82 @@ export class DynamicViscosity {
         return this.centipoiseLazy = this.convertFromBase(DynamicViscosityUnits.Centipoise);
     }
 
+    /**
+     * Create a new DynamicViscosity instance from a NewtonSecondsPerMeterSquared
+     *
+     * @param value The unit as NewtonSecondsPerMeterSquared to create a new DynamicViscosity from.
+     * @returns The new DynamicViscosity instance.
+     */
     public static FromNewtonSecondsPerMeterSquared(value: number): DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.NewtonSecondsPerMeterSquared);
     }
 
+    /**
+     * Create a new DynamicViscosity instance from a PascalSeconds
+     *
+     * @param value The unit as PascalSeconds to create a new DynamicViscosity from.
+     * @returns The new DynamicViscosity instance.
+     */
     public static FromPascalSeconds(value: number): DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.PascalSeconds);
     }
 
+    /**
+     * Create a new DynamicViscosity instance from a Poise
+     *
+     * @param value The unit as Poise to create a new DynamicViscosity from.
+     * @returns The new DynamicViscosity instance.
+     */
     public static FromPoise(value: number): DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.Poise);
     }
 
+    /**
+     * Create a new DynamicViscosity instance from a Reyns
+     *
+     * @param value The unit as Reyns to create a new DynamicViscosity from.
+     * @returns The new DynamicViscosity instance.
+     */
     public static FromReyns(value: number): DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.Reyns);
     }
 
+    /**
+     * Create a new DynamicViscosity instance from a PoundsForceSecondPerSquareInch
+     *
+     * @param value The unit as PoundsForceSecondPerSquareInch to create a new DynamicViscosity from.
+     * @returns The new DynamicViscosity instance.
+     */
     public static FromPoundsForceSecondPerSquareInch(value: number): DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.PoundsForceSecondPerSquareInch);
     }
 
+    /**
+     * Create a new DynamicViscosity instance from a PoundsForceSecondPerSquareFoot
+     *
+     * @param value The unit as PoundsForceSecondPerSquareFoot to create a new DynamicViscosity from.
+     * @returns The new DynamicViscosity instance.
+     */
     public static FromPoundsForceSecondPerSquareFoot(value: number): DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.PoundsForceSecondPerSquareFoot);
     }
 
+    /**
+     * Create a new DynamicViscosity instance from a MicropascalSeconds
+     *
+     * @param value The unit as MicropascalSeconds to create a new DynamicViscosity from.
+     * @returns The new DynamicViscosity instance.
+     */
     public static FromMicropascalSeconds(value: number): DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.MicropascalSeconds);
     }
 
+    /**
+     * Create a new DynamicViscosity instance from a Centipoise
+     *
+     * @param value The unit as Centipoise to create a new DynamicViscosity from.
+     * @returns The new DynamicViscosity instance.
+     */
     public static FromCentipoise(value: number): DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.Centipoise);
     }
@@ -162,6 +243,13 @@ export class DynamicViscosity {
         return NaN;
     }
 
+    /**
+     * Format the DynamicViscosity to string.
+     * Note! the default format for DynamicViscosity is NewtonSecondsPerMeterSquared.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the DynamicViscosity.
+     * @returns The string format of the DynamicViscosity.
+     */
     public toString(toUnit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared): string {
 
         switch (toUnit) {

@@ -1,15 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** IrradiationUnits enumeration */
 var IrradiationUnits;
 (function (IrradiationUnits) {
+    /** */
     IrradiationUnits[IrradiationUnits["JoulesPerSquareMeter"] = 0] = "JoulesPerSquareMeter";
+    /** */
     IrradiationUnits[IrradiationUnits["JoulesPerSquareCentimeter"] = 1] = "JoulesPerSquareCentimeter";
+    /** */
     IrradiationUnits[IrradiationUnits["JoulesPerSquareMillimeter"] = 2] = "JoulesPerSquareMillimeter";
+    /** */
     IrradiationUnits[IrradiationUnits["WattHoursPerSquareMeter"] = 3] = "WattHoursPerSquareMeter";
+    /** */
     IrradiationUnits[IrradiationUnits["KilojoulesPerSquareMeter"] = 4] = "KilojoulesPerSquareMeter";
+    /** */
     IrradiationUnits[IrradiationUnits["KilowattHoursPerSquareMeter"] = 5] = "KilowattHoursPerSquareMeter";
 })(IrradiationUnits = exports.IrradiationUnits || (exports.IrradiationUnits = {}));
+/** Irradiation is the process by which an object is exposed to radiation. The exposure can originate from various sources, including natural sources. */
 class Irradiation {
+    /**
+     * Create a new Irradiation.
+     * @param value The value.
+     * @param fromUnit The ‘Irradiation’ unit to create from.
+     */
     constructor(value, fromUnit) {
         this.joulespersquaremeterLazy = null;
         this.joulespersquarecentimeterLazy = null;
@@ -17,59 +30,110 @@ class Irradiation {
         this.watthourspersquaremeterLazy = null;
         this.kilojoulespersquaremeterLazy = null;
         this.kilowatthourspersquaremeterLazy = null;
+        if (isNaN(value))
+            throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
+    /**
+     * The base value of Irradiation is JoulePerSquareMeter.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    get BaseValue() {
+        return this.value;
+    }
+    /** */
     get JoulesPerSquareMeter() {
         if (this.joulespersquaremeterLazy !== null) {
             return this.joulespersquaremeterLazy;
         }
         return this.joulespersquaremeterLazy = this.convertFromBase(IrradiationUnits.JoulesPerSquareMeter);
     }
+    /** */
     get JoulesPerSquareCentimeter() {
         if (this.joulespersquarecentimeterLazy !== null) {
             return this.joulespersquarecentimeterLazy;
         }
         return this.joulespersquarecentimeterLazy = this.convertFromBase(IrradiationUnits.JoulesPerSquareCentimeter);
     }
+    /** */
     get JoulesPerSquareMillimeter() {
         if (this.joulespersquaremillimeterLazy !== null) {
             return this.joulespersquaremillimeterLazy;
         }
         return this.joulespersquaremillimeterLazy = this.convertFromBase(IrradiationUnits.JoulesPerSquareMillimeter);
     }
+    /** */
     get WattHoursPerSquareMeter() {
         if (this.watthourspersquaremeterLazy !== null) {
             return this.watthourspersquaremeterLazy;
         }
         return this.watthourspersquaremeterLazy = this.convertFromBase(IrradiationUnits.WattHoursPerSquareMeter);
     }
+    /** */
     get KilojoulesPerSquareMeter() {
         if (this.kilojoulespersquaremeterLazy !== null) {
             return this.kilojoulespersquaremeterLazy;
         }
         return this.kilojoulespersquaremeterLazy = this.convertFromBase(IrradiationUnits.KilojoulesPerSquareMeter);
     }
+    /** */
     get KilowattHoursPerSquareMeter() {
         if (this.kilowatthourspersquaremeterLazy !== null) {
             return this.kilowatthourspersquaremeterLazy;
         }
         return this.kilowatthourspersquaremeterLazy = this.convertFromBase(IrradiationUnits.KilowattHoursPerSquareMeter);
     }
+    /**
+     * Create a new Irradiation instance from a JoulesPerSquareMeter
+     *
+     * @param value The unit as JoulesPerSquareMeter to create a new Irradiation from.
+     * @returns The new Irradiation instance.
+     */
     static FromJoulesPerSquareMeter(value) {
         return new Irradiation(value, IrradiationUnits.JoulesPerSquareMeter);
     }
+    /**
+     * Create a new Irradiation instance from a JoulesPerSquareCentimeter
+     *
+     * @param value The unit as JoulesPerSquareCentimeter to create a new Irradiation from.
+     * @returns The new Irradiation instance.
+     */
     static FromJoulesPerSquareCentimeter(value) {
         return new Irradiation(value, IrradiationUnits.JoulesPerSquareCentimeter);
     }
+    /**
+     * Create a new Irradiation instance from a JoulesPerSquareMillimeter
+     *
+     * @param value The unit as JoulesPerSquareMillimeter to create a new Irradiation from.
+     * @returns The new Irradiation instance.
+     */
     static FromJoulesPerSquareMillimeter(value) {
         return new Irradiation(value, IrradiationUnits.JoulesPerSquareMillimeter);
     }
+    /**
+     * Create a new Irradiation instance from a WattHoursPerSquareMeter
+     *
+     * @param value The unit as WattHoursPerSquareMeter to create a new Irradiation from.
+     * @returns The new Irradiation instance.
+     */
     static FromWattHoursPerSquareMeter(value) {
         return new Irradiation(value, IrradiationUnits.WattHoursPerSquareMeter);
     }
+    /**
+     * Create a new Irradiation instance from a KilojoulesPerSquareMeter
+     *
+     * @param value The unit as KilojoulesPerSquareMeter to create a new Irradiation from.
+     * @returns The new Irradiation instance.
+     */
     static FromKilojoulesPerSquareMeter(value) {
         return new Irradiation(value, IrradiationUnits.KilojoulesPerSquareMeter);
     }
+    /**
+     * Create a new Irradiation instance from a KilowattHoursPerSquareMeter
+     *
+     * @param value The unit as KilowattHoursPerSquareMeter to create a new Irradiation from.
+     * @returns The new Irradiation instance.
+     */
     static FromKilowattHoursPerSquareMeter(value) {
         return new Irradiation(value, IrradiationUnits.KilowattHoursPerSquareMeter);
     }
@@ -111,6 +175,13 @@ class Irradiation {
         }
         return NaN;
     }
+    /**
+     * Format the Irradiation to string.
+     * Note! the default format for Irradiation is JoulesPerSquareMeter.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Irradiation.
+     * @returns The string format of the Irradiation.
+     */
     toString(toUnit = IrradiationUnits.JoulesPerSquareMeter) {
         switch (toUnit) {
             case IrradiationUnits.JoulesPerSquareMeter:

@@ -1,20 +1,36 @@
+/** BitRateUnits enumeration */
 export enum BitRateUnits {
+    /** */
     BitsPerSecond,
+    /** */
     BytesPerSecond,
+    /** */
     KilobitsPerSecond,
+    /** */
     MegabitsPerSecond,
+    /** */
     GigabitsPerSecond,
+    /** */
     TerabitsPerSecond,
+    /** */
     PetabitsPerSecond,
+    /** */
     ExabitsPerSecond,
+    /** */
     KilobytesPerSecond,
+    /** */
     MegabytesPerSecond,
+    /** */
     GigabytesPerSecond,
+    /** */
     TerabytesPerSecond,
+    /** */
     PetabytesPerSecond,
+    /** */
     ExabytesPerSecond
 }
 
+/** In telecommunications and computing, bit rate is the number of bits that are conveyed or processed per unit of time. */
 export class BitRate {
     private value: number;
     private bitspersecondLazy: number | null = null;
@@ -32,10 +48,26 @@ export class BitRate {
     private petabytespersecondLazy: number | null = null;
     private exabytespersecondLazy: number | null = null;
 
+    /**
+     * Create a new BitRate.
+     * @param value The value.
+     * @param fromUnit The ‘BitRate’ unit to create from.
+     */
     public constructor(value: number, fromUnit: BitRateUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of BitRate is BitPerSecond.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get BitsPerSecond(): number {
         if(this.bitspersecondLazy !== null){
             return this.bitspersecondLazy;
@@ -43,6 +75,7 @@ export class BitRate {
         return this.bitspersecondLazy = this.convertFromBase(BitRateUnits.BitsPerSecond);
     }
 
+    /** */
     public get BytesPerSecond(): number {
         if(this.bytespersecondLazy !== null){
             return this.bytespersecondLazy;
@@ -50,6 +83,7 @@ export class BitRate {
         return this.bytespersecondLazy = this.convertFromBase(BitRateUnits.BytesPerSecond);
     }
 
+    /** */
     public get KilobitsPerSecond(): number {
         if(this.kilobitspersecondLazy !== null){
             return this.kilobitspersecondLazy;
@@ -57,6 +91,7 @@ export class BitRate {
         return this.kilobitspersecondLazy = this.convertFromBase(BitRateUnits.KilobitsPerSecond);
     }
 
+    /** */
     public get MegabitsPerSecond(): number {
         if(this.megabitspersecondLazy !== null){
             return this.megabitspersecondLazy;
@@ -64,6 +99,7 @@ export class BitRate {
         return this.megabitspersecondLazy = this.convertFromBase(BitRateUnits.MegabitsPerSecond);
     }
 
+    /** */
     public get GigabitsPerSecond(): number {
         if(this.gigabitspersecondLazy !== null){
             return this.gigabitspersecondLazy;
@@ -71,6 +107,7 @@ export class BitRate {
         return this.gigabitspersecondLazy = this.convertFromBase(BitRateUnits.GigabitsPerSecond);
     }
 
+    /** */
     public get TerabitsPerSecond(): number {
         if(this.terabitspersecondLazy !== null){
             return this.terabitspersecondLazy;
@@ -78,6 +115,7 @@ export class BitRate {
         return this.terabitspersecondLazy = this.convertFromBase(BitRateUnits.TerabitsPerSecond);
     }
 
+    /** */
     public get PetabitsPerSecond(): number {
         if(this.petabitspersecondLazy !== null){
             return this.petabitspersecondLazy;
@@ -85,6 +123,7 @@ export class BitRate {
         return this.petabitspersecondLazy = this.convertFromBase(BitRateUnits.PetabitsPerSecond);
     }
 
+    /** */
     public get ExabitsPerSecond(): number {
         if(this.exabitspersecondLazy !== null){
             return this.exabitspersecondLazy;
@@ -92,6 +131,7 @@ export class BitRate {
         return this.exabitspersecondLazy = this.convertFromBase(BitRateUnits.ExabitsPerSecond);
     }
 
+    /** */
     public get KilobytesPerSecond(): number {
         if(this.kilobytespersecondLazy !== null){
             return this.kilobytespersecondLazy;
@@ -99,6 +139,7 @@ export class BitRate {
         return this.kilobytespersecondLazy = this.convertFromBase(BitRateUnits.KilobytesPerSecond);
     }
 
+    /** */
     public get MegabytesPerSecond(): number {
         if(this.megabytespersecondLazy !== null){
             return this.megabytespersecondLazy;
@@ -106,6 +147,7 @@ export class BitRate {
         return this.megabytespersecondLazy = this.convertFromBase(BitRateUnits.MegabytesPerSecond);
     }
 
+    /** */
     public get GigabytesPerSecond(): number {
         if(this.gigabytespersecondLazy !== null){
             return this.gigabytespersecondLazy;
@@ -113,6 +155,7 @@ export class BitRate {
         return this.gigabytespersecondLazy = this.convertFromBase(BitRateUnits.GigabytesPerSecond);
     }
 
+    /** */
     public get TerabytesPerSecond(): number {
         if(this.terabytespersecondLazy !== null){
             return this.terabytespersecondLazy;
@@ -120,6 +163,7 @@ export class BitRate {
         return this.terabytespersecondLazy = this.convertFromBase(BitRateUnits.TerabytesPerSecond);
     }
 
+    /** */
     public get PetabytesPerSecond(): number {
         if(this.petabytespersecondLazy !== null){
             return this.petabytespersecondLazy;
@@ -127,6 +171,7 @@ export class BitRate {
         return this.petabytespersecondLazy = this.convertFromBase(BitRateUnits.PetabytesPerSecond);
     }
 
+    /** */
     public get ExabytesPerSecond(): number {
         if(this.exabytespersecondLazy !== null){
             return this.exabytespersecondLazy;
@@ -134,58 +179,142 @@ export class BitRate {
         return this.exabytespersecondLazy = this.convertFromBase(BitRateUnits.ExabytesPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a BitsPerSecond
+     *
+     * @param value The unit as BitsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromBitsPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.BitsPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a BytesPerSecond
+     *
+     * @param value The unit as BytesPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromBytesPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.BytesPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a KilobitsPerSecond
+     *
+     * @param value The unit as KilobitsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromKilobitsPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.KilobitsPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a MegabitsPerSecond
+     *
+     * @param value The unit as MegabitsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromMegabitsPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.MegabitsPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a GigabitsPerSecond
+     *
+     * @param value The unit as GigabitsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromGigabitsPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.GigabitsPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a TerabitsPerSecond
+     *
+     * @param value The unit as TerabitsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromTerabitsPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.TerabitsPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a PetabitsPerSecond
+     *
+     * @param value The unit as PetabitsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromPetabitsPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.PetabitsPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a ExabitsPerSecond
+     *
+     * @param value The unit as ExabitsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromExabitsPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.ExabitsPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a KilobytesPerSecond
+     *
+     * @param value The unit as KilobytesPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromKilobytesPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.KilobytesPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a MegabytesPerSecond
+     *
+     * @param value The unit as MegabytesPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromMegabytesPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.MegabytesPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a GigabytesPerSecond
+     *
+     * @param value The unit as GigabytesPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromGigabytesPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.GigabytesPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a TerabytesPerSecond
+     *
+     * @param value The unit as TerabytesPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromTerabytesPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.TerabytesPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a PetabytesPerSecond
+     *
+     * @param value The unit as PetabytesPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromPetabytesPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.PetabytesPerSecond);
     }
 
+    /**
+     * Create a new BitRate instance from a ExabytesPerSecond
+     *
+     * @param value The unit as ExabytesPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
     public static FromExabytesPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.ExabytesPerSecond);
     }
@@ -264,6 +393,13 @@ export class BitRate {
         return NaN;
     }
 
+    /**
+     * Format the BitRate to string.
+     * Note! the default format for BitRate is BitsPerSecond.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the BitRate.
+     * @returns The string format of the BitRate.
+     */
     public toString(toUnit: BitRateUnits = BitRateUnits.BitsPerSecond): string {
 
         switch (toUnit) {

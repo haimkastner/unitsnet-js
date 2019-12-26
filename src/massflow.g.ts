@@ -1,37 +1,70 @@
+/** MassFlowUnits enumeration */
 export enum MassFlowUnits {
+    /** */
     GramsPerSecond,
+    /** */
     GramsPerDay,
+    /** */
     GramsPerHour,
+    /** */
     KilogramsPerHour,
+    /** */
     KilogramsPerMinute,
+    /** */
     TonnesPerHour,
+    /** */
     PoundsPerDay,
+    /** */
     PoundsPerHour,
+    /** */
     PoundsPerMinute,
+    /** */
     PoundsPerSecond,
+    /** */
     TonnesPerDay,
+    /** */
     ShortTonsPerHour,
+    /** */
     NanogramsPerSecond,
+    /** */
     MicrogramsPerSecond,
+    /** */
     CentigramsPerSecond,
+    /** */
     DecigramsPerSecond,
+    /** */
     DecagramsPerSecond,
+    /** */
     HectogramsPerSecond,
+    /** */
     KilogramsPerSecond,
+    /** */
     NanogramsPerDay,
+    /** */
     MicrogramsPerDay,
+    /** */
     CentigramsPerDay,
+    /** */
     DecigramsPerDay,
+    /** */
     DecagramsPerDay,
+    /** */
     HectogramsPerDay,
+    /** */
     KilogramsPerDay,
+    /** */
     MegagramsPerDay,
+    /** */
     MegapoundsPerDay,
+    /** */
     MegapoundsPerHour,
+    /** */
     MegapoundsPerMinute,
+    /** */
     MegapoundsPerSecond
 }
 
+/** Mass flow is the ratio of the mass change to the time during which the change occurred (value of mass changes per unit time). */
 export class MassFlow {
     private value: number;
     private gramspersecondLazy: number | null = null;
@@ -66,10 +99,26 @@ export class MassFlow {
     private megapoundsperminuteLazy: number | null = null;
     private megapoundspersecondLazy: number | null = null;
 
+    /**
+     * Create a new MassFlow.
+     * @param value The value.
+     * @param fromUnit The ‘MassFlow’ unit to create from.
+     */
     public constructor(value: number, fromUnit: MassFlowUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of MassFlow is GramPerSecond.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get GramsPerSecond(): number {
         if(this.gramspersecondLazy !== null){
             return this.gramspersecondLazy;
@@ -77,6 +126,7 @@ export class MassFlow {
         return this.gramspersecondLazy = this.convertFromBase(MassFlowUnits.GramsPerSecond);
     }
 
+    /** */
     public get GramsPerDay(): number {
         if(this.gramsperdayLazy !== null){
             return this.gramsperdayLazy;
@@ -84,6 +134,7 @@ export class MassFlow {
         return this.gramsperdayLazy = this.convertFromBase(MassFlowUnits.GramsPerDay);
     }
 
+    /** */
     public get GramsPerHour(): number {
         if(this.gramsperhourLazy !== null){
             return this.gramsperhourLazy;
@@ -91,6 +142,7 @@ export class MassFlow {
         return this.gramsperhourLazy = this.convertFromBase(MassFlowUnits.GramsPerHour);
     }
 
+    /** */
     public get KilogramsPerHour(): number {
         if(this.kilogramsperhourLazy !== null){
             return this.kilogramsperhourLazy;
@@ -98,6 +150,7 @@ export class MassFlow {
         return this.kilogramsperhourLazy = this.convertFromBase(MassFlowUnits.KilogramsPerHour);
     }
 
+    /** */
     public get KilogramsPerMinute(): number {
         if(this.kilogramsperminuteLazy !== null){
             return this.kilogramsperminuteLazy;
@@ -105,6 +158,7 @@ export class MassFlow {
         return this.kilogramsperminuteLazy = this.convertFromBase(MassFlowUnits.KilogramsPerMinute);
     }
 
+    /** */
     public get TonnesPerHour(): number {
         if(this.tonnesperhourLazy !== null){
             return this.tonnesperhourLazy;
@@ -112,6 +166,7 @@ export class MassFlow {
         return this.tonnesperhourLazy = this.convertFromBase(MassFlowUnits.TonnesPerHour);
     }
 
+    /** */
     public get PoundsPerDay(): number {
         if(this.poundsperdayLazy !== null){
             return this.poundsperdayLazy;
@@ -119,6 +174,7 @@ export class MassFlow {
         return this.poundsperdayLazy = this.convertFromBase(MassFlowUnits.PoundsPerDay);
     }
 
+    /** */
     public get PoundsPerHour(): number {
         if(this.poundsperhourLazy !== null){
             return this.poundsperhourLazy;
@@ -126,6 +182,7 @@ export class MassFlow {
         return this.poundsperhourLazy = this.convertFromBase(MassFlowUnits.PoundsPerHour);
     }
 
+    /** */
     public get PoundsPerMinute(): number {
         if(this.poundsperminuteLazy !== null){
             return this.poundsperminuteLazy;
@@ -133,6 +190,7 @@ export class MassFlow {
         return this.poundsperminuteLazy = this.convertFromBase(MassFlowUnits.PoundsPerMinute);
     }
 
+    /** */
     public get PoundsPerSecond(): number {
         if(this.poundspersecondLazy !== null){
             return this.poundspersecondLazy;
@@ -140,6 +198,7 @@ export class MassFlow {
         return this.poundspersecondLazy = this.convertFromBase(MassFlowUnits.PoundsPerSecond);
     }
 
+    /** */
     public get TonnesPerDay(): number {
         if(this.tonnesperdayLazy !== null){
             return this.tonnesperdayLazy;
@@ -147,6 +206,7 @@ export class MassFlow {
         return this.tonnesperdayLazy = this.convertFromBase(MassFlowUnits.TonnesPerDay);
     }
 
+    /** */
     public get ShortTonsPerHour(): number {
         if(this.shorttonsperhourLazy !== null){
             return this.shorttonsperhourLazy;
@@ -154,6 +214,7 @@ export class MassFlow {
         return this.shorttonsperhourLazy = this.convertFromBase(MassFlowUnits.ShortTonsPerHour);
     }
 
+    /** */
     public get NanogramsPerSecond(): number {
         if(this.nanogramspersecondLazy !== null){
             return this.nanogramspersecondLazy;
@@ -161,6 +222,7 @@ export class MassFlow {
         return this.nanogramspersecondLazy = this.convertFromBase(MassFlowUnits.NanogramsPerSecond);
     }
 
+    /** */
     public get MicrogramsPerSecond(): number {
         if(this.microgramspersecondLazy !== null){
             return this.microgramspersecondLazy;
@@ -168,6 +230,7 @@ export class MassFlow {
         return this.microgramspersecondLazy = this.convertFromBase(MassFlowUnits.MicrogramsPerSecond);
     }
 
+    /** */
     public get CentigramsPerSecond(): number {
         if(this.centigramspersecondLazy !== null){
             return this.centigramspersecondLazy;
@@ -175,6 +238,7 @@ export class MassFlow {
         return this.centigramspersecondLazy = this.convertFromBase(MassFlowUnits.CentigramsPerSecond);
     }
 
+    /** */
     public get DecigramsPerSecond(): number {
         if(this.decigramspersecondLazy !== null){
             return this.decigramspersecondLazy;
@@ -182,6 +246,7 @@ export class MassFlow {
         return this.decigramspersecondLazy = this.convertFromBase(MassFlowUnits.DecigramsPerSecond);
     }
 
+    /** */
     public get DecagramsPerSecond(): number {
         if(this.decagramspersecondLazy !== null){
             return this.decagramspersecondLazy;
@@ -189,6 +254,7 @@ export class MassFlow {
         return this.decagramspersecondLazy = this.convertFromBase(MassFlowUnits.DecagramsPerSecond);
     }
 
+    /** */
     public get HectogramsPerSecond(): number {
         if(this.hectogramspersecondLazy !== null){
             return this.hectogramspersecondLazy;
@@ -196,6 +262,7 @@ export class MassFlow {
         return this.hectogramspersecondLazy = this.convertFromBase(MassFlowUnits.HectogramsPerSecond);
     }
 
+    /** */
     public get KilogramsPerSecond(): number {
         if(this.kilogramspersecondLazy !== null){
             return this.kilogramspersecondLazy;
@@ -203,6 +270,7 @@ export class MassFlow {
         return this.kilogramspersecondLazy = this.convertFromBase(MassFlowUnits.KilogramsPerSecond);
     }
 
+    /** */
     public get NanogramsPerDay(): number {
         if(this.nanogramsperdayLazy !== null){
             return this.nanogramsperdayLazy;
@@ -210,6 +278,7 @@ export class MassFlow {
         return this.nanogramsperdayLazy = this.convertFromBase(MassFlowUnits.NanogramsPerDay);
     }
 
+    /** */
     public get MicrogramsPerDay(): number {
         if(this.microgramsperdayLazy !== null){
             return this.microgramsperdayLazy;
@@ -217,6 +286,7 @@ export class MassFlow {
         return this.microgramsperdayLazy = this.convertFromBase(MassFlowUnits.MicrogramsPerDay);
     }
 
+    /** */
     public get CentigramsPerDay(): number {
         if(this.centigramsperdayLazy !== null){
             return this.centigramsperdayLazy;
@@ -224,6 +294,7 @@ export class MassFlow {
         return this.centigramsperdayLazy = this.convertFromBase(MassFlowUnits.CentigramsPerDay);
     }
 
+    /** */
     public get DecigramsPerDay(): number {
         if(this.decigramsperdayLazy !== null){
             return this.decigramsperdayLazy;
@@ -231,6 +302,7 @@ export class MassFlow {
         return this.decigramsperdayLazy = this.convertFromBase(MassFlowUnits.DecigramsPerDay);
     }
 
+    /** */
     public get DecagramsPerDay(): number {
         if(this.decagramsperdayLazy !== null){
             return this.decagramsperdayLazy;
@@ -238,6 +310,7 @@ export class MassFlow {
         return this.decagramsperdayLazy = this.convertFromBase(MassFlowUnits.DecagramsPerDay);
     }
 
+    /** */
     public get HectogramsPerDay(): number {
         if(this.hectogramsperdayLazy !== null){
             return this.hectogramsperdayLazy;
@@ -245,6 +318,7 @@ export class MassFlow {
         return this.hectogramsperdayLazy = this.convertFromBase(MassFlowUnits.HectogramsPerDay);
     }
 
+    /** */
     public get KilogramsPerDay(): number {
         if(this.kilogramsperdayLazy !== null){
             return this.kilogramsperdayLazy;
@@ -252,6 +326,7 @@ export class MassFlow {
         return this.kilogramsperdayLazy = this.convertFromBase(MassFlowUnits.KilogramsPerDay);
     }
 
+    /** */
     public get MegagramsPerDay(): number {
         if(this.megagramsperdayLazy !== null){
             return this.megagramsperdayLazy;
@@ -259,6 +334,7 @@ export class MassFlow {
         return this.megagramsperdayLazy = this.convertFromBase(MassFlowUnits.MegagramsPerDay);
     }
 
+    /** */
     public get MegapoundsPerDay(): number {
         if(this.megapoundsperdayLazy !== null){
             return this.megapoundsperdayLazy;
@@ -266,6 +342,7 @@ export class MassFlow {
         return this.megapoundsperdayLazy = this.convertFromBase(MassFlowUnits.MegapoundsPerDay);
     }
 
+    /** */
     public get MegapoundsPerHour(): number {
         if(this.megapoundsperhourLazy !== null){
             return this.megapoundsperhourLazy;
@@ -273,6 +350,7 @@ export class MassFlow {
         return this.megapoundsperhourLazy = this.convertFromBase(MassFlowUnits.MegapoundsPerHour);
     }
 
+    /** */
     public get MegapoundsPerMinute(): number {
         if(this.megapoundsperminuteLazy !== null){
             return this.megapoundsperminuteLazy;
@@ -280,6 +358,7 @@ export class MassFlow {
         return this.megapoundsperminuteLazy = this.convertFromBase(MassFlowUnits.MegapoundsPerMinute);
     }
 
+    /** */
     public get MegapoundsPerSecond(): number {
         if(this.megapoundspersecondLazy !== null){
             return this.megapoundspersecondLazy;
@@ -287,126 +366,312 @@ export class MassFlow {
         return this.megapoundspersecondLazy = this.convertFromBase(MassFlowUnits.MegapoundsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a GramsPerSecond
+     *
+     * @param value The unit as GramsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromGramsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.GramsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a GramsPerDay
+     *
+     * @param value The unit as GramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromGramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.GramsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a GramsPerHour
+     *
+     * @param value The unit as GramsPerHour to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromGramsPerHour(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.GramsPerHour);
     }
 
+    /**
+     * Create a new MassFlow instance from a KilogramsPerHour
+     *
+     * @param value The unit as KilogramsPerHour to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromKilogramsPerHour(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.KilogramsPerHour);
     }
 
+    /**
+     * Create a new MassFlow instance from a KilogramsPerMinute
+     *
+     * @param value The unit as KilogramsPerMinute to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromKilogramsPerMinute(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.KilogramsPerMinute);
     }
 
+    /**
+     * Create a new MassFlow instance from a TonnesPerHour
+     *
+     * @param value The unit as TonnesPerHour to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromTonnesPerHour(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.TonnesPerHour);
     }
 
+    /**
+     * Create a new MassFlow instance from a PoundsPerDay
+     *
+     * @param value The unit as PoundsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromPoundsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.PoundsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a PoundsPerHour
+     *
+     * @param value The unit as PoundsPerHour to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromPoundsPerHour(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.PoundsPerHour);
     }
 
+    /**
+     * Create a new MassFlow instance from a PoundsPerMinute
+     *
+     * @param value The unit as PoundsPerMinute to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromPoundsPerMinute(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.PoundsPerMinute);
     }
 
+    /**
+     * Create a new MassFlow instance from a PoundsPerSecond
+     *
+     * @param value The unit as PoundsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromPoundsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.PoundsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a TonnesPerDay
+     *
+     * @param value The unit as TonnesPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromTonnesPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.TonnesPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a ShortTonsPerHour
+     *
+     * @param value The unit as ShortTonsPerHour to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromShortTonsPerHour(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.ShortTonsPerHour);
     }
 
+    /**
+     * Create a new MassFlow instance from a NanogramsPerSecond
+     *
+     * @param value The unit as NanogramsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromNanogramsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.NanogramsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a MicrogramsPerSecond
+     *
+     * @param value The unit as MicrogramsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromMicrogramsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.MicrogramsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a CentigramsPerSecond
+     *
+     * @param value The unit as CentigramsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromCentigramsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.CentigramsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a DecigramsPerSecond
+     *
+     * @param value The unit as DecigramsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromDecigramsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.DecigramsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a DecagramsPerSecond
+     *
+     * @param value The unit as DecagramsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromDecagramsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.DecagramsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a HectogramsPerSecond
+     *
+     * @param value The unit as HectogramsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromHectogramsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.HectogramsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a KilogramsPerSecond
+     *
+     * @param value The unit as KilogramsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromKilogramsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.KilogramsPerSecond);
     }
 
+    /**
+     * Create a new MassFlow instance from a NanogramsPerDay
+     *
+     * @param value The unit as NanogramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromNanogramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.NanogramsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a MicrogramsPerDay
+     *
+     * @param value The unit as MicrogramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromMicrogramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.MicrogramsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a CentigramsPerDay
+     *
+     * @param value The unit as CentigramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromCentigramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.CentigramsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a DecigramsPerDay
+     *
+     * @param value The unit as DecigramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromDecigramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.DecigramsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a DecagramsPerDay
+     *
+     * @param value The unit as DecagramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromDecagramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.DecagramsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a HectogramsPerDay
+     *
+     * @param value The unit as HectogramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromHectogramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.HectogramsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a KilogramsPerDay
+     *
+     * @param value The unit as KilogramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromKilogramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.KilogramsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a MegagramsPerDay
+     *
+     * @param value The unit as MegagramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromMegagramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.MegagramsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a MegapoundsPerDay
+     *
+     * @param value The unit as MegapoundsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromMegapoundsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.MegapoundsPerDay);
     }
 
+    /**
+     * Create a new MassFlow instance from a MegapoundsPerHour
+     *
+     * @param value The unit as MegapoundsPerHour to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromMegapoundsPerHour(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.MegapoundsPerHour);
     }
 
+    /**
+     * Create a new MassFlow instance from a MegapoundsPerMinute
+     *
+     * @param value The unit as MegapoundsPerMinute to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromMegapoundsPerMinute(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.MegapoundsPerMinute);
     }
 
+    /**
+     * Create a new MassFlow instance from a MegapoundsPerSecond
+     *
+     * @param value The unit as MegapoundsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
     public static FromMegapoundsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.MegapoundsPerSecond);
     }
@@ -553,6 +818,13 @@ export class MassFlow {
         return NaN;
     }
 
+    /**
+     * Format the MassFlow to string.
+     * Note! the default format for MassFlow is GramsPerSecond.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the MassFlow.
+     * @returns The string format of the MassFlow.
+     */
     public toString(toUnit: MassFlowUnits = MassFlowUnits.GramsPerSecond): string {
 
         switch (toUnit) {

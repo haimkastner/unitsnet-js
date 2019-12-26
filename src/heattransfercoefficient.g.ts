@@ -1,19 +1,40 @@
+/** HeatTransferCoefficientUnits enumeration */
 export enum HeatTransferCoefficientUnits {
+    /** */
     WattsPerSquareMeterKelvin,
+    /** */
     WattsPerSquareMeterCelsius,
+    /** */
     BtusPerSquareFootDegreeFahrenheit
 }
 
+/** The heat transfer coefficient or film coefficient, or film effectiveness, in thermodynamics and in mechanics is the proportionality constant between the heat flux and the thermodynamic driving force for the flow of heat (i.e., the temperature difference, ΔT) */
 export class HeatTransferCoefficient {
     private value: number;
     private wattspersquaremeterkelvinLazy: number | null = null;
     private wattspersquaremetercelsiusLazy: number | null = null;
     private btuspersquarefootdegreefahrenheitLazy: number | null = null;
 
+    /**
+     * Create a new HeatTransferCoefficient.
+     * @param value The value.
+     * @param fromUnit The ‘HeatTransferCoefficient’ unit to create from.
+     */
     public constructor(value: number, fromUnit: HeatTransferCoefficientUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of HeatTransferCoefficient is WattPerSquareMeterKelvin.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get WattsPerSquareMeterKelvin(): number {
         if(this.wattspersquaremeterkelvinLazy !== null){
             return this.wattspersquaremeterkelvinLazy;
@@ -21,6 +42,7 @@ export class HeatTransferCoefficient {
         return this.wattspersquaremeterkelvinLazy = this.convertFromBase(HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin);
     }
 
+    /** */
     public get WattsPerSquareMeterCelsius(): number {
         if(this.wattspersquaremetercelsiusLazy !== null){
             return this.wattspersquaremetercelsiusLazy;
@@ -28,6 +50,7 @@ export class HeatTransferCoefficient {
         return this.wattspersquaremetercelsiusLazy = this.convertFromBase(HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius);
     }
 
+    /** */
     public get BtusPerSquareFootDegreeFahrenheit(): number {
         if(this.btuspersquarefootdegreefahrenheitLazy !== null){
             return this.btuspersquarefootdegreefahrenheitLazy;
@@ -35,14 +58,32 @@ export class HeatTransferCoefficient {
         return this.btuspersquarefootdegreefahrenheitLazy = this.convertFromBase(HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit);
     }
 
+    /**
+     * Create a new HeatTransferCoefficient instance from a WattsPerSquareMeterKelvin
+     *
+     * @param value The unit as WattsPerSquareMeterKelvin to create a new HeatTransferCoefficient from.
+     * @returns The new HeatTransferCoefficient instance.
+     */
     public static FromWattsPerSquareMeterKelvin(value: number): HeatTransferCoefficient {
         return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin);
     }
 
+    /**
+     * Create a new HeatTransferCoefficient instance from a WattsPerSquareMeterCelsius
+     *
+     * @param value The unit as WattsPerSquareMeterCelsius to create a new HeatTransferCoefficient from.
+     * @returns The new HeatTransferCoefficient instance.
+     */
     public static FromWattsPerSquareMeterCelsius(value: number): HeatTransferCoefficient {
         return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius);
     }
 
+    /**
+     * Create a new HeatTransferCoefficient instance from a BtusPerSquareFootDegreeFahrenheit
+     *
+     * @param value The unit as BtusPerSquareFootDegreeFahrenheit to create a new HeatTransferCoefficient from.
+     * @returns The new HeatTransferCoefficient instance.
+     */
     public static FromBtusPerSquareFootDegreeFahrenheit(value: number): HeatTransferCoefficient {
         return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit);
     }
@@ -77,6 +118,13 @@ export class HeatTransferCoefficient {
         return NaN;
     }
 
+    /**
+     * Format the HeatTransferCoefficient to string.
+     * Note! the default format for HeatTransferCoefficient is WattsPerSquareMeterKelvin.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the HeatTransferCoefficient.
+     * @returns The string format of the HeatTransferCoefficient.
+     */
     public toString(toUnit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin): string {
 
         switch (toUnit) {

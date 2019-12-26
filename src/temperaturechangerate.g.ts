@@ -1,15 +1,26 @@
+/** TemperatureChangeRateUnits enumeration */
 export enum TemperatureChangeRateUnits {
+    /** */
     DegreesCelsiusPerSecond,
+    /** */
     DegreesCelsiusPerMinute,
+    /** */
     NanodegreesCelsiusPerSecond,
+    /** */
     MicrodegreesCelsiusPerSecond,
+    /** */
     CentidegreesCelsiusPerSecond,
+    /** */
     DecidegreesCelsiusPerSecond,
+    /** */
     DecadegreesCelsiusPerSecond,
+    /** */
     HectodegreesCelsiusPerSecond,
+    /** */
     KilodegreesCelsiusPerSecond
 }
 
+/** Temperature change rate is the ratio of the temperature change to the time during which the change occurred (value of temperature changes per unit time). */
 export class TemperatureChangeRate {
     private value: number;
     private degreescelsiuspersecondLazy: number | null = null;
@@ -22,10 +33,26 @@ export class TemperatureChangeRate {
     private hectodegreescelsiuspersecondLazy: number | null = null;
     private kilodegreescelsiuspersecondLazy: number | null = null;
 
+    /**
+     * Create a new TemperatureChangeRate.
+     * @param value The value.
+     * @param fromUnit The ‘TemperatureChangeRate’ unit to create from.
+     */
     public constructor(value: number, fromUnit: TemperatureChangeRateUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of TemperatureChangeRate is DegreeCelsiusPerSecond.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get DegreesCelsiusPerSecond(): number {
         if(this.degreescelsiuspersecondLazy !== null){
             return this.degreescelsiuspersecondLazy;
@@ -33,6 +60,7 @@ export class TemperatureChangeRate {
         return this.degreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.DegreesCelsiusPerSecond);
     }
 
+    /** */
     public get DegreesCelsiusPerMinute(): number {
         if(this.degreescelsiusperminuteLazy !== null){
             return this.degreescelsiusperminuteLazy;
@@ -40,6 +68,7 @@ export class TemperatureChangeRate {
         return this.degreescelsiusperminuteLazy = this.convertFromBase(TemperatureChangeRateUnits.DegreesCelsiusPerMinute);
     }
 
+    /** */
     public get NanodegreesCelsiusPerSecond(): number {
         if(this.nanodegreescelsiuspersecondLazy !== null){
             return this.nanodegreescelsiuspersecondLazy;
@@ -47,6 +76,7 @@ export class TemperatureChangeRate {
         return this.nanodegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond);
     }
 
+    /** */
     public get MicrodegreesCelsiusPerSecond(): number {
         if(this.microdegreescelsiuspersecondLazy !== null){
             return this.microdegreescelsiuspersecondLazy;
@@ -54,6 +84,7 @@ export class TemperatureChangeRate {
         return this.microdegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond);
     }
 
+    /** */
     public get CentidegreesCelsiusPerSecond(): number {
         if(this.centidegreescelsiuspersecondLazy !== null){
             return this.centidegreescelsiuspersecondLazy;
@@ -61,6 +92,7 @@ export class TemperatureChangeRate {
         return this.centidegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond);
     }
 
+    /** */
     public get DecidegreesCelsiusPerSecond(): number {
         if(this.decidegreescelsiuspersecondLazy !== null){
             return this.decidegreescelsiuspersecondLazy;
@@ -68,6 +100,7 @@ export class TemperatureChangeRate {
         return this.decidegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond);
     }
 
+    /** */
     public get DecadegreesCelsiusPerSecond(): number {
         if(this.decadegreescelsiuspersecondLazy !== null){
             return this.decadegreescelsiuspersecondLazy;
@@ -75,6 +108,7 @@ export class TemperatureChangeRate {
         return this.decadegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond);
     }
 
+    /** */
     public get HectodegreesCelsiusPerSecond(): number {
         if(this.hectodegreescelsiuspersecondLazy !== null){
             return this.hectodegreescelsiuspersecondLazy;
@@ -82,6 +116,7 @@ export class TemperatureChangeRate {
         return this.hectodegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond);
     }
 
+    /** */
     public get KilodegreesCelsiusPerSecond(): number {
         if(this.kilodegreescelsiuspersecondLazy !== null){
             return this.kilodegreescelsiuspersecondLazy;
@@ -89,38 +124,92 @@ export class TemperatureChangeRate {
         return this.kilodegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond);
     }
 
+    /**
+     * Create a new TemperatureChangeRate instance from a DegreesCelsiusPerSecond
+     *
+     * @param value The unit as DegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
     public static FromDegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DegreesCelsiusPerSecond);
     }
 
+    /**
+     * Create a new TemperatureChangeRate instance from a DegreesCelsiusPerMinute
+     *
+     * @param value The unit as DegreesCelsiusPerMinute to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
     public static FromDegreesCelsiusPerMinute(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DegreesCelsiusPerMinute);
     }
 
+    /**
+     * Create a new TemperatureChangeRate instance from a NanodegreesCelsiusPerSecond
+     *
+     * @param value The unit as NanodegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
     public static FromNanodegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond);
     }
 
+    /**
+     * Create a new TemperatureChangeRate instance from a MicrodegreesCelsiusPerSecond
+     *
+     * @param value The unit as MicrodegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
     public static FromMicrodegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond);
     }
 
+    /**
+     * Create a new TemperatureChangeRate instance from a CentidegreesCelsiusPerSecond
+     *
+     * @param value The unit as CentidegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
     public static FromCentidegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond);
     }
 
+    /**
+     * Create a new TemperatureChangeRate instance from a DecidegreesCelsiusPerSecond
+     *
+     * @param value The unit as DecidegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
     public static FromDecidegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond);
     }
 
+    /**
+     * Create a new TemperatureChangeRate instance from a DecadegreesCelsiusPerSecond
+     *
+     * @param value The unit as DecadegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
     public static FromDecadegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond);
     }
 
+    /**
+     * Create a new TemperatureChangeRate instance from a HectodegreesCelsiusPerSecond
+     *
+     * @param value The unit as HectodegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
     public static FromHectodegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond);
     }
 
+    /**
+     * Create a new TemperatureChangeRate instance from a KilodegreesCelsiusPerSecond
+     *
+     * @param value The unit as KilodegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
     public static FromKilodegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond);
     }
@@ -179,6 +268,13 @@ export class TemperatureChangeRate {
         return NaN;
     }
 
+    /**
+     * Format the TemperatureChangeRate to string.
+     * Note! the default format for TemperatureChangeRate is DegreesCelsiusPerSecond.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the TemperatureChangeRate.
+     * @returns The string format of the TemperatureChangeRate.
+     */
     public toString(toUnit: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond): string {
 
         switch (toUnit) {

@@ -1,24 +1,44 @@
+/** VolumeConcentrationUnits enumeration */
 export enum VolumeConcentrationUnits {
+    /** */
     DecimalFractions,
+    /** */
     LitersPerLiter,
+    /** */
     LitersPerMililiter,
+    /** */
     Percent,
+    /** */
     PartsPerThousand,
+    /** */
     PartsPerMillion,
+    /** */
     PartsPerBillion,
+    /** */
     PartsPerTrillion,
+    /** */
     PicolitersPerLiter,
+    /** */
     NanolitersPerLiter,
+    /** */
     MicrolitersPerLiter,
+    /** */
     CentilitersPerLiter,
+    /** */
     DecilitersPerLiter,
+    /** */
     PicolitersPerMililiter,
+    /** */
     NanolitersPerMililiter,
+    /** */
     MicrolitersPerMililiter,
+    /** */
     CentilitersPerMililiter,
+    /** */
     DecilitersPerMililiter
 }
 
+/** The volume concentration (not to be confused with volume fraction) is defined as the volume of a constituent divided by the total volume of the mixture. */
 export class VolumeConcentration {
     private value: number;
     private decimalfractionsLazy: number | null = null;
@@ -40,10 +60,26 @@ export class VolumeConcentration {
     private centiliterspermililiterLazy: number | null = null;
     private deciliterspermililiterLazy: number | null = null;
 
+    /**
+     * Create a new VolumeConcentration.
+     * @param value The value.
+     * @param fromUnit The ‘VolumeConcentration’ unit to create from.
+     */
     public constructor(value: number, fromUnit: VolumeConcentrationUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of VolumeConcentration is DecimalFraction.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get DecimalFractions(): number {
         if(this.decimalfractionsLazy !== null){
             return this.decimalfractionsLazy;
@@ -51,6 +87,7 @@ export class VolumeConcentration {
         return this.decimalfractionsLazy = this.convertFromBase(VolumeConcentrationUnits.DecimalFractions);
     }
 
+    /** */
     public get LitersPerLiter(): number {
         if(this.litersperliterLazy !== null){
             return this.litersperliterLazy;
@@ -58,6 +95,7 @@ export class VolumeConcentration {
         return this.litersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.LitersPerLiter);
     }
 
+    /** */
     public get LitersPerMililiter(): number {
         if(this.literspermililiterLazy !== null){
             return this.literspermililiterLazy;
@@ -65,6 +103,7 @@ export class VolumeConcentration {
         return this.literspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.LitersPerMililiter);
     }
 
+    /** */
     public get Percent(): number {
         if(this.percentLazy !== null){
             return this.percentLazy;
@@ -72,6 +111,7 @@ export class VolumeConcentration {
         return this.percentLazy = this.convertFromBase(VolumeConcentrationUnits.Percent);
     }
 
+    /** */
     public get PartsPerThousand(): number {
         if(this.partsperthousandLazy !== null){
             return this.partsperthousandLazy;
@@ -79,6 +119,7 @@ export class VolumeConcentration {
         return this.partsperthousandLazy = this.convertFromBase(VolumeConcentrationUnits.PartsPerThousand);
     }
 
+    /** */
     public get PartsPerMillion(): number {
         if(this.partspermillionLazy !== null){
             return this.partspermillionLazy;
@@ -86,6 +127,7 @@ export class VolumeConcentration {
         return this.partspermillionLazy = this.convertFromBase(VolumeConcentrationUnits.PartsPerMillion);
     }
 
+    /** */
     public get PartsPerBillion(): number {
         if(this.partsperbillionLazy !== null){
             return this.partsperbillionLazy;
@@ -93,6 +135,7 @@ export class VolumeConcentration {
         return this.partsperbillionLazy = this.convertFromBase(VolumeConcentrationUnits.PartsPerBillion);
     }
 
+    /** */
     public get PartsPerTrillion(): number {
         if(this.partspertrillionLazy !== null){
             return this.partspertrillionLazy;
@@ -100,6 +143,7 @@ export class VolumeConcentration {
         return this.partspertrillionLazy = this.convertFromBase(VolumeConcentrationUnits.PartsPerTrillion);
     }
 
+    /** */
     public get PicolitersPerLiter(): number {
         if(this.picolitersperliterLazy !== null){
             return this.picolitersperliterLazy;
@@ -107,6 +151,7 @@ export class VolumeConcentration {
         return this.picolitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.PicolitersPerLiter);
     }
 
+    /** */
     public get NanolitersPerLiter(): number {
         if(this.nanolitersperliterLazy !== null){
             return this.nanolitersperliterLazy;
@@ -114,6 +159,7 @@ export class VolumeConcentration {
         return this.nanolitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.NanolitersPerLiter);
     }
 
+    /** */
     public get MicrolitersPerLiter(): number {
         if(this.microlitersperliterLazy !== null){
             return this.microlitersperliterLazy;
@@ -121,6 +167,7 @@ export class VolumeConcentration {
         return this.microlitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.MicrolitersPerLiter);
     }
 
+    /** */
     public get CentilitersPerLiter(): number {
         if(this.centilitersperliterLazy !== null){
             return this.centilitersperliterLazy;
@@ -128,6 +175,7 @@ export class VolumeConcentration {
         return this.centilitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.CentilitersPerLiter);
     }
 
+    /** */
     public get DecilitersPerLiter(): number {
         if(this.decilitersperliterLazy !== null){
             return this.decilitersperliterLazy;
@@ -135,6 +183,7 @@ export class VolumeConcentration {
         return this.decilitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.DecilitersPerLiter);
     }
 
+    /** */
     public get PicolitersPerMililiter(): number {
         if(this.picoliterspermililiterLazy !== null){
             return this.picoliterspermililiterLazy;
@@ -142,6 +191,7 @@ export class VolumeConcentration {
         return this.picoliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.PicolitersPerMililiter);
     }
 
+    /** */
     public get NanolitersPerMililiter(): number {
         if(this.nanoliterspermililiterLazy !== null){
             return this.nanoliterspermililiterLazy;
@@ -149,6 +199,7 @@ export class VolumeConcentration {
         return this.nanoliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.NanolitersPerMililiter);
     }
 
+    /** */
     public get MicrolitersPerMililiter(): number {
         if(this.microliterspermililiterLazy !== null){
             return this.microliterspermililiterLazy;
@@ -156,6 +207,7 @@ export class VolumeConcentration {
         return this.microliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.MicrolitersPerMililiter);
     }
 
+    /** */
     public get CentilitersPerMililiter(): number {
         if(this.centiliterspermililiterLazy !== null){
             return this.centiliterspermililiterLazy;
@@ -163,6 +215,7 @@ export class VolumeConcentration {
         return this.centiliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.CentilitersPerMililiter);
     }
 
+    /** */
     public get DecilitersPerMililiter(): number {
         if(this.deciliterspermililiterLazy !== null){
             return this.deciliterspermililiterLazy;
@@ -170,74 +223,182 @@ export class VolumeConcentration {
         return this.deciliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.DecilitersPerMililiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a DecimalFractions
+     *
+     * @param value The unit as DecimalFractions to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromDecimalFractions(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.DecimalFractions);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a LitersPerLiter
+     *
+     * @param value The unit as LitersPerLiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromLitersPerLiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.LitersPerLiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a LitersPerMililiter
+     *
+     * @param value The unit as LitersPerMililiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromLitersPerMililiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.LitersPerMililiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a Percent
+     *
+     * @param value The unit as Percent to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromPercent(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.Percent);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a PartsPerThousand
+     *
+     * @param value The unit as PartsPerThousand to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromPartsPerThousand(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.PartsPerThousand);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a PartsPerMillion
+     *
+     * @param value The unit as PartsPerMillion to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromPartsPerMillion(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.PartsPerMillion);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a PartsPerBillion
+     *
+     * @param value The unit as PartsPerBillion to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromPartsPerBillion(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.PartsPerBillion);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a PartsPerTrillion
+     *
+     * @param value The unit as PartsPerTrillion to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromPartsPerTrillion(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.PartsPerTrillion);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a PicolitersPerLiter
+     *
+     * @param value The unit as PicolitersPerLiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromPicolitersPerLiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.PicolitersPerLiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a NanolitersPerLiter
+     *
+     * @param value The unit as NanolitersPerLiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromNanolitersPerLiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.NanolitersPerLiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a MicrolitersPerLiter
+     *
+     * @param value The unit as MicrolitersPerLiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromMicrolitersPerLiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.MicrolitersPerLiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a CentilitersPerLiter
+     *
+     * @param value The unit as CentilitersPerLiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromCentilitersPerLiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.CentilitersPerLiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a DecilitersPerLiter
+     *
+     * @param value The unit as DecilitersPerLiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromDecilitersPerLiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.DecilitersPerLiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a PicolitersPerMililiter
+     *
+     * @param value The unit as PicolitersPerMililiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromPicolitersPerMililiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.PicolitersPerMililiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a NanolitersPerMililiter
+     *
+     * @param value The unit as NanolitersPerMililiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromNanolitersPerMililiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.NanolitersPerMililiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a MicrolitersPerMililiter
+     *
+     * @param value The unit as MicrolitersPerMililiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromMicrolitersPerMililiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.MicrolitersPerMililiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a CentilitersPerMililiter
+     *
+     * @param value The unit as CentilitersPerMililiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromCentilitersPerMililiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.CentilitersPerMililiter);
     }
 
+    /**
+     * Create a new VolumeConcentration instance from a DecilitersPerMililiter
+     *
+     * @param value The unit as DecilitersPerMililiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
     public static FromDecilitersPerMililiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.DecilitersPerMililiter);
     }
@@ -332,6 +493,13 @@ export class VolumeConcentration {
         return NaN;
     }
 
+    /**
+     * Format the VolumeConcentration to string.
+     * Note! the default format for VolumeConcentration is DecimalFractions.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the VolumeConcentration.
+     * @returns The string format of the VolumeConcentration.
+     */
     public toString(toUnit: VolumeConcentrationUnits = VolumeConcentrationUnits.DecimalFractions): string {
 
         switch (toUnit) {

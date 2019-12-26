@@ -1,20 +1,36 @@
+/** AreaUnits enumeration */
 export enum AreaUnits {
+    /** */
     SquareKilometers,
+    /** */
     SquareMeters,
+    /** */
     SquareDecimeters,
+    /** */
     SquareCentimeters,
+    /** */
     SquareMillimeters,
+    /** */
     SquareMicrometers,
+    /** */
     SquareMiles,
+    /** */
     SquareYards,
+    /** */
     SquareFeet,
+    /** */
     UsSurveySquareFeet,
+    /** */
     SquareInches,
+    /** */
     Acres,
+    /** */
     Hectares,
+    /** */
     SquareNauticalMiles
 }
 
+/** Area is a quantity that expresses the extent of a two-dimensional surface or shape, or planar lamina, in the plane. Area can be understood as the amount of material with a given thickness that would be necessary to fashion a model of the shape, or the amount of paint necessary to cover the surface with a single coat.[1] It is the two-dimensional analog of the length of a curve (a one-dimensional concept) or the volume of a solid (a three-dimensional concept). */
 export class Area {
     private value: number;
     private squarekilometersLazy: number | null = null;
@@ -32,10 +48,26 @@ export class Area {
     private hectaresLazy: number | null = null;
     private squarenauticalmilesLazy: number | null = null;
 
+    /**
+     * Create a new Area.
+     * @param value The value.
+     * @param fromUnit The ‘Area’ unit to create from.
+     */
     public constructor(value: number, fromUnit: AreaUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Area is SquareMeter.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get SquareKilometers(): number {
         if(this.squarekilometersLazy !== null){
             return this.squarekilometersLazy;
@@ -43,6 +75,7 @@ export class Area {
         return this.squarekilometersLazy = this.convertFromBase(AreaUnits.SquareKilometers);
     }
 
+    /** */
     public get SquareMeters(): number {
         if(this.squaremetersLazy !== null){
             return this.squaremetersLazy;
@@ -50,6 +83,7 @@ export class Area {
         return this.squaremetersLazy = this.convertFromBase(AreaUnits.SquareMeters);
     }
 
+    /** */
     public get SquareDecimeters(): number {
         if(this.squaredecimetersLazy !== null){
             return this.squaredecimetersLazy;
@@ -57,6 +91,7 @@ export class Area {
         return this.squaredecimetersLazy = this.convertFromBase(AreaUnits.SquareDecimeters);
     }
 
+    /** */
     public get SquareCentimeters(): number {
         if(this.squarecentimetersLazy !== null){
             return this.squarecentimetersLazy;
@@ -64,6 +99,7 @@ export class Area {
         return this.squarecentimetersLazy = this.convertFromBase(AreaUnits.SquareCentimeters);
     }
 
+    /** */
     public get SquareMillimeters(): number {
         if(this.squaremillimetersLazy !== null){
             return this.squaremillimetersLazy;
@@ -71,6 +107,7 @@ export class Area {
         return this.squaremillimetersLazy = this.convertFromBase(AreaUnits.SquareMillimeters);
     }
 
+    /** */
     public get SquareMicrometers(): number {
         if(this.squaremicrometersLazy !== null){
             return this.squaremicrometersLazy;
@@ -78,6 +115,7 @@ export class Area {
         return this.squaremicrometersLazy = this.convertFromBase(AreaUnits.SquareMicrometers);
     }
 
+    /** */
     public get SquareMiles(): number {
         if(this.squaremilesLazy !== null){
             return this.squaremilesLazy;
@@ -85,6 +123,7 @@ export class Area {
         return this.squaremilesLazy = this.convertFromBase(AreaUnits.SquareMiles);
     }
 
+    /** */
     public get SquareYards(): number {
         if(this.squareyardsLazy !== null){
             return this.squareyardsLazy;
@@ -92,6 +131,7 @@ export class Area {
         return this.squareyardsLazy = this.convertFromBase(AreaUnits.SquareYards);
     }
 
+    /** */
     public get SquareFeet(): number {
         if(this.squarefeetLazy !== null){
             return this.squarefeetLazy;
@@ -99,6 +139,7 @@ export class Area {
         return this.squarefeetLazy = this.convertFromBase(AreaUnits.SquareFeet);
     }
 
+    /** */
     public get UsSurveySquareFeet(): number {
         if(this.ussurveysquarefeetLazy !== null){
             return this.ussurveysquarefeetLazy;
@@ -106,6 +147,7 @@ export class Area {
         return this.ussurveysquarefeetLazy = this.convertFromBase(AreaUnits.UsSurveySquareFeet);
     }
 
+    /** */
     public get SquareInches(): number {
         if(this.squareinchesLazy !== null){
             return this.squareinchesLazy;
@@ -113,6 +155,7 @@ export class Area {
         return this.squareinchesLazy = this.convertFromBase(AreaUnits.SquareInches);
     }
 
+    /** */
     public get Acres(): number {
         if(this.acresLazy !== null){
             return this.acresLazy;
@@ -120,6 +163,7 @@ export class Area {
         return this.acresLazy = this.convertFromBase(AreaUnits.Acres);
     }
 
+    /** */
     public get Hectares(): number {
         if(this.hectaresLazy !== null){
             return this.hectaresLazy;
@@ -127,6 +171,7 @@ export class Area {
         return this.hectaresLazy = this.convertFromBase(AreaUnits.Hectares);
     }
 
+    /** */
     public get SquareNauticalMiles(): number {
         if(this.squarenauticalmilesLazy !== null){
             return this.squarenauticalmilesLazy;
@@ -134,58 +179,142 @@ export class Area {
         return this.squarenauticalmilesLazy = this.convertFromBase(AreaUnits.SquareNauticalMiles);
     }
 
+    /**
+     * Create a new Area instance from a SquareKilometers
+     *
+     * @param value The unit as SquareKilometers to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareKilometers(value: number): Area {
         return new Area(value, AreaUnits.SquareKilometers);
     }
 
+    /**
+     * Create a new Area instance from a SquareMeters
+     *
+     * @param value The unit as SquareMeters to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareMeters(value: number): Area {
         return new Area(value, AreaUnits.SquareMeters);
     }
 
+    /**
+     * Create a new Area instance from a SquareDecimeters
+     *
+     * @param value The unit as SquareDecimeters to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareDecimeters(value: number): Area {
         return new Area(value, AreaUnits.SquareDecimeters);
     }
 
+    /**
+     * Create a new Area instance from a SquareCentimeters
+     *
+     * @param value The unit as SquareCentimeters to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareCentimeters(value: number): Area {
         return new Area(value, AreaUnits.SquareCentimeters);
     }
 
+    /**
+     * Create a new Area instance from a SquareMillimeters
+     *
+     * @param value The unit as SquareMillimeters to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareMillimeters(value: number): Area {
         return new Area(value, AreaUnits.SquareMillimeters);
     }
 
+    /**
+     * Create a new Area instance from a SquareMicrometers
+     *
+     * @param value The unit as SquareMicrometers to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareMicrometers(value: number): Area {
         return new Area(value, AreaUnits.SquareMicrometers);
     }
 
+    /**
+     * Create a new Area instance from a SquareMiles
+     *
+     * @param value The unit as SquareMiles to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareMiles(value: number): Area {
         return new Area(value, AreaUnits.SquareMiles);
     }
 
+    /**
+     * Create a new Area instance from a SquareYards
+     *
+     * @param value The unit as SquareYards to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareYards(value: number): Area {
         return new Area(value, AreaUnits.SquareYards);
     }
 
+    /**
+     * Create a new Area instance from a SquareFeet
+     *
+     * @param value The unit as SquareFeet to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareFeet(value: number): Area {
         return new Area(value, AreaUnits.SquareFeet);
     }
 
+    /**
+     * Create a new Area instance from a UsSurveySquareFeet
+     *
+     * @param value The unit as UsSurveySquareFeet to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromUsSurveySquareFeet(value: number): Area {
         return new Area(value, AreaUnits.UsSurveySquareFeet);
     }
 
+    /**
+     * Create a new Area instance from a SquareInches
+     *
+     * @param value The unit as SquareInches to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareInches(value: number): Area {
         return new Area(value, AreaUnits.SquareInches);
     }
 
+    /**
+     * Create a new Area instance from a Acres
+     *
+     * @param value The unit as Acres to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromAcres(value: number): Area {
         return new Area(value, AreaUnits.Acres);
     }
 
+    /**
+     * Create a new Area instance from a Hectares
+     *
+     * @param value The unit as Hectares to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromHectares(value: number): Area {
         return new Area(value, AreaUnits.Hectares);
     }
 
+    /**
+     * Create a new Area instance from a SquareNauticalMiles
+     *
+     * @param value The unit as SquareNauticalMiles to create a new Area from.
+     * @returns The new Area instance.
+     */
     public static FromSquareNauticalMiles(value: number): Area {
         return new Area(value, AreaUnits.SquareNauticalMiles);
     }
@@ -264,6 +393,13 @@ export class Area {
         return NaN;
     }
 
+    /**
+     * Format the Area to string.
+     * Note! the default format for Area is SquareMeters.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Area.
+     * @returns The string format of the Area.
+     */
     public toString(toUnit: AreaUnits = AreaUnits.SquareMeters): string {
 
         switch (toUnit) {

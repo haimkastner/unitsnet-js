@@ -1,64 +1,120 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** ThermalResistanceUnits enumeration */
 var ThermalResistanceUnits;
 (function (ThermalResistanceUnits) {
+    /** */
     ThermalResistanceUnits[ThermalResistanceUnits["SquareMeterKelvinsPerKilowatt"] = 0] = "SquareMeterKelvinsPerKilowatt";
+    /** */
     ThermalResistanceUnits[ThermalResistanceUnits["SquareMeterDegreesCelsiusPerWatt"] = 1] = "SquareMeterDegreesCelsiusPerWatt";
+    /** */
     ThermalResistanceUnits[ThermalResistanceUnits["SquareCentimeterKelvinsPerWatt"] = 2] = "SquareCentimeterKelvinsPerWatt";
+    /** */
     ThermalResistanceUnits[ThermalResistanceUnits["SquareCentimeterHourDegreesCelsiusPerKilocalorie"] = 3] = "SquareCentimeterHourDegreesCelsiusPerKilocalorie";
+    /** */
     ThermalResistanceUnits[ThermalResistanceUnits["HourSquareFeetDegreesFahrenheitPerBtu"] = 4] = "HourSquareFeetDegreesFahrenheitPerBtu";
 })(ThermalResistanceUnits = exports.ThermalResistanceUnits || (exports.ThermalResistanceUnits = {}));
+/** Heat Transfer Coefficient or Thermal conductivity - indicates a materials ability to conduct heat. */
 class ThermalResistance {
+    /**
+     * Create a new ThermalResistance.
+     * @param value The value.
+     * @param fromUnit The ‘ThermalResistance’ unit to create from.
+     */
     constructor(value, fromUnit) {
         this.squaremeterkelvinsperkilowattLazy = null;
         this.squaremeterdegreescelsiusperwattLazy = null;
         this.squarecentimeterkelvinsperwattLazy = null;
         this.squarecentimeterhourdegreescelsiusperkilocalorieLazy = null;
         this.hoursquarefeetdegreesfahrenheitperbtuLazy = null;
+        if (isNaN(value))
+            throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
+    /**
+     * The base value of ThermalResistance is SquareMeterKelvinPerKilowatt.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    get BaseValue() {
+        return this.value;
+    }
+    /** */
     get SquareMeterKelvinsPerKilowatt() {
         if (this.squaremeterkelvinsperkilowattLazy !== null) {
             return this.squaremeterkelvinsperkilowattLazy;
         }
         return this.squaremeterkelvinsperkilowattLazy = this.convertFromBase(ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt);
     }
+    /** */
     get SquareMeterDegreesCelsiusPerWatt() {
         if (this.squaremeterdegreescelsiusperwattLazy !== null) {
             return this.squaremeterdegreescelsiusperwattLazy;
         }
         return this.squaremeterdegreescelsiusperwattLazy = this.convertFromBase(ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt);
     }
+    /** */
     get SquareCentimeterKelvinsPerWatt() {
         if (this.squarecentimeterkelvinsperwattLazy !== null) {
             return this.squarecentimeterkelvinsperwattLazy;
         }
         return this.squarecentimeterkelvinsperwattLazy = this.convertFromBase(ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt);
     }
+    /** */
     get SquareCentimeterHourDegreesCelsiusPerKilocalorie() {
         if (this.squarecentimeterhourdegreescelsiusperkilocalorieLazy !== null) {
             return this.squarecentimeterhourdegreescelsiusperkilocalorieLazy;
         }
         return this.squarecentimeterhourdegreescelsiusperkilocalorieLazy = this.convertFromBase(ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie);
     }
+    /** */
     get HourSquareFeetDegreesFahrenheitPerBtu() {
         if (this.hoursquarefeetdegreesfahrenheitperbtuLazy !== null) {
             return this.hoursquarefeetdegreesfahrenheitperbtuLazy;
         }
         return this.hoursquarefeetdegreesfahrenheitperbtuLazy = this.convertFromBase(ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu);
     }
+    /**
+     * Create a new ThermalResistance instance from a SquareMeterKelvinsPerKilowatt
+     *
+     * @param value The unit as SquareMeterKelvinsPerKilowatt to create a new ThermalResistance from.
+     * @returns The new ThermalResistance instance.
+     */
     static FromSquareMeterKelvinsPerKilowatt(value) {
         return new ThermalResistance(value, ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt);
     }
+    /**
+     * Create a new ThermalResistance instance from a SquareMeterDegreesCelsiusPerWatt
+     *
+     * @param value The unit as SquareMeterDegreesCelsiusPerWatt to create a new ThermalResistance from.
+     * @returns The new ThermalResistance instance.
+     */
     static FromSquareMeterDegreesCelsiusPerWatt(value) {
         return new ThermalResistance(value, ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt);
     }
+    /**
+     * Create a new ThermalResistance instance from a SquareCentimeterKelvinsPerWatt
+     *
+     * @param value The unit as SquareCentimeterKelvinsPerWatt to create a new ThermalResistance from.
+     * @returns The new ThermalResistance instance.
+     */
     static FromSquareCentimeterKelvinsPerWatt(value) {
         return new ThermalResistance(value, ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt);
     }
+    /**
+     * Create a new ThermalResistance instance from a SquareCentimeterHourDegreesCelsiusPerKilocalorie
+     *
+     * @param value The unit as SquareCentimeterHourDegreesCelsiusPerKilocalorie to create a new ThermalResistance from.
+     * @returns The new ThermalResistance instance.
+     */
     static FromSquareCentimeterHourDegreesCelsiusPerKilocalorie(value) {
         return new ThermalResistance(value, ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie);
     }
+    /**
+     * Create a new ThermalResistance instance from a HourSquareFeetDegreesFahrenheitPerBtu
+     *
+     * @param value The unit as HourSquareFeetDegreesFahrenheitPerBtu to create a new ThermalResistance from.
+     * @returns The new ThermalResistance instance.
+     */
     static FromHourSquareFeetDegreesFahrenheitPerBtu(value) {
         return new ThermalResistance(value, ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu);
     }
@@ -96,6 +152,13 @@ class ThermalResistance {
         }
         return NaN;
     }
+    /**
+     * Format the ThermalResistance to string.
+     * Note! the default format for ThermalResistance is SquareMeterKelvinsPerKilowatt.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the ThermalResistance.
+     * @returns The string format of the ThermalResistance.
+     */
     toString(toUnit = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt) {
         switch (toUnit) {
             case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:

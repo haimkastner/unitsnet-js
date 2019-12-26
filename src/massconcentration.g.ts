@@ -1,42 +1,80 @@
+/** MassConcentrationUnits enumeration */
 export enum MassConcentrationUnits {
+    /** */
     GramsPerCubicMillimeter,
+    /** */
     GramsPerCubicCentimeter,
+    /** */
     GramsPerCubicMeter,
+    /** */
     GramsPerMilliliter,
+    /** */
     GramsPerDeciliter,
+    /** */
     GramsPerLiter,
+    /** */
     TonnesPerCubicMillimeter,
+    /** */
     TonnesPerCubicCentimeter,
+    /** */
     TonnesPerCubicMeter,
+    /** */
     PoundsPerCubicInch,
+    /** */
     PoundsPerCubicFoot,
+    /** */
     SlugsPerCubicFoot,
+    /** */
     PoundsPerUSGallon,
+    /** */
     PoundsPerImperialGallon,
+    /** */
     KilogramsPerCubicMillimeter,
+    /** */
     KilogramsPerCubicCentimeter,
+    /** */
     KilogramsPerCubicMeter,
+    /** */
     MicrogramsPerCubicMeter,
+    /** */
     PicogramsPerMilliliter,
+    /** */
     NanogramsPerMilliliter,
+    /** */
     MicrogramsPerMilliliter,
+    /** */
     CentigramsPerMilliliter,
+    /** */
     DecigramsPerMilliliter,
+    /** */
     PicogramsPerDeciliter,
+    /** */
     NanogramsPerDeciliter,
+    /** */
     MicrogramsPerDeciliter,
+    /** */
     CentigramsPerDeciliter,
+    /** */
     DecigramsPerDeciliter,
+    /** */
     PicogramsPerLiter,
+    /** */
     NanogramsPerLiter,
+    /** */
     MicrogramsPerLiter,
+    /** */
     CentigramsPerLiter,
+    /** */
     DecigramsPerLiter,
+    /** */
     KilogramsPerLiter,
+    /** */
     KilopoundsPerCubicInch,
+    /** */
     KilopoundsPerCubicFoot
 }
 
+/** In chemistry, the mass concentration ρi (or γi) is defined as the mass of a constituent mi divided by the volume of the mixture V */
 export class MassConcentration {
     private value: number;
     private gramspercubicmillimeterLazy: number | null = null;
@@ -76,10 +114,26 @@ export class MassConcentration {
     private kilopoundspercubicinchLazy: number | null = null;
     private kilopoundspercubicfootLazy: number | null = null;
 
+    /**
+     * Create a new MassConcentration.
+     * @param value The value.
+     * @param fromUnit The ‘MassConcentration’ unit to create from.
+     */
     public constructor(value: number, fromUnit: MassConcentrationUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of MassConcentration is KilogramPerCubicMeter.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get GramsPerCubicMillimeter(): number {
         if(this.gramspercubicmillimeterLazy !== null){
             return this.gramspercubicmillimeterLazy;
@@ -87,6 +141,7 @@ export class MassConcentration {
         return this.gramspercubicmillimeterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerCubicMillimeter);
     }
 
+    /** */
     public get GramsPerCubicCentimeter(): number {
         if(this.gramspercubiccentimeterLazy !== null){
             return this.gramspercubiccentimeterLazy;
@@ -94,6 +149,7 @@ export class MassConcentration {
         return this.gramspercubiccentimeterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerCubicCentimeter);
     }
 
+    /** */
     public get GramsPerCubicMeter(): number {
         if(this.gramspercubicmeterLazy !== null){
             return this.gramspercubicmeterLazy;
@@ -101,6 +157,7 @@ export class MassConcentration {
         return this.gramspercubicmeterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerCubicMeter);
     }
 
+    /** */
     public get GramsPerMilliliter(): number {
         if(this.gramspermilliliterLazy !== null){
             return this.gramspermilliliterLazy;
@@ -108,6 +165,7 @@ export class MassConcentration {
         return this.gramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerMilliliter);
     }
 
+    /** */
     public get GramsPerDeciliter(): number {
         if(this.gramsperdeciliterLazy !== null){
             return this.gramsperdeciliterLazy;
@@ -115,6 +173,7 @@ export class MassConcentration {
         return this.gramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerDeciliter);
     }
 
+    /** */
     public get GramsPerLiter(): number {
         if(this.gramsperliterLazy !== null){
             return this.gramsperliterLazy;
@@ -122,6 +181,7 @@ export class MassConcentration {
         return this.gramsperliterLazy = this.convertFromBase(MassConcentrationUnits.GramsPerLiter);
     }
 
+    /** */
     public get TonnesPerCubicMillimeter(): number {
         if(this.tonnespercubicmillimeterLazy !== null){
             return this.tonnespercubicmillimeterLazy;
@@ -129,6 +189,7 @@ export class MassConcentration {
         return this.tonnespercubicmillimeterLazy = this.convertFromBase(MassConcentrationUnits.TonnesPerCubicMillimeter);
     }
 
+    /** */
     public get TonnesPerCubicCentimeter(): number {
         if(this.tonnespercubiccentimeterLazy !== null){
             return this.tonnespercubiccentimeterLazy;
@@ -136,6 +197,7 @@ export class MassConcentration {
         return this.tonnespercubiccentimeterLazy = this.convertFromBase(MassConcentrationUnits.TonnesPerCubicCentimeter);
     }
 
+    /** */
     public get TonnesPerCubicMeter(): number {
         if(this.tonnespercubicmeterLazy !== null){
             return this.tonnespercubicmeterLazy;
@@ -143,6 +205,7 @@ export class MassConcentration {
         return this.tonnespercubicmeterLazy = this.convertFromBase(MassConcentrationUnits.TonnesPerCubicMeter);
     }
 
+    /** */
     public get PoundsPerCubicInch(): number {
         if(this.poundspercubicinchLazy !== null){
             return this.poundspercubicinchLazy;
@@ -150,6 +213,7 @@ export class MassConcentration {
         return this.poundspercubicinchLazy = this.convertFromBase(MassConcentrationUnits.PoundsPerCubicInch);
     }
 
+    /** */
     public get PoundsPerCubicFoot(): number {
         if(this.poundspercubicfootLazy !== null){
             return this.poundspercubicfootLazy;
@@ -157,6 +221,7 @@ export class MassConcentration {
         return this.poundspercubicfootLazy = this.convertFromBase(MassConcentrationUnits.PoundsPerCubicFoot);
     }
 
+    /** */
     public get SlugsPerCubicFoot(): number {
         if(this.slugspercubicfootLazy !== null){
             return this.slugspercubicfootLazy;
@@ -164,6 +229,7 @@ export class MassConcentration {
         return this.slugspercubicfootLazy = this.convertFromBase(MassConcentrationUnits.SlugsPerCubicFoot);
     }
 
+    /** */
     public get PoundsPerUSGallon(): number {
         if(this.poundsperusgallonLazy !== null){
             return this.poundsperusgallonLazy;
@@ -171,6 +237,7 @@ export class MassConcentration {
         return this.poundsperusgallonLazy = this.convertFromBase(MassConcentrationUnits.PoundsPerUSGallon);
     }
 
+    /** */
     public get PoundsPerImperialGallon(): number {
         if(this.poundsperimperialgallonLazy !== null){
             return this.poundsperimperialgallonLazy;
@@ -178,6 +245,7 @@ export class MassConcentration {
         return this.poundsperimperialgallonLazy = this.convertFromBase(MassConcentrationUnits.PoundsPerImperialGallon);
     }
 
+    /** */
     public get KilogramsPerCubicMillimeter(): number {
         if(this.kilogramspercubicmillimeterLazy !== null){
             return this.kilogramspercubicmillimeterLazy;
@@ -185,6 +253,7 @@ export class MassConcentration {
         return this.kilogramspercubicmillimeterLazy = this.convertFromBase(MassConcentrationUnits.KilogramsPerCubicMillimeter);
     }
 
+    /** */
     public get KilogramsPerCubicCentimeter(): number {
         if(this.kilogramspercubiccentimeterLazy !== null){
             return this.kilogramspercubiccentimeterLazy;
@@ -192,6 +261,7 @@ export class MassConcentration {
         return this.kilogramspercubiccentimeterLazy = this.convertFromBase(MassConcentrationUnits.KilogramsPerCubicCentimeter);
     }
 
+    /** */
     public get KilogramsPerCubicMeter(): number {
         if(this.kilogramspercubicmeterLazy !== null){
             return this.kilogramspercubicmeterLazy;
@@ -199,6 +269,7 @@ export class MassConcentration {
         return this.kilogramspercubicmeterLazy = this.convertFromBase(MassConcentrationUnits.KilogramsPerCubicMeter);
     }
 
+    /** */
     public get MicrogramsPerCubicMeter(): number {
         if(this.microgramspercubicmeterLazy !== null){
             return this.microgramspercubicmeterLazy;
@@ -206,6 +277,7 @@ export class MassConcentration {
         return this.microgramspercubicmeterLazy = this.convertFromBase(MassConcentrationUnits.MicrogramsPerCubicMeter);
     }
 
+    /** */
     public get PicogramsPerMilliliter(): number {
         if(this.picogramspermilliliterLazy !== null){
             return this.picogramspermilliliterLazy;
@@ -213,6 +285,7 @@ export class MassConcentration {
         return this.picogramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.PicogramsPerMilliliter);
     }
 
+    /** */
     public get NanogramsPerMilliliter(): number {
         if(this.nanogramspermilliliterLazy !== null){
             return this.nanogramspermilliliterLazy;
@@ -220,6 +293,7 @@ export class MassConcentration {
         return this.nanogramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.NanogramsPerMilliliter);
     }
 
+    /** */
     public get MicrogramsPerMilliliter(): number {
         if(this.microgramspermilliliterLazy !== null){
             return this.microgramspermilliliterLazy;
@@ -227,6 +301,7 @@ export class MassConcentration {
         return this.microgramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.MicrogramsPerMilliliter);
     }
 
+    /** */
     public get CentigramsPerMilliliter(): number {
         if(this.centigramspermilliliterLazy !== null){
             return this.centigramspermilliliterLazy;
@@ -234,6 +309,7 @@ export class MassConcentration {
         return this.centigramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.CentigramsPerMilliliter);
     }
 
+    /** */
     public get DecigramsPerMilliliter(): number {
         if(this.decigramspermilliliterLazy !== null){
             return this.decigramspermilliliterLazy;
@@ -241,6 +317,7 @@ export class MassConcentration {
         return this.decigramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.DecigramsPerMilliliter);
     }
 
+    /** */
     public get PicogramsPerDeciliter(): number {
         if(this.picogramsperdeciliterLazy !== null){
             return this.picogramsperdeciliterLazy;
@@ -248,6 +325,7 @@ export class MassConcentration {
         return this.picogramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.PicogramsPerDeciliter);
     }
 
+    /** */
     public get NanogramsPerDeciliter(): number {
         if(this.nanogramsperdeciliterLazy !== null){
             return this.nanogramsperdeciliterLazy;
@@ -255,6 +333,7 @@ export class MassConcentration {
         return this.nanogramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.NanogramsPerDeciliter);
     }
 
+    /** */
     public get MicrogramsPerDeciliter(): number {
         if(this.microgramsperdeciliterLazy !== null){
             return this.microgramsperdeciliterLazy;
@@ -262,6 +341,7 @@ export class MassConcentration {
         return this.microgramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.MicrogramsPerDeciliter);
     }
 
+    /** */
     public get CentigramsPerDeciliter(): number {
         if(this.centigramsperdeciliterLazy !== null){
             return this.centigramsperdeciliterLazy;
@@ -269,6 +349,7 @@ export class MassConcentration {
         return this.centigramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.CentigramsPerDeciliter);
     }
 
+    /** */
     public get DecigramsPerDeciliter(): number {
         if(this.decigramsperdeciliterLazy !== null){
             return this.decigramsperdeciliterLazy;
@@ -276,6 +357,7 @@ export class MassConcentration {
         return this.decigramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.DecigramsPerDeciliter);
     }
 
+    /** */
     public get PicogramsPerLiter(): number {
         if(this.picogramsperliterLazy !== null){
             return this.picogramsperliterLazy;
@@ -283,6 +365,7 @@ export class MassConcentration {
         return this.picogramsperliterLazy = this.convertFromBase(MassConcentrationUnits.PicogramsPerLiter);
     }
 
+    /** */
     public get NanogramsPerLiter(): number {
         if(this.nanogramsperliterLazy !== null){
             return this.nanogramsperliterLazy;
@@ -290,6 +373,7 @@ export class MassConcentration {
         return this.nanogramsperliterLazy = this.convertFromBase(MassConcentrationUnits.NanogramsPerLiter);
     }
 
+    /** */
     public get MicrogramsPerLiter(): number {
         if(this.microgramsperliterLazy !== null){
             return this.microgramsperliterLazy;
@@ -297,6 +381,7 @@ export class MassConcentration {
         return this.microgramsperliterLazy = this.convertFromBase(MassConcentrationUnits.MicrogramsPerLiter);
     }
 
+    /** */
     public get CentigramsPerLiter(): number {
         if(this.centigramsperliterLazy !== null){
             return this.centigramsperliterLazy;
@@ -304,6 +389,7 @@ export class MassConcentration {
         return this.centigramsperliterLazy = this.convertFromBase(MassConcentrationUnits.CentigramsPerLiter);
     }
 
+    /** */
     public get DecigramsPerLiter(): number {
         if(this.decigramsperliterLazy !== null){
             return this.decigramsperliterLazy;
@@ -311,6 +397,7 @@ export class MassConcentration {
         return this.decigramsperliterLazy = this.convertFromBase(MassConcentrationUnits.DecigramsPerLiter);
     }
 
+    /** */
     public get KilogramsPerLiter(): number {
         if(this.kilogramsperliterLazy !== null){
             return this.kilogramsperliterLazy;
@@ -318,6 +405,7 @@ export class MassConcentration {
         return this.kilogramsperliterLazy = this.convertFromBase(MassConcentrationUnits.KilogramsPerLiter);
     }
 
+    /** */
     public get KilopoundsPerCubicInch(): number {
         if(this.kilopoundspercubicinchLazy !== null){
             return this.kilopoundspercubicinchLazy;
@@ -325,6 +413,7 @@ export class MassConcentration {
         return this.kilopoundspercubicinchLazy = this.convertFromBase(MassConcentrationUnits.KilopoundsPerCubicInch);
     }
 
+    /** */
     public get KilopoundsPerCubicFoot(): number {
         if(this.kilopoundspercubicfootLazy !== null){
             return this.kilopoundspercubicfootLazy;
@@ -332,146 +421,362 @@ export class MassConcentration {
         return this.kilopoundspercubicfootLazy = this.convertFromBase(MassConcentrationUnits.KilopoundsPerCubicFoot);
     }
 
+    /**
+     * Create a new MassConcentration instance from a GramsPerCubicMillimeter
+     *
+     * @param value The unit as GramsPerCubicMillimeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromGramsPerCubicMillimeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.GramsPerCubicMillimeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a GramsPerCubicCentimeter
+     *
+     * @param value The unit as GramsPerCubicCentimeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromGramsPerCubicCentimeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.GramsPerCubicCentimeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a GramsPerCubicMeter
+     *
+     * @param value The unit as GramsPerCubicMeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromGramsPerCubicMeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.GramsPerCubicMeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a GramsPerMilliliter
+     *
+     * @param value The unit as GramsPerMilliliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromGramsPerMilliliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.GramsPerMilliliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a GramsPerDeciliter
+     *
+     * @param value The unit as GramsPerDeciliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromGramsPerDeciliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.GramsPerDeciliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a GramsPerLiter
+     *
+     * @param value The unit as GramsPerLiter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromGramsPerLiter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.GramsPerLiter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a TonnesPerCubicMillimeter
+     *
+     * @param value The unit as TonnesPerCubicMillimeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromTonnesPerCubicMillimeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.TonnesPerCubicMillimeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a TonnesPerCubicCentimeter
+     *
+     * @param value The unit as TonnesPerCubicCentimeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromTonnesPerCubicCentimeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.TonnesPerCubicCentimeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a TonnesPerCubicMeter
+     *
+     * @param value The unit as TonnesPerCubicMeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromTonnesPerCubicMeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.TonnesPerCubicMeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a PoundsPerCubicInch
+     *
+     * @param value The unit as PoundsPerCubicInch to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromPoundsPerCubicInch(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.PoundsPerCubicInch);
     }
 
+    /**
+     * Create a new MassConcentration instance from a PoundsPerCubicFoot
+     *
+     * @param value The unit as PoundsPerCubicFoot to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromPoundsPerCubicFoot(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.PoundsPerCubicFoot);
     }
 
+    /**
+     * Create a new MassConcentration instance from a SlugsPerCubicFoot
+     *
+     * @param value The unit as SlugsPerCubicFoot to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromSlugsPerCubicFoot(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.SlugsPerCubicFoot);
     }
 
+    /**
+     * Create a new MassConcentration instance from a PoundsPerUSGallon
+     *
+     * @param value The unit as PoundsPerUSGallon to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromPoundsPerUSGallon(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.PoundsPerUSGallon);
     }
 
+    /**
+     * Create a new MassConcentration instance from a PoundsPerImperialGallon
+     *
+     * @param value The unit as PoundsPerImperialGallon to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromPoundsPerImperialGallon(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.PoundsPerImperialGallon);
     }
 
+    /**
+     * Create a new MassConcentration instance from a KilogramsPerCubicMillimeter
+     *
+     * @param value The unit as KilogramsPerCubicMillimeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromKilogramsPerCubicMillimeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.KilogramsPerCubicMillimeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a KilogramsPerCubicCentimeter
+     *
+     * @param value The unit as KilogramsPerCubicCentimeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromKilogramsPerCubicCentimeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.KilogramsPerCubicCentimeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a KilogramsPerCubicMeter
+     *
+     * @param value The unit as KilogramsPerCubicMeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromKilogramsPerCubicMeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.KilogramsPerCubicMeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a MicrogramsPerCubicMeter
+     *
+     * @param value The unit as MicrogramsPerCubicMeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromMicrogramsPerCubicMeter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.MicrogramsPerCubicMeter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a PicogramsPerMilliliter
+     *
+     * @param value The unit as PicogramsPerMilliliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromPicogramsPerMilliliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.PicogramsPerMilliliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a NanogramsPerMilliliter
+     *
+     * @param value The unit as NanogramsPerMilliliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromNanogramsPerMilliliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.NanogramsPerMilliliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a MicrogramsPerMilliliter
+     *
+     * @param value The unit as MicrogramsPerMilliliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromMicrogramsPerMilliliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.MicrogramsPerMilliliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a CentigramsPerMilliliter
+     *
+     * @param value The unit as CentigramsPerMilliliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromCentigramsPerMilliliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.CentigramsPerMilliliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a DecigramsPerMilliliter
+     *
+     * @param value The unit as DecigramsPerMilliliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromDecigramsPerMilliliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.DecigramsPerMilliliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a PicogramsPerDeciliter
+     *
+     * @param value The unit as PicogramsPerDeciliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromPicogramsPerDeciliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.PicogramsPerDeciliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a NanogramsPerDeciliter
+     *
+     * @param value The unit as NanogramsPerDeciliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromNanogramsPerDeciliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.NanogramsPerDeciliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a MicrogramsPerDeciliter
+     *
+     * @param value The unit as MicrogramsPerDeciliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromMicrogramsPerDeciliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.MicrogramsPerDeciliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a CentigramsPerDeciliter
+     *
+     * @param value The unit as CentigramsPerDeciliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromCentigramsPerDeciliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.CentigramsPerDeciliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a DecigramsPerDeciliter
+     *
+     * @param value The unit as DecigramsPerDeciliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromDecigramsPerDeciliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.DecigramsPerDeciliter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a PicogramsPerLiter
+     *
+     * @param value The unit as PicogramsPerLiter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromPicogramsPerLiter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.PicogramsPerLiter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a NanogramsPerLiter
+     *
+     * @param value The unit as NanogramsPerLiter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromNanogramsPerLiter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.NanogramsPerLiter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a MicrogramsPerLiter
+     *
+     * @param value The unit as MicrogramsPerLiter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromMicrogramsPerLiter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.MicrogramsPerLiter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a CentigramsPerLiter
+     *
+     * @param value The unit as CentigramsPerLiter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromCentigramsPerLiter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.CentigramsPerLiter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a DecigramsPerLiter
+     *
+     * @param value The unit as DecigramsPerLiter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromDecigramsPerLiter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.DecigramsPerLiter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a KilogramsPerLiter
+     *
+     * @param value The unit as KilogramsPerLiter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromKilogramsPerLiter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.KilogramsPerLiter);
     }
 
+    /**
+     * Create a new MassConcentration instance from a KilopoundsPerCubicInch
+     *
+     * @param value The unit as KilopoundsPerCubicInch to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromKilopoundsPerCubicInch(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.KilopoundsPerCubicInch);
     }
 
+    /**
+     * Create a new MassConcentration instance from a KilopoundsPerCubicFoot
+     *
+     * @param value The unit as KilopoundsPerCubicFoot to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
     public static FromKilopoundsPerCubicFoot(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.KilopoundsPerCubicFoot);
     }
@@ -638,6 +943,13 @@ export class MassConcentration {
         return NaN;
     }
 
+    /**
+     * Format the MassConcentration to string.
+     * Note! the default format for MassConcentration is KilogramsPerCubicMeter.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the MassConcentration.
+     * @returns The string format of the MassConcentration.
+     */
     public toString(toUnit: MassConcentrationUnits = MassConcentrationUnits.KilogramsPerCubicMeter): string {
 
         switch (toUnit) {

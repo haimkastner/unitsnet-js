@@ -1,18 +1,32 @@
+/** AccelerationUnits enumeration */
 export enum AccelerationUnits {
+    /** */
     MetersPerSecondSquared,
+    /** */
     InchesPerSecondSquared,
+    /** */
     FeetPerSecondSquared,
+    /** */
     KnotsPerSecond,
+    /** */
     KnotsPerMinute,
+    /** */
     KnotsPerHour,
+    /** */
     StandardGravity,
+    /** */
     NanometersPerSecondSquared,
+    /** */
     MicrometersPerSecondSquared,
+    /** */
     CentimetersPerSecondSquared,
+    /** */
     DecimetersPerSecondSquared,
+    /** */
     KilometersPerSecondSquared
 }
 
+/** Acceleration, in physics, is the rate at which the velocity of an object changes over time. An object's acceleration is the net result of any and all forces acting on the object, as described by Newton's Second Law. The SI unit for acceleration is the Meter per second squared (m/s²). Accelerations are vector quantities (they have magnitude and direction) and add according to the parallelogram law. As a vector, the calculated net force is equal to the product of the object's mass (a scalar quantity) and the acceleration. */
 export class Acceleration {
     private value: number;
     private meterspersecondsquaredLazy: number | null = null;
@@ -28,10 +42,26 @@ export class Acceleration {
     private decimeterspersecondsquaredLazy: number | null = null;
     private kilometerspersecondsquaredLazy: number | null = null;
 
+    /**
+     * Create a new Acceleration.
+     * @param value The value.
+     * @param fromUnit The ‘Acceleration’ unit to create from.
+     */
     public constructor(value: number, fromUnit: AccelerationUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Acceleration is MeterPerSecondSquared.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get MetersPerSecondSquared(): number {
         if(this.meterspersecondsquaredLazy !== null){
             return this.meterspersecondsquaredLazy;
@@ -39,6 +69,7 @@ export class Acceleration {
         return this.meterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.MetersPerSecondSquared);
     }
 
+    /** */
     public get InchesPerSecondSquared(): number {
         if(this.inchespersecondsquaredLazy !== null){
             return this.inchespersecondsquaredLazy;
@@ -46,6 +77,7 @@ export class Acceleration {
         return this.inchespersecondsquaredLazy = this.convertFromBase(AccelerationUnits.InchesPerSecondSquared);
     }
 
+    /** */
     public get FeetPerSecondSquared(): number {
         if(this.feetpersecondsquaredLazy !== null){
             return this.feetpersecondsquaredLazy;
@@ -53,6 +85,7 @@ export class Acceleration {
         return this.feetpersecondsquaredLazy = this.convertFromBase(AccelerationUnits.FeetPerSecondSquared);
     }
 
+    /** */
     public get KnotsPerSecond(): number {
         if(this.knotspersecondLazy !== null){
             return this.knotspersecondLazy;
@@ -60,6 +93,7 @@ export class Acceleration {
         return this.knotspersecondLazy = this.convertFromBase(AccelerationUnits.KnotsPerSecond);
     }
 
+    /** */
     public get KnotsPerMinute(): number {
         if(this.knotsperminuteLazy !== null){
             return this.knotsperminuteLazy;
@@ -67,6 +101,7 @@ export class Acceleration {
         return this.knotsperminuteLazy = this.convertFromBase(AccelerationUnits.KnotsPerMinute);
     }
 
+    /** */
     public get KnotsPerHour(): number {
         if(this.knotsperhourLazy !== null){
             return this.knotsperhourLazy;
@@ -74,6 +109,7 @@ export class Acceleration {
         return this.knotsperhourLazy = this.convertFromBase(AccelerationUnits.KnotsPerHour);
     }
 
+    /** */
     public get StandardGravity(): number {
         if(this.standardgravityLazy !== null){
             return this.standardgravityLazy;
@@ -81,6 +117,7 @@ export class Acceleration {
         return this.standardgravityLazy = this.convertFromBase(AccelerationUnits.StandardGravity);
     }
 
+    /** */
     public get NanometersPerSecondSquared(): number {
         if(this.nanometerspersecondsquaredLazy !== null){
             return this.nanometerspersecondsquaredLazy;
@@ -88,6 +125,7 @@ export class Acceleration {
         return this.nanometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.NanometersPerSecondSquared);
     }
 
+    /** */
     public get MicrometersPerSecondSquared(): number {
         if(this.micrometerspersecondsquaredLazy !== null){
             return this.micrometerspersecondsquaredLazy;
@@ -95,6 +133,7 @@ export class Acceleration {
         return this.micrometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.MicrometersPerSecondSquared);
     }
 
+    /** */
     public get CentimetersPerSecondSquared(): number {
         if(this.centimeterspersecondsquaredLazy !== null){
             return this.centimeterspersecondsquaredLazy;
@@ -102,6 +141,7 @@ export class Acceleration {
         return this.centimeterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.CentimetersPerSecondSquared);
     }
 
+    /** */
     public get DecimetersPerSecondSquared(): number {
         if(this.decimeterspersecondsquaredLazy !== null){
             return this.decimeterspersecondsquaredLazy;
@@ -109,6 +149,7 @@ export class Acceleration {
         return this.decimeterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.DecimetersPerSecondSquared);
     }
 
+    /** */
     public get KilometersPerSecondSquared(): number {
         if(this.kilometerspersecondsquaredLazy !== null){
             return this.kilometerspersecondsquaredLazy;
@@ -116,50 +157,122 @@ export class Acceleration {
         return this.kilometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.KilometersPerSecondSquared);
     }
 
+    /**
+     * Create a new Acceleration instance from a MetersPerSecondSquared
+     *
+     * @param value The unit as MetersPerSecondSquared to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromMetersPerSecondSquared(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.MetersPerSecondSquared);
     }
 
+    /**
+     * Create a new Acceleration instance from a InchesPerSecondSquared
+     *
+     * @param value The unit as InchesPerSecondSquared to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromInchesPerSecondSquared(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.InchesPerSecondSquared);
     }
 
+    /**
+     * Create a new Acceleration instance from a FeetPerSecondSquared
+     *
+     * @param value The unit as FeetPerSecondSquared to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromFeetPerSecondSquared(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.FeetPerSecondSquared);
     }
 
+    /**
+     * Create a new Acceleration instance from a KnotsPerSecond
+     *
+     * @param value The unit as KnotsPerSecond to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromKnotsPerSecond(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.KnotsPerSecond);
     }
 
+    /**
+     * Create a new Acceleration instance from a KnotsPerMinute
+     *
+     * @param value The unit as KnotsPerMinute to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromKnotsPerMinute(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.KnotsPerMinute);
     }
 
+    /**
+     * Create a new Acceleration instance from a KnotsPerHour
+     *
+     * @param value The unit as KnotsPerHour to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromKnotsPerHour(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.KnotsPerHour);
     }
 
+    /**
+     * Create a new Acceleration instance from a StandardGravity
+     *
+     * @param value The unit as StandardGravity to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromStandardGravity(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.StandardGravity);
     }
 
+    /**
+     * Create a new Acceleration instance from a NanometersPerSecondSquared
+     *
+     * @param value The unit as NanometersPerSecondSquared to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromNanometersPerSecondSquared(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.NanometersPerSecondSquared);
     }
 
+    /**
+     * Create a new Acceleration instance from a MicrometersPerSecondSquared
+     *
+     * @param value The unit as MicrometersPerSecondSquared to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromMicrometersPerSecondSquared(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.MicrometersPerSecondSquared);
     }
 
+    /**
+     * Create a new Acceleration instance from a CentimetersPerSecondSquared
+     *
+     * @param value The unit as CentimetersPerSecondSquared to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromCentimetersPerSecondSquared(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.CentimetersPerSecondSquared);
     }
 
+    /**
+     * Create a new Acceleration instance from a DecimetersPerSecondSquared
+     *
+     * @param value The unit as DecimetersPerSecondSquared to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromDecimetersPerSecondSquared(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.DecimetersPerSecondSquared);
     }
 
+    /**
+     * Create a new Acceleration instance from a KilometersPerSecondSquared
+     *
+     * @param value The unit as KilometersPerSecondSquared to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
     public static FromKilometersPerSecondSquared(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.KilometersPerSecondSquared);
     }
@@ -230,6 +343,13 @@ export class Acceleration {
         return NaN;
     }
 
+    /**
+     * Format the Acceleration to string.
+     * Note! the default format for Acceleration is MetersPerSecondSquared.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Acceleration.
+     * @returns The string format of the Acceleration.
+     */
     public toString(toUnit: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared): string {
 
         switch (toUnit) {

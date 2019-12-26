@@ -1,28 +1,52 @@
+/** MassFractionUnits enumeration */
 export enum MassFractionUnits {
+    /** */
     DecimalFractions,
+    /** */
     GramsPerGram,
+    /** */
     GramsPerKilogram,
+    /** */
     Percent,
+    /** */
     PartsPerThousand,
+    /** */
     PartsPerMillion,
+    /** */
     PartsPerBillion,
+    /** */
     PartsPerTrillion,
+    /** */
     NanogramsPerGram,
+    /** */
     MicrogramsPerGram,
+    /** */
     CentigramsPerGram,
+    /** */
     DecigramsPerGram,
+    /** */
     DecagramsPerGram,
+    /** */
     HectogramsPerGram,
+    /** */
     KilogramsPerGram,
+    /** */
     NanogramsPerKilogram,
+    /** */
     MicrogramsPerKilogram,
+    /** */
     CentigramsPerKilogram,
+    /** */
     DecigramsPerKilogram,
+    /** */
     DecagramsPerKilogram,
+    /** */
     HectogramsPerKilogram,
+    /** */
     KilogramsPerKilogram
 }
 
+/** The mass fraction is defined as the mass of a constituent divided by the total mass of the mixture. */
 export class MassFraction {
     private value: number;
     private decimalfractionsLazy: number | null = null;
@@ -48,10 +72,26 @@ export class MassFraction {
     private hectogramsperkilogramLazy: number | null = null;
     private kilogramsperkilogramLazy: number | null = null;
 
+    /**
+     * Create a new MassFraction.
+     * @param value The value.
+     * @param fromUnit The ‘MassFraction’ unit to create from.
+     */
     public constructor(value: number, fromUnit: MassFractionUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of MassFraction is DecimalFraction.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get DecimalFractions(): number {
         if(this.decimalfractionsLazy !== null){
             return this.decimalfractionsLazy;
@@ -59,6 +99,7 @@ export class MassFraction {
         return this.decimalfractionsLazy = this.convertFromBase(MassFractionUnits.DecimalFractions);
     }
 
+    /** */
     public get GramsPerGram(): number {
         if(this.gramspergramLazy !== null){
             return this.gramspergramLazy;
@@ -66,6 +107,7 @@ export class MassFraction {
         return this.gramspergramLazy = this.convertFromBase(MassFractionUnits.GramsPerGram);
     }
 
+    /** */
     public get GramsPerKilogram(): number {
         if(this.gramsperkilogramLazy !== null){
             return this.gramsperkilogramLazy;
@@ -73,6 +115,7 @@ export class MassFraction {
         return this.gramsperkilogramLazy = this.convertFromBase(MassFractionUnits.GramsPerKilogram);
     }
 
+    /** */
     public get Percent(): number {
         if(this.percentLazy !== null){
             return this.percentLazy;
@@ -80,6 +123,7 @@ export class MassFraction {
         return this.percentLazy = this.convertFromBase(MassFractionUnits.Percent);
     }
 
+    /** */
     public get PartsPerThousand(): number {
         if(this.partsperthousandLazy !== null){
             return this.partsperthousandLazy;
@@ -87,6 +131,7 @@ export class MassFraction {
         return this.partsperthousandLazy = this.convertFromBase(MassFractionUnits.PartsPerThousand);
     }
 
+    /** */
     public get PartsPerMillion(): number {
         if(this.partspermillionLazy !== null){
             return this.partspermillionLazy;
@@ -94,6 +139,7 @@ export class MassFraction {
         return this.partspermillionLazy = this.convertFromBase(MassFractionUnits.PartsPerMillion);
     }
 
+    /** */
     public get PartsPerBillion(): number {
         if(this.partsperbillionLazy !== null){
             return this.partsperbillionLazy;
@@ -101,6 +147,7 @@ export class MassFraction {
         return this.partsperbillionLazy = this.convertFromBase(MassFractionUnits.PartsPerBillion);
     }
 
+    /** */
     public get PartsPerTrillion(): number {
         if(this.partspertrillionLazy !== null){
             return this.partspertrillionLazy;
@@ -108,6 +155,7 @@ export class MassFraction {
         return this.partspertrillionLazy = this.convertFromBase(MassFractionUnits.PartsPerTrillion);
     }
 
+    /** */
     public get NanogramsPerGram(): number {
         if(this.nanogramspergramLazy !== null){
             return this.nanogramspergramLazy;
@@ -115,6 +163,7 @@ export class MassFraction {
         return this.nanogramspergramLazy = this.convertFromBase(MassFractionUnits.NanogramsPerGram);
     }
 
+    /** */
     public get MicrogramsPerGram(): number {
         if(this.microgramspergramLazy !== null){
             return this.microgramspergramLazy;
@@ -122,6 +171,7 @@ export class MassFraction {
         return this.microgramspergramLazy = this.convertFromBase(MassFractionUnits.MicrogramsPerGram);
     }
 
+    /** */
     public get CentigramsPerGram(): number {
         if(this.centigramspergramLazy !== null){
             return this.centigramspergramLazy;
@@ -129,6 +179,7 @@ export class MassFraction {
         return this.centigramspergramLazy = this.convertFromBase(MassFractionUnits.CentigramsPerGram);
     }
 
+    /** */
     public get DecigramsPerGram(): number {
         if(this.decigramspergramLazy !== null){
             return this.decigramspergramLazy;
@@ -136,6 +187,7 @@ export class MassFraction {
         return this.decigramspergramLazy = this.convertFromBase(MassFractionUnits.DecigramsPerGram);
     }
 
+    /** */
     public get DecagramsPerGram(): number {
         if(this.decagramspergramLazy !== null){
             return this.decagramspergramLazy;
@@ -143,6 +195,7 @@ export class MassFraction {
         return this.decagramspergramLazy = this.convertFromBase(MassFractionUnits.DecagramsPerGram);
     }
 
+    /** */
     public get HectogramsPerGram(): number {
         if(this.hectogramspergramLazy !== null){
             return this.hectogramspergramLazy;
@@ -150,6 +203,7 @@ export class MassFraction {
         return this.hectogramspergramLazy = this.convertFromBase(MassFractionUnits.HectogramsPerGram);
     }
 
+    /** */
     public get KilogramsPerGram(): number {
         if(this.kilogramspergramLazy !== null){
             return this.kilogramspergramLazy;
@@ -157,6 +211,7 @@ export class MassFraction {
         return this.kilogramspergramLazy = this.convertFromBase(MassFractionUnits.KilogramsPerGram);
     }
 
+    /** */
     public get NanogramsPerKilogram(): number {
         if(this.nanogramsperkilogramLazy !== null){
             return this.nanogramsperkilogramLazy;
@@ -164,6 +219,7 @@ export class MassFraction {
         return this.nanogramsperkilogramLazy = this.convertFromBase(MassFractionUnits.NanogramsPerKilogram);
     }
 
+    /** */
     public get MicrogramsPerKilogram(): number {
         if(this.microgramsperkilogramLazy !== null){
             return this.microgramsperkilogramLazy;
@@ -171,6 +227,7 @@ export class MassFraction {
         return this.microgramsperkilogramLazy = this.convertFromBase(MassFractionUnits.MicrogramsPerKilogram);
     }
 
+    /** */
     public get CentigramsPerKilogram(): number {
         if(this.centigramsperkilogramLazy !== null){
             return this.centigramsperkilogramLazy;
@@ -178,6 +235,7 @@ export class MassFraction {
         return this.centigramsperkilogramLazy = this.convertFromBase(MassFractionUnits.CentigramsPerKilogram);
     }
 
+    /** */
     public get DecigramsPerKilogram(): number {
         if(this.decigramsperkilogramLazy !== null){
             return this.decigramsperkilogramLazy;
@@ -185,6 +243,7 @@ export class MassFraction {
         return this.decigramsperkilogramLazy = this.convertFromBase(MassFractionUnits.DecigramsPerKilogram);
     }
 
+    /** */
     public get DecagramsPerKilogram(): number {
         if(this.decagramsperkilogramLazy !== null){
             return this.decagramsperkilogramLazy;
@@ -192,6 +251,7 @@ export class MassFraction {
         return this.decagramsperkilogramLazy = this.convertFromBase(MassFractionUnits.DecagramsPerKilogram);
     }
 
+    /** */
     public get HectogramsPerKilogram(): number {
         if(this.hectogramsperkilogramLazy !== null){
             return this.hectogramsperkilogramLazy;
@@ -199,6 +259,7 @@ export class MassFraction {
         return this.hectogramsperkilogramLazy = this.convertFromBase(MassFractionUnits.HectogramsPerKilogram);
     }
 
+    /** */
     public get KilogramsPerKilogram(): number {
         if(this.kilogramsperkilogramLazy !== null){
             return this.kilogramsperkilogramLazy;
@@ -206,90 +267,222 @@ export class MassFraction {
         return this.kilogramsperkilogramLazy = this.convertFromBase(MassFractionUnits.KilogramsPerKilogram);
     }
 
+    /**
+     * Create a new MassFraction instance from a DecimalFractions
+     *
+     * @param value The unit as DecimalFractions to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromDecimalFractions(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.DecimalFractions);
     }
 
+    /**
+     * Create a new MassFraction instance from a GramsPerGram
+     *
+     * @param value The unit as GramsPerGram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromGramsPerGram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.GramsPerGram);
     }
 
+    /**
+     * Create a new MassFraction instance from a GramsPerKilogram
+     *
+     * @param value The unit as GramsPerKilogram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromGramsPerKilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.GramsPerKilogram);
     }
 
+    /**
+     * Create a new MassFraction instance from a Percent
+     *
+     * @param value The unit as Percent to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromPercent(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.Percent);
     }
 
+    /**
+     * Create a new MassFraction instance from a PartsPerThousand
+     *
+     * @param value The unit as PartsPerThousand to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromPartsPerThousand(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.PartsPerThousand);
     }
 
+    /**
+     * Create a new MassFraction instance from a PartsPerMillion
+     *
+     * @param value The unit as PartsPerMillion to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromPartsPerMillion(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.PartsPerMillion);
     }
 
+    /**
+     * Create a new MassFraction instance from a PartsPerBillion
+     *
+     * @param value The unit as PartsPerBillion to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromPartsPerBillion(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.PartsPerBillion);
     }
 
+    /**
+     * Create a new MassFraction instance from a PartsPerTrillion
+     *
+     * @param value The unit as PartsPerTrillion to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromPartsPerTrillion(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.PartsPerTrillion);
     }
 
+    /**
+     * Create a new MassFraction instance from a NanogramsPerGram
+     *
+     * @param value The unit as NanogramsPerGram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromNanogramsPerGram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.NanogramsPerGram);
     }
 
+    /**
+     * Create a new MassFraction instance from a MicrogramsPerGram
+     *
+     * @param value The unit as MicrogramsPerGram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromMicrogramsPerGram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.MicrogramsPerGram);
     }
 
+    /**
+     * Create a new MassFraction instance from a CentigramsPerGram
+     *
+     * @param value The unit as CentigramsPerGram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromCentigramsPerGram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.CentigramsPerGram);
     }
 
+    /**
+     * Create a new MassFraction instance from a DecigramsPerGram
+     *
+     * @param value The unit as DecigramsPerGram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromDecigramsPerGram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.DecigramsPerGram);
     }
 
+    /**
+     * Create a new MassFraction instance from a DecagramsPerGram
+     *
+     * @param value The unit as DecagramsPerGram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromDecagramsPerGram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.DecagramsPerGram);
     }
 
+    /**
+     * Create a new MassFraction instance from a HectogramsPerGram
+     *
+     * @param value The unit as HectogramsPerGram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromHectogramsPerGram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.HectogramsPerGram);
     }
 
+    /**
+     * Create a new MassFraction instance from a KilogramsPerGram
+     *
+     * @param value The unit as KilogramsPerGram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromKilogramsPerGram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.KilogramsPerGram);
     }
 
+    /**
+     * Create a new MassFraction instance from a NanogramsPerKilogram
+     *
+     * @param value The unit as NanogramsPerKilogram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromNanogramsPerKilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.NanogramsPerKilogram);
     }
 
+    /**
+     * Create a new MassFraction instance from a MicrogramsPerKilogram
+     *
+     * @param value The unit as MicrogramsPerKilogram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromMicrogramsPerKilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.MicrogramsPerKilogram);
     }
 
+    /**
+     * Create a new MassFraction instance from a CentigramsPerKilogram
+     *
+     * @param value The unit as CentigramsPerKilogram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromCentigramsPerKilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.CentigramsPerKilogram);
     }
 
+    /**
+     * Create a new MassFraction instance from a DecigramsPerKilogram
+     *
+     * @param value The unit as DecigramsPerKilogram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromDecigramsPerKilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.DecigramsPerKilogram);
     }
 
+    /**
+     * Create a new MassFraction instance from a DecagramsPerKilogram
+     *
+     * @param value The unit as DecagramsPerKilogram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromDecagramsPerKilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.DecagramsPerKilogram);
     }
 
+    /**
+     * Create a new MassFraction instance from a HectogramsPerKilogram
+     *
+     * @param value The unit as HectogramsPerKilogram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromHectogramsPerKilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.HectogramsPerKilogram);
     }
 
+    /**
+     * Create a new MassFraction instance from a KilogramsPerKilogram
+     *
+     * @param value The unit as KilogramsPerKilogram to create a new MassFraction from.
+     * @returns The new MassFraction instance.
+     */
     public static FromKilogramsPerKilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.KilogramsPerKilogram);
     }
@@ -400,6 +593,13 @@ export class MassFraction {
         return NaN;
     }
 
+    /**
+     * Format the MassFraction to string.
+     * Note! the default format for MassFraction is DecimalFractions.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the MassFraction.
+     * @returns The string format of the MassFraction.
+     */
     public toString(toUnit: MassFractionUnits = MassFractionUnits.DecimalFractions): string {
 
         switch (toUnit) {

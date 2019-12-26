@@ -1,35 +1,66 @@
+/** SpeedUnits enumeration */
 export enum SpeedUnits {
+    /** */
     MetersPerSecond,
+    /** */
     MetersPerMinutes,
+    /** */
     MetersPerHour,
+    /** */
     FeetPerSecond,
+    /** */
     FeetPerMinute,
+    /** */
     FeetPerHour,
+    /** */
     UsSurveyFeetPerSecond,
+    /** */
     UsSurveyFeetPerMinute,
+    /** */
     UsSurveyFeetPerHour,
+    /** */
     InchesPerSecond,
+    /** */
     InchesPerMinute,
+    /** */
     InchesPerHour,
+    /** */
     YardsPerSecond,
+    /** */
     YardsPerMinute,
+    /** */
     YardsPerHour,
+    /** */
     Knots,
+    /** */
     MilesPerHour,
+    /** */
     NanometersPerSecond,
+    /** */
     MicrometersPerSecond,
+    /** */
     CentimetersPerSecond,
+    /** */
     DecimetersPerSecond,
+    /** */
     KilometersPerSecond,
+    /** */
     NanometersPerMinutes,
+    /** */
     MicrometersPerMinutes,
+    /** */
     CentimetersPerMinutes,
+    /** */
     DecimetersPerMinutes,
+    /** */
     KilometersPerMinutes,
+    /** */
     CentimetersPerHour,
+    /** */
     KilometersPerHour
 }
 
+/** In everyday use and in kinematics, the speed of an object is the magnitude of its velocity (the rate of change of its position); it is thus a scalar quantity.[1] The average speed of an object in an interval of time is the distance travelled by the object divided by the duration of the interval;[2] the instantaneous speed is the limit of the average speed as the duration of the time interval approaches zero. */
 export class Speed {
     private value: number;
     private meterspersecondLazy: number | null = null;
@@ -62,10 +93,26 @@ export class Speed {
     private centimetersperhourLazy: number | null = null;
     private kilometersperhourLazy: number | null = null;
 
+    /**
+     * Create a new Speed.
+     * @param value The value.
+     * @param fromUnit The ‘Speed’ unit to create from.
+     */
     public constructor(value: number, fromUnit: SpeedUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Speed is MeterPerSecond.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get MetersPerSecond(): number {
         if(this.meterspersecondLazy !== null){
             return this.meterspersecondLazy;
@@ -73,6 +120,7 @@ export class Speed {
         return this.meterspersecondLazy = this.convertFromBase(SpeedUnits.MetersPerSecond);
     }
 
+    /** */
     public get MetersPerMinutes(): number {
         if(this.metersperminutesLazy !== null){
             return this.metersperminutesLazy;
@@ -80,6 +128,7 @@ export class Speed {
         return this.metersperminutesLazy = this.convertFromBase(SpeedUnits.MetersPerMinutes);
     }
 
+    /** */
     public get MetersPerHour(): number {
         if(this.metersperhourLazy !== null){
             return this.metersperhourLazy;
@@ -87,6 +136,7 @@ export class Speed {
         return this.metersperhourLazy = this.convertFromBase(SpeedUnits.MetersPerHour);
     }
 
+    /** */
     public get FeetPerSecond(): number {
         if(this.feetpersecondLazy !== null){
             return this.feetpersecondLazy;
@@ -94,6 +144,7 @@ export class Speed {
         return this.feetpersecondLazy = this.convertFromBase(SpeedUnits.FeetPerSecond);
     }
 
+    /** */
     public get FeetPerMinute(): number {
         if(this.feetperminuteLazy !== null){
             return this.feetperminuteLazy;
@@ -101,6 +152,7 @@ export class Speed {
         return this.feetperminuteLazy = this.convertFromBase(SpeedUnits.FeetPerMinute);
     }
 
+    /** */
     public get FeetPerHour(): number {
         if(this.feetperhourLazy !== null){
             return this.feetperhourLazy;
@@ -108,6 +160,7 @@ export class Speed {
         return this.feetperhourLazy = this.convertFromBase(SpeedUnits.FeetPerHour);
     }
 
+    /** */
     public get UsSurveyFeetPerSecond(): number {
         if(this.ussurveyfeetpersecondLazy !== null){
             return this.ussurveyfeetpersecondLazy;
@@ -115,6 +168,7 @@ export class Speed {
         return this.ussurveyfeetpersecondLazy = this.convertFromBase(SpeedUnits.UsSurveyFeetPerSecond);
     }
 
+    /** */
     public get UsSurveyFeetPerMinute(): number {
         if(this.ussurveyfeetperminuteLazy !== null){
             return this.ussurveyfeetperminuteLazy;
@@ -122,6 +176,7 @@ export class Speed {
         return this.ussurveyfeetperminuteLazy = this.convertFromBase(SpeedUnits.UsSurveyFeetPerMinute);
     }
 
+    /** */
     public get UsSurveyFeetPerHour(): number {
         if(this.ussurveyfeetperhourLazy !== null){
             return this.ussurveyfeetperhourLazy;
@@ -129,6 +184,7 @@ export class Speed {
         return this.ussurveyfeetperhourLazy = this.convertFromBase(SpeedUnits.UsSurveyFeetPerHour);
     }
 
+    /** */
     public get InchesPerSecond(): number {
         if(this.inchespersecondLazy !== null){
             return this.inchespersecondLazy;
@@ -136,6 +192,7 @@ export class Speed {
         return this.inchespersecondLazy = this.convertFromBase(SpeedUnits.InchesPerSecond);
     }
 
+    /** */
     public get InchesPerMinute(): number {
         if(this.inchesperminuteLazy !== null){
             return this.inchesperminuteLazy;
@@ -143,6 +200,7 @@ export class Speed {
         return this.inchesperminuteLazy = this.convertFromBase(SpeedUnits.InchesPerMinute);
     }
 
+    /** */
     public get InchesPerHour(): number {
         if(this.inchesperhourLazy !== null){
             return this.inchesperhourLazy;
@@ -150,6 +208,7 @@ export class Speed {
         return this.inchesperhourLazy = this.convertFromBase(SpeedUnits.InchesPerHour);
     }
 
+    /** */
     public get YardsPerSecond(): number {
         if(this.yardspersecondLazy !== null){
             return this.yardspersecondLazy;
@@ -157,6 +216,7 @@ export class Speed {
         return this.yardspersecondLazy = this.convertFromBase(SpeedUnits.YardsPerSecond);
     }
 
+    /** */
     public get YardsPerMinute(): number {
         if(this.yardsperminuteLazy !== null){
             return this.yardsperminuteLazy;
@@ -164,6 +224,7 @@ export class Speed {
         return this.yardsperminuteLazy = this.convertFromBase(SpeedUnits.YardsPerMinute);
     }
 
+    /** */
     public get YardsPerHour(): number {
         if(this.yardsperhourLazy !== null){
             return this.yardsperhourLazy;
@@ -171,6 +232,7 @@ export class Speed {
         return this.yardsperhourLazy = this.convertFromBase(SpeedUnits.YardsPerHour);
     }
 
+    /** */
     public get Knots(): number {
         if(this.knotsLazy !== null){
             return this.knotsLazy;
@@ -178,6 +240,7 @@ export class Speed {
         return this.knotsLazy = this.convertFromBase(SpeedUnits.Knots);
     }
 
+    /** */
     public get MilesPerHour(): number {
         if(this.milesperhourLazy !== null){
             return this.milesperhourLazy;
@@ -185,6 +248,7 @@ export class Speed {
         return this.milesperhourLazy = this.convertFromBase(SpeedUnits.MilesPerHour);
     }
 
+    /** */
     public get NanometersPerSecond(): number {
         if(this.nanometerspersecondLazy !== null){
             return this.nanometerspersecondLazy;
@@ -192,6 +256,7 @@ export class Speed {
         return this.nanometerspersecondLazy = this.convertFromBase(SpeedUnits.NanometersPerSecond);
     }
 
+    /** */
     public get MicrometersPerSecond(): number {
         if(this.micrometerspersecondLazy !== null){
             return this.micrometerspersecondLazy;
@@ -199,6 +264,7 @@ export class Speed {
         return this.micrometerspersecondLazy = this.convertFromBase(SpeedUnits.MicrometersPerSecond);
     }
 
+    /** */
     public get CentimetersPerSecond(): number {
         if(this.centimeterspersecondLazy !== null){
             return this.centimeterspersecondLazy;
@@ -206,6 +272,7 @@ export class Speed {
         return this.centimeterspersecondLazy = this.convertFromBase(SpeedUnits.CentimetersPerSecond);
     }
 
+    /** */
     public get DecimetersPerSecond(): number {
         if(this.decimeterspersecondLazy !== null){
             return this.decimeterspersecondLazy;
@@ -213,6 +280,7 @@ export class Speed {
         return this.decimeterspersecondLazy = this.convertFromBase(SpeedUnits.DecimetersPerSecond);
     }
 
+    /** */
     public get KilometersPerSecond(): number {
         if(this.kilometerspersecondLazy !== null){
             return this.kilometerspersecondLazy;
@@ -220,6 +288,7 @@ export class Speed {
         return this.kilometerspersecondLazy = this.convertFromBase(SpeedUnits.KilometersPerSecond);
     }
 
+    /** */
     public get NanometersPerMinutes(): number {
         if(this.nanometersperminutesLazy !== null){
             return this.nanometersperminutesLazy;
@@ -227,6 +296,7 @@ export class Speed {
         return this.nanometersperminutesLazy = this.convertFromBase(SpeedUnits.NanometersPerMinutes);
     }
 
+    /** */
     public get MicrometersPerMinutes(): number {
         if(this.micrometersperminutesLazy !== null){
             return this.micrometersperminutesLazy;
@@ -234,6 +304,7 @@ export class Speed {
         return this.micrometersperminutesLazy = this.convertFromBase(SpeedUnits.MicrometersPerMinutes);
     }
 
+    /** */
     public get CentimetersPerMinutes(): number {
         if(this.centimetersperminutesLazy !== null){
             return this.centimetersperminutesLazy;
@@ -241,6 +312,7 @@ export class Speed {
         return this.centimetersperminutesLazy = this.convertFromBase(SpeedUnits.CentimetersPerMinutes);
     }
 
+    /** */
     public get DecimetersPerMinutes(): number {
         if(this.decimetersperminutesLazy !== null){
             return this.decimetersperminutesLazy;
@@ -248,6 +320,7 @@ export class Speed {
         return this.decimetersperminutesLazy = this.convertFromBase(SpeedUnits.DecimetersPerMinutes);
     }
 
+    /** */
     public get KilometersPerMinutes(): number {
         if(this.kilometersperminutesLazy !== null){
             return this.kilometersperminutesLazy;
@@ -255,6 +328,7 @@ export class Speed {
         return this.kilometersperminutesLazy = this.convertFromBase(SpeedUnits.KilometersPerMinutes);
     }
 
+    /** */
     public get CentimetersPerHour(): number {
         if(this.centimetersperhourLazy !== null){
             return this.centimetersperhourLazy;
@@ -262,6 +336,7 @@ export class Speed {
         return this.centimetersperhourLazy = this.convertFromBase(SpeedUnits.CentimetersPerHour);
     }
 
+    /** */
     public get KilometersPerHour(): number {
         if(this.kilometersperhourLazy !== null){
             return this.kilometersperhourLazy;
@@ -269,118 +344,292 @@ export class Speed {
         return this.kilometersperhourLazy = this.convertFromBase(SpeedUnits.KilometersPerHour);
     }
 
+    /**
+     * Create a new Speed instance from a MetersPerSecond
+     *
+     * @param value The unit as MetersPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromMetersPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.MetersPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a MetersPerMinutes
+     *
+     * @param value The unit as MetersPerMinutes to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromMetersPerMinutes(value: number): Speed {
         return new Speed(value, SpeedUnits.MetersPerMinutes);
     }
 
+    /**
+     * Create a new Speed instance from a MetersPerHour
+     *
+     * @param value The unit as MetersPerHour to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromMetersPerHour(value: number): Speed {
         return new Speed(value, SpeedUnits.MetersPerHour);
     }
 
+    /**
+     * Create a new Speed instance from a FeetPerSecond
+     *
+     * @param value The unit as FeetPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromFeetPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.FeetPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a FeetPerMinute
+     *
+     * @param value The unit as FeetPerMinute to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromFeetPerMinute(value: number): Speed {
         return new Speed(value, SpeedUnits.FeetPerMinute);
     }
 
+    /**
+     * Create a new Speed instance from a FeetPerHour
+     *
+     * @param value The unit as FeetPerHour to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromFeetPerHour(value: number): Speed {
         return new Speed(value, SpeedUnits.FeetPerHour);
     }
 
+    /**
+     * Create a new Speed instance from a UsSurveyFeetPerSecond
+     *
+     * @param value The unit as UsSurveyFeetPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromUsSurveyFeetPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.UsSurveyFeetPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a UsSurveyFeetPerMinute
+     *
+     * @param value The unit as UsSurveyFeetPerMinute to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromUsSurveyFeetPerMinute(value: number): Speed {
         return new Speed(value, SpeedUnits.UsSurveyFeetPerMinute);
     }
 
+    /**
+     * Create a new Speed instance from a UsSurveyFeetPerHour
+     *
+     * @param value The unit as UsSurveyFeetPerHour to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromUsSurveyFeetPerHour(value: number): Speed {
         return new Speed(value, SpeedUnits.UsSurveyFeetPerHour);
     }
 
+    /**
+     * Create a new Speed instance from a InchesPerSecond
+     *
+     * @param value The unit as InchesPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromInchesPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.InchesPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a InchesPerMinute
+     *
+     * @param value The unit as InchesPerMinute to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromInchesPerMinute(value: number): Speed {
         return new Speed(value, SpeedUnits.InchesPerMinute);
     }
 
+    /**
+     * Create a new Speed instance from a InchesPerHour
+     *
+     * @param value The unit as InchesPerHour to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromInchesPerHour(value: number): Speed {
         return new Speed(value, SpeedUnits.InchesPerHour);
     }
 
+    /**
+     * Create a new Speed instance from a YardsPerSecond
+     *
+     * @param value The unit as YardsPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromYardsPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.YardsPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a YardsPerMinute
+     *
+     * @param value The unit as YardsPerMinute to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromYardsPerMinute(value: number): Speed {
         return new Speed(value, SpeedUnits.YardsPerMinute);
     }
 
+    /**
+     * Create a new Speed instance from a YardsPerHour
+     *
+     * @param value The unit as YardsPerHour to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromYardsPerHour(value: number): Speed {
         return new Speed(value, SpeedUnits.YardsPerHour);
     }
 
+    /**
+     * Create a new Speed instance from a Knots
+     *
+     * @param value The unit as Knots to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromKnots(value: number): Speed {
         return new Speed(value, SpeedUnits.Knots);
     }
 
+    /**
+     * Create a new Speed instance from a MilesPerHour
+     *
+     * @param value The unit as MilesPerHour to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromMilesPerHour(value: number): Speed {
         return new Speed(value, SpeedUnits.MilesPerHour);
     }
 
+    /**
+     * Create a new Speed instance from a NanometersPerSecond
+     *
+     * @param value The unit as NanometersPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromNanometersPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.NanometersPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a MicrometersPerSecond
+     *
+     * @param value The unit as MicrometersPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromMicrometersPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.MicrometersPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a CentimetersPerSecond
+     *
+     * @param value The unit as CentimetersPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromCentimetersPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.CentimetersPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a DecimetersPerSecond
+     *
+     * @param value The unit as DecimetersPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromDecimetersPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.DecimetersPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a KilometersPerSecond
+     *
+     * @param value The unit as KilometersPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromKilometersPerSecond(value: number): Speed {
         return new Speed(value, SpeedUnits.KilometersPerSecond);
     }
 
+    /**
+     * Create a new Speed instance from a NanometersPerMinutes
+     *
+     * @param value The unit as NanometersPerMinutes to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromNanometersPerMinutes(value: number): Speed {
         return new Speed(value, SpeedUnits.NanometersPerMinutes);
     }
 
+    /**
+     * Create a new Speed instance from a MicrometersPerMinutes
+     *
+     * @param value The unit as MicrometersPerMinutes to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromMicrometersPerMinutes(value: number): Speed {
         return new Speed(value, SpeedUnits.MicrometersPerMinutes);
     }
 
+    /**
+     * Create a new Speed instance from a CentimetersPerMinutes
+     *
+     * @param value The unit as CentimetersPerMinutes to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromCentimetersPerMinutes(value: number): Speed {
         return new Speed(value, SpeedUnits.CentimetersPerMinutes);
     }
 
+    /**
+     * Create a new Speed instance from a DecimetersPerMinutes
+     *
+     * @param value The unit as DecimetersPerMinutes to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromDecimetersPerMinutes(value: number): Speed {
         return new Speed(value, SpeedUnits.DecimetersPerMinutes);
     }
 
+    /**
+     * Create a new Speed instance from a KilometersPerMinutes
+     *
+     * @param value The unit as KilometersPerMinutes to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromKilometersPerMinutes(value: number): Speed {
         return new Speed(value, SpeedUnits.KilometersPerMinutes);
     }
 
+    /**
+     * Create a new Speed instance from a CentimetersPerHour
+     *
+     * @param value The unit as CentimetersPerHour to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromCentimetersPerHour(value: number): Speed {
         return new Speed(value, SpeedUnits.CentimetersPerHour);
     }
 
+    /**
+     * Create a new Speed instance from a KilometersPerHour
+     *
+     * @param value The unit as KilometersPerHour to create a new Speed from.
+     * @returns The new Speed instance.
+     */
     public static FromKilometersPerHour(value: number): Speed {
         return new Speed(value, SpeedUnits.KilometersPerHour);
     }
@@ -519,6 +768,13 @@ export class Speed {
         return NaN;
     }
 
+    /**
+     * Format the Speed to string.
+     * Note! the default format for Speed is MetersPerSecond.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Speed.
+     * @returns The string format of the Speed.
+     */
     public toString(toUnit: SpeedUnits = SpeedUnits.MetersPerSecond): string {
 
         switch (toUnit) {

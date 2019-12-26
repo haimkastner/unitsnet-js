@@ -1,17 +1,30 @@
+/** MolarMassUnits enumeration */
 export enum MolarMassUnits {
+    /** */
     GramsPerMole,
+    /** */
     PoundsPerMole,
+    /** */
     NanogramsPerMole,
+    /** */
     MicrogramsPerMole,
+    /** */
     CentigramsPerMole,
+    /** */
     DecigramsPerMole,
+    /** */
     DecagramsPerMole,
+    /** */
     HectogramsPerMole,
+    /** */
     KilogramsPerMole,
+    /** */
     KilopoundsPerMole,
+    /** */
     MegapoundsPerMole
 }
 
+/** In chemistry, the molar mass M is a physical property defined as the mass of a given substance (chemical element or chemical compound) divided by the amount of substance. */
 export class MolarMass {
     private value: number;
     private gramspermoleLazy: number | null = null;
@@ -26,10 +39,26 @@ export class MolarMass {
     private kilopoundspermoleLazy: number | null = null;
     private megapoundspermoleLazy: number | null = null;
 
+    /**
+     * Create a new MolarMass.
+     * @param value The value.
+     * @param fromUnit The ‘MolarMass’ unit to create from.
+     */
     public constructor(value: number, fromUnit: MolarMassUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of MolarMass is KilogramPerMole.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get GramsPerMole(): number {
         if(this.gramspermoleLazy !== null){
             return this.gramspermoleLazy;
@@ -37,6 +66,7 @@ export class MolarMass {
         return this.gramspermoleLazy = this.convertFromBase(MolarMassUnits.GramsPerMole);
     }
 
+    /** */
     public get PoundsPerMole(): number {
         if(this.poundspermoleLazy !== null){
             return this.poundspermoleLazy;
@@ -44,6 +74,7 @@ export class MolarMass {
         return this.poundspermoleLazy = this.convertFromBase(MolarMassUnits.PoundsPerMole);
     }
 
+    /** */
     public get NanogramsPerMole(): number {
         if(this.nanogramspermoleLazy !== null){
             return this.nanogramspermoleLazy;
@@ -51,6 +82,7 @@ export class MolarMass {
         return this.nanogramspermoleLazy = this.convertFromBase(MolarMassUnits.NanogramsPerMole);
     }
 
+    /** */
     public get MicrogramsPerMole(): number {
         if(this.microgramspermoleLazy !== null){
             return this.microgramspermoleLazy;
@@ -58,6 +90,7 @@ export class MolarMass {
         return this.microgramspermoleLazy = this.convertFromBase(MolarMassUnits.MicrogramsPerMole);
     }
 
+    /** */
     public get CentigramsPerMole(): number {
         if(this.centigramspermoleLazy !== null){
             return this.centigramspermoleLazy;
@@ -65,6 +98,7 @@ export class MolarMass {
         return this.centigramspermoleLazy = this.convertFromBase(MolarMassUnits.CentigramsPerMole);
     }
 
+    /** */
     public get DecigramsPerMole(): number {
         if(this.decigramspermoleLazy !== null){
             return this.decigramspermoleLazy;
@@ -72,6 +106,7 @@ export class MolarMass {
         return this.decigramspermoleLazy = this.convertFromBase(MolarMassUnits.DecigramsPerMole);
     }
 
+    /** */
     public get DecagramsPerMole(): number {
         if(this.decagramspermoleLazy !== null){
             return this.decagramspermoleLazy;
@@ -79,6 +114,7 @@ export class MolarMass {
         return this.decagramspermoleLazy = this.convertFromBase(MolarMassUnits.DecagramsPerMole);
     }
 
+    /** */
     public get HectogramsPerMole(): number {
         if(this.hectogramspermoleLazy !== null){
             return this.hectogramspermoleLazy;
@@ -86,6 +122,7 @@ export class MolarMass {
         return this.hectogramspermoleLazy = this.convertFromBase(MolarMassUnits.HectogramsPerMole);
     }
 
+    /** */
     public get KilogramsPerMole(): number {
         if(this.kilogramspermoleLazy !== null){
             return this.kilogramspermoleLazy;
@@ -93,6 +130,7 @@ export class MolarMass {
         return this.kilogramspermoleLazy = this.convertFromBase(MolarMassUnits.KilogramsPerMole);
     }
 
+    /** */
     public get KilopoundsPerMole(): number {
         if(this.kilopoundspermoleLazy !== null){
             return this.kilopoundspermoleLazy;
@@ -100,6 +138,7 @@ export class MolarMass {
         return this.kilopoundspermoleLazy = this.convertFromBase(MolarMassUnits.KilopoundsPerMole);
     }
 
+    /** */
     public get MegapoundsPerMole(): number {
         if(this.megapoundspermoleLazy !== null){
             return this.megapoundspermoleLazy;
@@ -107,46 +146,112 @@ export class MolarMass {
         return this.megapoundspermoleLazy = this.convertFromBase(MolarMassUnits.MegapoundsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a GramsPerMole
+     *
+     * @param value The unit as GramsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromGramsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.GramsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a PoundsPerMole
+     *
+     * @param value The unit as PoundsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromPoundsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.PoundsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a NanogramsPerMole
+     *
+     * @param value The unit as NanogramsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromNanogramsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.NanogramsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a MicrogramsPerMole
+     *
+     * @param value The unit as MicrogramsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromMicrogramsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.MicrogramsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a CentigramsPerMole
+     *
+     * @param value The unit as CentigramsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromCentigramsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.CentigramsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a DecigramsPerMole
+     *
+     * @param value The unit as DecigramsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromDecigramsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.DecigramsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a DecagramsPerMole
+     *
+     * @param value The unit as DecagramsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromDecagramsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.DecagramsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a HectogramsPerMole
+     *
+     * @param value The unit as HectogramsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromHectogramsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.HectogramsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a KilogramsPerMole
+     *
+     * @param value The unit as KilogramsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromKilogramsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.KilogramsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a KilopoundsPerMole
+     *
+     * @param value The unit as KilopoundsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromKilopoundsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.KilopoundsPerMole);
     }
 
+    /**
+     * Create a new MolarMass instance from a MegapoundsPerMole
+     *
+     * @param value The unit as MegapoundsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
     public static FromMegapoundsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.MegapoundsPerMole);
     }
@@ -213,6 +318,13 @@ export class MolarMass {
         return NaN;
     }
 
+    /**
+     * Format the MolarMass to string.
+     * Note! the default format for MolarMass is KilogramsPerMole.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the MolarMass.
+     * @returns The string format of the MolarMass.
+     */
     public toString(toUnit: MolarMassUnits = MolarMassUnits.KilogramsPerMole): string {
 
         switch (toUnit) {

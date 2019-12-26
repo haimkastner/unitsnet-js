@@ -1,10 +1,16 @@
+/** ReactivePowerUnits enumeration */
 export enum ReactivePowerUnits {
+    /** */
     VoltamperesReactive,
+    /** */
     KilovoltamperesReactive,
+    /** */
     MegavoltamperesReactive,
+    /** */
     GigavoltamperesReactive
 }
 
+/** Volt-ampere reactive (var) is a unit by which reactive power is expressed in an AC electric power system. Reactive power exists in an AC circuit when the current and voltage are not in phase. */
 export class ReactivePower {
     private value: number;
     private voltamperesreactiveLazy: number | null = null;
@@ -12,10 +18,26 @@ export class ReactivePower {
     private megavoltamperesreactiveLazy: number | null = null;
     private gigavoltamperesreactiveLazy: number | null = null;
 
+    /**
+     * Create a new ReactivePower.
+     * @param value The value.
+     * @param fromUnit The ‘ReactivePower’ unit to create from.
+     */
     public constructor(value: number, fromUnit: ReactivePowerUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of ReactivePower is VoltampereReactive.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get VoltamperesReactive(): number {
         if(this.voltamperesreactiveLazy !== null){
             return this.voltamperesreactiveLazy;
@@ -23,6 +45,7 @@ export class ReactivePower {
         return this.voltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.VoltamperesReactive);
     }
 
+    /** */
     public get KilovoltamperesReactive(): number {
         if(this.kilovoltamperesreactiveLazy !== null){
             return this.kilovoltamperesreactiveLazy;
@@ -30,6 +53,7 @@ export class ReactivePower {
         return this.kilovoltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.KilovoltamperesReactive);
     }
 
+    /** */
     public get MegavoltamperesReactive(): number {
         if(this.megavoltamperesreactiveLazy !== null){
             return this.megavoltamperesreactiveLazy;
@@ -37,6 +61,7 @@ export class ReactivePower {
         return this.megavoltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.MegavoltamperesReactive);
     }
 
+    /** */
     public get GigavoltamperesReactive(): number {
         if(this.gigavoltamperesreactiveLazy !== null){
             return this.gigavoltamperesreactiveLazy;
@@ -44,18 +69,42 @@ export class ReactivePower {
         return this.gigavoltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.GigavoltamperesReactive);
     }
 
+    /**
+     * Create a new ReactivePower instance from a VoltamperesReactive
+     *
+     * @param value The unit as VoltamperesReactive to create a new ReactivePower from.
+     * @returns The new ReactivePower instance.
+     */
     public static FromVoltamperesReactive(value: number): ReactivePower {
         return new ReactivePower(value, ReactivePowerUnits.VoltamperesReactive);
     }
 
+    /**
+     * Create a new ReactivePower instance from a KilovoltamperesReactive
+     *
+     * @param value The unit as KilovoltamperesReactive to create a new ReactivePower from.
+     * @returns The new ReactivePower instance.
+     */
     public static FromKilovoltamperesReactive(value: number): ReactivePower {
         return new ReactivePower(value, ReactivePowerUnits.KilovoltamperesReactive);
     }
 
+    /**
+     * Create a new ReactivePower instance from a MegavoltamperesReactive
+     *
+     * @param value The unit as MegavoltamperesReactive to create a new ReactivePower from.
+     * @returns The new ReactivePower instance.
+     */
     public static FromMegavoltamperesReactive(value: number): ReactivePower {
         return new ReactivePower(value, ReactivePowerUnits.MegavoltamperesReactive);
     }
 
+    /**
+     * Create a new ReactivePower instance from a GigavoltamperesReactive
+     *
+     * @param value The unit as GigavoltamperesReactive to create a new ReactivePower from.
+     * @returns The new ReactivePower instance.
+     */
     public static FromGigavoltamperesReactive(value: number): ReactivePower {
         return new ReactivePower(value, ReactivePowerUnits.GigavoltamperesReactive);
     }
@@ -94,6 +143,13 @@ export class ReactivePower {
         return NaN;
     }
 
+    /**
+     * Format the ReactivePower to string.
+     * Note! the default format for ReactivePower is VoltamperesReactive.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the ReactivePower.
+     * @returns The string format of the ReactivePower.
+     */
     public toString(toUnit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive): string {
 
         switch (toUnit) {

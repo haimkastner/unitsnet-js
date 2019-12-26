@@ -1,19 +1,34 @@
+/** LuminosityUnits enumeration */
 export enum LuminosityUnits {
+    /** */
     Watts,
+    /** */
     SolarLuminosities,
+    /** */
     Femtowatts,
+    /** */
     Picowatts,
+    /** */
     Nanowatts,
+    /** */
     Microwatts,
+    /** */
     Deciwatts,
+    /** */
     Decawatts,
+    /** */
     Kilowatts,
+    /** */
     Megawatts,
+    /** */
     Gigawatts,
+    /** */
     Terawatts,
+    /** */
     Petawatts
 }
 
+/** Luminosity is an absolute measure of radiated electromagnetic power (light), the radiant power emitted by a light-emitting object. */
 export class Luminosity {
     private value: number;
     private wattsLazy: number | null = null;
@@ -30,10 +45,26 @@ export class Luminosity {
     private terawattsLazy: number | null = null;
     private petawattsLazy: number | null = null;
 
+    /**
+     * Create a new Luminosity.
+     * @param value The value.
+     * @param fromUnit The ‘Luminosity’ unit to create from.
+     */
     public constructor(value: number, fromUnit: LuminosityUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Luminosity is Watt.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Watts(): number {
         if(this.wattsLazy !== null){
             return this.wattsLazy;
@@ -41,6 +72,7 @@ export class Luminosity {
         return this.wattsLazy = this.convertFromBase(LuminosityUnits.Watts);
     }
 
+    /** */
     public get SolarLuminosities(): number {
         if(this.solarluminositiesLazy !== null){
             return this.solarluminositiesLazy;
@@ -48,6 +80,7 @@ export class Luminosity {
         return this.solarluminositiesLazy = this.convertFromBase(LuminosityUnits.SolarLuminosities);
     }
 
+    /** */
     public get Femtowatts(): number {
         if(this.femtowattsLazy !== null){
             return this.femtowattsLazy;
@@ -55,6 +88,7 @@ export class Luminosity {
         return this.femtowattsLazy = this.convertFromBase(LuminosityUnits.Femtowatts);
     }
 
+    /** */
     public get Picowatts(): number {
         if(this.picowattsLazy !== null){
             return this.picowattsLazy;
@@ -62,6 +96,7 @@ export class Luminosity {
         return this.picowattsLazy = this.convertFromBase(LuminosityUnits.Picowatts);
     }
 
+    /** */
     public get Nanowatts(): number {
         if(this.nanowattsLazy !== null){
             return this.nanowattsLazy;
@@ -69,6 +104,7 @@ export class Luminosity {
         return this.nanowattsLazy = this.convertFromBase(LuminosityUnits.Nanowatts);
     }
 
+    /** */
     public get Microwatts(): number {
         if(this.microwattsLazy !== null){
             return this.microwattsLazy;
@@ -76,6 +112,7 @@ export class Luminosity {
         return this.microwattsLazy = this.convertFromBase(LuminosityUnits.Microwatts);
     }
 
+    /** */
     public get Deciwatts(): number {
         if(this.deciwattsLazy !== null){
             return this.deciwattsLazy;
@@ -83,6 +120,7 @@ export class Luminosity {
         return this.deciwattsLazy = this.convertFromBase(LuminosityUnits.Deciwatts);
     }
 
+    /** */
     public get Decawatts(): number {
         if(this.decawattsLazy !== null){
             return this.decawattsLazy;
@@ -90,6 +128,7 @@ export class Luminosity {
         return this.decawattsLazy = this.convertFromBase(LuminosityUnits.Decawatts);
     }
 
+    /** */
     public get Kilowatts(): number {
         if(this.kilowattsLazy !== null){
             return this.kilowattsLazy;
@@ -97,6 +136,7 @@ export class Luminosity {
         return this.kilowattsLazy = this.convertFromBase(LuminosityUnits.Kilowatts);
     }
 
+    /** */
     public get Megawatts(): number {
         if(this.megawattsLazy !== null){
             return this.megawattsLazy;
@@ -104,6 +144,7 @@ export class Luminosity {
         return this.megawattsLazy = this.convertFromBase(LuminosityUnits.Megawatts);
     }
 
+    /** */
     public get Gigawatts(): number {
         if(this.gigawattsLazy !== null){
             return this.gigawattsLazy;
@@ -111,6 +152,7 @@ export class Luminosity {
         return this.gigawattsLazy = this.convertFromBase(LuminosityUnits.Gigawatts);
     }
 
+    /** */
     public get Terawatts(): number {
         if(this.terawattsLazy !== null){
             return this.terawattsLazy;
@@ -118,6 +160,7 @@ export class Luminosity {
         return this.terawattsLazy = this.convertFromBase(LuminosityUnits.Terawatts);
     }
 
+    /** */
     public get Petawatts(): number {
         if(this.petawattsLazy !== null){
             return this.petawattsLazy;
@@ -125,54 +168,132 @@ export class Luminosity {
         return this.petawattsLazy = this.convertFromBase(LuminosityUnits.Petawatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Watts
+     *
+     * @param value The unit as Watts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromWatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Watts);
     }
 
+    /**
+     * Create a new Luminosity instance from a SolarLuminosities
+     *
+     * @param value The unit as SolarLuminosities to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromSolarLuminosities(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.SolarLuminosities);
     }
 
+    /**
+     * Create a new Luminosity instance from a Femtowatts
+     *
+     * @param value The unit as Femtowatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromFemtowatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Femtowatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Picowatts
+     *
+     * @param value The unit as Picowatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromPicowatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Picowatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Nanowatts
+     *
+     * @param value The unit as Nanowatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromNanowatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Nanowatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Microwatts
+     *
+     * @param value The unit as Microwatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromMicrowatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Microwatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Deciwatts
+     *
+     * @param value The unit as Deciwatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromDeciwatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Deciwatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Decawatts
+     *
+     * @param value The unit as Decawatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromDecawatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Decawatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Kilowatts
+     *
+     * @param value The unit as Kilowatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromKilowatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Kilowatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Megawatts
+     *
+     * @param value The unit as Megawatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromMegawatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Megawatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Gigawatts
+     *
+     * @param value The unit as Gigawatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromGigawatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Gigawatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Terawatts
+     *
+     * @param value The unit as Terawatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromTerawatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Terawatts);
     }
 
+    /**
+     * Create a new Luminosity instance from a Petawatts
+     *
+     * @param value The unit as Petawatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
     public static FromPetawatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Petawatts);
     }
@@ -247,6 +368,13 @@ export class Luminosity {
         return NaN;
     }
 
+    /**
+     * Format the Luminosity to string.
+     * Note! the default format for Luminosity is Watts.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Luminosity.
+     * @returns The string format of the Luminosity.
+     */
     public toString(toUnit: LuminosityUnits = LuminosityUnits.Watts): string {
 
         switch (toUnit) {

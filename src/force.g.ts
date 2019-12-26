@@ -1,18 +1,32 @@
+/** ForceUnits enumeration */
 export enum ForceUnits {
+    /** */
     Dyne,
+    /** */
     KilogramsForce,
+    /** */
     TonnesForce,
+    /** */
     Newtons,
+    /** */
     KiloPonds,
+    /** */
     Poundals,
+    /** */
     PoundsForce,
+    /** */
     OunceForce,
+    /** */
     Micronewtons,
+    /** */
     Decanewtons,
+    /** */
     Kilonewtons,
+    /** */
     Meganewtons
 }
 
+/** In physics, a force is any influence that causes an object to undergo a certain change, either concerning its movement, direction, or geometrical construction. In other words, a force can cause an object with mass to change its velocity (which includes to begin moving from a state of rest), i.e., to accelerate, or a flexible object to deform, or both. Force can also be described by intuitive concepts such as a push or a pull. A force has both magnitude and direction, making it a vector quantity. It is measured in the SI unit of newtons and represented by the symbol F. */
 export class Force {
     private value: number;
     private dyneLazy: number | null = null;
@@ -28,10 +42,26 @@ export class Force {
     private kilonewtonsLazy: number | null = null;
     private meganewtonsLazy: number | null = null;
 
+    /**
+     * Create a new Force.
+     * @param value The value.
+     * @param fromUnit The ‘Force’ unit to create from.
+     */
     public constructor(value: number, fromUnit: ForceUnits) {
+
+        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
+    /**
+     * The base value of Force is Newton.
+     * This accessor used when need any value for calculations and it's better to use directly the base value
+     */
+    public get BaseValue(): number {
+        return this.value;
+    }
+
+    /** */
     public get Dyne(): number {
         if(this.dyneLazy !== null){
             return this.dyneLazy;
@@ -39,6 +69,7 @@ export class Force {
         return this.dyneLazy = this.convertFromBase(ForceUnits.Dyne);
     }
 
+    /** */
     public get KilogramsForce(): number {
         if(this.kilogramsforceLazy !== null){
             return this.kilogramsforceLazy;
@@ -46,6 +77,7 @@ export class Force {
         return this.kilogramsforceLazy = this.convertFromBase(ForceUnits.KilogramsForce);
     }
 
+    /** */
     public get TonnesForce(): number {
         if(this.tonnesforceLazy !== null){
             return this.tonnesforceLazy;
@@ -53,6 +85,7 @@ export class Force {
         return this.tonnesforceLazy = this.convertFromBase(ForceUnits.TonnesForce);
     }
 
+    /** */
     public get Newtons(): number {
         if(this.newtonsLazy !== null){
             return this.newtonsLazy;
@@ -60,6 +93,7 @@ export class Force {
         return this.newtonsLazy = this.convertFromBase(ForceUnits.Newtons);
     }
 
+    /** */
     public get KiloPonds(): number {
         if(this.kilopondsLazy !== null){
             return this.kilopondsLazy;
@@ -67,6 +101,7 @@ export class Force {
         return this.kilopondsLazy = this.convertFromBase(ForceUnits.KiloPonds);
     }
 
+    /** */
     public get Poundals(): number {
         if(this.poundalsLazy !== null){
             return this.poundalsLazy;
@@ -74,6 +109,7 @@ export class Force {
         return this.poundalsLazy = this.convertFromBase(ForceUnits.Poundals);
     }
 
+    /** */
     public get PoundsForce(): number {
         if(this.poundsforceLazy !== null){
             return this.poundsforceLazy;
@@ -81,6 +117,7 @@ export class Force {
         return this.poundsforceLazy = this.convertFromBase(ForceUnits.PoundsForce);
     }
 
+    /** */
     public get OunceForce(): number {
         if(this.ounceforceLazy !== null){
             return this.ounceforceLazy;
@@ -88,6 +125,7 @@ export class Force {
         return this.ounceforceLazy = this.convertFromBase(ForceUnits.OunceForce);
     }
 
+    /** */
     public get Micronewtons(): number {
         if(this.micronewtonsLazy !== null){
             return this.micronewtonsLazy;
@@ -95,6 +133,7 @@ export class Force {
         return this.micronewtonsLazy = this.convertFromBase(ForceUnits.Micronewtons);
     }
 
+    /** */
     public get Decanewtons(): number {
         if(this.decanewtonsLazy !== null){
             return this.decanewtonsLazy;
@@ -102,6 +141,7 @@ export class Force {
         return this.decanewtonsLazy = this.convertFromBase(ForceUnits.Decanewtons);
     }
 
+    /** */
     public get Kilonewtons(): number {
         if(this.kilonewtonsLazy !== null){
             return this.kilonewtonsLazy;
@@ -109,6 +149,7 @@ export class Force {
         return this.kilonewtonsLazy = this.convertFromBase(ForceUnits.Kilonewtons);
     }
 
+    /** */
     public get Meganewtons(): number {
         if(this.meganewtonsLazy !== null){
             return this.meganewtonsLazy;
@@ -116,50 +157,122 @@ export class Force {
         return this.meganewtonsLazy = this.convertFromBase(ForceUnits.Meganewtons);
     }
 
+    /**
+     * Create a new Force instance from a Dyne
+     *
+     * @param value The unit as Dyne to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromDyne(value: number): Force {
         return new Force(value, ForceUnits.Dyne);
     }
 
+    /**
+     * Create a new Force instance from a KilogramsForce
+     *
+     * @param value The unit as KilogramsForce to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromKilogramsForce(value: number): Force {
         return new Force(value, ForceUnits.KilogramsForce);
     }
 
+    /**
+     * Create a new Force instance from a TonnesForce
+     *
+     * @param value The unit as TonnesForce to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromTonnesForce(value: number): Force {
         return new Force(value, ForceUnits.TonnesForce);
     }
 
+    /**
+     * Create a new Force instance from a Newtons
+     *
+     * @param value The unit as Newtons to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromNewtons(value: number): Force {
         return new Force(value, ForceUnits.Newtons);
     }
 
+    /**
+     * Create a new Force instance from a KiloPonds
+     *
+     * @param value The unit as KiloPonds to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromKiloPonds(value: number): Force {
         return new Force(value, ForceUnits.KiloPonds);
     }
 
+    /**
+     * Create a new Force instance from a Poundals
+     *
+     * @param value The unit as Poundals to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromPoundals(value: number): Force {
         return new Force(value, ForceUnits.Poundals);
     }
 
+    /**
+     * Create a new Force instance from a PoundsForce
+     *
+     * @param value The unit as PoundsForce to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromPoundsForce(value: number): Force {
         return new Force(value, ForceUnits.PoundsForce);
     }
 
+    /**
+     * Create a new Force instance from a OunceForce
+     *
+     * @param value The unit as OunceForce to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromOunceForce(value: number): Force {
         return new Force(value, ForceUnits.OunceForce);
     }
 
+    /**
+     * Create a new Force instance from a Micronewtons
+     *
+     * @param value The unit as Micronewtons to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromMicronewtons(value: number): Force {
         return new Force(value, ForceUnits.Micronewtons);
     }
 
+    /**
+     * Create a new Force instance from a Decanewtons
+     *
+     * @param value The unit as Decanewtons to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromDecanewtons(value: number): Force {
         return new Force(value, ForceUnits.Decanewtons);
     }
 
+    /**
+     * Create a new Force instance from a Kilonewtons
+     *
+     * @param value The unit as Kilonewtons to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromKilonewtons(value: number): Force {
         return new Force(value, ForceUnits.Kilonewtons);
     }
 
+    /**
+     * Create a new Force instance from a Meganewtons
+     *
+     * @param value The unit as Meganewtons to create a new Force from.
+     * @returns The new Force instance.
+     */
     public static FromMeganewtons(value: number): Force {
         return new Force(value, ForceUnits.Meganewtons);
     }
@@ -230,6 +343,13 @@ export class Force {
         return NaN;
     }
 
+    /**
+     * Format the Force to string.
+     * Note! the default format for Force is Newtons.
+     * To specify the unit fromat set the 'toUnit' parameter.
+     * @param toUnit The unit to format the Force.
+     * @returns The string format of the Force.
+     */
     public toString(toUnit: ForceUnits = ForceUnits.Newtons): string {
 
         switch (toUnit) {
