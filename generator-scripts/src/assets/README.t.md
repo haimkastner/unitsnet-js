@@ -40,4 +40,4 @@ Currently, the package supports the following units:
 
 ~SUPPORTED_UNITS~
 
-(This file generated from [README.t.md](./generator-scripts/src/assets/README.t.md) template file)
+> This file generated from [README.t.md](./generator-scripts/src/assets/README.t.md) template file.

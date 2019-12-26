@@ -238,4 +238,4 @@ Currently, the package supports the following units:
     -   *Volume, typically of fluid, that a container can hold within a unit of length.*
 
 
-(This file generated from [README.t.md](./generator-scripts/src/assets/README.t.md) template file)
+> This file generated from [README.t.md](./generator-scripts/src/assets/README.t.md) template file.
