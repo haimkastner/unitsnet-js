@@ -26,6 +26,12 @@ console.info(angle.Microradians); // 3141592.65358979
 console.info(angle.Gradians); // 200
 console.info(angle.Microdegrees); // 180000000
 
+// Print the default unit toString (The defualt for angle is degrees)
+console.info(angle.toString()); // 180 °
+
+console.info(angle.toString(AngleUnits.Degrees)); // 180 °
+console.info(angle.toString(AngleUnits.Radians)); // 3.141592653589793 rad
+
 ```
 
 ### Supported units
