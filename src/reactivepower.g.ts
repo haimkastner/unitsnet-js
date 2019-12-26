@@ -1,16 +1,16 @@
 export enum ReactivePowerUnits {
     VoltamperesReactive,
-    KilovoltampereReactive,
-    MegavoltampereReactive,
-    GigavoltampereReactive
+    KilovoltamperesReactive,
+    MegavoltamperesReactive,
+    GigavoltamperesReactive
 }
 
 export class ReactivePower {
     private value: number;
     private voltamperesreactiveLazy: number | null = null;
-    private kilovoltamperereactiveLazy: number | null = null;
-    private megavoltamperereactiveLazy: number | null = null;
-    private gigavoltamperereactiveLazy: number | null = null;
+    private kilovoltamperesreactiveLazy: number | null = null;
+    private megavoltamperesreactiveLazy: number | null = null;
+    private gigavoltamperesreactiveLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ReactivePowerUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -23,41 +23,41 @@ export class ReactivePower {
         return this.voltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.VoltamperesReactive);
     }
 
-    public get KilovoltampereReactive(): number {
-        if(this.kilovoltamperereactiveLazy !== null){
-            return this.kilovoltamperereactiveLazy;
+    public get KilovoltamperesReactive(): number {
+        if(this.kilovoltamperesreactiveLazy !== null){
+            return this.kilovoltamperesreactiveLazy;
         }
-        return this.kilovoltamperereactiveLazy = this.convertFromBase(ReactivePowerUnits.KilovoltampereReactive);
+        return this.kilovoltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.KilovoltamperesReactive);
     }
 
-    public get MegavoltampereReactive(): number {
-        if(this.megavoltamperereactiveLazy !== null){
-            return this.megavoltamperereactiveLazy;
+    public get MegavoltamperesReactive(): number {
+        if(this.megavoltamperesreactiveLazy !== null){
+            return this.megavoltamperesreactiveLazy;
         }
-        return this.megavoltamperereactiveLazy = this.convertFromBase(ReactivePowerUnits.MegavoltampereReactive);
+        return this.megavoltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.MegavoltamperesReactive);
     }
 
-    public get GigavoltampereReactive(): number {
-        if(this.gigavoltamperereactiveLazy !== null){
-            return this.gigavoltamperereactiveLazy;
+    public get GigavoltamperesReactive(): number {
+        if(this.gigavoltamperesreactiveLazy !== null){
+            return this.gigavoltamperesreactiveLazy;
         }
-        return this.gigavoltamperereactiveLazy = this.convertFromBase(ReactivePowerUnits.GigavoltampereReactive);
+        return this.gigavoltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.GigavoltamperesReactive);
     }
 
     public static FromVoltamperesReactive(value: number): ReactivePower {
         return new ReactivePower(value, ReactivePowerUnits.VoltamperesReactive);
     }
 
-    public static FromKilovoltampereReactive(value: number): ReactivePower {
-        return new ReactivePower(value, ReactivePowerUnits.KilovoltampereReactive);
+    public static FromKilovoltamperesReactive(value: number): ReactivePower {
+        return new ReactivePower(value, ReactivePowerUnits.KilovoltamperesReactive);
     }
 
-    public static FromMegavoltampereReactive(value: number): ReactivePower {
-        return new ReactivePower(value, ReactivePowerUnits.MegavoltampereReactive);
+    public static FromMegavoltamperesReactive(value: number): ReactivePower {
+        return new ReactivePower(value, ReactivePowerUnits.MegavoltamperesReactive);
     }
 
-    public static FromGigavoltampereReactive(value: number): ReactivePower {
-        return new ReactivePower(value, ReactivePowerUnits.GigavoltampereReactive);
+    public static FromGigavoltamperesReactive(value: number): ReactivePower {
+        return new ReactivePower(value, ReactivePowerUnits.GigavoltamperesReactive);
     }
 
     private convertFromBase(toUnit: ReactivePowerUnits): number {
@@ -65,11 +65,11 @@ export class ReactivePower {
                 
             case ReactivePowerUnits.VoltamperesReactive:
                 return this.value;
-            case ReactivePowerUnits.KilovoltampereReactive:
+            case ReactivePowerUnits.KilovoltamperesReactive:
                 return (this.value) / 1000;
-            case ReactivePowerUnits.MegavoltampereReactive:
+            case ReactivePowerUnits.MegavoltamperesReactive:
                 return (this.value) / 1000000;
-            case ReactivePowerUnits.GigavoltampereReactive:
+            case ReactivePowerUnits.GigavoltamperesReactive:
                 return (this.value) / 1000000000;
             default:
                 break;
@@ -82,11 +82,11 @@ export class ReactivePower {
                 
             case ReactivePowerUnits.VoltamperesReactive:
                 return value;
-            case ReactivePowerUnits.KilovoltampereReactive:
+            case ReactivePowerUnits.KilovoltamperesReactive:
                 return (value) * 1000;
-            case ReactivePowerUnits.MegavoltampereReactive:
+            case ReactivePowerUnits.MegavoltamperesReactive:
                 return (value) * 1000000;
-            case ReactivePowerUnits.GigavoltampereReactive:
+            case ReactivePowerUnits.GigavoltamperesReactive:
                 return (value) * 1000000000;
             default:
                 break;
@@ -100,12 +100,12 @@ export class ReactivePower {
             
             case ReactivePowerUnits.VoltamperesReactive:
                 return this.VoltamperesReactive + ` var`;
-            case ReactivePowerUnits.KilovoltampereReactive:
-                return this.KilovoltampereReactive + ` var`;
-            case ReactivePowerUnits.MegavoltampereReactive:
-                return this.MegavoltampereReactive + ` var`;
-            case ReactivePowerUnits.GigavoltampereReactive:
-                return this.GigavoltampereReactive + ` var`;
+            case ReactivePowerUnits.KilovoltamperesReactive:
+                return this.KilovoltamperesReactive + ` var`;
+            case ReactivePowerUnits.MegavoltamperesReactive:
+                return this.MegavoltamperesReactive + ` var`;
+            case ReactivePowerUnits.GigavoltamperesReactive:
+                return this.GigavoltamperesReactive + ` var`;
         default:
             break;
         }

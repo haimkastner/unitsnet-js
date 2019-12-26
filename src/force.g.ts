@@ -7,10 +7,10 @@ export enum ForceUnits {
     Poundals,
     PoundsForce,
     OunceForce,
-    Micronewton,
-    Decanewton,
-    Kilonewton,
-    Meganewton
+    Micronewtons,
+    Decanewtons,
+    Kilonewtons,
+    Meganewtons
 }
 
 export class Force {
@@ -23,10 +23,10 @@ export class Force {
     private poundalsLazy: number | null = null;
     private poundsforceLazy: number | null = null;
     private ounceforceLazy: number | null = null;
-    private micronewtonLazy: number | null = null;
-    private decanewtonLazy: number | null = null;
-    private kilonewtonLazy: number | null = null;
-    private meganewtonLazy: number | null = null;
+    private micronewtonsLazy: number | null = null;
+    private decanewtonsLazy: number | null = null;
+    private kilonewtonsLazy: number | null = null;
+    private meganewtonsLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ForceUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -88,32 +88,32 @@ export class Force {
         return this.ounceforceLazy = this.convertFromBase(ForceUnits.OunceForce);
     }
 
-    public get Micronewton(): number {
-        if(this.micronewtonLazy !== null){
-            return this.micronewtonLazy;
+    public get Micronewtons(): number {
+        if(this.micronewtonsLazy !== null){
+            return this.micronewtonsLazy;
         }
-        return this.micronewtonLazy = this.convertFromBase(ForceUnits.Micronewton);
+        return this.micronewtonsLazy = this.convertFromBase(ForceUnits.Micronewtons);
     }
 
-    public get Decanewton(): number {
-        if(this.decanewtonLazy !== null){
-            return this.decanewtonLazy;
+    public get Decanewtons(): number {
+        if(this.decanewtonsLazy !== null){
+            return this.decanewtonsLazy;
         }
-        return this.decanewtonLazy = this.convertFromBase(ForceUnits.Decanewton);
+        return this.decanewtonsLazy = this.convertFromBase(ForceUnits.Decanewtons);
     }
 
-    public get Kilonewton(): number {
-        if(this.kilonewtonLazy !== null){
-            return this.kilonewtonLazy;
+    public get Kilonewtons(): number {
+        if(this.kilonewtonsLazy !== null){
+            return this.kilonewtonsLazy;
         }
-        return this.kilonewtonLazy = this.convertFromBase(ForceUnits.Kilonewton);
+        return this.kilonewtonsLazy = this.convertFromBase(ForceUnits.Kilonewtons);
     }
 
-    public get Meganewton(): number {
-        if(this.meganewtonLazy !== null){
-            return this.meganewtonLazy;
+    public get Meganewtons(): number {
+        if(this.meganewtonsLazy !== null){
+            return this.meganewtonsLazy;
         }
-        return this.meganewtonLazy = this.convertFromBase(ForceUnits.Meganewton);
+        return this.meganewtonsLazy = this.convertFromBase(ForceUnits.Meganewtons);
     }
 
     public static FromDyne(value: number): Force {
@@ -148,20 +148,20 @@ export class Force {
         return new Force(value, ForceUnits.OunceForce);
     }
 
-    public static FromMicronewton(value: number): Force {
-        return new Force(value, ForceUnits.Micronewton);
+    public static FromMicronewtons(value: number): Force {
+        return new Force(value, ForceUnits.Micronewtons);
     }
 
-    public static FromDecanewton(value: number): Force {
-        return new Force(value, ForceUnits.Decanewton);
+    public static FromDecanewtons(value: number): Force {
+        return new Force(value, ForceUnits.Decanewtons);
     }
 
-    public static FromKilonewton(value: number): Force {
-        return new Force(value, ForceUnits.Kilonewton);
+    public static FromKilonewtons(value: number): Force {
+        return new Force(value, ForceUnits.Kilonewtons);
     }
 
-    public static FromMeganewton(value: number): Force {
-        return new Force(value, ForceUnits.Meganewton);
+    public static FromMeganewtons(value: number): Force {
+        return new Force(value, ForceUnits.Meganewtons);
     }
 
     private convertFromBase(toUnit: ForceUnits): number {
@@ -183,13 +183,13 @@ export class Force {
                 return this.value/4.4482216152605095551842641431421;
             case ForceUnits.OunceForce:
                 return this.value/2.780138509537812e-1;
-            case ForceUnits.Micronewton:
+            case ForceUnits.Micronewtons:
                 return (this.value) / 0.000001;
-            case ForceUnits.Decanewton:
+            case ForceUnits.Decanewtons:
                 return (this.value) / 10;
-            case ForceUnits.Kilonewton:
+            case ForceUnits.Kilonewtons:
                 return (this.value) / 1000;
-            case ForceUnits.Meganewton:
+            case ForceUnits.Meganewtons:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -216,13 +216,13 @@ export class Force {
                 return value*4.4482216152605095551842641431421;
             case ForceUnits.OunceForce:
                 return value*2.780138509537812e-1;
-            case ForceUnits.Micronewton:
+            case ForceUnits.Micronewtons:
                 return (value) * 0.000001;
-            case ForceUnits.Decanewton:
+            case ForceUnits.Decanewtons:
                 return (value) * 10;
-            case ForceUnits.Kilonewton:
+            case ForceUnits.Kilonewtons:
                 return (value) * 1000;
-            case ForceUnits.Meganewton:
+            case ForceUnits.Meganewtons:
                 return (value) * 1000000;
             default:
                 break;
@@ -250,14 +250,14 @@ export class Force {
                 return this.PoundsForce + ` lbf`;
             case ForceUnits.OunceForce:
                 return this.OunceForce + ` ozf`;
-            case ForceUnits.Micronewton:
-                return this.Micronewton + ` N`;
-            case ForceUnits.Decanewton:
-                return this.Decanewton + ` N`;
-            case ForceUnits.Kilonewton:
-                return this.Kilonewton + ` N`;
-            case ForceUnits.Meganewton:
-                return this.Meganewton + ` N`;
+            case ForceUnits.Micronewtons:
+                return this.Micronewtons + ` N`;
+            case ForceUnits.Decanewtons:
+                return this.Decanewtons + ` N`;
+            case ForceUnits.Kilonewtons:
+                return this.Kilonewtons + ` N`;
+            case ForceUnits.Meganewtons:
+                return this.Meganewtons + ` N`;
         default:
             break;
         }

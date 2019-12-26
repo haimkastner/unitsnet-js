@@ -1,14 +1,14 @@
 export enum ReactiveEnergyUnits {
     VoltampereReactiveHours,
-    KilovoltampereReactiveHour,
-    MegavoltampereReactiveHour
+    KilovoltampereReactiveHours,
+    MegavoltampereReactiveHours
 }
 
 export class ReactiveEnergy {
     private value: number;
     private voltamperereactivehoursLazy: number | null = null;
-    private kilovoltamperereactivehourLazy: number | null = null;
-    private megavoltamperereactivehourLazy: number | null = null;
+    private kilovoltamperereactivehoursLazy: number | null = null;
+    private megavoltamperereactivehoursLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ReactiveEnergyUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -21,30 +21,30 @@ export class ReactiveEnergy {
         return this.voltamperereactivehoursLazy = this.convertFromBase(ReactiveEnergyUnits.VoltampereReactiveHours);
     }
 
-    public get KilovoltampereReactiveHour(): number {
-        if(this.kilovoltamperereactivehourLazy !== null){
-            return this.kilovoltamperereactivehourLazy;
+    public get KilovoltampereReactiveHours(): number {
+        if(this.kilovoltamperereactivehoursLazy !== null){
+            return this.kilovoltamperereactivehoursLazy;
         }
-        return this.kilovoltamperereactivehourLazy = this.convertFromBase(ReactiveEnergyUnits.KilovoltampereReactiveHour);
+        return this.kilovoltamperereactivehoursLazy = this.convertFromBase(ReactiveEnergyUnits.KilovoltampereReactiveHours);
     }
 
-    public get MegavoltampereReactiveHour(): number {
-        if(this.megavoltamperereactivehourLazy !== null){
-            return this.megavoltamperereactivehourLazy;
+    public get MegavoltampereReactiveHours(): number {
+        if(this.megavoltamperereactivehoursLazy !== null){
+            return this.megavoltamperereactivehoursLazy;
         }
-        return this.megavoltamperereactivehourLazy = this.convertFromBase(ReactiveEnergyUnits.MegavoltampereReactiveHour);
+        return this.megavoltamperereactivehoursLazy = this.convertFromBase(ReactiveEnergyUnits.MegavoltampereReactiveHours);
     }
 
     public static FromVoltampereReactiveHours(value: number): ReactiveEnergy {
         return new ReactiveEnergy(value, ReactiveEnergyUnits.VoltampereReactiveHours);
     }
 
-    public static FromKilovoltampereReactiveHour(value: number): ReactiveEnergy {
-        return new ReactiveEnergy(value, ReactiveEnergyUnits.KilovoltampereReactiveHour);
+    public static FromKilovoltampereReactiveHours(value: number): ReactiveEnergy {
+        return new ReactiveEnergy(value, ReactiveEnergyUnits.KilovoltampereReactiveHours);
     }
 
-    public static FromMegavoltampereReactiveHour(value: number): ReactiveEnergy {
-        return new ReactiveEnergy(value, ReactiveEnergyUnits.MegavoltampereReactiveHour);
+    public static FromMegavoltampereReactiveHours(value: number): ReactiveEnergy {
+        return new ReactiveEnergy(value, ReactiveEnergyUnits.MegavoltampereReactiveHours);
     }
 
     private convertFromBase(toUnit: ReactiveEnergyUnits): number {
@@ -52,9 +52,9 @@ export class ReactiveEnergy {
                 
             case ReactiveEnergyUnits.VoltampereReactiveHours:
                 return this.value;
-            case ReactiveEnergyUnits.KilovoltampereReactiveHour:
+            case ReactiveEnergyUnits.KilovoltampereReactiveHours:
                 return (this.value) / 1000;
-            case ReactiveEnergyUnits.MegavoltampereReactiveHour:
+            case ReactiveEnergyUnits.MegavoltampereReactiveHours:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -67,9 +67,9 @@ export class ReactiveEnergy {
                 
             case ReactiveEnergyUnits.VoltampereReactiveHours:
                 return value;
-            case ReactiveEnergyUnits.KilovoltampereReactiveHour:
+            case ReactiveEnergyUnits.KilovoltampereReactiveHours:
                 return (value) * 1000;
-            case ReactiveEnergyUnits.MegavoltampereReactiveHour:
+            case ReactiveEnergyUnits.MegavoltampereReactiveHours:
                 return (value) * 1000000;
             default:
                 break;
@@ -83,10 +83,10 @@ export class ReactiveEnergy {
             
             case ReactiveEnergyUnits.VoltampereReactiveHours:
                 return this.VoltampereReactiveHours + ` varh`;
-            case ReactiveEnergyUnits.KilovoltampereReactiveHour:
-                return this.KilovoltampereReactiveHour + ` varh`;
-            case ReactiveEnergyUnits.MegavoltampereReactiveHour:
-                return this.MegavoltampereReactiveHour + ` varh`;
+            case ReactiveEnergyUnits.KilovoltampereReactiveHours:
+                return this.KilovoltampereReactiveHours + ` varh`;
+            case ReactiveEnergyUnits.MegavoltampereReactiveHours:
+                return this.MegavoltampereReactiveHours + ` varh`;
         default:
             break;
         }

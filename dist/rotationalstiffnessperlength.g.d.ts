@@ -1,20 +1,20 @@
 export declare enum RotationalStiffnessPerLengthUnits {
     NewtonMetersPerRadianPerMeter = 0,
-    KilonewtonMeterPerRadianPerMeter = 1,
-    MeganewtonMeterPerRadianPerMeter = 2
+    KilonewtonMetersPerRadianPerMeter = 1,
+    MeganewtonMetersPerRadianPerMeter = 2
 }
 export declare class RotationalStiffnessPerLength {
     private value;
     private newtonmetersperradianpermeterLazy;
-    private kilonewtonmeterperradianpermeterLazy;
-    private meganewtonmeterperradianpermeterLazy;
+    private kilonewtonmetersperradianpermeterLazy;
+    private meganewtonmetersperradianpermeterLazy;
     constructor(value: number, fromUnit: RotationalStiffnessPerLengthUnits);
     get NewtonMetersPerRadianPerMeter(): number;
-    get KilonewtonMeterPerRadianPerMeter(): number;
-    get MeganewtonMeterPerRadianPerMeter(): number;
+    get KilonewtonMetersPerRadianPerMeter(): number;
+    get MeganewtonMetersPerRadianPerMeter(): number;
     static FromNewtonMetersPerRadianPerMeter(value: number): RotationalStiffnessPerLength;
-    static FromKilonewtonMeterPerRadianPerMeter(value: number): RotationalStiffnessPerLength;
-    static FromMeganewtonMeterPerRadianPerMeter(value: number): RotationalStiffnessPerLength;
+    static FromKilonewtonMetersPerRadianPerMeter(value: number): RotationalStiffnessPerLength;
+    static FromMeganewtonMetersPerRadianPerMeter(value: number): RotationalStiffnessPerLength;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: RotationalStiffnessPerLengthUnits): string;

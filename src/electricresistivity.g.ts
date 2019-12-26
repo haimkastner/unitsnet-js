@@ -1,32 +1,32 @@
 export enum ElectricResistivityUnits {
     OhmMeters,
     OhmsCentimeter,
-    PicoohmMeter,
-    NanoohmMeter,
-    MicroohmMeter,
-    KiloohmMeter,
-    MegaohmMeter,
-    PicoohmCentimeter,
-    NanoohmCentimeter,
-    MicroohmCentimeter,
-    KiloohmCentimeter,
-    MegaohmCentimeter
+    PicoohmMeters,
+    NanoohmMeters,
+    MicroohmMeters,
+    KiloohmMeters,
+    MegaohmMeters,
+    PicoohmsCentimeter,
+    NanoohmsCentimeter,
+    MicroohmsCentimeter,
+    KiloohmsCentimeter,
+    MegaohmsCentimeter
 }
 
 export class ElectricResistivity {
     private value: number;
     private ohmmetersLazy: number | null = null;
     private ohmscentimeterLazy: number | null = null;
-    private picoohmmeterLazy: number | null = null;
-    private nanoohmmeterLazy: number | null = null;
-    private microohmmeterLazy: number | null = null;
-    private kiloohmmeterLazy: number | null = null;
-    private megaohmmeterLazy: number | null = null;
-    private picoohmcentimeterLazy: number | null = null;
-    private nanoohmcentimeterLazy: number | null = null;
-    private microohmcentimeterLazy: number | null = null;
-    private kiloohmcentimeterLazy: number | null = null;
-    private megaohmcentimeterLazy: number | null = null;
+    private picoohmmetersLazy: number | null = null;
+    private nanoohmmetersLazy: number | null = null;
+    private microohmmetersLazy: number | null = null;
+    private kiloohmmetersLazy: number | null = null;
+    private megaohmmetersLazy: number | null = null;
+    private picoohmscentimeterLazy: number | null = null;
+    private nanoohmscentimeterLazy: number | null = null;
+    private microohmscentimeterLazy: number | null = null;
+    private kiloohmscentimeterLazy: number | null = null;
+    private megaohmscentimeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricResistivityUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -46,74 +46,74 @@ export class ElectricResistivity {
         return this.ohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.OhmsCentimeter);
     }
 
-    public get PicoohmMeter(): number {
-        if(this.picoohmmeterLazy !== null){
-            return this.picoohmmeterLazy;
+    public get PicoohmMeters(): number {
+        if(this.picoohmmetersLazy !== null){
+            return this.picoohmmetersLazy;
         }
-        return this.picoohmmeterLazy = this.convertFromBase(ElectricResistivityUnits.PicoohmMeter);
+        return this.picoohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.PicoohmMeters);
     }
 
-    public get NanoohmMeter(): number {
-        if(this.nanoohmmeterLazy !== null){
-            return this.nanoohmmeterLazy;
+    public get NanoohmMeters(): number {
+        if(this.nanoohmmetersLazy !== null){
+            return this.nanoohmmetersLazy;
         }
-        return this.nanoohmmeterLazy = this.convertFromBase(ElectricResistivityUnits.NanoohmMeter);
+        return this.nanoohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.NanoohmMeters);
     }
 
-    public get MicroohmMeter(): number {
-        if(this.microohmmeterLazy !== null){
-            return this.microohmmeterLazy;
+    public get MicroohmMeters(): number {
+        if(this.microohmmetersLazy !== null){
+            return this.microohmmetersLazy;
         }
-        return this.microohmmeterLazy = this.convertFromBase(ElectricResistivityUnits.MicroohmMeter);
+        return this.microohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.MicroohmMeters);
     }
 
-    public get KiloohmMeter(): number {
-        if(this.kiloohmmeterLazy !== null){
-            return this.kiloohmmeterLazy;
+    public get KiloohmMeters(): number {
+        if(this.kiloohmmetersLazy !== null){
+            return this.kiloohmmetersLazy;
         }
-        return this.kiloohmmeterLazy = this.convertFromBase(ElectricResistivityUnits.KiloohmMeter);
+        return this.kiloohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.KiloohmMeters);
     }
 
-    public get MegaohmMeter(): number {
-        if(this.megaohmmeterLazy !== null){
-            return this.megaohmmeterLazy;
+    public get MegaohmMeters(): number {
+        if(this.megaohmmetersLazy !== null){
+            return this.megaohmmetersLazy;
         }
-        return this.megaohmmeterLazy = this.convertFromBase(ElectricResistivityUnits.MegaohmMeter);
+        return this.megaohmmetersLazy = this.convertFromBase(ElectricResistivityUnits.MegaohmMeters);
     }
 
-    public get PicoohmCentimeter(): number {
-        if(this.picoohmcentimeterLazy !== null){
-            return this.picoohmcentimeterLazy;
+    public get PicoohmsCentimeter(): number {
+        if(this.picoohmscentimeterLazy !== null){
+            return this.picoohmscentimeterLazy;
         }
-        return this.picoohmcentimeterLazy = this.convertFromBase(ElectricResistivityUnits.PicoohmCentimeter);
+        return this.picoohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.PicoohmsCentimeter);
     }
 
-    public get NanoohmCentimeter(): number {
-        if(this.nanoohmcentimeterLazy !== null){
-            return this.nanoohmcentimeterLazy;
+    public get NanoohmsCentimeter(): number {
+        if(this.nanoohmscentimeterLazy !== null){
+            return this.nanoohmscentimeterLazy;
         }
-        return this.nanoohmcentimeterLazy = this.convertFromBase(ElectricResistivityUnits.NanoohmCentimeter);
+        return this.nanoohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.NanoohmsCentimeter);
     }
 
-    public get MicroohmCentimeter(): number {
-        if(this.microohmcentimeterLazy !== null){
-            return this.microohmcentimeterLazy;
+    public get MicroohmsCentimeter(): number {
+        if(this.microohmscentimeterLazy !== null){
+            return this.microohmscentimeterLazy;
         }
-        return this.microohmcentimeterLazy = this.convertFromBase(ElectricResistivityUnits.MicroohmCentimeter);
+        return this.microohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.MicroohmsCentimeter);
     }
 
-    public get KiloohmCentimeter(): number {
-        if(this.kiloohmcentimeterLazy !== null){
-            return this.kiloohmcentimeterLazy;
+    public get KiloohmsCentimeter(): number {
+        if(this.kiloohmscentimeterLazy !== null){
+            return this.kiloohmscentimeterLazy;
         }
-        return this.kiloohmcentimeterLazy = this.convertFromBase(ElectricResistivityUnits.KiloohmCentimeter);
+        return this.kiloohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.KiloohmsCentimeter);
     }
 
-    public get MegaohmCentimeter(): number {
-        if(this.megaohmcentimeterLazy !== null){
-            return this.megaohmcentimeterLazy;
+    public get MegaohmsCentimeter(): number {
+        if(this.megaohmscentimeterLazy !== null){
+            return this.megaohmscentimeterLazy;
         }
-        return this.megaohmcentimeterLazy = this.convertFromBase(ElectricResistivityUnits.MegaohmCentimeter);
+        return this.megaohmscentimeterLazy = this.convertFromBase(ElectricResistivityUnits.MegaohmsCentimeter);
     }
 
     public static FromOhmMeters(value: number): ElectricResistivity {
@@ -124,44 +124,44 @@ export class ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.OhmsCentimeter);
     }
 
-    public static FromPicoohmMeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.PicoohmMeter);
+    public static FromPicoohmMeters(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.PicoohmMeters);
     }
 
-    public static FromNanoohmMeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.NanoohmMeter);
+    public static FromNanoohmMeters(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.NanoohmMeters);
     }
 
-    public static FromMicroohmMeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.MicroohmMeter);
+    public static FromMicroohmMeters(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.MicroohmMeters);
     }
 
-    public static FromKiloohmMeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.KiloohmMeter);
+    public static FromKiloohmMeters(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.KiloohmMeters);
     }
 
-    public static FromMegaohmMeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.MegaohmMeter);
+    public static FromMegaohmMeters(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.MegaohmMeters);
     }
 
-    public static FromPicoohmCentimeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.PicoohmCentimeter);
+    public static FromPicoohmsCentimeter(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.PicoohmsCentimeter);
     }
 
-    public static FromNanoohmCentimeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.NanoohmCentimeter);
+    public static FromNanoohmsCentimeter(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.NanoohmsCentimeter);
     }
 
-    public static FromMicroohmCentimeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.MicroohmCentimeter);
+    public static FromMicroohmsCentimeter(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.MicroohmsCentimeter);
     }
 
-    public static FromKiloohmCentimeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.KiloohmCentimeter);
+    public static FromKiloohmsCentimeter(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.KiloohmsCentimeter);
     }
 
-    public static FromMegaohmCentimeter(value: number): ElectricResistivity {
-        return new ElectricResistivity(value, ElectricResistivityUnits.MegaohmCentimeter);
+    public static FromMegaohmsCentimeter(value: number): ElectricResistivity {
+        return new ElectricResistivity(value, ElectricResistivityUnits.MegaohmsCentimeter);
     }
 
     private convertFromBase(toUnit: ElectricResistivityUnits): number {
@@ -171,25 +171,25 @@ export class ElectricResistivity {
                 return this.value;
             case ElectricResistivityUnits.OhmsCentimeter:
                 return this.value*100;
-            case ElectricResistivityUnits.PicoohmMeter:
+            case ElectricResistivityUnits.PicoohmMeters:
                 return (this.value) / 1e-12;
-            case ElectricResistivityUnits.NanoohmMeter:
+            case ElectricResistivityUnits.NanoohmMeters:
                 return (this.value) / 1e-9;
-            case ElectricResistivityUnits.MicroohmMeter:
+            case ElectricResistivityUnits.MicroohmMeters:
                 return (this.value) / 0.000001;
-            case ElectricResistivityUnits.KiloohmMeter:
+            case ElectricResistivityUnits.KiloohmMeters:
                 return (this.value) / 1000;
-            case ElectricResistivityUnits.MegaohmMeter:
+            case ElectricResistivityUnits.MegaohmMeters:
                 return (this.value) / 1000000;
-            case ElectricResistivityUnits.PicoohmCentimeter:
+            case ElectricResistivityUnits.PicoohmsCentimeter:
                 return (this.value*100) / 1e-12;
-            case ElectricResistivityUnits.NanoohmCentimeter:
+            case ElectricResistivityUnits.NanoohmsCentimeter:
                 return (this.value*100) / 1e-9;
-            case ElectricResistivityUnits.MicroohmCentimeter:
+            case ElectricResistivityUnits.MicroohmsCentimeter:
                 return (this.value*100) / 0.000001;
-            case ElectricResistivityUnits.KiloohmCentimeter:
+            case ElectricResistivityUnits.KiloohmsCentimeter:
                 return (this.value*100) / 1000;
-            case ElectricResistivityUnits.MegaohmCentimeter:
+            case ElectricResistivityUnits.MegaohmsCentimeter:
                 return (this.value*100) / 1000000;
             default:
                 break;
@@ -204,25 +204,25 @@ export class ElectricResistivity {
                 return value;
             case ElectricResistivityUnits.OhmsCentimeter:
                 return value/100;
-            case ElectricResistivityUnits.PicoohmMeter:
+            case ElectricResistivityUnits.PicoohmMeters:
                 return (value) * 1e-12;
-            case ElectricResistivityUnits.NanoohmMeter:
+            case ElectricResistivityUnits.NanoohmMeters:
                 return (value) * 1e-9;
-            case ElectricResistivityUnits.MicroohmMeter:
+            case ElectricResistivityUnits.MicroohmMeters:
                 return (value) * 0.000001;
-            case ElectricResistivityUnits.KiloohmMeter:
+            case ElectricResistivityUnits.KiloohmMeters:
                 return (value) * 1000;
-            case ElectricResistivityUnits.MegaohmMeter:
+            case ElectricResistivityUnits.MegaohmMeters:
                 return (value) * 1000000;
-            case ElectricResistivityUnits.PicoohmCentimeter:
+            case ElectricResistivityUnits.PicoohmsCentimeter:
                 return (value/100) * 1e-12;
-            case ElectricResistivityUnits.NanoohmCentimeter:
+            case ElectricResistivityUnits.NanoohmsCentimeter:
                 return (value/100) * 1e-9;
-            case ElectricResistivityUnits.MicroohmCentimeter:
+            case ElectricResistivityUnits.MicroohmsCentimeter:
                 return (value/100) * 0.000001;
-            case ElectricResistivityUnits.KiloohmCentimeter:
+            case ElectricResistivityUnits.KiloohmsCentimeter:
                 return (value/100) * 1000;
-            case ElectricResistivityUnits.MegaohmCentimeter:
+            case ElectricResistivityUnits.MegaohmsCentimeter:
                 return (value/100) * 1000000;
             default:
                 break;
@@ -238,26 +238,26 @@ export class ElectricResistivity {
                 return this.OhmMeters + ` Ω·m`;
             case ElectricResistivityUnits.OhmsCentimeter:
                 return this.OhmsCentimeter + ` Ω·cm`;
-            case ElectricResistivityUnits.PicoohmMeter:
-                return this.PicoohmMeter + ` Ω·m`;
-            case ElectricResistivityUnits.NanoohmMeter:
-                return this.NanoohmMeter + ` Ω·m`;
-            case ElectricResistivityUnits.MicroohmMeter:
-                return this.MicroohmMeter + ` Ω·m`;
-            case ElectricResistivityUnits.KiloohmMeter:
-                return this.KiloohmMeter + ` Ω·m`;
-            case ElectricResistivityUnits.MegaohmMeter:
-                return this.MegaohmMeter + ` Ω·m`;
-            case ElectricResistivityUnits.PicoohmCentimeter:
-                return this.PicoohmCentimeter + ` Ω·cm`;
-            case ElectricResistivityUnits.NanoohmCentimeter:
-                return this.NanoohmCentimeter + ` Ω·cm`;
-            case ElectricResistivityUnits.MicroohmCentimeter:
-                return this.MicroohmCentimeter + ` Ω·cm`;
-            case ElectricResistivityUnits.KiloohmCentimeter:
-                return this.KiloohmCentimeter + ` Ω·cm`;
-            case ElectricResistivityUnits.MegaohmCentimeter:
-                return this.MegaohmCentimeter + ` Ω·cm`;
+            case ElectricResistivityUnits.PicoohmMeters:
+                return this.PicoohmMeters + ` Ω·m`;
+            case ElectricResistivityUnits.NanoohmMeters:
+                return this.NanoohmMeters + ` Ω·m`;
+            case ElectricResistivityUnits.MicroohmMeters:
+                return this.MicroohmMeters + ` Ω·m`;
+            case ElectricResistivityUnits.KiloohmMeters:
+                return this.KiloohmMeters + ` Ω·m`;
+            case ElectricResistivityUnits.MegaohmMeters:
+                return this.MegaohmMeters + ` Ω·m`;
+            case ElectricResistivityUnits.PicoohmsCentimeter:
+                return this.PicoohmsCentimeter + ` Ω·cm`;
+            case ElectricResistivityUnits.NanoohmsCentimeter:
+                return this.NanoohmsCentimeter + ` Ω·cm`;
+            case ElectricResistivityUnits.MicroohmsCentimeter:
+                return this.MicroohmsCentimeter + ` Ω·cm`;
+            case ElectricResistivityUnits.KiloohmsCentimeter:
+                return this.KiloohmsCentimeter + ` Ω·cm`;
+            case ElectricResistivityUnits.MegaohmsCentimeter:
+                return this.MegaohmsCentimeter + ` Ω·cm`;
         default:
             break;
         }

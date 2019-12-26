@@ -1,64 +1,64 @@
 export declare enum InformationUnits {
     Bytes = 0,
     Bits = 1,
-    Kilobyte = 2,
-    Megabyte = 3,
-    Gigabyte = 4,
-    Terabyte = 5,
-    Petabyte = 6,
-    Exabyte = 7,
-    Kilobit = 8,
-    Megabit = 9,
-    Gigabit = 10,
-    Terabit = 11,
-    Petabit = 12,
-    Exabit = 13
+    Kilobytes = 2,
+    Megabytes = 3,
+    Gigabytes = 4,
+    Terabytes = 5,
+    Petabytes = 6,
+    Exabytes = 7,
+    Kilobits = 8,
+    Megabits = 9,
+    Gigabits = 10,
+    Terabits = 11,
+    Petabits = 12,
+    Exabits = 13
 }
 export declare class Information {
     private value;
     private bytesLazy;
     private bitsLazy;
-    private kilobyteLazy;
-    private megabyteLazy;
-    private gigabyteLazy;
-    private terabyteLazy;
-    private petabyteLazy;
-    private exabyteLazy;
-    private kilobitLazy;
-    private megabitLazy;
-    private gigabitLazy;
-    private terabitLazy;
-    private petabitLazy;
-    private exabitLazy;
+    private kilobytesLazy;
+    private megabytesLazy;
+    private gigabytesLazy;
+    private terabytesLazy;
+    private petabytesLazy;
+    private exabytesLazy;
+    private kilobitsLazy;
+    private megabitsLazy;
+    private gigabitsLazy;
+    private terabitsLazy;
+    private petabitsLazy;
+    private exabitsLazy;
     constructor(value: number, fromUnit: InformationUnits);
     get Bytes(): number;
     get Bits(): number;
-    get Kilobyte(): number;
-    get Megabyte(): number;
-    get Gigabyte(): number;
-    get Terabyte(): number;
-    get Petabyte(): number;
-    get Exabyte(): number;
-    get Kilobit(): number;
-    get Megabit(): number;
-    get Gigabit(): number;
-    get Terabit(): number;
-    get Petabit(): number;
-    get Exabit(): number;
+    get Kilobytes(): number;
+    get Megabytes(): number;
+    get Gigabytes(): number;
+    get Terabytes(): number;
+    get Petabytes(): number;
+    get Exabytes(): number;
+    get Kilobits(): number;
+    get Megabits(): number;
+    get Gigabits(): number;
+    get Terabits(): number;
+    get Petabits(): number;
+    get Exabits(): number;
     static FromBytes(value: number): Information;
     static FromBits(value: number): Information;
-    static FromKilobyte(value: number): Information;
-    static FromMegabyte(value: number): Information;
-    static FromGigabyte(value: number): Information;
-    static FromTerabyte(value: number): Information;
-    static FromPetabyte(value: number): Information;
-    static FromExabyte(value: number): Information;
-    static FromKilobit(value: number): Information;
-    static FromMegabit(value: number): Information;
-    static FromGigabit(value: number): Information;
-    static FromTerabit(value: number): Information;
-    static FromPetabit(value: number): Information;
-    static FromExabit(value: number): Information;
+    static FromKilobytes(value: number): Information;
+    static FromMegabytes(value: number): Information;
+    static FromGigabytes(value: number): Information;
+    static FromTerabytes(value: number): Information;
+    static FromPetabytes(value: number): Information;
+    static FromExabytes(value: number): Information;
+    static FromKilobits(value: number): Information;
+    static FromMegabits(value: number): Information;
+    static FromGigabits(value: number): Information;
+    static FromTerabits(value: number): Information;
+    static FromPetabits(value: number): Information;
+    static FromExabits(value: number): Information;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: InformationUnits): string;

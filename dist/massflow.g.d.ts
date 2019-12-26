@@ -11,25 +11,25 @@ export declare enum MassFlowUnits {
     PoundsPerSecond = 9,
     TonnesPerDay = 10,
     ShortTonsPerHour = 11,
-    NanogramPerSecond = 12,
-    MicrogramPerSecond = 13,
-    CentigramPerSecond = 14,
-    DecigramPerSecond = 15,
-    DecagramPerSecond = 16,
-    HectogramPerSecond = 17,
-    KilogramPerSecond = 18,
-    NanogramPerDay = 19,
-    MicrogramPerDay = 20,
-    CentigramPerDay = 21,
-    DecigramPerDay = 22,
-    DecagramPerDay = 23,
-    HectogramPerDay = 24,
-    KilogramPerDay = 25,
-    MegagramPerDay = 26,
-    MegapoundPerDay = 27,
-    MegapoundPerHour = 28,
-    MegapoundPerMinute = 29,
-    MegapoundPerSecond = 30
+    NanogramsPerSecond = 12,
+    MicrogramsPerSecond = 13,
+    CentigramsPerSecond = 14,
+    DecigramsPerSecond = 15,
+    DecagramsPerSecond = 16,
+    HectogramsPerSecond = 17,
+    KilogramsPerSecond = 18,
+    NanogramsPerDay = 19,
+    MicrogramsPerDay = 20,
+    CentigramsPerDay = 21,
+    DecigramsPerDay = 22,
+    DecagramsPerDay = 23,
+    HectogramsPerDay = 24,
+    KilogramsPerDay = 25,
+    MegagramsPerDay = 26,
+    MegapoundsPerDay = 27,
+    MegapoundsPerHour = 28,
+    MegapoundsPerMinute = 29,
+    MegapoundsPerSecond = 30
 }
 export declare class MassFlow {
     private value;
@@ -45,25 +45,25 @@ export declare class MassFlow {
     private poundspersecondLazy;
     private tonnesperdayLazy;
     private shorttonsperhourLazy;
-    private nanogrampersecondLazy;
-    private microgrampersecondLazy;
-    private centigrampersecondLazy;
-    private decigrampersecondLazy;
-    private decagrampersecondLazy;
-    private hectogrampersecondLazy;
-    private kilogrampersecondLazy;
-    private nanogramperdayLazy;
-    private microgramperdayLazy;
-    private centigramperdayLazy;
-    private decigramperdayLazy;
-    private decagramperdayLazy;
-    private hectogramperdayLazy;
-    private kilogramperdayLazy;
-    private megagramperdayLazy;
-    private megapoundperdayLazy;
-    private megapoundperhourLazy;
-    private megapoundperminuteLazy;
-    private megapoundpersecondLazy;
+    private nanogramspersecondLazy;
+    private microgramspersecondLazy;
+    private centigramspersecondLazy;
+    private decigramspersecondLazy;
+    private decagramspersecondLazy;
+    private hectogramspersecondLazy;
+    private kilogramspersecondLazy;
+    private nanogramsperdayLazy;
+    private microgramsperdayLazy;
+    private centigramsperdayLazy;
+    private decigramsperdayLazy;
+    private decagramsperdayLazy;
+    private hectogramsperdayLazy;
+    private kilogramsperdayLazy;
+    private megagramsperdayLazy;
+    private megapoundsperdayLazy;
+    private megapoundsperhourLazy;
+    private megapoundsperminuteLazy;
+    private megapoundspersecondLazy;
     constructor(value: number, fromUnit: MassFlowUnits);
     get GramsPerSecond(): number;
     get GramsPerDay(): number;
@@ -77,25 +77,25 @@ export declare class MassFlow {
     get PoundsPerSecond(): number;
     get TonnesPerDay(): number;
     get ShortTonsPerHour(): number;
-    get NanogramPerSecond(): number;
-    get MicrogramPerSecond(): number;
-    get CentigramPerSecond(): number;
-    get DecigramPerSecond(): number;
-    get DecagramPerSecond(): number;
-    get HectogramPerSecond(): number;
-    get KilogramPerSecond(): number;
-    get NanogramPerDay(): number;
-    get MicrogramPerDay(): number;
-    get CentigramPerDay(): number;
-    get DecigramPerDay(): number;
-    get DecagramPerDay(): number;
-    get HectogramPerDay(): number;
-    get KilogramPerDay(): number;
-    get MegagramPerDay(): number;
-    get MegapoundPerDay(): number;
-    get MegapoundPerHour(): number;
-    get MegapoundPerMinute(): number;
-    get MegapoundPerSecond(): number;
+    get NanogramsPerSecond(): number;
+    get MicrogramsPerSecond(): number;
+    get CentigramsPerSecond(): number;
+    get DecigramsPerSecond(): number;
+    get DecagramsPerSecond(): number;
+    get HectogramsPerSecond(): number;
+    get KilogramsPerSecond(): number;
+    get NanogramsPerDay(): number;
+    get MicrogramsPerDay(): number;
+    get CentigramsPerDay(): number;
+    get DecigramsPerDay(): number;
+    get DecagramsPerDay(): number;
+    get HectogramsPerDay(): number;
+    get KilogramsPerDay(): number;
+    get MegagramsPerDay(): number;
+    get MegapoundsPerDay(): number;
+    get MegapoundsPerHour(): number;
+    get MegapoundsPerMinute(): number;
+    get MegapoundsPerSecond(): number;
     static FromGramsPerSecond(value: number): MassFlow;
     static FromGramsPerDay(value: number): MassFlow;
     static FromGramsPerHour(value: number): MassFlow;
@@ -108,25 +108,25 @@ export declare class MassFlow {
     static FromPoundsPerSecond(value: number): MassFlow;
     static FromTonnesPerDay(value: number): MassFlow;
     static FromShortTonsPerHour(value: number): MassFlow;
-    static FromNanogramPerSecond(value: number): MassFlow;
-    static FromMicrogramPerSecond(value: number): MassFlow;
-    static FromCentigramPerSecond(value: number): MassFlow;
-    static FromDecigramPerSecond(value: number): MassFlow;
-    static FromDecagramPerSecond(value: number): MassFlow;
-    static FromHectogramPerSecond(value: number): MassFlow;
-    static FromKilogramPerSecond(value: number): MassFlow;
-    static FromNanogramPerDay(value: number): MassFlow;
-    static FromMicrogramPerDay(value: number): MassFlow;
-    static FromCentigramPerDay(value: number): MassFlow;
-    static FromDecigramPerDay(value: number): MassFlow;
-    static FromDecagramPerDay(value: number): MassFlow;
-    static FromHectogramPerDay(value: number): MassFlow;
-    static FromKilogramPerDay(value: number): MassFlow;
-    static FromMegagramPerDay(value: number): MassFlow;
-    static FromMegapoundPerDay(value: number): MassFlow;
-    static FromMegapoundPerHour(value: number): MassFlow;
-    static FromMegapoundPerMinute(value: number): MassFlow;
-    static FromMegapoundPerSecond(value: number): MassFlow;
+    static FromNanogramsPerSecond(value: number): MassFlow;
+    static FromMicrogramsPerSecond(value: number): MassFlow;
+    static FromCentigramsPerSecond(value: number): MassFlow;
+    static FromDecigramsPerSecond(value: number): MassFlow;
+    static FromDecagramsPerSecond(value: number): MassFlow;
+    static FromHectogramsPerSecond(value: number): MassFlow;
+    static FromKilogramsPerSecond(value: number): MassFlow;
+    static FromNanogramsPerDay(value: number): MassFlow;
+    static FromMicrogramsPerDay(value: number): MassFlow;
+    static FromCentigramsPerDay(value: number): MassFlow;
+    static FromDecigramsPerDay(value: number): MassFlow;
+    static FromDecagramsPerDay(value: number): MassFlow;
+    static FromHectogramsPerDay(value: number): MassFlow;
+    static FromKilogramsPerDay(value: number): MassFlow;
+    static FromMegagramsPerDay(value: number): MassFlow;
+    static FromMegapoundsPerDay(value: number): MassFlow;
+    static FromMegapoundsPerHour(value: number): MassFlow;
+    static FromMegapoundsPerMinute(value: number): MassFlow;
+    static FromMegapoundsPerSecond(value: number): MassFlow;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: MassFlowUnits): string;

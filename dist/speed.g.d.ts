@@ -16,18 +16,18 @@ export declare enum SpeedUnits {
     YardsPerHour = 14,
     Knots = 15,
     MilesPerHour = 16,
-    NanometerPerSecond = 17,
-    MicrometerPerSecond = 18,
-    CentimeterPerSecond = 19,
-    DecimeterPerSecond = 20,
-    KilometerPerSecond = 21,
-    NanometerPerMinute = 22,
-    MicrometerPerMinute = 23,
-    CentimeterPerMinute = 24,
-    DecimeterPerMinute = 25,
-    KilometerPerMinute = 26,
-    CentimeterPerHour = 27,
-    KilometerPerHour = 28
+    NanometersPerSecond = 17,
+    MicrometersPerSecond = 18,
+    CentimetersPerSecond = 19,
+    DecimetersPerSecond = 20,
+    KilometersPerSecond = 21,
+    NanometersPerMinutes = 22,
+    MicrometersPerMinutes = 23,
+    CentimetersPerMinutes = 24,
+    DecimetersPerMinutes = 25,
+    KilometersPerMinutes = 26,
+    CentimetersPerHour = 27,
+    KilometersPerHour = 28
 }
 export declare class Speed {
     private value;
@@ -48,18 +48,18 @@ export declare class Speed {
     private yardsperhourLazy;
     private knotsLazy;
     private milesperhourLazy;
-    private nanometerpersecondLazy;
-    private micrometerpersecondLazy;
-    private centimeterpersecondLazy;
-    private decimeterpersecondLazy;
-    private kilometerpersecondLazy;
-    private nanometerperminuteLazy;
-    private micrometerperminuteLazy;
-    private centimeterperminuteLazy;
-    private decimeterperminuteLazy;
-    private kilometerperminuteLazy;
-    private centimeterperhourLazy;
-    private kilometerperhourLazy;
+    private nanometerspersecondLazy;
+    private micrometerspersecondLazy;
+    private centimeterspersecondLazy;
+    private decimeterspersecondLazy;
+    private kilometerspersecondLazy;
+    private nanometersperminutesLazy;
+    private micrometersperminutesLazy;
+    private centimetersperminutesLazy;
+    private decimetersperminutesLazy;
+    private kilometersperminutesLazy;
+    private centimetersperhourLazy;
+    private kilometersperhourLazy;
     constructor(value: number, fromUnit: SpeedUnits);
     get MetersPerSecond(): number;
     get MetersPerMinutes(): number;
@@ -78,18 +78,18 @@ export declare class Speed {
     get YardsPerHour(): number;
     get Knots(): number;
     get MilesPerHour(): number;
-    get NanometerPerSecond(): number;
-    get MicrometerPerSecond(): number;
-    get CentimeterPerSecond(): number;
-    get DecimeterPerSecond(): number;
-    get KilometerPerSecond(): number;
-    get NanometerPerMinute(): number;
-    get MicrometerPerMinute(): number;
-    get CentimeterPerMinute(): number;
-    get DecimeterPerMinute(): number;
-    get KilometerPerMinute(): number;
-    get CentimeterPerHour(): number;
-    get KilometerPerHour(): number;
+    get NanometersPerSecond(): number;
+    get MicrometersPerSecond(): number;
+    get CentimetersPerSecond(): number;
+    get DecimetersPerSecond(): number;
+    get KilometersPerSecond(): number;
+    get NanometersPerMinutes(): number;
+    get MicrometersPerMinutes(): number;
+    get CentimetersPerMinutes(): number;
+    get DecimetersPerMinutes(): number;
+    get KilometersPerMinutes(): number;
+    get CentimetersPerHour(): number;
+    get KilometersPerHour(): number;
     static FromMetersPerSecond(value: number): Speed;
     static FromMetersPerMinutes(value: number): Speed;
     static FromMetersPerHour(value: number): Speed;
@@ -107,18 +107,18 @@ export declare class Speed {
     static FromYardsPerHour(value: number): Speed;
     static FromKnots(value: number): Speed;
     static FromMilesPerHour(value: number): Speed;
-    static FromNanometerPerSecond(value: number): Speed;
-    static FromMicrometerPerSecond(value: number): Speed;
-    static FromCentimeterPerSecond(value: number): Speed;
-    static FromDecimeterPerSecond(value: number): Speed;
-    static FromKilometerPerSecond(value: number): Speed;
-    static FromNanometerPerMinute(value: number): Speed;
-    static FromMicrometerPerMinute(value: number): Speed;
-    static FromCentimeterPerMinute(value: number): Speed;
-    static FromDecimeterPerMinute(value: number): Speed;
-    static FromKilometerPerMinute(value: number): Speed;
-    static FromCentimeterPerHour(value: number): Speed;
-    static FromKilometerPerHour(value: number): Speed;
+    static FromNanometersPerSecond(value: number): Speed;
+    static FromMicrometersPerSecond(value: number): Speed;
+    static FromCentimetersPerSecond(value: number): Speed;
+    static FromDecimetersPerSecond(value: number): Speed;
+    static FromKilometersPerSecond(value: number): Speed;
+    static FromNanometersPerMinutes(value: number): Speed;
+    static FromMicrometersPerMinutes(value: number): Speed;
+    static FromCentimetersPerMinutes(value: number): Speed;
+    static FromDecimetersPerMinutes(value: number): Speed;
+    static FromKilometersPerMinutes(value: number): Speed;
+    static FromCentimetersPerHour(value: number): Speed;
+    static FromKilometersPerHour(value: number): Speed;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: SpeedUnits): string;

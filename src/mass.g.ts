@@ -12,17 +12,17 @@ export enum MassUnits {
     Grains,
     SolarMasses,
     EarthMasses,
-    Nanogram,
-    Microgram,
-    Centigram,
-    Decigram,
-    Decagram,
-    Hectogram,
-    Kilogram,
-    Kilotonne,
-    Megatonne,
-    Kilopound,
-    Megapound
+    Nanograms,
+    Micrograms,
+    Centigrams,
+    Decigrams,
+    Decagrams,
+    Hectograms,
+    Kilograms,
+    Kilotonnes,
+    Megatonnes,
+    Kilopounds,
+    Megapounds
 }
 
 export class Mass {
@@ -40,17 +40,17 @@ export class Mass {
     private grainsLazy: number | null = null;
     private solarmassesLazy: number | null = null;
     private earthmassesLazy: number | null = null;
-    private nanogramLazy: number | null = null;
-    private microgramLazy: number | null = null;
-    private centigramLazy: number | null = null;
-    private decigramLazy: number | null = null;
-    private decagramLazy: number | null = null;
-    private hectogramLazy: number | null = null;
-    private kilogramLazy: number | null = null;
-    private kilotonneLazy: number | null = null;
-    private megatonneLazy: number | null = null;
-    private kilopoundLazy: number | null = null;
-    private megapoundLazy: number | null = null;
+    private nanogramsLazy: number | null = null;
+    private microgramsLazy: number | null = null;
+    private centigramsLazy: number | null = null;
+    private decigramsLazy: number | null = null;
+    private decagramsLazy: number | null = null;
+    private hectogramsLazy: number | null = null;
+    private kilogramsLazy: number | null = null;
+    private kilotonnesLazy: number | null = null;
+    private megatonnesLazy: number | null = null;
+    private kilopoundsLazy: number | null = null;
+    private megapoundsLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MassUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -147,81 +147,81 @@ export class Mass {
         return this.earthmassesLazy = this.convertFromBase(MassUnits.EarthMasses);
     }
 
-    public get Nanogram(): number {
-        if(this.nanogramLazy !== null){
-            return this.nanogramLazy;
+    public get Nanograms(): number {
+        if(this.nanogramsLazy !== null){
+            return this.nanogramsLazy;
         }
-        return this.nanogramLazy = this.convertFromBase(MassUnits.Nanogram);
+        return this.nanogramsLazy = this.convertFromBase(MassUnits.Nanograms);
     }
 
-    public get Microgram(): number {
-        if(this.microgramLazy !== null){
-            return this.microgramLazy;
+    public get Micrograms(): number {
+        if(this.microgramsLazy !== null){
+            return this.microgramsLazy;
         }
-        return this.microgramLazy = this.convertFromBase(MassUnits.Microgram);
+        return this.microgramsLazy = this.convertFromBase(MassUnits.Micrograms);
     }
 
-    public get Centigram(): number {
-        if(this.centigramLazy !== null){
-            return this.centigramLazy;
+    public get Centigrams(): number {
+        if(this.centigramsLazy !== null){
+            return this.centigramsLazy;
         }
-        return this.centigramLazy = this.convertFromBase(MassUnits.Centigram);
+        return this.centigramsLazy = this.convertFromBase(MassUnits.Centigrams);
     }
 
-    public get Decigram(): number {
-        if(this.decigramLazy !== null){
-            return this.decigramLazy;
+    public get Decigrams(): number {
+        if(this.decigramsLazy !== null){
+            return this.decigramsLazy;
         }
-        return this.decigramLazy = this.convertFromBase(MassUnits.Decigram);
+        return this.decigramsLazy = this.convertFromBase(MassUnits.Decigrams);
     }
 
-    public get Decagram(): number {
-        if(this.decagramLazy !== null){
-            return this.decagramLazy;
+    public get Decagrams(): number {
+        if(this.decagramsLazy !== null){
+            return this.decagramsLazy;
         }
-        return this.decagramLazy = this.convertFromBase(MassUnits.Decagram);
+        return this.decagramsLazy = this.convertFromBase(MassUnits.Decagrams);
     }
 
-    public get Hectogram(): number {
-        if(this.hectogramLazy !== null){
-            return this.hectogramLazy;
+    public get Hectograms(): number {
+        if(this.hectogramsLazy !== null){
+            return this.hectogramsLazy;
         }
-        return this.hectogramLazy = this.convertFromBase(MassUnits.Hectogram);
+        return this.hectogramsLazy = this.convertFromBase(MassUnits.Hectograms);
     }
 
-    public get Kilogram(): number {
-        if(this.kilogramLazy !== null){
-            return this.kilogramLazy;
+    public get Kilograms(): number {
+        if(this.kilogramsLazy !== null){
+            return this.kilogramsLazy;
         }
-        return this.kilogramLazy = this.convertFromBase(MassUnits.Kilogram);
+        return this.kilogramsLazy = this.convertFromBase(MassUnits.Kilograms);
     }
 
-    public get Kilotonne(): number {
-        if(this.kilotonneLazy !== null){
-            return this.kilotonneLazy;
+    public get Kilotonnes(): number {
+        if(this.kilotonnesLazy !== null){
+            return this.kilotonnesLazy;
         }
-        return this.kilotonneLazy = this.convertFromBase(MassUnits.Kilotonne);
+        return this.kilotonnesLazy = this.convertFromBase(MassUnits.Kilotonnes);
     }
 
-    public get Megatonne(): number {
-        if(this.megatonneLazy !== null){
-            return this.megatonneLazy;
+    public get Megatonnes(): number {
+        if(this.megatonnesLazy !== null){
+            return this.megatonnesLazy;
         }
-        return this.megatonneLazy = this.convertFromBase(MassUnits.Megatonne);
+        return this.megatonnesLazy = this.convertFromBase(MassUnits.Megatonnes);
     }
 
-    public get Kilopound(): number {
-        if(this.kilopoundLazy !== null){
-            return this.kilopoundLazy;
+    public get Kilopounds(): number {
+        if(this.kilopoundsLazy !== null){
+            return this.kilopoundsLazy;
         }
-        return this.kilopoundLazy = this.convertFromBase(MassUnits.Kilopound);
+        return this.kilopoundsLazy = this.convertFromBase(MassUnits.Kilopounds);
     }
 
-    public get Megapound(): number {
-        if(this.megapoundLazy !== null){
-            return this.megapoundLazy;
+    public get Megapounds(): number {
+        if(this.megapoundsLazy !== null){
+            return this.megapoundsLazy;
         }
-        return this.megapoundLazy = this.convertFromBase(MassUnits.Megapound);
+        return this.megapoundsLazy = this.convertFromBase(MassUnits.Megapounds);
     }
 
     public static FromGrams(value: number): Mass {
@@ -276,48 +276,48 @@ export class Mass {
         return new Mass(value, MassUnits.EarthMasses);
     }
 
-    public static FromNanogram(value: number): Mass {
-        return new Mass(value, MassUnits.Nanogram);
+    public static FromNanograms(value: number): Mass {
+        return new Mass(value, MassUnits.Nanograms);
     }
 
-    public static FromMicrogram(value: number): Mass {
-        return new Mass(value, MassUnits.Microgram);
+    public static FromMicrograms(value: number): Mass {
+        return new Mass(value, MassUnits.Micrograms);
     }
 
-    public static FromCentigram(value: number): Mass {
-        return new Mass(value, MassUnits.Centigram);
+    public static FromCentigrams(value: number): Mass {
+        return new Mass(value, MassUnits.Centigrams);
     }
 
-    public static FromDecigram(value: number): Mass {
-        return new Mass(value, MassUnits.Decigram);
+    public static FromDecigrams(value: number): Mass {
+        return new Mass(value, MassUnits.Decigrams);
     }
 
-    public static FromDecagram(value: number): Mass {
-        return new Mass(value, MassUnits.Decagram);
+    public static FromDecagrams(value: number): Mass {
+        return new Mass(value, MassUnits.Decagrams);
     }
 
-    public static FromHectogram(value: number): Mass {
-        return new Mass(value, MassUnits.Hectogram);
+    public static FromHectograms(value: number): Mass {
+        return new Mass(value, MassUnits.Hectograms);
     }
 
-    public static FromKilogram(value: number): Mass {
-        return new Mass(value, MassUnits.Kilogram);
+    public static FromKilograms(value: number): Mass {
+        return new Mass(value, MassUnits.Kilograms);
     }
 
-    public static FromKilotonne(value: number): Mass {
-        return new Mass(value, MassUnits.Kilotonne);
+    public static FromKilotonnes(value: number): Mass {
+        return new Mass(value, MassUnits.Kilotonnes);
     }
 
-    public static FromMegatonne(value: number): Mass {
-        return new Mass(value, MassUnits.Megatonne);
+    public static FromMegatonnes(value: number): Mass {
+        return new Mass(value, MassUnits.Megatonnes);
     }
 
-    public static FromKilopound(value: number): Mass {
-        return new Mass(value, MassUnits.Kilopound);
+    public static FromKilopounds(value: number): Mass {
+        return new Mass(value, MassUnits.Kilopounds);
     }
 
-    public static FromMegapound(value: number): Mass {
-        return new Mass(value, MassUnits.Megapound);
+    public static FromMegapounds(value: number): Mass {
+        return new Mass(value, MassUnits.Megapounds);
     }
 
     private convertFromBase(toUnit: MassUnits): number {
@@ -349,27 +349,27 @@ export class Mass {
                 return this.value / 1.98947e30;
             case MassUnits.EarthMasses:
                 return this.value / 5.9722E+24;
-            case MassUnits.Nanogram:
+            case MassUnits.Nanograms:
                 return (this.value*1e3) / 1e-9;
-            case MassUnits.Microgram:
+            case MassUnits.Micrograms:
                 return (this.value*1e3) / 0.000001;
-            case MassUnits.Centigram:
+            case MassUnits.Centigrams:
                 return (this.value*1e3) / 0.01;
-            case MassUnits.Decigram:
+            case MassUnits.Decigrams:
                 return (this.value*1e3) / 0.1;
-            case MassUnits.Decagram:
+            case MassUnits.Decagrams:
                 return (this.value*1e3) / 10;
-            case MassUnits.Hectogram:
+            case MassUnits.Hectograms:
                 return (this.value*1e3) / 100;
-            case MassUnits.Kilogram:
+            case MassUnits.Kilograms:
                 return (this.value*1e3) / 1000;
-            case MassUnits.Kilotonne:
+            case MassUnits.Kilotonnes:
                 return (this.value/1e3) / 1000;
-            case MassUnits.Megatonne:
+            case MassUnits.Megatonnes:
                 return (this.value/1e3) / 1000000;
-            case MassUnits.Kilopound:
+            case MassUnits.Kilopounds:
                 return (this.value/0.45359237) / 1000;
-            case MassUnits.Megapound:
+            case MassUnits.Megapounds:
                 return (this.value/0.45359237) / 1000000;
             default:
                 break;
@@ -406,27 +406,27 @@ export class Mass {
                 return value * 1.98947e30;
             case MassUnits.EarthMasses:
                 return value * 5.9722E+24;
-            case MassUnits.Nanogram:
+            case MassUnits.Nanograms:
                 return (value/1e3) * 1e-9;
-            case MassUnits.Microgram:
+            case MassUnits.Micrograms:
                 return (value/1e3) * 0.000001;
-            case MassUnits.Centigram:
+            case MassUnits.Centigrams:
                 return (value/1e3) * 0.01;
-            case MassUnits.Decigram:
+            case MassUnits.Decigrams:
                 return (value/1e3) * 0.1;
-            case MassUnits.Decagram:
+            case MassUnits.Decagrams:
                 return (value/1e3) * 10;
-            case MassUnits.Hectogram:
+            case MassUnits.Hectograms:
                 return (value/1e3) * 100;
-            case MassUnits.Kilogram:
+            case MassUnits.Kilograms:
                 return (value/1e3) * 1000;
-            case MassUnits.Kilotonne:
+            case MassUnits.Kilotonnes:
                 return (value*1e3) * 1000;
-            case MassUnits.Megatonne:
+            case MassUnits.Megatonnes:
                 return (value*1e3) * 1000000;
-            case MassUnits.Kilopound:
+            case MassUnits.Kilopounds:
                 return (value*0.45359237) * 1000;
-            case MassUnits.Megapound:
+            case MassUnits.Megapounds:
                 return (value*0.45359237) * 1000000;
             default:
                 break;
@@ -434,7 +434,7 @@ export class Mass {
         return NaN;
     }
 
-    public toString(toUnit: MassUnits = MassUnits.Kilogram): string {
+    public toString(toUnit: MassUnits = MassUnits.Kilograms): string {
 
         switch (toUnit) {
             
@@ -464,28 +464,28 @@ export class Mass {
                 return this.SolarMasses + ` M⊙`;
             case MassUnits.EarthMasses:
                 return this.EarthMasses + ` em`;
-            case MassUnits.Nanogram:
-                return this.Nanogram + ` g`;
-            case MassUnits.Microgram:
-                return this.Microgram + ` g`;
-            case MassUnits.Centigram:
-                return this.Centigram + ` g`;
-            case MassUnits.Decigram:
-                return this.Decigram + ` g`;
-            case MassUnits.Decagram:
-                return this.Decagram + ` g`;
-            case MassUnits.Hectogram:
-                return this.Hectogram + ` g`;
-            case MassUnits.Kilogram:
-                return this.Kilogram + ` g`;
-            case MassUnits.Kilotonne:
-                return this.Kilotonne + ` t`;
-            case MassUnits.Megatonne:
-                return this.Megatonne + ` t`;
-            case MassUnits.Kilopound:
-                return this.Kilopound + ` lb`;
-            case MassUnits.Megapound:
-                return this.Megapound + ` lb`;
+            case MassUnits.Nanograms:
+                return this.Nanograms + ` g`;
+            case MassUnits.Micrograms:
+                return this.Micrograms + ` g`;
+            case MassUnits.Centigrams:
+                return this.Centigrams + ` g`;
+            case MassUnits.Decigrams:
+                return this.Decigrams + ` g`;
+            case MassUnits.Decagrams:
+                return this.Decagrams + ` g`;
+            case MassUnits.Hectograms:
+                return this.Hectograms + ` g`;
+            case MassUnits.Kilograms:
+                return this.Kilograms + ` g`;
+            case MassUnits.Kilotonnes:
+                return this.Kilotonnes + ` t`;
+            case MassUnits.Megatonnes:
+                return this.Megatonnes + ` t`;
+            case MassUnits.Kilopounds:
+                return this.Kilopounds + ` lb`;
+            case MassUnits.Megapounds:
+                return this.Megapounds + ` lb`;
         default:
             break;
         }

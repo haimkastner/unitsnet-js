@@ -9,21 +9,21 @@ export declare enum EnergyUnits {
     ThermsEc = 7,
     ThermsUs = 8,
     ThermsImperial = 9,
-    Kilojoule = 10,
-    Megajoule = 11,
-    Gigajoule = 12,
-    Kilocalorie = 13,
-    Megacalorie = 14,
-    KilobritishThermalUnit = 15,
-    MegabritishThermalUnit = 16,
-    GigabritishThermalUnit = 17,
-    KilowattHour = 18,
-    MegawattHour = 19,
-    GigawattHour = 20,
-    TerawattHour = 21,
-    DecathermEc = 22,
-    DecathermUs = 23,
-    DecathermImperial = 24
+    Kilojoules = 10,
+    Megajoules = 11,
+    Gigajoules = 12,
+    Kilocalories = 13,
+    Megacalories = 14,
+    KilobritishThermalUnits = 15,
+    MegabritishThermalUnits = 16,
+    GigabritishThermalUnits = 17,
+    KilowattHours = 18,
+    MegawattHours = 19,
+    GigawattHours = 20,
+    TerawattHours = 21,
+    DecathermsEc = 22,
+    DecathermsUs = 23,
+    DecathermsImperial = 24
 }
 export declare class Energy {
     private value;
@@ -37,21 +37,21 @@ export declare class Energy {
     private thermsecLazy;
     private thermsusLazy;
     private thermsimperialLazy;
-    private kilojouleLazy;
-    private megajouleLazy;
-    private gigajouleLazy;
-    private kilocalorieLazy;
-    private megacalorieLazy;
-    private kilobritishthermalunitLazy;
-    private megabritishthermalunitLazy;
-    private gigabritishthermalunitLazy;
-    private kilowatthourLazy;
-    private megawatthourLazy;
-    private gigawatthourLazy;
-    private terawatthourLazy;
-    private decathermecLazy;
-    private decathermusLazy;
-    private decathermimperialLazy;
+    private kilojoulesLazy;
+    private megajoulesLazy;
+    private gigajoulesLazy;
+    private kilocaloriesLazy;
+    private megacaloriesLazy;
+    private kilobritishthermalunitsLazy;
+    private megabritishthermalunitsLazy;
+    private gigabritishthermalunitsLazy;
+    private kilowatthoursLazy;
+    private megawatthoursLazy;
+    private gigawatthoursLazy;
+    private terawatthoursLazy;
+    private decathermsecLazy;
+    private decathermsusLazy;
+    private decathermsimperialLazy;
     constructor(value: number, fromUnit: EnergyUnits);
     get Joules(): number;
     get Calories(): number;
@@ -63,21 +63,21 @@ export declare class Energy {
     get ThermsEc(): number;
     get ThermsUs(): number;
     get ThermsImperial(): number;
-    get Kilojoule(): number;
-    get Megajoule(): number;
-    get Gigajoule(): number;
-    get Kilocalorie(): number;
-    get Megacalorie(): number;
-    get KilobritishThermalUnit(): number;
-    get MegabritishThermalUnit(): number;
-    get GigabritishThermalUnit(): number;
-    get KilowattHour(): number;
-    get MegawattHour(): number;
-    get GigawattHour(): number;
-    get TerawattHour(): number;
-    get DecathermEc(): number;
-    get DecathermUs(): number;
-    get DecathermImperial(): number;
+    get Kilojoules(): number;
+    get Megajoules(): number;
+    get Gigajoules(): number;
+    get Kilocalories(): number;
+    get Megacalories(): number;
+    get KilobritishThermalUnits(): number;
+    get MegabritishThermalUnits(): number;
+    get GigabritishThermalUnits(): number;
+    get KilowattHours(): number;
+    get MegawattHours(): number;
+    get GigawattHours(): number;
+    get TerawattHours(): number;
+    get DecathermsEc(): number;
+    get DecathermsUs(): number;
+    get DecathermsImperial(): number;
     static FromJoules(value: number): Energy;
     static FromCalories(value: number): Energy;
     static FromBritishThermalUnits(value: number): Energy;
@@ -88,21 +88,21 @@ export declare class Energy {
     static FromThermsEc(value: number): Energy;
     static FromThermsUs(value: number): Energy;
     static FromThermsImperial(value: number): Energy;
-    static FromKilojoule(value: number): Energy;
-    static FromMegajoule(value: number): Energy;
-    static FromGigajoule(value: number): Energy;
-    static FromKilocalorie(value: number): Energy;
-    static FromMegacalorie(value: number): Energy;
-    static FromKilobritishThermalUnit(value: number): Energy;
-    static FromMegabritishThermalUnit(value: number): Energy;
-    static FromGigabritishThermalUnit(value: number): Energy;
-    static FromKilowattHour(value: number): Energy;
-    static FromMegawattHour(value: number): Energy;
-    static FromGigawattHour(value: number): Energy;
-    static FromTerawattHour(value: number): Energy;
-    static FromDecathermEc(value: number): Energy;
-    static FromDecathermUs(value: number): Energy;
-    static FromDecathermImperial(value: number): Energy;
+    static FromKilojoules(value: number): Energy;
+    static FromMegajoules(value: number): Energy;
+    static FromGigajoules(value: number): Energy;
+    static FromKilocalories(value: number): Energy;
+    static FromMegacalories(value: number): Energy;
+    static FromKilobritishThermalUnits(value: number): Energy;
+    static FromMegabritishThermalUnits(value: number): Energy;
+    static FromGigabritishThermalUnits(value: number): Energy;
+    static FromKilowattHours(value: number): Energy;
+    static FromMegawattHours(value: number): Energy;
+    static FromGigawattHours(value: number): Energy;
+    static FromTerawattHours(value: number): Energy;
+    static FromDecathermsEc(value: number): Energy;
+    static FromDecathermsUs(value: number): Energy;
+    static FromDecathermsImperial(value: number): Energy;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: EnergyUnits): string;

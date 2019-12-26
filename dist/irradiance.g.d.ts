@@ -1,56 +1,56 @@
 export declare enum IrradianceUnits {
     WattsPerSquareMeter = 0,
     WattsPerSquareCentimeter = 1,
-    PicowattPerSquareMeter = 2,
-    NanowattPerSquareMeter = 3,
-    MicrowattPerSquareMeter = 4,
-    KilowattPerSquareMeter = 5,
-    MegawattPerSquareMeter = 6,
-    PicowattPerSquareCentimeter = 7,
-    NanowattPerSquareCentimeter = 8,
-    MicrowattPerSquareCentimeter = 9,
-    KilowattPerSquareCentimeter = 10,
-    MegawattPerSquareCentimeter = 11
+    PicowattsPerSquareMeter = 2,
+    NanowattsPerSquareMeter = 3,
+    MicrowattsPerSquareMeter = 4,
+    KilowattsPerSquareMeter = 5,
+    MegawattsPerSquareMeter = 6,
+    PicowattsPerSquareCentimeter = 7,
+    NanowattsPerSquareCentimeter = 8,
+    MicrowattsPerSquareCentimeter = 9,
+    KilowattsPerSquareCentimeter = 10,
+    MegawattsPerSquareCentimeter = 11
 }
 export declare class Irradiance {
     private value;
     private wattspersquaremeterLazy;
     private wattspersquarecentimeterLazy;
-    private picowattpersquaremeterLazy;
-    private nanowattpersquaremeterLazy;
-    private microwattpersquaremeterLazy;
-    private kilowattpersquaremeterLazy;
-    private megawattpersquaremeterLazy;
-    private picowattpersquarecentimeterLazy;
-    private nanowattpersquarecentimeterLazy;
-    private microwattpersquarecentimeterLazy;
-    private kilowattpersquarecentimeterLazy;
-    private megawattpersquarecentimeterLazy;
+    private picowattspersquaremeterLazy;
+    private nanowattspersquaremeterLazy;
+    private microwattspersquaremeterLazy;
+    private kilowattspersquaremeterLazy;
+    private megawattspersquaremeterLazy;
+    private picowattspersquarecentimeterLazy;
+    private nanowattspersquarecentimeterLazy;
+    private microwattspersquarecentimeterLazy;
+    private kilowattspersquarecentimeterLazy;
+    private megawattspersquarecentimeterLazy;
     constructor(value: number, fromUnit: IrradianceUnits);
     get WattsPerSquareMeter(): number;
     get WattsPerSquareCentimeter(): number;
-    get PicowattPerSquareMeter(): number;
-    get NanowattPerSquareMeter(): number;
-    get MicrowattPerSquareMeter(): number;
-    get KilowattPerSquareMeter(): number;
-    get MegawattPerSquareMeter(): number;
-    get PicowattPerSquareCentimeter(): number;
-    get NanowattPerSquareCentimeter(): number;
-    get MicrowattPerSquareCentimeter(): number;
-    get KilowattPerSquareCentimeter(): number;
-    get MegawattPerSquareCentimeter(): number;
+    get PicowattsPerSquareMeter(): number;
+    get NanowattsPerSquareMeter(): number;
+    get MicrowattsPerSquareMeter(): number;
+    get KilowattsPerSquareMeter(): number;
+    get MegawattsPerSquareMeter(): number;
+    get PicowattsPerSquareCentimeter(): number;
+    get NanowattsPerSquareCentimeter(): number;
+    get MicrowattsPerSquareCentimeter(): number;
+    get KilowattsPerSquareCentimeter(): number;
+    get MegawattsPerSquareCentimeter(): number;
     static FromWattsPerSquareMeter(value: number): Irradiance;
     static FromWattsPerSquareCentimeter(value: number): Irradiance;
-    static FromPicowattPerSquareMeter(value: number): Irradiance;
-    static FromNanowattPerSquareMeter(value: number): Irradiance;
-    static FromMicrowattPerSquareMeter(value: number): Irradiance;
-    static FromKilowattPerSquareMeter(value: number): Irradiance;
-    static FromMegawattPerSquareMeter(value: number): Irradiance;
-    static FromPicowattPerSquareCentimeter(value: number): Irradiance;
-    static FromNanowattPerSquareCentimeter(value: number): Irradiance;
-    static FromMicrowattPerSquareCentimeter(value: number): Irradiance;
-    static FromKilowattPerSquareCentimeter(value: number): Irradiance;
-    static FromMegawattPerSquareCentimeter(value: number): Irradiance;
+    static FromPicowattsPerSquareMeter(value: number): Irradiance;
+    static FromNanowattsPerSquareMeter(value: number): Irradiance;
+    static FromMicrowattsPerSquareMeter(value: number): Irradiance;
+    static FromKilowattsPerSquareMeter(value: number): Irradiance;
+    static FromMegawattsPerSquareMeter(value: number): Irradiance;
+    static FromPicowattsPerSquareCentimeter(value: number): Irradiance;
+    static FromNanowattsPerSquareCentimeter(value: number): Irradiance;
+    static FromMicrowattsPerSquareCentimeter(value: number): Irradiance;
+    static FromKilowattsPerSquareCentimeter(value: number): Irradiance;
+    static FromMegawattsPerSquareCentimeter(value: number): Irradiance;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: IrradianceUnits): string;

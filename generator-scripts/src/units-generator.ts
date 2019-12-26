@@ -55,7 +55,7 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
             FromBaseToUnitFunc: fromBaseToUnitPrefixFormula,
 
             SingularName: `${prefix}${unit.SingularName[0].toLowerCase() + unit.SingularName.slice(1)}`,
-            PluralName: `${prefix}${unit.SingularName[0].toLowerCase() + unit.SingularName.slice(1)}`,
+            PluralName: `${prefix}${unit.PluralName[0].toLowerCase() + unit.PluralName.slice(1)}`,
             Localization: unit.Localization,
         })
     }

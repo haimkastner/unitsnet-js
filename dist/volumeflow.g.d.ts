@@ -34,18 +34,18 @@ export declare enum VolumeFlowUnits {
     AcreFeetPerMinute = 32,
     AcreFeetPerHour = 33,
     AcreFeetPerDay = 34,
-    NanoliterPerMinute = 35,
-    MicroliterPerMinute = 36,
-    CentiliterPerMinute = 37,
-    DeciliterPerMinute = 38,
-    KiloliterPerMinute = 39,
-    NanoliterPerDay = 40,
-    MicroliterPerDay = 41,
-    CentiliterPerDay = 42,
-    DeciliterPerDay = 43,
-    KiloliterPerDay = 44,
-    MegaliterPerDay = 45,
-    MegaukGallonPerSecond = 46
+    NanolitersPerMinute = 35,
+    MicrolitersPerMinute = 36,
+    CentilitersPerMinute = 37,
+    DecilitersPerMinute = 38,
+    KilolitersPerMinute = 39,
+    NanolitersPerDay = 40,
+    MicrolitersPerDay = 41,
+    CentilitersPerDay = 42,
+    DecilitersPerDay = 43,
+    KilolitersPerDay = 44,
+    MegalitersPerDay = 45,
+    MegaukGallonsPerSecond = 46
 }
 export declare class VolumeFlow {
     private value;
@@ -84,18 +84,18 @@ export declare class VolumeFlow {
     private acrefeetperminuteLazy;
     private acrefeetperhourLazy;
     private acrefeetperdayLazy;
-    private nanoliterperminuteLazy;
-    private microliterperminuteLazy;
-    private centiliterperminuteLazy;
-    private deciliterperminuteLazy;
-    private kiloliterperminuteLazy;
-    private nanoliterperdayLazy;
-    private microliterperdayLazy;
-    private centiliterperdayLazy;
-    private deciliterperdayLazy;
-    private kiloliterperdayLazy;
-    private megaliterperdayLazy;
-    private megaukgallonpersecondLazy;
+    private nanolitersperminuteLazy;
+    private microlitersperminuteLazy;
+    private centilitersperminuteLazy;
+    private decilitersperminuteLazy;
+    private kilolitersperminuteLazy;
+    private nanolitersperdayLazy;
+    private microlitersperdayLazy;
+    private centilitersperdayLazy;
+    private decilitersperdayLazy;
+    private kilolitersperdayLazy;
+    private megalitersperdayLazy;
+    private megaukgallonspersecondLazy;
     constructor(value: number, fromUnit: VolumeFlowUnits);
     get CubicMetersPerSecond(): number;
     get CubicMetersPerMinute(): number;
@@ -132,18 +132,18 @@ export declare class VolumeFlow {
     get AcreFeetPerMinute(): number;
     get AcreFeetPerHour(): number;
     get AcreFeetPerDay(): number;
-    get NanoliterPerMinute(): number;
-    get MicroliterPerMinute(): number;
-    get CentiliterPerMinute(): number;
-    get DeciliterPerMinute(): number;
-    get KiloliterPerMinute(): number;
-    get NanoliterPerDay(): number;
-    get MicroliterPerDay(): number;
-    get CentiliterPerDay(): number;
-    get DeciliterPerDay(): number;
-    get KiloliterPerDay(): number;
-    get MegaliterPerDay(): number;
-    get MegaukGallonPerSecond(): number;
+    get NanolitersPerMinute(): number;
+    get MicrolitersPerMinute(): number;
+    get CentilitersPerMinute(): number;
+    get DecilitersPerMinute(): number;
+    get KilolitersPerMinute(): number;
+    get NanolitersPerDay(): number;
+    get MicrolitersPerDay(): number;
+    get CentilitersPerDay(): number;
+    get DecilitersPerDay(): number;
+    get KilolitersPerDay(): number;
+    get MegalitersPerDay(): number;
+    get MegaukGallonsPerSecond(): number;
     static FromCubicMetersPerSecond(value: number): VolumeFlow;
     static FromCubicMetersPerMinute(value: number): VolumeFlow;
     static FromCubicMetersPerHour(value: number): VolumeFlow;
@@ -179,18 +179,18 @@ export declare class VolumeFlow {
     static FromAcreFeetPerMinute(value: number): VolumeFlow;
     static FromAcreFeetPerHour(value: number): VolumeFlow;
     static FromAcreFeetPerDay(value: number): VolumeFlow;
-    static FromNanoliterPerMinute(value: number): VolumeFlow;
-    static FromMicroliterPerMinute(value: number): VolumeFlow;
-    static FromCentiliterPerMinute(value: number): VolumeFlow;
-    static FromDeciliterPerMinute(value: number): VolumeFlow;
-    static FromKiloliterPerMinute(value: number): VolumeFlow;
-    static FromNanoliterPerDay(value: number): VolumeFlow;
-    static FromMicroliterPerDay(value: number): VolumeFlow;
-    static FromCentiliterPerDay(value: number): VolumeFlow;
-    static FromDeciliterPerDay(value: number): VolumeFlow;
-    static FromKiloliterPerDay(value: number): VolumeFlow;
-    static FromMegaliterPerDay(value: number): VolumeFlow;
-    static FromMegaukGallonPerSecond(value: number): VolumeFlow;
+    static FromNanolitersPerMinute(value: number): VolumeFlow;
+    static FromMicrolitersPerMinute(value: number): VolumeFlow;
+    static FromCentilitersPerMinute(value: number): VolumeFlow;
+    static FromDecilitersPerMinute(value: number): VolumeFlow;
+    static FromKilolitersPerMinute(value: number): VolumeFlow;
+    static FromNanolitersPerDay(value: number): VolumeFlow;
+    static FromMicrolitersPerDay(value: number): VolumeFlow;
+    static FromCentilitersPerDay(value: number): VolumeFlow;
+    static FromDecilitersPerDay(value: number): VolumeFlow;
+    static FromKilolitersPerDay(value: number): VolumeFlow;
+    static FromMegalitersPerDay(value: number): VolumeFlow;
+    static FromMegaukGallonsPerSecond(value: number): VolumeFlow;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: VolumeFlowUnits): string;

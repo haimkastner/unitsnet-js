@@ -1,20 +1,20 @@
 export declare enum MolarEnergyUnits {
     JoulesPerMole = 0,
-    KilojoulePerMole = 1,
-    MegajoulePerMole = 2
+    KilojoulesPerMole = 1,
+    MegajoulesPerMole = 2
 }
 export declare class MolarEnergy {
     private value;
     private joulespermoleLazy;
-    private kilojoulepermoleLazy;
-    private megajoulepermoleLazy;
+    private kilojoulespermoleLazy;
+    private megajoulespermoleLazy;
     constructor(value: number, fromUnit: MolarEnergyUnits);
     get JoulesPerMole(): number;
-    get KilojoulePerMole(): number;
-    get MegajoulePerMole(): number;
+    get KilojoulesPerMole(): number;
+    get MegajoulesPerMole(): number;
     static FromJoulesPerMole(value: number): MolarEnergy;
-    static FromKilojoulePerMole(value: number): MolarEnergy;
-    static FromMegajoulePerMole(value: number): MolarEnergy;
+    static FromKilojoulesPerMole(value: number): MolarEnergy;
+    static FromMegajoulesPerMole(value: number): MolarEnergy;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: MolarEnergyUnits): string;

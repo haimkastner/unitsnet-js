@@ -1,56 +1,56 @@
 export declare enum ElectricResistivityUnits {
     OhmMeters = 0,
     OhmsCentimeter = 1,
-    PicoohmMeter = 2,
-    NanoohmMeter = 3,
-    MicroohmMeter = 4,
-    KiloohmMeter = 5,
-    MegaohmMeter = 6,
-    PicoohmCentimeter = 7,
-    NanoohmCentimeter = 8,
-    MicroohmCentimeter = 9,
-    KiloohmCentimeter = 10,
-    MegaohmCentimeter = 11
+    PicoohmMeters = 2,
+    NanoohmMeters = 3,
+    MicroohmMeters = 4,
+    KiloohmMeters = 5,
+    MegaohmMeters = 6,
+    PicoohmsCentimeter = 7,
+    NanoohmsCentimeter = 8,
+    MicroohmsCentimeter = 9,
+    KiloohmsCentimeter = 10,
+    MegaohmsCentimeter = 11
 }
 export declare class ElectricResistivity {
     private value;
     private ohmmetersLazy;
     private ohmscentimeterLazy;
-    private picoohmmeterLazy;
-    private nanoohmmeterLazy;
-    private microohmmeterLazy;
-    private kiloohmmeterLazy;
-    private megaohmmeterLazy;
-    private picoohmcentimeterLazy;
-    private nanoohmcentimeterLazy;
-    private microohmcentimeterLazy;
-    private kiloohmcentimeterLazy;
-    private megaohmcentimeterLazy;
+    private picoohmmetersLazy;
+    private nanoohmmetersLazy;
+    private microohmmetersLazy;
+    private kiloohmmetersLazy;
+    private megaohmmetersLazy;
+    private picoohmscentimeterLazy;
+    private nanoohmscentimeterLazy;
+    private microohmscentimeterLazy;
+    private kiloohmscentimeterLazy;
+    private megaohmscentimeterLazy;
     constructor(value: number, fromUnit: ElectricResistivityUnits);
     get OhmMeters(): number;
     get OhmsCentimeter(): number;
-    get PicoohmMeter(): number;
-    get NanoohmMeter(): number;
-    get MicroohmMeter(): number;
-    get KiloohmMeter(): number;
-    get MegaohmMeter(): number;
-    get PicoohmCentimeter(): number;
-    get NanoohmCentimeter(): number;
-    get MicroohmCentimeter(): number;
-    get KiloohmCentimeter(): number;
-    get MegaohmCentimeter(): number;
+    get PicoohmMeters(): number;
+    get NanoohmMeters(): number;
+    get MicroohmMeters(): number;
+    get KiloohmMeters(): number;
+    get MegaohmMeters(): number;
+    get PicoohmsCentimeter(): number;
+    get NanoohmsCentimeter(): number;
+    get MicroohmsCentimeter(): number;
+    get KiloohmsCentimeter(): number;
+    get MegaohmsCentimeter(): number;
     static FromOhmMeters(value: number): ElectricResistivity;
     static FromOhmsCentimeter(value: number): ElectricResistivity;
-    static FromPicoohmMeter(value: number): ElectricResistivity;
-    static FromNanoohmMeter(value: number): ElectricResistivity;
-    static FromMicroohmMeter(value: number): ElectricResistivity;
-    static FromKiloohmMeter(value: number): ElectricResistivity;
-    static FromMegaohmMeter(value: number): ElectricResistivity;
-    static FromPicoohmCentimeter(value: number): ElectricResistivity;
-    static FromNanoohmCentimeter(value: number): ElectricResistivity;
-    static FromMicroohmCentimeter(value: number): ElectricResistivity;
-    static FromKiloohmCentimeter(value: number): ElectricResistivity;
-    static FromMegaohmCentimeter(value: number): ElectricResistivity;
+    static FromPicoohmMeters(value: number): ElectricResistivity;
+    static FromNanoohmMeters(value: number): ElectricResistivity;
+    static FromMicroohmMeters(value: number): ElectricResistivity;
+    static FromKiloohmMeters(value: number): ElectricResistivity;
+    static FromMegaohmMeters(value: number): ElectricResistivity;
+    static FromPicoohmsCentimeter(value: number): ElectricResistivity;
+    static FromNanoohmsCentimeter(value: number): ElectricResistivity;
+    static FromMicroohmsCentimeter(value: number): ElectricResistivity;
+    static FromKiloohmsCentimeter(value: number): ElectricResistivity;
+    static FromMegaohmsCentimeter(value: number): ElectricResistivity;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: ElectricResistivityUnits): string;

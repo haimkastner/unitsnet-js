@@ -14,27 +14,27 @@ export declare enum DensityUnits {
     PoundsPerUSGallon = 12,
     PoundsPerImperialGallon = 13,
     KilogramsPerLiter = 14,
-    KilogramPerCubicMillimeter = 15,
-    KilogramPerCubicCentimeter = 16,
-    KilogramPerCubicMeter = 17,
-    MicrogramPerCubicMeter = 18,
-    KilopoundPerCubicInch = 19,
-    KilopoundPerCubicFoot = 20,
-    PicogramPerLiter = 21,
-    NanogramPerLiter = 22,
-    MicrogramPerLiter = 23,
-    CentigramPerLiter = 24,
-    DecigramPerLiter = 25,
-    PicogramPerDeciliter = 26,
-    NanogramPerDeciliter = 27,
-    MicrogramPerDeciliter = 28,
-    CentigramPerDeciliter = 29,
-    DecigramPerDeciliter = 30,
-    PicogramPerMilliliter = 31,
-    NanogramPerMilliliter = 32,
-    MicrogramPerMilliliter = 33,
-    CentigramPerMilliliter = 34,
-    DecigramPerMilliliter = 35
+    KilogramsPerCubicMillimeter = 15,
+    KilogramsPerCubicCentimeter = 16,
+    KilogramsPerCubicMeter = 17,
+    MicrogramsPerCubicMeter = 18,
+    KilopoundsPerCubicInch = 19,
+    KilopoundsPerCubicFoot = 20,
+    PicogramsPerLiter = 21,
+    NanogramsPerLiter = 22,
+    MicrogramsPerLiter = 23,
+    CentigramsPerLiter = 24,
+    DecigramsPerLiter = 25,
+    PicogramsPerDeciLiter = 26,
+    NanogramsPerDeciLiter = 27,
+    MicrogramsPerDeciLiter = 28,
+    CentigramsPerDeciLiter = 29,
+    DecigramsPerDeciLiter = 30,
+    PicogramsPerMilliliter = 31,
+    NanogramsPerMilliliter = 32,
+    MicrogramsPerMilliliter = 33,
+    CentigramsPerMilliliter = 34,
+    DecigramsPerMilliliter = 35
 }
 export declare class Density {
     private value;
@@ -53,27 +53,27 @@ export declare class Density {
     private poundsperusgallonLazy;
     private poundsperimperialgallonLazy;
     private kilogramsperliterLazy;
-    private kilogrampercubicmillimeterLazy;
-    private kilogrampercubiccentimeterLazy;
-    private kilogrampercubicmeterLazy;
-    private microgrampercubicmeterLazy;
-    private kilopoundpercubicinchLazy;
-    private kilopoundpercubicfootLazy;
-    private picogramperliterLazy;
-    private nanogramperliterLazy;
-    private microgramperliterLazy;
-    private centigramperliterLazy;
-    private decigramperliterLazy;
-    private picogramperdeciliterLazy;
-    private nanogramperdeciliterLazy;
-    private microgramperdeciliterLazy;
-    private centigramperdeciliterLazy;
-    private decigramperdeciliterLazy;
-    private picogrampermilliliterLazy;
-    private nanogrampermilliliterLazy;
-    private microgrampermilliliterLazy;
-    private centigrampermilliliterLazy;
-    private decigrampermilliliterLazy;
+    private kilogramspercubicmillimeterLazy;
+    private kilogramspercubiccentimeterLazy;
+    private kilogramspercubicmeterLazy;
+    private microgramspercubicmeterLazy;
+    private kilopoundspercubicinchLazy;
+    private kilopoundspercubicfootLazy;
+    private picogramsperliterLazy;
+    private nanogramsperliterLazy;
+    private microgramsperliterLazy;
+    private centigramsperliterLazy;
+    private decigramsperliterLazy;
+    private picogramsperdeciliterLazy;
+    private nanogramsperdeciliterLazy;
+    private microgramsperdeciliterLazy;
+    private centigramsperdeciliterLazy;
+    private decigramsperdeciliterLazy;
+    private picogramspermilliliterLazy;
+    private nanogramspermilliliterLazy;
+    private microgramspermilliliterLazy;
+    private centigramspermilliliterLazy;
+    private decigramspermilliliterLazy;
     constructor(value: number, fromUnit: DensityUnits);
     get GramsPerCubicMillimeter(): number;
     get GramsPerCubicCentimeter(): number;
@@ -90,27 +90,27 @@ export declare class Density {
     get PoundsPerUSGallon(): number;
     get PoundsPerImperialGallon(): number;
     get KilogramsPerLiter(): number;
-    get KilogramPerCubicMillimeter(): number;
-    get KilogramPerCubicCentimeter(): number;
-    get KilogramPerCubicMeter(): number;
-    get MicrogramPerCubicMeter(): number;
-    get KilopoundPerCubicInch(): number;
-    get KilopoundPerCubicFoot(): number;
-    get PicogramPerLiter(): number;
-    get NanogramPerLiter(): number;
-    get MicrogramPerLiter(): number;
-    get CentigramPerLiter(): number;
-    get DecigramPerLiter(): number;
-    get PicogramPerDeciliter(): number;
-    get NanogramPerDeciliter(): number;
-    get MicrogramPerDeciliter(): number;
-    get CentigramPerDeciliter(): number;
-    get DecigramPerDeciliter(): number;
-    get PicogramPerMilliliter(): number;
-    get NanogramPerMilliliter(): number;
-    get MicrogramPerMilliliter(): number;
-    get CentigramPerMilliliter(): number;
-    get DecigramPerMilliliter(): number;
+    get KilogramsPerCubicMillimeter(): number;
+    get KilogramsPerCubicCentimeter(): number;
+    get KilogramsPerCubicMeter(): number;
+    get MicrogramsPerCubicMeter(): number;
+    get KilopoundsPerCubicInch(): number;
+    get KilopoundsPerCubicFoot(): number;
+    get PicogramsPerLiter(): number;
+    get NanogramsPerLiter(): number;
+    get MicrogramsPerLiter(): number;
+    get CentigramsPerLiter(): number;
+    get DecigramsPerLiter(): number;
+    get PicogramsPerDeciLiter(): number;
+    get NanogramsPerDeciLiter(): number;
+    get MicrogramsPerDeciLiter(): number;
+    get CentigramsPerDeciLiter(): number;
+    get DecigramsPerDeciLiter(): number;
+    get PicogramsPerMilliliter(): number;
+    get NanogramsPerMilliliter(): number;
+    get MicrogramsPerMilliliter(): number;
+    get CentigramsPerMilliliter(): number;
+    get DecigramsPerMilliliter(): number;
     static FromGramsPerCubicMillimeter(value: number): Density;
     static FromGramsPerCubicCentimeter(value: number): Density;
     static FromGramsPerCubicMeter(value: number): Density;
@@ -126,27 +126,27 @@ export declare class Density {
     static FromPoundsPerUSGallon(value: number): Density;
     static FromPoundsPerImperialGallon(value: number): Density;
     static FromKilogramsPerLiter(value: number): Density;
-    static FromKilogramPerCubicMillimeter(value: number): Density;
-    static FromKilogramPerCubicCentimeter(value: number): Density;
-    static FromKilogramPerCubicMeter(value: number): Density;
-    static FromMicrogramPerCubicMeter(value: number): Density;
-    static FromKilopoundPerCubicInch(value: number): Density;
-    static FromKilopoundPerCubicFoot(value: number): Density;
-    static FromPicogramPerLiter(value: number): Density;
-    static FromNanogramPerLiter(value: number): Density;
-    static FromMicrogramPerLiter(value: number): Density;
-    static FromCentigramPerLiter(value: number): Density;
-    static FromDecigramPerLiter(value: number): Density;
-    static FromPicogramPerDeciliter(value: number): Density;
-    static FromNanogramPerDeciliter(value: number): Density;
-    static FromMicrogramPerDeciliter(value: number): Density;
-    static FromCentigramPerDeciliter(value: number): Density;
-    static FromDecigramPerDeciliter(value: number): Density;
-    static FromPicogramPerMilliliter(value: number): Density;
-    static FromNanogramPerMilliliter(value: number): Density;
-    static FromMicrogramPerMilliliter(value: number): Density;
-    static FromCentigramPerMilliliter(value: number): Density;
-    static FromDecigramPerMilliliter(value: number): Density;
+    static FromKilogramsPerCubicMillimeter(value: number): Density;
+    static FromKilogramsPerCubicCentimeter(value: number): Density;
+    static FromKilogramsPerCubicMeter(value: number): Density;
+    static FromMicrogramsPerCubicMeter(value: number): Density;
+    static FromKilopoundsPerCubicInch(value: number): Density;
+    static FromKilopoundsPerCubicFoot(value: number): Density;
+    static FromPicogramsPerLiter(value: number): Density;
+    static FromNanogramsPerLiter(value: number): Density;
+    static FromMicrogramsPerLiter(value: number): Density;
+    static FromCentigramsPerLiter(value: number): Density;
+    static FromDecigramsPerLiter(value: number): Density;
+    static FromPicogramsPerDeciLiter(value: number): Density;
+    static FromNanogramsPerDeciLiter(value: number): Density;
+    static FromMicrogramsPerDeciLiter(value: number): Density;
+    static FromCentigramsPerDeciLiter(value: number): Density;
+    static FromDecigramsPerDeciLiter(value: number): Density;
+    static FromPicogramsPerMilliliter(value: number): Density;
+    static FromNanogramsPerMilliliter(value: number): Density;
+    static FromMicrogramsPerMilliliter(value: number): Density;
+    static FromCentigramsPerMilliliter(value: number): Density;
+    static FromDecigramsPerMilliliter(value: number): Density;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: DensityUnits): string;

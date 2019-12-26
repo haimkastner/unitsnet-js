@@ -6,11 +6,11 @@ export enum AccelerationUnits {
     KnotsPerMinute,
     KnotsPerHour,
     StandardGravity,
-    NanometerPerSecondSquared,
-    MicrometerPerSecondSquared,
-    CentimeterPerSecondSquared,
-    DecimeterPerSecondSquared,
-    KilometerPerSecondSquared
+    NanometersPerSecondSquared,
+    MicrometersPerSecondSquared,
+    CentimetersPerSecondSquared,
+    DecimetersPerSecondSquared,
+    KilometersPerSecondSquared
 }
 
 export class Acceleration {
@@ -22,11 +22,11 @@ export class Acceleration {
     private knotsperminuteLazy: number | null = null;
     private knotsperhourLazy: number | null = null;
     private standardgravityLazy: number | null = null;
-    private nanometerpersecondsquaredLazy: number | null = null;
-    private micrometerpersecondsquaredLazy: number | null = null;
-    private centimeterpersecondsquaredLazy: number | null = null;
-    private decimeterpersecondsquaredLazy: number | null = null;
-    private kilometerpersecondsquaredLazy: number | null = null;
+    private nanometerspersecondsquaredLazy: number | null = null;
+    private micrometerspersecondsquaredLazy: number | null = null;
+    private centimeterspersecondsquaredLazy: number | null = null;
+    private decimeterspersecondsquaredLazy: number | null = null;
+    private kilometerspersecondsquaredLazy: number | null = null;
 
     public constructor(value: number, fromUnit: AccelerationUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -81,39 +81,39 @@ export class Acceleration {
         return this.standardgravityLazy = this.convertFromBase(AccelerationUnits.StandardGravity);
     }
 
-    public get NanometerPerSecondSquared(): number {
-        if(this.nanometerpersecondsquaredLazy !== null){
-            return this.nanometerpersecondsquaredLazy;
+    public get NanometersPerSecondSquared(): number {
+        if(this.nanometerspersecondsquaredLazy !== null){
+            return this.nanometerspersecondsquaredLazy;
         }
-        return this.nanometerpersecondsquaredLazy = this.convertFromBase(AccelerationUnits.NanometerPerSecondSquared);
+        return this.nanometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.NanometersPerSecondSquared);
     }
 
-    public get MicrometerPerSecondSquared(): number {
-        if(this.micrometerpersecondsquaredLazy !== null){
-            return this.micrometerpersecondsquaredLazy;
+    public get MicrometersPerSecondSquared(): number {
+        if(this.micrometerspersecondsquaredLazy !== null){
+            return this.micrometerspersecondsquaredLazy;
         }
-        return this.micrometerpersecondsquaredLazy = this.convertFromBase(AccelerationUnits.MicrometerPerSecondSquared);
+        return this.micrometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.MicrometersPerSecondSquared);
     }
 
-    public get CentimeterPerSecondSquared(): number {
-        if(this.centimeterpersecondsquaredLazy !== null){
-            return this.centimeterpersecondsquaredLazy;
+    public get CentimetersPerSecondSquared(): number {
+        if(this.centimeterspersecondsquaredLazy !== null){
+            return this.centimeterspersecondsquaredLazy;
         }
-        return this.centimeterpersecondsquaredLazy = this.convertFromBase(AccelerationUnits.CentimeterPerSecondSquared);
+        return this.centimeterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.CentimetersPerSecondSquared);
     }
 
-    public get DecimeterPerSecondSquared(): number {
-        if(this.decimeterpersecondsquaredLazy !== null){
-            return this.decimeterpersecondsquaredLazy;
+    public get DecimetersPerSecondSquared(): number {
+        if(this.decimeterspersecondsquaredLazy !== null){
+            return this.decimeterspersecondsquaredLazy;
         }
-        return this.decimeterpersecondsquaredLazy = this.convertFromBase(AccelerationUnits.DecimeterPerSecondSquared);
+        return this.decimeterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.DecimetersPerSecondSquared);
     }
 
-    public get KilometerPerSecondSquared(): number {
-        if(this.kilometerpersecondsquaredLazy !== null){
-            return this.kilometerpersecondsquaredLazy;
+    public get KilometersPerSecondSquared(): number {
+        if(this.kilometerspersecondsquaredLazy !== null){
+            return this.kilometerspersecondsquaredLazy;
         }
-        return this.kilometerpersecondsquaredLazy = this.convertFromBase(AccelerationUnits.KilometerPerSecondSquared);
+        return this.kilometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.KilometersPerSecondSquared);
     }
 
     public static FromMetersPerSecondSquared(value: number): Acceleration {
@@ -144,24 +144,24 @@ export class Acceleration {
         return new Acceleration(value, AccelerationUnits.StandardGravity);
     }
 
-    public static FromNanometerPerSecondSquared(value: number): Acceleration {
-        return new Acceleration(value, AccelerationUnits.NanometerPerSecondSquared);
+    public static FromNanometersPerSecondSquared(value: number): Acceleration {
+        return new Acceleration(value, AccelerationUnits.NanometersPerSecondSquared);
     }
 
-    public static FromMicrometerPerSecondSquared(value: number): Acceleration {
-        return new Acceleration(value, AccelerationUnits.MicrometerPerSecondSquared);
+    public static FromMicrometersPerSecondSquared(value: number): Acceleration {
+        return new Acceleration(value, AccelerationUnits.MicrometersPerSecondSquared);
     }
 
-    public static FromCentimeterPerSecondSquared(value: number): Acceleration {
-        return new Acceleration(value, AccelerationUnits.CentimeterPerSecondSquared);
+    public static FromCentimetersPerSecondSquared(value: number): Acceleration {
+        return new Acceleration(value, AccelerationUnits.CentimetersPerSecondSquared);
     }
 
-    public static FromDecimeterPerSecondSquared(value: number): Acceleration {
-        return new Acceleration(value, AccelerationUnits.DecimeterPerSecondSquared);
+    public static FromDecimetersPerSecondSquared(value: number): Acceleration {
+        return new Acceleration(value, AccelerationUnits.DecimetersPerSecondSquared);
     }
 
-    public static FromKilometerPerSecondSquared(value: number): Acceleration {
-        return new Acceleration(value, AccelerationUnits.KilometerPerSecondSquared);
+    public static FromKilometersPerSecondSquared(value: number): Acceleration {
+        return new Acceleration(value, AccelerationUnits.KilometersPerSecondSquared);
     }
 
     private convertFromBase(toUnit: AccelerationUnits): number {
@@ -181,15 +181,15 @@ export class Acceleration {
                 return this.value/0.5144444444444*3600;
             case AccelerationUnits.StandardGravity:
                 return this.value/9.80665;
-            case AccelerationUnits.NanometerPerSecondSquared:
+            case AccelerationUnits.NanometersPerSecondSquared:
                 return (this.value) / 1e-9;
-            case AccelerationUnits.MicrometerPerSecondSquared:
+            case AccelerationUnits.MicrometersPerSecondSquared:
                 return (this.value) / 0.000001;
-            case AccelerationUnits.CentimeterPerSecondSquared:
+            case AccelerationUnits.CentimetersPerSecondSquared:
                 return (this.value) / 0.01;
-            case AccelerationUnits.DecimeterPerSecondSquared:
+            case AccelerationUnits.DecimetersPerSecondSquared:
                 return (this.value) / 0.1;
-            case AccelerationUnits.KilometerPerSecondSquared:
+            case AccelerationUnits.KilometersPerSecondSquared:
                 return (this.value) / 1000;
             default:
                 break;
@@ -214,15 +214,15 @@ export class Acceleration {
                 return value*0.5144444444444/3600;
             case AccelerationUnits.StandardGravity:
                 return value*9.80665;
-            case AccelerationUnits.NanometerPerSecondSquared:
+            case AccelerationUnits.NanometersPerSecondSquared:
                 return (value) * 1e-9;
-            case AccelerationUnits.MicrometerPerSecondSquared:
+            case AccelerationUnits.MicrometersPerSecondSquared:
                 return (value) * 0.000001;
-            case AccelerationUnits.CentimeterPerSecondSquared:
+            case AccelerationUnits.CentimetersPerSecondSquared:
                 return (value) * 0.01;
-            case AccelerationUnits.DecimeterPerSecondSquared:
+            case AccelerationUnits.DecimetersPerSecondSquared:
                 return (value) * 0.1;
-            case AccelerationUnits.KilometerPerSecondSquared:
+            case AccelerationUnits.KilometersPerSecondSquared:
                 return (value) * 1000;
             default:
                 break;
@@ -248,16 +248,16 @@ export class Acceleration {
                 return this.KnotsPerHour + ` kn/h`;
             case AccelerationUnits.StandardGravity:
                 return this.StandardGravity + ` g`;
-            case AccelerationUnits.NanometerPerSecondSquared:
-                return this.NanometerPerSecondSquared + ` m/s²`;
-            case AccelerationUnits.MicrometerPerSecondSquared:
-                return this.MicrometerPerSecondSquared + ` m/s²`;
-            case AccelerationUnits.CentimeterPerSecondSquared:
-                return this.CentimeterPerSecondSquared + ` m/s²`;
-            case AccelerationUnits.DecimeterPerSecondSquared:
-                return this.DecimeterPerSecondSquared + ` m/s²`;
-            case AccelerationUnits.KilometerPerSecondSquared:
-                return this.KilometerPerSecondSquared + ` m/s²`;
+            case AccelerationUnits.NanometersPerSecondSquared:
+                return this.NanometersPerSecondSquared + ` m/s²`;
+            case AccelerationUnits.MicrometersPerSecondSquared:
+                return this.MicrometersPerSecondSquared + ` m/s²`;
+            case AccelerationUnits.CentimetersPerSecondSquared:
+                return this.CentimetersPerSecondSquared + ` m/s²`;
+            case AccelerationUnits.DecimetersPerSecondSquared:
+                return this.DecimetersPerSecondSquared + ` m/s²`;
+            case AccelerationUnits.KilometersPerSecondSquared:
+                return this.KilometersPerSecondSquared + ` m/s²`;
         default:
             break;
         }

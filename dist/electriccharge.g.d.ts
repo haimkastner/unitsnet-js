@@ -1,24 +1,24 @@
 export declare enum ElectricChargeUnits {
     Coulombs = 0,
     AmpereHours = 1,
-    KiloampereHour = 2,
-    MegaampereHour = 3
+    KiloampereHours = 2,
+    MegaampereHours = 3
 }
 export declare class ElectricCharge {
     private value;
     private coulombsLazy;
     private amperehoursLazy;
-    private kiloamperehourLazy;
-    private megaamperehourLazy;
+    private kiloamperehoursLazy;
+    private megaamperehoursLazy;
     constructor(value: number, fromUnit: ElectricChargeUnits);
     get Coulombs(): number;
     get AmpereHours(): number;
-    get KiloampereHour(): number;
-    get MegaampereHour(): number;
+    get KiloampereHours(): number;
+    get MegaampereHours(): number;
     static FromCoulombs(value: number): ElectricCharge;
     static FromAmpereHours(value: number): ElectricCharge;
-    static FromKiloampereHour(value: number): ElectricCharge;
-    static FromMegaampereHour(value: number): ElectricCharge;
+    static FromKiloampereHours(value: number): ElectricCharge;
+    static FromMegaampereHours(value: number): ElectricCharge;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: ElectricChargeUnits): string;

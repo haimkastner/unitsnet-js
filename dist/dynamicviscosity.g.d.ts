@@ -5,7 +5,7 @@ export declare enum DynamicViscosityUnits {
     Reyns = 3,
     PoundsForceSecondPerSquareInch = 4,
     PoundsForceSecondPerSquareFoot = 5,
-    MicropascalSecond = 6,
+    MicropascalSeconds = 6,
     Centipoise = 7
 }
 export declare class DynamicViscosity {
@@ -16,7 +16,7 @@ export declare class DynamicViscosity {
     private reynsLazy;
     private poundsforcesecondpersquareinchLazy;
     private poundsforcesecondpersquarefootLazy;
-    private micropascalsecondLazy;
+    private micropascalsecondsLazy;
     private centipoiseLazy;
     constructor(value: number, fromUnit: DynamicViscosityUnits);
     get NewtonSecondsPerMeterSquared(): number;
@@ -25,7 +25,7 @@ export declare class DynamicViscosity {
     get Reyns(): number;
     get PoundsForceSecondPerSquareInch(): number;
     get PoundsForceSecondPerSquareFoot(): number;
-    get MicropascalSecond(): number;
+    get MicropascalSeconds(): number;
     get Centipoise(): number;
     static FromNewtonSecondsPerMeterSquared(value: number): DynamicViscosity;
     static FromPascalSeconds(value: number): DynamicViscosity;
@@ -33,7 +33,7 @@ export declare class DynamicViscosity {
     static FromReyns(value: number): DynamicViscosity;
     static FromPoundsForceSecondPerSquareInch(value: number): DynamicViscosity;
     static FromPoundsForceSecondPerSquareFoot(value: number): DynamicViscosity;
-    static FromMicropascalSecond(value: number): DynamicViscosity;
+    static FromMicropascalSeconds(value: number): DynamicViscosity;
     static FromCentipoise(value: number): DynamicViscosity;
     private convertFromBase;
     private convertToBase;

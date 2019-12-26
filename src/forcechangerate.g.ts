@@ -1,28 +1,28 @@
 export enum ForceChangeRateUnits {
     NewtonsPerMinute,
     NewtonsPerSecond,
-    DecanewtonPerMinute,
-    KilonewtonPerMinute,
-    NanonewtonPerSecond,
-    MicronewtonPerSecond,
-    CentinewtonPerSecond,
-    DecinewtonPerSecond,
-    DecanewtonPerSecond,
-    KilonewtonPerSecond
+    DecanewtonsPerMinute,
+    KilonewtonsPerMinute,
+    NanonewtonsPerSecond,
+    MicronewtonsPerSecond,
+    CentinewtonsPerSecond,
+    DecinewtonsPerSecond,
+    DecanewtonsPerSecond,
+    KilonewtonsPerSecond
 }
 
 export class ForceChangeRate {
     private value: number;
     private newtonsperminuteLazy: number | null = null;
     private newtonspersecondLazy: number | null = null;
-    private decanewtonperminuteLazy: number | null = null;
-    private kilonewtonperminuteLazy: number | null = null;
-    private nanonewtonpersecondLazy: number | null = null;
-    private micronewtonpersecondLazy: number | null = null;
-    private centinewtonpersecondLazy: number | null = null;
-    private decinewtonpersecondLazy: number | null = null;
-    private decanewtonpersecondLazy: number | null = null;
-    private kilonewtonpersecondLazy: number | null = null;
+    private decanewtonsperminuteLazy: number | null = null;
+    private kilonewtonsperminuteLazy: number | null = null;
+    private nanonewtonspersecondLazy: number | null = null;
+    private micronewtonspersecondLazy: number | null = null;
+    private centinewtonspersecondLazy: number | null = null;
+    private decinewtonspersecondLazy: number | null = null;
+    private decanewtonspersecondLazy: number | null = null;
+    private kilonewtonspersecondLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ForceChangeRateUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -42,60 +42,60 @@ export class ForceChangeRate {
         return this.newtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.NewtonsPerSecond);
     }
 
-    public get DecanewtonPerMinute(): number {
-        if(this.decanewtonperminuteLazy !== null){
-            return this.decanewtonperminuteLazy;
+    public get DecanewtonsPerMinute(): number {
+        if(this.decanewtonsperminuteLazy !== null){
+            return this.decanewtonsperminuteLazy;
         }
-        return this.decanewtonperminuteLazy = this.convertFromBase(ForceChangeRateUnits.DecanewtonPerMinute);
+        return this.decanewtonsperminuteLazy = this.convertFromBase(ForceChangeRateUnits.DecanewtonsPerMinute);
     }
 
-    public get KilonewtonPerMinute(): number {
-        if(this.kilonewtonperminuteLazy !== null){
-            return this.kilonewtonperminuteLazy;
+    public get KilonewtonsPerMinute(): number {
+        if(this.kilonewtonsperminuteLazy !== null){
+            return this.kilonewtonsperminuteLazy;
         }
-        return this.kilonewtonperminuteLazy = this.convertFromBase(ForceChangeRateUnits.KilonewtonPerMinute);
+        return this.kilonewtonsperminuteLazy = this.convertFromBase(ForceChangeRateUnits.KilonewtonsPerMinute);
     }
 
-    public get NanonewtonPerSecond(): number {
-        if(this.nanonewtonpersecondLazy !== null){
-            return this.nanonewtonpersecondLazy;
+    public get NanonewtonsPerSecond(): number {
+        if(this.nanonewtonspersecondLazy !== null){
+            return this.nanonewtonspersecondLazy;
         }
-        return this.nanonewtonpersecondLazy = this.convertFromBase(ForceChangeRateUnits.NanonewtonPerSecond);
+        return this.nanonewtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.NanonewtonsPerSecond);
     }
 
-    public get MicronewtonPerSecond(): number {
-        if(this.micronewtonpersecondLazy !== null){
-            return this.micronewtonpersecondLazy;
+    public get MicronewtonsPerSecond(): number {
+        if(this.micronewtonspersecondLazy !== null){
+            return this.micronewtonspersecondLazy;
         }
-        return this.micronewtonpersecondLazy = this.convertFromBase(ForceChangeRateUnits.MicronewtonPerSecond);
+        return this.micronewtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.MicronewtonsPerSecond);
     }
 
-    public get CentinewtonPerSecond(): number {
-        if(this.centinewtonpersecondLazy !== null){
-            return this.centinewtonpersecondLazy;
+    public get CentinewtonsPerSecond(): number {
+        if(this.centinewtonspersecondLazy !== null){
+            return this.centinewtonspersecondLazy;
         }
-        return this.centinewtonpersecondLazy = this.convertFromBase(ForceChangeRateUnits.CentinewtonPerSecond);
+        return this.centinewtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.CentinewtonsPerSecond);
     }
 
-    public get DecinewtonPerSecond(): number {
-        if(this.decinewtonpersecondLazy !== null){
-            return this.decinewtonpersecondLazy;
+    public get DecinewtonsPerSecond(): number {
+        if(this.decinewtonspersecondLazy !== null){
+            return this.decinewtonspersecondLazy;
         }
-        return this.decinewtonpersecondLazy = this.convertFromBase(ForceChangeRateUnits.DecinewtonPerSecond);
+        return this.decinewtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.DecinewtonsPerSecond);
     }
 
-    public get DecanewtonPerSecond(): number {
-        if(this.decanewtonpersecondLazy !== null){
-            return this.decanewtonpersecondLazy;
+    public get DecanewtonsPerSecond(): number {
+        if(this.decanewtonspersecondLazy !== null){
+            return this.decanewtonspersecondLazy;
         }
-        return this.decanewtonpersecondLazy = this.convertFromBase(ForceChangeRateUnits.DecanewtonPerSecond);
+        return this.decanewtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.DecanewtonsPerSecond);
     }
 
-    public get KilonewtonPerSecond(): number {
-        if(this.kilonewtonpersecondLazy !== null){
-            return this.kilonewtonpersecondLazy;
+    public get KilonewtonsPerSecond(): number {
+        if(this.kilonewtonspersecondLazy !== null){
+            return this.kilonewtonspersecondLazy;
         }
-        return this.kilonewtonpersecondLazy = this.convertFromBase(ForceChangeRateUnits.KilonewtonPerSecond);
+        return this.kilonewtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.KilonewtonsPerSecond);
     }
 
     public static FromNewtonsPerMinute(value: number): ForceChangeRate {
@@ -106,36 +106,36 @@ export class ForceChangeRate {
         return new ForceChangeRate(value, ForceChangeRateUnits.NewtonsPerSecond);
     }
 
-    public static FromDecanewtonPerMinute(value: number): ForceChangeRate {
-        return new ForceChangeRate(value, ForceChangeRateUnits.DecanewtonPerMinute);
+    public static FromDecanewtonsPerMinute(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.DecanewtonsPerMinute);
     }
 
-    public static FromKilonewtonPerMinute(value: number): ForceChangeRate {
-        return new ForceChangeRate(value, ForceChangeRateUnits.KilonewtonPerMinute);
+    public static FromKilonewtonsPerMinute(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.KilonewtonsPerMinute);
     }
 
-    public static FromNanonewtonPerSecond(value: number): ForceChangeRate {
-        return new ForceChangeRate(value, ForceChangeRateUnits.NanonewtonPerSecond);
+    public static FromNanonewtonsPerSecond(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.NanonewtonsPerSecond);
     }
 
-    public static FromMicronewtonPerSecond(value: number): ForceChangeRate {
-        return new ForceChangeRate(value, ForceChangeRateUnits.MicronewtonPerSecond);
+    public static FromMicronewtonsPerSecond(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.MicronewtonsPerSecond);
     }
 
-    public static FromCentinewtonPerSecond(value: number): ForceChangeRate {
-        return new ForceChangeRate(value, ForceChangeRateUnits.CentinewtonPerSecond);
+    public static FromCentinewtonsPerSecond(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.CentinewtonsPerSecond);
     }
 
-    public static FromDecinewtonPerSecond(value: number): ForceChangeRate {
-        return new ForceChangeRate(value, ForceChangeRateUnits.DecinewtonPerSecond);
+    public static FromDecinewtonsPerSecond(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.DecinewtonsPerSecond);
     }
 
-    public static FromDecanewtonPerSecond(value: number): ForceChangeRate {
-        return new ForceChangeRate(value, ForceChangeRateUnits.DecanewtonPerSecond);
+    public static FromDecanewtonsPerSecond(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.DecanewtonsPerSecond);
     }
 
-    public static FromKilonewtonPerSecond(value: number): ForceChangeRate {
-        return new ForceChangeRate(value, ForceChangeRateUnits.KilonewtonPerSecond);
+    public static FromKilonewtonsPerSecond(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.KilonewtonsPerSecond);
     }
 
     private convertFromBase(toUnit: ForceChangeRateUnits): number {
@@ -145,21 +145,21 @@ export class ForceChangeRate {
                 return this.value*60;
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return this.value;
-            case ForceChangeRateUnits.DecanewtonPerMinute:
+            case ForceChangeRateUnits.DecanewtonsPerMinute:
                 return (this.value*60) / 10;
-            case ForceChangeRateUnits.KilonewtonPerMinute:
+            case ForceChangeRateUnits.KilonewtonsPerMinute:
                 return (this.value*60) / 1000;
-            case ForceChangeRateUnits.NanonewtonPerSecond:
+            case ForceChangeRateUnits.NanonewtonsPerSecond:
                 return (this.value) / 1e-9;
-            case ForceChangeRateUnits.MicronewtonPerSecond:
+            case ForceChangeRateUnits.MicronewtonsPerSecond:
                 return (this.value) / 0.000001;
-            case ForceChangeRateUnits.CentinewtonPerSecond:
+            case ForceChangeRateUnits.CentinewtonsPerSecond:
                 return (this.value) / 0.01;
-            case ForceChangeRateUnits.DecinewtonPerSecond:
+            case ForceChangeRateUnits.DecinewtonsPerSecond:
                 return (this.value) / 0.1;
-            case ForceChangeRateUnits.DecanewtonPerSecond:
+            case ForceChangeRateUnits.DecanewtonsPerSecond:
                 return (this.value) / 10;
-            case ForceChangeRateUnits.KilonewtonPerSecond:
+            case ForceChangeRateUnits.KilonewtonsPerSecond:
                 return (this.value) / 1000;
             default:
                 break;
@@ -174,21 +174,21 @@ export class ForceChangeRate {
                 return value/60;
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return value;
-            case ForceChangeRateUnits.DecanewtonPerMinute:
+            case ForceChangeRateUnits.DecanewtonsPerMinute:
                 return (value/60) * 10;
-            case ForceChangeRateUnits.KilonewtonPerMinute:
+            case ForceChangeRateUnits.KilonewtonsPerMinute:
                 return (value/60) * 1000;
-            case ForceChangeRateUnits.NanonewtonPerSecond:
+            case ForceChangeRateUnits.NanonewtonsPerSecond:
                 return (value) * 1e-9;
-            case ForceChangeRateUnits.MicronewtonPerSecond:
+            case ForceChangeRateUnits.MicronewtonsPerSecond:
                 return (value) * 0.000001;
-            case ForceChangeRateUnits.CentinewtonPerSecond:
+            case ForceChangeRateUnits.CentinewtonsPerSecond:
                 return (value) * 0.01;
-            case ForceChangeRateUnits.DecinewtonPerSecond:
+            case ForceChangeRateUnits.DecinewtonsPerSecond:
                 return (value) * 0.1;
-            case ForceChangeRateUnits.DecanewtonPerSecond:
+            case ForceChangeRateUnits.DecanewtonsPerSecond:
                 return (value) * 10;
-            case ForceChangeRateUnits.KilonewtonPerSecond:
+            case ForceChangeRateUnits.KilonewtonsPerSecond:
                 return (value) * 1000;
             default:
                 break;
@@ -204,22 +204,22 @@ export class ForceChangeRate {
                 return this.NewtonsPerMinute + ` N/min`;
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return this.NewtonsPerSecond + ` N/s`;
-            case ForceChangeRateUnits.DecanewtonPerMinute:
-                return this.DecanewtonPerMinute + ` N/min`;
-            case ForceChangeRateUnits.KilonewtonPerMinute:
-                return this.KilonewtonPerMinute + ` N/min`;
-            case ForceChangeRateUnits.NanonewtonPerSecond:
-                return this.NanonewtonPerSecond + ` N/s`;
-            case ForceChangeRateUnits.MicronewtonPerSecond:
-                return this.MicronewtonPerSecond + ` N/s`;
-            case ForceChangeRateUnits.CentinewtonPerSecond:
-                return this.CentinewtonPerSecond + ` N/s`;
-            case ForceChangeRateUnits.DecinewtonPerSecond:
-                return this.DecinewtonPerSecond + ` N/s`;
-            case ForceChangeRateUnits.DecanewtonPerSecond:
-                return this.DecanewtonPerSecond + ` N/s`;
-            case ForceChangeRateUnits.KilonewtonPerSecond:
-                return this.KilonewtonPerSecond + ` N/s`;
+            case ForceChangeRateUnits.DecanewtonsPerMinute:
+                return this.DecanewtonsPerMinute + ` N/min`;
+            case ForceChangeRateUnits.KilonewtonsPerMinute:
+                return this.KilonewtonsPerMinute + ` N/min`;
+            case ForceChangeRateUnits.NanonewtonsPerSecond:
+                return this.NanonewtonsPerSecond + ` N/s`;
+            case ForceChangeRateUnits.MicronewtonsPerSecond:
+                return this.MicronewtonsPerSecond + ` N/s`;
+            case ForceChangeRateUnits.CentinewtonsPerSecond:
+                return this.CentinewtonsPerSecond + ` N/s`;
+            case ForceChangeRateUnits.DecinewtonsPerSecond:
+                return this.DecinewtonsPerSecond + ` N/s`;
+            case ForceChangeRateUnits.DecanewtonsPerSecond:
+                return this.DecanewtonsPerSecond + ` N/s`;
+            case ForceChangeRateUnits.KilonewtonsPerSecond:
+                return this.KilonewtonsPerSecond + ` N/s`;
         default:
             break;
         }

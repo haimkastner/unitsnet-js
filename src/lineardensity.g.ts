@@ -1,14 +1,14 @@
 export enum LinearDensityUnits {
     GramsPerMeter,
     PoundsPerFoot,
-    KilogramPerMeter
+    KilogramsPerMeter
 }
 
 export class LinearDensity {
     private value: number;
     private gramspermeterLazy: number | null = null;
     private poundsperfootLazy: number | null = null;
-    private kilogrampermeterLazy: number | null = null;
+    private kilogramspermeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: LinearDensityUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -28,11 +28,11 @@ export class LinearDensity {
         return this.poundsperfootLazy = this.convertFromBase(LinearDensityUnits.PoundsPerFoot);
     }
 
-    public get KilogramPerMeter(): number {
-        if(this.kilogrampermeterLazy !== null){
-            return this.kilogrampermeterLazy;
+    public get KilogramsPerMeter(): number {
+        if(this.kilogramspermeterLazy !== null){
+            return this.kilogramspermeterLazy;
         }
-        return this.kilogrampermeterLazy = this.convertFromBase(LinearDensityUnits.KilogramPerMeter);
+        return this.kilogramspermeterLazy = this.convertFromBase(LinearDensityUnits.KilogramsPerMeter);
     }
 
     public static FromGramsPerMeter(value: number): LinearDensity {
@@ -43,8 +43,8 @@ export class LinearDensity {
         return new LinearDensity(value, LinearDensityUnits.PoundsPerFoot);
     }
 
-    public static FromKilogramPerMeter(value: number): LinearDensity {
-        return new LinearDensity(value, LinearDensityUnits.KilogramPerMeter);
+    public static FromKilogramsPerMeter(value: number): LinearDensity {
+        return new LinearDensity(value, LinearDensityUnits.KilogramsPerMeter);
     }
 
     private convertFromBase(toUnit: LinearDensityUnits): number {
@@ -54,7 +54,7 @@ export class LinearDensity {
                 return this.value/1e-3;
             case LinearDensityUnits.PoundsPerFoot:
                 return this.value/1.48816394;
-            case LinearDensityUnits.KilogramPerMeter:
+            case LinearDensityUnits.KilogramsPerMeter:
                 return (this.value/1e-3) / 1000;
             default:
                 break;
@@ -69,7 +69,7 @@ export class LinearDensity {
                 return value*1e-3;
             case LinearDensityUnits.PoundsPerFoot:
                 return value*1.48816394;
-            case LinearDensityUnits.KilogramPerMeter:
+            case LinearDensityUnits.KilogramsPerMeter:
                 return (value*1e-3) * 1000;
             default:
                 break;
@@ -77,7 +77,7 @@ export class LinearDensity {
         return NaN;
     }
 
-    public toString(toUnit: LinearDensityUnits = LinearDensityUnits.KilogramPerMeter): string {
+    public toString(toUnit: LinearDensityUnits = LinearDensityUnits.KilogramsPerMeter): string {
 
         switch (toUnit) {
             
@@ -85,8 +85,8 @@ export class LinearDensity {
                 return this.GramsPerMeter + ` g/m`;
             case LinearDensityUnits.PoundsPerFoot:
                 return this.PoundsPerFoot + ` lb/ft`;
-            case LinearDensityUnits.KilogramPerMeter:
-                return this.KilogramPerMeter + ` g/m`;
+            case LinearDensityUnits.KilogramsPerMeter:
+                return this.KilogramsPerMeter + ` g/m`;
         default:
             break;
         }

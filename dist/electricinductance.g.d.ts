@@ -1,20 +1,20 @@
 export declare enum ElectricInductanceUnits {
     Henries = 0,
-    Nanohenry = 1,
-    Microhenry = 2
+    Nanohenries = 1,
+    Microhenries = 2
 }
 export declare class ElectricInductance {
     private value;
     private henriesLazy;
-    private nanohenryLazy;
-    private microhenryLazy;
+    private nanohenriesLazy;
+    private microhenriesLazy;
     constructor(value: number, fromUnit: ElectricInductanceUnits);
     get Henries(): number;
-    get Nanohenry(): number;
-    get Microhenry(): number;
+    get Nanohenries(): number;
+    get Microhenries(): number;
     static FromHenries(value: number): ElectricInductance;
-    static FromNanohenry(value: number): ElectricInductance;
-    static FromMicrohenry(value: number): ElectricInductance;
+    static FromNanohenries(value: number): ElectricInductance;
+    static FromMicrohenries(value: number): ElectricInductance;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: ElectricInductanceUnits): string;

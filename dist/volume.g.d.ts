@@ -30,21 +30,21 @@ export declare enum VolumeUnits {
     UsPints = 28,
     AcreFeet = 29,
     ImperialPints = 30,
-    Microliter = 31,
-    Centiliter = 32,
-    Deciliter = 33,
-    Hectoliter = 34,
-    Kiloliter = 35,
-    Megaliter = 36,
-    HectocubicMeter = 37,
-    KilocubicMeter = 38,
-    HectocubicFoot = 39,
-    KilocubicFoot = 40,
-    MegacubicFoot = 41,
-    KiloimperialGallon = 42,
-    MegaimperialGallon = 43,
-    KilousGallon = 44,
-    MegausGallon = 45
+    Microliters = 31,
+    Centiliters = 32,
+    Deciliters = 33,
+    Hectoliters = 34,
+    Kiloliters = 35,
+    Megaliters = 36,
+    HectocubicMeters = 37,
+    KilocubicMeters = 38,
+    HectocubicFeet = 39,
+    KilocubicFeet = 40,
+    MegacubicFeet = 41,
+    KiloimperialGallons = 42,
+    MegaimperialGallons = 43,
+    KilousGallons = 44,
+    MegausGallons = 45
 }
 export declare class Volume {
     private value;
@@ -79,21 +79,21 @@ export declare class Volume {
     private uspintsLazy;
     private acrefeetLazy;
     private imperialpintsLazy;
-    private microliterLazy;
-    private centiliterLazy;
-    private deciliterLazy;
-    private hectoliterLazy;
-    private kiloliterLazy;
-    private megaliterLazy;
-    private hectocubicmeterLazy;
-    private kilocubicmeterLazy;
-    private hectocubicfootLazy;
-    private kilocubicfootLazy;
-    private megacubicfootLazy;
-    private kiloimperialgallonLazy;
-    private megaimperialgallonLazy;
-    private kilousgallonLazy;
-    private megausgallonLazy;
+    private microlitersLazy;
+    private centilitersLazy;
+    private decilitersLazy;
+    private hectolitersLazy;
+    private kilolitersLazy;
+    private megalitersLazy;
+    private hectocubicmetersLazy;
+    private kilocubicmetersLazy;
+    private hectocubicfeetLazy;
+    private kilocubicfeetLazy;
+    private megacubicfeetLazy;
+    private kiloimperialgallonsLazy;
+    private megaimperialgallonsLazy;
+    private kilousgallonsLazy;
+    private megausgallonsLazy;
     constructor(value: number, fromUnit: VolumeUnits);
     get Liters(): number;
     get CubicMeters(): number;
@@ -126,21 +126,21 @@ export declare class Volume {
     get UsPints(): number;
     get AcreFeet(): number;
     get ImperialPints(): number;
-    get Microliter(): number;
-    get Centiliter(): number;
-    get Deciliter(): number;
-    get Hectoliter(): number;
-    get Kiloliter(): number;
-    get Megaliter(): number;
-    get HectocubicMeter(): number;
-    get KilocubicMeter(): number;
-    get HectocubicFoot(): number;
-    get KilocubicFoot(): number;
-    get MegacubicFoot(): number;
-    get KiloimperialGallon(): number;
-    get MegaimperialGallon(): number;
-    get KilousGallon(): number;
-    get MegausGallon(): number;
+    get Microliters(): number;
+    get Centiliters(): number;
+    get Deciliters(): number;
+    get Hectoliters(): number;
+    get Kiloliters(): number;
+    get Megaliters(): number;
+    get HectocubicMeters(): number;
+    get KilocubicMeters(): number;
+    get HectocubicFeet(): number;
+    get KilocubicFeet(): number;
+    get MegacubicFeet(): number;
+    get KiloimperialGallons(): number;
+    get MegaimperialGallons(): number;
+    get KilousGallons(): number;
+    get MegausGallons(): number;
     static FromLiters(value: number): Volume;
     static FromCubicMeters(value: number): Volume;
     static FromCubicKilometers(value: number): Volume;
@@ -172,21 +172,21 @@ export declare class Volume {
     static FromUsPints(value: number): Volume;
     static FromAcreFeet(value: number): Volume;
     static FromImperialPints(value: number): Volume;
-    static FromMicroliter(value: number): Volume;
-    static FromCentiliter(value: number): Volume;
-    static FromDeciliter(value: number): Volume;
-    static FromHectoliter(value: number): Volume;
-    static FromKiloliter(value: number): Volume;
-    static FromMegaliter(value: number): Volume;
-    static FromHectocubicMeter(value: number): Volume;
-    static FromKilocubicMeter(value: number): Volume;
-    static FromHectocubicFoot(value: number): Volume;
-    static FromKilocubicFoot(value: number): Volume;
-    static FromMegacubicFoot(value: number): Volume;
-    static FromKiloimperialGallon(value: number): Volume;
-    static FromMegaimperialGallon(value: number): Volume;
-    static FromKilousGallon(value: number): Volume;
-    static FromMegausGallon(value: number): Volume;
+    static FromMicroliters(value: number): Volume;
+    static FromCentiliters(value: number): Volume;
+    static FromDeciliters(value: number): Volume;
+    static FromHectoliters(value: number): Volume;
+    static FromKiloliters(value: number): Volume;
+    static FromMegaliters(value: number): Volume;
+    static FromHectocubicMeters(value: number): Volume;
+    static FromKilocubicMeters(value: number): Volume;
+    static FromHectocubicFeet(value: number): Volume;
+    static FromKilocubicFeet(value: number): Volume;
+    static FromMegacubicFeet(value: number): Volume;
+    static FromKiloimperialGallons(value: number): Volume;
+    static FromMegaimperialGallons(value: number): Volume;
+    static FromKilousGallons(value: number): Volume;
+    static FromMegausGallons(value: number): Volume;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: VolumeUnits): string;

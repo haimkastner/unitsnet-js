@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ApparentEnergyUnits;
 (function (ApparentEnergyUnits) {
     ApparentEnergyUnits[ApparentEnergyUnits["VoltampereHours"] = 0] = "VoltampereHours";
-    ApparentEnergyUnits[ApparentEnergyUnits["KilovoltampereHour"] = 1] = "KilovoltampereHour";
-    ApparentEnergyUnits[ApparentEnergyUnits["MegavoltampereHour"] = 2] = "MegavoltampereHour";
+    ApparentEnergyUnits[ApparentEnergyUnits["KilovoltampereHours"] = 1] = "KilovoltampereHours";
+    ApparentEnergyUnits[ApparentEnergyUnits["MegavoltampereHours"] = 2] = "MegavoltampereHours";
 })(ApparentEnergyUnits = exports.ApparentEnergyUnits || (exports.ApparentEnergyUnits = {}));
 class ApparentEnergy {
     constructor(value, fromUnit) {
         this.voltamperehoursLazy = null;
-        this.kilovoltamperehourLazy = null;
-        this.megavoltamperehourLazy = null;
+        this.kilovoltamperehoursLazy = null;
+        this.megavoltamperehoursLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get VoltampereHours() {
@@ -19,34 +19,34 @@ class ApparentEnergy {
         }
         return this.voltamperehoursLazy = this.convertFromBase(ApparentEnergyUnits.VoltampereHours);
     }
-    get KilovoltampereHour() {
-        if (this.kilovoltamperehourLazy !== null) {
-            return this.kilovoltamperehourLazy;
+    get KilovoltampereHours() {
+        if (this.kilovoltamperehoursLazy !== null) {
+            return this.kilovoltamperehoursLazy;
         }
-        return this.kilovoltamperehourLazy = this.convertFromBase(ApparentEnergyUnits.KilovoltampereHour);
+        return this.kilovoltamperehoursLazy = this.convertFromBase(ApparentEnergyUnits.KilovoltampereHours);
     }
-    get MegavoltampereHour() {
-        if (this.megavoltamperehourLazy !== null) {
-            return this.megavoltamperehourLazy;
+    get MegavoltampereHours() {
+        if (this.megavoltamperehoursLazy !== null) {
+            return this.megavoltamperehoursLazy;
         }
-        return this.megavoltamperehourLazy = this.convertFromBase(ApparentEnergyUnits.MegavoltampereHour);
+        return this.megavoltamperehoursLazy = this.convertFromBase(ApparentEnergyUnits.MegavoltampereHours);
     }
     static FromVoltampereHours(value) {
         return new ApparentEnergy(value, ApparentEnergyUnits.VoltampereHours);
     }
-    static FromKilovoltampereHour(value) {
-        return new ApparentEnergy(value, ApparentEnergyUnits.KilovoltampereHour);
+    static FromKilovoltampereHours(value) {
+        return new ApparentEnergy(value, ApparentEnergyUnits.KilovoltampereHours);
     }
-    static FromMegavoltampereHour(value) {
-        return new ApparentEnergy(value, ApparentEnergyUnits.MegavoltampereHour);
+    static FromMegavoltampereHours(value) {
+        return new ApparentEnergy(value, ApparentEnergyUnits.MegavoltampereHours);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
             case ApparentEnergyUnits.VoltampereHours:
                 return this.value;
-            case ApparentEnergyUnits.KilovoltampereHour:
+            case ApparentEnergyUnits.KilovoltampereHours:
                 return (this.value) / 1000;
-            case ApparentEnergyUnits.MegavoltampereHour:
+            case ApparentEnergyUnits.MegavoltampereHours:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -57,9 +57,9 @@ class ApparentEnergy {
         switch (fromUnit) {
             case ApparentEnergyUnits.VoltampereHours:
                 return value;
-            case ApparentEnergyUnits.KilovoltampereHour:
+            case ApparentEnergyUnits.KilovoltampereHours:
                 return (value) * 1000;
-            case ApparentEnergyUnits.MegavoltampereHour:
+            case ApparentEnergyUnits.MegavoltampereHours:
                 return (value) * 1000000;
             default:
                 break;
@@ -70,10 +70,10 @@ class ApparentEnergy {
         switch (toUnit) {
             case ApparentEnergyUnits.VoltampereHours:
                 return this.VoltampereHours + ` VAh`;
-            case ApparentEnergyUnits.KilovoltampereHour:
-                return this.KilovoltampereHour + ` VAh`;
-            case ApparentEnergyUnits.MegavoltampereHour:
-                return this.MegavoltampereHour + ` VAh`;
+            case ApparentEnergyUnits.KilovoltampereHours:
+                return this.KilovoltampereHours + ` VAh`;
+            case ApparentEnergyUnits.MegavoltampereHours:
+                return this.MegavoltampereHours + ` VAh`;
             default:
                 break;
         }

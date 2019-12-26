@@ -4,12 +4,12 @@ export declare enum RotationalSpeedUnits {
     DegreesPerMinute = 2,
     RevolutionsPerSecond = 3,
     RevolutionsPerMinute = 4,
-    NanoradianPerSecond = 5,
-    MicroradianPerSecond = 6,
-    CentiradianPerSecond = 7,
-    DeciradianPerSecond = 8,
-    NanodegreePerSecond = 9,
-    MicrodegreePerSecond = 10
+    NanoradiansPerSecond = 5,
+    MicroradiansPerSecond = 6,
+    CentiradiansPerSecond = 7,
+    DeciradiansPerSecond = 8,
+    NanodegreesPerSecond = 9,
+    MicrodegreesPerSecond = 10
 }
 export declare class RotationalSpeed {
     private value;
@@ -18,35 +18,35 @@ export declare class RotationalSpeed {
     private degreesperminuteLazy;
     private revolutionspersecondLazy;
     private revolutionsperminuteLazy;
-    private nanoradianpersecondLazy;
-    private microradianpersecondLazy;
-    private centiradianpersecondLazy;
-    private deciradianpersecondLazy;
-    private nanodegreepersecondLazy;
-    private microdegreepersecondLazy;
+    private nanoradianspersecondLazy;
+    private microradianspersecondLazy;
+    private centiradianspersecondLazy;
+    private deciradianspersecondLazy;
+    private nanodegreespersecondLazy;
+    private microdegreespersecondLazy;
     constructor(value: number, fromUnit: RotationalSpeedUnits);
     get RadiansPerSecond(): number;
     get DegreesPerSecond(): number;
     get DegreesPerMinute(): number;
     get RevolutionsPerSecond(): number;
     get RevolutionsPerMinute(): number;
-    get NanoradianPerSecond(): number;
-    get MicroradianPerSecond(): number;
-    get CentiradianPerSecond(): number;
-    get DeciradianPerSecond(): number;
-    get NanodegreePerSecond(): number;
-    get MicrodegreePerSecond(): number;
+    get NanoradiansPerSecond(): number;
+    get MicroradiansPerSecond(): number;
+    get CentiradiansPerSecond(): number;
+    get DeciradiansPerSecond(): number;
+    get NanodegreesPerSecond(): number;
+    get MicrodegreesPerSecond(): number;
     static FromRadiansPerSecond(value: number): RotationalSpeed;
     static FromDegreesPerSecond(value: number): RotationalSpeed;
     static FromDegreesPerMinute(value: number): RotationalSpeed;
     static FromRevolutionsPerSecond(value: number): RotationalSpeed;
     static FromRevolutionsPerMinute(value: number): RotationalSpeed;
-    static FromNanoradianPerSecond(value: number): RotationalSpeed;
-    static FromMicroradianPerSecond(value: number): RotationalSpeed;
-    static FromCentiradianPerSecond(value: number): RotationalSpeed;
-    static FromDeciradianPerSecond(value: number): RotationalSpeed;
-    static FromNanodegreePerSecond(value: number): RotationalSpeed;
-    static FromMicrodegreePerSecond(value: number): RotationalSpeed;
+    static FromNanoradiansPerSecond(value: number): RotationalSpeed;
+    static FromMicroradiansPerSecond(value: number): RotationalSpeed;
+    static FromCentiradiansPerSecond(value: number): RotationalSpeed;
+    static FromDeciradiansPerSecond(value: number): RotationalSpeed;
+    static FromNanodegreesPerSecond(value: number): RotationalSpeed;
+    static FromMicrodegreesPerSecond(value: number): RotationalSpeed;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: RotationalSpeedUnits): string;

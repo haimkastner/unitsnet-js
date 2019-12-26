@@ -10,16 +10,16 @@ export enum TorqueUnits {
     TonneForceMillimeters,
     TonneForceCentimeters,
     TonneForceMeters,
-    KilonewtonMillimeter,
-    MeganewtonMillimeter,
-    KilonewtonCentimeter,
-    MeganewtonCentimeter,
-    KilonewtonMeter,
-    MeganewtonMeter,
-    KilopoundForceInch,
-    MegapoundForceInch,
-    KilopoundForceFoot,
-    MegapoundForceFoot
+    KilonewtonMillimeters,
+    MeganewtonMillimeters,
+    KilonewtonCentimeters,
+    MeganewtonCentimeters,
+    KilonewtonMeters,
+    MeganewtonMeters,
+    KilopoundForceInches,
+    MegapoundForceInches,
+    KilopoundForceFeet,
+    MegapoundForceFeet
 }
 
 export class Torque {
@@ -35,16 +35,16 @@ export class Torque {
     private tonneforcemillimetersLazy: number | null = null;
     private tonneforcecentimetersLazy: number | null = null;
     private tonneforcemetersLazy: number | null = null;
-    private kilonewtonmillimeterLazy: number | null = null;
-    private meganewtonmillimeterLazy: number | null = null;
-    private kilonewtoncentimeterLazy: number | null = null;
-    private meganewtoncentimeterLazy: number | null = null;
-    private kilonewtonmeterLazy: number | null = null;
-    private meganewtonmeterLazy: number | null = null;
-    private kilopoundforceinchLazy: number | null = null;
-    private megapoundforceinchLazy: number | null = null;
-    private kilopoundforcefootLazy: number | null = null;
-    private megapoundforcefootLazy: number | null = null;
+    private kilonewtonmillimetersLazy: number | null = null;
+    private meganewtonmillimetersLazy: number | null = null;
+    private kilonewtoncentimetersLazy: number | null = null;
+    private meganewtoncentimetersLazy: number | null = null;
+    private kilonewtonmetersLazy: number | null = null;
+    private meganewtonmetersLazy: number | null = null;
+    private kilopoundforceinchesLazy: number | null = null;
+    private megapoundforceinchesLazy: number | null = null;
+    private kilopoundforcefeetLazy: number | null = null;
+    private megapoundforcefeetLazy: number | null = null;
 
     public constructor(value: number, fromUnit: TorqueUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -127,74 +127,74 @@ export class Torque {
         return this.tonneforcemetersLazy = this.convertFromBase(TorqueUnits.TonneForceMeters);
     }
 
-    public get KilonewtonMillimeter(): number {
-        if(this.kilonewtonmillimeterLazy !== null){
-            return this.kilonewtonmillimeterLazy;
+    public get KilonewtonMillimeters(): number {
+        if(this.kilonewtonmillimetersLazy !== null){
+            return this.kilonewtonmillimetersLazy;
         }
-        return this.kilonewtonmillimeterLazy = this.convertFromBase(TorqueUnits.KilonewtonMillimeter);
+        return this.kilonewtonmillimetersLazy = this.convertFromBase(TorqueUnits.KilonewtonMillimeters);
     }
 
-    public get MeganewtonMillimeter(): number {
-        if(this.meganewtonmillimeterLazy !== null){
-            return this.meganewtonmillimeterLazy;
+    public get MeganewtonMillimeters(): number {
+        if(this.meganewtonmillimetersLazy !== null){
+            return this.meganewtonmillimetersLazy;
         }
-        return this.meganewtonmillimeterLazy = this.convertFromBase(TorqueUnits.MeganewtonMillimeter);
+        return this.meganewtonmillimetersLazy = this.convertFromBase(TorqueUnits.MeganewtonMillimeters);
     }
 
-    public get KilonewtonCentimeter(): number {
-        if(this.kilonewtoncentimeterLazy !== null){
-            return this.kilonewtoncentimeterLazy;
+    public get KilonewtonCentimeters(): number {
+        if(this.kilonewtoncentimetersLazy !== null){
+            return this.kilonewtoncentimetersLazy;
         }
-        return this.kilonewtoncentimeterLazy = this.convertFromBase(TorqueUnits.KilonewtonCentimeter);
+        return this.kilonewtoncentimetersLazy = this.convertFromBase(TorqueUnits.KilonewtonCentimeters);
     }
 
-    public get MeganewtonCentimeter(): number {
-        if(this.meganewtoncentimeterLazy !== null){
-            return this.meganewtoncentimeterLazy;
+    public get MeganewtonCentimeters(): number {
+        if(this.meganewtoncentimetersLazy !== null){
+            return this.meganewtoncentimetersLazy;
         }
-        return this.meganewtoncentimeterLazy = this.convertFromBase(TorqueUnits.MeganewtonCentimeter);
+        return this.meganewtoncentimetersLazy = this.convertFromBase(TorqueUnits.MeganewtonCentimeters);
     }
 
-    public get KilonewtonMeter(): number {
-        if(this.kilonewtonmeterLazy !== null){
-            return this.kilonewtonmeterLazy;
+    public get KilonewtonMeters(): number {
+        if(this.kilonewtonmetersLazy !== null){
+            return this.kilonewtonmetersLazy;
         }
-        return this.kilonewtonmeterLazy = this.convertFromBase(TorqueUnits.KilonewtonMeter);
+        return this.kilonewtonmetersLazy = this.convertFromBase(TorqueUnits.KilonewtonMeters);
     }
 
-    public get MeganewtonMeter(): number {
-        if(this.meganewtonmeterLazy !== null){
-            return this.meganewtonmeterLazy;
+    public get MeganewtonMeters(): number {
+        if(this.meganewtonmetersLazy !== null){
+            return this.meganewtonmetersLazy;
         }
-        return this.meganewtonmeterLazy = this.convertFromBase(TorqueUnits.MeganewtonMeter);
+        return this.meganewtonmetersLazy = this.convertFromBase(TorqueUnits.MeganewtonMeters);
     }
 
-    public get KilopoundForceInch(): number {
-        if(this.kilopoundforceinchLazy !== null){
-            return this.kilopoundforceinchLazy;
+    public get KilopoundForceInches(): number {
+        if(this.kilopoundforceinchesLazy !== null){
+            return this.kilopoundforceinchesLazy;
         }
-        return this.kilopoundforceinchLazy = this.convertFromBase(TorqueUnits.KilopoundForceInch);
+        return this.kilopoundforceinchesLazy = this.convertFromBase(TorqueUnits.KilopoundForceInches);
     }
 
-    public get MegapoundForceInch(): number {
-        if(this.megapoundforceinchLazy !== null){
-            return this.megapoundforceinchLazy;
+    public get MegapoundForceInches(): number {
+        if(this.megapoundforceinchesLazy !== null){
+            return this.megapoundforceinchesLazy;
         }
-        return this.megapoundforceinchLazy = this.convertFromBase(TorqueUnits.MegapoundForceInch);
+        return this.megapoundforceinchesLazy = this.convertFromBase(TorqueUnits.MegapoundForceInches);
     }
 
-    public get KilopoundForceFoot(): number {
-        if(this.kilopoundforcefootLazy !== null){
-            return this.kilopoundforcefootLazy;
+    public get KilopoundForceFeet(): number {
+        if(this.kilopoundforcefeetLazy !== null){
+            return this.kilopoundforcefeetLazy;
         }
-        return this.kilopoundforcefootLazy = this.convertFromBase(TorqueUnits.KilopoundForceFoot);
+        return this.kilopoundforcefeetLazy = this.convertFromBase(TorqueUnits.KilopoundForceFeet);
     }
 
-    public get MegapoundForceFoot(): number {
-        if(this.megapoundforcefootLazy !== null){
-            return this.megapoundforcefootLazy;
+    public get MegapoundForceFeet(): number {
+        if(this.megapoundforcefeetLazy !== null){
+            return this.megapoundforcefeetLazy;
         }
-        return this.megapoundforcefootLazy = this.convertFromBase(TorqueUnits.MegapoundForceFoot);
+        return this.megapoundforcefeetLazy = this.convertFromBase(TorqueUnits.MegapoundForceFeet);
     }
 
     public static FromNewtonMillimeters(value: number): Torque {
@@ -241,44 +241,44 @@ export class Torque {
         return new Torque(value, TorqueUnits.TonneForceMeters);
     }
 
-    public static FromKilonewtonMillimeter(value: number): Torque {
-        return new Torque(value, TorqueUnits.KilonewtonMillimeter);
+    public static FromKilonewtonMillimeters(value: number): Torque {
+        return new Torque(value, TorqueUnits.KilonewtonMillimeters);
     }
 
-    public static FromMeganewtonMillimeter(value: number): Torque {
-        return new Torque(value, TorqueUnits.MeganewtonMillimeter);
+    public static FromMeganewtonMillimeters(value: number): Torque {
+        return new Torque(value, TorqueUnits.MeganewtonMillimeters);
     }
 
-    public static FromKilonewtonCentimeter(value: number): Torque {
-        return new Torque(value, TorqueUnits.KilonewtonCentimeter);
+    public static FromKilonewtonCentimeters(value: number): Torque {
+        return new Torque(value, TorqueUnits.KilonewtonCentimeters);
     }
 
-    public static FromMeganewtonCentimeter(value: number): Torque {
-        return new Torque(value, TorqueUnits.MeganewtonCentimeter);
+    public static FromMeganewtonCentimeters(value: number): Torque {
+        return new Torque(value, TorqueUnits.MeganewtonCentimeters);
     }
 
-    public static FromKilonewtonMeter(value: number): Torque {
-        return new Torque(value, TorqueUnits.KilonewtonMeter);
+    public static FromKilonewtonMeters(value: number): Torque {
+        return new Torque(value, TorqueUnits.KilonewtonMeters);
     }
 
-    public static FromMeganewtonMeter(value: number): Torque {
-        return new Torque(value, TorqueUnits.MeganewtonMeter);
+    public static FromMeganewtonMeters(value: number): Torque {
+        return new Torque(value, TorqueUnits.MeganewtonMeters);
     }
 
-    public static FromKilopoundForceInch(value: number): Torque {
-        return new Torque(value, TorqueUnits.KilopoundForceInch);
+    public static FromKilopoundForceInches(value: number): Torque {
+        return new Torque(value, TorqueUnits.KilopoundForceInches);
     }
 
-    public static FromMegapoundForceInch(value: number): Torque {
-        return new Torque(value, TorqueUnits.MegapoundForceInch);
+    public static FromMegapoundForceInches(value: number): Torque {
+        return new Torque(value, TorqueUnits.MegapoundForceInches);
     }
 
-    public static FromKilopoundForceFoot(value: number): Torque {
-        return new Torque(value, TorqueUnits.KilopoundForceFoot);
+    public static FromKilopoundForceFeet(value: number): Torque {
+        return new Torque(value, TorqueUnits.KilopoundForceFeet);
     }
 
-    public static FromMegapoundForceFoot(value: number): Torque {
-        return new Torque(value, TorqueUnits.MegapoundForceFoot);
+    public static FromMegapoundForceFeet(value: number): Torque {
+        return new Torque(value, TorqueUnits.MegapoundForceFeet);
     }
 
     private convertFromBase(toUnit: TorqueUnits): number {
@@ -306,25 +306,25 @@ export class Torque {
                 return this.value*0.0101971619222242;
             case TorqueUnits.TonneForceMeters:
                 return this.value*0.000101971619222242;
-            case TorqueUnits.KilonewtonMillimeter:
+            case TorqueUnits.KilonewtonMillimeters:
                 return (this.value*1000) / 1000;
-            case TorqueUnits.MeganewtonMillimeter:
+            case TorqueUnits.MeganewtonMillimeters:
                 return (this.value*1000) / 1000000;
-            case TorqueUnits.KilonewtonCentimeter:
+            case TorqueUnits.KilonewtonCentimeters:
                 return (this.value*100) / 1000;
-            case TorqueUnits.MeganewtonCentimeter:
+            case TorqueUnits.MeganewtonCentimeters:
                 return (this.value*100) / 1000000;
-            case TorqueUnits.KilonewtonMeter:
+            case TorqueUnits.KilonewtonMeters:
                 return (this.value) / 1000;
-            case TorqueUnits.MeganewtonMeter:
+            case TorqueUnits.MeganewtonMeters:
                 return (this.value) / 1000000;
-            case TorqueUnits.KilopoundForceInch:
+            case TorqueUnits.KilopoundForceInches:
                 return (this.value/1.129848290276167e-1) / 1000;
-            case TorqueUnits.MegapoundForceInch:
+            case TorqueUnits.MegapoundForceInches:
                 return (this.value/1.129848290276167e-1) / 1000000;
-            case TorqueUnits.KilopoundForceFoot:
+            case TorqueUnits.KilopoundForceFeet:
                 return (this.value/1.3558179483314) / 1000;
-            case TorqueUnits.MegapoundForceFoot:
+            case TorqueUnits.MegapoundForceFeet:
                 return (this.value/1.3558179483314) / 1000000;
             default:
                 break;
@@ -357,25 +357,25 @@ export class Torque {
                 return value*98.0665019960652;
             case TorqueUnits.TonneForceMeters:
                 return value*9806.65019960653;
-            case TorqueUnits.KilonewtonMillimeter:
+            case TorqueUnits.KilonewtonMillimeters:
                 return (value*0.001) * 1000;
-            case TorqueUnits.MeganewtonMillimeter:
+            case TorqueUnits.MeganewtonMillimeters:
                 return (value*0.001) * 1000000;
-            case TorqueUnits.KilonewtonCentimeter:
+            case TorqueUnits.KilonewtonCentimeters:
                 return (value*0.01) * 1000;
-            case TorqueUnits.MeganewtonCentimeter:
+            case TorqueUnits.MeganewtonCentimeters:
                 return (value*0.01) * 1000000;
-            case TorqueUnits.KilonewtonMeter:
+            case TorqueUnits.KilonewtonMeters:
                 return (value) * 1000;
-            case TorqueUnits.MeganewtonMeter:
+            case TorqueUnits.MeganewtonMeters:
                 return (value) * 1000000;
-            case TorqueUnits.KilopoundForceInch:
+            case TorqueUnits.KilopoundForceInches:
                 return (value*1.129848290276167e-1) * 1000;
-            case TorqueUnits.MegapoundForceInch:
+            case TorqueUnits.MegapoundForceInches:
                 return (value*1.129848290276167e-1) * 1000000;
-            case TorqueUnits.KilopoundForceFoot:
+            case TorqueUnits.KilopoundForceFeet:
                 return (value*1.3558179483314) * 1000;
-            case TorqueUnits.MegapoundForceFoot:
+            case TorqueUnits.MegapoundForceFeet:
                 return (value*1.3558179483314) * 1000000;
             default:
                 break;
@@ -409,26 +409,26 @@ export class Torque {
                 return this.TonneForceCentimeters + ` tf·cm`;
             case TorqueUnits.TonneForceMeters:
                 return this.TonneForceMeters + ` tf·m`;
-            case TorqueUnits.KilonewtonMillimeter:
-                return this.KilonewtonMillimeter + ` N·mm`;
-            case TorqueUnits.MeganewtonMillimeter:
-                return this.MeganewtonMillimeter + ` N·mm`;
-            case TorqueUnits.KilonewtonCentimeter:
-                return this.KilonewtonCentimeter + ` N·cm`;
-            case TorqueUnits.MeganewtonCentimeter:
-                return this.MeganewtonCentimeter + ` N·cm`;
-            case TorqueUnits.KilonewtonMeter:
-                return this.KilonewtonMeter + ` N·m`;
-            case TorqueUnits.MeganewtonMeter:
-                return this.MeganewtonMeter + ` N·m`;
-            case TorqueUnits.KilopoundForceInch:
-                return this.KilopoundForceInch + ` lbf·in`;
-            case TorqueUnits.MegapoundForceInch:
-                return this.MegapoundForceInch + ` lbf·in`;
-            case TorqueUnits.KilopoundForceFoot:
-                return this.KilopoundForceFoot + ` lbf·ft`;
-            case TorqueUnits.MegapoundForceFoot:
-                return this.MegapoundForceFoot + ` lbf·ft`;
+            case TorqueUnits.KilonewtonMillimeters:
+                return this.KilonewtonMillimeters + ` N·mm`;
+            case TorqueUnits.MeganewtonMillimeters:
+                return this.MeganewtonMillimeters + ` N·mm`;
+            case TorqueUnits.KilonewtonCentimeters:
+                return this.KilonewtonCentimeters + ` N·cm`;
+            case TorqueUnits.MeganewtonCentimeters:
+                return this.MeganewtonCentimeters + ` N·cm`;
+            case TorqueUnits.KilonewtonMeters:
+                return this.KilonewtonMeters + ` N·m`;
+            case TorqueUnits.MeganewtonMeters:
+                return this.MeganewtonMeters + ` N·m`;
+            case TorqueUnits.KilopoundForceInches:
+                return this.KilopoundForceInches + ` lbf·in`;
+            case TorqueUnits.MegapoundForceInches:
+                return this.MegapoundForceInches + ` lbf·in`;
+            case TorqueUnits.KilopoundForceFeet:
+                return this.KilopoundForceFeet + ` lbf·ft`;
+            case TorqueUnits.MegapoundForceFeet:
+                return this.MegapoundForceFeet + ` lbf·ft`;
         default:
             break;
         }

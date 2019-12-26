@@ -7,21 +7,21 @@ export declare enum PowerUnits {
     HydraulicHorsepower = 5,
     BritishThermalUnitsPerHour = 6,
     JoulesPerHour = 7,
-    Femtowatt = 8,
-    Picowatt = 9,
-    Nanowatt = 10,
-    Microwatt = 11,
-    Deciwatt = 12,
-    Decawatt = 13,
-    Kilowatt = 14,
-    Megawatt = 15,
-    Gigawatt = 16,
-    Terawatt = 17,
-    Petawatt = 18,
-    KilobritishThermalUnitPerHour = 19,
-    KilojoulePerHour = 20,
-    MegajoulePerHour = 21,
-    GigajoulePerHour = 22
+    Femtowatts = 8,
+    Picowatts = 9,
+    Nanowatts = 10,
+    Microwatts = 11,
+    Deciwatts = 12,
+    Decawatts = 13,
+    Kilowatts = 14,
+    Megawatts = 15,
+    Gigawatts = 16,
+    Terawatts = 17,
+    Petawatts = 18,
+    KilobritishThermalUnitsPerHour = 19,
+    KilojoulesPerHour = 20,
+    MegajoulesPerHour = 21,
+    GigajoulesPerHour = 22
 }
 export declare class Power {
     private value;
@@ -33,21 +33,21 @@ export declare class Power {
     private hydraulichorsepowerLazy;
     private britishthermalunitsperhourLazy;
     private joulesperhourLazy;
-    private femtowattLazy;
-    private picowattLazy;
-    private nanowattLazy;
-    private microwattLazy;
-    private deciwattLazy;
-    private decawattLazy;
-    private kilowattLazy;
-    private megawattLazy;
-    private gigawattLazy;
-    private terawattLazy;
-    private petawattLazy;
-    private kilobritishthermalunitperhourLazy;
-    private kilojouleperhourLazy;
-    private megajouleperhourLazy;
-    private gigajouleperhourLazy;
+    private femtowattsLazy;
+    private picowattsLazy;
+    private nanowattsLazy;
+    private microwattsLazy;
+    private deciwattsLazy;
+    private decawattsLazy;
+    private kilowattsLazy;
+    private megawattsLazy;
+    private gigawattsLazy;
+    private terawattsLazy;
+    private petawattsLazy;
+    private kilobritishthermalunitsperhourLazy;
+    private kilojoulesperhourLazy;
+    private megajoulesperhourLazy;
+    private gigajoulesperhourLazy;
     constructor(value: number, fromUnit: PowerUnits);
     get Watts(): number;
     get MechanicalHorsepower(): number;
@@ -57,21 +57,21 @@ export declare class Power {
     get HydraulicHorsepower(): number;
     get BritishThermalUnitsPerHour(): number;
     get JoulesPerHour(): number;
-    get Femtowatt(): number;
-    get Picowatt(): number;
-    get Nanowatt(): number;
-    get Microwatt(): number;
-    get Deciwatt(): number;
-    get Decawatt(): number;
-    get Kilowatt(): number;
-    get Megawatt(): number;
-    get Gigawatt(): number;
-    get Terawatt(): number;
-    get Petawatt(): number;
-    get KilobritishThermalUnitPerHour(): number;
-    get KilojoulePerHour(): number;
-    get MegajoulePerHour(): number;
-    get GigajoulePerHour(): number;
+    get Femtowatts(): number;
+    get Picowatts(): number;
+    get Nanowatts(): number;
+    get Microwatts(): number;
+    get Deciwatts(): number;
+    get Decawatts(): number;
+    get Kilowatts(): number;
+    get Megawatts(): number;
+    get Gigawatts(): number;
+    get Terawatts(): number;
+    get Petawatts(): number;
+    get KilobritishThermalUnitsPerHour(): number;
+    get KilojoulesPerHour(): number;
+    get MegajoulesPerHour(): number;
+    get GigajoulesPerHour(): number;
     static FromWatts(value: number): Power;
     static FromMechanicalHorsepower(value: number): Power;
     static FromMetricHorsepower(value: number): Power;
@@ -80,21 +80,21 @@ export declare class Power {
     static FromHydraulicHorsepower(value: number): Power;
     static FromBritishThermalUnitsPerHour(value: number): Power;
     static FromJoulesPerHour(value: number): Power;
-    static FromFemtowatt(value: number): Power;
-    static FromPicowatt(value: number): Power;
-    static FromNanowatt(value: number): Power;
-    static FromMicrowatt(value: number): Power;
-    static FromDeciwatt(value: number): Power;
-    static FromDecawatt(value: number): Power;
-    static FromKilowatt(value: number): Power;
-    static FromMegawatt(value: number): Power;
-    static FromGigawatt(value: number): Power;
-    static FromTerawatt(value: number): Power;
-    static FromPetawatt(value: number): Power;
-    static FromKilobritishThermalUnitPerHour(value: number): Power;
-    static FromKilojoulePerHour(value: number): Power;
-    static FromMegajoulePerHour(value: number): Power;
-    static FromGigajoulePerHour(value: number): Power;
+    static FromFemtowatts(value: number): Power;
+    static FromPicowatts(value: number): Power;
+    static FromNanowatts(value: number): Power;
+    static FromMicrowatts(value: number): Power;
+    static FromDeciwatts(value: number): Power;
+    static FromDecawatts(value: number): Power;
+    static FromKilowatts(value: number): Power;
+    static FromMegawatts(value: number): Power;
+    static FromGigawatts(value: number): Power;
+    static FromTerawatts(value: number): Power;
+    static FromPetawatts(value: number): Power;
+    static FromKilobritishThermalUnitsPerHour(value: number): Power;
+    static FromKilojoulesPerHour(value: number): Power;
+    static FromMegajoulesPerHour(value: number): Power;
+    static FromGigajoulesPerHour(value: number): Power;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: PowerUnits): string;

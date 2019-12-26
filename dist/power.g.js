@@ -10,21 +10,21 @@ var PowerUnits;
     PowerUnits[PowerUnits["HydraulicHorsepower"] = 5] = "HydraulicHorsepower";
     PowerUnits[PowerUnits["BritishThermalUnitsPerHour"] = 6] = "BritishThermalUnitsPerHour";
     PowerUnits[PowerUnits["JoulesPerHour"] = 7] = "JoulesPerHour";
-    PowerUnits[PowerUnits["Femtowatt"] = 8] = "Femtowatt";
-    PowerUnits[PowerUnits["Picowatt"] = 9] = "Picowatt";
-    PowerUnits[PowerUnits["Nanowatt"] = 10] = "Nanowatt";
-    PowerUnits[PowerUnits["Microwatt"] = 11] = "Microwatt";
-    PowerUnits[PowerUnits["Deciwatt"] = 12] = "Deciwatt";
-    PowerUnits[PowerUnits["Decawatt"] = 13] = "Decawatt";
-    PowerUnits[PowerUnits["Kilowatt"] = 14] = "Kilowatt";
-    PowerUnits[PowerUnits["Megawatt"] = 15] = "Megawatt";
-    PowerUnits[PowerUnits["Gigawatt"] = 16] = "Gigawatt";
-    PowerUnits[PowerUnits["Terawatt"] = 17] = "Terawatt";
-    PowerUnits[PowerUnits["Petawatt"] = 18] = "Petawatt";
-    PowerUnits[PowerUnits["KilobritishThermalUnitPerHour"] = 19] = "KilobritishThermalUnitPerHour";
-    PowerUnits[PowerUnits["KilojoulePerHour"] = 20] = "KilojoulePerHour";
-    PowerUnits[PowerUnits["MegajoulePerHour"] = 21] = "MegajoulePerHour";
-    PowerUnits[PowerUnits["GigajoulePerHour"] = 22] = "GigajoulePerHour";
+    PowerUnits[PowerUnits["Femtowatts"] = 8] = "Femtowatts";
+    PowerUnits[PowerUnits["Picowatts"] = 9] = "Picowatts";
+    PowerUnits[PowerUnits["Nanowatts"] = 10] = "Nanowatts";
+    PowerUnits[PowerUnits["Microwatts"] = 11] = "Microwatts";
+    PowerUnits[PowerUnits["Deciwatts"] = 12] = "Deciwatts";
+    PowerUnits[PowerUnits["Decawatts"] = 13] = "Decawatts";
+    PowerUnits[PowerUnits["Kilowatts"] = 14] = "Kilowatts";
+    PowerUnits[PowerUnits["Megawatts"] = 15] = "Megawatts";
+    PowerUnits[PowerUnits["Gigawatts"] = 16] = "Gigawatts";
+    PowerUnits[PowerUnits["Terawatts"] = 17] = "Terawatts";
+    PowerUnits[PowerUnits["Petawatts"] = 18] = "Petawatts";
+    PowerUnits[PowerUnits["KilobritishThermalUnitsPerHour"] = 19] = "KilobritishThermalUnitsPerHour";
+    PowerUnits[PowerUnits["KilojoulesPerHour"] = 20] = "KilojoulesPerHour";
+    PowerUnits[PowerUnits["MegajoulesPerHour"] = 21] = "MegajoulesPerHour";
+    PowerUnits[PowerUnits["GigajoulesPerHour"] = 22] = "GigajoulesPerHour";
 })(PowerUnits = exports.PowerUnits || (exports.PowerUnits = {}));
 class Power {
     constructor(value, fromUnit) {
@@ -36,21 +36,21 @@ class Power {
         this.hydraulichorsepowerLazy = null;
         this.britishthermalunitsperhourLazy = null;
         this.joulesperhourLazy = null;
-        this.femtowattLazy = null;
-        this.picowattLazy = null;
-        this.nanowattLazy = null;
-        this.microwattLazy = null;
-        this.deciwattLazy = null;
-        this.decawattLazy = null;
-        this.kilowattLazy = null;
-        this.megawattLazy = null;
-        this.gigawattLazy = null;
-        this.terawattLazy = null;
-        this.petawattLazy = null;
-        this.kilobritishthermalunitperhourLazy = null;
-        this.kilojouleperhourLazy = null;
-        this.megajouleperhourLazy = null;
-        this.gigajouleperhourLazy = null;
+        this.femtowattsLazy = null;
+        this.picowattsLazy = null;
+        this.nanowattsLazy = null;
+        this.microwattsLazy = null;
+        this.deciwattsLazy = null;
+        this.decawattsLazy = null;
+        this.kilowattsLazy = null;
+        this.megawattsLazy = null;
+        this.gigawattsLazy = null;
+        this.terawattsLazy = null;
+        this.petawattsLazy = null;
+        this.kilobritishthermalunitsperhourLazy = null;
+        this.kilojoulesperhourLazy = null;
+        this.megajoulesperhourLazy = null;
+        this.gigajoulesperhourLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Watts() {
@@ -101,95 +101,95 @@ class Power {
         }
         return this.joulesperhourLazy = this.convertFromBase(PowerUnits.JoulesPerHour);
     }
-    get Femtowatt() {
-        if (this.femtowattLazy !== null) {
-            return this.femtowattLazy;
+    get Femtowatts() {
+        if (this.femtowattsLazy !== null) {
+            return this.femtowattsLazy;
         }
-        return this.femtowattLazy = this.convertFromBase(PowerUnits.Femtowatt);
+        return this.femtowattsLazy = this.convertFromBase(PowerUnits.Femtowatts);
     }
-    get Picowatt() {
-        if (this.picowattLazy !== null) {
-            return this.picowattLazy;
+    get Picowatts() {
+        if (this.picowattsLazy !== null) {
+            return this.picowattsLazy;
         }
-        return this.picowattLazy = this.convertFromBase(PowerUnits.Picowatt);
+        return this.picowattsLazy = this.convertFromBase(PowerUnits.Picowatts);
     }
-    get Nanowatt() {
-        if (this.nanowattLazy !== null) {
-            return this.nanowattLazy;
+    get Nanowatts() {
+        if (this.nanowattsLazy !== null) {
+            return this.nanowattsLazy;
         }
-        return this.nanowattLazy = this.convertFromBase(PowerUnits.Nanowatt);
+        return this.nanowattsLazy = this.convertFromBase(PowerUnits.Nanowatts);
     }
-    get Microwatt() {
-        if (this.microwattLazy !== null) {
-            return this.microwattLazy;
+    get Microwatts() {
+        if (this.microwattsLazy !== null) {
+            return this.microwattsLazy;
         }
-        return this.microwattLazy = this.convertFromBase(PowerUnits.Microwatt);
+        return this.microwattsLazy = this.convertFromBase(PowerUnits.Microwatts);
     }
-    get Deciwatt() {
-        if (this.deciwattLazy !== null) {
-            return this.deciwattLazy;
+    get Deciwatts() {
+        if (this.deciwattsLazy !== null) {
+            return this.deciwattsLazy;
         }
-        return this.deciwattLazy = this.convertFromBase(PowerUnits.Deciwatt);
+        return this.deciwattsLazy = this.convertFromBase(PowerUnits.Deciwatts);
     }
-    get Decawatt() {
-        if (this.decawattLazy !== null) {
-            return this.decawattLazy;
+    get Decawatts() {
+        if (this.decawattsLazy !== null) {
+            return this.decawattsLazy;
         }
-        return this.decawattLazy = this.convertFromBase(PowerUnits.Decawatt);
+        return this.decawattsLazy = this.convertFromBase(PowerUnits.Decawatts);
     }
-    get Kilowatt() {
-        if (this.kilowattLazy !== null) {
-            return this.kilowattLazy;
+    get Kilowatts() {
+        if (this.kilowattsLazy !== null) {
+            return this.kilowattsLazy;
         }
-        return this.kilowattLazy = this.convertFromBase(PowerUnits.Kilowatt);
+        return this.kilowattsLazy = this.convertFromBase(PowerUnits.Kilowatts);
     }
-    get Megawatt() {
-        if (this.megawattLazy !== null) {
-            return this.megawattLazy;
+    get Megawatts() {
+        if (this.megawattsLazy !== null) {
+            return this.megawattsLazy;
         }
-        return this.megawattLazy = this.convertFromBase(PowerUnits.Megawatt);
+        return this.megawattsLazy = this.convertFromBase(PowerUnits.Megawatts);
     }
-    get Gigawatt() {
-        if (this.gigawattLazy !== null) {
-            return this.gigawattLazy;
+    get Gigawatts() {
+        if (this.gigawattsLazy !== null) {
+            return this.gigawattsLazy;
         }
-        return this.gigawattLazy = this.convertFromBase(PowerUnits.Gigawatt);
+        return this.gigawattsLazy = this.convertFromBase(PowerUnits.Gigawatts);
     }
-    get Terawatt() {
-        if (this.terawattLazy !== null) {
-            return this.terawattLazy;
+    get Terawatts() {
+        if (this.terawattsLazy !== null) {
+            return this.terawattsLazy;
         }
-        return this.terawattLazy = this.convertFromBase(PowerUnits.Terawatt);
+        return this.terawattsLazy = this.convertFromBase(PowerUnits.Terawatts);
     }
-    get Petawatt() {
-        if (this.petawattLazy !== null) {
-            return this.petawattLazy;
+    get Petawatts() {
+        if (this.petawattsLazy !== null) {
+            return this.petawattsLazy;
         }
-        return this.petawattLazy = this.convertFromBase(PowerUnits.Petawatt);
+        return this.petawattsLazy = this.convertFromBase(PowerUnits.Petawatts);
     }
-    get KilobritishThermalUnitPerHour() {
-        if (this.kilobritishthermalunitperhourLazy !== null) {
-            return this.kilobritishthermalunitperhourLazy;
+    get KilobritishThermalUnitsPerHour() {
+        if (this.kilobritishthermalunitsperhourLazy !== null) {
+            return this.kilobritishthermalunitsperhourLazy;
         }
-        return this.kilobritishthermalunitperhourLazy = this.convertFromBase(PowerUnits.KilobritishThermalUnitPerHour);
+        return this.kilobritishthermalunitsperhourLazy = this.convertFromBase(PowerUnits.KilobritishThermalUnitsPerHour);
     }
-    get KilojoulePerHour() {
-        if (this.kilojouleperhourLazy !== null) {
-            return this.kilojouleperhourLazy;
+    get KilojoulesPerHour() {
+        if (this.kilojoulesperhourLazy !== null) {
+            return this.kilojoulesperhourLazy;
         }
-        return this.kilojouleperhourLazy = this.convertFromBase(PowerUnits.KilojoulePerHour);
+        return this.kilojoulesperhourLazy = this.convertFromBase(PowerUnits.KilojoulesPerHour);
     }
-    get MegajoulePerHour() {
-        if (this.megajouleperhourLazy !== null) {
-            return this.megajouleperhourLazy;
+    get MegajoulesPerHour() {
+        if (this.megajoulesperhourLazy !== null) {
+            return this.megajoulesperhourLazy;
         }
-        return this.megajouleperhourLazy = this.convertFromBase(PowerUnits.MegajoulePerHour);
+        return this.megajoulesperhourLazy = this.convertFromBase(PowerUnits.MegajoulesPerHour);
     }
-    get GigajoulePerHour() {
-        if (this.gigajouleperhourLazy !== null) {
-            return this.gigajouleperhourLazy;
+    get GigajoulesPerHour() {
+        if (this.gigajoulesperhourLazy !== null) {
+            return this.gigajoulesperhourLazy;
         }
-        return this.gigajouleperhourLazy = this.convertFromBase(PowerUnits.GigajoulePerHour);
+        return this.gigajoulesperhourLazy = this.convertFromBase(PowerUnits.GigajoulesPerHour);
     }
     static FromWatts(value) {
         return new Power(value, PowerUnits.Watts);
@@ -215,50 +215,50 @@ class Power {
     static FromJoulesPerHour(value) {
         return new Power(value, PowerUnits.JoulesPerHour);
     }
-    static FromFemtowatt(value) {
-        return new Power(value, PowerUnits.Femtowatt);
+    static FromFemtowatts(value) {
+        return new Power(value, PowerUnits.Femtowatts);
     }
-    static FromPicowatt(value) {
-        return new Power(value, PowerUnits.Picowatt);
+    static FromPicowatts(value) {
+        return new Power(value, PowerUnits.Picowatts);
     }
-    static FromNanowatt(value) {
-        return new Power(value, PowerUnits.Nanowatt);
+    static FromNanowatts(value) {
+        return new Power(value, PowerUnits.Nanowatts);
     }
-    static FromMicrowatt(value) {
-        return new Power(value, PowerUnits.Microwatt);
+    static FromMicrowatts(value) {
+        return new Power(value, PowerUnits.Microwatts);
     }
-    static FromDeciwatt(value) {
-        return new Power(value, PowerUnits.Deciwatt);
+    static FromDeciwatts(value) {
+        return new Power(value, PowerUnits.Deciwatts);
     }
-    static FromDecawatt(value) {
-        return new Power(value, PowerUnits.Decawatt);
+    static FromDecawatts(value) {
+        return new Power(value, PowerUnits.Decawatts);
     }
-    static FromKilowatt(value) {
-        return new Power(value, PowerUnits.Kilowatt);
+    static FromKilowatts(value) {
+        return new Power(value, PowerUnits.Kilowatts);
     }
-    static FromMegawatt(value) {
-        return new Power(value, PowerUnits.Megawatt);
+    static FromMegawatts(value) {
+        return new Power(value, PowerUnits.Megawatts);
     }
-    static FromGigawatt(value) {
-        return new Power(value, PowerUnits.Gigawatt);
+    static FromGigawatts(value) {
+        return new Power(value, PowerUnits.Gigawatts);
     }
-    static FromTerawatt(value) {
-        return new Power(value, PowerUnits.Terawatt);
+    static FromTerawatts(value) {
+        return new Power(value, PowerUnits.Terawatts);
     }
-    static FromPetawatt(value) {
-        return new Power(value, PowerUnits.Petawatt);
+    static FromPetawatts(value) {
+        return new Power(value, PowerUnits.Petawatts);
     }
-    static FromKilobritishThermalUnitPerHour(value) {
-        return new Power(value, PowerUnits.KilobritishThermalUnitPerHour);
+    static FromKilobritishThermalUnitsPerHour(value) {
+        return new Power(value, PowerUnits.KilobritishThermalUnitsPerHour);
     }
-    static FromKilojoulePerHour(value) {
-        return new Power(value, PowerUnits.KilojoulePerHour);
+    static FromKilojoulesPerHour(value) {
+        return new Power(value, PowerUnits.KilojoulesPerHour);
     }
-    static FromMegajoulePerHour(value) {
-        return new Power(value, PowerUnits.MegajoulePerHour);
+    static FromMegajoulesPerHour(value) {
+        return new Power(value, PowerUnits.MegajoulesPerHour);
     }
-    static FromGigajoulePerHour(value) {
-        return new Power(value, PowerUnits.GigajoulePerHour);
+    static FromGigajoulesPerHour(value) {
+        return new Power(value, PowerUnits.GigajoulesPerHour);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -278,35 +278,35 @@ class Power {
                 return this.value / 0.293071;
             case PowerUnits.JoulesPerHour:
                 return this.value * 3600;
-            case PowerUnits.Femtowatt:
+            case PowerUnits.Femtowatts:
                 return (this.value) / 1e-15;
-            case PowerUnits.Picowatt:
+            case PowerUnits.Picowatts:
                 return (this.value) / 1e-12;
-            case PowerUnits.Nanowatt:
+            case PowerUnits.Nanowatts:
                 return (this.value) / 1e-9;
-            case PowerUnits.Microwatt:
+            case PowerUnits.Microwatts:
                 return (this.value) / 0.000001;
-            case PowerUnits.Deciwatt:
+            case PowerUnits.Deciwatts:
                 return (this.value) / 0.1;
-            case PowerUnits.Decawatt:
+            case PowerUnits.Decawatts:
                 return (this.value) / 10;
-            case PowerUnits.Kilowatt:
+            case PowerUnits.Kilowatts:
                 return (this.value) / 1000;
-            case PowerUnits.Megawatt:
+            case PowerUnits.Megawatts:
                 return (this.value) / 1000000;
-            case PowerUnits.Gigawatt:
+            case PowerUnits.Gigawatts:
                 return (this.value) / 1000000000;
-            case PowerUnits.Terawatt:
+            case PowerUnits.Terawatts:
                 return (this.value) / 1000000000000;
-            case PowerUnits.Petawatt:
+            case PowerUnits.Petawatts:
                 return (this.value) / 1000000000000000;
-            case PowerUnits.KilobritishThermalUnitPerHour:
+            case PowerUnits.KilobritishThermalUnitsPerHour:
                 return (this.value / 0.293071) / 1000;
-            case PowerUnits.KilojoulePerHour:
+            case PowerUnits.KilojoulesPerHour:
                 return (this.value * 3600) / 1000;
-            case PowerUnits.MegajoulePerHour:
+            case PowerUnits.MegajoulesPerHour:
                 return (this.value * 3600) / 1000000;
-            case PowerUnits.GigajoulePerHour:
+            case PowerUnits.GigajoulesPerHour:
                 return (this.value * 3600) / 1000000000;
             default:
                 break;
@@ -331,35 +331,35 @@ class Power {
                 return value * 0.293071;
             case PowerUnits.JoulesPerHour:
                 return value / 3600;
-            case PowerUnits.Femtowatt:
+            case PowerUnits.Femtowatts:
                 return (value) * 1e-15;
-            case PowerUnits.Picowatt:
+            case PowerUnits.Picowatts:
                 return (value) * 1e-12;
-            case PowerUnits.Nanowatt:
+            case PowerUnits.Nanowatts:
                 return (value) * 1e-9;
-            case PowerUnits.Microwatt:
+            case PowerUnits.Microwatts:
                 return (value) * 0.000001;
-            case PowerUnits.Deciwatt:
+            case PowerUnits.Deciwatts:
                 return (value) * 0.1;
-            case PowerUnits.Decawatt:
+            case PowerUnits.Decawatts:
                 return (value) * 10;
-            case PowerUnits.Kilowatt:
+            case PowerUnits.Kilowatts:
                 return (value) * 1000;
-            case PowerUnits.Megawatt:
+            case PowerUnits.Megawatts:
                 return (value) * 1000000;
-            case PowerUnits.Gigawatt:
+            case PowerUnits.Gigawatts:
                 return (value) * 1000000000;
-            case PowerUnits.Terawatt:
+            case PowerUnits.Terawatts:
                 return (value) * 1000000000000;
-            case PowerUnits.Petawatt:
+            case PowerUnits.Petawatts:
                 return (value) * 1000000000000000;
-            case PowerUnits.KilobritishThermalUnitPerHour:
+            case PowerUnits.KilobritishThermalUnitsPerHour:
                 return (value * 0.293071) * 1000;
-            case PowerUnits.KilojoulePerHour:
+            case PowerUnits.KilojoulesPerHour:
                 return (value / 3600) * 1000;
-            case PowerUnits.MegajoulePerHour:
+            case PowerUnits.MegajoulesPerHour:
                 return (value / 3600) * 1000000;
-            case PowerUnits.GigajoulePerHour:
+            case PowerUnits.GigajoulesPerHour:
                 return (value / 3600) * 1000000000;
             default:
                 break;
@@ -384,36 +384,36 @@ class Power {
                 return this.BritishThermalUnitsPerHour + ` Btu/h`;
             case PowerUnits.JoulesPerHour:
                 return this.JoulesPerHour + ` J/h`;
-            case PowerUnits.Femtowatt:
-                return this.Femtowatt + ` W`;
-            case PowerUnits.Picowatt:
-                return this.Picowatt + ` W`;
-            case PowerUnits.Nanowatt:
-                return this.Nanowatt + ` W`;
-            case PowerUnits.Microwatt:
-                return this.Microwatt + ` W`;
-            case PowerUnits.Deciwatt:
-                return this.Deciwatt + ` W`;
-            case PowerUnits.Decawatt:
-                return this.Decawatt + ` W`;
-            case PowerUnits.Kilowatt:
-                return this.Kilowatt + ` W`;
-            case PowerUnits.Megawatt:
-                return this.Megawatt + ` W`;
-            case PowerUnits.Gigawatt:
-                return this.Gigawatt + ` W`;
-            case PowerUnits.Terawatt:
-                return this.Terawatt + ` W`;
-            case PowerUnits.Petawatt:
-                return this.Petawatt + ` W`;
-            case PowerUnits.KilobritishThermalUnitPerHour:
-                return this.KilobritishThermalUnitPerHour + ` Btu/h`;
-            case PowerUnits.KilojoulePerHour:
-                return this.KilojoulePerHour + ` J/h`;
-            case PowerUnits.MegajoulePerHour:
-                return this.MegajoulePerHour + ` J/h`;
-            case PowerUnits.GigajoulePerHour:
-                return this.GigajoulePerHour + ` J/h`;
+            case PowerUnits.Femtowatts:
+                return this.Femtowatts + ` W`;
+            case PowerUnits.Picowatts:
+                return this.Picowatts + ` W`;
+            case PowerUnits.Nanowatts:
+                return this.Nanowatts + ` W`;
+            case PowerUnits.Microwatts:
+                return this.Microwatts + ` W`;
+            case PowerUnits.Deciwatts:
+                return this.Deciwatts + ` W`;
+            case PowerUnits.Decawatts:
+                return this.Decawatts + ` W`;
+            case PowerUnits.Kilowatts:
+                return this.Kilowatts + ` W`;
+            case PowerUnits.Megawatts:
+                return this.Megawatts + ` W`;
+            case PowerUnits.Gigawatts:
+                return this.Gigawatts + ` W`;
+            case PowerUnits.Terawatts:
+                return this.Terawatts + ` W`;
+            case PowerUnits.Petawatts:
+                return this.Petawatts + ` W`;
+            case PowerUnits.KilobritishThermalUnitsPerHour:
+                return this.KilobritishThermalUnitsPerHour + ` Btu/h`;
+            case PowerUnits.KilojoulesPerHour:
+                return this.KilojoulesPerHour + ` J/h`;
+            case PowerUnits.MegajoulesPerHour:
+                return this.MegajoulesPerHour + ` J/h`;
+            case PowerUnits.GigajoulesPerHour:
+                return this.GigajoulesPerHour + ` J/h`;
             default:
                 break;
         }

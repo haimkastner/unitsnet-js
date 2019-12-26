@@ -20,16 +20,16 @@ export enum LengthUnits {
     Parsecs,
     LightYears,
     SolarRadiuses,
-    Nanometer,
-    Micrometer,
-    Centimeter,
-    Decimeter,
-    Hectometer,
-    Kilometer,
-    Kiloparsec,
-    Megaparsec,
-    KilolightYear,
-    MegalightYear
+    Nanometers,
+    Micrometers,
+    Centimeters,
+    Decimeters,
+    Hectometers,
+    Kilometers,
+    Kiloparsecs,
+    Megaparsecs,
+    KilolightYears,
+    MegalightYears
 }
 
 export class Length {
@@ -55,16 +55,16 @@ export class Length {
     private parsecsLazy: number | null = null;
     private lightyearsLazy: number | null = null;
     private solarradiusesLazy: number | null = null;
-    private nanometerLazy: number | null = null;
-    private micrometerLazy: number | null = null;
-    private centimeterLazy: number | null = null;
-    private decimeterLazy: number | null = null;
-    private hectometerLazy: number | null = null;
-    private kilometerLazy: number | null = null;
-    private kiloparsecLazy: number | null = null;
-    private megaparsecLazy: number | null = null;
-    private kilolightyearLazy: number | null = null;
-    private megalightyearLazy: number | null = null;
+    private nanometersLazy: number | null = null;
+    private micrometersLazy: number | null = null;
+    private centimetersLazy: number | null = null;
+    private decimetersLazy: number | null = null;
+    private hectometersLazy: number | null = null;
+    private kilometersLazy: number | null = null;
+    private kiloparsecsLazy: number | null = null;
+    private megaparsecsLazy: number | null = null;
+    private kilolightyearsLazy: number | null = null;
+    private megalightyearsLazy: number | null = null;
 
     public constructor(value: number, fromUnit: LengthUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -217,74 +217,74 @@ export class Length {
         return this.solarradiusesLazy = this.convertFromBase(LengthUnits.SolarRadiuses);
     }
 
-    public get Nanometer(): number {
-        if(this.nanometerLazy !== null){
-            return this.nanometerLazy;
+    public get Nanometers(): number {
+        if(this.nanometersLazy !== null){
+            return this.nanometersLazy;
         }
-        return this.nanometerLazy = this.convertFromBase(LengthUnits.Nanometer);
+        return this.nanometersLazy = this.convertFromBase(LengthUnits.Nanometers);
     }
 
-    public get Micrometer(): number {
-        if(this.micrometerLazy !== null){
-            return this.micrometerLazy;
+    public get Micrometers(): number {
+        if(this.micrometersLazy !== null){
+            return this.micrometersLazy;
         }
-        return this.micrometerLazy = this.convertFromBase(LengthUnits.Micrometer);
+        return this.micrometersLazy = this.convertFromBase(LengthUnits.Micrometers);
     }
 
-    public get Centimeter(): number {
-        if(this.centimeterLazy !== null){
-            return this.centimeterLazy;
+    public get Centimeters(): number {
+        if(this.centimetersLazy !== null){
+            return this.centimetersLazy;
         }
-        return this.centimeterLazy = this.convertFromBase(LengthUnits.Centimeter);
+        return this.centimetersLazy = this.convertFromBase(LengthUnits.Centimeters);
     }
 
-    public get Decimeter(): number {
-        if(this.decimeterLazy !== null){
-            return this.decimeterLazy;
+    public get Decimeters(): number {
+        if(this.decimetersLazy !== null){
+            return this.decimetersLazy;
         }
-        return this.decimeterLazy = this.convertFromBase(LengthUnits.Decimeter);
+        return this.decimetersLazy = this.convertFromBase(LengthUnits.Decimeters);
     }
 
-    public get Hectometer(): number {
-        if(this.hectometerLazy !== null){
-            return this.hectometerLazy;
+    public get Hectometers(): number {
+        if(this.hectometersLazy !== null){
+            return this.hectometersLazy;
         }
-        return this.hectometerLazy = this.convertFromBase(LengthUnits.Hectometer);
+        return this.hectometersLazy = this.convertFromBase(LengthUnits.Hectometers);
     }
 
-    public get Kilometer(): number {
-        if(this.kilometerLazy !== null){
-            return this.kilometerLazy;
+    public get Kilometers(): number {
+        if(this.kilometersLazy !== null){
+            return this.kilometersLazy;
         }
-        return this.kilometerLazy = this.convertFromBase(LengthUnits.Kilometer);
+        return this.kilometersLazy = this.convertFromBase(LengthUnits.Kilometers);
     }
 
-    public get Kiloparsec(): number {
-        if(this.kiloparsecLazy !== null){
-            return this.kiloparsecLazy;
+    public get Kiloparsecs(): number {
+        if(this.kiloparsecsLazy !== null){
+            return this.kiloparsecsLazy;
         }
-        return this.kiloparsecLazy = this.convertFromBase(LengthUnits.Kiloparsec);
+        return this.kiloparsecsLazy = this.convertFromBase(LengthUnits.Kiloparsecs);
     }
 
-    public get Megaparsec(): number {
-        if(this.megaparsecLazy !== null){
-            return this.megaparsecLazy;
+    public get Megaparsecs(): number {
+        if(this.megaparsecsLazy !== null){
+            return this.megaparsecsLazy;
         }
-        return this.megaparsecLazy = this.convertFromBase(LengthUnits.Megaparsec);
+        return this.megaparsecsLazy = this.convertFromBase(LengthUnits.Megaparsecs);
     }
 
-    public get KilolightYear(): number {
-        if(this.kilolightyearLazy !== null){
-            return this.kilolightyearLazy;
+    public get KilolightYears(): number {
+        if(this.kilolightyearsLazy !== null){
+            return this.kilolightyearsLazy;
         }
-        return this.kilolightyearLazy = this.convertFromBase(LengthUnits.KilolightYear);
+        return this.kilolightyearsLazy = this.convertFromBase(LengthUnits.KilolightYears);
     }
 
-    public get MegalightYear(): number {
-        if(this.megalightyearLazy !== null){
-            return this.megalightyearLazy;
+    public get MegalightYears(): number {
+        if(this.megalightyearsLazy !== null){
+            return this.megalightyearsLazy;
         }
-        return this.megalightyearLazy = this.convertFromBase(LengthUnits.MegalightYear);
+        return this.megalightyearsLazy = this.convertFromBase(LengthUnits.MegalightYears);
     }
 
     public static FromMeters(value: number): Length {
@@ -371,44 +371,44 @@ export class Length {
         return new Length(value, LengthUnits.SolarRadiuses);
     }
 
-    public static FromNanometer(value: number): Length {
-        return new Length(value, LengthUnits.Nanometer);
+    public static FromNanometers(value: number): Length {
+        return new Length(value, LengthUnits.Nanometers);
     }
 
-    public static FromMicrometer(value: number): Length {
-        return new Length(value, LengthUnits.Micrometer);
+    public static FromMicrometers(value: number): Length {
+        return new Length(value, LengthUnits.Micrometers);
     }
 
-    public static FromCentimeter(value: number): Length {
-        return new Length(value, LengthUnits.Centimeter);
+    public static FromCentimeters(value: number): Length {
+        return new Length(value, LengthUnits.Centimeters);
     }
 
-    public static FromDecimeter(value: number): Length {
-        return new Length(value, LengthUnits.Decimeter);
+    public static FromDecimeters(value: number): Length {
+        return new Length(value, LengthUnits.Decimeters);
     }
 
-    public static FromHectometer(value: number): Length {
-        return new Length(value, LengthUnits.Hectometer);
+    public static FromHectometers(value: number): Length {
+        return new Length(value, LengthUnits.Hectometers);
     }
 
-    public static FromKilometer(value: number): Length {
-        return new Length(value, LengthUnits.Kilometer);
+    public static FromKilometers(value: number): Length {
+        return new Length(value, LengthUnits.Kilometers);
     }
 
-    public static FromKiloparsec(value: number): Length {
-        return new Length(value, LengthUnits.Kiloparsec);
+    public static FromKiloparsecs(value: number): Length {
+        return new Length(value, LengthUnits.Kiloparsecs);
     }
 
-    public static FromMegaparsec(value: number): Length {
-        return new Length(value, LengthUnits.Megaparsec);
+    public static FromMegaparsecs(value: number): Length {
+        return new Length(value, LengthUnits.Megaparsecs);
     }
 
-    public static FromKilolightYear(value: number): Length {
-        return new Length(value, LengthUnits.KilolightYear);
+    public static FromKilolightYears(value: number): Length {
+        return new Length(value, LengthUnits.KilolightYears);
     }
 
-    public static FromMegalightYear(value: number): Length {
-        return new Length(value, LengthUnits.MegalightYear);
+    public static FromMegalightYears(value: number): Length {
+        return new Length(value, LengthUnits.MegalightYears);
     }
 
     private convertFromBase(toUnit: LengthUnits): number {
@@ -456,25 +456,25 @@ export class Length {
                 return this.value / 9.46073047258e15;
             case LengthUnits.SolarRadiuses:
                 return this.value / 6.95510000E+08;
-            case LengthUnits.Nanometer:
+            case LengthUnits.Nanometers:
                 return (this.value) / 1e-9;
-            case LengthUnits.Micrometer:
+            case LengthUnits.Micrometers:
                 return (this.value) / 0.000001;
-            case LengthUnits.Centimeter:
+            case LengthUnits.Centimeters:
                 return (this.value) / 0.01;
-            case LengthUnits.Decimeter:
+            case LengthUnits.Decimeters:
                 return (this.value) / 0.1;
-            case LengthUnits.Hectometer:
+            case LengthUnits.Hectometers:
                 return (this.value) / 100;
-            case LengthUnits.Kilometer:
+            case LengthUnits.Kilometers:
                 return (this.value) / 1000;
-            case LengthUnits.Kiloparsec:
+            case LengthUnits.Kiloparsecs:
                 return (this.value / 3.08567758128e16) / 1000;
-            case LengthUnits.Megaparsec:
+            case LengthUnits.Megaparsecs:
                 return (this.value / 3.08567758128e16) / 1000000;
-            case LengthUnits.KilolightYear:
+            case LengthUnits.KilolightYears:
                 return (this.value / 9.46073047258e15) / 1000;
-            case LengthUnits.MegalightYear:
+            case LengthUnits.MegalightYears:
                 return (this.value / 9.46073047258e15) / 1000000;
             default:
                 break;
@@ -527,25 +527,25 @@ export class Length {
                 return value * 9.46073047258e15;
             case LengthUnits.SolarRadiuses:
                 return value * 6.95510000E+08;
-            case LengthUnits.Nanometer:
+            case LengthUnits.Nanometers:
                 return (value) * 1e-9;
-            case LengthUnits.Micrometer:
+            case LengthUnits.Micrometers:
                 return (value) * 0.000001;
-            case LengthUnits.Centimeter:
+            case LengthUnits.Centimeters:
                 return (value) * 0.01;
-            case LengthUnits.Decimeter:
+            case LengthUnits.Decimeters:
                 return (value) * 0.1;
-            case LengthUnits.Hectometer:
+            case LengthUnits.Hectometers:
                 return (value) * 100;
-            case LengthUnits.Kilometer:
+            case LengthUnits.Kilometers:
                 return (value) * 1000;
-            case LengthUnits.Kiloparsec:
+            case LengthUnits.Kiloparsecs:
                 return (value * 3.08567758128e16) * 1000;
-            case LengthUnits.Megaparsec:
+            case LengthUnits.Megaparsecs:
                 return (value * 3.08567758128e16) * 1000000;
-            case LengthUnits.KilolightYear:
+            case LengthUnits.KilolightYears:
                 return (value * 9.46073047258e15) * 1000;
-            case LengthUnits.MegalightYear:
+            case LengthUnits.MegalightYears:
                 return (value * 9.46073047258e15) * 1000000;
             default:
                 break;
@@ -599,26 +599,26 @@ export class Length {
                 return this.LightYears + ` ly`;
             case LengthUnits.SolarRadiuses:
                 return this.SolarRadiuses + ` R⊙`;
-            case LengthUnits.Nanometer:
-                return this.Nanometer + ` m`;
-            case LengthUnits.Micrometer:
-                return this.Micrometer + ` m`;
-            case LengthUnits.Centimeter:
-                return this.Centimeter + ` m`;
-            case LengthUnits.Decimeter:
-                return this.Decimeter + ` m`;
-            case LengthUnits.Hectometer:
-                return this.Hectometer + ` m`;
-            case LengthUnits.Kilometer:
-                return this.Kilometer + ` m`;
-            case LengthUnits.Kiloparsec:
-                return this.Kiloparsec + ` pc`;
-            case LengthUnits.Megaparsec:
-                return this.Megaparsec + ` pc`;
-            case LengthUnits.KilolightYear:
-                return this.KilolightYear + ` ly`;
-            case LengthUnits.MegalightYear:
-                return this.MegalightYear + ` ly`;
+            case LengthUnits.Nanometers:
+                return this.Nanometers + ` m`;
+            case LengthUnits.Micrometers:
+                return this.Micrometers + ` m`;
+            case LengthUnits.Centimeters:
+                return this.Centimeters + ` m`;
+            case LengthUnits.Decimeters:
+                return this.Decimeters + ` m`;
+            case LengthUnits.Hectometers:
+                return this.Hectometers + ` m`;
+            case LengthUnits.Kilometers:
+                return this.Kilometers + ` m`;
+            case LengthUnits.Kiloparsecs:
+                return this.Kiloparsecs + ` pc`;
+            case LengthUnits.Megaparsecs:
+                return this.Megaparsecs + ` pc`;
+            case LengthUnits.KilolightYears:
+                return this.KilolightYears + ` ly`;
+            case LengthUnits.MegalightYears:
+                return this.MegalightYears + ` ly`;
         default:
             break;
         }

@@ -2,35 +2,35 @@ export declare enum PressureChangeRateUnits {
     PascalsPerSecond = 0,
     PascalsPerMinute = 1,
     AtmospheresPerSecond = 2,
-    KilopascalPerSecond = 3,
-    MegapascalPerSecond = 4,
-    KilopascalPerMinute = 5,
-    MegapascalPerMinute = 6
+    KilopascalsPerSecond = 3,
+    MegapascalsPerSecond = 4,
+    KilopascalsPerMinute = 5,
+    MegapascalsPerMinute = 6
 }
 export declare class PressureChangeRate {
     private value;
     private pascalspersecondLazy;
     private pascalsperminuteLazy;
     private atmospherespersecondLazy;
-    private kilopascalpersecondLazy;
-    private megapascalpersecondLazy;
-    private kilopascalperminuteLazy;
-    private megapascalperminuteLazy;
+    private kilopascalspersecondLazy;
+    private megapascalspersecondLazy;
+    private kilopascalsperminuteLazy;
+    private megapascalsperminuteLazy;
     constructor(value: number, fromUnit: PressureChangeRateUnits);
     get PascalsPerSecond(): number;
     get PascalsPerMinute(): number;
     get AtmospheresPerSecond(): number;
-    get KilopascalPerSecond(): number;
-    get MegapascalPerSecond(): number;
-    get KilopascalPerMinute(): number;
-    get MegapascalPerMinute(): number;
+    get KilopascalsPerSecond(): number;
+    get MegapascalsPerSecond(): number;
+    get KilopascalsPerMinute(): number;
+    get MegapascalsPerMinute(): number;
     static FromPascalsPerSecond(value: number): PressureChangeRate;
     static FromPascalsPerMinute(value: number): PressureChangeRate;
     static FromAtmospheresPerSecond(value: number): PressureChangeRate;
-    static FromKilopascalPerSecond(value: number): PressureChangeRate;
-    static FromMegapascalPerSecond(value: number): PressureChangeRate;
-    static FromKilopascalPerMinute(value: number): PressureChangeRate;
-    static FromMegapascalPerMinute(value: number): PressureChangeRate;
+    static FromKilopascalsPerSecond(value: number): PressureChangeRate;
+    static FromMegapascalsPerSecond(value: number): PressureChangeRate;
+    static FromKilopascalsPerMinute(value: number): PressureChangeRate;
+    static FromMegapascalsPerMinute(value: number): PressureChangeRate;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: PressureChangeRateUnits): string;

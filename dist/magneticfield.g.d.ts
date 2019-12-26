@@ -1,20 +1,20 @@
 export declare enum MagneticFieldUnits {
     Teslas = 0,
-    Nanotesla = 1,
-    Microtesla = 2
+    Nanoteslas = 1,
+    Microteslas = 2
 }
 export declare class MagneticField {
     private value;
     private teslasLazy;
-    private nanoteslaLazy;
-    private microteslaLazy;
+    private nanoteslasLazy;
+    private microteslasLazy;
     constructor(value: number, fromUnit: MagneticFieldUnits);
     get Teslas(): number;
-    get Nanotesla(): number;
-    get Microtesla(): number;
+    get Nanoteslas(): number;
+    get Microteslas(): number;
     static FromTeslas(value: number): MagneticField;
-    static FromNanotesla(value: number): MagneticField;
-    static FromMicrotesla(value: number): MagneticField;
+    static FromNanoteslas(value: number): MagneticField;
+    static FromMicroteslas(value: number): MagneticField;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: MagneticFieldUnits): string;

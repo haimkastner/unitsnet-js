@@ -1,20 +1,20 @@
 export enum CapacitanceUnits {
     Farads,
-    Picofarad,
-    Nanofarad,
-    Microfarad,
-    Kilofarad,
-    Megafarad
+    Picofarads,
+    Nanofarads,
+    Microfarads,
+    Kilofarads,
+    Megafarads
 }
 
 export class Capacitance {
     private value: number;
     private faradsLazy: number | null = null;
-    private picofaradLazy: number | null = null;
-    private nanofaradLazy: number | null = null;
-    private microfaradLazy: number | null = null;
-    private kilofaradLazy: number | null = null;
-    private megafaradLazy: number | null = null;
+    private picofaradsLazy: number | null = null;
+    private nanofaradsLazy: number | null = null;
+    private microfaradsLazy: number | null = null;
+    private kilofaradsLazy: number | null = null;
+    private megafaradsLazy: number | null = null;
 
     public constructor(value: number, fromUnit: CapacitanceUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -27,63 +27,63 @@ export class Capacitance {
         return this.faradsLazy = this.convertFromBase(CapacitanceUnits.Farads);
     }
 
-    public get Picofarad(): number {
-        if(this.picofaradLazy !== null){
-            return this.picofaradLazy;
+    public get Picofarads(): number {
+        if(this.picofaradsLazy !== null){
+            return this.picofaradsLazy;
         }
-        return this.picofaradLazy = this.convertFromBase(CapacitanceUnits.Picofarad);
+        return this.picofaradsLazy = this.convertFromBase(CapacitanceUnits.Picofarads);
     }
 
-    public get Nanofarad(): number {
-        if(this.nanofaradLazy !== null){
-            return this.nanofaradLazy;
+    public get Nanofarads(): number {
+        if(this.nanofaradsLazy !== null){
+            return this.nanofaradsLazy;
         }
-        return this.nanofaradLazy = this.convertFromBase(CapacitanceUnits.Nanofarad);
+        return this.nanofaradsLazy = this.convertFromBase(CapacitanceUnits.Nanofarads);
     }
 
-    public get Microfarad(): number {
-        if(this.microfaradLazy !== null){
-            return this.microfaradLazy;
+    public get Microfarads(): number {
+        if(this.microfaradsLazy !== null){
+            return this.microfaradsLazy;
         }
-        return this.microfaradLazy = this.convertFromBase(CapacitanceUnits.Microfarad);
+        return this.microfaradsLazy = this.convertFromBase(CapacitanceUnits.Microfarads);
     }
 
-    public get Kilofarad(): number {
-        if(this.kilofaradLazy !== null){
-            return this.kilofaradLazy;
+    public get Kilofarads(): number {
+        if(this.kilofaradsLazy !== null){
+            return this.kilofaradsLazy;
         }
-        return this.kilofaradLazy = this.convertFromBase(CapacitanceUnits.Kilofarad);
+        return this.kilofaradsLazy = this.convertFromBase(CapacitanceUnits.Kilofarads);
     }
 
-    public get Megafarad(): number {
-        if(this.megafaradLazy !== null){
-            return this.megafaradLazy;
+    public get Megafarads(): number {
+        if(this.megafaradsLazy !== null){
+            return this.megafaradsLazy;
         }
-        return this.megafaradLazy = this.convertFromBase(CapacitanceUnits.Megafarad);
+        return this.megafaradsLazy = this.convertFromBase(CapacitanceUnits.Megafarads);
     }
 
     public static FromFarads(value: number): Capacitance {
         return new Capacitance(value, CapacitanceUnits.Farads);
     }
 
-    public static FromPicofarad(value: number): Capacitance {
-        return new Capacitance(value, CapacitanceUnits.Picofarad);
+    public static FromPicofarads(value: number): Capacitance {
+        return new Capacitance(value, CapacitanceUnits.Picofarads);
     }
 
-    public static FromNanofarad(value: number): Capacitance {
-        return new Capacitance(value, CapacitanceUnits.Nanofarad);
+    public static FromNanofarads(value: number): Capacitance {
+        return new Capacitance(value, CapacitanceUnits.Nanofarads);
     }
 
-    public static FromMicrofarad(value: number): Capacitance {
-        return new Capacitance(value, CapacitanceUnits.Microfarad);
+    public static FromMicrofarads(value: number): Capacitance {
+        return new Capacitance(value, CapacitanceUnits.Microfarads);
     }
 
-    public static FromKilofarad(value: number): Capacitance {
-        return new Capacitance(value, CapacitanceUnits.Kilofarad);
+    public static FromKilofarads(value: number): Capacitance {
+        return new Capacitance(value, CapacitanceUnits.Kilofarads);
     }
 
-    public static FromMegafarad(value: number): Capacitance {
-        return new Capacitance(value, CapacitanceUnits.Megafarad);
+    public static FromMegafarads(value: number): Capacitance {
+        return new Capacitance(value, CapacitanceUnits.Megafarads);
     }
 
     private convertFromBase(toUnit: CapacitanceUnits): number {
@@ -91,15 +91,15 @@ export class Capacitance {
                 
             case CapacitanceUnits.Farads:
                 return this.value;
-            case CapacitanceUnits.Picofarad:
+            case CapacitanceUnits.Picofarads:
                 return (this.value) / 1e-12;
-            case CapacitanceUnits.Nanofarad:
+            case CapacitanceUnits.Nanofarads:
                 return (this.value) / 1e-9;
-            case CapacitanceUnits.Microfarad:
+            case CapacitanceUnits.Microfarads:
                 return (this.value) / 0.000001;
-            case CapacitanceUnits.Kilofarad:
+            case CapacitanceUnits.Kilofarads:
                 return (this.value) / 1000;
-            case CapacitanceUnits.Megafarad:
+            case CapacitanceUnits.Megafarads:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -112,15 +112,15 @@ export class Capacitance {
                 
             case CapacitanceUnits.Farads:
                 return value;
-            case CapacitanceUnits.Picofarad:
+            case CapacitanceUnits.Picofarads:
                 return (value) * 1e-12;
-            case CapacitanceUnits.Nanofarad:
+            case CapacitanceUnits.Nanofarads:
                 return (value) * 1e-9;
-            case CapacitanceUnits.Microfarad:
+            case CapacitanceUnits.Microfarads:
                 return (value) * 0.000001;
-            case CapacitanceUnits.Kilofarad:
+            case CapacitanceUnits.Kilofarads:
                 return (value) * 1000;
-            case CapacitanceUnits.Megafarad:
+            case CapacitanceUnits.Megafarads:
                 return (value) * 1000000;
             default:
                 break;
@@ -134,16 +134,16 @@ export class Capacitance {
             
             case CapacitanceUnits.Farads:
                 return this.Farads + ` F`;
-            case CapacitanceUnits.Picofarad:
-                return this.Picofarad + ` F`;
-            case CapacitanceUnits.Nanofarad:
-                return this.Nanofarad + ` F`;
-            case CapacitanceUnits.Microfarad:
-                return this.Microfarad + ` F`;
-            case CapacitanceUnits.Kilofarad:
-                return this.Kilofarad + ` F`;
-            case CapacitanceUnits.Megafarad:
-                return this.Megafarad + ` F`;
+            case CapacitanceUnits.Picofarads:
+                return this.Picofarads + ` F`;
+            case CapacitanceUnits.Nanofarads:
+                return this.Nanofarads + ` F`;
+            case CapacitanceUnits.Microfarads:
+                return this.Microfarads + ` F`;
+            case CapacitanceUnits.Kilofarads:
+                return this.Kilofarads + ` F`;
+            case CapacitanceUnits.Megafarads:
+                return this.Megafarads + ` F`;
         default:
             break;
         }

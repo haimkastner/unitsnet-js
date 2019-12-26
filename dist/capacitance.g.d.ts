@@ -1,32 +1,32 @@
 export declare enum CapacitanceUnits {
     Farads = 0,
-    Picofarad = 1,
-    Nanofarad = 2,
-    Microfarad = 3,
-    Kilofarad = 4,
-    Megafarad = 5
+    Picofarads = 1,
+    Nanofarads = 2,
+    Microfarads = 3,
+    Kilofarads = 4,
+    Megafarads = 5
 }
 export declare class Capacitance {
     private value;
     private faradsLazy;
-    private picofaradLazy;
-    private nanofaradLazy;
-    private microfaradLazy;
-    private kilofaradLazy;
-    private megafaradLazy;
+    private picofaradsLazy;
+    private nanofaradsLazy;
+    private microfaradsLazy;
+    private kilofaradsLazy;
+    private megafaradsLazy;
     constructor(value: number, fromUnit: CapacitanceUnits);
     get Farads(): number;
-    get Picofarad(): number;
-    get Nanofarad(): number;
-    get Microfarad(): number;
-    get Kilofarad(): number;
-    get Megafarad(): number;
+    get Picofarads(): number;
+    get Nanofarads(): number;
+    get Microfarads(): number;
+    get Kilofarads(): number;
+    get Megafarads(): number;
     static FromFarads(value: number): Capacitance;
-    static FromPicofarad(value: number): Capacitance;
-    static FromNanofarad(value: number): Capacitance;
-    static FromMicrofarad(value: number): Capacitance;
-    static FromKilofarad(value: number): Capacitance;
-    static FromMegafarad(value: number): Capacitance;
+    static FromPicofarads(value: number): Capacitance;
+    static FromNanofarads(value: number): Capacitance;
+    static FromMicrofarads(value: number): Capacitance;
+    static FromKilofarads(value: number): Capacitance;
+    static FromMegafarads(value: number): Capacitance;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: CapacitanceUnits): string;

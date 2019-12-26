@@ -3,42 +3,42 @@ export enum PowerDensityUnits {
     WattsPerCubicInch,
     WattsPerCubicFoot,
     WattsPerLiter,
-    PicowattPerCubicMeter,
-    NanowattPerCubicMeter,
-    MicrowattPerCubicMeter,
-    DeciwattPerCubicMeter,
-    DecawattPerCubicMeter,
-    KilowattPerCubicMeter,
-    MegawattPerCubicMeter,
-    GigawattPerCubicMeter,
-    TerawattPerCubicMeter,
-    PicowattPerCubicInch,
-    NanowattPerCubicInch,
-    MicrowattPerCubicInch,
-    DeciwattPerCubicInch,
-    DecawattPerCubicInch,
-    KilowattPerCubicInch,
-    MegawattPerCubicInch,
-    GigawattPerCubicInch,
-    TerawattPerCubicInch,
-    PicowattPerCubicFoot,
-    NanowattPerCubicFoot,
-    MicrowattPerCubicFoot,
-    DeciwattPerCubicFoot,
-    DecawattPerCubicFoot,
-    KilowattPerCubicFoot,
-    MegawattPerCubicFoot,
-    GigawattPerCubicFoot,
-    TerawattPerCubicFoot,
-    PicowattPerLiter,
-    NanowattPerLiter,
-    MicrowattPerLiter,
-    DeciwattPerLiter,
-    DecawattPerLiter,
-    KilowattPerLiter,
-    MegawattPerLiter,
-    GigawattPerLiter,
-    TerawattPerLiter
+    PicowattsPerCubicMeter,
+    NanowattsPerCubicMeter,
+    MicrowattsPerCubicMeter,
+    DeciwattsPerCubicMeter,
+    DecawattsPerCubicMeter,
+    KilowattsPerCubicMeter,
+    MegawattsPerCubicMeter,
+    GigawattsPerCubicMeter,
+    TerawattsPerCubicMeter,
+    PicowattsPerCubicInch,
+    NanowattsPerCubicInch,
+    MicrowattsPerCubicInch,
+    DeciwattsPerCubicInch,
+    DecawattsPerCubicInch,
+    KilowattsPerCubicInch,
+    MegawattsPerCubicInch,
+    GigawattsPerCubicInch,
+    TerawattsPerCubicInch,
+    PicowattsPerCubicFoot,
+    NanowattsPerCubicFoot,
+    MicrowattsPerCubicFoot,
+    DeciwattsPerCubicFoot,
+    DecawattsPerCubicFoot,
+    KilowattsPerCubicFoot,
+    MegawattsPerCubicFoot,
+    GigawattsPerCubicFoot,
+    TerawattsPerCubicFoot,
+    PicowattsPerLiter,
+    NanowattsPerLiter,
+    MicrowattsPerLiter,
+    DeciwattsPerLiter,
+    DecawattsPerLiter,
+    KilowattsPerLiter,
+    MegawattsPerLiter,
+    GigawattsPerLiter,
+    TerawattsPerLiter
 }
 
 export class PowerDensity {
@@ -47,42 +47,42 @@ export class PowerDensity {
     private wattspercubicinchLazy: number | null = null;
     private wattspercubicfootLazy: number | null = null;
     private wattsperliterLazy: number | null = null;
-    private picowattpercubicmeterLazy: number | null = null;
-    private nanowattpercubicmeterLazy: number | null = null;
-    private microwattpercubicmeterLazy: number | null = null;
-    private deciwattpercubicmeterLazy: number | null = null;
-    private decawattpercubicmeterLazy: number | null = null;
-    private kilowattpercubicmeterLazy: number | null = null;
-    private megawattpercubicmeterLazy: number | null = null;
-    private gigawattpercubicmeterLazy: number | null = null;
-    private terawattpercubicmeterLazy: number | null = null;
-    private picowattpercubicinchLazy: number | null = null;
-    private nanowattpercubicinchLazy: number | null = null;
-    private microwattpercubicinchLazy: number | null = null;
-    private deciwattpercubicinchLazy: number | null = null;
-    private decawattpercubicinchLazy: number | null = null;
-    private kilowattpercubicinchLazy: number | null = null;
-    private megawattpercubicinchLazy: number | null = null;
-    private gigawattpercubicinchLazy: number | null = null;
-    private terawattpercubicinchLazy: number | null = null;
-    private picowattpercubicfootLazy: number | null = null;
-    private nanowattpercubicfootLazy: number | null = null;
-    private microwattpercubicfootLazy: number | null = null;
-    private deciwattpercubicfootLazy: number | null = null;
-    private decawattpercubicfootLazy: number | null = null;
-    private kilowattpercubicfootLazy: number | null = null;
-    private megawattpercubicfootLazy: number | null = null;
-    private gigawattpercubicfootLazy: number | null = null;
-    private terawattpercubicfootLazy: number | null = null;
-    private picowattperliterLazy: number | null = null;
-    private nanowattperliterLazy: number | null = null;
-    private microwattperliterLazy: number | null = null;
-    private deciwattperliterLazy: number | null = null;
-    private decawattperliterLazy: number | null = null;
-    private kilowattperliterLazy: number | null = null;
-    private megawattperliterLazy: number | null = null;
-    private gigawattperliterLazy: number | null = null;
-    private terawattperliterLazy: number | null = null;
+    private picowattspercubicmeterLazy: number | null = null;
+    private nanowattspercubicmeterLazy: number | null = null;
+    private microwattspercubicmeterLazy: number | null = null;
+    private deciwattspercubicmeterLazy: number | null = null;
+    private decawattspercubicmeterLazy: number | null = null;
+    private kilowattspercubicmeterLazy: number | null = null;
+    private megawattspercubicmeterLazy: number | null = null;
+    private gigawattspercubicmeterLazy: number | null = null;
+    private terawattspercubicmeterLazy: number | null = null;
+    private picowattspercubicinchLazy: number | null = null;
+    private nanowattspercubicinchLazy: number | null = null;
+    private microwattspercubicinchLazy: number | null = null;
+    private deciwattspercubicinchLazy: number | null = null;
+    private decawattspercubicinchLazy: number | null = null;
+    private kilowattspercubicinchLazy: number | null = null;
+    private megawattspercubicinchLazy: number | null = null;
+    private gigawattspercubicinchLazy: number | null = null;
+    private terawattspercubicinchLazy: number | null = null;
+    private picowattspercubicfootLazy: number | null = null;
+    private nanowattspercubicfootLazy: number | null = null;
+    private microwattspercubicfootLazy: number | null = null;
+    private deciwattspercubicfootLazy: number | null = null;
+    private decawattspercubicfootLazy: number | null = null;
+    private kilowattspercubicfootLazy: number | null = null;
+    private megawattspercubicfootLazy: number | null = null;
+    private gigawattspercubicfootLazy: number | null = null;
+    private terawattspercubicfootLazy: number | null = null;
+    private picowattsperliterLazy: number | null = null;
+    private nanowattsperliterLazy: number | null = null;
+    private microwattsperliterLazy: number | null = null;
+    private deciwattsperliterLazy: number | null = null;
+    private decawattsperliterLazy: number | null = null;
+    private kilowattsperliterLazy: number | null = null;
+    private megawattsperliterLazy: number | null = null;
+    private gigawattsperliterLazy: number | null = null;
+    private terawattsperliterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: PowerDensityUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -116,256 +116,256 @@ export class PowerDensity {
         return this.wattsperliterLazy = this.convertFromBase(PowerDensityUnits.WattsPerLiter);
     }
 
-    public get PicowattPerCubicMeter(): number {
-        if(this.picowattpercubicmeterLazy !== null){
-            return this.picowattpercubicmeterLazy;
+    public get PicowattsPerCubicMeter(): number {
+        if(this.picowattspercubicmeterLazy !== null){
+            return this.picowattspercubicmeterLazy;
         }
-        return this.picowattpercubicmeterLazy = this.convertFromBase(PowerDensityUnits.PicowattPerCubicMeter);
+        return this.picowattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.PicowattsPerCubicMeter);
     }
 
-    public get NanowattPerCubicMeter(): number {
-        if(this.nanowattpercubicmeterLazy !== null){
-            return this.nanowattpercubicmeterLazy;
+    public get NanowattsPerCubicMeter(): number {
+        if(this.nanowattspercubicmeterLazy !== null){
+            return this.nanowattspercubicmeterLazy;
         }
-        return this.nanowattpercubicmeterLazy = this.convertFromBase(PowerDensityUnits.NanowattPerCubicMeter);
+        return this.nanowattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.NanowattsPerCubicMeter);
     }
 
-    public get MicrowattPerCubicMeter(): number {
-        if(this.microwattpercubicmeterLazy !== null){
-            return this.microwattpercubicmeterLazy;
+    public get MicrowattsPerCubicMeter(): number {
+        if(this.microwattspercubicmeterLazy !== null){
+            return this.microwattspercubicmeterLazy;
         }
-        return this.microwattpercubicmeterLazy = this.convertFromBase(PowerDensityUnits.MicrowattPerCubicMeter);
+        return this.microwattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.MicrowattsPerCubicMeter);
     }
 
-    public get DeciwattPerCubicMeter(): number {
-        if(this.deciwattpercubicmeterLazy !== null){
-            return this.deciwattpercubicmeterLazy;
+    public get DeciwattsPerCubicMeter(): number {
+        if(this.deciwattspercubicmeterLazy !== null){
+            return this.deciwattspercubicmeterLazy;
         }
-        return this.deciwattpercubicmeterLazy = this.convertFromBase(PowerDensityUnits.DeciwattPerCubicMeter);
+        return this.deciwattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.DeciwattsPerCubicMeter);
     }
 
-    public get DecawattPerCubicMeter(): number {
-        if(this.decawattpercubicmeterLazy !== null){
-            return this.decawattpercubicmeterLazy;
+    public get DecawattsPerCubicMeter(): number {
+        if(this.decawattspercubicmeterLazy !== null){
+            return this.decawattspercubicmeterLazy;
         }
-        return this.decawattpercubicmeterLazy = this.convertFromBase(PowerDensityUnits.DecawattPerCubicMeter);
+        return this.decawattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.DecawattsPerCubicMeter);
     }
 
-    public get KilowattPerCubicMeter(): number {
-        if(this.kilowattpercubicmeterLazy !== null){
-            return this.kilowattpercubicmeterLazy;
+    public get KilowattsPerCubicMeter(): number {
+        if(this.kilowattspercubicmeterLazy !== null){
+            return this.kilowattspercubicmeterLazy;
         }
-        return this.kilowattpercubicmeterLazy = this.convertFromBase(PowerDensityUnits.KilowattPerCubicMeter);
+        return this.kilowattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.KilowattsPerCubicMeter);
     }
 
-    public get MegawattPerCubicMeter(): number {
-        if(this.megawattpercubicmeterLazy !== null){
-            return this.megawattpercubicmeterLazy;
+    public get MegawattsPerCubicMeter(): number {
+        if(this.megawattspercubicmeterLazy !== null){
+            return this.megawattspercubicmeterLazy;
         }
-        return this.megawattpercubicmeterLazy = this.convertFromBase(PowerDensityUnits.MegawattPerCubicMeter);
+        return this.megawattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.MegawattsPerCubicMeter);
     }
 
-    public get GigawattPerCubicMeter(): number {
-        if(this.gigawattpercubicmeterLazy !== null){
-            return this.gigawattpercubicmeterLazy;
+    public get GigawattsPerCubicMeter(): number {
+        if(this.gigawattspercubicmeterLazy !== null){
+            return this.gigawattspercubicmeterLazy;
         }
-        return this.gigawattpercubicmeterLazy = this.convertFromBase(PowerDensityUnits.GigawattPerCubicMeter);
+        return this.gigawattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.GigawattsPerCubicMeter);
     }
 
-    public get TerawattPerCubicMeter(): number {
-        if(this.terawattpercubicmeterLazy !== null){
-            return this.terawattpercubicmeterLazy;
+    public get TerawattsPerCubicMeter(): number {
+        if(this.terawattspercubicmeterLazy !== null){
+            return this.terawattspercubicmeterLazy;
         }
-        return this.terawattpercubicmeterLazy = this.convertFromBase(PowerDensityUnits.TerawattPerCubicMeter);
+        return this.terawattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.TerawattsPerCubicMeter);
     }
 
-    public get PicowattPerCubicInch(): number {
-        if(this.picowattpercubicinchLazy !== null){
-            return this.picowattpercubicinchLazy;
+    public get PicowattsPerCubicInch(): number {
+        if(this.picowattspercubicinchLazy !== null){
+            return this.picowattspercubicinchLazy;
         }
-        return this.picowattpercubicinchLazy = this.convertFromBase(PowerDensityUnits.PicowattPerCubicInch);
+        return this.picowattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.PicowattsPerCubicInch);
     }
 
-    public get NanowattPerCubicInch(): number {
-        if(this.nanowattpercubicinchLazy !== null){
-            return this.nanowattpercubicinchLazy;
+    public get NanowattsPerCubicInch(): number {
+        if(this.nanowattspercubicinchLazy !== null){
+            return this.nanowattspercubicinchLazy;
         }
-        return this.nanowattpercubicinchLazy = this.convertFromBase(PowerDensityUnits.NanowattPerCubicInch);
+        return this.nanowattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.NanowattsPerCubicInch);
     }
 
-    public get MicrowattPerCubicInch(): number {
-        if(this.microwattpercubicinchLazy !== null){
-            return this.microwattpercubicinchLazy;
+    public get MicrowattsPerCubicInch(): number {
+        if(this.microwattspercubicinchLazy !== null){
+            return this.microwattspercubicinchLazy;
         }
-        return this.microwattpercubicinchLazy = this.convertFromBase(PowerDensityUnits.MicrowattPerCubicInch);
+        return this.microwattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.MicrowattsPerCubicInch);
     }
 
-    public get DeciwattPerCubicInch(): number {
-        if(this.deciwattpercubicinchLazy !== null){
-            return this.deciwattpercubicinchLazy;
+    public get DeciwattsPerCubicInch(): number {
+        if(this.deciwattspercubicinchLazy !== null){
+            return this.deciwattspercubicinchLazy;
         }
-        return this.deciwattpercubicinchLazy = this.convertFromBase(PowerDensityUnits.DeciwattPerCubicInch);
+        return this.deciwattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.DeciwattsPerCubicInch);
     }
 
-    public get DecawattPerCubicInch(): number {
-        if(this.decawattpercubicinchLazy !== null){
-            return this.decawattpercubicinchLazy;
+    public get DecawattsPerCubicInch(): number {
+        if(this.decawattspercubicinchLazy !== null){
+            return this.decawattspercubicinchLazy;
         }
-        return this.decawattpercubicinchLazy = this.convertFromBase(PowerDensityUnits.DecawattPerCubicInch);
+        return this.decawattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.DecawattsPerCubicInch);
     }
 
-    public get KilowattPerCubicInch(): number {
-        if(this.kilowattpercubicinchLazy !== null){
-            return this.kilowattpercubicinchLazy;
+    public get KilowattsPerCubicInch(): number {
+        if(this.kilowattspercubicinchLazy !== null){
+            return this.kilowattspercubicinchLazy;
         }
-        return this.kilowattpercubicinchLazy = this.convertFromBase(PowerDensityUnits.KilowattPerCubicInch);
+        return this.kilowattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.KilowattsPerCubicInch);
     }
 
-    public get MegawattPerCubicInch(): number {
-        if(this.megawattpercubicinchLazy !== null){
-            return this.megawattpercubicinchLazy;
+    public get MegawattsPerCubicInch(): number {
+        if(this.megawattspercubicinchLazy !== null){
+            return this.megawattspercubicinchLazy;
         }
-        return this.megawattpercubicinchLazy = this.convertFromBase(PowerDensityUnits.MegawattPerCubicInch);
+        return this.megawattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.MegawattsPerCubicInch);
     }
 
-    public get GigawattPerCubicInch(): number {
-        if(this.gigawattpercubicinchLazy !== null){
-            return this.gigawattpercubicinchLazy;
+    public get GigawattsPerCubicInch(): number {
+        if(this.gigawattspercubicinchLazy !== null){
+            return this.gigawattspercubicinchLazy;
         }
-        return this.gigawattpercubicinchLazy = this.convertFromBase(PowerDensityUnits.GigawattPerCubicInch);
+        return this.gigawattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.GigawattsPerCubicInch);
     }
 
-    public get TerawattPerCubicInch(): number {
-        if(this.terawattpercubicinchLazy !== null){
-            return this.terawattpercubicinchLazy;
+    public get TerawattsPerCubicInch(): number {
+        if(this.terawattspercubicinchLazy !== null){
+            return this.terawattspercubicinchLazy;
         }
-        return this.terawattpercubicinchLazy = this.convertFromBase(PowerDensityUnits.TerawattPerCubicInch);
+        return this.terawattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.TerawattsPerCubicInch);
     }
 
-    public get PicowattPerCubicFoot(): number {
-        if(this.picowattpercubicfootLazy !== null){
-            return this.picowattpercubicfootLazy;
+    public get PicowattsPerCubicFoot(): number {
+        if(this.picowattspercubicfootLazy !== null){
+            return this.picowattspercubicfootLazy;
         }
-        return this.picowattpercubicfootLazy = this.convertFromBase(PowerDensityUnits.PicowattPerCubicFoot);
+        return this.picowattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.PicowattsPerCubicFoot);
     }
 
-    public get NanowattPerCubicFoot(): number {
-        if(this.nanowattpercubicfootLazy !== null){
-            return this.nanowattpercubicfootLazy;
+    public get NanowattsPerCubicFoot(): number {
+        if(this.nanowattspercubicfootLazy !== null){
+            return this.nanowattspercubicfootLazy;
         }
-        return this.nanowattpercubicfootLazy = this.convertFromBase(PowerDensityUnits.NanowattPerCubicFoot);
+        return this.nanowattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.NanowattsPerCubicFoot);
     }
 
-    public get MicrowattPerCubicFoot(): number {
-        if(this.microwattpercubicfootLazy !== null){
-            return this.microwattpercubicfootLazy;
+    public get MicrowattsPerCubicFoot(): number {
+        if(this.microwattspercubicfootLazy !== null){
+            return this.microwattspercubicfootLazy;
         }
-        return this.microwattpercubicfootLazy = this.convertFromBase(PowerDensityUnits.MicrowattPerCubicFoot);
+        return this.microwattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.MicrowattsPerCubicFoot);
     }
 
-    public get DeciwattPerCubicFoot(): number {
-        if(this.deciwattpercubicfootLazy !== null){
-            return this.deciwattpercubicfootLazy;
+    public get DeciwattsPerCubicFoot(): number {
+        if(this.deciwattspercubicfootLazy !== null){
+            return this.deciwattspercubicfootLazy;
         }
-        return this.deciwattpercubicfootLazy = this.convertFromBase(PowerDensityUnits.DeciwattPerCubicFoot);
+        return this.deciwattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.DeciwattsPerCubicFoot);
     }
 
-    public get DecawattPerCubicFoot(): number {
-        if(this.decawattpercubicfootLazy !== null){
-            return this.decawattpercubicfootLazy;
+    public get DecawattsPerCubicFoot(): number {
+        if(this.decawattspercubicfootLazy !== null){
+            return this.decawattspercubicfootLazy;
         }
-        return this.decawattpercubicfootLazy = this.convertFromBase(PowerDensityUnits.DecawattPerCubicFoot);
+        return this.decawattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.DecawattsPerCubicFoot);
     }
 
-    public get KilowattPerCubicFoot(): number {
-        if(this.kilowattpercubicfootLazy !== null){
-            return this.kilowattpercubicfootLazy;
+    public get KilowattsPerCubicFoot(): number {
+        if(this.kilowattspercubicfootLazy !== null){
+            return this.kilowattspercubicfootLazy;
         }
-        return this.kilowattpercubicfootLazy = this.convertFromBase(PowerDensityUnits.KilowattPerCubicFoot);
+        return this.kilowattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.KilowattsPerCubicFoot);
     }
 
-    public get MegawattPerCubicFoot(): number {
-        if(this.megawattpercubicfootLazy !== null){
-            return this.megawattpercubicfootLazy;
+    public get MegawattsPerCubicFoot(): number {
+        if(this.megawattspercubicfootLazy !== null){
+            return this.megawattspercubicfootLazy;
         }
-        return this.megawattpercubicfootLazy = this.convertFromBase(PowerDensityUnits.MegawattPerCubicFoot);
+        return this.megawattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.MegawattsPerCubicFoot);
     }
 
-    public get GigawattPerCubicFoot(): number {
-        if(this.gigawattpercubicfootLazy !== null){
-            return this.gigawattpercubicfootLazy;
+    public get GigawattsPerCubicFoot(): number {
+        if(this.gigawattspercubicfootLazy !== null){
+            return this.gigawattspercubicfootLazy;
         }
-        return this.gigawattpercubicfootLazy = this.convertFromBase(PowerDensityUnits.GigawattPerCubicFoot);
+        return this.gigawattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.GigawattsPerCubicFoot);
     }
 
-    public get TerawattPerCubicFoot(): number {
-        if(this.terawattpercubicfootLazy !== null){
-            return this.terawattpercubicfootLazy;
+    public get TerawattsPerCubicFoot(): number {
+        if(this.terawattspercubicfootLazy !== null){
+            return this.terawattspercubicfootLazy;
         }
-        return this.terawattpercubicfootLazy = this.convertFromBase(PowerDensityUnits.TerawattPerCubicFoot);
+        return this.terawattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.TerawattsPerCubicFoot);
     }
 
-    public get PicowattPerLiter(): number {
-        if(this.picowattperliterLazy !== null){
-            return this.picowattperliterLazy;
+    public get PicowattsPerLiter(): number {
+        if(this.picowattsperliterLazy !== null){
+            return this.picowattsperliterLazy;
         }
-        return this.picowattperliterLazy = this.convertFromBase(PowerDensityUnits.PicowattPerLiter);
+        return this.picowattsperliterLazy = this.convertFromBase(PowerDensityUnits.PicowattsPerLiter);
     }
 
-    public get NanowattPerLiter(): number {
-        if(this.nanowattperliterLazy !== null){
-            return this.nanowattperliterLazy;
+    public get NanowattsPerLiter(): number {
+        if(this.nanowattsperliterLazy !== null){
+            return this.nanowattsperliterLazy;
         }
-        return this.nanowattperliterLazy = this.convertFromBase(PowerDensityUnits.NanowattPerLiter);
+        return this.nanowattsperliterLazy = this.convertFromBase(PowerDensityUnits.NanowattsPerLiter);
     }
 
-    public get MicrowattPerLiter(): number {
-        if(this.microwattperliterLazy !== null){
-            return this.microwattperliterLazy;
+    public get MicrowattsPerLiter(): number {
+        if(this.microwattsperliterLazy !== null){
+            return this.microwattsperliterLazy;
         }
-        return this.microwattperliterLazy = this.convertFromBase(PowerDensityUnits.MicrowattPerLiter);
+        return this.microwattsperliterLazy = this.convertFromBase(PowerDensityUnits.MicrowattsPerLiter);
     }
 
-    public get DeciwattPerLiter(): number {
-        if(this.deciwattperliterLazy !== null){
-            return this.deciwattperliterLazy;
+    public get DeciwattsPerLiter(): number {
+        if(this.deciwattsperliterLazy !== null){
+            return this.deciwattsperliterLazy;
         }
-        return this.deciwattperliterLazy = this.convertFromBase(PowerDensityUnits.DeciwattPerLiter);
+        return this.deciwattsperliterLazy = this.convertFromBase(PowerDensityUnits.DeciwattsPerLiter);
     }
 
-    public get DecawattPerLiter(): number {
-        if(this.decawattperliterLazy !== null){
-            return this.decawattperliterLazy;
+    public get DecawattsPerLiter(): number {
+        if(this.decawattsperliterLazy !== null){
+            return this.decawattsperliterLazy;
         }
-        return this.decawattperliterLazy = this.convertFromBase(PowerDensityUnits.DecawattPerLiter);
+        return this.decawattsperliterLazy = this.convertFromBase(PowerDensityUnits.DecawattsPerLiter);
     }
 
-    public get KilowattPerLiter(): number {
-        if(this.kilowattperliterLazy !== null){
-            return this.kilowattperliterLazy;
+    public get KilowattsPerLiter(): number {
+        if(this.kilowattsperliterLazy !== null){
+            return this.kilowattsperliterLazy;
         }
-        return this.kilowattperliterLazy = this.convertFromBase(PowerDensityUnits.KilowattPerLiter);
+        return this.kilowattsperliterLazy = this.convertFromBase(PowerDensityUnits.KilowattsPerLiter);
     }
 
-    public get MegawattPerLiter(): number {
-        if(this.megawattperliterLazy !== null){
-            return this.megawattperliterLazy;
+    public get MegawattsPerLiter(): number {
+        if(this.megawattsperliterLazy !== null){
+            return this.megawattsperliterLazy;
         }
-        return this.megawattperliterLazy = this.convertFromBase(PowerDensityUnits.MegawattPerLiter);
+        return this.megawattsperliterLazy = this.convertFromBase(PowerDensityUnits.MegawattsPerLiter);
     }
 
-    public get GigawattPerLiter(): number {
-        if(this.gigawattperliterLazy !== null){
-            return this.gigawattperliterLazy;
+    public get GigawattsPerLiter(): number {
+        if(this.gigawattsperliterLazy !== null){
+            return this.gigawattsperliterLazy;
         }
-        return this.gigawattperliterLazy = this.convertFromBase(PowerDensityUnits.GigawattPerLiter);
+        return this.gigawattsperliterLazy = this.convertFromBase(PowerDensityUnits.GigawattsPerLiter);
     }
 
-    public get TerawattPerLiter(): number {
-        if(this.terawattperliterLazy !== null){
-            return this.terawattperliterLazy;
+    public get TerawattsPerLiter(): number {
+        if(this.terawattsperliterLazy !== null){
+            return this.terawattsperliterLazy;
         }
-        return this.terawattperliterLazy = this.convertFromBase(PowerDensityUnits.TerawattPerLiter);
+        return this.terawattsperliterLazy = this.convertFromBase(PowerDensityUnits.TerawattsPerLiter);
     }
 
     public static FromWattsPerCubicMeter(value: number): PowerDensity {
@@ -384,148 +384,148 @@ export class PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.WattsPerLiter);
     }
 
-    public static FromPicowattPerCubicMeter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.PicowattPerCubicMeter);
+    public static FromPicowattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.PicowattsPerCubicMeter);
     }
 
-    public static FromNanowattPerCubicMeter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.NanowattPerCubicMeter);
+    public static FromNanowattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.NanowattsPerCubicMeter);
     }
 
-    public static FromMicrowattPerCubicMeter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.MicrowattPerCubicMeter);
+    public static FromMicrowattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MicrowattsPerCubicMeter);
     }
 
-    public static FromDeciwattPerCubicMeter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.DeciwattPerCubicMeter);
+    public static FromDeciwattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.DeciwattsPerCubicMeter);
     }
 
-    public static FromDecawattPerCubicMeter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.DecawattPerCubicMeter);
+    public static FromDecawattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.DecawattsPerCubicMeter);
     }
 
-    public static FromKilowattPerCubicMeter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.KilowattPerCubicMeter);
+    public static FromKilowattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.KilowattsPerCubicMeter);
     }
 
-    public static FromMegawattPerCubicMeter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.MegawattPerCubicMeter);
+    public static FromMegawattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MegawattsPerCubicMeter);
     }
 
-    public static FromGigawattPerCubicMeter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.GigawattPerCubicMeter);
+    public static FromGigawattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.GigawattsPerCubicMeter);
     }
 
-    public static FromTerawattPerCubicMeter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.TerawattPerCubicMeter);
+    public static FromTerawattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.TerawattsPerCubicMeter);
     }
 
-    public static FromPicowattPerCubicInch(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.PicowattPerCubicInch);
+    public static FromPicowattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.PicowattsPerCubicInch);
     }
 
-    public static FromNanowattPerCubicInch(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.NanowattPerCubicInch);
+    public static FromNanowattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.NanowattsPerCubicInch);
     }
 
-    public static FromMicrowattPerCubicInch(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.MicrowattPerCubicInch);
+    public static FromMicrowattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MicrowattsPerCubicInch);
     }
 
-    public static FromDeciwattPerCubicInch(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.DeciwattPerCubicInch);
+    public static FromDeciwattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.DeciwattsPerCubicInch);
     }
 
-    public static FromDecawattPerCubicInch(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.DecawattPerCubicInch);
+    public static FromDecawattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.DecawattsPerCubicInch);
     }
 
-    public static FromKilowattPerCubicInch(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.KilowattPerCubicInch);
+    public static FromKilowattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.KilowattsPerCubicInch);
     }
 
-    public static FromMegawattPerCubicInch(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.MegawattPerCubicInch);
+    public static FromMegawattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MegawattsPerCubicInch);
     }
 
-    public static FromGigawattPerCubicInch(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.GigawattPerCubicInch);
+    public static FromGigawattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.GigawattsPerCubicInch);
     }
 
-    public static FromTerawattPerCubicInch(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.TerawattPerCubicInch);
+    public static FromTerawattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.TerawattsPerCubicInch);
     }
 
-    public static FromPicowattPerCubicFoot(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.PicowattPerCubicFoot);
+    public static FromPicowattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.PicowattsPerCubicFoot);
     }
 
-    public static FromNanowattPerCubicFoot(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.NanowattPerCubicFoot);
+    public static FromNanowattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.NanowattsPerCubicFoot);
     }
 
-    public static FromMicrowattPerCubicFoot(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.MicrowattPerCubicFoot);
+    public static FromMicrowattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MicrowattsPerCubicFoot);
     }
 
-    public static FromDeciwattPerCubicFoot(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.DeciwattPerCubicFoot);
+    public static FromDeciwattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.DeciwattsPerCubicFoot);
     }
 
-    public static FromDecawattPerCubicFoot(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.DecawattPerCubicFoot);
+    public static FromDecawattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.DecawattsPerCubicFoot);
     }
 
-    public static FromKilowattPerCubicFoot(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.KilowattPerCubicFoot);
+    public static FromKilowattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.KilowattsPerCubicFoot);
     }
 
-    public static FromMegawattPerCubicFoot(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.MegawattPerCubicFoot);
+    public static FromMegawattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MegawattsPerCubicFoot);
     }
 
-    public static FromGigawattPerCubicFoot(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.GigawattPerCubicFoot);
+    public static FromGigawattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.GigawattsPerCubicFoot);
     }
 
-    public static FromTerawattPerCubicFoot(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.TerawattPerCubicFoot);
+    public static FromTerawattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.TerawattsPerCubicFoot);
     }
 
-    public static FromPicowattPerLiter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.PicowattPerLiter);
+    public static FromPicowattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.PicowattsPerLiter);
     }
 
-    public static FromNanowattPerLiter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.NanowattPerLiter);
+    public static FromNanowattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.NanowattsPerLiter);
     }
 
-    public static FromMicrowattPerLiter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.MicrowattPerLiter);
+    public static FromMicrowattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MicrowattsPerLiter);
     }
 
-    public static FromDeciwattPerLiter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.DeciwattPerLiter);
+    public static FromDeciwattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.DeciwattsPerLiter);
     }
 
-    public static FromDecawattPerLiter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.DecawattPerLiter);
+    public static FromDecawattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.DecawattsPerLiter);
     }
 
-    public static FromKilowattPerLiter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.KilowattPerLiter);
+    public static FromKilowattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.KilowattsPerLiter);
     }
 
-    public static FromMegawattPerLiter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.MegawattPerLiter);
+    public static FromMegawattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MegawattsPerLiter);
     }
 
-    public static FromGigawattPerLiter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.GigawattPerLiter);
+    public static FromGigawattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.GigawattsPerLiter);
     }
 
-    public static FromTerawattPerLiter(value: number): PowerDensity {
-        return new PowerDensity(value, PowerDensityUnits.TerawattPerLiter);
+    public static FromTerawattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.TerawattsPerLiter);
     }
 
     private convertFromBase(toUnit: PowerDensityUnits): number {
@@ -539,77 +539,77 @@ export class PowerDensity {
                 return this.value/3.531466672148859e1;
             case PowerDensityUnits.WattsPerLiter:
                 return this.value/1.0e3;
-            case PowerDensityUnits.PicowattPerCubicMeter:
+            case PowerDensityUnits.PicowattsPerCubicMeter:
                 return (this.value) / 1e-12;
-            case PowerDensityUnits.NanowattPerCubicMeter:
+            case PowerDensityUnits.NanowattsPerCubicMeter:
                 return (this.value) / 1e-9;
-            case PowerDensityUnits.MicrowattPerCubicMeter:
+            case PowerDensityUnits.MicrowattsPerCubicMeter:
                 return (this.value) / 0.000001;
-            case PowerDensityUnits.DeciwattPerCubicMeter:
+            case PowerDensityUnits.DeciwattsPerCubicMeter:
                 return (this.value) / 0.1;
-            case PowerDensityUnits.DecawattPerCubicMeter:
+            case PowerDensityUnits.DecawattsPerCubicMeter:
                 return (this.value) / 10;
-            case PowerDensityUnits.KilowattPerCubicMeter:
+            case PowerDensityUnits.KilowattsPerCubicMeter:
                 return (this.value) / 1000;
-            case PowerDensityUnits.MegawattPerCubicMeter:
+            case PowerDensityUnits.MegawattsPerCubicMeter:
                 return (this.value) / 1000000;
-            case PowerDensityUnits.GigawattPerCubicMeter:
+            case PowerDensityUnits.GigawattsPerCubicMeter:
                 return (this.value) / 1000000000;
-            case PowerDensityUnits.TerawattPerCubicMeter:
+            case PowerDensityUnits.TerawattsPerCubicMeter:
                 return (this.value) / 1000000000000;
-            case PowerDensityUnits.PicowattPerCubicInch:
+            case PowerDensityUnits.PicowattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 1e-12;
-            case PowerDensityUnits.NanowattPerCubicInch:
+            case PowerDensityUnits.NanowattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 1e-9;
-            case PowerDensityUnits.MicrowattPerCubicInch:
+            case PowerDensityUnits.MicrowattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 0.000001;
-            case PowerDensityUnits.DeciwattPerCubicInch:
+            case PowerDensityUnits.DeciwattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 0.1;
-            case PowerDensityUnits.DecawattPerCubicInch:
+            case PowerDensityUnits.DecawattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 10;
-            case PowerDensityUnits.KilowattPerCubicInch:
+            case PowerDensityUnits.KilowattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 1000;
-            case PowerDensityUnits.MegawattPerCubicInch:
+            case PowerDensityUnits.MegawattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 1000000;
-            case PowerDensityUnits.GigawattPerCubicInch:
+            case PowerDensityUnits.GigawattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 1000000000;
-            case PowerDensityUnits.TerawattPerCubicInch:
+            case PowerDensityUnits.TerawattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 1000000000000;
-            case PowerDensityUnits.PicowattPerCubicFoot:
+            case PowerDensityUnits.PicowattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 1e-12;
-            case PowerDensityUnits.NanowattPerCubicFoot:
+            case PowerDensityUnits.NanowattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 1e-9;
-            case PowerDensityUnits.MicrowattPerCubicFoot:
+            case PowerDensityUnits.MicrowattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 0.000001;
-            case PowerDensityUnits.DeciwattPerCubicFoot:
+            case PowerDensityUnits.DeciwattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 0.1;
-            case PowerDensityUnits.DecawattPerCubicFoot:
+            case PowerDensityUnits.DecawattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 10;
-            case PowerDensityUnits.KilowattPerCubicFoot:
+            case PowerDensityUnits.KilowattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 1000;
-            case PowerDensityUnits.MegawattPerCubicFoot:
+            case PowerDensityUnits.MegawattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 1000000;
-            case PowerDensityUnits.GigawattPerCubicFoot:
+            case PowerDensityUnits.GigawattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 1000000000;
-            case PowerDensityUnits.TerawattPerCubicFoot:
+            case PowerDensityUnits.TerawattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 1000000000000;
-            case PowerDensityUnits.PicowattPerLiter:
+            case PowerDensityUnits.PicowattsPerLiter:
                 return (this.value/1.0e3) / 1e-12;
-            case PowerDensityUnits.NanowattPerLiter:
+            case PowerDensityUnits.NanowattsPerLiter:
                 return (this.value/1.0e3) / 1e-9;
-            case PowerDensityUnits.MicrowattPerLiter:
+            case PowerDensityUnits.MicrowattsPerLiter:
                 return (this.value/1.0e3) / 0.000001;
-            case PowerDensityUnits.DeciwattPerLiter:
+            case PowerDensityUnits.DeciwattsPerLiter:
                 return (this.value/1.0e3) / 0.1;
-            case PowerDensityUnits.DecawattPerLiter:
+            case PowerDensityUnits.DecawattsPerLiter:
                 return (this.value/1.0e3) / 10;
-            case PowerDensityUnits.KilowattPerLiter:
+            case PowerDensityUnits.KilowattsPerLiter:
                 return (this.value/1.0e3) / 1000;
-            case PowerDensityUnits.MegawattPerLiter:
+            case PowerDensityUnits.MegawattsPerLiter:
                 return (this.value/1.0e3) / 1000000;
-            case PowerDensityUnits.GigawattPerLiter:
+            case PowerDensityUnits.GigawattsPerLiter:
                 return (this.value/1.0e3) / 1000000000;
-            case PowerDensityUnits.TerawattPerLiter:
+            case PowerDensityUnits.TerawattsPerLiter:
                 return (this.value/1.0e3) / 1000000000000;
             default:
                 break;
@@ -628,77 +628,77 @@ export class PowerDensity {
                 return value*3.531466672148859e1;
             case PowerDensityUnits.WattsPerLiter:
                 return value*1.0e3;
-            case PowerDensityUnits.PicowattPerCubicMeter:
+            case PowerDensityUnits.PicowattsPerCubicMeter:
                 return (value) * 1e-12;
-            case PowerDensityUnits.NanowattPerCubicMeter:
+            case PowerDensityUnits.NanowattsPerCubicMeter:
                 return (value) * 1e-9;
-            case PowerDensityUnits.MicrowattPerCubicMeter:
+            case PowerDensityUnits.MicrowattsPerCubicMeter:
                 return (value) * 0.000001;
-            case PowerDensityUnits.DeciwattPerCubicMeter:
+            case PowerDensityUnits.DeciwattsPerCubicMeter:
                 return (value) * 0.1;
-            case PowerDensityUnits.DecawattPerCubicMeter:
+            case PowerDensityUnits.DecawattsPerCubicMeter:
                 return (value) * 10;
-            case PowerDensityUnits.KilowattPerCubicMeter:
+            case PowerDensityUnits.KilowattsPerCubicMeter:
                 return (value) * 1000;
-            case PowerDensityUnits.MegawattPerCubicMeter:
+            case PowerDensityUnits.MegawattsPerCubicMeter:
                 return (value) * 1000000;
-            case PowerDensityUnits.GigawattPerCubicMeter:
+            case PowerDensityUnits.GigawattsPerCubicMeter:
                 return (value) * 1000000000;
-            case PowerDensityUnits.TerawattPerCubicMeter:
+            case PowerDensityUnits.TerawattsPerCubicMeter:
                 return (value) * 1000000000000;
-            case PowerDensityUnits.PicowattPerCubicInch:
+            case PowerDensityUnits.PicowattsPerCubicInch:
                 return (value*6.102374409473228e4) * 1e-12;
-            case PowerDensityUnits.NanowattPerCubicInch:
+            case PowerDensityUnits.NanowattsPerCubicInch:
                 return (value*6.102374409473228e4) * 1e-9;
-            case PowerDensityUnits.MicrowattPerCubicInch:
+            case PowerDensityUnits.MicrowattsPerCubicInch:
                 return (value*6.102374409473228e4) * 0.000001;
-            case PowerDensityUnits.DeciwattPerCubicInch:
+            case PowerDensityUnits.DeciwattsPerCubicInch:
                 return (value*6.102374409473228e4) * 0.1;
-            case PowerDensityUnits.DecawattPerCubicInch:
+            case PowerDensityUnits.DecawattsPerCubicInch:
                 return (value*6.102374409473228e4) * 10;
-            case PowerDensityUnits.KilowattPerCubicInch:
+            case PowerDensityUnits.KilowattsPerCubicInch:
                 return (value*6.102374409473228e4) * 1000;
-            case PowerDensityUnits.MegawattPerCubicInch:
+            case PowerDensityUnits.MegawattsPerCubicInch:
                 return (value*6.102374409473228e4) * 1000000;
-            case PowerDensityUnits.GigawattPerCubicInch:
+            case PowerDensityUnits.GigawattsPerCubicInch:
                 return (value*6.102374409473228e4) * 1000000000;
-            case PowerDensityUnits.TerawattPerCubicInch:
+            case PowerDensityUnits.TerawattsPerCubicInch:
                 return (value*6.102374409473228e4) * 1000000000000;
-            case PowerDensityUnits.PicowattPerCubicFoot:
+            case PowerDensityUnits.PicowattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 1e-12;
-            case PowerDensityUnits.NanowattPerCubicFoot:
+            case PowerDensityUnits.NanowattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 1e-9;
-            case PowerDensityUnits.MicrowattPerCubicFoot:
+            case PowerDensityUnits.MicrowattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 0.000001;
-            case PowerDensityUnits.DeciwattPerCubicFoot:
+            case PowerDensityUnits.DeciwattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 0.1;
-            case PowerDensityUnits.DecawattPerCubicFoot:
+            case PowerDensityUnits.DecawattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 10;
-            case PowerDensityUnits.KilowattPerCubicFoot:
+            case PowerDensityUnits.KilowattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 1000;
-            case PowerDensityUnits.MegawattPerCubicFoot:
+            case PowerDensityUnits.MegawattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 1000000;
-            case PowerDensityUnits.GigawattPerCubicFoot:
+            case PowerDensityUnits.GigawattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 1000000000;
-            case PowerDensityUnits.TerawattPerCubicFoot:
+            case PowerDensityUnits.TerawattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 1000000000000;
-            case PowerDensityUnits.PicowattPerLiter:
+            case PowerDensityUnits.PicowattsPerLiter:
                 return (value*1.0e3) * 1e-12;
-            case PowerDensityUnits.NanowattPerLiter:
+            case PowerDensityUnits.NanowattsPerLiter:
                 return (value*1.0e3) * 1e-9;
-            case PowerDensityUnits.MicrowattPerLiter:
+            case PowerDensityUnits.MicrowattsPerLiter:
                 return (value*1.0e3) * 0.000001;
-            case PowerDensityUnits.DeciwattPerLiter:
+            case PowerDensityUnits.DeciwattsPerLiter:
                 return (value*1.0e3) * 0.1;
-            case PowerDensityUnits.DecawattPerLiter:
+            case PowerDensityUnits.DecawattsPerLiter:
                 return (value*1.0e3) * 10;
-            case PowerDensityUnits.KilowattPerLiter:
+            case PowerDensityUnits.KilowattsPerLiter:
                 return (value*1.0e3) * 1000;
-            case PowerDensityUnits.MegawattPerLiter:
+            case PowerDensityUnits.MegawattsPerLiter:
                 return (value*1.0e3) * 1000000;
-            case PowerDensityUnits.GigawattPerLiter:
+            case PowerDensityUnits.GigawattsPerLiter:
                 return (value*1.0e3) * 1000000000;
-            case PowerDensityUnits.TerawattPerLiter:
+            case PowerDensityUnits.TerawattsPerLiter:
                 return (value*1.0e3) * 1000000000000;
             default:
                 break;
@@ -718,78 +718,78 @@ export class PowerDensity {
                 return this.WattsPerCubicFoot + ` W/ft³`;
             case PowerDensityUnits.WattsPerLiter:
                 return this.WattsPerLiter + ` W/l`;
-            case PowerDensityUnits.PicowattPerCubicMeter:
-                return this.PicowattPerCubicMeter + ` W/m³`;
-            case PowerDensityUnits.NanowattPerCubicMeter:
-                return this.NanowattPerCubicMeter + ` W/m³`;
-            case PowerDensityUnits.MicrowattPerCubicMeter:
-                return this.MicrowattPerCubicMeter + ` W/m³`;
-            case PowerDensityUnits.DeciwattPerCubicMeter:
-                return this.DeciwattPerCubicMeter + ` W/m³`;
-            case PowerDensityUnits.DecawattPerCubicMeter:
-                return this.DecawattPerCubicMeter + ` W/m³`;
-            case PowerDensityUnits.KilowattPerCubicMeter:
-                return this.KilowattPerCubicMeter + ` W/m³`;
-            case PowerDensityUnits.MegawattPerCubicMeter:
-                return this.MegawattPerCubicMeter + ` W/m³`;
-            case PowerDensityUnits.GigawattPerCubicMeter:
-                return this.GigawattPerCubicMeter + ` W/m³`;
-            case PowerDensityUnits.TerawattPerCubicMeter:
-                return this.TerawattPerCubicMeter + ` W/m³`;
-            case PowerDensityUnits.PicowattPerCubicInch:
-                return this.PicowattPerCubicInch + ` W/in³`;
-            case PowerDensityUnits.NanowattPerCubicInch:
-                return this.NanowattPerCubicInch + ` W/in³`;
-            case PowerDensityUnits.MicrowattPerCubicInch:
-                return this.MicrowattPerCubicInch + ` W/in³`;
-            case PowerDensityUnits.DeciwattPerCubicInch:
-                return this.DeciwattPerCubicInch + ` W/in³`;
-            case PowerDensityUnits.DecawattPerCubicInch:
-                return this.DecawattPerCubicInch + ` W/in³`;
-            case PowerDensityUnits.KilowattPerCubicInch:
-                return this.KilowattPerCubicInch + ` W/in³`;
-            case PowerDensityUnits.MegawattPerCubicInch:
-                return this.MegawattPerCubicInch + ` W/in³`;
-            case PowerDensityUnits.GigawattPerCubicInch:
-                return this.GigawattPerCubicInch + ` W/in³`;
-            case PowerDensityUnits.TerawattPerCubicInch:
-                return this.TerawattPerCubicInch + ` W/in³`;
-            case PowerDensityUnits.PicowattPerCubicFoot:
-                return this.PicowattPerCubicFoot + ` W/ft³`;
-            case PowerDensityUnits.NanowattPerCubicFoot:
-                return this.NanowattPerCubicFoot + ` W/ft³`;
-            case PowerDensityUnits.MicrowattPerCubicFoot:
-                return this.MicrowattPerCubicFoot + ` W/ft³`;
-            case PowerDensityUnits.DeciwattPerCubicFoot:
-                return this.DeciwattPerCubicFoot + ` W/ft³`;
-            case PowerDensityUnits.DecawattPerCubicFoot:
-                return this.DecawattPerCubicFoot + ` W/ft³`;
-            case PowerDensityUnits.KilowattPerCubicFoot:
-                return this.KilowattPerCubicFoot + ` W/ft³`;
-            case PowerDensityUnits.MegawattPerCubicFoot:
-                return this.MegawattPerCubicFoot + ` W/ft³`;
-            case PowerDensityUnits.GigawattPerCubicFoot:
-                return this.GigawattPerCubicFoot + ` W/ft³`;
-            case PowerDensityUnits.TerawattPerCubicFoot:
-                return this.TerawattPerCubicFoot + ` W/ft³`;
-            case PowerDensityUnits.PicowattPerLiter:
-                return this.PicowattPerLiter + ` W/l`;
-            case PowerDensityUnits.NanowattPerLiter:
-                return this.NanowattPerLiter + ` W/l`;
-            case PowerDensityUnits.MicrowattPerLiter:
-                return this.MicrowattPerLiter + ` W/l`;
-            case PowerDensityUnits.DeciwattPerLiter:
-                return this.DeciwattPerLiter + ` W/l`;
-            case PowerDensityUnits.DecawattPerLiter:
-                return this.DecawattPerLiter + ` W/l`;
-            case PowerDensityUnits.KilowattPerLiter:
-                return this.KilowattPerLiter + ` W/l`;
-            case PowerDensityUnits.MegawattPerLiter:
-                return this.MegawattPerLiter + ` W/l`;
-            case PowerDensityUnits.GigawattPerLiter:
-                return this.GigawattPerLiter + ` W/l`;
-            case PowerDensityUnits.TerawattPerLiter:
-                return this.TerawattPerLiter + ` W/l`;
+            case PowerDensityUnits.PicowattsPerCubicMeter:
+                return this.PicowattsPerCubicMeter + ` W/m³`;
+            case PowerDensityUnits.NanowattsPerCubicMeter:
+                return this.NanowattsPerCubicMeter + ` W/m³`;
+            case PowerDensityUnits.MicrowattsPerCubicMeter:
+                return this.MicrowattsPerCubicMeter + ` W/m³`;
+            case PowerDensityUnits.DeciwattsPerCubicMeter:
+                return this.DeciwattsPerCubicMeter + ` W/m³`;
+            case PowerDensityUnits.DecawattsPerCubicMeter:
+                return this.DecawattsPerCubicMeter + ` W/m³`;
+            case PowerDensityUnits.KilowattsPerCubicMeter:
+                return this.KilowattsPerCubicMeter + ` W/m³`;
+            case PowerDensityUnits.MegawattsPerCubicMeter:
+                return this.MegawattsPerCubicMeter + ` W/m³`;
+            case PowerDensityUnits.GigawattsPerCubicMeter:
+                return this.GigawattsPerCubicMeter + ` W/m³`;
+            case PowerDensityUnits.TerawattsPerCubicMeter:
+                return this.TerawattsPerCubicMeter + ` W/m³`;
+            case PowerDensityUnits.PicowattsPerCubicInch:
+                return this.PicowattsPerCubicInch + ` W/in³`;
+            case PowerDensityUnits.NanowattsPerCubicInch:
+                return this.NanowattsPerCubicInch + ` W/in³`;
+            case PowerDensityUnits.MicrowattsPerCubicInch:
+                return this.MicrowattsPerCubicInch + ` W/in³`;
+            case PowerDensityUnits.DeciwattsPerCubicInch:
+                return this.DeciwattsPerCubicInch + ` W/in³`;
+            case PowerDensityUnits.DecawattsPerCubicInch:
+                return this.DecawattsPerCubicInch + ` W/in³`;
+            case PowerDensityUnits.KilowattsPerCubicInch:
+                return this.KilowattsPerCubicInch + ` W/in³`;
+            case PowerDensityUnits.MegawattsPerCubicInch:
+                return this.MegawattsPerCubicInch + ` W/in³`;
+            case PowerDensityUnits.GigawattsPerCubicInch:
+                return this.GigawattsPerCubicInch + ` W/in³`;
+            case PowerDensityUnits.TerawattsPerCubicInch:
+                return this.TerawattsPerCubicInch + ` W/in³`;
+            case PowerDensityUnits.PicowattsPerCubicFoot:
+                return this.PicowattsPerCubicFoot + ` W/ft³`;
+            case PowerDensityUnits.NanowattsPerCubicFoot:
+                return this.NanowattsPerCubicFoot + ` W/ft³`;
+            case PowerDensityUnits.MicrowattsPerCubicFoot:
+                return this.MicrowattsPerCubicFoot + ` W/ft³`;
+            case PowerDensityUnits.DeciwattsPerCubicFoot:
+                return this.DeciwattsPerCubicFoot + ` W/ft³`;
+            case PowerDensityUnits.DecawattsPerCubicFoot:
+                return this.DecawattsPerCubicFoot + ` W/ft³`;
+            case PowerDensityUnits.KilowattsPerCubicFoot:
+                return this.KilowattsPerCubicFoot + ` W/ft³`;
+            case PowerDensityUnits.MegawattsPerCubicFoot:
+                return this.MegawattsPerCubicFoot + ` W/ft³`;
+            case PowerDensityUnits.GigawattsPerCubicFoot:
+                return this.GigawattsPerCubicFoot + ` W/ft³`;
+            case PowerDensityUnits.TerawattsPerCubicFoot:
+                return this.TerawattsPerCubicFoot + ` W/ft³`;
+            case PowerDensityUnits.PicowattsPerLiter:
+                return this.PicowattsPerLiter + ` W/l`;
+            case PowerDensityUnits.NanowattsPerLiter:
+                return this.NanowattsPerLiter + ` W/l`;
+            case PowerDensityUnits.MicrowattsPerLiter:
+                return this.MicrowattsPerLiter + ` W/l`;
+            case PowerDensityUnits.DeciwattsPerLiter:
+                return this.DeciwattsPerLiter + ` W/l`;
+            case PowerDensityUnits.DecawattsPerLiter:
+                return this.DecawattsPerLiter + ` W/l`;
+            case PowerDensityUnits.KilowattsPerLiter:
+                return this.KilowattsPerLiter + ` W/l`;
+            case PowerDensityUnits.MegawattsPerLiter:
+                return this.MegawattsPerLiter + ` W/l`;
+            case PowerDensityUnits.GigawattsPerLiter:
+                return this.GigawattsPerLiter + ` W/l`;
+            case PowerDensityUnits.TerawattsPerLiter:
+                return this.TerawattsPerLiter + ` W/l`;
         default:
             break;
         }

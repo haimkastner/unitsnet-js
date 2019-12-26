@@ -1,20 +1,20 @@
 export declare enum MolarEntropyUnits {
     JoulesPerMoleKelvin = 0,
-    KilojoulePerMoleKelvin = 1,
-    MegajoulePerMoleKelvin = 2
+    KilojoulesPerMoleKelvin = 1,
+    MegajoulesPerMoleKelvin = 2
 }
 export declare class MolarEntropy {
     private value;
     private joulespermolekelvinLazy;
-    private kilojoulepermolekelvinLazy;
-    private megajoulepermolekelvinLazy;
+    private kilojoulespermolekelvinLazy;
+    private megajoulespermolekelvinLazy;
     constructor(value: number, fromUnit: MolarEntropyUnits);
     get JoulesPerMoleKelvin(): number;
-    get KilojoulePerMoleKelvin(): number;
-    get MegajoulePerMoleKelvin(): number;
+    get KilojoulesPerMoleKelvin(): number;
+    get MegajoulesPerMoleKelvin(): number;
     static FromJoulesPerMoleKelvin(value: number): MolarEntropy;
-    static FromKilojoulePerMoleKelvin(value: number): MolarEntropy;
-    static FromMegajoulePerMoleKelvin(value: number): MolarEntropy;
+    static FromKilojoulesPerMoleKelvin(value: number): MolarEntropy;
+    static FromMegajoulesPerMoleKelvin(value: number): MolarEntropy;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: MolarEntropyUnits): string;

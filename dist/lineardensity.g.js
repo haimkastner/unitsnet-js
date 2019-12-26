@@ -4,13 +4,13 @@ var LinearDensityUnits;
 (function (LinearDensityUnits) {
     LinearDensityUnits[LinearDensityUnits["GramsPerMeter"] = 0] = "GramsPerMeter";
     LinearDensityUnits[LinearDensityUnits["PoundsPerFoot"] = 1] = "PoundsPerFoot";
-    LinearDensityUnits[LinearDensityUnits["KilogramPerMeter"] = 2] = "KilogramPerMeter";
+    LinearDensityUnits[LinearDensityUnits["KilogramsPerMeter"] = 2] = "KilogramsPerMeter";
 })(LinearDensityUnits = exports.LinearDensityUnits || (exports.LinearDensityUnits = {}));
 class LinearDensity {
     constructor(value, fromUnit) {
         this.gramspermeterLazy = null;
         this.poundsperfootLazy = null;
-        this.kilogrampermeterLazy = null;
+        this.kilogramspermeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get GramsPerMeter() {
@@ -25,11 +25,11 @@ class LinearDensity {
         }
         return this.poundsperfootLazy = this.convertFromBase(LinearDensityUnits.PoundsPerFoot);
     }
-    get KilogramPerMeter() {
-        if (this.kilogrampermeterLazy !== null) {
-            return this.kilogrampermeterLazy;
+    get KilogramsPerMeter() {
+        if (this.kilogramspermeterLazy !== null) {
+            return this.kilogramspermeterLazy;
         }
-        return this.kilogrampermeterLazy = this.convertFromBase(LinearDensityUnits.KilogramPerMeter);
+        return this.kilogramspermeterLazy = this.convertFromBase(LinearDensityUnits.KilogramsPerMeter);
     }
     static FromGramsPerMeter(value) {
         return new LinearDensity(value, LinearDensityUnits.GramsPerMeter);
@@ -37,8 +37,8 @@ class LinearDensity {
     static FromPoundsPerFoot(value) {
         return new LinearDensity(value, LinearDensityUnits.PoundsPerFoot);
     }
-    static FromKilogramPerMeter(value) {
-        return new LinearDensity(value, LinearDensityUnits.KilogramPerMeter);
+    static FromKilogramsPerMeter(value) {
+        return new LinearDensity(value, LinearDensityUnits.KilogramsPerMeter);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -46,7 +46,7 @@ class LinearDensity {
                 return this.value / 1e-3;
             case LinearDensityUnits.PoundsPerFoot:
                 return this.value / 1.48816394;
-            case LinearDensityUnits.KilogramPerMeter:
+            case LinearDensityUnits.KilogramsPerMeter:
                 return (this.value / 1e-3) / 1000;
             default:
                 break;
@@ -59,21 +59,21 @@ class LinearDensity {
                 return value * 1e-3;
             case LinearDensityUnits.PoundsPerFoot:
                 return value * 1.48816394;
-            case LinearDensityUnits.KilogramPerMeter:
+            case LinearDensityUnits.KilogramsPerMeter:
                 return (value * 1e-3) * 1000;
             default:
                 break;
         }
         return NaN;
     }
-    toString(toUnit = LinearDensityUnits.KilogramPerMeter) {
+    toString(toUnit = LinearDensityUnits.KilogramsPerMeter) {
         switch (toUnit) {
             case LinearDensityUnits.GramsPerMeter:
                 return this.GramsPerMeter + ` g/m`;
             case LinearDensityUnits.PoundsPerFoot:
                 return this.PoundsPerFoot + ` lb/ft`;
-            case LinearDensityUnits.KilogramPerMeter:
-                return this.KilogramPerMeter + ` g/m`;
+            case LinearDensityUnits.KilogramsPerMeter:
+                return this.KilogramsPerMeter + ` g/m`;
             default:
                 break;
         }

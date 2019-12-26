@@ -4,35 +4,35 @@ var BitRateUnits;
 (function (BitRateUnits) {
     BitRateUnits[BitRateUnits["BitsPerSecond"] = 0] = "BitsPerSecond";
     BitRateUnits[BitRateUnits["BytesPerSecond"] = 1] = "BytesPerSecond";
-    BitRateUnits[BitRateUnits["KilobitPerSecond"] = 2] = "KilobitPerSecond";
-    BitRateUnits[BitRateUnits["MegabitPerSecond"] = 3] = "MegabitPerSecond";
-    BitRateUnits[BitRateUnits["GigabitPerSecond"] = 4] = "GigabitPerSecond";
-    BitRateUnits[BitRateUnits["TerabitPerSecond"] = 5] = "TerabitPerSecond";
-    BitRateUnits[BitRateUnits["PetabitPerSecond"] = 6] = "PetabitPerSecond";
-    BitRateUnits[BitRateUnits["ExabitPerSecond"] = 7] = "ExabitPerSecond";
-    BitRateUnits[BitRateUnits["KilobytePerSecond"] = 8] = "KilobytePerSecond";
-    BitRateUnits[BitRateUnits["MegabytePerSecond"] = 9] = "MegabytePerSecond";
-    BitRateUnits[BitRateUnits["GigabytePerSecond"] = 10] = "GigabytePerSecond";
-    BitRateUnits[BitRateUnits["TerabytePerSecond"] = 11] = "TerabytePerSecond";
-    BitRateUnits[BitRateUnits["PetabytePerSecond"] = 12] = "PetabytePerSecond";
-    BitRateUnits[BitRateUnits["ExabytePerSecond"] = 13] = "ExabytePerSecond";
+    BitRateUnits[BitRateUnits["KilobitsPerSecond"] = 2] = "KilobitsPerSecond";
+    BitRateUnits[BitRateUnits["MegabitsPerSecond"] = 3] = "MegabitsPerSecond";
+    BitRateUnits[BitRateUnits["GigabitsPerSecond"] = 4] = "GigabitsPerSecond";
+    BitRateUnits[BitRateUnits["TerabitsPerSecond"] = 5] = "TerabitsPerSecond";
+    BitRateUnits[BitRateUnits["PetabitsPerSecond"] = 6] = "PetabitsPerSecond";
+    BitRateUnits[BitRateUnits["ExabitsPerSecond"] = 7] = "ExabitsPerSecond";
+    BitRateUnits[BitRateUnits["KilobytesPerSecond"] = 8] = "KilobytesPerSecond";
+    BitRateUnits[BitRateUnits["MegabytesPerSecond"] = 9] = "MegabytesPerSecond";
+    BitRateUnits[BitRateUnits["GigabytesPerSecond"] = 10] = "GigabytesPerSecond";
+    BitRateUnits[BitRateUnits["TerabytesPerSecond"] = 11] = "TerabytesPerSecond";
+    BitRateUnits[BitRateUnits["PetabytesPerSecond"] = 12] = "PetabytesPerSecond";
+    BitRateUnits[BitRateUnits["ExabytesPerSecond"] = 13] = "ExabytesPerSecond";
 })(BitRateUnits = exports.BitRateUnits || (exports.BitRateUnits = {}));
 class BitRate {
     constructor(value, fromUnit) {
         this.bitspersecondLazy = null;
         this.bytespersecondLazy = null;
-        this.kilobitpersecondLazy = null;
-        this.megabitpersecondLazy = null;
-        this.gigabitpersecondLazy = null;
-        this.terabitpersecondLazy = null;
-        this.petabitpersecondLazy = null;
-        this.exabitpersecondLazy = null;
-        this.kilobytepersecondLazy = null;
-        this.megabytepersecondLazy = null;
-        this.gigabytepersecondLazy = null;
-        this.terabytepersecondLazy = null;
-        this.petabytepersecondLazy = null;
-        this.exabytepersecondLazy = null;
+        this.kilobitspersecondLazy = null;
+        this.megabitspersecondLazy = null;
+        this.gigabitspersecondLazy = null;
+        this.terabitspersecondLazy = null;
+        this.petabitspersecondLazy = null;
+        this.exabitspersecondLazy = null;
+        this.kilobytespersecondLazy = null;
+        this.megabytespersecondLazy = null;
+        this.gigabytespersecondLazy = null;
+        this.terabytespersecondLazy = null;
+        this.petabytespersecondLazy = null;
+        this.exabytespersecondLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get BitsPerSecond() {
@@ -47,77 +47,77 @@ class BitRate {
         }
         return this.bytespersecondLazy = this.convertFromBase(BitRateUnits.BytesPerSecond);
     }
-    get KilobitPerSecond() {
-        if (this.kilobitpersecondLazy !== null) {
-            return this.kilobitpersecondLazy;
+    get KilobitsPerSecond() {
+        if (this.kilobitspersecondLazy !== null) {
+            return this.kilobitspersecondLazy;
         }
-        return this.kilobitpersecondLazy = this.convertFromBase(BitRateUnits.KilobitPerSecond);
+        return this.kilobitspersecondLazy = this.convertFromBase(BitRateUnits.KilobitsPerSecond);
     }
-    get MegabitPerSecond() {
-        if (this.megabitpersecondLazy !== null) {
-            return this.megabitpersecondLazy;
+    get MegabitsPerSecond() {
+        if (this.megabitspersecondLazy !== null) {
+            return this.megabitspersecondLazy;
         }
-        return this.megabitpersecondLazy = this.convertFromBase(BitRateUnits.MegabitPerSecond);
+        return this.megabitspersecondLazy = this.convertFromBase(BitRateUnits.MegabitsPerSecond);
     }
-    get GigabitPerSecond() {
-        if (this.gigabitpersecondLazy !== null) {
-            return this.gigabitpersecondLazy;
+    get GigabitsPerSecond() {
+        if (this.gigabitspersecondLazy !== null) {
+            return this.gigabitspersecondLazy;
         }
-        return this.gigabitpersecondLazy = this.convertFromBase(BitRateUnits.GigabitPerSecond);
+        return this.gigabitspersecondLazy = this.convertFromBase(BitRateUnits.GigabitsPerSecond);
     }
-    get TerabitPerSecond() {
-        if (this.terabitpersecondLazy !== null) {
-            return this.terabitpersecondLazy;
+    get TerabitsPerSecond() {
+        if (this.terabitspersecondLazy !== null) {
+            return this.terabitspersecondLazy;
         }
-        return this.terabitpersecondLazy = this.convertFromBase(BitRateUnits.TerabitPerSecond);
+        return this.terabitspersecondLazy = this.convertFromBase(BitRateUnits.TerabitsPerSecond);
     }
-    get PetabitPerSecond() {
-        if (this.petabitpersecondLazy !== null) {
-            return this.petabitpersecondLazy;
+    get PetabitsPerSecond() {
+        if (this.petabitspersecondLazy !== null) {
+            return this.petabitspersecondLazy;
         }
-        return this.petabitpersecondLazy = this.convertFromBase(BitRateUnits.PetabitPerSecond);
+        return this.petabitspersecondLazy = this.convertFromBase(BitRateUnits.PetabitsPerSecond);
     }
-    get ExabitPerSecond() {
-        if (this.exabitpersecondLazy !== null) {
-            return this.exabitpersecondLazy;
+    get ExabitsPerSecond() {
+        if (this.exabitspersecondLazy !== null) {
+            return this.exabitspersecondLazy;
         }
-        return this.exabitpersecondLazy = this.convertFromBase(BitRateUnits.ExabitPerSecond);
+        return this.exabitspersecondLazy = this.convertFromBase(BitRateUnits.ExabitsPerSecond);
     }
-    get KilobytePerSecond() {
-        if (this.kilobytepersecondLazy !== null) {
-            return this.kilobytepersecondLazy;
+    get KilobytesPerSecond() {
+        if (this.kilobytespersecondLazy !== null) {
+            return this.kilobytespersecondLazy;
         }
-        return this.kilobytepersecondLazy = this.convertFromBase(BitRateUnits.KilobytePerSecond);
+        return this.kilobytespersecondLazy = this.convertFromBase(BitRateUnits.KilobytesPerSecond);
     }
-    get MegabytePerSecond() {
-        if (this.megabytepersecondLazy !== null) {
-            return this.megabytepersecondLazy;
+    get MegabytesPerSecond() {
+        if (this.megabytespersecondLazy !== null) {
+            return this.megabytespersecondLazy;
         }
-        return this.megabytepersecondLazy = this.convertFromBase(BitRateUnits.MegabytePerSecond);
+        return this.megabytespersecondLazy = this.convertFromBase(BitRateUnits.MegabytesPerSecond);
     }
-    get GigabytePerSecond() {
-        if (this.gigabytepersecondLazy !== null) {
-            return this.gigabytepersecondLazy;
+    get GigabytesPerSecond() {
+        if (this.gigabytespersecondLazy !== null) {
+            return this.gigabytespersecondLazy;
         }
-        return this.gigabytepersecondLazy = this.convertFromBase(BitRateUnits.GigabytePerSecond);
+        return this.gigabytespersecondLazy = this.convertFromBase(BitRateUnits.GigabytesPerSecond);
     }
-    get TerabytePerSecond() {
-        if (this.terabytepersecondLazy !== null) {
-            return this.terabytepersecondLazy;
+    get TerabytesPerSecond() {
+        if (this.terabytespersecondLazy !== null) {
+            return this.terabytespersecondLazy;
         }
-        return this.terabytepersecondLazy = this.convertFromBase(BitRateUnits.TerabytePerSecond);
+        return this.terabytespersecondLazy = this.convertFromBase(BitRateUnits.TerabytesPerSecond);
     }
-    get PetabytePerSecond() {
-        if (this.petabytepersecondLazy !== null) {
-            return this.petabytepersecondLazy;
+    get PetabytesPerSecond() {
+        if (this.petabytespersecondLazy !== null) {
+            return this.petabytespersecondLazy;
         }
-        return this.petabytepersecondLazy = this.convertFromBase(BitRateUnits.PetabytePerSecond);
+        return this.petabytespersecondLazy = this.convertFromBase(BitRateUnits.PetabytesPerSecond);
     }
-    get ExabytePerSecond() {
-        if (this.exabytepersecondLazy !== null) {
-            return this.exabytepersecondLazy;
+    get ExabytesPerSecond() {
+        if (this.exabytespersecondLazy !== null) {
+            return this.exabytespersecondLazy;
         }
-        return this.exabytepersecondLazy = this.convertFromBase(BitRateUnits.ExabytePerSecond);
+        return this.exabytespersecondLazy = this.convertFromBase(BitRateUnits.ExabytesPerSecond);
     }
     static FromBitsPerSecond(value) {
         return new BitRate(value, BitRateUnits.BitsPerSecond);
@@ -125,41 +125,41 @@ class BitRate {
     static FromBytesPerSecond(value) {
         return new BitRate(value, BitRateUnits.BytesPerSecond);
     }
-    static FromKilobitPerSecond(value) {
-        return new BitRate(value, BitRateUnits.KilobitPerSecond);
+    static FromKilobitsPerSecond(value) {
+        return new BitRate(value, BitRateUnits.KilobitsPerSecond);
     }
-    static FromMegabitPerSecond(value) {
-        return new BitRate(value, BitRateUnits.MegabitPerSecond);
+    static FromMegabitsPerSecond(value) {
+        return new BitRate(value, BitRateUnits.MegabitsPerSecond);
     }
-    static FromGigabitPerSecond(value) {
-        return new BitRate(value, BitRateUnits.GigabitPerSecond);
+    static FromGigabitsPerSecond(value) {
+        return new BitRate(value, BitRateUnits.GigabitsPerSecond);
     }
-    static FromTerabitPerSecond(value) {
-        return new BitRate(value, BitRateUnits.TerabitPerSecond);
+    static FromTerabitsPerSecond(value) {
+        return new BitRate(value, BitRateUnits.TerabitsPerSecond);
     }
-    static FromPetabitPerSecond(value) {
-        return new BitRate(value, BitRateUnits.PetabitPerSecond);
+    static FromPetabitsPerSecond(value) {
+        return new BitRate(value, BitRateUnits.PetabitsPerSecond);
     }
-    static FromExabitPerSecond(value) {
-        return new BitRate(value, BitRateUnits.ExabitPerSecond);
+    static FromExabitsPerSecond(value) {
+        return new BitRate(value, BitRateUnits.ExabitsPerSecond);
     }
-    static FromKilobytePerSecond(value) {
-        return new BitRate(value, BitRateUnits.KilobytePerSecond);
+    static FromKilobytesPerSecond(value) {
+        return new BitRate(value, BitRateUnits.KilobytesPerSecond);
     }
-    static FromMegabytePerSecond(value) {
-        return new BitRate(value, BitRateUnits.MegabytePerSecond);
+    static FromMegabytesPerSecond(value) {
+        return new BitRate(value, BitRateUnits.MegabytesPerSecond);
     }
-    static FromGigabytePerSecond(value) {
-        return new BitRate(value, BitRateUnits.GigabytePerSecond);
+    static FromGigabytesPerSecond(value) {
+        return new BitRate(value, BitRateUnits.GigabytesPerSecond);
     }
-    static FromTerabytePerSecond(value) {
-        return new BitRate(value, BitRateUnits.TerabytePerSecond);
+    static FromTerabytesPerSecond(value) {
+        return new BitRate(value, BitRateUnits.TerabytesPerSecond);
     }
-    static FromPetabytePerSecond(value) {
-        return new BitRate(value, BitRateUnits.PetabytePerSecond);
+    static FromPetabytesPerSecond(value) {
+        return new BitRate(value, BitRateUnits.PetabytesPerSecond);
     }
-    static FromExabytePerSecond(value) {
-        return new BitRate(value, BitRateUnits.ExabytePerSecond);
+    static FromExabytesPerSecond(value) {
+        return new BitRate(value, BitRateUnits.ExabytesPerSecond);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -167,29 +167,29 @@ class BitRate {
                 return this.value;
             case BitRateUnits.BytesPerSecond:
                 return this.value / 8;
-            case BitRateUnits.KilobitPerSecond:
+            case BitRateUnits.KilobitsPerSecond:
                 return (this.value) / 1000;
-            case BitRateUnits.MegabitPerSecond:
+            case BitRateUnits.MegabitsPerSecond:
                 return (this.value) / 1000000;
-            case BitRateUnits.GigabitPerSecond:
+            case BitRateUnits.GigabitsPerSecond:
                 return (this.value) / 1000000000;
-            case BitRateUnits.TerabitPerSecond:
+            case BitRateUnits.TerabitsPerSecond:
                 return (this.value) / 1000000000000;
-            case BitRateUnits.PetabitPerSecond:
+            case BitRateUnits.PetabitsPerSecond:
                 return (this.value) / 1000000000000000;
-            case BitRateUnits.ExabitPerSecond:
+            case BitRateUnits.ExabitsPerSecond:
                 return (this.value) / 1000000000000000000;
-            case BitRateUnits.KilobytePerSecond:
+            case BitRateUnits.KilobytesPerSecond:
                 return (this.value / 8) / 1000;
-            case BitRateUnits.MegabytePerSecond:
+            case BitRateUnits.MegabytesPerSecond:
                 return (this.value / 8) / 1000000;
-            case BitRateUnits.GigabytePerSecond:
+            case BitRateUnits.GigabytesPerSecond:
                 return (this.value / 8) / 1000000000;
-            case BitRateUnits.TerabytePerSecond:
+            case BitRateUnits.TerabytesPerSecond:
                 return (this.value / 8) / 1000000000000;
-            case BitRateUnits.PetabytePerSecond:
+            case BitRateUnits.PetabytesPerSecond:
                 return (this.value / 8) / 1000000000000000;
-            case BitRateUnits.ExabytePerSecond:
+            case BitRateUnits.ExabytesPerSecond:
                 return (this.value / 8) / 1000000000000000000;
             default:
                 break;
@@ -202,29 +202,29 @@ class BitRate {
                 return value;
             case BitRateUnits.BytesPerSecond:
                 return value * 8;
-            case BitRateUnits.KilobitPerSecond:
+            case BitRateUnits.KilobitsPerSecond:
                 return (value) * 1000;
-            case BitRateUnits.MegabitPerSecond:
+            case BitRateUnits.MegabitsPerSecond:
                 return (value) * 1000000;
-            case BitRateUnits.GigabitPerSecond:
+            case BitRateUnits.GigabitsPerSecond:
                 return (value) * 1000000000;
-            case BitRateUnits.TerabitPerSecond:
+            case BitRateUnits.TerabitsPerSecond:
                 return (value) * 1000000000000;
-            case BitRateUnits.PetabitPerSecond:
+            case BitRateUnits.PetabitsPerSecond:
                 return (value) * 1000000000000000;
-            case BitRateUnits.ExabitPerSecond:
+            case BitRateUnits.ExabitsPerSecond:
                 return (value) * 1000000000000000000;
-            case BitRateUnits.KilobytePerSecond:
+            case BitRateUnits.KilobytesPerSecond:
                 return (value * 8) * 1000;
-            case BitRateUnits.MegabytePerSecond:
+            case BitRateUnits.MegabytesPerSecond:
                 return (value * 8) * 1000000;
-            case BitRateUnits.GigabytePerSecond:
+            case BitRateUnits.GigabytesPerSecond:
                 return (value * 8) * 1000000000;
-            case BitRateUnits.TerabytePerSecond:
+            case BitRateUnits.TerabytesPerSecond:
                 return (value * 8) * 1000000000000;
-            case BitRateUnits.PetabytePerSecond:
+            case BitRateUnits.PetabytesPerSecond:
                 return (value * 8) * 1000000000000000;
-            case BitRateUnits.ExabytePerSecond:
+            case BitRateUnits.ExabytesPerSecond:
                 return (value * 8) * 1000000000000000000;
             default:
                 break;
@@ -237,30 +237,30 @@ class BitRate {
                 return this.BitsPerSecond + ` bit/s`;
             case BitRateUnits.BytesPerSecond:
                 return this.BytesPerSecond + ` B/s`;
-            case BitRateUnits.KilobitPerSecond:
-                return this.KilobitPerSecond + ` bit/s`;
-            case BitRateUnits.MegabitPerSecond:
-                return this.MegabitPerSecond + ` bit/s`;
-            case BitRateUnits.GigabitPerSecond:
-                return this.GigabitPerSecond + ` bit/s`;
-            case BitRateUnits.TerabitPerSecond:
-                return this.TerabitPerSecond + ` bit/s`;
-            case BitRateUnits.PetabitPerSecond:
-                return this.PetabitPerSecond + ` bit/s`;
-            case BitRateUnits.ExabitPerSecond:
-                return this.ExabitPerSecond + ` bit/s`;
-            case BitRateUnits.KilobytePerSecond:
-                return this.KilobytePerSecond + ` B/s`;
-            case BitRateUnits.MegabytePerSecond:
-                return this.MegabytePerSecond + ` B/s`;
-            case BitRateUnits.GigabytePerSecond:
-                return this.GigabytePerSecond + ` B/s`;
-            case BitRateUnits.TerabytePerSecond:
-                return this.TerabytePerSecond + ` B/s`;
-            case BitRateUnits.PetabytePerSecond:
-                return this.PetabytePerSecond + ` B/s`;
-            case BitRateUnits.ExabytePerSecond:
-                return this.ExabytePerSecond + ` B/s`;
+            case BitRateUnits.KilobitsPerSecond:
+                return this.KilobitsPerSecond + ` bit/s`;
+            case BitRateUnits.MegabitsPerSecond:
+                return this.MegabitsPerSecond + ` bit/s`;
+            case BitRateUnits.GigabitsPerSecond:
+                return this.GigabitsPerSecond + ` bit/s`;
+            case BitRateUnits.TerabitsPerSecond:
+                return this.TerabitsPerSecond + ` bit/s`;
+            case BitRateUnits.PetabitsPerSecond:
+                return this.PetabitsPerSecond + ` bit/s`;
+            case BitRateUnits.ExabitsPerSecond:
+                return this.ExabitsPerSecond + ` bit/s`;
+            case BitRateUnits.KilobytesPerSecond:
+                return this.KilobytesPerSecond + ` B/s`;
+            case BitRateUnits.MegabytesPerSecond:
+                return this.MegabytesPerSecond + ` B/s`;
+            case BitRateUnits.GigabytesPerSecond:
+                return this.GigabytesPerSecond + ` B/s`;
+            case BitRateUnits.TerabytesPerSecond:
+                return this.TerabytesPerSecond + ` B/s`;
+            case BitRateUnits.PetabytesPerSecond:
+                return this.PetabytesPerSecond + ` B/s`;
+            case BitRateUnits.ExabytesPerSecond:
+                return this.ExabytesPerSecond + ` B/s`;
             default:
                 break;
         }

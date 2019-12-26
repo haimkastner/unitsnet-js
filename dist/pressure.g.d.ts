@@ -22,23 +22,23 @@ export declare enum PressureUnits {
     DynesPerSquareCentimeter = 20,
     PoundsPerInchSecondSquared = 21,
     InchesOfWaterColumn = 22,
-    Micropascal = 23,
-    Decapascal = 24,
-    Hectopascal = 25,
-    Kilopascal = 26,
-    Megapascal = 27,
-    Gigapascal = 28,
-    Microbar = 29,
-    Centibar = 30,
-    Decibar = 31,
-    Kilobar = 32,
-    Megabar = 33,
-    KilonewtonPerSquareMeter = 34,
-    MeganewtonPerSquareMeter = 35,
-    KilonewtonPerSquareCentimeter = 36,
-    KilonewtonPerSquareMillimeter = 37,
-    KilopoundForcePerSquareInch = 38,
-    KilopoundForcePerSquareFoot = 39
+    Micropascals = 23,
+    Decapascals = 24,
+    Hectopascals = 25,
+    Kilopascals = 26,
+    Megapascals = 27,
+    Gigapascals = 28,
+    Microbars = 29,
+    Centibars = 30,
+    Decibars = 31,
+    Kilobars = 32,
+    Megabars = 33,
+    KilonewtonsPerSquareMeter = 34,
+    MeganewtonsPerSquareMeter = 35,
+    KilonewtonsPerSquareCentimeter = 36,
+    KilonewtonsPerSquareMillimeter = 37,
+    KilopoundsForcePerSquareInch = 38,
+    KilopoundsForcePerSquareFoot = 39
 }
 export declare class Pressure {
     private value;
@@ -65,23 +65,23 @@ export declare class Pressure {
     private dynespersquarecentimeterLazy;
     private poundsperinchsecondsquaredLazy;
     private inchesofwatercolumnLazy;
-    private micropascalLazy;
-    private decapascalLazy;
-    private hectopascalLazy;
-    private kilopascalLazy;
-    private megapascalLazy;
-    private gigapascalLazy;
-    private microbarLazy;
-    private centibarLazy;
-    private decibarLazy;
-    private kilobarLazy;
-    private megabarLazy;
-    private kilonewtonpersquaremeterLazy;
-    private meganewtonpersquaremeterLazy;
-    private kilonewtonpersquarecentimeterLazy;
-    private kilonewtonpersquaremillimeterLazy;
-    private kilopoundforcepersquareinchLazy;
-    private kilopoundforcepersquarefootLazy;
+    private micropascalsLazy;
+    private decapascalsLazy;
+    private hectopascalsLazy;
+    private kilopascalsLazy;
+    private megapascalsLazy;
+    private gigapascalsLazy;
+    private microbarsLazy;
+    private centibarsLazy;
+    private decibarsLazy;
+    private kilobarsLazy;
+    private megabarsLazy;
+    private kilonewtonspersquaremeterLazy;
+    private meganewtonspersquaremeterLazy;
+    private kilonewtonspersquarecentimeterLazy;
+    private kilonewtonspersquaremillimeterLazy;
+    private kilopoundsforcepersquareinchLazy;
+    private kilopoundsforcepersquarefootLazy;
     constructor(value: number, fromUnit: PressureUnits);
     get Pascals(): number;
     get Atmospheres(): number;
@@ -106,23 +106,23 @@ export declare class Pressure {
     get DynesPerSquareCentimeter(): number;
     get PoundsPerInchSecondSquared(): number;
     get InchesOfWaterColumn(): number;
-    get Micropascal(): number;
-    get Decapascal(): number;
-    get Hectopascal(): number;
-    get Kilopascal(): number;
-    get Megapascal(): number;
-    get Gigapascal(): number;
-    get Microbar(): number;
-    get Centibar(): number;
-    get Decibar(): number;
-    get Kilobar(): number;
-    get Megabar(): number;
-    get KilonewtonPerSquareMeter(): number;
-    get MeganewtonPerSquareMeter(): number;
-    get KilonewtonPerSquareCentimeter(): number;
-    get KilonewtonPerSquareMillimeter(): number;
-    get KilopoundForcePerSquareInch(): number;
-    get KilopoundForcePerSquareFoot(): number;
+    get Micropascals(): number;
+    get Decapascals(): number;
+    get Hectopascals(): number;
+    get Kilopascals(): number;
+    get Megapascals(): number;
+    get Gigapascals(): number;
+    get Microbars(): number;
+    get Centibars(): number;
+    get Decibars(): number;
+    get Kilobars(): number;
+    get Megabars(): number;
+    get KilonewtonsPerSquareMeter(): number;
+    get MeganewtonsPerSquareMeter(): number;
+    get KilonewtonsPerSquareCentimeter(): number;
+    get KilonewtonsPerSquareMillimeter(): number;
+    get KilopoundsForcePerSquareInch(): number;
+    get KilopoundsForcePerSquareFoot(): number;
     static FromPascals(value: number): Pressure;
     static FromAtmospheres(value: number): Pressure;
     static FromBars(value: number): Pressure;
@@ -146,23 +146,23 @@ export declare class Pressure {
     static FromDynesPerSquareCentimeter(value: number): Pressure;
     static FromPoundsPerInchSecondSquared(value: number): Pressure;
     static FromInchesOfWaterColumn(value: number): Pressure;
-    static FromMicropascal(value: number): Pressure;
-    static FromDecapascal(value: number): Pressure;
-    static FromHectopascal(value: number): Pressure;
-    static FromKilopascal(value: number): Pressure;
-    static FromMegapascal(value: number): Pressure;
-    static FromGigapascal(value: number): Pressure;
-    static FromMicrobar(value: number): Pressure;
-    static FromCentibar(value: number): Pressure;
-    static FromDecibar(value: number): Pressure;
-    static FromKilobar(value: number): Pressure;
-    static FromMegabar(value: number): Pressure;
-    static FromKilonewtonPerSquareMeter(value: number): Pressure;
-    static FromMeganewtonPerSquareMeter(value: number): Pressure;
-    static FromKilonewtonPerSquareCentimeter(value: number): Pressure;
-    static FromKilonewtonPerSquareMillimeter(value: number): Pressure;
-    static FromKilopoundForcePerSquareInch(value: number): Pressure;
-    static FromKilopoundForcePerSquareFoot(value: number): Pressure;
+    static FromMicropascals(value: number): Pressure;
+    static FromDecapascals(value: number): Pressure;
+    static FromHectopascals(value: number): Pressure;
+    static FromKilopascals(value: number): Pressure;
+    static FromMegapascals(value: number): Pressure;
+    static FromGigapascals(value: number): Pressure;
+    static FromMicrobars(value: number): Pressure;
+    static FromCentibars(value: number): Pressure;
+    static FromDecibars(value: number): Pressure;
+    static FromKilobars(value: number): Pressure;
+    static FromMegabars(value: number): Pressure;
+    static FromKilonewtonsPerSquareMeter(value: number): Pressure;
+    static FromMeganewtonsPerSquareMeter(value: number): Pressure;
+    static FromKilonewtonsPerSquareCentimeter(value: number): Pressure;
+    static FromKilonewtonsPerSquareMillimeter(value: number): Pressure;
+    static FromKilopoundsForcePerSquareInch(value: number): Pressure;
+    static FromKilopoundsForcePerSquareFoot(value: number): Pressure;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: PressureUnits): string;

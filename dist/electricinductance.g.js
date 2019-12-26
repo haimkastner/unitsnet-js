@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ElectricInductanceUnits;
 (function (ElectricInductanceUnits) {
     ElectricInductanceUnits[ElectricInductanceUnits["Henries"] = 0] = "Henries";
-    ElectricInductanceUnits[ElectricInductanceUnits["Nanohenry"] = 1] = "Nanohenry";
-    ElectricInductanceUnits[ElectricInductanceUnits["Microhenry"] = 2] = "Microhenry";
+    ElectricInductanceUnits[ElectricInductanceUnits["Nanohenries"] = 1] = "Nanohenries";
+    ElectricInductanceUnits[ElectricInductanceUnits["Microhenries"] = 2] = "Microhenries";
 })(ElectricInductanceUnits = exports.ElectricInductanceUnits || (exports.ElectricInductanceUnits = {}));
 class ElectricInductance {
     constructor(value, fromUnit) {
         this.henriesLazy = null;
-        this.nanohenryLazy = null;
-        this.microhenryLazy = null;
+        this.nanohenriesLazy = null;
+        this.microhenriesLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Henries() {
@@ -19,34 +19,34 @@ class ElectricInductance {
         }
         return this.henriesLazy = this.convertFromBase(ElectricInductanceUnits.Henries);
     }
-    get Nanohenry() {
-        if (this.nanohenryLazy !== null) {
-            return this.nanohenryLazy;
+    get Nanohenries() {
+        if (this.nanohenriesLazy !== null) {
+            return this.nanohenriesLazy;
         }
-        return this.nanohenryLazy = this.convertFromBase(ElectricInductanceUnits.Nanohenry);
+        return this.nanohenriesLazy = this.convertFromBase(ElectricInductanceUnits.Nanohenries);
     }
-    get Microhenry() {
-        if (this.microhenryLazy !== null) {
-            return this.microhenryLazy;
+    get Microhenries() {
+        if (this.microhenriesLazy !== null) {
+            return this.microhenriesLazy;
         }
-        return this.microhenryLazy = this.convertFromBase(ElectricInductanceUnits.Microhenry);
+        return this.microhenriesLazy = this.convertFromBase(ElectricInductanceUnits.Microhenries);
     }
     static FromHenries(value) {
         return new ElectricInductance(value, ElectricInductanceUnits.Henries);
     }
-    static FromNanohenry(value) {
-        return new ElectricInductance(value, ElectricInductanceUnits.Nanohenry);
+    static FromNanohenries(value) {
+        return new ElectricInductance(value, ElectricInductanceUnits.Nanohenries);
     }
-    static FromMicrohenry(value) {
-        return new ElectricInductance(value, ElectricInductanceUnits.Microhenry);
+    static FromMicrohenries(value) {
+        return new ElectricInductance(value, ElectricInductanceUnits.Microhenries);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
             case ElectricInductanceUnits.Henries:
                 return this.value;
-            case ElectricInductanceUnits.Nanohenry:
+            case ElectricInductanceUnits.Nanohenries:
                 return (this.value) / 1e-9;
-            case ElectricInductanceUnits.Microhenry:
+            case ElectricInductanceUnits.Microhenries:
                 return (this.value) / 0.000001;
             default:
                 break;
@@ -57,9 +57,9 @@ class ElectricInductance {
         switch (fromUnit) {
             case ElectricInductanceUnits.Henries:
                 return value;
-            case ElectricInductanceUnits.Nanohenry:
+            case ElectricInductanceUnits.Nanohenries:
                 return (value) * 1e-9;
-            case ElectricInductanceUnits.Microhenry:
+            case ElectricInductanceUnits.Microhenries:
                 return (value) * 0.000001;
             default:
                 break;
@@ -70,10 +70,10 @@ class ElectricInductance {
         switch (toUnit) {
             case ElectricInductanceUnits.Henries:
                 return this.Henries + ` H`;
-            case ElectricInductanceUnits.Nanohenry:
-                return this.Nanohenry + ` H`;
-            case ElectricInductanceUnits.Microhenry:
-                return this.Microhenry + ` H`;
+            case ElectricInductanceUnits.Nanohenries:
+                return this.Nanohenries + ` H`;
+            case ElectricInductanceUnits.Microhenries:
+                return this.Microhenries + ` H`;
             default:
                 break;
         }

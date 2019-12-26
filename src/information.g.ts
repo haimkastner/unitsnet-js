@@ -1,36 +1,36 @@
 export enum InformationUnits {
     Bytes,
     Bits,
-    Kilobyte,
-    Megabyte,
-    Gigabyte,
-    Terabyte,
-    Petabyte,
-    Exabyte,
-    Kilobit,
-    Megabit,
-    Gigabit,
-    Terabit,
-    Petabit,
-    Exabit
+    Kilobytes,
+    Megabytes,
+    Gigabytes,
+    Terabytes,
+    Petabytes,
+    Exabytes,
+    Kilobits,
+    Megabits,
+    Gigabits,
+    Terabits,
+    Petabits,
+    Exabits
 }
 
 export class Information {
     private value: number;
     private bytesLazy: number | null = null;
     private bitsLazy: number | null = null;
-    private kilobyteLazy: number | null = null;
-    private megabyteLazy: number | null = null;
-    private gigabyteLazy: number | null = null;
-    private terabyteLazy: number | null = null;
-    private petabyteLazy: number | null = null;
-    private exabyteLazy: number | null = null;
-    private kilobitLazy: number | null = null;
-    private megabitLazy: number | null = null;
-    private gigabitLazy: number | null = null;
-    private terabitLazy: number | null = null;
-    private petabitLazy: number | null = null;
-    private exabitLazy: number | null = null;
+    private kilobytesLazy: number | null = null;
+    private megabytesLazy: number | null = null;
+    private gigabytesLazy: number | null = null;
+    private terabytesLazy: number | null = null;
+    private petabytesLazy: number | null = null;
+    private exabytesLazy: number | null = null;
+    private kilobitsLazy: number | null = null;
+    private megabitsLazy: number | null = null;
+    private gigabitsLazy: number | null = null;
+    private terabitsLazy: number | null = null;
+    private petabitsLazy: number | null = null;
+    private exabitsLazy: number | null = null;
 
     public constructor(value: number, fromUnit: InformationUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -50,88 +50,88 @@ export class Information {
         return this.bitsLazy = this.convertFromBase(InformationUnits.Bits);
     }
 
-    public get Kilobyte(): number {
-        if(this.kilobyteLazy !== null){
-            return this.kilobyteLazy;
+    public get Kilobytes(): number {
+        if(this.kilobytesLazy !== null){
+            return this.kilobytesLazy;
         }
-        return this.kilobyteLazy = this.convertFromBase(InformationUnits.Kilobyte);
+        return this.kilobytesLazy = this.convertFromBase(InformationUnits.Kilobytes);
     }
 
-    public get Megabyte(): number {
-        if(this.megabyteLazy !== null){
-            return this.megabyteLazy;
+    public get Megabytes(): number {
+        if(this.megabytesLazy !== null){
+            return this.megabytesLazy;
         }
-        return this.megabyteLazy = this.convertFromBase(InformationUnits.Megabyte);
+        return this.megabytesLazy = this.convertFromBase(InformationUnits.Megabytes);
     }
 
-    public get Gigabyte(): number {
-        if(this.gigabyteLazy !== null){
-            return this.gigabyteLazy;
+    public get Gigabytes(): number {
+        if(this.gigabytesLazy !== null){
+            return this.gigabytesLazy;
         }
-        return this.gigabyteLazy = this.convertFromBase(InformationUnits.Gigabyte);
+        return this.gigabytesLazy = this.convertFromBase(InformationUnits.Gigabytes);
     }
 
-    public get Terabyte(): number {
-        if(this.terabyteLazy !== null){
-            return this.terabyteLazy;
+    public get Terabytes(): number {
+        if(this.terabytesLazy !== null){
+            return this.terabytesLazy;
         }
-        return this.terabyteLazy = this.convertFromBase(InformationUnits.Terabyte);
+        return this.terabytesLazy = this.convertFromBase(InformationUnits.Terabytes);
     }
 
-    public get Petabyte(): number {
-        if(this.petabyteLazy !== null){
-            return this.petabyteLazy;
+    public get Petabytes(): number {
+        if(this.petabytesLazy !== null){
+            return this.petabytesLazy;
         }
-        return this.petabyteLazy = this.convertFromBase(InformationUnits.Petabyte);
+        return this.petabytesLazy = this.convertFromBase(InformationUnits.Petabytes);
     }
 
-    public get Exabyte(): number {
-        if(this.exabyteLazy !== null){
-            return this.exabyteLazy;
+    public get Exabytes(): number {
+        if(this.exabytesLazy !== null){
+            return this.exabytesLazy;
         }
-        return this.exabyteLazy = this.convertFromBase(InformationUnits.Exabyte);
+        return this.exabytesLazy = this.convertFromBase(InformationUnits.Exabytes);
     }
 
-    public get Kilobit(): number {
-        if(this.kilobitLazy !== null){
-            return this.kilobitLazy;
+    public get Kilobits(): number {
+        if(this.kilobitsLazy !== null){
+            return this.kilobitsLazy;
         }
-        return this.kilobitLazy = this.convertFromBase(InformationUnits.Kilobit);
+        return this.kilobitsLazy = this.convertFromBase(InformationUnits.Kilobits);
     }
 
-    public get Megabit(): number {
-        if(this.megabitLazy !== null){
-            return this.megabitLazy;
+    public get Megabits(): number {
+        if(this.megabitsLazy !== null){
+            return this.megabitsLazy;
         }
-        return this.megabitLazy = this.convertFromBase(InformationUnits.Megabit);
+        return this.megabitsLazy = this.convertFromBase(InformationUnits.Megabits);
     }
 
-    public get Gigabit(): number {
-        if(this.gigabitLazy !== null){
-            return this.gigabitLazy;
+    public get Gigabits(): number {
+        if(this.gigabitsLazy !== null){
+            return this.gigabitsLazy;
         }
-        return this.gigabitLazy = this.convertFromBase(InformationUnits.Gigabit);
+        return this.gigabitsLazy = this.convertFromBase(InformationUnits.Gigabits);
     }
 
-    public get Terabit(): number {
-        if(this.terabitLazy !== null){
-            return this.terabitLazy;
+    public get Terabits(): number {
+        if(this.terabitsLazy !== null){
+            return this.terabitsLazy;
         }
-        return this.terabitLazy = this.convertFromBase(InformationUnits.Terabit);
+        return this.terabitsLazy = this.convertFromBase(InformationUnits.Terabits);
     }
 
-    public get Petabit(): number {
-        if(this.petabitLazy !== null){
-            return this.petabitLazy;
+    public get Petabits(): number {
+        if(this.petabitsLazy !== null){
+            return this.petabitsLazy;
         }
-        return this.petabitLazy = this.convertFromBase(InformationUnits.Petabit);
+        return this.petabitsLazy = this.convertFromBase(InformationUnits.Petabits);
     }
 
-    public get Exabit(): number {
-        if(this.exabitLazy !== null){
-            return this.exabitLazy;
+    public get Exabits(): number {
+        if(this.exabitsLazy !== null){
+            return this.exabitsLazy;
         }
-        return this.exabitLazy = this.convertFromBase(InformationUnits.Exabit);
+        return this.exabitsLazy = this.convertFromBase(InformationUnits.Exabits);
     }
 
     public static FromBytes(value: number): Information {
@@ -142,52 +142,52 @@ export class Information {
         return new Information(value, InformationUnits.Bits);
     }
 
-    public static FromKilobyte(value: number): Information {
-        return new Information(value, InformationUnits.Kilobyte);
+    public static FromKilobytes(value: number): Information {
+        return new Information(value, InformationUnits.Kilobytes);
     }
 
-    public static FromMegabyte(value: number): Information {
-        return new Information(value, InformationUnits.Megabyte);
+    public static FromMegabytes(value: number): Information {
+        return new Information(value, InformationUnits.Megabytes);
     }
 
-    public static FromGigabyte(value: number): Information {
-        return new Information(value, InformationUnits.Gigabyte);
+    public static FromGigabytes(value: number): Information {
+        return new Information(value, InformationUnits.Gigabytes);
     }
 
-    public static FromTerabyte(value: number): Information {
-        return new Information(value, InformationUnits.Terabyte);
+    public static FromTerabytes(value: number): Information {
+        return new Information(value, InformationUnits.Terabytes);
     }
 
-    public static FromPetabyte(value: number): Information {
-        return new Information(value, InformationUnits.Petabyte);
+    public static FromPetabytes(value: number): Information {
+        return new Information(value, InformationUnits.Petabytes);
     }
 
-    public static FromExabyte(value: number): Information {
-        return new Information(value, InformationUnits.Exabyte);
+    public static FromExabytes(value: number): Information {
+        return new Information(value, InformationUnits.Exabytes);
     }
 
-    public static FromKilobit(value: number): Information {
-        return new Information(value, InformationUnits.Kilobit);
+    public static FromKilobits(value: number): Information {
+        return new Information(value, InformationUnits.Kilobits);
     }
 
-    public static FromMegabit(value: number): Information {
-        return new Information(value, InformationUnits.Megabit);
+    public static FromMegabits(value: number): Information {
+        return new Information(value, InformationUnits.Megabits);
     }
 
-    public static FromGigabit(value: number): Information {
-        return new Information(value, InformationUnits.Gigabit);
+    public static FromGigabits(value: number): Information {
+        return new Information(value, InformationUnits.Gigabits);
     }
 
-    public static FromTerabit(value: number): Information {
-        return new Information(value, InformationUnits.Terabit);
+    public static FromTerabits(value: number): Information {
+        return new Information(value, InformationUnits.Terabits);
     }
 
-    public static FromPetabit(value: number): Information {
-        return new Information(value, InformationUnits.Petabit);
+    public static FromPetabits(value: number): Information {
+        return new Information(value, InformationUnits.Petabits);
     }
 
-    public static FromExabit(value: number): Information {
-        return new Information(value, InformationUnits.Exabit);
+    public static FromExabits(value: number): Information {
+        return new Information(value, InformationUnits.Exabits);
     }
 
     private convertFromBase(toUnit: InformationUnits): number {
@@ -197,29 +197,29 @@ export class Information {
                 return this.value/8;
             case InformationUnits.Bits:
                 return this.value;
-            case InformationUnits.Kilobyte:
+            case InformationUnits.Kilobytes:
                 return (this.value/8) / 1000;
-            case InformationUnits.Megabyte:
+            case InformationUnits.Megabytes:
                 return (this.value/8) / 1000000;
-            case InformationUnits.Gigabyte:
+            case InformationUnits.Gigabytes:
                 return (this.value/8) / 1000000000;
-            case InformationUnits.Terabyte:
+            case InformationUnits.Terabytes:
                 return (this.value/8) / 1000000000000;
-            case InformationUnits.Petabyte:
+            case InformationUnits.Petabytes:
                 return (this.value/8) / 1000000000000000;
-            case InformationUnits.Exabyte:
+            case InformationUnits.Exabytes:
                 return (this.value/8) / 1000000000000000000;
-            case InformationUnits.Kilobit:
+            case InformationUnits.Kilobits:
                 return (this.value) / 1000;
-            case InformationUnits.Megabit:
+            case InformationUnits.Megabits:
                 return (this.value) / 1000000;
-            case InformationUnits.Gigabit:
+            case InformationUnits.Gigabits:
                 return (this.value) / 1000000000;
-            case InformationUnits.Terabit:
+            case InformationUnits.Terabits:
                 return (this.value) / 1000000000000;
-            case InformationUnits.Petabit:
+            case InformationUnits.Petabits:
                 return (this.value) / 1000000000000000;
-            case InformationUnits.Exabit:
+            case InformationUnits.Exabits:
                 return (this.value) / 1000000000000000000;
             default:
                 break;
@@ -234,29 +234,29 @@ export class Information {
                 return value*8;
             case InformationUnits.Bits:
                 return value;
-            case InformationUnits.Kilobyte:
+            case InformationUnits.Kilobytes:
                 return (value*8) * 1000;
-            case InformationUnits.Megabyte:
+            case InformationUnits.Megabytes:
                 return (value*8) * 1000000;
-            case InformationUnits.Gigabyte:
+            case InformationUnits.Gigabytes:
                 return (value*8) * 1000000000;
-            case InformationUnits.Terabyte:
+            case InformationUnits.Terabytes:
                 return (value*8) * 1000000000000;
-            case InformationUnits.Petabyte:
+            case InformationUnits.Petabytes:
                 return (value*8) * 1000000000000000;
-            case InformationUnits.Exabyte:
+            case InformationUnits.Exabytes:
                 return (value*8) * 1000000000000000000;
-            case InformationUnits.Kilobit:
+            case InformationUnits.Kilobits:
                 return (value) * 1000;
-            case InformationUnits.Megabit:
+            case InformationUnits.Megabits:
                 return (value) * 1000000;
-            case InformationUnits.Gigabit:
+            case InformationUnits.Gigabits:
                 return (value) * 1000000000;
-            case InformationUnits.Terabit:
+            case InformationUnits.Terabits:
                 return (value) * 1000000000000;
-            case InformationUnits.Petabit:
+            case InformationUnits.Petabits:
                 return (value) * 1000000000000000;
-            case InformationUnits.Exabit:
+            case InformationUnits.Exabits:
                 return (value) * 1000000000000000000;
             default:
                 break;
@@ -272,30 +272,30 @@ export class Information {
                 return this.Bytes + ` B`;
             case InformationUnits.Bits:
                 return this.Bits + ` b`;
-            case InformationUnits.Kilobyte:
-                return this.Kilobyte + ` B`;
-            case InformationUnits.Megabyte:
-                return this.Megabyte + ` B`;
-            case InformationUnits.Gigabyte:
-                return this.Gigabyte + ` B`;
-            case InformationUnits.Terabyte:
-                return this.Terabyte + ` B`;
-            case InformationUnits.Petabyte:
-                return this.Petabyte + ` B`;
-            case InformationUnits.Exabyte:
-                return this.Exabyte + ` B`;
-            case InformationUnits.Kilobit:
-                return this.Kilobit + ` b`;
-            case InformationUnits.Megabit:
-                return this.Megabit + ` b`;
-            case InformationUnits.Gigabit:
-                return this.Gigabit + ` b`;
-            case InformationUnits.Terabit:
-                return this.Terabit + ` b`;
-            case InformationUnits.Petabit:
-                return this.Petabit + ` b`;
-            case InformationUnits.Exabit:
-                return this.Exabit + ` b`;
+            case InformationUnits.Kilobytes:
+                return this.Kilobytes + ` B`;
+            case InformationUnits.Megabytes:
+                return this.Megabytes + ` B`;
+            case InformationUnits.Gigabytes:
+                return this.Gigabytes + ` B`;
+            case InformationUnits.Terabytes:
+                return this.Terabytes + ` B`;
+            case InformationUnits.Petabytes:
+                return this.Petabytes + ` B`;
+            case InformationUnits.Exabytes:
+                return this.Exabytes + ` B`;
+            case InformationUnits.Kilobits:
+                return this.Kilobits + ` b`;
+            case InformationUnits.Megabits:
+                return this.Megabits + ` b`;
+            case InformationUnits.Gigabits:
+                return this.Gigabits + ` b`;
+            case InformationUnits.Terabits:
+                return this.Terabits + ` b`;
+            case InformationUnits.Petabits:
+                return this.Petabits + ` b`;
+            case InformationUnits.Exabits:
+                return this.Exabits + ` b`;
         default:
             break;
         }

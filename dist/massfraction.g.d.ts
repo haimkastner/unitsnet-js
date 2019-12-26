@@ -7,20 +7,20 @@ export declare enum MassFractionUnits {
     PartsPerMillion = 5,
     PartsPerBillion = 6,
     PartsPerTrillion = 7,
-    NanogramPerGram = 8,
-    MicrogramPerGram = 9,
-    CentigramPerGram = 10,
-    DecigramPerGram = 11,
-    DecagramPerGram = 12,
-    HectogramPerGram = 13,
-    KilogramPerGram = 14,
-    NanogramPerKilogram = 15,
-    MicrogramPerKilogram = 16,
-    CentigramPerKilogram = 17,
-    DecigramPerKilogram = 18,
-    DecagramPerKilogram = 19,
-    HectogramPerKilogram = 20,
-    KilogramPerKilogram = 21
+    NanogramsPerGram = 8,
+    MicrogramsPerGram = 9,
+    CentigramsPerGram = 10,
+    DecigramsPerGram = 11,
+    DecagramsPerGram = 12,
+    HectogramsPerGram = 13,
+    KilogramsPerGram = 14,
+    NanogramsPerKilogram = 15,
+    MicrogramsPerKilogram = 16,
+    CentigramsPerKilogram = 17,
+    DecigramsPerKilogram = 18,
+    DecagramsPerKilogram = 19,
+    HectogramsPerKilogram = 20,
+    KilogramsPerKilogram = 21
 }
 export declare class MassFraction {
     private value;
@@ -32,20 +32,20 @@ export declare class MassFraction {
     private partspermillionLazy;
     private partsperbillionLazy;
     private partspertrillionLazy;
-    private nanogrampergramLazy;
-    private microgrampergramLazy;
-    private centigrampergramLazy;
-    private decigrampergramLazy;
-    private decagrampergramLazy;
-    private hectogrampergramLazy;
-    private kilogrampergramLazy;
-    private nanogramperkilogramLazy;
-    private microgramperkilogramLazy;
-    private centigramperkilogramLazy;
-    private decigramperkilogramLazy;
-    private decagramperkilogramLazy;
-    private hectogramperkilogramLazy;
-    private kilogramperkilogramLazy;
+    private nanogramspergramLazy;
+    private microgramspergramLazy;
+    private centigramspergramLazy;
+    private decigramspergramLazy;
+    private decagramspergramLazy;
+    private hectogramspergramLazy;
+    private kilogramspergramLazy;
+    private nanogramsperkilogramLazy;
+    private microgramsperkilogramLazy;
+    private centigramsperkilogramLazy;
+    private decigramsperkilogramLazy;
+    private decagramsperkilogramLazy;
+    private hectogramsperkilogramLazy;
+    private kilogramsperkilogramLazy;
     constructor(value: number, fromUnit: MassFractionUnits);
     get DecimalFractions(): number;
     get GramsPerGram(): number;
@@ -55,20 +55,20 @@ export declare class MassFraction {
     get PartsPerMillion(): number;
     get PartsPerBillion(): number;
     get PartsPerTrillion(): number;
-    get NanogramPerGram(): number;
-    get MicrogramPerGram(): number;
-    get CentigramPerGram(): number;
-    get DecigramPerGram(): number;
-    get DecagramPerGram(): number;
-    get HectogramPerGram(): number;
-    get KilogramPerGram(): number;
-    get NanogramPerKilogram(): number;
-    get MicrogramPerKilogram(): number;
-    get CentigramPerKilogram(): number;
-    get DecigramPerKilogram(): number;
-    get DecagramPerKilogram(): number;
-    get HectogramPerKilogram(): number;
-    get KilogramPerKilogram(): number;
+    get NanogramsPerGram(): number;
+    get MicrogramsPerGram(): number;
+    get CentigramsPerGram(): number;
+    get DecigramsPerGram(): number;
+    get DecagramsPerGram(): number;
+    get HectogramsPerGram(): number;
+    get KilogramsPerGram(): number;
+    get NanogramsPerKilogram(): number;
+    get MicrogramsPerKilogram(): number;
+    get CentigramsPerKilogram(): number;
+    get DecigramsPerKilogram(): number;
+    get DecagramsPerKilogram(): number;
+    get HectogramsPerKilogram(): number;
+    get KilogramsPerKilogram(): number;
     static FromDecimalFractions(value: number): MassFraction;
     static FromGramsPerGram(value: number): MassFraction;
     static FromGramsPerKilogram(value: number): MassFraction;
@@ -77,20 +77,20 @@ export declare class MassFraction {
     static FromPartsPerMillion(value: number): MassFraction;
     static FromPartsPerBillion(value: number): MassFraction;
     static FromPartsPerTrillion(value: number): MassFraction;
-    static FromNanogramPerGram(value: number): MassFraction;
-    static FromMicrogramPerGram(value: number): MassFraction;
-    static FromCentigramPerGram(value: number): MassFraction;
-    static FromDecigramPerGram(value: number): MassFraction;
-    static FromDecagramPerGram(value: number): MassFraction;
-    static FromHectogramPerGram(value: number): MassFraction;
-    static FromKilogramPerGram(value: number): MassFraction;
-    static FromNanogramPerKilogram(value: number): MassFraction;
-    static FromMicrogramPerKilogram(value: number): MassFraction;
-    static FromCentigramPerKilogram(value: number): MassFraction;
-    static FromDecigramPerKilogram(value: number): MassFraction;
-    static FromDecagramPerKilogram(value: number): MassFraction;
-    static FromHectogramPerKilogram(value: number): MassFraction;
-    static FromKilogramPerKilogram(value: number): MassFraction;
+    static FromNanogramsPerGram(value: number): MassFraction;
+    static FromMicrogramsPerGram(value: number): MassFraction;
+    static FromCentigramsPerGram(value: number): MassFraction;
+    static FromDecigramsPerGram(value: number): MassFraction;
+    static FromDecagramsPerGram(value: number): MassFraction;
+    static FromHectogramsPerGram(value: number): MassFraction;
+    static FromKilogramsPerGram(value: number): MassFraction;
+    static FromNanogramsPerKilogram(value: number): MassFraction;
+    static FromMicrogramsPerKilogram(value: number): MassFraction;
+    static FromCentigramsPerKilogram(value: number): MassFraction;
+    static FromDecigramsPerKilogram(value: number): MassFraction;
+    static FromDecagramsPerKilogram(value: number): MassFraction;
+    static FromHectogramsPerKilogram(value: number): MassFraction;
+    static FromKilogramsPerKilogram(value: number): MassFraction;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: MassFractionUnits): string;

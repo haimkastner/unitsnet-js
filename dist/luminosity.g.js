@@ -4,33 +4,33 @@ var LuminosityUnits;
 (function (LuminosityUnits) {
     LuminosityUnits[LuminosityUnits["Watts"] = 0] = "Watts";
     LuminosityUnits[LuminosityUnits["SolarLuminosities"] = 1] = "SolarLuminosities";
-    LuminosityUnits[LuminosityUnits["Femtowatt"] = 2] = "Femtowatt";
-    LuminosityUnits[LuminosityUnits["Picowatt"] = 3] = "Picowatt";
-    LuminosityUnits[LuminosityUnits["Nanowatt"] = 4] = "Nanowatt";
-    LuminosityUnits[LuminosityUnits["Microwatt"] = 5] = "Microwatt";
-    LuminosityUnits[LuminosityUnits["Deciwatt"] = 6] = "Deciwatt";
-    LuminosityUnits[LuminosityUnits["Decawatt"] = 7] = "Decawatt";
-    LuminosityUnits[LuminosityUnits["Kilowatt"] = 8] = "Kilowatt";
-    LuminosityUnits[LuminosityUnits["Megawatt"] = 9] = "Megawatt";
-    LuminosityUnits[LuminosityUnits["Gigawatt"] = 10] = "Gigawatt";
-    LuminosityUnits[LuminosityUnits["Terawatt"] = 11] = "Terawatt";
-    LuminosityUnits[LuminosityUnits["Petawatt"] = 12] = "Petawatt";
+    LuminosityUnits[LuminosityUnits["Femtowatts"] = 2] = "Femtowatts";
+    LuminosityUnits[LuminosityUnits["Picowatts"] = 3] = "Picowatts";
+    LuminosityUnits[LuminosityUnits["Nanowatts"] = 4] = "Nanowatts";
+    LuminosityUnits[LuminosityUnits["Microwatts"] = 5] = "Microwatts";
+    LuminosityUnits[LuminosityUnits["Deciwatts"] = 6] = "Deciwatts";
+    LuminosityUnits[LuminosityUnits["Decawatts"] = 7] = "Decawatts";
+    LuminosityUnits[LuminosityUnits["Kilowatts"] = 8] = "Kilowatts";
+    LuminosityUnits[LuminosityUnits["Megawatts"] = 9] = "Megawatts";
+    LuminosityUnits[LuminosityUnits["Gigawatts"] = 10] = "Gigawatts";
+    LuminosityUnits[LuminosityUnits["Terawatts"] = 11] = "Terawatts";
+    LuminosityUnits[LuminosityUnits["Petawatts"] = 12] = "Petawatts";
 })(LuminosityUnits = exports.LuminosityUnits || (exports.LuminosityUnits = {}));
 class Luminosity {
     constructor(value, fromUnit) {
         this.wattsLazy = null;
         this.solarluminositiesLazy = null;
-        this.femtowattLazy = null;
-        this.picowattLazy = null;
-        this.nanowattLazy = null;
-        this.microwattLazy = null;
-        this.deciwattLazy = null;
-        this.decawattLazy = null;
-        this.kilowattLazy = null;
-        this.megawattLazy = null;
-        this.gigawattLazy = null;
-        this.terawattLazy = null;
-        this.petawattLazy = null;
+        this.femtowattsLazy = null;
+        this.picowattsLazy = null;
+        this.nanowattsLazy = null;
+        this.microwattsLazy = null;
+        this.deciwattsLazy = null;
+        this.decawattsLazy = null;
+        this.kilowattsLazy = null;
+        this.megawattsLazy = null;
+        this.gigawattsLazy = null;
+        this.terawattsLazy = null;
+        this.petawattsLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Watts() {
@@ -45,71 +45,71 @@ class Luminosity {
         }
         return this.solarluminositiesLazy = this.convertFromBase(LuminosityUnits.SolarLuminosities);
     }
-    get Femtowatt() {
-        if (this.femtowattLazy !== null) {
-            return this.femtowattLazy;
+    get Femtowatts() {
+        if (this.femtowattsLazy !== null) {
+            return this.femtowattsLazy;
         }
-        return this.femtowattLazy = this.convertFromBase(LuminosityUnits.Femtowatt);
+        return this.femtowattsLazy = this.convertFromBase(LuminosityUnits.Femtowatts);
     }
-    get Picowatt() {
-        if (this.picowattLazy !== null) {
-            return this.picowattLazy;
+    get Picowatts() {
+        if (this.picowattsLazy !== null) {
+            return this.picowattsLazy;
         }
-        return this.picowattLazy = this.convertFromBase(LuminosityUnits.Picowatt);
+        return this.picowattsLazy = this.convertFromBase(LuminosityUnits.Picowatts);
     }
-    get Nanowatt() {
-        if (this.nanowattLazy !== null) {
-            return this.nanowattLazy;
+    get Nanowatts() {
+        if (this.nanowattsLazy !== null) {
+            return this.nanowattsLazy;
         }
-        return this.nanowattLazy = this.convertFromBase(LuminosityUnits.Nanowatt);
+        return this.nanowattsLazy = this.convertFromBase(LuminosityUnits.Nanowatts);
     }
-    get Microwatt() {
-        if (this.microwattLazy !== null) {
-            return this.microwattLazy;
+    get Microwatts() {
+        if (this.microwattsLazy !== null) {
+            return this.microwattsLazy;
         }
-        return this.microwattLazy = this.convertFromBase(LuminosityUnits.Microwatt);
+        return this.microwattsLazy = this.convertFromBase(LuminosityUnits.Microwatts);
     }
-    get Deciwatt() {
-        if (this.deciwattLazy !== null) {
-            return this.deciwattLazy;
+    get Deciwatts() {
+        if (this.deciwattsLazy !== null) {
+            return this.deciwattsLazy;
         }
-        return this.deciwattLazy = this.convertFromBase(LuminosityUnits.Deciwatt);
+        return this.deciwattsLazy = this.convertFromBase(LuminosityUnits.Deciwatts);
     }
-    get Decawatt() {
-        if (this.decawattLazy !== null) {
-            return this.decawattLazy;
+    get Decawatts() {
+        if (this.decawattsLazy !== null) {
+            return this.decawattsLazy;
         }
-        return this.decawattLazy = this.convertFromBase(LuminosityUnits.Decawatt);
+        return this.decawattsLazy = this.convertFromBase(LuminosityUnits.Decawatts);
     }
-    get Kilowatt() {
-        if (this.kilowattLazy !== null) {
-            return this.kilowattLazy;
+    get Kilowatts() {
+        if (this.kilowattsLazy !== null) {
+            return this.kilowattsLazy;
         }
-        return this.kilowattLazy = this.convertFromBase(LuminosityUnits.Kilowatt);
+        return this.kilowattsLazy = this.convertFromBase(LuminosityUnits.Kilowatts);
     }
-    get Megawatt() {
-        if (this.megawattLazy !== null) {
-            return this.megawattLazy;
+    get Megawatts() {
+        if (this.megawattsLazy !== null) {
+            return this.megawattsLazy;
         }
-        return this.megawattLazy = this.convertFromBase(LuminosityUnits.Megawatt);
+        return this.megawattsLazy = this.convertFromBase(LuminosityUnits.Megawatts);
     }
-    get Gigawatt() {
-        if (this.gigawattLazy !== null) {
-            return this.gigawattLazy;
+    get Gigawatts() {
+        if (this.gigawattsLazy !== null) {
+            return this.gigawattsLazy;
         }
-        return this.gigawattLazy = this.convertFromBase(LuminosityUnits.Gigawatt);
+        return this.gigawattsLazy = this.convertFromBase(LuminosityUnits.Gigawatts);
     }
-    get Terawatt() {
-        if (this.terawattLazy !== null) {
-            return this.terawattLazy;
+    get Terawatts() {
+        if (this.terawattsLazy !== null) {
+            return this.terawattsLazy;
         }
-        return this.terawattLazy = this.convertFromBase(LuminosityUnits.Terawatt);
+        return this.terawattsLazy = this.convertFromBase(LuminosityUnits.Terawatts);
     }
-    get Petawatt() {
-        if (this.petawattLazy !== null) {
-            return this.petawattLazy;
+    get Petawatts() {
+        if (this.petawattsLazy !== null) {
+            return this.petawattsLazy;
         }
-        return this.petawattLazy = this.convertFromBase(LuminosityUnits.Petawatt);
+        return this.petawattsLazy = this.convertFromBase(LuminosityUnits.Petawatts);
     }
     static FromWatts(value) {
         return new Luminosity(value, LuminosityUnits.Watts);
@@ -117,38 +117,38 @@ class Luminosity {
     static FromSolarLuminosities(value) {
         return new Luminosity(value, LuminosityUnits.SolarLuminosities);
     }
-    static FromFemtowatt(value) {
-        return new Luminosity(value, LuminosityUnits.Femtowatt);
+    static FromFemtowatts(value) {
+        return new Luminosity(value, LuminosityUnits.Femtowatts);
     }
-    static FromPicowatt(value) {
-        return new Luminosity(value, LuminosityUnits.Picowatt);
+    static FromPicowatts(value) {
+        return new Luminosity(value, LuminosityUnits.Picowatts);
     }
-    static FromNanowatt(value) {
-        return new Luminosity(value, LuminosityUnits.Nanowatt);
+    static FromNanowatts(value) {
+        return new Luminosity(value, LuminosityUnits.Nanowatts);
     }
-    static FromMicrowatt(value) {
-        return new Luminosity(value, LuminosityUnits.Microwatt);
+    static FromMicrowatts(value) {
+        return new Luminosity(value, LuminosityUnits.Microwatts);
     }
-    static FromDeciwatt(value) {
-        return new Luminosity(value, LuminosityUnits.Deciwatt);
+    static FromDeciwatts(value) {
+        return new Luminosity(value, LuminosityUnits.Deciwatts);
     }
-    static FromDecawatt(value) {
-        return new Luminosity(value, LuminosityUnits.Decawatt);
+    static FromDecawatts(value) {
+        return new Luminosity(value, LuminosityUnits.Decawatts);
     }
-    static FromKilowatt(value) {
-        return new Luminosity(value, LuminosityUnits.Kilowatt);
+    static FromKilowatts(value) {
+        return new Luminosity(value, LuminosityUnits.Kilowatts);
     }
-    static FromMegawatt(value) {
-        return new Luminosity(value, LuminosityUnits.Megawatt);
+    static FromMegawatts(value) {
+        return new Luminosity(value, LuminosityUnits.Megawatts);
     }
-    static FromGigawatt(value) {
-        return new Luminosity(value, LuminosityUnits.Gigawatt);
+    static FromGigawatts(value) {
+        return new Luminosity(value, LuminosityUnits.Gigawatts);
     }
-    static FromTerawatt(value) {
-        return new Luminosity(value, LuminosityUnits.Terawatt);
+    static FromTerawatts(value) {
+        return new Luminosity(value, LuminosityUnits.Terawatts);
     }
-    static FromPetawatt(value) {
-        return new Luminosity(value, LuminosityUnits.Petawatt);
+    static FromPetawatts(value) {
+        return new Luminosity(value, LuminosityUnits.Petawatts);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -156,27 +156,27 @@ class Luminosity {
                 return this.value;
             case LuminosityUnits.SolarLuminosities:
                 return this.value / 3.846e26;
-            case LuminosityUnits.Femtowatt:
+            case LuminosityUnits.Femtowatts:
                 return (this.value) / 1e-15;
-            case LuminosityUnits.Picowatt:
+            case LuminosityUnits.Picowatts:
                 return (this.value) / 1e-12;
-            case LuminosityUnits.Nanowatt:
+            case LuminosityUnits.Nanowatts:
                 return (this.value) / 1e-9;
-            case LuminosityUnits.Microwatt:
+            case LuminosityUnits.Microwatts:
                 return (this.value) / 0.000001;
-            case LuminosityUnits.Deciwatt:
+            case LuminosityUnits.Deciwatts:
                 return (this.value) / 0.1;
-            case LuminosityUnits.Decawatt:
+            case LuminosityUnits.Decawatts:
                 return (this.value) / 10;
-            case LuminosityUnits.Kilowatt:
+            case LuminosityUnits.Kilowatts:
                 return (this.value) / 1000;
-            case LuminosityUnits.Megawatt:
+            case LuminosityUnits.Megawatts:
                 return (this.value) / 1000000;
-            case LuminosityUnits.Gigawatt:
+            case LuminosityUnits.Gigawatts:
                 return (this.value) / 1000000000;
-            case LuminosityUnits.Terawatt:
+            case LuminosityUnits.Terawatts:
                 return (this.value) / 1000000000000;
-            case LuminosityUnits.Petawatt:
+            case LuminosityUnits.Petawatts:
                 return (this.value) / 1000000000000000;
             default:
                 break;
@@ -189,27 +189,27 @@ class Luminosity {
                 return value;
             case LuminosityUnits.SolarLuminosities:
                 return value * 3.846e26;
-            case LuminosityUnits.Femtowatt:
+            case LuminosityUnits.Femtowatts:
                 return (value) * 1e-15;
-            case LuminosityUnits.Picowatt:
+            case LuminosityUnits.Picowatts:
                 return (value) * 1e-12;
-            case LuminosityUnits.Nanowatt:
+            case LuminosityUnits.Nanowatts:
                 return (value) * 1e-9;
-            case LuminosityUnits.Microwatt:
+            case LuminosityUnits.Microwatts:
                 return (value) * 0.000001;
-            case LuminosityUnits.Deciwatt:
+            case LuminosityUnits.Deciwatts:
                 return (value) * 0.1;
-            case LuminosityUnits.Decawatt:
+            case LuminosityUnits.Decawatts:
                 return (value) * 10;
-            case LuminosityUnits.Kilowatt:
+            case LuminosityUnits.Kilowatts:
                 return (value) * 1000;
-            case LuminosityUnits.Megawatt:
+            case LuminosityUnits.Megawatts:
                 return (value) * 1000000;
-            case LuminosityUnits.Gigawatt:
+            case LuminosityUnits.Gigawatts:
                 return (value) * 1000000000;
-            case LuminosityUnits.Terawatt:
+            case LuminosityUnits.Terawatts:
                 return (value) * 1000000000000;
-            case LuminosityUnits.Petawatt:
+            case LuminosityUnits.Petawatts:
                 return (value) * 1000000000000000;
             default:
                 break;
@@ -222,28 +222,28 @@ class Luminosity {
                 return this.Watts + ` W`;
             case LuminosityUnits.SolarLuminosities:
                 return this.SolarLuminosities + ` L⊙`;
-            case LuminosityUnits.Femtowatt:
-                return this.Femtowatt + ` W`;
-            case LuminosityUnits.Picowatt:
-                return this.Picowatt + ` W`;
-            case LuminosityUnits.Nanowatt:
-                return this.Nanowatt + ` W`;
-            case LuminosityUnits.Microwatt:
-                return this.Microwatt + ` W`;
-            case LuminosityUnits.Deciwatt:
-                return this.Deciwatt + ` W`;
-            case LuminosityUnits.Decawatt:
-                return this.Decawatt + ` W`;
-            case LuminosityUnits.Kilowatt:
-                return this.Kilowatt + ` W`;
-            case LuminosityUnits.Megawatt:
-                return this.Megawatt + ` W`;
-            case LuminosityUnits.Gigawatt:
-                return this.Gigawatt + ` W`;
-            case LuminosityUnits.Terawatt:
-                return this.Terawatt + ` W`;
-            case LuminosityUnits.Petawatt:
-                return this.Petawatt + ` W`;
+            case LuminosityUnits.Femtowatts:
+                return this.Femtowatts + ` W`;
+            case LuminosityUnits.Picowatts:
+                return this.Picowatts + ` W`;
+            case LuminosityUnits.Nanowatts:
+                return this.Nanowatts + ` W`;
+            case LuminosityUnits.Microwatts:
+                return this.Microwatts + ` W`;
+            case LuminosityUnits.Deciwatts:
+                return this.Deciwatts + ` W`;
+            case LuminosityUnits.Decawatts:
+                return this.Decawatts + ` W`;
+            case LuminosityUnits.Kilowatts:
+                return this.Kilowatts + ` W`;
+            case LuminosityUnits.Megawatts:
+                return this.Megawatts + ` W`;
+            case LuminosityUnits.Gigawatts:
+                return this.Gigawatts + ` W`;
+            case LuminosityUnits.Terawatts:
+                return this.Terawatts + ` W`;
+            case LuminosityUnits.Petawatts:
+                return this.Petawatts + ` W`;
             default:
                 break;
         }

@@ -8,7 +8,7 @@ var DynamicViscosityUnits;
     DynamicViscosityUnits[DynamicViscosityUnits["Reyns"] = 3] = "Reyns";
     DynamicViscosityUnits[DynamicViscosityUnits["PoundsForceSecondPerSquareInch"] = 4] = "PoundsForceSecondPerSquareInch";
     DynamicViscosityUnits[DynamicViscosityUnits["PoundsForceSecondPerSquareFoot"] = 5] = "PoundsForceSecondPerSquareFoot";
-    DynamicViscosityUnits[DynamicViscosityUnits["MicropascalSecond"] = 6] = "MicropascalSecond";
+    DynamicViscosityUnits[DynamicViscosityUnits["MicropascalSeconds"] = 6] = "MicropascalSeconds";
     DynamicViscosityUnits[DynamicViscosityUnits["Centipoise"] = 7] = "Centipoise";
 })(DynamicViscosityUnits = exports.DynamicViscosityUnits || (exports.DynamicViscosityUnits = {}));
 class DynamicViscosity {
@@ -19,7 +19,7 @@ class DynamicViscosity {
         this.reynsLazy = null;
         this.poundsforcesecondpersquareinchLazy = null;
         this.poundsforcesecondpersquarefootLazy = null;
-        this.micropascalsecondLazy = null;
+        this.micropascalsecondsLazy = null;
         this.centipoiseLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
@@ -59,11 +59,11 @@ class DynamicViscosity {
         }
         return this.poundsforcesecondpersquarefootLazy = this.convertFromBase(DynamicViscosityUnits.PoundsForceSecondPerSquareFoot);
     }
-    get MicropascalSecond() {
-        if (this.micropascalsecondLazy !== null) {
-            return this.micropascalsecondLazy;
+    get MicropascalSeconds() {
+        if (this.micropascalsecondsLazy !== null) {
+            return this.micropascalsecondsLazy;
         }
-        return this.micropascalsecondLazy = this.convertFromBase(DynamicViscosityUnits.MicropascalSecond);
+        return this.micropascalsecondsLazy = this.convertFromBase(DynamicViscosityUnits.MicropascalSeconds);
     }
     get Centipoise() {
         if (this.centipoiseLazy !== null) {
@@ -89,8 +89,8 @@ class DynamicViscosity {
     static FromPoundsForceSecondPerSquareFoot(value) {
         return new DynamicViscosity(value, DynamicViscosityUnits.PoundsForceSecondPerSquareFoot);
     }
-    static FromMicropascalSecond(value) {
-        return new DynamicViscosity(value, DynamicViscosityUnits.MicropascalSecond);
+    static FromMicropascalSeconds(value) {
+        return new DynamicViscosity(value, DynamicViscosityUnits.MicropascalSeconds);
     }
     static FromCentipoise(value) {
         return new DynamicViscosity(value, DynamicViscosityUnits.Centipoise);
@@ -109,7 +109,7 @@ class DynamicViscosity {
                 return this.value / 6.8947572931683613e3;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return this.value / 4.7880258980335843e1;
-            case DynamicViscosityUnits.MicropascalSecond:
+            case DynamicViscosityUnits.MicropascalSeconds:
                 return (this.value) / 0.000001;
             case DynamicViscosityUnits.Centipoise:
                 return (this.value * 10) / 0.01;
@@ -132,7 +132,7 @@ class DynamicViscosity {
                 return value * 6.8947572931683613e3;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return value * 4.7880258980335843e1;
-            case DynamicViscosityUnits.MicropascalSecond:
+            case DynamicViscosityUnits.MicropascalSeconds:
                 return (value) * 0.000001;
             case DynamicViscosityUnits.Centipoise:
                 return (value / 10) * 0.01;
@@ -155,8 +155,8 @@ class DynamicViscosity {
                 return this.PoundsForceSecondPerSquareInch + ` lbf·s/in²`;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return this.PoundsForceSecondPerSquareFoot + ` lbf·s/ft²`;
-            case DynamicViscosityUnits.MicropascalSecond:
-                return this.MicropascalSecond + ` Pa·s`;
+            case DynamicViscosityUnits.MicropascalSeconds:
+                return this.MicropascalSeconds + ` Pa·s`;
             case DynamicViscosityUnits.Centipoise:
                 return this.Centipoise + ` P`;
             default:

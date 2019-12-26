@@ -19,18 +19,18 @@ var SpeedUnits;
     SpeedUnits[SpeedUnits["YardsPerHour"] = 14] = "YardsPerHour";
     SpeedUnits[SpeedUnits["Knots"] = 15] = "Knots";
     SpeedUnits[SpeedUnits["MilesPerHour"] = 16] = "MilesPerHour";
-    SpeedUnits[SpeedUnits["NanometerPerSecond"] = 17] = "NanometerPerSecond";
-    SpeedUnits[SpeedUnits["MicrometerPerSecond"] = 18] = "MicrometerPerSecond";
-    SpeedUnits[SpeedUnits["CentimeterPerSecond"] = 19] = "CentimeterPerSecond";
-    SpeedUnits[SpeedUnits["DecimeterPerSecond"] = 20] = "DecimeterPerSecond";
-    SpeedUnits[SpeedUnits["KilometerPerSecond"] = 21] = "KilometerPerSecond";
-    SpeedUnits[SpeedUnits["NanometerPerMinute"] = 22] = "NanometerPerMinute";
-    SpeedUnits[SpeedUnits["MicrometerPerMinute"] = 23] = "MicrometerPerMinute";
-    SpeedUnits[SpeedUnits["CentimeterPerMinute"] = 24] = "CentimeterPerMinute";
-    SpeedUnits[SpeedUnits["DecimeterPerMinute"] = 25] = "DecimeterPerMinute";
-    SpeedUnits[SpeedUnits["KilometerPerMinute"] = 26] = "KilometerPerMinute";
-    SpeedUnits[SpeedUnits["CentimeterPerHour"] = 27] = "CentimeterPerHour";
-    SpeedUnits[SpeedUnits["KilometerPerHour"] = 28] = "KilometerPerHour";
+    SpeedUnits[SpeedUnits["NanometersPerSecond"] = 17] = "NanometersPerSecond";
+    SpeedUnits[SpeedUnits["MicrometersPerSecond"] = 18] = "MicrometersPerSecond";
+    SpeedUnits[SpeedUnits["CentimetersPerSecond"] = 19] = "CentimetersPerSecond";
+    SpeedUnits[SpeedUnits["DecimetersPerSecond"] = 20] = "DecimetersPerSecond";
+    SpeedUnits[SpeedUnits["KilometersPerSecond"] = 21] = "KilometersPerSecond";
+    SpeedUnits[SpeedUnits["NanometersPerMinutes"] = 22] = "NanometersPerMinutes";
+    SpeedUnits[SpeedUnits["MicrometersPerMinutes"] = 23] = "MicrometersPerMinutes";
+    SpeedUnits[SpeedUnits["CentimetersPerMinutes"] = 24] = "CentimetersPerMinutes";
+    SpeedUnits[SpeedUnits["DecimetersPerMinutes"] = 25] = "DecimetersPerMinutes";
+    SpeedUnits[SpeedUnits["KilometersPerMinutes"] = 26] = "KilometersPerMinutes";
+    SpeedUnits[SpeedUnits["CentimetersPerHour"] = 27] = "CentimetersPerHour";
+    SpeedUnits[SpeedUnits["KilometersPerHour"] = 28] = "KilometersPerHour";
 })(SpeedUnits = exports.SpeedUnits || (exports.SpeedUnits = {}));
 class Speed {
     constructor(value, fromUnit) {
@@ -51,18 +51,18 @@ class Speed {
         this.yardsperhourLazy = null;
         this.knotsLazy = null;
         this.milesperhourLazy = null;
-        this.nanometerpersecondLazy = null;
-        this.micrometerpersecondLazy = null;
-        this.centimeterpersecondLazy = null;
-        this.decimeterpersecondLazy = null;
-        this.kilometerpersecondLazy = null;
-        this.nanometerperminuteLazy = null;
-        this.micrometerperminuteLazy = null;
-        this.centimeterperminuteLazy = null;
-        this.decimeterperminuteLazy = null;
-        this.kilometerperminuteLazy = null;
-        this.centimeterperhourLazy = null;
-        this.kilometerperhourLazy = null;
+        this.nanometerspersecondLazy = null;
+        this.micrometerspersecondLazy = null;
+        this.centimeterspersecondLazy = null;
+        this.decimeterspersecondLazy = null;
+        this.kilometerspersecondLazy = null;
+        this.nanometersperminutesLazy = null;
+        this.micrometersperminutesLazy = null;
+        this.centimetersperminutesLazy = null;
+        this.decimetersperminutesLazy = null;
+        this.kilometersperminutesLazy = null;
+        this.centimetersperhourLazy = null;
+        this.kilometersperhourLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get MetersPerSecond() {
@@ -167,77 +167,77 @@ class Speed {
         }
         return this.milesperhourLazy = this.convertFromBase(SpeedUnits.MilesPerHour);
     }
-    get NanometerPerSecond() {
-        if (this.nanometerpersecondLazy !== null) {
-            return this.nanometerpersecondLazy;
+    get NanometersPerSecond() {
+        if (this.nanometerspersecondLazy !== null) {
+            return this.nanometerspersecondLazy;
         }
-        return this.nanometerpersecondLazy = this.convertFromBase(SpeedUnits.NanometerPerSecond);
+        return this.nanometerspersecondLazy = this.convertFromBase(SpeedUnits.NanometersPerSecond);
     }
-    get MicrometerPerSecond() {
-        if (this.micrometerpersecondLazy !== null) {
-            return this.micrometerpersecondLazy;
+    get MicrometersPerSecond() {
+        if (this.micrometerspersecondLazy !== null) {
+            return this.micrometerspersecondLazy;
         }
-        return this.micrometerpersecondLazy = this.convertFromBase(SpeedUnits.MicrometerPerSecond);
+        return this.micrometerspersecondLazy = this.convertFromBase(SpeedUnits.MicrometersPerSecond);
     }
-    get CentimeterPerSecond() {
-        if (this.centimeterpersecondLazy !== null) {
-            return this.centimeterpersecondLazy;
+    get CentimetersPerSecond() {
+        if (this.centimeterspersecondLazy !== null) {
+            return this.centimeterspersecondLazy;
         }
-        return this.centimeterpersecondLazy = this.convertFromBase(SpeedUnits.CentimeterPerSecond);
+        return this.centimeterspersecondLazy = this.convertFromBase(SpeedUnits.CentimetersPerSecond);
     }
-    get DecimeterPerSecond() {
-        if (this.decimeterpersecondLazy !== null) {
-            return this.decimeterpersecondLazy;
+    get DecimetersPerSecond() {
+        if (this.decimeterspersecondLazy !== null) {
+            return this.decimeterspersecondLazy;
         }
-        return this.decimeterpersecondLazy = this.convertFromBase(SpeedUnits.DecimeterPerSecond);
+        return this.decimeterspersecondLazy = this.convertFromBase(SpeedUnits.DecimetersPerSecond);
     }
-    get KilometerPerSecond() {
-        if (this.kilometerpersecondLazy !== null) {
-            return this.kilometerpersecondLazy;
+    get KilometersPerSecond() {
+        if (this.kilometerspersecondLazy !== null) {
+            return this.kilometerspersecondLazy;
         }
-        return this.kilometerpersecondLazy = this.convertFromBase(SpeedUnits.KilometerPerSecond);
+        return this.kilometerspersecondLazy = this.convertFromBase(SpeedUnits.KilometersPerSecond);
     }
-    get NanometerPerMinute() {
-        if (this.nanometerperminuteLazy !== null) {
-            return this.nanometerperminuteLazy;
+    get NanometersPerMinutes() {
+        if (this.nanometersperminutesLazy !== null) {
+            return this.nanometersperminutesLazy;
         }
-        return this.nanometerperminuteLazy = this.convertFromBase(SpeedUnits.NanometerPerMinute);
+        return this.nanometersperminutesLazy = this.convertFromBase(SpeedUnits.NanometersPerMinutes);
     }
-    get MicrometerPerMinute() {
-        if (this.micrometerperminuteLazy !== null) {
-            return this.micrometerperminuteLazy;
+    get MicrometersPerMinutes() {
+        if (this.micrometersperminutesLazy !== null) {
+            return this.micrometersperminutesLazy;
         }
-        return this.micrometerperminuteLazy = this.convertFromBase(SpeedUnits.MicrometerPerMinute);
+        return this.micrometersperminutesLazy = this.convertFromBase(SpeedUnits.MicrometersPerMinutes);
     }
-    get CentimeterPerMinute() {
-        if (this.centimeterperminuteLazy !== null) {
-            return this.centimeterperminuteLazy;
+    get CentimetersPerMinutes() {
+        if (this.centimetersperminutesLazy !== null) {
+            return this.centimetersperminutesLazy;
         }
-        return this.centimeterperminuteLazy = this.convertFromBase(SpeedUnits.CentimeterPerMinute);
+        return this.centimetersperminutesLazy = this.convertFromBase(SpeedUnits.CentimetersPerMinutes);
     }
-    get DecimeterPerMinute() {
-        if (this.decimeterperminuteLazy !== null) {
-            return this.decimeterperminuteLazy;
+    get DecimetersPerMinutes() {
+        if (this.decimetersperminutesLazy !== null) {
+            return this.decimetersperminutesLazy;
         }
-        return this.decimeterperminuteLazy = this.convertFromBase(SpeedUnits.DecimeterPerMinute);
+        return this.decimetersperminutesLazy = this.convertFromBase(SpeedUnits.DecimetersPerMinutes);
     }
-    get KilometerPerMinute() {
-        if (this.kilometerperminuteLazy !== null) {
-            return this.kilometerperminuteLazy;
+    get KilometersPerMinutes() {
+        if (this.kilometersperminutesLazy !== null) {
+            return this.kilometersperminutesLazy;
         }
-        return this.kilometerperminuteLazy = this.convertFromBase(SpeedUnits.KilometerPerMinute);
+        return this.kilometersperminutesLazy = this.convertFromBase(SpeedUnits.KilometersPerMinutes);
     }
-    get CentimeterPerHour() {
-        if (this.centimeterperhourLazy !== null) {
-            return this.centimeterperhourLazy;
+    get CentimetersPerHour() {
+        if (this.centimetersperhourLazy !== null) {
+            return this.centimetersperhourLazy;
         }
-        return this.centimeterperhourLazy = this.convertFromBase(SpeedUnits.CentimeterPerHour);
+        return this.centimetersperhourLazy = this.convertFromBase(SpeedUnits.CentimetersPerHour);
     }
-    get KilometerPerHour() {
-        if (this.kilometerperhourLazy !== null) {
-            return this.kilometerperhourLazy;
+    get KilometersPerHour() {
+        if (this.kilometersperhourLazy !== null) {
+            return this.kilometersperhourLazy;
         }
-        return this.kilometerperhourLazy = this.convertFromBase(SpeedUnits.KilometerPerHour);
+        return this.kilometersperhourLazy = this.convertFromBase(SpeedUnits.KilometersPerHour);
     }
     static FromMetersPerSecond(value) {
         return new Speed(value, SpeedUnits.MetersPerSecond);
@@ -290,41 +290,41 @@ class Speed {
     static FromMilesPerHour(value) {
         return new Speed(value, SpeedUnits.MilesPerHour);
     }
-    static FromNanometerPerSecond(value) {
-        return new Speed(value, SpeedUnits.NanometerPerSecond);
+    static FromNanometersPerSecond(value) {
+        return new Speed(value, SpeedUnits.NanometersPerSecond);
     }
-    static FromMicrometerPerSecond(value) {
-        return new Speed(value, SpeedUnits.MicrometerPerSecond);
+    static FromMicrometersPerSecond(value) {
+        return new Speed(value, SpeedUnits.MicrometersPerSecond);
     }
-    static FromCentimeterPerSecond(value) {
-        return new Speed(value, SpeedUnits.CentimeterPerSecond);
+    static FromCentimetersPerSecond(value) {
+        return new Speed(value, SpeedUnits.CentimetersPerSecond);
     }
-    static FromDecimeterPerSecond(value) {
-        return new Speed(value, SpeedUnits.DecimeterPerSecond);
+    static FromDecimetersPerSecond(value) {
+        return new Speed(value, SpeedUnits.DecimetersPerSecond);
     }
-    static FromKilometerPerSecond(value) {
-        return new Speed(value, SpeedUnits.KilometerPerSecond);
+    static FromKilometersPerSecond(value) {
+        return new Speed(value, SpeedUnits.KilometersPerSecond);
     }
-    static FromNanometerPerMinute(value) {
-        return new Speed(value, SpeedUnits.NanometerPerMinute);
+    static FromNanometersPerMinutes(value) {
+        return new Speed(value, SpeedUnits.NanometersPerMinutes);
     }
-    static FromMicrometerPerMinute(value) {
-        return new Speed(value, SpeedUnits.MicrometerPerMinute);
+    static FromMicrometersPerMinutes(value) {
+        return new Speed(value, SpeedUnits.MicrometersPerMinutes);
     }
-    static FromCentimeterPerMinute(value) {
-        return new Speed(value, SpeedUnits.CentimeterPerMinute);
+    static FromCentimetersPerMinutes(value) {
+        return new Speed(value, SpeedUnits.CentimetersPerMinutes);
     }
-    static FromDecimeterPerMinute(value) {
-        return new Speed(value, SpeedUnits.DecimeterPerMinute);
+    static FromDecimetersPerMinutes(value) {
+        return new Speed(value, SpeedUnits.DecimetersPerMinutes);
     }
-    static FromKilometerPerMinute(value) {
-        return new Speed(value, SpeedUnits.KilometerPerMinute);
+    static FromKilometersPerMinutes(value) {
+        return new Speed(value, SpeedUnits.KilometersPerMinutes);
     }
-    static FromCentimeterPerHour(value) {
-        return new Speed(value, SpeedUnits.CentimeterPerHour);
+    static FromCentimetersPerHour(value) {
+        return new Speed(value, SpeedUnits.CentimetersPerHour);
     }
-    static FromKilometerPerHour(value) {
-        return new Speed(value, SpeedUnits.KilometerPerHour);
+    static FromKilometersPerHour(value) {
+        return new Speed(value, SpeedUnits.KilometersPerHour);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -362,29 +362,29 @@ class Speed {
                 return this.value / 0.514444;
             case SpeedUnits.MilesPerHour:
                 return this.value / 0.44704;
-            case SpeedUnits.NanometerPerSecond:
+            case SpeedUnits.NanometersPerSecond:
                 return (this.value) / 1e-9;
-            case SpeedUnits.MicrometerPerSecond:
+            case SpeedUnits.MicrometersPerSecond:
                 return (this.value) / 0.000001;
-            case SpeedUnits.CentimeterPerSecond:
+            case SpeedUnits.CentimetersPerSecond:
                 return (this.value) / 0.01;
-            case SpeedUnits.DecimeterPerSecond:
+            case SpeedUnits.DecimetersPerSecond:
                 return (this.value) / 0.1;
-            case SpeedUnits.KilometerPerSecond:
+            case SpeedUnits.KilometersPerSecond:
                 return (this.value) / 1000;
-            case SpeedUnits.NanometerPerMinute:
+            case SpeedUnits.NanometersPerMinutes:
                 return (this.value * 60) / 1e-9;
-            case SpeedUnits.MicrometerPerMinute:
+            case SpeedUnits.MicrometersPerMinutes:
                 return (this.value * 60) / 0.000001;
-            case SpeedUnits.CentimeterPerMinute:
+            case SpeedUnits.CentimetersPerMinutes:
                 return (this.value * 60) / 0.01;
-            case SpeedUnits.DecimeterPerMinute:
+            case SpeedUnits.DecimetersPerMinutes:
                 return (this.value * 60) / 0.1;
-            case SpeedUnits.KilometerPerMinute:
+            case SpeedUnits.KilometersPerMinutes:
                 return (this.value * 60) / 1000;
-            case SpeedUnits.CentimeterPerHour:
+            case SpeedUnits.CentimetersPerHour:
                 return (this.value * 3600) / 0.01;
-            case SpeedUnits.KilometerPerHour:
+            case SpeedUnits.KilometersPerHour:
                 return (this.value * 3600) / 1000;
             default:
                 break;
@@ -427,29 +427,29 @@ class Speed {
                 return value * 0.514444;
             case SpeedUnits.MilesPerHour:
                 return value * 0.44704;
-            case SpeedUnits.NanometerPerSecond:
+            case SpeedUnits.NanometersPerSecond:
                 return (value) * 1e-9;
-            case SpeedUnits.MicrometerPerSecond:
+            case SpeedUnits.MicrometersPerSecond:
                 return (value) * 0.000001;
-            case SpeedUnits.CentimeterPerSecond:
+            case SpeedUnits.CentimetersPerSecond:
                 return (value) * 0.01;
-            case SpeedUnits.DecimeterPerSecond:
+            case SpeedUnits.DecimetersPerSecond:
                 return (value) * 0.1;
-            case SpeedUnits.KilometerPerSecond:
+            case SpeedUnits.KilometersPerSecond:
                 return (value) * 1000;
-            case SpeedUnits.NanometerPerMinute:
+            case SpeedUnits.NanometersPerMinutes:
                 return (value / 60) * 1e-9;
-            case SpeedUnits.MicrometerPerMinute:
+            case SpeedUnits.MicrometersPerMinutes:
                 return (value / 60) * 0.000001;
-            case SpeedUnits.CentimeterPerMinute:
+            case SpeedUnits.CentimetersPerMinutes:
                 return (value / 60) * 0.01;
-            case SpeedUnits.DecimeterPerMinute:
+            case SpeedUnits.DecimetersPerMinutes:
                 return (value / 60) * 0.1;
-            case SpeedUnits.KilometerPerMinute:
+            case SpeedUnits.KilometersPerMinutes:
                 return (value / 60) * 1000;
-            case SpeedUnits.CentimeterPerHour:
+            case SpeedUnits.CentimetersPerHour:
                 return (value / 3600) * 0.01;
-            case SpeedUnits.KilometerPerHour:
+            case SpeedUnits.KilometersPerHour:
                 return (value / 3600) * 1000;
             default:
                 break;
@@ -492,30 +492,30 @@ class Speed {
                 return this.Knots + ` kn`;
             case SpeedUnits.MilesPerHour:
                 return this.MilesPerHour + ` mph`;
-            case SpeedUnits.NanometerPerSecond:
-                return this.NanometerPerSecond + ` m/s`;
-            case SpeedUnits.MicrometerPerSecond:
-                return this.MicrometerPerSecond + ` m/s`;
-            case SpeedUnits.CentimeterPerSecond:
-                return this.CentimeterPerSecond + ` m/s`;
-            case SpeedUnits.DecimeterPerSecond:
-                return this.DecimeterPerSecond + ` m/s`;
-            case SpeedUnits.KilometerPerSecond:
-                return this.KilometerPerSecond + ` m/s`;
-            case SpeedUnits.NanometerPerMinute:
-                return this.NanometerPerMinute + ` m/min`;
-            case SpeedUnits.MicrometerPerMinute:
-                return this.MicrometerPerMinute + ` m/min`;
-            case SpeedUnits.CentimeterPerMinute:
-                return this.CentimeterPerMinute + ` m/min`;
-            case SpeedUnits.DecimeterPerMinute:
-                return this.DecimeterPerMinute + ` m/min`;
-            case SpeedUnits.KilometerPerMinute:
-                return this.KilometerPerMinute + ` m/min`;
-            case SpeedUnits.CentimeterPerHour:
-                return this.CentimeterPerHour + ` m/h`;
-            case SpeedUnits.KilometerPerHour:
-                return this.KilometerPerHour + ` m/h`;
+            case SpeedUnits.NanometersPerSecond:
+                return this.NanometersPerSecond + ` m/s`;
+            case SpeedUnits.MicrometersPerSecond:
+                return this.MicrometersPerSecond + ` m/s`;
+            case SpeedUnits.CentimetersPerSecond:
+                return this.CentimetersPerSecond + ` m/s`;
+            case SpeedUnits.DecimetersPerSecond:
+                return this.DecimetersPerSecond + ` m/s`;
+            case SpeedUnits.KilometersPerSecond:
+                return this.KilometersPerSecond + ` m/s`;
+            case SpeedUnits.NanometersPerMinutes:
+                return this.NanometersPerMinutes + ` m/min`;
+            case SpeedUnits.MicrometersPerMinutes:
+                return this.MicrometersPerMinutes + ` m/min`;
+            case SpeedUnits.CentimetersPerMinutes:
+                return this.CentimetersPerMinutes + ` m/min`;
+            case SpeedUnits.DecimetersPerMinutes:
+                return this.DecimetersPerMinutes + ` m/min`;
+            case SpeedUnits.KilometersPerMinutes:
+                return this.KilometersPerMinutes + ` m/min`;
+            case SpeedUnits.CentimetersPerHour:
+                return this.CentimetersPerHour + ` m/h`;
+            case SpeedUnits.KilometersPerHour:
+                return this.KilometersPerHour + ` m/h`;
             default:
                 break;
         }

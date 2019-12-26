@@ -4,12 +4,12 @@ export declare enum ForcePerLengthUnits {
     PoundsForcePerFoot = 2,
     PoundsForcePerInch = 3,
     PoundsForcePerYard = 4,
-    NanonewtonPerMeter = 5,
-    MicronewtonPerMeter = 6,
-    CentinewtonPerMeter = 7,
-    DecinewtonPerMeter = 8,
-    KilonewtonPerMeter = 9,
-    MeganewtonPerMeter = 10
+    NanonewtonsPerMeter = 5,
+    MicronewtonsPerMeter = 6,
+    CentinewtonsPerMeter = 7,
+    DecinewtonsPerMeter = 8,
+    KilonewtonsPerMeter = 9,
+    MeganewtonsPerMeter = 10
 }
 export declare class ForcePerLength {
     private value;
@@ -18,35 +18,35 @@ export declare class ForcePerLength {
     private poundsforceperfootLazy;
     private poundsforceperinchLazy;
     private poundsforceperyardLazy;
-    private nanonewtonpermeterLazy;
-    private micronewtonpermeterLazy;
-    private centinewtonpermeterLazy;
-    private decinewtonpermeterLazy;
-    private kilonewtonpermeterLazy;
-    private meganewtonpermeterLazy;
+    private nanonewtonspermeterLazy;
+    private micronewtonspermeterLazy;
+    private centinewtonspermeterLazy;
+    private decinewtonspermeterLazy;
+    private kilonewtonspermeterLazy;
+    private meganewtonspermeterLazy;
     constructor(value: number, fromUnit: ForcePerLengthUnits);
     get NewtonsPerMeter(): number;
     get KilogramsForcePerMeter(): number;
     get PoundsForcePerFoot(): number;
     get PoundsForcePerInch(): number;
     get PoundsForcePerYard(): number;
-    get NanonewtonPerMeter(): number;
-    get MicronewtonPerMeter(): number;
-    get CentinewtonPerMeter(): number;
-    get DecinewtonPerMeter(): number;
-    get KilonewtonPerMeter(): number;
-    get MeganewtonPerMeter(): number;
+    get NanonewtonsPerMeter(): number;
+    get MicronewtonsPerMeter(): number;
+    get CentinewtonsPerMeter(): number;
+    get DecinewtonsPerMeter(): number;
+    get KilonewtonsPerMeter(): number;
+    get MeganewtonsPerMeter(): number;
     static FromNewtonsPerMeter(value: number): ForcePerLength;
     static FromKilogramsForcePerMeter(value: number): ForcePerLength;
     static FromPoundsForcePerFoot(value: number): ForcePerLength;
     static FromPoundsForcePerInch(value: number): ForcePerLength;
     static FromPoundsForcePerYard(value: number): ForcePerLength;
-    static FromNanonewtonPerMeter(value: number): ForcePerLength;
-    static FromMicronewtonPerMeter(value: number): ForcePerLength;
-    static FromCentinewtonPerMeter(value: number): ForcePerLength;
-    static FromDecinewtonPerMeter(value: number): ForcePerLength;
-    static FromKilonewtonPerMeter(value: number): ForcePerLength;
-    static FromMeganewtonPerMeter(value: number): ForcePerLength;
+    static FromNanonewtonsPerMeter(value: number): ForcePerLength;
+    static FromMicronewtonsPerMeter(value: number): ForcePerLength;
+    static FromCentinewtonsPerMeter(value: number): ForcePerLength;
+    static FromDecinewtonsPerMeter(value: number): ForcePerLength;
+    static FromKilonewtonsPerMeter(value: number): ForcePerLength;
+    static FromMeganewtonsPerMeter(value: number): ForcePerLength;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: ForcePerLengthUnits): string;

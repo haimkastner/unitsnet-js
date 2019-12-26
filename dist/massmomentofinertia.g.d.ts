@@ -11,18 +11,18 @@ export declare enum MassMomentOfInertiaUnits {
     PoundSquareInches = 9,
     SlugSquareFeet = 10,
     SlugSquareInches = 11,
-    KilogramSquareMeter = 12,
-    KilogramSquareDecimeter = 13,
-    KilogramSquareCentimeter = 14,
-    KilogramSquareMillimeter = 15,
-    KilotonneSquareMeter = 16,
-    MegatonneSquareMeter = 17,
-    KilotonneSquareDecimeter = 18,
-    MegatonneSquareDecimeter = 19,
-    KilotonneSquareCentimeter = 20,
-    MegatonneSquareCentimeter = 21,
-    KilotonneSquareMilimeter = 22,
-    MegatonneSquareMilimeter = 23
+    KilogramSquareMeters = 12,
+    KilogramSquareDecimeters = 13,
+    KilogramSquareCentimeters = 14,
+    KilogramSquareMillimeters = 15,
+    KilotonneSquareMeters = 16,
+    MegatonneSquareMeters = 17,
+    KilotonneSquareDecimeters = 18,
+    MegatonneSquareDecimeters = 19,
+    KilotonneSquareCentimeters = 20,
+    MegatonneSquareCentimeters = 21,
+    KilotonneSquareMilimeters = 22,
+    MegatonneSquareMilimeters = 23
 }
 export declare class MassMomentOfInertia {
     private value;
@@ -38,18 +38,18 @@ export declare class MassMomentOfInertia {
     private poundsquareinchesLazy;
     private slugsquarefeetLazy;
     private slugsquareinchesLazy;
-    private kilogramsquaremeterLazy;
-    private kilogramsquaredecimeterLazy;
-    private kilogramsquarecentimeterLazy;
-    private kilogramsquaremillimeterLazy;
-    private kilotonnesquaremeterLazy;
-    private megatonnesquaremeterLazy;
-    private kilotonnesquaredecimeterLazy;
-    private megatonnesquaredecimeterLazy;
-    private kilotonnesquarecentimeterLazy;
-    private megatonnesquarecentimeterLazy;
-    private kilotonnesquaremilimeterLazy;
-    private megatonnesquaremilimeterLazy;
+    private kilogramsquaremetersLazy;
+    private kilogramsquaredecimetersLazy;
+    private kilogramsquarecentimetersLazy;
+    private kilogramsquaremillimetersLazy;
+    private kilotonnesquaremetersLazy;
+    private megatonnesquaremetersLazy;
+    private kilotonnesquaredecimetersLazy;
+    private megatonnesquaredecimetersLazy;
+    private kilotonnesquarecentimetersLazy;
+    private megatonnesquarecentimetersLazy;
+    private kilotonnesquaremilimetersLazy;
+    private megatonnesquaremilimetersLazy;
     constructor(value: number, fromUnit: MassMomentOfInertiaUnits);
     get GramSquareMeters(): number;
     get GramSquareDecimeters(): number;
@@ -63,18 +63,18 @@ export declare class MassMomentOfInertia {
     get PoundSquareInches(): number;
     get SlugSquareFeet(): number;
     get SlugSquareInches(): number;
-    get KilogramSquareMeter(): number;
-    get KilogramSquareDecimeter(): number;
-    get KilogramSquareCentimeter(): number;
-    get KilogramSquareMillimeter(): number;
-    get KilotonneSquareMeter(): number;
-    get MegatonneSquareMeter(): number;
-    get KilotonneSquareDecimeter(): number;
-    get MegatonneSquareDecimeter(): number;
-    get KilotonneSquareCentimeter(): number;
-    get MegatonneSquareCentimeter(): number;
-    get KilotonneSquareMilimeter(): number;
-    get MegatonneSquareMilimeter(): number;
+    get KilogramSquareMeters(): number;
+    get KilogramSquareDecimeters(): number;
+    get KilogramSquareCentimeters(): number;
+    get KilogramSquareMillimeters(): number;
+    get KilotonneSquareMeters(): number;
+    get MegatonneSquareMeters(): number;
+    get KilotonneSquareDecimeters(): number;
+    get MegatonneSquareDecimeters(): number;
+    get KilotonneSquareCentimeters(): number;
+    get MegatonneSquareCentimeters(): number;
+    get KilotonneSquareMilimeters(): number;
+    get MegatonneSquareMilimeters(): number;
     static FromGramSquareMeters(value: number): MassMomentOfInertia;
     static FromGramSquareDecimeters(value: number): MassMomentOfInertia;
     static FromGramSquareCentimeters(value: number): MassMomentOfInertia;
@@ -87,18 +87,18 @@ export declare class MassMomentOfInertia {
     static FromPoundSquareInches(value: number): MassMomentOfInertia;
     static FromSlugSquareFeet(value: number): MassMomentOfInertia;
     static FromSlugSquareInches(value: number): MassMomentOfInertia;
-    static FromKilogramSquareMeter(value: number): MassMomentOfInertia;
-    static FromKilogramSquareDecimeter(value: number): MassMomentOfInertia;
-    static FromKilogramSquareCentimeter(value: number): MassMomentOfInertia;
-    static FromKilogramSquareMillimeter(value: number): MassMomentOfInertia;
-    static FromKilotonneSquareMeter(value: number): MassMomentOfInertia;
-    static FromMegatonneSquareMeter(value: number): MassMomentOfInertia;
-    static FromKilotonneSquareDecimeter(value: number): MassMomentOfInertia;
-    static FromMegatonneSquareDecimeter(value: number): MassMomentOfInertia;
-    static FromKilotonneSquareCentimeter(value: number): MassMomentOfInertia;
-    static FromMegatonneSquareCentimeter(value: number): MassMomentOfInertia;
-    static FromKilotonneSquareMilimeter(value: number): MassMomentOfInertia;
-    static FromMegatonneSquareMilimeter(value: number): MassMomentOfInertia;
+    static FromKilogramSquareMeters(value: number): MassMomentOfInertia;
+    static FromKilogramSquareDecimeters(value: number): MassMomentOfInertia;
+    static FromKilogramSquareCentimeters(value: number): MassMomentOfInertia;
+    static FromKilogramSquareMillimeters(value: number): MassMomentOfInertia;
+    static FromKilotonneSquareMeters(value: number): MassMomentOfInertia;
+    static FromMegatonneSquareMeters(value: number): MassMomentOfInertia;
+    static FromKilotonneSquareDecimeters(value: number): MassMomentOfInertia;
+    static FromMegatonneSquareDecimeters(value: number): MassMomentOfInertia;
+    static FromKilotonneSquareCentimeters(value: number): MassMomentOfInertia;
+    static FromMegatonneSquareCentimeters(value: number): MassMomentOfInertia;
+    static FromKilotonneSquareMilimeters(value: number): MassMomentOfInertia;
+    static FromMegatonneSquareMilimeters(value: number): MassMomentOfInertia;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: MassMomentOfInertiaUnits): string;

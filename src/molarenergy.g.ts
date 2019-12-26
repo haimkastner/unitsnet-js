@@ -1,14 +1,14 @@
 export enum MolarEnergyUnits {
     JoulesPerMole,
-    KilojoulePerMole,
-    MegajoulePerMole
+    KilojoulesPerMole,
+    MegajoulesPerMole
 }
 
 export class MolarEnergy {
     private value: number;
     private joulespermoleLazy: number | null = null;
-    private kilojoulepermoleLazy: number | null = null;
-    private megajoulepermoleLazy: number | null = null;
+    private kilojoulespermoleLazy: number | null = null;
+    private megajoulespermoleLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MolarEnergyUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -21,30 +21,30 @@ export class MolarEnergy {
         return this.joulespermoleLazy = this.convertFromBase(MolarEnergyUnits.JoulesPerMole);
     }
 
-    public get KilojoulePerMole(): number {
-        if(this.kilojoulepermoleLazy !== null){
-            return this.kilojoulepermoleLazy;
+    public get KilojoulesPerMole(): number {
+        if(this.kilojoulespermoleLazy !== null){
+            return this.kilojoulespermoleLazy;
         }
-        return this.kilojoulepermoleLazy = this.convertFromBase(MolarEnergyUnits.KilojoulePerMole);
+        return this.kilojoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.KilojoulesPerMole);
     }
 
-    public get MegajoulePerMole(): number {
-        if(this.megajoulepermoleLazy !== null){
-            return this.megajoulepermoleLazy;
+    public get MegajoulesPerMole(): number {
+        if(this.megajoulespermoleLazy !== null){
+            return this.megajoulespermoleLazy;
         }
-        return this.megajoulepermoleLazy = this.convertFromBase(MolarEnergyUnits.MegajoulePerMole);
+        return this.megajoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.MegajoulesPerMole);
     }
 
     public static FromJoulesPerMole(value: number): MolarEnergy {
         return new MolarEnergy(value, MolarEnergyUnits.JoulesPerMole);
     }
 
-    public static FromKilojoulePerMole(value: number): MolarEnergy {
-        return new MolarEnergy(value, MolarEnergyUnits.KilojoulePerMole);
+    public static FromKilojoulesPerMole(value: number): MolarEnergy {
+        return new MolarEnergy(value, MolarEnergyUnits.KilojoulesPerMole);
     }
 
-    public static FromMegajoulePerMole(value: number): MolarEnergy {
-        return new MolarEnergy(value, MolarEnergyUnits.MegajoulePerMole);
+    public static FromMegajoulesPerMole(value: number): MolarEnergy {
+        return new MolarEnergy(value, MolarEnergyUnits.MegajoulesPerMole);
     }
 
     private convertFromBase(toUnit: MolarEnergyUnits): number {
@@ -52,9 +52,9 @@ export class MolarEnergy {
                 
             case MolarEnergyUnits.JoulesPerMole:
                 return this.value;
-            case MolarEnergyUnits.KilojoulePerMole:
+            case MolarEnergyUnits.KilojoulesPerMole:
                 return (this.value) / 1000;
-            case MolarEnergyUnits.MegajoulePerMole:
+            case MolarEnergyUnits.MegajoulesPerMole:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -67,9 +67,9 @@ export class MolarEnergy {
                 
             case MolarEnergyUnits.JoulesPerMole:
                 return value;
-            case MolarEnergyUnits.KilojoulePerMole:
+            case MolarEnergyUnits.KilojoulesPerMole:
                 return (value) * 1000;
-            case MolarEnergyUnits.MegajoulePerMole:
+            case MolarEnergyUnits.MegajoulesPerMole:
                 return (value) * 1000000;
             default:
                 break;
@@ -83,10 +83,10 @@ export class MolarEnergy {
             
             case MolarEnergyUnits.JoulesPerMole:
                 return this.JoulesPerMole + ` J/mol`;
-            case MolarEnergyUnits.KilojoulePerMole:
-                return this.KilojoulePerMole + ` J/mol`;
-            case MolarEnergyUnits.MegajoulePerMole:
-                return this.MegajoulePerMole + ` J/mol`;
+            case MolarEnergyUnits.KilojoulesPerMole:
+                return this.KilojoulesPerMole + ` J/mol`;
+            case MolarEnergyUnits.MegajoulesPerMole:
+                return this.MegajoulesPerMole + ` J/mol`;
         default:
             break;
         }

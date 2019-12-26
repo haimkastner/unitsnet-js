@@ -6,8 +6,8 @@ export enum DurationUnits {
     Hours,
     Minutes,
     Seconds,
-    Nanosecond,
-    Microsecond
+    Nanoseconds,
+    Microseconds
 }
 
 export class Duration {
@@ -19,8 +19,8 @@ export class Duration {
     private hoursLazy: number | null = null;
     private minutesLazy: number | null = null;
     private secondsLazy: number | null = null;
-    private nanosecondLazy: number | null = null;
-    private microsecondLazy: number | null = null;
+    private nanosecondsLazy: number | null = null;
+    private microsecondsLazy: number | null = null;
 
     public constructor(value: number, fromUnit: DurationUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -75,18 +75,18 @@ export class Duration {
         return this.secondsLazy = this.convertFromBase(DurationUnits.Seconds);
     }
 
-    public get Nanosecond(): number {
-        if(this.nanosecondLazy !== null){
-            return this.nanosecondLazy;
+    public get Nanoseconds(): number {
+        if(this.nanosecondsLazy !== null){
+            return this.nanosecondsLazy;
         }
-        return this.nanosecondLazy = this.convertFromBase(DurationUnits.Nanosecond);
+        return this.nanosecondsLazy = this.convertFromBase(DurationUnits.Nanoseconds);
     }
 
-    public get Microsecond(): number {
-        if(this.microsecondLazy !== null){
-            return this.microsecondLazy;
+    public get Microseconds(): number {
+        if(this.microsecondsLazy !== null){
+            return this.microsecondsLazy;
         }
-        return this.microsecondLazy = this.convertFromBase(DurationUnits.Microsecond);
+        return this.microsecondsLazy = this.convertFromBase(DurationUnits.Microseconds);
     }
 
     public static FromYears365(value: number): Duration {
@@ -117,12 +117,12 @@ export class Duration {
         return new Duration(value, DurationUnits.Seconds);
     }
 
-    public static FromNanosecond(value: number): Duration {
-        return new Duration(value, DurationUnits.Nanosecond);
+    public static FromNanoseconds(value: number): Duration {
+        return new Duration(value, DurationUnits.Nanoseconds);
     }
 
-    public static FromMicrosecond(value: number): Duration {
-        return new Duration(value, DurationUnits.Microsecond);
+    public static FromMicroseconds(value: number): Duration {
+        return new Duration(value, DurationUnits.Microseconds);
     }
 
     private convertFromBase(toUnit: DurationUnits): number {
@@ -142,9 +142,9 @@ export class Duration {
                 return this.value/60;
             case DurationUnits.Seconds:
                 return this.value;
-            case DurationUnits.Nanosecond:
+            case DurationUnits.Nanoseconds:
                 return (this.value) / 1e-9;
-            case DurationUnits.Microsecond:
+            case DurationUnits.Microseconds:
                 return (this.value) / 0.000001;
             default:
                 break;
@@ -169,9 +169,9 @@ export class Duration {
                 return value*60;
             case DurationUnits.Seconds:
                 return value;
-            case DurationUnits.Nanosecond:
+            case DurationUnits.Nanoseconds:
                 return (value) * 1e-9;
-            case DurationUnits.Microsecond:
+            case DurationUnits.Microseconds:
                 return (value) * 0.000001;
             default:
                 break;
@@ -197,10 +197,10 @@ export class Duration {
                 return this.Minutes + ` m`;
             case DurationUnits.Seconds:
                 return this.Seconds + ` s`;
-            case DurationUnits.Nanosecond:
-                return this.Nanosecond + ` s`;
-            case DurationUnits.Microsecond:
-                return this.Microsecond + ` s`;
+            case DurationUnits.Nanoseconds:
+                return this.Nanoseconds + ` s`;
+            case DurationUnits.Microseconds:
+                return this.Microseconds + ` s`;
         default:
             break;
         }

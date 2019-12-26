@@ -10,12 +10,12 @@ export enum SpecificWeightUnits {
     TonnesForcePerCubicMillimeter,
     TonnesForcePerCubicCentimeter,
     TonnesForcePerCubicMeter,
-    KilonewtonPerCubicMillimeter,
-    KilonewtonPerCubicCentimeter,
-    KilonewtonPerCubicMeter,
-    MeganewtonPerCubicMeter,
-    KilopoundForcePerCubicInch,
-    KilopoundForcePerCubicFoot
+    KilonewtonsPerCubicMillimeter,
+    KilonewtonsPerCubicCentimeter,
+    KilonewtonsPerCubicMeter,
+    MeganewtonsPerCubicMeter,
+    KilopoundsForcePerCubicInch,
+    KilopoundsForcePerCubicFoot
 }
 
 export class SpecificWeight {
@@ -31,12 +31,12 @@ export class SpecificWeight {
     private tonnesforcepercubicmillimeterLazy: number | null = null;
     private tonnesforcepercubiccentimeterLazy: number | null = null;
     private tonnesforcepercubicmeterLazy: number | null = null;
-    private kilonewtonpercubicmillimeterLazy: number | null = null;
-    private kilonewtonpercubiccentimeterLazy: number | null = null;
-    private kilonewtonpercubicmeterLazy: number | null = null;
-    private meganewtonpercubicmeterLazy: number | null = null;
-    private kilopoundforcepercubicinchLazy: number | null = null;
-    private kilopoundforcepercubicfootLazy: number | null = null;
+    private kilonewtonspercubicmillimeterLazy: number | null = null;
+    private kilonewtonspercubiccentimeterLazy: number | null = null;
+    private kilonewtonspercubicmeterLazy: number | null = null;
+    private meganewtonspercubicmeterLazy: number | null = null;
+    private kilopoundsforcepercubicinchLazy: number | null = null;
+    private kilopoundsforcepercubicfootLazy: number | null = null;
 
     public constructor(value: number, fromUnit: SpecificWeightUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -119,46 +119,46 @@ export class SpecificWeight {
         return this.tonnesforcepercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.TonnesForcePerCubicMeter);
     }
 
-    public get KilonewtonPerCubicMillimeter(): number {
-        if(this.kilonewtonpercubicmillimeterLazy !== null){
-            return this.kilonewtonpercubicmillimeterLazy;
+    public get KilonewtonsPerCubicMillimeter(): number {
+        if(this.kilonewtonspercubicmillimeterLazy !== null){
+            return this.kilonewtonspercubicmillimeterLazy;
         }
-        return this.kilonewtonpercubicmillimeterLazy = this.convertFromBase(SpecificWeightUnits.KilonewtonPerCubicMillimeter);
+        return this.kilonewtonspercubicmillimeterLazy = this.convertFromBase(SpecificWeightUnits.KilonewtonsPerCubicMillimeter);
     }
 
-    public get KilonewtonPerCubicCentimeter(): number {
-        if(this.kilonewtonpercubiccentimeterLazy !== null){
-            return this.kilonewtonpercubiccentimeterLazy;
+    public get KilonewtonsPerCubicCentimeter(): number {
+        if(this.kilonewtonspercubiccentimeterLazy !== null){
+            return this.kilonewtonspercubiccentimeterLazy;
         }
-        return this.kilonewtonpercubiccentimeterLazy = this.convertFromBase(SpecificWeightUnits.KilonewtonPerCubicCentimeter);
+        return this.kilonewtonspercubiccentimeterLazy = this.convertFromBase(SpecificWeightUnits.KilonewtonsPerCubicCentimeter);
     }
 
-    public get KilonewtonPerCubicMeter(): number {
-        if(this.kilonewtonpercubicmeterLazy !== null){
-            return this.kilonewtonpercubicmeterLazy;
+    public get KilonewtonsPerCubicMeter(): number {
+        if(this.kilonewtonspercubicmeterLazy !== null){
+            return this.kilonewtonspercubicmeterLazy;
         }
-        return this.kilonewtonpercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.KilonewtonPerCubicMeter);
+        return this.kilonewtonspercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.KilonewtonsPerCubicMeter);
     }
 
-    public get MeganewtonPerCubicMeter(): number {
-        if(this.meganewtonpercubicmeterLazy !== null){
-            return this.meganewtonpercubicmeterLazy;
+    public get MeganewtonsPerCubicMeter(): number {
+        if(this.meganewtonspercubicmeterLazy !== null){
+            return this.meganewtonspercubicmeterLazy;
         }
-        return this.meganewtonpercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.MeganewtonPerCubicMeter);
+        return this.meganewtonspercubicmeterLazy = this.convertFromBase(SpecificWeightUnits.MeganewtonsPerCubicMeter);
     }
 
-    public get KilopoundForcePerCubicInch(): number {
-        if(this.kilopoundforcepercubicinchLazy !== null){
-            return this.kilopoundforcepercubicinchLazy;
+    public get KilopoundsForcePerCubicInch(): number {
+        if(this.kilopoundsforcepercubicinchLazy !== null){
+            return this.kilopoundsforcepercubicinchLazy;
         }
-        return this.kilopoundforcepercubicinchLazy = this.convertFromBase(SpecificWeightUnits.KilopoundForcePerCubicInch);
+        return this.kilopoundsforcepercubicinchLazy = this.convertFromBase(SpecificWeightUnits.KilopoundsForcePerCubicInch);
     }
 
-    public get KilopoundForcePerCubicFoot(): number {
-        if(this.kilopoundforcepercubicfootLazy !== null){
-            return this.kilopoundforcepercubicfootLazy;
+    public get KilopoundsForcePerCubicFoot(): number {
+        if(this.kilopoundsforcepercubicfootLazy !== null){
+            return this.kilopoundsforcepercubicfootLazy;
         }
-        return this.kilopoundforcepercubicfootLazy = this.convertFromBase(SpecificWeightUnits.KilopoundForcePerCubicFoot);
+        return this.kilopoundsforcepercubicfootLazy = this.convertFromBase(SpecificWeightUnits.KilopoundsForcePerCubicFoot);
     }
 
     public static FromNewtonsPerCubicMillimeter(value: number): SpecificWeight {
@@ -205,28 +205,28 @@ export class SpecificWeight {
         return new SpecificWeight(value, SpecificWeightUnits.TonnesForcePerCubicMeter);
     }
 
-    public static FromKilonewtonPerCubicMillimeter(value: number): SpecificWeight {
-        return new SpecificWeight(value, SpecificWeightUnits.KilonewtonPerCubicMillimeter);
+    public static FromKilonewtonsPerCubicMillimeter(value: number): SpecificWeight {
+        return new SpecificWeight(value, SpecificWeightUnits.KilonewtonsPerCubicMillimeter);
     }
 
-    public static FromKilonewtonPerCubicCentimeter(value: number): SpecificWeight {
-        return new SpecificWeight(value, SpecificWeightUnits.KilonewtonPerCubicCentimeter);
+    public static FromKilonewtonsPerCubicCentimeter(value: number): SpecificWeight {
+        return new SpecificWeight(value, SpecificWeightUnits.KilonewtonsPerCubicCentimeter);
     }
 
-    public static FromKilonewtonPerCubicMeter(value: number): SpecificWeight {
-        return new SpecificWeight(value, SpecificWeightUnits.KilonewtonPerCubicMeter);
+    public static FromKilonewtonsPerCubicMeter(value: number): SpecificWeight {
+        return new SpecificWeight(value, SpecificWeightUnits.KilonewtonsPerCubicMeter);
     }
 
-    public static FromMeganewtonPerCubicMeter(value: number): SpecificWeight {
-        return new SpecificWeight(value, SpecificWeightUnits.MeganewtonPerCubicMeter);
+    public static FromMeganewtonsPerCubicMeter(value: number): SpecificWeight {
+        return new SpecificWeight(value, SpecificWeightUnits.MeganewtonsPerCubicMeter);
     }
 
-    public static FromKilopoundForcePerCubicInch(value: number): SpecificWeight {
-        return new SpecificWeight(value, SpecificWeightUnits.KilopoundForcePerCubicInch);
+    public static FromKilopoundsForcePerCubicInch(value: number): SpecificWeight {
+        return new SpecificWeight(value, SpecificWeightUnits.KilopoundsForcePerCubicInch);
     }
 
-    public static FromKilopoundForcePerCubicFoot(value: number): SpecificWeight {
-        return new SpecificWeight(value, SpecificWeightUnits.KilopoundForcePerCubicFoot);
+    public static FromKilopoundsForcePerCubicFoot(value: number): SpecificWeight {
+        return new SpecificWeight(value, SpecificWeightUnits.KilopoundsForcePerCubicFoot);
     }
 
     private convertFromBase(toUnit: SpecificWeightUnits): number {
@@ -254,17 +254,17 @@ export class SpecificWeight {
                 return this.value/9.80665e9;
             case SpecificWeightUnits.TonnesForcePerCubicMeter:
                 return this.value/9.80665e3;
-            case SpecificWeightUnits.KilonewtonPerCubicMillimeter:
+            case SpecificWeightUnits.KilonewtonsPerCubicMillimeter:
                 return (this.value*0.000000001) / 1000;
-            case SpecificWeightUnits.KilonewtonPerCubicCentimeter:
+            case SpecificWeightUnits.KilonewtonsPerCubicCentimeter:
                 return (this.value*0.000001) / 1000;
-            case SpecificWeightUnits.KilonewtonPerCubicMeter:
+            case SpecificWeightUnits.KilonewtonsPerCubicMeter:
                 return (this.value) / 1000;
-            case SpecificWeightUnits.MeganewtonPerCubicMeter:
+            case SpecificWeightUnits.MeganewtonsPerCubicMeter:
                 return (this.value) / 1000000;
-            case SpecificWeightUnits.KilopoundForcePerCubicInch:
+            case SpecificWeightUnits.KilopoundsForcePerCubicInch:
                 return (this.value/2.714471375263134e5) / 1000;
-            case SpecificWeightUnits.KilopoundForcePerCubicFoot:
+            case SpecificWeightUnits.KilopoundsForcePerCubicFoot:
                 return (this.value/1.570874638462462e2) / 1000;
             default:
                 break;
@@ -297,17 +297,17 @@ export class SpecificWeight {
                 return value*9.80665e9;
             case SpecificWeightUnits.TonnesForcePerCubicMeter:
                 return value*9.80665e3;
-            case SpecificWeightUnits.KilonewtonPerCubicMillimeter:
+            case SpecificWeightUnits.KilonewtonsPerCubicMillimeter:
                 return (value*1000000000) * 1000;
-            case SpecificWeightUnits.KilonewtonPerCubicCentimeter:
+            case SpecificWeightUnits.KilonewtonsPerCubicCentimeter:
                 return (value*1000000) * 1000;
-            case SpecificWeightUnits.KilonewtonPerCubicMeter:
+            case SpecificWeightUnits.KilonewtonsPerCubicMeter:
                 return (value) * 1000;
-            case SpecificWeightUnits.MeganewtonPerCubicMeter:
+            case SpecificWeightUnits.MeganewtonsPerCubicMeter:
                 return (value) * 1000000;
-            case SpecificWeightUnits.KilopoundForcePerCubicInch:
+            case SpecificWeightUnits.KilopoundsForcePerCubicInch:
                 return (value*2.714471375263134e5) * 1000;
-            case SpecificWeightUnits.KilopoundForcePerCubicFoot:
+            case SpecificWeightUnits.KilopoundsForcePerCubicFoot:
                 return (value*1.570874638462462e2) * 1000;
             default:
                 break;
@@ -341,18 +341,18 @@ export class SpecificWeight {
                 return this.TonnesForcePerCubicCentimeter + ` tf/cm³`;
             case SpecificWeightUnits.TonnesForcePerCubicMeter:
                 return this.TonnesForcePerCubicMeter + ` tf/m³`;
-            case SpecificWeightUnits.KilonewtonPerCubicMillimeter:
-                return this.KilonewtonPerCubicMillimeter + ` N/mm³`;
-            case SpecificWeightUnits.KilonewtonPerCubicCentimeter:
-                return this.KilonewtonPerCubicCentimeter + ` N/cm³`;
-            case SpecificWeightUnits.KilonewtonPerCubicMeter:
-                return this.KilonewtonPerCubicMeter + ` N/m³`;
-            case SpecificWeightUnits.MeganewtonPerCubicMeter:
-                return this.MeganewtonPerCubicMeter + ` N/m³`;
-            case SpecificWeightUnits.KilopoundForcePerCubicInch:
-                return this.KilopoundForcePerCubicInch + ` lbf/in³`;
-            case SpecificWeightUnits.KilopoundForcePerCubicFoot:
-                return this.KilopoundForcePerCubicFoot + ` lbf/ft³`;
+            case SpecificWeightUnits.KilonewtonsPerCubicMillimeter:
+                return this.KilonewtonsPerCubicMillimeter + ` N/mm³`;
+            case SpecificWeightUnits.KilonewtonsPerCubicCentimeter:
+                return this.KilonewtonsPerCubicCentimeter + ` N/cm³`;
+            case SpecificWeightUnits.KilonewtonsPerCubicMeter:
+                return this.KilonewtonsPerCubicMeter + ` N/m³`;
+            case SpecificWeightUnits.MeganewtonsPerCubicMeter:
+                return this.MeganewtonsPerCubicMeter + ` N/m³`;
+            case SpecificWeightUnits.KilopoundsForcePerCubicInch:
+                return this.KilopoundsForcePerCubicInch + ` lbf/in³`;
+            case SpecificWeightUnits.KilopoundsForcePerCubicFoot:
+                return this.KilopoundsForcePerCubicFoot + ` lbf/ft³`;
         default:
             break;
         }

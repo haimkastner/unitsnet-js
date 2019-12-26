@@ -1,20 +1,20 @@
 export declare enum ApparentEnergyUnits {
     VoltampereHours = 0,
-    KilovoltampereHour = 1,
-    MegavoltampereHour = 2
+    KilovoltampereHours = 1,
+    MegavoltampereHours = 2
 }
 export declare class ApparentEnergy {
     private value;
     private voltamperehoursLazy;
-    private kilovoltamperehourLazy;
-    private megavoltamperehourLazy;
+    private kilovoltamperehoursLazy;
+    private megavoltamperehoursLazy;
     constructor(value: number, fromUnit: ApparentEnergyUnits);
     get VoltampereHours(): number;
-    get KilovoltampereHour(): number;
-    get MegavoltampereHour(): number;
+    get KilovoltampereHours(): number;
+    get MegavoltampereHours(): number;
     static FromVoltampereHours(value: number): ApparentEnergy;
-    static FromKilovoltampereHour(value: number): ApparentEnergy;
-    static FromMegavoltampereHour(value: number): ApparentEnergy;
+    static FromKilovoltampereHours(value: number): ApparentEnergy;
+    static FromMegavoltampereHours(value: number): ApparentEnergy;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: ApparentEnergyUnits): string;

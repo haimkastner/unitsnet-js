@@ -1,20 +1,20 @@
 export declare enum ReactiveEnergyUnits {
     VoltampereReactiveHours = 0,
-    KilovoltampereReactiveHour = 1,
-    MegavoltampereReactiveHour = 2
+    KilovoltampereReactiveHours = 1,
+    MegavoltampereReactiveHours = 2
 }
 export declare class ReactiveEnergy {
     private value;
     private voltamperereactivehoursLazy;
-    private kilovoltamperereactivehourLazy;
-    private megavoltamperereactivehourLazy;
+    private kilovoltamperereactivehoursLazy;
+    private megavoltamperereactivehoursLazy;
     constructor(value: number, fromUnit: ReactiveEnergyUnits);
     get VoltampereReactiveHours(): number;
-    get KilovoltampereReactiveHour(): number;
-    get MegavoltampereReactiveHour(): number;
+    get KilovoltampereReactiveHours(): number;
+    get MegavoltampereReactiveHours(): number;
     static FromVoltampereReactiveHours(value: number): ReactiveEnergy;
-    static FromKilovoltampereReactiveHour(value: number): ReactiveEnergy;
-    static FromMegavoltampereReactiveHour(value: number): ReactiveEnergy;
+    static FromKilovoltampereReactiveHours(value: number): ReactiveEnergy;
+    static FromMegavoltampereReactiveHours(value: number): ReactiveEnergy;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: ReactiveEnergyUnits): string;

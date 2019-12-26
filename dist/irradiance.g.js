@@ -4,31 +4,31 @@ var IrradianceUnits;
 (function (IrradianceUnits) {
     IrradianceUnits[IrradianceUnits["WattsPerSquareMeter"] = 0] = "WattsPerSquareMeter";
     IrradianceUnits[IrradianceUnits["WattsPerSquareCentimeter"] = 1] = "WattsPerSquareCentimeter";
-    IrradianceUnits[IrradianceUnits["PicowattPerSquareMeter"] = 2] = "PicowattPerSquareMeter";
-    IrradianceUnits[IrradianceUnits["NanowattPerSquareMeter"] = 3] = "NanowattPerSquareMeter";
-    IrradianceUnits[IrradianceUnits["MicrowattPerSquareMeter"] = 4] = "MicrowattPerSquareMeter";
-    IrradianceUnits[IrradianceUnits["KilowattPerSquareMeter"] = 5] = "KilowattPerSquareMeter";
-    IrradianceUnits[IrradianceUnits["MegawattPerSquareMeter"] = 6] = "MegawattPerSquareMeter";
-    IrradianceUnits[IrradianceUnits["PicowattPerSquareCentimeter"] = 7] = "PicowattPerSquareCentimeter";
-    IrradianceUnits[IrradianceUnits["NanowattPerSquareCentimeter"] = 8] = "NanowattPerSquareCentimeter";
-    IrradianceUnits[IrradianceUnits["MicrowattPerSquareCentimeter"] = 9] = "MicrowattPerSquareCentimeter";
-    IrradianceUnits[IrradianceUnits["KilowattPerSquareCentimeter"] = 10] = "KilowattPerSquareCentimeter";
-    IrradianceUnits[IrradianceUnits["MegawattPerSquareCentimeter"] = 11] = "MegawattPerSquareCentimeter";
+    IrradianceUnits[IrradianceUnits["PicowattsPerSquareMeter"] = 2] = "PicowattsPerSquareMeter";
+    IrradianceUnits[IrradianceUnits["NanowattsPerSquareMeter"] = 3] = "NanowattsPerSquareMeter";
+    IrradianceUnits[IrradianceUnits["MicrowattsPerSquareMeter"] = 4] = "MicrowattsPerSquareMeter";
+    IrradianceUnits[IrradianceUnits["KilowattsPerSquareMeter"] = 5] = "KilowattsPerSquareMeter";
+    IrradianceUnits[IrradianceUnits["MegawattsPerSquareMeter"] = 6] = "MegawattsPerSquareMeter";
+    IrradianceUnits[IrradianceUnits["PicowattsPerSquareCentimeter"] = 7] = "PicowattsPerSquareCentimeter";
+    IrradianceUnits[IrradianceUnits["NanowattsPerSquareCentimeter"] = 8] = "NanowattsPerSquareCentimeter";
+    IrradianceUnits[IrradianceUnits["MicrowattsPerSquareCentimeter"] = 9] = "MicrowattsPerSquareCentimeter";
+    IrradianceUnits[IrradianceUnits["KilowattsPerSquareCentimeter"] = 10] = "KilowattsPerSquareCentimeter";
+    IrradianceUnits[IrradianceUnits["MegawattsPerSquareCentimeter"] = 11] = "MegawattsPerSquareCentimeter";
 })(IrradianceUnits = exports.IrradianceUnits || (exports.IrradianceUnits = {}));
 class Irradiance {
     constructor(value, fromUnit) {
         this.wattspersquaremeterLazy = null;
         this.wattspersquarecentimeterLazy = null;
-        this.picowattpersquaremeterLazy = null;
-        this.nanowattpersquaremeterLazy = null;
-        this.microwattpersquaremeterLazy = null;
-        this.kilowattpersquaremeterLazy = null;
-        this.megawattpersquaremeterLazy = null;
-        this.picowattpersquarecentimeterLazy = null;
-        this.nanowattpersquarecentimeterLazy = null;
-        this.microwattpersquarecentimeterLazy = null;
-        this.kilowattpersquarecentimeterLazy = null;
-        this.megawattpersquarecentimeterLazy = null;
+        this.picowattspersquaremeterLazy = null;
+        this.nanowattspersquaremeterLazy = null;
+        this.microwattspersquaremeterLazy = null;
+        this.kilowattspersquaremeterLazy = null;
+        this.megawattspersquaremeterLazy = null;
+        this.picowattspersquarecentimeterLazy = null;
+        this.nanowattspersquarecentimeterLazy = null;
+        this.microwattspersquarecentimeterLazy = null;
+        this.kilowattspersquarecentimeterLazy = null;
+        this.megawattspersquarecentimeterLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get WattsPerSquareMeter() {
@@ -43,65 +43,65 @@ class Irradiance {
         }
         return this.wattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.WattsPerSquareCentimeter);
     }
-    get PicowattPerSquareMeter() {
-        if (this.picowattpersquaremeterLazy !== null) {
-            return this.picowattpersquaremeterLazy;
+    get PicowattsPerSquareMeter() {
+        if (this.picowattspersquaremeterLazy !== null) {
+            return this.picowattspersquaremeterLazy;
         }
-        return this.picowattpersquaremeterLazy = this.convertFromBase(IrradianceUnits.PicowattPerSquareMeter);
+        return this.picowattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.PicowattsPerSquareMeter);
     }
-    get NanowattPerSquareMeter() {
-        if (this.nanowattpersquaremeterLazy !== null) {
-            return this.nanowattpersquaremeterLazy;
+    get NanowattsPerSquareMeter() {
+        if (this.nanowattspersquaremeterLazy !== null) {
+            return this.nanowattspersquaremeterLazy;
         }
-        return this.nanowattpersquaremeterLazy = this.convertFromBase(IrradianceUnits.NanowattPerSquareMeter);
+        return this.nanowattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.NanowattsPerSquareMeter);
     }
-    get MicrowattPerSquareMeter() {
-        if (this.microwattpersquaremeterLazy !== null) {
-            return this.microwattpersquaremeterLazy;
+    get MicrowattsPerSquareMeter() {
+        if (this.microwattspersquaremeterLazy !== null) {
+            return this.microwattspersquaremeterLazy;
         }
-        return this.microwattpersquaremeterLazy = this.convertFromBase(IrradianceUnits.MicrowattPerSquareMeter);
+        return this.microwattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.MicrowattsPerSquareMeter);
     }
-    get KilowattPerSquareMeter() {
-        if (this.kilowattpersquaremeterLazy !== null) {
-            return this.kilowattpersquaremeterLazy;
+    get KilowattsPerSquareMeter() {
+        if (this.kilowattspersquaremeterLazy !== null) {
+            return this.kilowattspersquaremeterLazy;
         }
-        return this.kilowattpersquaremeterLazy = this.convertFromBase(IrradianceUnits.KilowattPerSquareMeter);
+        return this.kilowattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.KilowattsPerSquareMeter);
     }
-    get MegawattPerSquareMeter() {
-        if (this.megawattpersquaremeterLazy !== null) {
-            return this.megawattpersquaremeterLazy;
+    get MegawattsPerSquareMeter() {
+        if (this.megawattspersquaremeterLazy !== null) {
+            return this.megawattspersquaremeterLazy;
         }
-        return this.megawattpersquaremeterLazy = this.convertFromBase(IrradianceUnits.MegawattPerSquareMeter);
+        return this.megawattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.MegawattsPerSquareMeter);
     }
-    get PicowattPerSquareCentimeter() {
-        if (this.picowattpersquarecentimeterLazy !== null) {
-            return this.picowattpersquarecentimeterLazy;
+    get PicowattsPerSquareCentimeter() {
+        if (this.picowattspersquarecentimeterLazy !== null) {
+            return this.picowattspersquarecentimeterLazy;
         }
-        return this.picowattpersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.PicowattPerSquareCentimeter);
+        return this.picowattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.PicowattsPerSquareCentimeter);
     }
-    get NanowattPerSquareCentimeter() {
-        if (this.nanowattpersquarecentimeterLazy !== null) {
-            return this.nanowattpersquarecentimeterLazy;
+    get NanowattsPerSquareCentimeter() {
+        if (this.nanowattspersquarecentimeterLazy !== null) {
+            return this.nanowattspersquarecentimeterLazy;
         }
-        return this.nanowattpersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.NanowattPerSquareCentimeter);
+        return this.nanowattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.NanowattsPerSquareCentimeter);
     }
-    get MicrowattPerSquareCentimeter() {
-        if (this.microwattpersquarecentimeterLazy !== null) {
-            return this.microwattpersquarecentimeterLazy;
+    get MicrowattsPerSquareCentimeter() {
+        if (this.microwattspersquarecentimeterLazy !== null) {
+            return this.microwattspersquarecentimeterLazy;
         }
-        return this.microwattpersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.MicrowattPerSquareCentimeter);
+        return this.microwattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.MicrowattsPerSquareCentimeter);
     }
-    get KilowattPerSquareCentimeter() {
-        if (this.kilowattpersquarecentimeterLazy !== null) {
-            return this.kilowattpersquarecentimeterLazy;
+    get KilowattsPerSquareCentimeter() {
+        if (this.kilowattspersquarecentimeterLazy !== null) {
+            return this.kilowattspersquarecentimeterLazy;
         }
-        return this.kilowattpersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.KilowattPerSquareCentimeter);
+        return this.kilowattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.KilowattsPerSquareCentimeter);
     }
-    get MegawattPerSquareCentimeter() {
-        if (this.megawattpersquarecentimeterLazy !== null) {
-            return this.megawattpersquarecentimeterLazy;
+    get MegawattsPerSquareCentimeter() {
+        if (this.megawattspersquarecentimeterLazy !== null) {
+            return this.megawattspersquarecentimeterLazy;
         }
-        return this.megawattpersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.MegawattPerSquareCentimeter);
+        return this.megawattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.MegawattsPerSquareCentimeter);
     }
     static FromWattsPerSquareMeter(value) {
         return new Irradiance(value, IrradianceUnits.WattsPerSquareMeter);
@@ -109,35 +109,35 @@ class Irradiance {
     static FromWattsPerSquareCentimeter(value) {
         return new Irradiance(value, IrradianceUnits.WattsPerSquareCentimeter);
     }
-    static FromPicowattPerSquareMeter(value) {
-        return new Irradiance(value, IrradianceUnits.PicowattPerSquareMeter);
+    static FromPicowattsPerSquareMeter(value) {
+        return new Irradiance(value, IrradianceUnits.PicowattsPerSquareMeter);
     }
-    static FromNanowattPerSquareMeter(value) {
-        return new Irradiance(value, IrradianceUnits.NanowattPerSquareMeter);
+    static FromNanowattsPerSquareMeter(value) {
+        return new Irradiance(value, IrradianceUnits.NanowattsPerSquareMeter);
     }
-    static FromMicrowattPerSquareMeter(value) {
-        return new Irradiance(value, IrradianceUnits.MicrowattPerSquareMeter);
+    static FromMicrowattsPerSquareMeter(value) {
+        return new Irradiance(value, IrradianceUnits.MicrowattsPerSquareMeter);
     }
-    static FromKilowattPerSquareMeter(value) {
-        return new Irradiance(value, IrradianceUnits.KilowattPerSquareMeter);
+    static FromKilowattsPerSquareMeter(value) {
+        return new Irradiance(value, IrradianceUnits.KilowattsPerSquareMeter);
     }
-    static FromMegawattPerSquareMeter(value) {
-        return new Irradiance(value, IrradianceUnits.MegawattPerSquareMeter);
+    static FromMegawattsPerSquareMeter(value) {
+        return new Irradiance(value, IrradianceUnits.MegawattsPerSquareMeter);
     }
-    static FromPicowattPerSquareCentimeter(value) {
-        return new Irradiance(value, IrradianceUnits.PicowattPerSquareCentimeter);
+    static FromPicowattsPerSquareCentimeter(value) {
+        return new Irradiance(value, IrradianceUnits.PicowattsPerSquareCentimeter);
     }
-    static FromNanowattPerSquareCentimeter(value) {
-        return new Irradiance(value, IrradianceUnits.NanowattPerSquareCentimeter);
+    static FromNanowattsPerSquareCentimeter(value) {
+        return new Irradiance(value, IrradianceUnits.NanowattsPerSquareCentimeter);
     }
-    static FromMicrowattPerSquareCentimeter(value) {
-        return new Irradiance(value, IrradianceUnits.MicrowattPerSquareCentimeter);
+    static FromMicrowattsPerSquareCentimeter(value) {
+        return new Irradiance(value, IrradianceUnits.MicrowattsPerSquareCentimeter);
     }
-    static FromKilowattPerSquareCentimeter(value) {
-        return new Irradiance(value, IrradianceUnits.KilowattPerSquareCentimeter);
+    static FromKilowattsPerSquareCentimeter(value) {
+        return new Irradiance(value, IrradianceUnits.KilowattsPerSquareCentimeter);
     }
-    static FromMegawattPerSquareCentimeter(value) {
-        return new Irradiance(value, IrradianceUnits.MegawattPerSquareCentimeter);
+    static FromMegawattsPerSquareCentimeter(value) {
+        return new Irradiance(value, IrradianceUnits.MegawattsPerSquareCentimeter);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -145,25 +145,25 @@ class Irradiance {
                 return this.value;
             case IrradianceUnits.WattsPerSquareCentimeter:
                 return this.value * 0.0001;
-            case IrradianceUnits.PicowattPerSquareMeter:
+            case IrradianceUnits.PicowattsPerSquareMeter:
                 return (this.value) / 1e-12;
-            case IrradianceUnits.NanowattPerSquareMeter:
+            case IrradianceUnits.NanowattsPerSquareMeter:
                 return (this.value) / 1e-9;
-            case IrradianceUnits.MicrowattPerSquareMeter:
+            case IrradianceUnits.MicrowattsPerSquareMeter:
                 return (this.value) / 0.000001;
-            case IrradianceUnits.KilowattPerSquareMeter:
+            case IrradianceUnits.KilowattsPerSquareMeter:
                 return (this.value) / 1000;
-            case IrradianceUnits.MegawattPerSquareMeter:
+            case IrradianceUnits.MegawattsPerSquareMeter:
                 return (this.value) / 1000000;
-            case IrradianceUnits.PicowattPerSquareCentimeter:
+            case IrradianceUnits.PicowattsPerSquareCentimeter:
                 return (this.value * 0.0001) / 1e-12;
-            case IrradianceUnits.NanowattPerSquareCentimeter:
+            case IrradianceUnits.NanowattsPerSquareCentimeter:
                 return (this.value * 0.0001) / 1e-9;
-            case IrradianceUnits.MicrowattPerSquareCentimeter:
+            case IrradianceUnits.MicrowattsPerSquareCentimeter:
                 return (this.value * 0.0001) / 0.000001;
-            case IrradianceUnits.KilowattPerSquareCentimeter:
+            case IrradianceUnits.KilowattsPerSquareCentimeter:
                 return (this.value * 0.0001) / 1000;
-            case IrradianceUnits.MegawattPerSquareCentimeter:
+            case IrradianceUnits.MegawattsPerSquareCentimeter:
                 return (this.value * 0.0001) / 1000000;
             default:
                 break;
@@ -176,25 +176,25 @@ class Irradiance {
                 return value;
             case IrradianceUnits.WattsPerSquareCentimeter:
                 return value * 10000;
-            case IrradianceUnits.PicowattPerSquareMeter:
+            case IrradianceUnits.PicowattsPerSquareMeter:
                 return (value) * 1e-12;
-            case IrradianceUnits.NanowattPerSquareMeter:
+            case IrradianceUnits.NanowattsPerSquareMeter:
                 return (value) * 1e-9;
-            case IrradianceUnits.MicrowattPerSquareMeter:
+            case IrradianceUnits.MicrowattsPerSquareMeter:
                 return (value) * 0.000001;
-            case IrradianceUnits.KilowattPerSquareMeter:
+            case IrradianceUnits.KilowattsPerSquareMeter:
                 return (value) * 1000;
-            case IrradianceUnits.MegawattPerSquareMeter:
+            case IrradianceUnits.MegawattsPerSquareMeter:
                 return (value) * 1000000;
-            case IrradianceUnits.PicowattPerSquareCentimeter:
+            case IrradianceUnits.PicowattsPerSquareCentimeter:
                 return (value * 10000) * 1e-12;
-            case IrradianceUnits.NanowattPerSquareCentimeter:
+            case IrradianceUnits.NanowattsPerSquareCentimeter:
                 return (value * 10000) * 1e-9;
-            case IrradianceUnits.MicrowattPerSquareCentimeter:
+            case IrradianceUnits.MicrowattsPerSquareCentimeter:
                 return (value * 10000) * 0.000001;
-            case IrradianceUnits.KilowattPerSquareCentimeter:
+            case IrradianceUnits.KilowattsPerSquareCentimeter:
                 return (value * 10000) * 1000;
-            case IrradianceUnits.MegawattPerSquareCentimeter:
+            case IrradianceUnits.MegawattsPerSquareCentimeter:
                 return (value * 10000) * 1000000;
             default:
                 break;
@@ -207,26 +207,26 @@ class Irradiance {
                 return this.WattsPerSquareMeter + ` W/m²`;
             case IrradianceUnits.WattsPerSquareCentimeter:
                 return this.WattsPerSquareCentimeter + ` W/cm²`;
-            case IrradianceUnits.PicowattPerSquareMeter:
-                return this.PicowattPerSquareMeter + ` W/m²`;
-            case IrradianceUnits.NanowattPerSquareMeter:
-                return this.NanowattPerSquareMeter + ` W/m²`;
-            case IrradianceUnits.MicrowattPerSquareMeter:
-                return this.MicrowattPerSquareMeter + ` W/m²`;
-            case IrradianceUnits.KilowattPerSquareMeter:
-                return this.KilowattPerSquareMeter + ` W/m²`;
-            case IrradianceUnits.MegawattPerSquareMeter:
-                return this.MegawattPerSquareMeter + ` W/m²`;
-            case IrradianceUnits.PicowattPerSquareCentimeter:
-                return this.PicowattPerSquareCentimeter + ` W/cm²`;
-            case IrradianceUnits.NanowattPerSquareCentimeter:
-                return this.NanowattPerSquareCentimeter + ` W/cm²`;
-            case IrradianceUnits.MicrowattPerSquareCentimeter:
-                return this.MicrowattPerSquareCentimeter + ` W/cm²`;
-            case IrradianceUnits.KilowattPerSquareCentimeter:
-                return this.KilowattPerSquareCentimeter + ` W/cm²`;
-            case IrradianceUnits.MegawattPerSquareCentimeter:
-                return this.MegawattPerSquareCentimeter + ` W/cm²`;
+            case IrradianceUnits.PicowattsPerSquareMeter:
+                return this.PicowattsPerSquareMeter + ` W/m²`;
+            case IrradianceUnits.NanowattsPerSquareMeter:
+                return this.NanowattsPerSquareMeter + ` W/m²`;
+            case IrradianceUnits.MicrowattsPerSquareMeter:
+                return this.MicrowattsPerSquareMeter + ` W/m²`;
+            case IrradianceUnits.KilowattsPerSquareMeter:
+                return this.KilowattsPerSquareMeter + ` W/m²`;
+            case IrradianceUnits.MegawattsPerSquareMeter:
+                return this.MegawattsPerSquareMeter + ` W/m²`;
+            case IrradianceUnits.PicowattsPerSquareCentimeter:
+                return this.PicowattsPerSquareCentimeter + ` W/cm²`;
+            case IrradianceUnits.NanowattsPerSquareCentimeter:
+                return this.NanowattsPerSquareCentimeter + ` W/cm²`;
+            case IrradianceUnits.MicrowattsPerSquareCentimeter:
+                return this.MicrowattsPerSquareCentimeter + ` W/cm²`;
+            case IrradianceUnits.KilowattsPerSquareCentimeter:
+                return this.KilowattsPerSquareCentimeter + ` W/cm²`;
+            case IrradianceUnits.MegawattsPerSquareCentimeter:
+                return this.MegawattsPerSquareCentimeter + ` W/cm²`;
             default:
                 break;
         }

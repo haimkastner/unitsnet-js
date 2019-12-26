@@ -1,48 +1,48 @@
 export declare enum ForceChangeRateUnits {
     NewtonsPerMinute = 0,
     NewtonsPerSecond = 1,
-    DecanewtonPerMinute = 2,
-    KilonewtonPerMinute = 3,
-    NanonewtonPerSecond = 4,
-    MicronewtonPerSecond = 5,
-    CentinewtonPerSecond = 6,
-    DecinewtonPerSecond = 7,
-    DecanewtonPerSecond = 8,
-    KilonewtonPerSecond = 9
+    DecanewtonsPerMinute = 2,
+    KilonewtonsPerMinute = 3,
+    NanonewtonsPerSecond = 4,
+    MicronewtonsPerSecond = 5,
+    CentinewtonsPerSecond = 6,
+    DecinewtonsPerSecond = 7,
+    DecanewtonsPerSecond = 8,
+    KilonewtonsPerSecond = 9
 }
 export declare class ForceChangeRate {
     private value;
     private newtonsperminuteLazy;
     private newtonspersecondLazy;
-    private decanewtonperminuteLazy;
-    private kilonewtonperminuteLazy;
-    private nanonewtonpersecondLazy;
-    private micronewtonpersecondLazy;
-    private centinewtonpersecondLazy;
-    private decinewtonpersecondLazy;
-    private decanewtonpersecondLazy;
-    private kilonewtonpersecondLazy;
+    private decanewtonsperminuteLazy;
+    private kilonewtonsperminuteLazy;
+    private nanonewtonspersecondLazy;
+    private micronewtonspersecondLazy;
+    private centinewtonspersecondLazy;
+    private decinewtonspersecondLazy;
+    private decanewtonspersecondLazy;
+    private kilonewtonspersecondLazy;
     constructor(value: number, fromUnit: ForceChangeRateUnits);
     get NewtonsPerMinute(): number;
     get NewtonsPerSecond(): number;
-    get DecanewtonPerMinute(): number;
-    get KilonewtonPerMinute(): number;
-    get NanonewtonPerSecond(): number;
-    get MicronewtonPerSecond(): number;
-    get CentinewtonPerSecond(): number;
-    get DecinewtonPerSecond(): number;
-    get DecanewtonPerSecond(): number;
-    get KilonewtonPerSecond(): number;
+    get DecanewtonsPerMinute(): number;
+    get KilonewtonsPerMinute(): number;
+    get NanonewtonsPerSecond(): number;
+    get MicronewtonsPerSecond(): number;
+    get CentinewtonsPerSecond(): number;
+    get DecinewtonsPerSecond(): number;
+    get DecanewtonsPerSecond(): number;
+    get KilonewtonsPerSecond(): number;
     static FromNewtonsPerMinute(value: number): ForceChangeRate;
     static FromNewtonsPerSecond(value: number): ForceChangeRate;
-    static FromDecanewtonPerMinute(value: number): ForceChangeRate;
-    static FromKilonewtonPerMinute(value: number): ForceChangeRate;
-    static FromNanonewtonPerSecond(value: number): ForceChangeRate;
-    static FromMicronewtonPerSecond(value: number): ForceChangeRate;
-    static FromCentinewtonPerSecond(value: number): ForceChangeRate;
-    static FromDecinewtonPerSecond(value: number): ForceChangeRate;
-    static FromDecanewtonPerSecond(value: number): ForceChangeRate;
-    static FromKilonewtonPerSecond(value: number): ForceChangeRate;
+    static FromDecanewtonsPerMinute(value: number): ForceChangeRate;
+    static FromKilonewtonsPerMinute(value: number): ForceChangeRate;
+    static FromNanonewtonsPerSecond(value: number): ForceChangeRate;
+    static FromMicronewtonsPerSecond(value: number): ForceChangeRate;
+    static FromCentinewtonsPerSecond(value: number): ForceChangeRate;
+    static FromDecinewtonsPerSecond(value: number): ForceChangeRate;
+    static FromDecanewtonsPerSecond(value: number): ForceChangeRate;
+    static FromKilonewtonsPerSecond(value: number): ForceChangeRate;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: ForceChangeRateUnits): string;

@@ -3,8 +3,8 @@ export declare enum IrradiationUnits {
     JoulesPerSquareCentimeter = 1,
     JoulesPerSquareMillimeter = 2,
     WattHoursPerSquareMeter = 3,
-    KilojoulePerSquareMeter = 4,
-    KilowattHourPerSquareMeter = 5
+    KilojoulesPerSquareMeter = 4,
+    KilowattHoursPerSquareMeter = 5
 }
 export declare class Irradiation {
     private value;
@@ -12,21 +12,21 @@ export declare class Irradiation {
     private joulespersquarecentimeterLazy;
     private joulespersquaremillimeterLazy;
     private watthourspersquaremeterLazy;
-    private kilojoulepersquaremeterLazy;
-    private kilowatthourpersquaremeterLazy;
+    private kilojoulespersquaremeterLazy;
+    private kilowatthourspersquaremeterLazy;
     constructor(value: number, fromUnit: IrradiationUnits);
     get JoulesPerSquareMeter(): number;
     get JoulesPerSquareCentimeter(): number;
     get JoulesPerSquareMillimeter(): number;
     get WattHoursPerSquareMeter(): number;
-    get KilojoulePerSquareMeter(): number;
-    get KilowattHourPerSquareMeter(): number;
+    get KilojoulesPerSquareMeter(): number;
+    get KilowattHoursPerSquareMeter(): number;
     static FromJoulesPerSquareMeter(value: number): Irradiation;
     static FromJoulesPerSquareCentimeter(value: number): Irradiation;
     static FromJoulesPerSquareMillimeter(value: number): Irradiation;
     static FromWattHoursPerSquareMeter(value: number): Irradiation;
-    static FromKilojoulePerSquareMeter(value: number): Irradiation;
-    static FromKilowattHourPerSquareMeter(value: number): Irradiation;
+    static FromKilojoulesPerSquareMeter(value: number): Irradiation;
+    static FromKilowattHoursPerSquareMeter(value: number): Irradiation;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: IrradiationUnits): string;

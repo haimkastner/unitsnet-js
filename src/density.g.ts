@@ -14,27 +14,27 @@ export enum DensityUnits {
     PoundsPerUSGallon,
     PoundsPerImperialGallon,
     KilogramsPerLiter,
-    KilogramPerCubicMillimeter,
-    KilogramPerCubicCentimeter,
-    KilogramPerCubicMeter,
-    MicrogramPerCubicMeter,
-    KilopoundPerCubicInch,
-    KilopoundPerCubicFoot,
-    PicogramPerLiter,
-    NanogramPerLiter,
-    MicrogramPerLiter,
-    CentigramPerLiter,
-    DecigramPerLiter,
-    PicogramPerDeciliter,
-    NanogramPerDeciliter,
-    MicrogramPerDeciliter,
-    CentigramPerDeciliter,
-    DecigramPerDeciliter,
-    PicogramPerMilliliter,
-    NanogramPerMilliliter,
-    MicrogramPerMilliliter,
-    CentigramPerMilliliter,
-    DecigramPerMilliliter
+    KilogramsPerCubicMillimeter,
+    KilogramsPerCubicCentimeter,
+    KilogramsPerCubicMeter,
+    MicrogramsPerCubicMeter,
+    KilopoundsPerCubicInch,
+    KilopoundsPerCubicFoot,
+    PicogramsPerLiter,
+    NanogramsPerLiter,
+    MicrogramsPerLiter,
+    CentigramsPerLiter,
+    DecigramsPerLiter,
+    PicogramsPerDeciLiter,
+    NanogramsPerDeciLiter,
+    MicrogramsPerDeciLiter,
+    CentigramsPerDeciLiter,
+    DecigramsPerDeciLiter,
+    PicogramsPerMilliliter,
+    NanogramsPerMilliliter,
+    MicrogramsPerMilliliter,
+    CentigramsPerMilliliter,
+    DecigramsPerMilliliter
 }
 
 export class Density {
@@ -54,27 +54,27 @@ export class Density {
     private poundsperusgallonLazy: number | null = null;
     private poundsperimperialgallonLazy: number | null = null;
     private kilogramsperliterLazy: number | null = null;
-    private kilogrampercubicmillimeterLazy: number | null = null;
-    private kilogrampercubiccentimeterLazy: number | null = null;
-    private kilogrampercubicmeterLazy: number | null = null;
-    private microgrampercubicmeterLazy: number | null = null;
-    private kilopoundpercubicinchLazy: number | null = null;
-    private kilopoundpercubicfootLazy: number | null = null;
-    private picogramperliterLazy: number | null = null;
-    private nanogramperliterLazy: number | null = null;
-    private microgramperliterLazy: number | null = null;
-    private centigramperliterLazy: number | null = null;
-    private decigramperliterLazy: number | null = null;
-    private picogramperdeciliterLazy: number | null = null;
-    private nanogramperdeciliterLazy: number | null = null;
-    private microgramperdeciliterLazy: number | null = null;
-    private centigramperdeciliterLazy: number | null = null;
-    private decigramperdeciliterLazy: number | null = null;
-    private picogrampermilliliterLazy: number | null = null;
-    private nanogrampermilliliterLazy: number | null = null;
-    private microgrampermilliliterLazy: number | null = null;
-    private centigrampermilliliterLazy: number | null = null;
-    private decigrampermilliliterLazy: number | null = null;
+    private kilogramspercubicmillimeterLazy: number | null = null;
+    private kilogramspercubiccentimeterLazy: number | null = null;
+    private kilogramspercubicmeterLazy: number | null = null;
+    private microgramspercubicmeterLazy: number | null = null;
+    private kilopoundspercubicinchLazy: number | null = null;
+    private kilopoundspercubicfootLazy: number | null = null;
+    private picogramsperliterLazy: number | null = null;
+    private nanogramsperliterLazy: number | null = null;
+    private microgramsperliterLazy: number | null = null;
+    private centigramsperliterLazy: number | null = null;
+    private decigramsperliterLazy: number | null = null;
+    private picogramsperdeciliterLazy: number | null = null;
+    private nanogramsperdeciliterLazy: number | null = null;
+    private microgramsperdeciliterLazy: number | null = null;
+    private centigramsperdeciliterLazy: number | null = null;
+    private decigramsperdeciliterLazy: number | null = null;
+    private picogramspermilliliterLazy: number | null = null;
+    private nanogramspermilliliterLazy: number | null = null;
+    private microgramspermilliliterLazy: number | null = null;
+    private centigramspermilliliterLazy: number | null = null;
+    private decigramspermilliliterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: DensityUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -185,151 +185,151 @@ export class Density {
         return this.kilogramsperliterLazy = this.convertFromBase(DensityUnits.KilogramsPerLiter);
     }
 
-    public get KilogramPerCubicMillimeter(): number {
-        if(this.kilogrampercubicmillimeterLazy !== null){
-            return this.kilogrampercubicmillimeterLazy;
+    public get KilogramsPerCubicMillimeter(): number {
+        if(this.kilogramspercubicmillimeterLazy !== null){
+            return this.kilogramspercubicmillimeterLazy;
         }
-        return this.kilogrampercubicmillimeterLazy = this.convertFromBase(DensityUnits.KilogramPerCubicMillimeter);
+        return this.kilogramspercubicmillimeterLazy = this.convertFromBase(DensityUnits.KilogramsPerCubicMillimeter);
     }
 
-    public get KilogramPerCubicCentimeter(): number {
-        if(this.kilogrampercubiccentimeterLazy !== null){
-            return this.kilogrampercubiccentimeterLazy;
+    public get KilogramsPerCubicCentimeter(): number {
+        if(this.kilogramspercubiccentimeterLazy !== null){
+            return this.kilogramspercubiccentimeterLazy;
         }
-        return this.kilogrampercubiccentimeterLazy = this.convertFromBase(DensityUnits.KilogramPerCubicCentimeter);
+        return this.kilogramspercubiccentimeterLazy = this.convertFromBase(DensityUnits.KilogramsPerCubicCentimeter);
     }
 
-    public get KilogramPerCubicMeter(): number {
-        if(this.kilogrampercubicmeterLazy !== null){
-            return this.kilogrampercubicmeterLazy;
+    public get KilogramsPerCubicMeter(): number {
+        if(this.kilogramspercubicmeterLazy !== null){
+            return this.kilogramspercubicmeterLazy;
         }
-        return this.kilogrampercubicmeterLazy = this.convertFromBase(DensityUnits.KilogramPerCubicMeter);
+        return this.kilogramspercubicmeterLazy = this.convertFromBase(DensityUnits.KilogramsPerCubicMeter);
     }
 
-    public get MicrogramPerCubicMeter(): number {
-        if(this.microgrampercubicmeterLazy !== null){
-            return this.microgrampercubicmeterLazy;
+    public get MicrogramsPerCubicMeter(): number {
+        if(this.microgramspercubicmeterLazy !== null){
+            return this.microgramspercubicmeterLazy;
         }
-        return this.microgrampercubicmeterLazy = this.convertFromBase(DensityUnits.MicrogramPerCubicMeter);
+        return this.microgramspercubicmeterLazy = this.convertFromBase(DensityUnits.MicrogramsPerCubicMeter);
     }
 
-    public get KilopoundPerCubicInch(): number {
-        if(this.kilopoundpercubicinchLazy !== null){
-            return this.kilopoundpercubicinchLazy;
+    public get KilopoundsPerCubicInch(): number {
+        if(this.kilopoundspercubicinchLazy !== null){
+            return this.kilopoundspercubicinchLazy;
         }
-        return this.kilopoundpercubicinchLazy = this.convertFromBase(DensityUnits.KilopoundPerCubicInch);
+        return this.kilopoundspercubicinchLazy = this.convertFromBase(DensityUnits.KilopoundsPerCubicInch);
     }
 
-    public get KilopoundPerCubicFoot(): number {
-        if(this.kilopoundpercubicfootLazy !== null){
-            return this.kilopoundpercubicfootLazy;
+    public get KilopoundsPerCubicFoot(): number {
+        if(this.kilopoundspercubicfootLazy !== null){
+            return this.kilopoundspercubicfootLazy;
         }
-        return this.kilopoundpercubicfootLazy = this.convertFromBase(DensityUnits.KilopoundPerCubicFoot);
+        return this.kilopoundspercubicfootLazy = this.convertFromBase(DensityUnits.KilopoundsPerCubicFoot);
     }
 
-    public get PicogramPerLiter(): number {
-        if(this.picogramperliterLazy !== null){
-            return this.picogramperliterLazy;
+    public get PicogramsPerLiter(): number {
+        if(this.picogramsperliterLazy !== null){
+            return this.picogramsperliterLazy;
         }
-        return this.picogramperliterLazy = this.convertFromBase(DensityUnits.PicogramPerLiter);
+        return this.picogramsperliterLazy = this.convertFromBase(DensityUnits.PicogramsPerLiter);
     }
 
-    public get NanogramPerLiter(): number {
-        if(this.nanogramperliterLazy !== null){
-            return this.nanogramperliterLazy;
+    public get NanogramsPerLiter(): number {
+        if(this.nanogramsperliterLazy !== null){
+            return this.nanogramsperliterLazy;
         }
-        return this.nanogramperliterLazy = this.convertFromBase(DensityUnits.NanogramPerLiter);
+        return this.nanogramsperliterLazy = this.convertFromBase(DensityUnits.NanogramsPerLiter);
     }
 
-    public get MicrogramPerLiter(): number {
-        if(this.microgramperliterLazy !== null){
-            return this.microgramperliterLazy;
+    public get MicrogramsPerLiter(): number {
+        if(this.microgramsperliterLazy !== null){
+            return this.microgramsperliterLazy;
         }
-        return this.microgramperliterLazy = this.convertFromBase(DensityUnits.MicrogramPerLiter);
+        return this.microgramsperliterLazy = this.convertFromBase(DensityUnits.MicrogramsPerLiter);
     }
 
-    public get CentigramPerLiter(): number {
-        if(this.centigramperliterLazy !== null){
-            return this.centigramperliterLazy;
+    public get CentigramsPerLiter(): number {
+        if(this.centigramsperliterLazy !== null){
+            return this.centigramsperliterLazy;
         }
-        return this.centigramperliterLazy = this.convertFromBase(DensityUnits.CentigramPerLiter);
+        return this.centigramsperliterLazy = this.convertFromBase(DensityUnits.CentigramsPerLiter);
     }
 
-    public get DecigramPerLiter(): number {
-        if(this.decigramperliterLazy !== null){
-            return this.decigramperliterLazy;
+    public get DecigramsPerLiter(): number {
+        if(this.decigramsperliterLazy !== null){
+            return this.decigramsperliterLazy;
         }
-        return this.decigramperliterLazy = this.convertFromBase(DensityUnits.DecigramPerLiter);
+        return this.decigramsperliterLazy = this.convertFromBase(DensityUnits.DecigramsPerLiter);
     }
 
-    public get PicogramPerDeciliter(): number {
-        if(this.picogramperdeciliterLazy !== null){
-            return this.picogramperdeciliterLazy;
+    public get PicogramsPerDeciLiter(): number {
+        if(this.picogramsperdeciliterLazy !== null){
+            return this.picogramsperdeciliterLazy;
         }
-        return this.picogramperdeciliterLazy = this.convertFromBase(DensityUnits.PicogramPerDeciliter);
+        return this.picogramsperdeciliterLazy = this.convertFromBase(DensityUnits.PicogramsPerDeciLiter);
     }
 
-    public get NanogramPerDeciliter(): number {
-        if(this.nanogramperdeciliterLazy !== null){
-            return this.nanogramperdeciliterLazy;
+    public get NanogramsPerDeciLiter(): number {
+        if(this.nanogramsperdeciliterLazy !== null){
+            return this.nanogramsperdeciliterLazy;
         }
-        return this.nanogramperdeciliterLazy = this.convertFromBase(DensityUnits.NanogramPerDeciliter);
+        return this.nanogramsperdeciliterLazy = this.convertFromBase(DensityUnits.NanogramsPerDeciLiter);
     }
 
-    public get MicrogramPerDeciliter(): number {
-        if(this.microgramperdeciliterLazy !== null){
-            return this.microgramperdeciliterLazy;
+    public get MicrogramsPerDeciLiter(): number {
+        if(this.microgramsperdeciliterLazy !== null){
+            return this.microgramsperdeciliterLazy;
         }
-        return this.microgramperdeciliterLazy = this.convertFromBase(DensityUnits.MicrogramPerDeciliter);
+        return this.microgramsperdeciliterLazy = this.convertFromBase(DensityUnits.MicrogramsPerDeciLiter);
     }
 
-    public get CentigramPerDeciliter(): number {
-        if(this.centigramperdeciliterLazy !== null){
-            return this.centigramperdeciliterLazy;
+    public get CentigramsPerDeciLiter(): number {
+        if(this.centigramsperdeciliterLazy !== null){
+            return this.centigramsperdeciliterLazy;
         }
-        return this.centigramperdeciliterLazy = this.convertFromBase(DensityUnits.CentigramPerDeciliter);
+        return this.centigramsperdeciliterLazy = this.convertFromBase(DensityUnits.CentigramsPerDeciLiter);
     }
 
-    public get DecigramPerDeciliter(): number {
-        if(this.decigramperdeciliterLazy !== null){
-            return this.decigramperdeciliterLazy;
+    public get DecigramsPerDeciLiter(): number {
+        if(this.decigramsperdeciliterLazy !== null){
+            return this.decigramsperdeciliterLazy;
         }
-        return this.decigramperdeciliterLazy = this.convertFromBase(DensityUnits.DecigramPerDeciliter);
+        return this.decigramsperdeciliterLazy = this.convertFromBase(DensityUnits.DecigramsPerDeciLiter);
     }
 
-    public get PicogramPerMilliliter(): number {
-        if(this.picogrampermilliliterLazy !== null){
-            return this.picogrampermilliliterLazy;
+    public get PicogramsPerMilliliter(): number {
+        if(this.picogramspermilliliterLazy !== null){
+            return this.picogramspermilliliterLazy;
         }
-        return this.picogrampermilliliterLazy = this.convertFromBase(DensityUnits.PicogramPerMilliliter);
+        return this.picogramspermilliliterLazy = this.convertFromBase(DensityUnits.PicogramsPerMilliliter);
     }
 
-    public get NanogramPerMilliliter(): number {
-        if(this.nanogrampermilliliterLazy !== null){
-            return this.nanogrampermilliliterLazy;
+    public get NanogramsPerMilliliter(): number {
+        if(this.nanogramspermilliliterLazy !== null){
+            return this.nanogramspermilliliterLazy;
         }
-        return this.nanogrampermilliliterLazy = this.convertFromBase(DensityUnits.NanogramPerMilliliter);
+        return this.nanogramspermilliliterLazy = this.convertFromBase(DensityUnits.NanogramsPerMilliliter);
     }
 
-    public get MicrogramPerMilliliter(): number {
-        if(this.microgrampermilliliterLazy !== null){
-            return this.microgrampermilliliterLazy;
+    public get MicrogramsPerMilliliter(): number {
+        if(this.microgramspermilliliterLazy !== null){
+            return this.microgramspermilliliterLazy;
         }
-        return this.microgrampermilliliterLazy = this.convertFromBase(DensityUnits.MicrogramPerMilliliter);
+        return this.microgramspermilliliterLazy = this.convertFromBase(DensityUnits.MicrogramsPerMilliliter);
     }
 
-    public get CentigramPerMilliliter(): number {
-        if(this.centigrampermilliliterLazy !== null){
-            return this.centigrampermilliliterLazy;
+    public get CentigramsPerMilliliter(): number {
+        if(this.centigramspermilliliterLazy !== null){
+            return this.centigramspermilliliterLazy;
         }
-        return this.centigrampermilliliterLazy = this.convertFromBase(DensityUnits.CentigramPerMilliliter);
+        return this.centigramspermilliliterLazy = this.convertFromBase(DensityUnits.CentigramsPerMilliliter);
     }
 
-    public get DecigramPerMilliliter(): number {
-        if(this.decigrampermilliliterLazy !== null){
-            return this.decigrampermilliliterLazy;
+    public get DecigramsPerMilliliter(): number {
+        if(this.decigramspermilliliterLazy !== null){
+            return this.decigramspermilliliterLazy;
         }
-        return this.decigrampermilliliterLazy = this.convertFromBase(DensityUnits.DecigramPerMilliliter);
+        return this.decigramspermilliliterLazy = this.convertFromBase(DensityUnits.DecigramsPerMilliliter);
     }
 
     public static FromGramsPerCubicMillimeter(value: number): Density {
@@ -392,88 +392,88 @@ export class Density {
         return new Density(value, DensityUnits.KilogramsPerLiter);
     }
 
-    public static FromKilogramPerCubicMillimeter(value: number): Density {
-        return new Density(value, DensityUnits.KilogramPerCubicMillimeter);
+    public static FromKilogramsPerCubicMillimeter(value: number): Density {
+        return new Density(value, DensityUnits.KilogramsPerCubicMillimeter);
     }
 
-    public static FromKilogramPerCubicCentimeter(value: number): Density {
-        return new Density(value, DensityUnits.KilogramPerCubicCentimeter);
+    public static FromKilogramsPerCubicCentimeter(value: number): Density {
+        return new Density(value, DensityUnits.KilogramsPerCubicCentimeter);
     }
 
-    public static FromKilogramPerCubicMeter(value: number): Density {
-        return new Density(value, DensityUnits.KilogramPerCubicMeter);
+    public static FromKilogramsPerCubicMeter(value: number): Density {
+        return new Density(value, DensityUnits.KilogramsPerCubicMeter);
     }
 
-    public static FromMicrogramPerCubicMeter(value: number): Density {
-        return new Density(value, DensityUnits.MicrogramPerCubicMeter);
+    public static FromMicrogramsPerCubicMeter(value: number): Density {
+        return new Density(value, DensityUnits.MicrogramsPerCubicMeter);
     }
 
-    public static FromKilopoundPerCubicInch(value: number): Density {
-        return new Density(value, DensityUnits.KilopoundPerCubicInch);
+    public static FromKilopoundsPerCubicInch(value: number): Density {
+        return new Density(value, DensityUnits.KilopoundsPerCubicInch);
     }
 
-    public static FromKilopoundPerCubicFoot(value: number): Density {
-        return new Density(value, DensityUnits.KilopoundPerCubicFoot);
+    public static FromKilopoundsPerCubicFoot(value: number): Density {
+        return new Density(value, DensityUnits.KilopoundsPerCubicFoot);
     }
 
-    public static FromPicogramPerLiter(value: number): Density {
-        return new Density(value, DensityUnits.PicogramPerLiter);
+    public static FromPicogramsPerLiter(value: number): Density {
+        return new Density(value, DensityUnits.PicogramsPerLiter);
     }
 
-    public static FromNanogramPerLiter(value: number): Density {
-        return new Density(value, DensityUnits.NanogramPerLiter);
+    public static FromNanogramsPerLiter(value: number): Density {
+        return new Density(value, DensityUnits.NanogramsPerLiter);
     }
 
-    public static FromMicrogramPerLiter(value: number): Density {
-        return new Density(value, DensityUnits.MicrogramPerLiter);
+    public static FromMicrogramsPerLiter(value: number): Density {
+        return new Density(value, DensityUnits.MicrogramsPerLiter);
     }
 
-    public static FromCentigramPerLiter(value: number): Density {
-        return new Density(value, DensityUnits.CentigramPerLiter);
+    public static FromCentigramsPerLiter(value: number): Density {
+        return new Density(value, DensityUnits.CentigramsPerLiter);
     }
 
-    public static FromDecigramPerLiter(value: number): Density {
-        return new Density(value, DensityUnits.DecigramPerLiter);
+    public static FromDecigramsPerLiter(value: number): Density {
+        return new Density(value, DensityUnits.DecigramsPerLiter);
     }
 
-    public static FromPicogramPerDeciliter(value: number): Density {
-        return new Density(value, DensityUnits.PicogramPerDeciliter);
+    public static FromPicogramsPerDeciLiter(value: number): Density {
+        return new Density(value, DensityUnits.PicogramsPerDeciLiter);
     }
 
-    public static FromNanogramPerDeciliter(value: number): Density {
-        return new Density(value, DensityUnits.NanogramPerDeciliter);
+    public static FromNanogramsPerDeciLiter(value: number): Density {
+        return new Density(value, DensityUnits.NanogramsPerDeciLiter);
     }
 
-    public static FromMicrogramPerDeciliter(value: number): Density {
-        return new Density(value, DensityUnits.MicrogramPerDeciliter);
+    public static FromMicrogramsPerDeciLiter(value: number): Density {
+        return new Density(value, DensityUnits.MicrogramsPerDeciLiter);
     }
 
-    public static FromCentigramPerDeciliter(value: number): Density {
-        return new Density(value, DensityUnits.CentigramPerDeciliter);
+    public static FromCentigramsPerDeciLiter(value: number): Density {
+        return new Density(value, DensityUnits.CentigramsPerDeciLiter);
     }
 
-    public static FromDecigramPerDeciliter(value: number): Density {
-        return new Density(value, DensityUnits.DecigramPerDeciliter);
+    public static FromDecigramsPerDeciLiter(value: number): Density {
+        return new Density(value, DensityUnits.DecigramsPerDeciLiter);
     }
 
-    public static FromPicogramPerMilliliter(value: number): Density {
-        return new Density(value, DensityUnits.PicogramPerMilliliter);
+    public static FromPicogramsPerMilliliter(value: number): Density {
+        return new Density(value, DensityUnits.PicogramsPerMilliliter);
     }
 
-    public static FromNanogramPerMilliliter(value: number): Density {
-        return new Density(value, DensityUnits.NanogramPerMilliliter);
+    public static FromNanogramsPerMilliliter(value: number): Density {
+        return new Density(value, DensityUnits.NanogramsPerMilliliter);
     }
 
-    public static FromMicrogramPerMilliliter(value: number): Density {
-        return new Density(value, DensityUnits.MicrogramPerMilliliter);
+    public static FromMicrogramsPerMilliliter(value: number): Density {
+        return new Density(value, DensityUnits.MicrogramsPerMilliliter);
     }
 
-    public static FromCentigramPerMilliliter(value: number): Density {
-        return new Density(value, DensityUnits.CentigramPerMilliliter);
+    public static FromCentigramsPerMilliliter(value: number): Density {
+        return new Density(value, DensityUnits.CentigramsPerMilliliter);
     }
 
-    public static FromDecigramPerMilliliter(value: number): Density {
-        return new Density(value, DensityUnits.DecigramPerMilliliter);
+    public static FromDecigramsPerMilliliter(value: number): Density {
+        return new Density(value, DensityUnits.DecigramsPerMilliliter);
     }
 
     private convertFromBase(toUnit: DensityUnits): number {
@@ -509,47 +509,47 @@ export class Density {
                 return this.value/9.9776398e1;
             case DensityUnits.KilogramsPerLiter:
                 return this.value/1e3;
-            case DensityUnits.KilogramPerCubicMillimeter:
+            case DensityUnits.KilogramsPerCubicMillimeter:
                 return (this.value*1e-6) / 1000;
-            case DensityUnits.KilogramPerCubicCentimeter:
+            case DensityUnits.KilogramsPerCubicCentimeter:
                 return (this.value*1e-3) / 1000;
-            case DensityUnits.KilogramPerCubicMeter:
+            case DensityUnits.KilogramsPerCubicMeter:
                 return (this.value*1e3) / 1000;
-            case DensityUnits.MicrogramPerCubicMeter:
+            case DensityUnits.MicrogramsPerCubicMeter:
                 return (this.value*1e3) / 0.000001;
-            case DensityUnits.KilopoundPerCubicInch:
+            case DensityUnits.KilopoundsPerCubicInch:
                 return (this.value*3.6127298147753e-5) / 1000;
-            case DensityUnits.KilopoundPerCubicFoot:
+            case DensityUnits.KilopoundsPerCubicFoot:
                 return (this.value*0.062427961) / 1000;
-            case DensityUnits.PicogramPerLiter:
+            case DensityUnits.PicogramsPerLiter:
                 return (this.value*1) / 1e-12;
-            case DensityUnits.NanogramPerLiter:
+            case DensityUnits.NanogramsPerLiter:
                 return (this.value*1) / 1e-9;
-            case DensityUnits.MicrogramPerLiter:
+            case DensityUnits.MicrogramsPerLiter:
                 return (this.value*1) / 0.000001;
-            case DensityUnits.CentigramPerLiter:
+            case DensityUnits.CentigramsPerLiter:
                 return (this.value*1) / 0.01;
-            case DensityUnits.DecigramPerLiter:
+            case DensityUnits.DecigramsPerLiter:
                 return (this.value*1) / 0.1;
-            case DensityUnits.PicogramPerDeciliter:
+            case DensityUnits.PicogramsPerDeciLiter:
                 return (this.value*1e-1) / 1e-12;
-            case DensityUnits.NanogramPerDeciliter:
+            case DensityUnits.NanogramsPerDeciLiter:
                 return (this.value*1e-1) / 1e-9;
-            case DensityUnits.MicrogramPerDeciliter:
+            case DensityUnits.MicrogramsPerDeciLiter:
                 return (this.value*1e-1) / 0.000001;
-            case DensityUnits.CentigramPerDeciliter:
+            case DensityUnits.CentigramsPerDeciLiter:
                 return (this.value*1e-1) / 0.01;
-            case DensityUnits.DecigramPerDeciliter:
+            case DensityUnits.DecigramsPerDeciLiter:
                 return (this.value*1e-1) / 0.1;
-            case DensityUnits.PicogramPerMilliliter:
+            case DensityUnits.PicogramsPerMilliliter:
                 return (this.value*1e-3) / 1e-12;
-            case DensityUnits.NanogramPerMilliliter:
+            case DensityUnits.NanogramsPerMilliliter:
                 return (this.value*1e-3) / 1e-9;
-            case DensityUnits.MicrogramPerMilliliter:
+            case DensityUnits.MicrogramsPerMilliliter:
                 return (this.value*1e-3) / 0.000001;
-            case DensityUnits.CentigramPerMilliliter:
+            case DensityUnits.CentigramsPerMilliliter:
                 return (this.value*1e-3) / 0.01;
-            case DensityUnits.DecigramPerMilliliter:
+            case DensityUnits.DecigramsPerMilliliter:
                 return (this.value*1e-3) / 0.1;
             default:
                 break;
@@ -590,47 +590,47 @@ export class Density {
                 return value*9.9776398e1;
             case DensityUnits.KilogramsPerLiter:
                 return value*1e3;
-            case DensityUnits.KilogramPerCubicMillimeter:
+            case DensityUnits.KilogramsPerCubicMillimeter:
                 return (value/1e-6) * 1000;
-            case DensityUnits.KilogramPerCubicCentimeter:
+            case DensityUnits.KilogramsPerCubicCentimeter:
                 return (value/1e-3) * 1000;
-            case DensityUnits.KilogramPerCubicMeter:
+            case DensityUnits.KilogramsPerCubicMeter:
                 return (value/1e3) * 1000;
-            case DensityUnits.MicrogramPerCubicMeter:
+            case DensityUnits.MicrogramsPerCubicMeter:
                 return (value/1e3) * 0.000001;
-            case DensityUnits.KilopoundPerCubicInch:
+            case DensityUnits.KilopoundsPerCubicInch:
                 return (value/3.6127298147753e-5) * 1000;
-            case DensityUnits.KilopoundPerCubicFoot:
+            case DensityUnits.KilopoundsPerCubicFoot:
                 return (value/0.062427961) * 1000;
-            case DensityUnits.PicogramPerLiter:
+            case DensityUnits.PicogramsPerLiter:
                 return (value/1) * 1e-12;
-            case DensityUnits.NanogramPerLiter:
+            case DensityUnits.NanogramsPerLiter:
                 return (value/1) * 1e-9;
-            case DensityUnits.MicrogramPerLiter:
+            case DensityUnits.MicrogramsPerLiter:
                 return (value/1) * 0.000001;
-            case DensityUnits.CentigramPerLiter:
+            case DensityUnits.CentigramsPerLiter:
                 return (value/1) * 0.01;
-            case DensityUnits.DecigramPerLiter:
+            case DensityUnits.DecigramsPerLiter:
                 return (value/1) * 0.1;
-            case DensityUnits.PicogramPerDeciliter:
+            case DensityUnits.PicogramsPerDeciLiter:
                 return (value/1e-1) * 1e-12;
-            case DensityUnits.NanogramPerDeciliter:
+            case DensityUnits.NanogramsPerDeciLiter:
                 return (value/1e-1) * 1e-9;
-            case DensityUnits.MicrogramPerDeciliter:
+            case DensityUnits.MicrogramsPerDeciLiter:
                 return (value/1e-1) * 0.000001;
-            case DensityUnits.CentigramPerDeciliter:
+            case DensityUnits.CentigramsPerDeciLiter:
                 return (value/1e-1) * 0.01;
-            case DensityUnits.DecigramPerDeciliter:
+            case DensityUnits.DecigramsPerDeciLiter:
                 return (value/1e-1) * 0.1;
-            case DensityUnits.PicogramPerMilliliter:
+            case DensityUnits.PicogramsPerMilliliter:
                 return (value/1e-3) * 1e-12;
-            case DensityUnits.NanogramPerMilliliter:
+            case DensityUnits.NanogramsPerMilliliter:
                 return (value/1e-3) * 1e-9;
-            case DensityUnits.MicrogramPerMilliliter:
+            case DensityUnits.MicrogramsPerMilliliter:
                 return (value/1e-3) * 0.000001;
-            case DensityUnits.CentigramPerMilliliter:
+            case DensityUnits.CentigramsPerMilliliter:
                 return (value/1e-3) * 0.01;
-            case DensityUnits.DecigramPerMilliliter:
+            case DensityUnits.DecigramsPerMilliliter:
                 return (value/1e-3) * 0.1;
             default:
                 break;
@@ -638,7 +638,7 @@ export class Density {
         return NaN;
     }
 
-    public toString(toUnit: DensityUnits = DensityUnits.KilogramPerCubicMeter): string {
+    public toString(toUnit: DensityUnits = DensityUnits.KilogramsPerCubicMeter): string {
 
         switch (toUnit) {
             
@@ -672,48 +672,48 @@ export class Density {
                 return this.PoundsPerImperialGallon + ` ppg (imp.)`;
             case DensityUnits.KilogramsPerLiter:
                 return this.KilogramsPerLiter + ` kg/l`;
-            case DensityUnits.KilogramPerCubicMillimeter:
-                return this.KilogramPerCubicMillimeter + ` g/mm³`;
-            case DensityUnits.KilogramPerCubicCentimeter:
-                return this.KilogramPerCubicCentimeter + ` g/cm³`;
-            case DensityUnits.KilogramPerCubicMeter:
-                return this.KilogramPerCubicMeter + ` g/m³`;
-            case DensityUnits.MicrogramPerCubicMeter:
-                return this.MicrogramPerCubicMeter + ` g/m³`;
-            case DensityUnits.KilopoundPerCubicInch:
-                return this.KilopoundPerCubicInch + ` lb/in³`;
-            case DensityUnits.KilopoundPerCubicFoot:
-                return this.KilopoundPerCubicFoot + ` lb/ft³`;
-            case DensityUnits.PicogramPerLiter:
-                return this.PicogramPerLiter + ` g/L`;
-            case DensityUnits.NanogramPerLiter:
-                return this.NanogramPerLiter + ` g/L`;
-            case DensityUnits.MicrogramPerLiter:
-                return this.MicrogramPerLiter + ` g/L`;
-            case DensityUnits.CentigramPerLiter:
-                return this.CentigramPerLiter + ` g/L`;
-            case DensityUnits.DecigramPerLiter:
-                return this.DecigramPerLiter + ` g/L`;
-            case DensityUnits.PicogramPerDeciliter:
-                return this.PicogramPerDeciliter + ` g/dl`;
-            case DensityUnits.NanogramPerDeciliter:
-                return this.NanogramPerDeciliter + ` g/dl`;
-            case DensityUnits.MicrogramPerDeciliter:
-                return this.MicrogramPerDeciliter + ` g/dl`;
-            case DensityUnits.CentigramPerDeciliter:
-                return this.CentigramPerDeciliter + ` g/dl`;
-            case DensityUnits.DecigramPerDeciliter:
-                return this.DecigramPerDeciliter + ` g/dl`;
-            case DensityUnits.PicogramPerMilliliter:
-                return this.PicogramPerMilliliter + ` g/ml`;
-            case DensityUnits.NanogramPerMilliliter:
-                return this.NanogramPerMilliliter + ` g/ml`;
-            case DensityUnits.MicrogramPerMilliliter:
-                return this.MicrogramPerMilliliter + ` g/ml`;
-            case DensityUnits.CentigramPerMilliliter:
-                return this.CentigramPerMilliliter + ` g/ml`;
-            case DensityUnits.DecigramPerMilliliter:
-                return this.DecigramPerMilliliter + ` g/ml`;
+            case DensityUnits.KilogramsPerCubicMillimeter:
+                return this.KilogramsPerCubicMillimeter + ` g/mm³`;
+            case DensityUnits.KilogramsPerCubicCentimeter:
+                return this.KilogramsPerCubicCentimeter + ` g/cm³`;
+            case DensityUnits.KilogramsPerCubicMeter:
+                return this.KilogramsPerCubicMeter + ` g/m³`;
+            case DensityUnits.MicrogramsPerCubicMeter:
+                return this.MicrogramsPerCubicMeter + ` g/m³`;
+            case DensityUnits.KilopoundsPerCubicInch:
+                return this.KilopoundsPerCubicInch + ` lb/in³`;
+            case DensityUnits.KilopoundsPerCubicFoot:
+                return this.KilopoundsPerCubicFoot + ` lb/ft³`;
+            case DensityUnits.PicogramsPerLiter:
+                return this.PicogramsPerLiter + ` g/L`;
+            case DensityUnits.NanogramsPerLiter:
+                return this.NanogramsPerLiter + ` g/L`;
+            case DensityUnits.MicrogramsPerLiter:
+                return this.MicrogramsPerLiter + ` g/L`;
+            case DensityUnits.CentigramsPerLiter:
+                return this.CentigramsPerLiter + ` g/L`;
+            case DensityUnits.DecigramsPerLiter:
+                return this.DecigramsPerLiter + ` g/L`;
+            case DensityUnits.PicogramsPerDeciLiter:
+                return this.PicogramsPerDeciLiter + ` g/dl`;
+            case DensityUnits.NanogramsPerDeciLiter:
+                return this.NanogramsPerDeciLiter + ` g/dl`;
+            case DensityUnits.MicrogramsPerDeciLiter:
+                return this.MicrogramsPerDeciLiter + ` g/dl`;
+            case DensityUnits.CentigramsPerDeciLiter:
+                return this.CentigramsPerDeciLiter + ` g/dl`;
+            case DensityUnits.DecigramsPerDeciLiter:
+                return this.DecigramsPerDeciLiter + ` g/dl`;
+            case DensityUnits.PicogramsPerMilliliter:
+                return this.PicogramsPerMilliliter + ` g/ml`;
+            case DensityUnits.NanogramsPerMilliliter:
+                return this.NanogramsPerMilliliter + ` g/ml`;
+            case DensityUnits.MicrogramsPerMilliliter:
+                return this.MicrogramsPerMilliliter + ` g/ml`;
+            case DensityUnits.CentigramsPerMilliliter:
+                return this.CentigramsPerMilliliter + ` g/ml`;
+            case DensityUnits.DecigramsPerMilliliter:
+                return this.DecigramsPerMilliliter + ` g/ml`;
         default:
             break;
         }

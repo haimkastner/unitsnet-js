@@ -12,21 +12,21 @@ var EnergyUnits;
     EnergyUnits[EnergyUnits["ThermsEc"] = 7] = "ThermsEc";
     EnergyUnits[EnergyUnits["ThermsUs"] = 8] = "ThermsUs";
     EnergyUnits[EnergyUnits["ThermsImperial"] = 9] = "ThermsImperial";
-    EnergyUnits[EnergyUnits["Kilojoule"] = 10] = "Kilojoule";
-    EnergyUnits[EnergyUnits["Megajoule"] = 11] = "Megajoule";
-    EnergyUnits[EnergyUnits["Gigajoule"] = 12] = "Gigajoule";
-    EnergyUnits[EnergyUnits["Kilocalorie"] = 13] = "Kilocalorie";
-    EnergyUnits[EnergyUnits["Megacalorie"] = 14] = "Megacalorie";
-    EnergyUnits[EnergyUnits["KilobritishThermalUnit"] = 15] = "KilobritishThermalUnit";
-    EnergyUnits[EnergyUnits["MegabritishThermalUnit"] = 16] = "MegabritishThermalUnit";
-    EnergyUnits[EnergyUnits["GigabritishThermalUnit"] = 17] = "GigabritishThermalUnit";
-    EnergyUnits[EnergyUnits["KilowattHour"] = 18] = "KilowattHour";
-    EnergyUnits[EnergyUnits["MegawattHour"] = 19] = "MegawattHour";
-    EnergyUnits[EnergyUnits["GigawattHour"] = 20] = "GigawattHour";
-    EnergyUnits[EnergyUnits["TerawattHour"] = 21] = "TerawattHour";
-    EnergyUnits[EnergyUnits["DecathermEc"] = 22] = "DecathermEc";
-    EnergyUnits[EnergyUnits["DecathermUs"] = 23] = "DecathermUs";
-    EnergyUnits[EnergyUnits["DecathermImperial"] = 24] = "DecathermImperial";
+    EnergyUnits[EnergyUnits["Kilojoules"] = 10] = "Kilojoules";
+    EnergyUnits[EnergyUnits["Megajoules"] = 11] = "Megajoules";
+    EnergyUnits[EnergyUnits["Gigajoules"] = 12] = "Gigajoules";
+    EnergyUnits[EnergyUnits["Kilocalories"] = 13] = "Kilocalories";
+    EnergyUnits[EnergyUnits["Megacalories"] = 14] = "Megacalories";
+    EnergyUnits[EnergyUnits["KilobritishThermalUnits"] = 15] = "KilobritishThermalUnits";
+    EnergyUnits[EnergyUnits["MegabritishThermalUnits"] = 16] = "MegabritishThermalUnits";
+    EnergyUnits[EnergyUnits["GigabritishThermalUnits"] = 17] = "GigabritishThermalUnits";
+    EnergyUnits[EnergyUnits["KilowattHours"] = 18] = "KilowattHours";
+    EnergyUnits[EnergyUnits["MegawattHours"] = 19] = "MegawattHours";
+    EnergyUnits[EnergyUnits["GigawattHours"] = 20] = "GigawattHours";
+    EnergyUnits[EnergyUnits["TerawattHours"] = 21] = "TerawattHours";
+    EnergyUnits[EnergyUnits["DecathermsEc"] = 22] = "DecathermsEc";
+    EnergyUnits[EnergyUnits["DecathermsUs"] = 23] = "DecathermsUs";
+    EnergyUnits[EnergyUnits["DecathermsImperial"] = 24] = "DecathermsImperial";
 })(EnergyUnits = exports.EnergyUnits || (exports.EnergyUnits = {}));
 class Energy {
     constructor(value, fromUnit) {
@@ -40,21 +40,21 @@ class Energy {
         this.thermsecLazy = null;
         this.thermsusLazy = null;
         this.thermsimperialLazy = null;
-        this.kilojouleLazy = null;
-        this.megajouleLazy = null;
-        this.gigajouleLazy = null;
-        this.kilocalorieLazy = null;
-        this.megacalorieLazy = null;
-        this.kilobritishthermalunitLazy = null;
-        this.megabritishthermalunitLazy = null;
-        this.gigabritishthermalunitLazy = null;
-        this.kilowatthourLazy = null;
-        this.megawatthourLazy = null;
-        this.gigawatthourLazy = null;
-        this.terawatthourLazy = null;
-        this.decathermecLazy = null;
-        this.decathermusLazy = null;
-        this.decathermimperialLazy = null;
+        this.kilojoulesLazy = null;
+        this.megajoulesLazy = null;
+        this.gigajoulesLazy = null;
+        this.kilocaloriesLazy = null;
+        this.megacaloriesLazy = null;
+        this.kilobritishthermalunitsLazy = null;
+        this.megabritishthermalunitsLazy = null;
+        this.gigabritishthermalunitsLazy = null;
+        this.kilowatthoursLazy = null;
+        this.megawatthoursLazy = null;
+        this.gigawatthoursLazy = null;
+        this.terawatthoursLazy = null;
+        this.decathermsecLazy = null;
+        this.decathermsusLazy = null;
+        this.decathermsimperialLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Joules() {
@@ -117,95 +117,95 @@ class Energy {
         }
         return this.thermsimperialLazy = this.convertFromBase(EnergyUnits.ThermsImperial);
     }
-    get Kilojoule() {
-        if (this.kilojouleLazy !== null) {
-            return this.kilojouleLazy;
+    get Kilojoules() {
+        if (this.kilojoulesLazy !== null) {
+            return this.kilojoulesLazy;
         }
-        return this.kilojouleLazy = this.convertFromBase(EnergyUnits.Kilojoule);
+        return this.kilojoulesLazy = this.convertFromBase(EnergyUnits.Kilojoules);
     }
-    get Megajoule() {
-        if (this.megajouleLazy !== null) {
-            return this.megajouleLazy;
+    get Megajoules() {
+        if (this.megajoulesLazy !== null) {
+            return this.megajoulesLazy;
         }
-        return this.megajouleLazy = this.convertFromBase(EnergyUnits.Megajoule);
+        return this.megajoulesLazy = this.convertFromBase(EnergyUnits.Megajoules);
     }
-    get Gigajoule() {
-        if (this.gigajouleLazy !== null) {
-            return this.gigajouleLazy;
+    get Gigajoules() {
+        if (this.gigajoulesLazy !== null) {
+            return this.gigajoulesLazy;
         }
-        return this.gigajouleLazy = this.convertFromBase(EnergyUnits.Gigajoule);
+        return this.gigajoulesLazy = this.convertFromBase(EnergyUnits.Gigajoules);
     }
-    get Kilocalorie() {
-        if (this.kilocalorieLazy !== null) {
-            return this.kilocalorieLazy;
+    get Kilocalories() {
+        if (this.kilocaloriesLazy !== null) {
+            return this.kilocaloriesLazy;
         }
-        return this.kilocalorieLazy = this.convertFromBase(EnergyUnits.Kilocalorie);
+        return this.kilocaloriesLazy = this.convertFromBase(EnergyUnits.Kilocalories);
     }
-    get Megacalorie() {
-        if (this.megacalorieLazy !== null) {
-            return this.megacalorieLazy;
+    get Megacalories() {
+        if (this.megacaloriesLazy !== null) {
+            return this.megacaloriesLazy;
         }
-        return this.megacalorieLazy = this.convertFromBase(EnergyUnits.Megacalorie);
+        return this.megacaloriesLazy = this.convertFromBase(EnergyUnits.Megacalories);
     }
-    get KilobritishThermalUnit() {
-        if (this.kilobritishthermalunitLazy !== null) {
-            return this.kilobritishthermalunitLazy;
+    get KilobritishThermalUnits() {
+        if (this.kilobritishthermalunitsLazy !== null) {
+            return this.kilobritishthermalunitsLazy;
         }
-        return this.kilobritishthermalunitLazy = this.convertFromBase(EnergyUnits.KilobritishThermalUnit);
+        return this.kilobritishthermalunitsLazy = this.convertFromBase(EnergyUnits.KilobritishThermalUnits);
     }
-    get MegabritishThermalUnit() {
-        if (this.megabritishthermalunitLazy !== null) {
-            return this.megabritishthermalunitLazy;
+    get MegabritishThermalUnits() {
+        if (this.megabritishthermalunitsLazy !== null) {
+            return this.megabritishthermalunitsLazy;
         }
-        return this.megabritishthermalunitLazy = this.convertFromBase(EnergyUnits.MegabritishThermalUnit);
+        return this.megabritishthermalunitsLazy = this.convertFromBase(EnergyUnits.MegabritishThermalUnits);
     }
-    get GigabritishThermalUnit() {
-        if (this.gigabritishthermalunitLazy !== null) {
-            return this.gigabritishthermalunitLazy;
+    get GigabritishThermalUnits() {
+        if (this.gigabritishthermalunitsLazy !== null) {
+            return this.gigabritishthermalunitsLazy;
         }
-        return this.gigabritishthermalunitLazy = this.convertFromBase(EnergyUnits.GigabritishThermalUnit);
+        return this.gigabritishthermalunitsLazy = this.convertFromBase(EnergyUnits.GigabritishThermalUnits);
     }
-    get KilowattHour() {
-        if (this.kilowatthourLazy !== null) {
-            return this.kilowatthourLazy;
+    get KilowattHours() {
+        if (this.kilowatthoursLazy !== null) {
+            return this.kilowatthoursLazy;
         }
-        return this.kilowatthourLazy = this.convertFromBase(EnergyUnits.KilowattHour);
+        return this.kilowatthoursLazy = this.convertFromBase(EnergyUnits.KilowattHours);
     }
-    get MegawattHour() {
-        if (this.megawatthourLazy !== null) {
-            return this.megawatthourLazy;
+    get MegawattHours() {
+        if (this.megawatthoursLazy !== null) {
+            return this.megawatthoursLazy;
         }
-        return this.megawatthourLazy = this.convertFromBase(EnergyUnits.MegawattHour);
+        return this.megawatthoursLazy = this.convertFromBase(EnergyUnits.MegawattHours);
     }
-    get GigawattHour() {
-        if (this.gigawatthourLazy !== null) {
-            return this.gigawatthourLazy;
+    get GigawattHours() {
+        if (this.gigawatthoursLazy !== null) {
+            return this.gigawatthoursLazy;
         }
-        return this.gigawatthourLazy = this.convertFromBase(EnergyUnits.GigawattHour);
+        return this.gigawatthoursLazy = this.convertFromBase(EnergyUnits.GigawattHours);
     }
-    get TerawattHour() {
-        if (this.terawatthourLazy !== null) {
-            return this.terawatthourLazy;
+    get TerawattHours() {
+        if (this.terawatthoursLazy !== null) {
+            return this.terawatthoursLazy;
         }
-        return this.terawatthourLazy = this.convertFromBase(EnergyUnits.TerawattHour);
+        return this.terawatthoursLazy = this.convertFromBase(EnergyUnits.TerawattHours);
     }
-    get DecathermEc() {
-        if (this.decathermecLazy !== null) {
-            return this.decathermecLazy;
+    get DecathermsEc() {
+        if (this.decathermsecLazy !== null) {
+            return this.decathermsecLazy;
         }
-        return this.decathermecLazy = this.convertFromBase(EnergyUnits.DecathermEc);
+        return this.decathermsecLazy = this.convertFromBase(EnergyUnits.DecathermsEc);
     }
-    get DecathermUs() {
-        if (this.decathermusLazy !== null) {
-            return this.decathermusLazy;
+    get DecathermsUs() {
+        if (this.decathermsusLazy !== null) {
+            return this.decathermsusLazy;
         }
-        return this.decathermusLazy = this.convertFromBase(EnergyUnits.DecathermUs);
+        return this.decathermsusLazy = this.convertFromBase(EnergyUnits.DecathermsUs);
     }
-    get DecathermImperial() {
-        if (this.decathermimperialLazy !== null) {
-            return this.decathermimperialLazy;
+    get DecathermsImperial() {
+        if (this.decathermsimperialLazy !== null) {
+            return this.decathermsimperialLazy;
         }
-        return this.decathermimperialLazy = this.convertFromBase(EnergyUnits.DecathermImperial);
+        return this.decathermsimperialLazy = this.convertFromBase(EnergyUnits.DecathermsImperial);
     }
     static FromJoules(value) {
         return new Energy(value, EnergyUnits.Joules);
@@ -237,50 +237,50 @@ class Energy {
     static FromThermsImperial(value) {
         return new Energy(value, EnergyUnits.ThermsImperial);
     }
-    static FromKilojoule(value) {
-        return new Energy(value, EnergyUnits.Kilojoule);
+    static FromKilojoules(value) {
+        return new Energy(value, EnergyUnits.Kilojoules);
     }
-    static FromMegajoule(value) {
-        return new Energy(value, EnergyUnits.Megajoule);
+    static FromMegajoules(value) {
+        return new Energy(value, EnergyUnits.Megajoules);
     }
-    static FromGigajoule(value) {
-        return new Energy(value, EnergyUnits.Gigajoule);
+    static FromGigajoules(value) {
+        return new Energy(value, EnergyUnits.Gigajoules);
     }
-    static FromKilocalorie(value) {
-        return new Energy(value, EnergyUnits.Kilocalorie);
+    static FromKilocalories(value) {
+        return new Energy(value, EnergyUnits.Kilocalories);
     }
-    static FromMegacalorie(value) {
-        return new Energy(value, EnergyUnits.Megacalorie);
+    static FromMegacalories(value) {
+        return new Energy(value, EnergyUnits.Megacalories);
     }
-    static FromKilobritishThermalUnit(value) {
-        return new Energy(value, EnergyUnits.KilobritishThermalUnit);
+    static FromKilobritishThermalUnits(value) {
+        return new Energy(value, EnergyUnits.KilobritishThermalUnits);
     }
-    static FromMegabritishThermalUnit(value) {
-        return new Energy(value, EnergyUnits.MegabritishThermalUnit);
+    static FromMegabritishThermalUnits(value) {
+        return new Energy(value, EnergyUnits.MegabritishThermalUnits);
     }
-    static FromGigabritishThermalUnit(value) {
-        return new Energy(value, EnergyUnits.GigabritishThermalUnit);
+    static FromGigabritishThermalUnits(value) {
+        return new Energy(value, EnergyUnits.GigabritishThermalUnits);
     }
-    static FromKilowattHour(value) {
-        return new Energy(value, EnergyUnits.KilowattHour);
+    static FromKilowattHours(value) {
+        return new Energy(value, EnergyUnits.KilowattHours);
     }
-    static FromMegawattHour(value) {
-        return new Energy(value, EnergyUnits.MegawattHour);
+    static FromMegawattHours(value) {
+        return new Energy(value, EnergyUnits.MegawattHours);
     }
-    static FromGigawattHour(value) {
-        return new Energy(value, EnergyUnits.GigawattHour);
+    static FromGigawattHours(value) {
+        return new Energy(value, EnergyUnits.GigawattHours);
     }
-    static FromTerawattHour(value) {
-        return new Energy(value, EnergyUnits.TerawattHour);
+    static FromTerawattHours(value) {
+        return new Energy(value, EnergyUnits.TerawattHours);
     }
-    static FromDecathermEc(value) {
-        return new Energy(value, EnergyUnits.DecathermEc);
+    static FromDecathermsEc(value) {
+        return new Energy(value, EnergyUnits.DecathermsEc);
     }
-    static FromDecathermUs(value) {
-        return new Energy(value, EnergyUnits.DecathermUs);
+    static FromDecathermsUs(value) {
+        return new Energy(value, EnergyUnits.DecathermsUs);
     }
-    static FromDecathermImperial(value) {
-        return new Energy(value, EnergyUnits.DecathermImperial);
+    static FromDecathermsImperial(value) {
+        return new Energy(value, EnergyUnits.DecathermsImperial);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -304,35 +304,35 @@ class Energy {
                 return this.value / 1.054804e8;
             case EnergyUnits.ThermsImperial:
                 return this.value / 1.05505585257348e8;
-            case EnergyUnits.Kilojoule:
+            case EnergyUnits.Kilojoules:
                 return (this.value) / 1000;
-            case EnergyUnits.Megajoule:
+            case EnergyUnits.Megajoules:
                 return (this.value) / 1000000;
-            case EnergyUnits.Gigajoule:
+            case EnergyUnits.Gigajoules:
                 return (this.value) / 1000000000;
-            case EnergyUnits.Kilocalorie:
+            case EnergyUnits.Kilocalories:
                 return (this.value / 4.184) / 1000;
-            case EnergyUnits.Megacalorie:
+            case EnergyUnits.Megacalories:
                 return (this.value / 4.184) / 1000000;
-            case EnergyUnits.KilobritishThermalUnit:
+            case EnergyUnits.KilobritishThermalUnits:
                 return (this.value / 1055.05585262) / 1000;
-            case EnergyUnits.MegabritishThermalUnit:
+            case EnergyUnits.MegabritishThermalUnits:
                 return (this.value / 1055.05585262) / 1000000;
-            case EnergyUnits.GigabritishThermalUnit:
+            case EnergyUnits.GigabritishThermalUnits:
                 return (this.value / 1055.05585262) / 1000000000;
-            case EnergyUnits.KilowattHour:
+            case EnergyUnits.KilowattHours:
                 return (this.value / 3600) / 1000;
-            case EnergyUnits.MegawattHour:
+            case EnergyUnits.MegawattHours:
                 return (this.value / 3600) / 1000000;
-            case EnergyUnits.GigawattHour:
+            case EnergyUnits.GigawattHours:
                 return (this.value / 3600) / 1000000000;
-            case EnergyUnits.TerawattHour:
+            case EnergyUnits.TerawattHours:
                 return (this.value / 3600) / 1000000000000;
-            case EnergyUnits.DecathermEc:
+            case EnergyUnits.DecathermsEc:
                 return (this.value / 1.05505585262e8) / 10;
-            case EnergyUnits.DecathermUs:
+            case EnergyUnits.DecathermsUs:
                 return (this.value / 1.054804e8) / 10;
-            case EnergyUnits.DecathermImperial:
+            case EnergyUnits.DecathermsImperial:
                 return (this.value / 1.05505585257348e8) / 10;
             default:
                 break;
@@ -361,35 +361,35 @@ class Energy {
                 return value * 1.054804e8;
             case EnergyUnits.ThermsImperial:
                 return value * 1.05505585257348e8;
-            case EnergyUnits.Kilojoule:
+            case EnergyUnits.Kilojoules:
                 return (value) * 1000;
-            case EnergyUnits.Megajoule:
+            case EnergyUnits.Megajoules:
                 return (value) * 1000000;
-            case EnergyUnits.Gigajoule:
+            case EnergyUnits.Gigajoules:
                 return (value) * 1000000000;
-            case EnergyUnits.Kilocalorie:
+            case EnergyUnits.Kilocalories:
                 return (value * 4.184) * 1000;
-            case EnergyUnits.Megacalorie:
+            case EnergyUnits.Megacalories:
                 return (value * 4.184) * 1000000;
-            case EnergyUnits.KilobritishThermalUnit:
+            case EnergyUnits.KilobritishThermalUnits:
                 return (value * 1055.05585262) * 1000;
-            case EnergyUnits.MegabritishThermalUnit:
+            case EnergyUnits.MegabritishThermalUnits:
                 return (value * 1055.05585262) * 1000000;
-            case EnergyUnits.GigabritishThermalUnit:
+            case EnergyUnits.GigabritishThermalUnits:
                 return (value * 1055.05585262) * 1000000000;
-            case EnergyUnits.KilowattHour:
+            case EnergyUnits.KilowattHours:
                 return (value * 3600) * 1000;
-            case EnergyUnits.MegawattHour:
+            case EnergyUnits.MegawattHours:
                 return (value * 3600) * 1000000;
-            case EnergyUnits.GigawattHour:
+            case EnergyUnits.GigawattHours:
                 return (value * 3600) * 1000000000;
-            case EnergyUnits.TerawattHour:
+            case EnergyUnits.TerawattHours:
                 return (value * 3600) * 1000000000000;
-            case EnergyUnits.DecathermEc:
+            case EnergyUnits.DecathermsEc:
                 return (value * 1.05505585262e8) * 10;
-            case EnergyUnits.DecathermUs:
+            case EnergyUnits.DecathermsUs:
                 return (value * 1.054804e8) * 10;
-            case EnergyUnits.DecathermImperial:
+            case EnergyUnits.DecathermsImperial:
                 return (value * 1.05505585257348e8) * 10;
             default:
                 break;
@@ -418,36 +418,36 @@ class Energy {
                 return this.ThermsUs + ` th (U.S.)`;
             case EnergyUnits.ThermsImperial:
                 return this.ThermsImperial + ` th (imp.)`;
-            case EnergyUnits.Kilojoule:
-                return this.Kilojoule + ` J`;
-            case EnergyUnits.Megajoule:
-                return this.Megajoule + ` J`;
-            case EnergyUnits.Gigajoule:
-                return this.Gigajoule + ` J`;
-            case EnergyUnits.Kilocalorie:
-                return this.Kilocalorie + ` cal`;
-            case EnergyUnits.Megacalorie:
-                return this.Megacalorie + ` cal`;
-            case EnergyUnits.KilobritishThermalUnit:
-                return this.KilobritishThermalUnit + ` BTU`;
-            case EnergyUnits.MegabritishThermalUnit:
-                return this.MegabritishThermalUnit + ` BTU`;
-            case EnergyUnits.GigabritishThermalUnit:
-                return this.GigabritishThermalUnit + ` BTU`;
-            case EnergyUnits.KilowattHour:
-                return this.KilowattHour + ` Wh`;
-            case EnergyUnits.MegawattHour:
-                return this.MegawattHour + ` Wh`;
-            case EnergyUnits.GigawattHour:
-                return this.GigawattHour + ` Wh`;
-            case EnergyUnits.TerawattHour:
-                return this.TerawattHour + ` Wh`;
-            case EnergyUnits.DecathermEc:
-                return this.DecathermEc + ` th (E.C.)`;
-            case EnergyUnits.DecathermUs:
-                return this.DecathermUs + ` th (U.S.)`;
-            case EnergyUnits.DecathermImperial:
-                return this.DecathermImperial + ` th (imp.)`;
+            case EnergyUnits.Kilojoules:
+                return this.Kilojoules + ` J`;
+            case EnergyUnits.Megajoules:
+                return this.Megajoules + ` J`;
+            case EnergyUnits.Gigajoules:
+                return this.Gigajoules + ` J`;
+            case EnergyUnits.Kilocalories:
+                return this.Kilocalories + ` cal`;
+            case EnergyUnits.Megacalories:
+                return this.Megacalories + ` cal`;
+            case EnergyUnits.KilobritishThermalUnits:
+                return this.KilobritishThermalUnits + ` BTU`;
+            case EnergyUnits.MegabritishThermalUnits:
+                return this.MegabritishThermalUnits + ` BTU`;
+            case EnergyUnits.GigabritishThermalUnits:
+                return this.GigabritishThermalUnits + ` BTU`;
+            case EnergyUnits.KilowattHours:
+                return this.KilowattHours + ` Wh`;
+            case EnergyUnits.MegawattHours:
+                return this.MegawattHours + ` Wh`;
+            case EnergyUnits.GigawattHours:
+                return this.GigawattHours + ` Wh`;
+            case EnergyUnits.TerawattHours:
+                return this.TerawattHours + ` Wh`;
+            case EnergyUnits.DecathermsEc:
+                return this.DecathermsEc + ` th (E.C.)`;
+            case EnergyUnits.DecathermsUs:
+                return this.DecathermsUs + ` th (U.S.)`;
+            case EnergyUnits.DecathermsImperial:
+                return this.DecathermsImperial + ` th (imp.)`;
             default:
                 break;
         }

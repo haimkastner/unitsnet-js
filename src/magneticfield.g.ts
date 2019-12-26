@@ -1,14 +1,14 @@
 export enum MagneticFieldUnits {
     Teslas,
-    Nanotesla,
-    Microtesla
+    Nanoteslas,
+    Microteslas
 }
 
 export class MagneticField {
     private value: number;
     private teslasLazy: number | null = null;
-    private nanoteslaLazy: number | null = null;
-    private microteslaLazy: number | null = null;
+    private nanoteslasLazy: number | null = null;
+    private microteslasLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MagneticFieldUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -21,30 +21,30 @@ export class MagneticField {
         return this.teslasLazy = this.convertFromBase(MagneticFieldUnits.Teslas);
     }
 
-    public get Nanotesla(): number {
-        if(this.nanoteslaLazy !== null){
-            return this.nanoteslaLazy;
+    public get Nanoteslas(): number {
+        if(this.nanoteslasLazy !== null){
+            return this.nanoteslasLazy;
         }
-        return this.nanoteslaLazy = this.convertFromBase(MagneticFieldUnits.Nanotesla);
+        return this.nanoteslasLazy = this.convertFromBase(MagneticFieldUnits.Nanoteslas);
     }
 
-    public get Microtesla(): number {
-        if(this.microteslaLazy !== null){
-            return this.microteslaLazy;
+    public get Microteslas(): number {
+        if(this.microteslasLazy !== null){
+            return this.microteslasLazy;
         }
-        return this.microteslaLazy = this.convertFromBase(MagneticFieldUnits.Microtesla);
+        return this.microteslasLazy = this.convertFromBase(MagneticFieldUnits.Microteslas);
     }
 
     public static FromTeslas(value: number): MagneticField {
         return new MagneticField(value, MagneticFieldUnits.Teslas);
     }
 
-    public static FromNanotesla(value: number): MagneticField {
-        return new MagneticField(value, MagneticFieldUnits.Nanotesla);
+    public static FromNanoteslas(value: number): MagneticField {
+        return new MagneticField(value, MagneticFieldUnits.Nanoteslas);
     }
 
-    public static FromMicrotesla(value: number): MagneticField {
-        return new MagneticField(value, MagneticFieldUnits.Microtesla);
+    public static FromMicroteslas(value: number): MagneticField {
+        return new MagneticField(value, MagneticFieldUnits.Microteslas);
     }
 
     private convertFromBase(toUnit: MagneticFieldUnits): number {
@@ -52,9 +52,9 @@ export class MagneticField {
                 
             case MagneticFieldUnits.Teslas:
                 return this.value;
-            case MagneticFieldUnits.Nanotesla:
+            case MagneticFieldUnits.Nanoteslas:
                 return (this.value) / 1e-9;
-            case MagneticFieldUnits.Microtesla:
+            case MagneticFieldUnits.Microteslas:
                 return (this.value) / 0.000001;
             default:
                 break;
@@ -67,9 +67,9 @@ export class MagneticField {
                 
             case MagneticFieldUnits.Teslas:
                 return value;
-            case MagneticFieldUnits.Nanotesla:
+            case MagneticFieldUnits.Nanoteslas:
                 return (value) * 1e-9;
-            case MagneticFieldUnits.Microtesla:
+            case MagneticFieldUnits.Microteslas:
                 return (value) * 0.000001;
             default:
                 break;
@@ -83,10 +83,10 @@ export class MagneticField {
             
             case MagneticFieldUnits.Teslas:
                 return this.Teslas + ` T`;
-            case MagneticFieldUnits.Nanotesla:
-                return this.Nanotesla + ` T`;
-            case MagneticFieldUnits.Microtesla:
-                return this.Microtesla + ` T`;
+            case MagneticFieldUnits.Nanoteslas:
+                return this.Nanoteslas + ` T`;
+            case MagneticFieldUnits.Microteslas:
+                return this.Microteslas + ` T`;
         default:
             break;
         }

@@ -1,24 +1,24 @@
 export declare enum ElectricPotentialAcUnits {
     VoltsAc = 0,
-    MicrovoltAc = 1,
-    KilovoltAc = 2,
-    MegavoltAc = 3
+    MicrovoltsAc = 1,
+    KilovoltsAc = 2,
+    MegavoltsAc = 3
 }
 export declare class ElectricPotentialAc {
     private value;
     private voltsacLazy;
-    private microvoltacLazy;
-    private kilovoltacLazy;
-    private megavoltacLazy;
+    private microvoltsacLazy;
+    private kilovoltsacLazy;
+    private megavoltsacLazy;
     constructor(value: number, fromUnit: ElectricPotentialAcUnits);
     get VoltsAc(): number;
-    get MicrovoltAc(): number;
-    get KilovoltAc(): number;
-    get MegavoltAc(): number;
+    get MicrovoltsAc(): number;
+    get KilovoltsAc(): number;
+    get MegavoltsAc(): number;
     static FromVoltsAc(value: number): ElectricPotentialAc;
-    static FromMicrovoltAc(value: number): ElectricPotentialAc;
-    static FromKilovoltAc(value: number): ElectricPotentialAc;
-    static FromMegavoltAc(value: number): ElectricPotentialAc;
+    static FromMicrovoltsAc(value: number): ElectricPotentialAc;
+    static FromKilovoltsAc(value: number): ElectricPotentialAc;
+    static FromMegavoltsAc(value: number): ElectricPotentialAc;
     private convertFromBase;
     private convertToBase;
     toString(toUnit?: ElectricPotentialAcUnits): string;
