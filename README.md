@@ -167,7 +167,7 @@ Currently, the package supports the following units:
 - **MolarEntropy**
     -   *Molar entropy is amount of energy required to increase temperature of 1 mole substance by 1 Kelvin.*
 - **Molarity**
-    -   *Molar concentration, also called molarity, amount concentration or substance concentration, is a measure of the concentration of a solute in a solution, or of any chemical species, in terms of amount of substance in a given volume. *
+    -   *Molar concentration, also called molarity, amount concentration or substance concentration, is a measure of the concentration of a solute in a solution, or of any chemical species, in terms of amount of substance in a given volume.*
 - **MolarMass**
     -   *In chemistry, the molar mass M is a physical property defined as the mass of a given substance (chemical element or chemical compound) divided by the amount of substance.*
 - **Permeability**
