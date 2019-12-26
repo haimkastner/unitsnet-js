@@ -247,6 +247,31 @@ return this.value.toString();`,
 }
 
 /**
+ * Build the unit constractor
+ * @param enumName The unit types enum name.
+ * @returns The constractor structure
+ */
+function buildUnitCtor(enumName: string): ConstructorDeclarationStructure {
+    return {
+        kind: StructureKind.Constructor,
+        scope: Scope.Public,
+        parameters: [
+            {
+                name: 'value',
+                type: 'number'
+            },
+            {
+                name: 'fromUnit',
+                type: enumName
+            }
+        ],
+        statements: `
+if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+this.value = this.convertToBase(value, fromUnit);`
+    }
+}
+
+/**
  * Generate a TS class for the given unit (for example for Angle or Length etc).
  * @param project The generating project (of ts-morph lib) object.
  * @param unitsDestinationDirectory The generate file directory destination.
@@ -284,21 +309,7 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
     const unitGetters: GetAccessorDeclarationStructure[] = buildUnitGetters(enumName, unitProperties.units);
 
     // Build the constractor
-    const unitCtor: ConstructorDeclarationStructure = {
-        kind: StructureKind.Constructor,
-        scope: Scope.Public,
-        parameters: [
-            {
-                name: 'value',
-                type: 'number'
-            },
-            {
-                name: 'fromUnit',
-                type: enumName
-            }
-        ],
-        statements: 'this.value = this.convertToBase(value, fromUnit);'
-    };
+    const unitCtor: ConstructorDeclarationStructure = buildUnitCtor(enumName);
 
     // Build the static creator mathods  
     const unitCreators: MethodDeclarationStructure[] = buildUnitCreatorsMethods(unitProperties.unitName, enumName, unitProperties.units);
