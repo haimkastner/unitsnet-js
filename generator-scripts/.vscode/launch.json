@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\src\\index.ts",
-            "preLaunchTask": "npm: generate",
+            "preLaunchTask": "npm: build:generator",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
