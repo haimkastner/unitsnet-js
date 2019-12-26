@@ -271,6 +271,15 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
     // Build vars for loadzy load converted value 
     const lazyVars = buildLazyloadVars(unitProperties.units);
 
+    // Build base value accessor
+    const baseValueAccessor: GetAccessorDeclarationStructure = {
+        kind: StructureKind.GetAccessor,
+        name: 'BaseValue',
+        scope: Scope.Public,
+        returnType: 'number',
+        statements: `return this.value;`,
+    };
+
     // Build the units get-accessors
     const unitGetters: GetAccessorDeclarationStructure[] = buildUnitGetters(enumName, unitProperties.units);
 
@@ -309,7 +318,7 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
         kind: StructureKind.Class,
         name: unitProperties.unitName,
         properties: [valueMember, ...lazyVars],
-        getAccessors: [...unitGetters],
+        getAccessors: [baseValueAccessor, ...unitGetters],
         ctors: [unitCtor],
         methods: [...unitCreators, convertFromBaseMethod, convertToBaseMethod, toStringMethod],
         isExported: true,
