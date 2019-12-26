@@ -8,7 +8,8 @@ import {
     GetAccessorDeclarationStructure,
     ConstructorDeclarationStructure,
     MethodDeclarationStructure,
-    EnumMemberStructure
+    EnumMemberStructure,
+    JSDocStructure
 } from "ts-morph";
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
 
@@ -34,9 +35,11 @@ function buildEnum(enumName: string, units: UnitProperties[]): EnumDeclarationSt
         name: enumName,
         members: units.map((unit: UnitProperties): EnumMemberStructure => ({
             kind: StructureKind.EnumMember,
-            name: unit.pluralName
+            name: unit.pluralName,
+            docs: [unit.JSDoc ?? '']
         })),
         isExported: true,
+        docs: [`${enumName} enumeration`]
     }
 }
 
@@ -54,6 +57,7 @@ function buildUnitGetters(enumName: string, units: UnitProperties[]): GetAccesso
             name: unit.pluralName,
             scope: Scope.Public,
             returnType: 'number',
+            docs: [unit.JSDoc ?? ''],
             statements:
                 `if(this.${unitLazyVarName(unit.pluralName)} !== null){
     return this.${unitLazyVarName(unit.pluralName)};
@@ -73,6 +77,21 @@ return this.${unitLazyVarName(unit.pluralName)} = this.convertFromBase(${enumNam
  */
 function buildUnitCreatorsMethods(unitName: string, enumName: string, units: UnitProperties[]): MethodDeclarationStructure[] {
     return units.map((unit: UnitProperties): MethodDeclarationStructure => {
+
+        const docs: JSDocStructure = {
+            kind: StructureKind.JSDoc,
+            description: `Create a new ${unitName} instance from a ${unit.pluralName}\n${unit.JSDoc ?? ''}`,
+            tags: [{
+                kind: StructureKind.JSDocTag,
+                tagName: 'param',
+                text: `value The unit as ${unit.pluralName} to create a new ${unitName} from.`
+            },{
+                kind: StructureKind.JSDocTag,
+                tagName: 'returns',
+                text: `The new ${unitName} instance.`
+            }]
+        };
+
         return {
             kind: StructureKind.Method,
             name: `From${unit.pluralName}`,
@@ -84,6 +103,7 @@ function buildUnitCreatorsMethods(unitName: string, enumName: string, units: Uni
                     type: 'number'
                 }
             ],
+            docs: [docs],
             returnType: unitName,
             statements: `return new ${unitName}(value, ${enumName}.${unit.pluralName});`
         }
@@ -211,12 +231,27 @@ return NaN;`
 
 /**
  * Build 'toString' method for the unit class
+ * @param unitName The unit name
  * @param enumName The units types enum
  * @param units The units 
  * @param baseUnit The base unit for default unit toString
  * @returns A 'toString' method structure
  */
-function buildToStringMethod(enumName: string, units: UnitProperties[], baseUnit: UnitProperties): MethodDeclarationStructure {
+function buildToStringMethod(unitName: string, enumName: string, units: UnitProperties[], baseUnit: UnitProperties): MethodDeclarationStructure {
+
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: `Format the ${unitName} to string.\nNote! the default format for ${unitName} is ${baseUnit.pluralName}.\nTo specify the unit fromat set the 'toUnit' parameter.`,
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `toUnit The unit to format the ${unitName}.`
+        }, {
+            kind: StructureKind.JSDocTag,
+            tagName: 'returns',
+            text: `The string format of the ${unitName}.`
+        }]
+    };
 
     let toStringCasses = '';
     for (const unit of units) {
@@ -236,6 +271,7 @@ function buildToStringMethod(enumName: string, units: UnitProperties[], baseUnit
             initializer: `${enumName}.${baseUnit.pluralName}`
         }],
         returnType: 'string',
+        docs: [docs],
         statements: `
 switch (toUnit) {
     ${toStringCasses}
@@ -248,10 +284,24 @@ return this.value.toString();`,
 
 /**
  * Build the unit constractor
+ * @param unitName The unit name.
  * @param enumName The unit types enum name.
  * @returns The constractor structure
  */
-function buildUnitCtor(enumName: string): ConstructorDeclarationStructure {
+function buildUnitCtor(unitName: string, enumName: string): ConstructorDeclarationStructure {
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: `Create a new ${unitName}.`,
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: 'value The value.'
+        }, {
+            kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `fromUnit The ‘${unitName}’ unit to create from.`
+        }]
+    };
     return {
         kind: StructureKind.Constructor,
         scope: Scope.Public,
@@ -265,6 +315,7 @@ function buildUnitCtor(enumName: string): ConstructorDeclarationStructure {
                 type: enumName
             }
         ],
+        docs: [docs],
         statements: `
 if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
 this.value = this.convertToBase(value, fromUnit);`
@@ -303,13 +354,14 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
         scope: Scope.Public,
         returnType: 'number',
         statements: `return this.value;`,
+        docs: [`The base value of ${unitProperties.unitName} is ${unitProperties.baseUnitSingularName}.\nThis accessor used when need any value for calculations and it's better to use directly the base value`],
     };
 
     // Build the units get-accessors
     const unitGetters: GetAccessorDeclarationStructure[] = buildUnitGetters(enumName, unitProperties.units);
 
     // Build the constractor
-    const unitCtor: ConstructorDeclarationStructure = buildUnitCtor(enumName);
+    const unitCtor: ConstructorDeclarationStructure = buildUnitCtor(unitProperties.unitName, enumName);
 
     // Build the static creator mathods  
     const unitCreators: MethodDeclarationStructure[] = buildUnitCreatorsMethods(unitProperties.unitName, enumName, unitProperties.units);
@@ -321,7 +373,7 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
     const convertToBaseMethod: MethodDeclarationStructure = buildConvertToBaseMethod(enumName, unitProperties.units);
 
     // Build the class 'toString' method
-    const toStringMethod = buildToStringMethod(enumName, unitProperties.units, unitProperties.units.find((unit) =>
+    const toStringMethod = buildToStringMethod(unitProperties.unitName, enumName, unitProperties.units, unitProperties.units.find((unit) =>
         (unit.singularName === unitProperties.baseUnitSingularName)) as UnitProperties);
 
     // Build the unit class 
@@ -333,6 +385,7 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
         ctors: [unitCtor],
         methods: [...unitCreators, convertFromBaseMethod, convertToBaseMethod, toStringMethod],
         isExported: true,
+        docs: [unitProperties.JSDoc],
     }
 
     // Build the unit file with the unit enum and class

@@ -95,11 +95,13 @@ export function generateUnitsFromUnitsDefinitions(project: Project, unitsDestina
         generateUnitClass(project, unitsDestinationDirectory, {
             unitName: unitDefinitiion.Name,
             baseUnitSingularName: unitDefinitiion.BaseUnit,
+            JSDoc : unitDefinitiion.XmlDoc,
             units: unitDefinitiion.Units.map((unit: UnitDefinition): UnitProperties => ({
                 pluralName: unit.PluralName,
                 singularName: unit.SingularName,
                 unitToBaseFormula: unit.FromBaseToUnitFunc,
                 baseToUnitFormula: unit.FromUnitToBaseFunc,
+                JSDoc : unit.XmlDocSummary,
                 Abbreviation: unit.Localization.find(Abbre => Abbre.Culture === 'en-US')?.Abbreviations[0] as string,
             }))
         });
