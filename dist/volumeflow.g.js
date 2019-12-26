@@ -37,18 +37,18 @@ var VolumeFlowUnits;
     VolumeFlowUnits[VolumeFlowUnits["AcreFeetPerMinute"] = 32] = "AcreFeetPerMinute";
     VolumeFlowUnits[VolumeFlowUnits["AcreFeetPerHour"] = 33] = "AcreFeetPerHour";
     VolumeFlowUnits[VolumeFlowUnits["AcreFeetPerDay"] = 34] = "AcreFeetPerDay";
-    VolumeFlowUnits[VolumeFlowUnits["Nanolitersperminute"] = 35] = "Nanolitersperminute";
-    VolumeFlowUnits[VolumeFlowUnits["Microlitersperminute"] = 36] = "Microlitersperminute";
-    VolumeFlowUnits[VolumeFlowUnits["Centilitersperminute"] = 37] = "Centilitersperminute";
-    VolumeFlowUnits[VolumeFlowUnits["Decilitersperminute"] = 38] = "Decilitersperminute";
-    VolumeFlowUnits[VolumeFlowUnits["Kilolitersperminute"] = 39] = "Kilolitersperminute";
-    VolumeFlowUnits[VolumeFlowUnits["Nanolitersperday"] = 40] = "Nanolitersperday";
-    VolumeFlowUnits[VolumeFlowUnits["Microlitersperday"] = 41] = "Microlitersperday";
-    VolumeFlowUnits[VolumeFlowUnits["Centilitersperday"] = 42] = "Centilitersperday";
-    VolumeFlowUnits[VolumeFlowUnits["Decilitersperday"] = 43] = "Decilitersperday";
-    VolumeFlowUnits[VolumeFlowUnits["Kilolitersperday"] = 44] = "Kilolitersperday";
-    VolumeFlowUnits[VolumeFlowUnits["Megalitersperday"] = 45] = "Megalitersperday";
-    VolumeFlowUnits[VolumeFlowUnits["Megaukgallonspersecond"] = 46] = "Megaukgallonspersecond";
+    VolumeFlowUnits[VolumeFlowUnits["NanoliterPerMinute"] = 35] = "NanoliterPerMinute";
+    VolumeFlowUnits[VolumeFlowUnits["MicroliterPerMinute"] = 36] = "MicroliterPerMinute";
+    VolumeFlowUnits[VolumeFlowUnits["CentiliterPerMinute"] = 37] = "CentiliterPerMinute";
+    VolumeFlowUnits[VolumeFlowUnits["DeciliterPerMinute"] = 38] = "DeciliterPerMinute";
+    VolumeFlowUnits[VolumeFlowUnits["KiloliterPerMinute"] = 39] = "KiloliterPerMinute";
+    VolumeFlowUnits[VolumeFlowUnits["NanoliterPerDay"] = 40] = "NanoliterPerDay";
+    VolumeFlowUnits[VolumeFlowUnits["MicroliterPerDay"] = 41] = "MicroliterPerDay";
+    VolumeFlowUnits[VolumeFlowUnits["CentiliterPerDay"] = 42] = "CentiliterPerDay";
+    VolumeFlowUnits[VolumeFlowUnits["DeciliterPerDay"] = 43] = "DeciliterPerDay";
+    VolumeFlowUnits[VolumeFlowUnits["KiloliterPerDay"] = 44] = "KiloliterPerDay";
+    VolumeFlowUnits[VolumeFlowUnits["MegaliterPerDay"] = 45] = "MegaliterPerDay";
+    VolumeFlowUnits[VolumeFlowUnits["MegaukGallonPerSecond"] = 46] = "MegaukGallonPerSecond";
 })(VolumeFlowUnits = exports.VolumeFlowUnits || (exports.VolumeFlowUnits = {}));
 class VolumeFlow {
     constructor(value, fromUnit) {
@@ -87,18 +87,18 @@ class VolumeFlow {
         this.acrefeetperminuteLazy = null;
         this.acrefeetperhourLazy = null;
         this.acrefeetperdayLazy = null;
-        this.nanolitersperminuteLazy = null;
-        this.microlitersperminuteLazy = null;
-        this.centilitersperminuteLazy = null;
-        this.decilitersperminuteLazy = null;
-        this.kilolitersperminuteLazy = null;
-        this.nanolitersperdayLazy = null;
-        this.microlitersperdayLazy = null;
-        this.centilitersperdayLazy = null;
-        this.decilitersperdayLazy = null;
-        this.kilolitersperdayLazy = null;
-        this.megalitersperdayLazy = null;
-        this.megaukgallonspersecondLazy = null;
+        this.nanoliterperminuteLazy = null;
+        this.microliterperminuteLazy = null;
+        this.centiliterperminuteLazy = null;
+        this.deciliterperminuteLazy = null;
+        this.kiloliterperminuteLazy = null;
+        this.nanoliterperdayLazy = null;
+        this.microliterperdayLazy = null;
+        this.centiliterperdayLazy = null;
+        this.deciliterperdayLazy = null;
+        this.kiloliterperdayLazy = null;
+        this.megaliterperdayLazy = null;
+        this.megaukgallonpersecondLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get CubicMetersPerSecond() {
@@ -311,77 +311,77 @@ class VolumeFlow {
         }
         return this.acrefeetperdayLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerDay);
     }
-    get Nanolitersperminute() {
-        if (this.nanolitersperminuteLazy !== null) {
-            return this.nanolitersperminuteLazy;
+    get NanoliterPerMinute() {
+        if (this.nanoliterperminuteLazy !== null) {
+            return this.nanoliterperminuteLazy;
         }
-        return this.nanolitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Nanolitersperminute);
+        return this.nanoliterperminuteLazy = this.convertFromBase(VolumeFlowUnits.NanoliterPerMinute);
     }
-    get Microlitersperminute() {
-        if (this.microlitersperminuteLazy !== null) {
-            return this.microlitersperminuteLazy;
+    get MicroliterPerMinute() {
+        if (this.microliterperminuteLazy !== null) {
+            return this.microliterperminuteLazy;
         }
-        return this.microlitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Microlitersperminute);
+        return this.microliterperminuteLazy = this.convertFromBase(VolumeFlowUnits.MicroliterPerMinute);
     }
-    get Centilitersperminute() {
-        if (this.centilitersperminuteLazy !== null) {
-            return this.centilitersperminuteLazy;
+    get CentiliterPerMinute() {
+        if (this.centiliterperminuteLazy !== null) {
+            return this.centiliterperminuteLazy;
         }
-        return this.centilitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Centilitersperminute);
+        return this.centiliterperminuteLazy = this.convertFromBase(VolumeFlowUnits.CentiliterPerMinute);
     }
-    get Decilitersperminute() {
-        if (this.decilitersperminuteLazy !== null) {
-            return this.decilitersperminuteLazy;
+    get DeciliterPerMinute() {
+        if (this.deciliterperminuteLazy !== null) {
+            return this.deciliterperminuteLazy;
         }
-        return this.decilitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Decilitersperminute);
+        return this.deciliterperminuteLazy = this.convertFromBase(VolumeFlowUnits.DeciliterPerMinute);
     }
-    get Kilolitersperminute() {
-        if (this.kilolitersperminuteLazy !== null) {
-            return this.kilolitersperminuteLazy;
+    get KiloliterPerMinute() {
+        if (this.kiloliterperminuteLazy !== null) {
+            return this.kiloliterperminuteLazy;
         }
-        return this.kilolitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.Kilolitersperminute);
+        return this.kiloliterperminuteLazy = this.convertFromBase(VolumeFlowUnits.KiloliterPerMinute);
     }
-    get Nanolitersperday() {
-        if (this.nanolitersperdayLazy !== null) {
-            return this.nanolitersperdayLazy;
+    get NanoliterPerDay() {
+        if (this.nanoliterperdayLazy !== null) {
+            return this.nanoliterperdayLazy;
         }
-        return this.nanolitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Nanolitersperday);
+        return this.nanoliterperdayLazy = this.convertFromBase(VolumeFlowUnits.NanoliterPerDay);
     }
-    get Microlitersperday() {
-        if (this.microlitersperdayLazy !== null) {
-            return this.microlitersperdayLazy;
+    get MicroliterPerDay() {
+        if (this.microliterperdayLazy !== null) {
+            return this.microliterperdayLazy;
         }
-        return this.microlitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Microlitersperday);
+        return this.microliterperdayLazy = this.convertFromBase(VolumeFlowUnits.MicroliterPerDay);
     }
-    get Centilitersperday() {
-        if (this.centilitersperdayLazy !== null) {
-            return this.centilitersperdayLazy;
+    get CentiliterPerDay() {
+        if (this.centiliterperdayLazy !== null) {
+            return this.centiliterperdayLazy;
         }
-        return this.centilitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Centilitersperday);
+        return this.centiliterperdayLazy = this.convertFromBase(VolumeFlowUnits.CentiliterPerDay);
     }
-    get Decilitersperday() {
-        if (this.decilitersperdayLazy !== null) {
-            return this.decilitersperdayLazy;
+    get DeciliterPerDay() {
+        if (this.deciliterperdayLazy !== null) {
+            return this.deciliterperdayLazy;
         }
-        return this.decilitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Decilitersperday);
+        return this.deciliterperdayLazy = this.convertFromBase(VolumeFlowUnits.DeciliterPerDay);
     }
-    get Kilolitersperday() {
-        if (this.kilolitersperdayLazy !== null) {
-            return this.kilolitersperdayLazy;
+    get KiloliterPerDay() {
+        if (this.kiloliterperdayLazy !== null) {
+            return this.kiloliterperdayLazy;
         }
-        return this.kilolitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Kilolitersperday);
+        return this.kiloliterperdayLazy = this.convertFromBase(VolumeFlowUnits.KiloliterPerDay);
     }
-    get Megalitersperday() {
-        if (this.megalitersperdayLazy !== null) {
-            return this.megalitersperdayLazy;
+    get MegaliterPerDay() {
+        if (this.megaliterperdayLazy !== null) {
+            return this.megaliterperdayLazy;
         }
-        return this.megalitersperdayLazy = this.convertFromBase(VolumeFlowUnits.Megalitersperday);
+        return this.megaliterperdayLazy = this.convertFromBase(VolumeFlowUnits.MegaliterPerDay);
     }
-    get Megaukgallonspersecond() {
-        if (this.megaukgallonspersecondLazy !== null) {
-            return this.megaukgallonspersecondLazy;
+    get MegaukGallonPerSecond() {
+        if (this.megaukgallonpersecondLazy !== null) {
+            return this.megaukgallonpersecondLazy;
         }
-        return this.megaukgallonspersecondLazy = this.convertFromBase(VolumeFlowUnits.Megaukgallonspersecond);
+        return this.megaukgallonpersecondLazy = this.convertFromBase(VolumeFlowUnits.MegaukGallonPerSecond);
     }
     static FromCubicMetersPerSecond(value) {
         return new VolumeFlow(value, VolumeFlowUnits.CubicMetersPerSecond);
@@ -488,41 +488,41 @@ class VolumeFlow {
     static FromAcreFeetPerDay(value) {
         return new VolumeFlow(value, VolumeFlowUnits.AcreFeetPerDay);
     }
-    static FromNanolitersperminute(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Nanolitersperminute);
+    static FromNanoliterPerMinute(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.NanoliterPerMinute);
     }
-    static FromMicrolitersperminute(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Microlitersperminute);
+    static FromMicroliterPerMinute(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.MicroliterPerMinute);
     }
-    static FromCentilitersperminute(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Centilitersperminute);
+    static FromCentiliterPerMinute(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.CentiliterPerMinute);
     }
-    static FromDecilitersperminute(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Decilitersperminute);
+    static FromDeciliterPerMinute(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.DeciliterPerMinute);
     }
-    static FromKilolitersperminute(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Kilolitersperminute);
+    static FromKiloliterPerMinute(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.KiloliterPerMinute);
     }
-    static FromNanolitersperday(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Nanolitersperday);
+    static FromNanoliterPerDay(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.NanoliterPerDay);
     }
-    static FromMicrolitersperday(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Microlitersperday);
+    static FromMicroliterPerDay(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.MicroliterPerDay);
     }
-    static FromCentilitersperday(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Centilitersperday);
+    static FromCentiliterPerDay(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.CentiliterPerDay);
     }
-    static FromDecilitersperday(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Decilitersperday);
+    static FromDeciliterPerDay(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.DeciliterPerDay);
     }
-    static FromKilolitersperday(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Kilolitersperday);
+    static FromKiloliterPerDay(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.KiloliterPerDay);
     }
-    static FromMegalitersperday(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Megalitersperday);
+    static FromMegaliterPerDay(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.MegaliterPerDay);
     }
-    static FromMegaukgallonspersecond(value) {
-        return new VolumeFlow(value, VolumeFlowUnits.Megaukgallonspersecond);
+    static FromMegaukGallonPerSecond(value) {
+        return new VolumeFlow(value, VolumeFlowUnits.MegaukGallonPerSecond);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -596,29 +596,29 @@ class VolumeFlow {
                 return this.value * 2.91857;
             case VolumeFlowUnits.AcreFeetPerDay:
                 return this.value * 70.0457;
-            case VolumeFlowUnits.Nanolitersperminute:
+            case VolumeFlowUnits.NanoliterPerMinute:
                 return (this.value * 60000.00000) / 1e-9;
-            case VolumeFlowUnits.Microlitersperminute:
+            case VolumeFlowUnits.MicroliterPerMinute:
                 return (this.value * 60000.00000) / 0.000001;
-            case VolumeFlowUnits.Centilitersperminute:
+            case VolumeFlowUnits.CentiliterPerMinute:
                 return (this.value * 60000.00000) / 0.01;
-            case VolumeFlowUnits.Decilitersperminute:
+            case VolumeFlowUnits.DeciliterPerMinute:
                 return (this.value * 60000.00000) / 0.1;
-            case VolumeFlowUnits.Kilolitersperminute:
+            case VolumeFlowUnits.KiloliterPerMinute:
                 return (this.value * 60000.00000) / 1000;
-            case VolumeFlowUnits.Nanolitersperday:
+            case VolumeFlowUnits.NanoliterPerDay:
                 return (this.value * 86400000) / 1e-9;
-            case VolumeFlowUnits.Microlitersperday:
+            case VolumeFlowUnits.MicroliterPerDay:
                 return (this.value * 86400000) / 0.000001;
-            case VolumeFlowUnits.Centilitersperday:
+            case VolumeFlowUnits.CentiliterPerDay:
                 return (this.value * 86400000) / 0.01;
-            case VolumeFlowUnits.Decilitersperday:
+            case VolumeFlowUnits.DeciliterPerDay:
                 return (this.value * 86400000) / 0.1;
-            case VolumeFlowUnits.Kilolitersperday:
+            case VolumeFlowUnits.KiloliterPerDay:
                 return (this.value * 86400000) / 1000;
-            case VolumeFlowUnits.Megalitersperday:
+            case VolumeFlowUnits.MegaliterPerDay:
                 return (this.value * 86400000) / 1000000;
-            case VolumeFlowUnits.Megaukgallonspersecond:
+            case VolumeFlowUnits.MegaukGallonPerSecond:
                 return (this.value * 219.969) / 1000000;
             default:
                 break;
@@ -697,34 +697,135 @@ class VolumeFlow {
                 return value / 2.91857;
             case VolumeFlowUnits.AcreFeetPerDay:
                 return value / 70.0457;
-            case VolumeFlowUnits.Nanolitersperminute:
+            case VolumeFlowUnits.NanoliterPerMinute:
                 return (value / 60000.00000) * 1e-9;
-            case VolumeFlowUnits.Microlitersperminute:
+            case VolumeFlowUnits.MicroliterPerMinute:
                 return (value / 60000.00000) * 0.000001;
-            case VolumeFlowUnits.Centilitersperminute:
+            case VolumeFlowUnits.CentiliterPerMinute:
                 return (value / 60000.00000) * 0.01;
-            case VolumeFlowUnits.Decilitersperminute:
+            case VolumeFlowUnits.DeciliterPerMinute:
                 return (value / 60000.00000) * 0.1;
-            case VolumeFlowUnits.Kilolitersperminute:
+            case VolumeFlowUnits.KiloliterPerMinute:
                 return (value / 60000.00000) * 1000;
-            case VolumeFlowUnits.Nanolitersperday:
+            case VolumeFlowUnits.NanoliterPerDay:
                 return (value / 86400000) * 1e-9;
-            case VolumeFlowUnits.Microlitersperday:
+            case VolumeFlowUnits.MicroliterPerDay:
                 return (value / 86400000) * 0.000001;
-            case VolumeFlowUnits.Centilitersperday:
+            case VolumeFlowUnits.CentiliterPerDay:
                 return (value / 86400000) * 0.01;
-            case VolumeFlowUnits.Decilitersperday:
+            case VolumeFlowUnits.DeciliterPerDay:
                 return (value / 86400000) * 0.1;
-            case VolumeFlowUnits.Kilolitersperday:
+            case VolumeFlowUnits.KiloliterPerDay:
                 return (value / 86400000) * 1000;
-            case VolumeFlowUnits.Megalitersperday:
+            case VolumeFlowUnits.MegaliterPerDay:
                 return (value / 86400000) * 1000000;
-            case VolumeFlowUnits.Megaukgallonspersecond:
+            case VolumeFlowUnits.MegaukGallonPerSecond:
                 return (value / 219.969) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = VolumeFlowUnits.CubicMetersPerSecond) {
+        switch (toUnit) {
+            case VolumeFlowUnits.CubicMetersPerSecond:
+                return this.CubicMetersPerSecond + ` m³/s`;
+            case VolumeFlowUnits.CubicMetersPerMinute:
+                return this.CubicMetersPerMinute + ` m³/min`;
+            case VolumeFlowUnits.CubicMetersPerHour:
+                return this.CubicMetersPerHour + ` m³/h`;
+            case VolumeFlowUnits.CubicMetersPerDay:
+                return this.CubicMetersPerDay + ` m³/d`;
+            case VolumeFlowUnits.CubicFeetPerSecond:
+                return this.CubicFeetPerSecond + ` ft³/s`;
+            case VolumeFlowUnits.CubicFeetPerMinute:
+                return this.CubicFeetPerMinute + ` ft³/min`;
+            case VolumeFlowUnits.CubicFeetPerHour:
+                return this.CubicFeetPerHour + ` ft³/h`;
+            case VolumeFlowUnits.CubicYardsPerSecond:
+                return this.CubicYardsPerSecond + ` yd³/s`;
+            case VolumeFlowUnits.CubicYardsPerMinute:
+                return this.CubicYardsPerMinute + ` yd³/min`;
+            case VolumeFlowUnits.CubicYardsPerHour:
+                return this.CubicYardsPerHour + ` yd³/h`;
+            case VolumeFlowUnits.CubicYardsPerDay:
+                return this.CubicYardsPerDay + ` cy/day`;
+            case VolumeFlowUnits.MillionUsGallonsPerDay:
+                return this.MillionUsGallonsPerDay + ` MGD`;
+            case VolumeFlowUnits.UsGallonsPerDay:
+                return this.UsGallonsPerDay + ` gpd`;
+            case VolumeFlowUnits.LitersPerSecond:
+                return this.LitersPerSecond + ` L/s`;
+            case VolumeFlowUnits.LitersPerMinute:
+                return this.LitersPerMinute + ` L/min`;
+            case VolumeFlowUnits.LitersPerHour:
+                return this.LitersPerHour + ` L/h`;
+            case VolumeFlowUnits.LitersPerDay:
+                return this.LitersPerDay + ` l/day`;
+            case VolumeFlowUnits.UsGallonsPerSecond:
+                return this.UsGallonsPerSecond + ` gal (U.S.)/s`;
+            case VolumeFlowUnits.UsGallonsPerMinute:
+                return this.UsGallonsPerMinute + ` gal (U.S.)/min`;
+            case VolumeFlowUnits.UkGallonsPerDay:
+                return this.UkGallonsPerDay + ` gal (U. K.)/d`;
+            case VolumeFlowUnits.UkGallonsPerHour:
+                return this.UkGallonsPerHour + ` gal (imp.)/h`;
+            case VolumeFlowUnits.UkGallonsPerMinute:
+                return this.UkGallonsPerMinute + ` gal (imp.)/min`;
+            case VolumeFlowUnits.UkGallonsPerSecond:
+                return this.UkGallonsPerSecond + ` gal (imp.)/s`;
+            case VolumeFlowUnits.KilousGallonsPerMinute:
+                return this.KilousGallonsPerMinute + ` kgal (U.S.)/min`;
+            case VolumeFlowUnits.UsGallonsPerHour:
+                return this.UsGallonsPerHour + ` gal (U.S.)/h`;
+            case VolumeFlowUnits.CubicDecimetersPerMinute:
+                return this.CubicDecimetersPerMinute + ` dm³/min`;
+            case VolumeFlowUnits.OilBarrelsPerDay:
+                return this.OilBarrelsPerDay + ` bbl/d`;
+            case VolumeFlowUnits.OilBarrelsPerMinute:
+                return this.OilBarrelsPerMinute + ` bbl/min`;
+            case VolumeFlowUnits.OilBarrelsPerHour:
+                return this.OilBarrelsPerHour + ` bbl/hr`;
+            case VolumeFlowUnits.OilBarrelsPerSecond:
+                return this.OilBarrelsPerSecond + ` bbl/s`;
+            case VolumeFlowUnits.CubicMillimetersPerSecond:
+                return this.CubicMillimetersPerSecond + ` mm³/s`;
+            case VolumeFlowUnits.AcreFeetPerSecond:
+                return this.AcreFeetPerSecond + ` af/s`;
+            case VolumeFlowUnits.AcreFeetPerMinute:
+                return this.AcreFeetPerMinute + ` af/m`;
+            case VolumeFlowUnits.AcreFeetPerHour:
+                return this.AcreFeetPerHour + ` af/h`;
+            case VolumeFlowUnits.AcreFeetPerDay:
+                return this.AcreFeetPerDay + ` af/d`;
+            case VolumeFlowUnits.NanoliterPerMinute:
+                return this.NanoliterPerMinute + ` L/min`;
+            case VolumeFlowUnits.MicroliterPerMinute:
+                return this.MicroliterPerMinute + ` L/min`;
+            case VolumeFlowUnits.CentiliterPerMinute:
+                return this.CentiliterPerMinute + ` L/min`;
+            case VolumeFlowUnits.DeciliterPerMinute:
+                return this.DeciliterPerMinute + ` L/min`;
+            case VolumeFlowUnits.KiloliterPerMinute:
+                return this.KiloliterPerMinute + ` L/min`;
+            case VolumeFlowUnits.NanoliterPerDay:
+                return this.NanoliterPerDay + ` l/day`;
+            case VolumeFlowUnits.MicroliterPerDay:
+                return this.MicroliterPerDay + ` l/day`;
+            case VolumeFlowUnits.CentiliterPerDay:
+                return this.CentiliterPerDay + ` l/day`;
+            case VolumeFlowUnits.DeciliterPerDay:
+                return this.DeciliterPerDay + ` l/day`;
+            case VolumeFlowUnits.KiloliterPerDay:
+                return this.KiloliterPerDay + ` l/day`;
+            case VolumeFlowUnits.MegaliterPerDay:
+                return this.MegaliterPerDay + ` l/day`;
+            case VolumeFlowUnits.MegaukGallonPerSecond:
+                return this.MegaukGallonPerSecond + ` gal (imp.)/s`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.VolumeFlow = VolumeFlow;

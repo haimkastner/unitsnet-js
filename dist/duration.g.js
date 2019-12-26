@@ -9,8 +9,8 @@ var DurationUnits;
     DurationUnits[DurationUnits["Hours"] = 4] = "Hours";
     DurationUnits[DurationUnits["Minutes"] = 5] = "Minutes";
     DurationUnits[DurationUnits["Seconds"] = 6] = "Seconds";
-    DurationUnits[DurationUnits["Nanoseconds"] = 7] = "Nanoseconds";
-    DurationUnits[DurationUnits["Microseconds"] = 8] = "Microseconds";
+    DurationUnits[DurationUnits["Nanosecond"] = 7] = "Nanosecond";
+    DurationUnits[DurationUnits["Microsecond"] = 8] = "Microsecond";
 })(DurationUnits = exports.DurationUnits || (exports.DurationUnits = {}));
 class Duration {
     constructor(value, fromUnit) {
@@ -21,8 +21,8 @@ class Duration {
         this.hoursLazy = null;
         this.minutesLazy = null;
         this.secondsLazy = null;
-        this.nanosecondsLazy = null;
-        this.microsecondsLazy = null;
+        this.nanosecondLazy = null;
+        this.microsecondLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Years365() {
@@ -67,17 +67,17 @@ class Duration {
         }
         return this.secondsLazy = this.convertFromBase(DurationUnits.Seconds);
     }
-    get Nanoseconds() {
-        if (this.nanosecondsLazy !== null) {
-            return this.nanosecondsLazy;
+    get Nanosecond() {
+        if (this.nanosecondLazy !== null) {
+            return this.nanosecondLazy;
         }
-        return this.nanosecondsLazy = this.convertFromBase(DurationUnits.Nanoseconds);
+        return this.nanosecondLazy = this.convertFromBase(DurationUnits.Nanosecond);
     }
-    get Microseconds() {
-        if (this.microsecondsLazy !== null) {
-            return this.microsecondsLazy;
+    get Microsecond() {
+        if (this.microsecondLazy !== null) {
+            return this.microsecondLazy;
         }
-        return this.microsecondsLazy = this.convertFromBase(DurationUnits.Microseconds);
+        return this.microsecondLazy = this.convertFromBase(DurationUnits.Microsecond);
     }
     static FromYears365(value) {
         return new Duration(value, DurationUnits.Years365);
@@ -100,11 +100,11 @@ class Duration {
     static FromSeconds(value) {
         return new Duration(value, DurationUnits.Seconds);
     }
-    static FromNanoseconds(value) {
-        return new Duration(value, DurationUnits.Nanoseconds);
+    static FromNanosecond(value) {
+        return new Duration(value, DurationUnits.Nanosecond);
     }
-    static FromMicroseconds(value) {
-        return new Duration(value, DurationUnits.Microseconds);
+    static FromMicrosecond(value) {
+        return new Duration(value, DurationUnits.Microsecond);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -122,9 +122,9 @@ class Duration {
                 return this.value / 60;
             case DurationUnits.Seconds:
                 return this.value;
-            case DurationUnits.Nanoseconds:
+            case DurationUnits.Nanosecond:
                 return (this.value) / 1e-9;
-            case DurationUnits.Microseconds:
+            case DurationUnits.Microsecond:
                 return (this.value) / 0.000001;
             default:
                 break;
@@ -147,14 +147,39 @@ class Duration {
                 return value * 60;
             case DurationUnits.Seconds:
                 return value;
-            case DurationUnits.Nanoseconds:
+            case DurationUnits.Nanosecond:
                 return (value) * 1e-9;
-            case DurationUnits.Microseconds:
+            case DurationUnits.Microsecond:
                 return (value) * 0.000001;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = DurationUnits.Seconds) {
+        switch (toUnit) {
+            case DurationUnits.Years365:
+                return this.Years365 + ` yr`;
+            case DurationUnits.Months30:
+                return this.Months30 + ` mo`;
+            case DurationUnits.Weeks:
+                return this.Weeks + ` wk`;
+            case DurationUnits.Days:
+                return this.Days + ` d`;
+            case DurationUnits.Hours:
+                return this.Hours + ` h`;
+            case DurationUnits.Minutes:
+                return this.Minutes + ` m`;
+            case DurationUnits.Seconds:
+                return this.Seconds + ` s`;
+            case DurationUnits.Nanosecond:
+                return this.Nanosecond + ` s`;
+            case DurationUnits.Microsecond:
+                return this.Microsecond + ` s`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.Duration = Duration;

@@ -9,5 +9,6 @@ export declare class LapseRate {
     static FromDegreesCelciusPerKilometer(value: number): LapseRate;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: LapseRateUnits): string;
 }
 //# sourceMappingURL=lapserate.g.d.ts.map

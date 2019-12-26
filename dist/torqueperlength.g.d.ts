@@ -10,16 +10,16 @@ export declare enum TorquePerLengthUnits {
     TonneForceMillimetersPerMeter = 8,
     TonneForceCentimetersPerMeter = 9,
     TonneForceMetersPerMeter = 10,
-    Kilonewtonmillimeterspermeter = 11,
-    Meganewtonmillimeterspermeter = 12,
-    Kilonewtoncentimeterspermeter = 13,
-    Meganewtoncentimeterspermeter = 14,
-    Kilonewtonmeterspermeter = 15,
-    Meganewtonmeterspermeter = 16,
-    Kilopoundforceinchesperfoot = 17,
-    Megapoundforceinchesperfoot = 18,
-    Kilopoundforcefeetperfoot = 19,
-    Megapoundforcefeetperfoot = 20
+    KilonewtonMillimeterPerMeter = 11,
+    MeganewtonMillimeterPerMeter = 12,
+    KilonewtonCentimeterPerMeter = 13,
+    MeganewtonCentimeterPerMeter = 14,
+    KilonewtonMeterPerMeter = 15,
+    MeganewtonMeterPerMeter = 16,
+    KilopoundForceInchPerFoot = 17,
+    MegapoundForceInchPerFoot = 18,
+    KilopoundForceFootPerFoot = 19,
+    MegapoundForceFootPerFoot = 20
 }
 export declare class TorquePerLength {
     private value;
@@ -34,16 +34,16 @@ export declare class TorquePerLength {
     private tonneforcemillimeterspermeterLazy;
     private tonneforcecentimeterspermeterLazy;
     private tonneforcemeterspermeterLazy;
-    private kilonewtonmillimeterspermeterLazy;
-    private meganewtonmillimeterspermeterLazy;
-    private kilonewtoncentimeterspermeterLazy;
-    private meganewtoncentimeterspermeterLazy;
-    private kilonewtonmeterspermeterLazy;
-    private meganewtonmeterspermeterLazy;
-    private kilopoundforceinchesperfootLazy;
-    private megapoundforceinchesperfootLazy;
-    private kilopoundforcefeetperfootLazy;
-    private megapoundforcefeetperfootLazy;
+    private kilonewtonmillimeterpermeterLazy;
+    private meganewtonmillimeterpermeterLazy;
+    private kilonewtoncentimeterpermeterLazy;
+    private meganewtoncentimeterpermeterLazy;
+    private kilonewtonmeterpermeterLazy;
+    private meganewtonmeterpermeterLazy;
+    private kilopoundforceinchperfootLazy;
+    private megapoundforceinchperfootLazy;
+    private kilopoundforcefootperfootLazy;
+    private megapoundforcefootperfootLazy;
     constructor(value: number, fromUnit: TorquePerLengthUnits);
     get NewtonMillimetersPerMeter(): number;
     get NewtonCentimetersPerMeter(): number;
@@ -56,16 +56,16 @@ export declare class TorquePerLength {
     get TonneForceMillimetersPerMeter(): number;
     get TonneForceCentimetersPerMeter(): number;
     get TonneForceMetersPerMeter(): number;
-    get Kilonewtonmillimeterspermeter(): number;
-    get Meganewtonmillimeterspermeter(): number;
-    get Kilonewtoncentimeterspermeter(): number;
-    get Meganewtoncentimeterspermeter(): number;
-    get Kilonewtonmeterspermeter(): number;
-    get Meganewtonmeterspermeter(): number;
-    get Kilopoundforceinchesperfoot(): number;
-    get Megapoundforceinchesperfoot(): number;
-    get Kilopoundforcefeetperfoot(): number;
-    get Megapoundforcefeetperfoot(): number;
+    get KilonewtonMillimeterPerMeter(): number;
+    get MeganewtonMillimeterPerMeter(): number;
+    get KilonewtonCentimeterPerMeter(): number;
+    get MeganewtonCentimeterPerMeter(): number;
+    get KilonewtonMeterPerMeter(): number;
+    get MeganewtonMeterPerMeter(): number;
+    get KilopoundForceInchPerFoot(): number;
+    get MegapoundForceInchPerFoot(): number;
+    get KilopoundForceFootPerFoot(): number;
+    get MegapoundForceFootPerFoot(): number;
     static FromNewtonMillimetersPerMeter(value: number): TorquePerLength;
     static FromNewtonCentimetersPerMeter(value: number): TorquePerLength;
     static FromNewtonMetersPerMeter(value: number): TorquePerLength;
@@ -77,17 +77,18 @@ export declare class TorquePerLength {
     static FromTonneForceMillimetersPerMeter(value: number): TorquePerLength;
     static FromTonneForceCentimetersPerMeter(value: number): TorquePerLength;
     static FromTonneForceMetersPerMeter(value: number): TorquePerLength;
-    static FromKilonewtonmillimeterspermeter(value: number): TorquePerLength;
-    static FromMeganewtonmillimeterspermeter(value: number): TorquePerLength;
-    static FromKilonewtoncentimeterspermeter(value: number): TorquePerLength;
-    static FromMeganewtoncentimeterspermeter(value: number): TorquePerLength;
-    static FromKilonewtonmeterspermeter(value: number): TorquePerLength;
-    static FromMeganewtonmeterspermeter(value: number): TorquePerLength;
-    static FromKilopoundforceinchesperfoot(value: number): TorquePerLength;
-    static FromMegapoundforceinchesperfoot(value: number): TorquePerLength;
-    static FromKilopoundforcefeetperfoot(value: number): TorquePerLength;
-    static FromMegapoundforcefeetperfoot(value: number): TorquePerLength;
+    static FromKilonewtonMillimeterPerMeter(value: number): TorquePerLength;
+    static FromMeganewtonMillimeterPerMeter(value: number): TorquePerLength;
+    static FromKilonewtonCentimeterPerMeter(value: number): TorquePerLength;
+    static FromMeganewtonCentimeterPerMeter(value: number): TorquePerLength;
+    static FromKilonewtonMeterPerMeter(value: number): TorquePerLength;
+    static FromMeganewtonMeterPerMeter(value: number): TorquePerLength;
+    static FromKilopoundForceInchPerFoot(value: number): TorquePerLength;
+    static FromMegapoundForceInchPerFoot(value: number): TorquePerLength;
+    static FromKilopoundForceFootPerFoot(value: number): TorquePerLength;
+    static FromMegapoundForceFootPerFoot(value: number): TorquePerLength;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: TorquePerLengthUnits): string;
 }
 //# sourceMappingURL=torqueperlength.g.d.ts.map

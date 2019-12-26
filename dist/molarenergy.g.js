@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var MolarEnergyUnits;
 (function (MolarEnergyUnits) {
     MolarEnergyUnits[MolarEnergyUnits["JoulesPerMole"] = 0] = "JoulesPerMole";
-    MolarEnergyUnits[MolarEnergyUnits["Kilojoulespermole"] = 1] = "Kilojoulespermole";
-    MolarEnergyUnits[MolarEnergyUnits["Megajoulespermole"] = 2] = "Megajoulespermole";
+    MolarEnergyUnits[MolarEnergyUnits["KilojoulePerMole"] = 1] = "KilojoulePerMole";
+    MolarEnergyUnits[MolarEnergyUnits["MegajoulePerMole"] = 2] = "MegajoulePerMole";
 })(MolarEnergyUnits = exports.MolarEnergyUnits || (exports.MolarEnergyUnits = {}));
 class MolarEnergy {
     constructor(value, fromUnit) {
         this.joulespermoleLazy = null;
-        this.kilojoulespermoleLazy = null;
-        this.megajoulespermoleLazy = null;
+        this.kilojoulepermoleLazy = null;
+        this.megajoulepermoleLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get JoulesPerMole() {
@@ -19,34 +19,34 @@ class MolarEnergy {
         }
         return this.joulespermoleLazy = this.convertFromBase(MolarEnergyUnits.JoulesPerMole);
     }
-    get Kilojoulespermole() {
-        if (this.kilojoulespermoleLazy !== null) {
-            return this.kilojoulespermoleLazy;
+    get KilojoulePerMole() {
+        if (this.kilojoulepermoleLazy !== null) {
+            return this.kilojoulepermoleLazy;
         }
-        return this.kilojoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.Kilojoulespermole);
+        return this.kilojoulepermoleLazy = this.convertFromBase(MolarEnergyUnits.KilojoulePerMole);
     }
-    get Megajoulespermole() {
-        if (this.megajoulespermoleLazy !== null) {
-            return this.megajoulespermoleLazy;
+    get MegajoulePerMole() {
+        if (this.megajoulepermoleLazy !== null) {
+            return this.megajoulepermoleLazy;
         }
-        return this.megajoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.Megajoulespermole);
+        return this.megajoulepermoleLazy = this.convertFromBase(MolarEnergyUnits.MegajoulePerMole);
     }
     static FromJoulesPerMole(value) {
         return new MolarEnergy(value, MolarEnergyUnits.JoulesPerMole);
     }
-    static FromKilojoulespermole(value) {
-        return new MolarEnergy(value, MolarEnergyUnits.Kilojoulespermole);
+    static FromKilojoulePerMole(value) {
+        return new MolarEnergy(value, MolarEnergyUnits.KilojoulePerMole);
     }
-    static FromMegajoulespermole(value) {
-        return new MolarEnergy(value, MolarEnergyUnits.Megajoulespermole);
+    static FromMegajoulePerMole(value) {
+        return new MolarEnergy(value, MolarEnergyUnits.MegajoulePerMole);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
             case MolarEnergyUnits.JoulesPerMole:
                 return this.value;
-            case MolarEnergyUnits.Kilojoulespermole:
+            case MolarEnergyUnits.KilojoulePerMole:
                 return (this.value) / 1000;
-            case MolarEnergyUnits.Megajoulespermole:
+            case MolarEnergyUnits.MegajoulePerMole:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -57,14 +57,27 @@ class MolarEnergy {
         switch (fromUnit) {
             case MolarEnergyUnits.JoulesPerMole:
                 return value;
-            case MolarEnergyUnits.Kilojoulespermole:
+            case MolarEnergyUnits.KilojoulePerMole:
                 return (value) * 1000;
-            case MolarEnergyUnits.Megajoulespermole:
+            case MolarEnergyUnits.MegajoulePerMole:
                 return (value) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = MolarEnergyUnits.JoulesPerMole) {
+        switch (toUnit) {
+            case MolarEnergyUnits.JoulesPerMole:
+                return this.JoulesPerMole + ` J/mol`;
+            case MolarEnergyUnits.KilojoulePerMole:
+                return this.KilojoulePerMole + ` J/mol`;
+            case MolarEnergyUnits.MegajoulePerMole:
+                return this.MegajoulePerMole + ` J/mol`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.MolarEnergy = MolarEnergy;

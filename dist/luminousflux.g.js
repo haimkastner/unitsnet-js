@@ -36,6 +36,15 @@ class LuminousFlux {
         }
         return NaN;
     }
+    toString(toUnit = LuminousFluxUnits.Lumens) {
+        switch (toUnit) {
+            case LuminousFluxUnits.Lumens:
+                return this.Lumens + ` lm`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.LuminousFlux = LuminousFlux;
 //# sourceMappingURL=luminousflux.g.js.map

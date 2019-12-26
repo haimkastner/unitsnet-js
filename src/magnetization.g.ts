@@ -42,4 +42,16 @@ export class Magnetization {
         }
         return NaN;
     }
+
+    public toString(toUnit: MagnetizationUnits = MagnetizationUnits.AmperesPerMeter): string {
+
+        switch (toUnit) {
+            
+            case MagnetizationUnits.AmperesPerMeter:
+                return this.AmperesPerMeter + ` A/m`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

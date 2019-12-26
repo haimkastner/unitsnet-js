@@ -51,6 +51,17 @@ class SpecificVolume {
         }
         return NaN;
     }
+    toString(toUnit = SpecificVolumeUnits.CubicMetersPerKilogram) {
+        switch (toUnit) {
+            case SpecificVolumeUnits.CubicMetersPerKilogram:
+                return this.CubicMetersPerKilogram + ` m³/kg`;
+            case SpecificVolumeUnits.CubicFeetPerPound:
+                return this.CubicFeetPerPound + ` ft³/lb`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.SpecificVolume = SpecificVolume;
 //# sourceMappingURL=specificvolume.g.js.map

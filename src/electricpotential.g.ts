@@ -1,16 +1,16 @@
 export enum ElectricPotentialUnits {
     Volts,
-    Microvolts,
-    Kilovolts,
-    Megavolts
+    Microvolt,
+    Kilovolt,
+    Megavolt
 }
 
 export class ElectricPotential {
     private value: number;
     private voltsLazy: number | null = null;
-    private microvoltsLazy: number | null = null;
-    private kilovoltsLazy: number | null = null;
-    private megavoltsLazy: number | null = null;
+    private microvoltLazy: number | null = null;
+    private kilovoltLazy: number | null = null;
+    private megavoltLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricPotentialUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -23,41 +23,41 @@ export class ElectricPotential {
         return this.voltsLazy = this.convertFromBase(ElectricPotentialUnits.Volts);
     }
 
-    public get Microvolts(): number {
-        if(this.microvoltsLazy !== null){
-            return this.microvoltsLazy;
+    public get Microvolt(): number {
+        if(this.microvoltLazy !== null){
+            return this.microvoltLazy;
         }
-        return this.microvoltsLazy = this.convertFromBase(ElectricPotentialUnits.Microvolts);
+        return this.microvoltLazy = this.convertFromBase(ElectricPotentialUnits.Microvolt);
     }
 
-    public get Kilovolts(): number {
-        if(this.kilovoltsLazy !== null){
-            return this.kilovoltsLazy;
+    public get Kilovolt(): number {
+        if(this.kilovoltLazy !== null){
+            return this.kilovoltLazy;
         }
-        return this.kilovoltsLazy = this.convertFromBase(ElectricPotentialUnits.Kilovolts);
+        return this.kilovoltLazy = this.convertFromBase(ElectricPotentialUnits.Kilovolt);
     }
 
-    public get Megavolts(): number {
-        if(this.megavoltsLazy !== null){
-            return this.megavoltsLazy;
+    public get Megavolt(): number {
+        if(this.megavoltLazy !== null){
+            return this.megavoltLazy;
         }
-        return this.megavoltsLazy = this.convertFromBase(ElectricPotentialUnits.Megavolts);
+        return this.megavoltLazy = this.convertFromBase(ElectricPotentialUnits.Megavolt);
     }
 
     public static FromVolts(value: number): ElectricPotential {
         return new ElectricPotential(value, ElectricPotentialUnits.Volts);
     }
 
-    public static FromMicrovolts(value: number): ElectricPotential {
-        return new ElectricPotential(value, ElectricPotentialUnits.Microvolts);
+    public static FromMicrovolt(value: number): ElectricPotential {
+        return new ElectricPotential(value, ElectricPotentialUnits.Microvolt);
     }
 
-    public static FromKilovolts(value: number): ElectricPotential {
-        return new ElectricPotential(value, ElectricPotentialUnits.Kilovolts);
+    public static FromKilovolt(value: number): ElectricPotential {
+        return new ElectricPotential(value, ElectricPotentialUnits.Kilovolt);
     }
 
-    public static FromMegavolts(value: number): ElectricPotential {
-        return new ElectricPotential(value, ElectricPotentialUnits.Megavolts);
+    public static FromMegavolt(value: number): ElectricPotential {
+        return new ElectricPotential(value, ElectricPotentialUnits.Megavolt);
     }
 
     private convertFromBase(toUnit: ElectricPotentialUnits): number {
@@ -65,11 +65,11 @@ export class ElectricPotential {
                 
             case ElectricPotentialUnits.Volts:
                 return this.value;
-            case ElectricPotentialUnits.Microvolts:
+            case ElectricPotentialUnits.Microvolt:
                 return (this.value) / 0.000001;
-            case ElectricPotentialUnits.Kilovolts:
+            case ElectricPotentialUnits.Kilovolt:
                 return (this.value) / 1000;
-            case ElectricPotentialUnits.Megavolts:
+            case ElectricPotentialUnits.Megavolt:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -82,15 +82,33 @@ export class ElectricPotential {
                 
             case ElectricPotentialUnits.Volts:
                 return value;
-            case ElectricPotentialUnits.Microvolts:
+            case ElectricPotentialUnits.Microvolt:
                 return (value) * 0.000001;
-            case ElectricPotentialUnits.Kilovolts:
+            case ElectricPotentialUnits.Kilovolt:
                 return (value) * 1000;
-            case ElectricPotentialUnits.Megavolts:
+            case ElectricPotentialUnits.Megavolt:
                 return (value) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: ElectricPotentialUnits = ElectricPotentialUnits.Volts): string {
+
+        switch (toUnit) {
+            
+            case ElectricPotentialUnits.Volts:
+                return this.Volts + ` V`;
+            case ElectricPotentialUnits.Microvolt:
+                return this.Microvolt + ` V`;
+            case ElectricPotentialUnits.Kilovolt:
+                return this.Kilovolt + ` V`;
+            case ElectricPotentialUnits.Megavolt:
+                return this.Megavolt + ` V`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

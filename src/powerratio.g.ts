@@ -59,4 +59,18 @@ export class PowerRatio {
         }
         return NaN;
     }
+
+    public toString(toUnit: PowerRatioUnits = PowerRatioUnits.DecibelWatts): string {
+
+        switch (toUnit) {
+            
+            case PowerRatioUnits.DecibelWatts:
+                return this.DecibelWatts + ` dBW`;
+            case PowerRatioUnits.DecibelMilliwatts:
+                return this.DecibelMilliwatts + ` dBmW`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

@@ -7,10 +7,10 @@ export declare enum ForceUnits {
     Poundals = 5,
     PoundsForce = 6,
     OunceForce = 7,
-    Micronewtons = 8,
-    Decanewtons = 9,
-    Kilonewtons = 10,
-    Meganewtons = 11
+    Micronewton = 8,
+    Decanewton = 9,
+    Kilonewton = 10,
+    Meganewton = 11
 }
 export declare class Force {
     private value;
@@ -22,10 +22,10 @@ export declare class Force {
     private poundalsLazy;
     private poundsforceLazy;
     private ounceforceLazy;
-    private micronewtonsLazy;
-    private decanewtonsLazy;
-    private kilonewtonsLazy;
-    private meganewtonsLazy;
+    private micronewtonLazy;
+    private decanewtonLazy;
+    private kilonewtonLazy;
+    private meganewtonLazy;
     constructor(value: number, fromUnit: ForceUnits);
     get Dyne(): number;
     get KilogramsForce(): number;
@@ -35,10 +35,10 @@ export declare class Force {
     get Poundals(): number;
     get PoundsForce(): number;
     get OunceForce(): number;
-    get Micronewtons(): number;
-    get Decanewtons(): number;
-    get Kilonewtons(): number;
-    get Meganewtons(): number;
+    get Micronewton(): number;
+    get Decanewton(): number;
+    get Kilonewton(): number;
+    get Meganewton(): number;
     static FromDyne(value: number): Force;
     static FromKilogramsForce(value: number): Force;
     static FromTonnesForce(value: number): Force;
@@ -47,11 +47,12 @@ export declare class Force {
     static FromPoundals(value: number): Force;
     static FromPoundsForce(value: number): Force;
     static FromOunceForce(value: number): Force;
-    static FromMicronewtons(value: number): Force;
-    static FromDecanewtons(value: number): Force;
-    static FromKilonewtons(value: number): Force;
-    static FromMeganewtons(value: number): Force;
+    static FromMicronewton(value: number): Force;
+    static FromDecanewton(value: number): Force;
+    static FromKilonewton(value: number): Force;
+    static FromMeganewton(value: number): Force;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ForceUnits): string;
 }
 //# sourceMappingURL=force.g.d.ts.map

@@ -1,21 +1,22 @@
 export declare enum ElectricInductanceUnits {
     Henries = 0,
-    Nanohenries = 1,
-    Microhenries = 2
+    Nanohenry = 1,
+    Microhenry = 2
 }
 export declare class ElectricInductance {
     private value;
     private henriesLazy;
-    private nanohenriesLazy;
-    private microhenriesLazy;
+    private nanohenryLazy;
+    private microhenryLazy;
     constructor(value: number, fromUnit: ElectricInductanceUnits);
     get Henries(): number;
-    get Nanohenries(): number;
-    get Microhenries(): number;
+    get Nanohenry(): number;
+    get Microhenry(): number;
     static FromHenries(value: number): ElectricInductance;
-    static FromNanohenries(value: number): ElectricInductance;
-    static FromMicrohenries(value: number): ElectricInductance;
+    static FromNanohenry(value: number): ElectricInductance;
+    static FromMicrohenry(value: number): ElectricInductance;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricInductanceUnits): string;
 }
 //# sourceMappingURL=electricinductance.g.d.ts.map

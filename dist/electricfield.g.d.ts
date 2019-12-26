@@ -9,5 +9,6 @@ export declare class ElectricField {
     static FromVoltsPerMeter(value: number): ElectricField;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricFieldUnits): string;
 }
 //# sourceMappingURL=electricfield.g.d.ts.map

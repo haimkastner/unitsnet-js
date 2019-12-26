@@ -5,20 +5,20 @@ var EntropyUnits;
     EntropyUnits[EntropyUnits["JoulesPerKelvin"] = 0] = "JoulesPerKelvin";
     EntropyUnits[EntropyUnits["CaloriesPerKelvin"] = 1] = "CaloriesPerKelvin";
     EntropyUnits[EntropyUnits["JoulesPerDegreeCelsius"] = 2] = "JoulesPerDegreeCelsius";
-    EntropyUnits[EntropyUnits["Kilojoulesperkelvin"] = 3] = "Kilojoulesperkelvin";
-    EntropyUnits[EntropyUnits["Megajoulesperkelvin"] = 4] = "Megajoulesperkelvin";
-    EntropyUnits[EntropyUnits["Kilocaloriesperkelvin"] = 5] = "Kilocaloriesperkelvin";
-    EntropyUnits[EntropyUnits["Kilojoulesperdegreecelsius"] = 6] = "Kilojoulesperdegreecelsius";
+    EntropyUnits[EntropyUnits["KilojoulePerKelvin"] = 3] = "KilojoulePerKelvin";
+    EntropyUnits[EntropyUnits["MegajoulePerKelvin"] = 4] = "MegajoulePerKelvin";
+    EntropyUnits[EntropyUnits["KilocaloriePerKelvin"] = 5] = "KilocaloriePerKelvin";
+    EntropyUnits[EntropyUnits["KilojoulePerDegreeCelsius"] = 6] = "KilojoulePerDegreeCelsius";
 })(EntropyUnits = exports.EntropyUnits || (exports.EntropyUnits = {}));
 class Entropy {
     constructor(value, fromUnit) {
         this.joulesperkelvinLazy = null;
         this.caloriesperkelvinLazy = null;
         this.joulesperdegreecelsiusLazy = null;
-        this.kilojoulesperkelvinLazy = null;
-        this.megajoulesperkelvinLazy = null;
-        this.kilocaloriesperkelvinLazy = null;
-        this.kilojoulesperdegreecelsiusLazy = null;
+        this.kilojouleperkelvinLazy = null;
+        this.megajouleperkelvinLazy = null;
+        this.kilocalorieperkelvinLazy = null;
+        this.kilojouleperdegreecelsiusLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get JoulesPerKelvin() {
@@ -39,29 +39,29 @@ class Entropy {
         }
         return this.joulesperdegreecelsiusLazy = this.convertFromBase(EntropyUnits.JoulesPerDegreeCelsius);
     }
-    get Kilojoulesperkelvin() {
-        if (this.kilojoulesperkelvinLazy !== null) {
-            return this.kilojoulesperkelvinLazy;
+    get KilojoulePerKelvin() {
+        if (this.kilojouleperkelvinLazy !== null) {
+            return this.kilojouleperkelvinLazy;
         }
-        return this.kilojoulesperkelvinLazy = this.convertFromBase(EntropyUnits.Kilojoulesperkelvin);
+        return this.kilojouleperkelvinLazy = this.convertFromBase(EntropyUnits.KilojoulePerKelvin);
     }
-    get Megajoulesperkelvin() {
-        if (this.megajoulesperkelvinLazy !== null) {
-            return this.megajoulesperkelvinLazy;
+    get MegajoulePerKelvin() {
+        if (this.megajouleperkelvinLazy !== null) {
+            return this.megajouleperkelvinLazy;
         }
-        return this.megajoulesperkelvinLazy = this.convertFromBase(EntropyUnits.Megajoulesperkelvin);
+        return this.megajouleperkelvinLazy = this.convertFromBase(EntropyUnits.MegajoulePerKelvin);
     }
-    get Kilocaloriesperkelvin() {
-        if (this.kilocaloriesperkelvinLazy !== null) {
-            return this.kilocaloriesperkelvinLazy;
+    get KilocaloriePerKelvin() {
+        if (this.kilocalorieperkelvinLazy !== null) {
+            return this.kilocalorieperkelvinLazy;
         }
-        return this.kilocaloriesperkelvinLazy = this.convertFromBase(EntropyUnits.Kilocaloriesperkelvin);
+        return this.kilocalorieperkelvinLazy = this.convertFromBase(EntropyUnits.KilocaloriePerKelvin);
     }
-    get Kilojoulesperdegreecelsius() {
-        if (this.kilojoulesperdegreecelsiusLazy !== null) {
-            return this.kilojoulesperdegreecelsiusLazy;
+    get KilojoulePerDegreeCelsius() {
+        if (this.kilojouleperdegreecelsiusLazy !== null) {
+            return this.kilojouleperdegreecelsiusLazy;
         }
-        return this.kilojoulesperdegreecelsiusLazy = this.convertFromBase(EntropyUnits.Kilojoulesperdegreecelsius);
+        return this.kilojouleperdegreecelsiusLazy = this.convertFromBase(EntropyUnits.KilojoulePerDegreeCelsius);
     }
     static FromJoulesPerKelvin(value) {
         return new Entropy(value, EntropyUnits.JoulesPerKelvin);
@@ -72,17 +72,17 @@ class Entropy {
     static FromJoulesPerDegreeCelsius(value) {
         return new Entropy(value, EntropyUnits.JoulesPerDegreeCelsius);
     }
-    static FromKilojoulesperkelvin(value) {
-        return new Entropy(value, EntropyUnits.Kilojoulesperkelvin);
+    static FromKilojoulePerKelvin(value) {
+        return new Entropy(value, EntropyUnits.KilojoulePerKelvin);
     }
-    static FromMegajoulesperkelvin(value) {
-        return new Entropy(value, EntropyUnits.Megajoulesperkelvin);
+    static FromMegajoulePerKelvin(value) {
+        return new Entropy(value, EntropyUnits.MegajoulePerKelvin);
     }
-    static FromKilocaloriesperkelvin(value) {
-        return new Entropy(value, EntropyUnits.Kilocaloriesperkelvin);
+    static FromKilocaloriePerKelvin(value) {
+        return new Entropy(value, EntropyUnits.KilocaloriePerKelvin);
     }
-    static FromKilojoulesperdegreecelsius(value) {
-        return new Entropy(value, EntropyUnits.Kilojoulesperdegreecelsius);
+    static FromKilojoulePerDegreeCelsius(value) {
+        return new Entropy(value, EntropyUnits.KilojoulePerDegreeCelsius);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -92,13 +92,13 @@ class Entropy {
                 return this.value / 4.184;
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return this.value;
-            case EntropyUnits.Kilojoulesperkelvin:
+            case EntropyUnits.KilojoulePerKelvin:
                 return (this.value) / 1000;
-            case EntropyUnits.Megajoulesperkelvin:
+            case EntropyUnits.MegajoulePerKelvin:
                 return (this.value) / 1000000;
-            case EntropyUnits.Kilocaloriesperkelvin:
+            case EntropyUnits.KilocaloriePerKelvin:
                 return (this.value / 4.184) / 1000;
-            case EntropyUnits.Kilojoulesperdegreecelsius:
+            case EntropyUnits.KilojoulePerDegreeCelsius:
                 return (this.value) / 1000;
             default:
                 break;
@@ -113,18 +113,39 @@ class Entropy {
                 return value * 4.184;
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return value;
-            case EntropyUnits.Kilojoulesperkelvin:
+            case EntropyUnits.KilojoulePerKelvin:
                 return (value) * 1000;
-            case EntropyUnits.Megajoulesperkelvin:
+            case EntropyUnits.MegajoulePerKelvin:
                 return (value) * 1000000;
-            case EntropyUnits.Kilocaloriesperkelvin:
+            case EntropyUnits.KilocaloriePerKelvin:
                 return (value * 4.184) * 1000;
-            case EntropyUnits.Kilojoulesperdegreecelsius:
+            case EntropyUnits.KilojoulePerDegreeCelsius:
                 return (value) * 1000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = EntropyUnits.JoulesPerKelvin) {
+        switch (toUnit) {
+            case EntropyUnits.JoulesPerKelvin:
+                return this.JoulesPerKelvin + ` J/K`;
+            case EntropyUnits.CaloriesPerKelvin:
+                return this.CaloriesPerKelvin + ` cal/K`;
+            case EntropyUnits.JoulesPerDegreeCelsius:
+                return this.JoulesPerDegreeCelsius + ` J/C`;
+            case EntropyUnits.KilojoulePerKelvin:
+                return this.KilojoulePerKelvin + ` J/K`;
+            case EntropyUnits.MegajoulePerKelvin:
+                return this.MegajoulePerKelvin + ` J/K`;
+            case EntropyUnits.KilocaloriePerKelvin:
+                return this.KilocaloriePerKelvin + ` cal/K`;
+            case EntropyUnits.KilojoulePerDegreeCelsius:
+                return this.KilojoulePerDegreeCelsius + ` J/C`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.Entropy = Entropy;

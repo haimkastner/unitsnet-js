@@ -33,21 +33,21 @@ var VolumeUnits;
     VolumeUnits[VolumeUnits["UsPints"] = 28] = "UsPints";
     VolumeUnits[VolumeUnits["AcreFeet"] = 29] = "AcreFeet";
     VolumeUnits[VolumeUnits["ImperialPints"] = 30] = "ImperialPints";
-    VolumeUnits[VolumeUnits["Microliters"] = 31] = "Microliters";
-    VolumeUnits[VolumeUnits["Centiliters"] = 32] = "Centiliters";
-    VolumeUnits[VolumeUnits["Deciliters"] = 33] = "Deciliters";
-    VolumeUnits[VolumeUnits["Hectoliters"] = 34] = "Hectoliters";
-    VolumeUnits[VolumeUnits["Kiloliters"] = 35] = "Kiloliters";
-    VolumeUnits[VolumeUnits["Megaliters"] = 36] = "Megaliters";
-    VolumeUnits[VolumeUnits["Hectocubicmeters"] = 37] = "Hectocubicmeters";
-    VolumeUnits[VolumeUnits["Kilocubicmeters"] = 38] = "Kilocubicmeters";
-    VolumeUnits[VolumeUnits["Hectocubicfeet"] = 39] = "Hectocubicfeet";
-    VolumeUnits[VolumeUnits["Kilocubicfeet"] = 40] = "Kilocubicfeet";
-    VolumeUnits[VolumeUnits["Megacubicfeet"] = 41] = "Megacubicfeet";
-    VolumeUnits[VolumeUnits["Kiloimperialgallons"] = 42] = "Kiloimperialgallons";
-    VolumeUnits[VolumeUnits["Megaimperialgallons"] = 43] = "Megaimperialgallons";
-    VolumeUnits[VolumeUnits["Kilousgallons"] = 44] = "Kilousgallons";
-    VolumeUnits[VolumeUnits["Megausgallons"] = 45] = "Megausgallons";
+    VolumeUnits[VolumeUnits["Microliter"] = 31] = "Microliter";
+    VolumeUnits[VolumeUnits["Centiliter"] = 32] = "Centiliter";
+    VolumeUnits[VolumeUnits["Deciliter"] = 33] = "Deciliter";
+    VolumeUnits[VolumeUnits["Hectoliter"] = 34] = "Hectoliter";
+    VolumeUnits[VolumeUnits["Kiloliter"] = 35] = "Kiloliter";
+    VolumeUnits[VolumeUnits["Megaliter"] = 36] = "Megaliter";
+    VolumeUnits[VolumeUnits["HectocubicMeter"] = 37] = "HectocubicMeter";
+    VolumeUnits[VolumeUnits["KilocubicMeter"] = 38] = "KilocubicMeter";
+    VolumeUnits[VolumeUnits["HectocubicFoot"] = 39] = "HectocubicFoot";
+    VolumeUnits[VolumeUnits["KilocubicFoot"] = 40] = "KilocubicFoot";
+    VolumeUnits[VolumeUnits["MegacubicFoot"] = 41] = "MegacubicFoot";
+    VolumeUnits[VolumeUnits["KiloimperialGallon"] = 42] = "KiloimperialGallon";
+    VolumeUnits[VolumeUnits["MegaimperialGallon"] = 43] = "MegaimperialGallon";
+    VolumeUnits[VolumeUnits["KilousGallon"] = 44] = "KilousGallon";
+    VolumeUnits[VolumeUnits["MegausGallon"] = 45] = "MegausGallon";
 })(VolumeUnits = exports.VolumeUnits || (exports.VolumeUnits = {}));
 class Volume {
     constructor(value, fromUnit) {
@@ -82,21 +82,21 @@ class Volume {
         this.uspintsLazy = null;
         this.acrefeetLazy = null;
         this.imperialpintsLazy = null;
-        this.microlitersLazy = null;
-        this.centilitersLazy = null;
-        this.decilitersLazy = null;
-        this.hectolitersLazy = null;
-        this.kilolitersLazy = null;
-        this.megalitersLazy = null;
-        this.hectocubicmetersLazy = null;
-        this.kilocubicmetersLazy = null;
-        this.hectocubicfeetLazy = null;
-        this.kilocubicfeetLazy = null;
-        this.megacubicfeetLazy = null;
-        this.kiloimperialgallonsLazy = null;
-        this.megaimperialgallonsLazy = null;
-        this.kilousgallonsLazy = null;
-        this.megausgallonsLazy = null;
+        this.microliterLazy = null;
+        this.centiliterLazy = null;
+        this.deciliterLazy = null;
+        this.hectoliterLazy = null;
+        this.kiloliterLazy = null;
+        this.megaliterLazy = null;
+        this.hectocubicmeterLazy = null;
+        this.kilocubicmeterLazy = null;
+        this.hectocubicfootLazy = null;
+        this.kilocubicfootLazy = null;
+        this.megacubicfootLazy = null;
+        this.kiloimperialgallonLazy = null;
+        this.megaimperialgallonLazy = null;
+        this.kilousgallonLazy = null;
+        this.megausgallonLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Liters() {
@@ -285,95 +285,95 @@ class Volume {
         }
         return this.imperialpintsLazy = this.convertFromBase(VolumeUnits.ImperialPints);
     }
-    get Microliters() {
-        if (this.microlitersLazy !== null) {
-            return this.microlitersLazy;
+    get Microliter() {
+        if (this.microliterLazy !== null) {
+            return this.microliterLazy;
         }
-        return this.microlitersLazy = this.convertFromBase(VolumeUnits.Microliters);
+        return this.microliterLazy = this.convertFromBase(VolumeUnits.Microliter);
     }
-    get Centiliters() {
-        if (this.centilitersLazy !== null) {
-            return this.centilitersLazy;
+    get Centiliter() {
+        if (this.centiliterLazy !== null) {
+            return this.centiliterLazy;
         }
-        return this.centilitersLazy = this.convertFromBase(VolumeUnits.Centiliters);
+        return this.centiliterLazy = this.convertFromBase(VolumeUnits.Centiliter);
     }
-    get Deciliters() {
-        if (this.decilitersLazy !== null) {
-            return this.decilitersLazy;
+    get Deciliter() {
+        if (this.deciliterLazy !== null) {
+            return this.deciliterLazy;
         }
-        return this.decilitersLazy = this.convertFromBase(VolumeUnits.Deciliters);
+        return this.deciliterLazy = this.convertFromBase(VolumeUnits.Deciliter);
     }
-    get Hectoliters() {
-        if (this.hectolitersLazy !== null) {
-            return this.hectolitersLazy;
+    get Hectoliter() {
+        if (this.hectoliterLazy !== null) {
+            return this.hectoliterLazy;
         }
-        return this.hectolitersLazy = this.convertFromBase(VolumeUnits.Hectoliters);
+        return this.hectoliterLazy = this.convertFromBase(VolumeUnits.Hectoliter);
     }
-    get Kiloliters() {
-        if (this.kilolitersLazy !== null) {
-            return this.kilolitersLazy;
+    get Kiloliter() {
+        if (this.kiloliterLazy !== null) {
+            return this.kiloliterLazy;
         }
-        return this.kilolitersLazy = this.convertFromBase(VolumeUnits.Kiloliters);
+        return this.kiloliterLazy = this.convertFromBase(VolumeUnits.Kiloliter);
     }
-    get Megaliters() {
-        if (this.megalitersLazy !== null) {
-            return this.megalitersLazy;
+    get Megaliter() {
+        if (this.megaliterLazy !== null) {
+            return this.megaliterLazy;
         }
-        return this.megalitersLazy = this.convertFromBase(VolumeUnits.Megaliters);
+        return this.megaliterLazy = this.convertFromBase(VolumeUnits.Megaliter);
     }
-    get Hectocubicmeters() {
-        if (this.hectocubicmetersLazy !== null) {
-            return this.hectocubicmetersLazy;
+    get HectocubicMeter() {
+        if (this.hectocubicmeterLazy !== null) {
+            return this.hectocubicmeterLazy;
         }
-        return this.hectocubicmetersLazy = this.convertFromBase(VolumeUnits.Hectocubicmeters);
+        return this.hectocubicmeterLazy = this.convertFromBase(VolumeUnits.HectocubicMeter);
     }
-    get Kilocubicmeters() {
-        if (this.kilocubicmetersLazy !== null) {
-            return this.kilocubicmetersLazy;
+    get KilocubicMeter() {
+        if (this.kilocubicmeterLazy !== null) {
+            return this.kilocubicmeterLazy;
         }
-        return this.kilocubicmetersLazy = this.convertFromBase(VolumeUnits.Kilocubicmeters);
+        return this.kilocubicmeterLazy = this.convertFromBase(VolumeUnits.KilocubicMeter);
     }
-    get Hectocubicfeet() {
-        if (this.hectocubicfeetLazy !== null) {
-            return this.hectocubicfeetLazy;
+    get HectocubicFoot() {
+        if (this.hectocubicfootLazy !== null) {
+            return this.hectocubicfootLazy;
         }
-        return this.hectocubicfeetLazy = this.convertFromBase(VolumeUnits.Hectocubicfeet);
+        return this.hectocubicfootLazy = this.convertFromBase(VolumeUnits.HectocubicFoot);
     }
-    get Kilocubicfeet() {
-        if (this.kilocubicfeetLazy !== null) {
-            return this.kilocubicfeetLazy;
+    get KilocubicFoot() {
+        if (this.kilocubicfootLazy !== null) {
+            return this.kilocubicfootLazy;
         }
-        return this.kilocubicfeetLazy = this.convertFromBase(VolumeUnits.Kilocubicfeet);
+        return this.kilocubicfootLazy = this.convertFromBase(VolumeUnits.KilocubicFoot);
     }
-    get Megacubicfeet() {
-        if (this.megacubicfeetLazy !== null) {
-            return this.megacubicfeetLazy;
+    get MegacubicFoot() {
+        if (this.megacubicfootLazy !== null) {
+            return this.megacubicfootLazy;
         }
-        return this.megacubicfeetLazy = this.convertFromBase(VolumeUnits.Megacubicfeet);
+        return this.megacubicfootLazy = this.convertFromBase(VolumeUnits.MegacubicFoot);
     }
-    get Kiloimperialgallons() {
-        if (this.kiloimperialgallonsLazy !== null) {
-            return this.kiloimperialgallonsLazy;
+    get KiloimperialGallon() {
+        if (this.kiloimperialgallonLazy !== null) {
+            return this.kiloimperialgallonLazy;
         }
-        return this.kiloimperialgallonsLazy = this.convertFromBase(VolumeUnits.Kiloimperialgallons);
+        return this.kiloimperialgallonLazy = this.convertFromBase(VolumeUnits.KiloimperialGallon);
     }
-    get Megaimperialgallons() {
-        if (this.megaimperialgallonsLazy !== null) {
-            return this.megaimperialgallonsLazy;
+    get MegaimperialGallon() {
+        if (this.megaimperialgallonLazy !== null) {
+            return this.megaimperialgallonLazy;
         }
-        return this.megaimperialgallonsLazy = this.convertFromBase(VolumeUnits.Megaimperialgallons);
+        return this.megaimperialgallonLazy = this.convertFromBase(VolumeUnits.MegaimperialGallon);
     }
-    get Kilousgallons() {
-        if (this.kilousgallonsLazy !== null) {
-            return this.kilousgallonsLazy;
+    get KilousGallon() {
+        if (this.kilousgallonLazy !== null) {
+            return this.kilousgallonLazy;
         }
-        return this.kilousgallonsLazy = this.convertFromBase(VolumeUnits.Kilousgallons);
+        return this.kilousgallonLazy = this.convertFromBase(VolumeUnits.KilousGallon);
     }
-    get Megausgallons() {
-        if (this.megausgallonsLazy !== null) {
-            return this.megausgallonsLazy;
+    get MegausGallon() {
+        if (this.megausgallonLazy !== null) {
+            return this.megausgallonLazy;
         }
-        return this.megausgallonsLazy = this.convertFromBase(VolumeUnits.Megausgallons);
+        return this.megausgallonLazy = this.convertFromBase(VolumeUnits.MegausGallon);
     }
     static FromLiters(value) {
         return new Volume(value, VolumeUnits.Liters);
@@ -468,50 +468,50 @@ class Volume {
     static FromImperialPints(value) {
         return new Volume(value, VolumeUnits.ImperialPints);
     }
-    static FromMicroliters(value) {
-        return new Volume(value, VolumeUnits.Microliters);
+    static FromMicroliter(value) {
+        return new Volume(value, VolumeUnits.Microliter);
     }
-    static FromCentiliters(value) {
-        return new Volume(value, VolumeUnits.Centiliters);
+    static FromCentiliter(value) {
+        return new Volume(value, VolumeUnits.Centiliter);
     }
-    static FromDeciliters(value) {
-        return new Volume(value, VolumeUnits.Deciliters);
+    static FromDeciliter(value) {
+        return new Volume(value, VolumeUnits.Deciliter);
     }
-    static FromHectoliters(value) {
-        return new Volume(value, VolumeUnits.Hectoliters);
+    static FromHectoliter(value) {
+        return new Volume(value, VolumeUnits.Hectoliter);
     }
-    static FromKiloliters(value) {
-        return new Volume(value, VolumeUnits.Kiloliters);
+    static FromKiloliter(value) {
+        return new Volume(value, VolumeUnits.Kiloliter);
     }
-    static FromMegaliters(value) {
-        return new Volume(value, VolumeUnits.Megaliters);
+    static FromMegaliter(value) {
+        return new Volume(value, VolumeUnits.Megaliter);
     }
-    static FromHectocubicmeters(value) {
-        return new Volume(value, VolumeUnits.Hectocubicmeters);
+    static FromHectocubicMeter(value) {
+        return new Volume(value, VolumeUnits.HectocubicMeter);
     }
-    static FromKilocubicmeters(value) {
-        return new Volume(value, VolumeUnits.Kilocubicmeters);
+    static FromKilocubicMeter(value) {
+        return new Volume(value, VolumeUnits.KilocubicMeter);
     }
-    static FromHectocubicfeet(value) {
-        return new Volume(value, VolumeUnits.Hectocubicfeet);
+    static FromHectocubicFoot(value) {
+        return new Volume(value, VolumeUnits.HectocubicFoot);
     }
-    static FromKilocubicfeet(value) {
-        return new Volume(value, VolumeUnits.Kilocubicfeet);
+    static FromKilocubicFoot(value) {
+        return new Volume(value, VolumeUnits.KilocubicFoot);
     }
-    static FromMegacubicfeet(value) {
-        return new Volume(value, VolumeUnits.Megacubicfeet);
+    static FromMegacubicFoot(value) {
+        return new Volume(value, VolumeUnits.MegacubicFoot);
     }
-    static FromKiloimperialgallons(value) {
-        return new Volume(value, VolumeUnits.Kiloimperialgallons);
+    static FromKiloimperialGallon(value) {
+        return new Volume(value, VolumeUnits.KiloimperialGallon);
     }
-    static FromMegaimperialgallons(value) {
-        return new Volume(value, VolumeUnits.Megaimperialgallons);
+    static FromMegaimperialGallon(value) {
+        return new Volume(value, VolumeUnits.MegaimperialGallon);
     }
-    static FromKilousgallons(value) {
-        return new Volume(value, VolumeUnits.Kilousgallons);
+    static FromKilousGallon(value) {
+        return new Volume(value, VolumeUnits.KilousGallon);
     }
-    static FromMegausgallons(value) {
-        return new Volume(value, VolumeUnits.Megausgallons);
+    static FromMegausGallon(value) {
+        return new Volume(value, VolumeUnits.MegausGallon);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -577,35 +577,35 @@ class Volume {
                 return this.value * 0.000810714;
             case VolumeUnits.ImperialPints:
                 return this.value / 5.6826125e-4;
-            case VolumeUnits.Microliters:
+            case VolumeUnits.Microliter:
                 return (this.value * 1e3) / 0.000001;
-            case VolumeUnits.Centiliters:
+            case VolumeUnits.Centiliter:
                 return (this.value * 1e3) / 0.01;
-            case VolumeUnits.Deciliters:
+            case VolumeUnits.Deciliter:
                 return (this.value * 1e3) / 0.1;
-            case VolumeUnits.Hectoliters:
+            case VolumeUnits.Hectoliter:
                 return (this.value * 1e3) / 100;
-            case VolumeUnits.Kiloliters:
+            case VolumeUnits.Kiloliter:
                 return (this.value * 1e3) / 1000;
-            case VolumeUnits.Megaliters:
+            case VolumeUnits.Megaliter:
                 return (this.value * 1e3) / 1000000;
-            case VolumeUnits.Hectocubicmeters:
+            case VolumeUnits.HectocubicMeter:
                 return (this.value) / 100;
-            case VolumeUnits.Kilocubicmeters:
+            case VolumeUnits.KilocubicMeter:
                 return (this.value) / 1000;
-            case VolumeUnits.Hectocubicfeet:
+            case VolumeUnits.HectocubicFoot:
                 return (this.value / 0.0283168) / 100;
-            case VolumeUnits.Kilocubicfeet:
+            case VolumeUnits.KilocubicFoot:
                 return (this.value / 0.0283168) / 1000;
-            case VolumeUnits.Megacubicfeet:
+            case VolumeUnits.MegacubicFoot:
                 return (this.value / 0.0283168) / 1000000;
-            case VolumeUnits.Kiloimperialgallons:
+            case VolumeUnits.KiloimperialGallon:
                 return (this.value / 0.00454609000000181429905810072407) / 1000;
-            case VolumeUnits.Megaimperialgallons:
+            case VolumeUnits.MegaimperialGallon:
                 return (this.value / 0.00454609000000181429905810072407) / 1000000;
-            case VolumeUnits.Kilousgallons:
+            case VolumeUnits.KilousGallon:
                 return (this.value / 0.00378541) / 1000;
-            case VolumeUnits.Megausgallons:
+            case VolumeUnits.MegausGallon:
                 return (this.value / 0.00378541) / 1000000;
             default:
                 break;
@@ -676,40 +676,139 @@ class Volume {
                 return value / 0.000810714;
             case VolumeUnits.ImperialPints:
                 return value * 5.6826125e-4;
-            case VolumeUnits.Microliters:
+            case VolumeUnits.Microliter:
                 return (value / 1e3) * 0.000001;
-            case VolumeUnits.Centiliters:
+            case VolumeUnits.Centiliter:
                 return (value / 1e3) * 0.01;
-            case VolumeUnits.Deciliters:
+            case VolumeUnits.Deciliter:
                 return (value / 1e3) * 0.1;
-            case VolumeUnits.Hectoliters:
+            case VolumeUnits.Hectoliter:
                 return (value / 1e3) * 100;
-            case VolumeUnits.Kiloliters:
+            case VolumeUnits.Kiloliter:
                 return (value / 1e3) * 1000;
-            case VolumeUnits.Megaliters:
+            case VolumeUnits.Megaliter:
                 return (value / 1e3) * 1000000;
-            case VolumeUnits.Hectocubicmeters:
+            case VolumeUnits.HectocubicMeter:
                 return (value) * 100;
-            case VolumeUnits.Kilocubicmeters:
+            case VolumeUnits.KilocubicMeter:
                 return (value) * 1000;
-            case VolumeUnits.Hectocubicfeet:
+            case VolumeUnits.HectocubicFoot:
                 return (value * 0.0283168) * 100;
-            case VolumeUnits.Kilocubicfeet:
+            case VolumeUnits.KilocubicFoot:
                 return (value * 0.0283168) * 1000;
-            case VolumeUnits.Megacubicfeet:
+            case VolumeUnits.MegacubicFoot:
                 return (value * 0.0283168) * 1000000;
-            case VolumeUnits.Kiloimperialgallons:
+            case VolumeUnits.KiloimperialGallon:
                 return (value * 0.00454609000000181429905810072407) * 1000;
-            case VolumeUnits.Megaimperialgallons:
+            case VolumeUnits.MegaimperialGallon:
                 return (value * 0.00454609000000181429905810072407) * 1000000;
-            case VolumeUnits.Kilousgallons:
+            case VolumeUnits.KilousGallon:
                 return (value * 0.00378541) * 1000;
-            case VolumeUnits.Megausgallons:
+            case VolumeUnits.MegausGallon:
                 return (value * 0.00378541) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = VolumeUnits.CubicMeters) {
+        switch (toUnit) {
+            case VolumeUnits.Liters:
+                return this.Liters + ` l`;
+            case VolumeUnits.CubicMeters:
+                return this.CubicMeters + ` m³`;
+            case VolumeUnits.CubicKilometers:
+                return this.CubicKilometers + ` km³`;
+            case VolumeUnits.CubicHectometers:
+                return this.CubicHectometers + ` hm³`;
+            case VolumeUnits.CubicDecimeters:
+                return this.CubicDecimeters + ` dm³`;
+            case VolumeUnits.CubicCentimeters:
+                return this.CubicCentimeters + ` cm³`;
+            case VolumeUnits.CubicMillimeters:
+                return this.CubicMillimeters + ` mm³`;
+            case VolumeUnits.CubicMicrometers:
+                return this.CubicMicrometers + ` µm³`;
+            case VolumeUnits.CubicMiles:
+                return this.CubicMiles + ` mi³`;
+            case VolumeUnits.CubicYards:
+                return this.CubicYards + ` yd³`;
+            case VolumeUnits.CubicFeet:
+                return this.CubicFeet + ` ft³`;
+            case VolumeUnits.CubicInches:
+                return this.CubicInches + ` in³`;
+            case VolumeUnits.ImperialGallons:
+                return this.ImperialGallons + ` gal (imp.)`;
+            case VolumeUnits.ImperialOunces:
+                return this.ImperialOunces + ` oz (imp.)`;
+            case VolumeUnits.UsGallons:
+                return this.UsGallons + ` gal (U.S.)`;
+            case VolumeUnits.UsOunces:
+                return this.UsOunces + ` oz (U.S.)`;
+            case VolumeUnits.UsTablespoons:
+                return this.UsTablespoons + ` undefined`;
+            case VolumeUnits.AuTablespoons:
+                return this.AuTablespoons + ` undefined`;
+            case VolumeUnits.UkTablespoons:
+                return this.UkTablespoons + ` undefined`;
+            case VolumeUnits.MetricTeaspoons:
+                return this.MetricTeaspoons + ` tsp`;
+            case VolumeUnits.UsTeaspoons:
+                return this.UsTeaspoons + ` undefined`;
+            case VolumeUnits.MetricCups:
+                return this.MetricCups + ` undefined`;
+            case VolumeUnits.UsCustomaryCups:
+                return this.UsCustomaryCups + ` undefined`;
+            case VolumeUnits.UsLegalCups:
+                return this.UsLegalCups + ` undefined`;
+            case VolumeUnits.OilBarrels:
+                return this.OilBarrels + ` bbl`;
+            case VolumeUnits.UsBeerBarrels:
+                return this.UsBeerBarrels + ` bl (U.S.)`;
+            case VolumeUnits.ImperialBeerBarrels:
+                return this.ImperialBeerBarrels + ` bl (imp.)`;
+            case VolumeUnits.UsQuarts:
+                return this.UsQuarts + ` qt (U.S.)`;
+            case VolumeUnits.UsPints:
+                return this.UsPints + ` pt (U.S.)`;
+            case VolumeUnits.AcreFeet:
+                return this.AcreFeet + ` ac-ft`;
+            case VolumeUnits.ImperialPints:
+                return this.ImperialPints + ` pt (imp.)`;
+            case VolumeUnits.Microliter:
+                return this.Microliter + ` l`;
+            case VolumeUnits.Centiliter:
+                return this.Centiliter + ` l`;
+            case VolumeUnits.Deciliter:
+                return this.Deciliter + ` l`;
+            case VolumeUnits.Hectoliter:
+                return this.Hectoliter + ` l`;
+            case VolumeUnits.Kiloliter:
+                return this.Kiloliter + ` l`;
+            case VolumeUnits.Megaliter:
+                return this.Megaliter + ` l`;
+            case VolumeUnits.HectocubicMeter:
+                return this.HectocubicMeter + ` m³`;
+            case VolumeUnits.KilocubicMeter:
+                return this.KilocubicMeter + ` m³`;
+            case VolumeUnits.HectocubicFoot:
+                return this.HectocubicFoot + ` ft³`;
+            case VolumeUnits.KilocubicFoot:
+                return this.KilocubicFoot + ` ft³`;
+            case VolumeUnits.MegacubicFoot:
+                return this.MegacubicFoot + ` ft³`;
+            case VolumeUnits.KiloimperialGallon:
+                return this.KiloimperialGallon + ` gal (imp.)`;
+            case VolumeUnits.MegaimperialGallon:
+                return this.MegaimperialGallon + ` gal (imp.)`;
+            case VolumeUnits.KilousGallon:
+                return this.KilousGallon + ` gal (U.S.)`;
+            case VolumeUnits.MegausGallon:
+                return this.MegausGallon + ` gal (U.S.)`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.Volume = Volume;

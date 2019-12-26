@@ -76,4 +76,20 @@ export class ElectricCurrentDensity {
         }
         return NaN;
     }
+
+    public toString(toUnit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter): string {
+
+        switch (toUnit) {
+            
+            case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
+                return this.AmperesPerSquareMeter + ` A/m²`;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch:
+                return this.AmperesPerSquareInch + ` A/in²`;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
+                return this.AmperesPerSquareFoot + ` A/ft²`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

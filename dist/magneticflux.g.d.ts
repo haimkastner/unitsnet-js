@@ -9,5 +9,6 @@ export declare class MagneticFlux {
     static FromWebers(value: number): MagneticFlux;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: MagneticFluxUnits): string;
 }
 //# sourceMappingURL=magneticflux.g.d.ts.map

@@ -42,4 +42,16 @@ export class LuminousIntensity {
         }
         return NaN;
     }
+
+    public toString(toUnit: LuminousIntensityUnits = LuminousIntensityUnits.Candela): string {
+
+        switch (toUnit) {
+            
+            case LuminousIntensityUnits.Candela:
+                return this.Candela + ` cd`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

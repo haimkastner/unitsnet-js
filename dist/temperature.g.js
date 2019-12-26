@@ -156,6 +156,31 @@ class Temperature {
         }
         return NaN;
     }
+    toString(toUnit = TemperatureUnits.Kelvins) {
+        switch (toUnit) {
+            case TemperatureUnits.Kelvins:
+                return this.Kelvins + ` K`;
+            case TemperatureUnits.DegreesCelsius:
+                return this.DegreesCelsius + ` °C`;
+            case TemperatureUnits.DegreesDelisle:
+                return this.DegreesDelisle + ` °De`;
+            case TemperatureUnits.DegreesFahrenheit:
+                return this.DegreesFahrenheit + ` °F`;
+            case TemperatureUnits.DegreesNewton:
+                return this.DegreesNewton + ` °N`;
+            case TemperatureUnits.DegreesRankine:
+                return this.DegreesRankine + ` °R`;
+            case TemperatureUnits.DegreesReaumur:
+                return this.DegreesReaumur + ` °Ré`;
+            case TemperatureUnits.DegreesRoemer:
+                return this.DegreesRoemer + ` °Rø`;
+            case TemperatureUnits.SolarTemperatures:
+                return this.SolarTemperatures + ` T⊙`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.Temperature = Temperature;
 //# sourceMappingURL=temperature.g.js.map

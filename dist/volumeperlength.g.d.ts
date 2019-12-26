@@ -17,5 +17,6 @@ export declare class VolumePerLength {
     static FromOilBarrelsPerFoot(value: number): VolumePerLength;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: VolumePerLengthUnits): string;
 }
 //# sourceMappingURL=volumeperlength.g.d.ts.map

@@ -10,12 +10,12 @@ export declare enum SpecificWeightUnits {
     TonnesForcePerCubicMillimeter = 8,
     TonnesForcePerCubicCentimeter = 9,
     TonnesForcePerCubicMeter = 10,
-    Kilonewtonspercubicmillimeter = 11,
-    Kilonewtonspercubiccentimeter = 12,
-    Kilonewtonspercubicmeter = 13,
-    Meganewtonspercubicmeter = 14,
-    Kilopoundsforcepercubicinch = 15,
-    Kilopoundsforcepercubicfoot = 16
+    KilonewtonPerCubicMillimeter = 11,
+    KilonewtonPerCubicCentimeter = 12,
+    KilonewtonPerCubicMeter = 13,
+    MeganewtonPerCubicMeter = 14,
+    KilopoundForcePerCubicInch = 15,
+    KilopoundForcePerCubicFoot = 16
 }
 export declare class SpecificWeight {
     private value;
@@ -30,12 +30,12 @@ export declare class SpecificWeight {
     private tonnesforcepercubicmillimeterLazy;
     private tonnesforcepercubiccentimeterLazy;
     private tonnesforcepercubicmeterLazy;
-    private kilonewtonspercubicmillimeterLazy;
-    private kilonewtonspercubiccentimeterLazy;
-    private kilonewtonspercubicmeterLazy;
-    private meganewtonspercubicmeterLazy;
-    private kilopoundsforcepercubicinchLazy;
-    private kilopoundsforcepercubicfootLazy;
+    private kilonewtonpercubicmillimeterLazy;
+    private kilonewtonpercubiccentimeterLazy;
+    private kilonewtonpercubicmeterLazy;
+    private meganewtonpercubicmeterLazy;
+    private kilopoundforcepercubicinchLazy;
+    private kilopoundforcepercubicfootLazy;
     constructor(value: number, fromUnit: SpecificWeightUnits);
     get NewtonsPerCubicMillimeter(): number;
     get NewtonsPerCubicCentimeter(): number;
@@ -48,12 +48,12 @@ export declare class SpecificWeight {
     get TonnesForcePerCubicMillimeter(): number;
     get TonnesForcePerCubicCentimeter(): number;
     get TonnesForcePerCubicMeter(): number;
-    get Kilonewtonspercubicmillimeter(): number;
-    get Kilonewtonspercubiccentimeter(): number;
-    get Kilonewtonspercubicmeter(): number;
-    get Meganewtonspercubicmeter(): number;
-    get Kilopoundsforcepercubicinch(): number;
-    get Kilopoundsforcepercubicfoot(): number;
+    get KilonewtonPerCubicMillimeter(): number;
+    get KilonewtonPerCubicCentimeter(): number;
+    get KilonewtonPerCubicMeter(): number;
+    get MeganewtonPerCubicMeter(): number;
+    get KilopoundForcePerCubicInch(): number;
+    get KilopoundForcePerCubicFoot(): number;
     static FromNewtonsPerCubicMillimeter(value: number): SpecificWeight;
     static FromNewtonsPerCubicCentimeter(value: number): SpecificWeight;
     static FromNewtonsPerCubicMeter(value: number): SpecificWeight;
@@ -65,13 +65,14 @@ export declare class SpecificWeight {
     static FromTonnesForcePerCubicMillimeter(value: number): SpecificWeight;
     static FromTonnesForcePerCubicCentimeter(value: number): SpecificWeight;
     static FromTonnesForcePerCubicMeter(value: number): SpecificWeight;
-    static FromKilonewtonspercubicmillimeter(value: number): SpecificWeight;
-    static FromKilonewtonspercubiccentimeter(value: number): SpecificWeight;
-    static FromKilonewtonspercubicmeter(value: number): SpecificWeight;
-    static FromMeganewtonspercubicmeter(value: number): SpecificWeight;
-    static FromKilopoundsforcepercubicinch(value: number): SpecificWeight;
-    static FromKilopoundsforcepercubicfoot(value: number): SpecificWeight;
+    static FromKilonewtonPerCubicMillimeter(value: number): SpecificWeight;
+    static FromKilonewtonPerCubicCentimeter(value: number): SpecificWeight;
+    static FromKilonewtonPerCubicMeter(value: number): SpecificWeight;
+    static FromMeganewtonPerCubicMeter(value: number): SpecificWeight;
+    static FromKilopoundForcePerCubicInch(value: number): SpecificWeight;
+    static FromKilopoundForcePerCubicFoot(value: number): SpecificWeight;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: SpecificWeightUnits): string;
 }
 //# sourceMappingURL=specificweight.g.d.ts.map

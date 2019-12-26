@@ -1,26 +1,26 @@
 export enum TemperatureChangeRateUnits {
     DegreesCelsiusPerSecond,
     DegreesCelsiusPerMinute,
-    Nanodegreescelsiuspersecond,
-    Microdegreescelsiuspersecond,
-    Centidegreescelsiuspersecond,
-    Decidegreescelsiuspersecond,
-    Decadegreescelsiuspersecond,
-    Hectodegreescelsiuspersecond,
-    Kilodegreescelsiuspersecond
+    NanodegreeCelsiusPerSecond,
+    MicrodegreeCelsiusPerSecond,
+    CentidegreeCelsiusPerSecond,
+    DecidegreeCelsiusPerSecond,
+    DecadegreeCelsiusPerSecond,
+    HectodegreeCelsiusPerSecond,
+    KilodegreeCelsiusPerSecond
 }
 
 export class TemperatureChangeRate {
     private value: number;
     private degreescelsiuspersecondLazy: number | null = null;
     private degreescelsiusperminuteLazy: number | null = null;
-    private nanodegreescelsiuspersecondLazy: number | null = null;
-    private microdegreescelsiuspersecondLazy: number | null = null;
-    private centidegreescelsiuspersecondLazy: number | null = null;
-    private decidegreescelsiuspersecondLazy: number | null = null;
-    private decadegreescelsiuspersecondLazy: number | null = null;
-    private hectodegreescelsiuspersecondLazy: number | null = null;
-    private kilodegreescelsiuspersecondLazy: number | null = null;
+    private nanodegreecelsiuspersecondLazy: number | null = null;
+    private microdegreecelsiuspersecondLazy: number | null = null;
+    private centidegreecelsiuspersecondLazy: number | null = null;
+    private decidegreecelsiuspersecondLazy: number | null = null;
+    private decadegreecelsiuspersecondLazy: number | null = null;
+    private hectodegreecelsiuspersecondLazy: number | null = null;
+    private kilodegreecelsiuspersecondLazy: number | null = null;
 
     public constructor(value: number, fromUnit: TemperatureChangeRateUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -40,53 +40,53 @@ export class TemperatureChangeRate {
         return this.degreescelsiusperminuteLazy = this.convertFromBase(TemperatureChangeRateUnits.DegreesCelsiusPerMinute);
     }
 
-    public get Nanodegreescelsiuspersecond(): number {
-        if(this.nanodegreescelsiuspersecondLazy !== null){
-            return this.nanodegreescelsiuspersecondLazy;
+    public get NanodegreeCelsiusPerSecond(): number {
+        if(this.nanodegreecelsiuspersecondLazy !== null){
+            return this.nanodegreecelsiuspersecondLazy;
         }
-        return this.nanodegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Nanodegreescelsiuspersecond);
+        return this.nanodegreecelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.NanodegreeCelsiusPerSecond);
     }
 
-    public get Microdegreescelsiuspersecond(): number {
-        if(this.microdegreescelsiuspersecondLazy !== null){
-            return this.microdegreescelsiuspersecondLazy;
+    public get MicrodegreeCelsiusPerSecond(): number {
+        if(this.microdegreecelsiuspersecondLazy !== null){
+            return this.microdegreecelsiuspersecondLazy;
         }
-        return this.microdegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Microdegreescelsiuspersecond);
+        return this.microdegreecelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.MicrodegreeCelsiusPerSecond);
     }
 
-    public get Centidegreescelsiuspersecond(): number {
-        if(this.centidegreescelsiuspersecondLazy !== null){
-            return this.centidegreescelsiuspersecondLazy;
+    public get CentidegreeCelsiusPerSecond(): number {
+        if(this.centidegreecelsiuspersecondLazy !== null){
+            return this.centidegreecelsiuspersecondLazy;
         }
-        return this.centidegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Centidegreescelsiuspersecond);
+        return this.centidegreecelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.CentidegreeCelsiusPerSecond);
     }
 
-    public get Decidegreescelsiuspersecond(): number {
-        if(this.decidegreescelsiuspersecondLazy !== null){
-            return this.decidegreescelsiuspersecondLazy;
+    public get DecidegreeCelsiusPerSecond(): number {
+        if(this.decidegreecelsiuspersecondLazy !== null){
+            return this.decidegreecelsiuspersecondLazy;
         }
-        return this.decidegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Decidegreescelsiuspersecond);
+        return this.decidegreecelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.DecidegreeCelsiusPerSecond);
     }
 
-    public get Decadegreescelsiuspersecond(): number {
-        if(this.decadegreescelsiuspersecondLazy !== null){
-            return this.decadegreescelsiuspersecondLazy;
+    public get DecadegreeCelsiusPerSecond(): number {
+        if(this.decadegreecelsiuspersecondLazy !== null){
+            return this.decadegreecelsiuspersecondLazy;
         }
-        return this.decadegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Decadegreescelsiuspersecond);
+        return this.decadegreecelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.DecadegreeCelsiusPerSecond);
     }
 
-    public get Hectodegreescelsiuspersecond(): number {
-        if(this.hectodegreescelsiuspersecondLazy !== null){
-            return this.hectodegreescelsiuspersecondLazy;
+    public get HectodegreeCelsiusPerSecond(): number {
+        if(this.hectodegreecelsiuspersecondLazy !== null){
+            return this.hectodegreecelsiuspersecondLazy;
         }
-        return this.hectodegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Hectodegreescelsiuspersecond);
+        return this.hectodegreecelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.HectodegreeCelsiusPerSecond);
     }
 
-    public get Kilodegreescelsiuspersecond(): number {
-        if(this.kilodegreescelsiuspersecondLazy !== null){
-            return this.kilodegreescelsiuspersecondLazy;
+    public get KilodegreeCelsiusPerSecond(): number {
+        if(this.kilodegreecelsiuspersecondLazy !== null){
+            return this.kilodegreecelsiuspersecondLazy;
         }
-        return this.kilodegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.Kilodegreescelsiuspersecond);
+        return this.kilodegreecelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.KilodegreeCelsiusPerSecond);
     }
 
     public static FromDegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
@@ -97,32 +97,32 @@ export class TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DegreesCelsiusPerMinute);
     }
 
-    public static FromNanodegreescelsiuspersecond(value: number): TemperatureChangeRate {
-        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Nanodegreescelsiuspersecond);
+    public static FromNanodegreeCelsiusPerSecond(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.NanodegreeCelsiusPerSecond);
     }
 
-    public static FromMicrodegreescelsiuspersecond(value: number): TemperatureChangeRate {
-        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Microdegreescelsiuspersecond);
+    public static FromMicrodegreeCelsiusPerSecond(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.MicrodegreeCelsiusPerSecond);
     }
 
-    public static FromCentidegreescelsiuspersecond(value: number): TemperatureChangeRate {
-        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Centidegreescelsiuspersecond);
+    public static FromCentidegreeCelsiusPerSecond(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.CentidegreeCelsiusPerSecond);
     }
 
-    public static FromDecidegreescelsiuspersecond(value: number): TemperatureChangeRate {
-        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Decidegreescelsiuspersecond);
+    public static FromDecidegreeCelsiusPerSecond(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DecidegreeCelsiusPerSecond);
     }
 
-    public static FromDecadegreescelsiuspersecond(value: number): TemperatureChangeRate {
-        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Decadegreescelsiuspersecond);
+    public static FromDecadegreeCelsiusPerSecond(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DecadegreeCelsiusPerSecond);
     }
 
-    public static FromHectodegreescelsiuspersecond(value: number): TemperatureChangeRate {
-        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Hectodegreescelsiuspersecond);
+    public static FromHectodegreeCelsiusPerSecond(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.HectodegreeCelsiusPerSecond);
     }
 
-    public static FromKilodegreescelsiuspersecond(value: number): TemperatureChangeRate {
-        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.Kilodegreescelsiuspersecond);
+    public static FromKilodegreeCelsiusPerSecond(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.KilodegreeCelsiusPerSecond);
     }
 
     private convertFromBase(toUnit: TemperatureChangeRateUnits): number {
@@ -132,19 +132,19 @@ export class TemperatureChangeRate {
                 return this.value;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
                 return this.value*60;
-            case TemperatureChangeRateUnits.Nanodegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.NanodegreeCelsiusPerSecond:
                 return (this.value) / 1e-9;
-            case TemperatureChangeRateUnits.Microdegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.MicrodegreeCelsiusPerSecond:
                 return (this.value) / 0.000001;
-            case TemperatureChangeRateUnits.Centidegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.CentidegreeCelsiusPerSecond:
                 return (this.value) / 0.01;
-            case TemperatureChangeRateUnits.Decidegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.DecidegreeCelsiusPerSecond:
                 return (this.value) / 0.1;
-            case TemperatureChangeRateUnits.Decadegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.DecadegreeCelsiusPerSecond:
                 return (this.value) / 10;
-            case TemperatureChangeRateUnits.Hectodegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.HectodegreeCelsiusPerSecond:
                 return (this.value) / 100;
-            case TemperatureChangeRateUnits.Kilodegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.KilodegreeCelsiusPerSecond:
                 return (this.value) / 1000;
             default:
                 break;
@@ -159,23 +159,51 @@ export class TemperatureChangeRate {
                 return value;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
                 return value/60;
-            case TemperatureChangeRateUnits.Nanodegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.NanodegreeCelsiusPerSecond:
                 return (value) * 1e-9;
-            case TemperatureChangeRateUnits.Microdegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.MicrodegreeCelsiusPerSecond:
                 return (value) * 0.000001;
-            case TemperatureChangeRateUnits.Centidegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.CentidegreeCelsiusPerSecond:
                 return (value) * 0.01;
-            case TemperatureChangeRateUnits.Decidegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.DecidegreeCelsiusPerSecond:
                 return (value) * 0.1;
-            case TemperatureChangeRateUnits.Decadegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.DecadegreeCelsiusPerSecond:
                 return (value) * 10;
-            case TemperatureChangeRateUnits.Hectodegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.HectodegreeCelsiusPerSecond:
                 return (value) * 100;
-            case TemperatureChangeRateUnits.Kilodegreescelsiuspersecond:
+            case TemperatureChangeRateUnits.KilodegreeCelsiusPerSecond:
                 return (value) * 1000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond): string {
+
+        switch (toUnit) {
+            
+            case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
+                return this.DegreesCelsiusPerSecond + ` °C/s`;
+            case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
+                return this.DegreesCelsiusPerMinute + ` °C/min`;
+            case TemperatureChangeRateUnits.NanodegreeCelsiusPerSecond:
+                return this.NanodegreeCelsiusPerSecond + ` °C/s`;
+            case TemperatureChangeRateUnits.MicrodegreeCelsiusPerSecond:
+                return this.MicrodegreeCelsiusPerSecond + ` °C/s`;
+            case TemperatureChangeRateUnits.CentidegreeCelsiusPerSecond:
+                return this.CentidegreeCelsiusPerSecond + ` °C/s`;
+            case TemperatureChangeRateUnits.DecidegreeCelsiusPerSecond:
+                return this.DecidegreeCelsiusPerSecond + ` °C/s`;
+            case TemperatureChangeRateUnits.DecadegreeCelsiusPerSecond:
+                return this.DecadegreeCelsiusPerSecond + ` °C/s`;
+            case TemperatureChangeRateUnits.HectodegreeCelsiusPerSecond:
+                return this.HectodegreeCelsiusPerSecond + ` °C/s`;
+            case TemperatureChangeRateUnits.KilodegreeCelsiusPerSecond:
+                return this.KilodegreeCelsiusPerSecond + ` °C/s`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

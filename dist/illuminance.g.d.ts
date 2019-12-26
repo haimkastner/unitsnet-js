@@ -17,5 +17,6 @@ export declare class Illuminance {
     static FromMegalux(value: number): Illuminance;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: IlluminanceUnits): string;
 }
 //# sourceMappingURL=illuminance.g.d.ts.map

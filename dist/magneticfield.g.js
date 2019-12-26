@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var MagneticFieldUnits;
 (function (MagneticFieldUnits) {
     MagneticFieldUnits[MagneticFieldUnits["Teslas"] = 0] = "Teslas";
-    MagneticFieldUnits[MagneticFieldUnits["Nanoteslas"] = 1] = "Nanoteslas";
-    MagneticFieldUnits[MagneticFieldUnits["Microteslas"] = 2] = "Microteslas";
+    MagneticFieldUnits[MagneticFieldUnits["Nanotesla"] = 1] = "Nanotesla";
+    MagneticFieldUnits[MagneticFieldUnits["Microtesla"] = 2] = "Microtesla";
 })(MagneticFieldUnits = exports.MagneticFieldUnits || (exports.MagneticFieldUnits = {}));
 class MagneticField {
     constructor(value, fromUnit) {
         this.teslasLazy = null;
-        this.nanoteslasLazy = null;
-        this.microteslasLazy = null;
+        this.nanoteslaLazy = null;
+        this.microteslaLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Teslas() {
@@ -19,34 +19,34 @@ class MagneticField {
         }
         return this.teslasLazy = this.convertFromBase(MagneticFieldUnits.Teslas);
     }
-    get Nanoteslas() {
-        if (this.nanoteslasLazy !== null) {
-            return this.nanoteslasLazy;
+    get Nanotesla() {
+        if (this.nanoteslaLazy !== null) {
+            return this.nanoteslaLazy;
         }
-        return this.nanoteslasLazy = this.convertFromBase(MagneticFieldUnits.Nanoteslas);
+        return this.nanoteslaLazy = this.convertFromBase(MagneticFieldUnits.Nanotesla);
     }
-    get Microteslas() {
-        if (this.microteslasLazy !== null) {
-            return this.microteslasLazy;
+    get Microtesla() {
+        if (this.microteslaLazy !== null) {
+            return this.microteslaLazy;
         }
-        return this.microteslasLazy = this.convertFromBase(MagneticFieldUnits.Microteslas);
+        return this.microteslaLazy = this.convertFromBase(MagneticFieldUnits.Microtesla);
     }
     static FromTeslas(value) {
         return new MagneticField(value, MagneticFieldUnits.Teslas);
     }
-    static FromNanoteslas(value) {
-        return new MagneticField(value, MagneticFieldUnits.Nanoteslas);
+    static FromNanotesla(value) {
+        return new MagneticField(value, MagneticFieldUnits.Nanotesla);
     }
-    static FromMicroteslas(value) {
-        return new MagneticField(value, MagneticFieldUnits.Microteslas);
+    static FromMicrotesla(value) {
+        return new MagneticField(value, MagneticFieldUnits.Microtesla);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
             case MagneticFieldUnits.Teslas:
                 return this.value;
-            case MagneticFieldUnits.Nanoteslas:
+            case MagneticFieldUnits.Nanotesla:
                 return (this.value) / 1e-9;
-            case MagneticFieldUnits.Microteslas:
+            case MagneticFieldUnits.Microtesla:
                 return (this.value) / 0.000001;
             default:
                 break;
@@ -57,14 +57,27 @@ class MagneticField {
         switch (fromUnit) {
             case MagneticFieldUnits.Teslas:
                 return value;
-            case MagneticFieldUnits.Nanoteslas:
+            case MagneticFieldUnits.Nanotesla:
                 return (value) * 1e-9;
-            case MagneticFieldUnits.Microteslas:
+            case MagneticFieldUnits.Microtesla:
                 return (value) * 0.000001;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = MagneticFieldUnits.Teslas) {
+        switch (toUnit) {
+            case MagneticFieldUnits.Teslas:
+                return this.Teslas + ` T`;
+            case MagneticFieldUnits.Nanotesla:
+                return this.Nanotesla + ` T`;
+            case MagneticFieldUnits.Microtesla:
+                return this.Microtesla + ` T`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.MagneticField = MagneticField;

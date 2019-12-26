@@ -13,5 +13,6 @@ export declare class RatioChangeRate {
     static FromDecimalFractionsPerSecond(value: number): RatioChangeRate;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: RatioChangeRateUnits): string;
 }
 //# sourceMappingURL=ratiochangerate.g.d.ts.map

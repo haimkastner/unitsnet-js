@@ -29,5 +29,6 @@ export declare class Ratio {
     static FromPartsPerTrillion(value: number): Ratio;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: RatioUnits): string;
 }
 //# sourceMappingURL=ratio.g.d.ts.map

@@ -111,6 +111,25 @@ class Ratio {
         }
         return NaN;
     }
+    toString(toUnit = RatioUnits.DecimalFractions) {
+        switch (toUnit) {
+            case RatioUnits.DecimalFractions:
+                return this.DecimalFractions + ` `;
+            case RatioUnits.Percent:
+                return this.Percent + ` %`;
+            case RatioUnits.PartsPerThousand:
+                return this.PartsPerThousand + ` ‰`;
+            case RatioUnits.PartsPerMillion:
+                return this.PartsPerMillion + ` ppm`;
+            case RatioUnits.PartsPerBillion:
+                return this.PartsPerBillion + ` ppb`;
+            case RatioUnits.PartsPerTrillion:
+                return this.PartsPerTrillion + ` ppt`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.Ratio = Ratio;
 //# sourceMappingURL=ratio.g.js.map

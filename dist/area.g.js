@@ -231,6 +231,41 @@ class Area {
         }
         return NaN;
     }
+    toString(toUnit = AreaUnits.SquareMeters) {
+        switch (toUnit) {
+            case AreaUnits.SquareKilometers:
+                return this.SquareKilometers + ` km²`;
+            case AreaUnits.SquareMeters:
+                return this.SquareMeters + ` m²`;
+            case AreaUnits.SquareDecimeters:
+                return this.SquareDecimeters + ` dm²`;
+            case AreaUnits.SquareCentimeters:
+                return this.SquareCentimeters + ` cm²`;
+            case AreaUnits.SquareMillimeters:
+                return this.SquareMillimeters + ` mm²`;
+            case AreaUnits.SquareMicrometers:
+                return this.SquareMicrometers + ` µm²`;
+            case AreaUnits.SquareMiles:
+                return this.SquareMiles + ` mi²`;
+            case AreaUnits.SquareYards:
+                return this.SquareYards + ` yd²`;
+            case AreaUnits.SquareFeet:
+                return this.SquareFeet + ` ft²`;
+            case AreaUnits.UsSurveySquareFeet:
+                return this.UsSurveySquareFeet + ` ft² (US)`;
+            case AreaUnits.SquareInches:
+                return this.SquareInches + ` in²`;
+            case AreaUnits.Acres:
+                return this.Acres + ` ac`;
+            case AreaUnits.Hectares:
+                return this.Hectares + ` ha`;
+            case AreaUnits.SquareNauticalMiles:
+                return this.SquareNauticalMiles + ` nmi²`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.Area = Area;
 //# sourceMappingURL=area.g.js.map

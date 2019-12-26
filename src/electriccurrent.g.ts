@@ -1,22 +1,22 @@
 export enum ElectricCurrentUnits {
     Amperes,
-    Picoamperes,
-    Nanoamperes,
-    Microamperes,
-    Centiamperes,
-    Kiloamperes,
-    Megaamperes
+    Picoampere,
+    Nanoampere,
+    Microampere,
+    Centiampere,
+    Kiloampere,
+    Megaampere
 }
 
 export class ElectricCurrent {
     private value: number;
     private amperesLazy: number | null = null;
-    private picoamperesLazy: number | null = null;
-    private nanoamperesLazy: number | null = null;
-    private microamperesLazy: number | null = null;
-    private centiamperesLazy: number | null = null;
-    private kiloamperesLazy: number | null = null;
-    private megaamperesLazy: number | null = null;
+    private picoampereLazy: number | null = null;
+    private nanoampereLazy: number | null = null;
+    private microampereLazy: number | null = null;
+    private centiampereLazy: number | null = null;
+    private kiloampereLazy: number | null = null;
+    private megaampereLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricCurrentUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -29,74 +29,74 @@ export class ElectricCurrent {
         return this.amperesLazy = this.convertFromBase(ElectricCurrentUnits.Amperes);
     }
 
-    public get Picoamperes(): number {
-        if(this.picoamperesLazy !== null){
-            return this.picoamperesLazy;
+    public get Picoampere(): number {
+        if(this.picoampereLazy !== null){
+            return this.picoampereLazy;
         }
-        return this.picoamperesLazy = this.convertFromBase(ElectricCurrentUnits.Picoamperes);
+        return this.picoampereLazy = this.convertFromBase(ElectricCurrentUnits.Picoampere);
     }
 
-    public get Nanoamperes(): number {
-        if(this.nanoamperesLazy !== null){
-            return this.nanoamperesLazy;
+    public get Nanoampere(): number {
+        if(this.nanoampereLazy !== null){
+            return this.nanoampereLazy;
         }
-        return this.nanoamperesLazy = this.convertFromBase(ElectricCurrentUnits.Nanoamperes);
+        return this.nanoampereLazy = this.convertFromBase(ElectricCurrentUnits.Nanoampere);
     }
 
-    public get Microamperes(): number {
-        if(this.microamperesLazy !== null){
-            return this.microamperesLazy;
+    public get Microampere(): number {
+        if(this.microampereLazy !== null){
+            return this.microampereLazy;
         }
-        return this.microamperesLazy = this.convertFromBase(ElectricCurrentUnits.Microamperes);
+        return this.microampereLazy = this.convertFromBase(ElectricCurrentUnits.Microampere);
     }
 
-    public get Centiamperes(): number {
-        if(this.centiamperesLazy !== null){
-            return this.centiamperesLazy;
+    public get Centiampere(): number {
+        if(this.centiampereLazy !== null){
+            return this.centiampereLazy;
         }
-        return this.centiamperesLazy = this.convertFromBase(ElectricCurrentUnits.Centiamperes);
+        return this.centiampereLazy = this.convertFromBase(ElectricCurrentUnits.Centiampere);
     }
 
-    public get Kiloamperes(): number {
-        if(this.kiloamperesLazy !== null){
-            return this.kiloamperesLazy;
+    public get Kiloampere(): number {
+        if(this.kiloampereLazy !== null){
+            return this.kiloampereLazy;
         }
-        return this.kiloamperesLazy = this.convertFromBase(ElectricCurrentUnits.Kiloamperes);
+        return this.kiloampereLazy = this.convertFromBase(ElectricCurrentUnits.Kiloampere);
     }
 
-    public get Megaamperes(): number {
-        if(this.megaamperesLazy !== null){
-            return this.megaamperesLazy;
+    public get Megaampere(): number {
+        if(this.megaampereLazy !== null){
+            return this.megaampereLazy;
         }
-        return this.megaamperesLazy = this.convertFromBase(ElectricCurrentUnits.Megaamperes);
+        return this.megaampereLazy = this.convertFromBase(ElectricCurrentUnits.Megaampere);
     }
 
     public static FromAmperes(value: number): ElectricCurrent {
         return new ElectricCurrent(value, ElectricCurrentUnits.Amperes);
     }
 
-    public static FromPicoamperes(value: number): ElectricCurrent {
-        return new ElectricCurrent(value, ElectricCurrentUnits.Picoamperes);
+    public static FromPicoampere(value: number): ElectricCurrent {
+        return new ElectricCurrent(value, ElectricCurrentUnits.Picoampere);
     }
 
-    public static FromNanoamperes(value: number): ElectricCurrent {
-        return new ElectricCurrent(value, ElectricCurrentUnits.Nanoamperes);
+    public static FromNanoampere(value: number): ElectricCurrent {
+        return new ElectricCurrent(value, ElectricCurrentUnits.Nanoampere);
     }
 
-    public static FromMicroamperes(value: number): ElectricCurrent {
-        return new ElectricCurrent(value, ElectricCurrentUnits.Microamperes);
+    public static FromMicroampere(value: number): ElectricCurrent {
+        return new ElectricCurrent(value, ElectricCurrentUnits.Microampere);
     }
 
-    public static FromCentiamperes(value: number): ElectricCurrent {
-        return new ElectricCurrent(value, ElectricCurrentUnits.Centiamperes);
+    public static FromCentiampere(value: number): ElectricCurrent {
+        return new ElectricCurrent(value, ElectricCurrentUnits.Centiampere);
     }
 
-    public static FromKiloamperes(value: number): ElectricCurrent {
-        return new ElectricCurrent(value, ElectricCurrentUnits.Kiloamperes);
+    public static FromKiloampere(value: number): ElectricCurrent {
+        return new ElectricCurrent(value, ElectricCurrentUnits.Kiloampere);
     }
 
-    public static FromMegaamperes(value: number): ElectricCurrent {
-        return new ElectricCurrent(value, ElectricCurrentUnits.Megaamperes);
+    public static FromMegaampere(value: number): ElectricCurrent {
+        return new ElectricCurrent(value, ElectricCurrentUnits.Megaampere);
     }
 
     private convertFromBase(toUnit: ElectricCurrentUnits): number {
@@ -104,17 +104,17 @@ export class ElectricCurrent {
                 
             case ElectricCurrentUnits.Amperes:
                 return this.value;
-            case ElectricCurrentUnits.Picoamperes:
+            case ElectricCurrentUnits.Picoampere:
                 return (this.value) / 1e-12;
-            case ElectricCurrentUnits.Nanoamperes:
+            case ElectricCurrentUnits.Nanoampere:
                 return (this.value) / 1e-9;
-            case ElectricCurrentUnits.Microamperes:
+            case ElectricCurrentUnits.Microampere:
                 return (this.value) / 0.000001;
-            case ElectricCurrentUnits.Centiamperes:
+            case ElectricCurrentUnits.Centiampere:
                 return (this.value) / 0.01;
-            case ElectricCurrentUnits.Kiloamperes:
+            case ElectricCurrentUnits.Kiloampere:
                 return (this.value) / 1000;
-            case ElectricCurrentUnits.Megaamperes:
+            case ElectricCurrentUnits.Megaampere:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -127,21 +127,45 @@ export class ElectricCurrent {
                 
             case ElectricCurrentUnits.Amperes:
                 return value;
-            case ElectricCurrentUnits.Picoamperes:
+            case ElectricCurrentUnits.Picoampere:
                 return (value) * 1e-12;
-            case ElectricCurrentUnits.Nanoamperes:
+            case ElectricCurrentUnits.Nanoampere:
                 return (value) * 1e-9;
-            case ElectricCurrentUnits.Microamperes:
+            case ElectricCurrentUnits.Microampere:
                 return (value) * 0.000001;
-            case ElectricCurrentUnits.Centiamperes:
+            case ElectricCurrentUnits.Centiampere:
                 return (value) * 0.01;
-            case ElectricCurrentUnits.Kiloamperes:
+            case ElectricCurrentUnits.Kiloampere:
                 return (value) * 1000;
-            case ElectricCurrentUnits.Megaamperes:
+            case ElectricCurrentUnits.Megaampere:
                 return (value) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes): string {
+
+        switch (toUnit) {
+            
+            case ElectricCurrentUnits.Amperes:
+                return this.Amperes + ` A`;
+            case ElectricCurrentUnits.Picoampere:
+                return this.Picoampere + ` A`;
+            case ElectricCurrentUnits.Nanoampere:
+                return this.Nanoampere + ` A`;
+            case ElectricCurrentUnits.Microampere:
+                return this.Microampere + ` A`;
+            case ElectricCurrentUnits.Centiampere:
+                return this.Centiampere + ` A`;
+            case ElectricCurrentUnits.Kiloampere:
+                return this.Kiloampere + ` A`;
+            case ElectricCurrentUnits.Megaampere:
+                return this.Megaampere + ` A`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

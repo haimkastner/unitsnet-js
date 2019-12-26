@@ -21,5 +21,6 @@ export declare class FuelEfficiency {
     static FromKilometersPerLiters(value: number): FuelEfficiency;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: FuelEfficiencyUnits): string;
 }
 //# sourceMappingURL=fuelefficiency.g.d.ts.map

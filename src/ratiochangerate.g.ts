@@ -59,4 +59,18 @@ export class RatioChangeRate {
         }
         return NaN;
     }
+
+    public toString(toUnit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond): string {
+
+        switch (toUnit) {
+            
+            case RatioChangeRateUnits.PercentsPerSecond:
+                return this.PercentsPerSecond + ` %/s`;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond:
+                return this.DecimalFractionsPerSecond + ` /s`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

@@ -36,6 +36,15 @@ class Permeability {
         }
         return NaN;
     }
+    toString(toUnit = PermeabilityUnits.HenriesPerMeter) {
+        switch (toUnit) {
+            case PermeabilityUnits.HenriesPerMeter:
+                return this.HenriesPerMeter + ` H/m`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.Permeability = Permeability;
 //# sourceMappingURL=permeability.g.js.map

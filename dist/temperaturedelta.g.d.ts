@@ -37,5 +37,6 @@ export declare class TemperatureDelta {
     static FromDegreesRoemer(value: number): TemperatureDelta;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: TemperatureDeltaUnits): string;
 }
 //# sourceMappingURL=temperaturedelta.g.d.ts.map

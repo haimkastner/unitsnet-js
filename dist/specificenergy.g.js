@@ -6,11 +6,11 @@ var SpecificEnergyUnits;
     SpecificEnergyUnits[SpecificEnergyUnits["CaloriesPerGram"] = 1] = "CaloriesPerGram";
     SpecificEnergyUnits[SpecificEnergyUnits["WattHoursPerKilogram"] = 2] = "WattHoursPerKilogram";
     SpecificEnergyUnits[SpecificEnergyUnits["BtuPerPound"] = 3] = "BtuPerPound";
-    SpecificEnergyUnits[SpecificEnergyUnits["Kilojoulesperkilogram"] = 4] = "Kilojoulesperkilogram";
-    SpecificEnergyUnits[SpecificEnergyUnits["Megajoulesperkilogram"] = 5] = "Megajoulesperkilogram";
-    SpecificEnergyUnits[SpecificEnergyUnits["Kilocaloriespergram"] = 6] = "Kilocaloriespergram";
-    SpecificEnergyUnits[SpecificEnergyUnits["Kilowatthoursperkilogram"] = 7] = "Kilowatthoursperkilogram";
-    SpecificEnergyUnits[SpecificEnergyUnits["Megawatthoursperkilogram"] = 8] = "Megawatthoursperkilogram";
+    SpecificEnergyUnits[SpecificEnergyUnits["KilojoulePerKilogram"] = 4] = "KilojoulePerKilogram";
+    SpecificEnergyUnits[SpecificEnergyUnits["MegajoulePerKilogram"] = 5] = "MegajoulePerKilogram";
+    SpecificEnergyUnits[SpecificEnergyUnits["KilocaloriePerGram"] = 6] = "KilocaloriePerGram";
+    SpecificEnergyUnits[SpecificEnergyUnits["KilowattHourPerKilogram"] = 7] = "KilowattHourPerKilogram";
+    SpecificEnergyUnits[SpecificEnergyUnits["MegawattHourPerKilogram"] = 8] = "MegawattHourPerKilogram";
 })(SpecificEnergyUnits = exports.SpecificEnergyUnits || (exports.SpecificEnergyUnits = {}));
 class SpecificEnergy {
     constructor(value, fromUnit) {
@@ -18,11 +18,11 @@ class SpecificEnergy {
         this.caloriespergramLazy = null;
         this.watthoursperkilogramLazy = null;
         this.btuperpoundLazy = null;
-        this.kilojoulesperkilogramLazy = null;
-        this.megajoulesperkilogramLazy = null;
-        this.kilocaloriespergramLazy = null;
-        this.kilowatthoursperkilogramLazy = null;
-        this.megawatthoursperkilogramLazy = null;
+        this.kilojouleperkilogramLazy = null;
+        this.megajouleperkilogramLazy = null;
+        this.kilocaloriepergramLazy = null;
+        this.kilowatthourperkilogramLazy = null;
+        this.megawatthourperkilogramLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get JoulesPerKilogram() {
@@ -49,35 +49,35 @@ class SpecificEnergy {
         }
         return this.btuperpoundLazy = this.convertFromBase(SpecificEnergyUnits.BtuPerPound);
     }
-    get Kilojoulesperkilogram() {
-        if (this.kilojoulesperkilogramLazy !== null) {
-            return this.kilojoulesperkilogramLazy;
+    get KilojoulePerKilogram() {
+        if (this.kilojouleperkilogramLazy !== null) {
+            return this.kilojouleperkilogramLazy;
         }
-        return this.kilojoulesperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.Kilojoulesperkilogram);
+        return this.kilojouleperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.KilojoulePerKilogram);
     }
-    get Megajoulesperkilogram() {
-        if (this.megajoulesperkilogramLazy !== null) {
-            return this.megajoulesperkilogramLazy;
+    get MegajoulePerKilogram() {
+        if (this.megajouleperkilogramLazy !== null) {
+            return this.megajouleperkilogramLazy;
         }
-        return this.megajoulesperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.Megajoulesperkilogram);
+        return this.megajouleperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.MegajoulePerKilogram);
     }
-    get Kilocaloriespergram() {
-        if (this.kilocaloriespergramLazy !== null) {
-            return this.kilocaloriespergramLazy;
+    get KilocaloriePerGram() {
+        if (this.kilocaloriepergramLazy !== null) {
+            return this.kilocaloriepergramLazy;
         }
-        return this.kilocaloriespergramLazy = this.convertFromBase(SpecificEnergyUnits.Kilocaloriespergram);
+        return this.kilocaloriepergramLazy = this.convertFromBase(SpecificEnergyUnits.KilocaloriePerGram);
     }
-    get Kilowatthoursperkilogram() {
-        if (this.kilowatthoursperkilogramLazy !== null) {
-            return this.kilowatthoursperkilogramLazy;
+    get KilowattHourPerKilogram() {
+        if (this.kilowatthourperkilogramLazy !== null) {
+            return this.kilowatthourperkilogramLazy;
         }
-        return this.kilowatthoursperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.Kilowatthoursperkilogram);
+        return this.kilowatthourperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.KilowattHourPerKilogram);
     }
-    get Megawatthoursperkilogram() {
-        if (this.megawatthoursperkilogramLazy !== null) {
-            return this.megawatthoursperkilogramLazy;
+    get MegawattHourPerKilogram() {
+        if (this.megawatthourperkilogramLazy !== null) {
+            return this.megawatthourperkilogramLazy;
         }
-        return this.megawatthoursperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.Megawatthoursperkilogram);
+        return this.megawatthourperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.MegawattHourPerKilogram);
     }
     static FromJoulesPerKilogram(value) {
         return new SpecificEnergy(value, SpecificEnergyUnits.JoulesPerKilogram);
@@ -91,20 +91,20 @@ class SpecificEnergy {
     static FromBtuPerPound(value) {
         return new SpecificEnergy(value, SpecificEnergyUnits.BtuPerPound);
     }
-    static FromKilojoulesperkilogram(value) {
-        return new SpecificEnergy(value, SpecificEnergyUnits.Kilojoulesperkilogram);
+    static FromKilojoulePerKilogram(value) {
+        return new SpecificEnergy(value, SpecificEnergyUnits.KilojoulePerKilogram);
     }
-    static FromMegajoulesperkilogram(value) {
-        return new SpecificEnergy(value, SpecificEnergyUnits.Megajoulesperkilogram);
+    static FromMegajoulePerKilogram(value) {
+        return new SpecificEnergy(value, SpecificEnergyUnits.MegajoulePerKilogram);
     }
-    static FromKilocaloriespergram(value) {
-        return new SpecificEnergy(value, SpecificEnergyUnits.Kilocaloriespergram);
+    static FromKilocaloriePerGram(value) {
+        return new SpecificEnergy(value, SpecificEnergyUnits.KilocaloriePerGram);
     }
-    static FromKilowatthoursperkilogram(value) {
-        return new SpecificEnergy(value, SpecificEnergyUnits.Kilowatthoursperkilogram);
+    static FromKilowattHourPerKilogram(value) {
+        return new SpecificEnergy(value, SpecificEnergyUnits.KilowattHourPerKilogram);
     }
-    static FromMegawatthoursperkilogram(value) {
-        return new SpecificEnergy(value, SpecificEnergyUnits.Megawatthoursperkilogram);
+    static FromMegawattHourPerKilogram(value) {
+        return new SpecificEnergy(value, SpecificEnergyUnits.MegawattHourPerKilogram);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -116,15 +116,15 @@ class SpecificEnergy {
                 return this.value / 3.6e3;
             case SpecificEnergyUnits.BtuPerPound:
                 return this.value / 2326.000075362;
-            case SpecificEnergyUnits.Kilojoulesperkilogram:
+            case SpecificEnergyUnits.KilojoulePerKilogram:
                 return (this.value) / 1000;
-            case SpecificEnergyUnits.Megajoulesperkilogram:
+            case SpecificEnergyUnits.MegajoulePerKilogram:
                 return (this.value) / 1000000;
-            case SpecificEnergyUnits.Kilocaloriespergram:
+            case SpecificEnergyUnits.KilocaloriePerGram:
                 return (this.value / 4.184e3) / 1000;
-            case SpecificEnergyUnits.Kilowatthoursperkilogram:
+            case SpecificEnergyUnits.KilowattHourPerKilogram:
                 return (this.value / 3.6e3) / 1000;
-            case SpecificEnergyUnits.Megawatthoursperkilogram:
+            case SpecificEnergyUnits.MegawattHourPerKilogram:
                 return (this.value / 3.6e3) / 1000000;
             default:
                 break;
@@ -141,20 +141,45 @@ class SpecificEnergy {
                 return value * 3.6e3;
             case SpecificEnergyUnits.BtuPerPound:
                 return value * 2326.000075362;
-            case SpecificEnergyUnits.Kilojoulesperkilogram:
+            case SpecificEnergyUnits.KilojoulePerKilogram:
                 return (value) * 1000;
-            case SpecificEnergyUnits.Megajoulesperkilogram:
+            case SpecificEnergyUnits.MegajoulePerKilogram:
                 return (value) * 1000000;
-            case SpecificEnergyUnits.Kilocaloriespergram:
+            case SpecificEnergyUnits.KilocaloriePerGram:
                 return (value * 4.184e3) * 1000;
-            case SpecificEnergyUnits.Kilowatthoursperkilogram:
+            case SpecificEnergyUnits.KilowattHourPerKilogram:
                 return (value * 3.6e3) * 1000;
-            case SpecificEnergyUnits.Megawatthoursperkilogram:
+            case SpecificEnergyUnits.MegawattHourPerKilogram:
                 return (value * 3.6e3) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = SpecificEnergyUnits.JoulesPerKilogram) {
+        switch (toUnit) {
+            case SpecificEnergyUnits.JoulesPerKilogram:
+                return this.JoulesPerKilogram + ` J/kg`;
+            case SpecificEnergyUnits.CaloriesPerGram:
+                return this.CaloriesPerGram + ` cal/g`;
+            case SpecificEnergyUnits.WattHoursPerKilogram:
+                return this.WattHoursPerKilogram + ` Wh/kg`;
+            case SpecificEnergyUnits.BtuPerPound:
+                return this.BtuPerPound + ` btu/lb`;
+            case SpecificEnergyUnits.KilojoulePerKilogram:
+                return this.KilojoulePerKilogram + ` J/kg`;
+            case SpecificEnergyUnits.MegajoulePerKilogram:
+                return this.MegajoulePerKilogram + ` J/kg`;
+            case SpecificEnergyUnits.KilocaloriePerGram:
+                return this.KilocaloriePerGram + ` cal/g`;
+            case SpecificEnergyUnits.KilowattHourPerKilogram:
+                return this.KilowattHourPerKilogram + ` Wh/kg`;
+            case SpecificEnergyUnits.MegawattHourPerKilogram:
+                return this.MegawattHourPerKilogram + ` Wh/kg`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.SpecificEnergy = SpecificEnergy;

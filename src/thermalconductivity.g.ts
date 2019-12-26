@@ -59,4 +59,18 @@ export class ThermalConductivity {
         }
         return NaN;
     }
+
+    public toString(toUnit: ThermalConductivityUnits = ThermalConductivityUnits.WattsPerMeterKelvin): string {
+
+        switch (toUnit) {
+            
+            case ThermalConductivityUnits.WattsPerMeterKelvin:
+                return this.WattsPerMeterKelvin + ` W/m·K`;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
+                return this.BtusPerHourFootFahrenheit + ` BTU/h·ft·°F`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

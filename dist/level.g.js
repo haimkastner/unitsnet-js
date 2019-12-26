@@ -51,6 +51,17 @@ class Level {
         }
         return NaN;
     }
+    toString(toUnit = LevelUnits.Decibels) {
+        switch (toUnit) {
+            case LevelUnits.Decibels:
+                return this.Decibels + ` dB`;
+            case LevelUnits.Nepers:
+                return this.Nepers + ` Np`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.Level = Level;
 //# sourceMappingURL=level.g.js.map

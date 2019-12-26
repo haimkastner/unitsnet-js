@@ -3,11 +3,11 @@ export declare enum SpecificEnergyUnits {
     CaloriesPerGram = 1,
     WattHoursPerKilogram = 2,
     BtuPerPound = 3,
-    Kilojoulesperkilogram = 4,
-    Megajoulesperkilogram = 5,
-    Kilocaloriespergram = 6,
-    Kilowatthoursperkilogram = 7,
-    Megawatthoursperkilogram = 8
+    KilojoulePerKilogram = 4,
+    MegajoulePerKilogram = 5,
+    KilocaloriePerGram = 6,
+    KilowattHourPerKilogram = 7,
+    MegawattHourPerKilogram = 8
 }
 export declare class SpecificEnergy {
     private value;
@@ -15,31 +15,32 @@ export declare class SpecificEnergy {
     private caloriespergramLazy;
     private watthoursperkilogramLazy;
     private btuperpoundLazy;
-    private kilojoulesperkilogramLazy;
-    private megajoulesperkilogramLazy;
-    private kilocaloriespergramLazy;
-    private kilowatthoursperkilogramLazy;
-    private megawatthoursperkilogramLazy;
+    private kilojouleperkilogramLazy;
+    private megajouleperkilogramLazy;
+    private kilocaloriepergramLazy;
+    private kilowatthourperkilogramLazy;
+    private megawatthourperkilogramLazy;
     constructor(value: number, fromUnit: SpecificEnergyUnits);
     get JoulesPerKilogram(): number;
     get CaloriesPerGram(): number;
     get WattHoursPerKilogram(): number;
     get BtuPerPound(): number;
-    get Kilojoulesperkilogram(): number;
-    get Megajoulesperkilogram(): number;
-    get Kilocaloriespergram(): number;
-    get Kilowatthoursperkilogram(): number;
-    get Megawatthoursperkilogram(): number;
+    get KilojoulePerKilogram(): number;
+    get MegajoulePerKilogram(): number;
+    get KilocaloriePerGram(): number;
+    get KilowattHourPerKilogram(): number;
+    get MegawattHourPerKilogram(): number;
     static FromJoulesPerKilogram(value: number): SpecificEnergy;
     static FromCaloriesPerGram(value: number): SpecificEnergy;
     static FromWattHoursPerKilogram(value: number): SpecificEnergy;
     static FromBtuPerPound(value: number): SpecificEnergy;
-    static FromKilojoulesperkilogram(value: number): SpecificEnergy;
-    static FromMegajoulesperkilogram(value: number): SpecificEnergy;
-    static FromKilocaloriespergram(value: number): SpecificEnergy;
-    static FromKilowatthoursperkilogram(value: number): SpecificEnergy;
-    static FromMegawatthoursperkilogram(value: number): SpecificEnergy;
+    static FromKilojoulePerKilogram(value: number): SpecificEnergy;
+    static FromMegajoulePerKilogram(value: number): SpecificEnergy;
+    static FromKilocaloriePerGram(value: number): SpecificEnergy;
+    static FromKilowattHourPerKilogram(value: number): SpecificEnergy;
+    static FromMegawattHourPerKilogram(value: number): SpecificEnergy;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: SpecificEnergyUnits): string;
 }
 //# sourceMappingURL=specificenergy.g.d.ts.map

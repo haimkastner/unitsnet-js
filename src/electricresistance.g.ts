@@ -1,16 +1,16 @@
 export enum ElectricResistanceUnits {
     Ohms,
-    Kiloohms,
-    Megaohms,
-    Gigaohms
+    Kiloohm,
+    Megaohm,
+    Gigaohm
 }
 
 export class ElectricResistance {
     private value: number;
     private ohmsLazy: number | null = null;
-    private kiloohmsLazy: number | null = null;
-    private megaohmsLazy: number | null = null;
-    private gigaohmsLazy: number | null = null;
+    private kiloohmLazy: number | null = null;
+    private megaohmLazy: number | null = null;
+    private gigaohmLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricResistanceUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -23,41 +23,41 @@ export class ElectricResistance {
         return this.ohmsLazy = this.convertFromBase(ElectricResistanceUnits.Ohms);
     }
 
-    public get Kiloohms(): number {
-        if(this.kiloohmsLazy !== null){
-            return this.kiloohmsLazy;
+    public get Kiloohm(): number {
+        if(this.kiloohmLazy !== null){
+            return this.kiloohmLazy;
         }
-        return this.kiloohmsLazy = this.convertFromBase(ElectricResistanceUnits.Kiloohms);
+        return this.kiloohmLazy = this.convertFromBase(ElectricResistanceUnits.Kiloohm);
     }
 
-    public get Megaohms(): number {
-        if(this.megaohmsLazy !== null){
-            return this.megaohmsLazy;
+    public get Megaohm(): number {
+        if(this.megaohmLazy !== null){
+            return this.megaohmLazy;
         }
-        return this.megaohmsLazy = this.convertFromBase(ElectricResistanceUnits.Megaohms);
+        return this.megaohmLazy = this.convertFromBase(ElectricResistanceUnits.Megaohm);
     }
 
-    public get Gigaohms(): number {
-        if(this.gigaohmsLazy !== null){
-            return this.gigaohmsLazy;
+    public get Gigaohm(): number {
+        if(this.gigaohmLazy !== null){
+            return this.gigaohmLazy;
         }
-        return this.gigaohmsLazy = this.convertFromBase(ElectricResistanceUnits.Gigaohms);
+        return this.gigaohmLazy = this.convertFromBase(ElectricResistanceUnits.Gigaohm);
     }
 
     public static FromOhms(value: number): ElectricResistance {
         return new ElectricResistance(value, ElectricResistanceUnits.Ohms);
     }
 
-    public static FromKiloohms(value: number): ElectricResistance {
-        return new ElectricResistance(value, ElectricResistanceUnits.Kiloohms);
+    public static FromKiloohm(value: number): ElectricResistance {
+        return new ElectricResistance(value, ElectricResistanceUnits.Kiloohm);
     }
 
-    public static FromMegaohms(value: number): ElectricResistance {
-        return new ElectricResistance(value, ElectricResistanceUnits.Megaohms);
+    public static FromMegaohm(value: number): ElectricResistance {
+        return new ElectricResistance(value, ElectricResistanceUnits.Megaohm);
     }
 
-    public static FromGigaohms(value: number): ElectricResistance {
-        return new ElectricResistance(value, ElectricResistanceUnits.Gigaohms);
+    public static FromGigaohm(value: number): ElectricResistance {
+        return new ElectricResistance(value, ElectricResistanceUnits.Gigaohm);
     }
 
     private convertFromBase(toUnit: ElectricResistanceUnits): number {
@@ -65,11 +65,11 @@ export class ElectricResistance {
                 
             case ElectricResistanceUnits.Ohms:
                 return this.value;
-            case ElectricResistanceUnits.Kiloohms:
+            case ElectricResistanceUnits.Kiloohm:
                 return (this.value) / 1000;
-            case ElectricResistanceUnits.Megaohms:
+            case ElectricResistanceUnits.Megaohm:
                 return (this.value) / 1000000;
-            case ElectricResistanceUnits.Gigaohms:
+            case ElectricResistanceUnits.Gigaohm:
                 return (this.value) / 1000000000;
             default:
                 break;
@@ -82,15 +82,33 @@ export class ElectricResistance {
                 
             case ElectricResistanceUnits.Ohms:
                 return value;
-            case ElectricResistanceUnits.Kiloohms:
+            case ElectricResistanceUnits.Kiloohm:
                 return (value) * 1000;
-            case ElectricResistanceUnits.Megaohms:
+            case ElectricResistanceUnits.Megaohm:
                 return (value) * 1000000;
-            case ElectricResistanceUnits.Gigaohms:
+            case ElectricResistanceUnits.Gigaohm:
                 return (value) * 1000000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: ElectricResistanceUnits = ElectricResistanceUnits.Ohms): string {
+
+        switch (toUnit) {
+            
+            case ElectricResistanceUnits.Ohms:
+                return this.Ohms + ` Ω`;
+            case ElectricResistanceUnits.Kiloohm:
+                return this.Kiloohm + ` Ω`;
+            case ElectricResistanceUnits.Megaohm:
+                return this.Megaohm + ` Ω`;
+            case ElectricResistanceUnits.Gigaohm:
+                return this.Gigaohm + ` Ω`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

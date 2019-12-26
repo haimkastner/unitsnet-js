@@ -11,25 +11,25 @@ export enum MassFlowUnits {
     PoundsPerSecond,
     TonnesPerDay,
     ShortTonsPerHour,
-    Nanogramspersecond,
-    Microgramspersecond,
-    Centigramspersecond,
-    Decigramspersecond,
-    Decagramspersecond,
-    Hectogramspersecond,
-    Kilogramspersecond,
-    Nanogramsperday,
-    Microgramsperday,
-    Centigramsperday,
-    Decigramsperday,
-    Decagramsperday,
-    Hectogramsperday,
-    Kilogramsperday,
-    Megagramsperday,
-    Megapoundsperday,
-    Megapoundsperhour,
-    Megapoundsperminute,
-    Megapoundspersecond
+    NanogramPerSecond,
+    MicrogramPerSecond,
+    CentigramPerSecond,
+    DecigramPerSecond,
+    DecagramPerSecond,
+    HectogramPerSecond,
+    KilogramPerSecond,
+    NanogramPerDay,
+    MicrogramPerDay,
+    CentigramPerDay,
+    DecigramPerDay,
+    DecagramPerDay,
+    HectogramPerDay,
+    KilogramPerDay,
+    MegagramPerDay,
+    MegapoundPerDay,
+    MegapoundPerHour,
+    MegapoundPerMinute,
+    MegapoundPerSecond
 }
 
 export class MassFlow {
@@ -46,25 +46,25 @@ export class MassFlow {
     private poundspersecondLazy: number | null = null;
     private tonnesperdayLazy: number | null = null;
     private shorttonsperhourLazy: number | null = null;
-    private nanogramspersecondLazy: number | null = null;
-    private microgramspersecondLazy: number | null = null;
-    private centigramspersecondLazy: number | null = null;
-    private decigramspersecondLazy: number | null = null;
-    private decagramspersecondLazy: number | null = null;
-    private hectogramspersecondLazy: number | null = null;
-    private kilogramspersecondLazy: number | null = null;
-    private nanogramsperdayLazy: number | null = null;
-    private microgramsperdayLazy: number | null = null;
-    private centigramsperdayLazy: number | null = null;
-    private decigramsperdayLazy: number | null = null;
-    private decagramsperdayLazy: number | null = null;
-    private hectogramsperdayLazy: number | null = null;
-    private kilogramsperdayLazy: number | null = null;
-    private megagramsperdayLazy: number | null = null;
-    private megapoundsperdayLazy: number | null = null;
-    private megapoundsperhourLazy: number | null = null;
-    private megapoundsperminuteLazy: number | null = null;
-    private megapoundspersecondLazy: number | null = null;
+    private nanogrampersecondLazy: number | null = null;
+    private microgrampersecondLazy: number | null = null;
+    private centigrampersecondLazy: number | null = null;
+    private decigrampersecondLazy: number | null = null;
+    private decagrampersecondLazy: number | null = null;
+    private hectogrampersecondLazy: number | null = null;
+    private kilogrampersecondLazy: number | null = null;
+    private nanogramperdayLazy: number | null = null;
+    private microgramperdayLazy: number | null = null;
+    private centigramperdayLazy: number | null = null;
+    private decigramperdayLazy: number | null = null;
+    private decagramperdayLazy: number | null = null;
+    private hectogramperdayLazy: number | null = null;
+    private kilogramperdayLazy: number | null = null;
+    private megagramperdayLazy: number | null = null;
+    private megapoundperdayLazy: number | null = null;
+    private megapoundperhourLazy: number | null = null;
+    private megapoundperminuteLazy: number | null = null;
+    private megapoundpersecondLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MassFlowUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -154,137 +154,137 @@ export class MassFlow {
         return this.shorttonsperhourLazy = this.convertFromBase(MassFlowUnits.ShortTonsPerHour);
     }
 
-    public get Nanogramspersecond(): number {
-        if(this.nanogramspersecondLazy !== null){
-            return this.nanogramspersecondLazy;
+    public get NanogramPerSecond(): number {
+        if(this.nanogrampersecondLazy !== null){
+            return this.nanogrampersecondLazy;
         }
-        return this.nanogramspersecondLazy = this.convertFromBase(MassFlowUnits.Nanogramspersecond);
+        return this.nanogrampersecondLazy = this.convertFromBase(MassFlowUnits.NanogramPerSecond);
     }
 
-    public get Microgramspersecond(): number {
-        if(this.microgramspersecondLazy !== null){
-            return this.microgramspersecondLazy;
+    public get MicrogramPerSecond(): number {
+        if(this.microgrampersecondLazy !== null){
+            return this.microgrampersecondLazy;
         }
-        return this.microgramspersecondLazy = this.convertFromBase(MassFlowUnits.Microgramspersecond);
+        return this.microgrampersecondLazy = this.convertFromBase(MassFlowUnits.MicrogramPerSecond);
     }
 
-    public get Centigramspersecond(): number {
-        if(this.centigramspersecondLazy !== null){
-            return this.centigramspersecondLazy;
+    public get CentigramPerSecond(): number {
+        if(this.centigrampersecondLazy !== null){
+            return this.centigrampersecondLazy;
         }
-        return this.centigramspersecondLazy = this.convertFromBase(MassFlowUnits.Centigramspersecond);
+        return this.centigrampersecondLazy = this.convertFromBase(MassFlowUnits.CentigramPerSecond);
     }
 
-    public get Decigramspersecond(): number {
-        if(this.decigramspersecondLazy !== null){
-            return this.decigramspersecondLazy;
+    public get DecigramPerSecond(): number {
+        if(this.decigrampersecondLazy !== null){
+            return this.decigrampersecondLazy;
         }
-        return this.decigramspersecondLazy = this.convertFromBase(MassFlowUnits.Decigramspersecond);
+        return this.decigrampersecondLazy = this.convertFromBase(MassFlowUnits.DecigramPerSecond);
     }
 
-    public get Decagramspersecond(): number {
-        if(this.decagramspersecondLazy !== null){
-            return this.decagramspersecondLazy;
+    public get DecagramPerSecond(): number {
+        if(this.decagrampersecondLazy !== null){
+            return this.decagrampersecondLazy;
         }
-        return this.decagramspersecondLazy = this.convertFromBase(MassFlowUnits.Decagramspersecond);
+        return this.decagrampersecondLazy = this.convertFromBase(MassFlowUnits.DecagramPerSecond);
     }
 
-    public get Hectogramspersecond(): number {
-        if(this.hectogramspersecondLazy !== null){
-            return this.hectogramspersecondLazy;
+    public get HectogramPerSecond(): number {
+        if(this.hectogrampersecondLazy !== null){
+            return this.hectogrampersecondLazy;
         }
-        return this.hectogramspersecondLazy = this.convertFromBase(MassFlowUnits.Hectogramspersecond);
+        return this.hectogrampersecondLazy = this.convertFromBase(MassFlowUnits.HectogramPerSecond);
     }
 
-    public get Kilogramspersecond(): number {
-        if(this.kilogramspersecondLazy !== null){
-            return this.kilogramspersecondLazy;
+    public get KilogramPerSecond(): number {
+        if(this.kilogrampersecondLazy !== null){
+            return this.kilogrampersecondLazy;
         }
-        return this.kilogramspersecondLazy = this.convertFromBase(MassFlowUnits.Kilogramspersecond);
+        return this.kilogrampersecondLazy = this.convertFromBase(MassFlowUnits.KilogramPerSecond);
     }
 
-    public get Nanogramsperday(): number {
-        if(this.nanogramsperdayLazy !== null){
-            return this.nanogramsperdayLazy;
+    public get NanogramPerDay(): number {
+        if(this.nanogramperdayLazy !== null){
+            return this.nanogramperdayLazy;
         }
-        return this.nanogramsperdayLazy = this.convertFromBase(MassFlowUnits.Nanogramsperday);
+        return this.nanogramperdayLazy = this.convertFromBase(MassFlowUnits.NanogramPerDay);
     }
 
-    public get Microgramsperday(): number {
-        if(this.microgramsperdayLazy !== null){
-            return this.microgramsperdayLazy;
+    public get MicrogramPerDay(): number {
+        if(this.microgramperdayLazy !== null){
+            return this.microgramperdayLazy;
         }
-        return this.microgramsperdayLazy = this.convertFromBase(MassFlowUnits.Microgramsperday);
+        return this.microgramperdayLazy = this.convertFromBase(MassFlowUnits.MicrogramPerDay);
     }
 
-    public get Centigramsperday(): number {
-        if(this.centigramsperdayLazy !== null){
-            return this.centigramsperdayLazy;
+    public get CentigramPerDay(): number {
+        if(this.centigramperdayLazy !== null){
+            return this.centigramperdayLazy;
         }
-        return this.centigramsperdayLazy = this.convertFromBase(MassFlowUnits.Centigramsperday);
+        return this.centigramperdayLazy = this.convertFromBase(MassFlowUnits.CentigramPerDay);
     }
 
-    public get Decigramsperday(): number {
-        if(this.decigramsperdayLazy !== null){
-            return this.decigramsperdayLazy;
+    public get DecigramPerDay(): number {
+        if(this.decigramperdayLazy !== null){
+            return this.decigramperdayLazy;
         }
-        return this.decigramsperdayLazy = this.convertFromBase(MassFlowUnits.Decigramsperday);
+        return this.decigramperdayLazy = this.convertFromBase(MassFlowUnits.DecigramPerDay);
     }
 
-    public get Decagramsperday(): number {
-        if(this.decagramsperdayLazy !== null){
-            return this.decagramsperdayLazy;
+    public get DecagramPerDay(): number {
+        if(this.decagramperdayLazy !== null){
+            return this.decagramperdayLazy;
         }
-        return this.decagramsperdayLazy = this.convertFromBase(MassFlowUnits.Decagramsperday);
+        return this.decagramperdayLazy = this.convertFromBase(MassFlowUnits.DecagramPerDay);
     }
 
-    public get Hectogramsperday(): number {
-        if(this.hectogramsperdayLazy !== null){
-            return this.hectogramsperdayLazy;
+    public get HectogramPerDay(): number {
+        if(this.hectogramperdayLazy !== null){
+            return this.hectogramperdayLazy;
         }
-        return this.hectogramsperdayLazy = this.convertFromBase(MassFlowUnits.Hectogramsperday);
+        return this.hectogramperdayLazy = this.convertFromBase(MassFlowUnits.HectogramPerDay);
     }
 
-    public get Kilogramsperday(): number {
-        if(this.kilogramsperdayLazy !== null){
-            return this.kilogramsperdayLazy;
+    public get KilogramPerDay(): number {
+        if(this.kilogramperdayLazy !== null){
+            return this.kilogramperdayLazy;
         }
-        return this.kilogramsperdayLazy = this.convertFromBase(MassFlowUnits.Kilogramsperday);
+        return this.kilogramperdayLazy = this.convertFromBase(MassFlowUnits.KilogramPerDay);
     }
 
-    public get Megagramsperday(): number {
-        if(this.megagramsperdayLazy !== null){
-            return this.megagramsperdayLazy;
+    public get MegagramPerDay(): number {
+        if(this.megagramperdayLazy !== null){
+            return this.megagramperdayLazy;
         }
-        return this.megagramsperdayLazy = this.convertFromBase(MassFlowUnits.Megagramsperday);
+        return this.megagramperdayLazy = this.convertFromBase(MassFlowUnits.MegagramPerDay);
     }
 
-    public get Megapoundsperday(): number {
-        if(this.megapoundsperdayLazy !== null){
-            return this.megapoundsperdayLazy;
+    public get MegapoundPerDay(): number {
+        if(this.megapoundperdayLazy !== null){
+            return this.megapoundperdayLazy;
         }
-        return this.megapoundsperdayLazy = this.convertFromBase(MassFlowUnits.Megapoundsperday);
+        return this.megapoundperdayLazy = this.convertFromBase(MassFlowUnits.MegapoundPerDay);
     }
 
-    public get Megapoundsperhour(): number {
-        if(this.megapoundsperhourLazy !== null){
-            return this.megapoundsperhourLazy;
+    public get MegapoundPerHour(): number {
+        if(this.megapoundperhourLazy !== null){
+            return this.megapoundperhourLazy;
         }
-        return this.megapoundsperhourLazy = this.convertFromBase(MassFlowUnits.Megapoundsperhour);
+        return this.megapoundperhourLazy = this.convertFromBase(MassFlowUnits.MegapoundPerHour);
     }
 
-    public get Megapoundsperminute(): number {
-        if(this.megapoundsperminuteLazy !== null){
-            return this.megapoundsperminuteLazy;
+    public get MegapoundPerMinute(): number {
+        if(this.megapoundperminuteLazy !== null){
+            return this.megapoundperminuteLazy;
         }
-        return this.megapoundsperminuteLazy = this.convertFromBase(MassFlowUnits.Megapoundsperminute);
+        return this.megapoundperminuteLazy = this.convertFromBase(MassFlowUnits.MegapoundPerMinute);
     }
 
-    public get Megapoundspersecond(): number {
-        if(this.megapoundspersecondLazy !== null){
-            return this.megapoundspersecondLazy;
+    public get MegapoundPerSecond(): number {
+        if(this.megapoundpersecondLazy !== null){
+            return this.megapoundpersecondLazy;
         }
-        return this.megapoundspersecondLazy = this.convertFromBase(MassFlowUnits.Megapoundspersecond);
+        return this.megapoundpersecondLazy = this.convertFromBase(MassFlowUnits.MegapoundPerSecond);
     }
 
     public static FromGramsPerSecond(value: number): MassFlow {
@@ -335,80 +335,80 @@ export class MassFlow {
         return new MassFlow(value, MassFlowUnits.ShortTonsPerHour);
     }
 
-    public static FromNanogramspersecond(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Nanogramspersecond);
+    public static FromNanogramPerSecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.NanogramPerSecond);
     }
 
-    public static FromMicrogramspersecond(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Microgramspersecond);
+    public static FromMicrogramPerSecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.MicrogramPerSecond);
     }
 
-    public static FromCentigramspersecond(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Centigramspersecond);
+    public static FromCentigramPerSecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.CentigramPerSecond);
     }
 
-    public static FromDecigramspersecond(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Decigramspersecond);
+    public static FromDecigramPerSecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.DecigramPerSecond);
     }
 
-    public static FromDecagramspersecond(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Decagramspersecond);
+    public static FromDecagramPerSecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.DecagramPerSecond);
     }
 
-    public static FromHectogramspersecond(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Hectogramspersecond);
+    public static FromHectogramPerSecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.HectogramPerSecond);
     }
 
-    public static FromKilogramspersecond(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Kilogramspersecond);
+    public static FromKilogramPerSecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.KilogramPerSecond);
     }
 
-    public static FromNanogramsperday(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Nanogramsperday);
+    public static FromNanogramPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.NanogramPerDay);
     }
 
-    public static FromMicrogramsperday(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Microgramsperday);
+    public static FromMicrogramPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.MicrogramPerDay);
     }
 
-    public static FromCentigramsperday(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Centigramsperday);
+    public static FromCentigramPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.CentigramPerDay);
     }
 
-    public static FromDecigramsperday(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Decigramsperday);
+    public static FromDecigramPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.DecigramPerDay);
     }
 
-    public static FromDecagramsperday(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Decagramsperday);
+    public static FromDecagramPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.DecagramPerDay);
     }
 
-    public static FromHectogramsperday(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Hectogramsperday);
+    public static FromHectogramPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.HectogramPerDay);
     }
 
-    public static FromKilogramsperday(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Kilogramsperday);
+    public static FromKilogramPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.KilogramPerDay);
     }
 
-    public static FromMegagramsperday(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Megagramsperday);
+    public static FromMegagramPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.MegagramPerDay);
     }
 
-    public static FromMegapoundsperday(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Megapoundsperday);
+    public static FromMegapoundPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.MegapoundPerDay);
     }
 
-    public static FromMegapoundsperhour(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Megapoundsperhour);
+    public static FromMegapoundPerHour(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.MegapoundPerHour);
     }
 
-    public static FromMegapoundsperminute(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Megapoundsperminute);
+    public static FromMegapoundPerMinute(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.MegapoundPerMinute);
     }
 
-    public static FromMegapoundspersecond(value: number): MassFlow {
-        return new MassFlow(value, MassFlowUnits.Megapoundspersecond);
+    public static FromMegapoundPerSecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.MegapoundPerSecond);
     }
 
     private convertFromBase(toUnit: MassFlowUnits): number {
@@ -438,43 +438,43 @@ export class MassFlow {
                 return this.value*0.0864000;
             case MassFlowUnits.ShortTonsPerHour:
                 return this.value/251.9957611;
-            case MassFlowUnits.Nanogramspersecond:
+            case MassFlowUnits.NanogramPerSecond:
                 return (this.value) / 1e-9;
-            case MassFlowUnits.Microgramspersecond:
+            case MassFlowUnits.MicrogramPerSecond:
                 return (this.value) / 0.000001;
-            case MassFlowUnits.Centigramspersecond:
+            case MassFlowUnits.CentigramPerSecond:
                 return (this.value) / 0.01;
-            case MassFlowUnits.Decigramspersecond:
+            case MassFlowUnits.DecigramPerSecond:
                 return (this.value) / 0.1;
-            case MassFlowUnits.Decagramspersecond:
+            case MassFlowUnits.DecagramPerSecond:
                 return (this.value) / 10;
-            case MassFlowUnits.Hectogramspersecond:
+            case MassFlowUnits.HectogramPerSecond:
                 return (this.value) / 100;
-            case MassFlowUnits.Kilogramspersecond:
+            case MassFlowUnits.KilogramPerSecond:
                 return (this.value) / 1000;
-            case MassFlowUnits.Nanogramsperday:
+            case MassFlowUnits.NanogramPerDay:
                 return (this.value*86400) / 1e-9;
-            case MassFlowUnits.Microgramsperday:
+            case MassFlowUnits.MicrogramPerDay:
                 return (this.value*86400) / 0.000001;
-            case MassFlowUnits.Centigramsperday:
+            case MassFlowUnits.CentigramPerDay:
                 return (this.value*86400) / 0.01;
-            case MassFlowUnits.Decigramsperday:
+            case MassFlowUnits.DecigramPerDay:
                 return (this.value*86400) / 0.1;
-            case MassFlowUnits.Decagramsperday:
+            case MassFlowUnits.DecagramPerDay:
                 return (this.value*86400) / 10;
-            case MassFlowUnits.Hectogramsperday:
+            case MassFlowUnits.HectogramPerDay:
                 return (this.value*86400) / 100;
-            case MassFlowUnits.Kilogramsperday:
+            case MassFlowUnits.KilogramPerDay:
                 return (this.value*86400) / 1000;
-            case MassFlowUnits.Megagramsperday:
+            case MassFlowUnits.MegagramPerDay:
                 return (this.value*86400) / 1000000;
-            case MassFlowUnits.Megapoundsperday:
+            case MassFlowUnits.MegapoundPerDay:
                 return (this.value*190.47936) / 1000000;
-            case MassFlowUnits.Megapoundsperhour:
+            case MassFlowUnits.MegapoundPerHour:
                 return (this.value*7.93664) / 1000000;
-            case MassFlowUnits.Megapoundsperminute:
+            case MassFlowUnits.MegapoundPerMinute:
                 return (this.value*0.132277) / 1000000;
-            case MassFlowUnits.Megapoundspersecond:
+            case MassFlowUnits.MegapoundPerSecond:
                 return (this.value / 453.59237) / 1000000;
             default:
                 break;
@@ -509,47 +509,119 @@ export class MassFlow {
                 return value/0.0864000;
             case MassFlowUnits.ShortTonsPerHour:
                 return value*251.9957611;
-            case MassFlowUnits.Nanogramspersecond:
+            case MassFlowUnits.NanogramPerSecond:
                 return (value) * 1e-9;
-            case MassFlowUnits.Microgramspersecond:
+            case MassFlowUnits.MicrogramPerSecond:
                 return (value) * 0.000001;
-            case MassFlowUnits.Centigramspersecond:
+            case MassFlowUnits.CentigramPerSecond:
                 return (value) * 0.01;
-            case MassFlowUnits.Decigramspersecond:
+            case MassFlowUnits.DecigramPerSecond:
                 return (value) * 0.1;
-            case MassFlowUnits.Decagramspersecond:
+            case MassFlowUnits.DecagramPerSecond:
                 return (value) * 10;
-            case MassFlowUnits.Hectogramspersecond:
+            case MassFlowUnits.HectogramPerSecond:
                 return (value) * 100;
-            case MassFlowUnits.Kilogramspersecond:
+            case MassFlowUnits.KilogramPerSecond:
                 return (value) * 1000;
-            case MassFlowUnits.Nanogramsperday:
+            case MassFlowUnits.NanogramPerDay:
                 return (value/86400) * 1e-9;
-            case MassFlowUnits.Microgramsperday:
+            case MassFlowUnits.MicrogramPerDay:
                 return (value/86400) * 0.000001;
-            case MassFlowUnits.Centigramsperday:
+            case MassFlowUnits.CentigramPerDay:
                 return (value/86400) * 0.01;
-            case MassFlowUnits.Decigramsperday:
+            case MassFlowUnits.DecigramPerDay:
                 return (value/86400) * 0.1;
-            case MassFlowUnits.Decagramsperday:
+            case MassFlowUnits.DecagramPerDay:
                 return (value/86400) * 10;
-            case MassFlowUnits.Hectogramsperday:
+            case MassFlowUnits.HectogramPerDay:
                 return (value/86400) * 100;
-            case MassFlowUnits.Kilogramsperday:
+            case MassFlowUnits.KilogramPerDay:
                 return (value/86400) * 1000;
-            case MassFlowUnits.Megagramsperday:
+            case MassFlowUnits.MegagramPerDay:
                 return (value/86400) * 1000000;
-            case MassFlowUnits.Megapoundsperday:
+            case MassFlowUnits.MegapoundPerDay:
                 return (value/190.47936) * 1000000;
-            case MassFlowUnits.Megapoundsperhour:
+            case MassFlowUnits.MegapoundPerHour:
                 return (value/7.93664) * 1000000;
-            case MassFlowUnits.Megapoundsperminute:
+            case MassFlowUnits.MegapoundPerMinute:
                 return (value/0.132277) * 1000000;
-            case MassFlowUnits.Megapoundspersecond:
+            case MassFlowUnits.MegapoundPerSecond:
                 return (value * 453.59237) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: MassFlowUnits = MassFlowUnits.GramsPerSecond): string {
+
+        switch (toUnit) {
+            
+            case MassFlowUnits.GramsPerSecond:
+                return this.GramsPerSecond + ` g/s`;
+            case MassFlowUnits.GramsPerDay:
+                return this.GramsPerDay + ` g/d`;
+            case MassFlowUnits.GramsPerHour:
+                return this.GramsPerHour + ` g/h`;
+            case MassFlowUnits.KilogramsPerHour:
+                return this.KilogramsPerHour + ` kg/h`;
+            case MassFlowUnits.KilogramsPerMinute:
+                return this.KilogramsPerMinute + ` kg/min`;
+            case MassFlowUnits.TonnesPerHour:
+                return this.TonnesPerHour + ` t/h`;
+            case MassFlowUnits.PoundsPerDay:
+                return this.PoundsPerDay + ` lb/d`;
+            case MassFlowUnits.PoundsPerHour:
+                return this.PoundsPerHour + ` lb/h`;
+            case MassFlowUnits.PoundsPerMinute:
+                return this.PoundsPerMinute + ` lb/min`;
+            case MassFlowUnits.PoundsPerSecond:
+                return this.PoundsPerSecond + ` lb/s`;
+            case MassFlowUnits.TonnesPerDay:
+                return this.TonnesPerDay + ` t/d`;
+            case MassFlowUnits.ShortTonsPerHour:
+                return this.ShortTonsPerHour + ` short tn/h`;
+            case MassFlowUnits.NanogramPerSecond:
+                return this.NanogramPerSecond + ` g/s`;
+            case MassFlowUnits.MicrogramPerSecond:
+                return this.MicrogramPerSecond + ` g/s`;
+            case MassFlowUnits.CentigramPerSecond:
+                return this.CentigramPerSecond + ` g/s`;
+            case MassFlowUnits.DecigramPerSecond:
+                return this.DecigramPerSecond + ` g/s`;
+            case MassFlowUnits.DecagramPerSecond:
+                return this.DecagramPerSecond + ` g/s`;
+            case MassFlowUnits.HectogramPerSecond:
+                return this.HectogramPerSecond + ` g/s`;
+            case MassFlowUnits.KilogramPerSecond:
+                return this.KilogramPerSecond + ` g/s`;
+            case MassFlowUnits.NanogramPerDay:
+                return this.NanogramPerDay + ` g/d`;
+            case MassFlowUnits.MicrogramPerDay:
+                return this.MicrogramPerDay + ` g/d`;
+            case MassFlowUnits.CentigramPerDay:
+                return this.CentigramPerDay + ` g/d`;
+            case MassFlowUnits.DecigramPerDay:
+                return this.DecigramPerDay + ` g/d`;
+            case MassFlowUnits.DecagramPerDay:
+                return this.DecagramPerDay + ` g/d`;
+            case MassFlowUnits.HectogramPerDay:
+                return this.HectogramPerDay + ` g/d`;
+            case MassFlowUnits.KilogramPerDay:
+                return this.KilogramPerDay + ` g/d`;
+            case MassFlowUnits.MegagramPerDay:
+                return this.MegagramPerDay + ` g/d`;
+            case MassFlowUnits.MegapoundPerDay:
+                return this.MegapoundPerDay + ` lb/d`;
+            case MassFlowUnits.MegapoundPerHour:
+                return this.MegapoundPerHour + ` lb/h`;
+            case MassFlowUnits.MegapoundPerMinute:
+                return this.MegapoundPerMinute + ` lb/min`;
+            case MassFlowUnits.MegapoundPerSecond:
+                return this.MegapoundPerSecond + ` lb/s`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

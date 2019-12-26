@@ -144,4 +144,28 @@ export class KinematicViscosity {
         }
         return NaN;
     }
+
+    public toString(toUnit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond): string {
+
+        switch (toUnit) {
+            
+            case KinematicViscosityUnits.SquareMetersPerSecond:
+                return this.SquareMetersPerSecond + ` m²/s`;
+            case KinematicViscosityUnits.Stokes:
+                return this.Stokes + ` St`;
+            case KinematicViscosityUnits.Nanostokes:
+                return this.Nanostokes + ` St`;
+            case KinematicViscosityUnits.Microstokes:
+                return this.Microstokes + ` St`;
+            case KinematicViscosityUnits.Centistokes:
+                return this.Centistokes + ` St`;
+            case KinematicViscosityUnits.Decistokes:
+                return this.Decistokes + ` St`;
+            case KinematicViscosityUnits.Kilostokes:
+                return this.Kilostokes + ` St`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

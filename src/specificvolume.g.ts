@@ -59,4 +59,18 @@ export class SpecificVolume {
         }
         return NaN;
     }
+
+    public toString(toUnit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram): string {
+
+        switch (toUnit) {
+            
+            case SpecificVolumeUnits.CubicMetersPerKilogram:
+                return this.CubicMetersPerKilogram + ` m³/kg`;
+            case SpecificVolumeUnits.CubicFeetPerPound:
+                return this.CubicFeetPerPound + ` ft³/lb`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

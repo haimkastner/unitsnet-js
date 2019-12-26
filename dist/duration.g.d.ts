@@ -6,8 +6,8 @@ export declare enum DurationUnits {
     Hours = 4,
     Minutes = 5,
     Seconds = 6,
-    Nanoseconds = 7,
-    Microseconds = 8
+    Nanosecond = 7,
+    Microsecond = 8
 }
 export declare class Duration {
     private value;
@@ -18,8 +18,8 @@ export declare class Duration {
     private hoursLazy;
     private minutesLazy;
     private secondsLazy;
-    private nanosecondsLazy;
-    private microsecondsLazy;
+    private nanosecondLazy;
+    private microsecondLazy;
     constructor(value: number, fromUnit: DurationUnits);
     get Years365(): number;
     get Months30(): number;
@@ -28,8 +28,8 @@ export declare class Duration {
     get Hours(): number;
     get Minutes(): number;
     get Seconds(): number;
-    get Nanoseconds(): number;
-    get Microseconds(): number;
+    get Nanosecond(): number;
+    get Microsecond(): number;
     static FromYears365(value: number): Duration;
     static FromMonths30(value: number): Duration;
     static FromWeeks(value: number): Duration;
@@ -37,9 +37,10 @@ export declare class Duration {
     static FromHours(value: number): Duration;
     static FromMinutes(value: number): Duration;
     static FromSeconds(value: number): Duration;
-    static FromNanoseconds(value: number): Duration;
-    static FromMicroseconds(value: number): Duration;
+    static FromNanosecond(value: number): Duration;
+    static FromMicrosecond(value: number): Duration;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: DurationUnits): string;
 }
 //# sourceMappingURL=duration.g.d.ts.map

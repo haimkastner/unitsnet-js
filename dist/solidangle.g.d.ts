@@ -9,5 +9,6 @@ export declare class SolidAngle {
     static FromSteradians(value: number): SolidAngle;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: SolidAngleUnits): string;
 }
 //# sourceMappingURL=solidangle.g.d.ts.map

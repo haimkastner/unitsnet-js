@@ -42,4 +42,16 @@ export class LuminousFlux {
         }
         return NaN;
     }
+
+    public toString(toUnit: LuminousFluxUnits = LuminousFluxUnits.Lumens): string {
+
+        switch (toUnit) {
+            
+            case LuminousFluxUnits.Lumens:
+                return this.Lumens + ` lm`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

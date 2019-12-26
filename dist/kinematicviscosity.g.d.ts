@@ -33,5 +33,6 @@ export declare class KinematicViscosity {
     static FromKilostokes(value: number): KinematicViscosity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: KinematicViscosityUnits): string;
 }
 //# sourceMappingURL=kinematicviscosity.g.d.ts.map

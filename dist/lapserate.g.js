@@ -36,6 +36,15 @@ class LapseRate {
         }
         return NaN;
     }
+    toString(toUnit = LapseRateUnits.DegreesCelciusPerKilometer) {
+        switch (toUnit) {
+            case LapseRateUnits.DegreesCelciusPerKilometer:
+                return this.DegreesCelciusPerKilometer + ` ∆°C/km`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.LapseRate = LapseRate;
 //# sourceMappingURL=lapserate.g.js.map

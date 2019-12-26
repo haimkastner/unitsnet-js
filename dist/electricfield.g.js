@@ -36,6 +36,15 @@ class ElectricField {
         }
         return NaN;
     }
+    toString(toUnit = ElectricFieldUnits.VoltsPerMeter) {
+        switch (toUnit) {
+            case ElectricFieldUnits.VoltsPerMeter:
+                return this.VoltsPerMeter + ` V/m`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ElectricField = ElectricField;
 //# sourceMappingURL=electricfield.g.js.map

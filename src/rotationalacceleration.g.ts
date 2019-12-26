@@ -93,4 +93,22 @@ export class RotationalAcceleration {
         }
         return NaN;
     }
+
+    public toString(toUnit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared): string {
+
+        switch (toUnit) {
+            
+            case RotationalAccelerationUnits.RadiansPerSecondSquared:
+                return this.RadiansPerSecondSquared + ` rad/s²`;
+            case RotationalAccelerationUnits.DegreesPerSecondSquared:
+                return this.DegreesPerSecondSquared + ` °/s²`;
+            case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
+                return this.RevolutionsPerMinutePerSecond + ` rpm/s`;
+            case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
+                return this.RevolutionsPerSecondSquared + ` r/s²`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

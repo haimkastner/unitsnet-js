@@ -13,5 +13,6 @@ export declare class ElectricConductance {
     static FromMicrosiemens(value: number): ElectricConductance;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricConductanceUnits): string;
 }
 //# sourceMappingURL=electricconductance.g.d.ts.map

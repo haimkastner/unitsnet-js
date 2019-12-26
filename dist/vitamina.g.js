@@ -36,6 +36,15 @@ class VitaminA {
         }
         return NaN;
     }
+    toString(toUnit = VitaminAUnits.InternationalUnits) {
+        switch (toUnit) {
+            case VitaminAUnits.InternationalUnits:
+                return this.InternationalUnits + ` IU`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.VitaminA = VitaminA;
 //# sourceMappingURL=vitamina.g.js.map

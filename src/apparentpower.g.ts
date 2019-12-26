@@ -1,16 +1,16 @@
 export enum ApparentPowerUnits {
     Voltamperes,
-    Kilovoltamperes,
-    Megavoltamperes,
-    Gigavoltamperes
+    Kilovoltampere,
+    Megavoltampere,
+    Gigavoltampere
 }
 
 export class ApparentPower {
     private value: number;
     private voltamperesLazy: number | null = null;
-    private kilovoltamperesLazy: number | null = null;
-    private megavoltamperesLazy: number | null = null;
-    private gigavoltamperesLazy: number | null = null;
+    private kilovoltampereLazy: number | null = null;
+    private megavoltampereLazy: number | null = null;
+    private gigavoltampereLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ApparentPowerUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -23,41 +23,41 @@ export class ApparentPower {
         return this.voltamperesLazy = this.convertFromBase(ApparentPowerUnits.Voltamperes);
     }
 
-    public get Kilovoltamperes(): number {
-        if(this.kilovoltamperesLazy !== null){
-            return this.kilovoltamperesLazy;
+    public get Kilovoltampere(): number {
+        if(this.kilovoltampereLazy !== null){
+            return this.kilovoltampereLazy;
         }
-        return this.kilovoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Kilovoltamperes);
+        return this.kilovoltampereLazy = this.convertFromBase(ApparentPowerUnits.Kilovoltampere);
     }
 
-    public get Megavoltamperes(): number {
-        if(this.megavoltamperesLazy !== null){
-            return this.megavoltamperesLazy;
+    public get Megavoltampere(): number {
+        if(this.megavoltampereLazy !== null){
+            return this.megavoltampereLazy;
         }
-        return this.megavoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Megavoltamperes);
+        return this.megavoltampereLazy = this.convertFromBase(ApparentPowerUnits.Megavoltampere);
     }
 
-    public get Gigavoltamperes(): number {
-        if(this.gigavoltamperesLazy !== null){
-            return this.gigavoltamperesLazy;
+    public get Gigavoltampere(): number {
+        if(this.gigavoltampereLazy !== null){
+            return this.gigavoltampereLazy;
         }
-        return this.gigavoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Gigavoltamperes);
+        return this.gigavoltampereLazy = this.convertFromBase(ApparentPowerUnits.Gigavoltampere);
     }
 
     public static FromVoltamperes(value: number): ApparentPower {
         return new ApparentPower(value, ApparentPowerUnits.Voltamperes);
     }
 
-    public static FromKilovoltamperes(value: number): ApparentPower {
-        return new ApparentPower(value, ApparentPowerUnits.Kilovoltamperes);
+    public static FromKilovoltampere(value: number): ApparentPower {
+        return new ApparentPower(value, ApparentPowerUnits.Kilovoltampere);
     }
 
-    public static FromMegavoltamperes(value: number): ApparentPower {
-        return new ApparentPower(value, ApparentPowerUnits.Megavoltamperes);
+    public static FromMegavoltampere(value: number): ApparentPower {
+        return new ApparentPower(value, ApparentPowerUnits.Megavoltampere);
     }
 
-    public static FromGigavoltamperes(value: number): ApparentPower {
-        return new ApparentPower(value, ApparentPowerUnits.Gigavoltamperes);
+    public static FromGigavoltampere(value: number): ApparentPower {
+        return new ApparentPower(value, ApparentPowerUnits.Gigavoltampere);
     }
 
     private convertFromBase(toUnit: ApparentPowerUnits): number {
@@ -65,11 +65,11 @@ export class ApparentPower {
                 
             case ApparentPowerUnits.Voltamperes:
                 return this.value;
-            case ApparentPowerUnits.Kilovoltamperes:
+            case ApparentPowerUnits.Kilovoltampere:
                 return (this.value) / 1000;
-            case ApparentPowerUnits.Megavoltamperes:
+            case ApparentPowerUnits.Megavoltampere:
                 return (this.value) / 1000000;
-            case ApparentPowerUnits.Gigavoltamperes:
+            case ApparentPowerUnits.Gigavoltampere:
                 return (this.value) / 1000000000;
             default:
                 break;
@@ -82,15 +82,33 @@ export class ApparentPower {
                 
             case ApparentPowerUnits.Voltamperes:
                 return value;
-            case ApparentPowerUnits.Kilovoltamperes:
+            case ApparentPowerUnits.Kilovoltampere:
                 return (value) * 1000;
-            case ApparentPowerUnits.Megavoltamperes:
+            case ApparentPowerUnits.Megavoltampere:
                 return (value) * 1000000;
-            case ApparentPowerUnits.Gigavoltamperes:
+            case ApparentPowerUnits.Gigavoltampere:
                 return (value) * 1000000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: ApparentPowerUnits = ApparentPowerUnits.Voltamperes): string {
+
+        switch (toUnit) {
+            
+            case ApparentPowerUnits.Voltamperes:
+                return this.Voltamperes + ` VA`;
+            case ApparentPowerUnits.Kilovoltampere:
+                return this.Kilovoltampere + ` VA`;
+            case ApparentPowerUnits.Megavoltampere:
+                return this.Megavoltampere + ` VA`;
+            case ApparentPowerUnits.Gigavoltampere:
+                return this.Gigavoltampere + ` VA`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

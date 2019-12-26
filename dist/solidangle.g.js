@@ -36,6 +36,15 @@ class SolidAngle {
         }
         return NaN;
     }
+    toString(toUnit = SolidAngleUnits.Steradians) {
+        switch (toUnit) {
+            case SolidAngleUnits.Steradians:
+                return this.Steradians + ` sr`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.SolidAngle = SolidAngle;
 //# sourceMappingURL=solidangle.g.js.map

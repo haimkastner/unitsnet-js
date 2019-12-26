@@ -9,5 +9,6 @@ export declare class Permittivity {
     static FromFaradsPerMeter(value: number): Permittivity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: PermittivityUnits): string;
 }
 //# sourceMappingURL=permittivity.g.d.ts.map

@@ -4,12 +4,12 @@ export enum ForcePerLengthUnits {
     PoundsForcePerFoot,
     PoundsForcePerInch,
     PoundsForcePerYard,
-    Nanonewtonspermeter,
-    Micronewtonspermeter,
-    Centinewtonspermeter,
-    Decinewtonspermeter,
-    Kilonewtonspermeter,
-    Meganewtonspermeter
+    NanonewtonPerMeter,
+    MicronewtonPerMeter,
+    CentinewtonPerMeter,
+    DecinewtonPerMeter,
+    KilonewtonPerMeter,
+    MeganewtonPerMeter
 }
 
 export class ForcePerLength {
@@ -19,12 +19,12 @@ export class ForcePerLength {
     private poundsforceperfootLazy: number | null = null;
     private poundsforceperinchLazy: number | null = null;
     private poundsforceperyardLazy: number | null = null;
-    private nanonewtonspermeterLazy: number | null = null;
-    private micronewtonspermeterLazy: number | null = null;
-    private centinewtonspermeterLazy: number | null = null;
-    private decinewtonspermeterLazy: number | null = null;
-    private kilonewtonspermeterLazy: number | null = null;
-    private meganewtonspermeterLazy: number | null = null;
+    private nanonewtonpermeterLazy: number | null = null;
+    private micronewtonpermeterLazy: number | null = null;
+    private centinewtonpermeterLazy: number | null = null;
+    private decinewtonpermeterLazy: number | null = null;
+    private kilonewtonpermeterLazy: number | null = null;
+    private meganewtonpermeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ForcePerLengthUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -65,46 +65,46 @@ export class ForcePerLength {
         return this.poundsforceperyardLazy = this.convertFromBase(ForcePerLengthUnits.PoundsForcePerYard);
     }
 
-    public get Nanonewtonspermeter(): number {
-        if(this.nanonewtonspermeterLazy !== null){
-            return this.nanonewtonspermeterLazy;
+    public get NanonewtonPerMeter(): number {
+        if(this.nanonewtonpermeterLazy !== null){
+            return this.nanonewtonpermeterLazy;
         }
-        return this.nanonewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.Nanonewtonspermeter);
+        return this.nanonewtonpermeterLazy = this.convertFromBase(ForcePerLengthUnits.NanonewtonPerMeter);
     }
 
-    public get Micronewtonspermeter(): number {
-        if(this.micronewtonspermeterLazy !== null){
-            return this.micronewtonspermeterLazy;
+    public get MicronewtonPerMeter(): number {
+        if(this.micronewtonpermeterLazy !== null){
+            return this.micronewtonpermeterLazy;
         }
-        return this.micronewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.Micronewtonspermeter);
+        return this.micronewtonpermeterLazy = this.convertFromBase(ForcePerLengthUnits.MicronewtonPerMeter);
     }
 
-    public get Centinewtonspermeter(): number {
-        if(this.centinewtonspermeterLazy !== null){
-            return this.centinewtonspermeterLazy;
+    public get CentinewtonPerMeter(): number {
+        if(this.centinewtonpermeterLazy !== null){
+            return this.centinewtonpermeterLazy;
         }
-        return this.centinewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.Centinewtonspermeter);
+        return this.centinewtonpermeterLazy = this.convertFromBase(ForcePerLengthUnits.CentinewtonPerMeter);
     }
 
-    public get Decinewtonspermeter(): number {
-        if(this.decinewtonspermeterLazy !== null){
-            return this.decinewtonspermeterLazy;
+    public get DecinewtonPerMeter(): number {
+        if(this.decinewtonpermeterLazy !== null){
+            return this.decinewtonpermeterLazy;
         }
-        return this.decinewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.Decinewtonspermeter);
+        return this.decinewtonpermeterLazy = this.convertFromBase(ForcePerLengthUnits.DecinewtonPerMeter);
     }
 
-    public get Kilonewtonspermeter(): number {
-        if(this.kilonewtonspermeterLazy !== null){
-            return this.kilonewtonspermeterLazy;
+    public get KilonewtonPerMeter(): number {
+        if(this.kilonewtonpermeterLazy !== null){
+            return this.kilonewtonpermeterLazy;
         }
-        return this.kilonewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.Kilonewtonspermeter);
+        return this.kilonewtonpermeterLazy = this.convertFromBase(ForcePerLengthUnits.KilonewtonPerMeter);
     }
 
-    public get Meganewtonspermeter(): number {
-        if(this.meganewtonspermeterLazy !== null){
-            return this.meganewtonspermeterLazy;
+    public get MeganewtonPerMeter(): number {
+        if(this.meganewtonpermeterLazy !== null){
+            return this.meganewtonpermeterLazy;
         }
-        return this.meganewtonspermeterLazy = this.convertFromBase(ForcePerLengthUnits.Meganewtonspermeter);
+        return this.meganewtonpermeterLazy = this.convertFromBase(ForcePerLengthUnits.MeganewtonPerMeter);
     }
 
     public static FromNewtonsPerMeter(value: number): ForcePerLength {
@@ -127,28 +127,28 @@ export class ForcePerLength {
         return new ForcePerLength(value, ForcePerLengthUnits.PoundsForcePerYard);
     }
 
-    public static FromNanonewtonspermeter(value: number): ForcePerLength {
-        return new ForcePerLength(value, ForcePerLengthUnits.Nanonewtonspermeter);
+    public static FromNanonewtonPerMeter(value: number): ForcePerLength {
+        return new ForcePerLength(value, ForcePerLengthUnits.NanonewtonPerMeter);
     }
 
-    public static FromMicronewtonspermeter(value: number): ForcePerLength {
-        return new ForcePerLength(value, ForcePerLengthUnits.Micronewtonspermeter);
+    public static FromMicronewtonPerMeter(value: number): ForcePerLength {
+        return new ForcePerLength(value, ForcePerLengthUnits.MicronewtonPerMeter);
     }
 
-    public static FromCentinewtonspermeter(value: number): ForcePerLength {
-        return new ForcePerLength(value, ForcePerLengthUnits.Centinewtonspermeter);
+    public static FromCentinewtonPerMeter(value: number): ForcePerLength {
+        return new ForcePerLength(value, ForcePerLengthUnits.CentinewtonPerMeter);
     }
 
-    public static FromDecinewtonspermeter(value: number): ForcePerLength {
-        return new ForcePerLength(value, ForcePerLengthUnits.Decinewtonspermeter);
+    public static FromDecinewtonPerMeter(value: number): ForcePerLength {
+        return new ForcePerLength(value, ForcePerLengthUnits.DecinewtonPerMeter);
     }
 
-    public static FromKilonewtonspermeter(value: number): ForcePerLength {
-        return new ForcePerLength(value, ForcePerLengthUnits.Kilonewtonspermeter);
+    public static FromKilonewtonPerMeter(value: number): ForcePerLength {
+        return new ForcePerLength(value, ForcePerLengthUnits.KilonewtonPerMeter);
     }
 
-    public static FromMeganewtonspermeter(value: number): ForcePerLength {
-        return new ForcePerLength(value, ForcePerLengthUnits.Meganewtonspermeter);
+    public static FromMeganewtonPerMeter(value: number): ForcePerLength {
+        return new ForcePerLength(value, ForcePerLengthUnits.MeganewtonPerMeter);
     }
 
     private convertFromBase(toUnit: ForcePerLengthUnits): number {
@@ -164,17 +164,17 @@ export class ForcePerLength {
                 return this.value/1.75126835e2;
             case ForcePerLengthUnits.PoundsForcePerYard:
                 return this.value/4.864634307;
-            case ForcePerLengthUnits.Nanonewtonspermeter:
+            case ForcePerLengthUnits.NanonewtonPerMeter:
                 return (this.value) / 1e-9;
-            case ForcePerLengthUnits.Micronewtonspermeter:
+            case ForcePerLengthUnits.MicronewtonPerMeter:
                 return (this.value) / 0.000001;
-            case ForcePerLengthUnits.Centinewtonspermeter:
+            case ForcePerLengthUnits.CentinewtonPerMeter:
                 return (this.value) / 0.01;
-            case ForcePerLengthUnits.Decinewtonspermeter:
+            case ForcePerLengthUnits.DecinewtonPerMeter:
                 return (this.value) / 0.1;
-            case ForcePerLengthUnits.Kilonewtonspermeter:
+            case ForcePerLengthUnits.KilonewtonPerMeter:
                 return (this.value) / 1000;
-            case ForcePerLengthUnits.Meganewtonspermeter:
+            case ForcePerLengthUnits.MeganewtonPerMeter:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -195,21 +195,53 @@ export class ForcePerLength {
                 return value*1.75126835e2;
             case ForcePerLengthUnits.PoundsForcePerYard:
                 return value*4.864634307;
-            case ForcePerLengthUnits.Nanonewtonspermeter:
+            case ForcePerLengthUnits.NanonewtonPerMeter:
                 return (value) * 1e-9;
-            case ForcePerLengthUnits.Micronewtonspermeter:
+            case ForcePerLengthUnits.MicronewtonPerMeter:
                 return (value) * 0.000001;
-            case ForcePerLengthUnits.Centinewtonspermeter:
+            case ForcePerLengthUnits.CentinewtonPerMeter:
                 return (value) * 0.01;
-            case ForcePerLengthUnits.Decinewtonspermeter:
+            case ForcePerLengthUnits.DecinewtonPerMeter:
                 return (value) * 0.1;
-            case ForcePerLengthUnits.Kilonewtonspermeter:
+            case ForcePerLengthUnits.KilonewtonPerMeter:
                 return (value) * 1000;
-            case ForcePerLengthUnits.Meganewtonspermeter:
+            case ForcePerLengthUnits.MeganewtonPerMeter:
                 return (value) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: ForcePerLengthUnits = ForcePerLengthUnits.NewtonsPerMeter): string {
+
+        switch (toUnit) {
+            
+            case ForcePerLengthUnits.NewtonsPerMeter:
+                return this.NewtonsPerMeter + ` N/m`;
+            case ForcePerLengthUnits.KilogramsForcePerMeter:
+                return this.KilogramsForcePerMeter + ` kgf/m`;
+            case ForcePerLengthUnits.PoundsForcePerFoot:
+                return this.PoundsForcePerFoot + ` lbf/ft`;
+            case ForcePerLengthUnits.PoundsForcePerInch:
+                return this.PoundsForcePerInch + ` lbf/in`;
+            case ForcePerLengthUnits.PoundsForcePerYard:
+                return this.PoundsForcePerYard + ` lbf/yd`;
+            case ForcePerLengthUnits.NanonewtonPerMeter:
+                return this.NanonewtonPerMeter + ` N/m`;
+            case ForcePerLengthUnits.MicronewtonPerMeter:
+                return this.MicronewtonPerMeter + ` N/m`;
+            case ForcePerLengthUnits.CentinewtonPerMeter:
+                return this.CentinewtonPerMeter + ` N/m`;
+            case ForcePerLengthUnits.DecinewtonPerMeter:
+                return this.DecinewtonPerMeter + ` N/m`;
+            case ForcePerLengthUnits.KilonewtonPerMeter:
+                return this.KilonewtonPerMeter + ` N/m`;
+            case ForcePerLengthUnits.MeganewtonPerMeter:
+                return this.MeganewtonPerMeter + ` N/m`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

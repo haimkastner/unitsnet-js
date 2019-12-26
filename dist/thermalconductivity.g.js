@@ -51,6 +51,17 @@ class ThermalConductivity {
         }
         return NaN;
     }
+    toString(toUnit = ThermalConductivityUnits.WattsPerMeterKelvin) {
+        switch (toUnit) {
+            case ThermalConductivityUnits.WattsPerMeterKelvin:
+                return this.WattsPerMeterKelvin + ` W/m·K`;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
+                return this.BtusPerHourFootFahrenheit + ` BTU/h·ft·°F`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ThermalConductivity = ThermalConductivity;
 //# sourceMappingURL=thermalconductivity.g.js.map

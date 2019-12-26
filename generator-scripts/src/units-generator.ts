@@ -54,8 +54,8 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
             FromUnitToBaseFunc: fromUnitPrefixToBaseFormula,
             FromBaseToUnitFunc: fromBaseToUnitPrefixFormula,
 
-            SingularName: `${prefix}${unit.SingularName.toLowerCase()}`,
-            PluralName: `${prefix}${unit.PluralName.toLowerCase()}`,
+            SingularName: `${prefix}${unit.SingularName[0].toLowerCase() + unit.SingularName.slice(1)}`,
+            PluralName: `${prefix}${unit.SingularName[0].toLowerCase() + unit.SingularName.slice(1)}`,
             Localization: unit.Localization,
         })
     }
@@ -94,10 +94,13 @@ export function generateUnitsFromUnitsDefinitions(project: Project, unitsDestina
         // Generate the TS file to the unit
         generateUnitClass(project, unitsDestinationDirectory, {
             unitName: unitDefinitiion.Name,
+            baseUnitSingularName: unitDefinitiion.BaseUnit,
             units: unitDefinitiion.Units.map((unit: UnitDefinition): UnitProperties => ({
-                name: unit.PluralName,
+                pluralName: unit.PluralName,
+                singularName: unit.SingularName,
                 unitToBaseFormula: unit.FromBaseToUnitFunc,
-                baseToUnitFormula: unit.FromUnitToBaseFunc
+                baseToUnitFormula: unit.FromUnitToBaseFunc,
+                Abbreviation: unit.Localization.find(Abbre => Abbre.Culture === 'en-US')?.Abbreviations[0] as string,
             }))
         });
     }

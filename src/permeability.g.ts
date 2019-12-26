@@ -42,4 +42,16 @@ export class Permeability {
         }
         return NaN;
     }
+
+    public toString(toUnit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter): string {
+
+        switch (toUnit) {
+            
+            case PermeabilityUnits.HenriesPerMeter:
+                return this.HenriesPerMeter + ` H/m`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

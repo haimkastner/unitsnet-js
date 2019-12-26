@@ -36,6 +36,15 @@ class LuminousIntensity {
         }
         return NaN;
     }
+    toString(toUnit = LuminousIntensityUnits.Candela) {
+        switch (toUnit) {
+            case LuminousIntensityUnits.Candela:
+                return this.Candela + ` cd`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.LuminousIntensity = LuminousIntensity;
 //# sourceMappingURL=luminousintensity.g.js.map

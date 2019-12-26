@@ -59,4 +59,18 @@ export class ElectricConductance {
         }
         return NaN;
     }
+
+    public toString(toUnit: ElectricConductanceUnits = ElectricConductanceUnits.Siemens): string {
+
+        switch (toUnit) {
+            
+            case ElectricConductanceUnits.Siemens:
+                return this.Siemens + ` S`;
+            case ElectricConductanceUnits.Microsiemens:
+                return this.Microsiemens + ` S`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

@@ -93,4 +93,22 @@ export class AmplitudeRatio {
         }
         return NaN;
     }
+
+    public toString(toUnit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts): string {
+
+        switch (toUnit) {
+            
+            case AmplitudeRatioUnits.DecibelVolts:
+                return this.DecibelVolts + ` dBV`;
+            case AmplitudeRatioUnits.DecibelMicrovolts:
+                return this.DecibelMicrovolts + ` dBµV`;
+            case AmplitudeRatioUnits.DecibelMillivolts:
+                return this.DecibelMillivolts + ` dBmV`;
+            case AmplitudeRatioUnits.DecibelsUnloaded:
+                return this.DecibelsUnloaded + ` dBu`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

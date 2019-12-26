@@ -29,5 +29,6 @@ export declare class AreaMomentOfInertia {
     static FromInchesToTheFourth(value: number): AreaMomentOfInertia;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: AreaMomentOfInertiaUnits): string;
 }
 //# sourceMappingURL=areamomentofinertia.g.d.ts.map

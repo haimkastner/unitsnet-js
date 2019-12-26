@@ -13,5 +13,6 @@ export declare class ThermalConductivity {
     static FromBtusPerHourFootFahrenheit(value: number): ThermalConductivity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ThermalConductivityUnits): string;
 }
 //# sourceMappingURL=thermalconductivity.g.d.ts.map

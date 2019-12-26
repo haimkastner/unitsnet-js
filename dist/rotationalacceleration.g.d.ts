@@ -21,5 +21,6 @@ export declare class RotationalAcceleration {
     static FromRevolutionsPerSecondSquared(value: number): RotationalAcceleration;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: RotationalAccelerationUnits): string;
 }
 //# sourceMappingURL=rotationalacceleration.g.d.ts.map

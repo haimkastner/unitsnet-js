@@ -36,6 +36,15 @@ class ElectricCurrentGradient {
         }
         return NaN;
     }
+    toString(toUnit = ElectricCurrentGradientUnits.AmperesPerSecond) {
+        switch (toUnit) {
+            case ElectricCurrentGradientUnits.AmperesPerSecond:
+                return this.AmperesPerSecond + ` A/s`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ElectricCurrentGradient = ElectricCurrentGradient;
 //# sourceMappingURL=electriccurrentgradient.g.js.map

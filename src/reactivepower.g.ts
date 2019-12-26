@@ -1,16 +1,16 @@
 export enum ReactivePowerUnits {
     VoltamperesReactive,
-    Kilovoltamperesreactive,
-    Megavoltamperesreactive,
-    Gigavoltamperesreactive
+    KilovoltampereReactive,
+    MegavoltampereReactive,
+    GigavoltampereReactive
 }
 
 export class ReactivePower {
     private value: number;
     private voltamperesreactiveLazy: number | null = null;
-    private kilovoltamperesreactiveLazy: number | null = null;
-    private megavoltamperesreactiveLazy: number | null = null;
-    private gigavoltamperesreactiveLazy: number | null = null;
+    private kilovoltamperereactiveLazy: number | null = null;
+    private megavoltamperereactiveLazy: number | null = null;
+    private gigavoltamperereactiveLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ReactivePowerUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -23,41 +23,41 @@ export class ReactivePower {
         return this.voltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.VoltamperesReactive);
     }
 
-    public get Kilovoltamperesreactive(): number {
-        if(this.kilovoltamperesreactiveLazy !== null){
-            return this.kilovoltamperesreactiveLazy;
+    public get KilovoltampereReactive(): number {
+        if(this.kilovoltamperereactiveLazy !== null){
+            return this.kilovoltamperereactiveLazy;
         }
-        return this.kilovoltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.Kilovoltamperesreactive);
+        return this.kilovoltamperereactiveLazy = this.convertFromBase(ReactivePowerUnits.KilovoltampereReactive);
     }
 
-    public get Megavoltamperesreactive(): number {
-        if(this.megavoltamperesreactiveLazy !== null){
-            return this.megavoltamperesreactiveLazy;
+    public get MegavoltampereReactive(): number {
+        if(this.megavoltamperereactiveLazy !== null){
+            return this.megavoltamperereactiveLazy;
         }
-        return this.megavoltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.Megavoltamperesreactive);
+        return this.megavoltamperereactiveLazy = this.convertFromBase(ReactivePowerUnits.MegavoltampereReactive);
     }
 
-    public get Gigavoltamperesreactive(): number {
-        if(this.gigavoltamperesreactiveLazy !== null){
-            return this.gigavoltamperesreactiveLazy;
+    public get GigavoltampereReactive(): number {
+        if(this.gigavoltamperereactiveLazy !== null){
+            return this.gigavoltamperereactiveLazy;
         }
-        return this.gigavoltamperesreactiveLazy = this.convertFromBase(ReactivePowerUnits.Gigavoltamperesreactive);
+        return this.gigavoltamperereactiveLazy = this.convertFromBase(ReactivePowerUnits.GigavoltampereReactive);
     }
 
     public static FromVoltamperesReactive(value: number): ReactivePower {
         return new ReactivePower(value, ReactivePowerUnits.VoltamperesReactive);
     }
 
-    public static FromKilovoltamperesreactive(value: number): ReactivePower {
-        return new ReactivePower(value, ReactivePowerUnits.Kilovoltamperesreactive);
+    public static FromKilovoltampereReactive(value: number): ReactivePower {
+        return new ReactivePower(value, ReactivePowerUnits.KilovoltampereReactive);
     }
 
-    public static FromMegavoltamperesreactive(value: number): ReactivePower {
-        return new ReactivePower(value, ReactivePowerUnits.Megavoltamperesreactive);
+    public static FromMegavoltampereReactive(value: number): ReactivePower {
+        return new ReactivePower(value, ReactivePowerUnits.MegavoltampereReactive);
     }
 
-    public static FromGigavoltamperesreactive(value: number): ReactivePower {
-        return new ReactivePower(value, ReactivePowerUnits.Gigavoltamperesreactive);
+    public static FromGigavoltampereReactive(value: number): ReactivePower {
+        return new ReactivePower(value, ReactivePowerUnits.GigavoltampereReactive);
     }
 
     private convertFromBase(toUnit: ReactivePowerUnits): number {
@@ -65,11 +65,11 @@ export class ReactivePower {
                 
             case ReactivePowerUnits.VoltamperesReactive:
                 return this.value;
-            case ReactivePowerUnits.Kilovoltamperesreactive:
+            case ReactivePowerUnits.KilovoltampereReactive:
                 return (this.value) / 1000;
-            case ReactivePowerUnits.Megavoltamperesreactive:
+            case ReactivePowerUnits.MegavoltampereReactive:
                 return (this.value) / 1000000;
-            case ReactivePowerUnits.Gigavoltamperesreactive:
+            case ReactivePowerUnits.GigavoltampereReactive:
                 return (this.value) / 1000000000;
             default:
                 break;
@@ -82,15 +82,33 @@ export class ReactivePower {
                 
             case ReactivePowerUnits.VoltamperesReactive:
                 return value;
-            case ReactivePowerUnits.Kilovoltamperesreactive:
+            case ReactivePowerUnits.KilovoltampereReactive:
                 return (value) * 1000;
-            case ReactivePowerUnits.Megavoltamperesreactive:
+            case ReactivePowerUnits.MegavoltampereReactive:
                 return (value) * 1000000;
-            case ReactivePowerUnits.Gigavoltamperesreactive:
+            case ReactivePowerUnits.GigavoltampereReactive:
                 return (value) * 1000000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive): string {
+
+        switch (toUnit) {
+            
+            case ReactivePowerUnits.VoltamperesReactive:
+                return this.VoltamperesReactive + ` var`;
+            case ReactivePowerUnits.KilovoltampereReactive:
+                return this.KilovoltampereReactive + ` var`;
+            case ReactivePowerUnits.MegavoltampereReactive:
+                return this.MegavoltampereReactive + ` var`;
+            case ReactivePowerUnits.GigavoltampereReactive:
+                return this.GigavoltampereReactive + ` var`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

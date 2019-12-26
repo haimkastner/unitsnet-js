@@ -66,6 +66,19 @@ class VolumePerLength {
         }
         return NaN;
     }
+    toString(toUnit = VolumePerLengthUnits.CubicMetersPerMeter) {
+        switch (toUnit) {
+            case VolumePerLengthUnits.CubicMetersPerMeter:
+                return this.CubicMetersPerMeter + ` m³/m`;
+            case VolumePerLengthUnits.LitersPerMeter:
+                return this.LitersPerMeter + ` l/m`;
+            case VolumePerLengthUnits.OilBarrelsPerFoot:
+                return this.OilBarrelsPerFoot + ` bbl/ft`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.VolumePerLength = VolumePerLength;
 //# sourceMappingURL=volumeperlength.g.js.map

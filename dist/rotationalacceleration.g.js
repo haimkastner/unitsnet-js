@@ -81,6 +81,21 @@ class RotationalAcceleration {
         }
         return NaN;
     }
+    toString(toUnit = RotationalAccelerationUnits.RadiansPerSecondSquared) {
+        switch (toUnit) {
+            case RotationalAccelerationUnits.RadiansPerSecondSquared:
+                return this.RadiansPerSecondSquared + ` rad/s²`;
+            case RotationalAccelerationUnits.DegreesPerSecondSquared:
+                return this.DegreesPerSecondSquared + ` °/s²`;
+            case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
+                return this.RevolutionsPerMinutePerSecond + ` rpm/s`;
+            case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
+                return this.RevolutionsPerSecondSquared + ` r/s²`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.RotationalAcceleration = RotationalAcceleration;
 //# sourceMappingURL=rotationalacceleration.g.js.map

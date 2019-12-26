@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ElectricInductanceUnits;
 (function (ElectricInductanceUnits) {
     ElectricInductanceUnits[ElectricInductanceUnits["Henries"] = 0] = "Henries";
-    ElectricInductanceUnits[ElectricInductanceUnits["Nanohenries"] = 1] = "Nanohenries";
-    ElectricInductanceUnits[ElectricInductanceUnits["Microhenries"] = 2] = "Microhenries";
+    ElectricInductanceUnits[ElectricInductanceUnits["Nanohenry"] = 1] = "Nanohenry";
+    ElectricInductanceUnits[ElectricInductanceUnits["Microhenry"] = 2] = "Microhenry";
 })(ElectricInductanceUnits = exports.ElectricInductanceUnits || (exports.ElectricInductanceUnits = {}));
 class ElectricInductance {
     constructor(value, fromUnit) {
         this.henriesLazy = null;
-        this.nanohenriesLazy = null;
-        this.microhenriesLazy = null;
+        this.nanohenryLazy = null;
+        this.microhenryLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Henries() {
@@ -19,34 +19,34 @@ class ElectricInductance {
         }
         return this.henriesLazy = this.convertFromBase(ElectricInductanceUnits.Henries);
     }
-    get Nanohenries() {
-        if (this.nanohenriesLazy !== null) {
-            return this.nanohenriesLazy;
+    get Nanohenry() {
+        if (this.nanohenryLazy !== null) {
+            return this.nanohenryLazy;
         }
-        return this.nanohenriesLazy = this.convertFromBase(ElectricInductanceUnits.Nanohenries);
+        return this.nanohenryLazy = this.convertFromBase(ElectricInductanceUnits.Nanohenry);
     }
-    get Microhenries() {
-        if (this.microhenriesLazy !== null) {
-            return this.microhenriesLazy;
+    get Microhenry() {
+        if (this.microhenryLazy !== null) {
+            return this.microhenryLazy;
         }
-        return this.microhenriesLazy = this.convertFromBase(ElectricInductanceUnits.Microhenries);
+        return this.microhenryLazy = this.convertFromBase(ElectricInductanceUnits.Microhenry);
     }
     static FromHenries(value) {
         return new ElectricInductance(value, ElectricInductanceUnits.Henries);
     }
-    static FromNanohenries(value) {
-        return new ElectricInductance(value, ElectricInductanceUnits.Nanohenries);
+    static FromNanohenry(value) {
+        return new ElectricInductance(value, ElectricInductanceUnits.Nanohenry);
     }
-    static FromMicrohenries(value) {
-        return new ElectricInductance(value, ElectricInductanceUnits.Microhenries);
+    static FromMicrohenry(value) {
+        return new ElectricInductance(value, ElectricInductanceUnits.Microhenry);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
             case ElectricInductanceUnits.Henries:
                 return this.value;
-            case ElectricInductanceUnits.Nanohenries:
+            case ElectricInductanceUnits.Nanohenry:
                 return (this.value) / 1e-9;
-            case ElectricInductanceUnits.Microhenries:
+            case ElectricInductanceUnits.Microhenry:
                 return (this.value) / 0.000001;
             default:
                 break;
@@ -57,14 +57,27 @@ class ElectricInductance {
         switch (fromUnit) {
             case ElectricInductanceUnits.Henries:
                 return value;
-            case ElectricInductanceUnits.Nanohenries:
+            case ElectricInductanceUnits.Nanohenry:
                 return (value) * 1e-9;
-            case ElectricInductanceUnits.Microhenries:
+            case ElectricInductanceUnits.Microhenry:
                 return (value) * 0.000001;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = ElectricInductanceUnits.Henries) {
+        switch (toUnit) {
+            case ElectricInductanceUnits.Henries:
+                return this.Henries + ` H`;
+            case ElectricInductanceUnits.Nanohenry:
+                return this.Nanohenry + ` H`;
+            case ElectricInductanceUnits.Microhenry:
+                return this.Microhenry + ` H`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.ElectricInductance = ElectricInductance;

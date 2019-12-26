@@ -9,5 +9,6 @@ export declare class AreaDensity {
     static FromKilogramsPerSquareMeter(value: number): AreaDensity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: AreaDensityUnits): string;
 }
 //# sourceMappingURL=areadensity.g.d.ts.map

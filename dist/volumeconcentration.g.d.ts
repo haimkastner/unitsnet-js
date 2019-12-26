@@ -7,16 +7,16 @@ export declare enum VolumeConcentrationUnits {
     PartsPerMillion = 5,
     PartsPerBillion = 6,
     PartsPerTrillion = 7,
-    Picolitersperliter = 8,
-    Nanolitersperliter = 9,
-    Microlitersperliter = 10,
-    Centilitersperliter = 11,
-    Decilitersperliter = 12,
-    Picoliterspermililiter = 13,
-    Nanoliterspermililiter = 14,
-    Microliterspermililiter = 15,
-    Centiliterspermililiter = 16,
-    Deciliterspermililiter = 17
+    PicolitersPerLiter = 8,
+    NanolitersPerLiter = 9,
+    MicrolitersPerLiter = 10,
+    CentilitersPerLiter = 11,
+    DecilitersPerLiter = 12,
+    PicolitersPerMililiter = 13,
+    NanolitersPerMililiter = 14,
+    MicrolitersPerMililiter = 15,
+    CentilitersPerMililiter = 16,
+    DecilitersPerMililiter = 17
 }
 export declare class VolumeConcentration {
     private value;
@@ -47,16 +47,16 @@ export declare class VolumeConcentration {
     get PartsPerMillion(): number;
     get PartsPerBillion(): number;
     get PartsPerTrillion(): number;
-    get Picolitersperliter(): number;
-    get Nanolitersperliter(): number;
-    get Microlitersperliter(): number;
-    get Centilitersperliter(): number;
-    get Decilitersperliter(): number;
-    get Picoliterspermililiter(): number;
-    get Nanoliterspermililiter(): number;
-    get Microliterspermililiter(): number;
-    get Centiliterspermililiter(): number;
-    get Deciliterspermililiter(): number;
+    get PicolitersPerLiter(): number;
+    get NanolitersPerLiter(): number;
+    get MicrolitersPerLiter(): number;
+    get CentilitersPerLiter(): number;
+    get DecilitersPerLiter(): number;
+    get PicolitersPerMililiter(): number;
+    get NanolitersPerMililiter(): number;
+    get MicrolitersPerMililiter(): number;
+    get CentilitersPerMililiter(): number;
+    get DecilitersPerMililiter(): number;
     static FromDecimalFractions(value: number): VolumeConcentration;
     static FromLitersPerLiter(value: number): VolumeConcentration;
     static FromLitersPerMililiter(value: number): VolumeConcentration;
@@ -65,17 +65,18 @@ export declare class VolumeConcentration {
     static FromPartsPerMillion(value: number): VolumeConcentration;
     static FromPartsPerBillion(value: number): VolumeConcentration;
     static FromPartsPerTrillion(value: number): VolumeConcentration;
-    static FromPicolitersperliter(value: number): VolumeConcentration;
-    static FromNanolitersperliter(value: number): VolumeConcentration;
-    static FromMicrolitersperliter(value: number): VolumeConcentration;
-    static FromCentilitersperliter(value: number): VolumeConcentration;
-    static FromDecilitersperliter(value: number): VolumeConcentration;
-    static FromPicoliterspermililiter(value: number): VolumeConcentration;
-    static FromNanoliterspermililiter(value: number): VolumeConcentration;
-    static FromMicroliterspermililiter(value: number): VolumeConcentration;
-    static FromCentiliterspermililiter(value: number): VolumeConcentration;
-    static FromDeciliterspermililiter(value: number): VolumeConcentration;
+    static FromPicolitersPerLiter(value: number): VolumeConcentration;
+    static FromNanolitersPerLiter(value: number): VolumeConcentration;
+    static FromMicrolitersPerLiter(value: number): VolumeConcentration;
+    static FromCentilitersPerLiter(value: number): VolumeConcentration;
+    static FromDecilitersPerLiter(value: number): VolumeConcentration;
+    static FromPicolitersPerMililiter(value: number): VolumeConcentration;
+    static FromNanolitersPerMililiter(value: number): VolumeConcentration;
+    static FromMicrolitersPerMililiter(value: number): VolumeConcentration;
+    static FromCentilitersPerMililiter(value: number): VolumeConcentration;
+    static FromDecilitersPerMililiter(value: number): VolumeConcentration;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: VolumeConcentrationUnits): string;
 }
 //# sourceMappingURL=volumeconcentration.g.d.ts.map

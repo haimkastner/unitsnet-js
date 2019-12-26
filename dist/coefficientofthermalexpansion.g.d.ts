@@ -17,5 +17,6 @@ export declare class CoefficientOfThermalExpansion {
     static FromInverseDegreeFahrenheit(value: number): CoefficientOfThermalExpansion;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: CoefficientOfThermalExpansionUnits): string;
 }
 //# sourceMappingURL=coefficientofthermalexpansion.g.d.ts.map

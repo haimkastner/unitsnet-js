@@ -59,4 +59,18 @@ export class Level {
         }
         return NaN;
     }
+
+    public toString(toUnit: LevelUnits = LevelUnits.Decibels): string {
+
+        switch (toUnit) {
+            
+            case LevelUnits.Decibels:
+                return this.Decibels + ` dB`;
+            case LevelUnits.Nepers:
+                return this.Nepers + ` Np`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

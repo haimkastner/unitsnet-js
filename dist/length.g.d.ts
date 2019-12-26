@@ -20,16 +20,16 @@ export declare enum LengthUnits {
     Parsecs = 18,
     LightYears = 19,
     SolarRadiuses = 20,
-    Nanometers = 21,
-    Micrometers = 22,
-    Centimeters = 23,
-    Decimeters = 24,
-    Hectometers = 25,
-    Kilometers = 26,
-    Kiloparsecs = 27,
-    Megaparsecs = 28,
-    Kilolightyears = 29,
-    Megalightyears = 30
+    Nanometer = 21,
+    Micrometer = 22,
+    Centimeter = 23,
+    Decimeter = 24,
+    Hectometer = 25,
+    Kilometer = 26,
+    Kiloparsec = 27,
+    Megaparsec = 28,
+    KilolightYear = 29,
+    MegalightYear = 30
 }
 export declare class Length {
     private value;
@@ -54,16 +54,16 @@ export declare class Length {
     private parsecsLazy;
     private lightyearsLazy;
     private solarradiusesLazy;
-    private nanometersLazy;
-    private micrometersLazy;
-    private centimetersLazy;
-    private decimetersLazy;
-    private hectometersLazy;
-    private kilometersLazy;
-    private kiloparsecsLazy;
-    private megaparsecsLazy;
-    private kilolightyearsLazy;
-    private megalightyearsLazy;
+    private nanometerLazy;
+    private micrometerLazy;
+    private centimeterLazy;
+    private decimeterLazy;
+    private hectometerLazy;
+    private kilometerLazy;
+    private kiloparsecLazy;
+    private megaparsecLazy;
+    private kilolightyearLazy;
+    private megalightyearLazy;
     constructor(value: number, fromUnit: LengthUnits);
     get Meters(): number;
     get Miles(): number;
@@ -86,16 +86,16 @@ export declare class Length {
     get Parsecs(): number;
     get LightYears(): number;
     get SolarRadiuses(): number;
-    get Nanometers(): number;
-    get Micrometers(): number;
-    get Centimeters(): number;
-    get Decimeters(): number;
-    get Hectometers(): number;
-    get Kilometers(): number;
-    get Kiloparsecs(): number;
-    get Megaparsecs(): number;
-    get Kilolightyears(): number;
-    get Megalightyears(): number;
+    get Nanometer(): number;
+    get Micrometer(): number;
+    get Centimeter(): number;
+    get Decimeter(): number;
+    get Hectometer(): number;
+    get Kilometer(): number;
+    get Kiloparsec(): number;
+    get Megaparsec(): number;
+    get KilolightYear(): number;
+    get MegalightYear(): number;
     static FromMeters(value: number): Length;
     static FromMiles(value: number): Length;
     static FromYards(value: number): Length;
@@ -117,17 +117,18 @@ export declare class Length {
     static FromParsecs(value: number): Length;
     static FromLightYears(value: number): Length;
     static FromSolarRadiuses(value: number): Length;
-    static FromNanometers(value: number): Length;
-    static FromMicrometers(value: number): Length;
-    static FromCentimeters(value: number): Length;
-    static FromDecimeters(value: number): Length;
-    static FromHectometers(value: number): Length;
-    static FromKilometers(value: number): Length;
-    static FromKiloparsecs(value: number): Length;
-    static FromMegaparsecs(value: number): Length;
-    static FromKilolightyears(value: number): Length;
-    static FromMegalightyears(value: number): Length;
+    static FromNanometer(value: number): Length;
+    static FromMicrometer(value: number): Length;
+    static FromCentimeter(value: number): Length;
+    static FromDecimeter(value: number): Length;
+    static FromHectometer(value: number): Length;
+    static FromKilometer(value: number): Length;
+    static FromKiloparsec(value: number): Length;
+    static FromMegaparsec(value: number): Length;
+    static FromKilolightYear(value: number): Length;
+    static FromMegalightYear(value: number): Length;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: LengthUnits): string;
 }
 //# sourceMappingURL=length.g.d.ts.map

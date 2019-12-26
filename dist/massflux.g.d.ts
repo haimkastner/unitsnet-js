@@ -1,17 +1,18 @@
 export declare enum MassFluxUnits {
     GramsPerSecondPerSquareMeter = 0,
-    Kilogramspersecondpersquaremeter = 1
+    KilogramPerSecondPerSquareMeter = 1
 }
 export declare class MassFlux {
     private value;
     private gramspersecondpersquaremeterLazy;
-    private kilogramspersecondpersquaremeterLazy;
+    private kilogrampersecondpersquaremeterLazy;
     constructor(value: number, fromUnit: MassFluxUnits);
     get GramsPerSecondPerSquareMeter(): number;
-    get Kilogramspersecondpersquaremeter(): number;
+    get KilogramPerSecondPerSquareMeter(): number;
     static FromGramsPerSecondPerSquareMeter(value: number): MassFlux;
-    static FromKilogramspersecondpersquaremeter(value: number): MassFlux;
+    static FromKilogramPerSecondPerSquareMeter(value: number): MassFlux;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: MassFluxUnits): string;
 }
 //# sourceMappingURL=massflux.g.d.ts.map

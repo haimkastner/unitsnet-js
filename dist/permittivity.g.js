@@ -36,6 +36,15 @@ class Permittivity {
         }
         return NaN;
     }
+    toString(toUnit = PermittivityUnits.FaradsPerMeter) {
+        switch (toUnit) {
+            case PermittivityUnits.FaradsPerMeter:
+                return this.FaradsPerMeter + ` F/m`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.Permittivity = Permittivity;
 //# sourceMappingURL=permittivity.g.js.map

@@ -1,53 +1,54 @@
 export declare enum MolarMassUnits {
     GramsPerMole = 0,
     PoundsPerMole = 1,
-    Nanogramspermole = 2,
-    Microgramspermole = 3,
-    Centigramspermole = 4,
-    Decigramspermole = 5,
-    Decagramspermole = 6,
-    Hectogramspermole = 7,
-    Kilogramspermole = 8,
-    Kilopoundspermole = 9,
-    Megapoundspermole = 10
+    NanogramPerMole = 2,
+    MicrogramPerMole = 3,
+    CentigramPerMole = 4,
+    DecigramPerMole = 5,
+    DecagramPerMole = 6,
+    HectogramPerMole = 7,
+    KilogramPerMole = 8,
+    KilopoundPerMole = 9,
+    MegapoundPerMole = 10
 }
 export declare class MolarMass {
     private value;
     private gramspermoleLazy;
     private poundspermoleLazy;
-    private nanogramspermoleLazy;
-    private microgramspermoleLazy;
-    private centigramspermoleLazy;
-    private decigramspermoleLazy;
-    private decagramspermoleLazy;
-    private hectogramspermoleLazy;
-    private kilogramspermoleLazy;
-    private kilopoundspermoleLazy;
-    private megapoundspermoleLazy;
+    private nanogrampermoleLazy;
+    private microgrampermoleLazy;
+    private centigrampermoleLazy;
+    private decigrampermoleLazy;
+    private decagrampermoleLazy;
+    private hectogrampermoleLazy;
+    private kilogrampermoleLazy;
+    private kilopoundpermoleLazy;
+    private megapoundpermoleLazy;
     constructor(value: number, fromUnit: MolarMassUnits);
     get GramsPerMole(): number;
     get PoundsPerMole(): number;
-    get Nanogramspermole(): number;
-    get Microgramspermole(): number;
-    get Centigramspermole(): number;
-    get Decigramspermole(): number;
-    get Decagramspermole(): number;
-    get Hectogramspermole(): number;
-    get Kilogramspermole(): number;
-    get Kilopoundspermole(): number;
-    get Megapoundspermole(): number;
+    get NanogramPerMole(): number;
+    get MicrogramPerMole(): number;
+    get CentigramPerMole(): number;
+    get DecigramPerMole(): number;
+    get DecagramPerMole(): number;
+    get HectogramPerMole(): number;
+    get KilogramPerMole(): number;
+    get KilopoundPerMole(): number;
+    get MegapoundPerMole(): number;
     static FromGramsPerMole(value: number): MolarMass;
     static FromPoundsPerMole(value: number): MolarMass;
-    static FromNanogramspermole(value: number): MolarMass;
-    static FromMicrogramspermole(value: number): MolarMass;
-    static FromCentigramspermole(value: number): MolarMass;
-    static FromDecigramspermole(value: number): MolarMass;
-    static FromDecagramspermole(value: number): MolarMass;
-    static FromHectogramspermole(value: number): MolarMass;
-    static FromKilogramspermole(value: number): MolarMass;
-    static FromKilopoundspermole(value: number): MolarMass;
-    static FromMegapoundspermole(value: number): MolarMass;
+    static FromNanogramPerMole(value: number): MolarMass;
+    static FromMicrogramPerMole(value: number): MolarMass;
+    static FromCentigramPerMole(value: number): MolarMass;
+    static FromDecigramPerMole(value: number): MolarMass;
+    static FromDecagramPerMole(value: number): MolarMass;
+    static FromHectogramPerMole(value: number): MolarMass;
+    static FromKilogramPerMole(value: number): MolarMass;
+    static FromKilopoundPerMole(value: number): MolarMass;
+    static FromMegapoundPerMole(value: number): MolarMass;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: MolarMassUnits): string;
 }
 //# sourceMappingURL=molarmass.g.d.ts.map

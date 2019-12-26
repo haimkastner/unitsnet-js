@@ -9,5 +9,6 @@ export declare class VitaminA {
     static FromInternationalUnits(value: number): VitaminA;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: VitaminAUnits): string;
 }
 //# sourceMappingURL=vitamina.g.d.ts.map

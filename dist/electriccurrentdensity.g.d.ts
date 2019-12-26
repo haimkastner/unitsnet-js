@@ -17,5 +17,6 @@ export declare class ElectricCurrentDensity {
     static FromAmperesPerSquareFoot(value: number): ElectricCurrentDensity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricCurrentDensityUnits): string;
 }
 //# sourceMappingURL=electriccurrentdensity.g.d.ts.map

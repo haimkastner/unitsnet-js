@@ -1,65 +1,66 @@
 export declare enum BitRateUnits {
     BitsPerSecond = 0,
     BytesPerSecond = 1,
-    Kilobitspersecond = 2,
-    Megabitspersecond = 3,
-    Gigabitspersecond = 4,
-    Terabitspersecond = 5,
-    Petabitspersecond = 6,
-    Exabitspersecond = 7,
-    Kilobytespersecond = 8,
-    Megabytespersecond = 9,
-    Gigabytespersecond = 10,
-    Terabytespersecond = 11,
-    Petabytespersecond = 12,
-    Exabytespersecond = 13
+    KilobitPerSecond = 2,
+    MegabitPerSecond = 3,
+    GigabitPerSecond = 4,
+    TerabitPerSecond = 5,
+    PetabitPerSecond = 6,
+    ExabitPerSecond = 7,
+    KilobytePerSecond = 8,
+    MegabytePerSecond = 9,
+    GigabytePerSecond = 10,
+    TerabytePerSecond = 11,
+    PetabytePerSecond = 12,
+    ExabytePerSecond = 13
 }
 export declare class BitRate {
     private value;
     private bitspersecondLazy;
     private bytespersecondLazy;
-    private kilobitspersecondLazy;
-    private megabitspersecondLazy;
-    private gigabitspersecondLazy;
-    private terabitspersecondLazy;
-    private petabitspersecondLazy;
-    private exabitspersecondLazy;
-    private kilobytespersecondLazy;
-    private megabytespersecondLazy;
-    private gigabytespersecondLazy;
-    private terabytespersecondLazy;
-    private petabytespersecondLazy;
-    private exabytespersecondLazy;
+    private kilobitpersecondLazy;
+    private megabitpersecondLazy;
+    private gigabitpersecondLazy;
+    private terabitpersecondLazy;
+    private petabitpersecondLazy;
+    private exabitpersecondLazy;
+    private kilobytepersecondLazy;
+    private megabytepersecondLazy;
+    private gigabytepersecondLazy;
+    private terabytepersecondLazy;
+    private petabytepersecondLazy;
+    private exabytepersecondLazy;
     constructor(value: number, fromUnit: BitRateUnits);
     get BitsPerSecond(): number;
     get BytesPerSecond(): number;
-    get Kilobitspersecond(): number;
-    get Megabitspersecond(): number;
-    get Gigabitspersecond(): number;
-    get Terabitspersecond(): number;
-    get Petabitspersecond(): number;
-    get Exabitspersecond(): number;
-    get Kilobytespersecond(): number;
-    get Megabytespersecond(): number;
-    get Gigabytespersecond(): number;
-    get Terabytespersecond(): number;
-    get Petabytespersecond(): number;
-    get Exabytespersecond(): number;
+    get KilobitPerSecond(): number;
+    get MegabitPerSecond(): number;
+    get GigabitPerSecond(): number;
+    get TerabitPerSecond(): number;
+    get PetabitPerSecond(): number;
+    get ExabitPerSecond(): number;
+    get KilobytePerSecond(): number;
+    get MegabytePerSecond(): number;
+    get GigabytePerSecond(): number;
+    get TerabytePerSecond(): number;
+    get PetabytePerSecond(): number;
+    get ExabytePerSecond(): number;
     static FromBitsPerSecond(value: number): BitRate;
     static FromBytesPerSecond(value: number): BitRate;
-    static FromKilobitspersecond(value: number): BitRate;
-    static FromMegabitspersecond(value: number): BitRate;
-    static FromGigabitspersecond(value: number): BitRate;
-    static FromTerabitspersecond(value: number): BitRate;
-    static FromPetabitspersecond(value: number): BitRate;
-    static FromExabitspersecond(value: number): BitRate;
-    static FromKilobytespersecond(value: number): BitRate;
-    static FromMegabytespersecond(value: number): BitRate;
-    static FromGigabytespersecond(value: number): BitRate;
-    static FromTerabytespersecond(value: number): BitRate;
-    static FromPetabytespersecond(value: number): BitRate;
-    static FromExabytespersecond(value: number): BitRate;
+    static FromKilobitPerSecond(value: number): BitRate;
+    static FromMegabitPerSecond(value: number): BitRate;
+    static FromGigabitPerSecond(value: number): BitRate;
+    static FromTerabitPerSecond(value: number): BitRate;
+    static FromPetabitPerSecond(value: number): BitRate;
+    static FromExabitPerSecond(value: number): BitRate;
+    static FromKilobytePerSecond(value: number): BitRate;
+    static FromMegabytePerSecond(value: number): BitRate;
+    static FromGigabytePerSecond(value: number): BitRate;
+    static FromTerabytePerSecond(value: number): BitRate;
+    static FromPetabytePerSecond(value: number): BitRate;
+    static FromExabytePerSecond(value: number): BitRate;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: BitRateUnits): string;
 }
 //# sourceMappingURL=bitrate.g.d.ts.map

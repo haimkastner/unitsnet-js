@@ -76,4 +76,20 @@ export class ElectricConductivity {
         }
         return NaN;
     }
+
+    public toString(toUnit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter): string {
+
+        switch (toUnit) {
+            
+            case ElectricConductivityUnits.SiemensPerMeter:
+                return this.SiemensPerMeter + ` S/m`;
+            case ElectricConductivityUnits.SiemensPerInch:
+                return this.SiemensPerInch + ` S/in`;
+            case ElectricConductivityUnits.SiemensPerFoot:
+                return this.SiemensPerFoot + ` S/ft`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

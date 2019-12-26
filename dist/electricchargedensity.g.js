@@ -36,6 +36,15 @@ class ElectricChargeDensity {
         }
         return NaN;
     }
+    toString(toUnit = ElectricChargeDensityUnits.CoulombsPerCubicMeter) {
+        switch (toUnit) {
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
+                return this.CoulombsPerCubicMeter + ` C/m³`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ElectricChargeDensity = ElectricChargeDensity;
 //# sourceMappingURL=electricchargedensity.g.js.map

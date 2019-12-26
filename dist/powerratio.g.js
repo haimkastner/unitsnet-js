@@ -51,6 +51,17 @@ class PowerRatio {
         }
         return NaN;
     }
+    toString(toUnit = PowerRatioUnits.DecibelWatts) {
+        switch (toUnit) {
+            case PowerRatioUnits.DecibelWatts:
+                return this.DecibelWatts + ` dBW`;
+            case PowerRatioUnits.DecibelMilliwatts:
+                return this.DecibelMilliwatts + ` dBmW`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.PowerRatio = PowerRatio;
 //# sourceMappingURL=powerratio.g.js.map

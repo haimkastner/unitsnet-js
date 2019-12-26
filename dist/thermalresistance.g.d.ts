@@ -25,5 +25,6 @@ export declare class ThermalResistance {
     static FromHourSquareFeetDegreesFahrenheitPerBtu(value: number): ThermalResistance;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ThermalResistanceUnits): string;
 }
 //# sourceMappingURL=thermalresistance.g.d.ts.map

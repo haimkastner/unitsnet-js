@@ -61,5 +61,6 @@ export declare class Area {
     static FromSquareNauticalMiles(value: number): Area;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: AreaUnits): string;
 }
 //# sourceMappingURL=area.g.d.ts.map

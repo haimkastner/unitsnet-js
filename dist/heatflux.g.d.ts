@@ -10,12 +10,12 @@ export declare enum HeatFluxUnits {
     KilocaloriesPerHourSquareMeter = 8,
     PoundsForcePerFootSecond = 9,
     PoundsPerSecondCubed = 10,
-    Nanowattspersquaremeter = 11,
-    Microwattspersquaremeter = 12,
-    Centiwattspersquaremeter = 13,
-    Deciwattspersquaremeter = 14,
-    Kilowattspersquaremeter = 15,
-    Kilocaloriespersecondsquarecentimeter = 16
+    NanowattPerSquareMeter = 11,
+    MicrowattPerSquareMeter = 12,
+    CentiwattPerSquareMeter = 13,
+    DeciwattPerSquareMeter = 14,
+    KilowattPerSquareMeter = 15,
+    KilocaloriePerSecondSquareCentimeter = 16
 }
 export declare class HeatFlux {
     private value;
@@ -30,12 +30,12 @@ export declare class HeatFlux {
     private kilocaloriesperhoursquaremeterLazy;
     private poundsforceperfootsecondLazy;
     private poundspersecondcubedLazy;
-    private nanowattspersquaremeterLazy;
-    private microwattspersquaremeterLazy;
-    private centiwattspersquaremeterLazy;
-    private deciwattspersquaremeterLazy;
-    private kilowattspersquaremeterLazy;
-    private kilocaloriespersecondsquarecentimeterLazy;
+    private nanowattpersquaremeterLazy;
+    private microwattpersquaremeterLazy;
+    private centiwattpersquaremeterLazy;
+    private deciwattpersquaremeterLazy;
+    private kilowattpersquaremeterLazy;
+    private kilocaloriepersecondsquarecentimeterLazy;
     constructor(value: number, fromUnit: HeatFluxUnits);
     get WattsPerSquareMeter(): number;
     get WattsPerSquareInch(): number;
@@ -48,12 +48,12 @@ export declare class HeatFlux {
     get KilocaloriesPerHourSquareMeter(): number;
     get PoundsForcePerFootSecond(): number;
     get PoundsPerSecondCubed(): number;
-    get Nanowattspersquaremeter(): number;
-    get Microwattspersquaremeter(): number;
-    get Centiwattspersquaremeter(): number;
-    get Deciwattspersquaremeter(): number;
-    get Kilowattspersquaremeter(): number;
-    get Kilocaloriespersecondsquarecentimeter(): number;
+    get NanowattPerSquareMeter(): number;
+    get MicrowattPerSquareMeter(): number;
+    get CentiwattPerSquareMeter(): number;
+    get DeciwattPerSquareMeter(): number;
+    get KilowattPerSquareMeter(): number;
+    get KilocaloriePerSecondSquareCentimeter(): number;
     static FromWattsPerSquareMeter(value: number): HeatFlux;
     static FromWattsPerSquareInch(value: number): HeatFlux;
     static FromWattsPerSquareFoot(value: number): HeatFlux;
@@ -65,13 +65,14 @@ export declare class HeatFlux {
     static FromKilocaloriesPerHourSquareMeter(value: number): HeatFlux;
     static FromPoundsForcePerFootSecond(value: number): HeatFlux;
     static FromPoundsPerSecondCubed(value: number): HeatFlux;
-    static FromNanowattspersquaremeter(value: number): HeatFlux;
-    static FromMicrowattspersquaremeter(value: number): HeatFlux;
-    static FromCentiwattspersquaremeter(value: number): HeatFlux;
-    static FromDeciwattspersquaremeter(value: number): HeatFlux;
-    static FromKilowattspersquaremeter(value: number): HeatFlux;
-    static FromKilocaloriespersecondsquarecentimeter(value: number): HeatFlux;
+    static FromNanowattPerSquareMeter(value: number): HeatFlux;
+    static FromMicrowattPerSquareMeter(value: number): HeatFlux;
+    static FromCentiwattPerSquareMeter(value: number): HeatFlux;
+    static FromDeciwattPerSquareMeter(value: number): HeatFlux;
+    static FromKilowattPerSquareMeter(value: number): HeatFlux;
+    static FromKilocaloriePerSecondSquareCentimeter(value: number): HeatFlux;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: HeatFluxUnits): string;
 }
 //# sourceMappingURL=heatflux.g.d.ts.map

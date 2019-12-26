@@ -76,4 +76,20 @@ export class BrakeSpecificFuelConsumption {
         }
         return NaN;
     }
+
+    public toString(toUnit: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule): string {
+
+        switch (toUnit) {
+            
+            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
+                return this.GramsPerKiloWattHour + ` g/kWh`;
+            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
+                return this.KilogramsPerJoule + ` kg/J`;
+            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
+                return this.PoundsPerMechanicalHorsepowerHour + ` lb/hph`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

@@ -66,6 +66,19 @@ class ElectricSurfaceChargeDensity {
         }
         return NaN;
     }
+    toString(toUnit = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter) {
+        switch (toUnit) {
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
+                return this.CoulombsPerSquareMeter + ` C/m²`;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
+                return this.CoulombsPerSquareCentimeter + ` C/cm²`;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
+                return this.CoulombsPerSquareInch + ` C/in²`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ElectricSurfaceChargeDensity = ElectricSurfaceChargeDensity;
 //# sourceMappingURL=electricsurfacechargedensity.g.js.map

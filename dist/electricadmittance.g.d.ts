@@ -17,5 +17,6 @@ export declare class ElectricAdmittance {
     static FromMicrosiemens(value: number): ElectricAdmittance;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricAdmittanceUnits): string;
 }
 //# sourceMappingURL=electricadmittance.g.d.ts.map

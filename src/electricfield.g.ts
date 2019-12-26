@@ -42,4 +42,16 @@ export class ElectricField {
         }
         return NaN;
     }
+
+    public toString(toUnit: ElectricFieldUnits = ElectricFieldUnits.VoltsPerMeter): string {
+
+        switch (toUnit) {
+            
+            case ElectricFieldUnits.VoltsPerMeter:
+                return this.VoltsPerMeter + ` V/m`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

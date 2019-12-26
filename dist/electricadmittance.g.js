@@ -66,6 +66,19 @@ class ElectricAdmittance {
         }
         return NaN;
     }
+    toString(toUnit = ElectricAdmittanceUnits.Siemens) {
+        switch (toUnit) {
+            case ElectricAdmittanceUnits.Siemens:
+                return this.Siemens + ` S`;
+            case ElectricAdmittanceUnits.Nanosiemens:
+                return this.Nanosiemens + ` S`;
+            case ElectricAdmittanceUnits.Microsiemens:
+                return this.Microsiemens + ` S`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ElectricAdmittance = ElectricAdmittance;
 //# sourceMappingURL=electricadmittance.g.js.map

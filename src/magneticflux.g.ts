@@ -42,4 +42,16 @@ export class MagneticFlux {
         }
         return NaN;
     }
+
+    public toString(toUnit: MagneticFluxUnits = MagneticFluxUnits.Webers): string {
+
+        switch (toUnit) {
+            
+            case MagneticFluxUnits.Webers:
+                return this.Webers + ` Wb`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

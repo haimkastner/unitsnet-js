@@ -10,16 +10,16 @@ var VolumeConcentrationUnits;
     VolumeConcentrationUnits[VolumeConcentrationUnits["PartsPerMillion"] = 5] = "PartsPerMillion";
     VolumeConcentrationUnits[VolumeConcentrationUnits["PartsPerBillion"] = 6] = "PartsPerBillion";
     VolumeConcentrationUnits[VolumeConcentrationUnits["PartsPerTrillion"] = 7] = "PartsPerTrillion";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Picolitersperliter"] = 8] = "Picolitersperliter";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Nanolitersperliter"] = 9] = "Nanolitersperliter";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Microlitersperliter"] = 10] = "Microlitersperliter";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Centilitersperliter"] = 11] = "Centilitersperliter";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Decilitersperliter"] = 12] = "Decilitersperliter";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Picoliterspermililiter"] = 13] = "Picoliterspermililiter";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Nanoliterspermililiter"] = 14] = "Nanoliterspermililiter";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Microliterspermililiter"] = 15] = "Microliterspermililiter";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Centiliterspermililiter"] = 16] = "Centiliterspermililiter";
-    VolumeConcentrationUnits[VolumeConcentrationUnits["Deciliterspermililiter"] = 17] = "Deciliterspermililiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["PicolitersPerLiter"] = 8] = "PicolitersPerLiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["NanolitersPerLiter"] = 9] = "NanolitersPerLiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["MicrolitersPerLiter"] = 10] = "MicrolitersPerLiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["CentilitersPerLiter"] = 11] = "CentilitersPerLiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["DecilitersPerLiter"] = 12] = "DecilitersPerLiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["PicolitersPerMililiter"] = 13] = "PicolitersPerMililiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["NanolitersPerMililiter"] = 14] = "NanolitersPerMililiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["MicrolitersPerMililiter"] = 15] = "MicrolitersPerMililiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["CentilitersPerMililiter"] = 16] = "CentilitersPerMililiter";
+    VolumeConcentrationUnits[VolumeConcentrationUnits["DecilitersPerMililiter"] = 17] = "DecilitersPerMililiter";
 })(VolumeConcentrationUnits = exports.VolumeConcentrationUnits || (exports.VolumeConcentrationUnits = {}));
 class VolumeConcentration {
     constructor(value, fromUnit) {
@@ -91,65 +91,65 @@ class VolumeConcentration {
         }
         return this.partspertrillionLazy = this.convertFromBase(VolumeConcentrationUnits.PartsPerTrillion);
     }
-    get Picolitersperliter() {
+    get PicolitersPerLiter() {
         if (this.picolitersperliterLazy !== null) {
             return this.picolitersperliterLazy;
         }
-        return this.picolitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Picolitersperliter);
+        return this.picolitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.PicolitersPerLiter);
     }
-    get Nanolitersperliter() {
+    get NanolitersPerLiter() {
         if (this.nanolitersperliterLazy !== null) {
             return this.nanolitersperliterLazy;
         }
-        return this.nanolitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Nanolitersperliter);
+        return this.nanolitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.NanolitersPerLiter);
     }
-    get Microlitersperliter() {
+    get MicrolitersPerLiter() {
         if (this.microlitersperliterLazy !== null) {
             return this.microlitersperliterLazy;
         }
-        return this.microlitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Microlitersperliter);
+        return this.microlitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.MicrolitersPerLiter);
     }
-    get Centilitersperliter() {
+    get CentilitersPerLiter() {
         if (this.centilitersperliterLazy !== null) {
             return this.centilitersperliterLazy;
         }
-        return this.centilitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Centilitersperliter);
+        return this.centilitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.CentilitersPerLiter);
     }
-    get Decilitersperliter() {
+    get DecilitersPerLiter() {
         if (this.decilitersperliterLazy !== null) {
             return this.decilitersperliterLazy;
         }
-        return this.decilitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.Decilitersperliter);
+        return this.decilitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.DecilitersPerLiter);
     }
-    get Picoliterspermililiter() {
+    get PicolitersPerMililiter() {
         if (this.picoliterspermililiterLazy !== null) {
             return this.picoliterspermililiterLazy;
         }
-        return this.picoliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Picoliterspermililiter);
+        return this.picoliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.PicolitersPerMililiter);
     }
-    get Nanoliterspermililiter() {
+    get NanolitersPerMililiter() {
         if (this.nanoliterspermililiterLazy !== null) {
             return this.nanoliterspermililiterLazy;
         }
-        return this.nanoliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Nanoliterspermililiter);
+        return this.nanoliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.NanolitersPerMililiter);
     }
-    get Microliterspermililiter() {
+    get MicrolitersPerMililiter() {
         if (this.microliterspermililiterLazy !== null) {
             return this.microliterspermililiterLazy;
         }
-        return this.microliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Microliterspermililiter);
+        return this.microliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.MicrolitersPerMililiter);
     }
-    get Centiliterspermililiter() {
+    get CentilitersPerMililiter() {
         if (this.centiliterspermililiterLazy !== null) {
             return this.centiliterspermililiterLazy;
         }
-        return this.centiliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Centiliterspermililiter);
+        return this.centiliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.CentilitersPerMililiter);
     }
-    get Deciliterspermililiter() {
+    get DecilitersPerMililiter() {
         if (this.deciliterspermililiterLazy !== null) {
             return this.deciliterspermililiterLazy;
         }
-        return this.deciliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.Deciliterspermililiter);
+        return this.deciliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.DecilitersPerMililiter);
     }
     static FromDecimalFractions(value) {
         return new VolumeConcentration(value, VolumeConcentrationUnits.DecimalFractions);
@@ -175,35 +175,35 @@ class VolumeConcentration {
     static FromPartsPerTrillion(value) {
         return new VolumeConcentration(value, VolumeConcentrationUnits.PartsPerTrillion);
     }
-    static FromPicolitersperliter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Picolitersperliter);
+    static FromPicolitersPerLiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.PicolitersPerLiter);
     }
-    static FromNanolitersperliter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Nanolitersperliter);
+    static FromNanolitersPerLiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.NanolitersPerLiter);
     }
-    static FromMicrolitersperliter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Microlitersperliter);
+    static FromMicrolitersPerLiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.MicrolitersPerLiter);
     }
-    static FromCentilitersperliter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Centilitersperliter);
+    static FromCentilitersPerLiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.CentilitersPerLiter);
     }
-    static FromDecilitersperliter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Decilitersperliter);
+    static FromDecilitersPerLiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.DecilitersPerLiter);
     }
-    static FromPicoliterspermililiter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Picoliterspermililiter);
+    static FromPicolitersPerMililiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.PicolitersPerMililiter);
     }
-    static FromNanoliterspermililiter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Nanoliterspermililiter);
+    static FromNanolitersPerMililiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.NanolitersPerMililiter);
     }
-    static FromMicroliterspermililiter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Microliterspermililiter);
+    static FromMicrolitersPerMililiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.MicrolitersPerMililiter);
     }
-    static FromCentiliterspermililiter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Centiliterspermililiter);
+    static FromCentilitersPerMililiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.CentilitersPerMililiter);
     }
-    static FromDeciliterspermililiter(value) {
-        return new VolumeConcentration(value, VolumeConcentrationUnits.Deciliterspermililiter);
+    static FromDecilitersPerMililiter(value) {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.DecilitersPerMililiter);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -223,25 +223,25 @@ class VolumeConcentration {
                 return this.value * 1e9;
             case VolumeConcentrationUnits.PartsPerTrillion:
                 return this.value * 1e12;
-            case VolumeConcentrationUnits.Picolitersperliter:
+            case VolumeConcentrationUnits.PicolitersPerLiter:
                 return (this.value) / 1e-12;
-            case VolumeConcentrationUnits.Nanolitersperliter:
+            case VolumeConcentrationUnits.NanolitersPerLiter:
                 return (this.value) / 1e-9;
-            case VolumeConcentrationUnits.Microlitersperliter:
+            case VolumeConcentrationUnits.MicrolitersPerLiter:
                 return (this.value) / 0.000001;
-            case VolumeConcentrationUnits.Centilitersperliter:
+            case VolumeConcentrationUnits.CentilitersPerLiter:
                 return (this.value) / 0.01;
-            case VolumeConcentrationUnits.Decilitersperliter:
+            case VolumeConcentrationUnits.DecilitersPerLiter:
                 return (this.value) / 0.1;
-            case VolumeConcentrationUnits.Picoliterspermililiter:
+            case VolumeConcentrationUnits.PicolitersPerMililiter:
                 return (this.value * 1e-3) / 1e-12;
-            case VolumeConcentrationUnits.Nanoliterspermililiter:
+            case VolumeConcentrationUnits.NanolitersPerMililiter:
                 return (this.value * 1e-3) / 1e-9;
-            case VolumeConcentrationUnits.Microliterspermililiter:
+            case VolumeConcentrationUnits.MicrolitersPerMililiter:
                 return (this.value * 1e-3) / 0.000001;
-            case VolumeConcentrationUnits.Centiliterspermililiter:
+            case VolumeConcentrationUnits.CentilitersPerMililiter:
                 return (this.value * 1e-3) / 0.01;
-            case VolumeConcentrationUnits.Deciliterspermililiter:
+            case VolumeConcentrationUnits.DecilitersPerMililiter:
                 return (this.value * 1e-3) / 0.1;
             default:
                 break;
@@ -266,30 +266,73 @@ class VolumeConcentration {
                 return value / 1e9;
             case VolumeConcentrationUnits.PartsPerTrillion:
                 return value / 1e12;
-            case VolumeConcentrationUnits.Picolitersperliter:
+            case VolumeConcentrationUnits.PicolitersPerLiter:
                 return (value) * 1e-12;
-            case VolumeConcentrationUnits.Nanolitersperliter:
+            case VolumeConcentrationUnits.NanolitersPerLiter:
                 return (value) * 1e-9;
-            case VolumeConcentrationUnits.Microlitersperliter:
+            case VolumeConcentrationUnits.MicrolitersPerLiter:
                 return (value) * 0.000001;
-            case VolumeConcentrationUnits.Centilitersperliter:
+            case VolumeConcentrationUnits.CentilitersPerLiter:
                 return (value) * 0.01;
-            case VolumeConcentrationUnits.Decilitersperliter:
+            case VolumeConcentrationUnits.DecilitersPerLiter:
                 return (value) * 0.1;
-            case VolumeConcentrationUnits.Picoliterspermililiter:
+            case VolumeConcentrationUnits.PicolitersPerMililiter:
                 return (value / 1e-3) * 1e-12;
-            case VolumeConcentrationUnits.Nanoliterspermililiter:
+            case VolumeConcentrationUnits.NanolitersPerMililiter:
                 return (value / 1e-3) * 1e-9;
-            case VolumeConcentrationUnits.Microliterspermililiter:
+            case VolumeConcentrationUnits.MicrolitersPerMililiter:
                 return (value / 1e-3) * 0.000001;
-            case VolumeConcentrationUnits.Centiliterspermililiter:
+            case VolumeConcentrationUnits.CentilitersPerMililiter:
                 return (value / 1e-3) * 0.01;
-            case VolumeConcentrationUnits.Deciliterspermililiter:
+            case VolumeConcentrationUnits.DecilitersPerMililiter:
                 return (value / 1e-3) * 0.1;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = VolumeConcentrationUnits.DecimalFractions) {
+        switch (toUnit) {
+            case VolumeConcentrationUnits.DecimalFractions:
+                return this.DecimalFractions + ` `;
+            case VolumeConcentrationUnits.LitersPerLiter:
+                return this.LitersPerLiter + ` L/L`;
+            case VolumeConcentrationUnits.LitersPerMililiter:
+                return this.LitersPerMililiter + ` L/mL`;
+            case VolumeConcentrationUnits.Percent:
+                return this.Percent + ` %`;
+            case VolumeConcentrationUnits.PartsPerThousand:
+                return this.PartsPerThousand + ` ‰`;
+            case VolumeConcentrationUnits.PartsPerMillion:
+                return this.PartsPerMillion + ` ppm`;
+            case VolumeConcentrationUnits.PartsPerBillion:
+                return this.PartsPerBillion + ` ppb`;
+            case VolumeConcentrationUnits.PartsPerTrillion:
+                return this.PartsPerTrillion + ` ppt`;
+            case VolumeConcentrationUnits.PicolitersPerLiter:
+                return this.PicolitersPerLiter + ` L/L`;
+            case VolumeConcentrationUnits.NanolitersPerLiter:
+                return this.NanolitersPerLiter + ` L/L`;
+            case VolumeConcentrationUnits.MicrolitersPerLiter:
+                return this.MicrolitersPerLiter + ` L/L`;
+            case VolumeConcentrationUnits.CentilitersPerLiter:
+                return this.CentilitersPerLiter + ` L/L`;
+            case VolumeConcentrationUnits.DecilitersPerLiter:
+                return this.DecilitersPerLiter + ` L/L`;
+            case VolumeConcentrationUnits.PicolitersPerMililiter:
+                return this.PicolitersPerMililiter + ` L/mL`;
+            case VolumeConcentrationUnits.NanolitersPerMililiter:
+                return this.NanolitersPerMililiter + ` L/mL`;
+            case VolumeConcentrationUnits.MicrolitersPerMililiter:
+                return this.MicrolitersPerMililiter + ` L/mL`;
+            case VolumeConcentrationUnits.CentilitersPerMililiter:
+                return this.CentilitersPerMililiter + ` L/mL`;
+            case VolumeConcentrationUnits.DecilitersPerMililiter:
+                return this.DecilitersPerMililiter + ` L/mL`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.VolumeConcentration = VolumeConcentration;

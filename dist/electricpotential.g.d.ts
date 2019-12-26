@@ -1,25 +1,26 @@
 export declare enum ElectricPotentialUnits {
     Volts = 0,
-    Microvolts = 1,
-    Kilovolts = 2,
-    Megavolts = 3
+    Microvolt = 1,
+    Kilovolt = 2,
+    Megavolt = 3
 }
 export declare class ElectricPotential {
     private value;
     private voltsLazy;
-    private microvoltsLazy;
-    private kilovoltsLazy;
-    private megavoltsLazy;
+    private microvoltLazy;
+    private kilovoltLazy;
+    private megavoltLazy;
     constructor(value: number, fromUnit: ElectricPotentialUnits);
     get Volts(): number;
-    get Microvolts(): number;
-    get Kilovolts(): number;
-    get Megavolts(): number;
+    get Microvolt(): number;
+    get Kilovolt(): number;
+    get Megavolt(): number;
     static FromVolts(value: number): ElectricPotential;
-    static FromMicrovolts(value: number): ElectricPotential;
-    static FromKilovolts(value: number): ElectricPotential;
-    static FromMegavolts(value: number): ElectricPotential;
+    static FromMicrovolt(value: number): ElectricPotential;
+    static FromKilovolt(value: number): ElectricPotential;
+    static FromMegavolt(value: number): ElectricPotential;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricPotentialUnits): string;
 }
 //# sourceMappingURL=electricpotential.g.d.ts.map

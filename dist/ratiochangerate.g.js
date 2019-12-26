@@ -51,6 +51,17 @@ class RatioChangeRate {
         }
         return NaN;
     }
+    toString(toUnit = RatioChangeRateUnits.DecimalFractionsPerSecond) {
+        switch (toUnit) {
+            case RatioChangeRateUnits.PercentsPerSecond:
+                return this.PercentsPerSecond + ` %/s`;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond:
+                return this.DecimalFractionsPerSecond + ` /s`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.RatioChangeRate = RatioChangeRate;
 //# sourceMappingURL=ratiochangerate.g.js.map

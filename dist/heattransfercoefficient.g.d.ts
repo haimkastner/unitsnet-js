@@ -17,5 +17,6 @@ export declare class HeatTransferCoefficient {
     static FromBtusPerSquareFootDegreeFahrenheit(value: number): HeatTransferCoefficient;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: HeatTransferCoefficientUnits): string;
 }
 //# sourceMappingURL=heattransfercoefficient.g.d.ts.map

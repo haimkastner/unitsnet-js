@@ -1,14 +1,14 @@
 export enum ElectricInductanceUnits {
     Henries,
-    Nanohenries,
-    Microhenries
+    Nanohenry,
+    Microhenry
 }
 
 export class ElectricInductance {
     private value: number;
     private henriesLazy: number | null = null;
-    private nanohenriesLazy: number | null = null;
-    private microhenriesLazy: number | null = null;
+    private nanohenryLazy: number | null = null;
+    private microhenryLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricInductanceUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -21,30 +21,30 @@ export class ElectricInductance {
         return this.henriesLazy = this.convertFromBase(ElectricInductanceUnits.Henries);
     }
 
-    public get Nanohenries(): number {
-        if(this.nanohenriesLazy !== null){
-            return this.nanohenriesLazy;
+    public get Nanohenry(): number {
+        if(this.nanohenryLazy !== null){
+            return this.nanohenryLazy;
         }
-        return this.nanohenriesLazy = this.convertFromBase(ElectricInductanceUnits.Nanohenries);
+        return this.nanohenryLazy = this.convertFromBase(ElectricInductanceUnits.Nanohenry);
     }
 
-    public get Microhenries(): number {
-        if(this.microhenriesLazy !== null){
-            return this.microhenriesLazy;
+    public get Microhenry(): number {
+        if(this.microhenryLazy !== null){
+            return this.microhenryLazy;
         }
-        return this.microhenriesLazy = this.convertFromBase(ElectricInductanceUnits.Microhenries);
+        return this.microhenryLazy = this.convertFromBase(ElectricInductanceUnits.Microhenry);
     }
 
     public static FromHenries(value: number): ElectricInductance {
         return new ElectricInductance(value, ElectricInductanceUnits.Henries);
     }
 
-    public static FromNanohenries(value: number): ElectricInductance {
-        return new ElectricInductance(value, ElectricInductanceUnits.Nanohenries);
+    public static FromNanohenry(value: number): ElectricInductance {
+        return new ElectricInductance(value, ElectricInductanceUnits.Nanohenry);
     }
 
-    public static FromMicrohenries(value: number): ElectricInductance {
-        return new ElectricInductance(value, ElectricInductanceUnits.Microhenries);
+    public static FromMicrohenry(value: number): ElectricInductance {
+        return new ElectricInductance(value, ElectricInductanceUnits.Microhenry);
     }
 
     private convertFromBase(toUnit: ElectricInductanceUnits): number {
@@ -52,9 +52,9 @@ export class ElectricInductance {
                 
             case ElectricInductanceUnits.Henries:
                 return this.value;
-            case ElectricInductanceUnits.Nanohenries:
+            case ElectricInductanceUnits.Nanohenry:
                 return (this.value) / 1e-9;
-            case ElectricInductanceUnits.Microhenries:
+            case ElectricInductanceUnits.Microhenry:
                 return (this.value) / 0.000001;
             default:
                 break;
@@ -67,13 +67,29 @@ export class ElectricInductance {
                 
             case ElectricInductanceUnits.Henries:
                 return value;
-            case ElectricInductanceUnits.Nanohenries:
+            case ElectricInductanceUnits.Nanohenry:
                 return (value) * 1e-9;
-            case ElectricInductanceUnits.Microhenries:
+            case ElectricInductanceUnits.Microhenry:
                 return (value) * 0.000001;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: ElectricInductanceUnits = ElectricInductanceUnits.Henries): string {
+
+        switch (toUnit) {
+            
+            case ElectricInductanceUnits.Henries:
+                return this.Henries + ` H`;
+            case ElectricInductanceUnits.Nanohenry:
+                return this.Nanohenry + ` H`;
+            case ElectricInductanceUnits.Microhenry:
+                return this.Microhenry + ` H`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

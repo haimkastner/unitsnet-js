@@ -42,4 +42,16 @@ export class AreaDensity {
         }
         return NaN;
     }
+
+    public toString(toUnit: AreaDensityUnits = AreaDensityUnits.KilogramsPerSquareMeter): string {
+
+        switch (toUnit) {
+            
+            case AreaDensityUnits.KilogramsPerSquareMeter:
+                return this.KilogramsPerSquareMeter + ` kg/m²`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

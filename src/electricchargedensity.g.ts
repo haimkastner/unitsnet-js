@@ -42,4 +42,16 @@ export class ElectricChargeDensity {
         }
         return NaN;
     }
+
+    public toString(toUnit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter): string {
+
+        switch (toUnit) {
+            
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
+                return this.CoulombsPerCubicMeter + ` C/m³`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

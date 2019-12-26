@@ -96,6 +96,23 @@ class ThermalResistance {
         }
         return NaN;
     }
+    toString(toUnit = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt) {
+        switch (toUnit) {
+            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
+                return this.SquareMeterKelvinsPerKilowatt + ` m²K/kW`;
+            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
+                return this.SquareMeterDegreesCelsiusPerWatt + ` m²°C/W`;
+            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
+                return this.SquareCentimeterKelvinsPerWatt + ` cm²K/W`;
+            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
+                return this.SquareCentimeterHourDegreesCelsiusPerKilocalorie + ` cm²Hr°C/kcal`;
+            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
+                return this.HourSquareFeetDegreesFahrenheitPerBtu + ` Hrft²°F/Btu`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ThermalResistance = ThermalResistance;
 //# sourceMappingURL=thermalresistance.g.js.map

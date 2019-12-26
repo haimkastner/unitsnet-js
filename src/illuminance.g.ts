@@ -76,4 +76,20 @@ export class Illuminance {
         }
         return NaN;
     }
+
+    public toString(toUnit: IlluminanceUnits = IlluminanceUnits.Lux): string {
+
+        switch (toUnit) {
+            
+            case IlluminanceUnits.Lux:
+                return this.Lux + ` lx`;
+            case IlluminanceUnits.Kilolux:
+                return this.Kilolux + ` lx`;
+            case IlluminanceUnits.Megalux:
+                return this.Megalux + ` lx`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

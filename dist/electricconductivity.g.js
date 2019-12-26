@@ -66,6 +66,19 @@ class ElectricConductivity {
         }
         return NaN;
     }
+    toString(toUnit = ElectricConductivityUnits.SiemensPerMeter) {
+        switch (toUnit) {
+            case ElectricConductivityUnits.SiemensPerMeter:
+                return this.SiemensPerMeter + ` S/m`;
+            case ElectricConductivityUnits.SiemensPerInch:
+                return this.SiemensPerInch + ` S/in`;
+            case ElectricConductivityUnits.SiemensPerFoot:
+                return this.SiemensPerFoot + ` S/ft`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ElectricConductivity = ElectricConductivity;
 //# sourceMappingURL=electricconductivity.g.js.map

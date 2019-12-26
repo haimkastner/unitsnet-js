@@ -6,8 +6,8 @@ export enum DurationUnits {
     Hours,
     Minutes,
     Seconds,
-    Nanoseconds,
-    Microseconds
+    Nanosecond,
+    Microsecond
 }
 
 export class Duration {
@@ -19,8 +19,8 @@ export class Duration {
     private hoursLazy: number | null = null;
     private minutesLazy: number | null = null;
     private secondsLazy: number | null = null;
-    private nanosecondsLazy: number | null = null;
-    private microsecondsLazy: number | null = null;
+    private nanosecondLazy: number | null = null;
+    private microsecondLazy: number | null = null;
 
     public constructor(value: number, fromUnit: DurationUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -75,18 +75,18 @@ export class Duration {
         return this.secondsLazy = this.convertFromBase(DurationUnits.Seconds);
     }
 
-    public get Nanoseconds(): number {
-        if(this.nanosecondsLazy !== null){
-            return this.nanosecondsLazy;
+    public get Nanosecond(): number {
+        if(this.nanosecondLazy !== null){
+            return this.nanosecondLazy;
         }
-        return this.nanosecondsLazy = this.convertFromBase(DurationUnits.Nanoseconds);
+        return this.nanosecondLazy = this.convertFromBase(DurationUnits.Nanosecond);
     }
 
-    public get Microseconds(): number {
-        if(this.microsecondsLazy !== null){
-            return this.microsecondsLazy;
+    public get Microsecond(): number {
+        if(this.microsecondLazy !== null){
+            return this.microsecondLazy;
         }
-        return this.microsecondsLazy = this.convertFromBase(DurationUnits.Microseconds);
+        return this.microsecondLazy = this.convertFromBase(DurationUnits.Microsecond);
     }
 
     public static FromYears365(value: number): Duration {
@@ -117,12 +117,12 @@ export class Duration {
         return new Duration(value, DurationUnits.Seconds);
     }
 
-    public static FromNanoseconds(value: number): Duration {
-        return new Duration(value, DurationUnits.Nanoseconds);
+    public static FromNanosecond(value: number): Duration {
+        return new Duration(value, DurationUnits.Nanosecond);
     }
 
-    public static FromMicroseconds(value: number): Duration {
-        return new Duration(value, DurationUnits.Microseconds);
+    public static FromMicrosecond(value: number): Duration {
+        return new Duration(value, DurationUnits.Microsecond);
     }
 
     private convertFromBase(toUnit: DurationUnits): number {
@@ -142,9 +142,9 @@ export class Duration {
                 return this.value/60;
             case DurationUnits.Seconds:
                 return this.value;
-            case DurationUnits.Nanoseconds:
+            case DurationUnits.Nanosecond:
                 return (this.value) / 1e-9;
-            case DurationUnits.Microseconds:
+            case DurationUnits.Microsecond:
                 return (this.value) / 0.000001;
             default:
                 break;
@@ -169,13 +169,41 @@ export class Duration {
                 return value*60;
             case DurationUnits.Seconds:
                 return value;
-            case DurationUnits.Nanoseconds:
+            case DurationUnits.Nanosecond:
                 return (value) * 1e-9;
-            case DurationUnits.Microseconds:
+            case DurationUnits.Microsecond:
                 return (value) * 0.000001;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: DurationUnits = DurationUnits.Seconds): string {
+
+        switch (toUnit) {
+            
+            case DurationUnits.Years365:
+                return this.Years365 + ` yr`;
+            case DurationUnits.Months30:
+                return this.Months30 + ` mo`;
+            case DurationUnits.Weeks:
+                return this.Weeks + ` wk`;
+            case DurationUnits.Days:
+                return this.Days + ` d`;
+            case DurationUnits.Hours:
+                return this.Hours + ` h`;
+            case DurationUnits.Minutes:
+                return this.Minutes + ` m`;
+            case DurationUnits.Seconds:
+                return this.Seconds + ` s`;
+            case DurationUnits.Nanosecond:
+                return this.Nanosecond + ` s`;
+            case DurationUnits.Microsecond:
+                return this.Microsecond + ` s`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

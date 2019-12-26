@@ -9,5 +9,6 @@ export declare class Permeability {
     static FromHenriesPerMeter(value: number): Permeability;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: PermeabilityUnits): string;
 }
 //# sourceMappingURL=permeability.g.d.ts.map

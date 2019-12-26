@@ -4,11 +4,11 @@ var MolarityUnits;
 (function (MolarityUnits) {
     MolarityUnits[MolarityUnits["MolesPerCubicMeter"] = 0] = "MolesPerCubicMeter";
     MolarityUnits[MolarityUnits["MolesPerLiter"] = 1] = "MolesPerLiter";
-    MolarityUnits[MolarityUnits["Picomolesperliter"] = 2] = "Picomolesperliter";
-    MolarityUnits[MolarityUnits["Nanomolesperliter"] = 3] = "Nanomolesperliter";
-    MolarityUnits[MolarityUnits["Micromolesperliter"] = 4] = "Micromolesperliter";
-    MolarityUnits[MolarityUnits["Centimolesperliter"] = 5] = "Centimolesperliter";
-    MolarityUnits[MolarityUnits["Decimolesperliter"] = 6] = "Decimolesperliter";
+    MolarityUnits[MolarityUnits["PicomolesPerLiter"] = 2] = "PicomolesPerLiter";
+    MolarityUnits[MolarityUnits["NanomolesPerLiter"] = 3] = "NanomolesPerLiter";
+    MolarityUnits[MolarityUnits["MicromolesPerLiter"] = 4] = "MicromolesPerLiter";
+    MolarityUnits[MolarityUnits["CentimolesPerLiter"] = 5] = "CentimolesPerLiter";
+    MolarityUnits[MolarityUnits["DecimolesPerLiter"] = 6] = "DecimolesPerLiter";
 })(MolarityUnits = exports.MolarityUnits || (exports.MolarityUnits = {}));
 class Molarity {
     constructor(value, fromUnit) {
@@ -33,35 +33,35 @@ class Molarity {
         }
         return this.molesperliterLazy = this.convertFromBase(MolarityUnits.MolesPerLiter);
     }
-    get Picomolesperliter() {
+    get PicomolesPerLiter() {
         if (this.picomolesperliterLazy !== null) {
             return this.picomolesperliterLazy;
         }
-        return this.picomolesperliterLazy = this.convertFromBase(MolarityUnits.Picomolesperliter);
+        return this.picomolesperliterLazy = this.convertFromBase(MolarityUnits.PicomolesPerLiter);
     }
-    get Nanomolesperliter() {
+    get NanomolesPerLiter() {
         if (this.nanomolesperliterLazy !== null) {
             return this.nanomolesperliterLazy;
         }
-        return this.nanomolesperliterLazy = this.convertFromBase(MolarityUnits.Nanomolesperliter);
+        return this.nanomolesperliterLazy = this.convertFromBase(MolarityUnits.NanomolesPerLiter);
     }
-    get Micromolesperliter() {
+    get MicromolesPerLiter() {
         if (this.micromolesperliterLazy !== null) {
             return this.micromolesperliterLazy;
         }
-        return this.micromolesperliterLazy = this.convertFromBase(MolarityUnits.Micromolesperliter);
+        return this.micromolesperliterLazy = this.convertFromBase(MolarityUnits.MicromolesPerLiter);
     }
-    get Centimolesperliter() {
+    get CentimolesPerLiter() {
         if (this.centimolesperliterLazy !== null) {
             return this.centimolesperliterLazy;
         }
-        return this.centimolesperliterLazy = this.convertFromBase(MolarityUnits.Centimolesperliter);
+        return this.centimolesperliterLazy = this.convertFromBase(MolarityUnits.CentimolesPerLiter);
     }
-    get Decimolesperliter() {
+    get DecimolesPerLiter() {
         if (this.decimolesperliterLazy !== null) {
             return this.decimolesperliterLazy;
         }
-        return this.decimolesperliterLazy = this.convertFromBase(MolarityUnits.Decimolesperliter);
+        return this.decimolesperliterLazy = this.convertFromBase(MolarityUnits.DecimolesPerLiter);
     }
     static FromMolesPerCubicMeter(value) {
         return new Molarity(value, MolarityUnits.MolesPerCubicMeter);
@@ -69,20 +69,20 @@ class Molarity {
     static FromMolesPerLiter(value) {
         return new Molarity(value, MolarityUnits.MolesPerLiter);
     }
-    static FromPicomolesperliter(value) {
-        return new Molarity(value, MolarityUnits.Picomolesperliter);
+    static FromPicomolesPerLiter(value) {
+        return new Molarity(value, MolarityUnits.PicomolesPerLiter);
     }
-    static FromNanomolesperliter(value) {
-        return new Molarity(value, MolarityUnits.Nanomolesperliter);
+    static FromNanomolesPerLiter(value) {
+        return new Molarity(value, MolarityUnits.NanomolesPerLiter);
     }
-    static FromMicromolesperliter(value) {
-        return new Molarity(value, MolarityUnits.Micromolesperliter);
+    static FromMicromolesPerLiter(value) {
+        return new Molarity(value, MolarityUnits.MicromolesPerLiter);
     }
-    static FromCentimolesperliter(value) {
-        return new Molarity(value, MolarityUnits.Centimolesperliter);
+    static FromCentimolesPerLiter(value) {
+        return new Molarity(value, MolarityUnits.CentimolesPerLiter);
     }
-    static FromDecimolesperliter(value) {
-        return new Molarity(value, MolarityUnits.Decimolesperliter);
+    static FromDecimolesPerLiter(value) {
+        return new Molarity(value, MolarityUnits.DecimolesPerLiter);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -90,15 +90,15 @@ class Molarity {
                 return this.value;
             case MolarityUnits.MolesPerLiter:
                 return this.value * 1e-3;
-            case MolarityUnits.Picomolesperliter:
+            case MolarityUnits.PicomolesPerLiter:
                 return (this.value * 1e-3) / 1e-12;
-            case MolarityUnits.Nanomolesperliter:
+            case MolarityUnits.NanomolesPerLiter:
                 return (this.value * 1e-3) / 1e-9;
-            case MolarityUnits.Micromolesperliter:
+            case MolarityUnits.MicromolesPerLiter:
                 return (this.value * 1e-3) / 0.000001;
-            case MolarityUnits.Centimolesperliter:
+            case MolarityUnits.CentimolesPerLiter:
                 return (this.value * 1e-3) / 0.01;
-            case MolarityUnits.Decimolesperliter:
+            case MolarityUnits.DecimolesPerLiter:
                 return (this.value * 1e-3) / 0.1;
             default:
                 break;
@@ -111,20 +111,41 @@ class Molarity {
                 return value;
             case MolarityUnits.MolesPerLiter:
                 return value / 1e-3;
-            case MolarityUnits.Picomolesperliter:
+            case MolarityUnits.PicomolesPerLiter:
                 return (value / 1e-3) * 1e-12;
-            case MolarityUnits.Nanomolesperliter:
+            case MolarityUnits.NanomolesPerLiter:
                 return (value / 1e-3) * 1e-9;
-            case MolarityUnits.Micromolesperliter:
+            case MolarityUnits.MicromolesPerLiter:
                 return (value / 1e-3) * 0.000001;
-            case MolarityUnits.Centimolesperliter:
+            case MolarityUnits.CentimolesPerLiter:
                 return (value / 1e-3) * 0.01;
-            case MolarityUnits.Decimolesperliter:
+            case MolarityUnits.DecimolesPerLiter:
                 return (value / 1e-3) * 0.1;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = MolarityUnits.MolesPerCubicMeter) {
+        switch (toUnit) {
+            case MolarityUnits.MolesPerCubicMeter:
+                return this.MolesPerCubicMeter + ` mol/m³`;
+            case MolarityUnits.MolesPerLiter:
+                return this.MolesPerLiter + ` mol/L`;
+            case MolarityUnits.PicomolesPerLiter:
+                return this.PicomolesPerLiter + ` mol/L`;
+            case MolarityUnits.NanomolesPerLiter:
+                return this.NanomolesPerLiter + ` mol/L`;
+            case MolarityUnits.MicromolesPerLiter:
+                return this.MicromolesPerLiter + ` mol/L`;
+            case MolarityUnits.CentimolesPerLiter:
+                return this.CentimolesPerLiter + ` mol/L`;
+            case MolarityUnits.DecimolesPerLiter:
+                return this.DecimolesPerLiter + ` mol/L`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.Molarity = Molarity;

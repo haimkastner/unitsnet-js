@@ -36,6 +36,15 @@ class AreaDensity {
         }
         return NaN;
     }
+    toString(toUnit = AreaDensityUnits.KilogramsPerSquareMeter) {
+        switch (toUnit) {
+            case AreaDensityUnits.KilogramsPerSquareMeter:
+                return this.KilogramsPerSquareMeter + ` kg/m²`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.AreaDensity = AreaDensity;
 //# sourceMappingURL=areadensity.g.js.map

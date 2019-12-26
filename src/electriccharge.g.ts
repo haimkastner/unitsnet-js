@@ -1,16 +1,16 @@
 export enum ElectricChargeUnits {
     Coulombs,
     AmpereHours,
-    Kiloamperehours,
-    Megaamperehours
+    KiloampereHour,
+    MegaampereHour
 }
 
 export class ElectricCharge {
     private value: number;
     private coulombsLazy: number | null = null;
     private amperehoursLazy: number | null = null;
-    private kiloamperehoursLazy: number | null = null;
-    private megaamperehoursLazy: number | null = null;
+    private kiloamperehourLazy: number | null = null;
+    private megaamperehourLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ElectricChargeUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -30,18 +30,18 @@ export class ElectricCharge {
         return this.amperehoursLazy = this.convertFromBase(ElectricChargeUnits.AmpereHours);
     }
 
-    public get Kiloamperehours(): number {
-        if(this.kiloamperehoursLazy !== null){
-            return this.kiloamperehoursLazy;
+    public get KiloampereHour(): number {
+        if(this.kiloamperehourLazy !== null){
+            return this.kiloamperehourLazy;
         }
-        return this.kiloamperehoursLazy = this.convertFromBase(ElectricChargeUnits.Kiloamperehours);
+        return this.kiloamperehourLazy = this.convertFromBase(ElectricChargeUnits.KiloampereHour);
     }
 
-    public get Megaamperehours(): number {
-        if(this.megaamperehoursLazy !== null){
-            return this.megaamperehoursLazy;
+    public get MegaampereHour(): number {
+        if(this.megaamperehourLazy !== null){
+            return this.megaamperehourLazy;
         }
-        return this.megaamperehoursLazy = this.convertFromBase(ElectricChargeUnits.Megaamperehours);
+        return this.megaamperehourLazy = this.convertFromBase(ElectricChargeUnits.MegaampereHour);
     }
 
     public static FromCoulombs(value: number): ElectricCharge {
@@ -52,12 +52,12 @@ export class ElectricCharge {
         return new ElectricCharge(value, ElectricChargeUnits.AmpereHours);
     }
 
-    public static FromKiloamperehours(value: number): ElectricCharge {
-        return new ElectricCharge(value, ElectricChargeUnits.Kiloamperehours);
+    public static FromKiloampereHour(value: number): ElectricCharge {
+        return new ElectricCharge(value, ElectricChargeUnits.KiloampereHour);
     }
 
-    public static FromMegaamperehours(value: number): ElectricCharge {
-        return new ElectricCharge(value, ElectricChargeUnits.Megaamperehours);
+    public static FromMegaampereHour(value: number): ElectricCharge {
+        return new ElectricCharge(value, ElectricChargeUnits.MegaampereHour);
     }
 
     private convertFromBase(toUnit: ElectricChargeUnits): number {
@@ -67,9 +67,9 @@ export class ElectricCharge {
                 return this.value;
             case ElectricChargeUnits.AmpereHours:
                 return this.value*2.77777777777e-4;
-            case ElectricChargeUnits.Kiloamperehours:
+            case ElectricChargeUnits.KiloampereHour:
                 return (this.value*2.77777777777e-4) / 1000;
-            case ElectricChargeUnits.Megaamperehours:
+            case ElectricChargeUnits.MegaampereHour:
                 return (this.value*2.77777777777e-4) / 1000000;
             default:
                 break;
@@ -84,13 +84,31 @@ export class ElectricCharge {
                 return value;
             case ElectricChargeUnits.AmpereHours:
                 return value/2.77777777777e-4;
-            case ElectricChargeUnits.Kiloamperehours:
+            case ElectricChargeUnits.KiloampereHour:
                 return (value/2.77777777777e-4) * 1000;
-            case ElectricChargeUnits.Megaamperehours:
+            case ElectricChargeUnits.MegaampereHour:
                 return (value/2.77777777777e-4) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: ElectricChargeUnits = ElectricChargeUnits.Coulombs): string {
+
+        switch (toUnit) {
+            
+            case ElectricChargeUnits.Coulombs:
+                return this.Coulombs + ` C`;
+            case ElectricChargeUnits.AmpereHours:
+                return this.AmpereHours + ` A-h`;
+            case ElectricChargeUnits.KiloampereHour:
+                return this.KiloampereHour + ` A-h`;
+            case ElectricChargeUnits.MegaampereHour:
+                return this.MegaampereHour + ` A-h`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

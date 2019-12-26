@@ -51,6 +51,17 @@ class ElectricConductance {
         }
         return NaN;
     }
+    toString(toUnit = ElectricConductanceUnits.Siemens) {
+        switch (toUnit) {
+            case ElectricConductanceUnits.Siemens:
+                return this.Siemens + ` S`;
+            case ElectricConductanceUnits.Microsiemens:
+                return this.Microsiemens + ` S`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ElectricConductance = ElectricConductance;
 //# sourceMappingURL=electricconductance.g.js.map

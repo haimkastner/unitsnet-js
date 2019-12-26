@@ -1,61 +1,62 @@
 export declare enum LuminosityUnits {
     Watts = 0,
     SolarLuminosities = 1,
-    Femtowatts = 2,
-    Picowatts = 3,
-    Nanowatts = 4,
-    Microwatts = 5,
-    Deciwatts = 6,
-    Decawatts = 7,
-    Kilowatts = 8,
-    Megawatts = 9,
-    Gigawatts = 10,
-    Terawatts = 11,
-    Petawatts = 12
+    Femtowatt = 2,
+    Picowatt = 3,
+    Nanowatt = 4,
+    Microwatt = 5,
+    Deciwatt = 6,
+    Decawatt = 7,
+    Kilowatt = 8,
+    Megawatt = 9,
+    Gigawatt = 10,
+    Terawatt = 11,
+    Petawatt = 12
 }
 export declare class Luminosity {
     private value;
     private wattsLazy;
     private solarluminositiesLazy;
-    private femtowattsLazy;
-    private picowattsLazy;
-    private nanowattsLazy;
-    private microwattsLazy;
-    private deciwattsLazy;
-    private decawattsLazy;
-    private kilowattsLazy;
-    private megawattsLazy;
-    private gigawattsLazy;
-    private terawattsLazy;
-    private petawattsLazy;
+    private femtowattLazy;
+    private picowattLazy;
+    private nanowattLazy;
+    private microwattLazy;
+    private deciwattLazy;
+    private decawattLazy;
+    private kilowattLazy;
+    private megawattLazy;
+    private gigawattLazy;
+    private terawattLazy;
+    private petawattLazy;
     constructor(value: number, fromUnit: LuminosityUnits);
     get Watts(): number;
     get SolarLuminosities(): number;
-    get Femtowatts(): number;
-    get Picowatts(): number;
-    get Nanowatts(): number;
-    get Microwatts(): number;
-    get Deciwatts(): number;
-    get Decawatts(): number;
-    get Kilowatts(): number;
-    get Megawatts(): number;
-    get Gigawatts(): number;
-    get Terawatts(): number;
-    get Petawatts(): number;
+    get Femtowatt(): number;
+    get Picowatt(): number;
+    get Nanowatt(): number;
+    get Microwatt(): number;
+    get Deciwatt(): number;
+    get Decawatt(): number;
+    get Kilowatt(): number;
+    get Megawatt(): number;
+    get Gigawatt(): number;
+    get Terawatt(): number;
+    get Petawatt(): number;
     static FromWatts(value: number): Luminosity;
     static FromSolarLuminosities(value: number): Luminosity;
-    static FromFemtowatts(value: number): Luminosity;
-    static FromPicowatts(value: number): Luminosity;
-    static FromNanowatts(value: number): Luminosity;
-    static FromMicrowatts(value: number): Luminosity;
-    static FromDeciwatts(value: number): Luminosity;
-    static FromDecawatts(value: number): Luminosity;
-    static FromKilowatts(value: number): Luminosity;
-    static FromMegawatts(value: number): Luminosity;
-    static FromGigawatts(value: number): Luminosity;
-    static FromTerawatts(value: number): Luminosity;
-    static FromPetawatts(value: number): Luminosity;
+    static FromFemtowatt(value: number): Luminosity;
+    static FromPicowatt(value: number): Luminosity;
+    static FromNanowatt(value: number): Luminosity;
+    static FromMicrowatt(value: number): Luminosity;
+    static FromDeciwatt(value: number): Luminosity;
+    static FromDecawatt(value: number): Luminosity;
+    static FromKilowatt(value: number): Luminosity;
+    static FromMegawatt(value: number): Luminosity;
+    static FromGigawatt(value: number): Luminosity;
+    static FromTerawatt(value: number): Luminosity;
+    static FromPetawatt(value: number): Luminosity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: LuminosityUnits): string;
 }
 //# sourceMappingURL=luminosity.g.d.ts.map

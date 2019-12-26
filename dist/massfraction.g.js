@@ -10,20 +10,20 @@ var MassFractionUnits;
     MassFractionUnits[MassFractionUnits["PartsPerMillion"] = 5] = "PartsPerMillion";
     MassFractionUnits[MassFractionUnits["PartsPerBillion"] = 6] = "PartsPerBillion";
     MassFractionUnits[MassFractionUnits["PartsPerTrillion"] = 7] = "PartsPerTrillion";
-    MassFractionUnits[MassFractionUnits["Nanogramspergram"] = 8] = "Nanogramspergram";
-    MassFractionUnits[MassFractionUnits["Microgramspergram"] = 9] = "Microgramspergram";
-    MassFractionUnits[MassFractionUnits["Centigramspergram"] = 10] = "Centigramspergram";
-    MassFractionUnits[MassFractionUnits["Decigramspergram"] = 11] = "Decigramspergram";
-    MassFractionUnits[MassFractionUnits["Decagramspergram"] = 12] = "Decagramspergram";
-    MassFractionUnits[MassFractionUnits["Hectogramspergram"] = 13] = "Hectogramspergram";
-    MassFractionUnits[MassFractionUnits["Kilogramspergram"] = 14] = "Kilogramspergram";
-    MassFractionUnits[MassFractionUnits["Nanogramsperkilogram"] = 15] = "Nanogramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Microgramsperkilogram"] = 16] = "Microgramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Centigramsperkilogram"] = 17] = "Centigramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Decigramsperkilogram"] = 18] = "Decigramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Decagramsperkilogram"] = 19] = "Decagramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Hectogramsperkilogram"] = 20] = "Hectogramsperkilogram";
-    MassFractionUnits[MassFractionUnits["Kilogramsperkilogram"] = 21] = "Kilogramsperkilogram";
+    MassFractionUnits[MassFractionUnits["NanogramPerGram"] = 8] = "NanogramPerGram";
+    MassFractionUnits[MassFractionUnits["MicrogramPerGram"] = 9] = "MicrogramPerGram";
+    MassFractionUnits[MassFractionUnits["CentigramPerGram"] = 10] = "CentigramPerGram";
+    MassFractionUnits[MassFractionUnits["DecigramPerGram"] = 11] = "DecigramPerGram";
+    MassFractionUnits[MassFractionUnits["DecagramPerGram"] = 12] = "DecagramPerGram";
+    MassFractionUnits[MassFractionUnits["HectogramPerGram"] = 13] = "HectogramPerGram";
+    MassFractionUnits[MassFractionUnits["KilogramPerGram"] = 14] = "KilogramPerGram";
+    MassFractionUnits[MassFractionUnits["NanogramPerKilogram"] = 15] = "NanogramPerKilogram";
+    MassFractionUnits[MassFractionUnits["MicrogramPerKilogram"] = 16] = "MicrogramPerKilogram";
+    MassFractionUnits[MassFractionUnits["CentigramPerKilogram"] = 17] = "CentigramPerKilogram";
+    MassFractionUnits[MassFractionUnits["DecigramPerKilogram"] = 18] = "DecigramPerKilogram";
+    MassFractionUnits[MassFractionUnits["DecagramPerKilogram"] = 19] = "DecagramPerKilogram";
+    MassFractionUnits[MassFractionUnits["HectogramPerKilogram"] = 20] = "HectogramPerKilogram";
+    MassFractionUnits[MassFractionUnits["KilogramPerKilogram"] = 21] = "KilogramPerKilogram";
 })(MassFractionUnits = exports.MassFractionUnits || (exports.MassFractionUnits = {}));
 class MassFraction {
     constructor(value, fromUnit) {
@@ -35,20 +35,20 @@ class MassFraction {
         this.partspermillionLazy = null;
         this.partsperbillionLazy = null;
         this.partspertrillionLazy = null;
-        this.nanogramspergramLazy = null;
-        this.microgramspergramLazy = null;
-        this.centigramspergramLazy = null;
-        this.decigramspergramLazy = null;
-        this.decagramspergramLazy = null;
-        this.hectogramspergramLazy = null;
-        this.kilogramspergramLazy = null;
-        this.nanogramsperkilogramLazy = null;
-        this.microgramsperkilogramLazy = null;
-        this.centigramsperkilogramLazy = null;
-        this.decigramsperkilogramLazy = null;
-        this.decagramsperkilogramLazy = null;
-        this.hectogramsperkilogramLazy = null;
-        this.kilogramsperkilogramLazy = null;
+        this.nanogrampergramLazy = null;
+        this.microgrampergramLazy = null;
+        this.centigrampergramLazy = null;
+        this.decigrampergramLazy = null;
+        this.decagrampergramLazy = null;
+        this.hectogrampergramLazy = null;
+        this.kilogrampergramLazy = null;
+        this.nanogramperkilogramLazy = null;
+        this.microgramperkilogramLazy = null;
+        this.centigramperkilogramLazy = null;
+        this.decigramperkilogramLazy = null;
+        this.decagramperkilogramLazy = null;
+        this.hectogramperkilogramLazy = null;
+        this.kilogramperkilogramLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get DecimalFractions() {
@@ -99,89 +99,89 @@ class MassFraction {
         }
         return this.partspertrillionLazy = this.convertFromBase(MassFractionUnits.PartsPerTrillion);
     }
-    get Nanogramspergram() {
-        if (this.nanogramspergramLazy !== null) {
-            return this.nanogramspergramLazy;
+    get NanogramPerGram() {
+        if (this.nanogrampergramLazy !== null) {
+            return this.nanogrampergramLazy;
         }
-        return this.nanogramspergramLazy = this.convertFromBase(MassFractionUnits.Nanogramspergram);
+        return this.nanogrampergramLazy = this.convertFromBase(MassFractionUnits.NanogramPerGram);
     }
-    get Microgramspergram() {
-        if (this.microgramspergramLazy !== null) {
-            return this.microgramspergramLazy;
+    get MicrogramPerGram() {
+        if (this.microgrampergramLazy !== null) {
+            return this.microgrampergramLazy;
         }
-        return this.microgramspergramLazy = this.convertFromBase(MassFractionUnits.Microgramspergram);
+        return this.microgrampergramLazy = this.convertFromBase(MassFractionUnits.MicrogramPerGram);
     }
-    get Centigramspergram() {
-        if (this.centigramspergramLazy !== null) {
-            return this.centigramspergramLazy;
+    get CentigramPerGram() {
+        if (this.centigrampergramLazy !== null) {
+            return this.centigrampergramLazy;
         }
-        return this.centigramspergramLazy = this.convertFromBase(MassFractionUnits.Centigramspergram);
+        return this.centigrampergramLazy = this.convertFromBase(MassFractionUnits.CentigramPerGram);
     }
-    get Decigramspergram() {
-        if (this.decigramspergramLazy !== null) {
-            return this.decigramspergramLazy;
+    get DecigramPerGram() {
+        if (this.decigrampergramLazy !== null) {
+            return this.decigrampergramLazy;
         }
-        return this.decigramspergramLazy = this.convertFromBase(MassFractionUnits.Decigramspergram);
+        return this.decigrampergramLazy = this.convertFromBase(MassFractionUnits.DecigramPerGram);
     }
-    get Decagramspergram() {
-        if (this.decagramspergramLazy !== null) {
-            return this.decagramspergramLazy;
+    get DecagramPerGram() {
+        if (this.decagrampergramLazy !== null) {
+            return this.decagrampergramLazy;
         }
-        return this.decagramspergramLazy = this.convertFromBase(MassFractionUnits.Decagramspergram);
+        return this.decagrampergramLazy = this.convertFromBase(MassFractionUnits.DecagramPerGram);
     }
-    get Hectogramspergram() {
-        if (this.hectogramspergramLazy !== null) {
-            return this.hectogramspergramLazy;
+    get HectogramPerGram() {
+        if (this.hectogrampergramLazy !== null) {
+            return this.hectogrampergramLazy;
         }
-        return this.hectogramspergramLazy = this.convertFromBase(MassFractionUnits.Hectogramspergram);
+        return this.hectogrampergramLazy = this.convertFromBase(MassFractionUnits.HectogramPerGram);
     }
-    get Kilogramspergram() {
-        if (this.kilogramspergramLazy !== null) {
-            return this.kilogramspergramLazy;
+    get KilogramPerGram() {
+        if (this.kilogrampergramLazy !== null) {
+            return this.kilogrampergramLazy;
         }
-        return this.kilogramspergramLazy = this.convertFromBase(MassFractionUnits.Kilogramspergram);
+        return this.kilogrampergramLazy = this.convertFromBase(MassFractionUnits.KilogramPerGram);
     }
-    get Nanogramsperkilogram() {
-        if (this.nanogramsperkilogramLazy !== null) {
-            return this.nanogramsperkilogramLazy;
+    get NanogramPerKilogram() {
+        if (this.nanogramperkilogramLazy !== null) {
+            return this.nanogramperkilogramLazy;
         }
-        return this.nanogramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Nanogramsperkilogram);
+        return this.nanogramperkilogramLazy = this.convertFromBase(MassFractionUnits.NanogramPerKilogram);
     }
-    get Microgramsperkilogram() {
-        if (this.microgramsperkilogramLazy !== null) {
-            return this.microgramsperkilogramLazy;
+    get MicrogramPerKilogram() {
+        if (this.microgramperkilogramLazy !== null) {
+            return this.microgramperkilogramLazy;
         }
-        return this.microgramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Microgramsperkilogram);
+        return this.microgramperkilogramLazy = this.convertFromBase(MassFractionUnits.MicrogramPerKilogram);
     }
-    get Centigramsperkilogram() {
-        if (this.centigramsperkilogramLazy !== null) {
-            return this.centigramsperkilogramLazy;
+    get CentigramPerKilogram() {
+        if (this.centigramperkilogramLazy !== null) {
+            return this.centigramperkilogramLazy;
         }
-        return this.centigramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Centigramsperkilogram);
+        return this.centigramperkilogramLazy = this.convertFromBase(MassFractionUnits.CentigramPerKilogram);
     }
-    get Decigramsperkilogram() {
-        if (this.decigramsperkilogramLazy !== null) {
-            return this.decigramsperkilogramLazy;
+    get DecigramPerKilogram() {
+        if (this.decigramperkilogramLazy !== null) {
+            return this.decigramperkilogramLazy;
         }
-        return this.decigramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Decigramsperkilogram);
+        return this.decigramperkilogramLazy = this.convertFromBase(MassFractionUnits.DecigramPerKilogram);
     }
-    get Decagramsperkilogram() {
-        if (this.decagramsperkilogramLazy !== null) {
-            return this.decagramsperkilogramLazy;
+    get DecagramPerKilogram() {
+        if (this.decagramperkilogramLazy !== null) {
+            return this.decagramperkilogramLazy;
         }
-        return this.decagramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Decagramsperkilogram);
+        return this.decagramperkilogramLazy = this.convertFromBase(MassFractionUnits.DecagramPerKilogram);
     }
-    get Hectogramsperkilogram() {
-        if (this.hectogramsperkilogramLazy !== null) {
-            return this.hectogramsperkilogramLazy;
+    get HectogramPerKilogram() {
+        if (this.hectogramperkilogramLazy !== null) {
+            return this.hectogramperkilogramLazy;
         }
-        return this.hectogramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Hectogramsperkilogram);
+        return this.hectogramperkilogramLazy = this.convertFromBase(MassFractionUnits.HectogramPerKilogram);
     }
-    get Kilogramsperkilogram() {
-        if (this.kilogramsperkilogramLazy !== null) {
-            return this.kilogramsperkilogramLazy;
+    get KilogramPerKilogram() {
+        if (this.kilogramperkilogramLazy !== null) {
+            return this.kilogramperkilogramLazy;
         }
-        return this.kilogramsperkilogramLazy = this.convertFromBase(MassFractionUnits.Kilogramsperkilogram);
+        return this.kilogramperkilogramLazy = this.convertFromBase(MassFractionUnits.KilogramPerKilogram);
     }
     static FromDecimalFractions(value) {
         return new MassFraction(value, MassFractionUnits.DecimalFractions);
@@ -207,47 +207,47 @@ class MassFraction {
     static FromPartsPerTrillion(value) {
         return new MassFraction(value, MassFractionUnits.PartsPerTrillion);
     }
-    static FromNanogramspergram(value) {
-        return new MassFraction(value, MassFractionUnits.Nanogramspergram);
+    static FromNanogramPerGram(value) {
+        return new MassFraction(value, MassFractionUnits.NanogramPerGram);
     }
-    static FromMicrogramspergram(value) {
-        return new MassFraction(value, MassFractionUnits.Microgramspergram);
+    static FromMicrogramPerGram(value) {
+        return new MassFraction(value, MassFractionUnits.MicrogramPerGram);
     }
-    static FromCentigramspergram(value) {
-        return new MassFraction(value, MassFractionUnits.Centigramspergram);
+    static FromCentigramPerGram(value) {
+        return new MassFraction(value, MassFractionUnits.CentigramPerGram);
     }
-    static FromDecigramspergram(value) {
-        return new MassFraction(value, MassFractionUnits.Decigramspergram);
+    static FromDecigramPerGram(value) {
+        return new MassFraction(value, MassFractionUnits.DecigramPerGram);
     }
-    static FromDecagramspergram(value) {
-        return new MassFraction(value, MassFractionUnits.Decagramspergram);
+    static FromDecagramPerGram(value) {
+        return new MassFraction(value, MassFractionUnits.DecagramPerGram);
     }
-    static FromHectogramspergram(value) {
-        return new MassFraction(value, MassFractionUnits.Hectogramspergram);
+    static FromHectogramPerGram(value) {
+        return new MassFraction(value, MassFractionUnits.HectogramPerGram);
     }
-    static FromKilogramspergram(value) {
-        return new MassFraction(value, MassFractionUnits.Kilogramspergram);
+    static FromKilogramPerGram(value) {
+        return new MassFraction(value, MassFractionUnits.KilogramPerGram);
     }
-    static FromNanogramsperkilogram(value) {
-        return new MassFraction(value, MassFractionUnits.Nanogramsperkilogram);
+    static FromNanogramPerKilogram(value) {
+        return new MassFraction(value, MassFractionUnits.NanogramPerKilogram);
     }
-    static FromMicrogramsperkilogram(value) {
-        return new MassFraction(value, MassFractionUnits.Microgramsperkilogram);
+    static FromMicrogramPerKilogram(value) {
+        return new MassFraction(value, MassFractionUnits.MicrogramPerKilogram);
     }
-    static FromCentigramsperkilogram(value) {
-        return new MassFraction(value, MassFractionUnits.Centigramsperkilogram);
+    static FromCentigramPerKilogram(value) {
+        return new MassFraction(value, MassFractionUnits.CentigramPerKilogram);
     }
-    static FromDecigramsperkilogram(value) {
-        return new MassFraction(value, MassFractionUnits.Decigramsperkilogram);
+    static FromDecigramPerKilogram(value) {
+        return new MassFraction(value, MassFractionUnits.DecigramPerKilogram);
     }
-    static FromDecagramsperkilogram(value) {
-        return new MassFraction(value, MassFractionUnits.Decagramsperkilogram);
+    static FromDecagramPerKilogram(value) {
+        return new MassFraction(value, MassFractionUnits.DecagramPerKilogram);
     }
-    static FromHectogramsperkilogram(value) {
-        return new MassFraction(value, MassFractionUnits.Hectogramsperkilogram);
+    static FromHectogramPerKilogram(value) {
+        return new MassFraction(value, MassFractionUnits.HectogramPerKilogram);
     }
-    static FromKilogramsperkilogram(value) {
-        return new MassFraction(value, MassFractionUnits.Kilogramsperkilogram);
+    static FromKilogramPerKilogram(value) {
+        return new MassFraction(value, MassFractionUnits.KilogramPerKilogram);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -267,33 +267,33 @@ class MassFraction {
                 return this.value * 1e9;
             case MassFractionUnits.PartsPerTrillion:
                 return this.value * 1e12;
-            case MassFractionUnits.Nanogramspergram:
+            case MassFractionUnits.NanogramPerGram:
                 return (this.value) / 1e-9;
-            case MassFractionUnits.Microgramspergram:
+            case MassFractionUnits.MicrogramPerGram:
                 return (this.value) / 0.000001;
-            case MassFractionUnits.Centigramspergram:
+            case MassFractionUnits.CentigramPerGram:
                 return (this.value) / 0.01;
-            case MassFractionUnits.Decigramspergram:
+            case MassFractionUnits.DecigramPerGram:
                 return (this.value) / 0.1;
-            case MassFractionUnits.Decagramspergram:
+            case MassFractionUnits.DecagramPerGram:
                 return (this.value) / 10;
-            case MassFractionUnits.Hectogramspergram:
+            case MassFractionUnits.HectogramPerGram:
                 return (this.value) / 100;
-            case MassFractionUnits.Kilogramspergram:
+            case MassFractionUnits.KilogramPerGram:
                 return (this.value) / 1000;
-            case MassFractionUnits.Nanogramsperkilogram:
+            case MassFractionUnits.NanogramPerKilogram:
                 return (this.value * 1e3) / 1e-9;
-            case MassFractionUnits.Microgramsperkilogram:
+            case MassFractionUnits.MicrogramPerKilogram:
                 return (this.value * 1e3) / 0.000001;
-            case MassFractionUnits.Centigramsperkilogram:
+            case MassFractionUnits.CentigramPerKilogram:
                 return (this.value * 1e3) / 0.01;
-            case MassFractionUnits.Decigramsperkilogram:
+            case MassFractionUnits.DecigramPerKilogram:
                 return (this.value * 1e3) / 0.1;
-            case MassFractionUnits.Decagramsperkilogram:
+            case MassFractionUnits.DecagramPerKilogram:
                 return (this.value * 1e3) / 10;
-            case MassFractionUnits.Hectogramsperkilogram:
+            case MassFractionUnits.HectogramPerKilogram:
                 return (this.value * 1e3) / 100;
-            case MassFractionUnits.Kilogramsperkilogram:
+            case MassFractionUnits.KilogramPerKilogram:
                 return (this.value * 1e3) / 1000;
             default:
                 break;
@@ -318,38 +318,89 @@ class MassFraction {
                 return value / 1e9;
             case MassFractionUnits.PartsPerTrillion:
                 return value / 1e12;
-            case MassFractionUnits.Nanogramspergram:
+            case MassFractionUnits.NanogramPerGram:
                 return (value) * 1e-9;
-            case MassFractionUnits.Microgramspergram:
+            case MassFractionUnits.MicrogramPerGram:
                 return (value) * 0.000001;
-            case MassFractionUnits.Centigramspergram:
+            case MassFractionUnits.CentigramPerGram:
                 return (value) * 0.01;
-            case MassFractionUnits.Decigramspergram:
+            case MassFractionUnits.DecigramPerGram:
                 return (value) * 0.1;
-            case MassFractionUnits.Decagramspergram:
+            case MassFractionUnits.DecagramPerGram:
                 return (value) * 10;
-            case MassFractionUnits.Hectogramspergram:
+            case MassFractionUnits.HectogramPerGram:
                 return (value) * 100;
-            case MassFractionUnits.Kilogramspergram:
+            case MassFractionUnits.KilogramPerGram:
                 return (value) * 1000;
-            case MassFractionUnits.Nanogramsperkilogram:
+            case MassFractionUnits.NanogramPerKilogram:
                 return (value / 1e3) * 1e-9;
-            case MassFractionUnits.Microgramsperkilogram:
+            case MassFractionUnits.MicrogramPerKilogram:
                 return (value / 1e3) * 0.000001;
-            case MassFractionUnits.Centigramsperkilogram:
+            case MassFractionUnits.CentigramPerKilogram:
                 return (value / 1e3) * 0.01;
-            case MassFractionUnits.Decigramsperkilogram:
+            case MassFractionUnits.DecigramPerKilogram:
                 return (value / 1e3) * 0.1;
-            case MassFractionUnits.Decagramsperkilogram:
+            case MassFractionUnits.DecagramPerKilogram:
                 return (value / 1e3) * 10;
-            case MassFractionUnits.Hectogramsperkilogram:
+            case MassFractionUnits.HectogramPerKilogram:
                 return (value / 1e3) * 100;
-            case MassFractionUnits.Kilogramsperkilogram:
+            case MassFractionUnits.KilogramPerKilogram:
                 return (value / 1e3) * 1000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = MassFractionUnits.DecimalFractions) {
+        switch (toUnit) {
+            case MassFractionUnits.DecimalFractions:
+                return this.DecimalFractions + ` `;
+            case MassFractionUnits.GramsPerGram:
+                return this.GramsPerGram + ` g/g`;
+            case MassFractionUnits.GramsPerKilogram:
+                return this.GramsPerKilogram + ` g/kg`;
+            case MassFractionUnits.Percent:
+                return this.Percent + ` %`;
+            case MassFractionUnits.PartsPerThousand:
+                return this.PartsPerThousand + ` ‰`;
+            case MassFractionUnits.PartsPerMillion:
+                return this.PartsPerMillion + ` ppm`;
+            case MassFractionUnits.PartsPerBillion:
+                return this.PartsPerBillion + ` ppb`;
+            case MassFractionUnits.PartsPerTrillion:
+                return this.PartsPerTrillion + ` ppt`;
+            case MassFractionUnits.NanogramPerGram:
+                return this.NanogramPerGram + ` g/g`;
+            case MassFractionUnits.MicrogramPerGram:
+                return this.MicrogramPerGram + ` g/g`;
+            case MassFractionUnits.CentigramPerGram:
+                return this.CentigramPerGram + ` g/g`;
+            case MassFractionUnits.DecigramPerGram:
+                return this.DecigramPerGram + ` g/g`;
+            case MassFractionUnits.DecagramPerGram:
+                return this.DecagramPerGram + ` g/g`;
+            case MassFractionUnits.HectogramPerGram:
+                return this.HectogramPerGram + ` g/g`;
+            case MassFractionUnits.KilogramPerGram:
+                return this.KilogramPerGram + ` g/g`;
+            case MassFractionUnits.NanogramPerKilogram:
+                return this.NanogramPerKilogram + ` g/kg`;
+            case MassFractionUnits.MicrogramPerKilogram:
+                return this.MicrogramPerKilogram + ` g/kg`;
+            case MassFractionUnits.CentigramPerKilogram:
+                return this.CentigramPerKilogram + ` g/kg`;
+            case MassFractionUnits.DecigramPerKilogram:
+                return this.DecigramPerKilogram + ` g/kg`;
+            case MassFractionUnits.DecagramPerKilogram:
+                return this.DecagramPerKilogram + ` g/kg`;
+            case MassFractionUnits.HectogramPerKilogram:
+                return this.HectogramPerKilogram + ` g/kg`;
+            case MassFractionUnits.KilogramPerKilogram:
+                return this.KilogramPerKilogram + ` g/kg`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.MassFraction = MassFraction;

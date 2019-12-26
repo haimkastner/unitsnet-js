@@ -81,6 +81,21 @@ class FuelEfficiency {
         }
         return NaN;
     }
+    toString(toUnit = FuelEfficiencyUnits.LitersPer100Kilometers) {
+        switch (toUnit) {
+            case FuelEfficiencyUnits.LitersPer100Kilometers:
+                return this.LitersPer100Kilometers + ` L/100km`;
+            case FuelEfficiencyUnits.MilesPerUsGallon:
+                return this.MilesPerUsGallon + ` mpg (U.S.)`;
+            case FuelEfficiencyUnits.MilesPerUkGallon:
+                return this.MilesPerUkGallon + ` mpg (imp.)`;
+            case FuelEfficiencyUnits.KilometersPerLiters:
+                return this.KilometersPerLiters + ` km/L`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.FuelEfficiency = FuelEfficiency;
 //# sourceMappingURL=fuelefficiency.g.js.map

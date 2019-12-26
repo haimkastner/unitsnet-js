@@ -17,5 +17,6 @@ export declare class ElectricConductivity {
     static FromSiemensPerFoot(value: number): ElectricConductivity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricConductivityUnits): string;
 }
 //# sourceMappingURL=electricconductivity.g.d.ts.map

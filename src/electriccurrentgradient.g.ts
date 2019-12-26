@@ -42,4 +42,16 @@ export class ElectricCurrentGradient {
         }
         return NaN;
     }
+
+    public toString(toUnit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond): string {
+
+        switch (toUnit) {
+            
+            case ElectricCurrentGradientUnits.AmperesPerSecond:
+                return this.AmperesPerSecond + ` A/s`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

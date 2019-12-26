@@ -42,4 +42,16 @@ export class Permittivity {
         }
         return NaN;
     }
+
+    public toString(toUnit: PermittivityUnits = PermittivityUnits.FaradsPerMeter): string {
+
+        switch (toUnit) {
+            
+            case PermittivityUnits.FaradsPerMeter:
+                return this.FaradsPerMeter + ` F/m`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

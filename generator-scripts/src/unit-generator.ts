@@ -34,7 +34,7 @@ function buildEnum(enumName: string, units: UnitProperties[]): EnumDeclarationSt
         name: enumName,
         members: units.map((unit: UnitProperties): EnumMemberStructure => ({
             kind: StructureKind.EnumMember,
-            name: unit.name
+            name: unit.pluralName
         })),
         isExported: true,
     }
@@ -51,14 +51,14 @@ function buildUnitGetters(enumName: string, units: UnitProperties[]): GetAccesso
     return units.map((unit: UnitProperties): GetAccessorDeclarationStructure => {
         return {
             kind: StructureKind.GetAccessor,
-            name: unit.name,
+            name: unit.pluralName,
             scope: Scope.Public,
             returnType: 'number',
-            statements: 
-`if(this.${unitLazyVarName(unit.name)} !== null){
-    return this.${unitLazyVarName(unit.name)};
+            statements:
+                `if(this.${unitLazyVarName(unit.pluralName)} !== null){
+    return this.${unitLazyVarName(unit.pluralName)};
 }
-return this.${unitLazyVarName(unit.name)} = this.convertFromBase(${enumName}.${unit.name});`,
+return this.${unitLazyVarName(unit.pluralName)} = this.convertFromBase(${enumName}.${unit.pluralName});`,
         }
     })
 }
@@ -75,7 +75,7 @@ function buildUnitCreatorsMethods(unitName: string, enumName: string, units: Uni
     return units.map((unit: UnitProperties): MethodDeclarationStructure => {
         return {
             kind: StructureKind.Method,
-            name: `From${unit.name}`,
+            name: `From${unit.pluralName}`,
             scope: Scope.Public,
             isStatic: true,
             parameters: [
@@ -85,7 +85,7 @@ function buildUnitCreatorsMethods(unitName: string, enumName: string, units: Uni
                 }
             ],
             returnType: unitName,
-            statements: `return new ${unitName}(value, ${enumName}.${unit.name});`
+            statements: `return new ${unitName}(value, ${enumName}.${unit.pluralName});`
         }
     })
 }
@@ -121,7 +121,7 @@ function buildFormulaCases(enumName: string, units: UnitProperties[], isBaseToUn
     let switchUnitsCode = '';
 
     for (const unit of units) {
-        switchUnitsCode += buildFormulaCase(unit.name,
+        switchUnitsCode += buildFormulaCase(unit.pluralName,
             enumName,
             isBaseToUnit
                 ? unit.baseToUnitFormula
@@ -152,8 +152,8 @@ function buildConvertFromBaseMethod(enumName: string, units: UnitProperties[]): 
             }
         ],
         returnType: 'number',
-        statements: 
-`switch (toUnit) {
+        statements:
+            `switch (toUnit) {
         ${buildFormulaCases(enumName, units, false)}
     default:
         break;
@@ -170,7 +170,7 @@ return NaN;`
 function buildLazyloadVars(units: UnitProperties[]): PropertyDeclarationStructure[] {
     return units.map((unit): PropertyDeclarationStructure => ({
         kind: StructureKind.Property,
-        name: `${unitLazyVarName(unit.name)}`,
+        name: `${unitLazyVarName(unit.pluralName)}`,
         scope: Scope.Private,
         type: 'number | null',
         initializer: 'null',
@@ -199,13 +199,50 @@ function buildConvertToBaseMethod(enumName: string, units: UnitProperties[]): Me
             }
         ],
         returnType: 'number',
-        statements: 
-`switch (fromUnit) {
+        statements:
+            `switch (fromUnit) {
         ${buildFormulaCases(enumName, units, true)}
     default:
         break;
 }
 return NaN;`
+    };
+}
+
+/**
+ * Build 'toString' method for the unit class
+ * @param enumName The units types enum
+ * @param units The units 
+ * @param baseUnit The base unit for default unit toString
+ * @returns A 'toString' method structure
+ */
+function buildToStringMethod(enumName: string, units: UnitProperties[], baseUnit: UnitProperties): MethodDeclarationStructure {
+
+    let toStringCasses = '';
+    for (const unit of units) {
+        toStringCasses +=
+            `
+    case ${enumName}.${unit.pluralName}:
+        return this.${unit.pluralName} + ` + '` ' + unit.Abbreviation + '`;';
+    }
+
+    return {
+        kind: StructureKind.Method,
+        name: 'toString',
+        scope: Scope.Public,
+        parameters: [{
+            name: 'toUnit',
+            type: enumName,
+            initializer: `${enumName}.${baseUnit.pluralName}`
+        }],
+        returnType: 'string',
+        statements: `
+switch (toUnit) {
+    ${toStringCasses}
+default:
+    break;
+}
+return this.value.toString();`,
     };
 }
 
@@ -263,6 +300,10 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
     // Build the convert from unit to base method
     const convertToBaseMethod: MethodDeclarationStructure = buildConvertToBaseMethod(enumName, unitProperties.units);
 
+    // Build the class 'toString' method
+    const toStringMethod = buildToStringMethod(enumName, unitProperties.units, unitProperties.units.find((unit) =>
+        (unit.singularName === unitProperties.baseUnitSingularName)) as UnitProperties);
+
     // Build the unit class 
     const unitClass: ClassDeclarationStructure = {
         kind: StructureKind.Class,
@@ -270,7 +311,7 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
         properties: [valueMember, ...lazyVars],
         getAccessors: [...unitGetters],
         ctors: [unitCtor],
-        methods: [...unitCreators, convertFromBaseMethod, convertToBaseMethod],
+        methods: [...unitCreators, convertFromBaseMethod, convertToBaseMethod, toStringMethod],
         isExported: true,
     }
 

@@ -13,5 +13,6 @@ export declare class SpecificVolume {
     static FromCubicFeetPerPound(value: number): SpecificVolume;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: SpecificVolumeUnits): string;
 }
 //# sourceMappingURL=specificvolume.g.d.ts.map

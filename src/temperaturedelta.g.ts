@@ -161,4 +161,30 @@ export class TemperatureDelta {
         }
         return NaN;
     }
+
+    public toString(toUnit: TemperatureDeltaUnits = TemperatureDeltaUnits.Kelvins): string {
+
+        switch (toUnit) {
+            
+            case TemperatureDeltaUnits.Kelvins:
+                return this.Kelvins + ` ∆K`;
+            case TemperatureDeltaUnits.DegreesCelsius:
+                return this.DegreesCelsius + ` ∆°C`;
+            case TemperatureDeltaUnits.DegreesDelisle:
+                return this.DegreesDelisle + ` ∆°De`;
+            case TemperatureDeltaUnits.DegreesFahrenheit:
+                return this.DegreesFahrenheit + ` ∆°F`;
+            case TemperatureDeltaUnits.DegreesNewton:
+                return this.DegreesNewton + ` ∆°N`;
+            case TemperatureDeltaUnits.DegreesRankine:
+                return this.DegreesRankine + ` ∆°R`;
+            case TemperatureDeltaUnits.DegreesReaumur:
+                return this.DegreesReaumur + ` ∆°Ré`;
+            case TemperatureDeltaUnits.DegreesRoemer:
+                return this.DegreesRoemer + ` ∆°Rø`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

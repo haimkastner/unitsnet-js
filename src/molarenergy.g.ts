@@ -1,14 +1,14 @@
 export enum MolarEnergyUnits {
     JoulesPerMole,
-    Kilojoulespermole,
-    Megajoulespermole
+    KilojoulePerMole,
+    MegajoulePerMole
 }
 
 export class MolarEnergy {
     private value: number;
     private joulespermoleLazy: number | null = null;
-    private kilojoulespermoleLazy: number | null = null;
-    private megajoulespermoleLazy: number | null = null;
+    private kilojoulepermoleLazy: number | null = null;
+    private megajoulepermoleLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MolarEnergyUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -21,30 +21,30 @@ export class MolarEnergy {
         return this.joulespermoleLazy = this.convertFromBase(MolarEnergyUnits.JoulesPerMole);
     }
 
-    public get Kilojoulespermole(): number {
-        if(this.kilojoulespermoleLazy !== null){
-            return this.kilojoulespermoleLazy;
+    public get KilojoulePerMole(): number {
+        if(this.kilojoulepermoleLazy !== null){
+            return this.kilojoulepermoleLazy;
         }
-        return this.kilojoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.Kilojoulespermole);
+        return this.kilojoulepermoleLazy = this.convertFromBase(MolarEnergyUnits.KilojoulePerMole);
     }
 
-    public get Megajoulespermole(): number {
-        if(this.megajoulespermoleLazy !== null){
-            return this.megajoulespermoleLazy;
+    public get MegajoulePerMole(): number {
+        if(this.megajoulepermoleLazy !== null){
+            return this.megajoulepermoleLazy;
         }
-        return this.megajoulespermoleLazy = this.convertFromBase(MolarEnergyUnits.Megajoulespermole);
+        return this.megajoulepermoleLazy = this.convertFromBase(MolarEnergyUnits.MegajoulePerMole);
     }
 
     public static FromJoulesPerMole(value: number): MolarEnergy {
         return new MolarEnergy(value, MolarEnergyUnits.JoulesPerMole);
     }
 
-    public static FromKilojoulespermole(value: number): MolarEnergy {
-        return new MolarEnergy(value, MolarEnergyUnits.Kilojoulespermole);
+    public static FromKilojoulePerMole(value: number): MolarEnergy {
+        return new MolarEnergy(value, MolarEnergyUnits.KilojoulePerMole);
     }
 
-    public static FromMegajoulespermole(value: number): MolarEnergy {
-        return new MolarEnergy(value, MolarEnergyUnits.Megajoulespermole);
+    public static FromMegajoulePerMole(value: number): MolarEnergy {
+        return new MolarEnergy(value, MolarEnergyUnits.MegajoulePerMole);
     }
 
     private convertFromBase(toUnit: MolarEnergyUnits): number {
@@ -52,9 +52,9 @@ export class MolarEnergy {
                 
             case MolarEnergyUnits.JoulesPerMole:
                 return this.value;
-            case MolarEnergyUnits.Kilojoulespermole:
+            case MolarEnergyUnits.KilojoulePerMole:
                 return (this.value) / 1000;
-            case MolarEnergyUnits.Megajoulespermole:
+            case MolarEnergyUnits.MegajoulePerMole:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -67,13 +67,29 @@ export class MolarEnergy {
                 
             case MolarEnergyUnits.JoulesPerMole:
                 return value;
-            case MolarEnergyUnits.Kilojoulespermole:
+            case MolarEnergyUnits.KilojoulePerMole:
                 return (value) * 1000;
-            case MolarEnergyUnits.Megajoulespermole:
+            case MolarEnergyUnits.MegajoulePerMole:
                 return (value) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole): string {
+
+        switch (toUnit) {
+            
+            case MolarEnergyUnits.JoulesPerMole:
+                return this.JoulesPerMole + ` J/mol`;
+            case MolarEnergyUnits.KilojoulePerMole:
+                return this.KilojoulePerMole + ` J/mol`;
+            case MolarEnergyUnits.MegajoulePerMole:
+                return this.MegajoulePerMole + ` J/mol`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

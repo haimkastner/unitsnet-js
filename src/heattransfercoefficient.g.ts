@@ -76,4 +76,20 @@ export class HeatTransferCoefficient {
         }
         return NaN;
     }
+
+    public toString(toUnit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin): string {
+
+        switch (toUnit) {
+            
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
+                return this.WattsPerSquareMeterKelvin + ` W/m²·K`;
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
+                return this.WattsPerSquareMeterCelsius + ` W/m²·°C`;
+            case HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit:
+                return this.BtusPerSquareFootDegreeFahrenheit + ` Btu/ft²·hr·°F`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

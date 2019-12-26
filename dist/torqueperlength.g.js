@@ -13,16 +13,16 @@ var TorquePerLengthUnits;
     TorquePerLengthUnits[TorquePerLengthUnits["TonneForceMillimetersPerMeter"] = 8] = "TonneForceMillimetersPerMeter";
     TorquePerLengthUnits[TorquePerLengthUnits["TonneForceCentimetersPerMeter"] = 9] = "TonneForceCentimetersPerMeter";
     TorquePerLengthUnits[TorquePerLengthUnits["TonneForceMetersPerMeter"] = 10] = "TonneForceMetersPerMeter";
-    TorquePerLengthUnits[TorquePerLengthUnits["Kilonewtonmillimeterspermeter"] = 11] = "Kilonewtonmillimeterspermeter";
-    TorquePerLengthUnits[TorquePerLengthUnits["Meganewtonmillimeterspermeter"] = 12] = "Meganewtonmillimeterspermeter";
-    TorquePerLengthUnits[TorquePerLengthUnits["Kilonewtoncentimeterspermeter"] = 13] = "Kilonewtoncentimeterspermeter";
-    TorquePerLengthUnits[TorquePerLengthUnits["Meganewtoncentimeterspermeter"] = 14] = "Meganewtoncentimeterspermeter";
-    TorquePerLengthUnits[TorquePerLengthUnits["Kilonewtonmeterspermeter"] = 15] = "Kilonewtonmeterspermeter";
-    TorquePerLengthUnits[TorquePerLengthUnits["Meganewtonmeterspermeter"] = 16] = "Meganewtonmeterspermeter";
-    TorquePerLengthUnits[TorquePerLengthUnits["Kilopoundforceinchesperfoot"] = 17] = "Kilopoundforceinchesperfoot";
-    TorquePerLengthUnits[TorquePerLengthUnits["Megapoundforceinchesperfoot"] = 18] = "Megapoundforceinchesperfoot";
-    TorquePerLengthUnits[TorquePerLengthUnits["Kilopoundforcefeetperfoot"] = 19] = "Kilopoundforcefeetperfoot";
-    TorquePerLengthUnits[TorquePerLengthUnits["Megapoundforcefeetperfoot"] = 20] = "Megapoundforcefeetperfoot";
+    TorquePerLengthUnits[TorquePerLengthUnits["KilonewtonMillimeterPerMeter"] = 11] = "KilonewtonMillimeterPerMeter";
+    TorquePerLengthUnits[TorquePerLengthUnits["MeganewtonMillimeterPerMeter"] = 12] = "MeganewtonMillimeterPerMeter";
+    TorquePerLengthUnits[TorquePerLengthUnits["KilonewtonCentimeterPerMeter"] = 13] = "KilonewtonCentimeterPerMeter";
+    TorquePerLengthUnits[TorquePerLengthUnits["MeganewtonCentimeterPerMeter"] = 14] = "MeganewtonCentimeterPerMeter";
+    TorquePerLengthUnits[TorquePerLengthUnits["KilonewtonMeterPerMeter"] = 15] = "KilonewtonMeterPerMeter";
+    TorquePerLengthUnits[TorquePerLengthUnits["MeganewtonMeterPerMeter"] = 16] = "MeganewtonMeterPerMeter";
+    TorquePerLengthUnits[TorquePerLengthUnits["KilopoundForceInchPerFoot"] = 17] = "KilopoundForceInchPerFoot";
+    TorquePerLengthUnits[TorquePerLengthUnits["MegapoundForceInchPerFoot"] = 18] = "MegapoundForceInchPerFoot";
+    TorquePerLengthUnits[TorquePerLengthUnits["KilopoundForceFootPerFoot"] = 19] = "KilopoundForceFootPerFoot";
+    TorquePerLengthUnits[TorquePerLengthUnits["MegapoundForceFootPerFoot"] = 20] = "MegapoundForceFootPerFoot";
 })(TorquePerLengthUnits = exports.TorquePerLengthUnits || (exports.TorquePerLengthUnits = {}));
 class TorquePerLength {
     constructor(value, fromUnit) {
@@ -37,16 +37,16 @@ class TorquePerLength {
         this.tonneforcemillimeterspermeterLazy = null;
         this.tonneforcecentimeterspermeterLazy = null;
         this.tonneforcemeterspermeterLazy = null;
-        this.kilonewtonmillimeterspermeterLazy = null;
-        this.meganewtonmillimeterspermeterLazy = null;
-        this.kilonewtoncentimeterspermeterLazy = null;
-        this.meganewtoncentimeterspermeterLazy = null;
-        this.kilonewtonmeterspermeterLazy = null;
-        this.meganewtonmeterspermeterLazy = null;
-        this.kilopoundforceinchesperfootLazy = null;
-        this.megapoundforceinchesperfootLazy = null;
-        this.kilopoundforcefeetperfootLazy = null;
-        this.megapoundforcefeetperfootLazy = null;
+        this.kilonewtonmillimeterpermeterLazy = null;
+        this.meganewtonmillimeterpermeterLazy = null;
+        this.kilonewtoncentimeterpermeterLazy = null;
+        this.meganewtoncentimeterpermeterLazy = null;
+        this.kilonewtonmeterpermeterLazy = null;
+        this.meganewtonmeterpermeterLazy = null;
+        this.kilopoundforceinchperfootLazy = null;
+        this.megapoundforceinchperfootLazy = null;
+        this.kilopoundforcefootperfootLazy = null;
+        this.megapoundforcefootperfootLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get NewtonMillimetersPerMeter() {
@@ -115,65 +115,65 @@ class TorquePerLength {
         }
         return this.tonneforcemeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.TonneForceMetersPerMeter);
     }
-    get Kilonewtonmillimeterspermeter() {
-        if (this.kilonewtonmillimeterspermeterLazy !== null) {
-            return this.kilonewtonmillimeterspermeterLazy;
+    get KilonewtonMillimeterPerMeter() {
+        if (this.kilonewtonmillimeterpermeterLazy !== null) {
+            return this.kilonewtonmillimeterpermeterLazy;
         }
-        return this.kilonewtonmillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Kilonewtonmillimeterspermeter);
+        return this.kilonewtonmillimeterpermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilonewtonMillimeterPerMeter);
     }
-    get Meganewtonmillimeterspermeter() {
-        if (this.meganewtonmillimeterspermeterLazy !== null) {
-            return this.meganewtonmillimeterspermeterLazy;
+    get MeganewtonMillimeterPerMeter() {
+        if (this.meganewtonmillimeterpermeterLazy !== null) {
+            return this.meganewtonmillimeterpermeterLazy;
         }
-        return this.meganewtonmillimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Meganewtonmillimeterspermeter);
+        return this.meganewtonmillimeterpermeterLazy = this.convertFromBase(TorquePerLengthUnits.MeganewtonMillimeterPerMeter);
     }
-    get Kilonewtoncentimeterspermeter() {
-        if (this.kilonewtoncentimeterspermeterLazy !== null) {
-            return this.kilonewtoncentimeterspermeterLazy;
+    get KilonewtonCentimeterPerMeter() {
+        if (this.kilonewtoncentimeterpermeterLazy !== null) {
+            return this.kilonewtoncentimeterpermeterLazy;
         }
-        return this.kilonewtoncentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Kilonewtoncentimeterspermeter);
+        return this.kilonewtoncentimeterpermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilonewtonCentimeterPerMeter);
     }
-    get Meganewtoncentimeterspermeter() {
-        if (this.meganewtoncentimeterspermeterLazy !== null) {
-            return this.meganewtoncentimeterspermeterLazy;
+    get MeganewtonCentimeterPerMeter() {
+        if (this.meganewtoncentimeterpermeterLazy !== null) {
+            return this.meganewtoncentimeterpermeterLazy;
         }
-        return this.meganewtoncentimeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Meganewtoncentimeterspermeter);
+        return this.meganewtoncentimeterpermeterLazy = this.convertFromBase(TorquePerLengthUnits.MeganewtonCentimeterPerMeter);
     }
-    get Kilonewtonmeterspermeter() {
-        if (this.kilonewtonmeterspermeterLazy !== null) {
-            return this.kilonewtonmeterspermeterLazy;
+    get KilonewtonMeterPerMeter() {
+        if (this.kilonewtonmeterpermeterLazy !== null) {
+            return this.kilonewtonmeterpermeterLazy;
         }
-        return this.kilonewtonmeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Kilonewtonmeterspermeter);
+        return this.kilonewtonmeterpermeterLazy = this.convertFromBase(TorquePerLengthUnits.KilonewtonMeterPerMeter);
     }
-    get Meganewtonmeterspermeter() {
-        if (this.meganewtonmeterspermeterLazy !== null) {
-            return this.meganewtonmeterspermeterLazy;
+    get MeganewtonMeterPerMeter() {
+        if (this.meganewtonmeterpermeterLazy !== null) {
+            return this.meganewtonmeterpermeterLazy;
         }
-        return this.meganewtonmeterspermeterLazy = this.convertFromBase(TorquePerLengthUnits.Meganewtonmeterspermeter);
+        return this.meganewtonmeterpermeterLazy = this.convertFromBase(TorquePerLengthUnits.MeganewtonMeterPerMeter);
     }
-    get Kilopoundforceinchesperfoot() {
-        if (this.kilopoundforceinchesperfootLazy !== null) {
-            return this.kilopoundforceinchesperfootLazy;
+    get KilopoundForceInchPerFoot() {
+        if (this.kilopoundforceinchperfootLazy !== null) {
+            return this.kilopoundforceinchperfootLazy;
         }
-        return this.kilopoundforceinchesperfootLazy = this.convertFromBase(TorquePerLengthUnits.Kilopoundforceinchesperfoot);
+        return this.kilopoundforceinchperfootLazy = this.convertFromBase(TorquePerLengthUnits.KilopoundForceInchPerFoot);
     }
-    get Megapoundforceinchesperfoot() {
-        if (this.megapoundforceinchesperfootLazy !== null) {
-            return this.megapoundforceinchesperfootLazy;
+    get MegapoundForceInchPerFoot() {
+        if (this.megapoundforceinchperfootLazy !== null) {
+            return this.megapoundforceinchperfootLazy;
         }
-        return this.megapoundforceinchesperfootLazy = this.convertFromBase(TorquePerLengthUnits.Megapoundforceinchesperfoot);
+        return this.megapoundforceinchperfootLazy = this.convertFromBase(TorquePerLengthUnits.MegapoundForceInchPerFoot);
     }
-    get Kilopoundforcefeetperfoot() {
-        if (this.kilopoundforcefeetperfootLazy !== null) {
-            return this.kilopoundforcefeetperfootLazy;
+    get KilopoundForceFootPerFoot() {
+        if (this.kilopoundforcefootperfootLazy !== null) {
+            return this.kilopoundforcefootperfootLazy;
         }
-        return this.kilopoundforcefeetperfootLazy = this.convertFromBase(TorquePerLengthUnits.Kilopoundforcefeetperfoot);
+        return this.kilopoundforcefootperfootLazy = this.convertFromBase(TorquePerLengthUnits.KilopoundForceFootPerFoot);
     }
-    get Megapoundforcefeetperfoot() {
-        if (this.megapoundforcefeetperfootLazy !== null) {
-            return this.megapoundforcefeetperfootLazy;
+    get MegapoundForceFootPerFoot() {
+        if (this.megapoundforcefootperfootLazy !== null) {
+            return this.megapoundforcefootperfootLazy;
         }
-        return this.megapoundforcefeetperfootLazy = this.convertFromBase(TorquePerLengthUnits.Megapoundforcefeetperfoot);
+        return this.megapoundforcefootperfootLazy = this.convertFromBase(TorquePerLengthUnits.MegapoundForceFootPerFoot);
     }
     static FromNewtonMillimetersPerMeter(value) {
         return new TorquePerLength(value, TorquePerLengthUnits.NewtonMillimetersPerMeter);
@@ -208,35 +208,35 @@ class TorquePerLength {
     static FromTonneForceMetersPerMeter(value) {
         return new TorquePerLength(value, TorquePerLengthUnits.TonneForceMetersPerMeter);
     }
-    static FromKilonewtonmillimeterspermeter(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Kilonewtonmillimeterspermeter);
+    static FromKilonewtonMillimeterPerMeter(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.KilonewtonMillimeterPerMeter);
     }
-    static FromMeganewtonmillimeterspermeter(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Meganewtonmillimeterspermeter);
+    static FromMeganewtonMillimeterPerMeter(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.MeganewtonMillimeterPerMeter);
     }
-    static FromKilonewtoncentimeterspermeter(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Kilonewtoncentimeterspermeter);
+    static FromKilonewtonCentimeterPerMeter(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.KilonewtonCentimeterPerMeter);
     }
-    static FromMeganewtoncentimeterspermeter(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Meganewtoncentimeterspermeter);
+    static FromMeganewtonCentimeterPerMeter(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.MeganewtonCentimeterPerMeter);
     }
-    static FromKilonewtonmeterspermeter(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Kilonewtonmeterspermeter);
+    static FromKilonewtonMeterPerMeter(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.KilonewtonMeterPerMeter);
     }
-    static FromMeganewtonmeterspermeter(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Meganewtonmeterspermeter);
+    static FromMeganewtonMeterPerMeter(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.MeganewtonMeterPerMeter);
     }
-    static FromKilopoundforceinchesperfoot(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Kilopoundforceinchesperfoot);
+    static FromKilopoundForceInchPerFoot(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.KilopoundForceInchPerFoot);
     }
-    static FromMegapoundforceinchesperfoot(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Megapoundforceinchesperfoot);
+    static FromMegapoundForceInchPerFoot(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.MegapoundForceInchPerFoot);
     }
-    static FromKilopoundforcefeetperfoot(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Kilopoundforcefeetperfoot);
+    static FromKilopoundForceFootPerFoot(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.KilopoundForceFootPerFoot);
     }
-    static FromMegapoundforcefeetperfoot(value) {
-        return new TorquePerLength(value, TorquePerLengthUnits.Megapoundforcefeetperfoot);
+    static FromMegapoundForceFootPerFoot(value) {
+        return new TorquePerLength(value, TorquePerLengthUnits.MegapoundForceFootPerFoot);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -262,25 +262,25 @@ class TorquePerLength {
                 return this.value * 0.0101971619222242;
             case TorquePerLengthUnits.TonneForceMetersPerMeter:
                 return this.value * 0.000101971619222242;
-            case TorquePerLengthUnits.Kilonewtonmillimeterspermeter:
+            case TorquePerLengthUnits.KilonewtonMillimeterPerMeter:
                 return (this.value * 1000) / 1000;
-            case TorquePerLengthUnits.Meganewtonmillimeterspermeter:
+            case TorquePerLengthUnits.MeganewtonMillimeterPerMeter:
                 return (this.value * 1000) / 1000000;
-            case TorquePerLengthUnits.Kilonewtoncentimeterspermeter:
+            case TorquePerLengthUnits.KilonewtonCentimeterPerMeter:
                 return (this.value * 100) / 1000;
-            case TorquePerLengthUnits.Meganewtoncentimeterspermeter:
+            case TorquePerLengthUnits.MeganewtonCentimeterPerMeter:
                 return (this.value * 100) / 1000000;
-            case TorquePerLengthUnits.Kilonewtonmeterspermeter:
+            case TorquePerLengthUnits.KilonewtonMeterPerMeter:
                 return (this.value) / 1000;
-            case TorquePerLengthUnits.Meganewtonmeterspermeter:
+            case TorquePerLengthUnits.MeganewtonMeterPerMeter:
                 return (this.value) / 1000000;
-            case TorquePerLengthUnits.Kilopoundforceinchesperfoot:
+            case TorquePerLengthUnits.KilopoundForceInchPerFoot:
                 return (this.value / 0.370685147638) / 1000;
-            case TorquePerLengthUnits.Megapoundforceinchesperfoot:
+            case TorquePerLengthUnits.MegapoundForceInchPerFoot:
                 return (this.value / 0.370685147638) / 1000000;
-            case TorquePerLengthUnits.Kilopoundforcefeetperfoot:
+            case TorquePerLengthUnits.KilopoundForceFootPerFoot:
                 return (this.value / 4.44822161526) / 1000;
-            case TorquePerLengthUnits.Megapoundforcefeetperfoot:
+            case TorquePerLengthUnits.MegapoundForceFootPerFoot:
                 return (this.value / 4.44822161526) / 1000000;
             default:
                 break;
@@ -311,30 +311,79 @@ class TorquePerLength {
                 return value * 98.0665019960652;
             case TorquePerLengthUnits.TonneForceMetersPerMeter:
                 return value * 9806.65019960653;
-            case TorquePerLengthUnits.Kilonewtonmillimeterspermeter:
+            case TorquePerLengthUnits.KilonewtonMillimeterPerMeter:
                 return (value * 0.001) * 1000;
-            case TorquePerLengthUnits.Meganewtonmillimeterspermeter:
+            case TorquePerLengthUnits.MeganewtonMillimeterPerMeter:
                 return (value * 0.001) * 1000000;
-            case TorquePerLengthUnits.Kilonewtoncentimeterspermeter:
+            case TorquePerLengthUnits.KilonewtonCentimeterPerMeter:
                 return (value * 0.01) * 1000;
-            case TorquePerLengthUnits.Meganewtoncentimeterspermeter:
+            case TorquePerLengthUnits.MeganewtonCentimeterPerMeter:
                 return (value * 0.01) * 1000000;
-            case TorquePerLengthUnits.Kilonewtonmeterspermeter:
+            case TorquePerLengthUnits.KilonewtonMeterPerMeter:
                 return (value) * 1000;
-            case TorquePerLengthUnits.Meganewtonmeterspermeter:
+            case TorquePerLengthUnits.MeganewtonMeterPerMeter:
                 return (value) * 1000000;
-            case TorquePerLengthUnits.Kilopoundforceinchesperfoot:
+            case TorquePerLengthUnits.KilopoundForceInchPerFoot:
                 return (value * 0.370685147638) * 1000;
-            case TorquePerLengthUnits.Megapoundforceinchesperfoot:
+            case TorquePerLengthUnits.MegapoundForceInchPerFoot:
                 return (value * 0.370685147638) * 1000000;
-            case TorquePerLengthUnits.Kilopoundforcefeetperfoot:
+            case TorquePerLengthUnits.KilopoundForceFootPerFoot:
                 return (value * 4.44822161526) * 1000;
-            case TorquePerLengthUnits.Megapoundforcefeetperfoot:
+            case TorquePerLengthUnits.MegapoundForceFootPerFoot:
                 return (value * 4.44822161526) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = TorquePerLengthUnits.NewtonMetersPerMeter) {
+        switch (toUnit) {
+            case TorquePerLengthUnits.NewtonMillimetersPerMeter:
+                return this.NewtonMillimetersPerMeter + ` N·mm/m`;
+            case TorquePerLengthUnits.NewtonCentimetersPerMeter:
+                return this.NewtonCentimetersPerMeter + ` N·cm/m`;
+            case TorquePerLengthUnits.NewtonMetersPerMeter:
+                return this.NewtonMetersPerMeter + ` N·m/m`;
+            case TorquePerLengthUnits.PoundForceInchesPerFoot:
+                return this.PoundForceInchesPerFoot + ` lbf·in/ft`;
+            case TorquePerLengthUnits.PoundForceFeetPerFoot:
+                return this.PoundForceFeetPerFoot + ` lbf·ft/ft`;
+            case TorquePerLengthUnits.KilogramForceMillimetersPerMeter:
+                return this.KilogramForceMillimetersPerMeter + ` kgf·mm/m`;
+            case TorquePerLengthUnits.KilogramForceCentimetersPerMeter:
+                return this.KilogramForceCentimetersPerMeter + ` kgf·cm/m`;
+            case TorquePerLengthUnits.KilogramForceMetersPerMeter:
+                return this.KilogramForceMetersPerMeter + ` kgf·m/m`;
+            case TorquePerLengthUnits.TonneForceMillimetersPerMeter:
+                return this.TonneForceMillimetersPerMeter + ` tf·mm/m`;
+            case TorquePerLengthUnits.TonneForceCentimetersPerMeter:
+                return this.TonneForceCentimetersPerMeter + ` tf·cm/m`;
+            case TorquePerLengthUnits.TonneForceMetersPerMeter:
+                return this.TonneForceMetersPerMeter + ` tf·m/m`;
+            case TorquePerLengthUnits.KilonewtonMillimeterPerMeter:
+                return this.KilonewtonMillimeterPerMeter + ` N·mm/m`;
+            case TorquePerLengthUnits.MeganewtonMillimeterPerMeter:
+                return this.MeganewtonMillimeterPerMeter + ` N·mm/m`;
+            case TorquePerLengthUnits.KilonewtonCentimeterPerMeter:
+                return this.KilonewtonCentimeterPerMeter + ` N·cm/m`;
+            case TorquePerLengthUnits.MeganewtonCentimeterPerMeter:
+                return this.MeganewtonCentimeterPerMeter + ` N·cm/m`;
+            case TorquePerLengthUnits.KilonewtonMeterPerMeter:
+                return this.KilonewtonMeterPerMeter + ` N·m/m`;
+            case TorquePerLengthUnits.MeganewtonMeterPerMeter:
+                return this.MeganewtonMeterPerMeter + ` N·m/m`;
+            case TorquePerLengthUnits.KilopoundForceInchPerFoot:
+                return this.KilopoundForceInchPerFoot + ` lbf·in/ft`;
+            case TorquePerLengthUnits.MegapoundForceInchPerFoot:
+                return this.MegapoundForceInchPerFoot + ` lbf·in/ft`;
+            case TorquePerLengthUnits.KilopoundForceFootPerFoot:
+                return this.KilopoundForceFootPerFoot + ` lbf·ft/ft`;
+            case TorquePerLengthUnits.MegapoundForceFootPerFoot:
+                return this.MegapoundForceFootPerFoot + ` lbf·ft/ft`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.TorquePerLength = TorquePerLength;

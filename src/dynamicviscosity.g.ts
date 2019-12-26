@@ -5,7 +5,7 @@ export enum DynamicViscosityUnits {
     Reyns,
     PoundsForceSecondPerSquareInch,
     PoundsForceSecondPerSquareFoot,
-    Micropascalseconds,
+    MicropascalSecond,
     Centipoise
 }
 
@@ -17,7 +17,7 @@ export class DynamicViscosity {
     private reynsLazy: number | null = null;
     private poundsforcesecondpersquareinchLazy: number | null = null;
     private poundsforcesecondpersquarefootLazy: number | null = null;
-    private micropascalsecondsLazy: number | null = null;
+    private micropascalsecondLazy: number | null = null;
     private centipoiseLazy: number | null = null;
 
     public constructor(value: number, fromUnit: DynamicViscosityUnits) {
@@ -66,11 +66,11 @@ export class DynamicViscosity {
         return this.poundsforcesecondpersquarefootLazy = this.convertFromBase(DynamicViscosityUnits.PoundsForceSecondPerSquareFoot);
     }
 
-    public get Micropascalseconds(): number {
-        if(this.micropascalsecondsLazy !== null){
-            return this.micropascalsecondsLazy;
+    public get MicropascalSecond(): number {
+        if(this.micropascalsecondLazy !== null){
+            return this.micropascalsecondLazy;
         }
-        return this.micropascalsecondsLazy = this.convertFromBase(DynamicViscosityUnits.Micropascalseconds);
+        return this.micropascalsecondLazy = this.convertFromBase(DynamicViscosityUnits.MicropascalSecond);
     }
 
     public get Centipoise(): number {
@@ -104,8 +104,8 @@ export class DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.PoundsForceSecondPerSquareFoot);
     }
 
-    public static FromMicropascalseconds(value: number): DynamicViscosity {
-        return new DynamicViscosity(value, DynamicViscosityUnits.Micropascalseconds);
+    public static FromMicropascalSecond(value: number): DynamicViscosity {
+        return new DynamicViscosity(value, DynamicViscosityUnits.MicropascalSecond);
     }
 
     public static FromCentipoise(value: number): DynamicViscosity {
@@ -127,7 +127,7 @@ export class DynamicViscosity {
                 return this.value / 6.8947572931683613e3;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return this.value / 4.7880258980335843e1;
-            case DynamicViscosityUnits.Micropascalseconds:
+            case DynamicViscosityUnits.MicropascalSecond:
                 return (this.value) / 0.000001;
             case DynamicViscosityUnits.Centipoise:
                 return (this.value*10) / 0.01;
@@ -152,7 +152,7 @@ export class DynamicViscosity {
                 return value * 6.8947572931683613e3;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return value * 4.7880258980335843e1;
-            case DynamicViscosityUnits.Micropascalseconds:
+            case DynamicViscosityUnits.MicropascalSecond:
                 return (value) * 0.000001;
             case DynamicViscosityUnits.Centipoise:
                 return (value/10) * 0.01;
@@ -160,5 +160,31 @@ export class DynamicViscosity {
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared): string {
+
+        switch (toUnit) {
+            
+            case DynamicViscosityUnits.NewtonSecondsPerMeterSquared:
+                return this.NewtonSecondsPerMeterSquared + ` Ns/m²`;
+            case DynamicViscosityUnits.PascalSeconds:
+                return this.PascalSeconds + ` Pa·s`;
+            case DynamicViscosityUnits.Poise:
+                return this.Poise + ` P`;
+            case DynamicViscosityUnits.Reyns:
+                return this.Reyns + ` reyn`;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareInch:
+                return this.PoundsForceSecondPerSquareInch + ` lbf·s/in²`;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
+                return this.PoundsForceSecondPerSquareFoot + ` lbf·s/ft²`;
+            case DynamicViscosityUnits.MicropascalSecond:
+                return this.MicropascalSecond + ` Pa·s`;
+            case DynamicViscosityUnits.Centipoise:
+                return this.Centipoise + ` P`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

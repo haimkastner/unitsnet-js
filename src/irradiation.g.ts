@@ -3,8 +3,8 @@ export enum IrradiationUnits {
     JoulesPerSquareCentimeter,
     JoulesPerSquareMillimeter,
     WattHoursPerSquareMeter,
-    Kilojoulespersquaremeter,
-    Kilowatthourspersquaremeter
+    KilojoulePerSquareMeter,
+    KilowattHourPerSquareMeter
 }
 
 export class Irradiation {
@@ -13,8 +13,8 @@ export class Irradiation {
     private joulespersquarecentimeterLazy: number | null = null;
     private joulespersquaremillimeterLazy: number | null = null;
     private watthourspersquaremeterLazy: number | null = null;
-    private kilojoulespersquaremeterLazy: number | null = null;
-    private kilowatthourspersquaremeterLazy: number | null = null;
+    private kilojoulepersquaremeterLazy: number | null = null;
+    private kilowatthourpersquaremeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: IrradiationUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -48,18 +48,18 @@ export class Irradiation {
         return this.watthourspersquaremeterLazy = this.convertFromBase(IrradiationUnits.WattHoursPerSquareMeter);
     }
 
-    public get Kilojoulespersquaremeter(): number {
-        if(this.kilojoulespersquaremeterLazy !== null){
-            return this.kilojoulespersquaremeterLazy;
+    public get KilojoulePerSquareMeter(): number {
+        if(this.kilojoulepersquaremeterLazy !== null){
+            return this.kilojoulepersquaremeterLazy;
         }
-        return this.kilojoulespersquaremeterLazy = this.convertFromBase(IrradiationUnits.Kilojoulespersquaremeter);
+        return this.kilojoulepersquaremeterLazy = this.convertFromBase(IrradiationUnits.KilojoulePerSquareMeter);
     }
 
-    public get Kilowatthourspersquaremeter(): number {
-        if(this.kilowatthourspersquaremeterLazy !== null){
-            return this.kilowatthourspersquaremeterLazy;
+    public get KilowattHourPerSquareMeter(): number {
+        if(this.kilowatthourpersquaremeterLazy !== null){
+            return this.kilowatthourpersquaremeterLazy;
         }
-        return this.kilowatthourspersquaremeterLazy = this.convertFromBase(IrradiationUnits.Kilowatthourspersquaremeter);
+        return this.kilowatthourpersquaremeterLazy = this.convertFromBase(IrradiationUnits.KilowattHourPerSquareMeter);
     }
 
     public static FromJoulesPerSquareMeter(value: number): Irradiation {
@@ -78,12 +78,12 @@ export class Irradiation {
         return new Irradiation(value, IrradiationUnits.WattHoursPerSquareMeter);
     }
 
-    public static FromKilojoulespersquaremeter(value: number): Irradiation {
-        return new Irradiation(value, IrradiationUnits.Kilojoulespersquaremeter);
+    public static FromKilojoulePerSquareMeter(value: number): Irradiation {
+        return new Irradiation(value, IrradiationUnits.KilojoulePerSquareMeter);
     }
 
-    public static FromKilowatthourspersquaremeter(value: number): Irradiation {
-        return new Irradiation(value, IrradiationUnits.Kilowatthourspersquaremeter);
+    public static FromKilowattHourPerSquareMeter(value: number): Irradiation {
+        return new Irradiation(value, IrradiationUnits.KilowattHourPerSquareMeter);
     }
 
     private convertFromBase(toUnit: IrradiationUnits): number {
@@ -97,9 +97,9 @@ export class Irradiation {
                 return this.value/1e6;
             case IrradiationUnits.WattHoursPerSquareMeter:
                 return this.value/3600;
-            case IrradiationUnits.Kilojoulespersquaremeter:
+            case IrradiationUnits.KilojoulePerSquareMeter:
                 return (this.value) / 1000;
-            case IrradiationUnits.Kilowatthourspersquaremeter:
+            case IrradiationUnits.KilowattHourPerSquareMeter:
                 return (this.value/3600) / 1000;
             default:
                 break;
@@ -118,13 +118,35 @@ export class Irradiation {
                 return value*1e6;
             case IrradiationUnits.WattHoursPerSquareMeter:
                 return value*3600;
-            case IrradiationUnits.Kilojoulespersquaremeter:
+            case IrradiationUnits.KilojoulePerSquareMeter:
                 return (value) * 1000;
-            case IrradiationUnits.Kilowatthourspersquaremeter:
+            case IrradiationUnits.KilowattHourPerSquareMeter:
                 return (value*3600) * 1000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter): string {
+
+        switch (toUnit) {
+            
+            case IrradiationUnits.JoulesPerSquareMeter:
+                return this.JoulesPerSquareMeter + ` J/m²`;
+            case IrradiationUnits.JoulesPerSquareCentimeter:
+                return this.JoulesPerSquareCentimeter + ` J/cm²`;
+            case IrradiationUnits.JoulesPerSquareMillimeter:
+                return this.JoulesPerSquareMillimeter + ` J/mm²`;
+            case IrradiationUnits.WattHoursPerSquareMeter:
+                return this.WattHoursPerSquareMeter + ` Wh/m²`;
+            case IrradiationUnits.KilojoulePerSquareMeter:
+                return this.KilojoulePerSquareMeter + ` J/m²`;
+            case IrradiationUnits.KilowattHourPerSquareMeter:
+                return this.KilowattHourPerSquareMeter + ` Wh/m²`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

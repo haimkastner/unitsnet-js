@@ -93,4 +93,22 @@ export class FuelEfficiency {
         }
         return NaN;
     }
+
+    public toString(toUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers): string {
+
+        switch (toUnit) {
+            
+            case FuelEfficiencyUnits.LitersPer100Kilometers:
+                return this.LitersPer100Kilometers + ` L/100km`;
+            case FuelEfficiencyUnits.MilesPerUsGallon:
+                return this.MilesPerUsGallon + ` mpg (U.S.)`;
+            case FuelEfficiencyUnits.MilesPerUkGallon:
+                return this.MilesPerUkGallon + ` mpg (imp.)`;
+            case FuelEfficiencyUnits.KilometersPerLiters:
+                return this.KilometersPerLiters + ` km/L`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

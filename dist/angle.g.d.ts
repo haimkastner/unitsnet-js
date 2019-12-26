@@ -5,12 +5,12 @@ export declare enum AngleUnits {
     Arcseconds = 3,
     Gradians = 4,
     Revolutions = 5,
-    Nanoradians = 6,
-    Microradians = 7,
-    Centiradians = 8,
-    Deciradians = 9,
-    Nanodegrees = 10,
-    Microdegrees = 11
+    Nanoradian = 6,
+    Microradian = 7,
+    Centiradian = 8,
+    Deciradian = 9,
+    Nanodegree = 10,
+    Microdegree = 11
 }
 export declare class Angle {
     private value;
@@ -20,12 +20,12 @@ export declare class Angle {
     private arcsecondsLazy;
     private gradiansLazy;
     private revolutionsLazy;
-    private nanoradiansLazy;
-    private microradiansLazy;
-    private centiradiansLazy;
-    private deciradiansLazy;
-    private nanodegreesLazy;
-    private microdegreesLazy;
+    private nanoradianLazy;
+    private microradianLazy;
+    private centiradianLazy;
+    private deciradianLazy;
+    private nanodegreeLazy;
+    private microdegreeLazy;
     constructor(value: number, fromUnit: AngleUnits);
     get Radians(): number;
     get Degrees(): number;
@@ -33,25 +33,26 @@ export declare class Angle {
     get Arcseconds(): number;
     get Gradians(): number;
     get Revolutions(): number;
-    get Nanoradians(): number;
-    get Microradians(): number;
-    get Centiradians(): number;
-    get Deciradians(): number;
-    get Nanodegrees(): number;
-    get Microdegrees(): number;
+    get Nanoradian(): number;
+    get Microradian(): number;
+    get Centiradian(): number;
+    get Deciradian(): number;
+    get Nanodegree(): number;
+    get Microdegree(): number;
     static FromRadians(value: number): Angle;
     static FromDegrees(value: number): Angle;
     static FromArcminutes(value: number): Angle;
     static FromArcseconds(value: number): Angle;
     static FromGradians(value: number): Angle;
     static FromRevolutions(value: number): Angle;
-    static FromNanoradians(value: number): Angle;
-    static FromMicroradians(value: number): Angle;
-    static FromCentiradians(value: number): Angle;
-    static FromDeciradians(value: number): Angle;
-    static FromNanodegrees(value: number): Angle;
-    static FromMicrodegrees(value: number): Angle;
+    static FromNanoradian(value: number): Angle;
+    static FromMicroradian(value: number): Angle;
+    static FromCentiradian(value: number): Angle;
+    static FromDeciradian(value: number): Angle;
+    static FromNanodegree(value: number): Angle;
+    static FromMicrodegree(value: number): Angle;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: AngleUnits): string;
 }
 //# sourceMappingURL=angle.g.d.ts.map

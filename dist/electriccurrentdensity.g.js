@@ -66,6 +66,19 @@ class ElectricCurrentDensity {
         }
         return NaN;
     }
+    toString(toUnit = ElectricCurrentDensityUnits.AmperesPerSquareMeter) {
+        switch (toUnit) {
+            case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
+                return this.AmperesPerSquareMeter + ` A/m²`;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch:
+                return this.AmperesPerSquareInch + ` A/in²`;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
+                return this.AmperesPerSquareFoot + ` A/ft²`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.ElectricCurrentDensity = ElectricCurrentDensity;
 //# sourceMappingURL=electriccurrentdensity.g.js.map

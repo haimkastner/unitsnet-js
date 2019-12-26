@@ -10,16 +10,16 @@ export declare enum TorqueUnits {
     TonneForceMillimeters = 8,
     TonneForceCentimeters = 9,
     TonneForceMeters = 10,
-    Kilonewtonmillimeters = 11,
-    Meganewtonmillimeters = 12,
-    Kilonewtoncentimeters = 13,
-    Meganewtoncentimeters = 14,
-    Kilonewtonmeters = 15,
-    Meganewtonmeters = 16,
-    Kilopoundforceinches = 17,
-    Megapoundforceinches = 18,
-    Kilopoundforcefeet = 19,
-    Megapoundforcefeet = 20
+    KilonewtonMillimeter = 11,
+    MeganewtonMillimeter = 12,
+    KilonewtonCentimeter = 13,
+    MeganewtonCentimeter = 14,
+    KilonewtonMeter = 15,
+    MeganewtonMeter = 16,
+    KilopoundForceInch = 17,
+    MegapoundForceInch = 18,
+    KilopoundForceFoot = 19,
+    MegapoundForceFoot = 20
 }
 export declare class Torque {
     private value;
@@ -34,16 +34,16 @@ export declare class Torque {
     private tonneforcemillimetersLazy;
     private tonneforcecentimetersLazy;
     private tonneforcemetersLazy;
-    private kilonewtonmillimetersLazy;
-    private meganewtonmillimetersLazy;
-    private kilonewtoncentimetersLazy;
-    private meganewtoncentimetersLazy;
-    private kilonewtonmetersLazy;
-    private meganewtonmetersLazy;
-    private kilopoundforceinchesLazy;
-    private megapoundforceinchesLazy;
-    private kilopoundforcefeetLazy;
-    private megapoundforcefeetLazy;
+    private kilonewtonmillimeterLazy;
+    private meganewtonmillimeterLazy;
+    private kilonewtoncentimeterLazy;
+    private meganewtoncentimeterLazy;
+    private kilonewtonmeterLazy;
+    private meganewtonmeterLazy;
+    private kilopoundforceinchLazy;
+    private megapoundforceinchLazy;
+    private kilopoundforcefootLazy;
+    private megapoundforcefootLazy;
     constructor(value: number, fromUnit: TorqueUnits);
     get NewtonMillimeters(): number;
     get NewtonCentimeters(): number;
@@ -56,16 +56,16 @@ export declare class Torque {
     get TonneForceMillimeters(): number;
     get TonneForceCentimeters(): number;
     get TonneForceMeters(): number;
-    get Kilonewtonmillimeters(): number;
-    get Meganewtonmillimeters(): number;
-    get Kilonewtoncentimeters(): number;
-    get Meganewtoncentimeters(): number;
-    get Kilonewtonmeters(): number;
-    get Meganewtonmeters(): number;
-    get Kilopoundforceinches(): number;
-    get Megapoundforceinches(): number;
-    get Kilopoundforcefeet(): number;
-    get Megapoundforcefeet(): number;
+    get KilonewtonMillimeter(): number;
+    get MeganewtonMillimeter(): number;
+    get KilonewtonCentimeter(): number;
+    get MeganewtonCentimeter(): number;
+    get KilonewtonMeter(): number;
+    get MeganewtonMeter(): number;
+    get KilopoundForceInch(): number;
+    get MegapoundForceInch(): number;
+    get KilopoundForceFoot(): number;
+    get MegapoundForceFoot(): number;
     static FromNewtonMillimeters(value: number): Torque;
     static FromNewtonCentimeters(value: number): Torque;
     static FromNewtonMeters(value: number): Torque;
@@ -77,17 +77,18 @@ export declare class Torque {
     static FromTonneForceMillimeters(value: number): Torque;
     static FromTonneForceCentimeters(value: number): Torque;
     static FromTonneForceMeters(value: number): Torque;
-    static FromKilonewtonmillimeters(value: number): Torque;
-    static FromMeganewtonmillimeters(value: number): Torque;
-    static FromKilonewtoncentimeters(value: number): Torque;
-    static FromMeganewtoncentimeters(value: number): Torque;
-    static FromKilonewtonmeters(value: number): Torque;
-    static FromMeganewtonmeters(value: number): Torque;
-    static FromKilopoundforceinches(value: number): Torque;
-    static FromMegapoundforceinches(value: number): Torque;
-    static FromKilopoundforcefeet(value: number): Torque;
-    static FromMegapoundforcefeet(value: number): Torque;
+    static FromKilonewtonMillimeter(value: number): Torque;
+    static FromMeganewtonMillimeter(value: number): Torque;
+    static FromKilonewtonCentimeter(value: number): Torque;
+    static FromMeganewtonCentimeter(value: number): Torque;
+    static FromKilonewtonMeter(value: number): Torque;
+    static FromMeganewtonMeter(value: number): Torque;
+    static FromKilopoundForceInch(value: number): Torque;
+    static FromMegapoundForceInch(value: number): Torque;
+    static FromKilopoundForceFoot(value: number): Torque;
+    static FromMegapoundForceFoot(value: number): Torque;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: TorqueUnits): string;
 }
 //# sourceMappingURL=torque.g.d.ts.map

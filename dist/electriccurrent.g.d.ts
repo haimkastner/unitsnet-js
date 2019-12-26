@@ -1,37 +1,38 @@
 export declare enum ElectricCurrentUnits {
     Amperes = 0,
-    Picoamperes = 1,
-    Nanoamperes = 2,
-    Microamperes = 3,
-    Centiamperes = 4,
-    Kiloamperes = 5,
-    Megaamperes = 6
+    Picoampere = 1,
+    Nanoampere = 2,
+    Microampere = 3,
+    Centiampere = 4,
+    Kiloampere = 5,
+    Megaampere = 6
 }
 export declare class ElectricCurrent {
     private value;
     private amperesLazy;
-    private picoamperesLazy;
-    private nanoamperesLazy;
-    private microamperesLazy;
-    private centiamperesLazy;
-    private kiloamperesLazy;
-    private megaamperesLazy;
+    private picoampereLazy;
+    private nanoampereLazy;
+    private microampereLazy;
+    private centiampereLazy;
+    private kiloampereLazy;
+    private megaampereLazy;
     constructor(value: number, fromUnit: ElectricCurrentUnits);
     get Amperes(): number;
-    get Picoamperes(): number;
-    get Nanoamperes(): number;
-    get Microamperes(): number;
-    get Centiamperes(): number;
-    get Kiloamperes(): number;
-    get Megaamperes(): number;
+    get Picoampere(): number;
+    get Nanoampere(): number;
+    get Microampere(): number;
+    get Centiampere(): number;
+    get Kiloampere(): number;
+    get Megaampere(): number;
     static FromAmperes(value: number): ElectricCurrent;
-    static FromPicoamperes(value: number): ElectricCurrent;
-    static FromNanoamperes(value: number): ElectricCurrent;
-    static FromMicroamperes(value: number): ElectricCurrent;
-    static FromCentiamperes(value: number): ElectricCurrent;
-    static FromKiloamperes(value: number): ElectricCurrent;
-    static FromMegaamperes(value: number): ElectricCurrent;
+    static FromPicoampere(value: number): ElectricCurrent;
+    static FromNanoampere(value: number): ElectricCurrent;
+    static FromMicroampere(value: number): ElectricCurrent;
+    static FromCentiampere(value: number): ElectricCurrent;
+    static FromKiloampere(value: number): ElectricCurrent;
+    static FromMegaampere(value: number): ElectricCurrent;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricCurrentUnits): string;
 }
 //# sourceMappingURL=electriccurrent.g.d.ts.map

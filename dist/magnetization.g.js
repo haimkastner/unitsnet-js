@@ -36,6 +36,15 @@ class Magnetization {
         }
         return NaN;
     }
+    toString(toUnit = MagnetizationUnits.AmperesPerMeter) {
+        switch (toUnit) {
+            case MagnetizationUnits.AmperesPerMeter:
+                return this.AmperesPerMeter + ` A/m`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.Magnetization = Magnetization;
 //# sourceMappingURL=magnetization.g.js.map

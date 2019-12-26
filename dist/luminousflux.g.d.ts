@@ -9,5 +9,6 @@ export declare class LuminousFlux {
     static FromLumens(value: number): LuminousFlux;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: LuminousFluxUnits): string;
 }
 //# sourceMappingURL=luminousflux.g.d.ts.map

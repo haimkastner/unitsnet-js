@@ -42,4 +42,16 @@ export class SolidAngle {
         }
         return NaN;
     }
+
+    public toString(toUnit: SolidAngleUnits = SolidAngleUnits.Steradians): string {
+
+        switch (toUnit) {
+            
+            case SolidAngleUnits.Steradians:
+                return this.Steradians + ` sr`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

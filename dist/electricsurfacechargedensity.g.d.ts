@@ -17,5 +17,6 @@ export declare class ElectricSurfaceChargeDensity {
     static FromCoulombsPerSquareInch(value: number): ElectricSurfaceChargeDensity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricSurfaceChargeDensityUnits): string;
 }
 //# sourceMappingURL=electricsurfacechargedensity.g.d.ts.map

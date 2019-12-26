@@ -4,33 +4,33 @@ var AmountOfSubstanceUnits;
 (function (AmountOfSubstanceUnits) {
     AmountOfSubstanceUnits[AmountOfSubstanceUnits["Moles"] = 0] = "Moles";
     AmountOfSubstanceUnits[AmountOfSubstanceUnits["PoundMoles"] = 1] = "PoundMoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Nanomoles"] = 2] = "Nanomoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Micromoles"] = 3] = "Micromoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Centimoles"] = 4] = "Centimoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Decimoles"] = 5] = "Decimoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Kilomoles"] = 6] = "Kilomoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Megamoles"] = 7] = "Megamoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Nanopoundmoles"] = 8] = "Nanopoundmoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Micropoundmoles"] = 9] = "Micropoundmoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Centipoundmoles"] = 10] = "Centipoundmoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Decipoundmoles"] = 11] = "Decipoundmoles";
-    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Kilopoundmoles"] = 12] = "Kilopoundmoles";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Nanomole"] = 2] = "Nanomole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Micromole"] = 3] = "Micromole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Centimole"] = 4] = "Centimole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Decimole"] = 5] = "Decimole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Kilomole"] = 6] = "Kilomole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["Megamole"] = 7] = "Megamole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["NanopoundMole"] = 8] = "NanopoundMole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["MicropoundMole"] = 9] = "MicropoundMole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["CentipoundMole"] = 10] = "CentipoundMole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["DecipoundMole"] = 11] = "DecipoundMole";
+    AmountOfSubstanceUnits[AmountOfSubstanceUnits["KilopoundMole"] = 12] = "KilopoundMole";
 })(AmountOfSubstanceUnits = exports.AmountOfSubstanceUnits || (exports.AmountOfSubstanceUnits = {}));
 class AmountOfSubstance {
     constructor(value, fromUnit) {
         this.molesLazy = null;
         this.poundmolesLazy = null;
-        this.nanomolesLazy = null;
-        this.micromolesLazy = null;
-        this.centimolesLazy = null;
-        this.decimolesLazy = null;
-        this.kilomolesLazy = null;
-        this.megamolesLazy = null;
-        this.nanopoundmolesLazy = null;
-        this.micropoundmolesLazy = null;
-        this.centipoundmolesLazy = null;
-        this.decipoundmolesLazy = null;
-        this.kilopoundmolesLazy = null;
+        this.nanomoleLazy = null;
+        this.micromoleLazy = null;
+        this.centimoleLazy = null;
+        this.decimoleLazy = null;
+        this.kilomoleLazy = null;
+        this.megamoleLazy = null;
+        this.nanopoundmoleLazy = null;
+        this.micropoundmoleLazy = null;
+        this.centipoundmoleLazy = null;
+        this.decipoundmoleLazy = null;
+        this.kilopoundmoleLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Moles() {
@@ -45,71 +45,71 @@ class AmountOfSubstance {
         }
         return this.poundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.PoundMoles);
     }
-    get Nanomoles() {
-        if (this.nanomolesLazy !== null) {
-            return this.nanomolesLazy;
+    get Nanomole() {
+        if (this.nanomoleLazy !== null) {
+            return this.nanomoleLazy;
         }
-        return this.nanomolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Nanomoles);
+        return this.nanomoleLazy = this.convertFromBase(AmountOfSubstanceUnits.Nanomole);
     }
-    get Micromoles() {
-        if (this.micromolesLazy !== null) {
-            return this.micromolesLazy;
+    get Micromole() {
+        if (this.micromoleLazy !== null) {
+            return this.micromoleLazy;
         }
-        return this.micromolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Micromoles);
+        return this.micromoleLazy = this.convertFromBase(AmountOfSubstanceUnits.Micromole);
     }
-    get Centimoles() {
-        if (this.centimolesLazy !== null) {
-            return this.centimolesLazy;
+    get Centimole() {
+        if (this.centimoleLazy !== null) {
+            return this.centimoleLazy;
         }
-        return this.centimolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Centimoles);
+        return this.centimoleLazy = this.convertFromBase(AmountOfSubstanceUnits.Centimole);
     }
-    get Decimoles() {
-        if (this.decimolesLazy !== null) {
-            return this.decimolesLazy;
+    get Decimole() {
+        if (this.decimoleLazy !== null) {
+            return this.decimoleLazy;
         }
-        return this.decimolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Decimoles);
+        return this.decimoleLazy = this.convertFromBase(AmountOfSubstanceUnits.Decimole);
     }
-    get Kilomoles() {
-        if (this.kilomolesLazy !== null) {
-            return this.kilomolesLazy;
+    get Kilomole() {
+        if (this.kilomoleLazy !== null) {
+            return this.kilomoleLazy;
         }
-        return this.kilomolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Kilomoles);
+        return this.kilomoleLazy = this.convertFromBase(AmountOfSubstanceUnits.Kilomole);
     }
-    get Megamoles() {
-        if (this.megamolesLazy !== null) {
-            return this.megamolesLazy;
+    get Megamole() {
+        if (this.megamoleLazy !== null) {
+            return this.megamoleLazy;
         }
-        return this.megamolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Megamoles);
+        return this.megamoleLazy = this.convertFromBase(AmountOfSubstanceUnits.Megamole);
     }
-    get Nanopoundmoles() {
-        if (this.nanopoundmolesLazy !== null) {
-            return this.nanopoundmolesLazy;
+    get NanopoundMole() {
+        if (this.nanopoundmoleLazy !== null) {
+            return this.nanopoundmoleLazy;
         }
-        return this.nanopoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Nanopoundmoles);
+        return this.nanopoundmoleLazy = this.convertFromBase(AmountOfSubstanceUnits.NanopoundMole);
     }
-    get Micropoundmoles() {
-        if (this.micropoundmolesLazy !== null) {
-            return this.micropoundmolesLazy;
+    get MicropoundMole() {
+        if (this.micropoundmoleLazy !== null) {
+            return this.micropoundmoleLazy;
         }
-        return this.micropoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Micropoundmoles);
+        return this.micropoundmoleLazy = this.convertFromBase(AmountOfSubstanceUnits.MicropoundMole);
     }
-    get Centipoundmoles() {
-        if (this.centipoundmolesLazy !== null) {
-            return this.centipoundmolesLazy;
+    get CentipoundMole() {
+        if (this.centipoundmoleLazy !== null) {
+            return this.centipoundmoleLazy;
         }
-        return this.centipoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Centipoundmoles);
+        return this.centipoundmoleLazy = this.convertFromBase(AmountOfSubstanceUnits.CentipoundMole);
     }
-    get Decipoundmoles() {
-        if (this.decipoundmolesLazy !== null) {
-            return this.decipoundmolesLazy;
+    get DecipoundMole() {
+        if (this.decipoundmoleLazy !== null) {
+            return this.decipoundmoleLazy;
         }
-        return this.decipoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Decipoundmoles);
+        return this.decipoundmoleLazy = this.convertFromBase(AmountOfSubstanceUnits.DecipoundMole);
     }
-    get Kilopoundmoles() {
-        if (this.kilopoundmolesLazy !== null) {
-            return this.kilopoundmolesLazy;
+    get KilopoundMole() {
+        if (this.kilopoundmoleLazy !== null) {
+            return this.kilopoundmoleLazy;
         }
-        return this.kilopoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Kilopoundmoles);
+        return this.kilopoundmoleLazy = this.convertFromBase(AmountOfSubstanceUnits.KilopoundMole);
     }
     static FromMoles(value) {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.Moles);
@@ -117,38 +117,38 @@ class AmountOfSubstance {
     static FromPoundMoles(value) {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.PoundMoles);
     }
-    static FromNanomoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Nanomoles);
+    static FromNanomole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Nanomole);
     }
-    static FromMicromoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Micromoles);
+    static FromMicromole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Micromole);
     }
-    static FromCentimoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Centimoles);
+    static FromCentimole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Centimole);
     }
-    static FromDecimoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Decimoles);
+    static FromDecimole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Decimole);
     }
-    static FromKilomoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Kilomoles);
+    static FromKilomole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Kilomole);
     }
-    static FromMegamoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Megamoles);
+    static FromMegamole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Megamole);
     }
-    static FromNanopoundmoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Nanopoundmoles);
+    static FromNanopoundMole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.NanopoundMole);
     }
-    static FromMicropoundmoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Micropoundmoles);
+    static FromMicropoundMole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.MicropoundMole);
     }
-    static FromCentipoundmoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Centipoundmoles);
+    static FromCentipoundMole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.CentipoundMole);
     }
-    static FromDecipoundmoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Decipoundmoles);
+    static FromDecipoundMole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.DecipoundMole);
     }
-    static FromKilopoundmoles(value) {
-        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Kilopoundmoles);
+    static FromKilopoundMole(value) {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.KilopoundMole);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -156,27 +156,27 @@ class AmountOfSubstance {
                 return this.value;
             case AmountOfSubstanceUnits.PoundMoles:
                 return this.value / 453.59237;
-            case AmountOfSubstanceUnits.Nanomoles:
+            case AmountOfSubstanceUnits.Nanomole:
                 return (this.value) / 1e-9;
-            case AmountOfSubstanceUnits.Micromoles:
+            case AmountOfSubstanceUnits.Micromole:
                 return (this.value) / 0.000001;
-            case AmountOfSubstanceUnits.Centimoles:
+            case AmountOfSubstanceUnits.Centimole:
                 return (this.value) / 0.01;
-            case AmountOfSubstanceUnits.Decimoles:
+            case AmountOfSubstanceUnits.Decimole:
                 return (this.value) / 0.1;
-            case AmountOfSubstanceUnits.Kilomoles:
+            case AmountOfSubstanceUnits.Kilomole:
                 return (this.value) / 1000;
-            case AmountOfSubstanceUnits.Megamoles:
+            case AmountOfSubstanceUnits.Megamole:
                 return (this.value) / 1000000;
-            case AmountOfSubstanceUnits.Nanopoundmoles:
+            case AmountOfSubstanceUnits.NanopoundMole:
                 return (this.value / 453.59237) / 1e-9;
-            case AmountOfSubstanceUnits.Micropoundmoles:
+            case AmountOfSubstanceUnits.MicropoundMole:
                 return (this.value / 453.59237) / 0.000001;
-            case AmountOfSubstanceUnits.Centipoundmoles:
+            case AmountOfSubstanceUnits.CentipoundMole:
                 return (this.value / 453.59237) / 0.01;
-            case AmountOfSubstanceUnits.Decipoundmoles:
+            case AmountOfSubstanceUnits.DecipoundMole:
                 return (this.value / 453.59237) / 0.1;
-            case AmountOfSubstanceUnits.Kilopoundmoles:
+            case AmountOfSubstanceUnits.KilopoundMole:
                 return (this.value / 453.59237) / 1000;
             default:
                 break;
@@ -189,32 +189,65 @@ class AmountOfSubstance {
                 return value;
             case AmountOfSubstanceUnits.PoundMoles:
                 return value * 453.59237;
-            case AmountOfSubstanceUnits.Nanomoles:
+            case AmountOfSubstanceUnits.Nanomole:
                 return (value) * 1e-9;
-            case AmountOfSubstanceUnits.Micromoles:
+            case AmountOfSubstanceUnits.Micromole:
                 return (value) * 0.000001;
-            case AmountOfSubstanceUnits.Centimoles:
+            case AmountOfSubstanceUnits.Centimole:
                 return (value) * 0.01;
-            case AmountOfSubstanceUnits.Decimoles:
+            case AmountOfSubstanceUnits.Decimole:
                 return (value) * 0.1;
-            case AmountOfSubstanceUnits.Kilomoles:
+            case AmountOfSubstanceUnits.Kilomole:
                 return (value) * 1000;
-            case AmountOfSubstanceUnits.Megamoles:
+            case AmountOfSubstanceUnits.Megamole:
                 return (value) * 1000000;
-            case AmountOfSubstanceUnits.Nanopoundmoles:
+            case AmountOfSubstanceUnits.NanopoundMole:
                 return (value * 453.59237) * 1e-9;
-            case AmountOfSubstanceUnits.Micropoundmoles:
+            case AmountOfSubstanceUnits.MicropoundMole:
                 return (value * 453.59237) * 0.000001;
-            case AmountOfSubstanceUnits.Centipoundmoles:
+            case AmountOfSubstanceUnits.CentipoundMole:
                 return (value * 453.59237) * 0.01;
-            case AmountOfSubstanceUnits.Decipoundmoles:
+            case AmountOfSubstanceUnits.DecipoundMole:
                 return (value * 453.59237) * 0.1;
-            case AmountOfSubstanceUnits.Kilopoundmoles:
+            case AmountOfSubstanceUnits.KilopoundMole:
                 return (value * 453.59237) * 1000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = AmountOfSubstanceUnits.Moles) {
+        switch (toUnit) {
+            case AmountOfSubstanceUnits.Moles:
+                return this.Moles + ` mol`;
+            case AmountOfSubstanceUnits.PoundMoles:
+                return this.PoundMoles + ` lbmol`;
+            case AmountOfSubstanceUnits.Nanomole:
+                return this.Nanomole + ` mol`;
+            case AmountOfSubstanceUnits.Micromole:
+                return this.Micromole + ` mol`;
+            case AmountOfSubstanceUnits.Centimole:
+                return this.Centimole + ` mol`;
+            case AmountOfSubstanceUnits.Decimole:
+                return this.Decimole + ` mol`;
+            case AmountOfSubstanceUnits.Kilomole:
+                return this.Kilomole + ` mol`;
+            case AmountOfSubstanceUnits.Megamole:
+                return this.Megamole + ` mol`;
+            case AmountOfSubstanceUnits.NanopoundMole:
+                return this.NanopoundMole + ` lbmol`;
+            case AmountOfSubstanceUnits.MicropoundMole:
+                return this.MicropoundMole + ` lbmol`;
+            case AmountOfSubstanceUnits.CentipoundMole:
+                return this.CentipoundMole + ` lbmol`;
+            case AmountOfSubstanceUnits.DecipoundMole:
+                return this.DecipoundMole + ` lbmol`;
+            case AmountOfSubstanceUnits.KilopoundMole:
+                return this.KilopoundMole + ` lbmol`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.AmountOfSubstance = AmountOfSubstance;

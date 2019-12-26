@@ -6,11 +6,11 @@ var SpecificEntropyUnits;
     SpecificEntropyUnits[SpecificEntropyUnits["JoulesPerKilogramDegreeCelsius"] = 1] = "JoulesPerKilogramDegreeCelsius";
     SpecificEntropyUnits[SpecificEntropyUnits["CaloriesPerGramKelvin"] = 2] = "CaloriesPerGramKelvin";
     SpecificEntropyUnits[SpecificEntropyUnits["BtusPerPoundFahrenheit"] = 3] = "BtusPerPoundFahrenheit";
-    SpecificEntropyUnits[SpecificEntropyUnits["Kilojoulesperkilogramkelvin"] = 4] = "Kilojoulesperkilogramkelvin";
-    SpecificEntropyUnits[SpecificEntropyUnits["Megajoulesperkilogramkelvin"] = 5] = "Megajoulesperkilogramkelvin";
-    SpecificEntropyUnits[SpecificEntropyUnits["Kilojoulesperkilogramdegreecelsius"] = 6] = "Kilojoulesperkilogramdegreecelsius";
-    SpecificEntropyUnits[SpecificEntropyUnits["Megajoulesperkilogramdegreecelsius"] = 7] = "Megajoulesperkilogramdegreecelsius";
-    SpecificEntropyUnits[SpecificEntropyUnits["Kilocaloriespergramkelvin"] = 8] = "Kilocaloriespergramkelvin";
+    SpecificEntropyUnits[SpecificEntropyUnits["KilojoulePerKilogramKelvin"] = 4] = "KilojoulePerKilogramKelvin";
+    SpecificEntropyUnits[SpecificEntropyUnits["MegajoulePerKilogramKelvin"] = 5] = "MegajoulePerKilogramKelvin";
+    SpecificEntropyUnits[SpecificEntropyUnits["KilojoulePerKilogramDegreeCelsius"] = 6] = "KilojoulePerKilogramDegreeCelsius";
+    SpecificEntropyUnits[SpecificEntropyUnits["MegajoulePerKilogramDegreeCelsius"] = 7] = "MegajoulePerKilogramDegreeCelsius";
+    SpecificEntropyUnits[SpecificEntropyUnits["KilocaloriePerGramKelvin"] = 8] = "KilocaloriePerGramKelvin";
 })(SpecificEntropyUnits = exports.SpecificEntropyUnits || (exports.SpecificEntropyUnits = {}));
 class SpecificEntropy {
     constructor(value, fromUnit) {
@@ -18,11 +18,11 @@ class SpecificEntropy {
         this.joulesperkilogramdegreecelsiusLazy = null;
         this.caloriespergramkelvinLazy = null;
         this.btusperpoundfahrenheitLazy = null;
-        this.kilojoulesperkilogramkelvinLazy = null;
-        this.megajoulesperkilogramkelvinLazy = null;
-        this.kilojoulesperkilogramdegreecelsiusLazy = null;
-        this.megajoulesperkilogramdegreecelsiusLazy = null;
-        this.kilocaloriespergramkelvinLazy = null;
+        this.kilojouleperkilogramkelvinLazy = null;
+        this.megajouleperkilogramkelvinLazy = null;
+        this.kilojouleperkilogramdegreecelsiusLazy = null;
+        this.megajouleperkilogramdegreecelsiusLazy = null;
+        this.kilocaloriepergramkelvinLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get JoulesPerKilogramKelvin() {
@@ -49,35 +49,35 @@ class SpecificEntropy {
         }
         return this.btusperpoundfahrenheitLazy = this.convertFromBase(SpecificEntropyUnits.BtusPerPoundFahrenheit);
     }
-    get Kilojoulesperkilogramkelvin() {
-        if (this.kilojoulesperkilogramkelvinLazy !== null) {
-            return this.kilojoulesperkilogramkelvinLazy;
+    get KilojoulePerKilogramKelvin() {
+        if (this.kilojouleperkilogramkelvinLazy !== null) {
+            return this.kilojouleperkilogramkelvinLazy;
         }
-        return this.kilojoulesperkilogramkelvinLazy = this.convertFromBase(SpecificEntropyUnits.Kilojoulesperkilogramkelvin);
+        return this.kilojouleperkilogramkelvinLazy = this.convertFromBase(SpecificEntropyUnits.KilojoulePerKilogramKelvin);
     }
-    get Megajoulesperkilogramkelvin() {
-        if (this.megajoulesperkilogramkelvinLazy !== null) {
-            return this.megajoulesperkilogramkelvinLazy;
+    get MegajoulePerKilogramKelvin() {
+        if (this.megajouleperkilogramkelvinLazy !== null) {
+            return this.megajouleperkilogramkelvinLazy;
         }
-        return this.megajoulesperkilogramkelvinLazy = this.convertFromBase(SpecificEntropyUnits.Megajoulesperkilogramkelvin);
+        return this.megajouleperkilogramkelvinLazy = this.convertFromBase(SpecificEntropyUnits.MegajoulePerKilogramKelvin);
     }
-    get Kilojoulesperkilogramdegreecelsius() {
-        if (this.kilojoulesperkilogramdegreecelsiusLazy !== null) {
-            return this.kilojoulesperkilogramdegreecelsiusLazy;
+    get KilojoulePerKilogramDegreeCelsius() {
+        if (this.kilojouleperkilogramdegreecelsiusLazy !== null) {
+            return this.kilojouleperkilogramdegreecelsiusLazy;
         }
-        return this.kilojoulesperkilogramdegreecelsiusLazy = this.convertFromBase(SpecificEntropyUnits.Kilojoulesperkilogramdegreecelsius);
+        return this.kilojouleperkilogramdegreecelsiusLazy = this.convertFromBase(SpecificEntropyUnits.KilojoulePerKilogramDegreeCelsius);
     }
-    get Megajoulesperkilogramdegreecelsius() {
-        if (this.megajoulesperkilogramdegreecelsiusLazy !== null) {
-            return this.megajoulesperkilogramdegreecelsiusLazy;
+    get MegajoulePerKilogramDegreeCelsius() {
+        if (this.megajouleperkilogramdegreecelsiusLazy !== null) {
+            return this.megajouleperkilogramdegreecelsiusLazy;
         }
-        return this.megajoulesperkilogramdegreecelsiusLazy = this.convertFromBase(SpecificEntropyUnits.Megajoulesperkilogramdegreecelsius);
+        return this.megajouleperkilogramdegreecelsiusLazy = this.convertFromBase(SpecificEntropyUnits.MegajoulePerKilogramDegreeCelsius);
     }
-    get Kilocaloriespergramkelvin() {
-        if (this.kilocaloriespergramkelvinLazy !== null) {
-            return this.kilocaloriespergramkelvinLazy;
+    get KilocaloriePerGramKelvin() {
+        if (this.kilocaloriepergramkelvinLazy !== null) {
+            return this.kilocaloriepergramkelvinLazy;
         }
-        return this.kilocaloriespergramkelvinLazy = this.convertFromBase(SpecificEntropyUnits.Kilocaloriespergramkelvin);
+        return this.kilocaloriepergramkelvinLazy = this.convertFromBase(SpecificEntropyUnits.KilocaloriePerGramKelvin);
     }
     static FromJoulesPerKilogramKelvin(value) {
         return new SpecificEntropy(value, SpecificEntropyUnits.JoulesPerKilogramKelvin);
@@ -91,20 +91,20 @@ class SpecificEntropy {
     static FromBtusPerPoundFahrenheit(value) {
         return new SpecificEntropy(value, SpecificEntropyUnits.BtusPerPoundFahrenheit);
     }
-    static FromKilojoulesperkilogramkelvin(value) {
-        return new SpecificEntropy(value, SpecificEntropyUnits.Kilojoulesperkilogramkelvin);
+    static FromKilojoulePerKilogramKelvin(value) {
+        return new SpecificEntropy(value, SpecificEntropyUnits.KilojoulePerKilogramKelvin);
     }
-    static FromMegajoulesperkilogramkelvin(value) {
-        return new SpecificEntropy(value, SpecificEntropyUnits.Megajoulesperkilogramkelvin);
+    static FromMegajoulePerKilogramKelvin(value) {
+        return new SpecificEntropy(value, SpecificEntropyUnits.MegajoulePerKilogramKelvin);
     }
-    static FromKilojoulesperkilogramdegreecelsius(value) {
-        return new SpecificEntropy(value, SpecificEntropyUnits.Kilojoulesperkilogramdegreecelsius);
+    static FromKilojoulePerKilogramDegreeCelsius(value) {
+        return new SpecificEntropy(value, SpecificEntropyUnits.KilojoulePerKilogramDegreeCelsius);
     }
-    static FromMegajoulesperkilogramdegreecelsius(value) {
-        return new SpecificEntropy(value, SpecificEntropyUnits.Megajoulesperkilogramdegreecelsius);
+    static FromMegajoulePerKilogramDegreeCelsius(value) {
+        return new SpecificEntropy(value, SpecificEntropyUnits.MegajoulePerKilogramDegreeCelsius);
     }
-    static FromKilocaloriespergramkelvin(value) {
-        return new SpecificEntropy(value, SpecificEntropyUnits.Kilocaloriespergramkelvin);
+    static FromKilocaloriePerGramKelvin(value) {
+        return new SpecificEntropy(value, SpecificEntropyUnits.KilocaloriePerGramKelvin);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -116,15 +116,15 @@ class SpecificEntropy {
                 return this.value / 4.184e3;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return this.value / 4.1868e3;
-            case SpecificEntropyUnits.Kilojoulesperkilogramkelvin:
+            case SpecificEntropyUnits.KilojoulePerKilogramKelvin:
                 return (this.value) / 1000;
-            case SpecificEntropyUnits.Megajoulesperkilogramkelvin:
+            case SpecificEntropyUnits.MegajoulePerKilogramKelvin:
                 return (this.value) / 1000000;
-            case SpecificEntropyUnits.Kilojoulesperkilogramdegreecelsius:
+            case SpecificEntropyUnits.KilojoulePerKilogramDegreeCelsius:
                 return (this.value) / 1000;
-            case SpecificEntropyUnits.Megajoulesperkilogramdegreecelsius:
+            case SpecificEntropyUnits.MegajoulePerKilogramDegreeCelsius:
                 return (this.value) / 1000000;
-            case SpecificEntropyUnits.Kilocaloriespergramkelvin:
+            case SpecificEntropyUnits.KilocaloriePerGramKelvin:
                 return (this.value / 4.184e3) / 1000;
             default:
                 break;
@@ -141,20 +141,45 @@ class SpecificEntropy {
                 return value * 4.184e3;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return value * 4.1868e3;
-            case SpecificEntropyUnits.Kilojoulesperkilogramkelvin:
+            case SpecificEntropyUnits.KilojoulePerKilogramKelvin:
                 return (value) * 1000;
-            case SpecificEntropyUnits.Megajoulesperkilogramkelvin:
+            case SpecificEntropyUnits.MegajoulePerKilogramKelvin:
                 return (value) * 1000000;
-            case SpecificEntropyUnits.Kilojoulesperkilogramdegreecelsius:
+            case SpecificEntropyUnits.KilojoulePerKilogramDegreeCelsius:
                 return (value) * 1000;
-            case SpecificEntropyUnits.Megajoulesperkilogramdegreecelsius:
+            case SpecificEntropyUnits.MegajoulePerKilogramDegreeCelsius:
                 return (value) * 1000000;
-            case SpecificEntropyUnits.Kilocaloriespergramkelvin:
+            case SpecificEntropyUnits.KilocaloriePerGramKelvin:
                 return (value * 4.184e3) * 1000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = SpecificEntropyUnits.JoulesPerKilogramKelvin) {
+        switch (toUnit) {
+            case SpecificEntropyUnits.JoulesPerKilogramKelvin:
+                return this.JoulesPerKilogramKelvin + ` J/kg.K`;
+            case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
+                return this.JoulesPerKilogramDegreeCelsius + ` J/kg.C`;
+            case SpecificEntropyUnits.CaloriesPerGramKelvin:
+                return this.CaloriesPerGramKelvin + ` cal/g.K`;
+            case SpecificEntropyUnits.BtusPerPoundFahrenheit:
+                return this.BtusPerPoundFahrenheit + ` BTU/lb·°F`;
+            case SpecificEntropyUnits.KilojoulePerKilogramKelvin:
+                return this.KilojoulePerKilogramKelvin + ` J/kg.K`;
+            case SpecificEntropyUnits.MegajoulePerKilogramKelvin:
+                return this.MegajoulePerKilogramKelvin + ` J/kg.K`;
+            case SpecificEntropyUnits.KilojoulePerKilogramDegreeCelsius:
+                return this.KilojoulePerKilogramDegreeCelsius + ` J/kg.C`;
+            case SpecificEntropyUnits.MegajoulePerKilogramDegreeCelsius:
+                return this.MegajoulePerKilogramDegreeCelsius + ` J/kg.C`;
+            case SpecificEntropyUnits.KilocaloriePerGramKelvin:
+                return this.KilocaloriePerGramKelvin + ` cal/g.K`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.SpecificEntropy = SpecificEntropy;

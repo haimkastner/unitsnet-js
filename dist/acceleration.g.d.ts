@@ -6,11 +6,11 @@ export declare enum AccelerationUnits {
     KnotsPerMinute = 4,
     KnotsPerHour = 5,
     StandardGravity = 6,
-    Nanometerspersecondsquared = 7,
-    Micrometerspersecondsquared = 8,
-    Centimeterspersecondsquared = 9,
-    Decimeterspersecondsquared = 10,
-    Kilometerspersecondsquared = 11
+    NanometerPerSecondSquared = 7,
+    MicrometerPerSecondSquared = 8,
+    CentimeterPerSecondSquared = 9,
+    DecimeterPerSecondSquared = 10,
+    KilometerPerSecondSquared = 11
 }
 export declare class Acceleration {
     private value;
@@ -21,11 +21,11 @@ export declare class Acceleration {
     private knotsperminuteLazy;
     private knotsperhourLazy;
     private standardgravityLazy;
-    private nanometerspersecondsquaredLazy;
-    private micrometerspersecondsquaredLazy;
-    private centimeterspersecondsquaredLazy;
-    private decimeterspersecondsquaredLazy;
-    private kilometerspersecondsquaredLazy;
+    private nanometerpersecondsquaredLazy;
+    private micrometerpersecondsquaredLazy;
+    private centimeterpersecondsquaredLazy;
+    private decimeterpersecondsquaredLazy;
+    private kilometerpersecondsquaredLazy;
     constructor(value: number, fromUnit: AccelerationUnits);
     get MetersPerSecondSquared(): number;
     get InchesPerSecondSquared(): number;
@@ -34,11 +34,11 @@ export declare class Acceleration {
     get KnotsPerMinute(): number;
     get KnotsPerHour(): number;
     get StandardGravity(): number;
-    get Nanometerspersecondsquared(): number;
-    get Micrometerspersecondsquared(): number;
-    get Centimeterspersecondsquared(): number;
-    get Decimeterspersecondsquared(): number;
-    get Kilometerspersecondsquared(): number;
+    get NanometerPerSecondSquared(): number;
+    get MicrometerPerSecondSquared(): number;
+    get CentimeterPerSecondSquared(): number;
+    get DecimeterPerSecondSquared(): number;
+    get KilometerPerSecondSquared(): number;
     static FromMetersPerSecondSquared(value: number): Acceleration;
     static FromInchesPerSecondSquared(value: number): Acceleration;
     static FromFeetPerSecondSquared(value: number): Acceleration;
@@ -46,12 +46,13 @@ export declare class Acceleration {
     static FromKnotsPerMinute(value: number): Acceleration;
     static FromKnotsPerHour(value: number): Acceleration;
     static FromStandardGravity(value: number): Acceleration;
-    static FromNanometerspersecondsquared(value: number): Acceleration;
-    static FromMicrometerspersecondsquared(value: number): Acceleration;
-    static FromCentimeterspersecondsquared(value: number): Acceleration;
-    static FromDecimeterspersecondsquared(value: number): Acceleration;
-    static FromKilometerspersecondsquared(value: number): Acceleration;
+    static FromNanometerPerSecondSquared(value: number): Acceleration;
+    static FromMicrometerPerSecondSquared(value: number): Acceleration;
+    static FromCentimeterPerSecondSquared(value: number): Acceleration;
+    static FromDecimeterPerSecondSquared(value: number): Acceleration;
+    static FromKilometerPerSecondSquared(value: number): Acceleration;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: AccelerationUnits): string;
 }
 //# sourceMappingURL=acceleration.g.d.ts.map

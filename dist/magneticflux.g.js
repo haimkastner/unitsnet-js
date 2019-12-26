@@ -36,6 +36,15 @@ class MagneticFlux {
         }
         return NaN;
     }
+    toString(toUnit = MagneticFluxUnits.Webers) {
+        switch (toUnit) {
+            case MagneticFluxUnits.Webers:
+                return this.Webers + ` Wb`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.MagneticFlux = MagneticFlux;
 //# sourceMappingURL=magneticflux.g.js.map

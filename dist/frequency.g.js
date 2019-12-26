@@ -156,6 +156,31 @@ class Frequency {
         }
         return NaN;
     }
+    toString(toUnit = FrequencyUnits.Hertz) {
+        switch (toUnit) {
+            case FrequencyUnits.Hertz:
+                return this.Hertz + ` Hz`;
+            case FrequencyUnits.RadiansPerSecond:
+                return this.RadiansPerSecond + ` rad/s`;
+            case FrequencyUnits.CyclesPerMinute:
+                return this.CyclesPerMinute + ` cpm`;
+            case FrequencyUnits.CyclesPerHour:
+                return this.CyclesPerHour + ` cph`;
+            case FrequencyUnits.BeatsPerMinute:
+                return this.BeatsPerMinute + ` bpm`;
+            case FrequencyUnits.Kilohertz:
+                return this.Kilohertz + ` Hz`;
+            case FrequencyUnits.Megahertz:
+                return this.Megahertz + ` Hz`;
+            case FrequencyUnits.Gigahertz:
+                return this.Gigahertz + ` Hz`;
+            case FrequencyUnits.Terahertz:
+                return this.Terahertz + ` Hz`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.Frequency = Frequency;
 //# sourceMappingURL=frequency.g.js.map

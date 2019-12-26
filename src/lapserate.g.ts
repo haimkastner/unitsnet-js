@@ -42,4 +42,16 @@ export class LapseRate {
         }
         return NaN;
     }
+
+    public toString(toUnit: LapseRateUnits = LapseRateUnits.DegreesCelciusPerKilometer): string {
+
+        switch (toUnit) {
+            
+            case LapseRateUnits.DegreesCelciusPerKilometer:
+                return this.DegreesCelciusPerKilometer + ` ∆°C/km`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

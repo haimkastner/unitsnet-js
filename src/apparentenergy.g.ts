@@ -1,14 +1,14 @@
 export enum ApparentEnergyUnits {
     VoltampereHours,
-    Kilovoltamperehours,
-    Megavoltamperehours
+    KilovoltampereHour,
+    MegavoltampereHour
 }
 
 export class ApparentEnergy {
     private value: number;
     private voltamperehoursLazy: number | null = null;
-    private kilovoltamperehoursLazy: number | null = null;
-    private megavoltamperehoursLazy: number | null = null;
+    private kilovoltamperehourLazy: number | null = null;
+    private megavoltamperehourLazy: number | null = null;
 
     public constructor(value: number, fromUnit: ApparentEnergyUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -21,30 +21,30 @@ export class ApparentEnergy {
         return this.voltamperehoursLazy = this.convertFromBase(ApparentEnergyUnits.VoltampereHours);
     }
 
-    public get Kilovoltamperehours(): number {
-        if(this.kilovoltamperehoursLazy !== null){
-            return this.kilovoltamperehoursLazy;
+    public get KilovoltampereHour(): number {
+        if(this.kilovoltamperehourLazy !== null){
+            return this.kilovoltamperehourLazy;
         }
-        return this.kilovoltamperehoursLazy = this.convertFromBase(ApparentEnergyUnits.Kilovoltamperehours);
+        return this.kilovoltamperehourLazy = this.convertFromBase(ApparentEnergyUnits.KilovoltampereHour);
     }
 
-    public get Megavoltamperehours(): number {
-        if(this.megavoltamperehoursLazy !== null){
-            return this.megavoltamperehoursLazy;
+    public get MegavoltampereHour(): number {
+        if(this.megavoltamperehourLazy !== null){
+            return this.megavoltamperehourLazy;
         }
-        return this.megavoltamperehoursLazy = this.convertFromBase(ApparentEnergyUnits.Megavoltamperehours);
+        return this.megavoltamperehourLazy = this.convertFromBase(ApparentEnergyUnits.MegavoltampereHour);
     }
 
     public static FromVoltampereHours(value: number): ApparentEnergy {
         return new ApparentEnergy(value, ApparentEnergyUnits.VoltampereHours);
     }
 
-    public static FromKilovoltamperehours(value: number): ApparentEnergy {
-        return new ApparentEnergy(value, ApparentEnergyUnits.Kilovoltamperehours);
+    public static FromKilovoltampereHour(value: number): ApparentEnergy {
+        return new ApparentEnergy(value, ApparentEnergyUnits.KilovoltampereHour);
     }
 
-    public static FromMegavoltamperehours(value: number): ApparentEnergy {
-        return new ApparentEnergy(value, ApparentEnergyUnits.Megavoltamperehours);
+    public static FromMegavoltampereHour(value: number): ApparentEnergy {
+        return new ApparentEnergy(value, ApparentEnergyUnits.MegavoltampereHour);
     }
 
     private convertFromBase(toUnit: ApparentEnergyUnits): number {
@@ -52,9 +52,9 @@ export class ApparentEnergy {
                 
             case ApparentEnergyUnits.VoltampereHours:
                 return this.value;
-            case ApparentEnergyUnits.Kilovoltamperehours:
+            case ApparentEnergyUnits.KilovoltampereHour:
                 return (this.value) / 1000;
-            case ApparentEnergyUnits.Megavoltamperehours:
+            case ApparentEnergyUnits.MegavoltampereHour:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -67,13 +67,29 @@ export class ApparentEnergy {
                 
             case ApparentEnergyUnits.VoltampereHours:
                 return value;
-            case ApparentEnergyUnits.Kilovoltamperehours:
+            case ApparentEnergyUnits.KilovoltampereHour:
                 return (value) * 1000;
-            case ApparentEnergyUnits.Megavoltamperehours:
+            case ApparentEnergyUnits.MegavoltampereHour:
                 return (value) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours): string {
+
+        switch (toUnit) {
+            
+            case ApparentEnergyUnits.VoltampereHours:
+                return this.VoltampereHours + ` VAh`;
+            case ApparentEnergyUnits.KilovoltampereHour:
+                return this.KilovoltampereHour + ` VAh`;
+            case ApparentEnergyUnits.MegavoltampereHour:
+                return this.MegavoltampereHour + ` VAh`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

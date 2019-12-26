@@ -21,5 +21,6 @@ export declare class AmplitudeRatio {
     static FromDecibelsUnloaded(value: number): AmplitudeRatio;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: AmplitudeRatioUnits): string;
 }
 //# sourceMappingURL=amplituderatio.g.d.ts.map

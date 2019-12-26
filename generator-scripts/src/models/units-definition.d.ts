@@ -1,6 +1,6 @@
 export declare type Prefix = 'Nano' | 'Micro' | 'Milli' | 'Centi' | 'Deci' | 'Hecto' | 'Kilo' | 'Mega' | 'Giga' | 'Tera' | 'Peta' | 'Exa';
 
-export declare interface Localization {
+export declare interface Abbreviation {
     Culture: string;
     Abbreviations: string[];
 }
@@ -13,7 +13,7 @@ export declare interface UnitDefinition {
     Prefixes?: Prefix[];
     XmlDocSummary?: string;
     XmlDocRemarks?: string;
-    Localization: Localization;
+    Localization: Abbreviation[];
 }
 
 

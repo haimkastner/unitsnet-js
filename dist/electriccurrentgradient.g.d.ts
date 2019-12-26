@@ -9,5 +9,6 @@ export declare class ElectricCurrentGradient {
     static FromAmperesPerSecond(value: number): ElectricCurrentGradient;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricCurrentGradientUnits): string;
 }
 //# sourceMappingURL=electriccurrentgradient.g.d.ts.map

@@ -1,30 +1,30 @@
 export enum MolarMassUnits {
     GramsPerMole,
     PoundsPerMole,
-    Nanogramspermole,
-    Microgramspermole,
-    Centigramspermole,
-    Decigramspermole,
-    Decagramspermole,
-    Hectogramspermole,
-    Kilogramspermole,
-    Kilopoundspermole,
-    Megapoundspermole
+    NanogramPerMole,
+    MicrogramPerMole,
+    CentigramPerMole,
+    DecigramPerMole,
+    DecagramPerMole,
+    HectogramPerMole,
+    KilogramPerMole,
+    KilopoundPerMole,
+    MegapoundPerMole
 }
 
 export class MolarMass {
     private value: number;
     private gramspermoleLazy: number | null = null;
     private poundspermoleLazy: number | null = null;
-    private nanogramspermoleLazy: number | null = null;
-    private microgramspermoleLazy: number | null = null;
-    private centigramspermoleLazy: number | null = null;
-    private decigramspermoleLazy: number | null = null;
-    private decagramspermoleLazy: number | null = null;
-    private hectogramspermoleLazy: number | null = null;
-    private kilogramspermoleLazy: number | null = null;
-    private kilopoundspermoleLazy: number | null = null;
-    private megapoundspermoleLazy: number | null = null;
+    private nanogrampermoleLazy: number | null = null;
+    private microgrampermoleLazy: number | null = null;
+    private centigrampermoleLazy: number | null = null;
+    private decigrampermoleLazy: number | null = null;
+    private decagrampermoleLazy: number | null = null;
+    private hectogrampermoleLazy: number | null = null;
+    private kilogrampermoleLazy: number | null = null;
+    private kilopoundpermoleLazy: number | null = null;
+    private megapoundpermoleLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MolarMassUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -44,67 +44,67 @@ export class MolarMass {
         return this.poundspermoleLazy = this.convertFromBase(MolarMassUnits.PoundsPerMole);
     }
 
-    public get Nanogramspermole(): number {
-        if(this.nanogramspermoleLazy !== null){
-            return this.nanogramspermoleLazy;
+    public get NanogramPerMole(): number {
+        if(this.nanogrampermoleLazy !== null){
+            return this.nanogrampermoleLazy;
         }
-        return this.nanogramspermoleLazy = this.convertFromBase(MolarMassUnits.Nanogramspermole);
+        return this.nanogrampermoleLazy = this.convertFromBase(MolarMassUnits.NanogramPerMole);
     }
 
-    public get Microgramspermole(): number {
-        if(this.microgramspermoleLazy !== null){
-            return this.microgramspermoleLazy;
+    public get MicrogramPerMole(): number {
+        if(this.microgrampermoleLazy !== null){
+            return this.microgrampermoleLazy;
         }
-        return this.microgramspermoleLazy = this.convertFromBase(MolarMassUnits.Microgramspermole);
+        return this.microgrampermoleLazy = this.convertFromBase(MolarMassUnits.MicrogramPerMole);
     }
 
-    public get Centigramspermole(): number {
-        if(this.centigramspermoleLazy !== null){
-            return this.centigramspermoleLazy;
+    public get CentigramPerMole(): number {
+        if(this.centigrampermoleLazy !== null){
+            return this.centigrampermoleLazy;
         }
-        return this.centigramspermoleLazy = this.convertFromBase(MolarMassUnits.Centigramspermole);
+        return this.centigrampermoleLazy = this.convertFromBase(MolarMassUnits.CentigramPerMole);
     }
 
-    public get Decigramspermole(): number {
-        if(this.decigramspermoleLazy !== null){
-            return this.decigramspermoleLazy;
+    public get DecigramPerMole(): number {
+        if(this.decigrampermoleLazy !== null){
+            return this.decigrampermoleLazy;
         }
-        return this.decigramspermoleLazy = this.convertFromBase(MolarMassUnits.Decigramspermole);
+        return this.decigrampermoleLazy = this.convertFromBase(MolarMassUnits.DecigramPerMole);
     }
 
-    public get Decagramspermole(): number {
-        if(this.decagramspermoleLazy !== null){
-            return this.decagramspermoleLazy;
+    public get DecagramPerMole(): number {
+        if(this.decagrampermoleLazy !== null){
+            return this.decagrampermoleLazy;
         }
-        return this.decagramspermoleLazy = this.convertFromBase(MolarMassUnits.Decagramspermole);
+        return this.decagrampermoleLazy = this.convertFromBase(MolarMassUnits.DecagramPerMole);
     }
 
-    public get Hectogramspermole(): number {
-        if(this.hectogramspermoleLazy !== null){
-            return this.hectogramspermoleLazy;
+    public get HectogramPerMole(): number {
+        if(this.hectogrampermoleLazy !== null){
+            return this.hectogrampermoleLazy;
         }
-        return this.hectogramspermoleLazy = this.convertFromBase(MolarMassUnits.Hectogramspermole);
+        return this.hectogrampermoleLazy = this.convertFromBase(MolarMassUnits.HectogramPerMole);
     }
 
-    public get Kilogramspermole(): number {
-        if(this.kilogramspermoleLazy !== null){
-            return this.kilogramspermoleLazy;
+    public get KilogramPerMole(): number {
+        if(this.kilogrampermoleLazy !== null){
+            return this.kilogrampermoleLazy;
         }
-        return this.kilogramspermoleLazy = this.convertFromBase(MolarMassUnits.Kilogramspermole);
+        return this.kilogrampermoleLazy = this.convertFromBase(MolarMassUnits.KilogramPerMole);
     }
 
-    public get Kilopoundspermole(): number {
-        if(this.kilopoundspermoleLazy !== null){
-            return this.kilopoundspermoleLazy;
+    public get KilopoundPerMole(): number {
+        if(this.kilopoundpermoleLazy !== null){
+            return this.kilopoundpermoleLazy;
         }
-        return this.kilopoundspermoleLazy = this.convertFromBase(MolarMassUnits.Kilopoundspermole);
+        return this.kilopoundpermoleLazy = this.convertFromBase(MolarMassUnits.KilopoundPerMole);
     }
 
-    public get Megapoundspermole(): number {
-        if(this.megapoundspermoleLazy !== null){
-            return this.megapoundspermoleLazy;
+    public get MegapoundPerMole(): number {
+        if(this.megapoundpermoleLazy !== null){
+            return this.megapoundpermoleLazy;
         }
-        return this.megapoundspermoleLazy = this.convertFromBase(MolarMassUnits.Megapoundspermole);
+        return this.megapoundpermoleLazy = this.convertFromBase(MolarMassUnits.MegapoundPerMole);
     }
 
     public static FromGramsPerMole(value: number): MolarMass {
@@ -115,40 +115,40 @@ export class MolarMass {
         return new MolarMass(value, MolarMassUnits.PoundsPerMole);
     }
 
-    public static FromNanogramspermole(value: number): MolarMass {
-        return new MolarMass(value, MolarMassUnits.Nanogramspermole);
+    public static FromNanogramPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.NanogramPerMole);
     }
 
-    public static FromMicrogramspermole(value: number): MolarMass {
-        return new MolarMass(value, MolarMassUnits.Microgramspermole);
+    public static FromMicrogramPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.MicrogramPerMole);
     }
 
-    public static FromCentigramspermole(value: number): MolarMass {
-        return new MolarMass(value, MolarMassUnits.Centigramspermole);
+    public static FromCentigramPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.CentigramPerMole);
     }
 
-    public static FromDecigramspermole(value: number): MolarMass {
-        return new MolarMass(value, MolarMassUnits.Decigramspermole);
+    public static FromDecigramPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.DecigramPerMole);
     }
 
-    public static FromDecagramspermole(value: number): MolarMass {
-        return new MolarMass(value, MolarMassUnits.Decagramspermole);
+    public static FromDecagramPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.DecagramPerMole);
     }
 
-    public static FromHectogramspermole(value: number): MolarMass {
-        return new MolarMass(value, MolarMassUnits.Hectogramspermole);
+    public static FromHectogramPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.HectogramPerMole);
     }
 
-    public static FromKilogramspermole(value: number): MolarMass {
-        return new MolarMass(value, MolarMassUnits.Kilogramspermole);
+    public static FromKilogramPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.KilogramPerMole);
     }
 
-    public static FromKilopoundspermole(value: number): MolarMass {
-        return new MolarMass(value, MolarMassUnits.Kilopoundspermole);
+    public static FromKilopoundPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.KilopoundPerMole);
     }
 
-    public static FromMegapoundspermole(value: number): MolarMass {
-        return new MolarMass(value, MolarMassUnits.Megapoundspermole);
+    public static FromMegapoundPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.MegapoundPerMole);
     }
 
     private convertFromBase(toUnit: MolarMassUnits): number {
@@ -158,23 +158,23 @@ export class MolarMass {
                 return this.value*1e3;
             case MolarMassUnits.PoundsPerMole:
                 return this.value/0.45359237;
-            case MolarMassUnits.Nanogramspermole:
+            case MolarMassUnits.NanogramPerMole:
                 return (this.value*1e3) / 1e-9;
-            case MolarMassUnits.Microgramspermole:
+            case MolarMassUnits.MicrogramPerMole:
                 return (this.value*1e3) / 0.000001;
-            case MolarMassUnits.Centigramspermole:
+            case MolarMassUnits.CentigramPerMole:
                 return (this.value*1e3) / 0.01;
-            case MolarMassUnits.Decigramspermole:
+            case MolarMassUnits.DecigramPerMole:
                 return (this.value*1e3) / 0.1;
-            case MolarMassUnits.Decagramspermole:
+            case MolarMassUnits.DecagramPerMole:
                 return (this.value*1e3) / 10;
-            case MolarMassUnits.Hectogramspermole:
+            case MolarMassUnits.HectogramPerMole:
                 return (this.value*1e3) / 100;
-            case MolarMassUnits.Kilogramspermole:
+            case MolarMassUnits.KilogramPerMole:
                 return (this.value*1e3) / 1000;
-            case MolarMassUnits.Kilopoundspermole:
+            case MolarMassUnits.KilopoundPerMole:
                 return (this.value/0.45359237) / 1000;
-            case MolarMassUnits.Megapoundspermole:
+            case MolarMassUnits.MegapoundPerMole:
                 return (this.value/0.45359237) / 1000000;
             default:
                 break;
@@ -189,27 +189,59 @@ export class MolarMass {
                 return value/1e3;
             case MolarMassUnits.PoundsPerMole:
                 return value*0.45359237;
-            case MolarMassUnits.Nanogramspermole:
+            case MolarMassUnits.NanogramPerMole:
                 return (value/1e3) * 1e-9;
-            case MolarMassUnits.Microgramspermole:
+            case MolarMassUnits.MicrogramPerMole:
                 return (value/1e3) * 0.000001;
-            case MolarMassUnits.Centigramspermole:
+            case MolarMassUnits.CentigramPerMole:
                 return (value/1e3) * 0.01;
-            case MolarMassUnits.Decigramspermole:
+            case MolarMassUnits.DecigramPerMole:
                 return (value/1e3) * 0.1;
-            case MolarMassUnits.Decagramspermole:
+            case MolarMassUnits.DecagramPerMole:
                 return (value/1e3) * 10;
-            case MolarMassUnits.Hectogramspermole:
+            case MolarMassUnits.HectogramPerMole:
                 return (value/1e3) * 100;
-            case MolarMassUnits.Kilogramspermole:
+            case MolarMassUnits.KilogramPerMole:
                 return (value/1e3) * 1000;
-            case MolarMassUnits.Kilopoundspermole:
+            case MolarMassUnits.KilopoundPerMole:
                 return (value*0.45359237) * 1000;
-            case MolarMassUnits.Megapoundspermole:
+            case MolarMassUnits.MegapoundPerMole:
                 return (value*0.45359237) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: MolarMassUnits = MolarMassUnits.KilogramPerMole): string {
+
+        switch (toUnit) {
+            
+            case MolarMassUnits.GramsPerMole:
+                return this.GramsPerMole + ` g/mol`;
+            case MolarMassUnits.PoundsPerMole:
+                return this.PoundsPerMole + ` lb/mol`;
+            case MolarMassUnits.NanogramPerMole:
+                return this.NanogramPerMole + ` g/mol`;
+            case MolarMassUnits.MicrogramPerMole:
+                return this.MicrogramPerMole + ` g/mol`;
+            case MolarMassUnits.CentigramPerMole:
+                return this.CentigramPerMole + ` g/mol`;
+            case MolarMassUnits.DecigramPerMole:
+                return this.DecigramPerMole + ` g/mol`;
+            case MolarMassUnits.DecagramPerMole:
+                return this.DecagramPerMole + ` g/mol`;
+            case MolarMassUnits.HectogramPerMole:
+                return this.HectogramPerMole + ` g/mol`;
+            case MolarMassUnits.KilogramPerMole:
+                return this.KilogramPerMole + ` g/mol`;
+            case MolarMassUnits.KilopoundPerMole:
+                return this.KilopoundPerMole + ` lb/mol`;
+            case MolarMassUnits.MegapoundPerMole:
+                return this.MegapoundPerMole + ` lb/mol`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

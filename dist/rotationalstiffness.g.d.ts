@@ -1,21 +1,22 @@
 export declare enum RotationalStiffnessUnits {
     NewtonMetersPerRadian = 0,
-    Kilonewtonmetersperradian = 1,
-    Meganewtonmetersperradian = 2
+    KilonewtonMeterPerRadian = 1,
+    MeganewtonMeterPerRadian = 2
 }
 export declare class RotationalStiffness {
     private value;
     private newtonmetersperradianLazy;
-    private kilonewtonmetersperradianLazy;
-    private meganewtonmetersperradianLazy;
+    private kilonewtonmeterperradianLazy;
+    private meganewtonmeterperradianLazy;
     constructor(value: number, fromUnit: RotationalStiffnessUnits);
     get NewtonMetersPerRadian(): number;
-    get Kilonewtonmetersperradian(): number;
-    get Meganewtonmetersperradian(): number;
+    get KilonewtonMeterPerRadian(): number;
+    get MeganewtonMeterPerRadian(): number;
     static FromNewtonMetersPerRadian(value: number): RotationalStiffness;
-    static FromKilonewtonmetersperradian(value: number): RotationalStiffness;
-    static FromMeganewtonmetersperradian(value: number): RotationalStiffness;
+    static FromKilonewtonMeterPerRadian(value: number): RotationalStiffness;
+    static FromMeganewtonMeterPerRadian(value: number): RotationalStiffness;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: RotationalStiffnessUnits): string;
 }
 //# sourceMappingURL=rotationalstiffness.g.d.ts.map

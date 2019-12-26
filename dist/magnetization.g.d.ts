@@ -9,5 +9,6 @@ export declare class Magnetization {
     static FromAmperesPerMeter(value: number): Magnetization;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: MagnetizationUnits): string;
 }
 //# sourceMappingURL=magnetization.g.d.ts.map

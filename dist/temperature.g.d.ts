@@ -41,5 +41,6 @@ export declare class Temperature {
     static FromSolarTemperatures(value: number): Temperature;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: TemperatureUnits): string;
 }
 //# sourceMappingURL=temperature.g.d.ts.map

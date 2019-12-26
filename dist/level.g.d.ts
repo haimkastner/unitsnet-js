@@ -13,5 +13,6 @@ export declare class Level {
     static FromNepers(value: number): Level;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: LevelUnits): string;
 }
 //# sourceMappingURL=level.g.d.ts.map

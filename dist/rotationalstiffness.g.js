@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var RotationalStiffnessUnits;
 (function (RotationalStiffnessUnits) {
     RotationalStiffnessUnits[RotationalStiffnessUnits["NewtonMetersPerRadian"] = 0] = "NewtonMetersPerRadian";
-    RotationalStiffnessUnits[RotationalStiffnessUnits["Kilonewtonmetersperradian"] = 1] = "Kilonewtonmetersperradian";
-    RotationalStiffnessUnits[RotationalStiffnessUnits["Meganewtonmetersperradian"] = 2] = "Meganewtonmetersperradian";
+    RotationalStiffnessUnits[RotationalStiffnessUnits["KilonewtonMeterPerRadian"] = 1] = "KilonewtonMeterPerRadian";
+    RotationalStiffnessUnits[RotationalStiffnessUnits["MeganewtonMeterPerRadian"] = 2] = "MeganewtonMeterPerRadian";
 })(RotationalStiffnessUnits = exports.RotationalStiffnessUnits || (exports.RotationalStiffnessUnits = {}));
 class RotationalStiffness {
     constructor(value, fromUnit) {
         this.newtonmetersperradianLazy = null;
-        this.kilonewtonmetersperradianLazy = null;
-        this.meganewtonmetersperradianLazy = null;
+        this.kilonewtonmeterperradianLazy = null;
+        this.meganewtonmeterperradianLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get NewtonMetersPerRadian() {
@@ -19,34 +19,34 @@ class RotationalStiffness {
         }
         return this.newtonmetersperradianLazy = this.convertFromBase(RotationalStiffnessUnits.NewtonMetersPerRadian);
     }
-    get Kilonewtonmetersperradian() {
-        if (this.kilonewtonmetersperradianLazy !== null) {
-            return this.kilonewtonmetersperradianLazy;
+    get KilonewtonMeterPerRadian() {
+        if (this.kilonewtonmeterperradianLazy !== null) {
+            return this.kilonewtonmeterperradianLazy;
         }
-        return this.kilonewtonmetersperradianLazy = this.convertFromBase(RotationalStiffnessUnits.Kilonewtonmetersperradian);
+        return this.kilonewtonmeterperradianLazy = this.convertFromBase(RotationalStiffnessUnits.KilonewtonMeterPerRadian);
     }
-    get Meganewtonmetersperradian() {
-        if (this.meganewtonmetersperradianLazy !== null) {
-            return this.meganewtonmetersperradianLazy;
+    get MeganewtonMeterPerRadian() {
+        if (this.meganewtonmeterperradianLazy !== null) {
+            return this.meganewtonmeterperradianLazy;
         }
-        return this.meganewtonmetersperradianLazy = this.convertFromBase(RotationalStiffnessUnits.Meganewtonmetersperradian);
+        return this.meganewtonmeterperradianLazy = this.convertFromBase(RotationalStiffnessUnits.MeganewtonMeterPerRadian);
     }
     static FromNewtonMetersPerRadian(value) {
         return new RotationalStiffness(value, RotationalStiffnessUnits.NewtonMetersPerRadian);
     }
-    static FromKilonewtonmetersperradian(value) {
-        return new RotationalStiffness(value, RotationalStiffnessUnits.Kilonewtonmetersperradian);
+    static FromKilonewtonMeterPerRadian(value) {
+        return new RotationalStiffness(value, RotationalStiffnessUnits.KilonewtonMeterPerRadian);
     }
-    static FromMeganewtonmetersperradian(value) {
-        return new RotationalStiffness(value, RotationalStiffnessUnits.Meganewtonmetersperradian);
+    static FromMeganewtonMeterPerRadian(value) {
+        return new RotationalStiffness(value, RotationalStiffnessUnits.MeganewtonMeterPerRadian);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
             case RotationalStiffnessUnits.NewtonMetersPerRadian:
                 return this.value;
-            case RotationalStiffnessUnits.Kilonewtonmetersperradian:
+            case RotationalStiffnessUnits.KilonewtonMeterPerRadian:
                 return (this.value) / 1000;
-            case RotationalStiffnessUnits.Meganewtonmetersperradian:
+            case RotationalStiffnessUnits.MeganewtonMeterPerRadian:
                 return (this.value) / 1000000;
             default:
                 break;
@@ -57,14 +57,27 @@ class RotationalStiffness {
         switch (fromUnit) {
             case RotationalStiffnessUnits.NewtonMetersPerRadian:
                 return value;
-            case RotationalStiffnessUnits.Kilonewtonmetersperradian:
+            case RotationalStiffnessUnits.KilonewtonMeterPerRadian:
                 return (value) * 1000;
-            case RotationalStiffnessUnits.Meganewtonmetersperradian:
+            case RotationalStiffnessUnits.MeganewtonMeterPerRadian:
                 return (value) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = RotationalStiffnessUnits.NewtonMetersPerRadian) {
+        switch (toUnit) {
+            case RotationalStiffnessUnits.NewtonMetersPerRadian:
+                return this.NewtonMetersPerRadian + ` N·m/rad`;
+            case RotationalStiffnessUnits.KilonewtonMeterPerRadian:
+                return this.KilonewtonMeterPerRadian + ` N·m/rad`;
+            case RotationalStiffnessUnits.MeganewtonMeterPerRadian:
+                return this.MeganewtonMeterPerRadian + ` N·m/rad`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.RotationalStiffness = RotationalStiffness;

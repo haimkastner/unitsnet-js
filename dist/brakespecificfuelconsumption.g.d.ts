@@ -17,5 +17,6 @@ export declare class BrakeSpecificFuelConsumption {
     static FromPoundsPerMechanicalHorsepowerHour(value: number): BrakeSpecificFuelConsumption;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: BrakeSpecificFuelConsumptionUnits): string;
 }
 //# sourceMappingURL=brakespecificfuelconsumption.g.d.ts.map

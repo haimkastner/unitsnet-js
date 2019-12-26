@@ -9,5 +9,6 @@ export declare class ElectricChargeDensity {
     static FromCoulombsPerCubicMeter(value: number): ElectricChargeDensity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: ElectricChargeDensityUnits): string;
 }
 //# sourceMappingURL=electricchargedensity.g.d.ts.map

@@ -42,4 +42,16 @@ export class VitaminA {
         }
         return NaN;
     }
+
+    public toString(toUnit: VitaminAUnits = VitaminAUnits.InternationalUnits): string {
+
+        switch (toUnit) {
+            
+            case VitaminAUnits.InternationalUnits:
+                return this.InternationalUnits + ` IU`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

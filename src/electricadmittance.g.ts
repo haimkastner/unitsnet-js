@@ -76,4 +76,20 @@ export class ElectricAdmittance {
         }
         return NaN;
     }
+
+    public toString(toUnit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens): string {
+
+        switch (toUnit) {
+            
+            case ElectricAdmittanceUnits.Siemens:
+                return this.Siemens + ` S`;
+            case ElectricAdmittanceUnits.Nanosiemens:
+                return this.Nanosiemens + ` S`;
+            case ElectricAdmittanceUnits.Microsiemens:
+                return this.Microsiemens + ` S`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

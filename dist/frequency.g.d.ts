@@ -41,5 +41,6 @@ export declare class Frequency {
     static FromTerahertz(value: number): Frequency;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: FrequencyUnits): string;
 }
 //# sourceMappingURL=frequency.g.d.ts.map

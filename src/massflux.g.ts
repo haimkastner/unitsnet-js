@@ -1,12 +1,12 @@
 export enum MassFluxUnits {
     GramsPerSecondPerSquareMeter,
-    Kilogramspersecondpersquaremeter
+    KilogramPerSecondPerSquareMeter
 }
 
 export class MassFlux {
     private value: number;
     private gramspersecondpersquaremeterLazy: number | null = null;
-    private kilogramspersecondpersquaremeterLazy: number | null = null;
+    private kilogrampersecondpersquaremeterLazy: number | null = null;
 
     public constructor(value: number, fromUnit: MassFluxUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -19,19 +19,19 @@ export class MassFlux {
         return this.gramspersecondpersquaremeterLazy = this.convertFromBase(MassFluxUnits.GramsPerSecondPerSquareMeter);
     }
 
-    public get Kilogramspersecondpersquaremeter(): number {
-        if(this.kilogramspersecondpersquaremeterLazy !== null){
-            return this.kilogramspersecondpersquaremeterLazy;
+    public get KilogramPerSecondPerSquareMeter(): number {
+        if(this.kilogrampersecondpersquaremeterLazy !== null){
+            return this.kilogrampersecondpersquaremeterLazy;
         }
-        return this.kilogramspersecondpersquaremeterLazy = this.convertFromBase(MassFluxUnits.Kilogramspersecondpersquaremeter);
+        return this.kilogrampersecondpersquaremeterLazy = this.convertFromBase(MassFluxUnits.KilogramPerSecondPerSquareMeter);
     }
 
     public static FromGramsPerSecondPerSquareMeter(value: number): MassFlux {
         return new MassFlux(value, MassFluxUnits.GramsPerSecondPerSquareMeter);
     }
 
-    public static FromKilogramspersecondpersquaremeter(value: number): MassFlux {
-        return new MassFlux(value, MassFluxUnits.Kilogramspersecondpersquaremeter);
+    public static FromKilogramPerSecondPerSquareMeter(value: number): MassFlux {
+        return new MassFlux(value, MassFluxUnits.KilogramPerSecondPerSquareMeter);
     }
 
     private convertFromBase(toUnit: MassFluxUnits): number {
@@ -39,7 +39,7 @@ export class MassFlux {
                 
             case MassFluxUnits.GramsPerSecondPerSquareMeter:
                 return this.value*1e3;
-            case MassFluxUnits.Kilogramspersecondpersquaremeter:
+            case MassFluxUnits.KilogramPerSecondPerSquareMeter:
                 return (this.value*1e3) / 1000;
             default:
                 break;
@@ -52,11 +52,25 @@ export class MassFlux {
                 
             case MassFluxUnits.GramsPerSecondPerSquareMeter:
                 return value/1e3;
-            case MassFluxUnits.Kilogramspersecondpersquaremeter:
+            case MassFluxUnits.KilogramPerSecondPerSquareMeter:
                 return (value/1e3) * 1000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: MassFluxUnits = MassFluxUnits.KilogramPerSecondPerSquareMeter): string {
+
+        switch (toUnit) {
+            
+            case MassFluxUnits.GramsPerSecondPerSquareMeter:
+                return this.GramsPerSecondPerSquareMeter + ` g·s⁻¹·m⁻²`;
+            case MassFluxUnits.KilogramPerSecondPerSquareMeter:
+                return this.KilogramPerSecondPerSquareMeter + ` g·s⁻¹·m⁻²`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }

@@ -127,4 +127,26 @@ export class Ratio {
         }
         return NaN;
     }
+
+    public toString(toUnit: RatioUnits = RatioUnits.DecimalFractions): string {
+
+        switch (toUnit) {
+            
+            case RatioUnits.DecimalFractions:
+                return this.DecimalFractions + ` `;
+            case RatioUnits.Percent:
+                return this.Percent + ` %`;
+            case RatioUnits.PartsPerThousand:
+                return this.PartsPerThousand + ` ‰`;
+            case RatioUnits.PartsPerMillion:
+                return this.PartsPerMillion + ` ppm`;
+            case RatioUnits.PartsPerBillion:
+                return this.PartsPerBillion + ` ppb`;
+            case RatioUnits.PartsPerTrillion:
+                return this.PartsPerTrillion + ` ppt`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

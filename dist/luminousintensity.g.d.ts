@@ -9,5 +9,6 @@ export declare class LuminousIntensity {
     static FromCandela(value: number): LuminousIntensity;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: LuminousIntensityUnits): string;
 }
 //# sourceMappingURL=luminousintensity.g.d.ts.map

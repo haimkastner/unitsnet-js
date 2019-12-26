@@ -23,16 +23,16 @@ var LengthUnits;
     LengthUnits[LengthUnits["Parsecs"] = 18] = "Parsecs";
     LengthUnits[LengthUnits["LightYears"] = 19] = "LightYears";
     LengthUnits[LengthUnits["SolarRadiuses"] = 20] = "SolarRadiuses";
-    LengthUnits[LengthUnits["Nanometers"] = 21] = "Nanometers";
-    LengthUnits[LengthUnits["Micrometers"] = 22] = "Micrometers";
-    LengthUnits[LengthUnits["Centimeters"] = 23] = "Centimeters";
-    LengthUnits[LengthUnits["Decimeters"] = 24] = "Decimeters";
-    LengthUnits[LengthUnits["Hectometers"] = 25] = "Hectometers";
-    LengthUnits[LengthUnits["Kilometers"] = 26] = "Kilometers";
-    LengthUnits[LengthUnits["Kiloparsecs"] = 27] = "Kiloparsecs";
-    LengthUnits[LengthUnits["Megaparsecs"] = 28] = "Megaparsecs";
-    LengthUnits[LengthUnits["Kilolightyears"] = 29] = "Kilolightyears";
-    LengthUnits[LengthUnits["Megalightyears"] = 30] = "Megalightyears";
+    LengthUnits[LengthUnits["Nanometer"] = 21] = "Nanometer";
+    LengthUnits[LengthUnits["Micrometer"] = 22] = "Micrometer";
+    LengthUnits[LengthUnits["Centimeter"] = 23] = "Centimeter";
+    LengthUnits[LengthUnits["Decimeter"] = 24] = "Decimeter";
+    LengthUnits[LengthUnits["Hectometer"] = 25] = "Hectometer";
+    LengthUnits[LengthUnits["Kilometer"] = 26] = "Kilometer";
+    LengthUnits[LengthUnits["Kiloparsec"] = 27] = "Kiloparsec";
+    LengthUnits[LengthUnits["Megaparsec"] = 28] = "Megaparsec";
+    LengthUnits[LengthUnits["KilolightYear"] = 29] = "KilolightYear";
+    LengthUnits[LengthUnits["MegalightYear"] = 30] = "MegalightYear";
 })(LengthUnits = exports.LengthUnits || (exports.LengthUnits = {}));
 class Length {
     constructor(value, fromUnit) {
@@ -57,16 +57,16 @@ class Length {
         this.parsecsLazy = null;
         this.lightyearsLazy = null;
         this.solarradiusesLazy = null;
-        this.nanometersLazy = null;
-        this.micrometersLazy = null;
-        this.centimetersLazy = null;
-        this.decimetersLazy = null;
-        this.hectometersLazy = null;
-        this.kilometersLazy = null;
-        this.kiloparsecsLazy = null;
-        this.megaparsecsLazy = null;
-        this.kilolightyearsLazy = null;
-        this.megalightyearsLazy = null;
+        this.nanometerLazy = null;
+        this.micrometerLazy = null;
+        this.centimeterLazy = null;
+        this.decimeterLazy = null;
+        this.hectometerLazy = null;
+        this.kilometerLazy = null;
+        this.kiloparsecLazy = null;
+        this.megaparsecLazy = null;
+        this.kilolightyearLazy = null;
+        this.megalightyearLazy = null;
         this.value = this.convertToBase(value, fromUnit);
     }
     get Meters() {
@@ -195,65 +195,65 @@ class Length {
         }
         return this.solarradiusesLazy = this.convertFromBase(LengthUnits.SolarRadiuses);
     }
-    get Nanometers() {
-        if (this.nanometersLazy !== null) {
-            return this.nanometersLazy;
+    get Nanometer() {
+        if (this.nanometerLazy !== null) {
+            return this.nanometerLazy;
         }
-        return this.nanometersLazy = this.convertFromBase(LengthUnits.Nanometers);
+        return this.nanometerLazy = this.convertFromBase(LengthUnits.Nanometer);
     }
-    get Micrometers() {
-        if (this.micrometersLazy !== null) {
-            return this.micrometersLazy;
+    get Micrometer() {
+        if (this.micrometerLazy !== null) {
+            return this.micrometerLazy;
         }
-        return this.micrometersLazy = this.convertFromBase(LengthUnits.Micrometers);
+        return this.micrometerLazy = this.convertFromBase(LengthUnits.Micrometer);
     }
-    get Centimeters() {
-        if (this.centimetersLazy !== null) {
-            return this.centimetersLazy;
+    get Centimeter() {
+        if (this.centimeterLazy !== null) {
+            return this.centimeterLazy;
         }
-        return this.centimetersLazy = this.convertFromBase(LengthUnits.Centimeters);
+        return this.centimeterLazy = this.convertFromBase(LengthUnits.Centimeter);
     }
-    get Decimeters() {
-        if (this.decimetersLazy !== null) {
-            return this.decimetersLazy;
+    get Decimeter() {
+        if (this.decimeterLazy !== null) {
+            return this.decimeterLazy;
         }
-        return this.decimetersLazy = this.convertFromBase(LengthUnits.Decimeters);
+        return this.decimeterLazy = this.convertFromBase(LengthUnits.Decimeter);
     }
-    get Hectometers() {
-        if (this.hectometersLazy !== null) {
-            return this.hectometersLazy;
+    get Hectometer() {
+        if (this.hectometerLazy !== null) {
+            return this.hectometerLazy;
         }
-        return this.hectometersLazy = this.convertFromBase(LengthUnits.Hectometers);
+        return this.hectometerLazy = this.convertFromBase(LengthUnits.Hectometer);
     }
-    get Kilometers() {
-        if (this.kilometersLazy !== null) {
-            return this.kilometersLazy;
+    get Kilometer() {
+        if (this.kilometerLazy !== null) {
+            return this.kilometerLazy;
         }
-        return this.kilometersLazy = this.convertFromBase(LengthUnits.Kilometers);
+        return this.kilometerLazy = this.convertFromBase(LengthUnits.Kilometer);
     }
-    get Kiloparsecs() {
-        if (this.kiloparsecsLazy !== null) {
-            return this.kiloparsecsLazy;
+    get Kiloparsec() {
+        if (this.kiloparsecLazy !== null) {
+            return this.kiloparsecLazy;
         }
-        return this.kiloparsecsLazy = this.convertFromBase(LengthUnits.Kiloparsecs);
+        return this.kiloparsecLazy = this.convertFromBase(LengthUnits.Kiloparsec);
     }
-    get Megaparsecs() {
-        if (this.megaparsecsLazy !== null) {
-            return this.megaparsecsLazy;
+    get Megaparsec() {
+        if (this.megaparsecLazy !== null) {
+            return this.megaparsecLazy;
         }
-        return this.megaparsecsLazy = this.convertFromBase(LengthUnits.Megaparsecs);
+        return this.megaparsecLazy = this.convertFromBase(LengthUnits.Megaparsec);
     }
-    get Kilolightyears() {
-        if (this.kilolightyearsLazy !== null) {
-            return this.kilolightyearsLazy;
+    get KilolightYear() {
+        if (this.kilolightyearLazy !== null) {
+            return this.kilolightyearLazy;
         }
-        return this.kilolightyearsLazy = this.convertFromBase(LengthUnits.Kilolightyears);
+        return this.kilolightyearLazy = this.convertFromBase(LengthUnits.KilolightYear);
     }
-    get Megalightyears() {
-        if (this.megalightyearsLazy !== null) {
-            return this.megalightyearsLazy;
+    get MegalightYear() {
+        if (this.megalightyearLazy !== null) {
+            return this.megalightyearLazy;
         }
-        return this.megalightyearsLazy = this.convertFromBase(LengthUnits.Megalightyears);
+        return this.megalightyearLazy = this.convertFromBase(LengthUnits.MegalightYear);
     }
     static FromMeters(value) {
         return new Length(value, LengthUnits.Meters);
@@ -318,35 +318,35 @@ class Length {
     static FromSolarRadiuses(value) {
         return new Length(value, LengthUnits.SolarRadiuses);
     }
-    static FromNanometers(value) {
-        return new Length(value, LengthUnits.Nanometers);
+    static FromNanometer(value) {
+        return new Length(value, LengthUnits.Nanometer);
     }
-    static FromMicrometers(value) {
-        return new Length(value, LengthUnits.Micrometers);
+    static FromMicrometer(value) {
+        return new Length(value, LengthUnits.Micrometer);
     }
-    static FromCentimeters(value) {
-        return new Length(value, LengthUnits.Centimeters);
+    static FromCentimeter(value) {
+        return new Length(value, LengthUnits.Centimeter);
     }
-    static FromDecimeters(value) {
-        return new Length(value, LengthUnits.Decimeters);
+    static FromDecimeter(value) {
+        return new Length(value, LengthUnits.Decimeter);
     }
-    static FromHectometers(value) {
-        return new Length(value, LengthUnits.Hectometers);
+    static FromHectometer(value) {
+        return new Length(value, LengthUnits.Hectometer);
     }
-    static FromKilometers(value) {
-        return new Length(value, LengthUnits.Kilometers);
+    static FromKilometer(value) {
+        return new Length(value, LengthUnits.Kilometer);
     }
-    static FromKiloparsecs(value) {
-        return new Length(value, LengthUnits.Kiloparsecs);
+    static FromKiloparsec(value) {
+        return new Length(value, LengthUnits.Kiloparsec);
     }
-    static FromMegaparsecs(value) {
-        return new Length(value, LengthUnits.Megaparsecs);
+    static FromMegaparsec(value) {
+        return new Length(value, LengthUnits.Megaparsec);
     }
-    static FromKilolightyears(value) {
-        return new Length(value, LengthUnits.Kilolightyears);
+    static FromKilolightYear(value) {
+        return new Length(value, LengthUnits.KilolightYear);
     }
-    static FromMegalightyears(value) {
-        return new Length(value, LengthUnits.Megalightyears);
+    static FromMegalightYear(value) {
+        return new Length(value, LengthUnits.MegalightYear);
     }
     convertFromBase(toUnit) {
         switch (toUnit) {
@@ -392,25 +392,25 @@ class Length {
                 return this.value / 9.46073047258e15;
             case LengthUnits.SolarRadiuses:
                 return this.value / 6.95510000E+08;
-            case LengthUnits.Nanometers:
+            case LengthUnits.Nanometer:
                 return (this.value) / 1e-9;
-            case LengthUnits.Micrometers:
+            case LengthUnits.Micrometer:
                 return (this.value) / 0.000001;
-            case LengthUnits.Centimeters:
+            case LengthUnits.Centimeter:
                 return (this.value) / 0.01;
-            case LengthUnits.Decimeters:
+            case LengthUnits.Decimeter:
                 return (this.value) / 0.1;
-            case LengthUnits.Hectometers:
+            case LengthUnits.Hectometer:
                 return (this.value) / 100;
-            case LengthUnits.Kilometers:
+            case LengthUnits.Kilometer:
                 return (this.value) / 1000;
-            case LengthUnits.Kiloparsecs:
+            case LengthUnits.Kiloparsec:
                 return (this.value / 3.08567758128e16) / 1000;
-            case LengthUnits.Megaparsecs:
+            case LengthUnits.Megaparsec:
                 return (this.value / 3.08567758128e16) / 1000000;
-            case LengthUnits.Kilolightyears:
+            case LengthUnits.KilolightYear:
                 return (this.value / 9.46073047258e15) / 1000;
-            case LengthUnits.Megalightyears:
+            case LengthUnits.MegalightYear:
                 return (this.value / 9.46073047258e15) / 1000000;
             default:
                 break;
@@ -461,30 +461,99 @@ class Length {
                 return value * 9.46073047258e15;
             case LengthUnits.SolarRadiuses:
                 return value * 6.95510000E+08;
-            case LengthUnits.Nanometers:
+            case LengthUnits.Nanometer:
                 return (value) * 1e-9;
-            case LengthUnits.Micrometers:
+            case LengthUnits.Micrometer:
                 return (value) * 0.000001;
-            case LengthUnits.Centimeters:
+            case LengthUnits.Centimeter:
                 return (value) * 0.01;
-            case LengthUnits.Decimeters:
+            case LengthUnits.Decimeter:
                 return (value) * 0.1;
-            case LengthUnits.Hectometers:
+            case LengthUnits.Hectometer:
                 return (value) * 100;
-            case LengthUnits.Kilometers:
+            case LengthUnits.Kilometer:
                 return (value) * 1000;
-            case LengthUnits.Kiloparsecs:
+            case LengthUnits.Kiloparsec:
                 return (value * 3.08567758128e16) * 1000;
-            case LengthUnits.Megaparsecs:
+            case LengthUnits.Megaparsec:
                 return (value * 3.08567758128e16) * 1000000;
-            case LengthUnits.Kilolightyears:
+            case LengthUnits.KilolightYear:
                 return (value * 9.46073047258e15) * 1000;
-            case LengthUnits.Megalightyears:
+            case LengthUnits.MegalightYear:
                 return (value * 9.46073047258e15) * 1000000;
             default:
                 break;
         }
         return NaN;
+    }
+    toString(toUnit = LengthUnits.Meters) {
+        switch (toUnit) {
+            case LengthUnits.Meters:
+                return this.Meters + ` m`;
+            case LengthUnits.Miles:
+                return this.Miles + ` mi`;
+            case LengthUnits.Yards:
+                return this.Yards + ` yd`;
+            case LengthUnits.Feet:
+                return this.Feet + ` ft`;
+            case LengthUnits.UsSurveyFeet:
+                return this.UsSurveyFeet + ` ftUS`;
+            case LengthUnits.Inches:
+                return this.Inches + ` in`;
+            case LengthUnits.Mils:
+                return this.Mils + ` mil`;
+            case LengthUnits.NauticalMiles:
+                return this.NauticalMiles + ` NM`;
+            case LengthUnits.Fathoms:
+                return this.Fathoms + ` fathom`;
+            case LengthUnits.Shackles:
+                return this.Shackles + ` shackle`;
+            case LengthUnits.Microinches:
+                return this.Microinches + ` µin`;
+            case LengthUnits.PrinterPoints:
+                return this.PrinterPoints + ` pt`;
+            case LengthUnits.DtpPoints:
+                return this.DtpPoints + ` pt`;
+            case LengthUnits.PrinterPicas:
+                return this.PrinterPicas + ` pica`;
+            case LengthUnits.DtpPicas:
+                return this.DtpPicas + ` pica`;
+            case LengthUnits.Twips:
+                return this.Twips + ` twip`;
+            case LengthUnits.Hands:
+                return this.Hands + ` h`;
+            case LengthUnits.AstronomicalUnits:
+                return this.AstronomicalUnits + ` au`;
+            case LengthUnits.Parsecs:
+                return this.Parsecs + ` pc`;
+            case LengthUnits.LightYears:
+                return this.LightYears + ` ly`;
+            case LengthUnits.SolarRadiuses:
+                return this.SolarRadiuses + ` R⊙`;
+            case LengthUnits.Nanometer:
+                return this.Nanometer + ` m`;
+            case LengthUnits.Micrometer:
+                return this.Micrometer + ` m`;
+            case LengthUnits.Centimeter:
+                return this.Centimeter + ` m`;
+            case LengthUnits.Decimeter:
+                return this.Decimeter + ` m`;
+            case LengthUnits.Hectometer:
+                return this.Hectometer + ` m`;
+            case LengthUnits.Kilometer:
+                return this.Kilometer + ` m`;
+            case LengthUnits.Kiloparsec:
+                return this.Kiloparsec + ` pc`;
+            case LengthUnits.Megaparsec:
+                return this.Megaparsec + ` pc`;
+            case LengthUnits.KilolightYear:
+                return this.KilolightYear + ` ly`;
+            case LengthUnits.MegalightYear:
+                return this.MegalightYear + ` ly`;
+            default:
+                break;
+        }
+        return this.value.toString();
     }
 }
 exports.Length = Length;

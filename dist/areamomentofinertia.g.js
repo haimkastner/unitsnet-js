@@ -111,6 +111,25 @@ class AreaMomentOfInertia {
         }
         return NaN;
     }
+    toString(toUnit = AreaMomentOfInertiaUnits.MetersToTheFourth) {
+        switch (toUnit) {
+            case AreaMomentOfInertiaUnits.MetersToTheFourth:
+                return this.MetersToTheFourth + ` m⁴`;
+            case AreaMomentOfInertiaUnits.DecimetersToTheFourth:
+                return this.DecimetersToTheFourth + ` dm⁴`;
+            case AreaMomentOfInertiaUnits.CentimetersToTheFourth:
+                return this.CentimetersToTheFourth + ` cm⁴`;
+            case AreaMomentOfInertiaUnits.MillimetersToTheFourth:
+                return this.MillimetersToTheFourth + ` mm⁴`;
+            case AreaMomentOfInertiaUnits.FeetToTheFourth:
+                return this.FeetToTheFourth + ` ft⁴`;
+            case AreaMomentOfInertiaUnits.InchesToTheFourth:
+                return this.InchesToTheFourth + ` in⁴`;
+            default:
+                break;
+        }
+        return this.value.toString();
+    }
 }
 exports.AreaMomentOfInertia = AreaMomentOfInertia;
 //# sourceMappingURL=areamomentofinertia.g.js.map

@@ -13,5 +13,6 @@ export declare class PowerRatio {
     static FromDecibelMilliwatts(value: number): PowerRatio;
     private convertFromBase;
     private convertToBase;
+    toString(toUnit?: PowerRatioUnits): string;
 }
 //# sourceMappingURL=powerratio.g.d.ts.map

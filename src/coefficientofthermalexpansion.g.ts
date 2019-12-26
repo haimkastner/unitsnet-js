@@ -76,4 +76,20 @@ export class CoefficientOfThermalExpansion {
         }
         return NaN;
     }
+
+    public toString(toUnit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.InverseKelvin): string {
+
+        switch (toUnit) {
+            
+            case CoefficientOfThermalExpansionUnits.InverseKelvin:
+                return this.InverseKelvin + ` K⁻¹`;
+            case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
+                return this.InverseDegreeCelsius + ` °C⁻¹`;
+            case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
+                return this.InverseDegreeFahrenheit + ` °F⁻¹`;
+        default:
+            break;
+        }
+        return this.value.toString();
+    }
 }

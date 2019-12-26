@@ -22,23 +22,23 @@ export enum PressureUnits {
     DynesPerSquareCentimeter,
     PoundsPerInchSecondSquared,
     InchesOfWaterColumn,
-    Micropascals,
-    Decapascals,
-    Hectopascals,
-    Kilopascals,
-    Megapascals,
-    Gigapascals,
-    Microbars,
-    Centibars,
-    Decibars,
-    Kilobars,
-    Megabars,
-    Kilonewtonspersquaremeter,
-    Meganewtonspersquaremeter,
-    Kilonewtonspersquarecentimeter,
-    Kilonewtonspersquaremillimeter,
-    Kilopoundsforcepersquareinch,
-    Kilopoundsforcepersquarefoot
+    Micropascal,
+    Decapascal,
+    Hectopascal,
+    Kilopascal,
+    Megapascal,
+    Gigapascal,
+    Microbar,
+    Centibar,
+    Decibar,
+    Kilobar,
+    Megabar,
+    KilonewtonPerSquareMeter,
+    MeganewtonPerSquareMeter,
+    KilonewtonPerSquareCentimeter,
+    KilonewtonPerSquareMillimeter,
+    KilopoundForcePerSquareInch,
+    KilopoundForcePerSquareFoot
 }
 
 export class Pressure {
@@ -66,23 +66,23 @@ export class Pressure {
     private dynespersquarecentimeterLazy: number | null = null;
     private poundsperinchsecondsquaredLazy: number | null = null;
     private inchesofwatercolumnLazy: number | null = null;
-    private micropascalsLazy: number | null = null;
-    private decapascalsLazy: number | null = null;
-    private hectopascalsLazy: number | null = null;
-    private kilopascalsLazy: number | null = null;
-    private megapascalsLazy: number | null = null;
-    private gigapascalsLazy: number | null = null;
-    private microbarsLazy: number | null = null;
-    private centibarsLazy: number | null = null;
-    private decibarsLazy: number | null = null;
-    private kilobarsLazy: number | null = null;
-    private megabarsLazy: number | null = null;
-    private kilonewtonspersquaremeterLazy: number | null = null;
-    private meganewtonspersquaremeterLazy: number | null = null;
-    private kilonewtonspersquarecentimeterLazy: number | null = null;
-    private kilonewtonspersquaremillimeterLazy: number | null = null;
-    private kilopoundsforcepersquareinchLazy: number | null = null;
-    private kilopoundsforcepersquarefootLazy: number | null = null;
+    private micropascalLazy: number | null = null;
+    private decapascalLazy: number | null = null;
+    private hectopascalLazy: number | null = null;
+    private kilopascalLazy: number | null = null;
+    private megapascalLazy: number | null = null;
+    private gigapascalLazy: number | null = null;
+    private microbarLazy: number | null = null;
+    private centibarLazy: number | null = null;
+    private decibarLazy: number | null = null;
+    private kilobarLazy: number | null = null;
+    private megabarLazy: number | null = null;
+    private kilonewtonpersquaremeterLazy: number | null = null;
+    private meganewtonpersquaremeterLazy: number | null = null;
+    private kilonewtonpersquarecentimeterLazy: number | null = null;
+    private kilonewtonpersquaremillimeterLazy: number | null = null;
+    private kilopoundforcepersquareinchLazy: number | null = null;
+    private kilopoundforcepersquarefootLazy: number | null = null;
 
     public constructor(value: number, fromUnit: PressureUnits) {
         this.value = this.convertToBase(value, fromUnit);
@@ -249,123 +249,123 @@ export class Pressure {
         return this.inchesofwatercolumnLazy = this.convertFromBase(PressureUnits.InchesOfWaterColumn);
     }
 
-    public get Micropascals(): number {
-        if(this.micropascalsLazy !== null){
-            return this.micropascalsLazy;
+    public get Micropascal(): number {
+        if(this.micropascalLazy !== null){
+            return this.micropascalLazy;
         }
-        return this.micropascalsLazy = this.convertFromBase(PressureUnits.Micropascals);
+        return this.micropascalLazy = this.convertFromBase(PressureUnits.Micropascal);
     }
 
-    public get Decapascals(): number {
-        if(this.decapascalsLazy !== null){
-            return this.decapascalsLazy;
+    public get Decapascal(): number {
+        if(this.decapascalLazy !== null){
+            return this.decapascalLazy;
         }
-        return this.decapascalsLazy = this.convertFromBase(PressureUnits.Decapascals);
+        return this.decapascalLazy = this.convertFromBase(PressureUnits.Decapascal);
     }
 
-    public get Hectopascals(): number {
-        if(this.hectopascalsLazy !== null){
-            return this.hectopascalsLazy;
+    public get Hectopascal(): number {
+        if(this.hectopascalLazy !== null){
+            return this.hectopascalLazy;
         }
-        return this.hectopascalsLazy = this.convertFromBase(PressureUnits.Hectopascals);
+        return this.hectopascalLazy = this.convertFromBase(PressureUnits.Hectopascal);
     }
 
-    public get Kilopascals(): number {
-        if(this.kilopascalsLazy !== null){
-            return this.kilopascalsLazy;
+    public get Kilopascal(): number {
+        if(this.kilopascalLazy !== null){
+            return this.kilopascalLazy;
         }
-        return this.kilopascalsLazy = this.convertFromBase(PressureUnits.Kilopascals);
+        return this.kilopascalLazy = this.convertFromBase(PressureUnits.Kilopascal);
     }
 
-    public get Megapascals(): number {
-        if(this.megapascalsLazy !== null){
-            return this.megapascalsLazy;
+    public get Megapascal(): number {
+        if(this.megapascalLazy !== null){
+            return this.megapascalLazy;
         }
-        return this.megapascalsLazy = this.convertFromBase(PressureUnits.Megapascals);
+        return this.megapascalLazy = this.convertFromBase(PressureUnits.Megapascal);
     }
 
-    public get Gigapascals(): number {
-        if(this.gigapascalsLazy !== null){
-            return this.gigapascalsLazy;
+    public get Gigapascal(): number {
+        if(this.gigapascalLazy !== null){
+            return this.gigapascalLazy;
         }
-        return this.gigapascalsLazy = this.convertFromBase(PressureUnits.Gigapascals);
+        return this.gigapascalLazy = this.convertFromBase(PressureUnits.Gigapascal);
     }
 
-    public get Microbars(): number {
-        if(this.microbarsLazy !== null){
-            return this.microbarsLazy;
+    public get Microbar(): number {
+        if(this.microbarLazy !== null){
+            return this.microbarLazy;
         }
-        return this.microbarsLazy = this.convertFromBase(PressureUnits.Microbars);
+        return this.microbarLazy = this.convertFromBase(PressureUnits.Microbar);
     }
 
-    public get Centibars(): number {
-        if(this.centibarsLazy !== null){
-            return this.centibarsLazy;
+    public get Centibar(): number {
+        if(this.centibarLazy !== null){
+            return this.centibarLazy;
         }
-        return this.centibarsLazy = this.convertFromBase(PressureUnits.Centibars);
+        return this.centibarLazy = this.convertFromBase(PressureUnits.Centibar);
     }
 
-    public get Decibars(): number {
-        if(this.decibarsLazy !== null){
-            return this.decibarsLazy;
+    public get Decibar(): number {
+        if(this.decibarLazy !== null){
+            return this.decibarLazy;
         }
-        return this.decibarsLazy = this.convertFromBase(PressureUnits.Decibars);
+        return this.decibarLazy = this.convertFromBase(PressureUnits.Decibar);
     }
 
-    public get Kilobars(): number {
-        if(this.kilobarsLazy !== null){
-            return this.kilobarsLazy;
+    public get Kilobar(): number {
+        if(this.kilobarLazy !== null){
+            return this.kilobarLazy;
         }
-        return this.kilobarsLazy = this.convertFromBase(PressureUnits.Kilobars);
+        return this.kilobarLazy = this.convertFromBase(PressureUnits.Kilobar);
     }
 
-    public get Megabars(): number {
-        if(this.megabarsLazy !== null){
-            return this.megabarsLazy;
+    public get Megabar(): number {
+        if(this.megabarLazy !== null){
+            return this.megabarLazy;
         }
-        return this.megabarsLazy = this.convertFromBase(PressureUnits.Megabars);
+        return this.megabarLazy = this.convertFromBase(PressureUnits.Megabar);
     }
 
-    public get Kilonewtonspersquaremeter(): number {
-        if(this.kilonewtonspersquaremeterLazy !== null){
-            return this.kilonewtonspersquaremeterLazy;
+    public get KilonewtonPerSquareMeter(): number {
+        if(this.kilonewtonpersquaremeterLazy !== null){
+            return this.kilonewtonpersquaremeterLazy;
         }
-        return this.kilonewtonspersquaremeterLazy = this.convertFromBase(PressureUnits.Kilonewtonspersquaremeter);
+        return this.kilonewtonpersquaremeterLazy = this.convertFromBase(PressureUnits.KilonewtonPerSquareMeter);
     }
 
-    public get Meganewtonspersquaremeter(): number {
-        if(this.meganewtonspersquaremeterLazy !== null){
-            return this.meganewtonspersquaremeterLazy;
+    public get MeganewtonPerSquareMeter(): number {
+        if(this.meganewtonpersquaremeterLazy !== null){
+            return this.meganewtonpersquaremeterLazy;
         }
-        return this.meganewtonspersquaremeterLazy = this.convertFromBase(PressureUnits.Meganewtonspersquaremeter);
+        return this.meganewtonpersquaremeterLazy = this.convertFromBase(PressureUnits.MeganewtonPerSquareMeter);
     }
 
-    public get Kilonewtonspersquarecentimeter(): number {
-        if(this.kilonewtonspersquarecentimeterLazy !== null){
-            return this.kilonewtonspersquarecentimeterLazy;
+    public get KilonewtonPerSquareCentimeter(): number {
+        if(this.kilonewtonpersquarecentimeterLazy !== null){
+            return this.kilonewtonpersquarecentimeterLazy;
         }
-        return this.kilonewtonspersquarecentimeterLazy = this.convertFromBase(PressureUnits.Kilonewtonspersquarecentimeter);
+        return this.kilonewtonpersquarecentimeterLazy = this.convertFromBase(PressureUnits.KilonewtonPerSquareCentimeter);
     }
 
-    public get Kilonewtonspersquaremillimeter(): number {
-        if(this.kilonewtonspersquaremillimeterLazy !== null){
-            return this.kilonewtonspersquaremillimeterLazy;
+    public get KilonewtonPerSquareMillimeter(): number {
+        if(this.kilonewtonpersquaremillimeterLazy !== null){
+            return this.kilonewtonpersquaremillimeterLazy;
         }
-        return this.kilonewtonspersquaremillimeterLazy = this.convertFromBase(PressureUnits.Kilonewtonspersquaremillimeter);
+        return this.kilonewtonpersquaremillimeterLazy = this.convertFromBase(PressureUnits.KilonewtonPerSquareMillimeter);
     }
 
-    public get Kilopoundsforcepersquareinch(): number {
-        if(this.kilopoundsforcepersquareinchLazy !== null){
-            return this.kilopoundsforcepersquareinchLazy;
+    public get KilopoundForcePerSquareInch(): number {
+        if(this.kilopoundforcepersquareinchLazy !== null){
+            return this.kilopoundforcepersquareinchLazy;
         }
-        return this.kilopoundsforcepersquareinchLazy = this.convertFromBase(PressureUnits.Kilopoundsforcepersquareinch);
+        return this.kilopoundforcepersquareinchLazy = this.convertFromBase(PressureUnits.KilopoundForcePerSquareInch);
     }
 
-    public get Kilopoundsforcepersquarefoot(): number {
-        if(this.kilopoundsforcepersquarefootLazy !== null){
-            return this.kilopoundsforcepersquarefootLazy;
+    public get KilopoundForcePerSquareFoot(): number {
+        if(this.kilopoundforcepersquarefootLazy !== null){
+            return this.kilopoundforcepersquarefootLazy;
         }
-        return this.kilopoundsforcepersquarefootLazy = this.convertFromBase(PressureUnits.Kilopoundsforcepersquarefoot);
+        return this.kilopoundforcepersquarefootLazy = this.convertFromBase(PressureUnits.KilopoundForcePerSquareFoot);
     }
 
     public static FromPascals(value: number): Pressure {
@@ -460,72 +460,72 @@ export class Pressure {
         return new Pressure(value, PressureUnits.InchesOfWaterColumn);
     }
 
-    public static FromMicropascals(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Micropascals);
+    public static FromMicropascal(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Micropascal);
     }
 
-    public static FromDecapascals(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Decapascals);
+    public static FromDecapascal(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Decapascal);
     }
 
-    public static FromHectopascals(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Hectopascals);
+    public static FromHectopascal(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Hectopascal);
     }
 
-    public static FromKilopascals(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Kilopascals);
+    public static FromKilopascal(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Kilopascal);
     }
 
-    public static FromMegapascals(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Megapascals);
+    public static FromMegapascal(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Megapascal);
     }
 
-    public static FromGigapascals(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Gigapascals);
+    public static FromGigapascal(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Gigapascal);
     }
 
-    public static FromMicrobars(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Microbars);
+    public static FromMicrobar(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Microbar);
     }
 
-    public static FromCentibars(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Centibars);
+    public static FromCentibar(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Centibar);
     }
 
-    public static FromDecibars(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Decibars);
+    public static FromDecibar(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Decibar);
     }
 
-    public static FromKilobars(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Kilobars);
+    public static FromKilobar(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Kilobar);
     }
 
-    public static FromMegabars(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Megabars);
+    public static FromMegabar(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Megabar);
     }
 
-    public static FromKilonewtonspersquaremeter(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Kilonewtonspersquaremeter);
+    public static FromKilonewtonPerSquareMeter(value: number): Pressure {
+        return new Pressure(value, PressureUnits.KilonewtonPerSquareMeter);
     }
 
-    public static FromMeganewtonspersquaremeter(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Meganewtonspersquaremeter);
+    public static FromMeganewtonPerSquareMeter(value: number): Pressure {
+        return new Pressure(value, PressureUnits.MeganewtonPerSquareMeter);
     }
 
-    public static FromKilonewtonspersquarecentimeter(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Kilonewtonspersquarecentimeter);
+    public static FromKilonewtonPerSquareCentimeter(value: number): Pressure {
+        return new Pressure(value, PressureUnits.KilonewtonPerSquareCentimeter);
     }
 
-    public static FromKilonewtonspersquaremillimeter(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Kilonewtonspersquaremillimeter);
+    public static FromKilonewtonPerSquareMillimeter(value: number): Pressure {
+        return new Pressure(value, PressureUnits.KilonewtonPerSquareMillimeter);
     }
 
-    public static FromKilopoundsforcepersquareinch(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Kilopoundsforcepersquareinch);
+    public static FromKilopoundForcePerSquareInch(value: number): Pressure {
+        return new Pressure(value, PressureUnits.KilopoundForcePerSquareInch);
     }
 
-    public static FromKilopoundsforcepersquarefoot(value: number): Pressure {
-        return new Pressure(value, PressureUnits.Kilopoundsforcepersquarefoot);
+    public static FromKilopoundForcePerSquareFoot(value: number): Pressure {
+        return new Pressure(value, PressureUnits.KilopoundForcePerSquareFoot);
     }
 
     private convertFromBase(toUnit: PressureUnits): number {
@@ -577,39 +577,39 @@ export class Pressure {
                 return this.value/1.785796732283465e1;
             case PressureUnits.InchesOfWaterColumn:
                 return this.value/249.08890833333;
-            case PressureUnits.Micropascals:
+            case PressureUnits.Micropascal:
                 return (this.value) / 0.000001;
-            case PressureUnits.Decapascals:
+            case PressureUnits.Decapascal:
                 return (this.value) / 10;
-            case PressureUnits.Hectopascals:
+            case PressureUnits.Hectopascal:
                 return (this.value) / 100;
-            case PressureUnits.Kilopascals:
+            case PressureUnits.Kilopascal:
                 return (this.value) / 1000;
-            case PressureUnits.Megapascals:
+            case PressureUnits.Megapascal:
                 return (this.value) / 1000000;
-            case PressureUnits.Gigapascals:
+            case PressureUnits.Gigapascal:
                 return (this.value) / 1000000000;
-            case PressureUnits.Microbars:
+            case PressureUnits.Microbar:
                 return (this.value/1e5) / 0.000001;
-            case PressureUnits.Centibars:
+            case PressureUnits.Centibar:
                 return (this.value/1e5) / 0.01;
-            case PressureUnits.Decibars:
+            case PressureUnits.Decibar:
                 return (this.value/1e5) / 0.1;
-            case PressureUnits.Kilobars:
+            case PressureUnits.Kilobar:
                 return (this.value/1e5) / 1000;
-            case PressureUnits.Megabars:
+            case PressureUnits.Megabar:
                 return (this.value/1e5) / 1000000;
-            case PressureUnits.Kilonewtonspersquaremeter:
+            case PressureUnits.KilonewtonPerSquareMeter:
                 return (this.value) / 1000;
-            case PressureUnits.Meganewtonspersquaremeter:
+            case PressureUnits.MeganewtonPerSquareMeter:
                 return (this.value) / 1000000;
-            case PressureUnits.Kilonewtonspersquarecentimeter:
+            case PressureUnits.KilonewtonPerSquareCentimeter:
                 return (this.value/1e4) / 1000;
-            case PressureUnits.Kilonewtonspersquaremillimeter:
+            case PressureUnits.KilonewtonPerSquareMillimeter:
                 return (this.value/1e6) / 1000;
-            case PressureUnits.Kilopoundsforcepersquareinch:
+            case PressureUnits.KilopoundForcePerSquareInch:
                 return (this.value/6.894757293168361e3) / 1000;
-            case PressureUnits.Kilopoundsforcepersquarefoot:
+            case PressureUnits.KilopoundForcePerSquareFoot:
                 return (this.value/4.788025898033584e1) / 1000;
             default:
                 break;
@@ -666,43 +666,133 @@ export class Pressure {
                 return value*1.785796732283465e1;
             case PressureUnits.InchesOfWaterColumn:
                 return value*249.08890833333;
-            case PressureUnits.Micropascals:
+            case PressureUnits.Micropascal:
                 return (value) * 0.000001;
-            case PressureUnits.Decapascals:
+            case PressureUnits.Decapascal:
                 return (value) * 10;
-            case PressureUnits.Hectopascals:
+            case PressureUnits.Hectopascal:
                 return (value) * 100;
-            case PressureUnits.Kilopascals:
+            case PressureUnits.Kilopascal:
                 return (value) * 1000;
-            case PressureUnits.Megapascals:
+            case PressureUnits.Megapascal:
                 return (value) * 1000000;
-            case PressureUnits.Gigapascals:
+            case PressureUnits.Gigapascal:
                 return (value) * 1000000000;
-            case PressureUnits.Microbars:
+            case PressureUnits.Microbar:
                 return (value*1e5) * 0.000001;
-            case PressureUnits.Centibars:
+            case PressureUnits.Centibar:
                 return (value*1e5) * 0.01;
-            case PressureUnits.Decibars:
+            case PressureUnits.Decibar:
                 return (value*1e5) * 0.1;
-            case PressureUnits.Kilobars:
+            case PressureUnits.Kilobar:
                 return (value*1e5) * 1000;
-            case PressureUnits.Megabars:
+            case PressureUnits.Megabar:
                 return (value*1e5) * 1000000;
-            case PressureUnits.Kilonewtonspersquaremeter:
+            case PressureUnits.KilonewtonPerSquareMeter:
                 return (value) * 1000;
-            case PressureUnits.Meganewtonspersquaremeter:
+            case PressureUnits.MeganewtonPerSquareMeter:
                 return (value) * 1000000;
-            case PressureUnits.Kilonewtonspersquarecentimeter:
+            case PressureUnits.KilonewtonPerSquareCentimeter:
                 return (value*1e4) * 1000;
-            case PressureUnits.Kilonewtonspersquaremillimeter:
+            case PressureUnits.KilonewtonPerSquareMillimeter:
                 return (value*1e6) * 1000;
-            case PressureUnits.Kilopoundsforcepersquareinch:
+            case PressureUnits.KilopoundForcePerSquareInch:
                 return (value*6.894757293168361e3) * 1000;
-            case PressureUnits.Kilopoundsforcepersquarefoot:
+            case PressureUnits.KilopoundForcePerSquareFoot:
                 return (value*4.788025898033584e1) * 1000;
             default:
                 break;
         }
         return NaN;
+    }
+
+    public toString(toUnit: PressureUnits = PressureUnits.Pascals): string {
+
+        switch (toUnit) {
+            
+            case PressureUnits.Pascals:
+                return this.Pascals + ` Pa`;
+            case PressureUnits.Atmospheres:
+                return this.Atmospheres + ` atm`;
+            case PressureUnits.Bars:
+                return this.Bars + ` bar`;
+            case PressureUnits.KilogramsForcePerSquareMeter:
+                return this.KilogramsForcePerSquareMeter + ` kgf/m²`;
+            case PressureUnits.KilogramsForcePerSquareCentimeter:
+                return this.KilogramsForcePerSquareCentimeter + ` kgf/cm²`;
+            case PressureUnits.KilogramsForcePerSquareMillimeter:
+                return this.KilogramsForcePerSquareMillimeter + ` kgf/mm²`;
+            case PressureUnits.NewtonsPerSquareMeter:
+                return this.NewtonsPerSquareMeter + ` N/m²`;
+            case PressureUnits.NewtonsPerSquareCentimeter:
+                return this.NewtonsPerSquareCentimeter + ` N/cm²`;
+            case PressureUnits.NewtonsPerSquareMillimeter:
+                return this.NewtonsPerSquareMillimeter + ` N/mm²`;
+            case PressureUnits.TechnicalAtmospheres:
+                return this.TechnicalAtmospheres + ` at`;
+            case PressureUnits.Torrs:
+                return this.Torrs + ` torr`;
+            case PressureUnits.PoundsForcePerSquareInch:
+                return this.PoundsForcePerSquareInch + ` psi`;
+            case PressureUnits.PoundsForcePerSquareFoot:
+                return this.PoundsForcePerSquareFoot + ` lb/ft²`;
+            case PressureUnits.TonnesForcePerSquareMillimeter:
+                return this.TonnesForcePerSquareMillimeter + ` tf/mm²`;
+            case PressureUnits.TonnesForcePerSquareMeter:
+                return this.TonnesForcePerSquareMeter + ` tf/m²`;
+            case PressureUnits.MetersOfHead:
+                return this.MetersOfHead + ` m of head`;
+            case PressureUnits.TonnesForcePerSquareCentimeter:
+                return this.TonnesForcePerSquareCentimeter + ` tf/cm²`;
+            case PressureUnits.FeetOfHead:
+                return this.FeetOfHead + ` ft of head`;
+            case PressureUnits.MillimetersOfMercury:
+                return this.MillimetersOfMercury + ` mmHg`;
+            case PressureUnits.InchesOfMercury:
+                return this.InchesOfMercury + ` inHg`;
+            case PressureUnits.DynesPerSquareCentimeter:
+                return this.DynesPerSquareCentimeter + ` dyn/cm²`;
+            case PressureUnits.PoundsPerInchSecondSquared:
+                return this.PoundsPerInchSecondSquared + ` lbm/(in·s²)`;
+            case PressureUnits.InchesOfWaterColumn:
+                return this.InchesOfWaterColumn + ` wc`;
+            case PressureUnits.Micropascal:
+                return this.Micropascal + ` Pa`;
+            case PressureUnits.Decapascal:
+                return this.Decapascal + ` Pa`;
+            case PressureUnits.Hectopascal:
+                return this.Hectopascal + ` Pa`;
+            case PressureUnits.Kilopascal:
+                return this.Kilopascal + ` Pa`;
+            case PressureUnits.Megapascal:
+                return this.Megapascal + ` Pa`;
+            case PressureUnits.Gigapascal:
+                return this.Gigapascal + ` Pa`;
+            case PressureUnits.Microbar:
+                return this.Microbar + ` bar`;
+            case PressureUnits.Centibar:
+                return this.Centibar + ` bar`;
+            case PressureUnits.Decibar:
+                return this.Decibar + ` bar`;
+            case PressureUnits.Kilobar:
+                return this.Kilobar + ` bar`;
+            case PressureUnits.Megabar:
+                return this.Megabar + ` bar`;
+            case PressureUnits.KilonewtonPerSquareMeter:
+                return this.KilonewtonPerSquareMeter + ` N/m²`;
+            case PressureUnits.MeganewtonPerSquareMeter:
+                return this.MeganewtonPerSquareMeter + ` N/m²`;
+            case PressureUnits.KilonewtonPerSquareCentimeter:
+                return this.KilonewtonPerSquareCentimeter + ` N/cm²`;
+            case PressureUnits.KilonewtonPerSquareMillimeter:
+                return this.KilonewtonPerSquareMillimeter + ` N/mm²`;
+            case PressureUnits.KilopoundForcePerSquareInch:
+                return this.KilopoundForcePerSquareInch + ` psi`;
+            case PressureUnits.KilopoundForcePerSquareFoot:
+                return this.KilopoundForcePerSquareFoot + ` lb/ft²`;
+        default:
+            break;
+        }
+        return this.value.toString();
     }
 }
