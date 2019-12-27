@@ -17,5 +17,7 @@
     "ts-morph": "^6.0.2",
     "fs-extra": "^8.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "sync-request": "^6.1.0"
+  }
 }
