@@ -56,7 +56,10 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
 
             SingularName: `${prefix}${pascalToCamelCase(unit.SingularName)}`,
             PluralName: `${prefix}${pascalToCamelCase(unit.PluralName)}`,
-            Localization: unit.Localization,
+            Localization: [{
+                Culture : 'en-US',
+                Abbreviations : [''],
+            }],
         })
     }
 
