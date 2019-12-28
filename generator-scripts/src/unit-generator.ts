@@ -12,6 +12,7 @@ import {
     JSDocStructure
 } from "ts-morph";
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
+import { pascalToCamelCase } from "./utiles";
 
 /**
  * Get the lazyload var name for the given unit.
@@ -85,7 +86,7 @@ function buildUnitCreatorsMethods(unitName: string, enumName: string, units: Uni
                 kind: StructureKind.JSDocTag,
                 tagName: 'param',
                 text: `value The unit as ${unit.pluralName} to create a new ${unitName} from.`
-            },{
+            }, {
                 kind: StructureKind.JSDocTag,
                 tagName: 'returns',
                 text: `The new ${unitName} instance.`
@@ -283,12 +284,144 @@ return this.value.toString();`,
 }
 
 /**
+ * Build the 'equals' method.
+ * @param unitName The unit name.
+ * @returns The 'equals' method structure.
+ */
+function buildEqualsMethod(unitName: string): MethodDeclarationStructure {
+
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: `Check if the given ${unitName} are equals to the current ${unitName}.`,
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `${pascalToCamelCase(unitName)} The other ${unitName}.`
+        }, {
+            kind: StructureKind.JSDocTag,
+            tagName: 'returns',
+            text: `True if the given ${unitName} are equal to the current ${unitName}.`
+        }],
+    };
+
+    return {
+        kind: StructureKind.Method,
+        name: 'equals',
+        scope: Scope.Public,
+        parameters: [{
+            name: `${pascalToCamelCase(unitName)}`,
+            type: unitName,
+        }],
+        returnType: 'boolean',
+        docs: [docs],
+        statements: `return this.value === ${pascalToCamelCase(unitName)}.BaseValue;`,
+    };
+}
+
+/**
+ * Build the 'compareTo' method.
+ * @param unitName The unit name.
+ * @returns The 'compareTo' method structure.
+ */
+function buildCompareToMethod(unitName: string): MethodDeclarationStructure {
+
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: `Compare the given ${unitName} against the current ${unitName}.`,
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `${pascalToCamelCase(unitName)} The other ${unitName}.`
+        }, {
+            kind: StructureKind.JSDocTag,
+            tagName: 'returns',
+            text: `0 if they are equal, -1 if the current ${unitName} is less then other, 1 if the current ${unitName} is greater then other.`
+        }],
+    };
+
+    return {
+        kind: StructureKind.Method,
+        name: 'compareTo',
+        scope: Scope.Public,
+        parameters: [{
+            name: `${pascalToCamelCase(unitName)}`,
+            type: unitName,
+        }],
+        returnType: 'number',
+        docs: [docs],
+        statements: `
+if (this.value > ${pascalToCamelCase(unitName)}.BaseValue)
+    return 1;
+if (this.value < ${pascalToCamelCase(unitName)}.BaseValue)
+    return -1;
+return 0;`,
+    };
+}
+
+/**
+ * Build the basic arithmetics methods. 
+ * @param unitName The unit name.
+ * @returns The arithmetic methods structure array. 
+ */
+function buildArithmeticsMethods(unitName: string): MethodDeclarationStructure[] {
+    const arithmeticActions = [{
+        operator: '+',
+        name: 'Add'
+    }, {
+        operator: '-',
+        name: 'Subtract'
+    }, {
+        operator: '*',
+        name: 'Multiply'
+    }, {
+        operator: '/',
+        name: 'Divide'
+    }, {
+        operator: '%',
+        name: 'Modulo'
+    }, {
+        operator: '**',
+        name: 'Pow'
+    }];
+
+    return arithmeticActions.map((action): MethodDeclarationStructure => {
+        const docs: JSDocStructure = {
+            kind: StructureKind.JSDoc,
+            description: `${action.name} the given ${unitName} with the current ${unitName}.`,
+            tags: [{
+                kind: StructureKind.JSDocTag,
+                tagName: 'param',
+                text: `${pascalToCamelCase(unitName)} The other ${unitName}.`
+            }, {
+                kind: StructureKind.JSDocTag,
+                tagName: 'returns',
+                text: `A new ${unitName} instance with the results.`
+            }],
+        };
+
+        return {
+            kind: StructureKind.Method,
+            name: `${pascalToCamelCase(action.name)}`,
+            scope: Scope.Public,
+            parameters: [{
+                name: `${pascalToCamelCase(unitName)}`,
+                type: unitName,
+            }],
+            returnType: unitName,
+            docs: [docs],
+            statements: `return new ${unitName}(this.value ${action.operator} ${pascalToCamelCase(unitName)}.BaseValue)`,
+        };
+    })
+}
+
+/**
  * Build the unit constractor
  * @param unitName The unit name.
  * @param enumName The unit types enum name.
+ * @param baseUnitName The base unit enum type name.
  * @returns The constractor structure
  */
-function buildUnitCtor(unitName: string, enumName: string): ConstructorDeclarationStructure {
+function buildUnitCtor(unitName: string, enumName: string, baseUnitName: string): ConstructorDeclarationStructure {
     const docs: JSDocStructure = {
         kind: StructureKind.JSDoc,
         description: `Create a new ${unitName}.`,
@@ -299,7 +432,7 @@ function buildUnitCtor(unitName: string, enumName: string): ConstructorDeclarati
         }, {
             kind: StructureKind.JSDocTag,
             tagName: 'param',
-            text: `fromUnit The ‘${unitName}’ unit to create from.`
+            text: `fromUnit The ‘${unitName}’ unit to create from.\nThe default unit is ${baseUnitName}`,
         }]
     };
     return {
@@ -312,7 +445,8 @@ function buildUnitCtor(unitName: string, enumName: string): ConstructorDeclarati
             },
             {
                 name: 'fromUnit',
-                type: enumName
+                type: enumName,
+                initializer: `${enumName}.${baseUnitName}`,
             }
         ],
         docs: [docs],
@@ -328,13 +462,18 @@ this.value = this.convertToBase(value, fromUnit);`
  * @param unitsDestinationDirectory The generate file directory destination.
  * @param unitProperties The unit properties.
  */
-export function generateUnitClass(project: Project, unitsDestinationDirectory: string, unitProperties: UnitGenerateOptions) {
+export function generateUnitClass(project: Project,
+    unitsDestinationDirectory: string,
+    unitProperties: UnitGenerateOptions) {
 
     // Generate the unit units enum anme 
     const enumName = `${unitProperties.unitName}Units`;
+    const { units, unitName } = unitProperties;
+    const baseUnit = units.find((unit) =>
+        (unit.singularName === unitProperties.baseUnitSingularName)) as UnitProperties;
 
     // Build the enum stracture
-    const unitsEnum: EnumDeclarationStructure = buildEnum(enumName, unitProperties.units);
+    const unitsEnum = buildEnum(enumName, units);
 
     // Build the base value variable
     const valueMember: PropertyDeclarationStructure = {
@@ -345,7 +484,7 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
     };
 
     // Build vars for loadzy load converted value 
-    const lazyVars = buildLazyloadVars(unitProperties.units);
+    const lazyVars = buildLazyloadVars(units);
 
     // Build base value accessor
     const baseValueAccessor: GetAccessorDeclarationStructure = {
@@ -354,27 +493,35 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
         scope: Scope.Public,
         returnType: 'number',
         statements: `return this.value;`,
-        docs: [`The base value of ${unitProperties.unitName} is ${unitProperties.baseUnitSingularName}.\nThis accessor used when need any value for calculations and it's better to use directly the base value`],
+        docs: [`The base value of ${unitName} is ${baseUnit.pluralName}.\nThis accessor used when needs a value for calculations and it's better to use directly the base value`],
     };
 
     // Build the units get-accessors
-    const unitGetters: GetAccessorDeclarationStructure[] = buildUnitGetters(enumName, unitProperties.units);
+    const unitGetters = buildUnitGetters(enumName, units);
 
     // Build the constractor
-    const unitCtor: ConstructorDeclarationStructure = buildUnitCtor(unitProperties.unitName, enumName);
+    const unitCtor = buildUnitCtor(unitName, enumName, baseUnit.pluralName);
 
     // Build the static creator mathods  
-    const unitCreators: MethodDeclarationStructure[] = buildUnitCreatorsMethods(unitProperties.unitName, enumName, unitProperties.units);
+    const unitCreators = buildUnitCreatorsMethods(unitName, enumName, units);
 
     // Build the convert from base to unit method
-    const convertFromBaseMethod: MethodDeclarationStructure = buildConvertFromBaseMethod(enumName, unitProperties.units);
+    const convertFromBaseMethod = buildConvertFromBaseMethod(enumName, units);
 
     // Build the convert from unit to base method
-    const convertToBaseMethod: MethodDeclarationStructure = buildConvertToBaseMethod(enumName, unitProperties.units);
+    const convertToBaseMethod = buildConvertToBaseMethod(enumName, units);
+
+    // Build the equals method 
+    const equalsMethod = buildEqualsMethod(unitName);
+
+    // Build the compareTo method 
+    const compareToMethod = buildCompareToMethod(unitName);
+
+    // Build basic arithmetics methods
+    const arithmeticsMethods = buildArithmeticsMethods(unitName);
 
     // Build the class 'toString' method
-    const toStringMethod = buildToStringMethod(unitProperties.unitName, enumName, unitProperties.units, unitProperties.units.find((unit) =>
-        (unit.singularName === unitProperties.baseUnitSingularName)) as UnitProperties);
+    const toStringMethod = buildToStringMethod(unitName, enumName, units, baseUnit);
 
     // Build the unit class 
     const unitClass: ClassDeclarationStructure = {
@@ -383,7 +530,14 @@ export function generateUnitClass(project: Project, unitsDestinationDirectory: s
         properties: [valueMember, ...lazyVars],
         getAccessors: [baseValueAccessor, ...unitGetters],
         ctors: [unitCtor],
-        methods: [...unitCreators, convertFromBaseMethod, convertToBaseMethod, toStringMethod],
+        methods: [
+            ...unitCreators,
+            convertFromBaseMethod,
+            convertToBaseMethod,
+            toStringMethod,
+            equalsMethod,
+            compareToMethod,
+            ...arithmeticsMethods],
         isExported: true,
         docs: [unitProperties.JSDoc],
     }

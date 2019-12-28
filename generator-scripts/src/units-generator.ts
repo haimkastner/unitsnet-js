@@ -2,7 +2,7 @@ import { UnitTypeDefinition, UnitDefinition } from "./models/units-definition";
 import { generateUnitClass } from './unit-generator';
 import { Project } from "ts-morph";
 import { UnitProperties } from "./models/units-properties";
-
+import { pascalToCamelCase } from './utiles';
 /**
  * The factor between unit and his prefix.
  */
@@ -54,8 +54,8 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
             FromUnitToBaseFunc: fromUnitPrefixToBaseFormula,
             FromBaseToUnitFunc: fromBaseToUnitPrefixFormula,
 
-            SingularName: `${prefix}${unit.SingularName[0].toLowerCase() + unit.SingularName.slice(1)}`,
-            PluralName: `${prefix}${unit.PluralName[0].toLowerCase() + unit.PluralName.slice(1)}`,
+            SingularName: `${prefix}${pascalToCamelCase(unit.SingularName)}`,
+            PluralName: `${prefix}${pascalToCamelCase(unit.PluralName)}`,
             Localization: unit.Localization,
         })
     }
