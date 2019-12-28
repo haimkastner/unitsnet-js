@@ -25,16 +25,17 @@ export class ThermalResistance {
      * Create a new ThermalResistance.
      * @param value The value.
      * @param fromUnit The ‘ThermalResistance’ unit to create from.
+     * The default unit is SquareMeterKelvinsPerKilowatt
      */
-    public constructor(value: number, fromUnit: ThermalResistanceUnits) {
+    public constructor(value: number, fromUnit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of ThermalResistance is SquareMeterKelvinPerKilowatt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ThermalResistance is SquareMeterKelvinsPerKilowatt.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -193,5 +194,82 @@ export class ThermalResistance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ThermalResistance are equals to the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns True if the given ThermalResistance are equal to the current ThermalResistance.
+     */
+    public equals(thermalResistance: ThermalResistance): boolean {
+        return this.value === thermalResistance.BaseValue;
+    }
+
+    /**
+     * Compare the given ThermalResistance against the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns 0 if they are equal, -1 if the current ThermalResistance is less then other, 1 if the current ThermalResistance is greater then other.
+     */
+    public compareTo(thermalResistance: ThermalResistance): number {
+
+        if (this.value > thermalResistance.BaseValue)
+            return 1;
+        if (this.value < thermalResistance.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    public add(thermalResistance: ThermalResistance): ThermalResistance {
+        return new ThermalResistance(this.value + thermalResistance.BaseValue)
+    }
+
+    /**
+     * Subtract the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    public subtract(thermalResistance: ThermalResistance): ThermalResistance {
+        return new ThermalResistance(this.value - thermalResistance.BaseValue)
+    }
+
+    /**
+     * Multiply the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    public multiply(thermalResistance: ThermalResistance): ThermalResistance {
+        return new ThermalResistance(this.value * thermalResistance.BaseValue)
+    }
+
+    /**
+     * Divide the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    public divide(thermalResistance: ThermalResistance): ThermalResistance {
+        return new ThermalResistance(this.value / thermalResistance.BaseValue)
+    }
+
+    /**
+     * Modulo the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    public modulo(thermalResistance: ThermalResistance): ThermalResistance {
+        return new ThermalResistance(this.value % thermalResistance.BaseValue)
+    }
+
+    /**
+     * Pow the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    public pow(thermalResistance: ThermalResistance): ThermalResistance {
+        return new ThermalResistance(this.value ** thermalResistance.BaseValue)
     }
 }

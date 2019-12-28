@@ -31,16 +31,17 @@ export class KinematicViscosity {
      * Create a new KinematicViscosity.
      * @param value The value.
      * @param fromUnit The ‘KinematicViscosity’ unit to create from.
+     * The default unit is SquareMetersPerSecond
      */
-    public constructor(value: number, fromUnit: KinematicViscosityUnits) {
+    public constructor(value: number, fromUnit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of KinematicViscosity is SquareMeterPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of KinematicViscosity is SquareMetersPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -234,18 +235,95 @@ export class KinematicViscosity {
             case KinematicViscosityUnits.Stokes:
                 return this.Stokes + ` St`;
             case KinematicViscosityUnits.Nanostokes:
-                return this.Nanostokes + ` St`;
+                return this.Nanostokes + ` `;
             case KinematicViscosityUnits.Microstokes:
-                return this.Microstokes + ` St`;
+                return this.Microstokes + ` `;
             case KinematicViscosityUnits.Centistokes:
-                return this.Centistokes + ` St`;
+                return this.Centistokes + ` `;
             case KinematicViscosityUnits.Decistokes:
-                return this.Decistokes + ` St`;
+                return this.Decistokes + ` `;
             case KinematicViscosityUnits.Kilostokes:
-                return this.Kilostokes + ` St`;
+                return this.Kilostokes + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given KinematicViscosity are equals to the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns True if the given KinematicViscosity are equal to the current KinematicViscosity.
+     */
+    public equals(kinematicViscosity: KinematicViscosity): boolean {
+        return this.value === kinematicViscosity.BaseValue;
+    }
+
+    /**
+     * Compare the given KinematicViscosity against the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns 0 if they are equal, -1 if the current KinematicViscosity is less then other, 1 if the current KinematicViscosity is greater then other.
+     */
+    public compareTo(kinematicViscosity: KinematicViscosity): number {
+
+        if (this.value > kinematicViscosity.BaseValue)
+            return 1;
+        if (this.value < kinematicViscosity.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    public add(kinematicViscosity: KinematicViscosity): KinematicViscosity {
+        return new KinematicViscosity(this.value + kinematicViscosity.BaseValue)
+    }
+
+    /**
+     * Subtract the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    public subtract(kinematicViscosity: KinematicViscosity): KinematicViscosity {
+        return new KinematicViscosity(this.value - kinematicViscosity.BaseValue)
+    }
+
+    /**
+     * Multiply the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    public multiply(kinematicViscosity: KinematicViscosity): KinematicViscosity {
+        return new KinematicViscosity(this.value * kinematicViscosity.BaseValue)
+    }
+
+    /**
+     * Divide the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    public divide(kinematicViscosity: KinematicViscosity): KinematicViscosity {
+        return new KinematicViscosity(this.value / kinematicViscosity.BaseValue)
+    }
+
+    /**
+     * Modulo the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    public modulo(kinematicViscosity: KinematicViscosity): KinematicViscosity {
+        return new KinematicViscosity(this.value % kinematicViscosity.BaseValue)
+    }
+
+    /**
+     * Pow the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    public pow(kinematicViscosity: KinematicViscosity): KinematicViscosity {
+        return new KinematicViscosity(this.value ** kinematicViscosity.BaseValue)
     }
 }

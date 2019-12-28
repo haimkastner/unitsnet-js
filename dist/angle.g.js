@@ -34,8 +34,9 @@ class Angle {
      * Create a new Angle.
      * @param value The value.
      * @param fromUnit The ‘Angle’ unit to create from.
+     * The default unit is Degrees
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = AngleUnits.Degrees) {
         this.radiansLazy = null;
         this.degreesLazy = null;
         this.arcminutesLazy = null;
@@ -53,8 +54,8 @@ class Angle {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Angle is Degree.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Angle is Degrees.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -335,21 +336,89 @@ class Angle {
             case AngleUnits.Revolutions:
                 return this.Revolutions + ` r`;
             case AngleUnits.Nanoradians:
-                return this.Nanoradians + ` rad`;
+                return this.Nanoradians + ` `;
             case AngleUnits.Microradians:
-                return this.Microradians + ` rad`;
+                return this.Microradians + ` `;
             case AngleUnits.Centiradians:
-                return this.Centiradians + ` rad`;
+                return this.Centiradians + ` `;
             case AngleUnits.Deciradians:
-                return this.Deciradians + ` rad`;
+                return this.Deciradians + ` `;
             case AngleUnits.Nanodegrees:
-                return this.Nanodegrees + ` °`;
+                return this.Nanodegrees + ` `;
             case AngleUnits.Microdegrees:
-                return this.Microdegrees + ` °`;
+                return this.Microdegrees + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Angle are equals to the current Angle.
+     * @param angle The other Angle.
+     * @returns True if the given Angle are equal to the current Angle.
+     */
+    equals(angle) {
+        return this.value === angle.BaseValue;
+    }
+    /**
+     * Compare the given Angle against the current Angle.
+     * @param angle The other Angle.
+     * @returns 0 if they are equal, -1 if the current Angle is less then other, 1 if the current Angle is greater then other.
+     */
+    compareTo(angle) {
+        if (this.value > angle.BaseValue)
+            return 1;
+        if (this.value < angle.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    add(angle) {
+        return new Angle(this.value + angle.BaseValue);
+    }
+    /**
+     * Subtract the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    subtract(angle) {
+        return new Angle(this.value - angle.BaseValue);
+    }
+    /**
+     * Multiply the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    multiply(angle) {
+        return new Angle(this.value * angle.BaseValue);
+    }
+    /**
+     * Divide the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    divide(angle) {
+        return new Angle(this.value / angle.BaseValue);
+    }
+    /**
+     * Modulo the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    modulo(angle) {
+        return new Angle(this.value % angle.BaseValue);
+    }
+    /**
+     * Pow the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    pow(angle) {
+        return new Angle(this.value ** angle.BaseValue);
     }
 }
 exports.Angle = Angle;

@@ -49,16 +49,17 @@ export class AmountOfSubstance {
      * Create a new AmountOfSubstance.
      * @param value The value.
      * @param fromUnit The ‘AmountOfSubstance’ unit to create from.
+     * The default unit is Moles
      */
-    public constructor(value: number, fromUnit: AmountOfSubstanceUnits) {
+    public constructor(value: number, fromUnit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of AmountOfSubstance is Mole.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of AmountOfSubstance is Moles.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -384,30 +385,107 @@ export class AmountOfSubstance {
             case AmountOfSubstanceUnits.PoundMoles:
                 return this.PoundMoles + ` lbmol`;
             case AmountOfSubstanceUnits.Nanomoles:
-                return this.Nanomoles + ` mol`;
+                return this.Nanomoles + ` `;
             case AmountOfSubstanceUnits.Micromoles:
-                return this.Micromoles + ` mol`;
+                return this.Micromoles + ` `;
             case AmountOfSubstanceUnits.Centimoles:
-                return this.Centimoles + ` mol`;
+                return this.Centimoles + ` `;
             case AmountOfSubstanceUnits.Decimoles:
-                return this.Decimoles + ` mol`;
+                return this.Decimoles + ` `;
             case AmountOfSubstanceUnits.Kilomoles:
-                return this.Kilomoles + ` mol`;
+                return this.Kilomoles + ` `;
             case AmountOfSubstanceUnits.Megamoles:
-                return this.Megamoles + ` mol`;
+                return this.Megamoles + ` `;
             case AmountOfSubstanceUnits.NanopoundMoles:
-                return this.NanopoundMoles + ` lbmol`;
+                return this.NanopoundMoles + ` `;
             case AmountOfSubstanceUnits.MicropoundMoles:
-                return this.MicropoundMoles + ` lbmol`;
+                return this.MicropoundMoles + ` `;
             case AmountOfSubstanceUnits.CentipoundMoles:
-                return this.CentipoundMoles + ` lbmol`;
+                return this.CentipoundMoles + ` `;
             case AmountOfSubstanceUnits.DecipoundMoles:
-                return this.DecipoundMoles + ` lbmol`;
+                return this.DecipoundMoles + ` `;
             case AmountOfSubstanceUnits.KilopoundMoles:
-                return this.KilopoundMoles + ` lbmol`;
+                return this.KilopoundMoles + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given AmountOfSubstance are equals to the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns True if the given AmountOfSubstance are equal to the current AmountOfSubstance.
+     */
+    public equals(amountOfSubstance: AmountOfSubstance): boolean {
+        return this.value === amountOfSubstance.BaseValue;
+    }
+
+    /**
+     * Compare the given AmountOfSubstance against the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns 0 if they are equal, -1 if the current AmountOfSubstance is less then other, 1 if the current AmountOfSubstance is greater then other.
+     */
+    public compareTo(amountOfSubstance: AmountOfSubstance): number {
+
+        if (this.value > amountOfSubstance.BaseValue)
+            return 1;
+        if (this.value < amountOfSubstance.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    public add(amountOfSubstance: AmountOfSubstance): AmountOfSubstance {
+        return new AmountOfSubstance(this.value + amountOfSubstance.BaseValue)
+    }
+
+    /**
+     * Subtract the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    public subtract(amountOfSubstance: AmountOfSubstance): AmountOfSubstance {
+        return new AmountOfSubstance(this.value - amountOfSubstance.BaseValue)
+    }
+
+    /**
+     * Multiply the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    public multiply(amountOfSubstance: AmountOfSubstance): AmountOfSubstance {
+        return new AmountOfSubstance(this.value * amountOfSubstance.BaseValue)
+    }
+
+    /**
+     * Divide the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    public divide(amountOfSubstance: AmountOfSubstance): AmountOfSubstance {
+        return new AmountOfSubstance(this.value / amountOfSubstance.BaseValue)
+    }
+
+    /**
+     * Modulo the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    public modulo(amountOfSubstance: AmountOfSubstance): AmountOfSubstance {
+        return new AmountOfSubstance(this.value % amountOfSubstance.BaseValue)
+    }
+
+    /**
+     * Pow the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    public pow(amountOfSubstance: AmountOfSubstance): AmountOfSubstance {
+        return new AmountOfSubstance(this.value ** amountOfSubstance.BaseValue)
     }
 }

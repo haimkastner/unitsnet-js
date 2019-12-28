@@ -29,11 +29,12 @@ export declare class Entropy {
      * Create a new Entropy.
      * @param value The value.
      * @param fromUnit The ‘Entropy’ unit to create from.
+     * The default unit is JoulesPerKelvin
      */
-    constructor(value: number, fromUnit: EntropyUnits);
+    constructor(value: number, fromUnit?: EntropyUnits);
     /**
-     * The base value of Entropy is JoulePerKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Entropy is JoulesPerKelvin.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -109,5 +110,53 @@ export declare class Entropy {
      * @returns The string format of the Entropy.
      */
     toString(toUnit?: EntropyUnits): string;
+    /**
+     * Check if the given Entropy are equals to the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns True if the given Entropy are equal to the current Entropy.
+     */
+    equals(entropy: Entropy): boolean;
+    /**
+     * Compare the given Entropy against the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns 0 if they are equal, -1 if the current Entropy is less then other, 1 if the current Entropy is greater then other.
+     */
+    compareTo(entropy: Entropy): number;
+    /**
+     * Add the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    add(entropy: Entropy): Entropy;
+    /**
+     * Subtract the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    subtract(entropy: Entropy): Entropy;
+    /**
+     * Multiply the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    multiply(entropy: Entropy): Entropy;
+    /**
+     * Divide the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    divide(entropy: Entropy): Entropy;
+    /**
+     * Modulo the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    modulo(entropy: Entropy): Entropy;
+    /**
+     * Pow the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    pow(entropy: Entropy): Entropy;
 }
 //# sourceMappingURL=entropy.g.d.ts.map

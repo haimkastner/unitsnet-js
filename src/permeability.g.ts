@@ -13,16 +13,17 @@ export class Permeability {
      * Create a new Permeability.
      * @param value The value.
      * @param fromUnit The ‘Permeability’ unit to create from.
+     * The default unit is HenriesPerMeter
      */
-    public constructor(value: number, fromUnit: PermeabilityUnits) {
+    public constructor(value: number, fromUnit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Permeability is HenryPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Permeability is HenriesPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -85,5 +86,82 @@ export class Permeability {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Permeability are equals to the current Permeability.
+     * @param permeability The other Permeability.
+     * @returns True if the given Permeability are equal to the current Permeability.
+     */
+    public equals(permeability: Permeability): boolean {
+        return this.value === permeability.BaseValue;
+    }
+
+    /**
+     * Compare the given Permeability against the current Permeability.
+     * @param permeability The other Permeability.
+     * @returns 0 if they are equal, -1 if the current Permeability is less then other, 1 if the current Permeability is greater then other.
+     */
+    public compareTo(permeability: Permeability): number {
+
+        if (this.value > permeability.BaseValue)
+            return 1;
+        if (this.value < permeability.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Permeability with the current Permeability.
+     * @param permeability The other Permeability.
+     * @returns A new Permeability instance with the results.
+     */
+    public add(permeability: Permeability): Permeability {
+        return new Permeability(this.value + permeability.BaseValue)
+    }
+
+    /**
+     * Subtract the given Permeability with the current Permeability.
+     * @param permeability The other Permeability.
+     * @returns A new Permeability instance with the results.
+     */
+    public subtract(permeability: Permeability): Permeability {
+        return new Permeability(this.value - permeability.BaseValue)
+    }
+
+    /**
+     * Multiply the given Permeability with the current Permeability.
+     * @param permeability The other Permeability.
+     * @returns A new Permeability instance with the results.
+     */
+    public multiply(permeability: Permeability): Permeability {
+        return new Permeability(this.value * permeability.BaseValue)
+    }
+
+    /**
+     * Divide the given Permeability with the current Permeability.
+     * @param permeability The other Permeability.
+     * @returns A new Permeability instance with the results.
+     */
+    public divide(permeability: Permeability): Permeability {
+        return new Permeability(this.value / permeability.BaseValue)
+    }
+
+    /**
+     * Modulo the given Permeability with the current Permeability.
+     * @param permeability The other Permeability.
+     * @returns A new Permeability instance with the results.
+     */
+    public modulo(permeability: Permeability): Permeability {
+        return new Permeability(this.value % permeability.BaseValue)
+    }
+
+    /**
+     * Pow the given Permeability with the current Permeability.
+     * @param permeability The other Permeability.
+     * @returns A new Permeability instance with the results.
+     */
+    public pow(permeability: Permeability): Permeability {
+        return new Permeability(this.value ** permeability.BaseValue)
     }
 }

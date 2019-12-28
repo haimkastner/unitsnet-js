@@ -34,8 +34,9 @@ class Acceleration {
      * Create a new Acceleration.
      * @param value The value.
      * @param fromUnit The ‘Acceleration’ unit to create from.
+     * The default unit is MetersPerSecondSquared
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = AccelerationUnits.MetersPerSecondSquared) {
         this.meterspersecondsquaredLazy = null;
         this.inchespersecondsquaredLazy = null;
         this.feetpersecondsquaredLazy = null;
@@ -53,8 +54,8 @@ class Acceleration {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Acceleration is MeterPerSecondSquared.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Acceleration is MetersPerSecondSquared.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -337,19 +338,87 @@ class Acceleration {
             case AccelerationUnits.StandardGravity:
                 return this.StandardGravity + ` g`;
             case AccelerationUnits.NanometersPerSecondSquared:
-                return this.NanometersPerSecondSquared + ` m/s²`;
+                return this.NanometersPerSecondSquared + ` `;
             case AccelerationUnits.MicrometersPerSecondSquared:
-                return this.MicrometersPerSecondSquared + ` m/s²`;
+                return this.MicrometersPerSecondSquared + ` `;
             case AccelerationUnits.CentimetersPerSecondSquared:
-                return this.CentimetersPerSecondSquared + ` m/s²`;
+                return this.CentimetersPerSecondSquared + ` `;
             case AccelerationUnits.DecimetersPerSecondSquared:
-                return this.DecimetersPerSecondSquared + ` m/s²`;
+                return this.DecimetersPerSecondSquared + ` `;
             case AccelerationUnits.KilometersPerSecondSquared:
-                return this.KilometersPerSecondSquared + ` m/s²`;
+                return this.KilometersPerSecondSquared + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Acceleration are equals to the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns True if the given Acceleration are equal to the current Acceleration.
+     */
+    equals(acceleration) {
+        return this.value === acceleration.BaseValue;
+    }
+    /**
+     * Compare the given Acceleration against the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns 0 if they are equal, -1 if the current Acceleration is less then other, 1 if the current Acceleration is greater then other.
+     */
+    compareTo(acceleration) {
+        if (this.value > acceleration.BaseValue)
+            return 1;
+        if (this.value < acceleration.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    add(acceleration) {
+        return new Acceleration(this.value + acceleration.BaseValue);
+    }
+    /**
+     * Subtract the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    subtract(acceleration) {
+        return new Acceleration(this.value - acceleration.BaseValue);
+    }
+    /**
+     * Multiply the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    multiply(acceleration) {
+        return new Acceleration(this.value * acceleration.BaseValue);
+    }
+    /**
+     * Divide the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    divide(acceleration) {
+        return new Acceleration(this.value / acceleration.BaseValue);
+    }
+    /**
+     * Modulo the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    modulo(acceleration) {
+        return new Acceleration(this.value % acceleration.BaseValue);
+    }
+    /**
+     * Pow the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    pow(acceleration) {
+        return new Acceleration(this.value ** acceleration.BaseValue);
     }
 }
 exports.Acceleration = Acceleration;

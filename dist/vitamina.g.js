@@ -12,16 +12,17 @@ class VitaminA {
      * Create a new VitaminA.
      * @param value The value.
      * @param fromUnit The ‘VitaminA’ unit to create from.
+     * The default unit is InternationalUnits
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = VitaminAUnits.InternationalUnits) {
         this.internationalunitsLazy = null;
         if (isNaN(value))
             throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of VitaminA is InternationalUnit.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of VitaminA is InternationalUnits.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -75,6 +76,74 @@ class VitaminA {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given VitaminA are equals to the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns True if the given VitaminA are equal to the current VitaminA.
+     */
+    equals(vitaminA) {
+        return this.value === vitaminA.BaseValue;
+    }
+    /**
+     * Compare the given VitaminA against the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns 0 if they are equal, -1 if the current VitaminA is less then other, 1 if the current VitaminA is greater then other.
+     */
+    compareTo(vitaminA) {
+        if (this.value > vitaminA.BaseValue)
+            return 1;
+        if (this.value < vitaminA.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    add(vitaminA) {
+        return new VitaminA(this.value + vitaminA.BaseValue);
+    }
+    /**
+     * Subtract the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    subtract(vitaminA) {
+        return new VitaminA(this.value - vitaminA.BaseValue);
+    }
+    /**
+     * Multiply the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    multiply(vitaminA) {
+        return new VitaminA(this.value * vitaminA.BaseValue);
+    }
+    /**
+     * Divide the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    divide(vitaminA) {
+        return new VitaminA(this.value / vitaminA.BaseValue);
+    }
+    /**
+     * Modulo the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    modulo(vitaminA) {
+        return new VitaminA(this.value % vitaminA.BaseValue);
+    }
+    /**
+     * Pow the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    pow(vitaminA) {
+        return new VitaminA(this.value ** vitaminA.BaseValue);
     }
 }
 exports.VitaminA = VitaminA;

@@ -17,11 +17,12 @@ export declare class BrakeSpecificFuelConsumption {
      * Create a new BrakeSpecificFuelConsumption.
      * @param value The value.
      * @param fromUnit The ‘BrakeSpecificFuelConsumption’ unit to create from.
+     * The default unit is KilogramsPerJoule
      */
-    constructor(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits);
+    constructor(value: number, fromUnit?: BrakeSpecificFuelConsumptionUnits);
     /**
-     * The base value of BrakeSpecificFuelConsumption is KilogramPerJoule.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of BrakeSpecificFuelConsumption is KilogramsPerJoule.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class BrakeSpecificFuelConsumption {
      * @returns The string format of the BrakeSpecificFuelConsumption.
      */
     toString(toUnit?: BrakeSpecificFuelConsumptionUnits): string;
+    /**
+     * Check if the given BrakeSpecificFuelConsumption are equals to the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns True if the given BrakeSpecificFuelConsumption are equal to the current BrakeSpecificFuelConsumption.
+     */
+    equals(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): boolean;
+    /**
+     * Compare the given BrakeSpecificFuelConsumption against the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns 0 if they are equal, -1 if the current BrakeSpecificFuelConsumption is less then other, 1 if the current BrakeSpecificFuelConsumption is greater then other.
+     */
+    compareTo(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): number;
+    /**
+     * Add the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    add(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption;
+    /**
+     * Subtract the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    subtract(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption;
+    /**
+     * Multiply the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    multiply(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption;
+    /**
+     * Divide the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    divide(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption;
+    /**
+     * Modulo the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    modulo(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption;
+    /**
+     * Pow the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    pow(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption;
 }
 //# sourceMappingURL=brakespecificfuelconsumption.g.d.ts.map

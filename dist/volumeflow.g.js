@@ -104,8 +104,9 @@ class VolumeFlow {
      * Create a new VolumeFlow.
      * @param value The value.
      * @param fromUnit The ‘VolumeFlow’ unit to create from.
+     * The default unit is CubicMetersPerSecond
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = VolumeFlowUnits.CubicMetersPerSecond) {
         this.cubicmeterspersecondLazy = null;
         this.cubicmetersperminuteLazy = null;
         this.cubicmetersperhourLazy = null;
@@ -158,8 +159,8 @@ class VolumeFlow {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of VolumeFlow is CubicMeterPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of VolumeFlow is CubicMetersPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -1198,33 +1199,101 @@ class VolumeFlow {
             case VolumeFlowUnits.AcreFeetPerDay:
                 return this.AcreFeetPerDay + ` af/d`;
             case VolumeFlowUnits.NanolitersPerMinute:
-                return this.NanolitersPerMinute + ` L/min`;
+                return this.NanolitersPerMinute + ` `;
             case VolumeFlowUnits.MicrolitersPerMinute:
-                return this.MicrolitersPerMinute + ` L/min`;
+                return this.MicrolitersPerMinute + ` `;
             case VolumeFlowUnits.CentilitersPerMinute:
-                return this.CentilitersPerMinute + ` L/min`;
+                return this.CentilitersPerMinute + ` `;
             case VolumeFlowUnits.DecilitersPerMinute:
-                return this.DecilitersPerMinute + ` L/min`;
+                return this.DecilitersPerMinute + ` `;
             case VolumeFlowUnits.KilolitersPerMinute:
-                return this.KilolitersPerMinute + ` L/min`;
+                return this.KilolitersPerMinute + ` `;
             case VolumeFlowUnits.NanolitersPerDay:
-                return this.NanolitersPerDay + ` l/day`;
+                return this.NanolitersPerDay + ` `;
             case VolumeFlowUnits.MicrolitersPerDay:
-                return this.MicrolitersPerDay + ` l/day`;
+                return this.MicrolitersPerDay + ` `;
             case VolumeFlowUnits.CentilitersPerDay:
-                return this.CentilitersPerDay + ` l/day`;
+                return this.CentilitersPerDay + ` `;
             case VolumeFlowUnits.DecilitersPerDay:
-                return this.DecilitersPerDay + ` l/day`;
+                return this.DecilitersPerDay + ` `;
             case VolumeFlowUnits.KilolitersPerDay:
-                return this.KilolitersPerDay + ` l/day`;
+                return this.KilolitersPerDay + ` `;
             case VolumeFlowUnits.MegalitersPerDay:
-                return this.MegalitersPerDay + ` l/day`;
+                return this.MegalitersPerDay + ` `;
             case VolumeFlowUnits.MegaukGallonsPerSecond:
-                return this.MegaukGallonsPerSecond + ` gal (imp.)/s`;
+                return this.MegaukGallonsPerSecond + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given VolumeFlow are equals to the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns True if the given VolumeFlow are equal to the current VolumeFlow.
+     */
+    equals(volumeFlow) {
+        return this.value === volumeFlow.BaseValue;
+    }
+    /**
+     * Compare the given VolumeFlow against the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns 0 if they are equal, -1 if the current VolumeFlow is less then other, 1 if the current VolumeFlow is greater then other.
+     */
+    compareTo(volumeFlow) {
+        if (this.value > volumeFlow.BaseValue)
+            return 1;
+        if (this.value < volumeFlow.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    add(volumeFlow) {
+        return new VolumeFlow(this.value + volumeFlow.BaseValue);
+    }
+    /**
+     * Subtract the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    subtract(volumeFlow) {
+        return new VolumeFlow(this.value - volumeFlow.BaseValue);
+    }
+    /**
+     * Multiply the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    multiply(volumeFlow) {
+        return new VolumeFlow(this.value * volumeFlow.BaseValue);
+    }
+    /**
+     * Divide the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    divide(volumeFlow) {
+        return new VolumeFlow(this.value / volumeFlow.BaseValue);
+    }
+    /**
+     * Modulo the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    modulo(volumeFlow) {
+        return new VolumeFlow(this.value % volumeFlow.BaseValue);
+    }
+    /**
+     * Pow the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    pow(volumeFlow) {
+        return new VolumeFlow(this.value ** volumeFlow.BaseValue);
     }
 }
 exports.VolumeFlow = VolumeFlow;

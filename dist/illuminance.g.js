@@ -16,8 +16,9 @@ class Illuminance {
      * Create a new Illuminance.
      * @param value The value.
      * @param fromUnit The ‘Illuminance’ unit to create from.
+     * The default unit is Lux
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = IlluminanceUnits.Lux) {
         this.luxLazy = null;
         this.kiloluxLazy = null;
         this.megaluxLazy = null;
@@ -27,7 +28,7 @@ class Illuminance {
     }
     /**
      * The base value of Illuminance is Lux.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -118,13 +119,81 @@ class Illuminance {
             case IlluminanceUnits.Lux:
                 return this.Lux + ` lx`;
             case IlluminanceUnits.Kilolux:
-                return this.Kilolux + ` lx`;
+                return this.Kilolux + ` `;
             case IlluminanceUnits.Megalux:
-                return this.Megalux + ` lx`;
+                return this.Megalux + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Illuminance are equals to the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns True if the given Illuminance are equal to the current Illuminance.
+     */
+    equals(illuminance) {
+        return this.value === illuminance.BaseValue;
+    }
+    /**
+     * Compare the given Illuminance against the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns 0 if they are equal, -1 if the current Illuminance is less then other, 1 if the current Illuminance is greater then other.
+     */
+    compareTo(illuminance) {
+        if (this.value > illuminance.BaseValue)
+            return 1;
+        if (this.value < illuminance.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    add(illuminance) {
+        return new Illuminance(this.value + illuminance.BaseValue);
+    }
+    /**
+     * Subtract the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    subtract(illuminance) {
+        return new Illuminance(this.value - illuminance.BaseValue);
+    }
+    /**
+     * Multiply the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    multiply(illuminance) {
+        return new Illuminance(this.value * illuminance.BaseValue);
+    }
+    /**
+     * Divide the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    divide(illuminance) {
+        return new Illuminance(this.value / illuminance.BaseValue);
+    }
+    /**
+     * Modulo the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    modulo(illuminance) {
+        return new Illuminance(this.value % illuminance.BaseValue);
+    }
+    /**
+     * Pow the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    pow(illuminance) {
+        return new Illuminance(this.value ** illuminance.BaseValue);
     }
 }
 exports.Illuminance = Illuminance;

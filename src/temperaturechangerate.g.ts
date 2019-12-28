@@ -37,16 +37,17 @@ export class TemperatureChangeRate {
      * Create a new TemperatureChangeRate.
      * @param value The value.
      * @param fromUnit The ‘TemperatureChangeRate’ unit to create from.
+     * The default unit is DegreesCelsiusPerSecond
      */
-    public constructor(value: number, fromUnit: TemperatureChangeRateUnits) {
+    public constructor(value: number, fromUnit: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of TemperatureChangeRate is DegreeCelsiusPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of TemperatureChangeRate is DegreesCelsiusPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -284,22 +285,99 @@ export class TemperatureChangeRate {
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
                 return this.DegreesCelsiusPerMinute + ` °C/min`;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
-                return this.NanodegreesCelsiusPerSecond + ` °C/s`;
+                return this.NanodegreesCelsiusPerSecond + ` `;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
-                return this.MicrodegreesCelsiusPerSecond + ` °C/s`;
+                return this.MicrodegreesCelsiusPerSecond + ` `;
             case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
-                return this.CentidegreesCelsiusPerSecond + ` °C/s`;
+                return this.CentidegreesCelsiusPerSecond + ` `;
             case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:
-                return this.DecidegreesCelsiusPerSecond + ` °C/s`;
+                return this.DecidegreesCelsiusPerSecond + ` `;
             case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond:
-                return this.DecadegreesCelsiusPerSecond + ` °C/s`;
+                return this.DecadegreesCelsiusPerSecond + ` `;
             case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond:
-                return this.HectodegreesCelsiusPerSecond + ` °C/s`;
+                return this.HectodegreesCelsiusPerSecond + ` `;
             case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond:
-                return this.KilodegreesCelsiusPerSecond + ` °C/s`;
+                return this.KilodegreesCelsiusPerSecond + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given TemperatureChangeRate are equals to the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns True if the given TemperatureChangeRate are equal to the current TemperatureChangeRate.
+     */
+    public equals(temperatureChangeRate: TemperatureChangeRate): boolean {
+        return this.value === temperatureChangeRate.BaseValue;
+    }
+
+    /**
+     * Compare the given TemperatureChangeRate against the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns 0 if they are equal, -1 if the current TemperatureChangeRate is less then other, 1 if the current TemperatureChangeRate is greater then other.
+     */
+    public compareTo(temperatureChangeRate: TemperatureChangeRate): number {
+
+        if (this.value > temperatureChangeRate.BaseValue)
+            return 1;
+        if (this.value < temperatureChangeRate.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    public add(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate {
+        return new TemperatureChangeRate(this.value + temperatureChangeRate.BaseValue)
+    }
+
+    /**
+     * Subtract the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    public subtract(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate {
+        return new TemperatureChangeRate(this.value - temperatureChangeRate.BaseValue)
+    }
+
+    /**
+     * Multiply the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    public multiply(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate {
+        return new TemperatureChangeRate(this.value * temperatureChangeRate.BaseValue)
+    }
+
+    /**
+     * Divide the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    public divide(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate {
+        return new TemperatureChangeRate(this.value / temperatureChangeRate.BaseValue)
+    }
+
+    /**
+     * Modulo the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    public modulo(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate {
+        return new TemperatureChangeRate(this.value % temperatureChangeRate.BaseValue)
+    }
+
+    /**
+     * Pow the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    public pow(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate {
+        return new TemperatureChangeRate(this.value ** temperatureChangeRate.BaseValue)
     }
 }

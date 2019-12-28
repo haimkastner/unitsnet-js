@@ -44,11 +44,12 @@ export declare class Angle {
      * Create a new Angle.
      * @param value The value.
      * @param fromUnit The ‘Angle’ unit to create from.
+     * The default unit is Degrees
      */
-    constructor(value: number, fromUnit: AngleUnits);
+    constructor(value: number, fromUnit?: AngleUnits);
     /**
-     * The base value of Angle is Degree.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Angle is Degrees.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -169,5 +170,53 @@ export declare class Angle {
      * @returns The string format of the Angle.
      */
     toString(toUnit?: AngleUnits): string;
+    /**
+     * Check if the given Angle are equals to the current Angle.
+     * @param angle The other Angle.
+     * @returns True if the given Angle are equal to the current Angle.
+     */
+    equals(angle: Angle): boolean;
+    /**
+     * Compare the given Angle against the current Angle.
+     * @param angle The other Angle.
+     * @returns 0 if they are equal, -1 if the current Angle is less then other, 1 if the current Angle is greater then other.
+     */
+    compareTo(angle: Angle): number;
+    /**
+     * Add the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    add(angle: Angle): Angle;
+    /**
+     * Subtract the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    subtract(angle: Angle): Angle;
+    /**
+     * Multiply the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    multiply(angle: Angle): Angle;
+    /**
+     * Divide the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    divide(angle: Angle): Angle;
+    /**
+     * Modulo the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    modulo(angle: Angle): Angle;
+    /**
+     * Pow the given Angle with the current Angle.
+     * @param angle The other Angle.
+     * @returns A new Angle instance with the results.
+     */
+    pow(angle: Angle): Angle;
 }
 //# sourceMappingURL=angle.g.d.ts.map

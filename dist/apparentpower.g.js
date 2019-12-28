@@ -18,8 +18,9 @@ class ApparentPower {
      * Create a new ApparentPower.
      * @param value The value.
      * @param fromUnit The ‘ApparentPower’ unit to create from.
+     * The default unit is Voltamperes
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ApparentPowerUnits.Voltamperes) {
         this.voltamperesLazy = null;
         this.kilovoltamperesLazy = null;
         this.megavoltamperesLazy = null;
@@ -29,8 +30,8 @@ class ApparentPower {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ApparentPower is Voltampere.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ApparentPower is Voltamperes.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -141,15 +142,83 @@ class ApparentPower {
             case ApparentPowerUnits.Voltamperes:
                 return this.Voltamperes + ` VA`;
             case ApparentPowerUnits.Kilovoltamperes:
-                return this.Kilovoltamperes + ` VA`;
+                return this.Kilovoltamperes + ` `;
             case ApparentPowerUnits.Megavoltamperes:
-                return this.Megavoltamperes + ` VA`;
+                return this.Megavoltamperes + ` `;
             case ApparentPowerUnits.Gigavoltamperes:
-                return this.Gigavoltamperes + ` VA`;
+                return this.Gigavoltamperes + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ApparentPower are equals to the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns True if the given ApparentPower are equal to the current ApparentPower.
+     */
+    equals(apparentPower) {
+        return this.value === apparentPower.BaseValue;
+    }
+    /**
+     * Compare the given ApparentPower against the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns 0 if they are equal, -1 if the current ApparentPower is less then other, 1 if the current ApparentPower is greater then other.
+     */
+    compareTo(apparentPower) {
+        if (this.value > apparentPower.BaseValue)
+            return 1;
+        if (this.value < apparentPower.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    add(apparentPower) {
+        return new ApparentPower(this.value + apparentPower.BaseValue);
+    }
+    /**
+     * Subtract the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    subtract(apparentPower) {
+        return new ApparentPower(this.value - apparentPower.BaseValue);
+    }
+    /**
+     * Multiply the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    multiply(apparentPower) {
+        return new ApparentPower(this.value * apparentPower.BaseValue);
+    }
+    /**
+     * Divide the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    divide(apparentPower) {
+        return new ApparentPower(this.value / apparentPower.BaseValue);
+    }
+    /**
+     * Modulo the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    modulo(apparentPower) {
+        return new ApparentPower(this.value % apparentPower.BaseValue);
+    }
+    /**
+     * Pow the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    pow(apparentPower) {
+        return new ApparentPower(this.value ** apparentPower.BaseValue);
     }
 }
 exports.ApparentPower = ApparentPower;

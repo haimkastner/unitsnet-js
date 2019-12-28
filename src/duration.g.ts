@@ -37,16 +37,17 @@ export class Duration {
      * Create a new Duration.
      * @param value The value.
      * @param fromUnit The ‘Duration’ unit to create from.
+     * The default unit is Seconds
      */
-    public constructor(value: number, fromUnit: DurationUnits) {
+    public constructor(value: number, fromUnit: DurationUnits = DurationUnits.Seconds) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Duration is Second.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Duration is Seconds.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -294,12 +295,89 @@ export class Duration {
             case DurationUnits.Seconds:
                 return this.Seconds + ` s`;
             case DurationUnits.Nanoseconds:
-                return this.Nanoseconds + ` s`;
+                return this.Nanoseconds + ` `;
             case DurationUnits.Microseconds:
-                return this.Microseconds + ` s`;
+                return this.Microseconds + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Duration are equals to the current Duration.
+     * @param duration The other Duration.
+     * @returns True if the given Duration are equal to the current Duration.
+     */
+    public equals(duration: Duration): boolean {
+        return this.value === duration.BaseValue;
+    }
+
+    /**
+     * Compare the given Duration against the current Duration.
+     * @param duration The other Duration.
+     * @returns 0 if they are equal, -1 if the current Duration is less then other, 1 if the current Duration is greater then other.
+     */
+    public compareTo(duration: Duration): number {
+
+        if (this.value > duration.BaseValue)
+            return 1;
+        if (this.value < duration.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    public add(duration: Duration): Duration {
+        return new Duration(this.value + duration.BaseValue)
+    }
+
+    /**
+     * Subtract the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    public subtract(duration: Duration): Duration {
+        return new Duration(this.value - duration.BaseValue)
+    }
+
+    /**
+     * Multiply the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    public multiply(duration: Duration): Duration {
+        return new Duration(this.value * duration.BaseValue)
+    }
+
+    /**
+     * Divide the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    public divide(duration: Duration): Duration {
+        return new Duration(this.value / duration.BaseValue)
+    }
+
+    /**
+     * Modulo the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    public modulo(duration: Duration): Duration {
+        return new Duration(this.value % duration.BaseValue)
+    }
+
+    /**
+     * Pow the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    public pow(duration: Duration): Duration {
+        return new Duration(this.value ** duration.BaseValue)
     }
 }

@@ -35,11 +35,12 @@ export declare class TemperatureChangeRate {
      * Create a new TemperatureChangeRate.
      * @param value The value.
      * @param fromUnit The ‘TemperatureChangeRate’ unit to create from.
+     * The default unit is DegreesCelsiusPerSecond
      */
-    constructor(value: number, fromUnit: TemperatureChangeRateUnits);
+    constructor(value: number, fromUnit?: TemperatureChangeRateUnits);
     /**
-     * The base value of TemperatureChangeRate is DegreeCelsiusPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of TemperatureChangeRate is DegreesCelsiusPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -133,5 +134,53 @@ export declare class TemperatureChangeRate {
      * @returns The string format of the TemperatureChangeRate.
      */
     toString(toUnit?: TemperatureChangeRateUnits): string;
+    /**
+     * Check if the given TemperatureChangeRate are equals to the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns True if the given TemperatureChangeRate are equal to the current TemperatureChangeRate.
+     */
+    equals(temperatureChangeRate: TemperatureChangeRate): boolean;
+    /**
+     * Compare the given TemperatureChangeRate against the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns 0 if they are equal, -1 if the current TemperatureChangeRate is less then other, 1 if the current TemperatureChangeRate is greater then other.
+     */
+    compareTo(temperatureChangeRate: TemperatureChangeRate): number;
+    /**
+     * Add the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    add(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate;
+    /**
+     * Subtract the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    subtract(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate;
+    /**
+     * Multiply the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    multiply(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate;
+    /**
+     * Divide the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    divide(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate;
+    /**
+     * Modulo the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    modulo(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate;
+    /**
+     * Pow the given TemperatureChangeRate with the current TemperatureChangeRate.
+     * @param temperatureChangeRate The other TemperatureChangeRate.
+     * @returns A new TemperatureChangeRate instance with the results.
+     */
+    pow(temperatureChangeRate: TemperatureChangeRate): TemperatureChangeRate;
 }
 //# sourceMappingURL=temperaturechangerate.g.d.ts.map

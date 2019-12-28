@@ -20,11 +20,12 @@ export declare class ElectricCharge {
      * Create a new ElectricCharge.
      * @param value The value.
      * @param fromUnit The ‘ElectricCharge’ unit to create from.
+     * The default unit is Coulombs
      */
-    constructor(value: number, fromUnit: ElectricChargeUnits);
+    constructor(value: number, fromUnit?: ElectricChargeUnits);
     /**
-     * The base value of ElectricCharge is Coulomb.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricCharge is Coulombs.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -73,5 +74,53 @@ export declare class ElectricCharge {
      * @returns The string format of the ElectricCharge.
      */
     toString(toUnit?: ElectricChargeUnits): string;
+    /**
+     * Check if the given ElectricCharge are equals to the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns True if the given ElectricCharge are equal to the current ElectricCharge.
+     */
+    equals(electricCharge: ElectricCharge): boolean;
+    /**
+     * Compare the given ElectricCharge against the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns 0 if they are equal, -1 if the current ElectricCharge is less then other, 1 if the current ElectricCharge is greater then other.
+     */
+    compareTo(electricCharge: ElectricCharge): number;
+    /**
+     * Add the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    add(electricCharge: ElectricCharge): ElectricCharge;
+    /**
+     * Subtract the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    subtract(electricCharge: ElectricCharge): ElectricCharge;
+    /**
+     * Multiply the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    multiply(electricCharge: ElectricCharge): ElectricCharge;
+    /**
+     * Divide the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    divide(electricCharge: ElectricCharge): ElectricCharge;
+    /**
+     * Modulo the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    modulo(electricCharge: ElectricCharge): ElectricCharge;
+    /**
+     * Pow the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    pow(electricCharge: ElectricCharge): ElectricCharge;
 }
 //# sourceMappingURL=electriccharge.g.d.ts.map

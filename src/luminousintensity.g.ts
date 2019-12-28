@@ -13,8 +13,9 @@ export class LuminousIntensity {
      * Create a new LuminousIntensity.
      * @param value The value.
      * @param fromUnit The ‘LuminousIntensity’ unit to create from.
+     * The default unit is Candela
      */
-    public constructor(value: number, fromUnit: LuminousIntensityUnits) {
+    public constructor(value: number, fromUnit: LuminousIntensityUnits = LuminousIntensityUnits.Candela) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
@@ -22,7 +23,7 @@ export class LuminousIntensity {
 
     /**
      * The base value of LuminousIntensity is Candela.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -85,5 +86,82 @@ export class LuminousIntensity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given LuminousIntensity are equals to the current LuminousIntensity.
+     * @param luminousIntensity The other LuminousIntensity.
+     * @returns True if the given LuminousIntensity are equal to the current LuminousIntensity.
+     */
+    public equals(luminousIntensity: LuminousIntensity): boolean {
+        return this.value === luminousIntensity.BaseValue;
+    }
+
+    /**
+     * Compare the given LuminousIntensity against the current LuminousIntensity.
+     * @param luminousIntensity The other LuminousIntensity.
+     * @returns 0 if they are equal, -1 if the current LuminousIntensity is less then other, 1 if the current LuminousIntensity is greater then other.
+     */
+    public compareTo(luminousIntensity: LuminousIntensity): number {
+
+        if (this.value > luminousIntensity.BaseValue)
+            return 1;
+        if (this.value < luminousIntensity.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given LuminousIntensity with the current LuminousIntensity.
+     * @param luminousIntensity The other LuminousIntensity.
+     * @returns A new LuminousIntensity instance with the results.
+     */
+    public add(luminousIntensity: LuminousIntensity): LuminousIntensity {
+        return new LuminousIntensity(this.value + luminousIntensity.BaseValue)
+    }
+
+    /**
+     * Subtract the given LuminousIntensity with the current LuminousIntensity.
+     * @param luminousIntensity The other LuminousIntensity.
+     * @returns A new LuminousIntensity instance with the results.
+     */
+    public subtract(luminousIntensity: LuminousIntensity): LuminousIntensity {
+        return new LuminousIntensity(this.value - luminousIntensity.BaseValue)
+    }
+
+    /**
+     * Multiply the given LuminousIntensity with the current LuminousIntensity.
+     * @param luminousIntensity The other LuminousIntensity.
+     * @returns A new LuminousIntensity instance with the results.
+     */
+    public multiply(luminousIntensity: LuminousIntensity): LuminousIntensity {
+        return new LuminousIntensity(this.value * luminousIntensity.BaseValue)
+    }
+
+    /**
+     * Divide the given LuminousIntensity with the current LuminousIntensity.
+     * @param luminousIntensity The other LuminousIntensity.
+     * @returns A new LuminousIntensity instance with the results.
+     */
+    public divide(luminousIntensity: LuminousIntensity): LuminousIntensity {
+        return new LuminousIntensity(this.value / luminousIntensity.BaseValue)
+    }
+
+    /**
+     * Modulo the given LuminousIntensity with the current LuminousIntensity.
+     * @param luminousIntensity The other LuminousIntensity.
+     * @returns A new LuminousIntensity instance with the results.
+     */
+    public modulo(luminousIntensity: LuminousIntensity): LuminousIntensity {
+        return new LuminousIntensity(this.value % luminousIntensity.BaseValue)
+    }
+
+    /**
+     * Pow the given LuminousIntensity with the current LuminousIntensity.
+     * @param luminousIntensity The other LuminousIntensity.
+     * @returns A new LuminousIntensity instance with the results.
+     */
+    public pow(luminousIntensity: LuminousIntensity): LuminousIntensity {
+        return new LuminousIntensity(this.value ** luminousIntensity.BaseValue)
     }
 }

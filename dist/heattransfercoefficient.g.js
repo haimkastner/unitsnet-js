@@ -16,8 +16,9 @@ class HeatTransferCoefficient {
      * Create a new HeatTransferCoefficient.
      * @param value The value.
      * @param fromUnit The ‘HeatTransferCoefficient’ unit to create from.
+     * The default unit is WattsPerSquareMeterKelvin
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin) {
         this.wattspersquaremeterkelvinLazy = null;
         this.wattspersquaremetercelsiusLazy = null;
         this.btuspersquarefootdegreefahrenheitLazy = null;
@@ -26,8 +27,8 @@ class HeatTransferCoefficient {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of HeatTransferCoefficient is WattPerSquareMeterKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of HeatTransferCoefficient is WattsPerSquareMeterKelvin.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -125,6 +126,74 @@ class HeatTransferCoefficient {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given HeatTransferCoefficient are equals to the current HeatTransferCoefficient.
+     * @param heatTransferCoefficient The other HeatTransferCoefficient.
+     * @returns True if the given HeatTransferCoefficient are equal to the current HeatTransferCoefficient.
+     */
+    equals(heatTransferCoefficient) {
+        return this.value === heatTransferCoefficient.BaseValue;
+    }
+    /**
+     * Compare the given HeatTransferCoefficient against the current HeatTransferCoefficient.
+     * @param heatTransferCoefficient The other HeatTransferCoefficient.
+     * @returns 0 if they are equal, -1 if the current HeatTransferCoefficient is less then other, 1 if the current HeatTransferCoefficient is greater then other.
+     */
+    compareTo(heatTransferCoefficient) {
+        if (this.value > heatTransferCoefficient.BaseValue)
+            return 1;
+        if (this.value < heatTransferCoefficient.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given HeatTransferCoefficient with the current HeatTransferCoefficient.
+     * @param heatTransferCoefficient The other HeatTransferCoefficient.
+     * @returns A new HeatTransferCoefficient instance with the results.
+     */
+    add(heatTransferCoefficient) {
+        return new HeatTransferCoefficient(this.value + heatTransferCoefficient.BaseValue);
+    }
+    /**
+     * Subtract the given HeatTransferCoefficient with the current HeatTransferCoefficient.
+     * @param heatTransferCoefficient The other HeatTransferCoefficient.
+     * @returns A new HeatTransferCoefficient instance with the results.
+     */
+    subtract(heatTransferCoefficient) {
+        return new HeatTransferCoefficient(this.value - heatTransferCoefficient.BaseValue);
+    }
+    /**
+     * Multiply the given HeatTransferCoefficient with the current HeatTransferCoefficient.
+     * @param heatTransferCoefficient The other HeatTransferCoefficient.
+     * @returns A new HeatTransferCoefficient instance with the results.
+     */
+    multiply(heatTransferCoefficient) {
+        return new HeatTransferCoefficient(this.value * heatTransferCoefficient.BaseValue);
+    }
+    /**
+     * Divide the given HeatTransferCoefficient with the current HeatTransferCoefficient.
+     * @param heatTransferCoefficient The other HeatTransferCoefficient.
+     * @returns A new HeatTransferCoefficient instance with the results.
+     */
+    divide(heatTransferCoefficient) {
+        return new HeatTransferCoefficient(this.value / heatTransferCoefficient.BaseValue);
+    }
+    /**
+     * Modulo the given HeatTransferCoefficient with the current HeatTransferCoefficient.
+     * @param heatTransferCoefficient The other HeatTransferCoefficient.
+     * @returns A new HeatTransferCoefficient instance with the results.
+     */
+    modulo(heatTransferCoefficient) {
+        return new HeatTransferCoefficient(this.value % heatTransferCoefficient.BaseValue);
+    }
+    /**
+     * Pow the given HeatTransferCoefficient with the current HeatTransferCoefficient.
+     * @param heatTransferCoefficient The other HeatTransferCoefficient.
+     * @returns A new HeatTransferCoefficient instance with the results.
+     */
+    pow(heatTransferCoefficient) {
+        return new HeatTransferCoefficient(this.value ** heatTransferCoefficient.BaseValue);
     }
 }
 exports.HeatTransferCoefficient = HeatTransferCoefficient;

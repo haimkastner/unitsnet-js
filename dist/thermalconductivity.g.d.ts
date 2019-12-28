@@ -14,11 +14,12 @@ export declare class ThermalConductivity {
      * Create a new ThermalConductivity.
      * @param value The value.
      * @param fromUnit The ‘ThermalConductivity’ unit to create from.
+     * The default unit is WattsPerMeterKelvin
      */
-    constructor(value: number, fromUnit: ThermalConductivityUnits);
+    constructor(value: number, fromUnit?: ThermalConductivityUnits);
     /**
-     * The base value of ThermalConductivity is WattPerMeterKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ThermalConductivity is WattsPerMeterKelvin.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -49,5 +50,53 @@ export declare class ThermalConductivity {
      * @returns The string format of the ThermalConductivity.
      */
     toString(toUnit?: ThermalConductivityUnits): string;
+    /**
+     * Check if the given ThermalConductivity are equals to the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns True if the given ThermalConductivity are equal to the current ThermalConductivity.
+     */
+    equals(thermalConductivity: ThermalConductivity): boolean;
+    /**
+     * Compare the given ThermalConductivity against the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns 0 if they are equal, -1 if the current ThermalConductivity is less then other, 1 if the current ThermalConductivity is greater then other.
+     */
+    compareTo(thermalConductivity: ThermalConductivity): number;
+    /**
+     * Add the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    add(thermalConductivity: ThermalConductivity): ThermalConductivity;
+    /**
+     * Subtract the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    subtract(thermalConductivity: ThermalConductivity): ThermalConductivity;
+    /**
+     * Multiply the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    multiply(thermalConductivity: ThermalConductivity): ThermalConductivity;
+    /**
+     * Divide the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    divide(thermalConductivity: ThermalConductivity): ThermalConductivity;
+    /**
+     * Modulo the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    modulo(thermalConductivity: ThermalConductivity): ThermalConductivity;
+    /**
+     * Pow the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    pow(thermalConductivity: ThermalConductivity): ThermalConductivity;
 }
 //# sourceMappingURL=thermalconductivity.g.d.ts.map

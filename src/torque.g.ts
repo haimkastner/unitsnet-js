@@ -73,16 +73,17 @@ export class Torque {
      * Create a new Torque.
      * @param value The value.
      * @param fromUnit The ‘Torque’ unit to create from.
+     * The default unit is NewtonMeters
      */
-    public constructor(value: number, fromUnit: TorqueUnits) {
+    public constructor(value: number, fromUnit: TorqueUnits = TorqueUnits.NewtonMeters) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Torque is NewtonMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Torque is NewtonMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -602,28 +603,105 @@ export class Torque {
             case TorqueUnits.TonneForceMeters:
                 return this.TonneForceMeters + ` tf·m`;
             case TorqueUnits.KilonewtonMillimeters:
-                return this.KilonewtonMillimeters + ` N·mm`;
+                return this.KilonewtonMillimeters + ` `;
             case TorqueUnits.MeganewtonMillimeters:
-                return this.MeganewtonMillimeters + ` N·mm`;
+                return this.MeganewtonMillimeters + ` `;
             case TorqueUnits.KilonewtonCentimeters:
-                return this.KilonewtonCentimeters + ` N·cm`;
+                return this.KilonewtonCentimeters + ` `;
             case TorqueUnits.MeganewtonCentimeters:
-                return this.MeganewtonCentimeters + ` N·cm`;
+                return this.MeganewtonCentimeters + ` `;
             case TorqueUnits.KilonewtonMeters:
-                return this.KilonewtonMeters + ` N·m`;
+                return this.KilonewtonMeters + ` `;
             case TorqueUnits.MeganewtonMeters:
-                return this.MeganewtonMeters + ` N·m`;
+                return this.MeganewtonMeters + ` `;
             case TorqueUnits.KilopoundForceInches:
-                return this.KilopoundForceInches + ` lbf·in`;
+                return this.KilopoundForceInches + ` `;
             case TorqueUnits.MegapoundForceInches:
-                return this.MegapoundForceInches + ` lbf·in`;
+                return this.MegapoundForceInches + ` `;
             case TorqueUnits.KilopoundForceFeet:
-                return this.KilopoundForceFeet + ` lbf·ft`;
+                return this.KilopoundForceFeet + ` `;
             case TorqueUnits.MegapoundForceFeet:
-                return this.MegapoundForceFeet + ` lbf·ft`;
+                return this.MegapoundForceFeet + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Torque are equals to the current Torque.
+     * @param torque The other Torque.
+     * @returns True if the given Torque are equal to the current Torque.
+     */
+    public equals(torque: Torque): boolean {
+        return this.value === torque.BaseValue;
+    }
+
+    /**
+     * Compare the given Torque against the current Torque.
+     * @param torque The other Torque.
+     * @returns 0 if they are equal, -1 if the current Torque is less then other, 1 if the current Torque is greater then other.
+     */
+    public compareTo(torque: Torque): number {
+
+        if (this.value > torque.BaseValue)
+            return 1;
+        if (this.value < torque.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    public add(torque: Torque): Torque {
+        return new Torque(this.value + torque.BaseValue)
+    }
+
+    /**
+     * Subtract the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    public subtract(torque: Torque): Torque {
+        return new Torque(this.value - torque.BaseValue)
+    }
+
+    /**
+     * Multiply the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    public multiply(torque: Torque): Torque {
+        return new Torque(this.value * torque.BaseValue)
+    }
+
+    /**
+     * Divide the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    public divide(torque: Torque): Torque {
+        return new Torque(this.value / torque.BaseValue)
+    }
+
+    /**
+     * Modulo the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    public modulo(torque: Torque): Torque {
+        return new Torque(this.value % torque.BaseValue)
+    }
+
+    /**
+     * Pow the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    public pow(torque: Torque): Torque {
+        return new Torque(this.value ** torque.BaseValue)
     }
 }

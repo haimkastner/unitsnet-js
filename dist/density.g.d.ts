@@ -116,11 +116,12 @@ export declare class Density {
      * Create a new Density.
      * @param value The value.
      * @param fromUnit The ‘Density’ unit to create from.
+     * The default unit is KilogramsPerCubicMeter
      */
-    constructor(value: number, fromUnit: DensityUnits);
+    constructor(value: number, fromUnit?: DensityUnits);
     /**
-     * The base value of Density is KilogramPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Density is KilogramsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -457,5 +458,53 @@ export declare class Density {
      * @returns The string format of the Density.
      */
     toString(toUnit?: DensityUnits): string;
+    /**
+     * Check if the given Density are equals to the current Density.
+     * @param density The other Density.
+     * @returns True if the given Density are equal to the current Density.
+     */
+    equals(density: Density): boolean;
+    /**
+     * Compare the given Density against the current Density.
+     * @param density The other Density.
+     * @returns 0 if they are equal, -1 if the current Density is less then other, 1 if the current Density is greater then other.
+     */
+    compareTo(density: Density): number;
+    /**
+     * Add the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    add(density: Density): Density;
+    /**
+     * Subtract the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    subtract(density: Density): Density;
+    /**
+     * Multiply the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    multiply(density: Density): Density;
+    /**
+     * Divide the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    divide(density: Density): Density;
+    /**
+     * Modulo the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    modulo(density: Density): Density;
+    /**
+     * Pow the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    pow(density: Density): Density;
 }
 //# sourceMappingURL=density.g.d.ts.map

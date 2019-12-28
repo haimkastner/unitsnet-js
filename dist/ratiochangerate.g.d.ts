@@ -14,11 +14,12 @@ export declare class RatioChangeRate {
      * Create a new RatioChangeRate.
      * @param value The value.
      * @param fromUnit The ‘RatioChangeRate’ unit to create from.
+     * The default unit is DecimalFractionsPerSecond
      */
-    constructor(value: number, fromUnit: RatioChangeRateUnits);
+    constructor(value: number, fromUnit?: RatioChangeRateUnits);
     /**
-     * The base value of RatioChangeRate is DecimalFractionPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RatioChangeRate is DecimalFractionsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -49,5 +50,53 @@ export declare class RatioChangeRate {
      * @returns The string format of the RatioChangeRate.
      */
     toString(toUnit?: RatioChangeRateUnits): string;
+    /**
+     * Check if the given RatioChangeRate are equals to the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns True if the given RatioChangeRate are equal to the current RatioChangeRate.
+     */
+    equals(ratioChangeRate: RatioChangeRate): boolean;
+    /**
+     * Compare the given RatioChangeRate against the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns 0 if they are equal, -1 if the current RatioChangeRate is less then other, 1 if the current RatioChangeRate is greater then other.
+     */
+    compareTo(ratioChangeRate: RatioChangeRate): number;
+    /**
+     * Add the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    add(ratioChangeRate: RatioChangeRate): RatioChangeRate;
+    /**
+     * Subtract the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    subtract(ratioChangeRate: RatioChangeRate): RatioChangeRate;
+    /**
+     * Multiply the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    multiply(ratioChangeRate: RatioChangeRate): RatioChangeRate;
+    /**
+     * Divide the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    divide(ratioChangeRate: RatioChangeRate): RatioChangeRate;
+    /**
+     * Modulo the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    modulo(ratioChangeRate: RatioChangeRate): RatioChangeRate;
+    /**
+     * Pow the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    pow(ratioChangeRate: RatioChangeRate): RatioChangeRate;
 }
 //# sourceMappingURL=ratiochangerate.g.d.ts.map

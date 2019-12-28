@@ -16,8 +16,9 @@ export class ElectricConductance {
      * Create a new ElectricConductance.
      * @param value The value.
      * @param fromUnit The ‘ElectricConductance’ unit to create from.
+     * The default unit is Siemens
      */
-    public constructor(value: number, fromUnit: ElectricConductanceUnits) {
+    public constructor(value: number, fromUnit: ElectricConductanceUnits = ElectricConductanceUnits.Siemens) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
@@ -25,7 +26,7 @@ export class ElectricConductance {
 
     /**
      * The base value of ElectricConductance is Siemens.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -107,10 +108,87 @@ export class ElectricConductance {
             case ElectricConductanceUnits.Siemens:
                 return this.Siemens + ` S`;
             case ElectricConductanceUnits.Microsiemens:
-                return this.Microsiemens + ` S`;
+                return this.Microsiemens + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ElectricConductance are equals to the current ElectricConductance.
+     * @param electricConductance The other ElectricConductance.
+     * @returns True if the given ElectricConductance are equal to the current ElectricConductance.
+     */
+    public equals(electricConductance: ElectricConductance): boolean {
+        return this.value === electricConductance.BaseValue;
+    }
+
+    /**
+     * Compare the given ElectricConductance against the current ElectricConductance.
+     * @param electricConductance The other ElectricConductance.
+     * @returns 0 if they are equal, -1 if the current ElectricConductance is less then other, 1 if the current ElectricConductance is greater then other.
+     */
+    public compareTo(electricConductance: ElectricConductance): number {
+
+        if (this.value > electricConductance.BaseValue)
+            return 1;
+        if (this.value < electricConductance.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ElectricConductance with the current ElectricConductance.
+     * @param electricConductance The other ElectricConductance.
+     * @returns A new ElectricConductance instance with the results.
+     */
+    public add(electricConductance: ElectricConductance): ElectricConductance {
+        return new ElectricConductance(this.value + electricConductance.BaseValue)
+    }
+
+    /**
+     * Subtract the given ElectricConductance with the current ElectricConductance.
+     * @param electricConductance The other ElectricConductance.
+     * @returns A new ElectricConductance instance with the results.
+     */
+    public subtract(electricConductance: ElectricConductance): ElectricConductance {
+        return new ElectricConductance(this.value - electricConductance.BaseValue)
+    }
+
+    /**
+     * Multiply the given ElectricConductance with the current ElectricConductance.
+     * @param electricConductance The other ElectricConductance.
+     * @returns A new ElectricConductance instance with the results.
+     */
+    public multiply(electricConductance: ElectricConductance): ElectricConductance {
+        return new ElectricConductance(this.value * electricConductance.BaseValue)
+    }
+
+    /**
+     * Divide the given ElectricConductance with the current ElectricConductance.
+     * @param electricConductance The other ElectricConductance.
+     * @returns A new ElectricConductance instance with the results.
+     */
+    public divide(electricConductance: ElectricConductance): ElectricConductance {
+        return new ElectricConductance(this.value / electricConductance.BaseValue)
+    }
+
+    /**
+     * Modulo the given ElectricConductance with the current ElectricConductance.
+     * @param electricConductance The other ElectricConductance.
+     * @returns A new ElectricConductance instance with the results.
+     */
+    public modulo(electricConductance: ElectricConductance): ElectricConductance {
+        return new ElectricConductance(this.value % electricConductance.BaseValue)
+    }
+
+    /**
+     * Pow the given ElectricConductance with the current ElectricConductance.
+     * @param electricConductance The other ElectricConductance.
+     * @returns A new ElectricConductance instance with the results.
+     */
+    public pow(electricConductance: ElectricConductance): ElectricConductance {
+        return new ElectricConductance(this.value ** electricConductance.BaseValue)
     }
 }

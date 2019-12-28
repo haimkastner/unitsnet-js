@@ -62,11 +62,12 @@ export declare class VolumeConcentration {
      * Create a new VolumeConcentration.
      * @param value The value.
      * @param fromUnit The ‘VolumeConcentration’ unit to create from.
+     * The default unit is DecimalFractions
      */
-    constructor(value: number, fromUnit: VolumeConcentrationUnits);
+    constructor(value: number, fromUnit?: VolumeConcentrationUnits);
     /**
-     * The base value of VolumeConcentration is DecimalFraction.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of VolumeConcentration is DecimalFractions.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -241,5 +242,53 @@ export declare class VolumeConcentration {
      * @returns The string format of the VolumeConcentration.
      */
     toString(toUnit?: VolumeConcentrationUnits): string;
+    /**
+     * Check if the given VolumeConcentration are equals to the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns True if the given VolumeConcentration are equal to the current VolumeConcentration.
+     */
+    equals(volumeConcentration: VolumeConcentration): boolean;
+    /**
+     * Compare the given VolumeConcentration against the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns 0 if they are equal, -1 if the current VolumeConcentration is less then other, 1 if the current VolumeConcentration is greater then other.
+     */
+    compareTo(volumeConcentration: VolumeConcentration): number;
+    /**
+     * Add the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    add(volumeConcentration: VolumeConcentration): VolumeConcentration;
+    /**
+     * Subtract the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    subtract(volumeConcentration: VolumeConcentration): VolumeConcentration;
+    /**
+     * Multiply the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    multiply(volumeConcentration: VolumeConcentration): VolumeConcentration;
+    /**
+     * Divide the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    divide(volumeConcentration: VolumeConcentration): VolumeConcentration;
+    /**
+     * Modulo the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    modulo(volumeConcentration: VolumeConcentration): VolumeConcentration;
+    /**
+     * Pow the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    pow(volumeConcentration: VolumeConcentration): VolumeConcentration;
 }
 //# sourceMappingURL=volumeconcentration.g.d.ts.map

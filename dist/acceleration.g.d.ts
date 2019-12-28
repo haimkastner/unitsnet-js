@@ -44,11 +44,12 @@ export declare class Acceleration {
      * Create a new Acceleration.
      * @param value The value.
      * @param fromUnit The ‘Acceleration’ unit to create from.
+     * The default unit is MetersPerSecondSquared
      */
-    constructor(value: number, fromUnit: AccelerationUnits);
+    constructor(value: number, fromUnit?: AccelerationUnits);
     /**
-     * The base value of Acceleration is MeterPerSecondSquared.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Acceleration is MetersPerSecondSquared.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -169,5 +170,53 @@ export declare class Acceleration {
      * @returns The string format of the Acceleration.
      */
     toString(toUnit?: AccelerationUnits): string;
+    /**
+     * Check if the given Acceleration are equals to the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns True if the given Acceleration are equal to the current Acceleration.
+     */
+    equals(acceleration: Acceleration): boolean;
+    /**
+     * Compare the given Acceleration against the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns 0 if they are equal, -1 if the current Acceleration is less then other, 1 if the current Acceleration is greater then other.
+     */
+    compareTo(acceleration: Acceleration): number;
+    /**
+     * Add the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    add(acceleration: Acceleration): Acceleration;
+    /**
+     * Subtract the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    subtract(acceleration: Acceleration): Acceleration;
+    /**
+     * Multiply the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    multiply(acceleration: Acceleration): Acceleration;
+    /**
+     * Divide the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    divide(acceleration: Acceleration): Acceleration;
+    /**
+     * Modulo the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    modulo(acceleration: Acceleration): Acceleration;
+    /**
+     * Pow the given Acceleration with the current Acceleration.
+     * @param acceleration The other Acceleration.
+     * @returns A new Acceleration instance with the results.
+     */
+    pow(acceleration: Acceleration): Acceleration;
 }
 //# sourceMappingURL=acceleration.g.d.ts.map

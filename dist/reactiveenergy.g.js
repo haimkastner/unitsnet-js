@@ -16,8 +16,9 @@ class ReactiveEnergy {
      * Create a new ReactiveEnergy.
      * @param value The value.
      * @param fromUnit The ‘ReactiveEnergy’ unit to create from.
+     * The default unit is VoltampereReactiveHours
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ReactiveEnergyUnits.VoltampereReactiveHours) {
         this.voltamperereactivehoursLazy = null;
         this.kilovoltamperereactivehoursLazy = null;
         this.megavoltamperereactivehoursLazy = null;
@@ -26,8 +27,8 @@ class ReactiveEnergy {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ReactiveEnergy is VoltampereReactiveHour.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ReactiveEnergy is VoltampereReactiveHours.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -118,13 +119,81 @@ class ReactiveEnergy {
             case ReactiveEnergyUnits.VoltampereReactiveHours:
                 return this.VoltampereReactiveHours + ` varh`;
             case ReactiveEnergyUnits.KilovoltampereReactiveHours:
-                return this.KilovoltampereReactiveHours + ` varh`;
+                return this.KilovoltampereReactiveHours + ` `;
             case ReactiveEnergyUnits.MegavoltampereReactiveHours:
-                return this.MegavoltampereReactiveHours + ` varh`;
+                return this.MegavoltampereReactiveHours + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ReactiveEnergy are equals to the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns True if the given ReactiveEnergy are equal to the current ReactiveEnergy.
+     */
+    equals(reactiveEnergy) {
+        return this.value === reactiveEnergy.BaseValue;
+    }
+    /**
+     * Compare the given ReactiveEnergy against the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns 0 if they are equal, -1 if the current ReactiveEnergy is less then other, 1 if the current ReactiveEnergy is greater then other.
+     */
+    compareTo(reactiveEnergy) {
+        if (this.value > reactiveEnergy.BaseValue)
+            return 1;
+        if (this.value < reactiveEnergy.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    add(reactiveEnergy) {
+        return new ReactiveEnergy(this.value + reactiveEnergy.BaseValue);
+    }
+    /**
+     * Subtract the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    subtract(reactiveEnergy) {
+        return new ReactiveEnergy(this.value - reactiveEnergy.BaseValue);
+    }
+    /**
+     * Multiply the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    multiply(reactiveEnergy) {
+        return new ReactiveEnergy(this.value * reactiveEnergy.BaseValue);
+    }
+    /**
+     * Divide the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    divide(reactiveEnergy) {
+        return new ReactiveEnergy(this.value / reactiveEnergy.BaseValue);
+    }
+    /**
+     * Modulo the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    modulo(reactiveEnergy) {
+        return new ReactiveEnergy(this.value % reactiveEnergy.BaseValue);
+    }
+    /**
+     * Pow the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    pow(reactiveEnergy) {
+        return new ReactiveEnergy(this.value ** reactiveEnergy.BaseValue);
     }
 }
 exports.ReactiveEnergy = ReactiveEnergy;

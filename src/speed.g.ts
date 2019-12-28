@@ -97,16 +97,17 @@ export class Speed {
      * Create a new Speed.
      * @param value The value.
      * @param fromUnit The ‘Speed’ unit to create from.
+     * The default unit is MetersPerSecond
      */
-    public constructor(value: number, fromUnit: SpeedUnits) {
+    public constructor(value: number, fromUnit: SpeedUnits = SpeedUnits.MetersPerSecond) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Speed is MeterPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Speed is MetersPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -814,32 +815,109 @@ export class Speed {
             case SpeedUnits.MilesPerHour:
                 return this.MilesPerHour + ` mph`;
             case SpeedUnits.NanometersPerSecond:
-                return this.NanometersPerSecond + ` m/s`;
+                return this.NanometersPerSecond + ` `;
             case SpeedUnits.MicrometersPerSecond:
-                return this.MicrometersPerSecond + ` m/s`;
+                return this.MicrometersPerSecond + ` `;
             case SpeedUnits.CentimetersPerSecond:
-                return this.CentimetersPerSecond + ` m/s`;
+                return this.CentimetersPerSecond + ` `;
             case SpeedUnits.DecimetersPerSecond:
-                return this.DecimetersPerSecond + ` m/s`;
+                return this.DecimetersPerSecond + ` `;
             case SpeedUnits.KilometersPerSecond:
-                return this.KilometersPerSecond + ` m/s`;
+                return this.KilometersPerSecond + ` `;
             case SpeedUnits.NanometersPerMinutes:
-                return this.NanometersPerMinutes + ` m/min`;
+                return this.NanometersPerMinutes + ` `;
             case SpeedUnits.MicrometersPerMinutes:
-                return this.MicrometersPerMinutes + ` m/min`;
+                return this.MicrometersPerMinutes + ` `;
             case SpeedUnits.CentimetersPerMinutes:
-                return this.CentimetersPerMinutes + ` m/min`;
+                return this.CentimetersPerMinutes + ` `;
             case SpeedUnits.DecimetersPerMinutes:
-                return this.DecimetersPerMinutes + ` m/min`;
+                return this.DecimetersPerMinutes + ` `;
             case SpeedUnits.KilometersPerMinutes:
-                return this.KilometersPerMinutes + ` m/min`;
+                return this.KilometersPerMinutes + ` `;
             case SpeedUnits.CentimetersPerHour:
-                return this.CentimetersPerHour + ` m/h`;
+                return this.CentimetersPerHour + ` `;
             case SpeedUnits.KilometersPerHour:
-                return this.KilometersPerHour + ` m/h`;
+                return this.KilometersPerHour + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Speed are equals to the current Speed.
+     * @param speed The other Speed.
+     * @returns True if the given Speed are equal to the current Speed.
+     */
+    public equals(speed: Speed): boolean {
+        return this.value === speed.BaseValue;
+    }
+
+    /**
+     * Compare the given Speed against the current Speed.
+     * @param speed The other Speed.
+     * @returns 0 if they are equal, -1 if the current Speed is less then other, 1 if the current Speed is greater then other.
+     */
+    public compareTo(speed: Speed): number {
+
+        if (this.value > speed.BaseValue)
+            return 1;
+        if (this.value < speed.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    public add(speed: Speed): Speed {
+        return new Speed(this.value + speed.BaseValue)
+    }
+
+    /**
+     * Subtract the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    public subtract(speed: Speed): Speed {
+        return new Speed(this.value - speed.BaseValue)
+    }
+
+    /**
+     * Multiply the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    public multiply(speed: Speed): Speed {
+        return new Speed(this.value * speed.BaseValue)
+    }
+
+    /**
+     * Divide the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    public divide(speed: Speed): Speed {
+        return new Speed(this.value / speed.BaseValue)
+    }
+
+    /**
+     * Modulo the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    public modulo(speed: Speed): Speed {
+        return new Speed(this.value % speed.BaseValue)
+    }
+
+    /**
+     * Pow the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    public pow(speed: Speed): Speed {
+        return new Speed(this.value ** speed.BaseValue)
     }
 }

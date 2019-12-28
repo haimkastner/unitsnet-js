@@ -19,16 +19,17 @@ export class VolumePerLength {
      * Create a new VolumePerLength.
      * @param value The value.
      * @param fromUnit The ‘VolumePerLength’ unit to create from.
+     * The default unit is CubicMetersPerMeter
      */
-    public constructor(value: number, fromUnit: VolumePerLengthUnits) {
+    public constructor(value: number, fromUnit: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of VolumePerLength is CubicMeterPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of VolumePerLength is CubicMetersPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -139,5 +140,82 @@ export class VolumePerLength {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given VolumePerLength are equals to the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns True if the given VolumePerLength are equal to the current VolumePerLength.
+     */
+    public equals(volumePerLength: VolumePerLength): boolean {
+        return this.value === volumePerLength.BaseValue;
+    }
+
+    /**
+     * Compare the given VolumePerLength against the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns 0 if they are equal, -1 if the current VolumePerLength is less then other, 1 if the current VolumePerLength is greater then other.
+     */
+    public compareTo(volumePerLength: VolumePerLength): number {
+
+        if (this.value > volumePerLength.BaseValue)
+            return 1;
+        if (this.value < volumePerLength.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    public add(volumePerLength: VolumePerLength): VolumePerLength {
+        return new VolumePerLength(this.value + volumePerLength.BaseValue)
+    }
+
+    /**
+     * Subtract the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    public subtract(volumePerLength: VolumePerLength): VolumePerLength {
+        return new VolumePerLength(this.value - volumePerLength.BaseValue)
+    }
+
+    /**
+     * Multiply the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    public multiply(volumePerLength: VolumePerLength): VolumePerLength {
+        return new VolumePerLength(this.value * volumePerLength.BaseValue)
+    }
+
+    /**
+     * Divide the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    public divide(volumePerLength: VolumePerLength): VolumePerLength {
+        return new VolumePerLength(this.value / volumePerLength.BaseValue)
+    }
+
+    /**
+     * Modulo the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    public modulo(volumePerLength: VolumePerLength): VolumePerLength {
+        return new VolumePerLength(this.value % volumePerLength.BaseValue)
+    }
+
+    /**
+     * Pow the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    public pow(volumePerLength: VolumePerLength): VolumePerLength {
+        return new VolumePerLength(this.value ** volumePerLength.BaseValue)
     }
 }

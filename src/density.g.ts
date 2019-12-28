@@ -118,16 +118,17 @@ export class Density {
      * Create a new Density.
      * @param value The value.
      * @param fromUnit The ‘Density’ unit to create from.
+     * The default unit is KilogramsPerCubicMeter
      */
-    public constructor(value: number, fromUnit: DensityUnits) {
+    public constructor(value: number, fromUnit: DensityUnits = DensityUnits.KilogramsPerCubicMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Density is KilogramPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Density is KilogramsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -985,50 +986,127 @@ export class Density {
             case DensityUnits.KilogramsPerLiter:
                 return this.KilogramsPerLiter + ` kg/l`;
             case DensityUnits.KilogramsPerCubicMillimeter:
-                return this.KilogramsPerCubicMillimeter + ` g/mm³`;
+                return this.KilogramsPerCubicMillimeter + ` `;
             case DensityUnits.KilogramsPerCubicCentimeter:
-                return this.KilogramsPerCubicCentimeter + ` g/cm³`;
+                return this.KilogramsPerCubicCentimeter + ` `;
             case DensityUnits.KilogramsPerCubicMeter:
-                return this.KilogramsPerCubicMeter + ` g/m³`;
+                return this.KilogramsPerCubicMeter + ` `;
             case DensityUnits.MicrogramsPerCubicMeter:
-                return this.MicrogramsPerCubicMeter + ` g/m³`;
+                return this.MicrogramsPerCubicMeter + ` `;
             case DensityUnits.KilopoundsPerCubicInch:
-                return this.KilopoundsPerCubicInch + ` lb/in³`;
+                return this.KilopoundsPerCubicInch + ` `;
             case DensityUnits.KilopoundsPerCubicFoot:
-                return this.KilopoundsPerCubicFoot + ` lb/ft³`;
+                return this.KilopoundsPerCubicFoot + ` `;
             case DensityUnits.PicogramsPerLiter:
-                return this.PicogramsPerLiter + ` g/L`;
+                return this.PicogramsPerLiter + ` `;
             case DensityUnits.NanogramsPerLiter:
-                return this.NanogramsPerLiter + ` g/L`;
+                return this.NanogramsPerLiter + ` `;
             case DensityUnits.MicrogramsPerLiter:
-                return this.MicrogramsPerLiter + ` g/L`;
+                return this.MicrogramsPerLiter + ` `;
             case DensityUnits.CentigramsPerLiter:
-                return this.CentigramsPerLiter + ` g/L`;
+                return this.CentigramsPerLiter + ` `;
             case DensityUnits.DecigramsPerLiter:
-                return this.DecigramsPerLiter + ` g/L`;
+                return this.DecigramsPerLiter + ` `;
             case DensityUnits.PicogramsPerDeciLiter:
-                return this.PicogramsPerDeciLiter + ` g/dl`;
+                return this.PicogramsPerDeciLiter + ` `;
             case DensityUnits.NanogramsPerDeciLiter:
-                return this.NanogramsPerDeciLiter + ` g/dl`;
+                return this.NanogramsPerDeciLiter + ` `;
             case DensityUnits.MicrogramsPerDeciLiter:
-                return this.MicrogramsPerDeciLiter + ` g/dl`;
+                return this.MicrogramsPerDeciLiter + ` `;
             case DensityUnits.CentigramsPerDeciLiter:
-                return this.CentigramsPerDeciLiter + ` g/dl`;
+                return this.CentigramsPerDeciLiter + ` `;
             case DensityUnits.DecigramsPerDeciLiter:
-                return this.DecigramsPerDeciLiter + ` g/dl`;
+                return this.DecigramsPerDeciLiter + ` `;
             case DensityUnits.PicogramsPerMilliliter:
-                return this.PicogramsPerMilliliter + ` g/ml`;
+                return this.PicogramsPerMilliliter + ` `;
             case DensityUnits.NanogramsPerMilliliter:
-                return this.NanogramsPerMilliliter + ` g/ml`;
+                return this.NanogramsPerMilliliter + ` `;
             case DensityUnits.MicrogramsPerMilliliter:
-                return this.MicrogramsPerMilliliter + ` g/ml`;
+                return this.MicrogramsPerMilliliter + ` `;
             case DensityUnits.CentigramsPerMilliliter:
-                return this.CentigramsPerMilliliter + ` g/ml`;
+                return this.CentigramsPerMilliliter + ` `;
             case DensityUnits.DecigramsPerMilliliter:
-                return this.DecigramsPerMilliliter + ` g/ml`;
+                return this.DecigramsPerMilliliter + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Density are equals to the current Density.
+     * @param density The other Density.
+     * @returns True if the given Density are equal to the current Density.
+     */
+    public equals(density: Density): boolean {
+        return this.value === density.BaseValue;
+    }
+
+    /**
+     * Compare the given Density against the current Density.
+     * @param density The other Density.
+     * @returns 0 if they are equal, -1 if the current Density is less then other, 1 if the current Density is greater then other.
+     */
+    public compareTo(density: Density): number {
+
+        if (this.value > density.BaseValue)
+            return 1;
+        if (this.value < density.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    public add(density: Density): Density {
+        return new Density(this.value + density.BaseValue)
+    }
+
+    /**
+     * Subtract the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    public subtract(density: Density): Density {
+        return new Density(this.value - density.BaseValue)
+    }
+
+    /**
+     * Multiply the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    public multiply(density: Density): Density {
+        return new Density(this.value * density.BaseValue)
+    }
+
+    /**
+     * Divide the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    public divide(density: Density): Density {
+        return new Density(this.value / density.BaseValue)
+    }
+
+    /**
+     * Modulo the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    public modulo(density: Density): Density {
+        return new Density(this.value % density.BaseValue)
+    }
+
+    /**
+     * Pow the given Density with the current Density.
+     * @param density The other Density.
+     * @returns A new Density instance with the results.
+     */
+    public pow(density: Density): Density {
+        return new Density(this.value ** density.BaseValue)
     }
 }

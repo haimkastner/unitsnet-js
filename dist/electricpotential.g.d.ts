@@ -20,11 +20,12 @@ export declare class ElectricPotential {
      * Create a new ElectricPotential.
      * @param value The value.
      * @param fromUnit The ‘ElectricPotential’ unit to create from.
+     * The default unit is Volts
      */
-    constructor(value: number, fromUnit: ElectricPotentialUnits);
+    constructor(value: number, fromUnit?: ElectricPotentialUnits);
     /**
-     * The base value of ElectricPotential is Volt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricPotential is Volts.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -73,5 +74,53 @@ export declare class ElectricPotential {
      * @returns The string format of the ElectricPotential.
      */
     toString(toUnit?: ElectricPotentialUnits): string;
+    /**
+     * Check if the given ElectricPotential are equals to the current ElectricPotential.
+     * @param electricPotential The other ElectricPotential.
+     * @returns True if the given ElectricPotential are equal to the current ElectricPotential.
+     */
+    equals(electricPotential: ElectricPotential): boolean;
+    /**
+     * Compare the given ElectricPotential against the current ElectricPotential.
+     * @param electricPotential The other ElectricPotential.
+     * @returns 0 if they are equal, -1 if the current ElectricPotential is less then other, 1 if the current ElectricPotential is greater then other.
+     */
+    compareTo(electricPotential: ElectricPotential): number;
+    /**
+     * Add the given ElectricPotential with the current ElectricPotential.
+     * @param electricPotential The other ElectricPotential.
+     * @returns A new ElectricPotential instance with the results.
+     */
+    add(electricPotential: ElectricPotential): ElectricPotential;
+    /**
+     * Subtract the given ElectricPotential with the current ElectricPotential.
+     * @param electricPotential The other ElectricPotential.
+     * @returns A new ElectricPotential instance with the results.
+     */
+    subtract(electricPotential: ElectricPotential): ElectricPotential;
+    /**
+     * Multiply the given ElectricPotential with the current ElectricPotential.
+     * @param electricPotential The other ElectricPotential.
+     * @returns A new ElectricPotential instance with the results.
+     */
+    multiply(electricPotential: ElectricPotential): ElectricPotential;
+    /**
+     * Divide the given ElectricPotential with the current ElectricPotential.
+     * @param electricPotential The other ElectricPotential.
+     * @returns A new ElectricPotential instance with the results.
+     */
+    divide(electricPotential: ElectricPotential): ElectricPotential;
+    /**
+     * Modulo the given ElectricPotential with the current ElectricPotential.
+     * @param electricPotential The other ElectricPotential.
+     * @returns A new ElectricPotential instance with the results.
+     */
+    modulo(electricPotential: ElectricPotential): ElectricPotential;
+    /**
+     * Pow the given ElectricPotential with the current ElectricPotential.
+     * @param electricPotential The other ElectricPotential.
+     * @returns A new ElectricPotential instance with the results.
+     */
+    pow(electricPotential: ElectricPotential): ElectricPotential;
 }
 //# sourceMappingURL=electricpotential.g.d.ts.map

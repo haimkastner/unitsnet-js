@@ -82,16 +82,17 @@ export class Mass {
      * Create a new Mass.
      * @param value The value.
      * @param fromUnit The ‘Mass’ unit to create from.
+     * The default unit is Kilograms
      */
-    public constructor(value: number, fromUnit: MassUnits) {
+    public constructor(value: number, fromUnit: MassUnits = MassUnits.Kilograms) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Mass is Kilogram.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Mass is Kilograms.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -681,30 +682,107 @@ export class Mass {
             case MassUnits.EarthMasses:
                 return this.EarthMasses + ` em`;
             case MassUnits.Nanograms:
-                return this.Nanograms + ` g`;
+                return this.Nanograms + ` `;
             case MassUnits.Micrograms:
-                return this.Micrograms + ` g`;
+                return this.Micrograms + ` `;
             case MassUnits.Centigrams:
-                return this.Centigrams + ` g`;
+                return this.Centigrams + ` `;
             case MassUnits.Decigrams:
-                return this.Decigrams + ` g`;
+                return this.Decigrams + ` `;
             case MassUnits.Decagrams:
-                return this.Decagrams + ` g`;
+                return this.Decagrams + ` `;
             case MassUnits.Hectograms:
-                return this.Hectograms + ` g`;
+                return this.Hectograms + ` `;
             case MassUnits.Kilograms:
-                return this.Kilograms + ` g`;
+                return this.Kilograms + ` `;
             case MassUnits.Kilotonnes:
-                return this.Kilotonnes + ` t`;
+                return this.Kilotonnes + ` `;
             case MassUnits.Megatonnes:
-                return this.Megatonnes + ` t`;
+                return this.Megatonnes + ` `;
             case MassUnits.Kilopounds:
-                return this.Kilopounds + ` lb`;
+                return this.Kilopounds + ` `;
             case MassUnits.Megapounds:
-                return this.Megapounds + ` lb`;
+                return this.Megapounds + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Mass are equals to the current Mass.
+     * @param mass The other Mass.
+     * @returns True if the given Mass are equal to the current Mass.
+     */
+    public equals(mass: Mass): boolean {
+        return this.value === mass.BaseValue;
+    }
+
+    /**
+     * Compare the given Mass against the current Mass.
+     * @param mass The other Mass.
+     * @returns 0 if they are equal, -1 if the current Mass is less then other, 1 if the current Mass is greater then other.
+     */
+    public compareTo(mass: Mass): number {
+
+        if (this.value > mass.BaseValue)
+            return 1;
+        if (this.value < mass.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    public add(mass: Mass): Mass {
+        return new Mass(this.value + mass.BaseValue)
+    }
+
+    /**
+     * Subtract the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    public subtract(mass: Mass): Mass {
+        return new Mass(this.value - mass.BaseValue)
+    }
+
+    /**
+     * Multiply the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    public multiply(mass: Mass): Mass {
+        return new Mass(this.value * mass.BaseValue)
+    }
+
+    /**
+     * Divide the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    public divide(mass: Mass): Mass {
+        return new Mass(this.value / mass.BaseValue)
+    }
+
+    /**
+     * Modulo the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    public modulo(mass: Mass): Mass {
+        return new Mass(this.value % mass.BaseValue)
+    }
+
+    /**
+     * Pow the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    public pow(mass: Mass): Mass {
+        return new Mass(this.value ** mass.BaseValue)
     }
 }

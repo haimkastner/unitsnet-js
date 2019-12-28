@@ -20,11 +20,12 @@ export declare class ElectricPotentialDc {
      * Create a new ElectricPotentialDc.
      * @param value The value.
      * @param fromUnit The ‘ElectricPotentialDc’ unit to create from.
+     * The default unit is VoltsDc
      */
-    constructor(value: number, fromUnit: ElectricPotentialDcUnits);
+    constructor(value: number, fromUnit?: ElectricPotentialDcUnits);
     /**
-     * The base value of ElectricPotentialDc is VoltDc.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricPotentialDc is VoltsDc.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -73,5 +74,53 @@ export declare class ElectricPotentialDc {
      * @returns The string format of the ElectricPotentialDc.
      */
     toString(toUnit?: ElectricPotentialDcUnits): string;
+    /**
+     * Check if the given ElectricPotentialDc are equals to the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns True if the given ElectricPotentialDc are equal to the current ElectricPotentialDc.
+     */
+    equals(electricPotentialDc: ElectricPotentialDc): boolean;
+    /**
+     * Compare the given ElectricPotentialDc against the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns 0 if they are equal, -1 if the current ElectricPotentialDc is less then other, 1 if the current ElectricPotentialDc is greater then other.
+     */
+    compareTo(electricPotentialDc: ElectricPotentialDc): number;
+    /**
+     * Add the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    add(electricPotentialDc: ElectricPotentialDc): ElectricPotentialDc;
+    /**
+     * Subtract the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    subtract(electricPotentialDc: ElectricPotentialDc): ElectricPotentialDc;
+    /**
+     * Multiply the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    multiply(electricPotentialDc: ElectricPotentialDc): ElectricPotentialDc;
+    /**
+     * Divide the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    divide(electricPotentialDc: ElectricPotentialDc): ElectricPotentialDc;
+    /**
+     * Modulo the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    modulo(electricPotentialDc: ElectricPotentialDc): ElectricPotentialDc;
+    /**
+     * Pow the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    pow(electricPotentialDc: ElectricPotentialDc): ElectricPotentialDc;
 }
 //# sourceMappingURL=electricpotentialdc.g.d.ts.map

@@ -22,8 +22,9 @@ class Ratio {
      * Create a new Ratio.
      * @param value The value.
      * @param fromUnit The ‘Ratio’ unit to create from.
+     * The default unit is DecimalFractions
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = RatioUnits.DecimalFractions) {
         this.decimalfractionsLazy = null;
         this.percentLazy = null;
         this.partsperthousandLazy = null;
@@ -35,8 +36,8 @@ class Ratio {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Ratio is DecimalFraction.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Ratio is DecimalFractions.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -200,6 +201,74 @@ class Ratio {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Ratio are equals to the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns True if the given Ratio are equal to the current Ratio.
+     */
+    equals(ratio) {
+        return this.value === ratio.BaseValue;
+    }
+    /**
+     * Compare the given Ratio against the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns 0 if they are equal, -1 if the current Ratio is less then other, 1 if the current Ratio is greater then other.
+     */
+    compareTo(ratio) {
+        if (this.value > ratio.BaseValue)
+            return 1;
+        if (this.value < ratio.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    add(ratio) {
+        return new Ratio(this.value + ratio.BaseValue);
+    }
+    /**
+     * Subtract the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    subtract(ratio) {
+        return new Ratio(this.value - ratio.BaseValue);
+    }
+    /**
+     * Multiply the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    multiply(ratio) {
+        return new Ratio(this.value * ratio.BaseValue);
+    }
+    /**
+     * Divide the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    divide(ratio) {
+        return new Ratio(this.value / ratio.BaseValue);
+    }
+    /**
+     * Modulo the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    modulo(ratio) {
+        return new Ratio(this.value % ratio.BaseValue);
+    }
+    /**
+     * Pow the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    pow(ratio) {
+        return new Ratio(this.value ** ratio.BaseValue);
     }
 }
 exports.Ratio = Ratio;

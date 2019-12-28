@@ -11,11 +11,12 @@ export declare class SolidAngle {
      * Create a new SolidAngle.
      * @param value The value.
      * @param fromUnit The ‘SolidAngle’ unit to create from.
+     * The default unit is Steradians
      */
-    constructor(value: number, fromUnit: SolidAngleUnits);
+    constructor(value: number, fromUnit?: SolidAngleUnits);
     /**
-     * The base value of SolidAngle is Steradian.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SolidAngle is Steradians.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -37,5 +38,53 @@ export declare class SolidAngle {
      * @returns The string format of the SolidAngle.
      */
     toString(toUnit?: SolidAngleUnits): string;
+    /**
+     * Check if the given SolidAngle are equals to the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns True if the given SolidAngle are equal to the current SolidAngle.
+     */
+    equals(solidAngle: SolidAngle): boolean;
+    /**
+     * Compare the given SolidAngle against the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns 0 if they are equal, -1 if the current SolidAngle is less then other, 1 if the current SolidAngle is greater then other.
+     */
+    compareTo(solidAngle: SolidAngle): number;
+    /**
+     * Add the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    add(solidAngle: SolidAngle): SolidAngle;
+    /**
+     * Subtract the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    subtract(solidAngle: SolidAngle): SolidAngle;
+    /**
+     * Multiply the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    multiply(solidAngle: SolidAngle): SolidAngle;
+    /**
+     * Divide the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    divide(solidAngle: SolidAngle): SolidAngle;
+    /**
+     * Modulo the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    modulo(solidAngle: SolidAngle): SolidAngle;
+    /**
+     * Pow the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    pow(solidAngle: SolidAngle): SolidAngle;
 }
 //# sourceMappingURL=solidangle.g.d.ts.map

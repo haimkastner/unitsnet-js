@@ -41,11 +41,12 @@ export declare class MolarMass {
      * Create a new MolarMass.
      * @param value The value.
      * @param fromUnit The ‘MolarMass’ unit to create from.
+     * The default unit is KilogramsPerMole
      */
-    constructor(value: number, fromUnit: MolarMassUnits);
+    constructor(value: number, fromUnit?: MolarMassUnits);
     /**
-     * The base value of MolarMass is KilogramPerMole.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MolarMass is KilogramsPerMole.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -157,5 +158,53 @@ export declare class MolarMass {
      * @returns The string format of the MolarMass.
      */
     toString(toUnit?: MolarMassUnits): string;
+    /**
+     * Check if the given MolarMass are equals to the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns True if the given MolarMass are equal to the current MolarMass.
+     */
+    equals(molarMass: MolarMass): boolean;
+    /**
+     * Compare the given MolarMass against the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns 0 if they are equal, -1 if the current MolarMass is less then other, 1 if the current MolarMass is greater then other.
+     */
+    compareTo(molarMass: MolarMass): number;
+    /**
+     * Add the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    add(molarMass: MolarMass): MolarMass;
+    /**
+     * Subtract the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    subtract(molarMass: MolarMass): MolarMass;
+    /**
+     * Multiply the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    multiply(molarMass: MolarMass): MolarMass;
+    /**
+     * Divide the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    divide(molarMass: MolarMass): MolarMass;
+    /**
+     * Modulo the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    modulo(molarMass: MolarMass): MolarMass;
+    /**
+     * Pow the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    pow(molarMass: MolarMass): MolarMass;
 }
 //# sourceMappingURL=molarmass.g.d.ts.map

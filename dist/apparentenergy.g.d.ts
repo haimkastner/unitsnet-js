@@ -17,11 +17,12 @@ export declare class ApparentEnergy {
      * Create a new ApparentEnergy.
      * @param value The value.
      * @param fromUnit The ‘ApparentEnergy’ unit to create from.
+     * The default unit is VoltampereHours
      */
-    constructor(value: number, fromUnit: ApparentEnergyUnits);
+    constructor(value: number, fromUnit?: ApparentEnergyUnits);
     /**
-     * The base value of ApparentEnergy is VoltampereHour.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ApparentEnergy is VoltampereHours.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class ApparentEnergy {
      * @returns The string format of the ApparentEnergy.
      */
     toString(toUnit?: ApparentEnergyUnits): string;
+    /**
+     * Check if the given ApparentEnergy are equals to the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns True if the given ApparentEnergy are equal to the current ApparentEnergy.
+     */
+    equals(apparentEnergy: ApparentEnergy): boolean;
+    /**
+     * Compare the given ApparentEnergy against the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns 0 if they are equal, -1 if the current ApparentEnergy is less then other, 1 if the current ApparentEnergy is greater then other.
+     */
+    compareTo(apparentEnergy: ApparentEnergy): number;
+    /**
+     * Add the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    add(apparentEnergy: ApparentEnergy): ApparentEnergy;
+    /**
+     * Subtract the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    subtract(apparentEnergy: ApparentEnergy): ApparentEnergy;
+    /**
+     * Multiply the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    multiply(apparentEnergy: ApparentEnergy): ApparentEnergy;
+    /**
+     * Divide the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    divide(apparentEnergy: ApparentEnergy): ApparentEnergy;
+    /**
+     * Modulo the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    modulo(apparentEnergy: ApparentEnergy): ApparentEnergy;
+    /**
+     * Pow the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    pow(apparentEnergy: ApparentEnergy): ApparentEnergy;
 }
 //# sourceMappingURL=apparentenergy.g.d.ts.map

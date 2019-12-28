@@ -28,8 +28,9 @@ class Temperature {
      * Create a new Temperature.
      * @param value The value.
      * @param fromUnit The ‘Temperature’ unit to create from.
+     * The default unit is Kelvins
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = TemperatureUnits.Kelvins) {
         this.kelvinsLazy = null;
         this.degreescelsiusLazy = null;
         this.degreesdelisleLazy = null;
@@ -44,8 +45,8 @@ class Temperature {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Temperature is Kelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Temperature is Kelvins.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -275,6 +276,74 @@ class Temperature {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Temperature are equals to the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns True if the given Temperature are equal to the current Temperature.
+     */
+    equals(temperature) {
+        return this.value === temperature.BaseValue;
+    }
+    /**
+     * Compare the given Temperature against the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns 0 if they are equal, -1 if the current Temperature is less then other, 1 if the current Temperature is greater then other.
+     */
+    compareTo(temperature) {
+        if (this.value > temperature.BaseValue)
+            return 1;
+        if (this.value < temperature.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    add(temperature) {
+        return new Temperature(this.value + temperature.BaseValue);
+    }
+    /**
+     * Subtract the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    subtract(temperature) {
+        return new Temperature(this.value - temperature.BaseValue);
+    }
+    /**
+     * Multiply the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    multiply(temperature) {
+        return new Temperature(this.value * temperature.BaseValue);
+    }
+    /**
+     * Divide the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    divide(temperature) {
+        return new Temperature(this.value / temperature.BaseValue);
+    }
+    /**
+     * Modulo the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    modulo(temperature) {
+        return new Temperature(this.value % temperature.BaseValue);
+    }
+    /**
+     * Pow the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    pow(temperature) {
+        return new Temperature(this.value ** temperature.BaseValue);
     }
 }
 exports.Temperature = Temperature;

@@ -12,16 +12,17 @@ class ElectricChargeDensity {
      * Create a new ElectricChargeDensity.
      * @param value The value.
      * @param fromUnit The ‘ElectricChargeDensity’ unit to create from.
+     * The default unit is CoulombsPerCubicMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ElectricChargeDensityUnits.CoulombsPerCubicMeter) {
         this.coulombspercubicmeterLazy = null;
         if (isNaN(value))
             throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ElectricChargeDensity is CoulombPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricChargeDensity is CoulombsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -75,6 +76,74 @@ class ElectricChargeDensity {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ElectricChargeDensity are equals to the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns True if the given ElectricChargeDensity are equal to the current ElectricChargeDensity.
+     */
+    equals(electricChargeDensity) {
+        return this.value === electricChargeDensity.BaseValue;
+    }
+    /**
+     * Compare the given ElectricChargeDensity against the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns 0 if they are equal, -1 if the current ElectricChargeDensity is less then other, 1 if the current ElectricChargeDensity is greater then other.
+     */
+    compareTo(electricChargeDensity) {
+        if (this.value > electricChargeDensity.BaseValue)
+            return 1;
+        if (this.value < electricChargeDensity.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    add(electricChargeDensity) {
+        return new ElectricChargeDensity(this.value + electricChargeDensity.BaseValue);
+    }
+    /**
+     * Subtract the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    subtract(electricChargeDensity) {
+        return new ElectricChargeDensity(this.value - electricChargeDensity.BaseValue);
+    }
+    /**
+     * Multiply the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    multiply(electricChargeDensity) {
+        return new ElectricChargeDensity(this.value * electricChargeDensity.BaseValue);
+    }
+    /**
+     * Divide the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    divide(electricChargeDensity) {
+        return new ElectricChargeDensity(this.value / electricChargeDensity.BaseValue);
+    }
+    /**
+     * Modulo the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    modulo(electricChargeDensity) {
+        return new ElectricChargeDensity(this.value % electricChargeDensity.BaseValue);
+    }
+    /**
+     * Pow the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    pow(electricChargeDensity) {
+        return new ElectricChargeDensity(this.value ** electricChargeDensity.BaseValue);
     }
 }
 exports.ElectricChargeDensity = ElectricChargeDensity;

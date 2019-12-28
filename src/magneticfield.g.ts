@@ -19,16 +19,17 @@ export class MagneticField {
      * Create a new MagneticField.
      * @param value The value.
      * @param fromUnit The ‘MagneticField’ unit to create from.
+     * The default unit is Teslas
      */
-    public constructor(value: number, fromUnit: MagneticFieldUnits) {
+    public constructor(value: number, fromUnit: MagneticFieldUnits = MagneticFieldUnits.Teslas) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of MagneticField is Tesla.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MagneticField is Teslas.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -132,12 +133,89 @@ export class MagneticField {
             case MagneticFieldUnits.Teslas:
                 return this.Teslas + ` T`;
             case MagneticFieldUnits.Nanoteslas:
-                return this.Nanoteslas + ` T`;
+                return this.Nanoteslas + ` `;
             case MagneticFieldUnits.Microteslas:
-                return this.Microteslas + ` T`;
+                return this.Microteslas + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given MagneticField are equals to the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns True if the given MagneticField are equal to the current MagneticField.
+     */
+    public equals(magneticField: MagneticField): boolean {
+        return this.value === magneticField.BaseValue;
+    }
+
+    /**
+     * Compare the given MagneticField against the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns 0 if they are equal, -1 if the current MagneticField is less then other, 1 if the current MagneticField is greater then other.
+     */
+    public compareTo(magneticField: MagneticField): number {
+
+        if (this.value > magneticField.BaseValue)
+            return 1;
+        if (this.value < magneticField.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    public add(magneticField: MagneticField): MagneticField {
+        return new MagneticField(this.value + magneticField.BaseValue)
+    }
+
+    /**
+     * Subtract the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    public subtract(magneticField: MagneticField): MagneticField {
+        return new MagneticField(this.value - magneticField.BaseValue)
+    }
+
+    /**
+     * Multiply the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    public multiply(magneticField: MagneticField): MagneticField {
+        return new MagneticField(this.value * magneticField.BaseValue)
+    }
+
+    /**
+     * Divide the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    public divide(magneticField: MagneticField): MagneticField {
+        return new MagneticField(this.value / magneticField.BaseValue)
+    }
+
+    /**
+     * Modulo the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    public modulo(magneticField: MagneticField): MagneticField {
+        return new MagneticField(this.value % magneticField.BaseValue)
+    }
+
+    /**
+     * Pow the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    public pow(magneticField: MagneticField): MagneticField {
+        return new MagneticField(this.value ** magneticField.BaseValue)
     }
 }

@@ -17,11 +17,12 @@ export declare class MolarEntropy {
      * Create a new MolarEntropy.
      * @param value The value.
      * @param fromUnit The ‘MolarEntropy’ unit to create from.
+     * The default unit is JoulesPerMoleKelvin
      */
-    constructor(value: number, fromUnit: MolarEntropyUnits);
+    constructor(value: number, fromUnit?: MolarEntropyUnits);
     /**
-     * The base value of MolarEntropy is JoulePerMoleKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MolarEntropy is JoulesPerMoleKelvin.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class MolarEntropy {
      * @returns The string format of the MolarEntropy.
      */
     toString(toUnit?: MolarEntropyUnits): string;
+    /**
+     * Check if the given MolarEntropy are equals to the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns True if the given MolarEntropy are equal to the current MolarEntropy.
+     */
+    equals(molarEntropy: MolarEntropy): boolean;
+    /**
+     * Compare the given MolarEntropy against the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns 0 if they are equal, -1 if the current MolarEntropy is less then other, 1 if the current MolarEntropy is greater then other.
+     */
+    compareTo(molarEntropy: MolarEntropy): number;
+    /**
+     * Add the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    add(molarEntropy: MolarEntropy): MolarEntropy;
+    /**
+     * Subtract the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    subtract(molarEntropy: MolarEntropy): MolarEntropy;
+    /**
+     * Multiply the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    multiply(molarEntropy: MolarEntropy): MolarEntropy;
+    /**
+     * Divide the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    divide(molarEntropy: MolarEntropy): MolarEntropy;
+    /**
+     * Modulo the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    modulo(molarEntropy: MolarEntropy): MolarEntropy;
+    /**
+     * Pow the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    pow(molarEntropy: MolarEntropy): MolarEntropy;
 }
 //# sourceMappingURL=molarentropy.g.d.ts.map

@@ -18,8 +18,9 @@ class AmplitudeRatio {
      * Create a new AmplitudeRatio.
      * @param value The value.
      * @param fromUnit The ‘AmplitudeRatio’ unit to create from.
+     * The default unit is DecibelVolts
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = AmplitudeRatioUnits.DecibelVolts) {
         this.decibelvoltsLazy = null;
         this.decibelmicrovoltsLazy = null;
         this.decibelmillivoltsLazy = null;
@@ -29,8 +30,8 @@ class AmplitudeRatio {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of AmplitudeRatio is DecibelVolt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of AmplitudeRatio is DecibelVolts.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -150,6 +151,74 @@ class AmplitudeRatio {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given AmplitudeRatio are equals to the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns True if the given AmplitudeRatio are equal to the current AmplitudeRatio.
+     */
+    equals(amplitudeRatio) {
+        return this.value === amplitudeRatio.BaseValue;
+    }
+    /**
+     * Compare the given AmplitudeRatio against the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns 0 if they are equal, -1 if the current AmplitudeRatio is less then other, 1 if the current AmplitudeRatio is greater then other.
+     */
+    compareTo(amplitudeRatio) {
+        if (this.value > amplitudeRatio.BaseValue)
+            return 1;
+        if (this.value < amplitudeRatio.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    add(amplitudeRatio) {
+        return new AmplitudeRatio(this.value + amplitudeRatio.BaseValue);
+    }
+    /**
+     * Subtract the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    subtract(amplitudeRatio) {
+        return new AmplitudeRatio(this.value - amplitudeRatio.BaseValue);
+    }
+    /**
+     * Multiply the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    multiply(amplitudeRatio) {
+        return new AmplitudeRatio(this.value * amplitudeRatio.BaseValue);
+    }
+    /**
+     * Divide the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    divide(amplitudeRatio) {
+        return new AmplitudeRatio(this.value / amplitudeRatio.BaseValue);
+    }
+    /**
+     * Modulo the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    modulo(amplitudeRatio) {
+        return new AmplitudeRatio(this.value % amplitudeRatio.BaseValue);
+    }
+    /**
+     * Pow the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    pow(amplitudeRatio) {
+        return new AmplitudeRatio(this.value ** amplitudeRatio.BaseValue);
     }
 }
 exports.AmplitudeRatio = AmplitudeRatio;

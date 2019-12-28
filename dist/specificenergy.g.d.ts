@@ -35,11 +35,12 @@ export declare class SpecificEnergy {
      * Create a new SpecificEnergy.
      * @param value The value.
      * @param fromUnit The ‘SpecificEnergy’ unit to create from.
+     * The default unit is JoulesPerKilogram
      */
-    constructor(value: number, fromUnit: SpecificEnergyUnits);
+    constructor(value: number, fromUnit?: SpecificEnergyUnits);
     /**
-     * The base value of SpecificEnergy is JoulePerKilogram.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SpecificEnergy is JoulesPerKilogram.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -133,5 +134,53 @@ export declare class SpecificEnergy {
      * @returns The string format of the SpecificEnergy.
      */
     toString(toUnit?: SpecificEnergyUnits): string;
+    /**
+     * Check if the given SpecificEnergy are equals to the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns True if the given SpecificEnergy are equal to the current SpecificEnergy.
+     */
+    equals(specificEnergy: SpecificEnergy): boolean;
+    /**
+     * Compare the given SpecificEnergy against the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns 0 if they are equal, -1 if the current SpecificEnergy is less then other, 1 if the current SpecificEnergy is greater then other.
+     */
+    compareTo(specificEnergy: SpecificEnergy): number;
+    /**
+     * Add the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    add(specificEnergy: SpecificEnergy): SpecificEnergy;
+    /**
+     * Subtract the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    subtract(specificEnergy: SpecificEnergy): SpecificEnergy;
+    /**
+     * Multiply the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    multiply(specificEnergy: SpecificEnergy): SpecificEnergy;
+    /**
+     * Divide the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    divide(specificEnergy: SpecificEnergy): SpecificEnergy;
+    /**
+     * Modulo the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    modulo(specificEnergy: SpecificEnergy): SpecificEnergy;
+    /**
+     * Pow the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    pow(specificEnergy: SpecificEnergy): SpecificEnergy;
 }
 //# sourceMappingURL=specificenergy.g.d.ts.map

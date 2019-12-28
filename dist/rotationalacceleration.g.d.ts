@@ -20,11 +20,12 @@ export declare class RotationalAcceleration {
      * Create a new RotationalAcceleration.
      * @param value The value.
      * @param fromUnit The ‘RotationalAcceleration’ unit to create from.
+     * The default unit is RadiansPerSecondSquared
      */
-    constructor(value: number, fromUnit: RotationalAccelerationUnits);
+    constructor(value: number, fromUnit?: RotationalAccelerationUnits);
     /**
-     * The base value of RotationalAcceleration is RadianPerSecondSquared.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RotationalAcceleration is RadiansPerSecondSquared.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -73,5 +74,53 @@ export declare class RotationalAcceleration {
      * @returns The string format of the RotationalAcceleration.
      */
     toString(toUnit?: RotationalAccelerationUnits): string;
+    /**
+     * Check if the given RotationalAcceleration are equals to the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns True if the given RotationalAcceleration are equal to the current RotationalAcceleration.
+     */
+    equals(rotationalAcceleration: RotationalAcceleration): boolean;
+    /**
+     * Compare the given RotationalAcceleration against the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns 0 if they are equal, -1 if the current RotationalAcceleration is less then other, 1 if the current RotationalAcceleration is greater then other.
+     */
+    compareTo(rotationalAcceleration: RotationalAcceleration): number;
+    /**
+     * Add the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    add(rotationalAcceleration: RotationalAcceleration): RotationalAcceleration;
+    /**
+     * Subtract the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    subtract(rotationalAcceleration: RotationalAcceleration): RotationalAcceleration;
+    /**
+     * Multiply the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    multiply(rotationalAcceleration: RotationalAcceleration): RotationalAcceleration;
+    /**
+     * Divide the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    divide(rotationalAcceleration: RotationalAcceleration): RotationalAcceleration;
+    /**
+     * Modulo the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    modulo(rotationalAcceleration: RotationalAcceleration): RotationalAcceleration;
+    /**
+     * Pow the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    pow(rotationalAcceleration: RotationalAcceleration): RotationalAcceleration;
 }
 //# sourceMappingURL=rotationalacceleration.g.d.ts.map

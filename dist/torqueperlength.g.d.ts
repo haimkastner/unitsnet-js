@@ -71,11 +71,12 @@ export declare class TorquePerLength {
      * Create a new TorquePerLength.
      * @param value The value.
      * @param fromUnit The ‘TorquePerLength’ unit to create from.
+     * The default unit is NewtonMetersPerMeter
      */
-    constructor(value: number, fromUnit: TorquePerLengthUnits);
+    constructor(value: number, fromUnit?: TorquePerLengthUnits);
     /**
-     * The base value of TorquePerLength is NewtonMeterPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of TorquePerLength is NewtonMetersPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -277,5 +278,53 @@ export declare class TorquePerLength {
      * @returns The string format of the TorquePerLength.
      */
     toString(toUnit?: TorquePerLengthUnits): string;
+    /**
+     * Check if the given TorquePerLength are equals to the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns True if the given TorquePerLength are equal to the current TorquePerLength.
+     */
+    equals(torquePerLength: TorquePerLength): boolean;
+    /**
+     * Compare the given TorquePerLength against the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns 0 if they are equal, -1 if the current TorquePerLength is less then other, 1 if the current TorquePerLength is greater then other.
+     */
+    compareTo(torquePerLength: TorquePerLength): number;
+    /**
+     * Add the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    add(torquePerLength: TorquePerLength): TorquePerLength;
+    /**
+     * Subtract the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    subtract(torquePerLength: TorquePerLength): TorquePerLength;
+    /**
+     * Multiply the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    multiply(torquePerLength: TorquePerLength): TorquePerLength;
+    /**
+     * Divide the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    divide(torquePerLength: TorquePerLength): TorquePerLength;
+    /**
+     * Modulo the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    modulo(torquePerLength: TorquePerLength): TorquePerLength;
+    /**
+     * Pow the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    pow(torquePerLength: TorquePerLength): TorquePerLength;
 }
 //# sourceMappingURL=torqueperlength.g.d.ts.map

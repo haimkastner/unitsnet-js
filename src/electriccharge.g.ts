@@ -22,16 +22,17 @@ export class ElectricCharge {
      * Create a new ElectricCharge.
      * @param value The value.
      * @param fromUnit The ‘ElectricCharge’ unit to create from.
+     * The default unit is Coulombs
      */
-    public constructor(value: number, fromUnit: ElectricChargeUnits) {
+    public constructor(value: number, fromUnit: ElectricChargeUnits = ElectricChargeUnits.Coulombs) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of ElectricCharge is Coulomb.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricCharge is Coulombs.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -159,12 +160,89 @@ export class ElectricCharge {
             case ElectricChargeUnits.AmpereHours:
                 return this.AmpereHours + ` A-h`;
             case ElectricChargeUnits.KiloampereHours:
-                return this.KiloampereHours + ` A-h`;
+                return this.KiloampereHours + ` `;
             case ElectricChargeUnits.MegaampereHours:
-                return this.MegaampereHours + ` A-h`;
+                return this.MegaampereHours + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ElectricCharge are equals to the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns True if the given ElectricCharge are equal to the current ElectricCharge.
+     */
+    public equals(electricCharge: ElectricCharge): boolean {
+        return this.value === electricCharge.BaseValue;
+    }
+
+    /**
+     * Compare the given ElectricCharge against the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns 0 if they are equal, -1 if the current ElectricCharge is less then other, 1 if the current ElectricCharge is greater then other.
+     */
+    public compareTo(electricCharge: ElectricCharge): number {
+
+        if (this.value > electricCharge.BaseValue)
+            return 1;
+        if (this.value < electricCharge.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    public add(electricCharge: ElectricCharge): ElectricCharge {
+        return new ElectricCharge(this.value + electricCharge.BaseValue)
+    }
+
+    /**
+     * Subtract the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    public subtract(electricCharge: ElectricCharge): ElectricCharge {
+        return new ElectricCharge(this.value - electricCharge.BaseValue)
+    }
+
+    /**
+     * Multiply the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    public multiply(electricCharge: ElectricCharge): ElectricCharge {
+        return new ElectricCharge(this.value * electricCharge.BaseValue)
+    }
+
+    /**
+     * Divide the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    public divide(electricCharge: ElectricCharge): ElectricCharge {
+        return new ElectricCharge(this.value / electricCharge.BaseValue)
+    }
+
+    /**
+     * Modulo the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    public modulo(electricCharge: ElectricCharge): ElectricCharge {
+        return new ElectricCharge(this.value % electricCharge.BaseValue)
+    }
+
+    /**
+     * Pow the given ElectricCharge with the current ElectricCharge.
+     * @param electricCharge The other ElectricCharge.
+     * @returns A new ElectricCharge instance with the results.
+     */
+    public pow(electricCharge: ElectricCharge): ElectricCharge {
+        return new ElectricCharge(this.value ** electricCharge.BaseValue)
     }
 }

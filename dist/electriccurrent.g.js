@@ -24,8 +24,9 @@ class ElectricCurrent {
      * Create a new ElectricCurrent.
      * @param value The value.
      * @param fromUnit The ‘ElectricCurrent’ unit to create from.
+     * The default unit is Amperes
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ElectricCurrentUnits.Amperes) {
         this.amperesLazy = null;
         this.picoamperesLazy = null;
         this.nanoamperesLazy = null;
@@ -38,8 +39,8 @@ class ElectricCurrent {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ElectricCurrent is Ampere.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricCurrent is Amperes.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -210,21 +211,89 @@ class ElectricCurrent {
             case ElectricCurrentUnits.Amperes:
                 return this.Amperes + ` A`;
             case ElectricCurrentUnits.Picoamperes:
-                return this.Picoamperes + ` A`;
+                return this.Picoamperes + ` `;
             case ElectricCurrentUnits.Nanoamperes:
-                return this.Nanoamperes + ` A`;
+                return this.Nanoamperes + ` `;
             case ElectricCurrentUnits.Microamperes:
-                return this.Microamperes + ` A`;
+                return this.Microamperes + ` `;
             case ElectricCurrentUnits.Centiamperes:
-                return this.Centiamperes + ` A`;
+                return this.Centiamperes + ` `;
             case ElectricCurrentUnits.Kiloamperes:
-                return this.Kiloamperes + ` A`;
+                return this.Kiloamperes + ` `;
             case ElectricCurrentUnits.Megaamperes:
-                return this.Megaamperes + ` A`;
+                return this.Megaamperes + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ElectricCurrent are equals to the current ElectricCurrent.
+     * @param electricCurrent The other ElectricCurrent.
+     * @returns True if the given ElectricCurrent are equal to the current ElectricCurrent.
+     */
+    equals(electricCurrent) {
+        return this.value === electricCurrent.BaseValue;
+    }
+    /**
+     * Compare the given ElectricCurrent against the current ElectricCurrent.
+     * @param electricCurrent The other ElectricCurrent.
+     * @returns 0 if they are equal, -1 if the current ElectricCurrent is less then other, 1 if the current ElectricCurrent is greater then other.
+     */
+    compareTo(electricCurrent) {
+        if (this.value > electricCurrent.BaseValue)
+            return 1;
+        if (this.value < electricCurrent.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ElectricCurrent with the current ElectricCurrent.
+     * @param electricCurrent The other ElectricCurrent.
+     * @returns A new ElectricCurrent instance with the results.
+     */
+    add(electricCurrent) {
+        return new ElectricCurrent(this.value + electricCurrent.BaseValue);
+    }
+    /**
+     * Subtract the given ElectricCurrent with the current ElectricCurrent.
+     * @param electricCurrent The other ElectricCurrent.
+     * @returns A new ElectricCurrent instance with the results.
+     */
+    subtract(electricCurrent) {
+        return new ElectricCurrent(this.value - electricCurrent.BaseValue);
+    }
+    /**
+     * Multiply the given ElectricCurrent with the current ElectricCurrent.
+     * @param electricCurrent The other ElectricCurrent.
+     * @returns A new ElectricCurrent instance with the results.
+     */
+    multiply(electricCurrent) {
+        return new ElectricCurrent(this.value * electricCurrent.BaseValue);
+    }
+    /**
+     * Divide the given ElectricCurrent with the current ElectricCurrent.
+     * @param electricCurrent The other ElectricCurrent.
+     * @returns A new ElectricCurrent instance with the results.
+     */
+    divide(electricCurrent) {
+        return new ElectricCurrent(this.value / electricCurrent.BaseValue);
+    }
+    /**
+     * Modulo the given ElectricCurrent with the current ElectricCurrent.
+     * @param electricCurrent The other ElectricCurrent.
+     * @returns A new ElectricCurrent instance with the results.
+     */
+    modulo(electricCurrent) {
+        return new ElectricCurrent(this.value % electricCurrent.BaseValue);
+    }
+    /**
+     * Pow the given ElectricCurrent with the current ElectricCurrent.
+     * @param electricCurrent The other ElectricCurrent.
+     * @returns A new ElectricCurrent instance with the results.
+     */
+    pow(electricCurrent) {
+        return new ElectricCurrent(this.value ** electricCurrent.BaseValue);
     }
 }
 exports.ElectricCurrent = ElectricCurrent;

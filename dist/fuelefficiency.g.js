@@ -18,8 +18,9 @@ class FuelEfficiency {
      * Create a new FuelEfficiency.
      * @param value The value.
      * @param fromUnit The ‘FuelEfficiency’ unit to create from.
+     * The default unit is LitersPer100Kilometers
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = FuelEfficiencyUnits.LitersPer100Kilometers) {
         this.litersper100kilometersLazy = null;
         this.milesperusgallonLazy = null;
         this.milesperukgallonLazy = null;
@@ -29,8 +30,8 @@ class FuelEfficiency {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of FuelEfficiency is LiterPer100Kilometers.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of FuelEfficiency is LitersPer100Kilometers.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -150,6 +151,74 @@ class FuelEfficiency {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given FuelEfficiency are equals to the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns True if the given FuelEfficiency are equal to the current FuelEfficiency.
+     */
+    equals(fuelEfficiency) {
+        return this.value === fuelEfficiency.BaseValue;
+    }
+    /**
+     * Compare the given FuelEfficiency against the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns 0 if they are equal, -1 if the current FuelEfficiency is less then other, 1 if the current FuelEfficiency is greater then other.
+     */
+    compareTo(fuelEfficiency) {
+        if (this.value > fuelEfficiency.BaseValue)
+            return 1;
+        if (this.value < fuelEfficiency.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    add(fuelEfficiency) {
+        return new FuelEfficiency(this.value + fuelEfficiency.BaseValue);
+    }
+    /**
+     * Subtract the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    subtract(fuelEfficiency) {
+        return new FuelEfficiency(this.value - fuelEfficiency.BaseValue);
+    }
+    /**
+     * Multiply the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    multiply(fuelEfficiency) {
+        return new FuelEfficiency(this.value * fuelEfficiency.BaseValue);
+    }
+    /**
+     * Divide the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    divide(fuelEfficiency) {
+        return new FuelEfficiency(this.value / fuelEfficiency.BaseValue);
+    }
+    /**
+     * Modulo the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    modulo(fuelEfficiency) {
+        return new FuelEfficiency(this.value % fuelEfficiency.BaseValue);
+    }
+    /**
+     * Pow the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    pow(fuelEfficiency) {
+        return new FuelEfficiency(this.value ** fuelEfficiency.BaseValue);
     }
 }
 exports.FuelEfficiency = FuelEfficiency;

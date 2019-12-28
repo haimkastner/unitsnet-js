@@ -19,8 +19,9 @@ export class CoefficientOfThermalExpansion {
      * Create a new CoefficientOfThermalExpansion.
      * @param value The value.
      * @param fromUnit The ‘CoefficientOfThermalExpansion’ unit to create from.
+     * The default unit is InverseKelvin
      */
-    public constructor(value: number, fromUnit: CoefficientOfThermalExpansionUnits) {
+    public constructor(value: number, fromUnit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.InverseKelvin) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
@@ -28,7 +29,7 @@ export class CoefficientOfThermalExpansion {
 
     /**
      * The base value of CoefficientOfThermalExpansion is InverseKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -139,5 +140,82 @@ export class CoefficientOfThermalExpansion {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given CoefficientOfThermalExpansion are equals to the current CoefficientOfThermalExpansion.
+     * @param coefficientOfThermalExpansion The other CoefficientOfThermalExpansion.
+     * @returns True if the given CoefficientOfThermalExpansion are equal to the current CoefficientOfThermalExpansion.
+     */
+    public equals(coefficientOfThermalExpansion: CoefficientOfThermalExpansion): boolean {
+        return this.value === coefficientOfThermalExpansion.BaseValue;
+    }
+
+    /**
+     * Compare the given CoefficientOfThermalExpansion against the current CoefficientOfThermalExpansion.
+     * @param coefficientOfThermalExpansion The other CoefficientOfThermalExpansion.
+     * @returns 0 if they are equal, -1 if the current CoefficientOfThermalExpansion is less then other, 1 if the current CoefficientOfThermalExpansion is greater then other.
+     */
+    public compareTo(coefficientOfThermalExpansion: CoefficientOfThermalExpansion): number {
+
+        if (this.value > coefficientOfThermalExpansion.BaseValue)
+            return 1;
+        if (this.value < coefficientOfThermalExpansion.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given CoefficientOfThermalExpansion with the current CoefficientOfThermalExpansion.
+     * @param coefficientOfThermalExpansion The other CoefficientOfThermalExpansion.
+     * @returns A new CoefficientOfThermalExpansion instance with the results.
+     */
+    public add(coefficientOfThermalExpansion: CoefficientOfThermalExpansion): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(this.value + coefficientOfThermalExpansion.BaseValue)
+    }
+
+    /**
+     * Subtract the given CoefficientOfThermalExpansion with the current CoefficientOfThermalExpansion.
+     * @param coefficientOfThermalExpansion The other CoefficientOfThermalExpansion.
+     * @returns A new CoefficientOfThermalExpansion instance with the results.
+     */
+    public subtract(coefficientOfThermalExpansion: CoefficientOfThermalExpansion): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(this.value - coefficientOfThermalExpansion.BaseValue)
+    }
+
+    /**
+     * Multiply the given CoefficientOfThermalExpansion with the current CoefficientOfThermalExpansion.
+     * @param coefficientOfThermalExpansion The other CoefficientOfThermalExpansion.
+     * @returns A new CoefficientOfThermalExpansion instance with the results.
+     */
+    public multiply(coefficientOfThermalExpansion: CoefficientOfThermalExpansion): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(this.value * coefficientOfThermalExpansion.BaseValue)
+    }
+
+    /**
+     * Divide the given CoefficientOfThermalExpansion with the current CoefficientOfThermalExpansion.
+     * @param coefficientOfThermalExpansion The other CoefficientOfThermalExpansion.
+     * @returns A new CoefficientOfThermalExpansion instance with the results.
+     */
+    public divide(coefficientOfThermalExpansion: CoefficientOfThermalExpansion): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(this.value / coefficientOfThermalExpansion.BaseValue)
+    }
+
+    /**
+     * Modulo the given CoefficientOfThermalExpansion with the current CoefficientOfThermalExpansion.
+     * @param coefficientOfThermalExpansion The other CoefficientOfThermalExpansion.
+     * @returns A new CoefficientOfThermalExpansion instance with the results.
+     */
+    public modulo(coefficientOfThermalExpansion: CoefficientOfThermalExpansion): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(this.value % coefficientOfThermalExpansion.BaseValue)
+    }
+
+    /**
+     * Pow the given CoefficientOfThermalExpansion with the current CoefficientOfThermalExpansion.
+     * @param coefficientOfThermalExpansion The other CoefficientOfThermalExpansion.
+     * @returns A new CoefficientOfThermalExpansion instance with the results.
+     */
+    public pow(coefficientOfThermalExpansion: CoefficientOfThermalExpansion): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(this.value ** coefficientOfThermalExpansion.BaseValue)
     }
 }

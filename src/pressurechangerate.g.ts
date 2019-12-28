@@ -31,16 +31,17 @@ export class PressureChangeRate {
      * Create a new PressureChangeRate.
      * @param value The value.
      * @param fromUnit The ‘PressureChangeRate’ unit to create from.
+     * The default unit is PascalsPerSecond
      */
-    public constructor(value: number, fromUnit: PressureChangeRateUnits) {
+    public constructor(value: number, fromUnit: PressureChangeRateUnits = PressureChangeRateUnits.PascalsPerSecond) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of PressureChangeRate is PascalPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of PressureChangeRate is PascalsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -236,16 +237,93 @@ export class PressureChangeRate {
             case PressureChangeRateUnits.AtmospheresPerSecond:
                 return this.AtmospheresPerSecond + ` atm/s`;
             case PressureChangeRateUnits.KilopascalsPerSecond:
-                return this.KilopascalsPerSecond + ` Pa/s`;
+                return this.KilopascalsPerSecond + ` `;
             case PressureChangeRateUnits.MegapascalsPerSecond:
-                return this.MegapascalsPerSecond + ` Pa/s`;
+                return this.MegapascalsPerSecond + ` `;
             case PressureChangeRateUnits.KilopascalsPerMinute:
-                return this.KilopascalsPerMinute + ` Pa/min`;
+                return this.KilopascalsPerMinute + ` `;
             case PressureChangeRateUnits.MegapascalsPerMinute:
-                return this.MegapascalsPerMinute + ` Pa/min`;
+                return this.MegapascalsPerMinute + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given PressureChangeRate are equals to the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns True if the given PressureChangeRate are equal to the current PressureChangeRate.
+     */
+    public equals(pressureChangeRate: PressureChangeRate): boolean {
+        return this.value === pressureChangeRate.BaseValue;
+    }
+
+    /**
+     * Compare the given PressureChangeRate against the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns 0 if they are equal, -1 if the current PressureChangeRate is less then other, 1 if the current PressureChangeRate is greater then other.
+     */
+    public compareTo(pressureChangeRate: PressureChangeRate): number {
+
+        if (this.value > pressureChangeRate.BaseValue)
+            return 1;
+        if (this.value < pressureChangeRate.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    public add(pressureChangeRate: PressureChangeRate): PressureChangeRate {
+        return new PressureChangeRate(this.value + pressureChangeRate.BaseValue)
+    }
+
+    /**
+     * Subtract the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    public subtract(pressureChangeRate: PressureChangeRate): PressureChangeRate {
+        return new PressureChangeRate(this.value - pressureChangeRate.BaseValue)
+    }
+
+    /**
+     * Multiply the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    public multiply(pressureChangeRate: PressureChangeRate): PressureChangeRate {
+        return new PressureChangeRate(this.value * pressureChangeRate.BaseValue)
+    }
+
+    /**
+     * Divide the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    public divide(pressureChangeRate: PressureChangeRate): PressureChangeRate {
+        return new PressureChangeRate(this.value / pressureChangeRate.BaseValue)
+    }
+
+    /**
+     * Modulo the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    public modulo(pressureChangeRate: PressureChangeRate): PressureChangeRate {
+        return new PressureChangeRate(this.value % pressureChangeRate.BaseValue)
+    }
+
+    /**
+     * Pow the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    public pow(pressureChangeRate: PressureChangeRate): PressureChangeRate {
+        return new PressureChangeRate(this.value ** pressureChangeRate.BaseValue)
     }
 }

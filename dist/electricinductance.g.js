@@ -16,8 +16,9 @@ class ElectricInductance {
      * Create a new ElectricInductance.
      * @param value The value.
      * @param fromUnit The ‘ElectricInductance’ unit to create from.
+     * The default unit is Henries
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ElectricInductanceUnits.Henries) {
         this.henriesLazy = null;
         this.nanohenriesLazy = null;
         this.microhenriesLazy = null;
@@ -26,8 +27,8 @@ class ElectricInductance {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ElectricInductance is Henry.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricInductance is Henries.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -118,13 +119,81 @@ class ElectricInductance {
             case ElectricInductanceUnits.Henries:
                 return this.Henries + ` H`;
             case ElectricInductanceUnits.Nanohenries:
-                return this.Nanohenries + ` H`;
+                return this.Nanohenries + ` `;
             case ElectricInductanceUnits.Microhenries:
-                return this.Microhenries + ` H`;
+                return this.Microhenries + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ElectricInductance are equals to the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns True if the given ElectricInductance are equal to the current ElectricInductance.
+     */
+    equals(electricInductance) {
+        return this.value === electricInductance.BaseValue;
+    }
+    /**
+     * Compare the given ElectricInductance against the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns 0 if they are equal, -1 if the current ElectricInductance is less then other, 1 if the current ElectricInductance is greater then other.
+     */
+    compareTo(electricInductance) {
+        if (this.value > electricInductance.BaseValue)
+            return 1;
+        if (this.value < electricInductance.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    add(electricInductance) {
+        return new ElectricInductance(this.value + electricInductance.BaseValue);
+    }
+    /**
+     * Subtract the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    subtract(electricInductance) {
+        return new ElectricInductance(this.value - electricInductance.BaseValue);
+    }
+    /**
+     * Multiply the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    multiply(electricInductance) {
+        return new ElectricInductance(this.value * electricInductance.BaseValue);
+    }
+    /**
+     * Divide the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    divide(electricInductance) {
+        return new ElectricInductance(this.value / electricInductance.BaseValue);
+    }
+    /**
+     * Modulo the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    modulo(electricInductance) {
+        return new ElectricInductance(this.value % electricInductance.BaseValue);
+    }
+    /**
+     * Pow the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    pow(electricInductance) {
+        return new ElectricInductance(this.value ** electricInductance.BaseValue);
     }
 }
 exports.ElectricInductance = ElectricInductance;

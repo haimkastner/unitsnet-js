@@ -38,11 +38,12 @@ export declare class ForceChangeRate {
      * Create a new ForceChangeRate.
      * @param value The value.
      * @param fromUnit The ‘ForceChangeRate’ unit to create from.
+     * The default unit is NewtonsPerSecond
      */
-    constructor(value: number, fromUnit: ForceChangeRateUnits);
+    constructor(value: number, fromUnit?: ForceChangeRateUnits);
     /**
-     * The base value of ForceChangeRate is NewtonPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ForceChangeRate is NewtonsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -145,5 +146,53 @@ export declare class ForceChangeRate {
      * @returns The string format of the ForceChangeRate.
      */
     toString(toUnit?: ForceChangeRateUnits): string;
+    /**
+     * Check if the given ForceChangeRate are equals to the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns True if the given ForceChangeRate are equal to the current ForceChangeRate.
+     */
+    equals(forceChangeRate: ForceChangeRate): boolean;
+    /**
+     * Compare the given ForceChangeRate against the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns 0 if they are equal, -1 if the current ForceChangeRate is less then other, 1 if the current ForceChangeRate is greater then other.
+     */
+    compareTo(forceChangeRate: ForceChangeRate): number;
+    /**
+     * Add the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    add(forceChangeRate: ForceChangeRate): ForceChangeRate;
+    /**
+     * Subtract the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    subtract(forceChangeRate: ForceChangeRate): ForceChangeRate;
+    /**
+     * Multiply the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    multiply(forceChangeRate: ForceChangeRate): ForceChangeRate;
+    /**
+     * Divide the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    divide(forceChangeRate: ForceChangeRate): ForceChangeRate;
+    /**
+     * Modulo the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    modulo(forceChangeRate: ForceChangeRate): ForceChangeRate;
+    /**
+     * Pow the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    pow(forceChangeRate: ForceChangeRate): ForceChangeRate;
 }
 //# sourceMappingURL=forcechangerate.g.d.ts.map

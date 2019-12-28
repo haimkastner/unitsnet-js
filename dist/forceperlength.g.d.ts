@@ -41,11 +41,12 @@ export declare class ForcePerLength {
      * Create a new ForcePerLength.
      * @param value The value.
      * @param fromUnit The ‘ForcePerLength’ unit to create from.
+     * The default unit is NewtonsPerMeter
      */
-    constructor(value: number, fromUnit: ForcePerLengthUnits);
+    constructor(value: number, fromUnit?: ForcePerLengthUnits);
     /**
-     * The base value of ForcePerLength is NewtonPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ForcePerLength is NewtonsPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -157,5 +158,53 @@ export declare class ForcePerLength {
      * @returns The string format of the ForcePerLength.
      */
     toString(toUnit?: ForcePerLengthUnits): string;
+    /**
+     * Check if the given ForcePerLength are equals to the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns True if the given ForcePerLength are equal to the current ForcePerLength.
+     */
+    equals(forcePerLength: ForcePerLength): boolean;
+    /**
+     * Compare the given ForcePerLength against the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns 0 if they are equal, -1 if the current ForcePerLength is less then other, 1 if the current ForcePerLength is greater then other.
+     */
+    compareTo(forcePerLength: ForcePerLength): number;
+    /**
+     * Add the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    add(forcePerLength: ForcePerLength): ForcePerLength;
+    /**
+     * Subtract the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    subtract(forcePerLength: ForcePerLength): ForcePerLength;
+    /**
+     * Multiply the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    multiply(forcePerLength: ForcePerLength): ForcePerLength;
+    /**
+     * Divide the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    divide(forcePerLength: ForcePerLength): ForcePerLength;
+    /**
+     * Modulo the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    modulo(forcePerLength: ForcePerLength): ForcePerLength;
+    /**
+     * Pow the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    pow(forcePerLength: ForcePerLength): ForcePerLength;
 }
 //# sourceMappingURL=forceperlength.g.d.ts.map

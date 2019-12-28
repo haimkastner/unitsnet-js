@@ -13,16 +13,17 @@ export class MagneticFlux {
      * Create a new MagneticFlux.
      * @param value The value.
      * @param fromUnit The ‘MagneticFlux’ unit to create from.
+     * The default unit is Webers
      */
-    public constructor(value: number, fromUnit: MagneticFluxUnits) {
+    public constructor(value: number, fromUnit: MagneticFluxUnits = MagneticFluxUnits.Webers) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of MagneticFlux is Weber.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MagneticFlux is Webers.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -85,5 +86,82 @@ export class MagneticFlux {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given MagneticFlux are equals to the current MagneticFlux.
+     * @param magneticFlux The other MagneticFlux.
+     * @returns True if the given MagneticFlux are equal to the current MagneticFlux.
+     */
+    public equals(magneticFlux: MagneticFlux): boolean {
+        return this.value === magneticFlux.BaseValue;
+    }
+
+    /**
+     * Compare the given MagneticFlux against the current MagneticFlux.
+     * @param magneticFlux The other MagneticFlux.
+     * @returns 0 if they are equal, -1 if the current MagneticFlux is less then other, 1 if the current MagneticFlux is greater then other.
+     */
+    public compareTo(magneticFlux: MagneticFlux): number {
+
+        if (this.value > magneticFlux.BaseValue)
+            return 1;
+        if (this.value < magneticFlux.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given MagneticFlux with the current MagneticFlux.
+     * @param magneticFlux The other MagneticFlux.
+     * @returns A new MagneticFlux instance with the results.
+     */
+    public add(magneticFlux: MagneticFlux): MagneticFlux {
+        return new MagneticFlux(this.value + magneticFlux.BaseValue)
+    }
+
+    /**
+     * Subtract the given MagneticFlux with the current MagneticFlux.
+     * @param magneticFlux The other MagneticFlux.
+     * @returns A new MagneticFlux instance with the results.
+     */
+    public subtract(magneticFlux: MagneticFlux): MagneticFlux {
+        return new MagneticFlux(this.value - magneticFlux.BaseValue)
+    }
+
+    /**
+     * Multiply the given MagneticFlux with the current MagneticFlux.
+     * @param magneticFlux The other MagneticFlux.
+     * @returns A new MagneticFlux instance with the results.
+     */
+    public multiply(magneticFlux: MagneticFlux): MagneticFlux {
+        return new MagneticFlux(this.value * magneticFlux.BaseValue)
+    }
+
+    /**
+     * Divide the given MagneticFlux with the current MagneticFlux.
+     * @param magneticFlux The other MagneticFlux.
+     * @returns A new MagneticFlux instance with the results.
+     */
+    public divide(magneticFlux: MagneticFlux): MagneticFlux {
+        return new MagneticFlux(this.value / magneticFlux.BaseValue)
+    }
+
+    /**
+     * Modulo the given MagneticFlux with the current MagneticFlux.
+     * @param magneticFlux The other MagneticFlux.
+     * @returns A new MagneticFlux instance with the results.
+     */
+    public modulo(magneticFlux: MagneticFlux): MagneticFlux {
+        return new MagneticFlux(this.value % magneticFlux.BaseValue)
+    }
+
+    /**
+     * Pow the given MagneticFlux with the current MagneticFlux.
+     * @param magneticFlux The other MagneticFlux.
+     * @returns A new MagneticFlux instance with the results.
+     */
+    public pow(magneticFlux: MagneticFlux): MagneticFlux {
+        return new MagneticFlux(this.value ** magneticFlux.BaseValue)
     }
 }

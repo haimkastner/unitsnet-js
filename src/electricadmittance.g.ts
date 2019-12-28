@@ -19,8 +19,9 @@ export class ElectricAdmittance {
      * Create a new ElectricAdmittance.
      * @param value The value.
      * @param fromUnit The ‘ElectricAdmittance’ unit to create from.
+     * The default unit is Siemens
      */
-    public constructor(value: number, fromUnit: ElectricAdmittanceUnits) {
+    public constructor(value: number, fromUnit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
@@ -28,7 +29,7 @@ export class ElectricAdmittance {
 
     /**
      * The base value of ElectricAdmittance is Siemens.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -132,12 +133,89 @@ export class ElectricAdmittance {
             case ElectricAdmittanceUnits.Siemens:
                 return this.Siemens + ` S`;
             case ElectricAdmittanceUnits.Nanosiemens:
-                return this.Nanosiemens + ` S`;
+                return this.Nanosiemens + ` `;
             case ElectricAdmittanceUnits.Microsiemens:
-                return this.Microsiemens + ` S`;
+                return this.Microsiemens + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ElectricAdmittance are equals to the current ElectricAdmittance.
+     * @param electricAdmittance The other ElectricAdmittance.
+     * @returns True if the given ElectricAdmittance are equal to the current ElectricAdmittance.
+     */
+    public equals(electricAdmittance: ElectricAdmittance): boolean {
+        return this.value === electricAdmittance.BaseValue;
+    }
+
+    /**
+     * Compare the given ElectricAdmittance against the current ElectricAdmittance.
+     * @param electricAdmittance The other ElectricAdmittance.
+     * @returns 0 if they are equal, -1 if the current ElectricAdmittance is less then other, 1 if the current ElectricAdmittance is greater then other.
+     */
+    public compareTo(electricAdmittance: ElectricAdmittance): number {
+
+        if (this.value > electricAdmittance.BaseValue)
+            return 1;
+        if (this.value < electricAdmittance.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ElectricAdmittance with the current ElectricAdmittance.
+     * @param electricAdmittance The other ElectricAdmittance.
+     * @returns A new ElectricAdmittance instance with the results.
+     */
+    public add(electricAdmittance: ElectricAdmittance): ElectricAdmittance {
+        return new ElectricAdmittance(this.value + electricAdmittance.BaseValue)
+    }
+
+    /**
+     * Subtract the given ElectricAdmittance with the current ElectricAdmittance.
+     * @param electricAdmittance The other ElectricAdmittance.
+     * @returns A new ElectricAdmittance instance with the results.
+     */
+    public subtract(electricAdmittance: ElectricAdmittance): ElectricAdmittance {
+        return new ElectricAdmittance(this.value - electricAdmittance.BaseValue)
+    }
+
+    /**
+     * Multiply the given ElectricAdmittance with the current ElectricAdmittance.
+     * @param electricAdmittance The other ElectricAdmittance.
+     * @returns A new ElectricAdmittance instance with the results.
+     */
+    public multiply(electricAdmittance: ElectricAdmittance): ElectricAdmittance {
+        return new ElectricAdmittance(this.value * electricAdmittance.BaseValue)
+    }
+
+    /**
+     * Divide the given ElectricAdmittance with the current ElectricAdmittance.
+     * @param electricAdmittance The other ElectricAdmittance.
+     * @returns A new ElectricAdmittance instance with the results.
+     */
+    public divide(electricAdmittance: ElectricAdmittance): ElectricAdmittance {
+        return new ElectricAdmittance(this.value / electricAdmittance.BaseValue)
+    }
+
+    /**
+     * Modulo the given ElectricAdmittance with the current ElectricAdmittance.
+     * @param electricAdmittance The other ElectricAdmittance.
+     * @returns A new ElectricAdmittance instance with the results.
+     */
+    public modulo(electricAdmittance: ElectricAdmittance): ElectricAdmittance {
+        return new ElectricAdmittance(this.value % electricAdmittance.BaseValue)
+    }
+
+    /**
+     * Pow the given ElectricAdmittance with the current ElectricAdmittance.
+     * @param electricAdmittance The other ElectricAdmittance.
+     * @returns A new ElectricAdmittance instance with the results.
+     */
+    public pow(electricAdmittance: ElectricAdmittance): ElectricAdmittance {
+        return new ElectricAdmittance(this.value ** electricAdmittance.BaseValue)
     }
 }

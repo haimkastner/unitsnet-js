@@ -22,16 +22,17 @@ export class ReactivePower {
      * Create a new ReactivePower.
      * @param value The value.
      * @param fromUnit The ‘ReactivePower’ unit to create from.
+     * The default unit is VoltamperesReactive
      */
-    public constructor(value: number, fromUnit: ReactivePowerUnits) {
+    public constructor(value: number, fromUnit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of ReactivePower is VoltampereReactive.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ReactivePower is VoltamperesReactive.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -157,14 +158,91 @@ export class ReactivePower {
             case ReactivePowerUnits.VoltamperesReactive:
                 return this.VoltamperesReactive + ` var`;
             case ReactivePowerUnits.KilovoltamperesReactive:
-                return this.KilovoltamperesReactive + ` var`;
+                return this.KilovoltamperesReactive + ` `;
             case ReactivePowerUnits.MegavoltamperesReactive:
-                return this.MegavoltamperesReactive + ` var`;
+                return this.MegavoltamperesReactive + ` `;
             case ReactivePowerUnits.GigavoltamperesReactive:
-                return this.GigavoltamperesReactive + ` var`;
+                return this.GigavoltamperesReactive + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ReactivePower are equals to the current ReactivePower.
+     * @param reactivePower The other ReactivePower.
+     * @returns True if the given ReactivePower are equal to the current ReactivePower.
+     */
+    public equals(reactivePower: ReactivePower): boolean {
+        return this.value === reactivePower.BaseValue;
+    }
+
+    /**
+     * Compare the given ReactivePower against the current ReactivePower.
+     * @param reactivePower The other ReactivePower.
+     * @returns 0 if they are equal, -1 if the current ReactivePower is less then other, 1 if the current ReactivePower is greater then other.
+     */
+    public compareTo(reactivePower: ReactivePower): number {
+
+        if (this.value > reactivePower.BaseValue)
+            return 1;
+        if (this.value < reactivePower.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ReactivePower with the current ReactivePower.
+     * @param reactivePower The other ReactivePower.
+     * @returns A new ReactivePower instance with the results.
+     */
+    public add(reactivePower: ReactivePower): ReactivePower {
+        return new ReactivePower(this.value + reactivePower.BaseValue)
+    }
+
+    /**
+     * Subtract the given ReactivePower with the current ReactivePower.
+     * @param reactivePower The other ReactivePower.
+     * @returns A new ReactivePower instance with the results.
+     */
+    public subtract(reactivePower: ReactivePower): ReactivePower {
+        return new ReactivePower(this.value - reactivePower.BaseValue)
+    }
+
+    /**
+     * Multiply the given ReactivePower with the current ReactivePower.
+     * @param reactivePower The other ReactivePower.
+     * @returns A new ReactivePower instance with the results.
+     */
+    public multiply(reactivePower: ReactivePower): ReactivePower {
+        return new ReactivePower(this.value * reactivePower.BaseValue)
+    }
+
+    /**
+     * Divide the given ReactivePower with the current ReactivePower.
+     * @param reactivePower The other ReactivePower.
+     * @returns A new ReactivePower instance with the results.
+     */
+    public divide(reactivePower: ReactivePower): ReactivePower {
+        return new ReactivePower(this.value / reactivePower.BaseValue)
+    }
+
+    /**
+     * Modulo the given ReactivePower with the current ReactivePower.
+     * @param reactivePower The other ReactivePower.
+     * @returns A new ReactivePower instance with the results.
+     */
+    public modulo(reactivePower: ReactivePower): ReactivePower {
+        return new ReactivePower(this.value % reactivePower.BaseValue)
+    }
+
+    /**
+     * Pow the given ReactivePower with the current ReactivePower.
+     * @param reactivePower The other ReactivePower.
+     * @returns A new ReactivePower instance with the results.
+     */
+    public pow(reactivePower: ReactivePower): ReactivePower {
+        return new ReactivePower(this.value ** reactivePower.BaseValue)
     }
 }

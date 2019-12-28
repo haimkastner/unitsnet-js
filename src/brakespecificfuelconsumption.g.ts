@@ -19,16 +19,17 @@ export class BrakeSpecificFuelConsumption {
      * Create a new BrakeSpecificFuelConsumption.
      * @param value The value.
      * @param fromUnit The ‘BrakeSpecificFuelConsumption’ unit to create from.
+     * The default unit is KilogramsPerJoule
      */
-    public constructor(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits) {
+    public constructor(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of BrakeSpecificFuelConsumption is KilogramPerJoule.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of BrakeSpecificFuelConsumption is KilogramsPerJoule.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -139,5 +140,82 @@ export class BrakeSpecificFuelConsumption {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given BrakeSpecificFuelConsumption are equals to the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns True if the given BrakeSpecificFuelConsumption are equal to the current BrakeSpecificFuelConsumption.
+     */
+    public equals(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): boolean {
+        return this.value === brakeSpecificFuelConsumption.BaseValue;
+    }
+
+    /**
+     * Compare the given BrakeSpecificFuelConsumption against the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns 0 if they are equal, -1 if the current BrakeSpecificFuelConsumption is less then other, 1 if the current BrakeSpecificFuelConsumption is greater then other.
+     */
+    public compareTo(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): number {
+
+        if (this.value > brakeSpecificFuelConsumption.BaseValue)
+            return 1;
+        if (this.value < brakeSpecificFuelConsumption.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    public add(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption {
+        return new BrakeSpecificFuelConsumption(this.value + brakeSpecificFuelConsumption.BaseValue)
+    }
+
+    /**
+     * Subtract the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    public subtract(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption {
+        return new BrakeSpecificFuelConsumption(this.value - brakeSpecificFuelConsumption.BaseValue)
+    }
+
+    /**
+     * Multiply the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    public multiply(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption {
+        return new BrakeSpecificFuelConsumption(this.value * brakeSpecificFuelConsumption.BaseValue)
+    }
+
+    /**
+     * Divide the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    public divide(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption {
+        return new BrakeSpecificFuelConsumption(this.value / brakeSpecificFuelConsumption.BaseValue)
+    }
+
+    /**
+     * Modulo the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    public modulo(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption {
+        return new BrakeSpecificFuelConsumption(this.value % brakeSpecificFuelConsumption.BaseValue)
+    }
+
+    /**
+     * Pow the given BrakeSpecificFuelConsumption with the current BrakeSpecificFuelConsumption.
+     * @param brakeSpecificFuelConsumption The other BrakeSpecificFuelConsumption.
+     * @returns A new BrakeSpecificFuelConsumption instance with the results.
+     */
+    public pow(brakeSpecificFuelConsumption: BrakeSpecificFuelConsumption): BrakeSpecificFuelConsumption {
+        return new BrakeSpecificFuelConsumption(this.value ** brakeSpecificFuelConsumption.BaseValue)
     }
 }

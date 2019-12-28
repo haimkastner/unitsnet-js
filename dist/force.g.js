@@ -34,8 +34,9 @@ class Force {
      * Create a new Force.
      * @param value The value.
      * @param fromUnit The ‘Force’ unit to create from.
+     * The default unit is Newtons
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ForceUnits.Newtons) {
         this.dyneLazy = null;
         this.kilogramsforceLazy = null;
         this.tonnesforceLazy = null;
@@ -53,8 +54,8 @@ class Force {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Force is Newton.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Force is Newtons.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -339,17 +340,85 @@ class Force {
             case ForceUnits.OunceForce:
                 return this.OunceForce + ` ozf`;
             case ForceUnits.Micronewtons:
-                return this.Micronewtons + ` N`;
+                return this.Micronewtons + ` `;
             case ForceUnits.Decanewtons:
-                return this.Decanewtons + ` N`;
+                return this.Decanewtons + ` `;
             case ForceUnits.Kilonewtons:
-                return this.Kilonewtons + ` N`;
+                return this.Kilonewtons + ` `;
             case ForceUnits.Meganewtons:
-                return this.Meganewtons + ` N`;
+                return this.Meganewtons + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Force are equals to the current Force.
+     * @param force The other Force.
+     * @returns True if the given Force are equal to the current Force.
+     */
+    equals(force) {
+        return this.value === force.BaseValue;
+    }
+    /**
+     * Compare the given Force against the current Force.
+     * @param force The other Force.
+     * @returns 0 if they are equal, -1 if the current Force is less then other, 1 if the current Force is greater then other.
+     */
+    compareTo(force) {
+        if (this.value > force.BaseValue)
+            return 1;
+        if (this.value < force.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    add(force) {
+        return new Force(this.value + force.BaseValue);
+    }
+    /**
+     * Subtract the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    subtract(force) {
+        return new Force(this.value - force.BaseValue);
+    }
+    /**
+     * Multiply the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    multiply(force) {
+        return new Force(this.value * force.BaseValue);
+    }
+    /**
+     * Divide the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    divide(force) {
+        return new Force(this.value / force.BaseValue);
+    }
+    /**
+     * Modulo the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    modulo(force) {
+        return new Force(this.value % force.BaseValue);
+    }
+    /**
+     * Pow the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    pow(force) {
+        return new Force(this.value ** force.BaseValue);
     }
 }
 exports.Force = Force;

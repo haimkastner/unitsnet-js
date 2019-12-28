@@ -77,11 +77,12 @@ export declare class Power {
      * Create a new Power.
      * @param value The value.
      * @param fromUnit The ‘Power’ unit to create from.
+     * The default unit is Watts
      */
-    constructor(value: number, fromUnit: PowerUnits);
+    constructor(value: number, fromUnit?: PowerUnits);
     /**
-     * The base value of Power is Watt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Power is Watts.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -301,5 +302,53 @@ export declare class Power {
      * @returns The string format of the Power.
      */
     toString(toUnit?: PowerUnits): string;
+    /**
+     * Check if the given Power are equals to the current Power.
+     * @param power The other Power.
+     * @returns True if the given Power are equal to the current Power.
+     */
+    equals(power: Power): boolean;
+    /**
+     * Compare the given Power against the current Power.
+     * @param power The other Power.
+     * @returns 0 if they are equal, -1 if the current Power is less then other, 1 if the current Power is greater then other.
+     */
+    compareTo(power: Power): number;
+    /**
+     * Add the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    add(power: Power): Power;
+    /**
+     * Subtract the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    subtract(power: Power): Power;
+    /**
+     * Multiply the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    multiply(power: Power): Power;
+    /**
+     * Divide the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    divide(power: Power): Power;
+    /**
+     * Modulo the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    modulo(power: Power): Power;
+    /**
+     * Pow the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    pow(power: Power): Power;
 }
 //# sourceMappingURL=power.g.d.ts.map

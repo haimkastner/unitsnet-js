@@ -16,8 +16,9 @@ class MolarEnergy {
      * Create a new MolarEnergy.
      * @param value The value.
      * @param fromUnit The ‘MolarEnergy’ unit to create from.
+     * The default unit is JoulesPerMole
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = MolarEnergyUnits.JoulesPerMole) {
         this.joulespermoleLazy = null;
         this.kilojoulespermoleLazy = null;
         this.megajoulespermoleLazy = null;
@@ -26,8 +27,8 @@ class MolarEnergy {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of MolarEnergy is JoulePerMole.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MolarEnergy is JoulesPerMole.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -118,13 +119,81 @@ class MolarEnergy {
             case MolarEnergyUnits.JoulesPerMole:
                 return this.JoulesPerMole + ` J/mol`;
             case MolarEnergyUnits.KilojoulesPerMole:
-                return this.KilojoulesPerMole + ` J/mol`;
+                return this.KilojoulesPerMole + ` `;
             case MolarEnergyUnits.MegajoulesPerMole:
-                return this.MegajoulesPerMole + ` J/mol`;
+                return this.MegajoulesPerMole + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given MolarEnergy are equals to the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns True if the given MolarEnergy are equal to the current MolarEnergy.
+     */
+    equals(molarEnergy) {
+        return this.value === molarEnergy.BaseValue;
+    }
+    /**
+     * Compare the given MolarEnergy against the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns 0 if they are equal, -1 if the current MolarEnergy is less then other, 1 if the current MolarEnergy is greater then other.
+     */
+    compareTo(molarEnergy) {
+        if (this.value > molarEnergy.BaseValue)
+            return 1;
+        if (this.value < molarEnergy.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    add(molarEnergy) {
+        return new MolarEnergy(this.value + molarEnergy.BaseValue);
+    }
+    /**
+     * Subtract the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    subtract(molarEnergy) {
+        return new MolarEnergy(this.value - molarEnergy.BaseValue);
+    }
+    /**
+     * Multiply the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    multiply(molarEnergy) {
+        return new MolarEnergy(this.value * molarEnergy.BaseValue);
+    }
+    /**
+     * Divide the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    divide(molarEnergy) {
+        return new MolarEnergy(this.value / molarEnergy.BaseValue);
+    }
+    /**
+     * Modulo the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    modulo(molarEnergy) {
+        return new MolarEnergy(this.value % molarEnergy.BaseValue);
+    }
+    /**
+     * Pow the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    pow(molarEnergy) {
+        return new MolarEnergy(this.value ** molarEnergy.BaseValue);
     }
 }
 exports.MolarEnergy = MolarEnergy;

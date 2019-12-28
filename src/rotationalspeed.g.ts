@@ -43,16 +43,17 @@ export class RotationalSpeed {
      * Create a new RotationalSpeed.
      * @param value The value.
      * @param fromUnit The ‘RotationalSpeed’ unit to create from.
+     * The default unit is RadiansPerSecond
      */
-    public constructor(value: number, fromUnit: RotationalSpeedUnits) {
+    public constructor(value: number, fromUnit: RotationalSpeedUnits = RotationalSpeedUnits.RadiansPerSecond) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of RotationalSpeed is RadianPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RotationalSpeed is RadiansPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -340,20 +341,97 @@ export class RotationalSpeed {
             case RotationalSpeedUnits.RevolutionsPerMinute:
                 return this.RevolutionsPerMinute + ` rpm`;
             case RotationalSpeedUnits.NanoradiansPerSecond:
-                return this.NanoradiansPerSecond + ` rad/s`;
+                return this.NanoradiansPerSecond + ` `;
             case RotationalSpeedUnits.MicroradiansPerSecond:
-                return this.MicroradiansPerSecond + ` rad/s`;
+                return this.MicroradiansPerSecond + ` `;
             case RotationalSpeedUnits.CentiradiansPerSecond:
-                return this.CentiradiansPerSecond + ` rad/s`;
+                return this.CentiradiansPerSecond + ` `;
             case RotationalSpeedUnits.DeciradiansPerSecond:
-                return this.DeciradiansPerSecond + ` rad/s`;
+                return this.DeciradiansPerSecond + ` `;
             case RotationalSpeedUnits.NanodegreesPerSecond:
-                return this.NanodegreesPerSecond + ` °/s`;
+                return this.NanodegreesPerSecond + ` `;
             case RotationalSpeedUnits.MicrodegreesPerSecond:
-                return this.MicrodegreesPerSecond + ` °/s`;
+                return this.MicrodegreesPerSecond + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given RotationalSpeed are equals to the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns True if the given RotationalSpeed are equal to the current RotationalSpeed.
+     */
+    public equals(rotationalSpeed: RotationalSpeed): boolean {
+        return this.value === rotationalSpeed.BaseValue;
+    }
+
+    /**
+     * Compare the given RotationalSpeed against the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns 0 if they are equal, -1 if the current RotationalSpeed is less then other, 1 if the current RotationalSpeed is greater then other.
+     */
+    public compareTo(rotationalSpeed: RotationalSpeed): number {
+
+        if (this.value > rotationalSpeed.BaseValue)
+            return 1;
+        if (this.value < rotationalSpeed.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    public add(rotationalSpeed: RotationalSpeed): RotationalSpeed {
+        return new RotationalSpeed(this.value + rotationalSpeed.BaseValue)
+    }
+
+    /**
+     * Subtract the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    public subtract(rotationalSpeed: RotationalSpeed): RotationalSpeed {
+        return new RotationalSpeed(this.value - rotationalSpeed.BaseValue)
+    }
+
+    /**
+     * Multiply the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    public multiply(rotationalSpeed: RotationalSpeed): RotationalSpeed {
+        return new RotationalSpeed(this.value * rotationalSpeed.BaseValue)
+    }
+
+    /**
+     * Divide the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    public divide(rotationalSpeed: RotationalSpeed): RotationalSpeed {
+        return new RotationalSpeed(this.value / rotationalSpeed.BaseValue)
+    }
+
+    /**
+     * Modulo the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    public modulo(rotationalSpeed: RotationalSpeed): RotationalSpeed {
+        return new RotationalSpeed(this.value % rotationalSpeed.BaseValue)
+    }
+
+    /**
+     * Pow the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    public pow(rotationalSpeed: RotationalSpeed): RotationalSpeed {
+        return new RotationalSpeed(this.value ** rotationalSpeed.BaseValue)
     }
 }

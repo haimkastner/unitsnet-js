@@ -16,16 +16,17 @@ export class MassFlux {
      * Create a new MassFlux.
      * @param value The value.
      * @param fromUnit The ‘MassFlux’ unit to create from.
+     * The default unit is KilogramsPerSecondPerSquareMeter
      */
-    public constructor(value: number, fromUnit: MassFluxUnits) {
+    public constructor(value: number, fromUnit: MassFluxUnits = MassFluxUnits.KilogramsPerSecondPerSquareMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of MassFlux is KilogramPerSecondPerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassFlux is KilogramsPerSecondPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -107,10 +108,87 @@ export class MassFlux {
             case MassFluxUnits.GramsPerSecondPerSquareMeter:
                 return this.GramsPerSecondPerSquareMeter + ` g·s⁻¹·m⁻²`;
             case MassFluxUnits.KilogramsPerSecondPerSquareMeter:
-                return this.KilogramsPerSecondPerSquareMeter + ` g·s⁻¹·m⁻²`;
+                return this.KilogramsPerSecondPerSquareMeter + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given MassFlux are equals to the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns True if the given MassFlux are equal to the current MassFlux.
+     */
+    public equals(massFlux: MassFlux): boolean {
+        return this.value === massFlux.BaseValue;
+    }
+
+    /**
+     * Compare the given MassFlux against the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns 0 if they are equal, -1 if the current MassFlux is less then other, 1 if the current MassFlux is greater then other.
+     */
+    public compareTo(massFlux: MassFlux): number {
+
+        if (this.value > massFlux.BaseValue)
+            return 1;
+        if (this.value < massFlux.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    public add(massFlux: MassFlux): MassFlux {
+        return new MassFlux(this.value + massFlux.BaseValue)
+    }
+
+    /**
+     * Subtract the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    public subtract(massFlux: MassFlux): MassFlux {
+        return new MassFlux(this.value - massFlux.BaseValue)
+    }
+
+    /**
+     * Multiply the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    public multiply(massFlux: MassFlux): MassFlux {
+        return new MassFlux(this.value * massFlux.BaseValue)
+    }
+
+    /**
+     * Divide the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    public divide(massFlux: MassFlux): MassFlux {
+        return new MassFlux(this.value / massFlux.BaseValue)
+    }
+
+    /**
+     * Modulo the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    public modulo(massFlux: MassFlux): MassFlux {
+        return new MassFlux(this.value % massFlux.BaseValue)
+    }
+
+    /**
+     * Pow the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    public pow(massFlux: MassFlux): MassFlux {
+        return new MassFlux(this.value ** massFlux.BaseValue)
     }
 }

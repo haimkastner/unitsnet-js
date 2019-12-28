@@ -19,16 +19,17 @@ export class MolarEntropy {
      * Create a new MolarEntropy.
      * @param value The value.
      * @param fromUnit The ‘MolarEntropy’ unit to create from.
+     * The default unit is JoulesPerMoleKelvin
      */
-    public constructor(value: number, fromUnit: MolarEntropyUnits) {
+    public constructor(value: number, fromUnit: MolarEntropyUnits = MolarEntropyUnits.JoulesPerMoleKelvin) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of MolarEntropy is JoulePerMoleKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MolarEntropy is JoulesPerMoleKelvin.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -132,12 +133,89 @@ export class MolarEntropy {
             case MolarEntropyUnits.JoulesPerMoleKelvin:
                 return this.JoulesPerMoleKelvin + ` J/(mol*K)`;
             case MolarEntropyUnits.KilojoulesPerMoleKelvin:
-                return this.KilojoulesPerMoleKelvin + ` J/(mol*K)`;
+                return this.KilojoulesPerMoleKelvin + ` `;
             case MolarEntropyUnits.MegajoulesPerMoleKelvin:
-                return this.MegajoulesPerMoleKelvin + ` J/(mol*K)`;
+                return this.MegajoulesPerMoleKelvin + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given MolarEntropy are equals to the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns True if the given MolarEntropy are equal to the current MolarEntropy.
+     */
+    public equals(molarEntropy: MolarEntropy): boolean {
+        return this.value === molarEntropy.BaseValue;
+    }
+
+    /**
+     * Compare the given MolarEntropy against the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns 0 if they are equal, -1 if the current MolarEntropy is less then other, 1 if the current MolarEntropy is greater then other.
+     */
+    public compareTo(molarEntropy: MolarEntropy): number {
+
+        if (this.value > molarEntropy.BaseValue)
+            return 1;
+        if (this.value < molarEntropy.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    public add(molarEntropy: MolarEntropy): MolarEntropy {
+        return new MolarEntropy(this.value + molarEntropy.BaseValue)
+    }
+
+    /**
+     * Subtract the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    public subtract(molarEntropy: MolarEntropy): MolarEntropy {
+        return new MolarEntropy(this.value - molarEntropy.BaseValue)
+    }
+
+    /**
+     * Multiply the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    public multiply(molarEntropy: MolarEntropy): MolarEntropy {
+        return new MolarEntropy(this.value * molarEntropy.BaseValue)
+    }
+
+    /**
+     * Divide the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    public divide(molarEntropy: MolarEntropy): MolarEntropy {
+        return new MolarEntropy(this.value / molarEntropy.BaseValue)
+    }
+
+    /**
+     * Modulo the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    public modulo(molarEntropy: MolarEntropy): MolarEntropy {
+        return new MolarEntropy(this.value % molarEntropy.BaseValue)
+    }
+
+    /**
+     * Pow the given MolarEntropy with the current MolarEntropy.
+     * @param molarEntropy The other MolarEntropy.
+     * @returns A new MolarEntropy instance with the results.
+     */
+    public pow(molarEntropy: MolarEntropy): MolarEntropy {
+        return new MolarEntropy(this.value ** molarEntropy.BaseValue)
     }
 }

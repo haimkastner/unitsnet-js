@@ -50,11 +50,12 @@ export declare class Information {
      * Create a new Information.
      * @param value The value.
      * @param fromUnit The ‘Information’ unit to create from.
+     * The default unit is Bits
      */
-    constructor(value: number, fromUnit: InformationUnits);
+    constructor(value: number, fromUnit?: InformationUnits);
     /**
-     * The base value of Information is Bit.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Information is Bits.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -193,5 +194,53 @@ export declare class Information {
      * @returns The string format of the Information.
      */
     toString(toUnit?: InformationUnits): string;
+    /**
+     * Check if the given Information are equals to the current Information.
+     * @param information The other Information.
+     * @returns True if the given Information are equal to the current Information.
+     */
+    equals(information: Information): boolean;
+    /**
+     * Compare the given Information against the current Information.
+     * @param information The other Information.
+     * @returns 0 if they are equal, -1 if the current Information is less then other, 1 if the current Information is greater then other.
+     */
+    compareTo(information: Information): number;
+    /**
+     * Add the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    add(information: Information): Information;
+    /**
+     * Subtract the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    subtract(information: Information): Information;
+    /**
+     * Multiply the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    multiply(information: Information): Information;
+    /**
+     * Divide the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    divide(information: Information): Information;
+    /**
+     * Modulo the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    modulo(information: Information): Information;
+    /**
+     * Pow the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    pow(information: Information): Information;
 }
 //# sourceMappingURL=information.g.d.ts.map

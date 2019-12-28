@@ -54,8 +54,9 @@ class MassFraction {
      * Create a new MassFraction.
      * @param value The value.
      * @param fromUnit The ‘MassFraction’ unit to create from.
+     * The default unit is DecimalFractions
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = MassFractionUnits.DecimalFractions) {
         this.decimalfractionsLazy = null;
         this.gramspergramLazy = null;
         this.gramsperkilogramLazy = null;
@@ -83,8 +84,8 @@ class MassFraction {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of MassFraction is DecimalFraction.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassFraction is DecimalFractions.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -569,37 +570,105 @@ class MassFraction {
             case MassFractionUnits.PartsPerTrillion:
                 return this.PartsPerTrillion + ` ppt`;
             case MassFractionUnits.NanogramsPerGram:
-                return this.NanogramsPerGram + ` g/g`;
+                return this.NanogramsPerGram + ` `;
             case MassFractionUnits.MicrogramsPerGram:
-                return this.MicrogramsPerGram + ` g/g`;
+                return this.MicrogramsPerGram + ` `;
             case MassFractionUnits.CentigramsPerGram:
-                return this.CentigramsPerGram + ` g/g`;
+                return this.CentigramsPerGram + ` `;
             case MassFractionUnits.DecigramsPerGram:
-                return this.DecigramsPerGram + ` g/g`;
+                return this.DecigramsPerGram + ` `;
             case MassFractionUnits.DecagramsPerGram:
-                return this.DecagramsPerGram + ` g/g`;
+                return this.DecagramsPerGram + ` `;
             case MassFractionUnits.HectogramsPerGram:
-                return this.HectogramsPerGram + ` g/g`;
+                return this.HectogramsPerGram + ` `;
             case MassFractionUnits.KilogramsPerGram:
-                return this.KilogramsPerGram + ` g/g`;
+                return this.KilogramsPerGram + ` `;
             case MassFractionUnits.NanogramsPerKilogram:
-                return this.NanogramsPerKilogram + ` g/kg`;
+                return this.NanogramsPerKilogram + ` `;
             case MassFractionUnits.MicrogramsPerKilogram:
-                return this.MicrogramsPerKilogram + ` g/kg`;
+                return this.MicrogramsPerKilogram + ` `;
             case MassFractionUnits.CentigramsPerKilogram:
-                return this.CentigramsPerKilogram + ` g/kg`;
+                return this.CentigramsPerKilogram + ` `;
             case MassFractionUnits.DecigramsPerKilogram:
-                return this.DecigramsPerKilogram + ` g/kg`;
+                return this.DecigramsPerKilogram + ` `;
             case MassFractionUnits.DecagramsPerKilogram:
-                return this.DecagramsPerKilogram + ` g/kg`;
+                return this.DecagramsPerKilogram + ` `;
             case MassFractionUnits.HectogramsPerKilogram:
-                return this.HectogramsPerKilogram + ` g/kg`;
+                return this.HectogramsPerKilogram + ` `;
             case MassFractionUnits.KilogramsPerKilogram:
-                return this.KilogramsPerKilogram + ` g/kg`;
+                return this.KilogramsPerKilogram + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given MassFraction are equals to the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns True if the given MassFraction are equal to the current MassFraction.
+     */
+    equals(massFraction) {
+        return this.value === massFraction.BaseValue;
+    }
+    /**
+     * Compare the given MassFraction against the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns 0 if they are equal, -1 if the current MassFraction is less then other, 1 if the current MassFraction is greater then other.
+     */
+    compareTo(massFraction) {
+        if (this.value > massFraction.BaseValue)
+            return 1;
+        if (this.value < massFraction.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    add(massFraction) {
+        return new MassFraction(this.value + massFraction.BaseValue);
+    }
+    /**
+     * Subtract the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    subtract(massFraction) {
+        return new MassFraction(this.value - massFraction.BaseValue);
+    }
+    /**
+     * Multiply the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    multiply(massFraction) {
+        return new MassFraction(this.value * massFraction.BaseValue);
+    }
+    /**
+     * Divide the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    divide(massFraction) {
+        return new MassFraction(this.value / massFraction.BaseValue);
+    }
+    /**
+     * Modulo the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    modulo(massFraction) {
+        return new MassFraction(this.value % massFraction.BaseValue);
+    }
+    /**
+     * Pow the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    pow(massFraction) {
+        return new MassFraction(this.value ** massFraction.BaseValue);
     }
 }
 exports.MassFraction = MassFraction;

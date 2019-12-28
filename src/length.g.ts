@@ -103,16 +103,17 @@ export class Length {
      * Create a new Length.
      * @param value The value.
      * @param fromUnit The ‘Length’ unit to create from.
+     * The default unit is Meters
      */
-    public constructor(value: number, fromUnit: LengthUnits) {
+    public constructor(value: number, fromUnit: LengthUnits = LengthUnits.Meters) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Length is Meter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Length is Meters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -872,28 +873,105 @@ export class Length {
             case LengthUnits.SolarRadiuses:
                 return this.SolarRadiuses + ` R⊙`;
             case LengthUnits.Nanometers:
-                return this.Nanometers + ` m`;
+                return this.Nanometers + ` `;
             case LengthUnits.Micrometers:
-                return this.Micrometers + ` m`;
+                return this.Micrometers + ` `;
             case LengthUnits.Centimeters:
-                return this.Centimeters + ` m`;
+                return this.Centimeters + ` `;
             case LengthUnits.Decimeters:
-                return this.Decimeters + ` m`;
+                return this.Decimeters + ` `;
             case LengthUnits.Hectometers:
-                return this.Hectometers + ` m`;
+                return this.Hectometers + ` `;
             case LengthUnits.Kilometers:
-                return this.Kilometers + ` m`;
+                return this.Kilometers + ` `;
             case LengthUnits.Kiloparsecs:
-                return this.Kiloparsecs + ` pc`;
+                return this.Kiloparsecs + ` `;
             case LengthUnits.Megaparsecs:
-                return this.Megaparsecs + ` pc`;
+                return this.Megaparsecs + ` `;
             case LengthUnits.KilolightYears:
-                return this.KilolightYears + ` ly`;
+                return this.KilolightYears + ` `;
             case LengthUnits.MegalightYears:
-                return this.MegalightYears + ` ly`;
+                return this.MegalightYears + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Length are equals to the current Length.
+     * @param length The other Length.
+     * @returns True if the given Length are equal to the current Length.
+     */
+    public equals(length: Length): boolean {
+        return this.value === length.BaseValue;
+    }
+
+    /**
+     * Compare the given Length against the current Length.
+     * @param length The other Length.
+     * @returns 0 if they are equal, -1 if the current Length is less then other, 1 if the current Length is greater then other.
+     */
+    public compareTo(length: Length): number {
+
+        if (this.value > length.BaseValue)
+            return 1;
+        if (this.value < length.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    public add(length: Length): Length {
+        return new Length(this.value + length.BaseValue)
+    }
+
+    /**
+     * Subtract the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    public subtract(length: Length): Length {
+        return new Length(this.value - length.BaseValue)
+    }
+
+    /**
+     * Multiply the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    public multiply(length: Length): Length {
+        return new Length(this.value * length.BaseValue)
+    }
+
+    /**
+     * Divide the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    public divide(length: Length): Length {
+        return new Length(this.value / length.BaseValue)
+    }
+
+    /**
+     * Modulo the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    public modulo(length: Length): Length {
+        return new Length(this.value % length.BaseValue)
+    }
+
+    /**
+     * Pow the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    public pow(length: Length): Length {
+        return new Length(this.value ** length.BaseValue)
     }
 }

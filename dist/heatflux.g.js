@@ -44,8 +44,9 @@ class HeatFlux {
      * Create a new HeatFlux.
      * @param value The value.
      * @param fromUnit The ‘HeatFlux’ unit to create from.
+     * The default unit is WattsPerSquareMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = HeatFluxUnits.WattsPerSquareMeter) {
         this.wattspersquaremeterLazy = null;
         this.wattspersquareinchLazy = null;
         this.wattspersquarefootLazy = null;
@@ -68,8 +69,8 @@ class HeatFlux {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of HeatFlux is WattPerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of HeatFlux is WattsPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -460,21 +461,89 @@ class HeatFlux {
             case HeatFluxUnits.PoundsPerSecondCubed:
                 return this.PoundsPerSecondCubed + ` lb/s³`;
             case HeatFluxUnits.NanowattsPerSquareMeter:
-                return this.NanowattsPerSquareMeter + ` W/m²`;
+                return this.NanowattsPerSquareMeter + ` `;
             case HeatFluxUnits.MicrowattsPerSquareMeter:
-                return this.MicrowattsPerSquareMeter + ` W/m²`;
+                return this.MicrowattsPerSquareMeter + ` `;
             case HeatFluxUnits.CentiwattsPerSquareMeter:
-                return this.CentiwattsPerSquareMeter + ` W/m²`;
+                return this.CentiwattsPerSquareMeter + ` `;
             case HeatFluxUnits.DeciwattsPerSquareMeter:
-                return this.DeciwattsPerSquareMeter + ` W/m²`;
+                return this.DeciwattsPerSquareMeter + ` `;
             case HeatFluxUnits.KilowattsPerSquareMeter:
-                return this.KilowattsPerSquareMeter + ` W/m²`;
+                return this.KilowattsPerSquareMeter + ` `;
             case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter:
-                return this.KilocaloriesPerSecondSquareCentimeter + ` cal/s·cm²`;
+                return this.KilocaloriesPerSecondSquareCentimeter + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given HeatFlux are equals to the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns True if the given HeatFlux are equal to the current HeatFlux.
+     */
+    equals(heatFlux) {
+        return this.value === heatFlux.BaseValue;
+    }
+    /**
+     * Compare the given HeatFlux against the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns 0 if they are equal, -1 if the current HeatFlux is less then other, 1 if the current HeatFlux is greater then other.
+     */
+    compareTo(heatFlux) {
+        if (this.value > heatFlux.BaseValue)
+            return 1;
+        if (this.value < heatFlux.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    add(heatFlux) {
+        return new HeatFlux(this.value + heatFlux.BaseValue);
+    }
+    /**
+     * Subtract the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    subtract(heatFlux) {
+        return new HeatFlux(this.value - heatFlux.BaseValue);
+    }
+    /**
+     * Multiply the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    multiply(heatFlux) {
+        return new HeatFlux(this.value * heatFlux.BaseValue);
+    }
+    /**
+     * Divide the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    divide(heatFlux) {
+        return new HeatFlux(this.value / heatFlux.BaseValue);
+    }
+    /**
+     * Modulo the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    modulo(heatFlux) {
+        return new HeatFlux(this.value % heatFlux.BaseValue);
+    }
+    /**
+     * Pow the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    pow(heatFlux) {
+        return new HeatFlux(this.value ** heatFlux.BaseValue);
     }
 }
 exports.HeatFlux = HeatFlux;

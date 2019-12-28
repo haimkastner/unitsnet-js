@@ -16,8 +16,9 @@ class MagneticField {
      * Create a new MagneticField.
      * @param value The value.
      * @param fromUnit The ‘MagneticField’ unit to create from.
+     * The default unit is Teslas
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = MagneticFieldUnits.Teslas) {
         this.teslasLazy = null;
         this.nanoteslasLazy = null;
         this.microteslasLazy = null;
@@ -26,8 +27,8 @@ class MagneticField {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of MagneticField is Tesla.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MagneticField is Teslas.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -118,13 +119,81 @@ class MagneticField {
             case MagneticFieldUnits.Teslas:
                 return this.Teslas + ` T`;
             case MagneticFieldUnits.Nanoteslas:
-                return this.Nanoteslas + ` T`;
+                return this.Nanoteslas + ` `;
             case MagneticFieldUnits.Microteslas:
-                return this.Microteslas + ` T`;
+                return this.Microteslas + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given MagneticField are equals to the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns True if the given MagneticField are equal to the current MagneticField.
+     */
+    equals(magneticField) {
+        return this.value === magneticField.BaseValue;
+    }
+    /**
+     * Compare the given MagneticField against the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns 0 if they are equal, -1 if the current MagneticField is less then other, 1 if the current MagneticField is greater then other.
+     */
+    compareTo(magneticField) {
+        if (this.value > magneticField.BaseValue)
+            return 1;
+        if (this.value < magneticField.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    add(magneticField) {
+        return new MagneticField(this.value + magneticField.BaseValue);
+    }
+    /**
+     * Subtract the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    subtract(magneticField) {
+        return new MagneticField(this.value - magneticField.BaseValue);
+    }
+    /**
+     * Multiply the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    multiply(magneticField) {
+        return new MagneticField(this.value * magneticField.BaseValue);
+    }
+    /**
+     * Divide the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    divide(magneticField) {
+        return new MagneticField(this.value / magneticField.BaseValue);
+    }
+    /**
+     * Modulo the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    modulo(magneticField) {
+        return new MagneticField(this.value % magneticField.BaseValue);
+    }
+    /**
+     * Pow the given MagneticField with the current MagneticField.
+     * @param magneticField The other MagneticField.
+     * @returns A new MagneticField instance with the results.
+     */
+    pow(magneticField) {
+        return new MagneticField(this.value ** magneticField.BaseValue);
     }
 }
 exports.MagneticField = MagneticField;

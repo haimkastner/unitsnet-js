@@ -29,11 +29,12 @@ export declare class PressureChangeRate {
      * Create a new PressureChangeRate.
      * @param value The value.
      * @param fromUnit The ‘PressureChangeRate’ unit to create from.
+     * The default unit is PascalsPerSecond
      */
-    constructor(value: number, fromUnit: PressureChangeRateUnits);
+    constructor(value: number, fromUnit?: PressureChangeRateUnits);
     /**
-     * The base value of PressureChangeRate is PascalPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of PressureChangeRate is PascalsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -109,5 +110,53 @@ export declare class PressureChangeRate {
      * @returns The string format of the PressureChangeRate.
      */
     toString(toUnit?: PressureChangeRateUnits): string;
+    /**
+     * Check if the given PressureChangeRate are equals to the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns True if the given PressureChangeRate are equal to the current PressureChangeRate.
+     */
+    equals(pressureChangeRate: PressureChangeRate): boolean;
+    /**
+     * Compare the given PressureChangeRate against the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns 0 if they are equal, -1 if the current PressureChangeRate is less then other, 1 if the current PressureChangeRate is greater then other.
+     */
+    compareTo(pressureChangeRate: PressureChangeRate): number;
+    /**
+     * Add the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    add(pressureChangeRate: PressureChangeRate): PressureChangeRate;
+    /**
+     * Subtract the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    subtract(pressureChangeRate: PressureChangeRate): PressureChangeRate;
+    /**
+     * Multiply the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    multiply(pressureChangeRate: PressureChangeRate): PressureChangeRate;
+    /**
+     * Divide the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    divide(pressureChangeRate: PressureChangeRate): PressureChangeRate;
+    /**
+     * Modulo the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    modulo(pressureChangeRate: PressureChangeRate): PressureChangeRate;
+    /**
+     * Pow the given PressureChangeRate with the current PressureChangeRate.
+     * @param pressureChangeRate The other PressureChangeRate.
+     * @returns A new PressureChangeRate instance with the results.
+     */
+    pow(pressureChangeRate: PressureChangeRate): PressureChangeRate;
 }
 //# sourceMappingURL=pressurechangerate.g.d.ts.map

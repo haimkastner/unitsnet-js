@@ -19,8 +19,9 @@ export class ElectricConductivity {
      * Create a new ElectricConductivity.
      * @param value The value.
      * @param fromUnit The ‘ElectricConductivity’ unit to create from.
+     * The default unit is SiemensPerMeter
      */
-    public constructor(value: number, fromUnit: ElectricConductivityUnits) {
+    public constructor(value: number, fromUnit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
@@ -28,7 +29,7 @@ export class ElectricConductivity {
 
     /**
      * The base value of ElectricConductivity is SiemensPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -139,5 +140,82 @@ export class ElectricConductivity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ElectricConductivity are equals to the current ElectricConductivity.
+     * @param electricConductivity The other ElectricConductivity.
+     * @returns True if the given ElectricConductivity are equal to the current ElectricConductivity.
+     */
+    public equals(electricConductivity: ElectricConductivity): boolean {
+        return this.value === electricConductivity.BaseValue;
+    }
+
+    /**
+     * Compare the given ElectricConductivity against the current ElectricConductivity.
+     * @param electricConductivity The other ElectricConductivity.
+     * @returns 0 if they are equal, -1 if the current ElectricConductivity is less then other, 1 if the current ElectricConductivity is greater then other.
+     */
+    public compareTo(electricConductivity: ElectricConductivity): number {
+
+        if (this.value > electricConductivity.BaseValue)
+            return 1;
+        if (this.value < electricConductivity.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ElectricConductivity with the current ElectricConductivity.
+     * @param electricConductivity The other ElectricConductivity.
+     * @returns A new ElectricConductivity instance with the results.
+     */
+    public add(electricConductivity: ElectricConductivity): ElectricConductivity {
+        return new ElectricConductivity(this.value + electricConductivity.BaseValue)
+    }
+
+    /**
+     * Subtract the given ElectricConductivity with the current ElectricConductivity.
+     * @param electricConductivity The other ElectricConductivity.
+     * @returns A new ElectricConductivity instance with the results.
+     */
+    public subtract(electricConductivity: ElectricConductivity): ElectricConductivity {
+        return new ElectricConductivity(this.value - electricConductivity.BaseValue)
+    }
+
+    /**
+     * Multiply the given ElectricConductivity with the current ElectricConductivity.
+     * @param electricConductivity The other ElectricConductivity.
+     * @returns A new ElectricConductivity instance with the results.
+     */
+    public multiply(electricConductivity: ElectricConductivity): ElectricConductivity {
+        return new ElectricConductivity(this.value * electricConductivity.BaseValue)
+    }
+
+    /**
+     * Divide the given ElectricConductivity with the current ElectricConductivity.
+     * @param electricConductivity The other ElectricConductivity.
+     * @returns A new ElectricConductivity instance with the results.
+     */
+    public divide(electricConductivity: ElectricConductivity): ElectricConductivity {
+        return new ElectricConductivity(this.value / electricConductivity.BaseValue)
+    }
+
+    /**
+     * Modulo the given ElectricConductivity with the current ElectricConductivity.
+     * @param electricConductivity The other ElectricConductivity.
+     * @returns A new ElectricConductivity instance with the results.
+     */
+    public modulo(electricConductivity: ElectricConductivity): ElectricConductivity {
+        return new ElectricConductivity(this.value % electricConductivity.BaseValue)
+    }
+
+    /**
+     * Pow the given ElectricConductivity with the current ElectricConductivity.
+     * @param electricConductivity The other ElectricConductivity.
+     * @returns A new ElectricConductivity instance with the results.
+     */
+    public pow(electricConductivity: ElectricConductivity): ElectricConductivity {
+        return new ElectricConductivity(this.value ** electricConductivity.BaseValue)
     }
 }

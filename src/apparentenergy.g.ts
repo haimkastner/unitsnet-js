@@ -19,16 +19,17 @@ export class ApparentEnergy {
      * Create a new ApparentEnergy.
      * @param value The value.
      * @param fromUnit The ‘ApparentEnergy’ unit to create from.
+     * The default unit is VoltampereHours
      */
-    public constructor(value: number, fromUnit: ApparentEnergyUnits) {
+    public constructor(value: number, fromUnit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of ApparentEnergy is VoltampereHour.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ApparentEnergy is VoltampereHours.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -132,12 +133,89 @@ export class ApparentEnergy {
             case ApparentEnergyUnits.VoltampereHours:
                 return this.VoltampereHours + ` VAh`;
             case ApparentEnergyUnits.KilovoltampereHours:
-                return this.KilovoltampereHours + ` VAh`;
+                return this.KilovoltampereHours + ` `;
             case ApparentEnergyUnits.MegavoltampereHours:
-                return this.MegavoltampereHours + ` VAh`;
+                return this.MegavoltampereHours + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ApparentEnergy are equals to the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns True if the given ApparentEnergy are equal to the current ApparentEnergy.
+     */
+    public equals(apparentEnergy: ApparentEnergy): boolean {
+        return this.value === apparentEnergy.BaseValue;
+    }
+
+    /**
+     * Compare the given ApparentEnergy against the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns 0 if they are equal, -1 if the current ApparentEnergy is less then other, 1 if the current ApparentEnergy is greater then other.
+     */
+    public compareTo(apparentEnergy: ApparentEnergy): number {
+
+        if (this.value > apparentEnergy.BaseValue)
+            return 1;
+        if (this.value < apparentEnergy.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    public add(apparentEnergy: ApparentEnergy): ApparentEnergy {
+        return new ApparentEnergy(this.value + apparentEnergy.BaseValue)
+    }
+
+    /**
+     * Subtract the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    public subtract(apparentEnergy: ApparentEnergy): ApparentEnergy {
+        return new ApparentEnergy(this.value - apparentEnergy.BaseValue)
+    }
+
+    /**
+     * Multiply the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    public multiply(apparentEnergy: ApparentEnergy): ApparentEnergy {
+        return new ApparentEnergy(this.value * apparentEnergy.BaseValue)
+    }
+
+    /**
+     * Divide the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    public divide(apparentEnergy: ApparentEnergy): ApparentEnergy {
+        return new ApparentEnergy(this.value / apparentEnergy.BaseValue)
+    }
+
+    /**
+     * Modulo the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    public modulo(apparentEnergy: ApparentEnergy): ApparentEnergy {
+        return new ApparentEnergy(this.value % apparentEnergy.BaseValue)
+    }
+
+    /**
+     * Pow the given ApparentEnergy with the current ApparentEnergy.
+     * @param apparentEnergy The other ApparentEnergy.
+     * @returns A new ApparentEnergy instance with the results.
+     */
+    public pow(apparentEnergy: ApparentEnergy): ApparentEnergy {
+        return new ApparentEnergy(this.value ** apparentEnergy.BaseValue)
     }
 }

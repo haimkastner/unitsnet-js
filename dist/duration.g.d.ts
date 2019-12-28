@@ -35,11 +35,12 @@ export declare class Duration {
      * Create a new Duration.
      * @param value The value.
      * @param fromUnit The ‘Duration’ unit to create from.
+     * The default unit is Seconds
      */
-    constructor(value: number, fromUnit: DurationUnits);
+    constructor(value: number, fromUnit?: DurationUnits);
     /**
-     * The base value of Duration is Second.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Duration is Seconds.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -133,5 +134,53 @@ export declare class Duration {
      * @returns The string format of the Duration.
      */
     toString(toUnit?: DurationUnits): string;
+    /**
+     * Check if the given Duration are equals to the current Duration.
+     * @param duration The other Duration.
+     * @returns True if the given Duration are equal to the current Duration.
+     */
+    equals(duration: Duration): boolean;
+    /**
+     * Compare the given Duration against the current Duration.
+     * @param duration The other Duration.
+     * @returns 0 if they are equal, -1 if the current Duration is less then other, 1 if the current Duration is greater then other.
+     */
+    compareTo(duration: Duration): number;
+    /**
+     * Add the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    add(duration: Duration): Duration;
+    /**
+     * Subtract the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    subtract(duration: Duration): Duration;
+    /**
+     * Multiply the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    multiply(duration: Duration): Duration;
+    /**
+     * Divide the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    divide(duration: Duration): Duration;
+    /**
+     * Modulo the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    modulo(duration: Duration): Duration;
+    /**
+     * Pow the given Duration with the current Duration.
+     * @param duration The other Duration.
+     * @returns A new Duration instance with the results.
+     */
+    pow(duration: Duration): Duration;
 }
 //# sourceMappingURL=duration.g.d.ts.map

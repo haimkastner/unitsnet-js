@@ -28,16 +28,17 @@ export class AreaMomentOfInertia {
      * Create a new AreaMomentOfInertia.
      * @param value The value.
      * @param fromUnit The ‘AreaMomentOfInertia’ unit to create from.
+     * The default unit is MetersToTheFourth
      */
-    public constructor(value: number, fromUnit: AreaMomentOfInertiaUnits) {
+    public constructor(value: number, fromUnit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of AreaMomentOfInertia is MeterToTheFourth.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of AreaMomentOfInertia is MetersToTheFourth.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -220,5 +221,82 @@ export class AreaMomentOfInertia {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given AreaMomentOfInertia are equals to the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns True if the given AreaMomentOfInertia are equal to the current AreaMomentOfInertia.
+     */
+    public equals(areaMomentOfInertia: AreaMomentOfInertia): boolean {
+        return this.value === areaMomentOfInertia.BaseValue;
+    }
+
+    /**
+     * Compare the given AreaMomentOfInertia against the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns 0 if they are equal, -1 if the current AreaMomentOfInertia is less then other, 1 if the current AreaMomentOfInertia is greater then other.
+     */
+    public compareTo(areaMomentOfInertia: AreaMomentOfInertia): number {
+
+        if (this.value > areaMomentOfInertia.BaseValue)
+            return 1;
+        if (this.value < areaMomentOfInertia.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    public add(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia {
+        return new AreaMomentOfInertia(this.value + areaMomentOfInertia.BaseValue)
+    }
+
+    /**
+     * Subtract the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    public subtract(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia {
+        return new AreaMomentOfInertia(this.value - areaMomentOfInertia.BaseValue)
+    }
+
+    /**
+     * Multiply the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    public multiply(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia {
+        return new AreaMomentOfInertia(this.value * areaMomentOfInertia.BaseValue)
+    }
+
+    /**
+     * Divide the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    public divide(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia {
+        return new AreaMomentOfInertia(this.value / areaMomentOfInertia.BaseValue)
+    }
+
+    /**
+     * Modulo the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    public modulo(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia {
+        return new AreaMomentOfInertia(this.value % areaMomentOfInertia.BaseValue)
+    }
+
+    /**
+     * Pow the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    public pow(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia {
+        return new AreaMomentOfInertia(this.value ** areaMomentOfInertia.BaseValue)
     }
 }

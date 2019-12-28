@@ -49,16 +49,17 @@ export class Luminosity {
      * Create a new Luminosity.
      * @param value The value.
      * @param fromUnit The ‘Luminosity’ unit to create from.
+     * The default unit is Watts
      */
-    public constructor(value: number, fromUnit: LuminosityUnits) {
+    public constructor(value: number, fromUnit: LuminosityUnits = LuminosityUnits.Watts) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Luminosity is Watt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Luminosity is Watts.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -384,30 +385,107 @@ export class Luminosity {
             case LuminosityUnits.SolarLuminosities:
                 return this.SolarLuminosities + ` L⊙`;
             case LuminosityUnits.Femtowatts:
-                return this.Femtowatts + ` W`;
+                return this.Femtowatts + ` `;
             case LuminosityUnits.Picowatts:
-                return this.Picowatts + ` W`;
+                return this.Picowatts + ` `;
             case LuminosityUnits.Nanowatts:
-                return this.Nanowatts + ` W`;
+                return this.Nanowatts + ` `;
             case LuminosityUnits.Microwatts:
-                return this.Microwatts + ` W`;
+                return this.Microwatts + ` `;
             case LuminosityUnits.Deciwatts:
-                return this.Deciwatts + ` W`;
+                return this.Deciwatts + ` `;
             case LuminosityUnits.Decawatts:
-                return this.Decawatts + ` W`;
+                return this.Decawatts + ` `;
             case LuminosityUnits.Kilowatts:
-                return this.Kilowatts + ` W`;
+                return this.Kilowatts + ` `;
             case LuminosityUnits.Megawatts:
-                return this.Megawatts + ` W`;
+                return this.Megawatts + ` `;
             case LuminosityUnits.Gigawatts:
-                return this.Gigawatts + ` W`;
+                return this.Gigawatts + ` `;
             case LuminosityUnits.Terawatts:
-                return this.Terawatts + ` W`;
+                return this.Terawatts + ` `;
             case LuminosityUnits.Petawatts:
-                return this.Petawatts + ` W`;
+                return this.Petawatts + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Luminosity are equals to the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns True if the given Luminosity are equal to the current Luminosity.
+     */
+    public equals(luminosity: Luminosity): boolean {
+        return this.value === luminosity.BaseValue;
+    }
+
+    /**
+     * Compare the given Luminosity against the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns 0 if they are equal, -1 if the current Luminosity is less then other, 1 if the current Luminosity is greater then other.
+     */
+    public compareTo(luminosity: Luminosity): number {
+
+        if (this.value > luminosity.BaseValue)
+            return 1;
+        if (this.value < luminosity.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    public add(luminosity: Luminosity): Luminosity {
+        return new Luminosity(this.value + luminosity.BaseValue)
+    }
+
+    /**
+     * Subtract the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    public subtract(luminosity: Luminosity): Luminosity {
+        return new Luminosity(this.value - luminosity.BaseValue)
+    }
+
+    /**
+     * Multiply the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    public multiply(luminosity: Luminosity): Luminosity {
+        return new Luminosity(this.value * luminosity.BaseValue)
+    }
+
+    /**
+     * Divide the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    public divide(luminosity: Luminosity): Luminosity {
+        return new Luminosity(this.value / luminosity.BaseValue)
+    }
+
+    /**
+     * Modulo the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    public modulo(luminosity: Luminosity): Luminosity {
+        return new Luminosity(this.value % luminosity.BaseValue)
+    }
+
+    /**
+     * Pow the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    public pow(luminosity: Luminosity): Luminosity {
+        return new Luminosity(this.value ** luminosity.BaseValue)
     }
 }

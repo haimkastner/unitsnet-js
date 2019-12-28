@@ -41,11 +41,12 @@ export declare class RotationalSpeed {
      * Create a new RotationalSpeed.
      * @param value The value.
      * @param fromUnit The ‘RotationalSpeed’ unit to create from.
+     * The default unit is RadiansPerSecond
      */
-    constructor(value: number, fromUnit: RotationalSpeedUnits);
+    constructor(value: number, fromUnit?: RotationalSpeedUnits);
     /**
-     * The base value of RotationalSpeed is RadianPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RotationalSpeed is RadiansPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -157,5 +158,53 @@ export declare class RotationalSpeed {
      * @returns The string format of the RotationalSpeed.
      */
     toString(toUnit?: RotationalSpeedUnits): string;
+    /**
+     * Check if the given RotationalSpeed are equals to the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns True if the given RotationalSpeed are equal to the current RotationalSpeed.
+     */
+    equals(rotationalSpeed: RotationalSpeed): boolean;
+    /**
+     * Compare the given RotationalSpeed against the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns 0 if they are equal, -1 if the current RotationalSpeed is less then other, 1 if the current RotationalSpeed is greater then other.
+     */
+    compareTo(rotationalSpeed: RotationalSpeed): number;
+    /**
+     * Add the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    add(rotationalSpeed: RotationalSpeed): RotationalSpeed;
+    /**
+     * Subtract the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    subtract(rotationalSpeed: RotationalSpeed): RotationalSpeed;
+    /**
+     * Multiply the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    multiply(rotationalSpeed: RotationalSpeed): RotationalSpeed;
+    /**
+     * Divide the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    divide(rotationalSpeed: RotationalSpeed): RotationalSpeed;
+    /**
+     * Modulo the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    modulo(rotationalSpeed: RotationalSpeed): RotationalSpeed;
+    /**
+     * Pow the given RotationalSpeed with the current RotationalSpeed.
+     * @param rotationalSpeed The other RotationalSpeed.
+     * @returns A new RotationalSpeed instance with the results.
+     */
+    pow(rotationalSpeed: RotationalSpeed): RotationalSpeed;
 }
 //# sourceMappingURL=rotationalspeed.g.d.ts.map

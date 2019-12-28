@@ -24,8 +24,9 @@ class Molarity {
      * Create a new Molarity.
      * @param value The value.
      * @param fromUnit The ‘Molarity’ unit to create from.
+     * The default unit is MolesPerCubicMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = MolarityUnits.MolesPerCubicMeter) {
         this.molespercubicmeterLazy = null;
         this.molesperliterLazy = null;
         this.picomolesperliterLazy = null;
@@ -39,7 +40,7 @@ class Molarity {
     }
     /**
      * The base value of Molarity is MolesPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -212,19 +213,87 @@ class Molarity {
             case MolarityUnits.MolesPerLiter:
                 return this.MolesPerLiter + ` mol/L`;
             case MolarityUnits.PicomolesPerLiter:
-                return this.PicomolesPerLiter + ` mol/L`;
+                return this.PicomolesPerLiter + ` `;
             case MolarityUnits.NanomolesPerLiter:
-                return this.NanomolesPerLiter + ` mol/L`;
+                return this.NanomolesPerLiter + ` `;
             case MolarityUnits.MicromolesPerLiter:
-                return this.MicromolesPerLiter + ` mol/L`;
+                return this.MicromolesPerLiter + ` `;
             case MolarityUnits.CentimolesPerLiter:
-                return this.CentimolesPerLiter + ` mol/L`;
+                return this.CentimolesPerLiter + ` `;
             case MolarityUnits.DecimolesPerLiter:
-                return this.DecimolesPerLiter + ` mol/L`;
+                return this.DecimolesPerLiter + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Molarity are equals to the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns True if the given Molarity are equal to the current Molarity.
+     */
+    equals(molarity) {
+        return this.value === molarity.BaseValue;
+    }
+    /**
+     * Compare the given Molarity against the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns 0 if they are equal, -1 if the current Molarity is less then other, 1 if the current Molarity is greater then other.
+     */
+    compareTo(molarity) {
+        if (this.value > molarity.BaseValue)
+            return 1;
+        if (this.value < molarity.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    add(molarity) {
+        return new Molarity(this.value + molarity.BaseValue);
+    }
+    /**
+     * Subtract the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    subtract(molarity) {
+        return new Molarity(this.value - molarity.BaseValue);
+    }
+    /**
+     * Multiply the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    multiply(molarity) {
+        return new Molarity(this.value * molarity.BaseValue);
+    }
+    /**
+     * Divide the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    divide(molarity) {
+        return new Molarity(this.value / molarity.BaseValue);
+    }
+    /**
+     * Modulo the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    modulo(molarity) {
+        return new Molarity(this.value % molarity.BaseValue);
+    }
+    /**
+     * Pow the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    pow(molarity) {
+        return new Molarity(this.value ** molarity.BaseValue);
     }
 }
 exports.Molarity = Molarity;

@@ -40,16 +40,17 @@ export class ForceChangeRate {
      * Create a new ForceChangeRate.
      * @param value The value.
      * @param fromUnit The ‘ForceChangeRate’ unit to create from.
+     * The default unit is NewtonsPerSecond
      */
-    public constructor(value: number, fromUnit: ForceChangeRateUnits) {
+    public constructor(value: number, fromUnit: ForceChangeRateUnits = ForceChangeRateUnits.NewtonsPerSecond) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of ForceChangeRate is NewtonPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ForceChangeRate is NewtonsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -309,24 +310,101 @@ export class ForceChangeRate {
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return this.NewtonsPerSecond + ` N/s`;
             case ForceChangeRateUnits.DecanewtonsPerMinute:
-                return this.DecanewtonsPerMinute + ` N/min`;
+                return this.DecanewtonsPerMinute + ` `;
             case ForceChangeRateUnits.KilonewtonsPerMinute:
-                return this.KilonewtonsPerMinute + ` N/min`;
+                return this.KilonewtonsPerMinute + ` `;
             case ForceChangeRateUnits.NanonewtonsPerSecond:
-                return this.NanonewtonsPerSecond + ` N/s`;
+                return this.NanonewtonsPerSecond + ` `;
             case ForceChangeRateUnits.MicronewtonsPerSecond:
-                return this.MicronewtonsPerSecond + ` N/s`;
+                return this.MicronewtonsPerSecond + ` `;
             case ForceChangeRateUnits.CentinewtonsPerSecond:
-                return this.CentinewtonsPerSecond + ` N/s`;
+                return this.CentinewtonsPerSecond + ` `;
             case ForceChangeRateUnits.DecinewtonsPerSecond:
-                return this.DecinewtonsPerSecond + ` N/s`;
+                return this.DecinewtonsPerSecond + ` `;
             case ForceChangeRateUnits.DecanewtonsPerSecond:
-                return this.DecanewtonsPerSecond + ` N/s`;
+                return this.DecanewtonsPerSecond + ` `;
             case ForceChangeRateUnits.KilonewtonsPerSecond:
-                return this.KilonewtonsPerSecond + ` N/s`;
+                return this.KilonewtonsPerSecond + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ForceChangeRate are equals to the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns True if the given ForceChangeRate are equal to the current ForceChangeRate.
+     */
+    public equals(forceChangeRate: ForceChangeRate): boolean {
+        return this.value === forceChangeRate.BaseValue;
+    }
+
+    /**
+     * Compare the given ForceChangeRate against the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns 0 if they are equal, -1 if the current ForceChangeRate is less then other, 1 if the current ForceChangeRate is greater then other.
+     */
+    public compareTo(forceChangeRate: ForceChangeRate): number {
+
+        if (this.value > forceChangeRate.BaseValue)
+            return 1;
+        if (this.value < forceChangeRate.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    public add(forceChangeRate: ForceChangeRate): ForceChangeRate {
+        return new ForceChangeRate(this.value + forceChangeRate.BaseValue)
+    }
+
+    /**
+     * Subtract the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    public subtract(forceChangeRate: ForceChangeRate): ForceChangeRate {
+        return new ForceChangeRate(this.value - forceChangeRate.BaseValue)
+    }
+
+    /**
+     * Multiply the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    public multiply(forceChangeRate: ForceChangeRate): ForceChangeRate {
+        return new ForceChangeRate(this.value * forceChangeRate.BaseValue)
+    }
+
+    /**
+     * Divide the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    public divide(forceChangeRate: ForceChangeRate): ForceChangeRate {
+        return new ForceChangeRate(this.value / forceChangeRate.BaseValue)
+    }
+
+    /**
+     * Modulo the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    public modulo(forceChangeRate: ForceChangeRate): ForceChangeRate {
+        return new ForceChangeRate(this.value % forceChangeRate.BaseValue)
+    }
+
+    /**
+     * Pow the given ForceChangeRate with the current ForceChangeRate.
+     * @param forceChangeRate The other ForceChangeRate.
+     * @returns A new ForceChangeRate instance with the results.
+     */
+    public pow(forceChangeRate: ForceChangeRate): ForceChangeRate {
+        return new ForceChangeRate(this.value ** forceChangeRate.BaseValue)
     }
 }

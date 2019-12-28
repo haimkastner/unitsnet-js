@@ -52,16 +52,17 @@ export class Information {
      * Create a new Information.
      * @param value The value.
      * @param fromUnit The ‘Information’ unit to create from.
+     * The default unit is Bits
      */
-    public constructor(value: number, fromUnit: InformationUnits) {
+    public constructor(value: number, fromUnit: InformationUnits = InformationUnits.Bits) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Information is Bit.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Information is Bits.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -409,32 +410,109 @@ export class Information {
             case InformationUnits.Bits:
                 return this.Bits + ` b`;
             case InformationUnits.Kilobytes:
-                return this.Kilobytes + ` B`;
+                return this.Kilobytes + ` `;
             case InformationUnits.Megabytes:
-                return this.Megabytes + ` B`;
+                return this.Megabytes + ` `;
             case InformationUnits.Gigabytes:
-                return this.Gigabytes + ` B`;
+                return this.Gigabytes + ` `;
             case InformationUnits.Terabytes:
-                return this.Terabytes + ` B`;
+                return this.Terabytes + ` `;
             case InformationUnits.Petabytes:
-                return this.Petabytes + ` B`;
+                return this.Petabytes + ` `;
             case InformationUnits.Exabytes:
-                return this.Exabytes + ` B`;
+                return this.Exabytes + ` `;
             case InformationUnits.Kilobits:
-                return this.Kilobits + ` b`;
+                return this.Kilobits + ` `;
             case InformationUnits.Megabits:
-                return this.Megabits + ` b`;
+                return this.Megabits + ` `;
             case InformationUnits.Gigabits:
-                return this.Gigabits + ` b`;
+                return this.Gigabits + ` `;
             case InformationUnits.Terabits:
-                return this.Terabits + ` b`;
+                return this.Terabits + ` `;
             case InformationUnits.Petabits:
-                return this.Petabits + ` b`;
+                return this.Petabits + ` `;
             case InformationUnits.Exabits:
-                return this.Exabits + ` b`;
+                return this.Exabits + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Information are equals to the current Information.
+     * @param information The other Information.
+     * @returns True if the given Information are equal to the current Information.
+     */
+    public equals(information: Information): boolean {
+        return this.value === information.BaseValue;
+    }
+
+    /**
+     * Compare the given Information against the current Information.
+     * @param information The other Information.
+     * @returns 0 if they are equal, -1 if the current Information is less then other, 1 if the current Information is greater then other.
+     */
+    public compareTo(information: Information): number {
+
+        if (this.value > information.BaseValue)
+            return 1;
+        if (this.value < information.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    public add(information: Information): Information {
+        return new Information(this.value + information.BaseValue)
+    }
+
+    /**
+     * Subtract the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    public subtract(information: Information): Information {
+        return new Information(this.value - information.BaseValue)
+    }
+
+    /**
+     * Multiply the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    public multiply(information: Information): Information {
+        return new Information(this.value * information.BaseValue)
+    }
+
+    /**
+     * Divide the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    public divide(information: Information): Information {
+        return new Information(this.value / information.BaseValue)
+    }
+
+    /**
+     * Modulo the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    public modulo(information: Information): Information {
+        return new Information(this.value % information.BaseValue)
+    }
+
+    /**
+     * Pow the given Information with the current Information.
+     * @param information The other Information.
+     * @returns A new Information instance with the results.
+     */
+    public pow(information: Information): Information {
+        return new Information(this.value ** information.BaseValue)
     }
 }

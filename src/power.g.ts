@@ -79,16 +79,17 @@ export class Power {
      * Create a new Power.
      * @param value The value.
      * @param fromUnit The ‘Power’ unit to create from.
+     * The default unit is Watts
      */
-    public constructor(value: number, fromUnit: PowerUnits) {
+    public constructor(value: number, fromUnit: PowerUnits = PowerUnits.Watts) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Power is Watt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Power is Watts.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -646,38 +647,115 @@ export class Power {
             case PowerUnits.JoulesPerHour:
                 return this.JoulesPerHour + ` J/h`;
             case PowerUnits.Femtowatts:
-                return this.Femtowatts + ` W`;
+                return this.Femtowatts + ` `;
             case PowerUnits.Picowatts:
-                return this.Picowatts + ` W`;
+                return this.Picowatts + ` `;
             case PowerUnits.Nanowatts:
-                return this.Nanowatts + ` W`;
+                return this.Nanowatts + ` `;
             case PowerUnits.Microwatts:
-                return this.Microwatts + ` W`;
+                return this.Microwatts + ` `;
             case PowerUnits.Deciwatts:
-                return this.Deciwatts + ` W`;
+                return this.Deciwatts + ` `;
             case PowerUnits.Decawatts:
-                return this.Decawatts + ` W`;
+                return this.Decawatts + ` `;
             case PowerUnits.Kilowatts:
-                return this.Kilowatts + ` W`;
+                return this.Kilowatts + ` `;
             case PowerUnits.Megawatts:
-                return this.Megawatts + ` W`;
+                return this.Megawatts + ` `;
             case PowerUnits.Gigawatts:
-                return this.Gigawatts + ` W`;
+                return this.Gigawatts + ` `;
             case PowerUnits.Terawatts:
-                return this.Terawatts + ` W`;
+                return this.Terawatts + ` `;
             case PowerUnits.Petawatts:
-                return this.Petawatts + ` W`;
+                return this.Petawatts + ` `;
             case PowerUnits.KilobritishThermalUnitsPerHour:
-                return this.KilobritishThermalUnitsPerHour + ` Btu/h`;
+                return this.KilobritishThermalUnitsPerHour + ` `;
             case PowerUnits.KilojoulesPerHour:
-                return this.KilojoulesPerHour + ` J/h`;
+                return this.KilojoulesPerHour + ` `;
             case PowerUnits.MegajoulesPerHour:
-                return this.MegajoulesPerHour + ` J/h`;
+                return this.MegajoulesPerHour + ` `;
             case PowerUnits.GigajoulesPerHour:
-                return this.GigajoulesPerHour + ` J/h`;
+                return this.GigajoulesPerHour + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Power are equals to the current Power.
+     * @param power The other Power.
+     * @returns True if the given Power are equal to the current Power.
+     */
+    public equals(power: Power): boolean {
+        return this.value === power.BaseValue;
+    }
+
+    /**
+     * Compare the given Power against the current Power.
+     * @param power The other Power.
+     * @returns 0 if they are equal, -1 if the current Power is less then other, 1 if the current Power is greater then other.
+     */
+    public compareTo(power: Power): number {
+
+        if (this.value > power.BaseValue)
+            return 1;
+        if (this.value < power.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    public add(power: Power): Power {
+        return new Power(this.value + power.BaseValue)
+    }
+
+    /**
+     * Subtract the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    public subtract(power: Power): Power {
+        return new Power(this.value - power.BaseValue)
+    }
+
+    /**
+     * Multiply the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    public multiply(power: Power): Power {
+        return new Power(this.value * power.BaseValue)
+    }
+
+    /**
+     * Divide the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    public divide(power: Power): Power {
+        return new Power(this.value / power.BaseValue)
+    }
+
+    /**
+     * Modulo the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    public modulo(power: Power): Power {
+        return new Power(this.value % power.BaseValue)
+    }
+
+    /**
+     * Pow the given Power with the current Power.
+     * @param power The other Power.
+     * @returns A new Power instance with the results.
+     */
+    public pow(power: Power): Power {
+        return new Power(this.value ** power.BaseValue)
     }
 }

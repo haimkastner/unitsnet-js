@@ -31,16 +31,17 @@ export class Entropy {
      * Create a new Entropy.
      * @param value The value.
      * @param fromUnit The ‘Entropy’ unit to create from.
+     * The default unit is JoulesPerKelvin
      */
-    public constructor(value: number, fromUnit: EntropyUnits) {
+    public constructor(value: number, fromUnit: EntropyUnits = EntropyUnits.JoulesPerKelvin) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Entropy is JoulePerKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Entropy is JoulesPerKelvin.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -236,16 +237,93 @@ export class Entropy {
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return this.JoulesPerDegreeCelsius + ` J/C`;
             case EntropyUnits.KilojoulesPerKelvin:
-                return this.KilojoulesPerKelvin + ` J/K`;
+                return this.KilojoulesPerKelvin + ` `;
             case EntropyUnits.MegajoulesPerKelvin:
-                return this.MegajoulesPerKelvin + ` J/K`;
+                return this.MegajoulesPerKelvin + ` `;
             case EntropyUnits.KilocaloriesPerKelvin:
-                return this.KilocaloriesPerKelvin + ` cal/K`;
+                return this.KilocaloriesPerKelvin + ` `;
             case EntropyUnits.KilojoulesPerDegreeCelsius:
-                return this.KilojoulesPerDegreeCelsius + ` J/C`;
+                return this.KilojoulesPerDegreeCelsius + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Entropy are equals to the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns True if the given Entropy are equal to the current Entropy.
+     */
+    public equals(entropy: Entropy): boolean {
+        return this.value === entropy.BaseValue;
+    }
+
+    /**
+     * Compare the given Entropy against the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns 0 if they are equal, -1 if the current Entropy is less then other, 1 if the current Entropy is greater then other.
+     */
+    public compareTo(entropy: Entropy): number {
+
+        if (this.value > entropy.BaseValue)
+            return 1;
+        if (this.value < entropy.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    public add(entropy: Entropy): Entropy {
+        return new Entropy(this.value + entropy.BaseValue)
+    }
+
+    /**
+     * Subtract the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    public subtract(entropy: Entropy): Entropy {
+        return new Entropy(this.value - entropy.BaseValue)
+    }
+
+    /**
+     * Multiply the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    public multiply(entropy: Entropy): Entropy {
+        return new Entropy(this.value * entropy.BaseValue)
+    }
+
+    /**
+     * Divide the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    public divide(entropy: Entropy): Entropy {
+        return new Entropy(this.value / entropy.BaseValue)
+    }
+
+    /**
+     * Modulo the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    public modulo(entropy: Entropy): Entropy {
+        return new Entropy(this.value % entropy.BaseValue)
+    }
+
+    /**
+     * Pow the given Entropy with the current Entropy.
+     * @param entropy The other Entropy.
+     * @returns A new Entropy instance with the results.
+     */
+    public pow(entropy: Entropy): Entropy {
+        return new Entropy(this.value ** entropy.BaseValue)
     }
 }

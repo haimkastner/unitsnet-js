@@ -146,11 +146,12 @@ export declare class Volume {
      * Create a new Volume.
      * @param value The value.
      * @param fromUnit The ‘Volume’ unit to create from.
+     * The default unit is CubicMeters
      */
-    constructor(value: number, fromUnit: VolumeUnits);
+    constructor(value: number, fromUnit?: VolumeUnits);
     /**
-     * The base value of Volume is CubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Volume is CubicMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -577,5 +578,53 @@ export declare class Volume {
      * @returns The string format of the Volume.
      */
     toString(toUnit?: VolumeUnits): string;
+    /**
+     * Check if the given Volume are equals to the current Volume.
+     * @param volume The other Volume.
+     * @returns True if the given Volume are equal to the current Volume.
+     */
+    equals(volume: Volume): boolean;
+    /**
+     * Compare the given Volume against the current Volume.
+     * @param volume The other Volume.
+     * @returns 0 if they are equal, -1 if the current Volume is less then other, 1 if the current Volume is greater then other.
+     */
+    compareTo(volume: Volume): number;
+    /**
+     * Add the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    add(volume: Volume): Volume;
+    /**
+     * Subtract the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    subtract(volume: Volume): Volume;
+    /**
+     * Multiply the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    multiply(volume: Volume): Volume;
+    /**
+     * Divide the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    divide(volume: Volume): Volume;
+    /**
+     * Modulo the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    modulo(volume: Volume): Volume;
+    /**
+     * Pow the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    pow(volume: Volume): Volume;
 }
 //# sourceMappingURL=volume.g.d.ts.map

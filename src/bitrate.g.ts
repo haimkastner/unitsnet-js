@@ -52,16 +52,17 @@ export class BitRate {
      * Create a new BitRate.
      * @param value The value.
      * @param fromUnit The ‘BitRate’ unit to create from.
+     * The default unit is BitsPerSecond
      */
-    public constructor(value: number, fromUnit: BitRateUnits) {
+    public constructor(value: number, fromUnit: BitRateUnits = BitRateUnits.BitsPerSecond) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of BitRate is BitPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of BitRate is BitsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -409,32 +410,109 @@ export class BitRate {
             case BitRateUnits.BytesPerSecond:
                 return this.BytesPerSecond + ` B/s`;
             case BitRateUnits.KilobitsPerSecond:
-                return this.KilobitsPerSecond + ` bit/s`;
+                return this.KilobitsPerSecond + ` `;
             case BitRateUnits.MegabitsPerSecond:
-                return this.MegabitsPerSecond + ` bit/s`;
+                return this.MegabitsPerSecond + ` `;
             case BitRateUnits.GigabitsPerSecond:
-                return this.GigabitsPerSecond + ` bit/s`;
+                return this.GigabitsPerSecond + ` `;
             case BitRateUnits.TerabitsPerSecond:
-                return this.TerabitsPerSecond + ` bit/s`;
+                return this.TerabitsPerSecond + ` `;
             case BitRateUnits.PetabitsPerSecond:
-                return this.PetabitsPerSecond + ` bit/s`;
+                return this.PetabitsPerSecond + ` `;
             case BitRateUnits.ExabitsPerSecond:
-                return this.ExabitsPerSecond + ` bit/s`;
+                return this.ExabitsPerSecond + ` `;
             case BitRateUnits.KilobytesPerSecond:
-                return this.KilobytesPerSecond + ` B/s`;
+                return this.KilobytesPerSecond + ` `;
             case BitRateUnits.MegabytesPerSecond:
-                return this.MegabytesPerSecond + ` B/s`;
+                return this.MegabytesPerSecond + ` `;
             case BitRateUnits.GigabytesPerSecond:
-                return this.GigabytesPerSecond + ` B/s`;
+                return this.GigabytesPerSecond + ` `;
             case BitRateUnits.TerabytesPerSecond:
-                return this.TerabytesPerSecond + ` B/s`;
+                return this.TerabytesPerSecond + ` `;
             case BitRateUnits.PetabytesPerSecond:
-                return this.PetabytesPerSecond + ` B/s`;
+                return this.PetabytesPerSecond + ` `;
             case BitRateUnits.ExabytesPerSecond:
-                return this.ExabytesPerSecond + ` B/s`;
+                return this.ExabytesPerSecond + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given BitRate are equals to the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns True if the given BitRate are equal to the current BitRate.
+     */
+    public equals(bitRate: BitRate): boolean {
+        return this.value === bitRate.BaseValue;
+    }
+
+    /**
+     * Compare the given BitRate against the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns 0 if they are equal, -1 if the current BitRate is less then other, 1 if the current BitRate is greater then other.
+     */
+    public compareTo(bitRate: BitRate): number {
+
+        if (this.value > bitRate.BaseValue)
+            return 1;
+        if (this.value < bitRate.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    public add(bitRate: BitRate): BitRate {
+        return new BitRate(this.value + bitRate.BaseValue)
+    }
+
+    /**
+     * Subtract the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    public subtract(bitRate: BitRate): BitRate {
+        return new BitRate(this.value - bitRate.BaseValue)
+    }
+
+    /**
+     * Multiply the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    public multiply(bitRate: BitRate): BitRate {
+        return new BitRate(this.value * bitRate.BaseValue)
+    }
+
+    /**
+     * Divide the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    public divide(bitRate: BitRate): BitRate {
+        return new BitRate(this.value / bitRate.BaseValue)
+    }
+
+    /**
+     * Modulo the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    public modulo(bitRate: BitRate): BitRate {
+        return new BitRate(this.value % bitRate.BaseValue)
+    }
+
+    /**
+     * Pow the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    public pow(bitRate: BitRate): BitRate {
+        return new BitRate(this.value ** bitRate.BaseValue)
     }
 }

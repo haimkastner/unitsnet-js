@@ -83,11 +83,12 @@ export declare class Energy {
      * Create a new Energy.
      * @param value The value.
      * @param fromUnit The ‘Energy’ unit to create from.
+     * The default unit is Joules
      */
-    constructor(value: number, fromUnit: EnergyUnits);
+    constructor(value: number, fromUnit?: EnergyUnits);
     /**
-     * The base value of Energy is Joule.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Energy is Joules.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -325,5 +326,53 @@ export declare class Energy {
      * @returns The string format of the Energy.
      */
     toString(toUnit?: EnergyUnits): string;
+    /**
+     * Check if the given Energy are equals to the current Energy.
+     * @param energy The other Energy.
+     * @returns True if the given Energy are equal to the current Energy.
+     */
+    equals(energy: Energy): boolean;
+    /**
+     * Compare the given Energy against the current Energy.
+     * @param energy The other Energy.
+     * @returns 0 if they are equal, -1 if the current Energy is less then other, 1 if the current Energy is greater then other.
+     */
+    compareTo(energy: Energy): number;
+    /**
+     * Add the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    add(energy: Energy): Energy;
+    /**
+     * Subtract the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    subtract(energy: Energy): Energy;
+    /**
+     * Multiply the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    multiply(energy: Energy): Energy;
+    /**
+     * Divide the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    divide(energy: Energy): Energy;
+    /**
+     * Modulo the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    modulo(energy: Energy): Energy;
+    /**
+     * Pow the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    pow(energy: Energy): Energy;
 }
 //# sourceMappingURL=energy.g.d.ts.map

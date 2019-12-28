@@ -16,16 +16,17 @@ export class SpecificVolume {
      * Create a new SpecificVolume.
      * @param value The value.
      * @param fromUnit The ‘SpecificVolume’ unit to create from.
+     * The default unit is CubicMetersPerKilogram
      */
-    public constructor(value: number, fromUnit: SpecificVolumeUnits) {
+    public constructor(value: number, fromUnit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of SpecificVolume is CubicMeterPerKilogram.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SpecificVolume is CubicMetersPerKilogram.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -112,5 +113,82 @@ export class SpecificVolume {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given SpecificVolume are equals to the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns True if the given SpecificVolume are equal to the current SpecificVolume.
+     */
+    public equals(specificVolume: SpecificVolume): boolean {
+        return this.value === specificVolume.BaseValue;
+    }
+
+    /**
+     * Compare the given SpecificVolume against the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns 0 if they are equal, -1 if the current SpecificVolume is less then other, 1 if the current SpecificVolume is greater then other.
+     */
+    public compareTo(specificVolume: SpecificVolume): number {
+
+        if (this.value > specificVolume.BaseValue)
+            return 1;
+        if (this.value < specificVolume.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    public add(specificVolume: SpecificVolume): SpecificVolume {
+        return new SpecificVolume(this.value + specificVolume.BaseValue)
+    }
+
+    /**
+     * Subtract the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    public subtract(specificVolume: SpecificVolume): SpecificVolume {
+        return new SpecificVolume(this.value - specificVolume.BaseValue)
+    }
+
+    /**
+     * Multiply the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    public multiply(specificVolume: SpecificVolume): SpecificVolume {
+        return new SpecificVolume(this.value * specificVolume.BaseValue)
+    }
+
+    /**
+     * Divide the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    public divide(specificVolume: SpecificVolume): SpecificVolume {
+        return new SpecificVolume(this.value / specificVolume.BaseValue)
+    }
+
+    /**
+     * Modulo the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    public modulo(specificVolume: SpecificVolume): SpecificVolume {
+        return new SpecificVolume(this.value % specificVolume.BaseValue)
+    }
+
+    /**
+     * Pow the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    public pow(specificVolume: SpecificVolume): SpecificVolume {
+        return new SpecificVolume(this.value ** specificVolume.BaseValue)
     }
 }

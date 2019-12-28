@@ -28,8 +28,9 @@ class Frequency {
      * Create a new Frequency.
      * @param value The value.
      * @param fromUnit The ‘Frequency’ unit to create from.
+     * The default unit is Hertz
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = FrequencyUnits.Hertz) {
         this.hertzLazy = null;
         this.radianspersecondLazy = null;
         this.cyclesperminuteLazy = null;
@@ -45,7 +46,7 @@ class Frequency {
     }
     /**
      * The base value of Frequency is Hertz.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -264,17 +265,85 @@ class Frequency {
             case FrequencyUnits.BeatsPerMinute:
                 return this.BeatsPerMinute + ` bpm`;
             case FrequencyUnits.Kilohertz:
-                return this.Kilohertz + ` Hz`;
+                return this.Kilohertz + ` `;
             case FrequencyUnits.Megahertz:
-                return this.Megahertz + ` Hz`;
+                return this.Megahertz + ` `;
             case FrequencyUnits.Gigahertz:
-                return this.Gigahertz + ` Hz`;
+                return this.Gigahertz + ` `;
             case FrequencyUnits.Terahertz:
-                return this.Terahertz + ` Hz`;
+                return this.Terahertz + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Frequency are equals to the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns True if the given Frequency are equal to the current Frequency.
+     */
+    equals(frequency) {
+        return this.value === frequency.BaseValue;
+    }
+    /**
+     * Compare the given Frequency against the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns 0 if they are equal, -1 if the current Frequency is less then other, 1 if the current Frequency is greater then other.
+     */
+    compareTo(frequency) {
+        if (this.value > frequency.BaseValue)
+            return 1;
+        if (this.value < frequency.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    add(frequency) {
+        return new Frequency(this.value + frequency.BaseValue);
+    }
+    /**
+     * Subtract the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    subtract(frequency) {
+        return new Frequency(this.value - frequency.BaseValue);
+    }
+    /**
+     * Multiply the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    multiply(frequency) {
+        return new Frequency(this.value * frequency.BaseValue);
+    }
+    /**
+     * Divide the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    divide(frequency) {
+        return new Frequency(this.value / frequency.BaseValue);
+    }
+    /**
+     * Modulo the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    modulo(frequency) {
+        return new Frequency(this.value % frequency.BaseValue);
+    }
+    /**
+     * Pow the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    pow(frequency) {
+        return new Frequency(this.value ** frequency.BaseValue);
     }
 }
 exports.Frequency = Frequency;

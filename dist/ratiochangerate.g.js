@@ -14,8 +14,9 @@ class RatioChangeRate {
      * Create a new RatioChangeRate.
      * @param value The value.
      * @param fromUnit The ‘RatioChangeRate’ unit to create from.
+     * The default unit is DecimalFractionsPerSecond
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = RatioChangeRateUnits.DecimalFractionsPerSecond) {
         this.percentspersecondLazy = null;
         this.decimalfractionspersecondLazy = null;
         if (isNaN(value))
@@ -23,8 +24,8 @@ class RatioChangeRate {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of RatioChangeRate is DecimalFractionPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RatioChangeRate is DecimalFractionsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -100,6 +101,74 @@ class RatioChangeRate {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given RatioChangeRate are equals to the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns True if the given RatioChangeRate are equal to the current RatioChangeRate.
+     */
+    equals(ratioChangeRate) {
+        return this.value === ratioChangeRate.BaseValue;
+    }
+    /**
+     * Compare the given RatioChangeRate against the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns 0 if they are equal, -1 if the current RatioChangeRate is less then other, 1 if the current RatioChangeRate is greater then other.
+     */
+    compareTo(ratioChangeRate) {
+        if (this.value > ratioChangeRate.BaseValue)
+            return 1;
+        if (this.value < ratioChangeRate.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    add(ratioChangeRate) {
+        return new RatioChangeRate(this.value + ratioChangeRate.BaseValue);
+    }
+    /**
+     * Subtract the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    subtract(ratioChangeRate) {
+        return new RatioChangeRate(this.value - ratioChangeRate.BaseValue);
+    }
+    /**
+     * Multiply the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    multiply(ratioChangeRate) {
+        return new RatioChangeRate(this.value * ratioChangeRate.BaseValue);
+    }
+    /**
+     * Divide the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    divide(ratioChangeRate) {
+        return new RatioChangeRate(this.value / ratioChangeRate.BaseValue);
+    }
+    /**
+     * Modulo the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    modulo(ratioChangeRate) {
+        return new RatioChangeRate(this.value % ratioChangeRate.BaseValue);
+    }
+    /**
+     * Pow the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    pow(ratioChangeRate) {
+        return new RatioChangeRate(this.value ** ratioChangeRate.BaseValue);
     }
 }
 exports.RatioChangeRate = RatioChangeRate;

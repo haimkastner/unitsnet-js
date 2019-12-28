@@ -16,8 +16,9 @@ class ElectricSurfaceChargeDensity {
      * Create a new ElectricSurfaceChargeDensity.
      * @param value The value.
      * @param fromUnit The ‘ElectricSurfaceChargeDensity’ unit to create from.
+     * The default unit is CoulombsPerSquareMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter) {
         this.coulombspersquaremeterLazy = null;
         this.coulombspersquarecentimeterLazy = null;
         this.coulombspersquareinchLazy = null;
@@ -26,8 +27,8 @@ class ElectricSurfaceChargeDensity {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ElectricSurfaceChargeDensity is CoulombPerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricSurfaceChargeDensity is CoulombsPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -125,6 +126,74 @@ class ElectricSurfaceChargeDensity {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ElectricSurfaceChargeDensity are equals to the current ElectricSurfaceChargeDensity.
+     * @param electricSurfaceChargeDensity The other ElectricSurfaceChargeDensity.
+     * @returns True if the given ElectricSurfaceChargeDensity are equal to the current ElectricSurfaceChargeDensity.
+     */
+    equals(electricSurfaceChargeDensity) {
+        return this.value === electricSurfaceChargeDensity.BaseValue;
+    }
+    /**
+     * Compare the given ElectricSurfaceChargeDensity against the current ElectricSurfaceChargeDensity.
+     * @param electricSurfaceChargeDensity The other ElectricSurfaceChargeDensity.
+     * @returns 0 if they are equal, -1 if the current ElectricSurfaceChargeDensity is less then other, 1 if the current ElectricSurfaceChargeDensity is greater then other.
+     */
+    compareTo(electricSurfaceChargeDensity) {
+        if (this.value > electricSurfaceChargeDensity.BaseValue)
+            return 1;
+        if (this.value < electricSurfaceChargeDensity.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ElectricSurfaceChargeDensity with the current ElectricSurfaceChargeDensity.
+     * @param electricSurfaceChargeDensity The other ElectricSurfaceChargeDensity.
+     * @returns A new ElectricSurfaceChargeDensity instance with the results.
+     */
+    add(electricSurfaceChargeDensity) {
+        return new ElectricSurfaceChargeDensity(this.value + electricSurfaceChargeDensity.BaseValue);
+    }
+    /**
+     * Subtract the given ElectricSurfaceChargeDensity with the current ElectricSurfaceChargeDensity.
+     * @param electricSurfaceChargeDensity The other ElectricSurfaceChargeDensity.
+     * @returns A new ElectricSurfaceChargeDensity instance with the results.
+     */
+    subtract(electricSurfaceChargeDensity) {
+        return new ElectricSurfaceChargeDensity(this.value - electricSurfaceChargeDensity.BaseValue);
+    }
+    /**
+     * Multiply the given ElectricSurfaceChargeDensity with the current ElectricSurfaceChargeDensity.
+     * @param electricSurfaceChargeDensity The other ElectricSurfaceChargeDensity.
+     * @returns A new ElectricSurfaceChargeDensity instance with the results.
+     */
+    multiply(electricSurfaceChargeDensity) {
+        return new ElectricSurfaceChargeDensity(this.value * electricSurfaceChargeDensity.BaseValue);
+    }
+    /**
+     * Divide the given ElectricSurfaceChargeDensity with the current ElectricSurfaceChargeDensity.
+     * @param electricSurfaceChargeDensity The other ElectricSurfaceChargeDensity.
+     * @returns A new ElectricSurfaceChargeDensity instance with the results.
+     */
+    divide(electricSurfaceChargeDensity) {
+        return new ElectricSurfaceChargeDensity(this.value / electricSurfaceChargeDensity.BaseValue);
+    }
+    /**
+     * Modulo the given ElectricSurfaceChargeDensity with the current ElectricSurfaceChargeDensity.
+     * @param electricSurfaceChargeDensity The other ElectricSurfaceChargeDensity.
+     * @returns A new ElectricSurfaceChargeDensity instance with the results.
+     */
+    modulo(electricSurfaceChargeDensity) {
+        return new ElectricSurfaceChargeDensity(this.value % electricSurfaceChargeDensity.BaseValue);
+    }
+    /**
+     * Pow the given ElectricSurfaceChargeDensity with the current ElectricSurfaceChargeDensity.
+     * @param electricSurfaceChargeDensity The other ElectricSurfaceChargeDensity.
+     * @returns A new ElectricSurfaceChargeDensity instance with the results.
+     */
+    pow(electricSurfaceChargeDensity) {
+        return new ElectricSurfaceChargeDensity(this.value ** electricSurfaceChargeDensity.BaseValue);
     }
 }
 exports.ElectricSurfaceChargeDensity = ElectricSurfaceChargeDensity;

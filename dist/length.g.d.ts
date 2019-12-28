@@ -101,11 +101,12 @@ export declare class Length {
      * Create a new Length.
      * @param value The value.
      * @param fromUnit The ‘Length’ unit to create from.
+     * The default unit is Meters
      */
-    constructor(value: number, fromUnit: LengthUnits);
+    constructor(value: number, fromUnit?: LengthUnits);
     /**
-     * The base value of Length is Meter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Length is Meters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -397,5 +398,53 @@ export declare class Length {
      * @returns The string format of the Length.
      */
     toString(toUnit?: LengthUnits): string;
+    /**
+     * Check if the given Length are equals to the current Length.
+     * @param length The other Length.
+     * @returns True if the given Length are equal to the current Length.
+     */
+    equals(length: Length): boolean;
+    /**
+     * Compare the given Length against the current Length.
+     * @param length The other Length.
+     * @returns 0 if they are equal, -1 if the current Length is less then other, 1 if the current Length is greater then other.
+     */
+    compareTo(length: Length): number;
+    /**
+     * Add the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    add(length: Length): Length;
+    /**
+     * Subtract the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    subtract(length: Length): Length;
+    /**
+     * Multiply the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    multiply(length: Length): Length;
+    /**
+     * Divide the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    divide(length: Length): Length;
+    /**
+     * Modulo the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    modulo(length: Length): Length;
+    /**
+     * Pow the given Length with the current Length.
+     * @param length The other Length.
+     * @returns A new Length instance with the results.
+     */
+    pow(length: Length): Length;
 }
 //# sourceMappingURL=length.g.d.ts.map

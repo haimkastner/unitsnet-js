@@ -17,11 +17,12 @@ export declare class VolumePerLength {
      * Create a new VolumePerLength.
      * @param value The value.
      * @param fromUnit The ‘VolumePerLength’ unit to create from.
+     * The default unit is CubicMetersPerMeter
      */
-    constructor(value: number, fromUnit: VolumePerLengthUnits);
+    constructor(value: number, fromUnit?: VolumePerLengthUnits);
     /**
-     * The base value of VolumePerLength is CubicMeterPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of VolumePerLength is CubicMetersPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class VolumePerLength {
      * @returns The string format of the VolumePerLength.
      */
     toString(toUnit?: VolumePerLengthUnits): string;
+    /**
+     * Check if the given VolumePerLength are equals to the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns True if the given VolumePerLength are equal to the current VolumePerLength.
+     */
+    equals(volumePerLength: VolumePerLength): boolean;
+    /**
+     * Compare the given VolumePerLength against the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns 0 if they are equal, -1 if the current VolumePerLength is less then other, 1 if the current VolumePerLength is greater then other.
+     */
+    compareTo(volumePerLength: VolumePerLength): number;
+    /**
+     * Add the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    add(volumePerLength: VolumePerLength): VolumePerLength;
+    /**
+     * Subtract the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    subtract(volumePerLength: VolumePerLength): VolumePerLength;
+    /**
+     * Multiply the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    multiply(volumePerLength: VolumePerLength): VolumePerLength;
+    /**
+     * Divide the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    divide(volumePerLength: VolumePerLength): VolumePerLength;
+    /**
+     * Modulo the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    modulo(volumePerLength: VolumePerLength): VolumePerLength;
+    /**
+     * Pow the given VolumePerLength with the current VolumePerLength.
+     * @param volumePerLength The other VolumePerLength.
+     * @returns A new VolumePerLength instance with the results.
+     */
+    pow(volumePerLength: VolumePerLength): VolumePerLength;
 }
 //# sourceMappingURL=volumeperlength.g.d.ts.map

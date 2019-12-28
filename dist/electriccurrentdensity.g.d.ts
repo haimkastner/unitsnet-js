@@ -17,11 +17,12 @@ export declare class ElectricCurrentDensity {
      * Create a new ElectricCurrentDensity.
      * @param value The value.
      * @param fromUnit The ‘ElectricCurrentDensity’ unit to create from.
+     * The default unit is AmperesPerSquareMeter
      */
-    constructor(value: number, fromUnit: ElectricCurrentDensityUnits);
+    constructor(value: number, fromUnit?: ElectricCurrentDensityUnits);
     /**
-     * The base value of ElectricCurrentDensity is AmperePerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricCurrentDensity is AmperesPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class ElectricCurrentDensity {
      * @returns The string format of the ElectricCurrentDensity.
      */
     toString(toUnit?: ElectricCurrentDensityUnits): string;
+    /**
+     * Check if the given ElectricCurrentDensity are equals to the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns True if the given ElectricCurrentDensity are equal to the current ElectricCurrentDensity.
+     */
+    equals(electricCurrentDensity: ElectricCurrentDensity): boolean;
+    /**
+     * Compare the given ElectricCurrentDensity against the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns 0 if they are equal, -1 if the current ElectricCurrentDensity is less then other, 1 if the current ElectricCurrentDensity is greater then other.
+     */
+    compareTo(electricCurrentDensity: ElectricCurrentDensity): number;
+    /**
+     * Add the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    add(electricCurrentDensity: ElectricCurrentDensity): ElectricCurrentDensity;
+    /**
+     * Subtract the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    subtract(electricCurrentDensity: ElectricCurrentDensity): ElectricCurrentDensity;
+    /**
+     * Multiply the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    multiply(electricCurrentDensity: ElectricCurrentDensity): ElectricCurrentDensity;
+    /**
+     * Divide the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    divide(electricCurrentDensity: ElectricCurrentDensity): ElectricCurrentDensity;
+    /**
+     * Modulo the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    modulo(electricCurrentDensity: ElectricCurrentDensity): ElectricCurrentDensity;
+    /**
+     * Pow the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    pow(electricCurrentDensity: ElectricCurrentDensity): ElectricCurrentDensity;
 }
 //# sourceMappingURL=electriccurrentdensity.g.d.ts.map

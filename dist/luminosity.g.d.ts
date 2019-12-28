@@ -47,11 +47,12 @@ export declare class Luminosity {
      * Create a new Luminosity.
      * @param value The value.
      * @param fromUnit The ‘Luminosity’ unit to create from.
+     * The default unit is Watts
      */
-    constructor(value: number, fromUnit: LuminosityUnits);
+    constructor(value: number, fromUnit?: LuminosityUnits);
     /**
-     * The base value of Luminosity is Watt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Luminosity is Watts.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -181,5 +182,53 @@ export declare class Luminosity {
      * @returns The string format of the Luminosity.
      */
     toString(toUnit?: LuminosityUnits): string;
+    /**
+     * Check if the given Luminosity are equals to the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns True if the given Luminosity are equal to the current Luminosity.
+     */
+    equals(luminosity: Luminosity): boolean;
+    /**
+     * Compare the given Luminosity against the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns 0 if they are equal, -1 if the current Luminosity is less then other, 1 if the current Luminosity is greater then other.
+     */
+    compareTo(luminosity: Luminosity): number;
+    /**
+     * Add the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    add(luminosity: Luminosity): Luminosity;
+    /**
+     * Subtract the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    subtract(luminosity: Luminosity): Luminosity;
+    /**
+     * Multiply the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    multiply(luminosity: Luminosity): Luminosity;
+    /**
+     * Divide the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    divide(luminosity: Luminosity): Luminosity;
+    /**
+     * Modulo the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    modulo(luminosity: Luminosity): Luminosity;
+    /**
+     * Pow the given Luminosity with the current Luminosity.
+     * @param luminosity The other Luminosity.
+     * @returns A new Luminosity instance with the results.
+     */
+    pow(luminosity: Luminosity): Luminosity;
 }
 //# sourceMappingURL=luminosity.g.d.ts.map

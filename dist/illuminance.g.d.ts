@@ -17,11 +17,12 @@ export declare class Illuminance {
      * Create a new Illuminance.
      * @param value The value.
      * @param fromUnit The ‘Illuminance’ unit to create from.
+     * The default unit is Lux
      */
-    constructor(value: number, fromUnit: IlluminanceUnits);
+    constructor(value: number, fromUnit?: IlluminanceUnits);
     /**
      * The base value of Illuminance is Lux.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class Illuminance {
      * @returns The string format of the Illuminance.
      */
     toString(toUnit?: IlluminanceUnits): string;
+    /**
+     * Check if the given Illuminance are equals to the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns True if the given Illuminance are equal to the current Illuminance.
+     */
+    equals(illuminance: Illuminance): boolean;
+    /**
+     * Compare the given Illuminance against the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns 0 if they are equal, -1 if the current Illuminance is less then other, 1 if the current Illuminance is greater then other.
+     */
+    compareTo(illuminance: Illuminance): number;
+    /**
+     * Add the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    add(illuminance: Illuminance): Illuminance;
+    /**
+     * Subtract the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    subtract(illuminance: Illuminance): Illuminance;
+    /**
+     * Multiply the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    multiply(illuminance: Illuminance): Illuminance;
+    /**
+     * Divide the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    divide(illuminance: Illuminance): Illuminance;
+    /**
+     * Modulo the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    modulo(illuminance: Illuminance): Illuminance;
+    /**
+     * Pow the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    pow(illuminance: Illuminance): Illuminance;
 }
 //# sourceMappingURL=illuminance.g.d.ts.map

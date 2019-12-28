@@ -74,11 +74,12 @@ export declare class MassFraction {
      * Create a new MassFraction.
      * @param value The value.
      * @param fromUnit The ‘MassFraction’ unit to create from.
+     * The default unit is DecimalFractions
      */
-    constructor(value: number, fromUnit: MassFractionUnits);
+    constructor(value: number, fromUnit?: MassFractionUnits);
     /**
-     * The base value of MassFraction is DecimalFraction.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassFraction is DecimalFractions.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -289,5 +290,53 @@ export declare class MassFraction {
      * @returns The string format of the MassFraction.
      */
     toString(toUnit?: MassFractionUnits): string;
+    /**
+     * Check if the given MassFraction are equals to the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns True if the given MassFraction are equal to the current MassFraction.
+     */
+    equals(massFraction: MassFraction): boolean;
+    /**
+     * Compare the given MassFraction against the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns 0 if they are equal, -1 if the current MassFraction is less then other, 1 if the current MassFraction is greater then other.
+     */
+    compareTo(massFraction: MassFraction): number;
+    /**
+     * Add the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    add(massFraction: MassFraction): MassFraction;
+    /**
+     * Subtract the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    subtract(massFraction: MassFraction): MassFraction;
+    /**
+     * Multiply the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    multiply(massFraction: MassFraction): MassFraction;
+    /**
+     * Divide the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    divide(massFraction: MassFraction): MassFraction;
+    /**
+     * Modulo the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    modulo(massFraction: MassFraction): MassFraction;
+    /**
+     * Pow the given MassFraction with the current MassFraction.
+     * @param massFraction The other MassFraction.
+     * @returns A new MassFraction instance with the results.
+     */
+    pow(massFraction: MassFraction): MassFraction;
 }
 //# sourceMappingURL=massfraction.g.d.ts.map

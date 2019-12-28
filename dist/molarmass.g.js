@@ -32,8 +32,9 @@ class MolarMass {
      * Create a new MolarMass.
      * @param value The value.
      * @param fromUnit The ‘MolarMass’ unit to create from.
+     * The default unit is KilogramsPerMole
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = MolarMassUnits.KilogramsPerMole) {
         this.gramspermoleLazy = null;
         this.poundspermoleLazy = null;
         this.nanogramspermoleLazy = null;
@@ -50,8 +51,8 @@ class MolarMass {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of MolarMass is KilogramPerMole.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MolarMass is KilogramsPerMole.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -304,27 +305,95 @@ class MolarMass {
             case MolarMassUnits.PoundsPerMole:
                 return this.PoundsPerMole + ` lb/mol`;
             case MolarMassUnits.NanogramsPerMole:
-                return this.NanogramsPerMole + ` g/mol`;
+                return this.NanogramsPerMole + ` `;
             case MolarMassUnits.MicrogramsPerMole:
-                return this.MicrogramsPerMole + ` g/mol`;
+                return this.MicrogramsPerMole + ` `;
             case MolarMassUnits.CentigramsPerMole:
-                return this.CentigramsPerMole + ` g/mol`;
+                return this.CentigramsPerMole + ` `;
             case MolarMassUnits.DecigramsPerMole:
-                return this.DecigramsPerMole + ` g/mol`;
+                return this.DecigramsPerMole + ` `;
             case MolarMassUnits.DecagramsPerMole:
-                return this.DecagramsPerMole + ` g/mol`;
+                return this.DecagramsPerMole + ` `;
             case MolarMassUnits.HectogramsPerMole:
-                return this.HectogramsPerMole + ` g/mol`;
+                return this.HectogramsPerMole + ` `;
             case MolarMassUnits.KilogramsPerMole:
-                return this.KilogramsPerMole + ` g/mol`;
+                return this.KilogramsPerMole + ` `;
             case MolarMassUnits.KilopoundsPerMole:
-                return this.KilopoundsPerMole + ` lb/mol`;
+                return this.KilopoundsPerMole + ` `;
             case MolarMassUnits.MegapoundsPerMole:
-                return this.MegapoundsPerMole + ` lb/mol`;
+                return this.MegapoundsPerMole + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given MolarMass are equals to the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns True if the given MolarMass are equal to the current MolarMass.
+     */
+    equals(molarMass) {
+        return this.value === molarMass.BaseValue;
+    }
+    /**
+     * Compare the given MolarMass against the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns 0 if they are equal, -1 if the current MolarMass is less then other, 1 if the current MolarMass is greater then other.
+     */
+    compareTo(molarMass) {
+        if (this.value > molarMass.BaseValue)
+            return 1;
+        if (this.value < molarMass.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    add(molarMass) {
+        return new MolarMass(this.value + molarMass.BaseValue);
+    }
+    /**
+     * Subtract the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    subtract(molarMass) {
+        return new MolarMass(this.value - molarMass.BaseValue);
+    }
+    /**
+     * Multiply the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    multiply(molarMass) {
+        return new MolarMass(this.value * molarMass.BaseValue);
+    }
+    /**
+     * Divide the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    divide(molarMass) {
+        return new MolarMass(this.value / molarMass.BaseValue);
+    }
+    /**
+     * Modulo the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    modulo(molarMass) {
+        return new MolarMass(this.value % molarMass.BaseValue);
+    }
+    /**
+     * Pow the given MolarMass with the current MolarMass.
+     * @param molarMass The other MolarMass.
+     * @returns A new MolarMass instance with the results.
+     */
+    pow(molarMass) {
+        return new MolarMass(this.value ** molarMass.BaseValue);
     }
 }
 exports.MolarMass = MolarMass;

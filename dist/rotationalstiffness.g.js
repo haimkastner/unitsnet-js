@@ -16,8 +16,9 @@ class RotationalStiffness {
      * Create a new RotationalStiffness.
      * @param value The value.
      * @param fromUnit The ‘RotationalStiffness’ unit to create from.
+     * The default unit is NewtonMetersPerRadian
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = RotationalStiffnessUnits.NewtonMetersPerRadian) {
         this.newtonmetersperradianLazy = null;
         this.kilonewtonmetersperradianLazy = null;
         this.meganewtonmetersperradianLazy = null;
@@ -26,8 +27,8 @@ class RotationalStiffness {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of RotationalStiffness is NewtonMeterPerRadian.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RotationalStiffness is NewtonMetersPerRadian.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -118,13 +119,81 @@ class RotationalStiffness {
             case RotationalStiffnessUnits.NewtonMetersPerRadian:
                 return this.NewtonMetersPerRadian + ` N·m/rad`;
             case RotationalStiffnessUnits.KilonewtonMetersPerRadian:
-                return this.KilonewtonMetersPerRadian + ` N·m/rad`;
+                return this.KilonewtonMetersPerRadian + ` `;
             case RotationalStiffnessUnits.MeganewtonMetersPerRadian:
-                return this.MeganewtonMetersPerRadian + ` N·m/rad`;
+                return this.MeganewtonMetersPerRadian + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given RotationalStiffness are equals to the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns True if the given RotationalStiffness are equal to the current RotationalStiffness.
+     */
+    equals(rotationalStiffness) {
+        return this.value === rotationalStiffness.BaseValue;
+    }
+    /**
+     * Compare the given RotationalStiffness against the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns 0 if they are equal, -1 if the current RotationalStiffness is less then other, 1 if the current RotationalStiffness is greater then other.
+     */
+    compareTo(rotationalStiffness) {
+        if (this.value > rotationalStiffness.BaseValue)
+            return 1;
+        if (this.value < rotationalStiffness.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    add(rotationalStiffness) {
+        return new RotationalStiffness(this.value + rotationalStiffness.BaseValue);
+    }
+    /**
+     * Subtract the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    subtract(rotationalStiffness) {
+        return new RotationalStiffness(this.value - rotationalStiffness.BaseValue);
+    }
+    /**
+     * Multiply the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    multiply(rotationalStiffness) {
+        return new RotationalStiffness(this.value * rotationalStiffness.BaseValue);
+    }
+    /**
+     * Divide the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    divide(rotationalStiffness) {
+        return new RotationalStiffness(this.value / rotationalStiffness.BaseValue);
+    }
+    /**
+     * Modulo the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    modulo(rotationalStiffness) {
+        return new RotationalStiffness(this.value % rotationalStiffness.BaseValue);
+    }
+    /**
+     * Pow the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    pow(rotationalStiffness) {
+        return new RotationalStiffness(this.value ** rotationalStiffness.BaseValue);
     }
 }
 exports.RotationalStiffness = RotationalStiffness;

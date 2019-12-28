@@ -29,11 +29,12 @@ export declare class Molarity {
      * Create a new Molarity.
      * @param value The value.
      * @param fromUnit The ‘Molarity’ unit to create from.
+     * The default unit is MolesPerCubicMeter
      */
-    constructor(value: number, fromUnit: MolarityUnits);
+    constructor(value: number, fromUnit?: MolarityUnits);
     /**
      * The base value of Molarity is MolesPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -109,5 +110,53 @@ export declare class Molarity {
      * @returns The string format of the Molarity.
      */
     toString(toUnit?: MolarityUnits): string;
+    /**
+     * Check if the given Molarity are equals to the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns True if the given Molarity are equal to the current Molarity.
+     */
+    equals(molarity: Molarity): boolean;
+    /**
+     * Compare the given Molarity against the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns 0 if they are equal, -1 if the current Molarity is less then other, 1 if the current Molarity is greater then other.
+     */
+    compareTo(molarity: Molarity): number;
+    /**
+     * Add the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    add(molarity: Molarity): Molarity;
+    /**
+     * Subtract the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    subtract(molarity: Molarity): Molarity;
+    /**
+     * Multiply the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    multiply(molarity: Molarity): Molarity;
+    /**
+     * Divide the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    divide(molarity: Molarity): Molarity;
+    /**
+     * Modulo the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    modulo(molarity: Molarity): Molarity;
+    /**
+     * Pow the given Molarity with the current Molarity.
+     * @param molarity The other Molarity.
+     * @returns A new Molarity instance with the results.
+     */
+    pow(molarity: Molarity): Molarity;
 }
 //# sourceMappingURL=molarity.g.d.ts.map

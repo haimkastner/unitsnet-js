@@ -101,11 +101,12 @@ export declare class MassFlow {
      * Create a new MassFlow.
      * @param value The value.
      * @param fromUnit The ‘MassFlow’ unit to create from.
+     * The default unit is GramsPerSecond
      */
-    constructor(value: number, fromUnit: MassFlowUnits);
+    constructor(value: number, fromUnit?: MassFlowUnits);
     /**
-     * The base value of MassFlow is GramPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassFlow is GramsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -397,5 +398,53 @@ export declare class MassFlow {
      * @returns The string format of the MassFlow.
      */
     toString(toUnit?: MassFlowUnits): string;
+    /**
+     * Check if the given MassFlow are equals to the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns True if the given MassFlow are equal to the current MassFlow.
+     */
+    equals(massFlow: MassFlow): boolean;
+    /**
+     * Compare the given MassFlow against the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns 0 if they are equal, -1 if the current MassFlow is less then other, 1 if the current MassFlow is greater then other.
+     */
+    compareTo(massFlow: MassFlow): number;
+    /**
+     * Add the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    add(massFlow: MassFlow): MassFlow;
+    /**
+     * Subtract the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    subtract(massFlow: MassFlow): MassFlow;
+    /**
+     * Multiply the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    multiply(massFlow: MassFlow): MassFlow;
+    /**
+     * Divide the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    divide(massFlow: MassFlow): MassFlow;
+    /**
+     * Modulo the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    modulo(massFlow: MassFlow): MassFlow;
+    /**
+     * Pow the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    pow(massFlow: MassFlow): MassFlow;
 }
 //# sourceMappingURL=massflow.g.d.ts.map

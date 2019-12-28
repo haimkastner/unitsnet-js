@@ -28,16 +28,17 @@ export class Irradiation {
      * Create a new Irradiation.
      * @param value The value.
      * @param fromUnit The ‘Irradiation’ unit to create from.
+     * The default unit is JoulesPerSquareMeter
      */
-    public constructor(value: number, fromUnit: IrradiationUnits) {
+    public constructor(value: number, fromUnit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Irradiation is JoulePerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Irradiation is JoulesPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -213,12 +214,89 @@ export class Irradiation {
             case IrradiationUnits.WattHoursPerSquareMeter:
                 return this.WattHoursPerSquareMeter + ` Wh/m²`;
             case IrradiationUnits.KilojoulesPerSquareMeter:
-                return this.KilojoulesPerSquareMeter + ` J/m²`;
+                return this.KilojoulesPerSquareMeter + ` `;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
-                return this.KilowattHoursPerSquareMeter + ` Wh/m²`;
+                return this.KilowattHoursPerSquareMeter + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Irradiation are equals to the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns True if the given Irradiation are equal to the current Irradiation.
+     */
+    public equals(irradiation: Irradiation): boolean {
+        return this.value === irradiation.BaseValue;
+    }
+
+    /**
+     * Compare the given Irradiation against the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns 0 if they are equal, -1 if the current Irradiation is less then other, 1 if the current Irradiation is greater then other.
+     */
+    public compareTo(irradiation: Irradiation): number {
+
+        if (this.value > irradiation.BaseValue)
+            return 1;
+        if (this.value < irradiation.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    public add(irradiation: Irradiation): Irradiation {
+        return new Irradiation(this.value + irradiation.BaseValue)
+    }
+
+    /**
+     * Subtract the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    public subtract(irradiation: Irradiation): Irradiation {
+        return new Irradiation(this.value - irradiation.BaseValue)
+    }
+
+    /**
+     * Multiply the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    public multiply(irradiation: Irradiation): Irradiation {
+        return new Irradiation(this.value * irradiation.BaseValue)
+    }
+
+    /**
+     * Divide the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    public divide(irradiation: Irradiation): Irradiation {
+        return new Irradiation(this.value / irradiation.BaseValue)
+    }
+
+    /**
+     * Modulo the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    public modulo(irradiation: Irradiation): Irradiation {
+        return new Irradiation(this.value % irradiation.BaseValue)
+    }
+
+    /**
+     * Pow the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    public pow(irradiation: Irradiation): Irradiation {
+        return new Irradiation(this.value ** irradiation.BaseValue)
     }
 }

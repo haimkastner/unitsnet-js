@@ -14,8 +14,9 @@ class PowerRatio {
      * Create a new PowerRatio.
      * @param value The value.
      * @param fromUnit The ‘PowerRatio’ unit to create from.
+     * The default unit is DecibelWatts
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = PowerRatioUnits.DecibelWatts) {
         this.decibelwattsLazy = null;
         this.decibelmilliwattsLazy = null;
         if (isNaN(value))
@@ -23,8 +24,8 @@ class PowerRatio {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of PowerRatio is DecibelWatt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of PowerRatio is DecibelWatts.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -100,6 +101,74 @@ class PowerRatio {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given PowerRatio are equals to the current PowerRatio.
+     * @param powerRatio The other PowerRatio.
+     * @returns True if the given PowerRatio are equal to the current PowerRatio.
+     */
+    equals(powerRatio) {
+        return this.value === powerRatio.BaseValue;
+    }
+    /**
+     * Compare the given PowerRatio against the current PowerRatio.
+     * @param powerRatio The other PowerRatio.
+     * @returns 0 if they are equal, -1 if the current PowerRatio is less then other, 1 if the current PowerRatio is greater then other.
+     */
+    compareTo(powerRatio) {
+        if (this.value > powerRatio.BaseValue)
+            return 1;
+        if (this.value < powerRatio.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given PowerRatio with the current PowerRatio.
+     * @param powerRatio The other PowerRatio.
+     * @returns A new PowerRatio instance with the results.
+     */
+    add(powerRatio) {
+        return new PowerRatio(this.value + powerRatio.BaseValue);
+    }
+    /**
+     * Subtract the given PowerRatio with the current PowerRatio.
+     * @param powerRatio The other PowerRatio.
+     * @returns A new PowerRatio instance with the results.
+     */
+    subtract(powerRatio) {
+        return new PowerRatio(this.value - powerRatio.BaseValue);
+    }
+    /**
+     * Multiply the given PowerRatio with the current PowerRatio.
+     * @param powerRatio The other PowerRatio.
+     * @returns A new PowerRatio instance with the results.
+     */
+    multiply(powerRatio) {
+        return new PowerRatio(this.value * powerRatio.BaseValue);
+    }
+    /**
+     * Divide the given PowerRatio with the current PowerRatio.
+     * @param powerRatio The other PowerRatio.
+     * @returns A new PowerRatio instance with the results.
+     */
+    divide(powerRatio) {
+        return new PowerRatio(this.value / powerRatio.BaseValue);
+    }
+    /**
+     * Modulo the given PowerRatio with the current PowerRatio.
+     * @param powerRatio The other PowerRatio.
+     * @returns A new PowerRatio instance with the results.
+     */
+    modulo(powerRatio) {
+        return new PowerRatio(this.value % powerRatio.BaseValue);
+    }
+    /**
+     * Pow the given PowerRatio with the current PowerRatio.
+     * @param powerRatio The other PowerRatio.
+     * @returns A new PowerRatio instance with the results.
+     */
+    pow(powerRatio) {
+        return new PowerRatio(this.value ** powerRatio.BaseValue);
     }
 }
 exports.PowerRatio = PowerRatio;

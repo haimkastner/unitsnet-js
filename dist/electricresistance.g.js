@@ -18,8 +18,9 @@ class ElectricResistance {
      * Create a new ElectricResistance.
      * @param value The value.
      * @param fromUnit The ‘ElectricResistance’ unit to create from.
+     * The default unit is Ohms
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ElectricResistanceUnits.Ohms) {
         this.ohmsLazy = null;
         this.kiloohmsLazy = null;
         this.megaohmsLazy = null;
@@ -29,8 +30,8 @@ class ElectricResistance {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ElectricResistance is Ohm.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricResistance is Ohms.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -141,15 +142,83 @@ class ElectricResistance {
             case ElectricResistanceUnits.Ohms:
                 return this.Ohms + ` Ω`;
             case ElectricResistanceUnits.Kiloohms:
-                return this.Kiloohms + ` Ω`;
+                return this.Kiloohms + ` `;
             case ElectricResistanceUnits.Megaohms:
-                return this.Megaohms + ` Ω`;
+                return this.Megaohms + ` `;
             case ElectricResistanceUnits.Gigaohms:
-                return this.Gigaohms + ` Ω`;
+                return this.Gigaohms + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ElectricResistance are equals to the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns True if the given ElectricResistance are equal to the current ElectricResistance.
+     */
+    equals(electricResistance) {
+        return this.value === electricResistance.BaseValue;
+    }
+    /**
+     * Compare the given ElectricResistance against the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns 0 if they are equal, -1 if the current ElectricResistance is less then other, 1 if the current ElectricResistance is greater then other.
+     */
+    compareTo(electricResistance) {
+        if (this.value > electricResistance.BaseValue)
+            return 1;
+        if (this.value < electricResistance.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    add(electricResistance) {
+        return new ElectricResistance(this.value + electricResistance.BaseValue);
+    }
+    /**
+     * Subtract the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    subtract(electricResistance) {
+        return new ElectricResistance(this.value - electricResistance.BaseValue);
+    }
+    /**
+     * Multiply the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    multiply(electricResistance) {
+        return new ElectricResistance(this.value * electricResistance.BaseValue);
+    }
+    /**
+     * Divide the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    divide(electricResistance) {
+        return new ElectricResistance(this.value / electricResistance.BaseValue);
+    }
+    /**
+     * Modulo the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    modulo(electricResistance) {
+        return new ElectricResistance(this.value % electricResistance.BaseValue);
+    }
+    /**
+     * Pow the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    pow(electricResistance) {
+        return new ElectricResistance(this.value ** electricResistance.BaseValue);
     }
 }
 exports.ElectricResistance = ElectricResistance;

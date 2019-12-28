@@ -19,16 +19,17 @@ export class LinearDensity {
      * Create a new LinearDensity.
      * @param value The value.
      * @param fromUnit The ‘LinearDensity’ unit to create from.
+     * The default unit is KilogramsPerMeter
      */
-    public constructor(value: number, fromUnit: LinearDensityUnits) {
+    public constructor(value: number, fromUnit: LinearDensityUnits = LinearDensityUnits.KilogramsPerMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of LinearDensity is KilogramPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of LinearDensity is KilogramsPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -134,10 +135,87 @@ export class LinearDensity {
             case LinearDensityUnits.PoundsPerFoot:
                 return this.PoundsPerFoot + ` lb/ft`;
             case LinearDensityUnits.KilogramsPerMeter:
-                return this.KilogramsPerMeter + ` g/m`;
+                return this.KilogramsPerMeter + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given LinearDensity are equals to the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns True if the given LinearDensity are equal to the current LinearDensity.
+     */
+    public equals(linearDensity: LinearDensity): boolean {
+        return this.value === linearDensity.BaseValue;
+    }
+
+    /**
+     * Compare the given LinearDensity against the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns 0 if they are equal, -1 if the current LinearDensity is less then other, 1 if the current LinearDensity is greater then other.
+     */
+    public compareTo(linearDensity: LinearDensity): number {
+
+        if (this.value > linearDensity.BaseValue)
+            return 1;
+        if (this.value < linearDensity.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    public add(linearDensity: LinearDensity): LinearDensity {
+        return new LinearDensity(this.value + linearDensity.BaseValue)
+    }
+
+    /**
+     * Subtract the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    public subtract(linearDensity: LinearDensity): LinearDensity {
+        return new LinearDensity(this.value - linearDensity.BaseValue)
+    }
+
+    /**
+     * Multiply the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    public multiply(linearDensity: LinearDensity): LinearDensity {
+        return new LinearDensity(this.value * linearDensity.BaseValue)
+    }
+
+    /**
+     * Divide the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    public divide(linearDensity: LinearDensity): LinearDensity {
+        return new LinearDensity(this.value / linearDensity.BaseValue)
+    }
+
+    /**
+     * Modulo the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    public modulo(linearDensity: LinearDensity): LinearDensity {
+        return new LinearDensity(this.value % linearDensity.BaseValue)
+    }
+
+    /**
+     * Pow the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    public pow(linearDensity: LinearDensity): LinearDensity {
+        return new LinearDensity(this.value ** linearDensity.BaseValue)
     }
 }

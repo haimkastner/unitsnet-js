@@ -26,8 +26,9 @@ class DynamicViscosity {
      * Create a new DynamicViscosity.
      * @param value The value.
      * @param fromUnit The ‘DynamicViscosity’ unit to create from.
+     * The default unit is NewtonSecondsPerMeterSquared
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = DynamicViscosityUnits.NewtonSecondsPerMeterSquared) {
         this.newtonsecondspermetersquaredLazy = null;
         this.pascalsecondsLazy = null;
         this.poiseLazy = null;
@@ -41,8 +42,8 @@ class DynamicViscosity {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of DynamicViscosity is NewtonSecondPerMeterSquared.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of DynamicViscosity is NewtonSecondsPerMeterSquared.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -243,13 +244,81 @@ class DynamicViscosity {
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return this.PoundsForceSecondPerSquareFoot + ` lbf·s/ft²`;
             case DynamicViscosityUnits.MicropascalSeconds:
-                return this.MicropascalSeconds + ` Pa·s`;
+                return this.MicropascalSeconds + ` `;
             case DynamicViscosityUnits.Centipoise:
-                return this.Centipoise + ` P`;
+                return this.Centipoise + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given DynamicViscosity are equals to the current DynamicViscosity.
+     * @param dynamicViscosity The other DynamicViscosity.
+     * @returns True if the given DynamicViscosity are equal to the current DynamicViscosity.
+     */
+    equals(dynamicViscosity) {
+        return this.value === dynamicViscosity.BaseValue;
+    }
+    /**
+     * Compare the given DynamicViscosity against the current DynamicViscosity.
+     * @param dynamicViscosity The other DynamicViscosity.
+     * @returns 0 if they are equal, -1 if the current DynamicViscosity is less then other, 1 if the current DynamicViscosity is greater then other.
+     */
+    compareTo(dynamicViscosity) {
+        if (this.value > dynamicViscosity.BaseValue)
+            return 1;
+        if (this.value < dynamicViscosity.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given DynamicViscosity with the current DynamicViscosity.
+     * @param dynamicViscosity The other DynamicViscosity.
+     * @returns A new DynamicViscosity instance with the results.
+     */
+    add(dynamicViscosity) {
+        return new DynamicViscosity(this.value + dynamicViscosity.BaseValue);
+    }
+    /**
+     * Subtract the given DynamicViscosity with the current DynamicViscosity.
+     * @param dynamicViscosity The other DynamicViscosity.
+     * @returns A new DynamicViscosity instance with the results.
+     */
+    subtract(dynamicViscosity) {
+        return new DynamicViscosity(this.value - dynamicViscosity.BaseValue);
+    }
+    /**
+     * Multiply the given DynamicViscosity with the current DynamicViscosity.
+     * @param dynamicViscosity The other DynamicViscosity.
+     * @returns A new DynamicViscosity instance with the results.
+     */
+    multiply(dynamicViscosity) {
+        return new DynamicViscosity(this.value * dynamicViscosity.BaseValue);
+    }
+    /**
+     * Divide the given DynamicViscosity with the current DynamicViscosity.
+     * @param dynamicViscosity The other DynamicViscosity.
+     * @returns A new DynamicViscosity instance with the results.
+     */
+    divide(dynamicViscosity) {
+        return new DynamicViscosity(this.value / dynamicViscosity.BaseValue);
+    }
+    /**
+     * Modulo the given DynamicViscosity with the current DynamicViscosity.
+     * @param dynamicViscosity The other DynamicViscosity.
+     * @returns A new DynamicViscosity instance with the results.
+     */
+    modulo(dynamicViscosity) {
+        return new DynamicViscosity(this.value % dynamicViscosity.BaseValue);
+    }
+    /**
+     * Pow the given DynamicViscosity with the current DynamicViscosity.
+     * @param dynamicViscosity The other DynamicViscosity.
+     * @returns A new DynamicViscosity instance with the results.
+     */
+    pow(dynamicViscosity) {
+        return new DynamicViscosity(this.value ** dynamicViscosity.BaseValue);
     }
 }
 exports.DynamicViscosity = DynamicViscosity;

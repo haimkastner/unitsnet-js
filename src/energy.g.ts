@@ -85,16 +85,17 @@ export class Energy {
      * Create a new Energy.
      * @param value The value.
      * @param fromUnit The ‘Energy’ unit to create from.
+     * The default unit is Joules
      */
-    public constructor(value: number, fromUnit: EnergyUnits) {
+    public constructor(value: number, fromUnit: EnergyUnits = EnergyUnits.Joules) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Energy is Joule.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Energy is Joules.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -700,38 +701,115 @@ export class Energy {
             case EnergyUnits.ThermsImperial:
                 return this.ThermsImperial + ` th (imp.)`;
             case EnergyUnits.Kilojoules:
-                return this.Kilojoules + ` J`;
+                return this.Kilojoules + ` `;
             case EnergyUnits.Megajoules:
-                return this.Megajoules + ` J`;
+                return this.Megajoules + ` `;
             case EnergyUnits.Gigajoules:
-                return this.Gigajoules + ` J`;
+                return this.Gigajoules + ` `;
             case EnergyUnits.Kilocalories:
-                return this.Kilocalories + ` cal`;
+                return this.Kilocalories + ` `;
             case EnergyUnits.Megacalories:
-                return this.Megacalories + ` cal`;
+                return this.Megacalories + ` `;
             case EnergyUnits.KilobritishThermalUnits:
-                return this.KilobritishThermalUnits + ` BTU`;
+                return this.KilobritishThermalUnits + ` `;
             case EnergyUnits.MegabritishThermalUnits:
-                return this.MegabritishThermalUnits + ` BTU`;
+                return this.MegabritishThermalUnits + ` `;
             case EnergyUnits.GigabritishThermalUnits:
-                return this.GigabritishThermalUnits + ` BTU`;
+                return this.GigabritishThermalUnits + ` `;
             case EnergyUnits.KilowattHours:
-                return this.KilowattHours + ` Wh`;
+                return this.KilowattHours + ` `;
             case EnergyUnits.MegawattHours:
-                return this.MegawattHours + ` Wh`;
+                return this.MegawattHours + ` `;
             case EnergyUnits.GigawattHours:
-                return this.GigawattHours + ` Wh`;
+                return this.GigawattHours + ` `;
             case EnergyUnits.TerawattHours:
-                return this.TerawattHours + ` Wh`;
+                return this.TerawattHours + ` `;
             case EnergyUnits.DecathermsEc:
-                return this.DecathermsEc + ` th (E.C.)`;
+                return this.DecathermsEc + ` `;
             case EnergyUnits.DecathermsUs:
-                return this.DecathermsUs + ` th (U.S.)`;
+                return this.DecathermsUs + ` `;
             case EnergyUnits.DecathermsImperial:
-                return this.DecathermsImperial + ` th (imp.)`;
+                return this.DecathermsImperial + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Energy are equals to the current Energy.
+     * @param energy The other Energy.
+     * @returns True if the given Energy are equal to the current Energy.
+     */
+    public equals(energy: Energy): boolean {
+        return this.value === energy.BaseValue;
+    }
+
+    /**
+     * Compare the given Energy against the current Energy.
+     * @param energy The other Energy.
+     * @returns 0 if they are equal, -1 if the current Energy is less then other, 1 if the current Energy is greater then other.
+     */
+    public compareTo(energy: Energy): number {
+
+        if (this.value > energy.BaseValue)
+            return 1;
+        if (this.value < energy.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    public add(energy: Energy): Energy {
+        return new Energy(this.value + energy.BaseValue)
+    }
+
+    /**
+     * Subtract the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    public subtract(energy: Energy): Energy {
+        return new Energy(this.value - energy.BaseValue)
+    }
+
+    /**
+     * Multiply the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    public multiply(energy: Energy): Energy {
+        return new Energy(this.value * energy.BaseValue)
+    }
+
+    /**
+     * Divide the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    public divide(energy: Energy): Energy {
+        return new Energy(this.value / energy.BaseValue)
+    }
+
+    /**
+     * Modulo the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    public modulo(energy: Energy): Energy {
+        return new Energy(this.value % energy.BaseValue)
+    }
+
+    /**
+     * Pow the given Energy with the current Energy.
+     * @param energy The other Energy.
+     * @returns A new Energy instance with the results.
+     */
+    public pow(energy: Energy): Energy {
+        return new Energy(this.value ** energy.BaseValue)
     }
 }

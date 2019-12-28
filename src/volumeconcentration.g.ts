@@ -64,16 +64,17 @@ export class VolumeConcentration {
      * Create a new VolumeConcentration.
      * @param value The value.
      * @param fromUnit The ‘VolumeConcentration’ unit to create from.
+     * The default unit is DecimalFractions
      */
-    public constructor(value: number, fromUnit: VolumeConcentrationUnits) {
+    public constructor(value: number, fromUnit: VolumeConcentrationUnits = VolumeConcentrationUnits.DecimalFractions) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of VolumeConcentration is DecimalFraction.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of VolumeConcentration is DecimalFractions.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -521,28 +522,105 @@ export class VolumeConcentration {
             case VolumeConcentrationUnits.PartsPerTrillion:
                 return this.PartsPerTrillion + ` ppt`;
             case VolumeConcentrationUnits.PicolitersPerLiter:
-                return this.PicolitersPerLiter + ` L/L`;
+                return this.PicolitersPerLiter + ` `;
             case VolumeConcentrationUnits.NanolitersPerLiter:
-                return this.NanolitersPerLiter + ` L/L`;
+                return this.NanolitersPerLiter + ` `;
             case VolumeConcentrationUnits.MicrolitersPerLiter:
-                return this.MicrolitersPerLiter + ` L/L`;
+                return this.MicrolitersPerLiter + ` `;
             case VolumeConcentrationUnits.CentilitersPerLiter:
-                return this.CentilitersPerLiter + ` L/L`;
+                return this.CentilitersPerLiter + ` `;
             case VolumeConcentrationUnits.DecilitersPerLiter:
-                return this.DecilitersPerLiter + ` L/L`;
+                return this.DecilitersPerLiter + ` `;
             case VolumeConcentrationUnits.PicolitersPerMililiter:
-                return this.PicolitersPerMililiter + ` L/mL`;
+                return this.PicolitersPerMililiter + ` `;
             case VolumeConcentrationUnits.NanolitersPerMililiter:
-                return this.NanolitersPerMililiter + ` L/mL`;
+                return this.NanolitersPerMililiter + ` `;
             case VolumeConcentrationUnits.MicrolitersPerMililiter:
-                return this.MicrolitersPerMililiter + ` L/mL`;
+                return this.MicrolitersPerMililiter + ` `;
             case VolumeConcentrationUnits.CentilitersPerMililiter:
-                return this.CentilitersPerMililiter + ` L/mL`;
+                return this.CentilitersPerMililiter + ` `;
             case VolumeConcentrationUnits.DecilitersPerMililiter:
-                return this.DecilitersPerMililiter + ` L/mL`;
+                return this.DecilitersPerMililiter + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given VolumeConcentration are equals to the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns True if the given VolumeConcentration are equal to the current VolumeConcentration.
+     */
+    public equals(volumeConcentration: VolumeConcentration): boolean {
+        return this.value === volumeConcentration.BaseValue;
+    }
+
+    /**
+     * Compare the given VolumeConcentration against the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns 0 if they are equal, -1 if the current VolumeConcentration is less then other, 1 if the current VolumeConcentration is greater then other.
+     */
+    public compareTo(volumeConcentration: VolumeConcentration): number {
+
+        if (this.value > volumeConcentration.BaseValue)
+            return 1;
+        if (this.value < volumeConcentration.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    public add(volumeConcentration: VolumeConcentration): VolumeConcentration {
+        return new VolumeConcentration(this.value + volumeConcentration.BaseValue)
+    }
+
+    /**
+     * Subtract the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    public subtract(volumeConcentration: VolumeConcentration): VolumeConcentration {
+        return new VolumeConcentration(this.value - volumeConcentration.BaseValue)
+    }
+
+    /**
+     * Multiply the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    public multiply(volumeConcentration: VolumeConcentration): VolumeConcentration {
+        return new VolumeConcentration(this.value * volumeConcentration.BaseValue)
+    }
+
+    /**
+     * Divide the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    public divide(volumeConcentration: VolumeConcentration): VolumeConcentration {
+        return new VolumeConcentration(this.value / volumeConcentration.BaseValue)
+    }
+
+    /**
+     * Modulo the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    public modulo(volumeConcentration: VolumeConcentration): VolumeConcentration {
+        return new VolumeConcentration(this.value % volumeConcentration.BaseValue)
+    }
+
+    /**
+     * Pow the given VolumeConcentration with the current VolumeConcentration.
+     * @param volumeConcentration The other VolumeConcentration.
+     * @returns A new VolumeConcentration instance with the results.
+     */
+    public pow(volumeConcentration: VolumeConcentration): VolumeConcentration {
+        return new VolumeConcentration(this.value ** volumeConcentration.BaseValue)
     }
 }

@@ -17,11 +17,12 @@ export declare class RotationalStiffness {
      * Create a new RotationalStiffness.
      * @param value The value.
      * @param fromUnit The ‘RotationalStiffness’ unit to create from.
+     * The default unit is NewtonMetersPerRadian
      */
-    constructor(value: number, fromUnit: RotationalStiffnessUnits);
+    constructor(value: number, fromUnit?: RotationalStiffnessUnits);
     /**
-     * The base value of RotationalStiffness is NewtonMeterPerRadian.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RotationalStiffness is NewtonMetersPerRadian.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class RotationalStiffness {
      * @returns The string format of the RotationalStiffness.
      */
     toString(toUnit?: RotationalStiffnessUnits): string;
+    /**
+     * Check if the given RotationalStiffness are equals to the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns True if the given RotationalStiffness are equal to the current RotationalStiffness.
+     */
+    equals(rotationalStiffness: RotationalStiffness): boolean;
+    /**
+     * Compare the given RotationalStiffness against the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns 0 if they are equal, -1 if the current RotationalStiffness is less then other, 1 if the current RotationalStiffness is greater then other.
+     */
+    compareTo(rotationalStiffness: RotationalStiffness): number;
+    /**
+     * Add the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    add(rotationalStiffness: RotationalStiffness): RotationalStiffness;
+    /**
+     * Subtract the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    subtract(rotationalStiffness: RotationalStiffness): RotationalStiffness;
+    /**
+     * Multiply the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    multiply(rotationalStiffness: RotationalStiffness): RotationalStiffness;
+    /**
+     * Divide the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    divide(rotationalStiffness: RotationalStiffness): RotationalStiffness;
+    /**
+     * Modulo the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    modulo(rotationalStiffness: RotationalStiffness): RotationalStiffness;
+    /**
+     * Pow the given RotationalStiffness with the current RotationalStiffness.
+     * @param rotationalStiffness The other RotationalStiffness.
+     * @returns A new RotationalStiffness instance with the results.
+     */
+    pow(rotationalStiffness: RotationalStiffness): RotationalStiffness;
 }
 //# sourceMappingURL=rotationalstiffness.g.d.ts.map

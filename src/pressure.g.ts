@@ -130,16 +130,17 @@ export class Pressure {
      * Create a new Pressure.
      * @param value The value.
      * @param fromUnit The ‘Pressure’ unit to create from.
+     * The default unit is Pascals
      */
-    public constructor(value: number, fromUnit: PressureUnits) {
+    public constructor(value: number, fromUnit: PressureUnits = PressureUnits.Pascals) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Pressure is Pascal.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Pressure is Pascals.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -1101,42 +1102,119 @@ export class Pressure {
             case PressureUnits.InchesOfWaterColumn:
                 return this.InchesOfWaterColumn + ` wc`;
             case PressureUnits.Micropascals:
-                return this.Micropascals + ` Pa`;
+                return this.Micropascals + ` `;
             case PressureUnits.Decapascals:
-                return this.Decapascals + ` Pa`;
+                return this.Decapascals + ` `;
             case PressureUnits.Hectopascals:
-                return this.Hectopascals + ` Pa`;
+                return this.Hectopascals + ` `;
             case PressureUnits.Kilopascals:
-                return this.Kilopascals + ` Pa`;
+                return this.Kilopascals + ` `;
             case PressureUnits.Megapascals:
-                return this.Megapascals + ` Pa`;
+                return this.Megapascals + ` `;
             case PressureUnits.Gigapascals:
-                return this.Gigapascals + ` Pa`;
+                return this.Gigapascals + ` `;
             case PressureUnits.Microbars:
-                return this.Microbars + ` bar`;
+                return this.Microbars + ` `;
             case PressureUnits.Centibars:
-                return this.Centibars + ` bar`;
+                return this.Centibars + ` `;
             case PressureUnits.Decibars:
-                return this.Decibars + ` bar`;
+                return this.Decibars + ` `;
             case PressureUnits.Kilobars:
-                return this.Kilobars + ` bar`;
+                return this.Kilobars + ` `;
             case PressureUnits.Megabars:
-                return this.Megabars + ` bar`;
+                return this.Megabars + ` `;
             case PressureUnits.KilonewtonsPerSquareMeter:
-                return this.KilonewtonsPerSquareMeter + ` N/m²`;
+                return this.KilonewtonsPerSquareMeter + ` `;
             case PressureUnits.MeganewtonsPerSquareMeter:
-                return this.MeganewtonsPerSquareMeter + ` N/m²`;
+                return this.MeganewtonsPerSquareMeter + ` `;
             case PressureUnits.KilonewtonsPerSquareCentimeter:
-                return this.KilonewtonsPerSquareCentimeter + ` N/cm²`;
+                return this.KilonewtonsPerSquareCentimeter + ` `;
             case PressureUnits.KilonewtonsPerSquareMillimeter:
-                return this.KilonewtonsPerSquareMillimeter + ` N/mm²`;
+                return this.KilonewtonsPerSquareMillimeter + ` `;
             case PressureUnits.KilopoundsForcePerSquareInch:
-                return this.KilopoundsForcePerSquareInch + ` psi`;
+                return this.KilopoundsForcePerSquareInch + ` `;
             case PressureUnits.KilopoundsForcePerSquareFoot:
-                return this.KilopoundsForcePerSquareFoot + ` lb/ft²`;
+                return this.KilopoundsForcePerSquareFoot + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Pressure are equals to the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns True if the given Pressure are equal to the current Pressure.
+     */
+    public equals(pressure: Pressure): boolean {
+        return this.value === pressure.BaseValue;
+    }
+
+    /**
+     * Compare the given Pressure against the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns 0 if they are equal, -1 if the current Pressure is less then other, 1 if the current Pressure is greater then other.
+     */
+    public compareTo(pressure: Pressure): number {
+
+        if (this.value > pressure.BaseValue)
+            return 1;
+        if (this.value < pressure.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    public add(pressure: Pressure): Pressure {
+        return new Pressure(this.value + pressure.BaseValue)
+    }
+
+    /**
+     * Subtract the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    public subtract(pressure: Pressure): Pressure {
+        return new Pressure(this.value - pressure.BaseValue)
+    }
+
+    /**
+     * Multiply the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    public multiply(pressure: Pressure): Pressure {
+        return new Pressure(this.value * pressure.BaseValue)
+    }
+
+    /**
+     * Divide the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    public divide(pressure: Pressure): Pressure {
+        return new Pressure(this.value / pressure.BaseValue)
+    }
+
+    /**
+     * Modulo the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    public modulo(pressure: Pressure): Pressure {
+        return new Pressure(this.value % pressure.BaseValue)
+    }
+
+    /**
+     * Pow the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    public pow(pressure: Pressure): Pressure {
+        return new Pressure(this.value ** pressure.BaseValue)
     }
 }

@@ -37,16 +37,17 @@ export class SpecificEnergy {
      * Create a new SpecificEnergy.
      * @param value The value.
      * @param fromUnit The ‘SpecificEnergy’ unit to create from.
+     * The default unit is JoulesPerKilogram
      */
-    public constructor(value: number, fromUnit: SpecificEnergyUnits) {
+    public constructor(value: number, fromUnit: SpecificEnergyUnits = SpecificEnergyUnits.JoulesPerKilogram) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of SpecificEnergy is JoulePerKilogram.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SpecificEnergy is JoulesPerKilogram.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -288,18 +289,95 @@ export class SpecificEnergy {
             case SpecificEnergyUnits.BtuPerPound:
                 return this.BtuPerPound + ` btu/lb`;
             case SpecificEnergyUnits.KilojoulesPerKilogram:
-                return this.KilojoulesPerKilogram + ` J/kg`;
+                return this.KilojoulesPerKilogram + ` `;
             case SpecificEnergyUnits.MegajoulesPerKilogram:
-                return this.MegajoulesPerKilogram + ` J/kg`;
+                return this.MegajoulesPerKilogram + ` `;
             case SpecificEnergyUnits.KilocaloriesPerGram:
-                return this.KilocaloriesPerGram + ` cal/g`;
+                return this.KilocaloriesPerGram + ` `;
             case SpecificEnergyUnits.KilowattHoursPerKilogram:
-                return this.KilowattHoursPerKilogram + ` Wh/kg`;
+                return this.KilowattHoursPerKilogram + ` `;
             case SpecificEnergyUnits.MegawattHoursPerKilogram:
-                return this.MegawattHoursPerKilogram + ` Wh/kg`;
+                return this.MegawattHoursPerKilogram + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given SpecificEnergy are equals to the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns True if the given SpecificEnergy are equal to the current SpecificEnergy.
+     */
+    public equals(specificEnergy: SpecificEnergy): boolean {
+        return this.value === specificEnergy.BaseValue;
+    }
+
+    /**
+     * Compare the given SpecificEnergy against the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns 0 if they are equal, -1 if the current SpecificEnergy is less then other, 1 if the current SpecificEnergy is greater then other.
+     */
+    public compareTo(specificEnergy: SpecificEnergy): number {
+
+        if (this.value > specificEnergy.BaseValue)
+            return 1;
+        if (this.value < specificEnergy.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    public add(specificEnergy: SpecificEnergy): SpecificEnergy {
+        return new SpecificEnergy(this.value + specificEnergy.BaseValue)
+    }
+
+    /**
+     * Subtract the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    public subtract(specificEnergy: SpecificEnergy): SpecificEnergy {
+        return new SpecificEnergy(this.value - specificEnergy.BaseValue)
+    }
+
+    /**
+     * Multiply the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    public multiply(specificEnergy: SpecificEnergy): SpecificEnergy {
+        return new SpecificEnergy(this.value * specificEnergy.BaseValue)
+    }
+
+    /**
+     * Divide the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    public divide(specificEnergy: SpecificEnergy): SpecificEnergy {
+        return new SpecificEnergy(this.value / specificEnergy.BaseValue)
+    }
+
+    /**
+     * Modulo the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    public modulo(specificEnergy: SpecificEnergy): SpecificEnergy {
+        return new SpecificEnergy(this.value % specificEnergy.BaseValue)
+    }
+
+    /**
+     * Pow the given SpecificEnergy with the current SpecificEnergy.
+     * @param specificEnergy The other SpecificEnergy.
+     * @returns A new SpecificEnergy instance with the results.
+     */
+    public pow(specificEnergy: SpecificEnergy): SpecificEnergy {
+        return new SpecificEnergy(this.value ** specificEnergy.BaseValue)
     }
 }

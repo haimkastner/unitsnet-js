@@ -73,16 +73,17 @@ export class TorquePerLength {
      * Create a new TorquePerLength.
      * @param value The value.
      * @param fromUnit The ‘TorquePerLength’ unit to create from.
+     * The default unit is NewtonMetersPerMeter
      */
-    public constructor(value: number, fromUnit: TorquePerLengthUnits) {
+    public constructor(value: number, fromUnit: TorquePerLengthUnits = TorquePerLengthUnits.NewtonMetersPerMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of TorquePerLength is NewtonMeterPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of TorquePerLength is NewtonMetersPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -602,28 +603,105 @@ export class TorquePerLength {
             case TorquePerLengthUnits.TonneForceMetersPerMeter:
                 return this.TonneForceMetersPerMeter + ` tf·m/m`;
             case TorquePerLengthUnits.KilonewtonMillimetersPerMeter:
-                return this.KilonewtonMillimetersPerMeter + ` N·mm/m`;
+                return this.KilonewtonMillimetersPerMeter + ` `;
             case TorquePerLengthUnits.MeganewtonMillimetersPerMeter:
-                return this.MeganewtonMillimetersPerMeter + ` N·mm/m`;
+                return this.MeganewtonMillimetersPerMeter + ` `;
             case TorquePerLengthUnits.KilonewtonCentimetersPerMeter:
-                return this.KilonewtonCentimetersPerMeter + ` N·cm/m`;
+                return this.KilonewtonCentimetersPerMeter + ` `;
             case TorquePerLengthUnits.MeganewtonCentimetersPerMeter:
-                return this.MeganewtonCentimetersPerMeter + ` N·cm/m`;
+                return this.MeganewtonCentimetersPerMeter + ` `;
             case TorquePerLengthUnits.KilonewtonMetersPerMeter:
-                return this.KilonewtonMetersPerMeter + ` N·m/m`;
+                return this.KilonewtonMetersPerMeter + ` `;
             case TorquePerLengthUnits.MeganewtonMetersPerMeter:
-                return this.MeganewtonMetersPerMeter + ` N·m/m`;
+                return this.MeganewtonMetersPerMeter + ` `;
             case TorquePerLengthUnits.KilopoundForceInchesPerFoot:
-                return this.KilopoundForceInchesPerFoot + ` lbf·in/ft`;
+                return this.KilopoundForceInchesPerFoot + ` `;
             case TorquePerLengthUnits.MegapoundForceInchesPerFoot:
-                return this.MegapoundForceInchesPerFoot + ` lbf·in/ft`;
+                return this.MegapoundForceInchesPerFoot + ` `;
             case TorquePerLengthUnits.KilopoundForceFeetPerFoot:
-                return this.KilopoundForceFeetPerFoot + ` lbf·ft/ft`;
+                return this.KilopoundForceFeetPerFoot + ` `;
             case TorquePerLengthUnits.MegapoundForceFeetPerFoot:
-                return this.MegapoundForceFeetPerFoot + ` lbf·ft/ft`;
+                return this.MegapoundForceFeetPerFoot + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given TorquePerLength are equals to the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns True if the given TorquePerLength are equal to the current TorquePerLength.
+     */
+    public equals(torquePerLength: TorquePerLength): boolean {
+        return this.value === torquePerLength.BaseValue;
+    }
+
+    /**
+     * Compare the given TorquePerLength against the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns 0 if they are equal, -1 if the current TorquePerLength is less then other, 1 if the current TorquePerLength is greater then other.
+     */
+    public compareTo(torquePerLength: TorquePerLength): number {
+
+        if (this.value > torquePerLength.BaseValue)
+            return 1;
+        if (this.value < torquePerLength.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    public add(torquePerLength: TorquePerLength): TorquePerLength {
+        return new TorquePerLength(this.value + torquePerLength.BaseValue)
+    }
+
+    /**
+     * Subtract the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    public subtract(torquePerLength: TorquePerLength): TorquePerLength {
+        return new TorquePerLength(this.value - torquePerLength.BaseValue)
+    }
+
+    /**
+     * Multiply the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    public multiply(torquePerLength: TorquePerLength): TorquePerLength {
+        return new TorquePerLength(this.value * torquePerLength.BaseValue)
+    }
+
+    /**
+     * Divide the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    public divide(torquePerLength: TorquePerLength): TorquePerLength {
+        return new TorquePerLength(this.value / torquePerLength.BaseValue)
+    }
+
+    /**
+     * Modulo the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    public modulo(torquePerLength: TorquePerLength): TorquePerLength {
+        return new TorquePerLength(this.value % torquePerLength.BaseValue)
+    }
+
+    /**
+     * Pow the given TorquePerLength with the current TorquePerLength.
+     * @param torquePerLength The other TorquePerLength.
+     * @returns A new TorquePerLength instance with the results.
+     */
+    public pow(torquePerLength: TorquePerLength): TorquePerLength {
+        return new TorquePerLength(this.value ** torquePerLength.BaseValue)
     }
 }

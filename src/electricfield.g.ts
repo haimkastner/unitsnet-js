@@ -13,16 +13,17 @@ export class ElectricField {
      * Create a new ElectricField.
      * @param value The value.
      * @param fromUnit The ‘ElectricField’ unit to create from.
+     * The default unit is VoltsPerMeter
      */
-    public constructor(value: number, fromUnit: ElectricFieldUnits) {
+    public constructor(value: number, fromUnit: ElectricFieldUnits = ElectricFieldUnits.VoltsPerMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of ElectricField is VoltPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricField is VoltsPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -85,5 +86,82 @@ export class ElectricField {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ElectricField are equals to the current ElectricField.
+     * @param electricField The other ElectricField.
+     * @returns True if the given ElectricField are equal to the current ElectricField.
+     */
+    public equals(electricField: ElectricField): boolean {
+        return this.value === electricField.BaseValue;
+    }
+
+    /**
+     * Compare the given ElectricField against the current ElectricField.
+     * @param electricField The other ElectricField.
+     * @returns 0 if they are equal, -1 if the current ElectricField is less then other, 1 if the current ElectricField is greater then other.
+     */
+    public compareTo(electricField: ElectricField): number {
+
+        if (this.value > electricField.BaseValue)
+            return 1;
+        if (this.value < electricField.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ElectricField with the current ElectricField.
+     * @param electricField The other ElectricField.
+     * @returns A new ElectricField instance with the results.
+     */
+    public add(electricField: ElectricField): ElectricField {
+        return new ElectricField(this.value + electricField.BaseValue)
+    }
+
+    /**
+     * Subtract the given ElectricField with the current ElectricField.
+     * @param electricField The other ElectricField.
+     * @returns A new ElectricField instance with the results.
+     */
+    public subtract(electricField: ElectricField): ElectricField {
+        return new ElectricField(this.value - electricField.BaseValue)
+    }
+
+    /**
+     * Multiply the given ElectricField with the current ElectricField.
+     * @param electricField The other ElectricField.
+     * @returns A new ElectricField instance with the results.
+     */
+    public multiply(electricField: ElectricField): ElectricField {
+        return new ElectricField(this.value * electricField.BaseValue)
+    }
+
+    /**
+     * Divide the given ElectricField with the current ElectricField.
+     * @param electricField The other ElectricField.
+     * @returns A new ElectricField instance with the results.
+     */
+    public divide(electricField: ElectricField): ElectricField {
+        return new ElectricField(this.value / electricField.BaseValue)
+    }
+
+    /**
+     * Modulo the given ElectricField with the current ElectricField.
+     * @param electricField The other ElectricField.
+     * @returns A new ElectricField instance with the results.
+     */
+    public modulo(electricField: ElectricField): ElectricField {
+        return new ElectricField(this.value % electricField.BaseValue)
+    }
+
+    /**
+     * Pow the given ElectricField with the current ElectricField.
+     * @param electricField The other ElectricField.
+     * @returns A new ElectricField instance with the results.
+     */
+    public pow(electricField: ElectricField): ElectricField {
+        return new ElectricField(this.value ** electricField.BaseValue)
     }
 }

@@ -16,16 +16,17 @@ export class RatioChangeRate {
      * Create a new RatioChangeRate.
      * @param value The value.
      * @param fromUnit The ‘RatioChangeRate’ unit to create from.
+     * The default unit is DecimalFractionsPerSecond
      */
-    public constructor(value: number, fromUnit: RatioChangeRateUnits) {
+    public constructor(value: number, fromUnit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of RatioChangeRate is DecimalFractionPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RatioChangeRate is DecimalFractionsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -112,5 +113,82 @@ export class RatioChangeRate {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given RatioChangeRate are equals to the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns True if the given RatioChangeRate are equal to the current RatioChangeRate.
+     */
+    public equals(ratioChangeRate: RatioChangeRate): boolean {
+        return this.value === ratioChangeRate.BaseValue;
+    }
+
+    /**
+     * Compare the given RatioChangeRate against the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns 0 if they are equal, -1 if the current RatioChangeRate is less then other, 1 if the current RatioChangeRate is greater then other.
+     */
+    public compareTo(ratioChangeRate: RatioChangeRate): number {
+
+        if (this.value > ratioChangeRate.BaseValue)
+            return 1;
+        if (this.value < ratioChangeRate.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    public add(ratioChangeRate: RatioChangeRate): RatioChangeRate {
+        return new RatioChangeRate(this.value + ratioChangeRate.BaseValue)
+    }
+
+    /**
+     * Subtract the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    public subtract(ratioChangeRate: RatioChangeRate): RatioChangeRate {
+        return new RatioChangeRate(this.value - ratioChangeRate.BaseValue)
+    }
+
+    /**
+     * Multiply the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    public multiply(ratioChangeRate: RatioChangeRate): RatioChangeRate {
+        return new RatioChangeRate(this.value * ratioChangeRate.BaseValue)
+    }
+
+    /**
+     * Divide the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    public divide(ratioChangeRate: RatioChangeRate): RatioChangeRate {
+        return new RatioChangeRate(this.value / ratioChangeRate.BaseValue)
+    }
+
+    /**
+     * Modulo the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    public modulo(ratioChangeRate: RatioChangeRate): RatioChangeRate {
+        return new RatioChangeRate(this.value % ratioChangeRate.BaseValue)
+    }
+
+    /**
+     * Pow the given RatioChangeRate with the current RatioChangeRate.
+     * @param ratioChangeRate The other RatioChangeRate.
+     * @returns A new RatioChangeRate instance with the results.
+     */
+    public pow(ratioChangeRate: RatioChangeRate): RatioChangeRate {
+        return new RatioChangeRate(this.value ** ratioChangeRate.BaseValue)
     }
 }

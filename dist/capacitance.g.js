@@ -22,8 +22,9 @@ class Capacitance {
      * Create a new Capacitance.
      * @param value The value.
      * @param fromUnit The ‘Capacitance’ unit to create from.
+     * The default unit is Farads
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = CapacitanceUnits.Farads) {
         this.faradsLazy = null;
         this.picofaradsLazy = null;
         this.nanofaradsLazy = null;
@@ -35,8 +36,8 @@ class Capacitance {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Capacitance is Farad.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Capacitance is Farads.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -187,19 +188,87 @@ class Capacitance {
             case CapacitanceUnits.Farads:
                 return this.Farads + ` F`;
             case CapacitanceUnits.Picofarads:
-                return this.Picofarads + ` F`;
+                return this.Picofarads + ` `;
             case CapacitanceUnits.Nanofarads:
-                return this.Nanofarads + ` F`;
+                return this.Nanofarads + ` `;
             case CapacitanceUnits.Microfarads:
-                return this.Microfarads + ` F`;
+                return this.Microfarads + ` `;
             case CapacitanceUnits.Kilofarads:
-                return this.Kilofarads + ` F`;
+                return this.Kilofarads + ` `;
             case CapacitanceUnits.Megafarads:
-                return this.Megafarads + ` F`;
+                return this.Megafarads + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Capacitance are equals to the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns True if the given Capacitance are equal to the current Capacitance.
+     */
+    equals(capacitance) {
+        return this.value === capacitance.BaseValue;
+    }
+    /**
+     * Compare the given Capacitance against the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns 0 if they are equal, -1 if the current Capacitance is less then other, 1 if the current Capacitance is greater then other.
+     */
+    compareTo(capacitance) {
+        if (this.value > capacitance.BaseValue)
+            return 1;
+        if (this.value < capacitance.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    add(capacitance) {
+        return new Capacitance(this.value + capacitance.BaseValue);
+    }
+    /**
+     * Subtract the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    subtract(capacitance) {
+        return new Capacitance(this.value - capacitance.BaseValue);
+    }
+    /**
+     * Multiply the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    multiply(capacitance) {
+        return new Capacitance(this.value * capacitance.BaseValue);
+    }
+    /**
+     * Divide the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    divide(capacitance) {
+        return new Capacitance(this.value / capacitance.BaseValue);
+    }
+    /**
+     * Modulo the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    modulo(capacitance) {
+        return new Capacitance(this.value % capacitance.BaseValue);
+    }
+    /**
+     * Pow the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    pow(capacitance) {
+        return new Capacitance(this.value ** capacitance.BaseValue);
     }
 }
 exports.Capacitance = Capacitance;

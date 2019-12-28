@@ -47,11 +47,12 @@ export declare class AmountOfSubstance {
      * Create a new AmountOfSubstance.
      * @param value The value.
      * @param fromUnit The ‘AmountOfSubstance’ unit to create from.
+     * The default unit is Moles
      */
-    constructor(value: number, fromUnit: AmountOfSubstanceUnits);
+    constructor(value: number, fromUnit?: AmountOfSubstanceUnits);
     /**
-     * The base value of AmountOfSubstance is Mole.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of AmountOfSubstance is Moles.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -181,5 +182,53 @@ export declare class AmountOfSubstance {
      * @returns The string format of the AmountOfSubstance.
      */
     toString(toUnit?: AmountOfSubstanceUnits): string;
+    /**
+     * Check if the given AmountOfSubstance are equals to the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns True if the given AmountOfSubstance are equal to the current AmountOfSubstance.
+     */
+    equals(amountOfSubstance: AmountOfSubstance): boolean;
+    /**
+     * Compare the given AmountOfSubstance against the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns 0 if they are equal, -1 if the current AmountOfSubstance is less then other, 1 if the current AmountOfSubstance is greater then other.
+     */
+    compareTo(amountOfSubstance: AmountOfSubstance): number;
+    /**
+     * Add the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    add(amountOfSubstance: AmountOfSubstance): AmountOfSubstance;
+    /**
+     * Subtract the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    subtract(amountOfSubstance: AmountOfSubstance): AmountOfSubstance;
+    /**
+     * Multiply the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    multiply(amountOfSubstance: AmountOfSubstance): AmountOfSubstance;
+    /**
+     * Divide the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    divide(amountOfSubstance: AmountOfSubstance): AmountOfSubstance;
+    /**
+     * Modulo the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    modulo(amountOfSubstance: AmountOfSubstance): AmountOfSubstance;
+    /**
+     * Pow the given AmountOfSubstance with the current AmountOfSubstance.
+     * @param amountOfSubstance The other AmountOfSubstance.
+     * @returns A new AmountOfSubstance instance with the results.
+     */
+    pow(amountOfSubstance: AmountOfSubstance): AmountOfSubstance;
 }
 //# sourceMappingURL=amountofsubstance.g.d.ts.map

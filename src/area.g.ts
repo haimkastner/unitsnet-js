@@ -52,16 +52,17 @@ export class Area {
      * Create a new Area.
      * @param value The value.
      * @param fromUnit The ‘Area’ unit to create from.
+     * The default unit is SquareMeters
      */
-    public constructor(value: number, fromUnit: AreaUnits) {
+    public constructor(value: number, fromUnit: AreaUnits = AreaUnits.SquareMeters) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of Area is SquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Area is SquareMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -436,5 +437,82 @@ export class Area {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Area are equals to the current Area.
+     * @param area The other Area.
+     * @returns True if the given Area are equal to the current Area.
+     */
+    public equals(area: Area): boolean {
+        return this.value === area.BaseValue;
+    }
+
+    /**
+     * Compare the given Area against the current Area.
+     * @param area The other Area.
+     * @returns 0 if they are equal, -1 if the current Area is less then other, 1 if the current Area is greater then other.
+     */
+    public compareTo(area: Area): number {
+
+        if (this.value > area.BaseValue)
+            return 1;
+        if (this.value < area.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    public add(area: Area): Area {
+        return new Area(this.value + area.BaseValue)
+    }
+
+    /**
+     * Subtract the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    public subtract(area: Area): Area {
+        return new Area(this.value - area.BaseValue)
+    }
+
+    /**
+     * Multiply the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    public multiply(area: Area): Area {
+        return new Area(this.value * area.BaseValue)
+    }
+
+    /**
+     * Divide the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    public divide(area: Area): Area {
+        return new Area(this.value / area.BaseValue)
+    }
+
+    /**
+     * Modulo the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    public modulo(area: Area): Area {
+        return new Area(this.value % area.BaseValue)
+    }
+
+    /**
+     * Pow the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    public pow(area: Area): Area {
+        return new Area(this.value ** area.BaseValue)
     }
 }

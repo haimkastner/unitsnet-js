@@ -19,16 +19,17 @@ export class RotationalStiffnessPerLength {
      * Create a new RotationalStiffnessPerLength.
      * @param value The value.
      * @param fromUnit The ‘RotationalStiffnessPerLength’ unit to create from.
+     * The default unit is NewtonMetersPerRadianPerMeter
      */
-    public constructor(value: number, fromUnit: RotationalStiffnessPerLengthUnits) {
+    public constructor(value: number, fromUnit: RotationalStiffnessPerLengthUnits = RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of RotationalStiffnessPerLength is NewtonMeterPerRadianPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RotationalStiffnessPerLength is NewtonMetersPerRadianPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -132,12 +133,89 @@ export class RotationalStiffnessPerLength {
             case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
                 return this.NewtonMetersPerRadianPerMeter + ` N·m/rad/m`;
             case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
-                return this.KilonewtonMetersPerRadianPerMeter + ` N·m/rad/m`;
+                return this.KilonewtonMetersPerRadianPerMeter + ` `;
             case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
-                return this.MeganewtonMetersPerRadianPerMeter + ` N·m/rad/m`;
+                return this.MeganewtonMetersPerRadianPerMeter + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given RotationalStiffnessPerLength are equals to the current RotationalStiffnessPerLength.
+     * @param rotationalStiffnessPerLength The other RotationalStiffnessPerLength.
+     * @returns True if the given RotationalStiffnessPerLength are equal to the current RotationalStiffnessPerLength.
+     */
+    public equals(rotationalStiffnessPerLength: RotationalStiffnessPerLength): boolean {
+        return this.value === rotationalStiffnessPerLength.BaseValue;
+    }
+
+    /**
+     * Compare the given RotationalStiffnessPerLength against the current RotationalStiffnessPerLength.
+     * @param rotationalStiffnessPerLength The other RotationalStiffnessPerLength.
+     * @returns 0 if they are equal, -1 if the current RotationalStiffnessPerLength is less then other, 1 if the current RotationalStiffnessPerLength is greater then other.
+     */
+    public compareTo(rotationalStiffnessPerLength: RotationalStiffnessPerLength): number {
+
+        if (this.value > rotationalStiffnessPerLength.BaseValue)
+            return 1;
+        if (this.value < rotationalStiffnessPerLength.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given RotationalStiffnessPerLength with the current RotationalStiffnessPerLength.
+     * @param rotationalStiffnessPerLength The other RotationalStiffnessPerLength.
+     * @returns A new RotationalStiffnessPerLength instance with the results.
+     */
+    public add(rotationalStiffnessPerLength: RotationalStiffnessPerLength): RotationalStiffnessPerLength {
+        return new RotationalStiffnessPerLength(this.value + rotationalStiffnessPerLength.BaseValue)
+    }
+
+    /**
+     * Subtract the given RotationalStiffnessPerLength with the current RotationalStiffnessPerLength.
+     * @param rotationalStiffnessPerLength The other RotationalStiffnessPerLength.
+     * @returns A new RotationalStiffnessPerLength instance with the results.
+     */
+    public subtract(rotationalStiffnessPerLength: RotationalStiffnessPerLength): RotationalStiffnessPerLength {
+        return new RotationalStiffnessPerLength(this.value - rotationalStiffnessPerLength.BaseValue)
+    }
+
+    /**
+     * Multiply the given RotationalStiffnessPerLength with the current RotationalStiffnessPerLength.
+     * @param rotationalStiffnessPerLength The other RotationalStiffnessPerLength.
+     * @returns A new RotationalStiffnessPerLength instance with the results.
+     */
+    public multiply(rotationalStiffnessPerLength: RotationalStiffnessPerLength): RotationalStiffnessPerLength {
+        return new RotationalStiffnessPerLength(this.value * rotationalStiffnessPerLength.BaseValue)
+    }
+
+    /**
+     * Divide the given RotationalStiffnessPerLength with the current RotationalStiffnessPerLength.
+     * @param rotationalStiffnessPerLength The other RotationalStiffnessPerLength.
+     * @returns A new RotationalStiffnessPerLength instance with the results.
+     */
+    public divide(rotationalStiffnessPerLength: RotationalStiffnessPerLength): RotationalStiffnessPerLength {
+        return new RotationalStiffnessPerLength(this.value / rotationalStiffnessPerLength.BaseValue)
+    }
+
+    /**
+     * Modulo the given RotationalStiffnessPerLength with the current RotationalStiffnessPerLength.
+     * @param rotationalStiffnessPerLength The other RotationalStiffnessPerLength.
+     * @returns A new RotationalStiffnessPerLength instance with the results.
+     */
+    public modulo(rotationalStiffnessPerLength: RotationalStiffnessPerLength): RotationalStiffnessPerLength {
+        return new RotationalStiffnessPerLength(this.value % rotationalStiffnessPerLength.BaseValue)
+    }
+
+    /**
+     * Pow the given RotationalStiffnessPerLength with the current RotationalStiffnessPerLength.
+     * @param rotationalStiffnessPerLength The other RotationalStiffnessPerLength.
+     * @returns A new RotationalStiffnessPerLength instance with the results.
+     */
+    public pow(rotationalStiffnessPerLength: RotationalStiffnessPerLength): RotationalStiffnessPerLength {
+        return new RotationalStiffnessPerLength(this.value ** rotationalStiffnessPerLength.BaseValue)
     }
 }

@@ -71,11 +71,12 @@ export declare class Torque {
      * Create a new Torque.
      * @param value The value.
      * @param fromUnit The ‘Torque’ unit to create from.
+     * The default unit is NewtonMeters
      */
-    constructor(value: number, fromUnit: TorqueUnits);
+    constructor(value: number, fromUnit?: TorqueUnits);
     /**
-     * The base value of Torque is NewtonMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Torque is NewtonMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -277,5 +278,53 @@ export declare class Torque {
      * @returns The string format of the Torque.
      */
     toString(toUnit?: TorqueUnits): string;
+    /**
+     * Check if the given Torque are equals to the current Torque.
+     * @param torque The other Torque.
+     * @returns True if the given Torque are equal to the current Torque.
+     */
+    equals(torque: Torque): boolean;
+    /**
+     * Compare the given Torque against the current Torque.
+     * @param torque The other Torque.
+     * @returns 0 if they are equal, -1 if the current Torque is less then other, 1 if the current Torque is greater then other.
+     */
+    compareTo(torque: Torque): number;
+    /**
+     * Add the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    add(torque: Torque): Torque;
+    /**
+     * Subtract the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    subtract(torque: Torque): Torque;
+    /**
+     * Multiply the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    multiply(torque: Torque): Torque;
+    /**
+     * Divide the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    divide(torque: Torque): Torque;
+    /**
+     * Modulo the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    modulo(torque: Torque): Torque;
+    /**
+     * Pow the given Torque with the current Torque.
+     * @param torque The other Torque.
+     * @returns A new Torque instance with the results.
+     */
+    pow(torque: Torque): Torque;
 }
 //# sourceMappingURL=torque.g.d.ts.map

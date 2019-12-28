@@ -35,11 +35,12 @@ export declare class SpecificEntropy {
      * Create a new SpecificEntropy.
      * @param value The value.
      * @param fromUnit The ‘SpecificEntropy’ unit to create from.
+     * The default unit is JoulesPerKilogramKelvin
      */
-    constructor(value: number, fromUnit: SpecificEntropyUnits);
+    constructor(value: number, fromUnit?: SpecificEntropyUnits);
     /**
-     * The base value of SpecificEntropy is JoulePerKilogramKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SpecificEntropy is JoulesPerKilogramKelvin.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -133,5 +134,53 @@ export declare class SpecificEntropy {
      * @returns The string format of the SpecificEntropy.
      */
     toString(toUnit?: SpecificEntropyUnits): string;
+    /**
+     * Check if the given SpecificEntropy are equals to the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns True if the given SpecificEntropy are equal to the current SpecificEntropy.
+     */
+    equals(specificEntropy: SpecificEntropy): boolean;
+    /**
+     * Compare the given SpecificEntropy against the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns 0 if they are equal, -1 if the current SpecificEntropy is less then other, 1 if the current SpecificEntropy is greater then other.
+     */
+    compareTo(specificEntropy: SpecificEntropy): number;
+    /**
+     * Add the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    add(specificEntropy: SpecificEntropy): SpecificEntropy;
+    /**
+     * Subtract the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    subtract(specificEntropy: SpecificEntropy): SpecificEntropy;
+    /**
+     * Multiply the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    multiply(specificEntropy: SpecificEntropy): SpecificEntropy;
+    /**
+     * Divide the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    divide(specificEntropy: SpecificEntropy): SpecificEntropy;
+    /**
+     * Modulo the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    modulo(specificEntropy: SpecificEntropy): SpecificEntropy;
+    /**
+     * Pow the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    pow(specificEntropy: SpecificEntropy): SpecificEntropy;
 }
 //# sourceMappingURL=specificentropy.g.d.ts.map

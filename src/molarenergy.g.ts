@@ -19,16 +19,17 @@ export class MolarEnergy {
      * Create a new MolarEnergy.
      * @param value The value.
      * @param fromUnit The ‘MolarEnergy’ unit to create from.
+     * The default unit is JoulesPerMole
      */
-    public constructor(value: number, fromUnit: MolarEnergyUnits) {
+    public constructor(value: number, fromUnit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of MolarEnergy is JoulePerMole.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MolarEnergy is JoulesPerMole.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -132,12 +133,89 @@ export class MolarEnergy {
             case MolarEnergyUnits.JoulesPerMole:
                 return this.JoulesPerMole + ` J/mol`;
             case MolarEnergyUnits.KilojoulesPerMole:
-                return this.KilojoulesPerMole + ` J/mol`;
+                return this.KilojoulesPerMole + ` `;
             case MolarEnergyUnits.MegajoulesPerMole:
-                return this.MegajoulesPerMole + ` J/mol`;
+                return this.MegajoulesPerMole + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given MolarEnergy are equals to the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns True if the given MolarEnergy are equal to the current MolarEnergy.
+     */
+    public equals(molarEnergy: MolarEnergy): boolean {
+        return this.value === molarEnergy.BaseValue;
+    }
+
+    /**
+     * Compare the given MolarEnergy against the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns 0 if they are equal, -1 if the current MolarEnergy is less then other, 1 if the current MolarEnergy is greater then other.
+     */
+    public compareTo(molarEnergy: MolarEnergy): number {
+
+        if (this.value > molarEnergy.BaseValue)
+            return 1;
+        if (this.value < molarEnergy.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    public add(molarEnergy: MolarEnergy): MolarEnergy {
+        return new MolarEnergy(this.value + molarEnergy.BaseValue)
+    }
+
+    /**
+     * Subtract the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    public subtract(molarEnergy: MolarEnergy): MolarEnergy {
+        return new MolarEnergy(this.value - molarEnergy.BaseValue)
+    }
+
+    /**
+     * Multiply the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    public multiply(molarEnergy: MolarEnergy): MolarEnergy {
+        return new MolarEnergy(this.value * molarEnergy.BaseValue)
+    }
+
+    /**
+     * Divide the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    public divide(molarEnergy: MolarEnergy): MolarEnergy {
+        return new MolarEnergy(this.value / molarEnergy.BaseValue)
+    }
+
+    /**
+     * Modulo the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    public modulo(molarEnergy: MolarEnergy): MolarEnergy {
+        return new MolarEnergy(this.value % molarEnergy.BaseValue)
+    }
+
+    /**
+     * Pow the given MolarEnergy with the current MolarEnergy.
+     * @param molarEnergy The other MolarEnergy.
+     * @returns A new MolarEnergy instance with the results.
+     */
+    public pow(molarEnergy: MolarEnergy): MolarEnergy {
+        return new MolarEnergy(this.value ** molarEnergy.BaseValue)
     }
 }

@@ -11,11 +11,12 @@ export declare class ElectricChargeDensity {
      * Create a new ElectricChargeDensity.
      * @param value The value.
      * @param fromUnit The ‘ElectricChargeDensity’ unit to create from.
+     * The default unit is CoulombsPerCubicMeter
      */
-    constructor(value: number, fromUnit: ElectricChargeDensityUnits);
+    constructor(value: number, fromUnit?: ElectricChargeDensityUnits);
     /**
-     * The base value of ElectricChargeDensity is CoulombPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricChargeDensity is CoulombsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -37,5 +38,53 @@ export declare class ElectricChargeDensity {
      * @returns The string format of the ElectricChargeDensity.
      */
     toString(toUnit?: ElectricChargeDensityUnits): string;
+    /**
+     * Check if the given ElectricChargeDensity are equals to the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns True if the given ElectricChargeDensity are equal to the current ElectricChargeDensity.
+     */
+    equals(electricChargeDensity: ElectricChargeDensity): boolean;
+    /**
+     * Compare the given ElectricChargeDensity against the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns 0 if they are equal, -1 if the current ElectricChargeDensity is less then other, 1 if the current ElectricChargeDensity is greater then other.
+     */
+    compareTo(electricChargeDensity: ElectricChargeDensity): number;
+    /**
+     * Add the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    add(electricChargeDensity: ElectricChargeDensity): ElectricChargeDensity;
+    /**
+     * Subtract the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    subtract(electricChargeDensity: ElectricChargeDensity): ElectricChargeDensity;
+    /**
+     * Multiply the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    multiply(electricChargeDensity: ElectricChargeDensity): ElectricChargeDensity;
+    /**
+     * Divide the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    divide(electricChargeDensity: ElectricChargeDensity): ElectricChargeDensity;
+    /**
+     * Modulo the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    modulo(electricChargeDensity: ElectricChargeDensity): ElectricChargeDensity;
+    /**
+     * Pow the given ElectricChargeDensity with the current ElectricChargeDensity.
+     * @param electricChargeDensity The other ElectricChargeDensity.
+     * @returns A new ElectricChargeDensity instance with the results.
+     */
+    pow(electricChargeDensity: ElectricChargeDensity): ElectricChargeDensity;
 }
 //# sourceMappingURL=electricchargedensity.g.d.ts.map

@@ -12,16 +12,17 @@ class Permittivity {
      * Create a new Permittivity.
      * @param value The value.
      * @param fromUnit The ‘Permittivity’ unit to create from.
+     * The default unit is FaradsPerMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = PermittivityUnits.FaradsPerMeter) {
         this.faradspermeterLazy = null;
         if (isNaN(value))
             throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Permittivity is FaradPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Permittivity is FaradsPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -75,6 +76,74 @@ class Permittivity {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Permittivity are equals to the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns True if the given Permittivity are equal to the current Permittivity.
+     */
+    equals(permittivity) {
+        return this.value === permittivity.BaseValue;
+    }
+    /**
+     * Compare the given Permittivity against the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns 0 if they are equal, -1 if the current Permittivity is less then other, 1 if the current Permittivity is greater then other.
+     */
+    compareTo(permittivity) {
+        if (this.value > permittivity.BaseValue)
+            return 1;
+        if (this.value < permittivity.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    add(permittivity) {
+        return new Permittivity(this.value + permittivity.BaseValue);
+    }
+    /**
+     * Subtract the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    subtract(permittivity) {
+        return new Permittivity(this.value - permittivity.BaseValue);
+    }
+    /**
+     * Multiply the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    multiply(permittivity) {
+        return new Permittivity(this.value * permittivity.BaseValue);
+    }
+    /**
+     * Divide the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    divide(permittivity) {
+        return new Permittivity(this.value / permittivity.BaseValue);
+    }
+    /**
+     * Modulo the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    modulo(permittivity) {
+        return new Permittivity(this.value % permittivity.BaseValue);
+    }
+    /**
+     * Pow the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    pow(permittivity) {
+        return new Permittivity(this.value ** permittivity.BaseValue);
     }
 }
 exports.Permittivity = Permittivity;

@@ -20,11 +20,12 @@ export declare class ApparentPower {
      * Create a new ApparentPower.
      * @param value The value.
      * @param fromUnit The ‘ApparentPower’ unit to create from.
+     * The default unit is Voltamperes
      */
-    constructor(value: number, fromUnit: ApparentPowerUnits);
+    constructor(value: number, fromUnit?: ApparentPowerUnits);
     /**
-     * The base value of ApparentPower is Voltampere.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ApparentPower is Voltamperes.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -73,5 +74,53 @@ export declare class ApparentPower {
      * @returns The string format of the ApparentPower.
      */
     toString(toUnit?: ApparentPowerUnits): string;
+    /**
+     * Check if the given ApparentPower are equals to the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns True if the given ApparentPower are equal to the current ApparentPower.
+     */
+    equals(apparentPower: ApparentPower): boolean;
+    /**
+     * Compare the given ApparentPower against the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns 0 if they are equal, -1 if the current ApparentPower is less then other, 1 if the current ApparentPower is greater then other.
+     */
+    compareTo(apparentPower: ApparentPower): number;
+    /**
+     * Add the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    add(apparentPower: ApparentPower): ApparentPower;
+    /**
+     * Subtract the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    subtract(apparentPower: ApparentPower): ApparentPower;
+    /**
+     * Multiply the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    multiply(apparentPower: ApparentPower): ApparentPower;
+    /**
+     * Divide the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    divide(apparentPower: ApparentPower): ApparentPower;
+    /**
+     * Modulo the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    modulo(apparentPower: ApparentPower): ApparentPower;
+    /**
+     * Pow the given ApparentPower with the current ApparentPower.
+     * @param apparentPower The other ApparentPower.
+     * @returns A new ApparentPower instance with the results.
+     */
+    pow(apparentPower: ApparentPower): ApparentPower;
 }
 //# sourceMappingURL=apparentpower.g.d.ts.map

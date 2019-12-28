@@ -16,8 +16,9 @@ class ElectricCurrentDensity {
      * Create a new ElectricCurrentDensity.
      * @param value The value.
      * @param fromUnit The ‘ElectricCurrentDensity’ unit to create from.
+     * The default unit is AmperesPerSquareMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ElectricCurrentDensityUnits.AmperesPerSquareMeter) {
         this.amperespersquaremeterLazy = null;
         this.amperespersquareinchLazy = null;
         this.amperespersquarefootLazy = null;
@@ -26,8 +27,8 @@ class ElectricCurrentDensity {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ElectricCurrentDensity is AmperePerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricCurrentDensity is AmperesPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -125,6 +126,74 @@ class ElectricCurrentDensity {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ElectricCurrentDensity are equals to the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns True if the given ElectricCurrentDensity are equal to the current ElectricCurrentDensity.
+     */
+    equals(electricCurrentDensity) {
+        return this.value === electricCurrentDensity.BaseValue;
+    }
+    /**
+     * Compare the given ElectricCurrentDensity against the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns 0 if they are equal, -1 if the current ElectricCurrentDensity is less then other, 1 if the current ElectricCurrentDensity is greater then other.
+     */
+    compareTo(electricCurrentDensity) {
+        if (this.value > electricCurrentDensity.BaseValue)
+            return 1;
+        if (this.value < electricCurrentDensity.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    add(electricCurrentDensity) {
+        return new ElectricCurrentDensity(this.value + electricCurrentDensity.BaseValue);
+    }
+    /**
+     * Subtract the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    subtract(electricCurrentDensity) {
+        return new ElectricCurrentDensity(this.value - electricCurrentDensity.BaseValue);
+    }
+    /**
+     * Multiply the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    multiply(electricCurrentDensity) {
+        return new ElectricCurrentDensity(this.value * electricCurrentDensity.BaseValue);
+    }
+    /**
+     * Divide the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    divide(electricCurrentDensity) {
+        return new ElectricCurrentDensity(this.value / electricCurrentDensity.BaseValue);
+    }
+    /**
+     * Modulo the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    modulo(electricCurrentDensity) {
+        return new ElectricCurrentDensity(this.value % electricCurrentDensity.BaseValue);
+    }
+    /**
+     * Pow the given ElectricCurrentDensity with the current ElectricCurrentDensity.
+     * @param electricCurrentDensity The other ElectricCurrentDensity.
+     * @returns A new ElectricCurrentDensity instance with the results.
+     */
+    pow(electricCurrentDensity) {
+        return new ElectricCurrentDensity(this.value ** electricCurrentDensity.BaseValue);
     }
 }
 exports.ElectricCurrentDensity = ElectricCurrentDensity;

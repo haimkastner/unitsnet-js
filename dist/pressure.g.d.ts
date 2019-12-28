@@ -128,11 +128,12 @@ export declare class Pressure {
      * Create a new Pressure.
      * @param value The value.
      * @param fromUnit The ‘Pressure’ unit to create from.
+     * The default unit is Pascals
      */
-    constructor(value: number, fromUnit: PressureUnits);
+    constructor(value: number, fromUnit?: PressureUnits);
     /**
-     * The base value of Pressure is Pascal.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Pressure is Pascals.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -505,5 +506,53 @@ export declare class Pressure {
      * @returns The string format of the Pressure.
      */
     toString(toUnit?: PressureUnits): string;
+    /**
+     * Check if the given Pressure are equals to the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns True if the given Pressure are equal to the current Pressure.
+     */
+    equals(pressure: Pressure): boolean;
+    /**
+     * Compare the given Pressure against the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns 0 if they are equal, -1 if the current Pressure is less then other, 1 if the current Pressure is greater then other.
+     */
+    compareTo(pressure: Pressure): number;
+    /**
+     * Add the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    add(pressure: Pressure): Pressure;
+    /**
+     * Subtract the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    subtract(pressure: Pressure): Pressure;
+    /**
+     * Multiply the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    multiply(pressure: Pressure): Pressure;
+    /**
+     * Divide the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    divide(pressure: Pressure): Pressure;
+    /**
+     * Modulo the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    modulo(pressure: Pressure): Pressure;
+    /**
+     * Pow the given Pressure with the current Pressure.
+     * @param pressure The other Pressure.
+     * @returns A new Pressure instance with the results.
+     */
+    pow(pressure: Pressure): Pressure;
 }
 //# sourceMappingURL=pressure.g.d.ts.map

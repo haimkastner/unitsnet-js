@@ -14,8 +14,9 @@ class ThermalConductivity {
      * Create a new ThermalConductivity.
      * @param value The value.
      * @param fromUnit The ‘ThermalConductivity’ unit to create from.
+     * The default unit is WattsPerMeterKelvin
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ThermalConductivityUnits.WattsPerMeterKelvin) {
         this.wattspermeterkelvinLazy = null;
         this.btusperhourfootfahrenheitLazy = null;
         if (isNaN(value))
@@ -23,8 +24,8 @@ class ThermalConductivity {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ThermalConductivity is WattPerMeterKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ThermalConductivity is WattsPerMeterKelvin.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -100,6 +101,74 @@ class ThermalConductivity {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ThermalConductivity are equals to the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns True if the given ThermalConductivity are equal to the current ThermalConductivity.
+     */
+    equals(thermalConductivity) {
+        return this.value === thermalConductivity.BaseValue;
+    }
+    /**
+     * Compare the given ThermalConductivity against the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns 0 if they are equal, -1 if the current ThermalConductivity is less then other, 1 if the current ThermalConductivity is greater then other.
+     */
+    compareTo(thermalConductivity) {
+        if (this.value > thermalConductivity.BaseValue)
+            return 1;
+        if (this.value < thermalConductivity.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    add(thermalConductivity) {
+        return new ThermalConductivity(this.value + thermalConductivity.BaseValue);
+    }
+    /**
+     * Subtract the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    subtract(thermalConductivity) {
+        return new ThermalConductivity(this.value - thermalConductivity.BaseValue);
+    }
+    /**
+     * Multiply the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    multiply(thermalConductivity) {
+        return new ThermalConductivity(this.value * thermalConductivity.BaseValue);
+    }
+    /**
+     * Divide the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    divide(thermalConductivity) {
+        return new ThermalConductivity(this.value / thermalConductivity.BaseValue);
+    }
+    /**
+     * Modulo the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    modulo(thermalConductivity) {
+        return new ThermalConductivity(this.value % thermalConductivity.BaseValue);
+    }
+    /**
+     * Pow the given ThermalConductivity with the current ThermalConductivity.
+     * @param thermalConductivity The other ThermalConductivity.
+     * @returns A new ThermalConductivity instance with the results.
+     */
+    pow(thermalConductivity) {
+        return new ThermalConductivity(this.value ** thermalConductivity.BaseValue);
     }
 }
 exports.ThermalConductivity = ThermalConductivity;

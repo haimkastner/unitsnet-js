@@ -32,11 +32,12 @@ export declare class TemperatureDelta {
      * Create a new TemperatureDelta.
      * @param value The value.
      * @param fromUnit The ‘TemperatureDelta’ unit to create from.
+     * The default unit is Kelvins
      */
-    constructor(value: number, fromUnit: TemperatureDeltaUnits);
+    constructor(value: number, fromUnit?: TemperatureDeltaUnits);
     /**
-     * The base value of TemperatureDelta is Kelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of TemperatureDelta is Kelvins.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -121,5 +122,53 @@ export declare class TemperatureDelta {
      * @returns The string format of the TemperatureDelta.
      */
     toString(toUnit?: TemperatureDeltaUnits): string;
+    /**
+     * Check if the given TemperatureDelta are equals to the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns True if the given TemperatureDelta are equal to the current TemperatureDelta.
+     */
+    equals(temperatureDelta: TemperatureDelta): boolean;
+    /**
+     * Compare the given TemperatureDelta against the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns 0 if they are equal, -1 if the current TemperatureDelta is less then other, 1 if the current TemperatureDelta is greater then other.
+     */
+    compareTo(temperatureDelta: TemperatureDelta): number;
+    /**
+     * Add the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    add(temperatureDelta: TemperatureDelta): TemperatureDelta;
+    /**
+     * Subtract the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    subtract(temperatureDelta: TemperatureDelta): TemperatureDelta;
+    /**
+     * Multiply the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    multiply(temperatureDelta: TemperatureDelta): TemperatureDelta;
+    /**
+     * Divide the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    divide(temperatureDelta: TemperatureDelta): TemperatureDelta;
+    /**
+     * Modulo the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    modulo(temperatureDelta: TemperatureDelta): TemperatureDelta;
+    /**
+     * Pow the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    pow(temperatureDelta: TemperatureDelta): TemperatureDelta;
 }
 //# sourceMappingURL=temperaturedelta.g.d.ts.map

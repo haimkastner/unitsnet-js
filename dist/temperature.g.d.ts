@@ -35,11 +35,12 @@ export declare class Temperature {
      * Create a new Temperature.
      * @param value The value.
      * @param fromUnit The ‘Temperature’ unit to create from.
+     * The default unit is Kelvins
      */
-    constructor(value: number, fromUnit: TemperatureUnits);
+    constructor(value: number, fromUnit?: TemperatureUnits);
     /**
-     * The base value of Temperature is Kelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Temperature is Kelvins.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -133,5 +134,53 @@ export declare class Temperature {
      * @returns The string format of the Temperature.
      */
     toString(toUnit?: TemperatureUnits): string;
+    /**
+     * Check if the given Temperature are equals to the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns True if the given Temperature are equal to the current Temperature.
+     */
+    equals(temperature: Temperature): boolean;
+    /**
+     * Compare the given Temperature against the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns 0 if they are equal, -1 if the current Temperature is less then other, 1 if the current Temperature is greater then other.
+     */
+    compareTo(temperature: Temperature): number;
+    /**
+     * Add the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    add(temperature: Temperature): Temperature;
+    /**
+     * Subtract the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    subtract(temperature: Temperature): Temperature;
+    /**
+     * Multiply the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    multiply(temperature: Temperature): Temperature;
+    /**
+     * Divide the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    divide(temperature: Temperature): Temperature;
+    /**
+     * Modulo the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    modulo(temperature: Temperature): Temperature;
+    /**
+     * Pow the given Temperature with the current Temperature.
+     * @param temperature The other Temperature.
+     * @returns A new Temperature instance with the results.
+     */
+    pow(temperature: Temperature): Temperature;
 }
 //# sourceMappingURL=temperature.g.d.ts.map

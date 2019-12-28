@@ -11,11 +11,12 @@ export declare class Permittivity {
      * Create a new Permittivity.
      * @param value The value.
      * @param fromUnit The ‘Permittivity’ unit to create from.
+     * The default unit is FaradsPerMeter
      */
-    constructor(value: number, fromUnit: PermittivityUnits);
+    constructor(value: number, fromUnit?: PermittivityUnits);
     /**
-     * The base value of Permittivity is FaradPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Permittivity is FaradsPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -37,5 +38,53 @@ export declare class Permittivity {
      * @returns The string format of the Permittivity.
      */
     toString(toUnit?: PermittivityUnits): string;
+    /**
+     * Check if the given Permittivity are equals to the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns True if the given Permittivity are equal to the current Permittivity.
+     */
+    equals(permittivity: Permittivity): boolean;
+    /**
+     * Compare the given Permittivity against the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns 0 if they are equal, -1 if the current Permittivity is less then other, 1 if the current Permittivity is greater then other.
+     */
+    compareTo(permittivity: Permittivity): number;
+    /**
+     * Add the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    add(permittivity: Permittivity): Permittivity;
+    /**
+     * Subtract the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    subtract(permittivity: Permittivity): Permittivity;
+    /**
+     * Multiply the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    multiply(permittivity: Permittivity): Permittivity;
+    /**
+     * Divide the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    divide(permittivity: Permittivity): Permittivity;
+    /**
+     * Modulo the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    modulo(permittivity: Permittivity): Permittivity;
+    /**
+     * Pow the given Permittivity with the current Permittivity.
+     * @param permittivity The other Permittivity.
+     * @returns A new Permittivity instance with the results.
+     */
+    pow(permittivity: Permittivity): Permittivity;
 }
 //# sourceMappingURL=permittivity.g.d.ts.map

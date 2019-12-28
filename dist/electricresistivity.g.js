@@ -34,8 +34,9 @@ class ElectricResistivity {
      * Create a new ElectricResistivity.
      * @param value The value.
      * @param fromUnit The ‘ElectricResistivity’ unit to create from.
+     * The default unit is OhmMeters
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ElectricResistivityUnits.OhmMeters) {
         this.ohmmetersLazy = null;
         this.ohmscentimeterLazy = null;
         this.picoohmmetersLazy = null;
@@ -53,8 +54,8 @@ class ElectricResistivity {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ElectricResistivity is OhmMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricResistivity is OhmMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -327,29 +328,97 @@ class ElectricResistivity {
             case ElectricResistivityUnits.OhmsCentimeter:
                 return this.OhmsCentimeter + ` Ω·cm`;
             case ElectricResistivityUnits.PicoohmMeters:
-                return this.PicoohmMeters + ` Ω·m`;
+                return this.PicoohmMeters + ` `;
             case ElectricResistivityUnits.NanoohmMeters:
-                return this.NanoohmMeters + ` Ω·m`;
+                return this.NanoohmMeters + ` `;
             case ElectricResistivityUnits.MicroohmMeters:
-                return this.MicroohmMeters + ` Ω·m`;
+                return this.MicroohmMeters + ` `;
             case ElectricResistivityUnits.KiloohmMeters:
-                return this.KiloohmMeters + ` Ω·m`;
+                return this.KiloohmMeters + ` `;
             case ElectricResistivityUnits.MegaohmMeters:
-                return this.MegaohmMeters + ` Ω·m`;
+                return this.MegaohmMeters + ` `;
             case ElectricResistivityUnits.PicoohmsCentimeter:
-                return this.PicoohmsCentimeter + ` Ω·cm`;
+                return this.PicoohmsCentimeter + ` `;
             case ElectricResistivityUnits.NanoohmsCentimeter:
-                return this.NanoohmsCentimeter + ` Ω·cm`;
+                return this.NanoohmsCentimeter + ` `;
             case ElectricResistivityUnits.MicroohmsCentimeter:
-                return this.MicroohmsCentimeter + ` Ω·cm`;
+                return this.MicroohmsCentimeter + ` `;
             case ElectricResistivityUnits.KiloohmsCentimeter:
-                return this.KiloohmsCentimeter + ` Ω·cm`;
+                return this.KiloohmsCentimeter + ` `;
             case ElectricResistivityUnits.MegaohmsCentimeter:
-                return this.MegaohmsCentimeter + ` Ω·cm`;
+                return this.MegaohmsCentimeter + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ElectricResistivity are equals to the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns True if the given ElectricResistivity are equal to the current ElectricResistivity.
+     */
+    equals(electricResistivity) {
+        return this.value === electricResistivity.BaseValue;
+    }
+    /**
+     * Compare the given ElectricResistivity against the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns 0 if they are equal, -1 if the current ElectricResistivity is less then other, 1 if the current ElectricResistivity is greater then other.
+     */
+    compareTo(electricResistivity) {
+        if (this.value > electricResistivity.BaseValue)
+            return 1;
+        if (this.value < electricResistivity.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    add(electricResistivity) {
+        return new ElectricResistivity(this.value + electricResistivity.BaseValue);
+    }
+    /**
+     * Subtract the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    subtract(electricResistivity) {
+        return new ElectricResistivity(this.value - electricResistivity.BaseValue);
+    }
+    /**
+     * Multiply the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    multiply(electricResistivity) {
+        return new ElectricResistivity(this.value * electricResistivity.BaseValue);
+    }
+    /**
+     * Divide the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    divide(electricResistivity) {
+        return new ElectricResistivity(this.value / electricResistivity.BaseValue);
+    }
+    /**
+     * Modulo the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    modulo(electricResistivity) {
+        return new ElectricResistivity(this.value % electricResistivity.BaseValue);
+    }
+    /**
+     * Pow the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    pow(electricResistivity) {
+        return new ElectricResistivity(this.value ** electricResistivity.BaseValue);
     }
 }
 exports.ElectricResistivity = ElectricResistivity;

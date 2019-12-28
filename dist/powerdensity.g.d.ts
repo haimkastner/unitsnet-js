@@ -128,11 +128,12 @@ export declare class PowerDensity {
      * Create a new PowerDensity.
      * @param value The value.
      * @param fromUnit The ‘PowerDensity’ unit to create from.
+     * The default unit is WattsPerCubicMeter
      */
-    constructor(value: number, fromUnit: PowerDensityUnits);
+    constructor(value: number, fromUnit?: PowerDensityUnits);
     /**
-     * The base value of PowerDensity is WattPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of PowerDensity is WattsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -505,5 +506,53 @@ export declare class PowerDensity {
      * @returns The string format of the PowerDensity.
      */
     toString(toUnit?: PowerDensityUnits): string;
+    /**
+     * Check if the given PowerDensity are equals to the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns True if the given PowerDensity are equal to the current PowerDensity.
+     */
+    equals(powerDensity: PowerDensity): boolean;
+    /**
+     * Compare the given PowerDensity against the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns 0 if they are equal, -1 if the current PowerDensity is less then other, 1 if the current PowerDensity is greater then other.
+     */
+    compareTo(powerDensity: PowerDensity): number;
+    /**
+     * Add the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    add(powerDensity: PowerDensity): PowerDensity;
+    /**
+     * Subtract the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    subtract(powerDensity: PowerDensity): PowerDensity;
+    /**
+     * Multiply the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    multiply(powerDensity: PowerDensity): PowerDensity;
+    /**
+     * Divide the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    divide(powerDensity: PowerDensity): PowerDensity;
+    /**
+     * Modulo the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    modulo(powerDensity: PowerDensity): PowerDensity;
+    /**
+     * Pow the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    pow(powerDensity: PowerDensity): PowerDensity;
 }
 //# sourceMappingURL=powerdensity.g.d.ts.map

@@ -13,16 +13,17 @@ export class SolidAngle {
      * Create a new SolidAngle.
      * @param value The value.
      * @param fromUnit The ‘SolidAngle’ unit to create from.
+     * The default unit is Steradians
      */
-    public constructor(value: number, fromUnit: SolidAngleUnits) {
+    public constructor(value: number, fromUnit: SolidAngleUnits = SolidAngleUnits.Steradians) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of SolidAngle is Steradian.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SolidAngle is Steradians.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -85,5 +86,82 @@ export class SolidAngle {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given SolidAngle are equals to the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns True if the given SolidAngle are equal to the current SolidAngle.
+     */
+    public equals(solidAngle: SolidAngle): boolean {
+        return this.value === solidAngle.BaseValue;
+    }
+
+    /**
+     * Compare the given SolidAngle against the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns 0 if they are equal, -1 if the current SolidAngle is less then other, 1 if the current SolidAngle is greater then other.
+     */
+    public compareTo(solidAngle: SolidAngle): number {
+
+        if (this.value > solidAngle.BaseValue)
+            return 1;
+        if (this.value < solidAngle.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    public add(solidAngle: SolidAngle): SolidAngle {
+        return new SolidAngle(this.value + solidAngle.BaseValue)
+    }
+
+    /**
+     * Subtract the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    public subtract(solidAngle: SolidAngle): SolidAngle {
+        return new SolidAngle(this.value - solidAngle.BaseValue)
+    }
+
+    /**
+     * Multiply the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    public multiply(solidAngle: SolidAngle): SolidAngle {
+        return new SolidAngle(this.value * solidAngle.BaseValue)
+    }
+
+    /**
+     * Divide the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    public divide(solidAngle: SolidAngle): SolidAngle {
+        return new SolidAngle(this.value / solidAngle.BaseValue)
+    }
+
+    /**
+     * Modulo the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    public modulo(solidAngle: SolidAngle): SolidAngle {
+        return new SolidAngle(this.value % solidAngle.BaseValue)
+    }
+
+    /**
+     * Pow the given SolidAngle with the current SolidAngle.
+     * @param solidAngle The other SolidAngle.
+     * @returns A new SolidAngle instance with the results.
+     */
+    public pow(solidAngle: SolidAngle): SolidAngle {
+        return new SolidAngle(this.value ** solidAngle.BaseValue)
     }
 }

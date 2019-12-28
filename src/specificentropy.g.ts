@@ -37,16 +37,17 @@ export class SpecificEntropy {
      * Create a new SpecificEntropy.
      * @param value The value.
      * @param fromUnit The ‘SpecificEntropy’ unit to create from.
+     * The default unit is JoulesPerKilogramKelvin
      */
-    public constructor(value: number, fromUnit: SpecificEntropyUnits) {
+    public constructor(value: number, fromUnit: SpecificEntropyUnits = SpecificEntropyUnits.JoulesPerKilogramKelvin) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of SpecificEntropy is JoulePerKilogramKelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SpecificEntropy is JoulesPerKilogramKelvin.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -288,18 +289,95 @@ export class SpecificEntropy {
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return this.BtusPerPoundFahrenheit + ` BTU/lb·°F`;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
-                return this.KilojoulesPerKilogramKelvin + ` J/kg.K`;
+                return this.KilojoulesPerKilogramKelvin + ` `;
             case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
-                return this.MegajoulesPerKilogramKelvin + ` J/kg.K`;
+                return this.MegajoulesPerKilogramKelvin + ` `;
             case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
-                return this.KilojoulesPerKilogramDegreeCelsius + ` J/kg.C`;
+                return this.KilojoulesPerKilogramDegreeCelsius + ` `;
             case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
-                return this.MegajoulesPerKilogramDegreeCelsius + ` J/kg.C`;
+                return this.MegajoulesPerKilogramDegreeCelsius + ` `;
             case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return this.KilocaloriesPerGramKelvin + ` cal/g.K`;
+                return this.KilocaloriesPerGramKelvin + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given SpecificEntropy are equals to the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns True if the given SpecificEntropy are equal to the current SpecificEntropy.
+     */
+    public equals(specificEntropy: SpecificEntropy): boolean {
+        return this.value === specificEntropy.BaseValue;
+    }
+
+    /**
+     * Compare the given SpecificEntropy against the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns 0 if they are equal, -1 if the current SpecificEntropy is less then other, 1 if the current SpecificEntropy is greater then other.
+     */
+    public compareTo(specificEntropy: SpecificEntropy): number {
+
+        if (this.value > specificEntropy.BaseValue)
+            return 1;
+        if (this.value < specificEntropy.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    public add(specificEntropy: SpecificEntropy): SpecificEntropy {
+        return new SpecificEntropy(this.value + specificEntropy.BaseValue)
+    }
+
+    /**
+     * Subtract the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    public subtract(specificEntropy: SpecificEntropy): SpecificEntropy {
+        return new SpecificEntropy(this.value - specificEntropy.BaseValue)
+    }
+
+    /**
+     * Multiply the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    public multiply(specificEntropy: SpecificEntropy): SpecificEntropy {
+        return new SpecificEntropy(this.value * specificEntropy.BaseValue)
+    }
+
+    /**
+     * Divide the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    public divide(specificEntropy: SpecificEntropy): SpecificEntropy {
+        return new SpecificEntropy(this.value / specificEntropy.BaseValue)
+    }
+
+    /**
+     * Modulo the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    public modulo(specificEntropy: SpecificEntropy): SpecificEntropy {
+        return new SpecificEntropy(this.value % specificEntropy.BaseValue)
+    }
+
+    /**
+     * Pow the given SpecificEntropy with the current SpecificEntropy.
+     * @param specificEntropy The other SpecificEntropy.
+     * @returns A new SpecificEntropy instance with the results.
+     */
+    public pow(specificEntropy: SpecificEntropy): SpecificEntropy {
+        return new SpecificEntropy(this.value ** specificEntropy.BaseValue)
     }
 }

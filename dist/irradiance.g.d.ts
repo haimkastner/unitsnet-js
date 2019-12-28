@@ -44,11 +44,12 @@ export declare class Irradiance {
      * Create a new Irradiance.
      * @param value The value.
      * @param fromUnit The ‘Irradiance’ unit to create from.
+     * The default unit is WattsPerSquareMeter
      */
-    constructor(value: number, fromUnit: IrradianceUnits);
+    constructor(value: number, fromUnit?: IrradianceUnits);
     /**
-     * The base value of Irradiance is WattPerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Irradiance is WattsPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -169,5 +170,53 @@ export declare class Irradiance {
      * @returns The string format of the Irradiance.
      */
     toString(toUnit?: IrradianceUnits): string;
+    /**
+     * Check if the given Irradiance are equals to the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns True if the given Irradiance are equal to the current Irradiance.
+     */
+    equals(irradiance: Irradiance): boolean;
+    /**
+     * Compare the given Irradiance against the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns 0 if they are equal, -1 if the current Irradiance is less then other, 1 if the current Irradiance is greater then other.
+     */
+    compareTo(irradiance: Irradiance): number;
+    /**
+     * Add the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    add(irradiance: Irradiance): Irradiance;
+    /**
+     * Subtract the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    subtract(irradiance: Irradiance): Irradiance;
+    /**
+     * Multiply the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    multiply(irradiance: Irradiance): Irradiance;
+    /**
+     * Divide the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    divide(irradiance: Irradiance): Irradiance;
+    /**
+     * Modulo the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    modulo(irradiance: Irradiance): Irradiance;
+    /**
+     * Pow the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    pow(irradiance: Irradiance): Irradiance;
 }
 //# sourceMappingURL=irradiance.g.d.ts.map

@@ -95,11 +95,12 @@ export declare class Speed {
      * Create a new Speed.
      * @param value The value.
      * @param fromUnit The ‘Speed’ unit to create from.
+     * The default unit is MetersPerSecond
      */
-    constructor(value: number, fromUnit: SpeedUnits);
+    constructor(value: number, fromUnit?: SpeedUnits);
     /**
-     * The base value of Speed is MeterPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Speed is MetersPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -373,5 +374,53 @@ export declare class Speed {
      * @returns The string format of the Speed.
      */
     toString(toUnit?: SpeedUnits): string;
+    /**
+     * Check if the given Speed are equals to the current Speed.
+     * @param speed The other Speed.
+     * @returns True if the given Speed are equal to the current Speed.
+     */
+    equals(speed: Speed): boolean;
+    /**
+     * Compare the given Speed against the current Speed.
+     * @param speed The other Speed.
+     * @returns 0 if they are equal, -1 if the current Speed is less then other, 1 if the current Speed is greater then other.
+     */
+    compareTo(speed: Speed): number;
+    /**
+     * Add the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    add(speed: Speed): Speed;
+    /**
+     * Subtract the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    subtract(speed: Speed): Speed;
+    /**
+     * Multiply the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    multiply(speed: Speed): Speed;
+    /**
+     * Divide the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    divide(speed: Speed): Speed;
+    /**
+     * Modulo the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    modulo(speed: Speed): Speed;
+    /**
+     * Pow the given Speed with the current Speed.
+     * @param speed The other Speed.
+     * @returns A new Speed instance with the results.
+     */
+    pow(speed: Speed): Speed;
 }
 //# sourceMappingURL=speed.g.d.ts.map

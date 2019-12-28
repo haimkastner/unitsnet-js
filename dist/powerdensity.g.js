@@ -90,8 +90,9 @@ class PowerDensity {
      * Create a new PowerDensity.
      * @param value The value.
      * @param fromUnit The ‘PowerDensity’ unit to create from.
+     * The default unit is WattsPerCubicMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = PowerDensityUnits.WattsPerCubicMeter) {
         this.wattspercubicmeterLazy = null;
         this.wattspercubicinchLazy = null;
         this.wattspercubicfootLazy = null;
@@ -137,8 +138,8 @@ class PowerDensity {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of PowerDensity is WattPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of PowerDensity is WattsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -975,81 +976,149 @@ class PowerDensity {
             case PowerDensityUnits.WattsPerLiter:
                 return this.WattsPerLiter + ` W/l`;
             case PowerDensityUnits.PicowattsPerCubicMeter:
-                return this.PicowattsPerCubicMeter + ` W/m³`;
+                return this.PicowattsPerCubicMeter + ` `;
             case PowerDensityUnits.NanowattsPerCubicMeter:
-                return this.NanowattsPerCubicMeter + ` W/m³`;
+                return this.NanowattsPerCubicMeter + ` `;
             case PowerDensityUnits.MicrowattsPerCubicMeter:
-                return this.MicrowattsPerCubicMeter + ` W/m³`;
+                return this.MicrowattsPerCubicMeter + ` `;
             case PowerDensityUnits.DeciwattsPerCubicMeter:
-                return this.DeciwattsPerCubicMeter + ` W/m³`;
+                return this.DeciwattsPerCubicMeter + ` `;
             case PowerDensityUnits.DecawattsPerCubicMeter:
-                return this.DecawattsPerCubicMeter + ` W/m³`;
+                return this.DecawattsPerCubicMeter + ` `;
             case PowerDensityUnits.KilowattsPerCubicMeter:
-                return this.KilowattsPerCubicMeter + ` W/m³`;
+                return this.KilowattsPerCubicMeter + ` `;
             case PowerDensityUnits.MegawattsPerCubicMeter:
-                return this.MegawattsPerCubicMeter + ` W/m³`;
+                return this.MegawattsPerCubicMeter + ` `;
             case PowerDensityUnits.GigawattsPerCubicMeter:
-                return this.GigawattsPerCubicMeter + ` W/m³`;
+                return this.GigawattsPerCubicMeter + ` `;
             case PowerDensityUnits.TerawattsPerCubicMeter:
-                return this.TerawattsPerCubicMeter + ` W/m³`;
+                return this.TerawattsPerCubicMeter + ` `;
             case PowerDensityUnits.PicowattsPerCubicInch:
-                return this.PicowattsPerCubicInch + ` W/in³`;
+                return this.PicowattsPerCubicInch + ` `;
             case PowerDensityUnits.NanowattsPerCubicInch:
-                return this.NanowattsPerCubicInch + ` W/in³`;
+                return this.NanowattsPerCubicInch + ` `;
             case PowerDensityUnits.MicrowattsPerCubicInch:
-                return this.MicrowattsPerCubicInch + ` W/in³`;
+                return this.MicrowattsPerCubicInch + ` `;
             case PowerDensityUnits.DeciwattsPerCubicInch:
-                return this.DeciwattsPerCubicInch + ` W/in³`;
+                return this.DeciwattsPerCubicInch + ` `;
             case PowerDensityUnits.DecawattsPerCubicInch:
-                return this.DecawattsPerCubicInch + ` W/in³`;
+                return this.DecawattsPerCubicInch + ` `;
             case PowerDensityUnits.KilowattsPerCubicInch:
-                return this.KilowattsPerCubicInch + ` W/in³`;
+                return this.KilowattsPerCubicInch + ` `;
             case PowerDensityUnits.MegawattsPerCubicInch:
-                return this.MegawattsPerCubicInch + ` W/in³`;
+                return this.MegawattsPerCubicInch + ` `;
             case PowerDensityUnits.GigawattsPerCubicInch:
-                return this.GigawattsPerCubicInch + ` W/in³`;
+                return this.GigawattsPerCubicInch + ` `;
             case PowerDensityUnits.TerawattsPerCubicInch:
-                return this.TerawattsPerCubicInch + ` W/in³`;
+                return this.TerawattsPerCubicInch + ` `;
             case PowerDensityUnits.PicowattsPerCubicFoot:
-                return this.PicowattsPerCubicFoot + ` W/ft³`;
+                return this.PicowattsPerCubicFoot + ` `;
             case PowerDensityUnits.NanowattsPerCubicFoot:
-                return this.NanowattsPerCubicFoot + ` W/ft³`;
+                return this.NanowattsPerCubicFoot + ` `;
             case PowerDensityUnits.MicrowattsPerCubicFoot:
-                return this.MicrowattsPerCubicFoot + ` W/ft³`;
+                return this.MicrowattsPerCubicFoot + ` `;
             case PowerDensityUnits.DeciwattsPerCubicFoot:
-                return this.DeciwattsPerCubicFoot + ` W/ft³`;
+                return this.DeciwattsPerCubicFoot + ` `;
             case PowerDensityUnits.DecawattsPerCubicFoot:
-                return this.DecawattsPerCubicFoot + ` W/ft³`;
+                return this.DecawattsPerCubicFoot + ` `;
             case PowerDensityUnits.KilowattsPerCubicFoot:
-                return this.KilowattsPerCubicFoot + ` W/ft³`;
+                return this.KilowattsPerCubicFoot + ` `;
             case PowerDensityUnits.MegawattsPerCubicFoot:
-                return this.MegawattsPerCubicFoot + ` W/ft³`;
+                return this.MegawattsPerCubicFoot + ` `;
             case PowerDensityUnits.GigawattsPerCubicFoot:
-                return this.GigawattsPerCubicFoot + ` W/ft³`;
+                return this.GigawattsPerCubicFoot + ` `;
             case PowerDensityUnits.TerawattsPerCubicFoot:
-                return this.TerawattsPerCubicFoot + ` W/ft³`;
+                return this.TerawattsPerCubicFoot + ` `;
             case PowerDensityUnits.PicowattsPerLiter:
-                return this.PicowattsPerLiter + ` W/l`;
+                return this.PicowattsPerLiter + ` `;
             case PowerDensityUnits.NanowattsPerLiter:
-                return this.NanowattsPerLiter + ` W/l`;
+                return this.NanowattsPerLiter + ` `;
             case PowerDensityUnits.MicrowattsPerLiter:
-                return this.MicrowattsPerLiter + ` W/l`;
+                return this.MicrowattsPerLiter + ` `;
             case PowerDensityUnits.DeciwattsPerLiter:
-                return this.DeciwattsPerLiter + ` W/l`;
+                return this.DeciwattsPerLiter + ` `;
             case PowerDensityUnits.DecawattsPerLiter:
-                return this.DecawattsPerLiter + ` W/l`;
+                return this.DecawattsPerLiter + ` `;
             case PowerDensityUnits.KilowattsPerLiter:
-                return this.KilowattsPerLiter + ` W/l`;
+                return this.KilowattsPerLiter + ` `;
             case PowerDensityUnits.MegawattsPerLiter:
-                return this.MegawattsPerLiter + ` W/l`;
+                return this.MegawattsPerLiter + ` `;
             case PowerDensityUnits.GigawattsPerLiter:
-                return this.GigawattsPerLiter + ` W/l`;
+                return this.GigawattsPerLiter + ` `;
             case PowerDensityUnits.TerawattsPerLiter:
-                return this.TerawattsPerLiter + ` W/l`;
+                return this.TerawattsPerLiter + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given PowerDensity are equals to the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns True if the given PowerDensity are equal to the current PowerDensity.
+     */
+    equals(powerDensity) {
+        return this.value === powerDensity.BaseValue;
+    }
+    /**
+     * Compare the given PowerDensity against the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns 0 if they are equal, -1 if the current PowerDensity is less then other, 1 if the current PowerDensity is greater then other.
+     */
+    compareTo(powerDensity) {
+        if (this.value > powerDensity.BaseValue)
+            return 1;
+        if (this.value < powerDensity.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    add(powerDensity) {
+        return new PowerDensity(this.value + powerDensity.BaseValue);
+    }
+    /**
+     * Subtract the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    subtract(powerDensity) {
+        return new PowerDensity(this.value - powerDensity.BaseValue);
+    }
+    /**
+     * Multiply the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    multiply(powerDensity) {
+        return new PowerDensity(this.value * powerDensity.BaseValue);
+    }
+    /**
+     * Divide the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    divide(powerDensity) {
+        return new PowerDensity(this.value / powerDensity.BaseValue);
+    }
+    /**
+     * Modulo the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    modulo(powerDensity) {
+        return new PowerDensity(this.value % powerDensity.BaseValue);
+    }
+    /**
+     * Pow the given PowerDensity with the current PowerDensity.
+     * @param powerDensity The other PowerDensity.
+     * @returns A new PowerDensity instance with the results.
+     */
+    pow(powerDensity) {
+        return new PowerDensity(this.value ** powerDensity.BaseValue);
     }
 }
 exports.PowerDensity = PowerDensity;

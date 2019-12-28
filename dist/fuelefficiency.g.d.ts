@@ -20,11 +20,12 @@ export declare class FuelEfficiency {
      * Create a new FuelEfficiency.
      * @param value The value.
      * @param fromUnit The ‘FuelEfficiency’ unit to create from.
+     * The default unit is LitersPer100Kilometers
      */
-    constructor(value: number, fromUnit: FuelEfficiencyUnits);
+    constructor(value: number, fromUnit?: FuelEfficiencyUnits);
     /**
-     * The base value of FuelEfficiency is LiterPer100Kilometers.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of FuelEfficiency is LitersPer100Kilometers.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -73,5 +74,53 @@ export declare class FuelEfficiency {
      * @returns The string format of the FuelEfficiency.
      */
     toString(toUnit?: FuelEfficiencyUnits): string;
+    /**
+     * Check if the given FuelEfficiency are equals to the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns True if the given FuelEfficiency are equal to the current FuelEfficiency.
+     */
+    equals(fuelEfficiency: FuelEfficiency): boolean;
+    /**
+     * Compare the given FuelEfficiency against the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns 0 if they are equal, -1 if the current FuelEfficiency is less then other, 1 if the current FuelEfficiency is greater then other.
+     */
+    compareTo(fuelEfficiency: FuelEfficiency): number;
+    /**
+     * Add the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    add(fuelEfficiency: FuelEfficiency): FuelEfficiency;
+    /**
+     * Subtract the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    subtract(fuelEfficiency: FuelEfficiency): FuelEfficiency;
+    /**
+     * Multiply the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    multiply(fuelEfficiency: FuelEfficiency): FuelEfficiency;
+    /**
+     * Divide the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    divide(fuelEfficiency: FuelEfficiency): FuelEfficiency;
+    /**
+     * Modulo the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    modulo(fuelEfficiency: FuelEfficiency): FuelEfficiency;
+    /**
+     * Pow the given FuelEfficiency with the current FuelEfficiency.
+     * @param fuelEfficiency The other FuelEfficiency.
+     * @returns A new FuelEfficiency instance with the results.
+     */
+    pow(fuelEfficiency: FuelEfficiency): FuelEfficiency;
 }
 //# sourceMappingURL=fuelefficiency.g.d.ts.map

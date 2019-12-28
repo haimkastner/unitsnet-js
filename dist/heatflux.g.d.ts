@@ -59,11 +59,12 @@ export declare class HeatFlux {
      * Create a new HeatFlux.
      * @param value The value.
      * @param fromUnit The ‘HeatFlux’ unit to create from.
+     * The default unit is WattsPerSquareMeter
      */
-    constructor(value: number, fromUnit: HeatFluxUnits);
+    constructor(value: number, fromUnit?: HeatFluxUnits);
     /**
-     * The base value of HeatFlux is WattPerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of HeatFlux is WattsPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -229,5 +230,53 @@ export declare class HeatFlux {
      * @returns The string format of the HeatFlux.
      */
     toString(toUnit?: HeatFluxUnits): string;
+    /**
+     * Check if the given HeatFlux are equals to the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns True if the given HeatFlux are equal to the current HeatFlux.
+     */
+    equals(heatFlux: HeatFlux): boolean;
+    /**
+     * Compare the given HeatFlux against the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns 0 if they are equal, -1 if the current HeatFlux is less then other, 1 if the current HeatFlux is greater then other.
+     */
+    compareTo(heatFlux: HeatFlux): number;
+    /**
+     * Add the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    add(heatFlux: HeatFlux): HeatFlux;
+    /**
+     * Subtract the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    subtract(heatFlux: HeatFlux): HeatFlux;
+    /**
+     * Multiply the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    multiply(heatFlux: HeatFlux): HeatFlux;
+    /**
+     * Divide the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    divide(heatFlux: HeatFlux): HeatFlux;
+    /**
+     * Modulo the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    modulo(heatFlux: HeatFlux): HeatFlux;
+    /**
+     * Pow the given HeatFlux with the current HeatFlux.
+     * @param heatFlux The other HeatFlux.
+     * @returns A new HeatFlux instance with the results.
+     */
+    pow(heatFlux: HeatFlux): HeatFlux;
 }
 //# sourceMappingURL=heatflux.g.d.ts.map

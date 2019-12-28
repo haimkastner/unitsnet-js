@@ -118,16 +118,17 @@ export class MassConcentration {
      * Create a new MassConcentration.
      * @param value The value.
      * @param fromUnit The ‘MassConcentration’ unit to create from.
+     * The default unit is KilogramsPerCubicMeter
      */
-    public constructor(value: number, fromUnit: MassConcentrationUnits) {
+    public constructor(value: number, fromUnit: MassConcentrationUnits = MassConcentrationUnits.KilogramsPerCubicMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of MassConcentration is KilogramPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassConcentration is KilogramsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -983,52 +984,129 @@ export class MassConcentration {
             case MassConcentrationUnits.PoundsPerImperialGallon:
                 return this.PoundsPerImperialGallon + ` ppg (imp.)`;
             case MassConcentrationUnits.KilogramsPerCubicMillimeter:
-                return this.KilogramsPerCubicMillimeter + ` g/mm³`;
+                return this.KilogramsPerCubicMillimeter + ` `;
             case MassConcentrationUnits.KilogramsPerCubicCentimeter:
-                return this.KilogramsPerCubicCentimeter + ` g/cm³`;
+                return this.KilogramsPerCubicCentimeter + ` `;
             case MassConcentrationUnits.KilogramsPerCubicMeter:
-                return this.KilogramsPerCubicMeter + ` g/m³`;
+                return this.KilogramsPerCubicMeter + ` `;
             case MassConcentrationUnits.MicrogramsPerCubicMeter:
-                return this.MicrogramsPerCubicMeter + ` g/m³`;
+                return this.MicrogramsPerCubicMeter + ` `;
             case MassConcentrationUnits.PicogramsPerMilliliter:
-                return this.PicogramsPerMilliliter + ` g/mL`;
+                return this.PicogramsPerMilliliter + ` `;
             case MassConcentrationUnits.NanogramsPerMilliliter:
-                return this.NanogramsPerMilliliter + ` g/mL`;
+                return this.NanogramsPerMilliliter + ` `;
             case MassConcentrationUnits.MicrogramsPerMilliliter:
-                return this.MicrogramsPerMilliliter + ` g/mL`;
+                return this.MicrogramsPerMilliliter + ` `;
             case MassConcentrationUnits.CentigramsPerMilliliter:
-                return this.CentigramsPerMilliliter + ` g/mL`;
+                return this.CentigramsPerMilliliter + ` `;
             case MassConcentrationUnits.DecigramsPerMilliliter:
-                return this.DecigramsPerMilliliter + ` g/mL`;
+                return this.DecigramsPerMilliliter + ` `;
             case MassConcentrationUnits.PicogramsPerDeciliter:
-                return this.PicogramsPerDeciliter + ` g/dL`;
+                return this.PicogramsPerDeciliter + ` `;
             case MassConcentrationUnits.NanogramsPerDeciliter:
-                return this.NanogramsPerDeciliter + ` g/dL`;
+                return this.NanogramsPerDeciliter + ` `;
             case MassConcentrationUnits.MicrogramsPerDeciliter:
-                return this.MicrogramsPerDeciliter + ` g/dL`;
+                return this.MicrogramsPerDeciliter + ` `;
             case MassConcentrationUnits.CentigramsPerDeciliter:
-                return this.CentigramsPerDeciliter + ` g/dL`;
+                return this.CentigramsPerDeciliter + ` `;
             case MassConcentrationUnits.DecigramsPerDeciliter:
-                return this.DecigramsPerDeciliter + ` g/dL`;
+                return this.DecigramsPerDeciliter + ` `;
             case MassConcentrationUnits.PicogramsPerLiter:
-                return this.PicogramsPerLiter + ` g/L`;
+                return this.PicogramsPerLiter + ` `;
             case MassConcentrationUnits.NanogramsPerLiter:
-                return this.NanogramsPerLiter + ` g/L`;
+                return this.NanogramsPerLiter + ` `;
             case MassConcentrationUnits.MicrogramsPerLiter:
-                return this.MicrogramsPerLiter + ` g/L`;
+                return this.MicrogramsPerLiter + ` `;
             case MassConcentrationUnits.CentigramsPerLiter:
-                return this.CentigramsPerLiter + ` g/L`;
+                return this.CentigramsPerLiter + ` `;
             case MassConcentrationUnits.DecigramsPerLiter:
-                return this.DecigramsPerLiter + ` g/L`;
+                return this.DecigramsPerLiter + ` `;
             case MassConcentrationUnits.KilogramsPerLiter:
-                return this.KilogramsPerLiter + ` g/L`;
+                return this.KilogramsPerLiter + ` `;
             case MassConcentrationUnits.KilopoundsPerCubicInch:
-                return this.KilopoundsPerCubicInch + ` lb/in³`;
+                return this.KilopoundsPerCubicInch + ` `;
             case MassConcentrationUnits.KilopoundsPerCubicFoot:
-                return this.KilopoundsPerCubicFoot + ` lb/ft³`;
+                return this.KilopoundsPerCubicFoot + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given MassConcentration are equals to the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns True if the given MassConcentration are equal to the current MassConcentration.
+     */
+    public equals(massConcentration: MassConcentration): boolean {
+        return this.value === massConcentration.BaseValue;
+    }
+
+    /**
+     * Compare the given MassConcentration against the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns 0 if they are equal, -1 if the current MassConcentration is less then other, 1 if the current MassConcentration is greater then other.
+     */
+    public compareTo(massConcentration: MassConcentration): number {
+
+        if (this.value > massConcentration.BaseValue)
+            return 1;
+        if (this.value < massConcentration.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    public add(massConcentration: MassConcentration): MassConcentration {
+        return new MassConcentration(this.value + massConcentration.BaseValue)
+    }
+
+    /**
+     * Subtract the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    public subtract(massConcentration: MassConcentration): MassConcentration {
+        return new MassConcentration(this.value - massConcentration.BaseValue)
+    }
+
+    /**
+     * Multiply the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    public multiply(massConcentration: MassConcentration): MassConcentration {
+        return new MassConcentration(this.value * massConcentration.BaseValue)
+    }
+
+    /**
+     * Divide the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    public divide(massConcentration: MassConcentration): MassConcentration {
+        return new MassConcentration(this.value / massConcentration.BaseValue)
+    }
+
+    /**
+     * Modulo the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    public modulo(massConcentration: MassConcentration): MassConcentration {
+        return new MassConcentration(this.value % massConcentration.BaseValue)
+    }
+
+    /**
+     * Pow the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    public pow(massConcentration: MassConcentration): MassConcentration {
+        return new MassConcentration(this.value ** massConcentration.BaseValue)
     }
 }

@@ -34,8 +34,9 @@ class Irradiance {
      * Create a new Irradiance.
      * @param value The value.
      * @param fromUnit The ‘Irradiance’ unit to create from.
+     * The default unit is WattsPerSquareMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = IrradianceUnits.WattsPerSquareMeter) {
         this.wattspersquaremeterLazy = null;
         this.wattspersquarecentimeterLazy = null;
         this.picowattspersquaremeterLazy = null;
@@ -53,8 +54,8 @@ class Irradiance {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Irradiance is WattPerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Irradiance is WattsPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -327,29 +328,97 @@ class Irradiance {
             case IrradianceUnits.WattsPerSquareCentimeter:
                 return this.WattsPerSquareCentimeter + ` W/cm²`;
             case IrradianceUnits.PicowattsPerSquareMeter:
-                return this.PicowattsPerSquareMeter + ` W/m²`;
+                return this.PicowattsPerSquareMeter + ` `;
             case IrradianceUnits.NanowattsPerSquareMeter:
-                return this.NanowattsPerSquareMeter + ` W/m²`;
+                return this.NanowattsPerSquareMeter + ` `;
             case IrradianceUnits.MicrowattsPerSquareMeter:
-                return this.MicrowattsPerSquareMeter + ` W/m²`;
+                return this.MicrowattsPerSquareMeter + ` `;
             case IrradianceUnits.KilowattsPerSquareMeter:
-                return this.KilowattsPerSquareMeter + ` W/m²`;
+                return this.KilowattsPerSquareMeter + ` `;
             case IrradianceUnits.MegawattsPerSquareMeter:
-                return this.MegawattsPerSquareMeter + ` W/m²`;
+                return this.MegawattsPerSquareMeter + ` `;
             case IrradianceUnits.PicowattsPerSquareCentimeter:
-                return this.PicowattsPerSquareCentimeter + ` W/cm²`;
+                return this.PicowattsPerSquareCentimeter + ` `;
             case IrradianceUnits.NanowattsPerSquareCentimeter:
-                return this.NanowattsPerSquareCentimeter + ` W/cm²`;
+                return this.NanowattsPerSquareCentimeter + ` `;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
-                return this.MicrowattsPerSquareCentimeter + ` W/cm²`;
+                return this.MicrowattsPerSquareCentimeter + ` `;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
-                return this.KilowattsPerSquareCentimeter + ` W/cm²`;
+                return this.KilowattsPerSquareCentimeter + ` `;
             case IrradianceUnits.MegawattsPerSquareCentimeter:
-                return this.MegawattsPerSquareCentimeter + ` W/cm²`;
+                return this.MegawattsPerSquareCentimeter + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Irradiance are equals to the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns True if the given Irradiance are equal to the current Irradiance.
+     */
+    equals(irradiance) {
+        return this.value === irradiance.BaseValue;
+    }
+    /**
+     * Compare the given Irradiance against the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns 0 if they are equal, -1 if the current Irradiance is less then other, 1 if the current Irradiance is greater then other.
+     */
+    compareTo(irradiance) {
+        if (this.value > irradiance.BaseValue)
+            return 1;
+        if (this.value < irradiance.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    add(irradiance) {
+        return new Irradiance(this.value + irradiance.BaseValue);
+    }
+    /**
+     * Subtract the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    subtract(irradiance) {
+        return new Irradiance(this.value - irradiance.BaseValue);
+    }
+    /**
+     * Multiply the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    multiply(irradiance) {
+        return new Irradiance(this.value * irradiance.BaseValue);
+    }
+    /**
+     * Divide the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    divide(irradiance) {
+        return new Irradiance(this.value / irradiance.BaseValue);
+    }
+    /**
+     * Modulo the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    modulo(irradiance) {
+        return new Irradiance(this.value % irradiance.BaseValue);
+    }
+    /**
+     * Pow the given Irradiance with the current Irradiance.
+     * @param irradiance The other Irradiance.
+     * @returns A new Irradiance instance with the results.
+     */
+    pow(irradiance) {
+        return new Irradiance(this.value ** irradiance.BaseValue);
     }
 }
 exports.Irradiance = Irradiance;

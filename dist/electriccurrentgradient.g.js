@@ -12,16 +12,17 @@ class ElectricCurrentGradient {
      * Create a new ElectricCurrentGradient.
      * @param value The value.
      * @param fromUnit The ‘ElectricCurrentGradient’ unit to create from.
+     * The default unit is AmperesPerSecond
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ElectricCurrentGradientUnits.AmperesPerSecond) {
         this.amperespersecondLazy = null;
         if (isNaN(value))
             throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ElectricCurrentGradient is AmperePerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricCurrentGradient is AmperesPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -75,6 +76,74 @@ class ElectricCurrentGradient {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ElectricCurrentGradient are equals to the current ElectricCurrentGradient.
+     * @param electricCurrentGradient The other ElectricCurrentGradient.
+     * @returns True if the given ElectricCurrentGradient are equal to the current ElectricCurrentGradient.
+     */
+    equals(electricCurrentGradient) {
+        return this.value === electricCurrentGradient.BaseValue;
+    }
+    /**
+     * Compare the given ElectricCurrentGradient against the current ElectricCurrentGradient.
+     * @param electricCurrentGradient The other ElectricCurrentGradient.
+     * @returns 0 if they are equal, -1 if the current ElectricCurrentGradient is less then other, 1 if the current ElectricCurrentGradient is greater then other.
+     */
+    compareTo(electricCurrentGradient) {
+        if (this.value > electricCurrentGradient.BaseValue)
+            return 1;
+        if (this.value < electricCurrentGradient.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ElectricCurrentGradient with the current ElectricCurrentGradient.
+     * @param electricCurrentGradient The other ElectricCurrentGradient.
+     * @returns A new ElectricCurrentGradient instance with the results.
+     */
+    add(electricCurrentGradient) {
+        return new ElectricCurrentGradient(this.value + electricCurrentGradient.BaseValue);
+    }
+    /**
+     * Subtract the given ElectricCurrentGradient with the current ElectricCurrentGradient.
+     * @param electricCurrentGradient The other ElectricCurrentGradient.
+     * @returns A new ElectricCurrentGradient instance with the results.
+     */
+    subtract(electricCurrentGradient) {
+        return new ElectricCurrentGradient(this.value - electricCurrentGradient.BaseValue);
+    }
+    /**
+     * Multiply the given ElectricCurrentGradient with the current ElectricCurrentGradient.
+     * @param electricCurrentGradient The other ElectricCurrentGradient.
+     * @returns A new ElectricCurrentGradient instance with the results.
+     */
+    multiply(electricCurrentGradient) {
+        return new ElectricCurrentGradient(this.value * electricCurrentGradient.BaseValue);
+    }
+    /**
+     * Divide the given ElectricCurrentGradient with the current ElectricCurrentGradient.
+     * @param electricCurrentGradient The other ElectricCurrentGradient.
+     * @returns A new ElectricCurrentGradient instance with the results.
+     */
+    divide(electricCurrentGradient) {
+        return new ElectricCurrentGradient(this.value / electricCurrentGradient.BaseValue);
+    }
+    /**
+     * Modulo the given ElectricCurrentGradient with the current ElectricCurrentGradient.
+     * @param electricCurrentGradient The other ElectricCurrentGradient.
+     * @returns A new ElectricCurrentGradient instance with the results.
+     */
+    modulo(electricCurrentGradient) {
+        return new ElectricCurrentGradient(this.value % electricCurrentGradient.BaseValue);
+    }
+    /**
+     * Pow the given ElectricCurrentGradient with the current ElectricCurrentGradient.
+     * @param electricCurrentGradient The other ElectricCurrentGradient.
+     * @returns A new ElectricCurrentGradient instance with the results.
+     */
+    pow(electricCurrentGradient) {
+        return new ElectricCurrentGradient(this.value ** electricCurrentGradient.BaseValue);
     }
 }
 exports.ElectricCurrentGradient = ElectricCurrentGradient;

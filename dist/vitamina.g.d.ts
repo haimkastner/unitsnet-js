@@ -11,11 +11,12 @@ export declare class VitaminA {
      * Create a new VitaminA.
      * @param value The value.
      * @param fromUnit The ‘VitaminA’ unit to create from.
+     * The default unit is InternationalUnits
      */
-    constructor(value: number, fromUnit: VitaminAUnits);
+    constructor(value: number, fromUnit?: VitaminAUnits);
     /**
-     * The base value of VitaminA is InternationalUnit.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of VitaminA is InternationalUnits.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -37,5 +38,53 @@ export declare class VitaminA {
      * @returns The string format of the VitaminA.
      */
     toString(toUnit?: VitaminAUnits): string;
+    /**
+     * Check if the given VitaminA are equals to the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns True if the given VitaminA are equal to the current VitaminA.
+     */
+    equals(vitaminA: VitaminA): boolean;
+    /**
+     * Compare the given VitaminA against the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns 0 if they are equal, -1 if the current VitaminA is less then other, 1 if the current VitaminA is greater then other.
+     */
+    compareTo(vitaminA: VitaminA): number;
+    /**
+     * Add the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    add(vitaminA: VitaminA): VitaminA;
+    /**
+     * Subtract the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    subtract(vitaminA: VitaminA): VitaminA;
+    /**
+     * Multiply the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    multiply(vitaminA: VitaminA): VitaminA;
+    /**
+     * Divide the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    divide(vitaminA: VitaminA): VitaminA;
+    /**
+     * Modulo the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    modulo(vitaminA: VitaminA): VitaminA;
+    /**
+     * Pow the given VitaminA with the current VitaminA.
+     * @param vitaminA The other VitaminA.
+     * @returns A new VitaminA instance with the results.
+     */
+    pow(vitaminA: VitaminA): VitaminA;
 }
 //# sourceMappingURL=vitamina.g.d.ts.map

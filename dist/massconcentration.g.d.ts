@@ -116,11 +116,12 @@ export declare class MassConcentration {
      * Create a new MassConcentration.
      * @param value The value.
      * @param fromUnit The ‘MassConcentration’ unit to create from.
+     * The default unit is KilogramsPerCubicMeter
      */
-    constructor(value: number, fromUnit: MassConcentrationUnits);
+    constructor(value: number, fromUnit?: MassConcentrationUnits);
     /**
-     * The base value of MassConcentration is KilogramPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassConcentration is KilogramsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -457,5 +458,53 @@ export declare class MassConcentration {
      * @returns The string format of the MassConcentration.
      */
     toString(toUnit?: MassConcentrationUnits): string;
+    /**
+     * Check if the given MassConcentration are equals to the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns True if the given MassConcentration are equal to the current MassConcentration.
+     */
+    equals(massConcentration: MassConcentration): boolean;
+    /**
+     * Compare the given MassConcentration against the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns 0 if they are equal, -1 if the current MassConcentration is less then other, 1 if the current MassConcentration is greater then other.
+     */
+    compareTo(massConcentration: MassConcentration): number;
+    /**
+     * Add the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    add(massConcentration: MassConcentration): MassConcentration;
+    /**
+     * Subtract the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    subtract(massConcentration: MassConcentration): MassConcentration;
+    /**
+     * Multiply the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    multiply(massConcentration: MassConcentration): MassConcentration;
+    /**
+     * Divide the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    divide(massConcentration: MassConcentration): MassConcentration;
+    /**
+     * Modulo the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    modulo(massConcentration: MassConcentration): MassConcentration;
+    /**
+     * Pow the given MassConcentration with the current MassConcentration.
+     * @param massConcentration The other MassConcentration.
+     * @returns A new MassConcentration instance with the results.
+     */
+    pow(massConcentration: MassConcentration): MassConcentration;
 }
 //# sourceMappingURL=massconcentration.g.d.ts.map

@@ -22,8 +22,9 @@ class AreaMomentOfInertia {
      * Create a new AreaMomentOfInertia.
      * @param value The value.
      * @param fromUnit The ‘AreaMomentOfInertia’ unit to create from.
+     * The default unit is MetersToTheFourth
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = AreaMomentOfInertiaUnits.MetersToTheFourth) {
         this.meterstothefourthLazy = null;
         this.decimeterstothefourthLazy = null;
         this.centimeterstothefourthLazy = null;
@@ -35,8 +36,8 @@ class AreaMomentOfInertia {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of AreaMomentOfInertia is MeterToTheFourth.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of AreaMomentOfInertia is MetersToTheFourth.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -200,6 +201,74 @@ class AreaMomentOfInertia {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given AreaMomentOfInertia are equals to the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns True if the given AreaMomentOfInertia are equal to the current AreaMomentOfInertia.
+     */
+    equals(areaMomentOfInertia) {
+        return this.value === areaMomentOfInertia.BaseValue;
+    }
+    /**
+     * Compare the given AreaMomentOfInertia against the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns 0 if they are equal, -1 if the current AreaMomentOfInertia is less then other, 1 if the current AreaMomentOfInertia is greater then other.
+     */
+    compareTo(areaMomentOfInertia) {
+        if (this.value > areaMomentOfInertia.BaseValue)
+            return 1;
+        if (this.value < areaMomentOfInertia.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    add(areaMomentOfInertia) {
+        return new AreaMomentOfInertia(this.value + areaMomentOfInertia.BaseValue);
+    }
+    /**
+     * Subtract the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    subtract(areaMomentOfInertia) {
+        return new AreaMomentOfInertia(this.value - areaMomentOfInertia.BaseValue);
+    }
+    /**
+     * Multiply the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    multiply(areaMomentOfInertia) {
+        return new AreaMomentOfInertia(this.value * areaMomentOfInertia.BaseValue);
+    }
+    /**
+     * Divide the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    divide(areaMomentOfInertia) {
+        return new AreaMomentOfInertia(this.value / areaMomentOfInertia.BaseValue);
+    }
+    /**
+     * Modulo the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    modulo(areaMomentOfInertia) {
+        return new AreaMomentOfInertia(this.value % areaMomentOfInertia.BaseValue);
+    }
+    /**
+     * Pow the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    pow(areaMomentOfInertia) {
+        return new AreaMomentOfInertia(this.value ** areaMomentOfInertia.BaseValue);
     }
 }
 exports.AreaMomentOfInertia = AreaMomentOfInertia;

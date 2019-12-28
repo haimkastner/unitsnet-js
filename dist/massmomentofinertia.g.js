@@ -58,8 +58,9 @@ class MassMomentOfInertia {
      * Create a new MassMomentOfInertia.
      * @param value The value.
      * @param fromUnit The ‘MassMomentOfInertia’ unit to create from.
+     * The default unit is KilogramSquareMeters
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = MassMomentOfInertiaUnits.KilogramSquareMeters) {
         this.gramsquaremetersLazy = null;
         this.gramsquaredecimetersLazy = null;
         this.gramsquarecentimetersLazy = null;
@@ -89,8 +90,8 @@ class MassMomentOfInertia {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of MassMomentOfInertia is KilogramSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassMomentOfInertia is KilogramSquareMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -623,33 +624,101 @@ class MassMomentOfInertia {
             case MassMomentOfInertiaUnits.SlugSquareInches:
                 return this.SlugSquareInches + ` slug·in²`;
             case MassMomentOfInertiaUnits.KilogramSquareMeters:
-                return this.KilogramSquareMeters + ` g·m²`;
+                return this.KilogramSquareMeters + ` `;
             case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
-                return this.KilogramSquareDecimeters + ` g·dm²`;
+                return this.KilogramSquareDecimeters + ` `;
             case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
-                return this.KilogramSquareCentimeters + ` g·cm²`;
+                return this.KilogramSquareCentimeters + ` `;
             case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
-                return this.KilogramSquareMillimeters + ` g·mm²`;
+                return this.KilogramSquareMillimeters + ` `;
             case MassMomentOfInertiaUnits.KilotonneSquareMeters:
-                return this.KilotonneSquareMeters + ` t·m²`;
+                return this.KilotonneSquareMeters + ` `;
             case MassMomentOfInertiaUnits.MegatonneSquareMeters:
-                return this.MegatonneSquareMeters + ` t·m²`;
+                return this.MegatonneSquareMeters + ` `;
             case MassMomentOfInertiaUnits.KilotonneSquareDecimeters:
-                return this.KilotonneSquareDecimeters + ` t·dm²`;
+                return this.KilotonneSquareDecimeters + ` `;
             case MassMomentOfInertiaUnits.MegatonneSquareDecimeters:
-                return this.MegatonneSquareDecimeters + ` t·dm²`;
+                return this.MegatonneSquareDecimeters + ` `;
             case MassMomentOfInertiaUnits.KilotonneSquareCentimeters:
-                return this.KilotonneSquareCentimeters + ` t·cm²`;
+                return this.KilotonneSquareCentimeters + ` `;
             case MassMomentOfInertiaUnits.MegatonneSquareCentimeters:
-                return this.MegatonneSquareCentimeters + ` t·cm²`;
+                return this.MegatonneSquareCentimeters + ` `;
             case MassMomentOfInertiaUnits.KilotonneSquareMilimeters:
-                return this.KilotonneSquareMilimeters + ` t·mm²`;
+                return this.KilotonneSquareMilimeters + ` `;
             case MassMomentOfInertiaUnits.MegatonneSquareMilimeters:
-                return this.MegatonneSquareMilimeters + ` t·mm²`;
+                return this.MegatonneSquareMilimeters + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given MassMomentOfInertia are equals to the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns True if the given MassMomentOfInertia are equal to the current MassMomentOfInertia.
+     */
+    equals(massMomentOfInertia) {
+        return this.value === massMomentOfInertia.BaseValue;
+    }
+    /**
+     * Compare the given MassMomentOfInertia against the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns 0 if they are equal, -1 if the current MassMomentOfInertia is less then other, 1 if the current MassMomentOfInertia is greater then other.
+     */
+    compareTo(massMomentOfInertia) {
+        if (this.value > massMomentOfInertia.BaseValue)
+            return 1;
+        if (this.value < massMomentOfInertia.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    add(massMomentOfInertia) {
+        return new MassMomentOfInertia(this.value + massMomentOfInertia.BaseValue);
+    }
+    /**
+     * Subtract the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    subtract(massMomentOfInertia) {
+        return new MassMomentOfInertia(this.value - massMomentOfInertia.BaseValue);
+    }
+    /**
+     * Multiply the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    multiply(massMomentOfInertia) {
+        return new MassMomentOfInertia(this.value * massMomentOfInertia.BaseValue);
+    }
+    /**
+     * Divide the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    divide(massMomentOfInertia) {
+        return new MassMomentOfInertia(this.value / massMomentOfInertia.BaseValue);
+    }
+    /**
+     * Modulo the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    modulo(massMomentOfInertia) {
+        return new MassMomentOfInertia(this.value % massMomentOfInertia.BaseValue);
+    }
+    /**
+     * Pow the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    pow(massMomentOfInertia) {
+        return new MassMomentOfInertia(this.value ** massMomentOfInertia.BaseValue);
     }
 }
 exports.MassMomentOfInertia = MassMomentOfInertia;

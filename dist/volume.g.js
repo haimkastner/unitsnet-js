@@ -102,8 +102,9 @@ class Volume {
      * Create a new Volume.
      * @param value The value.
      * @param fromUnit The ‘Volume’ unit to create from.
+     * The default unit is CubicMeters
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = VolumeUnits.CubicMeters) {
         this.litersLazy = null;
         this.cubicmetersLazy = null;
         this.cubickilometersLazy = null;
@@ -155,8 +156,8 @@ class Volume {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Volume is CubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Volume is CubicMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -1167,39 +1168,107 @@ class Volume {
             case VolumeUnits.ImperialPints:
                 return this.ImperialPints + ` pt (imp.)`;
             case VolumeUnits.Microliters:
-                return this.Microliters + ` l`;
+                return this.Microliters + ` `;
             case VolumeUnits.Centiliters:
-                return this.Centiliters + ` l`;
+                return this.Centiliters + ` `;
             case VolumeUnits.Deciliters:
-                return this.Deciliters + ` l`;
+                return this.Deciliters + ` `;
             case VolumeUnits.Hectoliters:
-                return this.Hectoliters + ` l`;
+                return this.Hectoliters + ` `;
             case VolumeUnits.Kiloliters:
-                return this.Kiloliters + ` l`;
+                return this.Kiloliters + ` `;
             case VolumeUnits.Megaliters:
-                return this.Megaliters + ` l`;
+                return this.Megaliters + ` `;
             case VolumeUnits.HectocubicMeters:
-                return this.HectocubicMeters + ` m³`;
+                return this.HectocubicMeters + ` `;
             case VolumeUnits.KilocubicMeters:
-                return this.KilocubicMeters + ` m³`;
+                return this.KilocubicMeters + ` `;
             case VolumeUnits.HectocubicFeet:
-                return this.HectocubicFeet + ` ft³`;
+                return this.HectocubicFeet + ` `;
             case VolumeUnits.KilocubicFeet:
-                return this.KilocubicFeet + ` ft³`;
+                return this.KilocubicFeet + ` `;
             case VolumeUnits.MegacubicFeet:
-                return this.MegacubicFeet + ` ft³`;
+                return this.MegacubicFeet + ` `;
             case VolumeUnits.KiloimperialGallons:
-                return this.KiloimperialGallons + ` gal (imp.)`;
+                return this.KiloimperialGallons + ` `;
             case VolumeUnits.MegaimperialGallons:
-                return this.MegaimperialGallons + ` gal (imp.)`;
+                return this.MegaimperialGallons + ` `;
             case VolumeUnits.KilousGallons:
-                return this.KilousGallons + ` gal (U.S.)`;
+                return this.KilousGallons + ` `;
             case VolumeUnits.MegausGallons:
-                return this.MegausGallons + ` gal (U.S.)`;
+                return this.MegausGallons + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Volume are equals to the current Volume.
+     * @param volume The other Volume.
+     * @returns True if the given Volume are equal to the current Volume.
+     */
+    equals(volume) {
+        return this.value === volume.BaseValue;
+    }
+    /**
+     * Compare the given Volume against the current Volume.
+     * @param volume The other Volume.
+     * @returns 0 if they are equal, -1 if the current Volume is less then other, 1 if the current Volume is greater then other.
+     */
+    compareTo(volume) {
+        if (this.value > volume.BaseValue)
+            return 1;
+        if (this.value < volume.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    add(volume) {
+        return new Volume(this.value + volume.BaseValue);
+    }
+    /**
+     * Subtract the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    subtract(volume) {
+        return new Volume(this.value - volume.BaseValue);
+    }
+    /**
+     * Multiply the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    multiply(volume) {
+        return new Volume(this.value * volume.BaseValue);
+    }
+    /**
+     * Divide the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    divide(volume) {
+        return new Volume(this.value / volume.BaseValue);
+    }
+    /**
+     * Modulo the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    modulo(volume) {
+        return new Volume(this.value % volume.BaseValue);
+    }
+    /**
+     * Pow the given Volume with the current Volume.
+     * @param volume The other Volume.
+     * @returns A new Volume instance with the results.
+     */
+    pow(volume) {
+        return new Volume(this.value ** volume.BaseValue);
     }
 }
 exports.Volume = Volume;

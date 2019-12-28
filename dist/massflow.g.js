@@ -72,8 +72,9 @@ class MassFlow {
      * Create a new MassFlow.
      * @param value The value.
      * @param fromUnit The ‘MassFlow’ unit to create from.
+     * The default unit is GramsPerSecond
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = MassFlowUnits.GramsPerSecond) {
         this.gramspersecondLazy = null;
         this.gramsperdayLazy = null;
         this.gramsperhourLazy = null;
@@ -110,8 +111,8 @@ class MassFlow {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of MassFlow is GramPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassFlow is GramsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -784,47 +785,115 @@ class MassFlow {
             case MassFlowUnits.ShortTonsPerHour:
                 return this.ShortTonsPerHour + ` short tn/h`;
             case MassFlowUnits.NanogramsPerSecond:
-                return this.NanogramsPerSecond + ` g/s`;
+                return this.NanogramsPerSecond + ` `;
             case MassFlowUnits.MicrogramsPerSecond:
-                return this.MicrogramsPerSecond + ` g/s`;
+                return this.MicrogramsPerSecond + ` `;
             case MassFlowUnits.CentigramsPerSecond:
-                return this.CentigramsPerSecond + ` g/s`;
+                return this.CentigramsPerSecond + ` `;
             case MassFlowUnits.DecigramsPerSecond:
-                return this.DecigramsPerSecond + ` g/s`;
+                return this.DecigramsPerSecond + ` `;
             case MassFlowUnits.DecagramsPerSecond:
-                return this.DecagramsPerSecond + ` g/s`;
+                return this.DecagramsPerSecond + ` `;
             case MassFlowUnits.HectogramsPerSecond:
-                return this.HectogramsPerSecond + ` g/s`;
+                return this.HectogramsPerSecond + ` `;
             case MassFlowUnits.KilogramsPerSecond:
-                return this.KilogramsPerSecond + ` g/s`;
+                return this.KilogramsPerSecond + ` `;
             case MassFlowUnits.NanogramsPerDay:
-                return this.NanogramsPerDay + ` g/d`;
+                return this.NanogramsPerDay + ` `;
             case MassFlowUnits.MicrogramsPerDay:
-                return this.MicrogramsPerDay + ` g/d`;
+                return this.MicrogramsPerDay + ` `;
             case MassFlowUnits.CentigramsPerDay:
-                return this.CentigramsPerDay + ` g/d`;
+                return this.CentigramsPerDay + ` `;
             case MassFlowUnits.DecigramsPerDay:
-                return this.DecigramsPerDay + ` g/d`;
+                return this.DecigramsPerDay + ` `;
             case MassFlowUnits.DecagramsPerDay:
-                return this.DecagramsPerDay + ` g/d`;
+                return this.DecagramsPerDay + ` `;
             case MassFlowUnits.HectogramsPerDay:
-                return this.HectogramsPerDay + ` g/d`;
+                return this.HectogramsPerDay + ` `;
             case MassFlowUnits.KilogramsPerDay:
-                return this.KilogramsPerDay + ` g/d`;
+                return this.KilogramsPerDay + ` `;
             case MassFlowUnits.MegagramsPerDay:
-                return this.MegagramsPerDay + ` g/d`;
+                return this.MegagramsPerDay + ` `;
             case MassFlowUnits.MegapoundsPerDay:
-                return this.MegapoundsPerDay + ` lb/d`;
+                return this.MegapoundsPerDay + ` `;
             case MassFlowUnits.MegapoundsPerHour:
-                return this.MegapoundsPerHour + ` lb/h`;
+                return this.MegapoundsPerHour + ` `;
             case MassFlowUnits.MegapoundsPerMinute:
-                return this.MegapoundsPerMinute + ` lb/min`;
+                return this.MegapoundsPerMinute + ` `;
             case MassFlowUnits.MegapoundsPerSecond:
-                return this.MegapoundsPerSecond + ` lb/s`;
+                return this.MegapoundsPerSecond + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given MassFlow are equals to the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns True if the given MassFlow are equal to the current MassFlow.
+     */
+    equals(massFlow) {
+        return this.value === massFlow.BaseValue;
+    }
+    /**
+     * Compare the given MassFlow against the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns 0 if they are equal, -1 if the current MassFlow is less then other, 1 if the current MassFlow is greater then other.
+     */
+    compareTo(massFlow) {
+        if (this.value > massFlow.BaseValue)
+            return 1;
+        if (this.value < massFlow.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    add(massFlow) {
+        return new MassFlow(this.value + massFlow.BaseValue);
+    }
+    /**
+     * Subtract the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    subtract(massFlow) {
+        return new MassFlow(this.value - massFlow.BaseValue);
+    }
+    /**
+     * Multiply the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    multiply(massFlow) {
+        return new MassFlow(this.value * massFlow.BaseValue);
+    }
+    /**
+     * Divide the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    divide(massFlow) {
+        return new MassFlow(this.value / massFlow.BaseValue);
+    }
+    /**
+     * Modulo the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    modulo(massFlow) {
+        return new MassFlow(this.value % massFlow.BaseValue);
+    }
+    /**
+     * Pow the given MassFlow with the current MassFlow.
+     * @param massFlow The other MassFlow.
+     * @returns A new MassFlow instance with the results.
+     */
+    pow(massFlow) {
+        return new MassFlow(this.value ** massFlow.BaseValue);
     }
 }
 exports.MassFlow = MassFlow;

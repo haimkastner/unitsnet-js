@@ -80,11 +80,12 @@ export declare class MassMomentOfInertia {
      * Create a new MassMomentOfInertia.
      * @param value The value.
      * @param fromUnit The ‘MassMomentOfInertia’ unit to create from.
+     * The default unit is KilogramSquareMeters
      */
-    constructor(value: number, fromUnit: MassMomentOfInertiaUnits);
+    constructor(value: number, fromUnit?: MassMomentOfInertiaUnits);
     /**
-     * The base value of MassMomentOfInertia is KilogramSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassMomentOfInertia is KilogramSquareMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -313,5 +314,53 @@ export declare class MassMomentOfInertia {
      * @returns The string format of the MassMomentOfInertia.
      */
     toString(toUnit?: MassMomentOfInertiaUnits): string;
+    /**
+     * Check if the given MassMomentOfInertia are equals to the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns True if the given MassMomentOfInertia are equal to the current MassMomentOfInertia.
+     */
+    equals(massMomentOfInertia: MassMomentOfInertia): boolean;
+    /**
+     * Compare the given MassMomentOfInertia against the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns 0 if they are equal, -1 if the current MassMomentOfInertia is less then other, 1 if the current MassMomentOfInertia is greater then other.
+     */
+    compareTo(massMomentOfInertia: MassMomentOfInertia): number;
+    /**
+     * Add the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    add(massMomentOfInertia: MassMomentOfInertia): MassMomentOfInertia;
+    /**
+     * Subtract the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    subtract(massMomentOfInertia: MassMomentOfInertia): MassMomentOfInertia;
+    /**
+     * Multiply the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    multiply(massMomentOfInertia: MassMomentOfInertia): MassMomentOfInertia;
+    /**
+     * Divide the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    divide(massMomentOfInertia: MassMomentOfInertia): MassMomentOfInertia;
+    /**
+     * Modulo the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    modulo(massMomentOfInertia: MassMomentOfInertia): MassMomentOfInertia;
+    /**
+     * Pow the given MassMomentOfInertia with the current MassMomentOfInertia.
+     * @param massMomentOfInertia The other MassMomentOfInertia.
+     * @returns A new MassMomentOfInertia instance with the results.
+     */
+    pow(massMomentOfInertia: MassMomentOfInertia): MassMomentOfInertia;
 }
 //# sourceMappingURL=massmomentofinertia.g.d.ts.map

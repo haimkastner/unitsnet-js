@@ -50,11 +50,12 @@ export declare class Area {
      * Create a new Area.
      * @param value The value.
      * @param fromUnit The ‘Area’ unit to create from.
+     * The default unit is SquareMeters
      */
-    constructor(value: number, fromUnit: AreaUnits);
+    constructor(value: number, fromUnit?: AreaUnits);
     /**
-     * The base value of Area is SquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Area is SquareMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -193,5 +194,53 @@ export declare class Area {
      * @returns The string format of the Area.
      */
     toString(toUnit?: AreaUnits): string;
+    /**
+     * Check if the given Area are equals to the current Area.
+     * @param area The other Area.
+     * @returns True if the given Area are equal to the current Area.
+     */
+    equals(area: Area): boolean;
+    /**
+     * Compare the given Area against the current Area.
+     * @param area The other Area.
+     * @returns 0 if they are equal, -1 if the current Area is less then other, 1 if the current Area is greater then other.
+     */
+    compareTo(area: Area): number;
+    /**
+     * Add the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    add(area: Area): Area;
+    /**
+     * Subtract the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    subtract(area: Area): Area;
+    /**
+     * Multiply the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    multiply(area: Area): Area;
+    /**
+     * Divide the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    divide(area: Area): Area;
+    /**
+     * Modulo the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    modulo(area: Area): Area;
+    /**
+     * Pow the given Area with the current Area.
+     * @param area The other Area.
+     * @returns A new Area instance with the results.
+     */
+    pow(area: Area): Area;
 }
 //# sourceMappingURL=area.g.d.ts.map

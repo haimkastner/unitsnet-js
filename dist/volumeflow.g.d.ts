@@ -149,11 +149,12 @@ export declare class VolumeFlow {
      * Create a new VolumeFlow.
      * @param value The value.
      * @param fromUnit The ‘VolumeFlow’ unit to create from.
+     * The default unit is CubicMetersPerSecond
      */
-    constructor(value: number, fromUnit: VolumeFlowUnits);
+    constructor(value: number, fromUnit?: VolumeFlowUnits);
     /**
-     * The base value of VolumeFlow is CubicMeterPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of VolumeFlow is CubicMetersPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -589,5 +590,53 @@ export declare class VolumeFlow {
      * @returns The string format of the VolumeFlow.
      */
     toString(toUnit?: VolumeFlowUnits): string;
+    /**
+     * Check if the given VolumeFlow are equals to the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns True if the given VolumeFlow are equal to the current VolumeFlow.
+     */
+    equals(volumeFlow: VolumeFlow): boolean;
+    /**
+     * Compare the given VolumeFlow against the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns 0 if they are equal, -1 if the current VolumeFlow is less then other, 1 if the current VolumeFlow is greater then other.
+     */
+    compareTo(volumeFlow: VolumeFlow): number;
+    /**
+     * Add the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    add(volumeFlow: VolumeFlow): VolumeFlow;
+    /**
+     * Subtract the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    subtract(volumeFlow: VolumeFlow): VolumeFlow;
+    /**
+     * Multiply the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    multiply(volumeFlow: VolumeFlow): VolumeFlow;
+    /**
+     * Divide the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    divide(volumeFlow: VolumeFlow): VolumeFlow;
+    /**
+     * Modulo the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    modulo(volumeFlow: VolumeFlow): VolumeFlow;
+    /**
+     * Pow the given VolumeFlow with the current VolumeFlow.
+     * @param volumeFlow The other VolumeFlow.
+     * @returns A new VolumeFlow instance with the results.
+     */
+    pow(volumeFlow: VolumeFlow): VolumeFlow;
 }
 //# sourceMappingURL=volumeflow.g.d.ts.map

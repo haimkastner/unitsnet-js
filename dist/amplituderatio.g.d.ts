@@ -20,11 +20,12 @@ export declare class AmplitudeRatio {
      * Create a new AmplitudeRatio.
      * @param value The value.
      * @param fromUnit The ‘AmplitudeRatio’ unit to create from.
+     * The default unit is DecibelVolts
      */
-    constructor(value: number, fromUnit: AmplitudeRatioUnits);
+    constructor(value: number, fromUnit?: AmplitudeRatioUnits);
     /**
-     * The base value of AmplitudeRatio is DecibelVolt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of AmplitudeRatio is DecibelVolts.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -73,5 +74,53 @@ export declare class AmplitudeRatio {
      * @returns The string format of the AmplitudeRatio.
      */
     toString(toUnit?: AmplitudeRatioUnits): string;
+    /**
+     * Check if the given AmplitudeRatio are equals to the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns True if the given AmplitudeRatio are equal to the current AmplitudeRatio.
+     */
+    equals(amplitudeRatio: AmplitudeRatio): boolean;
+    /**
+     * Compare the given AmplitudeRatio against the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns 0 if they are equal, -1 if the current AmplitudeRatio is less then other, 1 if the current AmplitudeRatio is greater then other.
+     */
+    compareTo(amplitudeRatio: AmplitudeRatio): number;
+    /**
+     * Add the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    add(amplitudeRatio: AmplitudeRatio): AmplitudeRatio;
+    /**
+     * Subtract the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    subtract(amplitudeRatio: AmplitudeRatio): AmplitudeRatio;
+    /**
+     * Multiply the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    multiply(amplitudeRatio: AmplitudeRatio): AmplitudeRatio;
+    /**
+     * Divide the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    divide(amplitudeRatio: AmplitudeRatio): AmplitudeRatio;
+    /**
+     * Modulo the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    modulo(amplitudeRatio: AmplitudeRatio): AmplitudeRatio;
+    /**
+     * Pow the given AmplitudeRatio with the current AmplitudeRatio.
+     * @param amplitudeRatio The other AmplitudeRatio.
+     * @returns A new AmplitudeRatio instance with the results.
+     */
+    pow(amplitudeRatio: AmplitudeRatio): AmplitudeRatio;
 }
 //# sourceMappingURL=amplituderatio.g.d.ts.map

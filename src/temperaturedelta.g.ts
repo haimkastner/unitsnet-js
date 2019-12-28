@@ -34,16 +34,17 @@ export class TemperatureDelta {
      * Create a new TemperatureDelta.
      * @param value The value.
      * @param fromUnit The ‘TemperatureDelta’ unit to create from.
+     * The default unit is Kelvins
      */
-    public constructor(value: number, fromUnit: TemperatureDeltaUnits) {
+    public constructor(value: number, fromUnit: TemperatureDeltaUnits = TemperatureDeltaUnits.Kelvins) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of TemperatureDelta is Kelvin.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of TemperatureDelta is Kelvins.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -274,5 +275,82 @@ export class TemperatureDelta {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given TemperatureDelta are equals to the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns True if the given TemperatureDelta are equal to the current TemperatureDelta.
+     */
+    public equals(temperatureDelta: TemperatureDelta): boolean {
+        return this.value === temperatureDelta.BaseValue;
+    }
+
+    /**
+     * Compare the given TemperatureDelta against the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns 0 if they are equal, -1 if the current TemperatureDelta is less then other, 1 if the current TemperatureDelta is greater then other.
+     */
+    public compareTo(temperatureDelta: TemperatureDelta): number {
+
+        if (this.value > temperatureDelta.BaseValue)
+            return 1;
+        if (this.value < temperatureDelta.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    public add(temperatureDelta: TemperatureDelta): TemperatureDelta {
+        return new TemperatureDelta(this.value + temperatureDelta.BaseValue)
+    }
+
+    /**
+     * Subtract the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    public subtract(temperatureDelta: TemperatureDelta): TemperatureDelta {
+        return new TemperatureDelta(this.value - temperatureDelta.BaseValue)
+    }
+
+    /**
+     * Multiply the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    public multiply(temperatureDelta: TemperatureDelta): TemperatureDelta {
+        return new TemperatureDelta(this.value * temperatureDelta.BaseValue)
+    }
+
+    /**
+     * Divide the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    public divide(temperatureDelta: TemperatureDelta): TemperatureDelta {
+        return new TemperatureDelta(this.value / temperatureDelta.BaseValue)
+    }
+
+    /**
+     * Modulo the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    public modulo(temperatureDelta: TemperatureDelta): TemperatureDelta {
+        return new TemperatureDelta(this.value % temperatureDelta.BaseValue)
+    }
+
+    /**
+     * Pow the given TemperatureDelta with the current TemperatureDelta.
+     * @param temperatureDelta The other TemperatureDelta.
+     * @returns A new TemperatureDelta instance with the results.
+     */
+    public pow(temperatureDelta: TemperatureDelta): TemperatureDelta {
+        return new TemperatureDelta(this.value ** temperatureDelta.BaseValue)
     }
 }

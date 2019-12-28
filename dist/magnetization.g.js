@@ -12,16 +12,17 @@ class Magnetization {
      * Create a new Magnetization.
      * @param value The value.
      * @param fromUnit The ‘Magnetization’ unit to create from.
+     * The default unit is AmperesPerMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = MagnetizationUnits.AmperesPerMeter) {
         this.amperespermeterLazy = null;
         if (isNaN(value))
             throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Magnetization is AmperePerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Magnetization is AmperesPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -75,6 +76,74 @@ class Magnetization {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Magnetization are equals to the current Magnetization.
+     * @param magnetization The other Magnetization.
+     * @returns True if the given Magnetization are equal to the current Magnetization.
+     */
+    equals(magnetization) {
+        return this.value === magnetization.BaseValue;
+    }
+    /**
+     * Compare the given Magnetization against the current Magnetization.
+     * @param magnetization The other Magnetization.
+     * @returns 0 if they are equal, -1 if the current Magnetization is less then other, 1 if the current Magnetization is greater then other.
+     */
+    compareTo(magnetization) {
+        if (this.value > magnetization.BaseValue)
+            return 1;
+        if (this.value < magnetization.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Magnetization with the current Magnetization.
+     * @param magnetization The other Magnetization.
+     * @returns A new Magnetization instance with the results.
+     */
+    add(magnetization) {
+        return new Magnetization(this.value + magnetization.BaseValue);
+    }
+    /**
+     * Subtract the given Magnetization with the current Magnetization.
+     * @param magnetization The other Magnetization.
+     * @returns A new Magnetization instance with the results.
+     */
+    subtract(magnetization) {
+        return new Magnetization(this.value - magnetization.BaseValue);
+    }
+    /**
+     * Multiply the given Magnetization with the current Magnetization.
+     * @param magnetization The other Magnetization.
+     * @returns A new Magnetization instance with the results.
+     */
+    multiply(magnetization) {
+        return new Magnetization(this.value * magnetization.BaseValue);
+    }
+    /**
+     * Divide the given Magnetization with the current Magnetization.
+     * @param magnetization The other Magnetization.
+     * @returns A new Magnetization instance with the results.
+     */
+    divide(magnetization) {
+        return new Magnetization(this.value / magnetization.BaseValue);
+    }
+    /**
+     * Modulo the given Magnetization with the current Magnetization.
+     * @param magnetization The other Magnetization.
+     * @returns A new Magnetization instance with the results.
+     */
+    modulo(magnetization) {
+        return new Magnetization(this.value % magnetization.BaseValue);
+    }
+    /**
+     * Pow the given Magnetization with the current Magnetization.
+     * @param magnetization The other Magnetization.
+     * @returns A new Magnetization instance with the results.
+     */
+    pow(magnetization) {
+        return new Magnetization(this.value ** magnetization.BaseValue);
     }
 }
 exports.Magnetization = Magnetization;

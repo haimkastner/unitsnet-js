@@ -26,11 +26,12 @@ export declare class Capacitance {
      * Create a new Capacitance.
      * @param value The value.
      * @param fromUnit The ‘Capacitance’ unit to create from.
+     * The default unit is Farads
      */
-    constructor(value: number, fromUnit: CapacitanceUnits);
+    constructor(value: number, fromUnit?: CapacitanceUnits);
     /**
-     * The base value of Capacitance is Farad.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Capacitance is Farads.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -97,5 +98,53 @@ export declare class Capacitance {
      * @returns The string format of the Capacitance.
      */
     toString(toUnit?: CapacitanceUnits): string;
+    /**
+     * Check if the given Capacitance are equals to the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns True if the given Capacitance are equal to the current Capacitance.
+     */
+    equals(capacitance: Capacitance): boolean;
+    /**
+     * Compare the given Capacitance against the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns 0 if they are equal, -1 if the current Capacitance is less then other, 1 if the current Capacitance is greater then other.
+     */
+    compareTo(capacitance: Capacitance): number;
+    /**
+     * Add the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    add(capacitance: Capacitance): Capacitance;
+    /**
+     * Subtract the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    subtract(capacitance: Capacitance): Capacitance;
+    /**
+     * Multiply the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    multiply(capacitance: Capacitance): Capacitance;
+    /**
+     * Divide the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    divide(capacitance: Capacitance): Capacitance;
+    /**
+     * Modulo the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    modulo(capacitance: Capacitance): Capacitance;
+    /**
+     * Pow the given Capacitance with the current Capacitance.
+     * @param capacitance The other Capacitance.
+     * @returns A new Capacitance instance with the results.
+     */
+    pow(capacitance: Capacitance): Capacitance;
 }
 //# sourceMappingURL=capacitance.g.d.ts.map

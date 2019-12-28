@@ -26,11 +26,12 @@ export declare class AreaMomentOfInertia {
      * Create a new AreaMomentOfInertia.
      * @param value The value.
      * @param fromUnit The ‘AreaMomentOfInertia’ unit to create from.
+     * The default unit is MetersToTheFourth
      */
-    constructor(value: number, fromUnit: AreaMomentOfInertiaUnits);
+    constructor(value: number, fromUnit?: AreaMomentOfInertiaUnits);
     /**
-     * The base value of AreaMomentOfInertia is MeterToTheFourth.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of AreaMomentOfInertia is MetersToTheFourth.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -97,5 +98,53 @@ export declare class AreaMomentOfInertia {
      * @returns The string format of the AreaMomentOfInertia.
      */
     toString(toUnit?: AreaMomentOfInertiaUnits): string;
+    /**
+     * Check if the given AreaMomentOfInertia are equals to the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns True if the given AreaMomentOfInertia are equal to the current AreaMomentOfInertia.
+     */
+    equals(areaMomentOfInertia: AreaMomentOfInertia): boolean;
+    /**
+     * Compare the given AreaMomentOfInertia against the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns 0 if they are equal, -1 if the current AreaMomentOfInertia is less then other, 1 if the current AreaMomentOfInertia is greater then other.
+     */
+    compareTo(areaMomentOfInertia: AreaMomentOfInertia): number;
+    /**
+     * Add the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    add(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia;
+    /**
+     * Subtract the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    subtract(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia;
+    /**
+     * Multiply the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    multiply(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia;
+    /**
+     * Divide the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    divide(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia;
+    /**
+     * Modulo the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    modulo(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia;
+    /**
+     * Pow the given AreaMomentOfInertia with the current AreaMomentOfInertia.
+     * @param areaMomentOfInertia The other AreaMomentOfInertia.
+     * @returns A new AreaMomentOfInertia instance with the results.
+     */
+    pow(areaMomentOfInertia: AreaMomentOfInertia): AreaMomentOfInertia;
 }
 //# sourceMappingURL=areamomentofinertia.g.d.ts.map

@@ -50,11 +50,12 @@ export declare class BitRate {
      * Create a new BitRate.
      * @param value The value.
      * @param fromUnit The ‘BitRate’ unit to create from.
+     * The default unit is BitsPerSecond
      */
-    constructor(value: number, fromUnit: BitRateUnits);
+    constructor(value: number, fromUnit?: BitRateUnits);
     /**
-     * The base value of BitRate is BitPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of BitRate is BitsPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -193,5 +194,53 @@ export declare class BitRate {
      * @returns The string format of the BitRate.
      */
     toString(toUnit?: BitRateUnits): string;
+    /**
+     * Check if the given BitRate are equals to the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns True if the given BitRate are equal to the current BitRate.
+     */
+    equals(bitRate: BitRate): boolean;
+    /**
+     * Compare the given BitRate against the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns 0 if they are equal, -1 if the current BitRate is less then other, 1 if the current BitRate is greater then other.
+     */
+    compareTo(bitRate: BitRate): number;
+    /**
+     * Add the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    add(bitRate: BitRate): BitRate;
+    /**
+     * Subtract the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    subtract(bitRate: BitRate): BitRate;
+    /**
+     * Multiply the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    multiply(bitRate: BitRate): BitRate;
+    /**
+     * Divide the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    divide(bitRate: BitRate): BitRate;
+    /**
+     * Modulo the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    modulo(bitRate: BitRate): BitRate;
+    /**
+     * Pow the given BitRate with the current BitRate.
+     * @param bitRate The other BitRate.
+     * @returns A new BitRate instance with the results.
+     */
+    pow(bitRate: BitRate): BitRate;
 }
 //# sourceMappingURL=bitrate.g.d.ts.map

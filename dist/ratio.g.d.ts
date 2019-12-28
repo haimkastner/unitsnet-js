@@ -26,11 +26,12 @@ export declare class Ratio {
      * Create a new Ratio.
      * @param value The value.
      * @param fromUnit The ‘Ratio’ unit to create from.
+     * The default unit is DecimalFractions
      */
-    constructor(value: number, fromUnit: RatioUnits);
+    constructor(value: number, fromUnit?: RatioUnits);
     /**
-     * The base value of Ratio is DecimalFraction.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Ratio is DecimalFractions.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -97,5 +98,53 @@ export declare class Ratio {
      * @returns The string format of the Ratio.
      */
     toString(toUnit?: RatioUnits): string;
+    /**
+     * Check if the given Ratio are equals to the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns True if the given Ratio are equal to the current Ratio.
+     */
+    equals(ratio: Ratio): boolean;
+    /**
+     * Compare the given Ratio against the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns 0 if they are equal, -1 if the current Ratio is less then other, 1 if the current Ratio is greater then other.
+     */
+    compareTo(ratio: Ratio): number;
+    /**
+     * Add the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    add(ratio: Ratio): Ratio;
+    /**
+     * Subtract the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    subtract(ratio: Ratio): Ratio;
+    /**
+     * Multiply the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    multiply(ratio: Ratio): Ratio;
+    /**
+     * Divide the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    divide(ratio: Ratio): Ratio;
+    /**
+     * Modulo the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    modulo(ratio: Ratio): Ratio;
+    /**
+     * Pow the given Ratio with the current Ratio.
+     * @param ratio The other Ratio.
+     * @returns A new Ratio instance with the results.
+     */
+    pow(ratio: Ratio): Ratio;
 }
 //# sourceMappingURL=ratio.g.d.ts.map

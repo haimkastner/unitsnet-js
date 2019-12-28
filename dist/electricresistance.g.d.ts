@@ -20,11 +20,12 @@ export declare class ElectricResistance {
      * Create a new ElectricResistance.
      * @param value The value.
      * @param fromUnit The ‘ElectricResistance’ unit to create from.
+     * The default unit is Ohms
      */
-    constructor(value: number, fromUnit: ElectricResistanceUnits);
+    constructor(value: number, fromUnit?: ElectricResistanceUnits);
     /**
-     * The base value of ElectricResistance is Ohm.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricResistance is Ohms.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -73,5 +74,53 @@ export declare class ElectricResistance {
      * @returns The string format of the ElectricResistance.
      */
     toString(toUnit?: ElectricResistanceUnits): string;
+    /**
+     * Check if the given ElectricResistance are equals to the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns True if the given ElectricResistance are equal to the current ElectricResistance.
+     */
+    equals(electricResistance: ElectricResistance): boolean;
+    /**
+     * Compare the given ElectricResistance against the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns 0 if they are equal, -1 if the current ElectricResistance is less then other, 1 if the current ElectricResistance is greater then other.
+     */
+    compareTo(electricResistance: ElectricResistance): number;
+    /**
+     * Add the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    add(electricResistance: ElectricResistance): ElectricResistance;
+    /**
+     * Subtract the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    subtract(electricResistance: ElectricResistance): ElectricResistance;
+    /**
+     * Multiply the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    multiply(electricResistance: ElectricResistance): ElectricResistance;
+    /**
+     * Divide the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    divide(electricResistance: ElectricResistance): ElectricResistance;
+    /**
+     * Modulo the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    modulo(electricResistance: ElectricResistance): ElectricResistance;
+    /**
+     * Pow the given ElectricResistance with the current ElectricResistance.
+     * @param electricResistance The other ElectricResistance.
+     * @returns A new ElectricResistance instance with the results.
+     */
+    pow(electricResistance: ElectricResistance): ElectricResistance;
 }
 //# sourceMappingURL=electricresistance.g.d.ts.map

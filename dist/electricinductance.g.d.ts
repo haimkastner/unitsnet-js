@@ -17,11 +17,12 @@ export declare class ElectricInductance {
      * Create a new ElectricInductance.
      * @param value The value.
      * @param fromUnit The ‘ElectricInductance’ unit to create from.
+     * The default unit is Henries
      */
-    constructor(value: number, fromUnit: ElectricInductanceUnits);
+    constructor(value: number, fromUnit?: ElectricInductanceUnits);
     /**
-     * The base value of ElectricInductance is Henry.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricInductance is Henries.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class ElectricInductance {
      * @returns The string format of the ElectricInductance.
      */
     toString(toUnit?: ElectricInductanceUnits): string;
+    /**
+     * Check if the given ElectricInductance are equals to the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns True if the given ElectricInductance are equal to the current ElectricInductance.
+     */
+    equals(electricInductance: ElectricInductance): boolean;
+    /**
+     * Compare the given ElectricInductance against the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns 0 if they are equal, -1 if the current ElectricInductance is less then other, 1 if the current ElectricInductance is greater then other.
+     */
+    compareTo(electricInductance: ElectricInductance): number;
+    /**
+     * Add the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    add(electricInductance: ElectricInductance): ElectricInductance;
+    /**
+     * Subtract the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    subtract(electricInductance: ElectricInductance): ElectricInductance;
+    /**
+     * Multiply the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    multiply(electricInductance: ElectricInductance): ElectricInductance;
+    /**
+     * Divide the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    divide(electricInductance: ElectricInductance): ElectricInductance;
+    /**
+     * Modulo the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    modulo(electricInductance: ElectricInductance): ElectricInductance;
+    /**
+     * Pow the given ElectricInductance with the current ElectricInductance.
+     * @param electricInductance The other ElectricInductance.
+     * @returns A new ElectricInductance instance with the results.
+     */
+    pow(electricInductance: ElectricInductance): ElectricInductance;
 }
 //# sourceMappingURL=electricinductance.g.d.ts.map

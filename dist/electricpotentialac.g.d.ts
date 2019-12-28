@@ -20,11 +20,12 @@ export declare class ElectricPotentialAc {
      * Create a new ElectricPotentialAc.
      * @param value The value.
      * @param fromUnit The ‘ElectricPotentialAc’ unit to create from.
+     * The default unit is VoltsAc
      */
-    constructor(value: number, fromUnit: ElectricPotentialAcUnits);
+    constructor(value: number, fromUnit?: ElectricPotentialAcUnits);
     /**
-     * The base value of ElectricPotentialAc is VoltAc.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricPotentialAc is VoltsAc.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -73,5 +74,53 @@ export declare class ElectricPotentialAc {
      * @returns The string format of the ElectricPotentialAc.
      */
     toString(toUnit?: ElectricPotentialAcUnits): string;
+    /**
+     * Check if the given ElectricPotentialAc are equals to the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns True if the given ElectricPotentialAc are equal to the current ElectricPotentialAc.
+     */
+    equals(electricPotentialAc: ElectricPotentialAc): boolean;
+    /**
+     * Compare the given ElectricPotentialAc against the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns 0 if they are equal, -1 if the current ElectricPotentialAc is less then other, 1 if the current ElectricPotentialAc is greater then other.
+     */
+    compareTo(electricPotentialAc: ElectricPotentialAc): number;
+    /**
+     * Add the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    add(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc;
+    /**
+     * Subtract the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    subtract(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc;
+    /**
+     * Multiply the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    multiply(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc;
+    /**
+     * Divide the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    divide(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc;
+    /**
+     * Modulo the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    modulo(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc;
+    /**
+     * Pow the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    pow(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc;
 }
 //# sourceMappingURL=electricpotentialac.g.d.ts.map

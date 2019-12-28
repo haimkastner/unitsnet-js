@@ -19,8 +19,9 @@ export class Illuminance {
      * Create a new Illuminance.
      * @param value The value.
      * @param fromUnit The ‘Illuminance’ unit to create from.
+     * The default unit is Lux
      */
-    public constructor(value: number, fromUnit: IlluminanceUnits) {
+    public constructor(value: number, fromUnit: IlluminanceUnits = IlluminanceUnits.Lux) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
@@ -28,7 +29,7 @@ export class Illuminance {
 
     /**
      * The base value of Illuminance is Lux.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -132,12 +133,89 @@ export class Illuminance {
             case IlluminanceUnits.Lux:
                 return this.Lux + ` lx`;
             case IlluminanceUnits.Kilolux:
-                return this.Kilolux + ` lx`;
+                return this.Kilolux + ` `;
             case IlluminanceUnits.Megalux:
-                return this.Megalux + ` lx`;
+                return this.Megalux + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given Illuminance are equals to the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns True if the given Illuminance are equal to the current Illuminance.
+     */
+    public equals(illuminance: Illuminance): boolean {
+        return this.value === illuminance.BaseValue;
+    }
+
+    /**
+     * Compare the given Illuminance against the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns 0 if they are equal, -1 if the current Illuminance is less then other, 1 if the current Illuminance is greater then other.
+     */
+    public compareTo(illuminance: Illuminance): number {
+
+        if (this.value > illuminance.BaseValue)
+            return 1;
+        if (this.value < illuminance.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    public add(illuminance: Illuminance): Illuminance {
+        return new Illuminance(this.value + illuminance.BaseValue)
+    }
+
+    /**
+     * Subtract the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    public subtract(illuminance: Illuminance): Illuminance {
+        return new Illuminance(this.value - illuminance.BaseValue)
+    }
+
+    /**
+     * Multiply the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    public multiply(illuminance: Illuminance): Illuminance {
+        return new Illuminance(this.value * illuminance.BaseValue)
+    }
+
+    /**
+     * Divide the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    public divide(illuminance: Illuminance): Illuminance {
+        return new Illuminance(this.value / illuminance.BaseValue)
+    }
+
+    /**
+     * Modulo the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    public modulo(illuminance: Illuminance): Illuminance {
+        return new Illuminance(this.value % illuminance.BaseValue)
+    }
+
+    /**
+     * Pow the given Illuminance with the current Illuminance.
+     * @param illuminance The other Illuminance.
+     * @returns A new Illuminance instance with the results.
+     */
+    public pow(illuminance: Illuminance): Illuminance {
+        return new Illuminance(this.value ** illuminance.BaseValue)
     }
 }

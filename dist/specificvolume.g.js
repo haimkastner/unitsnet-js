@@ -14,8 +14,9 @@ class SpecificVolume {
      * Create a new SpecificVolume.
      * @param value The value.
      * @param fromUnit The ‘SpecificVolume’ unit to create from.
+     * The default unit is CubicMetersPerKilogram
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = SpecificVolumeUnits.CubicMetersPerKilogram) {
         this.cubicmetersperkilogramLazy = null;
         this.cubicfeetperpoundLazy = null;
         if (isNaN(value))
@@ -23,8 +24,8 @@ class SpecificVolume {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of SpecificVolume is CubicMeterPerKilogram.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SpecificVolume is CubicMetersPerKilogram.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -100,6 +101,74 @@ class SpecificVolume {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given SpecificVolume are equals to the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns True if the given SpecificVolume are equal to the current SpecificVolume.
+     */
+    equals(specificVolume) {
+        return this.value === specificVolume.BaseValue;
+    }
+    /**
+     * Compare the given SpecificVolume against the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns 0 if they are equal, -1 if the current SpecificVolume is less then other, 1 if the current SpecificVolume is greater then other.
+     */
+    compareTo(specificVolume) {
+        if (this.value > specificVolume.BaseValue)
+            return 1;
+        if (this.value < specificVolume.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    add(specificVolume) {
+        return new SpecificVolume(this.value + specificVolume.BaseValue);
+    }
+    /**
+     * Subtract the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    subtract(specificVolume) {
+        return new SpecificVolume(this.value - specificVolume.BaseValue);
+    }
+    /**
+     * Multiply the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    multiply(specificVolume) {
+        return new SpecificVolume(this.value * specificVolume.BaseValue);
+    }
+    /**
+     * Divide the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    divide(specificVolume) {
+        return new SpecificVolume(this.value / specificVolume.BaseValue);
+    }
+    /**
+     * Modulo the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    modulo(specificVolume) {
+        return new SpecificVolume(this.value % specificVolume.BaseValue);
+    }
+    /**
+     * Pow the given SpecificVolume with the current SpecificVolume.
+     * @param specificVolume The other SpecificVolume.
+     * @returns A new SpecificVolume instance with the results.
+     */
+    pow(specificVolume) {
+        return new SpecificVolume(this.value ** specificVolume.BaseValue);
     }
 }
 exports.SpecificVolume = SpecificVolume;

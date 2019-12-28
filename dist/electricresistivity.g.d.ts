@@ -44,11 +44,12 @@ export declare class ElectricResistivity {
      * Create a new ElectricResistivity.
      * @param value The value.
      * @param fromUnit The ‘ElectricResistivity’ unit to create from.
+     * The default unit is OhmMeters
      */
-    constructor(value: number, fromUnit: ElectricResistivityUnits);
+    constructor(value: number, fromUnit?: ElectricResistivityUnits);
     /**
-     * The base value of ElectricResistivity is OhmMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricResistivity is OhmMeters.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -169,5 +170,53 @@ export declare class ElectricResistivity {
      * @returns The string format of the ElectricResistivity.
      */
     toString(toUnit?: ElectricResistivityUnits): string;
+    /**
+     * Check if the given ElectricResistivity are equals to the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns True if the given ElectricResistivity are equal to the current ElectricResistivity.
+     */
+    equals(electricResistivity: ElectricResistivity): boolean;
+    /**
+     * Compare the given ElectricResistivity against the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns 0 if they are equal, -1 if the current ElectricResistivity is less then other, 1 if the current ElectricResistivity is greater then other.
+     */
+    compareTo(electricResistivity: ElectricResistivity): number;
+    /**
+     * Add the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    add(electricResistivity: ElectricResistivity): ElectricResistivity;
+    /**
+     * Subtract the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    subtract(electricResistivity: ElectricResistivity): ElectricResistivity;
+    /**
+     * Multiply the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    multiply(electricResistivity: ElectricResistivity): ElectricResistivity;
+    /**
+     * Divide the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    divide(electricResistivity: ElectricResistivity): ElectricResistivity;
+    /**
+     * Modulo the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    modulo(electricResistivity: ElectricResistivity): ElectricResistivity;
+    /**
+     * Pow the given ElectricResistivity with the current ElectricResistivity.
+     * @param electricResistivity The other ElectricResistivity.
+     * @returns A new ElectricResistivity instance with the results.
+     */
+    pow(electricResistivity: ElectricResistivity): ElectricResistivity;
 }
 //# sourceMappingURL=electricresistivity.g.d.ts.map

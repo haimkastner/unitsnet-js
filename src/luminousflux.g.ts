@@ -13,16 +13,17 @@ export class LuminousFlux {
      * Create a new LuminousFlux.
      * @param value The value.
      * @param fromUnit The ‘LuminousFlux’ unit to create from.
+     * The default unit is Lumens
      */
-    public constructor(value: number, fromUnit: LuminousFluxUnits) {
+    public constructor(value: number, fromUnit: LuminousFluxUnits = LuminousFluxUnits.Lumens) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of LuminousFlux is Lumen.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of LuminousFlux is Lumens.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -85,5 +86,82 @@ export class LuminousFlux {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given LuminousFlux are equals to the current LuminousFlux.
+     * @param luminousFlux The other LuminousFlux.
+     * @returns True if the given LuminousFlux are equal to the current LuminousFlux.
+     */
+    public equals(luminousFlux: LuminousFlux): boolean {
+        return this.value === luminousFlux.BaseValue;
+    }
+
+    /**
+     * Compare the given LuminousFlux against the current LuminousFlux.
+     * @param luminousFlux The other LuminousFlux.
+     * @returns 0 if they are equal, -1 if the current LuminousFlux is less then other, 1 if the current LuminousFlux is greater then other.
+     */
+    public compareTo(luminousFlux: LuminousFlux): number {
+
+        if (this.value > luminousFlux.BaseValue)
+            return 1;
+        if (this.value < luminousFlux.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given LuminousFlux with the current LuminousFlux.
+     * @param luminousFlux The other LuminousFlux.
+     * @returns A new LuminousFlux instance with the results.
+     */
+    public add(luminousFlux: LuminousFlux): LuminousFlux {
+        return new LuminousFlux(this.value + luminousFlux.BaseValue)
+    }
+
+    /**
+     * Subtract the given LuminousFlux with the current LuminousFlux.
+     * @param luminousFlux The other LuminousFlux.
+     * @returns A new LuminousFlux instance with the results.
+     */
+    public subtract(luminousFlux: LuminousFlux): LuminousFlux {
+        return new LuminousFlux(this.value - luminousFlux.BaseValue)
+    }
+
+    /**
+     * Multiply the given LuminousFlux with the current LuminousFlux.
+     * @param luminousFlux The other LuminousFlux.
+     * @returns A new LuminousFlux instance with the results.
+     */
+    public multiply(luminousFlux: LuminousFlux): LuminousFlux {
+        return new LuminousFlux(this.value * luminousFlux.BaseValue)
+    }
+
+    /**
+     * Divide the given LuminousFlux with the current LuminousFlux.
+     * @param luminousFlux The other LuminousFlux.
+     * @returns A new LuminousFlux instance with the results.
+     */
+    public divide(luminousFlux: LuminousFlux): LuminousFlux {
+        return new LuminousFlux(this.value / luminousFlux.BaseValue)
+    }
+
+    /**
+     * Modulo the given LuminousFlux with the current LuminousFlux.
+     * @param luminousFlux The other LuminousFlux.
+     * @returns A new LuminousFlux instance with the results.
+     */
+    public modulo(luminousFlux: LuminousFlux): LuminousFlux {
+        return new LuminousFlux(this.value % luminousFlux.BaseValue)
+    }
+
+    /**
+     * Pow the given LuminousFlux with the current LuminousFlux.
+     * @param luminousFlux The other LuminousFlux.
+     * @returns A new LuminousFlux instance with the results.
+     */
+    public pow(luminousFlux: LuminousFlux): LuminousFlux {
+        return new LuminousFlux(this.value ** luminousFlux.BaseValue)
     }
 }

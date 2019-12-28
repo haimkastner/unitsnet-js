@@ -29,11 +29,12 @@ export declare class KinematicViscosity {
      * Create a new KinematicViscosity.
      * @param value The value.
      * @param fromUnit The ‘KinematicViscosity’ unit to create from.
+     * The default unit is SquareMetersPerSecond
      */
-    constructor(value: number, fromUnit: KinematicViscosityUnits);
+    constructor(value: number, fromUnit?: KinematicViscosityUnits);
     /**
-     * The base value of KinematicViscosity is SquareMeterPerSecond.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of KinematicViscosity is SquareMetersPerSecond.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -109,5 +110,53 @@ export declare class KinematicViscosity {
      * @returns The string format of the KinematicViscosity.
      */
     toString(toUnit?: KinematicViscosityUnits): string;
+    /**
+     * Check if the given KinematicViscosity are equals to the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns True if the given KinematicViscosity are equal to the current KinematicViscosity.
+     */
+    equals(kinematicViscosity: KinematicViscosity): boolean;
+    /**
+     * Compare the given KinematicViscosity against the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns 0 if they are equal, -1 if the current KinematicViscosity is less then other, 1 if the current KinematicViscosity is greater then other.
+     */
+    compareTo(kinematicViscosity: KinematicViscosity): number;
+    /**
+     * Add the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    add(kinematicViscosity: KinematicViscosity): KinematicViscosity;
+    /**
+     * Subtract the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    subtract(kinematicViscosity: KinematicViscosity): KinematicViscosity;
+    /**
+     * Multiply the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    multiply(kinematicViscosity: KinematicViscosity): KinematicViscosity;
+    /**
+     * Divide the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    divide(kinematicViscosity: KinematicViscosity): KinematicViscosity;
+    /**
+     * Modulo the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    modulo(kinematicViscosity: KinematicViscosity): KinematicViscosity;
+    /**
+     * Pow the given KinematicViscosity with the current KinematicViscosity.
+     * @param kinematicViscosity The other KinematicViscosity.
+     * @returns A new KinematicViscosity instance with the results.
+     */
+    pow(kinematicViscosity: KinematicViscosity): KinematicViscosity;
 }
 //# sourceMappingURL=kinematicviscosity.g.d.ts.map

@@ -17,11 +17,12 @@ export declare class LinearDensity {
      * Create a new LinearDensity.
      * @param value The value.
      * @param fromUnit The ‘LinearDensity’ unit to create from.
+     * The default unit is KilogramsPerMeter
      */
-    constructor(value: number, fromUnit: LinearDensityUnits);
+    constructor(value: number, fromUnit?: LinearDensityUnits);
     /**
-     * The base value of LinearDensity is KilogramPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of LinearDensity is KilogramsPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class LinearDensity {
      * @returns The string format of the LinearDensity.
      */
     toString(toUnit?: LinearDensityUnits): string;
+    /**
+     * Check if the given LinearDensity are equals to the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns True if the given LinearDensity are equal to the current LinearDensity.
+     */
+    equals(linearDensity: LinearDensity): boolean;
+    /**
+     * Compare the given LinearDensity against the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns 0 if they are equal, -1 if the current LinearDensity is less then other, 1 if the current LinearDensity is greater then other.
+     */
+    compareTo(linearDensity: LinearDensity): number;
+    /**
+     * Add the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    add(linearDensity: LinearDensity): LinearDensity;
+    /**
+     * Subtract the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    subtract(linearDensity: LinearDensity): LinearDensity;
+    /**
+     * Multiply the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    multiply(linearDensity: LinearDensity): LinearDensity;
+    /**
+     * Divide the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    divide(linearDensity: LinearDensity): LinearDensity;
+    /**
+     * Modulo the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    modulo(linearDensity: LinearDensity): LinearDensity;
+    /**
+     * Pow the given LinearDensity with the current LinearDensity.
+     * @param linearDensity The other LinearDensity.
+     * @returns A new LinearDensity instance with the results.
+     */
+    pow(linearDensity: LinearDensity): LinearDensity;
 }
 //# sourceMappingURL=lineardensity.g.d.ts.map

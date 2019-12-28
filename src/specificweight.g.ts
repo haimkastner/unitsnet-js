@@ -61,16 +61,17 @@ export class SpecificWeight {
      * Create a new SpecificWeight.
      * @param value The value.
      * @param fromUnit The ‘SpecificWeight’ unit to create from.
+     * The default unit is NewtonsPerCubicMeter
      */
-    public constructor(value: number, fromUnit: SpecificWeightUnits) {
+    public constructor(value: number, fromUnit: SpecificWeightUnits = SpecificWeightUnits.NewtonsPerCubicMeter) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of SpecificWeight is NewtonPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SpecificWeight is NewtonsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -502,20 +503,97 @@ export class SpecificWeight {
             case SpecificWeightUnits.TonnesForcePerCubicMeter:
                 return this.TonnesForcePerCubicMeter + ` tf/m³`;
             case SpecificWeightUnits.KilonewtonsPerCubicMillimeter:
-                return this.KilonewtonsPerCubicMillimeter + ` N/mm³`;
+                return this.KilonewtonsPerCubicMillimeter + ` `;
             case SpecificWeightUnits.KilonewtonsPerCubicCentimeter:
-                return this.KilonewtonsPerCubicCentimeter + ` N/cm³`;
+                return this.KilonewtonsPerCubicCentimeter + ` `;
             case SpecificWeightUnits.KilonewtonsPerCubicMeter:
-                return this.KilonewtonsPerCubicMeter + ` N/m³`;
+                return this.KilonewtonsPerCubicMeter + ` `;
             case SpecificWeightUnits.MeganewtonsPerCubicMeter:
-                return this.MeganewtonsPerCubicMeter + ` N/m³`;
+                return this.MeganewtonsPerCubicMeter + ` `;
             case SpecificWeightUnits.KilopoundsForcePerCubicInch:
-                return this.KilopoundsForcePerCubicInch + ` lbf/in³`;
+                return this.KilopoundsForcePerCubicInch + ` `;
             case SpecificWeightUnits.KilopoundsForcePerCubicFoot:
-                return this.KilopoundsForcePerCubicFoot + ` lbf/ft³`;
+                return this.KilopoundsForcePerCubicFoot + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given SpecificWeight are equals to the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns True if the given SpecificWeight are equal to the current SpecificWeight.
+     */
+    public equals(specificWeight: SpecificWeight): boolean {
+        return this.value === specificWeight.BaseValue;
+    }
+
+    /**
+     * Compare the given SpecificWeight against the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns 0 if they are equal, -1 if the current SpecificWeight is less then other, 1 if the current SpecificWeight is greater then other.
+     */
+    public compareTo(specificWeight: SpecificWeight): number {
+
+        if (this.value > specificWeight.BaseValue)
+            return 1;
+        if (this.value < specificWeight.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    public add(specificWeight: SpecificWeight): SpecificWeight {
+        return new SpecificWeight(this.value + specificWeight.BaseValue)
+    }
+
+    /**
+     * Subtract the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    public subtract(specificWeight: SpecificWeight): SpecificWeight {
+        return new SpecificWeight(this.value - specificWeight.BaseValue)
+    }
+
+    /**
+     * Multiply the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    public multiply(specificWeight: SpecificWeight): SpecificWeight {
+        return new SpecificWeight(this.value * specificWeight.BaseValue)
+    }
+
+    /**
+     * Divide the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    public divide(specificWeight: SpecificWeight): SpecificWeight {
+        return new SpecificWeight(this.value / specificWeight.BaseValue)
+    }
+
+    /**
+     * Modulo the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    public modulo(specificWeight: SpecificWeight): SpecificWeight {
+        return new SpecificWeight(this.value % specificWeight.BaseValue)
+    }
+
+    /**
+     * Pow the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    public pow(specificWeight: SpecificWeight): SpecificWeight {
+        return new SpecificWeight(this.value ** specificWeight.BaseValue)
     }
 }

@@ -18,8 +18,9 @@ class RotationalAcceleration {
      * Create a new RotationalAcceleration.
      * @param value The value.
      * @param fromUnit The ‘RotationalAcceleration’ unit to create from.
+     * The default unit is RadiansPerSecondSquared
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = RotationalAccelerationUnits.RadiansPerSecondSquared) {
         this.radianspersecondsquaredLazy = null;
         this.degreespersecondsquaredLazy = null;
         this.revolutionsperminutepersecondLazy = null;
@@ -29,8 +30,8 @@ class RotationalAcceleration {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of RotationalAcceleration is RadianPerSecondSquared.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of RotationalAcceleration is RadiansPerSecondSquared.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -150,6 +151,74 @@ class RotationalAcceleration {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given RotationalAcceleration are equals to the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns True if the given RotationalAcceleration are equal to the current RotationalAcceleration.
+     */
+    equals(rotationalAcceleration) {
+        return this.value === rotationalAcceleration.BaseValue;
+    }
+    /**
+     * Compare the given RotationalAcceleration against the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns 0 if they are equal, -1 if the current RotationalAcceleration is less then other, 1 if the current RotationalAcceleration is greater then other.
+     */
+    compareTo(rotationalAcceleration) {
+        if (this.value > rotationalAcceleration.BaseValue)
+            return 1;
+        if (this.value < rotationalAcceleration.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    add(rotationalAcceleration) {
+        return new RotationalAcceleration(this.value + rotationalAcceleration.BaseValue);
+    }
+    /**
+     * Subtract the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    subtract(rotationalAcceleration) {
+        return new RotationalAcceleration(this.value - rotationalAcceleration.BaseValue);
+    }
+    /**
+     * Multiply the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    multiply(rotationalAcceleration) {
+        return new RotationalAcceleration(this.value * rotationalAcceleration.BaseValue);
+    }
+    /**
+     * Divide the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    divide(rotationalAcceleration) {
+        return new RotationalAcceleration(this.value / rotationalAcceleration.BaseValue);
+    }
+    /**
+     * Modulo the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    modulo(rotationalAcceleration) {
+        return new RotationalAcceleration(this.value % rotationalAcceleration.BaseValue);
+    }
+    /**
+     * Pow the given RotationalAcceleration with the current RotationalAcceleration.
+     * @param rotationalAcceleration The other RotationalAcceleration.
+     * @returns A new RotationalAcceleration instance with the results.
+     */
+    pow(rotationalAcceleration) {
+        return new RotationalAcceleration(this.value ** rotationalAcceleration.BaseValue);
     }
 }
 exports.RotationalAcceleration = RotationalAcceleration;

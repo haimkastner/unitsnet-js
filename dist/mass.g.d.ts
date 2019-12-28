@@ -80,11 +80,12 @@ export declare class Mass {
      * Create a new Mass.
      * @param value The value.
      * @param fromUnit The ‘Mass’ unit to create from.
+     * The default unit is Kilograms
      */
-    constructor(value: number, fromUnit: MassUnits);
+    constructor(value: number, fromUnit?: MassUnits);
     /**
-     * The base value of Mass is Kilogram.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Mass is Kilograms.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -313,5 +314,53 @@ export declare class Mass {
      * @returns The string format of the Mass.
      */
     toString(toUnit?: MassUnits): string;
+    /**
+     * Check if the given Mass are equals to the current Mass.
+     * @param mass The other Mass.
+     * @returns True if the given Mass are equal to the current Mass.
+     */
+    equals(mass: Mass): boolean;
+    /**
+     * Compare the given Mass against the current Mass.
+     * @param mass The other Mass.
+     * @returns 0 if they are equal, -1 if the current Mass is less then other, 1 if the current Mass is greater then other.
+     */
+    compareTo(mass: Mass): number;
+    /**
+     * Add the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    add(mass: Mass): Mass;
+    /**
+     * Subtract the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    subtract(mass: Mass): Mass;
+    /**
+     * Multiply the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    multiply(mass: Mass): Mass;
+    /**
+     * Divide the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    divide(mass: Mass): Mass;
+    /**
+     * Modulo the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    modulo(mass: Mass): Mass;
+    /**
+     * Pow the given Mass with the current Mass.
+     * @param mass The other Mass.
+     * @returns A new Mass instance with the results.
+     */
+    pow(mass: Mass): Mass;
 }
 //# sourceMappingURL=mass.g.d.ts.map

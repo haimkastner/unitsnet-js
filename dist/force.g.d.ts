@@ -44,11 +44,12 @@ export declare class Force {
      * Create a new Force.
      * @param value The value.
      * @param fromUnit The ‘Force’ unit to create from.
+     * The default unit is Newtons
      */
-    constructor(value: number, fromUnit: ForceUnits);
+    constructor(value: number, fromUnit?: ForceUnits);
     /**
-     * The base value of Force is Newton.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Force is Newtons.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -169,5 +170,53 @@ export declare class Force {
      * @returns The string format of the Force.
      */
     toString(toUnit?: ForceUnits): string;
+    /**
+     * Check if the given Force are equals to the current Force.
+     * @param force The other Force.
+     * @returns True if the given Force are equal to the current Force.
+     */
+    equals(force: Force): boolean;
+    /**
+     * Compare the given Force against the current Force.
+     * @param force The other Force.
+     * @returns 0 if they are equal, -1 if the current Force is less then other, 1 if the current Force is greater then other.
+     */
+    compareTo(force: Force): number;
+    /**
+     * Add the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    add(force: Force): Force;
+    /**
+     * Subtract the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    subtract(force: Force): Force;
+    /**
+     * Multiply the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    multiply(force: Force): Force;
+    /**
+     * Divide the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    divide(force: Force): Force;
+    /**
+     * Modulo the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    modulo(force: Force): Force;
+    /**
+     * Pow the given Force with the current Force.
+     * @param force The other Force.
+     * @returns A new Force instance with the results.
+     */
+    pow(force: Force): Force;
 }
 //# sourceMappingURL=force.g.d.ts.map

@@ -22,16 +22,17 @@ export class ElectricPotentialAc {
      * Create a new ElectricPotentialAc.
      * @param value The value.
      * @param fromUnit The ‘ElectricPotentialAc’ unit to create from.
+     * The default unit is VoltsAc
      */
-    public constructor(value: number, fromUnit: ElectricPotentialAcUnits) {
+    public constructor(value: number, fromUnit: ElectricPotentialAcUnits = ElectricPotentialAcUnits.VoltsAc) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of ElectricPotentialAc is VoltAc.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricPotentialAc is VoltsAc.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
         return this.value;
@@ -157,14 +158,91 @@ export class ElectricPotentialAc {
             case ElectricPotentialAcUnits.VoltsAc:
                 return this.VoltsAc + ` Vac`;
             case ElectricPotentialAcUnits.MicrovoltsAc:
-                return this.MicrovoltsAc + ` Vac`;
+                return this.MicrovoltsAc + ` `;
             case ElectricPotentialAcUnits.KilovoltsAc:
-                return this.KilovoltsAc + ` Vac`;
+                return this.KilovoltsAc + ` `;
             case ElectricPotentialAcUnits.MegavoltsAc:
-                return this.MegavoltsAc + ` Vac`;
+                return this.MegavoltsAc + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Check if the given ElectricPotentialAc are equals to the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns True if the given ElectricPotentialAc are equal to the current ElectricPotentialAc.
+     */
+    public equals(electricPotentialAc: ElectricPotentialAc): boolean {
+        return this.value === electricPotentialAc.BaseValue;
+    }
+
+    /**
+     * Compare the given ElectricPotentialAc against the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns 0 if they are equal, -1 if the current ElectricPotentialAc is less then other, 1 if the current ElectricPotentialAc is greater then other.
+     */
+    public compareTo(electricPotentialAc: ElectricPotentialAc): number {
+
+        if (this.value > electricPotentialAc.BaseValue)
+            return 1;
+        if (this.value < electricPotentialAc.BaseValue)
+            return -1;
+        return 0;
+    }
+
+    /**
+     * Add the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    public add(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc {
+        return new ElectricPotentialAc(this.value + electricPotentialAc.BaseValue)
+    }
+
+    /**
+     * Subtract the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    public subtract(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc {
+        return new ElectricPotentialAc(this.value - electricPotentialAc.BaseValue)
+    }
+
+    /**
+     * Multiply the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    public multiply(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc {
+        return new ElectricPotentialAc(this.value * electricPotentialAc.BaseValue)
+    }
+
+    /**
+     * Divide the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    public divide(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc {
+        return new ElectricPotentialAc(this.value / electricPotentialAc.BaseValue)
+    }
+
+    /**
+     * Modulo the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    public modulo(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc {
+        return new ElectricPotentialAc(this.value % electricPotentialAc.BaseValue)
+    }
+
+    /**
+     * Pow the given ElectricPotentialAc with the current ElectricPotentialAc.
+     * @param electricPotentialAc The other ElectricPotentialAc.
+     * @returns A new ElectricPotentialAc instance with the results.
+     */
+    public pow(electricPotentialAc: ElectricPotentialAc): ElectricPotentialAc {
+        return new ElectricPotentialAc(this.value ** electricPotentialAc.BaseValue)
     }
 }

@@ -20,8 +20,9 @@ class ThermalResistance {
      * Create a new ThermalResistance.
      * @param value The value.
      * @param fromUnit The ‘ThermalResistance’ unit to create from.
+     * The default unit is SquareMeterKelvinsPerKilowatt
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt) {
         this.squaremeterkelvinsperkilowattLazy = null;
         this.squaremeterdegreescelsiusperwattLazy = null;
         this.squarecentimeterkelvinsperwattLazy = null;
@@ -32,8 +33,8 @@ class ThermalResistance {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ThermalResistance is SquareMeterKelvinPerKilowatt.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ThermalResistance is SquareMeterKelvinsPerKilowatt.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -175,6 +176,74 @@ class ThermalResistance {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ThermalResistance are equals to the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns True if the given ThermalResistance are equal to the current ThermalResistance.
+     */
+    equals(thermalResistance) {
+        return this.value === thermalResistance.BaseValue;
+    }
+    /**
+     * Compare the given ThermalResistance against the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns 0 if they are equal, -1 if the current ThermalResistance is less then other, 1 if the current ThermalResistance is greater then other.
+     */
+    compareTo(thermalResistance) {
+        if (this.value > thermalResistance.BaseValue)
+            return 1;
+        if (this.value < thermalResistance.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    add(thermalResistance) {
+        return new ThermalResistance(this.value + thermalResistance.BaseValue);
+    }
+    /**
+     * Subtract the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    subtract(thermalResistance) {
+        return new ThermalResistance(this.value - thermalResistance.BaseValue);
+    }
+    /**
+     * Multiply the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    multiply(thermalResistance) {
+        return new ThermalResistance(this.value * thermalResistance.BaseValue);
+    }
+    /**
+     * Divide the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    divide(thermalResistance) {
+        return new ThermalResistance(this.value / thermalResistance.BaseValue);
+    }
+    /**
+     * Modulo the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    modulo(thermalResistance) {
+        return new ThermalResistance(this.value % thermalResistance.BaseValue);
+    }
+    /**
+     * Pow the given ThermalResistance with the current ThermalResistance.
+     * @param thermalResistance The other ThermalResistance.
+     * @returns A new ThermalResistance instance with the results.
+     */
+    pow(thermalResistance) {
+        return new ThermalResistance(this.value ** thermalResistance.BaseValue);
     }
 }
 exports.ThermalResistance = ThermalResistance;

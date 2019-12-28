@@ -18,8 +18,9 @@ class ElectricPotentialDc {
      * Create a new ElectricPotentialDc.
      * @param value The value.
      * @param fromUnit The ‘ElectricPotentialDc’ unit to create from.
+     * The default unit is VoltsDc
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ElectricPotentialDcUnits.VoltsDc) {
         this.voltsdcLazy = null;
         this.microvoltsdcLazy = null;
         this.kilovoltsdcLazy = null;
@@ -29,8 +30,8 @@ class ElectricPotentialDc {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ElectricPotentialDc is VoltDc.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ElectricPotentialDc is VoltsDc.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -141,15 +142,83 @@ class ElectricPotentialDc {
             case ElectricPotentialDcUnits.VoltsDc:
                 return this.VoltsDc + ` Vdc`;
             case ElectricPotentialDcUnits.MicrovoltsDc:
-                return this.MicrovoltsDc + ` Vdc`;
+                return this.MicrovoltsDc + ` `;
             case ElectricPotentialDcUnits.KilovoltsDc:
-                return this.KilovoltsDc + ` Vdc`;
+                return this.KilovoltsDc + ` `;
             case ElectricPotentialDcUnits.MegavoltsDc:
-                return this.MegavoltsDc + ` Vdc`;
+                return this.MegavoltsDc + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ElectricPotentialDc are equals to the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns True if the given ElectricPotentialDc are equal to the current ElectricPotentialDc.
+     */
+    equals(electricPotentialDc) {
+        return this.value === electricPotentialDc.BaseValue;
+    }
+    /**
+     * Compare the given ElectricPotentialDc against the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns 0 if they are equal, -1 if the current ElectricPotentialDc is less then other, 1 if the current ElectricPotentialDc is greater then other.
+     */
+    compareTo(electricPotentialDc) {
+        if (this.value > electricPotentialDc.BaseValue)
+            return 1;
+        if (this.value < electricPotentialDc.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    add(electricPotentialDc) {
+        return new ElectricPotentialDc(this.value + electricPotentialDc.BaseValue);
+    }
+    /**
+     * Subtract the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    subtract(electricPotentialDc) {
+        return new ElectricPotentialDc(this.value - electricPotentialDc.BaseValue);
+    }
+    /**
+     * Multiply the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    multiply(electricPotentialDc) {
+        return new ElectricPotentialDc(this.value * electricPotentialDc.BaseValue);
+    }
+    /**
+     * Divide the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    divide(electricPotentialDc) {
+        return new ElectricPotentialDc(this.value / electricPotentialDc.BaseValue);
+    }
+    /**
+     * Modulo the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    modulo(electricPotentialDc) {
+        return new ElectricPotentialDc(this.value % electricPotentialDc.BaseValue);
+    }
+    /**
+     * Pow the given ElectricPotentialDc with the current ElectricPotentialDc.
+     * @param electricPotentialDc The other ElectricPotentialDc.
+     * @returns A new ElectricPotentialDc instance with the results.
+     */
+    pow(electricPotentialDc) {
+        return new ElectricPotentialDc(this.value ** electricPotentialDc.BaseValue);
     }
 }
 exports.ElectricPotentialDc = ElectricPotentialDc;

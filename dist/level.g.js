@@ -14,8 +14,9 @@ class Level {
      * Create a new Level.
      * @param value The value.
      * @param fromUnit The ‘Level’ unit to create from.
+     * The default unit is Decibels
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = LevelUnits.Decibels) {
         this.decibelsLazy = null;
         this.nepersLazy = null;
         if (isNaN(value))
@@ -23,8 +24,8 @@ class Level {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of Level is Decibel.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Level is Decibels.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -100,6 +101,74 @@ class Level {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given Level are equals to the current Level.
+     * @param level The other Level.
+     * @returns True if the given Level are equal to the current Level.
+     */
+    equals(level) {
+        return this.value === level.BaseValue;
+    }
+    /**
+     * Compare the given Level against the current Level.
+     * @param level The other Level.
+     * @returns 0 if they are equal, -1 if the current Level is less then other, 1 if the current Level is greater then other.
+     */
+    compareTo(level) {
+        if (this.value > level.BaseValue)
+            return 1;
+        if (this.value < level.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given Level with the current Level.
+     * @param level The other Level.
+     * @returns A new Level instance with the results.
+     */
+    add(level) {
+        return new Level(this.value + level.BaseValue);
+    }
+    /**
+     * Subtract the given Level with the current Level.
+     * @param level The other Level.
+     * @returns A new Level instance with the results.
+     */
+    subtract(level) {
+        return new Level(this.value - level.BaseValue);
+    }
+    /**
+     * Multiply the given Level with the current Level.
+     * @param level The other Level.
+     * @returns A new Level instance with the results.
+     */
+    multiply(level) {
+        return new Level(this.value * level.BaseValue);
+    }
+    /**
+     * Divide the given Level with the current Level.
+     * @param level The other Level.
+     * @returns A new Level instance with the results.
+     */
+    divide(level) {
+        return new Level(this.value / level.BaseValue);
+    }
+    /**
+     * Modulo the given Level with the current Level.
+     * @param level The other Level.
+     * @returns A new Level instance with the results.
+     */
+    modulo(level) {
+        return new Level(this.value % level.BaseValue);
+    }
+    /**
+     * Pow the given Level with the current Level.
+     * @param level The other Level.
+     * @returns A new Level instance with the results.
+     */
+    pow(level) {
+        return new Level(this.value ** level.BaseValue);
     }
 }
 exports.Level = Level;

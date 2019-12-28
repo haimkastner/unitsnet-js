@@ -32,8 +32,9 @@ class ForcePerLength {
      * Create a new ForcePerLength.
      * @param value The value.
      * @param fromUnit The ‘ForcePerLength’ unit to create from.
+     * The default unit is NewtonsPerMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = ForcePerLengthUnits.NewtonsPerMeter) {
         this.newtonspermeterLazy = null;
         this.kilogramsforcepermeterLazy = null;
         this.poundsforceperfootLazy = null;
@@ -50,8 +51,8 @@ class ForcePerLength {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of ForcePerLength is NewtonPerMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ForcePerLength is NewtonsPerMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -310,21 +311,89 @@ class ForcePerLength {
             case ForcePerLengthUnits.PoundsForcePerYard:
                 return this.PoundsForcePerYard + ` lbf/yd`;
             case ForcePerLengthUnits.NanonewtonsPerMeter:
-                return this.NanonewtonsPerMeter + ` N/m`;
+                return this.NanonewtonsPerMeter + ` `;
             case ForcePerLengthUnits.MicronewtonsPerMeter:
-                return this.MicronewtonsPerMeter + ` N/m`;
+                return this.MicronewtonsPerMeter + ` `;
             case ForcePerLengthUnits.CentinewtonsPerMeter:
-                return this.CentinewtonsPerMeter + ` N/m`;
+                return this.CentinewtonsPerMeter + ` `;
             case ForcePerLengthUnits.DecinewtonsPerMeter:
-                return this.DecinewtonsPerMeter + ` N/m`;
+                return this.DecinewtonsPerMeter + ` `;
             case ForcePerLengthUnits.KilonewtonsPerMeter:
-                return this.KilonewtonsPerMeter + ` N/m`;
+                return this.KilonewtonsPerMeter + ` `;
             case ForcePerLengthUnits.MeganewtonsPerMeter:
-                return this.MeganewtonsPerMeter + ` N/m`;
+                return this.MeganewtonsPerMeter + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given ForcePerLength are equals to the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns True if the given ForcePerLength are equal to the current ForcePerLength.
+     */
+    equals(forcePerLength) {
+        return this.value === forcePerLength.BaseValue;
+    }
+    /**
+     * Compare the given ForcePerLength against the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns 0 if they are equal, -1 if the current ForcePerLength is less then other, 1 if the current ForcePerLength is greater then other.
+     */
+    compareTo(forcePerLength) {
+        if (this.value > forcePerLength.BaseValue)
+            return 1;
+        if (this.value < forcePerLength.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    add(forcePerLength) {
+        return new ForcePerLength(this.value + forcePerLength.BaseValue);
+    }
+    /**
+     * Subtract the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    subtract(forcePerLength) {
+        return new ForcePerLength(this.value - forcePerLength.BaseValue);
+    }
+    /**
+     * Multiply the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    multiply(forcePerLength) {
+        return new ForcePerLength(this.value * forcePerLength.BaseValue);
+    }
+    /**
+     * Divide the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    divide(forcePerLength) {
+        return new ForcePerLength(this.value / forcePerLength.BaseValue);
+    }
+    /**
+     * Modulo the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    modulo(forcePerLength) {
+        return new ForcePerLength(this.value % forcePerLength.BaseValue);
+    }
+    /**
+     * Pow the given ForcePerLength with the current ForcePerLength.
+     * @param forcePerLength The other ForcePerLength.
+     * @returns A new ForcePerLength instance with the results.
+     */
+    pow(forcePerLength) {
+        return new ForcePerLength(this.value ** forcePerLength.BaseValue);
     }
 }
 exports.ForcePerLength = ForcePerLength;

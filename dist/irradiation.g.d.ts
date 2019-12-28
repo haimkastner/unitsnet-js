@@ -26,11 +26,12 @@ export declare class Irradiation {
      * Create a new Irradiation.
      * @param value The value.
      * @param fromUnit The ‘Irradiation’ unit to create from.
+     * The default unit is JoulesPerSquareMeter
      */
-    constructor(value: number, fromUnit: IrradiationUnits);
+    constructor(value: number, fromUnit?: IrradiationUnits);
     /**
-     * The base value of Irradiation is JoulePerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of Irradiation is JoulesPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -97,5 +98,53 @@ export declare class Irradiation {
      * @returns The string format of the Irradiation.
      */
     toString(toUnit?: IrradiationUnits): string;
+    /**
+     * Check if the given Irradiation are equals to the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns True if the given Irradiation are equal to the current Irradiation.
+     */
+    equals(irradiation: Irradiation): boolean;
+    /**
+     * Compare the given Irradiation against the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns 0 if they are equal, -1 if the current Irradiation is less then other, 1 if the current Irradiation is greater then other.
+     */
+    compareTo(irradiation: Irradiation): number;
+    /**
+     * Add the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    add(irradiation: Irradiation): Irradiation;
+    /**
+     * Subtract the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    subtract(irradiation: Irradiation): Irradiation;
+    /**
+     * Multiply the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    multiply(irradiation: Irradiation): Irradiation;
+    /**
+     * Divide the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    divide(irradiation: Irradiation): Irradiation;
+    /**
+     * Modulo the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    modulo(irradiation: Irradiation): Irradiation;
+    /**
+     * Pow the given Irradiation with the current Irradiation.
+     * @param irradiation The other Irradiation.
+     * @returns A new Irradiation instance with the results.
+     */
+    pow(irradiation: Irradiation): Irradiation;
 }
 //# sourceMappingURL=irradiation.g.d.ts.map

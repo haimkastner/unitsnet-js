@@ -12,16 +12,17 @@ class LapseRate {
      * Create a new LapseRate.
      * @param value The value.
      * @param fromUnit The ‘LapseRate’ unit to create from.
+     * The default unit is DegreesCelciusPerKilometer
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = LapseRateUnits.DegreesCelciusPerKilometer) {
         this.degreescelciusperkilometerLazy = null;
         if (isNaN(value))
             throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of LapseRate is DegreeCelsiusPerKilometer.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of LapseRate is DegreesCelciusPerKilometer.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -75,6 +76,74 @@ class LapseRate {
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given LapseRate are equals to the current LapseRate.
+     * @param lapseRate The other LapseRate.
+     * @returns True if the given LapseRate are equal to the current LapseRate.
+     */
+    equals(lapseRate) {
+        return this.value === lapseRate.BaseValue;
+    }
+    /**
+     * Compare the given LapseRate against the current LapseRate.
+     * @param lapseRate The other LapseRate.
+     * @returns 0 if they are equal, -1 if the current LapseRate is less then other, 1 if the current LapseRate is greater then other.
+     */
+    compareTo(lapseRate) {
+        if (this.value > lapseRate.BaseValue)
+            return 1;
+        if (this.value < lapseRate.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given LapseRate with the current LapseRate.
+     * @param lapseRate The other LapseRate.
+     * @returns A new LapseRate instance with the results.
+     */
+    add(lapseRate) {
+        return new LapseRate(this.value + lapseRate.BaseValue);
+    }
+    /**
+     * Subtract the given LapseRate with the current LapseRate.
+     * @param lapseRate The other LapseRate.
+     * @returns A new LapseRate instance with the results.
+     */
+    subtract(lapseRate) {
+        return new LapseRate(this.value - lapseRate.BaseValue);
+    }
+    /**
+     * Multiply the given LapseRate with the current LapseRate.
+     * @param lapseRate The other LapseRate.
+     * @returns A new LapseRate instance with the results.
+     */
+    multiply(lapseRate) {
+        return new LapseRate(this.value * lapseRate.BaseValue);
+    }
+    /**
+     * Divide the given LapseRate with the current LapseRate.
+     * @param lapseRate The other LapseRate.
+     * @returns A new LapseRate instance with the results.
+     */
+    divide(lapseRate) {
+        return new LapseRate(this.value / lapseRate.BaseValue);
+    }
+    /**
+     * Modulo the given LapseRate with the current LapseRate.
+     * @param lapseRate The other LapseRate.
+     * @returns A new LapseRate instance with the results.
+     */
+    modulo(lapseRate) {
+        return new LapseRate(this.value % lapseRate.BaseValue);
+    }
+    /**
+     * Pow the given LapseRate with the current LapseRate.
+     * @param lapseRate The other LapseRate.
+     * @returns A new LapseRate instance with the results.
+     */
+    pow(lapseRate) {
+        return new LapseRate(this.value ** lapseRate.BaseValue);
     }
 }
 exports.LapseRate = LapseRate;

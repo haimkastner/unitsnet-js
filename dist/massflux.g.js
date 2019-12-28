@@ -14,8 +14,9 @@ class MassFlux {
      * Create a new MassFlux.
      * @param value The value.
      * @param fromUnit The ‘MassFlux’ unit to create from.
+     * The default unit is KilogramsPerSecondPerSquareMeter
      */
-    constructor(value, fromUnit) {
+    constructor(value, fromUnit = MassFluxUnits.KilogramsPerSecondPerSquareMeter) {
         this.gramspersecondpersquaremeterLazy = null;
         this.kilogramspersecondpersquaremeterLazy = null;
         if (isNaN(value))
@@ -23,8 +24,8 @@ class MassFlux {
         this.value = this.convertToBase(value, fromUnit);
     }
     /**
-     * The base value of MassFlux is KilogramPerSecondPerSquareMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of MassFlux is KilogramsPerSecondPerSquareMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue() {
         return this.value;
@@ -95,11 +96,79 @@ class MassFlux {
             case MassFluxUnits.GramsPerSecondPerSquareMeter:
                 return this.GramsPerSecondPerSquareMeter + ` g·s⁻¹·m⁻²`;
             case MassFluxUnits.KilogramsPerSecondPerSquareMeter:
-                return this.KilogramsPerSecondPerSquareMeter + ` g·s⁻¹·m⁻²`;
+                return this.KilogramsPerSecondPerSquareMeter + ` `;
             default:
                 break;
         }
         return this.value.toString();
+    }
+    /**
+     * Check if the given MassFlux are equals to the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns True if the given MassFlux are equal to the current MassFlux.
+     */
+    equals(massFlux) {
+        return this.value === massFlux.BaseValue;
+    }
+    /**
+     * Compare the given MassFlux against the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns 0 if they are equal, -1 if the current MassFlux is less then other, 1 if the current MassFlux is greater then other.
+     */
+    compareTo(massFlux) {
+        if (this.value > massFlux.BaseValue)
+            return 1;
+        if (this.value < massFlux.BaseValue)
+            return -1;
+        return 0;
+    }
+    /**
+     * Add the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    add(massFlux) {
+        return new MassFlux(this.value + massFlux.BaseValue);
+    }
+    /**
+     * Subtract the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    subtract(massFlux) {
+        return new MassFlux(this.value - massFlux.BaseValue);
+    }
+    /**
+     * Multiply the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    multiply(massFlux) {
+        return new MassFlux(this.value * massFlux.BaseValue);
+    }
+    /**
+     * Divide the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    divide(massFlux) {
+        return new MassFlux(this.value / massFlux.BaseValue);
+    }
+    /**
+     * Modulo the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    modulo(massFlux) {
+        return new MassFlux(this.value % massFlux.BaseValue);
+    }
+    /**
+     * Pow the given MassFlux with the current MassFlux.
+     * @param massFlux The other MassFlux.
+     * @returns A new MassFlux instance with the results.
+     */
+    pow(massFlux) {
+        return new MassFlux(this.value ** massFlux.BaseValue);
     }
 }
 exports.MassFlux = MassFlux;

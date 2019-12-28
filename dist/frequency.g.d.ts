@@ -35,11 +35,12 @@ export declare class Frequency {
      * Create a new Frequency.
      * @param value The value.
      * @param fromUnit The ‘Frequency’ unit to create from.
+     * The default unit is Hertz
      */
-    constructor(value: number, fromUnit: FrequencyUnits);
+    constructor(value: number, fromUnit?: FrequencyUnits);
     /**
      * The base value of Frequency is Hertz.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -133,5 +134,53 @@ export declare class Frequency {
      * @returns The string format of the Frequency.
      */
     toString(toUnit?: FrequencyUnits): string;
+    /**
+     * Check if the given Frequency are equals to the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns True if the given Frequency are equal to the current Frequency.
+     */
+    equals(frequency: Frequency): boolean;
+    /**
+     * Compare the given Frequency against the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns 0 if they are equal, -1 if the current Frequency is less then other, 1 if the current Frequency is greater then other.
+     */
+    compareTo(frequency: Frequency): number;
+    /**
+     * Add the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    add(frequency: Frequency): Frequency;
+    /**
+     * Subtract the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    subtract(frequency: Frequency): Frequency;
+    /**
+     * Multiply the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    multiply(frequency: Frequency): Frequency;
+    /**
+     * Divide the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    divide(frequency: Frequency): Frequency;
+    /**
+     * Modulo the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    modulo(frequency: Frequency): Frequency;
+    /**
+     * Pow the given Frequency with the current Frequency.
+     * @param frequency The other Frequency.
+     * @returns A new Frequency instance with the results.
+     */
+    pow(frequency: Frequency): Frequency;
 }
 //# sourceMappingURL=frequency.g.d.ts.map

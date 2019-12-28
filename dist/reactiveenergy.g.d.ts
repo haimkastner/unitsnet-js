@@ -17,11 +17,12 @@ export declare class ReactiveEnergy {
      * Create a new ReactiveEnergy.
      * @param value The value.
      * @param fromUnit The ‘ReactiveEnergy’ unit to create from.
+     * The default unit is VoltampereReactiveHours
      */
-    constructor(value: number, fromUnit: ReactiveEnergyUnits);
+    constructor(value: number, fromUnit?: ReactiveEnergyUnits);
     /**
-     * The base value of ReactiveEnergy is VoltampereReactiveHour.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of ReactiveEnergy is VoltampereReactiveHours.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -61,5 +62,53 @@ export declare class ReactiveEnergy {
      * @returns The string format of the ReactiveEnergy.
      */
     toString(toUnit?: ReactiveEnergyUnits): string;
+    /**
+     * Check if the given ReactiveEnergy are equals to the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns True if the given ReactiveEnergy are equal to the current ReactiveEnergy.
+     */
+    equals(reactiveEnergy: ReactiveEnergy): boolean;
+    /**
+     * Compare the given ReactiveEnergy against the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns 0 if they are equal, -1 if the current ReactiveEnergy is less then other, 1 if the current ReactiveEnergy is greater then other.
+     */
+    compareTo(reactiveEnergy: ReactiveEnergy): number;
+    /**
+     * Add the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    add(reactiveEnergy: ReactiveEnergy): ReactiveEnergy;
+    /**
+     * Subtract the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    subtract(reactiveEnergy: ReactiveEnergy): ReactiveEnergy;
+    /**
+     * Multiply the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    multiply(reactiveEnergy: ReactiveEnergy): ReactiveEnergy;
+    /**
+     * Divide the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    divide(reactiveEnergy: ReactiveEnergy): ReactiveEnergy;
+    /**
+     * Modulo the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    modulo(reactiveEnergy: ReactiveEnergy): ReactiveEnergy;
+    /**
+     * Pow the given ReactiveEnergy with the current ReactiveEnergy.
+     * @param reactiveEnergy The other ReactiveEnergy.
+     * @returns A new ReactiveEnergy instance with the results.
+     */
+    pow(reactiveEnergy: ReactiveEnergy): ReactiveEnergy;
 }
 //# sourceMappingURL=reactiveenergy.g.d.ts.map

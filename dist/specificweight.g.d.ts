@@ -59,11 +59,12 @@ export declare class SpecificWeight {
      * Create a new SpecificWeight.
      * @param value The value.
      * @param fromUnit The ‘SpecificWeight’ unit to create from.
+     * The default unit is NewtonsPerCubicMeter
      */
-    constructor(value: number, fromUnit: SpecificWeightUnits);
+    constructor(value: number, fromUnit?: SpecificWeightUnits);
     /**
-     * The base value of SpecificWeight is NewtonPerCubicMeter.
-     * This accessor used when need any value for calculations and it's better to use directly the base value
+     * The base value of SpecificWeight is NewtonsPerCubicMeter.
+     * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     get BaseValue(): number;
     /** */
@@ -229,5 +230,53 @@ export declare class SpecificWeight {
      * @returns The string format of the SpecificWeight.
      */
     toString(toUnit?: SpecificWeightUnits): string;
+    /**
+     * Check if the given SpecificWeight are equals to the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns True if the given SpecificWeight are equal to the current SpecificWeight.
+     */
+    equals(specificWeight: SpecificWeight): boolean;
+    /**
+     * Compare the given SpecificWeight against the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns 0 if they are equal, -1 if the current SpecificWeight is less then other, 1 if the current SpecificWeight is greater then other.
+     */
+    compareTo(specificWeight: SpecificWeight): number;
+    /**
+     * Add the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    add(specificWeight: SpecificWeight): SpecificWeight;
+    /**
+     * Subtract the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    subtract(specificWeight: SpecificWeight): SpecificWeight;
+    /**
+     * Multiply the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    multiply(specificWeight: SpecificWeight): SpecificWeight;
+    /**
+     * Divide the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    divide(specificWeight: SpecificWeight): SpecificWeight;
+    /**
+     * Modulo the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    modulo(specificWeight: SpecificWeight): SpecificWeight;
+    /**
+     * Pow the given SpecificWeight with the current SpecificWeight.
+     * @param specificWeight The other SpecificWeight.
+     * @returns A new SpecificWeight instance with the results.
+     */
+    pow(specificWeight: SpecificWeight): SpecificWeight;
 }
 //# sourceMappingURL=specificweight.g.d.ts.map
