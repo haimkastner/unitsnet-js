@@ -59,7 +59,7 @@ console.log(results2.toString(LengthUnits.Meters)) // 7 m
 console.log(results3.toString(LengthUnits.Meters)) // 30 m
 console.log(results4.toString(LengthUnits.Meters)) // 3.3333333333333335 m
 console.log(results5.toString(LengthUnits.Meters)) // 1 m
-console.log(results6.toString(LengthUnits.Meters)) // 10000 m
+console.log(results6.toString(LengthUnits.Meters)) // 1000 m
 ```
 
 ### Supported units
