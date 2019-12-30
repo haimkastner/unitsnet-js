@@ -26,7 +26,7 @@ const unitsDocumentationDefinitionsDirectory = '..';
 const unitsTestinationDirectory = '../src'
 
 // Fetch the latest units definitions from the unitsnet repo
-const unitsDefinitions: UnitTypeDefinition[] = fetchUnitsDefinitions('haimkastner/UnitsNet');
+const unitsDefinitions: UnitTypeDefinition[] = fetchUnitsDefinitions('angularsen/UnitsNet');
 
 console.info(`Generating Units ...`);
 
