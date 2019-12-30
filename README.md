@@ -59,7 +59,7 @@ console.log(results2.toString(LengthUnits.Meters)) // 7 m
 console.log(results3.toString(LengthUnits.Meters)) // 30 m
 console.log(results4.toString(LengthUnits.Meters)) // 3.3333333333333335 m
 console.log(results5.toString(LengthUnits.Meters)) // 1 m
-console.log(results6.toString(LengthUnits.Meters)) // 10000 m
+console.log(results6.toString(LengthUnits.Meters)) // 1000 m
 ```
 
 ### Supported units
@@ -194,10 +194,10 @@ Currently, the package supports the following units:
     -   *Molar energy is the amount of energy stored in 1 mole of a substance.*
 - **MolarEntropy**
     -   *Molar entropy is amount of energy required to increase temperature of 1 mole substance by 1 Kelvin.*
-- **Molarity**
-    -   *Molar concentration, also called molarity, amount concentration or substance concentration, is a measure of the concentration of a solute in a solution, or of any chemical species, in terms of amount of substance in a given volume.*
 - **MolarMass**
     -   *In chemistry, the molar mass M is a physical property defined as the mass of a given substance (chemical element or chemical compound) divided by the amount of substance.*
+- **Molarity**
+    -   *Molar concentration, also called molarity, amount concentration or substance concentration, is a measure of the concentration of a solute in a solution, or of any chemical species, in terms of amount of substance in a given volume.*
 - **Permeability**
     -   *In electromagnetism, permeability is the measure of the ability of a material to support the formation of a magnetic field within itself.*
 - **Permittivity**
