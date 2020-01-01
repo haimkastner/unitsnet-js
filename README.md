@@ -1,5 +1,7 @@
 # unitsnet-js
 
+[![Build Status](https://travis-ci.org/haimkastner/unitsnet-js.svg?branch=master)](https://travis-ci.org/haimkastner/unitsnet-js)
+
 The unitsnet-js package is a better way to hold unit variables and easily convert to the destination unit.
 
 The library is based on the great [Units.NET](https://github.com/angularsen/UnitsNet) project, and used their [definitions sources](https://github.com/angularsen/UnitsNet/tree/master/Common/UnitDefinitions) to generate the JS/TS unit classes. 
