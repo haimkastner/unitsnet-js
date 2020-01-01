@@ -3,7 +3,7 @@
   "version": "1.0.12",
   "description": "A better way to hold unit variables and easily convert to the destination unit",
   "scripts": {
-    "prepublish": "npm run generate && npm run test",
+    "prepublishOnly": "npm run generate && npm run test",
     "build": "tsc",
     "generate": "cd generator-scripts && npm run generate && cd.. && npm run build",
     "test": "mocha -r ts-node/register tests/**/*.spec.ts"
