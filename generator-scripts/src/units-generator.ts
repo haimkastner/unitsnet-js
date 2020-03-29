@@ -17,7 +17,7 @@ const prefixesFactor: { [key: string]: number } = {
     Deca: 1e1,
     Deci: 1e-1,
     Centi: 1e-2,
-    Mili: 1e-3,
+    Milli: 1e-3,
     Micro: 1e-6,
     Nano: 1e-9,
     Pico: 1e-12,
