@@ -92,31 +92,30 @@ describe('Unitsnet - tests', () => {
     describe('# Arithmetics methods', () => {
 
         const length1 = Length.FromMeters(10);
-        const length2 = Length.FromDecimeters(100);
-        const length3 = Length.FromMeters(3);
+        const length2 = Length.FromMeters(3);
 
         it(`Should add the valus of the units`, () => {
-            expect(length1.add(length3).Meters).equal(13);
+            expect(length1.add(length2).Meters).equal(13);
         });
 
         it(`Should subtract the valus of the units`, () => {
-            expect(length1.subtract(length3).Meters).equal(7);
+            expect(length1.subtract(length2).Meters).equal(7);
         });
 
         it(`Should multiply the valus of the units`, () => {
-            expect(length1.multiply(length3).Meters).equal(30);
+            expect(length1.multiply(length2).Meters).equal(30);
         });
 
         it(`Should divide the valus of the units`, () => {
-            expect(length1.divide(length3).Meters).above(3.33333333333333).below(3.33333333333334);
+            expect(length1.divide(length2).Meters).above(3.33333333333333).below(3.33333333333334);
         });
 
         it(`Should modulo the valus of the units`, () => {
-            expect(length1.modulo(length3).Meters).equal(1);
+            expect(length1.modulo(length2).Meters).equal(1);
         });
 
         it(`Should pow the valus of the units`, () => {
-            expect(length1.pow(length3).Meters).equal(1000);
+            expect(length1.pow(length2).Meters).equal(1000);
         });
     });
 });
