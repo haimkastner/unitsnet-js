@@ -9,6 +9,8 @@ export enum KinematicViscosityUnits {
     /** */
     Microstokes,
     /** */
+    Millistokes,
+    /** */
     Centistokes,
     /** */
     Decistokes,
@@ -23,6 +25,7 @@ export class KinematicViscosity {
     private stokesLazy: number | null = null;
     private nanostokesLazy: number | null = null;
     private microstokesLazy: number | null = null;
+    private millistokesLazy: number | null = null;
     private centistokesLazy: number | null = null;
     private decistokesLazy: number | null = null;
     private kilostokesLazy: number | null = null;
@@ -77,6 +80,14 @@ export class KinematicViscosity {
             return this.microstokesLazy;
         }
         return this.microstokesLazy = this.convertFromBase(KinematicViscosityUnits.Microstokes);
+    }
+
+    /** */
+    public get Millistokes(): number {
+        if(this.millistokesLazy !== null){
+            return this.millistokesLazy;
+        }
+        return this.millistokesLazy = this.convertFromBase(KinematicViscosityUnits.Millistokes);
     }
 
     /** */
@@ -144,6 +155,16 @@ export class KinematicViscosity {
     }
 
     /**
+     * Create a new KinematicViscosity instance from a Millistokes
+     *
+     * @param value The unit as Millistokes to create a new KinematicViscosity from.
+     * @returns The new KinematicViscosity instance.
+     */
+    public static FromMillistokes(value: number): KinematicViscosity {
+        return new KinematicViscosity(value, KinematicViscosityUnits.Millistokes);
+    }
+
+    /**
      * Create a new KinematicViscosity instance from a Centistokes
      *
      * @param value The unit as Centistokes to create a new KinematicViscosity from.
@@ -184,6 +205,8 @@ export class KinematicViscosity {
                 return (this.value*1e4) / 1e-9;
             case KinematicViscosityUnits.Microstokes:
                 return (this.value*1e4) / 0.000001;
+            case KinematicViscosityUnits.Millistokes:
+                return (this.value*1e4) / 0.001;
             case KinematicViscosityUnits.Centistokes:
                 return (this.value*1e4) / 0.01;
             case KinematicViscosityUnits.Decistokes:
@@ -207,6 +230,8 @@ export class KinematicViscosity {
                 return (value/1e4) * 1e-9;
             case KinematicViscosityUnits.Microstokes:
                 return (value/1e4) * 0.000001;
+            case KinematicViscosityUnits.Millistokes:
+                return (value/1e4) * 0.001;
             case KinematicViscosityUnits.Centistokes:
                 return (value/1e4) * 0.01;
             case KinematicViscosityUnits.Decistokes:
@@ -238,6 +263,8 @@ export class KinematicViscosity {
                 return this.Nanostokes + ` `;
             case KinematicViscosityUnits.Microstokes:
                 return this.Microstokes + ` `;
+            case KinematicViscosityUnits.Millistokes:
+                return this.Millistokes + ` `;
             case KinematicViscosityUnits.Centistokes:
                 return this.Centistokes + ` `;
             case KinematicViscosityUnits.Decistokes:

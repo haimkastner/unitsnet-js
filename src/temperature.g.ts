@@ -5,6 +5,8 @@ export enum TemperatureUnits {
     /** */
     DegreesCelsius,
     /** */
+    MillidegreesCelsius,
+    /** */
     DegreesDelisle,
     /** */
     DegreesFahrenheit,
@@ -25,6 +27,7 @@ export class Temperature {
     private value: number;
     private kelvinsLazy: number | null = null;
     private degreescelsiusLazy: number | null = null;
+    private millidegreescelsiusLazy: number | null = null;
     private degreesdelisleLazy: number | null = null;
     private degreesfahrenheitLazy: number | null = null;
     private degreesnewtonLazy: number | null = null;
@@ -67,6 +70,14 @@ export class Temperature {
             return this.degreescelsiusLazy;
         }
         return this.degreescelsiusLazy = this.convertFromBase(TemperatureUnits.DegreesCelsius);
+    }
+
+    /** */
+    public get MillidegreesCelsius(): number {
+        if(this.millidegreescelsiusLazy !== null){
+            return this.millidegreescelsiusLazy;
+        }
+        return this.millidegreescelsiusLazy = this.convertFromBase(TemperatureUnits.MillidegreesCelsius);
     }
 
     /** */
@@ -146,6 +157,16 @@ export class Temperature {
     }
 
     /**
+     * Create a new Temperature instance from a MillidegreesCelsius
+     *
+     * @param value The unit as MillidegreesCelsius to create a new Temperature from.
+     * @returns The new Temperature instance.
+     */
+    public static FromMillidegreesCelsius(value: number): Temperature {
+        return new Temperature(value, TemperatureUnits.MillidegreesCelsius);
+    }
+
+    /**
      * Create a new Temperature instance from a DegreesDelisle
      *
      * @param value The unit as DegreesDelisle to create a new Temperature from.
@@ -222,6 +243,8 @@ export class Temperature {
                 return this.value;
             case TemperatureUnits.DegreesCelsius:
                 return this.value - 273.15;
+            case TemperatureUnits.MillidegreesCelsius:
+                return (this.value - 273.15) * 1000;
             case TemperatureUnits.DegreesDelisle:
                 return (this.value - 373.15)*-3/2;
             case TemperatureUnits.DegreesFahrenheit:
@@ -249,6 +272,8 @@ export class Temperature {
                 return value;
             case TemperatureUnits.DegreesCelsius:
                 return value + 273.15;
+            case TemperatureUnits.MillidegreesCelsius:
+                return value / 1000 + 273.15;
             case TemperatureUnits.DegreesDelisle:
                 return value*-2/3 + 373.15;
             case TemperatureUnits.DegreesFahrenheit:
@@ -284,6 +309,8 @@ export class Temperature {
                 return this.Kelvins + ` K`;
             case TemperatureUnits.DegreesCelsius:
                 return this.DegreesCelsius + ` °C`;
+            case TemperatureUnits.MillidegreesCelsius:
+                return this.MillidegreesCelsius + ` m°C`;
             case TemperatureUnits.DegreesDelisle:
                 return this.DegreesDelisle + ` °De`;
             case TemperatureUnits.DegreesFahrenheit:

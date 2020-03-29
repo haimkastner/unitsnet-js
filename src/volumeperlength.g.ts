@@ -5,7 +5,11 @@ export enum VolumePerLengthUnits {
     /** */
     LitersPerMeter,
     /** */
-    OilBarrelsPerFoot
+    OilBarrelsPerFoot,
+    /** */
+    CubicYardsPerFoot,
+    /** */
+    CubicYardsPerUsSurveyFoot
 }
 
 /** Volume, typically of fluid, that a container can hold within a unit of length. */
@@ -14,6 +18,8 @@ export class VolumePerLength {
     private cubicmeterspermeterLazy: number | null = null;
     private literspermeterLazy: number | null = null;
     private oilbarrelsperfootLazy: number | null = null;
+    private cubicyardsperfootLazy: number | null = null;
+    private cubicyardsperussurveyfootLazy: number | null = null;
 
     /**
      * Create a new VolumePerLength.
@@ -59,6 +65,22 @@ export class VolumePerLength {
         return this.oilbarrelsperfootLazy = this.convertFromBase(VolumePerLengthUnits.OilBarrelsPerFoot);
     }
 
+    /** */
+    public get CubicYardsPerFoot(): number {
+        if(this.cubicyardsperfootLazy !== null){
+            return this.cubicyardsperfootLazy;
+        }
+        return this.cubicyardsperfootLazy = this.convertFromBase(VolumePerLengthUnits.CubicYardsPerFoot);
+    }
+
+    /** */
+    public get CubicYardsPerUsSurveyFoot(): number {
+        if(this.cubicyardsperussurveyfootLazy !== null){
+            return this.cubicyardsperussurveyfootLazy;
+        }
+        return this.cubicyardsperussurveyfootLazy = this.convertFromBase(VolumePerLengthUnits.CubicYardsPerUsSurveyFoot);
+    }
+
     /**
      * Create a new VolumePerLength instance from a CubicMetersPerMeter
      *
@@ -89,6 +111,26 @@ export class VolumePerLength {
         return new VolumePerLength(value, VolumePerLengthUnits.OilBarrelsPerFoot);
     }
 
+    /**
+     * Create a new VolumePerLength instance from a CubicYardsPerFoot
+     *
+     * @param value The unit as CubicYardsPerFoot to create a new VolumePerLength from.
+     * @returns The new VolumePerLength instance.
+     */
+    public static FromCubicYardsPerFoot(value: number): VolumePerLength {
+        return new VolumePerLength(value, VolumePerLengthUnits.CubicYardsPerFoot);
+    }
+
+    /**
+     * Create a new VolumePerLength instance from a CubicYardsPerUsSurveyFoot
+     *
+     * @param value The unit as CubicYardsPerUsSurveyFoot to create a new VolumePerLength from.
+     * @returns The new VolumePerLength instance.
+     */
+    public static FromCubicYardsPerUsSurveyFoot(value: number): VolumePerLength {
+        return new VolumePerLength(value, VolumePerLengthUnits.CubicYardsPerUsSurveyFoot);
+    }
+
     private convertFromBase(toUnit: VolumePerLengthUnits): number {
         switch (toUnit) {
                 
@@ -98,6 +140,10 @@ export class VolumePerLength {
                 return this.value*1000;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
                 return this.value*1.91713408;
+            case VolumePerLengthUnits.CubicYardsPerFoot:
+                return this.value/2.50838208;
+            case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
+                return this.value/2.50837706323584;
             default:
                 break;
         }
@@ -113,6 +159,10 @@ export class VolumePerLength {
                 return value/1000;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
                 return value/1.91713408;
+            case VolumePerLengthUnits.CubicYardsPerFoot:
+                return value*2.50838208;
+            case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
+                return value*2.50837706323584;
             default:
                 break;
         }
@@ -136,6 +186,10 @@ export class VolumePerLength {
                 return this.LitersPerMeter + ` l/m`;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
                 return this.OilBarrelsPerFoot + ` bbl/ft`;
+            case VolumePerLengthUnits.CubicYardsPerFoot:
+                return this.CubicYardsPerFoot + ` yd³/ft`;
+            case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
+                return this.CubicYardsPerUsSurveyFoot + ` yd³/ftUS`;
         default:
             break;
         }

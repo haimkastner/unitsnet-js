@@ -9,6 +9,8 @@ export enum MolarMassUnits {
     /** */
     MicrogramsPerMole,
     /** */
+    MilligramsPerMole,
+    /** */
     CentigramsPerMole,
     /** */
     DecigramsPerMole,
@@ -31,6 +33,7 @@ export class MolarMass {
     private poundspermoleLazy: number | null = null;
     private nanogramspermoleLazy: number | null = null;
     private microgramspermoleLazy: number | null = null;
+    private milligramspermoleLazy: number | null = null;
     private centigramspermoleLazy: number | null = null;
     private decigramspermoleLazy: number | null = null;
     private decagramspermoleLazy: number | null = null;
@@ -89,6 +92,14 @@ export class MolarMass {
             return this.microgramspermoleLazy;
         }
         return this.microgramspermoleLazy = this.convertFromBase(MolarMassUnits.MicrogramsPerMole);
+    }
+
+    /** */
+    public get MilligramsPerMole(): number {
+        if(this.milligramspermoleLazy !== null){
+            return this.milligramspermoleLazy;
+        }
+        return this.milligramspermoleLazy = this.convertFromBase(MolarMassUnits.MilligramsPerMole);
     }
 
     /** */
@@ -188,6 +199,16 @@ export class MolarMass {
     }
 
     /**
+     * Create a new MolarMass instance from a MilligramsPerMole
+     *
+     * @param value The unit as MilligramsPerMole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
+    public static FromMilligramsPerMole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.MilligramsPerMole);
+    }
+
+    /**
      * Create a new MolarMass instance from a CentigramsPerMole
      *
      * @param value The unit as CentigramsPerMole to create a new MolarMass from.
@@ -268,6 +289,8 @@ export class MolarMass {
                 return (this.value*1e3) / 1e-9;
             case MolarMassUnits.MicrogramsPerMole:
                 return (this.value*1e3) / 0.000001;
+            case MolarMassUnits.MilligramsPerMole:
+                return (this.value*1e3) / 0.001;
             case MolarMassUnits.CentigramsPerMole:
                 return (this.value*1e3) / 0.01;
             case MolarMassUnits.DecigramsPerMole:
@@ -299,6 +322,8 @@ export class MolarMass {
                 return (value/1e3) * 1e-9;
             case MolarMassUnits.MicrogramsPerMole:
                 return (value/1e3) * 0.000001;
+            case MolarMassUnits.MilligramsPerMole:
+                return (value/1e3) * 0.001;
             case MolarMassUnits.CentigramsPerMole:
                 return (value/1e3) * 0.01;
             case MolarMassUnits.DecigramsPerMole:
@@ -338,6 +363,8 @@ export class MolarMass {
                 return this.NanogramsPerMole + ` `;
             case MolarMassUnits.MicrogramsPerMole:
                 return this.MicrogramsPerMole + ` `;
+            case MolarMassUnits.MilligramsPerMole:
+                return this.MilligramsPerMole + ` `;
             case MolarMassUnits.CentigramsPerMole:
                 return this.CentigramsPerMole + ` `;
             case MolarMassUnits.DecigramsPerMole:

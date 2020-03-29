@@ -35,6 +35,8 @@ export enum MassConcentrationUnits {
     /** */
     KilogramsPerCubicMeter,
     /** */
+    MilligramsPerCubicMeter,
+    /** */
     MicrogramsPerCubicMeter,
     /** */
     PicogramsPerMilliliter,
@@ -42,6 +44,8 @@ export enum MassConcentrationUnits {
     NanogramsPerMilliliter,
     /** */
     MicrogramsPerMilliliter,
+    /** */
+    MilligramsPerMilliliter,
     /** */
     CentigramsPerMilliliter,
     /** */
@@ -53,6 +57,8 @@ export enum MassConcentrationUnits {
     /** */
     MicrogramsPerDeciliter,
     /** */
+    MilligramsPerDeciliter,
+    /** */
     CentigramsPerDeciliter,
     /** */
     DecigramsPerDeciliter,
@@ -62,6 +68,8 @@ export enum MassConcentrationUnits {
     NanogramsPerLiter,
     /** */
     MicrogramsPerLiter,
+    /** */
+    MilligramsPerLiter,
     /** */
     CentigramsPerLiter,
     /** */
@@ -94,20 +102,24 @@ export class MassConcentration {
     private kilogramspercubicmillimeterLazy: number | null = null;
     private kilogramspercubiccentimeterLazy: number | null = null;
     private kilogramspercubicmeterLazy: number | null = null;
+    private milligramspercubicmeterLazy: number | null = null;
     private microgramspercubicmeterLazy: number | null = null;
     private picogramspermilliliterLazy: number | null = null;
     private nanogramspermilliliterLazy: number | null = null;
     private microgramspermilliliterLazy: number | null = null;
+    private milligramspermilliliterLazy: number | null = null;
     private centigramspermilliliterLazy: number | null = null;
     private decigramspermilliliterLazy: number | null = null;
     private picogramsperdeciliterLazy: number | null = null;
     private nanogramsperdeciliterLazy: number | null = null;
     private microgramsperdeciliterLazy: number | null = null;
+    private milligramsperdeciliterLazy: number | null = null;
     private centigramsperdeciliterLazy: number | null = null;
     private decigramsperdeciliterLazy: number | null = null;
     private picogramsperliterLazy: number | null = null;
     private nanogramsperliterLazy: number | null = null;
     private microgramsperliterLazy: number | null = null;
+    private milligramsperliterLazy: number | null = null;
     private centigramsperliterLazy: number | null = null;
     private decigramsperliterLazy: number | null = null;
     private kilogramsperliterLazy: number | null = null;
@@ -271,6 +283,14 @@ export class MassConcentration {
     }
 
     /** */
+    public get MilligramsPerCubicMeter(): number {
+        if(this.milligramspercubicmeterLazy !== null){
+            return this.milligramspercubicmeterLazy;
+        }
+        return this.milligramspercubicmeterLazy = this.convertFromBase(MassConcentrationUnits.MilligramsPerCubicMeter);
+    }
+
+    /** */
     public get MicrogramsPerCubicMeter(): number {
         if(this.microgramspercubicmeterLazy !== null){
             return this.microgramspercubicmeterLazy;
@@ -300,6 +320,14 @@ export class MassConcentration {
             return this.microgramspermilliliterLazy;
         }
         return this.microgramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.MicrogramsPerMilliliter);
+    }
+
+    /** */
+    public get MilligramsPerMilliliter(): number {
+        if(this.milligramspermilliliterLazy !== null){
+            return this.milligramspermilliliterLazy;
+        }
+        return this.milligramspermilliliterLazy = this.convertFromBase(MassConcentrationUnits.MilligramsPerMilliliter);
     }
 
     /** */
@@ -343,6 +371,14 @@ export class MassConcentration {
     }
 
     /** */
+    public get MilligramsPerDeciliter(): number {
+        if(this.milligramsperdeciliterLazy !== null){
+            return this.milligramsperdeciliterLazy;
+        }
+        return this.milligramsperdeciliterLazy = this.convertFromBase(MassConcentrationUnits.MilligramsPerDeciliter);
+    }
+
+    /** */
     public get CentigramsPerDeciliter(): number {
         if(this.centigramsperdeciliterLazy !== null){
             return this.centigramsperdeciliterLazy;
@@ -380,6 +416,14 @@ export class MassConcentration {
             return this.microgramsperliterLazy;
         }
         return this.microgramsperliterLazy = this.convertFromBase(MassConcentrationUnits.MicrogramsPerLiter);
+    }
+
+    /** */
+    public get MilligramsPerLiter(): number {
+        if(this.milligramsperliterLazy !== null){
+            return this.milligramsperliterLazy;
+        }
+        return this.milligramsperliterLazy = this.convertFromBase(MassConcentrationUnits.MilligramsPerLiter);
     }
 
     /** */
@@ -593,6 +637,16 @@ export class MassConcentration {
     }
 
     /**
+     * Create a new MassConcentration instance from a MilligramsPerCubicMeter
+     *
+     * @param value The unit as MilligramsPerCubicMeter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
+    public static FromMilligramsPerCubicMeter(value: number): MassConcentration {
+        return new MassConcentration(value, MassConcentrationUnits.MilligramsPerCubicMeter);
+    }
+
+    /**
      * Create a new MassConcentration instance from a MicrogramsPerCubicMeter
      *
      * @param value The unit as MicrogramsPerCubicMeter to create a new MassConcentration from.
@@ -630,6 +684,16 @@ export class MassConcentration {
      */
     public static FromMicrogramsPerMilliliter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.MicrogramsPerMilliliter);
+    }
+
+    /**
+     * Create a new MassConcentration instance from a MilligramsPerMilliliter
+     *
+     * @param value The unit as MilligramsPerMilliliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
+    public static FromMilligramsPerMilliliter(value: number): MassConcentration {
+        return new MassConcentration(value, MassConcentrationUnits.MilligramsPerMilliliter);
     }
 
     /**
@@ -683,6 +747,16 @@ export class MassConcentration {
     }
 
     /**
+     * Create a new MassConcentration instance from a MilligramsPerDeciliter
+     *
+     * @param value The unit as MilligramsPerDeciliter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
+    public static FromMilligramsPerDeciliter(value: number): MassConcentration {
+        return new MassConcentration(value, MassConcentrationUnits.MilligramsPerDeciliter);
+    }
+
+    /**
      * Create a new MassConcentration instance from a CentigramsPerDeciliter
      *
      * @param value The unit as CentigramsPerDeciliter to create a new MassConcentration from.
@@ -730,6 +804,16 @@ export class MassConcentration {
      */
     public static FromMicrogramsPerLiter(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.MicrogramsPerLiter);
+    }
+
+    /**
+     * Create a new MassConcentration instance from a MilligramsPerLiter
+     *
+     * @param value The unit as MilligramsPerLiter to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
+    public static FromMilligramsPerLiter(value: number): MassConcentration {
+        return new MassConcentration(value, MassConcentrationUnits.MilligramsPerLiter);
     }
 
     /**
@@ -819,6 +903,8 @@ export class MassConcentration {
                 return (this.value*1e-3) / 1000;
             case MassConcentrationUnits.KilogramsPerCubicMeter:
                 return (this.value*1e3) / 1000;
+            case MassConcentrationUnits.MilligramsPerCubicMeter:
+                return (this.value*1e3) / 0.001;
             case MassConcentrationUnits.MicrogramsPerCubicMeter:
                 return (this.value*1e3) / 0.000001;
             case MassConcentrationUnits.PicogramsPerMilliliter:
@@ -827,6 +913,8 @@ export class MassConcentration {
                 return (this.value*1e-3) / 1e-9;
             case MassConcentrationUnits.MicrogramsPerMilliliter:
                 return (this.value*1e-3) / 0.000001;
+            case MassConcentrationUnits.MilligramsPerMilliliter:
+                return (this.value*1e-3) / 0.001;
             case MassConcentrationUnits.CentigramsPerMilliliter:
                 return (this.value*1e-3) / 0.01;
             case MassConcentrationUnits.DecigramsPerMilliliter:
@@ -837,6 +925,8 @@ export class MassConcentration {
                 return (this.value*1e-1) / 1e-9;
             case MassConcentrationUnits.MicrogramsPerDeciliter:
                 return (this.value*1e-1) / 0.000001;
+            case MassConcentrationUnits.MilligramsPerDeciliter:
+                return (this.value*1e-1) / 0.001;
             case MassConcentrationUnits.CentigramsPerDeciliter:
                 return (this.value*1e-1) / 0.01;
             case MassConcentrationUnits.DecigramsPerDeciliter:
@@ -847,6 +937,8 @@ export class MassConcentration {
                 return (this.value) / 1e-9;
             case MassConcentrationUnits.MicrogramsPerLiter:
                 return (this.value) / 0.000001;
+            case MassConcentrationUnits.MilligramsPerLiter:
+                return (this.value) / 0.001;
             case MassConcentrationUnits.CentigramsPerLiter:
                 return (this.value) / 0.01;
             case MassConcentrationUnits.DecigramsPerLiter:
@@ -900,6 +992,8 @@ export class MassConcentration {
                 return (value/1e-3) * 1000;
             case MassConcentrationUnits.KilogramsPerCubicMeter:
                 return (value/1e3) * 1000;
+            case MassConcentrationUnits.MilligramsPerCubicMeter:
+                return (value/1e3) * 0.001;
             case MassConcentrationUnits.MicrogramsPerCubicMeter:
                 return (value/1e3) * 0.000001;
             case MassConcentrationUnits.PicogramsPerMilliliter:
@@ -908,6 +1002,8 @@ export class MassConcentration {
                 return (value/1e-3) * 1e-9;
             case MassConcentrationUnits.MicrogramsPerMilliliter:
                 return (value/1e-3) * 0.000001;
+            case MassConcentrationUnits.MilligramsPerMilliliter:
+                return (value/1e-3) * 0.001;
             case MassConcentrationUnits.CentigramsPerMilliliter:
                 return (value/1e-3) * 0.01;
             case MassConcentrationUnits.DecigramsPerMilliliter:
@@ -918,6 +1014,8 @@ export class MassConcentration {
                 return (value/1e-1) * 1e-9;
             case MassConcentrationUnits.MicrogramsPerDeciliter:
                 return (value/1e-1) * 0.000001;
+            case MassConcentrationUnits.MilligramsPerDeciliter:
+                return (value/1e-1) * 0.001;
             case MassConcentrationUnits.CentigramsPerDeciliter:
                 return (value/1e-1) * 0.01;
             case MassConcentrationUnits.DecigramsPerDeciliter:
@@ -928,6 +1026,8 @@ export class MassConcentration {
                 return (value) * 1e-9;
             case MassConcentrationUnits.MicrogramsPerLiter:
                 return (value) * 0.000001;
+            case MassConcentrationUnits.MilligramsPerLiter:
+                return (value) * 0.001;
             case MassConcentrationUnits.CentigramsPerLiter:
                 return (value) * 0.01;
             case MassConcentrationUnits.DecigramsPerLiter:
@@ -989,6 +1089,8 @@ export class MassConcentration {
                 return this.KilogramsPerCubicCentimeter + ` `;
             case MassConcentrationUnits.KilogramsPerCubicMeter:
                 return this.KilogramsPerCubicMeter + ` `;
+            case MassConcentrationUnits.MilligramsPerCubicMeter:
+                return this.MilligramsPerCubicMeter + ` `;
             case MassConcentrationUnits.MicrogramsPerCubicMeter:
                 return this.MicrogramsPerCubicMeter + ` `;
             case MassConcentrationUnits.PicogramsPerMilliliter:
@@ -997,6 +1099,8 @@ export class MassConcentration {
                 return this.NanogramsPerMilliliter + ` `;
             case MassConcentrationUnits.MicrogramsPerMilliliter:
                 return this.MicrogramsPerMilliliter + ` `;
+            case MassConcentrationUnits.MilligramsPerMilliliter:
+                return this.MilligramsPerMilliliter + ` `;
             case MassConcentrationUnits.CentigramsPerMilliliter:
                 return this.CentigramsPerMilliliter + ` `;
             case MassConcentrationUnits.DecigramsPerMilliliter:
@@ -1007,6 +1111,8 @@ export class MassConcentration {
                 return this.NanogramsPerDeciliter + ` `;
             case MassConcentrationUnits.MicrogramsPerDeciliter:
                 return this.MicrogramsPerDeciliter + ` `;
+            case MassConcentrationUnits.MilligramsPerDeciliter:
+                return this.MilligramsPerDeciliter + ` `;
             case MassConcentrationUnits.CentigramsPerDeciliter:
                 return this.CentigramsPerDeciliter + ` `;
             case MassConcentrationUnits.DecigramsPerDeciliter:
@@ -1017,6 +1123,8 @@ export class MassConcentration {
                 return this.NanogramsPerLiter + ` `;
             case MassConcentrationUnits.MicrogramsPerLiter:
                 return this.MicrogramsPerLiter + ` `;
+            case MassConcentrationUnits.MilligramsPerLiter:
+                return this.MilligramsPerLiter + ` `;
             case MassConcentrationUnits.CentigramsPerLiter:
                 return this.CentigramsPerLiter + ` `;
             case MassConcentrationUnits.DecigramsPerLiter:

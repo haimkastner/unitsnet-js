@@ -39,6 +39,8 @@ export enum SpeedUnits {
     /** */
     MicrometersPerSecond,
     /** */
+    MillimetersPerSecond,
+    /** */
     CentimetersPerSecond,
     /** */
     DecimetersPerSecond,
@@ -49,11 +51,15 @@ export enum SpeedUnits {
     /** */
     MicrometersPerMinutes,
     /** */
+    MillimetersPerMinutes,
+    /** */
     CentimetersPerMinutes,
     /** */
     DecimetersPerMinutes,
     /** */
     KilometersPerMinutes,
+    /** */
+    MillimetersPerHour,
     /** */
     CentimetersPerHour,
     /** */
@@ -82,14 +88,17 @@ export class Speed {
     private milesperhourLazy: number | null = null;
     private nanometerspersecondLazy: number | null = null;
     private micrometerspersecondLazy: number | null = null;
+    private millimeterspersecondLazy: number | null = null;
     private centimeterspersecondLazy: number | null = null;
     private decimeterspersecondLazy: number | null = null;
     private kilometerspersecondLazy: number | null = null;
     private nanometersperminutesLazy: number | null = null;
     private micrometersperminutesLazy: number | null = null;
+    private millimetersperminutesLazy: number | null = null;
     private centimetersperminutesLazy: number | null = null;
     private decimetersperminutesLazy: number | null = null;
     private kilometersperminutesLazy: number | null = null;
+    private millimetersperhourLazy: number | null = null;
     private centimetersperhourLazy: number | null = null;
     private kilometersperhourLazy: number | null = null;
 
@@ -266,6 +275,14 @@ export class Speed {
     }
 
     /** */
+    public get MillimetersPerSecond(): number {
+        if(this.millimeterspersecondLazy !== null){
+            return this.millimeterspersecondLazy;
+        }
+        return this.millimeterspersecondLazy = this.convertFromBase(SpeedUnits.MillimetersPerSecond);
+    }
+
+    /** */
     public get CentimetersPerSecond(): number {
         if(this.centimeterspersecondLazy !== null){
             return this.centimeterspersecondLazy;
@@ -306,6 +323,14 @@ export class Speed {
     }
 
     /** */
+    public get MillimetersPerMinutes(): number {
+        if(this.millimetersperminutesLazy !== null){
+            return this.millimetersperminutesLazy;
+        }
+        return this.millimetersperminutesLazy = this.convertFromBase(SpeedUnits.MillimetersPerMinutes);
+    }
+
+    /** */
     public get CentimetersPerMinutes(): number {
         if(this.centimetersperminutesLazy !== null){
             return this.centimetersperminutesLazy;
@@ -327,6 +352,14 @@ export class Speed {
             return this.kilometersperminutesLazy;
         }
         return this.kilometersperminutesLazy = this.convertFromBase(SpeedUnits.KilometersPerMinutes);
+    }
+
+    /** */
+    public get MillimetersPerHour(): number {
+        if(this.millimetersperhourLazy !== null){
+            return this.millimetersperhourLazy;
+        }
+        return this.millimetersperhourLazy = this.convertFromBase(SpeedUnits.MillimetersPerHour);
     }
 
     /** */
@@ -536,6 +569,16 @@ export class Speed {
     }
 
     /**
+     * Create a new Speed instance from a MillimetersPerSecond
+     *
+     * @param value The unit as MillimetersPerSecond to create a new Speed from.
+     * @returns The new Speed instance.
+     */
+    public static FromMillimetersPerSecond(value: number): Speed {
+        return new Speed(value, SpeedUnits.MillimetersPerSecond);
+    }
+
+    /**
      * Create a new Speed instance from a CentimetersPerSecond
      *
      * @param value The unit as CentimetersPerSecond to create a new Speed from.
@@ -586,6 +629,16 @@ export class Speed {
     }
 
     /**
+     * Create a new Speed instance from a MillimetersPerMinutes
+     *
+     * @param value The unit as MillimetersPerMinutes to create a new Speed from.
+     * @returns The new Speed instance.
+     */
+    public static FromMillimetersPerMinutes(value: number): Speed {
+        return new Speed(value, SpeedUnits.MillimetersPerMinutes);
+    }
+
+    /**
      * Create a new Speed instance from a CentimetersPerMinutes
      *
      * @param value The unit as CentimetersPerMinutes to create a new Speed from.
@@ -613,6 +666,16 @@ export class Speed {
      */
     public static FromKilometersPerMinutes(value: number): Speed {
         return new Speed(value, SpeedUnits.KilometersPerMinutes);
+    }
+
+    /**
+     * Create a new Speed instance from a MillimetersPerHour
+     *
+     * @param value The unit as MillimetersPerHour to create a new Speed from.
+     * @returns The new Speed instance.
+     */
+    public static FromMillimetersPerHour(value: number): Speed {
+        return new Speed(value, SpeedUnits.MillimetersPerHour);
     }
 
     /**
@@ -676,6 +739,8 @@ export class Speed {
                 return (this.value) / 1e-9;
             case SpeedUnits.MicrometersPerSecond:
                 return (this.value) / 0.000001;
+            case SpeedUnits.MillimetersPerSecond:
+                return (this.value) / 0.001;
             case SpeedUnits.CentimetersPerSecond:
                 return (this.value) / 0.01;
             case SpeedUnits.DecimetersPerSecond:
@@ -686,12 +751,16 @@ export class Speed {
                 return (this.value*60) / 1e-9;
             case SpeedUnits.MicrometersPerMinutes:
                 return (this.value*60) / 0.000001;
+            case SpeedUnits.MillimetersPerMinutes:
+                return (this.value*60) / 0.001;
             case SpeedUnits.CentimetersPerMinutes:
                 return (this.value*60) / 0.01;
             case SpeedUnits.DecimetersPerMinutes:
                 return (this.value*60) / 0.1;
             case SpeedUnits.KilometersPerMinutes:
                 return (this.value*60) / 1000;
+            case SpeedUnits.MillimetersPerHour:
+                return (this.value*3600) / 0.001;
             case SpeedUnits.CentimetersPerHour:
                 return (this.value*3600) / 0.01;
             case SpeedUnits.KilometersPerHour:
@@ -743,6 +812,8 @@ export class Speed {
                 return (value) * 1e-9;
             case SpeedUnits.MicrometersPerSecond:
                 return (value) * 0.000001;
+            case SpeedUnits.MillimetersPerSecond:
+                return (value) * 0.001;
             case SpeedUnits.CentimetersPerSecond:
                 return (value) * 0.01;
             case SpeedUnits.DecimetersPerSecond:
@@ -753,12 +824,16 @@ export class Speed {
                 return (value/60) * 1e-9;
             case SpeedUnits.MicrometersPerMinutes:
                 return (value/60) * 0.000001;
+            case SpeedUnits.MillimetersPerMinutes:
+                return (value/60) * 0.001;
             case SpeedUnits.CentimetersPerMinutes:
                 return (value/60) * 0.01;
             case SpeedUnits.DecimetersPerMinutes:
                 return (value/60) * 0.1;
             case SpeedUnits.KilometersPerMinutes:
                 return (value/60) * 1000;
+            case SpeedUnits.MillimetersPerHour:
+                return (value/3600) * 0.001;
             case SpeedUnits.CentimetersPerHour:
                 return (value/3600) * 0.01;
             case SpeedUnits.KilometersPerHour:
@@ -818,6 +893,8 @@ export class Speed {
                 return this.NanometersPerSecond + ` `;
             case SpeedUnits.MicrometersPerSecond:
                 return this.MicrometersPerSecond + ` `;
+            case SpeedUnits.MillimetersPerSecond:
+                return this.MillimetersPerSecond + ` `;
             case SpeedUnits.CentimetersPerSecond:
                 return this.CentimetersPerSecond + ` `;
             case SpeedUnits.DecimetersPerSecond:
@@ -828,12 +905,16 @@ export class Speed {
                 return this.NanometersPerMinutes + ` `;
             case SpeedUnits.MicrometersPerMinutes:
                 return this.MicrometersPerMinutes + ` `;
+            case SpeedUnits.MillimetersPerMinutes:
+                return this.MillimetersPerMinutes + ` `;
             case SpeedUnits.CentimetersPerMinutes:
                 return this.CentimetersPerMinutes + ` `;
             case SpeedUnits.DecimetersPerMinutes:
                 return this.DecimetersPerMinutes + ` `;
             case SpeedUnits.KilometersPerMinutes:
                 return this.KilometersPerMinutes + ` `;
+            case SpeedUnits.MillimetersPerHour:
+                return this.MillimetersPerHour + ` `;
             case SpeedUnits.CentimetersPerHour:
                 return this.CentimetersPerHour + ` `;
             case SpeedUnits.KilometersPerHour:

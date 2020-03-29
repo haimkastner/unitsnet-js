@@ -11,6 +11,8 @@ export enum FrequencyUnits {
     /** */
     BeatsPerMinute,
     /** */
+    PerSecond,
+    /** */
     Kilohertz,
     /** */
     Megahertz,
@@ -28,6 +30,7 @@ export class Frequency {
     private cyclesperminuteLazy: number | null = null;
     private cyclesperhourLazy: number | null = null;
     private beatsperminuteLazy: number | null = null;
+    private persecondLazy: number | null = null;
     private kilohertzLazy: number | null = null;
     private megahertzLazy: number | null = null;
     private gigahertzLazy: number | null = null;
@@ -91,6 +94,14 @@ export class Frequency {
             return this.beatsperminuteLazy;
         }
         return this.beatsperminuteLazy = this.convertFromBase(FrequencyUnits.BeatsPerMinute);
+    }
+
+    /** */
+    public get PerSecond(): number {
+        if(this.persecondLazy !== null){
+            return this.persecondLazy;
+        }
+        return this.persecondLazy = this.convertFromBase(FrequencyUnits.PerSecond);
     }
 
     /** */
@@ -176,6 +187,16 @@ export class Frequency {
     }
 
     /**
+     * Create a new Frequency instance from a PerSecond
+     *
+     * @param value The unit as PerSecond to create a new Frequency from.
+     * @returns The new Frequency instance.
+     */
+    public static FromPerSecond(value: number): Frequency {
+        return new Frequency(value, FrequencyUnits.PerSecond);
+    }
+
+    /**
      * Create a new Frequency instance from a Kilohertz
      *
      * @param value The unit as Kilohertz to create a new Frequency from.
@@ -228,6 +249,8 @@ export class Frequency {
                 return this.value*3600;
             case FrequencyUnits.BeatsPerMinute:
                 return this.value*60;
+            case FrequencyUnits.PerSecond:
+                return this.value;
             case FrequencyUnits.Kilohertz:
                 return (this.value) / 1000;
             case FrequencyUnits.Megahertz:
@@ -255,6 +278,8 @@ export class Frequency {
                 return value/3600;
             case FrequencyUnits.BeatsPerMinute:
                 return value/60;
+            case FrequencyUnits.PerSecond:
+                return value;
             case FrequencyUnits.Kilohertz:
                 return (value) * 1000;
             case FrequencyUnits.Megahertz:
@@ -290,6 +315,8 @@ export class Frequency {
                 return this.CyclesPerHour + ` cph`;
             case FrequencyUnits.BeatsPerMinute:
                 return this.BeatsPerMinute + ` bpm`;
+            case FrequencyUnits.PerSecond:
+                return this.PerSecond + ` s⁻¹`;
             case FrequencyUnits.Kilohertz:
                 return this.Kilohertz + ` `;
             case FrequencyUnits.Megahertz:

@@ -9,6 +9,8 @@ export enum AmountOfSubstanceUnits {
     /** */
     Micromoles,
     /** */
+    Millimoles,
+    /** */
     Centimoles,
     /** */
     Decimoles,
@@ -20,6 +22,8 @@ export enum AmountOfSubstanceUnits {
     NanopoundMoles,
     /** */
     MicropoundMoles,
+    /** */
+    MillipoundMoles,
     /** */
     CentipoundMoles,
     /** */
@@ -35,12 +39,14 @@ export class AmountOfSubstance {
     private poundmolesLazy: number | null = null;
     private nanomolesLazy: number | null = null;
     private micromolesLazy: number | null = null;
+    private millimolesLazy: number | null = null;
     private centimolesLazy: number | null = null;
     private decimolesLazy: number | null = null;
     private kilomolesLazy: number | null = null;
     private megamolesLazy: number | null = null;
     private nanopoundmolesLazy: number | null = null;
     private micropoundmolesLazy: number | null = null;
+    private millipoundmolesLazy: number | null = null;
     private centipoundmolesLazy: number | null = null;
     private decipoundmolesLazy: number | null = null;
     private kilopoundmolesLazy: number | null = null;
@@ -98,6 +104,14 @@ export class AmountOfSubstance {
     }
 
     /** */
+    public get Millimoles(): number {
+        if(this.millimolesLazy !== null){
+            return this.millimolesLazy;
+        }
+        return this.millimolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Millimoles);
+    }
+
+    /** */
     public get Centimoles(): number {
         if(this.centimolesLazy !== null){
             return this.centimolesLazy;
@@ -143,6 +157,14 @@ export class AmountOfSubstance {
             return this.micropoundmolesLazy;
         }
         return this.micropoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.MicropoundMoles);
+    }
+
+    /** */
+    public get MillipoundMoles(): number {
+        if(this.millipoundmolesLazy !== null){
+            return this.millipoundmolesLazy;
+        }
+        return this.millipoundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.MillipoundMoles);
     }
 
     /** */
@@ -210,6 +232,16 @@ export class AmountOfSubstance {
     }
 
     /**
+     * Create a new AmountOfSubstance instance from a Millimoles
+     *
+     * @param value The unit as Millimoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
+    public static FromMillimoles(value: number): AmountOfSubstance {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Millimoles);
+    }
+
+    /**
      * Create a new AmountOfSubstance instance from a Centimoles
      *
      * @param value The unit as Centimoles to create a new AmountOfSubstance from.
@@ -270,6 +302,16 @@ export class AmountOfSubstance {
     }
 
     /**
+     * Create a new AmountOfSubstance instance from a MillipoundMoles
+     *
+     * @param value The unit as MillipoundMoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
+    public static FromMillipoundMoles(value: number): AmountOfSubstance {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.MillipoundMoles);
+    }
+
+    /**
      * Create a new AmountOfSubstance instance from a CentipoundMoles
      *
      * @param value The unit as CentipoundMoles to create a new AmountOfSubstance from.
@@ -310,6 +352,8 @@ export class AmountOfSubstance {
                 return (this.value) / 1e-9;
             case AmountOfSubstanceUnits.Micromoles:
                 return (this.value) / 0.000001;
+            case AmountOfSubstanceUnits.Millimoles:
+                return (this.value) / 0.001;
             case AmountOfSubstanceUnits.Centimoles:
                 return (this.value) / 0.01;
             case AmountOfSubstanceUnits.Decimoles:
@@ -322,6 +366,8 @@ export class AmountOfSubstance {
                 return (this.value/453.59237) / 1e-9;
             case AmountOfSubstanceUnits.MicropoundMoles:
                 return (this.value/453.59237) / 0.000001;
+            case AmountOfSubstanceUnits.MillipoundMoles:
+                return (this.value/453.59237) / 0.001;
             case AmountOfSubstanceUnits.CentipoundMoles:
                 return (this.value/453.59237) / 0.01;
             case AmountOfSubstanceUnits.DecipoundMoles:
@@ -345,6 +391,8 @@ export class AmountOfSubstance {
                 return (value) * 1e-9;
             case AmountOfSubstanceUnits.Micromoles:
                 return (value) * 0.000001;
+            case AmountOfSubstanceUnits.Millimoles:
+                return (value) * 0.001;
             case AmountOfSubstanceUnits.Centimoles:
                 return (value) * 0.01;
             case AmountOfSubstanceUnits.Decimoles:
@@ -357,6 +405,8 @@ export class AmountOfSubstance {
                 return (value*453.59237) * 1e-9;
             case AmountOfSubstanceUnits.MicropoundMoles:
                 return (value*453.59237) * 0.000001;
+            case AmountOfSubstanceUnits.MillipoundMoles:
+                return (value*453.59237) * 0.001;
             case AmountOfSubstanceUnits.CentipoundMoles:
                 return (value*453.59237) * 0.01;
             case AmountOfSubstanceUnits.DecipoundMoles:
@@ -388,6 +438,8 @@ export class AmountOfSubstance {
                 return this.Nanomoles + ` `;
             case AmountOfSubstanceUnits.Micromoles:
                 return this.Micromoles + ` `;
+            case AmountOfSubstanceUnits.Millimoles:
+                return this.Millimoles + ` `;
             case AmountOfSubstanceUnits.Centimoles:
                 return this.Centimoles + ` `;
             case AmountOfSubstanceUnits.Decimoles:
@@ -400,6 +452,8 @@ export class AmountOfSubstance {
                 return this.NanopoundMoles + ` `;
             case AmountOfSubstanceUnits.MicropoundMoles:
                 return this.MicropoundMoles + ` `;
+            case AmountOfSubstanceUnits.MillipoundMoles:
+                return this.MillipoundMoles + ` `;
             case AmountOfSubstanceUnits.CentipoundMoles:
                 return this.CentipoundMoles + ` `;
             case AmountOfSubstanceUnits.DecipoundMoles:

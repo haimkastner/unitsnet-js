@@ -124,6 +124,8 @@ Currently, the package supports the following units:
     -   *In classical electromagnetism, the electric potential (a scalar quantity denoted by Φ, ΦE or V and also called the electric field potential or the electrostatic potential) at a point is the amount of electric potential energy that a unitary point charge would have when located at that point.*
 - **ElectricPotentialAc**
     -   *The Electric Potential of a system known to use Alternating Current.*
+- **ElectricPotentialChangeRate**
+    -   *ElectricPotential change rate is the ratio of the electric potential change to the time during which the change occurred (value of electric potential changes per unit time).*
 - **ElectricPotentialDc**
     -   *The Electric Potential of a system known to use Direct Current.*
 - **ElectricResistance**

@@ -49,6 +49,8 @@ export enum PressureUnits {
     /** */
     Micropascals,
     /** */
+    Millipascals,
+    /** */
     Decapascals,
     /** */
     Hectopascals,
@@ -60,6 +62,8 @@ export enum PressureUnits {
     Gigapascals,
     /** */
     Microbars,
+    /** */
+    Millibars,
     /** */
     Centibars,
     /** */
@@ -109,12 +113,14 @@ export class Pressure {
     private poundsperinchsecondsquaredLazy: number | null = null;
     private inchesofwatercolumnLazy: number | null = null;
     private micropascalsLazy: number | null = null;
+    private millipascalsLazy: number | null = null;
     private decapascalsLazy: number | null = null;
     private hectopascalsLazy: number | null = null;
     private kilopascalsLazy: number | null = null;
     private megapascalsLazy: number | null = null;
     private gigapascalsLazy: number | null = null;
     private microbarsLazy: number | null = null;
+    private millibarsLazy: number | null = null;
     private centibarsLazy: number | null = null;
     private decibarsLazy: number | null = null;
     private kilobarsLazy: number | null = null;
@@ -339,6 +345,14 @@ export class Pressure {
     }
 
     /** */
+    public get Millipascals(): number {
+        if(this.millipascalsLazy !== null){
+            return this.millipascalsLazy;
+        }
+        return this.millipascalsLazy = this.convertFromBase(PressureUnits.Millipascals);
+    }
+
+    /** */
     public get Decapascals(): number {
         if(this.decapascalsLazy !== null){
             return this.decapascalsLazy;
@@ -384,6 +398,14 @@ export class Pressure {
             return this.microbarsLazy;
         }
         return this.microbarsLazy = this.convertFromBase(PressureUnits.Microbars);
+    }
+
+    /** */
+    public get Millibars(): number {
+        if(this.millibarsLazy !== null){
+            return this.millibarsLazy;
+        }
+        return this.millibarsLazy = this.convertFromBase(PressureUnits.Millibars);
     }
 
     /** */
@@ -707,6 +729,16 @@ export class Pressure {
     }
 
     /**
+     * Create a new Pressure instance from a Millipascals
+     *
+     * @param value The unit as Millipascals to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromMillipascals(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Millipascals);
+    }
+
+    /**
      * Create a new Pressure instance from a Decapascals
      *
      * @param value The unit as Decapascals to create a new Pressure from.
@@ -764,6 +796,16 @@ export class Pressure {
      */
     public static FromMicrobars(value: number): Pressure {
         return new Pressure(value, PressureUnits.Microbars);
+    }
+
+    /**
+     * Create a new Pressure instance from a Millibars
+     *
+     * @param value The unit as Millibars to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromMillibars(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Millibars);
     }
 
     /**
@@ -917,6 +959,8 @@ export class Pressure {
                 return this.value/249.08890833333;
             case PressureUnits.Micropascals:
                 return (this.value) / 0.000001;
+            case PressureUnits.Millipascals:
+                return (this.value) / 0.001;
             case PressureUnits.Decapascals:
                 return (this.value) / 10;
             case PressureUnits.Hectopascals:
@@ -929,6 +973,8 @@ export class Pressure {
                 return (this.value) / 1000000000;
             case PressureUnits.Microbars:
                 return (this.value/1e5) / 0.000001;
+            case PressureUnits.Millibars:
+                return (this.value/1e5) / 0.001;
             case PressureUnits.Centibars:
                 return (this.value/1e5) / 0.01;
             case PressureUnits.Decibars:
@@ -1006,6 +1052,8 @@ export class Pressure {
                 return value*249.08890833333;
             case PressureUnits.Micropascals:
                 return (value) * 0.000001;
+            case PressureUnits.Millipascals:
+                return (value) * 0.001;
             case PressureUnits.Decapascals:
                 return (value) * 10;
             case PressureUnits.Hectopascals:
@@ -1018,6 +1066,8 @@ export class Pressure {
                 return (value) * 1000000000;
             case PressureUnits.Microbars:
                 return (value*1e5) * 0.000001;
+            case PressureUnits.Millibars:
+                return (value*1e5) * 0.001;
             case PressureUnits.Centibars:
                 return (value*1e5) * 0.01;
             case PressureUnits.Decibars:
@@ -1103,6 +1153,8 @@ export class Pressure {
                 return this.InchesOfWaterColumn + ` wc`;
             case PressureUnits.Micropascals:
                 return this.Micropascals + ` `;
+            case PressureUnits.Millipascals:
+                return this.Millipascals + ` `;
             case PressureUnits.Decapascals:
                 return this.Decapascals + ` `;
             case PressureUnits.Hectopascals:
@@ -1115,6 +1167,8 @@ export class Pressure {
                 return this.Gigapascals + ` `;
             case PressureUnits.Microbars:
                 return this.Microbars + ` `;
+            case PressureUnits.Millibars:
+                return this.Millibars + ` `;
             case PressureUnits.Centibars:
                 return this.Centibars + ` `;
             case PressureUnits.Decibars:

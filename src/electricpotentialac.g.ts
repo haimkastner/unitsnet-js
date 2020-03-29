@@ -5,6 +5,8 @@ export enum ElectricPotentialAcUnits {
     /** */
     MicrovoltsAc,
     /** */
+    MillivoltsAc,
+    /** */
     KilovoltsAc,
     /** */
     MegavoltsAc
@@ -15,6 +17,7 @@ export class ElectricPotentialAc {
     private value: number;
     private voltsacLazy: number | null = null;
     private microvoltsacLazy: number | null = null;
+    private millivoltsacLazy: number | null = null;
     private kilovoltsacLazy: number | null = null;
     private megavoltsacLazy: number | null = null;
 
@@ -55,6 +58,14 @@ export class ElectricPotentialAc {
     }
 
     /** */
+    public get MillivoltsAc(): number {
+        if(this.millivoltsacLazy !== null){
+            return this.millivoltsacLazy;
+        }
+        return this.millivoltsacLazy = this.convertFromBase(ElectricPotentialAcUnits.MillivoltsAc);
+    }
+
+    /** */
     public get KilovoltsAc(): number {
         if(this.kilovoltsacLazy !== null){
             return this.kilovoltsacLazy;
@@ -91,6 +102,16 @@ export class ElectricPotentialAc {
     }
 
     /**
+     * Create a new ElectricPotentialAc instance from a MillivoltsAc
+     *
+     * @param value The unit as MillivoltsAc to create a new ElectricPotentialAc from.
+     * @returns The new ElectricPotentialAc instance.
+     */
+    public static FromMillivoltsAc(value: number): ElectricPotentialAc {
+        return new ElectricPotentialAc(value, ElectricPotentialAcUnits.MillivoltsAc);
+    }
+
+    /**
      * Create a new ElectricPotentialAc instance from a KilovoltsAc
      *
      * @param value The unit as KilovoltsAc to create a new ElectricPotentialAc from.
@@ -117,6 +138,8 @@ export class ElectricPotentialAc {
                 return this.value;
             case ElectricPotentialAcUnits.MicrovoltsAc:
                 return (this.value) / 0.000001;
+            case ElectricPotentialAcUnits.MillivoltsAc:
+                return (this.value) / 0.001;
             case ElectricPotentialAcUnits.KilovoltsAc:
                 return (this.value) / 1000;
             case ElectricPotentialAcUnits.MegavoltsAc:
@@ -134,6 +157,8 @@ export class ElectricPotentialAc {
                 return value;
             case ElectricPotentialAcUnits.MicrovoltsAc:
                 return (value) * 0.000001;
+            case ElectricPotentialAcUnits.MillivoltsAc:
+                return (value) * 0.001;
             case ElectricPotentialAcUnits.KilovoltsAc:
                 return (value) * 1000;
             case ElectricPotentialAcUnits.MegavoltsAc:
@@ -159,6 +184,8 @@ export class ElectricPotentialAc {
                 return this.VoltsAc + ` Vac`;
             case ElectricPotentialAcUnits.MicrovoltsAc:
                 return this.MicrovoltsAc + ` `;
+            case ElectricPotentialAcUnits.MillivoltsAc:
+                return this.MillivoltsAc + ` `;
             case ElectricPotentialAcUnits.KilovoltsAc:
                 return this.KilovoltsAc + ` `;
             case ElectricPotentialAcUnits.MegavoltsAc:

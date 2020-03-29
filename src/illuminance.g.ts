@@ -3,6 +3,8 @@ export enum IlluminanceUnits {
     /** */
     Lux,
     /** */
+    Millilux,
+    /** */
     Kilolux,
     /** */
     Megalux
@@ -12,6 +14,7 @@ export enum IlluminanceUnits {
 export class Illuminance {
     private value: number;
     private luxLazy: number | null = null;
+    private milliluxLazy: number | null = null;
     private kiloluxLazy: number | null = null;
     private megaluxLazy: number | null = null;
 
@@ -44,6 +47,14 @@ export class Illuminance {
     }
 
     /** */
+    public get Millilux(): number {
+        if(this.milliluxLazy !== null){
+            return this.milliluxLazy;
+        }
+        return this.milliluxLazy = this.convertFromBase(IlluminanceUnits.Millilux);
+    }
+
+    /** */
     public get Kilolux(): number {
         if(this.kiloluxLazy !== null){
             return this.kiloluxLazy;
@@ -67,6 +78,16 @@ export class Illuminance {
      */
     public static FromLux(value: number): Illuminance {
         return new Illuminance(value, IlluminanceUnits.Lux);
+    }
+
+    /**
+     * Create a new Illuminance instance from a Millilux
+     *
+     * @param value The unit as Millilux to create a new Illuminance from.
+     * @returns The new Illuminance instance.
+     */
+    public static FromMillilux(value: number): Illuminance {
+        return new Illuminance(value, IlluminanceUnits.Millilux);
     }
 
     /**
@@ -94,6 +115,8 @@ export class Illuminance {
                 
             case IlluminanceUnits.Lux:
                 return this.value;
+            case IlluminanceUnits.Millilux:
+                return (this.value) / 0.001;
             case IlluminanceUnits.Kilolux:
                 return (this.value) / 1000;
             case IlluminanceUnits.Megalux:
@@ -109,6 +132,8 @@ export class Illuminance {
                 
             case IlluminanceUnits.Lux:
                 return value;
+            case IlluminanceUnits.Millilux:
+                return (value) * 0.001;
             case IlluminanceUnits.Kilolux:
                 return (value) * 1000;
             case IlluminanceUnits.Megalux:
@@ -132,6 +157,8 @@ export class Illuminance {
             
             case IlluminanceUnits.Lux:
                 return this.Lux + ` lx`;
+            case IlluminanceUnits.Millilux:
+                return this.Millilux + ` `;
             case IlluminanceUnits.Kilolux:
                 return this.Kilolux + ` `;
             case IlluminanceUnits.Megalux:

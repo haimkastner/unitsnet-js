@@ -29,6 +29,8 @@ export enum MassFlowUnits {
     /** */
     MicrogramsPerSecond,
     /** */
+    MilligramsPerSecond,
+    /** */
     CentigramsPerSecond,
     /** */
     DecigramsPerSecond,
@@ -42,6 +44,8 @@ export enum MassFlowUnits {
     NanogramsPerDay,
     /** */
     MicrogramsPerDay,
+    /** */
+    MilligramsPerDay,
     /** */
     CentigramsPerDay,
     /** */
@@ -81,6 +85,7 @@ export class MassFlow {
     private shorttonsperhourLazy: number | null = null;
     private nanogramspersecondLazy: number | null = null;
     private microgramspersecondLazy: number | null = null;
+    private milligramspersecondLazy: number | null = null;
     private centigramspersecondLazy: number | null = null;
     private decigramspersecondLazy: number | null = null;
     private decagramspersecondLazy: number | null = null;
@@ -88,6 +93,7 @@ export class MassFlow {
     private kilogramspersecondLazy: number | null = null;
     private nanogramsperdayLazy: number | null = null;
     private microgramsperdayLazy: number | null = null;
+    private milligramsperdayLazy: number | null = null;
     private centigramsperdayLazy: number | null = null;
     private decigramsperdayLazy: number | null = null;
     private decagramsperdayLazy: number | null = null;
@@ -232,6 +238,14 @@ export class MassFlow {
     }
 
     /** */
+    public get MilligramsPerSecond(): number {
+        if(this.milligramspersecondLazy !== null){
+            return this.milligramspersecondLazy;
+        }
+        return this.milligramspersecondLazy = this.convertFromBase(MassFlowUnits.MilligramsPerSecond);
+    }
+
+    /** */
     public get CentigramsPerSecond(): number {
         if(this.centigramspersecondLazy !== null){
             return this.centigramspersecondLazy;
@@ -285,6 +299,14 @@ export class MassFlow {
             return this.microgramsperdayLazy;
         }
         return this.microgramsperdayLazy = this.convertFromBase(MassFlowUnits.MicrogramsPerDay);
+    }
+
+    /** */
+    public get MilligramsPerDay(): number {
+        if(this.milligramsperdayLazy !== null){
+            return this.milligramsperdayLazy;
+        }
+        return this.milligramsperdayLazy = this.convertFromBase(MassFlowUnits.MilligramsPerDay);
     }
 
     /** */
@@ -508,6 +530,16 @@ export class MassFlow {
     }
 
     /**
+     * Create a new MassFlow instance from a MilligramsPerSecond
+     *
+     * @param value The unit as MilligramsPerSecond to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
+    public static FromMilligramsPerSecond(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.MilligramsPerSecond);
+    }
+
+    /**
      * Create a new MassFlow instance from a CentigramsPerSecond
      *
      * @param value The unit as CentigramsPerSecond to create a new MassFlow from.
@@ -575,6 +607,16 @@ export class MassFlow {
      */
     public static FromMicrogramsPerDay(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.MicrogramsPerDay);
+    }
+
+    /**
+     * Create a new MassFlow instance from a MilligramsPerDay
+     *
+     * @param value The unit as MilligramsPerDay to create a new MassFlow from.
+     * @returns The new MassFlow instance.
+     */
+    public static FromMilligramsPerDay(value: number): MassFlow {
+        return new MassFlow(value, MassFlowUnits.MilligramsPerDay);
     }
 
     /**
@@ -708,6 +750,8 @@ export class MassFlow {
                 return (this.value) / 1e-9;
             case MassFlowUnits.MicrogramsPerSecond:
                 return (this.value) / 0.000001;
+            case MassFlowUnits.MilligramsPerSecond:
+                return (this.value) / 0.001;
             case MassFlowUnits.CentigramsPerSecond:
                 return (this.value) / 0.01;
             case MassFlowUnits.DecigramsPerSecond:
@@ -722,6 +766,8 @@ export class MassFlow {
                 return (this.value*86400) / 1e-9;
             case MassFlowUnits.MicrogramsPerDay:
                 return (this.value*86400) / 0.000001;
+            case MassFlowUnits.MilligramsPerDay:
+                return (this.value*86400) / 0.001;
             case MassFlowUnits.CentigramsPerDay:
                 return (this.value*86400) / 0.01;
             case MassFlowUnits.DecigramsPerDay:
@@ -779,6 +825,8 @@ export class MassFlow {
                 return (value) * 1e-9;
             case MassFlowUnits.MicrogramsPerSecond:
                 return (value) * 0.000001;
+            case MassFlowUnits.MilligramsPerSecond:
+                return (value) * 0.001;
             case MassFlowUnits.CentigramsPerSecond:
                 return (value) * 0.01;
             case MassFlowUnits.DecigramsPerSecond:
@@ -793,6 +841,8 @@ export class MassFlow {
                 return (value/86400) * 1e-9;
             case MassFlowUnits.MicrogramsPerDay:
                 return (value/86400) * 0.000001;
+            case MassFlowUnits.MilligramsPerDay:
+                return (value/86400) * 0.001;
             case MassFlowUnits.CentigramsPerDay:
                 return (value/86400) * 0.01;
             case MassFlowUnits.DecigramsPerDay:
@@ -858,6 +908,8 @@ export class MassFlow {
                 return this.NanogramsPerSecond + ` `;
             case MassFlowUnits.MicrogramsPerSecond:
                 return this.MicrogramsPerSecond + ` `;
+            case MassFlowUnits.MilligramsPerSecond:
+                return this.MilligramsPerSecond + ` `;
             case MassFlowUnits.CentigramsPerSecond:
                 return this.CentigramsPerSecond + ` `;
             case MassFlowUnits.DecigramsPerSecond:
@@ -872,6 +924,8 @@ export class MassFlow {
                 return this.NanogramsPerDay + ` `;
             case MassFlowUnits.MicrogramsPerDay:
                 return this.MicrogramsPerDay + ` `;
+            case MassFlowUnits.MilligramsPerDay:
+                return this.MilligramsPerDay + ` `;
             case MassFlowUnits.CentigramsPerDay:
                 return this.CentigramsPerDay + ` `;
             case MassFlowUnits.DecigramsPerDay:

@@ -5,7 +5,9 @@ export enum ElectricAdmittanceUnits {
     /** */
     Nanosiemens,
     /** */
-    Microsiemens
+    Microsiemens,
+    /** */
+    Millisiemens
 }
 
 /** Electric admittance is a measure of how easily a circuit or device will allow a current to flow. It is defined as the inverse of impedance. The SI unit of admittance is the siemens (symbol S). */
@@ -14,6 +16,7 @@ export class ElectricAdmittance {
     private siemensLazy: number | null = null;
     private nanosiemensLazy: number | null = null;
     private microsiemensLazy: number | null = null;
+    private millisiemensLazy: number | null = null;
 
     /**
      * Create a new ElectricAdmittance.
@@ -59,6 +62,14 @@ export class ElectricAdmittance {
         return this.microsiemensLazy = this.convertFromBase(ElectricAdmittanceUnits.Microsiemens);
     }
 
+    /** */
+    public get Millisiemens(): number {
+        if(this.millisiemensLazy !== null){
+            return this.millisiemensLazy;
+        }
+        return this.millisiemensLazy = this.convertFromBase(ElectricAdmittanceUnits.Millisiemens);
+    }
+
     /**
      * Create a new ElectricAdmittance instance from a Siemens
      *
@@ -89,6 +100,16 @@ export class ElectricAdmittance {
         return new ElectricAdmittance(value, ElectricAdmittanceUnits.Microsiemens);
     }
 
+    /**
+     * Create a new ElectricAdmittance instance from a Millisiemens
+     *
+     * @param value The unit as Millisiemens to create a new ElectricAdmittance from.
+     * @returns The new ElectricAdmittance instance.
+     */
+    public static FromMillisiemens(value: number): ElectricAdmittance {
+        return new ElectricAdmittance(value, ElectricAdmittanceUnits.Millisiemens);
+    }
+
     private convertFromBase(toUnit: ElectricAdmittanceUnits): number {
         switch (toUnit) {
                 
@@ -98,6 +119,8 @@ export class ElectricAdmittance {
                 return (this.value) / 1e-9;
             case ElectricAdmittanceUnits.Microsiemens:
                 return (this.value) / 0.000001;
+            case ElectricAdmittanceUnits.Millisiemens:
+                return (this.value) / 0.001;
             default:
                 break;
         }
@@ -113,6 +136,8 @@ export class ElectricAdmittance {
                 return (value) * 1e-9;
             case ElectricAdmittanceUnits.Microsiemens:
                 return (value) * 0.000001;
+            case ElectricAdmittanceUnits.Millisiemens:
+                return (value) * 0.001;
             default:
                 break;
         }
@@ -136,6 +161,8 @@ export class ElectricAdmittance {
                 return this.Nanosiemens + ` `;
             case ElectricAdmittanceUnits.Microsiemens:
                 return this.Microsiemens + ` `;
+            case ElectricAdmittanceUnits.Millisiemens:
+                return this.Millisiemens + ` `;
         default:
             break;
         }

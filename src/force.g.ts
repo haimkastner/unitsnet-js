@@ -17,7 +17,11 @@ export enum ForceUnits {
     /** */
     OunceForce,
     /** */
+    KilopoundsForce,
+    /** */
     Micronewtons,
+    /** */
+    Millinewtons,
     /** */
     Decanewtons,
     /** */
@@ -37,7 +41,9 @@ export class Force {
     private poundalsLazy: number | null = null;
     private poundsforceLazy: number | null = null;
     private ounceforceLazy: number | null = null;
+    private kilopoundsforceLazy: number | null = null;
     private micronewtonsLazy: number | null = null;
+    private millinewtonsLazy: number | null = null;
     private decanewtonsLazy: number | null = null;
     private kilonewtonsLazy: number | null = null;
     private meganewtonsLazy: number | null = null;
@@ -127,11 +133,27 @@ export class Force {
     }
 
     /** */
+    public get KilopoundsForce(): number {
+        if(this.kilopoundsforceLazy !== null){
+            return this.kilopoundsforceLazy;
+        }
+        return this.kilopoundsforceLazy = this.convertFromBase(ForceUnits.KilopoundsForce);
+    }
+
+    /** */
     public get Micronewtons(): number {
         if(this.micronewtonsLazy !== null){
             return this.micronewtonsLazy;
         }
         return this.micronewtonsLazy = this.convertFromBase(ForceUnits.Micronewtons);
+    }
+
+    /** */
+    public get Millinewtons(): number {
+        if(this.millinewtonsLazy !== null){
+            return this.millinewtonsLazy;
+        }
+        return this.millinewtonsLazy = this.convertFromBase(ForceUnits.Millinewtons);
     }
 
     /** */
@@ -239,6 +261,16 @@ export class Force {
     }
 
     /**
+     * Create a new Force instance from a KilopoundsForce
+     *
+     * @param value The unit as KilopoundsForce to create a new Force from.
+     * @returns The new Force instance.
+     */
+    public static FromKilopoundsForce(value: number): Force {
+        return new Force(value, ForceUnits.KilopoundsForce);
+    }
+
+    /**
      * Create a new Force instance from a Micronewtons
      *
      * @param value The unit as Micronewtons to create a new Force from.
@@ -246,6 +278,16 @@ export class Force {
      */
     public static FromMicronewtons(value: number): Force {
         return new Force(value, ForceUnits.Micronewtons);
+    }
+
+    /**
+     * Create a new Force instance from a Millinewtons
+     *
+     * @param value The unit as Millinewtons to create a new Force from.
+     * @returns The new Force instance.
+     */
+    public static FromMillinewtons(value: number): Force {
+        return new Force(value, ForceUnits.Millinewtons);
     }
 
     /**
@@ -297,8 +339,12 @@ export class Force {
                 return this.value/4.4482216152605095551842641431421;
             case ForceUnits.OunceForce:
                 return this.value/2.780138509537812e-1;
+            case ForceUnits.KilopoundsForce:
+                return this.value/4448.2216152605095551842641431421;
             case ForceUnits.Micronewtons:
                 return (this.value) / 0.000001;
+            case ForceUnits.Millinewtons:
+                return (this.value) / 0.001;
             case ForceUnits.Decanewtons:
                 return (this.value) / 10;
             case ForceUnits.Kilonewtons:
@@ -330,8 +376,12 @@ export class Force {
                 return value*4.4482216152605095551842641431421;
             case ForceUnits.OunceForce:
                 return value*2.780138509537812e-1;
+            case ForceUnits.KilopoundsForce:
+                return value*4448.2216152605095551842641431421;
             case ForceUnits.Micronewtons:
                 return (value) * 0.000001;
+            case ForceUnits.Millinewtons:
+                return (value) * 0.001;
             case ForceUnits.Decanewtons:
                 return (value) * 10;
             case ForceUnits.Kilonewtons:
@@ -371,8 +421,12 @@ export class Force {
                 return this.PoundsForce + ` lbf`;
             case ForceUnits.OunceForce:
                 return this.OunceForce + ` ozf`;
+            case ForceUnits.KilopoundsForce:
+                return this.KilopoundsForce + ` kipf`;
             case ForceUnits.Micronewtons:
                 return this.Micronewtons + ` `;
+            case ForceUnits.Millinewtons:
+                return this.Millinewtons + ` `;
             case ForceUnits.Decanewtons:
                 return this.Decanewtons + ` `;
             case ForceUnits.Kilonewtons:

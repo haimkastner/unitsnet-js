@@ -9,6 +9,8 @@ export enum ElectricCurrentUnits {
     /** */
     Microamperes,
     /** */
+    Milliamperes,
+    /** */
     Centiamperes,
     /** */
     Kiloamperes,
@@ -23,6 +25,7 @@ export class ElectricCurrent {
     private picoamperesLazy: number | null = null;
     private nanoamperesLazy: number | null = null;
     private microamperesLazy: number | null = null;
+    private milliamperesLazy: number | null = null;
     private centiamperesLazy: number | null = null;
     private kiloamperesLazy: number | null = null;
     private megaamperesLazy: number | null = null;
@@ -77,6 +80,14 @@ export class ElectricCurrent {
             return this.microamperesLazy;
         }
         return this.microamperesLazy = this.convertFromBase(ElectricCurrentUnits.Microamperes);
+    }
+
+    /** */
+    public get Milliamperes(): number {
+        if(this.milliamperesLazy !== null){
+            return this.milliamperesLazy;
+        }
+        return this.milliamperesLazy = this.convertFromBase(ElectricCurrentUnits.Milliamperes);
     }
 
     /** */
@@ -144,6 +155,16 @@ export class ElectricCurrent {
     }
 
     /**
+     * Create a new ElectricCurrent instance from a Milliamperes
+     *
+     * @param value The unit as Milliamperes to create a new ElectricCurrent from.
+     * @returns The new ElectricCurrent instance.
+     */
+    public static FromMilliamperes(value: number): ElectricCurrent {
+        return new ElectricCurrent(value, ElectricCurrentUnits.Milliamperes);
+    }
+
+    /**
      * Create a new ElectricCurrent instance from a Centiamperes
      *
      * @param value The unit as Centiamperes to create a new ElectricCurrent from.
@@ -184,6 +205,8 @@ export class ElectricCurrent {
                 return (this.value) / 1e-9;
             case ElectricCurrentUnits.Microamperes:
                 return (this.value) / 0.000001;
+            case ElectricCurrentUnits.Milliamperes:
+                return (this.value) / 0.001;
             case ElectricCurrentUnits.Centiamperes:
                 return (this.value) / 0.01;
             case ElectricCurrentUnits.Kiloamperes:
@@ -207,6 +230,8 @@ export class ElectricCurrent {
                 return (value) * 1e-9;
             case ElectricCurrentUnits.Microamperes:
                 return (value) * 0.000001;
+            case ElectricCurrentUnits.Milliamperes:
+                return (value) * 0.001;
             case ElectricCurrentUnits.Centiamperes:
                 return (value) * 0.01;
             case ElectricCurrentUnits.Kiloamperes:
@@ -238,6 +263,8 @@ export class ElectricCurrent {
                 return this.Nanoamperes + ` `;
             case ElectricCurrentUnits.Microamperes:
                 return this.Microamperes + ` `;
+            case ElectricCurrentUnits.Milliamperes:
+                return this.Milliamperes + ` `;
             case ElectricCurrentUnits.Centiamperes:
                 return this.Centiamperes + ` `;
             case ElectricCurrentUnits.Kiloamperes:

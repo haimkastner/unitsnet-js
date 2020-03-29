@@ -5,7 +5,9 @@ export enum ElectricInductanceUnits {
     /** */
     Nanohenries,
     /** */
-    Microhenries
+    Microhenries,
+    /** */
+    Millihenries
 }
 
 /** Inductance is a property of an electrical conductor which opposes a change in current. */
@@ -14,6 +16,7 @@ export class ElectricInductance {
     private henriesLazy: number | null = null;
     private nanohenriesLazy: number | null = null;
     private microhenriesLazy: number | null = null;
+    private millihenriesLazy: number | null = null;
 
     /**
      * Create a new ElectricInductance.
@@ -59,6 +62,14 @@ export class ElectricInductance {
         return this.microhenriesLazy = this.convertFromBase(ElectricInductanceUnits.Microhenries);
     }
 
+    /** */
+    public get Millihenries(): number {
+        if(this.millihenriesLazy !== null){
+            return this.millihenriesLazy;
+        }
+        return this.millihenriesLazy = this.convertFromBase(ElectricInductanceUnits.Millihenries);
+    }
+
     /**
      * Create a new ElectricInductance instance from a Henries
      *
@@ -89,6 +100,16 @@ export class ElectricInductance {
         return new ElectricInductance(value, ElectricInductanceUnits.Microhenries);
     }
 
+    /**
+     * Create a new ElectricInductance instance from a Millihenries
+     *
+     * @param value The unit as Millihenries to create a new ElectricInductance from.
+     * @returns The new ElectricInductance instance.
+     */
+    public static FromMillihenries(value: number): ElectricInductance {
+        return new ElectricInductance(value, ElectricInductanceUnits.Millihenries);
+    }
+
     private convertFromBase(toUnit: ElectricInductanceUnits): number {
         switch (toUnit) {
                 
@@ -98,6 +119,8 @@ export class ElectricInductance {
                 return (this.value) / 1e-9;
             case ElectricInductanceUnits.Microhenries:
                 return (this.value) / 0.000001;
+            case ElectricInductanceUnits.Millihenries:
+                return (this.value) / 0.001;
             default:
                 break;
         }
@@ -113,6 +136,8 @@ export class ElectricInductance {
                 return (value) * 1e-9;
             case ElectricInductanceUnits.Microhenries:
                 return (value) * 0.000001;
+            case ElectricInductanceUnits.Millihenries:
+                return (value) * 0.001;
             default:
                 break;
         }
@@ -136,6 +161,8 @@ export class ElectricInductance {
                 return this.Nanohenries + ` `;
             case ElectricInductanceUnits.Microhenries:
                 return this.Microhenries + ` `;
+            case ElectricInductanceUnits.Millihenries:
+                return this.Millihenries + ` `;
         default:
             break;
         }

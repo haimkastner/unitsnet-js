@@ -65,6 +65,8 @@ export enum VolumeUnits {
     /** */
     Microliters,
     /** */
+    Milliliters,
+    /** */
     Centiliters,
     /** */
     Deciliters,
@@ -129,6 +131,7 @@ export class Volume {
     private acrefeetLazy: number | null = null;
     private imperialpintsLazy: number | null = null;
     private microlitersLazy: number | null = null;
+    private millilitersLazy: number | null = null;
     private centilitersLazy: number | null = null;
     private decilitersLazy: number | null = null;
     private hectolitersLazy: number | null = null;
@@ -418,6 +421,14 @@ export class Volume {
             return this.microlitersLazy;
         }
         return this.microlitersLazy = this.convertFromBase(VolumeUnits.Microliters);
+    }
+
+    /** */
+    public get Milliliters(): number {
+        if(this.millilitersLazy !== null){
+            return this.millilitersLazy;
+        }
+        return this.millilitersLazy = this.convertFromBase(VolumeUnits.Milliliters);
     }
 
     /** */
@@ -853,6 +864,16 @@ export class Volume {
     }
 
     /**
+     * Create a new Volume instance from a Milliliters
+     *
+     * @param value The unit as Milliliters to create a new Volume from.
+     * @returns The new Volume instance.
+     */
+    public static FromMilliliters(value: number): Volume {
+        return new Volume(value, VolumeUnits.Milliliters);
+    }
+
+    /**
      * Create a new Volume instance from a Centiliters
      *
      * @param value The unit as Centiliters to create a new Volume from.
@@ -1059,6 +1080,8 @@ export class Volume {
                 return this.value / 5.6826125e-4;
             case VolumeUnits.Microliters:
                 return (this.value*1e3) / 0.000001;
+            case VolumeUnits.Milliliters:
+                return (this.value*1e3) / 0.001;
             case VolumeUnits.Centiliters:
                 return (this.value*1e3) / 0.01;
             case VolumeUnits.Deciliters:
@@ -1160,6 +1183,8 @@ export class Volume {
                 return value * 5.6826125e-4;
             case VolumeUnits.Microliters:
                 return (value/1e3) * 0.000001;
+            case VolumeUnits.Milliliters:
+                return (value/1e3) * 0.001;
             case VolumeUnits.Centiliters:
                 return (value/1e3) * 0.01;
             case VolumeUnits.Deciliters:
@@ -1269,6 +1294,8 @@ export class Volume {
                 return this.ImperialPints + ` pt (imp.)`;
             case VolumeUnits.Microliters:
                 return this.Microliters + ` `;
+            case VolumeUnits.Milliliters:
+                return this.Milliliters + ` `;
             case VolumeUnits.Centiliters:
                 return this.Centiliters + ` `;
             case VolumeUnits.Deciliters:

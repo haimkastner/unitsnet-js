@@ -5,6 +5,8 @@ export enum ElectricChargeUnits {
     /** */
     AmpereHours,
     /** */
+    MilliampereHours,
+    /** */
     KiloampereHours,
     /** */
     MegaampereHours
@@ -15,6 +17,7 @@ export class ElectricCharge {
     private value: number;
     private coulombsLazy: number | null = null;
     private amperehoursLazy: number | null = null;
+    private milliamperehoursLazy: number | null = null;
     private kiloamperehoursLazy: number | null = null;
     private megaamperehoursLazy: number | null = null;
 
@@ -55,6 +58,14 @@ export class ElectricCharge {
     }
 
     /** */
+    public get MilliampereHours(): number {
+        if(this.milliamperehoursLazy !== null){
+            return this.milliamperehoursLazy;
+        }
+        return this.milliamperehoursLazy = this.convertFromBase(ElectricChargeUnits.MilliampereHours);
+    }
+
+    /** */
     public get KiloampereHours(): number {
         if(this.kiloamperehoursLazy !== null){
             return this.kiloamperehoursLazy;
@@ -91,6 +102,16 @@ export class ElectricCharge {
     }
 
     /**
+     * Create a new ElectricCharge instance from a MilliampereHours
+     *
+     * @param value The unit as MilliampereHours to create a new ElectricCharge from.
+     * @returns The new ElectricCharge instance.
+     */
+    public static FromMilliampereHours(value: number): ElectricCharge {
+        return new ElectricCharge(value, ElectricChargeUnits.MilliampereHours);
+    }
+
+    /**
      * Create a new ElectricCharge instance from a KiloampereHours
      *
      * @param value The unit as KiloampereHours to create a new ElectricCharge from.
@@ -117,6 +138,8 @@ export class ElectricCharge {
                 return this.value;
             case ElectricChargeUnits.AmpereHours:
                 return this.value*2.77777777777e-4;
+            case ElectricChargeUnits.MilliampereHours:
+                return (this.value*2.77777777777e-4) / 0.001;
             case ElectricChargeUnits.KiloampereHours:
                 return (this.value*2.77777777777e-4) / 1000;
             case ElectricChargeUnits.MegaampereHours:
@@ -134,6 +157,8 @@ export class ElectricCharge {
                 return value;
             case ElectricChargeUnits.AmpereHours:
                 return value/2.77777777777e-4;
+            case ElectricChargeUnits.MilliampereHours:
+                return (value/2.77777777777e-4) * 0.001;
             case ElectricChargeUnits.KiloampereHours:
                 return (value/2.77777777777e-4) * 1000;
             case ElectricChargeUnits.MegaampereHours:
@@ -159,6 +184,8 @@ export class ElectricCharge {
                 return this.Coulombs + ` C`;
             case ElectricChargeUnits.AmpereHours:
                 return this.AmpereHours + ` A-h`;
+            case ElectricChargeUnits.MilliampereHours:
+                return this.MilliampereHours + ` `;
             case ElectricChargeUnits.KiloampereHours:
                 return this.KiloampereHours + ` `;
             case ElectricChargeUnits.MegaampereHours:

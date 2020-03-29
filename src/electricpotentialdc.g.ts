@@ -5,6 +5,8 @@ export enum ElectricPotentialDcUnits {
     /** */
     MicrovoltsDc,
     /** */
+    MillivoltsDc,
+    /** */
     KilovoltsDc,
     /** */
     MegavoltsDc
@@ -15,6 +17,7 @@ export class ElectricPotentialDc {
     private value: number;
     private voltsdcLazy: number | null = null;
     private microvoltsdcLazy: number | null = null;
+    private millivoltsdcLazy: number | null = null;
     private kilovoltsdcLazy: number | null = null;
     private megavoltsdcLazy: number | null = null;
 
@@ -55,6 +58,14 @@ export class ElectricPotentialDc {
     }
 
     /** */
+    public get MillivoltsDc(): number {
+        if(this.millivoltsdcLazy !== null){
+            return this.millivoltsdcLazy;
+        }
+        return this.millivoltsdcLazy = this.convertFromBase(ElectricPotentialDcUnits.MillivoltsDc);
+    }
+
+    /** */
     public get KilovoltsDc(): number {
         if(this.kilovoltsdcLazy !== null){
             return this.kilovoltsdcLazy;
@@ -91,6 +102,16 @@ export class ElectricPotentialDc {
     }
 
     /**
+     * Create a new ElectricPotentialDc instance from a MillivoltsDc
+     *
+     * @param value The unit as MillivoltsDc to create a new ElectricPotentialDc from.
+     * @returns The new ElectricPotentialDc instance.
+     */
+    public static FromMillivoltsDc(value: number): ElectricPotentialDc {
+        return new ElectricPotentialDc(value, ElectricPotentialDcUnits.MillivoltsDc);
+    }
+
+    /**
      * Create a new ElectricPotentialDc instance from a KilovoltsDc
      *
      * @param value The unit as KilovoltsDc to create a new ElectricPotentialDc from.
@@ -117,6 +138,8 @@ export class ElectricPotentialDc {
                 return this.value;
             case ElectricPotentialDcUnits.MicrovoltsDc:
                 return (this.value) / 0.000001;
+            case ElectricPotentialDcUnits.MillivoltsDc:
+                return (this.value) / 0.001;
             case ElectricPotentialDcUnits.KilovoltsDc:
                 return (this.value) / 1000;
             case ElectricPotentialDcUnits.MegavoltsDc:
@@ -134,6 +157,8 @@ export class ElectricPotentialDc {
                 return value;
             case ElectricPotentialDcUnits.MicrovoltsDc:
                 return (value) * 0.000001;
+            case ElectricPotentialDcUnits.MillivoltsDc:
+                return (value) * 0.001;
             case ElectricPotentialDcUnits.KilovoltsDc:
                 return (value) * 1000;
             case ElectricPotentialDcUnits.MegavoltsDc:
@@ -159,6 +184,8 @@ export class ElectricPotentialDc {
                 return this.VoltsDc + ` Vdc`;
             case ElectricPotentialDcUnits.MicrovoltsDc:
                 return this.MicrovoltsDc + ` `;
+            case ElectricPotentialDcUnits.MillivoltsDc:
+                return this.MillivoltsDc + ` `;
             case ElectricPotentialDcUnits.KilovoltsDc:
                 return this.KilovoltsDc + ` `;
             case ElectricPotentialDcUnits.MegavoltsDc:

@@ -9,6 +9,8 @@ export enum CapacitanceUnits {
     /** */
     Microfarads,
     /** */
+    Millifarads,
+    /** */
     Kilofarads,
     /** */
     Megafarads
@@ -21,6 +23,7 @@ export class Capacitance {
     private picofaradsLazy: number | null = null;
     private nanofaradsLazy: number | null = null;
     private microfaradsLazy: number | null = null;
+    private millifaradsLazy: number | null = null;
     private kilofaradsLazy: number | null = null;
     private megafaradsLazy: number | null = null;
 
@@ -74,6 +77,14 @@ export class Capacitance {
             return this.microfaradsLazy;
         }
         return this.microfaradsLazy = this.convertFromBase(CapacitanceUnits.Microfarads);
+    }
+
+    /** */
+    public get Millifarads(): number {
+        if(this.millifaradsLazy !== null){
+            return this.millifaradsLazy;
+        }
+        return this.millifaradsLazy = this.convertFromBase(CapacitanceUnits.Millifarads);
     }
 
     /** */
@@ -133,6 +144,16 @@ export class Capacitance {
     }
 
     /**
+     * Create a new Capacitance instance from a Millifarads
+     *
+     * @param value The unit as Millifarads to create a new Capacitance from.
+     * @returns The new Capacitance instance.
+     */
+    public static FromMillifarads(value: number): Capacitance {
+        return new Capacitance(value, CapacitanceUnits.Millifarads);
+    }
+
+    /**
      * Create a new Capacitance instance from a Kilofarads
      *
      * @param value The unit as Kilofarads to create a new Capacitance from.
@@ -163,6 +184,8 @@ export class Capacitance {
                 return (this.value) / 1e-9;
             case CapacitanceUnits.Microfarads:
                 return (this.value) / 0.000001;
+            case CapacitanceUnits.Millifarads:
+                return (this.value) / 0.001;
             case CapacitanceUnits.Kilofarads:
                 return (this.value) / 1000;
             case CapacitanceUnits.Megafarads:
@@ -184,6 +207,8 @@ export class Capacitance {
                 return (value) * 1e-9;
             case CapacitanceUnits.Microfarads:
                 return (value) * 0.000001;
+            case CapacitanceUnits.Millifarads:
+                return (value) * 0.001;
             case CapacitanceUnits.Kilofarads:
                 return (value) * 1000;
             case CapacitanceUnits.Megafarads:
@@ -213,6 +238,8 @@ export class Capacitance {
                 return this.Nanofarads + ` `;
             case CapacitanceUnits.Microfarads:
                 return this.Microfarads + ` `;
+            case CapacitanceUnits.Millifarads:
+                return this.Millifarads + ` `;
             case CapacitanceUnits.Kilofarads:
                 return this.Kilofarads + ` `;
             case CapacitanceUnits.Megafarads:

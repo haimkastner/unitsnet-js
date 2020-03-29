@@ -5,6 +5,8 @@ export enum ElectricPotentialUnits {
     /** */
     Microvolts,
     /** */
+    Millivolts,
+    /** */
     Kilovolts,
     /** */
     Megavolts
@@ -15,6 +17,7 @@ export class ElectricPotential {
     private value: number;
     private voltsLazy: number | null = null;
     private microvoltsLazy: number | null = null;
+    private millivoltsLazy: number | null = null;
     private kilovoltsLazy: number | null = null;
     private megavoltsLazy: number | null = null;
 
@@ -55,6 +58,14 @@ export class ElectricPotential {
     }
 
     /** */
+    public get Millivolts(): number {
+        if(this.millivoltsLazy !== null){
+            return this.millivoltsLazy;
+        }
+        return this.millivoltsLazy = this.convertFromBase(ElectricPotentialUnits.Millivolts);
+    }
+
+    /** */
     public get Kilovolts(): number {
         if(this.kilovoltsLazy !== null){
             return this.kilovoltsLazy;
@@ -91,6 +102,16 @@ export class ElectricPotential {
     }
 
     /**
+     * Create a new ElectricPotential instance from a Millivolts
+     *
+     * @param value The unit as Millivolts to create a new ElectricPotential from.
+     * @returns The new ElectricPotential instance.
+     */
+    public static FromMillivolts(value: number): ElectricPotential {
+        return new ElectricPotential(value, ElectricPotentialUnits.Millivolts);
+    }
+
+    /**
      * Create a new ElectricPotential instance from a Kilovolts
      *
      * @param value The unit as Kilovolts to create a new ElectricPotential from.
@@ -117,6 +138,8 @@ export class ElectricPotential {
                 return this.value;
             case ElectricPotentialUnits.Microvolts:
                 return (this.value) / 0.000001;
+            case ElectricPotentialUnits.Millivolts:
+                return (this.value) / 0.001;
             case ElectricPotentialUnits.Kilovolts:
                 return (this.value) / 1000;
             case ElectricPotentialUnits.Megavolts:
@@ -134,6 +157,8 @@ export class ElectricPotential {
                 return value;
             case ElectricPotentialUnits.Microvolts:
                 return (value) * 0.000001;
+            case ElectricPotentialUnits.Millivolts:
+                return (value) * 0.001;
             case ElectricPotentialUnits.Kilovolts:
                 return (value) * 1000;
             case ElectricPotentialUnits.Megavolts:
@@ -159,6 +184,8 @@ export class ElectricPotential {
                 return this.Volts + ` V`;
             case ElectricPotentialUnits.Microvolts:
                 return this.Microvolts + ` `;
+            case ElectricPotentialUnits.Millivolts:
+                return this.Millivolts + ` `;
             case ElectricPotentialUnits.Kilovolts:
                 return this.Kilovolts + ` `;
             case ElectricPotentialUnits.Megavolts:

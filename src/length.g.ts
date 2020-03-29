@@ -43,9 +43,13 @@ export enum LengthUnits {
     /** Solar radius is a ratio unit to the radius of the solar system star, the sun. */
     SolarRadiuses,
     /** */
+    Chains,
+    /** */
     Nanometers,
     /** */
     Micrometers,
+    /** */
+    Millimeters,
     /** */
     Centimeters,
     /** */
@@ -88,8 +92,10 @@ export class Length {
     private parsecsLazy: number | null = null;
     private lightyearsLazy: number | null = null;
     private solarradiusesLazy: number | null = null;
+    private chainsLazy: number | null = null;
     private nanometersLazy: number | null = null;
     private micrometersLazy: number | null = null;
+    private millimetersLazy: number | null = null;
     private centimetersLazy: number | null = null;
     private decimetersLazy: number | null = null;
     private hectometersLazy: number | null = null;
@@ -288,6 +294,14 @@ export class Length {
     }
 
     /** */
+    public get Chains(): number {
+        if(this.chainsLazy !== null){
+            return this.chainsLazy;
+        }
+        return this.chainsLazy = this.convertFromBase(LengthUnits.Chains);
+    }
+
+    /** */
     public get Nanometers(): number {
         if(this.nanometersLazy !== null){
             return this.nanometersLazy;
@@ -301,6 +315,14 @@ export class Length {
             return this.micrometersLazy;
         }
         return this.micrometersLazy = this.convertFromBase(LengthUnits.Micrometers);
+    }
+
+    /** */
+    public get Millimeters(): number {
+        if(this.millimetersLazy !== null){
+            return this.millimetersLazy;
+        }
+        return this.millimetersLazy = this.convertFromBase(LengthUnits.Millimeters);
     }
 
     /** */
@@ -578,6 +600,16 @@ export class Length {
     }
 
     /**
+     * Create a new Length instance from a Chains
+     *
+     * @param value The unit as Chains to create a new Length from.
+     * @returns The new Length instance.
+     */
+    public static FromChains(value: number): Length {
+        return new Length(value, LengthUnits.Chains);
+    }
+
+    /**
      * Create a new Length instance from a Nanometers
      *
      * @param value The unit as Nanometers to create a new Length from.
@@ -595,6 +627,16 @@ export class Length {
      */
     public static FromMicrometers(value: number): Length {
         return new Length(value, LengthUnits.Micrometers);
+    }
+
+    /**
+     * Create a new Length instance from a Millimeters
+     *
+     * @param value The unit as Millimeters to create a new Length from.
+     * @returns The new Length instance.
+     */
+    public static FromMillimeters(value: number): Length {
+        return new Length(value, LengthUnits.Millimeters);
     }
 
     /**
@@ -722,10 +764,14 @@ export class Length {
                 return this.value / 9.46073047258e15;
             case LengthUnits.SolarRadiuses:
                 return this.value / 6.95510000E+08;
+            case LengthUnits.Chains:
+                return this.value/20.1168;
             case LengthUnits.Nanometers:
                 return (this.value) / 1e-9;
             case LengthUnits.Micrometers:
                 return (this.value) / 0.000001;
+            case LengthUnits.Millimeters:
+                return (this.value) / 0.001;
             case LengthUnits.Centimeters:
                 return (this.value) / 0.01;
             case LengthUnits.Decimeters:
@@ -793,10 +839,14 @@ export class Length {
                 return value * 9.46073047258e15;
             case LengthUnits.SolarRadiuses:
                 return value * 6.95510000E+08;
+            case LengthUnits.Chains:
+                return value*20.1168;
             case LengthUnits.Nanometers:
                 return (value) * 1e-9;
             case LengthUnits.Micrometers:
                 return (value) * 0.000001;
+            case LengthUnits.Millimeters:
+                return (value) * 0.001;
             case LengthUnits.Centimeters:
                 return (value) * 0.01;
             case LengthUnits.Decimeters:
@@ -872,10 +922,14 @@ export class Length {
                 return this.LightYears + ` ly`;
             case LengthUnits.SolarRadiuses:
                 return this.SolarRadiuses + ` R⊙`;
+            case LengthUnits.Chains:
+                return this.Chains + ` ch`;
             case LengthUnits.Nanometers:
                 return this.Nanometers + ` `;
             case LengthUnits.Micrometers:
                 return this.Micrometers + ` `;
+            case LengthUnits.Millimeters:
+                return this.Millimeters + ` `;
             case LengthUnits.Centimeters:
                 return this.Centimeters + ` `;
             case LengthUnits.Decimeters:

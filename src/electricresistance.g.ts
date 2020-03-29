@@ -3,6 +3,8 @@ export enum ElectricResistanceUnits {
     /** */
     Ohms,
     /** */
+    Milliohms,
+    /** */
     Kiloohms,
     /** */
     Megaohms,
@@ -14,6 +16,7 @@ export enum ElectricResistanceUnits {
 export class ElectricResistance {
     private value: number;
     private ohmsLazy: number | null = null;
+    private milliohmsLazy: number | null = null;
     private kiloohmsLazy: number | null = null;
     private megaohmsLazy: number | null = null;
     private gigaohmsLazy: number | null = null;
@@ -44,6 +47,14 @@ export class ElectricResistance {
             return this.ohmsLazy;
         }
         return this.ohmsLazy = this.convertFromBase(ElectricResistanceUnits.Ohms);
+    }
+
+    /** */
+    public get Milliohms(): number {
+        if(this.milliohmsLazy !== null){
+            return this.milliohmsLazy;
+        }
+        return this.milliohmsLazy = this.convertFromBase(ElectricResistanceUnits.Milliohms);
     }
 
     /** */
@@ -81,6 +92,16 @@ export class ElectricResistance {
     }
 
     /**
+     * Create a new ElectricResistance instance from a Milliohms
+     *
+     * @param value The unit as Milliohms to create a new ElectricResistance from.
+     * @returns The new ElectricResistance instance.
+     */
+    public static FromMilliohms(value: number): ElectricResistance {
+        return new ElectricResistance(value, ElectricResistanceUnits.Milliohms);
+    }
+
+    /**
      * Create a new ElectricResistance instance from a Kiloohms
      *
      * @param value The unit as Kiloohms to create a new ElectricResistance from.
@@ -115,6 +136,8 @@ export class ElectricResistance {
                 
             case ElectricResistanceUnits.Ohms:
                 return this.value;
+            case ElectricResistanceUnits.Milliohms:
+                return (this.value) / 0.001;
             case ElectricResistanceUnits.Kiloohms:
                 return (this.value) / 1000;
             case ElectricResistanceUnits.Megaohms:
@@ -132,6 +155,8 @@ export class ElectricResistance {
                 
             case ElectricResistanceUnits.Ohms:
                 return value;
+            case ElectricResistanceUnits.Milliohms:
+                return (value) * 0.001;
             case ElectricResistanceUnits.Kiloohms:
                 return (value) * 1000;
             case ElectricResistanceUnits.Megaohms:
@@ -157,6 +182,8 @@ export class ElectricResistance {
             
             case ElectricResistanceUnits.Ohms:
                 return this.Ohms + ` Ω`;
+            case ElectricResistanceUnits.Milliohms:
+                return this.Milliohms + ` `;
             case ElectricResistanceUnits.Kiloohms:
                 return this.Kiloohms + ` `;
             case ElectricResistanceUnits.Megaohms:

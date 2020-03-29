@@ -27,6 +27,8 @@ export enum HeatFluxUnits {
     /** */
     MicrowattsPerSquareMeter,
     /** */
+    MilliwattsPerSquareMeter,
+    /** */
     CentiwattsPerSquareMeter,
     /** */
     DeciwattsPerSquareMeter,
@@ -52,6 +54,7 @@ export class HeatFlux {
     private poundspersecondcubedLazy: number | null = null;
     private nanowattspersquaremeterLazy: number | null = null;
     private microwattspersquaremeterLazy: number | null = null;
+    private milliwattspersquaremeterLazy: number | null = null;
     private centiwattspersquaremeterLazy: number | null = null;
     private deciwattspersquaremeterLazy: number | null = null;
     private kilowattspersquaremeterLazy: number | null = null;
@@ -179,6 +182,14 @@ export class HeatFlux {
             return this.microwattspersquaremeterLazy;
         }
         return this.microwattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.MicrowattsPerSquareMeter);
+    }
+
+    /** */
+    public get MilliwattsPerSquareMeter(): number {
+        if(this.milliwattspersquaremeterLazy !== null){
+            return this.milliwattspersquaremeterLazy;
+        }
+        return this.milliwattspersquaremeterLazy = this.convertFromBase(HeatFluxUnits.MilliwattsPerSquareMeter);
     }
 
     /** */
@@ -344,6 +355,16 @@ export class HeatFlux {
     }
 
     /**
+     * Create a new HeatFlux instance from a MilliwattsPerSquareMeter
+     *
+     * @param value The unit as MilliwattsPerSquareMeter to create a new HeatFlux from.
+     * @returns The new HeatFlux instance.
+     */
+    public static FromMilliwattsPerSquareMeter(value: number): HeatFlux {
+        return new HeatFlux(value, HeatFluxUnits.MilliwattsPerSquareMeter);
+    }
+
+    /**
      * Create a new HeatFlux instance from a CentiwattsPerSquareMeter
      *
      * @param value The unit as CentiwattsPerSquareMeter to create a new HeatFlux from.
@@ -412,6 +433,8 @@ export class HeatFlux {
                 return (this.value) / 1e-9;
             case HeatFluxUnits.MicrowattsPerSquareMeter:
                 return (this.value) / 0.000001;
+            case HeatFluxUnits.MilliwattsPerSquareMeter:
+                return (this.value) / 0.001;
             case HeatFluxUnits.CentiwattsPerSquareMeter:
                 return (this.value) / 0.01;
             case HeatFluxUnits.DeciwattsPerSquareMeter:
@@ -455,6 +478,8 @@ export class HeatFlux {
                 return (value) * 1e-9;
             case HeatFluxUnits.MicrowattsPerSquareMeter:
                 return (value) * 0.000001;
+            case HeatFluxUnits.MilliwattsPerSquareMeter:
+                return (value) * 0.001;
             case HeatFluxUnits.CentiwattsPerSquareMeter:
                 return (value) * 0.01;
             case HeatFluxUnits.DeciwattsPerSquareMeter:
@@ -506,6 +531,8 @@ export class HeatFlux {
                 return this.NanowattsPerSquareMeter + ` `;
             case HeatFluxUnits.MicrowattsPerSquareMeter:
                 return this.MicrowattsPerSquareMeter + ` `;
+            case HeatFluxUnits.MilliwattsPerSquareMeter:
+                return this.MilliwattsPerSquareMeter + ` `;
             case HeatFluxUnits.CentiwattsPerSquareMeter:
                 return this.CentiwattsPerSquareMeter + ` `;
             case HeatFluxUnits.DeciwattsPerSquareMeter:

@@ -23,6 +23,8 @@ export enum VolumeConcentrationUnits {
     /** */
     MicrolitersPerLiter,
     /** */
+    MillilitersPerLiter,
+    /** */
     CentilitersPerLiter,
     /** */
     DecilitersPerLiter,
@@ -32,6 +34,8 @@ export enum VolumeConcentrationUnits {
     NanolitersPerMililiter,
     /** */
     MicrolitersPerMililiter,
+    /** */
+    MillilitersPerMililiter,
     /** */
     CentilitersPerMililiter,
     /** */
@@ -52,11 +56,13 @@ export class VolumeConcentration {
     private picolitersperliterLazy: number | null = null;
     private nanolitersperliterLazy: number | null = null;
     private microlitersperliterLazy: number | null = null;
+    private millilitersperliterLazy: number | null = null;
     private centilitersperliterLazy: number | null = null;
     private decilitersperliterLazy: number | null = null;
     private picoliterspermililiterLazy: number | null = null;
     private nanoliterspermililiterLazy: number | null = null;
     private microliterspermililiterLazy: number | null = null;
+    private milliliterspermililiterLazy: number | null = null;
     private centiliterspermililiterLazy: number | null = null;
     private deciliterspermililiterLazy: number | null = null;
 
@@ -169,6 +175,14 @@ export class VolumeConcentration {
     }
 
     /** */
+    public get MillilitersPerLiter(): number {
+        if(this.millilitersperliterLazy !== null){
+            return this.millilitersperliterLazy;
+        }
+        return this.millilitersperliterLazy = this.convertFromBase(VolumeConcentrationUnits.MillilitersPerLiter);
+    }
+
+    /** */
     public get CentilitersPerLiter(): number {
         if(this.centilitersperliterLazy !== null){
             return this.centilitersperliterLazy;
@@ -206,6 +220,14 @@ export class VolumeConcentration {
             return this.microliterspermililiterLazy;
         }
         return this.microliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.MicrolitersPerMililiter);
+    }
+
+    /** */
+    public get MillilitersPerMililiter(): number {
+        if(this.milliliterspermililiterLazy !== null){
+            return this.milliliterspermililiterLazy;
+        }
+        return this.milliliterspermililiterLazy = this.convertFromBase(VolumeConcentrationUnits.MillilitersPerMililiter);
     }
 
     /** */
@@ -335,6 +357,16 @@ export class VolumeConcentration {
     }
 
     /**
+     * Create a new VolumeConcentration instance from a MillilitersPerLiter
+     *
+     * @param value The unit as MillilitersPerLiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
+    public static FromMillilitersPerLiter(value: number): VolumeConcentration {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.MillilitersPerLiter);
+    }
+
+    /**
      * Create a new VolumeConcentration instance from a CentilitersPerLiter
      *
      * @param value The unit as CentilitersPerLiter to create a new VolumeConcentration from.
@@ -385,6 +417,16 @@ export class VolumeConcentration {
     }
 
     /**
+     * Create a new VolumeConcentration instance from a MillilitersPerMililiter
+     *
+     * @param value The unit as MillilitersPerMililiter to create a new VolumeConcentration from.
+     * @returns The new VolumeConcentration instance.
+     */
+    public static FromMillilitersPerMililiter(value: number): VolumeConcentration {
+        return new VolumeConcentration(value, VolumeConcentrationUnits.MillilitersPerMililiter);
+    }
+
+    /**
      * Create a new VolumeConcentration instance from a CentilitersPerMililiter
      *
      * @param value The unit as CentilitersPerMililiter to create a new VolumeConcentration from.
@@ -429,6 +471,8 @@ export class VolumeConcentration {
                 return (this.value) / 1e-9;
             case VolumeConcentrationUnits.MicrolitersPerLiter:
                 return (this.value) / 0.000001;
+            case VolumeConcentrationUnits.MillilitersPerLiter:
+                return (this.value) / 0.001;
             case VolumeConcentrationUnits.CentilitersPerLiter:
                 return (this.value) / 0.01;
             case VolumeConcentrationUnits.DecilitersPerLiter:
@@ -439,6 +483,8 @@ export class VolumeConcentration {
                 return (this.value*1e-3) / 1e-9;
             case VolumeConcentrationUnits.MicrolitersPerMililiter:
                 return (this.value*1e-3) / 0.000001;
+            case VolumeConcentrationUnits.MillilitersPerMililiter:
+                return (this.value*1e-3) / 0.001;
             case VolumeConcentrationUnits.CentilitersPerMililiter:
                 return (this.value*1e-3) / 0.01;
             case VolumeConcentrationUnits.DecilitersPerMililiter:
@@ -474,6 +520,8 @@ export class VolumeConcentration {
                 return (value) * 1e-9;
             case VolumeConcentrationUnits.MicrolitersPerLiter:
                 return (value) * 0.000001;
+            case VolumeConcentrationUnits.MillilitersPerLiter:
+                return (value) * 0.001;
             case VolumeConcentrationUnits.CentilitersPerLiter:
                 return (value) * 0.01;
             case VolumeConcentrationUnits.DecilitersPerLiter:
@@ -484,6 +532,8 @@ export class VolumeConcentration {
                 return (value/1e-3) * 1e-9;
             case VolumeConcentrationUnits.MicrolitersPerMililiter:
                 return (value/1e-3) * 0.000001;
+            case VolumeConcentrationUnits.MillilitersPerMililiter:
+                return (value/1e-3) * 0.001;
             case VolumeConcentrationUnits.CentilitersPerMililiter:
                 return (value/1e-3) * 0.01;
             case VolumeConcentrationUnits.DecilitersPerMililiter:
@@ -527,6 +577,8 @@ export class VolumeConcentration {
                 return this.NanolitersPerLiter + ` `;
             case VolumeConcentrationUnits.MicrolitersPerLiter:
                 return this.MicrolitersPerLiter + ` `;
+            case VolumeConcentrationUnits.MillilitersPerLiter:
+                return this.MillilitersPerLiter + ` `;
             case VolumeConcentrationUnits.CentilitersPerLiter:
                 return this.CentilitersPerLiter + ` `;
             case VolumeConcentrationUnits.DecilitersPerLiter:
@@ -537,6 +589,8 @@ export class VolumeConcentration {
                 return this.NanolitersPerMililiter + ` `;
             case VolumeConcentrationUnits.MicrolitersPerMililiter:
                 return this.MicrolitersPerMililiter + ` `;
+            case VolumeConcentrationUnits.MillilitersPerMililiter:
+                return this.MillilitersPerMililiter + ` `;
             case VolumeConcentrationUnits.CentilitersPerMililiter:
                 return this.CentilitersPerMililiter + ` `;
             case VolumeConcentrationUnits.DecilitersPerMililiter:

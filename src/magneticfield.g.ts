@@ -5,7 +5,9 @@ export enum MagneticFieldUnits {
     /** */
     Nanoteslas,
     /** */
-    Microteslas
+    Microteslas,
+    /** */
+    Milliteslas
 }
 
 /** A magnetic field is a force field that is created by moving electric charges (electric currents) and magnetic dipoles, and exerts a force on other nearby moving charges and magnetic dipoles. */
@@ -14,6 +16,7 @@ export class MagneticField {
     private teslasLazy: number | null = null;
     private nanoteslasLazy: number | null = null;
     private microteslasLazy: number | null = null;
+    private milliteslasLazy: number | null = null;
 
     /**
      * Create a new MagneticField.
@@ -59,6 +62,14 @@ export class MagneticField {
         return this.microteslasLazy = this.convertFromBase(MagneticFieldUnits.Microteslas);
     }
 
+    /** */
+    public get Milliteslas(): number {
+        if(this.milliteslasLazy !== null){
+            return this.milliteslasLazy;
+        }
+        return this.milliteslasLazy = this.convertFromBase(MagneticFieldUnits.Milliteslas);
+    }
+
     /**
      * Create a new MagneticField instance from a Teslas
      *
@@ -89,6 +100,16 @@ export class MagneticField {
         return new MagneticField(value, MagneticFieldUnits.Microteslas);
     }
 
+    /**
+     * Create a new MagneticField instance from a Milliteslas
+     *
+     * @param value The unit as Milliteslas to create a new MagneticField from.
+     * @returns The new MagneticField instance.
+     */
+    public static FromMilliteslas(value: number): MagneticField {
+        return new MagneticField(value, MagneticFieldUnits.Milliteslas);
+    }
+
     private convertFromBase(toUnit: MagneticFieldUnits): number {
         switch (toUnit) {
                 
@@ -98,6 +119,8 @@ export class MagneticField {
                 return (this.value) / 1e-9;
             case MagneticFieldUnits.Microteslas:
                 return (this.value) / 0.000001;
+            case MagneticFieldUnits.Milliteslas:
+                return (this.value) / 0.001;
             default:
                 break;
         }
@@ -113,6 +136,8 @@ export class MagneticField {
                 return (value) * 1e-9;
             case MagneticFieldUnits.Microteslas:
                 return (value) * 0.000001;
+            case MagneticFieldUnits.Milliteslas:
+                return (value) * 0.001;
             default:
                 break;
         }
@@ -136,6 +161,8 @@ export class MagneticField {
                 return this.Nanoteslas + ` `;
             case MagneticFieldUnits.Microteslas:
                 return this.Microteslas + ` `;
+            case MagneticFieldUnits.Milliteslas:
+                return this.Milliteslas + ` `;
         default:
             break;
         }

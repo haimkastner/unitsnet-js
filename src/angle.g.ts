@@ -17,13 +17,17 @@ export enum AngleUnits {
     /** */
     Microradians,
     /** */
+    Milliradians,
+    /** */
     Centiradians,
     /** */
     Deciradians,
     /** */
     Nanodegrees,
     /** */
-    Microdegrees
+    Microdegrees,
+    /** */
+    Millidegrees
 }
 
 /** In geometry, an angle is the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex of the angle. */
@@ -37,10 +41,12 @@ export class Angle {
     private revolutionsLazy: number | null = null;
     private nanoradiansLazy: number | null = null;
     private microradiansLazy: number | null = null;
+    private milliradiansLazy: number | null = null;
     private centiradiansLazy: number | null = null;
     private deciradiansLazy: number | null = null;
     private nanodegreesLazy: number | null = null;
     private microdegreesLazy: number | null = null;
+    private millidegreesLazy: number | null = null;
 
     /**
      * Create a new Angle.
@@ -127,6 +133,14 @@ export class Angle {
     }
 
     /** */
+    public get Milliradians(): number {
+        if(this.milliradiansLazy !== null){
+            return this.milliradiansLazy;
+        }
+        return this.milliradiansLazy = this.convertFromBase(AngleUnits.Milliradians);
+    }
+
+    /** */
     public get Centiradians(): number {
         if(this.centiradiansLazy !== null){
             return this.centiradiansLazy;
@@ -156,6 +170,14 @@ export class Angle {
             return this.microdegreesLazy;
         }
         return this.microdegreesLazy = this.convertFromBase(AngleUnits.Microdegrees);
+    }
+
+    /** */
+    public get Millidegrees(): number {
+        if(this.millidegreesLazy !== null){
+            return this.millidegreesLazy;
+        }
+        return this.millidegreesLazy = this.convertFromBase(AngleUnits.Millidegrees);
     }
 
     /**
@@ -239,6 +261,16 @@ export class Angle {
     }
 
     /**
+     * Create a new Angle instance from a Milliradians
+     *
+     * @param value The unit as Milliradians to create a new Angle from.
+     * @returns The new Angle instance.
+     */
+    public static FromMilliradians(value: number): Angle {
+        return new Angle(value, AngleUnits.Milliradians);
+    }
+
+    /**
      * Create a new Angle instance from a Centiradians
      *
      * @param value The unit as Centiradians to create a new Angle from.
@@ -278,6 +310,16 @@ export class Angle {
         return new Angle(value, AngleUnits.Microdegrees);
     }
 
+    /**
+     * Create a new Angle instance from a Millidegrees
+     *
+     * @param value The unit as Millidegrees to create a new Angle from.
+     * @returns The new Angle instance.
+     */
+    public static FromMillidegrees(value: number): Angle {
+        return new Angle(value, AngleUnits.Millidegrees);
+    }
+
     private convertFromBase(toUnit: AngleUnits): number {
         switch (toUnit) {
                 
@@ -297,6 +339,8 @@ export class Angle {
                 return (this.value/180*Math.PI) / 1e-9;
             case AngleUnits.Microradians:
                 return (this.value/180*Math.PI) / 0.000001;
+            case AngleUnits.Milliradians:
+                return (this.value/180*Math.PI) / 0.001;
             case AngleUnits.Centiradians:
                 return (this.value/180*Math.PI) / 0.01;
             case AngleUnits.Deciradians:
@@ -305,6 +349,8 @@ export class Angle {
                 return (this.value) / 1e-9;
             case AngleUnits.Microdegrees:
                 return (this.value) / 0.000001;
+            case AngleUnits.Millidegrees:
+                return (this.value) / 0.001;
             default:
                 break;
         }
@@ -330,6 +376,8 @@ export class Angle {
                 return (value*180/Math.PI) * 1e-9;
             case AngleUnits.Microradians:
                 return (value*180/Math.PI) * 0.000001;
+            case AngleUnits.Milliradians:
+                return (value*180/Math.PI) * 0.001;
             case AngleUnits.Centiradians:
                 return (value*180/Math.PI) * 0.01;
             case AngleUnits.Deciradians:
@@ -338,6 +386,8 @@ export class Angle {
                 return (value) * 1e-9;
             case AngleUnits.Microdegrees:
                 return (value) * 0.000001;
+            case AngleUnits.Millidegrees:
+                return (value) * 0.001;
             default:
                 break;
         }
@@ -371,6 +421,8 @@ export class Angle {
                 return this.Nanoradians + ` `;
             case AngleUnits.Microradians:
                 return this.Microradians + ` `;
+            case AngleUnits.Milliradians:
+                return this.Milliradians + ` `;
             case AngleUnits.Centiradians:
                 return this.Centiradians + ` `;
             case AngleUnits.Deciradians:
@@ -379,6 +431,8 @@ export class Angle {
                 return this.Nanodegrees + ` `;
             case AngleUnits.Microdegrees:
                 return this.Microdegrees + ` `;
+            case AngleUnits.Millidegrees:
+                return this.Millidegrees + ` `;
         default:
             break;
         }

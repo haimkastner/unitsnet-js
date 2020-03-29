@@ -31,6 +31,8 @@ export enum MassUnits {
     /** */
     Micrograms,
     /** */
+    Milligrams,
+    /** */
     Centigrams,
     /** */
     Decigrams,
@@ -68,6 +70,7 @@ export class Mass {
     private earthmassesLazy: number | null = null;
     private nanogramsLazy: number | null = null;
     private microgramsLazy: number | null = null;
+    private milligramsLazy: number | null = null;
     private centigramsLazy: number | null = null;
     private decigramsLazy: number | null = null;
     private decagramsLazy: number | null = null;
@@ -216,6 +219,14 @@ export class Mass {
             return this.microgramsLazy;
         }
         return this.microgramsLazy = this.convertFromBase(MassUnits.Micrograms);
+    }
+
+    /** */
+    public get Milligrams(): number {
+        if(this.milligramsLazy !== null){
+            return this.milligramsLazy;
+        }
+        return this.milligramsLazy = this.convertFromBase(MassUnits.Milligrams);
     }
 
     /** */
@@ -441,6 +452,16 @@ export class Mass {
     }
 
     /**
+     * Create a new Mass instance from a Milligrams
+     *
+     * @param value The unit as Milligrams to create a new Mass from.
+     * @returns The new Mass instance.
+     */
+    public static FromMilligrams(value: number): Mass {
+        return new Mass(value, MassUnits.Milligrams);
+    }
+
+    /**
      * Create a new Mass instance from a Centigrams
      *
      * @param value The unit as Centigrams to create a new Mass from.
@@ -563,6 +584,8 @@ export class Mass {
                 return (this.value*1e3) / 1e-9;
             case MassUnits.Micrograms:
                 return (this.value*1e3) / 0.000001;
+            case MassUnits.Milligrams:
+                return (this.value*1e3) / 0.001;
             case MassUnits.Centigrams:
                 return (this.value*1e3) / 0.01;
             case MassUnits.Decigrams:
@@ -620,6 +643,8 @@ export class Mass {
                 return (value/1e3) * 1e-9;
             case MassUnits.Micrograms:
                 return (value/1e3) * 0.000001;
+            case MassUnits.Milligrams:
+                return (value/1e3) * 0.001;
             case MassUnits.Centigrams:
                 return (value/1e3) * 0.01;
             case MassUnits.Decigrams:
@@ -685,6 +710,8 @@ export class Mass {
                 return this.Nanograms + ` `;
             case MassUnits.Micrograms:
                 return this.Micrograms + ` `;
+            case MassUnits.Milligrams:
+                return this.Milligrams + ` `;
             case MassUnits.Centigrams:
                 return this.Centigrams + ` `;
             case MassUnits.Decigrams:

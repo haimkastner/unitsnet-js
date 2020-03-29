@@ -3,6 +3,8 @@ export enum ElectricConductanceUnits {
     /** */
     Siemens,
     /** */
+    Millisiemens,
+    /** */
     Microsiemens
 }
 
@@ -10,6 +12,7 @@ export enum ElectricConductanceUnits {
 export class ElectricConductance {
     private value: number;
     private siemensLazy: number | null = null;
+    private millisiemensLazy: number | null = null;
     private microsiemensLazy: number | null = null;
 
     /**
@@ -41,6 +44,14 @@ export class ElectricConductance {
     }
 
     /** */
+    public get Millisiemens(): number {
+        if(this.millisiemensLazy !== null){
+            return this.millisiemensLazy;
+        }
+        return this.millisiemensLazy = this.convertFromBase(ElectricConductanceUnits.Millisiemens);
+    }
+
+    /** */
     public get Microsiemens(): number {
         if(this.microsiemensLazy !== null){
             return this.microsiemensLazy;
@@ -59,6 +70,16 @@ export class ElectricConductance {
     }
 
     /**
+     * Create a new ElectricConductance instance from a Millisiemens
+     *
+     * @param value The unit as Millisiemens to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromMillisiemens(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Millisiemens);
+    }
+
+    /**
      * Create a new ElectricConductance instance from a Microsiemens
      *
      * @param value The unit as Microsiemens to create a new ElectricConductance from.
@@ -73,6 +94,8 @@ export class ElectricConductance {
                 
             case ElectricConductanceUnits.Siemens:
                 return this.value;
+            case ElectricConductanceUnits.Millisiemens:
+                return (this.value) / 0.001;
             case ElectricConductanceUnits.Microsiemens:
                 return (this.value) / 0.000001;
             default:
@@ -86,6 +109,8 @@ export class ElectricConductance {
                 
             case ElectricConductanceUnits.Siemens:
                 return value;
+            case ElectricConductanceUnits.Millisiemens:
+                return (value) * 0.001;
             case ElectricConductanceUnits.Microsiemens:
                 return (value) * 0.000001;
             default:
@@ -107,6 +132,8 @@ export class ElectricConductance {
             
             case ElectricConductanceUnits.Siemens:
                 return this.Siemens + ` S`;
+            case ElectricConductanceUnits.Millisiemens:
+                return this.Millisiemens + ` `;
             case ElectricConductanceUnits.Microsiemens:
                 return this.Microsiemens + ` `;
         default:

@@ -25,11 +25,19 @@ export enum MassMomentOfInertiaUnits {
     /** */
     SlugSquareInches,
     /** */
+    MilligramSquareMeters,
+    /** */
     KilogramSquareMeters,
+    /** */
+    MilligramSquareDecimeters,
     /** */
     KilogramSquareDecimeters,
     /** */
+    MilligramSquareCentimeters,
+    /** */
     KilogramSquareCentimeters,
+    /** */
+    MilligramSquareMillimeters,
     /** */
     KilogramSquareMillimeters,
     /** */
@@ -65,9 +73,13 @@ export class MassMomentOfInertia {
     private poundsquareinchesLazy: number | null = null;
     private slugsquarefeetLazy: number | null = null;
     private slugsquareinchesLazy: number | null = null;
+    private milligramsquaremetersLazy: number | null = null;
     private kilogramsquaremetersLazy: number | null = null;
+    private milligramsquaredecimetersLazy: number | null = null;
     private kilogramsquaredecimetersLazy: number | null = null;
+    private milligramsquarecentimetersLazy: number | null = null;
     private kilogramsquarecentimetersLazy: number | null = null;
+    private milligramsquaremillimetersLazy: number | null = null;
     private kilogramsquaremillimetersLazy: number | null = null;
     private kilotonnesquaremetersLazy: number | null = null;
     private megatonnesquaremetersLazy: number | null = null;
@@ -195,11 +207,27 @@ export class MassMomentOfInertia {
     }
 
     /** */
+    public get MilligramSquareMeters(): number {
+        if(this.milligramsquaremetersLazy !== null){
+            return this.milligramsquaremetersLazy;
+        }
+        return this.milligramsquaremetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MilligramSquareMeters);
+    }
+
+    /** */
     public get KilogramSquareMeters(): number {
         if(this.kilogramsquaremetersLazy !== null){
             return this.kilogramsquaremetersLazy;
         }
         return this.kilogramsquaremetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilogramSquareMeters);
+    }
+
+    /** */
+    public get MilligramSquareDecimeters(): number {
+        if(this.milligramsquaredecimetersLazy !== null){
+            return this.milligramsquaredecimetersLazy;
+        }
+        return this.milligramsquaredecimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MilligramSquareDecimeters);
     }
 
     /** */
@@ -211,11 +239,27 @@ export class MassMomentOfInertia {
     }
 
     /** */
+    public get MilligramSquareCentimeters(): number {
+        if(this.milligramsquarecentimetersLazy !== null){
+            return this.milligramsquarecentimetersLazy;
+        }
+        return this.milligramsquarecentimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MilligramSquareCentimeters);
+    }
+
+    /** */
     public get KilogramSquareCentimeters(): number {
         if(this.kilogramsquarecentimetersLazy !== null){
             return this.kilogramsquarecentimetersLazy;
         }
         return this.kilogramsquarecentimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilogramSquareCentimeters);
+    }
+
+    /** */
+    public get MilligramSquareMillimeters(): number {
+        if(this.milligramsquaremillimetersLazy !== null){
+            return this.milligramsquaremillimetersLazy;
+        }
+        return this.milligramsquaremillimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MilligramSquareMillimeters);
     }
 
     /** */
@@ -411,6 +455,16 @@ export class MassMomentOfInertia {
     }
 
     /**
+     * Create a new MassMomentOfInertia instance from a MilligramSquareMeters
+     *
+     * @param value The unit as MilligramSquareMeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
+    public static FromMilligramSquareMeters(value: number): MassMomentOfInertia {
+        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MilligramSquareMeters);
+    }
+
+    /**
      * Create a new MassMomentOfInertia instance from a KilogramSquareMeters
      *
      * @param value The unit as KilogramSquareMeters to create a new MassMomentOfInertia from.
@@ -418,6 +472,16 @@ export class MassMomentOfInertia {
      */
     public static FromKilogramSquareMeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilogramSquareMeters);
+    }
+
+    /**
+     * Create a new MassMomentOfInertia instance from a MilligramSquareDecimeters
+     *
+     * @param value The unit as MilligramSquareDecimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
+    public static FromMilligramSquareDecimeters(value: number): MassMomentOfInertia {
+        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MilligramSquareDecimeters);
     }
 
     /**
@@ -431,6 +495,16 @@ export class MassMomentOfInertia {
     }
 
     /**
+     * Create a new MassMomentOfInertia instance from a MilligramSquareCentimeters
+     *
+     * @param value The unit as MilligramSquareCentimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
+    public static FromMilligramSquareCentimeters(value: number): MassMomentOfInertia {
+        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MilligramSquareCentimeters);
+    }
+
+    /**
      * Create a new MassMomentOfInertia instance from a KilogramSquareCentimeters
      *
      * @param value The unit as KilogramSquareCentimeters to create a new MassMomentOfInertia from.
@@ -438,6 +512,16 @@ export class MassMomentOfInertia {
      */
     public static FromKilogramSquareCentimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilogramSquareCentimeters);
+    }
+
+    /**
+     * Create a new MassMomentOfInertia instance from a MilligramSquareMillimeters
+     *
+     * @param value The unit as MilligramSquareMillimeters to create a new MassMomentOfInertia from.
+     * @returns The new MassMomentOfInertia instance.
+     */
+    public static FromMilligramSquareMillimeters(value: number): MassMomentOfInertia {
+        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MilligramSquareMillimeters);
     }
 
     /**
@@ -557,12 +641,20 @@ export class MassMomentOfInertia {
                 return this.value/1.3558179619;
             case MassMomentOfInertiaUnits.SlugSquareInches:
                 return this.value/9.41540242e-3;
+            case MassMomentOfInertiaUnits.MilligramSquareMeters:
+                return (this.value*1e3) / 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMeters:
                 return (this.value*1e3) / 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareDecimeters:
+                return (this.value*1e5) / 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
                 return (this.value*1e5) / 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareCentimeters:
+                return (this.value*1e7) / 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
                 return (this.value*1e7) / 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareMillimeters:
+                return (this.value*1e9) / 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
                 return (this.value*1e9) / 1000;
             case MassMomentOfInertiaUnits.KilotonneSquareMeters:
@@ -614,12 +706,20 @@ export class MassMomentOfInertia {
                 return value*1.3558179619;
             case MassMomentOfInertiaUnits.SlugSquareInches:
                 return value*9.41540242e-3;
+            case MassMomentOfInertiaUnits.MilligramSquareMeters:
+                return (value/1e3) * 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMeters:
                 return (value/1e3) * 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareDecimeters:
+                return (value/1e5) * 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
                 return (value/1e5) * 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareCentimeters:
+                return (value/1e7) * 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
                 return (value/1e7) * 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareMillimeters:
+                return (value/1e9) * 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
                 return (value/1e9) * 1000;
             case MassMomentOfInertiaUnits.KilotonneSquareMeters:
@@ -679,12 +779,20 @@ export class MassMomentOfInertia {
                 return this.SlugSquareFeet + ` slug·ft²`;
             case MassMomentOfInertiaUnits.SlugSquareInches:
                 return this.SlugSquareInches + ` slug·in²`;
+            case MassMomentOfInertiaUnits.MilligramSquareMeters:
+                return this.MilligramSquareMeters + ` `;
             case MassMomentOfInertiaUnits.KilogramSquareMeters:
                 return this.KilogramSquareMeters + ` `;
+            case MassMomentOfInertiaUnits.MilligramSquareDecimeters:
+                return this.MilligramSquareDecimeters + ` `;
             case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
                 return this.KilogramSquareDecimeters + ` `;
+            case MassMomentOfInertiaUnits.MilligramSquareCentimeters:
+                return this.MilligramSquareCentimeters + ` `;
             case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
                 return this.KilogramSquareCentimeters + ` `;
+            case MassMomentOfInertiaUnits.MilligramSquareMillimeters:
+                return this.MilligramSquareMillimeters + ` `;
             case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
                 return this.KilogramSquareMillimeters + ` `;
             case MassMomentOfInertiaUnits.KilotonneSquareMeters:

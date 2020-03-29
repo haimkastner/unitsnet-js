@@ -15,11 +15,15 @@ export enum EnergyUnits {
     /** */
     WattHours,
     /** */
+    WattDays,
+    /** */
     ThermsEc,
     /** */
     ThermsUs,
     /** */
     ThermsImperial,
+    /** */
+    Millijoules,
     /** */
     Kilojoules,
     /** */
@@ -37,6 +41,14 @@ export enum EnergyUnits {
     /** */
     GigabritishThermalUnits,
     /** */
+    KiloelectronVolts,
+    /** */
+    MegaelectronVolts,
+    /** */
+    GigaelectronVolts,
+    /** */
+    TeraelectronVolts,
+    /** */
     KilowattHours,
     /** */
     MegawattHours,
@@ -44,6 +56,14 @@ export enum EnergyUnits {
     GigawattHours,
     /** */
     TerawattHours,
+    /** */
+    KilowattDays,
+    /** */
+    MegawattDays,
+    /** */
+    GigawattDays,
+    /** */
+    TerawattDays,
     /** */
     DecathermsEc,
     /** */
@@ -62,9 +82,11 @@ export class Energy {
     private footpoundsLazy: number | null = null;
     private ergsLazy: number | null = null;
     private watthoursLazy: number | null = null;
+    private wattdaysLazy: number | null = null;
     private thermsecLazy: number | null = null;
     private thermsusLazy: number | null = null;
     private thermsimperialLazy: number | null = null;
+    private millijoulesLazy: number | null = null;
     private kilojoulesLazy: number | null = null;
     private megajoulesLazy: number | null = null;
     private gigajoulesLazy: number | null = null;
@@ -73,10 +95,18 @@ export class Energy {
     private kilobritishthermalunitsLazy: number | null = null;
     private megabritishthermalunitsLazy: number | null = null;
     private gigabritishthermalunitsLazy: number | null = null;
+    private kiloelectronvoltsLazy: number | null = null;
+    private megaelectronvoltsLazy: number | null = null;
+    private gigaelectronvoltsLazy: number | null = null;
+    private teraelectronvoltsLazy: number | null = null;
     private kilowatthoursLazy: number | null = null;
     private megawatthoursLazy: number | null = null;
     private gigawatthoursLazy: number | null = null;
     private terawatthoursLazy: number | null = null;
+    private kilowattdaysLazy: number | null = null;
+    private megawattdaysLazy: number | null = null;
+    private gigawattdaysLazy: number | null = null;
+    private terawattdaysLazy: number | null = null;
     private decathermsecLazy: number | null = null;
     private decathermsusLazy: number | null = null;
     private decathermsimperialLazy: number | null = null;
@@ -158,6 +188,14 @@ export class Energy {
     }
 
     /** */
+    public get WattDays(): number {
+        if(this.wattdaysLazy !== null){
+            return this.wattdaysLazy;
+        }
+        return this.wattdaysLazy = this.convertFromBase(EnergyUnits.WattDays);
+    }
+
+    /** */
     public get ThermsEc(): number {
         if(this.thermsecLazy !== null){
             return this.thermsecLazy;
@@ -179,6 +217,14 @@ export class Energy {
             return this.thermsimperialLazy;
         }
         return this.thermsimperialLazy = this.convertFromBase(EnergyUnits.ThermsImperial);
+    }
+
+    /** */
+    public get Millijoules(): number {
+        if(this.millijoulesLazy !== null){
+            return this.millijoulesLazy;
+        }
+        return this.millijoulesLazy = this.convertFromBase(EnergyUnits.Millijoules);
     }
 
     /** */
@@ -246,6 +292,38 @@ export class Energy {
     }
 
     /** */
+    public get KiloelectronVolts(): number {
+        if(this.kiloelectronvoltsLazy !== null){
+            return this.kiloelectronvoltsLazy;
+        }
+        return this.kiloelectronvoltsLazy = this.convertFromBase(EnergyUnits.KiloelectronVolts);
+    }
+
+    /** */
+    public get MegaelectronVolts(): number {
+        if(this.megaelectronvoltsLazy !== null){
+            return this.megaelectronvoltsLazy;
+        }
+        return this.megaelectronvoltsLazy = this.convertFromBase(EnergyUnits.MegaelectronVolts);
+    }
+
+    /** */
+    public get GigaelectronVolts(): number {
+        if(this.gigaelectronvoltsLazy !== null){
+            return this.gigaelectronvoltsLazy;
+        }
+        return this.gigaelectronvoltsLazy = this.convertFromBase(EnergyUnits.GigaelectronVolts);
+    }
+
+    /** */
+    public get TeraelectronVolts(): number {
+        if(this.teraelectronvoltsLazy !== null){
+            return this.teraelectronvoltsLazy;
+        }
+        return this.teraelectronvoltsLazy = this.convertFromBase(EnergyUnits.TeraelectronVolts);
+    }
+
+    /** */
     public get KilowattHours(): number {
         if(this.kilowatthoursLazy !== null){
             return this.kilowatthoursLazy;
@@ -275,6 +353,38 @@ export class Energy {
             return this.terawatthoursLazy;
         }
         return this.terawatthoursLazy = this.convertFromBase(EnergyUnits.TerawattHours);
+    }
+
+    /** */
+    public get KilowattDays(): number {
+        if(this.kilowattdaysLazy !== null){
+            return this.kilowattdaysLazy;
+        }
+        return this.kilowattdaysLazy = this.convertFromBase(EnergyUnits.KilowattDays);
+    }
+
+    /** */
+    public get MegawattDays(): number {
+        if(this.megawattdaysLazy !== null){
+            return this.megawattdaysLazy;
+        }
+        return this.megawattdaysLazy = this.convertFromBase(EnergyUnits.MegawattDays);
+    }
+
+    /** */
+    public get GigawattDays(): number {
+        if(this.gigawattdaysLazy !== null){
+            return this.gigawattdaysLazy;
+        }
+        return this.gigawattdaysLazy = this.convertFromBase(EnergyUnits.GigawattDays);
+    }
+
+    /** */
+    public get TerawattDays(): number {
+        if(this.terawattdaysLazy !== null){
+            return this.terawattdaysLazy;
+        }
+        return this.terawattdaysLazy = this.convertFromBase(EnergyUnits.TerawattDays);
     }
 
     /** */
@@ -372,6 +482,16 @@ export class Energy {
     }
 
     /**
+     * Create a new Energy instance from a WattDays
+     *
+     * @param value The unit as WattDays to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromWattDays(value: number): Energy {
+        return new Energy(value, EnergyUnits.WattDays);
+    }
+
+    /**
      * Create a new Energy instance from a ThermsEc
      *
      * @param value The unit as ThermsEc to create a new Energy from.
@@ -399,6 +519,16 @@ export class Energy {
      */
     public static FromThermsImperial(value: number): Energy {
         return new Energy(value, EnergyUnits.ThermsImperial);
+    }
+
+    /**
+     * Create a new Energy instance from a Millijoules
+     *
+     * @param value The unit as Millijoules to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromMillijoules(value: number): Energy {
+        return new Energy(value, EnergyUnits.Millijoules);
     }
 
     /**
@@ -482,6 +612,46 @@ export class Energy {
     }
 
     /**
+     * Create a new Energy instance from a KiloelectronVolts
+     *
+     * @param value The unit as KiloelectronVolts to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromKiloelectronVolts(value: number): Energy {
+        return new Energy(value, EnergyUnits.KiloelectronVolts);
+    }
+
+    /**
+     * Create a new Energy instance from a MegaelectronVolts
+     *
+     * @param value The unit as MegaelectronVolts to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromMegaelectronVolts(value: number): Energy {
+        return new Energy(value, EnergyUnits.MegaelectronVolts);
+    }
+
+    /**
+     * Create a new Energy instance from a GigaelectronVolts
+     *
+     * @param value The unit as GigaelectronVolts to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromGigaelectronVolts(value: number): Energy {
+        return new Energy(value, EnergyUnits.GigaelectronVolts);
+    }
+
+    /**
+     * Create a new Energy instance from a TeraelectronVolts
+     *
+     * @param value The unit as TeraelectronVolts to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromTeraelectronVolts(value: number): Energy {
+        return new Energy(value, EnergyUnits.TeraelectronVolts);
+    }
+
+    /**
      * Create a new Energy instance from a KilowattHours
      *
      * @param value The unit as KilowattHours to create a new Energy from.
@@ -519,6 +689,46 @@ export class Energy {
      */
     public static FromTerawattHours(value: number): Energy {
         return new Energy(value, EnergyUnits.TerawattHours);
+    }
+
+    /**
+     * Create a new Energy instance from a KilowattDays
+     *
+     * @param value The unit as KilowattDays to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromKilowattDays(value: number): Energy {
+        return new Energy(value, EnergyUnits.KilowattDays);
+    }
+
+    /**
+     * Create a new Energy instance from a MegawattDays
+     *
+     * @param value The unit as MegawattDays to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromMegawattDays(value: number): Energy {
+        return new Energy(value, EnergyUnits.MegawattDays);
+    }
+
+    /**
+     * Create a new Energy instance from a GigawattDays
+     *
+     * @param value The unit as GigawattDays to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromGigawattDays(value: number): Energy {
+        return new Energy(value, EnergyUnits.GigawattDays);
+    }
+
+    /**
+     * Create a new Energy instance from a TerawattDays
+     *
+     * @param value The unit as TerawattDays to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromTerawattDays(value: number): Energy {
+        return new Energy(value, EnergyUnits.TerawattDays);
     }
 
     /**
@@ -568,12 +778,16 @@ export class Energy {
                 return this.value/1e-7;
             case EnergyUnits.WattHours:
                 return this.value/3600;
+            case EnergyUnits.WattDays:
+                return this.value/(24*3600);
             case EnergyUnits.ThermsEc:
                 return this.value/1.05505585262e8;
             case EnergyUnits.ThermsUs:
                 return this.value/1.054804e8;
             case EnergyUnits.ThermsImperial:
                 return this.value/1.05505585257348e8;
+            case EnergyUnits.Millijoules:
+                return (this.value) / 0.001;
             case EnergyUnits.Kilojoules:
                 return (this.value) / 1000;
             case EnergyUnits.Megajoules:
@@ -590,6 +804,14 @@ export class Energy {
                 return (this.value/1055.05585262) / 1000000;
             case EnergyUnits.GigabritishThermalUnits:
                 return (this.value/1055.05585262) / 1000000000;
+            case EnergyUnits.KiloelectronVolts:
+                return (this.value/1.602176565e-19) / 1000;
+            case EnergyUnits.MegaelectronVolts:
+                return (this.value/1.602176565e-19) / 1000000;
+            case EnergyUnits.GigaelectronVolts:
+                return (this.value/1.602176565e-19) / 1000000000;
+            case EnergyUnits.TeraelectronVolts:
+                return (this.value/1.602176565e-19) / 1000000000000;
             case EnergyUnits.KilowattHours:
                 return (this.value/3600) / 1000;
             case EnergyUnits.MegawattHours:
@@ -598,6 +820,14 @@ export class Energy {
                 return (this.value/3600) / 1000000000;
             case EnergyUnits.TerawattHours:
                 return (this.value/3600) / 1000000000000;
+            case EnergyUnits.KilowattDays:
+                return (this.value/(24*3600)) / 1000;
+            case EnergyUnits.MegawattDays:
+                return (this.value/(24*3600)) / 1000000;
+            case EnergyUnits.GigawattDays:
+                return (this.value/(24*3600)) / 1000000000;
+            case EnergyUnits.TerawattDays:
+                return (this.value/(24*3600)) / 1000000000000;
             case EnergyUnits.DecathermsEc:
                 return (this.value/1.05505585262e8) / 10;
             case EnergyUnits.DecathermsUs:
@@ -627,12 +857,16 @@ export class Energy {
                 return value*1e-7;
             case EnergyUnits.WattHours:
                 return value*3600;
+            case EnergyUnits.WattDays:
+                return value*24*3600;
             case EnergyUnits.ThermsEc:
                 return value*1.05505585262e8;
             case EnergyUnits.ThermsUs:
                 return value*1.054804e8;
             case EnergyUnits.ThermsImperial:
                 return value*1.05505585257348e8;
+            case EnergyUnits.Millijoules:
+                return (value) * 0.001;
             case EnergyUnits.Kilojoules:
                 return (value) * 1000;
             case EnergyUnits.Megajoules:
@@ -649,6 +883,14 @@ export class Energy {
                 return (value*1055.05585262) * 1000000;
             case EnergyUnits.GigabritishThermalUnits:
                 return (value*1055.05585262) * 1000000000;
+            case EnergyUnits.KiloelectronVolts:
+                return (value*1.602176565e-19) * 1000;
+            case EnergyUnits.MegaelectronVolts:
+                return (value*1.602176565e-19) * 1000000;
+            case EnergyUnits.GigaelectronVolts:
+                return (value*1.602176565e-19) * 1000000000;
+            case EnergyUnits.TeraelectronVolts:
+                return (value*1.602176565e-19) * 1000000000000;
             case EnergyUnits.KilowattHours:
                 return (value*3600) * 1000;
             case EnergyUnits.MegawattHours:
@@ -657,6 +899,14 @@ export class Energy {
                 return (value*3600) * 1000000000;
             case EnergyUnits.TerawattHours:
                 return (value*3600) * 1000000000000;
+            case EnergyUnits.KilowattDays:
+                return (value*24*3600) * 1000;
+            case EnergyUnits.MegawattDays:
+                return (value*24*3600) * 1000000;
+            case EnergyUnits.GigawattDays:
+                return (value*24*3600) * 1000000000;
+            case EnergyUnits.TerawattDays:
+                return (value*24*3600) * 1000000000000;
             case EnergyUnits.DecathermsEc:
                 return (value*1.05505585262e8) * 10;
             case EnergyUnits.DecathermsUs:
@@ -694,12 +944,16 @@ export class Energy {
                 return this.Ergs + ` erg`;
             case EnergyUnits.WattHours:
                 return this.WattHours + ` Wh`;
+            case EnergyUnits.WattDays:
+                return this.WattDays + ` Wd`;
             case EnergyUnits.ThermsEc:
                 return this.ThermsEc + ` th (E.C.)`;
             case EnergyUnits.ThermsUs:
                 return this.ThermsUs + ` th (U.S.)`;
             case EnergyUnits.ThermsImperial:
                 return this.ThermsImperial + ` th (imp.)`;
+            case EnergyUnits.Millijoules:
+                return this.Millijoules + ` `;
             case EnergyUnits.Kilojoules:
                 return this.Kilojoules + ` `;
             case EnergyUnits.Megajoules:
@@ -716,6 +970,14 @@ export class Energy {
                 return this.MegabritishThermalUnits + ` `;
             case EnergyUnits.GigabritishThermalUnits:
                 return this.GigabritishThermalUnits + ` `;
+            case EnergyUnits.KiloelectronVolts:
+                return this.KiloelectronVolts + ` `;
+            case EnergyUnits.MegaelectronVolts:
+                return this.MegaelectronVolts + ` `;
+            case EnergyUnits.GigaelectronVolts:
+                return this.GigaelectronVolts + ` `;
+            case EnergyUnits.TeraelectronVolts:
+                return this.TeraelectronVolts + ` `;
             case EnergyUnits.KilowattHours:
                 return this.KilowattHours + ` `;
             case EnergyUnits.MegawattHours:
@@ -724,6 +986,14 @@ export class Energy {
                 return this.GigawattHours + ` `;
             case EnergyUnits.TerawattHours:
                 return this.TerawattHours + ` `;
+            case EnergyUnits.KilowattDays:
+                return this.KilowattDays + ` `;
+            case EnergyUnits.MegawattDays:
+                return this.MegawattDays + ` `;
+            case EnergyUnits.GigawattDays:
+                return this.GigawattDays + ` `;
+            case EnergyUnits.TerawattDays:
+                return this.TerawattDays + ` `;
             case EnergyUnits.DecathermsEc:
                 return this.DecathermsEc + ` `;
             case EnergyUnits.DecathermsUs:

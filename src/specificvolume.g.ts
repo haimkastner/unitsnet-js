@@ -3,7 +3,9 @@ export enum SpecificVolumeUnits {
     /** */
     CubicMetersPerKilogram,
     /** */
-    CubicFeetPerPound
+    CubicFeetPerPound,
+    /** */
+    MillicubicMetersPerKilogram
 }
 
 /** In thermodynamics, the specific volume of a substance is the ratio of the substance's volume to its mass. It is the reciprocal of density and an intrinsic property of matter as well. */
@@ -11,6 +13,7 @@ export class SpecificVolume {
     private value: number;
     private cubicmetersperkilogramLazy: number | null = null;
     private cubicfeetperpoundLazy: number | null = null;
+    private millicubicmetersperkilogramLazy: number | null = null;
 
     /**
      * Create a new SpecificVolume.
@@ -48,6 +51,14 @@ export class SpecificVolume {
         return this.cubicfeetperpoundLazy = this.convertFromBase(SpecificVolumeUnits.CubicFeetPerPound);
     }
 
+    /** */
+    public get MillicubicMetersPerKilogram(): number {
+        if(this.millicubicmetersperkilogramLazy !== null){
+            return this.millicubicmetersperkilogramLazy;
+        }
+        return this.millicubicmetersperkilogramLazy = this.convertFromBase(SpecificVolumeUnits.MillicubicMetersPerKilogram);
+    }
+
     /**
      * Create a new SpecificVolume instance from a CubicMetersPerKilogram
      *
@@ -68,6 +79,16 @@ export class SpecificVolume {
         return new SpecificVolume(value, SpecificVolumeUnits.CubicFeetPerPound);
     }
 
+    /**
+     * Create a new SpecificVolume instance from a MillicubicMetersPerKilogram
+     *
+     * @param value The unit as MillicubicMetersPerKilogram to create a new SpecificVolume from.
+     * @returns The new SpecificVolume instance.
+     */
+    public static FromMillicubicMetersPerKilogram(value: number): SpecificVolume {
+        return new SpecificVolume(value, SpecificVolumeUnits.MillicubicMetersPerKilogram);
+    }
+
     private convertFromBase(toUnit: SpecificVolumeUnits): number {
         switch (toUnit) {
                 
@@ -75,6 +96,8 @@ export class SpecificVolume {
                 return this.value;
             case SpecificVolumeUnits.CubicFeetPerPound:
                 return this.value*16.01846353;
+            case SpecificVolumeUnits.MillicubicMetersPerKilogram:
+                return (this.value) / 0.001;
             default:
                 break;
         }
@@ -88,6 +111,8 @@ export class SpecificVolume {
                 return value;
             case SpecificVolumeUnits.CubicFeetPerPound:
                 return value/16.01846353;
+            case SpecificVolumeUnits.MillicubicMetersPerKilogram:
+                return (value) * 0.001;
             default:
                 break;
         }
@@ -109,6 +134,8 @@ export class SpecificVolume {
                 return this.CubicMetersPerKilogram + ` m³/kg`;
             case SpecificVolumeUnits.CubicFeetPerPound:
                 return this.CubicFeetPerPound + ` ft³/lb`;
+            case SpecificVolumeUnits.MillicubicMetersPerKilogram:
+                return this.MillicubicMetersPerKilogram + ` `;
         default:
             break;
         }

@@ -15,6 +15,8 @@ export enum PowerDensityUnits {
     /** */
     MicrowattsPerCubicMeter,
     /** */
+    MilliwattsPerCubicMeter,
+    /** */
     DeciwattsPerCubicMeter,
     /** */
     DecawattsPerCubicMeter,
@@ -32,6 +34,8 @@ export enum PowerDensityUnits {
     NanowattsPerCubicInch,
     /** */
     MicrowattsPerCubicInch,
+    /** */
+    MilliwattsPerCubicInch,
     /** */
     DeciwattsPerCubicInch,
     /** */
@@ -51,6 +55,8 @@ export enum PowerDensityUnits {
     /** */
     MicrowattsPerCubicFoot,
     /** */
+    MilliwattsPerCubicFoot,
+    /** */
     DeciwattsPerCubicFoot,
     /** */
     DecawattsPerCubicFoot,
@@ -68,6 +74,8 @@ export enum PowerDensityUnits {
     NanowattsPerLiter,
     /** */
     MicrowattsPerLiter,
+    /** */
+    MilliwattsPerLiter,
     /** */
     DeciwattsPerLiter,
     /** */
@@ -92,6 +100,7 @@ export class PowerDensity {
     private picowattspercubicmeterLazy: number | null = null;
     private nanowattspercubicmeterLazy: number | null = null;
     private microwattspercubicmeterLazy: number | null = null;
+    private milliwattspercubicmeterLazy: number | null = null;
     private deciwattspercubicmeterLazy: number | null = null;
     private decawattspercubicmeterLazy: number | null = null;
     private kilowattspercubicmeterLazy: number | null = null;
@@ -101,6 +110,7 @@ export class PowerDensity {
     private picowattspercubicinchLazy: number | null = null;
     private nanowattspercubicinchLazy: number | null = null;
     private microwattspercubicinchLazy: number | null = null;
+    private milliwattspercubicinchLazy: number | null = null;
     private deciwattspercubicinchLazy: number | null = null;
     private decawattspercubicinchLazy: number | null = null;
     private kilowattspercubicinchLazy: number | null = null;
@@ -110,6 +120,7 @@ export class PowerDensity {
     private picowattspercubicfootLazy: number | null = null;
     private nanowattspercubicfootLazy: number | null = null;
     private microwattspercubicfootLazy: number | null = null;
+    private milliwattspercubicfootLazy: number | null = null;
     private deciwattspercubicfootLazy: number | null = null;
     private decawattspercubicfootLazy: number | null = null;
     private kilowattspercubicfootLazy: number | null = null;
@@ -119,6 +130,7 @@ export class PowerDensity {
     private picowattsperliterLazy: number | null = null;
     private nanowattsperliterLazy: number | null = null;
     private microwattsperliterLazy: number | null = null;
+    private milliwattsperliterLazy: number | null = null;
     private deciwattsperliterLazy: number | null = null;
     private decawattsperliterLazy: number | null = null;
     private kilowattsperliterLazy: number | null = null;
@@ -203,6 +215,14 @@ export class PowerDensity {
     }
 
     /** */
+    public get MilliwattsPerCubicMeter(): number {
+        if(this.milliwattspercubicmeterLazy !== null){
+            return this.milliwattspercubicmeterLazy;
+        }
+        return this.milliwattspercubicmeterLazy = this.convertFromBase(PowerDensityUnits.MilliwattsPerCubicMeter);
+    }
+
+    /** */
     public get DeciwattsPerCubicMeter(): number {
         if(this.deciwattspercubicmeterLazy !== null){
             return this.deciwattspercubicmeterLazy;
@@ -272,6 +292,14 @@ export class PowerDensity {
             return this.microwattspercubicinchLazy;
         }
         return this.microwattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.MicrowattsPerCubicInch);
+    }
+
+    /** */
+    public get MilliwattsPerCubicInch(): number {
+        if(this.milliwattspercubicinchLazy !== null){
+            return this.milliwattspercubicinchLazy;
+        }
+        return this.milliwattspercubicinchLazy = this.convertFromBase(PowerDensityUnits.MilliwattsPerCubicInch);
     }
 
     /** */
@@ -347,6 +375,14 @@ export class PowerDensity {
     }
 
     /** */
+    public get MilliwattsPerCubicFoot(): number {
+        if(this.milliwattspercubicfootLazy !== null){
+            return this.milliwattspercubicfootLazy;
+        }
+        return this.milliwattspercubicfootLazy = this.convertFromBase(PowerDensityUnits.MilliwattsPerCubicFoot);
+    }
+
+    /** */
     public get DeciwattsPerCubicFoot(): number {
         if(this.deciwattspercubicfootLazy !== null){
             return this.deciwattspercubicfootLazy;
@@ -416,6 +452,14 @@ export class PowerDensity {
             return this.microwattsperliterLazy;
         }
         return this.microwattsperliterLazy = this.convertFromBase(PowerDensityUnits.MicrowattsPerLiter);
+    }
+
+    /** */
+    public get MilliwattsPerLiter(): number {
+        if(this.milliwattsperliterLazy !== null){
+            return this.milliwattsperliterLazy;
+        }
+        return this.milliwattsperliterLazy = this.convertFromBase(PowerDensityUnits.MilliwattsPerLiter);
     }
 
     /** */
@@ -537,6 +581,16 @@ export class PowerDensity {
     }
 
     /**
+     * Create a new PowerDensity instance from a MilliwattsPerCubicMeter
+     *
+     * @param value The unit as MilliwattsPerCubicMeter to create a new PowerDensity from.
+     * @returns The new PowerDensity instance.
+     */
+    public static FromMilliwattsPerCubicMeter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MilliwattsPerCubicMeter);
+    }
+
+    /**
      * Create a new PowerDensity instance from a DeciwattsPerCubicMeter
      *
      * @param value The unit as DeciwattsPerCubicMeter to create a new PowerDensity from.
@@ -624,6 +678,16 @@ export class PowerDensity {
      */
     public static FromMicrowattsPerCubicInch(value: number): PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.MicrowattsPerCubicInch);
+    }
+
+    /**
+     * Create a new PowerDensity instance from a MilliwattsPerCubicInch
+     *
+     * @param value The unit as MilliwattsPerCubicInch to create a new PowerDensity from.
+     * @returns The new PowerDensity instance.
+     */
+    public static FromMilliwattsPerCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MilliwattsPerCubicInch);
     }
 
     /**
@@ -717,6 +781,16 @@ export class PowerDensity {
     }
 
     /**
+     * Create a new PowerDensity instance from a MilliwattsPerCubicFoot
+     *
+     * @param value The unit as MilliwattsPerCubicFoot to create a new PowerDensity from.
+     * @returns The new PowerDensity instance.
+     */
+    public static FromMilliwattsPerCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MilliwattsPerCubicFoot);
+    }
+
+    /**
      * Create a new PowerDensity instance from a DeciwattsPerCubicFoot
      *
      * @param value The unit as DeciwattsPerCubicFoot to create a new PowerDensity from.
@@ -807,6 +881,16 @@ export class PowerDensity {
     }
 
     /**
+     * Create a new PowerDensity instance from a MilliwattsPerLiter
+     *
+     * @param value The unit as MilliwattsPerLiter to create a new PowerDensity from.
+     * @returns The new PowerDensity instance.
+     */
+    public static FromMilliwattsPerLiter(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.MilliwattsPerLiter);
+    }
+
+    /**
      * Create a new PowerDensity instance from a DeciwattsPerLiter
      *
      * @param value The unit as DeciwattsPerLiter to create a new PowerDensity from.
@@ -883,6 +967,8 @@ export class PowerDensity {
                 return (this.value) / 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicMeter:
                 return (this.value) / 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicMeter:
+                return (this.value) / 0.001;
             case PowerDensityUnits.DeciwattsPerCubicMeter:
                 return (this.value) / 0.1;
             case PowerDensityUnits.DecawattsPerCubicMeter:
@@ -901,6 +987,8 @@ export class PowerDensity {
                 return (this.value/6.102374409473228e4) / 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicInch:
+                return (this.value/6.102374409473228e4) / 0.001;
             case PowerDensityUnits.DeciwattsPerCubicInch:
                 return (this.value/6.102374409473228e4) / 0.1;
             case PowerDensityUnits.DecawattsPerCubicInch:
@@ -919,6 +1007,8 @@ export class PowerDensity {
                 return (this.value/3.531466672148859e1) / 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicFoot:
+                return (this.value/3.531466672148859e1) / 0.001;
             case PowerDensityUnits.DeciwattsPerCubicFoot:
                 return (this.value/3.531466672148859e1) / 0.1;
             case PowerDensityUnits.DecawattsPerCubicFoot:
@@ -937,6 +1027,8 @@ export class PowerDensity {
                 return (this.value/1.0e3) / 1e-9;
             case PowerDensityUnits.MicrowattsPerLiter:
                 return (this.value/1.0e3) / 0.000001;
+            case PowerDensityUnits.MilliwattsPerLiter:
+                return (this.value/1.0e3) / 0.001;
             case PowerDensityUnits.DeciwattsPerLiter:
                 return (this.value/1.0e3) / 0.1;
             case PowerDensityUnits.DecawattsPerLiter:
@@ -972,6 +1064,8 @@ export class PowerDensity {
                 return (value) * 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicMeter:
                 return (value) * 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicMeter:
+                return (value) * 0.001;
             case PowerDensityUnits.DeciwattsPerCubicMeter:
                 return (value) * 0.1;
             case PowerDensityUnits.DecawattsPerCubicMeter:
@@ -990,6 +1084,8 @@ export class PowerDensity {
                 return (value*6.102374409473228e4) * 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicInch:
                 return (value*6.102374409473228e4) * 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicInch:
+                return (value*6.102374409473228e4) * 0.001;
             case PowerDensityUnits.DeciwattsPerCubicInch:
                 return (value*6.102374409473228e4) * 0.1;
             case PowerDensityUnits.DecawattsPerCubicInch:
@@ -1008,6 +1104,8 @@ export class PowerDensity {
                 return (value*3.531466672148859e1) * 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicFoot:
+                return (value*3.531466672148859e1) * 0.001;
             case PowerDensityUnits.DeciwattsPerCubicFoot:
                 return (value*3.531466672148859e1) * 0.1;
             case PowerDensityUnits.DecawattsPerCubicFoot:
@@ -1026,6 +1124,8 @@ export class PowerDensity {
                 return (value*1.0e3) * 1e-9;
             case PowerDensityUnits.MicrowattsPerLiter:
                 return (value*1.0e3) * 0.000001;
+            case PowerDensityUnits.MilliwattsPerLiter:
+                return (value*1.0e3) * 0.001;
             case PowerDensityUnits.DeciwattsPerLiter:
                 return (value*1.0e3) * 0.1;
             case PowerDensityUnits.DecawattsPerLiter:
@@ -1069,6 +1169,8 @@ export class PowerDensity {
                 return this.NanowattsPerCubicMeter + ` `;
             case PowerDensityUnits.MicrowattsPerCubicMeter:
                 return this.MicrowattsPerCubicMeter + ` `;
+            case PowerDensityUnits.MilliwattsPerCubicMeter:
+                return this.MilliwattsPerCubicMeter + ` `;
             case PowerDensityUnits.DeciwattsPerCubicMeter:
                 return this.DeciwattsPerCubicMeter + ` `;
             case PowerDensityUnits.DecawattsPerCubicMeter:
@@ -1087,6 +1189,8 @@ export class PowerDensity {
                 return this.NanowattsPerCubicInch + ` `;
             case PowerDensityUnits.MicrowattsPerCubicInch:
                 return this.MicrowattsPerCubicInch + ` `;
+            case PowerDensityUnits.MilliwattsPerCubicInch:
+                return this.MilliwattsPerCubicInch + ` `;
             case PowerDensityUnits.DeciwattsPerCubicInch:
                 return this.DeciwattsPerCubicInch + ` `;
             case PowerDensityUnits.DecawattsPerCubicInch:
@@ -1105,6 +1209,8 @@ export class PowerDensity {
                 return this.NanowattsPerCubicFoot + ` `;
             case PowerDensityUnits.MicrowattsPerCubicFoot:
                 return this.MicrowattsPerCubicFoot + ` `;
+            case PowerDensityUnits.MilliwattsPerCubicFoot:
+                return this.MilliwattsPerCubicFoot + ` `;
             case PowerDensityUnits.DeciwattsPerCubicFoot:
                 return this.DeciwattsPerCubicFoot + ` `;
             case PowerDensityUnits.DecawattsPerCubicFoot:
@@ -1123,6 +1229,8 @@ export class PowerDensity {
                 return this.NanowattsPerLiter + ` `;
             case PowerDensityUnits.MicrowattsPerLiter:
                 return this.MicrowattsPerLiter + ` `;
+            case PowerDensityUnits.MilliwattsPerLiter:
+                return this.MilliwattsPerLiter + ` `;
             case PowerDensityUnits.DeciwattsPerLiter:
                 return this.DeciwattsPerLiter + ` `;
             case PowerDensityUnits.DecawattsPerLiter:

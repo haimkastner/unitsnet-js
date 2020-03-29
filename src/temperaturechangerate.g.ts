@@ -9,6 +9,8 @@ export enum TemperatureChangeRateUnits {
     /** */
     MicrodegreesCelsiusPerSecond,
     /** */
+    MillidegreesCelsiusPerSecond,
+    /** */
     CentidegreesCelsiusPerSecond,
     /** */
     DecidegreesCelsiusPerSecond,
@@ -27,6 +29,7 @@ export class TemperatureChangeRate {
     private degreescelsiusperminuteLazy: number | null = null;
     private nanodegreescelsiuspersecondLazy: number | null = null;
     private microdegreescelsiuspersecondLazy: number | null = null;
+    private millidegreescelsiuspersecondLazy: number | null = null;
     private centidegreescelsiuspersecondLazy: number | null = null;
     private decidegreescelsiuspersecondLazy: number | null = null;
     private decadegreescelsiuspersecondLazy: number | null = null;
@@ -83,6 +86,14 @@ export class TemperatureChangeRate {
             return this.microdegreescelsiuspersecondLazy;
         }
         return this.microdegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond);
+    }
+
+    /** */
+    public get MillidegreesCelsiusPerSecond(): number {
+        if(this.millidegreescelsiuspersecondLazy !== null){
+            return this.millidegreescelsiuspersecondLazy;
+        }
+        return this.millidegreescelsiuspersecondLazy = this.convertFromBase(TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond);
     }
 
     /** */
@@ -166,6 +177,16 @@ export class TemperatureChangeRate {
     }
 
     /**
+     * Create a new TemperatureChangeRate instance from a MillidegreesCelsiusPerSecond
+     *
+     * @param value The unit as MillidegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
+    public static FromMillidegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond);
+    }
+
+    /**
      * Create a new TemperatureChangeRate instance from a CentidegreesCelsiusPerSecond
      *
      * @param value The unit as CentidegreesCelsiusPerSecond to create a new TemperatureChangeRate from.
@@ -226,6 +247,8 @@ export class TemperatureChangeRate {
                 return (this.value) / 1e-9;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
                 return (this.value) / 0.000001;
+            case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond:
+                return (this.value) / 0.001;
             case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
                 return (this.value) / 0.01;
             case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:
@@ -253,6 +276,8 @@ export class TemperatureChangeRate {
                 return (value) * 1e-9;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
                 return (value) * 0.000001;
+            case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond:
+                return (value) * 0.001;
             case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
                 return (value) * 0.01;
             case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:
@@ -288,6 +313,8 @@ export class TemperatureChangeRate {
                 return this.NanodegreesCelsiusPerSecond + ` `;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
                 return this.MicrodegreesCelsiusPerSecond + ` `;
+            case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond:
+                return this.MillidegreesCelsiusPerSecond + ` `;
             case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
                 return this.CentidegreesCelsiusPerSecond + ` `;
             case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:

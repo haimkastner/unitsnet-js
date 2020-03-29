@@ -11,6 +11,8 @@ export enum IrradianceUnits {
     /** */
     MicrowattsPerSquareMeter,
     /** */
+    MilliwattsPerSquareMeter,
+    /** */
     KilowattsPerSquareMeter,
     /** */
     MegawattsPerSquareMeter,
@@ -20,6 +22,8 @@ export enum IrradianceUnits {
     NanowattsPerSquareCentimeter,
     /** */
     MicrowattsPerSquareCentimeter,
+    /** */
+    MilliwattsPerSquareCentimeter,
     /** */
     KilowattsPerSquareCentimeter,
     /** */
@@ -34,11 +38,13 @@ export class Irradiance {
     private picowattspersquaremeterLazy: number | null = null;
     private nanowattspersquaremeterLazy: number | null = null;
     private microwattspersquaremeterLazy: number | null = null;
+    private milliwattspersquaremeterLazy: number | null = null;
     private kilowattspersquaremeterLazy: number | null = null;
     private megawattspersquaremeterLazy: number | null = null;
     private picowattspersquarecentimeterLazy: number | null = null;
     private nanowattspersquarecentimeterLazy: number | null = null;
     private microwattspersquarecentimeterLazy: number | null = null;
+    private milliwattspersquarecentimeterLazy: number | null = null;
     private kilowattspersquarecentimeterLazy: number | null = null;
     private megawattspersquarecentimeterLazy: number | null = null;
 
@@ -103,6 +109,14 @@ export class Irradiance {
     }
 
     /** */
+    public get MilliwattsPerSquareMeter(): number {
+        if(this.milliwattspersquaremeterLazy !== null){
+            return this.milliwattspersquaremeterLazy;
+        }
+        return this.milliwattspersquaremeterLazy = this.convertFromBase(IrradianceUnits.MilliwattsPerSquareMeter);
+    }
+
+    /** */
     public get KilowattsPerSquareMeter(): number {
         if(this.kilowattspersquaremeterLazy !== null){
             return this.kilowattspersquaremeterLazy;
@@ -140,6 +154,14 @@ export class Irradiance {
             return this.microwattspersquarecentimeterLazy;
         }
         return this.microwattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.MicrowattsPerSquareCentimeter);
+    }
+
+    /** */
+    public get MilliwattsPerSquareCentimeter(): number {
+        if(this.milliwattspersquarecentimeterLazy !== null){
+            return this.milliwattspersquarecentimeterLazy;
+        }
+        return this.milliwattspersquarecentimeterLazy = this.convertFromBase(IrradianceUnits.MilliwattsPerSquareCentimeter);
     }
 
     /** */
@@ -209,6 +231,16 @@ export class Irradiance {
     }
 
     /**
+     * Create a new Irradiance instance from a MilliwattsPerSquareMeter
+     *
+     * @param value The unit as MilliwattsPerSquareMeter to create a new Irradiance from.
+     * @returns The new Irradiance instance.
+     */
+    public static FromMilliwattsPerSquareMeter(value: number): Irradiance {
+        return new Irradiance(value, IrradianceUnits.MilliwattsPerSquareMeter);
+    }
+
+    /**
      * Create a new Irradiance instance from a KilowattsPerSquareMeter
      *
      * @param value The unit as KilowattsPerSquareMeter to create a new Irradiance from.
@@ -259,6 +291,16 @@ export class Irradiance {
     }
 
     /**
+     * Create a new Irradiance instance from a MilliwattsPerSquareCentimeter
+     *
+     * @param value The unit as MilliwattsPerSquareCentimeter to create a new Irradiance from.
+     * @returns The new Irradiance instance.
+     */
+    public static FromMilliwattsPerSquareCentimeter(value: number): Irradiance {
+        return new Irradiance(value, IrradianceUnits.MilliwattsPerSquareCentimeter);
+    }
+
+    /**
      * Create a new Irradiance instance from a KilowattsPerSquareCentimeter
      *
      * @param value The unit as KilowattsPerSquareCentimeter to create a new Irradiance from.
@@ -291,6 +333,8 @@ export class Irradiance {
                 return (this.value) / 1e-9;
             case IrradianceUnits.MicrowattsPerSquareMeter:
                 return (this.value) / 0.000001;
+            case IrradianceUnits.MilliwattsPerSquareMeter:
+                return (this.value) / 0.001;
             case IrradianceUnits.KilowattsPerSquareMeter:
                 return (this.value) / 1000;
             case IrradianceUnits.MegawattsPerSquareMeter:
@@ -301,6 +345,8 @@ export class Irradiance {
                 return (this.value*0.0001) / 1e-9;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
                 return (this.value*0.0001) / 0.000001;
+            case IrradianceUnits.MilliwattsPerSquareCentimeter:
+                return (this.value*0.0001) / 0.001;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
                 return (this.value*0.0001) / 1000;
             case IrradianceUnits.MegawattsPerSquareCentimeter:
@@ -324,6 +370,8 @@ export class Irradiance {
                 return (value) * 1e-9;
             case IrradianceUnits.MicrowattsPerSquareMeter:
                 return (value) * 0.000001;
+            case IrradianceUnits.MilliwattsPerSquareMeter:
+                return (value) * 0.001;
             case IrradianceUnits.KilowattsPerSquareMeter:
                 return (value) * 1000;
             case IrradianceUnits.MegawattsPerSquareMeter:
@@ -334,6 +382,8 @@ export class Irradiance {
                 return (value*10000) * 1e-9;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
                 return (value*10000) * 0.000001;
+            case IrradianceUnits.MilliwattsPerSquareCentimeter:
+                return (value*10000) * 0.001;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
                 return (value*10000) * 1000;
             case IrradianceUnits.MegawattsPerSquareCentimeter:
@@ -365,6 +415,8 @@ export class Irradiance {
                 return this.NanowattsPerSquareMeter + ` `;
             case IrradianceUnits.MicrowattsPerSquareMeter:
                 return this.MicrowattsPerSquareMeter + ` `;
+            case IrradianceUnits.MilliwattsPerSquareMeter:
+                return this.MilliwattsPerSquareMeter + ` `;
             case IrradianceUnits.KilowattsPerSquareMeter:
                 return this.KilowattsPerSquareMeter + ` `;
             case IrradianceUnits.MegawattsPerSquareMeter:
@@ -375,6 +427,8 @@ export class Irradiance {
                 return this.NanowattsPerSquareCentimeter + ` `;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
                 return this.MicrowattsPerSquareCentimeter + ` `;
+            case IrradianceUnits.MilliwattsPerSquareCentimeter:
+                return this.MilliwattsPerSquareCentimeter + ` `;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
                 return this.KilowattsPerSquareCentimeter + ` `;
             case IrradianceUnits.MegawattsPerSquareCentimeter:

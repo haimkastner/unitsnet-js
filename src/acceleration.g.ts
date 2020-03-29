@@ -19,6 +19,8 @@ export enum AccelerationUnits {
     /** */
     MicrometersPerSecondSquared,
     /** */
+    MillimetersPerSecondSquared,
+    /** */
     CentimetersPerSecondSquared,
     /** */
     DecimetersPerSecondSquared,
@@ -38,6 +40,7 @@ export class Acceleration {
     private standardgravityLazy: number | null = null;
     private nanometerspersecondsquaredLazy: number | null = null;
     private micrometerspersecondsquaredLazy: number | null = null;
+    private millimeterspersecondsquaredLazy: number | null = null;
     private centimeterspersecondsquaredLazy: number | null = null;
     private decimeterspersecondsquaredLazy: number | null = null;
     private kilometerspersecondsquaredLazy: number | null = null;
@@ -132,6 +135,14 @@ export class Acceleration {
             return this.micrometerspersecondsquaredLazy;
         }
         return this.micrometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.MicrometersPerSecondSquared);
+    }
+
+    /** */
+    public get MillimetersPerSecondSquared(): number {
+        if(this.millimeterspersecondsquaredLazy !== null){
+            return this.millimeterspersecondsquaredLazy;
+        }
+        return this.millimeterspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.MillimetersPerSecondSquared);
     }
 
     /** */
@@ -249,6 +260,16 @@ export class Acceleration {
     }
 
     /**
+     * Create a new Acceleration instance from a MillimetersPerSecondSquared
+     *
+     * @param value The unit as MillimetersPerSecondSquared to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
+    public static FromMillimetersPerSecondSquared(value: number): Acceleration {
+        return new Acceleration(value, AccelerationUnits.MillimetersPerSecondSquared);
+    }
+
+    /**
      * Create a new Acceleration instance from a CentimetersPerSecondSquared
      *
      * @param value The unit as CentimetersPerSecondSquared to create a new Acceleration from.
@@ -299,6 +320,8 @@ export class Acceleration {
                 return (this.value) / 1e-9;
             case AccelerationUnits.MicrometersPerSecondSquared:
                 return (this.value) / 0.000001;
+            case AccelerationUnits.MillimetersPerSecondSquared:
+                return (this.value) / 0.001;
             case AccelerationUnits.CentimetersPerSecondSquared:
                 return (this.value) / 0.01;
             case AccelerationUnits.DecimetersPerSecondSquared:
@@ -332,6 +355,8 @@ export class Acceleration {
                 return (value) * 1e-9;
             case AccelerationUnits.MicrometersPerSecondSquared:
                 return (value) * 0.000001;
+            case AccelerationUnits.MillimetersPerSecondSquared:
+                return (value) * 0.001;
             case AccelerationUnits.CentimetersPerSecondSquared:
                 return (value) * 0.01;
             case AccelerationUnits.DecimetersPerSecondSquared:
@@ -373,6 +398,8 @@ export class Acceleration {
                 return this.NanometersPerSecondSquared + ` `;
             case AccelerationUnits.MicrometersPerSecondSquared:
                 return this.MicrometersPerSecondSquared + ` `;
+            case AccelerationUnits.MillimetersPerSecondSquared:
+                return this.MillimetersPerSecondSquared + ` `;
             case AccelerationUnits.CentimetersPerSecondSquared:
                 return this.CentimetersPerSecondSquared + ` `;
             case AccelerationUnits.DecimetersPerSecondSquared:

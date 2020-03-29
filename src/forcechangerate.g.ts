@@ -13,6 +13,8 @@ export enum ForceChangeRateUnits {
     /** */
     MicronewtonsPerSecond,
     /** */
+    MillinewtonsPerSecond,
+    /** */
     CentinewtonsPerSecond,
     /** */
     DecinewtonsPerSecond,
@@ -31,6 +33,7 @@ export class ForceChangeRate {
     private kilonewtonsperminuteLazy: number | null = null;
     private nanonewtonspersecondLazy: number | null = null;
     private micronewtonspersecondLazy: number | null = null;
+    private millinewtonspersecondLazy: number | null = null;
     private centinewtonspersecondLazy: number | null = null;
     private decinewtonspersecondLazy: number | null = null;
     private decanewtonspersecondLazy: number | null = null;
@@ -102,6 +105,14 @@ export class ForceChangeRate {
             return this.micronewtonspersecondLazy;
         }
         return this.micronewtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.MicronewtonsPerSecond);
+    }
+
+    /** */
+    public get MillinewtonsPerSecond(): number {
+        if(this.millinewtonspersecondLazy !== null){
+            return this.millinewtonspersecondLazy;
+        }
+        return this.millinewtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.MillinewtonsPerSecond);
     }
 
     /** */
@@ -197,6 +208,16 @@ export class ForceChangeRate {
     }
 
     /**
+     * Create a new ForceChangeRate instance from a MillinewtonsPerSecond
+     *
+     * @param value The unit as MillinewtonsPerSecond to create a new ForceChangeRate from.
+     * @returns The new ForceChangeRate instance.
+     */
+    public static FromMillinewtonsPerSecond(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.MillinewtonsPerSecond);
+    }
+
+    /**
      * Create a new ForceChangeRate instance from a CentinewtonsPerSecond
      *
      * @param value The unit as CentinewtonsPerSecond to create a new ForceChangeRate from.
@@ -251,6 +272,8 @@ export class ForceChangeRate {
                 return (this.value) / 1e-9;
             case ForceChangeRateUnits.MicronewtonsPerSecond:
                 return (this.value) / 0.000001;
+            case ForceChangeRateUnits.MillinewtonsPerSecond:
+                return (this.value) / 0.001;
             case ForceChangeRateUnits.CentinewtonsPerSecond:
                 return (this.value) / 0.01;
             case ForceChangeRateUnits.DecinewtonsPerSecond:
@@ -280,6 +303,8 @@ export class ForceChangeRate {
                 return (value) * 1e-9;
             case ForceChangeRateUnits.MicronewtonsPerSecond:
                 return (value) * 0.000001;
+            case ForceChangeRateUnits.MillinewtonsPerSecond:
+                return (value) * 0.001;
             case ForceChangeRateUnits.CentinewtonsPerSecond:
                 return (value) * 0.01;
             case ForceChangeRateUnits.DecinewtonsPerSecond:
@@ -317,6 +342,8 @@ export class ForceChangeRate {
                 return this.NanonewtonsPerSecond + ` `;
             case ForceChangeRateUnits.MicronewtonsPerSecond:
                 return this.MicronewtonsPerSecond + ` `;
+            case ForceChangeRateUnits.MillinewtonsPerSecond:
+                return this.MillinewtonsPerSecond + ` `;
             case ForceChangeRateUnits.CentinewtonsPerSecond:
                 return this.CentinewtonsPerSecond + ` `;
             case ForceChangeRateUnits.DecinewtonsPerSecond:

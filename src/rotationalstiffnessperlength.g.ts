@@ -3,6 +3,10 @@ export enum RotationalStiffnessPerLengthUnits {
     /** */
     NewtonMetersPerRadianPerMeter,
     /** */
+    PoundForceFeetPerDegreesPerFeet,
+    /** */
+    KilopoundForceFeetPerDegreesPerFeet,
+    /** */
     KilonewtonMetersPerRadianPerMeter,
     /** */
     MeganewtonMetersPerRadianPerMeter
@@ -12,6 +16,8 @@ export enum RotationalStiffnessPerLengthUnits {
 export class RotationalStiffnessPerLength {
     private value: number;
     private newtonmetersperradianpermeterLazy: number | null = null;
+    private poundforcefeetperdegreesperfeetLazy: number | null = null;
+    private kilopoundforcefeetperdegreesperfeetLazy: number | null = null;
     private kilonewtonmetersperradianpermeterLazy: number | null = null;
     private meganewtonmetersperradianpermeterLazy: number | null = null;
 
@@ -44,6 +50,22 @@ export class RotationalStiffnessPerLength {
     }
 
     /** */
+    public get PoundForceFeetPerDegreesPerFeet(): number {
+        if(this.poundforcefeetperdegreesperfeetLazy !== null){
+            return this.poundforcefeetperdegreesperfeetLazy;
+        }
+        return this.poundforcefeetperdegreesperfeetLazy = this.convertFromBase(RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet);
+    }
+
+    /** */
+    public get KilopoundForceFeetPerDegreesPerFeet(): number {
+        if(this.kilopoundforcefeetperdegreesperfeetLazy !== null){
+            return this.kilopoundforcefeetperdegreesperfeetLazy;
+        }
+        return this.kilopoundforcefeetperdegreesperfeetLazy = this.convertFromBase(RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet);
+    }
+
+    /** */
     public get KilonewtonMetersPerRadianPerMeter(): number {
         if(this.kilonewtonmetersperradianpermeterLazy !== null){
             return this.kilonewtonmetersperradianpermeterLazy;
@@ -67,6 +89,26 @@ export class RotationalStiffnessPerLength {
      */
     public static FromNewtonMetersPerRadianPerMeter(value: number): RotationalStiffnessPerLength {
         return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter);
+    }
+
+    /**
+     * Create a new RotationalStiffnessPerLength instance from a PoundForceFeetPerDegreesPerFeet
+     *
+     * @param value The unit as PoundForceFeetPerDegreesPerFeet to create a new RotationalStiffnessPerLength from.
+     * @returns The new RotationalStiffnessPerLength instance.
+     */
+    public static FromPoundForceFeetPerDegreesPerFeet(value: number): RotationalStiffnessPerLength {
+        return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet);
+    }
+
+    /**
+     * Create a new RotationalStiffnessPerLength instance from a KilopoundForceFeetPerDegreesPerFeet
+     *
+     * @param value The unit as KilopoundForceFeetPerDegreesPerFeet to create a new RotationalStiffnessPerLength from.
+     * @returns The new RotationalStiffnessPerLength instance.
+     */
+    public static FromKilopoundForceFeetPerDegreesPerFeet(value: number): RotationalStiffnessPerLength {
+        return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet);
     }
 
     /**
@@ -94,6 +136,10 @@ export class RotationalStiffnessPerLength {
                 
             case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
                 return this.value;
+            case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet:
+                return this.value/254.864324570;
+            case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
+                return this.value/254864.324570;
             case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
                 return (this.value) / 1000;
             case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
@@ -109,6 +155,10 @@ export class RotationalStiffnessPerLength {
                 
             case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
                 return value;
+            case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet:
+                return value*254.864324570;
+            case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
+                return value*254864.324570;
             case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
                 return (value) * 1000;
             case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
@@ -132,6 +182,10 @@ export class RotationalStiffnessPerLength {
             
             case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
                 return this.NewtonMetersPerRadianPerMeter + ` N·m/rad/m`;
+            case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet:
+                return this.PoundForceFeetPerDegreesPerFeet + ` lbf·ft/deg/ft`;
+            case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
+                return this.KilopoundForceFeetPerDegreesPerFeet + ` kipf·ft/°/ft`;
             case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
                 return this.KilonewtonMetersPerRadianPerMeter + ` `;
             case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:

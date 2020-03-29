@@ -11,6 +11,8 @@ export enum IrradiationUnits {
     /** */
     KilojoulesPerSquareMeter,
     /** */
+    MillijoulesPerSquareCentimeter,
+    /** */
     KilowattHoursPerSquareMeter
 }
 
@@ -22,6 +24,7 @@ export class Irradiation {
     private joulespersquaremillimeterLazy: number | null = null;
     private watthourspersquaremeterLazy: number | null = null;
     private kilojoulespersquaremeterLazy: number | null = null;
+    private millijoulespersquarecentimeterLazy: number | null = null;
     private kilowatthourspersquaremeterLazy: number | null = null;
 
     /**
@@ -85,6 +88,14 @@ export class Irradiation {
     }
 
     /** */
+    public get MillijoulesPerSquareCentimeter(): number {
+        if(this.millijoulespersquarecentimeterLazy !== null){
+            return this.millijoulespersquarecentimeterLazy;
+        }
+        return this.millijoulespersquarecentimeterLazy = this.convertFromBase(IrradiationUnits.MillijoulesPerSquareCentimeter);
+    }
+
+    /** */
     public get KilowattHoursPerSquareMeter(): number {
         if(this.kilowatthourspersquaremeterLazy !== null){
             return this.kilowatthourspersquaremeterLazy;
@@ -143,6 +154,16 @@ export class Irradiation {
     }
 
     /**
+     * Create a new Irradiation instance from a MillijoulesPerSquareCentimeter
+     *
+     * @param value The unit as MillijoulesPerSquareCentimeter to create a new Irradiation from.
+     * @returns The new Irradiation instance.
+     */
+    public static FromMillijoulesPerSquareCentimeter(value: number): Irradiation {
+        return new Irradiation(value, IrradiationUnits.MillijoulesPerSquareCentimeter);
+    }
+
+    /**
      * Create a new Irradiation instance from a KilowattHoursPerSquareMeter
      *
      * @param value The unit as KilowattHoursPerSquareMeter to create a new Irradiation from.
@@ -165,6 +186,8 @@ export class Irradiation {
                 return this.value/3600;
             case IrradiationUnits.KilojoulesPerSquareMeter:
                 return (this.value) / 1000;
+            case IrradiationUnits.MillijoulesPerSquareCentimeter:
+                return (this.value/1e4) / 0.001;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
                 return (this.value/3600) / 1000;
             default:
@@ -186,6 +209,8 @@ export class Irradiation {
                 return value*3600;
             case IrradiationUnits.KilojoulesPerSquareMeter:
                 return (value) * 1000;
+            case IrradiationUnits.MillijoulesPerSquareCentimeter:
+                return (value*1e4) * 0.001;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
                 return (value*3600) * 1000;
             default:
@@ -215,6 +240,8 @@ export class Irradiation {
                 return this.WattHoursPerSquareMeter + ` Wh/m²`;
             case IrradiationUnits.KilojoulesPerSquareMeter:
                 return this.KilojoulesPerSquareMeter + ` `;
+            case IrradiationUnits.MillijoulesPerSquareCentimeter:
+                return this.MillijoulesPerSquareCentimeter + ` `;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
                 return this.KilowattHoursPerSquareMeter + ` `;
         default:

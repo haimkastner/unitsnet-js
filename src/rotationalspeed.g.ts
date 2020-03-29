@@ -15,13 +15,17 @@ export enum RotationalSpeedUnits {
     /** */
     MicroradiansPerSecond,
     /** */
+    MilliradiansPerSecond,
+    /** */
     CentiradiansPerSecond,
     /** */
     DeciradiansPerSecond,
     /** */
     NanodegreesPerSecond,
     /** */
-    MicrodegreesPerSecond
+    MicrodegreesPerSecond,
+    /** */
+    MillidegreesPerSecond
 }
 
 /** Rotational speed (sometimes called speed of revolution) is the number of complete rotations, revolutions, cycles, or turns per time unit. Rotational speed is a cyclic frequency, measured in radians per second or in hertz in the SI System by scientists, or in revolutions per minute (rpm or min-1) or revolutions per second in everyday life. The symbol for rotational speed is ω (the Greek lowercase letter "omega"). */
@@ -34,10 +38,12 @@ export class RotationalSpeed {
     private revolutionsperminuteLazy: number | null = null;
     private nanoradianspersecondLazy: number | null = null;
     private microradianspersecondLazy: number | null = null;
+    private milliradianspersecondLazy: number | null = null;
     private centiradianspersecondLazy: number | null = null;
     private deciradianspersecondLazy: number | null = null;
     private nanodegreespersecondLazy: number | null = null;
     private microdegreespersecondLazy: number | null = null;
+    private millidegreespersecondLazy: number | null = null;
 
     /**
      * Create a new RotationalSpeed.
@@ -116,6 +122,14 @@ export class RotationalSpeed {
     }
 
     /** */
+    public get MilliradiansPerSecond(): number {
+        if(this.milliradianspersecondLazy !== null){
+            return this.milliradianspersecondLazy;
+        }
+        return this.milliradianspersecondLazy = this.convertFromBase(RotationalSpeedUnits.MilliradiansPerSecond);
+    }
+
+    /** */
     public get CentiradiansPerSecond(): number {
         if(this.centiradianspersecondLazy !== null){
             return this.centiradianspersecondLazy;
@@ -145,6 +159,14 @@ export class RotationalSpeed {
             return this.microdegreespersecondLazy;
         }
         return this.microdegreespersecondLazy = this.convertFromBase(RotationalSpeedUnits.MicrodegreesPerSecond);
+    }
+
+    /** */
+    public get MillidegreesPerSecond(): number {
+        if(this.millidegreespersecondLazy !== null){
+            return this.millidegreespersecondLazy;
+        }
+        return this.millidegreespersecondLazy = this.convertFromBase(RotationalSpeedUnits.MillidegreesPerSecond);
     }
 
     /**
@@ -218,6 +240,16 @@ export class RotationalSpeed {
     }
 
     /**
+     * Create a new RotationalSpeed instance from a MilliradiansPerSecond
+     *
+     * @param value The unit as MilliradiansPerSecond to create a new RotationalSpeed from.
+     * @returns The new RotationalSpeed instance.
+     */
+    public static FromMilliradiansPerSecond(value: number): RotationalSpeed {
+        return new RotationalSpeed(value, RotationalSpeedUnits.MilliradiansPerSecond);
+    }
+
+    /**
      * Create a new RotationalSpeed instance from a CentiradiansPerSecond
      *
      * @param value The unit as CentiradiansPerSecond to create a new RotationalSpeed from.
@@ -257,6 +289,16 @@ export class RotationalSpeed {
         return new RotationalSpeed(value, RotationalSpeedUnits.MicrodegreesPerSecond);
     }
 
+    /**
+     * Create a new RotationalSpeed instance from a MillidegreesPerSecond
+     *
+     * @param value The unit as MillidegreesPerSecond to create a new RotationalSpeed from.
+     * @returns The new RotationalSpeed instance.
+     */
+    public static FromMillidegreesPerSecond(value: number): RotationalSpeed {
+        return new RotationalSpeed(value, RotationalSpeedUnits.MillidegreesPerSecond);
+    }
+
     private convertFromBase(toUnit: RotationalSpeedUnits): number {
         switch (toUnit) {
                 
@@ -274,6 +316,8 @@ export class RotationalSpeed {
                 return (this.value) / 1e-9;
             case RotationalSpeedUnits.MicroradiansPerSecond:
                 return (this.value) / 0.000001;
+            case RotationalSpeedUnits.MilliradiansPerSecond:
+                return (this.value) / 0.001;
             case RotationalSpeedUnits.CentiradiansPerSecond:
                 return (this.value) / 0.01;
             case RotationalSpeedUnits.DeciradiansPerSecond:
@@ -282,6 +326,8 @@ export class RotationalSpeed {
                 return ((180/Math.PI)*this.value) / 1e-9;
             case RotationalSpeedUnits.MicrodegreesPerSecond:
                 return ((180/Math.PI)*this.value) / 0.000001;
+            case RotationalSpeedUnits.MillidegreesPerSecond:
+                return ((180/Math.PI)*this.value) / 0.001;
             default:
                 break;
         }
@@ -305,6 +351,8 @@ export class RotationalSpeed {
                 return (value) * 1e-9;
             case RotationalSpeedUnits.MicroradiansPerSecond:
                 return (value) * 0.000001;
+            case RotationalSpeedUnits.MilliradiansPerSecond:
+                return (value) * 0.001;
             case RotationalSpeedUnits.CentiradiansPerSecond:
                 return (value) * 0.01;
             case RotationalSpeedUnits.DeciradiansPerSecond:
@@ -313,6 +361,8 @@ export class RotationalSpeed {
                 return ((Math.PI/180)*value) * 1e-9;
             case RotationalSpeedUnits.MicrodegreesPerSecond:
                 return ((Math.PI/180)*value) * 0.000001;
+            case RotationalSpeedUnits.MillidegreesPerSecond:
+                return ((Math.PI/180)*value) * 0.001;
             default:
                 break;
         }
@@ -344,6 +394,8 @@ export class RotationalSpeed {
                 return this.NanoradiansPerSecond + ` `;
             case RotationalSpeedUnits.MicroradiansPerSecond:
                 return this.MicroradiansPerSecond + ` `;
+            case RotationalSpeedUnits.MilliradiansPerSecond:
+                return this.MilliradiansPerSecond + ` `;
             case RotationalSpeedUnits.CentiradiansPerSecond:
                 return this.CentiradiansPerSecond + ` `;
             case RotationalSpeedUnits.DeciradiansPerSecond:
@@ -352,6 +404,8 @@ export class RotationalSpeed {
                 return this.NanodegreesPerSecond + ` `;
             case RotationalSpeedUnits.MicrodegreesPerSecond:
                 return this.MicrodegreesPerSecond + ` `;
+            case RotationalSpeedUnits.MillidegreesPerSecond:
+                return this.MillidegreesPerSecond + ` `;
         default:
             break;
         }

@@ -26,6 +26,7 @@ export * from "./electricfield.g";
 export * from "./electricinductance.g";
 export * from "./electricpotential.g";
 export * from "./electricpotentialac.g";
+export * from "./electricpotentialchangerate.g";
 export * from "./electricpotentialdc.g";
 export * from "./electricresistance.g";
 export * from "./electricresistivity.g";

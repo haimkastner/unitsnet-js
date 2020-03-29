@@ -17,7 +17,9 @@ export enum DurationUnits {
     /** */
     Nanoseconds,
     /** */
-    Microseconds
+    Microseconds,
+    /** */
+    Milliseconds
 }
 
 /** Time is a dimension in which events can be ordered from the past through the present into the future, and also the measure of durations of events and the intervals between them. */
@@ -32,6 +34,7 @@ export class Duration {
     private secondsLazy: number | null = null;
     private nanosecondsLazy: number | null = null;
     private microsecondsLazy: number | null = null;
+    private millisecondsLazy: number | null = null;
 
     /**
      * Create a new Duration.
@@ -125,6 +128,14 @@ export class Duration {
         return this.microsecondsLazy = this.convertFromBase(DurationUnits.Microseconds);
     }
 
+    /** */
+    public get Milliseconds(): number {
+        if(this.millisecondsLazy !== null){
+            return this.millisecondsLazy;
+        }
+        return this.millisecondsLazy = this.convertFromBase(DurationUnits.Milliseconds);
+    }
+
     /**
      * Create a new Duration instance from a Years365
      *
@@ -215,6 +226,16 @@ export class Duration {
         return new Duration(value, DurationUnits.Microseconds);
     }
 
+    /**
+     * Create a new Duration instance from a Milliseconds
+     *
+     * @param value The unit as Milliseconds to create a new Duration from.
+     * @returns The new Duration instance.
+     */
+    public static FromMilliseconds(value: number): Duration {
+        return new Duration(value, DurationUnits.Milliseconds);
+    }
+
     private convertFromBase(toUnit: DurationUnits): number {
         switch (toUnit) {
                 
@@ -236,6 +257,8 @@ export class Duration {
                 return (this.value) / 1e-9;
             case DurationUnits.Microseconds:
                 return (this.value) / 0.000001;
+            case DurationUnits.Milliseconds:
+                return (this.value) / 0.001;
             default:
                 break;
         }
@@ -263,6 +286,8 @@ export class Duration {
                 return (value) * 1e-9;
             case DurationUnits.Microseconds:
                 return (value) * 0.000001;
+            case DurationUnits.Milliseconds:
+                return (value) * 0.001;
             default:
                 break;
         }
@@ -298,6 +323,8 @@ export class Duration {
                 return this.Nanoseconds + ` `;
             case DurationUnits.Microseconds:
                 return this.Microseconds + ` `;
+            case DurationUnits.Milliseconds:
+                return this.Milliseconds + ` `;
         default:
             break;
         }

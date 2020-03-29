@@ -75,6 +75,8 @@ export enum VolumeFlowUnits {
     /** */
     MicrolitersPerMinute,
     /** */
+    MillilitersPerMinute,
+    /** */
     CentilitersPerMinute,
     /** */
     DecilitersPerMinute,
@@ -84,6 +86,8 @@ export enum VolumeFlowUnits {
     NanolitersPerDay,
     /** */
     MicrolitersPerDay,
+    /** */
+    MillilitersPerDay,
     /** */
     CentilitersPerDay,
     /** */
@@ -136,11 +140,13 @@ export class VolumeFlow {
     private acrefeetperdayLazy: number | null = null;
     private nanolitersperminuteLazy: number | null = null;
     private microlitersperminuteLazy: number | null = null;
+    private millilitersperminuteLazy: number | null = null;
     private centilitersperminuteLazy: number | null = null;
     private decilitersperminuteLazy: number | null = null;
     private kilolitersperminuteLazy: number | null = null;
     private nanolitersperdayLazy: number | null = null;
     private microlitersperdayLazy: number | null = null;
+    private millilitersperdayLazy: number | null = null;
     private centilitersperdayLazy: number | null = null;
     private decilitersperdayLazy: number | null = null;
     private kilolitersperdayLazy: number | null = null;
@@ -464,6 +470,14 @@ export class VolumeFlow {
     }
 
     /** */
+    public get MillilitersPerMinute(): number {
+        if(this.millilitersperminuteLazy !== null){
+            return this.millilitersperminuteLazy;
+        }
+        return this.millilitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.MillilitersPerMinute);
+    }
+
+    /** */
     public get CentilitersPerMinute(): number {
         if(this.centilitersperminuteLazy !== null){
             return this.centilitersperminuteLazy;
@@ -501,6 +515,14 @@ export class VolumeFlow {
             return this.microlitersperdayLazy;
         }
         return this.microlitersperdayLazy = this.convertFromBase(VolumeFlowUnits.MicrolitersPerDay);
+    }
+
+    /** */
+    public get MillilitersPerDay(): number {
+        if(this.millilitersperdayLazy !== null){
+            return this.millilitersperdayLazy;
+        }
+        return this.millilitersperdayLazy = this.convertFromBase(VolumeFlowUnits.MillilitersPerDay);
     }
 
     /** */
@@ -914,6 +936,16 @@ export class VolumeFlow {
     }
 
     /**
+     * Create a new VolumeFlow instance from a MillilitersPerMinute
+     *
+     * @param value The unit as MillilitersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromMillilitersPerMinute(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.MillilitersPerMinute);
+    }
+
+    /**
      * Create a new VolumeFlow instance from a CentilitersPerMinute
      *
      * @param value The unit as CentilitersPerMinute to create a new VolumeFlow from.
@@ -961,6 +993,16 @@ export class VolumeFlow {
      */
     public static FromMicrolitersPerDay(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.MicrolitersPerDay);
+    }
+
+    /**
+     * Create a new VolumeFlow instance from a MillilitersPerDay
+     *
+     * @param value The unit as MillilitersPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromMillilitersPerDay(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.MillilitersPerDay);
     }
 
     /**
@@ -1090,6 +1132,8 @@ export class VolumeFlow {
                 return (this.value*60000.00000) / 1e-9;
             case VolumeFlowUnits.MicrolitersPerMinute:
                 return (this.value*60000.00000) / 0.000001;
+            case VolumeFlowUnits.MillilitersPerMinute:
+                return (this.value*60000.00000) / 0.001;
             case VolumeFlowUnits.CentilitersPerMinute:
                 return (this.value*60000.00000) / 0.01;
             case VolumeFlowUnits.DecilitersPerMinute:
@@ -1100,6 +1144,8 @@ export class VolumeFlow {
                 return (this.value*86400000) / 1e-9;
             case VolumeFlowUnits.MicrolitersPerDay:
                 return (this.value*86400000) / 0.000001;
+            case VolumeFlowUnits.MillilitersPerDay:
+                return (this.value*86400000) / 0.001;
             case VolumeFlowUnits.CentilitersPerDay:
                 return (this.value*86400000) / 0.01;
             case VolumeFlowUnits.DecilitersPerDay:
@@ -1193,6 +1239,8 @@ export class VolumeFlow {
                 return (value/60000.00000) * 1e-9;
             case VolumeFlowUnits.MicrolitersPerMinute:
                 return (value/60000.00000) * 0.000001;
+            case VolumeFlowUnits.MillilitersPerMinute:
+                return (value/60000.00000) * 0.001;
             case VolumeFlowUnits.CentilitersPerMinute:
                 return (value/60000.00000) * 0.01;
             case VolumeFlowUnits.DecilitersPerMinute:
@@ -1203,6 +1251,8 @@ export class VolumeFlow {
                 return (value/86400000) * 1e-9;
             case VolumeFlowUnits.MicrolitersPerDay:
                 return (value/86400000) * 0.000001;
+            case VolumeFlowUnits.MillilitersPerDay:
+                return (value/86400000) * 0.001;
             case VolumeFlowUnits.CentilitersPerDay:
                 return (value/86400000) * 0.01;
             case VolumeFlowUnits.DecilitersPerDay:
@@ -1304,6 +1354,8 @@ export class VolumeFlow {
                 return this.NanolitersPerMinute + ` `;
             case VolumeFlowUnits.MicrolitersPerMinute:
                 return this.MicrolitersPerMinute + ` `;
+            case VolumeFlowUnits.MillilitersPerMinute:
+                return this.MillilitersPerMinute + ` `;
             case VolumeFlowUnits.CentilitersPerMinute:
                 return this.CentilitersPerMinute + ` `;
             case VolumeFlowUnits.DecilitersPerMinute:
@@ -1314,6 +1366,8 @@ export class VolumeFlow {
                 return this.NanolitersPerDay + ` `;
             case VolumeFlowUnits.MicrolitersPerDay:
                 return this.MicrolitersPerDay + ` `;
+            case VolumeFlowUnits.MillilitersPerDay:
+                return this.MillilitersPerDay + ` `;
             case VolumeFlowUnits.CentilitersPerDay:
                 return this.CentilitersPerDay + ` `;
             case VolumeFlowUnits.DecilitersPerDay:

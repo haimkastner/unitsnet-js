@@ -13,6 +13,8 @@ export enum LuminosityUnits {
     /** */
     Microwatts,
     /** */
+    Milliwatts,
+    /** */
     Deciwatts,
     /** */
     Decawatts,
@@ -37,6 +39,7 @@ export class Luminosity {
     private picowattsLazy: number | null = null;
     private nanowattsLazy: number | null = null;
     private microwattsLazy: number | null = null;
+    private milliwattsLazy: number | null = null;
     private deciwattsLazy: number | null = null;
     private decawattsLazy: number | null = null;
     private kilowattsLazy: number | null = null;
@@ -111,6 +114,14 @@ export class Luminosity {
             return this.microwattsLazy;
         }
         return this.microwattsLazy = this.convertFromBase(LuminosityUnits.Microwatts);
+    }
+
+    /** */
+    public get Milliwatts(): number {
+        if(this.milliwattsLazy !== null){
+            return this.milliwattsLazy;
+        }
+        return this.milliwattsLazy = this.convertFromBase(LuminosityUnits.Milliwatts);
     }
 
     /** */
@@ -230,6 +241,16 @@ export class Luminosity {
     }
 
     /**
+     * Create a new Luminosity instance from a Milliwatts
+     *
+     * @param value The unit as Milliwatts to create a new Luminosity from.
+     * @returns The new Luminosity instance.
+     */
+    public static FromMilliwatts(value: number): Luminosity {
+        return new Luminosity(value, LuminosityUnits.Milliwatts);
+    }
+
+    /**
      * Create a new Luminosity instance from a Deciwatts
      *
      * @param value The unit as Deciwatts to create a new Luminosity from.
@@ -314,6 +335,8 @@ export class Luminosity {
                 return (this.value) / 1e-9;
             case LuminosityUnits.Microwatts:
                 return (this.value) / 0.000001;
+            case LuminosityUnits.Milliwatts:
+                return (this.value) / 0.001;
             case LuminosityUnits.Deciwatts:
                 return (this.value) / 0.1;
             case LuminosityUnits.Decawatts:
@@ -349,6 +372,8 @@ export class Luminosity {
                 return (value) * 1e-9;
             case LuminosityUnits.Microwatts:
                 return (value) * 0.000001;
+            case LuminosityUnits.Milliwatts:
+                return (value) * 0.001;
             case LuminosityUnits.Deciwatts:
                 return (value) * 0.1;
             case LuminosityUnits.Decawatts:
@@ -392,6 +417,8 @@ export class Luminosity {
                 return this.Nanowatts + ` `;
             case LuminosityUnits.Microwatts:
                 return this.Microwatts + ` `;
+            case LuminosityUnits.Milliwatts:
+                return this.Milliwatts + ` `;
             case LuminosityUnits.Deciwatts:
                 return this.Deciwatts + ` `;
             case LuminosityUnits.Decawatts:

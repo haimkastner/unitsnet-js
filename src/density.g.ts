@@ -37,6 +37,8 @@ export enum DensityUnits {
     /** */
     KilogramsPerCubicMeter,
     /** */
+    MilligramsPerCubicMeter,
+    /** */
     MicrogramsPerCubicMeter,
     /** */
     KilopoundsPerCubicInch,
@@ -49,6 +51,8 @@ export enum DensityUnits {
     /** */
     MicrogramsPerLiter,
     /** */
+    MilligramsPerLiter,
+    /** */
     CentigramsPerLiter,
     /** */
     DecigramsPerLiter,
@@ -59,6 +63,8 @@ export enum DensityUnits {
     /** */
     MicrogramsPerDeciLiter,
     /** */
+    MilligramsPerDeciLiter,
+    /** */
     CentigramsPerDeciLiter,
     /** */
     DecigramsPerDeciLiter,
@@ -68,6 +74,8 @@ export enum DensityUnits {
     NanogramsPerMilliliter,
     /** */
     MicrogramsPerMilliliter,
+    /** */
+    MilligramsPerMilliliter,
     /** */
     CentigramsPerMilliliter,
     /** */
@@ -95,22 +103,26 @@ export class Density {
     private kilogramspercubicmillimeterLazy: number | null = null;
     private kilogramspercubiccentimeterLazy: number | null = null;
     private kilogramspercubicmeterLazy: number | null = null;
+    private milligramspercubicmeterLazy: number | null = null;
     private microgramspercubicmeterLazy: number | null = null;
     private kilopoundspercubicinchLazy: number | null = null;
     private kilopoundspercubicfootLazy: number | null = null;
     private picogramsperliterLazy: number | null = null;
     private nanogramsperliterLazy: number | null = null;
     private microgramsperliterLazy: number | null = null;
+    private milligramsperliterLazy: number | null = null;
     private centigramsperliterLazy: number | null = null;
     private decigramsperliterLazy: number | null = null;
     private picogramsperdeciliterLazy: number | null = null;
     private nanogramsperdeciliterLazy: number | null = null;
     private microgramsperdeciliterLazy: number | null = null;
+    private milligramsperdeciliterLazy: number | null = null;
     private centigramsperdeciliterLazy: number | null = null;
     private decigramsperdeciliterLazy: number | null = null;
     private picogramspermilliliterLazy: number | null = null;
     private nanogramspermilliliterLazy: number | null = null;
     private microgramspermilliliterLazy: number | null = null;
+    private milligramspermilliliterLazy: number | null = null;
     private centigramspermilliliterLazy: number | null = null;
     private decigramspermilliliterLazy: number | null = null;
 
@@ -279,6 +291,14 @@ export class Density {
     }
 
     /** */
+    public get MilligramsPerCubicMeter(): number {
+        if(this.milligramspercubicmeterLazy !== null){
+            return this.milligramspercubicmeterLazy;
+        }
+        return this.milligramspercubicmeterLazy = this.convertFromBase(DensityUnits.MilligramsPerCubicMeter);
+    }
+
+    /** */
     public get MicrogramsPerCubicMeter(): number {
         if(this.microgramspercubicmeterLazy !== null){
             return this.microgramspercubicmeterLazy;
@@ -327,6 +347,14 @@ export class Density {
     }
 
     /** */
+    public get MilligramsPerLiter(): number {
+        if(this.milligramsperliterLazy !== null){
+            return this.milligramsperliterLazy;
+        }
+        return this.milligramsperliterLazy = this.convertFromBase(DensityUnits.MilligramsPerLiter);
+    }
+
+    /** */
     public get CentigramsPerLiter(): number {
         if(this.centigramsperliterLazy !== null){
             return this.centigramsperliterLazy;
@@ -367,6 +395,14 @@ export class Density {
     }
 
     /** */
+    public get MilligramsPerDeciLiter(): number {
+        if(this.milligramsperdeciliterLazy !== null){
+            return this.milligramsperdeciliterLazy;
+        }
+        return this.milligramsperdeciliterLazy = this.convertFromBase(DensityUnits.MilligramsPerDeciLiter);
+    }
+
+    /** */
     public get CentigramsPerDeciLiter(): number {
         if(this.centigramsperdeciliterLazy !== null){
             return this.centigramsperdeciliterLazy;
@@ -404,6 +440,14 @@ export class Density {
             return this.microgramspermilliliterLazy;
         }
         return this.microgramspermilliliterLazy = this.convertFromBase(DensityUnits.MicrogramsPerMilliliter);
+    }
+
+    /** */
+    public get MilligramsPerMilliliter(): number {
+        if(this.milligramspermilliliterLazy !== null){
+            return this.milligramspermilliliterLazy;
+        }
+        return this.milligramspermilliliterLazy = this.convertFromBase(DensityUnits.MilligramsPerMilliliter);
     }
 
     /** */
@@ -603,6 +647,16 @@ export class Density {
     }
 
     /**
+     * Create a new Density instance from a MilligramsPerCubicMeter
+     *
+     * @param value The unit as MilligramsPerCubicMeter to create a new Density from.
+     * @returns The new Density instance.
+     */
+    public static FromMilligramsPerCubicMeter(value: number): Density {
+        return new Density(value, DensityUnits.MilligramsPerCubicMeter);
+    }
+
+    /**
      * Create a new Density instance from a MicrogramsPerCubicMeter
      *
      * @param value The unit as MicrogramsPerCubicMeter to create a new Density from.
@@ -663,6 +717,16 @@ export class Density {
     }
 
     /**
+     * Create a new Density instance from a MilligramsPerLiter
+     *
+     * @param value The unit as MilligramsPerLiter to create a new Density from.
+     * @returns The new Density instance.
+     */
+    public static FromMilligramsPerLiter(value: number): Density {
+        return new Density(value, DensityUnits.MilligramsPerLiter);
+    }
+
+    /**
      * Create a new Density instance from a CentigramsPerLiter
      *
      * @param value The unit as CentigramsPerLiter to create a new Density from.
@@ -713,6 +777,16 @@ export class Density {
     }
 
     /**
+     * Create a new Density instance from a MilligramsPerDeciLiter
+     *
+     * @param value The unit as MilligramsPerDeciLiter to create a new Density from.
+     * @returns The new Density instance.
+     */
+    public static FromMilligramsPerDeciLiter(value: number): Density {
+        return new Density(value, DensityUnits.MilligramsPerDeciLiter);
+    }
+
+    /**
      * Create a new Density instance from a CentigramsPerDeciLiter
      *
      * @param value The unit as CentigramsPerDeciLiter to create a new Density from.
@@ -760,6 +834,16 @@ export class Density {
      */
     public static FromMicrogramsPerMilliliter(value: number): Density {
         return new Density(value, DensityUnits.MicrogramsPerMilliliter);
+    }
+
+    /**
+     * Create a new Density instance from a MilligramsPerMilliliter
+     *
+     * @param value The unit as MilligramsPerMilliliter to create a new Density from.
+     * @returns The new Density instance.
+     */
+    public static FromMilligramsPerMilliliter(value: number): Density {
+        return new Density(value, DensityUnits.MilligramsPerMilliliter);
     }
 
     /**
@@ -821,6 +905,8 @@ export class Density {
                 return (this.value*1e-3) / 1000;
             case DensityUnits.KilogramsPerCubicMeter:
                 return (this.value*1e3) / 1000;
+            case DensityUnits.MilligramsPerCubicMeter:
+                return (this.value*1e3) / 0.001;
             case DensityUnits.MicrogramsPerCubicMeter:
                 return (this.value*1e3) / 0.000001;
             case DensityUnits.KilopoundsPerCubicInch:
@@ -833,6 +919,8 @@ export class Density {
                 return (this.value*1) / 1e-9;
             case DensityUnits.MicrogramsPerLiter:
                 return (this.value*1) / 0.000001;
+            case DensityUnits.MilligramsPerLiter:
+                return (this.value*1) / 0.001;
             case DensityUnits.CentigramsPerLiter:
                 return (this.value*1) / 0.01;
             case DensityUnits.DecigramsPerLiter:
@@ -843,6 +931,8 @@ export class Density {
                 return (this.value*1e-1) / 1e-9;
             case DensityUnits.MicrogramsPerDeciLiter:
                 return (this.value*1e-1) / 0.000001;
+            case DensityUnits.MilligramsPerDeciLiter:
+                return (this.value*1e-1) / 0.001;
             case DensityUnits.CentigramsPerDeciLiter:
                 return (this.value*1e-1) / 0.01;
             case DensityUnits.DecigramsPerDeciLiter:
@@ -853,6 +943,8 @@ export class Density {
                 return (this.value*1e-3) / 1e-9;
             case DensityUnits.MicrogramsPerMilliliter:
                 return (this.value*1e-3) / 0.000001;
+            case DensityUnits.MilligramsPerMilliliter:
+                return (this.value*1e-3) / 0.001;
             case DensityUnits.CentigramsPerMilliliter:
                 return (this.value*1e-3) / 0.01;
             case DensityUnits.DecigramsPerMilliliter:
@@ -902,6 +994,8 @@ export class Density {
                 return (value/1e-3) * 1000;
             case DensityUnits.KilogramsPerCubicMeter:
                 return (value/1e3) * 1000;
+            case DensityUnits.MilligramsPerCubicMeter:
+                return (value/1e3) * 0.001;
             case DensityUnits.MicrogramsPerCubicMeter:
                 return (value/1e3) * 0.000001;
             case DensityUnits.KilopoundsPerCubicInch:
@@ -914,6 +1008,8 @@ export class Density {
                 return (value/1) * 1e-9;
             case DensityUnits.MicrogramsPerLiter:
                 return (value/1) * 0.000001;
+            case DensityUnits.MilligramsPerLiter:
+                return (value/1) * 0.001;
             case DensityUnits.CentigramsPerLiter:
                 return (value/1) * 0.01;
             case DensityUnits.DecigramsPerLiter:
@@ -924,6 +1020,8 @@ export class Density {
                 return (value/1e-1) * 1e-9;
             case DensityUnits.MicrogramsPerDeciLiter:
                 return (value/1e-1) * 0.000001;
+            case DensityUnits.MilligramsPerDeciLiter:
+                return (value/1e-1) * 0.001;
             case DensityUnits.CentigramsPerDeciLiter:
                 return (value/1e-1) * 0.01;
             case DensityUnits.DecigramsPerDeciLiter:
@@ -934,6 +1032,8 @@ export class Density {
                 return (value/1e-3) * 1e-9;
             case DensityUnits.MicrogramsPerMilliliter:
                 return (value/1e-3) * 0.000001;
+            case DensityUnits.MilligramsPerMilliliter:
+                return (value/1e-3) * 0.001;
             case DensityUnits.CentigramsPerMilliliter:
                 return (value/1e-3) * 0.01;
             case DensityUnits.DecigramsPerMilliliter:
@@ -991,6 +1091,8 @@ export class Density {
                 return this.KilogramsPerCubicCentimeter + ` `;
             case DensityUnits.KilogramsPerCubicMeter:
                 return this.KilogramsPerCubicMeter + ` `;
+            case DensityUnits.MilligramsPerCubicMeter:
+                return this.MilligramsPerCubicMeter + ` `;
             case DensityUnits.MicrogramsPerCubicMeter:
                 return this.MicrogramsPerCubicMeter + ` `;
             case DensityUnits.KilopoundsPerCubicInch:
@@ -1003,6 +1105,8 @@ export class Density {
                 return this.NanogramsPerLiter + ` `;
             case DensityUnits.MicrogramsPerLiter:
                 return this.MicrogramsPerLiter + ` `;
+            case DensityUnits.MilligramsPerLiter:
+                return this.MilligramsPerLiter + ` `;
             case DensityUnits.CentigramsPerLiter:
                 return this.CentigramsPerLiter + ` `;
             case DensityUnits.DecigramsPerLiter:
@@ -1013,6 +1117,8 @@ export class Density {
                 return this.NanogramsPerDeciLiter + ` `;
             case DensityUnits.MicrogramsPerDeciLiter:
                 return this.MicrogramsPerDeciLiter + ` `;
+            case DensityUnits.MilligramsPerDeciLiter:
+                return this.MilligramsPerDeciLiter + ` `;
             case DensityUnits.CentigramsPerDeciLiter:
                 return this.CentigramsPerDeciLiter + ` `;
             case DensityUnits.DecigramsPerDeciLiter:
@@ -1023,6 +1129,8 @@ export class Density {
                 return this.NanogramsPerMilliliter + ` `;
             case DensityUnits.MicrogramsPerMilliliter:
                 return this.MicrogramsPerMilliliter + ` `;
+            case DensityUnits.MilligramsPerMilliliter:
+                return this.MilligramsPerMilliliter + ` `;
             case DensityUnits.CentigramsPerMilliliter:
                 return this.CentigramsPerMilliliter + ` `;
             case DensityUnits.DecigramsPerMilliliter:
