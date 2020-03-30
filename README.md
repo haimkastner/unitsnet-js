@@ -170,6 +170,8 @@ Currently, the package supports the following units:
     -   *Level is the logarithm of the ratio of a quantity Q to a reference value of that quantity, Q₀, expressed in dimensionless units.*
 - **LinearDensity**
     -   *The Linear Density, or more precisely, the linear mass density, of a substance is its mass per unit length.  The term linear density is most often used when describing the characteristics of one-dimensional objects, although linear density can also be used to describe the density of a three-dimensional quantity along one particular dimension.*
+- **LinearPowerDensity**
+    -   *The Linear Power Density of a substance is its power per unit length.  The term linear density is most often used when describing the characteristics of one-dimensional objects, although linear density can also be used to describe the density of a three-dimensional quantity along one particular dimension.*
 - **Luminosity**
     -   *Luminosity is an absolute measure of radiated electromagnetic power (light), the radiant power emitted by a light-emitting object.*
 - **LuminousFlux**

@@ -49,6 +49,7 @@ export * from "./lapserate.g";
 export * from "./length.g";
 export * from "./level.g";
 export * from "./lineardensity.g";
+export * from "./linearpowerdensity.g";
 export * from "./luminosity.g";
 export * from "./luminousflux.g";
 export * from "./luminousintensity.g";
