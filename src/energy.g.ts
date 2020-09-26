@@ -23,6 +23,8 @@ export enum EnergyUnits {
     /** */
     ThermsImperial,
     /** */
+    HorsepowerHours,
+    /** */
     Millijoules,
     /** */
     Kilojoules,
@@ -86,6 +88,7 @@ export class Energy {
     private thermsecLazy: number | null = null;
     private thermsusLazy: number | null = null;
     private thermsimperialLazy: number | null = null;
+    private horsepowerhoursLazy: number | null = null;
     private millijoulesLazy: number | null = null;
     private kilojoulesLazy: number | null = null;
     private megajoulesLazy: number | null = null;
@@ -217,6 +220,14 @@ export class Energy {
             return this.thermsimperialLazy;
         }
         return this.thermsimperialLazy = this.convertFromBase(EnergyUnits.ThermsImperial);
+    }
+
+    /** */
+    public get HorsepowerHours(): number {
+        if(this.horsepowerhoursLazy !== null){
+            return this.horsepowerhoursLazy;
+        }
+        return this.horsepowerhoursLazy = this.convertFromBase(EnergyUnits.HorsepowerHours);
     }
 
     /** */
@@ -522,6 +533,16 @@ export class Energy {
     }
 
     /**
+     * Create a new Energy instance from a HorsepowerHours
+     *
+     * @param value The unit as HorsepowerHours to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromHorsepowerHours(value: number): Energy {
+        return new Energy(value, EnergyUnits.HorsepowerHours);
+    }
+
+    /**
      * Create a new Energy instance from a Millijoules
      *
      * @param value The unit as Millijoules to create a new Energy from.
@@ -786,6 +807,8 @@ export class Energy {
                 return this.value/1.054804e8;
             case EnergyUnits.ThermsImperial:
                 return this.value/1.05505585257348e8;
+            case EnergyUnits.HorsepowerHours:
+                return this.value/2.6845195377e6;
             case EnergyUnits.Millijoules:
                 return (this.value) / 0.001;
             case EnergyUnits.Kilojoules:
@@ -865,6 +888,8 @@ export class Energy {
                 return value*1.054804e8;
             case EnergyUnits.ThermsImperial:
                 return value*1.05505585257348e8;
+            case EnergyUnits.HorsepowerHours:
+                return value*2.6845195377e6;
             case EnergyUnits.Millijoules:
                 return (value) * 0.001;
             case EnergyUnits.Kilojoules:
@@ -952,6 +977,8 @@ export class Energy {
                 return this.ThermsUs + ` th (U.S.)`;
             case EnergyUnits.ThermsImperial:
                 return this.ThermsImperial + ` th (imp.)`;
+            case EnergyUnits.HorsepowerHours:
+                return this.HorsepowerHours + ` hp·h`;
             case EnergyUnits.Millijoules:
                 return this.Millijoules + ` `;
             case EnergyUnits.Kilojoules:

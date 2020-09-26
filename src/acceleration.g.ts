@@ -25,7 +25,9 @@ export enum AccelerationUnits {
     /** */
     DecimetersPerSecondSquared,
     /** */
-    KilometersPerSecondSquared
+    KilometersPerSecondSquared,
+    /** */
+    MillistandardGravity
 }
 
 /** Acceleration, in physics, is the rate at which the velocity of an object changes over time. An object's acceleration is the net result of any and all forces acting on the object, as described by Newton's Second Law. The SI unit for acceleration is the Meter per second squared (m/s²). Accelerations are vector quantities (they have magnitude and direction) and add according to the parallelogram law. As a vector, the calculated net force is equal to the product of the object's mass (a scalar quantity) and the acceleration. */
@@ -44,6 +46,7 @@ export class Acceleration {
     private centimeterspersecondsquaredLazy: number | null = null;
     private decimeterspersecondsquaredLazy: number | null = null;
     private kilometerspersecondsquaredLazy: number | null = null;
+    private millistandardgravityLazy: number | null = null;
 
     /**
      * Create a new Acceleration.
@@ -167,6 +170,14 @@ export class Acceleration {
             return this.kilometerspersecondsquaredLazy;
         }
         return this.kilometerspersecondsquaredLazy = this.convertFromBase(AccelerationUnits.KilometersPerSecondSquared);
+    }
+
+    /** */
+    public get MillistandardGravity(): number {
+        if(this.millistandardgravityLazy !== null){
+            return this.millistandardgravityLazy;
+        }
+        return this.millistandardgravityLazy = this.convertFromBase(AccelerationUnits.MillistandardGravity);
     }
 
     /**
@@ -299,6 +310,16 @@ export class Acceleration {
         return new Acceleration(value, AccelerationUnits.KilometersPerSecondSquared);
     }
 
+    /**
+     * Create a new Acceleration instance from a MillistandardGravity
+     *
+     * @param value The unit as MillistandardGravity to create a new Acceleration from.
+     * @returns The new Acceleration instance.
+     */
+    public static FromMillistandardGravity(value: number): Acceleration {
+        return new Acceleration(value, AccelerationUnits.MillistandardGravity);
+    }
+
     private convertFromBase(toUnit: AccelerationUnits): number {
         switch (toUnit) {
                 
@@ -328,6 +349,8 @@ export class Acceleration {
                 return (this.value) / 0.1;
             case AccelerationUnits.KilometersPerSecondSquared:
                 return (this.value) / 1000;
+            case AccelerationUnits.MillistandardGravity:
+                return (this.value/9.80665) / 0.001;
             default:
                 break;
         }
@@ -363,6 +386,8 @@ export class Acceleration {
                 return (value) * 0.1;
             case AccelerationUnits.KilometersPerSecondSquared:
                 return (value) * 1000;
+            case AccelerationUnits.MillistandardGravity:
+                return (value*9.80665) * 0.001;
             default:
                 break;
         }
@@ -406,6 +431,8 @@ export class Acceleration {
                 return this.DecimetersPerSecondSquared + ` `;
             case AccelerationUnits.KilometersPerSecondSquared:
                 return this.KilometersPerSecondSquared + ` `;
+            case AccelerationUnits.MillistandardGravity:
+                return this.MillistandardGravity + ` `;
         default:
             break;
         }

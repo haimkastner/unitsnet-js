@@ -11,11 +11,11 @@
   "author": "Haim Kastner",
   "license": "MIT",
   "devDependencies": {
-    "@types/fs-extra": "^8.0.1",
-    "@types/node": "^12.12.21",
-    "typescript": "^3.7.4",
-    "ts-morph": "^6.0.2",
-    "fs-extra": "^8.1.0"
+    "@types/fs-extra": "^8.1.1",
+    "@types/node": "^12.12.62",
+    "fs-extra": "^8.1.0",
+    "ts-morph": "^6.0.3",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
     "sync-request": "^6.1.0"

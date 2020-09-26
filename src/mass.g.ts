@@ -685,7 +685,7 @@ export class Mass {
             case MassUnits.Tonnes:
                 return this.Tonnes + ` t`;
             case MassUnits.ShortTons:
-                return this.ShortTons + ` short tn`;
+                return this.ShortTons + ` t (short)`;
             case MassUnits.LongTons:
                 return this.LongTons + ` long tn`;
             case MassUnits.Pounds:

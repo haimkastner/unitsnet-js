@@ -97,7 +97,7 @@ export class CoefficientOfThermalExpansion {
             case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
                 return this.value;
             case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
-                return this.value*9/5;
+                return this.value*5/9;
             default:
                 break;
         }
@@ -112,7 +112,7 @@ export class CoefficientOfThermalExpansion {
             case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
                 return value;
             case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
-                return value*5/9;
+                return value*9/5;
             default:
                 break;
         }

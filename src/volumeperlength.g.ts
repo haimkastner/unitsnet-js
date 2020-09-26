@@ -5,6 +5,10 @@ export enum VolumePerLengthUnits {
     /** */
     LitersPerMeter,
     /** */
+    LitersPerKilometer,
+    /** */
+    LitersPerMillimeter,
+    /** */
     OilBarrelsPerFoot,
     /** */
     CubicYardsPerFoot,
@@ -17,6 +21,8 @@ export class VolumePerLength {
     private value: number;
     private cubicmeterspermeterLazy: number | null = null;
     private literspermeterLazy: number | null = null;
+    private litersperkilometerLazy: number | null = null;
+    private literspermillimeterLazy: number | null = null;
     private oilbarrelsperfootLazy: number | null = null;
     private cubicyardsperfootLazy: number | null = null;
     private cubicyardsperussurveyfootLazy: number | null = null;
@@ -55,6 +61,22 @@ export class VolumePerLength {
             return this.literspermeterLazy;
         }
         return this.literspermeterLazy = this.convertFromBase(VolumePerLengthUnits.LitersPerMeter);
+    }
+
+    /** */
+    public get LitersPerKilometer(): number {
+        if(this.litersperkilometerLazy !== null){
+            return this.litersperkilometerLazy;
+        }
+        return this.litersperkilometerLazy = this.convertFromBase(VolumePerLengthUnits.LitersPerKilometer);
+    }
+
+    /** */
+    public get LitersPerMillimeter(): number {
+        if(this.literspermillimeterLazy !== null){
+            return this.literspermillimeterLazy;
+        }
+        return this.literspermillimeterLazy = this.convertFromBase(VolumePerLengthUnits.LitersPerMillimeter);
     }
 
     /** */
@@ -102,6 +124,26 @@ export class VolumePerLength {
     }
 
     /**
+     * Create a new VolumePerLength instance from a LitersPerKilometer
+     *
+     * @param value The unit as LitersPerKilometer to create a new VolumePerLength from.
+     * @returns The new VolumePerLength instance.
+     */
+    public static FromLitersPerKilometer(value: number): VolumePerLength {
+        return new VolumePerLength(value, VolumePerLengthUnits.LitersPerKilometer);
+    }
+
+    /**
+     * Create a new VolumePerLength instance from a LitersPerMillimeter
+     *
+     * @param value The unit as LitersPerMillimeter to create a new VolumePerLength from.
+     * @returns The new VolumePerLength instance.
+     */
+    public static FromLitersPerMillimeter(value: number): VolumePerLength {
+        return new VolumePerLength(value, VolumePerLengthUnits.LitersPerMillimeter);
+    }
+
+    /**
      * Create a new VolumePerLength instance from a OilBarrelsPerFoot
      *
      * @param value The unit as OilBarrelsPerFoot to create a new VolumePerLength from.
@@ -138,6 +180,10 @@ export class VolumePerLength {
                 return this.value;
             case VolumePerLengthUnits.LitersPerMeter:
                 return this.value*1000;
+            case VolumePerLengthUnits.LitersPerKilometer:
+                return this.value*1e6;
+            case VolumePerLengthUnits.LitersPerMillimeter:
+                return this.value;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
                 return this.value*1.91713408;
             case VolumePerLengthUnits.CubicYardsPerFoot:
@@ -157,6 +203,10 @@ export class VolumePerLength {
                 return value;
             case VolumePerLengthUnits.LitersPerMeter:
                 return value/1000;
+            case VolumePerLengthUnits.LitersPerKilometer:
+                return value/1e6;
+            case VolumePerLengthUnits.LitersPerMillimeter:
+                return value;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
                 return value/1.91713408;
             case VolumePerLengthUnits.CubicYardsPerFoot:
@@ -184,6 +234,10 @@ export class VolumePerLength {
                 return this.CubicMetersPerMeter + ` m³/m`;
             case VolumePerLengthUnits.LitersPerMeter:
                 return this.LitersPerMeter + ` l/m`;
+            case VolumePerLengthUnits.LitersPerKilometer:
+                return this.LitersPerKilometer + ` l/km`;
+            case VolumePerLengthUnits.LitersPerMillimeter:
+                return this.LitersPerMillimeter + ` l/mm`;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
                 return this.OilBarrelsPerFoot + ` bbl/ft`;
             case VolumePerLengthUnits.CubicYardsPerFoot:

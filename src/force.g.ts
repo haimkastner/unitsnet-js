@@ -18,6 +18,8 @@ export enum ForceUnits {
     OunceForce,
     /** */
     KilopoundsForce,
+    /** The short ton-force is a unit of force equal to 2,000 pounds-force (907.18474 kgf), that is most commonly used in the United States – known there simply as the ton or US ton. */
+    ShortTonsForce,
     /** */
     Micronewtons,
     /** */
@@ -42,6 +44,7 @@ export class Force {
     private poundsforceLazy: number | null = null;
     private ounceforceLazy: number | null = null;
     private kilopoundsforceLazy: number | null = null;
+    private shorttonsforceLazy: number | null = null;
     private micronewtonsLazy: number | null = null;
     private millinewtonsLazy: number | null = null;
     private decanewtonsLazy: number | null = null;
@@ -138,6 +141,14 @@ export class Force {
             return this.kilopoundsforceLazy;
         }
         return this.kilopoundsforceLazy = this.convertFromBase(ForceUnits.KilopoundsForce);
+    }
+
+    /** The short ton-force is a unit of force equal to 2,000 pounds-force (907.18474 kgf), that is most commonly used in the United States – known there simply as the ton or US ton. */
+    public get ShortTonsForce(): number {
+        if(this.shorttonsforceLazy !== null){
+            return this.shorttonsforceLazy;
+        }
+        return this.shorttonsforceLazy = this.convertFromBase(ForceUnits.ShortTonsForce);
     }
 
     /** */
@@ -271,6 +282,16 @@ export class Force {
     }
 
     /**
+     * Create a new Force instance from a ShortTonsForce
+     * The short ton-force is a unit of force equal to 2,000 pounds-force (907.18474 kgf), that is most commonly used in the United States – known there simply as the ton or US ton.
+     * @param value The unit as ShortTonsForce to create a new Force from.
+     * @returns The new Force instance.
+     */
+    public static FromShortTonsForce(value: number): Force {
+        return new Force(value, ForceUnits.ShortTonsForce);
+    }
+
+    /**
      * Create a new Force instance from a Micronewtons
      *
      * @param value The unit as Micronewtons to create a new Force from.
@@ -341,6 +362,8 @@ export class Force {
                 return this.value/2.780138509537812e-1;
             case ForceUnits.KilopoundsForce:
                 return this.value/4448.2216152605095551842641431421;
+            case ForceUnits.ShortTonsForce:
+                return this.value/8.896443230521e3;
             case ForceUnits.Micronewtons:
                 return (this.value) / 0.000001;
             case ForceUnits.Millinewtons:
@@ -378,6 +401,8 @@ export class Force {
                 return value*2.780138509537812e-1;
             case ForceUnits.KilopoundsForce:
                 return value*4448.2216152605095551842641431421;
+            case ForceUnits.ShortTonsForce:
+                return value*8.896443230521e3;
             case ForceUnits.Micronewtons:
                 return (value) * 0.000001;
             case ForceUnits.Millinewtons:
@@ -410,7 +435,7 @@ export class Force {
             case ForceUnits.KilogramsForce:
                 return this.KilogramsForce + ` kgf`;
             case ForceUnits.TonnesForce:
-                return this.TonnesForce + ` Ton`;
+                return this.TonnesForce + ` tf`;
             case ForceUnits.Newtons:
                 return this.Newtons + ` N`;
             case ForceUnits.KiloPonds:
@@ -423,6 +448,8 @@ export class Force {
                 return this.OunceForce + ` ozf`;
             case ForceUnits.KilopoundsForce:
                 return this.KilopoundsForce + ` kipf`;
+            case ForceUnits.ShortTonsForce:
+                return this.ShortTonsForce + ` tf (short)`;
             case ForceUnits.Micronewtons:
                 return this.Micronewtons + ` `;
             case ForceUnits.Millinewtons:

@@ -13,6 +13,8 @@ export enum DynamicViscosityUnits {
     /** */
     PoundsForceSecondPerSquareFoot,
     /** */
+    PoundsPerFootSecond,
+    /** */
     MillipascalSeconds,
     /** */
     MicropascalSeconds,
@@ -29,6 +31,7 @@ export class DynamicViscosity {
     private reynsLazy: number | null = null;
     private poundsforcesecondpersquareinchLazy: number | null = null;
     private poundsforcesecondpersquarefootLazy: number | null = null;
+    private poundsperfootsecondLazy: number | null = null;
     private millipascalsecondsLazy: number | null = null;
     private micropascalsecondsLazy: number | null = null;
     private centipoiseLazy: number | null = null;
@@ -99,6 +102,14 @@ export class DynamicViscosity {
             return this.poundsforcesecondpersquarefootLazy;
         }
         return this.poundsforcesecondpersquarefootLazy = this.convertFromBase(DynamicViscosityUnits.PoundsForceSecondPerSquareFoot);
+    }
+
+    /** */
+    public get PoundsPerFootSecond(): number {
+        if(this.poundsperfootsecondLazy !== null){
+            return this.poundsperfootsecondLazy;
+        }
+        return this.poundsperfootsecondLazy = this.convertFromBase(DynamicViscosityUnits.PoundsPerFootSecond);
     }
 
     /** */
@@ -186,6 +197,16 @@ export class DynamicViscosity {
     }
 
     /**
+     * Create a new DynamicViscosity instance from a PoundsPerFootSecond
+     *
+     * @param value The unit as PoundsPerFootSecond to create a new DynamicViscosity from.
+     * @returns The new DynamicViscosity instance.
+     */
+    public static FromPoundsPerFootSecond(value: number): DynamicViscosity {
+        return new DynamicViscosity(value, DynamicViscosityUnits.PoundsPerFootSecond);
+    }
+
+    /**
      * Create a new DynamicViscosity instance from a MillipascalSeconds
      *
      * @param value The unit as MillipascalSeconds to create a new DynamicViscosity from.
@@ -230,6 +251,8 @@ export class DynamicViscosity {
                 return this.value / 6.8947572931683613e3;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return this.value / 4.7880258980335843e1;
+            case DynamicViscosityUnits.PoundsPerFootSecond:
+                return this.value / 1.4881639;
             case DynamicViscosityUnits.MillipascalSeconds:
                 return (this.value) / 0.001;
             case DynamicViscosityUnits.MicropascalSeconds:
@@ -257,6 +280,8 @@ export class DynamicViscosity {
                 return value * 6.8947572931683613e3;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return value * 4.7880258980335843e1;
+            case DynamicViscosityUnits.PoundsPerFootSecond:
+                return value * 1.4881639;
             case DynamicViscosityUnits.MillipascalSeconds:
                 return (value) * 0.001;
             case DynamicViscosityUnits.MicropascalSeconds:
@@ -292,6 +317,8 @@ export class DynamicViscosity {
                 return this.PoundsForceSecondPerSquareInch + ` lbf·s/in²`;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return this.PoundsForceSecondPerSquareFoot + ` lbf·s/ft²`;
+            case DynamicViscosityUnits.PoundsPerFootSecond:
+                return this.PoundsPerFootSecond + ` lb/ft·s`;
             case DynamicViscosityUnits.MillipascalSeconds:
                 return this.MillipascalSeconds + ` `;
             case DynamicViscosityUnits.MicropascalSeconds:

@@ -17,19 +17,7 @@ export enum TemperatureDeltaUnits {
     /** */
     DegreesRoemer,
     /** */
-    NanodegreesCelsius,
-    /** */
-    MicrodegreesCelsius,
-    /** */
-    MillidegreesCelsius,
-    /** */
-    CentidegreesCelsius,
-    /** */
-    DecidegreesCelsius,
-    /** */
-    HectodegreesCelsius,
-    /** */
-    KilodegreesCelsius
+    MillidegreesCelsius
 }
 
 /** Difference between two temperatures. The conversions are different than for Temperature. */
@@ -43,13 +31,7 @@ export class TemperatureDelta {
     private degreesrankineLazy: number | null = null;
     private degreesreaumurLazy: number | null = null;
     private degreesroemerLazy: number | null = null;
-    private nanodegreescelsiusLazy: number | null = null;
-    private microdegreescelsiusLazy: number | null = null;
     private millidegreescelsiusLazy: number | null = null;
-    private centidegreescelsiusLazy: number | null = null;
-    private decidegreescelsiusLazy: number | null = null;
-    private hectodegreescelsiusLazy: number | null = null;
-    private kilodegreescelsiusLazy: number | null = null;
 
     /**
      * Create a new TemperatureDelta.
@@ -136,59 +118,11 @@ export class TemperatureDelta {
     }
 
     /** */
-    public get NanodegreesCelsius(): number {
-        if(this.nanodegreescelsiusLazy !== null){
-            return this.nanodegreescelsiusLazy;
-        }
-        return this.nanodegreescelsiusLazy = this.convertFromBase(TemperatureDeltaUnits.NanodegreesCelsius);
-    }
-
-    /** */
-    public get MicrodegreesCelsius(): number {
-        if(this.microdegreescelsiusLazy !== null){
-            return this.microdegreescelsiusLazy;
-        }
-        return this.microdegreescelsiusLazy = this.convertFromBase(TemperatureDeltaUnits.MicrodegreesCelsius);
-    }
-
-    /** */
     public get MillidegreesCelsius(): number {
         if(this.millidegreescelsiusLazy !== null){
             return this.millidegreescelsiusLazy;
         }
         return this.millidegreescelsiusLazy = this.convertFromBase(TemperatureDeltaUnits.MillidegreesCelsius);
-    }
-
-    /** */
-    public get CentidegreesCelsius(): number {
-        if(this.centidegreescelsiusLazy !== null){
-            return this.centidegreescelsiusLazy;
-        }
-        return this.centidegreescelsiusLazy = this.convertFromBase(TemperatureDeltaUnits.CentidegreesCelsius);
-    }
-
-    /** */
-    public get DecidegreesCelsius(): number {
-        if(this.decidegreescelsiusLazy !== null){
-            return this.decidegreescelsiusLazy;
-        }
-        return this.decidegreescelsiusLazy = this.convertFromBase(TemperatureDeltaUnits.DecidegreesCelsius);
-    }
-
-    /** */
-    public get HectodegreesCelsius(): number {
-        if(this.hectodegreescelsiusLazy !== null){
-            return this.hectodegreescelsiusLazy;
-        }
-        return this.hectodegreescelsiusLazy = this.convertFromBase(TemperatureDeltaUnits.HectodegreesCelsius);
-    }
-
-    /** */
-    public get KilodegreesCelsius(): number {
-        if(this.kilodegreescelsiusLazy !== null){
-            return this.kilodegreescelsiusLazy;
-        }
-        return this.kilodegreescelsiusLazy = this.convertFromBase(TemperatureDeltaUnits.KilodegreesCelsius);
     }
 
     /**
@@ -272,26 +206,6 @@ export class TemperatureDelta {
     }
 
     /**
-     * Create a new TemperatureDelta instance from a NanodegreesCelsius
-     *
-     * @param value The unit as NanodegreesCelsius to create a new TemperatureDelta from.
-     * @returns The new TemperatureDelta instance.
-     */
-    public static FromNanodegreesCelsius(value: number): TemperatureDelta {
-        return new TemperatureDelta(value, TemperatureDeltaUnits.NanodegreesCelsius);
-    }
-
-    /**
-     * Create a new TemperatureDelta instance from a MicrodegreesCelsius
-     *
-     * @param value The unit as MicrodegreesCelsius to create a new TemperatureDelta from.
-     * @returns The new TemperatureDelta instance.
-     */
-    public static FromMicrodegreesCelsius(value: number): TemperatureDelta {
-        return new TemperatureDelta(value, TemperatureDeltaUnits.MicrodegreesCelsius);
-    }
-
-    /**
      * Create a new TemperatureDelta instance from a MillidegreesCelsius
      *
      * @param value The unit as MillidegreesCelsius to create a new TemperatureDelta from.
@@ -299,46 +213,6 @@ export class TemperatureDelta {
      */
     public static FromMillidegreesCelsius(value: number): TemperatureDelta {
         return new TemperatureDelta(value, TemperatureDeltaUnits.MillidegreesCelsius);
-    }
-
-    /**
-     * Create a new TemperatureDelta instance from a CentidegreesCelsius
-     *
-     * @param value The unit as CentidegreesCelsius to create a new TemperatureDelta from.
-     * @returns The new TemperatureDelta instance.
-     */
-    public static FromCentidegreesCelsius(value: number): TemperatureDelta {
-        return new TemperatureDelta(value, TemperatureDeltaUnits.CentidegreesCelsius);
-    }
-
-    /**
-     * Create a new TemperatureDelta instance from a DecidegreesCelsius
-     *
-     * @param value The unit as DecidegreesCelsius to create a new TemperatureDelta from.
-     * @returns The new TemperatureDelta instance.
-     */
-    public static FromDecidegreesCelsius(value: number): TemperatureDelta {
-        return new TemperatureDelta(value, TemperatureDeltaUnits.DecidegreesCelsius);
-    }
-
-    /**
-     * Create a new TemperatureDelta instance from a HectodegreesCelsius
-     *
-     * @param value The unit as HectodegreesCelsius to create a new TemperatureDelta from.
-     * @returns The new TemperatureDelta instance.
-     */
-    public static FromHectodegreesCelsius(value: number): TemperatureDelta {
-        return new TemperatureDelta(value, TemperatureDeltaUnits.HectodegreesCelsius);
-    }
-
-    /**
-     * Create a new TemperatureDelta instance from a KilodegreesCelsius
-     *
-     * @param value The unit as KilodegreesCelsius to create a new TemperatureDelta from.
-     * @returns The new TemperatureDelta instance.
-     */
-    public static FromKilodegreesCelsius(value: number): TemperatureDelta {
-        return new TemperatureDelta(value, TemperatureDeltaUnits.KilodegreesCelsius);
     }
 
     private convertFromBase(toUnit: TemperatureDeltaUnits): number {
@@ -360,20 +234,8 @@ export class TemperatureDelta {
                 return this.value*4/5;
             case TemperatureDeltaUnits.DegreesRoemer:
                 return this.value*21/40;
-            case TemperatureDeltaUnits.NanodegreesCelsius:
-                return (this.value) / 1e-9;
-            case TemperatureDeltaUnits.MicrodegreesCelsius:
-                return (this.value) / 0.000001;
             case TemperatureDeltaUnits.MillidegreesCelsius:
                 return (this.value) / 0.001;
-            case TemperatureDeltaUnits.CentidegreesCelsius:
-                return (this.value) / 0.01;
-            case TemperatureDeltaUnits.DecidegreesCelsius:
-                return (this.value) / 0.1;
-            case TemperatureDeltaUnits.HectodegreesCelsius:
-                return (this.value) / 100;
-            case TemperatureDeltaUnits.KilodegreesCelsius:
-                return (this.value) / 1000;
             default:
                 break;
         }
@@ -399,20 +261,8 @@ export class TemperatureDelta {
                 return value*5/4;
             case TemperatureDeltaUnits.DegreesRoemer:
                 return value*40/21;
-            case TemperatureDeltaUnits.NanodegreesCelsius:
-                return (value) * 1e-9;
-            case TemperatureDeltaUnits.MicrodegreesCelsius:
-                return (value) * 0.000001;
             case TemperatureDeltaUnits.MillidegreesCelsius:
                 return (value) * 0.001;
-            case TemperatureDeltaUnits.CentidegreesCelsius:
-                return (value) * 0.01;
-            case TemperatureDeltaUnits.DecidegreesCelsius:
-                return (value) * 0.1;
-            case TemperatureDeltaUnits.HectodegreesCelsius:
-                return (value) * 100;
-            case TemperatureDeltaUnits.KilodegreesCelsius:
-                return (value) * 1000;
             default:
                 break;
         }
@@ -446,20 +296,8 @@ export class TemperatureDelta {
                 return this.DegreesReaumur + ` ∆°Ré`;
             case TemperatureDeltaUnits.DegreesRoemer:
                 return this.DegreesRoemer + ` ∆°Rø`;
-            case TemperatureDeltaUnits.NanodegreesCelsius:
-                return this.NanodegreesCelsius + ` `;
-            case TemperatureDeltaUnits.MicrodegreesCelsius:
-                return this.MicrodegreesCelsius + ` `;
             case TemperatureDeltaUnits.MillidegreesCelsius:
                 return this.MillidegreesCelsius + ` `;
-            case TemperatureDeltaUnits.CentidegreesCelsius:
-                return this.CentidegreesCelsius + ` `;
-            case TemperatureDeltaUnits.DecidegreesCelsius:
-                return this.DecidegreesCelsius + ` `;
-            case TemperatureDeltaUnits.HectodegreesCelsius:
-                return this.HectodegreesCelsius + ` `;
-            case TemperatureDeltaUnits.KilodegreesCelsius:
-                return this.KilodegreesCelsius + ` `;
         default:
             break;
         }

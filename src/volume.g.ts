@@ -63,6 +63,8 @@ export enum VolumeUnits {
     /** */
     ImperialPints,
     /** */
+    BoardFeet,
+    /** */
     Microliters,
     /** */
     Milliliters,
@@ -90,6 +92,12 @@ export enum VolumeUnits {
     KiloimperialGallons,
     /** */
     MegaimperialGallons,
+    /** */
+    DecausGallons,
+    /** */
+    DeciusGallons,
+    /** */
+    HectousGallons,
     /** */
     KilousGallons,
     /** */
@@ -130,6 +138,7 @@ export class Volume {
     private uspintsLazy: number | null = null;
     private acrefeetLazy: number | null = null;
     private imperialpintsLazy: number | null = null;
+    private boardfeetLazy: number | null = null;
     private microlitersLazy: number | null = null;
     private millilitersLazy: number | null = null;
     private centilitersLazy: number | null = null;
@@ -144,6 +153,9 @@ export class Volume {
     private megacubicfeetLazy: number | null = null;
     private kiloimperialgallonsLazy: number | null = null;
     private megaimperialgallonsLazy: number | null = null;
+    private decausgallonsLazy: number | null = null;
+    private deciusgallonsLazy: number | null = null;
+    private hectousgallonsLazy: number | null = null;
     private kilousgallonsLazy: number | null = null;
     private megausgallonsLazy: number | null = null;
 
@@ -416,6 +428,14 @@ export class Volume {
     }
 
     /** */
+    public get BoardFeet(): number {
+        if(this.boardfeetLazy !== null){
+            return this.boardfeetLazy;
+        }
+        return this.boardfeetLazy = this.convertFromBase(VolumeUnits.BoardFeet);
+    }
+
+    /** */
     public get Microliters(): number {
         if(this.microlitersLazy !== null){
             return this.microlitersLazy;
@@ -525,6 +545,30 @@ export class Volume {
             return this.megaimperialgallonsLazy;
         }
         return this.megaimperialgallonsLazy = this.convertFromBase(VolumeUnits.MegaimperialGallons);
+    }
+
+    /** */
+    public get DecausGallons(): number {
+        if(this.decausgallonsLazy !== null){
+            return this.decausgallonsLazy;
+        }
+        return this.decausgallonsLazy = this.convertFromBase(VolumeUnits.DecausGallons);
+    }
+
+    /** */
+    public get DeciusGallons(): number {
+        if(this.deciusgallonsLazy !== null){
+            return this.deciusgallonsLazy;
+        }
+        return this.deciusgallonsLazy = this.convertFromBase(VolumeUnits.DeciusGallons);
+    }
+
+    /** */
+    public get HectousGallons(): number {
+        if(this.hectousgallonsLazy !== null){
+            return this.hectousgallonsLazy;
+        }
+        return this.hectousgallonsLazy = this.convertFromBase(VolumeUnits.HectousGallons);
     }
 
     /** */
@@ -854,6 +898,16 @@ export class Volume {
     }
 
     /**
+     * Create a new Volume instance from a BoardFeet
+     *
+     * @param value The unit as BoardFeet to create a new Volume from.
+     * @returns The new Volume instance.
+     */
+    public static FromBoardFeet(value: number): Volume {
+        return new Volume(value, VolumeUnits.BoardFeet);
+    }
+
+    /**
      * Create a new Volume instance from a Microliters
      *
      * @param value The unit as Microliters to create a new Volume from.
@@ -994,6 +1048,36 @@ export class Volume {
     }
 
     /**
+     * Create a new Volume instance from a DecausGallons
+     *
+     * @param value The unit as DecausGallons to create a new Volume from.
+     * @returns The new Volume instance.
+     */
+    public static FromDecausGallons(value: number): Volume {
+        return new Volume(value, VolumeUnits.DecausGallons);
+    }
+
+    /**
+     * Create a new Volume instance from a DeciusGallons
+     *
+     * @param value The unit as DeciusGallons to create a new Volume from.
+     * @returns The new Volume instance.
+     */
+    public static FromDeciusGallons(value: number): Volume {
+        return new Volume(value, VolumeUnits.DeciusGallons);
+    }
+
+    /**
+     * Create a new Volume instance from a HectousGallons
+     *
+     * @param value The unit as HectousGallons to create a new Volume from.
+     * @returns The new Volume instance.
+     */
+    public static FromHectousGallons(value: number): Volume {
+        return new Volume(value, VolumeUnits.HectousGallons);
+    }
+
+    /**
      * Create a new Volume instance from a KilousGallons
      *
      * @param value The unit as KilousGallons to create a new Volume from.
@@ -1078,6 +1162,8 @@ export class Volume {
                 return this.value*0.000810714;
             case VolumeUnits.ImperialPints:
                 return this.value / 5.6826125e-4;
+            case VolumeUnits.BoardFeet:
+                return this.value/2.3597372158e-3;
             case VolumeUnits.Microliters:
                 return (this.value*1e3) / 0.000001;
             case VolumeUnits.Milliliters:
@@ -1106,6 +1192,12 @@ export class Volume {
                 return (this.value/0.00454609000000181429905810072407) / 1000;
             case VolumeUnits.MegaimperialGallons:
                 return (this.value/0.00454609000000181429905810072407) / 1000000;
+            case VolumeUnits.DecausGallons:
+                return (this.value/0.00378541) / 10;
+            case VolumeUnits.DeciusGallons:
+                return (this.value/0.00378541) / 0.1;
+            case VolumeUnits.HectousGallons:
+                return (this.value/0.00378541) / 100;
             case VolumeUnits.KilousGallons:
                 return (this.value/0.00378541) / 1000;
             case VolumeUnits.MegausGallons:
@@ -1181,6 +1273,8 @@ export class Volume {
                 return value/0.000810714;
             case VolumeUnits.ImperialPints:
                 return value * 5.6826125e-4;
+            case VolumeUnits.BoardFeet:
+                return value*2.3597372158e-3;
             case VolumeUnits.Microliters:
                 return (value/1e3) * 0.000001;
             case VolumeUnits.Milliliters:
@@ -1209,6 +1303,12 @@ export class Volume {
                 return (value*0.00454609000000181429905810072407) * 1000;
             case VolumeUnits.MegaimperialGallons:
                 return (value*0.00454609000000181429905810072407) * 1000000;
+            case VolumeUnits.DecausGallons:
+                return (value*0.00378541) * 10;
+            case VolumeUnits.DeciusGallons:
+                return (value*0.00378541) * 0.1;
+            case VolumeUnits.HectousGallons:
+                return (value*0.00378541) * 100;
             case VolumeUnits.KilousGallons:
                 return (value*0.00378541) * 1000;
             case VolumeUnits.MegausGallons:
@@ -1292,6 +1392,8 @@ export class Volume {
                 return this.AcreFeet + ` ac-ft`;
             case VolumeUnits.ImperialPints:
                 return this.ImperialPints + ` pt (imp.)`;
+            case VolumeUnits.BoardFeet:
+                return this.BoardFeet + ` bf`;
             case VolumeUnits.Microliters:
                 return this.Microliters + ` `;
             case VolumeUnits.Milliliters:
@@ -1320,6 +1422,12 @@ export class Volume {
                 return this.KiloimperialGallons + ` `;
             case VolumeUnits.MegaimperialGallons:
                 return this.MegaimperialGallons + ` `;
+            case VolumeUnits.DecausGallons:
+                return this.DecausGallons + ` `;
+            case VolumeUnits.DeciusGallons:
+                return this.DeciusGallons + ` `;
+            case VolumeUnits.HectousGallons:
+                return this.HectousGallons + ` `;
             case VolumeUnits.KilousGallons:
                 return this.KilousGallons + ` `;
             case VolumeUnits.MegausGallons:

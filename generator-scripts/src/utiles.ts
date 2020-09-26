@@ -1,6 +1,6 @@
 /**
  * Format string to a camel case.
- * @param str The pascal case string to foramt.
+ * @param str The pascal case string to format.
  * @returns The string in the camel case format.
  */
 export function pascalToCamelCase(str: string): string {
