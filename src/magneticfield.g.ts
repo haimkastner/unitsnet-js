@@ -3,6 +3,8 @@ export enum MagneticFieldUnits {
     /** */
     Teslas,
     /** */
+    Gausses,
+    /** */
     Nanoteslas,
     /** */
     Microteslas,
@@ -14,6 +16,7 @@ export enum MagneticFieldUnits {
 export class MagneticField {
     private value: number;
     private teslasLazy: number | null = null;
+    private gaussesLazy: number | null = null;
     private nanoteslasLazy: number | null = null;
     private microteslasLazy: number | null = null;
     private milliteslasLazy: number | null = null;
@@ -44,6 +47,14 @@ export class MagneticField {
             return this.teslasLazy;
         }
         return this.teslasLazy = this.convertFromBase(MagneticFieldUnits.Teslas);
+    }
+
+    /** */
+    public get Gausses(): number {
+        if(this.gaussesLazy !== null){
+            return this.gaussesLazy;
+        }
+        return this.gaussesLazy = this.convertFromBase(MagneticFieldUnits.Gausses);
     }
 
     /** */
@@ -81,6 +92,16 @@ export class MagneticField {
     }
 
     /**
+     * Create a new MagneticField instance from a Gausses
+     *
+     * @param value The unit as Gausses to create a new MagneticField from.
+     * @returns The new MagneticField instance.
+     */
+    public static FromGausses(value: number): MagneticField {
+        return new MagneticField(value, MagneticFieldUnits.Gausses);
+    }
+
+    /**
      * Create a new MagneticField instance from a Nanoteslas
      *
      * @param value The unit as Nanoteslas to create a new MagneticField from.
@@ -115,6 +136,8 @@ export class MagneticField {
                 
             case MagneticFieldUnits.Teslas:
                 return this.value;
+            case MagneticFieldUnits.Gausses:
+                return this.value*1e4;
             case MagneticFieldUnits.Nanoteslas:
                 return (this.value) / 1e-9;
             case MagneticFieldUnits.Microteslas:
@@ -132,6 +155,8 @@ export class MagneticField {
                 
             case MagneticFieldUnits.Teslas:
                 return value;
+            case MagneticFieldUnits.Gausses:
+                return value/1e4;
             case MagneticFieldUnits.Nanoteslas:
                 return (value) * 1e-9;
             case MagneticFieldUnits.Microteslas:
@@ -157,6 +182,8 @@ export class MagneticField {
             
             case MagneticFieldUnits.Teslas:
                 return this.Teslas + ` T`;
+            case MagneticFieldUnits.Gausses:
+                return this.Gausses + ` G`;
             case MagneticFieldUnits.Nanoteslas:
                 return this.Nanoteslas + ` `;
             case MagneticFieldUnits.Microteslas:

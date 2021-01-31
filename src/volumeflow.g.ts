@@ -71,6 +71,20 @@ export enum VolumeFlowUnits {
     /** */
     AcreFeetPerDay,
     /** */
+    CubicCentimetersPerMinute,
+    /** */
+    NanolitersPerSecond,
+    /** */
+    MicrolitersPerSecond,
+    /** */
+    MillilitersPerSecond,
+    /** */
+    CentilitersPerSecond,
+    /** */
+    DecilitersPerSecond,
+    /** */
+    KilolitersPerSecond,
+    /** */
     NanolitersPerMinute,
     /** */
     MicrolitersPerMinute,
@@ -138,6 +152,13 @@ export class VolumeFlow {
     private acrefeetperminuteLazy: number | null = null;
     private acrefeetperhourLazy: number | null = null;
     private acrefeetperdayLazy: number | null = null;
+    private cubiccentimetersperminuteLazy: number | null = null;
+    private nanoliterspersecondLazy: number | null = null;
+    private microliterspersecondLazy: number | null = null;
+    private milliliterspersecondLazy: number | null = null;
+    private centiliterspersecondLazy: number | null = null;
+    private deciliterspersecondLazy: number | null = null;
+    private kiloliterspersecondLazy: number | null = null;
     private nanolitersperminuteLazy: number | null = null;
     private microlitersperminuteLazy: number | null = null;
     private millilitersperminuteLazy: number | null = null;
@@ -451,6 +472,62 @@ export class VolumeFlow {
             return this.acrefeetperdayLazy;
         }
         return this.acrefeetperdayLazy = this.convertFromBase(VolumeFlowUnits.AcreFeetPerDay);
+    }
+
+    /** */
+    public get CubicCentimetersPerMinute(): number {
+        if(this.cubiccentimetersperminuteLazy !== null){
+            return this.cubiccentimetersperminuteLazy;
+        }
+        return this.cubiccentimetersperminuteLazy = this.convertFromBase(VolumeFlowUnits.CubicCentimetersPerMinute);
+    }
+
+    /** */
+    public get NanolitersPerSecond(): number {
+        if(this.nanoliterspersecondLazy !== null){
+            return this.nanoliterspersecondLazy;
+        }
+        return this.nanoliterspersecondLazy = this.convertFromBase(VolumeFlowUnits.NanolitersPerSecond);
+    }
+
+    /** */
+    public get MicrolitersPerSecond(): number {
+        if(this.microliterspersecondLazy !== null){
+            return this.microliterspersecondLazy;
+        }
+        return this.microliterspersecondLazy = this.convertFromBase(VolumeFlowUnits.MicrolitersPerSecond);
+    }
+
+    /** */
+    public get MillilitersPerSecond(): number {
+        if(this.milliliterspersecondLazy !== null){
+            return this.milliliterspersecondLazy;
+        }
+        return this.milliliterspersecondLazy = this.convertFromBase(VolumeFlowUnits.MillilitersPerSecond);
+    }
+
+    /** */
+    public get CentilitersPerSecond(): number {
+        if(this.centiliterspersecondLazy !== null){
+            return this.centiliterspersecondLazy;
+        }
+        return this.centiliterspersecondLazy = this.convertFromBase(VolumeFlowUnits.CentilitersPerSecond);
+    }
+
+    /** */
+    public get DecilitersPerSecond(): number {
+        if(this.deciliterspersecondLazy !== null){
+            return this.deciliterspersecondLazy;
+        }
+        return this.deciliterspersecondLazy = this.convertFromBase(VolumeFlowUnits.DecilitersPerSecond);
+    }
+
+    /** */
+    public get KilolitersPerSecond(): number {
+        if(this.kiloliterspersecondLazy !== null){
+            return this.kiloliterspersecondLazy;
+        }
+        return this.kiloliterspersecondLazy = this.convertFromBase(VolumeFlowUnits.KilolitersPerSecond);
     }
 
     /** */
@@ -916,6 +993,76 @@ export class VolumeFlow {
     }
 
     /**
+     * Create a new VolumeFlow instance from a CubicCentimetersPerMinute
+     *
+     * @param value The unit as CubicCentimetersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromCubicCentimetersPerMinute(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.CubicCentimetersPerMinute);
+    }
+
+    /**
+     * Create a new VolumeFlow instance from a NanolitersPerSecond
+     *
+     * @param value The unit as NanolitersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromNanolitersPerSecond(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.NanolitersPerSecond);
+    }
+
+    /**
+     * Create a new VolumeFlow instance from a MicrolitersPerSecond
+     *
+     * @param value The unit as MicrolitersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromMicrolitersPerSecond(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.MicrolitersPerSecond);
+    }
+
+    /**
+     * Create a new VolumeFlow instance from a MillilitersPerSecond
+     *
+     * @param value The unit as MillilitersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromMillilitersPerSecond(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.MillilitersPerSecond);
+    }
+
+    /**
+     * Create a new VolumeFlow instance from a CentilitersPerSecond
+     *
+     * @param value The unit as CentilitersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromCentilitersPerSecond(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.CentilitersPerSecond);
+    }
+
+    /**
+     * Create a new VolumeFlow instance from a DecilitersPerSecond
+     *
+     * @param value The unit as DecilitersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromDecilitersPerSecond(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.DecilitersPerSecond);
+    }
+
+    /**
+     * Create a new VolumeFlow instance from a KilolitersPerSecond
+     *
+     * @param value The unit as KilolitersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromKilolitersPerSecond(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.KilolitersPerSecond);
+    }
+
+    /**
      * Create a new VolumeFlow instance from a NanolitersPerMinute
      *
      * @param value The unit as NanolitersPerMinute to create a new VolumeFlow from.
@@ -1128,6 +1275,20 @@ export class VolumeFlow {
                 return this.value*2.91857;
             case VolumeFlowUnits.AcreFeetPerDay:
                 return this.value*70.0457;
+            case VolumeFlowUnits.CubicCentimetersPerMinute:
+                return this.value/1.6666666666667e-8;
+            case VolumeFlowUnits.NanolitersPerSecond:
+                return (this.value*1000) / 1e-9;
+            case VolumeFlowUnits.MicrolitersPerSecond:
+                return (this.value*1000) / 0.000001;
+            case VolumeFlowUnits.MillilitersPerSecond:
+                return (this.value*1000) / 0.001;
+            case VolumeFlowUnits.CentilitersPerSecond:
+                return (this.value*1000) / 0.01;
+            case VolumeFlowUnits.DecilitersPerSecond:
+                return (this.value*1000) / 0.1;
+            case VolumeFlowUnits.KilolitersPerSecond:
+                return (this.value*1000) / 1000;
             case VolumeFlowUnits.NanolitersPerMinute:
                 return (this.value*60000.00000) / 1e-9;
             case VolumeFlowUnits.MicrolitersPerMinute:
@@ -1235,6 +1396,20 @@ export class VolumeFlow {
                 return value/2.91857;
             case VolumeFlowUnits.AcreFeetPerDay:
                 return value/70.0457;
+            case VolumeFlowUnits.CubicCentimetersPerMinute:
+                return value*1.6666666666667e-8;
+            case VolumeFlowUnits.NanolitersPerSecond:
+                return (value/1000) * 1e-9;
+            case VolumeFlowUnits.MicrolitersPerSecond:
+                return (value/1000) * 0.000001;
+            case VolumeFlowUnits.MillilitersPerSecond:
+                return (value/1000) * 0.001;
+            case VolumeFlowUnits.CentilitersPerSecond:
+                return (value/1000) * 0.01;
+            case VolumeFlowUnits.DecilitersPerSecond:
+                return (value/1000) * 0.1;
+            case VolumeFlowUnits.KilolitersPerSecond:
+                return (value/1000) * 1000;
             case VolumeFlowUnits.NanolitersPerMinute:
                 return (value/60000.00000) * 1e-9;
             case VolumeFlowUnits.MicrolitersPerMinute:
@@ -1350,6 +1525,20 @@ export class VolumeFlow {
                 return this.AcreFeetPerHour + ` af/h`;
             case VolumeFlowUnits.AcreFeetPerDay:
                 return this.AcreFeetPerDay + ` af/d`;
+            case VolumeFlowUnits.CubicCentimetersPerMinute:
+                return this.CubicCentimetersPerMinute + ` cm³/min`;
+            case VolumeFlowUnits.NanolitersPerSecond:
+                return this.NanolitersPerSecond + ` `;
+            case VolumeFlowUnits.MicrolitersPerSecond:
+                return this.MicrolitersPerSecond + ` `;
+            case VolumeFlowUnits.MillilitersPerSecond:
+                return this.MillilitersPerSecond + ` `;
+            case VolumeFlowUnits.CentilitersPerSecond:
+                return this.CentilitersPerSecond + ` `;
+            case VolumeFlowUnits.DecilitersPerSecond:
+                return this.DecilitersPerSecond + ` `;
+            case VolumeFlowUnits.KilolitersPerSecond:
+                return this.KilolitersPerSecond + ` `;
             case VolumeFlowUnits.NanolitersPerMinute:
                 return this.NanolitersPerMinute + ` `;
             case VolumeFlowUnits.MicrolitersPerMinute:

@@ -226,6 +226,8 @@ Currently, the package supports the following units:
     -   *The Volt-ampere reactive hour (expressed as varh) is the reactive power of one Volt-ampere reactive produced in one hour.*
 - **ReactivePower**
     -   *Volt-ampere reactive (var) is a unit by which reactive power is expressed in an AC electric power system. Reactive power exists in an AC circuit when the current and voltage are not in phase.*
+- **RelativeHumidity**
+    -   *Relative humidity is a ratio of the actual water vapor present in the air to the maximum water vapor in the air at the given temperature.*
 - **RotationalAcceleration**
     -   *Angular acceleration is the rate of change of rotational speed.*
 - **RotationalSpeed**
@@ -234,6 +236,8 @@ Currently, the package supports the following units:
     -   *https://en.wikipedia.org/wiki/Stiffness#Rotational_stiffness*
 - **RotationalStiffnessPerLength**
     -   *https://en.wikipedia.org/wiki/Stiffness#Rotational_stiffness*
+- **Scalar**
+    -   *A way of representing a number of items.*
 - **SolidAngle**
     -   *In geometry, a solid angle is the two-dimensional angle in three-dimensional space that an object subtends at a point.*
 - **SpecificEnergy**
@@ -246,6 +250,8 @@ Currently, the package supports the following units:
     -   *The SpecificWeight, or more precisely, the volumetric weight density, of a substance is its weight per unit volume.*
 - **Speed**
     -   *In everyday use and in kinematics, the speed of an object is the magnitude of its velocity (the rate of change of its position); it is thus a scalar quantity.[1] The average speed of an object in an interval of time is the distance travelled by the object divided by the duration of the interval;[2] the instantaneous speed is the limit of the average speed as the duration of the time interval approaches zero.*
+- **StandardVolumeFlow**
+    -   *The molar flow rate of a gas corrected to standardized conditions of temperature and pressure thus representing a fixed number of moles of gas regardless of composition and actual flow conditions.*
 - **Temperature**
     -   *A temperature is a numerical measure of hot or cold. Its measurement is by detection of heat radiation or particle velocity or kinetic energy, or by the bulk behavior of a thermometric material. It may be calibrated in any of various temperature scales, Celsius, Fahrenheit, Kelvin, etc. The fundamental physical definition of temperature is provided by thermodynamics.*
 - **TemperatureChangeRate**
@@ -260,6 +266,8 @@ Currently, the package supports the following units:
     -   *Torque, moment or moment of force (see the terminology below), is the tendency of a force to rotate an object about an axis,[1] fulcrum, or pivot. Just as a force is a push or a pull, a torque can be thought of as a twist to an object. Mathematically, torque is defined as the cross product of the lever-arm distance and force, which tends to produce rotation. Loosely speaking, torque is a measure of the turning force on an object such as a bolt or a flywheel. For example, pushing or pulling the handle of a wrench connected to a nut or bolt produces a torque (turning force) that loosens or tightens the nut or bolt.*
 - **TorquePerLength**
     -   *The magnitude of torque per unit length.*
+- **Turbidity**
+    -   *Turbidity is the cloudiness or haziness of a fluid caused by large numbers of individual particles that are generally invisible to the naked eye, similar to smoke in air. The measurement of turbidity is a key test of water quality.*
 - **VitaminA**
     -   *Vitamin A: 1 IU is the biological equivalent of 0.3 µg retinol, or of 0.6 µg beta-carotene.*
 - **Volume**
@@ -270,6 +278,8 @@ Currently, the package supports the following units:
     -   *In physics and engineering, in particular fluid dynamics and hydrometry, the volumetric flow rate, (also known as volume flow rate, rate of fluid flow or volume velocity) is the volume of fluid which passes through a given surface per unit time. The SI unit is m³/s (cubic meters per second). In US Customary Units and British Imperial Units, volumetric flow rate is often expressed as ft³/s (cubic feet per second). It is usually represented by the symbol Q.*
 - **VolumePerLength**
     -   *Volume, typically of fluid, that a container can hold within a unit of length.*
+- **WarpingMomentOfInertia**
+    -   *A geometric property of an area that is used to determine the warping stress.*
 
 
 > This file generated from [README.t.md](./generator-scripts/src/assets/README.t.md) template file.

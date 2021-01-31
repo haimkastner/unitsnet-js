@@ -1,4 +1,5 @@
 import { UnitTypeDefinition } from "./models/units-definition";
+import stripBom  from "strip-bom";
 import request from 'sync-request';
 
 const githubOptions = {
@@ -33,7 +34,8 @@ export function fetchUnitsDefinitions(repoOwnerAndName: string): UnitTypeDefinit
             try {
                 console.info(`Fetching ${file} file...`);
                 const response = request('GET', `${filesUrl}/${file}`, githubOptions);
-                const rawBody = response.body.toString('utf-8');
+                // Stringify the payload to utf-8 (and remove the UTF BOM prefix if exists)
+                const rawBody = stripBom(response.body.toString('utf-8'));
                 unitsDefinition.push(JSON.parse(rawBody) as unknown as UnitTypeDefinition);
             } catch (error) {
                 console.warn(`Fetching ${file} file failed or file damaged, ${error}`);

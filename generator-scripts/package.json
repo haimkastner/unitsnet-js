@@ -18,6 +18,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "strip-bom": "^4.0.0",
     "sync-request": "^6.1.0"
   }
 }

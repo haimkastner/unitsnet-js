@@ -7,6 +7,8 @@ export enum TorqueUnits {
     /** */
     NewtonMeters,
     /** */
+    PoundalFeet,
+    /** */
     PoundForceInches,
     /** */
     PoundForceFeet,
@@ -50,6 +52,7 @@ export class Torque {
     private newtonmillimetersLazy: number | null = null;
     private newtoncentimetersLazy: number | null = null;
     private newtonmetersLazy: number | null = null;
+    private poundalfeetLazy: number | null = null;
     private poundforceinchesLazy: number | null = null;
     private poundforcefeetLazy: number | null = null;
     private kilogramforcemillimetersLazy: number | null = null;
@@ -111,6 +114,14 @@ export class Torque {
             return this.newtonmetersLazy;
         }
         return this.newtonmetersLazy = this.convertFromBase(TorqueUnits.NewtonMeters);
+    }
+
+    /** */
+    public get PoundalFeet(): number {
+        if(this.poundalfeetLazy !== null){
+            return this.poundalfeetLazy;
+        }
+        return this.poundalfeetLazy = this.convertFromBase(TorqueUnits.PoundalFeet);
     }
 
     /** */
@@ -285,6 +296,16 @@ export class Torque {
      */
     public static FromNewtonMeters(value: number): Torque {
         return new Torque(value, TorqueUnits.NewtonMeters);
+    }
+
+    /**
+     * Create a new Torque instance from a PoundalFeet
+     *
+     * @param value The unit as PoundalFeet to create a new Torque from.
+     * @returns The new Torque instance.
+     */
+    public static FromPoundalFeet(value: number): Torque {
+        return new Torque(value, TorqueUnits.PoundalFeet);
     }
 
     /**
@@ -476,6 +497,8 @@ export class Torque {
                 return this.value*100;
             case TorqueUnits.NewtonMeters:
                 return this.value;
+            case TorqueUnits.PoundalFeet:
+                return this.value/4.21401100938048e-2;
             case TorqueUnits.PoundForceInches:
                 return this.value/1.129848290276167e-1;
             case TorqueUnits.PoundForceFeet:
@@ -527,6 +550,8 @@ export class Torque {
                 return value*0.01;
             case TorqueUnits.NewtonMeters:
                 return value;
+            case TorqueUnits.PoundalFeet:
+                return value*4.21401100938048e-2;
             case TorqueUnits.PoundForceInches:
                 return value*1.129848290276167e-1;
             case TorqueUnits.PoundForceFeet:
@@ -586,6 +611,8 @@ export class Torque {
                 return this.NewtonCentimeters + ` N·cm`;
             case TorqueUnits.NewtonMeters:
                 return this.NewtonMeters + ` N·m`;
+            case TorqueUnits.PoundalFeet:
+                return this.PoundalFeet + ` pdl·ft`;
             case TorqueUnits.PoundForceInches:
                 return this.PoundForceInches + ` lbf·in`;
             case TorqueUnits.PoundForceFeet:
