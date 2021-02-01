@@ -16,10 +16,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Build & Test
       run: |
-        npm i typescript -g
         cd generator-scripts
         npm install
+        npm run generate
         cd ..
         npm install
-        npm run generate
+        npm run build
         npm run test
