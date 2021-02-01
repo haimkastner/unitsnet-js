@@ -18,8 +18,7 @@ jobs:
       run: |
         cd generator-scripts
         npm install
-        npm run generate
         cd ..
         npm install
-        npm run build
+        npm run generate
         npm run test
