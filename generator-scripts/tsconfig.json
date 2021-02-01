@@ -60,6 +60,9 @@
       "node",
     ]
   },
+  "files": [
+    "src/index.ts"
+  ],
   "include": [
     "src/**/*.*"
   ],
