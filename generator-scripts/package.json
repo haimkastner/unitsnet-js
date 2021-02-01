@@ -4,8 +4,9 @@
   "description": "Based on UnisNet Project",
   "main": "index.js",
   "scripts": {
-    "build:generator": "tsc",
-    "generate": "npm run build:generator && node dist\\index.js",
+    "build": "tsc",
+    "generate:win": "npm run build && node dist\\index.js",
+    "generate": "npm run build && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Haim Kastner",
