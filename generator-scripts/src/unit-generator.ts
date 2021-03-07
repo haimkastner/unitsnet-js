@@ -115,20 +115,20 @@ function buildUnitCreatorsMethods(unitName: string, enumName: string, units: Uni
  * Build the case in a 'switch' with unit converting formula for the given unit.
  * @param unitName The specific unit name. (for example 'Degree' or 'Radian') 
  * @param enumName The unit enum name.
- * @param formulaDefenition THe furmula code as string.
- * @param valueVarName The valiable name to replace th 'x' in the formula.
+ * @param formulaDefinition THe formula code as string.
+ * @param valueVarName The variable name to replace th 'x' in the formula.
  * @returns The unit case as a string.
  */
-function buildFormulaCase(unitName: string, enumName: string, formulaDefenition: string, valueVarName: string): string {
+function buildFormulaCase(unitName: string, enumName: string, formulaDefinition: string, valueVarName: string): string {
     // Remove C# number types
-    formulaDefenition = formulaDefenition.replace('d', '').replace('m', '');
+    formulaDefinition = formulaDefinition.replace('d', '').replace('m', '');
 
     // Rename C# Pow method to lower case as in js Math lib name.
-    formulaDefenition = formulaDefenition.replace('.Pow(', '.pow(');
+    formulaDefinition = formulaDefinition.replace('.Pow(', '.pow(').replace('.Sqrt(', '.sqrt(');
 
     return `
     case ${enumName}.${unitName}:
-        return ${formulaDefenition.replace('x', valueVarName)};`;
+        return ${formulaDefinition.split('x').join(valueVarName)};`;
 }
 
 /**
@@ -415,11 +415,11 @@ function buildArithmeticsMethods(unitName: string): MethodDeclarationStructure[]
 }
 
 /**
- * Build the unit constractor
+ * Build the unit constructor
  * @param unitName The unit name.
  * @param enumName The unit types enum name.
  * @param baseUnitName The base unit enum type name.
- * @returns The constractor structure
+ * @returns The constructor structure
  */
 function buildUnitCtor(unitName: string, enumName: string, baseUnitName: string): ConstructorDeclarationStructure {
     const docs: JSDocStructure = {
@@ -472,7 +472,7 @@ export function generateUnitClass(project: Project,
     const baseUnit = units.find((unit) =>
         (unit.singularName === unitProperties.baseUnitSingularName)) as UnitProperties;
 
-    // Build the enum stracture
+    // Build the enum structure
     const unitsEnum = buildEnum(enumName, units);
 
     // Build the base value variable
@@ -499,10 +499,10 @@ export function generateUnitClass(project: Project,
     // Build the units get-accessors
     const unitGetters = buildUnitGetters(enumName, units);
 
-    // Build the constractor
+    // Build the constructor
     const unitCtor = buildUnitCtor(unitName, enumName, baseUnit.pluralName);
 
-    // Build the static creator mathods  
+    // Build the static creator methods  
     const unitCreators = buildUnitCreatorsMethods(unitName, enumName, units);
 
     // Build the convert from base to unit method
