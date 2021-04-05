@@ -47,6 +47,10 @@ export enum PressureUnits {
     /** */
     InchesOfWaterColumn,
     /** */
+    MetersOfElevation,
+    /** */
+    FeetOfElevation,
+    /** */
     Micropascals,
     /** */
     Millipascals,
@@ -112,6 +116,8 @@ export class Pressure {
     private dynespersquarecentimeterLazy: number | null = null;
     private poundsperinchsecondsquaredLazy: number | null = null;
     private inchesofwatercolumnLazy: number | null = null;
+    private metersofelevationLazy: number | null = null;
+    private feetofelevationLazy: number | null = null;
     private micropascalsLazy: number | null = null;
     private millipascalsLazy: number | null = null;
     private decapascalsLazy: number | null = null;
@@ -334,6 +340,22 @@ export class Pressure {
             return this.inchesofwatercolumnLazy;
         }
         return this.inchesofwatercolumnLazy = this.convertFromBase(PressureUnits.InchesOfWaterColumn);
+    }
+
+    /** */
+    public get MetersOfElevation(): number {
+        if(this.metersofelevationLazy !== null){
+            return this.metersofelevationLazy;
+        }
+        return this.metersofelevationLazy = this.convertFromBase(PressureUnits.MetersOfElevation);
+    }
+
+    /** */
+    public get FeetOfElevation(): number {
+        if(this.feetofelevationLazy !== null){
+            return this.feetofelevationLazy;
+        }
+        return this.feetofelevationLazy = this.convertFromBase(PressureUnits.FeetOfElevation);
     }
 
     /** */
@@ -719,6 +741,26 @@ export class Pressure {
     }
 
     /**
+     * Create a new Pressure instance from a MetersOfElevation
+     *
+     * @param value The unit as MetersOfElevation to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromMetersOfElevation(value: number): Pressure {
+        return new Pressure(value, PressureUnits.MetersOfElevation);
+    }
+
+    /**
+     * Create a new Pressure instance from a FeetOfElevation
+     *
+     * @param value The unit as FeetOfElevation to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromFeetOfElevation(value: number): Pressure {
+        return new Pressure(value, PressureUnits.FeetOfElevation);
+    }
+
+    /**
      * Create a new Pressure instance from a Micropascals
      *
      * @param value The unit as Micropascals to create a new Pressure from.
@@ -957,6 +999,10 @@ export class Pressure {
                 return this.value/1.785796732283465e1;
             case PressureUnits.InchesOfWaterColumn:
                 return this.value/249.08890833333;
+            case PressureUnits.MetersOfElevation:
+                return (1.0 - Math.pow(this.value / 101325.0, 0.190284)) * 44307.69396;
+            case PressureUnits.FeetOfElevation:
+                return (1.0 - Math.pow(this.value / 101325.0, 0.190284)) * 145366.45;
             case PressureUnits.Micropascals:
                 return (this.value) / 0.000001;
             case PressureUnits.Millipascals:
@@ -1050,6 +1096,10 @@ export class Pressure {
                 return value*1.785796732283465e1;
             case PressureUnits.InchesOfWaterColumn:
                 return value*249.08890833333;
+            case PressureUnits.MetersOfElevation:
+                return Math.pow(1.0 - (value / 44307.69396), 5.2553026003237266401799415610351) * 101325.0;
+            case PressureUnits.FeetOfElevation:
+                return Math.pow(1.0 - (value / 145366.45), 5.2553026003237266401799415610351) * 101325.0;
             case PressureUnits.Micropascals:
                 return (value) * 0.000001;
             case PressureUnits.Millipascals:
@@ -1151,6 +1201,10 @@ export class Pressure {
                 return this.PoundsPerInchSecondSquared + ` lbm/(in·s²)`;
             case PressureUnits.InchesOfWaterColumn:
                 return this.InchesOfWaterColumn + ` wc`;
+            case PressureUnits.MetersOfElevation:
+                return this.MetersOfElevation + ` m of elevation`;
+            case PressureUnits.FeetOfElevation:
+                return this.FeetOfElevation + ` ft of elevation`;
             case PressureUnits.Micropascals:
                 return this.Micropascals + ` `;
             case PressureUnits.Millipascals:
