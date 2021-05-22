@@ -13,6 +13,8 @@ export enum AngleUnits {
     /** */
     Revolutions,
     /** */
+    Tilt,
+    /** */
     Nanoradians,
     /** */
     Microradians,
@@ -39,6 +41,7 @@ export class Angle {
     private arcsecondsLazy: number | null = null;
     private gradiansLazy: number | null = null;
     private revolutionsLazy: number | null = null;
+    private tiltLazy: number | null = null;
     private nanoradiansLazy: number | null = null;
     private microradiansLazy: number | null = null;
     private milliradiansLazy: number | null = null;
@@ -114,6 +117,14 @@ export class Angle {
             return this.revolutionsLazy;
         }
         return this.revolutionsLazy = this.convertFromBase(AngleUnits.Revolutions);
+    }
+
+    /** */
+    public get Tilt(): number {
+        if(this.tiltLazy !== null){
+            return this.tiltLazy;
+        }
+        return this.tiltLazy = this.convertFromBase(AngleUnits.Tilt);
     }
 
     /** */
@@ -241,6 +252,16 @@ export class Angle {
     }
 
     /**
+     * Create a new Angle instance from a Tilt
+     *
+     * @param value The unit as Tilt to create a new Angle from.
+     * @returns The new Angle instance.
+     */
+    public static FromTilt(value: number): Angle {
+        return new Angle(value, AngleUnits.Tilt);
+    }
+
+    /**
      * Create a new Angle instance from a Nanoradians
      *
      * @param value The unit as Nanoradians to create a new Angle from.
@@ -335,6 +356,8 @@ export class Angle {
                 return this.value/0.9;
             case AngleUnits.Revolutions:
                 return this.value/360;
+            case AngleUnits.Tilt:
+                return Math.sin(this.value/180*Math.PI);
             case AngleUnits.Nanoradians:
                 return (this.value/180*Math.PI) / 1e-9;
             case AngleUnits.Microradians:
@@ -372,6 +395,8 @@ export class Angle {
                 return value*0.9;
             case AngleUnits.Revolutions:
                 return value*360;
+            case AngleUnits.Tilt:
+                return Math.asin(value)*180/Math.PI;
             case AngleUnits.Nanoradians:
                 return (value*180/Math.PI) * 1e-9;
             case AngleUnits.Microradians:
@@ -417,6 +442,8 @@ export class Angle {
                 return this.Gradians + ` g`;
             case AngleUnits.Revolutions:
                 return this.Revolutions + ` r`;
+            case AngleUnits.Tilt:
+                return this.Tilt + ` sin(θ)`;
             case AngleUnits.Nanoradians:
                 return this.Nanoradians + ` `;
             case AngleUnits.Microradians:

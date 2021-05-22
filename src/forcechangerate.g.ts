@@ -5,6 +5,10 @@ export enum ForceChangeRateUnits {
     /** */
     NewtonsPerSecond,
     /** */
+    PoundsForcePerMinute,
+    /** */
+    PoundsForcePerSecond,
+    /** */
     DecanewtonsPerMinute,
     /** */
     KilonewtonsPerMinute,
@@ -21,7 +25,11 @@ export enum ForceChangeRateUnits {
     /** */
     DecanewtonsPerSecond,
     /** */
-    KilonewtonsPerSecond
+    KilonewtonsPerSecond,
+    /** */
+    KilopoundsForcePerMinute,
+    /** */
+    KilopoundsForcePerSecond
 }
 
 /** Force change rate is the ratio of the force change to the time during which the change occurred (value of force changes per unit time). */
@@ -29,6 +37,8 @@ export class ForceChangeRate {
     private value: number;
     private newtonsperminuteLazy: number | null = null;
     private newtonspersecondLazy: number | null = null;
+    private poundsforceperminuteLazy: number | null = null;
+    private poundsforcepersecondLazy: number | null = null;
     private decanewtonsperminuteLazy: number | null = null;
     private kilonewtonsperminuteLazy: number | null = null;
     private nanonewtonspersecondLazy: number | null = null;
@@ -38,6 +48,8 @@ export class ForceChangeRate {
     private decinewtonspersecondLazy: number | null = null;
     private decanewtonspersecondLazy: number | null = null;
     private kilonewtonspersecondLazy: number | null = null;
+    private kilopoundsforceperminuteLazy: number | null = null;
+    private kilopoundsforcepersecondLazy: number | null = null;
 
     /**
      * Create a new ForceChangeRate.
@@ -73,6 +85,22 @@ export class ForceChangeRate {
             return this.newtonspersecondLazy;
         }
         return this.newtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.NewtonsPerSecond);
+    }
+
+    /** */
+    public get PoundsForcePerMinute(): number {
+        if(this.poundsforceperminuteLazy !== null){
+            return this.poundsforceperminuteLazy;
+        }
+        return this.poundsforceperminuteLazy = this.convertFromBase(ForceChangeRateUnits.PoundsForcePerMinute);
+    }
+
+    /** */
+    public get PoundsForcePerSecond(): number {
+        if(this.poundsforcepersecondLazy !== null){
+            return this.poundsforcepersecondLazy;
+        }
+        return this.poundsforcepersecondLazy = this.convertFromBase(ForceChangeRateUnits.PoundsForcePerSecond);
     }
 
     /** */
@@ -147,6 +175,22 @@ export class ForceChangeRate {
         return this.kilonewtonspersecondLazy = this.convertFromBase(ForceChangeRateUnits.KilonewtonsPerSecond);
     }
 
+    /** */
+    public get KilopoundsForcePerMinute(): number {
+        if(this.kilopoundsforceperminuteLazy !== null){
+            return this.kilopoundsforceperminuteLazy;
+        }
+        return this.kilopoundsforceperminuteLazy = this.convertFromBase(ForceChangeRateUnits.KilopoundsForcePerMinute);
+    }
+
+    /** */
+    public get KilopoundsForcePerSecond(): number {
+        if(this.kilopoundsforcepersecondLazy !== null){
+            return this.kilopoundsforcepersecondLazy;
+        }
+        return this.kilopoundsforcepersecondLazy = this.convertFromBase(ForceChangeRateUnits.KilopoundsForcePerSecond);
+    }
+
     /**
      * Create a new ForceChangeRate instance from a NewtonsPerMinute
      *
@@ -165,6 +209,26 @@ export class ForceChangeRate {
      */
     public static FromNewtonsPerSecond(value: number): ForceChangeRate {
         return new ForceChangeRate(value, ForceChangeRateUnits.NewtonsPerSecond);
+    }
+
+    /**
+     * Create a new ForceChangeRate instance from a PoundsForcePerMinute
+     *
+     * @param value The unit as PoundsForcePerMinute to create a new ForceChangeRate from.
+     * @returns The new ForceChangeRate instance.
+     */
+    public static FromPoundsForcePerMinute(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.PoundsForcePerMinute);
+    }
+
+    /**
+     * Create a new ForceChangeRate instance from a PoundsForcePerSecond
+     *
+     * @param value The unit as PoundsForcePerSecond to create a new ForceChangeRate from.
+     * @returns The new ForceChangeRate instance.
+     */
+    public static FromPoundsForcePerSecond(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.PoundsForcePerSecond);
     }
 
     /**
@@ -257,6 +321,26 @@ export class ForceChangeRate {
         return new ForceChangeRate(value, ForceChangeRateUnits.KilonewtonsPerSecond);
     }
 
+    /**
+     * Create a new ForceChangeRate instance from a KilopoundsForcePerMinute
+     *
+     * @param value The unit as KilopoundsForcePerMinute to create a new ForceChangeRate from.
+     * @returns The new ForceChangeRate instance.
+     */
+    public static FromKilopoundsForcePerMinute(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.KilopoundsForcePerMinute);
+    }
+
+    /**
+     * Create a new ForceChangeRate instance from a KilopoundsForcePerSecond
+     *
+     * @param value The unit as KilopoundsForcePerSecond to create a new ForceChangeRate from.
+     * @returns The new ForceChangeRate instance.
+     */
+    public static FromKilopoundsForcePerSecond(value: number): ForceChangeRate {
+        return new ForceChangeRate(value, ForceChangeRateUnits.KilopoundsForcePerSecond);
+    }
+
     private convertFromBase(toUnit: ForceChangeRateUnits): number {
         switch (toUnit) {
                 
@@ -264,6 +348,10 @@ export class ForceChangeRate {
                 return this.value*60;
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return this.value;
+            case ForceChangeRateUnits.PoundsForcePerMinute:
+                return this.value/4.4482216152605095551842641431421*60;
+            case ForceChangeRateUnits.PoundsForcePerSecond:
+                return this.value/4.4482216152605095551842641431421;
             case ForceChangeRateUnits.DecanewtonsPerMinute:
                 return (this.value*60) / 10;
             case ForceChangeRateUnits.KilonewtonsPerMinute:
@@ -282,6 +370,10 @@ export class ForceChangeRate {
                 return (this.value) / 10;
             case ForceChangeRateUnits.KilonewtonsPerSecond:
                 return (this.value) / 1000;
+            case ForceChangeRateUnits.KilopoundsForcePerMinute:
+                return (this.value/4.4482216152605095551842641431421*60) / 1000;
+            case ForceChangeRateUnits.KilopoundsForcePerSecond:
+                return (this.value/4.4482216152605095551842641431421) / 1000;
             default:
                 break;
         }
@@ -295,6 +387,10 @@ export class ForceChangeRate {
                 return value/60;
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return value;
+            case ForceChangeRateUnits.PoundsForcePerMinute:
+                return value*4.4482216152605095551842641431421/60;
+            case ForceChangeRateUnits.PoundsForcePerSecond:
+                return value*4.4482216152605095551842641431421;
             case ForceChangeRateUnits.DecanewtonsPerMinute:
                 return (value/60) * 10;
             case ForceChangeRateUnits.KilonewtonsPerMinute:
@@ -313,6 +409,10 @@ export class ForceChangeRate {
                 return (value) * 10;
             case ForceChangeRateUnits.KilonewtonsPerSecond:
                 return (value) * 1000;
+            case ForceChangeRateUnits.KilopoundsForcePerMinute:
+                return (value*4.4482216152605095551842641431421/60) * 1000;
+            case ForceChangeRateUnits.KilopoundsForcePerSecond:
+                return (value*4.4482216152605095551842641431421) * 1000;
             default:
                 break;
         }
@@ -334,6 +434,10 @@ export class ForceChangeRate {
                 return this.NewtonsPerMinute + ` N/min`;
             case ForceChangeRateUnits.NewtonsPerSecond:
                 return this.NewtonsPerSecond + ` N/s`;
+            case ForceChangeRateUnits.PoundsForcePerMinute:
+                return this.PoundsForcePerMinute + ` lbf/min`;
+            case ForceChangeRateUnits.PoundsForcePerSecond:
+                return this.PoundsForcePerSecond + ` lbf/s`;
             case ForceChangeRateUnits.DecanewtonsPerMinute:
                 return this.DecanewtonsPerMinute + ` `;
             case ForceChangeRateUnits.KilonewtonsPerMinute:
@@ -352,6 +456,10 @@ export class ForceChangeRate {
                 return this.DecanewtonsPerSecond + ` `;
             case ForceChangeRateUnits.KilonewtonsPerSecond:
                 return this.KilonewtonsPerSecond + ` `;
+            case ForceChangeRateUnits.KilopoundsForcePerMinute:
+                return this.KilopoundsForcePerMinute + ` `;
+            case ForceChangeRateUnits.KilopoundsForcePerSecond:
+                return this.KilopoundsForcePerSecond + ` `;
         default:
             break;
         }

@@ -123,12 +123,15 @@ function buildFormulaCase(unitName: string, enumName: string, formulaDefinition:
     // Remove C# number types
     formulaDefinition = formulaDefinition.replace('d', '').replace('m', '');
 
-    // Rename C# Pow method to lower case as in js Math lib name.
-    formulaDefinition = formulaDefinition.replace('.Pow(', '.pow(').replace('.Sqrt(', '.sqrt(');
+    // Convert C# math functions to the JS name
+    formulaDefinition = formulaDefinition.replace(/\.Pow\(/g, '.pow(');
+    formulaDefinition = formulaDefinition.replace(/\.Sqrt\(/g, '.sqrt(');
+    formulaDefinition = formulaDefinition.replace(/\.Asin\(/g, '.asin(');
+    formulaDefinition = formulaDefinition.replace(/\.Sin\(/g, '.sin(');
 
     return `
     case ${enumName}.${unitName}:
-        return ${formulaDefinition.split('x').join(valueVarName)};`;
+        return ${formulaDefinition.replace(/x/g, valueVarName)};`;
 }
 
 /**
