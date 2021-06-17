@@ -1,6 +1,6 @@
-# unitsnet-js
+# units-base
 
-The unitsnet-js package is a better way to hold unit variables and/or easily convert to the destination unit, it supports more than 100 units types with almost all possibles units kinds, also it supports pretty-printing, comparing & arithmetics methods, all of it in a very easy to use and understand API.
+The units-base package is a better way to hold unit variables and/or easily convert to the destination unit, it supports more than 100 units types with almost all possibles units kinds, also it supports pretty-printing, comparing & arithmetics methods, all of it in a very easy to use and understand API.
 
 The library is based on the great [Units.NET](https://github.com/angularsen/UnitsNet) project, and used their [definitions sources](https://github.com/angularsen/UnitsNet/tree/master/Common/UnitDefinitions) to generate the JS/TS unit classes. 
 
@@ -16,7 +16,7 @@ npm install unitsnet-js
 
 ## Used example in TypeScript
 ```typescript
-import { Angle, AngleUnits, Length, LengthUnits } from 'unitsnet-js';
+import { Angle, AngleUnits, Length, LengthUnits } from 'units-base';
 
 
 let angle = Angle.FromDegrees(180);

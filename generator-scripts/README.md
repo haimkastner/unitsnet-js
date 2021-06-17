@@ -1,4 +1,4 @@
-# unitsnet-js generator scripts
+# units-base generator scripts
 
 A TS script to generate TS classes for each unit, based on [Units.NET](https://github.com/angularsen/UnitsNet) [definitions sources](https://github.com/angularsen/UnitsNet/tree/master/Common/UnitDefinitions).
 
@@ -9,7 +9,7 @@ npm run generate
 
 ```
 
-Then to build the project change the directory to `/unitsnet-js` and use the following command:
+Then to build the project change the directory to `/units-base` and use the following command:
 
 ```bash 
 
