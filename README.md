@@ -10,7 +10,7 @@ The library is based on the great [Units.NET](https://github.com/angularsen/Unit
 
 ```bash 
 
-npm install unitsnet-js
+npm install units-base
 
 ```
 
