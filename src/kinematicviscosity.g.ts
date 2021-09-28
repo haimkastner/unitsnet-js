@@ -5,6 +5,8 @@ export enum KinematicViscosityUnits {
     /** */
     Stokes,
     /** */
+    SquareFeetPerSecond,
+    /** */
     Nanostokes,
     /** */
     Microstokes,
@@ -23,6 +25,7 @@ export class KinematicViscosity {
     private value: number;
     private squaremeterspersecondLazy: number | null = null;
     private stokesLazy: number | null = null;
+    private squarefeetpersecondLazy: number | null = null;
     private nanostokesLazy: number | null = null;
     private microstokesLazy: number | null = null;
     private millistokesLazy: number | null = null;
@@ -64,6 +67,14 @@ export class KinematicViscosity {
             return this.stokesLazy;
         }
         return this.stokesLazy = this.convertFromBase(KinematicViscosityUnits.Stokes);
+    }
+
+    /** */
+    public get SquareFeetPerSecond(): number {
+        if(this.squarefeetpersecondLazy !== null){
+            return this.squarefeetpersecondLazy;
+        }
+        return this.squarefeetpersecondLazy = this.convertFromBase(KinematicViscosityUnits.SquareFeetPerSecond);
     }
 
     /** */
@@ -135,6 +146,16 @@ export class KinematicViscosity {
     }
 
     /**
+     * Create a new KinematicViscosity instance from a SquareFeetPerSecond
+     *
+     * @param value The unit as SquareFeetPerSecond to create a new KinematicViscosity from.
+     * @returns The new KinematicViscosity instance.
+     */
+    public static FromSquareFeetPerSecond(value: number): KinematicViscosity {
+        return new KinematicViscosity(value, KinematicViscosityUnits.SquareFeetPerSecond);
+    }
+
+    /**
      * Create a new KinematicViscosity instance from a Nanostokes
      *
      * @param value The unit as Nanostokes to create a new KinematicViscosity from.
@@ -201,6 +222,8 @@ export class KinematicViscosity {
                 return this.value;
             case KinematicViscosityUnits.Stokes:
                 return this.value*1e4;
+            case KinematicViscosityUnits.SquareFeetPerSecond:
+                return this.value*10.7639;
             case KinematicViscosityUnits.Nanostokes:
                 return (this.value*1e4) / 1e-9;
             case KinematicViscosityUnits.Microstokes:
@@ -226,6 +249,8 @@ export class KinematicViscosity {
                 return value;
             case KinematicViscosityUnits.Stokes:
                 return value/1e4;
+            case KinematicViscosityUnits.SquareFeetPerSecond:
+                return value/10.7639;
             case KinematicViscosityUnits.Nanostokes:
                 return (value/1e4) * 1e-9;
             case KinematicViscosityUnits.Microstokes:
@@ -259,6 +284,8 @@ export class KinematicViscosity {
                 return this.SquareMetersPerSecond + ` m²/s`;
             case KinematicViscosityUnits.Stokes:
                 return this.Stokes + ` St`;
+            case KinematicViscosityUnits.SquareFeetPerSecond:
+                return this.SquareFeetPerSecond + ` ft²/s`;
             case KinematicViscosityUnits.Nanostokes:
                 return this.Nanostokes + ` `;
             case KinematicViscosityUnits.Microstokes:

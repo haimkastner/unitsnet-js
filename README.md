@@ -226,6 +226,10 @@ Currently, the package supports the following units:
     -   *The Volt-ampere reactive hour (expressed as varh) is the reactive power of one Volt-ampere reactive produced in one hour.*
 - **ReactivePower**
     -   *Volt-ampere reactive (var) is a unit by which reactive power is expressed in an AC electric power system. Reactive power exists in an AC circuit when the current and voltage are not in phase.*
+- **ReciprocalArea**
+    -   *Reciprocal area (Inverse-square) quantity is used to specify a physical quantity inversely proportional to the square of the distance.*
+- **ReciprocalLength**
+    -   *Reciprocal (Inverse) Length is used in various fields of science and mathematics. It is defined as the inverse value of a length unit.*
 - **RelativeHumidity**
     -   *Relative humidity is a ratio of the actual water vapor present in the air to the maximum water vapor in the air at the given temperature.*
 - **RotationalAcceleration**
@@ -280,6 +284,8 @@ Currently, the package supports the following units:
     -   *In physics and engineering, in particular fluid dynamics and hydrometry, the volumetric flow rate, (also known as volume flow rate, rate of fluid flow or volume velocity) is the volume of fluid which passes through a given surface per unit time. The SI unit is m³/s (cubic meters per second). In US Customary Units and British Imperial Units, volumetric flow rate is often expressed as ft³/s (cubic feet per second). It is usually represented by the symbol Q.*
 - **VolumePerLength**
     -   *Volume, typically of fluid, that a container can hold within a unit of length.*
+- **VolumetricHeatCapacity**
+    -   *The volumetric heat capacity is the amount of energy that must be added, in the form of heat, to one unit of volume of the material in order to cause an increase of one unit in its temperature.*
 - **WarpingMomentOfInertia**
     -   *A geometric property of an area that is used to determine the warping stress.*
 

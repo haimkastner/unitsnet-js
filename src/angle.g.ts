@@ -11,6 +11,8 @@ export enum AngleUnits {
     /** */
     Gradians,
     /** */
+    NatoMils,
+    /** */
     Revolutions,
     /** */
     Tilt,
@@ -40,6 +42,7 @@ export class Angle {
     private arcminutesLazy: number | null = null;
     private arcsecondsLazy: number | null = null;
     private gradiansLazy: number | null = null;
+    private natomilsLazy: number | null = null;
     private revolutionsLazy: number | null = null;
     private tiltLazy: number | null = null;
     private nanoradiansLazy: number | null = null;
@@ -109,6 +112,14 @@ export class Angle {
             return this.gradiansLazy;
         }
         return this.gradiansLazy = this.convertFromBase(AngleUnits.Gradians);
+    }
+
+    /** */
+    public get NatoMils(): number {
+        if(this.natomilsLazy !== null){
+            return this.natomilsLazy;
+        }
+        return this.natomilsLazy = this.convertFromBase(AngleUnits.NatoMils);
     }
 
     /** */
@@ -242,6 +253,16 @@ export class Angle {
     }
 
     /**
+     * Create a new Angle instance from a NatoMils
+     *
+     * @param value The unit as NatoMils to create a new Angle from.
+     * @returns The new Angle instance.
+     */
+    public static FromNatoMils(value: number): Angle {
+        return new Angle(value, AngleUnits.NatoMils);
+    }
+
+    /**
      * Create a new Angle instance from a Revolutions
      *
      * @param value The unit as Revolutions to create a new Angle from.
@@ -354,6 +375,8 @@ export class Angle {
                 return this.value*3600;
             case AngleUnits.Gradians:
                 return this.value/0.9;
+            case AngleUnits.NatoMils:
+                return this.value*160/9;
             case AngleUnits.Revolutions:
                 return this.value/360;
             case AngleUnits.Tilt:
@@ -393,6 +416,8 @@ export class Angle {
                 return value/3600;
             case AngleUnits.Gradians:
                 return value*0.9;
+            case AngleUnits.NatoMils:
+                return value*9/160;
             case AngleUnits.Revolutions:
                 return value*360;
             case AngleUnits.Tilt:
@@ -440,6 +465,8 @@ export class Angle {
                 return this.Arcseconds + ` ″`;
             case AngleUnits.Gradians:
                 return this.Gradians + ` g`;
+            case AngleUnits.NatoMils:
+                return this.NatoMils + ` mil`;
             case AngleUnits.Revolutions:
                 return this.Revolutions + ` r`;
             case AngleUnits.Tilt:

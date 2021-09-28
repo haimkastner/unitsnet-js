@@ -29,6 +29,10 @@ export enum MassConcentrationUnits {
     /** */
     PoundsPerUSGallon,
     /** */
+    OuncesPerUSGallon,
+    /** */
+    OuncesPerImperialGallon,
+    /** */
     PoundsPerImperialGallon,
     /** */
     KilogramsPerCubicMillimeter,
@@ -113,6 +117,8 @@ export class MassConcentration {
     private poundspercubicfootLazy: number | null = null;
     private slugspercubicfootLazy: number | null = null;
     private poundsperusgallonLazy: number | null = null;
+    private ouncesperusgallonLazy: number | null = null;
+    private ouncesperimperialgallonLazy: number | null = null;
     private poundsperimperialgallonLazy: number | null = null;
     private kilogramspercubicmillimeterLazy: number | null = null;
     private kilogramspercubiccentimeterLazy: number | null = null;
@@ -277,6 +283,22 @@ export class MassConcentration {
             return this.poundsperusgallonLazy;
         }
         return this.poundsperusgallonLazy = this.convertFromBase(MassConcentrationUnits.PoundsPerUSGallon);
+    }
+
+    /** */
+    public get OuncesPerUSGallon(): number {
+        if(this.ouncesperusgallonLazy !== null){
+            return this.ouncesperusgallonLazy;
+        }
+        return this.ouncesperusgallonLazy = this.convertFromBase(MassConcentrationUnits.OuncesPerUSGallon);
+    }
+
+    /** */
+    public get OuncesPerImperialGallon(): number {
+        if(this.ouncesperimperialgallonLazy !== null){
+            return this.ouncesperimperialgallonLazy;
+        }
+        return this.ouncesperimperialgallonLazy = this.convertFromBase(MassConcentrationUnits.OuncesPerImperialGallon);
     }
 
     /** */
@@ -684,6 +706,26 @@ export class MassConcentration {
     }
 
     /**
+     * Create a new MassConcentration instance from a OuncesPerUSGallon
+     *
+     * @param value The unit as OuncesPerUSGallon to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
+    public static FromOuncesPerUSGallon(value: number): MassConcentration {
+        return new MassConcentration(value, MassConcentrationUnits.OuncesPerUSGallon);
+    }
+
+    /**
+     * Create a new MassConcentration instance from a OuncesPerImperialGallon
+     *
+     * @param value The unit as OuncesPerImperialGallon to create a new MassConcentration from.
+     * @returns The new MassConcentration instance.
+     */
+    public static FromOuncesPerImperialGallon(value: number): MassConcentration {
+        return new MassConcentration(value, MassConcentrationUnits.OuncesPerImperialGallon);
+    }
+
+    /**
      * Create a new MassConcentration instance from a PoundsPerImperialGallon
      *
      * @param value The unit as PoundsPerImperialGallon to create a new MassConcentration from.
@@ -1044,6 +1086,10 @@ export class MassConcentration {
                 return this.value*0.00194032033;
             case MassConcentrationUnits.PoundsPerUSGallon:
                 return this.value/1.19826427e2;
+            case MassConcentrationUnits.OuncesPerUSGallon:
+                return this.value*0.1335264711843;
+            case MassConcentrationUnits.OuncesPerImperialGallon:
+                return this.value*0.1603586720609;
             case MassConcentrationUnits.PoundsPerImperialGallon:
                 return this.value/9.9776398e1;
             case MassConcentrationUnits.KilogramsPerCubicMillimeter:
@@ -1147,6 +1193,10 @@ export class MassConcentration {
                 return value*515.378818;
             case MassConcentrationUnits.PoundsPerUSGallon:
                 return value*1.19826427e2;
+            case MassConcentrationUnits.OuncesPerUSGallon:
+                return  value/0.1335264711843;
+            case MassConcentrationUnits.OuncesPerImperialGallon:
+                return  value/0.1603586720609;
             case MassConcentrationUnits.PoundsPerImperialGallon:
                 return value*9.9776398e1;
             case MassConcentrationUnits.KilogramsPerCubicMillimeter:
@@ -1258,6 +1308,10 @@ export class MassConcentration {
                 return this.SlugsPerCubicFoot + ` slug/ft³`;
             case MassConcentrationUnits.PoundsPerUSGallon:
                 return this.PoundsPerUSGallon + ` ppg (U.S.)`;
+            case MassConcentrationUnits.OuncesPerUSGallon:
+                return this.OuncesPerUSGallon + ` oz/gal (U.S.)`;
+            case MassConcentrationUnits.OuncesPerImperialGallon:
+                return this.OuncesPerImperialGallon + ` oz/gal (imp.)`;
             case MassConcentrationUnits.PoundsPerImperialGallon:
                 return this.PoundsPerImperialGallon + ` ppg (imp.)`;
             case MassConcentrationUnits.KilogramsPerCubicMillimeter:
