@@ -15,6 +15,8 @@ export enum DurationUnits {
     /** */
     Seconds,
     /** */
+    JulianYears,
+    /** */
     Nanoseconds,
     /** */
     Microseconds,
@@ -32,6 +34,7 @@ export class Duration {
     private hoursLazy: number | null = null;
     private minutesLazy: number | null = null;
     private secondsLazy: number | null = null;
+    private julianyearsLazy: number | null = null;
     private nanosecondsLazy: number | null = null;
     private microsecondsLazy: number | null = null;
     private millisecondsLazy: number | null = null;
@@ -110,6 +113,14 @@ export class Duration {
             return this.secondsLazy;
         }
         return this.secondsLazy = this.convertFromBase(DurationUnits.Seconds);
+    }
+
+    /** */
+    public get JulianYears(): number {
+        if(this.julianyearsLazy !== null){
+            return this.julianyearsLazy;
+        }
+        return this.julianyearsLazy = this.convertFromBase(DurationUnits.JulianYears);
     }
 
     /** */
@@ -207,6 +218,16 @@ export class Duration {
     }
 
     /**
+     * Create a new Duration instance from a JulianYears
+     *
+     * @param value The unit as JulianYears to create a new Duration from.
+     * @returns The new Duration instance.
+     */
+    public static FromJulianYears(value: number): Duration {
+        return new Duration(value, DurationUnits.JulianYears);
+    }
+
+    /**
      * Create a new Duration instance from a Nanoseconds
      *
      * @param value The unit as Nanoseconds to create a new Duration from.
@@ -253,6 +274,8 @@ export class Duration {
                 return this.value/60;
             case DurationUnits.Seconds:
                 return this.value;
+            case DurationUnits.JulianYears:
+                return this.value/(365.25*24*3600);
             case DurationUnits.Nanoseconds:
                 return (this.value) / 1e-9;
             case DurationUnits.Microseconds:
@@ -282,6 +305,8 @@ export class Duration {
                 return value*60;
             case DurationUnits.Seconds:
                 return value;
+            case DurationUnits.JulianYears:
+                return value*365.25*24*3600;
             case DurationUnits.Nanoseconds:
                 return (value) * 1e-9;
             case DurationUnits.Microseconds:
@@ -319,6 +344,8 @@ export class Duration {
                 return this.Minutes + ` m`;
             case DurationUnits.Seconds:
                 return this.Seconds + ` s`;
+            case DurationUnits.JulianYears:
+                return this.JulianYears + ` jyr`;
             case DurationUnits.Nanoseconds:
                 return this.Nanoseconds + ` `;
             case DurationUnits.Microseconds:

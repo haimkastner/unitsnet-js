@@ -3,6 +3,8 @@ export enum ThermalResistanceUnits {
     /** */
     SquareMeterKelvinsPerKilowatt,
     /** */
+    SquareMeterKelvinsPerWatt,
+    /** */
     SquareMeterDegreesCelsiusPerWatt,
     /** */
     SquareCentimeterKelvinsPerWatt,
@@ -16,6 +18,7 @@ export enum ThermalResistanceUnits {
 export class ThermalResistance {
     private value: number;
     private squaremeterkelvinsperkilowattLazy: number | null = null;
+    private squaremeterkelvinsperwattLazy: number | null = null;
     private squaremeterdegreescelsiusperwattLazy: number | null = null;
     private squarecentimeterkelvinsperwattLazy: number | null = null;
     private squarecentimeterhourdegreescelsiusperkilocalorieLazy: number | null = null;
@@ -47,6 +50,14 @@ export class ThermalResistance {
             return this.squaremeterkelvinsperkilowattLazy;
         }
         return this.squaremeterkelvinsperkilowattLazy = this.convertFromBase(ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt);
+    }
+
+    /** */
+    public get SquareMeterKelvinsPerWatt(): number {
+        if(this.squaremeterkelvinsperwattLazy !== null){
+            return this.squaremeterkelvinsperwattLazy;
+        }
+        return this.squaremeterkelvinsperwattLazy = this.convertFromBase(ThermalResistanceUnits.SquareMeterKelvinsPerWatt);
     }
 
     /** */
@@ -89,6 +100,16 @@ export class ThermalResistance {
      */
     public static FromSquareMeterKelvinsPerKilowatt(value: number): ThermalResistance {
         return new ThermalResistance(value, ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt);
+    }
+
+    /**
+     * Create a new ThermalResistance instance from a SquareMeterKelvinsPerWatt
+     *
+     * @param value The unit as SquareMeterKelvinsPerWatt to create a new ThermalResistance from.
+     * @returns The new ThermalResistance instance.
+     */
+    public static FromSquareMeterKelvinsPerWatt(value: number): ThermalResistance {
+        return new ThermalResistance(value, ThermalResistanceUnits.SquareMeterKelvinsPerWatt);
     }
 
     /**
@@ -136,6 +157,8 @@ export class ThermalResistance {
                 
             case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
                 return this.value;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
+                return this.value/1000;
             case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
                 return this.value/1000.088056074108;
             case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
@@ -155,6 +178,8 @@ export class ThermalResistance {
                 
             case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
                 return value;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
+                return value*1000;
             case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
                 return value*1000.088056074108;
             case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
@@ -182,6 +207,8 @@ export class ThermalResistance {
             
             case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
                 return this.SquareMeterKelvinsPerKilowatt + ` m²K/kW`;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
+                return this.SquareMeterKelvinsPerWatt + ` m²K/W`;
             case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
                 return this.SquareMeterDegreesCelsiusPerWatt + ` m²°C/W`;
             case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:

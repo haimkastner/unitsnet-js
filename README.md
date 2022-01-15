@@ -264,6 +264,8 @@ Currently, the package supports the following units:
     -   *Temperature change rate is the ratio of the temperature change to the time during which the change occurred (value of temperature changes per unit time).*
 - **TemperatureDelta**
     -   *Difference between two temperatures. The conversions are different than for Temperature.*
+- **TemperatureGradient**
+    -   *The rate of change of temperature with displacement in a given direction (as with increase of height)*
 - **ThermalConductivity**
     -   *Thermal conductivity is the property of a material to conduct heat.*
 - **ThermalResistance**
@@ -282,6 +284,8 @@ Currently, the package supports the following units:
     -   *The volume concentration (not to be confused with volume fraction) is defined as the volume of a constituent divided by the total volume of the mixture.*
 - **VolumeFlow**
     -   *In physics and engineering, in particular fluid dynamics and hydrometry, the volumetric flow rate, (also known as volume flow rate, rate of fluid flow or volume velocity) is the volume of fluid which passes through a given surface per unit time. The SI unit is m³/s (cubic meters per second). In US Customary Units and British Imperial Units, volumetric flow rate is often expressed as ft³/s (cubic feet per second). It is usually represented by the symbol Q.*
+- **VolumeFlowPerArea**
+    -   *The volumetric flow rate per area is the volume of fluid which passes through a given unit surface area per unit time.*
 - **VolumePerLength**
     -   *Volume, typically of fluid, that a container can hold within a unit of length.*
 - **VolumetricHeatCapacity**
