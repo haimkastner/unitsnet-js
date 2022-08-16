@@ -555,55 +555,55 @@ export class Mass {
         switch (toUnit) {
                 
             case MassUnits.Grams:
-                return this.value*1e3;
+                return this.value * 1e3;
             case MassUnits.Tonnes:
-                return this.value/1e3;
+                return this.value / 1e3;
             case MassUnits.ShortTons:
-                return this.value/9.0718474e2;
+                return this.value / 9.0718474e2;
             case MassUnits.LongTons:
-                return this.value/1.0160469088e3;
+                return this.value / 1.0160469088e3;
             case MassUnits.Pounds:
-                return this.value/0.45359237;
+                return this.value / 0.45359237;
             case MassUnits.Ounces:
-                return this.value*35.2739619;
+                return this.value * 35.2739619;
             case MassUnits.Slugs:
-                return this.value*6.852176556196105e-2;
+                return this.value * 6.852176556196105e-2;
             case MassUnits.Stone:
-                return this.value*0.1574731728702698;
+                return this.value * 0.1574731728702698;
             case MassUnits.ShortHundredweight:
-                return this.value*0.022046226218487758;
+                return this.value * 0.022046226218487758;
             case MassUnits.LongHundredweight:
-                return this.value*0.01968413055222121;
+                return this.value * 0.01968413055222121;
             case MassUnits.Grains:
-                return this.value*15432.358352941431;
+                return this.value * 15432.358352941431;
             case MassUnits.SolarMasses:
                 return this.value / 1.98947e30;
             case MassUnits.EarthMasses:
                 return this.value / 5.9722E+24;
             case MassUnits.Nanograms:
-                return (this.value*1e3) / 1e-9;
+                return (this.value * 1e3) / 1e-9;
             case MassUnits.Micrograms:
-                return (this.value*1e3) / 0.000001;
+                return (this.value * 1e3) / 0.000001;
             case MassUnits.Milligrams:
-                return (this.value*1e3) / 0.001;
+                return (this.value * 1e3) / 0.001;
             case MassUnits.Centigrams:
-                return (this.value*1e3) / 0.01;
+                return (this.value * 1e3) / 0.01;
             case MassUnits.Decigrams:
-                return (this.value*1e3) / 0.1;
+                return (this.value * 1e3) / 0.1;
             case MassUnits.Decagrams:
-                return (this.value*1e3) / 10;
+                return (this.value * 1e3) / 10;
             case MassUnits.Hectograms:
-                return (this.value*1e3) / 100;
+                return (this.value * 1e3) / 100;
             case MassUnits.Kilograms:
-                return (this.value*1e3) / 1000;
+                return (this.value * 1e3) / 1000;
             case MassUnits.Kilotonnes:
-                return (this.value/1e3) / 1000;
+                return (this.value / 1e3) / 1000;
             case MassUnits.Megatonnes:
-                return (this.value/1e3) / 1000000;
+                return (this.value / 1e3) / 1000000;
             case MassUnits.Kilopounds:
-                return (this.value/0.45359237) / 1000;
+                return (this.value / 0.45359237) / 1000;
             case MassUnits.Megapounds:
-                return (this.value/0.45359237) / 1000000;
+                return (this.value / 0.45359237) / 1000000;
             default:
                 break;
         }
@@ -614,55 +614,55 @@ export class Mass {
         switch (fromUnit) {
                 
             case MassUnits.Grams:
-                return value/1e3;
+                return value / 1e3;
             case MassUnits.Tonnes:
-                return value*1e3;
+                return value * 1e3;
             case MassUnits.ShortTons:
-                return value*9.0718474e2;
+                return value * 9.0718474e2;
             case MassUnits.LongTons:
-                return value*1.0160469088e3;
+                return value * 1.0160469088e3;
             case MassUnits.Pounds:
-                return value*0.45359237;
+                return value * 0.45359237;
             case MassUnits.Ounces:
-                return value/35.2739619;
+                return value / 35.2739619;
             case MassUnits.Slugs:
-                return value/6.852176556196105e-2;
+                return value / 6.852176556196105e-2;
             case MassUnits.Stone:
-                return value/0.1574731728702698;
+                return value / 0.1574731728702698;
             case MassUnits.ShortHundredweight:
-                return value/0.022046226218487758;
+                return value / 0.022046226218487758;
             case MassUnits.LongHundredweight:
-                return value/0.01968413055222121;
+                return value / 0.01968413055222121;
             case MassUnits.Grains:
-                return value/15432.358352941431;
+                return value / 15432.358352941431;
             case MassUnits.SolarMasses:
                 return value * 1.98947e30;
             case MassUnits.EarthMasses:
                 return value * 5.9722E+24;
             case MassUnits.Nanograms:
-                return (value/1e3) * 1e-9;
+                return (value / 1e3) * 1e-9;
             case MassUnits.Micrograms:
-                return (value/1e3) * 0.000001;
+                return (value / 1e3) * 0.000001;
             case MassUnits.Milligrams:
-                return (value/1e3) * 0.001;
+                return (value / 1e3) * 0.001;
             case MassUnits.Centigrams:
-                return (value/1e3) * 0.01;
+                return (value / 1e3) * 0.01;
             case MassUnits.Decigrams:
-                return (value/1e3) * 0.1;
+                return (value / 1e3) * 0.1;
             case MassUnits.Decagrams:
-                return (value/1e3) * 10;
+                return (value / 1e3) * 10;
             case MassUnits.Hectograms:
-                return (value/1e3) * 100;
+                return (value / 1e3) * 100;
             case MassUnits.Kilograms:
-                return (value/1e3) * 1000;
+                return (value / 1e3) * 1000;
             case MassUnits.Kilotonnes:
-                return (value*1e3) * 1000;
+                return (value * 1e3) * 1000;
             case MassUnits.Megatonnes:
-                return (value*1e3) * 1000000;
+                return (value * 1e3) * 1000000;
             case MassUnits.Kilopounds:
-                return (value*0.45359237) * 1000;
+                return (value * 0.45359237) * 1000;
             case MassUnits.Megapounds:
-                return (value*0.45359237) * 1000000;
+                return (value * 0.45359237) * 1000000;
             default:
                 break;
         }
@@ -672,13 +672,13 @@ export class Mass {
     /**
      * Format the Mass to string.
      * Note! the default format for Mass is Kilograms.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Mass.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Mass.
      * @returns The string format of the Mass.
      */
-    public toString(toUnit: MassUnits = MassUnits.Kilograms): string {
+    public toString(unit: MassUnits = MassUnits.Kilograms): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MassUnits.Grams:
                 return this.Grams + ` g`;
@@ -734,6 +734,73 @@ export class Mass {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Mass unit abbreviation.
+     * Note! the default abbreviation for Mass is Kilograms.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Mass.
+     * @returns The abbreviation string of Mass.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MassUnits = MassUnits.Kilograms): string {
+
+        switch (unitAbbreviation) {
+            
+            case MassUnits.Grams:
+                return `g`;
+            case MassUnits.Tonnes:
+                return `t`;
+            case MassUnits.ShortTons:
+                return `t (short)`;
+            case MassUnits.LongTons:
+                return `long tn`;
+            case MassUnits.Pounds:
+                return `lb`;
+            case MassUnits.Ounces:
+                return `oz`;
+            case MassUnits.Slugs:
+                return `slug`;
+            case MassUnits.Stone:
+                return `st`;
+            case MassUnits.ShortHundredweight:
+                return `cwt`;
+            case MassUnits.LongHundredweight:
+                return `cwt`;
+            case MassUnits.Grains:
+                return `gr`;
+            case MassUnits.SolarMasses:
+                return `M⊙`;
+            case MassUnits.EarthMasses:
+                return `em`;
+            case MassUnits.Nanograms:
+                return ``;
+            case MassUnits.Micrograms:
+                return ``;
+            case MassUnits.Milligrams:
+                return ``;
+            case MassUnits.Centigrams:
+                return ``;
+            case MassUnits.Decigrams:
+                return ``;
+            case MassUnits.Decagrams:
+                return ``;
+            case MassUnits.Hectograms:
+                return ``;
+            case MassUnits.Kilograms:
+                return ``;
+            case MassUnits.Kilotonnes:
+                return ``;
+            case MassUnits.Megatonnes:
+                return ``;
+            case MassUnits.Kilopounds:
+                return ``;
+            case MassUnits.Megapounds:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

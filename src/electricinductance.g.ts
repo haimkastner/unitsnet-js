@@ -147,13 +147,13 @@ export class ElectricInductance {
     /**
      * Format the ElectricInductance to string.
      * Note! the default format for ElectricInductance is Henries.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricInductance.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricInductance.
      * @returns The string format of the ElectricInductance.
      */
-    public toString(toUnit: ElectricInductanceUnits = ElectricInductanceUnits.Henries): string {
+    public toString(unit: ElectricInductanceUnits = ElectricInductanceUnits.Henries): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricInductanceUnits.Henries:
                 return this.Henries + ` H`;
@@ -167,6 +167,31 @@ export class ElectricInductance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricInductance unit abbreviation.
+     * Note! the default abbreviation for ElectricInductance is Henries.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricInductance.
+     * @returns The abbreviation string of ElectricInductance.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricInductanceUnits = ElectricInductanceUnits.Henries): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricInductanceUnits.Henries:
+                return `H`;
+            case ElectricInductanceUnits.Nanohenries:
+                return ``;
+            case ElectricInductanceUnits.Microhenries:
+                return ``;
+            case ElectricInductanceUnits.Millihenries:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

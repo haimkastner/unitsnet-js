@@ -116,11 +116,11 @@ export class RotationalAcceleration {
             case RotationalAccelerationUnits.RadiansPerSecondSquared:
                 return this.value;
             case RotationalAccelerationUnits.DegreesPerSecondSquared:
-                return (180/Math.PI)*this.value;
+                return (180 / Math.PI) * this.value;
             case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
-                return (60/(2*Math.PI))*this.value;
+                return (60 / (2 * Math.PI)) * this.value;
             case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
-                return (1/(2*Math.PI))*this.value;
+                return (1 / (2 * Math.PI)) * this.value;
             default:
                 break;
         }
@@ -133,11 +133,11 @@ export class RotationalAcceleration {
             case RotationalAccelerationUnits.RadiansPerSecondSquared:
                 return value;
             case RotationalAccelerationUnits.DegreesPerSecondSquared:
-                return (Math.PI/180)*value;
+                return (Math.PI / 180) * value;
             case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
-                return ((2*Math.PI)/60)*value;
+                return ((2 * Math.PI) / 60) * value;
             case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
-                return (2*Math.PI)*value;
+                return (2 * Math.PI) * value;
             default:
                 break;
         }
@@ -147,13 +147,13 @@ export class RotationalAcceleration {
     /**
      * Format the RotationalAcceleration to string.
      * Note! the default format for RotationalAcceleration is RadiansPerSecondSquared.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the RotationalAcceleration.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the RotationalAcceleration.
      * @returns The string format of the RotationalAcceleration.
      */
-    public toString(toUnit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared): string {
+    public toString(unit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case RotationalAccelerationUnits.RadiansPerSecondSquared:
                 return this.RadiansPerSecondSquared + ` rad/s²`;
@@ -167,6 +167,31 @@ export class RotationalAcceleration {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get RotationalAcceleration unit abbreviation.
+     * Note! the default abbreviation for RotationalAcceleration is RadiansPerSecondSquared.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the RotationalAcceleration.
+     * @returns The abbreviation string of RotationalAcceleration.
+     */
+    public getUnitAbbreviation(unitAbbreviation: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared): string {
+
+        switch (unitAbbreviation) {
+            
+            case RotationalAccelerationUnits.RadiansPerSecondSquared:
+                return `rad/s²`;
+            case RotationalAccelerationUnits.DegreesPerSecondSquared:
+                return `°/s²`;
+            case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
+                return `rpm/s`;
+            case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
+                return `r/s²`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

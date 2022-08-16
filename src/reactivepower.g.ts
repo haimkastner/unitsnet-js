@@ -147,13 +147,13 @@ export class ReactivePower {
     /**
      * Format the ReactivePower to string.
      * Note! the default format for ReactivePower is VoltamperesReactive.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ReactivePower.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ReactivePower.
      * @returns The string format of the ReactivePower.
      */
-    public toString(toUnit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive): string {
+    public toString(unit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ReactivePowerUnits.VoltamperesReactive:
                 return this.VoltamperesReactive + ` var`;
@@ -167,6 +167,31 @@ export class ReactivePower {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ReactivePower unit abbreviation.
+     * Note! the default abbreviation for ReactivePower is VoltamperesReactive.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ReactivePower.
+     * @returns The abbreviation string of ReactivePower.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive): string {
+
+        switch (unitAbbreviation) {
+            
+            case ReactivePowerUnits.VoltamperesReactive:
+                return `var`;
+            case ReactivePowerUnits.KilovoltamperesReactive:
+                return ``;
+            case ReactivePowerUnits.MegavoltamperesReactive:
+                return ``;
+            case ReactivePowerUnits.GigavoltamperesReactive:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

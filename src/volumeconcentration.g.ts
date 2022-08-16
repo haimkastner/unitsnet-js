@@ -454,17 +454,17 @@ export class VolumeConcentration {
             case VolumeConcentrationUnits.LitersPerLiter:
                 return this.value;
             case VolumeConcentrationUnits.LitersPerMililiter:
-                return this.value*1e-3;
+                return this.value * 1e-3;
             case VolumeConcentrationUnits.Percent:
-                return this.value*1e2;
+                return this.value * 1e2;
             case VolumeConcentrationUnits.PartsPerThousand:
-                return this.value*1e3;
+                return this.value * 1e3;
             case VolumeConcentrationUnits.PartsPerMillion:
-                return this.value*1e6;
+                return this.value * 1e6;
             case VolumeConcentrationUnits.PartsPerBillion:
-                return this.value*1e9;
+                return this.value * 1e9;
             case VolumeConcentrationUnits.PartsPerTrillion:
-                return this.value*1e12;
+                return this.value * 1e12;
             case VolumeConcentrationUnits.PicolitersPerLiter:
                 return (this.value) / 1e-12;
             case VolumeConcentrationUnits.NanolitersPerLiter:
@@ -478,17 +478,17 @@ export class VolumeConcentration {
             case VolumeConcentrationUnits.DecilitersPerLiter:
                 return (this.value) / 0.1;
             case VolumeConcentrationUnits.PicolitersPerMililiter:
-                return (this.value*1e-3) / 1e-12;
+                return (this.value * 1e-3) / 1e-12;
             case VolumeConcentrationUnits.NanolitersPerMililiter:
-                return (this.value*1e-3) / 1e-9;
+                return (this.value * 1e-3) / 1e-9;
             case VolumeConcentrationUnits.MicrolitersPerMililiter:
-                return (this.value*1e-3) / 0.000001;
+                return (this.value * 1e-3) / 0.000001;
             case VolumeConcentrationUnits.MillilitersPerMililiter:
-                return (this.value*1e-3) / 0.001;
+                return (this.value * 1e-3) / 0.001;
             case VolumeConcentrationUnits.CentilitersPerMililiter:
-                return (this.value*1e-3) / 0.01;
+                return (this.value * 1e-3) / 0.01;
             case VolumeConcentrationUnits.DecilitersPerMililiter:
-                return (this.value*1e-3) / 0.1;
+                return (this.value * 1e-3) / 0.1;
             default:
                 break;
         }
@@ -503,17 +503,17 @@ export class VolumeConcentration {
             case VolumeConcentrationUnits.LitersPerLiter:
                 return value;
             case VolumeConcentrationUnits.LitersPerMililiter:
-                return value/1e-3;
+                return value / 1e-3;
             case VolumeConcentrationUnits.Percent:
-                return value/1e2;
+                return value / 1e2;
             case VolumeConcentrationUnits.PartsPerThousand:
-                return value/1e3;
+                return value / 1e3;
             case VolumeConcentrationUnits.PartsPerMillion:
-                return value/1e6;
+                return value / 1e6;
             case VolumeConcentrationUnits.PartsPerBillion:
-                return value/1e9;
+                return value / 1e9;
             case VolumeConcentrationUnits.PartsPerTrillion:
-                return value/1e12;
+                return value / 1e12;
             case VolumeConcentrationUnits.PicolitersPerLiter:
                 return (value) * 1e-12;
             case VolumeConcentrationUnits.NanolitersPerLiter:
@@ -527,17 +527,17 @@ export class VolumeConcentration {
             case VolumeConcentrationUnits.DecilitersPerLiter:
                 return (value) * 0.1;
             case VolumeConcentrationUnits.PicolitersPerMililiter:
-                return (value/1e-3) * 1e-12;
+                return (value / 1e-3) * 1e-12;
             case VolumeConcentrationUnits.NanolitersPerMililiter:
-                return (value/1e-3) * 1e-9;
+                return (value / 1e-3) * 1e-9;
             case VolumeConcentrationUnits.MicrolitersPerMililiter:
-                return (value/1e-3) * 0.000001;
+                return (value / 1e-3) * 0.000001;
             case VolumeConcentrationUnits.MillilitersPerMililiter:
-                return (value/1e-3) * 0.001;
+                return (value / 1e-3) * 0.001;
             case VolumeConcentrationUnits.CentilitersPerMililiter:
-                return (value/1e-3) * 0.01;
+                return (value / 1e-3) * 0.01;
             case VolumeConcentrationUnits.DecilitersPerMililiter:
-                return (value/1e-3) * 0.1;
+                return (value / 1e-3) * 0.1;
             default:
                 break;
         }
@@ -547,13 +547,13 @@ export class VolumeConcentration {
     /**
      * Format the VolumeConcentration to string.
      * Note! the default format for VolumeConcentration is DecimalFractions.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the VolumeConcentration.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the VolumeConcentration.
      * @returns The string format of the VolumeConcentration.
      */
-    public toString(toUnit: VolumeConcentrationUnits = VolumeConcentrationUnits.DecimalFractions): string {
+    public toString(unit: VolumeConcentrationUnits = VolumeConcentrationUnits.DecimalFractions): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case VolumeConcentrationUnits.DecimalFractions:
                 return this.DecimalFractions + ` `;
@@ -599,6 +599,63 @@ export class VolumeConcentration {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get VolumeConcentration unit abbreviation.
+     * Note! the default abbreviation for VolumeConcentration is DecimalFractions.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the VolumeConcentration.
+     * @returns The abbreviation string of VolumeConcentration.
+     */
+    public getUnitAbbreviation(unitAbbreviation: VolumeConcentrationUnits = VolumeConcentrationUnits.DecimalFractions): string {
+
+        switch (unitAbbreviation) {
+            
+            case VolumeConcentrationUnits.DecimalFractions:
+                return ``;
+            case VolumeConcentrationUnits.LitersPerLiter:
+                return `L/L`;
+            case VolumeConcentrationUnits.LitersPerMililiter:
+                return `L/mL`;
+            case VolumeConcentrationUnits.Percent:
+                return `%`;
+            case VolumeConcentrationUnits.PartsPerThousand:
+                return `‰`;
+            case VolumeConcentrationUnits.PartsPerMillion:
+                return `ppm`;
+            case VolumeConcentrationUnits.PartsPerBillion:
+                return `ppb`;
+            case VolumeConcentrationUnits.PartsPerTrillion:
+                return `ppt`;
+            case VolumeConcentrationUnits.PicolitersPerLiter:
+                return ``;
+            case VolumeConcentrationUnits.NanolitersPerLiter:
+                return ``;
+            case VolumeConcentrationUnits.MicrolitersPerLiter:
+                return ``;
+            case VolumeConcentrationUnits.MillilitersPerLiter:
+                return ``;
+            case VolumeConcentrationUnits.CentilitersPerLiter:
+                return ``;
+            case VolumeConcentrationUnits.DecilitersPerLiter:
+                return ``;
+            case VolumeConcentrationUnits.PicolitersPerMililiter:
+                return ``;
+            case VolumeConcentrationUnits.NanolitersPerMililiter:
+                return ``;
+            case VolumeConcentrationUnits.MicrolitersPerMililiter:
+                return ``;
+            case VolumeConcentrationUnits.MillilitersPerMililiter:
+                return ``;
+            case VolumeConcentrationUnits.CentilitersPerMililiter:
+                return ``;
+            case VolumeConcentrationUnits.DecilitersPerMililiter:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

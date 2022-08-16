@@ -72,13 +72,13 @@ export class LapseRate {
     /**
      * Format the LapseRate to string.
      * Note! the default format for LapseRate is DegreesCelciusPerKilometer.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the LapseRate.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the LapseRate.
      * @returns The string format of the LapseRate.
      */
-    public toString(toUnit: LapseRateUnits = LapseRateUnits.DegreesCelciusPerKilometer): string {
+    public toString(unit: LapseRateUnits = LapseRateUnits.DegreesCelciusPerKilometer): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case LapseRateUnits.DegreesCelciusPerKilometer:
                 return this.DegreesCelciusPerKilometer + ` ∆°C/km`;
@@ -86,6 +86,25 @@ export class LapseRate {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get LapseRate unit abbreviation.
+     * Note! the default abbreviation for LapseRate is DegreesCelciusPerKilometer.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the LapseRate.
+     * @returns The abbreviation string of LapseRate.
+     */
+    public getUnitAbbreviation(unitAbbreviation: LapseRateUnits = LapseRateUnits.DegreesCelciusPerKilometer): string {
+
+        switch (unitAbbreviation) {
+            
+            case LapseRateUnits.DegreesCelciusPerKilometer:
+                return `∆°C/km`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

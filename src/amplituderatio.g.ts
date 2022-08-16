@@ -147,13 +147,13 @@ export class AmplitudeRatio {
     /**
      * Format the AmplitudeRatio to string.
      * Note! the default format for AmplitudeRatio is DecibelVolts.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the AmplitudeRatio.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the AmplitudeRatio.
      * @returns The string format of the AmplitudeRatio.
      */
-    public toString(toUnit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts): string {
+    public toString(unit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case AmplitudeRatioUnits.DecibelVolts:
                 return this.DecibelVolts + ` dBV`;
@@ -167,6 +167,31 @@ export class AmplitudeRatio {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get AmplitudeRatio unit abbreviation.
+     * Note! the default abbreviation for AmplitudeRatio is DecibelVolts.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the AmplitudeRatio.
+     * @returns The abbreviation string of AmplitudeRatio.
+     */
+    public getUnitAbbreviation(unitAbbreviation: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts): string {
+
+        switch (unitAbbreviation) {
+            
+            case AmplitudeRatioUnits.DecibelVolts:
+                return `dBV`;
+            case AmplitudeRatioUnits.DecibelMicrovolts:
+                return `dBµV`;
+            case AmplitudeRatioUnits.DecibelMillivolts:
+                return `dBmV`;
+            case AmplitudeRatioUnits.DecibelsUnloaded:
+                return `dBu`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -247,13 +247,13 @@ export class ElectricCurrent {
     /**
      * Format the ElectricCurrent to string.
      * Note! the default format for ElectricCurrent is Amperes.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricCurrent.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricCurrent.
      * @returns The string format of the ElectricCurrent.
      */
-    public toString(toUnit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes): string {
+    public toString(unit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricCurrentUnits.Amperes:
                 return this.Amperes + ` A`;
@@ -275,6 +275,39 @@ export class ElectricCurrent {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricCurrent unit abbreviation.
+     * Note! the default abbreviation for ElectricCurrent is Amperes.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricCurrent.
+     * @returns The abbreviation string of ElectricCurrent.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricCurrentUnits = ElectricCurrentUnits.Amperes): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricCurrentUnits.Amperes:
+                return `A`;
+            case ElectricCurrentUnits.Picoamperes:
+                return ``;
+            case ElectricCurrentUnits.Nanoamperes:
+                return ``;
+            case ElectricCurrentUnits.Microamperes:
+                return ``;
+            case ElectricCurrentUnits.Milliamperes:
+                return ``;
+            case ElectricCurrentUnits.Centiamperes:
+                return ``;
+            case ElectricCurrentUnits.Kiloamperes:
+                return ``;
+            case ElectricCurrentUnits.Megaamperes:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

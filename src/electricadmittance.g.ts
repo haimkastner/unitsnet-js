@@ -147,13 +147,13 @@ export class ElectricAdmittance {
     /**
      * Format the ElectricAdmittance to string.
      * Note! the default format for ElectricAdmittance is Siemens.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricAdmittance.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricAdmittance.
      * @returns The string format of the ElectricAdmittance.
      */
-    public toString(toUnit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens): string {
+    public toString(unit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricAdmittanceUnits.Siemens:
                 return this.Siemens + ` S`;
@@ -167,6 +167,31 @@ export class ElectricAdmittance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricAdmittance unit abbreviation.
+     * Note! the default abbreviation for ElectricAdmittance is Siemens.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricAdmittance.
+     * @returns The abbreviation string of ElectricAdmittance.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricAdmittanceUnits.Siemens:
+                return `S`;
+            case ElectricAdmittanceUnits.Nanosiemens:
+                return ``;
+            case ElectricAdmittanceUnits.Microsiemens:
+                return ``;
+            case ElectricAdmittanceUnits.Millisiemens:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

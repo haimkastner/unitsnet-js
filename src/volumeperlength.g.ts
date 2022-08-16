@@ -179,17 +179,17 @@ export class VolumePerLength {
             case VolumePerLengthUnits.CubicMetersPerMeter:
                 return this.value;
             case VolumePerLengthUnits.LitersPerMeter:
-                return this.value*1000;
+                return this.value * 1000;
             case VolumePerLengthUnits.LitersPerKilometer:
-                return this.value*1e6;
+                return this.value * 1e6;
             case VolumePerLengthUnits.LitersPerMillimeter:
                 return this.value;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
-                return this.value*1.91713408;
+                return this.value * 1.91713408;
             case VolumePerLengthUnits.CubicYardsPerFoot:
-                return this.value/2.50838208;
+                return this.value / 2.50838208;
             case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
-                return this.value/2.50837706323584;
+                return this.value / 2.50837706323584;
             default:
                 break;
         }
@@ -202,17 +202,17 @@ export class VolumePerLength {
             case VolumePerLengthUnits.CubicMetersPerMeter:
                 return value;
             case VolumePerLengthUnits.LitersPerMeter:
-                return value/1000;
+                return value / 1000;
             case VolumePerLengthUnits.LitersPerKilometer:
-                return value/1e6;
+                return value / 1e6;
             case VolumePerLengthUnits.LitersPerMillimeter:
                 return value;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
-                return value/1.91713408;
+                return value / 1.91713408;
             case VolumePerLengthUnits.CubicYardsPerFoot:
-                return value*2.50838208;
+                return value * 2.50838208;
             case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
-                return value*2.50837706323584;
+                return value * 2.50837706323584;
             default:
                 break;
         }
@@ -222,13 +222,13 @@ export class VolumePerLength {
     /**
      * Format the VolumePerLength to string.
      * Note! the default format for VolumePerLength is CubicMetersPerMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the VolumePerLength.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the VolumePerLength.
      * @returns The string format of the VolumePerLength.
      */
-    public toString(toUnit: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter): string {
+    public toString(unit: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case VolumePerLengthUnits.CubicMetersPerMeter:
                 return this.CubicMetersPerMeter + ` m³/m`;
@@ -248,6 +248,37 @@ export class VolumePerLength {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get VolumePerLength unit abbreviation.
+     * Note! the default abbreviation for VolumePerLength is CubicMetersPerMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the VolumePerLength.
+     * @returns The abbreviation string of VolumePerLength.
+     */
+    public getUnitAbbreviation(unitAbbreviation: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case VolumePerLengthUnits.CubicMetersPerMeter:
+                return `m³/m`;
+            case VolumePerLengthUnits.LitersPerMeter:
+                return `l/m`;
+            case VolumePerLengthUnits.LitersPerKilometer:
+                return `l/km`;
+            case VolumePerLengthUnits.LitersPerMillimeter:
+                return `l/mm`;
+            case VolumePerLengthUnits.OilBarrelsPerFoot:
+                return `bbl/ft`;
+            case VolumePerLengthUnits.CubicYardsPerFoot:
+                return `yd³/ft`;
+            case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
+                return `yd³/ftUS`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

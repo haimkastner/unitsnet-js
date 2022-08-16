@@ -326,7 +326,7 @@ export class Irradiance {
             case IrradianceUnits.WattsPerSquareMeter:
                 return this.value;
             case IrradianceUnits.WattsPerSquareCentimeter:
-                return this.value*0.0001;
+                return this.value * 0.0001;
             case IrradianceUnits.PicowattsPerSquareMeter:
                 return (this.value) / 1e-12;
             case IrradianceUnits.NanowattsPerSquareMeter:
@@ -340,17 +340,17 @@ export class Irradiance {
             case IrradianceUnits.MegawattsPerSquareMeter:
                 return (this.value) / 1000000;
             case IrradianceUnits.PicowattsPerSquareCentimeter:
-                return (this.value*0.0001) / 1e-12;
+                return (this.value * 0.0001) / 1e-12;
             case IrradianceUnits.NanowattsPerSquareCentimeter:
-                return (this.value*0.0001) / 1e-9;
+                return (this.value * 0.0001) / 1e-9;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
-                return (this.value*0.0001) / 0.000001;
+                return (this.value * 0.0001) / 0.000001;
             case IrradianceUnits.MilliwattsPerSquareCentimeter:
-                return (this.value*0.0001) / 0.001;
+                return (this.value * 0.0001) / 0.001;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
-                return (this.value*0.0001) / 1000;
+                return (this.value * 0.0001) / 1000;
             case IrradianceUnits.MegawattsPerSquareCentimeter:
-                return (this.value*0.0001) / 1000000;
+                return (this.value * 0.0001) / 1000000;
             default:
                 break;
         }
@@ -363,7 +363,7 @@ export class Irradiance {
             case IrradianceUnits.WattsPerSquareMeter:
                 return value;
             case IrradianceUnits.WattsPerSquareCentimeter:
-                return value*10000;
+                return value * 10000;
             case IrradianceUnits.PicowattsPerSquareMeter:
                 return (value) * 1e-12;
             case IrradianceUnits.NanowattsPerSquareMeter:
@@ -377,17 +377,17 @@ export class Irradiance {
             case IrradianceUnits.MegawattsPerSquareMeter:
                 return (value) * 1000000;
             case IrradianceUnits.PicowattsPerSquareCentimeter:
-                return (value*10000) * 1e-12;
+                return (value * 10000) * 1e-12;
             case IrradianceUnits.NanowattsPerSquareCentimeter:
-                return (value*10000) * 1e-9;
+                return (value * 10000) * 1e-9;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
-                return (value*10000) * 0.000001;
+                return (value * 10000) * 0.000001;
             case IrradianceUnits.MilliwattsPerSquareCentimeter:
-                return (value*10000) * 0.001;
+                return (value * 10000) * 0.001;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
-                return (value*10000) * 1000;
+                return (value * 10000) * 1000;
             case IrradianceUnits.MegawattsPerSquareCentimeter:
-                return (value*10000) * 1000000;
+                return (value * 10000) * 1000000;
             default:
                 break;
         }
@@ -397,13 +397,13 @@ export class Irradiance {
     /**
      * Format the Irradiance to string.
      * Note! the default format for Irradiance is WattsPerSquareMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Irradiance.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Irradiance.
      * @returns The string format of the Irradiance.
      */
-    public toString(toUnit: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter): string {
+    public toString(unit: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case IrradianceUnits.WattsPerSquareMeter:
                 return this.WattsPerSquareMeter + ` W/m²`;
@@ -437,6 +437,51 @@ export class Irradiance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Irradiance unit abbreviation.
+     * Note! the default abbreviation for Irradiance is WattsPerSquareMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Irradiance.
+     * @returns The abbreviation string of Irradiance.
+     */
+    public getUnitAbbreviation(unitAbbreviation: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case IrradianceUnits.WattsPerSquareMeter:
+                return `W/m²`;
+            case IrradianceUnits.WattsPerSquareCentimeter:
+                return `W/cm²`;
+            case IrradianceUnits.PicowattsPerSquareMeter:
+                return ``;
+            case IrradianceUnits.NanowattsPerSquareMeter:
+                return ``;
+            case IrradianceUnits.MicrowattsPerSquareMeter:
+                return ``;
+            case IrradianceUnits.MilliwattsPerSquareMeter:
+                return ``;
+            case IrradianceUnits.KilowattsPerSquareMeter:
+                return ``;
+            case IrradianceUnits.MegawattsPerSquareMeter:
+                return ``;
+            case IrradianceUnits.PicowattsPerSquareCentimeter:
+                return ``;
+            case IrradianceUnits.NanowattsPerSquareCentimeter:
+                return ``;
+            case IrradianceUnits.MicrowattsPerSquareCentimeter:
+                return ``;
+            case IrradianceUnits.MilliwattsPerSquareCentimeter:
+                return ``;
+            case IrradianceUnits.KilowattsPerSquareCentimeter:
+                return ``;
+            case IrradianceUnits.MegawattsPerSquareCentimeter:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

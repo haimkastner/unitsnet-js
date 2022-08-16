@@ -326,17 +326,17 @@ export class Acceleration {
             case AccelerationUnits.MetersPerSecondSquared:
                 return this.value;
             case AccelerationUnits.InchesPerSecondSquared:
-                return this.value/0.0254;
+                return this.value / 0.0254;
             case AccelerationUnits.FeetPerSecondSquared:
-                return this.value/0.304800;
+                return this.value / 0.304800;
             case AccelerationUnits.KnotsPerSecond:
-                return this.value/0.5144444444444;
+                return this.value / 0.5144444444444;
             case AccelerationUnits.KnotsPerMinute:
-                return this.value/0.5144444444444*60;
+                return this.value / 0.5144444444444 * 60;
             case AccelerationUnits.KnotsPerHour:
-                return this.value/0.5144444444444*3600;
+                return this.value / 0.5144444444444 * 3600;
             case AccelerationUnits.StandardGravity:
-                return this.value/9.80665;
+                return this.value / 9.80665;
             case AccelerationUnits.NanometersPerSecondSquared:
                 return (this.value) / 1e-9;
             case AccelerationUnits.MicrometersPerSecondSquared:
@@ -350,7 +350,7 @@ export class Acceleration {
             case AccelerationUnits.KilometersPerSecondSquared:
                 return (this.value) / 1000;
             case AccelerationUnits.MillistandardGravity:
-                return (this.value/9.80665) / 0.001;
+                return (this.value / 9.80665) / 0.001;
             default:
                 break;
         }
@@ -363,17 +363,17 @@ export class Acceleration {
             case AccelerationUnits.MetersPerSecondSquared:
                 return value;
             case AccelerationUnits.InchesPerSecondSquared:
-                return value*0.0254;
+                return value * 0.0254;
             case AccelerationUnits.FeetPerSecondSquared:
-                return value*0.304800;
+                return value * 0.304800;
             case AccelerationUnits.KnotsPerSecond:
-                return value*0.5144444444444;
+                return value * 0.5144444444444;
             case AccelerationUnits.KnotsPerMinute:
-                return value*0.5144444444444/60;
+                return value * 0.5144444444444 / 60;
             case AccelerationUnits.KnotsPerHour:
-                return value*0.5144444444444/3600;
+                return value * 0.5144444444444 / 3600;
             case AccelerationUnits.StandardGravity:
-                return value*9.80665;
+                return value * 9.80665;
             case AccelerationUnits.NanometersPerSecondSquared:
                 return (value) * 1e-9;
             case AccelerationUnits.MicrometersPerSecondSquared:
@@ -387,7 +387,7 @@ export class Acceleration {
             case AccelerationUnits.KilometersPerSecondSquared:
                 return (value) * 1000;
             case AccelerationUnits.MillistandardGravity:
-                return (value*9.80665) * 0.001;
+                return (value * 9.80665) * 0.001;
             default:
                 break;
         }
@@ -397,13 +397,13 @@ export class Acceleration {
     /**
      * Format the Acceleration to string.
      * Note! the default format for Acceleration is MetersPerSecondSquared.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Acceleration.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Acceleration.
      * @returns The string format of the Acceleration.
      */
-    public toString(toUnit: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared): string {
+    public toString(unit: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case AccelerationUnits.MetersPerSecondSquared:
                 return this.MetersPerSecondSquared + ` m/s²`;
@@ -437,6 +437,51 @@ export class Acceleration {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Acceleration unit abbreviation.
+     * Note! the default abbreviation for Acceleration is MetersPerSecondSquared.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Acceleration.
+     * @returns The abbreviation string of Acceleration.
+     */
+    public getUnitAbbreviation(unitAbbreviation: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared): string {
+
+        switch (unitAbbreviation) {
+            
+            case AccelerationUnits.MetersPerSecondSquared:
+                return `m/s²`;
+            case AccelerationUnits.InchesPerSecondSquared:
+                return `in/s²`;
+            case AccelerationUnits.FeetPerSecondSquared:
+                return `ft/s²`;
+            case AccelerationUnits.KnotsPerSecond:
+                return `kn/s`;
+            case AccelerationUnits.KnotsPerMinute:
+                return `kn/min`;
+            case AccelerationUnits.KnotsPerHour:
+                return `kn/h`;
+            case AccelerationUnits.StandardGravity:
+                return `g`;
+            case AccelerationUnits.NanometersPerSecondSquared:
+                return ``;
+            case AccelerationUnits.MicrometersPerSecondSquared:
+                return ``;
+            case AccelerationUnits.MillimetersPerSecondSquared:
+                return ``;
+            case AccelerationUnits.CentimetersPerSecondSquared:
+                return ``;
+            case AccelerationUnits.DecimetersPerSecondSquared:
+                return ``;
+            case AccelerationUnits.KilometersPerSecondSquared:
+                return ``;
+            case AccelerationUnits.MillistandardGravity:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -324,21 +324,21 @@ export class Information {
         switch (toUnit) {
                 
             case InformationUnits.Bytes:
-                return this.value/8;
+                return this.value / 8;
             case InformationUnits.Bits:
                 return this.value;
             case InformationUnits.Kilobytes:
-                return (this.value/8) / 1000;
+                return (this.value / 8) / 1000;
             case InformationUnits.Megabytes:
-                return (this.value/8) / 1000000;
+                return (this.value / 8) / 1000000;
             case InformationUnits.Gigabytes:
-                return (this.value/8) / 1000000000;
+                return (this.value / 8) / 1000000000;
             case InformationUnits.Terabytes:
-                return (this.value/8) / 1000000000000;
+                return (this.value / 8) / 1000000000000;
             case InformationUnits.Petabytes:
-                return (this.value/8) / 1000000000000000;
+                return (this.value / 8) / 1000000000000000;
             case InformationUnits.Exabytes:
-                return (this.value/8) / 1000000000000000000;
+                return (this.value / 8) / 1000000000000000000;
             case InformationUnits.Kilobits:
                 return (this.value) / 1000;
             case InformationUnits.Megabits:
@@ -361,21 +361,21 @@ export class Information {
         switch (fromUnit) {
                 
             case InformationUnits.Bytes:
-                return value*8;
+                return value * 8;
             case InformationUnits.Bits:
                 return value;
             case InformationUnits.Kilobytes:
-                return (value*8) * 1000;
+                return (value * 8) * 1000;
             case InformationUnits.Megabytes:
-                return (value*8) * 1000000;
+                return (value * 8) * 1000000;
             case InformationUnits.Gigabytes:
-                return (value*8) * 1000000000;
+                return (value * 8) * 1000000000;
             case InformationUnits.Terabytes:
-                return (value*8) * 1000000000000;
+                return (value * 8) * 1000000000000;
             case InformationUnits.Petabytes:
-                return (value*8) * 1000000000000000;
+                return (value * 8) * 1000000000000000;
             case InformationUnits.Exabytes:
-                return (value*8) * 1000000000000000000;
+                return (value * 8) * 1000000000000000000;
             case InformationUnits.Kilobits:
                 return (value) * 1000;
             case InformationUnits.Megabits:
@@ -397,13 +397,13 @@ export class Information {
     /**
      * Format the Information to string.
      * Note! the default format for Information is Bits.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Information.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Information.
      * @returns The string format of the Information.
      */
-    public toString(toUnit: InformationUnits = InformationUnits.Bits): string {
+    public toString(unit: InformationUnits = InformationUnits.Bits): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case InformationUnits.Bytes:
                 return this.Bytes + ` B`;
@@ -437,6 +437,51 @@ export class Information {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Information unit abbreviation.
+     * Note! the default abbreviation for Information is Bits.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Information.
+     * @returns The abbreviation string of Information.
+     */
+    public getUnitAbbreviation(unitAbbreviation: InformationUnits = InformationUnits.Bits): string {
+
+        switch (unitAbbreviation) {
+            
+            case InformationUnits.Bytes:
+                return `B`;
+            case InformationUnits.Bits:
+                return `b`;
+            case InformationUnits.Kilobytes:
+                return ``;
+            case InformationUnits.Megabytes:
+                return ``;
+            case InformationUnits.Gigabytes:
+                return ``;
+            case InformationUnits.Terabytes:
+                return ``;
+            case InformationUnits.Petabytes:
+                return ``;
+            case InformationUnits.Exabytes:
+                return ``;
+            case InformationUnits.Kilobits:
+                return ``;
+            case InformationUnits.Megabits:
+                return ``;
+            case InformationUnits.Gigabits:
+                return ``;
+            case InformationUnits.Terabits:
+                return ``;
+            case InformationUnits.Petabits:
+                return ``;
+            case InformationUnits.Exabits:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

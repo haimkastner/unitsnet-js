@@ -179,17 +179,17 @@ export class Irradiation {
             case IrradiationUnits.JoulesPerSquareMeter:
                 return this.value;
             case IrradiationUnits.JoulesPerSquareCentimeter:
-                return this.value/1e4;
+                return this.value / 1e4;
             case IrradiationUnits.JoulesPerSquareMillimeter:
-                return this.value/1e6;
+                return this.value / 1e6;
             case IrradiationUnits.WattHoursPerSquareMeter:
-                return this.value/3600;
+                return this.value / 3600;
             case IrradiationUnits.KilojoulesPerSquareMeter:
                 return (this.value) / 1000;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
-                return (this.value/1e4) / 0.001;
+                return (this.value / 1e4) / 0.001;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
-                return (this.value/3600) / 1000;
+                return (this.value / 3600) / 1000;
             default:
                 break;
         }
@@ -202,17 +202,17 @@ export class Irradiation {
             case IrradiationUnits.JoulesPerSquareMeter:
                 return value;
             case IrradiationUnits.JoulesPerSquareCentimeter:
-                return value*1e4;
+                return value * 1e4;
             case IrradiationUnits.JoulesPerSquareMillimeter:
-                return value*1e6;
+                return value * 1e6;
             case IrradiationUnits.WattHoursPerSquareMeter:
-                return value*3600;
+                return value * 3600;
             case IrradiationUnits.KilojoulesPerSquareMeter:
                 return (value) * 1000;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
-                return (value*1e4) * 0.001;
+                return (value * 1e4) * 0.001;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
-                return (value*3600) * 1000;
+                return (value * 3600) * 1000;
             default:
                 break;
         }
@@ -222,13 +222,13 @@ export class Irradiation {
     /**
      * Format the Irradiation to string.
      * Note! the default format for Irradiation is JoulesPerSquareMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Irradiation.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Irradiation.
      * @returns The string format of the Irradiation.
      */
-    public toString(toUnit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter): string {
+    public toString(unit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case IrradiationUnits.JoulesPerSquareMeter:
                 return this.JoulesPerSquareMeter + ` J/m²`;
@@ -248,6 +248,37 @@ export class Irradiation {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Irradiation unit abbreviation.
+     * Note! the default abbreviation for Irradiation is JoulesPerSquareMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Irradiation.
+     * @returns The abbreviation string of Irradiation.
+     */
+    public getUnitAbbreviation(unitAbbreviation: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case IrradiationUnits.JoulesPerSquareMeter:
+                return `J/m²`;
+            case IrradiationUnits.JoulesPerSquareCentimeter:
+                return `J/cm²`;
+            case IrradiationUnits.JoulesPerSquareMillimeter:
+                return `J/mm²`;
+            case IrradiationUnits.WattHoursPerSquareMeter:
+                return `Wh/m²`;
+            case IrradiationUnits.KilojoulesPerSquareMeter:
+                return ``;
+            case IrradiationUnits.MillijoulesPerSquareCentimeter:
+                return ``;
+            case IrradiationUnits.KilowattHoursPerSquareMeter:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

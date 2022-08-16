@@ -147,13 +147,13 @@ export class Illuminance {
     /**
      * Format the Illuminance to string.
      * Note! the default format for Illuminance is Lux.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Illuminance.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Illuminance.
      * @returns The string format of the Illuminance.
      */
-    public toString(toUnit: IlluminanceUnits = IlluminanceUnits.Lux): string {
+    public toString(unit: IlluminanceUnits = IlluminanceUnits.Lux): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case IlluminanceUnits.Lux:
                 return this.Lux + ` lx`;
@@ -167,6 +167,31 @@ export class Illuminance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Illuminance unit abbreviation.
+     * Note! the default abbreviation for Illuminance is Lux.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Illuminance.
+     * @returns The abbreviation string of Illuminance.
+     */
+    public getUnitAbbreviation(unitAbbreviation: IlluminanceUnits = IlluminanceUnits.Lux): string {
+
+        switch (unitAbbreviation) {
+            
+            case IlluminanceUnits.Lux:
+                return `lx`;
+            case IlluminanceUnits.Millilux:
+                return ``;
+            case IlluminanceUnits.Kilolux:
+                return ``;
+            case IlluminanceUnits.Megalux:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

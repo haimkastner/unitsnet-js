@@ -72,13 +72,13 @@ export class MagneticFlux {
     /**
      * Format the MagneticFlux to string.
      * Note! the default format for MagneticFlux is Webers.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the MagneticFlux.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the MagneticFlux.
      * @returns The string format of the MagneticFlux.
      */
-    public toString(toUnit: MagneticFluxUnits = MagneticFluxUnits.Webers): string {
+    public toString(unit: MagneticFluxUnits = MagneticFluxUnits.Webers): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MagneticFluxUnits.Webers:
                 return this.Webers + ` Wb`;
@@ -86,6 +86,25 @@ export class MagneticFlux {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get MagneticFlux unit abbreviation.
+     * Note! the default abbreviation for MagneticFlux is Webers.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the MagneticFlux.
+     * @returns The abbreviation string of MagneticFlux.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MagneticFluxUnits = MagneticFluxUnits.Webers): string {
+
+        switch (unitAbbreviation) {
+            
+            case MagneticFluxUnits.Webers:
+                return `Wb`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

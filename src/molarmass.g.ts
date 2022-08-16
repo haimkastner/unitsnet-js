@@ -282,29 +282,29 @@ export class MolarMass {
         switch (toUnit) {
                 
             case MolarMassUnits.GramsPerMole:
-                return this.value*1e3;
+                return this.value * 1e3;
             case MolarMassUnits.PoundsPerMole:
-                return this.value/0.45359237;
+                return this.value / 0.45359237;
             case MolarMassUnits.NanogramsPerMole:
-                return (this.value*1e3) / 1e-9;
+                return (this.value * 1e3) / 1e-9;
             case MolarMassUnits.MicrogramsPerMole:
-                return (this.value*1e3) / 0.000001;
+                return (this.value * 1e3) / 0.000001;
             case MolarMassUnits.MilligramsPerMole:
-                return (this.value*1e3) / 0.001;
+                return (this.value * 1e3) / 0.001;
             case MolarMassUnits.CentigramsPerMole:
-                return (this.value*1e3) / 0.01;
+                return (this.value * 1e3) / 0.01;
             case MolarMassUnits.DecigramsPerMole:
-                return (this.value*1e3) / 0.1;
+                return (this.value * 1e3) / 0.1;
             case MolarMassUnits.DecagramsPerMole:
-                return (this.value*1e3) / 10;
+                return (this.value * 1e3) / 10;
             case MolarMassUnits.HectogramsPerMole:
-                return (this.value*1e3) / 100;
+                return (this.value * 1e3) / 100;
             case MolarMassUnits.KilogramsPerMole:
-                return (this.value*1e3) / 1000;
+                return (this.value * 1e3) / 1000;
             case MolarMassUnits.KilopoundsPerMole:
-                return (this.value/0.45359237) / 1000;
+                return (this.value / 0.45359237) / 1000;
             case MolarMassUnits.MegapoundsPerMole:
-                return (this.value/0.45359237) / 1000000;
+                return (this.value / 0.45359237) / 1000000;
             default:
                 break;
         }
@@ -315,29 +315,29 @@ export class MolarMass {
         switch (fromUnit) {
                 
             case MolarMassUnits.GramsPerMole:
-                return value/1e3;
+                return value / 1e3;
             case MolarMassUnits.PoundsPerMole:
-                return value*0.45359237;
+                return value * 0.45359237;
             case MolarMassUnits.NanogramsPerMole:
-                return (value/1e3) * 1e-9;
+                return (value / 1e3) * 1e-9;
             case MolarMassUnits.MicrogramsPerMole:
-                return (value/1e3) * 0.000001;
+                return (value / 1e3) * 0.000001;
             case MolarMassUnits.MilligramsPerMole:
-                return (value/1e3) * 0.001;
+                return (value / 1e3) * 0.001;
             case MolarMassUnits.CentigramsPerMole:
-                return (value/1e3) * 0.01;
+                return (value / 1e3) * 0.01;
             case MolarMassUnits.DecigramsPerMole:
-                return (value/1e3) * 0.1;
+                return (value / 1e3) * 0.1;
             case MolarMassUnits.DecagramsPerMole:
-                return (value/1e3) * 10;
+                return (value / 1e3) * 10;
             case MolarMassUnits.HectogramsPerMole:
-                return (value/1e3) * 100;
+                return (value / 1e3) * 100;
             case MolarMassUnits.KilogramsPerMole:
-                return (value/1e3) * 1000;
+                return (value / 1e3) * 1000;
             case MolarMassUnits.KilopoundsPerMole:
-                return (value*0.45359237) * 1000;
+                return (value * 0.45359237) * 1000;
             case MolarMassUnits.MegapoundsPerMole:
-                return (value*0.45359237) * 1000000;
+                return (value * 0.45359237) * 1000000;
             default:
                 break;
         }
@@ -347,13 +347,13 @@ export class MolarMass {
     /**
      * Format the MolarMass to string.
      * Note! the default format for MolarMass is KilogramsPerMole.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the MolarMass.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the MolarMass.
      * @returns The string format of the MolarMass.
      */
-    public toString(toUnit: MolarMassUnits = MolarMassUnits.KilogramsPerMole): string {
+    public toString(unit: MolarMassUnits = MolarMassUnits.KilogramsPerMole): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MolarMassUnits.GramsPerMole:
                 return this.GramsPerMole + ` g/mol`;
@@ -383,6 +383,47 @@ export class MolarMass {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get MolarMass unit abbreviation.
+     * Note! the default abbreviation for MolarMass is KilogramsPerMole.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the MolarMass.
+     * @returns The abbreviation string of MolarMass.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MolarMassUnits = MolarMassUnits.KilogramsPerMole): string {
+
+        switch (unitAbbreviation) {
+            
+            case MolarMassUnits.GramsPerMole:
+                return `g/mol`;
+            case MolarMassUnits.PoundsPerMole:
+                return `lb/mol`;
+            case MolarMassUnits.NanogramsPerMole:
+                return ``;
+            case MolarMassUnits.MicrogramsPerMole:
+                return ``;
+            case MolarMassUnits.MilligramsPerMole:
+                return ``;
+            case MolarMassUnits.CentigramsPerMole:
+                return ``;
+            case MolarMassUnits.DecigramsPerMole:
+                return ``;
+            case MolarMassUnits.DecagramsPerMole:
+                return ``;
+            case MolarMassUnits.HectogramsPerMole:
+                return ``;
+            case MolarMassUnits.KilogramsPerMole:
+                return ``;
+            case MolarMassUnits.KilopoundsPerMole:
+                return ``;
+            case MolarMassUnits.MegapoundsPerMole:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -324,33 +324,33 @@ export class Area {
         switch (toUnit) {
                 
             case AreaUnits.SquareKilometers:
-                return this.value/1e6;
+                return this.value / 1e6;
             case AreaUnits.SquareMeters:
                 return this.value;
             case AreaUnits.SquareDecimeters:
-                return this.value/1e-2;
+                return this.value / 1e-2;
             case AreaUnits.SquareCentimeters:
-                return this.value/1e-4;
+                return this.value / 1e-4;
             case AreaUnits.SquareMillimeters:
-                return this.value/1e-6;
+                return this.value / 1e-6;
             case AreaUnits.SquareMicrometers:
-                return this.value/1e-12;
+                return this.value / 1e-12;
             case AreaUnits.SquareMiles:
-                return this.value/2.59e6;
+                return this.value / 2.59e6;
             case AreaUnits.SquareYards:
-                return this.value/0.836127;
+                return this.value / 0.836127;
             case AreaUnits.SquareFeet:
-                return this.value/0.092903;
+                return this.value / 9.290304e-2;
             case AreaUnits.UsSurveySquareFeet:
-                return this.value/0.09290341161;
+                return this.value / 0.09290341161;
             case AreaUnits.SquareInches:
-                return this.value/0.00064516;
+                return this.value / 0.00064516;
             case AreaUnits.Acres:
-                return this.value/4046.85642;
+                return this.value / 4046.85642;
             case AreaUnits.Hectares:
-                return this.value/1e4;
+                return this.value / 1e4;
             case AreaUnits.SquareNauticalMiles:
-                return this.value/3429904;
+                return this.value / 3429904;
             default:
                 break;
         }
@@ -361,33 +361,33 @@ export class Area {
         switch (fromUnit) {
                 
             case AreaUnits.SquareKilometers:
-                return value*1e6;
+                return value * 1e6;
             case AreaUnits.SquareMeters:
                 return value;
             case AreaUnits.SquareDecimeters:
-                return value*1e-2;
+                return value * 1e-2;
             case AreaUnits.SquareCentimeters:
-                return value*1e-4;
+                return value * 1e-4;
             case AreaUnits.SquareMillimeters:
-                return value*1e-6;
+                return value * 1e-6;
             case AreaUnits.SquareMicrometers:
-                return value*1e-12;
+                return value * 1e-12;
             case AreaUnits.SquareMiles:
-                return value*2.59e6;
+                return value * 2.59e6;
             case AreaUnits.SquareYards:
-                return value*0.836127;
+                return value * 0.836127;
             case AreaUnits.SquareFeet:
-                return value*0.092903;
+                return value * 9.290304e-2;
             case AreaUnits.UsSurveySquareFeet:
-                return value*0.09290341161;
+                return value * 0.09290341161;
             case AreaUnits.SquareInches:
-                return value*0.00064516;
+                return value * 0.00064516;
             case AreaUnits.Acres:
-                return value*4046.85642;
+                return value * 4046.85642;
             case AreaUnits.Hectares:
-                return value*1e4;
+                return value * 1e4;
             case AreaUnits.SquareNauticalMiles:
-                return value*3429904;
+                return value * 3429904;
             default:
                 break;
         }
@@ -397,13 +397,13 @@ export class Area {
     /**
      * Format the Area to string.
      * Note! the default format for Area is SquareMeters.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Area.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Area.
      * @returns The string format of the Area.
      */
-    public toString(toUnit: AreaUnits = AreaUnits.SquareMeters): string {
+    public toString(unit: AreaUnits = AreaUnits.SquareMeters): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case AreaUnits.SquareKilometers:
                 return this.SquareKilometers + ` km²`;
@@ -437,6 +437,51 @@ export class Area {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Area unit abbreviation.
+     * Note! the default abbreviation for Area is SquareMeters.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Area.
+     * @returns The abbreviation string of Area.
+     */
+    public getUnitAbbreviation(unitAbbreviation: AreaUnits = AreaUnits.SquareMeters): string {
+
+        switch (unitAbbreviation) {
+            
+            case AreaUnits.SquareKilometers:
+                return `km²`;
+            case AreaUnits.SquareMeters:
+                return `m²`;
+            case AreaUnits.SquareDecimeters:
+                return `dm²`;
+            case AreaUnits.SquareCentimeters:
+                return `cm²`;
+            case AreaUnits.SquareMillimeters:
+                return `mm²`;
+            case AreaUnits.SquareMicrometers:
+                return `µm²`;
+            case AreaUnits.SquareMiles:
+                return `mi²`;
+            case AreaUnits.SquareYards:
+                return `yd²`;
+            case AreaUnits.SquareFeet:
+                return `ft²`;
+            case AreaUnits.UsSurveySquareFeet:
+                return `ft² (US)`;
+            case AreaUnits.SquareInches:
+                return `in²`;
+            case AreaUnits.Acres:
+                return `ac`;
+            case AreaUnits.Hectares:
+                return `ha`;
+            case AreaUnits.SquareNauticalMiles:
+                return `nmi²`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

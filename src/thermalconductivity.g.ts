@@ -74,7 +74,7 @@ export class ThermalConductivity {
             case ThermalConductivityUnits.WattsPerMeterKelvin:
                 return this.value;
             case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                return this.value/1.73073467;
+                return this.value / 1.73073467;
             default:
                 break;
         }
@@ -87,7 +87,7 @@ export class ThermalConductivity {
             case ThermalConductivityUnits.WattsPerMeterKelvin:
                 return value;
             case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                return value*1.73073467;
+                return value * 1.73073467;
             default:
                 break;
         }
@@ -97,13 +97,13 @@ export class ThermalConductivity {
     /**
      * Format the ThermalConductivity to string.
      * Note! the default format for ThermalConductivity is WattsPerMeterKelvin.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ThermalConductivity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ThermalConductivity.
      * @returns The string format of the ThermalConductivity.
      */
-    public toString(toUnit: ThermalConductivityUnits = ThermalConductivityUnits.WattsPerMeterKelvin): string {
+    public toString(unit: ThermalConductivityUnits = ThermalConductivityUnits.WattsPerMeterKelvin): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ThermalConductivityUnits.WattsPerMeterKelvin:
                 return this.WattsPerMeterKelvin + ` W/m·K`;
@@ -113,6 +113,27 @@ export class ThermalConductivity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ThermalConductivity unit abbreviation.
+     * Note! the default abbreviation for ThermalConductivity is WattsPerMeterKelvin.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ThermalConductivity.
+     * @returns The abbreviation string of ThermalConductivity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ThermalConductivityUnits = ThermalConductivityUnits.WattsPerMeterKelvin): string {
+
+        switch (unitAbbreviation) {
+            
+            case ThermalConductivityUnits.WattsPerMeterKelvin:
+                return `W/m·K`;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
+                return `BTU/h·ft·°F`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

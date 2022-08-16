@@ -72,13 +72,13 @@ export class VitaminA {
     /**
      * Format the VitaminA to string.
      * Note! the default format for VitaminA is InternationalUnits.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the VitaminA.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the VitaminA.
      * @returns The string format of the VitaminA.
      */
-    public toString(toUnit: VitaminAUnits = VitaminAUnits.InternationalUnits): string {
+    public toString(unit: VitaminAUnits = VitaminAUnits.InternationalUnits): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case VitaminAUnits.InternationalUnits:
                 return this.InternationalUnits + ` IU`;
@@ -86,6 +86,25 @@ export class VitaminA {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get VitaminA unit abbreviation.
+     * Note! the default abbreviation for VitaminA is InternationalUnits.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the VitaminA.
+     * @returns The abbreviation string of VitaminA.
+     */
+    public getUnitAbbreviation(unitAbbreviation: VitaminAUnits = VitaminAUnits.InternationalUnits): string {
+
+        switch (unitAbbreviation) {
+            
+            case VitaminAUnits.InternationalUnits:
+                return `IU`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

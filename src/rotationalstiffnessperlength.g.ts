@@ -137,9 +137,9 @@ export class RotationalStiffnessPerLength {
             case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
                 return this.value;
             case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet:
-                return this.value/254.864324570;
+                return this.value / 254.864324570;
             case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
-                return this.value/254864.324570;
+                return this.value / 254864.324570;
             case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
                 return (this.value) / 1000;
             case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
@@ -156,9 +156,9 @@ export class RotationalStiffnessPerLength {
             case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
                 return value;
             case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet:
-                return value*254.864324570;
+                return value * 254.864324570;
             case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
-                return value*254864.324570;
+                return value * 254864.324570;
             case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
                 return (value) * 1000;
             case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
@@ -172,13 +172,13 @@ export class RotationalStiffnessPerLength {
     /**
      * Format the RotationalStiffnessPerLength to string.
      * Note! the default format for RotationalStiffnessPerLength is NewtonMetersPerRadianPerMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the RotationalStiffnessPerLength.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the RotationalStiffnessPerLength.
      * @returns The string format of the RotationalStiffnessPerLength.
      */
-    public toString(toUnit: RotationalStiffnessPerLengthUnits = RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter): string {
+    public toString(unit: RotationalStiffnessPerLengthUnits = RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
                 return this.NewtonMetersPerRadianPerMeter + ` N·m/rad/m`;
@@ -194,6 +194,33 @@ export class RotationalStiffnessPerLength {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get RotationalStiffnessPerLength unit abbreviation.
+     * Note! the default abbreviation for RotationalStiffnessPerLength is NewtonMetersPerRadianPerMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the RotationalStiffnessPerLength.
+     * @returns The abbreviation string of RotationalStiffnessPerLength.
+     */
+    public getUnitAbbreviation(unitAbbreviation: RotationalStiffnessPerLengthUnits = RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
+                return `N·m/rad/m`;
+            case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet:
+                return `lbf·ft/deg/ft`;
+            case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
+                return `kipf·ft/°/ft`;
+            case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
+                return ``;
+            case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

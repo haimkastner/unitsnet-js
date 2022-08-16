@@ -158,7 +158,7 @@ export class MagneticField {
             case MagneticFieldUnits.Teslas:
                 return this.value;
             case MagneticFieldUnits.Gausses:
-                return this.value*1e4;
+                return this.value * 1e4;
             case MagneticFieldUnits.Nanoteslas:
                 return (this.value) / 1e-9;
             case MagneticFieldUnits.Microteslas:
@@ -166,7 +166,7 @@ export class MagneticField {
             case MagneticFieldUnits.Milliteslas:
                 return (this.value) / 0.001;
             case MagneticFieldUnits.Milligausses:
-                return (this.value*1e4) / 0.001;
+                return (this.value * 1e4) / 0.001;
             default:
                 break;
         }
@@ -179,7 +179,7 @@ export class MagneticField {
             case MagneticFieldUnits.Teslas:
                 return value;
             case MagneticFieldUnits.Gausses:
-                return value/1e4;
+                return value / 1e4;
             case MagneticFieldUnits.Nanoteslas:
                 return (value) * 1e-9;
             case MagneticFieldUnits.Microteslas:
@@ -187,7 +187,7 @@ export class MagneticField {
             case MagneticFieldUnits.Milliteslas:
                 return (value) * 0.001;
             case MagneticFieldUnits.Milligausses:
-                return (value/1e4) * 0.001;
+                return (value / 1e4) * 0.001;
             default:
                 break;
         }
@@ -197,13 +197,13 @@ export class MagneticField {
     /**
      * Format the MagneticField to string.
      * Note! the default format for MagneticField is Teslas.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the MagneticField.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the MagneticField.
      * @returns The string format of the MagneticField.
      */
-    public toString(toUnit: MagneticFieldUnits = MagneticFieldUnits.Teslas): string {
+    public toString(unit: MagneticFieldUnits = MagneticFieldUnits.Teslas): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MagneticFieldUnits.Teslas:
                 return this.Teslas + ` T`;
@@ -221,6 +221,35 @@ export class MagneticField {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get MagneticField unit abbreviation.
+     * Note! the default abbreviation for MagneticField is Teslas.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the MagneticField.
+     * @returns The abbreviation string of MagneticField.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MagneticFieldUnits = MagneticFieldUnits.Teslas): string {
+
+        switch (unitAbbreviation) {
+            
+            case MagneticFieldUnits.Teslas:
+                return `T`;
+            case MagneticFieldUnits.Gausses:
+                return `G`;
+            case MagneticFieldUnits.Nanoteslas:
+                return ``;
+            case MagneticFieldUnits.Microteslas:
+                return ``;
+            case MagneticFieldUnits.Milliteslas:
+                return ``;
+            case MagneticFieldUnits.Milligausses:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

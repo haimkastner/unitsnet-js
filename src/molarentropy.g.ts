@@ -122,13 +122,13 @@ export class MolarEntropy {
     /**
      * Format the MolarEntropy to string.
      * Note! the default format for MolarEntropy is JoulesPerMoleKelvin.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the MolarEntropy.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the MolarEntropy.
      * @returns The string format of the MolarEntropy.
      */
-    public toString(toUnit: MolarEntropyUnits = MolarEntropyUnits.JoulesPerMoleKelvin): string {
+    public toString(unit: MolarEntropyUnits = MolarEntropyUnits.JoulesPerMoleKelvin): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MolarEntropyUnits.JoulesPerMoleKelvin:
                 return this.JoulesPerMoleKelvin + ` J/(mol*K)`;
@@ -140,6 +140,29 @@ export class MolarEntropy {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get MolarEntropy unit abbreviation.
+     * Note! the default abbreviation for MolarEntropy is JoulesPerMoleKelvin.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the MolarEntropy.
+     * @returns The abbreviation string of MolarEntropy.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MolarEntropyUnits = MolarEntropyUnits.JoulesPerMoleKelvin): string {
+
+        switch (unitAbbreviation) {
+            
+            case MolarEntropyUnits.JoulesPerMoleKelvin:
+                return `J/(mol*K)`;
+            case MolarEntropyUnits.KilojoulesPerMoleKelvin:
+                return ``;
+            case MolarEntropyUnits.MegajoulesPerMoleKelvin:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

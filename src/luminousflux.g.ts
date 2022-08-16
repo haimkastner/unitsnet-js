@@ -72,13 +72,13 @@ export class LuminousFlux {
     /**
      * Format the LuminousFlux to string.
      * Note! the default format for LuminousFlux is Lumens.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the LuminousFlux.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the LuminousFlux.
      * @returns The string format of the LuminousFlux.
      */
-    public toString(toUnit: LuminousFluxUnits = LuminousFluxUnits.Lumens): string {
+    public toString(unit: LuminousFluxUnits = LuminousFluxUnits.Lumens): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case LuminousFluxUnits.Lumens:
                 return this.Lumens + ` lm`;
@@ -86,6 +86,25 @@ export class LuminousFlux {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get LuminousFlux unit abbreviation.
+     * Note! the default abbreviation for LuminousFlux is Lumens.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the LuminousFlux.
+     * @returns The abbreviation string of LuminousFlux.
+     */
+    public getUnitAbbreviation(unitAbbreviation: LuminousFluxUnits = LuminousFluxUnits.Lumens): string {
+
+        switch (unitAbbreviation) {
+            
+            case LuminousFluxUnits.Lumens:
+                return `lm`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

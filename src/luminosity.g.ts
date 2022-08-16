@@ -397,13 +397,13 @@ export class Luminosity {
     /**
      * Format the Luminosity to string.
      * Note! the default format for Luminosity is Watts.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Luminosity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Luminosity.
      * @returns The string format of the Luminosity.
      */
-    public toString(toUnit: LuminosityUnits = LuminosityUnits.Watts): string {
+    public toString(unit: LuminosityUnits = LuminosityUnits.Watts): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case LuminosityUnits.Watts:
                 return this.Watts + ` W`;
@@ -437,6 +437,51 @@ export class Luminosity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Luminosity unit abbreviation.
+     * Note! the default abbreviation for Luminosity is Watts.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Luminosity.
+     * @returns The abbreviation string of Luminosity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: LuminosityUnits = LuminosityUnits.Watts): string {
+
+        switch (unitAbbreviation) {
+            
+            case LuminosityUnits.Watts:
+                return `W`;
+            case LuminosityUnits.SolarLuminosities:
+                return `L⊙`;
+            case LuminosityUnits.Femtowatts:
+                return ``;
+            case LuminosityUnits.Picowatts:
+                return ``;
+            case LuminosityUnits.Nanowatts:
+                return ``;
+            case LuminosityUnits.Microwatts:
+                return ``;
+            case LuminosityUnits.Milliwatts:
+                return ``;
+            case LuminosityUnits.Deciwatts:
+                return ``;
+            case LuminosityUnits.Decawatts:
+                return ``;
+            case LuminosityUnits.Kilowatts:
+                return ``;
+            case LuminosityUnits.Megawatts:
+                return ``;
+            case LuminosityUnits.Gigawatts:
+                return ``;
+            case LuminosityUnits.Terawatts:
+                return ``;
+            case LuminosityUnits.Petawatts:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

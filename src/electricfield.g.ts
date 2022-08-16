@@ -72,13 +72,13 @@ export class ElectricField {
     /**
      * Format the ElectricField to string.
      * Note! the default format for ElectricField is VoltsPerMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricField.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricField.
      * @returns The string format of the ElectricField.
      */
-    public toString(toUnit: ElectricFieldUnits = ElectricFieldUnits.VoltsPerMeter): string {
+    public toString(unit: ElectricFieldUnits = ElectricFieldUnits.VoltsPerMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricFieldUnits.VoltsPerMeter:
                 return this.VoltsPerMeter + ` V/m`;
@@ -86,6 +86,25 @@ export class ElectricField {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricField unit abbreviation.
+     * Note! the default abbreviation for ElectricField is VoltsPerMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricField.
+     * @returns The abbreviation string of ElectricField.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricFieldUnits = ElectricFieldUnits.VoltsPerMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricFieldUnits.VoltsPerMeter:
+                return `V/m`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

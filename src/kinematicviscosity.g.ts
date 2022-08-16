@@ -221,21 +221,21 @@ export class KinematicViscosity {
             case KinematicViscosityUnits.SquareMetersPerSecond:
                 return this.value;
             case KinematicViscosityUnits.Stokes:
-                return this.value*1e4;
+                return this.value * 1e4;
             case KinematicViscosityUnits.SquareFeetPerSecond:
-                return this.value*10.7639;
+                return this.value * 10.7639;
             case KinematicViscosityUnits.Nanostokes:
-                return (this.value*1e4) / 1e-9;
+                return (this.value * 1e4) / 1e-9;
             case KinematicViscosityUnits.Microstokes:
-                return (this.value*1e4) / 0.000001;
+                return (this.value * 1e4) / 0.000001;
             case KinematicViscosityUnits.Millistokes:
-                return (this.value*1e4) / 0.001;
+                return (this.value * 1e4) / 0.001;
             case KinematicViscosityUnits.Centistokes:
-                return (this.value*1e4) / 0.01;
+                return (this.value * 1e4) / 0.01;
             case KinematicViscosityUnits.Decistokes:
-                return (this.value*1e4) / 0.1;
+                return (this.value * 1e4) / 0.1;
             case KinematicViscosityUnits.Kilostokes:
-                return (this.value*1e4) / 1000;
+                return (this.value * 1e4) / 1000;
             default:
                 break;
         }
@@ -248,21 +248,21 @@ export class KinematicViscosity {
             case KinematicViscosityUnits.SquareMetersPerSecond:
                 return value;
             case KinematicViscosityUnits.Stokes:
-                return value/1e4;
+                return value / 1e4;
             case KinematicViscosityUnits.SquareFeetPerSecond:
-                return value/10.7639;
+                return value / 10.7639;
             case KinematicViscosityUnits.Nanostokes:
-                return (value/1e4) * 1e-9;
+                return (value / 1e4) * 1e-9;
             case KinematicViscosityUnits.Microstokes:
-                return (value/1e4) * 0.000001;
+                return (value / 1e4) * 0.000001;
             case KinematicViscosityUnits.Millistokes:
-                return (value/1e4) * 0.001;
+                return (value / 1e4) * 0.001;
             case KinematicViscosityUnits.Centistokes:
-                return (value/1e4) * 0.01;
+                return (value / 1e4) * 0.01;
             case KinematicViscosityUnits.Decistokes:
-                return (value/1e4) * 0.1;
+                return (value / 1e4) * 0.1;
             case KinematicViscosityUnits.Kilostokes:
-                return (value/1e4) * 1000;
+                return (value / 1e4) * 1000;
             default:
                 break;
         }
@@ -272,13 +272,13 @@ export class KinematicViscosity {
     /**
      * Format the KinematicViscosity to string.
      * Note! the default format for KinematicViscosity is SquareMetersPerSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the KinematicViscosity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the KinematicViscosity.
      * @returns The string format of the KinematicViscosity.
      */
-    public toString(toUnit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond): string {
+    public toString(unit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case KinematicViscosityUnits.SquareMetersPerSecond:
                 return this.SquareMetersPerSecond + ` m²/s`;
@@ -302,6 +302,41 @@ export class KinematicViscosity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get KinematicViscosity unit abbreviation.
+     * Note! the default abbreviation for KinematicViscosity is SquareMetersPerSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the KinematicViscosity.
+     * @returns The abbreviation string of KinematicViscosity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case KinematicViscosityUnits.SquareMetersPerSecond:
+                return `m²/s`;
+            case KinematicViscosityUnits.Stokes:
+                return `St`;
+            case KinematicViscosityUnits.SquareFeetPerSecond:
+                return `ft²/s`;
+            case KinematicViscosityUnits.Nanostokes:
+                return ``;
+            case KinematicViscosityUnits.Microstokes:
+                return ``;
+            case KinematicViscosityUnits.Millistokes:
+                return ``;
+            case KinematicViscosityUnits.Centistokes:
+                return ``;
+            case KinematicViscosityUnits.Decistokes:
+                return ``;
+            case KinematicViscosityUnits.Kilostokes:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

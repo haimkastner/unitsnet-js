@@ -137,13 +137,13 @@ export class ElectricCharge {
             case ElectricChargeUnits.Coulombs:
                 return this.value;
             case ElectricChargeUnits.AmpereHours:
-                return this.value*2.77777777777e-4;
+                return this.value * 2.77777777777e-4;
             case ElectricChargeUnits.MilliampereHours:
-                return (this.value*2.77777777777e-4) / 0.001;
+                return (this.value * 2.77777777777e-4) / 0.001;
             case ElectricChargeUnits.KiloampereHours:
-                return (this.value*2.77777777777e-4) / 1000;
+                return (this.value * 2.77777777777e-4) / 1000;
             case ElectricChargeUnits.MegaampereHours:
-                return (this.value*2.77777777777e-4) / 1000000;
+                return (this.value * 2.77777777777e-4) / 1000000;
             default:
                 break;
         }
@@ -156,13 +156,13 @@ export class ElectricCharge {
             case ElectricChargeUnits.Coulombs:
                 return value;
             case ElectricChargeUnits.AmpereHours:
-                return value/2.77777777777e-4;
+                return value / 2.77777777777e-4;
             case ElectricChargeUnits.MilliampereHours:
-                return (value/2.77777777777e-4) * 0.001;
+                return (value / 2.77777777777e-4) * 0.001;
             case ElectricChargeUnits.KiloampereHours:
-                return (value/2.77777777777e-4) * 1000;
+                return (value / 2.77777777777e-4) * 1000;
             case ElectricChargeUnits.MegaampereHours:
-                return (value/2.77777777777e-4) * 1000000;
+                return (value / 2.77777777777e-4) * 1000000;
             default:
                 break;
         }
@@ -172,13 +172,13 @@ export class ElectricCharge {
     /**
      * Format the ElectricCharge to string.
      * Note! the default format for ElectricCharge is Coulombs.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricCharge.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricCharge.
      * @returns The string format of the ElectricCharge.
      */
-    public toString(toUnit: ElectricChargeUnits = ElectricChargeUnits.Coulombs): string {
+    public toString(unit: ElectricChargeUnits = ElectricChargeUnits.Coulombs): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricChargeUnits.Coulombs:
                 return this.Coulombs + ` C`;
@@ -194,6 +194,33 @@ export class ElectricCharge {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricCharge unit abbreviation.
+     * Note! the default abbreviation for ElectricCharge is Coulombs.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricCharge.
+     * @returns The abbreviation string of ElectricCharge.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricChargeUnits = ElectricChargeUnits.Coulombs): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricChargeUnits.Coulombs:
+                return `C`;
+            case ElectricChargeUnits.AmpereHours:
+                return `A-h`;
+            case ElectricChargeUnits.MilliampereHours:
+                return ``;
+            case ElectricChargeUnits.KiloampereHours:
+                return ``;
+            case ElectricChargeUnits.MegaampereHours:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

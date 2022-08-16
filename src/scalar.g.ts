@@ -72,13 +72,13 @@ export class Scalar {
     /**
      * Format the Scalar to string.
      * Note! the default format for Scalar is Amount.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Scalar.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Scalar.
      * @returns The string format of the Scalar.
      */
-    public toString(toUnit: ScalarUnits = ScalarUnits.Amount): string {
+    public toString(unit: ScalarUnits = ScalarUnits.Amount): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ScalarUnits.Amount:
                 return this.Amount + ` `;
@@ -86,6 +86,25 @@ export class Scalar {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Scalar unit abbreviation.
+     * Note! the default abbreviation for Scalar is Amount.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Scalar.
+     * @returns The abbreviation string of Scalar.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ScalarUnits = ScalarUnits.Amount): string {
+
+        switch (unitAbbreviation) {
+            
+            case ScalarUnits.Amount:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

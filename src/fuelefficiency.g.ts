@@ -116,11 +116,11 @@ export class FuelEfficiency {
             case FuelEfficiencyUnits.LitersPer100Kilometers:
                 return this.value;
             case FuelEfficiencyUnits.MilesPerUsGallon:
-                return (100*3.785411784)/(1.609344*this.value);
+                return (100 * 3.785411784) / (1.609344 * this.value);
             case FuelEfficiencyUnits.MilesPerUkGallon:
-                return (100*4.54609188)/(1.609344*this.value);
+                return (100 * 4.54609188) / (1.609344 * this.value);
             case FuelEfficiencyUnits.KilometersPerLiters:
-                return 100/this.value;
+                return 100 / this.value;
             default:
                 break;
         }
@@ -133,11 +133,11 @@ export class FuelEfficiency {
             case FuelEfficiencyUnits.LitersPer100Kilometers:
                 return value;
             case FuelEfficiencyUnits.MilesPerUsGallon:
-                return (100*3.785411784)/(1.609344*value);
+                return (100 * 3.785411784) / (1.609344 * value);
             case FuelEfficiencyUnits.MilesPerUkGallon:
-                return (100*4.54609188)/(1.609344*value);
+                return (100 * 4.54609188) / (1.609344 * value);
             case FuelEfficiencyUnits.KilometersPerLiters:
-                return 100/value;
+                return 100 / value;
             default:
                 break;
         }
@@ -147,13 +147,13 @@ export class FuelEfficiency {
     /**
      * Format the FuelEfficiency to string.
      * Note! the default format for FuelEfficiency is LitersPer100Kilometers.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the FuelEfficiency.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the FuelEfficiency.
      * @returns The string format of the FuelEfficiency.
      */
-    public toString(toUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers): string {
+    public toString(unit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case FuelEfficiencyUnits.LitersPer100Kilometers:
                 return this.LitersPer100Kilometers + ` L/100km`;
@@ -167,6 +167,31 @@ export class FuelEfficiency {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get FuelEfficiency unit abbreviation.
+     * Note! the default abbreviation for FuelEfficiency is LitersPer100Kilometers.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the FuelEfficiency.
+     * @returns The abbreviation string of FuelEfficiency.
+     */
+    public getUnitAbbreviation(unitAbbreviation: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers): string {
+
+        switch (unitAbbreviation) {
+            
+            case FuelEfficiencyUnits.LitersPer100Kilometers:
+                return `L/100km`;
+            case FuelEfficiencyUnits.MilesPerUsGallon:
+                return `mpg (U.S.)`;
+            case FuelEfficiencyUnits.MilesPerUkGallon:
+                return `mpg (imp.)`;
+            case FuelEfficiencyUnits.KilometersPerLiters:
+                return `km/L`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

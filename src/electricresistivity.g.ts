@@ -326,7 +326,7 @@ export class ElectricResistivity {
             case ElectricResistivityUnits.OhmMeters:
                 return this.value;
             case ElectricResistivityUnits.OhmsCentimeter:
-                return this.value*100;
+                return this.value * 100;
             case ElectricResistivityUnits.PicoohmMeters:
                 return (this.value) / 1e-12;
             case ElectricResistivityUnits.NanoohmMeters:
@@ -340,17 +340,17 @@ export class ElectricResistivity {
             case ElectricResistivityUnits.MegaohmMeters:
                 return (this.value) / 1000000;
             case ElectricResistivityUnits.PicoohmsCentimeter:
-                return (this.value*100) / 1e-12;
+                return (this.value * 100) / 1e-12;
             case ElectricResistivityUnits.NanoohmsCentimeter:
-                return (this.value*100) / 1e-9;
+                return (this.value * 100) / 1e-9;
             case ElectricResistivityUnits.MicroohmsCentimeter:
-                return (this.value*100) / 0.000001;
+                return (this.value * 100) / 0.000001;
             case ElectricResistivityUnits.MilliohmsCentimeter:
-                return (this.value*100) / 0.001;
+                return (this.value * 100) / 0.001;
             case ElectricResistivityUnits.KiloohmsCentimeter:
-                return (this.value*100) / 1000;
+                return (this.value * 100) / 1000;
             case ElectricResistivityUnits.MegaohmsCentimeter:
-                return (this.value*100) / 1000000;
+                return (this.value * 100) / 1000000;
             default:
                 break;
         }
@@ -363,7 +363,7 @@ export class ElectricResistivity {
             case ElectricResistivityUnits.OhmMeters:
                 return value;
             case ElectricResistivityUnits.OhmsCentimeter:
-                return value/100;
+                return value / 100;
             case ElectricResistivityUnits.PicoohmMeters:
                 return (value) * 1e-12;
             case ElectricResistivityUnits.NanoohmMeters:
@@ -377,17 +377,17 @@ export class ElectricResistivity {
             case ElectricResistivityUnits.MegaohmMeters:
                 return (value) * 1000000;
             case ElectricResistivityUnits.PicoohmsCentimeter:
-                return (value/100) * 1e-12;
+                return (value / 100) * 1e-12;
             case ElectricResistivityUnits.NanoohmsCentimeter:
-                return (value/100) * 1e-9;
+                return (value / 100) * 1e-9;
             case ElectricResistivityUnits.MicroohmsCentimeter:
-                return (value/100) * 0.000001;
+                return (value / 100) * 0.000001;
             case ElectricResistivityUnits.MilliohmsCentimeter:
-                return (value/100) * 0.001;
+                return (value / 100) * 0.001;
             case ElectricResistivityUnits.KiloohmsCentimeter:
-                return (value/100) * 1000;
+                return (value / 100) * 1000;
             case ElectricResistivityUnits.MegaohmsCentimeter:
-                return (value/100) * 1000000;
+                return (value / 100) * 1000000;
             default:
                 break;
         }
@@ -397,13 +397,13 @@ export class ElectricResistivity {
     /**
      * Format the ElectricResistivity to string.
      * Note! the default format for ElectricResistivity is OhmMeters.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricResistivity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricResistivity.
      * @returns The string format of the ElectricResistivity.
      */
-    public toString(toUnit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters): string {
+    public toString(unit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricResistivityUnits.OhmMeters:
                 return this.OhmMeters + ` Ω·m`;
@@ -437,6 +437,51 @@ export class ElectricResistivity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricResistivity unit abbreviation.
+     * Note! the default abbreviation for ElectricResistivity is OhmMeters.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricResistivity.
+     * @returns The abbreviation string of ElectricResistivity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricResistivityUnits.OhmMeters:
+                return `Ω·m`;
+            case ElectricResistivityUnits.OhmsCentimeter:
+                return `Ω·cm`;
+            case ElectricResistivityUnits.PicoohmMeters:
+                return ``;
+            case ElectricResistivityUnits.NanoohmMeters:
+                return ``;
+            case ElectricResistivityUnits.MicroohmMeters:
+                return ``;
+            case ElectricResistivityUnits.MilliohmMeters:
+                return ``;
+            case ElectricResistivityUnits.KiloohmMeters:
+                return ``;
+            case ElectricResistivityUnits.MegaohmMeters:
+                return ``;
+            case ElectricResistivityUnits.PicoohmsCentimeter:
+                return ``;
+            case ElectricResistivityUnits.NanoohmsCentimeter:
+                return ``;
+            case ElectricResistivityUnits.MicroohmsCentimeter:
+                return ``;
+            case ElectricResistivityUnits.MilliohmsCentimeter:
+                return ``;
+            case ElectricResistivityUnits.KiloohmsCentimeter:
+                return ``;
+            case ElectricResistivityUnits.MegaohmsCentimeter:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

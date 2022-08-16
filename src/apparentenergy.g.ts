@@ -122,13 +122,13 @@ export class ApparentEnergy {
     /**
      * Format the ApparentEnergy to string.
      * Note! the default format for ApparentEnergy is VoltampereHours.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ApparentEnergy.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ApparentEnergy.
      * @returns The string format of the ApparentEnergy.
      */
-    public toString(toUnit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours): string {
+    public toString(unit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ApparentEnergyUnits.VoltampereHours:
                 return this.VoltampereHours + ` VAh`;
@@ -140,6 +140,29 @@ export class ApparentEnergy {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ApparentEnergy unit abbreviation.
+     * Note! the default abbreviation for ApparentEnergy is VoltampereHours.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ApparentEnergy.
+     * @returns The abbreviation string of ApparentEnergy.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours): string {
+
+        switch (unitAbbreviation) {
+            
+            case ApparentEnergyUnits.VoltampereHours:
+                return `VAh`;
+            case ApparentEnergyUnits.KilovoltampereHours:
+                return ``;
+            case ApparentEnergyUnits.MegavoltampereHours:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -95,7 +95,7 @@ export class SpecificVolume {
             case SpecificVolumeUnits.CubicMetersPerKilogram:
                 return this.value;
             case SpecificVolumeUnits.CubicFeetPerPound:
-                return this.value*16.01846353;
+                return this.value * 16.01846353;
             case SpecificVolumeUnits.MillicubicMetersPerKilogram:
                 return (this.value) / 0.001;
             default:
@@ -110,7 +110,7 @@ export class SpecificVolume {
             case SpecificVolumeUnits.CubicMetersPerKilogram:
                 return value;
             case SpecificVolumeUnits.CubicFeetPerPound:
-                return value/16.01846353;
+                return value / 16.01846353;
             case SpecificVolumeUnits.MillicubicMetersPerKilogram:
                 return (value) * 0.001;
             default:
@@ -122,13 +122,13 @@ export class SpecificVolume {
     /**
      * Format the SpecificVolume to string.
      * Note! the default format for SpecificVolume is CubicMetersPerKilogram.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the SpecificVolume.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the SpecificVolume.
      * @returns The string format of the SpecificVolume.
      */
-    public toString(toUnit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram): string {
+    public toString(unit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case SpecificVolumeUnits.CubicMetersPerKilogram:
                 return this.CubicMetersPerKilogram + ` m³/kg`;
@@ -140,6 +140,29 @@ export class SpecificVolume {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get SpecificVolume unit abbreviation.
+     * Note! the default abbreviation for SpecificVolume is CubicMetersPerKilogram.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the SpecificVolume.
+     * @returns The abbreviation string of SpecificVolume.
+     */
+    public getUnitAbbreviation(unitAbbreviation: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram): string {
+
+        switch (unitAbbreviation) {
+            
+            case SpecificVolumeUnits.CubicMetersPerKilogram:
+                return `m³/kg`;
+            case SpecificVolumeUnits.CubicFeetPerPound:
+                return `ft³/lb`;
+            case SpecificVolumeUnits.MillicubicMetersPerKilogram:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

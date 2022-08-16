@@ -97,7 +97,7 @@ export class CoefficientOfThermalExpansion {
             case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
                 return this.value;
             case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
-                return this.value*5/9;
+                return this.value * 5 / 9;
             default:
                 break;
         }
@@ -112,7 +112,7 @@ export class CoefficientOfThermalExpansion {
             case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
                 return value;
             case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
-                return value*9/5;
+                return value * 9 / 5;
             default:
                 break;
         }
@@ -122,13 +122,13 @@ export class CoefficientOfThermalExpansion {
     /**
      * Format the CoefficientOfThermalExpansion to string.
      * Note! the default format for CoefficientOfThermalExpansion is InverseKelvin.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the CoefficientOfThermalExpansion.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the CoefficientOfThermalExpansion.
      * @returns The string format of the CoefficientOfThermalExpansion.
      */
-    public toString(toUnit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.InverseKelvin): string {
+    public toString(unit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.InverseKelvin): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case CoefficientOfThermalExpansionUnits.InverseKelvin:
                 return this.InverseKelvin + ` K⁻¹`;
@@ -140,6 +140,29 @@ export class CoefficientOfThermalExpansion {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get CoefficientOfThermalExpansion unit abbreviation.
+     * Note! the default abbreviation for CoefficientOfThermalExpansion is InverseKelvin.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the CoefficientOfThermalExpansion.
+     * @returns The abbreviation string of CoefficientOfThermalExpansion.
+     */
+    public getUnitAbbreviation(unitAbbreviation: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.InverseKelvin): string {
+
+        switch (unitAbbreviation) {
+            
+            case CoefficientOfThermalExpansionUnits.InverseKelvin:
+                return `K⁻¹`;
+            case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
+                return `°C⁻¹`;
+            case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
+                return `°F⁻¹`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

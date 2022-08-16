@@ -172,13 +172,13 @@ export class ElectricPotentialAc {
     /**
      * Format the ElectricPotentialAc to string.
      * Note! the default format for ElectricPotentialAc is VoltsAc.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricPotentialAc.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricPotentialAc.
      * @returns The string format of the ElectricPotentialAc.
      */
-    public toString(toUnit: ElectricPotentialAcUnits = ElectricPotentialAcUnits.VoltsAc): string {
+    public toString(unit: ElectricPotentialAcUnits = ElectricPotentialAcUnits.VoltsAc): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricPotentialAcUnits.VoltsAc:
                 return this.VoltsAc + ` Vac`;
@@ -194,6 +194,33 @@ export class ElectricPotentialAc {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricPotentialAc unit abbreviation.
+     * Note! the default abbreviation for ElectricPotentialAc is VoltsAc.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricPotentialAc.
+     * @returns The abbreviation string of ElectricPotentialAc.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricPotentialAcUnits = ElectricPotentialAcUnits.VoltsAc): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricPotentialAcUnits.VoltsAc:
+                return `Vac`;
+            case ElectricPotentialAcUnits.MicrovoltsAc:
+                return ``;
+            case ElectricPotentialAcUnits.MillivoltsAc:
+                return ``;
+            case ElectricPotentialAcUnits.KilovoltsAc:
+                return ``;
+            case ElectricPotentialAcUnits.MegavoltsAc:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

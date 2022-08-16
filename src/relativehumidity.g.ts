@@ -72,13 +72,13 @@ export class RelativeHumidity {
     /**
      * Format the RelativeHumidity to string.
      * Note! the default format for RelativeHumidity is Percent.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the RelativeHumidity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the RelativeHumidity.
      * @returns The string format of the RelativeHumidity.
      */
-    public toString(toUnit: RelativeHumidityUnits = RelativeHumidityUnits.Percent): string {
+    public toString(unit: RelativeHumidityUnits = RelativeHumidityUnits.Percent): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case RelativeHumidityUnits.Percent:
                 return this.Percent + ` %RH`;
@@ -86,6 +86,25 @@ export class RelativeHumidity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get RelativeHumidity unit abbreviation.
+     * Note! the default abbreviation for RelativeHumidity is Percent.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the RelativeHumidity.
+     * @returns The abbreviation string of RelativeHumidity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: RelativeHumidityUnits = RelativeHumidityUnits.Percent): string {
+
+        switch (unitAbbreviation) {
+            
+            case RelativeHumidityUnits.Percent:
+                return `%RH`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

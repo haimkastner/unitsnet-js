@@ -222,13 +222,13 @@ export class Capacitance {
     /**
      * Format the Capacitance to string.
      * Note! the default format for Capacitance is Farads.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Capacitance.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Capacitance.
      * @returns The string format of the Capacitance.
      */
-    public toString(toUnit: CapacitanceUnits = CapacitanceUnits.Farads): string {
+    public toString(unit: CapacitanceUnits = CapacitanceUnits.Farads): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case CapacitanceUnits.Farads:
                 return this.Farads + ` F`;
@@ -248,6 +248,37 @@ export class Capacitance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Capacitance unit abbreviation.
+     * Note! the default abbreviation for Capacitance is Farads.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Capacitance.
+     * @returns The abbreviation string of Capacitance.
+     */
+    public getUnitAbbreviation(unitAbbreviation: CapacitanceUnits = CapacitanceUnits.Farads): string {
+
+        switch (unitAbbreviation) {
+            
+            case CapacitanceUnits.Farads:
+                return `F`;
+            case CapacitanceUnits.Picofarads:
+                return ``;
+            case CapacitanceUnits.Nanofarads:
+                return ``;
+            case CapacitanceUnits.Microfarads:
+                return ``;
+            case CapacitanceUnits.Millifarads:
+                return ``;
+            case CapacitanceUnits.Kilofarads:
+                return ``;
+            case CapacitanceUnits.Megafarads:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -158,15 +158,15 @@ export class ThermalResistance {
             case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
                 return this.value;
             case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
-                return this.value/1000;
+                return this.value / 1000;
             case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                return this.value/1000.088056074108;
+                return this.value / 1000.0;
             case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                return this.value/0.0999964777570357;
+                return this.value / 0.1;
             case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                return this.value/0.0859779507590433;
+                return this.value / 0.0859779507590433;
             case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                return this.value/176.1121482159839;
+                return this.value / 176.1121482159839;
             default:
                 break;
         }
@@ -179,15 +179,15 @@ export class ThermalResistance {
             case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
                 return value;
             case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
-                return value*1000;
+                return value * 1000;
             case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                return value*1000.088056074108;
+                return value * 1000.0;
             case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                return value*0.0999964777570357;
+                return value * 0.1;
             case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                return value*0.0859779507590433;
+                return value * 0.0859779507590433;
             case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                return value*176.1121482159839;
+                return value * 176.1121482159839;
             default:
                 break;
         }
@@ -197,13 +197,13 @@ export class ThermalResistance {
     /**
      * Format the ThermalResistance to string.
      * Note! the default format for ThermalResistance is SquareMeterKelvinsPerKilowatt.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ThermalResistance.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ThermalResistance.
      * @returns The string format of the ThermalResistance.
      */
-    public toString(toUnit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt): string {
+    public toString(unit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
                 return this.SquareMeterKelvinsPerKilowatt + ` m²K/kW`;
@@ -221,6 +221,35 @@ export class ThermalResistance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ThermalResistance unit abbreviation.
+     * Note! the default abbreviation for ThermalResistance is SquareMeterKelvinsPerKilowatt.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ThermalResistance.
+     * @returns The abbreviation string of ThermalResistance.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt): string {
+
+        switch (unitAbbreviation) {
+            
+            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
+                return `m²K/kW`;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
+                return `m²K/W`;
+            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
+                return `m²°C/W`;
+            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
+                return `cm²K/W`;
+            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
+                return `cm²Hr°C/kcal`;
+            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
+                return `Hrft²°F/Btu`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

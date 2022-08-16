@@ -72,7 +72,7 @@ export class RatioChangeRate {
         switch (toUnit) {
                 
             case RatioChangeRateUnits.PercentsPerSecond:
-                return this.value*1e2;
+                return this.value * 1e2;
             case RatioChangeRateUnits.DecimalFractionsPerSecond:
                 return this.value;
             default:
@@ -85,7 +85,7 @@ export class RatioChangeRate {
         switch (fromUnit) {
                 
             case RatioChangeRateUnits.PercentsPerSecond:
-                return value/1e2;
+                return value / 1e2;
             case RatioChangeRateUnits.DecimalFractionsPerSecond:
                 return value;
             default:
@@ -97,13 +97,13 @@ export class RatioChangeRate {
     /**
      * Format the RatioChangeRate to string.
      * Note! the default format for RatioChangeRate is DecimalFractionsPerSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the RatioChangeRate.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the RatioChangeRate.
      * @returns The string format of the RatioChangeRate.
      */
-    public toString(toUnit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond): string {
+    public toString(unit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case RatioChangeRateUnits.PercentsPerSecond:
                 return this.PercentsPerSecond + ` %/s`;
@@ -113,6 +113,27 @@ export class RatioChangeRate {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get RatioChangeRate unit abbreviation.
+     * Note! the default abbreviation for RatioChangeRate is DecimalFractionsPerSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the RatioChangeRate.
+     * @returns The abbreviation string of RatioChangeRate.
+     */
+    public getUnitAbbreviation(unitAbbreviation: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case RatioChangeRateUnits.PercentsPerSecond:
+                return `%/s`;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond:
+                return `/s`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

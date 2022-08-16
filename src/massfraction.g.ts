@@ -538,17 +538,17 @@ export class MassFraction {
             case MassFractionUnits.GramsPerGram:
                 return this.value;
             case MassFractionUnits.GramsPerKilogram:
-                return this.value*1e3;
+                return this.value * 1e3;
             case MassFractionUnits.Percent:
-                return this.value*1e2;
+                return this.value * 1e2;
             case MassFractionUnits.PartsPerThousand:
-                return this.value*1e3;
+                return this.value * 1e3;
             case MassFractionUnits.PartsPerMillion:
-                return this.value*1e6;
+                return this.value * 1e6;
             case MassFractionUnits.PartsPerBillion:
-                return this.value*1e9;
+                return this.value * 1e9;
             case MassFractionUnits.PartsPerTrillion:
-                return this.value*1e12;
+                return this.value * 1e12;
             case MassFractionUnits.NanogramsPerGram:
                 return (this.value) / 1e-9;
             case MassFractionUnits.MicrogramsPerGram:
@@ -566,21 +566,21 @@ export class MassFraction {
             case MassFractionUnits.KilogramsPerGram:
                 return (this.value) / 1000;
             case MassFractionUnits.NanogramsPerKilogram:
-                return (this.value*1e3) / 1e-9;
+                return (this.value * 1e3) / 1e-9;
             case MassFractionUnits.MicrogramsPerKilogram:
-                return (this.value*1e3) / 0.000001;
+                return (this.value * 1e3) / 0.000001;
             case MassFractionUnits.MilligramsPerKilogram:
-                return (this.value*1e3) / 0.001;
+                return (this.value * 1e3) / 0.001;
             case MassFractionUnits.CentigramsPerKilogram:
-                return (this.value*1e3) / 0.01;
+                return (this.value * 1e3) / 0.01;
             case MassFractionUnits.DecigramsPerKilogram:
-                return (this.value*1e3) / 0.1;
+                return (this.value * 1e3) / 0.1;
             case MassFractionUnits.DecagramsPerKilogram:
-                return (this.value*1e3) / 10;
+                return (this.value * 1e3) / 10;
             case MassFractionUnits.HectogramsPerKilogram:
-                return (this.value*1e3) / 100;
+                return (this.value * 1e3) / 100;
             case MassFractionUnits.KilogramsPerKilogram:
-                return (this.value*1e3) / 1000;
+                return (this.value * 1e3) / 1000;
             default:
                 break;
         }
@@ -595,17 +595,17 @@ export class MassFraction {
             case MassFractionUnits.GramsPerGram:
                 return value;
             case MassFractionUnits.GramsPerKilogram:
-                return value/1e3;
+                return value / 1e3;
             case MassFractionUnits.Percent:
-                return value/1e2;
+                return value / 1e2;
             case MassFractionUnits.PartsPerThousand:
-                return value/1e3;
+                return value / 1e3;
             case MassFractionUnits.PartsPerMillion:
-                return value/1e6;
+                return value / 1e6;
             case MassFractionUnits.PartsPerBillion:
-                return value/1e9;
+                return value / 1e9;
             case MassFractionUnits.PartsPerTrillion:
-                return value/1e12;
+                return value / 1e12;
             case MassFractionUnits.NanogramsPerGram:
                 return (value) * 1e-9;
             case MassFractionUnits.MicrogramsPerGram:
@@ -623,21 +623,21 @@ export class MassFraction {
             case MassFractionUnits.KilogramsPerGram:
                 return (value) * 1000;
             case MassFractionUnits.NanogramsPerKilogram:
-                return (value/1e3) * 1e-9;
+                return (value / 1e3) * 1e-9;
             case MassFractionUnits.MicrogramsPerKilogram:
-                return (value/1e3) * 0.000001;
+                return (value / 1e3) * 0.000001;
             case MassFractionUnits.MilligramsPerKilogram:
-                return (value/1e3) * 0.001;
+                return (value / 1e3) * 0.001;
             case MassFractionUnits.CentigramsPerKilogram:
-                return (value/1e3) * 0.01;
+                return (value / 1e3) * 0.01;
             case MassFractionUnits.DecigramsPerKilogram:
-                return (value/1e3) * 0.1;
+                return (value / 1e3) * 0.1;
             case MassFractionUnits.DecagramsPerKilogram:
-                return (value/1e3) * 10;
+                return (value / 1e3) * 10;
             case MassFractionUnits.HectogramsPerKilogram:
-                return (value/1e3) * 100;
+                return (value / 1e3) * 100;
             case MassFractionUnits.KilogramsPerKilogram:
-                return (value/1e3) * 1000;
+                return (value / 1e3) * 1000;
             default:
                 break;
         }
@@ -647,13 +647,13 @@ export class MassFraction {
     /**
      * Format the MassFraction to string.
      * Note! the default format for MassFraction is DecimalFractions.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the MassFraction.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the MassFraction.
      * @returns The string format of the MassFraction.
      */
-    public toString(toUnit: MassFractionUnits = MassFractionUnits.DecimalFractions): string {
+    public toString(unit: MassFractionUnits = MassFractionUnits.DecimalFractions): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MassFractionUnits.DecimalFractions:
                 return this.DecimalFractions + ` `;
@@ -707,6 +707,71 @@ export class MassFraction {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get MassFraction unit abbreviation.
+     * Note! the default abbreviation for MassFraction is DecimalFractions.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the MassFraction.
+     * @returns The abbreviation string of MassFraction.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MassFractionUnits = MassFractionUnits.DecimalFractions): string {
+
+        switch (unitAbbreviation) {
+            
+            case MassFractionUnits.DecimalFractions:
+                return ``;
+            case MassFractionUnits.GramsPerGram:
+                return `g/g`;
+            case MassFractionUnits.GramsPerKilogram:
+                return `g/kg`;
+            case MassFractionUnits.Percent:
+                return `%`;
+            case MassFractionUnits.PartsPerThousand:
+                return `‰`;
+            case MassFractionUnits.PartsPerMillion:
+                return `ppm`;
+            case MassFractionUnits.PartsPerBillion:
+                return `ppb`;
+            case MassFractionUnits.PartsPerTrillion:
+                return `ppt`;
+            case MassFractionUnits.NanogramsPerGram:
+                return ``;
+            case MassFractionUnits.MicrogramsPerGram:
+                return ``;
+            case MassFractionUnits.MilligramsPerGram:
+                return ``;
+            case MassFractionUnits.CentigramsPerGram:
+                return ``;
+            case MassFractionUnits.DecigramsPerGram:
+                return ``;
+            case MassFractionUnits.DecagramsPerGram:
+                return ``;
+            case MassFractionUnits.HectogramsPerGram:
+                return ``;
+            case MassFractionUnits.KilogramsPerGram:
+                return ``;
+            case MassFractionUnits.NanogramsPerKilogram:
+                return ``;
+            case MassFractionUnits.MicrogramsPerKilogram:
+                return ``;
+            case MassFractionUnits.MilligramsPerKilogram:
+                return ``;
+            case MassFractionUnits.CentigramsPerKilogram:
+                return ``;
+            case MassFractionUnits.DecigramsPerKilogram:
+                return ``;
+            case MassFractionUnits.DecagramsPerKilogram:
+                return ``;
+            case MassFractionUnits.HectogramsPerKilogram:
+                return ``;
+            case MassFractionUnits.KilogramsPerKilogram:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

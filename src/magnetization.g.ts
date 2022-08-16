@@ -72,13 +72,13 @@ export class Magnetization {
     /**
      * Format the Magnetization to string.
      * Note! the default format for Magnetization is AmperesPerMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Magnetization.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Magnetization.
      * @returns The string format of the Magnetization.
      */
-    public toString(toUnit: MagnetizationUnits = MagnetizationUnits.AmperesPerMeter): string {
+    public toString(unit: MagnetizationUnits = MagnetizationUnits.AmperesPerMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MagnetizationUnits.AmperesPerMeter:
                 return this.AmperesPerMeter + ` A/m`;
@@ -86,6 +86,25 @@ export class Magnetization {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Magnetization unit abbreviation.
+     * Note! the default abbreviation for Magnetization is AmperesPerMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Magnetization.
+     * @returns The abbreviation string of Magnetization.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MagnetizationUnits = MagnetizationUnits.AmperesPerMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case MagnetizationUnits.AmperesPerMeter:
+                return `A/m`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -347,7 +347,7 @@ export class AmountOfSubstance {
             case AmountOfSubstanceUnits.Moles:
                 return this.value;
             case AmountOfSubstanceUnits.PoundMoles:
-                return this.value/453.59237;
+                return this.value / 453.59237;
             case AmountOfSubstanceUnits.Nanomoles:
                 return (this.value) / 1e-9;
             case AmountOfSubstanceUnits.Micromoles:
@@ -363,17 +363,17 @@ export class AmountOfSubstance {
             case AmountOfSubstanceUnits.Megamoles:
                 return (this.value) / 1000000;
             case AmountOfSubstanceUnits.NanopoundMoles:
-                return (this.value/453.59237) / 1e-9;
+                return (this.value / 453.59237) / 1e-9;
             case AmountOfSubstanceUnits.MicropoundMoles:
-                return (this.value/453.59237) / 0.000001;
+                return (this.value / 453.59237) / 0.000001;
             case AmountOfSubstanceUnits.MillipoundMoles:
-                return (this.value/453.59237) / 0.001;
+                return (this.value / 453.59237) / 0.001;
             case AmountOfSubstanceUnits.CentipoundMoles:
-                return (this.value/453.59237) / 0.01;
+                return (this.value / 453.59237) / 0.01;
             case AmountOfSubstanceUnits.DecipoundMoles:
-                return (this.value/453.59237) / 0.1;
+                return (this.value / 453.59237) / 0.1;
             case AmountOfSubstanceUnits.KilopoundMoles:
-                return (this.value/453.59237) / 1000;
+                return (this.value / 453.59237) / 1000;
             default:
                 break;
         }
@@ -386,7 +386,7 @@ export class AmountOfSubstance {
             case AmountOfSubstanceUnits.Moles:
                 return value;
             case AmountOfSubstanceUnits.PoundMoles:
-                return value*453.59237;
+                return value * 453.59237;
             case AmountOfSubstanceUnits.Nanomoles:
                 return (value) * 1e-9;
             case AmountOfSubstanceUnits.Micromoles:
@@ -402,17 +402,17 @@ export class AmountOfSubstance {
             case AmountOfSubstanceUnits.Megamoles:
                 return (value) * 1000000;
             case AmountOfSubstanceUnits.NanopoundMoles:
-                return (value*453.59237) * 1e-9;
+                return (value * 453.59237) * 1e-9;
             case AmountOfSubstanceUnits.MicropoundMoles:
-                return (value*453.59237) * 0.000001;
+                return (value * 453.59237) * 0.000001;
             case AmountOfSubstanceUnits.MillipoundMoles:
-                return (value*453.59237) * 0.001;
+                return (value * 453.59237) * 0.001;
             case AmountOfSubstanceUnits.CentipoundMoles:
-                return (value*453.59237) * 0.01;
+                return (value * 453.59237) * 0.01;
             case AmountOfSubstanceUnits.DecipoundMoles:
-                return (value*453.59237) * 0.1;
+                return (value * 453.59237) * 0.1;
             case AmountOfSubstanceUnits.KilopoundMoles:
-                return (value*453.59237) * 1000;
+                return (value * 453.59237) * 1000;
             default:
                 break;
         }
@@ -422,13 +422,13 @@ export class AmountOfSubstance {
     /**
      * Format the AmountOfSubstance to string.
      * Note! the default format for AmountOfSubstance is Moles.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the AmountOfSubstance.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the AmountOfSubstance.
      * @returns The string format of the AmountOfSubstance.
      */
-    public toString(toUnit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles): string {
+    public toString(unit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case AmountOfSubstanceUnits.Moles:
                 return this.Moles + ` mol`;
@@ -464,6 +464,53 @@ export class AmountOfSubstance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get AmountOfSubstance unit abbreviation.
+     * Note! the default abbreviation for AmountOfSubstance is Moles.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the AmountOfSubstance.
+     * @returns The abbreviation string of AmountOfSubstance.
+     */
+    public getUnitAbbreviation(unitAbbreviation: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles): string {
+
+        switch (unitAbbreviation) {
+            
+            case AmountOfSubstanceUnits.Moles:
+                return `mol`;
+            case AmountOfSubstanceUnits.PoundMoles:
+                return `lbmol`;
+            case AmountOfSubstanceUnits.Nanomoles:
+                return ``;
+            case AmountOfSubstanceUnits.Micromoles:
+                return ``;
+            case AmountOfSubstanceUnits.Millimoles:
+                return ``;
+            case AmountOfSubstanceUnits.Centimoles:
+                return ``;
+            case AmountOfSubstanceUnits.Decimoles:
+                return ``;
+            case AmountOfSubstanceUnits.Kilomoles:
+                return ``;
+            case AmountOfSubstanceUnits.Megamoles:
+                return ``;
+            case AmountOfSubstanceUnits.NanopoundMoles:
+                return ``;
+            case AmountOfSubstanceUnits.MicropoundMoles:
+                return ``;
+            case AmountOfSubstanceUnits.MillipoundMoles:
+                return ``;
+            case AmountOfSubstanceUnits.CentipoundMoles:
+                return ``;
+            case AmountOfSubstanceUnits.DecipoundMoles:
+                return ``;
+            case AmountOfSubstanceUnits.KilopoundMoles:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

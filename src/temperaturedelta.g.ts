@@ -223,17 +223,17 @@ export class TemperatureDelta {
             case TemperatureDeltaUnits.DegreesCelsius:
                 return this.value;
             case TemperatureDeltaUnits.DegreesDelisle:
-                return this.value*-3/2;
+                return this.value * -3 / 2;
             case TemperatureDeltaUnits.DegreesFahrenheit:
-                return this.value*9/5;
+                return this.value * 9 / 5;
             case TemperatureDeltaUnits.DegreesNewton:
-                return this.value*33/100;
+                return this.value * 33 / 100;
             case TemperatureDeltaUnits.DegreesRankine:
-                return this.value*9/5;
+                return this.value * 9 / 5;
             case TemperatureDeltaUnits.DegreesReaumur:
-                return this.value*4/5;
+                return this.value * 4 / 5;
             case TemperatureDeltaUnits.DegreesRoemer:
-                return this.value*21/40;
+                return this.value * 21 / 40;
             case TemperatureDeltaUnits.MillidegreesCelsius:
                 return (this.value) / 0.001;
             default:
@@ -250,17 +250,17 @@ export class TemperatureDelta {
             case TemperatureDeltaUnits.DegreesCelsius:
                 return value;
             case TemperatureDeltaUnits.DegreesDelisle:
-                return value*-2/3;
+                return value * -2 / 3;
             case TemperatureDeltaUnits.DegreesFahrenheit:
-                return value*5/9;
+                return value * 5 / 9;
             case TemperatureDeltaUnits.DegreesNewton:
-                return value*100/33;
+                return value * 100 / 33;
             case TemperatureDeltaUnits.DegreesRankine:
-                return value*5/9;
+                return value * 5 / 9;
             case TemperatureDeltaUnits.DegreesReaumur:
-                return value*5/4;
+                return value * 5 / 4;
             case TemperatureDeltaUnits.DegreesRoemer:
-                return value*40/21;
+                return value * 40 / 21;
             case TemperatureDeltaUnits.MillidegreesCelsius:
                 return (value) * 0.001;
             default:
@@ -272,13 +272,13 @@ export class TemperatureDelta {
     /**
      * Format the TemperatureDelta to string.
      * Note! the default format for TemperatureDelta is Kelvins.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the TemperatureDelta.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the TemperatureDelta.
      * @returns The string format of the TemperatureDelta.
      */
-    public toString(toUnit: TemperatureDeltaUnits = TemperatureDeltaUnits.Kelvins): string {
+    public toString(unit: TemperatureDeltaUnits = TemperatureDeltaUnits.Kelvins): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case TemperatureDeltaUnits.Kelvins:
                 return this.Kelvins + ` ∆K`;
@@ -302,6 +302,41 @@ export class TemperatureDelta {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get TemperatureDelta unit abbreviation.
+     * Note! the default abbreviation for TemperatureDelta is Kelvins.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the TemperatureDelta.
+     * @returns The abbreviation string of TemperatureDelta.
+     */
+    public getUnitAbbreviation(unitAbbreviation: TemperatureDeltaUnits = TemperatureDeltaUnits.Kelvins): string {
+
+        switch (unitAbbreviation) {
+            
+            case TemperatureDeltaUnits.Kelvins:
+                return `∆K`;
+            case TemperatureDeltaUnits.DegreesCelsius:
+                return `∆°C`;
+            case TemperatureDeltaUnits.DegreesDelisle:
+                return `∆°De`;
+            case TemperatureDeltaUnits.DegreesFahrenheit:
+                return `∆°F`;
+            case TemperatureDeltaUnits.DegreesNewton:
+                return `∆°N`;
+            case TemperatureDeltaUnits.DegreesRankine:
+                return `∆°R`;
+            case TemperatureDeltaUnits.DegreesReaumur:
+                return `∆°Ré`;
+            case TemperatureDeltaUnits.DegreesRoemer:
+                return `∆°Rø`;
+            case TemperatureDeltaUnits.MillidegreesCelsius:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

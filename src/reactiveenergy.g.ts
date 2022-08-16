@@ -122,13 +122,13 @@ export class ReactiveEnergy {
     /**
      * Format the ReactiveEnergy to string.
      * Note! the default format for ReactiveEnergy is VoltampereReactiveHours.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ReactiveEnergy.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ReactiveEnergy.
      * @returns The string format of the ReactiveEnergy.
      */
-    public toString(toUnit: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours): string {
+    public toString(unit: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ReactiveEnergyUnits.VoltampereReactiveHours:
                 return this.VoltampereReactiveHours + ` varh`;
@@ -140,6 +140,29 @@ export class ReactiveEnergy {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ReactiveEnergy unit abbreviation.
+     * Note! the default abbreviation for ReactiveEnergy is VoltampereReactiveHours.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ReactiveEnergy.
+     * @returns The abbreviation string of ReactiveEnergy.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours): string {
+
+        switch (unitAbbreviation) {
+            
+            case ReactiveEnergyUnits.VoltampereReactiveHours:
+                return `varh`;
+            case ReactiveEnergyUnits.KilovoltampereReactiveHours:
+                return ``;
+            case ReactiveEnergyUnits.MegavoltampereReactiveHours:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

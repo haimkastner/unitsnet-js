@@ -94,6 +94,8 @@ Currently, the package supports the following units:
     -   *Capacitance is the ability of a body to store an electric charge.*
 - **CoefficientOfThermalExpansion**
     -   *A unit that represents a fractional change in size in response to a change in temperature.*
+- **Compressibility**
+    -   *Compressibility is the measure of the relative volume change of a fluid or solid in response to pressure changes.*
 - **Density**
     -   *The density, or more precisely, the volumetric mass density, of a substance is its mass per unit volume.*
 - **Duration**
@@ -160,6 +162,8 @@ Currently, the package supports the following units:
     -   *Irradiance is the intensity of ultraviolet (UV) or visible light incident on a surface.*
 - **Irradiation**
     -   *Irradiation is the process by which an object is exposed to radiation. The exposure can originate from various sources, including natural sources.*
+- **Jerk**
+    -   *Jerk or Jolt, in physics, is the rate at which the acceleration of an object changes over time. The SI unit for jerk is the Meter per second cubed (m/s³). Jerks are vector quantities (they have magnitude and direction) and add according to the parallelogram law.*
 - **KinematicViscosity**
     -   *The viscosity of a fluid is a measure of its resistance to gradual deformation by shear stress or tensile stress.*
 - **LapseRate**
@@ -172,6 +176,8 @@ Currently, the package supports the following units:
     -   *The Linear Density, or more precisely, the linear mass density, of a substance is its mass per unit length.  The term linear density is most often used when describing the characteristics of one-dimensional objects, although linear density can also be used to describe the density of a three-dimensional quantity along one particular dimension.*
 - **LinearPowerDensity**
     -   *The Linear Power Density of a substance is its power per unit length.  The term linear density is most often used when describing the characteristics of one-dimensional objects, although linear density can also be used to describe the density of a three-dimensional quantity along one particular dimension.*
+- **Luminance**
+    -   *Luminance is a photometric measure of the luminous intensity per unit area of light travelling in a given direction.*
 - **Luminosity**
     -   *Luminosity is an absolute measure of radiated electromagnetic power (light), the radiant power emitted by a light-emitting object.*
 - **LuminousFlux**
@@ -208,6 +214,8 @@ Currently, the package supports the following units:
     -   *In electromagnetism, permeability is the measure of the ability of a material to support the formation of a magnetic field within itself.*
 - **Permittivity**
     -   *In electromagnetism, permittivity is the measure of resistance that is encountered when forming an electric field in a particular medium.*
+- **PorousMediumPermeability**
+    -   *In fluid mechanics, permeability is the measure of the ability of a porous material to allow fluids to pass through it.*
 - **Power**
     -   *In physics, power is the rate of doing work. It is equivalent to an amount of energy consumed per unit time.*
 - **PowerDensity**

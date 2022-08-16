@@ -221,21 +221,21 @@ export class StandardVolumeFlow {
             case StandardVolumeFlowUnits.StandardCubicMetersPerSecond:
                 return this.value;
             case StandardVolumeFlowUnits.StandardCubicMetersPerMinute:
-                return this.value*60;
+                return this.value * 60;
             case StandardVolumeFlowUnits.StandardCubicMetersPerHour:
-                return this.value*3600;
+                return this.value * 3600;
             case StandardVolumeFlowUnits.StandardCubicMetersPerDay:
-                return this.value*86400;
+                return this.value * 86400;
             case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute:
-                return this.value*6e7;
+                return this.value * 6e7;
             case StandardVolumeFlowUnits.StandardLitersPerMinute:
-                return this.value*60000;
+                return this.value * 60000;
             case StandardVolumeFlowUnits.StandardCubicFeetPerSecond:
-                return this.value*35.314666721;
+                return this.value * 35.314666721;
             case StandardVolumeFlowUnits.StandardCubicFeetPerMinute:
-                return this.value*2118.88000326;
+                return this.value * 2118.88000326;
             case StandardVolumeFlowUnits.StandardCubicFeetPerHour:
-                return this.value/7.8657907199999087346816086183876e-6;
+                return this.value / 7.8657907199999087346816086183876e-6;
             default:
                 break;
         }
@@ -248,21 +248,21 @@ export class StandardVolumeFlow {
             case StandardVolumeFlowUnits.StandardCubicMetersPerSecond:
                 return value;
             case StandardVolumeFlowUnits.StandardCubicMetersPerMinute:
-                return value/60;
+                return value / 60;
             case StandardVolumeFlowUnits.StandardCubicMetersPerHour:
-                return value/3600;
+                return value / 3600;
             case StandardVolumeFlowUnits.StandardCubicMetersPerDay:
-                return value/86400;
+                return value / 86400;
             case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute:
-                return value/6e7;
+                return value / 6e7;
             case StandardVolumeFlowUnits.StandardLitersPerMinute:
-                return value/60000;
+                return value / 60000;
             case StandardVolumeFlowUnits.StandardCubicFeetPerSecond:
-                return value/35.314666721;
+                return value / 35.314666721;
             case StandardVolumeFlowUnits.StandardCubicFeetPerMinute:
-                return value/2118.88000326;
+                return value / 2118.88000326;
             case StandardVolumeFlowUnits.StandardCubicFeetPerHour:
-                return value*7.8657907199999087346816086183876e-6;
+                return value * 7.8657907199999087346816086183876e-6;
             default:
                 break;
         }
@@ -272,13 +272,13 @@ export class StandardVolumeFlow {
     /**
      * Format the StandardVolumeFlow to string.
      * Note! the default format for StandardVolumeFlow is StandardCubicMetersPerSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the StandardVolumeFlow.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the StandardVolumeFlow.
      * @returns The string format of the StandardVolumeFlow.
      */
-    public toString(toUnit: StandardVolumeFlowUnits = StandardVolumeFlowUnits.StandardCubicMetersPerSecond): string {
+    public toString(unit: StandardVolumeFlowUnits = StandardVolumeFlowUnits.StandardCubicMetersPerSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case StandardVolumeFlowUnits.StandardCubicMetersPerSecond:
                 return this.StandardCubicMetersPerSecond + ` Sm³/s`;
@@ -302,6 +302,41 @@ export class StandardVolumeFlow {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get StandardVolumeFlow unit abbreviation.
+     * Note! the default abbreviation for StandardVolumeFlow is StandardCubicMetersPerSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the StandardVolumeFlow.
+     * @returns The abbreviation string of StandardVolumeFlow.
+     */
+    public getUnitAbbreviation(unitAbbreviation: StandardVolumeFlowUnits = StandardVolumeFlowUnits.StandardCubicMetersPerSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case StandardVolumeFlowUnits.StandardCubicMetersPerSecond:
+                return `Sm³/s`;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerMinute:
+                return `Sm³/min`;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerHour:
+                return `Sm³/h`;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerDay:
+                return `Sm³/d`;
+            case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute:
+                return `sccm`;
+            case StandardVolumeFlowUnits.StandardLitersPerMinute:
+                return `slm`;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond:
+                return `Sft³/s`;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute:
+                return `scfm`;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerHour:
+                return `scfh`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -272,13 +272,13 @@ export class VolumetricHeatCapacity {
     /**
      * Format the VolumetricHeatCapacity to string.
      * Note! the default format for VolumetricHeatCapacity is JoulesPerCubicMeterKelvin.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the VolumetricHeatCapacity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the VolumetricHeatCapacity.
      * @returns The string format of the VolumetricHeatCapacity.
      */
-    public toString(toUnit: VolumetricHeatCapacityUnits = VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin): string {
+    public toString(unit: VolumetricHeatCapacityUnits = VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin:
                 return this.JoulesPerCubicMeterKelvin + ` J/m³·K`;
@@ -302,6 +302,41 @@ export class VolumetricHeatCapacity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get VolumetricHeatCapacity unit abbreviation.
+     * Note! the default abbreviation for VolumetricHeatCapacity is JoulesPerCubicMeterKelvin.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the VolumetricHeatCapacity.
+     * @returns The abbreviation string of VolumetricHeatCapacity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: VolumetricHeatCapacityUnits = VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin): string {
+
+        switch (unitAbbreviation) {
+            
+            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin:
+                return `J/m³·K`;
+            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterDegreeCelsius:
+                return `J/m³·°C`;
+            case VolumetricHeatCapacityUnits.CaloriesPerCubicCentimeterDegreeCelsius:
+                return `cal/cm³·°C`;
+            case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit:
+                return `BTU/ft³·°F`;
+            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin:
+                return ``;
+            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin:
+                return ``;
+            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius:
+                return ``;
+            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius:
+                return ``;
+            case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

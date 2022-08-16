@@ -44,6 +44,10 @@ export enum LengthUnits {
     SolarRadiuses,
     /** */
     Chains,
+    /** Angstrom is a metric unit of length equal to 1e-10 meter */
+    Angstroms,
+    /** In radar-related subjects and in JTIDS, a data mile is a unit of distance equal to 6000 feet (1.8288 kilometres or 0.987 nautical miles). */
+    DataMiles,
     /** */
     Nanometers,
     /** */
@@ -54,6 +58,8 @@ export enum LengthUnits {
     Centimeters,
     /** */
     Decimeters,
+    /** */
+    Decameters,
     /** */
     Hectometers,
     /** */
@@ -93,11 +99,14 @@ export class Length {
     private lightyearsLazy: number | null = null;
     private solarradiusesLazy: number | null = null;
     private chainsLazy: number | null = null;
+    private angstromsLazy: number | null = null;
+    private datamilesLazy: number | null = null;
     private nanometersLazy: number | null = null;
     private micrometersLazy: number | null = null;
     private millimetersLazy: number | null = null;
     private centimetersLazy: number | null = null;
     private decimetersLazy: number | null = null;
+    private decametersLazy: number | null = null;
     private hectometersLazy: number | null = null;
     private kilometersLazy: number | null = null;
     private kiloparsecsLazy: number | null = null;
@@ -301,6 +310,22 @@ export class Length {
         return this.chainsLazy = this.convertFromBase(LengthUnits.Chains);
     }
 
+    /** Angstrom is a metric unit of length equal to 1e-10 meter */
+    public get Angstroms(): number {
+        if(this.angstromsLazy !== null){
+            return this.angstromsLazy;
+        }
+        return this.angstromsLazy = this.convertFromBase(LengthUnits.Angstroms);
+    }
+
+    /** In radar-related subjects and in JTIDS, a data mile is a unit of distance equal to 6000 feet (1.8288 kilometres or 0.987 nautical miles). */
+    public get DataMiles(): number {
+        if(this.datamilesLazy !== null){
+            return this.datamilesLazy;
+        }
+        return this.datamilesLazy = this.convertFromBase(LengthUnits.DataMiles);
+    }
+
     /** */
     public get Nanometers(): number {
         if(this.nanometersLazy !== null){
@@ -339,6 +364,14 @@ export class Length {
             return this.decimetersLazy;
         }
         return this.decimetersLazy = this.convertFromBase(LengthUnits.Decimeters);
+    }
+
+    /** */
+    public get Decameters(): number {
+        if(this.decametersLazy !== null){
+            return this.decametersLazy;
+        }
+        return this.decametersLazy = this.convertFromBase(LengthUnits.Decameters);
     }
 
     /** */
@@ -610,6 +643,26 @@ export class Length {
     }
 
     /**
+     * Create a new Length instance from a Angstroms
+     * Angstrom is a metric unit of length equal to 1e-10 meter
+     * @param value The unit as Angstroms to create a new Length from.
+     * @returns The new Length instance.
+     */
+    public static FromAngstroms(value: number): Length {
+        return new Length(value, LengthUnits.Angstroms);
+    }
+
+    /**
+     * Create a new Length instance from a DataMiles
+     * In radar-related subjects and in JTIDS, a data mile is a unit of distance equal to 6000 feet (1.8288 kilometres or 0.987 nautical miles).
+     * @param value The unit as DataMiles to create a new Length from.
+     * @returns The new Length instance.
+     */
+    public static FromDataMiles(value: number): Length {
+        return new Length(value, LengthUnits.DataMiles);
+    }
+
+    /**
      * Create a new Length instance from a Nanometers
      *
      * @param value The unit as Nanometers to create a new Length from.
@@ -657,6 +710,16 @@ export class Length {
      */
     public static FromDecimeters(value: number): Length {
         return new Length(value, LengthUnits.Decimeters);
+    }
+
+    /**
+     * Create a new Length instance from a Decameters
+     *
+     * @param value The unit as Decameters to create a new Length from.
+     * @returns The new Length instance.
+     */
+    public static FromDecameters(value: number): Length {
+        return new Length(value, LengthUnits.Decameters);
     }
 
     /**
@@ -725,35 +788,35 @@ export class Length {
             case LengthUnits.Meters:
                 return this.value;
             case LengthUnits.Miles:
-                return this.value/1609.34;
+                return this.value / 1609.34;
             case LengthUnits.Yards:
-                return this.value/0.9144;
+                return this.value / 0.9144;
             case LengthUnits.Feet:
-                return this.value/0.3048;
+                return this.value / 0.3048;
             case LengthUnits.UsSurveyFeet:
-                return this.value*3937/1200;
+                return this.value * 3937 / 1200;
             case LengthUnits.Inches:
-                return this.value/2.54e-2;
+                return this.value / 2.54e-2;
             case LengthUnits.Mils:
-                return this.value/2.54e-5;
+                return this.value / 2.54e-5;
             case LengthUnits.NauticalMiles:
-                return this.value/1852;
+                return this.value / 1852;
             case LengthUnits.Fathoms:
-                return this.value/1.8288;
+                return this.value / 1.8288;
             case LengthUnits.Shackles:
-                return this.value/27.432;
+                return this.value / 27.432;
             case LengthUnits.Microinches:
-                return this.value/2.54e-8;
+                return this.value / 2.54e-8;
             case LengthUnits.PrinterPoints:
-                return (this.value/2.54e-2)*72.27;
+                return (this.value / 2.54e-2) * 72.27;
             case LengthUnits.DtpPoints:
-                return (this.value/2.54e-2)*72;
+                return (this.value / 2.54e-2) * 72;
             case LengthUnits.PrinterPicas:
-                return this.value*237.106301584;
+                return this.value * 237.106301584;
             case LengthUnits.DtpPicas:
-                return this.value*236.220472441;
+                return this.value * 236.220472441;
             case LengthUnits.Twips:
-                return this.value*56692.913385826;
+                return this.value * 56692.913385826;
             case LengthUnits.Hands:
                 return this.value / 1.016e-1;
             case LengthUnits.AstronomicalUnits:
@@ -765,7 +828,11 @@ export class Length {
             case LengthUnits.SolarRadiuses:
                 return this.value / 6.95510000E+08;
             case LengthUnits.Chains:
-                return this.value/20.1168;
+                return this.value / 20.1168;
+            case LengthUnits.Angstroms:
+                return this.value / 1e-10;
+            case LengthUnits.DataMiles:
+                return this.value / 1828.8;
             case LengthUnits.Nanometers:
                 return (this.value) / 1e-9;
             case LengthUnits.Micrometers:
@@ -776,6 +843,8 @@ export class Length {
                 return (this.value) / 0.01;
             case LengthUnits.Decimeters:
                 return (this.value) / 0.1;
+            case LengthUnits.Decameters:
+                return (this.value) / 10;
             case LengthUnits.Hectometers:
                 return (this.value) / 100;
             case LengthUnits.Kilometers:
@@ -800,35 +869,35 @@ export class Length {
             case LengthUnits.Meters:
                 return value;
             case LengthUnits.Miles:
-                return value*1609.34;
+                return value * 1609.34;
             case LengthUnits.Yards:
-                return value*0.9144;
+                return value * 0.9144;
             case LengthUnits.Feet:
-                return value*0.3048;
+                return value * 0.3048;
             case LengthUnits.UsSurveyFeet:
-                return value*1200/3937;
+                return value * 1200 / 3937;
             case LengthUnits.Inches:
-                return value*2.54e-2;
+                return value * 2.54e-2;
             case LengthUnits.Mils:
-                return value*2.54e-5;
+                return value * 2.54e-5;
             case LengthUnits.NauticalMiles:
-                return value*1852;
+                return value * 1852;
             case LengthUnits.Fathoms:
-                return value*1.8288;
+                return value * 1.8288;
             case LengthUnits.Shackles:
-                return value*27.432;
+                return value * 27.432;
             case LengthUnits.Microinches:
-                return value*2.54e-8;
+                return value * 2.54e-8;
             case LengthUnits.PrinterPoints:
-                return (value/72.27)*2.54e-2;
+                return (value / 72.27) * 2.54e-2;
             case LengthUnits.DtpPoints:
-                return (value/72)*2.54e-2;
+                return (value / 72) * 2.54e-2;
             case LengthUnits.PrinterPicas:
-                return value/237.106301584;
+                return value / 237.106301584;
             case LengthUnits.DtpPicas:
-                return value/236.220472441;
+                return value / 236.220472441;
             case LengthUnits.Twips:
-                return value/56692.913385826;
+                return value / 56692.913385826;
             case LengthUnits.Hands:
                 return value * 1.016e-1;
             case LengthUnits.AstronomicalUnits:
@@ -840,7 +909,11 @@ export class Length {
             case LengthUnits.SolarRadiuses:
                 return value * 6.95510000E+08;
             case LengthUnits.Chains:
-                return value*20.1168;
+                return value * 20.1168;
+            case LengthUnits.Angstroms:
+                return value * 1e-10;
+            case LengthUnits.DataMiles:
+                return value * 1828.8;
             case LengthUnits.Nanometers:
                 return (value) * 1e-9;
             case LengthUnits.Micrometers:
@@ -851,6 +924,8 @@ export class Length {
                 return (value) * 0.01;
             case LengthUnits.Decimeters:
                 return (value) * 0.1;
+            case LengthUnits.Decameters:
+                return (value) * 10;
             case LengthUnits.Hectometers:
                 return (value) * 100;
             case LengthUnits.Kilometers:
@@ -872,13 +947,13 @@ export class Length {
     /**
      * Format the Length to string.
      * Note! the default format for Length is Meters.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Length.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Length.
      * @returns The string format of the Length.
      */
-    public toString(toUnit: LengthUnits = LengthUnits.Meters): string {
+    public toString(unit: LengthUnits = LengthUnits.Meters): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case LengthUnits.Meters:
                 return this.Meters + ` m`;
@@ -924,6 +999,10 @@ export class Length {
                 return this.SolarRadiuses + ` R⊙`;
             case LengthUnits.Chains:
                 return this.Chains + ` ch`;
+            case LengthUnits.Angstroms:
+                return this.Angstroms + ` Å`;
+            case LengthUnits.DataMiles:
+                return this.DataMiles + ` DM`;
             case LengthUnits.Nanometers:
                 return this.Nanometers + ` `;
             case LengthUnits.Micrometers:
@@ -934,6 +1013,8 @@ export class Length {
                 return this.Centimeters + ` `;
             case LengthUnits.Decimeters:
                 return this.Decimeters + ` `;
+            case LengthUnits.Decameters:
+                return this.Decameters + ` `;
             case LengthUnits.Hectometers:
                 return this.Hectometers + ` `;
             case LengthUnits.Kilometers:
@@ -950,6 +1031,95 @@ export class Length {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Length unit abbreviation.
+     * Note! the default abbreviation for Length is Meters.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Length.
+     * @returns The abbreviation string of Length.
+     */
+    public getUnitAbbreviation(unitAbbreviation: LengthUnits = LengthUnits.Meters): string {
+
+        switch (unitAbbreviation) {
+            
+            case LengthUnits.Meters:
+                return `m`;
+            case LengthUnits.Miles:
+                return `mi`;
+            case LengthUnits.Yards:
+                return `yd`;
+            case LengthUnits.Feet:
+                return `ft`;
+            case LengthUnits.UsSurveyFeet:
+                return `ftUS`;
+            case LengthUnits.Inches:
+                return `in`;
+            case LengthUnits.Mils:
+                return `mil`;
+            case LengthUnits.NauticalMiles:
+                return `NM`;
+            case LengthUnits.Fathoms:
+                return `fathom`;
+            case LengthUnits.Shackles:
+                return `shackle`;
+            case LengthUnits.Microinches:
+                return `µin`;
+            case LengthUnits.PrinterPoints:
+                return `pt`;
+            case LengthUnits.DtpPoints:
+                return `pt`;
+            case LengthUnits.PrinterPicas:
+                return `pica`;
+            case LengthUnits.DtpPicas:
+                return `pica`;
+            case LengthUnits.Twips:
+                return `twip`;
+            case LengthUnits.Hands:
+                return `h`;
+            case LengthUnits.AstronomicalUnits:
+                return `au`;
+            case LengthUnits.Parsecs:
+                return `pc`;
+            case LengthUnits.LightYears:
+                return `ly`;
+            case LengthUnits.SolarRadiuses:
+                return `R⊙`;
+            case LengthUnits.Chains:
+                return `ch`;
+            case LengthUnits.Angstroms:
+                return `Å`;
+            case LengthUnits.DataMiles:
+                return `DM`;
+            case LengthUnits.Nanometers:
+                return ``;
+            case LengthUnits.Micrometers:
+                return ``;
+            case LengthUnits.Millimeters:
+                return ``;
+            case LengthUnits.Centimeters:
+                return ``;
+            case LengthUnits.Decimeters:
+                return ``;
+            case LengthUnits.Decameters:
+                return ``;
+            case LengthUnits.Hectometers:
+                return ``;
+            case LengthUnits.Kilometers:
+                return ``;
+            case LengthUnits.Kiloparsecs:
+                return ``;
+            case LengthUnits.Megaparsecs:
+                return ``;
+            case LengthUnits.KilolightYears:
+                return ``;
+            case LengthUnits.MegalightYears:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

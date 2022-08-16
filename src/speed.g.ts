@@ -35,6 +35,8 @@ export enum SpeedUnits {
     /** */
     MilesPerHour,
     /** */
+    Mach,
+    /** */
     NanometersPerSecond,
     /** */
     MicrometersPerSecond,
@@ -86,6 +88,7 @@ export class Speed {
     private yardsperhourLazy: number | null = null;
     private knotsLazy: number | null = null;
     private milesperhourLazy: number | null = null;
+    private machLazy: number | null = null;
     private nanometerspersecondLazy: number | null = null;
     private micrometerspersecondLazy: number | null = null;
     private millimeterspersecondLazy: number | null = null;
@@ -256,6 +259,14 @@ export class Speed {
             return this.milesperhourLazy;
         }
         return this.milesperhourLazy = this.convertFromBase(SpeedUnits.MilesPerHour);
+    }
+
+    /** */
+    public get Mach(): number {
+        if(this.machLazy !== null){
+            return this.machLazy;
+        }
+        return this.machLazy = this.convertFromBase(SpeedUnits.Mach);
     }
 
     /** */
@@ -549,6 +560,16 @@ export class Speed {
     }
 
     /**
+     * Create a new Speed instance from a Mach
+     *
+     * @param value The unit as Mach to create a new Speed from.
+     * @returns The new Speed instance.
+     */
+    public static FromMach(value: number): Speed {
+        return new Speed(value, SpeedUnits.Mach);
+    }
+
+    /**
      * Create a new Speed instance from a NanometersPerSecond
      *
      * @param value The unit as NanometersPerSecond to create a new Speed from.
@@ -704,37 +725,39 @@ export class Speed {
             case SpeedUnits.MetersPerSecond:
                 return this.value;
             case SpeedUnits.MetersPerMinutes:
-                return this.value*60;
+                return this.value * 60;
             case SpeedUnits.MetersPerHour:
-                return this.value*3600;
+                return this.value * 3600;
             case SpeedUnits.FeetPerSecond:
-                return this.value/0.3048;
+                return this.value / 0.3048;
             case SpeedUnits.FeetPerMinute:
-                return this.value/0.3048*60;
+                return this.value / 0.3048 * 60;
             case SpeedUnits.FeetPerHour:
-                return this.value/0.3048*3600;
+                return this.value / 0.3048 * 3600;
             case SpeedUnits.UsSurveyFeetPerSecond:
-                return this.value*3937/1200;
+                return this.value * 3937 / 1200;
             case SpeedUnits.UsSurveyFeetPerMinute:
-                return (this.value*3937/1200)*60;
+                return (this.value * 3937 / 1200) * 60;
             case SpeedUnits.UsSurveyFeetPerHour:
-                return (this.value*3937/1200)*3600;
+                return (this.value * 3937 / 1200) * 3600;
             case SpeedUnits.InchesPerSecond:
-                return this.value/2.54e-2;
+                return this.value / 2.54e-2;
             case SpeedUnits.InchesPerMinute:
-                return (this.value/2.54e-2)*60;
+                return (this.value / 2.54e-2) * 60;
             case SpeedUnits.InchesPerHour:
-                return (this.value/2.54e-2)*3600;
+                return (this.value / 2.54e-2) * 3600;
             case SpeedUnits.YardsPerSecond:
-                return this.value/0.9144;
+                return this.value / 0.9144;
             case SpeedUnits.YardsPerMinute:
-                return this.value/0.9144*60;
+                return this.value / 0.9144 * 60;
             case SpeedUnits.YardsPerHour:
-                return this.value/0.9144*3600;
+                return this.value / 0.9144 * 3600;
             case SpeedUnits.Knots:
-                return this.value/0.514444;
+                return this.value / 0.514444;
             case SpeedUnits.MilesPerHour:
-                return this.value/0.44704;
+                return this.value / 0.44704;
+            case SpeedUnits.Mach:
+                return this.value / 340.29;
             case SpeedUnits.NanometersPerSecond:
                 return (this.value) / 1e-9;
             case SpeedUnits.MicrometersPerSecond:
@@ -748,23 +771,23 @@ export class Speed {
             case SpeedUnits.KilometersPerSecond:
                 return (this.value) / 1000;
             case SpeedUnits.NanometersPerMinutes:
-                return (this.value*60) / 1e-9;
+                return (this.value * 60) / 1e-9;
             case SpeedUnits.MicrometersPerMinutes:
-                return (this.value*60) / 0.000001;
+                return (this.value * 60) / 0.000001;
             case SpeedUnits.MillimetersPerMinutes:
-                return (this.value*60) / 0.001;
+                return (this.value * 60) / 0.001;
             case SpeedUnits.CentimetersPerMinutes:
-                return (this.value*60) / 0.01;
+                return (this.value * 60) / 0.01;
             case SpeedUnits.DecimetersPerMinutes:
-                return (this.value*60) / 0.1;
+                return (this.value * 60) / 0.1;
             case SpeedUnits.KilometersPerMinutes:
-                return (this.value*60) / 1000;
+                return (this.value * 60) / 1000;
             case SpeedUnits.MillimetersPerHour:
-                return (this.value*3600) / 0.001;
+                return (this.value * 3600) / 0.001;
             case SpeedUnits.CentimetersPerHour:
-                return (this.value*3600) / 0.01;
+                return (this.value * 3600) / 0.01;
             case SpeedUnits.KilometersPerHour:
-                return (this.value*3600) / 1000;
+                return (this.value * 3600) / 1000;
             default:
                 break;
         }
@@ -777,37 +800,39 @@ export class Speed {
             case SpeedUnits.MetersPerSecond:
                 return value;
             case SpeedUnits.MetersPerMinutes:
-                return value/60;
+                return value / 60;
             case SpeedUnits.MetersPerHour:
-                return value/3600;
+                return value / 3600;
             case SpeedUnits.FeetPerSecond:
-                return value*0.3048;
+                return value * 0.3048;
             case SpeedUnits.FeetPerMinute:
-                return value*0.3048/60;
+                return value * 0.3048 / 60;
             case SpeedUnits.FeetPerHour:
-                return value*0.3048/3600;
+                return value * 0.3048 / 3600;
             case SpeedUnits.UsSurveyFeetPerSecond:
-                return value*1200/3937;
+                return value * 1200 / 3937;
             case SpeedUnits.UsSurveyFeetPerMinute:
-                return (value*1200/3937)/60;
+                return (value * 1200 / 3937) / 60;
             case SpeedUnits.UsSurveyFeetPerHour:
-                return (value*1200/3937)/3600;
+                return (value * 1200 / 3937) / 3600;
             case SpeedUnits.InchesPerSecond:
-                return value*2.54e-2;
+                return value * 2.54e-2;
             case SpeedUnits.InchesPerMinute:
-                return (value/60)*2.54e-2;
+                return (value / 60) * 2.54e-2;
             case SpeedUnits.InchesPerHour:
-                return (value/3600)*2.54e-2;
+                return (value / 3600) * 2.54e-2;
             case SpeedUnits.YardsPerSecond:
-                return value*0.9144;
+                return value * 0.9144;
             case SpeedUnits.YardsPerMinute:
-                return value*0.9144/60;
+                return value * 0.9144 / 60;
             case SpeedUnits.YardsPerHour:
-                return value*0.9144/3600;
+                return value * 0.9144 / 3600;
             case SpeedUnits.Knots:
-                return value*0.514444;
+                return value * 0.514444;
             case SpeedUnits.MilesPerHour:
-                return value*0.44704;
+                return value * 0.44704;
+            case SpeedUnits.Mach:
+                return value * 340.29;
             case SpeedUnits.NanometersPerSecond:
                 return (value) * 1e-9;
             case SpeedUnits.MicrometersPerSecond:
@@ -821,23 +846,23 @@ export class Speed {
             case SpeedUnits.KilometersPerSecond:
                 return (value) * 1000;
             case SpeedUnits.NanometersPerMinutes:
-                return (value/60) * 1e-9;
+                return (value / 60) * 1e-9;
             case SpeedUnits.MicrometersPerMinutes:
-                return (value/60) * 0.000001;
+                return (value / 60) * 0.000001;
             case SpeedUnits.MillimetersPerMinutes:
-                return (value/60) * 0.001;
+                return (value / 60) * 0.001;
             case SpeedUnits.CentimetersPerMinutes:
-                return (value/60) * 0.01;
+                return (value / 60) * 0.01;
             case SpeedUnits.DecimetersPerMinutes:
-                return (value/60) * 0.1;
+                return (value / 60) * 0.1;
             case SpeedUnits.KilometersPerMinutes:
-                return (value/60) * 1000;
+                return (value / 60) * 1000;
             case SpeedUnits.MillimetersPerHour:
-                return (value/3600) * 0.001;
+                return (value / 3600) * 0.001;
             case SpeedUnits.CentimetersPerHour:
-                return (value/3600) * 0.01;
+                return (value / 3600) * 0.01;
             case SpeedUnits.KilometersPerHour:
-                return (value/3600) * 1000;
+                return (value / 3600) * 1000;
             default:
                 break;
         }
@@ -847,13 +872,13 @@ export class Speed {
     /**
      * Format the Speed to string.
      * Note! the default format for Speed is MetersPerSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Speed.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Speed.
      * @returns The string format of the Speed.
      */
-    public toString(toUnit: SpeedUnits = SpeedUnits.MetersPerSecond): string {
+    public toString(unit: SpeedUnits = SpeedUnits.MetersPerSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case SpeedUnits.MetersPerSecond:
                 return this.MetersPerSecond + ` m/s`;
@@ -889,6 +914,8 @@ export class Speed {
                 return this.Knots + ` kn`;
             case SpeedUnits.MilesPerHour:
                 return this.MilesPerHour + ` mph`;
+            case SpeedUnits.Mach:
+                return this.Mach + ` M`;
             case SpeedUnits.NanometersPerSecond:
                 return this.NanometersPerSecond + ` `;
             case SpeedUnits.MicrometersPerSecond:
@@ -923,6 +950,89 @@ export class Speed {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Speed unit abbreviation.
+     * Note! the default abbreviation for Speed is MetersPerSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Speed.
+     * @returns The abbreviation string of Speed.
+     */
+    public getUnitAbbreviation(unitAbbreviation: SpeedUnits = SpeedUnits.MetersPerSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case SpeedUnits.MetersPerSecond:
+                return `m/s`;
+            case SpeedUnits.MetersPerMinutes:
+                return `m/min`;
+            case SpeedUnits.MetersPerHour:
+                return `m/h`;
+            case SpeedUnits.FeetPerSecond:
+                return `ft/s`;
+            case SpeedUnits.FeetPerMinute:
+                return `ft/min`;
+            case SpeedUnits.FeetPerHour:
+                return `ft/h`;
+            case SpeedUnits.UsSurveyFeetPerSecond:
+                return `ftUS/s`;
+            case SpeedUnits.UsSurveyFeetPerMinute:
+                return `ftUS/min`;
+            case SpeedUnits.UsSurveyFeetPerHour:
+                return `ftUS/h`;
+            case SpeedUnits.InchesPerSecond:
+                return `in/s`;
+            case SpeedUnits.InchesPerMinute:
+                return `in/min`;
+            case SpeedUnits.InchesPerHour:
+                return `in/h`;
+            case SpeedUnits.YardsPerSecond:
+                return `yd/s`;
+            case SpeedUnits.YardsPerMinute:
+                return `yd/min`;
+            case SpeedUnits.YardsPerHour:
+                return `yd/h`;
+            case SpeedUnits.Knots:
+                return `kn`;
+            case SpeedUnits.MilesPerHour:
+                return `mph`;
+            case SpeedUnits.Mach:
+                return `M`;
+            case SpeedUnits.NanometersPerSecond:
+                return ``;
+            case SpeedUnits.MicrometersPerSecond:
+                return ``;
+            case SpeedUnits.MillimetersPerSecond:
+                return ``;
+            case SpeedUnits.CentimetersPerSecond:
+                return ``;
+            case SpeedUnits.DecimetersPerSecond:
+                return ``;
+            case SpeedUnits.KilometersPerSecond:
+                return ``;
+            case SpeedUnits.NanometersPerMinutes:
+                return ``;
+            case SpeedUnits.MicrometersPerMinutes:
+                return ``;
+            case SpeedUnits.MillimetersPerMinutes:
+                return ``;
+            case SpeedUnits.CentimetersPerMinutes:
+                return ``;
+            case SpeedUnits.DecimetersPerMinutes:
+                return ``;
+            case SpeedUnits.KilometersPerMinutes:
+                return ``;
+            case SpeedUnits.MillimetersPerHour:
+                return ``;
+            case SpeedUnits.CentimetersPerHour:
+                return ``;
+            case SpeedUnits.KilometersPerHour:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

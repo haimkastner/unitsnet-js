@@ -263,13 +263,13 @@ export class Frequency {
             case FrequencyUnits.Hertz:
                 return this.value;
             case FrequencyUnits.RadiansPerSecond:
-                return this.value*6.2831853072;
+                return this.value * 6.2831853072;
             case FrequencyUnits.CyclesPerMinute:
-                return this.value*60;
+                return this.value * 60;
             case FrequencyUnits.CyclesPerHour:
-                return this.value*3600;
+                return this.value * 3600;
             case FrequencyUnits.BeatsPerMinute:
-                return this.value*60;
+                return this.value * 60;
             case FrequencyUnits.PerSecond:
                 return this.value;
             case FrequencyUnits.BUnits:
@@ -294,13 +294,13 @@ export class Frequency {
             case FrequencyUnits.Hertz:
                 return value;
             case FrequencyUnits.RadiansPerSecond:
-                return value/6.2831853072;
+                return value / 6.2831853072;
             case FrequencyUnits.CyclesPerMinute:
-                return value/60;
+                return value / 60;
             case FrequencyUnits.CyclesPerHour:
-                return value/3600;
+                return value / 3600;
             case FrequencyUnits.BeatsPerMinute:
-                return value/60;
+                return value / 60;
             case FrequencyUnits.PerSecond:
                 return value;
             case FrequencyUnits.BUnits:
@@ -322,13 +322,13 @@ export class Frequency {
     /**
      * Format the Frequency to string.
      * Note! the default format for Frequency is Hertz.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Frequency.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Frequency.
      * @returns The string format of the Frequency.
      */
-    public toString(toUnit: FrequencyUnits = FrequencyUnits.Hertz): string {
+    public toString(unit: FrequencyUnits = FrequencyUnits.Hertz): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case FrequencyUnits.Hertz:
                 return this.Hertz + ` Hz`;
@@ -356,6 +356,45 @@ export class Frequency {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Frequency unit abbreviation.
+     * Note! the default abbreviation for Frequency is Hertz.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Frequency.
+     * @returns The abbreviation string of Frequency.
+     */
+    public getUnitAbbreviation(unitAbbreviation: FrequencyUnits = FrequencyUnits.Hertz): string {
+
+        switch (unitAbbreviation) {
+            
+            case FrequencyUnits.Hertz:
+                return `Hz`;
+            case FrequencyUnits.RadiansPerSecond:
+                return `rad/s`;
+            case FrequencyUnits.CyclesPerMinute:
+                return `cpm`;
+            case FrequencyUnits.CyclesPerHour:
+                return `cph`;
+            case FrequencyUnits.BeatsPerMinute:
+                return `bpm`;
+            case FrequencyUnits.PerSecond:
+                return `s⁻¹`;
+            case FrequencyUnits.BUnits:
+                return `B Units`;
+            case FrequencyUnits.Kilohertz:
+                return ``;
+            case FrequencyUnits.Megahertz:
+                return ``;
+            case FrequencyUnits.Gigahertz:
+                return ``;
+            case FrequencyUnits.Terahertz:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

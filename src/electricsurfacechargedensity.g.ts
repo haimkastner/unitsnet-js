@@ -122,13 +122,13 @@ export class ElectricSurfaceChargeDensity {
     /**
      * Format the ElectricSurfaceChargeDensity to string.
      * Note! the default format for ElectricSurfaceChargeDensity is CoulombsPerSquareMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricSurfaceChargeDensity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricSurfaceChargeDensity.
      * @returns The string format of the ElectricSurfaceChargeDensity.
      */
-    public toString(toUnit: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter): string {
+    public toString(unit: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
                 return this.CoulombsPerSquareMeter + ` C/m²`;
@@ -140,6 +140,29 @@ export class ElectricSurfaceChargeDensity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricSurfaceChargeDensity unit abbreviation.
+     * Note! the default abbreviation for ElectricSurfaceChargeDensity is CoulombsPerSquareMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricSurfaceChargeDensity.
+     * @returns The abbreviation string of ElectricSurfaceChargeDensity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
+                return `C/m²`;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
+                return `C/cm²`;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
+                return `C/in²`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

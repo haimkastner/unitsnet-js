@@ -200,19 +200,19 @@ export class Molarity {
             case MolarityUnits.MolesPerCubicMeter:
                 return this.value;
             case MolarityUnits.MolesPerLiter:
-                return this.value*1e-3;
+                return this.value * 1e-3;
             case MolarityUnits.PicomolesPerLiter:
-                return (this.value*1e-3) / 1e-12;
+                return (this.value * 1e-3) / 1e-12;
             case MolarityUnits.NanomolesPerLiter:
-                return (this.value*1e-3) / 1e-9;
+                return (this.value * 1e-3) / 1e-9;
             case MolarityUnits.MicromolesPerLiter:
-                return (this.value*1e-3) / 0.000001;
+                return (this.value * 1e-3) / 0.000001;
             case MolarityUnits.MillimolesPerLiter:
-                return (this.value*1e-3) / 0.001;
+                return (this.value * 1e-3) / 0.001;
             case MolarityUnits.CentimolesPerLiter:
-                return (this.value*1e-3) / 0.01;
+                return (this.value * 1e-3) / 0.01;
             case MolarityUnits.DecimolesPerLiter:
-                return (this.value*1e-3) / 0.1;
+                return (this.value * 1e-3) / 0.1;
             default:
                 break;
         }
@@ -225,19 +225,19 @@ export class Molarity {
             case MolarityUnits.MolesPerCubicMeter:
                 return value;
             case MolarityUnits.MolesPerLiter:
-                return value/1e-3;
+                return value / 1e-3;
             case MolarityUnits.PicomolesPerLiter:
-                return (value/1e-3) * 1e-12;
+                return (value / 1e-3) * 1e-12;
             case MolarityUnits.NanomolesPerLiter:
-                return (value/1e-3) * 1e-9;
+                return (value / 1e-3) * 1e-9;
             case MolarityUnits.MicromolesPerLiter:
-                return (value/1e-3) * 0.000001;
+                return (value / 1e-3) * 0.000001;
             case MolarityUnits.MillimolesPerLiter:
-                return (value/1e-3) * 0.001;
+                return (value / 1e-3) * 0.001;
             case MolarityUnits.CentimolesPerLiter:
-                return (value/1e-3) * 0.01;
+                return (value / 1e-3) * 0.01;
             case MolarityUnits.DecimolesPerLiter:
-                return (value/1e-3) * 0.1;
+                return (value / 1e-3) * 0.1;
             default:
                 break;
         }
@@ -247,13 +247,13 @@ export class Molarity {
     /**
      * Format the Molarity to string.
      * Note! the default format for Molarity is MolesPerCubicMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Molarity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Molarity.
      * @returns The string format of the Molarity.
      */
-    public toString(toUnit: MolarityUnits = MolarityUnits.MolesPerCubicMeter): string {
+    public toString(unit: MolarityUnits = MolarityUnits.MolesPerCubicMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MolarityUnits.MolesPerCubicMeter:
                 return this.MolesPerCubicMeter + ` mol/m³`;
@@ -275,6 +275,39 @@ export class Molarity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Molarity unit abbreviation.
+     * Note! the default abbreviation for Molarity is MolesPerCubicMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Molarity.
+     * @returns The abbreviation string of Molarity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MolarityUnits = MolarityUnits.MolesPerCubicMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case MolarityUnits.MolesPerCubicMeter:
+                return `mol/m³`;
+            case MolarityUnits.MolesPerLiter:
+                return `mol/L`;
+            case MolarityUnits.PicomolesPerLiter:
+                return ``;
+            case MolarityUnits.NanomolesPerLiter:
+                return ``;
+            case MolarityUnits.MicromolesPerLiter:
+                return ``;
+            case MolarityUnits.MillimolesPerLiter:
+                return ``;
+            case MolarityUnits.CentimolesPerLiter:
+                return ``;
+            case MolarityUnits.DecimolesPerLiter:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

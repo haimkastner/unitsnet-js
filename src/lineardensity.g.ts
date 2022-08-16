@@ -326,13 +326,13 @@ export class LinearDensity {
             case LinearDensityUnits.GramsPerMillimeter:
                 return this.value;
             case LinearDensityUnits.GramsPerCentimeter:
-                return this.value/1e-1;
+                return this.value / 1e-1;
             case LinearDensityUnits.GramsPerMeter:
-                return this.value/1e-3;
+                return this.value / 1e-3;
             case LinearDensityUnits.PoundsPerInch:
-                return this.value*5.5997415e-2;
+                return this.value * 5.5997415e-2;
             case LinearDensityUnits.PoundsPerFoot:
-                return this.value/1.48816394;
+                return this.value / 1.48816394;
             case LinearDensityUnits.MicrogramsPerMillimeter:
                 return (this.value) / 0.000001;
             case LinearDensityUnits.MilligramsPerMillimeter:
@@ -340,17 +340,17 @@ export class LinearDensity {
             case LinearDensityUnits.KilogramsPerMillimeter:
                 return (this.value) / 1000;
             case LinearDensityUnits.MicrogramsPerCentimeter:
-                return (this.value/1e-1) / 0.000001;
+                return (this.value / 1e-1) / 0.000001;
             case LinearDensityUnits.MilligramsPerCentimeter:
-                return (this.value/1e-1) / 0.001;
+                return (this.value / 1e-1) / 0.001;
             case LinearDensityUnits.KilogramsPerCentimeter:
-                return (this.value/1e-1) / 1000;
+                return (this.value / 1e-1) / 1000;
             case LinearDensityUnits.MicrogramsPerMeter:
-                return (this.value/1e-3) / 0.000001;
+                return (this.value / 1e-3) / 0.000001;
             case LinearDensityUnits.MilligramsPerMeter:
-                return (this.value/1e-3) / 0.001;
+                return (this.value / 1e-3) / 0.001;
             case LinearDensityUnits.KilogramsPerMeter:
-                return (this.value/1e-3) / 1000;
+                return (this.value / 1e-3) / 1000;
             default:
                 break;
         }
@@ -363,13 +363,13 @@ export class LinearDensity {
             case LinearDensityUnits.GramsPerMillimeter:
                 return value;
             case LinearDensityUnits.GramsPerCentimeter:
-                return value*1e-1;
+                return value * 1e-1;
             case LinearDensityUnits.GramsPerMeter:
-                return value*1e-3;
+                return value * 1e-3;
             case LinearDensityUnits.PoundsPerInch:
-                return value/5.5997415e-2;
+                return value / 5.5997415e-2;
             case LinearDensityUnits.PoundsPerFoot:
-                return value*1.48816394;
+                return value * 1.48816394;
             case LinearDensityUnits.MicrogramsPerMillimeter:
                 return (value) * 0.000001;
             case LinearDensityUnits.MilligramsPerMillimeter:
@@ -377,17 +377,17 @@ export class LinearDensity {
             case LinearDensityUnits.KilogramsPerMillimeter:
                 return (value) * 1000;
             case LinearDensityUnits.MicrogramsPerCentimeter:
-                return (value*1e-1) * 0.000001;
+                return (value * 1e-1) * 0.000001;
             case LinearDensityUnits.MilligramsPerCentimeter:
-                return (value*1e-1) * 0.001;
+                return (value * 1e-1) * 0.001;
             case LinearDensityUnits.KilogramsPerCentimeter:
-                return (value*1e-1) * 1000;
+                return (value * 1e-1) * 1000;
             case LinearDensityUnits.MicrogramsPerMeter:
-                return (value*1e-3) * 0.000001;
+                return (value * 1e-3) * 0.000001;
             case LinearDensityUnits.MilligramsPerMeter:
-                return (value*1e-3) * 0.001;
+                return (value * 1e-3) * 0.001;
             case LinearDensityUnits.KilogramsPerMeter:
-                return (value*1e-3) * 1000;
+                return (value * 1e-3) * 1000;
             default:
                 break;
         }
@@ -397,13 +397,13 @@ export class LinearDensity {
     /**
      * Format the LinearDensity to string.
      * Note! the default format for LinearDensity is KilogramsPerMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the LinearDensity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the LinearDensity.
      * @returns The string format of the LinearDensity.
      */
-    public toString(toUnit: LinearDensityUnits = LinearDensityUnits.KilogramsPerMeter): string {
+    public toString(unit: LinearDensityUnits = LinearDensityUnits.KilogramsPerMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case LinearDensityUnits.GramsPerMillimeter:
                 return this.GramsPerMillimeter + ` g/mm`;
@@ -437,6 +437,51 @@ export class LinearDensity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get LinearDensity unit abbreviation.
+     * Note! the default abbreviation for LinearDensity is KilogramsPerMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the LinearDensity.
+     * @returns The abbreviation string of LinearDensity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: LinearDensityUnits = LinearDensityUnits.KilogramsPerMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case LinearDensityUnits.GramsPerMillimeter:
+                return `g/mm`;
+            case LinearDensityUnits.GramsPerCentimeter:
+                return `g/cm`;
+            case LinearDensityUnits.GramsPerMeter:
+                return `g/m`;
+            case LinearDensityUnits.PoundsPerInch:
+                return `lb/in`;
+            case LinearDensityUnits.PoundsPerFoot:
+                return `lb/ft`;
+            case LinearDensityUnits.MicrogramsPerMillimeter:
+                return ``;
+            case LinearDensityUnits.MilligramsPerMillimeter:
+                return ``;
+            case LinearDensityUnits.KilogramsPerMillimeter:
+                return ``;
+            case LinearDensityUnits.MicrogramsPerCentimeter:
+                return ``;
+            case LinearDensityUnits.MilligramsPerCentimeter:
+                return ``;
+            case LinearDensityUnits.KilogramsPerCentimeter:
+                return ``;
+            case LinearDensityUnits.MicrogramsPerMeter:
+                return ``;
+            case LinearDensityUnits.MilligramsPerMeter:
+                return ``;
+            case LinearDensityUnits.KilogramsPerMeter:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

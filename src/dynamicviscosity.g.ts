@@ -244,7 +244,7 @@ export class DynamicViscosity {
             case DynamicViscosityUnits.PascalSeconds:
                 return this.value;
             case DynamicViscosityUnits.Poise:
-                return this.value*10;
+                return this.value * 10;
             case DynamicViscosityUnits.Reyns:
                 return this.value / 6.8947572931683613e3;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareInch:
@@ -258,7 +258,7 @@ export class DynamicViscosity {
             case DynamicViscosityUnits.MicropascalSeconds:
                 return (this.value) / 0.000001;
             case DynamicViscosityUnits.Centipoise:
-                return (this.value*10) / 0.01;
+                return (this.value * 10) / 0.01;
             default:
                 break;
         }
@@ -273,7 +273,7 @@ export class DynamicViscosity {
             case DynamicViscosityUnits.PascalSeconds:
                 return value;
             case DynamicViscosityUnits.Poise:
-                return value/10;
+                return value / 10;
             case DynamicViscosityUnits.Reyns:
                 return value * 6.8947572931683613e3;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareInch:
@@ -287,7 +287,7 @@ export class DynamicViscosity {
             case DynamicViscosityUnits.MicropascalSeconds:
                 return (value) * 0.000001;
             case DynamicViscosityUnits.Centipoise:
-                return (value/10) * 0.01;
+                return (value / 10) * 0.01;
             default:
                 break;
         }
@@ -297,13 +297,13 @@ export class DynamicViscosity {
     /**
      * Format the DynamicViscosity to string.
      * Note! the default format for DynamicViscosity is NewtonSecondsPerMeterSquared.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the DynamicViscosity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the DynamicViscosity.
      * @returns The string format of the DynamicViscosity.
      */
-    public toString(toUnit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared): string {
+    public toString(unit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case DynamicViscosityUnits.NewtonSecondsPerMeterSquared:
                 return this.NewtonSecondsPerMeterSquared + ` Ns/m²`;
@@ -329,6 +329,43 @@ export class DynamicViscosity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get DynamicViscosity unit abbreviation.
+     * Note! the default abbreviation for DynamicViscosity is NewtonSecondsPerMeterSquared.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the DynamicViscosity.
+     * @returns The abbreviation string of DynamicViscosity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared): string {
+
+        switch (unitAbbreviation) {
+            
+            case DynamicViscosityUnits.NewtonSecondsPerMeterSquared:
+                return `Ns/m²`;
+            case DynamicViscosityUnits.PascalSeconds:
+                return `Pa·s`;
+            case DynamicViscosityUnits.Poise:
+                return `P`;
+            case DynamicViscosityUnits.Reyns:
+                return `reyn`;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareInch:
+                return `lbf·s/in²`;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
+                return `lbf·s/ft²`;
+            case DynamicViscosityUnits.PoundsPerFootSecond:
+                return `lb/ft·s`;
+            case DynamicViscosityUnits.MillipascalSeconds:
+                return ``;
+            case DynamicViscosityUnits.MicropascalSeconds:
+                return ``;
+            case DynamicViscosityUnits.Centipoise:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

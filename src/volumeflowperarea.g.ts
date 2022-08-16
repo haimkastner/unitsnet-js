@@ -74,7 +74,7 @@ export class VolumeFlowPerArea {
             case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter:
                 return this.value;
             case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot:
-                return this.value*196.850394;
+                return this.value * 196.850394;
             default:
                 break;
         }
@@ -87,7 +87,7 @@ export class VolumeFlowPerArea {
             case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter:
                 return value;
             case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot:
-                return value/196.850394;
+                return value / 196.850394;
             default:
                 break;
         }
@@ -97,13 +97,13 @@ export class VolumeFlowPerArea {
     /**
      * Format the VolumeFlowPerArea to string.
      * Note! the default format for VolumeFlowPerArea is CubicMetersPerSecondPerSquareMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the VolumeFlowPerArea.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the VolumeFlowPerArea.
      * @returns The string format of the VolumeFlowPerArea.
      */
-    public toString(toUnit: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter): string {
+    public toString(unit: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter:
                 return this.CubicMetersPerSecondPerSquareMeter + ` m³/(s·m²)`;
@@ -113,6 +113,27 @@ export class VolumeFlowPerArea {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get VolumeFlowPerArea unit abbreviation.
+     * Note! the default abbreviation for VolumeFlowPerArea is CubicMetersPerSecondPerSquareMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the VolumeFlowPerArea.
+     * @returns The abbreviation string of VolumeFlowPerArea.
+     */
+    public getUnitAbbreviation(unitAbbreviation: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter:
+                return `m³/(s·m²)`;
+            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot:
+                return `CFM/ft²`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -5,7 +5,13 @@ export enum ElectricConductivityUnits {
     /** */
     SiemensPerInch,
     /** */
-    SiemensPerFoot
+    SiemensPerFoot,
+    /** */
+    SiemensPerCentimeter,
+    /** */
+    MicrosiemensPerCentimeter,
+    /** */
+    MillisiemensPerCentimeter
 }
 
 /** Electrical conductivity or specific conductance is the reciprocal of electrical resistivity, and measures a material's ability to conduct an electric current. */
@@ -14,6 +20,9 @@ export class ElectricConductivity {
     private siemenspermeterLazy: number | null = null;
     private siemensperinchLazy: number | null = null;
     private siemensperfootLazy: number | null = null;
+    private siemenspercentimeterLazy: number | null = null;
+    private microsiemenspercentimeterLazy: number | null = null;
+    private millisiemenspercentimeterLazy: number | null = null;
 
     /**
      * Create a new ElectricConductivity.
@@ -59,6 +68,30 @@ export class ElectricConductivity {
         return this.siemensperfootLazy = this.convertFromBase(ElectricConductivityUnits.SiemensPerFoot);
     }
 
+    /** */
+    public get SiemensPerCentimeter(): number {
+        if(this.siemenspercentimeterLazy !== null){
+            return this.siemenspercentimeterLazy;
+        }
+        return this.siemenspercentimeterLazy = this.convertFromBase(ElectricConductivityUnits.SiemensPerCentimeter);
+    }
+
+    /** */
+    public get MicrosiemensPerCentimeter(): number {
+        if(this.microsiemenspercentimeterLazy !== null){
+            return this.microsiemenspercentimeterLazy;
+        }
+        return this.microsiemenspercentimeterLazy = this.convertFromBase(ElectricConductivityUnits.MicrosiemensPerCentimeter);
+    }
+
+    /** */
+    public get MillisiemensPerCentimeter(): number {
+        if(this.millisiemenspercentimeterLazy !== null){
+            return this.millisiemenspercentimeterLazy;
+        }
+        return this.millisiemenspercentimeterLazy = this.convertFromBase(ElectricConductivityUnits.MillisiemensPerCentimeter);
+    }
+
     /**
      * Create a new ElectricConductivity instance from a SiemensPerMeter
      *
@@ -89,6 +122,36 @@ export class ElectricConductivity {
         return new ElectricConductivity(value, ElectricConductivityUnits.SiemensPerFoot);
     }
 
+    /**
+     * Create a new ElectricConductivity instance from a SiemensPerCentimeter
+     *
+     * @param value The unit as SiemensPerCentimeter to create a new ElectricConductivity from.
+     * @returns The new ElectricConductivity instance.
+     */
+    public static FromSiemensPerCentimeter(value: number): ElectricConductivity {
+        return new ElectricConductivity(value, ElectricConductivityUnits.SiemensPerCentimeter);
+    }
+
+    /**
+     * Create a new ElectricConductivity instance from a MicrosiemensPerCentimeter
+     *
+     * @param value The unit as MicrosiemensPerCentimeter to create a new ElectricConductivity from.
+     * @returns The new ElectricConductivity instance.
+     */
+    public static FromMicrosiemensPerCentimeter(value: number): ElectricConductivity {
+        return new ElectricConductivity(value, ElectricConductivityUnits.MicrosiemensPerCentimeter);
+    }
+
+    /**
+     * Create a new ElectricConductivity instance from a MillisiemensPerCentimeter
+     *
+     * @param value The unit as MillisiemensPerCentimeter to create a new ElectricConductivity from.
+     * @returns The new ElectricConductivity instance.
+     */
+    public static FromMillisiemensPerCentimeter(value: number): ElectricConductivity {
+        return new ElectricConductivity(value, ElectricConductivityUnits.MillisiemensPerCentimeter);
+    }
+
     private convertFromBase(toUnit: ElectricConductivityUnits): number {
         switch (toUnit) {
                 
@@ -98,6 +161,12 @@ export class ElectricConductivity {
                 return this.value / 3.937007874015748e1;
             case ElectricConductivityUnits.SiemensPerFoot:
                 return this.value / 3.2808398950131234;
+            case ElectricConductivityUnits.SiemensPerCentimeter:
+                return this.value / 1e2;
+            case ElectricConductivityUnits.MicrosiemensPerCentimeter:
+                return (this.value / 1e2) / 0.000001;
+            case ElectricConductivityUnits.MillisiemensPerCentimeter:
+                return (this.value / 1e2) / 0.001;
             default:
                 break;
         }
@@ -113,6 +182,12 @@ export class ElectricConductivity {
                 return value * 3.937007874015748e1;
             case ElectricConductivityUnits.SiemensPerFoot:
                 return value * 3.2808398950131234;
+            case ElectricConductivityUnits.SiemensPerCentimeter:
+                return value * 1e2;
+            case ElectricConductivityUnits.MicrosiemensPerCentimeter:
+                return (value * 1e2) * 0.000001;
+            case ElectricConductivityUnits.MillisiemensPerCentimeter:
+                return (value * 1e2) * 0.001;
             default:
                 break;
         }
@@ -122,13 +197,13 @@ export class ElectricConductivity {
     /**
      * Format the ElectricConductivity to string.
      * Note! the default format for ElectricConductivity is SiemensPerMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricConductivity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricConductivity.
      * @returns The string format of the ElectricConductivity.
      */
-    public toString(toUnit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter): string {
+    public toString(unit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricConductivityUnits.SiemensPerMeter:
                 return this.SiemensPerMeter + ` S/m`;
@@ -136,10 +211,45 @@ export class ElectricConductivity {
                 return this.SiemensPerInch + ` S/in`;
             case ElectricConductivityUnits.SiemensPerFoot:
                 return this.SiemensPerFoot + ` S/ft`;
+            case ElectricConductivityUnits.SiemensPerCentimeter:
+                return this.SiemensPerCentimeter + ` S/cm`;
+            case ElectricConductivityUnits.MicrosiemensPerCentimeter:
+                return this.MicrosiemensPerCentimeter + ` `;
+            case ElectricConductivityUnits.MillisiemensPerCentimeter:
+                return this.MillisiemensPerCentimeter + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricConductivity unit abbreviation.
+     * Note! the default abbreviation for ElectricConductivity is SiemensPerMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricConductivity.
+     * @returns The abbreviation string of ElectricConductivity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricConductivityUnits.SiemensPerMeter:
+                return `S/m`;
+            case ElectricConductivityUnits.SiemensPerInch:
+                return `S/in`;
+            case ElectricConductivityUnits.SiemensPerFoot:
+                return `S/ft`;
+            case ElectricConductivityUnits.SiemensPerCentimeter:
+                return `S/cm`;
+            case ElectricConductivityUnits.MicrosiemensPerCentimeter:
+                return ``;
+            case ElectricConductivityUnits.MillisiemensPerCentimeter:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

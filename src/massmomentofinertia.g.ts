@@ -618,61 +618,61 @@ export class MassMomentOfInertia {
         switch (toUnit) {
                 
             case MassMomentOfInertiaUnits.GramSquareMeters:
-                return this.value*1e3;
+                return this.value * 1e3;
             case MassMomentOfInertiaUnits.GramSquareDecimeters:
-                return this.value*1e5;
+                return this.value * 1e5;
             case MassMomentOfInertiaUnits.GramSquareCentimeters:
-                return this.value*1e7;
+                return this.value * 1e7;
             case MassMomentOfInertiaUnits.GramSquareMillimeters:
-                return this.value*1e9;
+                return this.value * 1e9;
             case MassMomentOfInertiaUnits.TonneSquareMeters:
-                return this.value*1e-3;
+                return this.value * 1e-3;
             case MassMomentOfInertiaUnits.TonneSquareDecimeters:
-                return this.value*1e-1;
+                return this.value * 1e-1;
             case MassMomentOfInertiaUnits.TonneSquareCentimeters:
-                return this.value*1e1;
+                return this.value * 1e1;
             case MassMomentOfInertiaUnits.TonneSquareMilimeters:
-                return this.value*1e3;
+                return this.value * 1e3;
             case MassMomentOfInertiaUnits.PoundSquareFeet:
-                return this.value/4.21401101e-2;
+                return this.value / 4.21401101e-2;
             case MassMomentOfInertiaUnits.PoundSquareInches:
-                return this.value/2.9263965e-4;
+                return this.value / 2.9263965e-4;
             case MassMomentOfInertiaUnits.SlugSquareFeet:
-                return this.value/1.3558179619;
+                return this.value / 1.3558179619;
             case MassMomentOfInertiaUnits.SlugSquareInches:
-                return this.value/9.41540242e-3;
+                return this.value / 9.41540242e-3;
             case MassMomentOfInertiaUnits.MilligramSquareMeters:
-                return (this.value*1e3) / 0.001;
+                return (this.value * 1e3) / 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMeters:
-                return (this.value*1e3) / 1000;
+                return (this.value * 1e3) / 1000;
             case MassMomentOfInertiaUnits.MilligramSquareDecimeters:
-                return (this.value*1e5) / 0.001;
+                return (this.value * 1e5) / 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
-                return (this.value*1e5) / 1000;
+                return (this.value * 1e5) / 1000;
             case MassMomentOfInertiaUnits.MilligramSquareCentimeters:
-                return (this.value*1e7) / 0.001;
+                return (this.value * 1e7) / 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
-                return (this.value*1e7) / 1000;
+                return (this.value * 1e7) / 1000;
             case MassMomentOfInertiaUnits.MilligramSquareMillimeters:
-                return (this.value*1e9) / 0.001;
+                return (this.value * 1e9) / 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
-                return (this.value*1e9) / 1000;
+                return (this.value * 1e9) / 1000;
             case MassMomentOfInertiaUnits.KilotonneSquareMeters:
-                return (this.value*1e-3) / 1000;
+                return (this.value * 1e-3) / 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareMeters:
-                return (this.value*1e-3) / 1000000;
+                return (this.value * 1e-3) / 1000000;
             case MassMomentOfInertiaUnits.KilotonneSquareDecimeters:
-                return (this.value*1e-1) / 1000;
+                return (this.value * 1e-1) / 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareDecimeters:
-                return (this.value*1e-1) / 1000000;
+                return (this.value * 1e-1) / 1000000;
             case MassMomentOfInertiaUnits.KilotonneSquareCentimeters:
-                return (this.value*1e1) / 1000;
+                return (this.value * 1e1) / 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareCentimeters:
-                return (this.value*1e1) / 1000000;
+                return (this.value * 1e1) / 1000000;
             case MassMomentOfInertiaUnits.KilotonneSquareMilimeters:
-                return (this.value*1e3) / 1000;
+                return (this.value * 1e3) / 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareMilimeters:
-                return (this.value*1e3) / 1000000;
+                return (this.value * 1e3) / 1000000;
             default:
                 break;
         }
@@ -683,61 +683,61 @@ export class MassMomentOfInertia {
         switch (fromUnit) {
                 
             case MassMomentOfInertiaUnits.GramSquareMeters:
-                return value/1e3;
+                return value / 1e3;
             case MassMomentOfInertiaUnits.GramSquareDecimeters:
-                return value/1e5;
+                return value / 1e5;
             case MassMomentOfInertiaUnits.GramSquareCentimeters:
-                return value/1e7;
+                return value / 1e7;
             case MassMomentOfInertiaUnits.GramSquareMillimeters:
-                return value/1e9;
+                return value / 1e9;
             case MassMomentOfInertiaUnits.TonneSquareMeters:
-                return value/1e-3;
+                return value / 1e-3;
             case MassMomentOfInertiaUnits.TonneSquareDecimeters:
-                return value/1e-1;
+                return value / 1e-1;
             case MassMomentOfInertiaUnits.TonneSquareCentimeters:
-                return value/1e1;
+                return value / 1e1;
             case MassMomentOfInertiaUnits.TonneSquareMilimeters:
-                return value/1e3;
+                return value / 1e3;
             case MassMomentOfInertiaUnits.PoundSquareFeet:
-                return value*4.21401101e-2;
+                return value * 4.21401101e-2;
             case MassMomentOfInertiaUnits.PoundSquareInches:
-                return value*2.9263965e-4;
+                return value * 2.9263965e-4;
             case MassMomentOfInertiaUnits.SlugSquareFeet:
-                return value*1.3558179619;
+                return value * 1.3558179619;
             case MassMomentOfInertiaUnits.SlugSquareInches:
-                return value*9.41540242e-3;
+                return value * 9.41540242e-3;
             case MassMomentOfInertiaUnits.MilligramSquareMeters:
-                return (value/1e3) * 0.001;
+                return (value / 1e3) * 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMeters:
-                return (value/1e3) * 1000;
+                return (value / 1e3) * 1000;
             case MassMomentOfInertiaUnits.MilligramSquareDecimeters:
-                return (value/1e5) * 0.001;
+                return (value / 1e5) * 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
-                return (value/1e5) * 1000;
+                return (value / 1e5) * 1000;
             case MassMomentOfInertiaUnits.MilligramSquareCentimeters:
-                return (value/1e7) * 0.001;
+                return (value / 1e7) * 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
-                return (value/1e7) * 1000;
+                return (value / 1e7) * 1000;
             case MassMomentOfInertiaUnits.MilligramSquareMillimeters:
-                return (value/1e9) * 0.001;
+                return (value / 1e9) * 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
-                return (value/1e9) * 1000;
+                return (value / 1e9) * 1000;
             case MassMomentOfInertiaUnits.KilotonneSquareMeters:
-                return (value/1e-3) * 1000;
+                return (value / 1e-3) * 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareMeters:
-                return (value/1e-3) * 1000000;
+                return (value / 1e-3) * 1000000;
             case MassMomentOfInertiaUnits.KilotonneSquareDecimeters:
-                return (value/1e-1) * 1000;
+                return (value / 1e-1) * 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareDecimeters:
-                return (value/1e-1) * 1000000;
+                return (value / 1e-1) * 1000000;
             case MassMomentOfInertiaUnits.KilotonneSquareCentimeters:
-                return (value/1e1) * 1000;
+                return (value / 1e1) * 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareCentimeters:
-                return (value/1e1) * 1000000;
+                return (value / 1e1) * 1000000;
             case MassMomentOfInertiaUnits.KilotonneSquareMilimeters:
-                return (value/1e3) * 1000;
+                return (value / 1e3) * 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareMilimeters:
-                return (value/1e3) * 1000000;
+                return (value / 1e3) * 1000000;
             default:
                 break;
         }
@@ -747,13 +747,13 @@ export class MassMomentOfInertia {
     /**
      * Format the MassMomentOfInertia to string.
      * Note! the default format for MassMomentOfInertia is KilogramSquareMeters.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the MassMomentOfInertia.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the MassMomentOfInertia.
      * @returns The string format of the MassMomentOfInertia.
      */
-    public toString(toUnit: MassMomentOfInertiaUnits = MassMomentOfInertiaUnits.KilogramSquareMeters): string {
+    public toString(unit: MassMomentOfInertiaUnits = MassMomentOfInertiaUnits.KilogramSquareMeters): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MassMomentOfInertiaUnits.GramSquareMeters:
                 return this.GramSquareMeters + ` g·m²`;
@@ -815,6 +815,79 @@ export class MassMomentOfInertia {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get MassMomentOfInertia unit abbreviation.
+     * Note! the default abbreviation for MassMomentOfInertia is KilogramSquareMeters.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the MassMomentOfInertia.
+     * @returns The abbreviation string of MassMomentOfInertia.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MassMomentOfInertiaUnits = MassMomentOfInertiaUnits.KilogramSquareMeters): string {
+
+        switch (unitAbbreviation) {
+            
+            case MassMomentOfInertiaUnits.GramSquareMeters:
+                return `g·m²`;
+            case MassMomentOfInertiaUnits.GramSquareDecimeters:
+                return `g·dm²`;
+            case MassMomentOfInertiaUnits.GramSquareCentimeters:
+                return `g·cm²`;
+            case MassMomentOfInertiaUnits.GramSquareMillimeters:
+                return `g·mm²`;
+            case MassMomentOfInertiaUnits.TonneSquareMeters:
+                return `t·m²`;
+            case MassMomentOfInertiaUnits.TonneSquareDecimeters:
+                return `t·dm²`;
+            case MassMomentOfInertiaUnits.TonneSquareCentimeters:
+                return `t·cm²`;
+            case MassMomentOfInertiaUnits.TonneSquareMilimeters:
+                return `t·mm²`;
+            case MassMomentOfInertiaUnits.PoundSquareFeet:
+                return `lb·ft²`;
+            case MassMomentOfInertiaUnits.PoundSquareInches:
+                return `lb·in²`;
+            case MassMomentOfInertiaUnits.SlugSquareFeet:
+                return `slug·ft²`;
+            case MassMomentOfInertiaUnits.SlugSquareInches:
+                return `slug·in²`;
+            case MassMomentOfInertiaUnits.MilligramSquareMeters:
+                return ``;
+            case MassMomentOfInertiaUnits.KilogramSquareMeters:
+                return ``;
+            case MassMomentOfInertiaUnits.MilligramSquareDecimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.MilligramSquareCentimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.MilligramSquareMillimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.KilotonneSquareMeters:
+                return ``;
+            case MassMomentOfInertiaUnits.MegatonneSquareMeters:
+                return ``;
+            case MassMomentOfInertiaUnits.KilotonneSquareDecimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.MegatonneSquareDecimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.KilotonneSquareCentimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.MegatonneSquareCentimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters:
+                return ``;
+            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

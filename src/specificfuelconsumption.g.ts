@@ -114,9 +114,9 @@ export class SpecificFuelConsumption {
         switch (toUnit) {
                 
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
-                return this.value/28.33;
+                return this.value / 28.33;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return this.value/28.33;
+                return this.value / 28.33;
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
                 return this.value;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
@@ -131,9 +131,9 @@ export class SpecificFuelConsumption {
         switch (fromUnit) {
                 
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
-                return value*28.33;
+                return value * 28.33;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return value*28.33;
+                return value * 28.33;
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
                 return value;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
@@ -147,26 +147,51 @@ export class SpecificFuelConsumption {
     /**
      * Format the SpecificFuelConsumption to string.
      * Note! the default format for SpecificFuelConsumption is GramsPerKiloNewtonSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the SpecificFuelConsumption.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the SpecificFuelConsumption.
      * @returns The string format of the SpecificFuelConsumption.
      */
-    public toString(toUnit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond): string {
+    public toString(unit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
-                return this.PoundsMassPerPoundForceHour + ` lb/(lbf�h)`;
+                return this.PoundsMassPerPoundForceHour + ` lb/(lbf·h)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return this.KilogramsPerKilogramForceHour + ` kg/(kgf�h)`;
+                return this.KilogramsPerKilogramForceHour + ` kg/(kgf·h)`;
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return this.GramsPerKiloNewtonSecond + ` g/(kN�s)`;
+                return this.GramsPerKiloNewtonSecond + ` g/(kN·s)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
                 return this.KilogramsPerKiloNewtonSecond + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get SpecificFuelConsumption unit abbreviation.
+     * Note! the default abbreviation for SpecificFuelConsumption is GramsPerKiloNewtonSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the SpecificFuelConsumption.
+     * @returns The abbreviation string of SpecificFuelConsumption.
+     */
+    public getUnitAbbreviation(unitAbbreviation: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
+                return `lb/(lbf·h)`;
+            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
+                return `kg/(kgf·h)`;
+            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
+                return `g/(kN·s)`;
+            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

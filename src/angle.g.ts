@@ -366,31 +366,31 @@ export class Angle {
         switch (toUnit) {
                 
             case AngleUnits.Radians:
-                return this.value/180*Math.PI;
+                return this.value / 180 * Math.PI;
             case AngleUnits.Degrees:
                 return this.value;
             case AngleUnits.Arcminutes:
-                return this.value*60;
+                return this.value * 60;
             case AngleUnits.Arcseconds:
-                return this.value*3600;
+                return this.value * 3600;
             case AngleUnits.Gradians:
-                return this.value/0.9;
+                return this.value / 0.9;
             case AngleUnits.NatoMils:
-                return this.value*160/9;
+                return this.value * 160 / 9;
             case AngleUnits.Revolutions:
-                return this.value/360;
+                return this.value / 360;
             case AngleUnits.Tilt:
-                return Math.sin(this.value/180*Math.PI);
+                return Math.sin(this.value / 180 * Math.PI);
             case AngleUnits.Nanoradians:
-                return (this.value/180*Math.PI) / 1e-9;
+                return (this.value / 180 * Math.PI) / 1e-9;
             case AngleUnits.Microradians:
-                return (this.value/180*Math.PI) / 0.000001;
+                return (this.value / 180 * Math.PI) / 0.000001;
             case AngleUnits.Milliradians:
-                return (this.value/180*Math.PI) / 0.001;
+                return (this.value / 180 * Math.PI) / 0.001;
             case AngleUnits.Centiradians:
-                return (this.value/180*Math.PI) / 0.01;
+                return (this.value / 180 * Math.PI) / 0.01;
             case AngleUnits.Deciradians:
-                return (this.value/180*Math.PI) / 0.1;
+                return (this.value / 180 * Math.PI) / 0.1;
             case AngleUnits.Nanodegrees:
                 return (this.value) / 1e-9;
             case AngleUnits.Microdegrees:
@@ -407,31 +407,31 @@ export class Angle {
         switch (fromUnit) {
                 
             case AngleUnits.Radians:
-                return value*180/Math.PI;
+                return value * 180 / Math.PI;
             case AngleUnits.Degrees:
                 return value;
             case AngleUnits.Arcminutes:
-                return value/60;
+                return value / 60;
             case AngleUnits.Arcseconds:
-                return value/3600;
+                return value / 3600;
             case AngleUnits.Gradians:
-                return value*0.9;
+                return value * 0.9;
             case AngleUnits.NatoMils:
-                return value*9/160;
+                return value * 9 / 160;
             case AngleUnits.Revolutions:
-                return value*360;
+                return value * 360;
             case AngleUnits.Tilt:
-                return Math.asin(value)*180/Math.PI;
+                return Math.asin(value) * 180 / Math.PI;
             case AngleUnits.Nanoradians:
-                return (value*180/Math.PI) * 1e-9;
+                return (value * 180 / Math.PI) * 1e-9;
             case AngleUnits.Microradians:
-                return (value*180/Math.PI) * 0.000001;
+                return (value * 180 / Math.PI) * 0.000001;
             case AngleUnits.Milliradians:
-                return (value*180/Math.PI) * 0.001;
+                return (value * 180 / Math.PI) * 0.001;
             case AngleUnits.Centiradians:
-                return (value*180/Math.PI) * 0.01;
+                return (value * 180 / Math.PI) * 0.01;
             case AngleUnits.Deciradians:
-                return (value*180/Math.PI) * 0.1;
+                return (value * 180 / Math.PI) * 0.1;
             case AngleUnits.Nanodegrees:
                 return (value) * 1e-9;
             case AngleUnits.Microdegrees:
@@ -447,13 +447,13 @@ export class Angle {
     /**
      * Format the Angle to string.
      * Note! the default format for Angle is Degrees.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Angle.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Angle.
      * @returns The string format of the Angle.
      */
-    public toString(toUnit: AngleUnits = AngleUnits.Degrees): string {
+    public toString(unit: AngleUnits = AngleUnits.Degrees): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case AngleUnits.Radians:
                 return this.Radians + ` rad`;
@@ -491,6 +491,55 @@ export class Angle {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Angle unit abbreviation.
+     * Note! the default abbreviation for Angle is Degrees.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Angle.
+     * @returns The abbreviation string of Angle.
+     */
+    public getUnitAbbreviation(unitAbbreviation: AngleUnits = AngleUnits.Degrees): string {
+
+        switch (unitAbbreviation) {
+            
+            case AngleUnits.Radians:
+                return `rad`;
+            case AngleUnits.Degrees:
+                return `°`;
+            case AngleUnits.Arcminutes:
+                return `'`;
+            case AngleUnits.Arcseconds:
+                return `″`;
+            case AngleUnits.Gradians:
+                return `g`;
+            case AngleUnits.NatoMils:
+                return `mil`;
+            case AngleUnits.Revolutions:
+                return `r`;
+            case AngleUnits.Tilt:
+                return `sin(θ)`;
+            case AngleUnits.Nanoradians:
+                return ``;
+            case AngleUnits.Microradians:
+                return ``;
+            case AngleUnits.Milliradians:
+                return ``;
+            case AngleUnits.Centiradians:
+                return ``;
+            case AngleUnits.Deciradians:
+                return ``;
+            case AngleUnits.Nanodegrees:
+                return ``;
+            case AngleUnits.Microdegrees:
+                return ``;
+            case AngleUnits.Millidegrees:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

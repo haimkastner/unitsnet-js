@@ -97,13 +97,13 @@ export class PowerRatio {
     /**
      * Format the PowerRatio to string.
      * Note! the default format for PowerRatio is DecibelWatts.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the PowerRatio.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the PowerRatio.
      * @returns The string format of the PowerRatio.
      */
-    public toString(toUnit: PowerRatioUnits = PowerRatioUnits.DecibelWatts): string {
+    public toString(unit: PowerRatioUnits = PowerRatioUnits.DecibelWatts): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case PowerRatioUnits.DecibelWatts:
                 return this.DecibelWatts + ` dBW`;
@@ -113,6 +113,27 @@ export class PowerRatio {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get PowerRatio unit abbreviation.
+     * Note! the default abbreviation for PowerRatio is DecibelWatts.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the PowerRatio.
+     * @returns The abbreviation string of PowerRatio.
+     */
+    public getUnitAbbreviation(unitAbbreviation: PowerRatioUnits = PowerRatioUnits.DecibelWatts): string {
+
+        switch (unitAbbreviation) {
+            
+            case PowerRatioUnits.DecibelWatts:
+                return `dBW`;
+            case PowerRatioUnits.DecibelMilliwatts:
+                return `dBmW`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -25,6 +25,8 @@ export enum PressureUnits {
     /** */
     PoundsForcePerSquareInch,
     /** */
+    PoundsForcePerSquareMil,
+    /** */
     PoundsForcePerSquareFoot,
     /** */
     TonnesForcePerSquareMillimeter,
@@ -89,6 +91,8 @@ export enum PressureUnits {
     /** */
     KilopoundsForcePerSquareInch,
     /** */
+    KilopoundsForcePerSquareMil,
+    /** */
     KilopoundsForcePerSquareFoot
 }
 
@@ -107,6 +111,7 @@ export class Pressure {
     private technicalatmospheresLazy: number | null = null;
     private torrsLazy: number | null = null;
     private poundsforcepersquareinchLazy: number | null = null;
+    private poundsforcepersquaremilLazy: number | null = null;
     private poundsforcepersquarefootLazy: number | null = null;
     private tonnesforcepersquaremillimeterLazy: number | null = null;
     private tonnesforcepersquaremeterLazy: number | null = null;
@@ -139,6 +144,7 @@ export class Pressure {
     private kilonewtonspersquarecentimeterLazy: number | null = null;
     private kilonewtonspersquaremillimeterLazy: number | null = null;
     private kilopoundsforcepersquareinchLazy: number | null = null;
+    private kilopoundsforcepersquaremilLazy: number | null = null;
     private kilopoundsforcepersquarefootLazy: number | null = null;
 
     /**
@@ -255,6 +261,14 @@ export class Pressure {
             return this.poundsforcepersquareinchLazy;
         }
         return this.poundsforcepersquareinchLazy = this.convertFromBase(PressureUnits.PoundsForcePerSquareInch);
+    }
+
+    /** */
+    public get PoundsForcePerSquareMil(): number {
+        if(this.poundsforcepersquaremilLazy !== null){
+            return this.poundsforcepersquaremilLazy;
+        }
+        return this.poundsforcepersquaremilLazy = this.convertFromBase(PressureUnits.PoundsForcePerSquareMil);
     }
 
     /** */
@@ -514,6 +528,14 @@ export class Pressure {
     }
 
     /** */
+    public get KilopoundsForcePerSquareMil(): number {
+        if(this.kilopoundsforcepersquaremilLazy !== null){
+            return this.kilopoundsforcepersquaremilLazy;
+        }
+        return this.kilopoundsforcepersquaremilLazy = this.convertFromBase(PressureUnits.KilopoundsForcePerSquareMil);
+    }
+
+    /** */
     public get KilopoundsForcePerSquareFoot(): number {
         if(this.kilopoundsforcepersquarefootLazy !== null){
             return this.kilopoundsforcepersquarefootLazy;
@@ -639,6 +661,16 @@ export class Pressure {
      */
     public static FromPoundsForcePerSquareInch(value: number): Pressure {
         return new Pressure(value, PressureUnits.PoundsForcePerSquareInch);
+    }
+
+    /**
+     * Create a new Pressure instance from a PoundsForcePerSquareMil
+     *
+     * @param value The unit as PoundsForcePerSquareMil to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromPoundsForcePerSquareMil(value: number): Pressure {
+        return new Pressure(value, PressureUnits.PoundsForcePerSquareMil);
     }
 
     /**
@@ -962,6 +994,16 @@ export class Pressure {
     }
 
     /**
+     * Create a new Pressure instance from a KilopoundsForcePerSquareMil
+     *
+     * @param value The unit as KilopoundsForcePerSquareMil to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromKilopoundsForcePerSquareMil(value: number): Pressure {
+        return new Pressure(value, PressureUnits.KilopoundsForcePerSquareMil);
+    }
+
+    /**
      * Create a new Pressure instance from a KilopoundsForcePerSquareFoot
      *
      * @param value The unit as KilopoundsForcePerSquareFoot to create a new Pressure from.
@@ -977,51 +1019,53 @@ export class Pressure {
             case PressureUnits.Pascals:
                 return this.value;
             case PressureUnits.Atmospheres:
-                return this.value/(1.01325*1e5);
+                return this.value / (1.01325 * 1e5);
             case PressureUnits.Bars:
-                return this.value/1e5;
+                return this.value / 1e5;
             case PressureUnits.KilogramsForcePerSquareMeter:
-                return this.value*0.101971619222242;
+                return this.value * 0.101971619222242;
             case PressureUnits.KilogramsForcePerSquareCentimeter:
-                return this.value/9.80665e4;
+                return this.value / 9.80665e4;
             case PressureUnits.KilogramsForcePerSquareMillimeter:
-                return this.value/9.80665e6;
+                return this.value / 9.80665e6;
             case PressureUnits.NewtonsPerSquareMeter:
                 return this.value;
             case PressureUnits.NewtonsPerSquareCentimeter:
-                return this.value/1e4;
+                return this.value / 1e4;
             case PressureUnits.NewtonsPerSquareMillimeter:
-                return this.value/1e6;
+                return this.value / 1e6;
             case PressureUnits.TechnicalAtmospheres:
-                return this.value/(9.80680592331*1e4);
+                return this.value / (9.80680592331 * 1e4);
             case PressureUnits.Torrs:
-                return this.value/(1.3332266752*1e2);
+                return this.value / (1.3332266752 * 1e2);
             case PressureUnits.PoundsForcePerSquareInch:
-                return this.value/6.894757293168361e3;
+                return this.value / 6.894757293168361e3;
+            case PressureUnits.PoundsForcePerSquareMil:
+                return this.value / 6.894757293168361e9;
             case PressureUnits.PoundsForcePerSquareFoot:
-                return this.value/4.788025898033584e1;
+                return this.value / 4.788025898033584e1;
             case PressureUnits.TonnesForcePerSquareMillimeter:
-                return this.value/9.80665e9;
+                return this.value / 9.80665e9;
             case PressureUnits.TonnesForcePerSquareMeter:
-                return this.value/9.80665e3;
+                return this.value / 9.80665e3;
             case PressureUnits.MetersOfHead:
-                return this.value*0.0001019977334;
+                return this.value * 0.0001019977334;
             case PressureUnits.TonnesForcePerSquareCentimeter:
-                return this.value/9.80665e7;
+                return this.value / 9.80665e7;
             case PressureUnits.FeetOfHead:
-                return this.value*0.000334552565551;
+                return this.value * 0.000334552565551;
             case PressureUnits.MillimetersOfMercury:
-                return this.value*7.50061561302643e-3;
+                return this.value * 7.50061561302643e-3;
             case PressureUnits.InchesOfMercury:
-                return this.value*2.95299830714159e-4;
+                return this.value * 2.95299830714159e-4;
             case PressureUnits.DynesPerSquareCentimeter:
-                return this.value/1.0e-1;
+                return this.value / 1.0e-1;
             case PressureUnits.PoundsPerInchSecondSquared:
-                return this.value/1.785796732283465e1;
+                return this.value / 1.785796732283465e1;
             case PressureUnits.MillimeterOfWaterColumn:
-                return this.value/9.806650000000272e0;
+                return this.value / 9.806650000000272e0;
             case PressureUnits.InchesOfWaterColumn:
-                return this.value/249.08890833333;
+                return this.value / 249.08890833333;
             case PressureUnits.MetersOfElevation:
                 return (1.0 - Math.pow(this.value / 101325.0, 0.190284)) * 44307.69396;
             case PressureUnits.FeetOfElevation:
@@ -1041,29 +1085,31 @@ export class Pressure {
             case PressureUnits.Gigapascals:
                 return (this.value) / 1000000000;
             case PressureUnits.Microbars:
-                return (this.value/1e5) / 0.000001;
+                return (this.value / 1e5) / 0.000001;
             case PressureUnits.Millibars:
-                return (this.value/1e5) / 0.001;
+                return (this.value / 1e5) / 0.001;
             case PressureUnits.Centibars:
-                return (this.value/1e5) / 0.01;
+                return (this.value / 1e5) / 0.01;
             case PressureUnits.Decibars:
-                return (this.value/1e5) / 0.1;
+                return (this.value / 1e5) / 0.1;
             case PressureUnits.Kilobars:
-                return (this.value/1e5) / 1000;
+                return (this.value / 1e5) / 1000;
             case PressureUnits.Megabars:
-                return (this.value/1e5) / 1000000;
+                return (this.value / 1e5) / 1000000;
             case PressureUnits.KilonewtonsPerSquareMeter:
                 return (this.value) / 1000;
             case PressureUnits.MeganewtonsPerSquareMeter:
                 return (this.value) / 1000000;
             case PressureUnits.KilonewtonsPerSquareCentimeter:
-                return (this.value/1e4) / 1000;
+                return (this.value / 1e4) / 1000;
             case PressureUnits.KilonewtonsPerSquareMillimeter:
-                return (this.value/1e6) / 1000;
+                return (this.value / 1e6) / 1000;
             case PressureUnits.KilopoundsForcePerSquareInch:
-                return (this.value/6.894757293168361e3) / 1000;
+                return (this.value / 6.894757293168361e3) / 1000;
+            case PressureUnits.KilopoundsForcePerSquareMil:
+                return (this.value / 6.894757293168361e9) / 1000;
             case PressureUnits.KilopoundsForcePerSquareFoot:
-                return (this.value/4.788025898033584e1) / 1000;
+                return (this.value / 4.788025898033584e1) / 1000;
             default:
                 break;
         }
@@ -1076,51 +1122,53 @@ export class Pressure {
             case PressureUnits.Pascals:
                 return value;
             case PressureUnits.Atmospheres:
-                return value*1.01325*1e5;
+                return value * 1.01325 * 1e5;
             case PressureUnits.Bars:
-                return value*1e5;
+                return value * 1e5;
             case PressureUnits.KilogramsForcePerSquareMeter:
-                return value*9.80665019960652;
+                return value * 9.80665019960652;
             case PressureUnits.KilogramsForcePerSquareCentimeter:
-                return value*9.80665e4;
+                return value * 9.80665e4;
             case PressureUnits.KilogramsForcePerSquareMillimeter:
-                return value*9.80665e6;
+                return value * 9.80665e6;
             case PressureUnits.NewtonsPerSquareMeter:
                 return value;
             case PressureUnits.NewtonsPerSquareCentimeter:
-                return value*1e4;
+                return value * 1e4;
             case PressureUnits.NewtonsPerSquareMillimeter:
-                return value*1e6;
+                return value * 1e6;
             case PressureUnits.TechnicalAtmospheres:
-                return value*9.80680592331*1e4;
+                return value * 9.80680592331 * 1e4;
             case PressureUnits.Torrs:
-                return value*1.3332266752*1e2;
+                return value * 1.3332266752 * 1e2;
             case PressureUnits.PoundsForcePerSquareInch:
-                return value*6.894757293168361e3;
+                return value * 6.894757293168361e3;
+            case PressureUnits.PoundsForcePerSquareMil:
+                return value * 6.894757293168361e9;
             case PressureUnits.PoundsForcePerSquareFoot:
-                return value*4.788025898033584e1;
+                return value * 4.788025898033584e1;
             case PressureUnits.TonnesForcePerSquareMillimeter:
-                return value*9.80665e9;
+                return value * 9.80665e9;
             case PressureUnits.TonnesForcePerSquareMeter:
-                return value*9.80665e3;
+                return value * 9.80665e3;
             case PressureUnits.MetersOfHead:
-                return value*9804.139432;
+                return value * 9804.139432;
             case PressureUnits.TonnesForcePerSquareCentimeter:
-                return value*9.80665e7;
+                return value * 9.80665e7;
             case PressureUnits.FeetOfHead:
-                return value*2989.0669;
+                return value * 2989.0669;
             case PressureUnits.MillimetersOfMercury:
-                return value/7.50061561302643e-3;
+                return value / 7.50061561302643e-3;
             case PressureUnits.InchesOfMercury:
-                return value/2.95299830714159e-4;
+                return value / 2.95299830714159e-4;
             case PressureUnits.DynesPerSquareCentimeter:
-                return value*1.0e-1;
+                return value * 1.0e-1;
             case PressureUnits.PoundsPerInchSecondSquared:
-                return value*1.785796732283465e1;
+                return value * 1.785796732283465e1;
             case PressureUnits.MillimeterOfWaterColumn:
-                return value*9.806650000000272e0;
+                return value * 9.806650000000272e0;
             case PressureUnits.InchesOfWaterColumn:
-                return value*249.08890833333;
+                return value * 249.08890833333;
             case PressureUnits.MetersOfElevation:
                 return Math.pow(1.0 - (value / 44307.69396), 5.2553026003237266401799415610351) * 101325.0;
             case PressureUnits.FeetOfElevation:
@@ -1140,29 +1188,31 @@ export class Pressure {
             case PressureUnits.Gigapascals:
                 return (value) * 1000000000;
             case PressureUnits.Microbars:
-                return (value*1e5) * 0.000001;
+                return (value * 1e5) * 0.000001;
             case PressureUnits.Millibars:
-                return (value*1e5) * 0.001;
+                return (value * 1e5) * 0.001;
             case PressureUnits.Centibars:
-                return (value*1e5) * 0.01;
+                return (value * 1e5) * 0.01;
             case PressureUnits.Decibars:
-                return (value*1e5) * 0.1;
+                return (value * 1e5) * 0.1;
             case PressureUnits.Kilobars:
-                return (value*1e5) * 1000;
+                return (value * 1e5) * 1000;
             case PressureUnits.Megabars:
-                return (value*1e5) * 1000000;
+                return (value * 1e5) * 1000000;
             case PressureUnits.KilonewtonsPerSquareMeter:
                 return (value) * 1000;
             case PressureUnits.MeganewtonsPerSquareMeter:
                 return (value) * 1000000;
             case PressureUnits.KilonewtonsPerSquareCentimeter:
-                return (value*1e4) * 1000;
+                return (value * 1e4) * 1000;
             case PressureUnits.KilonewtonsPerSquareMillimeter:
-                return (value*1e6) * 1000;
+                return (value * 1e6) * 1000;
             case PressureUnits.KilopoundsForcePerSquareInch:
-                return (value*6.894757293168361e3) * 1000;
+                return (value * 6.894757293168361e3) * 1000;
+            case PressureUnits.KilopoundsForcePerSquareMil:
+                return (value * 6.894757293168361e9) * 1000;
             case PressureUnits.KilopoundsForcePerSquareFoot:
-                return (value*4.788025898033584e1) * 1000;
+                return (value * 4.788025898033584e1) * 1000;
             default:
                 break;
         }
@@ -1172,13 +1222,13 @@ export class Pressure {
     /**
      * Format the Pressure to string.
      * Note! the default format for Pressure is Pascals.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Pressure.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Pressure.
      * @returns The string format of the Pressure.
      */
-    public toString(toUnit: PressureUnits = PressureUnits.Pascals): string {
+    public toString(unit: PressureUnits = PressureUnits.Pascals): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case PressureUnits.Pascals:
                 return this.Pascals + ` Pa`;
@@ -1204,6 +1254,8 @@ export class Pressure {
                 return this.Torrs + ` torr`;
             case PressureUnits.PoundsForcePerSquareInch:
                 return this.PoundsForcePerSquareInch + ` psi`;
+            case PressureUnits.PoundsForcePerSquareMil:
+                return this.PoundsForcePerSquareMil + ` lb/mil²`;
             case PressureUnits.PoundsForcePerSquareFoot:
                 return this.PoundsForcePerSquareFoot + ` lb/ft²`;
             case PressureUnits.TonnesForcePerSquareMillimeter:
@@ -1268,12 +1320,125 @@ export class Pressure {
                 return this.KilonewtonsPerSquareMillimeter + ` `;
             case PressureUnits.KilopoundsForcePerSquareInch:
                 return this.KilopoundsForcePerSquareInch + ` `;
+            case PressureUnits.KilopoundsForcePerSquareMil:
+                return this.KilopoundsForcePerSquareMil + ` `;
             case PressureUnits.KilopoundsForcePerSquareFoot:
                 return this.KilopoundsForcePerSquareFoot + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Pressure unit abbreviation.
+     * Note! the default abbreviation for Pressure is Pascals.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Pressure.
+     * @returns The abbreviation string of Pressure.
+     */
+    public getUnitAbbreviation(unitAbbreviation: PressureUnits = PressureUnits.Pascals): string {
+
+        switch (unitAbbreviation) {
+            
+            case PressureUnits.Pascals:
+                return `Pa`;
+            case PressureUnits.Atmospheres:
+                return `atm`;
+            case PressureUnits.Bars:
+                return `bar`;
+            case PressureUnits.KilogramsForcePerSquareMeter:
+                return `kgf/m²`;
+            case PressureUnits.KilogramsForcePerSquareCentimeter:
+                return `kgf/cm²`;
+            case PressureUnits.KilogramsForcePerSquareMillimeter:
+                return `kgf/mm²`;
+            case PressureUnits.NewtonsPerSquareMeter:
+                return `N/m²`;
+            case PressureUnits.NewtonsPerSquareCentimeter:
+                return `N/cm²`;
+            case PressureUnits.NewtonsPerSquareMillimeter:
+                return `N/mm²`;
+            case PressureUnits.TechnicalAtmospheres:
+                return `at`;
+            case PressureUnits.Torrs:
+                return `torr`;
+            case PressureUnits.PoundsForcePerSquareInch:
+                return `psi`;
+            case PressureUnits.PoundsForcePerSquareMil:
+                return `lb/mil²`;
+            case PressureUnits.PoundsForcePerSquareFoot:
+                return `lb/ft²`;
+            case PressureUnits.TonnesForcePerSquareMillimeter:
+                return `tf/mm²`;
+            case PressureUnits.TonnesForcePerSquareMeter:
+                return `tf/m²`;
+            case PressureUnits.MetersOfHead:
+                return `m of head`;
+            case PressureUnits.TonnesForcePerSquareCentimeter:
+                return `tf/cm²`;
+            case PressureUnits.FeetOfHead:
+                return `ft of head`;
+            case PressureUnits.MillimetersOfMercury:
+                return `mmHg`;
+            case PressureUnits.InchesOfMercury:
+                return `inHg`;
+            case PressureUnits.DynesPerSquareCentimeter:
+                return `dyn/cm²`;
+            case PressureUnits.PoundsPerInchSecondSquared:
+                return `lbm/(in·s²)`;
+            case PressureUnits.MillimeterOfWaterColumn:
+                return `mmH2O`;
+            case PressureUnits.InchesOfWaterColumn:
+                return `inH2O`;
+            case PressureUnits.MetersOfElevation:
+                return `m of elevation`;
+            case PressureUnits.FeetOfElevation:
+                return `ft of elevation`;
+            case PressureUnits.Micropascals:
+                return ``;
+            case PressureUnits.Millipascals:
+                return ``;
+            case PressureUnits.Decapascals:
+                return ``;
+            case PressureUnits.Hectopascals:
+                return ``;
+            case PressureUnits.Kilopascals:
+                return ``;
+            case PressureUnits.Megapascals:
+                return ``;
+            case PressureUnits.Gigapascals:
+                return ``;
+            case PressureUnits.Microbars:
+                return ``;
+            case PressureUnits.Millibars:
+                return ``;
+            case PressureUnits.Centibars:
+                return ``;
+            case PressureUnits.Decibars:
+                return ``;
+            case PressureUnits.Kilobars:
+                return ``;
+            case PressureUnits.Megabars:
+                return ``;
+            case PressureUnits.KilonewtonsPerSquareMeter:
+                return ``;
+            case PressureUnits.MeganewtonsPerSquareMeter:
+                return ``;
+            case PressureUnits.KilonewtonsPerSquareCentimeter:
+                return ``;
+            case PressureUnits.KilonewtonsPerSquareMillimeter:
+                return ``;
+            case PressureUnits.KilopoundsForcePerSquareInch:
+                return ``;
+            case PressureUnits.KilopoundsForcePerSquareMil:
+                return ``;
+            case PressureUnits.KilopoundsForcePerSquareFoot:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

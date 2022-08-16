@@ -93,11 +93,11 @@ export class BrakeSpecificFuelConsumption {
         switch (toUnit) {
                 
             case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                return this.value*3.6e9;
+                return this.value * 3.6e9;
             case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
                 return this.value;
             case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                return this.value/1.689659410672e-7;
+                return this.value / 1.689659410672e-7;
             default:
                 break;
         }
@@ -108,11 +108,11 @@ export class BrakeSpecificFuelConsumption {
         switch (fromUnit) {
                 
             case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                return value/3.6e9;
+                return value / 3.6e9;
             case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
                 return value;
             case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                return value*1.689659410672e-7;
+                return value * 1.689659410672e-7;
             default:
                 break;
         }
@@ -122,13 +122,13 @@ export class BrakeSpecificFuelConsumption {
     /**
      * Format the BrakeSpecificFuelConsumption to string.
      * Note! the default format for BrakeSpecificFuelConsumption is KilogramsPerJoule.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the BrakeSpecificFuelConsumption.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the BrakeSpecificFuelConsumption.
      * @returns The string format of the BrakeSpecificFuelConsumption.
      */
-    public toString(toUnit: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule): string {
+    public toString(unit: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
                 return this.GramsPerKiloWattHour + ` g/kWh`;
@@ -140,6 +140,29 @@ export class BrakeSpecificFuelConsumption {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get BrakeSpecificFuelConsumption unit abbreviation.
+     * Note! the default abbreviation for BrakeSpecificFuelConsumption is KilogramsPerJoule.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the BrakeSpecificFuelConsumption.
+     * @returns The abbreviation string of BrakeSpecificFuelConsumption.
+     */
+    public getUnitAbbreviation(unitAbbreviation: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule): string {
+
+        switch (unitAbbreviation) {
+            
+            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
+                return `g/kWh`;
+            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
+                return `kg/J`;
+            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
+                return `lb/hph`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

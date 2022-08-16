@@ -246,17 +246,17 @@ export class Temperature {
             case TemperatureUnits.MillidegreesCelsius:
                 return (this.value - 273.15) * 1000;
             case TemperatureUnits.DegreesDelisle:
-                return (this.value - 373.15)*-3/2;
+                return (this.value - 373.15) * -3 / 2;
             case TemperatureUnits.DegreesFahrenheit:
-                return (this.value - 459.67*5/9)*9/5;
+                return (this.value - 459.67 * 5 / 9) * 9 / 5;
             case TemperatureUnits.DegreesNewton:
-                return (this.value - 273.15)*33/100;
+                return (this.value - 273.15) * 33 / 100;
             case TemperatureUnits.DegreesRankine:
-                return this.value*9/5;
+                return this.value * 9 / 5;
             case TemperatureUnits.DegreesReaumur:
-                return (this.value - 273.15)*4/5;
+                return (this.value - 273.15) * 4 / 5;
             case TemperatureUnits.DegreesRoemer:
-                return (this.value - (273.15 - 7.5*40/21))*21/40;
+                return (this.value - (273.15 - 7.5 * 40 / 21)) * 21 / 40;
             case TemperatureUnits.SolarTemperatures:
                 return this.value / 5778;
             default:
@@ -275,17 +275,17 @@ export class Temperature {
             case TemperatureUnits.MillidegreesCelsius:
                 return value / 1000 + 273.15;
             case TemperatureUnits.DegreesDelisle:
-                return value*-2/3 + 373.15;
+                return value * -2 / 3 + 373.15;
             case TemperatureUnits.DegreesFahrenheit:
-                return value*5/9 + 459.67*5/9;
+                return value * 5 / 9 + 459.67 * 5 / 9;
             case TemperatureUnits.DegreesNewton:
-                return value*100/33 + 273.15;
+                return value * 100 / 33 + 273.15;
             case TemperatureUnits.DegreesRankine:
-                return value*5/9;
+                return value * 5 / 9;
             case TemperatureUnits.DegreesReaumur:
-                return value*5/4 + 273.15;
+                return value * 5 / 4 + 273.15;
             case TemperatureUnits.DegreesRoemer:
-                return value*40/21 + 273.15 - 7.5*40/21;
+                return value * 40 / 21 + 273.15 - 7.5 * 40 / 21;
             case TemperatureUnits.SolarTemperatures:
                 return value * 5778;
             default:
@@ -297,13 +297,13 @@ export class Temperature {
     /**
      * Format the Temperature to string.
      * Note! the default format for Temperature is Kelvins.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Temperature.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Temperature.
      * @returns The string format of the Temperature.
      */
-    public toString(toUnit: TemperatureUnits = TemperatureUnits.Kelvins): string {
+    public toString(unit: TemperatureUnits = TemperatureUnits.Kelvins): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case TemperatureUnits.Kelvins:
                 return this.Kelvins + ` K`;
@@ -329,6 +329,43 @@ export class Temperature {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Temperature unit abbreviation.
+     * Note! the default abbreviation for Temperature is Kelvins.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Temperature.
+     * @returns The abbreviation string of Temperature.
+     */
+    public getUnitAbbreviation(unitAbbreviation: TemperatureUnits = TemperatureUnits.Kelvins): string {
+
+        switch (unitAbbreviation) {
+            
+            case TemperatureUnits.Kelvins:
+                return `K`;
+            case TemperatureUnits.DegreesCelsius:
+                return `°C`;
+            case TemperatureUnits.MillidegreesCelsius:
+                return `m°C`;
+            case TemperatureUnits.DegreesDelisle:
+                return `°De`;
+            case TemperatureUnits.DegreesFahrenheit:
+                return `°F`;
+            case TemperatureUnits.DegreesNewton:
+                return `°N`;
+            case TemperatureUnits.DegreesRankine:
+                return `°R`;
+            case TemperatureUnits.DegreesReaumur:
+                return `°Ré`;
+            case TemperatureUnits.DegreesRoemer:
+                return `°Rø`;
+            case TemperatureUnits.SolarTemperatures:
+                return `T⊙`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -172,13 +172,13 @@ export class ElectricPotential {
     /**
      * Format the ElectricPotential to string.
      * Note! the default format for ElectricPotential is Volts.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricPotential.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricPotential.
      * @returns The string format of the ElectricPotential.
      */
-    public toString(toUnit: ElectricPotentialUnits = ElectricPotentialUnits.Volts): string {
+    public toString(unit: ElectricPotentialUnits = ElectricPotentialUnits.Volts): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricPotentialUnits.Volts:
                 return this.Volts + ` V`;
@@ -194,6 +194,33 @@ export class ElectricPotential {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricPotential unit abbreviation.
+     * Note! the default abbreviation for ElectricPotential is Volts.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricPotential.
+     * @returns The abbreviation string of ElectricPotential.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricPotentialUnits = ElectricPotentialUnits.Volts): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricPotentialUnits.Volts:
+                return `V`;
+            case ElectricPotentialUnits.Microvolts:
+                return ``;
+            case ElectricPotentialUnits.Millivolts:
+                return ``;
+            case ElectricPotentialUnits.Kilovolts:
+                return ``;
+            case ElectricPotentialUnits.Megavolts:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

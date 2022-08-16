@@ -72,13 +72,13 @@ export class Permeability {
     /**
      * Format the Permeability to string.
      * Note! the default format for Permeability is HenriesPerMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Permeability.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Permeability.
      * @returns The string format of the Permeability.
      */
-    public toString(toUnit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter): string {
+    public toString(unit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case PermeabilityUnits.HenriesPerMeter:
                 return this.HenriesPerMeter + ` H/m`;
@@ -86,6 +86,25 @@ export class Permeability {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Permeability unit abbreviation.
+     * Note! the default abbreviation for Permeability is HenriesPerMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Permeability.
+     * @returns The abbreviation string of Permeability.
+     */
+    public getUnitAbbreviation(unitAbbreviation: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case PermeabilityUnits.HenriesPerMeter:
+                return `H/m`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

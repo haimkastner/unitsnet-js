@@ -122,13 +122,13 @@ export class ElectricConductance {
     /**
      * Format the ElectricConductance to string.
      * Note! the default format for ElectricConductance is Siemens.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricConductance.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricConductance.
      * @returns The string format of the ElectricConductance.
      */
-    public toString(toUnit: ElectricConductanceUnits = ElectricConductanceUnits.Siemens): string {
+    public toString(unit: ElectricConductanceUnits = ElectricConductanceUnits.Siemens): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricConductanceUnits.Siemens:
                 return this.Siemens + ` S`;
@@ -140,6 +140,29 @@ export class ElectricConductance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricConductance unit abbreviation.
+     * Note! the default abbreviation for ElectricConductance is Siemens.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricConductance.
+     * @returns The abbreviation string of ElectricConductance.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricConductanceUnits = ElectricConductanceUnits.Siemens): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricConductanceUnits.Siemens:
+                return `S`;
+            case ElectricConductanceUnits.Millisiemens:
+                return ``;
+            case ElectricConductanceUnits.Microsiemens:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

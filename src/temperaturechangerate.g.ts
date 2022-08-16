@@ -242,7 +242,7 @@ export class TemperatureChangeRate {
             case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
                 return this.value;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
-                return this.value*60;
+                return this.value * 60;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
                 return (this.value) / 1e-9;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
@@ -271,7 +271,7 @@ export class TemperatureChangeRate {
             case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
                 return value;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
-                return value/60;
+                return value / 60;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
                 return (value) * 1e-9;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
@@ -297,13 +297,13 @@ export class TemperatureChangeRate {
     /**
      * Format the TemperatureChangeRate to string.
      * Note! the default format for TemperatureChangeRate is DegreesCelsiusPerSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the TemperatureChangeRate.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the TemperatureChangeRate.
      * @returns The string format of the TemperatureChangeRate.
      */
-    public toString(toUnit: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond): string {
+    public toString(unit: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
                 return this.DegreesCelsiusPerSecond + ` °C/s`;
@@ -329,6 +329,43 @@ export class TemperatureChangeRate {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get TemperatureChangeRate unit abbreviation.
+     * Note! the default abbreviation for TemperatureChangeRate is DegreesCelsiusPerSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the TemperatureChangeRate.
+     * @returns The abbreviation string of TemperatureChangeRate.
+     */
+    public getUnitAbbreviation(unitAbbreviation: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
+                return `°C/s`;
+            case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
+                return `°C/min`;
+            case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
+                return ``;
+            case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
+                return ``;
+            case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond:
+                return ``;
+            case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
+                return ``;
+            case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:
+                return ``;
+            case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond:
+                return ``;
+            case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond:
+                return ``;
+            case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

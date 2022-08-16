@@ -72,13 +72,13 @@ export class Turbidity {
     /**
      * Format the Turbidity to string.
      * Note! the default format for Turbidity is NTU.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Turbidity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Turbidity.
      * @returns The string format of the Turbidity.
      */
-    public toString(toUnit: TurbidityUnits = TurbidityUnits.NTU): string {
+    public toString(unit: TurbidityUnits = TurbidityUnits.NTU): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case TurbidityUnits.NTU:
                 return this.NTU + ` NTU`;
@@ -86,6 +86,25 @@ export class Turbidity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Turbidity unit abbreviation.
+     * Note! the default abbreviation for Turbidity is NTU.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Turbidity.
+     * @returns The abbreviation string of Turbidity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: TurbidityUnits = TurbidityUnits.NTU): string {
+
+        switch (unitAbbreviation) {
+            
+            case TurbidityUnits.NTU:
+                return `NTU`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

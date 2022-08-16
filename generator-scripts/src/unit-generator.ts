@@ -131,14 +131,14 @@ function buildFormulaCase(unitName: string, enumName: string, formulaDefinition:
 
     return `
     case ${enumName}.${unitName}:
-        return ${formulaDefinition.replace(/x/g, valueVarName)};`;
+        return ${formulaDefinition.replace(/{x}|x/g, valueVarName)};`;
 }
 
 /**
  * Build a 'switch case' with converting formula for each unit.
  * @param enumName The unit enum name.
  * @param units The units to build cases for.
- * @param isBaseToUnit The direction of the convertion.
+ * @param isBaseToUnit The direction of the conversion.
  * @returns The unit switch cases as a string.
  */
 function buildFormulaCases(enumName: string, units: UnitProperties[], isBaseToUnit: boolean): string {
@@ -189,7 +189,7 @@ return NaN;`
 /**
  * Build var for each unit to hold the converted value after first request.
  * @param units The units to build a lazyload vars for. 
- * @returns The vars strucure collection.
+ * @returns The vars structure collection.
  */
 function buildLazyloadVars(units: UnitProperties[]): PropertyDeclarationStructure[] {
     return units.map((unit): PropertyDeclarationStructure => ({
@@ -245,11 +245,11 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
 
     const docs: JSDocStructure = {
         kind: StructureKind.JSDoc,
-        description: `Format the ${unitName} to string.\nNote! the default format for ${unitName} is ${baseUnit.pluralName}.\nTo specify the unit fromat set the 'toUnit' parameter.`,
+        description: `Format the ${unitName} to string.\nNote! the default format for ${unitName} is ${baseUnit.pluralName}.\nTo specify the unit format set the 'unit' parameter.`,
         tags: [{
             kind: StructureKind.JSDocTag,
             tagName: 'param',
-            text: `toUnit The unit to format the ${unitName}.`
+            text: `unit The unit to format the ${unitName}.`
         }, {
             kind: StructureKind.JSDocTag,
             tagName: 'returns',
@@ -257,9 +257,9 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
         }]
     };
 
-    let toStringCasses = '';
+    let toStringCases = '';
     for (const unit of units) {
-        toStringCasses +=
+        toStringCases +=
             `
     case ${enumName}.${unit.pluralName}:
         return this.${unit.pluralName} + ` + '` ' + unit.Abbreviation + '`;';
@@ -270,19 +270,72 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
         name: 'toString',
         scope: Scope.Public,
         parameters: [{
-            name: 'toUnit',
+            name: 'unit',
             type: enumName,
             initializer: `${enumName}.${baseUnit.pluralName}`
         }],
         returnType: 'string',
         docs: [docs],
         statements: `
-switch (toUnit) {
-    ${toStringCasses}
+switch (unit) {
+    ${toStringCases}
 default:
     break;
 }
 return this.value.toString();`,
+    };
+}
+
+/**
+ * Build get unit AbbreviationMethod
+ * @param unitName The unit name
+ * @param enumName The units types enum
+ * @param units The units 
+ * @param baseUnit The base unit for default unit abbreviation
+ * @returns A 'toString' method structure
+ */
+function buildGetUnitAbbreviationMethod(unitName: string, enumName: string, units: UnitProperties[], baseUnit: UnitProperties): MethodDeclarationStructure {
+
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: `Get ${unitName} unit abbreviation.\nNote! the default abbreviation for ${unitName} is ${baseUnit.pluralName}.\nTo specify the unit abbreviation set the 'unitAbbreviation' parameter.`,
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `unitAbbreviation The unit abbreviation of the ${unitName}.`
+        }, {
+            kind: StructureKind.JSDocTag,
+            tagName: 'returns',
+            text: `The abbreviation string of ${unitName}.`
+        }]
+    };
+
+    let toUnitAbbreviation = '';
+    for (const unit of units) {
+        toUnitAbbreviation +=
+            `
+    case ${enumName}.${unit.pluralName}:
+        return \`${unit.Abbreviation}\`;`;
+    };
+
+    return {
+        kind: StructureKind.Method,
+        name: 'getUnitAbbreviation',
+        scope: Scope.Public,
+        parameters: [{
+            name: 'unitAbbreviation',
+            type: enumName,
+            initializer: `${enumName}.${baseUnit.pluralName}`
+        }],
+        returnType: 'string',
+        docs: [docs],
+        statements: `
+switch (unitAbbreviation) {
+    ${toUnitAbbreviation}
+default:
+    break;
+}
+return '';`,
     };
 }
 
@@ -469,7 +522,7 @@ export function generateUnitClass(project: Project,
     unitsDestinationDirectory: string,
     unitProperties: UnitGenerateOptions) {
 
-    // Generate the unit units enum anme 
+    // Generate the unit units enum name 
     const enumName = `${unitProperties.unitName}Units`;
     const { units, unitName } = unitProperties;
     const baseUnit = units.find((unit) =>
@@ -526,6 +579,9 @@ export function generateUnitClass(project: Project,
     // Build the class 'toString' method
     const toStringMethod = buildToStringMethod(unitName, enumName, units, baseUnit);
 
+    // Build `getUnitAbbreviation` method see #20
+    const toUnitAbbreviationMethod = buildGetUnitAbbreviationMethod(unitName, enumName, units, baseUnit);
+
     // Build the unit class 
     const unitClass: ClassDeclarationStructure = {
         kind: StructureKind.Class,
@@ -538,6 +594,7 @@ export function generateUnitClass(project: Project,
             convertFromBaseMethod,
             convertToBaseMethod,
             toStringMethod,
+            toUnitAbbreviationMethod,
             equalsMethod,
             compareToMethod,
             ...arithmeticsMethods],

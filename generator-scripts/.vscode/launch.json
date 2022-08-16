@@ -7,15 +7,20 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
+            "name": "Debug TypeScript",
             "program": "${workspaceFolder}\\src\\index.ts",
-            "preLaunchTask": "npm: build:generator",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
-        }
+            "linux": {
+              "program": "${workspaceFolder}/src/index.ts"
+            },
+            "preLaunchTask": "npm: build",
+            "sourceMaps": true,
+            "smartStep": true,
+            "internalConsoleOptions": "openOnSessionStart",
+            "outputCapture": "std",
+            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+            "env": {
+              "NODE_ENV": "debug"
+            }
+          },
     ]
 }

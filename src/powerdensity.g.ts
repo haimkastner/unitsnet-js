@@ -956,11 +956,11 @@ export class PowerDensity {
             case PowerDensityUnits.WattsPerCubicMeter:
                 return this.value;
             case PowerDensityUnits.WattsPerCubicInch:
-                return this.value/6.102374409473228e4;
+                return this.value / 6.102374409473228e4;
             case PowerDensityUnits.WattsPerCubicFoot:
-                return this.value/3.531466672148859e1;
+                return this.value / 3.531466672148859e1;
             case PowerDensityUnits.WattsPerLiter:
-                return this.value/1.0e3;
+                return this.value / 1.0e3;
             case PowerDensityUnits.PicowattsPerCubicMeter:
                 return (this.value) / 1e-12;
             case PowerDensityUnits.NanowattsPerCubicMeter:
@@ -982,65 +982,65 @@ export class PowerDensity {
             case PowerDensityUnits.TerawattsPerCubicMeter:
                 return (this.value) / 1000000000000;
             case PowerDensityUnits.PicowattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 1e-12;
+                return (this.value / 6.102374409473228e4) / 1e-12;
             case PowerDensityUnits.NanowattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 1e-9;
+                return (this.value / 6.102374409473228e4) / 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 0.000001;
+                return (this.value / 6.102374409473228e4) / 0.000001;
             case PowerDensityUnits.MilliwattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 0.001;
+                return (this.value / 6.102374409473228e4) / 0.001;
             case PowerDensityUnits.DeciwattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 0.1;
+                return (this.value / 6.102374409473228e4) / 0.1;
             case PowerDensityUnits.DecawattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 10;
+                return (this.value / 6.102374409473228e4) / 10;
             case PowerDensityUnits.KilowattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 1000;
+                return (this.value / 6.102374409473228e4) / 1000;
             case PowerDensityUnits.MegawattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 1000000;
+                return (this.value / 6.102374409473228e4) / 1000000;
             case PowerDensityUnits.GigawattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 1000000000;
+                return (this.value / 6.102374409473228e4) / 1000000000;
             case PowerDensityUnits.TerawattsPerCubicInch:
-                return (this.value/6.102374409473228e4) / 1000000000000;
+                return (this.value / 6.102374409473228e4) / 1000000000000;
             case PowerDensityUnits.PicowattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 1e-12;
+                return (this.value / 3.531466672148859e1) / 1e-12;
             case PowerDensityUnits.NanowattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 1e-9;
+                return (this.value / 3.531466672148859e1) / 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 0.000001;
+                return (this.value / 3.531466672148859e1) / 0.000001;
             case PowerDensityUnits.MilliwattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 0.001;
+                return (this.value / 3.531466672148859e1) / 0.001;
             case PowerDensityUnits.DeciwattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 0.1;
+                return (this.value / 3.531466672148859e1) / 0.1;
             case PowerDensityUnits.DecawattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 10;
+                return (this.value / 3.531466672148859e1) / 10;
             case PowerDensityUnits.KilowattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 1000;
+                return (this.value / 3.531466672148859e1) / 1000;
             case PowerDensityUnits.MegawattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 1000000;
+                return (this.value / 3.531466672148859e1) / 1000000;
             case PowerDensityUnits.GigawattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 1000000000;
+                return (this.value / 3.531466672148859e1) / 1000000000;
             case PowerDensityUnits.TerawattsPerCubicFoot:
-                return (this.value/3.531466672148859e1) / 1000000000000;
+                return (this.value / 3.531466672148859e1) / 1000000000000;
             case PowerDensityUnits.PicowattsPerLiter:
-                return (this.value/1.0e3) / 1e-12;
+                return (this.value / 1.0e3) / 1e-12;
             case PowerDensityUnits.NanowattsPerLiter:
-                return (this.value/1.0e3) / 1e-9;
+                return (this.value / 1.0e3) / 1e-9;
             case PowerDensityUnits.MicrowattsPerLiter:
-                return (this.value/1.0e3) / 0.000001;
+                return (this.value / 1.0e3) / 0.000001;
             case PowerDensityUnits.MilliwattsPerLiter:
-                return (this.value/1.0e3) / 0.001;
+                return (this.value / 1.0e3) / 0.001;
             case PowerDensityUnits.DeciwattsPerLiter:
-                return (this.value/1.0e3) / 0.1;
+                return (this.value / 1.0e3) / 0.1;
             case PowerDensityUnits.DecawattsPerLiter:
-                return (this.value/1.0e3) / 10;
+                return (this.value / 1.0e3) / 10;
             case PowerDensityUnits.KilowattsPerLiter:
-                return (this.value/1.0e3) / 1000;
+                return (this.value / 1.0e3) / 1000;
             case PowerDensityUnits.MegawattsPerLiter:
-                return (this.value/1.0e3) / 1000000;
+                return (this.value / 1.0e3) / 1000000;
             case PowerDensityUnits.GigawattsPerLiter:
-                return (this.value/1.0e3) / 1000000000;
+                return (this.value / 1.0e3) / 1000000000;
             case PowerDensityUnits.TerawattsPerLiter:
-                return (this.value/1.0e3) / 1000000000000;
+                return (this.value / 1.0e3) / 1000000000000;
             default:
                 break;
         }
@@ -1053,11 +1053,11 @@ export class PowerDensity {
             case PowerDensityUnits.WattsPerCubicMeter:
                 return value;
             case PowerDensityUnits.WattsPerCubicInch:
-                return value*6.102374409473228e4;
+                return value * 6.102374409473228e4;
             case PowerDensityUnits.WattsPerCubicFoot:
-                return value*3.531466672148859e1;
+                return value * 3.531466672148859e1;
             case PowerDensityUnits.WattsPerLiter:
-                return value*1.0e3;
+                return value * 1.0e3;
             case PowerDensityUnits.PicowattsPerCubicMeter:
                 return (value) * 1e-12;
             case PowerDensityUnits.NanowattsPerCubicMeter:
@@ -1079,65 +1079,65 @@ export class PowerDensity {
             case PowerDensityUnits.TerawattsPerCubicMeter:
                 return (value) * 1000000000000;
             case PowerDensityUnits.PicowattsPerCubicInch:
-                return (value*6.102374409473228e4) * 1e-12;
+                return (value * 6.102374409473228e4) * 1e-12;
             case PowerDensityUnits.NanowattsPerCubicInch:
-                return (value*6.102374409473228e4) * 1e-9;
+                return (value * 6.102374409473228e4) * 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicInch:
-                return (value*6.102374409473228e4) * 0.000001;
+                return (value * 6.102374409473228e4) * 0.000001;
             case PowerDensityUnits.MilliwattsPerCubicInch:
-                return (value*6.102374409473228e4) * 0.001;
+                return (value * 6.102374409473228e4) * 0.001;
             case PowerDensityUnits.DeciwattsPerCubicInch:
-                return (value*6.102374409473228e4) * 0.1;
+                return (value * 6.102374409473228e4) * 0.1;
             case PowerDensityUnits.DecawattsPerCubicInch:
-                return (value*6.102374409473228e4) * 10;
+                return (value * 6.102374409473228e4) * 10;
             case PowerDensityUnits.KilowattsPerCubicInch:
-                return (value*6.102374409473228e4) * 1000;
+                return (value * 6.102374409473228e4) * 1000;
             case PowerDensityUnits.MegawattsPerCubicInch:
-                return (value*6.102374409473228e4) * 1000000;
+                return (value * 6.102374409473228e4) * 1000000;
             case PowerDensityUnits.GigawattsPerCubicInch:
-                return (value*6.102374409473228e4) * 1000000000;
+                return (value * 6.102374409473228e4) * 1000000000;
             case PowerDensityUnits.TerawattsPerCubicInch:
-                return (value*6.102374409473228e4) * 1000000000000;
+                return (value * 6.102374409473228e4) * 1000000000000;
             case PowerDensityUnits.PicowattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 1e-12;
+                return (value * 3.531466672148859e1) * 1e-12;
             case PowerDensityUnits.NanowattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 1e-9;
+                return (value * 3.531466672148859e1) * 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 0.000001;
+                return (value * 3.531466672148859e1) * 0.000001;
             case PowerDensityUnits.MilliwattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 0.001;
+                return (value * 3.531466672148859e1) * 0.001;
             case PowerDensityUnits.DeciwattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 0.1;
+                return (value * 3.531466672148859e1) * 0.1;
             case PowerDensityUnits.DecawattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 10;
+                return (value * 3.531466672148859e1) * 10;
             case PowerDensityUnits.KilowattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 1000;
+                return (value * 3.531466672148859e1) * 1000;
             case PowerDensityUnits.MegawattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 1000000;
+                return (value * 3.531466672148859e1) * 1000000;
             case PowerDensityUnits.GigawattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 1000000000;
+                return (value * 3.531466672148859e1) * 1000000000;
             case PowerDensityUnits.TerawattsPerCubicFoot:
-                return (value*3.531466672148859e1) * 1000000000000;
+                return (value * 3.531466672148859e1) * 1000000000000;
             case PowerDensityUnits.PicowattsPerLiter:
-                return (value*1.0e3) * 1e-12;
+                return (value * 1.0e3) * 1e-12;
             case PowerDensityUnits.NanowattsPerLiter:
-                return (value*1.0e3) * 1e-9;
+                return (value * 1.0e3) * 1e-9;
             case PowerDensityUnits.MicrowattsPerLiter:
-                return (value*1.0e3) * 0.000001;
+                return (value * 1.0e3) * 0.000001;
             case PowerDensityUnits.MilliwattsPerLiter:
-                return (value*1.0e3) * 0.001;
+                return (value * 1.0e3) * 0.001;
             case PowerDensityUnits.DeciwattsPerLiter:
-                return (value*1.0e3) * 0.1;
+                return (value * 1.0e3) * 0.1;
             case PowerDensityUnits.DecawattsPerLiter:
-                return (value*1.0e3) * 10;
+                return (value * 1.0e3) * 10;
             case PowerDensityUnits.KilowattsPerLiter:
-                return (value*1.0e3) * 1000;
+                return (value * 1.0e3) * 1000;
             case PowerDensityUnits.MegawattsPerLiter:
-                return (value*1.0e3) * 1000000;
+                return (value * 1.0e3) * 1000000;
             case PowerDensityUnits.GigawattsPerLiter:
-                return (value*1.0e3) * 1000000000;
+                return (value * 1.0e3) * 1000000000;
             case PowerDensityUnits.TerawattsPerLiter:
-                return (value*1.0e3) * 1000000000000;
+                return (value * 1.0e3) * 1000000000000;
             default:
                 break;
         }
@@ -1147,13 +1147,13 @@ export class PowerDensity {
     /**
      * Format the PowerDensity to string.
      * Note! the default format for PowerDensity is WattsPerCubicMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the PowerDensity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the PowerDensity.
      * @returns The string format of the PowerDensity.
      */
-    public toString(toUnit: PowerDensityUnits = PowerDensityUnits.WattsPerCubicMeter): string {
+    public toString(unit: PowerDensityUnits = PowerDensityUnits.WattsPerCubicMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case PowerDensityUnits.WattsPerCubicMeter:
                 return this.WattsPerCubicMeter + ` W/m³`;
@@ -1247,6 +1247,111 @@ export class PowerDensity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get PowerDensity unit abbreviation.
+     * Note! the default abbreviation for PowerDensity is WattsPerCubicMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the PowerDensity.
+     * @returns The abbreviation string of PowerDensity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: PowerDensityUnits = PowerDensityUnits.WattsPerCubicMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case PowerDensityUnits.WattsPerCubicMeter:
+                return `W/m³`;
+            case PowerDensityUnits.WattsPerCubicInch:
+                return `W/in³`;
+            case PowerDensityUnits.WattsPerCubicFoot:
+                return `W/ft³`;
+            case PowerDensityUnits.WattsPerLiter:
+                return `W/l`;
+            case PowerDensityUnits.PicowattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.NanowattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.MicrowattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.MilliwattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.DeciwattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.DecawattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.KilowattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.MegawattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.GigawattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.TerawattsPerCubicMeter:
+                return ``;
+            case PowerDensityUnits.PicowattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.NanowattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.MicrowattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.MilliwattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.DeciwattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.DecawattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.KilowattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.MegawattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.GigawattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.TerawattsPerCubicInch:
+                return ``;
+            case PowerDensityUnits.PicowattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.NanowattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.MicrowattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.MilliwattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.DeciwattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.DecawattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.KilowattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.MegawattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.GigawattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.TerawattsPerCubicFoot:
+                return ``;
+            case PowerDensityUnits.PicowattsPerLiter:
+                return ``;
+            case PowerDensityUnits.NanowattsPerLiter:
+                return ``;
+            case PowerDensityUnits.MicrowattsPerLiter:
+                return ``;
+            case PowerDensityUnits.MilliwattsPerLiter:
+                return ``;
+            case PowerDensityUnits.DeciwattsPerLiter:
+                return ``;
+            case PowerDensityUnits.DecawattsPerLiter:
+                return ``;
+            case PowerDensityUnits.KilowattsPerLiter:
+                return ``;
+            case PowerDensityUnits.MegawattsPerLiter:
+                return ``;
+            case PowerDensityUnits.GigawattsPerLiter:
+                return ``;
+            case PowerDensityUnits.TerawattsPerLiter:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

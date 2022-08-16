@@ -147,13 +147,13 @@ export class ApparentPower {
     /**
      * Format the ApparentPower to string.
      * Note! the default format for ApparentPower is Voltamperes.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ApparentPower.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ApparentPower.
      * @returns The string format of the ApparentPower.
      */
-    public toString(toUnit: ApparentPowerUnits = ApparentPowerUnits.Voltamperes): string {
+    public toString(unit: ApparentPowerUnits = ApparentPowerUnits.Voltamperes): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ApparentPowerUnits.Voltamperes:
                 return this.Voltamperes + ` VA`;
@@ -167,6 +167,31 @@ export class ApparentPower {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ApparentPower unit abbreviation.
+     * Note! the default abbreviation for ApparentPower is Voltamperes.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ApparentPower.
+     * @returns The abbreviation string of ApparentPower.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ApparentPowerUnits = ApparentPowerUnits.Voltamperes): string {
+
+        switch (unitAbbreviation) {
+            
+            case ApparentPowerUnits.Voltamperes:
+                return `VA`;
+            case ApparentPowerUnits.Kilovoltamperes:
+                return ``;
+            case ApparentPowerUnits.Megavoltamperes:
+                return ``;
+            case ApparentPowerUnits.Gigavoltamperes:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

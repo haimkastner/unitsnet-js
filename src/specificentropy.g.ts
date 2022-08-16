@@ -223,7 +223,7 @@ export class SpecificEntropy {
             case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
                 return this.value;
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return this.value/4.184e3;
+                return this.value / 4.184e3;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return this.value / 4.1868e3;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
@@ -235,7 +235,7 @@ export class SpecificEntropy {
             case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
                 return (this.value) / 1000000;
             case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return (this.value/4.184e3) / 1000;
+                return (this.value / 4.184e3) / 1000;
             default:
                 break;
         }
@@ -250,7 +250,7 @@ export class SpecificEntropy {
             case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
                 return value;
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return value*4.184e3;
+                return value * 4.184e3;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return value * 4.1868e3;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
@@ -262,7 +262,7 @@ export class SpecificEntropy {
             case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
                 return (value) * 1000000;
             case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return (value*4.184e3) * 1000;
+                return (value * 4.184e3) * 1000;
             default:
                 break;
         }
@@ -272,13 +272,13 @@ export class SpecificEntropy {
     /**
      * Format the SpecificEntropy to string.
      * Note! the default format for SpecificEntropy is JoulesPerKilogramKelvin.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the SpecificEntropy.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the SpecificEntropy.
      * @returns The string format of the SpecificEntropy.
      */
-    public toString(toUnit: SpecificEntropyUnits = SpecificEntropyUnits.JoulesPerKilogramKelvin): string {
+    public toString(unit: SpecificEntropyUnits = SpecificEntropyUnits.JoulesPerKilogramKelvin): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case SpecificEntropyUnits.JoulesPerKilogramKelvin:
                 return this.JoulesPerKilogramKelvin + ` J/kg.K`;
@@ -302,6 +302,41 @@ export class SpecificEntropy {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get SpecificEntropy unit abbreviation.
+     * Note! the default abbreviation for SpecificEntropy is JoulesPerKilogramKelvin.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the SpecificEntropy.
+     * @returns The abbreviation string of SpecificEntropy.
+     */
+    public getUnitAbbreviation(unitAbbreviation: SpecificEntropyUnits = SpecificEntropyUnits.JoulesPerKilogramKelvin): string {
+
+        switch (unitAbbreviation) {
+            
+            case SpecificEntropyUnits.JoulesPerKilogramKelvin:
+                return `J/kg.K`;
+            case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
+                return `J/kg.C`;
+            case SpecificEntropyUnits.CaloriesPerGramKelvin:
+                return `cal/g.K`;
+            case SpecificEntropyUnits.BtusPerPoundFahrenheit:
+                return `BTU/lb·°F`;
+            case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
+                return ``;
+            case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
+                return ``;
+            case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
+                return ``;
+            case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
+                return ``;
+            case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

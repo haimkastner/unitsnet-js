@@ -261,21 +261,21 @@ export class Duration {
         switch (toUnit) {
                 
             case DurationUnits.Years365:
-                return this.value/(365*24*3600);
+                return this.value / (365 * 24 * 3600);
             case DurationUnits.Months30:
-                return this.value/(30*24*3600);
+                return this.value / (30 * 24 * 3600);
             case DurationUnits.Weeks:
-                return this.value/(7*24*3600);
+                return this.value / (7 * 24 * 3600);
             case DurationUnits.Days:
-                return this.value/(24*3600);
+                return this.value / (24 * 3600);
             case DurationUnits.Hours:
-                return this.value/3600;
+                return this.value / 3600;
             case DurationUnits.Minutes:
-                return this.value/60;
+                return this.value / 60;
             case DurationUnits.Seconds:
                 return this.value;
             case DurationUnits.JulianYears:
-                return this.value/(365.25*24*3600);
+                return this.value / (365.25 * 24 * 3600);
             case DurationUnits.Nanoseconds:
                 return (this.value) / 1e-9;
             case DurationUnits.Microseconds:
@@ -292,21 +292,21 @@ export class Duration {
         switch (fromUnit) {
                 
             case DurationUnits.Years365:
-                return value*365*24*3600;
+                return value * 365 * 24 * 3600;
             case DurationUnits.Months30:
-                return value*30*24*3600;
+                return value * 30 * 24 * 3600;
             case DurationUnits.Weeks:
-                return value*7*24*3600;
+                return value * 7 * 24 * 3600;
             case DurationUnits.Days:
-                return value*24*3600;
+                return value * 24 * 3600;
             case DurationUnits.Hours:
-                return value*3600;
+                return value * 3600;
             case DurationUnits.Minutes:
-                return value*60;
+                return value * 60;
             case DurationUnits.Seconds:
                 return value;
             case DurationUnits.JulianYears:
-                return value*365.25*24*3600;
+                return value * 365.25 * 24 * 3600;
             case DurationUnits.Nanoseconds:
                 return (value) * 1e-9;
             case DurationUnits.Microseconds:
@@ -322,13 +322,13 @@ export class Duration {
     /**
      * Format the Duration to string.
      * Note! the default format for Duration is Seconds.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Duration.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Duration.
      * @returns The string format of the Duration.
      */
-    public toString(toUnit: DurationUnits = DurationUnits.Seconds): string {
+    public toString(unit: DurationUnits = DurationUnits.Seconds): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case DurationUnits.Years365:
                 return this.Years365 + ` yr`;
@@ -356,6 +356,45 @@ export class Duration {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Duration unit abbreviation.
+     * Note! the default abbreviation for Duration is Seconds.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Duration.
+     * @returns The abbreviation string of Duration.
+     */
+    public getUnitAbbreviation(unitAbbreviation: DurationUnits = DurationUnits.Seconds): string {
+
+        switch (unitAbbreviation) {
+            
+            case DurationUnits.Years365:
+                return `yr`;
+            case DurationUnits.Months30:
+                return `mo`;
+            case DurationUnits.Weeks:
+                return `wk`;
+            case DurationUnits.Days:
+                return `d`;
+            case DurationUnits.Hours:
+                return `h`;
+            case DurationUnits.Minutes:
+                return `m`;
+            case DurationUnits.Seconds:
+                return `s`;
+            case DurationUnits.JulianYears:
+                return `jyr`;
+            case DurationUnits.Nanoseconds:
+                return ``;
+            case DurationUnits.Microseconds:
+                return ``;
+            case DurationUnits.Milliseconds:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

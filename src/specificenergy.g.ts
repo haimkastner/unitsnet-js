@@ -13,6 +13,8 @@ export enum SpecificEnergyUnits {
     /** */
     WattDaysPerShortTon,
     /** */
+    WattHoursPerPound,
+    /** */
     BtuPerPound,
     /** */
     KilojoulesPerKilogram,
@@ -49,7 +51,13 @@ export enum SpecificEnergyUnits {
     /** */
     GigawattDaysPerShortTon,
     /** */
-    TerawattDaysPerShortTon
+    TerawattDaysPerShortTon,
+    /** */
+    KilowattHoursPerPound,
+    /** */
+    MegawattHoursPerPound,
+    /** */
+    GigawattHoursPerPound
 }
 
 /** The SpecificEnergy */
@@ -61,6 +69,7 @@ export class SpecificEnergy {
     private wattdaysperkilogramLazy: number | null = null;
     private wattdayspertonneLazy: number | null = null;
     private wattdayspershorttonLazy: number | null = null;
+    private watthoursperpoundLazy: number | null = null;
     private btuperpoundLazy: number | null = null;
     private kilojoulesperkilogramLazy: number | null = null;
     private megajoulesperkilogramLazy: number | null = null;
@@ -80,6 +89,9 @@ export class SpecificEnergy {
     private megawattdayspershorttonLazy: number | null = null;
     private gigawattdayspershorttonLazy: number | null = null;
     private terawattdayspershorttonLazy: number | null = null;
+    private kilowatthoursperpoundLazy: number | null = null;
+    private megawatthoursperpoundLazy: number | null = null;
+    private gigawatthoursperpoundLazy: number | null = null;
 
     /**
      * Create a new SpecificEnergy.
@@ -147,6 +159,14 @@ export class SpecificEnergy {
             return this.wattdayspershorttonLazy;
         }
         return this.wattdayspershorttonLazy = this.convertFromBase(SpecificEnergyUnits.WattDaysPerShortTon);
+    }
+
+    /** */
+    public get WattHoursPerPound(): number {
+        if(this.watthoursperpoundLazy !== null){
+            return this.watthoursperpoundLazy;
+        }
+        return this.watthoursperpoundLazy = this.convertFromBase(SpecificEnergyUnits.WattHoursPerPound);
     }
 
     /** */
@@ -301,6 +321,30 @@ export class SpecificEnergy {
         return this.terawattdayspershorttonLazy = this.convertFromBase(SpecificEnergyUnits.TerawattDaysPerShortTon);
     }
 
+    /** */
+    public get KilowattHoursPerPound(): number {
+        if(this.kilowatthoursperpoundLazy !== null){
+            return this.kilowatthoursperpoundLazy;
+        }
+        return this.kilowatthoursperpoundLazy = this.convertFromBase(SpecificEnergyUnits.KilowattHoursPerPound);
+    }
+
+    /** */
+    public get MegawattHoursPerPound(): number {
+        if(this.megawatthoursperpoundLazy !== null){
+            return this.megawatthoursperpoundLazy;
+        }
+        return this.megawatthoursperpoundLazy = this.convertFromBase(SpecificEnergyUnits.MegawattHoursPerPound);
+    }
+
+    /** */
+    public get GigawattHoursPerPound(): number {
+        if(this.gigawatthoursperpoundLazy !== null){
+            return this.gigawatthoursperpoundLazy;
+        }
+        return this.gigawatthoursperpoundLazy = this.convertFromBase(SpecificEnergyUnits.GigawattHoursPerPound);
+    }
+
     /**
      * Create a new SpecificEnergy instance from a JoulesPerKilogram
      *
@@ -359,6 +403,16 @@ export class SpecificEnergy {
      */
     public static FromWattDaysPerShortTon(value: number): SpecificEnergy {
         return new SpecificEnergy(value, SpecificEnergyUnits.WattDaysPerShortTon);
+    }
+
+    /**
+     * Create a new SpecificEnergy instance from a WattHoursPerPound
+     *
+     * @param value The unit as WattHoursPerPound to create a new SpecificEnergy from.
+     * @returns The new SpecificEnergy instance.
+     */
+    public static FromWattHoursPerPound(value: number): SpecificEnergy {
+        return new SpecificEnergy(value, SpecificEnergyUnits.WattHoursPerPound);
     }
 
     /**
@@ -551,59 +605,97 @@ export class SpecificEnergy {
         return new SpecificEnergy(value, SpecificEnergyUnits.TerawattDaysPerShortTon);
     }
 
+    /**
+     * Create a new SpecificEnergy instance from a KilowattHoursPerPound
+     *
+     * @param value The unit as KilowattHoursPerPound to create a new SpecificEnergy from.
+     * @returns The new SpecificEnergy instance.
+     */
+    public static FromKilowattHoursPerPound(value: number): SpecificEnergy {
+        return new SpecificEnergy(value, SpecificEnergyUnits.KilowattHoursPerPound);
+    }
+
+    /**
+     * Create a new SpecificEnergy instance from a MegawattHoursPerPound
+     *
+     * @param value The unit as MegawattHoursPerPound to create a new SpecificEnergy from.
+     * @returns The new SpecificEnergy instance.
+     */
+    public static FromMegawattHoursPerPound(value: number): SpecificEnergy {
+        return new SpecificEnergy(value, SpecificEnergyUnits.MegawattHoursPerPound);
+    }
+
+    /**
+     * Create a new SpecificEnergy instance from a GigawattHoursPerPound
+     *
+     * @param value The unit as GigawattHoursPerPound to create a new SpecificEnergy from.
+     * @returns The new SpecificEnergy instance.
+     */
+    public static FromGigawattHoursPerPound(value: number): SpecificEnergy {
+        return new SpecificEnergy(value, SpecificEnergyUnits.GigawattHoursPerPound);
+    }
+
     private convertFromBase(toUnit: SpecificEnergyUnits): number {
         switch (toUnit) {
                 
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return this.value;
             case SpecificEnergyUnits.CaloriesPerGram:
-                return this.value/4.184e3;
+                return this.value / 4.184e3;
             case SpecificEnergyUnits.WattHoursPerKilogram:
-                return this.value/3.6e3;
+                return this.value / 3.6e3;
             case SpecificEnergyUnits.WattDaysPerKilogram:
-                return this.value/(24*3.6e3);
+                return this.value / (24 * 3.6e3);
             case SpecificEnergyUnits.WattDaysPerTonne:
-                return this.value/((24*3.6e3)/1e3);
+                return this.value / ((24 * 3.6e3) / 1e3);
             case SpecificEnergyUnits.WattDaysPerShortTon:
-                return this.value/((24*3.6e3)/9.0718474e2);
+                return this.value / ((24 * 3.6e3) / 9.0718474e2);
+            case SpecificEnergyUnits.WattHoursPerPound:
+                return this.value / 7.93664e3;
             case SpecificEnergyUnits.BtuPerPound:
-                return this.value/2326.000075362;
+                return this.value / 2326.000075362;
             case SpecificEnergyUnits.KilojoulesPerKilogram:
                 return (this.value) / 1000;
             case SpecificEnergyUnits.MegajoulesPerKilogram:
                 return (this.value) / 1000000;
             case SpecificEnergyUnits.KilocaloriesPerGram:
-                return (this.value/4.184e3) / 1000;
+                return (this.value / 4.184e3) / 1000;
             case SpecificEnergyUnits.KilowattHoursPerKilogram:
-                return (this.value/3.6e3) / 1000;
+                return (this.value / 3.6e3) / 1000;
             case SpecificEnergyUnits.MegawattHoursPerKilogram:
-                return (this.value/3.6e3) / 1000000;
+                return (this.value / 3.6e3) / 1000000;
             case SpecificEnergyUnits.GigawattHoursPerKilogram:
-                return (this.value/3.6e3) / 1000000000;
+                return (this.value / 3.6e3) / 1000000000;
             case SpecificEnergyUnits.KilowattDaysPerKilogram:
-                return (this.value/(24*3.6e3)) / 1000;
+                return (this.value / (24 * 3.6e3)) / 1000;
             case SpecificEnergyUnits.MegawattDaysPerKilogram:
-                return (this.value/(24*3.6e3)) / 1000000;
+                return (this.value / (24 * 3.6e3)) / 1000000;
             case SpecificEnergyUnits.GigawattDaysPerKilogram:
-                return (this.value/(24*3.6e3)) / 1000000000;
+                return (this.value / (24 * 3.6e3)) / 1000000000;
             case SpecificEnergyUnits.TerawattDaysPerKilogram:
-                return (this.value/(24*3.6e3)) / 1000000000000;
+                return (this.value / (24 * 3.6e3)) / 1000000000000;
             case SpecificEnergyUnits.KilowattDaysPerTonne:
-                return (this.value/((24*3.6e3)/1e3)) / 1000;
+                return (this.value / ((24 * 3.6e3) / 1e3)) / 1000;
             case SpecificEnergyUnits.MegawattDaysPerTonne:
-                return (this.value/((24*3.6e3)/1e3)) / 1000000;
+                return (this.value / ((24 * 3.6e3) / 1e3)) / 1000000;
             case SpecificEnergyUnits.GigawattDaysPerTonne:
-                return (this.value/((24*3.6e3)/1e3)) / 1000000000;
+                return (this.value / ((24 * 3.6e3) / 1e3)) / 1000000000;
             case SpecificEnergyUnits.TerawattDaysPerTonne:
-                return (this.value/((24*3.6e3)/1e3)) / 1000000000000;
+                return (this.value / ((24 * 3.6e3) / 1e3)) / 1000000000000;
             case SpecificEnergyUnits.KilowattDaysPerShortTon:
-                return (this.value/((24*3.6e3)/9.0718474e2)) / 1000;
+                return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000;
             case SpecificEnergyUnits.MegawattDaysPerShortTon:
-                return (this.value/((24*3.6e3)/9.0718474e2)) / 1000000;
+                return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000000;
             case SpecificEnergyUnits.GigawattDaysPerShortTon:
-                return (this.value/((24*3.6e3)/9.0718474e2)) / 1000000000;
+                return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000000000;
             case SpecificEnergyUnits.TerawattDaysPerShortTon:
-                return (this.value/((24*3.6e3)/9.0718474e2)) / 1000000000000;
+                return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000000000000;
+            case SpecificEnergyUnits.KilowattHoursPerPound:
+                return (this.value / 7.93664e3) / 1000;
+            case SpecificEnergyUnits.MegawattHoursPerPound:
+                return (this.value / 7.93664e3) / 1000000;
+            case SpecificEnergyUnits.GigawattHoursPerPound:
+                return (this.value / 7.93664e3) / 1000000000;
             default:
                 break;
         }
@@ -616,53 +708,61 @@ export class SpecificEnergy {
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return value;
             case SpecificEnergyUnits.CaloriesPerGram:
-                return value*4.184e3;
+                return value * 4.184e3;
             case SpecificEnergyUnits.WattHoursPerKilogram:
-                return value*3.6e3;
+                return value * 3.6e3;
             case SpecificEnergyUnits.WattDaysPerKilogram:
-                return value*(24*3.6e3);
+                return value * (24 * 3.6e3);
             case SpecificEnergyUnits.WattDaysPerTonne:
-                return value*((24*3.6e3)/1e3);
+                return value * ((24 * 3.6e3) / 1e3);
             case SpecificEnergyUnits.WattDaysPerShortTon:
-                return value*((24*3.6e3)/9.0718474e2);
+                return value * ((24 * 3.6e3) / 9.0718474e2);
+            case SpecificEnergyUnits.WattHoursPerPound:
+                return value * 7.93664e3;
             case SpecificEnergyUnits.BtuPerPound:
-                return value*2326.000075362;
+                return value * 2326.000075362;
             case SpecificEnergyUnits.KilojoulesPerKilogram:
                 return (value) * 1000;
             case SpecificEnergyUnits.MegajoulesPerKilogram:
                 return (value) * 1000000;
             case SpecificEnergyUnits.KilocaloriesPerGram:
-                return (value*4.184e3) * 1000;
+                return (value * 4.184e3) * 1000;
             case SpecificEnergyUnits.KilowattHoursPerKilogram:
-                return (value*3.6e3) * 1000;
+                return (value * 3.6e3) * 1000;
             case SpecificEnergyUnits.MegawattHoursPerKilogram:
-                return (value*3.6e3) * 1000000;
+                return (value * 3.6e3) * 1000000;
             case SpecificEnergyUnits.GigawattHoursPerKilogram:
-                return (value*3.6e3) * 1000000000;
+                return (value * 3.6e3) * 1000000000;
             case SpecificEnergyUnits.KilowattDaysPerKilogram:
-                return (value*(24*3.6e3)) * 1000;
+                return (value * (24 * 3.6e3)) * 1000;
             case SpecificEnergyUnits.MegawattDaysPerKilogram:
-                return (value*(24*3.6e3)) * 1000000;
+                return (value * (24 * 3.6e3)) * 1000000;
             case SpecificEnergyUnits.GigawattDaysPerKilogram:
-                return (value*(24*3.6e3)) * 1000000000;
+                return (value * (24 * 3.6e3)) * 1000000000;
             case SpecificEnergyUnits.TerawattDaysPerKilogram:
-                return (value*(24*3.6e3)) * 1000000000000;
+                return (value * (24 * 3.6e3)) * 1000000000000;
             case SpecificEnergyUnits.KilowattDaysPerTonne:
-                return (value*((24*3.6e3)/1e3)) * 1000;
+                return (value * ((24 * 3.6e3) / 1e3)) * 1000;
             case SpecificEnergyUnits.MegawattDaysPerTonne:
-                return (value*((24*3.6e3)/1e3)) * 1000000;
+                return (value * ((24 * 3.6e3) / 1e3)) * 1000000;
             case SpecificEnergyUnits.GigawattDaysPerTonne:
-                return (value*((24*3.6e3)/1e3)) * 1000000000;
+                return (value * ((24 * 3.6e3) / 1e3)) * 1000000000;
             case SpecificEnergyUnits.TerawattDaysPerTonne:
-                return (value*((24*3.6e3)/1e3)) * 1000000000000;
+                return (value * ((24 * 3.6e3) / 1e3)) * 1000000000000;
             case SpecificEnergyUnits.KilowattDaysPerShortTon:
-                return (value*((24*3.6e3)/9.0718474e2)) * 1000;
+                return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000;
             case SpecificEnergyUnits.MegawattDaysPerShortTon:
-                return (value*((24*3.6e3)/9.0718474e2)) * 1000000;
+                return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000000;
             case SpecificEnergyUnits.GigawattDaysPerShortTon:
-                return (value*((24*3.6e3)/9.0718474e2)) * 1000000000;
+                return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000000000;
             case SpecificEnergyUnits.TerawattDaysPerShortTon:
-                return (value*((24*3.6e3)/9.0718474e2)) * 1000000000000;
+                return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000000000000;
+            case SpecificEnergyUnits.KilowattHoursPerPound:
+                return (value * 7.93664e3) * 1000;
+            case SpecificEnergyUnits.MegawattHoursPerPound:
+                return (value * 7.93664e3) * 1000000;
+            case SpecificEnergyUnits.GigawattHoursPerPound:
+                return (value * 7.93664e3) * 1000000000;
             default:
                 break;
         }
@@ -672,13 +772,13 @@ export class SpecificEnergy {
     /**
      * Format the SpecificEnergy to string.
      * Note! the default format for SpecificEnergy is JoulesPerKilogram.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the SpecificEnergy.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the SpecificEnergy.
      * @returns The string format of the SpecificEnergy.
      */
-    public toString(toUnit: SpecificEnergyUnits = SpecificEnergyUnits.JoulesPerKilogram): string {
+    public toString(unit: SpecificEnergyUnits = SpecificEnergyUnits.JoulesPerKilogram): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return this.JoulesPerKilogram + ` J/kg`;
@@ -692,6 +792,8 @@ export class SpecificEnergy {
                 return this.WattDaysPerTonne + ` Wd/t`;
             case SpecificEnergyUnits.WattDaysPerShortTon:
                 return this.WattDaysPerShortTon + ` Wd/ST`;
+            case SpecificEnergyUnits.WattHoursPerPound:
+                return this.WattHoursPerPound + ` Wh/lbs`;
             case SpecificEnergyUnits.BtuPerPound:
                 return this.BtuPerPound + ` btu/lb`;
             case SpecificEnergyUnits.KilojoulesPerKilogram:
@@ -730,10 +832,91 @@ export class SpecificEnergy {
                 return this.GigawattDaysPerShortTon + ` `;
             case SpecificEnergyUnits.TerawattDaysPerShortTon:
                 return this.TerawattDaysPerShortTon + ` `;
+            case SpecificEnergyUnits.KilowattHoursPerPound:
+                return this.KilowattHoursPerPound + ` `;
+            case SpecificEnergyUnits.MegawattHoursPerPound:
+                return this.MegawattHoursPerPound + ` `;
+            case SpecificEnergyUnits.GigawattHoursPerPound:
+                return this.GigawattHoursPerPound + ` `;
         default:
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get SpecificEnergy unit abbreviation.
+     * Note! the default abbreviation for SpecificEnergy is JoulesPerKilogram.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the SpecificEnergy.
+     * @returns The abbreviation string of SpecificEnergy.
+     */
+    public getUnitAbbreviation(unitAbbreviation: SpecificEnergyUnits = SpecificEnergyUnits.JoulesPerKilogram): string {
+
+        switch (unitAbbreviation) {
+            
+            case SpecificEnergyUnits.JoulesPerKilogram:
+                return `J/kg`;
+            case SpecificEnergyUnits.CaloriesPerGram:
+                return `cal/g`;
+            case SpecificEnergyUnits.WattHoursPerKilogram:
+                return `Wh/kg`;
+            case SpecificEnergyUnits.WattDaysPerKilogram:
+                return `Wd/kg`;
+            case SpecificEnergyUnits.WattDaysPerTonne:
+                return `Wd/t`;
+            case SpecificEnergyUnits.WattDaysPerShortTon:
+                return `Wd/ST`;
+            case SpecificEnergyUnits.WattHoursPerPound:
+                return `Wh/lbs`;
+            case SpecificEnergyUnits.BtuPerPound:
+                return `btu/lb`;
+            case SpecificEnergyUnits.KilojoulesPerKilogram:
+                return ``;
+            case SpecificEnergyUnits.MegajoulesPerKilogram:
+                return ``;
+            case SpecificEnergyUnits.KilocaloriesPerGram:
+                return ``;
+            case SpecificEnergyUnits.KilowattHoursPerKilogram:
+                return ``;
+            case SpecificEnergyUnits.MegawattHoursPerKilogram:
+                return ``;
+            case SpecificEnergyUnits.GigawattHoursPerKilogram:
+                return ``;
+            case SpecificEnergyUnits.KilowattDaysPerKilogram:
+                return ``;
+            case SpecificEnergyUnits.MegawattDaysPerKilogram:
+                return ``;
+            case SpecificEnergyUnits.GigawattDaysPerKilogram:
+                return ``;
+            case SpecificEnergyUnits.TerawattDaysPerKilogram:
+                return ``;
+            case SpecificEnergyUnits.KilowattDaysPerTonne:
+                return ``;
+            case SpecificEnergyUnits.MegawattDaysPerTonne:
+                return ``;
+            case SpecificEnergyUnits.GigawattDaysPerTonne:
+                return ``;
+            case SpecificEnergyUnits.TerawattDaysPerTonne:
+                return ``;
+            case SpecificEnergyUnits.KilowattDaysPerShortTon:
+                return ``;
+            case SpecificEnergyUnits.MegawattDaysPerShortTon:
+                return ``;
+            case SpecificEnergyUnits.GigawattDaysPerShortTon:
+                return ``;
+            case SpecificEnergyUnits.TerawattDaysPerShortTon:
+                return ``;
+            case SpecificEnergyUnits.KilowattHoursPerPound:
+                return ``;
+            case SpecificEnergyUnits.MegawattHoursPerPound:
+                return ``;
+            case SpecificEnergyUnits.GigawattHoursPerPound:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

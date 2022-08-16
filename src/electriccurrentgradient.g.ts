@@ -116,11 +116,11 @@ export class ElectricCurrentGradient {
             case ElectricCurrentGradientUnits.AmperesPerSecond:
                 return this.value;
             case ElectricCurrentGradientUnits.AmperesPerMillisecond:
-                return this.value/1E3;
+                return this.value / 1E3;
             case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
-                return this.value/1E6;
+                return this.value / 1E6;
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
-                return this.value/1E9;
+                return this.value / 1E9;
             default:
                 break;
         }
@@ -133,11 +133,11 @@ export class ElectricCurrentGradient {
             case ElectricCurrentGradientUnits.AmperesPerSecond:
                 return value;
             case ElectricCurrentGradientUnits.AmperesPerMillisecond:
-                return value*1E3;
+                return value * 1E3;
             case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
-                return value*1E6;
+                return value * 1E6;
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
-                return value*1E9;
+                return value * 1E9;
             default:
                 break;
         }
@@ -147,13 +147,13 @@ export class ElectricCurrentGradient {
     /**
      * Format the ElectricCurrentGradient to string.
      * Note! the default format for ElectricCurrentGradient is AmperesPerSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricCurrentGradient.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricCurrentGradient.
      * @returns The string format of the ElectricCurrentGradient.
      */
-    public toString(toUnit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond): string {
+    public toString(unit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricCurrentGradientUnits.AmperesPerSecond:
                 return this.AmperesPerSecond + ` A/s`;
@@ -167,6 +167,31 @@ export class ElectricCurrentGradient {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricCurrentGradient unit abbreviation.
+     * Note! the default abbreviation for ElectricCurrentGradient is AmperesPerSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricCurrentGradient.
+     * @returns The abbreviation string of ElectricCurrentGradient.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricCurrentGradientUnits.AmperesPerSecond:
+                return `A/s`;
+            case ElectricCurrentGradientUnits.AmperesPerMillisecond:
+                return `A/ms`;
+            case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
+                return `A/μs`;
+            case ElectricCurrentGradientUnits.AmperesPerNanosecond:
+                return `A/ns`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

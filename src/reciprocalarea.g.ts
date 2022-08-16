@@ -263,25 +263,25 @@ export class ReciprocalArea {
             case ReciprocalAreaUnits.InverseSquareMeters:
                 return this.value;
             case ReciprocalAreaUnits.InverseSquareKilometers:
-                return this.value*1e6;
+                return this.value * 1e6;
             case ReciprocalAreaUnits.InverseSquareDecimeters:
-                return this.value*1e-2;
+                return this.value * 1e-2;
             case ReciprocalAreaUnits.InverseSquareCentimeters:
-                return this.value*1e-4;
+                return this.value * 1e-4;
             case ReciprocalAreaUnits.InverseSquareMillimeters:
-                return this.value*1e-6;
+                return this.value * 1e-6;
             case ReciprocalAreaUnits.InverseSquareMicrometers:
-                return this.value*1e-12;
+                return this.value * 1e-12;
             case ReciprocalAreaUnits.InverseSquareMiles:
-                return this.value*2.59e6;
+                return this.value * 2.59e6;
             case ReciprocalAreaUnits.InverseSquareYards:
-                return this.value*0.836127;
+                return this.value * 0.836127;
             case ReciprocalAreaUnits.InverseSquareFeet:
-                return this.value*0.092903;
+                return this.value * 0.092903;
             case ReciprocalAreaUnits.InverseUsSurveySquareFeet:
-                return this.value*0.09290341161;
+                return this.value * 0.09290341161;
             case ReciprocalAreaUnits.InverseSquareInches:
-                return this.value*0.00064516;
+                return this.value * 0.00064516;
             default:
                 break;
         }
@@ -294,25 +294,25 @@ export class ReciprocalArea {
             case ReciprocalAreaUnits.InverseSquareMeters:
                 return value;
             case ReciprocalAreaUnits.InverseSquareKilometers:
-                return value/1e6;
+                return value / 1e6;
             case ReciprocalAreaUnits.InverseSquareDecimeters:
-                return value/1e-2;
+                return value / 1e-2;
             case ReciprocalAreaUnits.InverseSquareCentimeters:
-                return value/1e-4;
+                return value / 1e-4;
             case ReciprocalAreaUnits.InverseSquareMillimeters:
-                return value/1e-6;
+                return value / 1e-6;
             case ReciprocalAreaUnits.InverseSquareMicrometers:
-                return value/1e-12;
+                return value / 1e-12;
             case ReciprocalAreaUnits.InverseSquareMiles:
-                return value/2.59e6;
+                return value / 2.59e6;
             case ReciprocalAreaUnits.InverseSquareYards:
-                return value/0.836127;
+                return value / 0.836127;
             case ReciprocalAreaUnits.InverseSquareFeet:
-                return value/0.092903;
+                return value / 0.092903;
             case ReciprocalAreaUnits.InverseUsSurveySquareFeet:
-                return value/0.09290341161;
+                return value / 0.09290341161;
             case ReciprocalAreaUnits.InverseSquareInches:
-                return value/0.00064516;
+                return value / 0.00064516;
             default:
                 break;
         }
@@ -322,13 +322,13 @@ export class ReciprocalArea {
     /**
      * Format the ReciprocalArea to string.
      * Note! the default format for ReciprocalArea is InverseSquareMeters.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ReciprocalArea.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ReciprocalArea.
      * @returns The string format of the ReciprocalArea.
      */
-    public toString(toUnit: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters): string {
+    public toString(unit: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ReciprocalAreaUnits.InverseSquareMeters:
                 return this.InverseSquareMeters + ` m⁻²`;
@@ -356,6 +356,45 @@ export class ReciprocalArea {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ReciprocalArea unit abbreviation.
+     * Note! the default abbreviation for ReciprocalArea is InverseSquareMeters.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ReciprocalArea.
+     * @returns The abbreviation string of ReciprocalArea.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters): string {
+
+        switch (unitAbbreviation) {
+            
+            case ReciprocalAreaUnits.InverseSquareMeters:
+                return `m⁻²`;
+            case ReciprocalAreaUnits.InverseSquareKilometers:
+                return `km⁻²`;
+            case ReciprocalAreaUnits.InverseSquareDecimeters:
+                return `dm⁻²`;
+            case ReciprocalAreaUnits.InverseSquareCentimeters:
+                return `cm⁻²`;
+            case ReciprocalAreaUnits.InverseSquareMillimeters:
+                return `mm⁻²`;
+            case ReciprocalAreaUnits.InverseSquareMicrometers:
+                return `µm⁻²`;
+            case ReciprocalAreaUnits.InverseSquareMiles:
+                return `mi⁻²`;
+            case ReciprocalAreaUnits.InverseSquareYards:
+                return `yd⁻²`;
+            case ReciprocalAreaUnits.InverseSquareFeet:
+                return `ft⁻²`;
+            case ReciprocalAreaUnits.InverseUsSurveySquareFeet:
+                return `ft⁻² (US)`;
+            case ReciprocalAreaUnits.InverseSquareInches:
+                return `in⁻²`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

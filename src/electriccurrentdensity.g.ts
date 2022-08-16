@@ -122,13 +122,13 @@ export class ElectricCurrentDensity {
     /**
      * Format the ElectricCurrentDensity to string.
      * Note! the default format for ElectricCurrentDensity is AmperesPerSquareMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricCurrentDensity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricCurrentDensity.
      * @returns The string format of the ElectricCurrentDensity.
      */
-    public toString(toUnit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter): string {
+    public toString(unit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
                 return this.AmperesPerSquareMeter + ` A/m²`;
@@ -140,6 +140,29 @@ export class ElectricCurrentDensity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricCurrentDensity unit abbreviation.
+     * Note! the default abbreviation for ElectricCurrentDensity is AmperesPerSquareMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricCurrentDensity.
+     * @returns The abbreviation string of ElectricCurrentDensity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
+                return `A/m²`;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch:
+                return `A/in²`;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
+                return `A/ft²`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

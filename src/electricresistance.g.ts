@@ -197,13 +197,13 @@ export class ElectricResistance {
     /**
      * Format the ElectricResistance to string.
      * Note! the default format for ElectricResistance is Ohms.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricResistance.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricResistance.
      * @returns The string format of the ElectricResistance.
      */
-    public toString(toUnit: ElectricResistanceUnits = ElectricResistanceUnits.Ohms): string {
+    public toString(unit: ElectricResistanceUnits = ElectricResistanceUnits.Ohms): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricResistanceUnits.Ohms:
                 return this.Ohms + ` Ω`;
@@ -221,6 +221,35 @@ export class ElectricResistance {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricResistance unit abbreviation.
+     * Note! the default abbreviation for ElectricResistance is Ohms.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricResistance.
+     * @returns The abbreviation string of ElectricResistance.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricResistanceUnits = ElectricResistanceUnits.Ohms): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricResistanceUnits.Ohms:
+                return `Ω`;
+            case ElectricResistanceUnits.Microohms:
+                return ``;
+            case ElectricResistanceUnits.Milliohms:
+                return ``;
+            case ElectricResistanceUnits.Kiloohms:
+                return ``;
+            case ElectricResistanceUnits.Megaohms:
+                return ``;
+            case ElectricResistanceUnits.Gigaohms:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

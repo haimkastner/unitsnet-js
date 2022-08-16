@@ -179,7 +179,7 @@ export class Entropy {
             case EntropyUnits.JoulesPerKelvin:
                 return this.value;
             case EntropyUnits.CaloriesPerKelvin:
-                return this.value/4.184;
+                return this.value / 4.184;
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return this.value;
             case EntropyUnits.KilojoulesPerKelvin:
@@ -187,7 +187,7 @@ export class Entropy {
             case EntropyUnits.MegajoulesPerKelvin:
                 return (this.value) / 1000000;
             case EntropyUnits.KilocaloriesPerKelvin:
-                return (this.value/4.184) / 1000;
+                return (this.value / 4.184) / 1000;
             case EntropyUnits.KilojoulesPerDegreeCelsius:
                 return (this.value) / 1000;
             default:
@@ -202,7 +202,7 @@ export class Entropy {
             case EntropyUnits.JoulesPerKelvin:
                 return value;
             case EntropyUnits.CaloriesPerKelvin:
-                return value*4.184;
+                return value * 4.184;
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return value;
             case EntropyUnits.KilojoulesPerKelvin:
@@ -210,7 +210,7 @@ export class Entropy {
             case EntropyUnits.MegajoulesPerKelvin:
                 return (value) * 1000000;
             case EntropyUnits.KilocaloriesPerKelvin:
-                return (value*4.184) * 1000;
+                return (value * 4.184) * 1000;
             case EntropyUnits.KilojoulesPerDegreeCelsius:
                 return (value) * 1000;
             default:
@@ -222,13 +222,13 @@ export class Entropy {
     /**
      * Format the Entropy to string.
      * Note! the default format for Entropy is JoulesPerKelvin.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Entropy.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Entropy.
      * @returns The string format of the Entropy.
      */
-    public toString(toUnit: EntropyUnits = EntropyUnits.JoulesPerKelvin): string {
+    public toString(unit: EntropyUnits = EntropyUnits.JoulesPerKelvin): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case EntropyUnits.JoulesPerKelvin:
                 return this.JoulesPerKelvin + ` J/K`;
@@ -248,6 +248,37 @@ export class Entropy {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Entropy unit abbreviation.
+     * Note! the default abbreviation for Entropy is JoulesPerKelvin.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Entropy.
+     * @returns The abbreviation string of Entropy.
+     */
+    public getUnitAbbreviation(unitAbbreviation: EntropyUnits = EntropyUnits.JoulesPerKelvin): string {
+
+        switch (unitAbbreviation) {
+            
+            case EntropyUnits.JoulesPerKelvin:
+                return `J/K`;
+            case EntropyUnits.CaloriesPerKelvin:
+                return `cal/K`;
+            case EntropyUnits.JoulesPerDegreeCelsius:
+                return `J/C`;
+            case EntropyUnits.KilojoulesPerKelvin:
+                return ``;
+            case EntropyUnits.MegajoulesPerKelvin:
+                return ``;
+            case EntropyUnits.KilocaloriesPerKelvin:
+                return ``;
+            case EntropyUnits.KilojoulesPerDegreeCelsius:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

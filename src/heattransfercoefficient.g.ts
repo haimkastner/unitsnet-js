@@ -122,13 +122,13 @@ export class HeatTransferCoefficient {
     /**
      * Format the HeatTransferCoefficient to string.
      * Note! the default format for HeatTransferCoefficient is WattsPerSquareMeterKelvin.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the HeatTransferCoefficient.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the HeatTransferCoefficient.
      * @returns The string format of the HeatTransferCoefficient.
      */
-    public toString(toUnit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin): string {
+    public toString(unit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
                 return this.WattsPerSquareMeterKelvin + ` W/m²·K`;
@@ -140,6 +140,29 @@ export class HeatTransferCoefficient {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get HeatTransferCoefficient unit abbreviation.
+     * Note! the default abbreviation for HeatTransferCoefficient is WattsPerSquareMeterKelvin.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the HeatTransferCoefficient.
+     * @returns The abbreviation string of HeatTransferCoefficient.
+     */
+    public getUnitAbbreviation(unitAbbreviation: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin): string {
+
+        switch (unitAbbreviation) {
+            
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
+                return `W/m²·K`;
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
+                return `W/m²·°C`;
+            case HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit:
+                return `Btu/ft²·hr·°F`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

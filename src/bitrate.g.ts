@@ -326,7 +326,7 @@ export class BitRate {
             case BitRateUnits.BitsPerSecond:
                 return this.value;
             case BitRateUnits.BytesPerSecond:
-                return this.value/8;
+                return this.value / 8;
             case BitRateUnits.KilobitsPerSecond:
                 return (this.value) / 1000;
             case BitRateUnits.MegabitsPerSecond:
@@ -340,17 +340,17 @@ export class BitRate {
             case BitRateUnits.ExabitsPerSecond:
                 return (this.value) / 1000000000000000000;
             case BitRateUnits.KilobytesPerSecond:
-                return (this.value/8) / 1000;
+                return (this.value / 8) / 1000;
             case BitRateUnits.MegabytesPerSecond:
-                return (this.value/8) / 1000000;
+                return (this.value / 8) / 1000000;
             case BitRateUnits.GigabytesPerSecond:
-                return (this.value/8) / 1000000000;
+                return (this.value / 8) / 1000000000;
             case BitRateUnits.TerabytesPerSecond:
-                return (this.value/8) / 1000000000000;
+                return (this.value / 8) / 1000000000000;
             case BitRateUnits.PetabytesPerSecond:
-                return (this.value/8) / 1000000000000000;
+                return (this.value / 8) / 1000000000000000;
             case BitRateUnits.ExabytesPerSecond:
-                return (this.value/8) / 1000000000000000000;
+                return (this.value / 8) / 1000000000000000000;
             default:
                 break;
         }
@@ -363,7 +363,7 @@ export class BitRate {
             case BitRateUnits.BitsPerSecond:
                 return value;
             case BitRateUnits.BytesPerSecond:
-                return value*8;
+                return value * 8;
             case BitRateUnits.KilobitsPerSecond:
                 return (value) * 1000;
             case BitRateUnits.MegabitsPerSecond:
@@ -377,17 +377,17 @@ export class BitRate {
             case BitRateUnits.ExabitsPerSecond:
                 return (value) * 1000000000000000000;
             case BitRateUnits.KilobytesPerSecond:
-                return (value*8) * 1000;
+                return (value * 8) * 1000;
             case BitRateUnits.MegabytesPerSecond:
-                return (value*8) * 1000000;
+                return (value * 8) * 1000000;
             case BitRateUnits.GigabytesPerSecond:
-                return (value*8) * 1000000000;
+                return (value * 8) * 1000000000;
             case BitRateUnits.TerabytesPerSecond:
-                return (value*8) * 1000000000000;
+                return (value * 8) * 1000000000000;
             case BitRateUnits.PetabytesPerSecond:
-                return (value*8) * 1000000000000000;
+                return (value * 8) * 1000000000000000;
             case BitRateUnits.ExabytesPerSecond:
-                return (value*8) * 1000000000000000000;
+                return (value * 8) * 1000000000000000000;
             default:
                 break;
         }
@@ -397,13 +397,13 @@ export class BitRate {
     /**
      * Format the BitRate to string.
      * Note! the default format for BitRate is BitsPerSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the BitRate.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the BitRate.
      * @returns The string format of the BitRate.
      */
-    public toString(toUnit: BitRateUnits = BitRateUnits.BitsPerSecond): string {
+    public toString(unit: BitRateUnits = BitRateUnits.BitsPerSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case BitRateUnits.BitsPerSecond:
                 return this.BitsPerSecond + ` bit/s`;
@@ -437,6 +437,51 @@ export class BitRate {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get BitRate unit abbreviation.
+     * Note! the default abbreviation for BitRate is BitsPerSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the BitRate.
+     * @returns The abbreviation string of BitRate.
+     */
+    public getUnitAbbreviation(unitAbbreviation: BitRateUnits = BitRateUnits.BitsPerSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case BitRateUnits.BitsPerSecond:
+                return `bit/s`;
+            case BitRateUnits.BytesPerSecond:
+                return `B/s`;
+            case BitRateUnits.KilobitsPerSecond:
+                return ``;
+            case BitRateUnits.MegabitsPerSecond:
+                return ``;
+            case BitRateUnits.GigabitsPerSecond:
+                return ``;
+            case BitRateUnits.TerabitsPerSecond:
+                return ``;
+            case BitRateUnits.PetabitsPerSecond:
+                return ``;
+            case BitRateUnits.ExabitsPerSecond:
+                return ``;
+            case BitRateUnits.KilobytesPerSecond:
+                return ``;
+            case BitRateUnits.MegabytesPerSecond:
+                return ``;
+            case BitRateUnits.GigabytesPerSecond:
+                return ``;
+            case BitRateUnits.TerabytesPerSecond:
+                return ``;
+            case BitRateUnits.PetabytesPerSecond:
+                return ``;
+            case BitRateUnits.ExabytesPerSecond:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

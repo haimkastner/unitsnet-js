@@ -305,13 +305,13 @@ export class RotationalSpeed {
             case RotationalSpeedUnits.RadiansPerSecond:
                 return this.value;
             case RotationalSpeedUnits.DegreesPerSecond:
-                return (180/Math.PI)*this.value;
+                return (180 / Math.PI) * this.value;
             case RotationalSpeedUnits.DegreesPerMinute:
-                return (180*60/Math.PI)*this.value;
+                return (180 * 60 / Math.PI) * this.value;
             case RotationalSpeedUnits.RevolutionsPerSecond:
-                return this.value/6.2831853072;
+                return this.value / 6.2831853072;
             case RotationalSpeedUnits.RevolutionsPerMinute:
-                return (this.value/6.2831853072)*60;
+                return (this.value / 6.2831853072) * 60;
             case RotationalSpeedUnits.NanoradiansPerSecond:
                 return (this.value) / 1e-9;
             case RotationalSpeedUnits.MicroradiansPerSecond:
@@ -323,11 +323,11 @@ export class RotationalSpeed {
             case RotationalSpeedUnits.DeciradiansPerSecond:
                 return (this.value) / 0.1;
             case RotationalSpeedUnits.NanodegreesPerSecond:
-                return ((180/Math.PI)*this.value) / 1e-9;
+                return ((180 / Math.PI) * this.value) / 1e-9;
             case RotationalSpeedUnits.MicrodegreesPerSecond:
-                return ((180/Math.PI)*this.value) / 0.000001;
+                return ((180 / Math.PI) * this.value) / 0.000001;
             case RotationalSpeedUnits.MillidegreesPerSecond:
-                return ((180/Math.PI)*this.value) / 0.001;
+                return ((180 / Math.PI) * this.value) / 0.001;
             default:
                 break;
         }
@@ -340,13 +340,13 @@ export class RotationalSpeed {
             case RotationalSpeedUnits.RadiansPerSecond:
                 return value;
             case RotationalSpeedUnits.DegreesPerSecond:
-                return (Math.PI/180)*value;
+                return (Math.PI / 180) * value;
             case RotationalSpeedUnits.DegreesPerMinute:
-                return (Math.PI/(180*60))*value;
+                return (Math.PI / (180 * 60)) * value;
             case RotationalSpeedUnits.RevolutionsPerSecond:
-                return value*6.2831853072;
+                return value * 6.2831853072;
             case RotationalSpeedUnits.RevolutionsPerMinute:
-                return (value*6.2831853072)/60;
+                return (value * 6.2831853072) / 60;
             case RotationalSpeedUnits.NanoradiansPerSecond:
                 return (value) * 1e-9;
             case RotationalSpeedUnits.MicroradiansPerSecond:
@@ -358,11 +358,11 @@ export class RotationalSpeed {
             case RotationalSpeedUnits.DeciradiansPerSecond:
                 return (value) * 0.1;
             case RotationalSpeedUnits.NanodegreesPerSecond:
-                return ((Math.PI/180)*value) * 1e-9;
+                return ((Math.PI / 180) * value) * 1e-9;
             case RotationalSpeedUnits.MicrodegreesPerSecond:
-                return ((Math.PI/180)*value) * 0.000001;
+                return ((Math.PI / 180) * value) * 0.000001;
             case RotationalSpeedUnits.MillidegreesPerSecond:
-                return ((Math.PI/180)*value) * 0.001;
+                return ((Math.PI / 180) * value) * 0.001;
             default:
                 break;
         }
@@ -372,13 +372,13 @@ export class RotationalSpeed {
     /**
      * Format the RotationalSpeed to string.
      * Note! the default format for RotationalSpeed is RadiansPerSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the RotationalSpeed.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the RotationalSpeed.
      * @returns The string format of the RotationalSpeed.
      */
-    public toString(toUnit: RotationalSpeedUnits = RotationalSpeedUnits.RadiansPerSecond): string {
+    public toString(unit: RotationalSpeedUnits = RotationalSpeedUnits.RadiansPerSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case RotationalSpeedUnits.RadiansPerSecond:
                 return this.RadiansPerSecond + ` rad/s`;
@@ -410,6 +410,49 @@ export class RotationalSpeed {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get RotationalSpeed unit abbreviation.
+     * Note! the default abbreviation for RotationalSpeed is RadiansPerSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the RotationalSpeed.
+     * @returns The abbreviation string of RotationalSpeed.
+     */
+    public getUnitAbbreviation(unitAbbreviation: RotationalSpeedUnits = RotationalSpeedUnits.RadiansPerSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case RotationalSpeedUnits.RadiansPerSecond:
+                return `rad/s`;
+            case RotationalSpeedUnits.DegreesPerSecond:
+                return `°/s`;
+            case RotationalSpeedUnits.DegreesPerMinute:
+                return `°/min`;
+            case RotationalSpeedUnits.RevolutionsPerSecond:
+                return `r/s`;
+            case RotationalSpeedUnits.RevolutionsPerMinute:
+                return `rpm`;
+            case RotationalSpeedUnits.NanoradiansPerSecond:
+                return ``;
+            case RotationalSpeedUnits.MicroradiansPerSecond:
+                return ``;
+            case RotationalSpeedUnits.MilliradiansPerSecond:
+                return ``;
+            case RotationalSpeedUnits.CentiradiansPerSecond:
+                return ``;
+            case RotationalSpeedUnits.DeciradiansPerSecond:
+                return ``;
+            case RotationalSpeedUnits.NanodegreesPerSecond:
+                return ``;
+            case RotationalSpeedUnits.MicrodegreesPerSecond:
+                return ``;
+            case RotationalSpeedUnits.MillidegreesPerSecond:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

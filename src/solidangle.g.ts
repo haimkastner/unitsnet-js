@@ -72,13 +72,13 @@ export class SolidAngle {
     /**
      * Format the SolidAngle to string.
      * Note! the default format for SolidAngle is Steradians.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the SolidAngle.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the SolidAngle.
      * @returns The string format of the SolidAngle.
      */
-    public toString(toUnit: SolidAngleUnits = SolidAngleUnits.Steradians): string {
+    public toString(unit: SolidAngleUnits = SolidAngleUnits.Steradians): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case SolidAngleUnits.Steradians:
                 return this.Steradians + ` sr`;
@@ -86,6 +86,25 @@ export class SolidAngle {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get SolidAngle unit abbreviation.
+     * Note! the default abbreviation for SolidAngle is Steradians.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the SolidAngle.
+     * @returns The abbreviation string of SolidAngle.
+     */
+    public getUnitAbbreviation(unitAbbreviation: SolidAngleUnits = SolidAngleUnits.Steradians): string {
+
+        switch (unitAbbreviation) {
+            
+            case SolidAngleUnits.Steradians:
+                return `sr`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

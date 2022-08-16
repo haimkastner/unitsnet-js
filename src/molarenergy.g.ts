@@ -122,13 +122,13 @@ export class MolarEnergy {
     /**
      * Format the MolarEnergy to string.
      * Note! the default format for MolarEnergy is JoulesPerMole.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the MolarEnergy.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the MolarEnergy.
      * @returns The string format of the MolarEnergy.
      */
-    public toString(toUnit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole): string {
+    public toString(unit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MolarEnergyUnits.JoulesPerMole:
                 return this.JoulesPerMole + ` J/mol`;
@@ -140,6 +140,29 @@ export class MolarEnergy {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get MolarEnergy unit abbreviation.
+     * Note! the default abbreviation for MolarEnergy is JoulesPerMole.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the MolarEnergy.
+     * @returns The abbreviation string of MolarEnergy.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole): string {
+
+        switch (unitAbbreviation) {
+            
+            case MolarEnergyUnits.JoulesPerMole:
+                return `J/mol`;
+            case MolarEnergyUnits.KilojoulesPerMole:
+                return ``;
+            case MolarEnergyUnits.MegajoulesPerMole:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

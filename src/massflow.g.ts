@@ -725,27 +725,27 @@ export class MassFlow {
             case MassFlowUnits.GramsPerSecond:
                 return this.value;
             case MassFlowUnits.GramsPerDay:
-                return this.value*86400;
+                return this.value * 86400;
             case MassFlowUnits.GramsPerHour:
-                return this.value*3600;
+                return this.value * 3600;
             case MassFlowUnits.KilogramsPerHour:
-                return this.value*3.6;
+                return this.value * 3.6;
             case MassFlowUnits.KilogramsPerMinute:
-                return this.value*0.06;
+                return this.value * 0.06;
             case MassFlowUnits.TonnesPerHour:
-                return this.value*3.6/1000;
+                return this.value * 3.6 / 1000;
             case MassFlowUnits.PoundsPerDay:
-                return this.value*190.47936;
+                return this.value * 190.47936;
             case MassFlowUnits.PoundsPerHour:
-                return this.value*7.93664;
+                return this.value * 7.93664;
             case MassFlowUnits.PoundsPerMinute:
-                return this.value*0.132277;
+                return this.value * 0.132277;
             case MassFlowUnits.PoundsPerSecond:
                 return this.value / 453.59237;
             case MassFlowUnits.TonnesPerDay:
-                return this.value*0.0864000;
+                return this.value * 0.0864000;
             case MassFlowUnits.ShortTonsPerHour:
-                return this.value/251.9957611;
+                return this.value / 251.9957611;
             case MassFlowUnits.NanogramsPerSecond:
                 return (this.value) / 1e-9;
             case MassFlowUnits.MicrogramsPerSecond:
@@ -763,29 +763,29 @@ export class MassFlow {
             case MassFlowUnits.KilogramsPerSecond:
                 return (this.value) / 1000;
             case MassFlowUnits.NanogramsPerDay:
-                return (this.value*86400) / 1e-9;
+                return (this.value * 86400) / 1e-9;
             case MassFlowUnits.MicrogramsPerDay:
-                return (this.value*86400) / 0.000001;
+                return (this.value * 86400) / 0.000001;
             case MassFlowUnits.MilligramsPerDay:
-                return (this.value*86400) / 0.001;
+                return (this.value * 86400) / 0.001;
             case MassFlowUnits.CentigramsPerDay:
-                return (this.value*86400) / 0.01;
+                return (this.value * 86400) / 0.01;
             case MassFlowUnits.DecigramsPerDay:
-                return (this.value*86400) / 0.1;
+                return (this.value * 86400) / 0.1;
             case MassFlowUnits.DecagramsPerDay:
-                return (this.value*86400) / 10;
+                return (this.value * 86400) / 10;
             case MassFlowUnits.HectogramsPerDay:
-                return (this.value*86400) / 100;
+                return (this.value * 86400) / 100;
             case MassFlowUnits.KilogramsPerDay:
-                return (this.value*86400) / 1000;
+                return (this.value * 86400) / 1000;
             case MassFlowUnits.MegagramsPerDay:
-                return (this.value*86400) / 1000000;
+                return (this.value * 86400) / 1000000;
             case MassFlowUnits.MegapoundsPerDay:
-                return (this.value*190.47936) / 1000000;
+                return (this.value * 190.47936) / 1000000;
             case MassFlowUnits.MegapoundsPerHour:
-                return (this.value*7.93664) / 1000000;
+                return (this.value * 7.93664) / 1000000;
             case MassFlowUnits.MegapoundsPerMinute:
-                return (this.value*0.132277) / 1000000;
+                return (this.value * 0.132277) / 1000000;
             case MassFlowUnits.MegapoundsPerSecond:
                 return (this.value / 453.59237) / 1000000;
             default:
@@ -800,27 +800,27 @@ export class MassFlow {
             case MassFlowUnits.GramsPerSecond:
                 return value;
             case MassFlowUnits.GramsPerDay:
-                return value/86400;
+                return value / 86400;
             case MassFlowUnits.GramsPerHour:
-                return value/3600;
+                return value / 3600;
             case MassFlowUnits.KilogramsPerHour:
-                return value/3.6;
+                return value / 3.6;
             case MassFlowUnits.KilogramsPerMinute:
-                return value/0.06;
+                return value / 0.06;
             case MassFlowUnits.TonnesPerHour:
-                return 1000*value/3.6;
+                return 1000 * value / 3.6;
             case MassFlowUnits.PoundsPerDay:
-                return value/190.47936;
+                return value / 190.47936;
             case MassFlowUnits.PoundsPerHour:
-                return value/7.93664;
+                return value / 7.93664;
             case MassFlowUnits.PoundsPerMinute:
-                return value/0.132277;
+                return value / 0.132277;
             case MassFlowUnits.PoundsPerSecond:
                 return value * 453.59237;
             case MassFlowUnits.TonnesPerDay:
-                return value/0.0864000;
+                return value / 0.0864000;
             case MassFlowUnits.ShortTonsPerHour:
-                return value*251.9957611;
+                return value * 251.9957611;
             case MassFlowUnits.NanogramsPerSecond:
                 return (value) * 1e-9;
             case MassFlowUnits.MicrogramsPerSecond:
@@ -838,29 +838,29 @@ export class MassFlow {
             case MassFlowUnits.KilogramsPerSecond:
                 return (value) * 1000;
             case MassFlowUnits.NanogramsPerDay:
-                return (value/86400) * 1e-9;
+                return (value / 86400) * 1e-9;
             case MassFlowUnits.MicrogramsPerDay:
-                return (value/86400) * 0.000001;
+                return (value / 86400) * 0.000001;
             case MassFlowUnits.MilligramsPerDay:
-                return (value/86400) * 0.001;
+                return (value / 86400) * 0.001;
             case MassFlowUnits.CentigramsPerDay:
-                return (value/86400) * 0.01;
+                return (value / 86400) * 0.01;
             case MassFlowUnits.DecigramsPerDay:
-                return (value/86400) * 0.1;
+                return (value / 86400) * 0.1;
             case MassFlowUnits.DecagramsPerDay:
-                return (value/86400) * 10;
+                return (value / 86400) * 10;
             case MassFlowUnits.HectogramsPerDay:
-                return (value/86400) * 100;
+                return (value / 86400) * 100;
             case MassFlowUnits.KilogramsPerDay:
-                return (value/86400) * 1000;
+                return (value / 86400) * 1000;
             case MassFlowUnits.MegagramsPerDay:
-                return (value/86400) * 1000000;
+                return (value / 86400) * 1000000;
             case MassFlowUnits.MegapoundsPerDay:
-                return (value/190.47936) * 1000000;
+                return (value / 190.47936) * 1000000;
             case MassFlowUnits.MegapoundsPerHour:
-                return (value/7.93664) * 1000000;
+                return (value / 7.93664) * 1000000;
             case MassFlowUnits.MegapoundsPerMinute:
-                return (value/0.132277) * 1000000;
+                return (value / 0.132277) * 1000000;
             case MassFlowUnits.MegapoundsPerSecond:
                 return (value * 453.59237) * 1000000;
             default:
@@ -872,13 +872,13 @@ export class MassFlow {
     /**
      * Format the MassFlow to string.
      * Note! the default format for MassFlow is GramsPerSecond.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the MassFlow.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the MassFlow.
      * @returns The string format of the MassFlow.
      */
-    public toString(toUnit: MassFlowUnits = MassFlowUnits.GramsPerSecond): string {
+    public toString(unit: MassFlowUnits = MassFlowUnits.GramsPerSecond): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case MassFlowUnits.GramsPerSecond:
                 return this.GramsPerSecond + ` g/s`;
@@ -950,6 +950,89 @@ export class MassFlow {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get MassFlow unit abbreviation.
+     * Note! the default abbreviation for MassFlow is GramsPerSecond.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the MassFlow.
+     * @returns The abbreviation string of MassFlow.
+     */
+    public getUnitAbbreviation(unitAbbreviation: MassFlowUnits = MassFlowUnits.GramsPerSecond): string {
+
+        switch (unitAbbreviation) {
+            
+            case MassFlowUnits.GramsPerSecond:
+                return `g/s`;
+            case MassFlowUnits.GramsPerDay:
+                return `g/d`;
+            case MassFlowUnits.GramsPerHour:
+                return `g/h`;
+            case MassFlowUnits.KilogramsPerHour:
+                return `kg/h`;
+            case MassFlowUnits.KilogramsPerMinute:
+                return `kg/min`;
+            case MassFlowUnits.TonnesPerHour:
+                return `t/h`;
+            case MassFlowUnits.PoundsPerDay:
+                return `lb/d`;
+            case MassFlowUnits.PoundsPerHour:
+                return `lb/h`;
+            case MassFlowUnits.PoundsPerMinute:
+                return `lb/min`;
+            case MassFlowUnits.PoundsPerSecond:
+                return `lb/s`;
+            case MassFlowUnits.TonnesPerDay:
+                return `t/d`;
+            case MassFlowUnits.ShortTonsPerHour:
+                return `short tn/h`;
+            case MassFlowUnits.NanogramsPerSecond:
+                return ``;
+            case MassFlowUnits.MicrogramsPerSecond:
+                return ``;
+            case MassFlowUnits.MilligramsPerSecond:
+                return ``;
+            case MassFlowUnits.CentigramsPerSecond:
+                return ``;
+            case MassFlowUnits.DecigramsPerSecond:
+                return ``;
+            case MassFlowUnits.DecagramsPerSecond:
+                return ``;
+            case MassFlowUnits.HectogramsPerSecond:
+                return ``;
+            case MassFlowUnits.KilogramsPerSecond:
+                return ``;
+            case MassFlowUnits.NanogramsPerDay:
+                return ``;
+            case MassFlowUnits.MicrogramsPerDay:
+                return ``;
+            case MassFlowUnits.MilligramsPerDay:
+                return ``;
+            case MassFlowUnits.CentigramsPerDay:
+                return ``;
+            case MassFlowUnits.DecigramsPerDay:
+                return ``;
+            case MassFlowUnits.DecagramsPerDay:
+                return ``;
+            case MassFlowUnits.HectogramsPerDay:
+                return ``;
+            case MassFlowUnits.KilogramsPerDay:
+                return ``;
+            case MassFlowUnits.MegagramsPerDay:
+                return ``;
+            case MassFlowUnits.MegapoundsPerDay:
+                return ``;
+            case MassFlowUnits.MegapoundsPerHour:
+                return ``;
+            case MassFlowUnits.MegapoundsPerMinute:
+                return ``;
+            case MassFlowUnits.MegapoundsPerSecond:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -72,13 +72,13 @@ export class LuminousIntensity {
     /**
      * Format the LuminousIntensity to string.
      * Note! the default format for LuminousIntensity is Candela.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the LuminousIntensity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the LuminousIntensity.
      * @returns The string format of the LuminousIntensity.
      */
-    public toString(toUnit: LuminousIntensityUnits = LuminousIntensityUnits.Candela): string {
+    public toString(unit: LuminousIntensityUnits = LuminousIntensityUnits.Candela): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case LuminousIntensityUnits.Candela:
                 return this.Candela + ` cd`;
@@ -86,6 +86,25 @@ export class LuminousIntensity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get LuminousIntensity unit abbreviation.
+     * Note! the default abbreviation for LuminousIntensity is Candela.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the LuminousIntensity.
+     * @returns The abbreviation string of LuminousIntensity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: LuminousIntensityUnits = LuminousIntensityUnits.Candela): string {
+
+        switch (unitAbbreviation) {
+            
+            case LuminousIntensityUnits.Candela:
+                return `cd`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

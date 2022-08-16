@@ -72,13 +72,13 @@ export class ElectricChargeDensity {
     /**
      * Format the ElectricChargeDensity to string.
      * Note! the default format for ElectricChargeDensity is CoulombsPerCubicMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ElectricChargeDensity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ElectricChargeDensity.
      * @returns The string format of the ElectricChargeDensity.
      */
-    public toString(toUnit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter): string {
+    public toString(unit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
                 return this.CoulombsPerCubicMeter + ` C/m³`;
@@ -86,6 +86,25 @@ export class ElectricChargeDensity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ElectricChargeDensity unit abbreviation.
+     * Note! the default abbreviation for ElectricChargeDensity is CoulombsPerCubicMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ElectricChargeDensity.
+     * @returns The abbreviation string of ElectricChargeDensity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
+                return `C/m³`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

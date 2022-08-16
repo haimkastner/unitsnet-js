@@ -57,8 +57,8 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
             SingularName: `${prefix}${pascalToCamelCase(unit.SingularName)}`,
             PluralName: `${prefix}${pascalToCamelCase(unit.PluralName)}`,
             Localization: [{
-                Culture : 'en-US',
-                Abbreviations : [''],
+                Culture: 'en-US',
+                Abbreviations: [''],
             }],
         })
     }
@@ -72,7 +72,7 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
  * @param units The units collection
  * @returns The generated units.
  */
-function extandPrefixesUnits(units: UnitDefinition[]): UnitDefinition[] {
+function extantPrefixesUnits(units: UnitDefinition[]): UnitDefinition[] {
     const prefixesUnits: UnitDefinition[] = [];
 
     for (const unit of units) {
@@ -82,29 +82,32 @@ function extandPrefixesUnits(units: UnitDefinition[]): UnitDefinition[] {
 }
 
 /**
- * Generate a TS class for eatch unit in given units.
+ * Generate a TS class for each unit in given units.
  * @param project The generating project (of ts-morph lib) object.
  * @param unitsDestinationDirectory The generate file directory destination.
  * @param rawUnitsDefinitions The units definition from the definition JSON files
  */
 export function generateUnitsFromUnitsDefinitions(project: Project, unitsDestinationDirectory: string, rawUnitsDefinitions: UnitTypeDefinition[]) {
 
-    for (const unitDefinitiion of rawUnitsDefinitions) {
+    for (const unitDefinition of rawUnitsDefinitions) {
+
+        // Due to a bug in the Molarity definition JSON, need to filter our duplication.
+        unitDefinition.Units = unitDefinition.Units.filter((v, i, a) => a.findIndex(v2 => (v2.PluralName === v.PluralName)) === i)
 
         // Add the units prefixes (like MiliXXX or KiloXXX) as unit in the unit units collection.
-        unitDefinitiion.Units.push(...extandPrefixesUnits(unitDefinitiion.Units));
+        unitDefinition.Units.push(...extantPrefixesUnits(unitDefinition.Units));
 
         // Generate the TS file to the unit
         generateUnitClass(project, unitsDestinationDirectory, {
-            unitName: unitDefinitiion.Name,
-            baseUnitSingularName: unitDefinitiion.BaseUnit,
-            JSDoc : unitDefinitiion.XmlDoc,
-            units: unitDefinitiion.Units.map((unit: UnitDefinition): UnitProperties => ({
+            unitName: unitDefinition.Name,
+            baseUnitSingularName: unitDefinition.BaseUnit,
+            JSDoc: unitDefinition.XmlDoc,
+            units: unitDefinition.Units.map((unit: UnitDefinition): UnitProperties => ({
                 pluralName: unit.PluralName,
                 singularName: unit.SingularName,
                 unitToBaseFormula: unit.FromBaseToUnitFunc,
                 baseToUnitFormula: unit.FromUnitToBaseFunc,
-                JSDoc : unit.XmlDocSummary,
+                JSDoc: unit.XmlDocSummary,
                 Abbreviation: unit.Localization.find(Abbre => Abbre.Culture === 'en-US')?.Abbreviations[0] as string,
             }))
         });

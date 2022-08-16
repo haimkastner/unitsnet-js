@@ -158,15 +158,15 @@ export class AreaMomentOfInertia {
             case AreaMomentOfInertiaUnits.MetersToTheFourth:
                 return this.value;
             case AreaMomentOfInertiaUnits.DecimetersToTheFourth:
-                return this.value*1e4;
+                return this.value * 1e4;
             case AreaMomentOfInertiaUnits.CentimetersToTheFourth:
-                return this.value*1e8;
+                return this.value * 1e8;
             case AreaMomentOfInertiaUnits.MillimetersToTheFourth:
-                return this.value*1e12;
+                return this.value * 1e12;
             case AreaMomentOfInertiaUnits.FeetToTheFourth:
-                return this.value/Math.pow(0.3048, 4);
+                return this.value / Math.pow(0.3048, 4);
             case AreaMomentOfInertiaUnits.InchesToTheFourth:
-                return this.value/Math.pow(2.54e-2, 4);
+                return this.value / Math.pow(2.54e-2, 4);
             default:
                 break;
         }
@@ -179,15 +179,15 @@ export class AreaMomentOfInertia {
             case AreaMomentOfInertiaUnits.MetersToTheFourth:
                 return value;
             case AreaMomentOfInertiaUnits.DecimetersToTheFourth:
-                return value/1e4;
+                return value / 1e4;
             case AreaMomentOfInertiaUnits.CentimetersToTheFourth:
-                return value/1e8;
+                return value / 1e8;
             case AreaMomentOfInertiaUnits.MillimetersToTheFourth:
-                return value/1e12;
+                return value / 1e12;
             case AreaMomentOfInertiaUnits.FeetToTheFourth:
-                return value*Math.pow(0.3048, 4);
+                return value * Math.pow(0.3048, 4);
             case AreaMomentOfInertiaUnits.InchesToTheFourth:
-                return value*Math.pow(2.54e-2, 4);
+                return value * Math.pow(2.54e-2, 4);
             default:
                 break;
         }
@@ -197,13 +197,13 @@ export class AreaMomentOfInertia {
     /**
      * Format the AreaMomentOfInertia to string.
      * Note! the default format for AreaMomentOfInertia is MetersToTheFourth.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the AreaMomentOfInertia.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the AreaMomentOfInertia.
      * @returns The string format of the AreaMomentOfInertia.
      */
-    public toString(toUnit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth): string {
+    public toString(unit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case AreaMomentOfInertiaUnits.MetersToTheFourth:
                 return this.MetersToTheFourth + ` m⁴`;
@@ -221,6 +221,35 @@ export class AreaMomentOfInertia {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get AreaMomentOfInertia unit abbreviation.
+     * Note! the default abbreviation for AreaMomentOfInertia is MetersToTheFourth.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the AreaMomentOfInertia.
+     * @returns The abbreviation string of AreaMomentOfInertia.
+     */
+    public getUnitAbbreviation(unitAbbreviation: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth): string {
+
+        switch (unitAbbreviation) {
+            
+            case AreaMomentOfInertiaUnits.MetersToTheFourth:
+                return `m⁴`;
+            case AreaMomentOfInertiaUnits.DecimetersToTheFourth:
+                return `dm⁴`;
+            case AreaMomentOfInertiaUnits.CentimetersToTheFourth:
+                return `cm⁴`;
+            case AreaMomentOfInertiaUnits.MillimetersToTheFourth:
+                return `mm⁴`;
+            case AreaMomentOfInertiaUnits.FeetToTheFourth:
+                return `ft⁴`;
+            case AreaMomentOfInertiaUnits.InchesToTheFourth:
+                return `in⁴`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

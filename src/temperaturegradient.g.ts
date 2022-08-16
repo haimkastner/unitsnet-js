@@ -118,7 +118,7 @@ export class TemperatureGradient {
             case TemperatureGradientUnits.DegreesCelciusPerMeter:
                 return this.value;
             case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
-                return (this.value * 0.3048) * 9/5;
+                return (this.value * 0.3048) * 9 / 5;
             case TemperatureGradientUnits.DegreesCelciusPerKilometer:
                 return this.value * 1e3;
             default:
@@ -135,7 +135,7 @@ export class TemperatureGradient {
             case TemperatureGradientUnits.DegreesCelciusPerMeter:
                 return value;
             case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
-                return (value / 0.3048) * 5/9;
+                return (value / 0.3048) * 5 / 9;
             case TemperatureGradientUnits.DegreesCelciusPerKilometer:
                 return value / 1e3;
             default:
@@ -147,13 +147,13 @@ export class TemperatureGradient {
     /**
      * Format the TemperatureGradient to string.
      * Note! the default format for TemperatureGradient is KelvinsPerMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the TemperatureGradient.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the TemperatureGradient.
      * @returns The string format of the TemperatureGradient.
      */
-    public toString(toUnit: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter): string {
+    public toString(unit: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case TemperatureGradientUnits.KelvinsPerMeter:
                 return this.KelvinsPerMeter + ` ∆°K/m`;
@@ -167,6 +167,31 @@ export class TemperatureGradient {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get TemperatureGradient unit abbreviation.
+     * Note! the default abbreviation for TemperatureGradient is KelvinsPerMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the TemperatureGradient.
+     * @returns The abbreviation string of TemperatureGradient.
+     */
+    public getUnitAbbreviation(unitAbbreviation: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case TemperatureGradientUnits.KelvinsPerMeter:
+                return `∆°K/m`;
+            case TemperatureGradientUnits.DegreesCelciusPerMeter:
+                return `∆°C/m`;
+            case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
+                return `∆°F/ft`;
+            case TemperatureGradientUnits.DegreesCelciusPerKilometer:
+                return `∆°C/km`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

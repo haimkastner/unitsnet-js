@@ -72,13 +72,13 @@ export class AreaDensity {
     /**
      * Format the AreaDensity to string.
      * Note! the default format for AreaDensity is KilogramsPerSquareMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the AreaDensity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the AreaDensity.
      * @returns The string format of the AreaDensity.
      */
-    public toString(toUnit: AreaDensityUnits = AreaDensityUnits.KilogramsPerSquareMeter): string {
+    public toString(unit: AreaDensityUnits = AreaDensityUnits.KilogramsPerSquareMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case AreaDensityUnits.KilogramsPerSquareMeter:
                 return this.KilogramsPerSquareMeter + ` kg/m²`;
@@ -86,6 +86,25 @@ export class AreaDensity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get AreaDensity unit abbreviation.
+     * Note! the default abbreviation for AreaDensity is KilogramsPerSquareMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the AreaDensity.
+     * @returns The abbreviation string of AreaDensity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: AreaDensityUnits = AreaDensityUnits.KilogramsPerSquareMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case AreaDensityUnits.KilogramsPerSquareMeter:
+                return `kg/m²`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

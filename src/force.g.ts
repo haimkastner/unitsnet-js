@@ -345,23 +345,23 @@ export class Force {
         switch (toUnit) {
                 
             case ForceUnits.Dyne:
-                return this.value*1e5;
+                return this.value * 1e5;
             case ForceUnits.KilogramsForce:
-                return this.value/9.80665002864;
+                return this.value / 9.80665002864;
             case ForceUnits.TonnesForce:
-                return this.value/9.80665002864e3;
+                return this.value / 9.80665002864e3;
             case ForceUnits.Newtons:
                 return this.value;
             case ForceUnits.KiloPonds:
-                return this.value/9.80665002864;
+                return this.value / 9.80665002864;
             case ForceUnits.Poundals:
-                return this.value/0.13825502798973041652092282466083;
+                return this.value / 0.13825502798973041652092282466083;
             case ForceUnits.PoundsForce:
-                return this.value/4.4482216152605095551842641431421;
+                return this.value / 4.4482216152605095551842641431421;
             case ForceUnits.OunceForce:
-                return this.value/2.780138509537812e-1;
+                return this.value / 2.780138509537812e-1;
             case ForceUnits.ShortTonsForce:
-                return this.value/8.896443230521e3;
+                return this.value / 8.896443230521e3;
             case ForceUnits.Micronewtons:
                 return (this.value) / 0.000001;
             case ForceUnits.Millinewtons:
@@ -373,7 +373,7 @@ export class Force {
             case ForceUnits.Meganewtons:
                 return (this.value) / 1000000;
             case ForceUnits.KilopoundsForce:
-                return (this.value/4.4482216152605095551842641431421) / 1000;
+                return (this.value / 4.4482216152605095551842641431421) / 1000;
             default:
                 break;
         }
@@ -384,23 +384,23 @@ export class Force {
         switch (fromUnit) {
                 
             case ForceUnits.Dyne:
-                return value/1e5;
+                return value / 1e5;
             case ForceUnits.KilogramsForce:
-                return value*9.80665002864;
+                return value * 9.80665002864;
             case ForceUnits.TonnesForce:
-                return value*9.80665002864e3;
+                return value * 9.80665002864e3;
             case ForceUnits.Newtons:
                 return value;
             case ForceUnits.KiloPonds:
-                return value*9.80665002864;
+                return value * 9.80665002864;
             case ForceUnits.Poundals:
-                return value*0.13825502798973041652092282466083;
+                return value * 0.13825502798973041652092282466083;
             case ForceUnits.PoundsForce:
-                return value*4.4482216152605095551842641431421;
+                return value * 4.4482216152605095551842641431421;
             case ForceUnits.OunceForce:
-                return value*2.780138509537812e-1;
+                return value * 2.780138509537812e-1;
             case ForceUnits.ShortTonsForce:
-                return value*8.896443230521e3;
+                return value * 8.896443230521e3;
             case ForceUnits.Micronewtons:
                 return (value) * 0.000001;
             case ForceUnits.Millinewtons:
@@ -412,7 +412,7 @@ export class Force {
             case ForceUnits.Meganewtons:
                 return (value) * 1000000;
             case ForceUnits.KilopoundsForce:
-                return (value*4.4482216152605095551842641431421) * 1000;
+                return (value * 4.4482216152605095551842641431421) * 1000;
             default:
                 break;
         }
@@ -422,13 +422,13 @@ export class Force {
     /**
      * Format the Force to string.
      * Note! the default format for Force is Newtons.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Force.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Force.
      * @returns The string format of the Force.
      */
-    public toString(toUnit: ForceUnits = ForceUnits.Newtons): string {
+    public toString(unit: ForceUnits = ForceUnits.Newtons): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ForceUnits.Dyne:
                 return this.Dyne + ` dyn`;
@@ -464,6 +464,53 @@ export class Force {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Force unit abbreviation.
+     * Note! the default abbreviation for Force is Newtons.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Force.
+     * @returns The abbreviation string of Force.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ForceUnits = ForceUnits.Newtons): string {
+
+        switch (unitAbbreviation) {
+            
+            case ForceUnits.Dyne:
+                return `dyn`;
+            case ForceUnits.KilogramsForce:
+                return `kgf`;
+            case ForceUnits.TonnesForce:
+                return `tf`;
+            case ForceUnits.Newtons:
+                return `N`;
+            case ForceUnits.KiloPonds:
+                return `kp`;
+            case ForceUnits.Poundals:
+                return `pdl`;
+            case ForceUnits.PoundsForce:
+                return `lbf`;
+            case ForceUnits.OunceForce:
+                return `ozf`;
+            case ForceUnits.ShortTonsForce:
+                return `tf (short)`;
+            case ForceUnits.Micronewtons:
+                return ``;
+            case ForceUnits.Millinewtons:
+                return ``;
+            case ForceUnits.Decanewtons:
+                return ``;
+            case ForceUnits.Kilonewtons:
+                return ``;
+            case ForceUnits.Meganewtons:
+                return ``;
+            case ForceUnits.KilopoundsForce:
+                return ``;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

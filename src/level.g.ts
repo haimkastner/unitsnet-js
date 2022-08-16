@@ -74,7 +74,7 @@ export class Level {
             case LevelUnits.Decibels:
                 return this.value;
             case LevelUnits.Nepers:
-                return 0.115129254*this.value;
+                return 0.115129254 * this.value;
             default:
                 break;
         }
@@ -87,7 +87,7 @@ export class Level {
             case LevelUnits.Decibels:
                 return value;
             case LevelUnits.Nepers:
-                return (1/0.115129254)*value;
+                return (1 / 0.115129254) * value;
             default:
                 break;
         }
@@ -97,13 +97,13 @@ export class Level {
     /**
      * Format the Level to string.
      * Note! the default format for Level is Decibels.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Level.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Level.
      * @returns The string format of the Level.
      */
-    public toString(toUnit: LevelUnits = LevelUnits.Decibels): string {
+    public toString(unit: LevelUnits = LevelUnits.Decibels): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case LevelUnits.Decibels:
                 return this.Decibels + ` dB`;
@@ -113,6 +113,27 @@ export class Level {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Level unit abbreviation.
+     * Note! the default abbreviation for Level is Decibels.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Level.
+     * @returns The abbreviation string of Level.
+     */
+    public getUnitAbbreviation(unitAbbreviation: LevelUnits = LevelUnits.Decibels): string {
+
+        switch (unitAbbreviation) {
+            
+            case LevelUnits.Decibels:
+                return `dB`;
+            case LevelUnits.Nepers:
+                return `Np`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

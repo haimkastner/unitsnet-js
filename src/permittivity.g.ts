@@ -72,13 +72,13 @@ export class Permittivity {
     /**
      * Format the Permittivity to string.
      * Note! the default format for Permittivity is FaradsPerMeter.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Permittivity.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Permittivity.
      * @returns The string format of the Permittivity.
      */
-    public toString(toUnit: PermittivityUnits = PermittivityUnits.FaradsPerMeter): string {
+    public toString(unit: PermittivityUnits = PermittivityUnits.FaradsPerMeter): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case PermittivityUnits.FaradsPerMeter:
                 return this.FaradsPerMeter + ` F/m`;
@@ -86,6 +86,25 @@ export class Permittivity {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Permittivity unit abbreviation.
+     * Note! the default abbreviation for Permittivity is FaradsPerMeter.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Permittivity.
+     * @returns The abbreviation string of Permittivity.
+     */
+    public getUnitAbbreviation(unitAbbreviation: PermittivityUnits = PermittivityUnits.FaradsPerMeter): string {
+
+        switch (unitAbbreviation) {
+            
+            case PermittivityUnits.FaradsPerMeter:
+                return `F/m`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

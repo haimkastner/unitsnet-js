@@ -158,15 +158,15 @@ export class WarpingMomentOfInertia {
             case WarpingMomentOfInertiaUnits.MetersToTheSixth:
                 return this.value;
             case WarpingMomentOfInertiaUnits.DecimetersToTheSixth:
-                return this.value*1e6;
+                return this.value * 1e6;
             case WarpingMomentOfInertiaUnits.CentimetersToTheSixth:
-                return this.value*1e12;
+                return this.value * 1e12;
             case WarpingMomentOfInertiaUnits.MillimetersToTheSixth:
-                return this.value*1e18;
+                return this.value * 1e18;
             case WarpingMomentOfInertiaUnits.FeetToTheSixth:
-                return this.value/Math.pow(0.3048, 6);
+                return this.value / Math.pow(0.3048, 6);
             case WarpingMomentOfInertiaUnits.InchesToTheSixth:
-                return this.value/Math.pow(2.54e-2, 6);
+                return this.value / Math.pow(2.54e-2, 6);
             default:
                 break;
         }
@@ -179,15 +179,15 @@ export class WarpingMomentOfInertia {
             case WarpingMomentOfInertiaUnits.MetersToTheSixth:
                 return value;
             case WarpingMomentOfInertiaUnits.DecimetersToTheSixth:
-                return value/1e6;
+                return value / 1e6;
             case WarpingMomentOfInertiaUnits.CentimetersToTheSixth:
-                return value/1e12;
+                return value / 1e12;
             case WarpingMomentOfInertiaUnits.MillimetersToTheSixth:
-                return value/1e18;
+                return value / 1e18;
             case WarpingMomentOfInertiaUnits.FeetToTheSixth:
-                return value*Math.pow(0.3048, 6);
+                return value * Math.pow(0.3048, 6);
             case WarpingMomentOfInertiaUnits.InchesToTheSixth:
-                return value*Math.pow(2.54e-2, 6);
+                return value * Math.pow(2.54e-2, 6);
             default:
                 break;
         }
@@ -197,13 +197,13 @@ export class WarpingMomentOfInertia {
     /**
      * Format the WarpingMomentOfInertia to string.
      * Note! the default format for WarpingMomentOfInertia is MetersToTheSixth.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the WarpingMomentOfInertia.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the WarpingMomentOfInertia.
      * @returns The string format of the WarpingMomentOfInertia.
      */
-    public toString(toUnit: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth): string {
+    public toString(unit: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case WarpingMomentOfInertiaUnits.MetersToTheSixth:
                 return this.MetersToTheSixth + ` m⁶`;
@@ -221,6 +221,35 @@ export class WarpingMomentOfInertia {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get WarpingMomentOfInertia unit abbreviation.
+     * Note! the default abbreviation for WarpingMomentOfInertia is MetersToTheSixth.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the WarpingMomentOfInertia.
+     * @returns The abbreviation string of WarpingMomentOfInertia.
+     */
+    public getUnitAbbreviation(unitAbbreviation: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth): string {
+
+        switch (unitAbbreviation) {
+            
+            case WarpingMomentOfInertiaUnits.MetersToTheSixth:
+                return `m⁶`;
+            case WarpingMomentOfInertiaUnits.DecimetersToTheSixth:
+                return `dm⁶`;
+            case WarpingMomentOfInertiaUnits.CentimetersToTheSixth:
+                return `cm⁶`;
+            case WarpingMomentOfInertiaUnits.MillimetersToTheSixth:
+                return `mm⁶`;
+            case WarpingMomentOfInertiaUnits.FeetToTheSixth:
+                return `ft⁶`;
+            case WarpingMomentOfInertiaUnits.InchesToTheSixth:
+                return `in⁶`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

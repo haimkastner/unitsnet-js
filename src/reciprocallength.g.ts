@@ -242,23 +242,23 @@ export class ReciprocalLength {
             case ReciprocalLengthUnits.InverseMeters:
                 return this.value;
             case ReciprocalLengthUnits.InverseCentimeters:
-                return this.value/1e2;
+                return this.value / 1e2;
             case ReciprocalLengthUnits.InverseMillimeters:
-                return this.value/1e3;
+                return this.value / 1e3;
             case ReciprocalLengthUnits.InverseMiles:
-                return this.value*1609.34;
+                return this.value * 1609.34;
             case ReciprocalLengthUnits.InverseYards:
-                return this.value*0.9144;
+                return this.value * 0.9144;
             case ReciprocalLengthUnits.InverseFeet:
-                return this.value*0.3048;
+                return this.value * 0.3048;
             case ReciprocalLengthUnits.InverseUsSurveyFeet:
-                return this.value*1200/3937;
+                return this.value * 1200 / 3937;
             case ReciprocalLengthUnits.InverseInches:
-                return this.value*2.54e-2;
+                return this.value * 2.54e-2;
             case ReciprocalLengthUnits.InverseMils:
-                return this.value*2.54e-5;
+                return this.value * 2.54e-5;
             case ReciprocalLengthUnits.InverseMicroinches:
-                return this.value*2.54e-8;
+                return this.value * 2.54e-8;
             default:
                 break;
         }
@@ -271,23 +271,23 @@ export class ReciprocalLength {
             case ReciprocalLengthUnits.InverseMeters:
                 return value;
             case ReciprocalLengthUnits.InverseCentimeters:
-                return value*1e2;
+                return value * 1e2;
             case ReciprocalLengthUnits.InverseMillimeters:
-                return value*1e3;
+                return value * 1e3;
             case ReciprocalLengthUnits.InverseMiles:
-                return value/1609.34;
+                return value / 1609.34;
             case ReciprocalLengthUnits.InverseYards:
-                return value/0.9144;
+                return value / 0.9144;
             case ReciprocalLengthUnits.InverseFeet:
-                return value/0.3048;
+                return value / 0.3048;
             case ReciprocalLengthUnits.InverseUsSurveyFeet:
-                return value*3937/1200;
+                return value * 3937 / 1200;
             case ReciprocalLengthUnits.InverseInches:
-                return value/2.54e-2;
+                return value / 2.54e-2;
             case ReciprocalLengthUnits.InverseMils:
-                return value/2.54e-5;
+                return value / 2.54e-5;
             case ReciprocalLengthUnits.InverseMicroinches:
-                return value/2.54e-8;
+                return value / 2.54e-8;
             default:
                 break;
         }
@@ -297,13 +297,13 @@ export class ReciprocalLength {
     /**
      * Format the ReciprocalLength to string.
      * Note! the default format for ReciprocalLength is InverseMeters.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the ReciprocalLength.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the ReciprocalLength.
      * @returns The string format of the ReciprocalLength.
      */
-    public toString(toUnit: ReciprocalLengthUnits = ReciprocalLengthUnits.InverseMeters): string {
+    public toString(unit: ReciprocalLengthUnits = ReciprocalLengthUnits.InverseMeters): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case ReciprocalLengthUnits.InverseMeters:
                 return this.InverseMeters + ` m⁻¹`;
@@ -329,6 +329,43 @@ export class ReciprocalLength {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get ReciprocalLength unit abbreviation.
+     * Note! the default abbreviation for ReciprocalLength is InverseMeters.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the ReciprocalLength.
+     * @returns The abbreviation string of ReciprocalLength.
+     */
+    public getUnitAbbreviation(unitAbbreviation: ReciprocalLengthUnits = ReciprocalLengthUnits.InverseMeters): string {
+
+        switch (unitAbbreviation) {
+            
+            case ReciprocalLengthUnits.InverseMeters:
+                return `m⁻¹`;
+            case ReciprocalLengthUnits.InverseCentimeters:
+                return `cm⁻¹`;
+            case ReciprocalLengthUnits.InverseMillimeters:
+                return `mm⁻¹`;
+            case ReciprocalLengthUnits.InverseMiles:
+                return `mi⁻¹`;
+            case ReciprocalLengthUnits.InverseYards:
+                return `yd⁻¹`;
+            case ReciprocalLengthUnits.InverseFeet:
+                return `ft⁻¹`;
+            case ReciprocalLengthUnits.InverseUsSurveyFeet:
+                return `ftUS⁻¹`;
+            case ReciprocalLengthUnits.InverseInches:
+                return `in⁻¹`;
+            case ReciprocalLengthUnits.InverseMils:
+                return `mil⁻¹`;
+            case ReciprocalLengthUnits.InverseMicroinches:
+                return `µin⁻¹`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

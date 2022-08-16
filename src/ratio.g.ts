@@ -158,15 +158,15 @@ export class Ratio {
             case RatioUnits.DecimalFractions:
                 return this.value;
             case RatioUnits.Percent:
-                return this.value*1e2;
+                return this.value * 1e2;
             case RatioUnits.PartsPerThousand:
-                return this.value*1e3;
+                return this.value * 1e3;
             case RatioUnits.PartsPerMillion:
-                return this.value*1e6;
+                return this.value * 1e6;
             case RatioUnits.PartsPerBillion:
-                return this.value*1e9;
+                return this.value * 1e9;
             case RatioUnits.PartsPerTrillion:
-                return this.value*1e12;
+                return this.value * 1e12;
             default:
                 break;
         }
@@ -179,15 +179,15 @@ export class Ratio {
             case RatioUnits.DecimalFractions:
                 return value;
             case RatioUnits.Percent:
-                return value/1e2;
+                return value / 1e2;
             case RatioUnits.PartsPerThousand:
-                return value/1e3;
+                return value / 1e3;
             case RatioUnits.PartsPerMillion:
-                return value/1e6;
+                return value / 1e6;
             case RatioUnits.PartsPerBillion:
-                return value/1e9;
+                return value / 1e9;
             case RatioUnits.PartsPerTrillion:
-                return value/1e12;
+                return value / 1e12;
             default:
                 break;
         }
@@ -197,13 +197,13 @@ export class Ratio {
     /**
      * Format the Ratio to string.
      * Note! the default format for Ratio is DecimalFractions.
-     * To specify the unit fromat set the 'toUnit' parameter.
-     * @param toUnit The unit to format the Ratio.
+     * To specify the unit format set the 'unit' parameter.
+     * @param unit The unit to format the Ratio.
      * @returns The string format of the Ratio.
      */
-    public toString(toUnit: RatioUnits = RatioUnits.DecimalFractions): string {
+    public toString(unit: RatioUnits = RatioUnits.DecimalFractions): string {
 
-        switch (toUnit) {
+        switch (unit) {
             
             case RatioUnits.DecimalFractions:
                 return this.DecimalFractions + ` `;
@@ -221,6 +221,35 @@ export class Ratio {
             break;
         }
         return this.value.toString();
+    }
+
+    /**
+     * Get Ratio unit abbreviation.
+     * Note! the default abbreviation for Ratio is DecimalFractions.
+     * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
+     * @param unitAbbreviation The unit abbreviation of the Ratio.
+     * @returns The abbreviation string of Ratio.
+     */
+    public getUnitAbbreviation(unitAbbreviation: RatioUnits = RatioUnits.DecimalFractions): string {
+
+        switch (unitAbbreviation) {
+            
+            case RatioUnits.DecimalFractions:
+                return ``;
+            case RatioUnits.Percent:
+                return `%`;
+            case RatioUnits.PartsPerThousand:
+                return `‰`;
+            case RatioUnits.PartsPerMillion:
+                return `ppm`;
+            case RatioUnits.PartsPerBillion:
+                return `ppb`;
+            case RatioUnits.PartsPerTrillion:
+                return `ppt`;
+        default:
+            break;
+        }
+        return '';
     }
 
     /**

@@ -16,9 +16,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Build & Test
       run: |
+        npm i-g yarn
         cd generator-scripts
-        npm install
+        yarn install --frozen-lockfile 
         cd ..
-        npm install
-        npm run generate
-        npm run test
+        yarn install --frozen-lockfile
+        yarn generate
+        yarn test
