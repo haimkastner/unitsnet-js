@@ -3,23 +3,95 @@ name: unitsnet-js
 on: [push]
 
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [16.x]
     steps:
-    - uses: actions/checkout@v1 
-    - name: Install node
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Build & Test
-      run: |
-        npm i -g yarn
-        cd generator-scripts
-        yarn install --frozen-lockfile 
-        cd ..
-        yarn install --frozen-lockfile
-        yarn generate
-        yarn test
+      - uses: actions/checkout@v2
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Prepare dependencies
+        run: |
+          npm i -g yarn
+          cd generator-scripts
+          yarn install --frozen-lockfile 
+          cd ..
+          yarn install --frozen-lockfile
+
+      - name: Build & Test 🔧
+        run: |
+          yarn generate
+          yarn test
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Prepare dependencies
+        run: |
+          npm i -g yarn
+          cd generator-scripts
+          yarn install --frozen-lockfile 
+          cd ..
+          yarn install --frozen-lockfile
+
+      - name: Bomb Version
+        id: update_version
+        run: |
+          version=$(npm --no-git-tag-version --tag-version-prefix= version patch)
+          echo $version
+          echo ::set-output name=version::$version
+
+      - name: Get version info
+        id: version_info
+        run: |
+          echo ::set-output name=title::$( git log -1 --pretty=%B | sed -n '1p')
+          body=$(git log -1 --pretty=%B | sed 1d)
+          body="${body//'%'/'%25'}"
+          body="${body//$'\n'/'%0A'}"
+          body="${body//$'\r'/'%0D'}"
+          echo ::set-output name=body::$body
+
+      - name: Commit and push version
+        uses: devops-infra/action-commit-push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: Update to version ${{ steps.update_version.outputs.version }} [skip-ci]
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.update_version.outputs.version }}
+          release_name: ${{  steps.version_info.outputs.title }}
+          body: ${{  steps.version_info.outputs.body }}
+          draft: false
+          prerelease: false
+      
+      - name: Publish package on NPM 📦
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Commit and push generated docs update
+        uses: devops-infra/action-commit-push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: Update gen docs for version ${{ steps.update_version.outputs.version }} [skip-ci]
