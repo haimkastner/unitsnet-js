@@ -50,6 +50,7 @@ jobs:
       - name: Bomb Version
         id: update_version
         run: |
+          git pull
           version=$(npm --no-git-tag-version --tag-version-prefix= version patch)
           echo $version
           echo ::set-output name=version::$version
