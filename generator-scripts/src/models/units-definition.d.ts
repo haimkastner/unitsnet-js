@@ -6,6 +6,9 @@ export declare interface Abbreviation {
 }
 
 export declare interface UnitDefinition {
+    ObsoleteText?: string;
+    SkipConversionGeneration?: boolean;
+    Deprecated: boolean;
     SingularName: string;
     PluralName: string;
     FromUnitToBaseFunc: string;

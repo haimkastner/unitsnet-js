@@ -703,7 +703,7 @@ export class Mass {
             case MassUnits.Grains:
                 return this.Grains + ` gr`;
             case MassUnits.SolarMasses:
-                return this.SolarMasses + ` M⊙`;
+                return this.SolarMasses + ` M☉`;
             case MassUnits.EarthMasses:
                 return this.EarthMasses + ` em`;
             case MassUnits.Nanograms:
@@ -770,7 +770,7 @@ export class Mass {
             case MassUnits.Grains:
                 return `gr`;
             case MassUnits.SolarMasses:
-                return `M⊙`;
+                return `M☉`;
             case MassUnits.EarthMasses:
                 return `em`;
             case MassUnits.Nanograms:

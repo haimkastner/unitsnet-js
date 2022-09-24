@@ -5,6 +5,8 @@ export enum MolarityUnits {
     /** */
     MolesPerLiter,
     /** */
+    FemtomolesPerLiter,
+    /** */
     PicomolesPerLiter,
     /** */
     NanomolesPerLiter,
@@ -23,6 +25,7 @@ export class Molarity {
     private value: number;
     private molespercubicmeterLazy: number | null = null;
     private molesperliterLazy: number | null = null;
+    private femtomolesperliterLazy: number | null = null;
     private picomolesperliterLazy: number | null = null;
     private nanomolesperliterLazy: number | null = null;
     private micromolesperliterLazy: number | null = null;
@@ -64,6 +67,14 @@ export class Molarity {
             return this.molesperliterLazy;
         }
         return this.molesperliterLazy = this.convertFromBase(MolarityUnits.MolesPerLiter);
+    }
+
+    /** */
+    public get FemtomolesPerLiter(): number {
+        if(this.femtomolesperliterLazy !== null){
+            return this.femtomolesperliterLazy;
+        }
+        return this.femtomolesperliterLazy = this.convertFromBase(MolarityUnits.FemtomolesPerLiter);
     }
 
     /** */
@@ -135,6 +146,16 @@ export class Molarity {
     }
 
     /**
+     * Create a new Molarity instance from a FemtomolesPerLiter
+     *
+     * @param value The unit as FemtomolesPerLiter to create a new Molarity from.
+     * @returns The new Molarity instance.
+     */
+    public static FromFemtomolesPerLiter(value: number): Molarity {
+        return new Molarity(value, MolarityUnits.FemtomolesPerLiter);
+    }
+
+    /**
      * Create a new Molarity instance from a PicomolesPerLiter
      *
      * @param value The unit as PicomolesPerLiter to create a new Molarity from.
@@ -201,6 +222,8 @@ export class Molarity {
                 return this.value;
             case MolarityUnits.MolesPerLiter:
                 return this.value * 1e-3;
+            case MolarityUnits.FemtomolesPerLiter:
+                return (this.value * 1e-3) / 1e-15;
             case MolarityUnits.PicomolesPerLiter:
                 return (this.value * 1e-3) / 1e-12;
             case MolarityUnits.NanomolesPerLiter:
@@ -226,6 +249,8 @@ export class Molarity {
                 return value;
             case MolarityUnits.MolesPerLiter:
                 return value / 1e-3;
+            case MolarityUnits.FemtomolesPerLiter:
+                return (value / 1e-3) * 1e-15;
             case MolarityUnits.PicomolesPerLiter:
                 return (value / 1e-3) * 1e-12;
             case MolarityUnits.NanomolesPerLiter:
@@ -259,6 +284,8 @@ export class Molarity {
                 return this.MolesPerCubicMeter + ` mol/m³`;
             case MolarityUnits.MolesPerLiter:
                 return this.MolesPerLiter + ` mol/L`;
+            case MolarityUnits.FemtomolesPerLiter:
+                return this.FemtomolesPerLiter + ` `;
             case MolarityUnits.PicomolesPerLiter:
                 return this.PicomolesPerLiter + ` `;
             case MolarityUnits.NanomolesPerLiter:
@@ -292,6 +319,8 @@ export class Molarity {
                 return `mol/m³`;
             case MolarityUnits.MolesPerLiter:
                 return `mol/L`;
+            case MolarityUnits.FemtomolesPerLiter:
+                return ``;
             case MolarityUnits.PicomolesPerLiter:
                 return ``;
             case MolarityUnits.NanomolesPerLiter:

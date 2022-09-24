@@ -1,5 +1,5 @@
 import { UnitTypeDefinition } from "./models/units-definition";
-import stripBom  from "strip-bom";
+import stripBom from "strip-bom";
 import request from 'sync-request';
 
 const githubOptions = {
@@ -36,7 +36,23 @@ export function fetchUnitsDefinitions(repoOwnerAndName: string): UnitTypeDefinit
                 const response = request('GET', `${filesUrl}/${file}`, githubOptions);
                 // Stringify the payload to utf-8 (and remove the UTF BOM prefix if exists)
                 const rawBody = stripBom(response.body.toString('utf-8'));
-                unitsDefinition.push(JSON.parse(rawBody) as unknown as UnitTypeDefinition);
+
+                const unitDefinition = JSON.parse(rawBody) as unknown as UnitTypeDefinition;
+
+                // detect deprecated units definitions
+                for (const unit of unitDefinition.Units) {
+                    let markAsDeprecated = false;
+                    if (unit.ObsoleteText) {
+                        console.info(`[fetchUnitsDefinitions] Unit ${unitDefinition.Name}.${unit.PluralName} marked as obsolete, message: "${unit.ObsoleteText}"`);
+                        markAsDeprecated = true;
+                    }
+                    if (unit.SkipConversionGeneration) {
+                        console.info(`[fetchUnitsDefinitions] Unit ${unitDefinition.Name}.${unit.PluralName} marked to be ignored`);
+                        markAsDeprecated = true;
+                    }
+                    unit.Deprecated = markAsDeprecated;
+                }
+                unitsDefinition.push(unitDefinition);
             } catch (error) {
                 console.warn(`Fetching ${file} file failed or file damaged, ${error}`);
             }

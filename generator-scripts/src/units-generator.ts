@@ -51,9 +51,9 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
 
         // Create the new unit and push it to the units collection.
         unitPrefixes.push({
+            Deprecated: unit.Deprecated,
             FromUnitToBaseFunc: fromUnitPrefixToBaseFormula,
             FromBaseToUnitFunc: fromBaseToUnitPrefixFormula,
-
             SingularName: `${prefix}${pascalToCamelCase(unit.SingularName)}`,
             PluralName: `${prefix}${pascalToCamelCase(unit.PluralName)}`,
             Localization: [{
@@ -91,8 +91,8 @@ export function generateUnitsFromUnitsDefinitions(project: Project, unitsDestina
 
     for (const unitDefinition of rawUnitsDefinitions) {
 
-        // Due to a bug in the Molarity definition JSON, need to filter our duplication.
-        unitDefinition.Units = unitDefinition.Units.filter((v, i, a) => a.findIndex(v2 => (v2.PluralName === v.PluralName)) === i)
+        // Filter out deprecated definitions.
+        unitDefinition.Units = unitDefinition.Units.filter(unit => !unit.Deprecated);
 
         // Add the units prefixes (like MiliXXX or KiloXXX) as unit in the unit units collection.
         unitDefinition.Units.push(...extantPrefixesUnits(unitDefinition.Units));

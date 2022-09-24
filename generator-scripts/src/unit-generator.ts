@@ -525,9 +525,20 @@ export function generateUnitClass(project: Project,
     // Generate the unit units enum name 
     const enumName = `${unitProperties.unitName}Units`;
     const { units, unitName } = unitProperties;
-    const baseUnit = units.find((unit) =>
+    let baseUnit = units.find((unit) =>
         (unit.singularName === unitProperties.baseUnitSingularName)) as UnitProperties;
+    
+    if (!baseUnit) {
+        console.warn(`[generateUnitClass] Unable to find singular unit name matching to "BaseUnit" of -${unitProperties.unitName}-, as fallback looking for "PluralName"...`);
+        baseUnit = units.find((unit) =>
+        (unit.pluralName === unitProperties.baseUnitSingularName)) as UnitProperties;
+    }
 
+    if (!baseUnit) {
+        console.error(`[generateUnitClass] Unable to find singular nor plural Name unit name to "BaseUnit" of -${unitProperties.unitName}- exiting...`);
+        process.exit(1);
+    }
+        
     // Build the enum structure
     const unitsEnum = buildEnum(enumName, units);
 
