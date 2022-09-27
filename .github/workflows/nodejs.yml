@@ -58,18 +58,18 @@ jobs:
       - name: Get version info
         id: version_info
         run: |
-          echo ::set-output name=title::$( git log -1 --pretty=%B | sed -n '1p')
-          body=$(git log -1 --pretty=%B | sed 1d)
-          body="${body//'%'/'%25'}"
-          body="${body//$'\n'/'%0A'}"
-          body="${body//$'\r'/'%0D'}"
-          echo ::set-output name=body::$body
+          echo ::set-output name=body::$( git log -1 --pretty=%B | sed -n '1p')
 
       - name: Commit and push version
         uses: devops-infra/action-commit-push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit_message: Update to version ${{ steps.update_version.outputs.version }} [skip-ci]
+
+      - name: Publish package on NPM 📦
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create Release
         id: create_release
@@ -78,15 +78,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.update_version.outputs.version }}
-          release_name: ${{  steps.version_info.outputs.title }}
+          release_name: Package Version ${{ steps.update_version.outputs.version }}
           body: ${{  steps.version_info.outputs.body }}
           draft: false
           prerelease: false
-      
-      - name: Publish package on NPM 📦
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit and push generated docs update
         uses: devops-infra/action-commit-push@master
