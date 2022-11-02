@@ -1,13 +1,19 @@
 /** AreaDensityUnits enumeration */
 export enum AreaDensityUnits {
     /** */
-    KilogramsPerSquareMeter
+    KilogramsPerSquareMeter,
+    /** Also known as grammage for paper industry. In fiber industry used with abbreviation 'gsm'. */
+    GramsPerSquareMeter,
+    /** */
+    MilligramsPerSquareMeter
 }
 
-/** The area density of a two-dimensional object is calculated as the mass per unit area. */
+/** The area density of a two-dimensional object is calculated as the mass per unit area. For paper this is also called grammage. */
 export class AreaDensity {
     private value: number;
     private kilogramspersquaremeterLazy: number | null = null;
+    private gramspersquaremeterLazy: number | null = null;
+    private milligramspersquaremeterLazy: number | null = null;
 
     /**
      * Create a new AreaDensity.
@@ -37,6 +43,22 @@ export class AreaDensity {
         return this.kilogramspersquaremeterLazy = this.convertFromBase(AreaDensityUnits.KilogramsPerSquareMeter);
     }
 
+    /** Also known as grammage for paper industry. In fiber industry used with abbreviation 'gsm'. */
+    public get GramsPerSquareMeter(): number {
+        if(this.gramspersquaremeterLazy !== null){
+            return this.gramspersquaremeterLazy;
+        }
+        return this.gramspersquaremeterLazy = this.convertFromBase(AreaDensityUnits.GramsPerSquareMeter);
+    }
+
+    /** */
+    public get MilligramsPerSquareMeter(): number {
+        if(this.milligramspersquaremeterLazy !== null){
+            return this.milligramspersquaremeterLazy;
+        }
+        return this.milligramspersquaremeterLazy = this.convertFromBase(AreaDensityUnits.MilligramsPerSquareMeter);
+    }
+
     /**
      * Create a new AreaDensity instance from a KilogramsPerSquareMeter
      *
@@ -47,11 +69,35 @@ export class AreaDensity {
         return new AreaDensity(value, AreaDensityUnits.KilogramsPerSquareMeter);
     }
 
+    /**
+     * Create a new AreaDensity instance from a GramsPerSquareMeter
+     * Also known as grammage for paper industry. In fiber industry used with abbreviation 'gsm'.
+     * @param value The unit as GramsPerSquareMeter to create a new AreaDensity from.
+     * @returns The new AreaDensity instance.
+     */
+    public static FromGramsPerSquareMeter(value: number): AreaDensity {
+        return new AreaDensity(value, AreaDensityUnits.GramsPerSquareMeter);
+    }
+
+    /**
+     * Create a new AreaDensity instance from a MilligramsPerSquareMeter
+     *
+     * @param value The unit as MilligramsPerSquareMeter to create a new AreaDensity from.
+     * @returns The new AreaDensity instance.
+     */
+    public static FromMilligramsPerSquareMeter(value: number): AreaDensity {
+        return new AreaDensity(value, AreaDensityUnits.MilligramsPerSquareMeter);
+    }
+
     private convertFromBase(toUnit: AreaDensityUnits): number {
         switch (toUnit) {
                 
             case AreaDensityUnits.KilogramsPerSquareMeter:
                 return this.value;
+            case AreaDensityUnits.GramsPerSquareMeter:
+                return this.value * 1000;
+            case AreaDensityUnits.MilligramsPerSquareMeter:
+                return this.value * 1000000;
             default:
                 break;
         }
@@ -63,6 +109,10 @@ export class AreaDensity {
                 
             case AreaDensityUnits.KilogramsPerSquareMeter:
                 return value;
+            case AreaDensityUnits.GramsPerSquareMeter:
+                return value / 1000;
+            case AreaDensityUnits.MilligramsPerSquareMeter:
+                return value / 1000000;
             default:
                 break;
         }
@@ -82,6 +132,10 @@ export class AreaDensity {
             
             case AreaDensityUnits.KilogramsPerSquareMeter:
                 return this.KilogramsPerSquareMeter + ` kg/m²`;
+            case AreaDensityUnits.GramsPerSquareMeter:
+                return this.GramsPerSquareMeter + ` g/m²`;
+            case AreaDensityUnits.MilligramsPerSquareMeter:
+                return this.MilligramsPerSquareMeter + ` mg/m²`;
         default:
             break;
         }
@@ -101,6 +155,10 @@ export class AreaDensity {
             
             case AreaDensityUnits.KilogramsPerSquareMeter:
                 return `kg/m²`;
+            case AreaDensityUnits.GramsPerSquareMeter:
+                return `g/m²`;
+            case AreaDensityUnits.MilligramsPerSquareMeter:
+                return `mg/m²`;
         default:
             break;
         }

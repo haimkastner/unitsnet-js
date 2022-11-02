@@ -83,7 +83,7 @@ Currently, the package supports the following units:
 - **Area**
     -   *Area is a quantity that expresses the extent of a two-dimensional surface or shape, or planar lamina, in the plane. Area can be understood as the amount of material with a given thickness that would be necessary to fashion a model of the shape, or the amount of paint necessary to cover the surface with a single coat.[1] It is the two-dimensional analog of the length of a curve (a one-dimensional concept) or the volume of a solid (a three-dimensional concept).*
 - **AreaDensity**
-    -   *The area density of a two-dimensional object is calculated as the mass per unit area.*
+    -   *The area density of a two-dimensional object is calculated as the mass per unit area. For paper this is also called grammage.*
 - **AreaMomentOfInertia**
     -   *A geometric property of an area that reflects how its points are distributed with regard to an axis.*
 - **BitRate**
