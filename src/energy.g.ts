@@ -33,6 +33,10 @@ export enum EnergyUnits {
     /** */
     Gigajoules,
     /** */
+    Terajoules,
+    /** */
+    Petajoules,
+    /** */
     Kilocalories,
     /** */
     Megacalories,
@@ -93,6 +97,8 @@ export class Energy {
     private kilojoulesLazy: number | null = null;
     private megajoulesLazy: number | null = null;
     private gigajoulesLazy: number | null = null;
+    private terajoulesLazy: number | null = null;
+    private petajoulesLazy: number | null = null;
     private kilocaloriesLazy: number | null = null;
     private megacaloriesLazy: number | null = null;
     private kilobritishthermalunitsLazy: number | null = null;
@@ -260,6 +266,22 @@ export class Energy {
             return this.gigajoulesLazy;
         }
         return this.gigajoulesLazy = this.convertFromBase(EnergyUnits.Gigajoules);
+    }
+
+    /** */
+    public get Terajoules(): number {
+        if(this.terajoulesLazy !== null){
+            return this.terajoulesLazy;
+        }
+        return this.terajoulesLazy = this.convertFromBase(EnergyUnits.Terajoules);
+    }
+
+    /** */
+    public get Petajoules(): number {
+        if(this.petajoulesLazy !== null){
+            return this.petajoulesLazy;
+        }
+        return this.petajoulesLazy = this.convertFromBase(EnergyUnits.Petajoules);
     }
 
     /** */
@@ -583,6 +605,26 @@ export class Energy {
     }
 
     /**
+     * Create a new Energy instance from a Terajoules
+     *
+     * @param value The unit as Terajoules to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromTerajoules(value: number): Energy {
+        return new Energy(value, EnergyUnits.Terajoules);
+    }
+
+    /**
+     * Create a new Energy instance from a Petajoules
+     *
+     * @param value The unit as Petajoules to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromPetajoules(value: number): Energy {
+        return new Energy(value, EnergyUnits.Petajoules);
+    }
+
+    /**
      * Create a new Energy instance from a Kilocalories
      *
      * @param value The unit as Kilocalories to create a new Energy from.
@@ -817,6 +859,10 @@ export class Energy {
                 return (this.value) / 1000000;
             case EnergyUnits.Gigajoules:
                 return (this.value) / 1000000000;
+            case EnergyUnits.Terajoules:
+                return (this.value) / 1000000000000;
+            case EnergyUnits.Petajoules:
+                return (this.value) / 1000000000000000;
             case EnergyUnits.Kilocalories:
                 return (this.value / 4.184) / 1000;
             case EnergyUnits.Megacalories:
@@ -898,6 +944,10 @@ export class Energy {
                 return (value) * 1000000;
             case EnergyUnits.Gigajoules:
                 return (value) * 1000000000;
+            case EnergyUnits.Terajoules:
+                return (value) * 1000000000000;
+            case EnergyUnits.Petajoules:
+                return (value) * 1000000000000000;
             case EnergyUnits.Kilocalories:
                 return (value * 4.184) * 1000;
             case EnergyUnits.Megacalories:
@@ -987,6 +1037,10 @@ export class Energy {
                 return this.Megajoules + ` `;
             case EnergyUnits.Gigajoules:
                 return this.Gigajoules + ` `;
+            case EnergyUnits.Terajoules:
+                return this.Terajoules + ` `;
+            case EnergyUnits.Petajoules:
+                return this.Petajoules + ` `;
             case EnergyUnits.Kilocalories:
                 return this.Kilocalories + ` `;
             case EnergyUnits.Megacalories:
@@ -1075,6 +1129,10 @@ export class Energy {
             case EnergyUnits.Megajoules:
                 return ``;
             case EnergyUnits.Gigajoules:
+                return ``;
+            case EnergyUnits.Terajoules:
+                return ``;
+            case EnergyUnits.Petajoules:
                 return ``;
             case EnergyUnits.Kilocalories:
                 return ``;

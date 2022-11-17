@@ -33,6 +33,7 @@ export * from "./electricresistance.g";
 export * from "./electricresistivity.g";
 export * from "./electricsurfacechargedensity.g";
 export * from "./energy.g";
+export * from "./energydensity.g";
 export * from "./entropy.g";
 export * from "./force.g";
 export * from "./forcechangerate.g";
