@@ -23,6 +23,7 @@ export declare interface UnitDefinition {
 export declare interface UnitTypeDefinition {
     Name: string;
     BaseUnit: string;
-    XmlDoc: string;
+    XmlDoc?: string;
+    XmlDocSummary?: string;
     Units: UnitDefinition[];
 }

@@ -14,7 +14,7 @@ export function generateDocumentation(documentationDestinationDirectory: string,
     let unitsMarkdownList = '';
     // Add export all for each unit file.
     for (const unitDefinition of rawUnitsDefinitions) {
-        unitsMarkdownList += `- **${unitDefinition.Name}**\n    -   *${unitDefinition.XmlDoc.trim()}*\n`
+        unitsMarkdownList += `- **${unitDefinition.Name}**\n    -   *${(unitDefinition.XmlDoc || unitDefinition.XmlDocSummary || '').trim()}*\n`
     }
 
     documentationMarkdownTemplate =

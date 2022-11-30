@@ -101,7 +101,7 @@ export function generateUnitsFromUnitsDefinitions(project: Project, unitsDestina
         generateUnitClass(project, unitsDestinationDirectory, {
             unitName: unitDefinition.Name,
             baseUnitSingularName: unitDefinition.BaseUnit,
-            JSDoc: unitDefinition.XmlDoc,
+            JSDoc: unitDefinition.XmlDoc || unitDefinition.XmlDocSummary || '',
             units: unitDefinition.Units.map((unit: UnitDefinition): UnitProperties => ({
                 pluralName: unit.PluralName,
                 singularName: unit.SingularName,
