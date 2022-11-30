@@ -158,9 +158,9 @@ export class SpecificFuelConsumption {
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
                 return this.PoundsMassPerPoundForceHour + ` lb/(lbf·h)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return this.KilogramsPerKilogramForceHour + ` kg/(kgf·h)`;
+                return this.KilogramsPerKilogramForceHour + ` kg/(kgf�h)`;
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return this.GramsPerKiloNewtonSecond + ` g/(kN·s)`;
+                return this.GramsPerKiloNewtonSecond + ` g/(kN�s)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
                 return this.KilogramsPerKiloNewtonSecond + ` `;
         default:
@@ -183,9 +183,9 @@ export class SpecificFuelConsumption {
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
                 return `lb/(lbf·h)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return `kg/(kgf·h)`;
+                return `kg/(kgf�h)`;
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return `g/(kN·s)`;
+                return `g/(kN�s)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
                 return ``;
         default:

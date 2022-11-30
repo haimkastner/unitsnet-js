@@ -588,7 +588,7 @@ export class Power {
             case PowerUnits.HydraulicHorsepower:
                 return this.value / 745.69988145;
             case PowerUnits.BritishThermalUnitsPerHour:
-                return this.value / 0.293071;
+                return this.value / 0.29307107017;
             case PowerUnits.JoulesPerHour:
                 return this.value * 3600;
             case PowerUnits.Femtowatts:
@@ -616,9 +616,9 @@ export class Power {
             case PowerUnits.Petawatts:
                 return (this.value) / 1000000000000000;
             case PowerUnits.KilobritishThermalUnitsPerHour:
-                return (this.value / 0.293071) / 1000;
+                return (this.value / 0.29307107017) / 1000;
             case PowerUnits.MegabritishThermalUnitsPerHour:
-                return (this.value / 0.293071) / 1000000;
+                return (this.value / 0.29307107017) / 1000000;
             case PowerUnits.MillijoulesPerHour:
                 return (this.value * 3600) / 0.001;
             case PowerUnits.KilojoulesPerHour:
@@ -649,7 +649,7 @@ export class Power {
             case PowerUnits.HydraulicHorsepower:
                 return value * 745.69988145;
             case PowerUnits.BritishThermalUnitsPerHour:
-                return value * 0.293071;
+                return value * 0.29307107017;
             case PowerUnits.JoulesPerHour:
                 return value / 3600;
             case PowerUnits.Femtowatts:
@@ -677,9 +677,9 @@ export class Power {
             case PowerUnits.Petawatts:
                 return (value) * 1000000000000000;
             case PowerUnits.KilobritishThermalUnitsPerHour:
-                return (value * 0.293071) * 1000;
+                return (value * 0.29307107017) * 1000;
             case PowerUnits.MegabritishThermalUnitsPerHour:
-                return (value * 0.293071) * 1000000;
+                return (value * 0.29307107017) * 1000000;
             case PowerUnits.MillijoulesPerHour:
                 return (value / 3600) * 0.001;
             case PowerUnits.KilojoulesPerHour:
