@@ -65,6 +65,8 @@ export enum VolumeUnits {
     /** */
     BoardFeet,
     /** */
+    Nanoliters,
+    /** */
     Microliters,
     /** */
     Milliliters,
@@ -141,6 +143,7 @@ export class Volume {
     private acrefeetLazy: number | null = null;
     private imperialpintsLazy: number | null = null;
     private boardfeetLazy: number | null = null;
+    private nanolitersLazy: number | null = null;
     private microlitersLazy: number | null = null;
     private millilitersLazy: number | null = null;
     private centilitersLazy: number | null = null;
@@ -436,6 +439,14 @@ export class Volume {
             return this.boardfeetLazy;
         }
         return this.boardfeetLazy = this.convertFromBase(VolumeUnits.BoardFeet);
+    }
+
+    /** */
+    public get Nanoliters(): number {
+        if(this.nanolitersLazy !== null){
+            return this.nanolitersLazy;
+        }
+        return this.nanolitersLazy = this.convertFromBase(VolumeUnits.Nanoliters);
     }
 
     /** */
@@ -919,6 +930,16 @@ export class Volume {
     }
 
     /**
+     * Create a new Volume instance from a Nanoliters
+     *
+     * @param value The unit as Nanoliters to create a new Volume from.
+     * @returns The new Volume instance.
+     */
+    public static FromNanoliters(value: number): Volume {
+        return new Volume(value, VolumeUnits.Nanoliters);
+    }
+
+    /**
      * Create a new Volume instance from a Microliters
      *
      * @param value The unit as Microliters to create a new Volume from.
@@ -1185,6 +1206,8 @@ export class Volume {
                 return this.value / 5.6826125e-4;
             case VolumeUnits.BoardFeet:
                 return this.value / 2.3597372158e-3;
+            case VolumeUnits.Nanoliters:
+                return (this.value * 1e3) / 1e-9;
             case VolumeUnits.Microliters:
                 return (this.value * 1e3) / 0.000001;
             case VolumeUnits.Milliliters:
@@ -1298,6 +1321,8 @@ export class Volume {
                 return value * 5.6826125e-4;
             case VolumeUnits.BoardFeet:
                 return value * 2.3597372158e-3;
+            case VolumeUnits.Nanoliters:
+                return (value / 1e3) * 1e-9;
             case VolumeUnits.Microliters:
                 return (value / 1e3) * 0.000001;
             case VolumeUnits.Milliliters:
@@ -1419,6 +1444,8 @@ export class Volume {
                 return this.ImperialPints + ` pt (imp.)`;
             case VolumeUnits.BoardFeet:
                 return this.BoardFeet + ` bf`;
+            case VolumeUnits.Nanoliters:
+                return this.Nanoliters + ` `;
             case VolumeUnits.Microliters:
                 return this.Microliters + ` `;
             case VolumeUnits.Milliliters:
@@ -1540,6 +1567,8 @@ export class Volume {
                 return `pt (imp.)`;
             case VolumeUnits.BoardFeet:
                 return `bf`;
+            case VolumeUnits.Nanoliters:
+                return ``;
             case VolumeUnits.Microliters:
                 return ``;
             case VolumeUnits.Milliliters:
