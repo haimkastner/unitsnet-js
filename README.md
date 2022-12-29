@@ -168,8 +168,6 @@ Currently, the package supports the following units:
     -   *Jerk or Jolt, in physics, is the rate at which the acceleration of an object changes over time. The SI unit for jerk is the Meter per second cubed (m/s³). Jerks are vector quantities (they have magnitude and direction) and add according to the parallelogram law.*
 - **KinematicViscosity**
     -   *The viscosity of a fluid is a measure of its resistance to gradual deformation by shear stress or tensile stress.*
-- **LapseRate**
-    -   *Lapse rate is the rate at which Earth's atmospheric temperature decreases with an increase in altitude, or increases with the decrease in altitude.*
 - **Length**
     -   *Many different units of length have been used around the world. The main units in modern use are U.S. customary units in the United States and the Metric system elsewhere. British Imperial units are still used for some purposes in the United Kingdom and some other countries. The metric system is sub-divided into SI and non-SI units.*
 - **Level**

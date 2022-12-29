@@ -48,7 +48,6 @@ export * from "./irradiance.g";
 export * from "./irradiation.g";
 export * from "./jerk.g";
 export * from "./kinematicviscosity.g";
-export * from "./lapserate.g";
 export * from "./length.g";
 export * from "./level.g";
 export * from "./lineardensity.g";
