@@ -158,6 +158,8 @@ Currently, the package supports the following units:
     -   *The heat transfer coefficient or film coefficient, or film effectiveness, in thermodynamics and in mechanics is the proportionality constant between the heat flux and the thermodynamic driving force for the flow of heat (i.e., the temperature difference, ΔT)*
 - **Illuminance**
     -   *In photometry, illuminance is the total luminous flux incident on a surface, per unit area.*
+- **Impulse**
+    -   *In classical mechanics, impulse is the integral of a force, F, over the time interval, t, for which it acts. Impulse applied to an object produces an equivalent vector change in its linear momentum, also in the resultant direction.*
 - **Information**
     -   *In computing and telecommunications, a unit of information is the capacity of some standard data storage system or communication channel, used to measure the capacities of other systems and channels. In information theory, units of information are also used to measure the information contents or entropy of random variables.*
 - **Irradiance**

@@ -43,6 +43,7 @@ export * from "./fuelefficiency.g";
 export * from "./heatflux.g";
 export * from "./heattransfercoefficient.g";
 export * from "./illuminance.g";
+export * from "./impulse.g";
 export * from "./information.g";
 export * from "./irradiance.g";
 export * from "./irradiation.g";
