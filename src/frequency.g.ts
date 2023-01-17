@@ -15,6 +15,10 @@ export enum FrequencyUnits {
     /** */
     BUnits,
     /** */
+    Microhertz,
+    /** */
+    Millihertz,
+    /** */
     Kilohertz,
     /** */
     Megahertz,
@@ -34,6 +38,8 @@ export class Frequency {
     private beatsperminuteLazy: number | null = null;
     private persecondLazy: number | null = null;
     private bunitsLazy: number | null = null;
+    private microhertzLazy: number | null = null;
+    private millihertzLazy: number | null = null;
     private kilohertzLazy: number | null = null;
     private megahertzLazy: number | null = null;
     private gigahertzLazy: number | null = null;
@@ -113,6 +119,22 @@ export class Frequency {
             return this.bunitsLazy;
         }
         return this.bunitsLazy = this.convertFromBase(FrequencyUnits.BUnits);
+    }
+
+    /** */
+    public get Microhertz(): number {
+        if(this.microhertzLazy !== null){
+            return this.microhertzLazy;
+        }
+        return this.microhertzLazy = this.convertFromBase(FrequencyUnits.Microhertz);
+    }
+
+    /** */
+    public get Millihertz(): number {
+        if(this.millihertzLazy !== null){
+            return this.millihertzLazy;
+        }
+        return this.millihertzLazy = this.convertFromBase(FrequencyUnits.Millihertz);
     }
 
     /** */
@@ -218,6 +240,26 @@ export class Frequency {
     }
 
     /**
+     * Create a new Frequency instance from a Microhertz
+     *
+     * @param value The unit as Microhertz to create a new Frequency from.
+     * @returns The new Frequency instance.
+     */
+    public static FromMicrohertz(value: number): Frequency {
+        return new Frequency(value, FrequencyUnits.Microhertz);
+    }
+
+    /**
+     * Create a new Frequency instance from a Millihertz
+     *
+     * @param value The unit as Millihertz to create a new Frequency from.
+     * @returns The new Frequency instance.
+     */
+    public static FromMillihertz(value: number): Frequency {
+        return new Frequency(value, FrequencyUnits.Millihertz);
+    }
+
+    /**
      * Create a new Frequency instance from a Kilohertz
      *
      * @param value The unit as Kilohertz to create a new Frequency from.
@@ -274,6 +316,10 @@ export class Frequency {
                 return this.value;
             case FrequencyUnits.BUnits:
                 return this.value * this.value * 1e-3;
+            case FrequencyUnits.Microhertz:
+                return (this.value) / 0.000001;
+            case FrequencyUnits.Millihertz:
+                return (this.value) / 0.001;
             case FrequencyUnits.Kilohertz:
                 return (this.value) / 1000;
             case FrequencyUnits.Megahertz:
@@ -305,6 +351,10 @@ export class Frequency {
                 return value;
             case FrequencyUnits.BUnits:
                 return Math.sqrt(value * 1e3);
+            case FrequencyUnits.Microhertz:
+                return (value) * 0.000001;
+            case FrequencyUnits.Millihertz:
+                return (value) * 0.001;
             case FrequencyUnits.Kilohertz:
                 return (value) * 1000;
             case FrequencyUnits.Megahertz:
@@ -344,6 +394,10 @@ export class Frequency {
                 return this.PerSecond + ` s⁻¹`;
             case FrequencyUnits.BUnits:
                 return this.BUnits + ` B Units`;
+            case FrequencyUnits.Microhertz:
+                return this.Microhertz + ` `;
+            case FrequencyUnits.Millihertz:
+                return this.Millihertz + ` `;
             case FrequencyUnits.Kilohertz:
                 return this.Kilohertz + ` `;
             case FrequencyUnits.Megahertz:
@@ -383,6 +437,10 @@ export class Frequency {
                 return `s⁻¹`;
             case FrequencyUnits.BUnits:
                 return `B Units`;
+            case FrequencyUnits.Microhertz:
+                return ``;
+            case FrequencyUnits.Millihertz:
+                return ``;
             case FrequencyUnits.Kilohertz:
                 return ``;
             case FrequencyUnits.Megahertz:
