@@ -3,6 +3,8 @@ export enum SpecificEnergyUnits {
     /** */
     JoulesPerKilogram,
     /** */
+    MegaJoulesPerTonne,
+    /** */
     CaloriesPerGram,
     /** */
     WattHoursPerKilogram,
@@ -64,6 +66,7 @@ export enum SpecificEnergyUnits {
 export class SpecificEnergy {
     private value: number;
     private joulesperkilogramLazy: number | null = null;
+    private megajoulespertonneLazy: number | null = null;
     private caloriespergramLazy: number | null = null;
     private watthoursperkilogramLazy: number | null = null;
     private wattdaysperkilogramLazy: number | null = null;
@@ -119,6 +122,14 @@ export class SpecificEnergy {
             return this.joulesperkilogramLazy;
         }
         return this.joulesperkilogramLazy = this.convertFromBase(SpecificEnergyUnits.JoulesPerKilogram);
+    }
+
+    /** */
+    public get MegaJoulesPerTonne(): number {
+        if(this.megajoulespertonneLazy !== null){
+            return this.megajoulespertonneLazy;
+        }
+        return this.megajoulespertonneLazy = this.convertFromBase(SpecificEnergyUnits.MegaJoulesPerTonne);
     }
 
     /** */
@@ -353,6 +364,16 @@ export class SpecificEnergy {
      */
     public static FromJoulesPerKilogram(value: number): SpecificEnergy {
         return new SpecificEnergy(value, SpecificEnergyUnits.JoulesPerKilogram);
+    }
+
+    /**
+     * Create a new SpecificEnergy instance from a MegaJoulesPerTonne
+     *
+     * @param value The unit as MegaJoulesPerTonne to create a new SpecificEnergy from.
+     * @returns The new SpecificEnergy instance.
+     */
+    public static FromMegaJoulesPerTonne(value: number): SpecificEnergy {
+        return new SpecificEnergy(value, SpecificEnergyUnits.MegaJoulesPerTonne);
     }
 
     /**
@@ -640,6 +661,8 @@ export class SpecificEnergy {
                 
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return this.value;
+            case SpecificEnergyUnits.MegaJoulesPerTonne:
+                return this.value / 1e3;
             case SpecificEnergyUnits.CaloriesPerGram:
                 return this.value / 4.184e3;
             case SpecificEnergyUnits.WattHoursPerKilogram:
@@ -707,6 +730,8 @@ export class SpecificEnergy {
                 
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return value;
+            case SpecificEnergyUnits.MegaJoulesPerTonne:
+                return value * 1e3;
             case SpecificEnergyUnits.CaloriesPerGram:
                 return value * 4.184e3;
             case SpecificEnergyUnits.WattHoursPerKilogram:
@@ -782,6 +807,8 @@ export class SpecificEnergy {
             
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return this.JoulesPerKilogram + ` J/kg`;
+            case SpecificEnergyUnits.MegaJoulesPerTonne:
+                return this.MegaJoulesPerTonne + ` MJ/t`;
             case SpecificEnergyUnits.CaloriesPerGram:
                 return this.CaloriesPerGram + ` cal/g`;
             case SpecificEnergyUnits.WattHoursPerKilogram:
@@ -857,6 +884,8 @@ export class SpecificEnergy {
             
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return `J/kg`;
+            case SpecificEnergyUnits.MegaJoulesPerTonne:
+                return `MJ/t`;
             case SpecificEnergyUnits.CaloriesPerGram:
                 return `cal/g`;
             case SpecificEnergyUnits.WattHoursPerKilogram:
