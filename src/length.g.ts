@@ -788,7 +788,7 @@ export class Length {
             case LengthUnits.Meters:
                 return this.value;
             case LengthUnits.Miles:
-                return this.value / 1609.34;
+                return this.value / 1609.344;
             case LengthUnits.Yards:
                 return this.value / 0.9144;
             case LengthUnits.Feet:
@@ -869,7 +869,7 @@ export class Length {
             case LengthUnits.Meters:
                 return value;
             case LengthUnits.Miles:
-                return value * 1609.34;
+                return value * 1609.344;
             case LengthUnits.Yards:
                 return value * 0.9144;
             case LengthUnits.Feet:
