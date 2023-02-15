@@ -3,6 +3,8 @@ export enum ElectricCurrentUnits {
     /** */
     Amperes,
     /** */
+    Femtoamperes,
+    /** */
     Picoamperes,
     /** */
     Nanoamperes,
@@ -22,6 +24,7 @@ export enum ElectricCurrentUnits {
 export class ElectricCurrent {
     private value: number;
     private amperesLazy: number | null = null;
+    private femtoamperesLazy: number | null = null;
     private picoamperesLazy: number | null = null;
     private nanoamperesLazy: number | null = null;
     private microamperesLazy: number | null = null;
@@ -56,6 +59,14 @@ export class ElectricCurrent {
             return this.amperesLazy;
         }
         return this.amperesLazy = this.convertFromBase(ElectricCurrentUnits.Amperes);
+    }
+
+    /** */
+    public get Femtoamperes(): number {
+        if(this.femtoamperesLazy !== null){
+            return this.femtoamperesLazy;
+        }
+        return this.femtoamperesLazy = this.convertFromBase(ElectricCurrentUnits.Femtoamperes);
     }
 
     /** */
@@ -122,6 +133,16 @@ export class ElectricCurrent {
      */
     public static FromAmperes(value: number): ElectricCurrent {
         return new ElectricCurrent(value, ElectricCurrentUnits.Amperes);
+    }
+
+    /**
+     * Create a new ElectricCurrent instance from a Femtoamperes
+     *
+     * @param value The unit as Femtoamperes to create a new ElectricCurrent from.
+     * @returns The new ElectricCurrent instance.
+     */
+    public static FromFemtoamperes(value: number): ElectricCurrent {
+        return new ElectricCurrent(value, ElectricCurrentUnits.Femtoamperes);
     }
 
     /**
@@ -199,6 +220,8 @@ export class ElectricCurrent {
                 
             case ElectricCurrentUnits.Amperes:
                 return this.value;
+            case ElectricCurrentUnits.Femtoamperes:
+                return (this.value) / 1e-15;
             case ElectricCurrentUnits.Picoamperes:
                 return (this.value) / 1e-12;
             case ElectricCurrentUnits.Nanoamperes:
@@ -224,6 +247,8 @@ export class ElectricCurrent {
                 
             case ElectricCurrentUnits.Amperes:
                 return value;
+            case ElectricCurrentUnits.Femtoamperes:
+                return (value) * 1e-15;
             case ElectricCurrentUnits.Picoamperes:
                 return (value) * 1e-12;
             case ElectricCurrentUnits.Nanoamperes:
@@ -257,6 +282,8 @@ export class ElectricCurrent {
             
             case ElectricCurrentUnits.Amperes:
                 return this.Amperes + ` A`;
+            case ElectricCurrentUnits.Femtoamperes:
+                return this.Femtoamperes + ` `;
             case ElectricCurrentUnits.Picoamperes:
                 return this.Picoamperes + ` `;
             case ElectricCurrentUnits.Nanoamperes:
@@ -290,6 +317,8 @@ export class ElectricCurrent {
             
             case ElectricCurrentUnits.Amperes:
                 return `A`;
+            case ElectricCurrentUnits.Femtoamperes:
+                return ``;
             case ElectricCurrentUnits.Picoamperes:
                 return ``;
             case ElectricCurrentUnits.Nanoamperes:

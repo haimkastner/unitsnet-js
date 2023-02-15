@@ -68,6 +68,7 @@ export * from "./massfraction.g";
 export * from "./massmomentofinertia.g";
 export * from "./molarenergy.g";
 export * from "./molarentropy.g";
+export * from "./molarflow.g";
 export * from "./molarmass.g";
 export * from "./molarity.g";
 export * from "./permeability.g";

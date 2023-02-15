@@ -5,6 +5,10 @@ export enum MolarityUnits {
     /** */
     MolesPerLiter,
     /** */
+    PoundMolesPerCubicFoot,
+    /** */
+    KilomolesPerCubicMeter,
+    /** */
     FemtomolesPerLiter,
     /** */
     PicomolesPerLiter,
@@ -25,6 +29,8 @@ export class Molarity {
     private value: number;
     private molespercubicmeterLazy: number | null = null;
     private molesperliterLazy: number | null = null;
+    private poundmolespercubicfootLazy: number | null = null;
+    private kilomolespercubicmeterLazy: number | null = null;
     private femtomolesperliterLazy: number | null = null;
     private picomolesperliterLazy: number | null = null;
     private nanomolesperliterLazy: number | null = null;
@@ -67,6 +73,22 @@ export class Molarity {
             return this.molesperliterLazy;
         }
         return this.molesperliterLazy = this.convertFromBase(MolarityUnits.MolesPerLiter);
+    }
+
+    /** */
+    public get PoundMolesPerCubicFoot(): number {
+        if(this.poundmolespercubicfootLazy !== null){
+            return this.poundmolespercubicfootLazy;
+        }
+        return this.poundmolespercubicfootLazy = this.convertFromBase(MolarityUnits.PoundMolesPerCubicFoot);
+    }
+
+    /** */
+    public get KilomolesPerCubicMeter(): number {
+        if(this.kilomolespercubicmeterLazy !== null){
+            return this.kilomolespercubicmeterLazy;
+        }
+        return this.kilomolespercubicmeterLazy = this.convertFromBase(MolarityUnits.KilomolesPerCubicMeter);
     }
 
     /** */
@@ -146,6 +168,26 @@ export class Molarity {
     }
 
     /**
+     * Create a new Molarity instance from a PoundMolesPerCubicFoot
+     *
+     * @param value The unit as PoundMolesPerCubicFoot to create a new Molarity from.
+     * @returns The new Molarity instance.
+     */
+    public static FromPoundMolesPerCubicFoot(value: number): Molarity {
+        return new Molarity(value, MolarityUnits.PoundMolesPerCubicFoot);
+    }
+
+    /**
+     * Create a new Molarity instance from a KilomolesPerCubicMeter
+     *
+     * @param value The unit as KilomolesPerCubicMeter to create a new Molarity from.
+     * @returns The new Molarity instance.
+     */
+    public static FromKilomolesPerCubicMeter(value: number): Molarity {
+        return new Molarity(value, MolarityUnits.KilomolesPerCubicMeter);
+    }
+
+    /**
      * Create a new Molarity instance from a FemtomolesPerLiter
      *
      * @param value The unit as FemtomolesPerLiter to create a new Molarity from.
@@ -222,6 +264,10 @@ export class Molarity {
                 return this.value;
             case MolarityUnits.MolesPerLiter:
                 return this.value * 1e-3;
+            case MolarityUnits.PoundMolesPerCubicFoot:
+                return this.value * 6.2427960576144611956325455827221e-5;
+            case MolarityUnits.KilomolesPerCubicMeter:
+                return (this.value) / 1000;
             case MolarityUnits.FemtomolesPerLiter:
                 return (this.value * 1e-3) / 1e-15;
             case MolarityUnits.PicomolesPerLiter:
@@ -249,6 +295,10 @@ export class Molarity {
                 return value;
             case MolarityUnits.MolesPerLiter:
                 return value / 1e-3;
+            case MolarityUnits.PoundMolesPerCubicFoot:
+                return value / 6.2427960576144611956325455827221e-5;
+            case MolarityUnits.KilomolesPerCubicMeter:
+                return (value) * 1000;
             case MolarityUnits.FemtomolesPerLiter:
                 return (value / 1e-3) * 1e-15;
             case MolarityUnits.PicomolesPerLiter:
@@ -284,6 +334,10 @@ export class Molarity {
                 return this.MolesPerCubicMeter + ` mol/m³`;
             case MolarityUnits.MolesPerLiter:
                 return this.MolesPerLiter + ` mol/L`;
+            case MolarityUnits.PoundMolesPerCubicFoot:
+                return this.PoundMolesPerCubicFoot + ` lbmol/ft³`;
+            case MolarityUnits.KilomolesPerCubicMeter:
+                return this.KilomolesPerCubicMeter + ` `;
             case MolarityUnits.FemtomolesPerLiter:
                 return this.FemtomolesPerLiter + ` `;
             case MolarityUnits.PicomolesPerLiter:
@@ -319,6 +373,10 @@ export class Molarity {
                 return `mol/m³`;
             case MolarityUnits.MolesPerLiter:
                 return `mol/L`;
+            case MolarityUnits.PoundMolesPerCubicFoot:
+                return `lbmol/ft³`;
+            case MolarityUnits.KilomolesPerCubicMeter:
+                return ``;
             case MolarityUnits.FemtomolesPerLiter:
                 return ``;
             case MolarityUnits.PicomolesPerLiter:

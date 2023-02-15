@@ -208,6 +208,8 @@ Currently, the package supports the following units:
     -   *Molar energy is the amount of energy stored in 1 mole of a substance.*
 - **MolarEntropy**
     -   *Molar entropy is amount of energy required to increase temperature of 1 mole substance by 1 Kelvin.*
+- **MolarFlow**
+    -   *Molar flow is the ratio of the amount of substance change to the time during which the change occurred (value of amount of substance changes per unit time).*
 - **MolarMass**
     -   *In chemistry, the molar mass M is a physical property defined as the mass of a given substance (chemical element or chemical compound) divided by the amount of substance.*
 - **Molarity**

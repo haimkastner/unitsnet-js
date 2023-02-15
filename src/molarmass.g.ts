@@ -3,6 +3,8 @@ export enum MolarMassUnits {
     /** */
     GramsPerMole,
     /** */
+    KilogramsPerKilomole,
+    /** */
     PoundsPerMole,
     /** */
     NanogramsPerMole,
@@ -30,6 +32,7 @@ export enum MolarMassUnits {
 export class MolarMass {
     private value: number;
     private gramspermoleLazy: number | null = null;
+    private kilogramsperkilomoleLazy: number | null = null;
     private poundspermoleLazy: number | null = null;
     private nanogramspermoleLazy: number | null = null;
     private microgramspermoleLazy: number | null = null;
@@ -68,6 +71,14 @@ export class MolarMass {
             return this.gramspermoleLazy;
         }
         return this.gramspermoleLazy = this.convertFromBase(MolarMassUnits.GramsPerMole);
+    }
+
+    /** */
+    public get KilogramsPerKilomole(): number {
+        if(this.kilogramsperkilomoleLazy !== null){
+            return this.kilogramsperkilomoleLazy;
+        }
+        return this.kilogramsperkilomoleLazy = this.convertFromBase(MolarMassUnits.KilogramsPerKilomole);
     }
 
     /** */
@@ -166,6 +177,16 @@ export class MolarMass {
      */
     public static FromGramsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.GramsPerMole);
+    }
+
+    /**
+     * Create a new MolarMass instance from a KilogramsPerKilomole
+     *
+     * @param value The unit as KilogramsPerKilomole to create a new MolarMass from.
+     * @returns The new MolarMass instance.
+     */
+    public static FromKilogramsPerKilomole(value: number): MolarMass {
+        return new MolarMass(value, MolarMassUnits.KilogramsPerKilomole);
     }
 
     /**
@@ -283,6 +304,8 @@ export class MolarMass {
                 
             case MolarMassUnits.GramsPerMole:
                 return this.value * 1e3;
+            case MolarMassUnits.KilogramsPerKilomole:
+                return this.value * 1e3;
             case MolarMassUnits.PoundsPerMole:
                 return this.value / 0.45359237;
             case MolarMassUnits.NanogramsPerMole:
@@ -315,6 +338,8 @@ export class MolarMass {
         switch (fromUnit) {
                 
             case MolarMassUnits.GramsPerMole:
+                return value / 1e3;
+            case MolarMassUnits.KilogramsPerKilomole:
                 return value / 1e3;
             case MolarMassUnits.PoundsPerMole:
                 return value * 0.45359237;
@@ -357,6 +382,8 @@ export class MolarMass {
             
             case MolarMassUnits.GramsPerMole:
                 return this.GramsPerMole + ` g/mol`;
+            case MolarMassUnits.KilogramsPerKilomole:
+                return this.KilogramsPerKilomole + ` kg/kmol`;
             case MolarMassUnits.PoundsPerMole:
                 return this.PoundsPerMole + ` lb/mol`;
             case MolarMassUnits.NanogramsPerMole:
@@ -398,6 +425,8 @@ export class MolarMass {
             
             case MolarMassUnits.GramsPerMole:
                 return `g/mol`;
+            case MolarMassUnits.KilogramsPerKilomole:
+                return `kg/kmol`;
             case MolarMassUnits.PoundsPerMole:
                 return `lb/mol`;
             case MolarMassUnits.NanogramsPerMole:

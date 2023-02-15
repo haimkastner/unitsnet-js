@@ -5,7 +5,11 @@ export enum HeatTransferCoefficientUnits {
     /** */
     WattsPerSquareMeterCelsius,
     /** */
-    BtusPerSquareFootDegreeFahrenheit
+    BtusPerHourSquareFootDegreeFahrenheit,
+    /** */
+    CaloriesPerHourSquareMeterDegreeCelsius,
+    /** */
+    KilocaloriesPerHourSquareMeterDegreeCelsius
 }
 
 /** The heat transfer coefficient or film coefficient, or film effectiveness, in thermodynamics and in mechanics is the proportionality constant between the heat flux and the thermodynamic driving force for the flow of heat (i.e., the temperature difference, ΔT) */
@@ -13,7 +17,9 @@ export class HeatTransferCoefficient {
     private value: number;
     private wattspersquaremeterkelvinLazy: number | null = null;
     private wattspersquaremetercelsiusLazy: number | null = null;
-    private btuspersquarefootdegreefahrenheitLazy: number | null = null;
+    private btusperhoursquarefootdegreefahrenheitLazy: number | null = null;
+    private caloriesperhoursquaremeterdegreecelsiusLazy: number | null = null;
+    private kilocaloriesperhoursquaremeterdegreecelsiusLazy: number | null = null;
 
     /**
      * Create a new HeatTransferCoefficient.
@@ -52,11 +58,27 @@ export class HeatTransferCoefficient {
     }
 
     /** */
-    public get BtusPerSquareFootDegreeFahrenheit(): number {
-        if(this.btuspersquarefootdegreefahrenheitLazy !== null){
-            return this.btuspersquarefootdegreefahrenheitLazy;
+    public get BtusPerHourSquareFootDegreeFahrenheit(): number {
+        if(this.btusperhoursquarefootdegreefahrenheitLazy !== null){
+            return this.btusperhoursquarefootdegreefahrenheitLazy;
         }
-        return this.btuspersquarefootdegreefahrenheitLazy = this.convertFromBase(HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit);
+        return this.btusperhoursquarefootdegreefahrenheitLazy = this.convertFromBase(HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit);
+    }
+
+    /** */
+    public get CaloriesPerHourSquareMeterDegreeCelsius(): number {
+        if(this.caloriesperhoursquaremeterdegreecelsiusLazy !== null){
+            return this.caloriesperhoursquaremeterdegreecelsiusLazy;
+        }
+        return this.caloriesperhoursquaremeterdegreecelsiusLazy = this.convertFromBase(HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius);
+    }
+
+    /** */
+    public get KilocaloriesPerHourSquareMeterDegreeCelsius(): number {
+        if(this.kilocaloriesperhoursquaremeterdegreecelsiusLazy !== null){
+            return this.kilocaloriesperhoursquaremeterdegreecelsiusLazy;
+        }
+        return this.kilocaloriesperhoursquaremeterdegreecelsiusLazy = this.convertFromBase(HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius);
     }
 
     /**
@@ -80,13 +102,33 @@ export class HeatTransferCoefficient {
     }
 
     /**
-     * Create a new HeatTransferCoefficient instance from a BtusPerSquareFootDegreeFahrenheit
+     * Create a new HeatTransferCoefficient instance from a BtusPerHourSquareFootDegreeFahrenheit
      *
-     * @param value The unit as BtusPerSquareFootDegreeFahrenheit to create a new HeatTransferCoefficient from.
+     * @param value The unit as BtusPerHourSquareFootDegreeFahrenheit to create a new HeatTransferCoefficient from.
      * @returns The new HeatTransferCoefficient instance.
      */
-    public static FromBtusPerSquareFootDegreeFahrenheit(value: number): HeatTransferCoefficient {
-        return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit);
+    public static FromBtusPerHourSquareFootDegreeFahrenheit(value: number): HeatTransferCoefficient {
+        return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit);
+    }
+
+    /**
+     * Create a new HeatTransferCoefficient instance from a CaloriesPerHourSquareMeterDegreeCelsius
+     *
+     * @param value The unit as CaloriesPerHourSquareMeterDegreeCelsius to create a new HeatTransferCoefficient from.
+     * @returns The new HeatTransferCoefficient instance.
+     */
+    public static FromCaloriesPerHourSquareMeterDegreeCelsius(value: number): HeatTransferCoefficient {
+        return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius);
+    }
+
+    /**
+     * Create a new HeatTransferCoefficient instance from a KilocaloriesPerHourSquareMeterDegreeCelsius
+     *
+     * @param value The unit as KilocaloriesPerHourSquareMeterDegreeCelsius to create a new HeatTransferCoefficient from.
+     * @returns The new HeatTransferCoefficient instance.
+     */
+    public static FromKilocaloriesPerHourSquareMeterDegreeCelsius(value: number): HeatTransferCoefficient {
+        return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius);
     }
 
     private convertFromBase(toUnit: HeatTransferCoefficientUnits): number {
@@ -96,8 +138,12 @@ export class HeatTransferCoefficient {
                 return this.value;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
                 return this.value;
-            case HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit:
+            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
                 return this.value / 5.6782633411134878;
+            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
+                return (this.value / 4.1868) * 3600;
+            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
+                return ((this.value / 4.1868) * 3600) / 1000;
             default:
                 break;
         }
@@ -111,8 +157,12 @@ export class HeatTransferCoefficient {
                 return value;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
                 return value;
-            case HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit:
+            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
                 return value * 5.6782633411134878;
+            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
+                return (value * 4.1868) / 3600;
+            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
+                return ((value * 4.1868) / 3600) * 1000;
             default:
                 break;
         }
@@ -134,8 +184,12 @@ export class HeatTransferCoefficient {
                 return this.WattsPerSquareMeterKelvin + ` W/m²·K`;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
                 return this.WattsPerSquareMeterCelsius + ` W/m²·°C`;
-            case HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit:
-                return this.BtusPerSquareFootDegreeFahrenheit + ` Btu/ft²·hr·°F`;
+            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
+                return this.BtusPerHourSquareFootDegreeFahrenheit + ` Btu/h·ft²·°F`;
+            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
+                return this.CaloriesPerHourSquareMeterDegreeCelsius + ` kcal/h·m²·°C`;
+            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
+                return this.KilocaloriesPerHourSquareMeterDegreeCelsius + ` `;
         default:
             break;
         }
@@ -157,8 +211,12 @@ export class HeatTransferCoefficient {
                 return `W/m²·K`;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
                 return `W/m²·°C`;
-            case HeatTransferCoefficientUnits.BtusPerSquareFootDegreeFahrenheit:
-                return `Btu/ft²·hr·°F`;
+            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
+                return `Btu/h·ft²·°F`;
+            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
+                return `kcal/h·m²·°C`;
+            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
+                return ``;
         default:
             break;
         }
