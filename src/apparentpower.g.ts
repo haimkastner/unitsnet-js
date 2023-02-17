@@ -3,6 +3,10 @@ export enum ApparentPowerUnits {
     /** */
     Voltamperes,
     /** */
+    Microvoltamperes,
+    /** */
+    Millivoltamperes,
+    /** */
     Kilovoltamperes,
     /** */
     Megavoltamperes,
@@ -14,6 +18,8 @@ export enum ApparentPowerUnits {
 export class ApparentPower {
     private value: number;
     private voltamperesLazy: number | null = null;
+    private microvoltamperesLazy: number | null = null;
+    private millivoltamperesLazy: number | null = null;
     private kilovoltamperesLazy: number | null = null;
     private megavoltamperesLazy: number | null = null;
     private gigavoltamperesLazy: number | null = null;
@@ -44,6 +50,22 @@ export class ApparentPower {
             return this.voltamperesLazy;
         }
         return this.voltamperesLazy = this.convertFromBase(ApparentPowerUnits.Voltamperes);
+    }
+
+    /** */
+    public get Microvoltamperes(): number {
+        if(this.microvoltamperesLazy !== null){
+            return this.microvoltamperesLazy;
+        }
+        return this.microvoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Microvoltamperes);
+    }
+
+    /** */
+    public get Millivoltamperes(): number {
+        if(this.millivoltamperesLazy !== null){
+            return this.millivoltamperesLazy;
+        }
+        return this.millivoltamperesLazy = this.convertFromBase(ApparentPowerUnits.Millivoltamperes);
     }
 
     /** */
@@ -81,6 +103,26 @@ export class ApparentPower {
     }
 
     /**
+     * Create a new ApparentPower instance from a Microvoltamperes
+     *
+     * @param value The unit as Microvoltamperes to create a new ApparentPower from.
+     * @returns The new ApparentPower instance.
+     */
+    public static FromMicrovoltamperes(value: number): ApparentPower {
+        return new ApparentPower(value, ApparentPowerUnits.Microvoltamperes);
+    }
+
+    /**
+     * Create a new ApparentPower instance from a Millivoltamperes
+     *
+     * @param value The unit as Millivoltamperes to create a new ApparentPower from.
+     * @returns The new ApparentPower instance.
+     */
+    public static FromMillivoltamperes(value: number): ApparentPower {
+        return new ApparentPower(value, ApparentPowerUnits.Millivoltamperes);
+    }
+
+    /**
      * Create a new ApparentPower instance from a Kilovoltamperes
      *
      * @param value The unit as Kilovoltamperes to create a new ApparentPower from.
@@ -115,6 +157,10 @@ export class ApparentPower {
                 
             case ApparentPowerUnits.Voltamperes:
                 return this.value;
+            case ApparentPowerUnits.Microvoltamperes:
+                return (this.value) / 0.000001;
+            case ApparentPowerUnits.Millivoltamperes:
+                return (this.value) / 0.001;
             case ApparentPowerUnits.Kilovoltamperes:
                 return (this.value) / 1000;
             case ApparentPowerUnits.Megavoltamperes:
@@ -132,6 +178,10 @@ export class ApparentPower {
                 
             case ApparentPowerUnits.Voltamperes:
                 return value;
+            case ApparentPowerUnits.Microvoltamperes:
+                return (value) * 0.000001;
+            case ApparentPowerUnits.Millivoltamperes:
+                return (value) * 0.001;
             case ApparentPowerUnits.Kilovoltamperes:
                 return (value) * 1000;
             case ApparentPowerUnits.Megavoltamperes:
@@ -157,6 +207,10 @@ export class ApparentPower {
             
             case ApparentPowerUnits.Voltamperes:
                 return this.Voltamperes + ` VA`;
+            case ApparentPowerUnits.Microvoltamperes:
+                return this.Microvoltamperes + ` `;
+            case ApparentPowerUnits.Millivoltamperes:
+                return this.Millivoltamperes + ` `;
             case ApparentPowerUnits.Kilovoltamperes:
                 return this.Kilovoltamperes + ` `;
             case ApparentPowerUnits.Megavoltamperes:
@@ -182,6 +236,10 @@ export class ApparentPower {
             
             case ApparentPowerUnits.Voltamperes:
                 return `VA`;
+            case ApparentPowerUnits.Microvoltamperes:
+                return ``;
+            case ApparentPowerUnits.Millivoltamperes:
+                return ``;
             case ApparentPowerUnits.Kilovoltamperes:
                 return ``;
             case ApparentPowerUnits.Megavoltamperes:

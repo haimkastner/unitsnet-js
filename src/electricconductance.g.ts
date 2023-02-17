@@ -3,17 +3,23 @@ export enum ElectricConductanceUnits {
     /** */
     Siemens,
     /** */
+    Nanosiemens,
+    /** */
+    Microsiemens,
+    /** */
     Millisiemens,
     /** */
-    Microsiemens
+    Kilosiemens
 }
 
 /** The electrical conductance of an electrical conductor is a measure of the easeness to pass an electric current through that conductor. */
 export class ElectricConductance {
     private value: number;
     private siemensLazy: number | null = null;
-    private millisiemensLazy: number | null = null;
+    private nanosiemensLazy: number | null = null;
     private microsiemensLazy: number | null = null;
+    private millisiemensLazy: number | null = null;
+    private kilosiemensLazy: number | null = null;
 
     /**
      * Create a new ElectricConductance.
@@ -44,11 +50,11 @@ export class ElectricConductance {
     }
 
     /** */
-    public get Millisiemens(): number {
-        if(this.millisiemensLazy !== null){
-            return this.millisiemensLazy;
+    public get Nanosiemens(): number {
+        if(this.nanosiemensLazy !== null){
+            return this.nanosiemensLazy;
         }
-        return this.millisiemensLazy = this.convertFromBase(ElectricConductanceUnits.Millisiemens);
+        return this.nanosiemensLazy = this.convertFromBase(ElectricConductanceUnits.Nanosiemens);
     }
 
     /** */
@@ -57,6 +63,22 @@ export class ElectricConductance {
             return this.microsiemensLazy;
         }
         return this.microsiemensLazy = this.convertFromBase(ElectricConductanceUnits.Microsiemens);
+    }
+
+    /** */
+    public get Millisiemens(): number {
+        if(this.millisiemensLazy !== null){
+            return this.millisiemensLazy;
+        }
+        return this.millisiemensLazy = this.convertFromBase(ElectricConductanceUnits.Millisiemens);
+    }
+
+    /** */
+    public get Kilosiemens(): number {
+        if(this.kilosiemensLazy !== null){
+            return this.kilosiemensLazy;
+        }
+        return this.kilosiemensLazy = this.convertFromBase(ElectricConductanceUnits.Kilosiemens);
     }
 
     /**
@@ -70,13 +92,13 @@ export class ElectricConductance {
     }
 
     /**
-     * Create a new ElectricConductance instance from a Millisiemens
+     * Create a new ElectricConductance instance from a Nanosiemens
      *
-     * @param value The unit as Millisiemens to create a new ElectricConductance from.
+     * @param value The unit as Nanosiemens to create a new ElectricConductance from.
      * @returns The new ElectricConductance instance.
      */
-    public static FromMillisiemens(value: number): ElectricConductance {
-        return new ElectricConductance(value, ElectricConductanceUnits.Millisiemens);
+    public static FromNanosiemens(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Nanosiemens);
     }
 
     /**
@@ -89,15 +111,39 @@ export class ElectricConductance {
         return new ElectricConductance(value, ElectricConductanceUnits.Microsiemens);
     }
 
+    /**
+     * Create a new ElectricConductance instance from a Millisiemens
+     *
+     * @param value The unit as Millisiemens to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromMillisiemens(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Millisiemens);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Kilosiemens
+     *
+     * @param value The unit as Kilosiemens to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromKilosiemens(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Kilosiemens);
+    }
+
     private convertFromBase(toUnit: ElectricConductanceUnits): number {
         switch (toUnit) {
                 
             case ElectricConductanceUnits.Siemens:
                 return this.value;
-            case ElectricConductanceUnits.Millisiemens:
-                return (this.value) / 0.001;
+            case ElectricConductanceUnits.Nanosiemens:
+                return (this.value) / 1e-9;
             case ElectricConductanceUnits.Microsiemens:
                 return (this.value) / 0.000001;
+            case ElectricConductanceUnits.Millisiemens:
+                return (this.value) / 0.001;
+            case ElectricConductanceUnits.Kilosiemens:
+                return (this.value) / 1000;
             default:
                 break;
         }
@@ -109,10 +155,14 @@ export class ElectricConductance {
                 
             case ElectricConductanceUnits.Siemens:
                 return value;
-            case ElectricConductanceUnits.Millisiemens:
-                return (value) * 0.001;
+            case ElectricConductanceUnits.Nanosiemens:
+                return (value) * 1e-9;
             case ElectricConductanceUnits.Microsiemens:
                 return (value) * 0.000001;
+            case ElectricConductanceUnits.Millisiemens:
+                return (value) * 0.001;
+            case ElectricConductanceUnits.Kilosiemens:
+                return (value) * 1000;
             default:
                 break;
         }
@@ -132,10 +182,14 @@ export class ElectricConductance {
             
             case ElectricConductanceUnits.Siemens:
                 return this.Siemens + ` S`;
-            case ElectricConductanceUnits.Millisiemens:
-                return this.Millisiemens + ` `;
+            case ElectricConductanceUnits.Nanosiemens:
+                return this.Nanosiemens + ` `;
             case ElectricConductanceUnits.Microsiemens:
                 return this.Microsiemens + ` `;
+            case ElectricConductanceUnits.Millisiemens:
+                return this.Millisiemens + ` `;
+            case ElectricConductanceUnits.Kilosiemens:
+                return this.Kilosiemens + ` `;
         default:
             break;
         }
@@ -155,9 +209,13 @@ export class ElectricConductance {
             
             case ElectricConductanceUnits.Siemens:
                 return `S`;
-            case ElectricConductanceUnits.Millisiemens:
+            case ElectricConductanceUnits.Nanosiemens:
                 return ``;
             case ElectricConductanceUnits.Microsiemens:
+                return ``;
+            case ElectricConductanceUnits.Millisiemens:
+                return ``;
+            case ElectricConductanceUnits.Kilosiemens:
                 return ``;
         default:
             break;

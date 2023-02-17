@@ -11,7 +11,9 @@ export enum ElectricResistanceUnits {
     /** */
     Megaohms,
     /** */
-    Gigaohms
+    Gigaohms,
+    /** */
+    Teraohms
 }
 
 /** The electrical resistance of an electrical conductor is the opposition to the passage of an electric current through that conductor. */
@@ -23,6 +25,7 @@ export class ElectricResistance {
     private kiloohmsLazy: number | null = null;
     private megaohmsLazy: number | null = null;
     private gigaohmsLazy: number | null = null;
+    private teraohmsLazy: number | null = null;
 
     /**
      * Create a new ElectricResistance.
@@ -92,6 +95,14 @@ export class ElectricResistance {
         return this.gigaohmsLazy = this.convertFromBase(ElectricResistanceUnits.Gigaohms);
     }
 
+    /** */
+    public get Teraohms(): number {
+        if(this.teraohmsLazy !== null){
+            return this.teraohmsLazy;
+        }
+        return this.teraohmsLazy = this.convertFromBase(ElectricResistanceUnits.Teraohms);
+    }
+
     /**
      * Create a new ElectricResistance instance from a Ohms
      *
@@ -152,6 +163,16 @@ export class ElectricResistance {
         return new ElectricResistance(value, ElectricResistanceUnits.Gigaohms);
     }
 
+    /**
+     * Create a new ElectricResistance instance from a Teraohms
+     *
+     * @param value The unit as Teraohms to create a new ElectricResistance from.
+     * @returns The new ElectricResistance instance.
+     */
+    public static FromTeraohms(value: number): ElectricResistance {
+        return new ElectricResistance(value, ElectricResistanceUnits.Teraohms);
+    }
+
     private convertFromBase(toUnit: ElectricResistanceUnits): number {
         switch (toUnit) {
                 
@@ -167,6 +188,8 @@ export class ElectricResistance {
                 return (this.value) / 1000000;
             case ElectricResistanceUnits.Gigaohms:
                 return (this.value) / 1000000000;
+            case ElectricResistanceUnits.Teraohms:
+                return (this.value) / 1000000000000;
             default:
                 break;
         }
@@ -188,6 +211,8 @@ export class ElectricResistance {
                 return (value) * 1000000;
             case ElectricResistanceUnits.Gigaohms:
                 return (value) * 1000000000;
+            case ElectricResistanceUnits.Teraohms:
+                return (value) * 1000000000000;
             default:
                 break;
         }
@@ -217,6 +242,8 @@ export class ElectricResistance {
                 return this.Megaohms + ` `;
             case ElectricResistanceUnits.Gigaohms:
                 return this.Gigaohms + ` `;
+            case ElectricResistanceUnits.Teraohms:
+                return this.Teraohms + ` `;
         default:
             break;
         }
@@ -245,6 +272,8 @@ export class ElectricResistance {
             case ElectricResistanceUnits.Megaohms:
                 return ``;
             case ElectricResistanceUnits.Gigaohms:
+                return ``;
+            case ElectricResistanceUnits.Teraohms:
                 return ``;
         default:
             break;

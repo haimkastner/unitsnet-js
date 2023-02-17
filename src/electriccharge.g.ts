@@ -5,6 +5,18 @@ export enum ElectricChargeUnits {
     /** */
     AmpereHours,
     /** */
+    Picocoulombs,
+    /** */
+    Nanocoulombs,
+    /** */
+    Microcoulombs,
+    /** */
+    Millicoulombs,
+    /** */
+    Kilocoulombs,
+    /** */
+    Megacoulombs,
+    /** */
     MilliampereHours,
     /** */
     KiloampereHours,
@@ -17,6 +29,12 @@ export class ElectricCharge {
     private value: number;
     private coulombsLazy: number | null = null;
     private amperehoursLazy: number | null = null;
+    private picocoulombsLazy: number | null = null;
+    private nanocoulombsLazy: number | null = null;
+    private microcoulombsLazy: number | null = null;
+    private millicoulombsLazy: number | null = null;
+    private kilocoulombsLazy: number | null = null;
+    private megacoulombsLazy: number | null = null;
     private milliamperehoursLazy: number | null = null;
     private kiloamperehoursLazy: number | null = null;
     private megaamperehoursLazy: number | null = null;
@@ -55,6 +73,54 @@ export class ElectricCharge {
             return this.amperehoursLazy;
         }
         return this.amperehoursLazy = this.convertFromBase(ElectricChargeUnits.AmpereHours);
+    }
+
+    /** */
+    public get Picocoulombs(): number {
+        if(this.picocoulombsLazy !== null){
+            return this.picocoulombsLazy;
+        }
+        return this.picocoulombsLazy = this.convertFromBase(ElectricChargeUnits.Picocoulombs);
+    }
+
+    /** */
+    public get Nanocoulombs(): number {
+        if(this.nanocoulombsLazy !== null){
+            return this.nanocoulombsLazy;
+        }
+        return this.nanocoulombsLazy = this.convertFromBase(ElectricChargeUnits.Nanocoulombs);
+    }
+
+    /** */
+    public get Microcoulombs(): number {
+        if(this.microcoulombsLazy !== null){
+            return this.microcoulombsLazy;
+        }
+        return this.microcoulombsLazy = this.convertFromBase(ElectricChargeUnits.Microcoulombs);
+    }
+
+    /** */
+    public get Millicoulombs(): number {
+        if(this.millicoulombsLazy !== null){
+            return this.millicoulombsLazy;
+        }
+        return this.millicoulombsLazy = this.convertFromBase(ElectricChargeUnits.Millicoulombs);
+    }
+
+    /** */
+    public get Kilocoulombs(): number {
+        if(this.kilocoulombsLazy !== null){
+            return this.kilocoulombsLazy;
+        }
+        return this.kilocoulombsLazy = this.convertFromBase(ElectricChargeUnits.Kilocoulombs);
+    }
+
+    /** */
+    public get Megacoulombs(): number {
+        if(this.megacoulombsLazy !== null){
+            return this.megacoulombsLazy;
+        }
+        return this.megacoulombsLazy = this.convertFromBase(ElectricChargeUnits.Megacoulombs);
     }
 
     /** */
@@ -102,6 +168,66 @@ export class ElectricCharge {
     }
 
     /**
+     * Create a new ElectricCharge instance from a Picocoulombs
+     *
+     * @param value The unit as Picocoulombs to create a new ElectricCharge from.
+     * @returns The new ElectricCharge instance.
+     */
+    public static FromPicocoulombs(value: number): ElectricCharge {
+        return new ElectricCharge(value, ElectricChargeUnits.Picocoulombs);
+    }
+
+    /**
+     * Create a new ElectricCharge instance from a Nanocoulombs
+     *
+     * @param value The unit as Nanocoulombs to create a new ElectricCharge from.
+     * @returns The new ElectricCharge instance.
+     */
+    public static FromNanocoulombs(value: number): ElectricCharge {
+        return new ElectricCharge(value, ElectricChargeUnits.Nanocoulombs);
+    }
+
+    /**
+     * Create a new ElectricCharge instance from a Microcoulombs
+     *
+     * @param value The unit as Microcoulombs to create a new ElectricCharge from.
+     * @returns The new ElectricCharge instance.
+     */
+    public static FromMicrocoulombs(value: number): ElectricCharge {
+        return new ElectricCharge(value, ElectricChargeUnits.Microcoulombs);
+    }
+
+    /**
+     * Create a new ElectricCharge instance from a Millicoulombs
+     *
+     * @param value The unit as Millicoulombs to create a new ElectricCharge from.
+     * @returns The new ElectricCharge instance.
+     */
+    public static FromMillicoulombs(value: number): ElectricCharge {
+        return new ElectricCharge(value, ElectricChargeUnits.Millicoulombs);
+    }
+
+    /**
+     * Create a new ElectricCharge instance from a Kilocoulombs
+     *
+     * @param value The unit as Kilocoulombs to create a new ElectricCharge from.
+     * @returns The new ElectricCharge instance.
+     */
+    public static FromKilocoulombs(value: number): ElectricCharge {
+        return new ElectricCharge(value, ElectricChargeUnits.Kilocoulombs);
+    }
+
+    /**
+     * Create a new ElectricCharge instance from a Megacoulombs
+     *
+     * @param value The unit as Megacoulombs to create a new ElectricCharge from.
+     * @returns The new ElectricCharge instance.
+     */
+    public static FromMegacoulombs(value: number): ElectricCharge {
+        return new ElectricCharge(value, ElectricChargeUnits.Megacoulombs);
+    }
+
+    /**
      * Create a new ElectricCharge instance from a MilliampereHours
      *
      * @param value The unit as MilliampereHours to create a new ElectricCharge from.
@@ -138,6 +264,18 @@ export class ElectricCharge {
                 return this.value;
             case ElectricChargeUnits.AmpereHours:
                 return this.value * 2.77777777777e-4;
+            case ElectricChargeUnits.Picocoulombs:
+                return (this.value) / 1e-12;
+            case ElectricChargeUnits.Nanocoulombs:
+                return (this.value) / 1e-9;
+            case ElectricChargeUnits.Microcoulombs:
+                return (this.value) / 0.000001;
+            case ElectricChargeUnits.Millicoulombs:
+                return (this.value) / 0.001;
+            case ElectricChargeUnits.Kilocoulombs:
+                return (this.value) / 1000;
+            case ElectricChargeUnits.Megacoulombs:
+                return (this.value) / 1000000;
             case ElectricChargeUnits.MilliampereHours:
                 return (this.value * 2.77777777777e-4) / 0.001;
             case ElectricChargeUnits.KiloampereHours:
@@ -157,6 +295,18 @@ export class ElectricCharge {
                 return value;
             case ElectricChargeUnits.AmpereHours:
                 return value / 2.77777777777e-4;
+            case ElectricChargeUnits.Picocoulombs:
+                return (value) * 1e-12;
+            case ElectricChargeUnits.Nanocoulombs:
+                return (value) * 1e-9;
+            case ElectricChargeUnits.Microcoulombs:
+                return (value) * 0.000001;
+            case ElectricChargeUnits.Millicoulombs:
+                return (value) * 0.001;
+            case ElectricChargeUnits.Kilocoulombs:
+                return (value) * 1000;
+            case ElectricChargeUnits.Megacoulombs:
+                return (value) * 1000000;
             case ElectricChargeUnits.MilliampereHours:
                 return (value / 2.77777777777e-4) * 0.001;
             case ElectricChargeUnits.KiloampereHours:
@@ -184,6 +334,18 @@ export class ElectricCharge {
                 return this.Coulombs + ` C`;
             case ElectricChargeUnits.AmpereHours:
                 return this.AmpereHours + ` A-h`;
+            case ElectricChargeUnits.Picocoulombs:
+                return this.Picocoulombs + ` `;
+            case ElectricChargeUnits.Nanocoulombs:
+                return this.Nanocoulombs + ` `;
+            case ElectricChargeUnits.Microcoulombs:
+                return this.Microcoulombs + ` `;
+            case ElectricChargeUnits.Millicoulombs:
+                return this.Millicoulombs + ` `;
+            case ElectricChargeUnits.Kilocoulombs:
+                return this.Kilocoulombs + ` `;
+            case ElectricChargeUnits.Megacoulombs:
+                return this.Megacoulombs + ` `;
             case ElectricChargeUnits.MilliampereHours:
                 return this.MilliampereHours + ` `;
             case ElectricChargeUnits.KiloampereHours:
@@ -211,6 +373,18 @@ export class ElectricCharge {
                 return `C`;
             case ElectricChargeUnits.AmpereHours:
                 return `A-h`;
+            case ElectricChargeUnits.Picocoulombs:
+                return ``;
+            case ElectricChargeUnits.Nanocoulombs:
+                return ``;
+            case ElectricChargeUnits.Microcoulombs:
+                return ``;
+            case ElectricChargeUnits.Millicoulombs:
+                return ``;
+            case ElectricChargeUnits.Kilocoulombs:
+                return ``;
+            case ElectricChargeUnits.Megacoulombs:
+                return ``;
             case ElectricChargeUnits.MilliampereHours:
                 return ``;
             case ElectricChargeUnits.KiloampereHours:

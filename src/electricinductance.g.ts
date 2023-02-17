@@ -3,6 +3,8 @@ export enum ElectricInductanceUnits {
     /** */
     Henries,
     /** */
+    Picohenries,
+    /** */
     Nanohenries,
     /** */
     Microhenries,
@@ -14,6 +16,7 @@ export enum ElectricInductanceUnits {
 export class ElectricInductance {
     private value: number;
     private henriesLazy: number | null = null;
+    private picohenriesLazy: number | null = null;
     private nanohenriesLazy: number | null = null;
     private microhenriesLazy: number | null = null;
     private millihenriesLazy: number | null = null;
@@ -44,6 +47,14 @@ export class ElectricInductance {
             return this.henriesLazy;
         }
         return this.henriesLazy = this.convertFromBase(ElectricInductanceUnits.Henries);
+    }
+
+    /** */
+    public get Picohenries(): number {
+        if(this.picohenriesLazy !== null){
+            return this.picohenriesLazy;
+        }
+        return this.picohenriesLazy = this.convertFromBase(ElectricInductanceUnits.Picohenries);
     }
 
     /** */
@@ -81,6 +92,16 @@ export class ElectricInductance {
     }
 
     /**
+     * Create a new ElectricInductance instance from a Picohenries
+     *
+     * @param value The unit as Picohenries to create a new ElectricInductance from.
+     * @returns The new ElectricInductance instance.
+     */
+    public static FromPicohenries(value: number): ElectricInductance {
+        return new ElectricInductance(value, ElectricInductanceUnits.Picohenries);
+    }
+
+    /**
      * Create a new ElectricInductance instance from a Nanohenries
      *
      * @param value The unit as Nanohenries to create a new ElectricInductance from.
@@ -115,6 +136,8 @@ export class ElectricInductance {
                 
             case ElectricInductanceUnits.Henries:
                 return this.value;
+            case ElectricInductanceUnits.Picohenries:
+                return (this.value) / 1e-12;
             case ElectricInductanceUnits.Nanohenries:
                 return (this.value) / 1e-9;
             case ElectricInductanceUnits.Microhenries:
@@ -132,6 +155,8 @@ export class ElectricInductance {
                 
             case ElectricInductanceUnits.Henries:
                 return value;
+            case ElectricInductanceUnits.Picohenries:
+                return (value) * 1e-12;
             case ElectricInductanceUnits.Nanohenries:
                 return (value) * 1e-9;
             case ElectricInductanceUnits.Microhenries:
@@ -157,6 +182,8 @@ export class ElectricInductance {
             
             case ElectricInductanceUnits.Henries:
                 return this.Henries + ` H`;
+            case ElectricInductanceUnits.Picohenries:
+                return this.Picohenries + ` `;
             case ElectricInductanceUnits.Nanohenries:
                 return this.Nanohenries + ` `;
             case ElectricInductanceUnits.Microhenries:
@@ -182,6 +209,8 @@ export class ElectricInductance {
             
             case ElectricInductanceUnits.Henries:
                 return `H`;
+            case ElectricInductanceUnits.Picohenries:
+                return ``;
             case ElectricInductanceUnits.Nanohenries:
                 return ``;
             case ElectricInductanceUnits.Microhenries:
