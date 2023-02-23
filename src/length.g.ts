@@ -2,13 +2,13 @@
 export enum LengthUnits {
     /** */
     Meters,
-    /** */
+    /** The statute mile was standardised between the British Commonwealth and the United States by an international agreement in 1959, when it was formally redefined with respect to SI units as exactly 1,609.344 metres. */
     Miles,
-    /** */
+    /** The yard (symbol: yd) is an English unit of length in both the British imperial and US customary systems of measurement equalling 3 feet (or 36 inches). Since 1959 the yard has been by international agreement standardized as exactly 0.9144 meter. A distance of 1,760 yards is equal to 1 mile. */
     Yards,
     /** */
     Feet,
-    /** */
+    /** In the United States, the foot was defined as 12 inches, with the inch being defined by the Mendenhall Order of 1893 as 39.37 inches = 1 m. This makes a U.S. survey foot exactly 1200/3937 meters. */
     UsSurveyFeet,
     /** */
     Inches,
@@ -145,7 +145,7 @@ export class Length {
         return this.metersLazy = this.convertFromBase(LengthUnits.Meters);
     }
 
-    /** */
+    /** The statute mile was standardised between the British Commonwealth and the United States by an international agreement in 1959, when it was formally redefined with respect to SI units as exactly 1,609.344 metres. */
     public get Miles(): number {
         if(this.milesLazy !== null){
             return this.milesLazy;
@@ -153,7 +153,7 @@ export class Length {
         return this.milesLazy = this.convertFromBase(LengthUnits.Miles);
     }
 
-    /** */
+    /** The yard (symbol: yd) is an English unit of length in both the British imperial and US customary systems of measurement equalling 3 feet (or 36 inches). Since 1959 the yard has been by international agreement standardized as exactly 0.9144 meter. A distance of 1,760 yards is equal to 1 mile. */
     public get Yards(): number {
         if(this.yardsLazy !== null){
             return this.yardsLazy;
@@ -169,7 +169,7 @@ export class Length {
         return this.feetLazy = this.convertFromBase(LengthUnits.Feet);
     }
 
-    /** */
+    /** In the United States, the foot was defined as 12 inches, with the inch being defined by the Mendenhall Order of 1893 as 39.37 inches = 1 m. This makes a U.S. survey foot exactly 1200/3937 meters. */
     public get UsSurveyFeet(): number {
         if(this.ussurveyfeetLazy !== null){
             return this.ussurveyfeetLazy;
@@ -445,7 +445,7 @@ export class Length {
 
     /**
      * Create a new Length instance from a Miles
-     *
+     * The statute mile was standardised between the British Commonwealth and the United States by an international agreement in 1959, when it was formally redefined with respect to SI units as exactly 1,609.344 metres.
      * @param value The unit as Miles to create a new Length from.
      * @returns The new Length instance.
      */
@@ -455,7 +455,7 @@ export class Length {
 
     /**
      * Create a new Length instance from a Yards
-     *
+     * The yard (symbol: yd) is an English unit of length in both the British imperial and US customary systems of measurement equalling 3 feet (or 36 inches). Since 1959 the yard has been by international agreement standardized as exactly 0.9144 meter. A distance of 1,760 yards is equal to 1 mile.
      * @param value The unit as Yards to create a new Length from.
      * @returns The new Length instance.
      */
@@ -475,7 +475,7 @@ export class Length {
 
     /**
      * Create a new Length instance from a UsSurveyFeet
-     *
+     * In the United States, the foot was defined as 12 inches, with the inch being defined by the Mendenhall Order of 1893 as 39.37 inches = 1 m. This makes a U.S. survey foot exactly 1200/3937 meters.
      * @param value The unit as UsSurveyFeet to create a new Length from.
      * @returns The new Length instance.
      */

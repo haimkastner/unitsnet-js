@@ -30,7 +30,7 @@ export enum SpeedUnits {
     YardsPerMinute,
     /** */
     YardsPerHour,
-    /** */
+    /** The knot, by definition, is a unit of speed equals to 1 nautical mile per hour, which is exactly 1852.000 metres per hour. The length of the internationally agreed nautical mile is 1852 m. The US adopted the international definition in 1954, the UK adopted the international nautical mile definition in 1970. */
     Knots,
     /** */
     MilesPerHour,
@@ -245,7 +245,7 @@ export class Speed {
         return this.yardsperhourLazy = this.convertFromBase(SpeedUnits.YardsPerHour);
     }
 
-    /** */
+    /** The knot, by definition, is a unit of speed equals to 1 nautical mile per hour, which is exactly 1852.000 metres per hour. The length of the internationally agreed nautical mile is 1852 m. The US adopted the international definition in 1954, the UK adopted the international nautical mile definition in 1970. */
     public get Knots(): number {
         if(this.knotsLazy !== null){
             return this.knotsLazy;
@@ -541,7 +541,7 @@ export class Speed {
 
     /**
      * Create a new Speed instance from a Knots
-     *
+     * The knot, by definition, is a unit of speed equals to 1 nautical mile per hour, which is exactly 1852.000 metres per hour. The length of the internationally agreed nautical mile is 1852 m. The US adopted the international definition in 1954, the UK adopted the international nautical mile definition in 1970.
      * @param value The unit as Knots to create a new Speed from.
      * @returns The new Speed instance.
      */
@@ -753,7 +753,7 @@ export class Speed {
             case SpeedUnits.YardsPerHour:
                 return this.value / 0.9144 * 3600;
             case SpeedUnits.Knots:
-                return this.value / 0.514444;
+                return this.value / (1852.0 / 3600.0);
             case SpeedUnits.MilesPerHour:
                 return this.value / 0.44704;
             case SpeedUnits.Mach:
@@ -828,7 +828,7 @@ export class Speed {
             case SpeedUnits.YardsPerHour:
                 return value * 0.9144 / 3600;
             case SpeedUnits.Knots:
-                return value * 0.514444;
+                return value * (1852.0 / 3600.0);
             case SpeedUnits.MilesPerHour:
                 return value * 0.44704;
             case SpeedUnits.Mach:

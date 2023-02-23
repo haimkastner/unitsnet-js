@@ -10,7 +10,7 @@ export enum MassUnits {
     LongTons,
     /** The pound or pound-mass (abbreviations: lb, lbm) is a unit of mass used in the imperial, United States customary and other systems of measurement. A number of different definitions have been used, the most common today being the international avoirdupois pound which is legally defined as exactly 0.45359237 kilograms, and which is divided into 16 avoirdupois ounces. */
     Pounds,
-    /** An ounce (abbreviated oz) is usually the international avoirdupois ounce as used in the United States customary and British imperial systems, which is equal to one-sixteenth of a pound or approximately 28 grams. The abbreviation 'oz' derives from the Italian word onza (now spelled oncia). */
+    /** The international avoirdupois ounce (abbreviated oz) is defined as exactly 28.349523125 g under the international yard and pound agreement of 1959, signed by the United States and countries of the Commonwealth of Nations. 16 oz make up an avoirdupois pound. */
     Ounces,
     /** The slug (abbreviation slug) is a unit of mass that is accelerated by 1 ft/s² when a force of one pound (lbf) is exerted on it. */
     Slugs,
@@ -141,7 +141,7 @@ export class Mass {
         return this.poundsLazy = this.convertFromBase(MassUnits.Pounds);
     }
 
-    /** An ounce (abbreviated oz) is usually the international avoirdupois ounce as used in the United States customary and British imperial systems, which is equal to one-sixteenth of a pound or approximately 28 grams. The abbreviation 'oz' derives from the Italian word onza (now spelled oncia). */
+    /** The international avoirdupois ounce (abbreviated oz) is defined as exactly 28.349523125 g under the international yard and pound agreement of 1959, signed by the United States and countries of the Commonwealth of Nations. 16 oz make up an avoirdupois pound. */
     public get Ounces(): number {
         if(this.ouncesLazy !== null){
             return this.ouncesLazy;
@@ -353,7 +353,7 @@ export class Mass {
 
     /**
      * Create a new Mass instance from a Ounces
-     * An ounce (abbreviated oz) is usually the international avoirdupois ounce as used in the United States customary and British imperial systems, which is equal to one-sixteenth of a pound or approximately 28 grams. The abbreviation 'oz' derives from the Italian word onza (now spelled oncia).
+     * The international avoirdupois ounce (abbreviated oz) is defined as exactly 28.349523125 g under the international yard and pound agreement of 1959, signed by the United States and countries of the Commonwealth of Nations. 16 oz make up an avoirdupois pound.
      * @param value The unit as Ounces to create a new Mass from.
      * @returns The new Mass instance.
      */
@@ -565,7 +565,7 @@ export class Mass {
             case MassUnits.Pounds:
                 return this.value / 0.45359237;
             case MassUnits.Ounces:
-                return this.value * 35.2739619;
+                return this.value / 0.028349523125;
             case MassUnits.Slugs:
                 return this.value * 6.852176556196105e-2;
             case MassUnits.Stone:
@@ -624,7 +624,7 @@ export class Mass {
             case MassUnits.Pounds:
                 return value * 0.45359237;
             case MassUnits.Ounces:
-                return value / 35.2739619;
+                return value * 0.028349523125;
             case MassUnits.Slugs:
                 return value / 6.852176556196105e-2;
             case MassUnits.Stone:

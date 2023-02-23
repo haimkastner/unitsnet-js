@@ -12,17 +12,17 @@ export enum AreaUnits {
     SquareMillimeters,
     /** */
     SquareMicrometers,
-    /** */
+    /** The statute mile was standardised between the British Commonwealth and the United States by an international agreement in 1959, when it was formally redefined with respect to SI units as exactly 1,609.344 metres. */
     SquareMiles,
-    /** */
+    /** The yard (symbol: yd) is an English unit of length in both the British imperial and US customary systems of measurement equalling 3 feet (or 36 inches). Since 1959 the yard has been by international agreement standardized as exactly 0.9144 meter. A distance of 1,760 yards is equal to 1 mile. */
     SquareYards,
     /** */
     SquareFeet,
-    /** */
+    /** In the United States, the foot was defined as 12 inches, with the inch being defined by the Mendenhall Order of 1893 as 39.37 inches = 1 m. This makes a U.S. survey foot exactly 1200/3937 meters. */
     UsSurveySquareFeet,
     /** */
     SquareInches,
-    /** */
+    /** Based upon the international yard and pound agreement of 1959, an acre may be declared as exactly 4,046.8564224 square metres. */
     Acres,
     /** */
     Hectares,
@@ -116,7 +116,7 @@ export class Area {
         return this.squaremicrometersLazy = this.convertFromBase(AreaUnits.SquareMicrometers);
     }
 
-    /** */
+    /** The statute mile was standardised between the British Commonwealth and the United States by an international agreement in 1959, when it was formally redefined with respect to SI units as exactly 1,609.344 metres. */
     public get SquareMiles(): number {
         if(this.squaremilesLazy !== null){
             return this.squaremilesLazy;
@@ -124,7 +124,7 @@ export class Area {
         return this.squaremilesLazy = this.convertFromBase(AreaUnits.SquareMiles);
     }
 
-    /** */
+    /** The yard (symbol: yd) is an English unit of length in both the British imperial and US customary systems of measurement equalling 3 feet (or 36 inches). Since 1959 the yard has been by international agreement standardized as exactly 0.9144 meter. A distance of 1,760 yards is equal to 1 mile. */
     public get SquareYards(): number {
         if(this.squareyardsLazy !== null){
             return this.squareyardsLazy;
@@ -140,7 +140,7 @@ export class Area {
         return this.squarefeetLazy = this.convertFromBase(AreaUnits.SquareFeet);
     }
 
-    /** */
+    /** In the United States, the foot was defined as 12 inches, with the inch being defined by the Mendenhall Order of 1893 as 39.37 inches = 1 m. This makes a U.S. survey foot exactly 1200/3937 meters. */
     public get UsSurveySquareFeet(): number {
         if(this.ussurveysquarefeetLazy !== null){
             return this.ussurveysquarefeetLazy;
@@ -156,7 +156,7 @@ export class Area {
         return this.squareinchesLazy = this.convertFromBase(AreaUnits.SquareInches);
     }
 
-    /** */
+    /** Based upon the international yard and pound agreement of 1959, an acre may be declared as exactly 4,046.8564224 square metres. */
     public get Acres(): number {
         if(this.acresLazy !== null){
             return this.acresLazy;
@@ -242,7 +242,7 @@ export class Area {
 
     /**
      * Create a new Area instance from a SquareMiles
-     *
+     * The statute mile was standardised between the British Commonwealth and the United States by an international agreement in 1959, when it was formally redefined with respect to SI units as exactly 1,609.344 metres.
      * @param value The unit as SquareMiles to create a new Area from.
      * @returns The new Area instance.
      */
@@ -252,7 +252,7 @@ export class Area {
 
     /**
      * Create a new Area instance from a SquareYards
-     *
+     * The yard (symbol: yd) is an English unit of length in both the British imperial and US customary systems of measurement equalling 3 feet (or 36 inches). Since 1959 the yard has been by international agreement standardized as exactly 0.9144 meter. A distance of 1,760 yards is equal to 1 mile.
      * @param value The unit as SquareYards to create a new Area from.
      * @returns The new Area instance.
      */
@@ -272,7 +272,7 @@ export class Area {
 
     /**
      * Create a new Area instance from a UsSurveySquareFeet
-     *
+     * In the United States, the foot was defined as 12 inches, with the inch being defined by the Mendenhall Order of 1893 as 39.37 inches = 1 m. This makes a U.S. survey foot exactly 1200/3937 meters.
      * @param value The unit as UsSurveySquareFeet to create a new Area from.
      * @returns The new Area instance.
      */
@@ -292,7 +292,7 @@ export class Area {
 
     /**
      * Create a new Area instance from a Acres
-     *
+     * Based upon the international yard and pound agreement of 1959, an acre may be declared as exactly 4,046.8564224 square metres.
      * @param value The unit as Acres to create a new Area from.
      * @returns The new Area instance.
      */
@@ -336,17 +336,17 @@ export class Area {
             case AreaUnits.SquareMicrometers:
                 return this.value / 1e-12;
             case AreaUnits.SquareMiles:
-                return this.value / 2.59e6;
+                return this.value / 1609.344 / 1609.344;
             case AreaUnits.SquareYards:
-                return this.value / 0.836127;
+                return this.value / 0.9144 / 0.9144;
             case AreaUnits.SquareFeet:
                 return this.value / 9.290304e-2;
             case AreaUnits.UsSurveySquareFeet:
-                return this.value / 0.09290341161;
+                return this.value / (1200.0 / 3937.0) / (1200.0 / 3937.0);
             case AreaUnits.SquareInches:
                 return this.value / 0.00064516;
             case AreaUnits.Acres:
-                return this.value / 4046.85642;
+                return this.value / 4046.8564224;
             case AreaUnits.Hectares:
                 return this.value / 1e4;
             case AreaUnits.SquareNauticalMiles:
@@ -373,17 +373,17 @@ export class Area {
             case AreaUnits.SquareMicrometers:
                 return value * 1e-12;
             case AreaUnits.SquareMiles:
-                return value * 2.59e6;
+                return value * 1609.344 * 1609.344;
             case AreaUnits.SquareYards:
-                return value * 0.836127;
+                return value * 0.9144 * 0.9144;
             case AreaUnits.SquareFeet:
                 return value * 9.290304e-2;
             case AreaUnits.UsSurveySquareFeet:
-                return value * 0.09290341161;
+                return value * (1200.0 / 3937.0) * (1200.0 / 3937.0);
             case AreaUnits.SquareInches:
                 return value * 0.00064516;
             case AreaUnits.Acres:
-                return value * 4046.85642;
+                return value * 4046.8564224;
             case AreaUnits.Hectares:
                 return value * 1e4;
             case AreaUnits.SquareNauticalMiles:
