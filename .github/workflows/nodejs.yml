@@ -53,18 +53,19 @@ jobs:
           git pull
           version=$(npm --no-git-tag-version --tag-version-prefix= version patch)
           echo $version
-          echo ::set-output name=version::$version
+          echo "VERSION=$version" >> $GITHUB_OUTPUT
 
       - name: Get version info
         id: version_info
         run: |
-          echo ::set-output name=body::$( git log -1 --pretty=%B | sed -n '1p')
+          body=$(git log -1 --pretty=%B | sed -n '1p')
+          echo "BODY=$body" >> $GITHUB_OUTPUT
 
       - name: Commit and push version
         uses: devops-infra/action-commit-push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: Update to version ${{ steps.update_version.outputs.version }} [skip-ci]
+          commit_message: Update to version ${{ steps.update_version.outputs.VERSION }} [skip-ci]
 
       - name: Publish package on NPM 📦
         run: npm publish
@@ -73,13 +74,13 @@ jobs:
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.update_version.outputs.version }}
-          release_name: Package Version ${{ steps.update_version.outputs.version }}
-          body: ${{  steps.version_info.outputs.body }}
+          tag_name: ${{ steps.update_version.outputs.VERSION }}
+          name: Package Version ${{ steps.update_version.outputs.VERSION }}
+          body: ${{  steps.version_info.outputs.BODY }}
           draft: false
           prerelease: false
 
@@ -87,4 +88,4 @@ jobs:
         uses: devops-infra/action-commit-push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: Update gen docs for version ${{ steps.update_version.outputs.version }} [skip-ci]
+          commit_message: Update gen docs for version ${{ steps.update_version.outputs.VERSION }} [skip-ci]
