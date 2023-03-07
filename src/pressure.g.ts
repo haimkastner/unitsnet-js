@@ -47,7 +47,7 @@ export enum PressureUnits {
     /** */
     PoundsPerInchSecondSquared,
     /** */
-    MillimeterOfWaterColumn,
+    MetersOfWaterColumn,
     /** */
     InchesOfWaterColumn,
     /** */
@@ -93,7 +93,11 @@ export enum PressureUnits {
     /** */
     KilopoundsForcePerSquareMil,
     /** */
-    KilopoundsForcePerSquareFoot
+    KilopoundsForcePerSquareFoot,
+    /** */
+    MillimetersOfWaterColumn,
+    /** */
+    CentimetersOfWaterColumn
 }
 
 /** Pressure (symbol: P or p) is the ratio of force to the area over which that force is distributed. Pressure is force per unit area applied in a direction perpendicular to the surface of an object. Gauge pressure (also spelled gage pressure)[a] is the pressure relative to the local atmospheric or ambient pressure. Pressure is measured in any unit of force divided by any unit of area. The SI unit of pressure is the newton per square metre, which is called the pascal (Pa) after the seventeenth-century philosopher and scientist Blaise Pascal. A pressure of 1 Pa is small; it approximately equals the pressure exerted by a dollar bill resting flat on a table. Everyday pressures are often stated in kilopascals (1 kPa = 1000 Pa). */
@@ -122,7 +126,7 @@ export class Pressure {
     private inchesofmercuryLazy: number | null = null;
     private dynespersquarecentimeterLazy: number | null = null;
     private poundsperinchsecondsquaredLazy: number | null = null;
-    private millimeterofwatercolumnLazy: number | null = null;
+    private metersofwatercolumnLazy: number | null = null;
     private inchesofwatercolumnLazy: number | null = null;
     private metersofelevationLazy: number | null = null;
     private feetofelevationLazy: number | null = null;
@@ -146,6 +150,8 @@ export class Pressure {
     private kilopoundsforcepersquareinchLazy: number | null = null;
     private kilopoundsforcepersquaremilLazy: number | null = null;
     private kilopoundsforcepersquarefootLazy: number | null = null;
+    private millimetersofwatercolumnLazy: number | null = null;
+    private centimetersofwatercolumnLazy: number | null = null;
 
     /**
      * Create a new Pressure.
@@ -352,11 +358,11 @@ export class Pressure {
     }
 
     /** */
-    public get MillimeterOfWaterColumn(): number {
-        if(this.millimeterofwatercolumnLazy !== null){
-            return this.millimeterofwatercolumnLazy;
+    public get MetersOfWaterColumn(): number {
+        if(this.metersofwatercolumnLazy !== null){
+            return this.metersofwatercolumnLazy;
         }
-        return this.millimeterofwatercolumnLazy = this.convertFromBase(PressureUnits.MillimeterOfWaterColumn);
+        return this.metersofwatercolumnLazy = this.convertFromBase(PressureUnits.MetersOfWaterColumn);
     }
 
     /** */
@@ -541,6 +547,22 @@ export class Pressure {
             return this.kilopoundsforcepersquarefootLazy;
         }
         return this.kilopoundsforcepersquarefootLazy = this.convertFromBase(PressureUnits.KilopoundsForcePerSquareFoot);
+    }
+
+    /** */
+    public get MillimetersOfWaterColumn(): number {
+        if(this.millimetersofwatercolumnLazy !== null){
+            return this.millimetersofwatercolumnLazy;
+        }
+        return this.millimetersofwatercolumnLazy = this.convertFromBase(PressureUnits.MillimetersOfWaterColumn);
+    }
+
+    /** */
+    public get CentimetersOfWaterColumn(): number {
+        if(this.centimetersofwatercolumnLazy !== null){
+            return this.centimetersofwatercolumnLazy;
+        }
+        return this.centimetersofwatercolumnLazy = this.convertFromBase(PressureUnits.CentimetersOfWaterColumn);
     }
 
     /**
@@ -774,13 +796,13 @@ export class Pressure {
     }
 
     /**
-     * Create a new Pressure instance from a MillimeterOfWaterColumn
+     * Create a new Pressure instance from a MetersOfWaterColumn
      *
-     * @param value The unit as MillimeterOfWaterColumn to create a new Pressure from.
+     * @param value The unit as MetersOfWaterColumn to create a new Pressure from.
      * @returns The new Pressure instance.
      */
-    public static FromMillimeterOfWaterColumn(value: number): Pressure {
-        return new Pressure(value, PressureUnits.MillimeterOfWaterColumn);
+    public static FromMetersOfWaterColumn(value: number): Pressure {
+        return new Pressure(value, PressureUnits.MetersOfWaterColumn);
     }
 
     /**
@@ -1013,6 +1035,26 @@ export class Pressure {
         return new Pressure(value, PressureUnits.KilopoundsForcePerSquareFoot);
     }
 
+    /**
+     * Create a new Pressure instance from a MillimetersOfWaterColumn
+     *
+     * @param value The unit as MillimetersOfWaterColumn to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromMillimetersOfWaterColumn(value: number): Pressure {
+        return new Pressure(value, PressureUnits.MillimetersOfWaterColumn);
+    }
+
+    /**
+     * Create a new Pressure instance from a CentimetersOfWaterColumn
+     *
+     * @param value The unit as CentimetersOfWaterColumn to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromCentimetersOfWaterColumn(value: number): Pressure {
+        return new Pressure(value, PressureUnits.CentimetersOfWaterColumn);
+    }
+
     private convertFromBase(toUnit: PressureUnits): number {
         switch (toUnit) {
                 
@@ -1062,8 +1104,8 @@ export class Pressure {
                 return this.value / 1.0e-1;
             case PressureUnits.PoundsPerInchSecondSquared:
                 return this.value / 1.785796732283465e1;
-            case PressureUnits.MillimeterOfWaterColumn:
-                return this.value / 9.806650000000272e0;
+            case PressureUnits.MetersOfWaterColumn:
+                return this.value / 9.806650000000272e3;
             case PressureUnits.InchesOfWaterColumn:
                 return this.value / 249.08890833333;
             case PressureUnits.MetersOfElevation:
@@ -1110,6 +1152,10 @@ export class Pressure {
                 return (this.value / 6.894757293168361e9) / 1000;
             case PressureUnits.KilopoundsForcePerSquareFoot:
                 return (this.value / 4.788025898033584e1) / 1000;
+            case PressureUnits.MillimetersOfWaterColumn:
+                return (this.value / 9.806650000000272e3) / 0.001;
+            case PressureUnits.CentimetersOfWaterColumn:
+                return (this.value / 9.806650000000272e3) / 0.01;
             default:
                 break;
         }
@@ -1165,8 +1211,8 @@ export class Pressure {
                 return value * 1.0e-1;
             case PressureUnits.PoundsPerInchSecondSquared:
                 return value * 1.785796732283465e1;
-            case PressureUnits.MillimeterOfWaterColumn:
-                return value * 9.806650000000272e0;
+            case PressureUnits.MetersOfWaterColumn:
+                return value * 9.806650000000272e3;
             case PressureUnits.InchesOfWaterColumn:
                 return value * 249.08890833333;
             case PressureUnits.MetersOfElevation:
@@ -1213,6 +1259,10 @@ export class Pressure {
                 return (value * 6.894757293168361e9) * 1000;
             case PressureUnits.KilopoundsForcePerSquareFoot:
                 return (value * 4.788025898033584e1) * 1000;
+            case PressureUnits.MillimetersOfWaterColumn:
+                return (value * 9.806650000000272e3) * 0.001;
+            case PressureUnits.CentimetersOfWaterColumn:
+                return (value * 9.806650000000272e3) * 0.01;
             default:
                 break;
         }
@@ -1276,8 +1326,8 @@ export class Pressure {
                 return this.DynesPerSquareCentimeter + ` dyn/cm²`;
             case PressureUnits.PoundsPerInchSecondSquared:
                 return this.PoundsPerInchSecondSquared + ` lbm/(in·s²)`;
-            case PressureUnits.MillimeterOfWaterColumn:
-                return this.MillimeterOfWaterColumn + ` mmH2O`;
+            case PressureUnits.MetersOfWaterColumn:
+                return this.MetersOfWaterColumn + ` mH₂O`;
             case PressureUnits.InchesOfWaterColumn:
                 return this.InchesOfWaterColumn + ` inH2O`;
             case PressureUnits.MetersOfElevation:
@@ -1324,6 +1374,10 @@ export class Pressure {
                 return this.KilopoundsForcePerSquareMil + ` `;
             case PressureUnits.KilopoundsForcePerSquareFoot:
                 return this.KilopoundsForcePerSquareFoot + ` `;
+            case PressureUnits.MillimetersOfWaterColumn:
+                return this.MillimetersOfWaterColumn + ` `;
+            case PressureUnits.CentimetersOfWaterColumn:
+                return this.CentimetersOfWaterColumn + ` `;
         default:
             break;
         }
@@ -1387,8 +1441,8 @@ export class Pressure {
                 return `dyn/cm²`;
             case PressureUnits.PoundsPerInchSecondSquared:
                 return `lbm/(in·s²)`;
-            case PressureUnits.MillimeterOfWaterColumn:
-                return `mmH2O`;
+            case PressureUnits.MetersOfWaterColumn:
+                return `mH₂O`;
             case PressureUnits.InchesOfWaterColumn:
                 return `inH2O`;
             case PressureUnits.MetersOfElevation:
@@ -1434,6 +1488,10 @@ export class Pressure {
             case PressureUnits.KilopoundsForcePerSquareMil:
                 return ``;
             case PressureUnits.KilopoundsForcePerSquareFoot:
+                return ``;
+            case PressureUnits.MillimetersOfWaterColumn:
+                return ``;
+            case PressureUnits.CentimetersOfWaterColumn:
                 return ``;
         default:
             break;
