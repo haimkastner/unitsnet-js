@@ -85,6 +85,8 @@ export enum VolumeFlowUnits {
     /** */
     KilolitersPerSecond,
     /** */
+    MegalitersPerSecond,
+    /** */
     NanolitersPerMinute,
     /** */
     MicrolitersPerMinute,
@@ -97,6 +99,8 @@ export enum VolumeFlowUnits {
     /** */
     KilolitersPerMinute,
     /** */
+    MegalitersPerMinute,
+    /** */
     NanolitersPerHour,
     /** */
     MicrolitersPerHour,
@@ -108,6 +112,8 @@ export enum VolumeFlowUnits {
     DecilitersPerHour,
     /** */
     KilolitersPerHour,
+    /** */
+    MegalitersPerHour,
     /** */
     NanolitersPerDay,
     /** */
@@ -171,18 +177,21 @@ export class VolumeFlow {
     private centiliterspersecondLazy: number | null = null;
     private deciliterspersecondLazy: number | null = null;
     private kiloliterspersecondLazy: number | null = null;
+    private megaliterspersecondLazy: number | null = null;
     private nanolitersperminuteLazy: number | null = null;
     private microlitersperminuteLazy: number | null = null;
     private millilitersperminuteLazy: number | null = null;
     private centilitersperminuteLazy: number | null = null;
     private decilitersperminuteLazy: number | null = null;
     private kilolitersperminuteLazy: number | null = null;
+    private megalitersperminuteLazy: number | null = null;
     private nanolitersperhourLazy: number | null = null;
     private microlitersperhourLazy: number | null = null;
     private millilitersperhourLazy: number | null = null;
     private centilitersperhourLazy: number | null = null;
     private decilitersperhourLazy: number | null = null;
     private kilolitersperhourLazy: number | null = null;
+    private megalitersperhourLazy: number | null = null;
     private nanolitersperdayLazy: number | null = null;
     private microlitersperdayLazy: number | null = null;
     private millilitersperdayLazy: number | null = null;
@@ -549,6 +558,14 @@ export class VolumeFlow {
     }
 
     /** */
+    public get MegalitersPerSecond(): number {
+        if(this.megaliterspersecondLazy !== null){
+            return this.megaliterspersecondLazy;
+        }
+        return this.megaliterspersecondLazy = this.convertFromBase(VolumeFlowUnits.MegalitersPerSecond);
+    }
+
+    /** */
     public get NanolitersPerMinute(): number {
         if(this.nanolitersperminuteLazy !== null){
             return this.nanolitersperminuteLazy;
@@ -597,6 +614,14 @@ export class VolumeFlow {
     }
 
     /** */
+    public get MegalitersPerMinute(): number {
+        if(this.megalitersperminuteLazy !== null){
+            return this.megalitersperminuteLazy;
+        }
+        return this.megalitersperminuteLazy = this.convertFromBase(VolumeFlowUnits.MegalitersPerMinute);
+    }
+
+    /** */
     public get NanolitersPerHour(): number {
         if(this.nanolitersperhourLazy !== null){
             return this.nanolitersperhourLazy;
@@ -642,6 +667,14 @@ export class VolumeFlow {
             return this.kilolitersperhourLazy;
         }
         return this.kilolitersperhourLazy = this.convertFromBase(VolumeFlowUnits.KilolitersPerHour);
+    }
+
+    /** */
+    public get MegalitersPerHour(): number {
+        if(this.megalitersperhourLazy !== null){
+            return this.megalitersperhourLazy;
+        }
+        return this.megalitersperhourLazy = this.convertFromBase(VolumeFlowUnits.MegalitersPerHour);
     }
 
     /** */
@@ -1129,6 +1162,16 @@ export class VolumeFlow {
     }
 
     /**
+     * Create a new VolumeFlow instance from a MegalitersPerSecond
+     *
+     * @param value The unit as MegalitersPerSecond to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromMegalitersPerSecond(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.MegalitersPerSecond);
+    }
+
+    /**
      * Create a new VolumeFlow instance from a NanolitersPerMinute
      *
      * @param value The unit as NanolitersPerMinute to create a new VolumeFlow from.
@@ -1189,6 +1232,16 @@ export class VolumeFlow {
     }
 
     /**
+     * Create a new VolumeFlow instance from a MegalitersPerMinute
+     *
+     * @param value The unit as MegalitersPerMinute to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromMegalitersPerMinute(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.MegalitersPerMinute);
+    }
+
+    /**
      * Create a new VolumeFlow instance from a NanolitersPerHour
      *
      * @param value The unit as NanolitersPerHour to create a new VolumeFlow from.
@@ -1246,6 +1299,16 @@ export class VolumeFlow {
      */
     public static FromKilolitersPerHour(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.KilolitersPerHour);
+    }
+
+    /**
+     * Create a new VolumeFlow instance from a MegalitersPerHour
+     *
+     * @param value The unit as MegalitersPerHour to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromMegalitersPerHour(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.MegalitersPerHour);
     }
 
     /**
@@ -1415,6 +1478,8 @@ export class VolumeFlow {
                 return (this.value * 1000) / 0.1;
             case VolumeFlowUnits.KilolitersPerSecond:
                 return (this.value * 1000) / 1000;
+            case VolumeFlowUnits.MegalitersPerSecond:
+                return (this.value * 1000) / 1000000;
             case VolumeFlowUnits.NanolitersPerMinute:
                 return (this.value * 60000.00000) / 1e-9;
             case VolumeFlowUnits.MicrolitersPerMinute:
@@ -1427,6 +1492,8 @@ export class VolumeFlow {
                 return (this.value * 60000.00000) / 0.1;
             case VolumeFlowUnits.KilolitersPerMinute:
                 return (this.value * 60000.00000) / 1000;
+            case VolumeFlowUnits.MegalitersPerMinute:
+                return (this.value * 60000.00000) / 1000000;
             case VolumeFlowUnits.NanolitersPerHour:
                 return (this.value * 3600000.000) / 1e-9;
             case VolumeFlowUnits.MicrolitersPerHour:
@@ -1439,6 +1506,8 @@ export class VolumeFlow {
                 return (this.value * 3600000.000) / 0.1;
             case VolumeFlowUnits.KilolitersPerHour:
                 return (this.value * 3600000.000) / 1000;
+            case VolumeFlowUnits.MegalitersPerHour:
+                return (this.value * 3600000.000) / 1000000;
             case VolumeFlowUnits.NanolitersPerDay:
                 return (this.value * 86400000) / 1e-9;
             case VolumeFlowUnits.MicrolitersPerDay:
@@ -1548,6 +1617,8 @@ export class VolumeFlow {
                 return (value / 1000) * 0.1;
             case VolumeFlowUnits.KilolitersPerSecond:
                 return (value / 1000) * 1000;
+            case VolumeFlowUnits.MegalitersPerSecond:
+                return (value / 1000) * 1000000;
             case VolumeFlowUnits.NanolitersPerMinute:
                 return (value / 60000.00000) * 1e-9;
             case VolumeFlowUnits.MicrolitersPerMinute:
@@ -1560,6 +1631,8 @@ export class VolumeFlow {
                 return (value / 60000.00000) * 0.1;
             case VolumeFlowUnits.KilolitersPerMinute:
                 return (value / 60000.00000) * 1000;
+            case VolumeFlowUnits.MegalitersPerMinute:
+                return (value / 60000.00000) * 1000000;
             case VolumeFlowUnits.NanolitersPerHour:
                 return (value / 3600000.000) * 1e-9;
             case VolumeFlowUnits.MicrolitersPerHour:
@@ -1572,6 +1645,8 @@ export class VolumeFlow {
                 return (value / 3600000.000) * 0.1;
             case VolumeFlowUnits.KilolitersPerHour:
                 return (value / 3600000.000) * 1000;
+            case VolumeFlowUnits.MegalitersPerHour:
+                return (value / 3600000.000) * 1000000;
             case VolumeFlowUnits.NanolitersPerDay:
                 return (value / 86400000) * 1e-9;
             case VolumeFlowUnits.MicrolitersPerDay:
@@ -1689,6 +1764,8 @@ export class VolumeFlow {
                 return this.DecilitersPerSecond + ` `;
             case VolumeFlowUnits.KilolitersPerSecond:
                 return this.KilolitersPerSecond + ` `;
+            case VolumeFlowUnits.MegalitersPerSecond:
+                return this.MegalitersPerSecond + ` `;
             case VolumeFlowUnits.NanolitersPerMinute:
                 return this.NanolitersPerMinute + ` `;
             case VolumeFlowUnits.MicrolitersPerMinute:
@@ -1701,6 +1778,8 @@ export class VolumeFlow {
                 return this.DecilitersPerMinute + ` `;
             case VolumeFlowUnits.KilolitersPerMinute:
                 return this.KilolitersPerMinute + ` `;
+            case VolumeFlowUnits.MegalitersPerMinute:
+                return this.MegalitersPerMinute + ` `;
             case VolumeFlowUnits.NanolitersPerHour:
                 return this.NanolitersPerHour + ` `;
             case VolumeFlowUnits.MicrolitersPerHour:
@@ -1713,6 +1792,8 @@ export class VolumeFlow {
                 return this.DecilitersPerHour + ` `;
             case VolumeFlowUnits.KilolitersPerHour:
                 return this.KilolitersPerHour + ` `;
+            case VolumeFlowUnits.MegalitersPerHour:
+                return this.MegalitersPerHour + ` `;
             case VolumeFlowUnits.NanolitersPerDay:
                 return this.NanolitersPerDay + ` `;
             case VolumeFlowUnits.MicrolitersPerDay:
@@ -1830,6 +1911,8 @@ export class VolumeFlow {
                 return ``;
             case VolumeFlowUnits.KilolitersPerSecond:
                 return ``;
+            case VolumeFlowUnits.MegalitersPerSecond:
+                return ``;
             case VolumeFlowUnits.NanolitersPerMinute:
                 return ``;
             case VolumeFlowUnits.MicrolitersPerMinute:
@@ -1842,6 +1925,8 @@ export class VolumeFlow {
                 return ``;
             case VolumeFlowUnits.KilolitersPerMinute:
                 return ``;
+            case VolumeFlowUnits.MegalitersPerMinute:
+                return ``;
             case VolumeFlowUnits.NanolitersPerHour:
                 return ``;
             case VolumeFlowUnits.MicrolitersPerHour:
@@ -1853,6 +1938,8 @@ export class VolumeFlow {
             case VolumeFlowUnits.DecilitersPerHour:
                 return ``;
             case VolumeFlowUnits.KilolitersPerHour:
+                return ``;
+            case VolumeFlowUnits.MegalitersPerHour:
                 return ``;
             case VolumeFlowUnits.NanolitersPerDay:
                 return ``;
