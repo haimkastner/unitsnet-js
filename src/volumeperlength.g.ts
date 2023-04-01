@@ -13,7 +13,11 @@ export enum VolumePerLengthUnits {
     /** */
     CubicYardsPerFoot,
     /** */
-    CubicYardsPerUsSurveyFoot
+    CubicYardsPerUsSurveyFoot,
+    /** */
+    UsGallonsPerMile,
+    /** */
+    ImperialGallonsPerMile
 }
 
 /** Volume, typically of fluid, that a container can hold within a unit of length. */
@@ -26,6 +30,8 @@ export class VolumePerLength {
     private oilbarrelsperfootLazy: number | null = null;
     private cubicyardsperfootLazy: number | null = null;
     private cubicyardsperussurveyfootLazy: number | null = null;
+    private usgallonspermileLazy: number | null = null;
+    private imperialgallonspermileLazy: number | null = null;
 
     /**
      * Create a new VolumePerLength.
@@ -103,6 +109,22 @@ export class VolumePerLength {
         return this.cubicyardsperussurveyfootLazy = this.convertFromBase(VolumePerLengthUnits.CubicYardsPerUsSurveyFoot);
     }
 
+    /** */
+    public get UsGallonsPerMile(): number {
+        if(this.usgallonspermileLazy !== null){
+            return this.usgallonspermileLazy;
+        }
+        return this.usgallonspermileLazy = this.convertFromBase(VolumePerLengthUnits.UsGallonsPerMile);
+    }
+
+    /** */
+    public get ImperialGallonsPerMile(): number {
+        if(this.imperialgallonspermileLazy !== null){
+            return this.imperialgallonspermileLazy;
+        }
+        return this.imperialgallonspermileLazy = this.convertFromBase(VolumePerLengthUnits.ImperialGallonsPerMile);
+    }
+
     /**
      * Create a new VolumePerLength instance from a CubicMetersPerMeter
      *
@@ -173,6 +195,26 @@ export class VolumePerLength {
         return new VolumePerLength(value, VolumePerLengthUnits.CubicYardsPerUsSurveyFoot);
     }
 
+    /**
+     * Create a new VolumePerLength instance from a UsGallonsPerMile
+     *
+     * @param value The unit as UsGallonsPerMile to create a new VolumePerLength from.
+     * @returns The new VolumePerLength instance.
+     */
+    public static FromUsGallonsPerMile(value: number): VolumePerLength {
+        return new VolumePerLength(value, VolumePerLengthUnits.UsGallonsPerMile);
+    }
+
+    /**
+     * Create a new VolumePerLength instance from a ImperialGallonsPerMile
+     *
+     * @param value The unit as ImperialGallonsPerMile to create a new VolumePerLength from.
+     * @returns The new VolumePerLength instance.
+     */
+    public static FromImperialGallonsPerMile(value: number): VolumePerLength {
+        return new VolumePerLength(value, VolumePerLengthUnits.ImperialGallonsPerMile);
+    }
+
     private convertFromBase(toUnit: VolumePerLengthUnits): number {
         switch (toUnit) {
                 
@@ -190,6 +232,10 @@ export class VolumePerLength {
                 return this.value / 2.50838208;
             case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
                 return this.value / 2.50837706323584;
+            case VolumePerLengthUnits.UsGallonsPerMile:
+                return this.value * (1000 * 1609.344 / 3.785411784);
+            case VolumePerLengthUnits.ImperialGallonsPerMile:
+                return this.value * (1000 * 1609.344 / 4.54609);
             default:
                 break;
         }
@@ -213,6 +259,10 @@ export class VolumePerLength {
                 return value * 2.50838208;
             case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
                 return value * 2.50837706323584;
+            case VolumePerLengthUnits.UsGallonsPerMile:
+                return value / (1000 * 1609.344 / 3.785411784);
+            case VolumePerLengthUnits.ImperialGallonsPerMile:
+                return value / (1000 * 1609.344 / 4.54609);
             default:
                 break;
         }
@@ -244,6 +294,10 @@ export class VolumePerLength {
                 return this.CubicYardsPerFoot + ` yd³/ft`;
             case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
                 return this.CubicYardsPerUsSurveyFoot + ` yd³/ftUS`;
+            case VolumePerLengthUnits.UsGallonsPerMile:
+                return this.UsGallonsPerMile + ` gal (U.S.)/mi`;
+            case VolumePerLengthUnits.ImperialGallonsPerMile:
+                return this.ImperialGallonsPerMile + ` gal (imp.)/mi`;
         default:
             break;
         }
@@ -275,6 +329,10 @@ export class VolumePerLength {
                 return `yd³/ft`;
             case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
                 return `yd³/ftUS`;
+            case VolumePerLengthUnits.UsGallonsPerMile:
+                return `gal (U.S.)/mi`;
+            case VolumePerLengthUnits.ImperialGallonsPerMile:
+                return `gal (imp.)/mi`;
         default:
             break;
         }

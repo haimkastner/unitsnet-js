@@ -73,6 +73,8 @@ export enum VolumeFlowUnits {
     /** */
     CubicCentimetersPerMinute,
     /** */
+    MegausGallonsPerDay,
+    /** */
     NanolitersPerSecond,
     /** */
     MicrolitersPerSecond,
@@ -129,6 +131,8 @@ export enum VolumeFlowUnits {
     /** */
     MegalitersPerDay,
     /** */
+    MegaukGallonsPerDay,
+    /** */
     MegaukGallonsPerSecond
 }
 
@@ -171,6 +175,7 @@ export class VolumeFlow {
     private acrefeetperhourLazy: number | null = null;
     private acrefeetperdayLazy: number | null = null;
     private cubiccentimetersperminuteLazy: number | null = null;
+    private megausgallonsperdayLazy: number | null = null;
     private nanoliterspersecondLazy: number | null = null;
     private microliterspersecondLazy: number | null = null;
     private milliliterspersecondLazy: number | null = null;
@@ -199,6 +204,7 @@ export class VolumeFlow {
     private decilitersperdayLazy: number | null = null;
     private kilolitersperdayLazy: number | null = null;
     private megalitersperdayLazy: number | null = null;
+    private megaukgallonsperdayLazy: number | null = null;
     private megaukgallonspersecondLazy: number | null = null;
 
     /**
@@ -510,6 +516,14 @@ export class VolumeFlow {
     }
 
     /** */
+    public get MegausGallonsPerDay(): number {
+        if(this.megausgallonsperdayLazy !== null){
+            return this.megausgallonsperdayLazy;
+        }
+        return this.megausgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.MegausGallonsPerDay);
+    }
+
+    /** */
     public get NanolitersPerSecond(): number {
         if(this.nanoliterspersecondLazy !== null){
             return this.nanoliterspersecondLazy;
@@ -731,6 +745,14 @@ export class VolumeFlow {
             return this.megalitersperdayLazy;
         }
         return this.megalitersperdayLazy = this.convertFromBase(VolumeFlowUnits.MegalitersPerDay);
+    }
+
+    /** */
+    public get MegaukGallonsPerDay(): number {
+        if(this.megaukgallonsperdayLazy !== null){
+            return this.megaukgallonsperdayLazy;
+        }
+        return this.megaukgallonsperdayLazy = this.convertFromBase(VolumeFlowUnits.MegaukGallonsPerDay);
     }
 
     /** */
@@ -1102,6 +1124,16 @@ export class VolumeFlow {
     }
 
     /**
+     * Create a new VolumeFlow instance from a MegausGallonsPerDay
+     *
+     * @param value The unit as MegausGallonsPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromMegausGallonsPerDay(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.MegausGallonsPerDay);
+    }
+
+    /**
      * Create a new VolumeFlow instance from a NanolitersPerSecond
      *
      * @param value The unit as NanolitersPerSecond to create a new VolumeFlow from.
@@ -1382,6 +1414,16 @@ export class VolumeFlow {
     }
 
     /**
+     * Create a new VolumeFlow instance from a MegaukGallonsPerDay
+     *
+     * @param value The unit as MegaukGallonsPerDay to create a new VolumeFlow from.
+     * @returns The new VolumeFlow instance.
+     */
+    public static FromMegaukGallonsPerDay(value: number): VolumeFlow {
+        return new VolumeFlow(value, VolumeFlowUnits.MegaukGallonsPerDay);
+    }
+
+    /**
      * Create a new VolumeFlow instance from a MegaukGallonsPerSecond
      *
      * @param value The unit as MegaukGallonsPerSecond to create a new VolumeFlow from.
@@ -1466,6 +1508,8 @@ export class VolumeFlow {
                 return this.value * 70.0457;
             case VolumeFlowUnits.CubicCentimetersPerMinute:
                 return this.value / 1.6666666666667e-8;
+            case VolumeFlowUnits.MegausGallonsPerDay:
+                return (this.value * 22824465.227) / 1000000;
             case VolumeFlowUnits.NanolitersPerSecond:
                 return (this.value * 1000) / 1e-9;
             case VolumeFlowUnits.MicrolitersPerSecond:
@@ -1522,6 +1566,8 @@ export class VolumeFlow {
                 return (this.value * 86400000) / 1000;
             case VolumeFlowUnits.MegalitersPerDay:
                 return (this.value * 86400000) / 1000000;
+            case VolumeFlowUnits.MegaukGallonsPerDay:
+                return (this.value * 19005304) / 1000000;
             case VolumeFlowUnits.MegaukGallonsPerSecond:
                 return (this.value * 219.969) / 1000000;
             default:
@@ -1605,6 +1651,8 @@ export class VolumeFlow {
                 return value / 70.0457;
             case VolumeFlowUnits.CubicCentimetersPerMinute:
                 return value * 1.6666666666667e-8;
+            case VolumeFlowUnits.MegausGallonsPerDay:
+                return (value / 22824465.227) * 1000000;
             case VolumeFlowUnits.NanolitersPerSecond:
                 return (value / 1000) * 1e-9;
             case VolumeFlowUnits.MicrolitersPerSecond:
@@ -1661,6 +1709,8 @@ export class VolumeFlow {
                 return (value / 86400000) * 1000;
             case VolumeFlowUnits.MegalitersPerDay:
                 return (value / 86400000) * 1000000;
+            case VolumeFlowUnits.MegaukGallonsPerDay:
+                return (value / 19005304) * 1000000;
             case VolumeFlowUnits.MegaukGallonsPerSecond:
                 return (value / 219.969) * 1000000;
             default:
@@ -1752,6 +1802,8 @@ export class VolumeFlow {
                 return this.AcreFeetPerDay + ` af/d`;
             case VolumeFlowUnits.CubicCentimetersPerMinute:
                 return this.CubicCentimetersPerMinute + ` cm³/min`;
+            case VolumeFlowUnits.MegausGallonsPerDay:
+                return this.MegausGallonsPerDay + ` `;
             case VolumeFlowUnits.NanolitersPerSecond:
                 return this.NanolitersPerSecond + ` `;
             case VolumeFlowUnits.MicrolitersPerSecond:
@@ -1808,6 +1860,8 @@ export class VolumeFlow {
                 return this.KilolitersPerDay + ` `;
             case VolumeFlowUnits.MegalitersPerDay:
                 return this.MegalitersPerDay + ` `;
+            case VolumeFlowUnits.MegaukGallonsPerDay:
+                return this.MegaukGallonsPerDay + ` `;
             case VolumeFlowUnits.MegaukGallonsPerSecond:
                 return this.MegaukGallonsPerSecond + ` `;
         default:
@@ -1899,6 +1953,8 @@ export class VolumeFlow {
                 return `af/d`;
             case VolumeFlowUnits.CubicCentimetersPerMinute:
                 return `cm³/min`;
+            case VolumeFlowUnits.MegausGallonsPerDay:
+                return ``;
             case VolumeFlowUnits.NanolitersPerSecond:
                 return ``;
             case VolumeFlowUnits.MicrolitersPerSecond:
@@ -1954,6 +2010,8 @@ export class VolumeFlow {
             case VolumeFlowUnits.KilolitersPerDay:
                 return ``;
             case VolumeFlowUnits.MegalitersPerDay:
+                return ``;
+            case VolumeFlowUnits.MegaukGallonsPerDay:
                 return ``;
             case VolumeFlowUnits.MegaukGallonsPerSecond:
                 return ``;
