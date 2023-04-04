@@ -98,5 +98,5 @@ jobs:
           curl --fail --location --request POST 'https://api.github.com/repos/haimkastner/unitsnet-py/actions/workflows/build.yml/dispatches' \
           --header 'Accept: application/vnd.github.everest-preview+json' \
           --header 'Content-Type: application/json' \
-          --header "Authorization: Basic $UNITSNET_PYTHON_WORKFLOW_TOKEN" \
+          --header "Authorization: token $UNITSNET_PYTHON_WORKFLOW_TOKEN" \
           --data-raw '{"ref": "main" }'
