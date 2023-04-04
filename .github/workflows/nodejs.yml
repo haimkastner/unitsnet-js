@@ -89,3 +89,14 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit_message: Update gen docs for version ${{ steps.update_version.outputs.VERSION }} [skip-ci]
+
+      - name: Call re-run generate & publish Python package # Trigger Python package re-generate and publish to PyPi (https://github.com/haimkastner/unitsnet-py)
+        env:
+          UNITSNET_PYTHON_WORKFLOW_TOKEN: ${{ secrets.UNITSNET_PYTHON_WORKFLOW_TOKEN }}
+        run: |
+          # Trigger re-generate Python units once a new release created 
+          curl --fail --location --request POST 'https://api.github.com/repos/haimkastner/unitsnet-py/actions/workflows/build.yml/dispatches' \
+          --header 'Accept: application/vnd.github.everest-preview+json' \
+          --header 'Content-Type: application/json' \
+          --header "Authorization: Basic $UNITSNET_PYTHON_WORKFLOW_TOKEN" \
+          --data-raw '{"ref": "main" }'
