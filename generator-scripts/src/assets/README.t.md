@@ -1,10 +1,20 @@
 # unitsnet-js
 
-The unitsnet-js package is a better way to hold unit variables and/or easily convert to the destination unit, it supports more than 100 units types with almost all possibles units kinds, also it supports pretty-printing, comparing & arithmetics methods, all of it in a very easy to use and understand API.
+The unitsnet-js package provides an efficient way to store unit variables and perform easy conversions to different units when it required. 
 
-The library is based on the great [Units.NET](https://github.com/angularsen/UnitsNet) project, and used their [definitions sources](https://github.com/angularsen/UnitsNet/tree/master/Common/UnitDefinitions) to generate the JS/TS unit classes. 
+It offers support for more than 100 unit types across various unit categories, including pretty-printing, comparison, and arithmetic methods. 
+
+The API is designed to be user-friendly and straightforward to use.
+
+The library is built on top of the [Units.NET](https://github.com/angularsen/UnitsNet) project and leverages their [definitions sources](https://github.com/angularsen/UnitsNet/tree/master/Common/UnitDefinitions) to generate the Python unit classes.
 
 [![Build & Test Status](https://github.com/haimkastner/unitsnet-js/workflows/unitsnet-js/badge.svg?branch=master)](https://github.com/haimkastner/unitsnet-js/actions)
+
+###### The unitsnet-js package does not require any external dependencies or packages to function.
+
+Package is available on MPM at https://www.npmjs.com/package/unitsnet-js
+
+> A similar package for Python is available in the PyPI registry at https://pypi.org/project/unitsnet-py/
 
 ## Install via NPM:
 
@@ -14,7 +24,8 @@ npm install unitsnet-js
 
 ```
 
-## Used example in TypeScript
+## Example Usage in TypeScript
+
 ```typescript
 import { Angle, AngleUnits, Length, LengthUnits } from 'unitsnet-js';
 
@@ -66,7 +77,7 @@ console.log(results6.toString(LengthUnits.Meters)) // 1000 m
 
 ### Supported units
 
-Currently, the package supports the following units:
+The package provides support for the following units:
 
 ~SUPPORTED_UNITS~
 

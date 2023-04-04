@@ -45,7 +45,7 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
             continue;
         }
 
-        // Build the prefix formula based on the original unit faormula.
+        // Build the prefix formula based on the original unit formula.
         let fromUnitPrefixToBaseFormula = `(${unit.FromUnitToBaseFunc}) * ${prefixesFactor[prefix]}`;
         let fromBaseToUnitPrefixFormula = `(${unit.FromBaseToUnitFunc}) / ${prefixesFactor[prefix]}`;
 
