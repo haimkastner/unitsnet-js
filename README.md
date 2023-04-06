@@ -14,7 +14,9 @@ The library is built on top of the [Units.NET](https://github.com/angularsen/Uni
 
 Package is available on MPM at https://www.npmjs.com/package/unitsnet-js
 
-> A similar package for Python is available in the PyPI registry at https://pypi.org/project/unitsnet-py/
+> The package for C# is available in the Nuget registry at https://www.nuget.org/packages/UnitsNet/
+> And a similar package for Python is available in the PyPI registry at https://pypi.org/project/unitsnet-py/
+
 
 ## Install via NPM:
 
