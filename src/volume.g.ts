@@ -24,11 +24,11 @@ export enum VolumeUnits {
     CubicFeet,
     /** */
     CubicInches,
-    /** */
+    /** The British imperial gallon (frequently called simply "gallon") is defined as exactly 4.54609 litres. */
     ImperialGallons,
     /** */
     ImperialOunces,
-    /** */
+    /** The US liquid gallon (frequently called simply "gallon") is legally defined as 231 cubic inches, which is exactly 3.785411784 litres. */
     UsGallons,
     /** */
     UsOunces,
@@ -281,7 +281,7 @@ export class Volume {
         return this.cubicinchesLazy = this.convertFromBase(VolumeUnits.CubicInches);
     }
 
-    /** */
+    /** The British imperial gallon (frequently called simply "gallon") is defined as exactly 4.54609 litres. */
     public get ImperialGallons(): number {
         if(this.imperialgallonsLazy !== null){
             return this.imperialgallonsLazy;
@@ -297,7 +297,7 @@ export class Volume {
         return this.imperialouncesLazy = this.convertFromBase(VolumeUnits.ImperialOunces);
     }
 
-    /** */
+    /** The US liquid gallon (frequently called simply "gallon") is legally defined as 231 cubic inches, which is exactly 3.785411784 litres. */
     public get UsGallons(): number {
         if(this.usgallonsLazy !== null){
             return this.usgallonsLazy;
@@ -731,7 +731,7 @@ export class Volume {
 
     /**
      * Create a new Volume instance from a ImperialGallons
-     *
+     * The British imperial gallon (frequently called simply "gallon") is defined as exactly 4.54609 litres.
      * @param value The unit as ImperialGallons to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -751,7 +751,7 @@ export class Volume {
 
     /**
      * Create a new Volume instance from a UsGallons
-     *
+     * The US liquid gallon (frequently called simply "gallon") is legally defined as 231 cubic inches, which is exactly 3.785411784 litres.
      * @param value The unit as UsGallons to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -1167,11 +1167,11 @@ export class Volume {
             case VolumeUnits.CubicInches:
                 return this.value / (1.6387 * 1e-5);
             case VolumeUnits.ImperialGallons:
-                return this.value / 0.00454609000000181429905810072407;
+                return this.value / 0.00454609;
             case VolumeUnits.ImperialOunces:
                 return this.value / 2.8413062499962901241875439064617e-5;
             case VolumeUnits.UsGallons:
-                return this.value / 0.00378541;
+                return this.value / 0.003785411784;
             case VolumeUnits.UsOunces:
                 return this.value / 2.957352956253760505068307980135e-5;
             case VolumeUnits.UsTablespoons:
@@ -1235,19 +1235,19 @@ export class Volume {
             case VolumeUnits.MegacubicFeet:
                 return (this.value / 2.8316846592e-2) / 1000000;
             case VolumeUnits.KiloimperialGallons:
-                return (this.value / 0.00454609000000181429905810072407) / 1000;
+                return (this.value / 0.00454609) / 1000;
             case VolumeUnits.MegaimperialGallons:
-                return (this.value / 0.00454609000000181429905810072407) / 1000000;
+                return (this.value / 0.00454609) / 1000000;
             case VolumeUnits.DecausGallons:
-                return (this.value / 0.00378541) / 10;
+                return (this.value / 0.003785411784) / 10;
             case VolumeUnits.DeciusGallons:
-                return (this.value / 0.00378541) / 0.1;
+                return (this.value / 0.003785411784) / 0.1;
             case VolumeUnits.HectousGallons:
-                return (this.value / 0.00378541) / 100;
+                return (this.value / 0.003785411784) / 100;
             case VolumeUnits.KilousGallons:
-                return (this.value / 0.00378541) / 1000;
+                return (this.value / 0.003785411784) / 1000;
             case VolumeUnits.MegausGallons:
-                return (this.value / 0.00378541) / 1000000;
+                return (this.value / 0.003785411784) / 1000000;
             default:
                 break;
         }
@@ -1282,11 +1282,11 @@ export class Volume {
             case VolumeUnits.CubicInches:
                 return value * 1.6387 * 1e-5;
             case VolumeUnits.ImperialGallons:
-                return value * 0.00454609000000181429905810072407;
+                return value * 0.00454609;
             case VolumeUnits.ImperialOunces:
                 return value * 2.8413062499962901241875439064617e-5;
             case VolumeUnits.UsGallons:
-                return value * 0.00378541;
+                return value * 0.003785411784;
             case VolumeUnits.UsOunces:
                 return value * 2.957352956253760505068307980135e-5;
             case VolumeUnits.UsTablespoons:
@@ -1350,19 +1350,19 @@ export class Volume {
             case VolumeUnits.MegacubicFeet:
                 return (value * 2.8316846592e-2) * 1000000;
             case VolumeUnits.KiloimperialGallons:
-                return (value * 0.00454609000000181429905810072407) * 1000;
+                return (value * 0.00454609) * 1000;
             case VolumeUnits.MegaimperialGallons:
-                return (value * 0.00454609000000181429905810072407) * 1000000;
+                return (value * 0.00454609) * 1000000;
             case VolumeUnits.DecausGallons:
-                return (value * 0.00378541) * 10;
+                return (value * 0.003785411784) * 10;
             case VolumeUnits.DeciusGallons:
-                return (value * 0.00378541) * 0.1;
+                return (value * 0.003785411784) * 0.1;
             case VolumeUnits.HectousGallons:
-                return (value * 0.00378541) * 100;
+                return (value * 0.003785411784) * 100;
             case VolumeUnits.KilousGallons:
-                return (value * 0.00378541) * 1000;
+                return (value * 0.003785411784) * 1000;
             case VolumeUnits.MegausGallons:
-                return (value * 0.00378541) * 1000000;
+                return (value * 0.003785411784) * 1000000;
             default:
                 break;
         }
