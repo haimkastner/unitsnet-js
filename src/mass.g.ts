@@ -27,6 +27,10 @@ export enum MassUnits {
     /** Earth mass is a ratio unit to the mass of planet Earth. */
     EarthMasses,
     /** */
+    Femtograms,
+    /** */
+    Picograms,
+    /** */
     Nanograms,
     /** */
     Micrograms,
@@ -68,6 +72,8 @@ export class Mass {
     private grainsLazy: number | null = null;
     private solarmassesLazy: number | null = null;
     private earthmassesLazy: number | null = null;
+    private femtogramsLazy: number | null = null;
+    private picogramsLazy: number | null = null;
     private nanogramsLazy: number | null = null;
     private microgramsLazy: number | null = null;
     private milligramsLazy: number | null = null;
@@ -203,6 +209,22 @@ export class Mass {
             return this.earthmassesLazy;
         }
         return this.earthmassesLazy = this.convertFromBase(MassUnits.EarthMasses);
+    }
+
+    /** */
+    public get Femtograms(): number {
+        if(this.femtogramsLazy !== null){
+            return this.femtogramsLazy;
+        }
+        return this.femtogramsLazy = this.convertFromBase(MassUnits.Femtograms);
+    }
+
+    /** */
+    public get Picograms(): number {
+        if(this.picogramsLazy !== null){
+            return this.picogramsLazy;
+        }
+        return this.picogramsLazy = this.convertFromBase(MassUnits.Picograms);
     }
 
     /** */
@@ -432,6 +454,26 @@ export class Mass {
     }
 
     /**
+     * Create a new Mass instance from a Femtograms
+     *
+     * @param value The unit as Femtograms to create a new Mass from.
+     * @returns The new Mass instance.
+     */
+    public static FromFemtograms(value: number): Mass {
+        return new Mass(value, MassUnits.Femtograms);
+    }
+
+    /**
+     * Create a new Mass instance from a Picograms
+     *
+     * @param value The unit as Picograms to create a new Mass from.
+     * @returns The new Mass instance.
+     */
+    public static FromPicograms(value: number): Mass {
+        return new Mass(value, MassUnits.Picograms);
+    }
+
+    /**
      * Create a new Mass instance from a Nanograms
      *
      * @param value The unit as Nanograms to create a new Mass from.
@@ -580,6 +622,10 @@ export class Mass {
                 return this.value / 1.98947e30;
             case MassUnits.EarthMasses:
                 return this.value / 5.9722E+24;
+            case MassUnits.Femtograms:
+                return (this.value * 1e3) / 1e-15;
+            case MassUnits.Picograms:
+                return (this.value * 1e3) / 1e-12;
             case MassUnits.Nanograms:
                 return (this.value * 1e3) / 1e-9;
             case MassUnits.Micrograms:
@@ -639,6 +685,10 @@ export class Mass {
                 return value * 1.98947e30;
             case MassUnits.EarthMasses:
                 return value * 5.9722E+24;
+            case MassUnits.Femtograms:
+                return (value / 1e3) * 1e-15;
+            case MassUnits.Picograms:
+                return (value / 1e3) * 1e-12;
             case MassUnits.Nanograms:
                 return (value / 1e3) * 1e-9;
             case MassUnits.Micrograms:
@@ -706,6 +756,10 @@ export class Mass {
                 return this.SolarMasses + ` M☉`;
             case MassUnits.EarthMasses:
                 return this.EarthMasses + ` em`;
+            case MassUnits.Femtograms:
+                return this.Femtograms + ` `;
+            case MassUnits.Picograms:
+                return this.Picograms + ` `;
             case MassUnits.Nanograms:
                 return this.Nanograms + ` `;
             case MassUnits.Micrograms:
@@ -773,6 +827,10 @@ export class Mass {
                 return `M☉`;
             case MassUnits.EarthMasses:
                 return `em`;
+            case MassUnits.Femtograms:
+                return ``;
+            case MassUnits.Picograms:
+                return ``;
             case MassUnits.Nanograms:
                 return ``;
             case MassUnits.Micrograms:
