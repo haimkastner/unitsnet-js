@@ -246,7 +246,7 @@ export class ReciprocalLength {
             case ReciprocalLengthUnits.InverseMillimeters:
                 return this.value / 1e3;
             case ReciprocalLengthUnits.InverseMiles:
-                return this.value * 1609.34;
+                return this.value * 1609.344;
             case ReciprocalLengthUnits.InverseYards:
                 return this.value * 0.9144;
             case ReciprocalLengthUnits.InverseFeet:
@@ -275,7 +275,7 @@ export class ReciprocalLength {
             case ReciprocalLengthUnits.InverseMillimeters:
                 return value * 1e3;
             case ReciprocalLengthUnits.InverseMiles:
-                return value / 1609.34;
+                return value / 1609.344;
             case ReciprocalLengthUnits.InverseYards:
                 return value / 0.9144;
             case ReciprocalLengthUnits.InverseFeet:
