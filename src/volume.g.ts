@@ -57,6 +57,8 @@ export enum VolumeUnits {
     /** */
     UsQuarts,
     /** */
+    ImperialQuarts,
+    /** */
     UsPints,
     /** */
     AcreFeet,
@@ -139,6 +141,7 @@ export class Volume {
     private usbeerbarrelsLazy: number | null = null;
     private imperialbeerbarrelsLazy: number | null = null;
     private usquartsLazy: number | null = null;
+    private imperialquartsLazy: number | null = null;
     private uspintsLazy: number | null = null;
     private acrefeetLazy: number | null = null;
     private imperialpintsLazy: number | null = null;
@@ -407,6 +410,14 @@ export class Volume {
             return this.usquartsLazy;
         }
         return this.usquartsLazy = this.convertFromBase(VolumeUnits.UsQuarts);
+    }
+
+    /** */
+    public get ImperialQuarts(): number {
+        if(this.imperialquartsLazy !== null){
+            return this.imperialquartsLazy;
+        }
+        return this.imperialquartsLazy = this.convertFromBase(VolumeUnits.ImperialQuarts);
     }
 
     /** */
@@ -890,6 +901,16 @@ export class Volume {
     }
 
     /**
+     * Create a new Volume instance from a ImperialQuarts
+     *
+     * @param value The unit as ImperialQuarts to create a new Volume from.
+     * @returns The new Volume instance.
+     */
+    public static FromImperialQuarts(value: number): Volume {
+        return new Volume(value, VolumeUnits.ImperialQuarts);
+    }
+
+    /**
      * Create a new Volume instance from a UsPints
      *
      * @param value The unit as UsPints to create a new Volume from.
@@ -1198,6 +1219,8 @@ export class Volume {
                 return this.value / 0.16365924;
             case VolumeUnits.UsQuarts:
                 return this.value / 9.46352946e-4;
+            case VolumeUnits.ImperialQuarts:
+                return this.value / 1.1365225e-3;
             case VolumeUnits.UsPints:
                 return this.value / 4.73176473e-4;
             case VolumeUnits.AcreFeet:
@@ -1313,6 +1336,8 @@ export class Volume {
                 return value * 0.16365924;
             case VolumeUnits.UsQuarts:
                 return value * 9.46352946e-4;
+            case VolumeUnits.ImperialQuarts:
+                return value * 1.1365225e-3;
             case VolumeUnits.UsPints:
                 return value * 4.73176473e-4;
             case VolumeUnits.AcreFeet:
@@ -1436,6 +1461,8 @@ export class Volume {
                 return this.ImperialBeerBarrels + ` bl (imp.)`;
             case VolumeUnits.UsQuarts:
                 return this.UsQuarts + ` qt (U.S.)`;
+            case VolumeUnits.ImperialQuarts:
+                return this.ImperialQuarts + ` qt (imp.)`;
             case VolumeUnits.UsPints:
                 return this.UsPints + ` pt (U.S.)`;
             case VolumeUnits.AcreFeet:
@@ -1559,6 +1586,8 @@ export class Volume {
                 return `bl (imp.)`;
             case VolumeUnits.UsQuarts:
                 return `qt (U.S.)`;
+            case VolumeUnits.ImperialQuarts:
+                return `qt (imp.)`;
             case VolumeUnits.UsPints:
                 return `pt (U.S.)`;
             case VolumeUnits.AcreFeet:
