@@ -81,6 +81,8 @@ console.log(results6.toString(LengthUnits.Meters)) // 1000 m
 
 The package provides support for the following units:
 
+- **AbsorbedDoseOfIonizingRadiation**
+    -   *Absorbed dose is a dose quantity which is the measure of the energy deposited in matter by ionizing radiation per unit mass.*
 - **Acceleration**
     -   *Acceleration, in physics, is the rate at which the velocity of an object changes over time. An object's acceleration is the net result of any and all forces acting on the object, as described by Newton's Second Law. The SI unit for acceleration is the Meter per second squared (m/s²). Accelerations are vector quantities (they have magnitude and direction) and add according to the parallelogram law. As a vector, the calculated net force is equal to the product of the object's mass (a scalar quantity) and the acceleration.*
 - **AmountOfSubstance**

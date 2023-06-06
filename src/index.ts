@@ -1,3 +1,4 @@
+export * from "./absorbeddoseofionizingradiation.g";
 export * from "./acceleration.g";
 export * from "./amountofsubstance.g";
 export * from "./amplituderatio.g";
