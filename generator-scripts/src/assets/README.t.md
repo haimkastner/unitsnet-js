@@ -6,13 +6,13 @@ It offers support for more than 100 unit types across various unit categories, i
 
 The API is designed to be user-friendly and straightforward to use.
 
-The library is built on top of the [Units.NET](https://github.com/angularsen/UnitsNet) project and leverages their [definitions sources](https://github.com/angularsen/UnitsNet/tree/master/Common/UnitDefinitions) to generate the Python unit classes.
+The library is built on top of the [Units.NET](https://github.com/angularsen/UnitsNet) project and leverages their [definitions sources](https://github.com/angularsen/UnitsNet/tree/master/Common/UnitDefinitions) to generate the JavaScript unit classes.
 
 [![Build & Test Status](https://github.com/haimkastner/unitsnet-js/workflows/unitsnet-js/badge.svg?branch=master)](https://github.com/haimkastner/unitsnet-js/actions)
 
 ###### The unitsnet-js package does not require any external dependencies or packages to function.
 
-Package is available on MPM at https://www.npmjs.com/package/unitsnet-js
+Package is available on NPM at https://www.npmjs.com/package/unitsnet-js
 
 > The package for C# is available in the Nuget registry at https://www.nuget.org/packages/UnitsNet/
 > And a similar package for Python is available in the PyPI registry at https://pypi.org/project/unitsnet-py/
