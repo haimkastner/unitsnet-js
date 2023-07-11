@@ -13,6 +13,10 @@ export enum PressureChangeRateUnits {
     /** */
     PoundsForcePerSquareInchPerMinute,
     /** */
+    BarsPerSecond,
+    /** */
+    BarsPerMinute,
+    /** */
     KilopascalsPerSecond,
     /** */
     MegapascalsPerSecond,
@@ -27,7 +31,11 @@ export enum PressureChangeRateUnits {
     /** */
     KilopoundsForcePerSquareInchPerMinute,
     /** */
-    MegapoundsForcePerSquareInchPerMinute
+    MegapoundsForcePerSquareInchPerMinute,
+    /** */
+    MillibarsPerSecond,
+    /** */
+    MillibarsPerMinute
 }
 
 /** Pressure change rate is the ratio of the pressure change to the time during which the change occurred (value of pressure changes per unit time). */
@@ -39,6 +47,8 @@ export class PressureChangeRate {
     private atmospherespersecondLazy: number | null = null;
     private poundsforcepersquareinchpersecondLazy: number | null = null;
     private poundsforcepersquareinchperminuteLazy: number | null = null;
+    private barspersecondLazy: number | null = null;
+    private barsperminuteLazy: number | null = null;
     private kilopascalspersecondLazy: number | null = null;
     private megapascalspersecondLazy: number | null = null;
     private kilopascalsperminuteLazy: number | null = null;
@@ -47,6 +57,8 @@ export class PressureChangeRate {
     private megapoundsforcepersquareinchpersecondLazy: number | null = null;
     private kilopoundsforcepersquareinchperminuteLazy: number | null = null;
     private megapoundsforcepersquareinchperminuteLazy: number | null = null;
+    private millibarspersecondLazy: number | null = null;
+    private millibarsperminuteLazy: number | null = null;
 
     /**
      * Create a new PressureChangeRate.
@@ -117,6 +129,22 @@ export class PressureChangeRate {
     }
 
     /** */
+    public get BarsPerSecond(): number {
+        if(this.barspersecondLazy !== null){
+            return this.barspersecondLazy;
+        }
+        return this.barspersecondLazy = this.convertFromBase(PressureChangeRateUnits.BarsPerSecond);
+    }
+
+    /** */
+    public get BarsPerMinute(): number {
+        if(this.barsperminuteLazy !== null){
+            return this.barsperminuteLazy;
+        }
+        return this.barsperminuteLazy = this.convertFromBase(PressureChangeRateUnits.BarsPerMinute);
+    }
+
+    /** */
     public get KilopascalsPerSecond(): number {
         if(this.kilopascalspersecondLazy !== null){
             return this.kilopascalspersecondLazy;
@@ -180,6 +208,22 @@ export class PressureChangeRate {
         return this.megapoundsforcepersquareinchperminuteLazy = this.convertFromBase(PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute);
     }
 
+    /** */
+    public get MillibarsPerSecond(): number {
+        if(this.millibarspersecondLazy !== null){
+            return this.millibarspersecondLazy;
+        }
+        return this.millibarspersecondLazy = this.convertFromBase(PressureChangeRateUnits.MillibarsPerSecond);
+    }
+
+    /** */
+    public get MillibarsPerMinute(): number {
+        if(this.millibarsperminuteLazy !== null){
+            return this.millibarsperminuteLazy;
+        }
+        return this.millibarsperminuteLazy = this.convertFromBase(PressureChangeRateUnits.MillibarsPerMinute);
+    }
+
     /**
      * Create a new PressureChangeRate instance from a PascalsPerSecond
      *
@@ -238,6 +282,26 @@ export class PressureChangeRate {
      */
     public static FromPoundsForcePerSquareInchPerMinute(value: number): PressureChangeRate {
         return new PressureChangeRate(value, PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute);
+    }
+
+    /**
+     * Create a new PressureChangeRate instance from a BarsPerSecond
+     *
+     * @param value The unit as BarsPerSecond to create a new PressureChangeRate from.
+     * @returns The new PressureChangeRate instance.
+     */
+    public static FromBarsPerSecond(value: number): PressureChangeRate {
+        return new PressureChangeRate(value, PressureChangeRateUnits.BarsPerSecond);
+    }
+
+    /**
+     * Create a new PressureChangeRate instance from a BarsPerMinute
+     *
+     * @param value The unit as BarsPerMinute to create a new PressureChangeRate from.
+     * @returns The new PressureChangeRate instance.
+     */
+    public static FromBarsPerMinute(value: number): PressureChangeRate {
+        return new PressureChangeRate(value, PressureChangeRateUnits.BarsPerMinute);
     }
 
     /**
@@ -320,6 +384,26 @@ export class PressureChangeRate {
         return new PressureChangeRate(value, PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute);
     }
 
+    /**
+     * Create a new PressureChangeRate instance from a MillibarsPerSecond
+     *
+     * @param value The unit as MillibarsPerSecond to create a new PressureChangeRate from.
+     * @returns The new PressureChangeRate instance.
+     */
+    public static FromMillibarsPerSecond(value: number): PressureChangeRate {
+        return new PressureChangeRate(value, PressureChangeRateUnits.MillibarsPerSecond);
+    }
+
+    /**
+     * Create a new PressureChangeRate instance from a MillibarsPerMinute
+     *
+     * @param value The unit as MillibarsPerMinute to create a new PressureChangeRate from.
+     * @returns The new PressureChangeRate instance.
+     */
+    public static FromMillibarsPerMinute(value: number): PressureChangeRate {
+        return new PressureChangeRate(value, PressureChangeRateUnits.MillibarsPerMinute);
+    }
+
     private convertFromBase(toUnit: PressureChangeRateUnits): number {
         switch (toUnit) {
                 
@@ -335,6 +419,10 @@ export class PressureChangeRate {
                 return this.value / 6.894757293168361e3;
             case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute:
                 return this.value / 6.894757293168361e3 * 60;
+            case PressureChangeRateUnits.BarsPerSecond:
+                return this.value / 1e5;
+            case PressureChangeRateUnits.BarsPerMinute:
+                return this.value / 1e5 * 60;
             case PressureChangeRateUnits.KilopascalsPerSecond:
                 return (this.value) / 1000;
             case PressureChangeRateUnits.MegapascalsPerSecond:
@@ -351,6 +439,10 @@ export class PressureChangeRate {
                 return (this.value / 6.894757293168361e3 * 60) / 1000;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute:
                 return (this.value / 6.894757293168361e3 * 60) / 1000000;
+            case PressureChangeRateUnits.MillibarsPerSecond:
+                return (this.value / 1e5) / 0.001;
+            case PressureChangeRateUnits.MillibarsPerMinute:
+                return (this.value / 1e5 * 60) / 0.001;
             default:
                 break;
         }
@@ -372,6 +464,10 @@ export class PressureChangeRate {
                 return value * 6.894757293168361e3;
             case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute:
                 return value * 6.894757293168361e3 / 60;
+            case PressureChangeRateUnits.BarsPerSecond:
+                return value * 1e5;
+            case PressureChangeRateUnits.BarsPerMinute:
+                return value * 1e5 / 60;
             case PressureChangeRateUnits.KilopascalsPerSecond:
                 return (value) * 1000;
             case PressureChangeRateUnits.MegapascalsPerSecond:
@@ -388,6 +484,10 @@ export class PressureChangeRate {
                 return (value * 6.894757293168361e3 / 60) * 1000;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute:
                 return (value * 6.894757293168361e3 / 60) * 1000000;
+            case PressureChangeRateUnits.MillibarsPerSecond:
+                return (value * 1e5) * 0.001;
+            case PressureChangeRateUnits.MillibarsPerMinute:
+                return (value * 1e5 / 60) * 0.001;
             default:
                 break;
         }
@@ -417,6 +517,10 @@ export class PressureChangeRate {
                 return this.PoundsForcePerSquareInchPerSecond + ` psi/s`;
             case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute:
                 return this.PoundsForcePerSquareInchPerMinute + ` psi/min`;
+            case PressureChangeRateUnits.BarsPerSecond:
+                return this.BarsPerSecond + ` bar/s`;
+            case PressureChangeRateUnits.BarsPerMinute:
+                return this.BarsPerMinute + ` bar/min`;
             case PressureChangeRateUnits.KilopascalsPerSecond:
                 return this.KilopascalsPerSecond + ` `;
             case PressureChangeRateUnits.MegapascalsPerSecond:
@@ -433,6 +537,10 @@ export class PressureChangeRate {
                 return this.KilopoundsForcePerSquareInchPerMinute + ` `;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute:
                 return this.MegapoundsForcePerSquareInchPerMinute + ` `;
+            case PressureChangeRateUnits.MillibarsPerSecond:
+                return this.MillibarsPerSecond + ` `;
+            case PressureChangeRateUnits.MillibarsPerMinute:
+                return this.MillibarsPerMinute + ` `;
         default:
             break;
         }
@@ -462,6 +570,10 @@ export class PressureChangeRate {
                 return `psi/s`;
             case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute:
                 return `psi/min`;
+            case PressureChangeRateUnits.BarsPerSecond:
+                return `bar/s`;
+            case PressureChangeRateUnits.BarsPerMinute:
+                return `bar/min`;
             case PressureChangeRateUnits.KilopascalsPerSecond:
                 return ``;
             case PressureChangeRateUnits.MegapascalsPerSecond:
@@ -477,6 +589,10 @@ export class PressureChangeRate {
             case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute:
                 return ``;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute:
+                return ``;
+            case PressureChangeRateUnits.MillibarsPerSecond:
+                return ``;
+            case PressureChangeRateUnits.MillibarsPerMinute:
                 return ``;
         default:
             break;

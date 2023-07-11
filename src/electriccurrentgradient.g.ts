@@ -3,20 +3,29 @@ export enum ElectricCurrentGradientUnits {
     /** */
     AmperesPerSecond,
     /** */
+    AmperesPerMinute,
+    /** */
     AmperesPerMillisecond,
     /** */
     AmperesPerMicrosecond,
     /** */
-    AmperesPerNanosecond
+    AmperesPerNanosecond,
+    /** */
+    MilliamperesPerSecond,
+    /** */
+    MilliamperesPerMinute
 }
 
 /** In electromagnetism, the current gradient describes how the current changes in time. */
 export class ElectricCurrentGradient {
     private value: number;
     private amperespersecondLazy: number | null = null;
+    private amperesperminuteLazy: number | null = null;
     private amperespermillisecondLazy: number | null = null;
     private amperespermicrosecondLazy: number | null = null;
     private amperespernanosecondLazy: number | null = null;
+    private milliamperespersecondLazy: number | null = null;
+    private milliamperesperminuteLazy: number | null = null;
 
     /**
      * Create a new ElectricCurrentGradient.
@@ -47,6 +56,14 @@ export class ElectricCurrentGradient {
     }
 
     /** */
+    public get AmperesPerMinute(): number {
+        if(this.amperesperminuteLazy !== null){
+            return this.amperesperminuteLazy;
+        }
+        return this.amperesperminuteLazy = this.convertFromBase(ElectricCurrentGradientUnits.AmperesPerMinute);
+    }
+
+    /** */
     public get AmperesPerMillisecond(): number {
         if(this.amperespermillisecondLazy !== null){
             return this.amperespermillisecondLazy;
@@ -70,6 +87,22 @@ export class ElectricCurrentGradient {
         return this.amperespernanosecondLazy = this.convertFromBase(ElectricCurrentGradientUnits.AmperesPerNanosecond);
     }
 
+    /** */
+    public get MilliamperesPerSecond(): number {
+        if(this.milliamperespersecondLazy !== null){
+            return this.milliamperespersecondLazy;
+        }
+        return this.milliamperespersecondLazy = this.convertFromBase(ElectricCurrentGradientUnits.MilliamperesPerSecond);
+    }
+
+    /** */
+    public get MilliamperesPerMinute(): number {
+        if(this.milliamperesperminuteLazy !== null){
+            return this.milliamperesperminuteLazy;
+        }
+        return this.milliamperesperminuteLazy = this.convertFromBase(ElectricCurrentGradientUnits.MilliamperesPerMinute);
+    }
+
     /**
      * Create a new ElectricCurrentGradient instance from a AmperesPerSecond
      *
@@ -78,6 +111,16 @@ export class ElectricCurrentGradient {
      */
     public static FromAmperesPerSecond(value: number): ElectricCurrentGradient {
         return new ElectricCurrentGradient(value, ElectricCurrentGradientUnits.AmperesPerSecond);
+    }
+
+    /**
+     * Create a new ElectricCurrentGradient instance from a AmperesPerMinute
+     *
+     * @param value The unit as AmperesPerMinute to create a new ElectricCurrentGradient from.
+     * @returns The new ElectricCurrentGradient instance.
+     */
+    public static FromAmperesPerMinute(value: number): ElectricCurrentGradient {
+        return new ElectricCurrentGradient(value, ElectricCurrentGradientUnits.AmperesPerMinute);
     }
 
     /**
@@ -110,17 +153,43 @@ export class ElectricCurrentGradient {
         return new ElectricCurrentGradient(value, ElectricCurrentGradientUnits.AmperesPerNanosecond);
     }
 
+    /**
+     * Create a new ElectricCurrentGradient instance from a MilliamperesPerSecond
+     *
+     * @param value The unit as MilliamperesPerSecond to create a new ElectricCurrentGradient from.
+     * @returns The new ElectricCurrentGradient instance.
+     */
+    public static FromMilliamperesPerSecond(value: number): ElectricCurrentGradient {
+        return new ElectricCurrentGradient(value, ElectricCurrentGradientUnits.MilliamperesPerSecond);
+    }
+
+    /**
+     * Create a new ElectricCurrentGradient instance from a MilliamperesPerMinute
+     *
+     * @param value The unit as MilliamperesPerMinute to create a new ElectricCurrentGradient from.
+     * @returns The new ElectricCurrentGradient instance.
+     */
+    public static FromMilliamperesPerMinute(value: number): ElectricCurrentGradient {
+        return new ElectricCurrentGradient(value, ElectricCurrentGradientUnits.MilliamperesPerMinute);
+    }
+
     private convertFromBase(toUnit: ElectricCurrentGradientUnits): number {
         switch (toUnit) {
                 
             case ElectricCurrentGradientUnits.AmperesPerSecond:
                 return this.value;
+            case ElectricCurrentGradientUnits.AmperesPerMinute:
+                return this.value * 60;
             case ElectricCurrentGradientUnits.AmperesPerMillisecond:
                 return this.value / 1E3;
             case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
                 return this.value / 1E6;
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
                 return this.value / 1E9;
+            case ElectricCurrentGradientUnits.MilliamperesPerSecond:
+                return (this.value) / 0.001;
+            case ElectricCurrentGradientUnits.MilliamperesPerMinute:
+                return (this.value * 60) / 0.001;
             default:
                 break;
         }
@@ -132,12 +201,18 @@ export class ElectricCurrentGradient {
                 
             case ElectricCurrentGradientUnits.AmperesPerSecond:
                 return value;
+            case ElectricCurrentGradientUnits.AmperesPerMinute:
+                return value / 60;
             case ElectricCurrentGradientUnits.AmperesPerMillisecond:
                 return value * 1E3;
             case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
                 return value * 1E6;
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
                 return value * 1E9;
+            case ElectricCurrentGradientUnits.MilliamperesPerSecond:
+                return (value) * 0.001;
+            case ElectricCurrentGradientUnits.MilliamperesPerMinute:
+                return (value / 60) * 0.001;
             default:
                 break;
         }
@@ -157,12 +232,18 @@ export class ElectricCurrentGradient {
             
             case ElectricCurrentGradientUnits.AmperesPerSecond:
                 return this.AmperesPerSecond + ` A/s`;
+            case ElectricCurrentGradientUnits.AmperesPerMinute:
+                return this.AmperesPerMinute + ` A/min`;
             case ElectricCurrentGradientUnits.AmperesPerMillisecond:
                 return this.AmperesPerMillisecond + ` A/ms`;
             case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
                 return this.AmperesPerMicrosecond + ` A/μs`;
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
                 return this.AmperesPerNanosecond + ` A/ns`;
+            case ElectricCurrentGradientUnits.MilliamperesPerSecond:
+                return this.MilliamperesPerSecond + ` `;
+            case ElectricCurrentGradientUnits.MilliamperesPerMinute:
+                return this.MilliamperesPerMinute + ` `;
         default:
             break;
         }
@@ -182,12 +263,18 @@ export class ElectricCurrentGradient {
             
             case ElectricCurrentGradientUnits.AmperesPerSecond:
                 return `A/s`;
+            case ElectricCurrentGradientUnits.AmperesPerMinute:
+                return `A/min`;
             case ElectricCurrentGradientUnits.AmperesPerMillisecond:
                 return `A/ms`;
             case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
                 return `A/μs`;
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
                 return `A/ns`;
+            case ElectricCurrentGradientUnits.MilliamperesPerSecond:
+                return ``;
+            case ElectricCurrentGradientUnits.MilliamperesPerMinute:
+                return ``;
         default:
             break;
         }
