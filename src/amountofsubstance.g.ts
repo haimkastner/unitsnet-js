@@ -5,6 +5,10 @@ export enum AmountOfSubstanceUnits {
     /** */
     PoundMoles,
     /** */
+    Femtomoles,
+    /** */
+    Picomoles,
+    /** */
     Nanomoles,
     /** */
     Micromoles,
@@ -37,6 +41,8 @@ export class AmountOfSubstance {
     private value: number;
     private molesLazy: number | null = null;
     private poundmolesLazy: number | null = null;
+    private femtomolesLazy: number | null = null;
+    private picomolesLazy: number | null = null;
     private nanomolesLazy: number | null = null;
     private micromolesLazy: number | null = null;
     private millimolesLazy: number | null = null;
@@ -85,6 +91,22 @@ export class AmountOfSubstance {
             return this.poundmolesLazy;
         }
         return this.poundmolesLazy = this.convertFromBase(AmountOfSubstanceUnits.PoundMoles);
+    }
+
+    /** */
+    public get Femtomoles(): number {
+        if(this.femtomolesLazy !== null){
+            return this.femtomolesLazy;
+        }
+        return this.femtomolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Femtomoles);
+    }
+
+    /** */
+    public get Picomoles(): number {
+        if(this.picomolesLazy !== null){
+            return this.picomolesLazy;
+        }
+        return this.picomolesLazy = this.convertFromBase(AmountOfSubstanceUnits.Picomoles);
     }
 
     /** */
@@ -209,6 +231,26 @@ export class AmountOfSubstance {
      */
     public static FromPoundMoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.PoundMoles);
+    }
+
+    /**
+     * Create a new AmountOfSubstance instance from a Femtomoles
+     *
+     * @param value The unit as Femtomoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
+    public static FromFemtomoles(value: number): AmountOfSubstance {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Femtomoles);
+    }
+
+    /**
+     * Create a new AmountOfSubstance instance from a Picomoles
+     *
+     * @param value The unit as Picomoles to create a new AmountOfSubstance from.
+     * @returns The new AmountOfSubstance instance.
+     */
+    public static FromPicomoles(value: number): AmountOfSubstance {
+        return new AmountOfSubstance(value, AmountOfSubstanceUnits.Picomoles);
     }
 
     /**
@@ -348,6 +390,10 @@ export class AmountOfSubstance {
                 return this.value;
             case AmountOfSubstanceUnits.PoundMoles:
                 return this.value / 453.59237;
+            case AmountOfSubstanceUnits.Femtomoles:
+                return (this.value) / 1e-15;
+            case AmountOfSubstanceUnits.Picomoles:
+                return (this.value) / 1e-12;
             case AmountOfSubstanceUnits.Nanomoles:
                 return (this.value) / 1e-9;
             case AmountOfSubstanceUnits.Micromoles:
@@ -387,6 +433,10 @@ export class AmountOfSubstance {
                 return value;
             case AmountOfSubstanceUnits.PoundMoles:
                 return value * 453.59237;
+            case AmountOfSubstanceUnits.Femtomoles:
+                return (value) * 1e-15;
+            case AmountOfSubstanceUnits.Picomoles:
+                return (value) * 1e-12;
             case AmountOfSubstanceUnits.Nanomoles:
                 return (value) * 1e-9;
             case AmountOfSubstanceUnits.Micromoles:
@@ -434,6 +484,10 @@ export class AmountOfSubstance {
                 return this.Moles + ` mol`;
             case AmountOfSubstanceUnits.PoundMoles:
                 return this.PoundMoles + ` lbmol`;
+            case AmountOfSubstanceUnits.Femtomoles:
+                return this.Femtomoles + ` `;
+            case AmountOfSubstanceUnits.Picomoles:
+                return this.Picomoles + ` `;
             case AmountOfSubstanceUnits.Nanomoles:
                 return this.Nanomoles + ` `;
             case AmountOfSubstanceUnits.Micromoles:
@@ -481,6 +535,10 @@ export class AmountOfSubstance {
                 return `mol`;
             case AmountOfSubstanceUnits.PoundMoles:
                 return `lbmol`;
+            case AmountOfSubstanceUnits.Femtomoles:
+                return ``;
+            case AmountOfSubstanceUnits.Picomoles:
+                return ``;
             case AmountOfSubstanceUnits.Nanomoles:
                 return ``;
             case AmountOfSubstanceUnits.Micromoles:
