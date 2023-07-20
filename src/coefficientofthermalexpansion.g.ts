@@ -1,34 +1,43 @@
 /** CoefficientOfThermalExpansionUnits enumeration */
 export enum CoefficientOfThermalExpansionUnits {
     /** */
-    InverseKelvin,
+    PerKelvin,
     /** */
-    InverseDegreeCelsius,
+    PerDegreeCelsius,
     /** */
-    InverseDegreeFahrenheit
+    PerDegreeFahrenheit,
+    /** */
+    PpmPerKelvin,
+    /** */
+    PpmPerDegreeCelsius,
+    /** */
+    PpmPerDegreeFahrenheit
 }
 
 /** A unit that represents a fractional change in size in response to a change in temperature. */
 export class CoefficientOfThermalExpansion {
     private value: number;
-    private inversekelvinLazy: number | null = null;
-    private inversedegreecelsiusLazy: number | null = null;
-    private inversedegreefahrenheitLazy: number | null = null;
+    private perkelvinLazy: number | null = null;
+    private perdegreecelsiusLazy: number | null = null;
+    private perdegreefahrenheitLazy: number | null = null;
+    private ppmperkelvinLazy: number | null = null;
+    private ppmperdegreecelsiusLazy: number | null = null;
+    private ppmperdegreefahrenheitLazy: number | null = null;
 
     /**
      * Create a new CoefficientOfThermalExpansion.
      * @param value The value.
      * @param fromUnit The ‘CoefficientOfThermalExpansion’ unit to create from.
-     * The default unit is InverseKelvin
+     * The default unit is PerKelvin
      */
-    public constructor(value: number, fromUnit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.InverseKelvin) {
+    public constructor(value: number, fromUnit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.PerKelvin) {
 
         if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
     /**
-     * The base value of CoefficientOfThermalExpansion is InverseKelvin.
+     * The base value of CoefficientOfThermalExpansion is PerKelvin.
      * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
@@ -36,68 +45,128 @@ export class CoefficientOfThermalExpansion {
     }
 
     /** */
-    public get InverseKelvin(): number {
-        if(this.inversekelvinLazy !== null){
-            return this.inversekelvinLazy;
+    public get PerKelvin(): number {
+        if(this.perkelvinLazy !== null){
+            return this.perkelvinLazy;
         }
-        return this.inversekelvinLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseKelvin);
+        return this.perkelvinLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.PerKelvin);
     }
 
     /** */
-    public get InverseDegreeCelsius(): number {
-        if(this.inversedegreecelsiusLazy !== null){
-            return this.inversedegreecelsiusLazy;
+    public get PerDegreeCelsius(): number {
+        if(this.perdegreecelsiusLazy !== null){
+            return this.perdegreecelsiusLazy;
         }
-        return this.inversedegreecelsiusLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeCelsius);
+        return this.perdegreecelsiusLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.PerDegreeCelsius);
     }
 
     /** */
-    public get InverseDegreeFahrenheit(): number {
-        if(this.inversedegreefahrenheitLazy !== null){
-            return this.inversedegreefahrenheitLazy;
+    public get PerDegreeFahrenheit(): number {
+        if(this.perdegreefahrenheitLazy !== null){
+            return this.perdegreefahrenheitLazy;
         }
-        return this.inversedegreefahrenheitLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit);
+        return this.perdegreefahrenheitLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit);
+    }
+
+    /** */
+    public get PpmPerKelvin(): number {
+        if(this.ppmperkelvinLazy !== null){
+            return this.ppmperkelvinLazy;
+        }
+        return this.ppmperkelvinLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.PpmPerKelvin);
+    }
+
+    /** */
+    public get PpmPerDegreeCelsius(): number {
+        if(this.ppmperdegreecelsiusLazy !== null){
+            return this.ppmperdegreecelsiusLazy;
+        }
+        return this.ppmperdegreecelsiusLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius);
+    }
+
+    /** */
+    public get PpmPerDegreeFahrenheit(): number {
+        if(this.ppmperdegreefahrenheitLazy !== null){
+            return this.ppmperdegreefahrenheitLazy;
+        }
+        return this.ppmperdegreefahrenheitLazy = this.convertFromBase(CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit);
     }
 
     /**
-     * Create a new CoefficientOfThermalExpansion instance from a InverseKelvin
+     * Create a new CoefficientOfThermalExpansion instance from a PerKelvin
      *
-     * @param value The unit as InverseKelvin to create a new CoefficientOfThermalExpansion from.
+     * @param value The unit as PerKelvin to create a new CoefficientOfThermalExpansion from.
      * @returns The new CoefficientOfThermalExpansion instance.
      */
-    public static FromInverseKelvin(value: number): CoefficientOfThermalExpansion {
-        return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.InverseKelvin);
+    public static FromPerKelvin(value: number): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.PerKelvin);
     }
 
     /**
-     * Create a new CoefficientOfThermalExpansion instance from a InverseDegreeCelsius
+     * Create a new CoefficientOfThermalExpansion instance from a PerDegreeCelsius
      *
-     * @param value The unit as InverseDegreeCelsius to create a new CoefficientOfThermalExpansion from.
+     * @param value The unit as PerDegreeCelsius to create a new CoefficientOfThermalExpansion from.
      * @returns The new CoefficientOfThermalExpansion instance.
      */
-    public static FromInverseDegreeCelsius(value: number): CoefficientOfThermalExpansion {
-        return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.InverseDegreeCelsius);
+    public static FromPerDegreeCelsius(value: number): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.PerDegreeCelsius);
     }
 
     /**
-     * Create a new CoefficientOfThermalExpansion instance from a InverseDegreeFahrenheit
+     * Create a new CoefficientOfThermalExpansion instance from a PerDegreeFahrenheit
      *
-     * @param value The unit as InverseDegreeFahrenheit to create a new CoefficientOfThermalExpansion from.
+     * @param value The unit as PerDegreeFahrenheit to create a new CoefficientOfThermalExpansion from.
      * @returns The new CoefficientOfThermalExpansion instance.
      */
-    public static FromInverseDegreeFahrenheit(value: number): CoefficientOfThermalExpansion {
-        return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit);
+    public static FromPerDegreeFahrenheit(value: number): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit);
+    }
+
+    /**
+     * Create a new CoefficientOfThermalExpansion instance from a PpmPerKelvin
+     *
+     * @param value The unit as PpmPerKelvin to create a new CoefficientOfThermalExpansion from.
+     * @returns The new CoefficientOfThermalExpansion instance.
+     */
+    public static FromPpmPerKelvin(value: number): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.PpmPerKelvin);
+    }
+
+    /**
+     * Create a new CoefficientOfThermalExpansion instance from a PpmPerDegreeCelsius
+     *
+     * @param value The unit as PpmPerDegreeCelsius to create a new CoefficientOfThermalExpansion from.
+     * @returns The new CoefficientOfThermalExpansion instance.
+     */
+    public static FromPpmPerDegreeCelsius(value: number): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius);
+    }
+
+    /**
+     * Create a new CoefficientOfThermalExpansion instance from a PpmPerDegreeFahrenheit
+     *
+     * @param value The unit as PpmPerDegreeFahrenheit to create a new CoefficientOfThermalExpansion from.
+     * @returns The new CoefficientOfThermalExpansion instance.
+     */
+    public static FromPpmPerDegreeFahrenheit(value: number): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit);
     }
 
     private convertFromBase(toUnit: CoefficientOfThermalExpansionUnits): number {
         switch (toUnit) {
                 
-            case CoefficientOfThermalExpansionUnits.InverseKelvin:
+            case CoefficientOfThermalExpansionUnits.PerKelvin:
                 return this.value;
-            case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
+            case CoefficientOfThermalExpansionUnits.PerDegreeCelsius:
                 return this.value;
-            case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
+            case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit:
                 return this.value * 5 / 9;
+            case CoefficientOfThermalExpansionUnits.PpmPerKelvin:
+                return this.value * 1e6;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius:
+                return this.value * 1e6;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit:
+                return this.value * 5e6 / 9;
             default:
                 break;
         }
@@ -107,12 +176,18 @@ export class CoefficientOfThermalExpansion {
     private convertToBase(value: number, fromUnit: CoefficientOfThermalExpansionUnits): number {
         switch (fromUnit) {
                 
-            case CoefficientOfThermalExpansionUnits.InverseKelvin:
+            case CoefficientOfThermalExpansionUnits.PerKelvin:
                 return value;
-            case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
+            case CoefficientOfThermalExpansionUnits.PerDegreeCelsius:
                 return value;
-            case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
+            case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit:
                 return value * 9 / 5;
+            case CoefficientOfThermalExpansionUnits.PpmPerKelvin:
+                return value / 1e6;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius:
+                return value / 1e6;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit:
+                return value * 9 / 5e6;
             default:
                 break;
         }
@@ -121,21 +196,27 @@ export class CoefficientOfThermalExpansion {
 
     /**
      * Format the CoefficientOfThermalExpansion to string.
-     * Note! the default format for CoefficientOfThermalExpansion is InverseKelvin.
+     * Note! the default format for CoefficientOfThermalExpansion is PerKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the CoefficientOfThermalExpansion.
      * @returns The string format of the CoefficientOfThermalExpansion.
      */
-    public toString(unit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.InverseKelvin): string {
+    public toString(unit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.PerKelvin): string {
 
         switch (unit) {
             
-            case CoefficientOfThermalExpansionUnits.InverseKelvin:
-                return this.InverseKelvin + ` K⁻¹`;
-            case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
-                return this.InverseDegreeCelsius + ` °C⁻¹`;
-            case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
-                return this.InverseDegreeFahrenheit + ` °F⁻¹`;
+            case CoefficientOfThermalExpansionUnits.PerKelvin:
+                return this.PerKelvin + ` K⁻¹`;
+            case CoefficientOfThermalExpansionUnits.PerDegreeCelsius:
+                return this.PerDegreeCelsius + ` °C⁻¹`;
+            case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit:
+                return this.PerDegreeFahrenheit + ` °F⁻¹`;
+            case CoefficientOfThermalExpansionUnits.PpmPerKelvin:
+                return this.PpmPerKelvin + ` ppm/K`;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius:
+                return this.PpmPerDegreeCelsius + ` ppm/°C`;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit:
+                return this.PpmPerDegreeFahrenheit + ` ppm/°F`;
         default:
             break;
         }
@@ -144,21 +225,27 @@ export class CoefficientOfThermalExpansion {
 
     /**
      * Get CoefficientOfThermalExpansion unit abbreviation.
-     * Note! the default abbreviation for CoefficientOfThermalExpansion is InverseKelvin.
+     * Note! the default abbreviation for CoefficientOfThermalExpansion is PerKelvin.
      * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
      * @param unitAbbreviation The unit abbreviation of the CoefficientOfThermalExpansion.
      * @returns The abbreviation string of CoefficientOfThermalExpansion.
      */
-    public getUnitAbbreviation(unitAbbreviation: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.InverseKelvin): string {
+    public getUnitAbbreviation(unitAbbreviation: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.PerKelvin): string {
 
         switch (unitAbbreviation) {
             
-            case CoefficientOfThermalExpansionUnits.InverseKelvin:
+            case CoefficientOfThermalExpansionUnits.PerKelvin:
                 return `K⁻¹`;
-            case CoefficientOfThermalExpansionUnits.InverseDegreeCelsius:
+            case CoefficientOfThermalExpansionUnits.PerDegreeCelsius:
                 return `°C⁻¹`;
-            case CoefficientOfThermalExpansionUnits.InverseDegreeFahrenheit:
+            case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit:
                 return `°F⁻¹`;
+            case CoefficientOfThermalExpansionUnits.PpmPerKelvin:
+                return `ppm/K`;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius:
+                return `ppm/°C`;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit:
+                return `ppm/°F`;
         default:
             break;
         }
