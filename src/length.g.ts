@@ -49,6 +49,10 @@ export enum LengthUnits {
     /** In radar-related subjects and in JTIDS, a data mile is a unit of distance equal to 6000 feet (1.8288 kilometres or 0.987 nautical miles). */
     DataMiles,
     /** */
+    Femtometers,
+    /** */
+    Picometers,
+    /** */
     Nanometers,
     /** */
     Micrometers,
@@ -105,6 +109,8 @@ export class Length {
     private chainsLazy: number | null = null;
     private angstromsLazy: number | null = null;
     private datamilesLazy: number | null = null;
+    private femtometersLazy: number | null = null;
+    private picometersLazy: number | null = null;
     private nanometersLazy: number | null = null;
     private micrometersLazy: number | null = null;
     private millimetersLazy: number | null = null;
@@ -330,6 +336,22 @@ export class Length {
             return this.datamilesLazy;
         }
         return this.datamilesLazy = this.convertFromBase(LengthUnits.DataMiles);
+    }
+
+    /** */
+    public get Femtometers(): number {
+        if(this.femtometersLazy !== null){
+            return this.femtometersLazy;
+        }
+        return this.femtometersLazy = this.convertFromBase(LengthUnits.Femtometers);
+    }
+
+    /** */
+    public get Picometers(): number {
+        if(this.picometersLazy !== null){
+            return this.picometersLazy;
+        }
+        return this.picometersLazy = this.convertFromBase(LengthUnits.Picometers);
     }
 
     /** */
@@ -685,6 +707,26 @@ export class Length {
     }
 
     /**
+     * Create a new Length instance from a Femtometers
+     *
+     * @param value The unit as Femtometers to create a new Length from.
+     * @returns The new Length instance.
+     */
+    public static FromFemtometers(value: number): Length {
+        return new Length(value, LengthUnits.Femtometers);
+    }
+
+    /**
+     * Create a new Length instance from a Picometers
+     *
+     * @param value The unit as Picometers to create a new Length from.
+     * @returns The new Length instance.
+     */
+    public static FromPicometers(value: number): Length {
+        return new Length(value, LengthUnits.Picometers);
+    }
+
+    /**
      * Create a new Length instance from a Nanometers
      *
      * @param value The unit as Nanometers to create a new Length from.
@@ -875,6 +917,10 @@ export class Length {
                 return this.value / 1e-10;
             case LengthUnits.DataMiles:
                 return this.value / 1828.8;
+            case LengthUnits.Femtometers:
+                return (this.value) / 1e-15;
+            case LengthUnits.Picometers:
+                return (this.value) / 1e-12;
             case LengthUnits.Nanometers:
                 return (this.value) / 1e-9;
             case LengthUnits.Micrometers:
@@ -960,6 +1006,10 @@ export class Length {
                 return value * 1e-10;
             case LengthUnits.DataMiles:
                 return value * 1828.8;
+            case LengthUnits.Femtometers:
+                return (value) * 1e-15;
+            case LengthUnits.Picometers:
+                return (value) * 1e-12;
             case LengthUnits.Nanometers:
                 return (value) * 1e-9;
             case LengthUnits.Micrometers:
@@ -1053,6 +1103,10 @@ export class Length {
                 return this.Angstroms + ` Å`;
             case LengthUnits.DataMiles:
                 return this.DataMiles + ` DM`;
+            case LengthUnits.Femtometers:
+                return this.Femtometers + ` `;
+            case LengthUnits.Picometers:
+                return this.Picometers + ` `;
             case LengthUnits.Nanometers:
                 return this.Nanometers + ` `;
             case LengthUnits.Micrometers:
@@ -1146,6 +1200,10 @@ export class Length {
                 return `Å`;
             case LengthUnits.DataMiles:
                 return `DM`;
+            case LengthUnits.Femtometers:
+                return ``;
+            case LengthUnits.Picometers:
+                return ``;
             case LengthUnits.Nanometers:
                 return ``;
             case LengthUnits.Micrometers:
