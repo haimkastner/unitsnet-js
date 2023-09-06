@@ -320,6 +320,34 @@ export class Irradiance {
         return new Irradiance(value, IrradianceUnits.MegawattsPerSquareCentimeter);
     }
 
+    /**
+     * Convert Irradiance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: IrradianceUnits): number {
+        switch (toUnit) {
+            case IrradianceUnits.WattsPerSquareMeter: return this.WattsPerSquareMeter;
+            case IrradianceUnits.WattsPerSquareCentimeter: return this.WattsPerSquareCentimeter;
+            case IrradianceUnits.PicowattsPerSquareMeter: return this.PicowattsPerSquareMeter;
+            case IrradianceUnits.NanowattsPerSquareMeter: return this.NanowattsPerSquareMeter;
+            case IrradianceUnits.MicrowattsPerSquareMeter: return this.MicrowattsPerSquareMeter;
+            case IrradianceUnits.MilliwattsPerSquareMeter: return this.MilliwattsPerSquareMeter;
+            case IrradianceUnits.KilowattsPerSquareMeter: return this.KilowattsPerSquareMeter;
+            case IrradianceUnits.MegawattsPerSquareMeter: return this.MegawattsPerSquareMeter;
+            case IrradianceUnits.PicowattsPerSquareCentimeter: return this.PicowattsPerSquareCentimeter;
+            case IrradianceUnits.NanowattsPerSquareCentimeter: return this.NanowattsPerSquareCentimeter;
+            case IrradianceUnits.MicrowattsPerSquareCentimeter: return this.MicrowattsPerSquareCentimeter;
+            case IrradianceUnits.MilliwattsPerSquareCentimeter: return this.MilliwattsPerSquareCentimeter;
+            case IrradianceUnits.KilowattsPerSquareCentimeter: return this.KilowattsPerSquareCentimeter;
+            case IrradianceUnits.MegawattsPerSquareCentimeter: return this.MegawattsPerSquareCentimeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: IrradianceUnits): number {
         switch (toUnit) {
                 
@@ -410,29 +438,29 @@ export class Irradiance {
             case IrradianceUnits.WattsPerSquareCentimeter:
                 return this.WattsPerSquareCentimeter + ` W/cm²`;
             case IrradianceUnits.PicowattsPerSquareMeter:
-                return this.PicowattsPerSquareMeter + ` `;
+                return this.PicowattsPerSquareMeter + ` pW/m²`;
             case IrradianceUnits.NanowattsPerSquareMeter:
-                return this.NanowattsPerSquareMeter + ` `;
+                return this.NanowattsPerSquareMeter + ` nW/m²`;
             case IrradianceUnits.MicrowattsPerSquareMeter:
-                return this.MicrowattsPerSquareMeter + ` `;
+                return this.MicrowattsPerSquareMeter + ` μW/m²`;
             case IrradianceUnits.MilliwattsPerSquareMeter:
-                return this.MilliwattsPerSquareMeter + ` `;
+                return this.MilliwattsPerSquareMeter + ` mW/m²`;
             case IrradianceUnits.KilowattsPerSquareMeter:
-                return this.KilowattsPerSquareMeter + ` `;
+                return this.KilowattsPerSquareMeter + ` kW/m²`;
             case IrradianceUnits.MegawattsPerSquareMeter:
-                return this.MegawattsPerSquareMeter + ` `;
+                return this.MegawattsPerSquareMeter + ` MW/m²`;
             case IrradianceUnits.PicowattsPerSquareCentimeter:
-                return this.PicowattsPerSquareCentimeter + ` `;
+                return this.PicowattsPerSquareCentimeter + ` pW/cm²`;
             case IrradianceUnits.NanowattsPerSquareCentimeter:
-                return this.NanowattsPerSquareCentimeter + ` `;
+                return this.NanowattsPerSquareCentimeter + ` nW/cm²`;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
-                return this.MicrowattsPerSquareCentimeter + ` `;
+                return this.MicrowattsPerSquareCentimeter + ` μW/cm²`;
             case IrradianceUnits.MilliwattsPerSquareCentimeter:
-                return this.MilliwattsPerSquareCentimeter + ` `;
+                return this.MilliwattsPerSquareCentimeter + ` mW/cm²`;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
-                return this.KilowattsPerSquareCentimeter + ` `;
+                return this.KilowattsPerSquareCentimeter + ` kW/cm²`;
             case IrradianceUnits.MegawattsPerSquareCentimeter:
-                return this.MegawattsPerSquareCentimeter + ` `;
+                return this.MegawattsPerSquareCentimeter + ` MW/cm²`;
         default:
             break;
         }
@@ -455,29 +483,29 @@ export class Irradiance {
             case IrradianceUnits.WattsPerSquareCentimeter:
                 return `W/cm²`;
             case IrradianceUnits.PicowattsPerSquareMeter:
-                return ``;
+                return `pW/m²`;
             case IrradianceUnits.NanowattsPerSquareMeter:
-                return ``;
+                return `nW/m²`;
             case IrradianceUnits.MicrowattsPerSquareMeter:
-                return ``;
+                return `μW/m²`;
             case IrradianceUnits.MilliwattsPerSquareMeter:
-                return ``;
+                return `mW/m²`;
             case IrradianceUnits.KilowattsPerSquareMeter:
-                return ``;
+                return `kW/m²`;
             case IrradianceUnits.MegawattsPerSquareMeter:
-                return ``;
+                return `MW/m²`;
             case IrradianceUnits.PicowattsPerSquareCentimeter:
-                return ``;
+                return `pW/cm²`;
             case IrradianceUnits.NanowattsPerSquareCentimeter:
-                return ``;
+                return `nW/cm²`;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
-                return ``;
+                return `μW/cm²`;
             case IrradianceUnits.MilliwattsPerSquareCentimeter:
-                return ``;
+                return `mW/cm²`;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
-                return ``;
+                return `kW/cm²`;
             case IrradianceUnits.MegawattsPerSquareCentimeter:
-                return ``;
+                return `MW/cm²`;
         default:
             break;
         }

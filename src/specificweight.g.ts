@@ -383,6 +383,37 @@ export class SpecificWeight {
         return new SpecificWeight(value, SpecificWeightUnits.KilopoundsForcePerCubicFoot);
     }
 
+    /**
+     * Convert SpecificWeight to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: SpecificWeightUnits): number {
+        switch (toUnit) {
+            case SpecificWeightUnits.NewtonsPerCubicMillimeter: return this.NewtonsPerCubicMillimeter;
+            case SpecificWeightUnits.NewtonsPerCubicCentimeter: return this.NewtonsPerCubicCentimeter;
+            case SpecificWeightUnits.NewtonsPerCubicMeter: return this.NewtonsPerCubicMeter;
+            case SpecificWeightUnits.KilogramsForcePerCubicMillimeter: return this.KilogramsForcePerCubicMillimeter;
+            case SpecificWeightUnits.KilogramsForcePerCubicCentimeter: return this.KilogramsForcePerCubicCentimeter;
+            case SpecificWeightUnits.KilogramsForcePerCubicMeter: return this.KilogramsForcePerCubicMeter;
+            case SpecificWeightUnits.PoundsForcePerCubicInch: return this.PoundsForcePerCubicInch;
+            case SpecificWeightUnits.PoundsForcePerCubicFoot: return this.PoundsForcePerCubicFoot;
+            case SpecificWeightUnits.TonnesForcePerCubicMillimeter: return this.TonnesForcePerCubicMillimeter;
+            case SpecificWeightUnits.TonnesForcePerCubicCentimeter: return this.TonnesForcePerCubicCentimeter;
+            case SpecificWeightUnits.TonnesForcePerCubicMeter: return this.TonnesForcePerCubicMeter;
+            case SpecificWeightUnits.KilonewtonsPerCubicMillimeter: return this.KilonewtonsPerCubicMillimeter;
+            case SpecificWeightUnits.KilonewtonsPerCubicCentimeter: return this.KilonewtonsPerCubicCentimeter;
+            case SpecificWeightUnits.KilonewtonsPerCubicMeter: return this.KilonewtonsPerCubicMeter;
+            case SpecificWeightUnits.MeganewtonsPerCubicMeter: return this.MeganewtonsPerCubicMeter;
+            case SpecificWeightUnits.KilopoundsForcePerCubicInch: return this.KilopoundsForcePerCubicInch;
+            case SpecificWeightUnits.KilopoundsForcePerCubicFoot: return this.KilopoundsForcePerCubicFoot;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: SpecificWeightUnits): number {
         switch (toUnit) {
                 
@@ -503,17 +534,17 @@ export class SpecificWeight {
             case SpecificWeightUnits.TonnesForcePerCubicMeter:
                 return this.TonnesForcePerCubicMeter + ` tf/m³`;
             case SpecificWeightUnits.KilonewtonsPerCubicMillimeter:
-                return this.KilonewtonsPerCubicMillimeter + ` `;
+                return this.KilonewtonsPerCubicMillimeter + ` kN/mm³`;
             case SpecificWeightUnits.KilonewtonsPerCubicCentimeter:
-                return this.KilonewtonsPerCubicCentimeter + ` `;
+                return this.KilonewtonsPerCubicCentimeter + ` kN/cm³`;
             case SpecificWeightUnits.KilonewtonsPerCubicMeter:
-                return this.KilonewtonsPerCubicMeter + ` `;
+                return this.KilonewtonsPerCubicMeter + ` kN/m³`;
             case SpecificWeightUnits.MeganewtonsPerCubicMeter:
-                return this.MeganewtonsPerCubicMeter + ` `;
+                return this.MeganewtonsPerCubicMeter + ` MN/m³`;
             case SpecificWeightUnits.KilopoundsForcePerCubicInch:
-                return this.KilopoundsForcePerCubicInch + ` `;
+                return this.KilopoundsForcePerCubicInch + ` klbf/in³`;
             case SpecificWeightUnits.KilopoundsForcePerCubicFoot:
-                return this.KilopoundsForcePerCubicFoot + ` `;
+                return this.KilopoundsForcePerCubicFoot + ` klbf/ft³`;
         default:
             break;
         }
@@ -554,17 +585,17 @@ export class SpecificWeight {
             case SpecificWeightUnits.TonnesForcePerCubicMeter:
                 return `tf/m³`;
             case SpecificWeightUnits.KilonewtonsPerCubicMillimeter:
-                return ``;
+                return `kN/mm³`;
             case SpecificWeightUnits.KilonewtonsPerCubicCentimeter:
-                return ``;
+                return `kN/cm³`;
             case SpecificWeightUnits.KilonewtonsPerCubicMeter:
-                return ``;
+                return `kN/m³`;
             case SpecificWeightUnits.MeganewtonsPerCubicMeter:
-                return ``;
+                return `MN/m³`;
             case SpecificWeightUnits.KilopoundsForcePerCubicInch:
-                return ``;
+                return `klbf/in³`;
             case SpecificWeightUnits.KilopoundsForcePerCubicFoot:
-                return ``;
+                return `klbf/ft³`;
         default:
             break;
         }

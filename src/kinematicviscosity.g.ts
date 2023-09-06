@@ -215,6 +215,29 @@ export class KinematicViscosity {
         return new KinematicViscosity(value, KinematicViscosityUnits.Kilostokes);
     }
 
+    /**
+     * Convert KinematicViscosity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: KinematicViscosityUnits): number {
+        switch (toUnit) {
+            case KinematicViscosityUnits.SquareMetersPerSecond: return this.SquareMetersPerSecond;
+            case KinematicViscosityUnits.Stokes: return this.Stokes;
+            case KinematicViscosityUnits.SquareFeetPerSecond: return this.SquareFeetPerSecond;
+            case KinematicViscosityUnits.Nanostokes: return this.Nanostokes;
+            case KinematicViscosityUnits.Microstokes: return this.Microstokes;
+            case KinematicViscosityUnits.Millistokes: return this.Millistokes;
+            case KinematicViscosityUnits.Centistokes: return this.Centistokes;
+            case KinematicViscosityUnits.Decistokes: return this.Decistokes;
+            case KinematicViscosityUnits.Kilostokes: return this.Kilostokes;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: KinematicViscosityUnits): number {
         switch (toUnit) {
                 
@@ -287,17 +310,17 @@ export class KinematicViscosity {
             case KinematicViscosityUnits.SquareFeetPerSecond:
                 return this.SquareFeetPerSecond + ` ft²/s`;
             case KinematicViscosityUnits.Nanostokes:
-                return this.Nanostokes + ` `;
+                return this.Nanostokes + ` nSt`;
             case KinematicViscosityUnits.Microstokes:
-                return this.Microstokes + ` `;
+                return this.Microstokes + ` μSt`;
             case KinematicViscosityUnits.Millistokes:
-                return this.Millistokes + ` `;
+                return this.Millistokes + ` mSt`;
             case KinematicViscosityUnits.Centistokes:
-                return this.Centistokes + ` `;
+                return this.Centistokes + ` cSt`;
             case KinematicViscosityUnits.Decistokes:
-                return this.Decistokes + ` `;
+                return this.Decistokes + ` dSt`;
             case KinematicViscosityUnits.Kilostokes:
-                return this.Kilostokes + ` `;
+                return this.Kilostokes + ` kSt`;
         default:
             break;
         }
@@ -322,17 +345,17 @@ export class KinematicViscosity {
             case KinematicViscosityUnits.SquareFeetPerSecond:
                 return `ft²/s`;
             case KinematicViscosityUnits.Nanostokes:
-                return ``;
+                return `nSt`;
             case KinematicViscosityUnits.Microstokes:
-                return ``;
+                return `μSt`;
             case KinematicViscosityUnits.Millistokes:
-                return ``;
+                return `mSt`;
             case KinematicViscosityUnits.Centistokes:
-                return ``;
+                return `cSt`;
             case KinematicViscosityUnits.Decistokes:
-                return ``;
+                return `dSt`;
             case KinematicViscosityUnits.Kilostokes:
-                return ``;
+                return `kSt`;
         default:
             break;
         }

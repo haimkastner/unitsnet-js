@@ -236,6 +236,30 @@ export class TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond);
     }
 
+    /**
+     * Convert TemperatureChangeRate to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: TemperatureChangeRateUnits): number {
+        switch (toUnit) {
+            case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return this.DegreesCelsiusPerSecond;
+            case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return this.DegreesCelsiusPerMinute;
+            case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return this.NanodegreesCelsiusPerSecond;
+            case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return this.MicrodegreesCelsiusPerSecond;
+            case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return this.MillidegreesCelsiusPerSecond;
+            case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond: return this.CentidegreesCelsiusPerSecond;
+            case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond: return this.DecidegreesCelsiusPerSecond;
+            case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond: return this.DecadegreesCelsiusPerSecond;
+            case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond: return this.HectodegreesCelsiusPerSecond;
+            case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond: return this.KilodegreesCelsiusPerSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: TemperatureChangeRateUnits): number {
         switch (toUnit) {
                 
@@ -310,21 +334,21 @@ export class TemperatureChangeRate {
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
                 return this.DegreesCelsiusPerMinute + ` °C/min`;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
-                return this.NanodegreesCelsiusPerSecond + ` `;
+                return this.NanodegreesCelsiusPerSecond + ` n°C/s`;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
-                return this.MicrodegreesCelsiusPerSecond + ` `;
+                return this.MicrodegreesCelsiusPerSecond + ` μ°C/s`;
             case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond:
-                return this.MillidegreesCelsiusPerSecond + ` `;
+                return this.MillidegreesCelsiusPerSecond + ` m°C/s`;
             case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
-                return this.CentidegreesCelsiusPerSecond + ` `;
+                return this.CentidegreesCelsiusPerSecond + ` c°C/s`;
             case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:
-                return this.DecidegreesCelsiusPerSecond + ` `;
+                return this.DecidegreesCelsiusPerSecond + ` d°C/s`;
             case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond:
-                return this.DecadegreesCelsiusPerSecond + ` `;
+                return this.DecadegreesCelsiusPerSecond + ` da°C/s`;
             case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond:
-                return this.HectodegreesCelsiusPerSecond + ` `;
+                return this.HectodegreesCelsiusPerSecond + ` h°C/s`;
             case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond:
-                return this.KilodegreesCelsiusPerSecond + ` `;
+                return this.KilodegreesCelsiusPerSecond + ` k°C/s`;
         default:
             break;
         }
@@ -347,21 +371,21 @@ export class TemperatureChangeRate {
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
                 return `°C/min`;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
-                return ``;
+                return `n°C/s`;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
-                return ``;
+                return `μ°C/s`;
             case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond:
-                return ``;
+                return `m°C/s`;
             case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
-                return ``;
+                return `c°C/s`;
             case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:
-                return ``;
+                return `d°C/s`;
             case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond:
-                return ``;
+                return `da°C/s`;
             case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond:
-                return ``;
+                return `h°C/s`;
             case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond:
-                return ``;
+                return `k°C/s`;
         default:
             break;
         }

@@ -173,6 +173,27 @@ export class Compressibility {
         return new Compressibility(value, CompressibilityUnits.InversePoundsForcePerSquareInch);
     }
 
+    /**
+     * Convert Compressibility to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: CompressibilityUnits): number {
+        switch (toUnit) {
+            case CompressibilityUnits.InversePascals: return this.InversePascals;
+            case CompressibilityUnits.InverseKilopascals: return this.InverseKilopascals;
+            case CompressibilityUnits.InverseMegapascals: return this.InverseMegapascals;
+            case CompressibilityUnits.InverseAtmospheres: return this.InverseAtmospheres;
+            case CompressibilityUnits.InverseMillibars: return this.InverseMillibars;
+            case CompressibilityUnits.InverseBars: return this.InverseBars;
+            case CompressibilityUnits.InversePoundsForcePerSquareInch: return this.InversePoundsForcePerSquareInch;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: CompressibilityUnits): number {
         switch (toUnit) {
                 

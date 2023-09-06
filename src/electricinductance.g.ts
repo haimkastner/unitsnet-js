@@ -131,6 +131,25 @@ export class ElectricInductance {
         return new ElectricInductance(value, ElectricInductanceUnits.Millihenries);
     }
 
+    /**
+     * Convert ElectricInductance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricInductanceUnits): number {
+        switch (toUnit) {
+            case ElectricInductanceUnits.Henries: return this.Henries;
+            case ElectricInductanceUnits.Picohenries: return this.Picohenries;
+            case ElectricInductanceUnits.Nanohenries: return this.Nanohenries;
+            case ElectricInductanceUnits.Microhenries: return this.Microhenries;
+            case ElectricInductanceUnits.Millihenries: return this.Millihenries;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricInductanceUnits): number {
         switch (toUnit) {
                 
@@ -183,13 +202,13 @@ export class ElectricInductance {
             case ElectricInductanceUnits.Henries:
                 return this.Henries + ` H`;
             case ElectricInductanceUnits.Picohenries:
-                return this.Picohenries + ` `;
+                return this.Picohenries + ` pH`;
             case ElectricInductanceUnits.Nanohenries:
-                return this.Nanohenries + ` `;
+                return this.Nanohenries + ` nH`;
             case ElectricInductanceUnits.Microhenries:
-                return this.Microhenries + ` `;
+                return this.Microhenries + ` μH`;
             case ElectricInductanceUnits.Millihenries:
-                return this.Millihenries + ` `;
+                return this.Millihenries + ` mH`;
         default:
             break;
         }
@@ -210,13 +229,13 @@ export class ElectricInductance {
             case ElectricInductanceUnits.Henries:
                 return `H`;
             case ElectricInductanceUnits.Picohenries:
-                return ``;
+                return `pH`;
             case ElectricInductanceUnits.Nanohenries:
-                return ``;
+                return `nH`;
             case ElectricInductanceUnits.Microhenries:
-                return ``;
+                return `μH`;
             case ElectricInductanceUnits.Millihenries:
-                return ``;
+                return `mH`;
         default:
             break;
         }

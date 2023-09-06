@@ -215,6 +215,29 @@ export class StandardVolumeFlow {
         return new StandardVolumeFlow(value, StandardVolumeFlowUnits.StandardCubicFeetPerHour);
     }
 
+    /**
+     * Convert StandardVolumeFlow to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: StandardVolumeFlowUnits): number {
+        switch (toUnit) {
+            case StandardVolumeFlowUnits.StandardCubicMetersPerSecond: return this.StandardCubicMetersPerSecond;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerMinute: return this.StandardCubicMetersPerMinute;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerHour: return this.StandardCubicMetersPerHour;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerDay: return this.StandardCubicMetersPerDay;
+            case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute: return this.StandardCubicCentimetersPerMinute;
+            case StandardVolumeFlowUnits.StandardLitersPerMinute: return this.StandardLitersPerMinute;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return this.StandardCubicFeetPerSecond;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return this.StandardCubicFeetPerMinute;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return this.StandardCubicFeetPerHour;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: StandardVolumeFlowUnits): number {
         switch (toUnit) {
                 

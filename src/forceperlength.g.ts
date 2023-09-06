@@ -824,6 +824,58 @@ export class ForcePerLength {
         return new ForcePerLength(value, ForcePerLengthUnits.MeganewtonsPerMillimeter);
     }
 
+    /**
+     * Convert ForcePerLength to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ForcePerLengthUnits): number {
+        switch (toUnit) {
+            case ForcePerLengthUnits.NewtonsPerMeter: return this.NewtonsPerMeter;
+            case ForcePerLengthUnits.NewtonsPerCentimeter: return this.NewtonsPerCentimeter;
+            case ForcePerLengthUnits.NewtonsPerMillimeter: return this.NewtonsPerMillimeter;
+            case ForcePerLengthUnits.KilogramsForcePerMeter: return this.KilogramsForcePerMeter;
+            case ForcePerLengthUnits.KilogramsForcePerCentimeter: return this.KilogramsForcePerCentimeter;
+            case ForcePerLengthUnits.KilogramsForcePerMillimeter: return this.KilogramsForcePerMillimeter;
+            case ForcePerLengthUnits.TonnesForcePerMeter: return this.TonnesForcePerMeter;
+            case ForcePerLengthUnits.TonnesForcePerCentimeter: return this.TonnesForcePerCentimeter;
+            case ForcePerLengthUnits.TonnesForcePerMillimeter: return this.TonnesForcePerMillimeter;
+            case ForcePerLengthUnits.PoundsForcePerFoot: return this.PoundsForcePerFoot;
+            case ForcePerLengthUnits.PoundsForcePerInch: return this.PoundsForcePerInch;
+            case ForcePerLengthUnits.PoundsForcePerYard: return this.PoundsForcePerYard;
+            case ForcePerLengthUnits.KilopoundsForcePerFoot: return this.KilopoundsForcePerFoot;
+            case ForcePerLengthUnits.KilopoundsForcePerInch: return this.KilopoundsForcePerInch;
+            case ForcePerLengthUnits.NanonewtonsPerMeter: return this.NanonewtonsPerMeter;
+            case ForcePerLengthUnits.MicronewtonsPerMeter: return this.MicronewtonsPerMeter;
+            case ForcePerLengthUnits.MillinewtonsPerMeter: return this.MillinewtonsPerMeter;
+            case ForcePerLengthUnits.CentinewtonsPerMeter: return this.CentinewtonsPerMeter;
+            case ForcePerLengthUnits.DecinewtonsPerMeter: return this.DecinewtonsPerMeter;
+            case ForcePerLengthUnits.DecanewtonsPerMeter: return this.DecanewtonsPerMeter;
+            case ForcePerLengthUnits.KilonewtonsPerMeter: return this.KilonewtonsPerMeter;
+            case ForcePerLengthUnits.MeganewtonsPerMeter: return this.MeganewtonsPerMeter;
+            case ForcePerLengthUnits.NanonewtonsPerCentimeter: return this.NanonewtonsPerCentimeter;
+            case ForcePerLengthUnits.MicronewtonsPerCentimeter: return this.MicronewtonsPerCentimeter;
+            case ForcePerLengthUnits.MillinewtonsPerCentimeter: return this.MillinewtonsPerCentimeter;
+            case ForcePerLengthUnits.CentinewtonsPerCentimeter: return this.CentinewtonsPerCentimeter;
+            case ForcePerLengthUnits.DecinewtonsPerCentimeter: return this.DecinewtonsPerCentimeter;
+            case ForcePerLengthUnits.DecanewtonsPerCentimeter: return this.DecanewtonsPerCentimeter;
+            case ForcePerLengthUnits.KilonewtonsPerCentimeter: return this.KilonewtonsPerCentimeter;
+            case ForcePerLengthUnits.MeganewtonsPerCentimeter: return this.MeganewtonsPerCentimeter;
+            case ForcePerLengthUnits.NanonewtonsPerMillimeter: return this.NanonewtonsPerMillimeter;
+            case ForcePerLengthUnits.MicronewtonsPerMillimeter: return this.MicronewtonsPerMillimeter;
+            case ForcePerLengthUnits.MillinewtonsPerMillimeter: return this.MillinewtonsPerMillimeter;
+            case ForcePerLengthUnits.CentinewtonsPerMillimeter: return this.CentinewtonsPerMillimeter;
+            case ForcePerLengthUnits.DecinewtonsPerMillimeter: return this.DecinewtonsPerMillimeter;
+            case ForcePerLengthUnits.DecanewtonsPerMillimeter: return this.DecanewtonsPerMillimeter;
+            case ForcePerLengthUnits.KilonewtonsPerMillimeter: return this.KilonewtonsPerMillimeter;
+            case ForcePerLengthUnits.MeganewtonsPerMillimeter: return this.MeganewtonsPerMillimeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ForcePerLengthUnits): number {
         switch (toUnit) {
                 
@@ -1034,53 +1086,53 @@ export class ForcePerLength {
             case ForcePerLengthUnits.KilopoundsForcePerInch:
                 return this.KilopoundsForcePerInch + ` kipf/in`;
             case ForcePerLengthUnits.NanonewtonsPerMeter:
-                return this.NanonewtonsPerMeter + ` `;
+                return this.NanonewtonsPerMeter + ` nN/m`;
             case ForcePerLengthUnits.MicronewtonsPerMeter:
-                return this.MicronewtonsPerMeter + ` `;
+                return this.MicronewtonsPerMeter + ` μN/m`;
             case ForcePerLengthUnits.MillinewtonsPerMeter:
-                return this.MillinewtonsPerMeter + ` `;
+                return this.MillinewtonsPerMeter + ` mN/m`;
             case ForcePerLengthUnits.CentinewtonsPerMeter:
-                return this.CentinewtonsPerMeter + ` `;
+                return this.CentinewtonsPerMeter + ` cN/m`;
             case ForcePerLengthUnits.DecinewtonsPerMeter:
-                return this.DecinewtonsPerMeter + ` `;
+                return this.DecinewtonsPerMeter + ` dN/m`;
             case ForcePerLengthUnits.DecanewtonsPerMeter:
-                return this.DecanewtonsPerMeter + ` `;
+                return this.DecanewtonsPerMeter + ` daN/m`;
             case ForcePerLengthUnits.KilonewtonsPerMeter:
-                return this.KilonewtonsPerMeter + ` `;
+                return this.KilonewtonsPerMeter + ` kN/m`;
             case ForcePerLengthUnits.MeganewtonsPerMeter:
-                return this.MeganewtonsPerMeter + ` `;
+                return this.MeganewtonsPerMeter + ` MN/m`;
             case ForcePerLengthUnits.NanonewtonsPerCentimeter:
-                return this.NanonewtonsPerCentimeter + ` `;
+                return this.NanonewtonsPerCentimeter + ` nN/cm`;
             case ForcePerLengthUnits.MicronewtonsPerCentimeter:
-                return this.MicronewtonsPerCentimeter + ` `;
+                return this.MicronewtonsPerCentimeter + ` μN/cm`;
             case ForcePerLengthUnits.MillinewtonsPerCentimeter:
-                return this.MillinewtonsPerCentimeter + ` `;
+                return this.MillinewtonsPerCentimeter + ` mN/cm`;
             case ForcePerLengthUnits.CentinewtonsPerCentimeter:
-                return this.CentinewtonsPerCentimeter + ` `;
+                return this.CentinewtonsPerCentimeter + ` cN/cm`;
             case ForcePerLengthUnits.DecinewtonsPerCentimeter:
-                return this.DecinewtonsPerCentimeter + ` `;
+                return this.DecinewtonsPerCentimeter + ` dN/cm`;
             case ForcePerLengthUnits.DecanewtonsPerCentimeter:
-                return this.DecanewtonsPerCentimeter + ` `;
+                return this.DecanewtonsPerCentimeter + ` daN/cm`;
             case ForcePerLengthUnits.KilonewtonsPerCentimeter:
-                return this.KilonewtonsPerCentimeter + ` `;
+                return this.KilonewtonsPerCentimeter + ` kN/cm`;
             case ForcePerLengthUnits.MeganewtonsPerCentimeter:
-                return this.MeganewtonsPerCentimeter + ` `;
+                return this.MeganewtonsPerCentimeter + ` MN/cm`;
             case ForcePerLengthUnits.NanonewtonsPerMillimeter:
-                return this.NanonewtonsPerMillimeter + ` `;
+                return this.NanonewtonsPerMillimeter + ` nN/mm`;
             case ForcePerLengthUnits.MicronewtonsPerMillimeter:
-                return this.MicronewtonsPerMillimeter + ` `;
+                return this.MicronewtonsPerMillimeter + ` μN/mm`;
             case ForcePerLengthUnits.MillinewtonsPerMillimeter:
-                return this.MillinewtonsPerMillimeter + ` `;
+                return this.MillinewtonsPerMillimeter + ` mN/mm`;
             case ForcePerLengthUnits.CentinewtonsPerMillimeter:
-                return this.CentinewtonsPerMillimeter + ` `;
+                return this.CentinewtonsPerMillimeter + ` cN/mm`;
             case ForcePerLengthUnits.DecinewtonsPerMillimeter:
-                return this.DecinewtonsPerMillimeter + ` `;
+                return this.DecinewtonsPerMillimeter + ` dN/mm`;
             case ForcePerLengthUnits.DecanewtonsPerMillimeter:
-                return this.DecanewtonsPerMillimeter + ` `;
+                return this.DecanewtonsPerMillimeter + ` daN/mm`;
             case ForcePerLengthUnits.KilonewtonsPerMillimeter:
-                return this.KilonewtonsPerMillimeter + ` `;
+                return this.KilonewtonsPerMillimeter + ` kN/mm`;
             case ForcePerLengthUnits.MeganewtonsPerMillimeter:
-                return this.MeganewtonsPerMillimeter + ` `;
+                return this.MeganewtonsPerMillimeter + ` MN/mm`;
         default:
             break;
         }
@@ -1127,53 +1179,53 @@ export class ForcePerLength {
             case ForcePerLengthUnits.KilopoundsForcePerInch:
                 return `kipf/in`;
             case ForcePerLengthUnits.NanonewtonsPerMeter:
-                return ``;
+                return `nN/m`;
             case ForcePerLengthUnits.MicronewtonsPerMeter:
-                return ``;
+                return `μN/m`;
             case ForcePerLengthUnits.MillinewtonsPerMeter:
-                return ``;
+                return `mN/m`;
             case ForcePerLengthUnits.CentinewtonsPerMeter:
-                return ``;
+                return `cN/m`;
             case ForcePerLengthUnits.DecinewtonsPerMeter:
-                return ``;
+                return `dN/m`;
             case ForcePerLengthUnits.DecanewtonsPerMeter:
-                return ``;
+                return `daN/m`;
             case ForcePerLengthUnits.KilonewtonsPerMeter:
-                return ``;
+                return `kN/m`;
             case ForcePerLengthUnits.MeganewtonsPerMeter:
-                return ``;
+                return `MN/m`;
             case ForcePerLengthUnits.NanonewtonsPerCentimeter:
-                return ``;
+                return `nN/cm`;
             case ForcePerLengthUnits.MicronewtonsPerCentimeter:
-                return ``;
+                return `μN/cm`;
             case ForcePerLengthUnits.MillinewtonsPerCentimeter:
-                return ``;
+                return `mN/cm`;
             case ForcePerLengthUnits.CentinewtonsPerCentimeter:
-                return ``;
+                return `cN/cm`;
             case ForcePerLengthUnits.DecinewtonsPerCentimeter:
-                return ``;
+                return `dN/cm`;
             case ForcePerLengthUnits.DecanewtonsPerCentimeter:
-                return ``;
+                return `daN/cm`;
             case ForcePerLengthUnits.KilonewtonsPerCentimeter:
-                return ``;
+                return `kN/cm`;
             case ForcePerLengthUnits.MeganewtonsPerCentimeter:
-                return ``;
+                return `MN/cm`;
             case ForcePerLengthUnits.NanonewtonsPerMillimeter:
-                return ``;
+                return `nN/mm`;
             case ForcePerLengthUnits.MicronewtonsPerMillimeter:
-                return ``;
+                return `μN/mm`;
             case ForcePerLengthUnits.MillinewtonsPerMillimeter:
-                return ``;
+                return `mN/mm`;
             case ForcePerLengthUnits.CentinewtonsPerMillimeter:
-                return ``;
+                return `cN/mm`;
             case ForcePerLengthUnits.DecinewtonsPerMillimeter:
-                return ``;
+                return `dN/mm`;
             case ForcePerLengthUnits.DecanewtonsPerMillimeter:
-                return ``;
+                return `daN/mm`;
             case ForcePerLengthUnits.KilonewtonsPerMillimeter:
-                return ``;
+                return `kN/mm`;
             case ForcePerLengthUnits.MeganewtonsPerMillimeter:
-                return ``;
+                return `MN/mm`;
         default:
             break;
         }

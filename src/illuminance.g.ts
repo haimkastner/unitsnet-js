@@ -110,6 +110,24 @@ export class Illuminance {
         return new Illuminance(value, IlluminanceUnits.Megalux);
     }
 
+    /**
+     * Convert Illuminance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: IlluminanceUnits): number {
+        switch (toUnit) {
+            case IlluminanceUnits.Lux: return this.Lux;
+            case IlluminanceUnits.Millilux: return this.Millilux;
+            case IlluminanceUnits.Kilolux: return this.Kilolux;
+            case IlluminanceUnits.Megalux: return this.Megalux;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: IlluminanceUnits): number {
         switch (toUnit) {
                 
@@ -158,11 +176,11 @@ export class Illuminance {
             case IlluminanceUnits.Lux:
                 return this.Lux + ` lx`;
             case IlluminanceUnits.Millilux:
-                return this.Millilux + ` `;
+                return this.Millilux + ` mlx`;
             case IlluminanceUnits.Kilolux:
-                return this.Kilolux + ` `;
+                return this.Kilolux + ` klx`;
             case IlluminanceUnits.Megalux:
-                return this.Megalux + ` `;
+                return this.Megalux + ` Mlx`;
         default:
             break;
         }
@@ -183,11 +201,11 @@ export class Illuminance {
             case IlluminanceUnits.Lux:
                 return `lx`;
             case IlluminanceUnits.Millilux:
-                return ``;
+                return `mlx`;
             case IlluminanceUnits.Kilolux:
-                return ``;
+                return `klx`;
             case IlluminanceUnits.Megalux:
-                return ``;
+                return `Mlx`;
         default:
             break;
         }

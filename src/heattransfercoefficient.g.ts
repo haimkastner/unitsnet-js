@@ -131,6 +131,25 @@ export class HeatTransferCoefficient {
         return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius);
     }
 
+    /**
+     * Convert HeatTransferCoefficient to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: HeatTransferCoefficientUnits): number {
+        switch (toUnit) {
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin: return this.WattsPerSquareMeterKelvin;
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return this.WattsPerSquareMeterCelsius;
+            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return this.BtusPerHourSquareFootDegreeFahrenheit;
+            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: return this.CaloriesPerHourSquareMeterDegreeCelsius;
+            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: return this.KilocaloriesPerHourSquareMeterDegreeCelsius;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: HeatTransferCoefficientUnits): number {
         switch (toUnit) {
                 
@@ -189,7 +208,7 @@ export class HeatTransferCoefficient {
             case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
                 return this.CaloriesPerHourSquareMeterDegreeCelsius + ` kcal/h·m²·°C`;
             case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
-                return this.KilocaloriesPerHourSquareMeterDegreeCelsius + ` `;
+                return this.KilocaloriesPerHourSquareMeterDegreeCelsius + ` kkcal/h·m²·°C`;
         default:
             break;
         }
@@ -216,7 +235,7 @@ export class HeatTransferCoefficient {
             case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
                 return `kcal/h·m²·°C`;
             case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
-                return ``;
+                return `kkcal/h·m²·°C`;
         default:
             break;
         }

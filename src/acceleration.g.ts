@@ -320,6 +320,34 @@ export class Acceleration {
         return new Acceleration(value, AccelerationUnits.MillistandardGravity);
     }
 
+    /**
+     * Convert Acceleration to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: AccelerationUnits): number {
+        switch (toUnit) {
+            case AccelerationUnits.MetersPerSecondSquared: return this.MetersPerSecondSquared;
+            case AccelerationUnits.InchesPerSecondSquared: return this.InchesPerSecondSquared;
+            case AccelerationUnits.FeetPerSecondSquared: return this.FeetPerSecondSquared;
+            case AccelerationUnits.KnotsPerSecond: return this.KnotsPerSecond;
+            case AccelerationUnits.KnotsPerMinute: return this.KnotsPerMinute;
+            case AccelerationUnits.KnotsPerHour: return this.KnotsPerHour;
+            case AccelerationUnits.StandardGravity: return this.StandardGravity;
+            case AccelerationUnits.NanometersPerSecondSquared: return this.NanometersPerSecondSquared;
+            case AccelerationUnits.MicrometersPerSecondSquared: return this.MicrometersPerSecondSquared;
+            case AccelerationUnits.MillimetersPerSecondSquared: return this.MillimetersPerSecondSquared;
+            case AccelerationUnits.CentimetersPerSecondSquared: return this.CentimetersPerSecondSquared;
+            case AccelerationUnits.DecimetersPerSecondSquared: return this.DecimetersPerSecondSquared;
+            case AccelerationUnits.KilometersPerSecondSquared: return this.KilometersPerSecondSquared;
+            case AccelerationUnits.MillistandardGravity: return this.MillistandardGravity;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: AccelerationUnits): number {
         switch (toUnit) {
                 
@@ -420,19 +448,19 @@ export class Acceleration {
             case AccelerationUnits.StandardGravity:
                 return this.StandardGravity + ` g`;
             case AccelerationUnits.NanometersPerSecondSquared:
-                return this.NanometersPerSecondSquared + ` `;
+                return this.NanometersPerSecondSquared + ` nm/s²`;
             case AccelerationUnits.MicrometersPerSecondSquared:
-                return this.MicrometersPerSecondSquared + ` `;
+                return this.MicrometersPerSecondSquared + ` μm/s²`;
             case AccelerationUnits.MillimetersPerSecondSquared:
-                return this.MillimetersPerSecondSquared + ` `;
+                return this.MillimetersPerSecondSquared + ` mm/s²`;
             case AccelerationUnits.CentimetersPerSecondSquared:
-                return this.CentimetersPerSecondSquared + ` `;
+                return this.CentimetersPerSecondSquared + ` cm/s²`;
             case AccelerationUnits.DecimetersPerSecondSquared:
-                return this.DecimetersPerSecondSquared + ` `;
+                return this.DecimetersPerSecondSquared + ` dm/s²`;
             case AccelerationUnits.KilometersPerSecondSquared:
-                return this.KilometersPerSecondSquared + ` `;
+                return this.KilometersPerSecondSquared + ` km/s²`;
             case AccelerationUnits.MillistandardGravity:
-                return this.MillistandardGravity + ` `;
+                return this.MillistandardGravity + ` mg`;
         default:
             break;
         }
@@ -465,19 +493,19 @@ export class Acceleration {
             case AccelerationUnits.StandardGravity:
                 return `g`;
             case AccelerationUnits.NanometersPerSecondSquared:
-                return ``;
+                return `nm/s²`;
             case AccelerationUnits.MicrometersPerSecondSquared:
-                return ``;
+                return `μm/s²`;
             case AccelerationUnits.MillimetersPerSecondSquared:
-                return ``;
+                return `mm/s²`;
             case AccelerationUnits.CentimetersPerSecondSquared:
-                return ``;
+                return `cm/s²`;
             case AccelerationUnits.DecimetersPerSecondSquared:
-                return ``;
+                return `dm/s²`;
             case AccelerationUnits.KilometersPerSecondSquared:
-                return ``;
+                return `km/s²`;
             case AccelerationUnits.MillistandardGravity:
-                return ``;
+                return `mg`;
         default:
             break;
         }

@@ -152,6 +152,26 @@ export class MagneticField {
         return new MagneticField(value, MagneticFieldUnits.Milligausses);
     }
 
+    /**
+     * Convert MagneticField to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MagneticFieldUnits): number {
+        switch (toUnit) {
+            case MagneticFieldUnits.Teslas: return this.Teslas;
+            case MagneticFieldUnits.Gausses: return this.Gausses;
+            case MagneticFieldUnits.Nanoteslas: return this.Nanoteslas;
+            case MagneticFieldUnits.Microteslas: return this.Microteslas;
+            case MagneticFieldUnits.Milliteslas: return this.Milliteslas;
+            case MagneticFieldUnits.Milligausses: return this.Milligausses;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MagneticFieldUnits): number {
         switch (toUnit) {
                 
@@ -210,13 +230,13 @@ export class MagneticField {
             case MagneticFieldUnits.Gausses:
                 return this.Gausses + ` G`;
             case MagneticFieldUnits.Nanoteslas:
-                return this.Nanoteslas + ` `;
+                return this.Nanoteslas + ` nT`;
             case MagneticFieldUnits.Microteslas:
-                return this.Microteslas + ` `;
+                return this.Microteslas + ` μT`;
             case MagneticFieldUnits.Milliteslas:
-                return this.Milliteslas + ` `;
+                return this.Milliteslas + ` mT`;
             case MagneticFieldUnits.Milligausses:
-                return this.Milligausses + ` `;
+                return this.Milligausses + ` mG`;
         default:
             break;
         }
@@ -239,13 +259,13 @@ export class MagneticField {
             case MagneticFieldUnits.Gausses:
                 return `G`;
             case MagneticFieldUnits.Nanoteslas:
-                return ``;
+                return `nT`;
             case MagneticFieldUnits.Microteslas:
-                return ``;
+                return `μT`;
             case MagneticFieldUnits.Milliteslas:
-                return ``;
+                return `mT`;
             case MagneticFieldUnits.Milligausses:
-                return ``;
+                return `mG`;
         default:
             break;
         }

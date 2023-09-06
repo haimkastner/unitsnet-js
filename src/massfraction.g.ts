@@ -530,6 +530,44 @@ export class MassFraction {
         return new MassFraction(value, MassFractionUnits.KilogramsPerKilogram);
     }
 
+    /**
+     * Convert MassFraction to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MassFractionUnits): number {
+        switch (toUnit) {
+            case MassFractionUnits.DecimalFractions: return this.DecimalFractions;
+            case MassFractionUnits.GramsPerGram: return this.GramsPerGram;
+            case MassFractionUnits.GramsPerKilogram: return this.GramsPerKilogram;
+            case MassFractionUnits.Percent: return this.Percent;
+            case MassFractionUnits.PartsPerThousand: return this.PartsPerThousand;
+            case MassFractionUnits.PartsPerMillion: return this.PartsPerMillion;
+            case MassFractionUnits.PartsPerBillion: return this.PartsPerBillion;
+            case MassFractionUnits.PartsPerTrillion: return this.PartsPerTrillion;
+            case MassFractionUnits.NanogramsPerGram: return this.NanogramsPerGram;
+            case MassFractionUnits.MicrogramsPerGram: return this.MicrogramsPerGram;
+            case MassFractionUnits.MilligramsPerGram: return this.MilligramsPerGram;
+            case MassFractionUnits.CentigramsPerGram: return this.CentigramsPerGram;
+            case MassFractionUnits.DecigramsPerGram: return this.DecigramsPerGram;
+            case MassFractionUnits.DecagramsPerGram: return this.DecagramsPerGram;
+            case MassFractionUnits.HectogramsPerGram: return this.HectogramsPerGram;
+            case MassFractionUnits.KilogramsPerGram: return this.KilogramsPerGram;
+            case MassFractionUnits.NanogramsPerKilogram: return this.NanogramsPerKilogram;
+            case MassFractionUnits.MicrogramsPerKilogram: return this.MicrogramsPerKilogram;
+            case MassFractionUnits.MilligramsPerKilogram: return this.MilligramsPerKilogram;
+            case MassFractionUnits.CentigramsPerKilogram: return this.CentigramsPerKilogram;
+            case MassFractionUnits.DecigramsPerKilogram: return this.DecigramsPerKilogram;
+            case MassFractionUnits.DecagramsPerKilogram: return this.DecagramsPerKilogram;
+            case MassFractionUnits.HectogramsPerKilogram: return this.HectogramsPerKilogram;
+            case MassFractionUnits.KilogramsPerKilogram: return this.KilogramsPerKilogram;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MassFractionUnits): number {
         switch (toUnit) {
                 
@@ -672,37 +710,37 @@ export class MassFraction {
             case MassFractionUnits.PartsPerTrillion:
                 return this.PartsPerTrillion + ` ppt`;
             case MassFractionUnits.NanogramsPerGram:
-                return this.NanogramsPerGram + ` `;
+                return this.NanogramsPerGram + ` ng/g`;
             case MassFractionUnits.MicrogramsPerGram:
-                return this.MicrogramsPerGram + ` `;
+                return this.MicrogramsPerGram + ` μg/g`;
             case MassFractionUnits.MilligramsPerGram:
-                return this.MilligramsPerGram + ` `;
+                return this.MilligramsPerGram + ` mg/g`;
             case MassFractionUnits.CentigramsPerGram:
-                return this.CentigramsPerGram + ` `;
+                return this.CentigramsPerGram + ` cg/g`;
             case MassFractionUnits.DecigramsPerGram:
-                return this.DecigramsPerGram + ` `;
+                return this.DecigramsPerGram + ` dg/g`;
             case MassFractionUnits.DecagramsPerGram:
-                return this.DecagramsPerGram + ` `;
+                return this.DecagramsPerGram + ` dag/g`;
             case MassFractionUnits.HectogramsPerGram:
-                return this.HectogramsPerGram + ` `;
+                return this.HectogramsPerGram + ` hg/g`;
             case MassFractionUnits.KilogramsPerGram:
-                return this.KilogramsPerGram + ` `;
+                return this.KilogramsPerGram + ` kg/g`;
             case MassFractionUnits.NanogramsPerKilogram:
-                return this.NanogramsPerKilogram + ` `;
+                return this.NanogramsPerKilogram + ` ng/kg`;
             case MassFractionUnits.MicrogramsPerKilogram:
-                return this.MicrogramsPerKilogram + ` `;
+                return this.MicrogramsPerKilogram + ` μg/kg`;
             case MassFractionUnits.MilligramsPerKilogram:
-                return this.MilligramsPerKilogram + ` `;
+                return this.MilligramsPerKilogram + ` mg/kg`;
             case MassFractionUnits.CentigramsPerKilogram:
-                return this.CentigramsPerKilogram + ` `;
+                return this.CentigramsPerKilogram + ` cg/kg`;
             case MassFractionUnits.DecigramsPerKilogram:
-                return this.DecigramsPerKilogram + ` `;
+                return this.DecigramsPerKilogram + ` dg/kg`;
             case MassFractionUnits.DecagramsPerKilogram:
-                return this.DecagramsPerKilogram + ` `;
+                return this.DecagramsPerKilogram + ` dag/kg`;
             case MassFractionUnits.HectogramsPerKilogram:
-                return this.HectogramsPerKilogram + ` `;
+                return this.HectogramsPerKilogram + ` hg/kg`;
             case MassFractionUnits.KilogramsPerKilogram:
-                return this.KilogramsPerKilogram + ` `;
+                return this.KilogramsPerKilogram + ` kg/kg`;
         default:
             break;
         }
@@ -737,37 +775,37 @@ export class MassFraction {
             case MassFractionUnits.PartsPerTrillion:
                 return `ppt`;
             case MassFractionUnits.NanogramsPerGram:
-                return ``;
+                return `ng/g`;
             case MassFractionUnits.MicrogramsPerGram:
-                return ``;
+                return `μg/g`;
             case MassFractionUnits.MilligramsPerGram:
-                return ``;
+                return `mg/g`;
             case MassFractionUnits.CentigramsPerGram:
-                return ``;
+                return `cg/g`;
             case MassFractionUnits.DecigramsPerGram:
-                return ``;
+                return `dg/g`;
             case MassFractionUnits.DecagramsPerGram:
-                return ``;
+                return `dag/g`;
             case MassFractionUnits.HectogramsPerGram:
-                return ``;
+                return `hg/g`;
             case MassFractionUnits.KilogramsPerGram:
-                return ``;
+                return `kg/g`;
             case MassFractionUnits.NanogramsPerKilogram:
-                return ``;
+                return `ng/kg`;
             case MassFractionUnits.MicrogramsPerKilogram:
-                return ``;
+                return `μg/kg`;
             case MassFractionUnits.MilligramsPerKilogram:
-                return ``;
+                return `mg/kg`;
             case MassFractionUnits.CentigramsPerKilogram:
-                return ``;
+                return `cg/kg`;
             case MassFractionUnits.DecigramsPerKilogram:
-                return ``;
+                return `dg/kg`;
             case MassFractionUnits.DecagramsPerKilogram:
-                return ``;
+                return `dag/kg`;
             case MassFractionUnits.HectogramsPerKilogram:
-                return ``;
+                return `hg/kg`;
             case MassFractionUnits.KilogramsPerKilogram:
-                return ``;
+                return `kg/kg`;
         default:
             break;
         }

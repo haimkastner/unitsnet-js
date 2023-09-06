@@ -89,6 +89,23 @@ export class ElectricSurfaceChargeDensity {
         return new ElectricSurfaceChargeDensity(value, ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch);
     }
 
+    /**
+     * Convert ElectricSurfaceChargeDensity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricSurfaceChargeDensityUnits): number {
+        switch (toUnit) {
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter: return this.CoulombsPerSquareMeter;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter: return this.CoulombsPerSquareCentimeter;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return this.CoulombsPerSquareInch;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricSurfaceChargeDensityUnits): number {
         switch (toUnit) {
                 

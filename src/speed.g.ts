@@ -719,6 +719,53 @@ export class Speed {
         return new Speed(value, SpeedUnits.KilometersPerHour);
     }
 
+    /**
+     * Convert Speed to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: SpeedUnits): number {
+        switch (toUnit) {
+            case SpeedUnits.MetersPerSecond: return this.MetersPerSecond;
+            case SpeedUnits.MetersPerMinutes: return this.MetersPerMinutes;
+            case SpeedUnits.MetersPerHour: return this.MetersPerHour;
+            case SpeedUnits.FeetPerSecond: return this.FeetPerSecond;
+            case SpeedUnits.FeetPerMinute: return this.FeetPerMinute;
+            case SpeedUnits.FeetPerHour: return this.FeetPerHour;
+            case SpeedUnits.UsSurveyFeetPerSecond: return this.UsSurveyFeetPerSecond;
+            case SpeedUnits.UsSurveyFeetPerMinute: return this.UsSurveyFeetPerMinute;
+            case SpeedUnits.UsSurveyFeetPerHour: return this.UsSurveyFeetPerHour;
+            case SpeedUnits.InchesPerSecond: return this.InchesPerSecond;
+            case SpeedUnits.InchesPerMinute: return this.InchesPerMinute;
+            case SpeedUnits.InchesPerHour: return this.InchesPerHour;
+            case SpeedUnits.YardsPerSecond: return this.YardsPerSecond;
+            case SpeedUnits.YardsPerMinute: return this.YardsPerMinute;
+            case SpeedUnits.YardsPerHour: return this.YardsPerHour;
+            case SpeedUnits.Knots: return this.Knots;
+            case SpeedUnits.MilesPerHour: return this.MilesPerHour;
+            case SpeedUnits.Mach: return this.Mach;
+            case SpeedUnits.NanometersPerSecond: return this.NanometersPerSecond;
+            case SpeedUnits.MicrometersPerSecond: return this.MicrometersPerSecond;
+            case SpeedUnits.MillimetersPerSecond: return this.MillimetersPerSecond;
+            case SpeedUnits.CentimetersPerSecond: return this.CentimetersPerSecond;
+            case SpeedUnits.DecimetersPerSecond: return this.DecimetersPerSecond;
+            case SpeedUnits.KilometersPerSecond: return this.KilometersPerSecond;
+            case SpeedUnits.NanometersPerMinutes: return this.NanometersPerMinutes;
+            case SpeedUnits.MicrometersPerMinutes: return this.MicrometersPerMinutes;
+            case SpeedUnits.MillimetersPerMinutes: return this.MillimetersPerMinutes;
+            case SpeedUnits.CentimetersPerMinutes: return this.CentimetersPerMinutes;
+            case SpeedUnits.DecimetersPerMinutes: return this.DecimetersPerMinutes;
+            case SpeedUnits.KilometersPerMinutes: return this.KilometersPerMinutes;
+            case SpeedUnits.MillimetersPerHour: return this.MillimetersPerHour;
+            case SpeedUnits.CentimetersPerHour: return this.CentimetersPerHour;
+            case SpeedUnits.KilometersPerHour: return this.KilometersPerHour;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: SpeedUnits): number {
         switch (toUnit) {
                 
@@ -917,35 +964,35 @@ export class Speed {
             case SpeedUnits.Mach:
                 return this.Mach + ` M`;
             case SpeedUnits.NanometersPerSecond:
-                return this.NanometersPerSecond + ` `;
+                return this.NanometersPerSecond + ` nm/s`;
             case SpeedUnits.MicrometersPerSecond:
-                return this.MicrometersPerSecond + ` `;
+                return this.MicrometersPerSecond + ` μm/s`;
             case SpeedUnits.MillimetersPerSecond:
-                return this.MillimetersPerSecond + ` `;
+                return this.MillimetersPerSecond + ` mm/s`;
             case SpeedUnits.CentimetersPerSecond:
-                return this.CentimetersPerSecond + ` `;
+                return this.CentimetersPerSecond + ` cm/s`;
             case SpeedUnits.DecimetersPerSecond:
-                return this.DecimetersPerSecond + ` `;
+                return this.DecimetersPerSecond + ` dm/s`;
             case SpeedUnits.KilometersPerSecond:
-                return this.KilometersPerSecond + ` `;
+                return this.KilometersPerSecond + ` km/s`;
             case SpeedUnits.NanometersPerMinutes:
-                return this.NanometersPerMinutes + ` `;
+                return this.NanometersPerMinutes + ` nm/min`;
             case SpeedUnits.MicrometersPerMinutes:
-                return this.MicrometersPerMinutes + ` `;
+                return this.MicrometersPerMinutes + ` μm/min`;
             case SpeedUnits.MillimetersPerMinutes:
-                return this.MillimetersPerMinutes + ` `;
+                return this.MillimetersPerMinutes + ` mm/min`;
             case SpeedUnits.CentimetersPerMinutes:
-                return this.CentimetersPerMinutes + ` `;
+                return this.CentimetersPerMinutes + ` cm/min`;
             case SpeedUnits.DecimetersPerMinutes:
-                return this.DecimetersPerMinutes + ` `;
+                return this.DecimetersPerMinutes + ` dm/min`;
             case SpeedUnits.KilometersPerMinutes:
-                return this.KilometersPerMinutes + ` `;
+                return this.KilometersPerMinutes + ` km/min`;
             case SpeedUnits.MillimetersPerHour:
-                return this.MillimetersPerHour + ` `;
+                return this.MillimetersPerHour + ` mm/h`;
             case SpeedUnits.CentimetersPerHour:
-                return this.CentimetersPerHour + ` `;
+                return this.CentimetersPerHour + ` cm/h`;
             case SpeedUnits.KilometersPerHour:
-                return this.KilometersPerHour + ` `;
+                return this.KilometersPerHour + ` km/h`;
         default:
             break;
         }
@@ -1000,35 +1047,35 @@ export class Speed {
             case SpeedUnits.Mach:
                 return `M`;
             case SpeedUnits.NanometersPerSecond:
-                return ``;
+                return `nm/s`;
             case SpeedUnits.MicrometersPerSecond:
-                return ``;
+                return `μm/s`;
             case SpeedUnits.MillimetersPerSecond:
-                return ``;
+                return `mm/s`;
             case SpeedUnits.CentimetersPerSecond:
-                return ``;
+                return `cm/s`;
             case SpeedUnits.DecimetersPerSecond:
-                return ``;
+                return `dm/s`;
             case SpeedUnits.KilometersPerSecond:
-                return ``;
+                return `km/s`;
             case SpeedUnits.NanometersPerMinutes:
-                return ``;
+                return `nm/min`;
             case SpeedUnits.MicrometersPerMinutes:
-                return ``;
+                return `μm/min`;
             case SpeedUnits.MillimetersPerMinutes:
-                return ``;
+                return `mm/min`;
             case SpeedUnits.CentimetersPerMinutes:
-                return ``;
+                return `cm/min`;
             case SpeedUnits.DecimetersPerMinutes:
-                return ``;
+                return `dm/min`;
             case SpeedUnits.KilometersPerMinutes:
-                return ``;
+                return `km/min`;
             case SpeedUnits.MillimetersPerHour:
-                return ``;
+                return `mm/h`;
             case SpeedUnits.CentimetersPerHour:
-                return ``;
+                return `cm/h`;
             case SpeedUnits.KilometersPerHour:
-                return ``;
+                return `km/h`;
         default:
             break;
         }

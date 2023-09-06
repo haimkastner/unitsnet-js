@@ -110,6 +110,24 @@ export class RotationalAcceleration {
         return new RotationalAcceleration(value, RotationalAccelerationUnits.RevolutionsPerSecondSquared);
     }
 
+    /**
+     * Convert RotationalAcceleration to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: RotationalAccelerationUnits): number {
+        switch (toUnit) {
+            case RotationalAccelerationUnits.RadiansPerSecondSquared: return this.RadiansPerSecondSquared;
+            case RotationalAccelerationUnits.DegreesPerSecondSquared: return this.DegreesPerSecondSquared;
+            case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond: return this.RevolutionsPerMinutePerSecond;
+            case RotationalAccelerationUnits.RevolutionsPerSecondSquared: return this.RevolutionsPerSecondSquared;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: RotationalAccelerationUnits): number {
         switch (toUnit) {
                 

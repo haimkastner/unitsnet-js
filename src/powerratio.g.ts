@@ -68,6 +68,22 @@ export class PowerRatio {
         return new PowerRatio(value, PowerRatioUnits.DecibelMilliwatts);
     }
 
+    /**
+     * Convert PowerRatio to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: PowerRatioUnits): number {
+        switch (toUnit) {
+            case PowerRatioUnits.DecibelWatts: return this.DecibelWatts;
+            case PowerRatioUnits.DecibelMilliwatts: return this.DecibelMilliwatts;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: PowerRatioUnits): number {
         switch (toUnit) {
                 

@@ -320,6 +320,34 @@ export class BitRate {
         return new BitRate(value, BitRateUnits.ExabytesPerSecond);
     }
 
+    /**
+     * Convert BitRate to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: BitRateUnits): number {
+        switch (toUnit) {
+            case BitRateUnits.BitsPerSecond: return this.BitsPerSecond;
+            case BitRateUnits.BytesPerSecond: return this.BytesPerSecond;
+            case BitRateUnits.KilobitsPerSecond: return this.KilobitsPerSecond;
+            case BitRateUnits.MegabitsPerSecond: return this.MegabitsPerSecond;
+            case BitRateUnits.GigabitsPerSecond: return this.GigabitsPerSecond;
+            case BitRateUnits.TerabitsPerSecond: return this.TerabitsPerSecond;
+            case BitRateUnits.PetabitsPerSecond: return this.PetabitsPerSecond;
+            case BitRateUnits.ExabitsPerSecond: return this.ExabitsPerSecond;
+            case BitRateUnits.KilobytesPerSecond: return this.KilobytesPerSecond;
+            case BitRateUnits.MegabytesPerSecond: return this.MegabytesPerSecond;
+            case BitRateUnits.GigabytesPerSecond: return this.GigabytesPerSecond;
+            case BitRateUnits.TerabytesPerSecond: return this.TerabytesPerSecond;
+            case BitRateUnits.PetabytesPerSecond: return this.PetabytesPerSecond;
+            case BitRateUnits.ExabytesPerSecond: return this.ExabytesPerSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: BitRateUnits): number {
         switch (toUnit) {
                 
@@ -410,29 +438,29 @@ export class BitRate {
             case BitRateUnits.BytesPerSecond:
                 return this.BytesPerSecond + ` B/s`;
             case BitRateUnits.KilobitsPerSecond:
-                return this.KilobitsPerSecond + ` `;
+                return this.KilobitsPerSecond + ` kbit/s`;
             case BitRateUnits.MegabitsPerSecond:
-                return this.MegabitsPerSecond + ` `;
+                return this.MegabitsPerSecond + ` Mbit/s`;
             case BitRateUnits.GigabitsPerSecond:
-                return this.GigabitsPerSecond + ` `;
+                return this.GigabitsPerSecond + ` Gbit/s`;
             case BitRateUnits.TerabitsPerSecond:
-                return this.TerabitsPerSecond + ` `;
+                return this.TerabitsPerSecond + ` Tbit/s`;
             case BitRateUnits.PetabitsPerSecond:
-                return this.PetabitsPerSecond + ` `;
+                return this.PetabitsPerSecond + ` Pbit/s`;
             case BitRateUnits.ExabitsPerSecond:
-                return this.ExabitsPerSecond + ` `;
+                return this.ExabitsPerSecond + ` Ebit/s`;
             case BitRateUnits.KilobytesPerSecond:
-                return this.KilobytesPerSecond + ` `;
+                return this.KilobytesPerSecond + ` kB/s`;
             case BitRateUnits.MegabytesPerSecond:
-                return this.MegabytesPerSecond + ` `;
+                return this.MegabytesPerSecond + ` MB/s`;
             case BitRateUnits.GigabytesPerSecond:
-                return this.GigabytesPerSecond + ` `;
+                return this.GigabytesPerSecond + ` GB/s`;
             case BitRateUnits.TerabytesPerSecond:
-                return this.TerabytesPerSecond + ` `;
+                return this.TerabytesPerSecond + ` TB/s`;
             case BitRateUnits.PetabytesPerSecond:
-                return this.PetabytesPerSecond + ` `;
+                return this.PetabytesPerSecond + ` PB/s`;
             case BitRateUnits.ExabytesPerSecond:
-                return this.ExabytesPerSecond + ` `;
+                return this.ExabytesPerSecond + ` EB/s`;
         default:
             break;
         }
@@ -455,29 +483,29 @@ export class BitRate {
             case BitRateUnits.BytesPerSecond:
                 return `B/s`;
             case BitRateUnits.KilobitsPerSecond:
-                return ``;
+                return `kbit/s`;
             case BitRateUnits.MegabitsPerSecond:
-                return ``;
+                return `Mbit/s`;
             case BitRateUnits.GigabitsPerSecond:
-                return ``;
+                return `Gbit/s`;
             case BitRateUnits.TerabitsPerSecond:
-                return ``;
+                return `Tbit/s`;
             case BitRateUnits.PetabitsPerSecond:
-                return ``;
+                return `Pbit/s`;
             case BitRateUnits.ExabitsPerSecond:
-                return ``;
+                return `Ebit/s`;
             case BitRateUnits.KilobytesPerSecond:
-                return ``;
+                return `kB/s`;
             case BitRateUnits.MegabytesPerSecond:
-                return ``;
+                return `MB/s`;
             case BitRateUnits.GigabytesPerSecond:
-                return ``;
+                return `GB/s`;
             case BitRateUnits.TerabytesPerSecond:
-                return ``;
+                return `TB/s`;
             case BitRateUnits.PetabytesPerSecond:
-                return ``;
+                return `PB/s`;
             case BitRateUnits.ExabytesPerSecond:
-                return ``;
+                return `EB/s`;
         default:
             break;
         }

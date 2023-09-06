@@ -89,6 +89,23 @@ export class BrakeSpecificFuelConsumption {
         return new BrakeSpecificFuelConsumption(value, BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour);
     }
 
+    /**
+     * Convert BrakeSpecificFuelConsumption to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: BrakeSpecificFuelConsumptionUnits): number {
+        switch (toUnit) {
+            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour: return this.GramsPerKiloWattHour;
+            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule: return this.KilogramsPerJoule;
+            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour: return this.PoundsPerMechanicalHorsepowerHour;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: BrakeSpecificFuelConsumptionUnits): number {
         switch (toUnit) {
                 

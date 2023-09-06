@@ -89,6 +89,23 @@ export class AreaDensity {
         return new AreaDensity(value, AreaDensityUnits.MilligramsPerSquareMeter);
     }
 
+    /**
+     * Convert AreaDensity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: AreaDensityUnits): number {
+        switch (toUnit) {
+            case AreaDensityUnits.KilogramsPerSquareMeter: return this.KilogramsPerSquareMeter;
+            case AreaDensityUnits.GramsPerSquareMeter: return this.GramsPerSquareMeter;
+            case AreaDensityUnits.MilligramsPerSquareMeter: return this.MilligramsPerSquareMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: AreaDensityUnits): number {
         switch (toUnit) {
                 

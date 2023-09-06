@@ -1433,6 +1433,87 @@ export class VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.MegaukGallonsPerSecond);
     }
 
+    /**
+     * Convert VolumeFlow to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: VolumeFlowUnits): number {
+        switch (toUnit) {
+            case VolumeFlowUnits.CubicMetersPerSecond: return this.CubicMetersPerSecond;
+            case VolumeFlowUnits.CubicMetersPerMinute: return this.CubicMetersPerMinute;
+            case VolumeFlowUnits.CubicMetersPerHour: return this.CubicMetersPerHour;
+            case VolumeFlowUnits.CubicMetersPerDay: return this.CubicMetersPerDay;
+            case VolumeFlowUnits.CubicFeetPerSecond: return this.CubicFeetPerSecond;
+            case VolumeFlowUnits.CubicFeetPerMinute: return this.CubicFeetPerMinute;
+            case VolumeFlowUnits.CubicFeetPerHour: return this.CubicFeetPerHour;
+            case VolumeFlowUnits.CubicYardsPerSecond: return this.CubicYardsPerSecond;
+            case VolumeFlowUnits.CubicYardsPerMinute: return this.CubicYardsPerMinute;
+            case VolumeFlowUnits.CubicYardsPerHour: return this.CubicYardsPerHour;
+            case VolumeFlowUnits.CubicYardsPerDay: return this.CubicYardsPerDay;
+            case VolumeFlowUnits.MillionUsGallonsPerDay: return this.MillionUsGallonsPerDay;
+            case VolumeFlowUnits.UsGallonsPerDay: return this.UsGallonsPerDay;
+            case VolumeFlowUnits.LitersPerSecond: return this.LitersPerSecond;
+            case VolumeFlowUnits.LitersPerMinute: return this.LitersPerMinute;
+            case VolumeFlowUnits.LitersPerHour: return this.LitersPerHour;
+            case VolumeFlowUnits.LitersPerDay: return this.LitersPerDay;
+            case VolumeFlowUnits.UsGallonsPerSecond: return this.UsGallonsPerSecond;
+            case VolumeFlowUnits.UsGallonsPerMinute: return this.UsGallonsPerMinute;
+            case VolumeFlowUnits.UkGallonsPerDay: return this.UkGallonsPerDay;
+            case VolumeFlowUnits.UkGallonsPerHour: return this.UkGallonsPerHour;
+            case VolumeFlowUnits.UkGallonsPerMinute: return this.UkGallonsPerMinute;
+            case VolumeFlowUnits.UkGallonsPerSecond: return this.UkGallonsPerSecond;
+            case VolumeFlowUnits.KilousGallonsPerMinute: return this.KilousGallonsPerMinute;
+            case VolumeFlowUnits.UsGallonsPerHour: return this.UsGallonsPerHour;
+            case VolumeFlowUnits.CubicDecimetersPerMinute: return this.CubicDecimetersPerMinute;
+            case VolumeFlowUnits.OilBarrelsPerDay: return this.OilBarrelsPerDay;
+            case VolumeFlowUnits.OilBarrelsPerMinute: return this.OilBarrelsPerMinute;
+            case VolumeFlowUnits.OilBarrelsPerHour: return this.OilBarrelsPerHour;
+            case VolumeFlowUnits.OilBarrelsPerSecond: return this.OilBarrelsPerSecond;
+            case VolumeFlowUnits.CubicMillimetersPerSecond: return this.CubicMillimetersPerSecond;
+            case VolumeFlowUnits.AcreFeetPerSecond: return this.AcreFeetPerSecond;
+            case VolumeFlowUnits.AcreFeetPerMinute: return this.AcreFeetPerMinute;
+            case VolumeFlowUnits.AcreFeetPerHour: return this.AcreFeetPerHour;
+            case VolumeFlowUnits.AcreFeetPerDay: return this.AcreFeetPerDay;
+            case VolumeFlowUnits.CubicCentimetersPerMinute: return this.CubicCentimetersPerMinute;
+            case VolumeFlowUnits.MegausGallonsPerDay: return this.MegausGallonsPerDay;
+            case VolumeFlowUnits.NanolitersPerSecond: return this.NanolitersPerSecond;
+            case VolumeFlowUnits.MicrolitersPerSecond: return this.MicrolitersPerSecond;
+            case VolumeFlowUnits.MillilitersPerSecond: return this.MillilitersPerSecond;
+            case VolumeFlowUnits.CentilitersPerSecond: return this.CentilitersPerSecond;
+            case VolumeFlowUnits.DecilitersPerSecond: return this.DecilitersPerSecond;
+            case VolumeFlowUnits.KilolitersPerSecond: return this.KilolitersPerSecond;
+            case VolumeFlowUnits.MegalitersPerSecond: return this.MegalitersPerSecond;
+            case VolumeFlowUnits.NanolitersPerMinute: return this.NanolitersPerMinute;
+            case VolumeFlowUnits.MicrolitersPerMinute: return this.MicrolitersPerMinute;
+            case VolumeFlowUnits.MillilitersPerMinute: return this.MillilitersPerMinute;
+            case VolumeFlowUnits.CentilitersPerMinute: return this.CentilitersPerMinute;
+            case VolumeFlowUnits.DecilitersPerMinute: return this.DecilitersPerMinute;
+            case VolumeFlowUnits.KilolitersPerMinute: return this.KilolitersPerMinute;
+            case VolumeFlowUnits.MegalitersPerMinute: return this.MegalitersPerMinute;
+            case VolumeFlowUnits.NanolitersPerHour: return this.NanolitersPerHour;
+            case VolumeFlowUnits.MicrolitersPerHour: return this.MicrolitersPerHour;
+            case VolumeFlowUnits.MillilitersPerHour: return this.MillilitersPerHour;
+            case VolumeFlowUnits.CentilitersPerHour: return this.CentilitersPerHour;
+            case VolumeFlowUnits.DecilitersPerHour: return this.DecilitersPerHour;
+            case VolumeFlowUnits.KilolitersPerHour: return this.KilolitersPerHour;
+            case VolumeFlowUnits.MegalitersPerHour: return this.MegalitersPerHour;
+            case VolumeFlowUnits.NanolitersPerDay: return this.NanolitersPerDay;
+            case VolumeFlowUnits.MicrolitersPerDay: return this.MicrolitersPerDay;
+            case VolumeFlowUnits.MillilitersPerDay: return this.MillilitersPerDay;
+            case VolumeFlowUnits.CentilitersPerDay: return this.CentilitersPerDay;
+            case VolumeFlowUnits.DecilitersPerDay: return this.DecilitersPerDay;
+            case VolumeFlowUnits.KilolitersPerDay: return this.KilolitersPerDay;
+            case VolumeFlowUnits.MegalitersPerDay: return this.MegalitersPerDay;
+            case VolumeFlowUnits.MegaukGallonsPerDay: return this.MegaukGallonsPerDay;
+            case VolumeFlowUnits.MegaukGallonsPerSecond: return this.MegaukGallonsPerSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: VolumeFlowUnits): number {
         switch (toUnit) {
                 
@@ -1803,67 +1884,67 @@ export class VolumeFlow {
             case VolumeFlowUnits.CubicCentimetersPerMinute:
                 return this.CubicCentimetersPerMinute + ` cm³/min`;
             case VolumeFlowUnits.MegausGallonsPerDay:
-                return this.MegausGallonsPerDay + ` `;
+                return this.MegausGallonsPerDay + ` Mgpd`;
             case VolumeFlowUnits.NanolitersPerSecond:
-                return this.NanolitersPerSecond + ` `;
+                return this.NanolitersPerSecond + ` nL/s`;
             case VolumeFlowUnits.MicrolitersPerSecond:
-                return this.MicrolitersPerSecond + ` `;
+                return this.MicrolitersPerSecond + ` μL/s`;
             case VolumeFlowUnits.MillilitersPerSecond:
-                return this.MillilitersPerSecond + ` `;
+                return this.MillilitersPerSecond + ` mL/s`;
             case VolumeFlowUnits.CentilitersPerSecond:
-                return this.CentilitersPerSecond + ` `;
+                return this.CentilitersPerSecond + ` cL/s`;
             case VolumeFlowUnits.DecilitersPerSecond:
-                return this.DecilitersPerSecond + ` `;
+                return this.DecilitersPerSecond + ` dL/s`;
             case VolumeFlowUnits.KilolitersPerSecond:
-                return this.KilolitersPerSecond + ` `;
+                return this.KilolitersPerSecond + ` kL/s`;
             case VolumeFlowUnits.MegalitersPerSecond:
-                return this.MegalitersPerSecond + ` `;
+                return this.MegalitersPerSecond + ` ML/s`;
             case VolumeFlowUnits.NanolitersPerMinute:
-                return this.NanolitersPerMinute + ` `;
+                return this.NanolitersPerMinute + ` nL/min`;
             case VolumeFlowUnits.MicrolitersPerMinute:
-                return this.MicrolitersPerMinute + ` `;
+                return this.MicrolitersPerMinute + ` μL/min`;
             case VolumeFlowUnits.MillilitersPerMinute:
-                return this.MillilitersPerMinute + ` `;
+                return this.MillilitersPerMinute + ` mL/min`;
             case VolumeFlowUnits.CentilitersPerMinute:
-                return this.CentilitersPerMinute + ` `;
+                return this.CentilitersPerMinute + ` cL/min`;
             case VolumeFlowUnits.DecilitersPerMinute:
-                return this.DecilitersPerMinute + ` `;
+                return this.DecilitersPerMinute + ` dL/min`;
             case VolumeFlowUnits.KilolitersPerMinute:
-                return this.KilolitersPerMinute + ` `;
+                return this.KilolitersPerMinute + ` kL/min`;
             case VolumeFlowUnits.MegalitersPerMinute:
-                return this.MegalitersPerMinute + ` `;
+                return this.MegalitersPerMinute + ` ML/min`;
             case VolumeFlowUnits.NanolitersPerHour:
-                return this.NanolitersPerHour + ` `;
+                return this.NanolitersPerHour + ` nL/h`;
             case VolumeFlowUnits.MicrolitersPerHour:
-                return this.MicrolitersPerHour + ` `;
+                return this.MicrolitersPerHour + ` μL/h`;
             case VolumeFlowUnits.MillilitersPerHour:
-                return this.MillilitersPerHour + ` `;
+                return this.MillilitersPerHour + ` mL/h`;
             case VolumeFlowUnits.CentilitersPerHour:
-                return this.CentilitersPerHour + ` `;
+                return this.CentilitersPerHour + ` cL/h`;
             case VolumeFlowUnits.DecilitersPerHour:
-                return this.DecilitersPerHour + ` `;
+                return this.DecilitersPerHour + ` dL/h`;
             case VolumeFlowUnits.KilolitersPerHour:
-                return this.KilolitersPerHour + ` `;
+                return this.KilolitersPerHour + ` kL/h`;
             case VolumeFlowUnits.MegalitersPerHour:
-                return this.MegalitersPerHour + ` `;
+                return this.MegalitersPerHour + ` ML/h`;
             case VolumeFlowUnits.NanolitersPerDay:
-                return this.NanolitersPerDay + ` `;
+                return this.NanolitersPerDay + ` nl/day`;
             case VolumeFlowUnits.MicrolitersPerDay:
-                return this.MicrolitersPerDay + ` `;
+                return this.MicrolitersPerDay + ` μl/day`;
             case VolumeFlowUnits.MillilitersPerDay:
-                return this.MillilitersPerDay + ` `;
+                return this.MillilitersPerDay + ` ml/day`;
             case VolumeFlowUnits.CentilitersPerDay:
-                return this.CentilitersPerDay + ` `;
+                return this.CentilitersPerDay + ` cl/day`;
             case VolumeFlowUnits.DecilitersPerDay:
-                return this.DecilitersPerDay + ` `;
+                return this.DecilitersPerDay + ` dl/day`;
             case VolumeFlowUnits.KilolitersPerDay:
-                return this.KilolitersPerDay + ` `;
+                return this.KilolitersPerDay + ` kl/day`;
             case VolumeFlowUnits.MegalitersPerDay:
-                return this.MegalitersPerDay + ` `;
+                return this.MegalitersPerDay + ` Ml/day`;
             case VolumeFlowUnits.MegaukGallonsPerDay:
-                return this.MegaukGallonsPerDay + ` `;
+                return this.MegaukGallonsPerDay + ` Mgal (U. K.)/d`;
             case VolumeFlowUnits.MegaukGallonsPerSecond:
-                return this.MegaukGallonsPerSecond + ` `;
+                return this.MegaukGallonsPerSecond + ` Mgal (imp.)/s`;
         default:
             break;
         }
@@ -1954,67 +2035,67 @@ export class VolumeFlow {
             case VolumeFlowUnits.CubicCentimetersPerMinute:
                 return `cm³/min`;
             case VolumeFlowUnits.MegausGallonsPerDay:
-                return ``;
+                return `Mgpd`;
             case VolumeFlowUnits.NanolitersPerSecond:
-                return ``;
+                return `nL/s`;
             case VolumeFlowUnits.MicrolitersPerSecond:
-                return ``;
+                return `μL/s`;
             case VolumeFlowUnits.MillilitersPerSecond:
-                return ``;
+                return `mL/s`;
             case VolumeFlowUnits.CentilitersPerSecond:
-                return ``;
+                return `cL/s`;
             case VolumeFlowUnits.DecilitersPerSecond:
-                return ``;
+                return `dL/s`;
             case VolumeFlowUnits.KilolitersPerSecond:
-                return ``;
+                return `kL/s`;
             case VolumeFlowUnits.MegalitersPerSecond:
-                return ``;
+                return `ML/s`;
             case VolumeFlowUnits.NanolitersPerMinute:
-                return ``;
+                return `nL/min`;
             case VolumeFlowUnits.MicrolitersPerMinute:
-                return ``;
+                return `μL/min`;
             case VolumeFlowUnits.MillilitersPerMinute:
-                return ``;
+                return `mL/min`;
             case VolumeFlowUnits.CentilitersPerMinute:
-                return ``;
+                return `cL/min`;
             case VolumeFlowUnits.DecilitersPerMinute:
-                return ``;
+                return `dL/min`;
             case VolumeFlowUnits.KilolitersPerMinute:
-                return ``;
+                return `kL/min`;
             case VolumeFlowUnits.MegalitersPerMinute:
-                return ``;
+                return `ML/min`;
             case VolumeFlowUnits.NanolitersPerHour:
-                return ``;
+                return `nL/h`;
             case VolumeFlowUnits.MicrolitersPerHour:
-                return ``;
+                return `μL/h`;
             case VolumeFlowUnits.MillilitersPerHour:
-                return ``;
+                return `mL/h`;
             case VolumeFlowUnits.CentilitersPerHour:
-                return ``;
+                return `cL/h`;
             case VolumeFlowUnits.DecilitersPerHour:
-                return ``;
+                return `dL/h`;
             case VolumeFlowUnits.KilolitersPerHour:
-                return ``;
+                return `kL/h`;
             case VolumeFlowUnits.MegalitersPerHour:
-                return ``;
+                return `ML/h`;
             case VolumeFlowUnits.NanolitersPerDay:
-                return ``;
+                return `nl/day`;
             case VolumeFlowUnits.MicrolitersPerDay:
-                return ``;
+                return `μl/day`;
             case VolumeFlowUnits.MillilitersPerDay:
-                return ``;
+                return `ml/day`;
             case VolumeFlowUnits.CentilitersPerDay:
-                return ``;
+                return `cl/day`;
             case VolumeFlowUnits.DecilitersPerDay:
-                return ``;
+                return `dl/day`;
             case VolumeFlowUnits.KilolitersPerDay:
-                return ``;
+                return `kl/day`;
             case VolumeFlowUnits.MegalitersPerDay:
-                return ``;
+                return `Ml/day`;
             case VolumeFlowUnits.MegaukGallonsPerDay:
-                return ``;
+                return `Mgal (U. K.)/d`;
             case VolumeFlowUnits.MegaukGallonsPerSecond:
-                return ``;
+                return `Mgal (imp.)/s`;
         default:
             break;
         }

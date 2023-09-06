@@ -15,6 +15,7 @@ The library is built on top of the [Units.NET](https://github.com/angularsen/Uni
 Package is available on NPM at https://www.npmjs.com/package/unitsnet-js
 
 > The package for C# is available in the Nuget registry at https://www.nuget.org/packages/UnitsNet/
+>
 > And a similar package for Python is available in the PyPI registry at https://pypi.org/project/unitsnet-py/
 
 
@@ -41,7 +42,13 @@ console.info(angle.Microradians); // 3141592.65358979
 console.info(angle.Gradians); // 200
 console.info(angle.Microdegrees); // 180000000
 
-// Print the default unit toString (The defualt for angle is degrees)
+// As an alternative, a convert style method are also available
+console.info(angle.convert(AngleUnits.Radians)); // 3.141592653589793
+console.info(angle.convert(AngleUnits.Microradians)); // 3141592.65358979
+console.info(angle.convert(AngleUnits.Gradians)); // 200
+console.info(angle.convert(AngleUnits.Microdegrees)); // 180000000
+
+// Print the default unit toString (The default for angle is degrees)
 console.info(angle.toString()); // 180 °
 
 console.info(angle.toString(AngleUnits.Degrees)); // 180 °

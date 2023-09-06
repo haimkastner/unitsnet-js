@@ -173,6 +173,27 @@ export class Entropy {
         return new Entropy(value, EntropyUnits.KilojoulesPerDegreeCelsius);
     }
 
+    /**
+     * Convert Entropy to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: EntropyUnits): number {
+        switch (toUnit) {
+            case EntropyUnits.JoulesPerKelvin: return this.JoulesPerKelvin;
+            case EntropyUnits.CaloriesPerKelvin: return this.CaloriesPerKelvin;
+            case EntropyUnits.JoulesPerDegreeCelsius: return this.JoulesPerDegreeCelsius;
+            case EntropyUnits.KilojoulesPerKelvin: return this.KilojoulesPerKelvin;
+            case EntropyUnits.MegajoulesPerKelvin: return this.MegajoulesPerKelvin;
+            case EntropyUnits.KilocaloriesPerKelvin: return this.KilocaloriesPerKelvin;
+            case EntropyUnits.KilojoulesPerDegreeCelsius: return this.KilojoulesPerDegreeCelsius;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: EntropyUnits): number {
         switch (toUnit) {
                 
@@ -237,13 +258,13 @@ export class Entropy {
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return this.JoulesPerDegreeCelsius + ` J/C`;
             case EntropyUnits.KilojoulesPerKelvin:
-                return this.KilojoulesPerKelvin + ` `;
+                return this.KilojoulesPerKelvin + ` kJ/K`;
             case EntropyUnits.MegajoulesPerKelvin:
-                return this.MegajoulesPerKelvin + ` `;
+                return this.MegajoulesPerKelvin + ` MJ/K`;
             case EntropyUnits.KilocaloriesPerKelvin:
-                return this.KilocaloriesPerKelvin + ` `;
+                return this.KilocaloriesPerKelvin + ` kcal/K`;
             case EntropyUnits.KilojoulesPerDegreeCelsius:
-                return this.KilojoulesPerDegreeCelsius + ` `;
+                return this.KilojoulesPerDegreeCelsius + ` kJ/C`;
         default:
             break;
         }
@@ -268,13 +289,13 @@ export class Entropy {
             case EntropyUnits.JoulesPerDegreeCelsius:
                 return `J/C`;
             case EntropyUnits.KilojoulesPerKelvin:
-                return ``;
+                return `kJ/K`;
             case EntropyUnits.MegajoulesPerKelvin:
-                return ``;
+                return `MJ/K`;
             case EntropyUnits.KilocaloriesPerKelvin:
-                return ``;
+                return `kcal/K`;
             case EntropyUnits.KilojoulesPerDegreeCelsius:
-                return ``;
+                return `kJ/C`;
         default:
             break;
         }

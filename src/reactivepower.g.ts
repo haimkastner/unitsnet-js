@@ -110,6 +110,24 @@ export class ReactivePower {
         return new ReactivePower(value, ReactivePowerUnits.GigavoltamperesReactive);
     }
 
+    /**
+     * Convert ReactivePower to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ReactivePowerUnits): number {
+        switch (toUnit) {
+            case ReactivePowerUnits.VoltamperesReactive: return this.VoltamperesReactive;
+            case ReactivePowerUnits.KilovoltamperesReactive: return this.KilovoltamperesReactive;
+            case ReactivePowerUnits.MegavoltamperesReactive: return this.MegavoltamperesReactive;
+            case ReactivePowerUnits.GigavoltamperesReactive: return this.GigavoltamperesReactive;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ReactivePowerUnits): number {
         switch (toUnit) {
                 
@@ -158,11 +176,11 @@ export class ReactivePower {
             case ReactivePowerUnits.VoltamperesReactive:
                 return this.VoltamperesReactive + ` var`;
             case ReactivePowerUnits.KilovoltamperesReactive:
-                return this.KilovoltamperesReactive + ` `;
+                return this.KilovoltamperesReactive + ` kvar`;
             case ReactivePowerUnits.MegavoltamperesReactive:
-                return this.MegavoltamperesReactive + ` `;
+                return this.MegavoltamperesReactive + ` Mvar`;
             case ReactivePowerUnits.GigavoltamperesReactive:
-                return this.GigavoltamperesReactive + ` `;
+                return this.GigavoltamperesReactive + ` Gvar`;
         default:
             break;
         }
@@ -183,11 +201,11 @@ export class ReactivePower {
             case ReactivePowerUnits.VoltamperesReactive:
                 return `var`;
             case ReactivePowerUnits.KilovoltamperesReactive:
-                return ``;
+                return `kvar`;
             case ReactivePowerUnits.MegavoltamperesReactive:
-                return ``;
+                return `Mvar`;
             case ReactivePowerUnits.GigavoltamperesReactive:
-                return ``;
+                return `Gvar`;
         default:
             break;
         }

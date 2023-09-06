@@ -152,6 +152,26 @@ export class ThermalResistance {
         return new ThermalResistance(value, ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu);
     }
 
+    /**
+     * Convert ThermalResistance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ThermalResistanceUnits): number {
+        switch (toUnit) {
+            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt: return this.SquareMeterKelvinsPerKilowatt;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt: return this.SquareMeterKelvinsPerWatt;
+            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt: return this.SquareMeterDegreesCelsiusPerWatt;
+            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt: return this.SquareCentimeterKelvinsPerWatt;
+            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie: return this.SquareCentimeterHourDegreesCelsiusPerKilocalorie;
+            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu: return this.HourSquareFeetDegreesFahrenheitPerBtu;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ThermalResistanceUnits): number {
         switch (toUnit) {
                 

@@ -89,6 +89,23 @@ export class SpecificVolume {
         return new SpecificVolume(value, SpecificVolumeUnits.MillicubicMetersPerKilogram);
     }
 
+    /**
+     * Convert SpecificVolume to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: SpecificVolumeUnits): number {
+        switch (toUnit) {
+            case SpecificVolumeUnits.CubicMetersPerKilogram: return this.CubicMetersPerKilogram;
+            case SpecificVolumeUnits.CubicFeetPerPound: return this.CubicFeetPerPound;
+            case SpecificVolumeUnits.MillicubicMetersPerKilogram: return this.MillicubicMetersPerKilogram;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: SpecificVolumeUnits): number {
         switch (toUnit) {
                 
@@ -135,7 +152,7 @@ export class SpecificVolume {
             case SpecificVolumeUnits.CubicFeetPerPound:
                 return this.CubicFeetPerPound + ` ft³/lb`;
             case SpecificVolumeUnits.MillicubicMetersPerKilogram:
-                return this.MillicubicMetersPerKilogram + ` `;
+                return this.MillicubicMetersPerKilogram + ` mm³/kg`;
         default:
             break;
         }
@@ -158,7 +175,7 @@ export class SpecificVolume {
             case SpecificVolumeUnits.CubicFeetPerPound:
                 return `ft³/lb`;
             case SpecificVolumeUnits.MillicubicMetersPerKilogram:
-                return ``;
+                return `mm³/kg`;
         default:
             break;
         }

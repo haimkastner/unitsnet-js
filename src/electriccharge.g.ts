@@ -257,6 +257,31 @@ export class ElectricCharge {
         return new ElectricCharge(value, ElectricChargeUnits.MegaampereHours);
     }
 
+    /**
+     * Convert ElectricCharge to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricChargeUnits): number {
+        switch (toUnit) {
+            case ElectricChargeUnits.Coulombs: return this.Coulombs;
+            case ElectricChargeUnits.AmpereHours: return this.AmpereHours;
+            case ElectricChargeUnits.Picocoulombs: return this.Picocoulombs;
+            case ElectricChargeUnits.Nanocoulombs: return this.Nanocoulombs;
+            case ElectricChargeUnits.Microcoulombs: return this.Microcoulombs;
+            case ElectricChargeUnits.Millicoulombs: return this.Millicoulombs;
+            case ElectricChargeUnits.Kilocoulombs: return this.Kilocoulombs;
+            case ElectricChargeUnits.Megacoulombs: return this.Megacoulombs;
+            case ElectricChargeUnits.MilliampereHours: return this.MilliampereHours;
+            case ElectricChargeUnits.KiloampereHours: return this.KiloampereHours;
+            case ElectricChargeUnits.MegaampereHours: return this.MegaampereHours;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricChargeUnits): number {
         switch (toUnit) {
                 
@@ -335,23 +360,23 @@ export class ElectricCharge {
             case ElectricChargeUnits.AmpereHours:
                 return this.AmpereHours + ` A-h`;
             case ElectricChargeUnits.Picocoulombs:
-                return this.Picocoulombs + ` `;
+                return this.Picocoulombs + ` pC`;
             case ElectricChargeUnits.Nanocoulombs:
-                return this.Nanocoulombs + ` `;
+                return this.Nanocoulombs + ` nC`;
             case ElectricChargeUnits.Microcoulombs:
-                return this.Microcoulombs + ` `;
+                return this.Microcoulombs + ` μC`;
             case ElectricChargeUnits.Millicoulombs:
-                return this.Millicoulombs + ` `;
+                return this.Millicoulombs + ` mC`;
             case ElectricChargeUnits.Kilocoulombs:
-                return this.Kilocoulombs + ` `;
+                return this.Kilocoulombs + ` kC`;
             case ElectricChargeUnits.Megacoulombs:
-                return this.Megacoulombs + ` `;
+                return this.Megacoulombs + ` MC`;
             case ElectricChargeUnits.MilliampereHours:
-                return this.MilliampereHours + ` `;
+                return this.MilliampereHours + ` mA-h`;
             case ElectricChargeUnits.KiloampereHours:
-                return this.KiloampereHours + ` `;
+                return this.KiloampereHours + ` kA-h`;
             case ElectricChargeUnits.MegaampereHours:
-                return this.MegaampereHours + ` `;
+                return this.MegaampereHours + ` MA-h`;
         default:
             break;
         }
@@ -374,23 +399,23 @@ export class ElectricCharge {
             case ElectricChargeUnits.AmpereHours:
                 return `A-h`;
             case ElectricChargeUnits.Picocoulombs:
-                return ``;
+                return `pC`;
             case ElectricChargeUnits.Nanocoulombs:
-                return ``;
+                return `nC`;
             case ElectricChargeUnits.Microcoulombs:
-                return ``;
+                return `μC`;
             case ElectricChargeUnits.Millicoulombs:
-                return ``;
+                return `mC`;
             case ElectricChargeUnits.Kilocoulombs:
-                return ``;
+                return `kC`;
             case ElectricChargeUnits.Megacoulombs:
-                return ``;
+                return `MC`;
             case ElectricChargeUnits.MilliampereHours:
-                return ``;
+                return `mA-h`;
             case ElectricChargeUnits.KiloampereHours:
-                return ``;
+                return `kA-h`;
             case ElectricChargeUnits.MegaampereHours:
-                return ``;
+                return `MA-h`;
         default:
             break;
         }

@@ -46,6 +46,22 @@ describe('Unitsnet - tests', () => {
         });
     });
 
+    describe('# Converters with convert style', () => {
+
+        it(`Should convert from base value to base using convert style`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.convert(AngleUnits.Degrees)).equal(180);
+        });
+
+        it(`Should convert from base value to any other unit using convert style`, () => {
+            const angle = Angle.FromDegrees(180);
+            // Without lazy
+            expect(angle.convert(AngleUnits.Radians)).equal(3.141592653589793);
+            // After lazy
+            expect(angle.convert(AngleUnits.Radians)).equal(3.141592653589793);
+        });
+    });
+
     describe('# String formatter', () => {
 
         it(`Should format as the base value format`, () => {
@@ -60,6 +76,19 @@ describe('Unitsnet - tests', () => {
         });
     });
 
+    describe('# Abbreviations', () => {
+
+        it(`Should get the correct abbreviation for unit`, () => {
+            let length = new Length(5, LengthUnits.Kilometers);
+            expect(length.getUnitAbbreviation(LengthUnits.Meters)).equal('m');
+            expect(length.getUnitAbbreviation(LengthUnits.Miles)).equal('mi');
+        });
+
+        it(`Should get the correct abbreviation for prefix unit`, () => {
+            let length = new Length(5, LengthUnits.Kilometers);
+            expect(length.getUnitAbbreviation(LengthUnits.Kilometers)).equal('km');
+        });
+    });
 
     describe('# Additional methods', () => {
 

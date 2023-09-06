@@ -131,6 +131,25 @@ export class ElectricPotentialDc {
         return new ElectricPotentialDc(value, ElectricPotentialDcUnits.MegavoltsDc);
     }
 
+    /**
+     * Convert ElectricPotentialDc to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricPotentialDcUnits): number {
+        switch (toUnit) {
+            case ElectricPotentialDcUnits.VoltsDc: return this.VoltsDc;
+            case ElectricPotentialDcUnits.MicrovoltsDc: return this.MicrovoltsDc;
+            case ElectricPotentialDcUnits.MillivoltsDc: return this.MillivoltsDc;
+            case ElectricPotentialDcUnits.KilovoltsDc: return this.KilovoltsDc;
+            case ElectricPotentialDcUnits.MegavoltsDc: return this.MegavoltsDc;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricPotentialDcUnits): number {
         switch (toUnit) {
                 
@@ -183,13 +202,13 @@ export class ElectricPotentialDc {
             case ElectricPotentialDcUnits.VoltsDc:
                 return this.VoltsDc + ` Vdc`;
             case ElectricPotentialDcUnits.MicrovoltsDc:
-                return this.MicrovoltsDc + ` `;
+                return this.MicrovoltsDc + ` μVdc`;
             case ElectricPotentialDcUnits.MillivoltsDc:
-                return this.MillivoltsDc + ` `;
+                return this.MillivoltsDc + ` mVdc`;
             case ElectricPotentialDcUnits.KilovoltsDc:
-                return this.KilovoltsDc + ` `;
+                return this.KilovoltsDc + ` kVdc`;
             case ElectricPotentialDcUnits.MegavoltsDc:
-                return this.MegavoltsDc + ` `;
+                return this.MegavoltsDc + ` MVdc`;
         default:
             break;
         }
@@ -210,13 +229,13 @@ export class ElectricPotentialDc {
             case ElectricPotentialDcUnits.VoltsDc:
                 return `Vdc`;
             case ElectricPotentialDcUnits.MicrovoltsDc:
-                return ``;
+                return `μVdc`;
             case ElectricPotentialDcUnits.MillivoltsDc:
-                return ``;
+                return `mVdc`;
             case ElectricPotentialDcUnits.KilovoltsDc:
-                return ``;
+                return `kVdc`;
             case ElectricPotentialDcUnits.MegavoltsDc:
-                return ``;
+                return `MVdc`;
         default:
             break;
         }

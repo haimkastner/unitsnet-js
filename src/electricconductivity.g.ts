@@ -152,6 +152,26 @@ export class ElectricConductivity {
         return new ElectricConductivity(value, ElectricConductivityUnits.MillisiemensPerCentimeter);
     }
 
+    /**
+     * Convert ElectricConductivity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricConductivityUnits): number {
+        switch (toUnit) {
+            case ElectricConductivityUnits.SiemensPerMeter: return this.SiemensPerMeter;
+            case ElectricConductivityUnits.SiemensPerInch: return this.SiemensPerInch;
+            case ElectricConductivityUnits.SiemensPerFoot: return this.SiemensPerFoot;
+            case ElectricConductivityUnits.SiemensPerCentimeter: return this.SiemensPerCentimeter;
+            case ElectricConductivityUnits.MicrosiemensPerCentimeter: return this.MicrosiemensPerCentimeter;
+            case ElectricConductivityUnits.MillisiemensPerCentimeter: return this.MillisiemensPerCentimeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricConductivityUnits): number {
         switch (toUnit) {
                 
@@ -214,9 +234,9 @@ export class ElectricConductivity {
             case ElectricConductivityUnits.SiemensPerCentimeter:
                 return this.SiemensPerCentimeter + ` S/cm`;
             case ElectricConductivityUnits.MicrosiemensPerCentimeter:
-                return this.MicrosiemensPerCentimeter + ` `;
+                return this.MicrosiemensPerCentimeter + ` μS/cm`;
             case ElectricConductivityUnits.MillisiemensPerCentimeter:
-                return this.MillisiemensPerCentimeter + ` `;
+                return this.MillisiemensPerCentimeter + ` mS/cm`;
         default:
             break;
         }
@@ -243,9 +263,9 @@ export class ElectricConductivity {
             case ElectricConductivityUnits.SiemensPerCentimeter:
                 return `S/cm`;
             case ElectricConductivityUnits.MicrosiemensPerCentimeter:
-                return ``;
+                return `μS/cm`;
             case ElectricConductivityUnits.MillisiemensPerCentimeter:
-                return ``;
+                return `mS/cm`;
         default:
             break;
         }

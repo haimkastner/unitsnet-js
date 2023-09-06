@@ -68,6 +68,22 @@ export class Level {
         return new Level(value, LevelUnits.Nepers);
     }
 
+    /**
+     * Convert Level to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: LevelUnits): number {
+        switch (toUnit) {
+            case LevelUnits.Decibels: return this.Decibels;
+            case LevelUnits.Nepers: return this.Nepers;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: LevelUnits): number {
         switch (toUnit) {
                 

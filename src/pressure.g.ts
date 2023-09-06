@@ -1055,6 +1055,69 @@ export class Pressure {
         return new Pressure(value, PressureUnits.CentimetersOfWaterColumn);
     }
 
+    /**
+     * Convert Pressure to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: PressureUnits): number {
+        switch (toUnit) {
+            case PressureUnits.Pascals: return this.Pascals;
+            case PressureUnits.Atmospheres: return this.Atmospheres;
+            case PressureUnits.Bars: return this.Bars;
+            case PressureUnits.KilogramsForcePerSquareMeter: return this.KilogramsForcePerSquareMeter;
+            case PressureUnits.KilogramsForcePerSquareCentimeter: return this.KilogramsForcePerSquareCentimeter;
+            case PressureUnits.KilogramsForcePerSquareMillimeter: return this.KilogramsForcePerSquareMillimeter;
+            case PressureUnits.NewtonsPerSquareMeter: return this.NewtonsPerSquareMeter;
+            case PressureUnits.NewtonsPerSquareCentimeter: return this.NewtonsPerSquareCentimeter;
+            case PressureUnits.NewtonsPerSquareMillimeter: return this.NewtonsPerSquareMillimeter;
+            case PressureUnits.TechnicalAtmospheres: return this.TechnicalAtmospheres;
+            case PressureUnits.Torrs: return this.Torrs;
+            case PressureUnits.PoundsForcePerSquareInch: return this.PoundsForcePerSquareInch;
+            case PressureUnits.PoundsForcePerSquareMil: return this.PoundsForcePerSquareMil;
+            case PressureUnits.PoundsForcePerSquareFoot: return this.PoundsForcePerSquareFoot;
+            case PressureUnits.TonnesForcePerSquareMillimeter: return this.TonnesForcePerSquareMillimeter;
+            case PressureUnits.TonnesForcePerSquareMeter: return this.TonnesForcePerSquareMeter;
+            case PressureUnits.MetersOfHead: return this.MetersOfHead;
+            case PressureUnits.TonnesForcePerSquareCentimeter: return this.TonnesForcePerSquareCentimeter;
+            case PressureUnits.FeetOfHead: return this.FeetOfHead;
+            case PressureUnits.MillimetersOfMercury: return this.MillimetersOfMercury;
+            case PressureUnits.InchesOfMercury: return this.InchesOfMercury;
+            case PressureUnits.DynesPerSquareCentimeter: return this.DynesPerSquareCentimeter;
+            case PressureUnits.PoundsPerInchSecondSquared: return this.PoundsPerInchSecondSquared;
+            case PressureUnits.MetersOfWaterColumn: return this.MetersOfWaterColumn;
+            case PressureUnits.InchesOfWaterColumn: return this.InchesOfWaterColumn;
+            case PressureUnits.MetersOfElevation: return this.MetersOfElevation;
+            case PressureUnits.FeetOfElevation: return this.FeetOfElevation;
+            case PressureUnits.Micropascals: return this.Micropascals;
+            case PressureUnits.Millipascals: return this.Millipascals;
+            case PressureUnits.Decapascals: return this.Decapascals;
+            case PressureUnits.Hectopascals: return this.Hectopascals;
+            case PressureUnits.Kilopascals: return this.Kilopascals;
+            case PressureUnits.Megapascals: return this.Megapascals;
+            case PressureUnits.Gigapascals: return this.Gigapascals;
+            case PressureUnits.Microbars: return this.Microbars;
+            case PressureUnits.Millibars: return this.Millibars;
+            case PressureUnits.Centibars: return this.Centibars;
+            case PressureUnits.Decibars: return this.Decibars;
+            case PressureUnits.Kilobars: return this.Kilobars;
+            case PressureUnits.Megabars: return this.Megabars;
+            case PressureUnits.KilonewtonsPerSquareMeter: return this.KilonewtonsPerSquareMeter;
+            case PressureUnits.MeganewtonsPerSquareMeter: return this.MeganewtonsPerSquareMeter;
+            case PressureUnits.KilonewtonsPerSquareCentimeter: return this.KilonewtonsPerSquareCentimeter;
+            case PressureUnits.KilonewtonsPerSquareMillimeter: return this.KilonewtonsPerSquareMillimeter;
+            case PressureUnits.KilopoundsForcePerSquareInch: return this.KilopoundsForcePerSquareInch;
+            case PressureUnits.KilopoundsForcePerSquareMil: return this.KilopoundsForcePerSquareMil;
+            case PressureUnits.KilopoundsForcePerSquareFoot: return this.KilopoundsForcePerSquareFoot;
+            case PressureUnits.MillimetersOfWaterColumn: return this.MillimetersOfWaterColumn;
+            case PressureUnits.CentimetersOfWaterColumn: return this.CentimetersOfWaterColumn;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: PressureUnits): number {
         switch (toUnit) {
                 
@@ -1335,49 +1398,49 @@ export class Pressure {
             case PressureUnits.FeetOfElevation:
                 return this.FeetOfElevation + ` ft of elevation`;
             case PressureUnits.Micropascals:
-                return this.Micropascals + ` `;
+                return this.Micropascals + ` μPa`;
             case PressureUnits.Millipascals:
-                return this.Millipascals + ` `;
+                return this.Millipascals + ` mPa`;
             case PressureUnits.Decapascals:
-                return this.Decapascals + ` `;
+                return this.Decapascals + ` daPa`;
             case PressureUnits.Hectopascals:
-                return this.Hectopascals + ` `;
+                return this.Hectopascals + ` hPa`;
             case PressureUnits.Kilopascals:
-                return this.Kilopascals + ` `;
+                return this.Kilopascals + ` kPa`;
             case PressureUnits.Megapascals:
-                return this.Megapascals + ` `;
+                return this.Megapascals + ` MPa`;
             case PressureUnits.Gigapascals:
-                return this.Gigapascals + ` `;
+                return this.Gigapascals + ` GPa`;
             case PressureUnits.Microbars:
-                return this.Microbars + ` `;
+                return this.Microbars + ` μbar`;
             case PressureUnits.Millibars:
-                return this.Millibars + ` `;
+                return this.Millibars + ` mbar`;
             case PressureUnits.Centibars:
-                return this.Centibars + ` `;
+                return this.Centibars + ` cbar`;
             case PressureUnits.Decibars:
-                return this.Decibars + ` `;
+                return this.Decibars + ` dbar`;
             case PressureUnits.Kilobars:
-                return this.Kilobars + ` `;
+                return this.Kilobars + ` kbar`;
             case PressureUnits.Megabars:
-                return this.Megabars + ` `;
+                return this.Megabars + ` Mbar`;
             case PressureUnits.KilonewtonsPerSquareMeter:
-                return this.KilonewtonsPerSquareMeter + ` `;
+                return this.KilonewtonsPerSquareMeter + ` kN/m²`;
             case PressureUnits.MeganewtonsPerSquareMeter:
-                return this.MeganewtonsPerSquareMeter + ` `;
+                return this.MeganewtonsPerSquareMeter + ` MN/m²`;
             case PressureUnits.KilonewtonsPerSquareCentimeter:
-                return this.KilonewtonsPerSquareCentimeter + ` `;
+                return this.KilonewtonsPerSquareCentimeter + ` kN/cm²`;
             case PressureUnits.KilonewtonsPerSquareMillimeter:
-                return this.KilonewtonsPerSquareMillimeter + ` `;
+                return this.KilonewtonsPerSquareMillimeter + ` kN/mm²`;
             case PressureUnits.KilopoundsForcePerSquareInch:
-                return this.KilopoundsForcePerSquareInch + ` `;
+                return this.KilopoundsForcePerSquareInch + ` kpsi`;
             case PressureUnits.KilopoundsForcePerSquareMil:
-                return this.KilopoundsForcePerSquareMil + ` `;
+                return this.KilopoundsForcePerSquareMil + ` klb/mil²`;
             case PressureUnits.KilopoundsForcePerSquareFoot:
-                return this.KilopoundsForcePerSquareFoot + ` `;
+                return this.KilopoundsForcePerSquareFoot + ` klb/ft²`;
             case PressureUnits.MillimetersOfWaterColumn:
-                return this.MillimetersOfWaterColumn + ` `;
+                return this.MillimetersOfWaterColumn + ` mmH₂O`;
             case PressureUnits.CentimetersOfWaterColumn:
-                return this.CentimetersOfWaterColumn + ` `;
+                return this.CentimetersOfWaterColumn + ` cmH₂O`;
         default:
             break;
         }
@@ -1450,49 +1513,49 @@ export class Pressure {
             case PressureUnits.FeetOfElevation:
                 return `ft of elevation`;
             case PressureUnits.Micropascals:
-                return ``;
+                return `μPa`;
             case PressureUnits.Millipascals:
-                return ``;
+                return `mPa`;
             case PressureUnits.Decapascals:
-                return ``;
+                return `daPa`;
             case PressureUnits.Hectopascals:
-                return ``;
+                return `hPa`;
             case PressureUnits.Kilopascals:
-                return ``;
+                return `kPa`;
             case PressureUnits.Megapascals:
-                return ``;
+                return `MPa`;
             case PressureUnits.Gigapascals:
-                return ``;
+                return `GPa`;
             case PressureUnits.Microbars:
-                return ``;
+                return `μbar`;
             case PressureUnits.Millibars:
-                return ``;
+                return `mbar`;
             case PressureUnits.Centibars:
-                return ``;
+                return `cbar`;
             case PressureUnits.Decibars:
-                return ``;
+                return `dbar`;
             case PressureUnits.Kilobars:
-                return ``;
+                return `kbar`;
             case PressureUnits.Megabars:
-                return ``;
+                return `Mbar`;
             case PressureUnits.KilonewtonsPerSquareMeter:
-                return ``;
+                return `kN/m²`;
             case PressureUnits.MeganewtonsPerSquareMeter:
-                return ``;
+                return `MN/m²`;
             case PressureUnits.KilonewtonsPerSquareCentimeter:
-                return ``;
+                return `kN/cm²`;
             case PressureUnits.KilonewtonsPerSquareMillimeter:
-                return ``;
+                return `kN/mm²`;
             case PressureUnits.KilopoundsForcePerSquareInch:
-                return ``;
+                return `kpsi`;
             case PressureUnits.KilopoundsForcePerSquareMil:
-                return ``;
+                return `klb/mil²`;
             case PressureUnits.KilopoundsForcePerSquareFoot:
-                return ``;
+                return `klb/ft²`;
             case PressureUnits.MillimetersOfWaterColumn:
-                return ``;
+                return `mmH₂O`;
             case PressureUnits.CentimetersOfWaterColumn:
-                return ``;
+                return `cmH₂O`;
         default:
             break;
         }

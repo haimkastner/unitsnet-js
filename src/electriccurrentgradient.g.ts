@@ -173,6 +173,27 @@ export class ElectricCurrentGradient {
         return new ElectricCurrentGradient(value, ElectricCurrentGradientUnits.MilliamperesPerMinute);
     }
 
+    /**
+     * Convert ElectricCurrentGradient to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricCurrentGradientUnits): number {
+        switch (toUnit) {
+            case ElectricCurrentGradientUnits.AmperesPerSecond: return this.AmperesPerSecond;
+            case ElectricCurrentGradientUnits.AmperesPerMinute: return this.AmperesPerMinute;
+            case ElectricCurrentGradientUnits.AmperesPerMillisecond: return this.AmperesPerMillisecond;
+            case ElectricCurrentGradientUnits.AmperesPerMicrosecond: return this.AmperesPerMicrosecond;
+            case ElectricCurrentGradientUnits.AmperesPerNanosecond: return this.AmperesPerNanosecond;
+            case ElectricCurrentGradientUnits.MilliamperesPerSecond: return this.MilliamperesPerSecond;
+            case ElectricCurrentGradientUnits.MilliamperesPerMinute: return this.MilliamperesPerMinute;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricCurrentGradientUnits): number {
         switch (toUnit) {
                 
@@ -241,9 +262,9 @@ export class ElectricCurrentGradient {
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
                 return this.AmperesPerNanosecond + ` A/ns`;
             case ElectricCurrentGradientUnits.MilliamperesPerSecond:
-                return this.MilliamperesPerSecond + ` `;
+                return this.MilliamperesPerSecond + ` mA/s`;
             case ElectricCurrentGradientUnits.MilliamperesPerMinute:
-                return this.MilliamperesPerMinute + ` `;
+                return this.MilliamperesPerMinute + ` mA/min`;
         default:
             break;
         }
@@ -272,9 +293,9 @@ export class ElectricCurrentGradient {
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
                 return `A/ns`;
             case ElectricCurrentGradientUnits.MilliamperesPerSecond:
-                return ``;
+                return `mA/s`;
             case ElectricCurrentGradientUnits.MilliamperesPerMinute:
-                return ``;
+                return `mA/min`;
         default:
             break;
         }

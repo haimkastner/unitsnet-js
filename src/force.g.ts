@@ -341,6 +341,35 @@ export class Force {
         return new Force(value, ForceUnits.KilopoundsForce);
     }
 
+    /**
+     * Convert Force to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ForceUnits): number {
+        switch (toUnit) {
+            case ForceUnits.Dyne: return this.Dyne;
+            case ForceUnits.KilogramsForce: return this.KilogramsForce;
+            case ForceUnits.TonnesForce: return this.TonnesForce;
+            case ForceUnits.Newtons: return this.Newtons;
+            case ForceUnits.KiloPonds: return this.KiloPonds;
+            case ForceUnits.Poundals: return this.Poundals;
+            case ForceUnits.PoundsForce: return this.PoundsForce;
+            case ForceUnits.OunceForce: return this.OunceForce;
+            case ForceUnits.ShortTonsForce: return this.ShortTonsForce;
+            case ForceUnits.Micronewtons: return this.Micronewtons;
+            case ForceUnits.Millinewtons: return this.Millinewtons;
+            case ForceUnits.Decanewtons: return this.Decanewtons;
+            case ForceUnits.Kilonewtons: return this.Kilonewtons;
+            case ForceUnits.Meganewtons: return this.Meganewtons;
+            case ForceUnits.KilopoundsForce: return this.KilopoundsForce;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ForceUnits): number {
         switch (toUnit) {
                 
@@ -449,17 +478,17 @@ export class Force {
             case ForceUnits.ShortTonsForce:
                 return this.ShortTonsForce + ` tf (short)`;
             case ForceUnits.Micronewtons:
-                return this.Micronewtons + ` `;
+                return this.Micronewtons + ` μN`;
             case ForceUnits.Millinewtons:
-                return this.Millinewtons + ` `;
+                return this.Millinewtons + ` mN`;
             case ForceUnits.Decanewtons:
-                return this.Decanewtons + ` `;
+                return this.Decanewtons + ` daN`;
             case ForceUnits.Kilonewtons:
-                return this.Kilonewtons + ` `;
+                return this.Kilonewtons + ` kN`;
             case ForceUnits.Meganewtons:
-                return this.Meganewtons + ` `;
+                return this.Meganewtons + ` MN`;
             case ForceUnits.KilopoundsForce:
-                return this.KilopoundsForce + ` `;
+                return this.KilopoundsForce + ` klbf`;
         default:
             break;
         }
@@ -496,17 +525,17 @@ export class Force {
             case ForceUnits.ShortTonsForce:
                 return `tf (short)`;
             case ForceUnits.Micronewtons:
-                return ``;
+                return `μN`;
             case ForceUnits.Millinewtons:
-                return ``;
+                return `mN`;
             case ForceUnits.Decanewtons:
-                return ``;
+                return `daN`;
             case ForceUnits.Kilonewtons:
-                return ``;
+                return `kN`;
             case ForceUnits.Meganewtons:
-                return ``;
+                return `MN`;
             case ForceUnits.KilopoundsForce:
-                return ``;
+                return `klbf`;
         default:
             break;
         }

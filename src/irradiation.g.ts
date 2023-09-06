@@ -173,6 +173,27 @@ export class Irradiation {
         return new Irradiation(value, IrradiationUnits.KilowattHoursPerSquareMeter);
     }
 
+    /**
+     * Convert Irradiation to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: IrradiationUnits): number {
+        switch (toUnit) {
+            case IrradiationUnits.JoulesPerSquareMeter: return this.JoulesPerSquareMeter;
+            case IrradiationUnits.JoulesPerSquareCentimeter: return this.JoulesPerSquareCentimeter;
+            case IrradiationUnits.JoulesPerSquareMillimeter: return this.JoulesPerSquareMillimeter;
+            case IrradiationUnits.WattHoursPerSquareMeter: return this.WattHoursPerSquareMeter;
+            case IrradiationUnits.KilojoulesPerSquareMeter: return this.KilojoulesPerSquareMeter;
+            case IrradiationUnits.MillijoulesPerSquareCentimeter: return this.MillijoulesPerSquareCentimeter;
+            case IrradiationUnits.KilowattHoursPerSquareMeter: return this.KilowattHoursPerSquareMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: IrradiationUnits): number {
         switch (toUnit) {
                 
@@ -239,11 +260,11 @@ export class Irradiation {
             case IrradiationUnits.WattHoursPerSquareMeter:
                 return this.WattHoursPerSquareMeter + ` Wh/m²`;
             case IrradiationUnits.KilojoulesPerSquareMeter:
-                return this.KilojoulesPerSquareMeter + ` `;
+                return this.KilojoulesPerSquareMeter + ` kJ/m²`;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
-                return this.MillijoulesPerSquareCentimeter + ` `;
+                return this.MillijoulesPerSquareCentimeter + ` mJ/cm²`;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
-                return this.KilowattHoursPerSquareMeter + ` `;
+                return this.KilowattHoursPerSquareMeter + ` kWh/m²`;
         default:
             break;
         }
@@ -270,11 +291,11 @@ export class Irradiation {
             case IrradiationUnits.WattHoursPerSquareMeter:
                 return `Wh/m²`;
             case IrradiationUnits.KilojoulesPerSquareMeter:
-                return ``;
+                return `kJ/m²`;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
-                return ``;
+                return `mJ/cm²`;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
-                return ``;
+                return `kWh/m²`;
         default:
             break;
         }

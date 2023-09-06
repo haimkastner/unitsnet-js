@@ -341,6 +341,35 @@ export class ForceChangeRate {
         return new ForceChangeRate(value, ForceChangeRateUnits.KilopoundsForcePerSecond);
     }
 
+    /**
+     * Convert ForceChangeRate to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ForceChangeRateUnits): number {
+        switch (toUnit) {
+            case ForceChangeRateUnits.NewtonsPerMinute: return this.NewtonsPerMinute;
+            case ForceChangeRateUnits.NewtonsPerSecond: return this.NewtonsPerSecond;
+            case ForceChangeRateUnits.PoundsForcePerMinute: return this.PoundsForcePerMinute;
+            case ForceChangeRateUnits.PoundsForcePerSecond: return this.PoundsForcePerSecond;
+            case ForceChangeRateUnits.DecanewtonsPerMinute: return this.DecanewtonsPerMinute;
+            case ForceChangeRateUnits.KilonewtonsPerMinute: return this.KilonewtonsPerMinute;
+            case ForceChangeRateUnits.NanonewtonsPerSecond: return this.NanonewtonsPerSecond;
+            case ForceChangeRateUnits.MicronewtonsPerSecond: return this.MicronewtonsPerSecond;
+            case ForceChangeRateUnits.MillinewtonsPerSecond: return this.MillinewtonsPerSecond;
+            case ForceChangeRateUnits.CentinewtonsPerSecond: return this.CentinewtonsPerSecond;
+            case ForceChangeRateUnits.DecinewtonsPerSecond: return this.DecinewtonsPerSecond;
+            case ForceChangeRateUnits.DecanewtonsPerSecond: return this.DecanewtonsPerSecond;
+            case ForceChangeRateUnits.KilonewtonsPerSecond: return this.KilonewtonsPerSecond;
+            case ForceChangeRateUnits.KilopoundsForcePerMinute: return this.KilopoundsForcePerMinute;
+            case ForceChangeRateUnits.KilopoundsForcePerSecond: return this.KilopoundsForcePerSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ForceChangeRateUnits): number {
         switch (toUnit) {
                 
@@ -439,27 +468,27 @@ export class ForceChangeRate {
             case ForceChangeRateUnits.PoundsForcePerSecond:
                 return this.PoundsForcePerSecond + ` lbf/s`;
             case ForceChangeRateUnits.DecanewtonsPerMinute:
-                return this.DecanewtonsPerMinute + ` `;
+                return this.DecanewtonsPerMinute + ` daN/min`;
             case ForceChangeRateUnits.KilonewtonsPerMinute:
-                return this.KilonewtonsPerMinute + ` `;
+                return this.KilonewtonsPerMinute + ` kN/min`;
             case ForceChangeRateUnits.NanonewtonsPerSecond:
-                return this.NanonewtonsPerSecond + ` `;
+                return this.NanonewtonsPerSecond + ` nN/s`;
             case ForceChangeRateUnits.MicronewtonsPerSecond:
-                return this.MicronewtonsPerSecond + ` `;
+                return this.MicronewtonsPerSecond + ` μN/s`;
             case ForceChangeRateUnits.MillinewtonsPerSecond:
-                return this.MillinewtonsPerSecond + ` `;
+                return this.MillinewtonsPerSecond + ` mN/s`;
             case ForceChangeRateUnits.CentinewtonsPerSecond:
-                return this.CentinewtonsPerSecond + ` `;
+                return this.CentinewtonsPerSecond + ` cN/s`;
             case ForceChangeRateUnits.DecinewtonsPerSecond:
-                return this.DecinewtonsPerSecond + ` `;
+                return this.DecinewtonsPerSecond + ` dN/s`;
             case ForceChangeRateUnits.DecanewtonsPerSecond:
-                return this.DecanewtonsPerSecond + ` `;
+                return this.DecanewtonsPerSecond + ` daN/s`;
             case ForceChangeRateUnits.KilonewtonsPerSecond:
-                return this.KilonewtonsPerSecond + ` `;
+                return this.KilonewtonsPerSecond + ` kN/s`;
             case ForceChangeRateUnits.KilopoundsForcePerMinute:
-                return this.KilopoundsForcePerMinute + ` `;
+                return this.KilopoundsForcePerMinute + ` klbf/min`;
             case ForceChangeRateUnits.KilopoundsForcePerSecond:
-                return this.KilopoundsForcePerSecond + ` `;
+                return this.KilopoundsForcePerSecond + ` klbf/s`;
         default:
             break;
         }
@@ -486,27 +515,27 @@ export class ForceChangeRate {
             case ForceChangeRateUnits.PoundsForcePerSecond:
                 return `lbf/s`;
             case ForceChangeRateUnits.DecanewtonsPerMinute:
-                return ``;
+                return `daN/min`;
             case ForceChangeRateUnits.KilonewtonsPerMinute:
-                return ``;
+                return `kN/min`;
             case ForceChangeRateUnits.NanonewtonsPerSecond:
-                return ``;
+                return `nN/s`;
             case ForceChangeRateUnits.MicronewtonsPerSecond:
-                return ``;
+                return `μN/s`;
             case ForceChangeRateUnits.MillinewtonsPerSecond:
-                return ``;
+                return `mN/s`;
             case ForceChangeRateUnits.CentinewtonsPerSecond:
-                return ``;
+                return `cN/s`;
             case ForceChangeRateUnits.DecinewtonsPerSecond:
-                return ``;
+                return `dN/s`;
             case ForceChangeRateUnits.DecanewtonsPerSecond:
-                return ``;
+                return `daN/s`;
             case ForceChangeRateUnits.KilonewtonsPerSecond:
-                return ``;
+                return `kN/s`;
             case ForceChangeRateUnits.KilopoundsForcePerMinute:
-                return ``;
+                return `klbf/min`;
             case ForceChangeRateUnits.KilopoundsForcePerSecond:
-                return ``;
+                return `klbf/s`;
         default:
             break;
         }

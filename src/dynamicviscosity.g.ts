@@ -236,6 +236,30 @@ export class DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.Centipoise);
     }
 
+    /**
+     * Convert DynamicViscosity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: DynamicViscosityUnits): number {
+        switch (toUnit) {
+            case DynamicViscosityUnits.NewtonSecondsPerMeterSquared: return this.NewtonSecondsPerMeterSquared;
+            case DynamicViscosityUnits.PascalSeconds: return this.PascalSeconds;
+            case DynamicViscosityUnits.Poise: return this.Poise;
+            case DynamicViscosityUnits.Reyns: return this.Reyns;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareInch: return this.PoundsForceSecondPerSquareInch;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot: return this.PoundsForceSecondPerSquareFoot;
+            case DynamicViscosityUnits.PoundsPerFootSecond: return this.PoundsPerFootSecond;
+            case DynamicViscosityUnits.MillipascalSeconds: return this.MillipascalSeconds;
+            case DynamicViscosityUnits.MicropascalSeconds: return this.MicropascalSeconds;
+            case DynamicViscosityUnits.Centipoise: return this.Centipoise;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: DynamicViscosityUnits): number {
         switch (toUnit) {
                 
@@ -320,11 +344,11 @@ export class DynamicViscosity {
             case DynamicViscosityUnits.PoundsPerFootSecond:
                 return this.PoundsPerFootSecond + ` lb/ft·s`;
             case DynamicViscosityUnits.MillipascalSeconds:
-                return this.MillipascalSeconds + ` `;
+                return this.MillipascalSeconds + ` mPa·s`;
             case DynamicViscosityUnits.MicropascalSeconds:
-                return this.MicropascalSeconds + ` `;
+                return this.MicropascalSeconds + ` μPa·s`;
             case DynamicViscosityUnits.Centipoise:
-                return this.Centipoise + ` `;
+                return this.Centipoise + ` cP`;
         default:
             break;
         }
@@ -357,11 +381,11 @@ export class DynamicViscosity {
             case DynamicViscosityUnits.PoundsPerFootSecond:
                 return `lb/ft·s`;
             case DynamicViscosityUnits.MillipascalSeconds:
-                return ``;
+                return `mPa·s`;
             case DynamicViscosityUnits.MicropascalSeconds:
-                return ``;
+                return `μPa·s`;
             case DynamicViscosityUnits.Centipoise:
-                return ``;
+                return `cP`;
         default:
             break;
         }

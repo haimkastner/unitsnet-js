@@ -299,6 +299,33 @@ export class MolarMass {
         return new MolarMass(value, MolarMassUnits.MegapoundsPerMole);
     }
 
+    /**
+     * Convert MolarMass to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MolarMassUnits): number {
+        switch (toUnit) {
+            case MolarMassUnits.GramsPerMole: return this.GramsPerMole;
+            case MolarMassUnits.KilogramsPerKilomole: return this.KilogramsPerKilomole;
+            case MolarMassUnits.PoundsPerMole: return this.PoundsPerMole;
+            case MolarMassUnits.NanogramsPerMole: return this.NanogramsPerMole;
+            case MolarMassUnits.MicrogramsPerMole: return this.MicrogramsPerMole;
+            case MolarMassUnits.MilligramsPerMole: return this.MilligramsPerMole;
+            case MolarMassUnits.CentigramsPerMole: return this.CentigramsPerMole;
+            case MolarMassUnits.DecigramsPerMole: return this.DecigramsPerMole;
+            case MolarMassUnits.DecagramsPerMole: return this.DecagramsPerMole;
+            case MolarMassUnits.HectogramsPerMole: return this.HectogramsPerMole;
+            case MolarMassUnits.KilogramsPerMole: return this.KilogramsPerMole;
+            case MolarMassUnits.KilopoundsPerMole: return this.KilopoundsPerMole;
+            case MolarMassUnits.MegapoundsPerMole: return this.MegapoundsPerMole;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MolarMassUnits): number {
         switch (toUnit) {
                 
@@ -387,25 +414,25 @@ export class MolarMass {
             case MolarMassUnits.PoundsPerMole:
                 return this.PoundsPerMole + ` lb/mol`;
             case MolarMassUnits.NanogramsPerMole:
-                return this.NanogramsPerMole + ` `;
+                return this.NanogramsPerMole + ` ng/mol`;
             case MolarMassUnits.MicrogramsPerMole:
-                return this.MicrogramsPerMole + ` `;
+                return this.MicrogramsPerMole + ` μg/mol`;
             case MolarMassUnits.MilligramsPerMole:
-                return this.MilligramsPerMole + ` `;
+                return this.MilligramsPerMole + ` mg/mol`;
             case MolarMassUnits.CentigramsPerMole:
-                return this.CentigramsPerMole + ` `;
+                return this.CentigramsPerMole + ` cg/mol`;
             case MolarMassUnits.DecigramsPerMole:
-                return this.DecigramsPerMole + ` `;
+                return this.DecigramsPerMole + ` dg/mol`;
             case MolarMassUnits.DecagramsPerMole:
-                return this.DecagramsPerMole + ` `;
+                return this.DecagramsPerMole + ` dag/mol`;
             case MolarMassUnits.HectogramsPerMole:
-                return this.HectogramsPerMole + ` `;
+                return this.HectogramsPerMole + ` hg/mol`;
             case MolarMassUnits.KilogramsPerMole:
-                return this.KilogramsPerMole + ` `;
+                return this.KilogramsPerMole + ` kg/mol`;
             case MolarMassUnits.KilopoundsPerMole:
-                return this.KilopoundsPerMole + ` `;
+                return this.KilopoundsPerMole + ` klb/mol`;
             case MolarMassUnits.MegapoundsPerMole:
-                return this.MegapoundsPerMole + ` `;
+                return this.MegapoundsPerMole + ` Mlb/mol`;
         default:
             break;
         }
@@ -430,25 +457,25 @@ export class MolarMass {
             case MolarMassUnits.PoundsPerMole:
                 return `lb/mol`;
             case MolarMassUnits.NanogramsPerMole:
-                return ``;
+                return `ng/mol`;
             case MolarMassUnits.MicrogramsPerMole:
-                return ``;
+                return `μg/mol`;
             case MolarMassUnits.MilligramsPerMole:
-                return ``;
+                return `mg/mol`;
             case MolarMassUnits.CentigramsPerMole:
-                return ``;
+                return `cg/mol`;
             case MolarMassUnits.DecigramsPerMole:
-                return ``;
+                return `dg/mol`;
             case MolarMassUnits.DecagramsPerMole:
-                return ``;
+                return `dag/mol`;
             case MolarMassUnits.HectogramsPerMole:
-                return ``;
+                return `hg/mol`;
             case MolarMassUnits.KilogramsPerMole:
-                return ``;
+                return `kg/mol`;
             case MolarMassUnits.KilopoundsPerMole:
-                return ``;
+                return `klb/mol`;
             case MolarMassUnits.MegapoundsPerMole:
-                return ``;
+                return `Mlb/mol`;
         default:
             break;
         }

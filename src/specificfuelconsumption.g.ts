@@ -110,6 +110,24 @@ export class SpecificFuelConsumption {
         return new SpecificFuelConsumption(value, SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond);
     }
 
+    /**
+     * Convert SpecificFuelConsumption to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: SpecificFuelConsumptionUnits): number {
+        switch (toUnit) {
+            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return this.PoundsMassPerPoundForceHour;
+            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return this.KilogramsPerKilogramForceHour;
+            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return this.GramsPerKiloNewtonSecond;
+            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return this.KilogramsPerKiloNewtonSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: SpecificFuelConsumptionUnits): number {
         switch (toUnit) {
                 
@@ -162,7 +180,7 @@ export class SpecificFuelConsumption {
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
                 return this.GramsPerKiloNewtonSecond + ` g/(kN�s)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
-                return this.KilogramsPerKiloNewtonSecond + ` `;
+                return this.KilogramsPerKiloNewtonSecond + ` kg/(kN�s)`;
         default:
             break;
         }
@@ -187,7 +205,7 @@ export class SpecificFuelConsumption {
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
                 return `g/(kN�s)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
-                return ``;
+                return `kg/(kN�s)`;
         default:
             break;
         }

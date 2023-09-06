@@ -257,6 +257,31 @@ export class Molarity {
         return new Molarity(value, MolarityUnits.DecimolesPerLiter);
     }
 
+    /**
+     * Convert Molarity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MolarityUnits): number {
+        switch (toUnit) {
+            case MolarityUnits.MolesPerCubicMeter: return this.MolesPerCubicMeter;
+            case MolarityUnits.MolesPerLiter: return this.MolesPerLiter;
+            case MolarityUnits.PoundMolesPerCubicFoot: return this.PoundMolesPerCubicFoot;
+            case MolarityUnits.KilomolesPerCubicMeter: return this.KilomolesPerCubicMeter;
+            case MolarityUnits.FemtomolesPerLiter: return this.FemtomolesPerLiter;
+            case MolarityUnits.PicomolesPerLiter: return this.PicomolesPerLiter;
+            case MolarityUnits.NanomolesPerLiter: return this.NanomolesPerLiter;
+            case MolarityUnits.MicromolesPerLiter: return this.MicromolesPerLiter;
+            case MolarityUnits.MillimolesPerLiter: return this.MillimolesPerLiter;
+            case MolarityUnits.CentimolesPerLiter: return this.CentimolesPerLiter;
+            case MolarityUnits.DecimolesPerLiter: return this.DecimolesPerLiter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MolarityUnits): number {
         switch (toUnit) {
                 
@@ -337,21 +362,21 @@ export class Molarity {
             case MolarityUnits.PoundMolesPerCubicFoot:
                 return this.PoundMolesPerCubicFoot + ` lbmol/ft³`;
             case MolarityUnits.KilomolesPerCubicMeter:
-                return this.KilomolesPerCubicMeter + ` `;
+                return this.KilomolesPerCubicMeter + ` kmol/m³`;
             case MolarityUnits.FemtomolesPerLiter:
-                return this.FemtomolesPerLiter + ` `;
+                return this.FemtomolesPerLiter + ` fmol/L`;
             case MolarityUnits.PicomolesPerLiter:
-                return this.PicomolesPerLiter + ` `;
+                return this.PicomolesPerLiter + ` pmol/L`;
             case MolarityUnits.NanomolesPerLiter:
-                return this.NanomolesPerLiter + ` `;
+                return this.NanomolesPerLiter + ` nmol/L`;
             case MolarityUnits.MicromolesPerLiter:
-                return this.MicromolesPerLiter + ` `;
+                return this.MicromolesPerLiter + ` μmol/L`;
             case MolarityUnits.MillimolesPerLiter:
-                return this.MillimolesPerLiter + ` `;
+                return this.MillimolesPerLiter + ` mmol/L`;
             case MolarityUnits.CentimolesPerLiter:
-                return this.CentimolesPerLiter + ` `;
+                return this.CentimolesPerLiter + ` cmol/L`;
             case MolarityUnits.DecimolesPerLiter:
-                return this.DecimolesPerLiter + ` `;
+                return this.DecimolesPerLiter + ` dmol/L`;
         default:
             break;
         }
@@ -376,21 +401,21 @@ export class Molarity {
             case MolarityUnits.PoundMolesPerCubicFoot:
                 return `lbmol/ft³`;
             case MolarityUnits.KilomolesPerCubicMeter:
-                return ``;
+                return `kmol/m³`;
             case MolarityUnits.FemtomolesPerLiter:
-                return ``;
+                return `fmol/L`;
             case MolarityUnits.PicomolesPerLiter:
-                return ``;
+                return `pmol/L`;
             case MolarityUnits.NanomolesPerLiter:
-                return ``;
+                return `nmol/L`;
             case MolarityUnits.MicromolesPerLiter:
-                return ``;
+                return `μmol/L`;
             case MolarityUnits.MillimolesPerLiter:
-                return ``;
+                return `mmol/L`;
             case MolarityUnits.CentimolesPerLiter:
-                return ``;
+                return `cmol/L`;
             case MolarityUnits.DecimolesPerLiter:
-                return ``;
+                return `dmol/L`;
         default:
             break;
         }

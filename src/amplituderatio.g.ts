@@ -110,6 +110,24 @@ export class AmplitudeRatio {
         return new AmplitudeRatio(value, AmplitudeRatioUnits.DecibelsUnloaded);
     }
 
+    /**
+     * Convert AmplitudeRatio to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: AmplitudeRatioUnits): number {
+        switch (toUnit) {
+            case AmplitudeRatioUnits.DecibelVolts: return this.DecibelVolts;
+            case AmplitudeRatioUnits.DecibelMicrovolts: return this.DecibelMicrovolts;
+            case AmplitudeRatioUnits.DecibelMillivolts: return this.DecibelMillivolts;
+            case AmplitudeRatioUnits.DecibelsUnloaded: return this.DecibelsUnloaded;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: AmplitudeRatioUnits): number {
         switch (toUnit) {
                 

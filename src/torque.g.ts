@@ -551,6 +551,45 @@ export class Torque {
         return new Torque(value, TorqueUnits.MegapoundForceFeet);
     }
 
+    /**
+     * Convert Torque to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: TorqueUnits): number {
+        switch (toUnit) {
+            case TorqueUnits.NewtonMillimeters: return this.NewtonMillimeters;
+            case TorqueUnits.NewtonCentimeters: return this.NewtonCentimeters;
+            case TorqueUnits.NewtonMeters: return this.NewtonMeters;
+            case TorqueUnits.PoundalFeet: return this.PoundalFeet;
+            case TorqueUnits.PoundForceInches: return this.PoundForceInches;
+            case TorqueUnits.PoundForceFeet: return this.PoundForceFeet;
+            case TorqueUnits.GramForceMillimeters: return this.GramForceMillimeters;
+            case TorqueUnits.GramForceCentimeters: return this.GramForceCentimeters;
+            case TorqueUnits.GramForceMeters: return this.GramForceMeters;
+            case TorqueUnits.KilogramForceMillimeters: return this.KilogramForceMillimeters;
+            case TorqueUnits.KilogramForceCentimeters: return this.KilogramForceCentimeters;
+            case TorqueUnits.KilogramForceMeters: return this.KilogramForceMeters;
+            case TorqueUnits.TonneForceMillimeters: return this.TonneForceMillimeters;
+            case TorqueUnits.TonneForceCentimeters: return this.TonneForceCentimeters;
+            case TorqueUnits.TonneForceMeters: return this.TonneForceMeters;
+            case TorqueUnits.KilonewtonMillimeters: return this.KilonewtonMillimeters;
+            case TorqueUnits.MeganewtonMillimeters: return this.MeganewtonMillimeters;
+            case TorqueUnits.KilonewtonCentimeters: return this.KilonewtonCentimeters;
+            case TorqueUnits.MeganewtonCentimeters: return this.MeganewtonCentimeters;
+            case TorqueUnits.KilonewtonMeters: return this.KilonewtonMeters;
+            case TorqueUnits.MeganewtonMeters: return this.MeganewtonMeters;
+            case TorqueUnits.KilopoundForceInches: return this.KilopoundForceInches;
+            case TorqueUnits.MegapoundForceInches: return this.MegapoundForceInches;
+            case TorqueUnits.KilopoundForceFeet: return this.KilopoundForceFeet;
+            case TorqueUnits.MegapoundForceFeet: return this.MegapoundForceFeet;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: TorqueUnits): number {
         switch (toUnit) {
                 
@@ -711,25 +750,25 @@ export class Torque {
             case TorqueUnits.TonneForceMeters:
                 return this.TonneForceMeters + ` tf·m`;
             case TorqueUnits.KilonewtonMillimeters:
-                return this.KilonewtonMillimeters + ` `;
+                return this.KilonewtonMillimeters + ` kN·mm`;
             case TorqueUnits.MeganewtonMillimeters:
-                return this.MeganewtonMillimeters + ` `;
+                return this.MeganewtonMillimeters + ` MN·mm`;
             case TorqueUnits.KilonewtonCentimeters:
-                return this.KilonewtonCentimeters + ` `;
+                return this.KilonewtonCentimeters + ` kN·cm`;
             case TorqueUnits.MeganewtonCentimeters:
-                return this.MeganewtonCentimeters + ` `;
+                return this.MeganewtonCentimeters + ` MN·cm`;
             case TorqueUnits.KilonewtonMeters:
-                return this.KilonewtonMeters + ` `;
+                return this.KilonewtonMeters + ` kN·m`;
             case TorqueUnits.MeganewtonMeters:
-                return this.MeganewtonMeters + ` `;
+                return this.MeganewtonMeters + ` MN·m`;
             case TorqueUnits.KilopoundForceInches:
-                return this.KilopoundForceInches + ` `;
+                return this.KilopoundForceInches + ` klbf·in`;
             case TorqueUnits.MegapoundForceInches:
-                return this.MegapoundForceInches + ` `;
+                return this.MegapoundForceInches + ` Mlbf·in`;
             case TorqueUnits.KilopoundForceFeet:
-                return this.KilopoundForceFeet + ` `;
+                return this.KilopoundForceFeet + ` klbf·ft`;
             case TorqueUnits.MegapoundForceFeet:
-                return this.MegapoundForceFeet + ` `;
+                return this.MegapoundForceFeet + ` Mlbf·ft`;
         default:
             break;
         }
@@ -778,25 +817,25 @@ export class Torque {
             case TorqueUnits.TonneForceMeters:
                 return `tf·m`;
             case TorqueUnits.KilonewtonMillimeters:
-                return ``;
+                return `kN·mm`;
             case TorqueUnits.MeganewtonMillimeters:
-                return ``;
+                return `MN·mm`;
             case TorqueUnits.KilonewtonCentimeters:
-                return ``;
+                return `kN·cm`;
             case TorqueUnits.MeganewtonCentimeters:
-                return ``;
+                return `MN·cm`;
             case TorqueUnits.KilonewtonMeters:
-                return ``;
+                return `kN·m`;
             case TorqueUnits.MeganewtonMeters:
-                return ``;
+                return `MN·m`;
             case TorqueUnits.KilopoundForceInches:
-                return ``;
+                return `klbf·in`;
             case TorqueUnits.MegapoundForceInches:
-                return ``;
+                return `Mlbf·in`;
             case TorqueUnits.KilopoundForceFeet:
-                return ``;
+                return `klbf·ft`;
             case TorqueUnits.MegapoundForceFeet:
-                return ``;
+                return `Mlbf·ft`;
         default:
             break;
         }

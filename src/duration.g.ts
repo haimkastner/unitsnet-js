@@ -257,6 +257,31 @@ export class Duration {
         return new Duration(value, DurationUnits.Milliseconds);
     }
 
+    /**
+     * Convert Duration to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: DurationUnits): number {
+        switch (toUnit) {
+            case DurationUnits.Years365: return this.Years365;
+            case DurationUnits.Months30: return this.Months30;
+            case DurationUnits.Weeks: return this.Weeks;
+            case DurationUnits.Days: return this.Days;
+            case DurationUnits.Hours: return this.Hours;
+            case DurationUnits.Minutes: return this.Minutes;
+            case DurationUnits.Seconds: return this.Seconds;
+            case DurationUnits.JulianYears: return this.JulianYears;
+            case DurationUnits.Nanoseconds: return this.Nanoseconds;
+            case DurationUnits.Microseconds: return this.Microseconds;
+            case DurationUnits.Milliseconds: return this.Milliseconds;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: DurationUnits): number {
         switch (toUnit) {
                 
@@ -347,11 +372,11 @@ export class Duration {
             case DurationUnits.JulianYears:
                 return this.JulianYears + ` jyr`;
             case DurationUnits.Nanoseconds:
-                return this.Nanoseconds + ` `;
+                return this.Nanoseconds + ` ns`;
             case DurationUnits.Microseconds:
-                return this.Microseconds + ` `;
+                return this.Microseconds + ` μs`;
             case DurationUnits.Milliseconds:
-                return this.Milliseconds + ` `;
+                return this.Milliseconds + ` ms`;
         default:
             break;
         }
@@ -386,11 +411,11 @@ export class Duration {
             case DurationUnits.JulianYears:
                 return `jyr`;
             case DurationUnits.Nanoseconds:
-                return ``;
+                return `ns`;
             case DurationUnits.Microseconds:
-                return ``;
+                return `μs`;
             case DurationUnits.Milliseconds:
-                return ``;
+                return `ms`;
         default:
             break;
         }

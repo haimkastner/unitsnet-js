@@ -89,6 +89,23 @@ export class ElectricCurrentDensity {
         return new ElectricCurrentDensity(value, ElectricCurrentDensityUnits.AmperesPerSquareFoot);
     }
 
+    /**
+     * Convert ElectricCurrentDensity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricCurrentDensityUnits): number {
+        switch (toUnit) {
+            case ElectricCurrentDensityUnits.AmperesPerSquareMeter: return this.AmperesPerSquareMeter;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch: return this.AmperesPerSquareInch;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return this.AmperesPerSquareFoot;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricCurrentDensityUnits): number {
         switch (toUnit) {
                 

@@ -215,6 +215,29 @@ export class SpecificEntropy {
         return new SpecificEntropy(value, SpecificEntropyUnits.KilocaloriesPerGramKelvin);
     }
 
+    /**
+     * Convert SpecificEntropy to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: SpecificEntropyUnits): number {
+        switch (toUnit) {
+            case SpecificEntropyUnits.JoulesPerKilogramKelvin: return this.JoulesPerKilogramKelvin;
+            case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius: return this.JoulesPerKilogramDegreeCelsius;
+            case SpecificEntropyUnits.CaloriesPerGramKelvin: return this.CaloriesPerGramKelvin;
+            case SpecificEntropyUnits.BtusPerPoundFahrenheit: return this.BtusPerPoundFahrenheit;
+            case SpecificEntropyUnits.KilojoulesPerKilogramKelvin: return this.KilojoulesPerKilogramKelvin;
+            case SpecificEntropyUnits.MegajoulesPerKilogramKelvin: return this.MegajoulesPerKilogramKelvin;
+            case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius: return this.KilojoulesPerKilogramDegreeCelsius;
+            case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius: return this.MegajoulesPerKilogramDegreeCelsius;
+            case SpecificEntropyUnits.KilocaloriesPerGramKelvin: return this.KilocaloriesPerGramKelvin;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: SpecificEntropyUnits): number {
         switch (toUnit) {
                 
@@ -289,15 +312,15 @@ export class SpecificEntropy {
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return this.BtusPerPoundFahrenheit + ` BTU/lb·°F`;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
-                return this.KilojoulesPerKilogramKelvin + ` `;
+                return this.KilojoulesPerKilogramKelvin + ` kJ/kg.K`;
             case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
-                return this.MegajoulesPerKilogramKelvin + ` `;
+                return this.MegajoulesPerKilogramKelvin + ` MJ/kg.K`;
             case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
-                return this.KilojoulesPerKilogramDegreeCelsius + ` `;
+                return this.KilojoulesPerKilogramDegreeCelsius + ` kJ/kg.C`;
             case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
-                return this.MegajoulesPerKilogramDegreeCelsius + ` `;
+                return this.MegajoulesPerKilogramDegreeCelsius + ` MJ/kg.C`;
             case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return this.KilocaloriesPerGramKelvin + ` `;
+                return this.KilocaloriesPerGramKelvin + ` kcal/g.K`;
         default:
             break;
         }
@@ -324,15 +347,15 @@ export class SpecificEntropy {
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return `BTU/lb·°F`;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
-                return ``;
+                return `kJ/kg.K`;
             case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
-                return ``;
+                return `MJ/kg.K`;
             case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
-                return ``;
+                return `kJ/kg.C`;
             case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
-                return ``;
+                return `MJ/kg.C`;
             case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return ``;
+                return `kcal/g.K`;
         default:
             break;
         }

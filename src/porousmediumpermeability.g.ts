@@ -131,6 +131,25 @@ export class PorousMediumPermeability {
         return new PorousMediumPermeability(value, PorousMediumPermeabilityUnits.Millidarcys);
     }
 
+    /**
+     * Convert PorousMediumPermeability to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: PorousMediumPermeabilityUnits): number {
+        switch (toUnit) {
+            case PorousMediumPermeabilityUnits.Darcys: return this.Darcys;
+            case PorousMediumPermeabilityUnits.SquareMeters: return this.SquareMeters;
+            case PorousMediumPermeabilityUnits.SquareCentimeters: return this.SquareCentimeters;
+            case PorousMediumPermeabilityUnits.Microdarcys: return this.Microdarcys;
+            case PorousMediumPermeabilityUnits.Millidarcys: return this.Millidarcys;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: PorousMediumPermeabilityUnits): number {
         switch (toUnit) {
                 
@@ -187,9 +206,9 @@ export class PorousMediumPermeability {
             case PorousMediumPermeabilityUnits.SquareCentimeters:
                 return this.SquareCentimeters + ` cm²`;
             case PorousMediumPermeabilityUnits.Microdarcys:
-                return this.Microdarcys + ` `;
+                return this.Microdarcys + ` μD`;
             case PorousMediumPermeabilityUnits.Millidarcys:
-                return this.Millidarcys + ` `;
+                return this.Millidarcys + ` mD`;
         default:
             break;
         }
@@ -214,9 +233,9 @@ export class PorousMediumPermeability {
             case PorousMediumPermeabilityUnits.SquareCentimeters:
                 return `cm²`;
             case PorousMediumPermeabilityUnits.Microdarcys:
-                return ``;
+                return `μD`;
             case PorousMediumPermeabilityUnits.Millidarcys:
-                return ``;
+                return `mD`;
         default:
             break;
         }

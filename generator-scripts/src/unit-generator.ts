@@ -159,10 +159,50 @@ function buildFormulaCases(enumName: string, units: UnitProperties[], isBaseToUn
 }
 
 /**
+ * Build the convert style method
+ */
+function buildConvertToUnitMethod(unitName: string, enumName: string, units: UnitProperties[]): MethodDeclarationStructure {
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: `Convert ${unitName} to a specific unit value.`,
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `toUnit The specific unit to convert to`
+        }, {
+            kind: StructureKind.JSDocTag,
+            tagName: 'returns',
+            text: `The value of the specific unit provided.`
+        }]
+    };
+
+    return {
+        kind: StructureKind.Method,
+        name: 'convert',
+        scope: Scope.Public,
+        parameters: [
+            {
+                name: 'toUnit',
+                type: enumName
+            }
+        ],
+        docs: [docs],
+        returnType: 'number',
+        statements:
+            `switch (toUnit) {
+${units.map(u => `    case ${enumName}.${u.pluralName}: return this.${u.pluralName};\n`).join('')}
+    default:
+        break;
+}
+return NaN;`
+    };
+}
+
+/**
  * Build from base to unit convert method. 
  * @param enumName The unit enum name.
  * @param units The units to convert to.
- * @returns The convert method strucure.
+ * @returns The convert method structure.
  */
 function buildConvertFromBaseMethod(enumName: string, units: UnitProperties[]): MethodDeclarationStructure {
     return {
@@ -527,18 +567,18 @@ export function generateUnitClass(project: Project,
     const { units, unitName } = unitProperties;
     let baseUnit = units.find((unit) =>
         (unit.singularName === unitProperties.baseUnitSingularName)) as UnitProperties;
-    
+
     if (!baseUnit) {
         console.warn(`[generateUnitClass] Unable to find singular unit name matching to "BaseUnit" of -${unitProperties.unitName}-, as fallback looking for "PluralName"...`);
         baseUnit = units.find((unit) =>
-        (unit.pluralName === unitProperties.baseUnitSingularName)) as UnitProperties;
+            (unit.pluralName === unitProperties.baseUnitSingularName)) as UnitProperties;
     }
 
     if (!baseUnit) {
         console.error(`[generateUnitClass] Unable to find singular nor plural Name unit name to "BaseUnit" of -${unitProperties.unitName}- exiting...`);
         process.exit(1);
     }
-        
+
     // Build the enum structure
     const unitsEnum = buildEnum(enumName, units);
 
@@ -575,6 +615,9 @@ export function generateUnitClass(project: Project,
     // Build the convert from base to unit method
     const convertFromBaseMethod = buildConvertFromBaseMethod(enumName, units);
 
+    // Build the alternative method to use convert style
+    const convertToUnitMethod = buildConvertToUnitMethod(unitName, enumName, units)
+
     // Build the convert from unit to base method
     const convertToBaseMethod = buildConvertToBaseMethod(enumName, units);
 
@@ -602,6 +645,7 @@ export function generateUnitClass(project: Project,
         ctors: [unitCtor],
         methods: [
             ...unitCreators,
+            convertToUnitMethod,
             convertFromBaseMethod,
             convertToBaseMethod,
             toStringMethod,

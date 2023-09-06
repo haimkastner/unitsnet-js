@@ -89,6 +89,23 @@ export class MolarEntropy {
         return new MolarEntropy(value, MolarEntropyUnits.MegajoulesPerMoleKelvin);
     }
 
+    /**
+     * Convert MolarEntropy to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MolarEntropyUnits): number {
+        switch (toUnit) {
+            case MolarEntropyUnits.JoulesPerMoleKelvin: return this.JoulesPerMoleKelvin;
+            case MolarEntropyUnits.KilojoulesPerMoleKelvin: return this.KilojoulesPerMoleKelvin;
+            case MolarEntropyUnits.MegajoulesPerMoleKelvin: return this.MegajoulesPerMoleKelvin;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MolarEntropyUnits): number {
         switch (toUnit) {
                 
@@ -133,9 +150,9 @@ export class MolarEntropy {
             case MolarEntropyUnits.JoulesPerMoleKelvin:
                 return this.JoulesPerMoleKelvin + ` J/(mol*K)`;
             case MolarEntropyUnits.KilojoulesPerMoleKelvin:
-                return this.KilojoulesPerMoleKelvin + ` `;
+                return this.KilojoulesPerMoleKelvin + ` kJ/(mol*K)`;
             case MolarEntropyUnits.MegajoulesPerMoleKelvin:
-                return this.MegajoulesPerMoleKelvin + ` `;
+                return this.MegajoulesPerMoleKelvin + ` MJ/(mol*K)`;
         default:
             break;
         }
@@ -156,9 +173,9 @@ export class MolarEntropy {
             case MolarEntropyUnits.JoulesPerMoleKelvin:
                 return `J/(mol*K)`;
             case MolarEntropyUnits.KilojoulesPerMoleKelvin:
-                return ``;
+                return `kJ/(mol*K)`;
             case MolarEntropyUnits.MegajoulesPerMoleKelvin:
-                return ``;
+                return `MJ/(mol*K)`;
         default:
             break;
         }

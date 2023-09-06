@@ -89,6 +89,23 @@ export class ReactiveEnergy {
         return new ReactiveEnergy(value, ReactiveEnergyUnits.MegavoltampereReactiveHours);
     }
 
+    /**
+     * Convert ReactiveEnergy to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ReactiveEnergyUnits): number {
+        switch (toUnit) {
+            case ReactiveEnergyUnits.VoltampereReactiveHours: return this.VoltampereReactiveHours;
+            case ReactiveEnergyUnits.KilovoltampereReactiveHours: return this.KilovoltampereReactiveHours;
+            case ReactiveEnergyUnits.MegavoltampereReactiveHours: return this.MegavoltampereReactiveHours;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ReactiveEnergyUnits): number {
         switch (toUnit) {
                 
@@ -133,9 +150,9 @@ export class ReactiveEnergy {
             case ReactiveEnergyUnits.VoltampereReactiveHours:
                 return this.VoltampereReactiveHours + ` varh`;
             case ReactiveEnergyUnits.KilovoltampereReactiveHours:
-                return this.KilovoltampereReactiveHours + ` `;
+                return this.KilovoltampereReactiveHours + ` kvarh`;
             case ReactiveEnergyUnits.MegavoltampereReactiveHours:
-                return this.MegavoltampereReactiveHours + ` `;
+                return this.MegavoltampereReactiveHours + ` Mvarh`;
         default:
             break;
         }
@@ -156,9 +173,9 @@ export class ReactiveEnergy {
             case ReactiveEnergyUnits.VoltampereReactiveHours:
                 return `varh`;
             case ReactiveEnergyUnits.KilovoltampereReactiveHours:
-                return ``;
+                return `kvarh`;
             case ReactiveEnergyUnits.MegavoltampereReactiveHours:
-                return ``;
+                return `Mvarh`;
         default:
             break;
         }

@@ -152,6 +152,26 @@ export class ApparentPower {
         return new ApparentPower(value, ApparentPowerUnits.Gigavoltamperes);
     }
 
+    /**
+     * Convert ApparentPower to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ApparentPowerUnits): number {
+        switch (toUnit) {
+            case ApparentPowerUnits.Voltamperes: return this.Voltamperes;
+            case ApparentPowerUnits.Microvoltamperes: return this.Microvoltamperes;
+            case ApparentPowerUnits.Millivoltamperes: return this.Millivoltamperes;
+            case ApparentPowerUnits.Kilovoltamperes: return this.Kilovoltamperes;
+            case ApparentPowerUnits.Megavoltamperes: return this.Megavoltamperes;
+            case ApparentPowerUnits.Gigavoltamperes: return this.Gigavoltamperes;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ApparentPowerUnits): number {
         switch (toUnit) {
                 
@@ -208,15 +228,15 @@ export class ApparentPower {
             case ApparentPowerUnits.Voltamperes:
                 return this.Voltamperes + ` VA`;
             case ApparentPowerUnits.Microvoltamperes:
-                return this.Microvoltamperes + ` `;
+                return this.Microvoltamperes + ` μVA`;
             case ApparentPowerUnits.Millivoltamperes:
-                return this.Millivoltamperes + ` `;
+                return this.Millivoltamperes + ` mVA`;
             case ApparentPowerUnits.Kilovoltamperes:
-                return this.Kilovoltamperes + ` `;
+                return this.Kilovoltamperes + ` kVA`;
             case ApparentPowerUnits.Megavoltamperes:
-                return this.Megavoltamperes + ` `;
+                return this.Megavoltamperes + ` MVA`;
             case ApparentPowerUnits.Gigavoltamperes:
-                return this.Gigavoltamperes + ` `;
+                return this.Gigavoltamperes + ` GVA`;
         default:
             break;
         }
@@ -237,15 +257,15 @@ export class ApparentPower {
             case ApparentPowerUnits.Voltamperes:
                 return `VA`;
             case ApparentPowerUnits.Microvoltamperes:
-                return ``;
+                return `μVA`;
             case ApparentPowerUnits.Millivoltamperes:
-                return ``;
+                return `mVA`;
             case ApparentPowerUnits.Kilovoltamperes:
-                return ``;
+                return `kVA`;
             case ApparentPowerUnits.Megavoltamperes:
-                return ``;
+                return `MVA`;
             case ApparentPowerUnits.Gigavoltamperes:
-                return ``;
+                return `GVA`;
         default:
             break;
         }

@@ -320,6 +320,34 @@ export class Area {
         return new Area(value, AreaUnits.SquareNauticalMiles);
     }
 
+    /**
+     * Convert Area to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: AreaUnits): number {
+        switch (toUnit) {
+            case AreaUnits.SquareKilometers: return this.SquareKilometers;
+            case AreaUnits.SquareMeters: return this.SquareMeters;
+            case AreaUnits.SquareDecimeters: return this.SquareDecimeters;
+            case AreaUnits.SquareCentimeters: return this.SquareCentimeters;
+            case AreaUnits.SquareMillimeters: return this.SquareMillimeters;
+            case AreaUnits.SquareMicrometers: return this.SquareMicrometers;
+            case AreaUnits.SquareMiles: return this.SquareMiles;
+            case AreaUnits.SquareYards: return this.SquareYards;
+            case AreaUnits.SquareFeet: return this.SquareFeet;
+            case AreaUnits.UsSurveySquareFeet: return this.UsSurveySquareFeet;
+            case AreaUnits.SquareInches: return this.SquareInches;
+            case AreaUnits.Acres: return this.Acres;
+            case AreaUnits.Hectares: return this.Hectares;
+            case AreaUnits.SquareNauticalMiles: return this.SquareNauticalMiles;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: AreaUnits): number {
         switch (toUnit) {
                 

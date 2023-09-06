@@ -299,6 +299,33 @@ export class Frequency {
         return new Frequency(value, FrequencyUnits.Terahertz);
     }
 
+    /**
+     * Convert Frequency to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: FrequencyUnits): number {
+        switch (toUnit) {
+            case FrequencyUnits.Hertz: return this.Hertz;
+            case FrequencyUnits.RadiansPerSecond: return this.RadiansPerSecond;
+            case FrequencyUnits.CyclesPerMinute: return this.CyclesPerMinute;
+            case FrequencyUnits.CyclesPerHour: return this.CyclesPerHour;
+            case FrequencyUnits.BeatsPerMinute: return this.BeatsPerMinute;
+            case FrequencyUnits.PerSecond: return this.PerSecond;
+            case FrequencyUnits.BUnits: return this.BUnits;
+            case FrequencyUnits.Microhertz: return this.Microhertz;
+            case FrequencyUnits.Millihertz: return this.Millihertz;
+            case FrequencyUnits.Kilohertz: return this.Kilohertz;
+            case FrequencyUnits.Megahertz: return this.Megahertz;
+            case FrequencyUnits.Gigahertz: return this.Gigahertz;
+            case FrequencyUnits.Terahertz: return this.Terahertz;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: FrequencyUnits): number {
         switch (toUnit) {
                 
@@ -395,17 +422,17 @@ export class Frequency {
             case FrequencyUnits.BUnits:
                 return this.BUnits + ` B Units`;
             case FrequencyUnits.Microhertz:
-                return this.Microhertz + ` `;
+                return this.Microhertz + ` μHz`;
             case FrequencyUnits.Millihertz:
-                return this.Millihertz + ` `;
+                return this.Millihertz + ` mHz`;
             case FrequencyUnits.Kilohertz:
-                return this.Kilohertz + ` `;
+                return this.Kilohertz + ` kHz`;
             case FrequencyUnits.Megahertz:
-                return this.Megahertz + ` `;
+                return this.Megahertz + ` MHz`;
             case FrequencyUnits.Gigahertz:
-                return this.Gigahertz + ` `;
+                return this.Gigahertz + ` GHz`;
             case FrequencyUnits.Terahertz:
-                return this.Terahertz + ` `;
+                return this.Terahertz + ` THz`;
         default:
             break;
         }
@@ -438,17 +465,17 @@ export class Frequency {
             case FrequencyUnits.BUnits:
                 return `B Units`;
             case FrequencyUnits.Microhertz:
-                return ``;
+                return `μHz`;
             case FrequencyUnits.Millihertz:
-                return ``;
+                return `mHz`;
             case FrequencyUnits.Kilohertz:
-                return ``;
+                return `kHz`;
             case FrequencyUnits.Megahertz:
-                return ``;
+                return `MHz`;
             case FrequencyUnits.Gigahertz:
-                return ``;
+                return `GHz`;
             case FrequencyUnits.Terahertz:
-                return ``;
+                return `THz`;
         default:
             break;
         }

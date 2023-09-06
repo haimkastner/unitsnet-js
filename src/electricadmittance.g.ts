@@ -110,6 +110,24 @@ export class ElectricAdmittance {
         return new ElectricAdmittance(value, ElectricAdmittanceUnits.Millisiemens);
     }
 
+    /**
+     * Convert ElectricAdmittance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricAdmittanceUnits): number {
+        switch (toUnit) {
+            case ElectricAdmittanceUnits.Siemens: return this.Siemens;
+            case ElectricAdmittanceUnits.Nanosiemens: return this.Nanosiemens;
+            case ElectricAdmittanceUnits.Microsiemens: return this.Microsiemens;
+            case ElectricAdmittanceUnits.Millisiemens: return this.Millisiemens;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricAdmittanceUnits): number {
         switch (toUnit) {
                 
@@ -158,11 +176,11 @@ export class ElectricAdmittance {
             case ElectricAdmittanceUnits.Siemens:
                 return this.Siemens + ` S`;
             case ElectricAdmittanceUnits.Nanosiemens:
-                return this.Nanosiemens + ` `;
+                return this.Nanosiemens + ` nS`;
             case ElectricAdmittanceUnits.Microsiemens:
-                return this.Microsiemens + ` `;
+                return this.Microsiemens + ` μS`;
             case ElectricAdmittanceUnits.Millisiemens:
-                return this.Millisiemens + ` `;
+                return this.Millisiemens + ` mS`;
         default:
             break;
         }
@@ -183,11 +201,11 @@ export class ElectricAdmittance {
             case ElectricAdmittanceUnits.Siemens:
                 return `S`;
             case ElectricAdmittanceUnits.Nanosiemens:
-                return ``;
+                return `nS`;
             case ElectricAdmittanceUnits.Microsiemens:
-                return ``;
+                return `μS`;
             case ElectricAdmittanceUnits.Millisiemens:
-                return ``;
+                return `mS`;
         default:
             break;
         }

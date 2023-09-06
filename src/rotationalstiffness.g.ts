@@ -719,6 +719,53 @@ export class RotationalStiffness {
         return new RotationalStiffness(value, RotationalStiffnessUnits.MeganewtonMillimetersPerRadian);
     }
 
+    /**
+     * Convert RotationalStiffness to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: RotationalStiffnessUnits): number {
+        switch (toUnit) {
+            case RotationalStiffnessUnits.NewtonMetersPerRadian: return this.NewtonMetersPerRadian;
+            case RotationalStiffnessUnits.PoundForceFeetPerDegrees: return this.PoundForceFeetPerDegrees;
+            case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: return this.KilopoundForceFeetPerDegrees;
+            case RotationalStiffnessUnits.NewtonMillimetersPerDegree: return this.NewtonMillimetersPerDegree;
+            case RotationalStiffnessUnits.NewtonMetersPerDegree: return this.NewtonMetersPerDegree;
+            case RotationalStiffnessUnits.NewtonMillimetersPerRadian: return this.NewtonMillimetersPerRadian;
+            case RotationalStiffnessUnits.PoundForceFeetPerRadian: return this.PoundForceFeetPerRadian;
+            case RotationalStiffnessUnits.KilonewtonMetersPerRadian: return this.KilonewtonMetersPerRadian;
+            case RotationalStiffnessUnits.MeganewtonMetersPerRadian: return this.MeganewtonMetersPerRadian;
+            case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree: return this.NanonewtonMillimetersPerDegree;
+            case RotationalStiffnessUnits.MicronewtonMillimetersPerDegree: return this.MicronewtonMillimetersPerDegree;
+            case RotationalStiffnessUnits.MillinewtonMillimetersPerDegree: return this.MillinewtonMillimetersPerDegree;
+            case RotationalStiffnessUnits.CentinewtonMillimetersPerDegree: return this.CentinewtonMillimetersPerDegree;
+            case RotationalStiffnessUnits.DecinewtonMillimetersPerDegree: return this.DecinewtonMillimetersPerDegree;
+            case RotationalStiffnessUnits.DecanewtonMillimetersPerDegree: return this.DecanewtonMillimetersPerDegree;
+            case RotationalStiffnessUnits.KilonewtonMillimetersPerDegree: return this.KilonewtonMillimetersPerDegree;
+            case RotationalStiffnessUnits.MeganewtonMillimetersPerDegree: return this.MeganewtonMillimetersPerDegree;
+            case RotationalStiffnessUnits.NanonewtonMetersPerDegree: return this.NanonewtonMetersPerDegree;
+            case RotationalStiffnessUnits.MicronewtonMetersPerDegree: return this.MicronewtonMetersPerDegree;
+            case RotationalStiffnessUnits.MillinewtonMetersPerDegree: return this.MillinewtonMetersPerDegree;
+            case RotationalStiffnessUnits.CentinewtonMetersPerDegree: return this.CentinewtonMetersPerDegree;
+            case RotationalStiffnessUnits.DecinewtonMetersPerDegree: return this.DecinewtonMetersPerDegree;
+            case RotationalStiffnessUnits.DecanewtonMetersPerDegree: return this.DecanewtonMetersPerDegree;
+            case RotationalStiffnessUnits.KilonewtonMetersPerDegree: return this.KilonewtonMetersPerDegree;
+            case RotationalStiffnessUnits.MeganewtonMetersPerDegree: return this.MeganewtonMetersPerDegree;
+            case RotationalStiffnessUnits.NanonewtonMillimetersPerRadian: return this.NanonewtonMillimetersPerRadian;
+            case RotationalStiffnessUnits.MicronewtonMillimetersPerRadian: return this.MicronewtonMillimetersPerRadian;
+            case RotationalStiffnessUnits.MillinewtonMillimetersPerRadian: return this.MillinewtonMillimetersPerRadian;
+            case RotationalStiffnessUnits.CentinewtonMillimetersPerRadian: return this.CentinewtonMillimetersPerRadian;
+            case RotationalStiffnessUnits.DecinewtonMillimetersPerRadian: return this.DecinewtonMillimetersPerRadian;
+            case RotationalStiffnessUnits.DecanewtonMillimetersPerRadian: return this.DecanewtonMillimetersPerRadian;
+            case RotationalStiffnessUnits.KilonewtonMillimetersPerRadian: return this.KilonewtonMillimetersPerRadian;
+            case RotationalStiffnessUnits.MeganewtonMillimetersPerRadian: return this.MeganewtonMillimetersPerRadian;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: RotationalStiffnessUnits): number {
         switch (toUnit) {
                 
@@ -895,57 +942,57 @@ export class RotationalStiffness {
             case RotationalStiffnessUnits.PoundForceFeetPerRadian:
                 return this.PoundForceFeetPerRadian + ` lbf·ft/rad`;
             case RotationalStiffnessUnits.KilonewtonMetersPerRadian:
-                return this.KilonewtonMetersPerRadian + ` `;
+                return this.KilonewtonMetersPerRadian + ` kN·m/rad`;
             case RotationalStiffnessUnits.MeganewtonMetersPerRadian:
-                return this.MeganewtonMetersPerRadian + ` `;
+                return this.MeganewtonMetersPerRadian + ` MN·m/rad`;
             case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree:
-                return this.NanonewtonMillimetersPerDegree + ` `;
+                return this.NanonewtonMillimetersPerDegree + ` nN·mm/deg`;
             case RotationalStiffnessUnits.MicronewtonMillimetersPerDegree:
-                return this.MicronewtonMillimetersPerDegree + ` `;
+                return this.MicronewtonMillimetersPerDegree + ` μN·mm/deg`;
             case RotationalStiffnessUnits.MillinewtonMillimetersPerDegree:
-                return this.MillinewtonMillimetersPerDegree + ` `;
+                return this.MillinewtonMillimetersPerDegree + ` mN·mm/deg`;
             case RotationalStiffnessUnits.CentinewtonMillimetersPerDegree:
-                return this.CentinewtonMillimetersPerDegree + ` `;
+                return this.CentinewtonMillimetersPerDegree + ` cN·mm/deg`;
             case RotationalStiffnessUnits.DecinewtonMillimetersPerDegree:
-                return this.DecinewtonMillimetersPerDegree + ` `;
+                return this.DecinewtonMillimetersPerDegree + ` dN·mm/deg`;
             case RotationalStiffnessUnits.DecanewtonMillimetersPerDegree:
-                return this.DecanewtonMillimetersPerDegree + ` `;
+                return this.DecanewtonMillimetersPerDegree + ` daN·mm/deg`;
             case RotationalStiffnessUnits.KilonewtonMillimetersPerDegree:
-                return this.KilonewtonMillimetersPerDegree + ` `;
+                return this.KilonewtonMillimetersPerDegree + ` kN·mm/deg`;
             case RotationalStiffnessUnits.MeganewtonMillimetersPerDegree:
-                return this.MeganewtonMillimetersPerDegree + ` `;
+                return this.MeganewtonMillimetersPerDegree + ` MN·mm/deg`;
             case RotationalStiffnessUnits.NanonewtonMetersPerDegree:
-                return this.NanonewtonMetersPerDegree + ` `;
+                return this.NanonewtonMetersPerDegree + ` nN·m/deg`;
             case RotationalStiffnessUnits.MicronewtonMetersPerDegree:
-                return this.MicronewtonMetersPerDegree + ` `;
+                return this.MicronewtonMetersPerDegree + ` μN·m/deg`;
             case RotationalStiffnessUnits.MillinewtonMetersPerDegree:
-                return this.MillinewtonMetersPerDegree + ` `;
+                return this.MillinewtonMetersPerDegree + ` mN·m/deg`;
             case RotationalStiffnessUnits.CentinewtonMetersPerDegree:
-                return this.CentinewtonMetersPerDegree + ` `;
+                return this.CentinewtonMetersPerDegree + ` cN·m/deg`;
             case RotationalStiffnessUnits.DecinewtonMetersPerDegree:
-                return this.DecinewtonMetersPerDegree + ` `;
+                return this.DecinewtonMetersPerDegree + ` dN·m/deg`;
             case RotationalStiffnessUnits.DecanewtonMetersPerDegree:
-                return this.DecanewtonMetersPerDegree + ` `;
+                return this.DecanewtonMetersPerDegree + ` daN·m/deg`;
             case RotationalStiffnessUnits.KilonewtonMetersPerDegree:
-                return this.KilonewtonMetersPerDegree + ` `;
+                return this.KilonewtonMetersPerDegree + ` kN·m/deg`;
             case RotationalStiffnessUnits.MeganewtonMetersPerDegree:
-                return this.MeganewtonMetersPerDegree + ` `;
+                return this.MeganewtonMetersPerDegree + ` MN·m/deg`;
             case RotationalStiffnessUnits.NanonewtonMillimetersPerRadian:
-                return this.NanonewtonMillimetersPerRadian + ` `;
+                return this.NanonewtonMillimetersPerRadian + ` nN·mm/rad`;
             case RotationalStiffnessUnits.MicronewtonMillimetersPerRadian:
-                return this.MicronewtonMillimetersPerRadian + ` `;
+                return this.MicronewtonMillimetersPerRadian + ` μN·mm/rad`;
             case RotationalStiffnessUnits.MillinewtonMillimetersPerRadian:
-                return this.MillinewtonMillimetersPerRadian + ` `;
+                return this.MillinewtonMillimetersPerRadian + ` mN·mm/rad`;
             case RotationalStiffnessUnits.CentinewtonMillimetersPerRadian:
-                return this.CentinewtonMillimetersPerRadian + ` `;
+                return this.CentinewtonMillimetersPerRadian + ` cN·mm/rad`;
             case RotationalStiffnessUnits.DecinewtonMillimetersPerRadian:
-                return this.DecinewtonMillimetersPerRadian + ` `;
+                return this.DecinewtonMillimetersPerRadian + ` dN·mm/rad`;
             case RotationalStiffnessUnits.DecanewtonMillimetersPerRadian:
-                return this.DecanewtonMillimetersPerRadian + ` `;
+                return this.DecanewtonMillimetersPerRadian + ` daN·mm/rad`;
             case RotationalStiffnessUnits.KilonewtonMillimetersPerRadian:
-                return this.KilonewtonMillimetersPerRadian + ` `;
+                return this.KilonewtonMillimetersPerRadian + ` kN·mm/rad`;
             case RotationalStiffnessUnits.MeganewtonMillimetersPerRadian:
-                return this.MeganewtonMillimetersPerRadian + ` `;
+                return this.MeganewtonMillimetersPerRadian + ` MN·mm/rad`;
         default:
             break;
         }
@@ -978,57 +1025,57 @@ export class RotationalStiffness {
             case RotationalStiffnessUnits.PoundForceFeetPerRadian:
                 return `lbf·ft/rad`;
             case RotationalStiffnessUnits.KilonewtonMetersPerRadian:
-                return ``;
+                return `kN·m/rad`;
             case RotationalStiffnessUnits.MeganewtonMetersPerRadian:
-                return ``;
+                return `MN·m/rad`;
             case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree:
-                return ``;
+                return `nN·mm/deg`;
             case RotationalStiffnessUnits.MicronewtonMillimetersPerDegree:
-                return ``;
+                return `μN·mm/deg`;
             case RotationalStiffnessUnits.MillinewtonMillimetersPerDegree:
-                return ``;
+                return `mN·mm/deg`;
             case RotationalStiffnessUnits.CentinewtonMillimetersPerDegree:
-                return ``;
+                return `cN·mm/deg`;
             case RotationalStiffnessUnits.DecinewtonMillimetersPerDegree:
-                return ``;
+                return `dN·mm/deg`;
             case RotationalStiffnessUnits.DecanewtonMillimetersPerDegree:
-                return ``;
+                return `daN·mm/deg`;
             case RotationalStiffnessUnits.KilonewtonMillimetersPerDegree:
-                return ``;
+                return `kN·mm/deg`;
             case RotationalStiffnessUnits.MeganewtonMillimetersPerDegree:
-                return ``;
+                return `MN·mm/deg`;
             case RotationalStiffnessUnits.NanonewtonMetersPerDegree:
-                return ``;
+                return `nN·m/deg`;
             case RotationalStiffnessUnits.MicronewtonMetersPerDegree:
-                return ``;
+                return `μN·m/deg`;
             case RotationalStiffnessUnits.MillinewtonMetersPerDegree:
-                return ``;
+                return `mN·m/deg`;
             case RotationalStiffnessUnits.CentinewtonMetersPerDegree:
-                return ``;
+                return `cN·m/deg`;
             case RotationalStiffnessUnits.DecinewtonMetersPerDegree:
-                return ``;
+                return `dN·m/deg`;
             case RotationalStiffnessUnits.DecanewtonMetersPerDegree:
-                return ``;
+                return `daN·m/deg`;
             case RotationalStiffnessUnits.KilonewtonMetersPerDegree:
-                return ``;
+                return `kN·m/deg`;
             case RotationalStiffnessUnits.MeganewtonMetersPerDegree:
-                return ``;
+                return `MN·m/deg`;
             case RotationalStiffnessUnits.NanonewtonMillimetersPerRadian:
-                return ``;
+                return `nN·mm/rad`;
             case RotationalStiffnessUnits.MicronewtonMillimetersPerRadian:
-                return ``;
+                return `μN·mm/rad`;
             case RotationalStiffnessUnits.MillinewtonMillimetersPerRadian:
-                return ``;
+                return `mN·mm/rad`;
             case RotationalStiffnessUnits.CentinewtonMillimetersPerRadian:
-                return ``;
+                return `cN·mm/rad`;
             case RotationalStiffnessUnits.DecinewtonMillimetersPerRadian:
-                return ``;
+                return `dN·mm/rad`;
             case RotationalStiffnessUnits.DecanewtonMillimetersPerRadian:
-                return ``;
+                return `daN·mm/rad`;
             case RotationalStiffnessUnits.KilonewtonMillimetersPerRadian:
-                return ``;
+                return `kN·mm/rad`;
             case RotationalStiffnessUnits.MeganewtonMillimetersPerRadian:
-                return ``;
+                return `MN·mm/rad`;
         default:
             break;
         }

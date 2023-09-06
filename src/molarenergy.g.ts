@@ -89,6 +89,23 @@ export class MolarEnergy {
         return new MolarEnergy(value, MolarEnergyUnits.MegajoulesPerMole);
     }
 
+    /**
+     * Convert MolarEnergy to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MolarEnergyUnits): number {
+        switch (toUnit) {
+            case MolarEnergyUnits.JoulesPerMole: return this.JoulesPerMole;
+            case MolarEnergyUnits.KilojoulesPerMole: return this.KilojoulesPerMole;
+            case MolarEnergyUnits.MegajoulesPerMole: return this.MegajoulesPerMole;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MolarEnergyUnits): number {
         switch (toUnit) {
                 
@@ -133,9 +150,9 @@ export class MolarEnergy {
             case MolarEnergyUnits.JoulesPerMole:
                 return this.JoulesPerMole + ` J/mol`;
             case MolarEnergyUnits.KilojoulesPerMole:
-                return this.KilojoulesPerMole + ` `;
+                return this.KilojoulesPerMole + ` kJ/mol`;
             case MolarEnergyUnits.MegajoulesPerMole:
-                return this.MegajoulesPerMole + ` `;
+                return this.MegajoulesPerMole + ` MJ/mol`;
         default:
             break;
         }
@@ -156,9 +173,9 @@ export class MolarEnergy {
             case MolarEnergyUnits.JoulesPerMole:
                 return `J/mol`;
             case MolarEnergyUnits.KilojoulesPerMole:
-                return ``;
+                return `kJ/mol`;
             case MolarEnergyUnits.MegajoulesPerMole:
-                return ``;
+                return `MJ/mol`;
         default:
             break;
         }

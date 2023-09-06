@@ -47,6 +47,21 @@ export class MagneticFlux {
         return new MagneticFlux(value, MagneticFluxUnits.Webers);
     }
 
+    /**
+     * Convert MagneticFlux to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MagneticFluxUnits): number {
+        switch (toUnit) {
+            case MagneticFluxUnits.Webers: return this.Webers;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MagneticFluxUnits): number {
         switch (toUnit) {
                 
