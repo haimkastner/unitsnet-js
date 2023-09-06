@@ -320,6 +320,34 @@ export class Luminosity {
         return new Luminosity(value, LuminosityUnits.Petawatts);
     }
 
+    /**
+     * Convert Luminosity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: LuminosityUnits): number {
+        switch (toUnit) {
+            case LuminosityUnits.Watts: return this.Watts;
+            case LuminosityUnits.SolarLuminosities: return this.SolarLuminosities;
+            case LuminosityUnits.Femtowatts: return this.Femtowatts;
+            case LuminosityUnits.Picowatts: return this.Picowatts;
+            case LuminosityUnits.Nanowatts: return this.Nanowatts;
+            case LuminosityUnits.Microwatts: return this.Microwatts;
+            case LuminosityUnits.Milliwatts: return this.Milliwatts;
+            case LuminosityUnits.Deciwatts: return this.Deciwatts;
+            case LuminosityUnits.Decawatts: return this.Decawatts;
+            case LuminosityUnits.Kilowatts: return this.Kilowatts;
+            case LuminosityUnits.Megawatts: return this.Megawatts;
+            case LuminosityUnits.Gigawatts: return this.Gigawatts;
+            case LuminosityUnits.Terawatts: return this.Terawatts;
+            case LuminosityUnits.Petawatts: return this.Petawatts;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: LuminosityUnits): number {
         switch (toUnit) {
                 
@@ -410,29 +438,29 @@ export class Luminosity {
             case LuminosityUnits.SolarLuminosities:
                 return this.SolarLuminosities + ` L⊙`;
             case LuminosityUnits.Femtowatts:
-                return this.Femtowatts + ` `;
+                return this.Femtowatts + ` fW`;
             case LuminosityUnits.Picowatts:
-                return this.Picowatts + ` `;
+                return this.Picowatts + ` pW`;
             case LuminosityUnits.Nanowatts:
-                return this.Nanowatts + ` `;
+                return this.Nanowatts + ` nW`;
             case LuminosityUnits.Microwatts:
-                return this.Microwatts + ` `;
+                return this.Microwatts + ` μW`;
             case LuminosityUnits.Milliwatts:
-                return this.Milliwatts + ` `;
+                return this.Milliwatts + ` mW`;
             case LuminosityUnits.Deciwatts:
-                return this.Deciwatts + ` `;
+                return this.Deciwatts + ` dW`;
             case LuminosityUnits.Decawatts:
-                return this.Decawatts + ` `;
+                return this.Decawatts + ` daW`;
             case LuminosityUnits.Kilowatts:
-                return this.Kilowatts + ` `;
+                return this.Kilowatts + ` kW`;
             case LuminosityUnits.Megawatts:
-                return this.Megawatts + ` `;
+                return this.Megawatts + ` MW`;
             case LuminosityUnits.Gigawatts:
-                return this.Gigawatts + ` `;
+                return this.Gigawatts + ` GW`;
             case LuminosityUnits.Terawatts:
-                return this.Terawatts + ` `;
+                return this.Terawatts + ` TW`;
             case LuminosityUnits.Petawatts:
-                return this.Petawatts + ` `;
+                return this.Petawatts + ` PW`;
         default:
             break;
         }
@@ -455,29 +483,29 @@ export class Luminosity {
             case LuminosityUnits.SolarLuminosities:
                 return `L⊙`;
             case LuminosityUnits.Femtowatts:
-                return ``;
+                return `fW`;
             case LuminosityUnits.Picowatts:
-                return ``;
+                return `pW`;
             case LuminosityUnits.Nanowatts:
-                return ``;
+                return `nW`;
             case LuminosityUnits.Microwatts:
-                return ``;
+                return `μW`;
             case LuminosityUnits.Milliwatts:
-                return ``;
+                return `mW`;
             case LuminosityUnits.Deciwatts:
-                return ``;
+                return `dW`;
             case LuminosityUnits.Decawatts:
-                return ``;
+                return `daW`;
             case LuminosityUnits.Kilowatts:
-                return ``;
+                return `kW`;
             case LuminosityUnits.Megawatts:
-                return ``;
+                return `MW`;
             case LuminosityUnits.Gigawatts:
-                return ``;
+                return `GW`;
             case LuminosityUnits.Terawatts:
-                return ``;
+                return `TW`;
             case LuminosityUnits.Petawatts:
-                return ``;
+                return `PW`;
         default:
             break;
         }

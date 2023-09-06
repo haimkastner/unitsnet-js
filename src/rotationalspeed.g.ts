@@ -299,6 +299,33 @@ export class RotationalSpeed {
         return new RotationalSpeed(value, RotationalSpeedUnits.MillidegreesPerSecond);
     }
 
+    /**
+     * Convert RotationalSpeed to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: RotationalSpeedUnits): number {
+        switch (toUnit) {
+            case RotationalSpeedUnits.RadiansPerSecond: return this.RadiansPerSecond;
+            case RotationalSpeedUnits.DegreesPerSecond: return this.DegreesPerSecond;
+            case RotationalSpeedUnits.DegreesPerMinute: return this.DegreesPerMinute;
+            case RotationalSpeedUnits.RevolutionsPerSecond: return this.RevolutionsPerSecond;
+            case RotationalSpeedUnits.RevolutionsPerMinute: return this.RevolutionsPerMinute;
+            case RotationalSpeedUnits.NanoradiansPerSecond: return this.NanoradiansPerSecond;
+            case RotationalSpeedUnits.MicroradiansPerSecond: return this.MicroradiansPerSecond;
+            case RotationalSpeedUnits.MilliradiansPerSecond: return this.MilliradiansPerSecond;
+            case RotationalSpeedUnits.CentiradiansPerSecond: return this.CentiradiansPerSecond;
+            case RotationalSpeedUnits.DeciradiansPerSecond: return this.DeciradiansPerSecond;
+            case RotationalSpeedUnits.NanodegreesPerSecond: return this.NanodegreesPerSecond;
+            case RotationalSpeedUnits.MicrodegreesPerSecond: return this.MicrodegreesPerSecond;
+            case RotationalSpeedUnits.MillidegreesPerSecond: return this.MillidegreesPerSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: RotationalSpeedUnits): number {
         switch (toUnit) {
                 
@@ -391,21 +418,21 @@ export class RotationalSpeed {
             case RotationalSpeedUnits.RevolutionsPerMinute:
                 return this.RevolutionsPerMinute + ` rpm`;
             case RotationalSpeedUnits.NanoradiansPerSecond:
-                return this.NanoradiansPerSecond + ` `;
+                return this.NanoradiansPerSecond + ` nrad/s`;
             case RotationalSpeedUnits.MicroradiansPerSecond:
-                return this.MicroradiansPerSecond + ` `;
+                return this.MicroradiansPerSecond + ` μrad/s`;
             case RotationalSpeedUnits.MilliradiansPerSecond:
-                return this.MilliradiansPerSecond + ` `;
+                return this.MilliradiansPerSecond + ` mrad/s`;
             case RotationalSpeedUnits.CentiradiansPerSecond:
-                return this.CentiradiansPerSecond + ` `;
+                return this.CentiradiansPerSecond + ` crad/s`;
             case RotationalSpeedUnits.DeciradiansPerSecond:
-                return this.DeciradiansPerSecond + ` `;
+                return this.DeciradiansPerSecond + ` drad/s`;
             case RotationalSpeedUnits.NanodegreesPerSecond:
-                return this.NanodegreesPerSecond + ` `;
+                return this.NanodegreesPerSecond + ` n°/s`;
             case RotationalSpeedUnits.MicrodegreesPerSecond:
-                return this.MicrodegreesPerSecond + ` `;
+                return this.MicrodegreesPerSecond + ` μ°/s`;
             case RotationalSpeedUnits.MillidegreesPerSecond:
-                return this.MillidegreesPerSecond + ` `;
+                return this.MillidegreesPerSecond + ` m°/s`;
         default:
             break;
         }
@@ -434,21 +461,21 @@ export class RotationalSpeed {
             case RotationalSpeedUnits.RevolutionsPerMinute:
                 return `rpm`;
             case RotationalSpeedUnits.NanoradiansPerSecond:
-                return ``;
+                return `nrad/s`;
             case RotationalSpeedUnits.MicroradiansPerSecond:
-                return ``;
+                return `μrad/s`;
             case RotationalSpeedUnits.MilliradiansPerSecond:
-                return ``;
+                return `mrad/s`;
             case RotationalSpeedUnits.CentiradiansPerSecond:
-                return ``;
+                return `crad/s`;
             case RotationalSpeedUnits.DeciradiansPerSecond:
-                return ``;
+                return `drad/s`;
             case RotationalSpeedUnits.NanodegreesPerSecond:
-                return ``;
+                return `n°/s`;
             case RotationalSpeedUnits.MicrodegreesPerSecond:
-                return ``;
+                return `μ°/s`;
             case RotationalSpeedUnits.MillidegreesPerSecond:
-                return ``;
+                return `m°/s`;
         default:
             break;
         }

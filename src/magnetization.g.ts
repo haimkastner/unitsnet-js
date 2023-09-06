@@ -47,6 +47,21 @@ export class Magnetization {
         return new Magnetization(value, MagnetizationUnits.AmperesPerMeter);
     }
 
+    /**
+     * Convert Magnetization to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MagnetizationUnits): number {
+        switch (toUnit) {
+            case MagnetizationUnits.AmperesPerMeter: return this.AmperesPerMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MagnetizationUnits): number {
         switch (toUnit) {
                 

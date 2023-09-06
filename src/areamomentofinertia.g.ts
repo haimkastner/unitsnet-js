@@ -152,6 +152,26 @@ export class AreaMomentOfInertia {
         return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnits.InchesToTheFourth);
     }
 
+    /**
+     * Convert AreaMomentOfInertia to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: AreaMomentOfInertiaUnits): number {
+        switch (toUnit) {
+            case AreaMomentOfInertiaUnits.MetersToTheFourth: return this.MetersToTheFourth;
+            case AreaMomentOfInertiaUnits.DecimetersToTheFourth: return this.DecimetersToTheFourth;
+            case AreaMomentOfInertiaUnits.CentimetersToTheFourth: return this.CentimetersToTheFourth;
+            case AreaMomentOfInertiaUnits.MillimetersToTheFourth: return this.MillimetersToTheFourth;
+            case AreaMomentOfInertiaUnits.FeetToTheFourth: return this.FeetToTheFourth;
+            case AreaMomentOfInertiaUnits.InchesToTheFourth: return this.InchesToTheFourth;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: AreaMomentOfInertiaUnits): number {
         switch (toUnit) {
                 

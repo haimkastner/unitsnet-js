@@ -152,6 +152,26 @@ export class Ratio {
         return new Ratio(value, RatioUnits.PartsPerTrillion);
     }
 
+    /**
+     * Convert Ratio to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: RatioUnits): number {
+        switch (toUnit) {
+            case RatioUnits.DecimalFractions: return this.DecimalFractions;
+            case RatioUnits.Percent: return this.Percent;
+            case RatioUnits.PartsPerThousand: return this.PartsPerThousand;
+            case RatioUnits.PartsPerMillion: return this.PartsPerMillion;
+            case RatioUnits.PartsPerBillion: return this.PartsPerBillion;
+            case RatioUnits.PartsPerTrillion: return this.PartsPerTrillion;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: RatioUnits): number {
         switch (toUnit) {
                 

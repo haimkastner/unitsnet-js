@@ -257,6 +257,31 @@ export class Jerk {
         return new Jerk(value, JerkUnits.MillistandardGravitiesPerSecond);
     }
 
+    /**
+     * Convert Jerk to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: JerkUnits): number {
+        switch (toUnit) {
+            case JerkUnits.MetersPerSecondCubed: return this.MetersPerSecondCubed;
+            case JerkUnits.InchesPerSecondCubed: return this.InchesPerSecondCubed;
+            case JerkUnits.FeetPerSecondCubed: return this.FeetPerSecondCubed;
+            case JerkUnits.StandardGravitiesPerSecond: return this.StandardGravitiesPerSecond;
+            case JerkUnits.NanometersPerSecondCubed: return this.NanometersPerSecondCubed;
+            case JerkUnits.MicrometersPerSecondCubed: return this.MicrometersPerSecondCubed;
+            case JerkUnits.MillimetersPerSecondCubed: return this.MillimetersPerSecondCubed;
+            case JerkUnits.CentimetersPerSecondCubed: return this.CentimetersPerSecondCubed;
+            case JerkUnits.DecimetersPerSecondCubed: return this.DecimetersPerSecondCubed;
+            case JerkUnits.KilometersPerSecondCubed: return this.KilometersPerSecondCubed;
+            case JerkUnits.MillistandardGravitiesPerSecond: return this.MillistandardGravitiesPerSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: JerkUnits): number {
         switch (toUnit) {
                 
@@ -339,19 +364,19 @@ export class Jerk {
             case JerkUnits.StandardGravitiesPerSecond:
                 return this.StandardGravitiesPerSecond + ` g/s`;
             case JerkUnits.NanometersPerSecondCubed:
-                return this.NanometersPerSecondCubed + ` `;
+                return this.NanometersPerSecondCubed + ` nm/s³`;
             case JerkUnits.MicrometersPerSecondCubed:
-                return this.MicrometersPerSecondCubed + ` `;
+                return this.MicrometersPerSecondCubed + ` μm/s³`;
             case JerkUnits.MillimetersPerSecondCubed:
-                return this.MillimetersPerSecondCubed + ` `;
+                return this.MillimetersPerSecondCubed + ` mm/s³`;
             case JerkUnits.CentimetersPerSecondCubed:
-                return this.CentimetersPerSecondCubed + ` `;
+                return this.CentimetersPerSecondCubed + ` cm/s³`;
             case JerkUnits.DecimetersPerSecondCubed:
-                return this.DecimetersPerSecondCubed + ` `;
+                return this.DecimetersPerSecondCubed + ` dm/s³`;
             case JerkUnits.KilometersPerSecondCubed:
-                return this.KilometersPerSecondCubed + ` `;
+                return this.KilometersPerSecondCubed + ` km/s³`;
             case JerkUnits.MillistandardGravitiesPerSecond:
-                return this.MillistandardGravitiesPerSecond + ` `;
+                return this.MillistandardGravitiesPerSecond + ` mg/s`;
         default:
             break;
         }
@@ -378,19 +403,19 @@ export class Jerk {
             case JerkUnits.StandardGravitiesPerSecond:
                 return `g/s`;
             case JerkUnits.NanometersPerSecondCubed:
-                return ``;
+                return `nm/s³`;
             case JerkUnits.MicrometersPerSecondCubed:
-                return ``;
+                return `μm/s³`;
             case JerkUnits.MillimetersPerSecondCubed:
-                return ``;
+                return `mm/s³`;
             case JerkUnits.CentimetersPerSecondCubed:
-                return ``;
+                return `cm/s³`;
             case JerkUnits.DecimetersPerSecondCubed:
-                return ``;
+                return `dm/s³`;
             case JerkUnits.KilometersPerSecondCubed:
-                return ``;
+                return `km/s³`;
             case JerkUnits.MillistandardGravitiesPerSecond:
-                return ``;
+                return `mg/s`;
         default:
             break;
         }

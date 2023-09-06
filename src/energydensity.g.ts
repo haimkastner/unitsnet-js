@@ -278,6 +278,32 @@ export class EnergyDensity {
         return new EnergyDensity(value, EnergyDensityUnits.PetawattHoursPerCubicMeter);
     }
 
+    /**
+     * Convert EnergyDensity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: EnergyDensityUnits): number {
+        switch (toUnit) {
+            case EnergyDensityUnits.JoulesPerCubicMeter: return this.JoulesPerCubicMeter;
+            case EnergyDensityUnits.WattHoursPerCubicMeter: return this.WattHoursPerCubicMeter;
+            case EnergyDensityUnits.KilojoulesPerCubicMeter: return this.KilojoulesPerCubicMeter;
+            case EnergyDensityUnits.MegajoulesPerCubicMeter: return this.MegajoulesPerCubicMeter;
+            case EnergyDensityUnits.GigajoulesPerCubicMeter: return this.GigajoulesPerCubicMeter;
+            case EnergyDensityUnits.TerajoulesPerCubicMeter: return this.TerajoulesPerCubicMeter;
+            case EnergyDensityUnits.PetajoulesPerCubicMeter: return this.PetajoulesPerCubicMeter;
+            case EnergyDensityUnits.KilowattHoursPerCubicMeter: return this.KilowattHoursPerCubicMeter;
+            case EnergyDensityUnits.MegawattHoursPerCubicMeter: return this.MegawattHoursPerCubicMeter;
+            case EnergyDensityUnits.GigawattHoursPerCubicMeter: return this.GigawattHoursPerCubicMeter;
+            case EnergyDensityUnits.TerawattHoursPerCubicMeter: return this.TerawattHoursPerCubicMeter;
+            case EnergyDensityUnits.PetawattHoursPerCubicMeter: return this.PetawattHoursPerCubicMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: EnergyDensityUnits): number {
         switch (toUnit) {
                 
@@ -360,25 +386,25 @@ export class EnergyDensity {
             case EnergyDensityUnits.WattHoursPerCubicMeter:
                 return this.WattHoursPerCubicMeter + ` Wh/m³`;
             case EnergyDensityUnits.KilojoulesPerCubicMeter:
-                return this.KilojoulesPerCubicMeter + ` `;
+                return this.KilojoulesPerCubicMeter + ` kJ/m³`;
             case EnergyDensityUnits.MegajoulesPerCubicMeter:
-                return this.MegajoulesPerCubicMeter + ` `;
+                return this.MegajoulesPerCubicMeter + ` MJ/m³`;
             case EnergyDensityUnits.GigajoulesPerCubicMeter:
-                return this.GigajoulesPerCubicMeter + ` `;
+                return this.GigajoulesPerCubicMeter + ` GJ/m³`;
             case EnergyDensityUnits.TerajoulesPerCubicMeter:
-                return this.TerajoulesPerCubicMeter + ` `;
+                return this.TerajoulesPerCubicMeter + ` TJ/m³`;
             case EnergyDensityUnits.PetajoulesPerCubicMeter:
-                return this.PetajoulesPerCubicMeter + ` `;
+                return this.PetajoulesPerCubicMeter + ` PJ/m³`;
             case EnergyDensityUnits.KilowattHoursPerCubicMeter:
-                return this.KilowattHoursPerCubicMeter + ` `;
+                return this.KilowattHoursPerCubicMeter + ` kWh/m³`;
             case EnergyDensityUnits.MegawattHoursPerCubicMeter:
-                return this.MegawattHoursPerCubicMeter + ` `;
+                return this.MegawattHoursPerCubicMeter + ` MWh/m³`;
             case EnergyDensityUnits.GigawattHoursPerCubicMeter:
-                return this.GigawattHoursPerCubicMeter + ` `;
+                return this.GigawattHoursPerCubicMeter + ` GWh/m³`;
             case EnergyDensityUnits.TerawattHoursPerCubicMeter:
-                return this.TerawattHoursPerCubicMeter + ` `;
+                return this.TerawattHoursPerCubicMeter + ` TWh/m³`;
             case EnergyDensityUnits.PetawattHoursPerCubicMeter:
-                return this.PetawattHoursPerCubicMeter + ` `;
+                return this.PetawattHoursPerCubicMeter + ` PWh/m³`;
         default:
             break;
         }
@@ -401,25 +427,25 @@ export class EnergyDensity {
             case EnergyDensityUnits.WattHoursPerCubicMeter:
                 return `Wh/m³`;
             case EnergyDensityUnits.KilojoulesPerCubicMeter:
-                return ``;
+                return `kJ/m³`;
             case EnergyDensityUnits.MegajoulesPerCubicMeter:
-                return ``;
+                return `MJ/m³`;
             case EnergyDensityUnits.GigajoulesPerCubicMeter:
-                return ``;
+                return `GJ/m³`;
             case EnergyDensityUnits.TerajoulesPerCubicMeter:
-                return ``;
+                return `TJ/m³`;
             case EnergyDensityUnits.PetajoulesPerCubicMeter:
-                return ``;
+                return `PJ/m³`;
             case EnergyDensityUnits.KilowattHoursPerCubicMeter:
-                return ``;
+                return `kWh/m³`;
             case EnergyDensityUnits.MegawattHoursPerCubicMeter:
-                return ``;
+                return `MWh/m³`;
             case EnergyDensityUnits.GigawattHoursPerCubicMeter:
-                return ``;
+                return `GWh/m³`;
             case EnergyDensityUnits.TerawattHoursPerCubicMeter:
-                return ``;
+                return `TWh/m³`;
             case EnergyDensityUnits.PetawattHoursPerCubicMeter:
-                return ``;
+                return `PWh/m³`;
         default:
             break;
         }

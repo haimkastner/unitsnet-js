@@ -68,6 +68,22 @@ export class RatioChangeRate {
         return new RatioChangeRate(value, RatioChangeRateUnits.DecimalFractionsPerSecond);
     }
 
+    /**
+     * Convert RatioChangeRate to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: RatioChangeRateUnits): number {
+        switch (toUnit) {
+            case RatioChangeRateUnits.PercentsPerSecond: return this.PercentsPerSecond;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond: return this.DecimalFractionsPerSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: RatioChangeRateUnits): number {
         switch (toUnit) {
                 

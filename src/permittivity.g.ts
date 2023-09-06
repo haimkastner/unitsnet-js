@@ -47,6 +47,21 @@ export class Permittivity {
         return new Permittivity(value, PermittivityUnits.FaradsPerMeter);
     }
 
+    /**
+     * Convert Permittivity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: PermittivityUnits): number {
+        switch (toUnit) {
+            case PermittivityUnits.FaradsPerMeter: return this.FaradsPerMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: PermittivityUnits): number {
         switch (toUnit) {
                 

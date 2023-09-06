@@ -152,6 +152,26 @@ export class CoefficientOfThermalExpansion {
         return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit);
     }
 
+    /**
+     * Convert CoefficientOfThermalExpansion to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: CoefficientOfThermalExpansionUnits): number {
+        switch (toUnit) {
+            case CoefficientOfThermalExpansionUnits.PerKelvin: return this.PerKelvin;
+            case CoefficientOfThermalExpansionUnits.PerDegreeCelsius: return this.PerDegreeCelsius;
+            case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit: return this.PerDegreeFahrenheit;
+            case CoefficientOfThermalExpansionUnits.PpmPerKelvin: return this.PpmPerKelvin;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius: return this.PpmPerDegreeCelsius;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit: return this.PpmPerDegreeFahrenheit;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: CoefficientOfThermalExpansionUnits): number {
         switch (toUnit) {
                 

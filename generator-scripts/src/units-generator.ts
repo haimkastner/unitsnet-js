@@ -1,4 +1,4 @@
-import { UnitTypeDefinition, UnitDefinition } from "./models/units-definition";
+import { UnitTypeDefinition, UnitDefinition, Prefix } from "./models/units-definition";
 import { generateUnitClass } from './unit-generator';
 import { Project } from "ts-morph";
 import { UnitProperties } from "./models/units-properties";
@@ -6,7 +6,7 @@ import { pascalToCamelCase } from './utiles';
 /**
  * The factor between unit and his prefix.
  */
-const prefixesFactor: { [key: string]: number } = {
+const prefixesFactor: { [key in Prefix]: number } = {
     Exa: 1e18,
     Peta: 1e15,
     Tera: 1e12,
@@ -24,6 +24,24 @@ const prefixesFactor: { [key: string]: number } = {
     Femto: 1e-15,
 };
 
+const prefixesAbbreviation: { [key in Prefix]: string } = {
+    Exa: 'E',
+    Peta: 'P',
+    Tera: 'T',
+    Giga: 'G',
+    Mega: 'M',
+    Kilo: 'k',
+    Hecto: 'h',
+    Deca: 'da',
+    Deci: 'd',
+    Centi: 'c',
+    Milli: 'm',
+    Micro: 'μ',
+    Nano: 'n',
+    Pico: 'p',
+    Femto: 'f'
+};
+
 /**
  * Generate units from the unit prefixes.
  * For example for if the unit 'Degree' has 'Mili' and 'Micro' prefixes, generate 'Milidegrees' and 'Microdegrees' units. 
@@ -39,7 +57,7 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
 
     for (const prefix of unit.Prefixes) {
 
-        // If theere is no factor for the current prefix ignore it.
+        // If there is no factor for the current prefix ignore it.
         if (!prefixesFactor[prefix]) {
             console.warn(`There is no factor for the '${prefix}' ${unit.PluralName} prefix in the 'prefixesFactor' map`);
             continue;
@@ -58,7 +76,7 @@ function getUnitPrefixes(unit: UnitDefinition): UnitDefinition[] {
             PluralName: `${prefix}${pascalToCamelCase(unit.PluralName)}`,
             Localization: [{
                 Culture: 'en-US',
-                Abbreviations: [''],
+                Abbreviations: unit.Localization?.find((l => l.Culture === 'en-US'))?.Abbreviations?.map(a => `${prefixesAbbreviation[prefix]}${a}`) || [''],
             }],
         })
     }

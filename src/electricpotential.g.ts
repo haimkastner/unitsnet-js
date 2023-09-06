@@ -152,6 +152,26 @@ export class ElectricPotential {
         return new ElectricPotential(value, ElectricPotentialUnits.Megavolts);
     }
 
+    /**
+     * Convert ElectricPotential to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricPotentialUnits): number {
+        switch (toUnit) {
+            case ElectricPotentialUnits.Volts: return this.Volts;
+            case ElectricPotentialUnits.Nanovolts: return this.Nanovolts;
+            case ElectricPotentialUnits.Microvolts: return this.Microvolts;
+            case ElectricPotentialUnits.Millivolts: return this.Millivolts;
+            case ElectricPotentialUnits.Kilovolts: return this.Kilovolts;
+            case ElectricPotentialUnits.Megavolts: return this.Megavolts;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricPotentialUnits): number {
         switch (toUnit) {
                 
@@ -208,15 +228,15 @@ export class ElectricPotential {
             case ElectricPotentialUnits.Volts:
                 return this.Volts + ` V`;
             case ElectricPotentialUnits.Nanovolts:
-                return this.Nanovolts + ` `;
+                return this.Nanovolts + ` nV`;
             case ElectricPotentialUnits.Microvolts:
-                return this.Microvolts + ` `;
+                return this.Microvolts + ` μV`;
             case ElectricPotentialUnits.Millivolts:
-                return this.Millivolts + ` `;
+                return this.Millivolts + ` mV`;
             case ElectricPotentialUnits.Kilovolts:
-                return this.Kilovolts + ` `;
+                return this.Kilovolts + ` kV`;
             case ElectricPotentialUnits.Megavolts:
-                return this.Megavolts + ` `;
+                return this.Megavolts + ` MV`;
         default:
             break;
         }
@@ -237,15 +257,15 @@ export class ElectricPotential {
             case ElectricPotentialUnits.Volts:
                 return `V`;
             case ElectricPotentialUnits.Nanovolts:
-                return ``;
+                return `nV`;
             case ElectricPotentialUnits.Microvolts:
-                return ``;
+                return `μV`;
             case ElectricPotentialUnits.Millivolts:
-                return ``;
+                return `mV`;
             case ElectricPotentialUnits.Kilovolts:
-                return ``;
+                return `kV`;
             case ElectricPotentialUnits.Megavolts:
-                return ``;
+                return `MV`;
         default:
             break;
         }

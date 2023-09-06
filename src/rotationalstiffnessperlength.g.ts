@@ -131,6 +131,25 @@ export class RotationalStiffnessPerLength {
         return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter);
     }
 
+    /**
+     * Convert RotationalStiffnessPerLength to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: RotationalStiffnessPerLengthUnits): number {
+        switch (toUnit) {
+            case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter: return this.NewtonMetersPerRadianPerMeter;
+            case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet: return this.PoundForceFeetPerDegreesPerFeet;
+            case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet: return this.KilopoundForceFeetPerDegreesPerFeet;
+            case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter: return this.KilonewtonMetersPerRadianPerMeter;
+            case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter: return this.MeganewtonMetersPerRadianPerMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: RotationalStiffnessPerLengthUnits): number {
         switch (toUnit) {
                 
@@ -187,9 +206,9 @@ export class RotationalStiffnessPerLength {
             case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
                 return this.KilopoundForceFeetPerDegreesPerFeet + ` kipf·ft/°/ft`;
             case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
-                return this.KilonewtonMetersPerRadianPerMeter + ` `;
+                return this.KilonewtonMetersPerRadianPerMeter + ` kN·m/rad/m`;
             case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
-                return this.MeganewtonMetersPerRadianPerMeter + ` `;
+                return this.MeganewtonMetersPerRadianPerMeter + ` MN·m/rad/m`;
         default:
             break;
         }
@@ -214,9 +233,9 @@ export class RotationalStiffnessPerLength {
             case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
                 return `kipf·ft/°/ft`;
             case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
-                return ``;
+                return `kN·m/rad/m`;
             case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
-                return ``;
+                return `MN·m/rad/m`;
         default:
             break;
         }

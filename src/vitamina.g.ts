@@ -47,6 +47,21 @@ export class VitaminA {
         return new VitaminA(value, VitaminAUnits.InternationalUnits);
     }
 
+    /**
+     * Convert VitaminA to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: VitaminAUnits): number {
+        switch (toUnit) {
+            case VitaminAUnits.InternationalUnits: return this.InternationalUnits;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: VitaminAUnits): number {
         switch (toUnit) {
                 

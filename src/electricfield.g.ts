@@ -47,6 +47,21 @@ export class ElectricField {
         return new ElectricField(value, ElectricFieldUnits.VoltsPerMeter);
     }
 
+    /**
+     * Convert ElectricField to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricFieldUnits): number {
+        switch (toUnit) {
+            case ElectricFieldUnits.VoltsPerMeter: return this.VoltsPerMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricFieldUnits): number {
         switch (toUnit) {
                 

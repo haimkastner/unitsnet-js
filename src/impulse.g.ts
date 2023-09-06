@@ -299,6 +299,33 @@ export class Impulse {
         return new Impulse(value, ImpulseUnits.MeganewtonSeconds);
     }
 
+    /**
+     * Convert Impulse to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ImpulseUnits): number {
+        switch (toUnit) {
+            case ImpulseUnits.KilogramMetersPerSecond: return this.KilogramMetersPerSecond;
+            case ImpulseUnits.NewtonSeconds: return this.NewtonSeconds;
+            case ImpulseUnits.PoundFeetPerSecond: return this.PoundFeetPerSecond;
+            case ImpulseUnits.PoundForceSeconds: return this.PoundForceSeconds;
+            case ImpulseUnits.SlugFeetPerSecond: return this.SlugFeetPerSecond;
+            case ImpulseUnits.NanonewtonSeconds: return this.NanonewtonSeconds;
+            case ImpulseUnits.MicronewtonSeconds: return this.MicronewtonSeconds;
+            case ImpulseUnits.MillinewtonSeconds: return this.MillinewtonSeconds;
+            case ImpulseUnits.CentinewtonSeconds: return this.CentinewtonSeconds;
+            case ImpulseUnits.DecinewtonSeconds: return this.DecinewtonSeconds;
+            case ImpulseUnits.DecanewtonSeconds: return this.DecanewtonSeconds;
+            case ImpulseUnits.KilonewtonSeconds: return this.KilonewtonSeconds;
+            case ImpulseUnits.MeganewtonSeconds: return this.MeganewtonSeconds;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ImpulseUnits): number {
         switch (toUnit) {
                 
@@ -391,21 +418,21 @@ export class Impulse {
             case ImpulseUnits.SlugFeetPerSecond:
                 return this.SlugFeetPerSecond + ` slug·ft/s`;
             case ImpulseUnits.NanonewtonSeconds:
-                return this.NanonewtonSeconds + ` `;
+                return this.NanonewtonSeconds + ` nN·s`;
             case ImpulseUnits.MicronewtonSeconds:
-                return this.MicronewtonSeconds + ` `;
+                return this.MicronewtonSeconds + ` μN·s`;
             case ImpulseUnits.MillinewtonSeconds:
-                return this.MillinewtonSeconds + ` `;
+                return this.MillinewtonSeconds + ` mN·s`;
             case ImpulseUnits.CentinewtonSeconds:
-                return this.CentinewtonSeconds + ` `;
+                return this.CentinewtonSeconds + ` cN·s`;
             case ImpulseUnits.DecinewtonSeconds:
-                return this.DecinewtonSeconds + ` `;
+                return this.DecinewtonSeconds + ` dN·s`;
             case ImpulseUnits.DecanewtonSeconds:
-                return this.DecanewtonSeconds + ` `;
+                return this.DecanewtonSeconds + ` daN·s`;
             case ImpulseUnits.KilonewtonSeconds:
-                return this.KilonewtonSeconds + ` `;
+                return this.KilonewtonSeconds + ` kN·s`;
             case ImpulseUnits.MeganewtonSeconds:
-                return this.MeganewtonSeconds + ` `;
+                return this.MeganewtonSeconds + ` MN·s`;
         default:
             break;
         }
@@ -434,21 +461,21 @@ export class Impulse {
             case ImpulseUnits.SlugFeetPerSecond:
                 return `slug·ft/s`;
             case ImpulseUnits.NanonewtonSeconds:
-                return ``;
+                return `nN·s`;
             case ImpulseUnits.MicronewtonSeconds:
-                return ``;
+                return `μN·s`;
             case ImpulseUnits.MillinewtonSeconds:
-                return ``;
+                return `mN·s`;
             case ImpulseUnits.CentinewtonSeconds:
-                return ``;
+                return `cN·s`;
             case ImpulseUnits.DecinewtonSeconds:
-                return ``;
+                return `dN·s`;
             case ImpulseUnits.DecanewtonSeconds:
-                return ``;
+                return `daN·s`;
             case ImpulseUnits.KilonewtonSeconds:
-                return ``;
+                return `kN·s`;
             case ImpulseUnits.MeganewtonSeconds:
-                return ``;
+                return `MN·s`;
         default:
             break;
         }

@@ -47,6 +47,21 @@ export class Scalar {
         return new Scalar(value, ScalarUnits.Amount);
     }
 
+    /**
+     * Convert Scalar to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ScalarUnits): number {
+        switch (toUnit) {
+            case ScalarUnits.Amount: return this.Amount;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ScalarUnits): number {
         switch (toUnit) {
                 

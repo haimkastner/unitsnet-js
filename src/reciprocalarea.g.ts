@@ -257,6 +257,31 @@ export class ReciprocalArea {
         return new ReciprocalArea(value, ReciprocalAreaUnits.InverseSquareInches);
     }
 
+    /**
+     * Convert ReciprocalArea to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ReciprocalAreaUnits): number {
+        switch (toUnit) {
+            case ReciprocalAreaUnits.InverseSquareMeters: return this.InverseSquareMeters;
+            case ReciprocalAreaUnits.InverseSquareKilometers: return this.InverseSquareKilometers;
+            case ReciprocalAreaUnits.InverseSquareDecimeters: return this.InverseSquareDecimeters;
+            case ReciprocalAreaUnits.InverseSquareCentimeters: return this.InverseSquareCentimeters;
+            case ReciprocalAreaUnits.InverseSquareMillimeters: return this.InverseSquareMillimeters;
+            case ReciprocalAreaUnits.InverseSquareMicrometers: return this.InverseSquareMicrometers;
+            case ReciprocalAreaUnits.InverseSquareMiles: return this.InverseSquareMiles;
+            case ReciprocalAreaUnits.InverseSquareYards: return this.InverseSquareYards;
+            case ReciprocalAreaUnits.InverseSquareFeet: return this.InverseSquareFeet;
+            case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return this.InverseUsSurveySquareFeet;
+            case ReciprocalAreaUnits.InverseSquareInches: return this.InverseSquareInches;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ReciprocalAreaUnits): number {
         switch (toUnit) {
                 

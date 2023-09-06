@@ -719,6 +719,53 @@ export class MassFlow {
         return new MassFlow(value, MassFlowUnits.MegapoundsPerSecond);
     }
 
+    /**
+     * Convert MassFlow to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MassFlowUnits): number {
+        switch (toUnit) {
+            case MassFlowUnits.GramsPerSecond: return this.GramsPerSecond;
+            case MassFlowUnits.GramsPerDay: return this.GramsPerDay;
+            case MassFlowUnits.GramsPerHour: return this.GramsPerHour;
+            case MassFlowUnits.KilogramsPerHour: return this.KilogramsPerHour;
+            case MassFlowUnits.KilogramsPerMinute: return this.KilogramsPerMinute;
+            case MassFlowUnits.TonnesPerHour: return this.TonnesPerHour;
+            case MassFlowUnits.PoundsPerDay: return this.PoundsPerDay;
+            case MassFlowUnits.PoundsPerHour: return this.PoundsPerHour;
+            case MassFlowUnits.PoundsPerMinute: return this.PoundsPerMinute;
+            case MassFlowUnits.PoundsPerSecond: return this.PoundsPerSecond;
+            case MassFlowUnits.TonnesPerDay: return this.TonnesPerDay;
+            case MassFlowUnits.ShortTonsPerHour: return this.ShortTonsPerHour;
+            case MassFlowUnits.NanogramsPerSecond: return this.NanogramsPerSecond;
+            case MassFlowUnits.MicrogramsPerSecond: return this.MicrogramsPerSecond;
+            case MassFlowUnits.MilligramsPerSecond: return this.MilligramsPerSecond;
+            case MassFlowUnits.CentigramsPerSecond: return this.CentigramsPerSecond;
+            case MassFlowUnits.DecigramsPerSecond: return this.DecigramsPerSecond;
+            case MassFlowUnits.DecagramsPerSecond: return this.DecagramsPerSecond;
+            case MassFlowUnits.HectogramsPerSecond: return this.HectogramsPerSecond;
+            case MassFlowUnits.KilogramsPerSecond: return this.KilogramsPerSecond;
+            case MassFlowUnits.NanogramsPerDay: return this.NanogramsPerDay;
+            case MassFlowUnits.MicrogramsPerDay: return this.MicrogramsPerDay;
+            case MassFlowUnits.MilligramsPerDay: return this.MilligramsPerDay;
+            case MassFlowUnits.CentigramsPerDay: return this.CentigramsPerDay;
+            case MassFlowUnits.DecigramsPerDay: return this.DecigramsPerDay;
+            case MassFlowUnits.DecagramsPerDay: return this.DecagramsPerDay;
+            case MassFlowUnits.HectogramsPerDay: return this.HectogramsPerDay;
+            case MassFlowUnits.KilogramsPerDay: return this.KilogramsPerDay;
+            case MassFlowUnits.MegagramsPerDay: return this.MegagramsPerDay;
+            case MassFlowUnits.MegapoundsPerDay: return this.MegapoundsPerDay;
+            case MassFlowUnits.MegapoundsPerHour: return this.MegapoundsPerHour;
+            case MassFlowUnits.MegapoundsPerMinute: return this.MegapoundsPerMinute;
+            case MassFlowUnits.MegapoundsPerSecond: return this.MegapoundsPerSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MassFlowUnits): number {
         switch (toUnit) {
                 
@@ -905,47 +952,47 @@ export class MassFlow {
             case MassFlowUnits.ShortTonsPerHour:
                 return this.ShortTonsPerHour + ` short tn/h`;
             case MassFlowUnits.NanogramsPerSecond:
-                return this.NanogramsPerSecond + ` `;
+                return this.NanogramsPerSecond + ` ng/s`;
             case MassFlowUnits.MicrogramsPerSecond:
-                return this.MicrogramsPerSecond + ` `;
+                return this.MicrogramsPerSecond + ` μg/s`;
             case MassFlowUnits.MilligramsPerSecond:
-                return this.MilligramsPerSecond + ` `;
+                return this.MilligramsPerSecond + ` mg/s`;
             case MassFlowUnits.CentigramsPerSecond:
-                return this.CentigramsPerSecond + ` `;
+                return this.CentigramsPerSecond + ` cg/s`;
             case MassFlowUnits.DecigramsPerSecond:
-                return this.DecigramsPerSecond + ` `;
+                return this.DecigramsPerSecond + ` dg/s`;
             case MassFlowUnits.DecagramsPerSecond:
-                return this.DecagramsPerSecond + ` `;
+                return this.DecagramsPerSecond + ` dag/s`;
             case MassFlowUnits.HectogramsPerSecond:
-                return this.HectogramsPerSecond + ` `;
+                return this.HectogramsPerSecond + ` hg/s`;
             case MassFlowUnits.KilogramsPerSecond:
-                return this.KilogramsPerSecond + ` `;
+                return this.KilogramsPerSecond + ` kg/s`;
             case MassFlowUnits.NanogramsPerDay:
-                return this.NanogramsPerDay + ` `;
+                return this.NanogramsPerDay + ` ng/d`;
             case MassFlowUnits.MicrogramsPerDay:
-                return this.MicrogramsPerDay + ` `;
+                return this.MicrogramsPerDay + ` μg/d`;
             case MassFlowUnits.MilligramsPerDay:
-                return this.MilligramsPerDay + ` `;
+                return this.MilligramsPerDay + ` mg/d`;
             case MassFlowUnits.CentigramsPerDay:
-                return this.CentigramsPerDay + ` `;
+                return this.CentigramsPerDay + ` cg/d`;
             case MassFlowUnits.DecigramsPerDay:
-                return this.DecigramsPerDay + ` `;
+                return this.DecigramsPerDay + ` dg/d`;
             case MassFlowUnits.DecagramsPerDay:
-                return this.DecagramsPerDay + ` `;
+                return this.DecagramsPerDay + ` dag/d`;
             case MassFlowUnits.HectogramsPerDay:
-                return this.HectogramsPerDay + ` `;
+                return this.HectogramsPerDay + ` hg/d`;
             case MassFlowUnits.KilogramsPerDay:
-                return this.KilogramsPerDay + ` `;
+                return this.KilogramsPerDay + ` kg/d`;
             case MassFlowUnits.MegagramsPerDay:
-                return this.MegagramsPerDay + ` `;
+                return this.MegagramsPerDay + ` Mg/d`;
             case MassFlowUnits.MegapoundsPerDay:
-                return this.MegapoundsPerDay + ` `;
+                return this.MegapoundsPerDay + ` Mlb/d`;
             case MassFlowUnits.MegapoundsPerHour:
-                return this.MegapoundsPerHour + ` `;
+                return this.MegapoundsPerHour + ` Mlb/h`;
             case MassFlowUnits.MegapoundsPerMinute:
-                return this.MegapoundsPerMinute + ` `;
+                return this.MegapoundsPerMinute + ` Mlb/min`;
             case MassFlowUnits.MegapoundsPerSecond:
-                return this.MegapoundsPerSecond + ` `;
+                return this.MegapoundsPerSecond + ` Mlb/s`;
         default:
             break;
         }
@@ -988,47 +1035,47 @@ export class MassFlow {
             case MassFlowUnits.ShortTonsPerHour:
                 return `short tn/h`;
             case MassFlowUnits.NanogramsPerSecond:
-                return ``;
+                return `ng/s`;
             case MassFlowUnits.MicrogramsPerSecond:
-                return ``;
+                return `μg/s`;
             case MassFlowUnits.MilligramsPerSecond:
-                return ``;
+                return `mg/s`;
             case MassFlowUnits.CentigramsPerSecond:
-                return ``;
+                return `cg/s`;
             case MassFlowUnits.DecigramsPerSecond:
-                return ``;
+                return `dg/s`;
             case MassFlowUnits.DecagramsPerSecond:
-                return ``;
+                return `dag/s`;
             case MassFlowUnits.HectogramsPerSecond:
-                return ``;
+                return `hg/s`;
             case MassFlowUnits.KilogramsPerSecond:
-                return ``;
+                return `kg/s`;
             case MassFlowUnits.NanogramsPerDay:
-                return ``;
+                return `ng/d`;
             case MassFlowUnits.MicrogramsPerDay:
-                return ``;
+                return `μg/d`;
             case MassFlowUnits.MilligramsPerDay:
-                return ``;
+                return `mg/d`;
             case MassFlowUnits.CentigramsPerDay:
-                return ``;
+                return `cg/d`;
             case MassFlowUnits.DecigramsPerDay:
-                return ``;
+                return `dg/d`;
             case MassFlowUnits.DecagramsPerDay:
-                return ``;
+                return `dag/d`;
             case MassFlowUnits.HectogramsPerDay:
-                return ``;
+                return `hg/d`;
             case MassFlowUnits.KilogramsPerDay:
-                return ``;
+                return `kg/d`;
             case MassFlowUnits.MegagramsPerDay:
-                return ``;
+                return `Mg/d`;
             case MassFlowUnits.MegapoundsPerDay:
-                return ``;
+                return `Mlb/d`;
             case MassFlowUnits.MegapoundsPerHour:
-                return ``;
+                return `Mlb/h`;
             case MassFlowUnits.MegapoundsPerMinute:
-                return ``;
+                return `Mlb/min`;
             case MassFlowUnits.MegapoundsPerSecond:
-                return ``;
+                return `Mlb/s`;
         default:
             break;
         }

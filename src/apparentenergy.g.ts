@@ -89,6 +89,23 @@ export class ApparentEnergy {
         return new ApparentEnergy(value, ApparentEnergyUnits.MegavoltampereHours);
     }
 
+    /**
+     * Convert ApparentEnergy to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ApparentEnergyUnits): number {
+        switch (toUnit) {
+            case ApparentEnergyUnits.VoltampereHours: return this.VoltampereHours;
+            case ApparentEnergyUnits.KilovoltampereHours: return this.KilovoltampereHours;
+            case ApparentEnergyUnits.MegavoltampereHours: return this.MegavoltampereHours;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ApparentEnergyUnits): number {
         switch (toUnit) {
                 
@@ -133,9 +150,9 @@ export class ApparentEnergy {
             case ApparentEnergyUnits.VoltampereHours:
                 return this.VoltampereHours + ` VAh`;
             case ApparentEnergyUnits.KilovoltampereHours:
-                return this.KilovoltampereHours + ` `;
+                return this.KilovoltampereHours + ` kVAh`;
             case ApparentEnergyUnits.MegavoltampereHours:
-                return this.MegavoltampereHours + ` `;
+                return this.MegavoltampereHours + ` MVAh`;
         default:
             break;
         }
@@ -156,9 +173,9 @@ export class ApparentEnergy {
             case ApparentEnergyUnits.VoltampereHours:
                 return `VAh`;
             case ApparentEnergyUnits.KilovoltampereHours:
-                return ``;
+                return `kVAh`;
             case ApparentEnergyUnits.MegavoltampereHours:
-                return ``;
+                return `MVAh`;
         default:
             break;
         }

@@ -866,6 +866,60 @@ export class Length {
         return new Length(value, LengthUnits.MegalightYears);
     }
 
+    /**
+     * Convert Length to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: LengthUnits): number {
+        switch (toUnit) {
+            case LengthUnits.Meters: return this.Meters;
+            case LengthUnits.Miles: return this.Miles;
+            case LengthUnits.Yards: return this.Yards;
+            case LengthUnits.Feet: return this.Feet;
+            case LengthUnits.UsSurveyFeet: return this.UsSurveyFeet;
+            case LengthUnits.Inches: return this.Inches;
+            case LengthUnits.Mils: return this.Mils;
+            case LengthUnits.NauticalMiles: return this.NauticalMiles;
+            case LengthUnits.Fathoms: return this.Fathoms;
+            case LengthUnits.Shackles: return this.Shackles;
+            case LengthUnits.Microinches: return this.Microinches;
+            case LengthUnits.PrinterPoints: return this.PrinterPoints;
+            case LengthUnits.DtpPoints: return this.DtpPoints;
+            case LengthUnits.PrinterPicas: return this.PrinterPicas;
+            case LengthUnits.DtpPicas: return this.DtpPicas;
+            case LengthUnits.Twips: return this.Twips;
+            case LengthUnits.Hands: return this.Hands;
+            case LengthUnits.AstronomicalUnits: return this.AstronomicalUnits;
+            case LengthUnits.Parsecs: return this.Parsecs;
+            case LengthUnits.LightYears: return this.LightYears;
+            case LengthUnits.SolarRadiuses: return this.SolarRadiuses;
+            case LengthUnits.Chains: return this.Chains;
+            case LengthUnits.Angstroms: return this.Angstroms;
+            case LengthUnits.DataMiles: return this.DataMiles;
+            case LengthUnits.Femtometers: return this.Femtometers;
+            case LengthUnits.Picometers: return this.Picometers;
+            case LengthUnits.Nanometers: return this.Nanometers;
+            case LengthUnits.Micrometers: return this.Micrometers;
+            case LengthUnits.Millimeters: return this.Millimeters;
+            case LengthUnits.Centimeters: return this.Centimeters;
+            case LengthUnits.Decimeters: return this.Decimeters;
+            case LengthUnits.Decameters: return this.Decameters;
+            case LengthUnits.Hectometers: return this.Hectometers;
+            case LengthUnits.Kilometers: return this.Kilometers;
+            case LengthUnits.Megameters: return this.Megameters;
+            case LengthUnits.Kilofeet: return this.Kilofeet;
+            case LengthUnits.Kiloparsecs: return this.Kiloparsecs;
+            case LengthUnits.Megaparsecs: return this.Megaparsecs;
+            case LengthUnits.KilolightYears: return this.KilolightYears;
+            case LengthUnits.MegalightYears: return this.MegalightYears;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: LengthUnits): number {
         switch (toUnit) {
                 
@@ -1104,37 +1158,37 @@ export class Length {
             case LengthUnits.DataMiles:
                 return this.DataMiles + ` DM`;
             case LengthUnits.Femtometers:
-                return this.Femtometers + ` `;
+                return this.Femtometers + ` fm`;
             case LengthUnits.Picometers:
-                return this.Picometers + ` `;
+                return this.Picometers + ` pm`;
             case LengthUnits.Nanometers:
-                return this.Nanometers + ` `;
+                return this.Nanometers + ` nm`;
             case LengthUnits.Micrometers:
-                return this.Micrometers + ` `;
+                return this.Micrometers + ` μm`;
             case LengthUnits.Millimeters:
-                return this.Millimeters + ` `;
+                return this.Millimeters + ` mm`;
             case LengthUnits.Centimeters:
-                return this.Centimeters + ` `;
+                return this.Centimeters + ` cm`;
             case LengthUnits.Decimeters:
-                return this.Decimeters + ` `;
+                return this.Decimeters + ` dm`;
             case LengthUnits.Decameters:
-                return this.Decameters + ` `;
+                return this.Decameters + ` dam`;
             case LengthUnits.Hectometers:
-                return this.Hectometers + ` `;
+                return this.Hectometers + ` hm`;
             case LengthUnits.Kilometers:
-                return this.Kilometers + ` `;
+                return this.Kilometers + ` km`;
             case LengthUnits.Megameters:
-                return this.Megameters + ` `;
+                return this.Megameters + ` Mm`;
             case LengthUnits.Kilofeet:
-                return this.Kilofeet + ` `;
+                return this.Kilofeet + ` kft`;
             case LengthUnits.Kiloparsecs:
-                return this.Kiloparsecs + ` `;
+                return this.Kiloparsecs + ` kpc`;
             case LengthUnits.Megaparsecs:
-                return this.Megaparsecs + ` `;
+                return this.Megaparsecs + ` Mpc`;
             case LengthUnits.KilolightYears:
-                return this.KilolightYears + ` `;
+                return this.KilolightYears + ` kly`;
             case LengthUnits.MegalightYears:
-                return this.MegalightYears + ` `;
+                return this.MegalightYears + ` Mly`;
         default:
             break;
         }
@@ -1201,37 +1255,37 @@ export class Length {
             case LengthUnits.DataMiles:
                 return `DM`;
             case LengthUnits.Femtometers:
-                return ``;
+                return `fm`;
             case LengthUnits.Picometers:
-                return ``;
+                return `pm`;
             case LengthUnits.Nanometers:
-                return ``;
+                return `nm`;
             case LengthUnits.Micrometers:
-                return ``;
+                return `μm`;
             case LengthUnits.Millimeters:
-                return ``;
+                return `mm`;
             case LengthUnits.Centimeters:
-                return ``;
+                return `cm`;
             case LengthUnits.Decimeters:
-                return ``;
+                return `dm`;
             case LengthUnits.Decameters:
-                return ``;
+                return `dam`;
             case LengthUnits.Hectometers:
-                return ``;
+                return `hm`;
             case LengthUnits.Kilometers:
-                return ``;
+                return `km`;
             case LengthUnits.Megameters:
-                return ``;
+                return `Mm`;
             case LengthUnits.Kilofeet:
-                return ``;
+                return `kft`;
             case LengthUnits.Kiloparsecs:
-                return ``;
+                return `kpc`;
             case LengthUnits.Megaparsecs:
-                return ``;
+                return `Mpc`;
             case LengthUnits.KilolightYears:
-                return ``;
+                return `kly`;
             case LengthUnits.MegalightYears:
-                return ``;
+                return `Mly`;
         default:
             break;
         }

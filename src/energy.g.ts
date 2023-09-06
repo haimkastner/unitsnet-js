@@ -824,6 +824,58 @@ export class Energy {
         return new Energy(value, EnergyUnits.DecathermsImperial);
     }
 
+    /**
+     * Convert Energy to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: EnergyUnits): number {
+        switch (toUnit) {
+            case EnergyUnits.Joules: return this.Joules;
+            case EnergyUnits.Calories: return this.Calories;
+            case EnergyUnits.BritishThermalUnits: return this.BritishThermalUnits;
+            case EnergyUnits.ElectronVolts: return this.ElectronVolts;
+            case EnergyUnits.FootPounds: return this.FootPounds;
+            case EnergyUnits.Ergs: return this.Ergs;
+            case EnergyUnits.WattHours: return this.WattHours;
+            case EnergyUnits.WattDays: return this.WattDays;
+            case EnergyUnits.ThermsEc: return this.ThermsEc;
+            case EnergyUnits.ThermsUs: return this.ThermsUs;
+            case EnergyUnits.ThermsImperial: return this.ThermsImperial;
+            case EnergyUnits.HorsepowerHours: return this.HorsepowerHours;
+            case EnergyUnits.Millijoules: return this.Millijoules;
+            case EnergyUnits.Kilojoules: return this.Kilojoules;
+            case EnergyUnits.Megajoules: return this.Megajoules;
+            case EnergyUnits.Gigajoules: return this.Gigajoules;
+            case EnergyUnits.Terajoules: return this.Terajoules;
+            case EnergyUnits.Petajoules: return this.Petajoules;
+            case EnergyUnits.Kilocalories: return this.Kilocalories;
+            case EnergyUnits.Megacalories: return this.Megacalories;
+            case EnergyUnits.KilobritishThermalUnits: return this.KilobritishThermalUnits;
+            case EnergyUnits.MegabritishThermalUnits: return this.MegabritishThermalUnits;
+            case EnergyUnits.GigabritishThermalUnits: return this.GigabritishThermalUnits;
+            case EnergyUnits.KiloelectronVolts: return this.KiloelectronVolts;
+            case EnergyUnits.MegaelectronVolts: return this.MegaelectronVolts;
+            case EnergyUnits.GigaelectronVolts: return this.GigaelectronVolts;
+            case EnergyUnits.TeraelectronVolts: return this.TeraelectronVolts;
+            case EnergyUnits.KilowattHours: return this.KilowattHours;
+            case EnergyUnits.MegawattHours: return this.MegawattHours;
+            case EnergyUnits.GigawattHours: return this.GigawattHours;
+            case EnergyUnits.TerawattHours: return this.TerawattHours;
+            case EnergyUnits.KilowattDays: return this.KilowattDays;
+            case EnergyUnits.MegawattDays: return this.MegawattDays;
+            case EnergyUnits.GigawattDays: return this.GigawattDays;
+            case EnergyUnits.TerawattDays: return this.TerawattDays;
+            case EnergyUnits.DecathermsEc: return this.DecathermsEc;
+            case EnergyUnits.DecathermsUs: return this.DecathermsUs;
+            case EnergyUnits.DecathermsImperial: return this.DecathermsImperial;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: EnergyUnits): number {
         switch (toUnit) {
                 
@@ -1030,57 +1082,57 @@ export class Energy {
             case EnergyUnits.HorsepowerHours:
                 return this.HorsepowerHours + ` hp·h`;
             case EnergyUnits.Millijoules:
-                return this.Millijoules + ` `;
+                return this.Millijoules + ` mJ`;
             case EnergyUnits.Kilojoules:
-                return this.Kilojoules + ` `;
+                return this.Kilojoules + ` kJ`;
             case EnergyUnits.Megajoules:
-                return this.Megajoules + ` `;
+                return this.Megajoules + ` MJ`;
             case EnergyUnits.Gigajoules:
-                return this.Gigajoules + ` `;
+                return this.Gigajoules + ` GJ`;
             case EnergyUnits.Terajoules:
-                return this.Terajoules + ` `;
+                return this.Terajoules + ` TJ`;
             case EnergyUnits.Petajoules:
-                return this.Petajoules + ` `;
+                return this.Petajoules + ` PJ`;
             case EnergyUnits.Kilocalories:
-                return this.Kilocalories + ` `;
+                return this.Kilocalories + ` kcal`;
             case EnergyUnits.Megacalories:
-                return this.Megacalories + ` `;
+                return this.Megacalories + ` Mcal`;
             case EnergyUnits.KilobritishThermalUnits:
-                return this.KilobritishThermalUnits + ` `;
+                return this.KilobritishThermalUnits + ` kBTU`;
             case EnergyUnits.MegabritishThermalUnits:
-                return this.MegabritishThermalUnits + ` `;
+                return this.MegabritishThermalUnits + ` MBTU`;
             case EnergyUnits.GigabritishThermalUnits:
-                return this.GigabritishThermalUnits + ` `;
+                return this.GigabritishThermalUnits + ` GBTU`;
             case EnergyUnits.KiloelectronVolts:
-                return this.KiloelectronVolts + ` `;
+                return this.KiloelectronVolts + ` keV`;
             case EnergyUnits.MegaelectronVolts:
-                return this.MegaelectronVolts + ` `;
+                return this.MegaelectronVolts + ` MeV`;
             case EnergyUnits.GigaelectronVolts:
-                return this.GigaelectronVolts + ` `;
+                return this.GigaelectronVolts + ` GeV`;
             case EnergyUnits.TeraelectronVolts:
-                return this.TeraelectronVolts + ` `;
+                return this.TeraelectronVolts + ` TeV`;
             case EnergyUnits.KilowattHours:
-                return this.KilowattHours + ` `;
+                return this.KilowattHours + ` kWh`;
             case EnergyUnits.MegawattHours:
-                return this.MegawattHours + ` `;
+                return this.MegawattHours + ` MWh`;
             case EnergyUnits.GigawattHours:
-                return this.GigawattHours + ` `;
+                return this.GigawattHours + ` GWh`;
             case EnergyUnits.TerawattHours:
-                return this.TerawattHours + ` `;
+                return this.TerawattHours + ` TWh`;
             case EnergyUnits.KilowattDays:
-                return this.KilowattDays + ` `;
+                return this.KilowattDays + ` kWd`;
             case EnergyUnits.MegawattDays:
-                return this.MegawattDays + ` `;
+                return this.MegawattDays + ` MWd`;
             case EnergyUnits.GigawattDays:
-                return this.GigawattDays + ` `;
+                return this.GigawattDays + ` GWd`;
             case EnergyUnits.TerawattDays:
-                return this.TerawattDays + ` `;
+                return this.TerawattDays + ` TWd`;
             case EnergyUnits.DecathermsEc:
-                return this.DecathermsEc + ` `;
+                return this.DecathermsEc + ` dath (E.C.)`;
             case EnergyUnits.DecathermsUs:
-                return this.DecathermsUs + ` `;
+                return this.DecathermsUs + ` dath (U.S.)`;
             case EnergyUnits.DecathermsImperial:
-                return this.DecathermsImperial + ` `;
+                return this.DecathermsImperial + ` dath (imp.)`;
         default:
             break;
         }
@@ -1123,57 +1175,57 @@ export class Energy {
             case EnergyUnits.HorsepowerHours:
                 return `hp·h`;
             case EnergyUnits.Millijoules:
-                return ``;
+                return `mJ`;
             case EnergyUnits.Kilojoules:
-                return ``;
+                return `kJ`;
             case EnergyUnits.Megajoules:
-                return ``;
+                return `MJ`;
             case EnergyUnits.Gigajoules:
-                return ``;
+                return `GJ`;
             case EnergyUnits.Terajoules:
-                return ``;
+                return `TJ`;
             case EnergyUnits.Petajoules:
-                return ``;
+                return `PJ`;
             case EnergyUnits.Kilocalories:
-                return ``;
+                return `kcal`;
             case EnergyUnits.Megacalories:
-                return ``;
+                return `Mcal`;
             case EnergyUnits.KilobritishThermalUnits:
-                return ``;
+                return `kBTU`;
             case EnergyUnits.MegabritishThermalUnits:
-                return ``;
+                return `MBTU`;
             case EnergyUnits.GigabritishThermalUnits:
-                return ``;
+                return `GBTU`;
             case EnergyUnits.KiloelectronVolts:
-                return ``;
+                return `keV`;
             case EnergyUnits.MegaelectronVolts:
-                return ``;
+                return `MeV`;
             case EnergyUnits.GigaelectronVolts:
-                return ``;
+                return `GeV`;
             case EnergyUnits.TeraelectronVolts:
-                return ``;
+                return `TeV`;
             case EnergyUnits.KilowattHours:
-                return ``;
+                return `kWh`;
             case EnergyUnits.MegawattHours:
-                return ``;
+                return `MWh`;
             case EnergyUnits.GigawattHours:
-                return ``;
+                return `GWh`;
             case EnergyUnits.TerawattHours:
-                return ``;
+                return `TWh`;
             case EnergyUnits.KilowattDays:
-                return ``;
+                return `kWd`;
             case EnergyUnits.MegawattDays:
-                return ``;
+                return `MWd`;
             case EnergyUnits.GigawattDays:
-                return ``;
+                return `GWd`;
             case EnergyUnits.TerawattDays:
-                return ``;
+                return `TWd`;
             case EnergyUnits.DecathermsEc:
-                return ``;
+                return `dath (E.C.)`;
             case EnergyUnits.DecathermsUs:
-                return ``;
+                return `dath (U.S.)`;
             case EnergyUnits.DecathermsImperial:
-                return ``;
+                return `dath (imp.)`;
         default:
             break;
         }

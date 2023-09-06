@@ -89,6 +89,23 @@ export class LeakRate {
         return new LeakRate(value, LeakRateUnits.TorrLitersPerSecond);
     }
 
+    /**
+     * Convert LeakRate to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: LeakRateUnits): number {
+        switch (toUnit) {
+            case LeakRateUnits.PascalCubicMetersPerSecond: return this.PascalCubicMetersPerSecond;
+            case LeakRateUnits.MillibarLitersPerSecond: return this.MillibarLitersPerSecond;
+            case LeakRateUnits.TorrLitersPerSecond: return this.TorrLitersPerSecond;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: LeakRateUnits): number {
         switch (toUnit) {
                 

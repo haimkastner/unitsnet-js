@@ -383,6 +383,37 @@ export class AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.KilopoundMoles);
     }
 
+    /**
+     * Convert AmountOfSubstance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: AmountOfSubstanceUnits): number {
+        switch (toUnit) {
+            case AmountOfSubstanceUnits.Moles: return this.Moles;
+            case AmountOfSubstanceUnits.PoundMoles: return this.PoundMoles;
+            case AmountOfSubstanceUnits.Femtomoles: return this.Femtomoles;
+            case AmountOfSubstanceUnits.Picomoles: return this.Picomoles;
+            case AmountOfSubstanceUnits.Nanomoles: return this.Nanomoles;
+            case AmountOfSubstanceUnits.Micromoles: return this.Micromoles;
+            case AmountOfSubstanceUnits.Millimoles: return this.Millimoles;
+            case AmountOfSubstanceUnits.Centimoles: return this.Centimoles;
+            case AmountOfSubstanceUnits.Decimoles: return this.Decimoles;
+            case AmountOfSubstanceUnits.Kilomoles: return this.Kilomoles;
+            case AmountOfSubstanceUnits.Megamoles: return this.Megamoles;
+            case AmountOfSubstanceUnits.NanopoundMoles: return this.NanopoundMoles;
+            case AmountOfSubstanceUnits.MicropoundMoles: return this.MicropoundMoles;
+            case AmountOfSubstanceUnits.MillipoundMoles: return this.MillipoundMoles;
+            case AmountOfSubstanceUnits.CentipoundMoles: return this.CentipoundMoles;
+            case AmountOfSubstanceUnits.DecipoundMoles: return this.DecipoundMoles;
+            case AmountOfSubstanceUnits.KilopoundMoles: return this.KilopoundMoles;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: AmountOfSubstanceUnits): number {
         switch (toUnit) {
                 
@@ -485,35 +516,35 @@ export class AmountOfSubstance {
             case AmountOfSubstanceUnits.PoundMoles:
                 return this.PoundMoles + ` lbmol`;
             case AmountOfSubstanceUnits.Femtomoles:
-                return this.Femtomoles + ` `;
+                return this.Femtomoles + ` fmol`;
             case AmountOfSubstanceUnits.Picomoles:
-                return this.Picomoles + ` `;
+                return this.Picomoles + ` pmol`;
             case AmountOfSubstanceUnits.Nanomoles:
-                return this.Nanomoles + ` `;
+                return this.Nanomoles + ` nmol`;
             case AmountOfSubstanceUnits.Micromoles:
-                return this.Micromoles + ` `;
+                return this.Micromoles + ` μmol`;
             case AmountOfSubstanceUnits.Millimoles:
-                return this.Millimoles + ` `;
+                return this.Millimoles + ` mmol`;
             case AmountOfSubstanceUnits.Centimoles:
-                return this.Centimoles + ` `;
+                return this.Centimoles + ` cmol`;
             case AmountOfSubstanceUnits.Decimoles:
-                return this.Decimoles + ` `;
+                return this.Decimoles + ` dmol`;
             case AmountOfSubstanceUnits.Kilomoles:
-                return this.Kilomoles + ` `;
+                return this.Kilomoles + ` kmol`;
             case AmountOfSubstanceUnits.Megamoles:
-                return this.Megamoles + ` `;
+                return this.Megamoles + ` Mmol`;
             case AmountOfSubstanceUnits.NanopoundMoles:
-                return this.NanopoundMoles + ` `;
+                return this.NanopoundMoles + ` nlbmol`;
             case AmountOfSubstanceUnits.MicropoundMoles:
-                return this.MicropoundMoles + ` `;
+                return this.MicropoundMoles + ` μlbmol`;
             case AmountOfSubstanceUnits.MillipoundMoles:
-                return this.MillipoundMoles + ` `;
+                return this.MillipoundMoles + ` mlbmol`;
             case AmountOfSubstanceUnits.CentipoundMoles:
-                return this.CentipoundMoles + ` `;
+                return this.CentipoundMoles + ` clbmol`;
             case AmountOfSubstanceUnits.DecipoundMoles:
-                return this.DecipoundMoles + ` `;
+                return this.DecipoundMoles + ` dlbmol`;
             case AmountOfSubstanceUnits.KilopoundMoles:
-                return this.KilopoundMoles + ` `;
+                return this.KilopoundMoles + ` klbmol`;
         default:
             break;
         }
@@ -536,35 +567,35 @@ export class AmountOfSubstance {
             case AmountOfSubstanceUnits.PoundMoles:
                 return `lbmol`;
             case AmountOfSubstanceUnits.Femtomoles:
-                return ``;
+                return `fmol`;
             case AmountOfSubstanceUnits.Picomoles:
-                return ``;
+                return `pmol`;
             case AmountOfSubstanceUnits.Nanomoles:
-                return ``;
+                return `nmol`;
             case AmountOfSubstanceUnits.Micromoles:
-                return ``;
+                return `μmol`;
             case AmountOfSubstanceUnits.Millimoles:
-                return ``;
+                return `mmol`;
             case AmountOfSubstanceUnits.Centimoles:
-                return ``;
+                return `cmol`;
             case AmountOfSubstanceUnits.Decimoles:
-                return ``;
+                return `dmol`;
             case AmountOfSubstanceUnits.Kilomoles:
-                return ``;
+                return `kmol`;
             case AmountOfSubstanceUnits.Megamoles:
-                return ``;
+                return `Mmol`;
             case AmountOfSubstanceUnits.NanopoundMoles:
-                return ``;
+                return `nlbmol`;
             case AmountOfSubstanceUnits.MicropoundMoles:
-                return ``;
+                return `μlbmol`;
             case AmountOfSubstanceUnits.MillipoundMoles:
-                return ``;
+                return `mlbmol`;
             case AmountOfSubstanceUnits.CentipoundMoles:
-                return ``;
+                return `clbmol`;
             case AmountOfSubstanceUnits.DecipoundMoles:
-                return ``;
+                return `dlbmol`;
             case AmountOfSubstanceUnits.KilopoundMoles:
-                return ``;
+                return `klbmol`;
         default:
             break;
         }

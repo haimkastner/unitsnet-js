@@ -236,6 +236,30 @@ export class ReciprocalLength {
         return new ReciprocalLength(value, ReciprocalLengthUnits.InverseMicroinches);
     }
 
+    /**
+     * Convert ReciprocalLength to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ReciprocalLengthUnits): number {
+        switch (toUnit) {
+            case ReciprocalLengthUnits.InverseMeters: return this.InverseMeters;
+            case ReciprocalLengthUnits.InverseCentimeters: return this.InverseCentimeters;
+            case ReciprocalLengthUnits.InverseMillimeters: return this.InverseMillimeters;
+            case ReciprocalLengthUnits.InverseMiles: return this.InverseMiles;
+            case ReciprocalLengthUnits.InverseYards: return this.InverseYards;
+            case ReciprocalLengthUnits.InverseFeet: return this.InverseFeet;
+            case ReciprocalLengthUnits.InverseUsSurveyFeet: return this.InverseUsSurveyFeet;
+            case ReciprocalLengthUnits.InverseInches: return this.InverseInches;
+            case ReciprocalLengthUnits.InverseMils: return this.InverseMils;
+            case ReciprocalLengthUnits.InverseMicroinches: return this.InverseMicroinches;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ReciprocalLengthUnits): number {
         switch (toUnit) {
                 

@@ -215,6 +215,29 @@ export class MolarFlow {
         return new MolarFlow(value, MolarFlowUnits.KilomolesPerHour);
     }
 
+    /**
+     * Convert MolarFlow to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MolarFlowUnits): number {
+        switch (toUnit) {
+            case MolarFlowUnits.MolesPerSecond: return this.MolesPerSecond;
+            case MolarFlowUnits.MolesPerMinute: return this.MolesPerMinute;
+            case MolarFlowUnits.MolesPerHour: return this.MolesPerHour;
+            case MolarFlowUnits.PoundMolesPerSecond: return this.PoundMolesPerSecond;
+            case MolarFlowUnits.PoundMolesPerMinute: return this.PoundMolesPerMinute;
+            case MolarFlowUnits.PoundMolesPerHour: return this.PoundMolesPerHour;
+            case MolarFlowUnits.KilomolesPerSecond: return this.KilomolesPerSecond;
+            case MolarFlowUnits.KilomolesPerMinute: return this.KilomolesPerMinute;
+            case MolarFlowUnits.KilomolesPerHour: return this.KilomolesPerHour;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MolarFlowUnits): number {
         switch (toUnit) {
                 
@@ -293,11 +316,11 @@ export class MolarFlow {
             case MolarFlowUnits.PoundMolesPerHour:
                 return this.PoundMolesPerHour + ` lbmol/h`;
             case MolarFlowUnits.KilomolesPerSecond:
-                return this.KilomolesPerSecond + ` `;
+                return this.KilomolesPerSecond + ` kmol/s`;
             case MolarFlowUnits.KilomolesPerMinute:
-                return this.KilomolesPerMinute + ` `;
+                return this.KilomolesPerMinute + ` kmol/min`;
             case MolarFlowUnits.KilomolesPerHour:
-                return this.KilomolesPerHour + ` `;
+                return this.KilomolesPerHour + ` kkmol/h`;
         default:
             break;
         }
@@ -328,11 +351,11 @@ export class MolarFlow {
             case MolarFlowUnits.PoundMolesPerHour:
                 return `lbmol/h`;
             case MolarFlowUnits.KilomolesPerSecond:
-                return ``;
+                return `kmol/s`;
             case MolarFlowUnits.KilomolesPerMinute:
-                return ``;
+                return `kmol/min`;
             case MolarFlowUnits.KilomolesPerHour:
-                return ``;
+                return `kkmol/h`;
         default:
             break;
         }

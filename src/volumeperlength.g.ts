@@ -215,6 +215,29 @@ export class VolumePerLength {
         return new VolumePerLength(value, VolumePerLengthUnits.ImperialGallonsPerMile);
     }
 
+    /**
+     * Convert VolumePerLength to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: VolumePerLengthUnits): number {
+        switch (toUnit) {
+            case VolumePerLengthUnits.CubicMetersPerMeter: return this.CubicMetersPerMeter;
+            case VolumePerLengthUnits.LitersPerMeter: return this.LitersPerMeter;
+            case VolumePerLengthUnits.LitersPerKilometer: return this.LitersPerKilometer;
+            case VolumePerLengthUnits.LitersPerMillimeter: return this.LitersPerMillimeter;
+            case VolumePerLengthUnits.OilBarrelsPerFoot: return this.OilBarrelsPerFoot;
+            case VolumePerLengthUnits.CubicYardsPerFoot: return this.CubicYardsPerFoot;
+            case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: return this.CubicYardsPerUsSurveyFoot;
+            case VolumePerLengthUnits.UsGallonsPerMile: return this.UsGallonsPerMile;
+            case VolumePerLengthUnits.ImperialGallonsPerMile: return this.ImperialGallonsPerMile;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: VolumePerLengthUnits): number {
         switch (toUnit) {
                 

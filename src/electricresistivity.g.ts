@@ -320,6 +320,34 @@ export class ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.MegaohmsCentimeter);
     }
 
+    /**
+     * Convert ElectricResistivity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricResistivityUnits): number {
+        switch (toUnit) {
+            case ElectricResistivityUnits.OhmMeters: return this.OhmMeters;
+            case ElectricResistivityUnits.OhmsCentimeter: return this.OhmsCentimeter;
+            case ElectricResistivityUnits.PicoohmMeters: return this.PicoohmMeters;
+            case ElectricResistivityUnits.NanoohmMeters: return this.NanoohmMeters;
+            case ElectricResistivityUnits.MicroohmMeters: return this.MicroohmMeters;
+            case ElectricResistivityUnits.MilliohmMeters: return this.MilliohmMeters;
+            case ElectricResistivityUnits.KiloohmMeters: return this.KiloohmMeters;
+            case ElectricResistivityUnits.MegaohmMeters: return this.MegaohmMeters;
+            case ElectricResistivityUnits.PicoohmsCentimeter: return this.PicoohmsCentimeter;
+            case ElectricResistivityUnits.NanoohmsCentimeter: return this.NanoohmsCentimeter;
+            case ElectricResistivityUnits.MicroohmsCentimeter: return this.MicroohmsCentimeter;
+            case ElectricResistivityUnits.MilliohmsCentimeter: return this.MilliohmsCentimeter;
+            case ElectricResistivityUnits.KiloohmsCentimeter: return this.KiloohmsCentimeter;
+            case ElectricResistivityUnits.MegaohmsCentimeter: return this.MegaohmsCentimeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricResistivityUnits): number {
         switch (toUnit) {
                 
@@ -410,29 +438,29 @@ export class ElectricResistivity {
             case ElectricResistivityUnits.OhmsCentimeter:
                 return this.OhmsCentimeter + ` Ω·cm`;
             case ElectricResistivityUnits.PicoohmMeters:
-                return this.PicoohmMeters + ` `;
+                return this.PicoohmMeters + ` pΩ·m`;
             case ElectricResistivityUnits.NanoohmMeters:
-                return this.NanoohmMeters + ` `;
+                return this.NanoohmMeters + ` nΩ·m`;
             case ElectricResistivityUnits.MicroohmMeters:
-                return this.MicroohmMeters + ` `;
+                return this.MicroohmMeters + ` μΩ·m`;
             case ElectricResistivityUnits.MilliohmMeters:
-                return this.MilliohmMeters + ` `;
+                return this.MilliohmMeters + ` mΩ·m`;
             case ElectricResistivityUnits.KiloohmMeters:
-                return this.KiloohmMeters + ` `;
+                return this.KiloohmMeters + ` kΩ·m`;
             case ElectricResistivityUnits.MegaohmMeters:
-                return this.MegaohmMeters + ` `;
+                return this.MegaohmMeters + ` MΩ·m`;
             case ElectricResistivityUnits.PicoohmsCentimeter:
-                return this.PicoohmsCentimeter + ` `;
+                return this.PicoohmsCentimeter + ` pΩ·cm`;
             case ElectricResistivityUnits.NanoohmsCentimeter:
-                return this.NanoohmsCentimeter + ` `;
+                return this.NanoohmsCentimeter + ` nΩ·cm`;
             case ElectricResistivityUnits.MicroohmsCentimeter:
-                return this.MicroohmsCentimeter + ` `;
+                return this.MicroohmsCentimeter + ` μΩ·cm`;
             case ElectricResistivityUnits.MilliohmsCentimeter:
-                return this.MilliohmsCentimeter + ` `;
+                return this.MilliohmsCentimeter + ` mΩ·cm`;
             case ElectricResistivityUnits.KiloohmsCentimeter:
-                return this.KiloohmsCentimeter + ` `;
+                return this.KiloohmsCentimeter + ` kΩ·cm`;
             case ElectricResistivityUnits.MegaohmsCentimeter:
-                return this.MegaohmsCentimeter + ` `;
+                return this.MegaohmsCentimeter + ` MΩ·cm`;
         default:
             break;
         }
@@ -455,29 +483,29 @@ export class ElectricResistivity {
             case ElectricResistivityUnits.OhmsCentimeter:
                 return `Ω·cm`;
             case ElectricResistivityUnits.PicoohmMeters:
-                return ``;
+                return `pΩ·m`;
             case ElectricResistivityUnits.NanoohmMeters:
-                return ``;
+                return `nΩ·m`;
             case ElectricResistivityUnits.MicroohmMeters:
-                return ``;
+                return `μΩ·m`;
             case ElectricResistivityUnits.MilliohmMeters:
-                return ``;
+                return `mΩ·m`;
             case ElectricResistivityUnits.KiloohmMeters:
-                return ``;
+                return `kΩ·m`;
             case ElectricResistivityUnits.MegaohmMeters:
-                return ``;
+                return `MΩ·m`;
             case ElectricResistivityUnits.PicoohmsCentimeter:
-                return ``;
+                return `pΩ·cm`;
             case ElectricResistivityUnits.NanoohmsCentimeter:
-                return ``;
+                return `nΩ·cm`;
             case ElectricResistivityUnits.MicroohmsCentimeter:
-                return ``;
+                return `μΩ·cm`;
             case ElectricResistivityUnits.MilliohmsCentimeter:
-                return ``;
+                return `mΩ·cm`;
             case ElectricResistivityUnits.KiloohmsCentimeter:
-                return ``;
+                return `kΩ·cm`;
             case ElectricResistivityUnits.MegaohmsCentimeter:
-                return ``;
+                return `MΩ·cm`;
         default:
             break;
         }

@@ -173,6 +173,27 @@ export class Capacitance {
         return new Capacitance(value, CapacitanceUnits.Megafarads);
     }
 
+    /**
+     * Convert Capacitance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: CapacitanceUnits): number {
+        switch (toUnit) {
+            case CapacitanceUnits.Farads: return this.Farads;
+            case CapacitanceUnits.Picofarads: return this.Picofarads;
+            case CapacitanceUnits.Nanofarads: return this.Nanofarads;
+            case CapacitanceUnits.Microfarads: return this.Microfarads;
+            case CapacitanceUnits.Millifarads: return this.Millifarads;
+            case CapacitanceUnits.Kilofarads: return this.Kilofarads;
+            case CapacitanceUnits.Megafarads: return this.Megafarads;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: CapacitanceUnits): number {
         switch (toUnit) {
                 
@@ -233,17 +254,17 @@ export class Capacitance {
             case CapacitanceUnits.Farads:
                 return this.Farads + ` F`;
             case CapacitanceUnits.Picofarads:
-                return this.Picofarads + ` `;
+                return this.Picofarads + ` pF`;
             case CapacitanceUnits.Nanofarads:
-                return this.Nanofarads + ` `;
+                return this.Nanofarads + ` nF`;
             case CapacitanceUnits.Microfarads:
-                return this.Microfarads + ` `;
+                return this.Microfarads + ` μF`;
             case CapacitanceUnits.Millifarads:
-                return this.Millifarads + ` `;
+                return this.Millifarads + ` mF`;
             case CapacitanceUnits.Kilofarads:
-                return this.Kilofarads + ` `;
+                return this.Kilofarads + ` kF`;
             case CapacitanceUnits.Megafarads:
-                return this.Megafarads + ` `;
+                return this.Megafarads + ` MF`;
         default:
             break;
         }
@@ -264,17 +285,17 @@ export class Capacitance {
             case CapacitanceUnits.Farads:
                 return `F`;
             case CapacitanceUnits.Picofarads:
-                return ``;
+                return `pF`;
             case CapacitanceUnits.Nanofarads:
-                return ``;
+                return `nF`;
             case CapacitanceUnits.Microfarads:
-                return ``;
+                return `μF`;
             case CapacitanceUnits.Millifarads:
-                return ``;
+                return `mF`;
             case CapacitanceUnits.Kilofarads:
-                return ``;
+                return `kF`;
             case CapacitanceUnits.Megafarads:
-                return ``;
+                return `MF`;
         default:
             break;
         }

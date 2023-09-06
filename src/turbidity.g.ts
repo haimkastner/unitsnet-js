@@ -47,6 +47,21 @@ export class Turbidity {
         return new Turbidity(value, TurbidityUnits.NTU);
     }
 
+    /**
+     * Convert Turbidity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: TurbidityUnits): number {
+        switch (toUnit) {
+            case TurbidityUnits.NTU: return this.NTU;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: TurbidityUnits): number {
         switch (toUnit) {
                 

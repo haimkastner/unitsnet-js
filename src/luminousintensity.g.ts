@@ -47,6 +47,21 @@ export class LuminousIntensity {
         return new LuminousIntensity(value, LuminousIntensityUnits.Candela);
     }
 
+    /**
+     * Convert LuminousIntensity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: LuminousIntensityUnits): number {
+        switch (toUnit) {
+            case LuminousIntensityUnits.Candela: return this.Candela;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: LuminousIntensityUnits): number {
         switch (toUnit) {
                 

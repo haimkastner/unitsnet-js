@@ -47,6 +47,21 @@ export class SolidAngle {
         return new SolidAngle(value, SolidAngleUnits.Steradians);
     }
 
+    /**
+     * Convert SolidAngle to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: SolidAngleUnits): number {
+        switch (toUnit) {
+            case SolidAngleUnits.Steradians: return this.Steradians;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: SolidAngleUnits): number {
         switch (toUnit) {
                 

@@ -47,6 +47,21 @@ export class RelativeHumidity {
         return new RelativeHumidity(value, RelativeHumidityUnits.Percent);
     }
 
+    /**
+     * Convert RelativeHumidity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: RelativeHumidityUnits): number {
+        switch (toUnit) {
+            case RelativeHumidityUnits.Percent: return this.Percent;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: RelativeHumidityUnits): number {
         switch (toUnit) {
                 

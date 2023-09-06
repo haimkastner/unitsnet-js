@@ -1160,6 +1160,74 @@ export class Volume {
         return new Volume(value, VolumeUnits.MegausGallons);
     }
 
+    /**
+     * Convert Volume to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: VolumeUnits): number {
+        switch (toUnit) {
+            case VolumeUnits.Liters: return this.Liters;
+            case VolumeUnits.CubicMeters: return this.CubicMeters;
+            case VolumeUnits.CubicKilometers: return this.CubicKilometers;
+            case VolumeUnits.CubicHectometers: return this.CubicHectometers;
+            case VolumeUnits.CubicDecimeters: return this.CubicDecimeters;
+            case VolumeUnits.CubicCentimeters: return this.CubicCentimeters;
+            case VolumeUnits.CubicMillimeters: return this.CubicMillimeters;
+            case VolumeUnits.CubicMicrometers: return this.CubicMicrometers;
+            case VolumeUnits.CubicMiles: return this.CubicMiles;
+            case VolumeUnits.CubicYards: return this.CubicYards;
+            case VolumeUnits.CubicFeet: return this.CubicFeet;
+            case VolumeUnits.CubicInches: return this.CubicInches;
+            case VolumeUnits.ImperialGallons: return this.ImperialGallons;
+            case VolumeUnits.ImperialOunces: return this.ImperialOunces;
+            case VolumeUnits.UsGallons: return this.UsGallons;
+            case VolumeUnits.UsOunces: return this.UsOunces;
+            case VolumeUnits.UsTablespoons: return this.UsTablespoons;
+            case VolumeUnits.AuTablespoons: return this.AuTablespoons;
+            case VolumeUnits.UkTablespoons: return this.UkTablespoons;
+            case VolumeUnits.MetricTeaspoons: return this.MetricTeaspoons;
+            case VolumeUnits.UsTeaspoons: return this.UsTeaspoons;
+            case VolumeUnits.MetricCups: return this.MetricCups;
+            case VolumeUnits.UsCustomaryCups: return this.UsCustomaryCups;
+            case VolumeUnits.UsLegalCups: return this.UsLegalCups;
+            case VolumeUnits.OilBarrels: return this.OilBarrels;
+            case VolumeUnits.UsBeerBarrels: return this.UsBeerBarrels;
+            case VolumeUnits.ImperialBeerBarrels: return this.ImperialBeerBarrels;
+            case VolumeUnits.UsQuarts: return this.UsQuarts;
+            case VolumeUnits.ImperialQuarts: return this.ImperialQuarts;
+            case VolumeUnits.UsPints: return this.UsPints;
+            case VolumeUnits.AcreFeet: return this.AcreFeet;
+            case VolumeUnits.ImperialPints: return this.ImperialPints;
+            case VolumeUnits.BoardFeet: return this.BoardFeet;
+            case VolumeUnits.Nanoliters: return this.Nanoliters;
+            case VolumeUnits.Microliters: return this.Microliters;
+            case VolumeUnits.Milliliters: return this.Milliliters;
+            case VolumeUnits.Centiliters: return this.Centiliters;
+            case VolumeUnits.Deciliters: return this.Deciliters;
+            case VolumeUnits.Decaliters: return this.Decaliters;
+            case VolumeUnits.Hectoliters: return this.Hectoliters;
+            case VolumeUnits.Kiloliters: return this.Kiloliters;
+            case VolumeUnits.Megaliters: return this.Megaliters;
+            case VolumeUnits.HectocubicMeters: return this.HectocubicMeters;
+            case VolumeUnits.KilocubicMeters: return this.KilocubicMeters;
+            case VolumeUnits.HectocubicFeet: return this.HectocubicFeet;
+            case VolumeUnits.KilocubicFeet: return this.KilocubicFeet;
+            case VolumeUnits.MegacubicFeet: return this.MegacubicFeet;
+            case VolumeUnits.KiloimperialGallons: return this.KiloimperialGallons;
+            case VolumeUnits.MegaimperialGallons: return this.MegaimperialGallons;
+            case VolumeUnits.DecausGallons: return this.DecausGallons;
+            case VolumeUnits.DeciusGallons: return this.DeciusGallons;
+            case VolumeUnits.HectousGallons: return this.HectousGallons;
+            case VolumeUnits.KilousGallons: return this.KilousGallons;
+            case VolumeUnits.MegausGallons: return this.MegausGallons;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: VolumeUnits): number {
         switch (toUnit) {
                 
@@ -1472,47 +1540,47 @@ export class Volume {
             case VolumeUnits.BoardFeet:
                 return this.BoardFeet + ` bf`;
             case VolumeUnits.Nanoliters:
-                return this.Nanoliters + ` `;
+                return this.Nanoliters + ` nl`;
             case VolumeUnits.Microliters:
-                return this.Microliters + ` `;
+                return this.Microliters + ` μl`;
             case VolumeUnits.Milliliters:
-                return this.Milliliters + ` `;
+                return this.Milliliters + ` ml`;
             case VolumeUnits.Centiliters:
-                return this.Centiliters + ` `;
+                return this.Centiliters + ` cl`;
             case VolumeUnits.Deciliters:
-                return this.Deciliters + ` `;
+                return this.Deciliters + ` dl`;
             case VolumeUnits.Decaliters:
-                return this.Decaliters + ` `;
+                return this.Decaliters + ` dal`;
             case VolumeUnits.Hectoliters:
-                return this.Hectoliters + ` `;
+                return this.Hectoliters + ` hl`;
             case VolumeUnits.Kiloliters:
-                return this.Kiloliters + ` `;
+                return this.Kiloliters + ` kl`;
             case VolumeUnits.Megaliters:
-                return this.Megaliters + ` `;
+                return this.Megaliters + ` Ml`;
             case VolumeUnits.HectocubicMeters:
-                return this.HectocubicMeters + ` `;
+                return this.HectocubicMeters + ` hm³`;
             case VolumeUnits.KilocubicMeters:
-                return this.KilocubicMeters + ` `;
+                return this.KilocubicMeters + ` km³`;
             case VolumeUnits.HectocubicFeet:
-                return this.HectocubicFeet + ` `;
+                return this.HectocubicFeet + ` hft³`;
             case VolumeUnits.KilocubicFeet:
-                return this.KilocubicFeet + ` `;
+                return this.KilocubicFeet + ` kft³`;
             case VolumeUnits.MegacubicFeet:
-                return this.MegacubicFeet + ` `;
+                return this.MegacubicFeet + ` Mft³`;
             case VolumeUnits.KiloimperialGallons:
-                return this.KiloimperialGallons + ` `;
+                return this.KiloimperialGallons + ` kgal (imp.)`;
             case VolumeUnits.MegaimperialGallons:
-                return this.MegaimperialGallons + ` `;
+                return this.MegaimperialGallons + ` Mgal (imp.)`;
             case VolumeUnits.DecausGallons:
-                return this.DecausGallons + ` `;
+                return this.DecausGallons + ` dagal (U.S.)`;
             case VolumeUnits.DeciusGallons:
-                return this.DeciusGallons + ` `;
+                return this.DeciusGallons + ` dgal (U.S.)`;
             case VolumeUnits.HectousGallons:
-                return this.HectousGallons + ` `;
+                return this.HectousGallons + ` hgal (U.S.)`;
             case VolumeUnits.KilousGallons:
-                return this.KilousGallons + ` `;
+                return this.KilousGallons + ` kgal (U.S.)`;
             case VolumeUnits.MegausGallons:
-                return this.MegausGallons + ` `;
+                return this.MegausGallons + ` Mgal (U.S.)`;
         default:
             break;
         }
@@ -1597,47 +1665,47 @@ export class Volume {
             case VolumeUnits.BoardFeet:
                 return `bf`;
             case VolumeUnits.Nanoliters:
-                return ``;
+                return `nl`;
             case VolumeUnits.Microliters:
-                return ``;
+                return `μl`;
             case VolumeUnits.Milliliters:
-                return ``;
+                return `ml`;
             case VolumeUnits.Centiliters:
-                return ``;
+                return `cl`;
             case VolumeUnits.Deciliters:
-                return ``;
+                return `dl`;
             case VolumeUnits.Decaliters:
-                return ``;
+                return `dal`;
             case VolumeUnits.Hectoliters:
-                return ``;
+                return `hl`;
             case VolumeUnits.Kiloliters:
-                return ``;
+                return `kl`;
             case VolumeUnits.Megaliters:
-                return ``;
+                return `Ml`;
             case VolumeUnits.HectocubicMeters:
-                return ``;
+                return `hm³`;
             case VolumeUnits.KilocubicMeters:
-                return ``;
+                return `km³`;
             case VolumeUnits.HectocubicFeet:
-                return ``;
+                return `hft³`;
             case VolumeUnits.KilocubicFeet:
-                return ``;
+                return `kft³`;
             case VolumeUnits.MegacubicFeet:
-                return ``;
+                return `Mft³`;
             case VolumeUnits.KiloimperialGallons:
-                return ``;
+                return `kgal (imp.)`;
             case VolumeUnits.MegaimperialGallons:
-                return ``;
+                return `Mgal (imp.)`;
             case VolumeUnits.DecausGallons:
-                return ``;
+                return `dagal (U.S.)`;
             case VolumeUnits.DeciusGallons:
-                return ``;
+                return `dgal (U.S.)`;
             case VolumeUnits.HectousGallons:
-                return ``;
+                return `hgal (U.S.)`;
             case VolumeUnits.KilousGallons:
-                return ``;
+                return `kgal (U.S.)`;
             case VolumeUnits.MegausGallons:
-                return ``;
+                return `Mgal (U.S.)`;
         default:
             break;
         }

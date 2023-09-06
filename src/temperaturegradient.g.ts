@@ -110,6 +110,24 @@ export class TemperatureGradient {
         return new TemperatureGradient(value, TemperatureGradientUnits.DegreesCelciusPerKilometer);
     }
 
+    /**
+     * Convert TemperatureGradient to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: TemperatureGradientUnits): number {
+        switch (toUnit) {
+            case TemperatureGradientUnits.KelvinsPerMeter: return this.KelvinsPerMeter;
+            case TemperatureGradientUnits.DegreesCelciusPerMeter: return this.DegreesCelciusPerMeter;
+            case TemperatureGradientUnits.DegreesFahrenheitPerFoot: return this.DegreesFahrenheitPerFoot;
+            case TemperatureGradientUnits.DegreesCelciusPerKilometer: return this.DegreesCelciusPerKilometer;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: TemperatureGradientUnits): number {
         switch (toUnit) {
                 

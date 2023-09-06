@@ -362,6 +362,36 @@ export class Angle {
         return new Angle(value, AngleUnits.Millidegrees);
     }
 
+    /**
+     * Convert Angle to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: AngleUnits): number {
+        switch (toUnit) {
+            case AngleUnits.Radians: return this.Radians;
+            case AngleUnits.Degrees: return this.Degrees;
+            case AngleUnits.Arcminutes: return this.Arcminutes;
+            case AngleUnits.Arcseconds: return this.Arcseconds;
+            case AngleUnits.Gradians: return this.Gradians;
+            case AngleUnits.NatoMils: return this.NatoMils;
+            case AngleUnits.Revolutions: return this.Revolutions;
+            case AngleUnits.Tilt: return this.Tilt;
+            case AngleUnits.Nanoradians: return this.Nanoradians;
+            case AngleUnits.Microradians: return this.Microradians;
+            case AngleUnits.Milliradians: return this.Milliradians;
+            case AngleUnits.Centiradians: return this.Centiradians;
+            case AngleUnits.Deciradians: return this.Deciradians;
+            case AngleUnits.Nanodegrees: return this.Nanodegrees;
+            case AngleUnits.Microdegrees: return this.Microdegrees;
+            case AngleUnits.Millidegrees: return this.Millidegrees;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: AngleUnits): number {
         switch (toUnit) {
                 
@@ -472,21 +502,21 @@ export class Angle {
             case AngleUnits.Tilt:
                 return this.Tilt + ` sin(θ)`;
             case AngleUnits.Nanoradians:
-                return this.Nanoradians + ` `;
+                return this.Nanoradians + ` nrad`;
             case AngleUnits.Microradians:
-                return this.Microradians + ` `;
+                return this.Microradians + ` μrad`;
             case AngleUnits.Milliradians:
-                return this.Milliradians + ` `;
+                return this.Milliradians + ` mrad`;
             case AngleUnits.Centiradians:
-                return this.Centiradians + ` `;
+                return this.Centiradians + ` crad`;
             case AngleUnits.Deciradians:
-                return this.Deciradians + ` `;
+                return this.Deciradians + ` drad`;
             case AngleUnits.Nanodegrees:
-                return this.Nanodegrees + ` `;
+                return this.Nanodegrees + ` n°`;
             case AngleUnits.Microdegrees:
-                return this.Microdegrees + ` `;
+                return this.Microdegrees + ` μ°`;
             case AngleUnits.Millidegrees:
-                return this.Millidegrees + ` `;
+                return this.Millidegrees + ` m°`;
         default:
             break;
         }
@@ -521,21 +551,21 @@ export class Angle {
             case AngleUnits.Tilt:
                 return `sin(θ)`;
             case AngleUnits.Nanoradians:
-                return ``;
+                return `nrad`;
             case AngleUnits.Microradians:
-                return ``;
+                return `μrad`;
             case AngleUnits.Milliradians:
-                return ``;
+                return `mrad`;
             case AngleUnits.Centiradians:
-                return ``;
+                return `crad`;
             case AngleUnits.Deciradians:
-                return ``;
+                return `drad`;
             case AngleUnits.Nanodegrees:
-                return ``;
+                return `n°`;
             case AngleUnits.Microdegrees:
-                return ``;
+                return `μ°`;
             case AngleUnits.Millidegrees:
-                return ``;
+                return `m°`;
         default:
             break;
         }

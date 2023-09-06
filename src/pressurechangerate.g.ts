@@ -404,6 +404,38 @@ export class PressureChangeRate {
         return new PressureChangeRate(value, PressureChangeRateUnits.MillibarsPerMinute);
     }
 
+    /**
+     * Convert PressureChangeRate to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: PressureChangeRateUnits): number {
+        switch (toUnit) {
+            case PressureChangeRateUnits.PascalsPerSecond: return this.PascalsPerSecond;
+            case PressureChangeRateUnits.PascalsPerMinute: return this.PascalsPerMinute;
+            case PressureChangeRateUnits.MillimetersOfMercuryPerSecond: return this.MillimetersOfMercuryPerSecond;
+            case PressureChangeRateUnits.AtmospheresPerSecond: return this.AtmospheresPerSecond;
+            case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond: return this.PoundsForcePerSquareInchPerSecond;
+            case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute: return this.PoundsForcePerSquareInchPerMinute;
+            case PressureChangeRateUnits.BarsPerSecond: return this.BarsPerSecond;
+            case PressureChangeRateUnits.BarsPerMinute: return this.BarsPerMinute;
+            case PressureChangeRateUnits.KilopascalsPerSecond: return this.KilopascalsPerSecond;
+            case PressureChangeRateUnits.MegapascalsPerSecond: return this.MegapascalsPerSecond;
+            case PressureChangeRateUnits.KilopascalsPerMinute: return this.KilopascalsPerMinute;
+            case PressureChangeRateUnits.MegapascalsPerMinute: return this.MegapascalsPerMinute;
+            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond: return this.KilopoundsForcePerSquareInchPerSecond;
+            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond: return this.MegapoundsForcePerSquareInchPerSecond;
+            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute: return this.KilopoundsForcePerSquareInchPerMinute;
+            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute: return this.MegapoundsForcePerSquareInchPerMinute;
+            case PressureChangeRateUnits.MillibarsPerSecond: return this.MillibarsPerSecond;
+            case PressureChangeRateUnits.MillibarsPerMinute: return this.MillibarsPerMinute;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: PressureChangeRateUnits): number {
         switch (toUnit) {
                 
@@ -522,25 +554,25 @@ export class PressureChangeRate {
             case PressureChangeRateUnits.BarsPerMinute:
                 return this.BarsPerMinute + ` bar/min`;
             case PressureChangeRateUnits.KilopascalsPerSecond:
-                return this.KilopascalsPerSecond + ` `;
+                return this.KilopascalsPerSecond + ` kPa/s`;
             case PressureChangeRateUnits.MegapascalsPerSecond:
-                return this.MegapascalsPerSecond + ` `;
+                return this.MegapascalsPerSecond + ` MPa/s`;
             case PressureChangeRateUnits.KilopascalsPerMinute:
-                return this.KilopascalsPerMinute + ` `;
+                return this.KilopascalsPerMinute + ` kPa/min`;
             case PressureChangeRateUnits.MegapascalsPerMinute:
-                return this.MegapascalsPerMinute + ` `;
+                return this.MegapascalsPerMinute + ` MPa/min`;
             case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond:
-                return this.KilopoundsForcePerSquareInchPerSecond + ` `;
+                return this.KilopoundsForcePerSquareInchPerSecond + ` kpsi/s`;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond:
-                return this.MegapoundsForcePerSquareInchPerSecond + ` `;
+                return this.MegapoundsForcePerSquareInchPerSecond + ` Mpsi/s`;
             case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute:
-                return this.KilopoundsForcePerSquareInchPerMinute + ` `;
+                return this.KilopoundsForcePerSquareInchPerMinute + ` kpsi/min`;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute:
-                return this.MegapoundsForcePerSquareInchPerMinute + ` `;
+                return this.MegapoundsForcePerSquareInchPerMinute + ` Mpsi/min`;
             case PressureChangeRateUnits.MillibarsPerSecond:
-                return this.MillibarsPerSecond + ` `;
+                return this.MillibarsPerSecond + ` mbar/s`;
             case PressureChangeRateUnits.MillibarsPerMinute:
-                return this.MillibarsPerMinute + ` `;
+                return this.MillibarsPerMinute + ` mbar/min`;
         default:
             break;
         }
@@ -575,25 +607,25 @@ export class PressureChangeRate {
             case PressureChangeRateUnits.BarsPerMinute:
                 return `bar/min`;
             case PressureChangeRateUnits.KilopascalsPerSecond:
-                return ``;
+                return `kPa/s`;
             case PressureChangeRateUnits.MegapascalsPerSecond:
-                return ``;
+                return `MPa/s`;
             case PressureChangeRateUnits.KilopascalsPerMinute:
-                return ``;
+                return `kPa/min`;
             case PressureChangeRateUnits.MegapascalsPerMinute:
-                return ``;
+                return `MPa/min`;
             case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond:
-                return ``;
+                return `kpsi/s`;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond:
-                return ``;
+                return `Mpsi/s`;
             case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute:
-                return ``;
+                return `kpsi/min`;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute:
-                return ``;
+                return `Mpsi/min`;
             case PressureChangeRateUnits.MillibarsPerSecond:
-                return ``;
+                return `mbar/s`;
             case PressureChangeRateUnits.MillibarsPerMinute:
-                return ``;
+                return `mbar/min`;
         default:
             break;
         }

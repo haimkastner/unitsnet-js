@@ -215,6 +215,29 @@ export class TemperatureDelta {
         return new TemperatureDelta(value, TemperatureDeltaUnits.MillidegreesCelsius);
     }
 
+    /**
+     * Convert TemperatureDelta to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: TemperatureDeltaUnits): number {
+        switch (toUnit) {
+            case TemperatureDeltaUnits.Kelvins: return this.Kelvins;
+            case TemperatureDeltaUnits.DegreesCelsius: return this.DegreesCelsius;
+            case TemperatureDeltaUnits.DegreesDelisle: return this.DegreesDelisle;
+            case TemperatureDeltaUnits.DegreesFahrenheit: return this.DegreesFahrenheit;
+            case TemperatureDeltaUnits.DegreesNewton: return this.DegreesNewton;
+            case TemperatureDeltaUnits.DegreesRankine: return this.DegreesRankine;
+            case TemperatureDeltaUnits.DegreesReaumur: return this.DegreesReaumur;
+            case TemperatureDeltaUnits.DegreesRoemer: return this.DegreesRoemer;
+            case TemperatureDeltaUnits.MillidegreesCelsius: return this.MillidegreesCelsius;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: TemperatureDeltaUnits): number {
         switch (toUnit) {
                 
@@ -297,7 +320,7 @@ export class TemperatureDelta {
             case TemperatureDeltaUnits.DegreesRoemer:
                 return this.DegreesRoemer + ` ∆°Rø`;
             case TemperatureDeltaUnits.MillidegreesCelsius:
-                return this.MillidegreesCelsius + ` `;
+                return this.MillidegreesCelsius + ` m∆°C`;
         default:
             break;
         }
@@ -332,7 +355,7 @@ export class TemperatureDelta {
             case TemperatureDeltaUnits.DegreesRoemer:
                 return `∆°Rø`;
             case TemperatureDeltaUnits.MillidegreesCelsius:
-                return ``;
+                return `m∆°C`;
         default:
             break;
         }

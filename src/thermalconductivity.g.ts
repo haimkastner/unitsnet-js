@@ -68,6 +68,22 @@ export class ThermalConductivity {
         return new ThermalConductivity(value, ThermalConductivityUnits.BtusPerHourFootFahrenheit);
     }
 
+    /**
+     * Convert ThermalConductivity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ThermalConductivityUnits): number {
+        switch (toUnit) {
+            case ThermalConductivityUnits.WattsPerMeterKelvin: return this.WattsPerMeterKelvin;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return this.BtusPerHourFootFahrenheit;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ThermalConductivityUnits): number {
         switch (toUnit) {
                 

@@ -173,6 +173,27 @@ export class ElectricResistance {
         return new ElectricResistance(value, ElectricResistanceUnits.Teraohms);
     }
 
+    /**
+     * Convert ElectricResistance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricResistanceUnits): number {
+        switch (toUnit) {
+            case ElectricResistanceUnits.Ohms: return this.Ohms;
+            case ElectricResistanceUnits.Microohms: return this.Microohms;
+            case ElectricResistanceUnits.Milliohms: return this.Milliohms;
+            case ElectricResistanceUnits.Kiloohms: return this.Kiloohms;
+            case ElectricResistanceUnits.Megaohms: return this.Megaohms;
+            case ElectricResistanceUnits.Gigaohms: return this.Gigaohms;
+            case ElectricResistanceUnits.Teraohms: return this.Teraohms;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricResistanceUnits): number {
         switch (toUnit) {
                 
@@ -233,17 +254,17 @@ export class ElectricResistance {
             case ElectricResistanceUnits.Ohms:
                 return this.Ohms + ` Ω`;
             case ElectricResistanceUnits.Microohms:
-                return this.Microohms + ` `;
+                return this.Microohms + ` μΩ`;
             case ElectricResistanceUnits.Milliohms:
-                return this.Milliohms + ` `;
+                return this.Milliohms + ` mΩ`;
             case ElectricResistanceUnits.Kiloohms:
-                return this.Kiloohms + ` `;
+                return this.Kiloohms + ` kΩ`;
             case ElectricResistanceUnits.Megaohms:
-                return this.Megaohms + ` `;
+                return this.Megaohms + ` MΩ`;
             case ElectricResistanceUnits.Gigaohms:
-                return this.Gigaohms + ` `;
+                return this.Gigaohms + ` GΩ`;
             case ElectricResistanceUnits.Teraohms:
-                return this.Teraohms + ` `;
+                return this.Teraohms + ` TΩ`;
         default:
             break;
         }
@@ -264,17 +285,17 @@ export class ElectricResistance {
             case ElectricResistanceUnits.Ohms:
                 return `Ω`;
             case ElectricResistanceUnits.Microohms:
-                return ``;
+                return `μΩ`;
             case ElectricResistanceUnits.Milliohms:
-                return ``;
+                return `mΩ`;
             case ElectricResistanceUnits.Kiloohms:
-                return ``;
+                return `kΩ`;
             case ElectricResistanceUnits.Megaohms:
-                return ``;
+                return `MΩ`;
             case ElectricResistanceUnits.Gigaohms:
-                return ``;
+                return `GΩ`;
             case ElectricResistanceUnits.Teraohms:
-                return ``;
+                return `TΩ`;
         default:
             break;
         }

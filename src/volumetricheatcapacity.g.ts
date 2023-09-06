@@ -215,6 +215,29 @@ export class VolumetricHeatCapacity {
         return new VolumetricHeatCapacity(value, VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius);
     }
 
+    /**
+     * Convert VolumetricHeatCapacity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: VolumetricHeatCapacityUnits): number {
+        switch (toUnit) {
+            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin: return this.JoulesPerCubicMeterKelvin;
+            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterDegreeCelsius: return this.JoulesPerCubicMeterDegreeCelsius;
+            case VolumetricHeatCapacityUnits.CaloriesPerCubicCentimeterDegreeCelsius: return this.CaloriesPerCubicCentimeterDegreeCelsius;
+            case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit: return this.BtusPerCubicFootDegreeFahrenheit;
+            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin: return this.KilojoulesPerCubicMeterKelvin;
+            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin: return this.MegajoulesPerCubicMeterKelvin;
+            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius: return this.KilojoulesPerCubicMeterDegreeCelsius;
+            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius: return this.MegajoulesPerCubicMeterDegreeCelsius;
+            case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius: return this.KilocaloriesPerCubicCentimeterDegreeCelsius;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: VolumetricHeatCapacityUnits): number {
         switch (toUnit) {
                 
@@ -289,15 +312,15 @@ export class VolumetricHeatCapacity {
             case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit:
                 return this.BtusPerCubicFootDegreeFahrenheit + ` BTU/ft³·°F`;
             case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin:
-                return this.KilojoulesPerCubicMeterKelvin + ` `;
+                return this.KilojoulesPerCubicMeterKelvin + ` kJ/m³·K`;
             case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin:
-                return this.MegajoulesPerCubicMeterKelvin + ` `;
+                return this.MegajoulesPerCubicMeterKelvin + ` MJ/m³·K`;
             case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius:
-                return this.KilojoulesPerCubicMeterDegreeCelsius + ` `;
+                return this.KilojoulesPerCubicMeterDegreeCelsius + ` kJ/m³·°C`;
             case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius:
-                return this.MegajoulesPerCubicMeterDegreeCelsius + ` `;
+                return this.MegajoulesPerCubicMeterDegreeCelsius + ` MJ/m³·°C`;
             case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius:
-                return this.KilocaloriesPerCubicCentimeterDegreeCelsius + ` `;
+                return this.KilocaloriesPerCubicCentimeterDegreeCelsius + ` kcal/cm³·°C`;
         default:
             break;
         }
@@ -324,15 +347,15 @@ export class VolumetricHeatCapacity {
             case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit:
                 return `BTU/ft³·°F`;
             case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin:
-                return ``;
+                return `kJ/m³·K`;
             case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin:
-                return ``;
+                return `MJ/m³·K`;
             case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius:
-                return ``;
+                return `kJ/m³·°C`;
             case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius:
-                return ``;
+                return `MJ/m³·°C`;
             case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius:
-                return ``;
+                return `kcal/cm³·°C`;
         default:
             break;
         }

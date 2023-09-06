@@ -47,6 +47,21 @@ export class ElectricChargeDensity {
         return new ElectricChargeDensity(value, ElectricChargeDensityUnits.CoulombsPerCubicMeter);
     }
 
+    /**
+     * Convert ElectricChargeDensity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricChargeDensityUnits): number {
+        switch (toUnit) {
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter: return this.CoulombsPerCubicMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricChargeDensityUnits): number {
         switch (toUnit) {
                 

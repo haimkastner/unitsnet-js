@@ -131,6 +131,25 @@ export class ElectricPotentialAc {
         return new ElectricPotentialAc(value, ElectricPotentialAcUnits.MegavoltsAc);
     }
 
+    /**
+     * Convert ElectricPotentialAc to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricPotentialAcUnits): number {
+        switch (toUnit) {
+            case ElectricPotentialAcUnits.VoltsAc: return this.VoltsAc;
+            case ElectricPotentialAcUnits.MicrovoltsAc: return this.MicrovoltsAc;
+            case ElectricPotentialAcUnits.MillivoltsAc: return this.MillivoltsAc;
+            case ElectricPotentialAcUnits.KilovoltsAc: return this.KilovoltsAc;
+            case ElectricPotentialAcUnits.MegavoltsAc: return this.MegavoltsAc;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricPotentialAcUnits): number {
         switch (toUnit) {
                 
@@ -183,13 +202,13 @@ export class ElectricPotentialAc {
             case ElectricPotentialAcUnits.VoltsAc:
                 return this.VoltsAc + ` Vac`;
             case ElectricPotentialAcUnits.MicrovoltsAc:
-                return this.MicrovoltsAc + ` `;
+                return this.MicrovoltsAc + ` μVac`;
             case ElectricPotentialAcUnits.MillivoltsAc:
-                return this.MillivoltsAc + ` `;
+                return this.MillivoltsAc + ` mVac`;
             case ElectricPotentialAcUnits.KilovoltsAc:
-                return this.KilovoltsAc + ` `;
+                return this.KilovoltsAc + ` kVac`;
             case ElectricPotentialAcUnits.MegavoltsAc:
-                return this.MegavoltsAc + ` `;
+                return this.MegavoltsAc + ` MVac`;
         default:
             break;
         }
@@ -210,13 +229,13 @@ export class ElectricPotentialAc {
             case ElectricPotentialAcUnits.VoltsAc:
                 return `Vac`;
             case ElectricPotentialAcUnits.MicrovoltsAc:
-                return ``;
+                return `μVac`;
             case ElectricPotentialAcUnits.MillivoltsAc:
-                return ``;
+                return `mVac`;
             case ElectricPotentialAcUnits.KilovoltsAc:
-                return ``;
+                return `kVac`;
             case ElectricPotentialAcUnits.MegavoltsAc:
-                return ``;
+                return `MVac`;
         default:
             break;
         }

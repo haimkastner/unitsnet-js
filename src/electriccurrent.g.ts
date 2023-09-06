@@ -215,6 +215,29 @@ export class ElectricCurrent {
         return new ElectricCurrent(value, ElectricCurrentUnits.Megaamperes);
     }
 
+    /**
+     * Convert ElectricCurrent to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricCurrentUnits): number {
+        switch (toUnit) {
+            case ElectricCurrentUnits.Amperes: return this.Amperes;
+            case ElectricCurrentUnits.Femtoamperes: return this.Femtoamperes;
+            case ElectricCurrentUnits.Picoamperes: return this.Picoamperes;
+            case ElectricCurrentUnits.Nanoamperes: return this.Nanoamperes;
+            case ElectricCurrentUnits.Microamperes: return this.Microamperes;
+            case ElectricCurrentUnits.Milliamperes: return this.Milliamperes;
+            case ElectricCurrentUnits.Centiamperes: return this.Centiamperes;
+            case ElectricCurrentUnits.Kiloamperes: return this.Kiloamperes;
+            case ElectricCurrentUnits.Megaamperes: return this.Megaamperes;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricCurrentUnits): number {
         switch (toUnit) {
                 
@@ -283,21 +306,21 @@ export class ElectricCurrent {
             case ElectricCurrentUnits.Amperes:
                 return this.Amperes + ` A`;
             case ElectricCurrentUnits.Femtoamperes:
-                return this.Femtoamperes + ` `;
+                return this.Femtoamperes + ` fA`;
             case ElectricCurrentUnits.Picoamperes:
-                return this.Picoamperes + ` `;
+                return this.Picoamperes + ` pA`;
             case ElectricCurrentUnits.Nanoamperes:
-                return this.Nanoamperes + ` `;
+                return this.Nanoamperes + ` nA`;
             case ElectricCurrentUnits.Microamperes:
-                return this.Microamperes + ` `;
+                return this.Microamperes + ` μA`;
             case ElectricCurrentUnits.Milliamperes:
-                return this.Milliamperes + ` `;
+                return this.Milliamperes + ` mA`;
             case ElectricCurrentUnits.Centiamperes:
-                return this.Centiamperes + ` `;
+                return this.Centiamperes + ` cA`;
             case ElectricCurrentUnits.Kiloamperes:
-                return this.Kiloamperes + ` `;
+                return this.Kiloamperes + ` kA`;
             case ElectricCurrentUnits.Megaamperes:
-                return this.Megaamperes + ` `;
+                return this.Megaamperes + ` MA`;
         default:
             break;
         }
@@ -318,21 +341,21 @@ export class ElectricCurrent {
             case ElectricCurrentUnits.Amperes:
                 return `A`;
             case ElectricCurrentUnits.Femtoamperes:
-                return ``;
+                return `fA`;
             case ElectricCurrentUnits.Picoamperes:
-                return ``;
+                return `pA`;
             case ElectricCurrentUnits.Nanoamperes:
-                return ``;
+                return `nA`;
             case ElectricCurrentUnits.Microamperes:
-                return ``;
+                return `μA`;
             case ElectricCurrentUnits.Milliamperes:
-                return ``;
+                return `mA`;
             case ElectricCurrentUnits.Centiamperes:
-                return ``;
+                return `cA`;
             case ElectricCurrentUnits.Kiloamperes:
-                return ``;
+                return `kA`;
             case ElectricCurrentUnits.Megaamperes:
-                return ``;
+                return `MA`;
         default:
             break;
         }

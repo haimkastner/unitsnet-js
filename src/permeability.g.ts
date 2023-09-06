@@ -47,6 +47,21 @@ export class Permeability {
         return new Permeability(value, PermeabilityUnits.HenriesPerMeter);
     }
 
+    /**
+     * Convert Permeability to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: PermeabilityUnits): number {
+        switch (toUnit) {
+            case PermeabilityUnits.HenriesPerMeter: return this.HenriesPerMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: PermeabilityUnits): number {
         switch (toUnit) {
                 

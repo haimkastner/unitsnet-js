@@ -551,6 +551,45 @@ export class LinearPowerDensity {
         return new LinearPowerDensity(value, LinearPowerDensityUnits.GigawattsPerFoot);
     }
 
+    /**
+     * Convert LinearPowerDensity to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: LinearPowerDensityUnits): number {
+        switch (toUnit) {
+            case LinearPowerDensityUnits.WattsPerMeter: return this.WattsPerMeter;
+            case LinearPowerDensityUnits.WattsPerCentimeter: return this.WattsPerCentimeter;
+            case LinearPowerDensityUnits.WattsPerMillimeter: return this.WattsPerMillimeter;
+            case LinearPowerDensityUnits.WattsPerInch: return this.WattsPerInch;
+            case LinearPowerDensityUnits.WattsPerFoot: return this.WattsPerFoot;
+            case LinearPowerDensityUnits.MilliwattsPerMeter: return this.MilliwattsPerMeter;
+            case LinearPowerDensityUnits.KilowattsPerMeter: return this.KilowattsPerMeter;
+            case LinearPowerDensityUnits.MegawattsPerMeter: return this.MegawattsPerMeter;
+            case LinearPowerDensityUnits.GigawattsPerMeter: return this.GigawattsPerMeter;
+            case LinearPowerDensityUnits.MilliwattsPerCentimeter: return this.MilliwattsPerCentimeter;
+            case LinearPowerDensityUnits.KilowattsPerCentimeter: return this.KilowattsPerCentimeter;
+            case LinearPowerDensityUnits.MegawattsPerCentimeter: return this.MegawattsPerCentimeter;
+            case LinearPowerDensityUnits.GigawattsPerCentimeter: return this.GigawattsPerCentimeter;
+            case LinearPowerDensityUnits.MilliwattsPerMillimeter: return this.MilliwattsPerMillimeter;
+            case LinearPowerDensityUnits.KilowattsPerMillimeter: return this.KilowattsPerMillimeter;
+            case LinearPowerDensityUnits.MegawattsPerMillimeter: return this.MegawattsPerMillimeter;
+            case LinearPowerDensityUnits.GigawattsPerMillimeter: return this.GigawattsPerMillimeter;
+            case LinearPowerDensityUnits.MilliwattsPerInch: return this.MilliwattsPerInch;
+            case LinearPowerDensityUnits.KilowattsPerInch: return this.KilowattsPerInch;
+            case LinearPowerDensityUnits.MegawattsPerInch: return this.MegawattsPerInch;
+            case LinearPowerDensityUnits.GigawattsPerInch: return this.GigawattsPerInch;
+            case LinearPowerDensityUnits.MilliwattsPerFoot: return this.MilliwattsPerFoot;
+            case LinearPowerDensityUnits.KilowattsPerFoot: return this.KilowattsPerFoot;
+            case LinearPowerDensityUnits.MegawattsPerFoot: return this.MegawattsPerFoot;
+            case LinearPowerDensityUnits.GigawattsPerFoot: return this.GigawattsPerFoot;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: LinearPowerDensityUnits): number {
         switch (toUnit) {
                 
@@ -691,45 +730,45 @@ export class LinearPowerDensity {
             case LinearPowerDensityUnits.WattsPerFoot:
                 return this.WattsPerFoot + ` W/ft`;
             case LinearPowerDensityUnits.MilliwattsPerMeter:
-                return this.MilliwattsPerMeter + ` `;
+                return this.MilliwattsPerMeter + ` mW/m`;
             case LinearPowerDensityUnits.KilowattsPerMeter:
-                return this.KilowattsPerMeter + ` `;
+                return this.KilowattsPerMeter + ` kW/m`;
             case LinearPowerDensityUnits.MegawattsPerMeter:
-                return this.MegawattsPerMeter + ` `;
+                return this.MegawattsPerMeter + ` MW/m`;
             case LinearPowerDensityUnits.GigawattsPerMeter:
-                return this.GigawattsPerMeter + ` `;
+                return this.GigawattsPerMeter + ` GW/m`;
             case LinearPowerDensityUnits.MilliwattsPerCentimeter:
-                return this.MilliwattsPerCentimeter + ` `;
+                return this.MilliwattsPerCentimeter + ` mW/cm`;
             case LinearPowerDensityUnits.KilowattsPerCentimeter:
-                return this.KilowattsPerCentimeter + ` `;
+                return this.KilowattsPerCentimeter + ` kW/cm`;
             case LinearPowerDensityUnits.MegawattsPerCentimeter:
-                return this.MegawattsPerCentimeter + ` `;
+                return this.MegawattsPerCentimeter + ` MW/cm`;
             case LinearPowerDensityUnits.GigawattsPerCentimeter:
-                return this.GigawattsPerCentimeter + ` `;
+                return this.GigawattsPerCentimeter + ` GW/cm`;
             case LinearPowerDensityUnits.MilliwattsPerMillimeter:
-                return this.MilliwattsPerMillimeter + ` `;
+                return this.MilliwattsPerMillimeter + ` mW/mm`;
             case LinearPowerDensityUnits.KilowattsPerMillimeter:
-                return this.KilowattsPerMillimeter + ` `;
+                return this.KilowattsPerMillimeter + ` kW/mm`;
             case LinearPowerDensityUnits.MegawattsPerMillimeter:
-                return this.MegawattsPerMillimeter + ` `;
+                return this.MegawattsPerMillimeter + ` MW/mm`;
             case LinearPowerDensityUnits.GigawattsPerMillimeter:
-                return this.GigawattsPerMillimeter + ` `;
+                return this.GigawattsPerMillimeter + ` GW/mm`;
             case LinearPowerDensityUnits.MilliwattsPerInch:
-                return this.MilliwattsPerInch + ` `;
+                return this.MilliwattsPerInch + ` mW/in`;
             case LinearPowerDensityUnits.KilowattsPerInch:
-                return this.KilowattsPerInch + ` `;
+                return this.KilowattsPerInch + ` kW/in`;
             case LinearPowerDensityUnits.MegawattsPerInch:
-                return this.MegawattsPerInch + ` `;
+                return this.MegawattsPerInch + ` MW/in`;
             case LinearPowerDensityUnits.GigawattsPerInch:
-                return this.GigawattsPerInch + ` `;
+                return this.GigawattsPerInch + ` GW/in`;
             case LinearPowerDensityUnits.MilliwattsPerFoot:
-                return this.MilliwattsPerFoot + ` `;
+                return this.MilliwattsPerFoot + ` mW/ft`;
             case LinearPowerDensityUnits.KilowattsPerFoot:
-                return this.KilowattsPerFoot + ` `;
+                return this.KilowattsPerFoot + ` kW/ft`;
             case LinearPowerDensityUnits.MegawattsPerFoot:
-                return this.MegawattsPerFoot + ` `;
+                return this.MegawattsPerFoot + ` MW/ft`;
             case LinearPowerDensityUnits.GigawattsPerFoot:
-                return this.GigawattsPerFoot + ` `;
+                return this.GigawattsPerFoot + ` GW/ft`;
         default:
             break;
         }
@@ -758,45 +797,45 @@ export class LinearPowerDensity {
             case LinearPowerDensityUnits.WattsPerFoot:
                 return `W/ft`;
             case LinearPowerDensityUnits.MilliwattsPerMeter:
-                return ``;
+                return `mW/m`;
             case LinearPowerDensityUnits.KilowattsPerMeter:
-                return ``;
+                return `kW/m`;
             case LinearPowerDensityUnits.MegawattsPerMeter:
-                return ``;
+                return `MW/m`;
             case LinearPowerDensityUnits.GigawattsPerMeter:
-                return ``;
+                return `GW/m`;
             case LinearPowerDensityUnits.MilliwattsPerCentimeter:
-                return ``;
+                return `mW/cm`;
             case LinearPowerDensityUnits.KilowattsPerCentimeter:
-                return ``;
+                return `kW/cm`;
             case LinearPowerDensityUnits.MegawattsPerCentimeter:
-                return ``;
+                return `MW/cm`;
             case LinearPowerDensityUnits.GigawattsPerCentimeter:
-                return ``;
+                return `GW/cm`;
             case LinearPowerDensityUnits.MilliwattsPerMillimeter:
-                return ``;
+                return `mW/mm`;
             case LinearPowerDensityUnits.KilowattsPerMillimeter:
-                return ``;
+                return `kW/mm`;
             case LinearPowerDensityUnits.MegawattsPerMillimeter:
-                return ``;
+                return `MW/mm`;
             case LinearPowerDensityUnits.GigawattsPerMillimeter:
-                return ``;
+                return `GW/mm`;
             case LinearPowerDensityUnits.MilliwattsPerInch:
-                return ``;
+                return `mW/in`;
             case LinearPowerDensityUnits.KilowattsPerInch:
-                return ``;
+                return `kW/in`;
             case LinearPowerDensityUnits.MegawattsPerInch:
-                return ``;
+                return `MW/in`;
             case LinearPowerDensityUnits.GigawattsPerInch:
-                return ``;
+                return `GW/in`;
             case LinearPowerDensityUnits.MilliwattsPerFoot:
-                return ``;
+                return `mW/ft`;
             case LinearPowerDensityUnits.KilowattsPerFoot:
-                return ``;
+                return `kW/ft`;
             case LinearPowerDensityUnits.MegawattsPerFoot:
-                return ``;
+                return `MW/ft`;
             case LinearPowerDensityUnits.GigawattsPerFoot:
-                return ``;
+                return `GW/ft`;
         default:
             break;
         }

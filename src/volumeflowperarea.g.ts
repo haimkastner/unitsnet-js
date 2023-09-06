@@ -68,6 +68,22 @@ export class VolumeFlowPerArea {
         return new VolumeFlowPerArea(value, VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot);
     }
 
+    /**
+     * Convert VolumeFlowPerArea to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: VolumeFlowPerAreaUnits): number {
+        switch (toUnit) {
+            case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter: return this.CubicMetersPerSecondPerSquareMeter;
+            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return this.CubicFeetPerMinutePerSquareFoot;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: VolumeFlowPerAreaUnits): number {
         switch (toUnit) {
                 

@@ -236,6 +236,30 @@ export class Luminance {
         return new Luminance(value, LuminanceUnits.KilocandelasPerSquareMeter);
     }
 
+    /**
+     * Convert Luminance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: LuminanceUnits): number {
+        switch (toUnit) {
+            case LuminanceUnits.CandelasPerSquareMeter: return this.CandelasPerSquareMeter;
+            case LuminanceUnits.CandelasPerSquareFoot: return this.CandelasPerSquareFoot;
+            case LuminanceUnits.CandelasPerSquareInch: return this.CandelasPerSquareInch;
+            case LuminanceUnits.Nits: return this.Nits;
+            case LuminanceUnits.NanocandelasPerSquareMeter: return this.NanocandelasPerSquareMeter;
+            case LuminanceUnits.MicrocandelasPerSquareMeter: return this.MicrocandelasPerSquareMeter;
+            case LuminanceUnits.MillicandelasPerSquareMeter: return this.MillicandelasPerSquareMeter;
+            case LuminanceUnits.CenticandelasPerSquareMeter: return this.CenticandelasPerSquareMeter;
+            case LuminanceUnits.DecicandelasPerSquareMeter: return this.DecicandelasPerSquareMeter;
+            case LuminanceUnits.KilocandelasPerSquareMeter: return this.KilocandelasPerSquareMeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: LuminanceUnits): number {
         switch (toUnit) {
                 
@@ -314,17 +338,17 @@ export class Luminance {
             case LuminanceUnits.Nits:
                 return this.Nits + ` nt`;
             case LuminanceUnits.NanocandelasPerSquareMeter:
-                return this.NanocandelasPerSquareMeter + ` `;
+                return this.NanocandelasPerSquareMeter + ` nCd/m²`;
             case LuminanceUnits.MicrocandelasPerSquareMeter:
-                return this.MicrocandelasPerSquareMeter + ` `;
+                return this.MicrocandelasPerSquareMeter + ` μCd/m²`;
             case LuminanceUnits.MillicandelasPerSquareMeter:
-                return this.MillicandelasPerSquareMeter + ` `;
+                return this.MillicandelasPerSquareMeter + ` mCd/m²`;
             case LuminanceUnits.CenticandelasPerSquareMeter:
-                return this.CenticandelasPerSquareMeter + ` `;
+                return this.CenticandelasPerSquareMeter + ` cCd/m²`;
             case LuminanceUnits.DecicandelasPerSquareMeter:
-                return this.DecicandelasPerSquareMeter + ` `;
+                return this.DecicandelasPerSquareMeter + ` dCd/m²`;
             case LuminanceUnits.KilocandelasPerSquareMeter:
-                return this.KilocandelasPerSquareMeter + ` `;
+                return this.KilocandelasPerSquareMeter + ` kCd/m²`;
         default:
             break;
         }
@@ -351,17 +375,17 @@ export class Luminance {
             case LuminanceUnits.Nits:
                 return `nt`;
             case LuminanceUnits.NanocandelasPerSquareMeter:
-                return ``;
+                return `nCd/m²`;
             case LuminanceUnits.MicrocandelasPerSquareMeter:
-                return ``;
+                return `μCd/m²`;
             case LuminanceUnits.MillicandelasPerSquareMeter:
-                return ``;
+                return `mCd/m²`;
             case LuminanceUnits.CenticandelasPerSquareMeter:
-                return ``;
+                return `cCd/m²`;
             case LuminanceUnits.DecicandelasPerSquareMeter:
-                return ``;
+                return `dCd/m²`;
             case LuminanceUnits.KilocandelasPerSquareMeter:
-                return ``;
+                return `kCd/m²`;
         default:
             break;
         }

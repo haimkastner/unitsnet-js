@@ -404,6 +404,38 @@ export class HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter);
     }
 
+    /**
+     * Convert HeatFlux to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: HeatFluxUnits): number {
+        switch (toUnit) {
+            case HeatFluxUnits.WattsPerSquareMeter: return this.WattsPerSquareMeter;
+            case HeatFluxUnits.WattsPerSquareInch: return this.WattsPerSquareInch;
+            case HeatFluxUnits.WattsPerSquareFoot: return this.WattsPerSquareFoot;
+            case HeatFluxUnits.BtusPerSecondSquareInch: return this.BtusPerSecondSquareInch;
+            case HeatFluxUnits.BtusPerSecondSquareFoot: return this.BtusPerSecondSquareFoot;
+            case HeatFluxUnits.BtusPerMinuteSquareFoot: return this.BtusPerMinuteSquareFoot;
+            case HeatFluxUnits.BtusPerHourSquareFoot: return this.BtusPerHourSquareFoot;
+            case HeatFluxUnits.CaloriesPerSecondSquareCentimeter: return this.CaloriesPerSecondSquareCentimeter;
+            case HeatFluxUnits.KilocaloriesPerHourSquareMeter: return this.KilocaloriesPerHourSquareMeter;
+            case HeatFluxUnits.PoundsForcePerFootSecond: return this.PoundsForcePerFootSecond;
+            case HeatFluxUnits.PoundsPerSecondCubed: return this.PoundsPerSecondCubed;
+            case HeatFluxUnits.NanowattsPerSquareMeter: return this.NanowattsPerSquareMeter;
+            case HeatFluxUnits.MicrowattsPerSquareMeter: return this.MicrowattsPerSquareMeter;
+            case HeatFluxUnits.MilliwattsPerSquareMeter: return this.MilliwattsPerSquareMeter;
+            case HeatFluxUnits.CentiwattsPerSquareMeter: return this.CentiwattsPerSquareMeter;
+            case HeatFluxUnits.DeciwattsPerSquareMeter: return this.DeciwattsPerSquareMeter;
+            case HeatFluxUnits.KilowattsPerSquareMeter: return this.KilowattsPerSquareMeter;
+            case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter: return this.KilocaloriesPerSecondSquareCentimeter;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: HeatFluxUnits): number {
         switch (toUnit) {
                 
@@ -528,19 +560,19 @@ export class HeatFlux {
             case HeatFluxUnits.PoundsPerSecondCubed:
                 return this.PoundsPerSecondCubed + ` lb/s³`;
             case HeatFluxUnits.NanowattsPerSquareMeter:
-                return this.NanowattsPerSquareMeter + ` `;
+                return this.NanowattsPerSquareMeter + ` nW/m²`;
             case HeatFluxUnits.MicrowattsPerSquareMeter:
-                return this.MicrowattsPerSquareMeter + ` `;
+                return this.MicrowattsPerSquareMeter + ` μW/m²`;
             case HeatFluxUnits.MilliwattsPerSquareMeter:
-                return this.MilliwattsPerSquareMeter + ` `;
+                return this.MilliwattsPerSquareMeter + ` mW/m²`;
             case HeatFluxUnits.CentiwattsPerSquareMeter:
-                return this.CentiwattsPerSquareMeter + ` `;
+                return this.CentiwattsPerSquareMeter + ` cW/m²`;
             case HeatFluxUnits.DeciwattsPerSquareMeter:
-                return this.DeciwattsPerSquareMeter + ` `;
+                return this.DeciwattsPerSquareMeter + ` dW/m²`;
             case HeatFluxUnits.KilowattsPerSquareMeter:
-                return this.KilowattsPerSquareMeter + ` `;
+                return this.KilowattsPerSquareMeter + ` kW/m²`;
             case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter:
-                return this.KilocaloriesPerSecondSquareCentimeter + ` `;
+                return this.KilocaloriesPerSecondSquareCentimeter + ` kcal/s·cm²`;
         default:
             break;
         }
@@ -581,19 +613,19 @@ export class HeatFlux {
             case HeatFluxUnits.PoundsPerSecondCubed:
                 return `lb/s³`;
             case HeatFluxUnits.NanowattsPerSquareMeter:
-                return ``;
+                return `nW/m²`;
             case HeatFluxUnits.MicrowattsPerSquareMeter:
-                return ``;
+                return `μW/m²`;
             case HeatFluxUnits.MilliwattsPerSquareMeter:
-                return ``;
+                return `mW/m²`;
             case HeatFluxUnits.CentiwattsPerSquareMeter:
-                return ``;
+                return `cW/m²`;
             case HeatFluxUnits.DeciwattsPerSquareMeter:
-                return ``;
+                return `dW/m²`;
             case HeatFluxUnits.KilowattsPerSquareMeter:
-                return ``;
+                return `kW/m²`;
             case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter:
-                return ``;
+                return `kcal/s·cm²`;
         default:
             break;
         }

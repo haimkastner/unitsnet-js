@@ -593,6 +593,47 @@ export class Mass {
         return new Mass(value, MassUnits.Megapounds);
     }
 
+    /**
+     * Convert Mass to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: MassUnits): number {
+        switch (toUnit) {
+            case MassUnits.Grams: return this.Grams;
+            case MassUnits.Tonnes: return this.Tonnes;
+            case MassUnits.ShortTons: return this.ShortTons;
+            case MassUnits.LongTons: return this.LongTons;
+            case MassUnits.Pounds: return this.Pounds;
+            case MassUnits.Ounces: return this.Ounces;
+            case MassUnits.Slugs: return this.Slugs;
+            case MassUnits.Stone: return this.Stone;
+            case MassUnits.ShortHundredweight: return this.ShortHundredweight;
+            case MassUnits.LongHundredweight: return this.LongHundredweight;
+            case MassUnits.Grains: return this.Grains;
+            case MassUnits.SolarMasses: return this.SolarMasses;
+            case MassUnits.EarthMasses: return this.EarthMasses;
+            case MassUnits.Femtograms: return this.Femtograms;
+            case MassUnits.Picograms: return this.Picograms;
+            case MassUnits.Nanograms: return this.Nanograms;
+            case MassUnits.Micrograms: return this.Micrograms;
+            case MassUnits.Milligrams: return this.Milligrams;
+            case MassUnits.Centigrams: return this.Centigrams;
+            case MassUnits.Decigrams: return this.Decigrams;
+            case MassUnits.Decagrams: return this.Decagrams;
+            case MassUnits.Hectograms: return this.Hectograms;
+            case MassUnits.Kilograms: return this.Kilograms;
+            case MassUnits.Kilotonnes: return this.Kilotonnes;
+            case MassUnits.Megatonnes: return this.Megatonnes;
+            case MassUnits.Kilopounds: return this.Kilopounds;
+            case MassUnits.Megapounds: return this.Megapounds;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: MassUnits): number {
         switch (toUnit) {
                 
@@ -757,33 +798,33 @@ export class Mass {
             case MassUnits.EarthMasses:
                 return this.EarthMasses + ` em`;
             case MassUnits.Femtograms:
-                return this.Femtograms + ` `;
+                return this.Femtograms + ` fg`;
             case MassUnits.Picograms:
-                return this.Picograms + ` `;
+                return this.Picograms + ` pg`;
             case MassUnits.Nanograms:
-                return this.Nanograms + ` `;
+                return this.Nanograms + ` ng`;
             case MassUnits.Micrograms:
-                return this.Micrograms + ` `;
+                return this.Micrograms + ` μg`;
             case MassUnits.Milligrams:
-                return this.Milligrams + ` `;
+                return this.Milligrams + ` mg`;
             case MassUnits.Centigrams:
-                return this.Centigrams + ` `;
+                return this.Centigrams + ` cg`;
             case MassUnits.Decigrams:
-                return this.Decigrams + ` `;
+                return this.Decigrams + ` dg`;
             case MassUnits.Decagrams:
-                return this.Decagrams + ` `;
+                return this.Decagrams + ` dag`;
             case MassUnits.Hectograms:
-                return this.Hectograms + ` `;
+                return this.Hectograms + ` hg`;
             case MassUnits.Kilograms:
-                return this.Kilograms + ` `;
+                return this.Kilograms + ` kg`;
             case MassUnits.Kilotonnes:
-                return this.Kilotonnes + ` `;
+                return this.Kilotonnes + ` kt`;
             case MassUnits.Megatonnes:
-                return this.Megatonnes + ` `;
+                return this.Megatonnes + ` Mt`;
             case MassUnits.Kilopounds:
-                return this.Kilopounds + ` `;
+                return this.Kilopounds + ` klb`;
             case MassUnits.Megapounds:
-                return this.Megapounds + ` `;
+                return this.Megapounds + ` Mlb`;
         default:
             break;
         }
@@ -828,33 +869,33 @@ export class Mass {
             case MassUnits.EarthMasses:
                 return `em`;
             case MassUnits.Femtograms:
-                return ``;
+                return `fg`;
             case MassUnits.Picograms:
-                return ``;
+                return `pg`;
             case MassUnits.Nanograms:
-                return ``;
+                return `ng`;
             case MassUnits.Micrograms:
-                return ``;
+                return `μg`;
             case MassUnits.Milligrams:
-                return ``;
+                return `mg`;
             case MassUnits.Centigrams:
-                return ``;
+                return `cg`;
             case MassUnits.Decigrams:
-                return ``;
+                return `dg`;
             case MassUnits.Decagrams:
-                return ``;
+                return `dag`;
             case MassUnits.Hectograms:
-                return ``;
+                return `hg`;
             case MassUnits.Kilograms:
-                return ``;
+                return `kg`;
             case MassUnits.Kilotonnes:
-                return ``;
+                return `kt`;
             case MassUnits.Megatonnes:
-                return ``;
+                return `Mt`;
             case MassUnits.Kilopounds:
-                return ``;
+                return `klb`;
             case MassUnits.Megapounds:
-                return ``;
+                return `Mlb`;
         default:
             break;
         }

@@ -467,6 +467,41 @@ export class TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.MegapoundForceFeetPerFoot);
     }
 
+    /**
+     * Convert TorquePerLength to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: TorquePerLengthUnits): number {
+        switch (toUnit) {
+            case TorquePerLengthUnits.NewtonMillimetersPerMeter: return this.NewtonMillimetersPerMeter;
+            case TorquePerLengthUnits.NewtonCentimetersPerMeter: return this.NewtonCentimetersPerMeter;
+            case TorquePerLengthUnits.NewtonMetersPerMeter: return this.NewtonMetersPerMeter;
+            case TorquePerLengthUnits.PoundForceInchesPerFoot: return this.PoundForceInchesPerFoot;
+            case TorquePerLengthUnits.PoundForceFeetPerFoot: return this.PoundForceFeetPerFoot;
+            case TorquePerLengthUnits.KilogramForceMillimetersPerMeter: return this.KilogramForceMillimetersPerMeter;
+            case TorquePerLengthUnits.KilogramForceCentimetersPerMeter: return this.KilogramForceCentimetersPerMeter;
+            case TorquePerLengthUnits.KilogramForceMetersPerMeter: return this.KilogramForceMetersPerMeter;
+            case TorquePerLengthUnits.TonneForceMillimetersPerMeter: return this.TonneForceMillimetersPerMeter;
+            case TorquePerLengthUnits.TonneForceCentimetersPerMeter: return this.TonneForceCentimetersPerMeter;
+            case TorquePerLengthUnits.TonneForceMetersPerMeter: return this.TonneForceMetersPerMeter;
+            case TorquePerLengthUnits.KilonewtonMillimetersPerMeter: return this.KilonewtonMillimetersPerMeter;
+            case TorquePerLengthUnits.MeganewtonMillimetersPerMeter: return this.MeganewtonMillimetersPerMeter;
+            case TorquePerLengthUnits.KilonewtonCentimetersPerMeter: return this.KilonewtonCentimetersPerMeter;
+            case TorquePerLengthUnits.MeganewtonCentimetersPerMeter: return this.MeganewtonCentimetersPerMeter;
+            case TorquePerLengthUnits.KilonewtonMetersPerMeter: return this.KilonewtonMetersPerMeter;
+            case TorquePerLengthUnits.MeganewtonMetersPerMeter: return this.MeganewtonMetersPerMeter;
+            case TorquePerLengthUnits.KilopoundForceInchesPerFoot: return this.KilopoundForceInchesPerFoot;
+            case TorquePerLengthUnits.MegapoundForceInchesPerFoot: return this.MegapoundForceInchesPerFoot;
+            case TorquePerLengthUnits.KilopoundForceFeetPerFoot: return this.KilopoundForceFeetPerFoot;
+            case TorquePerLengthUnits.MegapoundForceFeetPerFoot: return this.MegapoundForceFeetPerFoot;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: TorquePerLengthUnits): number {
         switch (toUnit) {
                 
@@ -603,25 +638,25 @@ export class TorquePerLength {
             case TorquePerLengthUnits.TonneForceMetersPerMeter:
                 return this.TonneForceMetersPerMeter + ` tf·m/m`;
             case TorquePerLengthUnits.KilonewtonMillimetersPerMeter:
-                return this.KilonewtonMillimetersPerMeter + ` `;
+                return this.KilonewtonMillimetersPerMeter + ` kN·mm/m`;
             case TorquePerLengthUnits.MeganewtonMillimetersPerMeter:
-                return this.MeganewtonMillimetersPerMeter + ` `;
+                return this.MeganewtonMillimetersPerMeter + ` MN·mm/m`;
             case TorquePerLengthUnits.KilonewtonCentimetersPerMeter:
-                return this.KilonewtonCentimetersPerMeter + ` `;
+                return this.KilonewtonCentimetersPerMeter + ` kN·cm/m`;
             case TorquePerLengthUnits.MeganewtonCentimetersPerMeter:
-                return this.MeganewtonCentimetersPerMeter + ` `;
+                return this.MeganewtonCentimetersPerMeter + ` MN·cm/m`;
             case TorquePerLengthUnits.KilonewtonMetersPerMeter:
-                return this.KilonewtonMetersPerMeter + ` `;
+                return this.KilonewtonMetersPerMeter + ` kN·m/m`;
             case TorquePerLengthUnits.MeganewtonMetersPerMeter:
-                return this.MeganewtonMetersPerMeter + ` `;
+                return this.MeganewtonMetersPerMeter + ` MN·m/m`;
             case TorquePerLengthUnits.KilopoundForceInchesPerFoot:
-                return this.KilopoundForceInchesPerFoot + ` `;
+                return this.KilopoundForceInchesPerFoot + ` klbf·in/ft`;
             case TorquePerLengthUnits.MegapoundForceInchesPerFoot:
-                return this.MegapoundForceInchesPerFoot + ` `;
+                return this.MegapoundForceInchesPerFoot + ` Mlbf·in/ft`;
             case TorquePerLengthUnits.KilopoundForceFeetPerFoot:
-                return this.KilopoundForceFeetPerFoot + ` `;
+                return this.KilopoundForceFeetPerFoot + ` klbf·ft/ft`;
             case TorquePerLengthUnits.MegapoundForceFeetPerFoot:
-                return this.MegapoundForceFeetPerFoot + ` `;
+                return this.MegapoundForceFeetPerFoot + ` Mlbf·ft/ft`;
         default:
             break;
         }
@@ -662,25 +697,25 @@ export class TorquePerLength {
             case TorquePerLengthUnits.TonneForceMetersPerMeter:
                 return `tf·m/m`;
             case TorquePerLengthUnits.KilonewtonMillimetersPerMeter:
-                return ``;
+                return `kN·mm/m`;
             case TorquePerLengthUnits.MeganewtonMillimetersPerMeter:
-                return ``;
+                return `MN·mm/m`;
             case TorquePerLengthUnits.KilonewtonCentimetersPerMeter:
-                return ``;
+                return `kN·cm/m`;
             case TorquePerLengthUnits.MeganewtonCentimetersPerMeter:
-                return ``;
+                return `MN·cm/m`;
             case TorquePerLengthUnits.KilonewtonMetersPerMeter:
-                return ``;
+                return `kN·m/m`;
             case TorquePerLengthUnits.MeganewtonMetersPerMeter:
-                return ``;
+                return `MN·m/m`;
             case TorquePerLengthUnits.KilopoundForceInchesPerFoot:
-                return ``;
+                return `klbf·in/ft`;
             case TorquePerLengthUnits.MegapoundForceInchesPerFoot:
-                return ``;
+                return `Mlbf·in/ft`;
             case TorquePerLengthUnits.KilopoundForceFeetPerFoot:
-                return ``;
+                return `klbf·ft/ft`;
             case TorquePerLengthUnits.MegapoundForceFeetPerFoot:
-                return ``;
+                return `Mlbf·ft/ft`;
         default:
             break;
         }

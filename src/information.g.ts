@@ -320,6 +320,34 @@ export class Information {
         return new Information(value, InformationUnits.Exabits);
     }
 
+    /**
+     * Convert Information to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: InformationUnits): number {
+        switch (toUnit) {
+            case InformationUnits.Bytes: return this.Bytes;
+            case InformationUnits.Bits: return this.Bits;
+            case InformationUnits.Kilobytes: return this.Kilobytes;
+            case InformationUnits.Megabytes: return this.Megabytes;
+            case InformationUnits.Gigabytes: return this.Gigabytes;
+            case InformationUnits.Terabytes: return this.Terabytes;
+            case InformationUnits.Petabytes: return this.Petabytes;
+            case InformationUnits.Exabytes: return this.Exabytes;
+            case InformationUnits.Kilobits: return this.Kilobits;
+            case InformationUnits.Megabits: return this.Megabits;
+            case InformationUnits.Gigabits: return this.Gigabits;
+            case InformationUnits.Terabits: return this.Terabits;
+            case InformationUnits.Petabits: return this.Petabits;
+            case InformationUnits.Exabits: return this.Exabits;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: InformationUnits): number {
         switch (toUnit) {
                 
@@ -410,29 +438,29 @@ export class Information {
             case InformationUnits.Bits:
                 return this.Bits + ` b`;
             case InformationUnits.Kilobytes:
-                return this.Kilobytes + ` `;
+                return this.Kilobytes + ` kB`;
             case InformationUnits.Megabytes:
-                return this.Megabytes + ` `;
+                return this.Megabytes + ` MB`;
             case InformationUnits.Gigabytes:
-                return this.Gigabytes + ` `;
+                return this.Gigabytes + ` GB`;
             case InformationUnits.Terabytes:
-                return this.Terabytes + ` `;
+                return this.Terabytes + ` TB`;
             case InformationUnits.Petabytes:
-                return this.Petabytes + ` `;
+                return this.Petabytes + ` PB`;
             case InformationUnits.Exabytes:
-                return this.Exabytes + ` `;
+                return this.Exabytes + ` EB`;
             case InformationUnits.Kilobits:
-                return this.Kilobits + ` `;
+                return this.Kilobits + ` kb`;
             case InformationUnits.Megabits:
-                return this.Megabits + ` `;
+                return this.Megabits + ` Mb`;
             case InformationUnits.Gigabits:
-                return this.Gigabits + ` `;
+                return this.Gigabits + ` Gb`;
             case InformationUnits.Terabits:
-                return this.Terabits + ` `;
+                return this.Terabits + ` Tb`;
             case InformationUnits.Petabits:
-                return this.Petabits + ` `;
+                return this.Petabits + ` Pb`;
             case InformationUnits.Exabits:
-                return this.Exabits + ` `;
+                return this.Exabits + ` Eb`;
         default:
             break;
         }
@@ -455,29 +483,29 @@ export class Information {
             case InformationUnits.Bits:
                 return `b`;
             case InformationUnits.Kilobytes:
-                return ``;
+                return `kB`;
             case InformationUnits.Megabytes:
-                return ``;
+                return `MB`;
             case InformationUnits.Gigabytes:
-                return ``;
+                return `GB`;
             case InformationUnits.Terabytes:
-                return ``;
+                return `TB`;
             case InformationUnits.Petabytes:
-                return ``;
+                return `PB`;
             case InformationUnits.Exabytes:
-                return ``;
+                return `EB`;
             case InformationUnits.Kilobits:
-                return ``;
+                return `kb`;
             case InformationUnits.Megabits:
-                return ``;
+                return `Mb`;
             case InformationUnits.Gigabits:
-                return ``;
+                return `Gb`;
             case InformationUnits.Terabits:
-                return ``;
+                return `Tb`;
             case InformationUnits.Petabits:
-                return ``;
+                return `Pb`;
             case InformationUnits.Exabits:
-                return ``;
+                return `Eb`;
         default:
             break;
         }

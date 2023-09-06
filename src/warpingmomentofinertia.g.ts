@@ -152,6 +152,26 @@ export class WarpingMomentOfInertia {
         return new WarpingMomentOfInertia(value, WarpingMomentOfInertiaUnits.InchesToTheSixth);
     }
 
+    /**
+     * Convert WarpingMomentOfInertia to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: WarpingMomentOfInertiaUnits): number {
+        switch (toUnit) {
+            case WarpingMomentOfInertiaUnits.MetersToTheSixth: return this.MetersToTheSixth;
+            case WarpingMomentOfInertiaUnits.DecimetersToTheSixth: return this.DecimetersToTheSixth;
+            case WarpingMomentOfInertiaUnits.CentimetersToTheSixth: return this.CentimetersToTheSixth;
+            case WarpingMomentOfInertiaUnits.MillimetersToTheSixth: return this.MillimetersToTheSixth;
+            case WarpingMomentOfInertiaUnits.FeetToTheSixth: return this.FeetToTheSixth;
+            case WarpingMomentOfInertiaUnits.InchesToTheSixth: return this.InchesToTheSixth;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: WarpingMomentOfInertiaUnits): number {
         switch (toUnit) {
                 

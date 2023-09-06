@@ -47,6 +47,21 @@ export class LuminousFlux {
         return new LuminousFlux(value, LuminousFluxUnits.Lumens);
     }
 
+    /**
+     * Convert LuminousFlux to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: LuminousFluxUnits): number {
+        switch (toUnit) {
+            case LuminousFluxUnits.Lumens: return this.Lumens;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: LuminousFluxUnits): number {
         switch (toUnit) {
                 

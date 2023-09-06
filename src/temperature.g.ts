@@ -236,6 +236,30 @@ export class Temperature {
         return new Temperature(value, TemperatureUnits.SolarTemperatures);
     }
 
+    /**
+     * Convert Temperature to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: TemperatureUnits): number {
+        switch (toUnit) {
+            case TemperatureUnits.Kelvins: return this.Kelvins;
+            case TemperatureUnits.DegreesCelsius: return this.DegreesCelsius;
+            case TemperatureUnits.MillidegreesCelsius: return this.MillidegreesCelsius;
+            case TemperatureUnits.DegreesDelisle: return this.DegreesDelisle;
+            case TemperatureUnits.DegreesFahrenheit: return this.DegreesFahrenheit;
+            case TemperatureUnits.DegreesNewton: return this.DegreesNewton;
+            case TemperatureUnits.DegreesRankine: return this.DegreesRankine;
+            case TemperatureUnits.DegreesReaumur: return this.DegreesReaumur;
+            case TemperatureUnits.DegreesRoemer: return this.DegreesRoemer;
+            case TemperatureUnits.SolarTemperatures: return this.SolarTemperatures;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: TemperatureUnits): number {
         switch (toUnit) {
                 

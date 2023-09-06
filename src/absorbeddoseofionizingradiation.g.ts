@@ -362,6 +362,36 @@ export class AbsorbedDoseOfIonizingRadiation {
         return new AbsorbedDoseOfIonizingRadiation(value, AbsorbedDoseOfIonizingRadiationUnits.Megarads);
     }
 
+    /**
+     * Convert AbsorbedDoseOfIonizingRadiation to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: AbsorbedDoseOfIonizingRadiationUnits): number {
+        switch (toUnit) {
+            case AbsorbedDoseOfIonizingRadiationUnits.Grays: return this.Grays;
+            case AbsorbedDoseOfIonizingRadiationUnits.Rads: return this.Rads;
+            case AbsorbedDoseOfIonizingRadiationUnits.Femtograys: return this.Femtograys;
+            case AbsorbedDoseOfIonizingRadiationUnits.Picograys: return this.Picograys;
+            case AbsorbedDoseOfIonizingRadiationUnits.Nanograys: return this.Nanograys;
+            case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return this.Micrograys;
+            case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return this.Milligrays;
+            case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return this.Centigrays;
+            case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return this.Kilograys;
+            case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return this.Megagrays;
+            case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return this.Gigagrays;
+            case AbsorbedDoseOfIonizingRadiationUnits.Teragrays: return this.Teragrays;
+            case AbsorbedDoseOfIonizingRadiationUnits.Petagrays: return this.Petagrays;
+            case AbsorbedDoseOfIonizingRadiationUnits.Millirads: return this.Millirads;
+            case AbsorbedDoseOfIonizingRadiationUnits.Kilorads: return this.Kilorads;
+            case AbsorbedDoseOfIonizingRadiationUnits.Megarads: return this.Megarads;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: AbsorbedDoseOfIonizingRadiationUnits): number {
         switch (toUnit) {
                 
@@ -460,33 +490,33 @@ export class AbsorbedDoseOfIonizingRadiation {
             case AbsorbedDoseOfIonizingRadiationUnits.Rads:
                 return this.Rads + ` rad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Femtograys:
-                return this.Femtograys + ` `;
+                return this.Femtograys + ` fGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Picograys:
-                return this.Picograys + ` `;
+                return this.Picograys + ` pGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Nanograys:
-                return this.Nanograys + ` `;
+                return this.Nanograys + ` nGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Micrograys:
-                return this.Micrograys + ` `;
+                return this.Micrograys + ` μGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Milligrays:
-                return this.Milligrays + ` `;
+                return this.Milligrays + ` mGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Centigrays:
-                return this.Centigrays + ` `;
+                return this.Centigrays + ` cGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilograys:
-                return this.Kilograys + ` `;
+                return this.Kilograys + ` kGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megagrays:
-                return this.Megagrays + ` `;
+                return this.Megagrays + ` MGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays:
-                return this.Gigagrays + ` `;
+                return this.Gigagrays + ` GGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Teragrays:
-                return this.Teragrays + ` `;
+                return this.Teragrays + ` TGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Petagrays:
-                return this.Petagrays + ` `;
+                return this.Petagrays + ` PGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Millirads:
-                return this.Millirads + ` `;
+                return this.Millirads + ` mrad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilorads:
-                return this.Kilorads + ` `;
+                return this.Kilorads + ` krad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megarads:
-                return this.Megarads + ` `;
+                return this.Megarads + ` Mrad`;
         default:
             break;
         }
@@ -509,33 +539,33 @@ export class AbsorbedDoseOfIonizingRadiation {
             case AbsorbedDoseOfIonizingRadiationUnits.Rads:
                 return `rad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Femtograys:
-                return ``;
+                return `fGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Picograys:
-                return ``;
+                return `pGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Nanograys:
-                return ``;
+                return `nGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Micrograys:
-                return ``;
+                return `μGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Milligrays:
-                return ``;
+                return `mGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Centigrays:
-                return ``;
+                return `cGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilograys:
-                return ``;
+                return `kGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megagrays:
-                return ``;
+                return `MGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays:
-                return ``;
+                return `GGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Teragrays:
-                return ``;
+                return `TGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Petagrays:
-                return ``;
+                return `PGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Millirads:
-                return ``;
+                return `mrad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilorads:
-                return ``;
+                return `krad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megarads:
-                return ``;
+                return `Mrad`;
         default:
             break;
         }

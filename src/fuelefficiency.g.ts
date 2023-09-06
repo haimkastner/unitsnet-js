@@ -110,6 +110,24 @@ export class FuelEfficiency {
         return new FuelEfficiency(value, FuelEfficiencyUnits.KilometersPerLiters);
     }
 
+    /**
+     * Convert FuelEfficiency to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: FuelEfficiencyUnits): number {
+        switch (toUnit) {
+            case FuelEfficiencyUnits.LitersPer100Kilometers: return this.LitersPer100Kilometers;
+            case FuelEfficiencyUnits.MilesPerUsGallon: return this.MilesPerUsGallon;
+            case FuelEfficiencyUnits.MilesPerUkGallon: return this.MilesPerUkGallon;
+            case FuelEfficiencyUnits.KilometersPerLiters: return this.KilometersPerLiters;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: FuelEfficiencyUnits): number {
         switch (toUnit) {
                 

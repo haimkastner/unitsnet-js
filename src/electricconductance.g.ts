@@ -131,6 +131,25 @@ export class ElectricConductance {
         return new ElectricConductance(value, ElectricConductanceUnits.Kilosiemens);
     }
 
+    /**
+     * Convert ElectricConductance to a specific unit value.
+     * @param toUnit The specific unit to convert to
+     * @returns The value of the specific unit provided.
+     */
+    public convert(toUnit: ElectricConductanceUnits): number {
+        switch (toUnit) {
+            case ElectricConductanceUnits.Siemens: return this.Siemens;
+            case ElectricConductanceUnits.Nanosiemens: return this.Nanosiemens;
+            case ElectricConductanceUnits.Microsiemens: return this.Microsiemens;
+            case ElectricConductanceUnits.Millisiemens: return this.Millisiemens;
+            case ElectricConductanceUnits.Kilosiemens: return this.Kilosiemens;
+
+            default:
+                break;
+        }
+        return NaN;
+    }
+
     private convertFromBase(toUnit: ElectricConductanceUnits): number {
         switch (toUnit) {
                 
@@ -183,13 +202,13 @@ export class ElectricConductance {
             case ElectricConductanceUnits.Siemens:
                 return this.Siemens + ` S`;
             case ElectricConductanceUnits.Nanosiemens:
-                return this.Nanosiemens + ` `;
+                return this.Nanosiemens + ` nS`;
             case ElectricConductanceUnits.Microsiemens:
-                return this.Microsiemens + ` `;
+                return this.Microsiemens + ` μS`;
             case ElectricConductanceUnits.Millisiemens:
-                return this.Millisiemens + ` `;
+                return this.Millisiemens + ` mS`;
             case ElectricConductanceUnits.Kilosiemens:
-                return this.Kilosiemens + ` `;
+                return this.Kilosiemens + ` kS`;
         default:
             break;
         }
@@ -210,13 +229,13 @@ export class ElectricConductance {
             case ElectricConductanceUnits.Siemens:
                 return `S`;
             case ElectricConductanceUnits.Nanosiemens:
-                return ``;
+                return `nS`;
             case ElectricConductanceUnits.Microsiemens:
-                return ``;
+                return `μS`;
             case ElectricConductanceUnits.Millisiemens:
-                return ``;
+                return `mS`;
             case ElectricConductanceUnits.Kilosiemens:
-                return ``;
+                return `kS`;
         default:
             break;
         }
