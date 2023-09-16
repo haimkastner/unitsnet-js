@@ -1,20 +1,20 @@
 /** ForceUnits enumeration */
 export enum ForceUnits {
-    /** */
+    /** One dyne is equal to 10 micronewtons, 10e−5 N or to 10 nsn (nanosthenes) in the old metre–tonne–second system of units. */
     Dyne,
-    /** */
+    /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
     KilogramsForce,
-    /** */
+    /** The tonne-force, metric ton-force, megagram-force, and megapond (Mp) are each 1000 kilograms-force. */
     TonnesForce,
-    /** */
+    /** The newton (symbol: N) is the unit of force in the International System of Units (SI). It is defined as 1 kg⋅m/s2, the force which gives a mass of 1 kilogram an acceleration of 1 metre per second per second. */
     Newtons,
-    /** */
+    /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
     KiloPonds,
-    /** */
+    /** The poundal is defined as the force necessary to accelerate 1 pound-mass at 1 foot per second per second. 1 pdl = 0.138254954376 N exactly. */
     Poundals,
-    /** */
+    /** The standard values of acceleration of the standard gravitational field (gn) and the international avoirdupois pound (lb) result in a pound-force equal to 4.4482216152605 N. */
     PoundsForce,
-    /** */
+    /** An ounce-force is 1⁄16 of a pound-force, or about 0.2780139 newtons. */
     OunceForce,
     /** The short ton-force is a unit of force equal to 2,000 pounds-force (907.18474 kgf), that is most commonly used in the United States – known there simply as the ton or US ton. */
     ShortTonsForce,
@@ -71,7 +71,7 @@ export class Force {
         return this.value;
     }
 
-    /** */
+    /** One dyne is equal to 10 micronewtons, 10e−5 N or to 10 nsn (nanosthenes) in the old metre–tonne–second system of units. */
     public get Dyne(): number {
         if(this.dyneLazy !== null){
             return this.dyneLazy;
@@ -79,7 +79,7 @@ export class Force {
         return this.dyneLazy = this.convertFromBase(ForceUnits.Dyne);
     }
 
-    /** */
+    /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
     public get KilogramsForce(): number {
         if(this.kilogramsforceLazy !== null){
             return this.kilogramsforceLazy;
@@ -87,7 +87,7 @@ export class Force {
         return this.kilogramsforceLazy = this.convertFromBase(ForceUnits.KilogramsForce);
     }
 
-    /** */
+    /** The tonne-force, metric ton-force, megagram-force, and megapond (Mp) are each 1000 kilograms-force. */
     public get TonnesForce(): number {
         if(this.tonnesforceLazy !== null){
             return this.tonnesforceLazy;
@@ -95,7 +95,7 @@ export class Force {
         return this.tonnesforceLazy = this.convertFromBase(ForceUnits.TonnesForce);
     }
 
-    /** */
+    /** The newton (symbol: N) is the unit of force in the International System of Units (SI). It is defined as 1 kg⋅m/s2, the force which gives a mass of 1 kilogram an acceleration of 1 metre per second per second. */
     public get Newtons(): number {
         if(this.newtonsLazy !== null){
             return this.newtonsLazy;
@@ -103,7 +103,7 @@ export class Force {
         return this.newtonsLazy = this.convertFromBase(ForceUnits.Newtons);
     }
 
-    /** */
+    /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
     public get KiloPonds(): number {
         if(this.kilopondsLazy !== null){
             return this.kilopondsLazy;
@@ -111,7 +111,7 @@ export class Force {
         return this.kilopondsLazy = this.convertFromBase(ForceUnits.KiloPonds);
     }
 
-    /** */
+    /** The poundal is defined as the force necessary to accelerate 1 pound-mass at 1 foot per second per second. 1 pdl = 0.138254954376 N exactly. */
     public get Poundals(): number {
         if(this.poundalsLazy !== null){
             return this.poundalsLazy;
@@ -119,7 +119,7 @@ export class Force {
         return this.poundalsLazy = this.convertFromBase(ForceUnits.Poundals);
     }
 
-    /** */
+    /** The standard values of acceleration of the standard gravitational field (gn) and the international avoirdupois pound (lb) result in a pound-force equal to 4.4482216152605 N. */
     public get PoundsForce(): number {
         if(this.poundsforceLazy !== null){
             return this.poundsforceLazy;
@@ -127,7 +127,7 @@ export class Force {
         return this.poundsforceLazy = this.convertFromBase(ForceUnits.PoundsForce);
     }
 
-    /** */
+    /** An ounce-force is 1⁄16 of a pound-force, or about 0.2780139 newtons. */
     public get OunceForce(): number {
         if(this.ounceforceLazy !== null){
             return this.ounceforceLazy;
@@ -193,7 +193,7 @@ export class Force {
 
     /**
      * Create a new Force instance from a Dyne
-     *
+     * One dyne is equal to 10 micronewtons, 10e−5 N or to 10 nsn (nanosthenes) in the old metre–tonne–second system of units.
      * @param value The unit as Dyne to create a new Force from.
      * @returns The new Force instance.
      */
@@ -203,7 +203,7 @@ export class Force {
 
     /**
      * Create a new Force instance from a KilogramsForce
-     *
+     * The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N.
      * @param value The unit as KilogramsForce to create a new Force from.
      * @returns The new Force instance.
      */
@@ -213,7 +213,7 @@ export class Force {
 
     /**
      * Create a new Force instance from a TonnesForce
-     *
+     * The tonne-force, metric ton-force, megagram-force, and megapond (Mp) are each 1000 kilograms-force.
      * @param value The unit as TonnesForce to create a new Force from.
      * @returns The new Force instance.
      */
@@ -223,7 +223,7 @@ export class Force {
 
     /**
      * Create a new Force instance from a Newtons
-     *
+     * The newton (symbol: N) is the unit of force in the International System of Units (SI). It is defined as 1 kg⋅m/s2, the force which gives a mass of 1 kilogram an acceleration of 1 metre per second per second.
      * @param value The unit as Newtons to create a new Force from.
      * @returns The new Force instance.
      */
@@ -233,7 +233,7 @@ export class Force {
 
     /**
      * Create a new Force instance from a KiloPonds
-     *
+     * The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N.
      * @param value The unit as KiloPonds to create a new Force from.
      * @returns The new Force instance.
      */
@@ -243,7 +243,7 @@ export class Force {
 
     /**
      * Create a new Force instance from a Poundals
-     *
+     * The poundal is defined as the force necessary to accelerate 1 pound-mass at 1 foot per second per second. 1 pdl = 0.138254954376 N exactly.
      * @param value The unit as Poundals to create a new Force from.
      * @returns The new Force instance.
      */
@@ -253,7 +253,7 @@ export class Force {
 
     /**
      * Create a new Force instance from a PoundsForce
-     *
+     * The standard values of acceleration of the standard gravitational field (gn) and the international avoirdupois pound (lb) result in a pound-force equal to 4.4482216152605 N.
      * @param value The unit as PoundsForce to create a new Force from.
      * @returns The new Force instance.
      */
@@ -263,7 +263,7 @@ export class Force {
 
     /**
      * Create a new Force instance from a OunceForce
-     *
+     * An ounce-force is 1⁄16 of a pound-force, or about 0.2780139 newtons.
      * @param value The unit as OunceForce to create a new Force from.
      * @returns The new Force instance.
      */
@@ -376,21 +376,21 @@ export class Force {
             case ForceUnits.Dyne:
                 return this.value * 1e5;
             case ForceUnits.KilogramsForce:
-                return this.value / 9.80665002864;
+                return this.value / 9.80665;
             case ForceUnits.TonnesForce:
-                return this.value / 9.80665002864e3;
+                return this.value / (9.80665 * 1000);
             case ForceUnits.Newtons:
                 return this.value;
             case ForceUnits.KiloPonds:
-                return this.value / 9.80665002864;
+                return this.value / 9.80665;
             case ForceUnits.Poundals:
-                return this.value / 0.13825502798973041652092282466083;
+                return this.value / 0.138254954376;
             case ForceUnits.PoundsForce:
-                return this.value / 4.4482216152605095551842641431421;
+                return this.value / 4.4482216152605;
             case ForceUnits.OunceForce:
-                return this.value / 2.780138509537812e-1;
+                return this.value / (4.4482216152605 / 16);
             case ForceUnits.ShortTonsForce:
-                return this.value / 8.896443230521e3;
+                return this.value / (4.4482216152605 * 2000);
             case ForceUnits.Micronewtons:
                 return (this.value) / 0.000001;
             case ForceUnits.Millinewtons:
@@ -402,7 +402,7 @@ export class Force {
             case ForceUnits.Meganewtons:
                 return (this.value) / 1000000;
             case ForceUnits.KilopoundsForce:
-                return (this.value / 4.4482216152605095551842641431421) / 1000;
+                return (this.value / 4.4482216152605) / 1000;
             default:
                 break;
         }
@@ -415,21 +415,21 @@ export class Force {
             case ForceUnits.Dyne:
                 return value / 1e5;
             case ForceUnits.KilogramsForce:
-                return value * 9.80665002864;
+                return value * 9.80665;
             case ForceUnits.TonnesForce:
-                return value * 9.80665002864e3;
+                return value * (9.80665 * 1000);
             case ForceUnits.Newtons:
                 return value;
             case ForceUnits.KiloPonds:
-                return value * 9.80665002864;
+                return value * 9.80665;
             case ForceUnits.Poundals:
-                return value * 0.13825502798973041652092282466083;
+                return value * 0.138254954376;
             case ForceUnits.PoundsForce:
-                return value * 4.4482216152605095551842641431421;
+                return value * 4.4482216152605;
             case ForceUnits.OunceForce:
-                return value * 2.780138509537812e-1;
+                return value * (4.4482216152605 / 16);
             case ForceUnits.ShortTonsForce:
-                return value * 8.896443230521e3;
+                return value * (4.4482216152605 * 2000);
             case ForceUnits.Micronewtons:
                 return (value) * 0.000001;
             case ForceUnits.Millinewtons:
@@ -441,7 +441,7 @@ export class Force {
             case ForceUnits.Meganewtons:
                 return (value) * 1000000;
             case ForceUnits.KilopoundsForce:
-                return (value * 4.4482216152605095551842641431421) * 1000;
+                return (value * 4.4482216152605) * 1000;
             default:
                 break;
         }
