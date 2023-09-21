@@ -71,6 +71,8 @@ export enum LengthUnits {
     /** */
     Megameters,
     /** */
+    Gigameters,
+    /** */
     Kilofeet,
     /** */
     Kiloparsecs,
@@ -120,6 +122,7 @@ export class Length {
     private hectometersLazy: number | null = null;
     private kilometersLazy: number | null = null;
     private megametersLazy: number | null = null;
+    private gigametersLazy: number | null = null;
     private kilofeetLazy: number | null = null;
     private kiloparsecsLazy: number | null = null;
     private megaparsecsLazy: number | null = null;
@@ -424,6 +427,14 @@ export class Length {
             return this.megametersLazy;
         }
         return this.megametersLazy = this.convertFromBase(LengthUnits.Megameters);
+    }
+
+    /** */
+    public get Gigameters(): number {
+        if(this.gigametersLazy !== null){
+            return this.gigametersLazy;
+        }
+        return this.gigametersLazy = this.convertFromBase(LengthUnits.Gigameters);
     }
 
     /** */
@@ -817,6 +828,16 @@ export class Length {
     }
 
     /**
+     * Create a new Length instance from a Gigameters
+     *
+     * @param value The unit as Gigameters to create a new Length from.
+     * @returns The new Length instance.
+     */
+    public static FromGigameters(value: number): Length {
+        return new Length(value, LengthUnits.Gigameters);
+    }
+
+    /**
      * Create a new Length instance from a Kilofeet
      *
      * @param value The unit as Kilofeet to create a new Length from.
@@ -908,6 +929,7 @@ export class Length {
             case LengthUnits.Hectometers: return this.Hectometers;
             case LengthUnits.Kilometers: return this.Kilometers;
             case LengthUnits.Megameters: return this.Megameters;
+            case LengthUnits.Gigameters: return this.Gigameters;
             case LengthUnits.Kilofeet: return this.Kilofeet;
             case LengthUnits.Kiloparsecs: return this.Kiloparsecs;
             case LengthUnits.Megaparsecs: return this.Megaparsecs;
@@ -993,6 +1015,8 @@ export class Length {
                 return (this.value) / 1000;
             case LengthUnits.Megameters:
                 return (this.value) / 1000000;
+            case LengthUnits.Gigameters:
+                return (this.value) / 1000000000;
             case LengthUnits.Kilofeet:
                 return (this.value / 0.3048) / 1000;
             case LengthUnits.Kiloparsecs:
@@ -1082,6 +1106,8 @@ export class Length {
                 return (value) * 1000;
             case LengthUnits.Megameters:
                 return (value) * 1000000;
+            case LengthUnits.Gigameters:
+                return (value) * 1000000000;
             case LengthUnits.Kilofeet:
                 return (value * 0.3048) * 1000;
             case LengthUnits.Kiloparsecs:
@@ -1179,6 +1205,8 @@ export class Length {
                 return this.Kilometers + ` km`;
             case LengthUnits.Megameters:
                 return this.Megameters + ` Mm`;
+            case LengthUnits.Gigameters:
+                return this.Gigameters + ` Gm`;
             case LengthUnits.Kilofeet:
                 return this.Kilofeet + ` kft`;
             case LengthUnits.Kiloparsecs:
@@ -1276,6 +1304,8 @@ export class Length {
                 return `km`;
             case LengthUnits.Megameters:
                 return `Mm`;
+            case LengthUnits.Gigameters:
+                return `Gm`;
             case LengthUnits.Kilofeet:
                 return `kft`;
             case LengthUnits.Kiloparsecs:

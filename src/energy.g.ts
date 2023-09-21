@@ -25,6 +25,10 @@ export enum EnergyUnits {
     /** */
     HorsepowerHours,
     /** */
+    Nanojoules,
+    /** */
+    Microjoules,
+    /** */
     Millijoules,
     /** */
     Kilojoules,
@@ -93,6 +97,8 @@ export class Energy {
     private thermsusLazy: number | null = null;
     private thermsimperialLazy: number | null = null;
     private horsepowerhoursLazy: number | null = null;
+    private nanojoulesLazy: number | null = null;
+    private microjoulesLazy: number | null = null;
     private millijoulesLazy: number | null = null;
     private kilojoulesLazy: number | null = null;
     private megajoulesLazy: number | null = null;
@@ -234,6 +240,22 @@ export class Energy {
             return this.horsepowerhoursLazy;
         }
         return this.horsepowerhoursLazy = this.convertFromBase(EnergyUnits.HorsepowerHours);
+    }
+
+    /** */
+    public get Nanojoules(): number {
+        if(this.nanojoulesLazy !== null){
+            return this.nanojoulesLazy;
+        }
+        return this.nanojoulesLazy = this.convertFromBase(EnergyUnits.Nanojoules);
+    }
+
+    /** */
+    public get Microjoules(): number {
+        if(this.microjoulesLazy !== null){
+            return this.microjoulesLazy;
+        }
+        return this.microjoulesLazy = this.convertFromBase(EnergyUnits.Microjoules);
     }
 
     /** */
@@ -565,6 +587,26 @@ export class Energy {
     }
 
     /**
+     * Create a new Energy instance from a Nanojoules
+     *
+     * @param value The unit as Nanojoules to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromNanojoules(value: number): Energy {
+        return new Energy(value, EnergyUnits.Nanojoules);
+    }
+
+    /**
+     * Create a new Energy instance from a Microjoules
+     *
+     * @param value The unit as Microjoules to create a new Energy from.
+     * @returns The new Energy instance.
+     */
+    public static FromMicrojoules(value: number): Energy {
+        return new Energy(value, EnergyUnits.Microjoules);
+    }
+
+    /**
      * Create a new Energy instance from a Millijoules
      *
      * @param value The unit as Millijoules to create a new Energy from.
@@ -843,6 +885,8 @@ export class Energy {
             case EnergyUnits.ThermsUs: return this.ThermsUs;
             case EnergyUnits.ThermsImperial: return this.ThermsImperial;
             case EnergyUnits.HorsepowerHours: return this.HorsepowerHours;
+            case EnergyUnits.Nanojoules: return this.Nanojoules;
+            case EnergyUnits.Microjoules: return this.Microjoules;
             case EnergyUnits.Millijoules: return this.Millijoules;
             case EnergyUnits.Kilojoules: return this.Kilojoules;
             case EnergyUnits.Megajoules: return this.Megajoules;
@@ -903,6 +947,10 @@ export class Energy {
                 return this.value / 1.05505585257348e8;
             case EnergyUnits.HorsepowerHours:
                 return this.value / 2.6845195377e6;
+            case EnergyUnits.Nanojoules:
+                return (this.value) / 1e-9;
+            case EnergyUnits.Microjoules:
+                return (this.value) / 0.000001;
             case EnergyUnits.Millijoules:
                 return (this.value) / 0.001;
             case EnergyUnits.Kilojoules:
@@ -988,6 +1036,10 @@ export class Energy {
                 return value * 1.05505585257348e8;
             case EnergyUnits.HorsepowerHours:
                 return value * 2.6845195377e6;
+            case EnergyUnits.Nanojoules:
+                return (value) * 1e-9;
+            case EnergyUnits.Microjoules:
+                return (value) * 0.000001;
             case EnergyUnits.Millijoules:
                 return (value) * 0.001;
             case EnergyUnits.Kilojoules:
@@ -1081,6 +1133,10 @@ export class Energy {
                 return this.ThermsImperial + ` th (imp.)`;
             case EnergyUnits.HorsepowerHours:
                 return this.HorsepowerHours + ` hp·h`;
+            case EnergyUnits.Nanojoules:
+                return this.Nanojoules + ` nJ`;
+            case EnergyUnits.Microjoules:
+                return this.Microjoules + ` μJ`;
             case EnergyUnits.Millijoules:
                 return this.Millijoules + ` mJ`;
             case EnergyUnits.Kilojoules:
@@ -1174,6 +1230,10 @@ export class Energy {
                 return `th (imp.)`;
             case EnergyUnits.HorsepowerHours:
                 return `hp·h`;
+            case EnergyUnits.Nanojoules:
+                return `nJ`;
+            case EnergyUnits.Microjoules:
+                return `μJ`;
             case EnergyUnits.Millijoules:
                 return `mJ`;
             case EnergyUnits.Kilojoules:
