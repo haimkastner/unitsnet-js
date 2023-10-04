@@ -67,6 +67,8 @@ export enum DensityUnits {
     /** */
     KilopoundsPerCubicFoot,
     /** */
+    FemtogramsPerLiter,
+    /** */
     PicogramsPerLiter,
     /** */
     NanogramsPerLiter,
@@ -79,6 +81,8 @@ export enum DensityUnits {
     /** */
     DecigramsPerLiter,
     /** */
+    FemtogramsPerDeciLiter,
+    /** */
     PicogramsPerDeciLiter,
     /** */
     NanogramsPerDeciLiter,
@@ -90,6 +94,8 @@ export enum DensityUnits {
     CentigramsPerDeciLiter,
     /** */
     DecigramsPerDeciLiter,
+    /** */
+    FemtogramsPerMilliliter,
     /** */
     PicogramsPerMilliliter,
     /** */
@@ -140,18 +146,21 @@ export class Density {
     private microgramspercubicmeterLazy: number | null = null;
     private kilopoundspercubicinchLazy: number | null = null;
     private kilopoundspercubicfootLazy: number | null = null;
+    private femtogramsperliterLazy: number | null = null;
     private picogramsperliterLazy: number | null = null;
     private nanogramsperliterLazy: number | null = null;
     private microgramsperliterLazy: number | null = null;
     private milligramsperliterLazy: number | null = null;
     private centigramsperliterLazy: number | null = null;
     private decigramsperliterLazy: number | null = null;
+    private femtogramsperdeciliterLazy: number | null = null;
     private picogramsperdeciliterLazy: number | null = null;
     private nanogramsperdeciliterLazy: number | null = null;
     private microgramsperdeciliterLazy: number | null = null;
     private milligramsperdeciliterLazy: number | null = null;
     private centigramsperdeciliterLazy: number | null = null;
     private decigramsperdeciliterLazy: number | null = null;
+    private femtogramspermilliliterLazy: number | null = null;
     private picogramspermilliliterLazy: number | null = null;
     private nanogramspermilliliterLazy: number | null = null;
     private microgramspermilliliterLazy: number | null = null;
@@ -444,6 +453,14 @@ export class Density {
     }
 
     /** */
+    public get FemtogramsPerLiter(): number {
+        if(this.femtogramsperliterLazy !== null){
+            return this.femtogramsperliterLazy;
+        }
+        return this.femtogramsperliterLazy = this.convertFromBase(DensityUnits.FemtogramsPerLiter);
+    }
+
+    /** */
     public get PicogramsPerLiter(): number {
         if(this.picogramsperliterLazy !== null){
             return this.picogramsperliterLazy;
@@ -492,6 +509,14 @@ export class Density {
     }
 
     /** */
+    public get FemtogramsPerDeciLiter(): number {
+        if(this.femtogramsperdeciliterLazy !== null){
+            return this.femtogramsperdeciliterLazy;
+        }
+        return this.femtogramsperdeciliterLazy = this.convertFromBase(DensityUnits.FemtogramsPerDeciLiter);
+    }
+
+    /** */
     public get PicogramsPerDeciLiter(): number {
         if(this.picogramsperdeciliterLazy !== null){
             return this.picogramsperdeciliterLazy;
@@ -537,6 +562,14 @@ export class Density {
             return this.decigramsperdeciliterLazy;
         }
         return this.decigramsperdeciliterLazy = this.convertFromBase(DensityUnits.DecigramsPerDeciLiter);
+    }
+
+    /** */
+    public get FemtogramsPerMilliliter(): number {
+        if(this.femtogramspermilliliterLazy !== null){
+            return this.femtogramspermilliliterLazy;
+        }
+        return this.femtogramspermilliliterLazy = this.convertFromBase(DensityUnits.FemtogramsPerMilliliter);
     }
 
     /** */
@@ -918,6 +951,16 @@ export class Density {
     }
 
     /**
+     * Create a new Density instance from a FemtogramsPerLiter
+     *
+     * @param value The unit as FemtogramsPerLiter to create a new Density from.
+     * @returns The new Density instance.
+     */
+    public static FromFemtogramsPerLiter(value: number): Density {
+        return new Density(value, DensityUnits.FemtogramsPerLiter);
+    }
+
+    /**
      * Create a new Density instance from a PicogramsPerLiter
      *
      * @param value The unit as PicogramsPerLiter to create a new Density from.
@@ -978,6 +1021,16 @@ export class Density {
     }
 
     /**
+     * Create a new Density instance from a FemtogramsPerDeciLiter
+     *
+     * @param value The unit as FemtogramsPerDeciLiter to create a new Density from.
+     * @returns The new Density instance.
+     */
+    public static FromFemtogramsPerDeciLiter(value: number): Density {
+        return new Density(value, DensityUnits.FemtogramsPerDeciLiter);
+    }
+
+    /**
      * Create a new Density instance from a PicogramsPerDeciLiter
      *
      * @param value The unit as PicogramsPerDeciLiter to create a new Density from.
@@ -1035,6 +1088,16 @@ export class Density {
      */
     public static FromDecigramsPerDeciLiter(value: number): Density {
         return new Density(value, DensityUnits.DecigramsPerDeciLiter);
+    }
+
+    /**
+     * Create a new Density instance from a FemtogramsPerMilliliter
+     *
+     * @param value The unit as FemtogramsPerMilliliter to create a new Density from.
+     * @returns The new Density instance.
+     */
+    public static FromFemtogramsPerMilliliter(value: number): Density {
+        return new Density(value, DensityUnits.FemtogramsPerMilliliter);
     }
 
     /**
@@ -1137,18 +1200,21 @@ export class Density {
             case DensityUnits.MicrogramsPerCubicMeter: return this.MicrogramsPerCubicMeter;
             case DensityUnits.KilopoundsPerCubicInch: return this.KilopoundsPerCubicInch;
             case DensityUnits.KilopoundsPerCubicFoot: return this.KilopoundsPerCubicFoot;
+            case DensityUnits.FemtogramsPerLiter: return this.FemtogramsPerLiter;
             case DensityUnits.PicogramsPerLiter: return this.PicogramsPerLiter;
             case DensityUnits.NanogramsPerLiter: return this.NanogramsPerLiter;
             case DensityUnits.MicrogramsPerLiter: return this.MicrogramsPerLiter;
             case DensityUnits.MilligramsPerLiter: return this.MilligramsPerLiter;
             case DensityUnits.CentigramsPerLiter: return this.CentigramsPerLiter;
             case DensityUnits.DecigramsPerLiter: return this.DecigramsPerLiter;
+            case DensityUnits.FemtogramsPerDeciLiter: return this.FemtogramsPerDeciLiter;
             case DensityUnits.PicogramsPerDeciLiter: return this.PicogramsPerDeciLiter;
             case DensityUnits.NanogramsPerDeciLiter: return this.NanogramsPerDeciLiter;
             case DensityUnits.MicrogramsPerDeciLiter: return this.MicrogramsPerDeciLiter;
             case DensityUnits.MilligramsPerDeciLiter: return this.MilligramsPerDeciLiter;
             case DensityUnits.CentigramsPerDeciLiter: return this.CentigramsPerDeciLiter;
             case DensityUnits.DecigramsPerDeciLiter: return this.DecigramsPerDeciLiter;
+            case DensityUnits.FemtogramsPerMilliliter: return this.FemtogramsPerMilliliter;
             case DensityUnits.PicogramsPerMilliliter: return this.PicogramsPerMilliliter;
             case DensityUnits.NanogramsPerMilliliter: return this.NanogramsPerMilliliter;
             case DensityUnits.MicrogramsPerMilliliter: return this.MicrogramsPerMilliliter;
@@ -1231,6 +1297,8 @@ export class Density {
                 return (this.value * 3.6127298147753e-5) / 1000;
             case DensityUnits.KilopoundsPerCubicFoot:
                 return (this.value * 0.062427961) / 1000;
+            case DensityUnits.FemtogramsPerLiter:
+                return (this.value * 1) / 1e-15;
             case DensityUnits.PicogramsPerLiter:
                 return (this.value * 1) / 1e-12;
             case DensityUnits.NanogramsPerLiter:
@@ -1243,6 +1311,8 @@ export class Density {
                 return (this.value * 1) / 0.01;
             case DensityUnits.DecigramsPerLiter:
                 return (this.value * 1) / 0.1;
+            case DensityUnits.FemtogramsPerDeciLiter:
+                return (this.value * 1e-1) / 1e-15;
             case DensityUnits.PicogramsPerDeciLiter:
                 return (this.value * 1e-1) / 1e-12;
             case DensityUnits.NanogramsPerDeciLiter:
@@ -1255,6 +1325,8 @@ export class Density {
                 return (this.value * 1e-1) / 0.01;
             case DensityUnits.DecigramsPerDeciLiter:
                 return (this.value * 1e-1) / 0.1;
+            case DensityUnits.FemtogramsPerMilliliter:
+                return (this.value * 1e-3) / 1e-15;
             case DensityUnits.PicogramsPerMilliliter:
                 return (this.value * 1e-3) / 1e-12;
             case DensityUnits.NanogramsPerMilliliter:
@@ -1342,6 +1414,8 @@ export class Density {
                 return (value / 3.6127298147753e-5) * 1000;
             case DensityUnits.KilopoundsPerCubicFoot:
                 return (value / 0.062427961) * 1000;
+            case DensityUnits.FemtogramsPerLiter:
+                return (value / 1) * 1e-15;
             case DensityUnits.PicogramsPerLiter:
                 return (value / 1) * 1e-12;
             case DensityUnits.NanogramsPerLiter:
@@ -1354,6 +1428,8 @@ export class Density {
                 return (value / 1) * 0.01;
             case DensityUnits.DecigramsPerLiter:
                 return (value / 1) * 0.1;
+            case DensityUnits.FemtogramsPerDeciLiter:
+                return (value / 1e-1) * 1e-15;
             case DensityUnits.PicogramsPerDeciLiter:
                 return (value / 1e-1) * 1e-12;
             case DensityUnits.NanogramsPerDeciLiter:
@@ -1366,6 +1442,8 @@ export class Density {
                 return (value / 1e-1) * 0.01;
             case DensityUnits.DecigramsPerDeciLiter:
                 return (value / 1e-1) * 0.1;
+            case DensityUnits.FemtogramsPerMilliliter:
+                return (value / 1e-3) * 1e-15;
             case DensityUnits.PicogramsPerMilliliter:
                 return (value / 1e-3) * 1e-12;
             case DensityUnits.NanogramsPerMilliliter:
@@ -1461,6 +1539,8 @@ export class Density {
                 return this.KilopoundsPerCubicInch + ` klb/in³`;
             case DensityUnits.KilopoundsPerCubicFoot:
                 return this.KilopoundsPerCubicFoot + ` klb/ft³`;
+            case DensityUnits.FemtogramsPerLiter:
+                return this.FemtogramsPerLiter + ` fg/L`;
             case DensityUnits.PicogramsPerLiter:
                 return this.PicogramsPerLiter + ` pg/L`;
             case DensityUnits.NanogramsPerLiter:
@@ -1473,6 +1553,8 @@ export class Density {
                 return this.CentigramsPerLiter + ` cg/L`;
             case DensityUnits.DecigramsPerLiter:
                 return this.DecigramsPerLiter + ` dg/L`;
+            case DensityUnits.FemtogramsPerDeciLiter:
+                return this.FemtogramsPerDeciLiter + ` fg/dl`;
             case DensityUnits.PicogramsPerDeciLiter:
                 return this.PicogramsPerDeciLiter + ` pg/dl`;
             case DensityUnits.NanogramsPerDeciLiter:
@@ -1485,6 +1567,8 @@ export class Density {
                 return this.CentigramsPerDeciLiter + ` cg/dl`;
             case DensityUnits.DecigramsPerDeciLiter:
                 return this.DecigramsPerDeciLiter + ` dg/dl`;
+            case DensityUnits.FemtogramsPerMilliliter:
+                return this.FemtogramsPerMilliliter + ` fg/ml`;
             case DensityUnits.PicogramsPerMilliliter:
                 return this.PicogramsPerMilliliter + ` pg/ml`;
             case DensityUnits.NanogramsPerMilliliter:
@@ -1580,6 +1664,8 @@ export class Density {
                 return `klb/in³`;
             case DensityUnits.KilopoundsPerCubicFoot:
                 return `klb/ft³`;
+            case DensityUnits.FemtogramsPerLiter:
+                return `fg/L`;
             case DensityUnits.PicogramsPerLiter:
                 return `pg/L`;
             case DensityUnits.NanogramsPerLiter:
@@ -1592,6 +1678,8 @@ export class Density {
                 return `cg/L`;
             case DensityUnits.DecigramsPerLiter:
                 return `dg/L`;
+            case DensityUnits.FemtogramsPerDeciLiter:
+                return `fg/dl`;
             case DensityUnits.PicogramsPerDeciLiter:
                 return `pg/dl`;
             case DensityUnits.NanogramsPerDeciLiter:
@@ -1604,6 +1692,8 @@ export class Density {
                 return `cg/dl`;
             case DensityUnits.DecigramsPerDeciLiter:
                 return `dg/dl`;
+            case DensityUnits.FemtogramsPerMilliliter:
+                return `fg/ml`;
             case DensityUnits.PicogramsPerMilliliter:
                 return `pg/ml`;
             case DensityUnits.NanogramsPerMilliliter:
