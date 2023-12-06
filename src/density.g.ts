@@ -10,7 +10,7 @@ export enum DensityUnits {
     PoundsPerCubicInch,
     /** */
     PoundsPerCubicFoot,
-    /** */
+    /** Calculated from the definition of <a href="https://en.wikipedia.org/wiki/Pound_(mass)">pound</a> and <a href="https://en.wikipedia.org/wiki/Yard">yard</a> compared to metric kilogram and meter. */
     PoundsPerCubicYard,
     /** */
     TonnesPerCubicMillimeter,
@@ -234,7 +234,7 @@ export class Density {
         return this.poundspercubicfootLazy = this.convertFromBase(DensityUnits.PoundsPerCubicFoot);
     }
 
-    /** */
+    /** Calculated from the definition of <a href="https://en.wikipedia.org/wiki/Pound_(mass)">pound</a> and <a href="https://en.wikipedia.org/wiki/Yard">yard</a> compared to metric kilogram and meter. */
     public get PoundsPerCubicYard(): number {
         if(this.poundspercubicyardLazy !== null){
             return this.poundspercubicyardLazy;
@@ -694,7 +694,7 @@ export class Density {
 
     /**
      * Create a new Density instance from a PoundsPerCubicYard
-     *
+     * Calculated from the definition of <a href="https://en.wikipedia.org/wiki/Pound_(mass)">pound</a> and <a href="https://en.wikipedia.org/wiki/Yard">yard</a> compared to metric kilogram and meter.
      * @param value The unit as PoundsPerCubicYard to create a new Density from.
      * @returns The new Density instance.
      */
@@ -1286,7 +1286,7 @@ export class Density {
             case DensityUnits.PoundsPerCubicFoot:
                 return this.value * 0.062427961;
             case DensityUnits.PoundsPerCubicYard:
-                return this.value * 1.685554936;
+                return this.value * (0.45359237 / 0.9144 / 0.9144 / 0.9144);
             case DensityUnits.TonnesPerCubicMillimeter:
                 return this.value * 1e-12;
             case DensityUnits.TonnesPerCubicCentimeter:
@@ -1344,7 +1344,7 @@ export class Density {
             case DensityUnits.KilopoundsPerCubicFoot:
                 return (this.value * 0.062427961) / 1000;
             case DensityUnits.KilopoundsPerCubicYard:
-                return (this.value * 1.685554936) / 1000;
+                return (this.value * (0.45359237 / 0.9144 / 0.9144 / 0.9144)) / 1000;
             case DensityUnits.FemtogramsPerLiter:
                 return (this.value * 1) / 1e-15;
             case DensityUnits.PicogramsPerLiter:
@@ -1407,7 +1407,7 @@ export class Density {
             case DensityUnits.PoundsPerCubicFoot:
                 return value / 0.062427961;
             case DensityUnits.PoundsPerCubicYard:
-                return value / 1.685554936;
+                return value / (0.45359237 / 0.9144 / 0.9144 / 0.9144);
             case DensityUnits.TonnesPerCubicMillimeter:
                 return value / 1e-12;
             case DensityUnits.TonnesPerCubicCentimeter:
@@ -1465,7 +1465,7 @@ export class Density {
             case DensityUnits.KilopoundsPerCubicFoot:
                 return (value / 0.062427961) * 1000;
             case DensityUnits.KilopoundsPerCubicYard:
-                return (value / 1.685554936) * 1000;
+                return (value / (0.45359237 / 0.9144 / 0.9144 / 0.9144)) * 1000;
             case DensityUnits.FemtogramsPerLiter:
                 return (value / 1) * 1e-15;
             case DensityUnits.PicogramsPerLiter:
