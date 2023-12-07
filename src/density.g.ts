@@ -1286,7 +1286,7 @@ export class Density {
             case DensityUnits.PoundsPerCubicFoot:
                 return this.value * 0.062427961;
             case DensityUnits.PoundsPerCubicYard:
-                return this.value * (0.45359237 / 0.9144 / 0.9144 / 0.9144);
+                return this.value / (0.45359237 / 0.9144 / 0.9144 / 0.9144);
             case DensityUnits.TonnesPerCubicMillimeter:
                 return this.value * 1e-12;
             case DensityUnits.TonnesPerCubicCentimeter:
@@ -1344,7 +1344,7 @@ export class Density {
             case DensityUnits.KilopoundsPerCubicFoot:
                 return (this.value * 0.062427961) / 1000;
             case DensityUnits.KilopoundsPerCubicYard:
-                return (this.value * (0.45359237 / 0.9144 / 0.9144 / 0.9144)) / 1000;
+                return (this.value / (0.45359237 / 0.9144 / 0.9144 / 0.9144)) / 1000;
             case DensityUnits.FemtogramsPerLiter:
                 return (this.value * 1) / 1e-15;
             case DensityUnits.PicogramsPerLiter:
@@ -1407,7 +1407,7 @@ export class Density {
             case DensityUnits.PoundsPerCubicFoot:
                 return value / 0.062427961;
             case DensityUnits.PoundsPerCubicYard:
-                return value / (0.45359237 / 0.9144 / 0.9144 / 0.9144);
+                return value * (0.45359237 / 0.9144 / 0.9144 / 0.9144);
             case DensityUnits.TonnesPerCubicMillimeter:
                 return value / 1e-12;
             case DensityUnits.TonnesPerCubicCentimeter:
@@ -1465,7 +1465,7 @@ export class Density {
             case DensityUnits.KilopoundsPerCubicFoot:
                 return (value / 0.062427961) * 1000;
             case DensityUnits.KilopoundsPerCubicYard:
-                return (value / (0.45359237 / 0.9144 / 0.9144 / 0.9144)) * 1000;
+                return (value * (0.45359237 / 0.9144 / 0.9144 / 0.9144)) * 1000;
             case DensityUnits.FemtogramsPerLiter:
                 return (value / 1) * 1e-15;
             case DensityUnits.PicogramsPerLiter:
