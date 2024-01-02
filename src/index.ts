@@ -82,6 +82,7 @@ export * from "./powerdensity.g";
 export * from "./powerratio.g";
 export * from "./pressure.g";
 export * from "./pressurechangerate.g";
+export * from "./radiationexposure.g";
 export * from "./radioactivity.g";
 export * from "./ratio.g";
 export * from "./ratiochangerate.g";
