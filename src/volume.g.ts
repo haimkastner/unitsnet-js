@@ -1254,7 +1254,7 @@ export class Volume {
             case VolumeUnits.CubicFeet:
                 return this.value / 2.8316846592e-2;
             case VolumeUnits.CubicInches:
-                return this.value / (1.6387 * 1e-5);
+                return this.value / 1.6387064e-5;
             case VolumeUnits.ImperialGallons:
                 return this.value / 0.00454609;
             case VolumeUnits.ImperialOunces:
@@ -1371,7 +1371,7 @@ export class Volume {
             case VolumeUnits.CubicFeet:
                 return value * 2.8316846592e-2;
             case VolumeUnits.CubicInches:
-                return value * 1.6387 * 1e-5;
+                return value * 1.6387064e-5;
             case VolumeUnits.ImperialGallons:
                 return value * 0.00454609;
             case VolumeUnits.ImperialOunces:
