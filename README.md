@@ -14,10 +14,7 @@ The library is built on top of the [Units.NET](https://github.com/angularsen/Uni
 
 Package is available on NPM at https://www.npmjs.com/package/unitsnet-js
 
-> The package for C# is available in the Nuget registry at https://www.nuget.org/packages/UnitsNet/
->
-> And a similar package for Python is available in the PyPI registry at https://pypi.org/project/unitsnet-py/
-
+[Units.NET on other platforms](#unitsnet-on-other-platforms)
 
 ## Install via NPM:
 
@@ -256,6 +253,8 @@ The package provides support for the following units:
     -   *Pressure (symbol: P or p) is the ratio of force to the area over which that force is distributed. Pressure is force per unit area applied in a direction perpendicular to the surface of an object. Gauge pressure (also spelled gage pressure)[a] is the pressure relative to the local atmospheric or ambient pressure. Pressure is measured in any unit of force divided by any unit of area. The SI unit of pressure is the newton per square metre, which is called the pascal (Pa) after the seventeenth-century philosopher and scientist Blaise Pascal. A pressure of 1 Pa is small; it approximately equals the pressure exerted by a dollar bill resting flat on a table. Everyday pressures are often stated in kilopascals (1 kPa = 1000 Pa).*
 - **PressureChangeRate**
     -   *Pressure change rate is the ratio of the pressure change to the time during which the change occurred (value of pressure changes per unit time).*
+- **RadiationEquivalentDose**
+    -   *Equivalent dose is a dose quantity representing the stochastic health effects of low levels of ionizing radiation on the human body which represents the probability of radiation-induced cancer and genetic damage.*
 - **RadiationExposure**
     -   *Radiation exposure is a measure of the ionization of air due to ionizing radiation from photons.*
 - **Radioactivity**
@@ -336,4 +335,11 @@ The package provides support for the following units:
     -   *A geometric property of an area that is used to determine the warping stress.*
 
 
-> This file generated from [README.t.md](./generator-scripts/src/assets/README.t.md) template file.
+### Units.NET on other platforms
+
+Get the same strongly typed units on other platforms, based on the same [unit definitions](/Common/UnitDefinitions).
+
+| Language  | Name        | Package                                           | Repository                                           | Maintainers  |
+|-----------|-------------|---------------------------------------------------|------------------------------------------------------|--------------|
+| C#        | UnitsNet    | [nuget](https://www.nuget.org/packages/UnitsNet/) | [github](https://github.com/angularsen/UnitsNet)     | @angularsen  |
+| Python    | unitsnet-py | [pypi](https://pypi.org/project/unitsnet-py)      | [github](https://github.com/haimkastner/unitsnet-py) | @haimkastner |
