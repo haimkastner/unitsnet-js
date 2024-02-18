@@ -14,10 +14,7 @@ The library is built on top of the [Units.NET](https://github.com/angularsen/Uni
 
 Package is available on NPM at https://www.npmjs.com/package/unitsnet-js
 
-> The package for C# is available in the Nuget registry at https://www.nuget.org/packages/UnitsNet/
->
-> And a similar package for Python is available in the PyPI registry at https://pypi.org/project/unitsnet-py/
-
+[Units.NET on other platforms](#unitsnet-on-other-platforms)
 
 ## Install via NPM:
 
@@ -338,4 +335,11 @@ The package provides support for the following units:
     -   *A geometric property of an area that is used to determine the warping stress.*
 
 
-> This file generated from [README.t.md](./generator-scripts/src/assets/README.t.md) template file.
+### Units.NET on other platforms
+
+Get the same strongly typed units on other platforms, based on the same [unit definitions](/Common/UnitDefinitions).
+
+| Language  | Name        | Package                                           | Repository                                           | Maintainers  |
+|-----------|-------------|---------------------------------------------------|------------------------------------------------------|--------------|
+| C#        | UnitsNet    | [nuget](https://www.nuget.org/packages/UnitsNet/) | [github](https://github.com/angularsen/UnitsNet)     | @angularsen  |
+| Python    | unitsnet-py | [pypi](https://pypi.org/project/unitsnet-py)      | [github](https://github.com/haimkastner/unitsnet-py) | @haimkastner |
