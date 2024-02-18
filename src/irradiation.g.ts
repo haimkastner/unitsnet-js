@@ -9,11 +9,15 @@ export enum IrradiationUnits {
     /** */
     WattHoursPerSquareMeter,
     /** */
+    BtusPerSquareFoot,
+    /** */
     KilojoulesPerSquareMeter,
     /** */
     MillijoulesPerSquareCentimeter,
     /** */
-    KilowattHoursPerSquareMeter
+    KilowattHoursPerSquareMeter,
+    /** */
+    KilobtusPerSquareFoot
 }
 
 /** Irradiation is the process by which an object is exposed to radiation. The exposure can originate from various sources, including natural sources. */
@@ -23,9 +27,11 @@ export class Irradiation {
     private joulespersquarecentimeterLazy: number | null = null;
     private joulespersquaremillimeterLazy: number | null = null;
     private watthourspersquaremeterLazy: number | null = null;
+    private btuspersquarefootLazy: number | null = null;
     private kilojoulespersquaremeterLazy: number | null = null;
     private millijoulespersquarecentimeterLazy: number | null = null;
     private kilowatthourspersquaremeterLazy: number | null = null;
+    private kilobtuspersquarefootLazy: number | null = null;
 
     /**
      * Create a new Irradiation.
@@ -80,6 +86,14 @@ export class Irradiation {
     }
 
     /** */
+    public get BtusPerSquareFoot(): number {
+        if(this.btuspersquarefootLazy !== null){
+            return this.btuspersquarefootLazy;
+        }
+        return this.btuspersquarefootLazy = this.convertFromBase(IrradiationUnits.BtusPerSquareFoot);
+    }
+
+    /** */
     public get KilojoulesPerSquareMeter(): number {
         if(this.kilojoulespersquaremeterLazy !== null){
             return this.kilojoulespersquaremeterLazy;
@@ -101,6 +115,14 @@ export class Irradiation {
             return this.kilowatthourspersquaremeterLazy;
         }
         return this.kilowatthourspersquaremeterLazy = this.convertFromBase(IrradiationUnits.KilowattHoursPerSquareMeter);
+    }
+
+    /** */
+    public get KilobtusPerSquareFoot(): number {
+        if(this.kilobtuspersquarefootLazy !== null){
+            return this.kilobtuspersquarefootLazy;
+        }
+        return this.kilobtuspersquarefootLazy = this.convertFromBase(IrradiationUnits.KilobtusPerSquareFoot);
     }
 
     /**
@@ -144,6 +166,16 @@ export class Irradiation {
     }
 
     /**
+     * Create a new Irradiation instance from a BtusPerSquareFoot
+     *
+     * @param value The unit as BtusPerSquareFoot to create a new Irradiation from.
+     * @returns The new Irradiation instance.
+     */
+    public static FromBtusPerSquareFoot(value: number): Irradiation {
+        return new Irradiation(value, IrradiationUnits.BtusPerSquareFoot);
+    }
+
+    /**
      * Create a new Irradiation instance from a KilojoulesPerSquareMeter
      *
      * @param value The unit as KilojoulesPerSquareMeter to create a new Irradiation from.
@@ -174,6 +206,16 @@ export class Irradiation {
     }
 
     /**
+     * Create a new Irradiation instance from a KilobtusPerSquareFoot
+     *
+     * @param value The unit as KilobtusPerSquareFoot to create a new Irradiation from.
+     * @returns The new Irradiation instance.
+     */
+    public static FromKilobtusPerSquareFoot(value: number): Irradiation {
+        return new Irradiation(value, IrradiationUnits.KilobtusPerSquareFoot);
+    }
+
+    /**
      * Convert Irradiation to a specific unit value.
      * @param toUnit The specific unit to convert to
      * @returns The value of the specific unit provided.
@@ -184,9 +226,11 @@ export class Irradiation {
             case IrradiationUnits.JoulesPerSquareCentimeter: return this.JoulesPerSquareCentimeter;
             case IrradiationUnits.JoulesPerSquareMillimeter: return this.JoulesPerSquareMillimeter;
             case IrradiationUnits.WattHoursPerSquareMeter: return this.WattHoursPerSquareMeter;
+            case IrradiationUnits.BtusPerSquareFoot: return this.BtusPerSquareFoot;
             case IrradiationUnits.KilojoulesPerSquareMeter: return this.KilojoulesPerSquareMeter;
             case IrradiationUnits.MillijoulesPerSquareCentimeter: return this.MillijoulesPerSquareCentimeter;
             case IrradiationUnits.KilowattHoursPerSquareMeter: return this.KilowattHoursPerSquareMeter;
+            case IrradiationUnits.KilobtusPerSquareFoot: return this.KilobtusPerSquareFoot;
 
             default:
                 break;
@@ -205,12 +249,16 @@ export class Irradiation {
                 return this.value / 1e6;
             case IrradiationUnits.WattHoursPerSquareMeter:
                 return this.value / 3600;
+            case IrradiationUnits.BtusPerSquareFoot:
+                return this.value / (52752792631 / 4645152);
             case IrradiationUnits.KilojoulesPerSquareMeter:
                 return (this.value) / 1000;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
                 return (this.value / 1e4) / 0.001;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
                 return (this.value / 3600) / 1000;
+            case IrradiationUnits.KilobtusPerSquareFoot:
+                return (this.value / (52752792631 / 4645152)) / 1000;
             default:
                 break;
         }
@@ -228,12 +276,16 @@ export class Irradiation {
                 return value * 1e6;
             case IrradiationUnits.WattHoursPerSquareMeter:
                 return value * 3600;
+            case IrradiationUnits.BtusPerSquareFoot:
+                return value * (52752792631 / 4645152);
             case IrradiationUnits.KilojoulesPerSquareMeter:
                 return (value) * 1000;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
                 return (value * 1e4) * 0.001;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
                 return (value * 3600) * 1000;
+            case IrradiationUnits.KilobtusPerSquareFoot:
+                return (value * (52752792631 / 4645152)) * 1000;
             default:
                 break;
         }
@@ -259,12 +311,16 @@ export class Irradiation {
                 return this.JoulesPerSquareMillimeter + ` J/mm²`;
             case IrradiationUnits.WattHoursPerSquareMeter:
                 return this.WattHoursPerSquareMeter + ` Wh/m²`;
+            case IrradiationUnits.BtusPerSquareFoot:
+                return this.BtusPerSquareFoot + ` Btu/ft²`;
             case IrradiationUnits.KilojoulesPerSquareMeter:
                 return this.KilojoulesPerSquareMeter + ` kJ/m²`;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
                 return this.MillijoulesPerSquareCentimeter + ` mJ/cm²`;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
                 return this.KilowattHoursPerSquareMeter + ` kWh/m²`;
+            case IrradiationUnits.KilobtusPerSquareFoot:
+                return this.KilobtusPerSquareFoot + ` kBtu/ft²`;
         default:
             break;
         }
@@ -290,12 +346,16 @@ export class Irradiation {
                 return `J/mm²`;
             case IrradiationUnits.WattHoursPerSquareMeter:
                 return `Wh/m²`;
+            case IrradiationUnits.BtusPerSquareFoot:
+                return `Btu/ft²`;
             case IrradiationUnits.KilojoulesPerSquareMeter:
                 return `kJ/m²`;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
                 return `mJ/cm²`;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
                 return `kWh/m²`;
+            case IrradiationUnits.KilobtusPerSquareFoot:
+                return `kBtu/ft²`;
         default:
             break;
         }
