@@ -1,3 +1,9 @@
+/** API DTO represents a VolumeFlowPerArea */
+export interface VolumeFlowPerAreaDto {
+    value: number;
+    unit: VolumeFlowPerAreaUnits;
+}
+
 /** VolumeFlowPerAreaUnits enumeration */
 export enum VolumeFlowPerAreaUnits {
     /** */
@@ -66,6 +72,25 @@ export class VolumeFlowPerArea {
      */
     public static FromCubicFeetPerMinutePerSquareFoot(value: number): VolumeFlowPerArea {
         return new VolumeFlowPerArea(value, VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot);
+    }
+
+    /**
+     * Create API DTO represent a VolumeFlowPerArea unit.
+     * @param holdInUnit The specific VolumeFlowPerArea unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter): VolumeFlowPerAreaDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a VolumeFlowPerArea unit from an API DTO representation.
+     * @param dtoVolumeFlowPerArea The VolumeFlowPerArea API DTO representation
+     */
+    public static FromDto(dtoVolumeFlowPerArea: VolumeFlowPerAreaDto): VolumeFlowPerArea {
+        return new VolumeFlowPerArea(dtoVolumeFlowPerArea.value, dtoVolumeFlowPerArea.unit);
     }
 
     /**

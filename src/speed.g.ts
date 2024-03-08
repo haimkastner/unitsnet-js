@@ -1,3 +1,9 @@
+/** API DTO represents a Speed */
+export interface SpeedDto {
+    value: number;
+    unit: SpeedUnits;
+}
+
 /** SpeedUnits enumeration */
 export enum SpeedUnits {
     /** */
@@ -717,6 +723,25 @@ export class Speed {
      */
     public static FromKilometersPerHour(value: number): Speed {
         return new Speed(value, SpeedUnits.KilometersPerHour);
+    }
+
+    /**
+     * Create API DTO represent a Speed unit.
+     * @param holdInUnit The specific Speed unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: SpeedUnits = SpeedUnits.MetersPerSecond): SpeedDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Speed unit from an API DTO representation.
+     * @param dtoSpeed The Speed API DTO representation
+     */
+    public static FromDto(dtoSpeed: SpeedDto): Speed {
+        return new Speed(dtoSpeed.value, dtoSpeed.unit);
     }
 
     /**

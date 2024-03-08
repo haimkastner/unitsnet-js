@@ -1,3 +1,9 @@
+/** API DTO represents a TemperatureDelta */
+export interface TemperatureDeltaDto {
+    value: number;
+    unit: TemperatureDeltaUnits;
+}
+
 /** TemperatureDeltaUnits enumeration */
 export enum TemperatureDeltaUnits {
     /** */
@@ -213,6 +219,25 @@ export class TemperatureDelta {
      */
     public static FromMillidegreesCelsius(value: number): TemperatureDelta {
         return new TemperatureDelta(value, TemperatureDeltaUnits.MillidegreesCelsius);
+    }
+
+    /**
+     * Create API DTO represent a TemperatureDelta unit.
+     * @param holdInUnit The specific TemperatureDelta unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: TemperatureDeltaUnits = TemperatureDeltaUnits.Kelvins): TemperatureDeltaDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a TemperatureDelta unit from an API DTO representation.
+     * @param dtoTemperatureDelta The TemperatureDelta API DTO representation
+     */
+    public static FromDto(dtoTemperatureDelta: TemperatureDeltaDto): TemperatureDelta {
+        return new TemperatureDelta(dtoTemperatureDelta.value, dtoTemperatureDelta.unit);
     }
 
     /**

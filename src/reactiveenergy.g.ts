@@ -1,3 +1,9 @@
+/** API DTO represents a ReactiveEnergy */
+export interface ReactiveEnergyDto {
+    value: number;
+    unit: ReactiveEnergyUnits;
+}
+
 /** ReactiveEnergyUnits enumeration */
 export enum ReactiveEnergyUnits {
     /** */
@@ -87,6 +93,25 @@ export class ReactiveEnergy {
      */
     public static FromMegavoltampereReactiveHours(value: number): ReactiveEnergy {
         return new ReactiveEnergy(value, ReactiveEnergyUnits.MegavoltampereReactiveHours);
+    }
+
+    /**
+     * Create API DTO represent a ReactiveEnergy unit.
+     * @param holdInUnit The specific ReactiveEnergy unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours): ReactiveEnergyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ReactiveEnergy unit from an API DTO representation.
+     * @param dtoReactiveEnergy The ReactiveEnergy API DTO representation
+     */
+    public static FromDto(dtoReactiveEnergy: ReactiveEnergyDto): ReactiveEnergy {
+        return new ReactiveEnergy(dtoReactiveEnergy.value, dtoReactiveEnergy.unit);
     }
 
     /**

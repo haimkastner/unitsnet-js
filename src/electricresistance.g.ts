@@ -1,3 +1,9 @@
+/** API DTO represents a ElectricResistance */
+export interface ElectricResistanceDto {
+    value: number;
+    unit: ElectricResistanceUnits;
+}
+
 /** ElectricResistanceUnits enumeration */
 export enum ElectricResistanceUnits {
     /** */
@@ -171,6 +177,25 @@ export class ElectricResistance {
      */
     public static FromTeraohms(value: number): ElectricResistance {
         return new ElectricResistance(value, ElectricResistanceUnits.Teraohms);
+    }
+
+    /**
+     * Create API DTO represent a ElectricResistance unit.
+     * @param holdInUnit The specific ElectricResistance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricResistanceUnits = ElectricResistanceUnits.Ohms): ElectricResistanceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricResistance unit from an API DTO representation.
+     * @param dtoElectricResistance The ElectricResistance API DTO representation
+     */
+    public static FromDto(dtoElectricResistance: ElectricResistanceDto): ElectricResistance {
+        return new ElectricResistance(dtoElectricResistance.value, dtoElectricResistance.unit);
     }
 
     /**

@@ -1,3 +1,9 @@
+/** API DTO represents a Ratio */
+export interface RatioDto {
+    value: number;
+    unit: RatioUnits;
+}
+
 /** RatioUnits enumeration */
 export enum RatioUnits {
     /** */
@@ -150,6 +156,25 @@ export class Ratio {
      */
     public static FromPartsPerTrillion(value: number): Ratio {
         return new Ratio(value, RatioUnits.PartsPerTrillion);
+    }
+
+    /**
+     * Create API DTO represent a Ratio unit.
+     * @param holdInUnit The specific Ratio unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: RatioUnits = RatioUnits.DecimalFractions): RatioDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Ratio unit from an API DTO representation.
+     * @param dtoRatio The Ratio API DTO representation
+     */
+    public static FromDto(dtoRatio: RatioDto): Ratio {
+        return new Ratio(dtoRatio.value, dtoRatio.unit);
     }
 
     /**

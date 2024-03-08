@@ -1,3 +1,9 @@
+/** API DTO represents a Impulse */
+export interface ImpulseDto {
+    value: number;
+    unit: ImpulseUnits;
+}
+
 /** ImpulseUnits enumeration */
 export enum ImpulseUnits {
     /** */
@@ -297,6 +303,25 @@ export class Impulse {
      */
     public static FromMeganewtonSeconds(value: number): Impulse {
         return new Impulse(value, ImpulseUnits.MeganewtonSeconds);
+    }
+
+    /**
+     * Create API DTO represent a Impulse unit.
+     * @param holdInUnit The specific Impulse unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ImpulseUnits = ImpulseUnits.NewtonSeconds): ImpulseDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Impulse unit from an API DTO representation.
+     * @param dtoImpulse The Impulse API DTO representation
+     */
+    public static FromDto(dtoImpulse: ImpulseDto): Impulse {
+        return new Impulse(dtoImpulse.value, dtoImpulse.unit);
     }
 
     /**

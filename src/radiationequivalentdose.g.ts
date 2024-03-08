@@ -1,3 +1,9 @@
+/** API DTO represents a RadiationEquivalentDose */
+export interface RadiationEquivalentDoseDto {
+    value: number;
+    unit: RadiationEquivalentDoseUnits;
+}
+
 /** RadiationEquivalentDoseUnits enumeration */
 export enum RadiationEquivalentDoseUnits {
     /** The sievert is a unit in the International System of Units (SI) intended to represent the stochastic health risk of ionizing radiation, which is defined as the probability of causing radiation-induced cancer and genetic damage. */
@@ -150,6 +156,25 @@ export class RadiationEquivalentDose {
      */
     public static FromMilliroentgensEquivalentMan(value: number): RadiationEquivalentDose {
         return new RadiationEquivalentDose(value, RadiationEquivalentDoseUnits.MilliroentgensEquivalentMan);
+    }
+
+    /**
+     * Create API DTO represent a RadiationEquivalentDose unit.
+     * @param holdInUnit The specific RadiationEquivalentDose unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: RadiationEquivalentDoseUnits = RadiationEquivalentDoseUnits.Sieverts): RadiationEquivalentDoseDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a RadiationEquivalentDose unit from an API DTO representation.
+     * @param dtoRadiationEquivalentDose The RadiationEquivalentDose API DTO representation
+     */
+    public static FromDto(dtoRadiationEquivalentDose: RadiationEquivalentDoseDto): RadiationEquivalentDose {
+        return new RadiationEquivalentDose(dtoRadiationEquivalentDose.value, dtoRadiationEquivalentDose.unit);
     }
 
     /**

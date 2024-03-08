@@ -1,3 +1,9 @@
+/** API DTO represents a AbsorbedDoseOfIonizingRadiation */
+export interface AbsorbedDoseOfIonizingRadiationDto {
+    value: number;
+    unit: AbsorbedDoseOfIonizingRadiationUnits;
+}
+
 /** AbsorbedDoseOfIonizingRadiationUnits enumeration */
 export enum AbsorbedDoseOfIonizingRadiationUnits {
     /** The gray is the unit of ionizing radiation dose in the SI, defined as the absorption of one joule of radiation energy per kilogram of matter. */
@@ -360,6 +366,25 @@ export class AbsorbedDoseOfIonizingRadiation {
      */
     public static FromMegarads(value: number): AbsorbedDoseOfIonizingRadiation {
         return new AbsorbedDoseOfIonizingRadiation(value, AbsorbedDoseOfIonizingRadiationUnits.Megarads);
+    }
+
+    /**
+     * Create API DTO represent a AbsorbedDoseOfIonizingRadiation unit.
+     * @param holdInUnit The specific AbsorbedDoseOfIonizingRadiation unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: AbsorbedDoseOfIonizingRadiationUnits = AbsorbedDoseOfIonizingRadiationUnits.Grays): AbsorbedDoseOfIonizingRadiationDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a AbsorbedDoseOfIonizingRadiation unit from an API DTO representation.
+     * @param dtoAbsorbedDoseOfIonizingRadiation The AbsorbedDoseOfIonizingRadiation API DTO representation
+     */
+    public static FromDto(dtoAbsorbedDoseOfIonizingRadiation: AbsorbedDoseOfIonizingRadiationDto): AbsorbedDoseOfIonizingRadiation {
+        return new AbsorbedDoseOfIonizingRadiation(dtoAbsorbedDoseOfIonizingRadiation.value, dtoAbsorbedDoseOfIonizingRadiation.unit);
     }
 
     /**

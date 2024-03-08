@@ -1,3 +1,9 @@
+/** API DTO represents a KinematicViscosity */
+export interface KinematicViscosityDto {
+    value: number;
+    unit: KinematicViscosityUnits;
+}
+
 /** KinematicViscosityUnits enumeration */
 export enum KinematicViscosityUnits {
     /** */
@@ -213,6 +219,25 @@ export class KinematicViscosity {
      */
     public static FromKilostokes(value: number): KinematicViscosity {
         return new KinematicViscosity(value, KinematicViscosityUnits.Kilostokes);
+    }
+
+    /**
+     * Create API DTO represent a KinematicViscosity unit.
+     * @param holdInUnit The specific KinematicViscosity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond): KinematicViscosityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a KinematicViscosity unit from an API DTO representation.
+     * @param dtoKinematicViscosity The KinematicViscosity API DTO representation
+     */
+    public static FromDto(dtoKinematicViscosity: KinematicViscosityDto): KinematicViscosity {
+        return new KinematicViscosity(dtoKinematicViscosity.value, dtoKinematicViscosity.unit);
     }
 
     /**

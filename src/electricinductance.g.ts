@@ -1,3 +1,9 @@
+/** API DTO represents a ElectricInductance */
+export interface ElectricInductanceDto {
+    value: number;
+    unit: ElectricInductanceUnits;
+}
+
 /** ElectricInductanceUnits enumeration */
 export enum ElectricInductanceUnits {
     /** */
@@ -129,6 +135,25 @@ export class ElectricInductance {
      */
     public static FromMillihenries(value: number): ElectricInductance {
         return new ElectricInductance(value, ElectricInductanceUnits.Millihenries);
+    }
+
+    /**
+     * Create API DTO represent a ElectricInductance unit.
+     * @param holdInUnit The specific ElectricInductance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricInductanceUnits = ElectricInductanceUnits.Henries): ElectricInductanceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricInductance unit from an API DTO representation.
+     * @param dtoElectricInductance The ElectricInductance API DTO representation
+     */
+    public static FromDto(dtoElectricInductance: ElectricInductanceDto): ElectricInductance {
+        return new ElectricInductance(dtoElectricInductance.value, dtoElectricInductance.unit);
     }
 
     /**

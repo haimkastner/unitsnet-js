@@ -1,3 +1,9 @@
+/** API DTO represents a Pressure */
+export interface PressureDto {
+    value: number;
+    unit: PressureUnits;
+}
+
 /** PressureUnits enumeration */
 export enum PressureUnits {
     /** */
@@ -1053,6 +1059,25 @@ export class Pressure {
      */
     public static FromCentimetersOfWaterColumn(value: number): Pressure {
         return new Pressure(value, PressureUnits.CentimetersOfWaterColumn);
+    }
+
+    /**
+     * Create API DTO represent a Pressure unit.
+     * @param holdInUnit The specific Pressure unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: PressureUnits = PressureUnits.Pascals): PressureDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Pressure unit from an API DTO representation.
+     * @param dtoPressure The Pressure API DTO representation
+     */
+    public static FromDto(dtoPressure: PressureDto): Pressure {
+        return new Pressure(dtoPressure.value, dtoPressure.unit);
     }
 
     /**

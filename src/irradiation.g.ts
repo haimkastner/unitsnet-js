@@ -1,3 +1,9 @@
+/** API DTO represents a Irradiation */
+export interface IrradiationDto {
+    value: number;
+    unit: IrradiationUnits;
+}
+
 /** IrradiationUnits enumeration */
 export enum IrradiationUnits {
     /** */
@@ -213,6 +219,25 @@ export class Irradiation {
      */
     public static FromKilobtusPerSquareFoot(value: number): Irradiation {
         return new Irradiation(value, IrradiationUnits.KilobtusPerSquareFoot);
+    }
+
+    /**
+     * Create API DTO represent a Irradiation unit.
+     * @param holdInUnit The specific Irradiation unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter): IrradiationDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Irradiation unit from an API DTO representation.
+     * @param dtoIrradiation The Irradiation API DTO representation
+     */
+    public static FromDto(dtoIrradiation: IrradiationDto): Irradiation {
+        return new Irradiation(dtoIrradiation.value, dtoIrradiation.unit);
     }
 
     /**

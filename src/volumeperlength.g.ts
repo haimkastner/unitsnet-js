@@ -1,3 +1,9 @@
+/** API DTO represents a VolumePerLength */
+export interface VolumePerLengthDto {
+    value: number;
+    unit: VolumePerLengthUnits;
+}
+
 /** VolumePerLengthUnits enumeration */
 export enum VolumePerLengthUnits {
     /** */
@@ -213,6 +219,25 @@ export class VolumePerLength {
      */
     public static FromImperialGallonsPerMile(value: number): VolumePerLength {
         return new VolumePerLength(value, VolumePerLengthUnits.ImperialGallonsPerMile);
+    }
+
+    /**
+     * Create API DTO represent a VolumePerLength unit.
+     * @param holdInUnit The specific VolumePerLength unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter): VolumePerLengthDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a VolumePerLength unit from an API DTO representation.
+     * @param dtoVolumePerLength The VolumePerLength API DTO representation
+     */
+    public static FromDto(dtoVolumePerLength: VolumePerLengthDto): VolumePerLength {
+        return new VolumePerLength(dtoVolumePerLength.value, dtoVolumePerLength.unit);
     }
 
     /**

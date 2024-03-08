@@ -1,3 +1,9 @@
+/** API DTO represents a LeakRate */
+export interface LeakRateDto {
+    value: number;
+    unit: LeakRateUnits;
+}
+
 /** LeakRateUnits enumeration */
 export enum LeakRateUnits {
     /** */
@@ -87,6 +93,25 @@ export class LeakRate {
      */
     public static FromTorrLitersPerSecond(value: number): LeakRate {
         return new LeakRate(value, LeakRateUnits.TorrLitersPerSecond);
+    }
+
+    /**
+     * Create API DTO represent a LeakRate unit.
+     * @param holdInUnit The specific LeakRate unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LeakRateUnits = LeakRateUnits.PascalCubicMetersPerSecond): LeakRateDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a LeakRate unit from an API DTO representation.
+     * @param dtoLeakRate The LeakRate API DTO representation
+     */
+    public static FromDto(dtoLeakRate: LeakRateDto): LeakRate {
+        return new LeakRate(dtoLeakRate.value, dtoLeakRate.unit);
     }
 
     /**

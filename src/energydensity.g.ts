@@ -1,3 +1,9 @@
+/** API DTO represents a EnergyDensity */
+export interface EnergyDensityDto {
+    value: number;
+    unit: EnergyDensityUnits;
+}
+
 /** EnergyDensityUnits enumeration */
 export enum EnergyDensityUnits {
     /** */
@@ -276,6 +282,25 @@ export class EnergyDensity {
      */
     public static FromPetawattHoursPerCubicMeter(value: number): EnergyDensity {
         return new EnergyDensity(value, EnergyDensityUnits.PetawattHoursPerCubicMeter);
+    }
+
+    /**
+     * Create API DTO represent a EnergyDensity unit.
+     * @param holdInUnit The specific EnergyDensity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: EnergyDensityUnits = EnergyDensityUnits.JoulesPerCubicMeter): EnergyDensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a EnergyDensity unit from an API DTO representation.
+     * @param dtoEnergyDensity The EnergyDensity API DTO representation
+     */
+    public static FromDto(dtoEnergyDensity: EnergyDensityDto): EnergyDensity {
+        return new EnergyDensity(dtoEnergyDensity.value, dtoEnergyDensity.unit);
     }
 
     /**

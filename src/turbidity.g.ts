@@ -1,3 +1,9 @@
+/** API DTO represents a Turbidity */
+export interface TurbidityDto {
+    value: number;
+    unit: TurbidityUnits;
+}
+
 /** TurbidityUnits enumeration */
 export enum TurbidityUnits {
     /** */
@@ -45,6 +51,25 @@ export class Turbidity {
      */
     public static FromNTU(value: number): Turbidity {
         return new Turbidity(value, TurbidityUnits.NTU);
+    }
+
+    /**
+     * Create API DTO represent a Turbidity unit.
+     * @param holdInUnit The specific Turbidity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: TurbidityUnits = TurbidityUnits.NTU): TurbidityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Turbidity unit from an API DTO representation.
+     * @param dtoTurbidity The Turbidity API DTO representation
+     */
+    public static FromDto(dtoTurbidity: TurbidityDto): Turbidity {
+        return new Turbidity(dtoTurbidity.value, dtoTurbidity.unit);
     }
 
     /**

@@ -1,3 +1,9 @@
+/** API DTO represents a StandardVolumeFlow */
+export interface StandardVolumeFlowDto {
+    value: number;
+    unit: StandardVolumeFlowUnits;
+}
+
 /** StandardVolumeFlowUnits enumeration */
 export enum StandardVolumeFlowUnits {
     /** */
@@ -213,6 +219,25 @@ export class StandardVolumeFlow {
      */
     public static FromStandardCubicFeetPerHour(value: number): StandardVolumeFlow {
         return new StandardVolumeFlow(value, StandardVolumeFlowUnits.StandardCubicFeetPerHour);
+    }
+
+    /**
+     * Create API DTO represent a StandardVolumeFlow unit.
+     * @param holdInUnit The specific StandardVolumeFlow unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: StandardVolumeFlowUnits = StandardVolumeFlowUnits.StandardCubicMetersPerSecond): StandardVolumeFlowDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a StandardVolumeFlow unit from an API DTO representation.
+     * @param dtoStandardVolumeFlow The StandardVolumeFlow API DTO representation
+     */
+    public static FromDto(dtoStandardVolumeFlow: StandardVolumeFlowDto): StandardVolumeFlow {
+        return new StandardVolumeFlow(dtoStandardVolumeFlow.value, dtoStandardVolumeFlow.unit);
     }
 
     /**

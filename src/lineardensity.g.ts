@@ -1,3 +1,9 @@
+/** API DTO represents a LinearDensity */
+export interface LinearDensityDto {
+    value: number;
+    unit: LinearDensityUnits;
+}
+
 /** LinearDensityUnits enumeration */
 export enum LinearDensityUnits {
     /** */
@@ -318,6 +324,25 @@ export class LinearDensity {
      */
     public static FromKilogramsPerMeter(value: number): LinearDensity {
         return new LinearDensity(value, LinearDensityUnits.KilogramsPerMeter);
+    }
+
+    /**
+     * Create API DTO represent a LinearDensity unit.
+     * @param holdInUnit The specific LinearDensity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LinearDensityUnits = LinearDensityUnits.KilogramsPerMeter): LinearDensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a LinearDensity unit from an API DTO representation.
+     * @param dtoLinearDensity The LinearDensity API DTO representation
+     */
+    public static FromDto(dtoLinearDensity: LinearDensityDto): LinearDensity {
+        return new LinearDensity(dtoLinearDensity.value, dtoLinearDensity.unit);
     }
 
     /**

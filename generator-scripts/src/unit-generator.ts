@@ -9,7 +9,8 @@ import {
     ConstructorDeclarationStructure,
     MethodDeclarationStructure,
     EnumMemberStructure,
-    JSDocStructure
+    JSDocStructure,
+    InterfaceDeclarationStructure
 } from "ts-morph";
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
 import { pascalToCamelCase } from "./utiles";
@@ -42,6 +43,28 @@ function buildEnum(enumName: string, units: UnitProperties[]): EnumDeclarationSt
         })),
         isExported: true,
         docs: [`${enumName} enumeration`]
+    }
+}
+
+/**
+ * Build the unit DTO.
+ */
+function buildDto(Unit: UnitGenerateOptions, enumName: string): InterfaceDeclarationStructure {
+    return {
+        kind: StructureKind.Interface,
+        name: `${Unit.unitName}Dto`,
+        properties: [
+            {
+                name: 'value',
+                type: 'number'
+            },
+            {
+                name: 'unit',
+                type: enumName
+            }
+        ],
+        isExported: true,
+        docs: [`API DTO represents a ${Unit.unitName}`]
     }
 }
 
@@ -200,6 +223,67 @@ ${units.map(u => `    case ${enumName}.${u.pluralName}: return this.${u.pluralNa
         break;
 }
 return NaN;`
+    };
+}
+
+function buildConvertToDto(unitName: string, enumName: string, baseUnit: UnitProperties): MethodDeclarationStructure {
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: `Create API DTO represent a ${unitName} unit.`,
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `holdInUnit The specific ${unitName} unit to be used in the unit representation at the DTO`
+        }]
+    };
+
+    return {
+        kind: StructureKind.Method,
+        name: 'toDto',
+        scope: Scope.Public,
+        parameters: [
+            {
+                name: 'holdInUnit',
+                type: enumName,
+                initializer: `${enumName}.${baseUnit.pluralName}`
+            }
+        ],
+        docs: [docs],
+        returnType: `${unitName}Dto`,
+        statements:
+            `return {
+    value: this.convert(holdInUnit),
+    unit: holdInUnit
+};`
+    };
+}
+
+function buildConvertFromDto(unitName: string): MethodDeclarationStructure {
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: `Create a ${unitName} unit from an API DTO representation.`,
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `dto${unitName} The ${unitName} API DTO representation`
+        }]
+    };
+
+    return {
+        kind: StructureKind.Method,
+        name: 'FromDto',
+        scope: Scope.Public,
+        isStatic: true,
+        parameters: [
+            {
+                name: `dto${unitName}`,
+                type: `${unitName}Dto`
+            }
+        ],
+        docs: [docs],
+        returnType: unitName,
+        statements:
+            `return new ${unitName}(dto${unitName}.value, dto${unitName}.unit);`
     };
 }
 
@@ -587,6 +671,9 @@ export function generateUnitClass(project: Project,
     // Build the enum structure
     const unitsEnum = buildEnum(enumName, units);
 
+    // Build the DTO interface
+    const dtoInterface = buildDto(unitProperties, enumName);
+
     // Build the base value variable
     const valueMember: PropertyDeclarationStructure = {
         kind: StructureKind.Property,
@@ -614,6 +701,11 @@ export function generateUnitClass(project: Project,
     // Build the constructor
     const unitCtor = buildUnitCtor(unitName, enumName, baseUnit.pluralName);
 
+    // The DTO converters
+    const convertToDtoMethod = buildConvertToDto(unitName, enumName, baseUnit)
+    const convertFromDtoMethod = buildConvertFromDto(unitName)
+
+    
     // Build the static creator methods  
     const unitCreators = buildUnitCreatorsMethods(unitName, enumName, units);
 
@@ -650,6 +742,8 @@ export function generateUnitClass(project: Project,
         ctors: [unitCtor],
         methods: [
             ...unitCreators,
+            convertToDtoMethod,
+            convertFromDtoMethod,
             convertToUnitMethod,
             convertFromBaseMethod,
             convertToBaseMethod,
@@ -664,7 +758,7 @@ export function generateUnitClass(project: Project,
 
     // Build the unit file with the unit enum and class
     const sourceFile = project.createSourceFile(`${unitsDestinationDirectory}/${unitProperties.unitName.toLowerCase()}.g.ts`, {
-        statements: [unitsEnum, unitClass]
+        statements: [dtoInterface, unitsEnum, unitClass]
     }, {
         overwrite: true
     });

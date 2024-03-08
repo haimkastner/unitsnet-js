@@ -1,3 +1,9 @@
+/** API DTO represents a Length */
+export interface LengthDto {
+    value: number;
+    unit: LengthUnits;
+}
+
 /** LengthUnits enumeration */
 export enum LengthUnits {
     /** */
@@ -906,6 +912,25 @@ export class Length {
      */
     public static FromMegalightYears(value: number): Length {
         return new Length(value, LengthUnits.MegalightYears);
+    }
+
+    /**
+     * Create API DTO represent a Length unit.
+     * @param holdInUnit The specific Length unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LengthUnits = LengthUnits.Meters): LengthDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Length unit from an API DTO representation.
+     * @param dtoLength The Length API DTO representation
+     */
+    public static FromDto(dtoLength: LengthDto): Length {
+        return new Length(dtoLength.value, dtoLength.unit);
     }
 
     /**

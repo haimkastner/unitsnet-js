@@ -1,3 +1,9 @@
+/** API DTO represents a MagneticFlux */
+export interface MagneticFluxDto {
+    value: number;
+    unit: MagneticFluxUnits;
+}
+
 /** MagneticFluxUnits enumeration */
 export enum MagneticFluxUnits {
     /** */
@@ -45,6 +51,25 @@ export class MagneticFlux {
      */
     public static FromWebers(value: number): MagneticFlux {
         return new MagneticFlux(value, MagneticFluxUnits.Webers);
+    }
+
+    /**
+     * Create API DTO represent a MagneticFlux unit.
+     * @param holdInUnit The specific MagneticFlux unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MagneticFluxUnits = MagneticFluxUnits.Webers): MagneticFluxDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MagneticFlux unit from an API DTO representation.
+     * @param dtoMagneticFlux The MagneticFlux API DTO representation
+     */
+    public static FromDto(dtoMagneticFlux: MagneticFluxDto): MagneticFlux {
+        return new MagneticFlux(dtoMagneticFlux.value, dtoMagneticFlux.unit);
     }
 
     /**

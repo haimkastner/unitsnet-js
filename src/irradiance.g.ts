@@ -1,3 +1,9 @@
+/** API DTO represents a Irradiance */
+export interface IrradianceDto {
+    value: number;
+    unit: IrradianceUnits;
+}
+
 /** IrradianceUnits enumeration */
 export enum IrradianceUnits {
     /** */
@@ -318,6 +324,25 @@ export class Irradiance {
      */
     public static FromMegawattsPerSquareCentimeter(value: number): Irradiance {
         return new Irradiance(value, IrradianceUnits.MegawattsPerSquareCentimeter);
+    }
+
+    /**
+     * Create API DTO represent a Irradiance unit.
+     * @param holdInUnit The specific Irradiance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter): IrradianceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Irradiance unit from an API DTO representation.
+     * @param dtoIrradiance The Irradiance API DTO representation
+     */
+    public static FromDto(dtoIrradiance: IrradianceDto): Irradiance {
+        return new Irradiance(dtoIrradiance.value, dtoIrradiance.unit);
     }
 
     /**

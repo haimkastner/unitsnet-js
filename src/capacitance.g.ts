@@ -1,3 +1,9 @@
+/** API DTO represents a Capacitance */
+export interface CapacitanceDto {
+    value: number;
+    unit: CapacitanceUnits;
+}
+
 /** CapacitanceUnits enumeration */
 export enum CapacitanceUnits {
     /** */
@@ -171,6 +177,25 @@ export class Capacitance {
      */
     public static FromMegafarads(value: number): Capacitance {
         return new Capacitance(value, CapacitanceUnits.Megafarads);
+    }
+
+    /**
+     * Create API DTO represent a Capacitance unit.
+     * @param holdInUnit The specific Capacitance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: CapacitanceUnits = CapacitanceUnits.Farads): CapacitanceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Capacitance unit from an API DTO representation.
+     * @param dtoCapacitance The Capacitance API DTO representation
+     */
+    public static FromDto(dtoCapacitance: CapacitanceDto): Capacitance {
+        return new Capacitance(dtoCapacitance.value, dtoCapacitance.unit);
     }
 
     /**

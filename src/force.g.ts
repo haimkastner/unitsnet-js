@@ -1,3 +1,9 @@
+/** API DTO represents a Force */
+export interface ForceDto {
+    value: number;
+    unit: ForceUnits;
+}
+
 /** ForceUnits enumeration */
 export enum ForceUnits {
     /** One dyne is equal to 10 micronewtons, 10e−5 N or to 10 nsn (nanosthenes) in the old metre–tonne–second system of units. */
@@ -339,6 +345,25 @@ export class Force {
      */
     public static FromKilopoundsForce(value: number): Force {
         return new Force(value, ForceUnits.KilopoundsForce);
+    }
+
+    /**
+     * Create API DTO represent a Force unit.
+     * @param holdInUnit The specific Force unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ForceUnits = ForceUnits.Newtons): ForceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Force unit from an API DTO representation.
+     * @param dtoForce The Force API DTO representation
+     */
+    public static FromDto(dtoForce: ForceDto): Force {
+        return new Force(dtoForce.value, dtoForce.unit);
     }
 
     /**

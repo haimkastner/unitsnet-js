@@ -1,3 +1,9 @@
+/** API DTO represents a Energy */
+export interface EnergyDto {
+    value: number;
+    unit: EnergyUnits;
+}
+
 /** EnergyUnits enumeration */
 export enum EnergyUnits {
     /** */
@@ -864,6 +870,25 @@ export class Energy {
      */
     public static FromDecathermsImperial(value: number): Energy {
         return new Energy(value, EnergyUnits.DecathermsImperial);
+    }
+
+    /**
+     * Create API DTO represent a Energy unit.
+     * @param holdInUnit The specific Energy unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: EnergyUnits = EnergyUnits.Joules): EnergyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Energy unit from an API DTO representation.
+     * @param dtoEnergy The Energy API DTO representation
+     */
+    public static FromDto(dtoEnergy: EnergyDto): Energy {
+        return new Energy(dtoEnergy.value, dtoEnergy.unit);
     }
 
     /**

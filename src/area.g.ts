@@ -1,3 +1,9 @@
+/** API DTO represents a Area */
+export interface AreaDto {
+    value: number;
+    unit: AreaUnits;
+}
+
 /** AreaUnits enumeration */
 export enum AreaUnits {
     /** */
@@ -318,6 +324,25 @@ export class Area {
      */
     public static FromSquareNauticalMiles(value: number): Area {
         return new Area(value, AreaUnits.SquareNauticalMiles);
+    }
+
+    /**
+     * Create API DTO represent a Area unit.
+     * @param holdInUnit The specific Area unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: AreaUnits = AreaUnits.SquareMeters): AreaDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Area unit from an API DTO representation.
+     * @param dtoArea The Area API DTO representation
+     */
+    public static FromDto(dtoArea: AreaDto): Area {
+        return new Area(dtoArea.value, dtoArea.unit);
     }
 
     /**

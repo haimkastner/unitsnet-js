@@ -1,3 +1,9 @@
+/** API DTO represents a Power */
+export interface PowerDto {
+    value: number;
+    unit: PowerUnits;
+}
+
 /** PowerUnits enumeration */
 export enum PowerUnits {
     /** */
@@ -570,6 +576,25 @@ export class Power {
      */
     public static FromGigajoulesPerHour(value: number): Power {
         return new Power(value, PowerUnits.GigajoulesPerHour);
+    }
+
+    /**
+     * Create API DTO represent a Power unit.
+     * @param holdInUnit The specific Power unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: PowerUnits = PowerUnits.Watts): PowerDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Power unit from an API DTO representation.
+     * @param dtoPower The Power API DTO representation
+     */
+    public static FromDto(dtoPower: PowerDto): Power {
+        return new Power(dtoPower.value, dtoPower.unit);
     }
 
     /**

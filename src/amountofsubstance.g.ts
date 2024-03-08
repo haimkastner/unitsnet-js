@@ -1,3 +1,9 @@
+/** API DTO represents a AmountOfSubstance */
+export interface AmountOfSubstanceDto {
+    value: number;
+    unit: AmountOfSubstanceUnits;
+}
+
 /** AmountOfSubstanceUnits enumeration */
 export enum AmountOfSubstanceUnits {
     /** */
@@ -381,6 +387,25 @@ export class AmountOfSubstance {
      */
     public static FromKilopoundMoles(value: number): AmountOfSubstance {
         return new AmountOfSubstance(value, AmountOfSubstanceUnits.KilopoundMoles);
+    }
+
+    /**
+     * Create API DTO represent a AmountOfSubstance unit.
+     * @param holdInUnit The specific AmountOfSubstance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles): AmountOfSubstanceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a AmountOfSubstance unit from an API DTO representation.
+     * @param dtoAmountOfSubstance The AmountOfSubstance API DTO representation
+     */
+    public static FromDto(dtoAmountOfSubstance: AmountOfSubstanceDto): AmountOfSubstance {
+        return new AmountOfSubstance(dtoAmountOfSubstance.value, dtoAmountOfSubstance.unit);
     }
 
     /**

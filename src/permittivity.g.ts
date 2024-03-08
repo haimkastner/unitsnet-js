@@ -1,3 +1,9 @@
+/** API DTO represents a Permittivity */
+export interface PermittivityDto {
+    value: number;
+    unit: PermittivityUnits;
+}
+
 /** PermittivityUnits enumeration */
 export enum PermittivityUnits {
     /** */
@@ -45,6 +51,25 @@ export class Permittivity {
      */
     public static FromFaradsPerMeter(value: number): Permittivity {
         return new Permittivity(value, PermittivityUnits.FaradsPerMeter);
+    }
+
+    /**
+     * Create API DTO represent a Permittivity unit.
+     * @param holdInUnit The specific Permittivity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: PermittivityUnits = PermittivityUnits.FaradsPerMeter): PermittivityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Permittivity unit from an API DTO representation.
+     * @param dtoPermittivity The Permittivity API DTO representation
+     */
+    public static FromDto(dtoPermittivity: PermittivityDto): Permittivity {
+        return new Permittivity(dtoPermittivity.value, dtoPermittivity.unit);
     }
 
     /**

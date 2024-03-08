@@ -1,3 +1,9 @@
+/** API DTO represents a Radioactivity */
+export interface RadioactivityDto {
+    value: number;
+    unit: RadioactivityUnits;
+}
+
 /** RadioactivityUnits enumeration */
 export enum RadioactivityUnits {
     /** Activity of a quantity of radioactive material in which one nucleus decays per second. */
@@ -633,6 +639,25 @@ export class Radioactivity {
      */
     public static FromTerarutherfords(value: number): Radioactivity {
         return new Radioactivity(value, RadioactivityUnits.Terarutherfords);
+    }
+
+    /**
+     * Create API DTO represent a Radioactivity unit.
+     * @param holdInUnit The specific Radioactivity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: RadioactivityUnits = RadioactivityUnits.Becquerels): RadioactivityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Radioactivity unit from an API DTO representation.
+     * @param dtoRadioactivity The Radioactivity API DTO representation
+     */
+    public static FromDto(dtoRadioactivity: RadioactivityDto): Radioactivity {
+        return new Radioactivity(dtoRadioactivity.value, dtoRadioactivity.unit);
     }
 
     /**

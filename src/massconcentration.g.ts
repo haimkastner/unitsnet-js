@@ -1,3 +1,9 @@
+/** API DTO represents a MassConcentration */
+export interface MassConcentrationDto {
+    value: number;
+    unit: MassConcentrationUnits;
+}
+
 /** MassConcentrationUnits enumeration */
 export enum MassConcentrationUnits {
     /** */
@@ -1053,6 +1059,25 @@ export class MassConcentration {
      */
     public static FromKilopoundsPerCubicFoot(value: number): MassConcentration {
         return new MassConcentration(value, MassConcentrationUnits.KilopoundsPerCubicFoot);
+    }
+
+    /**
+     * Create API DTO represent a MassConcentration unit.
+     * @param holdInUnit The specific MassConcentration unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MassConcentrationUnits = MassConcentrationUnits.KilogramsPerCubicMeter): MassConcentrationDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MassConcentration unit from an API DTO representation.
+     * @param dtoMassConcentration The MassConcentration API DTO representation
+     */
+    public static FromDto(dtoMassConcentration: MassConcentrationDto): MassConcentration {
+        return new MassConcentration(dtoMassConcentration.value, dtoMassConcentration.unit);
     }
 
     /**

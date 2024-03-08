@@ -1,3 +1,9 @@
+/** API DTO represents a PowerRatio */
+export interface PowerRatioDto {
+    value: number;
+    unit: PowerRatioUnits;
+}
+
 /** PowerRatioUnits enumeration */
 export enum PowerRatioUnits {
     /** */
@@ -66,6 +72,25 @@ export class PowerRatio {
      */
     public static FromDecibelMilliwatts(value: number): PowerRatio {
         return new PowerRatio(value, PowerRatioUnits.DecibelMilliwatts);
+    }
+
+    /**
+     * Create API DTO represent a PowerRatio unit.
+     * @param holdInUnit The specific PowerRatio unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: PowerRatioUnits = PowerRatioUnits.DecibelWatts): PowerRatioDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a PowerRatio unit from an API DTO representation.
+     * @param dtoPowerRatio The PowerRatio API DTO representation
+     */
+    public static FromDto(dtoPowerRatio: PowerRatioDto): PowerRatio {
+        return new PowerRatio(dtoPowerRatio.value, dtoPowerRatio.unit);
     }
 
     /**

@@ -1,3 +1,9 @@
+/** API DTO represents a Luminance */
+export interface LuminanceDto {
+    value: number;
+    unit: LuminanceUnits;
+}
+
 /** LuminanceUnits enumeration */
 export enum LuminanceUnits {
     /** */
@@ -234,6 +240,25 @@ export class Luminance {
      */
     public static FromKilocandelasPerSquareMeter(value: number): Luminance {
         return new Luminance(value, LuminanceUnits.KilocandelasPerSquareMeter);
+    }
+
+    /**
+     * Create API DTO represent a Luminance unit.
+     * @param holdInUnit The specific Luminance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LuminanceUnits = LuminanceUnits.CandelasPerSquareMeter): LuminanceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Luminance unit from an API DTO representation.
+     * @param dtoLuminance The Luminance API DTO representation
+     */
+    public static FromDto(dtoLuminance: LuminanceDto): Luminance {
+        return new Luminance(dtoLuminance.value, dtoLuminance.unit);
     }
 
     /**

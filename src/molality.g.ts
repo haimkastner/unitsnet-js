@@ -1,3 +1,9 @@
+/** API DTO represents a Molality */
+export interface MolalityDto {
+    value: number;
+    unit: MolalityUnits;
+}
+
 /** MolalityUnits enumeration */
 export enum MolalityUnits {
     /** */
@@ -66,6 +72,25 @@ export class Molality {
      */
     public static FromMolesPerGram(value: number): Molality {
         return new Molality(value, MolalityUnits.MolesPerGram);
+    }
+
+    /**
+     * Create API DTO represent a Molality unit.
+     * @param holdInUnit The specific Molality unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MolalityUnits = MolalityUnits.MolesPerKilogram): MolalityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Molality unit from an API DTO representation.
+     * @param dtoMolality The Molality API DTO representation
+     */
+    public static FromDto(dtoMolality: MolalityDto): Molality {
+        return new Molality(dtoMolality.value, dtoMolality.unit);
     }
 
     /**

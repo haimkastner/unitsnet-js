@@ -1,3 +1,9 @@
+/** API DTO represents a DynamicViscosity */
+export interface DynamicViscosityDto {
+    value: number;
+    unit: DynamicViscosityUnits;
+}
+
 /** DynamicViscosityUnits enumeration */
 export enum DynamicViscosityUnits {
     /** */
@@ -234,6 +240,25 @@ export class DynamicViscosity {
      */
     public static FromCentipoise(value: number): DynamicViscosity {
         return new DynamicViscosity(value, DynamicViscosityUnits.Centipoise);
+    }
+
+    /**
+     * Create API DTO represent a DynamicViscosity unit.
+     * @param holdInUnit The specific DynamicViscosity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared): DynamicViscosityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a DynamicViscosity unit from an API DTO representation.
+     * @param dtoDynamicViscosity The DynamicViscosity API DTO representation
+     */
+    public static FromDto(dtoDynamicViscosity: DynamicViscosityDto): DynamicViscosity {
+        return new DynamicViscosity(dtoDynamicViscosity.value, dtoDynamicViscosity.unit);
     }
 
     /**

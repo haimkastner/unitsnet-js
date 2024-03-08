@@ -1,3 +1,9 @@
+/** API DTO represents a ElectricChargeDensity */
+export interface ElectricChargeDensityDto {
+    value: number;
+    unit: ElectricChargeDensityUnits;
+}
+
 /** ElectricChargeDensityUnits enumeration */
 export enum ElectricChargeDensityUnits {
     /** */
@@ -45,6 +51,25 @@ export class ElectricChargeDensity {
      */
     public static FromCoulombsPerCubicMeter(value: number): ElectricChargeDensity {
         return new ElectricChargeDensity(value, ElectricChargeDensityUnits.CoulombsPerCubicMeter);
+    }
+
+    /**
+     * Create API DTO represent a ElectricChargeDensity unit.
+     * @param holdInUnit The specific ElectricChargeDensity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter): ElectricChargeDensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricChargeDensity unit from an API DTO representation.
+     * @param dtoElectricChargeDensity The ElectricChargeDensity API DTO representation
+     */
+    public static FromDto(dtoElectricChargeDensity: ElectricChargeDensityDto): ElectricChargeDensity {
+        return new ElectricChargeDensity(dtoElectricChargeDensity.value, dtoElectricChargeDensity.unit);
     }
 
     /**

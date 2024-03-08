@@ -1,3 +1,9 @@
+/** API DTO represents a MassFlux */
+export interface MassFluxDto {
+    value: number;
+    unit: MassFluxUnits;
+}
+
 /** MassFluxUnits enumeration */
 export enum MassFluxUnits {
     /** */
@@ -276,6 +282,25 @@ export class MassFlux {
      */
     public static FromKilogramsPerHourPerSquareMillimeter(value: number): MassFlux {
         return new MassFlux(value, MassFluxUnits.KilogramsPerHourPerSquareMillimeter);
+    }
+
+    /**
+     * Create API DTO represent a MassFlux unit.
+     * @param holdInUnit The specific MassFlux unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MassFluxUnits = MassFluxUnits.KilogramsPerSecondPerSquareMeter): MassFluxDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MassFlux unit from an API DTO representation.
+     * @param dtoMassFlux The MassFlux API DTO representation
+     */
+    public static FromDto(dtoMassFlux: MassFluxDto): MassFlux {
+        return new MassFlux(dtoMassFlux.value, dtoMassFlux.unit);
     }
 
     /**

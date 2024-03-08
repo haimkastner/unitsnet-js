@@ -1,3 +1,9 @@
+/** API DTO represents a Mass */
+export interface MassDto {
+    value: number;
+    unit: MassUnits;
+}
+
 /** MassUnits enumeration */
 export enum MassUnits {
     /** */
@@ -591,6 +597,25 @@ export class Mass {
      */
     public static FromMegapounds(value: number): Mass {
         return new Mass(value, MassUnits.Megapounds);
+    }
+
+    /**
+     * Create API DTO represent a Mass unit.
+     * @param holdInUnit The specific Mass unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MassUnits = MassUnits.Kilograms): MassDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Mass unit from an API DTO representation.
+     * @param dtoMass The Mass API DTO representation
+     */
+    public static FromDto(dtoMass: MassDto): Mass {
+        return new Mass(dtoMass.value, dtoMass.unit);
     }
 
     /**

@@ -1,3 +1,9 @@
+/** API DTO represents a PorousMediumPermeability */
+export interface PorousMediumPermeabilityDto {
+    value: number;
+    unit: PorousMediumPermeabilityUnits;
+}
+
 /** PorousMediumPermeabilityUnits enumeration */
 export enum PorousMediumPermeabilityUnits {
     /** */
@@ -129,6 +135,25 @@ export class PorousMediumPermeability {
      */
     public static FromMillidarcys(value: number): PorousMediumPermeability {
         return new PorousMediumPermeability(value, PorousMediumPermeabilityUnits.Millidarcys);
+    }
+
+    /**
+     * Create API DTO represent a PorousMediumPermeability unit.
+     * @param holdInUnit The specific PorousMediumPermeability unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: PorousMediumPermeabilityUnits = PorousMediumPermeabilityUnits.SquareMeters): PorousMediumPermeabilityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a PorousMediumPermeability unit from an API DTO representation.
+     * @param dtoPorousMediumPermeability The PorousMediumPermeability API DTO representation
+     */
+    public static FromDto(dtoPorousMediumPermeability: PorousMediumPermeabilityDto): PorousMediumPermeability {
+        return new PorousMediumPermeability(dtoPorousMediumPermeability.value, dtoPorousMediumPermeability.unit);
     }
 
     /**

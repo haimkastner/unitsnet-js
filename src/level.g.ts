@@ -1,3 +1,9 @@
+/** API DTO represents a Level */
+export interface LevelDto {
+    value: number;
+    unit: LevelUnits;
+}
+
 /** LevelUnits enumeration */
 export enum LevelUnits {
     /** */
@@ -66,6 +72,25 @@ export class Level {
      */
     public static FromNepers(value: number): Level {
         return new Level(value, LevelUnits.Nepers);
+    }
+
+    /**
+     * Create API DTO represent a Level unit.
+     * @param holdInUnit The specific Level unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LevelUnits = LevelUnits.Decibels): LevelDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Level unit from an API DTO representation.
+     * @param dtoLevel The Level API DTO representation
+     */
+    public static FromDto(dtoLevel: LevelDto): Level {
+        return new Level(dtoLevel.value, dtoLevel.unit);
     }
 
     /**

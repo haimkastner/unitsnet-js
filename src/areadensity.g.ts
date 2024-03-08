@@ -1,3 +1,9 @@
+/** API DTO represents a AreaDensity */
+export interface AreaDensityDto {
+    value: number;
+    unit: AreaDensityUnits;
+}
+
 /** AreaDensityUnits enumeration */
 export enum AreaDensityUnits {
     /** */
@@ -87,6 +93,25 @@ export class AreaDensity {
      */
     public static FromMilligramsPerSquareMeter(value: number): AreaDensity {
         return new AreaDensity(value, AreaDensityUnits.MilligramsPerSquareMeter);
+    }
+
+    /**
+     * Create API DTO represent a AreaDensity unit.
+     * @param holdInUnit The specific AreaDensity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: AreaDensityUnits = AreaDensityUnits.KilogramsPerSquareMeter): AreaDensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a AreaDensity unit from an API DTO representation.
+     * @param dtoAreaDensity The AreaDensity API DTO representation
+     */
+    public static FromDto(dtoAreaDensity: AreaDensityDto): AreaDensity {
+        return new AreaDensity(dtoAreaDensity.value, dtoAreaDensity.unit);
     }
 
     /**

@@ -1,3 +1,9 @@
+/** API DTO represents a ReciprocalArea */
+export interface ReciprocalAreaDto {
+    value: number;
+    unit: ReciprocalAreaUnits;
+}
+
 /** ReciprocalAreaUnits enumeration */
 export enum ReciprocalAreaUnits {
     /** */
@@ -255,6 +261,25 @@ export class ReciprocalArea {
      */
     public static FromInverseSquareInches(value: number): ReciprocalArea {
         return new ReciprocalArea(value, ReciprocalAreaUnits.InverseSquareInches);
+    }
+
+    /**
+     * Create API DTO represent a ReciprocalArea unit.
+     * @param holdInUnit The specific ReciprocalArea unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters): ReciprocalAreaDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ReciprocalArea unit from an API DTO representation.
+     * @param dtoReciprocalArea The ReciprocalArea API DTO representation
+     */
+    public static FromDto(dtoReciprocalArea: ReciprocalAreaDto): ReciprocalArea {
+        return new ReciprocalArea(dtoReciprocalArea.value, dtoReciprocalArea.unit);
     }
 
     /**

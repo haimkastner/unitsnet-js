@@ -1,3 +1,9 @@
+/** API DTO represents a SpecificEnergy */
+export interface SpecificEnergyDto {
+    value: number;
+    unit: SpecificEnergyUnits;
+}
+
 /** SpecificEnergyUnits enumeration */
 export enum SpecificEnergyUnits {
     /** */
@@ -654,6 +660,25 @@ export class SpecificEnergy {
      */
     public static FromGigawattHoursPerPound(value: number): SpecificEnergy {
         return new SpecificEnergy(value, SpecificEnergyUnits.GigawattHoursPerPound);
+    }
+
+    /**
+     * Create API DTO represent a SpecificEnergy unit.
+     * @param holdInUnit The specific SpecificEnergy unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: SpecificEnergyUnits = SpecificEnergyUnits.JoulesPerKilogram): SpecificEnergyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a SpecificEnergy unit from an API DTO representation.
+     * @param dtoSpecificEnergy The SpecificEnergy API DTO representation
+     */
+    public static FromDto(dtoSpecificEnergy: SpecificEnergyDto): SpecificEnergy {
+        return new SpecificEnergy(dtoSpecificEnergy.value, dtoSpecificEnergy.unit);
     }
 
     /**

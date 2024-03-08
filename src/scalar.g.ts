@@ -1,3 +1,9 @@
+/** API DTO represents a Scalar */
+export interface ScalarDto {
+    value: number;
+    unit: ScalarUnits;
+}
+
 /** ScalarUnits enumeration */
 export enum ScalarUnits {
     /** */
@@ -45,6 +51,25 @@ export class Scalar {
      */
     public static FromAmount(value: number): Scalar {
         return new Scalar(value, ScalarUnits.Amount);
+    }
+
+    /**
+     * Create API DTO represent a Scalar unit.
+     * @param holdInUnit The specific Scalar unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ScalarUnits = ScalarUnits.Amount): ScalarDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Scalar unit from an API DTO representation.
+     * @param dtoScalar The Scalar API DTO representation
+     */
+    public static FromDto(dtoScalar: ScalarDto): Scalar {
+        return new Scalar(dtoScalar.value, dtoScalar.unit);
     }
 
     /**

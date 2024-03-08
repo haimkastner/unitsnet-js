@@ -1,3 +1,9 @@
+/** API DTO represents a MassFlow */
+export interface MassFlowDto {
+    value: number;
+    unit: MassFlowUnits;
+}
+
 /** MassFlowUnits enumeration */
 export enum MassFlowUnits {
     /** */
@@ -717,6 +723,25 @@ export class MassFlow {
      */
     public static FromMegapoundsPerSecond(value: number): MassFlow {
         return new MassFlow(value, MassFlowUnits.MegapoundsPerSecond);
+    }
+
+    /**
+     * Create API DTO represent a MassFlow unit.
+     * @param holdInUnit The specific MassFlow unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MassFlowUnits = MassFlowUnits.GramsPerSecond): MassFlowDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MassFlow unit from an API DTO representation.
+     * @param dtoMassFlow The MassFlow API DTO representation
+     */
+    public static FromDto(dtoMassFlow: MassFlowDto): MassFlow {
+        return new MassFlow(dtoMassFlow.value, dtoMassFlow.unit);
     }
 
     /**

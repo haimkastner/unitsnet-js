@@ -1,3 +1,9 @@
+/** API DTO represents a Compressibility */
+export interface CompressibilityDto {
+    value: number;
+    unit: CompressibilityUnits;
+}
+
 /** CompressibilityUnits enumeration */
 export enum CompressibilityUnits {
     /** */
@@ -171,6 +177,25 @@ export class Compressibility {
      */
     public static FromInversePoundsForcePerSquareInch(value: number): Compressibility {
         return new Compressibility(value, CompressibilityUnits.InversePoundsForcePerSquareInch);
+    }
+
+    /**
+     * Create API DTO represent a Compressibility unit.
+     * @param holdInUnit The specific Compressibility unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: CompressibilityUnits = CompressibilityUnits.InversePascals): CompressibilityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Compressibility unit from an API DTO representation.
+     * @param dtoCompressibility The Compressibility API DTO representation
+     */
+    public static FromDto(dtoCompressibility: CompressibilityDto): Compressibility {
+        return new Compressibility(dtoCompressibility.value, dtoCompressibility.unit);
     }
 
     /**

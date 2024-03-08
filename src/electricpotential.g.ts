@@ -1,3 +1,9 @@
+/** API DTO represents a ElectricPotential */
+export interface ElectricPotentialDto {
+    value: number;
+    unit: ElectricPotentialUnits;
+}
+
 /** ElectricPotentialUnits enumeration */
 export enum ElectricPotentialUnits {
     /** */
@@ -150,6 +156,25 @@ export class ElectricPotential {
      */
     public static FromMegavolts(value: number): ElectricPotential {
         return new ElectricPotential(value, ElectricPotentialUnits.Megavolts);
+    }
+
+    /**
+     * Create API DTO represent a ElectricPotential unit.
+     * @param holdInUnit The specific ElectricPotential unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricPotentialUnits = ElectricPotentialUnits.Volts): ElectricPotentialDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricPotential unit from an API DTO representation.
+     * @param dtoElectricPotential The ElectricPotential API DTO representation
+     */
+    public static FromDto(dtoElectricPotential: ElectricPotentialDto): ElectricPotential {
+        return new ElectricPotential(dtoElectricPotential.value, dtoElectricPotential.unit);
     }
 
     /**

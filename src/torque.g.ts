@@ -1,3 +1,9 @@
+/** API DTO represents a Torque */
+export interface TorqueDto {
+    value: number;
+    unit: TorqueUnits;
+}
+
 /** TorqueUnits enumeration */
 export enum TorqueUnits {
     /** */
@@ -549,6 +555,25 @@ export class Torque {
      */
     public static FromMegapoundForceFeet(value: number): Torque {
         return new Torque(value, TorqueUnits.MegapoundForceFeet);
+    }
+
+    /**
+     * Create API DTO represent a Torque unit.
+     * @param holdInUnit The specific Torque unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: TorqueUnits = TorqueUnits.NewtonMeters): TorqueDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Torque unit from an API DTO representation.
+     * @param dtoTorque The Torque API DTO representation
+     */
+    public static FromDto(dtoTorque: TorqueDto): Torque {
+        return new Torque(dtoTorque.value, dtoTorque.unit);
     }
 
     /**

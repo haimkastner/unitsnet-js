@@ -1,3 +1,9 @@
+/** API DTO represents a TorquePerLength */
+export interface TorquePerLengthDto {
+    value: number;
+    unit: TorquePerLengthUnits;
+}
+
 /** TorquePerLengthUnits enumeration */
 export enum TorquePerLengthUnits {
     /** */
@@ -465,6 +471,25 @@ export class TorquePerLength {
      */
     public static FromMegapoundForceFeetPerFoot(value: number): TorquePerLength {
         return new TorquePerLength(value, TorquePerLengthUnits.MegapoundForceFeetPerFoot);
+    }
+
+    /**
+     * Create API DTO represent a TorquePerLength unit.
+     * @param holdInUnit The specific TorquePerLength unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: TorquePerLengthUnits = TorquePerLengthUnits.NewtonMetersPerMeter): TorquePerLengthDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a TorquePerLength unit from an API DTO representation.
+     * @param dtoTorquePerLength The TorquePerLength API DTO representation
+     */
+    public static FromDto(dtoTorquePerLength: TorquePerLengthDto): TorquePerLength {
+        return new TorquePerLength(dtoTorquePerLength.value, dtoTorquePerLength.unit);
     }
 
     /**

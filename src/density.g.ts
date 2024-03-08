@@ -1,3 +1,9 @@
+/** API DTO represents a Density */
+export interface DensityDto {
+    value: number;
+    unit: DensityUnits;
+}
+
 /** DensityUnits enumeration */
 export enum DensityUnits {
     /** */
@@ -1200,6 +1206,25 @@ export class Density {
      */
     public static FromDecigramsPerMilliliter(value: number): Density {
         return new Density(value, DensityUnits.DecigramsPerMilliliter);
+    }
+
+    /**
+     * Create API DTO represent a Density unit.
+     * @param holdInUnit The specific Density unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: DensityUnits = DensityUnits.KilogramsPerCubicMeter): DensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Density unit from an API DTO representation.
+     * @param dtoDensity The Density API DTO representation
+     */
+    public static FromDto(dtoDensity: DensityDto): Density {
+        return new Density(dtoDensity.value, dtoDensity.unit);
     }
 
     /**

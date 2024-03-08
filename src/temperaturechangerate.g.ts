@@ -1,3 +1,9 @@
+/** API DTO represents a TemperatureChangeRate */
+export interface TemperatureChangeRateDto {
+    value: number;
+    unit: TemperatureChangeRateUnits;
+}
+
 /** TemperatureChangeRateUnits enumeration */
 export enum TemperatureChangeRateUnits {
     /** */
@@ -234,6 +240,25 @@ export class TemperatureChangeRate {
      */
     public static FromKilodegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond);
+    }
+
+    /**
+     * Create API DTO represent a TemperatureChangeRate unit.
+     * @param holdInUnit The specific TemperatureChangeRate unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond): TemperatureChangeRateDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a TemperatureChangeRate unit from an API DTO representation.
+     * @param dtoTemperatureChangeRate The TemperatureChangeRate API DTO representation
+     */
+    public static FromDto(dtoTemperatureChangeRate: TemperatureChangeRateDto): TemperatureChangeRate {
+        return new TemperatureChangeRate(dtoTemperatureChangeRate.value, dtoTemperatureChangeRate.unit);
     }
 
     /**

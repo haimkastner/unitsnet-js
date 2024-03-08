@@ -1,3 +1,9 @@
+/** API DTO represents a RotationalAcceleration */
+export interface RotationalAccelerationDto {
+    value: number;
+    unit: RotationalAccelerationUnits;
+}
+
 /** RotationalAccelerationUnits enumeration */
 export enum RotationalAccelerationUnits {
     /** */
@@ -108,6 +114,25 @@ export class RotationalAcceleration {
      */
     public static FromRevolutionsPerSecondSquared(value: number): RotationalAcceleration {
         return new RotationalAcceleration(value, RotationalAccelerationUnits.RevolutionsPerSecondSquared);
+    }
+
+    /**
+     * Create API DTO represent a RotationalAcceleration unit.
+     * @param holdInUnit The specific RotationalAcceleration unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared): RotationalAccelerationDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a RotationalAcceleration unit from an API DTO representation.
+     * @param dtoRotationalAcceleration The RotationalAcceleration API DTO representation
+     */
+    public static FromDto(dtoRotationalAcceleration: RotationalAccelerationDto): RotationalAcceleration {
+        return new RotationalAcceleration(dtoRotationalAcceleration.value, dtoRotationalAcceleration.unit);
     }
 
     /**

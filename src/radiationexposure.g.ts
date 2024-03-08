@@ -1,3 +1,9 @@
+/** API DTO represents a RadiationExposure */
+export interface RadiationExposureDto {
+    value: number;
+    unit: RadiationExposureUnits;
+}
+
 /** RadiationExposureUnits enumeration */
 export enum RadiationExposureUnits {
     /** */
@@ -192,6 +198,25 @@ export class RadiationExposure {
      */
     public static FromMilliroentgens(value: number): RadiationExposure {
         return new RadiationExposure(value, RadiationExposureUnits.Milliroentgens);
+    }
+
+    /**
+     * Create API DTO represent a RadiationExposure unit.
+     * @param holdInUnit The specific RadiationExposure unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: RadiationExposureUnits = RadiationExposureUnits.CoulombsPerKilogram): RadiationExposureDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a RadiationExposure unit from an API DTO representation.
+     * @param dtoRadiationExposure The RadiationExposure API DTO representation
+     */
+    public static FromDto(dtoRadiationExposure: RadiationExposureDto): RadiationExposure {
+        return new RadiationExposure(dtoRadiationExposure.value, dtoRadiationExposure.unit);
     }
 
     /**

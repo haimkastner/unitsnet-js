@@ -1,3 +1,9 @@
+/** API DTO represents a HeatFlux */
+export interface HeatFluxDto {
+    value: number;
+    unit: HeatFluxUnits;
+}
+
 /** HeatFluxUnits enumeration */
 export enum HeatFluxUnits {
     /** */
@@ -402,6 +408,25 @@ export class HeatFlux {
      */
     public static FromKilocaloriesPerSecondSquareCentimeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter);
+    }
+
+    /**
+     * Create API DTO represent a HeatFlux unit.
+     * @param holdInUnit The specific HeatFlux unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: HeatFluxUnits = HeatFluxUnits.WattsPerSquareMeter): HeatFluxDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a HeatFlux unit from an API DTO representation.
+     * @param dtoHeatFlux The HeatFlux API DTO representation
+     */
+    public static FromDto(dtoHeatFlux: HeatFluxDto): HeatFlux {
+        return new HeatFlux(dtoHeatFlux.value, dtoHeatFlux.unit);
     }
 
     /**

@@ -147,4 +147,33 @@ describe('Unitsnet - tests', () => {
             expect(length1.pow(length2).Meters).equal(1000);
         });
     });
+
+    describe('# Data Transfer Object', () => {
+
+        const length1 = Length.FromMeters(100.01);
+
+        it(`Should create DTO from default unit`, () => {
+            expect(length1.toDto()).deep.equal({
+                "value":100.01,
+                "unit":"Meter"
+             });
+        });
+
+        it(`Should create DTO by specific unit`, () => {
+            expect(length1.toDto(LengthUnits.Centimeters)).deep.equal({
+                "value":10001,
+                "unit":"Centimeter"
+             });
+        });
+
+        it(`Should load from default unit DTO`, () => {
+            const dto = length1.toDto(LengthUnits.Meters);
+            expect(Length.FromDto(dto).Meters).deep.equal(100.01);
+        });
+
+        it(`Should load from default unit DTO`, () => {
+            const dto = length1.toDto(LengthUnits.Centimeters);
+            expect(Length.FromDto(dto).Decimeters).deep.equal(1000.1);
+        });
+    });
 });

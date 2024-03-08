@@ -1,3 +1,9 @@
+/** API DTO represents a CoefficientOfThermalExpansion */
+export interface CoefficientOfThermalExpansionDto {
+    value: number;
+    unit: CoefficientOfThermalExpansionUnits;
+}
+
 /** CoefficientOfThermalExpansionUnits enumeration */
 export enum CoefficientOfThermalExpansionUnits {
     /** */
@@ -150,6 +156,25 @@ export class CoefficientOfThermalExpansion {
      */
     public static FromPpmPerDegreeFahrenheit(value: number): CoefficientOfThermalExpansion {
         return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit);
+    }
+
+    /**
+     * Create API DTO represent a CoefficientOfThermalExpansion unit.
+     * @param holdInUnit The specific CoefficientOfThermalExpansion unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.PerKelvin): CoefficientOfThermalExpansionDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a CoefficientOfThermalExpansion unit from an API DTO representation.
+     * @param dtoCoefficientOfThermalExpansion The CoefficientOfThermalExpansion API DTO representation
+     */
+    public static FromDto(dtoCoefficientOfThermalExpansion: CoefficientOfThermalExpansionDto): CoefficientOfThermalExpansion {
+        return new CoefficientOfThermalExpansion(dtoCoefficientOfThermalExpansion.value, dtoCoefficientOfThermalExpansion.unit);
     }
 
     /**

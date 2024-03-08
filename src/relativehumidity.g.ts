@@ -1,3 +1,9 @@
+/** API DTO represents a RelativeHumidity */
+export interface RelativeHumidityDto {
+    value: number;
+    unit: RelativeHumidityUnits;
+}
+
 /** RelativeHumidityUnits enumeration */
 export enum RelativeHumidityUnits {
     /** */
@@ -45,6 +51,25 @@ export class RelativeHumidity {
      */
     public static FromPercent(value: number): RelativeHumidity {
         return new RelativeHumidity(value, RelativeHumidityUnits.Percent);
+    }
+
+    /**
+     * Create API DTO represent a RelativeHumidity unit.
+     * @param holdInUnit The specific RelativeHumidity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: RelativeHumidityUnits = RelativeHumidityUnits.Percent): RelativeHumidityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a RelativeHumidity unit from an API DTO representation.
+     * @param dtoRelativeHumidity The RelativeHumidity API DTO representation
+     */
+    public static FromDto(dtoRelativeHumidity: RelativeHumidityDto): RelativeHumidity {
+        return new RelativeHumidity(dtoRelativeHumidity.value, dtoRelativeHumidity.unit);
     }
 
     /**

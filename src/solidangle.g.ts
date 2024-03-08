@@ -1,3 +1,9 @@
+/** API DTO represents a SolidAngle */
+export interface SolidAngleDto {
+    value: number;
+    unit: SolidAngleUnits;
+}
+
 /** SolidAngleUnits enumeration */
 export enum SolidAngleUnits {
     /** */
@@ -45,6 +51,25 @@ export class SolidAngle {
      */
     public static FromSteradians(value: number): SolidAngle {
         return new SolidAngle(value, SolidAngleUnits.Steradians);
+    }
+
+    /**
+     * Create API DTO represent a SolidAngle unit.
+     * @param holdInUnit The specific SolidAngle unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: SolidAngleUnits = SolidAngleUnits.Steradians): SolidAngleDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a SolidAngle unit from an API DTO representation.
+     * @param dtoSolidAngle The SolidAngle API DTO representation
+     */
+    public static FromDto(dtoSolidAngle: SolidAngleDto): SolidAngle {
+        return new SolidAngle(dtoSolidAngle.value, dtoSolidAngle.unit);
     }
 
     /**

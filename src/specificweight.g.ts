@@ -1,3 +1,9 @@
+/** API DTO represents a SpecificWeight */
+export interface SpecificWeightDto {
+    value: number;
+    unit: SpecificWeightUnits;
+}
+
 /** SpecificWeightUnits enumeration */
 export enum SpecificWeightUnits {
     /** */
@@ -381,6 +387,25 @@ export class SpecificWeight {
      */
     public static FromKilopoundsForcePerCubicFoot(value: number): SpecificWeight {
         return new SpecificWeight(value, SpecificWeightUnits.KilopoundsForcePerCubicFoot);
+    }
+
+    /**
+     * Create API DTO represent a SpecificWeight unit.
+     * @param holdInUnit The specific SpecificWeight unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: SpecificWeightUnits = SpecificWeightUnits.NewtonsPerCubicMeter): SpecificWeightDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a SpecificWeight unit from an API DTO representation.
+     * @param dtoSpecificWeight The SpecificWeight API DTO representation
+     */
+    public static FromDto(dtoSpecificWeight: SpecificWeightDto): SpecificWeight {
+        return new SpecificWeight(dtoSpecificWeight.value, dtoSpecificWeight.unit);
     }
 
     /**

@@ -1,3 +1,9 @@
+/** API DTO represents a HeatTransferCoefficient */
+export interface HeatTransferCoefficientDto {
+    value: number;
+    unit: HeatTransferCoefficientUnits;
+}
+
 /** HeatTransferCoefficientUnits enumeration */
 export enum HeatTransferCoefficientUnits {
     /** */
@@ -129,6 +135,25 @@ export class HeatTransferCoefficient {
      */
     public static FromKilocaloriesPerHourSquareMeterDegreeCelsius(value: number): HeatTransferCoefficient {
         return new HeatTransferCoefficient(value, HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius);
+    }
+
+    /**
+     * Create API DTO represent a HeatTransferCoefficient unit.
+     * @param holdInUnit The specific HeatTransferCoefficient unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin): HeatTransferCoefficientDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a HeatTransferCoefficient unit from an API DTO representation.
+     * @param dtoHeatTransferCoefficient The HeatTransferCoefficient API DTO representation
+     */
+    public static FromDto(dtoHeatTransferCoefficient: HeatTransferCoefficientDto): HeatTransferCoefficient {
+        return new HeatTransferCoefficient(dtoHeatTransferCoefficient.value, dtoHeatTransferCoefficient.unit);
     }
 
     /**

@@ -1,3 +1,9 @@
+/** API DTO represents a BrakeSpecificFuelConsumption */
+export interface BrakeSpecificFuelConsumptionDto {
+    value: number;
+    unit: BrakeSpecificFuelConsumptionUnits;
+}
+
 /** BrakeSpecificFuelConsumptionUnits enumeration */
 export enum BrakeSpecificFuelConsumptionUnits {
     /** */
@@ -87,6 +93,25 @@ export class BrakeSpecificFuelConsumption {
      */
     public static FromPoundsPerMechanicalHorsepowerHour(value: number): BrakeSpecificFuelConsumption {
         return new BrakeSpecificFuelConsumption(value, BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour);
+    }
+
+    /**
+     * Create API DTO represent a BrakeSpecificFuelConsumption unit.
+     * @param holdInUnit The specific BrakeSpecificFuelConsumption unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule): BrakeSpecificFuelConsumptionDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a BrakeSpecificFuelConsumption unit from an API DTO representation.
+     * @param dtoBrakeSpecificFuelConsumption The BrakeSpecificFuelConsumption API DTO representation
+     */
+    public static FromDto(dtoBrakeSpecificFuelConsumption: BrakeSpecificFuelConsumptionDto): BrakeSpecificFuelConsumption {
+        return new BrakeSpecificFuelConsumption(dtoBrakeSpecificFuelConsumption.value, dtoBrakeSpecificFuelConsumption.unit);
     }
 
     /**

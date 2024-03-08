@@ -1,3 +1,9 @@
+/** API DTO represents a RotationalStiffnessPerLength */
+export interface RotationalStiffnessPerLengthDto {
+    value: number;
+    unit: RotationalStiffnessPerLengthUnits;
+}
+
 /** RotationalStiffnessPerLengthUnits enumeration */
 export enum RotationalStiffnessPerLengthUnits {
     /** */
@@ -129,6 +135,25 @@ export class RotationalStiffnessPerLength {
      */
     public static FromMeganewtonMetersPerRadianPerMeter(value: number): RotationalStiffnessPerLength {
         return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter);
+    }
+
+    /**
+     * Create API DTO represent a RotationalStiffnessPerLength unit.
+     * @param holdInUnit The specific RotationalStiffnessPerLength unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: RotationalStiffnessPerLengthUnits = RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter): RotationalStiffnessPerLengthDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a RotationalStiffnessPerLength unit from an API DTO representation.
+     * @param dtoRotationalStiffnessPerLength The RotationalStiffnessPerLength API DTO representation
+     */
+    public static FromDto(dtoRotationalStiffnessPerLength: RotationalStiffnessPerLengthDto): RotationalStiffnessPerLength {
+        return new RotationalStiffnessPerLength(dtoRotationalStiffnessPerLength.value, dtoRotationalStiffnessPerLength.unit);
     }
 
     /**

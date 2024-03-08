@@ -1,3 +1,9 @@
+/** API DTO represents a Permeability */
+export interface PermeabilityDto {
+    value: number;
+    unit: PermeabilityUnits;
+}
+
 /** PermeabilityUnits enumeration */
 export enum PermeabilityUnits {
     /** */
@@ -45,6 +51,25 @@ export class Permeability {
      */
     public static FromHenriesPerMeter(value: number): Permeability {
         return new Permeability(value, PermeabilityUnits.HenriesPerMeter);
+    }
+
+    /**
+     * Create API DTO represent a Permeability unit.
+     * @param holdInUnit The specific Permeability unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter): PermeabilityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Permeability unit from an API DTO representation.
+     * @param dtoPermeability The Permeability API DTO representation
+     */
+    public static FromDto(dtoPermeability: PermeabilityDto): Permeability {
+        return new Permeability(dtoPermeability.value, dtoPermeability.unit);
     }
 
     /**

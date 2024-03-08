@@ -1,3 +1,9 @@
+/** API DTO represents a Luminosity */
+export interface LuminosityDto {
+    value: number;
+    unit: LuminosityUnits;
+}
+
 /** LuminosityUnits enumeration */
 export enum LuminosityUnits {
     /** */
@@ -318,6 +324,25 @@ export class Luminosity {
      */
     public static FromPetawatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Petawatts);
+    }
+
+    /**
+     * Create API DTO represent a Luminosity unit.
+     * @param holdInUnit The specific Luminosity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LuminosityUnits = LuminosityUnits.Watts): LuminosityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Luminosity unit from an API DTO representation.
+     * @param dtoLuminosity The Luminosity API DTO representation
+     */
+    public static FromDto(dtoLuminosity: LuminosityDto): Luminosity {
+        return new Luminosity(dtoLuminosity.value, dtoLuminosity.unit);
     }
 
     /**

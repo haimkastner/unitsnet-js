@@ -1,3 +1,9 @@
+/** API DTO represents a ElectricConductivity */
+export interface ElectricConductivityDto {
+    value: number;
+    unit: ElectricConductivityUnits;
+}
+
 /** ElectricConductivityUnits enumeration */
 export enum ElectricConductivityUnits {
     /** */
@@ -150,6 +156,25 @@ export class ElectricConductivity {
      */
     public static FromMillisiemensPerCentimeter(value: number): ElectricConductivity {
         return new ElectricConductivity(value, ElectricConductivityUnits.MillisiemensPerCentimeter);
+    }
+
+    /**
+     * Create API DTO represent a ElectricConductivity unit.
+     * @param holdInUnit The specific ElectricConductivity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter): ElectricConductivityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricConductivity unit from an API DTO representation.
+     * @param dtoElectricConductivity The ElectricConductivity API DTO representation
+     */
+    public static FromDto(dtoElectricConductivity: ElectricConductivityDto): ElectricConductivity {
+        return new ElectricConductivity(dtoElectricConductivity.value, dtoElectricConductivity.unit);
     }
 
     /**
