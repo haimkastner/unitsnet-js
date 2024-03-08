@@ -1,19 +1,19 @@
 /** CompressibilityUnits enumeration */
 export enum CompressibilityUnits {
     /** */
-    InversePascals,
+    InversePascals = "InversePascal",
     /** */
-    InverseKilopascals,
+    InverseKilopascals = "InverseKilopascal",
     /** */
-    InverseMegapascals,
+    InverseMegapascals = "InverseMegapascal",
     /** */
-    InverseAtmospheres,
+    InverseAtmospheres = "InverseAtmosphere",
     /** */
-    InverseMillibars,
+    InverseMillibars = "InverseMillibar",
     /** */
-    InverseBars,
+    InverseBars = "InverseBar",
     /** */
-    InversePoundsForcePerSquareInch
+    InversePoundsForcePerSquareInch = "InversePoundForcePerSquareInch"
 }
 
 /** Compressibility is the measure of the relative volume change of a fluid or solid in response to pressure changes. */

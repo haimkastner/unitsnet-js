@@ -1,45 +1,45 @@
 /** ElectricPotentialChangeRateUnits enumeration */
 export enum ElectricPotentialChangeRateUnits {
     /** */
-    VoltsPerSeconds,
+    VoltsPerSeconds = "VoltPerSecond",
     /** */
-    VoltsPerMicroseconds,
+    VoltsPerMicroseconds = "VoltPerMicrosecond",
     /** */
-    VoltsPerMinutes,
+    VoltsPerMinutes = "VoltPerMinute",
     /** */
-    VoltsPerHours,
+    VoltsPerHours = "VoltPerHour",
     /** */
-    MicrovoltsPerSeconds,
+    MicrovoltsPerSeconds = "MicrovoltPerSecond",
     /** */
-    MillivoltsPerSeconds,
+    MillivoltsPerSeconds = "MillivoltPerSecond",
     /** */
-    KilovoltsPerSeconds,
+    KilovoltsPerSeconds = "KilovoltPerSecond",
     /** */
-    MegavoltsPerSeconds,
+    MegavoltsPerSeconds = "MegavoltPerSecond",
     /** */
-    MicrovoltsPerMicroseconds,
+    MicrovoltsPerMicroseconds = "MicrovoltPerMicrosecond",
     /** */
-    MillivoltsPerMicroseconds,
+    MillivoltsPerMicroseconds = "MillivoltPerMicrosecond",
     /** */
-    KilovoltsPerMicroseconds,
+    KilovoltsPerMicroseconds = "KilovoltPerMicrosecond",
     /** */
-    MegavoltsPerMicroseconds,
+    MegavoltsPerMicroseconds = "MegavoltPerMicrosecond",
     /** */
-    MicrovoltsPerMinutes,
+    MicrovoltsPerMinutes = "MicrovoltPerMinute",
     /** */
-    MillivoltsPerMinutes,
+    MillivoltsPerMinutes = "MillivoltPerMinute",
     /** */
-    KilovoltsPerMinutes,
+    KilovoltsPerMinutes = "KilovoltPerMinute",
     /** */
-    MegavoltsPerMinutes,
+    MegavoltsPerMinutes = "MegavoltPerMinute",
     /** */
-    MicrovoltsPerHours,
+    MicrovoltsPerHours = "MicrovoltPerHour",
     /** */
-    MillivoltsPerHours,
+    MillivoltsPerHours = "MillivoltPerHour",
     /** */
-    KilovoltsPerHours,
+    KilovoltsPerHours = "KilovoltPerHour",
     /** */
-    MegavoltsPerHours
+    MegavoltsPerHours = "MegavoltPerHour"
 }
 
 /** ElectricPotential change rate is the ratio of the electric potential change to the time during which the change occurred (value of electric potential changes per unit time). */

@@ -1,17 +1,17 @@
 /** WarpingMomentOfInertiaUnits enumeration */
 export enum WarpingMomentOfInertiaUnits {
     /** */
-    MetersToTheSixth,
+    MetersToTheSixth = "MeterToTheSixth",
     /** */
-    DecimetersToTheSixth,
+    DecimetersToTheSixth = "DecimeterToTheSixth",
     /** */
-    CentimetersToTheSixth,
+    CentimetersToTheSixth = "CentimeterToTheSixth",
     /** */
-    MillimetersToTheSixth,
+    MillimetersToTheSixth = "MillimeterToTheSixth",
     /** */
-    FeetToTheSixth,
+    FeetToTheSixth = "FootToTheSixth",
     /** */
-    InchesToTheSixth
+    InchesToTheSixth = "InchToTheSixth"
 }
 
 /** A geometric property of an area that is used to determine the warping stress. */

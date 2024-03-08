@@ -1,9 +1,9 @@
 /** ThermalConductivityUnits enumeration */
 export enum ThermalConductivityUnits {
     /** */
-    WattsPerMeterKelvin,
+    WattsPerMeterKelvin = "WattPerMeterKelvin",
     /** */
-    BtusPerHourFootFahrenheit
+    BtusPerHourFootFahrenheit = "BtuPerHourFootFahrenheit"
 }
 
 /** Thermal conductivity is the property of a material to conduct heat. */

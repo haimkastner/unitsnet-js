@@ -1,25 +1,25 @@
 /** TemperatureUnits enumeration */
 export enum TemperatureUnits {
     /** */
-    Kelvins,
+    Kelvins = "Kelvin",
     /** */
-    DegreesCelsius,
+    DegreesCelsius = "DegreeCelsius",
     /** */
-    MillidegreesCelsius,
+    MillidegreesCelsius = "MillidegreeCelsius",
     /** */
-    DegreesDelisle,
+    DegreesDelisle = "DegreeDelisle",
     /** */
-    DegreesFahrenheit,
+    DegreesFahrenheit = "DegreeFahrenheit",
     /** */
-    DegreesNewton,
+    DegreesNewton = "DegreeNewton",
     /** */
-    DegreesRankine,
+    DegreesRankine = "DegreeRankine",
     /** */
-    DegreesReaumur,
+    DegreesReaumur = "DegreeReaumur",
     /** */
-    DegreesRoemer,
+    DegreesRoemer = "DegreeRoemer",
     /** */
-    SolarTemperatures
+    SolarTemperatures = "SolarTemperature"
 }
 
 /** A temperature is a numerical measure of hot or cold. Its measurement is by detection of heat radiation or particle velocity or kinetic energy, or by the bulk behavior of a thermometric material. It may be calibrated in any of various temperature scales, Celsius, Fahrenheit, Kelvin, etc. The fundamental physical definition of temperature is provided by thermodynamics. */

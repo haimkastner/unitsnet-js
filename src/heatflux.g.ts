@@ -1,41 +1,41 @@
 /** HeatFluxUnits enumeration */
 export enum HeatFluxUnits {
     /** */
-    WattsPerSquareMeter,
+    WattsPerSquareMeter = "WattPerSquareMeter",
     /** */
-    WattsPerSquareInch,
+    WattsPerSquareInch = "WattPerSquareInch",
     /** */
-    WattsPerSquareFoot,
+    WattsPerSquareFoot = "WattPerSquareFoot",
     /** */
-    BtusPerSecondSquareInch,
+    BtusPerSecondSquareInch = "BtuPerSecondSquareInch",
     /** */
-    BtusPerSecondSquareFoot,
+    BtusPerSecondSquareFoot = "BtuPerSecondSquareFoot",
     /** */
-    BtusPerMinuteSquareFoot,
+    BtusPerMinuteSquareFoot = "BtuPerMinuteSquareFoot",
     /** */
-    BtusPerHourSquareFoot,
+    BtusPerHourSquareFoot = "BtuPerHourSquareFoot",
     /** */
-    CaloriesPerSecondSquareCentimeter,
+    CaloriesPerSecondSquareCentimeter = "CaloriePerSecondSquareCentimeter",
     /** */
-    KilocaloriesPerHourSquareMeter,
+    KilocaloriesPerHourSquareMeter = "KilocaloriePerHourSquareMeter",
     /** */
-    PoundsForcePerFootSecond,
+    PoundsForcePerFootSecond = "PoundForcePerFootSecond",
     /** */
-    PoundsPerSecondCubed,
+    PoundsPerSecondCubed = "PoundPerSecondCubed",
     /** */
-    NanowattsPerSquareMeter,
+    NanowattsPerSquareMeter = "NanowattPerSquareMeter",
     /** */
-    MicrowattsPerSquareMeter,
+    MicrowattsPerSquareMeter = "MicrowattPerSquareMeter",
     /** */
-    MilliwattsPerSquareMeter,
+    MilliwattsPerSquareMeter = "MilliwattPerSquareMeter",
     /** */
-    CentiwattsPerSquareMeter,
+    CentiwattsPerSquareMeter = "CentiwattPerSquareMeter",
     /** */
-    DeciwattsPerSquareMeter,
+    DeciwattsPerSquareMeter = "DeciwattPerSquareMeter",
     /** */
-    KilowattsPerSquareMeter,
+    KilowattsPerSquareMeter = "KilowattPerSquareMeter",
     /** */
-    KilocaloriesPerSecondSquareCentimeter
+    KilocaloriesPerSecondSquareCentimeter = "KilocaloriePerSecondSquareCentimeter"
 }
 
 /** Heat flux is the flow of energy per unit of area per unit of time */

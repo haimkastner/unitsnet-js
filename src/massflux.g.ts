@@ -1,29 +1,29 @@
 /** MassFluxUnits enumeration */
 export enum MassFluxUnits {
     /** */
-    GramsPerSecondPerSquareMeter,
+    GramsPerSecondPerSquareMeter = "GramPerSecondPerSquareMeter",
     /** */
-    GramsPerSecondPerSquareCentimeter,
+    GramsPerSecondPerSquareCentimeter = "GramPerSecondPerSquareCentimeter",
     /** */
-    GramsPerSecondPerSquareMillimeter,
+    GramsPerSecondPerSquareMillimeter = "GramPerSecondPerSquareMillimeter",
     /** */
-    GramsPerHourPerSquareMeter,
+    GramsPerHourPerSquareMeter = "GramPerHourPerSquareMeter",
     /** */
-    GramsPerHourPerSquareCentimeter,
+    GramsPerHourPerSquareCentimeter = "GramPerHourPerSquareCentimeter",
     /** */
-    GramsPerHourPerSquareMillimeter,
+    GramsPerHourPerSquareMillimeter = "GramPerHourPerSquareMillimeter",
     /** */
-    KilogramsPerSecondPerSquareMeter,
+    KilogramsPerSecondPerSquareMeter = "KilogramPerSecondPerSquareMeter",
     /** */
-    KilogramsPerSecondPerSquareCentimeter,
+    KilogramsPerSecondPerSquareCentimeter = "KilogramPerSecondPerSquareCentimeter",
     /** */
-    KilogramsPerSecondPerSquareMillimeter,
+    KilogramsPerSecondPerSquareMillimeter = "KilogramPerSecondPerSquareMillimeter",
     /** */
-    KilogramsPerHourPerSquareMeter,
+    KilogramsPerHourPerSquareMeter = "KilogramPerHourPerSquareMeter",
     /** */
-    KilogramsPerHourPerSquareCentimeter,
+    KilogramsPerHourPerSquareCentimeter = "KilogramPerHourPerSquareCentimeter",
     /** */
-    KilogramsPerHourPerSquareMillimeter
+    KilogramsPerHourPerSquareMillimeter = "KilogramPerHourPerSquareMillimeter"
 }
 
 /** Mass flux is the mass flow rate per unit area. */

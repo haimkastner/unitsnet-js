@@ -1,103 +1,103 @@
 /** MassConcentrationUnits enumeration */
 export enum MassConcentrationUnits {
     /** */
-    GramsPerCubicMillimeter,
+    GramsPerCubicMillimeter = "GramPerCubicMillimeter",
     /** */
-    GramsPerCubicCentimeter,
+    GramsPerCubicCentimeter = "GramPerCubicCentimeter",
     /** */
-    GramsPerCubicMeter,
+    GramsPerCubicMeter = "GramPerCubicMeter",
     /** */
-    GramsPerMicroliter,
+    GramsPerMicroliter = "GramPerMicroliter",
     /** */
-    GramsPerMilliliter,
+    GramsPerMilliliter = "GramPerMilliliter",
     /** */
-    GramsPerDeciliter,
+    GramsPerDeciliter = "GramPerDeciliter",
     /** */
-    GramsPerLiter,
+    GramsPerLiter = "GramPerLiter",
     /** */
-    TonnesPerCubicMillimeter,
+    TonnesPerCubicMillimeter = "TonnePerCubicMillimeter",
     /** */
-    TonnesPerCubicCentimeter,
+    TonnesPerCubicCentimeter = "TonnePerCubicCentimeter",
     /** */
-    TonnesPerCubicMeter,
+    TonnesPerCubicMeter = "TonnePerCubicMeter",
     /** */
-    PoundsPerCubicInch,
+    PoundsPerCubicInch = "PoundPerCubicInch",
     /** */
-    PoundsPerCubicFoot,
+    PoundsPerCubicFoot = "PoundPerCubicFoot",
     /** */
-    SlugsPerCubicFoot,
+    SlugsPerCubicFoot = "SlugPerCubicFoot",
     /** */
-    PoundsPerUSGallon,
+    PoundsPerUSGallon = "PoundPerUSGallon",
     /** */
-    OuncesPerUSGallon,
+    OuncesPerUSGallon = "OuncePerUSGallon",
     /** */
-    OuncesPerImperialGallon,
+    OuncesPerImperialGallon = "OuncePerImperialGallon",
     /** */
-    PoundsPerImperialGallon,
+    PoundsPerImperialGallon = "PoundPerImperialGallon",
     /** */
-    KilogramsPerCubicMillimeter,
+    KilogramsPerCubicMillimeter = "KilogramPerCubicMillimeter",
     /** */
-    KilogramsPerCubicCentimeter,
+    KilogramsPerCubicCentimeter = "KilogramPerCubicCentimeter",
     /** */
-    KilogramsPerCubicMeter,
+    KilogramsPerCubicMeter = "KilogramPerCubicMeter",
     /** */
-    MilligramsPerCubicMeter,
+    MilligramsPerCubicMeter = "MilligramPerCubicMeter",
     /** */
-    MicrogramsPerCubicMeter,
+    MicrogramsPerCubicMeter = "MicrogramPerCubicMeter",
     /** */
-    PicogramsPerMicroliter,
+    PicogramsPerMicroliter = "PicogramPerMicroliter",
     /** */
-    NanogramsPerMicroliter,
+    NanogramsPerMicroliter = "NanogramPerMicroliter",
     /** */
-    MicrogramsPerMicroliter,
+    MicrogramsPerMicroliter = "MicrogramPerMicroliter",
     /** */
-    MilligramsPerMicroliter,
+    MilligramsPerMicroliter = "MilligramPerMicroliter",
     /** */
-    CentigramsPerMicroliter,
+    CentigramsPerMicroliter = "CentigramPerMicroliter",
     /** */
-    DecigramsPerMicroliter,
+    DecigramsPerMicroliter = "DecigramPerMicroliter",
     /** */
-    PicogramsPerMilliliter,
+    PicogramsPerMilliliter = "PicogramPerMilliliter",
     /** */
-    NanogramsPerMilliliter,
+    NanogramsPerMilliliter = "NanogramPerMilliliter",
     /** */
-    MicrogramsPerMilliliter,
+    MicrogramsPerMilliliter = "MicrogramPerMilliliter",
     /** */
-    MilligramsPerMilliliter,
+    MilligramsPerMilliliter = "MilligramPerMilliliter",
     /** */
-    CentigramsPerMilliliter,
+    CentigramsPerMilliliter = "CentigramPerMilliliter",
     /** */
-    DecigramsPerMilliliter,
+    DecigramsPerMilliliter = "DecigramPerMilliliter",
     /** */
-    PicogramsPerDeciliter,
+    PicogramsPerDeciliter = "PicogramPerDeciliter",
     /** */
-    NanogramsPerDeciliter,
+    NanogramsPerDeciliter = "NanogramPerDeciliter",
     /** */
-    MicrogramsPerDeciliter,
+    MicrogramsPerDeciliter = "MicrogramPerDeciliter",
     /** */
-    MilligramsPerDeciliter,
+    MilligramsPerDeciliter = "MilligramPerDeciliter",
     /** */
-    CentigramsPerDeciliter,
+    CentigramsPerDeciliter = "CentigramPerDeciliter",
     /** */
-    DecigramsPerDeciliter,
+    DecigramsPerDeciliter = "DecigramPerDeciliter",
     /** */
-    PicogramsPerLiter,
+    PicogramsPerLiter = "PicogramPerLiter",
     /** */
-    NanogramsPerLiter,
+    NanogramsPerLiter = "NanogramPerLiter",
     /** */
-    MicrogramsPerLiter,
+    MicrogramsPerLiter = "MicrogramPerLiter",
     /** */
-    MilligramsPerLiter,
+    MilligramsPerLiter = "MilligramPerLiter",
     /** */
-    CentigramsPerLiter,
+    CentigramsPerLiter = "CentigramPerLiter",
     /** */
-    DecigramsPerLiter,
+    DecigramsPerLiter = "DecigramPerLiter",
     /** */
-    KilogramsPerLiter,
+    KilogramsPerLiter = "KilogramPerLiter",
     /** */
-    KilopoundsPerCubicInch,
+    KilopoundsPerCubicInch = "KilopoundPerCubicInch",
     /** */
-    KilopoundsPerCubicFoot
+    KilopoundsPerCubicFoot = "KilopoundPerCubicFoot"
 }
 
 /** In chemistry, the mass concentration ρi (or γi) is defined as the mass of a constituent mi divided by the volume of the mixture V */

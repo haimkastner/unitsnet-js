@@ -1,7 +1,7 @@
 /** PermeabilityUnits enumeration */
 export enum PermeabilityUnits {
     /** */
-    HenriesPerMeter
+    HenriesPerMeter = "HenryPerMeter"
 }
 
 /** In electromagnetism, permeability is the measure of the ability of a material to support the formation of a magnetic field within itself. */

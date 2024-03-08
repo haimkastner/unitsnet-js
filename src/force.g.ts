@@ -1,35 +1,35 @@
 /** ForceUnits enumeration */
 export enum ForceUnits {
     /** One dyne is equal to 10 micronewtons, 10e−5 N or to 10 nsn (nanosthenes) in the old metre–tonne–second system of units. */
-    Dyne,
+    Dyne = "Dyn",
     /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
-    KilogramsForce,
+    KilogramsForce = "KilogramForce",
     /** The tonne-force, metric ton-force, megagram-force, and megapond (Mp) are each 1000 kilograms-force. */
-    TonnesForce,
+    TonnesForce = "TonneForce",
     /** The newton (symbol: N) is the unit of force in the International System of Units (SI). It is defined as 1 kg⋅m/s2, the force which gives a mass of 1 kilogram an acceleration of 1 metre per second per second. */
-    Newtons,
+    Newtons = "Newton",
     /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
-    KiloPonds,
+    KiloPonds = "KiloPond",
     /** The poundal is defined as the force necessary to accelerate 1 pound-mass at 1 foot per second per second. 1 pdl = 0.138254954376 N exactly. */
-    Poundals,
+    Poundals = "Poundal",
     /** The standard values of acceleration of the standard gravitational field (gn) and the international avoirdupois pound (lb) result in a pound-force equal to 4.4482216152605 N. */
-    PoundsForce,
+    PoundsForce = "PoundForce",
     /** An ounce-force is 1⁄16 of a pound-force, or about 0.2780139 newtons. */
-    OunceForce,
+    OunceForce = "OunceForce",
     /** The short ton-force is a unit of force equal to 2,000 pounds-force (907.18474 kgf), that is most commonly used in the United States – known there simply as the ton or US ton. */
-    ShortTonsForce,
+    ShortTonsForce = "ShortTonForce",
     /** */
-    Micronewtons,
+    Micronewtons = "Micronewton",
     /** */
-    Millinewtons,
+    Millinewtons = "Millinewton",
     /** */
-    Decanewtons,
+    Decanewtons = "Decanewton",
     /** */
-    Kilonewtons,
+    Kilonewtons = "Kilonewton",
     /** */
-    Meganewtons,
+    Meganewtons = "Meganewton",
     /** */
-    KilopoundsForce
+    KilopoundsForce = "KilopoundForce"
 }
 
 /** In physics, a force is any influence that causes an object to undergo a certain change, either concerning its movement, direction, or geometrical construction. In other words, a force can cause an object with mass to change its velocity (which includes to begin moving from a state of rest), i.e., to accelerate, or a flexible object to deform, or both. Force can also be described by intuitive concepts such as a push or a pull. A force has both magnitude and direction, making it a vector quantity. It is measured in the SI unit of newtons and represented by the symbol F. */

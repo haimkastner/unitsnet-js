@@ -1,31 +1,31 @@
 /** FrequencyUnits enumeration */
 export enum FrequencyUnits {
     /** */
-    Hertz,
+    Hertz = "Hertz",
     /** */
-    RadiansPerSecond,
+    RadiansPerSecond = "RadianPerSecond",
     /** */
-    CyclesPerMinute,
+    CyclesPerMinute = "CyclePerMinute",
     /** */
-    CyclesPerHour,
+    CyclesPerHour = "CyclePerHour",
     /** */
-    BeatsPerMinute,
+    BeatsPerMinute = "BeatPerMinute",
     /** */
-    PerSecond,
+    PerSecond = "PerSecond",
     /** */
-    BUnits,
+    BUnits = "BUnit",
     /** */
-    Microhertz,
+    Microhertz = "Microhertz",
     /** */
-    Millihertz,
+    Millihertz = "Millihertz",
     /** */
-    Kilohertz,
+    Kilohertz = "Kilohertz",
     /** */
-    Megahertz,
+    Megahertz = "Megahertz",
     /** */
-    Gigahertz,
+    Gigahertz = "Gigahertz",
     /** */
-    Terahertz
+    Terahertz = "Terahertz"
 }
 
 /** The number of occurrences of a repeating event per unit time. */

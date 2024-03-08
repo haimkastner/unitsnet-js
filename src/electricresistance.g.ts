@@ -1,19 +1,19 @@
 /** ElectricResistanceUnits enumeration */
 export enum ElectricResistanceUnits {
     /** */
-    Ohms,
+    Ohms = "Ohm",
     /** */
-    Microohms,
+    Microohms = "Microohm",
     /** */
-    Milliohms,
+    Milliohms = "Milliohm",
     /** */
-    Kiloohms,
+    Kiloohms = "Kiloohm",
     /** */
-    Megaohms,
+    Megaohms = "Megaohm",
     /** */
-    Gigaohms,
+    Gigaohms = "Gigaohm",
     /** */
-    Teraohms
+    Teraohms = "Teraohm"
 }
 
 /** The electrical resistance of an electrical conductor is the opposition to the passage of an electric current through that conductor. */

@@ -1,9 +1,9 @@
 /** PowerRatioUnits enumeration */
 export enum PowerRatioUnits {
     /** */
-    DecibelWatts,
+    DecibelWatts = "DecibelWatt",
     /** */
-    DecibelMilliwatts
+    DecibelMilliwatts = "DecibelMilliwatt"
 }
 
 /** The strength of a signal expressed in decibels (dB) relative to one watt. */

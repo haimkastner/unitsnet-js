@@ -1,13 +1,13 @@
 /** FuelEfficiencyUnits enumeration */
 export enum FuelEfficiencyUnits {
     /** */
-    LitersPer100Kilometers,
+    LitersPer100Kilometers = "LiterPer100Kilometers",
     /** */
-    MilesPerUsGallon,
+    MilesPerUsGallon = "MilePerUsGallon",
     /** */
-    MilesPerUkGallon,
+    MilesPerUkGallon = "MilePerUkGallon",
     /** */
-    KilometersPerLiters
+    KilometersPerLiters = "KilometerPerLiter"
 }
 
 /** Fuel efficiency is a form of thermal efficiency, meaning the ratio from effort to result of a process that converts chemical potential energy contained in a carrier (fuel) into kinetic energy or work. Fuel economy is stated as "fuel consumption" in liters per 100 kilometers (L/100 km). In countries using non-metric system, fuel economy is expressed in miles per gallon (mpg) (imperial galon or US galon). */

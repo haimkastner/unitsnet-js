@@ -1,11 +1,11 @@
 /** LeakRateUnits enumeration */
 export enum LeakRateUnits {
     /** */
-    PascalCubicMetersPerSecond,
+    PascalCubicMetersPerSecond = "PascalCubicMeterPerSecond",
     /** */
-    MillibarLitersPerSecond,
+    MillibarLitersPerSecond = "MillibarLiterPerSecond",
     /** */
-    TorrLitersPerSecond
+    TorrLitersPerSecond = "TorrLiterPerSecond"
 }
 
 /** A leakage rate of QL = 1 Pa-m³/s is given when the pressure in a closed, evacuated container with a volume of 1 m³ rises by 1 Pa per second or when the pressure in the container drops by 1 Pa in the event of overpressure. */

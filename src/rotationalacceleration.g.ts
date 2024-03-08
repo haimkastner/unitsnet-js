@@ -1,13 +1,13 @@
 /** RotationalAccelerationUnits enumeration */
 export enum RotationalAccelerationUnits {
     /** */
-    RadiansPerSecondSquared,
+    RadiansPerSecondSquared = "RadianPerSecondSquared",
     /** */
-    DegreesPerSecondSquared,
+    DegreesPerSecondSquared = "DegreePerSecondSquared",
     /** */
-    RevolutionsPerMinutePerSecond,
+    RevolutionsPerMinutePerSecond = "RevolutionPerMinutePerSecond",
     /** */
-    RevolutionsPerSecondSquared
+    RevolutionsPerSecondSquared = "RevolutionPerSecondSquared"
 }
 
 /** Angular acceleration is the rate of change of rotational speed. */

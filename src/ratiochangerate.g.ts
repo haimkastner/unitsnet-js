@@ -1,9 +1,9 @@
 /** RatioChangeRateUnits enumeration */
 export enum RatioChangeRateUnits {
     /** */
-    PercentsPerSecond,
+    PercentsPerSecond = "PercentPerSecond",
     /** */
-    DecimalFractionsPerSecond
+    DecimalFractionsPerSecond = "DecimalFractionPerSecond"
 }
 
 /** The change in ratio per unit of time. */

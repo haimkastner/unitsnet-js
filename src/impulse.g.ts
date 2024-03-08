@@ -1,31 +1,31 @@
 /** ImpulseUnits enumeration */
 export enum ImpulseUnits {
     /** */
-    KilogramMetersPerSecond,
+    KilogramMetersPerSecond = "KilogramMeterPerSecond",
     /** */
-    NewtonSeconds,
+    NewtonSeconds = "NewtonSecond",
     /** */
-    PoundFeetPerSecond,
+    PoundFeetPerSecond = "PoundFootPerSecond",
     /** */
-    PoundForceSeconds,
+    PoundForceSeconds = "PoundForceSecond",
     /** */
-    SlugFeetPerSecond,
+    SlugFeetPerSecond = "SlugFootPerSecond",
     /** */
-    NanonewtonSeconds,
+    NanonewtonSeconds = "NanonewtonSecond",
     /** */
-    MicronewtonSeconds,
+    MicronewtonSeconds = "MicronewtonSecond",
     /** */
-    MillinewtonSeconds,
+    MillinewtonSeconds = "MillinewtonSecond",
     /** */
-    CentinewtonSeconds,
+    CentinewtonSeconds = "CentinewtonSecond",
     /** */
-    DecinewtonSeconds,
+    DecinewtonSeconds = "DecinewtonSecond",
     /** */
-    DecanewtonSeconds,
+    DecanewtonSeconds = "DecanewtonSecond",
     /** */
-    KilonewtonSeconds,
+    KilonewtonSeconds = "KilonewtonSecond",
     /** */
-    MeganewtonSeconds
+    MeganewtonSeconds = "MeganewtonSecond"
 }
 
 /** In classical mechanics, impulse is the integral of a force, F, over the time interval, t, for which it acts. Impulse applied to an object produces an equivalent vector change in its linear momentum, also in the resultant direction. */

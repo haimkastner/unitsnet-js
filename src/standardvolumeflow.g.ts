@@ -1,23 +1,23 @@
 /** StandardVolumeFlowUnits enumeration */
 export enum StandardVolumeFlowUnits {
     /** */
-    StandardCubicMetersPerSecond,
+    StandardCubicMetersPerSecond = "StandardCubicMeterPerSecond",
     /** */
-    StandardCubicMetersPerMinute,
+    StandardCubicMetersPerMinute = "StandardCubicMeterPerMinute",
     /** */
-    StandardCubicMetersPerHour,
+    StandardCubicMetersPerHour = "StandardCubicMeterPerHour",
     /** */
-    StandardCubicMetersPerDay,
+    StandardCubicMetersPerDay = "StandardCubicMeterPerDay",
     /** */
-    StandardCubicCentimetersPerMinute,
+    StandardCubicCentimetersPerMinute = "StandardCubicCentimeterPerMinute",
     /** */
-    StandardLitersPerMinute,
+    StandardLitersPerMinute = "StandardLiterPerMinute",
     /** */
-    StandardCubicFeetPerSecond,
+    StandardCubicFeetPerSecond = "StandardCubicFootPerSecond",
     /** */
-    StandardCubicFeetPerMinute,
+    StandardCubicFeetPerMinute = "StandardCubicFootPerMinute",
     /** */
-    StandardCubicFeetPerHour
+    StandardCubicFeetPerHour = "StandardCubicFootPerHour"
 }
 
 /** The molar flow rate of a gas corrected to standardized conditions of temperature and pressure thus representing a fixed number of moles of gas regardless of composition and actual flow conditions. */

@@ -1,27 +1,27 @@
 /** ElectricChargeUnits enumeration */
 export enum ElectricChargeUnits {
     /** */
-    Coulombs,
+    Coulombs = "Coulomb",
     /** */
-    AmpereHours,
+    AmpereHours = "AmpereHour",
     /** */
-    Picocoulombs,
+    Picocoulombs = "Picocoulomb",
     /** */
-    Nanocoulombs,
+    Nanocoulombs = "Nanocoulomb",
     /** */
-    Microcoulombs,
+    Microcoulombs = "Microcoulomb",
     /** */
-    Millicoulombs,
+    Millicoulombs = "Millicoulomb",
     /** */
-    Kilocoulombs,
+    Kilocoulombs = "Kilocoulomb",
     /** */
-    Megacoulombs,
+    Megacoulombs = "Megacoulomb",
     /** */
-    MilliampereHours,
+    MilliampereHours = "MilliampereHour",
     /** */
-    KiloampereHours,
+    KiloampereHours = "KiloampereHour",
     /** */
-    MegaampereHours
+    MegaampereHours = "MegaampereHour"
 }
 
 /** Electric charge is the physical property of matter that causes it to experience a force when placed in an electromagnetic field. */

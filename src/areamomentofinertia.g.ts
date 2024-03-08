@@ -1,17 +1,17 @@
 /** AreaMomentOfInertiaUnits enumeration */
 export enum AreaMomentOfInertiaUnits {
     /** */
-    MetersToTheFourth,
+    MetersToTheFourth = "MeterToTheFourth",
     /** */
-    DecimetersToTheFourth,
+    DecimetersToTheFourth = "DecimeterToTheFourth",
     /** */
-    CentimetersToTheFourth,
+    CentimetersToTheFourth = "CentimeterToTheFourth",
     /** */
-    MillimetersToTheFourth,
+    MillimetersToTheFourth = "MillimeterToTheFourth",
     /** */
-    FeetToTheFourth,
+    FeetToTheFourth = "FootToTheFourth",
     /** */
-    InchesToTheFourth
+    InchesToTheFourth = "InchToTheFourth"
 }
 
 /** A geometric property of an area that reflects how its points are distributed with regard to an axis. */

@@ -1,17 +1,17 @@
 /** MagneticFieldUnits enumeration */
 export enum MagneticFieldUnits {
     /** */
-    Teslas,
+    Teslas = "Tesla",
     /** */
-    Gausses,
+    Gausses = "Gauss",
     /** */
-    Nanoteslas,
+    Nanoteslas = "Nanotesla",
     /** */
-    Microteslas,
+    Microteslas = "Microtesla",
     /** */
-    Milliteslas,
+    Milliteslas = "Millitesla",
     /** */
-    Milligausses
+    Milligausses = "Milligauss"
 }
 
 /** A magnetic field is a force field that is created by moving electric charges (electric currents) and magnetic dipoles, and exerts a force on other nearby moving charges and magnetic dipoles. */

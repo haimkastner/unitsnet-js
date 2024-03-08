@@ -1,11 +1,11 @@
 /** MolarEnergyUnits enumeration */
 export enum MolarEnergyUnits {
     /** */
-    JoulesPerMole,
+    JoulesPerMole = "JoulePerMole",
     /** */
-    KilojoulesPerMole,
+    KilojoulesPerMole = "KilojoulePerMole",
     /** */
-    MegajoulesPerMole
+    MegajoulesPerMole = "MegajoulePerMole"
 }
 
 /** Molar energy is the amount of energy stored in 1 mole of a substance. */

@@ -1,53 +1,53 @@
 /** MassFractionUnits enumeration */
 export enum MassFractionUnits {
     /** */
-    DecimalFractions,
+    DecimalFractions = "DecimalFraction",
     /** */
-    GramsPerGram,
+    GramsPerGram = "GramPerGram",
     /** */
-    GramsPerKilogram,
+    GramsPerKilogram = "GramPerKilogram",
     /** */
-    Percent,
+    Percent = "Percent",
     /** */
-    PartsPerThousand,
+    PartsPerThousand = "PartPerThousand",
     /** */
-    PartsPerMillion,
+    PartsPerMillion = "PartPerMillion",
     /** */
-    PartsPerBillion,
+    PartsPerBillion = "PartPerBillion",
     /** */
-    PartsPerTrillion,
+    PartsPerTrillion = "PartPerTrillion",
     /** */
-    NanogramsPerGram,
+    NanogramsPerGram = "NanogramPerGram",
     /** */
-    MicrogramsPerGram,
+    MicrogramsPerGram = "MicrogramPerGram",
     /** */
-    MilligramsPerGram,
+    MilligramsPerGram = "MilligramPerGram",
     /** */
-    CentigramsPerGram,
+    CentigramsPerGram = "CentigramPerGram",
     /** */
-    DecigramsPerGram,
+    DecigramsPerGram = "DecigramPerGram",
     /** */
-    DecagramsPerGram,
+    DecagramsPerGram = "DecagramPerGram",
     /** */
-    HectogramsPerGram,
+    HectogramsPerGram = "HectogramPerGram",
     /** */
-    KilogramsPerGram,
+    KilogramsPerGram = "KilogramPerGram",
     /** */
-    NanogramsPerKilogram,
+    NanogramsPerKilogram = "NanogramPerKilogram",
     /** */
-    MicrogramsPerKilogram,
+    MicrogramsPerKilogram = "MicrogramPerKilogram",
     /** */
-    MilligramsPerKilogram,
+    MilligramsPerKilogram = "MilligramPerKilogram",
     /** */
-    CentigramsPerKilogram,
+    CentigramsPerKilogram = "CentigramPerKilogram",
     /** */
-    DecigramsPerKilogram,
+    DecigramsPerKilogram = "DecigramPerKilogram",
     /** */
-    DecagramsPerKilogram,
+    DecagramsPerKilogram = "DecagramPerKilogram",
     /** */
-    HectogramsPerKilogram,
+    HectogramsPerKilogram = "HectogramPerKilogram",
     /** */
-    KilogramsPerKilogram
+    KilogramsPerKilogram = "KilogramPerKilogram"
 }
 
 /** The mass fraction is defined as the mass of a constituent divided by the total mass of the mixture. */

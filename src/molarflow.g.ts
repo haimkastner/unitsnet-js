@@ -1,23 +1,23 @@
 /** MolarFlowUnits enumeration */
 export enum MolarFlowUnits {
     /** */
-    MolesPerSecond,
+    MolesPerSecond = "MolePerSecond",
     /** */
-    MolesPerMinute,
+    MolesPerMinute = "MolePerMinute",
     /** */
-    MolesPerHour,
+    MolesPerHour = "MolePerHour",
     /** */
-    PoundMolesPerSecond,
+    PoundMolesPerSecond = "PoundMolePerSecond",
     /** */
-    PoundMolesPerMinute,
+    PoundMolesPerMinute = "PoundMolePerMinute",
     /** */
-    PoundMolesPerHour,
+    PoundMolesPerHour = "PoundMolePerHour",
     /** */
-    KilomolesPerSecond,
+    KilomolesPerSecond = "KilomolePerSecond",
     /** */
-    KilomolesPerMinute,
+    KilomolesPerMinute = "KilomolePerMinute",
     /** */
-    KilomolesPerHour
+    KilomolesPerHour = "KilomolePerHour"
 }
 
 /** Molar flow is the ratio of the amount of substance change to the time during which the change occurred (value of amount of substance changes per unit time). */

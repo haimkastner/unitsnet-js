@@ -1,61 +1,61 @@
 /** MassMomentOfInertiaUnits enumeration */
 export enum MassMomentOfInertiaUnits {
     /** */
-    GramSquareMeters,
+    GramSquareMeters = "GramSquareMeter",
     /** */
-    GramSquareDecimeters,
+    GramSquareDecimeters = "GramSquareDecimeter",
     /** */
-    GramSquareCentimeters,
+    GramSquareCentimeters = "GramSquareCentimeter",
     /** */
-    GramSquareMillimeters,
+    GramSquareMillimeters = "GramSquareMillimeter",
     /** */
-    TonneSquareMeters,
+    TonneSquareMeters = "TonneSquareMeter",
     /** */
-    TonneSquareDecimeters,
+    TonneSquareDecimeters = "TonneSquareDecimeter",
     /** */
-    TonneSquareCentimeters,
+    TonneSquareCentimeters = "TonneSquareCentimeter",
     /** */
-    TonneSquareMilimeters,
+    TonneSquareMilimeters = "TonneSquareMilimeter",
     /** */
-    PoundSquareFeet,
+    PoundSquareFeet = "PoundSquareFoot",
     /** */
-    PoundSquareInches,
+    PoundSquareInches = "PoundSquareInch",
     /** */
-    SlugSquareFeet,
+    SlugSquareFeet = "SlugSquareFoot",
     /** */
-    SlugSquareInches,
+    SlugSquareInches = "SlugSquareInch",
     /** */
-    MilligramSquareMeters,
+    MilligramSquareMeters = "MilligramSquareMeter",
     /** */
-    KilogramSquareMeters,
+    KilogramSquareMeters = "KilogramSquareMeter",
     /** */
-    MilligramSquareDecimeters,
+    MilligramSquareDecimeters = "MilligramSquareDecimeter",
     /** */
-    KilogramSquareDecimeters,
+    KilogramSquareDecimeters = "KilogramSquareDecimeter",
     /** */
-    MilligramSquareCentimeters,
+    MilligramSquareCentimeters = "MilligramSquareCentimeter",
     /** */
-    KilogramSquareCentimeters,
+    KilogramSquareCentimeters = "KilogramSquareCentimeter",
     /** */
-    MilligramSquareMillimeters,
+    MilligramSquareMillimeters = "MilligramSquareMillimeter",
     /** */
-    KilogramSquareMillimeters,
+    KilogramSquareMillimeters = "KilogramSquareMillimeter",
     /** */
-    KilotonneSquareMeters,
+    KilotonneSquareMeters = "KilotonneSquareMeter",
     /** */
-    MegatonneSquareMeters,
+    MegatonneSquareMeters = "MegatonneSquareMeter",
     /** */
-    KilotonneSquareDecimeters,
+    KilotonneSquareDecimeters = "KilotonneSquareDecimeter",
     /** */
-    MegatonneSquareDecimeters,
+    MegatonneSquareDecimeters = "MegatonneSquareDecimeter",
     /** */
-    KilotonneSquareCentimeters,
+    KilotonneSquareCentimeters = "KilotonneSquareCentimeter",
     /** */
-    MegatonneSquareCentimeters,
+    MegatonneSquareCentimeters = "MegatonneSquareCentimeter",
     /** */
-    KilotonneSquareMilimeters,
+    KilotonneSquareMilimeters = "KilotonneSquareMilimeter",
     /** */
-    MegatonneSquareMilimeters
+    MegatonneSquareMilimeters = "MegatonneSquareMilimeter"
 }
 
 /** A property of body reflects how its mass is distributed with regard to an axis. */

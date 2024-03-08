@@ -1,33 +1,33 @@
 /** ElectricResistivityUnits enumeration */
 export enum ElectricResistivityUnits {
     /** */
-    OhmMeters,
+    OhmMeters = "OhmMeter",
     /** */
-    OhmsCentimeter,
+    OhmsCentimeter = "OhmCentimeter",
     /** */
-    PicoohmMeters,
+    PicoohmMeters = "PicoohmMeter",
     /** */
-    NanoohmMeters,
+    NanoohmMeters = "NanoohmMeter",
     /** */
-    MicroohmMeters,
+    MicroohmMeters = "MicroohmMeter",
     /** */
-    MilliohmMeters,
+    MilliohmMeters = "MilliohmMeter",
     /** */
-    KiloohmMeters,
+    KiloohmMeters = "KiloohmMeter",
     /** */
-    MegaohmMeters,
+    MegaohmMeters = "MegaohmMeter",
     /** */
-    PicoohmsCentimeter,
+    PicoohmsCentimeter = "PicoohmCentimeter",
     /** */
-    NanoohmsCentimeter,
+    NanoohmsCentimeter = "NanoohmCentimeter",
     /** */
-    MicroohmsCentimeter,
+    MicroohmsCentimeter = "MicroohmCentimeter",
     /** */
-    MilliohmsCentimeter,
+    MilliohmsCentimeter = "MilliohmCentimeter",
     /** */
-    KiloohmsCentimeter,
+    KiloohmsCentimeter = "KiloohmCentimeter",
     /** */
-    MegaohmsCentimeter
+    MegaohmsCentimeter = "MegaohmCentimeter"
 }
 
 /** Electrical resistivity (also known as resistivity, specific electrical resistance, or volume resistivity) is a fundamental property that quantifies how strongly a given material opposes the flow of electric current. */

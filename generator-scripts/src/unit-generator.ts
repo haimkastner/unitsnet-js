@@ -37,6 +37,7 @@ function buildEnum(enumName: string, units: UnitProperties[]): EnumDeclarationSt
         members: units.map((unit: UnitProperties): EnumMemberStructure => ({
             kind: StructureKind.EnumMember,
             name: unit.pluralName,
+            value: unit.singularName,
             docs: [unit.JSDoc ?? '']
         })),
         isExported: true,

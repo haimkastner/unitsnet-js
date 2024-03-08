@@ -1,39 +1,39 @@
 /** SpecificWeightUnits enumeration */
 export enum SpecificWeightUnits {
     /** */
-    NewtonsPerCubicMillimeter,
+    NewtonsPerCubicMillimeter = "NewtonPerCubicMillimeter",
     /** */
-    NewtonsPerCubicCentimeter,
+    NewtonsPerCubicCentimeter = "NewtonPerCubicCentimeter",
     /** */
-    NewtonsPerCubicMeter,
+    NewtonsPerCubicMeter = "NewtonPerCubicMeter",
     /** */
-    KilogramsForcePerCubicMillimeter,
+    KilogramsForcePerCubicMillimeter = "KilogramForcePerCubicMillimeter",
     /** */
-    KilogramsForcePerCubicCentimeter,
+    KilogramsForcePerCubicCentimeter = "KilogramForcePerCubicCentimeter",
     /** */
-    KilogramsForcePerCubicMeter,
+    KilogramsForcePerCubicMeter = "KilogramForcePerCubicMeter",
     /** */
-    PoundsForcePerCubicInch,
+    PoundsForcePerCubicInch = "PoundForcePerCubicInch",
     /** */
-    PoundsForcePerCubicFoot,
+    PoundsForcePerCubicFoot = "PoundForcePerCubicFoot",
     /** */
-    TonnesForcePerCubicMillimeter,
+    TonnesForcePerCubicMillimeter = "TonneForcePerCubicMillimeter",
     /** */
-    TonnesForcePerCubicCentimeter,
+    TonnesForcePerCubicCentimeter = "TonneForcePerCubicCentimeter",
     /** */
-    TonnesForcePerCubicMeter,
+    TonnesForcePerCubicMeter = "TonneForcePerCubicMeter",
     /** */
-    KilonewtonsPerCubicMillimeter,
+    KilonewtonsPerCubicMillimeter = "KilonewtonPerCubicMillimeter",
     /** */
-    KilonewtonsPerCubicCentimeter,
+    KilonewtonsPerCubicCentimeter = "KilonewtonPerCubicCentimeter",
     /** */
-    KilonewtonsPerCubicMeter,
+    KilonewtonsPerCubicMeter = "KilonewtonPerCubicMeter",
     /** */
-    MeganewtonsPerCubicMeter,
+    MeganewtonsPerCubicMeter = "MeganewtonPerCubicMeter",
     /** */
-    KilopoundsForcePerCubicInch,
+    KilopoundsForcePerCubicInch = "KilopoundForcePerCubicInch",
     /** */
-    KilopoundsForcePerCubicFoot
+    KilopoundsForcePerCubicFoot = "KilopoundForcePerCubicFoot"
 }
 
 /** The SpecificWeight, or more precisely, the volumetric weight density, of a substance is its weight per unit volume. */

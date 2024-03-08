@@ -1,25 +1,25 @@
 /** LuminanceUnits enumeration */
 export enum LuminanceUnits {
     /** */
-    CandelasPerSquareMeter,
+    CandelasPerSquareMeter = "CandelaPerSquareMeter",
     /** */
-    CandelasPerSquareFoot,
+    CandelasPerSquareFoot = "CandelaPerSquareFoot",
     /** */
-    CandelasPerSquareInch,
+    CandelasPerSquareInch = "CandelaPerSquareInch",
     /** */
-    Nits,
+    Nits = "Nit",
     /** */
-    NanocandelasPerSquareMeter,
+    NanocandelasPerSquareMeter = "NanocandelaPerSquareMeter",
     /** */
-    MicrocandelasPerSquareMeter,
+    MicrocandelasPerSquareMeter = "MicrocandelaPerSquareMeter",
     /** */
-    MillicandelasPerSquareMeter,
+    MillicandelasPerSquareMeter = "MillicandelaPerSquareMeter",
     /** */
-    CenticandelasPerSquareMeter,
+    CenticandelasPerSquareMeter = "CenticandelaPerSquareMeter",
     /** */
-    DecicandelasPerSquareMeter,
+    DecicandelasPerSquareMeter = "DecicandelaPerSquareMeter",
     /** */
-    KilocandelasPerSquareMeter
+    KilocandelasPerSquareMeter = "KilocandelaPerSquareMeter"
 }
 
 /** Luminance is a photometric measure of the luminous intensity per unit area of light travelling in a given direction. */

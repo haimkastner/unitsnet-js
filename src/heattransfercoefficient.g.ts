@@ -1,15 +1,15 @@
 /** HeatTransferCoefficientUnits enumeration */
 export enum HeatTransferCoefficientUnits {
     /** */
-    WattsPerSquareMeterKelvin,
+    WattsPerSquareMeterKelvin = "WattPerSquareMeterKelvin",
     /** */
-    WattsPerSquareMeterCelsius,
+    WattsPerSquareMeterCelsius = "WattPerSquareMeterCelsius",
     /** */
-    BtusPerHourSquareFootDegreeFahrenheit,
+    BtusPerHourSquareFootDegreeFahrenheit = "BtuPerHourSquareFootDegreeFahrenheit",
     /** */
-    CaloriesPerHourSquareMeterDegreeCelsius,
+    CaloriesPerHourSquareMeterDegreeCelsius = "CaloriePerHourSquareMeterDegreeCelsius",
     /** */
-    KilocaloriesPerHourSquareMeterDegreeCelsius
+    KilocaloriesPerHourSquareMeterDegreeCelsius = "KilocaloriePerHourSquareMeterDegreeCelsius"
 }
 
 /** The heat transfer coefficient or film coefficient, or film effectiveness, in thermodynamics and in mechanics is the proportionality constant between the heat flux and the thermodynamic driving force for the flow of heat (i.e., the temperature difference, ΔT) */

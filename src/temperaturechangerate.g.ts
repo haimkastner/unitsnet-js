@@ -1,25 +1,25 @@
 /** TemperatureChangeRateUnits enumeration */
 export enum TemperatureChangeRateUnits {
     /** */
-    DegreesCelsiusPerSecond,
+    DegreesCelsiusPerSecond = "DegreeCelsiusPerSecond",
     /** */
-    DegreesCelsiusPerMinute,
+    DegreesCelsiusPerMinute = "DegreeCelsiusPerMinute",
     /** */
-    NanodegreesCelsiusPerSecond,
+    NanodegreesCelsiusPerSecond = "NanodegreeCelsiusPerSecond",
     /** */
-    MicrodegreesCelsiusPerSecond,
+    MicrodegreesCelsiusPerSecond = "MicrodegreeCelsiusPerSecond",
     /** */
-    MillidegreesCelsiusPerSecond,
+    MillidegreesCelsiusPerSecond = "MillidegreeCelsiusPerSecond",
     /** */
-    CentidegreesCelsiusPerSecond,
+    CentidegreesCelsiusPerSecond = "CentidegreeCelsiusPerSecond",
     /** */
-    DecidegreesCelsiusPerSecond,
+    DecidegreesCelsiusPerSecond = "DecidegreeCelsiusPerSecond",
     /** */
-    DecadegreesCelsiusPerSecond,
+    DecadegreesCelsiusPerSecond = "DecadegreeCelsiusPerSecond",
     /** */
-    HectodegreesCelsiusPerSecond,
+    HectodegreesCelsiusPerSecond = "HectodegreeCelsiusPerSecond",
     /** */
-    KilodegreesCelsiusPerSecond
+    KilodegreesCelsiusPerSecond = "KilodegreeCelsiusPerSecond"
 }
 
 /** Temperature change rate is the ratio of the temperature change to the time during which the change occurred (value of temperature changes per unit time). */

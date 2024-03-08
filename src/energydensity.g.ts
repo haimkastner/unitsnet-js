@@ -1,29 +1,29 @@
 /** EnergyDensityUnits enumeration */
 export enum EnergyDensityUnits {
     /** */
-    JoulesPerCubicMeter,
+    JoulesPerCubicMeter = "JoulePerCubicMeter",
     /** */
-    WattHoursPerCubicMeter,
+    WattHoursPerCubicMeter = "WattHourPerCubicMeter",
     /** */
-    KilojoulesPerCubicMeter,
+    KilojoulesPerCubicMeter = "KilojoulePerCubicMeter",
     /** */
-    MegajoulesPerCubicMeter,
+    MegajoulesPerCubicMeter = "MegajoulePerCubicMeter",
     /** */
-    GigajoulesPerCubicMeter,
+    GigajoulesPerCubicMeter = "GigajoulePerCubicMeter",
     /** */
-    TerajoulesPerCubicMeter,
+    TerajoulesPerCubicMeter = "TerajoulePerCubicMeter",
     /** */
-    PetajoulesPerCubicMeter,
+    PetajoulesPerCubicMeter = "PetajoulePerCubicMeter",
     /** */
-    KilowattHoursPerCubicMeter,
+    KilowattHoursPerCubicMeter = "KilowattHourPerCubicMeter",
     /** */
-    MegawattHoursPerCubicMeter,
+    MegawattHoursPerCubicMeter = "MegawattHourPerCubicMeter",
     /** */
-    GigawattHoursPerCubicMeter,
+    GigawattHoursPerCubicMeter = "GigawattHourPerCubicMeter",
     /** */
-    TerawattHoursPerCubicMeter,
+    TerawattHoursPerCubicMeter = "TerawattHourPerCubicMeter",
     /** */
-    PetawattHoursPerCubicMeter
+    PetawattHoursPerCubicMeter = "PetawattHourPerCubicMeter"
 }
 
 /** Energy density is the amount of energy stored in a substance per unit volume and is measured in J/m³. It is sometimes confused with energy per unit mass which is properly called specific energy. */

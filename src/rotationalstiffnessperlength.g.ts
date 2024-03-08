@@ -1,15 +1,15 @@
 /** RotationalStiffnessPerLengthUnits enumeration */
 export enum RotationalStiffnessPerLengthUnits {
     /** */
-    NewtonMetersPerRadianPerMeter,
+    NewtonMetersPerRadianPerMeter = "NewtonMeterPerRadianPerMeter",
     /** */
-    PoundForceFeetPerDegreesPerFeet,
+    PoundForceFeetPerDegreesPerFeet = "PoundForceFootPerDegreesPerFoot",
     /** */
-    KilopoundForceFeetPerDegreesPerFeet,
+    KilopoundForceFeetPerDegreesPerFeet = "KilopoundForceFootPerDegreesPerFoot",
     /** */
-    KilonewtonMetersPerRadianPerMeter,
+    KilonewtonMetersPerRadianPerMeter = "KilonewtonMeterPerRadianPerMeter",
     /** */
-    MeganewtonMetersPerRadianPerMeter
+    MeganewtonMetersPerRadianPerMeter = "MeganewtonMeterPerRadianPerMeter"
 }
 
 /** https://en.wikipedia.org/wiki/Stiffness#Rotational_stiffness */

@@ -1,21 +1,21 @@
 /** RadiationExposureUnits enumeration */
 export enum RadiationExposureUnits {
     /** */
-    CoulombsPerKilogram,
+    CoulombsPerKilogram = "CoulombPerKilogram",
     /** */
-    Roentgens,
+    Roentgens = "Roentgen",
     /** */
-    PicocoulombsPerKilogram,
+    PicocoulombsPerKilogram = "PicocoulombPerKilogram",
     /** */
-    NanocoulombsPerKilogram,
+    NanocoulombsPerKilogram = "NanocoulombPerKilogram",
     /** */
-    MicrocoulombsPerKilogram,
+    MicrocoulombsPerKilogram = "MicrocoulombPerKilogram",
     /** */
-    MillicoulombsPerKilogram,
+    MillicoulombsPerKilogram = "MillicoulombPerKilogram",
     /** */
-    Microroentgens,
+    Microroentgens = "Microroentgen",
     /** */
-    Milliroentgens
+    Milliroentgens = "Milliroentgen"
 }
 
 /** Radiation exposure is a measure of the ionization of air due to ionizing radiation from photons. */

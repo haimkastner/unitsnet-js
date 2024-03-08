@@ -1,7 +1,7 @@
 /** RelativeHumidityUnits enumeration */
 export enum RelativeHumidityUnits {
     /** */
-    Percent
+    Percent = "Percent"
 }
 
 /** Relative humidity is a ratio of the actual water vapor present in the air to the maximum water vapor in the air at the given temperature. */

@@ -1,65 +1,65 @@
 /** SpecificEnergyUnits enumeration */
 export enum SpecificEnergyUnits {
     /** */
-    JoulesPerKilogram,
+    JoulesPerKilogram = "JoulePerKilogram",
     /** */
-    MegaJoulesPerTonne,
+    MegaJoulesPerTonne = "MegaJoulePerTonne",
     /** */
-    CaloriesPerGram,
+    CaloriesPerGram = "CaloriePerGram",
     /** */
-    WattHoursPerKilogram,
+    WattHoursPerKilogram = "WattHourPerKilogram",
     /** */
-    WattDaysPerKilogram,
+    WattDaysPerKilogram = "WattDayPerKilogram",
     /** */
-    WattDaysPerTonne,
+    WattDaysPerTonne = "WattDayPerTonne",
     /** */
-    WattDaysPerShortTon,
+    WattDaysPerShortTon = "WattDayPerShortTon",
     /** */
-    WattHoursPerPound,
+    WattHoursPerPound = "WattHourPerPound",
     /** */
-    BtuPerPound,
+    BtuPerPound = "BtuPerPound",
     /** */
-    KilojoulesPerKilogram,
+    KilojoulesPerKilogram = "KilojoulePerKilogram",
     /** */
-    MegajoulesPerKilogram,
+    MegajoulesPerKilogram = "MegajoulePerKilogram",
     /** */
-    KilocaloriesPerGram,
+    KilocaloriesPerGram = "KilocaloriePerGram",
     /** */
-    KilowattHoursPerKilogram,
+    KilowattHoursPerKilogram = "KilowattHourPerKilogram",
     /** */
-    MegawattHoursPerKilogram,
+    MegawattHoursPerKilogram = "MegawattHourPerKilogram",
     /** */
-    GigawattHoursPerKilogram,
+    GigawattHoursPerKilogram = "GigawattHourPerKilogram",
     /** */
-    KilowattDaysPerKilogram,
+    KilowattDaysPerKilogram = "KilowattDayPerKilogram",
     /** */
-    MegawattDaysPerKilogram,
+    MegawattDaysPerKilogram = "MegawattDayPerKilogram",
     /** */
-    GigawattDaysPerKilogram,
+    GigawattDaysPerKilogram = "GigawattDayPerKilogram",
     /** */
-    TerawattDaysPerKilogram,
+    TerawattDaysPerKilogram = "TerawattDayPerKilogram",
     /** */
-    KilowattDaysPerTonne,
+    KilowattDaysPerTonne = "KilowattDayPerTonne",
     /** */
-    MegawattDaysPerTonne,
+    MegawattDaysPerTonne = "MegawattDayPerTonne",
     /** */
-    GigawattDaysPerTonne,
+    GigawattDaysPerTonne = "GigawattDayPerTonne",
     /** */
-    TerawattDaysPerTonne,
+    TerawattDaysPerTonne = "TerawattDayPerTonne",
     /** */
-    KilowattDaysPerShortTon,
+    KilowattDaysPerShortTon = "KilowattDayPerShortTon",
     /** */
-    MegawattDaysPerShortTon,
+    MegawattDaysPerShortTon = "MegawattDayPerShortTon",
     /** */
-    GigawattDaysPerShortTon,
+    GigawattDaysPerShortTon = "GigawattDayPerShortTon",
     /** */
-    TerawattDaysPerShortTon,
+    TerawattDaysPerShortTon = "TerawattDayPerShortTon",
     /** */
-    KilowattHoursPerPound,
+    KilowattHoursPerPound = "KilowattHourPerPound",
     /** */
-    MegawattHoursPerPound,
+    MegawattHoursPerPound = "MegawattHourPerPound",
     /** */
-    GigawattHoursPerPound
+    GigawattHoursPerPound = "GigawattHourPerPound"
 }
 
 /** The SpecificEnergy */

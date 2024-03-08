@@ -1,117 +1,117 @@
 /** DensityUnits enumeration */
 export enum DensityUnits {
     /** */
-    GramsPerCubicMillimeter,
+    GramsPerCubicMillimeter = "GramPerCubicMillimeter",
     /** */
-    GramsPerCubicCentimeter,
+    GramsPerCubicCentimeter = "GramPerCubicCentimeter",
     /** */
-    GramsPerCubicMeter,
+    GramsPerCubicMeter = "GramPerCubicMeter",
     /** */
-    PoundsPerCubicInch,
+    PoundsPerCubicInch = "PoundPerCubicInch",
     /** */
-    PoundsPerCubicFoot,
+    PoundsPerCubicFoot = "PoundPerCubicFoot",
     /** Calculated from the definition of <a href="https://en.wikipedia.org/wiki/Pound_(mass)">pound</a> and <a href="https://en.wikipedia.org/wiki/Yard">yard</a> compared to metric kilogram and meter. */
-    PoundsPerCubicYard,
+    PoundsPerCubicYard = "PoundPerCubicYard",
     /** */
-    TonnesPerCubicMillimeter,
+    TonnesPerCubicMillimeter = "TonnePerCubicMillimeter",
     /** */
-    TonnesPerCubicCentimeter,
+    TonnesPerCubicCentimeter = "TonnePerCubicCentimeter",
     /** */
-    TonnesPerCubicMeter,
+    TonnesPerCubicMeter = "TonnePerCubicMeter",
     /** */
-    SlugsPerCubicFoot,
+    SlugsPerCubicFoot = "SlugPerCubicFoot",
     /** */
-    GramsPerLiter,
+    GramsPerLiter = "GramPerLiter",
     /** */
-    GramsPerDeciLiter,
+    GramsPerDeciLiter = "GramPerDeciliter",
     /** */
-    GramsPerMilliliter,
+    GramsPerMilliliter = "GramPerMilliliter",
     /** */
-    PoundsPerUSGallon,
+    PoundsPerUSGallon = "PoundPerUSGallon",
     /** */
-    PoundsPerImperialGallon,
+    PoundsPerImperialGallon = "PoundPerImperialGallon",
     /** */
-    KilogramsPerLiter,
+    KilogramsPerLiter = "KilogramPerLiter",
     /** */
-    TonnesPerCubicFoot,
+    TonnesPerCubicFoot = "TonnePerCubicFoot",
     /** */
-    TonnesPerCubicInch,
+    TonnesPerCubicInch = "TonnePerCubicInch",
     /** */
-    GramsPerCubicFoot,
+    GramsPerCubicFoot = "GramPerCubicFoot",
     /** */
-    GramsPerCubicInch,
+    GramsPerCubicInch = "GramPerCubicInch",
     /** */
-    PoundsPerCubicMeter,
+    PoundsPerCubicMeter = "PoundPerCubicMeter",
     /** */
-    PoundsPerCubicCentimeter,
+    PoundsPerCubicCentimeter = "PoundPerCubicCentimeter",
     /** */
-    PoundsPerCubicMillimeter,
+    PoundsPerCubicMillimeter = "PoundPerCubicMillimeter",
     /** */
-    SlugsPerCubicMeter,
+    SlugsPerCubicMeter = "SlugPerCubicMeter",
     /** */
-    SlugsPerCubicCentimeter,
+    SlugsPerCubicCentimeter = "SlugPerCubicCentimeter",
     /** */
-    SlugsPerCubicMillimeter,
+    SlugsPerCubicMillimeter = "SlugPerCubicMillimeter",
     /** */
-    SlugsPerCubicInch,
+    SlugsPerCubicInch = "SlugPerCubicInch",
     /** */
-    KilogramsPerCubicMillimeter,
+    KilogramsPerCubicMillimeter = "KilogramPerCubicMillimeter",
     /** */
-    KilogramsPerCubicCentimeter,
+    KilogramsPerCubicCentimeter = "KilogramPerCubicCentimeter",
     /** */
-    KilogramsPerCubicMeter,
+    KilogramsPerCubicMeter = "KilogramPerCubicMeter",
     /** */
-    MilligramsPerCubicMeter,
+    MilligramsPerCubicMeter = "MilligramPerCubicMeter",
     /** */
-    MicrogramsPerCubicMeter,
+    MicrogramsPerCubicMeter = "MicrogramPerCubicMeter",
     /** */
-    KilopoundsPerCubicInch,
+    KilopoundsPerCubicInch = "KilopoundPerCubicInch",
     /** */
-    KilopoundsPerCubicFoot,
+    KilopoundsPerCubicFoot = "KilopoundPerCubicFoot",
     /** */
-    KilopoundsPerCubicYard,
+    KilopoundsPerCubicYard = "KilopoundPerCubicYard",
     /** */
-    FemtogramsPerLiter,
+    FemtogramsPerLiter = "FemtogramPerLiter",
     /** */
-    PicogramsPerLiter,
+    PicogramsPerLiter = "PicogramPerLiter",
     /** */
-    NanogramsPerLiter,
+    NanogramsPerLiter = "NanogramPerLiter",
     /** */
-    MicrogramsPerLiter,
+    MicrogramsPerLiter = "MicrogramPerLiter",
     /** */
-    MilligramsPerLiter,
+    MilligramsPerLiter = "MilligramPerLiter",
     /** */
-    CentigramsPerLiter,
+    CentigramsPerLiter = "CentigramPerLiter",
     /** */
-    DecigramsPerLiter,
+    DecigramsPerLiter = "DecigramPerLiter",
     /** */
-    FemtogramsPerDeciLiter,
+    FemtogramsPerDeciLiter = "FemtogramPerDeciliter",
     /** */
-    PicogramsPerDeciLiter,
+    PicogramsPerDeciLiter = "PicogramPerDeciliter",
     /** */
-    NanogramsPerDeciLiter,
+    NanogramsPerDeciLiter = "NanogramPerDeciliter",
     /** */
-    MicrogramsPerDeciLiter,
+    MicrogramsPerDeciLiter = "MicrogramPerDeciliter",
     /** */
-    MilligramsPerDeciLiter,
+    MilligramsPerDeciLiter = "MilligramPerDeciliter",
     /** */
-    CentigramsPerDeciLiter,
+    CentigramsPerDeciLiter = "CentigramPerDeciliter",
     /** */
-    DecigramsPerDeciLiter,
+    DecigramsPerDeciLiter = "DecigramPerDeciliter",
     /** */
-    FemtogramsPerMilliliter,
+    FemtogramsPerMilliliter = "FemtogramPerMilliliter",
     /** */
-    PicogramsPerMilliliter,
+    PicogramsPerMilliliter = "PicogramPerMilliliter",
     /** */
-    NanogramsPerMilliliter,
+    NanogramsPerMilliliter = "NanogramPerMilliliter",
     /** */
-    MicrogramsPerMilliliter,
+    MicrogramsPerMilliliter = "MicrogramPerMilliliter",
     /** */
-    MilligramsPerMilliliter,
+    MilligramsPerMilliliter = "MilligramPerMilliliter",
     /** */
-    CentigramsPerMilliliter,
+    CentigramsPerMilliliter = "CentigramPerMilliliter",
     /** */
-    DecigramsPerMilliliter
+    DecigramsPerMilliliter = "DecigramPerMilliliter"
 }
 
 /** The density, or more precisely, the volumetric mass density, of a substance is its mass per unit volume. */

@@ -1,15 +1,15 @@
 /** ElectricConductanceUnits enumeration */
 export enum ElectricConductanceUnits {
     /** */
-    Siemens,
+    Siemens = "Siemens",
     /** */
-    Nanosiemens,
+    Nanosiemens = "Nanosiemens",
     /** */
-    Microsiemens,
+    Microsiemens = "Microsiemens",
     /** */
-    Millisiemens,
+    Millisiemens = "Millisiemens",
     /** */
-    Kilosiemens
+    Kilosiemens = "Kilosiemens"
 }
 
 /** The electrical conductance of an electrical conductor is a measure of the easeness to pass an electric current through that conductor. */

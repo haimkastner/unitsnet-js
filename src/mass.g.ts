@@ -1,59 +1,59 @@
 /** MassUnits enumeration */
 export enum MassUnits {
     /** */
-    Grams,
+    Grams = "Gram",
     /** */
-    Tonnes,
+    Tonnes = "Tonne",
     /** The short ton is a unit of mass equal to 2,000 pounds (907.18474 kg), that is most commonly used in the United States – known there simply as the ton. */
-    ShortTons,
+    ShortTons = "ShortTon",
     /** Long ton (weight ton or Imperial ton) is a unit of mass equal to 2,240 pounds (1,016 kg) and is the name for the unit called the "ton" in the avoirdupois or Imperial system of measurements that was used in the United Kingdom and several other Commonwealth countries before metrication. */
-    LongTons,
+    LongTons = "LongTon",
     /** The pound or pound-mass (abbreviations: lb, lbm) is a unit of mass used in the imperial, United States customary and other systems of measurement. A number of different definitions have been used, the most common today being the international avoirdupois pound which is legally defined as exactly 0.45359237 kilograms, and which is divided into 16 avoirdupois ounces. */
-    Pounds,
+    Pounds = "Pound",
     /** The international avoirdupois ounce (abbreviated oz) is defined as exactly 28.349523125 g under the international yard and pound agreement of 1959, signed by the United States and countries of the Commonwealth of Nations. 16 oz make up an avoirdupois pound. */
-    Ounces,
+    Ounces = "Ounce",
     /** The slug (abbreviation slug) is a unit of mass that is accelerated by 1 ft/s² when a force of one pound (lbf) is exerted on it. */
-    Slugs,
+    Slugs = "Slug",
     /** The stone (abbreviation st) is a unit of mass equal to 14 pounds avoirdupois (about 6.35 kilograms) used in Great Britain and Ireland for measuring human body weight. */
-    Stone,
+    Stone = "Stone",
     /** The short hundredweight (abbreviation cwt) is a unit of mass equal to 100 pounds in US and Canada. In British English, the short hundredweight is referred to as the "cental". */
-    ShortHundredweight,
+    ShortHundredweight = "ShortHundredweight",
     /** The long or imperial hundredweight (abbreviation cwt) is a unit of mass equal to 112 pounds in US and Canada. */
-    LongHundredweight,
+    LongHundredweight = "LongHundredweight",
     /** A grain is a unit of measurement of mass, and in the troy weight, avoirdupois, and Apothecaries' system, equal to exactly 64.79891 milligrams. */
-    Grains,
+    Grains = "Grain",
     /** Solar mass is a ratio unit to the mass of the solar system star, the sun. */
-    SolarMasses,
+    SolarMasses = "SolarMass",
     /** Earth mass is a ratio unit to the mass of planet Earth. */
-    EarthMasses,
+    EarthMasses = "EarthMass",
     /** */
-    Femtograms,
+    Femtograms = "Femtogram",
     /** */
-    Picograms,
+    Picograms = "Picogram",
     /** */
-    Nanograms,
+    Nanograms = "Nanogram",
     /** */
-    Micrograms,
+    Micrograms = "Microgram",
     /** */
-    Milligrams,
+    Milligrams = "Milligram",
     /** */
-    Centigrams,
+    Centigrams = "Centigram",
     /** */
-    Decigrams,
+    Decigrams = "Decigram",
     /** */
-    Decagrams,
+    Decagrams = "Decagram",
     /** */
-    Hectograms,
+    Hectograms = "Hectogram",
     /** */
-    Kilograms,
+    Kilograms = "Kilogram",
     /** */
-    Kilotonnes,
+    Kilotonnes = "Kilotonne",
     /** */
-    Megatonnes,
+    Megatonnes = "Megatonne",
     /** */
-    Kilopounds,
+    Kilopounds = "Kilopound",
     /** */
-    Megapounds
+    Megapounds = "Megapound"
 }
 
 /** In physics, mass (from Greek μᾶζα "barley cake, lump [of dough]") is a property of a physical system or body, giving rise to the phenomena of the body's resistance to being accelerated by a force and the strength of its mutual gravitational attraction with other bodies. Instruments such as mass balances or scales use those phenomena to measure mass. The SI unit of mass is the kilogram (kg). */

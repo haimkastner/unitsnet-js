@@ -1,17 +1,17 @@
 /** ElectricConductivityUnits enumeration */
 export enum ElectricConductivityUnits {
     /** */
-    SiemensPerMeter,
+    SiemensPerMeter = "SiemensPerMeter",
     /** */
-    SiemensPerInch,
+    SiemensPerInch = "SiemensPerInch",
     /** */
-    SiemensPerFoot,
+    SiemensPerFoot = "SiemensPerFoot",
     /** */
-    SiemensPerCentimeter,
+    SiemensPerCentimeter = "SiemensPerCentimeter",
     /** */
-    MicrosiemensPerCentimeter,
+    MicrosiemensPerCentimeter = "MicrosiemensPerCentimeter",
     /** */
-    MillisiemensPerCentimeter
+    MillisiemensPerCentimeter = "MillisiemensPerCentimeter"
 }
 
 /** Electrical conductivity or specific conductance is the reciprocal of electrical resistivity, and measures a material's ability to conduct an electric current. */

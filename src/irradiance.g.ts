@@ -1,33 +1,33 @@
 /** IrradianceUnits enumeration */
 export enum IrradianceUnits {
     /** */
-    WattsPerSquareMeter,
+    WattsPerSquareMeter = "WattPerSquareMeter",
     /** */
-    WattsPerSquareCentimeter,
+    WattsPerSquareCentimeter = "WattPerSquareCentimeter",
     /** */
-    PicowattsPerSquareMeter,
+    PicowattsPerSquareMeter = "PicowattPerSquareMeter",
     /** */
-    NanowattsPerSquareMeter,
+    NanowattsPerSquareMeter = "NanowattPerSquareMeter",
     /** */
-    MicrowattsPerSquareMeter,
+    MicrowattsPerSquareMeter = "MicrowattPerSquareMeter",
     /** */
-    MilliwattsPerSquareMeter,
+    MilliwattsPerSquareMeter = "MilliwattPerSquareMeter",
     /** */
-    KilowattsPerSquareMeter,
+    KilowattsPerSquareMeter = "KilowattPerSquareMeter",
     /** */
-    MegawattsPerSquareMeter,
+    MegawattsPerSquareMeter = "MegawattPerSquareMeter",
     /** */
-    PicowattsPerSquareCentimeter,
+    PicowattsPerSquareCentimeter = "PicowattPerSquareCentimeter",
     /** */
-    NanowattsPerSquareCentimeter,
+    NanowattsPerSquareCentimeter = "NanowattPerSquareCentimeter",
     /** */
-    MicrowattsPerSquareCentimeter,
+    MicrowattsPerSquareCentimeter = "MicrowattPerSquareCentimeter",
     /** */
-    MilliwattsPerSquareCentimeter,
+    MilliwattsPerSquareCentimeter = "MilliwattPerSquareCentimeter",
     /** */
-    KilowattsPerSquareCentimeter,
+    KilowattsPerSquareCentimeter = "KilowattPerSquareCentimeter",
     /** */
-    MegawattsPerSquareCentimeter
+    MegawattsPerSquareCentimeter = "MegawattPerSquareCentimeter"
 }
 
 /** Irradiance is the intensity of ultraviolet (UV) or visible light incident on a surface. */

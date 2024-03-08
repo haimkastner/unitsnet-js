@@ -1,33 +1,33 @@
 /** InformationUnits enumeration */
 export enum InformationUnits {
     /** */
-    Bytes,
+    Bytes = "Byte",
     /** */
-    Bits,
+    Bits = "Bit",
     /** */
-    Kilobytes,
+    Kilobytes = "Kilobyte",
     /** */
-    Megabytes,
+    Megabytes = "Megabyte",
     /** */
-    Gigabytes,
+    Gigabytes = "Gigabyte",
     /** */
-    Terabytes,
+    Terabytes = "Terabyte",
     /** */
-    Petabytes,
+    Petabytes = "Petabyte",
     /** */
-    Exabytes,
+    Exabytes = "Exabyte",
     /** */
-    Kilobits,
+    Kilobits = "Kilobit",
     /** */
-    Megabits,
+    Megabits = "Megabit",
     /** */
-    Gigabits,
+    Gigabits = "Gigabit",
     /** */
-    Terabits,
+    Terabits = "Terabit",
     /** */
-    Petabits,
+    Petabits = "Petabit",
     /** */
-    Exabits
+    Exabits = "Exabit"
 }
 
 /** In computing and telecommunications, a unit of information is the capacity of some standard data storage system or communication channel, used to measure the capacities of other systems and channels. In information theory, units of information are also used to measure the information contents or entropy of random variables. */

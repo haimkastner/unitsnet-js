@@ -1,71 +1,71 @@
 /** SpeedUnits enumeration */
 export enum SpeedUnits {
     /** */
-    MetersPerSecond,
+    MetersPerSecond = "MeterPerSecond",
     /** */
-    MetersPerMinutes,
+    MetersPerMinutes = "MeterPerMinute",
     /** */
-    MetersPerHour,
+    MetersPerHour = "MeterPerHour",
     /** */
-    FeetPerSecond,
+    FeetPerSecond = "FootPerSecond",
     /** */
-    FeetPerMinute,
+    FeetPerMinute = "FootPerMinute",
     /** */
-    FeetPerHour,
+    FeetPerHour = "FootPerHour",
     /** */
-    UsSurveyFeetPerSecond,
+    UsSurveyFeetPerSecond = "UsSurveyFootPerSecond",
     /** */
-    UsSurveyFeetPerMinute,
+    UsSurveyFeetPerMinute = "UsSurveyFootPerMinute",
     /** */
-    UsSurveyFeetPerHour,
+    UsSurveyFeetPerHour = "UsSurveyFootPerHour",
     /** */
-    InchesPerSecond,
+    InchesPerSecond = "InchPerSecond",
     /** */
-    InchesPerMinute,
+    InchesPerMinute = "InchPerMinute",
     /** */
-    InchesPerHour,
+    InchesPerHour = "InchPerHour",
     /** */
-    YardsPerSecond,
+    YardsPerSecond = "YardPerSecond",
     /** */
-    YardsPerMinute,
+    YardsPerMinute = "YardPerMinute",
     /** */
-    YardsPerHour,
+    YardsPerHour = "YardPerHour",
     /** The knot, by definition, is a unit of speed equals to 1 nautical mile per hour, which is exactly 1852.000 metres per hour. The length of the internationally agreed nautical mile is 1852 m. The US adopted the international definition in 1954, the UK adopted the international nautical mile definition in 1970. */
-    Knots,
+    Knots = "Knot",
     /** */
-    MilesPerHour,
+    MilesPerHour = "MilePerHour",
     /** */
-    Mach,
+    Mach = "Mach",
     /** */
-    NanometersPerSecond,
+    NanometersPerSecond = "NanometerPerSecond",
     /** */
-    MicrometersPerSecond,
+    MicrometersPerSecond = "MicrometerPerSecond",
     /** */
-    MillimetersPerSecond,
+    MillimetersPerSecond = "MillimeterPerSecond",
     /** */
-    CentimetersPerSecond,
+    CentimetersPerSecond = "CentimeterPerSecond",
     /** */
-    DecimetersPerSecond,
+    DecimetersPerSecond = "DecimeterPerSecond",
     /** */
-    KilometersPerSecond,
+    KilometersPerSecond = "KilometerPerSecond",
     /** */
-    NanometersPerMinutes,
+    NanometersPerMinutes = "NanometerPerMinute",
     /** */
-    MicrometersPerMinutes,
+    MicrometersPerMinutes = "MicrometerPerMinute",
     /** */
-    MillimetersPerMinutes,
+    MillimetersPerMinutes = "MillimeterPerMinute",
     /** */
-    CentimetersPerMinutes,
+    CentimetersPerMinutes = "CentimeterPerMinute",
     /** */
-    DecimetersPerMinutes,
+    DecimetersPerMinutes = "DecimeterPerMinute",
     /** */
-    KilometersPerMinutes,
+    KilometersPerMinutes = "KilometerPerMinute",
     /** */
-    MillimetersPerHour,
+    MillimetersPerHour = "MillimeterPerHour",
     /** */
-    CentimetersPerHour,
+    CentimetersPerHour = "CentimeterPerHour",
     /** */
-    KilometersPerHour
+    KilometersPerHour = "KilometerPerHour"
 }
 
 /** In everyday use and in kinematics, the speed of an object is the magnitude of its velocity (the rate of change of its position); it is thus a scalar quantity.[1] The average speed of an object in an interval of time is the distance travelled by the object divided by the duration of the interval;[2] the instantaneous speed is the limit of the average speed as the duration of the time interval approaches zero. */

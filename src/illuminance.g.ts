@@ -1,13 +1,13 @@
 /** IlluminanceUnits enumeration */
 export enum IlluminanceUnits {
     /** */
-    Lux,
+    Lux = "Lux",
     /** */
-    Millilux,
+    Millilux = "Millilux",
     /** */
-    Kilolux,
+    Kilolux = "Kilolux",
     /** */
-    Megalux
+    Megalux = "Megalux"
 }
 
 /** In photometry, illuminance is the total luminous flux incident on a surface, per unit area. */

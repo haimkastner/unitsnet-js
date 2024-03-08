@@ -1,7 +1,7 @@
 /** ScalarUnits enumeration */
 export enum ScalarUnits {
     /** */
-    Amount
+    Amount = "Amount"
 }
 
 /** A way of representing a number of items. */

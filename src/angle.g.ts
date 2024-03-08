@@ -1,37 +1,37 @@
 /** AngleUnits enumeration */
 export enum AngleUnits {
     /** */
-    Radians,
+    Radians = "Radian",
     /** */
-    Degrees,
+    Degrees = "Degree",
     /** */
-    Arcminutes,
+    Arcminutes = "Arcminute",
     /** */
-    Arcseconds,
+    Arcseconds = "Arcsecond",
     /** */
-    Gradians,
+    Gradians = "Gradian",
     /** */
-    NatoMils,
+    NatoMils = "NatoMil",
     /** */
-    Revolutions,
+    Revolutions = "Revolution",
     /** */
-    Tilt,
+    Tilt = "Tilt",
     /** */
-    Nanoradians,
+    Nanoradians = "Nanoradian",
     /** */
-    Microradians,
+    Microradians = "Microradian",
     /** */
-    Milliradians,
+    Milliradians = "Milliradian",
     /** */
-    Centiradians,
+    Centiradians = "Centiradian",
     /** */
-    Deciradians,
+    Deciradians = "Deciradian",
     /** */
-    Nanodegrees,
+    Nanodegrees = "Nanodegree",
     /** */
-    Microdegrees,
+    Microdegrees = "Microdegree",
     /** */
-    Millidegrees
+    Millidegrees = "Millidegree"
 }
 
 /** In geometry, an angle is the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex of the angle. */

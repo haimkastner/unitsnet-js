@@ -1,13 +1,13 @@
 /** TemperatureGradientUnits enumeration */
 export enum TemperatureGradientUnits {
     /** */
-    KelvinsPerMeter,
+    KelvinsPerMeter = "KelvinPerMeter",
     /** */
-    DegreesCelciusPerMeter,
+    DegreesCelciusPerMeter = "DegreeCelsiusPerMeter",
     /** */
-    DegreesFahrenheitPerFoot,
+    DegreesFahrenheitPerFoot = "DegreeFahrenheitPerFoot",
     /** */
-    DegreesCelciusPerKilometer
+    DegreesCelciusPerKilometer = "DegreeCelsiusPerKilometer"
 }
 
 /** The rate of change of temperature with displacement in a given direction (as with increase of height) */

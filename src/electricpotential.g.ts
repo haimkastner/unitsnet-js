@@ -1,17 +1,17 @@
 /** ElectricPotentialUnits enumeration */
 export enum ElectricPotentialUnits {
     /** */
-    Volts,
+    Volts = "Volt",
     /** */
-    Nanovolts,
+    Nanovolts = "Nanovolt",
     /** */
-    Microvolts,
+    Microvolts = "Microvolt",
     /** */
-    Millivolts,
+    Millivolts = "Millivolt",
     /** */
-    Kilovolts,
+    Kilovolts = "Kilovolt",
     /** */
-    Megavolts
+    Megavolts = "Megavolt"
 }
 
 /** In classical electromagnetism, the electric potential (a scalar quantity denoted by Φ, ΦE or V and also called the electric field potential or the electrostatic potential) at a point is the amount of electric potential energy that a unitary point charge would have when located at that point. */

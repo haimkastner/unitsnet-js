@@ -1,9 +1,9 @@
 /** VolumeFlowPerAreaUnits enumeration */
 export enum VolumeFlowPerAreaUnits {
     /** */
-    CubicMetersPerSecondPerSquareMeter,
+    CubicMetersPerSecondPerSquareMeter = "CubicMeterPerSecondPerSquareMeter",
     /** */
-    CubicFeetPerMinutePerSquareFoot
+    CubicFeetPerMinutePerSquareFoot = "CubicFootPerMinutePerSquareFoot"
 }
 
 /** The volumetric flow rate per area is the volume of fluid which passes through a given unit surface area per unit time. */

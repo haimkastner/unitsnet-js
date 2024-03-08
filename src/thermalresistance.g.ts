@@ -1,17 +1,17 @@
 /** ThermalResistanceUnits enumeration */
 export enum ThermalResistanceUnits {
     /** */
-    SquareMeterKelvinsPerKilowatt,
+    SquareMeterKelvinsPerKilowatt = "SquareMeterKelvinPerKilowatt",
     /** */
-    SquareMeterKelvinsPerWatt,
+    SquareMeterKelvinsPerWatt = "SquareMeterKelvinPerWatt",
     /** */
-    SquareMeterDegreesCelsiusPerWatt,
+    SquareMeterDegreesCelsiusPerWatt = "SquareMeterDegreeCelsiusPerWatt",
     /** */
-    SquareCentimeterKelvinsPerWatt,
+    SquareCentimeterKelvinsPerWatt = "SquareCentimeterKelvinPerWatt",
     /** */
-    SquareCentimeterHourDegreesCelsiusPerKilocalorie,
+    SquareCentimeterHourDegreesCelsiusPerKilocalorie = "SquareCentimeterHourDegreeCelsiusPerKilocalorie",
     /** */
-    HourSquareFeetDegreesFahrenheitPerBtu
+    HourSquareFeetDegreesFahrenheitPerBtu = "HourSquareFeetDegreeFahrenheitPerBtu"
 }
 
 /** Heat Transfer Coefficient or Thermal conductivity - indicates a materials ability to conduct heat. */

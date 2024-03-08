@@ -1,33 +1,33 @@
 /** LuminosityUnits enumeration */
 export enum LuminosityUnits {
     /** */
-    Watts,
+    Watts = "Watt",
     /** */
-    SolarLuminosities,
+    SolarLuminosities = "SolarLuminosity",
     /** */
-    Femtowatts,
+    Femtowatts = "Femtowatt",
     /** */
-    Picowatts,
+    Picowatts = "Picowatt",
     /** */
-    Nanowatts,
+    Nanowatts = "Nanowatt",
     /** */
-    Microwatts,
+    Microwatts = "Microwatt",
     /** */
-    Milliwatts,
+    Milliwatts = "Milliwatt",
     /** */
-    Deciwatts,
+    Deciwatts = "Deciwatt",
     /** */
-    Decawatts,
+    Decawatts = "Decawatt",
     /** */
-    Kilowatts,
+    Kilowatts = "Kilowatt",
     /** */
-    Megawatts,
+    Megawatts = "Megawatt",
     /** */
-    Gigawatts,
+    Gigawatts = "Gigawatt",
     /** */
-    Terawatts,
+    Terawatts = "Terawatt",
     /** */
-    Petawatts
+    Petawatts = "Petawatt"
 }
 
 /** Luminosity is an absolute measure of radiated electromagnetic power (light), the radiant power emitted by a light-emitting object. */

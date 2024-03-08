@@ -1,11 +1,11 @@
 /** SpecificVolumeUnits enumeration */
 export enum SpecificVolumeUnits {
     /** */
-    CubicMetersPerKilogram,
+    CubicMetersPerKilogram = "CubicMeterPerKilogram",
     /** */
-    CubicFeetPerPound,
+    CubicFeetPerPound = "CubicFootPerPound",
     /** */
-    MillicubicMetersPerKilogram
+    MillicubicMetersPerKilogram = "MillicubicMeterPerKilogram"
 }
 
 /** In thermodynamics, the specific volume of a substance is the ratio of the substance's volume to its mass. It is the reciprocal of density and an intrinsic property of matter as well. */

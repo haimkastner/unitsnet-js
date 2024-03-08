@@ -1,11 +1,11 @@
 /** AreaDensityUnits enumeration */
 export enum AreaDensityUnits {
     /** */
-    KilogramsPerSquareMeter,
+    KilogramsPerSquareMeter = "KilogramPerSquareMeter",
     /** Also known as grammage for paper industry. In fiber industry used with abbreviation 'gsm'. */
-    GramsPerSquareMeter,
+    GramsPerSquareMeter = "GramPerSquareMeter",
     /** */
-    MilligramsPerSquareMeter
+    MilligramsPerSquareMeter = "MilligramPerSquareMeter"
 }
 
 /** The area density of a two-dimensional object is calculated as the mass per unit area. For paper this is also called grammage. */

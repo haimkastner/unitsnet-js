@@ -1,27 +1,27 @@
 /** JerkUnits enumeration */
 export enum JerkUnits {
     /** */
-    MetersPerSecondCubed,
+    MetersPerSecondCubed = "MeterPerSecondCubed",
     /** */
-    InchesPerSecondCubed,
+    InchesPerSecondCubed = "InchPerSecondCubed",
     /** */
-    FeetPerSecondCubed,
+    FeetPerSecondCubed = "FootPerSecondCubed",
     /** */
-    StandardGravitiesPerSecond,
+    StandardGravitiesPerSecond = "StandardGravitiesPerSecond",
     /** */
-    NanometersPerSecondCubed,
+    NanometersPerSecondCubed = "NanometerPerSecondCubed",
     /** */
-    MicrometersPerSecondCubed,
+    MicrometersPerSecondCubed = "MicrometerPerSecondCubed",
     /** */
-    MillimetersPerSecondCubed,
+    MillimetersPerSecondCubed = "MillimeterPerSecondCubed",
     /** */
-    CentimetersPerSecondCubed,
+    CentimetersPerSecondCubed = "CentimeterPerSecondCubed",
     /** */
-    DecimetersPerSecondCubed,
+    DecimetersPerSecondCubed = "DecimeterPerSecondCubed",
     /** */
-    KilometersPerSecondCubed,
+    KilometersPerSecondCubed = "KilometerPerSecondCubed",
     /** */
-    MillistandardGravitiesPerSecond
+    MillistandardGravitiesPerSecond = "MillistandardGravitiesPerSecond"
 }
 
 /** Jerk or Jolt, in physics, is the rate at which the acceleration of an object changes over time. The SI unit for jerk is the Meter per second cubed (m/s³). Jerks are vector quantities (they have magnitude and direction) and add according to the parallelogram law. */

@@ -1,93 +1,93 @@
 /** PowerDensityUnits enumeration */
 export enum PowerDensityUnits {
     /** */
-    WattsPerCubicMeter,
+    WattsPerCubicMeter = "WattPerCubicMeter",
     /** */
-    WattsPerCubicInch,
+    WattsPerCubicInch = "WattPerCubicInch",
     /** */
-    WattsPerCubicFoot,
+    WattsPerCubicFoot = "WattPerCubicFoot",
     /** */
-    WattsPerLiter,
+    WattsPerLiter = "WattPerLiter",
     /** */
-    PicowattsPerCubicMeter,
+    PicowattsPerCubicMeter = "PicowattPerCubicMeter",
     /** */
-    NanowattsPerCubicMeter,
+    NanowattsPerCubicMeter = "NanowattPerCubicMeter",
     /** */
-    MicrowattsPerCubicMeter,
+    MicrowattsPerCubicMeter = "MicrowattPerCubicMeter",
     /** */
-    MilliwattsPerCubicMeter,
+    MilliwattsPerCubicMeter = "MilliwattPerCubicMeter",
     /** */
-    DeciwattsPerCubicMeter,
+    DeciwattsPerCubicMeter = "DeciwattPerCubicMeter",
     /** */
-    DecawattsPerCubicMeter,
+    DecawattsPerCubicMeter = "DecawattPerCubicMeter",
     /** */
-    KilowattsPerCubicMeter,
+    KilowattsPerCubicMeter = "KilowattPerCubicMeter",
     /** */
-    MegawattsPerCubicMeter,
+    MegawattsPerCubicMeter = "MegawattPerCubicMeter",
     /** */
-    GigawattsPerCubicMeter,
+    GigawattsPerCubicMeter = "GigawattPerCubicMeter",
     /** */
-    TerawattsPerCubicMeter,
+    TerawattsPerCubicMeter = "TerawattPerCubicMeter",
     /** */
-    PicowattsPerCubicInch,
+    PicowattsPerCubicInch = "PicowattPerCubicInch",
     /** */
-    NanowattsPerCubicInch,
+    NanowattsPerCubicInch = "NanowattPerCubicInch",
     /** */
-    MicrowattsPerCubicInch,
+    MicrowattsPerCubicInch = "MicrowattPerCubicInch",
     /** */
-    MilliwattsPerCubicInch,
+    MilliwattsPerCubicInch = "MilliwattPerCubicInch",
     /** */
-    DeciwattsPerCubicInch,
+    DeciwattsPerCubicInch = "DeciwattPerCubicInch",
     /** */
-    DecawattsPerCubicInch,
+    DecawattsPerCubicInch = "DecawattPerCubicInch",
     /** */
-    KilowattsPerCubicInch,
+    KilowattsPerCubicInch = "KilowattPerCubicInch",
     /** */
-    MegawattsPerCubicInch,
+    MegawattsPerCubicInch = "MegawattPerCubicInch",
     /** */
-    GigawattsPerCubicInch,
+    GigawattsPerCubicInch = "GigawattPerCubicInch",
     /** */
-    TerawattsPerCubicInch,
+    TerawattsPerCubicInch = "TerawattPerCubicInch",
     /** */
-    PicowattsPerCubicFoot,
+    PicowattsPerCubicFoot = "PicowattPerCubicFoot",
     /** */
-    NanowattsPerCubicFoot,
+    NanowattsPerCubicFoot = "NanowattPerCubicFoot",
     /** */
-    MicrowattsPerCubicFoot,
+    MicrowattsPerCubicFoot = "MicrowattPerCubicFoot",
     /** */
-    MilliwattsPerCubicFoot,
+    MilliwattsPerCubicFoot = "MilliwattPerCubicFoot",
     /** */
-    DeciwattsPerCubicFoot,
+    DeciwattsPerCubicFoot = "DeciwattPerCubicFoot",
     /** */
-    DecawattsPerCubicFoot,
+    DecawattsPerCubicFoot = "DecawattPerCubicFoot",
     /** */
-    KilowattsPerCubicFoot,
+    KilowattsPerCubicFoot = "KilowattPerCubicFoot",
     /** */
-    MegawattsPerCubicFoot,
+    MegawattsPerCubicFoot = "MegawattPerCubicFoot",
     /** */
-    GigawattsPerCubicFoot,
+    GigawattsPerCubicFoot = "GigawattPerCubicFoot",
     /** */
-    TerawattsPerCubicFoot,
+    TerawattsPerCubicFoot = "TerawattPerCubicFoot",
     /** */
-    PicowattsPerLiter,
+    PicowattsPerLiter = "PicowattPerLiter",
     /** */
-    NanowattsPerLiter,
+    NanowattsPerLiter = "NanowattPerLiter",
     /** */
-    MicrowattsPerLiter,
+    MicrowattsPerLiter = "MicrowattPerLiter",
     /** */
-    MilliwattsPerLiter,
+    MilliwattsPerLiter = "MilliwattPerLiter",
     /** */
-    DeciwattsPerLiter,
+    DeciwattsPerLiter = "DeciwattPerLiter",
     /** */
-    DecawattsPerLiter,
+    DecawattsPerLiter = "DecawattPerLiter",
     /** */
-    KilowattsPerLiter,
+    KilowattsPerLiter = "KilowattPerLiter",
     /** */
-    MegawattsPerLiter,
+    MegawattsPerLiter = "MegawattPerLiter",
     /** */
-    GigawattsPerLiter,
+    GigawattsPerLiter = "GigawattPerLiter",
     /** */
-    TerawattsPerLiter
+    TerawattsPerLiter = "TerawattPerLiter"
 }
 
 /** The amount of power in a volume. */

@@ -1,33 +1,33 @@
 /** LinearDensityUnits enumeration */
 export enum LinearDensityUnits {
     /** */
-    GramsPerMillimeter,
+    GramsPerMillimeter = "GramPerMillimeter",
     /** */
-    GramsPerCentimeter,
+    GramsPerCentimeter = "GramPerCentimeter",
     /** */
-    GramsPerMeter,
+    GramsPerMeter = "GramPerMeter",
     /** */
-    PoundsPerInch,
+    PoundsPerInch = "PoundPerInch",
     /** */
-    PoundsPerFoot,
+    PoundsPerFoot = "PoundPerFoot",
     /** */
-    MicrogramsPerMillimeter,
+    MicrogramsPerMillimeter = "MicrogramPerMillimeter",
     /** */
-    MilligramsPerMillimeter,
+    MilligramsPerMillimeter = "MilligramPerMillimeter",
     /** */
-    KilogramsPerMillimeter,
+    KilogramsPerMillimeter = "KilogramPerMillimeter",
     /** */
-    MicrogramsPerCentimeter,
+    MicrogramsPerCentimeter = "MicrogramPerCentimeter",
     /** */
-    MilligramsPerCentimeter,
+    MilligramsPerCentimeter = "MilligramPerCentimeter",
     /** */
-    KilogramsPerCentimeter,
+    KilogramsPerCentimeter = "KilogramPerCentimeter",
     /** */
-    MicrogramsPerMeter,
+    MicrogramsPerMeter = "MicrogramPerMeter",
     /** */
-    MilligramsPerMeter,
+    MilligramsPerMeter = "MilligramPerMeter",
     /** */
-    KilogramsPerMeter
+    KilogramsPerMeter = "KilogramPerMeter"
 }
 
 /** The Linear Density, or more precisely, the linear mass density, of a substance is its mass per unit length.  The term linear density is most often used when describing the characteristics of one-dimensional objects, although linear density can also be used to describe the density of a three-dimensional quantity along one particular dimension. */

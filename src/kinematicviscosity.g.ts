@@ -1,23 +1,23 @@
 /** KinematicViscosityUnits enumeration */
 export enum KinematicViscosityUnits {
     /** */
-    SquareMetersPerSecond,
+    SquareMetersPerSecond = "SquareMeterPerSecond",
     /** */
-    Stokes,
+    Stokes = "Stokes",
     /** */
-    SquareFeetPerSecond,
+    SquareFeetPerSecond = "SquareFootPerSecond",
     /** */
-    Nanostokes,
+    Nanostokes = "Nanostokes",
     /** */
-    Microstokes,
+    Microstokes = "Microstokes",
     /** */
-    Millistokes,
+    Millistokes = "Millistokes",
     /** */
-    Centistokes,
+    Centistokes = "Centistokes",
     /** */
-    Decistokes,
+    Decistokes = "Decistokes",
     /** */
-    Kilostokes
+    Kilostokes = "Kilostokes"
 }
 
 /** The viscosity of a fluid is a measure of its resistance to gradual deformation by shear stress or tensile stress. */

@@ -1,33 +1,33 @@
 /** AccelerationUnits enumeration */
 export enum AccelerationUnits {
     /** */
-    MetersPerSecondSquared,
+    MetersPerSecondSquared = "MeterPerSecondSquared",
     /** */
-    InchesPerSecondSquared,
+    InchesPerSecondSquared = "InchPerSecondSquared",
     /** */
-    FeetPerSecondSquared,
+    FeetPerSecondSquared = "FootPerSecondSquared",
     /** */
-    KnotsPerSecond,
+    KnotsPerSecond = "KnotPerSecond",
     /** */
-    KnotsPerMinute,
+    KnotsPerMinute = "KnotPerMinute",
     /** */
-    KnotsPerHour,
+    KnotsPerHour = "KnotPerHour",
     /** */
-    StandardGravity,
+    StandardGravity = "StandardGravity",
     /** */
-    NanometersPerSecondSquared,
+    NanometersPerSecondSquared = "NanometerPerSecondSquared",
     /** */
-    MicrometersPerSecondSquared,
+    MicrometersPerSecondSquared = "MicrometerPerSecondSquared",
     /** */
-    MillimetersPerSecondSquared,
+    MillimetersPerSecondSquared = "MillimeterPerSecondSquared",
     /** */
-    CentimetersPerSecondSquared,
+    CentimetersPerSecondSquared = "CentimeterPerSecondSquared",
     /** */
-    DecimetersPerSecondSquared,
+    DecimetersPerSecondSquared = "DecimeterPerSecondSquared",
     /** */
-    KilometersPerSecondSquared,
+    KilometersPerSecondSquared = "KilometerPerSecondSquared",
     /** */
-    MillistandardGravity
+    MillistandardGravity = "MillistandardGravity"
 }
 
 /** Acceleration, in physics, is the rate at which the velocity of an object changes over time. An object's acceleration is the net result of any and all forces acting on the object, as described by Newton's Second Law. The SI unit for acceleration is the Meter per second squared (m/s²). Accelerations are vector quantities (they have magnitude and direction) and add according to the parallelogram law. As a vector, the calculated net force is equal to the product of the object's mass (a scalar quantity) and the acceleration. */

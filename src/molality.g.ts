@@ -1,9 +1,9 @@
 /** MolalityUnits enumeration */
 export enum MolalityUnits {
     /** */
-    MolesPerKilogram,
+    MolesPerKilogram = "MolePerKilogram",
     /** */
-    MolesPerGram
+    MolesPerGram = "MolePerGram"
 }
 
 /** Molality is a measure of the amount of solute in a solution relative to a given mass of solvent. */

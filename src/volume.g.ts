@@ -1,113 +1,113 @@
 /** VolumeUnits enumeration */
 export enum VolumeUnits {
     /** */
-    Liters,
+    Liters = "Liter",
     /** */
-    CubicMeters,
+    CubicMeters = "CubicMeter",
     /** */
-    CubicKilometers,
+    CubicKilometers = "CubicKilometer",
     /** */
-    CubicHectometers,
+    CubicHectometers = "CubicHectometer",
     /** */
-    CubicDecimeters,
+    CubicDecimeters = "CubicDecimeter",
     /** */
-    CubicCentimeters,
+    CubicCentimeters = "CubicCentimeter",
     /** */
-    CubicMillimeters,
+    CubicMillimeters = "CubicMillimeter",
     /** */
-    CubicMicrometers,
+    CubicMicrometers = "CubicMicrometer",
     /** */
-    CubicMiles,
+    CubicMiles = "CubicMile",
     /** */
-    CubicYards,
+    CubicYards = "CubicYard",
     /** */
-    CubicFeet,
+    CubicFeet = "CubicFoot",
     /** */
-    CubicInches,
+    CubicInches = "CubicInch",
     /** The British imperial gallon (frequently called simply "gallon") is defined as exactly 4.54609 litres. */
-    ImperialGallons,
+    ImperialGallons = "ImperialGallon",
     /** */
-    ImperialOunces,
+    ImperialOunces = "ImperialOunce",
     /** The US liquid gallon (frequently called simply "gallon") is legally defined as 231 cubic inches, which is exactly 3.785411784 litres. */
-    UsGallons,
+    UsGallons = "UsGallon",
     /** */
-    UsOunces,
+    UsOunces = "UsOunce",
     /** */
-    UsTablespoons,
+    UsTablespoons = "UsTablespoon",
     /** */
-    AuTablespoons,
+    AuTablespoons = "AuTablespoon",
     /** */
-    UkTablespoons,
+    UkTablespoons = "UkTablespoon",
     /** */
-    MetricTeaspoons,
+    MetricTeaspoons = "MetricTeaspoon",
     /** */
-    UsTeaspoons,
+    UsTeaspoons = "UsTeaspoon",
     /** */
-    MetricCups,
+    MetricCups = "MetricCup",
     /** */
-    UsCustomaryCups,
+    UsCustomaryCups = "UsCustomaryCup",
     /** */
-    UsLegalCups,
+    UsLegalCups = "UsLegalCup",
     /** */
-    OilBarrels,
+    OilBarrels = "OilBarrel",
     /** */
-    UsBeerBarrels,
+    UsBeerBarrels = "UsBeerBarrel",
     /** */
-    ImperialBeerBarrels,
+    ImperialBeerBarrels = "ImperialBeerBarrel",
     /** */
-    UsQuarts,
+    UsQuarts = "UsQuart",
     /** */
-    ImperialQuarts,
+    ImperialQuarts = "ImperialQuart",
     /** */
-    UsPints,
+    UsPints = "UsPint",
     /** */
-    AcreFeet,
+    AcreFeet = "AcreFoot",
     /** */
-    ImperialPints,
+    ImperialPints = "ImperialPint",
     /** */
-    BoardFeet,
+    BoardFeet = "BoardFoot",
     /** */
-    Nanoliters,
+    Nanoliters = "Nanoliter",
     /** */
-    Microliters,
+    Microliters = "Microliter",
     /** */
-    Milliliters,
+    Milliliters = "Milliliter",
     /** */
-    Centiliters,
+    Centiliters = "Centiliter",
     /** */
-    Deciliters,
+    Deciliters = "Deciliter",
     /** */
-    Decaliters,
+    Decaliters = "Decaliter",
     /** */
-    Hectoliters,
+    Hectoliters = "Hectoliter",
     /** */
-    Kiloliters,
+    Kiloliters = "Kiloliter",
     /** */
-    Megaliters,
+    Megaliters = "Megaliter",
     /** */
-    HectocubicMeters,
+    HectocubicMeters = "HectocubicMeter",
     /** */
-    KilocubicMeters,
+    KilocubicMeters = "KilocubicMeter",
     /** */
-    HectocubicFeet,
+    HectocubicFeet = "HectocubicFoot",
     /** */
-    KilocubicFeet,
+    KilocubicFeet = "KilocubicFoot",
     /** */
-    MegacubicFeet,
+    MegacubicFeet = "MegacubicFoot",
     /** */
-    KiloimperialGallons,
+    KiloimperialGallons = "KiloimperialGallon",
     /** */
-    MegaimperialGallons,
+    MegaimperialGallons = "MegaimperialGallon",
     /** */
-    DecausGallons,
+    DecausGallons = "DecausGallon",
     /** */
-    DeciusGallons,
+    DeciusGallons = "DeciusGallon",
     /** */
-    HectousGallons,
+    HectousGallons = "HectousGallon",
     /** */
-    KilousGallons,
+    KilousGallons = "KilousGallon",
     /** */
-    MegausGallons
+    MegausGallons = "MegausGallon"
 }
 
 /** Volume is the quantity of three-dimensional space enclosed by some closed boundary, for example, the space that a substance (solid, liquid, gas, or plasma) or shape occupies or contains.[1] Volume is often quantified numerically using the SI derived unit, the cubic metre. The volume of a container is generally understood to be the capacity of the container, i. e. the amount of fluid (gas or liquid) that the container could hold, rather than the amount of space the container itself displaces. */

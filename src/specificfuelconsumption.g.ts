@@ -1,13 +1,13 @@
 /** SpecificFuelConsumptionUnits enumeration */
 export enum SpecificFuelConsumptionUnits {
     /** */
-    PoundsMassPerPoundForceHour,
+    PoundsMassPerPoundForceHour = "PoundMassPerPoundForceHour",
     /** */
-    KilogramsPerKilogramForceHour,
+    KilogramsPerKilogramForceHour = "KilogramPerKilogramForceHour",
     /** */
-    GramsPerKiloNewtonSecond,
+    GramsPerKiloNewtonSecond = "GramPerKiloNewtonSecond",
     /** */
-    KilogramsPerKiloNewtonSecond
+    KilogramsPerKiloNewtonSecond = "KilogramPerKiloNewtonSecond"
 }
 
 /** SFC is the fuel efficiency of an engine design with respect to thrust output */

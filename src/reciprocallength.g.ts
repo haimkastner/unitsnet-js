@@ -1,25 +1,25 @@
 /** ReciprocalLengthUnits enumeration */
 export enum ReciprocalLengthUnits {
     /** */
-    InverseMeters,
+    InverseMeters = "InverseMeter",
     /** */
-    InverseCentimeters,
+    InverseCentimeters = "InverseCentimeter",
     /** */
-    InverseMillimeters,
+    InverseMillimeters = "InverseMillimeter",
     /** */
-    InverseMiles,
+    InverseMiles = "InverseMile",
     /** */
-    InverseYards,
+    InverseYards = "InverseYard",
     /** */
-    InverseFeet,
+    InverseFeet = "InverseFoot",
     /** */
-    InverseUsSurveyFeet,
+    InverseUsSurveyFeet = "InverseUsSurveyFoot",
     /** */
-    InverseInches,
+    InverseInches = "InverseInch",
     /** */
-    InverseMils,
+    InverseMils = "InverseMil",
     /** */
-    InverseMicroinches
+    InverseMicroinches = "InverseMicroinch"
 }
 
 /** Reciprocal (Inverse) Length is used in various fields of science and mathematics. It is defined as the inverse value of a length unit. */

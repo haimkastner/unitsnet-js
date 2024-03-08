@@ -1,7 +1,7 @@
 /** SolidAngleUnits enumeration */
 export enum SolidAngleUnits {
     /** */
-    Steradians
+    Steradians = "Steradian"
 }
 
 /** In geometry, a solid angle is the two-dimensional angle in three-dimensional space that an object subtends at a point. */

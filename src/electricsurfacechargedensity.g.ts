@@ -1,11 +1,11 @@
 /** ElectricSurfaceChargeDensityUnits enumeration */
 export enum ElectricSurfaceChargeDensityUnits {
     /** */
-    CoulombsPerSquareMeter,
+    CoulombsPerSquareMeter = "CoulombPerSquareMeter",
     /** */
-    CoulombsPerSquareCentimeter,
+    CoulombsPerSquareCentimeter = "CoulombPerSquareCentimeter",
     /** */
-    CoulombsPerSquareInch
+    CoulombsPerSquareInch = "CoulombPerSquareInch"
 }
 
 /** In electromagnetism, surface charge density is a measure of the amount of electric charge per surface area. */
