@@ -1,7 +1,7 @@
 /** PermittivityUnits enumeration */
 export enum PermittivityUnits {
     /** */
-    FaradsPerMeter
+    FaradsPerMeter = "FaradPerMeter"
 }
 
 /** In electromagnetism, permittivity is the measure of resistance that is encountered when forming an electric field in a particular medium. */

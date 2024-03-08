@@ -1,35 +1,35 @@
 /** ForceChangeRateUnits enumeration */
 export enum ForceChangeRateUnits {
     /** */
-    NewtonsPerMinute,
+    NewtonsPerMinute = "NewtonPerMinute",
     /** */
-    NewtonsPerSecond,
+    NewtonsPerSecond = "NewtonPerSecond",
     /** */
-    PoundsForcePerMinute,
+    PoundsForcePerMinute = "PoundForcePerMinute",
     /** */
-    PoundsForcePerSecond,
+    PoundsForcePerSecond = "PoundForcePerSecond",
     /** */
-    DecanewtonsPerMinute,
+    DecanewtonsPerMinute = "DecanewtonPerMinute",
     /** */
-    KilonewtonsPerMinute,
+    KilonewtonsPerMinute = "KilonewtonPerMinute",
     /** */
-    NanonewtonsPerSecond,
+    NanonewtonsPerSecond = "NanonewtonPerSecond",
     /** */
-    MicronewtonsPerSecond,
+    MicronewtonsPerSecond = "MicronewtonPerSecond",
     /** */
-    MillinewtonsPerSecond,
+    MillinewtonsPerSecond = "MillinewtonPerSecond",
     /** */
-    CentinewtonsPerSecond,
+    CentinewtonsPerSecond = "CentinewtonPerSecond",
     /** */
-    DecinewtonsPerSecond,
+    DecinewtonsPerSecond = "DecinewtonPerSecond",
     /** */
-    DecanewtonsPerSecond,
+    DecanewtonsPerSecond = "DecanewtonPerSecond",
     /** */
-    KilonewtonsPerSecond,
+    KilonewtonsPerSecond = "KilonewtonPerSecond",
     /** */
-    KilopoundsForcePerMinute,
+    KilopoundsForcePerMinute = "KilopoundForcePerMinute",
     /** */
-    KilopoundsForcePerSecond
+    KilopoundsForcePerSecond = "KilopoundForcePerSecond"
 }
 
 /** Force change rate is the ratio of the force change to the time during which the change occurred (value of force changes per unit time). */

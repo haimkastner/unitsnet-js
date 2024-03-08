@@ -1,7 +1,7 @@
 /** ElectricChargeDensityUnits enumeration */
 export enum ElectricChargeDensityUnits {
     /** */
-    CoulombsPerCubicMeter
+    CoulombsPerCubicMeter = "CoulombPerCubicMeter"
 }
 
 /** In electromagnetism, charge density is a measure of the amount of electric charge per volume. */

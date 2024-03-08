@@ -1,23 +1,23 @@
 /** IrradiationUnits enumeration */
 export enum IrradiationUnits {
     /** */
-    JoulesPerSquareMeter,
+    JoulesPerSquareMeter = "JoulePerSquareMeter",
     /** */
-    JoulesPerSquareCentimeter,
+    JoulesPerSquareCentimeter = "JoulePerSquareCentimeter",
     /** */
-    JoulesPerSquareMillimeter,
+    JoulesPerSquareMillimeter = "JoulePerSquareMillimeter",
     /** */
-    WattHoursPerSquareMeter,
+    WattHoursPerSquareMeter = "WattHourPerSquareMeter",
     /** */
-    BtusPerSquareFoot,
+    BtusPerSquareFoot = "BtuPerSquareFoot",
     /** */
-    KilojoulesPerSquareMeter,
+    KilojoulesPerSquareMeter = "KilojoulePerSquareMeter",
     /** */
-    MillijoulesPerSquareCentimeter,
+    MillijoulesPerSquareCentimeter = "MillijoulePerSquareCentimeter",
     /** */
-    KilowattHoursPerSquareMeter,
+    KilowattHoursPerSquareMeter = "KilowattHourPerSquareMeter",
     /** */
-    KilobtusPerSquareFoot
+    KilobtusPerSquareFoot = "KilobtuPerSquareFoot"
 }
 
 /** Irradiation is the process by which an object is exposed to radiation. The exposure can originate from various sources, including natural sources. */

@@ -1,89 +1,89 @@
 /** LengthUnits enumeration */
 export enum LengthUnits {
     /** */
-    Meters,
+    Meters = "Meter",
     /** The statute mile was standardised between the British Commonwealth and the United States by an international agreement in 1959, when it was formally redefined with respect to SI units as exactly 1,609.344 metres. */
-    Miles,
+    Miles = "Mile",
     /** The yard (symbol: yd) is an English unit of length in both the British imperial and US customary systems of measurement equalling 3 feet (or 36 inches). Since 1959 the yard has been by international agreement standardized as exactly 0.9144 meter. A distance of 1,760 yards is equal to 1 mile. */
-    Yards,
+    Yards = "Yard",
     /** */
-    Feet,
+    Feet = "Foot",
     /** In the United States, the foot was defined as 12 inches, with the inch being defined by the Mendenhall Order of 1893 as 39.37 inches = 1 m. This makes a U.S. survey foot exactly 1200/3937 meters. */
-    UsSurveyFeet,
+    UsSurveyFeet = "UsSurveyFoot",
     /** */
-    Inches,
+    Inches = "Inch",
     /** */
-    Mils,
+    Mils = "Mil",
     /** */
-    NauticalMiles,
+    NauticalMiles = "NauticalMile",
     /** */
-    Fathoms,
+    Fathoms = "Fathom",
     /** */
-    Shackles,
+    Shackles = "Shackle",
     /** */
-    Microinches,
+    Microinches = "Microinch",
     /** */
-    PrinterPoints,
+    PrinterPoints = "PrinterPoint",
     /** */
-    DtpPoints,
+    DtpPoints = "DtpPoint",
     /** */
-    PrinterPicas,
+    PrinterPicas = "PrinterPica",
     /** */
-    DtpPicas,
+    DtpPicas = "DtpPica",
     /** */
-    Twips,
+    Twips = "Twip",
     /** */
-    Hands,
+    Hands = "Hand",
     /** One Astronomical Unit is the distance from the solar system Star, the sun, to planet Earth. */
-    AstronomicalUnits,
+    AstronomicalUnits = "AstronomicalUnit",
     /** A parsec is defined as the distance at which one astronomical unit (AU) subtends an angle of one arcsecond. */
-    Parsecs,
+    Parsecs = "Parsec",
     /** A Light Year (ly) is the distance that light travel during an Earth year, ie 365 days. */
-    LightYears,
+    LightYears = "LightYear",
     /** Solar radius is a ratio unit to the radius of the solar system star, the sun. */
-    SolarRadiuses,
+    SolarRadiuses = "SolarRadius",
     /** */
-    Chains,
+    Chains = "Chain",
     /** Angstrom is a metric unit of length equal to 1e-10 meter */
-    Angstroms,
+    Angstroms = "Angstrom",
     /** In radar-related subjects and in JTIDS, a data mile is a unit of distance equal to 6000 feet (1.8288 kilometres or 0.987 nautical miles). */
-    DataMiles,
+    DataMiles = "DataMile",
     /** */
-    Femtometers,
+    Femtometers = "Femtometer",
     /** */
-    Picometers,
+    Picometers = "Picometer",
     /** */
-    Nanometers,
+    Nanometers = "Nanometer",
     /** */
-    Micrometers,
+    Micrometers = "Micrometer",
     /** */
-    Millimeters,
+    Millimeters = "Millimeter",
     /** */
-    Centimeters,
+    Centimeters = "Centimeter",
     /** */
-    Decimeters,
+    Decimeters = "Decimeter",
     /** */
-    Decameters,
+    Decameters = "Decameter",
     /** */
-    Hectometers,
+    Hectometers = "Hectometer",
     /** */
-    Kilometers,
+    Kilometers = "Kilometer",
     /** */
-    Megameters,
+    Megameters = "Megameter",
     /** */
-    Gigameters,
+    Gigameters = "Gigameter",
     /** */
-    Kiloyards,
+    Kiloyards = "Kiloyard",
     /** */
-    Kilofeet,
+    Kilofeet = "Kilofoot",
     /** */
-    Kiloparsecs,
+    Kiloparsecs = "Kiloparsec",
     /** */
-    Megaparsecs,
+    Megaparsecs = "Megaparsec",
     /** */
-    KilolightYears,
+    KilolightYears = "KilolightYear",
     /** */
-    MegalightYears
+    MegalightYears = "MegalightYear"
 }
 
 /** Many different units of length have been used around the world. The main units in modern use are U.S. customary units in the United States and the Metric system elsewhere. British Imperial units are still used for some purposes in the United Kingdom and some other countries. The metric system is sub-divided into SI and non-SI units. */

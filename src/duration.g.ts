@@ -1,27 +1,27 @@
 /** DurationUnits enumeration */
 export enum DurationUnits {
     /** */
-    Years365,
+    Years365 = "Year365",
     /** */
-    Months30,
+    Months30 = "Month30",
     /** */
-    Weeks,
+    Weeks = "Week",
     /** */
-    Days,
+    Days = "Day",
     /** */
-    Hours,
+    Hours = "Hour",
     /** */
-    Minutes,
+    Minutes = "Minute",
     /** */
-    Seconds,
+    Seconds = "Second",
     /** */
-    JulianYears,
+    JulianYears = "JulianYear",
     /** */
-    Nanoseconds,
+    Nanoseconds = "Nanosecond",
     /** */
-    Microseconds,
+    Microseconds = "Microsecond",
     /** */
-    Milliseconds
+    Milliseconds = "Millisecond"
 }
 
 /** Time is a dimension in which events can be ordered from the past through the present into the future, and also the measure of durations of events and the intervals between them. */

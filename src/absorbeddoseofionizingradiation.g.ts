@@ -1,37 +1,37 @@
 /** AbsorbedDoseOfIonizingRadiationUnits enumeration */
 export enum AbsorbedDoseOfIonizingRadiationUnits {
     /** The gray is the unit of ionizing radiation dose in the SI, defined as the absorption of one joule of radiation energy per kilogram of matter. */
-    Grays,
+    Grays = "Gray",
     /** The rad is a unit of absorbed radiation dose, defined as 1 rad = 0.01 Gy = 0.01 J/kg. */
-    Rads,
+    Rads = "Rad",
     /** */
-    Femtograys,
+    Femtograys = "Femtogray",
     /** */
-    Picograys,
+    Picograys = "Picogray",
     /** */
-    Nanograys,
+    Nanograys = "Nanogray",
     /** */
-    Micrograys,
+    Micrograys = "Microgray",
     /** */
-    Milligrays,
+    Milligrays = "Milligray",
     /** */
-    Centigrays,
+    Centigrays = "Centigray",
     /** */
-    Kilograys,
+    Kilograys = "Kilogray",
     /** */
-    Megagrays,
+    Megagrays = "Megagray",
     /** */
-    Gigagrays,
+    Gigagrays = "Gigagray",
     /** */
-    Teragrays,
+    Teragrays = "Teragray",
     /** */
-    Petagrays,
+    Petagrays = "Petagray",
     /** */
-    Millirads,
+    Millirads = "Millirad",
     /** */
-    Kilorads,
+    Kilorads = "Kilorad",
     /** */
-    Megarads
+    Megarads = "Megarad"
 }
 
 /** Absorbed dose is a dose quantity which is the measure of the energy deposited in matter by ionizing radiation per unit mass. */

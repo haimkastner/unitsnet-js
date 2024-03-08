@@ -1,71 +1,71 @@
 /** MassFlowUnits enumeration */
 export enum MassFlowUnits {
     /** */
-    GramsPerSecond,
+    GramsPerSecond = "GramPerSecond",
     /** */
-    GramsPerDay,
+    GramsPerDay = "GramPerDay",
     /** */
-    GramsPerHour,
+    GramsPerHour = "GramPerHour",
     /** */
-    KilogramsPerHour,
+    KilogramsPerHour = "KilogramPerHour",
     /** */
-    KilogramsPerMinute,
+    KilogramsPerMinute = "KilogramPerMinute",
     /** */
-    TonnesPerHour,
+    TonnesPerHour = "TonnePerHour",
     /** */
-    PoundsPerDay,
+    PoundsPerDay = "PoundPerDay",
     /** */
-    PoundsPerHour,
+    PoundsPerHour = "PoundPerHour",
     /** */
-    PoundsPerMinute,
+    PoundsPerMinute = "PoundPerMinute",
     /** */
-    PoundsPerSecond,
+    PoundsPerSecond = "PoundPerSecond",
     /** */
-    TonnesPerDay,
+    TonnesPerDay = "TonnePerDay",
     /** */
-    ShortTonsPerHour,
+    ShortTonsPerHour = "ShortTonPerHour",
     /** */
-    NanogramsPerSecond,
+    NanogramsPerSecond = "NanogramPerSecond",
     /** */
-    MicrogramsPerSecond,
+    MicrogramsPerSecond = "MicrogramPerSecond",
     /** */
-    MilligramsPerSecond,
+    MilligramsPerSecond = "MilligramPerSecond",
     /** */
-    CentigramsPerSecond,
+    CentigramsPerSecond = "CentigramPerSecond",
     /** */
-    DecigramsPerSecond,
+    DecigramsPerSecond = "DecigramPerSecond",
     /** */
-    DecagramsPerSecond,
+    DecagramsPerSecond = "DecagramPerSecond",
     /** */
-    HectogramsPerSecond,
+    HectogramsPerSecond = "HectogramPerSecond",
     /** */
-    KilogramsPerSecond,
+    KilogramsPerSecond = "KilogramPerSecond",
     /** */
-    NanogramsPerDay,
+    NanogramsPerDay = "NanogramPerDay",
     /** */
-    MicrogramsPerDay,
+    MicrogramsPerDay = "MicrogramPerDay",
     /** */
-    MilligramsPerDay,
+    MilligramsPerDay = "MilligramPerDay",
     /** */
-    CentigramsPerDay,
+    CentigramsPerDay = "CentigramPerDay",
     /** */
-    DecigramsPerDay,
+    DecigramsPerDay = "DecigramPerDay",
     /** */
-    DecagramsPerDay,
+    DecagramsPerDay = "DecagramPerDay",
     /** */
-    HectogramsPerDay,
+    HectogramsPerDay = "HectogramPerDay",
     /** */
-    KilogramsPerDay,
+    KilogramsPerDay = "KilogramPerDay",
     /** */
-    MegagramsPerDay,
+    MegagramsPerDay = "MegagramPerDay",
     /** */
-    MegapoundsPerDay,
+    MegapoundsPerDay = "MegapoundPerDay",
     /** */
-    MegapoundsPerHour,
+    MegapoundsPerHour = "MegapoundPerHour",
     /** */
-    MegapoundsPerMinute,
+    MegapoundsPerMinute = "MegapoundPerMinute",
     /** */
-    MegapoundsPerSecond
+    MegapoundsPerSecond = "MegapoundPerSecond"
 }
 
 /** Mass flow is the ratio of the mass change to the time during which the change occurred (value of mass changes per unit time). */

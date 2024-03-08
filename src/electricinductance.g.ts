@@ -1,15 +1,15 @@
 /** ElectricInductanceUnits enumeration */
 export enum ElectricInductanceUnits {
     /** */
-    Henries,
+    Henries = "Henry",
     /** */
-    Picohenries,
+    Picohenries = "Picohenry",
     /** */
-    Nanohenries,
+    Nanohenries = "Nanohenry",
     /** */
-    Microhenries,
+    Microhenries = "Microhenry",
     /** */
-    Millihenries
+    Millihenries = "Millihenry"
 }
 
 /** Inductance is a property of an electrical conductor which opposes a change in current. */

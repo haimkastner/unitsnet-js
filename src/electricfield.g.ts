@@ -1,7 +1,7 @@
 /** ElectricFieldUnits enumeration */
 export enum ElectricFieldUnits {
     /** */
-    VoltsPerMeter
+    VoltsPerMeter = "VoltPerMeter"
 }
 
 /** An electric field is a force field that surrounds electric charges that attracts or repels other electric charges. */

@@ -1,13 +1,13 @@
 /** ReactivePowerUnits enumeration */
 export enum ReactivePowerUnits {
     /** */
-    VoltamperesReactive,
+    VoltamperesReactive = "VoltampereReactive",
     /** */
-    KilovoltamperesReactive,
+    KilovoltamperesReactive = "KilovoltampereReactive",
     /** */
-    MegavoltamperesReactive,
+    MegavoltamperesReactive = "MegavoltampereReactive",
     /** */
-    GigavoltamperesReactive
+    GigavoltamperesReactive = "GigavoltampereReactive"
 }
 
 /** Volt-ampere reactive (var) is a unit by which reactive power is expressed in an AC electric power system. Reactive power exists in an AC circuit when the current and voltage are not in phase. */

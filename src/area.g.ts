@@ -1,33 +1,33 @@
 /** AreaUnits enumeration */
 export enum AreaUnits {
     /** */
-    SquareKilometers,
+    SquareKilometers = "SquareKilometer",
     /** */
-    SquareMeters,
+    SquareMeters = "SquareMeter",
     /** */
-    SquareDecimeters,
+    SquareDecimeters = "SquareDecimeter",
     /** */
-    SquareCentimeters,
+    SquareCentimeters = "SquareCentimeter",
     /** */
-    SquareMillimeters,
+    SquareMillimeters = "SquareMillimeter",
     /** */
-    SquareMicrometers,
+    SquareMicrometers = "SquareMicrometer",
     /** The statute mile was standardised between the British Commonwealth and the United States by an international agreement in 1959, when it was formally redefined with respect to SI units as exactly 1,609.344 metres. */
-    SquareMiles,
+    SquareMiles = "SquareMile",
     /** The yard (symbol: yd) is an English unit of length in both the British imperial and US customary systems of measurement equalling 3 feet (or 36 inches). Since 1959 the yard has been by international agreement standardized as exactly 0.9144 meter. A distance of 1,760 yards is equal to 1 mile. */
-    SquareYards,
+    SquareYards = "SquareYard",
     /** */
-    SquareFeet,
+    SquareFeet = "SquareFoot",
     /** In the United States, the foot was defined as 12 inches, with the inch being defined by the Mendenhall Order of 1893 as 39.37 inches = 1 m. This makes a U.S. survey foot exactly 1200/3937 meters. */
-    UsSurveySquareFeet,
+    UsSurveySquareFeet = "UsSurveySquareFoot",
     /** */
-    SquareInches,
+    SquareInches = "SquareInch",
     /** Based upon the international yard and pound agreement of 1959, an acre may be declared as exactly 4,046.8564224 square metres. */
-    Acres,
+    Acres = "Acre",
     /** */
-    Hectares,
+    Hectares = "Hectare",
     /** */
-    SquareNauticalMiles
+    SquareNauticalMiles = "SquareNauticalMile"
 }
 
 /** Area is a quantity that expresses the extent of a two-dimensional surface or shape, or planar lamina, in the plane. Area can be understood as the amount of material with a given thickness that would be necessary to fashion a model of the shape, or the amount of paint necessary to cover the surface with a single coat.[1] It is the two-dimensional analog of the length of a curve (a one-dimensional concept) or the volume of a solid (a three-dimensional concept). */

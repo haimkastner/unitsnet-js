@@ -1,23 +1,23 @@
 /** VolumetricHeatCapacityUnits enumeration */
 export enum VolumetricHeatCapacityUnits {
     /** */
-    JoulesPerCubicMeterKelvin,
+    JoulesPerCubicMeterKelvin = "JoulePerCubicMeterKelvin",
     /** */
-    JoulesPerCubicMeterDegreeCelsius,
+    JoulesPerCubicMeterDegreeCelsius = "JoulePerCubicMeterDegreeCelsius",
     /** */
-    CaloriesPerCubicCentimeterDegreeCelsius,
+    CaloriesPerCubicCentimeterDegreeCelsius = "CaloriePerCubicCentimeterDegreeCelsius",
     /** */
-    BtusPerCubicFootDegreeFahrenheit,
+    BtusPerCubicFootDegreeFahrenheit = "BtuPerCubicFootDegreeFahrenheit",
     /** */
-    KilojoulesPerCubicMeterKelvin,
+    KilojoulesPerCubicMeterKelvin = "KilojoulePerCubicMeterKelvin",
     /** */
-    MegajoulesPerCubicMeterKelvin,
+    MegajoulesPerCubicMeterKelvin = "MegajoulePerCubicMeterKelvin",
     /** */
-    KilojoulesPerCubicMeterDegreeCelsius,
+    KilojoulesPerCubicMeterDegreeCelsius = "KilojoulePerCubicMeterDegreeCelsius",
     /** */
-    MegajoulesPerCubicMeterDegreeCelsius,
+    MegajoulesPerCubicMeterDegreeCelsius = "MegajoulePerCubicMeterDegreeCelsius",
     /** */
-    KilocaloriesPerCubicCentimeterDegreeCelsius
+    KilocaloriesPerCubicCentimeterDegreeCelsius = "KilocaloriePerCubicCentimeterDegreeCelsius"
 }
 
 /** The volumetric heat capacity is the amount of energy that must be added, in the form of heat, to one unit of volume of the material in order to cause an increase of one unit in its temperature. */

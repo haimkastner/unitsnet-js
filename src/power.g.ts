@@ -1,57 +1,57 @@
 /** PowerUnits enumeration */
 export enum PowerUnits {
     /** */
-    Watts,
+    Watts = "Watt",
     /** */
-    MechanicalHorsepower,
+    MechanicalHorsepower = "MechanicalHorsepower",
     /** */
-    MetricHorsepower,
+    MetricHorsepower = "MetricHorsepower",
     /** */
-    ElectricalHorsepower,
+    ElectricalHorsepower = "ElectricalHorsepower",
     /** */
-    BoilerHorsepower,
+    BoilerHorsepower = "BoilerHorsepower",
     /** */
-    HydraulicHorsepower,
+    HydraulicHorsepower = "HydraulicHorsepower",
     /** */
-    BritishThermalUnitsPerHour,
+    BritishThermalUnitsPerHour = "BritishThermalUnitPerHour",
     /** */
-    JoulesPerHour,
+    JoulesPerHour = "JoulePerHour",
     /** */
-    Femtowatts,
+    Femtowatts = "Femtowatt",
     /** */
-    Picowatts,
+    Picowatts = "Picowatt",
     /** */
-    Nanowatts,
+    Nanowatts = "Nanowatt",
     /** */
-    Microwatts,
+    Microwatts = "Microwatt",
     /** */
-    Milliwatts,
+    Milliwatts = "Milliwatt",
     /** */
-    Deciwatts,
+    Deciwatts = "Deciwatt",
     /** */
-    Decawatts,
+    Decawatts = "Decawatt",
     /** */
-    Kilowatts,
+    Kilowatts = "Kilowatt",
     /** */
-    Megawatts,
+    Megawatts = "Megawatt",
     /** */
-    Gigawatts,
+    Gigawatts = "Gigawatt",
     /** */
-    Terawatts,
+    Terawatts = "Terawatt",
     /** */
-    Petawatts,
+    Petawatts = "Petawatt",
     /** */
-    KilobritishThermalUnitsPerHour,
+    KilobritishThermalUnitsPerHour = "KilobritishThermalUnitPerHour",
     /** */
-    MegabritishThermalUnitsPerHour,
+    MegabritishThermalUnitsPerHour = "MegabritishThermalUnitPerHour",
     /** */
-    MillijoulesPerHour,
+    MillijoulesPerHour = "MillijoulePerHour",
     /** */
-    KilojoulesPerHour,
+    KilojoulesPerHour = "KilojoulePerHour",
     /** */
-    MegajoulesPerHour,
+    MegajoulesPerHour = "MegajoulePerHour",
     /** */
-    GigajoulesPerHour
+    GigajoulesPerHour = "GigajoulePerHour"
 }
 
 /** In physics, power is the rate of doing work. It is equivalent to an amount of energy consumed per unit time. */

@@ -1,31 +1,31 @@
 /** MolarMassUnits enumeration */
 export enum MolarMassUnits {
     /** */
-    GramsPerMole,
+    GramsPerMole = "GramPerMole",
     /** */
-    KilogramsPerKilomole,
+    KilogramsPerKilomole = "KilogramPerKilomole",
     /** */
-    PoundsPerMole,
+    PoundsPerMole = "PoundPerMole",
     /** */
-    NanogramsPerMole,
+    NanogramsPerMole = "NanogramPerMole",
     /** */
-    MicrogramsPerMole,
+    MicrogramsPerMole = "MicrogramPerMole",
     /** */
-    MilligramsPerMole,
+    MilligramsPerMole = "MilligramPerMole",
     /** */
-    CentigramsPerMole,
+    CentigramsPerMole = "CentigramPerMole",
     /** */
-    DecigramsPerMole,
+    DecigramsPerMole = "DecigramPerMole",
     /** */
-    DecagramsPerMole,
+    DecagramsPerMole = "DecagramPerMole",
     /** */
-    HectogramsPerMole,
+    HectogramsPerMole = "HectogramPerMole",
     /** */
-    KilogramsPerMole,
+    KilogramsPerMole = "KilogramPerMole",
     /** */
-    KilopoundsPerMole,
+    KilopoundsPerMole = "KilopoundPerMole",
     /** */
-    MegapoundsPerMole
+    MegapoundsPerMole = "MegapoundPerMole"
 }
 
 /** In chemistry, the molar mass M is a physical property defined as the mass of a given substance (chemical element or chemical compound) divided by the amount of substance. */

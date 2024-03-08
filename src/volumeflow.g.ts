@@ -1,155 +1,155 @@
 /** VolumeFlowUnits enumeration */
 export enum VolumeFlowUnits {
     /** */
-    CubicMetersPerSecond,
+    CubicMetersPerSecond = "CubicMeterPerSecond",
     /** */
-    CubicMetersPerMinute,
+    CubicMetersPerMinute = "CubicMeterPerMinute",
     /** */
-    CubicMetersPerHour,
+    CubicMetersPerHour = "CubicMeterPerHour",
     /** */
-    CubicMetersPerDay,
+    CubicMetersPerDay = "CubicMeterPerDay",
     /** */
-    CubicFeetPerSecond,
+    CubicFeetPerSecond = "CubicFootPerSecond",
     /** */
-    CubicFeetPerMinute,
+    CubicFeetPerMinute = "CubicFootPerMinute",
     /** */
-    CubicFeetPerHour,
+    CubicFeetPerHour = "CubicFootPerHour",
     /** */
-    CubicYardsPerSecond,
+    CubicYardsPerSecond = "CubicYardPerSecond",
     /** */
-    CubicYardsPerMinute,
+    CubicYardsPerMinute = "CubicYardPerMinute",
     /** */
-    CubicYardsPerHour,
+    CubicYardsPerHour = "CubicYardPerHour",
     /** */
-    CubicYardsPerDay,
+    CubicYardsPerDay = "CubicYardPerDay",
     /** */
-    MillionUsGallonsPerDay,
+    MillionUsGallonsPerDay = "MillionUsGallonPerDay",
     /** */
-    UsGallonsPerDay,
+    UsGallonsPerDay = "UsGallonPerDay",
     /** */
-    LitersPerSecond,
+    LitersPerSecond = "LiterPerSecond",
     /** */
-    LitersPerMinute,
+    LitersPerMinute = "LiterPerMinute",
     /** */
-    LitersPerHour,
+    LitersPerHour = "LiterPerHour",
     /** */
-    LitersPerDay,
+    LitersPerDay = "LiterPerDay",
     /** */
-    UsGallonsPerSecond,
+    UsGallonsPerSecond = "UsGallonPerSecond",
     /** */
-    UsGallonsPerMinute,
+    UsGallonsPerMinute = "UsGallonPerMinute",
     /** */
-    UkGallonsPerDay,
+    UkGallonsPerDay = "UkGallonPerDay",
     /** */
-    UkGallonsPerHour,
+    UkGallonsPerHour = "UkGallonPerHour",
     /** */
-    UkGallonsPerMinute,
+    UkGallonsPerMinute = "UkGallonPerMinute",
     /** */
-    UkGallonsPerSecond,
+    UkGallonsPerSecond = "UkGallonPerSecond",
     /** */
-    KilousGallonsPerMinute,
+    KilousGallonsPerMinute = "KilousGallonPerMinute",
     /** */
-    UsGallonsPerHour,
+    UsGallonsPerHour = "UsGallonPerHour",
     /** */
-    CubicDecimetersPerMinute,
+    CubicDecimetersPerMinute = "CubicDecimeterPerMinute",
     /** */
-    OilBarrelsPerDay,
+    OilBarrelsPerDay = "OilBarrelPerDay",
     /** */
-    OilBarrelsPerMinute,
+    OilBarrelsPerMinute = "OilBarrelPerMinute",
     /** */
-    OilBarrelsPerHour,
+    OilBarrelsPerHour = "OilBarrelPerHour",
     /** */
-    OilBarrelsPerSecond,
+    OilBarrelsPerSecond = "OilBarrelPerSecond",
     /** */
-    CubicMillimetersPerSecond,
+    CubicMillimetersPerSecond = "CubicMillimeterPerSecond",
     /** */
-    AcreFeetPerSecond,
+    AcreFeetPerSecond = "AcreFootPerSecond",
     /** */
-    AcreFeetPerMinute,
+    AcreFeetPerMinute = "AcreFootPerMinute",
     /** */
-    AcreFeetPerHour,
+    AcreFeetPerHour = "AcreFootPerHour",
     /** */
-    AcreFeetPerDay,
+    AcreFeetPerDay = "AcreFootPerDay",
     /** */
-    CubicCentimetersPerMinute,
+    CubicCentimetersPerMinute = "CubicCentimeterPerMinute",
     /** */
-    MegausGallonsPerDay,
+    MegausGallonsPerDay = "MegausGallonPerDay",
     /** */
-    NanolitersPerSecond,
+    NanolitersPerSecond = "NanoliterPerSecond",
     /** */
-    MicrolitersPerSecond,
+    MicrolitersPerSecond = "MicroliterPerSecond",
     /** */
-    MillilitersPerSecond,
+    MillilitersPerSecond = "MilliliterPerSecond",
     /** */
-    CentilitersPerSecond,
+    CentilitersPerSecond = "CentiliterPerSecond",
     /** */
-    DecilitersPerSecond,
+    DecilitersPerSecond = "DeciliterPerSecond",
     /** */
-    DecalitersPerSecond,
+    DecalitersPerSecond = "DecaliterPerSecond",
     /** */
-    HectolitersPerSecond,
+    HectolitersPerSecond = "HectoliterPerSecond",
     /** */
-    KilolitersPerSecond,
+    KilolitersPerSecond = "KiloliterPerSecond",
     /** */
-    MegalitersPerSecond,
+    MegalitersPerSecond = "MegaliterPerSecond",
     /** */
-    NanolitersPerMinute,
+    NanolitersPerMinute = "NanoliterPerMinute",
     /** */
-    MicrolitersPerMinute,
+    MicrolitersPerMinute = "MicroliterPerMinute",
     /** */
-    MillilitersPerMinute,
+    MillilitersPerMinute = "MilliliterPerMinute",
     /** */
-    CentilitersPerMinute,
+    CentilitersPerMinute = "CentiliterPerMinute",
     /** */
-    DecilitersPerMinute,
+    DecilitersPerMinute = "DeciliterPerMinute",
     /** */
-    DecalitersPerMinute,
+    DecalitersPerMinute = "DecaliterPerMinute",
     /** */
-    HectolitersPerMinute,
+    HectolitersPerMinute = "HectoliterPerMinute",
     /** */
-    KilolitersPerMinute,
+    KilolitersPerMinute = "KiloliterPerMinute",
     /** */
-    MegalitersPerMinute,
+    MegalitersPerMinute = "MegaliterPerMinute",
     /** */
-    NanolitersPerHour,
+    NanolitersPerHour = "NanoliterPerHour",
     /** */
-    MicrolitersPerHour,
+    MicrolitersPerHour = "MicroliterPerHour",
     /** */
-    MillilitersPerHour,
+    MillilitersPerHour = "MilliliterPerHour",
     /** */
-    CentilitersPerHour,
+    CentilitersPerHour = "CentiliterPerHour",
     /** */
-    DecilitersPerHour,
+    DecilitersPerHour = "DeciliterPerHour",
     /** */
-    DecalitersPerHour,
+    DecalitersPerHour = "DecaliterPerHour",
     /** */
-    HectolitersPerHour,
+    HectolitersPerHour = "HectoliterPerHour",
     /** */
-    KilolitersPerHour,
+    KilolitersPerHour = "KiloliterPerHour",
     /** */
-    MegalitersPerHour,
+    MegalitersPerHour = "MegaliterPerHour",
     /** */
-    NanolitersPerDay,
+    NanolitersPerDay = "NanoliterPerDay",
     /** */
-    MicrolitersPerDay,
+    MicrolitersPerDay = "MicroliterPerDay",
     /** */
-    MillilitersPerDay,
+    MillilitersPerDay = "MilliliterPerDay",
     /** */
-    CentilitersPerDay,
+    CentilitersPerDay = "CentiliterPerDay",
     /** */
-    DecilitersPerDay,
+    DecilitersPerDay = "DeciliterPerDay",
     /** */
-    DecalitersPerDay,
+    DecalitersPerDay = "DecaliterPerDay",
     /** */
-    HectolitersPerDay,
+    HectolitersPerDay = "HectoliterPerDay",
     /** */
-    KilolitersPerDay,
+    KilolitersPerDay = "KiloliterPerDay",
     /** */
-    MegalitersPerDay,
+    MegalitersPerDay = "MegaliterPerDay",
     /** */
-    MegaukGallonsPerDay,
+    MegaukGallonsPerDay = "MegaukGallonPerDay",
     /** */
-    MegaukGallonsPerSecond
+    MegaukGallonsPerSecond = "MegaukGallonPerSecond"
 }
 
 /** In physics and engineering, in particular fluid dynamics and hydrometry, the volumetric flow rate, (also known as volume flow rate, rate of fluid flow or volume velocity) is the volume of fluid which passes through a given surface per unit time. The SI unit is m³/s (cubic meters per second). In US Customary Units and British Imperial Units, volumetric flow rate is often expressed as ft³/s (cubic feet per second). It is usually represented by the symbol Q. */

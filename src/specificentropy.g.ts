@@ -1,23 +1,23 @@
 /** SpecificEntropyUnits enumeration */
 export enum SpecificEntropyUnits {
     /** */
-    JoulesPerKilogramKelvin,
+    JoulesPerKilogramKelvin = "JoulePerKilogramKelvin",
     /** */
-    JoulesPerKilogramDegreeCelsius,
+    JoulesPerKilogramDegreeCelsius = "JoulePerKilogramDegreeCelsius",
     /** */
-    CaloriesPerGramKelvin,
+    CaloriesPerGramKelvin = "CaloriePerGramKelvin",
     /** */
-    BtusPerPoundFahrenheit,
+    BtusPerPoundFahrenheit = "BtuPerPoundFahrenheit",
     /** */
-    KilojoulesPerKilogramKelvin,
+    KilojoulesPerKilogramKelvin = "KilojoulePerKilogramKelvin",
     /** */
-    MegajoulesPerKilogramKelvin,
+    MegajoulesPerKilogramKelvin = "MegajoulePerKilogramKelvin",
     /** */
-    KilojoulesPerKilogramDegreeCelsius,
+    KilojoulesPerKilogramDegreeCelsius = "KilojoulePerKilogramDegreeCelsius",
     /** */
-    MegajoulesPerKilogramDegreeCelsius,
+    MegajoulesPerKilogramDegreeCelsius = "MegajoulePerKilogramDegreeCelsius",
     /** */
-    KilocaloriesPerGramKelvin
+    KilocaloriesPerGramKelvin = "KilocaloriePerGramKelvin"
 }
 
 /** Specific entropy is an amount of energy required to raise temperature of a substance by 1 Kelvin per unit mass. */

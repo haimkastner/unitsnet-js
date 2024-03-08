@@ -1,39 +1,39 @@
 /** AmountOfSubstanceUnits enumeration */
 export enum AmountOfSubstanceUnits {
     /** */
-    Moles,
+    Moles = "Mole",
     /** */
-    PoundMoles,
+    PoundMoles = "PoundMole",
     /** */
-    Femtomoles,
+    Femtomoles = "Femtomole",
     /** */
-    Picomoles,
+    Picomoles = "Picomole",
     /** */
-    Nanomoles,
+    Nanomoles = "Nanomole",
     /** */
-    Micromoles,
+    Micromoles = "Micromole",
     /** */
-    Millimoles,
+    Millimoles = "Millimole",
     /** */
-    Centimoles,
+    Centimoles = "Centimole",
     /** */
-    Decimoles,
+    Decimoles = "Decimole",
     /** */
-    Kilomoles,
+    Kilomoles = "Kilomole",
     /** */
-    Megamoles,
+    Megamoles = "Megamole",
     /** */
-    NanopoundMoles,
+    NanopoundMoles = "NanopoundMole",
     /** */
-    MicropoundMoles,
+    MicropoundMoles = "MicropoundMole",
     /** */
-    MillipoundMoles,
+    MillipoundMoles = "MillipoundMole",
     /** */
-    CentipoundMoles,
+    CentipoundMoles = "CentipoundMole",
     /** */
-    DecipoundMoles,
+    DecipoundMoles = "DecipoundMole",
     /** */
-    KilopoundMoles
+    KilopoundMoles = "KilopoundMole"
 }
 
 /** Mole is the amount of substance containing Avagadro's Number (6.02 x 10 ^ 23) of real particles such as molecules,atoms, ions or radicals. */

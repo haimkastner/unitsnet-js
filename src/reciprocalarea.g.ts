@@ -1,27 +1,27 @@
 /** ReciprocalAreaUnits enumeration */
 export enum ReciprocalAreaUnits {
     /** */
-    InverseSquareMeters,
+    InverseSquareMeters = "InverseSquareMeter",
     /** */
-    InverseSquareKilometers,
+    InverseSquareKilometers = "InverseSquareKilometer",
     /** */
-    InverseSquareDecimeters,
+    InverseSquareDecimeters = "InverseSquareDecimeter",
     /** */
-    InverseSquareCentimeters,
+    InverseSquareCentimeters = "InverseSquareCentimeter",
     /** */
-    InverseSquareMillimeters,
+    InverseSquareMillimeters = "InverseSquareMillimeter",
     /** */
-    InverseSquareMicrometers,
+    InverseSquareMicrometers = "InverseSquareMicrometer",
     /** */
-    InverseSquareMiles,
+    InverseSquareMiles = "InverseSquareMile",
     /** */
-    InverseSquareYards,
+    InverseSquareYards = "InverseSquareYard",
     /** */
-    InverseSquareFeet,
+    InverseSquareFeet = "InverseSquareFoot",
     /** */
-    InverseUsSurveySquareFeet,
+    InverseUsSurveySquareFeet = "InverseUsSurveySquareFoot",
     /** */
-    InverseSquareInches
+    InverseSquareInches = "InverseSquareInch"
 }
 
 /** Reciprocal area (Inverse-square) quantity is used to specify a physical quantity inversely proportional to the square of the distance. */

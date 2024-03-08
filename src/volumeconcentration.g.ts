@@ -1,45 +1,45 @@
 /** VolumeConcentrationUnits enumeration */
 export enum VolumeConcentrationUnits {
     /** */
-    DecimalFractions,
+    DecimalFractions = "DecimalFraction",
     /** */
-    LitersPerLiter,
+    LitersPerLiter = "LitersPerLiter",
     /** */
-    LitersPerMililiter,
+    LitersPerMililiter = "LitersPerMililiter",
     /** */
-    Percent,
+    Percent = "Percent",
     /** */
-    PartsPerThousand,
+    PartsPerThousand = "PartPerThousand",
     /** */
-    PartsPerMillion,
+    PartsPerMillion = "PartPerMillion",
     /** */
-    PartsPerBillion,
+    PartsPerBillion = "PartPerBillion",
     /** */
-    PartsPerTrillion,
+    PartsPerTrillion = "PartPerTrillion",
     /** */
-    PicolitersPerLiter,
+    PicolitersPerLiter = "PicolitersPerLiter",
     /** */
-    NanolitersPerLiter,
+    NanolitersPerLiter = "NanolitersPerLiter",
     /** */
-    MicrolitersPerLiter,
+    MicrolitersPerLiter = "MicrolitersPerLiter",
     /** */
-    MillilitersPerLiter,
+    MillilitersPerLiter = "MillilitersPerLiter",
     /** */
-    CentilitersPerLiter,
+    CentilitersPerLiter = "CentilitersPerLiter",
     /** */
-    DecilitersPerLiter,
+    DecilitersPerLiter = "DecilitersPerLiter",
     /** */
-    PicolitersPerMililiter,
+    PicolitersPerMililiter = "PicolitersPerMililiter",
     /** */
-    NanolitersPerMililiter,
+    NanolitersPerMililiter = "NanolitersPerMililiter",
     /** */
-    MicrolitersPerMililiter,
+    MicrolitersPerMililiter = "MicrolitersPerMililiter",
     /** */
-    MillilitersPerMililiter,
+    MillilitersPerMililiter = "MillilitersPerMililiter",
     /** */
-    CentilitersPerMililiter,
+    CentilitersPerMililiter = "CentilitersPerMililiter",
     /** */
-    DecilitersPerMililiter
+    DecilitersPerMililiter = "DecilitersPerMililiter"
 }
 
 /** The volume concentration (not to be confused with volume fraction) is defined as the volume of a constituent divided by the total volume of the mixture. */

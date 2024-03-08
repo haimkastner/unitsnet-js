@@ -1,19 +1,19 @@
 /** CapacitanceUnits enumeration */
 export enum CapacitanceUnits {
     /** */
-    Farads,
+    Farads = "Farad",
     /** */
-    Picofarads,
+    Picofarads = "Picofarad",
     /** */
-    Nanofarads,
+    Nanofarads = "Nanofarad",
     /** */
-    Microfarads,
+    Microfarads = "Microfarad",
     /** */
-    Millifarads,
+    Millifarads = "Millifarad",
     /** */
-    Kilofarads,
+    Kilofarads = "Kilofarad",
     /** */
-    Megafarads
+    Megafarads = "Megafarad"
 }
 
 /** Capacitance is the ability of a body to store an electric charge. */

@@ -1,63 +1,63 @@
 /** RadioactivityUnits enumeration */
 export enum RadioactivityUnits {
     /** Activity of a quantity of radioactive material in which one nucleus decays per second. */
-    Becquerels,
+    Becquerels = "Becquerel",
     /** */
-    Curies,
+    Curies = "Curie",
     /** Activity of a quantity of radioactive material in which one million nuclei decay per second. */
-    Rutherfords,
+    Rutherfords = "Rutherford",
     /** */
-    Picobecquerels,
+    Picobecquerels = "Picobecquerel",
     /** */
-    Nanobecquerels,
+    Nanobecquerels = "Nanobecquerel",
     /** */
-    Microbecquerels,
+    Microbecquerels = "Microbecquerel",
     /** */
-    Millibecquerels,
+    Millibecquerels = "Millibecquerel",
     /** */
-    Kilobecquerels,
+    Kilobecquerels = "Kilobecquerel",
     /** */
-    Megabecquerels,
+    Megabecquerels = "Megabecquerel",
     /** */
-    Gigabecquerels,
+    Gigabecquerels = "Gigabecquerel",
     /** */
-    Terabecquerels,
+    Terabecquerels = "Terabecquerel",
     /** */
-    Petabecquerels,
+    Petabecquerels = "Petabecquerel",
     /** */
-    Exabecquerels,
+    Exabecquerels = "Exabecquerel",
     /** */
-    Picocuries,
+    Picocuries = "Picocurie",
     /** */
-    Nanocuries,
+    Nanocuries = "Nanocurie",
     /** */
-    Microcuries,
+    Microcuries = "Microcurie",
     /** */
-    Millicuries,
+    Millicuries = "Millicurie",
     /** */
-    Kilocuries,
+    Kilocuries = "Kilocurie",
     /** */
-    Megacuries,
+    Megacuries = "Megacurie",
     /** */
-    Gigacuries,
+    Gigacuries = "Gigacurie",
     /** */
-    Teracuries,
+    Teracuries = "Teracurie",
     /** */
-    Picorutherfords,
+    Picorutherfords = "Picorutherford",
     /** */
-    Nanorutherfords,
+    Nanorutherfords = "Nanorutherford",
     /** */
-    Microrutherfords,
+    Microrutherfords = "Microrutherford",
     /** */
-    Millirutherfords,
+    Millirutherfords = "Millirutherford",
     /** */
-    Kilorutherfords,
+    Kilorutherfords = "Kilorutherford",
     /** */
-    Megarutherfords,
+    Megarutherfords = "Megarutherford",
     /** */
-    Gigarutherfords,
+    Gigarutherfords = "Gigarutherford",
     /** */
-    Terarutherfords
+    Terarutherfords = "Terarutherford"
 }
 
 /** Amount of ionizing radiation released when an element spontaneously emits energy as a result of the radioactive decay of an unstable atom per unit time. */

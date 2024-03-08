@@ -1,25 +1,25 @@
 /** DynamicViscosityUnits enumeration */
 export enum DynamicViscosityUnits {
     /** */
-    NewtonSecondsPerMeterSquared,
+    NewtonSecondsPerMeterSquared = "NewtonSecondPerMeterSquared",
     /** */
-    PascalSeconds,
+    PascalSeconds = "PascalSecond",
     /** */
-    Poise,
+    Poise = "Poise",
     /** */
-    Reyns,
+    Reyns = "Reyn",
     /** */
-    PoundsForceSecondPerSquareInch,
+    PoundsForceSecondPerSquareInch = "PoundForceSecondPerSquareInch",
     /** */
-    PoundsForceSecondPerSquareFoot,
+    PoundsForceSecondPerSquareFoot = "PoundForceSecondPerSquareFoot",
     /** */
-    PoundsPerFootSecond,
+    PoundsPerFootSecond = "PoundPerFootSecond",
     /** */
-    MillipascalSeconds,
+    MillipascalSeconds = "MillipascalSecond",
     /** */
-    MicropascalSeconds,
+    MicropascalSeconds = "MicropascalSecond",
     /** */
-    Centipoise
+    Centipoise = "Centipoise"
 }
 
 /** The dynamic (shear) viscosity of a fluid expresses its resistance to shearing flows, where adjacent layers move parallel to each other with different speeds */

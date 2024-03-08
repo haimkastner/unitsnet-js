@@ -1,17 +1,17 @@
 /** ApparentPowerUnits enumeration */
 export enum ApparentPowerUnits {
     /** */
-    Voltamperes,
+    Voltamperes = "Voltampere",
     /** */
-    Microvoltamperes,
+    Microvoltamperes = "Microvoltampere",
     /** */
-    Millivoltamperes,
+    Millivoltamperes = "Millivoltampere",
     /** */
-    Kilovoltamperes,
+    Kilovoltamperes = "Kilovoltampere",
     /** */
-    Megavoltamperes,
+    Megavoltamperes = "Megavoltampere",
     /** */
-    Gigavoltamperes
+    Gigavoltamperes = "Gigavoltampere"
 }
 
 /** Power engineers measure apparent power as the magnitude of the vector sum of active and reactive power. Apparent power is the product of the root-mean-square of voltage and current. */

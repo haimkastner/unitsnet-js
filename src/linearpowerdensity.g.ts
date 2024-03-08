@@ -1,55 +1,55 @@
 /** LinearPowerDensityUnits enumeration */
 export enum LinearPowerDensityUnits {
     /** */
-    WattsPerMeter,
+    WattsPerMeter = "WattPerMeter",
     /** */
-    WattsPerCentimeter,
+    WattsPerCentimeter = "WattPerCentimeter",
     /** */
-    WattsPerMillimeter,
+    WattsPerMillimeter = "WattPerMillimeter",
     /** */
-    WattsPerInch,
+    WattsPerInch = "WattPerInch",
     /** */
-    WattsPerFoot,
+    WattsPerFoot = "WattPerFoot",
     /** */
-    MilliwattsPerMeter,
+    MilliwattsPerMeter = "MilliwattPerMeter",
     /** */
-    KilowattsPerMeter,
+    KilowattsPerMeter = "KilowattPerMeter",
     /** */
-    MegawattsPerMeter,
+    MegawattsPerMeter = "MegawattPerMeter",
     /** */
-    GigawattsPerMeter,
+    GigawattsPerMeter = "GigawattPerMeter",
     /** */
-    MilliwattsPerCentimeter,
+    MilliwattsPerCentimeter = "MilliwattPerCentimeter",
     /** */
-    KilowattsPerCentimeter,
+    KilowattsPerCentimeter = "KilowattPerCentimeter",
     /** */
-    MegawattsPerCentimeter,
+    MegawattsPerCentimeter = "MegawattPerCentimeter",
     /** */
-    GigawattsPerCentimeter,
+    GigawattsPerCentimeter = "GigawattPerCentimeter",
     /** */
-    MilliwattsPerMillimeter,
+    MilliwattsPerMillimeter = "MilliwattPerMillimeter",
     /** */
-    KilowattsPerMillimeter,
+    KilowattsPerMillimeter = "KilowattPerMillimeter",
     /** */
-    MegawattsPerMillimeter,
+    MegawattsPerMillimeter = "MegawattPerMillimeter",
     /** */
-    GigawattsPerMillimeter,
+    GigawattsPerMillimeter = "GigawattPerMillimeter",
     /** */
-    MilliwattsPerInch,
+    MilliwattsPerInch = "MilliwattPerInch",
     /** */
-    KilowattsPerInch,
+    KilowattsPerInch = "KilowattPerInch",
     /** */
-    MegawattsPerInch,
+    MegawattsPerInch = "MegawattPerInch",
     /** */
-    GigawattsPerInch,
+    GigawattsPerInch = "GigawattPerInch",
     /** */
-    MilliwattsPerFoot,
+    MilliwattsPerFoot = "MilliwattPerFoot",
     /** */
-    KilowattsPerFoot,
+    KilowattsPerFoot = "KilowattPerFoot",
     /** */
-    MegawattsPerFoot,
+    MegawattsPerFoot = "MegawattPerFoot",
     /** */
-    GigawattsPerFoot
+    GigawattsPerFoot = "GigawattPerFoot"
 }
 
 /** The Linear Power Density of a substance is its power per unit length.  The term linear density is most often used when describing the characteristics of one-dimensional objects, although linear density can also be used to describe the density of a three-dimensional quantity along one particular dimension. */

@@ -1,17 +1,17 @@
 /** CoefficientOfThermalExpansionUnits enumeration */
 export enum CoefficientOfThermalExpansionUnits {
     /** */
-    PerKelvin,
+    PerKelvin = "PerKelvin",
     /** */
-    PerDegreeCelsius,
+    PerDegreeCelsius = "PerDegreeCelsius",
     /** */
-    PerDegreeFahrenheit,
+    PerDegreeFahrenheit = "PerDegreeFahrenheit",
     /** */
-    PpmPerKelvin,
+    PpmPerKelvin = "PpmPerKelvin",
     /** */
-    PpmPerDegreeCelsius,
+    PpmPerDegreeCelsius = "PpmPerDegreeCelsius",
     /** */
-    PpmPerDegreeFahrenheit
+    PpmPerDegreeFahrenheit = "PpmPerDegreeFahrenheit"
 }
 
 /** A unit that represents a fractional change in size in response to a change in temperature. */

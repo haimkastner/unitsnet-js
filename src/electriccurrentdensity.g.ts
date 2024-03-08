@@ -1,11 +1,11 @@
 /** ElectricCurrentDensityUnits enumeration */
 export enum ElectricCurrentDensityUnits {
     /** */
-    AmperesPerSquareMeter,
+    AmperesPerSquareMeter = "AmperePerSquareMeter",
     /** */
-    AmperesPerSquareInch,
+    AmperesPerSquareInch = "AmperePerSquareInch",
     /** */
-    AmperesPerSquareFoot
+    AmperesPerSquareFoot = "AmperePerSquareFoot"
 }
 
 /** In electromagnetism, current density is the electric current per unit area of cross section. */

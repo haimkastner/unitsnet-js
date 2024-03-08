@@ -1,13 +1,13 @@
 /** AmplitudeRatioUnits enumeration */
 export enum AmplitudeRatioUnits {
     /** */
-    DecibelVolts,
+    DecibelVolts = "DecibelVolt",
     /** */
-    DecibelMicrovolts,
+    DecibelMicrovolts = "DecibelMicrovolt",
     /** */
-    DecibelMillivolts,
+    DecibelMillivolts = "DecibelMillivolt",
     /** */
-    DecibelsUnloaded
+    DecibelsUnloaded = "DecibelUnloaded"
 }
 
 /** The strength of a signal expressed in decibels (dB) relative to one volt RMS. */

@@ -1,33 +1,33 @@
 /** BitRateUnits enumeration */
 export enum BitRateUnits {
     /** */
-    BitsPerSecond,
+    BitsPerSecond = "BitPerSecond",
     /** */
-    BytesPerSecond,
+    BytesPerSecond = "BytePerSecond",
     /** */
-    KilobitsPerSecond,
+    KilobitsPerSecond = "KilobitPerSecond",
     /** */
-    MegabitsPerSecond,
+    MegabitsPerSecond = "MegabitPerSecond",
     /** */
-    GigabitsPerSecond,
+    GigabitsPerSecond = "GigabitPerSecond",
     /** */
-    TerabitsPerSecond,
+    TerabitsPerSecond = "TerabitPerSecond",
     /** */
-    PetabitsPerSecond,
+    PetabitsPerSecond = "PetabitPerSecond",
     /** */
-    ExabitsPerSecond,
+    ExabitsPerSecond = "ExabitPerSecond",
     /** */
-    KilobytesPerSecond,
+    KilobytesPerSecond = "KilobytePerSecond",
     /** */
-    MegabytesPerSecond,
+    MegabytesPerSecond = "MegabytePerSecond",
     /** */
-    GigabytesPerSecond,
+    GigabytesPerSecond = "GigabytePerSecond",
     /** */
-    TerabytesPerSecond,
+    TerabytesPerSecond = "TerabytePerSecond",
     /** */
-    PetabytesPerSecond,
+    PetabytesPerSecond = "PetabytePerSecond",
     /** */
-    ExabytesPerSecond
+    ExabytesPerSecond = "ExabytePerSecond"
 }
 
 /** In telecommunications and computing, bit rate is the number of bits that are conveyed or processed per unit of time. */

@@ -1,17 +1,17 @@
 /** RadiationEquivalentDoseUnits enumeration */
 export enum RadiationEquivalentDoseUnits {
     /** The sievert is a unit in the International System of Units (SI) intended to represent the stochastic health risk of ionizing radiation, which is defined as the probability of causing radiation-induced cancer and genetic damage. */
-    Sieverts,
+    Sieverts = "Sievert",
     /** */
-    RoentgensEquivalentMan,
+    RoentgensEquivalentMan = "RoentgenEquivalentMan",
     /** */
-    Nanosieverts,
+    Nanosieverts = "Nanosievert",
     /** */
-    Microsieverts,
+    Microsieverts = "Microsievert",
     /** */
-    Millisieverts,
+    Millisieverts = "Millisievert",
     /** */
-    MilliroentgensEquivalentMan
+    MilliroentgensEquivalentMan = "MilliroentgenEquivalentMan"
 }
 
 /** Equivalent dose is a dose quantity representing the stochastic health effects of low levels of ionizing radiation on the human body which represents the probability of radiation-induced cancer and genetic damage. */

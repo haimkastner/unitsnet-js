@@ -1,19 +1,19 @@
 /** ElectricCurrentGradientUnits enumeration */
 export enum ElectricCurrentGradientUnits {
     /** */
-    AmperesPerSecond,
+    AmperesPerSecond = "AmperePerSecond",
     /** */
-    AmperesPerMinute,
+    AmperesPerMinute = "AmperePerMinute",
     /** */
-    AmperesPerMillisecond,
+    AmperesPerMillisecond = "AmperePerMillisecond",
     /** */
-    AmperesPerMicrosecond,
+    AmperesPerMicrosecond = "AmperePerMicrosecond",
     /** */
-    AmperesPerNanosecond,
+    AmperesPerNanosecond = "AmperePerNanosecond",
     /** */
-    MilliamperesPerSecond,
+    MilliamperesPerSecond = "MilliamperePerSecond",
     /** */
-    MilliamperesPerMinute
+    MilliamperesPerMinute = "MilliamperePerMinute"
 }
 
 /** In electromagnetism, the current gradient describes how the current changes in time. */

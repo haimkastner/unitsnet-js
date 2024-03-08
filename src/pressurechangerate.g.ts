@@ -1,41 +1,41 @@
 /** PressureChangeRateUnits enumeration */
 export enum PressureChangeRateUnits {
     /** */
-    PascalsPerSecond,
+    PascalsPerSecond = "PascalPerSecond",
     /** */
-    PascalsPerMinute,
+    PascalsPerMinute = "PascalPerMinute",
     /** */
-    MillimetersOfMercuryPerSecond,
+    MillimetersOfMercuryPerSecond = "MillimeterOfMercuryPerSecond",
     /** */
-    AtmospheresPerSecond,
+    AtmospheresPerSecond = "AtmospherePerSecond",
     /** */
-    PoundsForcePerSquareInchPerSecond,
+    PoundsForcePerSquareInchPerSecond = "PoundForcePerSquareInchPerSecond",
     /** */
-    PoundsForcePerSquareInchPerMinute,
+    PoundsForcePerSquareInchPerMinute = "PoundForcePerSquareInchPerMinute",
     /** */
-    BarsPerSecond,
+    BarsPerSecond = "BarPerSecond",
     /** */
-    BarsPerMinute,
+    BarsPerMinute = "BarPerMinute",
     /** */
-    KilopascalsPerSecond,
+    KilopascalsPerSecond = "KilopascalPerSecond",
     /** */
-    MegapascalsPerSecond,
+    MegapascalsPerSecond = "MegapascalPerSecond",
     /** */
-    KilopascalsPerMinute,
+    KilopascalsPerMinute = "KilopascalPerMinute",
     /** */
-    MegapascalsPerMinute,
+    MegapascalsPerMinute = "MegapascalPerMinute",
     /** */
-    KilopoundsForcePerSquareInchPerSecond,
+    KilopoundsForcePerSquareInchPerSecond = "KilopoundForcePerSquareInchPerSecond",
     /** */
-    MegapoundsForcePerSquareInchPerSecond,
+    MegapoundsForcePerSquareInchPerSecond = "MegapoundForcePerSquareInchPerSecond",
     /** */
-    KilopoundsForcePerSquareInchPerMinute,
+    KilopoundsForcePerSquareInchPerMinute = "KilopoundForcePerSquareInchPerMinute",
     /** */
-    MegapoundsForcePerSquareInchPerMinute,
+    MegapoundsForcePerSquareInchPerMinute = "MegapoundForcePerSquareInchPerMinute",
     /** */
-    MillibarsPerSecond,
+    MillibarsPerSecond = "MillibarPerSecond",
     /** */
-    MillibarsPerMinute
+    MillibarsPerMinute = "MillibarPerMinute"
 }
 
 /** Pressure change rate is the ratio of the pressure change to the time during which the change occurred (value of pressure changes per unit time). */

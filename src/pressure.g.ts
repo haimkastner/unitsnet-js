@@ -1,103 +1,103 @@
 /** PressureUnits enumeration */
 export enum PressureUnits {
     /** */
-    Pascals,
+    Pascals = "Pascal",
     /** */
-    Atmospheres,
+    Atmospheres = "Atmosphere",
     /** */
-    Bars,
+    Bars = "Bar",
     /** */
-    KilogramsForcePerSquareMeter,
+    KilogramsForcePerSquareMeter = "KilogramForcePerSquareMeter",
     /** */
-    KilogramsForcePerSquareCentimeter,
+    KilogramsForcePerSquareCentimeter = "KilogramForcePerSquareCentimeter",
     /** */
-    KilogramsForcePerSquareMillimeter,
+    KilogramsForcePerSquareMillimeter = "KilogramForcePerSquareMillimeter",
     /** */
-    NewtonsPerSquareMeter,
+    NewtonsPerSquareMeter = "NewtonPerSquareMeter",
     /** */
-    NewtonsPerSquareCentimeter,
+    NewtonsPerSquareCentimeter = "NewtonPerSquareCentimeter",
     /** */
-    NewtonsPerSquareMillimeter,
+    NewtonsPerSquareMillimeter = "NewtonPerSquareMillimeter",
     /** */
-    TechnicalAtmospheres,
+    TechnicalAtmospheres = "TechnicalAtmosphere",
     /** */
-    Torrs,
+    Torrs = "Torr",
     /** */
-    PoundsForcePerSquareInch,
+    PoundsForcePerSquareInch = "PoundForcePerSquareInch",
     /** */
-    PoundsForcePerSquareMil,
+    PoundsForcePerSquareMil = "PoundForcePerSquareMil",
     /** */
-    PoundsForcePerSquareFoot,
+    PoundsForcePerSquareFoot = "PoundForcePerSquareFoot",
     /** */
-    TonnesForcePerSquareMillimeter,
+    TonnesForcePerSquareMillimeter = "TonneForcePerSquareMillimeter",
     /** */
-    TonnesForcePerSquareMeter,
+    TonnesForcePerSquareMeter = "TonneForcePerSquareMeter",
     /** */
-    MetersOfHead,
+    MetersOfHead = "MeterOfHead",
     /** */
-    TonnesForcePerSquareCentimeter,
+    TonnesForcePerSquareCentimeter = "TonneForcePerSquareCentimeter",
     /** */
-    FeetOfHead,
+    FeetOfHead = "FootOfHead",
     /** */
-    MillimetersOfMercury,
+    MillimetersOfMercury = "MillimeterOfMercury",
     /** */
-    InchesOfMercury,
+    InchesOfMercury = "InchOfMercury",
     /** */
-    DynesPerSquareCentimeter,
+    DynesPerSquareCentimeter = "DynePerSquareCentimeter",
     /** */
-    PoundsPerInchSecondSquared,
+    PoundsPerInchSecondSquared = "PoundPerInchSecondSquared",
     /** */
-    MetersOfWaterColumn,
+    MetersOfWaterColumn = "MeterOfWaterColumn",
     /** */
-    InchesOfWaterColumn,
+    InchesOfWaterColumn = "InchOfWaterColumn",
     /** */
-    MetersOfElevation,
+    MetersOfElevation = "MeterOfElevation",
     /** */
-    FeetOfElevation,
+    FeetOfElevation = "FootOfElevation",
     /** */
-    Micropascals,
+    Micropascals = "Micropascal",
     /** */
-    Millipascals,
+    Millipascals = "Millipascal",
     /** */
-    Decapascals,
+    Decapascals = "Decapascal",
     /** */
-    Hectopascals,
+    Hectopascals = "Hectopascal",
     /** */
-    Kilopascals,
+    Kilopascals = "Kilopascal",
     /** */
-    Megapascals,
+    Megapascals = "Megapascal",
     /** */
-    Gigapascals,
+    Gigapascals = "Gigapascal",
     /** */
-    Microbars,
+    Microbars = "Microbar",
     /** */
-    Millibars,
+    Millibars = "Millibar",
     /** */
-    Centibars,
+    Centibars = "Centibar",
     /** */
-    Decibars,
+    Decibars = "Decibar",
     /** */
-    Kilobars,
+    Kilobars = "Kilobar",
     /** */
-    Megabars,
+    Megabars = "Megabar",
     /** */
-    KilonewtonsPerSquareMeter,
+    KilonewtonsPerSquareMeter = "KilonewtonPerSquareMeter",
     /** */
-    MeganewtonsPerSquareMeter,
+    MeganewtonsPerSquareMeter = "MeganewtonPerSquareMeter",
     /** */
-    KilonewtonsPerSquareCentimeter,
+    KilonewtonsPerSquareCentimeter = "KilonewtonPerSquareCentimeter",
     /** */
-    KilonewtonsPerSquareMillimeter,
+    KilonewtonsPerSquareMillimeter = "KilonewtonPerSquareMillimeter",
     /** */
-    KilopoundsForcePerSquareInch,
+    KilopoundsForcePerSquareInch = "KilopoundForcePerSquareInch",
     /** */
-    KilopoundsForcePerSquareMil,
+    KilopoundsForcePerSquareMil = "KilopoundForcePerSquareMil",
     /** */
-    KilopoundsForcePerSquareFoot,
+    KilopoundsForcePerSquareFoot = "KilopoundForcePerSquareFoot",
     /** */
-    MillimetersOfWaterColumn,
+    MillimetersOfWaterColumn = "MillimeterOfWaterColumn",
     /** */
-    CentimetersOfWaterColumn
+    CentimetersOfWaterColumn = "CentimeterOfWaterColumn"
 }
 
 /** Pressure (symbol: P or p) is the ratio of force to the area over which that force is distributed. Pressure is force per unit area applied in a direction perpendicular to the surface of an object. Gauge pressure (also spelled gage pressure)[a] is the pressure relative to the local atmospheric or ambient pressure. Pressure is measured in any unit of force divided by any unit of area. The SI unit of pressure is the newton per square metre, which is called the pascal (Pa) after the seventeenth-century philosopher and scientist Blaise Pascal. A pressure of 1 Pa is small; it approximately equals the pressure exerted by a dollar bill resting flat on a table. Everyday pressures are often stated in kilopascals (1 kPa = 1000 Pa). */

@@ -1,7 +1,7 @@
 /** LuminousFluxUnits enumeration */
 export enum LuminousFluxUnits {
     /** */
-    Lumens
+    Lumens = "Lumen"
 }
 
 /** In photometry, luminous flux or luminous power is the measure of the perceived power of light. */

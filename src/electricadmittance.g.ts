@@ -1,13 +1,13 @@
 /** ElectricAdmittanceUnits enumeration */
 export enum ElectricAdmittanceUnits {
     /** */
-    Siemens,
+    Siemens = "Siemens",
     /** */
-    Nanosiemens,
+    Nanosiemens = "Nanosiemens",
     /** */
-    Microsiemens,
+    Microsiemens = "Microsiemens",
     /** */
-    Millisiemens
+    Millisiemens = "Millisiemens"
 }
 
 /** Electric admittance is a measure of how easily a circuit or device will allow a current to flow. It is defined as the inverse of impedance. The SI unit of admittance is the siemens (symbol S). */

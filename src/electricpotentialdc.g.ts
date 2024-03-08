@@ -1,15 +1,15 @@
 /** ElectricPotentialDcUnits enumeration */
 export enum ElectricPotentialDcUnits {
     /** */
-    VoltsDc,
+    VoltsDc = "VoltDc",
     /** */
-    MicrovoltsDc,
+    MicrovoltsDc = "MicrovoltDc",
     /** */
-    MillivoltsDc,
+    MillivoltsDc = "MillivoltDc",
     /** */
-    KilovoltsDc,
+    KilovoltsDc = "KilovoltDc",
     /** */
-    MegavoltsDc
+    MegavoltsDc = "MegavoltDc"
 }
 
 /** The Electric Potential of a system known to use Direct Current. */

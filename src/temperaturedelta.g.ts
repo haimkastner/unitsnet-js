@@ -1,23 +1,23 @@
 /** TemperatureDeltaUnits enumeration */
 export enum TemperatureDeltaUnits {
     /** */
-    Kelvins,
+    Kelvins = "Kelvin",
     /** */
-    DegreesCelsius,
+    DegreesCelsius = "DegreeCelsius",
     /** */
-    DegreesDelisle,
+    DegreesDelisle = "DegreeDelisle",
     /** */
-    DegreesFahrenheit,
+    DegreesFahrenheit = "DegreeFahrenheit",
     /** */
-    DegreesNewton,
+    DegreesNewton = "DegreeNewton",
     /** */
-    DegreesRankine,
+    DegreesRankine = "DegreeRankine",
     /** */
-    DegreesReaumur,
+    DegreesReaumur = "DegreeReaumur",
     /** */
-    DegreesRoemer,
+    DegreesRoemer = "DegreeRoemer",
     /** */
-    MillidegreesCelsius
+    MillidegreesCelsius = "MillidegreeCelsius"
 }
 
 /** Difference between two temperatures. The conversions are different than for Temperature. */

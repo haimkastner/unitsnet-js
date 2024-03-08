@@ -1,17 +1,17 @@
 /** RatioUnits enumeration */
 export enum RatioUnits {
     /** */
-    DecimalFractions,
+    DecimalFractions = "DecimalFraction",
     /** */
-    Percent,
+    Percent = "Percent",
     /** */
-    PartsPerThousand,
+    PartsPerThousand = "PartPerThousand",
     /** */
-    PartsPerMillion,
+    PartsPerMillion = "PartPerMillion",
     /** */
-    PartsPerBillion,
+    PartsPerBillion = "PartPerBillion",
     /** */
-    PartsPerTrillion
+    PartsPerTrillion = "PartPerTrillion"
 }
 
 /** In mathematics, a ratio is a relationship between two numbers of the same kind (e.g., objects, persons, students, spoonfuls, units of whatever identical dimension), usually expressed as "a to b" or a:b, sometimes expressed arithmetically as a dimensionless quotient of the two that explicitly indicates how many times the first number contains the second (not necessarily an integer). */

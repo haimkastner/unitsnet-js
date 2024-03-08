@@ -1,9 +1,9 @@
 /** LevelUnits enumeration */
 export enum LevelUnits {
     /** */
-    Decibels,
+    Decibels = "Decibel",
     /** */
-    Nepers
+    Nepers = "Neper"
 }
 
 /** Level is the logarithm of the ratio of a quantity Q to a reference value of that quantity, Q₀, expressed in dimensionless units. */

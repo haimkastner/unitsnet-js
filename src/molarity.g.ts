@@ -1,27 +1,27 @@
 /** MolarityUnits enumeration */
 export enum MolarityUnits {
     /** */
-    MolesPerCubicMeter,
+    MolesPerCubicMeter = "MolePerCubicMeter",
     /** */
-    MolesPerLiter,
+    MolesPerLiter = "MolePerLiter",
     /** */
-    PoundMolesPerCubicFoot,
+    PoundMolesPerCubicFoot = "PoundMolePerCubicFoot",
     /** */
-    KilomolesPerCubicMeter,
+    KilomolesPerCubicMeter = "KilomolePerCubicMeter",
     /** */
-    FemtomolesPerLiter,
+    FemtomolesPerLiter = "FemtomolePerLiter",
     /** */
-    PicomolesPerLiter,
+    PicomolesPerLiter = "PicomolePerLiter",
     /** */
-    NanomolesPerLiter,
+    NanomolesPerLiter = "NanomolePerLiter",
     /** */
-    MicromolesPerLiter,
+    MicromolesPerLiter = "MicromolePerLiter",
     /** */
-    MillimolesPerLiter,
+    MillimolesPerLiter = "MillimolePerLiter",
     /** */
-    CentimolesPerLiter,
+    CentimolesPerLiter = "CentimolePerLiter",
     /** */
-    DecimolesPerLiter
+    DecimolesPerLiter = "DecimolePerLiter"
 }
 
 /** Molar concentration, also called molarity, amount concentration or substance concentration, is a measure of the concentration of a solute in a solution, or of any chemical species, in terms of amount of substance in a given volume. */

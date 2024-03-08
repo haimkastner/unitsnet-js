@@ -1,15 +1,15 @@
 /** ElectricPotentialAcUnits enumeration */
 export enum ElectricPotentialAcUnits {
     /** */
-    VoltsAc,
+    VoltsAc = "VoltAc",
     /** */
-    MicrovoltsAc,
+    MicrovoltsAc = "MicrovoltAc",
     /** */
-    MillivoltsAc,
+    MillivoltsAc = "MillivoltAc",
     /** */
-    KilovoltsAc,
+    KilovoltsAc = "KilovoltAc",
     /** */
-    MegavoltsAc
+    MegavoltsAc = "MegavoltAc"
 }
 
 /** The Electric Potential of a system known to use Alternating Current. */

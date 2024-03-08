@@ -1,23 +1,23 @@
 /** VolumePerLengthUnits enumeration */
 export enum VolumePerLengthUnits {
     /** */
-    CubicMetersPerMeter,
+    CubicMetersPerMeter = "CubicMeterPerMeter",
     /** */
-    LitersPerMeter,
+    LitersPerMeter = "LiterPerMeter",
     /** */
-    LitersPerKilometer,
+    LitersPerKilometer = "LiterPerKilometer",
     /** */
-    LitersPerMillimeter,
+    LitersPerMillimeter = "LiterPerMillimeter",
     /** */
-    OilBarrelsPerFoot,
+    OilBarrelsPerFoot = "OilBarrelPerFoot",
     /** */
-    CubicYardsPerFoot,
+    CubicYardsPerFoot = "CubicYardPerFoot",
     /** */
-    CubicYardsPerUsSurveyFoot,
+    CubicYardsPerUsSurveyFoot = "CubicYardPerUsSurveyFoot",
     /** */
-    UsGallonsPerMile,
+    UsGallonsPerMile = "UsGallonPerMile",
     /** */
-    ImperialGallonsPerMile
+    ImperialGallonsPerMile = "ImperialGallonPerMile"
 }
 
 /** Volume, typically of fluid, that a container can hold within a unit of length. */

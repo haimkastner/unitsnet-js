@@ -1,15 +1,15 @@
 /** PorousMediumPermeabilityUnits enumeration */
 export enum PorousMediumPermeabilityUnits {
     /** */
-    Darcys,
+    Darcys = "Darcy",
     /** */
-    SquareMeters,
+    SquareMeters = "SquareMeter",
     /** */
-    SquareCentimeters,
+    SquareCentimeters = "SquareCentimeter",
     /** */
-    Microdarcys,
+    Microdarcys = "Microdarcy",
     /** */
-    Millidarcys
+    Millidarcys = "Millidarcy"
 }
 
 /** In fluid mechanics, permeability is the measure of the ability of a porous material to allow fluids to pass through it. */

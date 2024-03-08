@@ -1,71 +1,71 @@
 /** RotationalStiffnessUnits enumeration */
 export enum RotationalStiffnessUnits {
     /** */
-    NewtonMetersPerRadian,
+    NewtonMetersPerRadian = "NewtonMeterPerRadian",
     /** */
-    PoundForceFeetPerDegrees,
+    PoundForceFeetPerDegrees = "PoundForceFootPerDegrees",
     /** */
-    KilopoundForceFeetPerDegrees,
+    KilopoundForceFeetPerDegrees = "KilopoundForceFootPerDegrees",
     /** */
-    NewtonMillimetersPerDegree,
+    NewtonMillimetersPerDegree = "NewtonMillimeterPerDegree",
     /** */
-    NewtonMetersPerDegree,
+    NewtonMetersPerDegree = "NewtonMeterPerDegree",
     /** */
-    NewtonMillimetersPerRadian,
+    NewtonMillimetersPerRadian = "NewtonMillimeterPerRadian",
     /** */
-    PoundForceFeetPerRadian,
+    PoundForceFeetPerRadian = "PoundForceFeetPerRadian",
     /** */
-    KilonewtonMetersPerRadian,
+    KilonewtonMetersPerRadian = "KilonewtonMeterPerRadian",
     /** */
-    MeganewtonMetersPerRadian,
+    MeganewtonMetersPerRadian = "MeganewtonMeterPerRadian",
     /** */
-    NanonewtonMillimetersPerDegree,
+    NanonewtonMillimetersPerDegree = "NanonewtonMillimeterPerDegree",
     /** */
-    MicronewtonMillimetersPerDegree,
+    MicronewtonMillimetersPerDegree = "MicronewtonMillimeterPerDegree",
     /** */
-    MillinewtonMillimetersPerDegree,
+    MillinewtonMillimetersPerDegree = "MillinewtonMillimeterPerDegree",
     /** */
-    CentinewtonMillimetersPerDegree,
+    CentinewtonMillimetersPerDegree = "CentinewtonMillimeterPerDegree",
     /** */
-    DecinewtonMillimetersPerDegree,
+    DecinewtonMillimetersPerDegree = "DecinewtonMillimeterPerDegree",
     /** */
-    DecanewtonMillimetersPerDegree,
+    DecanewtonMillimetersPerDegree = "DecanewtonMillimeterPerDegree",
     /** */
-    KilonewtonMillimetersPerDegree,
+    KilonewtonMillimetersPerDegree = "KilonewtonMillimeterPerDegree",
     /** */
-    MeganewtonMillimetersPerDegree,
+    MeganewtonMillimetersPerDegree = "MeganewtonMillimeterPerDegree",
     /** */
-    NanonewtonMetersPerDegree,
+    NanonewtonMetersPerDegree = "NanonewtonMeterPerDegree",
     /** */
-    MicronewtonMetersPerDegree,
+    MicronewtonMetersPerDegree = "MicronewtonMeterPerDegree",
     /** */
-    MillinewtonMetersPerDegree,
+    MillinewtonMetersPerDegree = "MillinewtonMeterPerDegree",
     /** */
-    CentinewtonMetersPerDegree,
+    CentinewtonMetersPerDegree = "CentinewtonMeterPerDegree",
     /** */
-    DecinewtonMetersPerDegree,
+    DecinewtonMetersPerDegree = "DecinewtonMeterPerDegree",
     /** */
-    DecanewtonMetersPerDegree,
+    DecanewtonMetersPerDegree = "DecanewtonMeterPerDegree",
     /** */
-    KilonewtonMetersPerDegree,
+    KilonewtonMetersPerDegree = "KilonewtonMeterPerDegree",
     /** */
-    MeganewtonMetersPerDegree,
+    MeganewtonMetersPerDegree = "MeganewtonMeterPerDegree",
     /** */
-    NanonewtonMillimetersPerRadian,
+    NanonewtonMillimetersPerRadian = "NanonewtonMillimeterPerRadian",
     /** */
-    MicronewtonMillimetersPerRadian,
+    MicronewtonMillimetersPerRadian = "MicronewtonMillimeterPerRadian",
     /** */
-    MillinewtonMillimetersPerRadian,
+    MillinewtonMillimetersPerRadian = "MillinewtonMillimeterPerRadian",
     /** */
-    CentinewtonMillimetersPerRadian,
+    CentinewtonMillimetersPerRadian = "CentinewtonMillimeterPerRadian",
     /** */
-    DecinewtonMillimetersPerRadian,
+    DecinewtonMillimetersPerRadian = "DecinewtonMillimeterPerRadian",
     /** */
-    DecanewtonMillimetersPerRadian,
+    DecanewtonMillimetersPerRadian = "DecanewtonMillimeterPerRadian",
     /** */
-    KilonewtonMillimetersPerRadian,
+    KilonewtonMillimetersPerRadian = "KilonewtonMillimeterPerRadian",
     /** */
-    MeganewtonMillimetersPerRadian
+    MeganewtonMillimetersPerRadian = "MeganewtonMillimeterPerRadian"
 }
 
 /** https://en.wikipedia.org/wiki/Stiffness#Rotational_stiffness */

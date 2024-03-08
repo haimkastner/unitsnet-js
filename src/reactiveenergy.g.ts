@@ -1,11 +1,11 @@
 /** ReactiveEnergyUnits enumeration */
 export enum ReactiveEnergyUnits {
     /** */
-    VoltampereReactiveHours,
+    VoltampereReactiveHours = "VoltampereReactiveHour",
     /** */
-    KilovoltampereReactiveHours,
+    KilovoltampereReactiveHours = "KilovoltampereReactiveHour",
     /** */
-    MegavoltampereReactiveHours
+    MegavoltampereReactiveHours = "MegavoltampereReactiveHour"
 }
 
 /** The Volt-ampere reactive hour (expressed as varh) is the reactive power of one Volt-ampere reactive produced in one hour. */

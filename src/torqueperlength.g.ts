@@ -1,47 +1,47 @@
 /** TorquePerLengthUnits enumeration */
 export enum TorquePerLengthUnits {
     /** */
-    NewtonMillimetersPerMeter,
+    NewtonMillimetersPerMeter = "NewtonMillimeterPerMeter",
     /** */
-    NewtonCentimetersPerMeter,
+    NewtonCentimetersPerMeter = "NewtonCentimeterPerMeter",
     /** */
-    NewtonMetersPerMeter,
+    NewtonMetersPerMeter = "NewtonMeterPerMeter",
     /** */
-    PoundForceInchesPerFoot,
+    PoundForceInchesPerFoot = "PoundForceInchPerFoot",
     /** */
-    PoundForceFeetPerFoot,
+    PoundForceFeetPerFoot = "PoundForceFootPerFoot",
     /** */
-    KilogramForceMillimetersPerMeter,
+    KilogramForceMillimetersPerMeter = "KilogramForceMillimeterPerMeter",
     /** */
-    KilogramForceCentimetersPerMeter,
+    KilogramForceCentimetersPerMeter = "KilogramForceCentimeterPerMeter",
     /** */
-    KilogramForceMetersPerMeter,
+    KilogramForceMetersPerMeter = "KilogramForceMeterPerMeter",
     /** */
-    TonneForceMillimetersPerMeter,
+    TonneForceMillimetersPerMeter = "TonneForceMillimeterPerMeter",
     /** */
-    TonneForceCentimetersPerMeter,
+    TonneForceCentimetersPerMeter = "TonneForceCentimeterPerMeter",
     /** */
-    TonneForceMetersPerMeter,
+    TonneForceMetersPerMeter = "TonneForceMeterPerMeter",
     /** */
-    KilonewtonMillimetersPerMeter,
+    KilonewtonMillimetersPerMeter = "KilonewtonMillimeterPerMeter",
     /** */
-    MeganewtonMillimetersPerMeter,
+    MeganewtonMillimetersPerMeter = "MeganewtonMillimeterPerMeter",
     /** */
-    KilonewtonCentimetersPerMeter,
+    KilonewtonCentimetersPerMeter = "KilonewtonCentimeterPerMeter",
     /** */
-    MeganewtonCentimetersPerMeter,
+    MeganewtonCentimetersPerMeter = "MeganewtonCentimeterPerMeter",
     /** */
-    KilonewtonMetersPerMeter,
+    KilonewtonMetersPerMeter = "KilonewtonMeterPerMeter",
     /** */
-    MeganewtonMetersPerMeter,
+    MeganewtonMetersPerMeter = "MeganewtonMeterPerMeter",
     /** */
-    KilopoundForceInchesPerFoot,
+    KilopoundForceInchesPerFoot = "KilopoundForceInchPerFoot",
     /** */
-    MegapoundForceInchesPerFoot,
+    MegapoundForceInchesPerFoot = "MegapoundForceInchPerFoot",
     /** */
-    KilopoundForceFeetPerFoot,
+    KilopoundForceFeetPerFoot = "KilopoundForceFootPerFoot",
     /** */
-    MegapoundForceFeetPerFoot
+    MegapoundForceFeetPerFoot = "MegapoundForceFootPerFoot"
 }
 
 /** The magnitude of torque per unit length. */

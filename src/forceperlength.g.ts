@@ -1,81 +1,81 @@
 /** ForcePerLengthUnits enumeration */
 export enum ForcePerLengthUnits {
     /** */
-    NewtonsPerMeter,
+    NewtonsPerMeter = "NewtonPerMeter",
     /** */
-    NewtonsPerCentimeter,
+    NewtonsPerCentimeter = "NewtonPerCentimeter",
     /** */
-    NewtonsPerMillimeter,
+    NewtonsPerMillimeter = "NewtonPerMillimeter",
     /** */
-    KilogramsForcePerMeter,
+    KilogramsForcePerMeter = "KilogramForcePerMeter",
     /** */
-    KilogramsForcePerCentimeter,
+    KilogramsForcePerCentimeter = "KilogramForcePerCentimeter",
     /** */
-    KilogramsForcePerMillimeter,
+    KilogramsForcePerMillimeter = "KilogramForcePerMillimeter",
     /** */
-    TonnesForcePerMeter,
+    TonnesForcePerMeter = "TonneForcePerMeter",
     /** */
-    TonnesForcePerCentimeter,
+    TonnesForcePerCentimeter = "TonneForcePerCentimeter",
     /** */
-    TonnesForcePerMillimeter,
+    TonnesForcePerMillimeter = "TonneForcePerMillimeter",
     /** */
-    PoundsForcePerFoot,
+    PoundsForcePerFoot = "PoundForcePerFoot",
     /** */
-    PoundsForcePerInch,
+    PoundsForcePerInch = "PoundForcePerInch",
     /** */
-    PoundsForcePerYard,
+    PoundsForcePerYard = "PoundForcePerYard",
     /** */
-    KilopoundsForcePerFoot,
+    KilopoundsForcePerFoot = "KilopoundForcePerFoot",
     /** */
-    KilopoundsForcePerInch,
+    KilopoundsForcePerInch = "KilopoundForcePerInch",
     /** */
-    NanonewtonsPerMeter,
+    NanonewtonsPerMeter = "NanonewtonPerMeter",
     /** */
-    MicronewtonsPerMeter,
+    MicronewtonsPerMeter = "MicronewtonPerMeter",
     /** */
-    MillinewtonsPerMeter,
+    MillinewtonsPerMeter = "MillinewtonPerMeter",
     /** */
-    CentinewtonsPerMeter,
+    CentinewtonsPerMeter = "CentinewtonPerMeter",
     /** */
-    DecinewtonsPerMeter,
+    DecinewtonsPerMeter = "DecinewtonPerMeter",
     /** */
-    DecanewtonsPerMeter,
+    DecanewtonsPerMeter = "DecanewtonPerMeter",
     /** */
-    KilonewtonsPerMeter,
+    KilonewtonsPerMeter = "KilonewtonPerMeter",
     /** */
-    MeganewtonsPerMeter,
+    MeganewtonsPerMeter = "MeganewtonPerMeter",
     /** */
-    NanonewtonsPerCentimeter,
+    NanonewtonsPerCentimeter = "NanonewtonPerCentimeter",
     /** */
-    MicronewtonsPerCentimeter,
+    MicronewtonsPerCentimeter = "MicronewtonPerCentimeter",
     /** */
-    MillinewtonsPerCentimeter,
+    MillinewtonsPerCentimeter = "MillinewtonPerCentimeter",
     /** */
-    CentinewtonsPerCentimeter,
+    CentinewtonsPerCentimeter = "CentinewtonPerCentimeter",
     /** */
-    DecinewtonsPerCentimeter,
+    DecinewtonsPerCentimeter = "DecinewtonPerCentimeter",
     /** */
-    DecanewtonsPerCentimeter,
+    DecanewtonsPerCentimeter = "DecanewtonPerCentimeter",
     /** */
-    KilonewtonsPerCentimeter,
+    KilonewtonsPerCentimeter = "KilonewtonPerCentimeter",
     /** */
-    MeganewtonsPerCentimeter,
+    MeganewtonsPerCentimeter = "MeganewtonPerCentimeter",
     /** */
-    NanonewtonsPerMillimeter,
+    NanonewtonsPerMillimeter = "NanonewtonPerMillimeter",
     /** */
-    MicronewtonsPerMillimeter,
+    MicronewtonsPerMillimeter = "MicronewtonPerMillimeter",
     /** */
-    MillinewtonsPerMillimeter,
+    MillinewtonsPerMillimeter = "MillinewtonPerMillimeter",
     /** */
-    CentinewtonsPerMillimeter,
+    CentinewtonsPerMillimeter = "CentinewtonPerMillimeter",
     /** */
-    DecinewtonsPerMillimeter,
+    DecinewtonsPerMillimeter = "DecinewtonPerMillimeter",
     /** */
-    DecanewtonsPerMillimeter,
+    DecanewtonsPerMillimeter = "DecanewtonPerMillimeter",
     /** */
-    KilonewtonsPerMillimeter,
+    KilonewtonsPerMillimeter = "KilonewtonPerMillimeter",
     /** */
-    MeganewtonsPerMillimeter
+    MeganewtonsPerMillimeter = "MeganewtonPerMillimeter"
 }
 
 /** The magnitude of force per unit length. */
