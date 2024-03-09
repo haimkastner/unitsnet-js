@@ -1,6 +1,8 @@
 /** API DTO represents a Frequency */
 export interface FrequencyDto {
+    /** The value of the Frequency */
     value: number;
+    /**  The specific unit that the Frequency value is representing */
     unit: FrequencyUnits;
 }
 

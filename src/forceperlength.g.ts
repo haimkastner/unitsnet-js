@@ -1,6 +1,8 @@
 /** API DTO represents a ForcePerLength */
 export interface ForcePerLengthDto {
+    /** The value of the ForcePerLength */
     value: number;
+    /**  The specific unit that the ForcePerLength value is representing */
     unit: ForcePerLengthUnits;
 }
 

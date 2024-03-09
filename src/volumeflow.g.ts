@@ -1,6 +1,8 @@
 /** API DTO represents a VolumeFlow */
 export interface VolumeFlowDto {
+    /** The value of the VolumeFlow */
     value: number;
+    /**  The specific unit that the VolumeFlow value is representing */
     unit: VolumeFlowUnits;
 }
 

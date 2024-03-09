@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricCharge */
 export interface ElectricChargeDto {
+    /** The value of the ElectricCharge */
     value: number;
+    /**  The specific unit that the ElectricCharge value is representing */
     unit: ElectricChargeUnits;
 }
 

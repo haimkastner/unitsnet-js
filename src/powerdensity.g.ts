@@ -1,6 +1,8 @@
 /** API DTO represents a PowerDensity */
 export interface PowerDensityDto {
+    /** The value of the PowerDensity */
     value: number;
+    /**  The specific unit that the PowerDensity value is representing */
     unit: PowerDensityUnits;
 }
 

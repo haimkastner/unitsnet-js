@@ -1,6 +1,8 @@
 /** API DTO represents a TorquePerLength */
 export interface TorquePerLengthDto {
+    /** The value of the TorquePerLength */
     value: number;
+    /**  The specific unit that the TorquePerLength value is representing */
     unit: TorquePerLengthUnits;
 }
 

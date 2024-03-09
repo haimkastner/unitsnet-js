@@ -1,6 +1,8 @@
 /** API DTO represents a Pressure */
 export interface PressureDto {
+    /** The value of the Pressure */
     value: number;
+    /**  The specific unit that the Pressure value is representing */
     unit: PressureUnits;
 }
 

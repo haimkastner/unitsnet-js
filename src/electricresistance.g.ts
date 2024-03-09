@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricResistance */
 export interface ElectricResistanceDto {
+    /** The value of the ElectricResistance */
     value: number;
+    /**  The specific unit that the ElectricResistance value is representing */
     unit: ElectricResistanceUnits;
 }
 

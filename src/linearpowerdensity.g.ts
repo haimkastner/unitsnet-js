@@ -1,6 +1,8 @@
 /** API DTO represents a LinearPowerDensity */
 export interface LinearPowerDensityDto {
+    /** The value of the LinearPowerDensity */
     value: number;
+    /**  The specific unit that the LinearPowerDensity value is representing */
     unit: LinearPowerDensityUnits;
 }
 

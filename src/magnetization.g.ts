@@ -1,6 +1,8 @@
 /** API DTO represents a Magnetization */
 export interface MagnetizationDto {
+    /** The value of the Magnetization */
     value: number;
+    /**  The specific unit that the Magnetization value is representing */
     unit: MagnetizationUnits;
 }
 

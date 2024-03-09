@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricAdmittance */
 export interface ElectricAdmittanceDto {
+    /** The value of the ElectricAdmittance */
     value: number;
+    /**  The specific unit that the ElectricAdmittance value is representing */
     unit: ElectricAdmittanceUnits;
 }
 

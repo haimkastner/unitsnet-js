@@ -1,6 +1,8 @@
 /** API DTO represents a AbsorbedDoseOfIonizingRadiation */
 export interface AbsorbedDoseOfIonizingRadiationDto {
+    /** The value of the AbsorbedDoseOfIonizingRadiation */
     value: number;
+    /**  The specific unit that the AbsorbedDoseOfIonizingRadiation value is representing */
     unit: AbsorbedDoseOfIonizingRadiationUnits;
 }
 

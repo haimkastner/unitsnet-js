@@ -1,6 +1,8 @@
 /** API DTO represents a VolumePerLength */
 export interface VolumePerLengthDto {
+    /** The value of the VolumePerLength */
     value: number;
+    /**  The specific unit that the VolumePerLength value is representing */
     unit: VolumePerLengthUnits;
 }
 

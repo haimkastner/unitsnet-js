@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricCurrentDensity */
 export interface ElectricCurrentDensityDto {
+    /** The value of the ElectricCurrentDensity */
     value: number;
+    /**  The specific unit that the ElectricCurrentDensity value is representing */
     unit: ElectricCurrentDensityUnits;
 }
 

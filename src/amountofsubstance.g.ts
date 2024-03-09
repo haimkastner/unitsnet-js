@@ -1,6 +1,8 @@
 /** API DTO represents a AmountOfSubstance */
 export interface AmountOfSubstanceDto {
+    /** The value of the AmountOfSubstance */
     value: number;
+    /**  The specific unit that the AmountOfSubstance value is representing */
     unit: AmountOfSubstanceUnits;
 }
 

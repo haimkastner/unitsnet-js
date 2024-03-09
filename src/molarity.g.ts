@@ -1,6 +1,8 @@
 /** API DTO represents a Molarity */
 export interface MolarityDto {
+    /** The value of the Molarity */
     value: number;
+    /**  The specific unit that the Molarity value is representing */
     unit: MolarityUnits;
 }
 

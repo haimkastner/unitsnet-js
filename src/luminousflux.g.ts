@@ -1,6 +1,8 @@
 /** API DTO represents a LuminousFlux */
 export interface LuminousFluxDto {
+    /** The value of the LuminousFlux */
     value: number;
+    /**  The specific unit that the LuminousFlux value is representing */
     unit: LuminousFluxUnits;
 }
 

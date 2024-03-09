@@ -1,6 +1,8 @@
 /** API DTO represents a RotationalStiffnessPerLength */
 export interface RotationalStiffnessPerLengthDto {
+    /** The value of the RotationalStiffnessPerLength */
     value: number;
+    /**  The specific unit that the RotationalStiffnessPerLength value is representing */
     unit: RotationalStiffnessPerLengthUnits;
 }
 

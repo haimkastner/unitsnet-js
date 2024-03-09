@@ -1,6 +1,8 @@
 /** API DTO represents a VolumetricHeatCapacity */
 export interface VolumetricHeatCapacityDto {
+    /** The value of the VolumetricHeatCapacity */
     value: number;
+    /**  The specific unit that the VolumetricHeatCapacity value is representing */
     unit: VolumetricHeatCapacityUnits;
 }
 

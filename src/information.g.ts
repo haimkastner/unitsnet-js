@@ -1,6 +1,8 @@
 /** API DTO represents a Information */
 export interface InformationDto {
+    /** The value of the Information */
     value: number;
+    /**  The specific unit that the Information value is representing */
     unit: InformationUnits;
 }
 

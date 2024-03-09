@@ -1,6 +1,8 @@
 /** API DTO represents a Ratio */
 export interface RatioDto {
+    /** The value of the Ratio */
     value: number;
+    /**  The specific unit that the Ratio value is representing */
     unit: RatioUnits;
 }
 

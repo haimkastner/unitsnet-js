@@ -1,6 +1,8 @@
 /** API DTO represents a Impulse */
 export interface ImpulseDto {
+    /** The value of the Impulse */
     value: number;
+    /**  The specific unit that the Impulse value is representing */
     unit: ImpulseUnits;
 }
 

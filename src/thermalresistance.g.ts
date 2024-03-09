@@ -1,6 +1,8 @@
 /** API DTO represents a ThermalResistance */
 export interface ThermalResistanceDto {
+    /** The value of the ThermalResistance */
     value: number;
+    /**  The specific unit that the ThermalResistance value is representing */
     unit: ThermalResistanceUnits;
 }
 

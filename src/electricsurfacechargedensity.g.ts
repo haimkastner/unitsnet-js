@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricSurfaceChargeDensity */
 export interface ElectricSurfaceChargeDensityDto {
+    /** The value of the ElectricSurfaceChargeDensity */
     value: number;
+    /**  The specific unit that the ElectricSurfaceChargeDensity value is representing */
     unit: ElectricSurfaceChargeDensityUnits;
 }
 

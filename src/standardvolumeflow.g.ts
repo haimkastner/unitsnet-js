@@ -1,6 +1,8 @@
 /** API DTO represents a StandardVolumeFlow */
 export interface StandardVolumeFlowDto {
+    /** The value of the StandardVolumeFlow */
     value: number;
+    /**  The specific unit that the StandardVolumeFlow value is representing */
     unit: StandardVolumeFlowUnits;
 }
 

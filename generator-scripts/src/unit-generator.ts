@@ -56,11 +56,13 @@ function buildDto(Unit: UnitGenerateOptions, enumName: string): InterfaceDeclara
         properties: [
             {
                 name: 'value',
-                type: 'number'
+                type: 'number',
+                docs: [`The value of the ${Unit.unitName}`]
             },
             {
                 name: 'unit',
-                type: enumName
+                type: enumName,
+                docs: [` The specific unit that the ${Unit.unitName} value is representing`]
             }
         ],
         isExported: true,

@@ -1,6 +1,8 @@
 /** API DTO represents a PowerRatio */
 export interface PowerRatioDto {
+    /** The value of the PowerRatio */
     value: number;
+    /**  The specific unit that the PowerRatio value is representing */
     unit: PowerRatioUnits;
 }
 

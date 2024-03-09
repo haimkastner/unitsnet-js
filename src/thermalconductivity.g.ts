@@ -1,6 +1,8 @@
 /** API DTO represents a ThermalConductivity */
 export interface ThermalConductivityDto {
+    /** The value of the ThermalConductivity */
     value: number;
+    /**  The specific unit that the ThermalConductivity value is representing */
     unit: ThermalConductivityUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a RelativeHumidity */
 export interface RelativeHumidityDto {
+    /** The value of the RelativeHumidity */
     value: number;
+    /**  The specific unit that the RelativeHumidity value is representing */
     unit: RelativeHumidityUnits;
 }
 

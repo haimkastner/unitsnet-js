@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricCurrent */
 export interface ElectricCurrentDto {
+    /** The value of the ElectricCurrent */
     value: number;
+    /**  The specific unit that the ElectricCurrent value is representing */
     unit: ElectricCurrentUnits;
 }
 

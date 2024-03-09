@@ -1,6 +1,8 @@
 /** API DTO represents a Volume */
 export interface VolumeDto {
+    /** The value of the Volume */
     value: number;
+    /**  The specific unit that the Volume value is representing */
     unit: VolumeUnits;
 }
 

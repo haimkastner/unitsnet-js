@@ -1,6 +1,8 @@
 /** API DTO represents a Scalar */
 export interface ScalarDto {
+    /** The value of the Scalar */
     value: number;
+    /**  The specific unit that the Scalar value is representing */
     unit: ScalarUnits;
 }
 

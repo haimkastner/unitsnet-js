@@ -1,6 +1,8 @@
 /** API DTO represents a Length */
 export interface LengthDto {
+    /** The value of the Length */
     value: number;
+    /**  The specific unit that the Length value is representing */
     unit: LengthUnits;
 }
 

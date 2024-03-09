@@ -1,6 +1,8 @@
 /** API DTO represents a MolarFlow */
 export interface MolarFlowDto {
+    /** The value of the MolarFlow */
     value: number;
+    /**  The specific unit that the MolarFlow value is representing */
     unit: MolarFlowUnits;
 }
 

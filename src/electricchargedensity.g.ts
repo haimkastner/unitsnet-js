@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricChargeDensity */
 export interface ElectricChargeDensityDto {
+    /** The value of the ElectricChargeDensity */
     value: number;
+    /**  The specific unit that the ElectricChargeDensity value is representing */
     unit: ElectricChargeDensityUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a ApparentPower */
 export interface ApparentPowerDto {
+    /** The value of the ApparentPower */
     value: number;
+    /**  The specific unit that the ApparentPower value is representing */
     unit: ApparentPowerUnits;
 }
 

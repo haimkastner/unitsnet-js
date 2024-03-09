@@ -1,6 +1,8 @@
 /** API DTO represents a VitaminA */
 export interface VitaminADto {
+    /** The value of the VitaminA */
     value: number;
+    /**  The specific unit that the VitaminA value is representing */
     unit: VitaminAUnits;
 }
 

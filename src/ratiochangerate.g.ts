@@ -1,6 +1,8 @@
 /** API DTO represents a RatioChangeRate */
 export interface RatioChangeRateDto {
+    /** The value of the RatioChangeRate */
     value: number;
+    /**  The specific unit that the RatioChangeRate value is representing */
     unit: RatioChangeRateUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a SpecificFuelConsumption */
 export interface SpecificFuelConsumptionDto {
+    /** The value of the SpecificFuelConsumption */
     value: number;
+    /**  The specific unit that the SpecificFuelConsumption value is representing */
     unit: SpecificFuelConsumptionUnits;
 }
 

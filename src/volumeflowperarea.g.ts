@@ -1,6 +1,8 @@
 /** API DTO represents a VolumeFlowPerArea */
 export interface VolumeFlowPerAreaDto {
+    /** The value of the VolumeFlowPerArea */
     value: number;
+    /**  The specific unit that the VolumeFlowPerArea value is representing */
     unit: VolumeFlowPerAreaUnits;
 }
 

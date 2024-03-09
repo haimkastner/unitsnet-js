@@ -1,6 +1,8 @@
 /** API DTO represents a Density */
 export interface DensityDto {
+    /** The value of the Density */
     value: number;
+    /**  The specific unit that the Density value is representing */
     unit: DensityUnits;
 }
 

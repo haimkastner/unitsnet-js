@@ -1,6 +1,8 @@
 /** API DTO represents a Permeability */
 export interface PermeabilityDto {
+    /** The value of the Permeability */
     value: number;
+    /**  The specific unit that the Permeability value is representing */
     unit: PermeabilityUnits;
 }
 

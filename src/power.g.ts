@@ -1,6 +1,8 @@
 /** API DTO represents a Power */
 export interface PowerDto {
+    /** The value of the Power */
     value: number;
+    /**  The specific unit that the Power value is representing */
     unit: PowerUnits;
 }
 

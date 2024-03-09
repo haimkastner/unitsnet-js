@@ -1,6 +1,8 @@
 /** API DTO represents a MassMomentOfInertia */
 export interface MassMomentOfInertiaDto {
+    /** The value of the MassMomentOfInertia */
     value: number;
+    /**  The specific unit that the MassMomentOfInertia value is representing */
     unit: MassMomentOfInertiaUnits;
 }
 

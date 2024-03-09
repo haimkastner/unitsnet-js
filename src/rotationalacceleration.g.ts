@@ -1,6 +1,8 @@
 /** API DTO represents a RotationalAcceleration */
 export interface RotationalAccelerationDto {
+    /** The value of the RotationalAcceleration */
     value: number;
+    /**  The specific unit that the RotationalAcceleration value is representing */
     unit: RotationalAccelerationUnits;
 }
 

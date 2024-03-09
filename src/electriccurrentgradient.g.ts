@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricCurrentGradient */
 export interface ElectricCurrentGradientDto {
+    /** The value of the ElectricCurrentGradient */
     value: number;
+    /**  The specific unit that the ElectricCurrentGradient value is representing */
     unit: ElectricCurrentGradientUnits;
 }
 

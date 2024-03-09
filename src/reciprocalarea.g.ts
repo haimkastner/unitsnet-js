@@ -1,6 +1,8 @@
 /** API DTO represents a ReciprocalArea */
 export interface ReciprocalAreaDto {
+    /** The value of the ReciprocalArea */
     value: number;
+    /**  The specific unit that the ReciprocalArea value is representing */
     unit: ReciprocalAreaUnits;
 }
 

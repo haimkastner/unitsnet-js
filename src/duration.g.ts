@@ -1,6 +1,8 @@
 /** API DTO represents a Duration */
 export interface DurationDto {
+    /** The value of the Duration */
     value: number;
+    /**  The specific unit that the Duration value is representing */
     unit: DurationUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a AreaMomentOfInertia */
 export interface AreaMomentOfInertiaDto {
+    /** The value of the AreaMomentOfInertia */
     value: number;
+    /**  The specific unit that the AreaMomentOfInertia value is representing */
     unit: AreaMomentOfInertiaUnits;
 }
 

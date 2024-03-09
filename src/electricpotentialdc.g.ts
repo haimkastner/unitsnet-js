@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricPotentialDc */
 export interface ElectricPotentialDcDto {
+    /** The value of the ElectricPotentialDc */
     value: number;
+    /**  The specific unit that the ElectricPotentialDc value is representing */
     unit: ElectricPotentialDcUnits;
 }
 

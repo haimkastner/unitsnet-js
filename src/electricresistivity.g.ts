@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricResistivity */
 export interface ElectricResistivityDto {
+    /** The value of the ElectricResistivity */
     value: number;
+    /**  The specific unit that the ElectricResistivity value is representing */
     unit: ElectricResistivityUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a Acceleration */
 export interface AccelerationDto {
+    /** The value of the Acceleration */
     value: number;
+    /**  The specific unit that the Acceleration value is representing */
     unit: AccelerationUnits;
 }
 

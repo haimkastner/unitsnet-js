@@ -1,6 +1,8 @@
 /** API DTO represents a MassFraction */
 export interface MassFractionDto {
+    /** The value of the MassFraction */
     value: number;
+    /**  The specific unit that the MassFraction value is representing */
     unit: MassFractionUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a Molality */
 export interface MolalityDto {
+    /** The value of the Molality */
     value: number;
+    /**  The specific unit that the Molality value is representing */
     unit: MolalityUnits;
 }
 

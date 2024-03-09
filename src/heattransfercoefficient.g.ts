@@ -1,6 +1,8 @@
 /** API DTO represents a HeatTransferCoefficient */
 export interface HeatTransferCoefficientDto {
+    /** The value of the HeatTransferCoefficient */
     value: number;
+    /**  The specific unit that the HeatTransferCoefficient value is representing */
     unit: HeatTransferCoefficientUnits;
 }
 

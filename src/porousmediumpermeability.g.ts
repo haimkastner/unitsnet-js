@@ -1,6 +1,8 @@
 /** API DTO represents a PorousMediumPermeability */
 export interface PorousMediumPermeabilityDto {
+    /** The value of the PorousMediumPermeability */
     value: number;
+    /**  The specific unit that the PorousMediumPermeability value is representing */
     unit: PorousMediumPermeabilityUnits;
 }
 

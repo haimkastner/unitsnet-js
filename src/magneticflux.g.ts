@@ -1,6 +1,8 @@
 /** API DTO represents a MagneticFlux */
 export interface MagneticFluxDto {
+    /** The value of the MagneticFlux */
     value: number;
+    /**  The specific unit that the MagneticFlux value is representing */
     unit: MagneticFluxUnits;
 }
 

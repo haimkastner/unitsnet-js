@@ -1,6 +1,8 @@
 /** API DTO represents a SolidAngle */
 export interface SolidAngleDto {
+    /** The value of the SolidAngle */
     value: number;
+    /**  The specific unit that the SolidAngle value is representing */
     unit: SolidAngleUnits;
 }
 

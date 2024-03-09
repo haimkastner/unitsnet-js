@@ -1,6 +1,8 @@
 /** API DTO represents a DynamicViscosity */
 export interface DynamicViscosityDto {
+    /** The value of the DynamicViscosity */
     value: number;
+    /**  The specific unit that the DynamicViscosity value is representing */
     unit: DynamicViscosityUnits;
 }
 

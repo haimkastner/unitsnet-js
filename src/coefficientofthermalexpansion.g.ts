@@ -1,6 +1,8 @@
 /** API DTO represents a CoefficientOfThermalExpansion */
 export interface CoefficientOfThermalExpansionDto {
+    /** The value of the CoefficientOfThermalExpansion */
     value: number;
+    /**  The specific unit that the CoefficientOfThermalExpansion value is representing */
     unit: CoefficientOfThermalExpansionUnits;
 }
 

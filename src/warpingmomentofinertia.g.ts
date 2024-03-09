@@ -1,6 +1,8 @@
 /** API DTO represents a WarpingMomentOfInertia */
 export interface WarpingMomentOfInertiaDto {
+    /** The value of the WarpingMomentOfInertia */
     value: number;
+    /**  The specific unit that the WarpingMomentOfInertia value is representing */
     unit: WarpingMomentOfInertiaUnits;
 }
 

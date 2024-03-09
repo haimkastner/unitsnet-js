@@ -1,6 +1,8 @@
 /** API DTO represents a Speed */
 export interface SpeedDto {
+    /** The value of the Speed */
     value: number;
+    /**  The specific unit that the Speed value is representing */
     unit: SpeedUnits;
 }
 

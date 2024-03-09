@@ -1,6 +1,8 @@
 /** API DTO represents a TemperatureGradient */
 export interface TemperatureGradientDto {
+    /** The value of the TemperatureGradient */
     value: number;
+    /**  The specific unit that the TemperatureGradient value is representing */
     unit: TemperatureGradientUnits;
 }
 

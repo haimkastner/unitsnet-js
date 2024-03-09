@@ -1,6 +1,8 @@
 /** API DTO represents a Torque */
 export interface TorqueDto {
+    /** The value of the Torque */
     value: number;
+    /**  The specific unit that the Torque value is representing */
     unit: TorqueUnits;
 }
 

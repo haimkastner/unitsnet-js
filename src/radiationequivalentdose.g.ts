@@ -1,6 +1,8 @@
 /** API DTO represents a RadiationEquivalentDose */
 export interface RadiationEquivalentDoseDto {
+    /** The value of the RadiationEquivalentDose */
     value: number;
+    /**  The specific unit that the RadiationEquivalentDose value is representing */
     unit: RadiationEquivalentDoseUnits;
 }
 

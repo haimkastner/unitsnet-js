@@ -1,6 +1,8 @@
 /** API DTO represents a ForceChangeRate */
 export interface ForceChangeRateDto {
+    /** The value of the ForceChangeRate */
     value: number;
+    /**  The specific unit that the ForceChangeRate value is representing */
     unit: ForceChangeRateUnits;
 }
 

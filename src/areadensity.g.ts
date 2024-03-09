@@ -1,6 +1,8 @@
 /** API DTO represents a AreaDensity */
 export interface AreaDensityDto {
+    /** The value of the AreaDensity */
     value: number;
+    /**  The specific unit that the AreaDensity value is representing */
     unit: AreaDensityUnits;
 }
 

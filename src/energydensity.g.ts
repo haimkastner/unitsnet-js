@@ -1,6 +1,8 @@
 /** API DTO represents a EnergyDensity */
 export interface EnergyDensityDto {
+    /** The value of the EnergyDensity */
     value: number;
+    /**  The specific unit that the EnergyDensity value is representing */
     unit: EnergyDensityUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a ReciprocalLength */
 export interface ReciprocalLengthDto {
+    /** The value of the ReciprocalLength */
     value: number;
+    /**  The specific unit that the ReciprocalLength value is representing */
     unit: ReciprocalLengthUnits;
 }
 

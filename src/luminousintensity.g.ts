@@ -1,6 +1,8 @@
 /** API DTO represents a LuminousIntensity */
 export interface LuminousIntensityDto {
+    /** The value of the LuminousIntensity */
     value: number;
+    /**  The specific unit that the LuminousIntensity value is representing */
     unit: LuminousIntensityUnits;
 }
 

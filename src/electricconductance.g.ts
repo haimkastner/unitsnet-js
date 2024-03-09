@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricConductance */
 export interface ElectricConductanceDto {
+    /** The value of the ElectricConductance */
     value: number;
+    /**  The specific unit that the ElectricConductance value is representing */
     unit: ElectricConductanceUnits;
 }
 

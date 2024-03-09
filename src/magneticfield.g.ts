@@ -1,6 +1,8 @@
 /** API DTO represents a MagneticField */
 export interface MagneticFieldDto {
+    /** The value of the MagneticField */
     value: number;
+    /**  The specific unit that the MagneticField value is representing */
     unit: MagneticFieldUnits;
 }
 

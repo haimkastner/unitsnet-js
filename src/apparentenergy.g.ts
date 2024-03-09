@@ -1,6 +1,8 @@
 /** API DTO represents a ApparentEnergy */
 export interface ApparentEnergyDto {
+    /** The value of the ApparentEnergy */
     value: number;
+    /**  The specific unit that the ApparentEnergy value is representing */
     unit: ApparentEnergyUnits;
 }
 

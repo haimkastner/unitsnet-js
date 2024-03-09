@@ -1,6 +1,8 @@
 /** API DTO represents a SpecificWeight */
 export interface SpecificWeightDto {
+    /** The value of the SpecificWeight */
     value: number;
+    /**  The specific unit that the SpecificWeight value is representing */
     unit: SpecificWeightUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a LeakRate */
 export interface LeakRateDto {
+    /** The value of the LeakRate */
     value: number;
+    /**  The specific unit that the LeakRate value is representing */
     unit: LeakRateUnits;
 }
 

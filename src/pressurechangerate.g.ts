@@ -1,6 +1,8 @@
 /** API DTO represents a PressureChangeRate */
 export interface PressureChangeRateDto {
+    /** The value of the PressureChangeRate */
     value: number;
+    /**  The specific unit that the PressureChangeRate value is representing */
     unit: PressureChangeRateUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a KinematicViscosity */
 export interface KinematicViscosityDto {
+    /** The value of the KinematicViscosity */
     value: number;
+    /**  The specific unit that the KinematicViscosity value is representing */
     unit: KinematicViscosityUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a RadiationExposure */
 export interface RadiationExposureDto {
+    /** The value of the RadiationExposure */
     value: number;
+    /**  The specific unit that the RadiationExposure value is representing */
     unit: RadiationExposureUnits;
 }
 

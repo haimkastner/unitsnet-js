@@ -1,6 +1,8 @@
 /** API DTO represents a Level */
 export interface LevelDto {
+    /** The value of the Level */
     value: number;
+    /**  The specific unit that the Level value is representing */
     unit: LevelUnits;
 }
 

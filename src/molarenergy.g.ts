@@ -1,6 +1,8 @@
 /** API DTO represents a MolarEnergy */
 export interface MolarEnergyDto {
+    /** The value of the MolarEnergy */
     value: number;
+    /**  The specific unit that the MolarEnergy value is representing */
     unit: MolarEnergyUnits;
 }
 

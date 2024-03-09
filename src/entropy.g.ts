@@ -1,6 +1,8 @@
 /** API DTO represents a Entropy */
 export interface EntropyDto {
+    /** The value of the Entropy */
     value: number;
+    /**  The specific unit that the Entropy value is representing */
     unit: EntropyUnits;
 }
 

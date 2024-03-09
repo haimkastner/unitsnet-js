@@ -1,6 +1,8 @@
 /** API DTO represents a Illuminance */
 export interface IlluminanceDto {
+    /** The value of the Illuminance */
     value: number;
+    /**  The specific unit that the Illuminance value is representing */
     unit: IlluminanceUnits;
 }
 

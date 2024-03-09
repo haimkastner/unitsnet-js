@@ -1,6 +1,8 @@
 /** API DTO represents a FuelEfficiency */
 export interface FuelEfficiencyDto {
+    /** The value of the FuelEfficiency */
     value: number;
+    /**  The specific unit that the FuelEfficiency value is representing */
     unit: FuelEfficiencyUnits;
 }
 

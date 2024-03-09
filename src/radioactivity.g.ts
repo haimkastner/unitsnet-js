@@ -1,6 +1,8 @@
 /** API DTO represents a Radioactivity */
 export interface RadioactivityDto {
+    /** The value of the Radioactivity */
     value: number;
+    /**  The specific unit that the Radioactivity value is representing */
     unit: RadioactivityUnits;
 }
 

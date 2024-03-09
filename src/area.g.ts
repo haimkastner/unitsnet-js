@@ -1,6 +1,8 @@
 /** API DTO represents a Area */
 export interface AreaDto {
+    /** The value of the Area */
     value: number;
+    /**  The specific unit that the Area value is representing */
     unit: AreaUnits;
 }
 

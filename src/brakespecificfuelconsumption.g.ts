@@ -1,6 +1,8 @@
 /** API DTO represents a BrakeSpecificFuelConsumption */
 export interface BrakeSpecificFuelConsumptionDto {
+    /** The value of the BrakeSpecificFuelConsumption */
     value: number;
+    /**  The specific unit that the BrakeSpecificFuelConsumption value is representing */
     unit: BrakeSpecificFuelConsumptionUnits;
 }
 

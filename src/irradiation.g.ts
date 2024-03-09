@@ -1,6 +1,8 @@
 /** API DTO represents a Irradiation */
 export interface IrradiationDto {
+    /** The value of the Irradiation */
     value: number;
+    /**  The specific unit that the Irradiation value is representing */
     unit: IrradiationUnits;
 }
 

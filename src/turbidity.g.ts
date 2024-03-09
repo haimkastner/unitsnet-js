@@ -1,6 +1,8 @@
 /** API DTO represents a Turbidity */
 export interface TurbidityDto {
+    /** The value of the Turbidity */
     value: number;
+    /**  The specific unit that the Turbidity value is representing */
     unit: TurbidityUnits;
 }
 

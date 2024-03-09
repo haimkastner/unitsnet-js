@@ -1,6 +1,8 @@
 /** API DTO represents a RotationalStiffness */
 export interface RotationalStiffnessDto {
+    /** The value of the RotationalStiffness */
     value: number;
+    /**  The specific unit that the RotationalStiffness value is representing */
     unit: RotationalStiffnessUnits;
 }
 

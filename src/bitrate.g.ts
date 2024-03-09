@@ -1,6 +1,8 @@
 /** API DTO represents a BitRate */
 export interface BitRateDto {
+    /** The value of the BitRate */
     value: number;
+    /**  The specific unit that the BitRate value is representing */
     unit: BitRateUnits;
 }
 

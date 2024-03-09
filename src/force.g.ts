@@ -1,6 +1,8 @@
 /** API DTO represents a Force */
 export interface ForceDto {
+    /** The value of the Force */
     value: number;
+    /**  The specific unit that the Force value is representing */
     unit: ForceUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a MolarMass */
 export interface MolarMassDto {
+    /** The value of the MolarMass */
     value: number;
+    /**  The specific unit that the MolarMass value is representing */
     unit: MolarMassUnits;
 }
 

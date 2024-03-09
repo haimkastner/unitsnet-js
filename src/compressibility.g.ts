@@ -1,6 +1,8 @@
 /** API DTO represents a Compressibility */
 export interface CompressibilityDto {
+    /** The value of the Compressibility */
     value: number;
+    /**  The specific unit that the Compressibility value is representing */
     unit: CompressibilityUnits;
 }
 

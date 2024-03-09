@@ -1,6 +1,8 @@
 /** API DTO represents a MolarEntropy */
 export interface MolarEntropyDto {
+    /** The value of the MolarEntropy */
     value: number;
+    /**  The specific unit that the MolarEntropy value is representing */
     unit: MolarEntropyUnits;
 }
 

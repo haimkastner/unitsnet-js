@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricField */
 export interface ElectricFieldDto {
+    /** The value of the ElectricField */
     value: number;
+    /**  The specific unit that the ElectricField value is representing */
     unit: ElectricFieldUnits;
 }
 

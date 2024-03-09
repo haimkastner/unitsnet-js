@@ -1,6 +1,8 @@
 /** API DTO represents a MassFlux */
 export interface MassFluxDto {
+    /** The value of the MassFlux */
     value: number;
+    /**  The specific unit that the MassFlux value is representing */
     unit: MassFluxUnits;
 }
 

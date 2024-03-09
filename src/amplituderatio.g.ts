@@ -1,6 +1,8 @@
 /** API DTO represents a AmplitudeRatio */
 export interface AmplitudeRatioDto {
+    /** The value of the AmplitudeRatio */
     value: number;
+    /**  The specific unit that the AmplitudeRatio value is representing */
     unit: AmplitudeRatioUnits;
 }
 

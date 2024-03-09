@@ -1,6 +1,8 @@
 /** API DTO represents a HeatFlux */
 export interface HeatFluxDto {
+    /** The value of the HeatFlux */
     value: number;
+    /**  The specific unit that the HeatFlux value is representing */
     unit: HeatFluxUnits;
 }
 

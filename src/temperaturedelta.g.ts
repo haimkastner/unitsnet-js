@@ -1,6 +1,8 @@
 /** API DTO represents a TemperatureDelta */
 export interface TemperatureDeltaDto {
+    /** The value of the TemperatureDelta */
     value: number;
+    /**  The specific unit that the TemperatureDelta value is representing */
     unit: TemperatureDeltaUnits;
 }
 

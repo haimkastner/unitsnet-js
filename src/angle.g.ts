@@ -1,6 +1,8 @@
 /** API DTO represents a Angle */
 export interface AngleDto {
+    /** The value of the Angle */
     value: number;
+    /**  The specific unit that the Angle value is representing */
     unit: AngleUnits;
 }
 

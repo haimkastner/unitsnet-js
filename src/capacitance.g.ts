@@ -1,6 +1,8 @@
 /** API DTO represents a Capacitance */
 export interface CapacitanceDto {
+    /** The value of the Capacitance */
     value: number;
+    /**  The specific unit that the Capacitance value is representing */
     unit: CapacitanceUnits;
 }
 

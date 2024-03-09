@@ -1,6 +1,8 @@
 /** API DTO represents a VolumeConcentration */
 export interface VolumeConcentrationDto {
+    /** The value of the VolumeConcentration */
     value: number;
+    /**  The specific unit that the VolumeConcentration value is representing */
     unit: VolumeConcentrationUnits;
 }
 

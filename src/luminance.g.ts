@@ -1,6 +1,8 @@
 /** API DTO represents a Luminance */
 export interface LuminanceDto {
+    /** The value of the Luminance */
     value: number;
+    /**  The specific unit that the Luminance value is representing */
     unit: LuminanceUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a ReactivePower */
 export interface ReactivePowerDto {
+    /** The value of the ReactivePower */
     value: number;
+    /**  The specific unit that the ReactivePower value is representing */
     unit: ReactivePowerUnits;
 }
 

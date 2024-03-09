@@ -1,6 +1,8 @@
 /** API DTO represents a ElectricPotentialChangeRate */
 export interface ElectricPotentialChangeRateDto {
+    /** The value of the ElectricPotentialChangeRate */
     value: number;
+    /**  The specific unit that the ElectricPotentialChangeRate value is representing */
     unit: ElectricPotentialChangeRateUnits;
 }
 

@@ -1,6 +1,8 @@
 /** API DTO represents a TemperatureChangeRate */
 export interface TemperatureChangeRateDto {
+    /** The value of the TemperatureChangeRate */
     value: number;
+    /**  The specific unit that the TemperatureChangeRate value is representing */
     unit: TemperatureChangeRateUnits;
 }
 
