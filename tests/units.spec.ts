@@ -171,7 +171,7 @@ describe('Unitsnet - tests', () => {
             expect(Length.FromDto(dto).Meters).deep.equal(100.01);
         });
 
-        it(`Should load from default unit DTO`, () => {
+        it(`Should load from specific unit DTO`, () => {
             const dto = length1.toDto(LengthUnits.Centimeters);
             expect(Length.FromDto(dto).Decimeters).deep.equal(1000.1);
         });
