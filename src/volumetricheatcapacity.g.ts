@@ -1,3 +1,11 @@
+/** API DTO represents a VolumetricHeatCapacity */
+export interface VolumetricHeatCapacityDto {
+    /** The value of the VolumetricHeatCapacity */
+    value: number;
+    /**  The specific unit that the VolumetricHeatCapacity value is representing */
+    unit: VolumetricHeatCapacityUnits;
+}
+
 /** VolumetricHeatCapacityUnits enumeration */
 export enum VolumetricHeatCapacityUnits {
     /** */
@@ -213,6 +221,25 @@ export class VolumetricHeatCapacity {
      */
     public static FromKilocaloriesPerCubicCentimeterDegreeCelsius(value: number): VolumetricHeatCapacity {
         return new VolumetricHeatCapacity(value, VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius);
+    }
+
+    /**
+     * Create API DTO represent a VolumetricHeatCapacity unit.
+     * @param holdInUnit The specific VolumetricHeatCapacity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: VolumetricHeatCapacityUnits = VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin): VolumetricHeatCapacityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a VolumetricHeatCapacity unit from an API DTO representation.
+     * @param dtoVolumetricHeatCapacity The VolumetricHeatCapacity API DTO representation
+     */
+    public static FromDto(dtoVolumetricHeatCapacity: VolumetricHeatCapacityDto): VolumetricHeatCapacity {
+        return new VolumetricHeatCapacity(dtoVolumetricHeatCapacity.value, dtoVolumetricHeatCapacity.unit);
     }
 
     /**

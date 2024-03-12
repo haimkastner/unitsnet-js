@@ -1,3 +1,11 @@
+/** API DTO represents a BitRate */
+export interface BitRateDto {
+    /** The value of the BitRate */
+    value: number;
+    /**  The specific unit that the BitRate value is representing */
+    unit: BitRateUnits;
+}
+
 /** BitRateUnits enumeration */
 export enum BitRateUnits {
     /** */
@@ -318,6 +326,25 @@ export class BitRate {
      */
     public static FromExabytesPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.ExabytesPerSecond);
+    }
+
+    /**
+     * Create API DTO represent a BitRate unit.
+     * @param holdInUnit The specific BitRate unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: BitRateUnits = BitRateUnits.BitsPerSecond): BitRateDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a BitRate unit from an API DTO representation.
+     * @param dtoBitRate The BitRate API DTO representation
+     */
+    public static FromDto(dtoBitRate: BitRateDto): BitRate {
+        return new BitRate(dtoBitRate.value, dtoBitRate.unit);
     }
 
     /**

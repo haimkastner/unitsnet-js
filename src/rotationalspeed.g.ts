@@ -1,3 +1,11 @@
+/** API DTO represents a RotationalSpeed */
+export interface RotationalSpeedDto {
+    /** The value of the RotationalSpeed */
+    value: number;
+    /**  The specific unit that the RotationalSpeed value is representing */
+    unit: RotationalSpeedUnits;
+}
+
 /** RotationalSpeedUnits enumeration */
 export enum RotationalSpeedUnits {
     /** */
@@ -297,6 +305,25 @@ export class RotationalSpeed {
      */
     public static FromMillidegreesPerSecond(value: number): RotationalSpeed {
         return new RotationalSpeed(value, RotationalSpeedUnits.MillidegreesPerSecond);
+    }
+
+    /**
+     * Create API DTO represent a RotationalSpeed unit.
+     * @param holdInUnit The specific RotationalSpeed unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: RotationalSpeedUnits = RotationalSpeedUnits.RadiansPerSecond): RotationalSpeedDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a RotationalSpeed unit from an API DTO representation.
+     * @param dtoRotationalSpeed The RotationalSpeed API DTO representation
+     */
+    public static FromDto(dtoRotationalSpeed: RotationalSpeedDto): RotationalSpeed {
+        return new RotationalSpeed(dtoRotationalSpeed.value, dtoRotationalSpeed.unit);
     }
 
     /**

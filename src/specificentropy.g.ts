@@ -1,3 +1,11 @@
+/** API DTO represents a SpecificEntropy */
+export interface SpecificEntropyDto {
+    /** The value of the SpecificEntropy */
+    value: number;
+    /**  The specific unit that the SpecificEntropy value is representing */
+    unit: SpecificEntropyUnits;
+}
+
 /** SpecificEntropyUnits enumeration */
 export enum SpecificEntropyUnits {
     /** */
@@ -213,6 +221,25 @@ export class SpecificEntropy {
      */
     public static FromKilocaloriesPerGramKelvin(value: number): SpecificEntropy {
         return new SpecificEntropy(value, SpecificEntropyUnits.KilocaloriesPerGramKelvin);
+    }
+
+    /**
+     * Create API DTO represent a SpecificEntropy unit.
+     * @param holdInUnit The specific SpecificEntropy unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: SpecificEntropyUnits = SpecificEntropyUnits.JoulesPerKilogramKelvin): SpecificEntropyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a SpecificEntropy unit from an API DTO representation.
+     * @param dtoSpecificEntropy The SpecificEntropy API DTO representation
+     */
+    public static FromDto(dtoSpecificEntropy: SpecificEntropyDto): SpecificEntropy {
+        return new SpecificEntropy(dtoSpecificEntropy.value, dtoSpecificEntropy.unit);
     }
 
     /**

@@ -1,3 +1,11 @@
+/** API DTO represents a ForcePerLength */
+export interface ForcePerLengthDto {
+    /** The value of the ForcePerLength */
+    value: number;
+    /**  The specific unit that the ForcePerLength value is representing */
+    unit: ForcePerLengthUnits;
+}
+
 /** ForcePerLengthUnits enumeration */
 export enum ForcePerLengthUnits {
     /** */
@@ -822,6 +830,25 @@ export class ForcePerLength {
      */
     public static FromMeganewtonsPerMillimeter(value: number): ForcePerLength {
         return new ForcePerLength(value, ForcePerLengthUnits.MeganewtonsPerMillimeter);
+    }
+
+    /**
+     * Create API DTO represent a ForcePerLength unit.
+     * @param holdInUnit The specific ForcePerLength unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ForcePerLengthUnits = ForcePerLengthUnits.NewtonsPerMeter): ForcePerLengthDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ForcePerLength unit from an API DTO representation.
+     * @param dtoForcePerLength The ForcePerLength API DTO representation
+     */
+    public static FromDto(dtoForcePerLength: ForcePerLengthDto): ForcePerLength {
+        return new ForcePerLength(dtoForcePerLength.value, dtoForcePerLength.unit);
     }
 
     /**

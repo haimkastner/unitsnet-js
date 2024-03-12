@@ -1,3 +1,11 @@
+/** API DTO represents a ElectricConductance */
+export interface ElectricConductanceDto {
+    /** The value of the ElectricConductance */
+    value: number;
+    /**  The specific unit that the ElectricConductance value is representing */
+    unit: ElectricConductanceUnits;
+}
+
 /** ElectricConductanceUnits enumeration */
 export enum ElectricConductanceUnits {
     /** */
@@ -129,6 +137,25 @@ export class ElectricConductance {
      */
     public static FromKilosiemens(value: number): ElectricConductance {
         return new ElectricConductance(value, ElectricConductanceUnits.Kilosiemens);
+    }
+
+    /**
+     * Create API DTO represent a ElectricConductance unit.
+     * @param holdInUnit The specific ElectricConductance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricConductanceUnits = ElectricConductanceUnits.Siemens): ElectricConductanceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricConductance unit from an API DTO representation.
+     * @param dtoElectricConductance The ElectricConductance API DTO representation
+     */
+    public static FromDto(dtoElectricConductance: ElectricConductanceDto): ElectricConductance {
+        return new ElectricConductance(dtoElectricConductance.value, dtoElectricConductance.unit);
     }
 
     /**

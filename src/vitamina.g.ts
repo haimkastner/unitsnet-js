@@ -1,3 +1,11 @@
+/** API DTO represents a VitaminA */
+export interface VitaminADto {
+    /** The value of the VitaminA */
+    value: number;
+    /**  The specific unit that the VitaminA value is representing */
+    unit: VitaminAUnits;
+}
+
 /** VitaminAUnits enumeration */
 export enum VitaminAUnits {
     /** */
@@ -45,6 +53,25 @@ export class VitaminA {
      */
     public static FromInternationalUnits(value: number): VitaminA {
         return new VitaminA(value, VitaminAUnits.InternationalUnits);
+    }
+
+    /**
+     * Create API DTO represent a VitaminA unit.
+     * @param holdInUnit The specific VitaminA unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: VitaminAUnits = VitaminAUnits.InternationalUnits): VitaminADto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a VitaminA unit from an API DTO representation.
+     * @param dtoVitaminA The VitaminA API DTO representation
+     */
+    public static FromDto(dtoVitaminA: VitaminADto): VitaminA {
+        return new VitaminA(dtoVitaminA.value, dtoVitaminA.unit);
     }
 
     /**

@@ -1,3 +1,11 @@
+/** API DTO represents a ElectricPotentialChangeRate */
+export interface ElectricPotentialChangeRateDto {
+    /** The value of the ElectricPotentialChangeRate */
+    value: number;
+    /**  The specific unit that the ElectricPotentialChangeRate value is representing */
+    unit: ElectricPotentialChangeRateUnits;
+}
+
 /** ElectricPotentialChangeRateUnits enumeration */
 export enum ElectricPotentialChangeRateUnits {
     /** */
@@ -444,6 +452,25 @@ export class ElectricPotentialChangeRate {
      */
     public static FromMegavoltsPerHours(value: number): ElectricPotentialChangeRate {
         return new ElectricPotentialChangeRate(value, ElectricPotentialChangeRateUnits.MegavoltsPerHours);
+    }
+
+    /**
+     * Create API DTO represent a ElectricPotentialChangeRate unit.
+     * @param holdInUnit The specific ElectricPotentialChangeRate unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricPotentialChangeRateUnits = ElectricPotentialChangeRateUnits.VoltsPerSeconds): ElectricPotentialChangeRateDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricPotentialChangeRate unit from an API DTO representation.
+     * @param dtoElectricPotentialChangeRate The ElectricPotentialChangeRate API DTO representation
+     */
+    public static FromDto(dtoElectricPotentialChangeRate: ElectricPotentialChangeRateDto): ElectricPotentialChangeRate {
+        return new ElectricPotentialChangeRate(dtoElectricPotentialChangeRate.value, dtoElectricPotentialChangeRate.unit);
     }
 
     /**

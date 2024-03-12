@@ -1,3 +1,11 @@
+/** API DTO represents a ElectricResistivity */
+export interface ElectricResistivityDto {
+    /** The value of the ElectricResistivity */
+    value: number;
+    /**  The specific unit that the ElectricResistivity value is representing */
+    unit: ElectricResistivityUnits;
+}
+
 /** ElectricResistivityUnits enumeration */
 export enum ElectricResistivityUnits {
     /** */
@@ -318,6 +326,25 @@ export class ElectricResistivity {
      */
     public static FromMegaohmsCentimeter(value: number): ElectricResistivity {
         return new ElectricResistivity(value, ElectricResistivityUnits.MegaohmsCentimeter);
+    }
+
+    /**
+     * Create API DTO represent a ElectricResistivity unit.
+     * @param holdInUnit The specific ElectricResistivity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters): ElectricResistivityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricResistivity unit from an API DTO representation.
+     * @param dtoElectricResistivity The ElectricResistivity API DTO representation
+     */
+    public static FromDto(dtoElectricResistivity: ElectricResistivityDto): ElectricResistivity {
+        return new ElectricResistivity(dtoElectricResistivity.value, dtoElectricResistivity.unit);
     }
 
     /**

@@ -1,3 +1,11 @@
+/** API DTO represents a VolumeConcentration */
+export interface VolumeConcentrationDto {
+    /** The value of the VolumeConcentration */
+    value: number;
+    /**  The specific unit that the VolumeConcentration value is representing */
+    unit: VolumeConcentrationUnits;
+}
+
 /** VolumeConcentrationUnits enumeration */
 export enum VolumeConcentrationUnits {
     /** */
@@ -444,6 +452,25 @@ export class VolumeConcentration {
      */
     public static FromDecilitersPerMililiter(value: number): VolumeConcentration {
         return new VolumeConcentration(value, VolumeConcentrationUnits.DecilitersPerMililiter);
+    }
+
+    /**
+     * Create API DTO represent a VolumeConcentration unit.
+     * @param holdInUnit The specific VolumeConcentration unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: VolumeConcentrationUnits = VolumeConcentrationUnits.DecimalFractions): VolumeConcentrationDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a VolumeConcentration unit from an API DTO representation.
+     * @param dtoVolumeConcentration The VolumeConcentration API DTO representation
+     */
+    public static FromDto(dtoVolumeConcentration: VolumeConcentrationDto): VolumeConcentration {
+        return new VolumeConcentration(dtoVolumeConcentration.value, dtoVolumeConcentration.unit);
     }
 
     /**

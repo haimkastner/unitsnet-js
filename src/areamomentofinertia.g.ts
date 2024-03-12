@@ -1,3 +1,11 @@
+/** API DTO represents a AreaMomentOfInertia */
+export interface AreaMomentOfInertiaDto {
+    /** The value of the AreaMomentOfInertia */
+    value: number;
+    /**  The specific unit that the AreaMomentOfInertia value is representing */
+    unit: AreaMomentOfInertiaUnits;
+}
+
 /** AreaMomentOfInertiaUnits enumeration */
 export enum AreaMomentOfInertiaUnits {
     /** */
@@ -150,6 +158,25 @@ export class AreaMomentOfInertia {
      */
     public static FromInchesToTheFourth(value: number): AreaMomentOfInertia {
         return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnits.InchesToTheFourth);
+    }
+
+    /**
+     * Create API DTO represent a AreaMomentOfInertia unit.
+     * @param holdInUnit The specific AreaMomentOfInertia unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth): AreaMomentOfInertiaDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a AreaMomentOfInertia unit from an API DTO representation.
+     * @param dtoAreaMomentOfInertia The AreaMomentOfInertia API DTO representation
+     */
+    public static FromDto(dtoAreaMomentOfInertia: AreaMomentOfInertiaDto): AreaMomentOfInertia {
+        return new AreaMomentOfInertia(dtoAreaMomentOfInertia.value, dtoAreaMomentOfInertia.unit);
     }
 
     /**

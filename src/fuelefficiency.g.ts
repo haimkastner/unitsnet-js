@@ -1,3 +1,11 @@
+/** API DTO represents a FuelEfficiency */
+export interface FuelEfficiencyDto {
+    /** The value of the FuelEfficiency */
+    value: number;
+    /**  The specific unit that the FuelEfficiency value is representing */
+    unit: FuelEfficiencyUnits;
+}
+
 /** FuelEfficiencyUnits enumeration */
 export enum FuelEfficiencyUnits {
     /** */
@@ -108,6 +116,25 @@ export class FuelEfficiency {
      */
     public static FromKilometersPerLiters(value: number): FuelEfficiency {
         return new FuelEfficiency(value, FuelEfficiencyUnits.KilometersPerLiters);
+    }
+
+    /**
+     * Create API DTO represent a FuelEfficiency unit.
+     * @param holdInUnit The specific FuelEfficiency unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers): FuelEfficiencyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a FuelEfficiency unit from an API DTO representation.
+     * @param dtoFuelEfficiency The FuelEfficiency API DTO representation
+     */
+    public static FromDto(dtoFuelEfficiency: FuelEfficiencyDto): FuelEfficiency {
+        return new FuelEfficiency(dtoFuelEfficiency.value, dtoFuelEfficiency.unit);
     }
 
     /**

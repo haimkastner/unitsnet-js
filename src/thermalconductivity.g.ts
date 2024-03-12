@@ -1,3 +1,11 @@
+/** API DTO represents a ThermalConductivity */
+export interface ThermalConductivityDto {
+    /** The value of the ThermalConductivity */
+    value: number;
+    /**  The specific unit that the ThermalConductivity value is representing */
+    unit: ThermalConductivityUnits;
+}
+
 /** ThermalConductivityUnits enumeration */
 export enum ThermalConductivityUnits {
     /** */
@@ -66,6 +74,25 @@ export class ThermalConductivity {
      */
     public static FromBtusPerHourFootFahrenheit(value: number): ThermalConductivity {
         return new ThermalConductivity(value, ThermalConductivityUnits.BtusPerHourFootFahrenheit);
+    }
+
+    /**
+     * Create API DTO represent a ThermalConductivity unit.
+     * @param holdInUnit The specific ThermalConductivity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ThermalConductivityUnits = ThermalConductivityUnits.WattsPerMeterKelvin): ThermalConductivityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ThermalConductivity unit from an API DTO representation.
+     * @param dtoThermalConductivity The ThermalConductivity API DTO representation
+     */
+    public static FromDto(dtoThermalConductivity: ThermalConductivityDto): ThermalConductivity {
+        return new ThermalConductivity(dtoThermalConductivity.value, dtoThermalConductivity.unit);
     }
 
     /**

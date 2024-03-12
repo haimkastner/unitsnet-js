@@ -1,3 +1,11 @@
+/** API DTO represents a PressureChangeRate */
+export interface PressureChangeRateDto {
+    /** The value of the PressureChangeRate */
+    value: number;
+    /**  The specific unit that the PressureChangeRate value is representing */
+    unit: PressureChangeRateUnits;
+}
+
 /** PressureChangeRateUnits enumeration */
 export enum PressureChangeRateUnits {
     /** */
@@ -402,6 +410,25 @@ export class PressureChangeRate {
      */
     public static FromMillibarsPerMinute(value: number): PressureChangeRate {
         return new PressureChangeRate(value, PressureChangeRateUnits.MillibarsPerMinute);
+    }
+
+    /**
+     * Create API DTO represent a PressureChangeRate unit.
+     * @param holdInUnit The specific PressureChangeRate unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: PressureChangeRateUnits = PressureChangeRateUnits.PascalsPerSecond): PressureChangeRateDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a PressureChangeRate unit from an API DTO representation.
+     * @param dtoPressureChangeRate The PressureChangeRate API DTO representation
+     */
+    public static FromDto(dtoPressureChangeRate: PressureChangeRateDto): PressureChangeRate {
+        return new PressureChangeRate(dtoPressureChangeRate.value, dtoPressureChangeRate.unit);
     }
 
     /**

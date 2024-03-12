@@ -1,3 +1,11 @@
+/** API DTO represents a MolarMass */
+export interface MolarMassDto {
+    /** The value of the MolarMass */
+    value: number;
+    /**  The specific unit that the MolarMass value is representing */
+    unit: MolarMassUnits;
+}
+
 /** MolarMassUnits enumeration */
 export enum MolarMassUnits {
     /** */
@@ -297,6 +305,25 @@ export class MolarMass {
      */
     public static FromMegapoundsPerMole(value: number): MolarMass {
         return new MolarMass(value, MolarMassUnits.MegapoundsPerMole);
+    }
+
+    /**
+     * Create API DTO represent a MolarMass unit.
+     * @param holdInUnit The specific MolarMass unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MolarMassUnits = MolarMassUnits.KilogramsPerMole): MolarMassDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MolarMass unit from an API DTO representation.
+     * @param dtoMolarMass The MolarMass API DTO representation
+     */
+    public static FromDto(dtoMolarMass: MolarMassDto): MolarMass {
+        return new MolarMass(dtoMolarMass.value, dtoMolarMass.unit);
     }
 
     /**

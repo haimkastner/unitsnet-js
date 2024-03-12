@@ -1,3 +1,11 @@
+/** API DTO represents a Frequency */
+export interface FrequencyDto {
+    /** The value of the Frequency */
+    value: number;
+    /**  The specific unit that the Frequency value is representing */
+    unit: FrequencyUnits;
+}
+
 /** FrequencyUnits enumeration */
 export enum FrequencyUnits {
     /** */
@@ -297,6 +305,25 @@ export class Frequency {
      */
     public static FromTerahertz(value: number): Frequency {
         return new Frequency(value, FrequencyUnits.Terahertz);
+    }
+
+    /**
+     * Create API DTO represent a Frequency unit.
+     * @param holdInUnit The specific Frequency unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: FrequencyUnits = FrequencyUnits.Hertz): FrequencyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Frequency unit from an API DTO representation.
+     * @param dtoFrequency The Frequency API DTO representation
+     */
+    public static FromDto(dtoFrequency: FrequencyDto): Frequency {
+        return new Frequency(dtoFrequency.value, dtoFrequency.unit);
     }
 
     /**

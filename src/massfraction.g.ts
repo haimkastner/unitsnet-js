@@ -1,3 +1,11 @@
+/** API DTO represents a MassFraction */
+export interface MassFractionDto {
+    /** The value of the MassFraction */
+    value: number;
+    /**  The specific unit that the MassFraction value is representing */
+    unit: MassFractionUnits;
+}
+
 /** MassFractionUnits enumeration */
 export enum MassFractionUnits {
     /** */
@@ -528,6 +536,25 @@ export class MassFraction {
      */
     public static FromKilogramsPerKilogram(value: number): MassFraction {
         return new MassFraction(value, MassFractionUnits.KilogramsPerKilogram);
+    }
+
+    /**
+     * Create API DTO represent a MassFraction unit.
+     * @param holdInUnit The specific MassFraction unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MassFractionUnits = MassFractionUnits.DecimalFractions): MassFractionDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MassFraction unit from an API DTO representation.
+     * @param dtoMassFraction The MassFraction API DTO representation
+     */
+    public static FromDto(dtoMassFraction: MassFractionDto): MassFraction {
+        return new MassFraction(dtoMassFraction.value, dtoMassFraction.unit);
     }
 
     /**

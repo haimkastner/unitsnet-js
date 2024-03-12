@@ -1,3 +1,11 @@
+/** API DTO represents a Jerk */
+export interface JerkDto {
+    /** The value of the Jerk */
+    value: number;
+    /**  The specific unit that the Jerk value is representing */
+    unit: JerkUnits;
+}
+
 /** JerkUnits enumeration */
 export enum JerkUnits {
     /** */
@@ -255,6 +263,25 @@ export class Jerk {
      */
     public static FromMillistandardGravitiesPerSecond(value: number): Jerk {
         return new Jerk(value, JerkUnits.MillistandardGravitiesPerSecond);
+    }
+
+    /**
+     * Create API DTO represent a Jerk unit.
+     * @param holdInUnit The specific Jerk unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: JerkUnits = JerkUnits.MetersPerSecondCubed): JerkDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Jerk unit from an API DTO representation.
+     * @param dtoJerk The Jerk API DTO representation
+     */
+    public static FromDto(dtoJerk: JerkDto): Jerk {
+        return new Jerk(dtoJerk.value, dtoJerk.unit);
     }
 
     /**

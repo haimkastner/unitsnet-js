@@ -1,3 +1,11 @@
+/** API DTO represents a Entropy */
+export interface EntropyDto {
+    /** The value of the Entropy */
+    value: number;
+    /**  The specific unit that the Entropy value is representing */
+    unit: EntropyUnits;
+}
+
 /** EntropyUnits enumeration */
 export enum EntropyUnits {
     /** */
@@ -171,6 +179,25 @@ export class Entropy {
      */
     public static FromKilojoulesPerDegreeCelsius(value: number): Entropy {
         return new Entropy(value, EntropyUnits.KilojoulesPerDegreeCelsius);
+    }
+
+    /**
+     * Create API DTO represent a Entropy unit.
+     * @param holdInUnit The specific Entropy unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: EntropyUnits = EntropyUnits.JoulesPerKelvin): EntropyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Entropy unit from an API DTO representation.
+     * @param dtoEntropy The Entropy API DTO representation
+     */
+    public static FromDto(dtoEntropy: EntropyDto): Entropy {
+        return new Entropy(dtoEntropy.value, dtoEntropy.unit);
     }
 
     /**
