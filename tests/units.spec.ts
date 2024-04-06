@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { describe } from 'mocha';
-import { Angle, AngleUnits, Length, LengthUnits } from '../src';
+import numeral from 'numeral';
+import { Angle, AngleUnits, AritmaticOperation, Length, LengthUnits, setArtimeticFormula, setCompareToFurmula, setEqualsFormula } from '../src';
 
 describe('Unitsnet - tests', () => {
 
@@ -117,6 +118,43 @@ describe('Unitsnet - tests', () => {
         });
     });
 
+    describe('# External additional formulas', () => {
+
+        it(`Should use default JS for operations`, () => {
+            const length1 = Length.FromMeters(0.1);
+            const length2 = Length.FromMeters(0.1);
+            expect(length1.equals(length2)).equal(true);
+        });
+
+        it(`Should use external operations`, () => {
+            const length1 = Length.FromMeters(0.1);
+            const length2 = Length.FromMeters(0.2);
+
+            setEqualsFormula((a, b) => true);
+            expect(length1.equals(length2)).equal(true);
+
+            setCompareToFurmula((a, b) => 1);
+            expect(length1.compareTo(length2)).equal(1);
+
+        });
+
+        it(`Should use external operations when it's false`, () => {
+            const length1 = Length.FromMeters(0.1);
+            const length2 = Length.FromMeters(0.1);
+
+            setEqualsFormula((a, b) => false);
+            expect(length1.equals(length2)).equal(false);
+
+        });
+
+        it(`Should use external operations when it's false`, () => {
+            const length1 = Length.FromMeters(0.1);
+            const length2 = Length.FromMeters(0.1);
+
+            setCompareToFurmula((a, b) => 0);
+            expect(length1.compareTo(length2)).equal(0);
+        });
+    });
 
     describe('# Arithmetics methods', () => {
 
@@ -145,6 +183,59 @@ describe('Unitsnet - tests', () => {
 
         it(`Should pow the valus of the units`, () => {
             expect(length1.pow(length2).Meters).equal(1000);
+        });
+    });
+
+    describe('# External aritmatic formulas', () => {
+
+        it(`Should use default JS for formula`, () => {
+            const length1 = Length.FromMeters(0.1);
+            const length2 = Length.FromMeters(0.2);
+            // The expected behavior for JS defaults for + ... :( 
+            expect(length1.add(length2).Meters).equal(0.30000000000000004);
+        });
+
+        it(`Should use external aritmatic formula`, () => {
+            const length1 = Length.FromMeters(0.1);
+            const length2 = Length.FromMeters(0.2);
+            setArtimeticFormula(AritmaticOperation.Add, (a, b) => 10);
+            expect(length1.add(length2).Meters).equal(10);
+            setArtimeticFormula(AritmaticOperation.Subtract, (a, b) => 10);
+            expect(length1.subtract(length2).Meters).equal(10);
+            setArtimeticFormula(AritmaticOperation.Multiply, (a, b) => 10);
+            expect(length1.multiply(length2).Meters).equal(10);
+            setArtimeticFormula(AritmaticOperation.Divide, (a, b) => 10);
+            expect(length1.divide(length2).Meters).equal(10);
+            setArtimeticFormula(AritmaticOperation.Modulo, (a, b) => 10);
+            expect(length1.modulo(length2).Meters).equal(10);
+            setArtimeticFormula(AritmaticOperation.Pow, (a, b) => 10);
+            expect(length1.pow(length2).Meters).equal(10);
+        });
+
+        it(`Should use external aritmatic formulas when it's 0`, () => {
+            const length1 = Length.FromMeters(0.1);
+            const length2 = Length.FromMeters(0.2);
+            setArtimeticFormula(AritmaticOperation.Add, (a, b) => 0);
+            expect(length1.add(length2).Meters).equal(0);
+            setArtimeticFormula(AritmaticOperation.Subtract, (a, b) => 0);
+            expect(length1.subtract(length2).Meters).equal(0);
+            setArtimeticFormula(AritmaticOperation.Multiply, (a, b) => 0);
+            expect(length1.multiply(length2).Meters).equal(0);
+            setArtimeticFormula(AritmaticOperation.Divide, (a, b) => 0);
+            expect(length1.divide(length2).Meters).equal(0);
+            setArtimeticFormula(AritmaticOperation.Modulo, (a, b) => 0);
+            expect(length1.modulo(length2).Meters).equal(0);
+            setArtimeticFormula(AritmaticOperation.Pow, (a, b) => 0);
+            expect(length1.pow(length2).Meters).equal(0);
+        });
+
+        it(`Should use external numeral library aritmatic formulas`, () => {
+            const lengthA = Length.FromMeters(0.1);
+            const lengthB = Length.FromMeters(0.2);
+            setArtimeticFormula(AritmaticOperation.Add, (valueA: number, valueB: number) => {
+                return numeral(valueA).add(valueB).value() as number;
+            });
+            expect(lengthA.add(lengthB).Meters).equal(0.3);
         });
     });
 });

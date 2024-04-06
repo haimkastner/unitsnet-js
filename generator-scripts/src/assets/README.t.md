@@ -79,6 +79,32 @@ console.log(results3.toString(LengthUnits.Meters)) // 30 m
 console.log(results4.toString(LengthUnits.Meters)) // 3.3333333333333335 m
 console.log(results5.toString(LengthUnits.Meters)) // 1 m
 console.log(results6.toString(LengthUnits.Meters)) // 1000 m
+
+// External arithmetics methods
+
+// As a default, the arithmetic formula uses JavaScript default operations (e.g., +, -, etc.). 
+// However, JavaScript operations use floating-point math, which is not mathematically accurate in some cases. 
+// For instance, operating 0.1 + 0.2 results in 0.30000000000000004 instead of 0.3. 
+// You can read more about this issue at https://stackoverflow.com/q/1458633/8281649. 
+// UnitNet library allows you to replace the arithmetic formulas with your own, better formulas.
+
+// Example of loading https://www.npmjs.com/package/numeral library as the artimatic formula
+import numeral from 'numeral';
+import { Length, setArtimeticFormula, AritmaticOperation } from 'unitsnet-js';
+
+const lengthA = Length.FromMeters(0.1);
+const lengthB = Length.FromMeters(0.2);
+
+// The default formula results
+console.log(lengthA.add(lengthB).Meters); // 0.30000000000000004
+
+setArtimeticFormula(AritmaticOperation.Add, (valueA: number, valueB: number) => {
+    return numeral(valueA).add(valueB).value() as number;
+});
+
+// The numeral formula results
+console.log(lengthA.add(lengthB).Meters); // 0.3
+
 ```
 
 ### Supported units
