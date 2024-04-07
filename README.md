@@ -90,7 +90,7 @@ console.log(results6.toString(LengthUnits.Meters)) // 1000 m
 
 // Example of loading https://www.npmjs.com/package/numeral library as the artimatic formula
 import numeral from 'numeral';
-import { Length, setArtimeticFormula, AritmaticOperation } from 'unitsnet-js';
+import { Length, setArithmeticFormula, ArithmeticOperation } from 'unitsnet-js';
 
 const lengthA = Length.FromMeters(0.1);
 const lengthB = Length.FromMeters(0.2);
@@ -98,7 +98,7 @@ const lengthB = Length.FromMeters(0.2);
 // The default formula results
 console.log(lengthA.add(lengthB).Meters); // 0.30000000000000004
 
-setArtimeticFormula(AritmaticOperation.Add, (valueA: number, valueB: number) => {
+setArithmeticFormula(ArithmeticOperation.Add, (valueA: number, valueB: number) => {
     return numeral(valueA).add(valueB).value() as number;
 });
 

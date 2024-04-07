@@ -1,23 +1,23 @@
-export enum AritmaticOperation {
-    /** An plus artimatic operation (JS default "+") */
+export enum ArithmeticOperation {
+    /** An plus arithmetic operation (JS default "+") */
     Add = 'Add',
-    /** An subtract artimatic operation (JS default "-") */
+    /** An subtract arithmetic operation (JS default "-") */
     Subtract = 'Subtract',
-    /** An multiply artimatic operation (JS default "/") */
+    /** An multiply arithmetic operation (JS default "/") */
     Multiply = 'Multiply',
-    /** An devide artimatic operation (JS default "*") */
+    /** An devide arithmetic operation (JS default "*") */
     Divide = 'Divide',
-    /** An modulo artimatic operation (JS default "%") */
+    /** An modulo arithmetic operation (JS default "%") */
     Modulo = 'Modulo',
-    /** An power artimatic operation (JS default "**") */
+    /** An power arithmetic operation (JS default "**") */
     Pow = 'Pow',
 }
 
 /**
- * An binary artimatic formula.
+ * An binary arithmetic formula.
  * e.g. (valueA, ValueB) => { valueA + valueB } 
  */
-export type AritmaticFormula = (valueA: number, valueB: number) => number;
+export type ArithmeticFormula = (valueA: number, valueB: number) => number;
 
 /**
  * An binary copmration values formula.
@@ -30,18 +30,18 @@ export type CompareToFormula = (valueA: number, valueB: number) => number;
  */
 export type EqualsFormula = (valueA: number, valueB: number) => boolean;
 
-const externalAritmaticFurmulas: { [operation in AritmaticOperation]?: AritmaticFormula } = {};
-let externalCompareToFurmula: AritmaticFormula | undefined;
+const externalArithmeticFurmulas: { [operation in ArithmeticOperation]?: ArithmeticFormula } = {};
+let externalCompareToFurmula: ArithmeticFormula | undefined;
 let externalEqualsFurmula: EqualsFormula | undefined;
 
 /**
- * Set aritmatic formula to be used while calling this operation on two units (e.g. Length + Length) 
+ * Set arithmetic formula to be used while calling this operation on two units (e.g. Length + Length) 
  * Instead of the JS default operation (+, -, * etc.)
- * @param aritmaticOperation The formula's operation 
- * @param aritmaticFormula The formula to used.
+ * @param arithmeticOperation The formula's operation 
+ * @param arithmeticFormula The formula to used.
  */
-export function setArtimeticFormula(aritmaticOperation: AritmaticOperation, aritmaticFormula: AritmaticFormula) {
-    externalAritmaticFurmulas[aritmaticOperation] = aritmaticFormula;
+export function setArithmeticFormula(arithmeticOperation: ArithmeticOperation, arithmeticFormula: ArithmeticFormula) {
+    externalArithmeticFurmulas[arithmeticOperation] = arithmeticFormula;
 }
 
 /**
@@ -78,26 +78,26 @@ export abstract class BaseUnit {
     }
 
     protected internalAdd(valueA: number, valueB: number): number {
-        return externalAritmaticFurmulas.Add?.(valueA, valueB) ?? (valueA + valueB)
+        return externalArithmeticFurmulas.Add?.(valueA, valueB) ?? (valueA + valueB)
     }
 
     protected internalSubtract(valueA: number, valueB: number): number {
-        return externalAritmaticFurmulas.Subtract?.(valueA, valueB) ?? (valueA - valueB)
+        return externalArithmeticFurmulas.Subtract?.(valueA, valueB) ?? (valueA - valueB)
     }
 
     protected internalMultiply(valueA: number, valueB: number): number {
-        return externalAritmaticFurmulas.Multiply?.(valueA, valueB) ?? (valueA * valueB)
+        return externalArithmeticFurmulas.Multiply?.(valueA, valueB) ?? (valueA * valueB)
     }
 
     protected internalDivide(valueA: number, valueB: number): number {
-        return externalAritmaticFurmulas.Divide?.(valueA, valueB) ?? (valueA / valueB)
+        return externalArithmeticFurmulas.Divide?.(valueA, valueB) ?? (valueA / valueB)
     }
 
     protected internalModulo(valueA: number, valueB: number): number {
-        return externalAritmaticFurmulas.Modulo?.(valueA, valueB) ?? (valueA % valueB)
+        return externalArithmeticFurmulas.Modulo?.(valueA, valueB) ?? (valueA % valueB)
     }
 
     protected internalPow(valueA: number, valueB: number): number {
-        return externalAritmaticFurmulas.Pow?.(valueA, valueB) ?? (valueA ** valueB)
+        return externalArithmeticFurmulas.Pow?.(valueA, valueB) ?? (valueA ** valueB)
     }
 }
