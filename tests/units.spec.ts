@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { describe } from 'mocha';
 import numeral from 'numeral';
-import { Angle, AngleUnits, AritmaticOperation, Length, LengthUnits, setArtimeticFormula, setCompareToFurmula, setEqualsFormula } from '../src';
+import { Angle, AngleUnits, ArithmeticOperation, Length, LengthUnits, setArithmeticFormula, setCompareToFurmula, setEqualsFormula } from '../src';
 
 describe('Unitsnet - tests', () => {
 
@@ -198,41 +198,41 @@ describe('Unitsnet - tests', () => {
         it(`Should use external aritmatic formula`, () => {
             const length1 = Length.FromMeters(0.1);
             const length2 = Length.FromMeters(0.2);
-            setArtimeticFormula(AritmaticOperation.Add, (a, b) => 10);
+            setArithmeticFormula(ArithmeticOperation.Add, (a, b) => 10);
             expect(length1.add(length2).Meters).equal(10);
-            setArtimeticFormula(AritmaticOperation.Subtract, (a, b) => 10);
+            setArithmeticFormula(ArithmeticOperation.Subtract, (a, b) => 10);
             expect(length1.subtract(length2).Meters).equal(10);
-            setArtimeticFormula(AritmaticOperation.Multiply, (a, b) => 10);
+            setArithmeticFormula(ArithmeticOperation.Multiply, (a, b) => 10);
             expect(length1.multiply(length2).Meters).equal(10);
-            setArtimeticFormula(AritmaticOperation.Divide, (a, b) => 10);
+            setArithmeticFormula(ArithmeticOperation.Divide, (a, b) => 10);
             expect(length1.divide(length2).Meters).equal(10);
-            setArtimeticFormula(AritmaticOperation.Modulo, (a, b) => 10);
+            setArithmeticFormula(ArithmeticOperation.Modulo, (a, b) => 10);
             expect(length1.modulo(length2).Meters).equal(10);
-            setArtimeticFormula(AritmaticOperation.Pow, (a, b) => 10);
+            setArithmeticFormula(ArithmeticOperation.Pow, (a, b) => 10);
             expect(length1.pow(length2).Meters).equal(10);
         });
 
         it(`Should use external aritmatic formulas when it's 0`, () => {
             const length1 = Length.FromMeters(0.1);
             const length2 = Length.FromMeters(0.2);
-            setArtimeticFormula(AritmaticOperation.Add, (a, b) => 0);
+            setArithmeticFormula(ArithmeticOperation.Add, (a, b) => 0);
             expect(length1.add(length2).Meters).equal(0);
-            setArtimeticFormula(AritmaticOperation.Subtract, (a, b) => 0);
+            setArithmeticFormula(ArithmeticOperation.Subtract, (a, b) => 0);
             expect(length1.subtract(length2).Meters).equal(0);
-            setArtimeticFormula(AritmaticOperation.Multiply, (a, b) => 0);
+            setArithmeticFormula(ArithmeticOperation.Multiply, (a, b) => 0);
             expect(length1.multiply(length2).Meters).equal(0);
-            setArtimeticFormula(AritmaticOperation.Divide, (a, b) => 0);
+            setArithmeticFormula(ArithmeticOperation.Divide, (a, b) => 0);
             expect(length1.divide(length2).Meters).equal(0);
-            setArtimeticFormula(AritmaticOperation.Modulo, (a, b) => 0);
+            setArithmeticFormula(ArithmeticOperation.Modulo, (a, b) => 0);
             expect(length1.modulo(length2).Meters).equal(0);
-            setArtimeticFormula(AritmaticOperation.Pow, (a, b) => 0);
+            setArithmeticFormula(ArithmeticOperation.Pow, (a, b) => 0);
             expect(length1.pow(length2).Meters).equal(0);
         });
 
         it(`Should use external numeral library aritmatic formulas`, () => {
             const lengthA = Length.FromMeters(0.1);
             const lengthB = Length.FromMeters(0.2);
-            setArtimeticFormula(AritmaticOperation.Add, (valueA: number, valueB: number) => {
+            setArithmeticFormula(ArithmeticOperation.Add, (valueA: number, valueB: number) => {
                 return numeral(valueA).add(valueB).value() as number;
             });
             expect(lengthA.add(lengthB).Meters).equal(0.3);

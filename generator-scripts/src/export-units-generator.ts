@@ -28,11 +28,11 @@ export function generateUnitsModuleExport(project: Project, unitsDestinationDire
         kind: StructureKind.ExportDeclaration,
         moduleSpecifier: `./base-unit`,
         namedExports: [
-            'AritmaticOperation',
-            'AritmaticFormula',
+            'ArithmeticOperation',
+            'ArithmeticFormula',
             'CompareToFormula',
             'EqualsFormula',
-            'setArtimeticFormula',
+            'setArithmeticFormula',
             'setEqualsFormula',
             'setCompareToFurmula',
         ]
