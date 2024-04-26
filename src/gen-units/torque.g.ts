@@ -716,62 +716,63 @@ export class Torque extends BaseUnit {
      * Note! the default format for Torque is NewtonMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Torque.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Torque.
      */
-    public toString(unit: TorqueUnits = TorqueUnits.NewtonMeters): string {
+    public toString(unit: TorqueUnits = TorqueUnits.NewtonMeters, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case TorqueUnits.NewtonMillimeters:
-                return this.NewtonMillimeters + ` N·mm`;
+                return super.truncateFractionDigits(this.NewtonMillimeters, fractionalDigits) + ` N·mm`;
             case TorqueUnits.NewtonCentimeters:
-                return this.NewtonCentimeters + ` N·cm`;
+                return super.truncateFractionDigits(this.NewtonCentimeters, fractionalDigits) + ` N·cm`;
             case TorqueUnits.NewtonMeters:
-                return this.NewtonMeters + ` N·m`;
+                return super.truncateFractionDigits(this.NewtonMeters, fractionalDigits) + ` N·m`;
             case TorqueUnits.PoundalFeet:
-                return this.PoundalFeet + ` pdl·ft`;
+                return super.truncateFractionDigits(this.PoundalFeet, fractionalDigits) + ` pdl·ft`;
             case TorqueUnits.PoundForceInches:
-                return this.PoundForceInches + ` lbf·in`;
+                return super.truncateFractionDigits(this.PoundForceInches, fractionalDigits) + ` lbf·in`;
             case TorqueUnits.PoundForceFeet:
-                return this.PoundForceFeet + ` lbf·ft`;
+                return super.truncateFractionDigits(this.PoundForceFeet, fractionalDigits) + ` lbf·ft`;
             case TorqueUnits.GramForceMillimeters:
-                return this.GramForceMillimeters + ` gf·mm`;
+                return super.truncateFractionDigits(this.GramForceMillimeters, fractionalDigits) + ` gf·mm`;
             case TorqueUnits.GramForceCentimeters:
-                return this.GramForceCentimeters + ` gf·cm`;
+                return super.truncateFractionDigits(this.GramForceCentimeters, fractionalDigits) + ` gf·cm`;
             case TorqueUnits.GramForceMeters:
-                return this.GramForceMeters + ` gf·m`;
+                return super.truncateFractionDigits(this.GramForceMeters, fractionalDigits) + ` gf·m`;
             case TorqueUnits.KilogramForceMillimeters:
-                return this.KilogramForceMillimeters + ` kgf·mm`;
+                return super.truncateFractionDigits(this.KilogramForceMillimeters, fractionalDigits) + ` kgf·mm`;
             case TorqueUnits.KilogramForceCentimeters:
-                return this.KilogramForceCentimeters + ` kgf·cm`;
+                return super.truncateFractionDigits(this.KilogramForceCentimeters, fractionalDigits) + ` kgf·cm`;
             case TorqueUnits.KilogramForceMeters:
-                return this.KilogramForceMeters + ` kgf·m`;
+                return super.truncateFractionDigits(this.KilogramForceMeters, fractionalDigits) + ` kgf·m`;
             case TorqueUnits.TonneForceMillimeters:
-                return this.TonneForceMillimeters + ` tf·mm`;
+                return super.truncateFractionDigits(this.TonneForceMillimeters, fractionalDigits) + ` tf·mm`;
             case TorqueUnits.TonneForceCentimeters:
-                return this.TonneForceCentimeters + ` tf·cm`;
+                return super.truncateFractionDigits(this.TonneForceCentimeters, fractionalDigits) + ` tf·cm`;
             case TorqueUnits.TonneForceMeters:
-                return this.TonneForceMeters + ` tf·m`;
+                return super.truncateFractionDigits(this.TonneForceMeters, fractionalDigits) + ` tf·m`;
             case TorqueUnits.KilonewtonMillimeters:
-                return this.KilonewtonMillimeters + ` kN·mm`;
+                return super.truncateFractionDigits(this.KilonewtonMillimeters, fractionalDigits) + ` kN·mm`;
             case TorqueUnits.MeganewtonMillimeters:
-                return this.MeganewtonMillimeters + ` MN·mm`;
+                return super.truncateFractionDigits(this.MeganewtonMillimeters, fractionalDigits) + ` MN·mm`;
             case TorqueUnits.KilonewtonCentimeters:
-                return this.KilonewtonCentimeters + ` kN·cm`;
+                return super.truncateFractionDigits(this.KilonewtonCentimeters, fractionalDigits) + ` kN·cm`;
             case TorqueUnits.MeganewtonCentimeters:
-                return this.MeganewtonCentimeters + ` MN·cm`;
+                return super.truncateFractionDigits(this.MeganewtonCentimeters, fractionalDigits) + ` MN·cm`;
             case TorqueUnits.KilonewtonMeters:
-                return this.KilonewtonMeters + ` kN·m`;
+                return super.truncateFractionDigits(this.KilonewtonMeters, fractionalDigits) + ` kN·m`;
             case TorqueUnits.MeganewtonMeters:
-                return this.MeganewtonMeters + ` MN·m`;
+                return super.truncateFractionDigits(this.MeganewtonMeters, fractionalDigits) + ` MN·m`;
             case TorqueUnits.KilopoundForceInches:
-                return this.KilopoundForceInches + ` klbf·in`;
+                return super.truncateFractionDigits(this.KilopoundForceInches, fractionalDigits) + ` klbf·in`;
             case TorqueUnits.MegapoundForceInches:
-                return this.MegapoundForceInches + ` Mlbf·in`;
+                return super.truncateFractionDigits(this.MegapoundForceInches, fractionalDigits) + ` Mlbf·in`;
             case TorqueUnits.KilopoundForceFeet:
-                return this.KilopoundForceFeet + ` klbf·ft`;
+                return super.truncateFractionDigits(this.KilopoundForceFeet, fractionalDigits) + ` klbf·ft`;
             case TorqueUnits.MegapoundForceFeet:
-                return this.MegapoundForceFeet + ` Mlbf·ft`;
+                return super.truncateFractionDigits(this.MegapoundForceFeet, fractionalDigits) + ` Mlbf·ft`;
         default:
             break;
         }

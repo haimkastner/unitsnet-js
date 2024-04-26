@@ -144,18 +144,19 @@ export class ReactiveEnergy extends BaseUnit {
      * Note! the default format for ReactiveEnergy is VoltampereReactiveHours.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ReactiveEnergy.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ReactiveEnergy.
      */
-    public toString(unit: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours): string {
+    public toString(unit: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ReactiveEnergyUnits.VoltampereReactiveHours:
-                return this.VoltampereReactiveHours + ` varh`;
+                return super.truncateFractionDigits(this.VoltampereReactiveHours, fractionalDigits) + ` varh`;
             case ReactiveEnergyUnits.KilovoltampereReactiveHours:
-                return this.KilovoltampereReactiveHours + ` kvarh`;
+                return super.truncateFractionDigits(this.KilovoltampereReactiveHours, fractionalDigits) + ` kvarh`;
             case ReactiveEnergyUnits.MegavoltampereReactiveHours:
-                return this.MegavoltampereReactiveHours + ` Mvarh`;
+                return super.truncateFractionDigits(this.MegavoltampereReactiveHours, fractionalDigits) + ` Mvarh`;
         default:
             break;
         }

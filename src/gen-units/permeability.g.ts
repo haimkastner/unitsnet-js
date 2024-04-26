@@ -92,14 +92,15 @@ export class Permeability extends BaseUnit {
      * Note! the default format for Permeability is HenriesPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Permeability.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Permeability.
      */
-    public toString(unit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter): string {
+    public toString(unit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case PermeabilityUnits.HenriesPerMeter:
-                return this.HenriesPerMeter + ` H/m`;
+                return super.truncateFractionDigits(this.HenriesPerMeter, fractionalDigits) + ` H/m`;
         default:
             break;
         }

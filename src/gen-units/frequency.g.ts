@@ -404,38 +404,39 @@ export class Frequency extends BaseUnit {
      * Note! the default format for Frequency is Hertz.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Frequency.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Frequency.
      */
-    public toString(unit: FrequencyUnits = FrequencyUnits.Hertz): string {
+    public toString(unit: FrequencyUnits = FrequencyUnits.Hertz, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case FrequencyUnits.Hertz:
-                return this.Hertz + ` Hz`;
+                return super.truncateFractionDigits(this.Hertz, fractionalDigits) + ` Hz`;
             case FrequencyUnits.RadiansPerSecond:
-                return this.RadiansPerSecond + ` rad/s`;
+                return super.truncateFractionDigits(this.RadiansPerSecond, fractionalDigits) + ` rad/s`;
             case FrequencyUnits.CyclesPerMinute:
-                return this.CyclesPerMinute + ` cpm`;
+                return super.truncateFractionDigits(this.CyclesPerMinute, fractionalDigits) + ` cpm`;
             case FrequencyUnits.CyclesPerHour:
-                return this.CyclesPerHour + ` cph`;
+                return super.truncateFractionDigits(this.CyclesPerHour, fractionalDigits) + ` cph`;
             case FrequencyUnits.BeatsPerMinute:
-                return this.BeatsPerMinute + ` bpm`;
+                return super.truncateFractionDigits(this.BeatsPerMinute, fractionalDigits) + ` bpm`;
             case FrequencyUnits.PerSecond:
-                return this.PerSecond + ` s⁻¹`;
+                return super.truncateFractionDigits(this.PerSecond, fractionalDigits) + ` s⁻¹`;
             case FrequencyUnits.BUnits:
-                return this.BUnits + ` B Units`;
+                return super.truncateFractionDigits(this.BUnits, fractionalDigits) + ` B Units`;
             case FrequencyUnits.Microhertz:
-                return this.Microhertz + ` μHz`;
+                return super.truncateFractionDigits(this.Microhertz, fractionalDigits) + ` μHz`;
             case FrequencyUnits.Millihertz:
-                return this.Millihertz + ` mHz`;
+                return super.truncateFractionDigits(this.Millihertz, fractionalDigits) + ` mHz`;
             case FrequencyUnits.Kilohertz:
-                return this.Kilohertz + ` kHz`;
+                return super.truncateFractionDigits(this.Kilohertz, fractionalDigits) + ` kHz`;
             case FrequencyUnits.Megahertz:
-                return this.Megahertz + ` MHz`;
+                return super.truncateFractionDigits(this.Megahertz, fractionalDigits) + ` MHz`;
             case FrequencyUnits.Gigahertz:
-                return this.Gigahertz + ` GHz`;
+                return super.truncateFractionDigits(this.Gigahertz, fractionalDigits) + ` GHz`;
             case FrequencyUnits.Terahertz:
-                return this.Terahertz + ` THz`;
+                return super.truncateFractionDigits(this.Terahertz, fractionalDigits) + ` THz`;
         default:
             break;
         }

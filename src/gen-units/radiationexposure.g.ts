@@ -274,28 +274,29 @@ export class RadiationExposure extends BaseUnit {
      * Note! the default format for RadiationExposure is CoulombsPerKilogram.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RadiationExposure.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the RadiationExposure.
      */
-    public toString(unit: RadiationExposureUnits = RadiationExposureUnits.CoulombsPerKilogram): string {
+    public toString(unit: RadiationExposureUnits = RadiationExposureUnits.CoulombsPerKilogram, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case RadiationExposureUnits.CoulombsPerKilogram:
-                return this.CoulombsPerKilogram + ` C/kg`;
+                return super.truncateFractionDigits(this.CoulombsPerKilogram, fractionalDigits) + ` C/kg`;
             case RadiationExposureUnits.Roentgens:
-                return this.Roentgens + ` R`;
+                return super.truncateFractionDigits(this.Roentgens, fractionalDigits) + ` R`;
             case RadiationExposureUnits.PicocoulombsPerKilogram:
-                return this.PicocoulombsPerKilogram + ` pC/kg`;
+                return super.truncateFractionDigits(this.PicocoulombsPerKilogram, fractionalDigits) + ` pC/kg`;
             case RadiationExposureUnits.NanocoulombsPerKilogram:
-                return this.NanocoulombsPerKilogram + ` nC/kg`;
+                return super.truncateFractionDigits(this.NanocoulombsPerKilogram, fractionalDigits) + ` nC/kg`;
             case RadiationExposureUnits.MicrocoulombsPerKilogram:
-                return this.MicrocoulombsPerKilogram + ` μC/kg`;
+                return super.truncateFractionDigits(this.MicrocoulombsPerKilogram, fractionalDigits) + ` μC/kg`;
             case RadiationExposureUnits.MillicoulombsPerKilogram:
-                return this.MillicoulombsPerKilogram + ` mC/kg`;
+                return super.truncateFractionDigits(this.MillicoulombsPerKilogram, fractionalDigits) + ` mC/kg`;
             case RadiationExposureUnits.Microroentgens:
-                return this.Microroentgens + ` μR`;
+                return super.truncateFractionDigits(this.Microroentgens, fractionalDigits) + ` μR`;
             case RadiationExposureUnits.Milliroentgens:
-                return this.Milliroentgens + ` mR`;
+                return super.truncateFractionDigits(this.Milliroentgens, fractionalDigits) + ` mR`;
         default:
             break;
         }

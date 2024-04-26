@@ -430,40 +430,41 @@ export class BitRate extends BaseUnit {
      * Note! the default format for BitRate is BitsPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the BitRate.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the BitRate.
      */
-    public toString(unit: BitRateUnits = BitRateUnits.BitsPerSecond): string {
+    public toString(unit: BitRateUnits = BitRateUnits.BitsPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case BitRateUnits.BitsPerSecond:
-                return this.BitsPerSecond + ` bit/s`;
+                return super.truncateFractionDigits(this.BitsPerSecond, fractionalDigits) + ` bit/s`;
             case BitRateUnits.BytesPerSecond:
-                return this.BytesPerSecond + ` B/s`;
+                return super.truncateFractionDigits(this.BytesPerSecond, fractionalDigits) + ` B/s`;
             case BitRateUnits.KilobitsPerSecond:
-                return this.KilobitsPerSecond + ` kbit/s`;
+                return super.truncateFractionDigits(this.KilobitsPerSecond, fractionalDigits) + ` kbit/s`;
             case BitRateUnits.MegabitsPerSecond:
-                return this.MegabitsPerSecond + ` Mbit/s`;
+                return super.truncateFractionDigits(this.MegabitsPerSecond, fractionalDigits) + ` Mbit/s`;
             case BitRateUnits.GigabitsPerSecond:
-                return this.GigabitsPerSecond + ` Gbit/s`;
+                return super.truncateFractionDigits(this.GigabitsPerSecond, fractionalDigits) + ` Gbit/s`;
             case BitRateUnits.TerabitsPerSecond:
-                return this.TerabitsPerSecond + ` Tbit/s`;
+                return super.truncateFractionDigits(this.TerabitsPerSecond, fractionalDigits) + ` Tbit/s`;
             case BitRateUnits.PetabitsPerSecond:
-                return this.PetabitsPerSecond + ` Pbit/s`;
+                return super.truncateFractionDigits(this.PetabitsPerSecond, fractionalDigits) + ` Pbit/s`;
             case BitRateUnits.ExabitsPerSecond:
-                return this.ExabitsPerSecond + ` Ebit/s`;
+                return super.truncateFractionDigits(this.ExabitsPerSecond, fractionalDigits) + ` Ebit/s`;
             case BitRateUnits.KilobytesPerSecond:
-                return this.KilobytesPerSecond + ` kB/s`;
+                return super.truncateFractionDigits(this.KilobytesPerSecond, fractionalDigits) + ` kB/s`;
             case BitRateUnits.MegabytesPerSecond:
-                return this.MegabytesPerSecond + ` MB/s`;
+                return super.truncateFractionDigits(this.MegabytesPerSecond, fractionalDigits) + ` MB/s`;
             case BitRateUnits.GigabytesPerSecond:
-                return this.GigabytesPerSecond + ` GB/s`;
+                return super.truncateFractionDigits(this.GigabytesPerSecond, fractionalDigits) + ` GB/s`;
             case BitRateUnits.TerabytesPerSecond:
-                return this.TerabytesPerSecond + ` TB/s`;
+                return super.truncateFractionDigits(this.TerabytesPerSecond, fractionalDigits) + ` TB/s`;
             case BitRateUnits.PetabytesPerSecond:
-                return this.PetabytesPerSecond + ` PB/s`;
+                return super.truncateFractionDigits(this.PetabytesPerSecond, fractionalDigits) + ` PB/s`;
             case BitRateUnits.ExabytesPerSecond:
-                return this.ExabytesPerSecond + ` EB/s`;
+                return super.truncateFractionDigits(this.ExabytesPerSecond, fractionalDigits) + ` EB/s`;
         default:
             break;
         }

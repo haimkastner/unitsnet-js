@@ -300,30 +300,31 @@ export class StandardVolumeFlow extends BaseUnit {
      * Note! the default format for StandardVolumeFlow is StandardCubicMetersPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the StandardVolumeFlow.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the StandardVolumeFlow.
      */
-    public toString(unit: StandardVolumeFlowUnits = StandardVolumeFlowUnits.StandardCubicMetersPerSecond): string {
+    public toString(unit: StandardVolumeFlowUnits = StandardVolumeFlowUnits.StandardCubicMetersPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case StandardVolumeFlowUnits.StandardCubicMetersPerSecond:
-                return this.StandardCubicMetersPerSecond + ` Sm³/s`;
+                return super.truncateFractionDigits(this.StandardCubicMetersPerSecond, fractionalDigits) + ` Sm³/s`;
             case StandardVolumeFlowUnits.StandardCubicMetersPerMinute:
-                return this.StandardCubicMetersPerMinute + ` Sm³/min`;
+                return super.truncateFractionDigits(this.StandardCubicMetersPerMinute, fractionalDigits) + ` Sm³/min`;
             case StandardVolumeFlowUnits.StandardCubicMetersPerHour:
-                return this.StandardCubicMetersPerHour + ` Sm³/h`;
+                return super.truncateFractionDigits(this.StandardCubicMetersPerHour, fractionalDigits) + ` Sm³/h`;
             case StandardVolumeFlowUnits.StandardCubicMetersPerDay:
-                return this.StandardCubicMetersPerDay + ` Sm³/d`;
+                return super.truncateFractionDigits(this.StandardCubicMetersPerDay, fractionalDigits) + ` Sm³/d`;
             case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute:
-                return this.StandardCubicCentimetersPerMinute + ` sccm`;
+                return super.truncateFractionDigits(this.StandardCubicCentimetersPerMinute, fractionalDigits) + ` sccm`;
             case StandardVolumeFlowUnits.StandardLitersPerMinute:
-                return this.StandardLitersPerMinute + ` slm`;
+                return super.truncateFractionDigits(this.StandardLitersPerMinute, fractionalDigits) + ` slm`;
             case StandardVolumeFlowUnits.StandardCubicFeetPerSecond:
-                return this.StandardCubicFeetPerSecond + ` Sft³/s`;
+                return super.truncateFractionDigits(this.StandardCubicFeetPerSecond, fractionalDigits) + ` Sft³/s`;
             case StandardVolumeFlowUnits.StandardCubicFeetPerMinute:
-                return this.StandardCubicFeetPerMinute + ` scfm`;
+                return super.truncateFractionDigits(this.StandardCubicFeetPerMinute, fractionalDigits) + ` scfm`;
             case StandardVolumeFlowUnits.StandardCubicFeetPerHour:
-                return this.StandardCubicFeetPerHour + ` scfh`;
+                return super.truncateFractionDigits(this.StandardCubicFeetPerHour, fractionalDigits) + ` scfh`;
         default:
             break;
         }

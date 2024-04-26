@@ -1210,100 +1210,101 @@ export class PowerDensity extends BaseUnit {
      * Note! the default format for PowerDensity is WattsPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the PowerDensity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the PowerDensity.
      */
-    public toString(unit: PowerDensityUnits = PowerDensityUnits.WattsPerCubicMeter): string {
+    public toString(unit: PowerDensityUnits = PowerDensityUnits.WattsPerCubicMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case PowerDensityUnits.WattsPerCubicMeter:
-                return this.WattsPerCubicMeter + ` W/m³`;
+                return super.truncateFractionDigits(this.WattsPerCubicMeter, fractionalDigits) + ` W/m³`;
             case PowerDensityUnits.WattsPerCubicInch:
-                return this.WattsPerCubicInch + ` W/in³`;
+                return super.truncateFractionDigits(this.WattsPerCubicInch, fractionalDigits) + ` W/in³`;
             case PowerDensityUnits.WattsPerCubicFoot:
-                return this.WattsPerCubicFoot + ` W/ft³`;
+                return super.truncateFractionDigits(this.WattsPerCubicFoot, fractionalDigits) + ` W/ft³`;
             case PowerDensityUnits.WattsPerLiter:
-                return this.WattsPerLiter + ` W/l`;
+                return super.truncateFractionDigits(this.WattsPerLiter, fractionalDigits) + ` W/l`;
             case PowerDensityUnits.PicowattsPerCubicMeter:
-                return this.PicowattsPerCubicMeter + ` pW/m³`;
+                return super.truncateFractionDigits(this.PicowattsPerCubicMeter, fractionalDigits) + ` pW/m³`;
             case PowerDensityUnits.NanowattsPerCubicMeter:
-                return this.NanowattsPerCubicMeter + ` nW/m³`;
+                return super.truncateFractionDigits(this.NanowattsPerCubicMeter, fractionalDigits) + ` nW/m³`;
             case PowerDensityUnits.MicrowattsPerCubicMeter:
-                return this.MicrowattsPerCubicMeter + ` μW/m³`;
+                return super.truncateFractionDigits(this.MicrowattsPerCubicMeter, fractionalDigits) + ` μW/m³`;
             case PowerDensityUnits.MilliwattsPerCubicMeter:
-                return this.MilliwattsPerCubicMeter + ` mW/m³`;
+                return super.truncateFractionDigits(this.MilliwattsPerCubicMeter, fractionalDigits) + ` mW/m³`;
             case PowerDensityUnits.DeciwattsPerCubicMeter:
-                return this.DeciwattsPerCubicMeter + ` dW/m³`;
+                return super.truncateFractionDigits(this.DeciwattsPerCubicMeter, fractionalDigits) + ` dW/m³`;
             case PowerDensityUnits.DecawattsPerCubicMeter:
-                return this.DecawattsPerCubicMeter + ` daW/m³`;
+                return super.truncateFractionDigits(this.DecawattsPerCubicMeter, fractionalDigits) + ` daW/m³`;
             case PowerDensityUnits.KilowattsPerCubicMeter:
-                return this.KilowattsPerCubicMeter + ` kW/m³`;
+                return super.truncateFractionDigits(this.KilowattsPerCubicMeter, fractionalDigits) + ` kW/m³`;
             case PowerDensityUnits.MegawattsPerCubicMeter:
-                return this.MegawattsPerCubicMeter + ` MW/m³`;
+                return super.truncateFractionDigits(this.MegawattsPerCubicMeter, fractionalDigits) + ` MW/m³`;
             case PowerDensityUnits.GigawattsPerCubicMeter:
-                return this.GigawattsPerCubicMeter + ` GW/m³`;
+                return super.truncateFractionDigits(this.GigawattsPerCubicMeter, fractionalDigits) + ` GW/m³`;
             case PowerDensityUnits.TerawattsPerCubicMeter:
-                return this.TerawattsPerCubicMeter + ` TW/m³`;
+                return super.truncateFractionDigits(this.TerawattsPerCubicMeter, fractionalDigits) + ` TW/m³`;
             case PowerDensityUnits.PicowattsPerCubicInch:
-                return this.PicowattsPerCubicInch + ` pW/in³`;
+                return super.truncateFractionDigits(this.PicowattsPerCubicInch, fractionalDigits) + ` pW/in³`;
             case PowerDensityUnits.NanowattsPerCubicInch:
-                return this.NanowattsPerCubicInch + ` nW/in³`;
+                return super.truncateFractionDigits(this.NanowattsPerCubicInch, fractionalDigits) + ` nW/in³`;
             case PowerDensityUnits.MicrowattsPerCubicInch:
-                return this.MicrowattsPerCubicInch + ` μW/in³`;
+                return super.truncateFractionDigits(this.MicrowattsPerCubicInch, fractionalDigits) + ` μW/in³`;
             case PowerDensityUnits.MilliwattsPerCubicInch:
-                return this.MilliwattsPerCubicInch + ` mW/in³`;
+                return super.truncateFractionDigits(this.MilliwattsPerCubicInch, fractionalDigits) + ` mW/in³`;
             case PowerDensityUnits.DeciwattsPerCubicInch:
-                return this.DeciwattsPerCubicInch + ` dW/in³`;
+                return super.truncateFractionDigits(this.DeciwattsPerCubicInch, fractionalDigits) + ` dW/in³`;
             case PowerDensityUnits.DecawattsPerCubicInch:
-                return this.DecawattsPerCubicInch + ` daW/in³`;
+                return super.truncateFractionDigits(this.DecawattsPerCubicInch, fractionalDigits) + ` daW/in³`;
             case PowerDensityUnits.KilowattsPerCubicInch:
-                return this.KilowattsPerCubicInch + ` kW/in³`;
+                return super.truncateFractionDigits(this.KilowattsPerCubicInch, fractionalDigits) + ` kW/in³`;
             case PowerDensityUnits.MegawattsPerCubicInch:
-                return this.MegawattsPerCubicInch + ` MW/in³`;
+                return super.truncateFractionDigits(this.MegawattsPerCubicInch, fractionalDigits) + ` MW/in³`;
             case PowerDensityUnits.GigawattsPerCubicInch:
-                return this.GigawattsPerCubicInch + ` GW/in³`;
+                return super.truncateFractionDigits(this.GigawattsPerCubicInch, fractionalDigits) + ` GW/in³`;
             case PowerDensityUnits.TerawattsPerCubicInch:
-                return this.TerawattsPerCubicInch + ` TW/in³`;
+                return super.truncateFractionDigits(this.TerawattsPerCubicInch, fractionalDigits) + ` TW/in³`;
             case PowerDensityUnits.PicowattsPerCubicFoot:
-                return this.PicowattsPerCubicFoot + ` pW/ft³`;
+                return super.truncateFractionDigits(this.PicowattsPerCubicFoot, fractionalDigits) + ` pW/ft³`;
             case PowerDensityUnits.NanowattsPerCubicFoot:
-                return this.NanowattsPerCubicFoot + ` nW/ft³`;
+                return super.truncateFractionDigits(this.NanowattsPerCubicFoot, fractionalDigits) + ` nW/ft³`;
             case PowerDensityUnits.MicrowattsPerCubicFoot:
-                return this.MicrowattsPerCubicFoot + ` μW/ft³`;
+                return super.truncateFractionDigits(this.MicrowattsPerCubicFoot, fractionalDigits) + ` μW/ft³`;
             case PowerDensityUnits.MilliwattsPerCubicFoot:
-                return this.MilliwattsPerCubicFoot + ` mW/ft³`;
+                return super.truncateFractionDigits(this.MilliwattsPerCubicFoot, fractionalDigits) + ` mW/ft³`;
             case PowerDensityUnits.DeciwattsPerCubicFoot:
-                return this.DeciwattsPerCubicFoot + ` dW/ft³`;
+                return super.truncateFractionDigits(this.DeciwattsPerCubicFoot, fractionalDigits) + ` dW/ft³`;
             case PowerDensityUnits.DecawattsPerCubicFoot:
-                return this.DecawattsPerCubicFoot + ` daW/ft³`;
+                return super.truncateFractionDigits(this.DecawattsPerCubicFoot, fractionalDigits) + ` daW/ft³`;
             case PowerDensityUnits.KilowattsPerCubicFoot:
-                return this.KilowattsPerCubicFoot + ` kW/ft³`;
+                return super.truncateFractionDigits(this.KilowattsPerCubicFoot, fractionalDigits) + ` kW/ft³`;
             case PowerDensityUnits.MegawattsPerCubicFoot:
-                return this.MegawattsPerCubicFoot + ` MW/ft³`;
+                return super.truncateFractionDigits(this.MegawattsPerCubicFoot, fractionalDigits) + ` MW/ft³`;
             case PowerDensityUnits.GigawattsPerCubicFoot:
-                return this.GigawattsPerCubicFoot + ` GW/ft³`;
+                return super.truncateFractionDigits(this.GigawattsPerCubicFoot, fractionalDigits) + ` GW/ft³`;
             case PowerDensityUnits.TerawattsPerCubicFoot:
-                return this.TerawattsPerCubicFoot + ` TW/ft³`;
+                return super.truncateFractionDigits(this.TerawattsPerCubicFoot, fractionalDigits) + ` TW/ft³`;
             case PowerDensityUnits.PicowattsPerLiter:
-                return this.PicowattsPerLiter + ` pW/l`;
+                return super.truncateFractionDigits(this.PicowattsPerLiter, fractionalDigits) + ` pW/l`;
             case PowerDensityUnits.NanowattsPerLiter:
-                return this.NanowattsPerLiter + ` nW/l`;
+                return super.truncateFractionDigits(this.NanowattsPerLiter, fractionalDigits) + ` nW/l`;
             case PowerDensityUnits.MicrowattsPerLiter:
-                return this.MicrowattsPerLiter + ` μW/l`;
+                return super.truncateFractionDigits(this.MicrowattsPerLiter, fractionalDigits) + ` μW/l`;
             case PowerDensityUnits.MilliwattsPerLiter:
-                return this.MilliwattsPerLiter + ` mW/l`;
+                return super.truncateFractionDigits(this.MilliwattsPerLiter, fractionalDigits) + ` mW/l`;
             case PowerDensityUnits.DeciwattsPerLiter:
-                return this.DeciwattsPerLiter + ` dW/l`;
+                return super.truncateFractionDigits(this.DeciwattsPerLiter, fractionalDigits) + ` dW/l`;
             case PowerDensityUnits.DecawattsPerLiter:
-                return this.DecawattsPerLiter + ` daW/l`;
+                return super.truncateFractionDigits(this.DecawattsPerLiter, fractionalDigits) + ` daW/l`;
             case PowerDensityUnits.KilowattsPerLiter:
-                return this.KilowattsPerLiter + ` kW/l`;
+                return super.truncateFractionDigits(this.KilowattsPerLiter, fractionalDigits) + ` kW/l`;
             case PowerDensityUnits.MegawattsPerLiter:
-                return this.MegawattsPerLiter + ` MW/l`;
+                return super.truncateFractionDigits(this.MegawattsPerLiter, fractionalDigits) + ` MW/l`;
             case PowerDensityUnits.GigawattsPerLiter:
-                return this.GigawattsPerLiter + ` GW/l`;
+                return super.truncateFractionDigits(this.GigawattsPerLiter, fractionalDigits) + ` GW/l`;
             case PowerDensityUnits.TerawattsPerLiter:
-                return this.TerawattsPerLiter + ` TW/l`;
+                return super.truncateFractionDigits(this.TerawattsPerLiter, fractionalDigits) + ` TW/l`;
         default:
             break;
         }

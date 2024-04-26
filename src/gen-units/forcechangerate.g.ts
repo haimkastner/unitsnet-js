@@ -456,42 +456,43 @@ export class ForceChangeRate extends BaseUnit {
      * Note! the default format for ForceChangeRate is NewtonsPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ForceChangeRate.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ForceChangeRate.
      */
-    public toString(unit: ForceChangeRateUnits = ForceChangeRateUnits.NewtonsPerSecond): string {
+    public toString(unit: ForceChangeRateUnits = ForceChangeRateUnits.NewtonsPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ForceChangeRateUnits.NewtonsPerMinute:
-                return this.NewtonsPerMinute + ` N/min`;
+                return super.truncateFractionDigits(this.NewtonsPerMinute, fractionalDigits) + ` N/min`;
             case ForceChangeRateUnits.NewtonsPerSecond:
-                return this.NewtonsPerSecond + ` N/s`;
+                return super.truncateFractionDigits(this.NewtonsPerSecond, fractionalDigits) + ` N/s`;
             case ForceChangeRateUnits.PoundsForcePerMinute:
-                return this.PoundsForcePerMinute + ` lbf/min`;
+                return super.truncateFractionDigits(this.PoundsForcePerMinute, fractionalDigits) + ` lbf/min`;
             case ForceChangeRateUnits.PoundsForcePerSecond:
-                return this.PoundsForcePerSecond + ` lbf/s`;
+                return super.truncateFractionDigits(this.PoundsForcePerSecond, fractionalDigits) + ` lbf/s`;
             case ForceChangeRateUnits.DecanewtonsPerMinute:
-                return this.DecanewtonsPerMinute + ` daN/min`;
+                return super.truncateFractionDigits(this.DecanewtonsPerMinute, fractionalDigits) + ` daN/min`;
             case ForceChangeRateUnits.KilonewtonsPerMinute:
-                return this.KilonewtonsPerMinute + ` kN/min`;
+                return super.truncateFractionDigits(this.KilonewtonsPerMinute, fractionalDigits) + ` kN/min`;
             case ForceChangeRateUnits.NanonewtonsPerSecond:
-                return this.NanonewtonsPerSecond + ` nN/s`;
+                return super.truncateFractionDigits(this.NanonewtonsPerSecond, fractionalDigits) + ` nN/s`;
             case ForceChangeRateUnits.MicronewtonsPerSecond:
-                return this.MicronewtonsPerSecond + ` μN/s`;
+                return super.truncateFractionDigits(this.MicronewtonsPerSecond, fractionalDigits) + ` μN/s`;
             case ForceChangeRateUnits.MillinewtonsPerSecond:
-                return this.MillinewtonsPerSecond + ` mN/s`;
+                return super.truncateFractionDigits(this.MillinewtonsPerSecond, fractionalDigits) + ` mN/s`;
             case ForceChangeRateUnits.CentinewtonsPerSecond:
-                return this.CentinewtonsPerSecond + ` cN/s`;
+                return super.truncateFractionDigits(this.CentinewtonsPerSecond, fractionalDigits) + ` cN/s`;
             case ForceChangeRateUnits.DecinewtonsPerSecond:
-                return this.DecinewtonsPerSecond + ` dN/s`;
+                return super.truncateFractionDigits(this.DecinewtonsPerSecond, fractionalDigits) + ` dN/s`;
             case ForceChangeRateUnits.DecanewtonsPerSecond:
-                return this.DecanewtonsPerSecond + ` daN/s`;
+                return super.truncateFractionDigits(this.DecanewtonsPerSecond, fractionalDigits) + ` daN/s`;
             case ForceChangeRateUnits.KilonewtonsPerSecond:
-                return this.KilonewtonsPerSecond + ` kN/s`;
+                return super.truncateFractionDigits(this.KilonewtonsPerSecond, fractionalDigits) + ` kN/s`;
             case ForceChangeRateUnits.KilopoundsForcePerMinute:
-                return this.KilopoundsForcePerMinute + ` klbf/min`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerMinute, fractionalDigits) + ` klbf/min`;
             case ForceChangeRateUnits.KilopoundsForcePerSecond:
-                return this.KilopoundsForcePerSecond + ` klbf/s`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerSecond, fractionalDigits) + ` klbf/s`;
         default:
             break;
         }

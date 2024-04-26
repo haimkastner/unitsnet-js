@@ -508,46 +508,47 @@ export class SpecificWeight extends BaseUnit {
      * Note! the default format for SpecificWeight is NewtonsPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificWeight.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the SpecificWeight.
      */
-    public toString(unit: SpecificWeightUnits = SpecificWeightUnits.NewtonsPerCubicMeter): string {
+    public toString(unit: SpecificWeightUnits = SpecificWeightUnits.NewtonsPerCubicMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case SpecificWeightUnits.NewtonsPerCubicMillimeter:
-                return this.NewtonsPerCubicMillimeter + ` N/mm³`;
+                return super.truncateFractionDigits(this.NewtonsPerCubicMillimeter, fractionalDigits) + ` N/mm³`;
             case SpecificWeightUnits.NewtonsPerCubicCentimeter:
-                return this.NewtonsPerCubicCentimeter + ` N/cm³`;
+                return super.truncateFractionDigits(this.NewtonsPerCubicCentimeter, fractionalDigits) + ` N/cm³`;
             case SpecificWeightUnits.NewtonsPerCubicMeter:
-                return this.NewtonsPerCubicMeter + ` N/m³`;
+                return super.truncateFractionDigits(this.NewtonsPerCubicMeter, fractionalDigits) + ` N/m³`;
             case SpecificWeightUnits.KilogramsForcePerCubicMillimeter:
-                return this.KilogramsForcePerCubicMillimeter + ` kgf/mm³`;
+                return super.truncateFractionDigits(this.KilogramsForcePerCubicMillimeter, fractionalDigits) + ` kgf/mm³`;
             case SpecificWeightUnits.KilogramsForcePerCubicCentimeter:
-                return this.KilogramsForcePerCubicCentimeter + ` kgf/cm³`;
+                return super.truncateFractionDigits(this.KilogramsForcePerCubicCentimeter, fractionalDigits) + ` kgf/cm³`;
             case SpecificWeightUnits.KilogramsForcePerCubicMeter:
-                return this.KilogramsForcePerCubicMeter + ` kgf/m³`;
+                return super.truncateFractionDigits(this.KilogramsForcePerCubicMeter, fractionalDigits) + ` kgf/m³`;
             case SpecificWeightUnits.PoundsForcePerCubicInch:
-                return this.PoundsForcePerCubicInch + ` lbf/in³`;
+                return super.truncateFractionDigits(this.PoundsForcePerCubicInch, fractionalDigits) + ` lbf/in³`;
             case SpecificWeightUnits.PoundsForcePerCubicFoot:
-                return this.PoundsForcePerCubicFoot + ` lbf/ft³`;
+                return super.truncateFractionDigits(this.PoundsForcePerCubicFoot, fractionalDigits) + ` lbf/ft³`;
             case SpecificWeightUnits.TonnesForcePerCubicMillimeter:
-                return this.TonnesForcePerCubicMillimeter + ` tf/mm³`;
+                return super.truncateFractionDigits(this.TonnesForcePerCubicMillimeter, fractionalDigits) + ` tf/mm³`;
             case SpecificWeightUnits.TonnesForcePerCubicCentimeter:
-                return this.TonnesForcePerCubicCentimeter + ` tf/cm³`;
+                return super.truncateFractionDigits(this.TonnesForcePerCubicCentimeter, fractionalDigits) + ` tf/cm³`;
             case SpecificWeightUnits.TonnesForcePerCubicMeter:
-                return this.TonnesForcePerCubicMeter + ` tf/m³`;
+                return super.truncateFractionDigits(this.TonnesForcePerCubicMeter, fractionalDigits) + ` tf/m³`;
             case SpecificWeightUnits.KilonewtonsPerCubicMillimeter:
-                return this.KilonewtonsPerCubicMillimeter + ` kN/mm³`;
+                return super.truncateFractionDigits(this.KilonewtonsPerCubicMillimeter, fractionalDigits) + ` kN/mm³`;
             case SpecificWeightUnits.KilonewtonsPerCubicCentimeter:
-                return this.KilonewtonsPerCubicCentimeter + ` kN/cm³`;
+                return super.truncateFractionDigits(this.KilonewtonsPerCubicCentimeter, fractionalDigits) + ` kN/cm³`;
             case SpecificWeightUnits.KilonewtonsPerCubicMeter:
-                return this.KilonewtonsPerCubicMeter + ` kN/m³`;
+                return super.truncateFractionDigits(this.KilonewtonsPerCubicMeter, fractionalDigits) + ` kN/m³`;
             case SpecificWeightUnits.MeganewtonsPerCubicMeter:
-                return this.MeganewtonsPerCubicMeter + ` MN/m³`;
+                return super.truncateFractionDigits(this.MeganewtonsPerCubicMeter, fractionalDigits) + ` MN/m³`;
             case SpecificWeightUnits.KilopoundsForcePerCubicInch:
-                return this.KilopoundsForcePerCubicInch + ` klbf/in³`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerCubicInch, fractionalDigits) + ` klbf/in³`;
             case SpecificWeightUnits.KilopoundsForcePerCubicFoot:
-                return this.KilopoundsForcePerCubicFoot + ` klbf/ft³`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerCubicFoot, fractionalDigits) + ` klbf/ft³`;
         default:
             break;
         }

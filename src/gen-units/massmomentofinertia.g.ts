@@ -794,68 +794,69 @@ export class MassMomentOfInertia extends BaseUnit {
      * Note! the default format for MassMomentOfInertia is KilogramSquareMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MassMomentOfInertia.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the MassMomentOfInertia.
      */
-    public toString(unit: MassMomentOfInertiaUnits = MassMomentOfInertiaUnits.KilogramSquareMeters): string {
+    public toString(unit: MassMomentOfInertiaUnits = MassMomentOfInertiaUnits.KilogramSquareMeters, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MassMomentOfInertiaUnits.GramSquareMeters:
-                return this.GramSquareMeters + ` g·m²`;
+                return super.truncateFractionDigits(this.GramSquareMeters, fractionalDigits) + ` g·m²`;
             case MassMomentOfInertiaUnits.GramSquareDecimeters:
-                return this.GramSquareDecimeters + ` g·dm²`;
+                return super.truncateFractionDigits(this.GramSquareDecimeters, fractionalDigits) + ` g·dm²`;
             case MassMomentOfInertiaUnits.GramSquareCentimeters:
-                return this.GramSquareCentimeters + ` g·cm²`;
+                return super.truncateFractionDigits(this.GramSquareCentimeters, fractionalDigits) + ` g·cm²`;
             case MassMomentOfInertiaUnits.GramSquareMillimeters:
-                return this.GramSquareMillimeters + ` g·mm²`;
+                return super.truncateFractionDigits(this.GramSquareMillimeters, fractionalDigits) + ` g·mm²`;
             case MassMomentOfInertiaUnits.TonneSquareMeters:
-                return this.TonneSquareMeters + ` t·m²`;
+                return super.truncateFractionDigits(this.TonneSquareMeters, fractionalDigits) + ` t·m²`;
             case MassMomentOfInertiaUnits.TonneSquareDecimeters:
-                return this.TonneSquareDecimeters + ` t·dm²`;
+                return super.truncateFractionDigits(this.TonneSquareDecimeters, fractionalDigits) + ` t·dm²`;
             case MassMomentOfInertiaUnits.TonneSquareCentimeters:
-                return this.TonneSquareCentimeters + ` t·cm²`;
+                return super.truncateFractionDigits(this.TonneSquareCentimeters, fractionalDigits) + ` t·cm²`;
             case MassMomentOfInertiaUnits.TonneSquareMilimeters:
-                return this.TonneSquareMilimeters + ` t·mm²`;
+                return super.truncateFractionDigits(this.TonneSquareMilimeters, fractionalDigits) + ` t·mm²`;
             case MassMomentOfInertiaUnits.PoundSquareFeet:
-                return this.PoundSquareFeet + ` lb·ft²`;
+                return super.truncateFractionDigits(this.PoundSquareFeet, fractionalDigits) + ` lb·ft²`;
             case MassMomentOfInertiaUnits.PoundSquareInches:
-                return this.PoundSquareInches + ` lb·in²`;
+                return super.truncateFractionDigits(this.PoundSquareInches, fractionalDigits) + ` lb·in²`;
             case MassMomentOfInertiaUnits.SlugSquareFeet:
-                return this.SlugSquareFeet + ` slug·ft²`;
+                return super.truncateFractionDigits(this.SlugSquareFeet, fractionalDigits) + ` slug·ft²`;
             case MassMomentOfInertiaUnits.SlugSquareInches:
-                return this.SlugSquareInches + ` slug·in²`;
+                return super.truncateFractionDigits(this.SlugSquareInches, fractionalDigits) + ` slug·in²`;
             case MassMomentOfInertiaUnits.MilligramSquareMeters:
-                return this.MilligramSquareMeters + ` mg·m²`;
+                return super.truncateFractionDigits(this.MilligramSquareMeters, fractionalDigits) + ` mg·m²`;
             case MassMomentOfInertiaUnits.KilogramSquareMeters:
-                return this.KilogramSquareMeters + ` kg·m²`;
+                return super.truncateFractionDigits(this.KilogramSquareMeters, fractionalDigits) + ` kg·m²`;
             case MassMomentOfInertiaUnits.MilligramSquareDecimeters:
-                return this.MilligramSquareDecimeters + ` mg·dm²`;
+                return super.truncateFractionDigits(this.MilligramSquareDecimeters, fractionalDigits) + ` mg·dm²`;
             case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
-                return this.KilogramSquareDecimeters + ` kg·dm²`;
+                return super.truncateFractionDigits(this.KilogramSquareDecimeters, fractionalDigits) + ` kg·dm²`;
             case MassMomentOfInertiaUnits.MilligramSquareCentimeters:
-                return this.MilligramSquareCentimeters + ` mg·cm²`;
+                return super.truncateFractionDigits(this.MilligramSquareCentimeters, fractionalDigits) + ` mg·cm²`;
             case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
-                return this.KilogramSquareCentimeters + ` kg·cm²`;
+                return super.truncateFractionDigits(this.KilogramSquareCentimeters, fractionalDigits) + ` kg·cm²`;
             case MassMomentOfInertiaUnits.MilligramSquareMillimeters:
-                return this.MilligramSquareMillimeters + ` mg·mm²`;
+                return super.truncateFractionDigits(this.MilligramSquareMillimeters, fractionalDigits) + ` mg·mm²`;
             case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
-                return this.KilogramSquareMillimeters + ` kg·mm²`;
+                return super.truncateFractionDigits(this.KilogramSquareMillimeters, fractionalDigits) + ` kg·mm²`;
             case MassMomentOfInertiaUnits.KilotonneSquareMeters:
-                return this.KilotonneSquareMeters + ` kt·m²`;
+                return super.truncateFractionDigits(this.KilotonneSquareMeters, fractionalDigits) + ` kt·m²`;
             case MassMomentOfInertiaUnits.MegatonneSquareMeters:
-                return this.MegatonneSquareMeters + ` Mt·m²`;
+                return super.truncateFractionDigits(this.MegatonneSquareMeters, fractionalDigits) + ` Mt·m²`;
             case MassMomentOfInertiaUnits.KilotonneSquareDecimeters:
-                return this.KilotonneSquareDecimeters + ` kt·dm²`;
+                return super.truncateFractionDigits(this.KilotonneSquareDecimeters, fractionalDigits) + ` kt·dm²`;
             case MassMomentOfInertiaUnits.MegatonneSquareDecimeters:
-                return this.MegatonneSquareDecimeters + ` Mt·dm²`;
+                return super.truncateFractionDigits(this.MegatonneSquareDecimeters, fractionalDigits) + ` Mt·dm²`;
             case MassMomentOfInertiaUnits.KilotonneSquareCentimeters:
-                return this.KilotonneSquareCentimeters + ` kt·cm²`;
+                return super.truncateFractionDigits(this.KilotonneSquareCentimeters, fractionalDigits) + ` kt·cm²`;
             case MassMomentOfInertiaUnits.MegatonneSquareCentimeters:
-                return this.MegatonneSquareCentimeters + ` Mt·cm²`;
+                return super.truncateFractionDigits(this.MegatonneSquareCentimeters, fractionalDigits) + ` Mt·cm²`;
             case MassMomentOfInertiaUnits.KilotonneSquareMilimeters:
-                return this.KilotonneSquareMilimeters + ` kt·mm²`;
+                return super.truncateFractionDigits(this.KilotonneSquareMilimeters, fractionalDigits) + ` kt·mm²`;
             case MassMomentOfInertiaUnits.MegatonneSquareMilimeters:
-                return this.MegatonneSquareMilimeters + ` Mt·mm²`;
+                return super.truncateFractionDigits(this.MegatonneSquareMilimeters, fractionalDigits) + ` Mt·mm²`;
         default:
             break;
         }

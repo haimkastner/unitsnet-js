@@ -222,24 +222,25 @@ export class RadiationEquivalentDose extends BaseUnit {
      * Note! the default format for RadiationEquivalentDose is Sieverts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RadiationEquivalentDose.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the RadiationEquivalentDose.
      */
-    public toString(unit: RadiationEquivalentDoseUnits = RadiationEquivalentDoseUnits.Sieverts): string {
+    public toString(unit: RadiationEquivalentDoseUnits = RadiationEquivalentDoseUnits.Sieverts, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case RadiationEquivalentDoseUnits.Sieverts:
-                return this.Sieverts + ` Sv`;
+                return super.truncateFractionDigits(this.Sieverts, fractionalDigits) + ` Sv`;
             case RadiationEquivalentDoseUnits.RoentgensEquivalentMan:
-                return this.RoentgensEquivalentMan + ` rem`;
+                return super.truncateFractionDigits(this.RoentgensEquivalentMan, fractionalDigits) + ` rem`;
             case RadiationEquivalentDoseUnits.Nanosieverts:
-                return this.Nanosieverts + ` nSv`;
+                return super.truncateFractionDigits(this.Nanosieverts, fractionalDigits) + ` nSv`;
             case RadiationEquivalentDoseUnits.Microsieverts:
-                return this.Microsieverts + ` μSv`;
+                return super.truncateFractionDigits(this.Microsieverts, fractionalDigits) + ` μSv`;
             case RadiationEquivalentDoseUnits.Millisieverts:
-                return this.Millisieverts + ` mSv`;
+                return super.truncateFractionDigits(this.Millisieverts, fractionalDigits) + ` mSv`;
             case RadiationEquivalentDoseUnits.MilliroentgensEquivalentMan:
-                return this.MilliroentgensEquivalentMan + ` mrem`;
+                return super.truncateFractionDigits(this.MilliroentgensEquivalentMan, fractionalDigits) + ` mrem`;
         default:
             break;
         }

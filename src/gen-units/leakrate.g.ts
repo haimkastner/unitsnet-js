@@ -144,18 +144,19 @@ export class LeakRate extends BaseUnit {
      * Note! the default format for LeakRate is PascalCubicMetersPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the LeakRate.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the LeakRate.
      */
-    public toString(unit: LeakRateUnits = LeakRateUnits.PascalCubicMetersPerSecond): string {
+    public toString(unit: LeakRateUnits = LeakRateUnits.PascalCubicMetersPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case LeakRateUnits.PascalCubicMetersPerSecond:
-                return this.PascalCubicMetersPerSecond + ` Pa·m³/s`;
+                return super.truncateFractionDigits(this.PascalCubicMetersPerSecond, fractionalDigits) + ` Pa·m³/s`;
             case LeakRateUnits.MillibarLitersPerSecond:
-                return this.MillibarLitersPerSecond + ` mbar·l/s`;
+                return super.truncateFractionDigits(this.MillibarLitersPerSecond, fractionalDigits) + ` mbar·l/s`;
             case LeakRateUnits.TorrLitersPerSecond:
-                return this.TorrLitersPerSecond + ` Torr·l/s`;
+                return super.truncateFractionDigits(this.TorrLitersPerSecond, fractionalDigits) + ` Torr·l/s`;
         default:
             break;
         }

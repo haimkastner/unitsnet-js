@@ -62,6 +62,25 @@ export function setCompareToFurmula(compareToFurmula: CompareToFormula) {
 
 export abstract class BaseUnit {
 
+    /**
+     * Truncates a number to a specified number of fractional digits.
+     * @param num - The number to truncate.
+     * @param fractionalDigits - The number of fractional digits to keep.
+     * @returns The truncated number.
+     */
+    protected truncateFractionDigits(num: number, fractionalDigits?: number): number {
+        if (typeof fractionalDigits !== "number") {
+            return num;
+        }
+        // Convert the number to a string with the desired precision
+        const numString = num.toFixed(fractionalDigits);
+
+        // Parse the string back to a number
+        const truncatedNum = parseFloat(numString);
+
+        return truncatedNum;
+    }
+
     protected internalEquals(valueA: number, valueB: number): boolean {
         return externalEqualsFurmula?.(valueA, valueB) ?? valueA === valueB;
     }

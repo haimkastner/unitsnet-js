@@ -1158,96 +1158,97 @@ export class Length extends BaseUnit {
      * Note! the default format for Length is Meters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Length.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Length.
      */
-    public toString(unit: LengthUnits = LengthUnits.Meters): string {
+    public toString(unit: LengthUnits = LengthUnits.Meters, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case LengthUnits.Meters:
-                return this.Meters + ` m`;
+                return super.truncateFractionDigits(this.Meters, fractionalDigits) + ` m`;
             case LengthUnits.Miles:
-                return this.Miles + ` mi`;
+                return super.truncateFractionDigits(this.Miles, fractionalDigits) + ` mi`;
             case LengthUnits.Yards:
-                return this.Yards + ` yd`;
+                return super.truncateFractionDigits(this.Yards, fractionalDigits) + ` yd`;
             case LengthUnits.Feet:
-                return this.Feet + ` ft`;
+                return super.truncateFractionDigits(this.Feet, fractionalDigits) + ` ft`;
             case LengthUnits.UsSurveyFeet:
-                return this.UsSurveyFeet + ` ftUS`;
+                return super.truncateFractionDigits(this.UsSurveyFeet, fractionalDigits) + ` ftUS`;
             case LengthUnits.Inches:
-                return this.Inches + ` in`;
+                return super.truncateFractionDigits(this.Inches, fractionalDigits) + ` in`;
             case LengthUnits.Mils:
-                return this.Mils + ` mil`;
+                return super.truncateFractionDigits(this.Mils, fractionalDigits) + ` mil`;
             case LengthUnits.NauticalMiles:
-                return this.NauticalMiles + ` NM`;
+                return super.truncateFractionDigits(this.NauticalMiles, fractionalDigits) + ` NM`;
             case LengthUnits.Fathoms:
-                return this.Fathoms + ` fathom`;
+                return super.truncateFractionDigits(this.Fathoms, fractionalDigits) + ` fathom`;
             case LengthUnits.Shackles:
-                return this.Shackles + ` shackle`;
+                return super.truncateFractionDigits(this.Shackles, fractionalDigits) + ` shackle`;
             case LengthUnits.Microinches:
-                return this.Microinches + ` µin`;
+                return super.truncateFractionDigits(this.Microinches, fractionalDigits) + ` µin`;
             case LengthUnits.PrinterPoints:
-                return this.PrinterPoints + ` pt`;
+                return super.truncateFractionDigits(this.PrinterPoints, fractionalDigits) + ` pt`;
             case LengthUnits.DtpPoints:
-                return this.DtpPoints + ` pt`;
+                return super.truncateFractionDigits(this.DtpPoints, fractionalDigits) + ` pt`;
             case LengthUnits.PrinterPicas:
-                return this.PrinterPicas + ` pica`;
+                return super.truncateFractionDigits(this.PrinterPicas, fractionalDigits) + ` pica`;
             case LengthUnits.DtpPicas:
-                return this.DtpPicas + ` pica`;
+                return super.truncateFractionDigits(this.DtpPicas, fractionalDigits) + ` pica`;
             case LengthUnits.Twips:
-                return this.Twips + ` twip`;
+                return super.truncateFractionDigits(this.Twips, fractionalDigits) + ` twip`;
             case LengthUnits.Hands:
-                return this.Hands + ` h`;
+                return super.truncateFractionDigits(this.Hands, fractionalDigits) + ` h`;
             case LengthUnits.AstronomicalUnits:
-                return this.AstronomicalUnits + ` au`;
+                return super.truncateFractionDigits(this.AstronomicalUnits, fractionalDigits) + ` au`;
             case LengthUnits.Parsecs:
-                return this.Parsecs + ` pc`;
+                return super.truncateFractionDigits(this.Parsecs, fractionalDigits) + ` pc`;
             case LengthUnits.LightYears:
-                return this.LightYears + ` ly`;
+                return super.truncateFractionDigits(this.LightYears, fractionalDigits) + ` ly`;
             case LengthUnits.SolarRadiuses:
-                return this.SolarRadiuses + ` R⊙`;
+                return super.truncateFractionDigits(this.SolarRadiuses, fractionalDigits) + ` R⊙`;
             case LengthUnits.Chains:
-                return this.Chains + ` ch`;
+                return super.truncateFractionDigits(this.Chains, fractionalDigits) + ` ch`;
             case LengthUnits.Angstroms:
-                return this.Angstroms + ` Å`;
+                return super.truncateFractionDigits(this.Angstroms, fractionalDigits) + ` Å`;
             case LengthUnits.DataMiles:
-                return this.DataMiles + ` DM`;
+                return super.truncateFractionDigits(this.DataMiles, fractionalDigits) + ` DM`;
             case LengthUnits.Femtometers:
-                return this.Femtometers + ` fm`;
+                return super.truncateFractionDigits(this.Femtometers, fractionalDigits) + ` fm`;
             case LengthUnits.Picometers:
-                return this.Picometers + ` pm`;
+                return super.truncateFractionDigits(this.Picometers, fractionalDigits) + ` pm`;
             case LengthUnits.Nanometers:
-                return this.Nanometers + ` nm`;
+                return super.truncateFractionDigits(this.Nanometers, fractionalDigits) + ` nm`;
             case LengthUnits.Micrometers:
-                return this.Micrometers + ` μm`;
+                return super.truncateFractionDigits(this.Micrometers, fractionalDigits) + ` μm`;
             case LengthUnits.Millimeters:
-                return this.Millimeters + ` mm`;
+                return super.truncateFractionDigits(this.Millimeters, fractionalDigits) + ` mm`;
             case LengthUnits.Centimeters:
-                return this.Centimeters + ` cm`;
+                return super.truncateFractionDigits(this.Centimeters, fractionalDigits) + ` cm`;
             case LengthUnits.Decimeters:
-                return this.Decimeters + ` dm`;
+                return super.truncateFractionDigits(this.Decimeters, fractionalDigits) + ` dm`;
             case LengthUnits.Decameters:
-                return this.Decameters + ` dam`;
+                return super.truncateFractionDigits(this.Decameters, fractionalDigits) + ` dam`;
             case LengthUnits.Hectometers:
-                return this.Hectometers + ` hm`;
+                return super.truncateFractionDigits(this.Hectometers, fractionalDigits) + ` hm`;
             case LengthUnits.Kilometers:
-                return this.Kilometers + ` km`;
+                return super.truncateFractionDigits(this.Kilometers, fractionalDigits) + ` km`;
             case LengthUnits.Megameters:
-                return this.Megameters + ` Mm`;
+                return super.truncateFractionDigits(this.Megameters, fractionalDigits) + ` Mm`;
             case LengthUnits.Gigameters:
-                return this.Gigameters + ` Gm`;
+                return super.truncateFractionDigits(this.Gigameters, fractionalDigits) + ` Gm`;
             case LengthUnits.Kiloyards:
-                return this.Kiloyards + ` kyd`;
+                return super.truncateFractionDigits(this.Kiloyards, fractionalDigits) + ` kyd`;
             case LengthUnits.Kilofeet:
-                return this.Kilofeet + ` kft`;
+                return super.truncateFractionDigits(this.Kilofeet, fractionalDigits) + ` kft`;
             case LengthUnits.Kiloparsecs:
-                return this.Kiloparsecs + ` kpc`;
+                return super.truncateFractionDigits(this.Kiloparsecs, fractionalDigits) + ` kpc`;
             case LengthUnits.Megaparsecs:
-                return this.Megaparsecs + ` Mpc`;
+                return super.truncateFractionDigits(this.Megaparsecs, fractionalDigits) + ` Mpc`;
             case LengthUnits.KilolightYears:
-                return this.KilolightYears + ` kly`;
+                return super.truncateFractionDigits(this.KilolightYears, fractionalDigits) + ` kly`;
             case LengthUnits.MegalightYears:
-                return this.MegalightYears + ` Mly`;
+                return super.truncateFractionDigits(this.MegalightYears, fractionalDigits) + ` Mly`;
         default:
             break;
         }

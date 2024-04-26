@@ -924,78 +924,79 @@ export class Speed extends BaseUnit {
      * Note! the default format for Speed is MetersPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Speed.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Speed.
      */
-    public toString(unit: SpeedUnits = SpeedUnits.MetersPerSecond): string {
+    public toString(unit: SpeedUnits = SpeedUnits.MetersPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case SpeedUnits.MetersPerSecond:
-                return this.MetersPerSecond + ` m/s`;
+                return super.truncateFractionDigits(this.MetersPerSecond, fractionalDigits) + ` m/s`;
             case SpeedUnits.MetersPerMinutes:
-                return this.MetersPerMinutes + ` m/min`;
+                return super.truncateFractionDigits(this.MetersPerMinutes, fractionalDigits) + ` m/min`;
             case SpeedUnits.MetersPerHour:
-                return this.MetersPerHour + ` m/h`;
+                return super.truncateFractionDigits(this.MetersPerHour, fractionalDigits) + ` m/h`;
             case SpeedUnits.FeetPerSecond:
-                return this.FeetPerSecond + ` ft/s`;
+                return super.truncateFractionDigits(this.FeetPerSecond, fractionalDigits) + ` ft/s`;
             case SpeedUnits.FeetPerMinute:
-                return this.FeetPerMinute + ` ft/min`;
+                return super.truncateFractionDigits(this.FeetPerMinute, fractionalDigits) + ` ft/min`;
             case SpeedUnits.FeetPerHour:
-                return this.FeetPerHour + ` ft/h`;
+                return super.truncateFractionDigits(this.FeetPerHour, fractionalDigits) + ` ft/h`;
             case SpeedUnits.UsSurveyFeetPerSecond:
-                return this.UsSurveyFeetPerSecond + ` ftUS/s`;
+                return super.truncateFractionDigits(this.UsSurveyFeetPerSecond, fractionalDigits) + ` ftUS/s`;
             case SpeedUnits.UsSurveyFeetPerMinute:
-                return this.UsSurveyFeetPerMinute + ` ftUS/min`;
+                return super.truncateFractionDigits(this.UsSurveyFeetPerMinute, fractionalDigits) + ` ftUS/min`;
             case SpeedUnits.UsSurveyFeetPerHour:
-                return this.UsSurveyFeetPerHour + ` ftUS/h`;
+                return super.truncateFractionDigits(this.UsSurveyFeetPerHour, fractionalDigits) + ` ftUS/h`;
             case SpeedUnits.InchesPerSecond:
-                return this.InchesPerSecond + ` in/s`;
+                return super.truncateFractionDigits(this.InchesPerSecond, fractionalDigits) + ` in/s`;
             case SpeedUnits.InchesPerMinute:
-                return this.InchesPerMinute + ` in/min`;
+                return super.truncateFractionDigits(this.InchesPerMinute, fractionalDigits) + ` in/min`;
             case SpeedUnits.InchesPerHour:
-                return this.InchesPerHour + ` in/h`;
+                return super.truncateFractionDigits(this.InchesPerHour, fractionalDigits) + ` in/h`;
             case SpeedUnits.YardsPerSecond:
-                return this.YardsPerSecond + ` yd/s`;
+                return super.truncateFractionDigits(this.YardsPerSecond, fractionalDigits) + ` yd/s`;
             case SpeedUnits.YardsPerMinute:
-                return this.YardsPerMinute + ` yd/min`;
+                return super.truncateFractionDigits(this.YardsPerMinute, fractionalDigits) + ` yd/min`;
             case SpeedUnits.YardsPerHour:
-                return this.YardsPerHour + ` yd/h`;
+                return super.truncateFractionDigits(this.YardsPerHour, fractionalDigits) + ` yd/h`;
             case SpeedUnits.Knots:
-                return this.Knots + ` kn`;
+                return super.truncateFractionDigits(this.Knots, fractionalDigits) + ` kn`;
             case SpeedUnits.MilesPerHour:
-                return this.MilesPerHour + ` mph`;
+                return super.truncateFractionDigits(this.MilesPerHour, fractionalDigits) + ` mph`;
             case SpeedUnits.Mach:
-                return this.Mach + ` M`;
+                return super.truncateFractionDigits(this.Mach, fractionalDigits) + ` M`;
             case SpeedUnits.NanometersPerSecond:
-                return this.NanometersPerSecond + ` nm/s`;
+                return super.truncateFractionDigits(this.NanometersPerSecond, fractionalDigits) + ` nm/s`;
             case SpeedUnits.MicrometersPerSecond:
-                return this.MicrometersPerSecond + ` μm/s`;
+                return super.truncateFractionDigits(this.MicrometersPerSecond, fractionalDigits) + ` μm/s`;
             case SpeedUnits.MillimetersPerSecond:
-                return this.MillimetersPerSecond + ` mm/s`;
+                return super.truncateFractionDigits(this.MillimetersPerSecond, fractionalDigits) + ` mm/s`;
             case SpeedUnits.CentimetersPerSecond:
-                return this.CentimetersPerSecond + ` cm/s`;
+                return super.truncateFractionDigits(this.CentimetersPerSecond, fractionalDigits) + ` cm/s`;
             case SpeedUnits.DecimetersPerSecond:
-                return this.DecimetersPerSecond + ` dm/s`;
+                return super.truncateFractionDigits(this.DecimetersPerSecond, fractionalDigits) + ` dm/s`;
             case SpeedUnits.KilometersPerSecond:
-                return this.KilometersPerSecond + ` km/s`;
+                return super.truncateFractionDigits(this.KilometersPerSecond, fractionalDigits) + ` km/s`;
             case SpeedUnits.NanometersPerMinutes:
-                return this.NanometersPerMinutes + ` nm/min`;
+                return super.truncateFractionDigits(this.NanometersPerMinutes, fractionalDigits) + ` nm/min`;
             case SpeedUnits.MicrometersPerMinutes:
-                return this.MicrometersPerMinutes + ` μm/min`;
+                return super.truncateFractionDigits(this.MicrometersPerMinutes, fractionalDigits) + ` μm/min`;
             case SpeedUnits.MillimetersPerMinutes:
-                return this.MillimetersPerMinutes + ` mm/min`;
+                return super.truncateFractionDigits(this.MillimetersPerMinutes, fractionalDigits) + ` mm/min`;
             case SpeedUnits.CentimetersPerMinutes:
-                return this.CentimetersPerMinutes + ` cm/min`;
+                return super.truncateFractionDigits(this.CentimetersPerMinutes, fractionalDigits) + ` cm/min`;
             case SpeedUnits.DecimetersPerMinutes:
-                return this.DecimetersPerMinutes + ` dm/min`;
+                return super.truncateFractionDigits(this.DecimetersPerMinutes, fractionalDigits) + ` dm/min`;
             case SpeedUnits.KilometersPerMinutes:
-                return this.KilometersPerMinutes + ` km/min`;
+                return super.truncateFractionDigits(this.KilometersPerMinutes, fractionalDigits) + ` km/min`;
             case SpeedUnits.MillimetersPerHour:
-                return this.MillimetersPerHour + ` mm/h`;
+                return super.truncateFractionDigits(this.MillimetersPerHour, fractionalDigits) + ` mm/h`;
             case SpeedUnits.CentimetersPerHour:
-                return this.CentimetersPerHour + ` cm/h`;
+                return super.truncateFractionDigits(this.CentimetersPerHour, fractionalDigits) + ` cm/h`;
             case SpeedUnits.KilometersPerHour:
-                return this.KilometersPerHour + ` km/h`;
+                return super.truncateFractionDigits(this.KilometersPerHour, fractionalDigits) + ` km/h`;
         default:
             break;
         }

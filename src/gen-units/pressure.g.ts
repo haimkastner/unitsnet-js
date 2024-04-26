@@ -1340,110 +1340,111 @@ export class Pressure extends BaseUnit {
      * Note! the default format for Pressure is Pascals.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Pressure.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Pressure.
      */
-    public toString(unit: PressureUnits = PressureUnits.Pascals): string {
+    public toString(unit: PressureUnits = PressureUnits.Pascals, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case PressureUnits.Pascals:
-                return this.Pascals + ` Pa`;
+                return super.truncateFractionDigits(this.Pascals, fractionalDigits) + ` Pa`;
             case PressureUnits.Atmospheres:
-                return this.Atmospheres + ` atm`;
+                return super.truncateFractionDigits(this.Atmospheres, fractionalDigits) + ` atm`;
             case PressureUnits.Bars:
-                return this.Bars + ` bar`;
+                return super.truncateFractionDigits(this.Bars, fractionalDigits) + ` bar`;
             case PressureUnits.KilogramsForcePerSquareMeter:
-                return this.KilogramsForcePerSquareMeter + ` kgf/m²`;
+                return super.truncateFractionDigits(this.KilogramsForcePerSquareMeter, fractionalDigits) + ` kgf/m²`;
             case PressureUnits.KilogramsForcePerSquareCentimeter:
-                return this.KilogramsForcePerSquareCentimeter + ` kgf/cm²`;
+                return super.truncateFractionDigits(this.KilogramsForcePerSquareCentimeter, fractionalDigits) + ` kgf/cm²`;
             case PressureUnits.KilogramsForcePerSquareMillimeter:
-                return this.KilogramsForcePerSquareMillimeter + ` kgf/mm²`;
+                return super.truncateFractionDigits(this.KilogramsForcePerSquareMillimeter, fractionalDigits) + ` kgf/mm²`;
             case PressureUnits.NewtonsPerSquareMeter:
-                return this.NewtonsPerSquareMeter + ` N/m²`;
+                return super.truncateFractionDigits(this.NewtonsPerSquareMeter, fractionalDigits) + ` N/m²`;
             case PressureUnits.NewtonsPerSquareCentimeter:
-                return this.NewtonsPerSquareCentimeter + ` N/cm²`;
+                return super.truncateFractionDigits(this.NewtonsPerSquareCentimeter, fractionalDigits) + ` N/cm²`;
             case PressureUnits.NewtonsPerSquareMillimeter:
-                return this.NewtonsPerSquareMillimeter + ` N/mm²`;
+                return super.truncateFractionDigits(this.NewtonsPerSquareMillimeter, fractionalDigits) + ` N/mm²`;
             case PressureUnits.TechnicalAtmospheres:
-                return this.TechnicalAtmospheres + ` at`;
+                return super.truncateFractionDigits(this.TechnicalAtmospheres, fractionalDigits) + ` at`;
             case PressureUnits.Torrs:
-                return this.Torrs + ` torr`;
+                return super.truncateFractionDigits(this.Torrs, fractionalDigits) + ` torr`;
             case PressureUnits.PoundsForcePerSquareInch:
-                return this.PoundsForcePerSquareInch + ` psi`;
+                return super.truncateFractionDigits(this.PoundsForcePerSquareInch, fractionalDigits) + ` psi`;
             case PressureUnits.PoundsForcePerSquareMil:
-                return this.PoundsForcePerSquareMil + ` lb/mil²`;
+                return super.truncateFractionDigits(this.PoundsForcePerSquareMil, fractionalDigits) + ` lb/mil²`;
             case PressureUnits.PoundsForcePerSquareFoot:
-                return this.PoundsForcePerSquareFoot + ` lb/ft²`;
+                return super.truncateFractionDigits(this.PoundsForcePerSquareFoot, fractionalDigits) + ` lb/ft²`;
             case PressureUnits.TonnesForcePerSquareMillimeter:
-                return this.TonnesForcePerSquareMillimeter + ` tf/mm²`;
+                return super.truncateFractionDigits(this.TonnesForcePerSquareMillimeter, fractionalDigits) + ` tf/mm²`;
             case PressureUnits.TonnesForcePerSquareMeter:
-                return this.TonnesForcePerSquareMeter + ` tf/m²`;
+                return super.truncateFractionDigits(this.TonnesForcePerSquareMeter, fractionalDigits) + ` tf/m²`;
             case PressureUnits.MetersOfHead:
-                return this.MetersOfHead + ` m of head`;
+                return super.truncateFractionDigits(this.MetersOfHead, fractionalDigits) + ` m of head`;
             case PressureUnits.TonnesForcePerSquareCentimeter:
-                return this.TonnesForcePerSquareCentimeter + ` tf/cm²`;
+                return super.truncateFractionDigits(this.TonnesForcePerSquareCentimeter, fractionalDigits) + ` tf/cm²`;
             case PressureUnits.FeetOfHead:
-                return this.FeetOfHead + ` ft of head`;
+                return super.truncateFractionDigits(this.FeetOfHead, fractionalDigits) + ` ft of head`;
             case PressureUnits.MillimetersOfMercury:
-                return this.MillimetersOfMercury + ` mmHg`;
+                return super.truncateFractionDigits(this.MillimetersOfMercury, fractionalDigits) + ` mmHg`;
             case PressureUnits.InchesOfMercury:
-                return this.InchesOfMercury + ` inHg`;
+                return super.truncateFractionDigits(this.InchesOfMercury, fractionalDigits) + ` inHg`;
             case PressureUnits.DynesPerSquareCentimeter:
-                return this.DynesPerSquareCentimeter + ` dyn/cm²`;
+                return super.truncateFractionDigits(this.DynesPerSquareCentimeter, fractionalDigits) + ` dyn/cm²`;
             case PressureUnits.PoundsPerInchSecondSquared:
-                return this.PoundsPerInchSecondSquared + ` lbm/(in·s²)`;
+                return super.truncateFractionDigits(this.PoundsPerInchSecondSquared, fractionalDigits) + ` lbm/(in·s²)`;
             case PressureUnits.MetersOfWaterColumn:
-                return this.MetersOfWaterColumn + ` mH₂O`;
+                return super.truncateFractionDigits(this.MetersOfWaterColumn, fractionalDigits) + ` mH₂O`;
             case PressureUnits.InchesOfWaterColumn:
-                return this.InchesOfWaterColumn + ` inH2O`;
+                return super.truncateFractionDigits(this.InchesOfWaterColumn, fractionalDigits) + ` inH2O`;
             case PressureUnits.MetersOfElevation:
-                return this.MetersOfElevation + ` m of elevation`;
+                return super.truncateFractionDigits(this.MetersOfElevation, fractionalDigits) + ` m of elevation`;
             case PressureUnits.FeetOfElevation:
-                return this.FeetOfElevation + ` ft of elevation`;
+                return super.truncateFractionDigits(this.FeetOfElevation, fractionalDigits) + ` ft of elevation`;
             case PressureUnits.Micropascals:
-                return this.Micropascals + ` μPa`;
+                return super.truncateFractionDigits(this.Micropascals, fractionalDigits) + ` μPa`;
             case PressureUnits.Millipascals:
-                return this.Millipascals + ` mPa`;
+                return super.truncateFractionDigits(this.Millipascals, fractionalDigits) + ` mPa`;
             case PressureUnits.Decapascals:
-                return this.Decapascals + ` daPa`;
+                return super.truncateFractionDigits(this.Decapascals, fractionalDigits) + ` daPa`;
             case PressureUnits.Hectopascals:
-                return this.Hectopascals + ` hPa`;
+                return super.truncateFractionDigits(this.Hectopascals, fractionalDigits) + ` hPa`;
             case PressureUnits.Kilopascals:
-                return this.Kilopascals + ` kPa`;
+                return super.truncateFractionDigits(this.Kilopascals, fractionalDigits) + ` kPa`;
             case PressureUnits.Megapascals:
-                return this.Megapascals + ` MPa`;
+                return super.truncateFractionDigits(this.Megapascals, fractionalDigits) + ` MPa`;
             case PressureUnits.Gigapascals:
-                return this.Gigapascals + ` GPa`;
+                return super.truncateFractionDigits(this.Gigapascals, fractionalDigits) + ` GPa`;
             case PressureUnits.Microbars:
-                return this.Microbars + ` μbar`;
+                return super.truncateFractionDigits(this.Microbars, fractionalDigits) + ` μbar`;
             case PressureUnits.Millibars:
-                return this.Millibars + ` mbar`;
+                return super.truncateFractionDigits(this.Millibars, fractionalDigits) + ` mbar`;
             case PressureUnits.Centibars:
-                return this.Centibars + ` cbar`;
+                return super.truncateFractionDigits(this.Centibars, fractionalDigits) + ` cbar`;
             case PressureUnits.Decibars:
-                return this.Decibars + ` dbar`;
+                return super.truncateFractionDigits(this.Decibars, fractionalDigits) + ` dbar`;
             case PressureUnits.Kilobars:
-                return this.Kilobars + ` kbar`;
+                return super.truncateFractionDigits(this.Kilobars, fractionalDigits) + ` kbar`;
             case PressureUnits.Megabars:
-                return this.Megabars + ` Mbar`;
+                return super.truncateFractionDigits(this.Megabars, fractionalDigits) + ` Mbar`;
             case PressureUnits.KilonewtonsPerSquareMeter:
-                return this.KilonewtonsPerSquareMeter + ` kN/m²`;
+                return super.truncateFractionDigits(this.KilonewtonsPerSquareMeter, fractionalDigits) + ` kN/m²`;
             case PressureUnits.MeganewtonsPerSquareMeter:
-                return this.MeganewtonsPerSquareMeter + ` MN/m²`;
+                return super.truncateFractionDigits(this.MeganewtonsPerSquareMeter, fractionalDigits) + ` MN/m²`;
             case PressureUnits.KilonewtonsPerSquareCentimeter:
-                return this.KilonewtonsPerSquareCentimeter + ` kN/cm²`;
+                return super.truncateFractionDigits(this.KilonewtonsPerSquareCentimeter, fractionalDigits) + ` kN/cm²`;
             case PressureUnits.KilonewtonsPerSquareMillimeter:
-                return this.KilonewtonsPerSquareMillimeter + ` kN/mm²`;
+                return super.truncateFractionDigits(this.KilonewtonsPerSquareMillimeter, fractionalDigits) + ` kN/mm²`;
             case PressureUnits.KilopoundsForcePerSquareInch:
-                return this.KilopoundsForcePerSquareInch + ` kpsi`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerSquareInch, fractionalDigits) + ` kpsi`;
             case PressureUnits.KilopoundsForcePerSquareMil:
-                return this.KilopoundsForcePerSquareMil + ` klb/mil²`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerSquareMil, fractionalDigits) + ` klb/mil²`;
             case PressureUnits.KilopoundsForcePerSquareFoot:
-                return this.KilopoundsForcePerSquareFoot + ` klb/ft²`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerSquareFoot, fractionalDigits) + ` klb/ft²`;
             case PressureUnits.MillimetersOfWaterColumn:
-                return this.MillimetersOfWaterColumn + ` mmH₂O`;
+                return super.truncateFractionDigits(this.MillimetersOfWaterColumn, fractionalDigits) + ` mmH₂O`;
             case PressureUnits.CentimetersOfWaterColumn:
-                return this.CentimetersOfWaterColumn + ` cmH₂O`;
+                return super.truncateFractionDigits(this.CentimetersOfWaterColumn, fractionalDigits) + ` cmH₂O`;
         default:
             break;
         }

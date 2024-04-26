@@ -196,22 +196,23 @@ export class ElectricInductance extends BaseUnit {
      * Note! the default format for ElectricInductance is Henries.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricInductance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricInductance.
      */
-    public toString(unit: ElectricInductanceUnits = ElectricInductanceUnits.Henries): string {
+    public toString(unit: ElectricInductanceUnits = ElectricInductanceUnits.Henries, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricInductanceUnits.Henries:
-                return this.Henries + ` H`;
+                return super.truncateFractionDigits(this.Henries, fractionalDigits) + ` H`;
             case ElectricInductanceUnits.Picohenries:
-                return this.Picohenries + ` pH`;
+                return super.truncateFractionDigits(this.Picohenries, fractionalDigits) + ` pH`;
             case ElectricInductanceUnits.Nanohenries:
-                return this.Nanohenries + ` nH`;
+                return super.truncateFractionDigits(this.Nanohenries, fractionalDigits) + ` nH`;
             case ElectricInductanceUnits.Microhenries:
-                return this.Microhenries + ` μH`;
+                return super.truncateFractionDigits(this.Microhenries, fractionalDigits) + ` μH`;
             case ElectricInductanceUnits.Millihenries:
-                return this.Millihenries + ` mH`;
+                return super.truncateFractionDigits(this.Millihenries, fractionalDigits) + ` mH`;
         default:
             break;
         }

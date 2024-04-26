@@ -170,20 +170,21 @@ export class TemperatureGradient extends BaseUnit {
      * Note! the default format for TemperatureGradient is KelvinsPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the TemperatureGradient.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the TemperatureGradient.
      */
-    public toString(unit: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter): string {
+    public toString(unit: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case TemperatureGradientUnits.KelvinsPerMeter:
-                return this.KelvinsPerMeter + ` ∆°K/m`;
+                return super.truncateFractionDigits(this.KelvinsPerMeter, fractionalDigits) + ` ∆°K/m`;
             case TemperatureGradientUnits.DegreesCelciusPerMeter:
-                return this.DegreesCelciusPerMeter + ` ∆°C/m`;
+                return super.truncateFractionDigits(this.DegreesCelciusPerMeter, fractionalDigits) + ` ∆°C/m`;
             case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
-                return this.DegreesFahrenheitPerFoot + ` ∆°F/ft`;
+                return super.truncateFractionDigits(this.DegreesFahrenheitPerFoot, fractionalDigits) + ` ∆°F/ft`;
             case TemperatureGradientUnits.DegreesCelciusPerKilometer:
-                return this.DegreesCelciusPerKilometer + ` ∆°C/km`;
+                return super.truncateFractionDigits(this.DegreesCelciusPerKilometer, fractionalDigits) + ` ∆°C/km`;
         default:
             break;
         }

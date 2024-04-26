@@ -170,20 +170,21 @@ export class FuelEfficiency extends BaseUnit {
      * Note! the default format for FuelEfficiency is LitersPer100Kilometers.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the FuelEfficiency.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the FuelEfficiency.
      */
-    public toString(unit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers): string {
+    public toString(unit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case FuelEfficiencyUnits.LitersPer100Kilometers:
-                return this.LitersPer100Kilometers + ` L/100km`;
+                return super.truncateFractionDigits(this.LitersPer100Kilometers, fractionalDigits) + ` L/100km`;
             case FuelEfficiencyUnits.MilesPerUsGallon:
-                return this.MilesPerUsGallon + ` mpg (U.S.)`;
+                return super.truncateFractionDigits(this.MilesPerUsGallon, fractionalDigits) + ` mpg (U.S.)`;
             case FuelEfficiencyUnits.MilesPerUkGallon:
-                return this.MilesPerUkGallon + ` mpg (imp.)`;
+                return super.truncateFractionDigits(this.MilesPerUkGallon, fractionalDigits) + ` mpg (imp.)`;
             case FuelEfficiencyUnits.KilometersPerLiters:
-                return this.KilometersPerLiters + ` km/L`;
+                return super.truncateFractionDigits(this.KilometersPerLiters, fractionalDigits) + ` km/L`;
         default:
             break;
         }

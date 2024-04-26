@@ -118,16 +118,17 @@ export class VolumeFlowPerArea extends BaseUnit {
      * Note! the default format for VolumeFlowPerArea is CubicMetersPerSecondPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the VolumeFlowPerArea.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the VolumeFlowPerArea.
      */
-    public toString(unit: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter): string {
+    public toString(unit: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter:
-                return this.CubicMetersPerSecondPerSquareMeter + ` m³/(s·m²)`;
+                return super.truncateFractionDigits(this.CubicMetersPerSecondPerSquareMeter, fractionalDigits) + ` m³/(s·m²)`;
             case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot:
-                return this.CubicFeetPerMinutePerSquareFoot + ` CFM/ft²`;
+                return super.truncateFractionDigits(this.CubicFeetPerMinutePerSquareFoot, fractionalDigits) + ` CFM/ft²`;
         default:
             break;
         }

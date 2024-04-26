@@ -1470,120 +1470,121 @@ export class Volume extends BaseUnit {
      * Note! the default format for Volume is CubicMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Volume.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Volume.
      */
-    public toString(unit: VolumeUnits = VolumeUnits.CubicMeters): string {
+    public toString(unit: VolumeUnits = VolumeUnits.CubicMeters, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case VolumeUnits.Liters:
-                return this.Liters + ` l`;
+                return super.truncateFractionDigits(this.Liters, fractionalDigits) + ` l`;
             case VolumeUnits.CubicMeters:
-                return this.CubicMeters + ` m³`;
+                return super.truncateFractionDigits(this.CubicMeters, fractionalDigits) + ` m³`;
             case VolumeUnits.CubicKilometers:
-                return this.CubicKilometers + ` km³`;
+                return super.truncateFractionDigits(this.CubicKilometers, fractionalDigits) + ` km³`;
             case VolumeUnits.CubicHectometers:
-                return this.CubicHectometers + ` hm³`;
+                return super.truncateFractionDigits(this.CubicHectometers, fractionalDigits) + ` hm³`;
             case VolumeUnits.CubicDecimeters:
-                return this.CubicDecimeters + ` dm³`;
+                return super.truncateFractionDigits(this.CubicDecimeters, fractionalDigits) + ` dm³`;
             case VolumeUnits.CubicCentimeters:
-                return this.CubicCentimeters + ` cm³`;
+                return super.truncateFractionDigits(this.CubicCentimeters, fractionalDigits) + ` cm³`;
             case VolumeUnits.CubicMillimeters:
-                return this.CubicMillimeters + ` mm³`;
+                return super.truncateFractionDigits(this.CubicMillimeters, fractionalDigits) + ` mm³`;
             case VolumeUnits.CubicMicrometers:
-                return this.CubicMicrometers + ` µm³`;
+                return super.truncateFractionDigits(this.CubicMicrometers, fractionalDigits) + ` µm³`;
             case VolumeUnits.CubicMiles:
-                return this.CubicMiles + ` mi³`;
+                return super.truncateFractionDigits(this.CubicMiles, fractionalDigits) + ` mi³`;
             case VolumeUnits.CubicYards:
-                return this.CubicYards + ` yd³`;
+                return super.truncateFractionDigits(this.CubicYards, fractionalDigits) + ` yd³`;
             case VolumeUnits.CubicFeet:
-                return this.CubicFeet + ` ft³`;
+                return super.truncateFractionDigits(this.CubicFeet, fractionalDigits) + ` ft³`;
             case VolumeUnits.CubicInches:
-                return this.CubicInches + ` in³`;
+                return super.truncateFractionDigits(this.CubicInches, fractionalDigits) + ` in³`;
             case VolumeUnits.ImperialGallons:
-                return this.ImperialGallons + ` gal (imp.)`;
+                return super.truncateFractionDigits(this.ImperialGallons, fractionalDigits) + ` gal (imp.)`;
             case VolumeUnits.ImperialOunces:
-                return this.ImperialOunces + ` oz (imp.)`;
+                return super.truncateFractionDigits(this.ImperialOunces, fractionalDigits) + ` oz (imp.)`;
             case VolumeUnits.UsGallons:
-                return this.UsGallons + ` gal (U.S.)`;
+                return super.truncateFractionDigits(this.UsGallons, fractionalDigits) + ` gal (U.S.)`;
             case VolumeUnits.UsOunces:
-                return this.UsOunces + ` oz (U.S.)`;
+                return super.truncateFractionDigits(this.UsOunces, fractionalDigits) + ` oz (U.S.)`;
             case VolumeUnits.UsTablespoons:
-                return this.UsTablespoons + ` undefined`;
+                return super.truncateFractionDigits(this.UsTablespoons, fractionalDigits) + ` undefined`;
             case VolumeUnits.AuTablespoons:
-                return this.AuTablespoons + ` undefined`;
+                return super.truncateFractionDigits(this.AuTablespoons, fractionalDigits) + ` undefined`;
             case VolumeUnits.UkTablespoons:
-                return this.UkTablespoons + ` undefined`;
+                return super.truncateFractionDigits(this.UkTablespoons, fractionalDigits) + ` undefined`;
             case VolumeUnits.MetricTeaspoons:
-                return this.MetricTeaspoons + ` tsp`;
+                return super.truncateFractionDigits(this.MetricTeaspoons, fractionalDigits) + ` tsp`;
             case VolumeUnits.UsTeaspoons:
-                return this.UsTeaspoons + ` undefined`;
+                return super.truncateFractionDigits(this.UsTeaspoons, fractionalDigits) + ` undefined`;
             case VolumeUnits.MetricCups:
-                return this.MetricCups + ` undefined`;
+                return super.truncateFractionDigits(this.MetricCups, fractionalDigits) + ` undefined`;
             case VolumeUnits.UsCustomaryCups:
-                return this.UsCustomaryCups + ` undefined`;
+                return super.truncateFractionDigits(this.UsCustomaryCups, fractionalDigits) + ` undefined`;
             case VolumeUnits.UsLegalCups:
-                return this.UsLegalCups + ` undefined`;
+                return super.truncateFractionDigits(this.UsLegalCups, fractionalDigits) + ` undefined`;
             case VolumeUnits.OilBarrels:
-                return this.OilBarrels + ` bbl`;
+                return super.truncateFractionDigits(this.OilBarrels, fractionalDigits) + ` bbl`;
             case VolumeUnits.UsBeerBarrels:
-                return this.UsBeerBarrels + ` bl (U.S.)`;
+                return super.truncateFractionDigits(this.UsBeerBarrels, fractionalDigits) + ` bl (U.S.)`;
             case VolumeUnits.ImperialBeerBarrels:
-                return this.ImperialBeerBarrels + ` bl (imp.)`;
+                return super.truncateFractionDigits(this.ImperialBeerBarrels, fractionalDigits) + ` bl (imp.)`;
             case VolumeUnits.UsQuarts:
-                return this.UsQuarts + ` qt (U.S.)`;
+                return super.truncateFractionDigits(this.UsQuarts, fractionalDigits) + ` qt (U.S.)`;
             case VolumeUnits.ImperialQuarts:
-                return this.ImperialQuarts + ` qt (imp.)`;
+                return super.truncateFractionDigits(this.ImperialQuarts, fractionalDigits) + ` qt (imp.)`;
             case VolumeUnits.UsPints:
-                return this.UsPints + ` pt (U.S.)`;
+                return super.truncateFractionDigits(this.UsPints, fractionalDigits) + ` pt (U.S.)`;
             case VolumeUnits.AcreFeet:
-                return this.AcreFeet + ` ac-ft`;
+                return super.truncateFractionDigits(this.AcreFeet, fractionalDigits) + ` ac-ft`;
             case VolumeUnits.ImperialPints:
-                return this.ImperialPints + ` pt (imp.)`;
+                return super.truncateFractionDigits(this.ImperialPints, fractionalDigits) + ` pt (imp.)`;
             case VolumeUnits.BoardFeet:
-                return this.BoardFeet + ` bf`;
+                return super.truncateFractionDigits(this.BoardFeet, fractionalDigits) + ` bf`;
             case VolumeUnits.Nanoliters:
-                return this.Nanoliters + ` nl`;
+                return super.truncateFractionDigits(this.Nanoliters, fractionalDigits) + ` nl`;
             case VolumeUnits.Microliters:
-                return this.Microliters + ` μl`;
+                return super.truncateFractionDigits(this.Microliters, fractionalDigits) + ` μl`;
             case VolumeUnits.Milliliters:
-                return this.Milliliters + ` ml`;
+                return super.truncateFractionDigits(this.Milliliters, fractionalDigits) + ` ml`;
             case VolumeUnits.Centiliters:
-                return this.Centiliters + ` cl`;
+                return super.truncateFractionDigits(this.Centiliters, fractionalDigits) + ` cl`;
             case VolumeUnits.Deciliters:
-                return this.Deciliters + ` dl`;
+                return super.truncateFractionDigits(this.Deciliters, fractionalDigits) + ` dl`;
             case VolumeUnits.Decaliters:
-                return this.Decaliters + ` dal`;
+                return super.truncateFractionDigits(this.Decaliters, fractionalDigits) + ` dal`;
             case VolumeUnits.Hectoliters:
-                return this.Hectoliters + ` hl`;
+                return super.truncateFractionDigits(this.Hectoliters, fractionalDigits) + ` hl`;
             case VolumeUnits.Kiloliters:
-                return this.Kiloliters + ` kl`;
+                return super.truncateFractionDigits(this.Kiloliters, fractionalDigits) + ` kl`;
             case VolumeUnits.Megaliters:
-                return this.Megaliters + ` Ml`;
+                return super.truncateFractionDigits(this.Megaliters, fractionalDigits) + ` Ml`;
             case VolumeUnits.HectocubicMeters:
-                return this.HectocubicMeters + ` hm³`;
+                return super.truncateFractionDigits(this.HectocubicMeters, fractionalDigits) + ` hm³`;
             case VolumeUnits.KilocubicMeters:
-                return this.KilocubicMeters + ` km³`;
+                return super.truncateFractionDigits(this.KilocubicMeters, fractionalDigits) + ` km³`;
             case VolumeUnits.HectocubicFeet:
-                return this.HectocubicFeet + ` hft³`;
+                return super.truncateFractionDigits(this.HectocubicFeet, fractionalDigits) + ` hft³`;
             case VolumeUnits.KilocubicFeet:
-                return this.KilocubicFeet + ` kft³`;
+                return super.truncateFractionDigits(this.KilocubicFeet, fractionalDigits) + ` kft³`;
             case VolumeUnits.MegacubicFeet:
-                return this.MegacubicFeet + ` Mft³`;
+                return super.truncateFractionDigits(this.MegacubicFeet, fractionalDigits) + ` Mft³`;
             case VolumeUnits.KiloimperialGallons:
-                return this.KiloimperialGallons + ` kgal (imp.)`;
+                return super.truncateFractionDigits(this.KiloimperialGallons, fractionalDigits) + ` kgal (imp.)`;
             case VolumeUnits.MegaimperialGallons:
-                return this.MegaimperialGallons + ` Mgal (imp.)`;
+                return super.truncateFractionDigits(this.MegaimperialGallons, fractionalDigits) + ` Mgal (imp.)`;
             case VolumeUnits.DecausGallons:
-                return this.DecausGallons + ` dagal (U.S.)`;
+                return super.truncateFractionDigits(this.DecausGallons, fractionalDigits) + ` dagal (U.S.)`;
             case VolumeUnits.DeciusGallons:
-                return this.DeciusGallons + ` dgal (U.S.)`;
+                return super.truncateFractionDigits(this.DeciusGallons, fractionalDigits) + ` dgal (U.S.)`;
             case VolumeUnits.HectousGallons:
-                return this.HectousGallons + ` hgal (U.S.)`;
+                return super.truncateFractionDigits(this.HectousGallons, fractionalDigits) + ` hgal (U.S.)`;
             case VolumeUnits.KilousGallons:
-                return this.KilousGallons + ` kgal (U.S.)`;
+                return super.truncateFractionDigits(this.KilousGallons, fractionalDigits) + ` kgal (U.S.)`;
             case VolumeUnits.MegausGallons:
-                return this.MegausGallons + ` Mgal (U.S.)`;
+                return super.truncateFractionDigits(this.MegausGallons, fractionalDigits) + ` Mgal (U.S.)`;
         default:
             break;
         }

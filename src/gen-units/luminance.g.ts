@@ -326,32 +326,33 @@ export class Luminance extends BaseUnit {
      * Note! the default format for Luminance is CandelasPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Luminance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Luminance.
      */
-    public toString(unit: LuminanceUnits = LuminanceUnits.CandelasPerSquareMeter): string {
+    public toString(unit: LuminanceUnits = LuminanceUnits.CandelasPerSquareMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case LuminanceUnits.CandelasPerSquareMeter:
-                return this.CandelasPerSquareMeter + ` Cd/m²`;
+                return super.truncateFractionDigits(this.CandelasPerSquareMeter, fractionalDigits) + ` Cd/m²`;
             case LuminanceUnits.CandelasPerSquareFoot:
-                return this.CandelasPerSquareFoot + ` Cd/ft²`;
+                return super.truncateFractionDigits(this.CandelasPerSquareFoot, fractionalDigits) + ` Cd/ft²`;
             case LuminanceUnits.CandelasPerSquareInch:
-                return this.CandelasPerSquareInch + ` Cd/in²`;
+                return super.truncateFractionDigits(this.CandelasPerSquareInch, fractionalDigits) + ` Cd/in²`;
             case LuminanceUnits.Nits:
-                return this.Nits + ` nt`;
+                return super.truncateFractionDigits(this.Nits, fractionalDigits) + ` nt`;
             case LuminanceUnits.NanocandelasPerSquareMeter:
-                return this.NanocandelasPerSquareMeter + ` nCd/m²`;
+                return super.truncateFractionDigits(this.NanocandelasPerSquareMeter, fractionalDigits) + ` nCd/m²`;
             case LuminanceUnits.MicrocandelasPerSquareMeter:
-                return this.MicrocandelasPerSquareMeter + ` μCd/m²`;
+                return super.truncateFractionDigits(this.MicrocandelasPerSquareMeter, fractionalDigits) + ` μCd/m²`;
             case LuminanceUnits.MillicandelasPerSquareMeter:
-                return this.MillicandelasPerSquareMeter + ` mCd/m²`;
+                return super.truncateFractionDigits(this.MillicandelasPerSquareMeter, fractionalDigits) + ` mCd/m²`;
             case LuminanceUnits.CenticandelasPerSquareMeter:
-                return this.CenticandelasPerSquareMeter + ` cCd/m²`;
+                return super.truncateFractionDigits(this.CenticandelasPerSquareMeter, fractionalDigits) + ` cCd/m²`;
             case LuminanceUnits.DecicandelasPerSquareMeter:
-                return this.DecicandelasPerSquareMeter + ` dCd/m²`;
+                return super.truncateFractionDigits(this.DecicandelasPerSquareMeter, fractionalDigits) + ` dCd/m²`;
             case LuminanceUnits.KilocandelasPerSquareMeter:
-                return this.KilocandelasPerSquareMeter + ` kCd/m²`;
+                return super.truncateFractionDigits(this.KilocandelasPerSquareMeter, fractionalDigits) + ` kCd/m²`;
         default:
             break;
         }

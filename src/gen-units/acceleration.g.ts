@@ -430,40 +430,41 @@ export class Acceleration extends BaseUnit {
      * Note! the default format for Acceleration is MetersPerSecondSquared.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Acceleration.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Acceleration.
      */
-    public toString(unit: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared): string {
+    public toString(unit: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case AccelerationUnits.MetersPerSecondSquared:
-                return this.MetersPerSecondSquared + ` m/s²`;
+                return super.truncateFractionDigits(this.MetersPerSecondSquared, fractionalDigits) + ` m/s²`;
             case AccelerationUnits.InchesPerSecondSquared:
-                return this.InchesPerSecondSquared + ` in/s²`;
+                return super.truncateFractionDigits(this.InchesPerSecondSquared, fractionalDigits) + ` in/s²`;
             case AccelerationUnits.FeetPerSecondSquared:
-                return this.FeetPerSecondSquared + ` ft/s²`;
+                return super.truncateFractionDigits(this.FeetPerSecondSquared, fractionalDigits) + ` ft/s²`;
             case AccelerationUnits.KnotsPerSecond:
-                return this.KnotsPerSecond + ` kn/s`;
+                return super.truncateFractionDigits(this.KnotsPerSecond, fractionalDigits) + ` kn/s`;
             case AccelerationUnits.KnotsPerMinute:
-                return this.KnotsPerMinute + ` kn/min`;
+                return super.truncateFractionDigits(this.KnotsPerMinute, fractionalDigits) + ` kn/min`;
             case AccelerationUnits.KnotsPerHour:
-                return this.KnotsPerHour + ` kn/h`;
+                return super.truncateFractionDigits(this.KnotsPerHour, fractionalDigits) + ` kn/h`;
             case AccelerationUnits.StandardGravity:
-                return this.StandardGravity + ` g`;
+                return super.truncateFractionDigits(this.StandardGravity, fractionalDigits) + ` g`;
             case AccelerationUnits.NanometersPerSecondSquared:
-                return this.NanometersPerSecondSquared + ` nm/s²`;
+                return super.truncateFractionDigits(this.NanometersPerSecondSquared, fractionalDigits) + ` nm/s²`;
             case AccelerationUnits.MicrometersPerSecondSquared:
-                return this.MicrometersPerSecondSquared + ` μm/s²`;
+                return super.truncateFractionDigits(this.MicrometersPerSecondSquared, fractionalDigits) + ` μm/s²`;
             case AccelerationUnits.MillimetersPerSecondSquared:
-                return this.MillimetersPerSecondSquared + ` mm/s²`;
+                return super.truncateFractionDigits(this.MillimetersPerSecondSquared, fractionalDigits) + ` mm/s²`;
             case AccelerationUnits.CentimetersPerSecondSquared:
-                return this.CentimetersPerSecondSquared + ` cm/s²`;
+                return super.truncateFractionDigits(this.CentimetersPerSecondSquared, fractionalDigits) + ` cm/s²`;
             case AccelerationUnits.DecimetersPerSecondSquared:
-                return this.DecimetersPerSecondSquared + ` dm/s²`;
+                return super.truncateFractionDigits(this.DecimetersPerSecondSquared, fractionalDigits) + ` dm/s²`;
             case AccelerationUnits.KilometersPerSecondSquared:
-                return this.KilometersPerSecondSquared + ` km/s²`;
+                return super.truncateFractionDigits(this.KilometersPerSecondSquared, fractionalDigits) + ` km/s²`;
             case AccelerationUnits.MillistandardGravity:
-                return this.MillistandardGravity + ` mg`;
+                return super.truncateFractionDigits(this.MillistandardGravity, fractionalDigits) + ` mg`;
         default:
             break;
         }

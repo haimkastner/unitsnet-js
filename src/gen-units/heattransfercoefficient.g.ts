@@ -196,22 +196,23 @@ export class HeatTransferCoefficient extends BaseUnit {
      * Note! the default format for HeatTransferCoefficient is WattsPerSquareMeterKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the HeatTransferCoefficient.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the HeatTransferCoefficient.
      */
-    public toString(unit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin): string {
+    public toString(unit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
-                return this.WattsPerSquareMeterKelvin + ` W/m²·K`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeterKelvin, fractionalDigits) + ` W/m²·K`;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
-                return this.WattsPerSquareMeterCelsius + ` W/m²·°C`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeterCelsius, fractionalDigits) + ` W/m²·°C`;
             case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
-                return this.BtusPerHourSquareFootDegreeFahrenheit + ` Btu/h·ft²·°F`;
+                return super.truncateFractionDigits(this.BtusPerHourSquareFootDegreeFahrenheit, fractionalDigits) + ` Btu/h·ft²·°F`;
             case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
-                return this.CaloriesPerHourSquareMeterDegreeCelsius + ` kcal/h·m²·°C`;
+                return super.truncateFractionDigits(this.CaloriesPerHourSquareMeterDegreeCelsius, fractionalDigits) + ` kcal/h·m²·°C`;
             case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
-                return this.KilocaloriesPerHourSquareMeterDegreeCelsius + ` kkcal/h·m²·°C`;
+                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeterDegreeCelsius, fractionalDigits) + ` kkcal/h·m²·°C`;
         default:
             break;
         }

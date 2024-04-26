@@ -222,24 +222,25 @@ export class WarpingMomentOfInertia extends BaseUnit {
      * Note! the default format for WarpingMomentOfInertia is MetersToTheSixth.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the WarpingMomentOfInertia.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the WarpingMomentOfInertia.
      */
-    public toString(unit: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth): string {
+    public toString(unit: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case WarpingMomentOfInertiaUnits.MetersToTheSixth:
-                return this.MetersToTheSixth + ` m⁶`;
+                return super.truncateFractionDigits(this.MetersToTheSixth, fractionalDigits) + ` m⁶`;
             case WarpingMomentOfInertiaUnits.DecimetersToTheSixth:
-                return this.DecimetersToTheSixth + ` dm⁶`;
+                return super.truncateFractionDigits(this.DecimetersToTheSixth, fractionalDigits) + ` dm⁶`;
             case WarpingMomentOfInertiaUnits.CentimetersToTheSixth:
-                return this.CentimetersToTheSixth + ` cm⁶`;
+                return super.truncateFractionDigits(this.CentimetersToTheSixth, fractionalDigits) + ` cm⁶`;
             case WarpingMomentOfInertiaUnits.MillimetersToTheSixth:
-                return this.MillimetersToTheSixth + ` mm⁶`;
+                return super.truncateFractionDigits(this.MillimetersToTheSixth, fractionalDigits) + ` mm⁶`;
             case WarpingMomentOfInertiaUnits.FeetToTheSixth:
-                return this.FeetToTheSixth + ` ft⁶`;
+                return super.truncateFractionDigits(this.FeetToTheSixth, fractionalDigits) + ` ft⁶`;
             case WarpingMomentOfInertiaUnits.InchesToTheSixth:
-                return this.InchesToTheSixth + ` in⁶`;
+                return super.truncateFractionDigits(this.InchesToTheSixth, fractionalDigits) + ` in⁶`;
         default:
             break;
         }

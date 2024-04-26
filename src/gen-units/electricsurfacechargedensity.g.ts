@@ -144,18 +144,19 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
      * Note! the default format for ElectricSurfaceChargeDensity is CoulombsPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricSurfaceChargeDensity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricSurfaceChargeDensity.
      */
-    public toString(unit: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter): string {
+    public toString(unit: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
-                return this.CoulombsPerSquareMeter + ` C/m²`;
+                return super.truncateFractionDigits(this.CoulombsPerSquareMeter, fractionalDigits) + ` C/m²`;
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
-                return this.CoulombsPerSquareCentimeter + ` C/cm²`;
+                return super.truncateFractionDigits(this.CoulombsPerSquareCentimeter, fractionalDigits) + ` C/cm²`;
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
-                return this.CoulombsPerSquareInch + ` C/in²`;
+                return super.truncateFractionDigits(this.CoulombsPerSquareInch, fractionalDigits) + ` C/in²`;
         default:
             break;
         }

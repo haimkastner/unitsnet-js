@@ -144,18 +144,19 @@ export class BrakeSpecificFuelConsumption extends BaseUnit {
      * Note! the default format for BrakeSpecificFuelConsumption is KilogramsPerJoule.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the BrakeSpecificFuelConsumption.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the BrakeSpecificFuelConsumption.
      */
-    public toString(unit: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule): string {
+    public toString(unit: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                return this.GramsPerKiloWattHour + ` g/kWh`;
+                return super.truncateFractionDigits(this.GramsPerKiloWattHour, fractionalDigits) + ` g/kWh`;
             case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
-                return this.KilogramsPerJoule + ` kg/J`;
+                return super.truncateFractionDigits(this.KilogramsPerJoule, fractionalDigits) + ` kg/J`;
             case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                return this.PoundsPerMechanicalHorsepowerHour + ` lb/hph`;
+                return super.truncateFractionDigits(this.PoundsPerMechanicalHorsepowerHour, fractionalDigits) + ` lb/hph`;
         default:
             break;
         }

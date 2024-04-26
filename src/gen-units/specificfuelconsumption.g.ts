@@ -170,20 +170,21 @@ export class SpecificFuelConsumption extends BaseUnit {
      * Note! the default format for SpecificFuelConsumption is GramsPerKiloNewtonSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificFuelConsumption.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the SpecificFuelConsumption.
      */
-    public toString(unit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond): string {
+    public toString(unit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
-                return this.PoundsMassPerPoundForceHour + ` lb/(lbf·h)`;
+                return super.truncateFractionDigits(this.PoundsMassPerPoundForceHour, fractionalDigits) + ` lb/(lbf·h)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return this.KilogramsPerKilogramForceHour + ` kg/(kgf�h)`;
+                return super.truncateFractionDigits(this.KilogramsPerKilogramForceHour, fractionalDigits) + ` kg/(kgf�h)`;
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return this.GramsPerKiloNewtonSecond + ` g/(kN�s)`;
+                return super.truncateFractionDigits(this.GramsPerKiloNewtonSecond, fractionalDigits) + ` g/(kN�s)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
-                return this.KilogramsPerKiloNewtonSecond + ` kg/(kN�s)`;
+                return super.truncateFractionDigits(this.KilogramsPerKiloNewtonSecond, fractionalDigits) + ` kg/(kN�s)`;
         default:
             break;
         }

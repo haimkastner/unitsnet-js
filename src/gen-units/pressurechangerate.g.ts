@@ -534,48 +534,49 @@ export class PressureChangeRate extends BaseUnit {
      * Note! the default format for PressureChangeRate is PascalsPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the PressureChangeRate.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the PressureChangeRate.
      */
-    public toString(unit: PressureChangeRateUnits = PressureChangeRateUnits.PascalsPerSecond): string {
+    public toString(unit: PressureChangeRateUnits = PressureChangeRateUnits.PascalsPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case PressureChangeRateUnits.PascalsPerSecond:
-                return this.PascalsPerSecond + ` Pa/s`;
+                return super.truncateFractionDigits(this.PascalsPerSecond, fractionalDigits) + ` Pa/s`;
             case PressureChangeRateUnits.PascalsPerMinute:
-                return this.PascalsPerMinute + ` Pa/min`;
+                return super.truncateFractionDigits(this.PascalsPerMinute, fractionalDigits) + ` Pa/min`;
             case PressureChangeRateUnits.MillimetersOfMercuryPerSecond:
-                return this.MillimetersOfMercuryPerSecond + ` mmHg/s`;
+                return super.truncateFractionDigits(this.MillimetersOfMercuryPerSecond, fractionalDigits) + ` mmHg/s`;
             case PressureChangeRateUnits.AtmospheresPerSecond:
-                return this.AtmospheresPerSecond + ` atm/s`;
+                return super.truncateFractionDigits(this.AtmospheresPerSecond, fractionalDigits) + ` atm/s`;
             case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond:
-                return this.PoundsForcePerSquareInchPerSecond + ` psi/s`;
+                return super.truncateFractionDigits(this.PoundsForcePerSquareInchPerSecond, fractionalDigits) + ` psi/s`;
             case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute:
-                return this.PoundsForcePerSquareInchPerMinute + ` psi/min`;
+                return super.truncateFractionDigits(this.PoundsForcePerSquareInchPerMinute, fractionalDigits) + ` psi/min`;
             case PressureChangeRateUnits.BarsPerSecond:
-                return this.BarsPerSecond + ` bar/s`;
+                return super.truncateFractionDigits(this.BarsPerSecond, fractionalDigits) + ` bar/s`;
             case PressureChangeRateUnits.BarsPerMinute:
-                return this.BarsPerMinute + ` bar/min`;
+                return super.truncateFractionDigits(this.BarsPerMinute, fractionalDigits) + ` bar/min`;
             case PressureChangeRateUnits.KilopascalsPerSecond:
-                return this.KilopascalsPerSecond + ` kPa/s`;
+                return super.truncateFractionDigits(this.KilopascalsPerSecond, fractionalDigits) + ` kPa/s`;
             case PressureChangeRateUnits.MegapascalsPerSecond:
-                return this.MegapascalsPerSecond + ` MPa/s`;
+                return super.truncateFractionDigits(this.MegapascalsPerSecond, fractionalDigits) + ` MPa/s`;
             case PressureChangeRateUnits.KilopascalsPerMinute:
-                return this.KilopascalsPerMinute + ` kPa/min`;
+                return super.truncateFractionDigits(this.KilopascalsPerMinute, fractionalDigits) + ` kPa/min`;
             case PressureChangeRateUnits.MegapascalsPerMinute:
-                return this.MegapascalsPerMinute + ` MPa/min`;
+                return super.truncateFractionDigits(this.MegapascalsPerMinute, fractionalDigits) + ` MPa/min`;
             case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond:
-                return this.KilopoundsForcePerSquareInchPerSecond + ` kpsi/s`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerSquareInchPerSecond, fractionalDigits) + ` kpsi/s`;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond:
-                return this.MegapoundsForcePerSquareInchPerSecond + ` Mpsi/s`;
+                return super.truncateFractionDigits(this.MegapoundsForcePerSquareInchPerSecond, fractionalDigits) + ` Mpsi/s`;
             case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute:
-                return this.KilopoundsForcePerSquareInchPerMinute + ` kpsi/min`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerSquareInchPerMinute, fractionalDigits) + ` kpsi/min`;
             case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute:
-                return this.MegapoundsForcePerSquareInchPerMinute + ` Mpsi/min`;
+                return super.truncateFractionDigits(this.MegapoundsForcePerSquareInchPerMinute, fractionalDigits) + ` Mpsi/min`;
             case PressureChangeRateUnits.MillibarsPerSecond:
-                return this.MillibarsPerSecond + ` mbar/s`;
+                return super.truncateFractionDigits(this.MillibarsPerSecond, fractionalDigits) + ` mbar/s`;
             case PressureChangeRateUnits.MillibarsPerMinute:
-                return this.MillibarsPerMinute + ` mbar/min`;
+                return super.truncateFractionDigits(this.MillibarsPerMinute, fractionalDigits) + ` mbar/min`;
         default:
             break;
         }

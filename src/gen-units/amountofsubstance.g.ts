@@ -508,46 +508,47 @@ export class AmountOfSubstance extends BaseUnit {
      * Note! the default format for AmountOfSubstance is Moles.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the AmountOfSubstance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the AmountOfSubstance.
      */
-    public toString(unit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles): string {
+    public toString(unit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case AmountOfSubstanceUnits.Moles:
-                return this.Moles + ` mol`;
+                return super.truncateFractionDigits(this.Moles, fractionalDigits) + ` mol`;
             case AmountOfSubstanceUnits.PoundMoles:
-                return this.PoundMoles + ` lbmol`;
+                return super.truncateFractionDigits(this.PoundMoles, fractionalDigits) + ` lbmol`;
             case AmountOfSubstanceUnits.Femtomoles:
-                return this.Femtomoles + ` fmol`;
+                return super.truncateFractionDigits(this.Femtomoles, fractionalDigits) + ` fmol`;
             case AmountOfSubstanceUnits.Picomoles:
-                return this.Picomoles + ` pmol`;
+                return super.truncateFractionDigits(this.Picomoles, fractionalDigits) + ` pmol`;
             case AmountOfSubstanceUnits.Nanomoles:
-                return this.Nanomoles + ` nmol`;
+                return super.truncateFractionDigits(this.Nanomoles, fractionalDigits) + ` nmol`;
             case AmountOfSubstanceUnits.Micromoles:
-                return this.Micromoles + ` μmol`;
+                return super.truncateFractionDigits(this.Micromoles, fractionalDigits) + ` μmol`;
             case AmountOfSubstanceUnits.Millimoles:
-                return this.Millimoles + ` mmol`;
+                return super.truncateFractionDigits(this.Millimoles, fractionalDigits) + ` mmol`;
             case AmountOfSubstanceUnits.Centimoles:
-                return this.Centimoles + ` cmol`;
+                return super.truncateFractionDigits(this.Centimoles, fractionalDigits) + ` cmol`;
             case AmountOfSubstanceUnits.Decimoles:
-                return this.Decimoles + ` dmol`;
+                return super.truncateFractionDigits(this.Decimoles, fractionalDigits) + ` dmol`;
             case AmountOfSubstanceUnits.Kilomoles:
-                return this.Kilomoles + ` kmol`;
+                return super.truncateFractionDigits(this.Kilomoles, fractionalDigits) + ` kmol`;
             case AmountOfSubstanceUnits.Megamoles:
-                return this.Megamoles + ` Mmol`;
+                return super.truncateFractionDigits(this.Megamoles, fractionalDigits) + ` Mmol`;
             case AmountOfSubstanceUnits.NanopoundMoles:
-                return this.NanopoundMoles + ` nlbmol`;
+                return super.truncateFractionDigits(this.NanopoundMoles, fractionalDigits) + ` nlbmol`;
             case AmountOfSubstanceUnits.MicropoundMoles:
-                return this.MicropoundMoles + ` μlbmol`;
+                return super.truncateFractionDigits(this.MicropoundMoles, fractionalDigits) + ` μlbmol`;
             case AmountOfSubstanceUnits.MillipoundMoles:
-                return this.MillipoundMoles + ` mlbmol`;
+                return super.truncateFractionDigits(this.MillipoundMoles, fractionalDigits) + ` mlbmol`;
             case AmountOfSubstanceUnits.CentipoundMoles:
-                return this.CentipoundMoles + ` clbmol`;
+                return super.truncateFractionDigits(this.CentipoundMoles, fractionalDigits) + ` clbmol`;
             case AmountOfSubstanceUnits.DecipoundMoles:
-                return this.DecipoundMoles + ` dlbmol`;
+                return super.truncateFractionDigits(this.DecipoundMoles, fractionalDigits) + ` dlbmol`;
             case AmountOfSubstanceUnits.KilopoundMoles:
-                return this.KilopoundMoles + ` klbmol`;
+                return super.truncateFractionDigits(this.KilopoundMoles, fractionalDigits) + ` klbmol`;
         default:
             break;
         }

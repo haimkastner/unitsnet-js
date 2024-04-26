@@ -170,20 +170,21 @@ export class ElectricAdmittance extends BaseUnit {
      * Note! the default format for ElectricAdmittance is Siemens.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricAdmittance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricAdmittance.
      */
-    public toString(unit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens): string {
+    public toString(unit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricAdmittanceUnits.Siemens:
-                return this.Siemens + ` S`;
+                return super.truncateFractionDigits(this.Siemens, fractionalDigits) + ` S`;
             case ElectricAdmittanceUnits.Nanosiemens:
-                return this.Nanosiemens + ` nS`;
+                return super.truncateFractionDigits(this.Nanosiemens, fractionalDigits) + ` nS`;
             case ElectricAdmittanceUnits.Microsiemens:
-                return this.Microsiemens + ` μS`;
+                return super.truncateFractionDigits(this.Microsiemens, fractionalDigits) + ` μS`;
             case ElectricAdmittanceUnits.Millisiemens:
-                return this.Millisiemens + ` mS`;
+                return super.truncateFractionDigits(this.Millisiemens, fractionalDigits) + ` mS`;
         default:
             break;
         }

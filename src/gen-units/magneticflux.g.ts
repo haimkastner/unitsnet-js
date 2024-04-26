@@ -92,14 +92,15 @@ export class MagneticFlux extends BaseUnit {
      * Note! the default format for MagneticFlux is Webers.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MagneticFlux.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the MagneticFlux.
      */
-    public toString(unit: MagneticFluxUnits = MagneticFluxUnits.Webers): string {
+    public toString(unit: MagneticFluxUnits = MagneticFluxUnits.Webers, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MagneticFluxUnits.Webers:
-                return this.Webers + ` Wb`;
+                return super.truncateFractionDigits(this.Webers, fractionalDigits) + ` Wb`;
         default:
             break;
         }

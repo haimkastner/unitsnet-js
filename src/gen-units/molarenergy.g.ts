@@ -144,18 +144,19 @@ export class MolarEnergy extends BaseUnit {
      * Note! the default format for MolarEnergy is JoulesPerMole.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MolarEnergy.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the MolarEnergy.
      */
-    public toString(unit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole): string {
+    public toString(unit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MolarEnergyUnits.JoulesPerMole:
-                return this.JoulesPerMole + ` J/mol`;
+                return super.truncateFractionDigits(this.JoulesPerMole, fractionalDigits) + ` J/mol`;
             case MolarEnergyUnits.KilojoulesPerMole:
-                return this.KilojoulesPerMole + ` kJ/mol`;
+                return super.truncateFractionDigits(this.KilojoulesPerMole, fractionalDigits) + ` kJ/mol`;
             case MolarEnergyUnits.MegajoulesPerMole:
-                return this.MegajoulesPerMole + ` MJ/mol`;
+                return super.truncateFractionDigits(this.MegajoulesPerMole, fractionalDigits) + ` MJ/mol`;
         default:
             break;
         }

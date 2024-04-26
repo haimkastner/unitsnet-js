@@ -170,20 +170,21 @@ export class AmplitudeRatio extends BaseUnit {
      * Note! the default format for AmplitudeRatio is DecibelVolts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the AmplitudeRatio.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the AmplitudeRatio.
      */
-    public toString(unit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts): string {
+    public toString(unit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case AmplitudeRatioUnits.DecibelVolts:
-                return this.DecibelVolts + ` dBV`;
+                return super.truncateFractionDigits(this.DecibelVolts, fractionalDigits) + ` dBV`;
             case AmplitudeRatioUnits.DecibelMicrovolts:
-                return this.DecibelMicrovolts + ` dBµV`;
+                return super.truncateFractionDigits(this.DecibelMicrovolts, fractionalDigits) + ` dBµV`;
             case AmplitudeRatioUnits.DecibelMillivolts:
-                return this.DecibelMillivolts + ` dBmV`;
+                return super.truncateFractionDigits(this.DecibelMillivolts, fractionalDigits) + ` dBmV`;
             case AmplitudeRatioUnits.DecibelsUnloaded:
-                return this.DecibelsUnloaded + ` dBu`;
+                return super.truncateFractionDigits(this.DecibelsUnloaded, fractionalDigits) + ` dBu`;
         default:
             break;
         }

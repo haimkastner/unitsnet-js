@@ -92,14 +92,15 @@ export class VitaminA extends BaseUnit {
      * Note! the default format for VitaminA is InternationalUnits.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the VitaminA.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the VitaminA.
      */
-    public toString(unit: VitaminAUnits = VitaminAUnits.InternationalUnits): string {
+    public toString(unit: VitaminAUnits = VitaminAUnits.InternationalUnits, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case VitaminAUnits.InternationalUnits:
-                return this.InternationalUnits + ` IU`;
+                return super.truncateFractionDigits(this.InternationalUnits, fractionalDigits) + ` IU`;
         default:
             break;
         }

@@ -326,32 +326,33 @@ export class Temperature extends BaseUnit {
      * Note! the default format for Temperature is Kelvins.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Temperature.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Temperature.
      */
-    public toString(unit: TemperatureUnits = TemperatureUnits.Kelvins): string {
+    public toString(unit: TemperatureUnits = TemperatureUnits.Kelvins, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case TemperatureUnits.Kelvins:
-                return this.Kelvins + ` K`;
+                return super.truncateFractionDigits(this.Kelvins, fractionalDigits) + ` K`;
             case TemperatureUnits.DegreesCelsius:
-                return this.DegreesCelsius + ` °C`;
+                return super.truncateFractionDigits(this.DegreesCelsius, fractionalDigits) + ` °C`;
             case TemperatureUnits.MillidegreesCelsius:
-                return this.MillidegreesCelsius + ` m°C`;
+                return super.truncateFractionDigits(this.MillidegreesCelsius, fractionalDigits) + ` m°C`;
             case TemperatureUnits.DegreesDelisle:
-                return this.DegreesDelisle + ` °De`;
+                return super.truncateFractionDigits(this.DegreesDelisle, fractionalDigits) + ` °De`;
             case TemperatureUnits.DegreesFahrenheit:
-                return this.DegreesFahrenheit + ` °F`;
+                return super.truncateFractionDigits(this.DegreesFahrenheit, fractionalDigits) + ` °F`;
             case TemperatureUnits.DegreesNewton:
-                return this.DegreesNewton + ` °N`;
+                return super.truncateFractionDigits(this.DegreesNewton, fractionalDigits) + ` °N`;
             case TemperatureUnits.DegreesRankine:
-                return this.DegreesRankine + ` °R`;
+                return super.truncateFractionDigits(this.DegreesRankine, fractionalDigits) + ` °R`;
             case TemperatureUnits.DegreesReaumur:
-                return this.DegreesReaumur + ` °Ré`;
+                return super.truncateFractionDigits(this.DegreesReaumur, fractionalDigits) + ` °Ré`;
             case TemperatureUnits.DegreesRoemer:
-                return this.DegreesRoemer + ` °Rø`;
+                return super.truncateFractionDigits(this.DegreesRoemer, fractionalDigits) + ` °Rø`;
             case TemperatureUnits.SolarTemperatures:
-                return this.SolarTemperatures + ` T⊙`;
+                return super.truncateFractionDigits(this.SolarTemperatures, fractionalDigits) + ` T⊙`;
         default:
             break;
         }

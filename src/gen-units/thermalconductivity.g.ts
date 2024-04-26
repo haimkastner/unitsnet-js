@@ -118,16 +118,17 @@ export class ThermalConductivity extends BaseUnit {
      * Note! the default format for ThermalConductivity is WattsPerMeterKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ThermalConductivity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ThermalConductivity.
      */
-    public toString(unit: ThermalConductivityUnits = ThermalConductivityUnits.WattsPerMeterKelvin): string {
+    public toString(unit: ThermalConductivityUnits = ThermalConductivityUnits.WattsPerMeterKelvin, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ThermalConductivityUnits.WattsPerMeterKelvin:
-                return this.WattsPerMeterKelvin + ` W/m·K`;
+                return super.truncateFractionDigits(this.WattsPerMeterKelvin, fractionalDigits) + ` W/m·K`;
             case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                return this.BtusPerHourFootFahrenheit + ` BTU/h·ft·°F`;
+                return super.truncateFractionDigits(this.BtusPerHourFootFahrenheit, fractionalDigits) + ` BTU/h·ft·°F`;
         default:
             break;
         }

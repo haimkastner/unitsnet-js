@@ -92,14 +92,15 @@ export class Permittivity extends BaseUnit {
      * Note! the default format for Permittivity is FaradsPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Permittivity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Permittivity.
      */
-    public toString(unit: PermittivityUnits = PermittivityUnits.FaradsPerMeter): string {
+    public toString(unit: PermittivityUnits = PermittivityUnits.FaradsPerMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case PermittivityUnits.FaradsPerMeter:
-                return this.FaradsPerMeter + ` F/m`;
+                return super.truncateFractionDigits(this.FaradsPerMeter, fractionalDigits) + ` F/m`;
         default:
             break;
         }

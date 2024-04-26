@@ -456,42 +456,43 @@ export class Force extends BaseUnit {
      * Note! the default format for Force is Newtons.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Force.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Force.
      */
-    public toString(unit: ForceUnits = ForceUnits.Newtons): string {
+    public toString(unit: ForceUnits = ForceUnits.Newtons, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ForceUnits.Dyne:
-                return this.Dyne + ` dyn`;
+                return super.truncateFractionDigits(this.Dyne, fractionalDigits) + ` dyn`;
             case ForceUnits.KilogramsForce:
-                return this.KilogramsForce + ` kgf`;
+                return super.truncateFractionDigits(this.KilogramsForce, fractionalDigits) + ` kgf`;
             case ForceUnits.TonnesForce:
-                return this.TonnesForce + ` tf`;
+                return super.truncateFractionDigits(this.TonnesForce, fractionalDigits) + ` tf`;
             case ForceUnits.Newtons:
-                return this.Newtons + ` N`;
+                return super.truncateFractionDigits(this.Newtons, fractionalDigits) + ` N`;
             case ForceUnits.KiloPonds:
-                return this.KiloPonds + ` kp`;
+                return super.truncateFractionDigits(this.KiloPonds, fractionalDigits) + ` kp`;
             case ForceUnits.Poundals:
-                return this.Poundals + ` pdl`;
+                return super.truncateFractionDigits(this.Poundals, fractionalDigits) + ` pdl`;
             case ForceUnits.PoundsForce:
-                return this.PoundsForce + ` lbf`;
+                return super.truncateFractionDigits(this.PoundsForce, fractionalDigits) + ` lbf`;
             case ForceUnits.OunceForce:
-                return this.OunceForce + ` ozf`;
+                return super.truncateFractionDigits(this.OunceForce, fractionalDigits) + ` ozf`;
             case ForceUnits.ShortTonsForce:
-                return this.ShortTonsForce + ` tf (short)`;
+                return super.truncateFractionDigits(this.ShortTonsForce, fractionalDigits) + ` tf (short)`;
             case ForceUnits.Micronewtons:
-                return this.Micronewtons + ` μN`;
+                return super.truncateFractionDigits(this.Micronewtons, fractionalDigits) + ` μN`;
             case ForceUnits.Millinewtons:
-                return this.Millinewtons + ` mN`;
+                return super.truncateFractionDigits(this.Millinewtons, fractionalDigits) + ` mN`;
             case ForceUnits.Decanewtons:
-                return this.Decanewtons + ` daN`;
+                return super.truncateFractionDigits(this.Decanewtons, fractionalDigits) + ` daN`;
             case ForceUnits.Kilonewtons:
-                return this.Kilonewtons + ` kN`;
+                return super.truncateFractionDigits(this.Kilonewtons, fractionalDigits) + ` kN`;
             case ForceUnits.Meganewtons:
-                return this.Meganewtons + ` MN`;
+                return super.truncateFractionDigits(this.Meganewtons, fractionalDigits) + ` MN`;
             case ForceUnits.KilopoundsForce:
-                return this.KilopoundsForce + ` klbf`;
+                return super.truncateFractionDigits(this.KilopoundsForce, fractionalDigits) + ` klbf`;
         default:
             break;
         }

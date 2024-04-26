@@ -144,18 +144,19 @@ export class MolarEntropy extends BaseUnit {
      * Note! the default format for MolarEntropy is JoulesPerMoleKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MolarEntropy.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the MolarEntropy.
      */
-    public toString(unit: MolarEntropyUnits = MolarEntropyUnits.JoulesPerMoleKelvin): string {
+    public toString(unit: MolarEntropyUnits = MolarEntropyUnits.JoulesPerMoleKelvin, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MolarEntropyUnits.JoulesPerMoleKelvin:
-                return this.JoulesPerMoleKelvin + ` J/(mol*K)`;
+                return super.truncateFractionDigits(this.JoulesPerMoleKelvin, fractionalDigits) + ` J/(mol*K)`;
             case MolarEntropyUnits.KilojoulesPerMoleKelvin:
-                return this.KilojoulesPerMoleKelvin + ` kJ/(mol*K)`;
+                return super.truncateFractionDigits(this.KilojoulesPerMoleKelvin, fractionalDigits) + ` kJ/(mol*K)`;
             case MolarEntropyUnits.MegajoulesPerMoleKelvin:
-                return this.MegajoulesPerMoleKelvin + ` MJ/(mol*K)`;
+                return super.truncateFractionDigits(this.MegajoulesPerMoleKelvin, fractionalDigits) + ` MJ/(mol*K)`;
         default:
             break;
         }

@@ -326,32 +326,33 @@ export class DynamicViscosity extends BaseUnit {
      * Note! the default format for DynamicViscosity is NewtonSecondsPerMeterSquared.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the DynamicViscosity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the DynamicViscosity.
      */
-    public toString(unit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared): string {
+    public toString(unit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case DynamicViscosityUnits.NewtonSecondsPerMeterSquared:
-                return this.NewtonSecondsPerMeterSquared + ` Ns/m²`;
+                return super.truncateFractionDigits(this.NewtonSecondsPerMeterSquared, fractionalDigits) + ` Ns/m²`;
             case DynamicViscosityUnits.PascalSeconds:
-                return this.PascalSeconds + ` Pa·s`;
+                return super.truncateFractionDigits(this.PascalSeconds, fractionalDigits) + ` Pa·s`;
             case DynamicViscosityUnits.Poise:
-                return this.Poise + ` P`;
+                return super.truncateFractionDigits(this.Poise, fractionalDigits) + ` P`;
             case DynamicViscosityUnits.Reyns:
-                return this.Reyns + ` reyn`;
+                return super.truncateFractionDigits(this.Reyns, fractionalDigits) + ` reyn`;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareInch:
-                return this.PoundsForceSecondPerSquareInch + ` lbf·s/in²`;
+                return super.truncateFractionDigits(this.PoundsForceSecondPerSquareInch, fractionalDigits) + ` lbf·s/in²`;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
-                return this.PoundsForceSecondPerSquareFoot + ` lbf·s/ft²`;
+                return super.truncateFractionDigits(this.PoundsForceSecondPerSquareFoot, fractionalDigits) + ` lbf·s/ft²`;
             case DynamicViscosityUnits.PoundsPerFootSecond:
-                return this.PoundsPerFootSecond + ` lb/ft·s`;
+                return super.truncateFractionDigits(this.PoundsPerFootSecond, fractionalDigits) + ` lb/ft·s`;
             case DynamicViscosityUnits.MillipascalSeconds:
-                return this.MillipascalSeconds + ` mPa·s`;
+                return super.truncateFractionDigits(this.MillipascalSeconds, fractionalDigits) + ` mPa·s`;
             case DynamicViscosityUnits.MicropascalSeconds:
-                return this.MicropascalSeconds + ` μPa·s`;
+                return super.truncateFractionDigits(this.MicropascalSeconds, fractionalDigits) + ` μPa·s`;
             case DynamicViscosityUnits.Centipoise:
-                return this.Centipoise + ` cP`;
+                return super.truncateFractionDigits(this.Centipoise, fractionalDigits) + ` cP`;
         default:
             break;
         }

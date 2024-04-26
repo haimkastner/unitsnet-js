@@ -404,38 +404,39 @@ export class RotationalSpeed extends BaseUnit {
      * Note! the default format for RotationalSpeed is RadiansPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RotationalSpeed.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the RotationalSpeed.
      */
-    public toString(unit: RotationalSpeedUnits = RotationalSpeedUnits.RadiansPerSecond): string {
+    public toString(unit: RotationalSpeedUnits = RotationalSpeedUnits.RadiansPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case RotationalSpeedUnits.RadiansPerSecond:
-                return this.RadiansPerSecond + ` rad/s`;
+                return super.truncateFractionDigits(this.RadiansPerSecond, fractionalDigits) + ` rad/s`;
             case RotationalSpeedUnits.DegreesPerSecond:
-                return this.DegreesPerSecond + ` °/s`;
+                return super.truncateFractionDigits(this.DegreesPerSecond, fractionalDigits) + ` °/s`;
             case RotationalSpeedUnits.DegreesPerMinute:
-                return this.DegreesPerMinute + ` °/min`;
+                return super.truncateFractionDigits(this.DegreesPerMinute, fractionalDigits) + ` °/min`;
             case RotationalSpeedUnits.RevolutionsPerSecond:
-                return this.RevolutionsPerSecond + ` r/s`;
+                return super.truncateFractionDigits(this.RevolutionsPerSecond, fractionalDigits) + ` r/s`;
             case RotationalSpeedUnits.RevolutionsPerMinute:
-                return this.RevolutionsPerMinute + ` rpm`;
+                return super.truncateFractionDigits(this.RevolutionsPerMinute, fractionalDigits) + ` rpm`;
             case RotationalSpeedUnits.NanoradiansPerSecond:
-                return this.NanoradiansPerSecond + ` nrad/s`;
+                return super.truncateFractionDigits(this.NanoradiansPerSecond, fractionalDigits) + ` nrad/s`;
             case RotationalSpeedUnits.MicroradiansPerSecond:
-                return this.MicroradiansPerSecond + ` μrad/s`;
+                return super.truncateFractionDigits(this.MicroradiansPerSecond, fractionalDigits) + ` μrad/s`;
             case RotationalSpeedUnits.MilliradiansPerSecond:
-                return this.MilliradiansPerSecond + ` mrad/s`;
+                return super.truncateFractionDigits(this.MilliradiansPerSecond, fractionalDigits) + ` mrad/s`;
             case RotationalSpeedUnits.CentiradiansPerSecond:
-                return this.CentiradiansPerSecond + ` crad/s`;
+                return super.truncateFractionDigits(this.CentiradiansPerSecond, fractionalDigits) + ` crad/s`;
             case RotationalSpeedUnits.DeciradiansPerSecond:
-                return this.DeciradiansPerSecond + ` drad/s`;
+                return super.truncateFractionDigits(this.DeciradiansPerSecond, fractionalDigits) + ` drad/s`;
             case RotationalSpeedUnits.NanodegreesPerSecond:
-                return this.NanodegreesPerSecond + ` n°/s`;
+                return super.truncateFractionDigits(this.NanodegreesPerSecond, fractionalDigits) + ` n°/s`;
             case RotationalSpeedUnits.MicrodegreesPerSecond:
-                return this.MicrodegreesPerSecond + ` μ°/s`;
+                return super.truncateFractionDigits(this.MicrodegreesPerSecond, fractionalDigits) + ` μ°/s`;
             case RotationalSpeedUnits.MillidegreesPerSecond:
-                return this.MillidegreesPerSecond + ` m°/s`;
+                return super.truncateFractionDigits(this.MillidegreesPerSecond, fractionalDigits) + ` m°/s`;
         default:
             break;
         }

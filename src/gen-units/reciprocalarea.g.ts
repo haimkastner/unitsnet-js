@@ -352,34 +352,35 @@ export class ReciprocalArea extends BaseUnit {
      * Note! the default format for ReciprocalArea is InverseSquareMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ReciprocalArea.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ReciprocalArea.
      */
-    public toString(unit: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters): string {
+    public toString(unit: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ReciprocalAreaUnits.InverseSquareMeters:
-                return this.InverseSquareMeters + ` m⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareMeters, fractionalDigits) + ` m⁻²`;
             case ReciprocalAreaUnits.InverseSquareKilometers:
-                return this.InverseSquareKilometers + ` km⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareKilometers, fractionalDigits) + ` km⁻²`;
             case ReciprocalAreaUnits.InverseSquareDecimeters:
-                return this.InverseSquareDecimeters + ` dm⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareDecimeters, fractionalDigits) + ` dm⁻²`;
             case ReciprocalAreaUnits.InverseSquareCentimeters:
-                return this.InverseSquareCentimeters + ` cm⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareCentimeters, fractionalDigits) + ` cm⁻²`;
             case ReciprocalAreaUnits.InverseSquareMillimeters:
-                return this.InverseSquareMillimeters + ` mm⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareMillimeters, fractionalDigits) + ` mm⁻²`;
             case ReciprocalAreaUnits.InverseSquareMicrometers:
-                return this.InverseSquareMicrometers + ` µm⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareMicrometers, fractionalDigits) + ` µm⁻²`;
             case ReciprocalAreaUnits.InverseSquareMiles:
-                return this.InverseSquareMiles + ` mi⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareMiles, fractionalDigits) + ` mi⁻²`;
             case ReciprocalAreaUnits.InverseSquareYards:
-                return this.InverseSquareYards + ` yd⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareYards, fractionalDigits) + ` yd⁻²`;
             case ReciprocalAreaUnits.InverseSquareFeet:
-                return this.InverseSquareFeet + ` ft⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareFeet, fractionalDigits) + ` ft⁻²`;
             case ReciprocalAreaUnits.InverseUsSurveySquareFeet:
-                return this.InverseUsSurveySquareFeet + ` ft⁻² (US)`;
+                return super.truncateFractionDigits(this.InverseUsSurveySquareFeet, fractionalDigits) + ` ft⁻² (US)`;
             case ReciprocalAreaUnits.InverseSquareInches:
-                return this.InverseSquareInches + ` in⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareInches, fractionalDigits) + ` in⁻²`;
         default:
             break;
         }

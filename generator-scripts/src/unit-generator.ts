@@ -298,6 +298,10 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
             text: `unit The unit to format the ${unitName}.`
         }, {
             kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `fractionalDigits The number of fractional digits to keep.`
+        }, {
+            kind: StructureKind.JSDocTag,
             tagName: 'returns',
             text: `The string format of the ${unitName}.`
         }]
@@ -308,7 +312,7 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
         toStringCases +=
             `
     case ${enumName}.${unit.pluralName}:
-        return this.${unit.pluralName} + ` + '` ' + unit.Abbreviation + '`;';
+        return super.truncateFractionDigits(this.${unit.pluralName}, fractionalDigits) + ` + '` ' + unit.Abbreviation + '`;';
     }
 
     return {
@@ -319,6 +323,10 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
             name: 'unit',
             type: enumName,
             initializer: `${enumName}.${baseUnit.pluralName}`
+        }, {
+            name: 'fractionalDigits',
+            type: 'number',
+            hasQuestionToken: true
         }],
         returnType: 'string',
         docs: [docs],

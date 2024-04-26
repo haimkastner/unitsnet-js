@@ -482,44 +482,45 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
      * Note! the default format for AbsorbedDoseOfIonizingRadiation is Grays.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the AbsorbedDoseOfIonizingRadiation.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the AbsorbedDoseOfIonizingRadiation.
      */
-    public toString(unit: AbsorbedDoseOfIonizingRadiationUnits = AbsorbedDoseOfIonizingRadiationUnits.Grays): string {
+    public toString(unit: AbsorbedDoseOfIonizingRadiationUnits = AbsorbedDoseOfIonizingRadiationUnits.Grays, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case AbsorbedDoseOfIonizingRadiationUnits.Grays:
-                return this.Grays + ` Gy`;
+                return super.truncateFractionDigits(this.Grays, fractionalDigits) + ` Gy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Rads:
-                return this.Rads + ` rad`;
+                return super.truncateFractionDigits(this.Rads, fractionalDigits) + ` rad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Femtograys:
-                return this.Femtograys + ` fGy`;
+                return super.truncateFractionDigits(this.Femtograys, fractionalDigits) + ` fGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Picograys:
-                return this.Picograys + ` pGy`;
+                return super.truncateFractionDigits(this.Picograys, fractionalDigits) + ` pGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Nanograys:
-                return this.Nanograys + ` nGy`;
+                return super.truncateFractionDigits(this.Nanograys, fractionalDigits) + ` nGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Micrograys:
-                return this.Micrograys + ` μGy`;
+                return super.truncateFractionDigits(this.Micrograys, fractionalDigits) + ` μGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Milligrays:
-                return this.Milligrays + ` mGy`;
+                return super.truncateFractionDigits(this.Milligrays, fractionalDigits) + ` mGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Centigrays:
-                return this.Centigrays + ` cGy`;
+                return super.truncateFractionDigits(this.Centigrays, fractionalDigits) + ` cGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilograys:
-                return this.Kilograys + ` kGy`;
+                return super.truncateFractionDigits(this.Kilograys, fractionalDigits) + ` kGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megagrays:
-                return this.Megagrays + ` MGy`;
+                return super.truncateFractionDigits(this.Megagrays, fractionalDigits) + ` MGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays:
-                return this.Gigagrays + ` GGy`;
+                return super.truncateFractionDigits(this.Gigagrays, fractionalDigits) + ` GGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Teragrays:
-                return this.Teragrays + ` TGy`;
+                return super.truncateFractionDigits(this.Teragrays, fractionalDigits) + ` TGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Petagrays:
-                return this.Petagrays + ` PGy`;
+                return super.truncateFractionDigits(this.Petagrays, fractionalDigits) + ` PGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Millirads:
-                return this.Millirads + ` mrad`;
+                return super.truncateFractionDigits(this.Millirads, fractionalDigits) + ` mrad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilorads:
-                return this.Kilorads + ` krad`;
+                return super.truncateFractionDigits(this.Kilorads, fractionalDigits) + ` krad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megarads:
-                return this.Megarads + ` Mrad`;
+                return super.truncateFractionDigits(this.Megarads, fractionalDigits) + ` Mrad`;
         default:
             break;
         }

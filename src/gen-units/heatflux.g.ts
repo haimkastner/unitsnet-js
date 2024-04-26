@@ -534,48 +534,49 @@ export class HeatFlux extends BaseUnit {
      * Note! the default format for HeatFlux is WattsPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the HeatFlux.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the HeatFlux.
      */
-    public toString(unit: HeatFluxUnits = HeatFluxUnits.WattsPerSquareMeter): string {
+    public toString(unit: HeatFluxUnits = HeatFluxUnits.WattsPerSquareMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case HeatFluxUnits.WattsPerSquareMeter:
-                return this.WattsPerSquareMeter + ` W/m²`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeter, fractionalDigits) + ` W/m²`;
             case HeatFluxUnits.WattsPerSquareInch:
-                return this.WattsPerSquareInch + ` W/in²`;
+                return super.truncateFractionDigits(this.WattsPerSquareInch, fractionalDigits) + ` W/in²`;
             case HeatFluxUnits.WattsPerSquareFoot:
-                return this.WattsPerSquareFoot + ` W/ft²`;
+                return super.truncateFractionDigits(this.WattsPerSquareFoot, fractionalDigits) + ` W/ft²`;
             case HeatFluxUnits.BtusPerSecondSquareInch:
-                return this.BtusPerSecondSquareInch + ` BTU/s·in²`;
+                return super.truncateFractionDigits(this.BtusPerSecondSquareInch, fractionalDigits) + ` BTU/s·in²`;
             case HeatFluxUnits.BtusPerSecondSquareFoot:
-                return this.BtusPerSecondSquareFoot + ` BTU/s·ft²`;
+                return super.truncateFractionDigits(this.BtusPerSecondSquareFoot, fractionalDigits) + ` BTU/s·ft²`;
             case HeatFluxUnits.BtusPerMinuteSquareFoot:
-                return this.BtusPerMinuteSquareFoot + ` BTU/min·ft²`;
+                return super.truncateFractionDigits(this.BtusPerMinuteSquareFoot, fractionalDigits) + ` BTU/min·ft²`;
             case HeatFluxUnits.BtusPerHourSquareFoot:
-                return this.BtusPerHourSquareFoot + ` BTU/h·ft²`;
+                return super.truncateFractionDigits(this.BtusPerHourSquareFoot, fractionalDigits) + ` BTU/h·ft²`;
             case HeatFluxUnits.CaloriesPerSecondSquareCentimeter:
-                return this.CaloriesPerSecondSquareCentimeter + ` cal/s·cm²`;
+                return super.truncateFractionDigits(this.CaloriesPerSecondSquareCentimeter, fractionalDigits) + ` cal/s·cm²`;
             case HeatFluxUnits.KilocaloriesPerHourSquareMeter:
-                return this.KilocaloriesPerHourSquareMeter + ` kcal/h·m²`;
+                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeter, fractionalDigits) + ` kcal/h·m²`;
             case HeatFluxUnits.PoundsForcePerFootSecond:
-                return this.PoundsForcePerFootSecond + ` lbf/(ft·s)`;
+                return super.truncateFractionDigits(this.PoundsForcePerFootSecond, fractionalDigits) + ` lbf/(ft·s)`;
             case HeatFluxUnits.PoundsPerSecondCubed:
-                return this.PoundsPerSecondCubed + ` lb/s³`;
+                return super.truncateFractionDigits(this.PoundsPerSecondCubed, fractionalDigits) + ` lb/s³`;
             case HeatFluxUnits.NanowattsPerSquareMeter:
-                return this.NanowattsPerSquareMeter + ` nW/m²`;
+                return super.truncateFractionDigits(this.NanowattsPerSquareMeter, fractionalDigits) + ` nW/m²`;
             case HeatFluxUnits.MicrowattsPerSquareMeter:
-                return this.MicrowattsPerSquareMeter + ` μW/m²`;
+                return super.truncateFractionDigits(this.MicrowattsPerSquareMeter, fractionalDigits) + ` μW/m²`;
             case HeatFluxUnits.MilliwattsPerSquareMeter:
-                return this.MilliwattsPerSquareMeter + ` mW/m²`;
+                return super.truncateFractionDigits(this.MilliwattsPerSquareMeter, fractionalDigits) + ` mW/m²`;
             case HeatFluxUnits.CentiwattsPerSquareMeter:
-                return this.CentiwattsPerSquareMeter + ` cW/m²`;
+                return super.truncateFractionDigits(this.CentiwattsPerSquareMeter, fractionalDigits) + ` cW/m²`;
             case HeatFluxUnits.DeciwattsPerSquareMeter:
-                return this.DeciwattsPerSquareMeter + ` dW/m²`;
+                return super.truncateFractionDigits(this.DeciwattsPerSquareMeter, fractionalDigits) + ` dW/m²`;
             case HeatFluxUnits.KilowattsPerSquareMeter:
-                return this.KilowattsPerSquareMeter + ` kW/m²`;
+                return super.truncateFractionDigits(this.KilowattsPerSquareMeter, fractionalDigits) + ` kW/m²`;
             case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter:
-                return this.KilocaloriesPerSecondSquareCentimeter + ` kcal/s·cm²`;
+                return super.truncateFractionDigits(this.KilocaloriesPerSecondSquareCentimeter, fractionalDigits) + ` kcal/s·cm²`;
         default:
             break;
         }

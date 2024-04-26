@@ -144,18 +144,19 @@ export class ApparentEnergy extends BaseUnit {
      * Note! the default format for ApparentEnergy is VoltampereHours.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ApparentEnergy.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ApparentEnergy.
      */
-    public toString(unit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours): string {
+    public toString(unit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ApparentEnergyUnits.VoltampereHours:
-                return this.VoltampereHours + ` VAh`;
+                return super.truncateFractionDigits(this.VoltampereHours, fractionalDigits) + ` VAh`;
             case ApparentEnergyUnits.KilovoltampereHours:
-                return this.KilovoltampereHours + ` kVAh`;
+                return super.truncateFractionDigits(this.KilovoltampereHours, fractionalDigits) + ` kVAh`;
             case ApparentEnergyUnits.MegavoltampereHours:
-                return this.MegavoltampereHours + ` MVAh`;
+                return super.truncateFractionDigits(this.MegavoltampereHours, fractionalDigits) + ` MVAh`;
         default:
             break;
         }

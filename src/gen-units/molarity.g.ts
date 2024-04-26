@@ -352,34 +352,35 @@ export class Molarity extends BaseUnit {
      * Note! the default format for Molarity is MolesPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Molarity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Molarity.
      */
-    public toString(unit: MolarityUnits = MolarityUnits.MolesPerCubicMeter): string {
+    public toString(unit: MolarityUnits = MolarityUnits.MolesPerCubicMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MolarityUnits.MolesPerCubicMeter:
-                return this.MolesPerCubicMeter + ` mol/m³`;
+                return super.truncateFractionDigits(this.MolesPerCubicMeter, fractionalDigits) + ` mol/m³`;
             case MolarityUnits.MolesPerLiter:
-                return this.MolesPerLiter + ` mol/L`;
+                return super.truncateFractionDigits(this.MolesPerLiter, fractionalDigits) + ` mol/L`;
             case MolarityUnits.PoundMolesPerCubicFoot:
-                return this.PoundMolesPerCubicFoot + ` lbmol/ft³`;
+                return super.truncateFractionDigits(this.PoundMolesPerCubicFoot, fractionalDigits) + ` lbmol/ft³`;
             case MolarityUnits.KilomolesPerCubicMeter:
-                return this.KilomolesPerCubicMeter + ` kmol/m³`;
+                return super.truncateFractionDigits(this.KilomolesPerCubicMeter, fractionalDigits) + ` kmol/m³`;
             case MolarityUnits.FemtomolesPerLiter:
-                return this.FemtomolesPerLiter + ` fmol/L`;
+                return super.truncateFractionDigits(this.FemtomolesPerLiter, fractionalDigits) + ` fmol/L`;
             case MolarityUnits.PicomolesPerLiter:
-                return this.PicomolesPerLiter + ` pmol/L`;
+                return super.truncateFractionDigits(this.PicomolesPerLiter, fractionalDigits) + ` pmol/L`;
             case MolarityUnits.NanomolesPerLiter:
-                return this.NanomolesPerLiter + ` nmol/L`;
+                return super.truncateFractionDigits(this.NanomolesPerLiter, fractionalDigits) + ` nmol/L`;
             case MolarityUnits.MicromolesPerLiter:
-                return this.MicromolesPerLiter + ` μmol/L`;
+                return super.truncateFractionDigits(this.MicromolesPerLiter, fractionalDigits) + ` μmol/L`;
             case MolarityUnits.MillimolesPerLiter:
-                return this.MillimolesPerLiter + ` mmol/L`;
+                return super.truncateFractionDigits(this.MillimolesPerLiter, fractionalDigits) + ` mmol/L`;
             case MolarityUnits.CentimolesPerLiter:
-                return this.CentimolesPerLiter + ` cmol/L`;
+                return super.truncateFractionDigits(this.CentimolesPerLiter, fractionalDigits) + ` cmol/L`;
             case MolarityUnits.DecimolesPerLiter:
-                return this.DecimolesPerLiter + ` dmol/L`;
+                return super.truncateFractionDigits(this.DecimolesPerLiter, fractionalDigits) + ` dmol/L`;
         default:
             break;
         }

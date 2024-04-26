@@ -300,30 +300,31 @@ export class ElectricCurrent extends BaseUnit {
      * Note! the default format for ElectricCurrent is Amperes.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricCurrent.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricCurrent.
      */
-    public toString(unit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes): string {
+    public toString(unit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricCurrentUnits.Amperes:
-                return this.Amperes + ` A`;
+                return super.truncateFractionDigits(this.Amperes, fractionalDigits) + ` A`;
             case ElectricCurrentUnits.Femtoamperes:
-                return this.Femtoamperes + ` fA`;
+                return super.truncateFractionDigits(this.Femtoamperes, fractionalDigits) + ` fA`;
             case ElectricCurrentUnits.Picoamperes:
-                return this.Picoamperes + ` pA`;
+                return super.truncateFractionDigits(this.Picoamperes, fractionalDigits) + ` pA`;
             case ElectricCurrentUnits.Nanoamperes:
-                return this.Nanoamperes + ` nA`;
+                return super.truncateFractionDigits(this.Nanoamperes, fractionalDigits) + ` nA`;
             case ElectricCurrentUnits.Microamperes:
-                return this.Microamperes + ` μA`;
+                return super.truncateFractionDigits(this.Microamperes, fractionalDigits) + ` μA`;
             case ElectricCurrentUnits.Milliamperes:
-                return this.Milliamperes + ` mA`;
+                return super.truncateFractionDigits(this.Milliamperes, fractionalDigits) + ` mA`;
             case ElectricCurrentUnits.Centiamperes:
-                return this.Centiamperes + ` cA`;
+                return super.truncateFractionDigits(this.Centiamperes, fractionalDigits) + ` cA`;
             case ElectricCurrentUnits.Kiloamperes:
-                return this.Kiloamperes + ` kA`;
+                return super.truncateFractionDigits(this.Kiloamperes, fractionalDigits) + ` kA`;
             case ElectricCurrentUnits.Megaamperes:
-                return this.Megaamperes + ` MA`;
+                return super.truncateFractionDigits(this.Megaamperes, fractionalDigits) + ` MA`;
         default:
             break;
         }

@@ -300,30 +300,31 @@ export class SpecificEntropy extends BaseUnit {
      * Note! the default format for SpecificEntropy is JoulesPerKilogramKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificEntropy.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the SpecificEntropy.
      */
-    public toString(unit: SpecificEntropyUnits = SpecificEntropyUnits.JoulesPerKilogramKelvin): string {
+    public toString(unit: SpecificEntropyUnits = SpecificEntropyUnits.JoulesPerKilogramKelvin, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case SpecificEntropyUnits.JoulesPerKilogramKelvin:
-                return this.JoulesPerKilogramKelvin + ` J/kg.K`;
+                return super.truncateFractionDigits(this.JoulesPerKilogramKelvin, fractionalDigits) + ` J/kg.K`;
             case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
-                return this.JoulesPerKilogramDegreeCelsius + ` J/kg.C`;
+                return super.truncateFractionDigits(this.JoulesPerKilogramDegreeCelsius, fractionalDigits) + ` J/kg.C`;
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return this.CaloriesPerGramKelvin + ` cal/g.K`;
+                return super.truncateFractionDigits(this.CaloriesPerGramKelvin, fractionalDigits) + ` cal/g.K`;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
-                return this.BtusPerPoundFahrenheit + ` BTU/lb·°F`;
+                return super.truncateFractionDigits(this.BtusPerPoundFahrenheit, fractionalDigits) + ` BTU/lb·°F`;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
-                return this.KilojoulesPerKilogramKelvin + ` kJ/kg.K`;
+                return super.truncateFractionDigits(this.KilojoulesPerKilogramKelvin, fractionalDigits) + ` kJ/kg.K`;
             case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
-                return this.MegajoulesPerKilogramKelvin + ` MJ/kg.K`;
+                return super.truncateFractionDigits(this.MegajoulesPerKilogramKelvin, fractionalDigits) + ` MJ/kg.K`;
             case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
-                return this.KilojoulesPerKilogramDegreeCelsius + ` kJ/kg.C`;
+                return super.truncateFractionDigits(this.KilojoulesPerKilogramDegreeCelsius, fractionalDigits) + ` kJ/kg.C`;
             case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
-                return this.MegajoulesPerKilogramDegreeCelsius + ` MJ/kg.C`;
+                return super.truncateFractionDigits(this.MegajoulesPerKilogramDegreeCelsius, fractionalDigits) + ` MJ/kg.C`;
             case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return this.KilocaloriesPerGramKelvin + ` kcal/g.K`;
+                return super.truncateFractionDigits(this.KilocaloriesPerGramKelvin, fractionalDigits) + ` kcal/g.K`;
         default:
             break;
         }

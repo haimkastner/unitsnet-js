@@ -118,16 +118,17 @@ export class RatioChangeRate extends BaseUnit {
      * Note! the default format for RatioChangeRate is DecimalFractionsPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RatioChangeRate.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the RatioChangeRate.
      */
-    public toString(unit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond): string {
+    public toString(unit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case RatioChangeRateUnits.PercentsPerSecond:
-                return this.PercentsPerSecond + ` %/s`;
+                return super.truncateFractionDigits(this.PercentsPerSecond, fractionalDigits) + ` %/s`;
             case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                return this.DecimalFractionsPerSecond + ` /s`;
+                return super.truncateFractionDigits(this.DecimalFractionsPerSecond, fractionalDigits) + ` /s`;
         default:
             break;
         }

@@ -170,20 +170,21 @@ export class RotationalAcceleration extends BaseUnit {
      * Note! the default format for RotationalAcceleration is RadiansPerSecondSquared.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RotationalAcceleration.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the RotationalAcceleration.
      */
-    public toString(unit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared): string {
+    public toString(unit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case RotationalAccelerationUnits.RadiansPerSecondSquared:
-                return this.RadiansPerSecondSquared + ` rad/s²`;
+                return super.truncateFractionDigits(this.RadiansPerSecondSquared, fractionalDigits) + ` rad/s²`;
             case RotationalAccelerationUnits.DegreesPerSecondSquared:
-                return this.DegreesPerSecondSquared + ` °/s²`;
+                return super.truncateFractionDigits(this.DegreesPerSecondSquared, fractionalDigits) + ` °/s²`;
             case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
-                return this.RevolutionsPerMinutePerSecond + ` rpm/s`;
+                return super.truncateFractionDigits(this.RevolutionsPerMinutePerSecond, fractionalDigits) + ` rpm/s`;
             case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
-                return this.RevolutionsPerSecondSquared + ` r/s²`;
+                return super.truncateFractionDigits(this.RevolutionsPerSecondSquared, fractionalDigits) + ` r/s²`;
         default:
             break;
         }

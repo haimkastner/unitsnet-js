@@ -430,40 +430,41 @@ export class Irradiance extends BaseUnit {
      * Note! the default format for Irradiance is WattsPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Irradiance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Irradiance.
      */
-    public toString(unit: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter): string {
+    public toString(unit: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case IrradianceUnits.WattsPerSquareMeter:
-                return this.WattsPerSquareMeter + ` W/m²`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeter, fractionalDigits) + ` W/m²`;
             case IrradianceUnits.WattsPerSquareCentimeter:
-                return this.WattsPerSquareCentimeter + ` W/cm²`;
+                return super.truncateFractionDigits(this.WattsPerSquareCentimeter, fractionalDigits) + ` W/cm²`;
             case IrradianceUnits.PicowattsPerSquareMeter:
-                return this.PicowattsPerSquareMeter + ` pW/m²`;
+                return super.truncateFractionDigits(this.PicowattsPerSquareMeter, fractionalDigits) + ` pW/m²`;
             case IrradianceUnits.NanowattsPerSquareMeter:
-                return this.NanowattsPerSquareMeter + ` nW/m²`;
+                return super.truncateFractionDigits(this.NanowattsPerSquareMeter, fractionalDigits) + ` nW/m²`;
             case IrradianceUnits.MicrowattsPerSquareMeter:
-                return this.MicrowattsPerSquareMeter + ` μW/m²`;
+                return super.truncateFractionDigits(this.MicrowattsPerSquareMeter, fractionalDigits) + ` μW/m²`;
             case IrradianceUnits.MilliwattsPerSquareMeter:
-                return this.MilliwattsPerSquareMeter + ` mW/m²`;
+                return super.truncateFractionDigits(this.MilliwattsPerSquareMeter, fractionalDigits) + ` mW/m²`;
             case IrradianceUnits.KilowattsPerSquareMeter:
-                return this.KilowattsPerSquareMeter + ` kW/m²`;
+                return super.truncateFractionDigits(this.KilowattsPerSquareMeter, fractionalDigits) + ` kW/m²`;
             case IrradianceUnits.MegawattsPerSquareMeter:
-                return this.MegawattsPerSquareMeter + ` MW/m²`;
+                return super.truncateFractionDigits(this.MegawattsPerSquareMeter, fractionalDigits) + ` MW/m²`;
             case IrradianceUnits.PicowattsPerSquareCentimeter:
-                return this.PicowattsPerSquareCentimeter + ` pW/cm²`;
+                return super.truncateFractionDigits(this.PicowattsPerSquareCentimeter, fractionalDigits) + ` pW/cm²`;
             case IrradianceUnits.NanowattsPerSquareCentimeter:
-                return this.NanowattsPerSquareCentimeter + ` nW/cm²`;
+                return super.truncateFractionDigits(this.NanowattsPerSquareCentimeter, fractionalDigits) + ` nW/cm²`;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
-                return this.MicrowattsPerSquareCentimeter + ` μW/cm²`;
+                return super.truncateFractionDigits(this.MicrowattsPerSquareCentimeter, fractionalDigits) + ` μW/cm²`;
             case IrradianceUnits.MilliwattsPerSquareCentimeter:
-                return this.MilliwattsPerSquareCentimeter + ` mW/cm²`;
+                return super.truncateFractionDigits(this.MilliwattsPerSquareCentimeter, fractionalDigits) + ` mW/cm²`;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
-                return this.KilowattsPerSquareCentimeter + ` kW/cm²`;
+                return super.truncateFractionDigits(this.KilowattsPerSquareCentimeter, fractionalDigits) + ` kW/cm²`;
             case IrradianceUnits.MegawattsPerSquareCentimeter:
-                return this.MegawattsPerSquareCentimeter + ` MW/cm²`;
+                return super.truncateFractionDigits(this.MegawattsPerSquareCentimeter, fractionalDigits) + ` MW/cm²`;
         default:
             break;
         }

@@ -92,14 +92,15 @@ export class Magnetization extends BaseUnit {
      * Note! the default format for Magnetization is AmperesPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Magnetization.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Magnetization.
      */
-    public toString(unit: MagnetizationUnits = MagnetizationUnits.AmperesPerMeter): string {
+    public toString(unit: MagnetizationUnits = MagnetizationUnits.AmperesPerMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MagnetizationUnits.AmperesPerMeter:
-                return this.AmperesPerMeter + ` A/m`;
+                return super.truncateFractionDigits(this.AmperesPerMeter, fractionalDigits) + ` A/m`;
         default:
             break;
         }
