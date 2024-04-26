@@ -92,14 +92,15 @@ export class RelativeHumidity extends BaseUnit {
      * Note! the default format for RelativeHumidity is Percent.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RelativeHumidity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the RelativeHumidity.
      */
-    public toString(unit: RelativeHumidityUnits = RelativeHumidityUnits.Percent): string {
+    public toString(unit: RelativeHumidityUnits = RelativeHumidityUnits.Percent, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case RelativeHumidityUnits.Percent:
-                return this.Percent + ` %RH`;
+                return super.truncateFractionDigits(this.Percent, fractionalDigits) + ` %RH`;
         default:
             break;
         }

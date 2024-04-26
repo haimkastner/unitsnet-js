@@ -196,22 +196,23 @@ export class ElectricPotentialAc extends BaseUnit {
      * Note! the default format for ElectricPotentialAc is VoltsAc.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricPotentialAc.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricPotentialAc.
      */
-    public toString(unit: ElectricPotentialAcUnits = ElectricPotentialAcUnits.VoltsAc): string {
+    public toString(unit: ElectricPotentialAcUnits = ElectricPotentialAcUnits.VoltsAc, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricPotentialAcUnits.VoltsAc:
-                return this.VoltsAc + ` Vac`;
+                return super.truncateFractionDigits(this.VoltsAc, fractionalDigits) + ` Vac`;
             case ElectricPotentialAcUnits.MicrovoltsAc:
-                return this.MicrovoltsAc + ` μVac`;
+                return super.truncateFractionDigits(this.MicrovoltsAc, fractionalDigits) + ` μVac`;
             case ElectricPotentialAcUnits.MillivoltsAc:
-                return this.MillivoltsAc + ` mVac`;
+                return super.truncateFractionDigits(this.MillivoltsAc, fractionalDigits) + ` mVac`;
             case ElectricPotentialAcUnits.KilovoltsAc:
-                return this.KilovoltsAc + ` kVac`;
+                return super.truncateFractionDigits(this.KilovoltsAc, fractionalDigits) + ` kVac`;
             case ElectricPotentialAcUnits.MegavoltsAc:
-                return this.MegavoltsAc + ` MVac`;
+                return super.truncateFractionDigits(this.MegavoltsAc, fractionalDigits) + ` MVac`;
         default:
             break;
         }

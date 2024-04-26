@@ -248,26 +248,27 @@ export class Compressibility extends BaseUnit {
      * Note! the default format for Compressibility is InversePascals.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Compressibility.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Compressibility.
      */
-    public toString(unit: CompressibilityUnits = CompressibilityUnits.InversePascals): string {
+    public toString(unit: CompressibilityUnits = CompressibilityUnits.InversePascals, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case CompressibilityUnits.InversePascals:
-                return this.InversePascals + ` Pa⁻¹`;
+                return super.truncateFractionDigits(this.InversePascals, fractionalDigits) + ` Pa⁻¹`;
             case CompressibilityUnits.InverseKilopascals:
-                return this.InverseKilopascals + ` kPa⁻¹`;
+                return super.truncateFractionDigits(this.InverseKilopascals, fractionalDigits) + ` kPa⁻¹`;
             case CompressibilityUnits.InverseMegapascals:
-                return this.InverseMegapascals + ` MPa⁻¹`;
+                return super.truncateFractionDigits(this.InverseMegapascals, fractionalDigits) + ` MPa⁻¹`;
             case CompressibilityUnits.InverseAtmospheres:
-                return this.InverseAtmospheres + ` atm⁻¹`;
+                return super.truncateFractionDigits(this.InverseAtmospheres, fractionalDigits) + ` atm⁻¹`;
             case CompressibilityUnits.InverseMillibars:
-                return this.InverseMillibars + ` mbar⁻¹`;
+                return super.truncateFractionDigits(this.InverseMillibars, fractionalDigits) + ` mbar⁻¹`;
             case CompressibilityUnits.InverseBars:
-                return this.InverseBars + ` bar⁻¹`;
+                return super.truncateFractionDigits(this.InverseBars, fractionalDigits) + ` bar⁻¹`;
             case CompressibilityUnits.InversePoundsForcePerSquareInch:
-                return this.InversePoundsForcePerSquareInch + ` psi⁻¹`;
+                return super.truncateFractionDigits(this.InversePoundsForcePerSquareInch, fractionalDigits) + ` psi⁻¹`;
         default:
             break;
         }

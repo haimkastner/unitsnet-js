@@ -222,24 +222,25 @@ export class CoefficientOfThermalExpansion extends BaseUnit {
      * Note! the default format for CoefficientOfThermalExpansion is PerKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the CoefficientOfThermalExpansion.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the CoefficientOfThermalExpansion.
      */
-    public toString(unit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.PerKelvin): string {
+    public toString(unit: CoefficientOfThermalExpansionUnits = CoefficientOfThermalExpansionUnits.PerKelvin, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case CoefficientOfThermalExpansionUnits.PerKelvin:
-                return this.PerKelvin + ` K⁻¹`;
+                return super.truncateFractionDigits(this.PerKelvin, fractionalDigits) + ` K⁻¹`;
             case CoefficientOfThermalExpansionUnits.PerDegreeCelsius:
-                return this.PerDegreeCelsius + ` °C⁻¹`;
+                return super.truncateFractionDigits(this.PerDegreeCelsius, fractionalDigits) + ` °C⁻¹`;
             case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit:
-                return this.PerDegreeFahrenheit + ` °F⁻¹`;
+                return super.truncateFractionDigits(this.PerDegreeFahrenheit, fractionalDigits) + ` °F⁻¹`;
             case CoefficientOfThermalExpansionUnits.PpmPerKelvin:
-                return this.PpmPerKelvin + ` ppm/K`;
+                return super.truncateFractionDigits(this.PpmPerKelvin, fractionalDigits) + ` ppm/K`;
             case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius:
-                return this.PpmPerDegreeCelsius + ` ppm/°C`;
+                return super.truncateFractionDigits(this.PpmPerDegreeCelsius, fractionalDigits) + ` ppm/°C`;
             case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit:
-                return this.PpmPerDegreeFahrenheit + ` ppm/°F`;
+                return super.truncateFractionDigits(this.PpmPerDegreeFahrenheit, fractionalDigits) + ` ppm/°F`;
         default:
             break;
         }

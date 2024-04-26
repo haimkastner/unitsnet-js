@@ -92,14 +92,15 @@ export class LuminousFlux extends BaseUnit {
      * Note! the default format for LuminousFlux is Lumens.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the LuminousFlux.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the LuminousFlux.
      */
-    public toString(unit: LuminousFluxUnits = LuminousFluxUnits.Lumens): string {
+    public toString(unit: LuminousFluxUnits = LuminousFluxUnits.Lumens, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case LuminousFluxUnits.Lumens:
-                return this.Lumens + ` lm`;
+                return super.truncateFractionDigits(this.Lumens, fractionalDigits) + ` lm`;
         default:
             break;
         }

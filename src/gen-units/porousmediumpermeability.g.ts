@@ -196,22 +196,23 @@ export class PorousMediumPermeability extends BaseUnit {
      * Note! the default format for PorousMediumPermeability is SquareMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the PorousMediumPermeability.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the PorousMediumPermeability.
      */
-    public toString(unit: PorousMediumPermeabilityUnits = PorousMediumPermeabilityUnits.SquareMeters): string {
+    public toString(unit: PorousMediumPermeabilityUnits = PorousMediumPermeabilityUnits.SquareMeters, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case PorousMediumPermeabilityUnits.Darcys:
-                return this.Darcys + ` D`;
+                return super.truncateFractionDigits(this.Darcys, fractionalDigits) + ` D`;
             case PorousMediumPermeabilityUnits.SquareMeters:
-                return this.SquareMeters + ` m²`;
+                return super.truncateFractionDigits(this.SquareMeters, fractionalDigits) + ` m²`;
             case PorousMediumPermeabilityUnits.SquareCentimeters:
-                return this.SquareCentimeters + ` cm²`;
+                return super.truncateFractionDigits(this.SquareCentimeters, fractionalDigits) + ` cm²`;
             case PorousMediumPermeabilityUnits.Microdarcys:
-                return this.Microdarcys + ` μD`;
+                return super.truncateFractionDigits(this.Microdarcys, fractionalDigits) + ` μD`;
             case PorousMediumPermeabilityUnits.Millidarcys:
-                return this.Millidarcys + ` mD`;
+                return super.truncateFractionDigits(this.Millidarcys, fractionalDigits) + ` mD`;
         default:
             break;
         }

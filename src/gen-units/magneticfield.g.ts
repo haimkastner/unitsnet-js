@@ -222,24 +222,25 @@ export class MagneticField extends BaseUnit {
      * Note! the default format for MagneticField is Teslas.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MagneticField.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the MagneticField.
      */
-    public toString(unit: MagneticFieldUnits = MagneticFieldUnits.Teslas): string {
+    public toString(unit: MagneticFieldUnits = MagneticFieldUnits.Teslas, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MagneticFieldUnits.Teslas:
-                return this.Teslas + ` T`;
+                return super.truncateFractionDigits(this.Teslas, fractionalDigits) + ` T`;
             case MagneticFieldUnits.Gausses:
-                return this.Gausses + ` G`;
+                return super.truncateFractionDigits(this.Gausses, fractionalDigits) + ` G`;
             case MagneticFieldUnits.Nanoteslas:
-                return this.Nanoteslas + ` nT`;
+                return super.truncateFractionDigits(this.Nanoteslas, fractionalDigits) + ` nT`;
             case MagneticFieldUnits.Microteslas:
-                return this.Microteslas + ` μT`;
+                return super.truncateFractionDigits(this.Microteslas, fractionalDigits) + ` μT`;
             case MagneticFieldUnits.Milliteslas:
-                return this.Milliteslas + ` mT`;
+                return super.truncateFractionDigits(this.Milliteslas, fractionalDigits) + ` mT`;
             case MagneticFieldUnits.Milligausses:
-                return this.Milligausses + ` mG`;
+                return super.truncateFractionDigits(this.Milligausses, fractionalDigits) + ` mG`;
         default:
             break;
         }

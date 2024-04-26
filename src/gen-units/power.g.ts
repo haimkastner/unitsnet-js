@@ -742,64 +742,65 @@ export class Power extends BaseUnit {
      * Note! the default format for Power is Watts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Power.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Power.
      */
-    public toString(unit: PowerUnits = PowerUnits.Watts): string {
+    public toString(unit: PowerUnits = PowerUnits.Watts, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case PowerUnits.Watts:
-                return this.Watts + ` W`;
+                return super.truncateFractionDigits(this.Watts, fractionalDigits) + ` W`;
             case PowerUnits.MechanicalHorsepower:
-                return this.MechanicalHorsepower + ` hp(I)`;
+                return super.truncateFractionDigits(this.MechanicalHorsepower, fractionalDigits) + ` hp(I)`;
             case PowerUnits.MetricHorsepower:
-                return this.MetricHorsepower + ` hp(M)`;
+                return super.truncateFractionDigits(this.MetricHorsepower, fractionalDigits) + ` hp(M)`;
             case PowerUnits.ElectricalHorsepower:
-                return this.ElectricalHorsepower + ` hp(E)`;
+                return super.truncateFractionDigits(this.ElectricalHorsepower, fractionalDigits) + ` hp(E)`;
             case PowerUnits.BoilerHorsepower:
-                return this.BoilerHorsepower + ` hp(S)`;
+                return super.truncateFractionDigits(this.BoilerHorsepower, fractionalDigits) + ` hp(S)`;
             case PowerUnits.HydraulicHorsepower:
-                return this.HydraulicHorsepower + ` hp(H)`;
+                return super.truncateFractionDigits(this.HydraulicHorsepower, fractionalDigits) + ` hp(H)`;
             case PowerUnits.BritishThermalUnitsPerHour:
-                return this.BritishThermalUnitsPerHour + ` Btu/h`;
+                return super.truncateFractionDigits(this.BritishThermalUnitsPerHour, fractionalDigits) + ` Btu/h`;
             case PowerUnits.JoulesPerHour:
-                return this.JoulesPerHour + ` J/h`;
+                return super.truncateFractionDigits(this.JoulesPerHour, fractionalDigits) + ` J/h`;
             case PowerUnits.Femtowatts:
-                return this.Femtowatts + ` fW`;
+                return super.truncateFractionDigits(this.Femtowatts, fractionalDigits) + ` fW`;
             case PowerUnits.Picowatts:
-                return this.Picowatts + ` pW`;
+                return super.truncateFractionDigits(this.Picowatts, fractionalDigits) + ` pW`;
             case PowerUnits.Nanowatts:
-                return this.Nanowatts + ` nW`;
+                return super.truncateFractionDigits(this.Nanowatts, fractionalDigits) + ` nW`;
             case PowerUnits.Microwatts:
-                return this.Microwatts + ` μW`;
+                return super.truncateFractionDigits(this.Microwatts, fractionalDigits) + ` μW`;
             case PowerUnits.Milliwatts:
-                return this.Milliwatts + ` mW`;
+                return super.truncateFractionDigits(this.Milliwatts, fractionalDigits) + ` mW`;
             case PowerUnits.Deciwatts:
-                return this.Deciwatts + ` dW`;
+                return super.truncateFractionDigits(this.Deciwatts, fractionalDigits) + ` dW`;
             case PowerUnits.Decawatts:
-                return this.Decawatts + ` daW`;
+                return super.truncateFractionDigits(this.Decawatts, fractionalDigits) + ` daW`;
             case PowerUnits.Kilowatts:
-                return this.Kilowatts + ` kW`;
+                return super.truncateFractionDigits(this.Kilowatts, fractionalDigits) + ` kW`;
             case PowerUnits.Megawatts:
-                return this.Megawatts + ` MW`;
+                return super.truncateFractionDigits(this.Megawatts, fractionalDigits) + ` MW`;
             case PowerUnits.Gigawatts:
-                return this.Gigawatts + ` GW`;
+                return super.truncateFractionDigits(this.Gigawatts, fractionalDigits) + ` GW`;
             case PowerUnits.Terawatts:
-                return this.Terawatts + ` TW`;
+                return super.truncateFractionDigits(this.Terawatts, fractionalDigits) + ` TW`;
             case PowerUnits.Petawatts:
-                return this.Petawatts + ` PW`;
+                return super.truncateFractionDigits(this.Petawatts, fractionalDigits) + ` PW`;
             case PowerUnits.KilobritishThermalUnitsPerHour:
-                return this.KilobritishThermalUnitsPerHour + ` kBtu/h`;
+                return super.truncateFractionDigits(this.KilobritishThermalUnitsPerHour, fractionalDigits) + ` kBtu/h`;
             case PowerUnits.MegabritishThermalUnitsPerHour:
-                return this.MegabritishThermalUnitsPerHour + ` MBtu/h`;
+                return super.truncateFractionDigits(this.MegabritishThermalUnitsPerHour, fractionalDigits) + ` MBtu/h`;
             case PowerUnits.MillijoulesPerHour:
-                return this.MillijoulesPerHour + ` mJ/h`;
+                return super.truncateFractionDigits(this.MillijoulesPerHour, fractionalDigits) + ` mJ/h`;
             case PowerUnits.KilojoulesPerHour:
-                return this.KilojoulesPerHour + ` kJ/h`;
+                return super.truncateFractionDigits(this.KilojoulesPerHour, fractionalDigits) + ` kJ/h`;
             case PowerUnits.MegajoulesPerHour:
-                return this.MegajoulesPerHour + ` MJ/h`;
+                return super.truncateFractionDigits(this.MegajoulesPerHour, fractionalDigits) + ` MJ/h`;
             case PowerUnits.GigajoulesPerHour:
-                return this.GigajoulesPerHour + ` GJ/h`;
+                return super.truncateFractionDigits(this.GigajoulesPerHour, fractionalDigits) + ` GJ/h`;
         default:
             break;
         }

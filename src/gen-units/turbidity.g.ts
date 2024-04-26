@@ -92,14 +92,15 @@ export class Turbidity extends BaseUnit {
      * Note! the default format for Turbidity is NTU.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Turbidity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Turbidity.
      */
-    public toString(unit: TurbidityUnits = TurbidityUnits.NTU): string {
+    public toString(unit: TurbidityUnits = TurbidityUnits.NTU, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case TurbidityUnits.NTU:
-                return this.NTU + ` NTU`;
+                return super.truncateFractionDigits(this.NTU, fractionalDigits) + ` NTU`;
         default:
             break;
         }

@@ -586,52 +586,53 @@ export class ElectricPotentialChangeRate extends BaseUnit {
      * Note! the default format for ElectricPotentialChangeRate is VoltsPerSeconds.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricPotentialChangeRate.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricPotentialChangeRate.
      */
-    public toString(unit: ElectricPotentialChangeRateUnits = ElectricPotentialChangeRateUnits.VoltsPerSeconds): string {
+    public toString(unit: ElectricPotentialChangeRateUnits = ElectricPotentialChangeRateUnits.VoltsPerSeconds, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricPotentialChangeRateUnits.VoltsPerSeconds:
-                return this.VoltsPerSeconds + ` V/s`;
+                return super.truncateFractionDigits(this.VoltsPerSeconds, fractionalDigits) + ` V/s`;
             case ElectricPotentialChangeRateUnits.VoltsPerMicroseconds:
-                return this.VoltsPerMicroseconds + ` V/μs`;
+                return super.truncateFractionDigits(this.VoltsPerMicroseconds, fractionalDigits) + ` V/μs`;
             case ElectricPotentialChangeRateUnits.VoltsPerMinutes:
-                return this.VoltsPerMinutes + ` V/min`;
+                return super.truncateFractionDigits(this.VoltsPerMinutes, fractionalDigits) + ` V/min`;
             case ElectricPotentialChangeRateUnits.VoltsPerHours:
-                return this.VoltsPerHours + ` V/h`;
+                return super.truncateFractionDigits(this.VoltsPerHours, fractionalDigits) + ` V/h`;
             case ElectricPotentialChangeRateUnits.MicrovoltsPerSeconds:
-                return this.MicrovoltsPerSeconds + ` μV/s`;
+                return super.truncateFractionDigits(this.MicrovoltsPerSeconds, fractionalDigits) + ` μV/s`;
             case ElectricPotentialChangeRateUnits.MillivoltsPerSeconds:
-                return this.MillivoltsPerSeconds + ` mV/s`;
+                return super.truncateFractionDigits(this.MillivoltsPerSeconds, fractionalDigits) + ` mV/s`;
             case ElectricPotentialChangeRateUnits.KilovoltsPerSeconds:
-                return this.KilovoltsPerSeconds + ` kV/s`;
+                return super.truncateFractionDigits(this.KilovoltsPerSeconds, fractionalDigits) + ` kV/s`;
             case ElectricPotentialChangeRateUnits.MegavoltsPerSeconds:
-                return this.MegavoltsPerSeconds + ` MV/s`;
+                return super.truncateFractionDigits(this.MegavoltsPerSeconds, fractionalDigits) + ` MV/s`;
             case ElectricPotentialChangeRateUnits.MicrovoltsPerMicroseconds:
-                return this.MicrovoltsPerMicroseconds + ` μV/μs`;
+                return super.truncateFractionDigits(this.MicrovoltsPerMicroseconds, fractionalDigits) + ` μV/μs`;
             case ElectricPotentialChangeRateUnits.MillivoltsPerMicroseconds:
-                return this.MillivoltsPerMicroseconds + ` mV/μs`;
+                return super.truncateFractionDigits(this.MillivoltsPerMicroseconds, fractionalDigits) + ` mV/μs`;
             case ElectricPotentialChangeRateUnits.KilovoltsPerMicroseconds:
-                return this.KilovoltsPerMicroseconds + ` kV/μs`;
+                return super.truncateFractionDigits(this.KilovoltsPerMicroseconds, fractionalDigits) + ` kV/μs`;
             case ElectricPotentialChangeRateUnits.MegavoltsPerMicroseconds:
-                return this.MegavoltsPerMicroseconds + ` MV/μs`;
+                return super.truncateFractionDigits(this.MegavoltsPerMicroseconds, fractionalDigits) + ` MV/μs`;
             case ElectricPotentialChangeRateUnits.MicrovoltsPerMinutes:
-                return this.MicrovoltsPerMinutes + ` μV/min`;
+                return super.truncateFractionDigits(this.MicrovoltsPerMinutes, fractionalDigits) + ` μV/min`;
             case ElectricPotentialChangeRateUnits.MillivoltsPerMinutes:
-                return this.MillivoltsPerMinutes + ` mV/min`;
+                return super.truncateFractionDigits(this.MillivoltsPerMinutes, fractionalDigits) + ` mV/min`;
             case ElectricPotentialChangeRateUnits.KilovoltsPerMinutes:
-                return this.KilovoltsPerMinutes + ` kV/min`;
+                return super.truncateFractionDigits(this.KilovoltsPerMinutes, fractionalDigits) + ` kV/min`;
             case ElectricPotentialChangeRateUnits.MegavoltsPerMinutes:
-                return this.MegavoltsPerMinutes + ` MV/min`;
+                return super.truncateFractionDigits(this.MegavoltsPerMinutes, fractionalDigits) + ` MV/min`;
             case ElectricPotentialChangeRateUnits.MicrovoltsPerHours:
-                return this.MicrovoltsPerHours + ` μV/h`;
+                return super.truncateFractionDigits(this.MicrovoltsPerHours, fractionalDigits) + ` μV/h`;
             case ElectricPotentialChangeRateUnits.MillivoltsPerHours:
-                return this.MillivoltsPerHours + ` mV/h`;
+                return super.truncateFractionDigits(this.MillivoltsPerHours, fractionalDigits) + ` mV/h`;
             case ElectricPotentialChangeRateUnits.KilovoltsPerHours:
-                return this.KilovoltsPerHours + ` kV/h`;
+                return super.truncateFractionDigits(this.KilovoltsPerHours, fractionalDigits) + ` kV/h`;
             case ElectricPotentialChangeRateUnits.MegavoltsPerHours:
-                return this.MegavoltsPerHours + ` MV/h`;
+                return super.truncateFractionDigits(this.MegavoltsPerHours, fractionalDigits) + ` MV/h`;
         default:
             break;
         }

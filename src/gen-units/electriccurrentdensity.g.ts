@@ -144,18 +144,19 @@ export class ElectricCurrentDensity extends BaseUnit {
      * Note! the default format for ElectricCurrentDensity is AmperesPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricCurrentDensity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricCurrentDensity.
      */
-    public toString(unit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter): string {
+    public toString(unit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
-                return this.AmperesPerSquareMeter + ` A/m²`;
+                return super.truncateFractionDigits(this.AmperesPerSquareMeter, fractionalDigits) + ` A/m²`;
             case ElectricCurrentDensityUnits.AmperesPerSquareInch:
-                return this.AmperesPerSquareInch + ` A/in²`;
+                return super.truncateFractionDigits(this.AmperesPerSquareInch, fractionalDigits) + ` A/in²`;
             case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
-                return this.AmperesPerSquareFoot + ` A/ft²`;
+                return super.truncateFractionDigits(this.AmperesPerSquareFoot, fractionalDigits) + ` A/ft²`;
         default:
             break;
         }

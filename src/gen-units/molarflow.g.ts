@@ -300,30 +300,31 @@ export class MolarFlow extends BaseUnit {
      * Note! the default format for MolarFlow is MolesPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MolarFlow.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the MolarFlow.
      */
-    public toString(unit: MolarFlowUnits = MolarFlowUnits.MolesPerSecond): string {
+    public toString(unit: MolarFlowUnits = MolarFlowUnits.MolesPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MolarFlowUnits.MolesPerSecond:
-                return this.MolesPerSecond + ` mol/s`;
+                return super.truncateFractionDigits(this.MolesPerSecond, fractionalDigits) + ` mol/s`;
             case MolarFlowUnits.MolesPerMinute:
-                return this.MolesPerMinute + ` mol/min`;
+                return super.truncateFractionDigits(this.MolesPerMinute, fractionalDigits) + ` mol/min`;
             case MolarFlowUnits.MolesPerHour:
-                return this.MolesPerHour + ` kmol/h`;
+                return super.truncateFractionDigits(this.MolesPerHour, fractionalDigits) + ` kmol/h`;
             case MolarFlowUnits.PoundMolesPerSecond:
-                return this.PoundMolesPerSecond + ` lbmol/s`;
+                return super.truncateFractionDigits(this.PoundMolesPerSecond, fractionalDigits) + ` lbmol/s`;
             case MolarFlowUnits.PoundMolesPerMinute:
-                return this.PoundMolesPerMinute + ` lbmol/min`;
+                return super.truncateFractionDigits(this.PoundMolesPerMinute, fractionalDigits) + ` lbmol/min`;
             case MolarFlowUnits.PoundMolesPerHour:
-                return this.PoundMolesPerHour + ` lbmol/h`;
+                return super.truncateFractionDigits(this.PoundMolesPerHour, fractionalDigits) + ` lbmol/h`;
             case MolarFlowUnits.KilomolesPerSecond:
-                return this.KilomolesPerSecond + ` kmol/s`;
+                return super.truncateFractionDigits(this.KilomolesPerSecond, fractionalDigits) + ` kmol/s`;
             case MolarFlowUnits.KilomolesPerMinute:
-                return this.KilomolesPerMinute + ` kmol/min`;
+                return super.truncateFractionDigits(this.KilomolesPerMinute, fractionalDigits) + ` kmol/min`;
             case MolarFlowUnits.KilomolesPerHour:
-                return this.KilomolesPerHour + ` kkmol/h`;
+                return super.truncateFractionDigits(this.KilomolesPerHour, fractionalDigits) + ` kkmol/h`;
         default:
             break;
         }

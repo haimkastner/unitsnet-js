@@ -222,24 +222,25 @@ export class AreaMomentOfInertia extends BaseUnit {
      * Note! the default format for AreaMomentOfInertia is MetersToTheFourth.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the AreaMomentOfInertia.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the AreaMomentOfInertia.
      */
-    public toString(unit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth): string {
+    public toString(unit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case AreaMomentOfInertiaUnits.MetersToTheFourth:
-                return this.MetersToTheFourth + ` m⁴`;
+                return super.truncateFractionDigits(this.MetersToTheFourth, fractionalDigits) + ` m⁴`;
             case AreaMomentOfInertiaUnits.DecimetersToTheFourth:
-                return this.DecimetersToTheFourth + ` dm⁴`;
+                return super.truncateFractionDigits(this.DecimetersToTheFourth, fractionalDigits) + ` dm⁴`;
             case AreaMomentOfInertiaUnits.CentimetersToTheFourth:
-                return this.CentimetersToTheFourth + ` cm⁴`;
+                return super.truncateFractionDigits(this.CentimetersToTheFourth, fractionalDigits) + ` cm⁴`;
             case AreaMomentOfInertiaUnits.MillimetersToTheFourth:
-                return this.MillimetersToTheFourth + ` mm⁴`;
+                return super.truncateFractionDigits(this.MillimetersToTheFourth, fractionalDigits) + ` mm⁴`;
             case AreaMomentOfInertiaUnits.FeetToTheFourth:
-                return this.FeetToTheFourth + ` ft⁴`;
+                return super.truncateFractionDigits(this.FeetToTheFourth, fractionalDigits) + ` ft⁴`;
             case AreaMomentOfInertiaUnits.InchesToTheFourth:
-                return this.InchesToTheFourth + ` in⁴`;
+                return super.truncateFractionDigits(this.InchesToTheFourth, fractionalDigits) + ` in⁴`;
         default:
             break;
         }

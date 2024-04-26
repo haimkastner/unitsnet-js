@@ -196,22 +196,23 @@ export class ElectricConductance extends BaseUnit {
      * Note! the default format for ElectricConductance is Siemens.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricConductance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricConductance.
      */
-    public toString(unit: ElectricConductanceUnits = ElectricConductanceUnits.Siemens): string {
+    public toString(unit: ElectricConductanceUnits = ElectricConductanceUnits.Siemens, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricConductanceUnits.Siemens:
-                return this.Siemens + ` S`;
+                return super.truncateFractionDigits(this.Siemens, fractionalDigits) + ` S`;
             case ElectricConductanceUnits.Nanosiemens:
-                return this.Nanosiemens + ` nS`;
+                return super.truncateFractionDigits(this.Nanosiemens, fractionalDigits) + ` nS`;
             case ElectricConductanceUnits.Microsiemens:
-                return this.Microsiemens + ` μS`;
+                return super.truncateFractionDigits(this.Microsiemens, fractionalDigits) + ` μS`;
             case ElectricConductanceUnits.Millisiemens:
-                return this.Millisiemens + ` mS`;
+                return super.truncateFractionDigits(this.Millisiemens, fractionalDigits) + ` mS`;
             case ElectricConductanceUnits.Kilosiemens:
-                return this.Kilosiemens + ` kS`;
+                return super.truncateFractionDigits(this.Kilosiemens, fractionalDigits) + ` kS`;
         default:
             break;
         }

@@ -1340,110 +1340,111 @@ export class MassConcentration extends BaseUnit {
      * Note! the default format for MassConcentration is KilogramsPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MassConcentration.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the MassConcentration.
      */
-    public toString(unit: MassConcentrationUnits = MassConcentrationUnits.KilogramsPerCubicMeter): string {
+    public toString(unit: MassConcentrationUnits = MassConcentrationUnits.KilogramsPerCubicMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MassConcentrationUnits.GramsPerCubicMillimeter:
-                return this.GramsPerCubicMillimeter + ` g/mm³`;
+                return super.truncateFractionDigits(this.GramsPerCubicMillimeter, fractionalDigits) + ` g/mm³`;
             case MassConcentrationUnits.GramsPerCubicCentimeter:
-                return this.GramsPerCubicCentimeter + ` g/cm³`;
+                return super.truncateFractionDigits(this.GramsPerCubicCentimeter, fractionalDigits) + ` g/cm³`;
             case MassConcentrationUnits.GramsPerCubicMeter:
-                return this.GramsPerCubicMeter + ` g/m³`;
+                return super.truncateFractionDigits(this.GramsPerCubicMeter, fractionalDigits) + ` g/m³`;
             case MassConcentrationUnits.GramsPerMicroliter:
-                return this.GramsPerMicroliter + ` g/μL`;
+                return super.truncateFractionDigits(this.GramsPerMicroliter, fractionalDigits) + ` g/μL`;
             case MassConcentrationUnits.GramsPerMilliliter:
-                return this.GramsPerMilliliter + ` g/mL`;
+                return super.truncateFractionDigits(this.GramsPerMilliliter, fractionalDigits) + ` g/mL`;
             case MassConcentrationUnits.GramsPerDeciliter:
-                return this.GramsPerDeciliter + ` g/dL`;
+                return super.truncateFractionDigits(this.GramsPerDeciliter, fractionalDigits) + ` g/dL`;
             case MassConcentrationUnits.GramsPerLiter:
-                return this.GramsPerLiter + ` g/L`;
+                return super.truncateFractionDigits(this.GramsPerLiter, fractionalDigits) + ` g/L`;
             case MassConcentrationUnits.TonnesPerCubicMillimeter:
-                return this.TonnesPerCubicMillimeter + ` t/mm³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicMillimeter, fractionalDigits) + ` t/mm³`;
             case MassConcentrationUnits.TonnesPerCubicCentimeter:
-                return this.TonnesPerCubicCentimeter + ` t/cm³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicCentimeter, fractionalDigits) + ` t/cm³`;
             case MassConcentrationUnits.TonnesPerCubicMeter:
-                return this.TonnesPerCubicMeter + ` t/m³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicMeter, fractionalDigits) + ` t/m³`;
             case MassConcentrationUnits.PoundsPerCubicInch:
-                return this.PoundsPerCubicInch + ` lb/in³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicInch, fractionalDigits) + ` lb/in³`;
             case MassConcentrationUnits.PoundsPerCubicFoot:
-                return this.PoundsPerCubicFoot + ` lb/ft³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicFoot, fractionalDigits) + ` lb/ft³`;
             case MassConcentrationUnits.SlugsPerCubicFoot:
-                return this.SlugsPerCubicFoot + ` slug/ft³`;
+                return super.truncateFractionDigits(this.SlugsPerCubicFoot, fractionalDigits) + ` slug/ft³`;
             case MassConcentrationUnits.PoundsPerUSGallon:
-                return this.PoundsPerUSGallon + ` ppg (U.S.)`;
+                return super.truncateFractionDigits(this.PoundsPerUSGallon, fractionalDigits) + ` ppg (U.S.)`;
             case MassConcentrationUnits.OuncesPerUSGallon:
-                return this.OuncesPerUSGallon + ` oz/gal (U.S.)`;
+                return super.truncateFractionDigits(this.OuncesPerUSGallon, fractionalDigits) + ` oz/gal (U.S.)`;
             case MassConcentrationUnits.OuncesPerImperialGallon:
-                return this.OuncesPerImperialGallon + ` oz/gal (imp.)`;
+                return super.truncateFractionDigits(this.OuncesPerImperialGallon, fractionalDigits) + ` oz/gal (imp.)`;
             case MassConcentrationUnits.PoundsPerImperialGallon:
-                return this.PoundsPerImperialGallon + ` ppg (imp.)`;
+                return super.truncateFractionDigits(this.PoundsPerImperialGallon, fractionalDigits) + ` ppg (imp.)`;
             case MassConcentrationUnits.KilogramsPerCubicMillimeter:
-                return this.KilogramsPerCubicMillimeter + ` kg/mm³`;
+                return super.truncateFractionDigits(this.KilogramsPerCubicMillimeter, fractionalDigits) + ` kg/mm³`;
             case MassConcentrationUnits.KilogramsPerCubicCentimeter:
-                return this.KilogramsPerCubicCentimeter + ` kg/cm³`;
+                return super.truncateFractionDigits(this.KilogramsPerCubicCentimeter, fractionalDigits) + ` kg/cm³`;
             case MassConcentrationUnits.KilogramsPerCubicMeter:
-                return this.KilogramsPerCubicMeter + ` kg/m³`;
+                return super.truncateFractionDigits(this.KilogramsPerCubicMeter, fractionalDigits) + ` kg/m³`;
             case MassConcentrationUnits.MilligramsPerCubicMeter:
-                return this.MilligramsPerCubicMeter + ` mg/m³`;
+                return super.truncateFractionDigits(this.MilligramsPerCubicMeter, fractionalDigits) + ` mg/m³`;
             case MassConcentrationUnits.MicrogramsPerCubicMeter:
-                return this.MicrogramsPerCubicMeter + ` μg/m³`;
+                return super.truncateFractionDigits(this.MicrogramsPerCubicMeter, fractionalDigits) + ` μg/m³`;
             case MassConcentrationUnits.PicogramsPerMicroliter:
-                return this.PicogramsPerMicroliter + ` pg/μL`;
+                return super.truncateFractionDigits(this.PicogramsPerMicroliter, fractionalDigits) + ` pg/μL`;
             case MassConcentrationUnits.NanogramsPerMicroliter:
-                return this.NanogramsPerMicroliter + ` ng/μL`;
+                return super.truncateFractionDigits(this.NanogramsPerMicroliter, fractionalDigits) + ` ng/μL`;
             case MassConcentrationUnits.MicrogramsPerMicroliter:
-                return this.MicrogramsPerMicroliter + ` μg/μL`;
+                return super.truncateFractionDigits(this.MicrogramsPerMicroliter, fractionalDigits) + ` μg/μL`;
             case MassConcentrationUnits.MilligramsPerMicroliter:
-                return this.MilligramsPerMicroliter + ` mg/μL`;
+                return super.truncateFractionDigits(this.MilligramsPerMicroliter, fractionalDigits) + ` mg/μL`;
             case MassConcentrationUnits.CentigramsPerMicroliter:
-                return this.CentigramsPerMicroliter + ` cg/μL`;
+                return super.truncateFractionDigits(this.CentigramsPerMicroliter, fractionalDigits) + ` cg/μL`;
             case MassConcentrationUnits.DecigramsPerMicroliter:
-                return this.DecigramsPerMicroliter + ` dg/μL`;
+                return super.truncateFractionDigits(this.DecigramsPerMicroliter, fractionalDigits) + ` dg/μL`;
             case MassConcentrationUnits.PicogramsPerMilliliter:
-                return this.PicogramsPerMilliliter + ` pg/mL`;
+                return super.truncateFractionDigits(this.PicogramsPerMilliliter, fractionalDigits) + ` pg/mL`;
             case MassConcentrationUnits.NanogramsPerMilliliter:
-                return this.NanogramsPerMilliliter + ` ng/mL`;
+                return super.truncateFractionDigits(this.NanogramsPerMilliliter, fractionalDigits) + ` ng/mL`;
             case MassConcentrationUnits.MicrogramsPerMilliliter:
-                return this.MicrogramsPerMilliliter + ` μg/mL`;
+                return super.truncateFractionDigits(this.MicrogramsPerMilliliter, fractionalDigits) + ` μg/mL`;
             case MassConcentrationUnits.MilligramsPerMilliliter:
-                return this.MilligramsPerMilliliter + ` mg/mL`;
+                return super.truncateFractionDigits(this.MilligramsPerMilliliter, fractionalDigits) + ` mg/mL`;
             case MassConcentrationUnits.CentigramsPerMilliliter:
-                return this.CentigramsPerMilliliter + ` cg/mL`;
+                return super.truncateFractionDigits(this.CentigramsPerMilliliter, fractionalDigits) + ` cg/mL`;
             case MassConcentrationUnits.DecigramsPerMilliliter:
-                return this.DecigramsPerMilliliter + ` dg/mL`;
+                return super.truncateFractionDigits(this.DecigramsPerMilliliter, fractionalDigits) + ` dg/mL`;
             case MassConcentrationUnits.PicogramsPerDeciliter:
-                return this.PicogramsPerDeciliter + ` pg/dL`;
+                return super.truncateFractionDigits(this.PicogramsPerDeciliter, fractionalDigits) + ` pg/dL`;
             case MassConcentrationUnits.NanogramsPerDeciliter:
-                return this.NanogramsPerDeciliter + ` ng/dL`;
+                return super.truncateFractionDigits(this.NanogramsPerDeciliter, fractionalDigits) + ` ng/dL`;
             case MassConcentrationUnits.MicrogramsPerDeciliter:
-                return this.MicrogramsPerDeciliter + ` μg/dL`;
+                return super.truncateFractionDigits(this.MicrogramsPerDeciliter, fractionalDigits) + ` μg/dL`;
             case MassConcentrationUnits.MilligramsPerDeciliter:
-                return this.MilligramsPerDeciliter + ` mg/dL`;
+                return super.truncateFractionDigits(this.MilligramsPerDeciliter, fractionalDigits) + ` mg/dL`;
             case MassConcentrationUnits.CentigramsPerDeciliter:
-                return this.CentigramsPerDeciliter + ` cg/dL`;
+                return super.truncateFractionDigits(this.CentigramsPerDeciliter, fractionalDigits) + ` cg/dL`;
             case MassConcentrationUnits.DecigramsPerDeciliter:
-                return this.DecigramsPerDeciliter + ` dg/dL`;
+                return super.truncateFractionDigits(this.DecigramsPerDeciliter, fractionalDigits) + ` dg/dL`;
             case MassConcentrationUnits.PicogramsPerLiter:
-                return this.PicogramsPerLiter + ` pg/L`;
+                return super.truncateFractionDigits(this.PicogramsPerLiter, fractionalDigits) + ` pg/L`;
             case MassConcentrationUnits.NanogramsPerLiter:
-                return this.NanogramsPerLiter + ` ng/L`;
+                return super.truncateFractionDigits(this.NanogramsPerLiter, fractionalDigits) + ` ng/L`;
             case MassConcentrationUnits.MicrogramsPerLiter:
-                return this.MicrogramsPerLiter + ` μg/L`;
+                return super.truncateFractionDigits(this.MicrogramsPerLiter, fractionalDigits) + ` μg/L`;
             case MassConcentrationUnits.MilligramsPerLiter:
-                return this.MilligramsPerLiter + ` mg/L`;
+                return super.truncateFractionDigits(this.MilligramsPerLiter, fractionalDigits) + ` mg/L`;
             case MassConcentrationUnits.CentigramsPerLiter:
-                return this.CentigramsPerLiter + ` cg/L`;
+                return super.truncateFractionDigits(this.CentigramsPerLiter, fractionalDigits) + ` cg/L`;
             case MassConcentrationUnits.DecigramsPerLiter:
-                return this.DecigramsPerLiter + ` dg/L`;
+                return super.truncateFractionDigits(this.DecigramsPerLiter, fractionalDigits) + ` dg/L`;
             case MassConcentrationUnits.KilogramsPerLiter:
-                return this.KilogramsPerLiter + ` kg/L`;
+                return super.truncateFractionDigits(this.KilogramsPerLiter, fractionalDigits) + ` kg/L`;
             case MassConcentrationUnits.KilopoundsPerCubicInch:
-                return this.KilopoundsPerCubicInch + ` klb/in³`;
+                return super.truncateFractionDigits(this.KilopoundsPerCubicInch, fractionalDigits) + ` klb/in³`;
             case MassConcentrationUnits.KilopoundsPerCubicFoot:
-                return this.KilopoundsPerCubicFoot + ` klb/ft³`;
+                return super.truncateFractionDigits(this.KilopoundsPerCubicFoot, fractionalDigits) + ` klb/ft³`;
         default:
             break;
         }

@@ -118,16 +118,17 @@ export class Level extends BaseUnit {
      * Note! the default format for Level is Decibels.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Level.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Level.
      */
-    public toString(unit: LevelUnits = LevelUnits.Decibels): string {
+    public toString(unit: LevelUnits = LevelUnits.Decibels, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case LevelUnits.Decibels:
-                return this.Decibels + ` dB`;
+                return super.truncateFractionDigits(this.Decibels, fractionalDigits) + ` dB`;
             case LevelUnits.Nepers:
-                return this.Nepers + ` Np`;
+                return super.truncateFractionDigits(this.Nepers, fractionalDigits) + ` Np`;
         default:
             break;
         }

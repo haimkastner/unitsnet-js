@@ -248,26 +248,27 @@ export class ElectricCurrentGradient extends BaseUnit {
      * Note! the default format for ElectricCurrentGradient is AmperesPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricCurrentGradient.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricCurrentGradient.
      */
-    public toString(unit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond): string {
+    public toString(unit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricCurrentGradientUnits.AmperesPerSecond:
-                return this.AmperesPerSecond + ` A/s`;
+                return super.truncateFractionDigits(this.AmperesPerSecond, fractionalDigits) + ` A/s`;
             case ElectricCurrentGradientUnits.AmperesPerMinute:
-                return this.AmperesPerMinute + ` A/min`;
+                return super.truncateFractionDigits(this.AmperesPerMinute, fractionalDigits) + ` A/min`;
             case ElectricCurrentGradientUnits.AmperesPerMillisecond:
-                return this.AmperesPerMillisecond + ` A/ms`;
+                return super.truncateFractionDigits(this.AmperesPerMillisecond, fractionalDigits) + ` A/ms`;
             case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
-                return this.AmperesPerMicrosecond + ` A/μs`;
+                return super.truncateFractionDigits(this.AmperesPerMicrosecond, fractionalDigits) + ` A/μs`;
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
-                return this.AmperesPerNanosecond + ` A/ns`;
+                return super.truncateFractionDigits(this.AmperesPerNanosecond, fractionalDigits) + ` A/ns`;
             case ElectricCurrentGradientUnits.MilliamperesPerSecond:
-                return this.MilliamperesPerSecond + ` mA/s`;
+                return super.truncateFractionDigits(this.MilliamperesPerSecond, fractionalDigits) + ` mA/s`;
             case ElectricCurrentGradientUnits.MilliamperesPerMinute:
-                return this.MilliamperesPerMinute + ` mA/min`;
+                return super.truncateFractionDigits(this.MilliamperesPerMinute, fractionalDigits) + ` mA/min`;
         default:
             break;
         }

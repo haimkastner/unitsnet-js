@@ -300,30 +300,31 @@ export class Irradiation extends BaseUnit {
      * Note! the default format for Irradiation is JoulesPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Irradiation.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Irradiation.
      */
-    public toString(unit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter): string {
+    public toString(unit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case IrradiationUnits.JoulesPerSquareMeter:
-                return this.JoulesPerSquareMeter + ` J/m²`;
+                return super.truncateFractionDigits(this.JoulesPerSquareMeter, fractionalDigits) + ` J/m²`;
             case IrradiationUnits.JoulesPerSquareCentimeter:
-                return this.JoulesPerSquareCentimeter + ` J/cm²`;
+                return super.truncateFractionDigits(this.JoulesPerSquareCentimeter, fractionalDigits) + ` J/cm²`;
             case IrradiationUnits.JoulesPerSquareMillimeter:
-                return this.JoulesPerSquareMillimeter + ` J/mm²`;
+                return super.truncateFractionDigits(this.JoulesPerSquareMillimeter, fractionalDigits) + ` J/mm²`;
             case IrradiationUnits.WattHoursPerSquareMeter:
-                return this.WattHoursPerSquareMeter + ` Wh/m²`;
+                return super.truncateFractionDigits(this.WattHoursPerSquareMeter, fractionalDigits) + ` Wh/m²`;
             case IrradiationUnits.BtusPerSquareFoot:
-                return this.BtusPerSquareFoot + ` Btu/ft²`;
+                return super.truncateFractionDigits(this.BtusPerSquareFoot, fractionalDigits) + ` Btu/ft²`;
             case IrradiationUnits.KilojoulesPerSquareMeter:
-                return this.KilojoulesPerSquareMeter + ` kJ/m²`;
+                return super.truncateFractionDigits(this.KilojoulesPerSquareMeter, fractionalDigits) + ` kJ/m²`;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
-                return this.MillijoulesPerSquareCentimeter + ` mJ/cm²`;
+                return super.truncateFractionDigits(this.MillijoulesPerSquareCentimeter, fractionalDigits) + ` mJ/cm²`;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
-                return this.KilowattHoursPerSquareMeter + ` kWh/m²`;
+                return super.truncateFractionDigits(this.KilowattHoursPerSquareMeter, fractionalDigits) + ` kWh/m²`;
             case IrradiationUnits.KilobtusPerSquareFoot:
-                return this.KilobtusPerSquareFoot + ` kBtu/ft²`;
+                return super.truncateFractionDigits(this.KilobtusPerSquareFoot, fractionalDigits) + ` kBtu/ft²`;
         default:
             break;
         }

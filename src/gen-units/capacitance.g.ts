@@ -248,26 +248,27 @@ export class Capacitance extends BaseUnit {
      * Note! the default format for Capacitance is Farads.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Capacitance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Capacitance.
      */
-    public toString(unit: CapacitanceUnits = CapacitanceUnits.Farads): string {
+    public toString(unit: CapacitanceUnits = CapacitanceUnits.Farads, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case CapacitanceUnits.Farads:
-                return this.Farads + ` F`;
+                return super.truncateFractionDigits(this.Farads, fractionalDigits) + ` F`;
             case CapacitanceUnits.Picofarads:
-                return this.Picofarads + ` pF`;
+                return super.truncateFractionDigits(this.Picofarads, fractionalDigits) + ` pF`;
             case CapacitanceUnits.Nanofarads:
-                return this.Nanofarads + ` nF`;
+                return super.truncateFractionDigits(this.Nanofarads, fractionalDigits) + ` nF`;
             case CapacitanceUnits.Microfarads:
-                return this.Microfarads + ` μF`;
+                return super.truncateFractionDigits(this.Microfarads, fractionalDigits) + ` μF`;
             case CapacitanceUnits.Millifarads:
-                return this.Millifarads + ` mF`;
+                return super.truncateFractionDigits(this.Millifarads, fractionalDigits) + ` mF`;
             case CapacitanceUnits.Kilofarads:
-                return this.Kilofarads + ` kF`;
+                return super.truncateFractionDigits(this.Kilofarads, fractionalDigits) + ` kF`;
             case CapacitanceUnits.Megafarads:
-                return this.Megafarads + ` MF`;
+                return super.truncateFractionDigits(this.Megafarads, fractionalDigits) + ` MF`;
         default:
             break;
         }

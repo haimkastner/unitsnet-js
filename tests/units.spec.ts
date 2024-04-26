@@ -75,6 +75,31 @@ describe('Unitsnet - tests', () => {
             expect(angle.toString(AngleUnits.Degrees)).equal('180 °');
             expect(angle.toString(AngleUnits.Radians)).equal('3.141592653589793 rad');
         });
+
+        it(`Should limit fractional digits to 0`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.toString(AngleUnits.Radians, 0)).equal('3 rad');
+        });
+
+        it(`Should limit fractional digits to 2`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.toString(AngleUnits.Radians, 2)).equal('3.14 rad');
+        });
+
+        it(`Should not limit fractional digits if not specified`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.toString(AngleUnits.Radians)).equal('3.141592653589793 rad');
+        });
+
+        it(`Should not activate fractional digits if there are not digits to truncate`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.toString(AngleUnits.Degrees, 2)).equal('180 °');
+        });
+
+        it(`Should activate fractional digits even if digits length fewer then the number`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.toString(AngleUnits.Radians, 20)).equal('3.141592653589793 rad');
+        });
     });
 
     describe('# Abbreviations', () => {

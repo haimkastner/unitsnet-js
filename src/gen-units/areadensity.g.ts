@@ -144,18 +144,19 @@ export class AreaDensity extends BaseUnit {
      * Note! the default format for AreaDensity is KilogramsPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the AreaDensity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the AreaDensity.
      */
-    public toString(unit: AreaDensityUnits = AreaDensityUnits.KilogramsPerSquareMeter): string {
+    public toString(unit: AreaDensityUnits = AreaDensityUnits.KilogramsPerSquareMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case AreaDensityUnits.KilogramsPerSquareMeter:
-                return this.KilogramsPerSquareMeter + ` kg/m²`;
+                return super.truncateFractionDigits(this.KilogramsPerSquareMeter, fractionalDigits) + ` kg/m²`;
             case AreaDensityUnits.GramsPerSquareMeter:
-                return this.GramsPerSquareMeter + ` g/m²`;
+                return super.truncateFractionDigits(this.GramsPerSquareMeter, fractionalDigits) + ` g/m²`;
             case AreaDensityUnits.MilligramsPerSquareMeter:
-                return this.MilligramsPerSquareMeter + ` mg/m²`;
+                return super.truncateFractionDigits(this.MilligramsPerSquareMeter, fractionalDigits) + ` mg/m²`;
         default:
             break;
         }

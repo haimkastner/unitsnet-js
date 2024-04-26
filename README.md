@@ -51,6 +51,9 @@ console.info(angle.toString()); // 180 °
 console.info(angle.toString(AngleUnits.Degrees)); // 180 °
 console.info(angle.toString(AngleUnits.Radians)); // 3.141592653589793 rad
 
+// Specify fraction digits max length
+console.info(angle.toString(AngleUnits.Radians, 2)); // 3.14 rad
+
 // Additional methods
 
 const length1 = Length.FromMeters(10);
@@ -88,7 +91,7 @@ console.log(results6.toString(LengthUnits.Meters)) // 1000 m
 // You can read more about this issue at https://stackoverflow.com/q/1458633/8281649. 
 // UnitNet library allows you to replace the arithmetic formulas with your own, better formulas.
 
-// Example of loading https://www.npmjs.com/package/numeral library as the artimatic formula
+// Example of loading https://www.npmjs.com/package/numeral library as the arithmetic formula
 import numeral from 'numeral';
 import { Length, setArithmeticFormula, ArithmeticOperation } from 'unitsnet-js';
 

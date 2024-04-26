@@ -326,32 +326,33 @@ export class ReciprocalLength extends BaseUnit {
      * Note! the default format for ReciprocalLength is InverseMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ReciprocalLength.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ReciprocalLength.
      */
-    public toString(unit: ReciprocalLengthUnits = ReciprocalLengthUnits.InverseMeters): string {
+    public toString(unit: ReciprocalLengthUnits = ReciprocalLengthUnits.InverseMeters, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ReciprocalLengthUnits.InverseMeters:
-                return this.InverseMeters + ` m⁻¹`;
+                return super.truncateFractionDigits(this.InverseMeters, fractionalDigits) + ` m⁻¹`;
             case ReciprocalLengthUnits.InverseCentimeters:
-                return this.InverseCentimeters + ` cm⁻¹`;
+                return super.truncateFractionDigits(this.InverseCentimeters, fractionalDigits) + ` cm⁻¹`;
             case ReciprocalLengthUnits.InverseMillimeters:
-                return this.InverseMillimeters + ` mm⁻¹`;
+                return super.truncateFractionDigits(this.InverseMillimeters, fractionalDigits) + ` mm⁻¹`;
             case ReciprocalLengthUnits.InverseMiles:
-                return this.InverseMiles + ` mi⁻¹`;
+                return super.truncateFractionDigits(this.InverseMiles, fractionalDigits) + ` mi⁻¹`;
             case ReciprocalLengthUnits.InverseYards:
-                return this.InverseYards + ` yd⁻¹`;
+                return super.truncateFractionDigits(this.InverseYards, fractionalDigits) + ` yd⁻¹`;
             case ReciprocalLengthUnits.InverseFeet:
-                return this.InverseFeet + ` ft⁻¹`;
+                return super.truncateFractionDigits(this.InverseFeet, fractionalDigits) + ` ft⁻¹`;
             case ReciprocalLengthUnits.InverseUsSurveyFeet:
-                return this.InverseUsSurveyFeet + ` ftUS⁻¹`;
+                return super.truncateFractionDigits(this.InverseUsSurveyFeet, fractionalDigits) + ` ftUS⁻¹`;
             case ReciprocalLengthUnits.InverseInches:
-                return this.InverseInches + ` in⁻¹`;
+                return super.truncateFractionDigits(this.InverseInches, fractionalDigits) + ` in⁻¹`;
             case ReciprocalLengthUnits.InverseMils:
-                return this.InverseMils + ` mil⁻¹`;
+                return super.truncateFractionDigits(this.InverseMils, fractionalDigits) + ` mil⁻¹`;
             case ReciprocalLengthUnits.InverseMicroinches:
-                return this.InverseMicroinches + ` µin⁻¹`;
+                return super.truncateFractionDigits(this.InverseMicroinches, fractionalDigits) + ` µin⁻¹`;
         default:
             break;
         }

@@ -352,34 +352,35 @@ export class Duration extends BaseUnit {
      * Note! the default format for Duration is Seconds.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Duration.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Duration.
      */
-    public toString(unit: DurationUnits = DurationUnits.Seconds): string {
+    public toString(unit: DurationUnits = DurationUnits.Seconds, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case DurationUnits.Years365:
-                return this.Years365 + ` yr`;
+                return super.truncateFractionDigits(this.Years365, fractionalDigits) + ` yr`;
             case DurationUnits.Months30:
-                return this.Months30 + ` mo`;
+                return super.truncateFractionDigits(this.Months30, fractionalDigits) + ` mo`;
             case DurationUnits.Weeks:
-                return this.Weeks + ` wk`;
+                return super.truncateFractionDigits(this.Weeks, fractionalDigits) + ` wk`;
             case DurationUnits.Days:
-                return this.Days + ` d`;
+                return super.truncateFractionDigits(this.Days, fractionalDigits) + ` d`;
             case DurationUnits.Hours:
-                return this.Hours + ` h`;
+                return super.truncateFractionDigits(this.Hours, fractionalDigits) + ` h`;
             case DurationUnits.Minutes:
-                return this.Minutes + ` m`;
+                return super.truncateFractionDigits(this.Minutes, fractionalDigits) + ` m`;
             case DurationUnits.Seconds:
-                return this.Seconds + ` s`;
+                return super.truncateFractionDigits(this.Seconds, fractionalDigits) + ` s`;
             case DurationUnits.JulianYears:
-                return this.JulianYears + ` jyr`;
+                return super.truncateFractionDigits(this.JulianYears, fractionalDigits) + ` jyr`;
             case DurationUnits.Nanoseconds:
-                return this.Nanoseconds + ` ns`;
+                return super.truncateFractionDigits(this.Nanoseconds, fractionalDigits) + ` ns`;
             case DurationUnits.Microseconds:
-                return this.Microseconds + ` μs`;
+                return super.truncateFractionDigits(this.Microseconds, fractionalDigits) + ` μs`;
             case DurationUnits.Milliseconds:
-                return this.Milliseconds + ` ms`;
+                return super.truncateFractionDigits(this.Milliseconds, fractionalDigits) + ` ms`;
         default:
             break;
         }

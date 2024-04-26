@@ -430,40 +430,41 @@ export class Information extends BaseUnit {
      * Note! the default format for Information is Bits.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Information.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Information.
      */
-    public toString(unit: InformationUnits = InformationUnits.Bits): string {
+    public toString(unit: InformationUnits = InformationUnits.Bits, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case InformationUnits.Bytes:
-                return this.Bytes + ` B`;
+                return super.truncateFractionDigits(this.Bytes, fractionalDigits) + ` B`;
             case InformationUnits.Bits:
-                return this.Bits + ` b`;
+                return super.truncateFractionDigits(this.Bits, fractionalDigits) + ` b`;
             case InformationUnits.Kilobytes:
-                return this.Kilobytes + ` kB`;
+                return super.truncateFractionDigits(this.Kilobytes, fractionalDigits) + ` kB`;
             case InformationUnits.Megabytes:
-                return this.Megabytes + ` MB`;
+                return super.truncateFractionDigits(this.Megabytes, fractionalDigits) + ` MB`;
             case InformationUnits.Gigabytes:
-                return this.Gigabytes + ` GB`;
+                return super.truncateFractionDigits(this.Gigabytes, fractionalDigits) + ` GB`;
             case InformationUnits.Terabytes:
-                return this.Terabytes + ` TB`;
+                return super.truncateFractionDigits(this.Terabytes, fractionalDigits) + ` TB`;
             case InformationUnits.Petabytes:
-                return this.Petabytes + ` PB`;
+                return super.truncateFractionDigits(this.Petabytes, fractionalDigits) + ` PB`;
             case InformationUnits.Exabytes:
-                return this.Exabytes + ` EB`;
+                return super.truncateFractionDigits(this.Exabytes, fractionalDigits) + ` EB`;
             case InformationUnits.Kilobits:
-                return this.Kilobits + ` kb`;
+                return super.truncateFractionDigits(this.Kilobits, fractionalDigits) + ` kb`;
             case InformationUnits.Megabits:
-                return this.Megabits + ` Mb`;
+                return super.truncateFractionDigits(this.Megabits, fractionalDigits) + ` Mb`;
             case InformationUnits.Gigabits:
-                return this.Gigabits + ` Gb`;
+                return super.truncateFractionDigits(this.Gigabits, fractionalDigits) + ` Gb`;
             case InformationUnits.Terabits:
-                return this.Terabits + ` Tb`;
+                return super.truncateFractionDigits(this.Terabits, fractionalDigits) + ` Tb`;
             case InformationUnits.Petabits:
-                return this.Petabits + ` Pb`;
+                return super.truncateFractionDigits(this.Petabits, fractionalDigits) + ` Pb`;
             case InformationUnits.Exabits:
-                return this.Exabits + ` Eb`;
+                return super.truncateFractionDigits(this.Exabits, fractionalDigits) + ` Eb`;
         default:
             break;
         }

@@ -300,30 +300,31 @@ export class KinematicViscosity extends BaseUnit {
      * Note! the default format for KinematicViscosity is SquareMetersPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the KinematicViscosity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the KinematicViscosity.
      */
-    public toString(unit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond): string {
+    public toString(unit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case KinematicViscosityUnits.SquareMetersPerSecond:
-                return this.SquareMetersPerSecond + ` m²/s`;
+                return super.truncateFractionDigits(this.SquareMetersPerSecond, fractionalDigits) + ` m²/s`;
             case KinematicViscosityUnits.Stokes:
-                return this.Stokes + ` St`;
+                return super.truncateFractionDigits(this.Stokes, fractionalDigits) + ` St`;
             case KinematicViscosityUnits.SquareFeetPerSecond:
-                return this.SquareFeetPerSecond + ` ft²/s`;
+                return super.truncateFractionDigits(this.SquareFeetPerSecond, fractionalDigits) + ` ft²/s`;
             case KinematicViscosityUnits.Nanostokes:
-                return this.Nanostokes + ` nSt`;
+                return super.truncateFractionDigits(this.Nanostokes, fractionalDigits) + ` nSt`;
             case KinematicViscosityUnits.Microstokes:
-                return this.Microstokes + ` μSt`;
+                return super.truncateFractionDigits(this.Microstokes, fractionalDigits) + ` μSt`;
             case KinematicViscosityUnits.Millistokes:
-                return this.Millistokes + ` mSt`;
+                return super.truncateFractionDigits(this.Millistokes, fractionalDigits) + ` mSt`;
             case KinematicViscosityUnits.Centistokes:
-                return this.Centistokes + ` cSt`;
+                return super.truncateFractionDigits(this.Centistokes, fractionalDigits) + ` cSt`;
             case KinematicViscosityUnits.Decistokes:
-                return this.Decistokes + ` dSt`;
+                return super.truncateFractionDigits(this.Decistokes, fractionalDigits) + ` dSt`;
             case KinematicViscosityUnits.Kilostokes:
-                return this.Kilostokes + ` kSt`;
+                return super.truncateFractionDigits(this.Kilostokes, fractionalDigits) + ` kSt`;
         default:
             break;
         }

@@ -222,24 +222,25 @@ export class ElectricPotential extends BaseUnit {
      * Note! the default format for ElectricPotential is Volts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricPotential.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricPotential.
      */
-    public toString(unit: ElectricPotentialUnits = ElectricPotentialUnits.Volts): string {
+    public toString(unit: ElectricPotentialUnits = ElectricPotentialUnits.Volts, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricPotentialUnits.Volts:
-                return this.Volts + ` V`;
+                return super.truncateFractionDigits(this.Volts, fractionalDigits) + ` V`;
             case ElectricPotentialUnits.Nanovolts:
-                return this.Nanovolts + ` nV`;
+                return super.truncateFractionDigits(this.Nanovolts, fractionalDigits) + ` nV`;
             case ElectricPotentialUnits.Microvolts:
-                return this.Microvolts + ` μV`;
+                return super.truncateFractionDigits(this.Microvolts, fractionalDigits) + ` μV`;
             case ElectricPotentialUnits.Millivolts:
-                return this.Millivolts + ` mV`;
+                return super.truncateFractionDigits(this.Millivolts, fractionalDigits) + ` mV`;
             case ElectricPotentialUnits.Kilovolts:
-                return this.Kilovolts + ` kV`;
+                return super.truncateFractionDigits(this.Kilovolts, fractionalDigits) + ` kV`;
             case ElectricPotentialUnits.Megavolts:
-                return this.Megavolts + ` MV`;
+                return super.truncateFractionDigits(this.Megavolts, fractionalDigits) + ` MV`;
         default:
             break;
         }

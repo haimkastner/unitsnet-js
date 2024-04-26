@@ -820,70 +820,71 @@ export class Radioactivity extends BaseUnit {
      * Note! the default format for Radioactivity is Becquerels.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Radioactivity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Radioactivity.
      */
-    public toString(unit: RadioactivityUnits = RadioactivityUnits.Becquerels): string {
+    public toString(unit: RadioactivityUnits = RadioactivityUnits.Becquerels, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case RadioactivityUnits.Becquerels:
-                return this.Becquerels + ` Bq`;
+                return super.truncateFractionDigits(this.Becquerels, fractionalDigits) + ` Bq`;
             case RadioactivityUnits.Curies:
-                return this.Curies + ` Ci`;
+                return super.truncateFractionDigits(this.Curies, fractionalDigits) + ` Ci`;
             case RadioactivityUnits.Rutherfords:
-                return this.Rutherfords + ` Rd`;
+                return super.truncateFractionDigits(this.Rutherfords, fractionalDigits) + ` Rd`;
             case RadioactivityUnits.Picobecquerels:
-                return this.Picobecquerels + ` pBq`;
+                return super.truncateFractionDigits(this.Picobecquerels, fractionalDigits) + ` pBq`;
             case RadioactivityUnits.Nanobecquerels:
-                return this.Nanobecquerels + ` nBq`;
+                return super.truncateFractionDigits(this.Nanobecquerels, fractionalDigits) + ` nBq`;
             case RadioactivityUnits.Microbecquerels:
-                return this.Microbecquerels + ` μBq`;
+                return super.truncateFractionDigits(this.Microbecquerels, fractionalDigits) + ` μBq`;
             case RadioactivityUnits.Millibecquerels:
-                return this.Millibecquerels + ` mBq`;
+                return super.truncateFractionDigits(this.Millibecquerels, fractionalDigits) + ` mBq`;
             case RadioactivityUnits.Kilobecquerels:
-                return this.Kilobecquerels + ` kBq`;
+                return super.truncateFractionDigits(this.Kilobecquerels, fractionalDigits) + ` kBq`;
             case RadioactivityUnits.Megabecquerels:
-                return this.Megabecquerels + ` MBq`;
+                return super.truncateFractionDigits(this.Megabecquerels, fractionalDigits) + ` MBq`;
             case RadioactivityUnits.Gigabecquerels:
-                return this.Gigabecquerels + ` GBq`;
+                return super.truncateFractionDigits(this.Gigabecquerels, fractionalDigits) + ` GBq`;
             case RadioactivityUnits.Terabecquerels:
-                return this.Terabecquerels + ` TBq`;
+                return super.truncateFractionDigits(this.Terabecquerels, fractionalDigits) + ` TBq`;
             case RadioactivityUnits.Petabecquerels:
-                return this.Petabecquerels + ` PBq`;
+                return super.truncateFractionDigits(this.Petabecquerels, fractionalDigits) + ` PBq`;
             case RadioactivityUnits.Exabecquerels:
-                return this.Exabecquerels + ` EBq`;
+                return super.truncateFractionDigits(this.Exabecquerels, fractionalDigits) + ` EBq`;
             case RadioactivityUnits.Picocuries:
-                return this.Picocuries + ` pCi`;
+                return super.truncateFractionDigits(this.Picocuries, fractionalDigits) + ` pCi`;
             case RadioactivityUnits.Nanocuries:
-                return this.Nanocuries + ` nCi`;
+                return super.truncateFractionDigits(this.Nanocuries, fractionalDigits) + ` nCi`;
             case RadioactivityUnits.Microcuries:
-                return this.Microcuries + ` μCi`;
+                return super.truncateFractionDigits(this.Microcuries, fractionalDigits) + ` μCi`;
             case RadioactivityUnits.Millicuries:
-                return this.Millicuries + ` mCi`;
+                return super.truncateFractionDigits(this.Millicuries, fractionalDigits) + ` mCi`;
             case RadioactivityUnits.Kilocuries:
-                return this.Kilocuries + ` kCi`;
+                return super.truncateFractionDigits(this.Kilocuries, fractionalDigits) + ` kCi`;
             case RadioactivityUnits.Megacuries:
-                return this.Megacuries + ` MCi`;
+                return super.truncateFractionDigits(this.Megacuries, fractionalDigits) + ` MCi`;
             case RadioactivityUnits.Gigacuries:
-                return this.Gigacuries + ` GCi`;
+                return super.truncateFractionDigits(this.Gigacuries, fractionalDigits) + ` GCi`;
             case RadioactivityUnits.Teracuries:
-                return this.Teracuries + ` TCi`;
+                return super.truncateFractionDigits(this.Teracuries, fractionalDigits) + ` TCi`;
             case RadioactivityUnits.Picorutherfords:
-                return this.Picorutherfords + ` pRd`;
+                return super.truncateFractionDigits(this.Picorutherfords, fractionalDigits) + ` pRd`;
             case RadioactivityUnits.Nanorutherfords:
-                return this.Nanorutherfords + ` nRd`;
+                return super.truncateFractionDigits(this.Nanorutherfords, fractionalDigits) + ` nRd`;
             case RadioactivityUnits.Microrutherfords:
-                return this.Microrutherfords + ` μRd`;
+                return super.truncateFractionDigits(this.Microrutherfords, fractionalDigits) + ` μRd`;
             case RadioactivityUnits.Millirutherfords:
-                return this.Millirutherfords + ` mRd`;
+                return super.truncateFractionDigits(this.Millirutherfords, fractionalDigits) + ` mRd`;
             case RadioactivityUnits.Kilorutherfords:
-                return this.Kilorutherfords + ` kRd`;
+                return super.truncateFractionDigits(this.Kilorutherfords, fractionalDigits) + ` kRd`;
             case RadioactivityUnits.Megarutherfords:
-                return this.Megarutherfords + ` MRd`;
+                return super.truncateFractionDigits(this.Megarutherfords, fractionalDigits) + ` MRd`;
             case RadioactivityUnits.Gigarutherfords:
-                return this.Gigarutherfords + ` GRd`;
+                return super.truncateFractionDigits(this.Gigarutherfords, fractionalDigits) + ` GRd`;
             case RadioactivityUnits.Terarutherfords:
-                return this.Terarutherfords + ` TRd`;
+                return super.truncateFractionDigits(this.Terarutherfords, fractionalDigits) + ` TRd`;
         default:
             break;
         }

@@ -92,14 +92,15 @@ export class SolidAngle extends BaseUnit {
      * Note! the default format for SolidAngle is Steradians.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SolidAngle.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the SolidAngle.
      */
-    public toString(unit: SolidAngleUnits = SolidAngleUnits.Steradians): string {
+    public toString(unit: SolidAngleUnits = SolidAngleUnits.Steradians, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case SolidAngleUnits.Steradians:
-                return this.Steradians + ` sr`;
+                return super.truncateFractionDigits(this.Steradians, fractionalDigits) + ` sr`;
         default:
             break;
         }

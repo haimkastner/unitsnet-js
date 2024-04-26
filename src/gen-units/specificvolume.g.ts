@@ -144,18 +144,19 @@ export class SpecificVolume extends BaseUnit {
      * Note! the default format for SpecificVolume is CubicMetersPerKilogram.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificVolume.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the SpecificVolume.
      */
-    public toString(unit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram): string {
+    public toString(unit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case SpecificVolumeUnits.CubicMetersPerKilogram:
-                return this.CubicMetersPerKilogram + ` m³/kg`;
+                return super.truncateFractionDigits(this.CubicMetersPerKilogram, fractionalDigits) + ` m³/kg`;
             case SpecificVolumeUnits.CubicFeetPerPound:
-                return this.CubicFeetPerPound + ` ft³/lb`;
+                return super.truncateFractionDigits(this.CubicFeetPerPound, fractionalDigits) + ` ft³/lb`;
             case SpecificVolumeUnits.MillicubicMetersPerKilogram:
-                return this.MillicubicMetersPerKilogram + ` mm³/kg`;
+                return super.truncateFractionDigits(this.MillicubicMetersPerKilogram, fractionalDigits) + ` mm³/kg`;
         default:
             break;
         }

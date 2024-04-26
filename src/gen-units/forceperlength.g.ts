@@ -1054,88 +1054,89 @@ export class ForcePerLength extends BaseUnit {
      * Note! the default format for ForcePerLength is NewtonsPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ForcePerLength.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ForcePerLength.
      */
-    public toString(unit: ForcePerLengthUnits = ForcePerLengthUnits.NewtonsPerMeter): string {
+    public toString(unit: ForcePerLengthUnits = ForcePerLengthUnits.NewtonsPerMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ForcePerLengthUnits.NewtonsPerMeter:
-                return this.NewtonsPerMeter + ` N/m`;
+                return super.truncateFractionDigits(this.NewtonsPerMeter, fractionalDigits) + ` N/m`;
             case ForcePerLengthUnits.NewtonsPerCentimeter:
-                return this.NewtonsPerCentimeter + ` N/cm`;
+                return super.truncateFractionDigits(this.NewtonsPerCentimeter, fractionalDigits) + ` N/cm`;
             case ForcePerLengthUnits.NewtonsPerMillimeter:
-                return this.NewtonsPerMillimeter + ` N/mm`;
+                return super.truncateFractionDigits(this.NewtonsPerMillimeter, fractionalDigits) + ` N/mm`;
             case ForcePerLengthUnits.KilogramsForcePerMeter:
-                return this.KilogramsForcePerMeter + ` kgf/m`;
+                return super.truncateFractionDigits(this.KilogramsForcePerMeter, fractionalDigits) + ` kgf/m`;
             case ForcePerLengthUnits.KilogramsForcePerCentimeter:
-                return this.KilogramsForcePerCentimeter + ` kgf/cm`;
+                return super.truncateFractionDigits(this.KilogramsForcePerCentimeter, fractionalDigits) + ` kgf/cm`;
             case ForcePerLengthUnits.KilogramsForcePerMillimeter:
-                return this.KilogramsForcePerMillimeter + ` kgf/mm`;
+                return super.truncateFractionDigits(this.KilogramsForcePerMillimeter, fractionalDigits) + ` kgf/mm`;
             case ForcePerLengthUnits.TonnesForcePerMeter:
-                return this.TonnesForcePerMeter + ` tf/m`;
+                return super.truncateFractionDigits(this.TonnesForcePerMeter, fractionalDigits) + ` tf/m`;
             case ForcePerLengthUnits.TonnesForcePerCentimeter:
-                return this.TonnesForcePerCentimeter + ` tf/cm`;
+                return super.truncateFractionDigits(this.TonnesForcePerCentimeter, fractionalDigits) + ` tf/cm`;
             case ForcePerLengthUnits.TonnesForcePerMillimeter:
-                return this.TonnesForcePerMillimeter + ` tf/mm`;
+                return super.truncateFractionDigits(this.TonnesForcePerMillimeter, fractionalDigits) + ` tf/mm`;
             case ForcePerLengthUnits.PoundsForcePerFoot:
-                return this.PoundsForcePerFoot + ` lbf/ft`;
+                return super.truncateFractionDigits(this.PoundsForcePerFoot, fractionalDigits) + ` lbf/ft`;
             case ForcePerLengthUnits.PoundsForcePerInch:
-                return this.PoundsForcePerInch + ` lbf/in`;
+                return super.truncateFractionDigits(this.PoundsForcePerInch, fractionalDigits) + ` lbf/in`;
             case ForcePerLengthUnits.PoundsForcePerYard:
-                return this.PoundsForcePerYard + ` lbf/yd`;
+                return super.truncateFractionDigits(this.PoundsForcePerYard, fractionalDigits) + ` lbf/yd`;
             case ForcePerLengthUnits.KilopoundsForcePerFoot:
-                return this.KilopoundsForcePerFoot + ` kipf/ft`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerFoot, fractionalDigits) + ` kipf/ft`;
             case ForcePerLengthUnits.KilopoundsForcePerInch:
-                return this.KilopoundsForcePerInch + ` kipf/in`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerInch, fractionalDigits) + ` kipf/in`;
             case ForcePerLengthUnits.NanonewtonsPerMeter:
-                return this.NanonewtonsPerMeter + ` nN/m`;
+                return super.truncateFractionDigits(this.NanonewtonsPerMeter, fractionalDigits) + ` nN/m`;
             case ForcePerLengthUnits.MicronewtonsPerMeter:
-                return this.MicronewtonsPerMeter + ` μN/m`;
+                return super.truncateFractionDigits(this.MicronewtonsPerMeter, fractionalDigits) + ` μN/m`;
             case ForcePerLengthUnits.MillinewtonsPerMeter:
-                return this.MillinewtonsPerMeter + ` mN/m`;
+                return super.truncateFractionDigits(this.MillinewtonsPerMeter, fractionalDigits) + ` mN/m`;
             case ForcePerLengthUnits.CentinewtonsPerMeter:
-                return this.CentinewtonsPerMeter + ` cN/m`;
+                return super.truncateFractionDigits(this.CentinewtonsPerMeter, fractionalDigits) + ` cN/m`;
             case ForcePerLengthUnits.DecinewtonsPerMeter:
-                return this.DecinewtonsPerMeter + ` dN/m`;
+                return super.truncateFractionDigits(this.DecinewtonsPerMeter, fractionalDigits) + ` dN/m`;
             case ForcePerLengthUnits.DecanewtonsPerMeter:
-                return this.DecanewtonsPerMeter + ` daN/m`;
+                return super.truncateFractionDigits(this.DecanewtonsPerMeter, fractionalDigits) + ` daN/m`;
             case ForcePerLengthUnits.KilonewtonsPerMeter:
-                return this.KilonewtonsPerMeter + ` kN/m`;
+                return super.truncateFractionDigits(this.KilonewtonsPerMeter, fractionalDigits) + ` kN/m`;
             case ForcePerLengthUnits.MeganewtonsPerMeter:
-                return this.MeganewtonsPerMeter + ` MN/m`;
+                return super.truncateFractionDigits(this.MeganewtonsPerMeter, fractionalDigits) + ` MN/m`;
             case ForcePerLengthUnits.NanonewtonsPerCentimeter:
-                return this.NanonewtonsPerCentimeter + ` nN/cm`;
+                return super.truncateFractionDigits(this.NanonewtonsPerCentimeter, fractionalDigits) + ` nN/cm`;
             case ForcePerLengthUnits.MicronewtonsPerCentimeter:
-                return this.MicronewtonsPerCentimeter + ` μN/cm`;
+                return super.truncateFractionDigits(this.MicronewtonsPerCentimeter, fractionalDigits) + ` μN/cm`;
             case ForcePerLengthUnits.MillinewtonsPerCentimeter:
-                return this.MillinewtonsPerCentimeter + ` mN/cm`;
+                return super.truncateFractionDigits(this.MillinewtonsPerCentimeter, fractionalDigits) + ` mN/cm`;
             case ForcePerLengthUnits.CentinewtonsPerCentimeter:
-                return this.CentinewtonsPerCentimeter + ` cN/cm`;
+                return super.truncateFractionDigits(this.CentinewtonsPerCentimeter, fractionalDigits) + ` cN/cm`;
             case ForcePerLengthUnits.DecinewtonsPerCentimeter:
-                return this.DecinewtonsPerCentimeter + ` dN/cm`;
+                return super.truncateFractionDigits(this.DecinewtonsPerCentimeter, fractionalDigits) + ` dN/cm`;
             case ForcePerLengthUnits.DecanewtonsPerCentimeter:
-                return this.DecanewtonsPerCentimeter + ` daN/cm`;
+                return super.truncateFractionDigits(this.DecanewtonsPerCentimeter, fractionalDigits) + ` daN/cm`;
             case ForcePerLengthUnits.KilonewtonsPerCentimeter:
-                return this.KilonewtonsPerCentimeter + ` kN/cm`;
+                return super.truncateFractionDigits(this.KilonewtonsPerCentimeter, fractionalDigits) + ` kN/cm`;
             case ForcePerLengthUnits.MeganewtonsPerCentimeter:
-                return this.MeganewtonsPerCentimeter + ` MN/cm`;
+                return super.truncateFractionDigits(this.MeganewtonsPerCentimeter, fractionalDigits) + ` MN/cm`;
             case ForcePerLengthUnits.NanonewtonsPerMillimeter:
-                return this.NanonewtonsPerMillimeter + ` nN/mm`;
+                return super.truncateFractionDigits(this.NanonewtonsPerMillimeter, fractionalDigits) + ` nN/mm`;
             case ForcePerLengthUnits.MicronewtonsPerMillimeter:
-                return this.MicronewtonsPerMillimeter + ` μN/mm`;
+                return super.truncateFractionDigits(this.MicronewtonsPerMillimeter, fractionalDigits) + ` μN/mm`;
             case ForcePerLengthUnits.MillinewtonsPerMillimeter:
-                return this.MillinewtonsPerMillimeter + ` mN/mm`;
+                return super.truncateFractionDigits(this.MillinewtonsPerMillimeter, fractionalDigits) + ` mN/mm`;
             case ForcePerLengthUnits.CentinewtonsPerMillimeter:
-                return this.CentinewtonsPerMillimeter + ` cN/mm`;
+                return super.truncateFractionDigits(this.CentinewtonsPerMillimeter, fractionalDigits) + ` cN/mm`;
             case ForcePerLengthUnits.DecinewtonsPerMillimeter:
-                return this.DecinewtonsPerMillimeter + ` dN/mm`;
+                return super.truncateFractionDigits(this.DecinewtonsPerMillimeter, fractionalDigits) + ` dN/mm`;
             case ForcePerLengthUnits.DecanewtonsPerMillimeter:
-                return this.DecanewtonsPerMillimeter + ` daN/mm`;
+                return super.truncateFractionDigits(this.DecanewtonsPerMillimeter, fractionalDigits) + ` daN/mm`;
             case ForcePerLengthUnits.KilonewtonsPerMillimeter:
-                return this.KilonewtonsPerMillimeter + ` kN/mm`;
+                return super.truncateFractionDigits(this.KilonewtonsPerMillimeter, fractionalDigits) + ` kN/mm`;
             case ForcePerLengthUnits.MeganewtonsPerMillimeter:
-                return this.MeganewtonsPerMillimeter + ` MN/mm`;
+                return super.truncateFractionDigits(this.MeganewtonsPerMillimeter, fractionalDigits) + ` MN/mm`;
         default:
             break;
         }

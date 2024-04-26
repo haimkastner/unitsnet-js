@@ -118,16 +118,17 @@ export class PowerRatio extends BaseUnit {
      * Note! the default format for PowerRatio is DecibelWatts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the PowerRatio.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the PowerRatio.
      */
-    public toString(unit: PowerRatioUnits = PowerRatioUnits.DecibelWatts): string {
+    public toString(unit: PowerRatioUnits = PowerRatioUnits.DecibelWatts, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case PowerRatioUnits.DecibelWatts:
-                return this.DecibelWatts + ` dBW`;
+                return super.truncateFractionDigits(this.DecibelWatts, fractionalDigits) + ` dBW`;
             case PowerRatioUnits.DecibelMilliwatts:
-                return this.DecibelMilliwatts + ` dBmW`;
+                return super.truncateFractionDigits(this.DecibelMilliwatts, fractionalDigits) + ` dBmW`;
         default:
             break;
         }

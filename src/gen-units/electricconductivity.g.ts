@@ -222,24 +222,25 @@ export class ElectricConductivity extends BaseUnit {
      * Note! the default format for ElectricConductivity is SiemensPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricConductivity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricConductivity.
      */
-    public toString(unit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter): string {
+    public toString(unit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricConductivityUnits.SiemensPerMeter:
-                return this.SiemensPerMeter + ` S/m`;
+                return super.truncateFractionDigits(this.SiemensPerMeter, fractionalDigits) + ` S/m`;
             case ElectricConductivityUnits.SiemensPerInch:
-                return this.SiemensPerInch + ` S/in`;
+                return super.truncateFractionDigits(this.SiemensPerInch, fractionalDigits) + ` S/in`;
             case ElectricConductivityUnits.SiemensPerFoot:
-                return this.SiemensPerFoot + ` S/ft`;
+                return super.truncateFractionDigits(this.SiemensPerFoot, fractionalDigits) + ` S/ft`;
             case ElectricConductivityUnits.SiemensPerCentimeter:
-                return this.SiemensPerCentimeter + ` S/cm`;
+                return super.truncateFractionDigits(this.SiemensPerCentimeter, fractionalDigits) + ` S/cm`;
             case ElectricConductivityUnits.MicrosiemensPerCentimeter:
-                return this.MicrosiemensPerCentimeter + ` μS/cm`;
+                return super.truncateFractionDigits(this.MicrosiemensPerCentimeter, fractionalDigits) + ` μS/cm`;
             case ElectricConductivityUnits.MillisiemensPerCentimeter:
-                return this.MillisiemensPerCentimeter + ` mS/cm`;
+                return super.truncateFractionDigits(this.MillisiemensPerCentimeter, fractionalDigits) + ` mS/cm`;
         default:
             break;
         }

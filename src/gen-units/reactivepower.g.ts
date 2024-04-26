@@ -170,20 +170,21 @@ export class ReactivePower extends BaseUnit {
      * Note! the default format for ReactivePower is VoltamperesReactive.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ReactivePower.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ReactivePower.
      */
-    public toString(unit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive): string {
+    public toString(unit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ReactivePowerUnits.VoltamperesReactive:
-                return this.VoltamperesReactive + ` var`;
+                return super.truncateFractionDigits(this.VoltamperesReactive, fractionalDigits) + ` var`;
             case ReactivePowerUnits.KilovoltamperesReactive:
-                return this.KilovoltamperesReactive + ` kvar`;
+                return super.truncateFractionDigits(this.KilovoltamperesReactive, fractionalDigits) + ` kvar`;
             case ReactivePowerUnits.MegavoltamperesReactive:
-                return this.MegavoltamperesReactive + ` Mvar`;
+                return super.truncateFractionDigits(this.MegavoltamperesReactive, fractionalDigits) + ` Mvar`;
             case ReactivePowerUnits.GigavoltamperesReactive:
-                return this.GigavoltamperesReactive + ` Gvar`;
+                return super.truncateFractionDigits(this.GigavoltamperesReactive, fractionalDigits) + ` Gvar`;
         default:
             break;
         }

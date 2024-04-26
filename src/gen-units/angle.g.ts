@@ -482,44 +482,45 @@ export class Angle extends BaseUnit {
      * Note! the default format for Angle is Degrees.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Angle.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Angle.
      */
-    public toString(unit: AngleUnits = AngleUnits.Degrees): string {
+    public toString(unit: AngleUnits = AngleUnits.Degrees, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case AngleUnits.Radians:
-                return this.Radians + ` rad`;
+                return super.truncateFractionDigits(this.Radians, fractionalDigits) + ` rad`;
             case AngleUnits.Degrees:
-                return this.Degrees + ` °`;
+                return super.truncateFractionDigits(this.Degrees, fractionalDigits) + ` °`;
             case AngleUnits.Arcminutes:
-                return this.Arcminutes + ` '`;
+                return super.truncateFractionDigits(this.Arcminutes, fractionalDigits) + ` '`;
             case AngleUnits.Arcseconds:
-                return this.Arcseconds + ` ″`;
+                return super.truncateFractionDigits(this.Arcseconds, fractionalDigits) + ` ″`;
             case AngleUnits.Gradians:
-                return this.Gradians + ` g`;
+                return super.truncateFractionDigits(this.Gradians, fractionalDigits) + ` g`;
             case AngleUnits.NatoMils:
-                return this.NatoMils + ` mil`;
+                return super.truncateFractionDigits(this.NatoMils, fractionalDigits) + ` mil`;
             case AngleUnits.Revolutions:
-                return this.Revolutions + ` r`;
+                return super.truncateFractionDigits(this.Revolutions, fractionalDigits) + ` r`;
             case AngleUnits.Tilt:
-                return this.Tilt + ` sin(θ)`;
+                return super.truncateFractionDigits(this.Tilt, fractionalDigits) + ` sin(θ)`;
             case AngleUnits.Nanoradians:
-                return this.Nanoradians + ` nrad`;
+                return super.truncateFractionDigits(this.Nanoradians, fractionalDigits) + ` nrad`;
             case AngleUnits.Microradians:
-                return this.Microradians + ` μrad`;
+                return super.truncateFractionDigits(this.Microradians, fractionalDigits) + ` μrad`;
             case AngleUnits.Milliradians:
-                return this.Milliradians + ` mrad`;
+                return super.truncateFractionDigits(this.Milliradians, fractionalDigits) + ` mrad`;
             case AngleUnits.Centiradians:
-                return this.Centiradians + ` crad`;
+                return super.truncateFractionDigits(this.Centiradians, fractionalDigits) + ` crad`;
             case AngleUnits.Deciradians:
-                return this.Deciradians + ` drad`;
+                return super.truncateFractionDigits(this.Deciradians, fractionalDigits) + ` drad`;
             case AngleUnits.Nanodegrees:
-                return this.Nanodegrees + ` n°`;
+                return super.truncateFractionDigits(this.Nanodegrees, fractionalDigits) + ` n°`;
             case AngleUnits.Microdegrees:
-                return this.Microdegrees + ` μ°`;
+                return super.truncateFractionDigits(this.Microdegrees, fractionalDigits) + ` μ°`;
             case AngleUnits.Millidegrees:
-                return this.Millidegrees + ` m°`;
+                return super.truncateFractionDigits(this.Millidegrees, fractionalDigits) + ` m°`;
         default:
             break;
         }

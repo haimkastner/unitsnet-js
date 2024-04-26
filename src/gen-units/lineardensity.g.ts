@@ -430,40 +430,41 @@ export class LinearDensity extends BaseUnit {
      * Note! the default format for LinearDensity is KilogramsPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the LinearDensity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the LinearDensity.
      */
-    public toString(unit: LinearDensityUnits = LinearDensityUnits.KilogramsPerMeter): string {
+    public toString(unit: LinearDensityUnits = LinearDensityUnits.KilogramsPerMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case LinearDensityUnits.GramsPerMillimeter:
-                return this.GramsPerMillimeter + ` g/mm`;
+                return super.truncateFractionDigits(this.GramsPerMillimeter, fractionalDigits) + ` g/mm`;
             case LinearDensityUnits.GramsPerCentimeter:
-                return this.GramsPerCentimeter + ` g/cm`;
+                return super.truncateFractionDigits(this.GramsPerCentimeter, fractionalDigits) + ` g/cm`;
             case LinearDensityUnits.GramsPerMeter:
-                return this.GramsPerMeter + ` g/m`;
+                return super.truncateFractionDigits(this.GramsPerMeter, fractionalDigits) + ` g/m`;
             case LinearDensityUnits.PoundsPerInch:
-                return this.PoundsPerInch + ` lb/in`;
+                return super.truncateFractionDigits(this.PoundsPerInch, fractionalDigits) + ` lb/in`;
             case LinearDensityUnits.PoundsPerFoot:
-                return this.PoundsPerFoot + ` lb/ft`;
+                return super.truncateFractionDigits(this.PoundsPerFoot, fractionalDigits) + ` lb/ft`;
             case LinearDensityUnits.MicrogramsPerMillimeter:
-                return this.MicrogramsPerMillimeter + ` μg/mm`;
+                return super.truncateFractionDigits(this.MicrogramsPerMillimeter, fractionalDigits) + ` μg/mm`;
             case LinearDensityUnits.MilligramsPerMillimeter:
-                return this.MilligramsPerMillimeter + ` mg/mm`;
+                return super.truncateFractionDigits(this.MilligramsPerMillimeter, fractionalDigits) + ` mg/mm`;
             case LinearDensityUnits.KilogramsPerMillimeter:
-                return this.KilogramsPerMillimeter + ` kg/mm`;
+                return super.truncateFractionDigits(this.KilogramsPerMillimeter, fractionalDigits) + ` kg/mm`;
             case LinearDensityUnits.MicrogramsPerCentimeter:
-                return this.MicrogramsPerCentimeter + ` μg/cm`;
+                return super.truncateFractionDigits(this.MicrogramsPerCentimeter, fractionalDigits) + ` μg/cm`;
             case LinearDensityUnits.MilligramsPerCentimeter:
-                return this.MilligramsPerCentimeter + ` mg/cm`;
+                return super.truncateFractionDigits(this.MilligramsPerCentimeter, fractionalDigits) + ` mg/cm`;
             case LinearDensityUnits.KilogramsPerCentimeter:
-                return this.KilogramsPerCentimeter + ` kg/cm`;
+                return super.truncateFractionDigits(this.KilogramsPerCentimeter, fractionalDigits) + ` kg/cm`;
             case LinearDensityUnits.MicrogramsPerMeter:
-                return this.MicrogramsPerMeter + ` μg/m`;
+                return super.truncateFractionDigits(this.MicrogramsPerMeter, fractionalDigits) + ` μg/m`;
             case LinearDensityUnits.MilligramsPerMeter:
-                return this.MilligramsPerMeter + ` mg/m`;
+                return super.truncateFractionDigits(this.MilligramsPerMeter, fractionalDigits) + ` mg/m`;
             case LinearDensityUnits.KilogramsPerMeter:
-                return this.KilogramsPerMeter + ` kg/m`;
+                return super.truncateFractionDigits(this.KilogramsPerMeter, fractionalDigits) + ` kg/m`;
         default:
             break;
         }

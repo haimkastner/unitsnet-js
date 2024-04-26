@@ -196,22 +196,23 @@ export class RotationalStiffnessPerLength extends BaseUnit {
      * Note! the default format for RotationalStiffnessPerLength is NewtonMetersPerRadianPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RotationalStiffnessPerLength.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the RotationalStiffnessPerLength.
      */
-    public toString(unit: RotationalStiffnessPerLengthUnits = RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter): string {
+    public toString(unit: RotationalStiffnessPerLengthUnits = RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
-                return this.NewtonMetersPerRadianPerMeter + ` N·m/rad/m`;
+                return super.truncateFractionDigits(this.NewtonMetersPerRadianPerMeter, fractionalDigits) + ` N·m/rad/m`;
             case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet:
-                return this.PoundForceFeetPerDegreesPerFeet + ` lbf·ft/deg/ft`;
+                return super.truncateFractionDigits(this.PoundForceFeetPerDegreesPerFeet, fractionalDigits) + ` lbf·ft/deg/ft`;
             case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
-                return this.KilopoundForceFeetPerDegreesPerFeet + ` kipf·ft/°/ft`;
+                return super.truncateFractionDigits(this.KilopoundForceFeetPerDegreesPerFeet, fractionalDigits) + ` kipf·ft/°/ft`;
             case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
-                return this.KilonewtonMetersPerRadianPerMeter + ` kN·m/rad/m`;
+                return super.truncateFractionDigits(this.KilonewtonMetersPerRadianPerMeter, fractionalDigits) + ` kN·m/rad/m`;
             case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
-                return this.MeganewtonMetersPerRadianPerMeter + ` MN·m/rad/m`;
+                return super.truncateFractionDigits(this.MeganewtonMetersPerRadianPerMeter, fractionalDigits) + ` MN·m/rad/m`;
         default:
             break;
         }

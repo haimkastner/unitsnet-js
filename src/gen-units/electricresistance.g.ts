@@ -248,26 +248,27 @@ export class ElectricResistance extends BaseUnit {
      * Note! the default format for ElectricResistance is Ohms.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricResistance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricResistance.
      */
-    public toString(unit: ElectricResistanceUnits = ElectricResistanceUnits.Ohms): string {
+    public toString(unit: ElectricResistanceUnits = ElectricResistanceUnits.Ohms, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricResistanceUnits.Ohms:
-                return this.Ohms + ` Ω`;
+                return super.truncateFractionDigits(this.Ohms, fractionalDigits) + ` Ω`;
             case ElectricResistanceUnits.Microohms:
-                return this.Microohms + ` μΩ`;
+                return super.truncateFractionDigits(this.Microohms, fractionalDigits) + ` μΩ`;
             case ElectricResistanceUnits.Milliohms:
-                return this.Milliohms + ` mΩ`;
+                return super.truncateFractionDigits(this.Milliohms, fractionalDigits) + ` mΩ`;
             case ElectricResistanceUnits.Kiloohms:
-                return this.Kiloohms + ` kΩ`;
+                return super.truncateFractionDigits(this.Kiloohms, fractionalDigits) + ` kΩ`;
             case ElectricResistanceUnits.Megaohms:
-                return this.Megaohms + ` MΩ`;
+                return super.truncateFractionDigits(this.Megaohms, fractionalDigits) + ` MΩ`;
             case ElectricResistanceUnits.Gigaohms:
-                return this.Gigaohms + ` GΩ`;
+                return super.truncateFractionDigits(this.Gigaohms, fractionalDigits) + ` GΩ`;
             case ElectricResistanceUnits.Teraohms:
-                return this.Teraohms + ` TΩ`;
+                return super.truncateFractionDigits(this.Teraohms, fractionalDigits) + ` TΩ`;
         default:
             break;
         }

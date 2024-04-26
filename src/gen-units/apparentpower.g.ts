@@ -222,24 +222,25 @@ export class ApparentPower extends BaseUnit {
      * Note! the default format for ApparentPower is Voltamperes.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ApparentPower.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ApparentPower.
      */
-    public toString(unit: ApparentPowerUnits = ApparentPowerUnits.Voltamperes): string {
+    public toString(unit: ApparentPowerUnits = ApparentPowerUnits.Voltamperes, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ApparentPowerUnits.Voltamperes:
-                return this.Voltamperes + ` VA`;
+                return super.truncateFractionDigits(this.Voltamperes, fractionalDigits) + ` VA`;
             case ApparentPowerUnits.Microvoltamperes:
-                return this.Microvoltamperes + ` μVA`;
+                return super.truncateFractionDigits(this.Microvoltamperes, fractionalDigits) + ` μVA`;
             case ApparentPowerUnits.Millivoltamperes:
-                return this.Millivoltamperes + ` mVA`;
+                return super.truncateFractionDigits(this.Millivoltamperes, fractionalDigits) + ` mVA`;
             case ApparentPowerUnits.Kilovoltamperes:
-                return this.Kilovoltamperes + ` kVA`;
+                return super.truncateFractionDigits(this.Kilovoltamperes, fractionalDigits) + ` kVA`;
             case ApparentPowerUnits.Megavoltamperes:
-                return this.Megavoltamperes + ` MVA`;
+                return super.truncateFractionDigits(this.Megavoltamperes, fractionalDigits) + ` MVA`;
             case ApparentPowerUnits.Gigavoltamperes:
-                return this.Gigavoltamperes + ` GVA`;
+                return super.truncateFractionDigits(this.Gigavoltamperes, fractionalDigits) + ` GVA`;
         default:
             break;
         }

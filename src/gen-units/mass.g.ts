@@ -768,66 +768,67 @@ export class Mass extends BaseUnit {
      * Note! the default format for Mass is Kilograms.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Mass.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Mass.
      */
-    public toString(unit: MassUnits = MassUnits.Kilograms): string {
+    public toString(unit: MassUnits = MassUnits.Kilograms, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MassUnits.Grams:
-                return this.Grams + ` g`;
+                return super.truncateFractionDigits(this.Grams, fractionalDigits) + ` g`;
             case MassUnits.Tonnes:
-                return this.Tonnes + ` t`;
+                return super.truncateFractionDigits(this.Tonnes, fractionalDigits) + ` t`;
             case MassUnits.ShortTons:
-                return this.ShortTons + ` t (short)`;
+                return super.truncateFractionDigits(this.ShortTons, fractionalDigits) + ` t (short)`;
             case MassUnits.LongTons:
-                return this.LongTons + ` long tn`;
+                return super.truncateFractionDigits(this.LongTons, fractionalDigits) + ` long tn`;
             case MassUnits.Pounds:
-                return this.Pounds + ` lb`;
+                return super.truncateFractionDigits(this.Pounds, fractionalDigits) + ` lb`;
             case MassUnits.Ounces:
-                return this.Ounces + ` oz`;
+                return super.truncateFractionDigits(this.Ounces, fractionalDigits) + ` oz`;
             case MassUnits.Slugs:
-                return this.Slugs + ` slug`;
+                return super.truncateFractionDigits(this.Slugs, fractionalDigits) + ` slug`;
             case MassUnits.Stone:
-                return this.Stone + ` st`;
+                return super.truncateFractionDigits(this.Stone, fractionalDigits) + ` st`;
             case MassUnits.ShortHundredweight:
-                return this.ShortHundredweight + ` cwt`;
+                return super.truncateFractionDigits(this.ShortHundredweight, fractionalDigits) + ` cwt`;
             case MassUnits.LongHundredweight:
-                return this.LongHundredweight + ` cwt`;
+                return super.truncateFractionDigits(this.LongHundredweight, fractionalDigits) + ` cwt`;
             case MassUnits.Grains:
-                return this.Grains + ` gr`;
+                return super.truncateFractionDigits(this.Grains, fractionalDigits) + ` gr`;
             case MassUnits.SolarMasses:
-                return this.SolarMasses + ` M☉`;
+                return super.truncateFractionDigits(this.SolarMasses, fractionalDigits) + ` M☉`;
             case MassUnits.EarthMasses:
-                return this.EarthMasses + ` em`;
+                return super.truncateFractionDigits(this.EarthMasses, fractionalDigits) + ` em`;
             case MassUnits.Femtograms:
-                return this.Femtograms + ` fg`;
+                return super.truncateFractionDigits(this.Femtograms, fractionalDigits) + ` fg`;
             case MassUnits.Picograms:
-                return this.Picograms + ` pg`;
+                return super.truncateFractionDigits(this.Picograms, fractionalDigits) + ` pg`;
             case MassUnits.Nanograms:
-                return this.Nanograms + ` ng`;
+                return super.truncateFractionDigits(this.Nanograms, fractionalDigits) + ` ng`;
             case MassUnits.Micrograms:
-                return this.Micrograms + ` μg`;
+                return super.truncateFractionDigits(this.Micrograms, fractionalDigits) + ` μg`;
             case MassUnits.Milligrams:
-                return this.Milligrams + ` mg`;
+                return super.truncateFractionDigits(this.Milligrams, fractionalDigits) + ` mg`;
             case MassUnits.Centigrams:
-                return this.Centigrams + ` cg`;
+                return super.truncateFractionDigits(this.Centigrams, fractionalDigits) + ` cg`;
             case MassUnits.Decigrams:
-                return this.Decigrams + ` dg`;
+                return super.truncateFractionDigits(this.Decigrams, fractionalDigits) + ` dg`;
             case MassUnits.Decagrams:
-                return this.Decagrams + ` dag`;
+                return super.truncateFractionDigits(this.Decagrams, fractionalDigits) + ` dag`;
             case MassUnits.Hectograms:
-                return this.Hectograms + ` hg`;
+                return super.truncateFractionDigits(this.Hectograms, fractionalDigits) + ` hg`;
             case MassUnits.Kilograms:
-                return this.Kilograms + ` kg`;
+                return super.truncateFractionDigits(this.Kilograms, fractionalDigits) + ` kg`;
             case MassUnits.Kilotonnes:
-                return this.Kilotonnes + ` kt`;
+                return super.truncateFractionDigits(this.Kilotonnes, fractionalDigits) + ` kt`;
             case MassUnits.Megatonnes:
-                return this.Megatonnes + ` Mt`;
+                return super.truncateFractionDigits(this.Megatonnes, fractionalDigits) + ` Mt`;
             case MassUnits.Kilopounds:
-                return this.Kilopounds + ` klb`;
+                return super.truncateFractionDigits(this.Kilopounds, fractionalDigits) + ` klb`;
             case MassUnits.Megapounds:
-                return this.Megapounds + ` Mlb`;
+                return super.truncateFractionDigits(this.Megapounds, fractionalDigits) + ` Mlb`;
         default:
             break;
         }

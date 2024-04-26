@@ -430,40 +430,41 @@ export class ElectricResistivity extends BaseUnit {
      * Note! the default format for ElectricResistivity is OhmMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricResistivity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricResistivity.
      */
-    public toString(unit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters): string {
+    public toString(unit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricResistivityUnits.OhmMeters:
-                return this.OhmMeters + ` Ω·m`;
+                return super.truncateFractionDigits(this.OhmMeters, fractionalDigits) + ` Ω·m`;
             case ElectricResistivityUnits.OhmsCentimeter:
-                return this.OhmsCentimeter + ` Ω·cm`;
+                return super.truncateFractionDigits(this.OhmsCentimeter, fractionalDigits) + ` Ω·cm`;
             case ElectricResistivityUnits.PicoohmMeters:
-                return this.PicoohmMeters + ` pΩ·m`;
+                return super.truncateFractionDigits(this.PicoohmMeters, fractionalDigits) + ` pΩ·m`;
             case ElectricResistivityUnits.NanoohmMeters:
-                return this.NanoohmMeters + ` nΩ·m`;
+                return super.truncateFractionDigits(this.NanoohmMeters, fractionalDigits) + ` nΩ·m`;
             case ElectricResistivityUnits.MicroohmMeters:
-                return this.MicroohmMeters + ` μΩ·m`;
+                return super.truncateFractionDigits(this.MicroohmMeters, fractionalDigits) + ` μΩ·m`;
             case ElectricResistivityUnits.MilliohmMeters:
-                return this.MilliohmMeters + ` mΩ·m`;
+                return super.truncateFractionDigits(this.MilliohmMeters, fractionalDigits) + ` mΩ·m`;
             case ElectricResistivityUnits.KiloohmMeters:
-                return this.KiloohmMeters + ` kΩ·m`;
+                return super.truncateFractionDigits(this.KiloohmMeters, fractionalDigits) + ` kΩ·m`;
             case ElectricResistivityUnits.MegaohmMeters:
-                return this.MegaohmMeters + ` MΩ·m`;
+                return super.truncateFractionDigits(this.MegaohmMeters, fractionalDigits) + ` MΩ·m`;
             case ElectricResistivityUnits.PicoohmsCentimeter:
-                return this.PicoohmsCentimeter + ` pΩ·cm`;
+                return super.truncateFractionDigits(this.PicoohmsCentimeter, fractionalDigits) + ` pΩ·cm`;
             case ElectricResistivityUnits.NanoohmsCentimeter:
-                return this.NanoohmsCentimeter + ` nΩ·cm`;
+                return super.truncateFractionDigits(this.NanoohmsCentimeter, fractionalDigits) + ` nΩ·cm`;
             case ElectricResistivityUnits.MicroohmsCentimeter:
-                return this.MicroohmsCentimeter + ` μΩ·cm`;
+                return super.truncateFractionDigits(this.MicroohmsCentimeter, fractionalDigits) + ` μΩ·cm`;
             case ElectricResistivityUnits.MilliohmsCentimeter:
-                return this.MilliohmsCentimeter + ` mΩ·cm`;
+                return super.truncateFractionDigits(this.MilliohmsCentimeter, fractionalDigits) + ` mΩ·cm`;
             case ElectricResistivityUnits.KiloohmsCentimeter:
-                return this.KiloohmsCentimeter + ` kΩ·cm`;
+                return super.truncateFractionDigits(this.KiloohmsCentimeter, fractionalDigits) + ` kΩ·cm`;
             case ElectricResistivityUnits.MegaohmsCentimeter:
-                return this.MegaohmsCentimeter + ` MΩ·cm`;
+                return super.truncateFractionDigits(this.MegaohmsCentimeter, fractionalDigits) + ` MΩ·cm`;
         default:
             break;
         }

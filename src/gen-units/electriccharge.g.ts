@@ -352,34 +352,35 @@ export class ElectricCharge extends BaseUnit {
      * Note! the default format for ElectricCharge is Coulombs.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricCharge.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricCharge.
      */
-    public toString(unit: ElectricChargeUnits = ElectricChargeUnits.Coulombs): string {
+    public toString(unit: ElectricChargeUnits = ElectricChargeUnits.Coulombs, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricChargeUnits.Coulombs:
-                return this.Coulombs + ` C`;
+                return super.truncateFractionDigits(this.Coulombs, fractionalDigits) + ` C`;
             case ElectricChargeUnits.AmpereHours:
-                return this.AmpereHours + ` A-h`;
+                return super.truncateFractionDigits(this.AmpereHours, fractionalDigits) + ` A-h`;
             case ElectricChargeUnits.Picocoulombs:
-                return this.Picocoulombs + ` pC`;
+                return super.truncateFractionDigits(this.Picocoulombs, fractionalDigits) + ` pC`;
             case ElectricChargeUnits.Nanocoulombs:
-                return this.Nanocoulombs + ` nC`;
+                return super.truncateFractionDigits(this.Nanocoulombs, fractionalDigits) + ` nC`;
             case ElectricChargeUnits.Microcoulombs:
-                return this.Microcoulombs + ` μC`;
+                return super.truncateFractionDigits(this.Microcoulombs, fractionalDigits) + ` μC`;
             case ElectricChargeUnits.Millicoulombs:
-                return this.Millicoulombs + ` mC`;
+                return super.truncateFractionDigits(this.Millicoulombs, fractionalDigits) + ` mC`;
             case ElectricChargeUnits.Kilocoulombs:
-                return this.Kilocoulombs + ` kC`;
+                return super.truncateFractionDigits(this.Kilocoulombs, fractionalDigits) + ` kC`;
             case ElectricChargeUnits.Megacoulombs:
-                return this.Megacoulombs + ` MC`;
+                return super.truncateFractionDigits(this.Megacoulombs, fractionalDigits) + ` MC`;
             case ElectricChargeUnits.MilliampereHours:
-                return this.MilliampereHours + ` mA-h`;
+                return super.truncateFractionDigits(this.MilliampereHours, fractionalDigits) + ` mA-h`;
             case ElectricChargeUnits.KiloampereHours:
-                return this.KiloampereHours + ` kA-h`;
+                return super.truncateFractionDigits(this.KiloampereHours, fractionalDigits) + ` kA-h`;
             case ElectricChargeUnits.MegaampereHours:
-                return this.MegaampereHours + ` MA-h`;
+                return super.truncateFractionDigits(this.MegaampereHours, fractionalDigits) + ` MA-h`;
         default:
             break;
         }

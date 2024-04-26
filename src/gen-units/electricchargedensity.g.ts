@@ -92,14 +92,15 @@ export class ElectricChargeDensity extends BaseUnit {
      * Note! the default format for ElectricChargeDensity is CoulombsPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricChargeDensity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ElectricChargeDensity.
      */
-    public toString(unit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter): string {
+    public toString(unit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                return this.CoulombsPerCubicMeter + ` C/m³`;
+                return super.truncateFractionDigits(this.CoulombsPerCubicMeter, fractionalDigits) + ` C/m³`;
         default:
             break;
         }

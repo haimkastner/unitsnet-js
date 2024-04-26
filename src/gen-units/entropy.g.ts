@@ -248,26 +248,27 @@ export class Entropy extends BaseUnit {
      * Note! the default format for Entropy is JoulesPerKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Entropy.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Entropy.
      */
-    public toString(unit: EntropyUnits = EntropyUnits.JoulesPerKelvin): string {
+    public toString(unit: EntropyUnits = EntropyUnits.JoulesPerKelvin, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case EntropyUnits.JoulesPerKelvin:
-                return this.JoulesPerKelvin + ` J/K`;
+                return super.truncateFractionDigits(this.JoulesPerKelvin, fractionalDigits) + ` J/K`;
             case EntropyUnits.CaloriesPerKelvin:
-                return this.CaloriesPerKelvin + ` cal/K`;
+                return super.truncateFractionDigits(this.CaloriesPerKelvin, fractionalDigits) + ` cal/K`;
             case EntropyUnits.JoulesPerDegreeCelsius:
-                return this.JoulesPerDegreeCelsius + ` J/C`;
+                return super.truncateFractionDigits(this.JoulesPerDegreeCelsius, fractionalDigits) + ` J/C`;
             case EntropyUnits.KilojoulesPerKelvin:
-                return this.KilojoulesPerKelvin + ` kJ/K`;
+                return super.truncateFractionDigits(this.KilojoulesPerKelvin, fractionalDigits) + ` kJ/K`;
             case EntropyUnits.MegajoulesPerKelvin:
-                return this.MegajoulesPerKelvin + ` MJ/K`;
+                return super.truncateFractionDigits(this.MegajoulesPerKelvin, fractionalDigits) + ` MJ/K`;
             case EntropyUnits.KilocaloriesPerKelvin:
-                return this.KilocaloriesPerKelvin + ` kcal/K`;
+                return super.truncateFractionDigits(this.KilocaloriesPerKelvin, fractionalDigits) + ` kcal/K`;
             case EntropyUnits.KilojoulesPerDegreeCelsius:
-                return this.KilojoulesPerDegreeCelsius + ` kJ/C`;
+                return super.truncateFractionDigits(this.KilojoulesPerDegreeCelsius, fractionalDigits) + ` kJ/C`;
         default:
             break;
         }

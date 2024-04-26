@@ -92,14 +92,15 @@ export class LuminousIntensity extends BaseUnit {
      * Note! the default format for LuminousIntensity is Candela.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the LuminousIntensity.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the LuminousIntensity.
      */
-    public toString(unit: LuminousIntensityUnits = LuminousIntensityUnits.Candela): string {
+    public toString(unit: LuminousIntensityUnits = LuminousIntensityUnits.Candela, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case LuminousIntensityUnits.Candela:
-                return this.Candela + ` cd`;
+                return super.truncateFractionDigits(this.Candela, fractionalDigits) + ` cd`;
         default:
             break;
         }

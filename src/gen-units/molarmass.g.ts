@@ -404,38 +404,39 @@ export class MolarMass extends BaseUnit {
      * Note! the default format for MolarMass is KilogramsPerMole.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MolarMass.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the MolarMass.
      */
-    public toString(unit: MolarMassUnits = MolarMassUnits.KilogramsPerMole): string {
+    public toString(unit: MolarMassUnits = MolarMassUnits.KilogramsPerMole, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MolarMassUnits.GramsPerMole:
-                return this.GramsPerMole + ` g/mol`;
+                return super.truncateFractionDigits(this.GramsPerMole, fractionalDigits) + ` g/mol`;
             case MolarMassUnits.KilogramsPerKilomole:
-                return this.KilogramsPerKilomole + ` kg/kmol`;
+                return super.truncateFractionDigits(this.KilogramsPerKilomole, fractionalDigits) + ` kg/kmol`;
             case MolarMassUnits.PoundsPerMole:
-                return this.PoundsPerMole + ` lb/mol`;
+                return super.truncateFractionDigits(this.PoundsPerMole, fractionalDigits) + ` lb/mol`;
             case MolarMassUnits.NanogramsPerMole:
-                return this.NanogramsPerMole + ` ng/mol`;
+                return super.truncateFractionDigits(this.NanogramsPerMole, fractionalDigits) + ` ng/mol`;
             case MolarMassUnits.MicrogramsPerMole:
-                return this.MicrogramsPerMole + ` μg/mol`;
+                return super.truncateFractionDigits(this.MicrogramsPerMole, fractionalDigits) + ` μg/mol`;
             case MolarMassUnits.MilligramsPerMole:
-                return this.MilligramsPerMole + ` mg/mol`;
+                return super.truncateFractionDigits(this.MilligramsPerMole, fractionalDigits) + ` mg/mol`;
             case MolarMassUnits.CentigramsPerMole:
-                return this.CentigramsPerMole + ` cg/mol`;
+                return super.truncateFractionDigits(this.CentigramsPerMole, fractionalDigits) + ` cg/mol`;
             case MolarMassUnits.DecigramsPerMole:
-                return this.DecigramsPerMole + ` dg/mol`;
+                return super.truncateFractionDigits(this.DecigramsPerMole, fractionalDigits) + ` dg/mol`;
             case MolarMassUnits.DecagramsPerMole:
-                return this.DecagramsPerMole + ` dag/mol`;
+                return super.truncateFractionDigits(this.DecagramsPerMole, fractionalDigits) + ` dag/mol`;
             case MolarMassUnits.HectogramsPerMole:
-                return this.HectogramsPerMole + ` hg/mol`;
+                return super.truncateFractionDigits(this.HectogramsPerMole, fractionalDigits) + ` hg/mol`;
             case MolarMassUnits.KilogramsPerMole:
-                return this.KilogramsPerMole + ` kg/mol`;
+                return super.truncateFractionDigits(this.KilogramsPerMole, fractionalDigits) + ` kg/mol`;
             case MolarMassUnits.KilopoundsPerMole:
-                return this.KilopoundsPerMole + ` klb/mol`;
+                return super.truncateFractionDigits(this.KilopoundsPerMole, fractionalDigits) + ` klb/mol`;
             case MolarMassUnits.MegapoundsPerMole:
-                return this.MegapoundsPerMole + ` Mlb/mol`;
+                return super.truncateFractionDigits(this.MegapoundsPerMole, fractionalDigits) + ` Mlb/mol`;
         default:
             break;
         }

@@ -300,30 +300,31 @@ export class VolumePerLength extends BaseUnit {
      * Note! the default format for VolumePerLength is CubicMetersPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the VolumePerLength.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the VolumePerLength.
      */
-    public toString(unit: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter): string {
+    public toString(unit: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case VolumePerLengthUnits.CubicMetersPerMeter:
-                return this.CubicMetersPerMeter + ` m³/m`;
+                return super.truncateFractionDigits(this.CubicMetersPerMeter, fractionalDigits) + ` m³/m`;
             case VolumePerLengthUnits.LitersPerMeter:
-                return this.LitersPerMeter + ` l/m`;
+                return super.truncateFractionDigits(this.LitersPerMeter, fractionalDigits) + ` l/m`;
             case VolumePerLengthUnits.LitersPerKilometer:
-                return this.LitersPerKilometer + ` l/km`;
+                return super.truncateFractionDigits(this.LitersPerKilometer, fractionalDigits) + ` l/km`;
             case VolumePerLengthUnits.LitersPerMillimeter:
-                return this.LitersPerMillimeter + ` l/mm`;
+                return super.truncateFractionDigits(this.LitersPerMillimeter, fractionalDigits) + ` l/mm`;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
-                return this.OilBarrelsPerFoot + ` bbl/ft`;
+                return super.truncateFractionDigits(this.OilBarrelsPerFoot, fractionalDigits) + ` bbl/ft`;
             case VolumePerLengthUnits.CubicYardsPerFoot:
-                return this.CubicYardsPerFoot + ` yd³/ft`;
+                return super.truncateFractionDigits(this.CubicYardsPerFoot, fractionalDigits) + ` yd³/ft`;
             case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
-                return this.CubicYardsPerUsSurveyFoot + ` yd³/ftUS`;
+                return super.truncateFractionDigits(this.CubicYardsPerUsSurveyFoot, fractionalDigits) + ` yd³/ftUS`;
             case VolumePerLengthUnits.UsGallonsPerMile:
-                return this.UsGallonsPerMile + ` gal (U.S.)/mi`;
+                return super.truncateFractionDigits(this.UsGallonsPerMile, fractionalDigits) + ` gal (U.S.)/mi`;
             case VolumePerLengthUnits.ImperialGallonsPerMile:
-                return this.ImperialGallonsPerMile + ` gal (imp.)/mi`;
+                return super.truncateFractionDigits(this.ImperialGallonsPerMile, fractionalDigits) + ` gal (imp.)/mi`;
         default:
             break;
         }

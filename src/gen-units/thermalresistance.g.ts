@@ -222,24 +222,25 @@ export class ThermalResistance extends BaseUnit {
      * Note! the default format for ThermalResistance is SquareMeterKelvinsPerKilowatt.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ThermalResistance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the ThermalResistance.
      */
-    public toString(unit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt): string {
+    public toString(unit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
-                return this.SquareMeterKelvinsPerKilowatt + ` m²K/kW`;
+                return super.truncateFractionDigits(this.SquareMeterKelvinsPerKilowatt, fractionalDigits) + ` m²K/kW`;
             case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
-                return this.SquareMeterKelvinsPerWatt + ` m²K/W`;
+                return super.truncateFractionDigits(this.SquareMeterKelvinsPerWatt, fractionalDigits) + ` m²K/W`;
             case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                return this.SquareMeterDegreesCelsiusPerWatt + ` m²°C/W`;
+                return super.truncateFractionDigits(this.SquareMeterDegreesCelsiusPerWatt, fractionalDigits) + ` m²°C/W`;
             case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                return this.SquareCentimeterKelvinsPerWatt + ` cm²K/W`;
+                return super.truncateFractionDigits(this.SquareCentimeterKelvinsPerWatt, fractionalDigits) + ` cm²K/W`;
             case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                return this.SquareCentimeterHourDegreesCelsiusPerKilocalorie + ` cm²Hr°C/kcal`;
+                return super.truncateFractionDigits(this.SquareCentimeterHourDegreesCelsiusPerKilocalorie, fractionalDigits) + ` cm²Hr°C/kcal`;
             case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                return this.HourSquareFeetDegreesFahrenheitPerBtu + ` Hrft²°F/Btu`;
+                return super.truncateFractionDigits(this.HourSquareFeetDegreesFahrenheitPerBtu, fractionalDigits) + ` Hrft²°F/Btu`;
         default:
             break;
         }

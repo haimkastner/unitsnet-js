@@ -846,72 +846,73 @@ export class SpecificEnergy extends BaseUnit {
      * Note! the default format for SpecificEnergy is JoulesPerKilogram.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificEnergy.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the SpecificEnergy.
      */
-    public toString(unit: SpecificEnergyUnits = SpecificEnergyUnits.JoulesPerKilogram): string {
+    public toString(unit: SpecificEnergyUnits = SpecificEnergyUnits.JoulesPerKilogram, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case SpecificEnergyUnits.JoulesPerKilogram:
-                return this.JoulesPerKilogram + ` J/kg`;
+                return super.truncateFractionDigits(this.JoulesPerKilogram, fractionalDigits) + ` J/kg`;
             case SpecificEnergyUnits.MegaJoulesPerTonne:
-                return this.MegaJoulesPerTonne + ` MJ/t`;
+                return super.truncateFractionDigits(this.MegaJoulesPerTonne, fractionalDigits) + ` MJ/t`;
             case SpecificEnergyUnits.CaloriesPerGram:
-                return this.CaloriesPerGram + ` cal/g`;
+                return super.truncateFractionDigits(this.CaloriesPerGram, fractionalDigits) + ` cal/g`;
             case SpecificEnergyUnits.WattHoursPerKilogram:
-                return this.WattHoursPerKilogram + ` Wh/kg`;
+                return super.truncateFractionDigits(this.WattHoursPerKilogram, fractionalDigits) + ` Wh/kg`;
             case SpecificEnergyUnits.WattDaysPerKilogram:
-                return this.WattDaysPerKilogram + ` Wd/kg`;
+                return super.truncateFractionDigits(this.WattDaysPerKilogram, fractionalDigits) + ` Wd/kg`;
             case SpecificEnergyUnits.WattDaysPerTonne:
-                return this.WattDaysPerTonne + ` Wd/t`;
+                return super.truncateFractionDigits(this.WattDaysPerTonne, fractionalDigits) + ` Wd/t`;
             case SpecificEnergyUnits.WattDaysPerShortTon:
-                return this.WattDaysPerShortTon + ` Wd/ST`;
+                return super.truncateFractionDigits(this.WattDaysPerShortTon, fractionalDigits) + ` Wd/ST`;
             case SpecificEnergyUnits.WattHoursPerPound:
-                return this.WattHoursPerPound + ` Wh/lbs`;
+                return super.truncateFractionDigits(this.WattHoursPerPound, fractionalDigits) + ` Wh/lbs`;
             case SpecificEnergyUnits.BtuPerPound:
-                return this.BtuPerPound + ` btu/lb`;
+                return super.truncateFractionDigits(this.BtuPerPound, fractionalDigits) + ` btu/lb`;
             case SpecificEnergyUnits.KilojoulesPerKilogram:
-                return this.KilojoulesPerKilogram + ` kJ/kg`;
+                return super.truncateFractionDigits(this.KilojoulesPerKilogram, fractionalDigits) + ` kJ/kg`;
             case SpecificEnergyUnits.MegajoulesPerKilogram:
-                return this.MegajoulesPerKilogram + ` MJ/kg`;
+                return super.truncateFractionDigits(this.MegajoulesPerKilogram, fractionalDigits) + ` MJ/kg`;
             case SpecificEnergyUnits.KilocaloriesPerGram:
-                return this.KilocaloriesPerGram + ` kcal/g`;
+                return super.truncateFractionDigits(this.KilocaloriesPerGram, fractionalDigits) + ` kcal/g`;
             case SpecificEnergyUnits.KilowattHoursPerKilogram:
-                return this.KilowattHoursPerKilogram + ` kWh/kg`;
+                return super.truncateFractionDigits(this.KilowattHoursPerKilogram, fractionalDigits) + ` kWh/kg`;
             case SpecificEnergyUnits.MegawattHoursPerKilogram:
-                return this.MegawattHoursPerKilogram + ` MWh/kg`;
+                return super.truncateFractionDigits(this.MegawattHoursPerKilogram, fractionalDigits) + ` MWh/kg`;
             case SpecificEnergyUnits.GigawattHoursPerKilogram:
-                return this.GigawattHoursPerKilogram + ` GWh/kg`;
+                return super.truncateFractionDigits(this.GigawattHoursPerKilogram, fractionalDigits) + ` GWh/kg`;
             case SpecificEnergyUnits.KilowattDaysPerKilogram:
-                return this.KilowattDaysPerKilogram + ` kWd/kg`;
+                return super.truncateFractionDigits(this.KilowattDaysPerKilogram, fractionalDigits) + ` kWd/kg`;
             case SpecificEnergyUnits.MegawattDaysPerKilogram:
-                return this.MegawattDaysPerKilogram + ` MWd/kg`;
+                return super.truncateFractionDigits(this.MegawattDaysPerKilogram, fractionalDigits) + ` MWd/kg`;
             case SpecificEnergyUnits.GigawattDaysPerKilogram:
-                return this.GigawattDaysPerKilogram + ` GWd/kg`;
+                return super.truncateFractionDigits(this.GigawattDaysPerKilogram, fractionalDigits) + ` GWd/kg`;
             case SpecificEnergyUnits.TerawattDaysPerKilogram:
-                return this.TerawattDaysPerKilogram + ` TWd/kg`;
+                return super.truncateFractionDigits(this.TerawattDaysPerKilogram, fractionalDigits) + ` TWd/kg`;
             case SpecificEnergyUnits.KilowattDaysPerTonne:
-                return this.KilowattDaysPerTonne + ` kWd/t`;
+                return super.truncateFractionDigits(this.KilowattDaysPerTonne, fractionalDigits) + ` kWd/t`;
             case SpecificEnergyUnits.MegawattDaysPerTonne:
-                return this.MegawattDaysPerTonne + ` MWd/t`;
+                return super.truncateFractionDigits(this.MegawattDaysPerTonne, fractionalDigits) + ` MWd/t`;
             case SpecificEnergyUnits.GigawattDaysPerTonne:
-                return this.GigawattDaysPerTonne + ` GWd/t`;
+                return super.truncateFractionDigits(this.GigawattDaysPerTonne, fractionalDigits) + ` GWd/t`;
             case SpecificEnergyUnits.TerawattDaysPerTonne:
-                return this.TerawattDaysPerTonne + ` TWd/t`;
+                return super.truncateFractionDigits(this.TerawattDaysPerTonne, fractionalDigits) + ` TWd/t`;
             case SpecificEnergyUnits.KilowattDaysPerShortTon:
-                return this.KilowattDaysPerShortTon + ` kWd/ST`;
+                return super.truncateFractionDigits(this.KilowattDaysPerShortTon, fractionalDigits) + ` kWd/ST`;
             case SpecificEnergyUnits.MegawattDaysPerShortTon:
-                return this.MegawattDaysPerShortTon + ` MWd/ST`;
+                return super.truncateFractionDigits(this.MegawattDaysPerShortTon, fractionalDigits) + ` MWd/ST`;
             case SpecificEnergyUnits.GigawattDaysPerShortTon:
-                return this.GigawattDaysPerShortTon + ` GWd/ST`;
+                return super.truncateFractionDigits(this.GigawattDaysPerShortTon, fractionalDigits) + ` GWd/ST`;
             case SpecificEnergyUnits.TerawattDaysPerShortTon:
-                return this.TerawattDaysPerShortTon + ` TWd/ST`;
+                return super.truncateFractionDigits(this.TerawattDaysPerShortTon, fractionalDigits) + ` TWd/ST`;
             case SpecificEnergyUnits.KilowattHoursPerPound:
-                return this.KilowattHoursPerPound + ` kWh/lbs`;
+                return super.truncateFractionDigits(this.KilowattHoursPerPound, fractionalDigits) + ` kWh/lbs`;
             case SpecificEnergyUnits.MegawattHoursPerPound:
-                return this.MegawattHoursPerPound + ` MWh/lbs`;
+                return super.truncateFractionDigits(this.MegawattHoursPerPound, fractionalDigits) + ` MWh/lbs`;
             case SpecificEnergyUnits.GigawattHoursPerPound:
-                return this.GigawattHoursPerPound + ` GWh/lbs`;
+                return super.truncateFractionDigits(this.GigawattHoursPerPound, fractionalDigits) + ` GWh/lbs`;
         default:
             break;
         }

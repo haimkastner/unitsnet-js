@@ -92,14 +92,15 @@ export class Scalar extends BaseUnit {
      * Note! the default format for Scalar is Amount.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Scalar.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Scalar.
      */
-    public toString(unit: ScalarUnits = ScalarUnits.Amount): string {
+    public toString(unit: ScalarUnits = ScalarUnits.Amount, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case ScalarUnits.Amount:
-                return this.Amount + ` `;
+                return super.truncateFractionDigits(this.Amount, fractionalDigits) + ` `;
         default:
             break;
         }

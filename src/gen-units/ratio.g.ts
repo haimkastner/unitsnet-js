@@ -222,24 +222,25 @@ export class Ratio extends BaseUnit {
      * Note! the default format for Ratio is DecimalFractions.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Ratio.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Ratio.
      */
-    public toString(unit: RatioUnits = RatioUnits.DecimalFractions): string {
+    public toString(unit: RatioUnits = RatioUnits.DecimalFractions, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case RatioUnits.DecimalFractions:
-                return this.DecimalFractions + ` `;
+                return super.truncateFractionDigits(this.DecimalFractions, fractionalDigits) + ` `;
             case RatioUnits.Percent:
-                return this.Percent + ` %`;
+                return super.truncateFractionDigits(this.Percent, fractionalDigits) + ` %`;
             case RatioUnits.PartsPerThousand:
-                return this.PartsPerThousand + ` ‰`;
+                return super.truncateFractionDigits(this.PartsPerThousand, fractionalDigits) + ` ‰`;
             case RatioUnits.PartsPerMillion:
-                return this.PartsPerMillion + ` ppm`;
+                return super.truncateFractionDigits(this.PartsPerMillion, fractionalDigits) + ` ppm`;
             case RatioUnits.PartsPerBillion:
-                return this.PartsPerBillion + ` ppb`;
+                return super.truncateFractionDigits(this.PartsPerBillion, fractionalDigits) + ` ppb`;
             case RatioUnits.PartsPerTrillion:
-                return this.PartsPerTrillion + ` ppt`;
+                return super.truncateFractionDigits(this.PartsPerTrillion, fractionalDigits) + ` ppt`;
         default:
             break;
         }

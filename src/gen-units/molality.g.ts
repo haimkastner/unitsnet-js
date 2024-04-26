@@ -118,16 +118,17 @@ export class Molality extends BaseUnit {
      * Note! the default format for Molality is MolesPerKilogram.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Molality.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Molality.
      */
-    public toString(unit: MolalityUnits = MolalityUnits.MolesPerKilogram): string {
+    public toString(unit: MolalityUnits = MolalityUnits.MolesPerKilogram, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case MolalityUnits.MolesPerKilogram:
-                return this.MolesPerKilogram + ` mol/kg`;
+                return super.truncateFractionDigits(this.MolesPerKilogram, fractionalDigits) + ` mol/kg`;
             case MolalityUnits.MolesPerGram:
-                return this.MolesPerGram + ` mol/g`;
+                return super.truncateFractionDigits(this.MolesPerGram, fractionalDigits) + ` mol/g`;
         default:
             break;
         }

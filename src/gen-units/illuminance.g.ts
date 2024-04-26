@@ -170,20 +170,21 @@ export class Illuminance extends BaseUnit {
      * Note! the default format for Illuminance is Lux.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Illuminance.
+     * @param fractionalDigits The number of fractional digits to keep.
      * @returns The string format of the Illuminance.
      */
-    public toString(unit: IlluminanceUnits = IlluminanceUnits.Lux): string {
+    public toString(unit: IlluminanceUnits = IlluminanceUnits.Lux, fractionalDigits?: number): string {
 
         switch (unit) {
             
             case IlluminanceUnits.Lux:
-                return this.Lux + ` lx`;
+                return super.truncateFractionDigits(this.Lux, fractionalDigits) + ` lx`;
             case IlluminanceUnits.Millilux:
-                return this.Millilux + ` mlx`;
+                return super.truncateFractionDigits(this.Millilux, fractionalDigits) + ` mlx`;
             case IlluminanceUnits.Kilolux:
-                return this.Kilolux + ` klx`;
+                return super.truncateFractionDigits(this.Kilolux, fractionalDigits) + ` klx`;
             case IlluminanceUnits.Megalux:
-                return this.Megalux + ` Mlx`;
+                return super.truncateFractionDigits(this.Megalux, fractionalDigits) + ` Mlx`;
         default:
             break;
         }
