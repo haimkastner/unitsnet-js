@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a LeakRate */
 export interface LeakRateDto {
     /** The value of the LeakRate */

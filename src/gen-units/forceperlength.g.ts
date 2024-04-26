@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ForcePerLength */
 export interface ForcePerLengthDto {
     /** The value of the ForcePerLength */

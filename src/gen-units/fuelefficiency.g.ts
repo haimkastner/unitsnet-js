@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a FuelEfficiency */
 export interface FuelEfficiencyDto {
     /** The value of the FuelEfficiency */

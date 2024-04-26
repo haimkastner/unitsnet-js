@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ReciprocalLength */
 export interface ReciprocalLengthDto {
     /** The value of the ReciprocalLength */

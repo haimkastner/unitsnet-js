@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { describe } from 'mocha';
 import numeral from 'numeral';
-import { Angle, AngleUnits, ArithmeticOperation, Length, LengthUnits, setArithmeticFormula, setCompareToFurmula, setEqualsFormula } from '../src';
+import { Angle, AngleUnits, ArithmeticOperation, Length, LengthDto, LengthUnits, setArithmeticFormula, setCompareToFurmula, setEqualsFormula } from '../src';
 
 describe('Unitsnet - tests', () => {
 
@@ -289,7 +289,25 @@ describe('Unitsnet - tests', () => {
 
         it(`Should load from specific unit DTO`, () => {
             const dto = length1.toDto(LengthUnits.Centimeters);
+            expect(Length.FromDto(dto).Meters).deep.equal(100.01);
             expect(Length.FromDto(dto).Decimeters).deep.equal(1000.1);
+        });
+
+        it(`Should be similar values from two DTO representations`, () => {
+           // Create Length unit object
+           const length = Length.FromMeters(100.01);
+           
+           // Obtain the DTO object, will be represented by the default - meter
+           const lengthDto: LengthDto = length.toDto(); // {"value":100.01,"unit":"Meter"}
+
+           // Obtain the same value but represent DTO in KM 
+           const lengthDtoRepresentsInKM: LengthDto = length.toDto(LengthUnits.Kilometers); // {"value":0.10001,"unit":"Kilometer"}
+
+           const lengthFromMetersDto = Length.FromDto(lengthDto);
+           // Same value as
+           const lengthFromKMDto = Length.FromDto(lengthDtoRepresentsInKM);
+
+           expect(lengthFromKMDto.Meters).deep.equal(lengthFromMetersDto.Meters);
         });
     });
 });

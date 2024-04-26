@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a SpecificEntropy */
 export interface SpecificEntropyDto {
     /** The value of the SpecificEntropy */

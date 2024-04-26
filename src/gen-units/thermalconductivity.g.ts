@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ThermalConductivity */
 export interface ThermalConductivityDto {
     /** The value of the ThermalConductivity */

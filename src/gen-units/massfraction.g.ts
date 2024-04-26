@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a MassFraction */
 export interface MassFractionDto {
     /** The value of the MassFraction */

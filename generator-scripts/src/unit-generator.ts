@@ -10,7 +10,8 @@ import {
     MethodDeclarationStructure,
     EnumMemberStructure,
     JSDocStructure,
-    ImportDeclarationStructure
+    ImportDeclarationStructure,
+    InterfaceDeclarationStructure
 } from "ts-morph";
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
 import { pascalToCamelCase } from "./utiles";
@@ -766,7 +767,7 @@ export function generateUnitClass(project: Project,
 
     // Build the unit file with the unit enum and class
     const sourceFile = project.createSourceFile(`${unitsDestinationDirectory}/gen-units/${unitProperties.unitName.toLowerCase()}.g.ts`, {
-        statements: [importDeclaration, unitsEnum, unitClass]
+        statements: [importDeclaration, dtoInterface, unitsEnum, unitClass]
     }, {
         overwrite: true
     });

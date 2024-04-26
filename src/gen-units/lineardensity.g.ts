@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a LinearDensity */
 export interface LinearDensityDto {
     /** The value of the LinearDensity */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ElectricCurrentGradient */
 export interface ElectricCurrentGradientDto {
     /** The value of the ElectricCurrentGradient */

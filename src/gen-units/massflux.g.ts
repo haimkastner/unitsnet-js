@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a MassFlux */
 export interface MassFluxDto {
     /** The value of the MassFlux */

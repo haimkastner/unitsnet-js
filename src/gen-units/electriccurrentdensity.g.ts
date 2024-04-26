@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ElectricCurrentDensity */
 export interface ElectricCurrentDensityDto {
     /** The value of the ElectricCurrentDensity */

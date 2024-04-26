@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a SpecificWeight */
 export interface SpecificWeightDto {
     /** The value of the SpecificWeight */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Area */
 export interface AreaDto {
     /** The value of the Area */

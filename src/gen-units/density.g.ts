@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Density */
 export interface DensityDto {
     /** The value of the Density */

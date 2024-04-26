@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a MassMomentOfInertia */
 export interface MassMomentOfInertiaDto {
     /** The value of the MassMomentOfInertia */

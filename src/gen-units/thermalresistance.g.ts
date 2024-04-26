@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ThermalResistance */
 export interface ThermalResistanceDto {
     /** The value of the ThermalResistance */

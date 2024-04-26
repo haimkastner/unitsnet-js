@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a BrakeSpecificFuelConsumption */
 export interface BrakeSpecificFuelConsumptionDto {
     /** The value of the BrakeSpecificFuelConsumption */

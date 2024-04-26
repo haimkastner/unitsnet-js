@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a MolarMass */
 export interface MolarMassDto {
     /** The value of the MolarMass */

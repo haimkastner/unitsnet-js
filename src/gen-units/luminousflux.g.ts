@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a LuminousFlux */
 export interface LuminousFluxDto {
     /** The value of the LuminousFlux */

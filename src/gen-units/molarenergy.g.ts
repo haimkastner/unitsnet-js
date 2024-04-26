@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a MolarEnergy */
 export interface MolarEnergyDto {
     /** The value of the MolarEnergy */

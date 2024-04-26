@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ApparentPower */
 export interface ApparentPowerDto {
     /** The value of the ApparentPower */

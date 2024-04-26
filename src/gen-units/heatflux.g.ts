@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a HeatFlux */
 export interface HeatFluxDto {
     /** The value of the HeatFlux */

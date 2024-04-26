@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a BitRate */
 export interface BitRateDto {
     /** The value of the BitRate */

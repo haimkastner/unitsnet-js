@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a AmplitudeRatio */
 export interface AmplitudeRatioDto {
     /** The value of the AmplitudeRatio */

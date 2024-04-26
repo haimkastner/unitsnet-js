@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Jerk */
 export interface JerkDto {
     /** The value of the Jerk */

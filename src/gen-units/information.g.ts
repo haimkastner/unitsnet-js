@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Information */
 export interface InformationDto {
     /** The value of the Information */

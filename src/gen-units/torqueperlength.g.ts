@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a TorquePerLength */
 export interface TorquePerLengthDto {
     /** The value of the TorquePerLength */

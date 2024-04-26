@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Permeability */
 export interface PermeabilityDto {
     /** The value of the Permeability */

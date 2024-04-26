@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a StandardVolumeFlow */
 export interface StandardVolumeFlowDto {
     /** The value of the StandardVolumeFlow */

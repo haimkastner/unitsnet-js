@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a PowerRatio */
 export interface PowerRatioDto {
     /** The value of the PowerRatio */

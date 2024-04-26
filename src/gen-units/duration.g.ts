@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Duration */
 export interface DurationDto {
     /** The value of the Duration */

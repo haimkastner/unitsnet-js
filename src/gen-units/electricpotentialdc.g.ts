@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ElectricPotentialDc */
 export interface ElectricPotentialDcDto {
     /** The value of the ElectricPotentialDc */

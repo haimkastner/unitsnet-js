@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ElectricCharge */
 export interface ElectricChargeDto {
     /** The value of the ElectricCharge */

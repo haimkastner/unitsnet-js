@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a RadiationExposure */
 export interface RadiationExposureDto {
     /** The value of the RadiationExposure */

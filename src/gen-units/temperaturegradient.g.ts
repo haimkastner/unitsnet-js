@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a TemperatureGradient */
 export interface TemperatureGradientDto {
     /** The value of the TemperatureGradient */

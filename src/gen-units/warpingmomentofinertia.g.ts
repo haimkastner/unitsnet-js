@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a WarpingMomentOfInertia */
 export interface WarpingMomentOfInertiaDto {
     /** The value of the WarpingMomentOfInertia */

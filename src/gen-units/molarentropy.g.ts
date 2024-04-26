@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a MolarEntropy */
 export interface MolarEntropyDto {
     /** The value of the MolarEntropy */

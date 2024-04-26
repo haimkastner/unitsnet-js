@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a SpecificVolume */
 export interface SpecificVolumeDto {
     /** The value of the SpecificVolume */

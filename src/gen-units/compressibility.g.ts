@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Compressibility */
 export interface CompressibilityDto {
     /** The value of the Compressibility */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a CoefficientOfThermalExpansion */
 export interface CoefficientOfThermalExpansionDto {
     /** The value of the CoefficientOfThermalExpansion */

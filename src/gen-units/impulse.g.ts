@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Impulse */
 export interface ImpulseDto {
     /** The value of the Impulse */

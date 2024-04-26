@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Permittivity */
 export interface PermittivityDto {
     /** The value of the Permittivity */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a RotationalStiffness */
 export interface RotationalStiffnessDto {
     /** The value of the RotationalStiffness */

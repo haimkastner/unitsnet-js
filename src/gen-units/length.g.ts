@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Length */
 export interface LengthDto {
     /** The value of the Length */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Power */
 export interface PowerDto {
     /** The value of the Power */

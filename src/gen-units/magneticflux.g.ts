@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a MagneticFlux */
 export interface MagneticFluxDto {
     /** The value of the MagneticFlux */

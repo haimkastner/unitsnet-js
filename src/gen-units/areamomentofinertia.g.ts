@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a AreaMomentOfInertia */
 export interface AreaMomentOfInertiaDto {
     /** The value of the AreaMomentOfInertia */

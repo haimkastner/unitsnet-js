@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a MassConcentration */
+export interface MassConcentrationDto {
+    /** The value of the MassConcentration */
+    value: number;
+    /**  The specific unit that the MassConcentration value is representing */
+    unit: MassConcentrationUnits;
+}
+
 /** MassConcentrationUnits enumeration */
 export enum MassConcentrationUnits {
     /** */

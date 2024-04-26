@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a SpecificEnergy */
 export interface SpecificEnergyDto {
     /** The value of the SpecificEnergy */

@@ -53,9 +53,13 @@ console.info(angle.toString(AngleUnits.Radians)); // 3.141592653589793 rad
 
 // Specify fraction digits max length
 console.info(angle.toString(AngleUnits.Radians, 2)); // 3.14 rad
+```
 
-// Additional methods
+## Additional methods
 
+Check, compare, calculate etc. with unitsnet:
+
+```typescript
 const length1 = Length.FromMeters(10);
 const length2 = Length.FromDecimeters(100);
 const length3 = Length.FromMeters(3);
@@ -107,8 +111,38 @@ setArithmeticFormula(ArithmeticOperation.Add, (valueA: number, valueB: number) =
 
 // The numeral formula results
 console.log(lengthA.add(lengthB).Meters); // 0.3
-
 ```
+
+## DTO - Data Transfer Object
+
+As UnitsNet provides a convenient way to work within a running service, there are occasions where the data needs to be exposed outside of the service, typically through an API containing the unit value or consumed from an API.
+
+To support this with a clear API schema and make it easy to convert to and from this schema to the specific format, it's recommended to use DTOs and the UnitsNet flavor converters.
+
+```typescript
+import { Length, LengthDto, LengthUnits } from 'unitsnet-js';
+
+// Create a Length unit object
+const length = Length.FromMeters(100.01);
+           
+// Obtain the DTO object, represented by the default unit - meter
+const lengthDto: LengthDto = length.toDto(); // {"value":100.01,"unit":"Meter"}
+
+// Obtain the same value but represent DTO in KM 
+const lengthDtoRepresentsInKM: LengthDto = length.toDto(LengthUnits.Kilometers); // {"value":0.10001,"unit":"Kilometer"}
+
+// Obtain Length object from lengthDto
+
+const lengthFromMetersDto = Length.FromDto(lengthDto);
+// The exact same value as
+const lengthFromKMDto = Length.FromDto(lengthDtoRepresentsInKM);
+```
+
+
+Check out the OpenAPI [unitsnet-openapi-spec](https://haimkastner.github.io/unitsnet-openapi-spec-example/) example schema.
+
+Also, refer to the detailed discussions on GitHub: [haimkastner/unitsnet-js#31](https://github.com/haimkastner/unitsnet-js/issues/31) & [angularsen/UnitsNet#1378](https://github.com/angularsen/UnitsNet/issues/1378).
+
 
 ### Supported units
 

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ForceChangeRate */
 export interface ForceChangeRateDto {
     /** The value of the ForceChangeRate */

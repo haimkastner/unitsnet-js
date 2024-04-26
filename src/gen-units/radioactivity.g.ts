@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Radioactivity */
 export interface RadioactivityDto {
     /** The value of the Radioactivity */

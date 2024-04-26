@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Mass */
+export interface MassDto {
+    /** The value of the Mass */
+    value: number;
+    /**  The specific unit that the Mass value is representing */
+    unit: MassUnits;
+}
+
 /** MassUnits enumeration */
 export enum MassUnits {
     /** */

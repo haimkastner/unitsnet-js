@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Volume */
 export interface VolumeDto {
     /** The value of the Volume */

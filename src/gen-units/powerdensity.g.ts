@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a PowerDensity */
 export interface PowerDensityDto {
     /** The value of the PowerDensity */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ElectricSurfaceChargeDensity */
 export interface ElectricSurfaceChargeDensityDto {
     /** The value of the ElectricSurfaceChargeDensity */

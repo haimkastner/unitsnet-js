@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Turbidity */
 export interface TurbidityDto {
     /** The value of the Turbidity */

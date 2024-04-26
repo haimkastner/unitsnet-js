@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a AmountOfSubstance */
 export interface AmountOfSubstanceDto {
     /** The value of the AmountOfSubstance */

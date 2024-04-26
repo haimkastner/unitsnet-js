@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a HeatTransferCoefficient */
 export interface HeatTransferCoefficientDto {
     /** The value of the HeatTransferCoefficient */

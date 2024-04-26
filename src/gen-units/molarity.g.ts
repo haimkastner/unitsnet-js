@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Molarity */
 export interface MolarityDto {
     /** The value of the Molarity */

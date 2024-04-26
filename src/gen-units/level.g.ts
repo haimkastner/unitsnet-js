@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Level */
 export interface LevelDto {
     /** The value of the Level */

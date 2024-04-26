@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ReactiveEnergy */
 export interface ReactiveEnergyDto {
     /** The value of the ReactiveEnergy */

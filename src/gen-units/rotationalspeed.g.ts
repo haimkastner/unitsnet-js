@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a RotationalSpeed */
 export interface RotationalSpeedDto {
     /** The value of the RotationalSpeed */

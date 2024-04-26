@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a AbsorbedDoseOfIonizingRadiation */
+export interface AbsorbedDoseOfIonizingRadiationDto {
+    /** The value of the AbsorbedDoseOfIonizingRadiation */
+    value: number;
+    /**  The specific unit that the AbsorbedDoseOfIonizingRadiation value is representing */
+    unit: AbsorbedDoseOfIonizingRadiationUnits;
+}
+
 /** AbsorbedDoseOfIonizingRadiationUnits enumeration */
 export enum AbsorbedDoseOfIonizingRadiationUnits {
     /** The gray is the unit of ionizing radiation dose in the SI, defined as the absorption of one joule of radiation energy per kilogram of matter. */

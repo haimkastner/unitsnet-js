@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a KinematicViscosity */
 export interface KinematicViscosityDto {
     /** The value of the KinematicViscosity */

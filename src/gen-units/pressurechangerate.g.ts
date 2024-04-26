@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a PressureChangeRate */
 export interface PressureChangeRateDto {
     /** The value of the PressureChangeRate */

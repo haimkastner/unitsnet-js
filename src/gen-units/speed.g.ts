@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Speed */
 export interface SpeedDto {
     /** The value of the Speed */

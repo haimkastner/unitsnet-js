@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Capacitance */
 export interface CapacitanceDto {
     /** The value of the Capacitance */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ReciprocalArea */
 export interface ReciprocalAreaDto {
     /** The value of the ReciprocalArea */

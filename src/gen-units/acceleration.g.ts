@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Acceleration */
 export interface AccelerationDto {
     /** The value of the Acceleration */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Angle */
 export interface AngleDto {
     /** The value of the Angle */

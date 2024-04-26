@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a MolarFlow */
 export interface MolarFlowDto {
     /** The value of the MolarFlow */

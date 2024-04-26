@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Ratio */
 export interface RatioDto {
     /** The value of the Ratio */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ElectricInductance */
 export interface ElectricInductanceDto {
     /** The value of the ElectricInductance */

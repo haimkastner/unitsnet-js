@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a SolidAngle */
 export interface SolidAngleDto {
     /** The value of the SolidAngle */

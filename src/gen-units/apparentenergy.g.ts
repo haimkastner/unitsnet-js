@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a ApparentEnergy */
 export interface ApparentEnergyDto {
     /** The value of the ApparentEnergy */

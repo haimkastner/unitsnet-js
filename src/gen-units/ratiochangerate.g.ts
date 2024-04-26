@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a RatioChangeRate */
 export interface RatioChangeRateDto {
     /** The value of the RatioChangeRate */

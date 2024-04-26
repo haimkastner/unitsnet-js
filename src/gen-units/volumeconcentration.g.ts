@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a VolumeConcentration */
 export interface VolumeConcentrationDto {
     /** The value of the VolumeConcentration */

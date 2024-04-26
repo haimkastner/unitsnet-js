@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a PorousMediumPermeability */
 export interface PorousMediumPermeabilityDto {
     /** The value of the PorousMediumPermeability */

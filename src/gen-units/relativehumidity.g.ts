@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a RelativeHumidity */
 export interface RelativeHumidityDto {
     /** The value of the RelativeHumidity */

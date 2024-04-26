@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a VolumeFlowPerArea */
 export interface VolumeFlowPerAreaDto {
     /** The value of the VolumeFlowPerArea */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a Scalar */
 export interface ScalarDto {
     /** The value of the Scalar */

@@ -1,3 +1,5 @@
+import { BaseUnit } from "../base-unit";
+
 /** API DTO represents a DynamicViscosity */
 export interface DynamicViscosityDto {
     /** The value of the DynamicViscosity */
