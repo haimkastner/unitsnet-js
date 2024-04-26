@@ -1,5 +1,14 @@
 # unitsnet-js
 
+[![Build & Test Status](https://github.com/haimkastner/unitsnet-js/workflows/unitsnet-js/badge.svg?branch=master)](https://github.com/haimkastner/unitsnet-js/actions)
+
+ [![Latest Release](https://img.shields.io/github/v/release/haimkastner/unitsnet-js?style=plastic)](https://github.com/haimkastner/unitsnet-js/releases) 
+ [![npm version](https://img.shields.io/npm/v/unitsnet-js.svg?style=plastic&label=npm)](https://www.npmjs.com/package/unitsnet-js)
+
+[![GitHub stars](https://img.shields.io/github/stars/haimkastner/unitsnet-js.svg?style=social&label=Stars)](https://github.com/haimkastner/unitsnet-js/stargazers) 
+[![npm downloads](https://img.shields.io/npm/dt/unitsnet-js.svg?style=social)](https://www.npmjs.com/package/unitsnet-js)
+[![License](https://img.shields.io/github/license/haimkastner/unitsnet-js.svg?style=social)](https://github.com/haimkastner/unitsnet-js/blob/master/LICENSE) 
+
 The unitsnet-js package provides an efficient way to store unit variables and perform easy conversions to different units when it required. 
 
 It offers support for more than 100 unit types across various unit categories, including pretty-printing, comparison, and arithmetic methods. 
@@ -8,7 +17,6 @@ The API is designed to be user-friendly and straightforward to use.
 
 The library is built on top of the [Units.NET](https://github.com/angularsen/UnitsNet) project and leverages their [definitions sources](https://github.com/angularsen/UnitsNet/tree/master/Common/UnitDefinitions) to generate the JavaScript unit classes.
 
-[![Build & Test Status](https://github.com/haimkastner/unitsnet-js/workflows/unitsnet-js/badge.svg?branch=master)](https://github.com/haimkastner/unitsnet-js/actions)
 
 ###### The unitsnet-js package does not require any external dependencies or packages to function.
 
