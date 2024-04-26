@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Angle */
+export interface AngleDto {
+    /** The value of the Angle */
+    value: number;
+    /**  The specific unit that the Angle value is representing */
+    unit: AngleUnits;
+}
+
 /** AngleUnits enumeration */
 export enum AngleUnits {
     /** */
@@ -363,6 +371,25 @@ export class Angle extends BaseUnit {
      */
     public static FromMillidegrees(value: number): Angle {
         return new Angle(value, AngleUnits.Millidegrees);
+    }
+
+    /**
+     * Create API DTO represent a Angle unit.
+     * @param holdInUnit The specific Angle unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: AngleUnits = AngleUnits.Degrees): AngleDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Angle unit from an API DTO representation.
+     * @param dtoAngle The Angle API DTO representation
+     */
+    public static FromDto(dtoAngle: AngleDto): Angle {
+        return new Angle(dtoAngle.value, dtoAngle.unit);
     }
 
     /**

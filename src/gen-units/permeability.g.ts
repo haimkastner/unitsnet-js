@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Permeability */
+export interface PermeabilityDto {
+    /** The value of the Permeability */
+    value: number;
+    /**  The specific unit that the Permeability value is representing */
+    unit: PermeabilityUnits;
+}
+
 /** PermeabilityUnits enumeration */
 export enum PermeabilityUnits {
     /** */
@@ -48,6 +56,25 @@ export class Permeability extends BaseUnit {
      */
     public static FromHenriesPerMeter(value: number): Permeability {
         return new Permeability(value, PermeabilityUnits.HenriesPerMeter);
+    }
+
+    /**
+     * Create API DTO represent a Permeability unit.
+     * @param holdInUnit The specific Permeability unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter): PermeabilityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Permeability unit from an API DTO representation.
+     * @param dtoPermeability The Permeability API DTO representation
+     */
+    public static FromDto(dtoPermeability: PermeabilityDto): Permeability {
+        return new Permeability(dtoPermeability.value, dtoPermeability.unit);
     }
 
     /**

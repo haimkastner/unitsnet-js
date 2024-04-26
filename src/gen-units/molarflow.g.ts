@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a MolarFlow */
+export interface MolarFlowDto {
+    /** The value of the MolarFlow */
+    value: number;
+    /**  The specific unit that the MolarFlow value is representing */
+    unit: MolarFlowUnits;
+}
+
 /** MolarFlowUnits enumeration */
 export enum MolarFlowUnits {
     /** */
@@ -216,6 +224,25 @@ export class MolarFlow extends BaseUnit {
      */
     public static FromKilomolesPerHour(value: number): MolarFlow {
         return new MolarFlow(value, MolarFlowUnits.KilomolesPerHour);
+    }
+
+    /**
+     * Create API DTO represent a MolarFlow unit.
+     * @param holdInUnit The specific MolarFlow unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MolarFlowUnits = MolarFlowUnits.MolesPerSecond): MolarFlowDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MolarFlow unit from an API DTO representation.
+     * @param dtoMolarFlow The MolarFlow API DTO representation
+     */
+    public static FromDto(dtoMolarFlow: MolarFlowDto): MolarFlow {
+        return new MolarFlow(dtoMolarFlow.value, dtoMolarFlow.unit);
     }
 
     /**

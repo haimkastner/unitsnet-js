@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ForceChangeRate */
+export interface ForceChangeRateDto {
+    /** The value of the ForceChangeRate */
+    value: number;
+    /**  The specific unit that the ForceChangeRate value is representing */
+    unit: ForceChangeRateUnits;
+}
+
 /** ForceChangeRateUnits enumeration */
 export enum ForceChangeRateUnits {
     /** */
@@ -342,6 +350,25 @@ export class ForceChangeRate extends BaseUnit {
      */
     public static FromKilopoundsForcePerSecond(value: number): ForceChangeRate {
         return new ForceChangeRate(value, ForceChangeRateUnits.KilopoundsForcePerSecond);
+    }
+
+    /**
+     * Create API DTO represent a ForceChangeRate unit.
+     * @param holdInUnit The specific ForceChangeRate unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ForceChangeRateUnits = ForceChangeRateUnits.NewtonsPerSecond): ForceChangeRateDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ForceChangeRate unit from an API DTO representation.
+     * @param dtoForceChangeRate The ForceChangeRate API DTO representation
+     */
+    public static FromDto(dtoForceChangeRate: ForceChangeRateDto): ForceChangeRate {
+        return new ForceChangeRate(dtoForceChangeRate.value, dtoForceChangeRate.unit);
     }
 
     /**

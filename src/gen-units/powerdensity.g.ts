@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a PowerDensity */
+export interface PowerDensityDto {
+    /** The value of the PowerDensity */
+    value: number;
+    /**  The specific unit that the PowerDensity value is representing */
+    unit: PowerDensityUnits;
+}
+
 /** PowerDensityUnits enumeration */
 export enum PowerDensityUnits {
     /** */
@@ -951,6 +959,25 @@ export class PowerDensity extends BaseUnit {
      */
     public static FromTerawattsPerLiter(value: number): PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.TerawattsPerLiter);
+    }
+
+    /**
+     * Create API DTO represent a PowerDensity unit.
+     * @param holdInUnit The specific PowerDensity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: PowerDensityUnits = PowerDensityUnits.WattsPerCubicMeter): PowerDensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a PowerDensity unit from an API DTO representation.
+     * @param dtoPowerDensity The PowerDensity API DTO representation
+     */
+    public static FromDto(dtoPowerDensity: PowerDensityDto): PowerDensity {
+        return new PowerDensity(dtoPowerDensity.value, dtoPowerDensity.unit);
     }
 
     /**

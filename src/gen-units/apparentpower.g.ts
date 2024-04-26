@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ApparentPower */
+export interface ApparentPowerDto {
+    /** The value of the ApparentPower */
+    value: number;
+    /**  The specific unit that the ApparentPower value is representing */
+    unit: ApparentPowerUnits;
+}
+
 /** ApparentPowerUnits enumeration */
 export enum ApparentPowerUnits {
     /** */
@@ -153,6 +161,25 @@ export class ApparentPower extends BaseUnit {
      */
     public static FromGigavoltamperes(value: number): ApparentPower {
         return new ApparentPower(value, ApparentPowerUnits.Gigavoltamperes);
+    }
+
+    /**
+     * Create API DTO represent a ApparentPower unit.
+     * @param holdInUnit The specific ApparentPower unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ApparentPowerUnits = ApparentPowerUnits.Voltamperes): ApparentPowerDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ApparentPower unit from an API DTO representation.
+     * @param dtoApparentPower The ApparentPower API DTO representation
+     */
+    public static FromDto(dtoApparentPower: ApparentPowerDto): ApparentPower {
+        return new ApparentPower(dtoApparentPower.value, dtoApparentPower.unit);
     }
 
     /**

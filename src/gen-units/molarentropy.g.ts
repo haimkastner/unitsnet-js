@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a MolarEntropy */
+export interface MolarEntropyDto {
+    /** The value of the MolarEntropy */
+    value: number;
+    /**  The specific unit that the MolarEntropy value is representing */
+    unit: MolarEntropyUnits;
+}
+
 /** MolarEntropyUnits enumeration */
 export enum MolarEntropyUnits {
     /** */
@@ -90,6 +98,25 @@ export class MolarEntropy extends BaseUnit {
      */
     public static FromMegajoulesPerMoleKelvin(value: number): MolarEntropy {
         return new MolarEntropy(value, MolarEntropyUnits.MegajoulesPerMoleKelvin);
+    }
+
+    /**
+     * Create API DTO represent a MolarEntropy unit.
+     * @param holdInUnit The specific MolarEntropy unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MolarEntropyUnits = MolarEntropyUnits.JoulesPerMoleKelvin): MolarEntropyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MolarEntropy unit from an API DTO representation.
+     * @param dtoMolarEntropy The MolarEntropy API DTO representation
+     */
+    public static FromDto(dtoMolarEntropy: MolarEntropyDto): MolarEntropy {
+        return new MolarEntropy(dtoMolarEntropy.value, dtoMolarEntropy.unit);
     }
 
     /**

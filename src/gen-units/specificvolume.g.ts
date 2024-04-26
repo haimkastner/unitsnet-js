@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a SpecificVolume */
+export interface SpecificVolumeDto {
+    /** The value of the SpecificVolume */
+    value: number;
+    /**  The specific unit that the SpecificVolume value is representing */
+    unit: SpecificVolumeUnits;
+}
+
 /** SpecificVolumeUnits enumeration */
 export enum SpecificVolumeUnits {
     /** */
@@ -90,6 +98,25 @@ export class SpecificVolume extends BaseUnit {
      */
     public static FromMillicubicMetersPerKilogram(value: number): SpecificVolume {
         return new SpecificVolume(value, SpecificVolumeUnits.MillicubicMetersPerKilogram);
+    }
+
+    /**
+     * Create API DTO represent a SpecificVolume unit.
+     * @param holdInUnit The specific SpecificVolume unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram): SpecificVolumeDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a SpecificVolume unit from an API DTO representation.
+     * @param dtoSpecificVolume The SpecificVolume API DTO representation
+     */
+    public static FromDto(dtoSpecificVolume: SpecificVolumeDto): SpecificVolume {
+        return new SpecificVolume(dtoSpecificVolume.value, dtoSpecificVolume.unit);
     }
 
     /**

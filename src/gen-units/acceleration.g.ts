@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Acceleration */
+export interface AccelerationDto {
+    /** The value of the Acceleration */
+    value: number;
+    /**  The specific unit that the Acceleration value is representing */
+    unit: AccelerationUnits;
+}
+
 /** AccelerationUnits enumeration */
 export enum AccelerationUnits {
     /** */
@@ -321,6 +329,25 @@ export class Acceleration extends BaseUnit {
      */
     public static FromMillistandardGravity(value: number): Acceleration {
         return new Acceleration(value, AccelerationUnits.MillistandardGravity);
+    }
+
+    /**
+     * Create API DTO represent a Acceleration unit.
+     * @param holdInUnit The specific Acceleration unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared): AccelerationDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Acceleration unit from an API DTO representation.
+     * @param dtoAcceleration The Acceleration API DTO representation
+     */
+    public static FromDto(dtoAcceleration: AccelerationDto): Acceleration {
+        return new Acceleration(dtoAcceleration.value, dtoAcceleration.unit);
     }
 
     /**

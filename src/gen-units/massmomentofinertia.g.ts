@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a MassMomentOfInertia */
+export interface MassMomentOfInertiaDto {
+    /** The value of the MassMomentOfInertia */
+    value: number;
+    /**  The specific unit that the MassMomentOfInertia value is representing */
+    unit: MassMomentOfInertiaUnits;
+}
+
 /** MassMomentOfInertiaUnits enumeration */
 export enum MassMomentOfInertiaUnits {
     /** */
@@ -615,6 +623,25 @@ export class MassMomentOfInertia extends BaseUnit {
      */
     public static FromMegatonneSquareMilimeters(value: number): MassMomentOfInertia {
         return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MegatonneSquareMilimeters);
+    }
+
+    /**
+     * Create API DTO represent a MassMomentOfInertia unit.
+     * @param holdInUnit The specific MassMomentOfInertia unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MassMomentOfInertiaUnits = MassMomentOfInertiaUnits.KilogramSquareMeters): MassMomentOfInertiaDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MassMomentOfInertia unit from an API DTO representation.
+     * @param dtoMassMomentOfInertia The MassMomentOfInertia API DTO representation
+     */
+    public static FromDto(dtoMassMomentOfInertia: MassMomentOfInertiaDto): MassMomentOfInertia {
+        return new MassMomentOfInertia(dtoMassMomentOfInertia.value, dtoMassMomentOfInertia.unit);
     }
 
     /**

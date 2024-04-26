@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ElectricField */
+export interface ElectricFieldDto {
+    /** The value of the ElectricField */
+    value: number;
+    /**  The specific unit that the ElectricField value is representing */
+    unit: ElectricFieldUnits;
+}
+
 /** ElectricFieldUnits enumeration */
 export enum ElectricFieldUnits {
     /** */
@@ -48,6 +56,25 @@ export class ElectricField extends BaseUnit {
      */
     public static FromVoltsPerMeter(value: number): ElectricField {
         return new ElectricField(value, ElectricFieldUnits.VoltsPerMeter);
+    }
+
+    /**
+     * Create API DTO represent a ElectricField unit.
+     * @param holdInUnit The specific ElectricField unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricFieldUnits = ElectricFieldUnits.VoltsPerMeter): ElectricFieldDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricField unit from an API DTO representation.
+     * @param dtoElectricField The ElectricField API DTO representation
+     */
+    public static FromDto(dtoElectricField: ElectricFieldDto): ElectricField {
+        return new ElectricField(dtoElectricField.value, dtoElectricField.unit);
     }
 
     /**

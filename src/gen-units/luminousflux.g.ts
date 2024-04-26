@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a LuminousFlux */
+export interface LuminousFluxDto {
+    /** The value of the LuminousFlux */
+    value: number;
+    /**  The specific unit that the LuminousFlux value is representing */
+    unit: LuminousFluxUnits;
+}
+
 /** LuminousFluxUnits enumeration */
 export enum LuminousFluxUnits {
     /** */
@@ -48,6 +56,25 @@ export class LuminousFlux extends BaseUnit {
      */
     public static FromLumens(value: number): LuminousFlux {
         return new LuminousFlux(value, LuminousFluxUnits.Lumens);
+    }
+
+    /**
+     * Create API DTO represent a LuminousFlux unit.
+     * @param holdInUnit The specific LuminousFlux unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LuminousFluxUnits = LuminousFluxUnits.Lumens): LuminousFluxDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a LuminousFlux unit from an API DTO representation.
+     * @param dtoLuminousFlux The LuminousFlux API DTO representation
+     */
+    public static FromDto(dtoLuminousFlux: LuminousFluxDto): LuminousFlux {
+        return new LuminousFlux(dtoLuminousFlux.value, dtoLuminousFlux.unit);
     }
 
     /**

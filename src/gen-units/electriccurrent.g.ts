@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ElectricCurrent */
+export interface ElectricCurrentDto {
+    /** The value of the ElectricCurrent */
+    value: number;
+    /**  The specific unit that the ElectricCurrent value is representing */
+    unit: ElectricCurrentUnits;
+}
+
 /** ElectricCurrentUnits enumeration */
 export enum ElectricCurrentUnits {
     /** */
@@ -216,6 +224,25 @@ export class ElectricCurrent extends BaseUnit {
      */
     public static FromMegaamperes(value: number): ElectricCurrent {
         return new ElectricCurrent(value, ElectricCurrentUnits.Megaamperes);
+    }
+
+    /**
+     * Create API DTO represent a ElectricCurrent unit.
+     * @param holdInUnit The specific ElectricCurrent unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes): ElectricCurrentDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricCurrent unit from an API DTO representation.
+     * @param dtoElectricCurrent The ElectricCurrent API DTO representation
+     */
+    public static FromDto(dtoElectricCurrent: ElectricCurrentDto): ElectricCurrent {
+        return new ElectricCurrent(dtoElectricCurrent.value, dtoElectricCurrent.unit);
     }
 
     /**

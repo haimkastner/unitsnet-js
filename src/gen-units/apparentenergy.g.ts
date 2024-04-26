@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ApparentEnergy */
+export interface ApparentEnergyDto {
+    /** The value of the ApparentEnergy */
+    value: number;
+    /**  The specific unit that the ApparentEnergy value is representing */
+    unit: ApparentEnergyUnits;
+}
+
 /** ApparentEnergyUnits enumeration */
 export enum ApparentEnergyUnits {
     /** */
@@ -90,6 +98,25 @@ export class ApparentEnergy extends BaseUnit {
      */
     public static FromMegavoltampereHours(value: number): ApparentEnergy {
         return new ApparentEnergy(value, ApparentEnergyUnits.MegavoltampereHours);
+    }
+
+    /**
+     * Create API DTO represent a ApparentEnergy unit.
+     * @param holdInUnit The specific ApparentEnergy unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours): ApparentEnergyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ApparentEnergy unit from an API DTO representation.
+     * @param dtoApparentEnergy The ApparentEnergy API DTO representation
+     */
+    public static FromDto(dtoApparentEnergy: ApparentEnergyDto): ApparentEnergy {
+        return new ApparentEnergy(dtoApparentEnergy.value, dtoApparentEnergy.unit);
     }
 
     /**

@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a MagneticField */
+export interface MagneticFieldDto {
+    /** The value of the MagneticField */
+    value: number;
+    /**  The specific unit that the MagneticField value is representing */
+    unit: MagneticFieldUnits;
+}
+
 /** MagneticFieldUnits enumeration */
 export enum MagneticFieldUnits {
     /** */
@@ -153,6 +161,25 @@ export class MagneticField extends BaseUnit {
      */
     public static FromMilligausses(value: number): MagneticField {
         return new MagneticField(value, MagneticFieldUnits.Milligausses);
+    }
+
+    /**
+     * Create API DTO represent a MagneticField unit.
+     * @param holdInUnit The specific MagneticField unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MagneticFieldUnits = MagneticFieldUnits.Teslas): MagneticFieldDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MagneticField unit from an API DTO representation.
+     * @param dtoMagneticField The MagneticField API DTO representation
+     */
+    public static FromDto(dtoMagneticField: MagneticFieldDto): MagneticField {
+        return new MagneticField(dtoMagneticField.value, dtoMagneticField.unit);
     }
 
     /**

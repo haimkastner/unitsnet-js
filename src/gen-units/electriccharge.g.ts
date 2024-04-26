@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ElectricCharge */
+export interface ElectricChargeDto {
+    /** The value of the ElectricCharge */
+    value: number;
+    /**  The specific unit that the ElectricCharge value is representing */
+    unit: ElectricChargeUnits;
+}
+
 /** ElectricChargeUnits enumeration */
 export enum ElectricChargeUnits {
     /** */
@@ -258,6 +266,25 @@ export class ElectricCharge extends BaseUnit {
      */
     public static FromMegaampereHours(value: number): ElectricCharge {
         return new ElectricCharge(value, ElectricChargeUnits.MegaampereHours);
+    }
+
+    /**
+     * Create API DTO represent a ElectricCharge unit.
+     * @param holdInUnit The specific ElectricCharge unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricChargeUnits = ElectricChargeUnits.Coulombs): ElectricChargeDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricCharge unit from an API DTO representation.
+     * @param dtoElectricCharge The ElectricCharge API DTO representation
+     */
+    public static FromDto(dtoElectricCharge: ElectricChargeDto): ElectricCharge {
+        return new ElectricCharge(dtoElectricCharge.value, dtoElectricCharge.unit);
     }
 
     /**

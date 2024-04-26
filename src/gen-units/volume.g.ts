@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Volume */
+export interface VolumeDto {
+    /** The value of the Volume */
+    value: number;
+    /**  The specific unit that the Volume value is representing */
+    unit: VolumeUnits;
+}
+
 /** VolumeUnits enumeration */
 export enum VolumeUnits {
     /** */
@@ -1161,6 +1169,25 @@ export class Volume extends BaseUnit {
      */
     public static FromMegausGallons(value: number): Volume {
         return new Volume(value, VolumeUnits.MegausGallons);
+    }
+
+    /**
+     * Create API DTO represent a Volume unit.
+     * @param holdInUnit The specific Volume unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: VolumeUnits = VolumeUnits.CubicMeters): VolumeDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Volume unit from an API DTO representation.
+     * @param dtoVolume The Volume API DTO representation
+     */
+    public static FromDto(dtoVolume: VolumeDto): Volume {
+        return new Volume(dtoVolume.value, dtoVolume.unit);
     }
 
     /**

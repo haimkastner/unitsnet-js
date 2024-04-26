@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ThermalResistance */
+export interface ThermalResistanceDto {
+    /** The value of the ThermalResistance */
+    value: number;
+    /**  The specific unit that the ThermalResistance value is representing */
+    unit: ThermalResistanceUnits;
+}
+
 /** ThermalResistanceUnits enumeration */
 export enum ThermalResistanceUnits {
     /** */
@@ -153,6 +161,25 @@ export class ThermalResistance extends BaseUnit {
      */
     public static FromHourSquareFeetDegreesFahrenheitPerBtu(value: number): ThermalResistance {
         return new ThermalResistance(value, ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu);
+    }
+
+    /**
+     * Create API DTO represent a ThermalResistance unit.
+     * @param holdInUnit The specific ThermalResistance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt): ThermalResistanceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ThermalResistance unit from an API DTO representation.
+     * @param dtoThermalResistance The ThermalResistance API DTO representation
+     */
+    public static FromDto(dtoThermalResistance: ThermalResistanceDto): ThermalResistance {
+        return new ThermalResistance(dtoThermalResistance.value, dtoThermalResistance.unit);
     }
 
     /**

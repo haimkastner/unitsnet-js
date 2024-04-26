@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a LinearPowerDensity */
+export interface LinearPowerDensityDto {
+    /** The value of the LinearPowerDensity */
+    value: number;
+    /**  The specific unit that the LinearPowerDensity value is representing */
+    unit: LinearPowerDensityUnits;
+}
+
 /** LinearPowerDensityUnits enumeration */
 export enum LinearPowerDensityUnits {
     /** */
@@ -552,6 +560,25 @@ export class LinearPowerDensity extends BaseUnit {
      */
     public static FromGigawattsPerFoot(value: number): LinearPowerDensity {
         return new LinearPowerDensity(value, LinearPowerDensityUnits.GigawattsPerFoot);
+    }
+
+    /**
+     * Create API DTO represent a LinearPowerDensity unit.
+     * @param holdInUnit The specific LinearPowerDensity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LinearPowerDensityUnits = LinearPowerDensityUnits.WattsPerMeter): LinearPowerDensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a LinearPowerDensity unit from an API DTO representation.
+     * @param dtoLinearPowerDensity The LinearPowerDensity API DTO representation
+     */
+    public static FromDto(dtoLinearPowerDensity: LinearPowerDensityDto): LinearPowerDensity {
+        return new LinearPowerDensity(dtoLinearPowerDensity.value, dtoLinearPowerDensity.unit);
     }
 
     /**

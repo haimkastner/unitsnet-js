@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Molarity */
+export interface MolarityDto {
+    /** The value of the Molarity */
+    value: number;
+    /**  The specific unit that the Molarity value is representing */
+    unit: MolarityUnits;
+}
+
 /** MolarityUnits enumeration */
 export enum MolarityUnits {
     /** */
@@ -258,6 +266,25 @@ export class Molarity extends BaseUnit {
      */
     public static FromDecimolesPerLiter(value: number): Molarity {
         return new Molarity(value, MolarityUnits.DecimolesPerLiter);
+    }
+
+    /**
+     * Create API DTO represent a Molarity unit.
+     * @param holdInUnit The specific Molarity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MolarityUnits = MolarityUnits.MolesPerCubicMeter): MolarityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Molarity unit from an API DTO representation.
+     * @param dtoMolarity The Molarity API DTO representation
+     */
+    public static FromDto(dtoMolarity: MolarityDto): Molarity {
+        return new Molarity(dtoMolarity.value, dtoMolarity.unit);
     }
 
     /**

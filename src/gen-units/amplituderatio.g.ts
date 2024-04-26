@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a AmplitudeRatio */
+export interface AmplitudeRatioDto {
+    /** The value of the AmplitudeRatio */
+    value: number;
+    /**  The specific unit that the AmplitudeRatio value is representing */
+    unit: AmplitudeRatioUnits;
+}
+
 /** AmplitudeRatioUnits enumeration */
 export enum AmplitudeRatioUnits {
     /** */
@@ -111,6 +119,25 @@ export class AmplitudeRatio extends BaseUnit {
      */
     public static FromDecibelsUnloaded(value: number): AmplitudeRatio {
         return new AmplitudeRatio(value, AmplitudeRatioUnits.DecibelsUnloaded);
+    }
+
+    /**
+     * Create API DTO represent a AmplitudeRatio unit.
+     * @param holdInUnit The specific AmplitudeRatio unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts): AmplitudeRatioDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a AmplitudeRatio unit from an API DTO representation.
+     * @param dtoAmplitudeRatio The AmplitudeRatio API DTO representation
+     */
+    public static FromDto(dtoAmplitudeRatio: AmplitudeRatioDto): AmplitudeRatio {
+        return new AmplitudeRatio(dtoAmplitudeRatio.value, dtoAmplitudeRatio.unit);
     }
 
     /**

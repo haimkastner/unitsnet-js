@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a LeakRate */
+export interface LeakRateDto {
+    /** The value of the LeakRate */
+    value: number;
+    /**  The specific unit that the LeakRate value is representing */
+    unit: LeakRateUnits;
+}
+
 /** LeakRateUnits enumeration */
 export enum LeakRateUnits {
     /** */
@@ -90,6 +98,25 @@ export class LeakRate extends BaseUnit {
      */
     public static FromTorrLitersPerSecond(value: number): LeakRate {
         return new LeakRate(value, LeakRateUnits.TorrLitersPerSecond);
+    }
+
+    /**
+     * Create API DTO represent a LeakRate unit.
+     * @param holdInUnit The specific LeakRate unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LeakRateUnits = LeakRateUnits.PascalCubicMetersPerSecond): LeakRateDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a LeakRate unit from an API DTO representation.
+     * @param dtoLeakRate The LeakRate API DTO representation
+     */
+    public static FromDto(dtoLeakRate: LeakRateDto): LeakRate {
+        return new LeakRate(dtoLeakRate.value, dtoLeakRate.unit);
     }
 
     /**

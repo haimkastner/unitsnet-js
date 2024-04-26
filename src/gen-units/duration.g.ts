@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Duration */
+export interface DurationDto {
+    /** The value of the Duration */
+    value: number;
+    /**  The specific unit that the Duration value is representing */
+    unit: DurationUnits;
+}
+
 /** DurationUnits enumeration */
 export enum DurationUnits {
     /** */
@@ -258,6 +266,25 @@ export class Duration extends BaseUnit {
      */
     public static FromMilliseconds(value: number): Duration {
         return new Duration(value, DurationUnits.Milliseconds);
+    }
+
+    /**
+     * Create API DTO represent a Duration unit.
+     * @param holdInUnit The specific Duration unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: DurationUnits = DurationUnits.Seconds): DurationDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Duration unit from an API DTO representation.
+     * @param dtoDuration The Duration API DTO representation
+     */
+    public static FromDto(dtoDuration: DurationDto): Duration {
+        return new Duration(dtoDuration.value, dtoDuration.unit);
     }
 
     /**

@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ReactivePower */
+export interface ReactivePowerDto {
+    /** The value of the ReactivePower */
+    value: number;
+    /**  The specific unit that the ReactivePower value is representing */
+    unit: ReactivePowerUnits;
+}
+
 /** ReactivePowerUnits enumeration */
 export enum ReactivePowerUnits {
     /** */
@@ -111,6 +119,25 @@ export class ReactivePower extends BaseUnit {
      */
     public static FromGigavoltamperesReactive(value: number): ReactivePower {
         return new ReactivePower(value, ReactivePowerUnits.GigavoltamperesReactive);
+    }
+
+    /**
+     * Create API DTO represent a ReactivePower unit.
+     * @param holdInUnit The specific ReactivePower unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive): ReactivePowerDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ReactivePower unit from an API DTO representation.
+     * @param dtoReactivePower The ReactivePower API DTO representation
+     */
+    public static FromDto(dtoReactivePower: ReactivePowerDto): ReactivePower {
+        return new ReactivePower(dtoReactivePower.value, dtoReactivePower.unit);
     }
 
     /**

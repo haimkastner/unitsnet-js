@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a TemperatureGradient */
+export interface TemperatureGradientDto {
+    /** The value of the TemperatureGradient */
+    value: number;
+    /**  The specific unit that the TemperatureGradient value is representing */
+    unit: TemperatureGradientUnits;
+}
+
 /** TemperatureGradientUnits enumeration */
 export enum TemperatureGradientUnits {
     /** */
@@ -111,6 +119,25 @@ export class TemperatureGradient extends BaseUnit {
      */
     public static FromDegreesCelciusPerKilometer(value: number): TemperatureGradient {
         return new TemperatureGradient(value, TemperatureGradientUnits.DegreesCelciusPerKilometer);
+    }
+
+    /**
+     * Create API DTO represent a TemperatureGradient unit.
+     * @param holdInUnit The specific TemperatureGradient unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter): TemperatureGradientDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a TemperatureGradient unit from an API DTO representation.
+     * @param dtoTemperatureGradient The TemperatureGradient API DTO representation
+     */
+    public static FromDto(dtoTemperatureGradient: TemperatureGradientDto): TemperatureGradient {
+        return new TemperatureGradient(dtoTemperatureGradient.value, dtoTemperatureGradient.unit);
     }
 
     /**

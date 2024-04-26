@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Magnetization */
+export interface MagnetizationDto {
+    /** The value of the Magnetization */
+    value: number;
+    /**  The specific unit that the Magnetization value is representing */
+    unit: MagnetizationUnits;
+}
+
 /** MagnetizationUnits enumeration */
 export enum MagnetizationUnits {
     /** */
@@ -48,6 +56,25 @@ export class Magnetization extends BaseUnit {
      */
     public static FromAmperesPerMeter(value: number): Magnetization {
         return new Magnetization(value, MagnetizationUnits.AmperesPerMeter);
+    }
+
+    /**
+     * Create API DTO represent a Magnetization unit.
+     * @param holdInUnit The specific Magnetization unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MagnetizationUnits = MagnetizationUnits.AmperesPerMeter): MagnetizationDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Magnetization unit from an API DTO representation.
+     * @param dtoMagnetization The Magnetization API DTO representation
+     */
+    public static FromDto(dtoMagnetization: MagnetizationDto): Magnetization {
+        return new Magnetization(dtoMagnetization.value, dtoMagnetization.unit);
     }
 
     /**

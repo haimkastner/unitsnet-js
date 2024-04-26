@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a WarpingMomentOfInertia */
+export interface WarpingMomentOfInertiaDto {
+    /** The value of the WarpingMomentOfInertia */
+    value: number;
+    /**  The specific unit that the WarpingMomentOfInertia value is representing */
+    unit: WarpingMomentOfInertiaUnits;
+}
+
 /** WarpingMomentOfInertiaUnits enumeration */
 export enum WarpingMomentOfInertiaUnits {
     /** */
@@ -153,6 +161,25 @@ export class WarpingMomentOfInertia extends BaseUnit {
      */
     public static FromInchesToTheSixth(value: number): WarpingMomentOfInertia {
         return new WarpingMomentOfInertia(value, WarpingMomentOfInertiaUnits.InchesToTheSixth);
+    }
+
+    /**
+     * Create API DTO represent a WarpingMomentOfInertia unit.
+     * @param holdInUnit The specific WarpingMomentOfInertia unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth): WarpingMomentOfInertiaDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a WarpingMomentOfInertia unit from an API DTO representation.
+     * @param dtoWarpingMomentOfInertia The WarpingMomentOfInertia API DTO representation
+     */
+    public static FromDto(dtoWarpingMomentOfInertia: WarpingMomentOfInertiaDto): WarpingMomentOfInertia {
+        return new WarpingMomentOfInertia(dtoWarpingMomentOfInertia.value, dtoWarpingMomentOfInertia.unit);
     }
 
     /**

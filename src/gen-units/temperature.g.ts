@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Temperature */
+export interface TemperatureDto {
+    /** The value of the Temperature */
+    value: number;
+    /**  The specific unit that the Temperature value is representing */
+    unit: TemperatureUnits;
+}
+
 /** TemperatureUnits enumeration */
 export enum TemperatureUnits {
     /** */
@@ -237,6 +245,25 @@ export class Temperature extends BaseUnit {
      */
     public static FromSolarTemperatures(value: number): Temperature {
         return new Temperature(value, TemperatureUnits.SolarTemperatures);
+    }
+
+    /**
+     * Create API DTO represent a Temperature unit.
+     * @param holdInUnit The specific Temperature unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: TemperatureUnits = TemperatureUnits.Kelvins): TemperatureDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Temperature unit from an API DTO representation.
+     * @param dtoTemperature The Temperature API DTO representation
+     */
+    public static FromDto(dtoTemperature: TemperatureDto): Temperature {
+        return new Temperature(dtoTemperature.value, dtoTemperature.unit);
     }
 
     /**

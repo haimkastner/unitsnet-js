@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ElectricAdmittance */
+export interface ElectricAdmittanceDto {
+    /** The value of the ElectricAdmittance */
+    value: number;
+    /**  The specific unit that the ElectricAdmittance value is representing */
+    unit: ElectricAdmittanceUnits;
+}
+
 /** ElectricAdmittanceUnits enumeration */
 export enum ElectricAdmittanceUnits {
     /** */
@@ -111,6 +119,25 @@ export class ElectricAdmittance extends BaseUnit {
      */
     public static FromMillisiemens(value: number): ElectricAdmittance {
         return new ElectricAdmittance(value, ElectricAdmittanceUnits.Millisiemens);
+    }
+
+    /**
+     * Create API DTO represent a ElectricAdmittance unit.
+     * @param holdInUnit The specific ElectricAdmittance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens): ElectricAdmittanceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricAdmittance unit from an API DTO representation.
+     * @param dtoElectricAdmittance The ElectricAdmittance API DTO representation
+     */
+    public static FromDto(dtoElectricAdmittance: ElectricAdmittanceDto): ElectricAdmittance {
+        return new ElectricAdmittance(dtoElectricAdmittance.value, dtoElectricAdmittance.unit);
     }
 
     /**

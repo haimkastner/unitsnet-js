@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a MolarEnergy */
+export interface MolarEnergyDto {
+    /** The value of the MolarEnergy */
+    value: number;
+    /**  The specific unit that the MolarEnergy value is representing */
+    unit: MolarEnergyUnits;
+}
+
 /** MolarEnergyUnits enumeration */
 export enum MolarEnergyUnits {
     /** */
@@ -90,6 +98,25 @@ export class MolarEnergy extends BaseUnit {
      */
     public static FromMegajoulesPerMole(value: number): MolarEnergy {
         return new MolarEnergy(value, MolarEnergyUnits.MegajoulesPerMole);
+    }
+
+    /**
+     * Create API DTO represent a MolarEnergy unit.
+     * @param holdInUnit The specific MolarEnergy unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole): MolarEnergyDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a MolarEnergy unit from an API DTO representation.
+     * @param dtoMolarEnergy The MolarEnergy API DTO representation
+     */
+    public static FromDto(dtoMolarEnergy: MolarEnergyDto): MolarEnergy {
+        return new MolarEnergy(dtoMolarEnergy.value, dtoMolarEnergy.unit);
     }
 
     /**

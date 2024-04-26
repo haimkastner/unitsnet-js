@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ElectricPotentialAc */
+export interface ElectricPotentialAcDto {
+    /** The value of the ElectricPotentialAc */
+    value: number;
+    /**  The specific unit that the ElectricPotentialAc value is representing */
+    unit: ElectricPotentialAcUnits;
+}
+
 /** ElectricPotentialAcUnits enumeration */
 export enum ElectricPotentialAcUnits {
     /** */
@@ -132,6 +140,25 @@ export class ElectricPotentialAc extends BaseUnit {
      */
     public static FromMegavoltsAc(value: number): ElectricPotentialAc {
         return new ElectricPotentialAc(value, ElectricPotentialAcUnits.MegavoltsAc);
+    }
+
+    /**
+     * Create API DTO represent a ElectricPotentialAc unit.
+     * @param holdInUnit The specific ElectricPotentialAc unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricPotentialAcUnits = ElectricPotentialAcUnits.VoltsAc): ElectricPotentialAcDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricPotentialAc unit from an API DTO representation.
+     * @param dtoElectricPotentialAc The ElectricPotentialAc API DTO representation
+     */
+    public static FromDto(dtoElectricPotentialAc: ElectricPotentialAcDto): ElectricPotentialAc {
+        return new ElectricPotentialAc(dtoElectricPotentialAc.value, dtoElectricPotentialAc.unit);
     }
 
     /**

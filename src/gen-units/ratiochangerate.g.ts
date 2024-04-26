@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a RatioChangeRate */
+export interface RatioChangeRateDto {
+    /** The value of the RatioChangeRate */
+    value: number;
+    /**  The specific unit that the RatioChangeRate value is representing */
+    unit: RatioChangeRateUnits;
+}
+
 /** RatioChangeRateUnits enumeration */
 export enum RatioChangeRateUnits {
     /** */
@@ -69,6 +77,25 @@ export class RatioChangeRate extends BaseUnit {
      */
     public static FromDecimalFractionsPerSecond(value: number): RatioChangeRate {
         return new RatioChangeRate(value, RatioChangeRateUnits.DecimalFractionsPerSecond);
+    }
+
+    /**
+     * Create API DTO represent a RatioChangeRate unit.
+     * @param holdInUnit The specific RatioChangeRate unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond): RatioChangeRateDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a RatioChangeRate unit from an API DTO representation.
+     * @param dtoRatioChangeRate The RatioChangeRate API DTO representation
+     */
+    public static FromDto(dtoRatioChangeRate: RatioChangeRateDto): RatioChangeRate {
+        return new RatioChangeRate(dtoRatioChangeRate.value, dtoRatioChangeRate.unit);
     }
 
     /**

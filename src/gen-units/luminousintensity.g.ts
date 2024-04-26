@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a LuminousIntensity */
+export interface LuminousIntensityDto {
+    /** The value of the LuminousIntensity */
+    value: number;
+    /**  The specific unit that the LuminousIntensity value is representing */
+    unit: LuminousIntensityUnits;
+}
+
 /** LuminousIntensityUnits enumeration */
 export enum LuminousIntensityUnits {
     /** */
@@ -48,6 +56,25 @@ export class LuminousIntensity extends BaseUnit {
      */
     public static FromCandela(value: number): LuminousIntensity {
         return new LuminousIntensity(value, LuminousIntensityUnits.Candela);
+    }
+
+    /**
+     * Create API DTO represent a LuminousIntensity unit.
+     * @param holdInUnit The specific LuminousIntensity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: LuminousIntensityUnits = LuminousIntensityUnits.Candela): LuminousIntensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a LuminousIntensity unit from an API DTO representation.
+     * @param dtoLuminousIntensity The LuminousIntensity API DTO representation
+     */
+    public static FromDto(dtoLuminousIntensity: LuminousIntensityDto): LuminousIntensity {
+        return new LuminousIntensity(dtoLuminousIntensity.value, dtoLuminousIntensity.unit);
     }
 
     /**

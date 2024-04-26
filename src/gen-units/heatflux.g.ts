@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a HeatFlux */
+export interface HeatFluxDto {
+    /** The value of the HeatFlux */
+    value: number;
+    /**  The specific unit that the HeatFlux value is representing */
+    unit: HeatFluxUnits;
+}
+
 /** HeatFluxUnits enumeration */
 export enum HeatFluxUnits {
     /** */
@@ -405,6 +413,25 @@ export class HeatFlux extends BaseUnit {
      */
     public static FromKilocaloriesPerSecondSquareCentimeter(value: number): HeatFlux {
         return new HeatFlux(value, HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter);
+    }
+
+    /**
+     * Create API DTO represent a HeatFlux unit.
+     * @param holdInUnit The specific HeatFlux unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: HeatFluxUnits = HeatFluxUnits.WattsPerSquareMeter): HeatFluxDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a HeatFlux unit from an API DTO representation.
+     * @param dtoHeatFlux The HeatFlux API DTO representation
+     */
+    public static FromDto(dtoHeatFlux: HeatFluxDto): HeatFlux {
+        return new HeatFlux(dtoHeatFlux.value, dtoHeatFlux.unit);
     }
 
     /**

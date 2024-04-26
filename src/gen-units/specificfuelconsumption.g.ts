@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a SpecificFuelConsumption */
+export interface SpecificFuelConsumptionDto {
+    /** The value of the SpecificFuelConsumption */
+    value: number;
+    /**  The specific unit that the SpecificFuelConsumption value is representing */
+    unit: SpecificFuelConsumptionUnits;
+}
+
 /** SpecificFuelConsumptionUnits enumeration */
 export enum SpecificFuelConsumptionUnits {
     /** */
@@ -111,6 +119,25 @@ export class SpecificFuelConsumption extends BaseUnit {
      */
     public static FromKilogramsPerKiloNewtonSecond(value: number): SpecificFuelConsumption {
         return new SpecificFuelConsumption(value, SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond);
+    }
+
+    /**
+     * Create API DTO represent a SpecificFuelConsumption unit.
+     * @param holdInUnit The specific SpecificFuelConsumption unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond): SpecificFuelConsumptionDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a SpecificFuelConsumption unit from an API DTO representation.
+     * @param dtoSpecificFuelConsumption The SpecificFuelConsumption API DTO representation
+     */
+    public static FromDto(dtoSpecificFuelConsumption: SpecificFuelConsumptionDto): SpecificFuelConsumption {
+        return new SpecificFuelConsumption(dtoSpecificFuelConsumption.value, dtoSpecificFuelConsumption.unit);
     }
 
     /**

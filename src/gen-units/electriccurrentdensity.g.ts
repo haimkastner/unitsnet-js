@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ElectricCurrentDensity */
+export interface ElectricCurrentDensityDto {
+    /** The value of the ElectricCurrentDensity */
+    value: number;
+    /**  The specific unit that the ElectricCurrentDensity value is representing */
+    unit: ElectricCurrentDensityUnits;
+}
+
 /** ElectricCurrentDensityUnits enumeration */
 export enum ElectricCurrentDensityUnits {
     /** */
@@ -90,6 +98,25 @@ export class ElectricCurrentDensity extends BaseUnit {
      */
     public static FromAmperesPerSquareFoot(value: number): ElectricCurrentDensity {
         return new ElectricCurrentDensity(value, ElectricCurrentDensityUnits.AmperesPerSquareFoot);
+    }
+
+    /**
+     * Create API DTO represent a ElectricCurrentDensity unit.
+     * @param holdInUnit The specific ElectricCurrentDensity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter): ElectricCurrentDensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricCurrentDensity unit from an API DTO representation.
+     * @param dtoElectricCurrentDensity The ElectricCurrentDensity API DTO representation
+     */
+    public static FromDto(dtoElectricCurrentDensity: ElectricCurrentDensityDto): ElectricCurrentDensity {
+        return new ElectricCurrentDensity(dtoElectricCurrentDensity.value, dtoElectricCurrentDensity.unit);
     }
 
     /**

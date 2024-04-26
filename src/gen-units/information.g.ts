@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Information */
+export interface InformationDto {
+    /** The value of the Information */
+    value: number;
+    /**  The specific unit that the Information value is representing */
+    unit: InformationUnits;
+}
+
 /** InformationUnits enumeration */
 export enum InformationUnits {
     /** */
@@ -321,6 +329,25 @@ export class Information extends BaseUnit {
      */
     public static FromExabits(value: number): Information {
         return new Information(value, InformationUnits.Exabits);
+    }
+
+    /**
+     * Create API DTO represent a Information unit.
+     * @param holdInUnit The specific Information unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: InformationUnits = InformationUnits.Bits): InformationDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Information unit from an API DTO representation.
+     * @param dtoInformation The Information API DTO representation
+     */
+    public static FromDto(dtoInformation: InformationDto): Information {
+        return new Information(dtoInformation.value, dtoInformation.unit);
     }
 
     /**

@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ElectricCurrentGradient */
+export interface ElectricCurrentGradientDto {
+    /** The value of the ElectricCurrentGradient */
+    value: number;
+    /**  The specific unit that the ElectricCurrentGradient value is representing */
+    unit: ElectricCurrentGradientUnits;
+}
+
 /** ElectricCurrentGradientUnits enumeration */
 export enum ElectricCurrentGradientUnits {
     /** */
@@ -174,6 +182,25 @@ export class ElectricCurrentGradient extends BaseUnit {
      */
     public static FromMilliamperesPerMinute(value: number): ElectricCurrentGradient {
         return new ElectricCurrentGradient(value, ElectricCurrentGradientUnits.MilliamperesPerMinute);
+    }
+
+    /**
+     * Create API DTO represent a ElectricCurrentGradient unit.
+     * @param holdInUnit The specific ElectricCurrentGradient unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond): ElectricCurrentGradientDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricCurrentGradient unit from an API DTO representation.
+     * @param dtoElectricCurrentGradient The ElectricCurrentGradient API DTO representation
+     */
+    public static FromDto(dtoElectricCurrentGradient: ElectricCurrentGradientDto): ElectricCurrentGradient {
+        return new ElectricCurrentGradient(dtoElectricCurrentGradient.value, dtoElectricCurrentGradient.unit);
     }
 
     /**

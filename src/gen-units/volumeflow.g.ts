@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a VolumeFlow */
+export interface VolumeFlowDto {
+    /** The value of the VolumeFlow */
+    value: number;
+    /**  The specific unit that the VolumeFlow value is representing */
+    unit: VolumeFlowUnits;
+}
+
 /** VolumeFlowUnits enumeration */
 export enum VolumeFlowUnits {
     /** */
@@ -1602,6 +1610,25 @@ export class VolumeFlow extends BaseUnit {
      */
     public static FromMegaukGallonsPerSecond(value: number): VolumeFlow {
         return new VolumeFlow(value, VolumeFlowUnits.MegaukGallonsPerSecond);
+    }
+
+    /**
+     * Create API DTO represent a VolumeFlow unit.
+     * @param holdInUnit The specific VolumeFlow unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: VolumeFlowUnits = VolumeFlowUnits.CubicMetersPerSecond): VolumeFlowDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a VolumeFlow unit from an API DTO representation.
+     * @param dtoVolumeFlow The VolumeFlow API DTO representation
+     */
+    public static FromDto(dtoVolumeFlow: VolumeFlowDto): VolumeFlow {
+        return new VolumeFlow(dtoVolumeFlow.value, dtoVolumeFlow.unit);
     }
 
     /**

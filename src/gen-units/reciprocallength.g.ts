@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ReciprocalLength */
+export interface ReciprocalLengthDto {
+    /** The value of the ReciprocalLength */
+    value: number;
+    /**  The specific unit that the ReciprocalLength value is representing */
+    unit: ReciprocalLengthUnits;
+}
+
 /** ReciprocalLengthUnits enumeration */
 export enum ReciprocalLengthUnits {
     /** */
@@ -237,6 +245,25 @@ export class ReciprocalLength extends BaseUnit {
      */
     public static FromInverseMicroinches(value: number): ReciprocalLength {
         return new ReciprocalLength(value, ReciprocalLengthUnits.InverseMicroinches);
+    }
+
+    /**
+     * Create API DTO represent a ReciprocalLength unit.
+     * @param holdInUnit The specific ReciprocalLength unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ReciprocalLengthUnits = ReciprocalLengthUnits.InverseMeters): ReciprocalLengthDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ReciprocalLength unit from an API DTO representation.
+     * @param dtoReciprocalLength The ReciprocalLength API DTO representation
+     */
+    public static FromDto(dtoReciprocalLength: ReciprocalLengthDto): ReciprocalLength {
+        return new ReciprocalLength(dtoReciprocalLength.value, dtoReciprocalLength.unit);
     }
 
     /**

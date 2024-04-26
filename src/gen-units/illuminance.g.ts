@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a Illuminance */
+export interface IlluminanceDto {
+    /** The value of the Illuminance */
+    value: number;
+    /**  The specific unit that the Illuminance value is representing */
+    unit: IlluminanceUnits;
+}
+
 /** IlluminanceUnits enumeration */
 export enum IlluminanceUnits {
     /** */
@@ -111,6 +119,25 @@ export class Illuminance extends BaseUnit {
      */
     public static FromMegalux(value: number): Illuminance {
         return new Illuminance(value, IlluminanceUnits.Megalux);
+    }
+
+    /**
+     * Create API DTO represent a Illuminance unit.
+     * @param holdInUnit The specific Illuminance unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: IlluminanceUnits = IlluminanceUnits.Lux): IlluminanceDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a Illuminance unit from an API DTO representation.
+     * @param dtoIlluminance The Illuminance API DTO representation
+     */
+    public static FromDto(dtoIlluminance: IlluminanceDto): Illuminance {
+        return new Illuminance(dtoIlluminance.value, dtoIlluminance.unit);
     }
 
     /**

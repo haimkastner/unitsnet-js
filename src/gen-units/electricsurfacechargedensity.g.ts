@@ -1,5 +1,13 @@
 import { BaseUnit } from "../base-unit";
 
+/** API DTO represents a ElectricSurfaceChargeDensity */
+export interface ElectricSurfaceChargeDensityDto {
+    /** The value of the ElectricSurfaceChargeDensity */
+    value: number;
+    /**  The specific unit that the ElectricSurfaceChargeDensity value is representing */
+    unit: ElectricSurfaceChargeDensityUnits;
+}
+
 /** ElectricSurfaceChargeDensityUnits enumeration */
 export enum ElectricSurfaceChargeDensityUnits {
     /** */
@@ -90,6 +98,25 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
      */
     public static FromCoulombsPerSquareInch(value: number): ElectricSurfaceChargeDensity {
         return new ElectricSurfaceChargeDensity(value, ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch);
+    }
+
+    /**
+     * Create API DTO represent a ElectricSurfaceChargeDensity unit.
+     * @param holdInUnit The specific ElectricSurfaceChargeDensity unit to be used in the unit representation at the DTO
+     */
+    public toDto(holdInUnit: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter): ElectricSurfaceChargeDensityDto {
+        return {
+            value: this.convert(holdInUnit),
+            unit: holdInUnit
+        };
+    }
+
+    /**
+     * Create a ElectricSurfaceChargeDensity unit from an API DTO representation.
+     * @param dtoElectricSurfaceChargeDensity The ElectricSurfaceChargeDensity API DTO representation
+     */
+    public static FromDto(dtoElectricSurfaceChargeDensity: ElectricSurfaceChargeDensityDto): ElectricSurfaceChargeDensity {
+        return new ElectricSurfaceChargeDensity(dtoElectricSurfaceChargeDensity.value, dtoElectricSurfaceChargeDensity.unit);
     }
 
     /**
