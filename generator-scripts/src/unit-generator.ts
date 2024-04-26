@@ -10,7 +10,7 @@ import {
     MethodDeclarationStructure,
     EnumMemberStructure,
     JSDocStructure,
-    InterfaceDeclarationStructure
+    ImportDeclarationStructure
 } from "ts-morph";
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
 import { pascalToCamelCase } from "./utiles";
@@ -383,6 +383,10 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
             text: `unit The unit to format the ${unitName}.`
         }, {
             kind: StructureKind.JSDocTag,
+            tagName: 'param',
+            text: `fractionalDigits The number of fractional digits to keep.`
+        }, {
+            kind: StructureKind.JSDocTag,
             tagName: 'returns',
             text: `The string format of the ${unitName}.`
         }]
@@ -393,7 +397,7 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
         toStringCases +=
             `
     case ${enumName}.${unit.pluralName}:
-        return this.${unit.pluralName} + ` + '` ' + unit.Abbreviation + '`;';
+        return super.truncateFractionDigits(this.${unit.pluralName}, fractionalDigits) + ` + '` ' + unit.Abbreviation + '`;';
     }
 
     return {
@@ -404,6 +408,10 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
             name: 'unit',
             type: enumName,
             initializer: `${enumName}.${baseUnit.pluralName}`
+        }, {
+            name: 'fractionalDigits',
+            type: 'number',
+            hasQuestionToken: true
         }],
         returnType: 'string',
         docs: [docs],
@@ -501,7 +509,7 @@ function buildEqualsMethod(unitName: string): MethodDeclarationStructure {
         }],
         returnType: 'boolean',
         docs: [docs],
-        statements: `return this.value === ${pascalToCamelCase(unitName)}.BaseValue;`,
+        statements: `return super.internalEquals(this.value, ${pascalToCamelCase(unitName)}.BaseValue);`,
     };
 }
 
@@ -536,12 +544,7 @@ function buildCompareToMethod(unitName: string): MethodDeclarationStructure {
         }],
         returnType: 'number',
         docs: [docs],
-        statements: `
-if (this.value > ${pascalToCamelCase(unitName)}.BaseValue)
-    return 1;
-if (this.value < ${pascalToCamelCase(unitName)}.BaseValue)
-    return -1;
-return 0;`,
+        statements: `return super.internalCompareTo(this.value, ${pascalToCamelCase(unitName)}.BaseValue);`,
     };
 }
 
@@ -552,22 +555,16 @@ return 0;`,
  */
 function buildArithmeticsMethods(unitName: string): MethodDeclarationStructure[] {
     const arithmeticActions = [{
-        operator: '+',
         name: 'Add'
     }, {
-        operator: '-',
         name: 'Subtract'
     }, {
-        operator: '*',
         name: 'Multiply'
     }, {
-        operator: '/',
         name: 'Divide'
     }, {
-        operator: '%',
         name: 'Modulo'
     }, {
-        operator: '**',
         name: 'Pow'
     }];
 
@@ -596,7 +593,7 @@ function buildArithmeticsMethods(unitName: string): MethodDeclarationStructure[]
             }],
             returnType: unitName,
             docs: [docs],
-            statements: `return new ${unitName}(this.value ${action.operator} ${pascalToCamelCase(unitName)}.BaseValue)`,
+            statements: `return new ${unitName}(super.internal${action.name}(this.value, ${pascalToCamelCase(unitName)}.BaseValue))`,
         };
     })
 }
@@ -638,6 +635,7 @@ function buildUnitCtor(unitName: string, enumName: string, baseUnitName: string)
         ],
         docs: [docs],
         statements: `
+super();
 if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
 this.value = this.convertToBase(value, fromUnit);`
     }
@@ -739,6 +737,7 @@ export function generateUnitClass(project: Project,
     const unitClass: ClassDeclarationStructure = {
         kind: StructureKind.Class,
         name: unitProperties.unitName,
+        extends: 'BaseUnit',
         properties: [valueMember, ...lazyVars],
         getAccessors: [baseValueAccessor, ...unitGetters],
         ctors: [unitCtor],
@@ -753,14 +752,21 @@ export function generateUnitClass(project: Project,
             toUnitAbbreviationMethod,
             equalsMethod,
             compareToMethod,
-            ...arithmeticsMethods],
+            ...arithmeticsMethods
+        ],
         isExported: true,
         docs: [unitProperties.JSDoc],
     }
 
+    const importDeclaration: ImportDeclarationStructure = {
+        moduleSpecifier: '../base-unit',
+        namedImports: ['BaseUnit'],
+        kind: StructureKind.ImportDeclaration,
+    }
+
     // Build the unit file with the unit enum and class
-    const sourceFile = project.createSourceFile(`${unitsDestinationDirectory}/${unitProperties.unitName.toLowerCase()}.g.ts`, {
-        statements: [dtoInterface, unitsEnum, unitClass]
+    const sourceFile = project.createSourceFile(`${unitsDestinationDirectory}/gen-units/${unitProperties.unitName.toLowerCase()}.g.ts`, {
+        statements: [importDeclaration, unitsEnum, unitClass]
     }, {
         overwrite: true
     });

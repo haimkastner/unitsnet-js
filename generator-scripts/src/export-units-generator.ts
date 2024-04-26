@@ -20,9 +20,23 @@ export function generateUnitsModuleExport(project: Project, unitsDestinationDire
     for (const unitDefinition of rawUnitsDefinitions) {
         sourceFile.addExportDeclaration({
             kind: StructureKind.ExportDeclaration,
-            moduleSpecifier: `./${unitDefinition.Name.toLocaleLowerCase()}.g`
-        })
+            moduleSpecifier: `./gen-units/${unitDefinition.Name.toLocaleLowerCase()}.g`
+        });
     }
+
+    sourceFile.addExportDeclaration({
+        kind: StructureKind.ExportDeclaration,
+        moduleSpecifier: `./base-unit`,
+        namedExports: [
+            'ArithmeticOperation',
+            'ArithmeticFormula',
+            'CompareToFormula',
+            'EqualsFormula',
+            'setArithmeticFormula',
+            'setEqualsFormula',
+            'setCompareToFurmula',
+        ]
+    });
 
     // Generate the export modules file.
     sourceFile.saveSync();
