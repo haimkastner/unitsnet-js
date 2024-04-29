@@ -1,0 +1,40 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug yarn generate",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "yarn",
+			"runtimeArgs": [
+				"generate"
+			],
+			"cwd": "${workspaceFolder}",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"console": "integratedTerminal",
+			"restart": true,
+			"internalConsoleOptions": "neverOpen"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Debug ANTLR",
+			"runtimeArgs": [
+				"-r",
+				"ts-node/register"
+			],
+			"args": [
+				"/mnt/7e91759c-6dd7-4c99-8d38-e6422452a469/git/unitsnet-js/generator-scripts/src/math-interop/antlr/builder/tree/tree-builder.ts"
+			],
+			"protocol": "inspector",
+			"sourceMaps": true,
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"skipFiles": [
+				"<node_internals>/**"
+			]
+		}
+	]
+}

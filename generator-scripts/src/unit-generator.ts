@@ -13,6 +13,7 @@ import {
     ImportDeclarationStructure,
     InterfaceDeclarationStructure
 } from "ts-morph";
+import { getCodeForFormula } from './math-interop/antlr/builder/tree/tree-builder';
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
 import { pascalToCamelCase } from "./utiles";
 
@@ -148,7 +149,11 @@ function buildUnitCreatorsMethods(unitName: string, enumName: string, units: Uni
  */
 function buildFormulaCase(unitName: string, enumName: string, formulaDefinition: string, valueVarName: string): string {
     // Remove C# number types
+	console.log(`Unit Name: ${unitName}, Enum: ${enumName} Formula: ${formulaDefinition}`);
     formulaDefinition = formulaDefinition.replace('d', '').replace('m', '');
+	
+	const formulaCode = getCodeForFormula(formulaDefinition);
+	console.log(`Code: ${formulaCode}`);
 
     // Convert C# math functions to the JS name
     formulaDefinition = formulaDefinition.replace(/\.Pow\(/g, '.pow(');
@@ -156,13 +161,13 @@ function buildFormulaCase(unitName: string, enumName: string, formulaDefinition:
     formulaDefinition = formulaDefinition.replace(/\.Asin\(/g, '.asin(');
     formulaDefinition = formulaDefinition.replace(/\.Sin\(/g, '.sin(');
 
-    // Remove all C# double signs, since they are not relavant to JS wheere all numbers are just "number" and not int. 
+    // Remove all C# double signs, since they are not relevant to JS where all numbers are just "number" and not int. 
     // see for example https://github.com/angularsen/UnitsNet/blob/master/Common/UnitDefinitions/Irradiation.json#L65
     formulaDefinition = formulaDefinition.replace(/\d+d/g, (match) => match.replace(/d$/, ''));
 
     return `
     case ${enumName}.${unitName}:
-        return ${formulaDefinition.replace(/{x}|x/g, valueVarName)};`;
+        return ${formulaCode}`;
 }
 
 /**
@@ -346,12 +351,16 @@ function buildConvertToBaseMethod(enumName: string, units: UnitProperties[]): Me
         scope: Scope.Private,
         parameters: [
             {
-                name: 'value',
+                name: 'x',
                 type: 'number'
             },
             {
                 name: 'fromUnit',
                 type: enumName
+            },
+            {
+                name: 'operatorOverrides',
+                type: 'OperatorOverrides'
             }
         ],
         returnType: 'number',
@@ -761,7 +770,7 @@ export function generateUnitClass(project: Project,
 
     const importDeclaration: ImportDeclarationStructure = {
         moduleSpecifier: '../base-unit',
-        namedImports: ['BaseUnit'],
+        namedImports: ['BaseUnit', 'OperatorOverrides'],
         kind: StructureKind.ImportDeclaration,
     }
 

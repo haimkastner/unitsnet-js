@@ -2,7 +2,7 @@ import fse from 'fs-extra';
 import { UnitTypeDefinition } from './models/units-definition';
 
 /**
- * Generate README.md file from temolate. 
+ * Generate README.md file from template. 
  * @param documentationDestinationDirectory The generate file directory destination.
  * @param rawUnitsDefinitions The units definition from the definition JSON files.
  */
