@@ -126,7 +126,7 @@ export namespace HighLevelTsc {
 		return ts.createPrinter().printNode(
 			ts.EmitHint.Unspecified,
 			node,
-			ts.createSourceFile('dummy.ts', '', ts.ScriptTarget.ES2020)
+			ts.createSourceFile('dummy.ts', '', target)
 		);
 	}
 
