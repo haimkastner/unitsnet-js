@@ -5,14 +5,14 @@ import { ArithmeticGrammarListener } from '../tree/arithmetic-grammar-listener';
 import { ParseTreeWalker } from 'antlr4ts/tree/ParseTreeWalker';
 
 // Read input expression
-const inputExpression = "(({x} * Math.Sqrt(9)) * Math.PI) - 5";
+const inputExpression = "150 % ((({x} * Math.Sqrt(9)) * Math.PI) - Math.Pow(5, 2))";
 // Create an ANTLR input stream from the input expression
 
 const inputBuffer = Buffer.from(inputExpression);
 
-const codePointBUffer = new CodePointBuffer(inputBuffer, inputBuffer.length);
+const codePointBuffer = new CodePointBuffer(inputBuffer, inputBuffer.length);
 
-const inputStream = CodePointCharStream.fromBuffer(codePointBUffer);
+const inputStream = CodePointCharStream.fromBuffer(codePointBuffer);
 
 // Create lexer
 const lexer = new ArithmeticLexer(inputStream);
@@ -50,5 +50,25 @@ export function getCodeForFormula(formula: string): string {
 	parser.addParseListener(listener);
 	
 	ParseTreeWalker.DEFAULT.walk(listener, equationString);
-	return listener.getAst()!.execute();
+	return listener.getAst()!.execute() as any;
 }
+
+
+
+/* (x - 5) * 2
+
+//
+const valueA = x - 5;
+const result = valueA - 2;
+return result;
+     
+
+      *
+     / \
+    -   2
+   / \
+  x   5
+
+
+
+*/

@@ -15,6 +15,7 @@ import {
 	OpSubContext,
 	EquationStringContext,
 	OpSqrtContext,
+	OpModContext,
 } from '../../grammatical/arithmeticParser';
 import { ConstantNode } from '../nodes/constant-node';
 import { ExpressionNode } from '../nodes/expression-node';
@@ -26,6 +27,7 @@ import { PowerNode } from '../nodes/operators/power-node';
 import { SqrtNode } from '../nodes/operators/sqrt-node';
 import { SubtractionNode } from '../nodes/operators/subtraction-node';
 import { VariableNode } from '../nodes/variable-node';
+import { ModulusNode } from '../nodes/operators/modulus-node';
 
 export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeListener {
 	private _ast: MathStringBuilderNode | undefined;
@@ -98,6 +100,13 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 		const valueB = this._unconsumedNodes.pop()!;
 		const valueA = this._unconsumedNodes.pop()!;
 		this._unconsumedNodes.push(new DivisionNode(valueA, valueB))
+	}
+
+	public exitOpMod(ctx: OpModContext): void {
+		this.logMessage(`Exit Mod - ${ctx.text}`);
+		const valueB = this._unconsumedNodes.pop()!;
+		const valueA = this._unconsumedNodes.pop()!;
+		this._unconsumedNodes.push(new ModulusNode(valueA, valueB))
 	}
 
 	public exitOpMul(ctx: OpMulContext): void {

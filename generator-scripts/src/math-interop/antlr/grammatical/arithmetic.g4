@@ -34,9 +34,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // $antlr-format allowShortRulesOnASingleLine false, allowShortBlocksOnASingleLine true, alignSemicolons hanging, alignColons hanging
 
 
-//
-// Various adjustments by yuval.pomer
-//
+
+/////////////////////////////////////////
+// Various adjustments by yuval.pomer  //
+/////////////////////////////////////////
 
 grammar arithmetic;
 
@@ -52,6 +53,7 @@ expression
     | expression DIV expression #opDiv
     | expression PLUS expression #opAdd
     | expression MINUS expression #opSub
+    | expression MOD_SIGN expression #opMod
     | POW_FUNC LPAREN expression COMMA expression RPAREN #opPow
     | SQRT_FUNC LPAREN expression RPAREN #opSqrt
     | SIN_FUNC LPAREN expression RPAREN #opSin
@@ -118,6 +120,10 @@ COMMA
 
 POW_SIGN
     : '^'
+    ;
+
+MOD_SIGN
+    : '%'
     ;
 
 POW_FUNC

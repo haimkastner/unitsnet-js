@@ -1,11 +1,14 @@
-import { MathStringBuilderNode } from './math-string-builder-node';
+import { BaseMathStringBuilderNode } from './math-string-builder-node';
+import ts from 'typescript';
 
-export class VariableNode implements MathStringBuilderNode {
-	public readonly invokeRequired: boolean = false;
+export class VariableNode extends BaseMathStringBuilderNode {
+	public readonly isPrimitive: boolean = true;
 
-	public constructor(private _value: string) {}
+	public constructor(private _value: string) {
+		super();
+	}
 
-	public execute(): string {
-		return `${this._value.replace(/[\{\}]/igm, '')}`;
+	public execute(): ts.Statement[] {
+		return [ts.createExpressionStatement(ts.createIdentifier(this._value.replace(/[\{\}]/igm, '')))];
 	}
 }

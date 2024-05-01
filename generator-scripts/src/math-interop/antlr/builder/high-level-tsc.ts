@@ -18,6 +18,54 @@ export enum BinaryOperatorType {
 type OverridableOperator = keyof OperatorOverrides;
 
 export namespace HighLevelTsc {
+	/**
+	 * Copied directly from nanoid at https://github.com/ai/nanoid/blob/main/non-secure/index.js
+	 * to avoid ES import issues
+	 *
+	 * @export
+	 * @return {*}  {string}
+	 */
+	export function getRandomVariableId(): string {
+		const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+		let id = ''
+		// A compact alternative for `for (var i = 0; i < step; i++)`.
+		let i = 8;
+		while (i--) {
+			// `| 0` is more compact and faster than `Math.floor()`.
+			id += alphabet[(Math.random() * alphabet.length) | 0]
+		}
+		return id
+	}
+
+	export function buildMathCall(
+		resultConstantId: string,
+		operator: MathOperatorType,
+		values: MathStringBuilderNode[],
+	): ts.Statement[] {
+		const preRequisiteCode: ts.Statement[] = [];
+		const parameterExpressions: ts.Expression[] = [];
+
+		for (const value of values) {
+			const resolved = value.execute();
+			if (value.isPrimitive) {
+				const exprState = (resolved[0]) as ts.ExpressionStatement;
+				parameterExpressions.push(exprState.expression);
+			} else {
+				preRequisiteCode.push(...resolved);
+				parameterExpressions.push(ts.createIdentifier(value.id));
+			}
+		}
+
+		const call = createMathMethodCall(operator, parameterExpressions);
+
+		const resultVariable = createConstVariableStatement(resultConstantId, call);
+
+		return [
+			...preRequisiteCode,
+			resultVariable,
+		];
+	}
+
 	export function buildMathOperatorCode(
 		operator: MathOperatorType,
 		values: MathStringBuilderNode[],
@@ -29,7 +77,8 @@ export namespace HighLevelTsc {
 		for (let i = 0; i < values.length; i++) {
 			const identifierName = `value${i}`;
 			identifiers.push(ts.createIdentifier(identifierName));
-			valueStatements.push(createVariableStatementForMathNode(identifierName, values[i]));
+			const { statement } = createVariableStatementForMathNode(identifierName, values[i]);
+			valueStatements.push(statement);
 		}
 
 		const mathIdentifier = ts.createIdentifier('Math');
@@ -59,6 +108,57 @@ export namespace HighLevelTsc {
 		return emitCode(funcExpression);
 	}
 
+	function createMathMethodCall(operator: MathOperatorType, paramIdentifiers: ts.Identifier[] | ts.Expression[]): ts.CallExpression {
+		const mathIdentifier = ts.createIdentifier('Math');
+		const funcIdentifier = ts.createIdentifier(operator);
+
+		const mathPropAccess = ts.createPropertyAccess(mathIdentifier, funcIdentifier);
+
+		return ts.createCall(
+			mathPropAccess,
+			undefined,
+			paramIdentifiers
+		);
+	}
+
+	export function buildBinaryOperator(
+		resultConstantId: string,
+		valueA: MathStringBuilderNode,
+		valueB: MathStringBuilderNode,
+		operator: BinaryOperatorType
+	): ts.Statement[] {
+		const resolvedValueA = valueA.execute();
+		const resolvedValueB = valueB.execute();
+
+		const preRequisiteCode: ts.Statement[] = [];
+		const callExpressions: ts.Expression[] = [];
+	
+		if (valueA.isPrimitive) {
+			const exprState = (resolvedValueA[0]) as ts.ExpressionStatement;
+			callExpressions.push(exprState.expression);
+		} else {
+			preRequisiteCode.push(...resolvedValueA);
+			callExpressions.push(ts.createIdentifier(valueA.id));
+		}
+
+		if (valueB.isPrimitive) {
+			const exprState = (resolvedValueB[0]) as ts.ExpressionStatement;
+			callExpressions.push(exprState.expression);
+		} else {
+			preRequisiteCode.push(...resolvedValueB);
+			callExpressions.push(ts.createIdentifier(valueB.id));
+		}
+
+		const call = getBinaryOperationCall(operator, callExpressions);
+
+		const resultVariable = createConstVariableStatement(resultConstantId, call);
+
+		return [
+			...preRequisiteCode,
+			resultVariable,
+		];
+	}
+
 
 	export function buildBinaryOperatorCode(
 		valueA: MathStringBuilderNode,
@@ -66,8 +166,8 @@ export namespace HighLevelTsc {
 		operator: BinaryOperatorType,
 	): string {
 
-		const valueAStatement = createVariableStatementForMathNode('valueA', valueA);
-		const valueBStatement = createVariableStatementForMathNode('valueB', valueB);
+		const { statement: valueAStatement } = createVariableStatementForMathNode('valueA', valueA);
+		const { statement: valueBStatement } = createVariableStatementForMathNode('valueB', valueB);
 
 		const ifStatement = createBinaryOperatorIfFlow('valueA', 'valueB', operator);
 
@@ -133,20 +233,33 @@ export namespace HighLevelTsc {
 	function createVariableStatementForMathNode(
 		variableName: string,
 		node: MathStringBuilderNode
-	): ts.VariableStatement {
-		const resolvedNodeInit: ts.Identifier | ts.CallExpression = node.invokeRequired
+	): { statement: ts.VariableStatement, identifier: ts.Identifier } {
+		const identifier = ts.createIdentifier('BROKEN');
+
+		const resolvedNodeInit: ts.Identifier | ts.CallExpression = node.isPrimitive
 			? ts.createCall(
-				ts.createParen(ts.createIdentifier(node.execute())),
+				ts.createParen(identifier),
 				undefined,
 				[
 					ts.createIdentifier('x'),
 					ts.createIdentifier('operatorOverrides')
 				]
 			)
-			: ts.createIdentifier(node.execute())
+			: identifier
 
 		// Generate TypeScript AST nodes for const declaration
 		const declaration = ts.createVariableDeclaration(variableName, undefined, resolvedNodeInit);
+		const variableDeclarationList = ts.createVariableDeclarationList(
+			[declaration],
+			ts.NodeFlags.Const // Use NodeFlags.Const to create a const declaration
+		);
+
+		// Create the variable statement with const declaration
+		return { identifier, statement: ts.createVariableStatement(undefined, variableDeclarationList) };
+	}
+
+	function createConstVariableStatement(name: string, initializer?: ts.Expression): ts.VariableStatement {
+		const declaration = ts.createVariableDeclaration(name, undefined, initializer);
 		const variableDeclarationList = ts.createVariableDeclarationList(
 			[declaration],
 			ts.NodeFlags.Const // Use NodeFlags.Const to create a const declaration
@@ -157,27 +270,7 @@ export namespace HighLevelTsc {
 	}
 
 	function createBinaryOperatorIfFlow(valueAVarName: string, valueBVarName: string, operator: BinaryOperatorType): ts.IfStatement {
-		let operatorToken: ts.SyntaxKind;
-		switch (operator) {
-			case BinaryOperatorType.Add:
-				operatorToken = ts.SyntaxKind.PlusToken;
-				break;
-			case BinaryOperatorType.Sub:
-				operatorToken = ts.SyntaxKind.MinusToken;
-				break;
-			case BinaryOperatorType.Mul:
-				operatorToken = ts.SyntaxKind.AsteriskToken;
-				break;
-			case BinaryOperatorType.Div:
-				operatorToken = ts.SyntaxKind.SlashToken;
-				break;
-			case BinaryOperatorType.Mod:
-				operatorToken = ts.SyntaxKind.PercentToken;
-				break;
-			default:
-				throw new Error(`Operator kind '${operator}' is not supported as a binary operator`);
-		}
-
+		let operatorToken: ts.BinaryOperator = getTokenForBinaryArithmeticOperator(operator);
 		return ts.createIf(
 			ts.createPropertyAccess(ts.createIdentifier('operatorOverrides'), operator),
 			ts.createBlock([
@@ -224,5 +317,51 @@ export namespace HighLevelTsc {
 			]),
 			ts.createBlock([ts.createReturn(elseContent)])
 		);
+	}
+
+	function getTokenForBinaryArithmeticOperator(operator: BinaryOperatorType): ts.BinaryOperator {
+		switch (operator) {
+			case BinaryOperatorType.Add:
+				return ts.SyntaxKind.PlusToken;
+			case BinaryOperatorType.Sub:
+				return ts.SyntaxKind.MinusToken;
+			case BinaryOperatorType.Mul:
+				return ts.SyntaxKind.AsteriskToken;
+			case BinaryOperatorType.Div:
+				return ts.SyntaxKind.SlashToken;
+			case BinaryOperatorType.Mod:
+				return ts.SyntaxKind.PercentToken;
+			default:
+				throw new Error(`Operator kind '${operator}' is not supported as a binary operator`);
+		}
+	}
+
+	function getInternalBinaryOperatorImplName(operator: BinaryOperatorType): string {
+		switch (operator) {
+			case BinaryOperatorType.Add:
+				return 'internalAdd';
+			case BinaryOperatorType.Sub:
+				return 'internalSubtract';
+			case BinaryOperatorType.Mul:
+				return 'internalMultiply';
+			case BinaryOperatorType.Div:
+				return 'internalDivide';
+			case BinaryOperatorType.Mod:
+				return 'internalModulo';
+			default:
+				throw new Error(`Operator kind '${operator}' is unknown and not supported`);
+		}
+	}
+
+	function getBinaryOperationCall(operator: BinaryOperatorType, args: ts.Expression[]): ts.Expression {
+		const methodName = getInternalBinaryOperatorImplName(operator);
+
+		const implAccess = ts.createPropertyAccess(ts.createSuper(), methodName);
+
+		return ts.createCall(implAccess, undefined, args);
+	}
+
+	export function createNumericLiteralExpressionStatement(value: string): ts.Statement {
+		return ts.createExpressionStatement(ts.createNumericLiteral(value));
 	}
 }

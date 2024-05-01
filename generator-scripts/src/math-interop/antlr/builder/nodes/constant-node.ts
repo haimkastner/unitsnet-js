@@ -1,11 +1,15 @@
-import { MathStringBuilderNode } from './math-string-builder-node';
+import { HighLevelTsc } from '../high-level-tsc';
+import { BaseMathStringBuilderNode } from './math-string-builder-node';
+import ts from 'typescript';
 
-export class ConstantNode implements MathStringBuilderNode {
-	public readonly invokeRequired: boolean = false;
+export class ConstantNode extends BaseMathStringBuilderNode {
+	public readonly isPrimitive: boolean = true;
 
-	public constructor(private _value: string) {}
+	public constructor(private _value: string) {
+		super();
+	}
 
-	public execute(): string {
-		return `${this._value}`;
+	public execute(): ts.Statement[] {
+		return [HighLevelTsc.createNumericLiteralExpressionStatement(this._value)];
 	}
 }

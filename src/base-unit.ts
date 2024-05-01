@@ -5,7 +5,7 @@ export enum ArithmeticOperation {
     Subtract = 'Subtract',
     /** An multiply arithmetic operation (JS default "/") */
     Multiply = 'Multiply',
-    /** An devide arithmetic operation (JS default "*") */
+    /** An divide arithmetic operation (JS default "*") */
     Divide = 'Divide',
     /** An modulo arithmetic operation (JS default "%") */
     Modulo = 'Modulo',
@@ -20,19 +20,20 @@ export enum ArithmeticOperation {
 export type ArithmeticFormula = (valueA: number, valueB: number) => number;
 
 /**
- * An binary copmration values formula.
+ * An binary comparison values formula.
  */
 export type CompareToFormula = (valueA: number, valueB: number) => number;
 
 /**
- * An binary equals copmration values formula.
+ * An binary equals comparison values formula.
  * e.g. (valueA, ValueB) => { valueA === valueB } 
  */
 export type EqualsFormula = (valueA: number, valueB: number) => boolean;
 
-const externalArithmeticFurmulas: { [operation in ArithmeticOperation]?: ArithmeticFormula } = {};
-let externalCompareToFurmula: ArithmeticFormula | undefined;
-let externalEqualsFurmula: EqualsFormula | undefined;
+const externalArithmeticFormulas: { [Operation in ArithmeticOperation]?: ArithmeticFormula } = {};
+
+let externalCompareToFormula: ArithmeticFormula | undefined;
+let externalEqualsFormula: EqualsFormula | undefined;
 
 /**
  * Set arithmetic formula to be used while calling this operation on two units (e.g. Length + Length) 
@@ -41,7 +42,7 @@ let externalEqualsFurmula: EqualsFormula | undefined;
  * @param arithmeticFormula The formula to used.
  */
 export function setArithmeticFormula(arithmeticOperation: ArithmeticOperation, arithmeticFormula: ArithmeticFormula) {
-    externalArithmeticFurmulas[arithmeticOperation] = arithmeticFormula;
+    externalArithmeticFormulas[arithmeticOperation] = arithmeticFormula;
 }
 
 /**
@@ -49,15 +50,15 @@ export function setArithmeticFormula(arithmeticOperation: ArithmeticOperation, a
  * @param equalsFormula The equals formula to used.
  */
 export function setEqualsFormula(equalsFormula: EqualsFormula) {
-    externalEqualsFurmula = equalsFormula;
+    externalEqualsFormula = equalsFormula;
 }
 
 /**
  * Set formula to be used while compering two units (e.g. Length > Length) 
- * @param compareToFurmula The compration formula to used.
+ * @param compareToFormula The comparison formula to used.
  */
-export function setCompareToFurmula(compareToFurmula: CompareToFormula) {
-    externalCompareToFurmula = compareToFurmula;
+export function setCompareToFormula(compareToFormula: CompareToFormula) {
+    externalCompareToFormula = compareToFormula;
 }
 
 export abstract class BaseUnit {
@@ -82,12 +83,12 @@ export abstract class BaseUnit {
     }
 
     protected internalEquals(valueA: number, valueB: number): boolean {
-        return externalEqualsFurmula?.(valueA, valueB) ?? valueA === valueB;
+        return externalEqualsFormula?.(valueA, valueB) ?? valueA === valueB;
     }
 
     protected internalCompareTo(valueA: number, valueB: number): number {
-        if (externalCompareToFurmula) {
-            return externalCompareToFurmula(valueA, valueB);
+        if (externalCompareToFormula) {
+            return externalCompareToFormula(valueA, valueB);
         }
         if (valueA > valueB)
             return 1;
@@ -97,27 +98,27 @@ export abstract class BaseUnit {
     }
 
     protected internalAdd(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Add?.(valueA, valueB) ?? (valueA + valueB)
+        return externalArithmeticFormulas.Add?.(valueA, valueB) ?? (valueA + valueB)
     }
 
     protected internalSubtract(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Subtract?.(valueA, valueB) ?? (valueA - valueB)
+        return externalArithmeticFormulas.Subtract?.(valueA, valueB) ?? (valueA - valueB)
     }
 
     protected internalMultiply(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Multiply?.(valueA, valueB) ?? (valueA * valueB)
+        return externalArithmeticFormulas.Multiply?.(valueA, valueB) ?? (valueA * valueB)
     }
 
     protected internalDivide(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Divide?.(valueA, valueB) ?? (valueA / valueB)
+        return externalArithmeticFormulas.Divide?.(valueA, valueB) ?? (valueA / valueB)
     }
 
     protected internalModulo(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Modulo?.(valueA, valueB) ?? (valueA % valueB)
+        return externalArithmeticFormulas.Modulo?.(valueA, valueB) ?? (valueA % valueB)
     }
 
     protected internalPow(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Pow?.(valueA, valueB) ?? (valueA ** valueB)
+        return externalArithmeticFormulas.Pow?.(valueA, valueB) ?? (valueA ** valueB)
     }
 }
 

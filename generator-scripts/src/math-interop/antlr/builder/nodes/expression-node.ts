@@ -1,24 +1,16 @@
-import { MathStringBuilderNode } from './math-string-builder-node';
-import ts from 'typescript';
+import { MathStringBuilderNode, BaseMathStringBuilderNode} from './math-string-builder-node';
 import { HighLevelTsc } from '../high-level-tsc';
 
-export class ExpressionNode implements MathStringBuilderNode {
-	public readonly invokeRequired: boolean = true;
+import ts from 'typescript';
 
-	public constructor(private _child: MathStringBuilderNode) { }
+export class ExpressionNode extends BaseMathStringBuilderNode {
+	public readonly isPrimitive: boolean = false;
 
-	public execute(): string {
-		const resolvedChild = this._child.invokeRequired
-			? ts.createCall(
-				ts.createParen(ts.createIdentifier(this._child.execute())),
-				undefined,
-				[
-					ts.createIdentifier('x'),
-					ts.createIdentifier('operatorOverrides')
-				]
-			)
-			: ts.createIdentifier(this._child.execute());
+	public constructor(private _child: MathStringBuilderNode) {
+		super();
+	}
 
-		return HighLevelTsc.emitCode(resolvedChild);
+	public execute(): ts.Statement[] {
+		return HighLevelTsc.emitCode(ts.createBlock(this._child.execute())) as any;
 	}
 }
