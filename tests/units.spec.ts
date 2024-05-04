@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { describe } from 'mocha';
 import numeral from 'numeral';
-import { Angle, AngleUnits, ArithmeticOperation, Length, LengthDto, LengthUnits, setArithmeticFormula, setCompareToFurmula, setEqualsFormula } from '../src';
+import { Angle, AngleUnits, ArithmeticOperation, Length, LengthDto, LengthUnits, setArithmeticFormula, setCompareToFormula, setEqualsFormula } from '../src';
 
 describe('Unitsnet - tests', () => {
 
@@ -158,7 +158,7 @@ describe('Unitsnet - tests', () => {
             setEqualsFormula((a, b) => true);
             expect(length1.equals(length2)).equal(true);
 
-            setCompareToFurmula((a, b) => 1);
+            setCompareToFormula((a, b) => 1);
             expect(length1.compareTo(length2)).equal(1);
 
         });
@@ -176,7 +176,7 @@ describe('Unitsnet - tests', () => {
             const length1 = Length.FromMeters(0.1);
             const length2 = Length.FromMeters(0.1);
 
-            setCompareToFurmula((a, b) => 0);
+            setCompareToFormula((a, b) => 0);
             expect(length1.compareTo(length2)).equal(0);
         });
     });

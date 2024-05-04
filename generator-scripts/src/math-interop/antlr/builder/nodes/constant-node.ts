@@ -5,7 +5,7 @@ import ts from 'typescript';
 export class ConstantNode extends BaseMathStringBuilderNode {
 	public readonly isPrimitive: boolean = true;
 
-	public constructor(private _value: string) {
+	public constructor(private readonly _value: string) {
 		super();
 	}
 

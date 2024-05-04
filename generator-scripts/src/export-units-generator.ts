@@ -34,7 +34,7 @@ export function generateUnitsModuleExport(project: Project, unitsDestinationDire
             'EqualsFormula',
             'setArithmeticFormula',
             'setEqualsFormula',
-            'setCompareToFurmula',
+            'setCompareToFormula',
         ]
     });
 

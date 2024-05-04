@@ -29,12 +29,14 @@ import { SubtractionNode } from '../nodes/operators/subtraction-node';
 import { VariableNode } from '../nodes/variable-node';
 import { ModulusNode } from '../nodes/operators/modulus-node';
 
+export type IdentifierRemapping = { [identifier: string]: string };
+
 export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeListener {
 	private _ast: MathStringBuilderNode | undefined;
 
-	private _unconsumedNodes: MathStringBuilderNode[] = [];
+	private readonly _unconsumedNodes: MathStringBuilderNode[] = [];
 
-	public constructor(public debug: boolean = false) { }
+	public constructor(private readonly _remapping?: IdentifierRemapping, public debug: boolean = false) { }
 
 	public getAst(): MathStringBuilderNode | undefined {
 		return this._ast;
@@ -77,7 +79,7 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 	 */
 	public exitVariable(ctx: VariableContext): void {
 		this.logMessage(`Exit Variable - ${ctx.text}`);
-		this._unconsumedNodes.push(new VariableNode(ctx.text))
+		this._unconsumedNodes.push(new VariableNode(ctx.text, this._remapping))
 	}
 
 

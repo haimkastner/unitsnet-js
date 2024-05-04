@@ -66,48 +66,6 @@ export namespace HighLevelTsc {
 		];
 	}
 
-	export function buildMathOperatorCode(
-		operator: MathOperatorType,
-		values: MathStringBuilderNode[],
-	): string {
-
-		const identifiers: ts.Identifier[] = [];
-		const valueStatements: ts.VariableStatement[] = [];
-
-		for (let i = 0; i < values.length; i++) {
-			const identifierName = `value${i}`;
-			identifiers.push(ts.createIdentifier(identifierName));
-			const { statement } = createVariableStatementForMathNode(identifierName, values[i]);
-			valueStatements.push(statement);
-		}
-
-		const mathIdentifier = ts.createIdentifier('Math');
-		const funcIdentifier = ts.createIdentifier(operator);
-
-		const mathPropAccess = ts.createPropertyAccess(mathIdentifier, funcIdentifier);
-
-		const mathCall = ts.createCall(
-			mathPropAccess,
-			undefined,
-			identifiers
-		);
-
-		const ifElseCode = createOperatorOverridesIfReturnFlow(operator, identifiers, mathCall);
-
-		const funcExpression = createStandardFunction(
-			ts.createBlock([
-				...valueStatements,
-				ifElseCode
-			]),
-			[
-				{ name: 'x', type: 'number' },
-				{ name: 'operatorOverrides', type: 'OperatorOverrides' }
-			]
-		);
-
-		return emitCode(funcExpression);
-	}
-
 	function createMathMethodCall(operator: MathOperatorType, paramIdentifiers: ts.Identifier[] | ts.Expression[]): ts.CallExpression {
 		const mathIdentifier = ts.createIdentifier('Math');
 		const funcIdentifier = ts.createIdentifier(operator);
@@ -132,7 +90,7 @@ export namespace HighLevelTsc {
 
 		const preRequisiteCode: ts.Statement[] = [];
 		const callExpressions: ts.Expression[] = [];
-	
+
 		if (valueA.isPrimitive) {
 			const exprState = (resolvedValueA[0]) as ts.ExpressionStatement;
 			callExpressions.push(exprState.expression);
@@ -159,63 +117,8 @@ export namespace HighLevelTsc {
 		];
 	}
 
-
-	export function buildBinaryOperatorCode(
-		valueA: MathStringBuilderNode,
-		valueB: MathStringBuilderNode,
-		operator: BinaryOperatorType,
-	): string {
-
-		const { statement: valueAStatement } = createVariableStatementForMathNode('valueA', valueA);
-		const { statement: valueBStatement } = createVariableStatementForMathNode('valueB', valueB);
-
-		const ifStatement = createBinaryOperatorIfFlow('valueA', 'valueB', operator);
-
-		const funcExpression = createStandardFunction(
-			ts.createBlock([
-				valueAStatement,
-				valueBStatement,
-				ifStatement
-			]),
-			[
-				{ name: 'x', type: 'number' },
-				{ name: 'operatorOverrides', type: 'OperatorOverrides' }
-			]
-		);
-
-		return emitCode(funcExpression);
-	}
-
-	export function createStandardFunction(
-		content: ts.Block,
-		parameters: { name: string, type: string }[],
-		name?: string
-	): ts.FunctionExpression {
-		const params = parameters?.map((paramInfo) => {
-			return ts.createParameter(
-				undefined,
-				undefined,
-				undefined,
-				paramInfo.name,
-				undefined,
-				ts.createTypeReferenceNode(paramInfo.type, undefined),
-				undefined
-			);
-		}) ?? [];
-
-		return ts.createFunctionExpression(
-			undefined,
-			undefined,
-			name,
-			undefined,
-			params,
-			undefined,
-			content
-		);
-	}
-
-	export function emitSelfInvokingFunction(funcExpression: ts.FunctionExpression, paramNames: string[]) {
-		ts.createCall(
+	export function emitSelfInvokingFunction(funcExpression: ts.FunctionExpression, paramNames: string[]): ts.CallExpression {
+		return ts.createCall(
 			ts.createParen(funcExpression), // Wrap function expression in parentheses
 			undefined, // No type arguments
 			paramNames?.map((paramName) => ts.createIdentifier(paramName)) ?? []
@@ -230,34 +133,6 @@ export namespace HighLevelTsc {
 		);
 	}
 
-	function createVariableStatementForMathNode(
-		variableName: string,
-		node: MathStringBuilderNode
-	): { statement: ts.VariableStatement, identifier: ts.Identifier } {
-		const identifier = ts.createIdentifier('BROKEN');
-
-		const resolvedNodeInit: ts.Identifier | ts.CallExpression = node.isPrimitive
-			? ts.createCall(
-				ts.createParen(identifier),
-				undefined,
-				[
-					ts.createIdentifier('x'),
-					ts.createIdentifier('operatorOverrides')
-				]
-			)
-			: identifier
-
-		// Generate TypeScript AST nodes for const declaration
-		const declaration = ts.createVariableDeclaration(variableName, undefined, resolvedNodeInit);
-		const variableDeclarationList = ts.createVariableDeclarationList(
-			[declaration],
-			ts.NodeFlags.Const // Use NodeFlags.Const to create a const declaration
-		);
-
-		// Create the variable statement with const declaration
-		return { identifier, statement: ts.createVariableStatement(undefined, variableDeclarationList) };
-	}
-
 	function createConstVariableStatement(name: string, initializer?: ts.Expression): ts.VariableStatement {
 		const declaration = ts.createVariableDeclaration(name, undefined, initializer);
 		const variableDeclarationList = ts.createVariableDeclarationList(
@@ -269,71 +144,16 @@ export namespace HighLevelTsc {
 		return ts.createVariableStatement(undefined, variableDeclarationList);
 	}
 
-	function createBinaryOperatorIfFlow(valueAVarName: string, valueBVarName: string, operator: BinaryOperatorType): ts.IfStatement {
-		let operatorToken: ts.BinaryOperator = getTokenForBinaryArithmeticOperator(operator);
+	export function createIfElse(
+		condition: ts.Expression,
+		ifStatements: ts.Statement[],
+		elseStatements: ts.Statement[]
+	): ts.IfStatement {
 		return ts.createIf(
-			ts.createPropertyAccess(ts.createIdentifier('operatorOverrides'), operator),
-			ts.createBlock([
-				ts.createReturn(
-					ts.createCall(
-						ts.createPropertyAccess(ts.createIdentifier('operatorOverrides'), operator),
-						undefined,
-						[ts.createIdentifier(valueAVarName), ts.createIdentifier(valueBVarName)]
-					)
-				)
-			]),
-			ts.createBlock([
-				ts.createReturn(
-					ts.createBinary(
-						ts.createIdentifier(valueAVarName),
-						operatorToken,
-						ts.createIdentifier(valueBVarName)
-					)
-				)
-			])
+			condition,
+			ts.createBlock([...ifStatements]),
+			ts.createBlock([...elseStatements]),
 		);
-	}
-
-	function createOperatorOverridesIfReturnFlow(
-		operatorName: OverridableOperator,
-		variables: (string | ts.Identifier)[],
-		elseContent: ts.Expression
-	) {
-		const identifiers: ts.Identifier[] = [];
-		for (const variable of variables) {
-			identifiers.push(typeof variable === 'string' ? ts.createIdentifier(variable) : variable);
-		}
-
-		return ts.createIf(
-			ts.createPropertyAccess(ts.createIdentifier('operatorOverrides'), operatorName),
-			ts.createBlock([
-				ts.createReturn(
-					ts.createCall(
-						ts.createPropertyAccess(ts.createIdentifier('operatorOverrides'), operatorName),
-						undefined,
-						identifiers
-					)
-				)
-			]),
-			ts.createBlock([ts.createReturn(elseContent)])
-		);
-	}
-
-	function getTokenForBinaryArithmeticOperator(operator: BinaryOperatorType): ts.BinaryOperator {
-		switch (operator) {
-			case BinaryOperatorType.Add:
-				return ts.SyntaxKind.PlusToken;
-			case BinaryOperatorType.Sub:
-				return ts.SyntaxKind.MinusToken;
-			case BinaryOperatorType.Mul:
-				return ts.SyntaxKind.AsteriskToken;
-			case BinaryOperatorType.Div:
-				return ts.SyntaxKind.SlashToken;
-			case BinaryOperatorType.Mod:
-				return ts.SyntaxKind.PercentToken;
-			default:
-				throw new Error(`Operator kind '${operator}' is not supported as a binary operator`);
-		}
 	}
 
 	function getInternalBinaryOperatorImplName(operator: BinaryOperatorType): string {
@@ -361,7 +181,62 @@ export namespace HighLevelTsc {
 		return ts.createCall(implAccess, undefined, args);
 	}
 
-	export function createNumericLiteralExpressionStatement(value: string): ts.Statement {
+	export function createNumericLiteralExpressionStatement(value: string): ts.ExpressionStatement {
 		return ts.createExpressionStatement(ts.createNumericLiteral(value));
+	}
+
+	export function createLiteralExpressionStatement(value: string): ts.ExpressionStatement {
+		return ts.createExpressionStatement(ts.createLiteral(value));
+	}
+
+	export function getIdentifierFromNode(statement: ts.Node): ts.Identifier | undefined {
+		if (ts.isIdentifier(statement)) {
+			return statement;
+		}
+
+		if (ts.isExpressionStatement(statement)) {
+			return getIdentifierFromNode(statement.expression);
+		}
+
+		if (ts.isVariableStatement(statement)) {
+			// For variable declarations
+			const declaration = statement.declarationList.declarations[0]; // Assuming single declaration
+			return ts.isIdentifier(declaration.name) ? declaration.name : undefined;
+		}
+
+		if (ts.isFunctionDeclaration(statement)) {
+			// For function declarations
+			return statement.name;
+		}
+
+		if (ts.isImportDeclaration(statement)) {
+			// For import/export declarations
+			return statement.importClause && statement.importClause.name;
+		}
+
+		return undefined;
+	}
+
+	export function tryConvertToReturnStatement(statement: ts.Statement): ts.ReturnStatement | undefined {
+		if (ts.isVariableStatement(statement)) {
+			const declarationList = statement.declarationList;
+			if (declarationList) {
+				for (const declaration of declarationList.declarations) {
+					if (ts.isVariableDeclaration(declaration) && declaration.initializer) {
+						return ts.createReturn(declaration.initializer);
+					}
+				}
+			}
+		}
+
+		if (ts.isVariableDeclaration(statement) && statement.initializer) {
+			return ts.createReturn(statement.initializer);
+		}
+
+		if (ts.isExpressionStatement(statement)) {
+			return ts.createReturn(statement.expression);
+		}
+
+		return undefined;
 	}
 }

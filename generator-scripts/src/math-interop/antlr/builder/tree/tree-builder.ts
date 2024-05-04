@@ -1,8 +1,9 @@
 import { CodePointBuffer, CodePointCharStream, CommonTokenStream } from 'antlr4ts';
 import { arithmeticLexer as ArithmeticLexer } from '../../grammatical/arithmeticLexer'
 import { arithmeticParser as ArithmeticParser, EquationStringContext } from '../../grammatical/arithmeticParser';
-import { ArithmeticGrammarListener } from '../tree/arithmetic-grammar-listener';
+import { ArithmeticGrammarListener, IdentifierRemapping } from '../tree/arithmetic-grammar-listener';
 import { ParseTreeWalker } from 'antlr4ts/tree/ParseTreeWalker';
+import ts from 'typescript';
 
 // Read input expression
 const inputExpression = "150 % ((({x} * Math.Sqrt(9)) * Math.PI) - Math.Pow(5, 2))";
@@ -35,40 +36,20 @@ const serialized = ast!.execute();
 console.log(serialized);
 
 
-export function getCodeForFormula(formula: string): string {
+export function getCodeForFormula(formula: string, variableIdentifierRemapping?: IdentifierRemapping): ts.Statement[] {
 	const inputBuffer = Buffer.from(formula);
 	const codePointBUffer = new CodePointBuffer(inputBuffer, inputBuffer.length);
 	const inputStream = CodePointCharStream.fromBuffer(codePointBUffer);
-	
+
 	const lexer = new ArithmeticLexer(inputStream);
 	const tokenStream = new CommonTokenStream(lexer);
 	const parser = new ArithmeticParser(tokenStream);
 
 	const equationString: EquationStringContext = parser.equationString();
-	
-	const listener = new ArithmeticGrammarListener();
+
+	const listener = new ArithmeticGrammarListener(variableIdentifierRemapping);
 	parser.addParseListener(listener);
-	
+
 	ParseTreeWalker.DEFAULT.walk(listener, equationString);
-	return listener.getAst()!.execute() as any;
+	return listener.getAst()!.execute();
 }
-
-
-
-/* (x - 5) * 2
-
-//
-const valueA = x - 5;
-const result = valueA - 2;
-return result;
-     
-
-      *
-     / \
-    -   2
-   / \
-  x   5
-
-
-
-*/

@@ -5,7 +5,7 @@ import ts from 'typescript';
 export class SqrtNode extends BaseMathStringBuilderNode {
 	public readonly isPrimitive: boolean = false;
 
-	public constructor(private _value: MathStringBuilderNode) {
+	public constructor(private readonly _value: MathStringBuilderNode) {
 		super();
 	}
 

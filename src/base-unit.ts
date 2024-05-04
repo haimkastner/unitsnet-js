@@ -11,6 +11,8 @@ export enum ArithmeticOperation {
     Modulo = 'Modulo',
     /** An power arithmetic operation (JS default "**") */
     Pow = 'Pow',
+	/** A Square root operation (JS Default "Math.sqrt") */
+	Sqrt = 'Sqrt'
 }
 
 /**
@@ -30,10 +32,12 @@ export type CompareToFormula = (valueA: number, valueB: number) => number;
  */
 export type EqualsFormula = (valueA: number, valueB: number) => boolean;
 
-const externalArithmeticFormulas: { [Operation in ArithmeticOperation]?: ArithmeticFormula } = {};
+const externalArithmeticFormulas: OperatorOverrides = {};
 
 let externalCompareToFormula: ArithmeticFormula | undefined;
 let externalEqualsFormula: EqualsFormula | undefined;
+
+let numberOfOverwrittenOperators: number = 0;
 
 /**
  * Set arithmetic formula to be used while calling this operation on two units (e.g. Length + Length) 
@@ -41,8 +45,16 @@ let externalEqualsFormula: EqualsFormula | undefined;
  * @param arithmeticOperation The formula's operation 
  * @param arithmeticFormula The formula to used.
  */
-export function setArithmeticFormula(arithmeticOperation: ArithmeticOperation, arithmeticFormula: ArithmeticFormula) {
-    externalArithmeticFormulas[arithmeticOperation] = arithmeticFormula;
+export function setArithmeticFormula<TOperation extends ArithmeticOperation>(
+	arithmeticOperation: TOperation,
+	arithmeticFormula: OperatorOverrides[TOperation]
+) {
+	externalArithmeticFormulas[arithmeticOperation] = arithmeticFormula;
+	numberOfOverwrittenOperators = Object.values(externalArithmeticFormulas).filter((value) => !!value).length;
+}
+
+export function areAnyOperatorsOverridden(): boolean {
+	return numberOfOverwrittenOperators > 0;
 }
 
 /**
@@ -50,7 +62,7 @@ export function setArithmeticFormula(arithmeticOperation: ArithmeticOperation, a
  * @param equalsFormula The equals formula to used.
  */
 export function setEqualsFormula(equalsFormula: EqualsFormula) {
-    externalEqualsFormula = equalsFormula;
+	externalEqualsFormula = equalsFormula;
 }
 
 /**
@@ -119,15 +131,19 @@ export abstract class BaseUnit {
 
     protected internalPow(valueA: number, valueB: number): number {
         return externalArithmeticFormulas.Pow?.(valueA, valueB) ?? (valueA ** valueB)
-    }
+	}
+
+	protected internalSqrt(value: number): number {
+		return externalArithmeticFormulas.Sqrt?.(value) ?? Math.sqrt(value);
+	}
 }
 
 export interface OperatorOverrides {
-	add?: (a: number, b: number) => number;
-	sub?: (a: number, b: number) => number;
-	div?: (a: number, b: number) => number;
-	mod?: (a: number, b: number) => number;
-	mul?: (a: number, b: number) => number;
-	pow?: (a: number, b: number) => number;
-	sqrt?: (a: number) => number;
+	[ArithmeticOperation.Add]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Subtract]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Multiply]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Divide]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Modulo]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Pow]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Sqrt]?: (a: number) => number;
 }

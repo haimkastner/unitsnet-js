@@ -5,7 +5,7 @@ import ts from 'typescript';
 export class ModulusNode extends BaseMathStringBuilderNode {
 	public readonly isPrimitive: boolean = false;
 
-	public constructor(private _valueA: MathStringBuilderNode, private _valueB: MathStringBuilderNode) {
+	public constructor(private readonly _valueA: MathStringBuilderNode, private readonly _valueB: MathStringBuilderNode) {
 		super()
 	}
 

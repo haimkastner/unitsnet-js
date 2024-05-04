@@ -1,14 +1,17 @@
+import { IdentifierRemapping } from '../tree/arithmetic-grammar-listener';
 import { BaseMathStringBuilderNode } from './math-string-builder-node';
 import ts from 'typescript';
 
 export class VariableNode extends BaseMathStringBuilderNode {
 	public readonly isPrimitive: boolean = true;
 
-	public constructor(private _value: string) {
+	public constructor(private readonly _value: string, private readonly _remapping?: IdentifierRemapping) {
 		super();
 	}
 
 	public execute(): ts.Statement[] {
-		return [ts.createExpressionStatement(ts.createIdentifier(this._value.replace(/[\{\}]/igm, '')))];
+		const variableName = this._value.replace(/[\{\}]/igm, '');
+		const identifier = ts.createIdentifier(this._remapping?.[variableName] ?? variableName);
+		return [ts.createExpressionStatement(identifier)];
 	}
 }
