@@ -3,54 +3,30 @@ import { arithmeticLexer as ArithmeticLexer } from '../../grammatical/arithmetic
 import { arithmeticParser as ArithmeticParser, EquationStringContext } from '../../grammatical/arithmeticParser';
 import { ArithmeticGrammarListener, IdentifierRemapping } from '../tree/arithmetic-grammar-listener';
 import { ParseTreeWalker } from 'antlr4ts/tree/ParseTreeWalker';
-import ts from 'typescript';
 import { IdGenerator } from '../../../../id-generator';
 
-// Read input expression
-const inputExpression = "150 % ((({x} * Math.Sqrt(9)) * Math.PI) - Math.Pow(5, 2))";
-// Create an ANTLR input stream from the input expression
-
-const inputBuffer = Buffer.from(inputExpression);
-
-const codePointBuffer = new CodePointBuffer(inputBuffer, inputBuffer.length);
-
-const inputStream = CodePointCharStream.fromBuffer(codePointBuffer);
-
-// Create lexer
-const lexer = new ArithmeticLexer(inputStream);
-
-// Create a token stream using the lexer
-const tokenStream = new CommonTokenStream(lexer);
-
-// Create a parser
-const parser = new ArithmeticParser(tokenStream);
-const equation: EquationStringContext = parser.equationString();
-
-const listener = new ArithmeticGrammarListener(new IdGenerator());
-parser.addParseListener(listener);
-
-ParseTreeWalker.DEFAULT.walk(listener, equation);
-
-const ast = listener.getAst();
-
-const serialized = ast!.execute();
-console.log(serialized);
-
+import ts from 'typescript';
 
 export function getCodeForFormula(formula: string, variableIdentifierRemapping?: IdentifierRemapping): ts.Statement[] {
+	// Convert the input into a stream
 	const inputBuffer = Buffer.from(formula);
 	const codePointBUffer = new CodePointBuffer(inputBuffer, inputBuffer.length);
 	const inputStream = CodePointCharStream.fromBuffer(codePointBUffer);
 
+	// Pass the input stream through the lexer and pipe the result to the parser
 	const lexer = new ArithmeticLexer(inputStream);
 	const tokenStream = new CommonTokenStream(lexer);
 	const parser = new ArithmeticParser(tokenStream);
 
+	// Enter the grammar's root rule
 	const equationString: EquationStringContext = parser.equationString();
 
+	// Register the tree listener that'll take care of building the AST
 	const listener = new ArithmeticGrammarListener(new IdGenerator(), variableIdentifierRemapping);
 	parser.addParseListener(listener);
 
 	ParseTreeWalker.DEFAULT.walk(listener, equationString);
+
+	// Execute the AST to get the TS *code* for the formula
 	return listener.getAst()!.execute();
 }

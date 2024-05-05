@@ -57,8 +57,6 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 	 */
 	public exitExpression(ctx: ExpressionContext): void {
 		this.logMessage(`Exit Expression - ${ctx.text}`);
-		const expression = new ExpressionNode(this._idGenerator, this._unconsumedNodes.pop()!);
-		this._unconsumedNodes.push(expression);
 	}
 
 	/**
