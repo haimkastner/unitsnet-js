@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Scalar */
 export interface ScalarDto {
@@ -93,25 +93,27 @@ export class Scalar extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ScalarUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ScalarUnits.Amount: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ScalarUnits.Amount:
-                return this.value;
-            default:
-                break;
+            case ScalarUnits.Amount: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ScalarUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ScalarUnits.Amount: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ScalarUnits.Amount:
-                return value;
-            default:
-                break;
+            case ScalarUnits.Amount: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

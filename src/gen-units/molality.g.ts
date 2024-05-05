@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Molality */
 export interface MolalityDto {
@@ -115,29 +115,31 @@ export class Molality extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MolalityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MolalityUnits.MolesPerKilogram: return this.value;
+                case MolalityUnits.MolesPerGram: return super.internalMultiply(this.value, 1e-3);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MolalityUnits.MolesPerKilogram:
-                return this.value;
-            case MolalityUnits.MolesPerGram:
-                return this.value * 1e-3;
-            default:
-                break;
+            case MolalityUnits.MolesPerKilogram: return this.value;
+            case MolalityUnits.MolesPerGram: return this.value * 1e-3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MolalityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MolalityUnits.MolesPerKilogram: return value;
+                case MolalityUnits.MolesPerGram: return super.internalDivide(value, 1e-3);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MolalityUnits.MolesPerKilogram:
-                return value;
-            case MolalityUnits.MolesPerGram:
-                return value / 1e-3;
-            default:
-                break;
+            case MolalityUnits.MolesPerKilogram: return value;
+            case MolalityUnits.MolesPerGram: return value / 1e-3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -28,6 +28,7 @@ import { SqrtNode } from '../nodes/operators/sqrt-node';
 import { SubtractionNode } from '../nodes/operators/subtraction-node';
 import { VariableNode } from '../nodes/variable-node';
 import { ModulusNode } from '../nodes/operators/modulus-node';
+import { IdGenerator } from '../../../../id-generator';
 
 export type IdentifierRemapping = { [identifier: string]: string };
 
@@ -36,14 +37,18 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 
 	private readonly _unconsumedNodes: MathStringBuilderNode[] = [];
 
-	public constructor(private readonly _remapping?: IdentifierRemapping, public debug: boolean = false) { }
+	public constructor(
+		private readonly _idGenerator: IdGenerator,
+		private readonly _remapping?: IdentifierRemapping,
+		public debug: boolean = false
+	) { }
 
 	public getAst(): MathStringBuilderNode | undefined {
 		return this._ast;
 	}
 
 	public exitEquationString(ctx: EquationStringContext): void {
-		this._ast = new ExpressionNode(this._unconsumedNodes.pop()!);
+		this._ast = new ExpressionNode(this._idGenerator, this._unconsumedNodes.pop()!);
 	}
 
 	/**
@@ -52,7 +57,7 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 	 */
 	public exitExpression(ctx: ExpressionContext): void {
 		this.logMessage(`Exit Expression - ${ctx.text}`);
-		const expression = new ExpressionNode(this._unconsumedNodes.pop()!);
+		const expression = new ExpressionNode(this._idGenerator, this._unconsumedNodes.pop()!);
 		this._unconsumedNodes.push(expression);
 	}
 
@@ -70,7 +75,7 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 	 */
 	public exitScientific(ctx: ScientificContext): void {
 		this.logMessage(`Exit Scientific - ${ctx.text}`);
-		this._unconsumedNodes.push(new ConstantNode(ctx.text))
+		this._unconsumedNodes.push(new ConstantNode(this._idGenerator, ctx.text))
 	}
 
 	/**
@@ -79,7 +84,7 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 	 */
 	public exitVariable(ctx: VariableContext): void {
 		this.logMessage(`Exit Variable - ${ctx.text}`);
-		this._unconsumedNodes.push(new VariableNode(ctx.text, this._remapping))
+		this._unconsumedNodes.push(new VariableNode(this._idGenerator, ctx.text, this._remapping))
 	}
 
 
@@ -87,48 +92,48 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 		this.logMessage(`Exit Add - ${ctx.text}`);
 		const valueB = this._unconsumedNodes.pop()!;
 		const valueA = this._unconsumedNodes.pop()!;
-		this._unconsumedNodes.push(new AdditionNode(valueA, valueB));
+		this._unconsumedNodes.push(new AdditionNode(this._idGenerator, valueA, valueB));
 	}
 
 	public exitOpSub(ctx: OpSubContext): void {
 		this.logMessage(`Exit Sub - ${ctx.text}`);
 		const valueB = this._unconsumedNodes.pop()!;
 		const valueA = this._unconsumedNodes.pop()!;
-		this._unconsumedNodes.push(new SubtractionNode(valueA, valueB));
+		this._unconsumedNodes.push(new SubtractionNode(this._idGenerator, valueA, valueB));
 	}
 
 	public exitOpDiv(ctx: OpDivContext): void {
 		this.logMessage(`Exit Div - ${ctx.text}`);
 		const valueB = this._unconsumedNodes.pop()!;
 		const valueA = this._unconsumedNodes.pop()!;
-		this._unconsumedNodes.push(new DivisionNode(valueA, valueB))
+		this._unconsumedNodes.push(new DivisionNode(this._idGenerator, valueA, valueB))
 	}
 
 	public exitOpMod(ctx: OpModContext): void {
 		this.logMessage(`Exit Mod - ${ctx.text}`);
 		const valueB = this._unconsumedNodes.pop()!;
 		const valueA = this._unconsumedNodes.pop()!;
-		this._unconsumedNodes.push(new ModulusNode(valueA, valueB))
+		this._unconsumedNodes.push(new ModulusNode(this._idGenerator, valueA, valueB))
 	}
 
 	public exitOpMul(ctx: OpMulContext): void {
 		this.logMessage(`Exit Mul - ${ctx.text}`);
 		const valueB = this._unconsumedNodes.pop()!;
 		const valueA = this._unconsumedNodes.pop()!;
-		this._unconsumedNodes.push(new MultiplicationNode(valueA, valueB))
+		this._unconsumedNodes.push(new MultiplicationNode(this._idGenerator, valueA, valueB))
 	}
 
 	public exitOpPow(ctx: OpPowContext): void {
 		this.logMessage(`Exit Pow - ${ctx.text}`);
 		const valueB = this._unconsumedNodes.pop()!;
 		const valueA = this._unconsumedNodes.pop()!;
-		this._unconsumedNodes.push(new PowerNode(valueA, valueB))
+		this._unconsumedNodes.push(new PowerNode(this._idGenerator, valueA, valueB))
 	}
 
 	public exitOpSqrt(ctx: OpSqrtContext): void {
 		this.logMessage(`Exit Sqrt - ${ctx.text}`);
 		const value = this._unconsumedNodes.pop()!;
-		this._unconsumedNodes.push(new SqrtNode(value))
+		this._unconsumedNodes.push(new SqrtNode(this._idGenerator, value))
 	}
 
 	public visitTerminal(node: TerminalNode): void {

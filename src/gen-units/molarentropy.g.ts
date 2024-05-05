@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MolarEntropy */
 export interface MolarEntropyDto {
@@ -137,33 +137,35 @@ export class MolarEntropy extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MolarEntropyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MolarEntropyUnits.JoulesPerMoleKelvin: return this.value;
+                case MolarEntropyUnits.KilojoulesPerMoleKelvin: return super.internalDivide(this.value, 1000);
+                case MolarEntropyUnits.MegajoulesPerMoleKelvin: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MolarEntropyUnits.JoulesPerMoleKelvin:
-                return this.value;
-            case MolarEntropyUnits.KilojoulesPerMoleKelvin:
-                return (this.value) / 1000;
-            case MolarEntropyUnits.MegajoulesPerMoleKelvin:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case MolarEntropyUnits.JoulesPerMoleKelvin: return this.value;
+            case MolarEntropyUnits.KilojoulesPerMoleKelvin: return (this.value) / 1000;
+            case MolarEntropyUnits.MegajoulesPerMoleKelvin: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MolarEntropyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MolarEntropyUnits.JoulesPerMoleKelvin: return value;
+                case MolarEntropyUnits.KilojoulesPerMoleKelvin: return super.internalMultiply(value, 1000);
+                case MolarEntropyUnits.MegajoulesPerMoleKelvin: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MolarEntropyUnits.JoulesPerMoleKelvin:
-                return value;
-            case MolarEntropyUnits.KilojoulesPerMoleKelvin:
-                return (value) * 1000;
-            case MolarEntropyUnits.MegajoulesPerMoleKelvin:
-                return (value) * 1000000;
-            default:
-                break;
+            case MolarEntropyUnits.JoulesPerMoleKelvin: return value;
+            case MolarEntropyUnits.KilojoulesPerMoleKelvin: return (value) * 1000;
+            case MolarEntropyUnits.MegajoulesPerMoleKelvin: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

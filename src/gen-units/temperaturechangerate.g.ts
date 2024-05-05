@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a TemperatureChangeRate */
 export interface TemperatureChangeRateDto {
@@ -291,61 +291,63 @@ export class TemperatureChangeRate extends BaseUnit {
     }
 
     private convertFromBase(toUnit: TemperatureChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return this.value;
+                case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return super.internalMultiply(this.value, 60);
+                case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return super.internalDivide(this.value, 1e-9);
+                case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return super.internalDivide(this.value, 0.000001);
+                case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return super.internalDivide(this.value, 0.001);
+                case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond: return super.internalDivide(this.value, 0.01);
+                case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond: return super.internalDivide(this.value, 0.1);
+                case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond: return super.internalDivide(this.value, 10);
+                case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond: return super.internalDivide(this.value, 100);
+                case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond: return super.internalDivide(this.value, 1000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
-                return this.value;
-            case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
-                return this.value * 60;
-            case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
-                return (this.value) / 1e-9;
-            case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
-                return (this.value) / 0.000001;
-            case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond:
-                return (this.value) / 0.001;
-            case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
-                return (this.value) / 0.01;
-            case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:
-                return (this.value) / 0.1;
-            case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond:
-                return (this.value) / 10;
-            case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond:
-                return (this.value) / 100;
-            case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond:
-                return (this.value) / 1000;
-            default:
-                break;
+            case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return this.value;
+            case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return this.value * 60;
+            case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return (this.value) / 1e-9;
+            case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return (this.value) / 0.000001;
+            case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return (this.value) / 0.001;
+            case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond: return (this.value) / 0.01;
+            case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond: return (this.value) / 0.1;
+            case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond: return (this.value) / 10;
+            case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond: return (this.value) / 100;
+            case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond: return (this.value) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: TemperatureChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return value;
+                case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return super.internalDivide(value, 60);
+                case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return super.internalMultiply(value, 1e-9);
+                case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return super.internalMultiply(value, 0.000001);
+                case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return super.internalMultiply(value, 0.001);
+                case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond: return super.internalMultiply(value, 0.01);
+                case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond: return super.internalMultiply(value, 0.1);
+                case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond: return super.internalMultiply(value, 10);
+                case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond: return super.internalMultiply(value, 100);
+                case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond: return super.internalMultiply(value, 1000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
-                return value;
-            case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
-                return value / 60;
-            case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
-                return (value) * 1e-9;
-            case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
-                return (value) * 0.000001;
-            case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond:
-                return (value) * 0.001;
-            case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
-                return (value) * 0.01;
-            case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:
-                return (value) * 0.1;
-            case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond:
-                return (value) * 10;
-            case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond:
-                return (value) * 100;
-            case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond:
-                return (value) * 1000;
-            default:
-                break;
+            case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return value;
+            case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return value / 60;
+            case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return (value) * 1e-9;
+            case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return (value) * 0.000001;
+            case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return (value) * 0.001;
+            case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond: return (value) * 0.01;
+            case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond: return (value) * 0.1;
+            case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond: return (value) * 10;
+            case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond: return (value) * 100;
+            case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond: return (value) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

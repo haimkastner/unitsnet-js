@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MassFraction */
 export interface MassFractionDto {
@@ -599,117 +599,167 @@ export class MassFraction extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MassFractionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MassFractionUnits.DecimalFractions: return this.value;
+                case MassFractionUnits.GramsPerGram: return this.value;
+                case MassFractionUnits.GramsPerKilogram: return super.internalMultiply(this.value, 1e3);
+                case MassFractionUnits.Percent: return super.internalMultiply(this.value, 1e2);
+                case MassFractionUnits.PartsPerThousand: return super.internalMultiply(this.value, 1e3);
+                case MassFractionUnits.PartsPerMillion: return super.internalMultiply(this.value, 1e6);
+                case MassFractionUnits.PartsPerBillion: return super.internalMultiply(this.value, 1e9);
+                case MassFractionUnits.PartsPerTrillion: return super.internalMultiply(this.value, 1e12);
+                case MassFractionUnits.NanogramsPerGram: return super.internalDivide(this.value, 1e-9);
+                case MassFractionUnits.MicrogramsPerGram: return super.internalDivide(this.value, 0.000001);
+                case MassFractionUnits.MilligramsPerGram: return super.internalDivide(this.value, 0.001);
+                case MassFractionUnits.CentigramsPerGram: return super.internalDivide(this.value, 0.01);
+                case MassFractionUnits.DecigramsPerGram: return super.internalDivide(this.value, 0.1);
+                case MassFractionUnits.DecagramsPerGram: return super.internalDivide(this.value, 10);
+                case MassFractionUnits.HectogramsPerGram: return super.internalDivide(this.value, 100);
+                case MassFractionUnits.KilogramsPerGram: return super.internalDivide(this.value, 1000);
+                case MassFractionUnits.NanogramsPerKilogram: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case MassFractionUnits.MicrogramsPerKilogram: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case MassFractionUnits.MilligramsPerKilogram: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassFractionUnits.CentigramsPerKilogram: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case MassFractionUnits.DecigramsPerKilogram: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.1);
+                }
+                case MassFractionUnits.DecagramsPerKilogram: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 10);
+                }
+                case MassFractionUnits.HectogramsPerKilogram: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 100);
+                }
+                case MassFractionUnits.KilogramsPerKilogram: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MassFractionUnits.DecimalFractions:
-                return this.value;
-            case MassFractionUnits.GramsPerGram:
-                return this.value;
-            case MassFractionUnits.GramsPerKilogram:
-                return this.value * 1e3;
-            case MassFractionUnits.Percent:
-                return this.value * 1e2;
-            case MassFractionUnits.PartsPerThousand:
-                return this.value * 1e3;
-            case MassFractionUnits.PartsPerMillion:
-                return this.value * 1e6;
-            case MassFractionUnits.PartsPerBillion:
-                return this.value * 1e9;
-            case MassFractionUnits.PartsPerTrillion:
-                return this.value * 1e12;
-            case MassFractionUnits.NanogramsPerGram:
-                return (this.value) / 1e-9;
-            case MassFractionUnits.MicrogramsPerGram:
-                return (this.value) / 0.000001;
-            case MassFractionUnits.MilligramsPerGram:
-                return (this.value) / 0.001;
-            case MassFractionUnits.CentigramsPerGram:
-                return (this.value) / 0.01;
-            case MassFractionUnits.DecigramsPerGram:
-                return (this.value) / 0.1;
-            case MassFractionUnits.DecagramsPerGram:
-                return (this.value) / 10;
-            case MassFractionUnits.HectogramsPerGram:
-                return (this.value) / 100;
-            case MassFractionUnits.KilogramsPerGram:
-                return (this.value) / 1000;
-            case MassFractionUnits.NanogramsPerKilogram:
-                return (this.value * 1e3) / 1e-9;
-            case MassFractionUnits.MicrogramsPerKilogram:
-                return (this.value * 1e3) / 0.000001;
-            case MassFractionUnits.MilligramsPerKilogram:
-                return (this.value * 1e3) / 0.001;
-            case MassFractionUnits.CentigramsPerKilogram:
-                return (this.value * 1e3) / 0.01;
-            case MassFractionUnits.DecigramsPerKilogram:
-                return (this.value * 1e3) / 0.1;
-            case MassFractionUnits.DecagramsPerKilogram:
-                return (this.value * 1e3) / 10;
-            case MassFractionUnits.HectogramsPerKilogram:
-                return (this.value * 1e3) / 100;
-            case MassFractionUnits.KilogramsPerKilogram:
-                return (this.value * 1e3) / 1000;
-            default:
-                break;
+            case MassFractionUnits.DecimalFractions: return this.value;
+            case MassFractionUnits.GramsPerGram: return this.value;
+            case MassFractionUnits.GramsPerKilogram: return this.value * 1e3;
+            case MassFractionUnits.Percent: return this.value * 1e2;
+            case MassFractionUnits.PartsPerThousand: return this.value * 1e3;
+            case MassFractionUnits.PartsPerMillion: return this.value * 1e6;
+            case MassFractionUnits.PartsPerBillion: return this.value * 1e9;
+            case MassFractionUnits.PartsPerTrillion: return this.value * 1e12;
+            case MassFractionUnits.NanogramsPerGram: return (this.value) / 1e-9;
+            case MassFractionUnits.MicrogramsPerGram: return (this.value) / 0.000001;
+            case MassFractionUnits.MilligramsPerGram: return (this.value) / 0.001;
+            case MassFractionUnits.CentigramsPerGram: return (this.value) / 0.01;
+            case MassFractionUnits.DecigramsPerGram: return (this.value) / 0.1;
+            case MassFractionUnits.DecagramsPerGram: return (this.value) / 10;
+            case MassFractionUnits.HectogramsPerGram: return (this.value) / 100;
+            case MassFractionUnits.KilogramsPerGram: return (this.value) / 1000;
+            case MassFractionUnits.NanogramsPerKilogram: return (this.value * 1e3) / 1e-9;
+            case MassFractionUnits.MicrogramsPerKilogram: return (this.value * 1e3) / 0.000001;
+            case MassFractionUnits.MilligramsPerKilogram: return (this.value * 1e3) / 0.001;
+            case MassFractionUnits.CentigramsPerKilogram: return (this.value * 1e3) / 0.01;
+            case MassFractionUnits.DecigramsPerKilogram: return (this.value * 1e3) / 0.1;
+            case MassFractionUnits.DecagramsPerKilogram: return (this.value * 1e3) / 10;
+            case MassFractionUnits.HectogramsPerKilogram: return (this.value * 1e3) / 100;
+            case MassFractionUnits.KilogramsPerKilogram: return (this.value * 1e3) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MassFractionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MassFractionUnits.DecimalFractions: return value;
+                case MassFractionUnits.GramsPerGram: return value;
+                case MassFractionUnits.GramsPerKilogram: return super.internalDivide(value, 1e3);
+                case MassFractionUnits.Percent: return super.internalDivide(value, 1e2);
+                case MassFractionUnits.PartsPerThousand: return super.internalDivide(value, 1e3);
+                case MassFractionUnits.PartsPerMillion: return super.internalDivide(value, 1e6);
+                case MassFractionUnits.PartsPerBillion: return super.internalDivide(value, 1e9);
+                case MassFractionUnits.PartsPerTrillion: return super.internalDivide(value, 1e12);
+                case MassFractionUnits.NanogramsPerGram: return super.internalMultiply(value, 1e-9);
+                case MassFractionUnits.MicrogramsPerGram: return super.internalMultiply(value, 0.000001);
+                case MassFractionUnits.MilligramsPerGram: return super.internalMultiply(value, 0.001);
+                case MassFractionUnits.CentigramsPerGram: return super.internalMultiply(value, 0.01);
+                case MassFractionUnits.DecigramsPerGram: return super.internalMultiply(value, 0.1);
+                case MassFractionUnits.DecagramsPerGram: return super.internalMultiply(value, 10);
+                case MassFractionUnits.HectogramsPerGram: return super.internalMultiply(value, 100);
+                case MassFractionUnits.KilogramsPerGram: return super.internalMultiply(value, 1000);
+                case MassFractionUnits.NanogramsPerKilogram: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case MassFractionUnits.MicrogramsPerKilogram: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case MassFractionUnits.MilligramsPerKilogram: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassFractionUnits.CentigramsPerKilogram: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case MassFractionUnits.DecigramsPerKilogram: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                case MassFractionUnits.DecagramsPerKilogram: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 10);
+                }
+                case MassFractionUnits.HectogramsPerKilogram: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 100);
+                }
+                case MassFractionUnits.KilogramsPerKilogram: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MassFractionUnits.DecimalFractions:
-                return value;
-            case MassFractionUnits.GramsPerGram:
-                return value;
-            case MassFractionUnits.GramsPerKilogram:
-                return value / 1e3;
-            case MassFractionUnits.Percent:
-                return value / 1e2;
-            case MassFractionUnits.PartsPerThousand:
-                return value / 1e3;
-            case MassFractionUnits.PartsPerMillion:
-                return value / 1e6;
-            case MassFractionUnits.PartsPerBillion:
-                return value / 1e9;
-            case MassFractionUnits.PartsPerTrillion:
-                return value / 1e12;
-            case MassFractionUnits.NanogramsPerGram:
-                return (value) * 1e-9;
-            case MassFractionUnits.MicrogramsPerGram:
-                return (value) * 0.000001;
-            case MassFractionUnits.MilligramsPerGram:
-                return (value) * 0.001;
-            case MassFractionUnits.CentigramsPerGram:
-                return (value) * 0.01;
-            case MassFractionUnits.DecigramsPerGram:
-                return (value) * 0.1;
-            case MassFractionUnits.DecagramsPerGram:
-                return (value) * 10;
-            case MassFractionUnits.HectogramsPerGram:
-                return (value) * 100;
-            case MassFractionUnits.KilogramsPerGram:
-                return (value) * 1000;
-            case MassFractionUnits.NanogramsPerKilogram:
-                return (value / 1e3) * 1e-9;
-            case MassFractionUnits.MicrogramsPerKilogram:
-                return (value / 1e3) * 0.000001;
-            case MassFractionUnits.MilligramsPerKilogram:
-                return (value / 1e3) * 0.001;
-            case MassFractionUnits.CentigramsPerKilogram:
-                return (value / 1e3) * 0.01;
-            case MassFractionUnits.DecigramsPerKilogram:
-                return (value / 1e3) * 0.1;
-            case MassFractionUnits.DecagramsPerKilogram:
-                return (value / 1e3) * 10;
-            case MassFractionUnits.HectogramsPerKilogram:
-                return (value / 1e3) * 100;
-            case MassFractionUnits.KilogramsPerKilogram:
-                return (value / 1e3) * 1000;
-            default:
-                break;
+            case MassFractionUnits.DecimalFractions: return value;
+            case MassFractionUnits.GramsPerGram: return value;
+            case MassFractionUnits.GramsPerKilogram: return value / 1e3;
+            case MassFractionUnits.Percent: return value / 1e2;
+            case MassFractionUnits.PartsPerThousand: return value / 1e3;
+            case MassFractionUnits.PartsPerMillion: return value / 1e6;
+            case MassFractionUnits.PartsPerBillion: return value / 1e9;
+            case MassFractionUnits.PartsPerTrillion: return value / 1e12;
+            case MassFractionUnits.NanogramsPerGram: return (value) * 1e-9;
+            case MassFractionUnits.MicrogramsPerGram: return (value) * 0.000001;
+            case MassFractionUnits.MilligramsPerGram: return (value) * 0.001;
+            case MassFractionUnits.CentigramsPerGram: return (value) * 0.01;
+            case MassFractionUnits.DecigramsPerGram: return (value) * 0.1;
+            case MassFractionUnits.DecagramsPerGram: return (value) * 10;
+            case MassFractionUnits.HectogramsPerGram: return (value) * 100;
+            case MassFractionUnits.KilogramsPerGram: return (value) * 1000;
+            case MassFractionUnits.NanogramsPerKilogram: return (value / 1e3) * 1e-9;
+            case MassFractionUnits.MicrogramsPerKilogram: return (value / 1e3) * 0.000001;
+            case MassFractionUnits.MilligramsPerKilogram: return (value / 1e3) * 0.001;
+            case MassFractionUnits.CentigramsPerKilogram: return (value / 1e3) * 0.01;
+            case MassFractionUnits.DecigramsPerKilogram: return (value / 1e3) * 0.1;
+            case MassFractionUnits.DecagramsPerKilogram: return (value / 1e3) * 10;
+            case MassFractionUnits.HectogramsPerKilogram: return (value / 1e3) * 100;
+            case MassFractionUnits.KilogramsPerKilogram: return (value / 1e3) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

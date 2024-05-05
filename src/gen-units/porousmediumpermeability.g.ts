@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a PorousMediumPermeability */
 export interface PorousMediumPermeabilityDto {
@@ -181,41 +181,55 @@ export class PorousMediumPermeability extends BaseUnit {
     }
 
     private convertFromBase(toUnit: PorousMediumPermeabilityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case PorousMediumPermeabilityUnits.Darcys: return super.internalDivide(this.value, 9.869233e-13);
+                case PorousMediumPermeabilityUnits.SquareMeters: return this.value;
+                case PorousMediumPermeabilityUnits.SquareCentimeters: return super.internalDivide(this.value, 1e-4);
+                case PorousMediumPermeabilityUnits.Microdarcys: {
+                    const value3 = super.internalDivide(this.value, 9.869233e-13);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case PorousMediumPermeabilityUnits.Millidarcys: {
+                    const value3 = super.internalDivide(this.value, 9.869233e-13);
+                    return super.internalDivide(value3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case PorousMediumPermeabilityUnits.Darcys:
-                return this.value / 9.869233e-13;
-            case PorousMediumPermeabilityUnits.SquareMeters:
-                return this.value;
-            case PorousMediumPermeabilityUnits.SquareCentimeters:
-                return this.value / 1e-4;
-            case PorousMediumPermeabilityUnits.Microdarcys:
-                return (this.value / 9.869233e-13) / 0.000001;
-            case PorousMediumPermeabilityUnits.Millidarcys:
-                return (this.value / 9.869233e-13) / 0.001;
-            default:
-                break;
+            case PorousMediumPermeabilityUnits.Darcys: return this.value / 9.869233e-13;
+            case PorousMediumPermeabilityUnits.SquareMeters: return this.value;
+            case PorousMediumPermeabilityUnits.SquareCentimeters: return this.value / 1e-4;
+            case PorousMediumPermeabilityUnits.Microdarcys: return (this.value / 9.869233e-13) / 0.000001;
+            case PorousMediumPermeabilityUnits.Millidarcys: return (this.value / 9.869233e-13) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PorousMediumPermeabilityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case PorousMediumPermeabilityUnits.Darcys: return super.internalMultiply(value, 9.869233e-13);
+                case PorousMediumPermeabilityUnits.SquareMeters: return value;
+                case PorousMediumPermeabilityUnits.SquareCentimeters: return super.internalMultiply(value, 1e-4);
+                case PorousMediumPermeabilityUnits.Microdarcys: {
+                    const value3 = super.internalMultiply(value, 9.869233e-13);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case PorousMediumPermeabilityUnits.Millidarcys: {
+                    const value3 = super.internalMultiply(value, 9.869233e-13);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case PorousMediumPermeabilityUnits.Darcys:
-                return value * 9.869233e-13;
-            case PorousMediumPermeabilityUnits.SquareMeters:
-                return value;
-            case PorousMediumPermeabilityUnits.SquareCentimeters:
-                return value * 1e-4;
-            case PorousMediumPermeabilityUnits.Microdarcys:
-                return (value * 9.869233e-13) * 0.000001;
-            case PorousMediumPermeabilityUnits.Millidarcys:
-                return (value * 9.869233e-13) * 0.001;
-            default:
-                break;
+            case PorousMediumPermeabilityUnits.Darcys: return value * 9.869233e-13;
+            case PorousMediumPermeabilityUnits.SquareMeters: return value;
+            case PorousMediumPermeabilityUnits.SquareCentimeters: return value * 1e-4;
+            case PorousMediumPermeabilityUnits.Microdarcys: return (value * 9.869233e-13) * 0.000001;
+            case PorousMediumPermeabilityUnits.Millidarcys: return (value * 9.869233e-13) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricAdmittance */
 export interface ElectricAdmittanceDto {
@@ -159,37 +159,39 @@ export class ElectricAdmittance extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ElectricAdmittanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricAdmittanceUnits.Siemens: return this.value;
+                case ElectricAdmittanceUnits.Nanosiemens: return super.internalDivide(this.value, 1e-9);
+                case ElectricAdmittanceUnits.Microsiemens: return super.internalDivide(this.value, 0.000001);
+                case ElectricAdmittanceUnits.Millisiemens: return super.internalDivide(this.value, 0.001);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricAdmittanceUnits.Siemens:
-                return this.value;
-            case ElectricAdmittanceUnits.Nanosiemens:
-                return (this.value) / 1e-9;
-            case ElectricAdmittanceUnits.Microsiemens:
-                return (this.value) / 0.000001;
-            case ElectricAdmittanceUnits.Millisiemens:
-                return (this.value) / 0.001;
-            default:
-                break;
+            case ElectricAdmittanceUnits.Siemens: return this.value;
+            case ElectricAdmittanceUnits.Nanosiemens: return (this.value) / 1e-9;
+            case ElectricAdmittanceUnits.Microsiemens: return (this.value) / 0.000001;
+            case ElectricAdmittanceUnits.Millisiemens: return (this.value) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricAdmittanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricAdmittanceUnits.Siemens: return value;
+                case ElectricAdmittanceUnits.Nanosiemens: return super.internalMultiply(value, 1e-9);
+                case ElectricAdmittanceUnits.Microsiemens: return super.internalMultiply(value, 0.000001);
+                case ElectricAdmittanceUnits.Millisiemens: return super.internalMultiply(value, 0.001);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricAdmittanceUnits.Siemens:
-                return value;
-            case ElectricAdmittanceUnits.Nanosiemens:
-                return (value) * 1e-9;
-            case ElectricAdmittanceUnits.Microsiemens:
-                return (value) * 0.000001;
-            case ElectricAdmittanceUnits.Millisiemens:
-                return (value) * 0.001;
-            default:
-                break;
+            case ElectricAdmittanceUnits.Siemens: return value;
+            case ElectricAdmittanceUnits.Nanosiemens: return (value) * 1e-9;
+            case ElectricAdmittanceUnits.Microsiemens: return (value) * 0.000001;
+            case ElectricAdmittanceUnits.Millisiemens: return (value) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

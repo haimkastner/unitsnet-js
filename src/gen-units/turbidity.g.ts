@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Turbidity */
 export interface TurbidityDto {
@@ -93,25 +93,27 @@ export class Turbidity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: TurbidityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case TurbidityUnits.NTU: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case TurbidityUnits.NTU:
-                return this.value;
-            default:
-                break;
+            case TurbidityUnits.NTU: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: TurbidityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case TurbidityUnits.NTU: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case TurbidityUnits.NTU:
-                return value;
-            default:
-                break;
+            case TurbidityUnits.NTU: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

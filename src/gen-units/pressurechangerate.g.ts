@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a PressureChangeRate */
 export interface PressureChangeRateDto {
@@ -467,93 +467,167 @@ export class PressureChangeRate extends BaseUnit {
     }
 
     private convertFromBase(toUnit: PressureChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case PressureChangeRateUnits.PascalsPerSecond: return this.value;
+                case PressureChangeRateUnits.PascalsPerMinute: return super.internalMultiply(this.value, 60);
+                case PressureChangeRateUnits.MillimetersOfMercuryPerSecond: return super.internalDivide(this.value, 133.322);
+                case PressureChangeRateUnits.AtmospheresPerSecond: {
+                    const value4 = super.internalMultiply(1.01325, 1e5);
+                    return super.internalDivide(this.value, value4);
+                }
+                case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond: return super.internalDivide(this.value, 6.894757293168361e3);
+                case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute: {
+                    const value4 = super.internalMultiply(6.894757293168361e3, 60);
+                    return super.internalDivide(this.value, value4);
+                }
+                case PressureChangeRateUnits.BarsPerSecond: return super.internalDivide(this.value, 1e5);
+                case PressureChangeRateUnits.BarsPerMinute: {
+                    const value4 = super.internalMultiply(1e5, 60);
+                    return super.internalDivide(this.value, value4);
+                }
+                case PressureChangeRateUnits.KilopascalsPerSecond: return super.internalDivide(this.value, 1000);
+                case PressureChangeRateUnits.MegapascalsPerSecond: return super.internalDivide(this.value, 1000000);
+                case PressureChangeRateUnits.KilopascalsPerMinute: {
+                    const value3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(value3, 1000);
+                }
+                case PressureChangeRateUnits.MegapascalsPerMinute: {
+                    const value3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond: {
+                    const value3 = super.internalDivide(this.value, 6.894757293168361e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond: {
+                    const value3 = super.internalDivide(this.value, 6.894757293168361e3);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute: {
+                    const value4 = super.internalMultiply(6.894757293168361e3, 60);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000);
+                }
+                case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute: {
+                    const value4 = super.internalMultiply(6.894757293168361e3, 60);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000000);
+                }
+                case PressureChangeRateUnits.MillibarsPerSecond: {
+                    const value3 = super.internalDivide(this.value, 1e5);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case PressureChangeRateUnits.MillibarsPerMinute: {
+                    const value4 = super.internalMultiply(1e5, 60);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case PressureChangeRateUnits.PascalsPerSecond:
-                return this.value;
-            case PressureChangeRateUnits.PascalsPerMinute:
-                return this.value * 60;
-            case PressureChangeRateUnits.MillimetersOfMercuryPerSecond:
-                return this.value / 133.322;
-            case PressureChangeRateUnits.AtmospheresPerSecond:
-                return this.value / (1.01325 * 1e5);
-            case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond:
-                return this.value / 6.894757293168361e3;
-            case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute:
-                return this.value / 6.894757293168361e3 * 60;
-            case PressureChangeRateUnits.BarsPerSecond:
-                return this.value / 1e5;
-            case PressureChangeRateUnits.BarsPerMinute:
-                return this.value / 1e5 * 60;
-            case PressureChangeRateUnits.KilopascalsPerSecond:
-                return (this.value) / 1000;
-            case PressureChangeRateUnits.MegapascalsPerSecond:
-                return (this.value) / 1000000;
-            case PressureChangeRateUnits.KilopascalsPerMinute:
-                return (this.value * 60) / 1000;
-            case PressureChangeRateUnits.MegapascalsPerMinute:
-                return (this.value * 60) / 1000000;
-            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond:
-                return (this.value / 6.894757293168361e3) / 1000;
-            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond:
-                return (this.value / 6.894757293168361e3) / 1000000;
-            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute:
-                return (this.value / 6.894757293168361e3 * 60) / 1000;
-            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute:
-                return (this.value / 6.894757293168361e3 * 60) / 1000000;
-            case PressureChangeRateUnits.MillibarsPerSecond:
-                return (this.value / 1e5) / 0.001;
-            case PressureChangeRateUnits.MillibarsPerMinute:
-                return (this.value / 1e5 * 60) / 0.001;
-            default:
-                break;
+            case PressureChangeRateUnits.PascalsPerSecond: return this.value;
+            case PressureChangeRateUnits.PascalsPerMinute: return this.value * 60;
+            case PressureChangeRateUnits.MillimetersOfMercuryPerSecond: return this.value / 133.322;
+            case PressureChangeRateUnits.AtmospheresPerSecond: return this.value / (1.01325 * 1e5);
+            case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond: return this.value / 6.894757293168361e3;
+            case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute: return this.value / 6.894757293168361e3 * 60;
+            case PressureChangeRateUnits.BarsPerSecond: return this.value / 1e5;
+            case PressureChangeRateUnits.BarsPerMinute: return this.value / 1e5 * 60;
+            case PressureChangeRateUnits.KilopascalsPerSecond: return (this.value) / 1000;
+            case PressureChangeRateUnits.MegapascalsPerSecond: return (this.value) / 1000000;
+            case PressureChangeRateUnits.KilopascalsPerMinute: return (this.value * 60) / 1000;
+            case PressureChangeRateUnits.MegapascalsPerMinute: return (this.value * 60) / 1000000;
+            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond: return (this.value / 6.894757293168361e3) / 1000;
+            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond: return (this.value / 6.894757293168361e3) / 1000000;
+            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute: return (this.value / 6.894757293168361e3 * 60) / 1000;
+            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute: return (this.value / 6.894757293168361e3 * 60) / 1000000;
+            case PressureChangeRateUnits.MillibarsPerSecond: return (this.value / 1e5) / 0.001;
+            case PressureChangeRateUnits.MillibarsPerMinute: return (this.value / 1e5 * 60) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PressureChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case PressureChangeRateUnits.PascalsPerSecond: return value;
+                case PressureChangeRateUnits.PascalsPerMinute: return super.internalDivide(value, 60);
+                case PressureChangeRateUnits.MillimetersOfMercuryPerSecond: return super.internalMultiply(value, 133.322);
+                case PressureChangeRateUnits.AtmospheresPerSecond: {
+                    const value3 = super.internalMultiply(value, 1.01325);
+                    return super.internalMultiply(value3, 1e5);
+                }
+                case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond: return super.internalMultiply(value, 6.894757293168361e3);
+                case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute: {
+                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
+                    return super.internalDivide(value3, 60);
+                }
+                case PressureChangeRateUnits.BarsPerSecond: return super.internalMultiply(value, 1e5);
+                case PressureChangeRateUnits.BarsPerMinute: {
+                    const value3 = super.internalMultiply(value, 1e5);
+                    return super.internalDivide(value3, 60);
+                }
+                case PressureChangeRateUnits.KilopascalsPerSecond: return super.internalMultiply(value, 1000);
+                case PressureChangeRateUnits.MegapascalsPerSecond: return super.internalMultiply(value, 1000000);
+                case PressureChangeRateUnits.KilopascalsPerMinute: {
+                    const value3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case PressureChangeRateUnits.MegapascalsPerMinute: {
+                    const value3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond: {
+                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond: {
+                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute: {
+                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
+                    const value5 = super.internalDivide(value3, 60);
+                    return super.internalMultiply(value5, 1000);
+                }
+                case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute: {
+                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
+                    const value5 = super.internalDivide(value3, 60);
+                    return super.internalMultiply(value5, 1000000);
+                }
+                case PressureChangeRateUnits.MillibarsPerSecond: {
+                    const value3 = super.internalMultiply(value, 1e5);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case PressureChangeRateUnits.MillibarsPerMinute: {
+                    const value3 = super.internalMultiply(value, 1e5);
+                    const value5 = super.internalDivide(value3, 60);
+                    return super.internalMultiply(value5, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case PressureChangeRateUnits.PascalsPerSecond:
-                return value;
-            case PressureChangeRateUnits.PascalsPerMinute:
-                return value / 60;
-            case PressureChangeRateUnits.MillimetersOfMercuryPerSecond:
-                return value * 133.322;
-            case PressureChangeRateUnits.AtmospheresPerSecond:
-                return value * 1.01325 * 1e5;
-            case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond:
-                return value * 6.894757293168361e3;
-            case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute:
-                return value * 6.894757293168361e3 / 60;
-            case PressureChangeRateUnits.BarsPerSecond:
-                return value * 1e5;
-            case PressureChangeRateUnits.BarsPerMinute:
-                return value * 1e5 / 60;
-            case PressureChangeRateUnits.KilopascalsPerSecond:
-                return (value) * 1000;
-            case PressureChangeRateUnits.MegapascalsPerSecond:
-                return (value) * 1000000;
-            case PressureChangeRateUnits.KilopascalsPerMinute:
-                return (value / 60) * 1000;
-            case PressureChangeRateUnits.MegapascalsPerMinute:
-                return (value / 60) * 1000000;
-            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond:
-                return (value * 6.894757293168361e3) * 1000;
-            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond:
-                return (value * 6.894757293168361e3) * 1000000;
-            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute:
-                return (value * 6.894757293168361e3 / 60) * 1000;
-            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute:
-                return (value * 6.894757293168361e3 / 60) * 1000000;
-            case PressureChangeRateUnits.MillibarsPerSecond:
-                return (value * 1e5) * 0.001;
-            case PressureChangeRateUnits.MillibarsPerMinute:
-                return (value * 1e5 / 60) * 0.001;
-            default:
-                break;
+            case PressureChangeRateUnits.PascalsPerSecond: return value;
+            case PressureChangeRateUnits.PascalsPerMinute: return value / 60;
+            case PressureChangeRateUnits.MillimetersOfMercuryPerSecond: return value * 133.322;
+            case PressureChangeRateUnits.AtmospheresPerSecond: return value * 1.01325 * 1e5;
+            case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond: return value * 6.894757293168361e3;
+            case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute: return value * 6.894757293168361e3 / 60;
+            case PressureChangeRateUnits.BarsPerSecond: return value * 1e5;
+            case PressureChangeRateUnits.BarsPerMinute: return value * 1e5 / 60;
+            case PressureChangeRateUnits.KilopascalsPerSecond: return (value) * 1000;
+            case PressureChangeRateUnits.MegapascalsPerSecond: return (value) * 1000000;
+            case PressureChangeRateUnits.KilopascalsPerMinute: return (value / 60) * 1000;
+            case PressureChangeRateUnits.MegapascalsPerMinute: return (value / 60) * 1000000;
+            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond: return (value * 6.894757293168361e3) * 1000;
+            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond: return (value * 6.894757293168361e3) * 1000000;
+            case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute: return (value * 6.894757293168361e3 / 60) * 1000;
+            case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute: return (value * 6.894757293168361e3 / 60) * 1000000;
+            case PressureChangeRateUnits.MillibarsPerSecond: return (value * 1e5) * 0.001;
+            case PressureChangeRateUnits.MillibarsPerMinute: return (value * 1e5 / 60) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

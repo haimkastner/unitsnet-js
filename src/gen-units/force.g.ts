@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Force */
 export interface ForceDto {
@@ -401,81 +401,107 @@ export class Force extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ForceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ForceUnits.Dyne: return super.internalMultiply(this.value, 1e5);
+                case ForceUnits.KilogramsForce: return super.internalDivide(this.value, 9.80665);
+                case ForceUnits.TonnesForce: {
+                    const value4 = super.internalMultiply(9.80665, 1000);
+                    return super.internalDivide(this.value, value4);
+                }
+                case ForceUnits.Newtons: return this.value;
+                case ForceUnits.KiloPonds: return super.internalDivide(this.value, 9.80665);
+                case ForceUnits.Poundals: return super.internalDivide(this.value, 0.138254954376);
+                case ForceUnits.PoundsForce: return super.internalDivide(this.value, 4.4482216152605);
+                case ForceUnits.OunceForce: {
+                    const value4 = super.internalDivide(4.4482216152605, 16);
+                    return super.internalDivide(this.value, value4);
+                }
+                case ForceUnits.ShortTonsForce: {
+                    const value4 = super.internalMultiply(4.4482216152605, 2000);
+                    return super.internalDivide(this.value, value4);
+                }
+                case ForceUnits.Micronewtons: return super.internalDivide(this.value, 0.000001);
+                case ForceUnits.Millinewtons: return super.internalDivide(this.value, 0.001);
+                case ForceUnits.Decanewtons: return super.internalDivide(this.value, 10);
+                case ForceUnits.Kilonewtons: return super.internalDivide(this.value, 1000);
+                case ForceUnits.Meganewtons: return super.internalDivide(this.value, 1000000);
+                case ForceUnits.KilopoundsForce: {
+                    const value3 = super.internalDivide(this.value, 4.4482216152605);
+                    return super.internalDivide(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ForceUnits.Dyne:
-                return this.value * 1e5;
-            case ForceUnits.KilogramsForce:
-                return this.value / 9.80665;
-            case ForceUnits.TonnesForce:
-                return this.value / (9.80665 * 1000);
-            case ForceUnits.Newtons:
-                return this.value;
-            case ForceUnits.KiloPonds:
-                return this.value / 9.80665;
-            case ForceUnits.Poundals:
-                return this.value / 0.138254954376;
-            case ForceUnits.PoundsForce:
-                return this.value / 4.4482216152605;
-            case ForceUnits.OunceForce:
-                return this.value / (4.4482216152605 / 16);
-            case ForceUnits.ShortTonsForce:
-                return this.value / (4.4482216152605 * 2000);
-            case ForceUnits.Micronewtons:
-                return (this.value) / 0.000001;
-            case ForceUnits.Millinewtons:
-                return (this.value) / 0.001;
-            case ForceUnits.Decanewtons:
-                return (this.value) / 10;
-            case ForceUnits.Kilonewtons:
-                return (this.value) / 1000;
-            case ForceUnits.Meganewtons:
-                return (this.value) / 1000000;
-            case ForceUnits.KilopoundsForce:
-                return (this.value / 4.4482216152605) / 1000;
-            default:
-                break;
+            case ForceUnits.Dyne: return this.value * 1e5;
+            case ForceUnits.KilogramsForce: return this.value / 9.80665;
+            case ForceUnits.TonnesForce: return this.value / (9.80665 * 1000);
+            case ForceUnits.Newtons: return this.value;
+            case ForceUnits.KiloPonds: return this.value / 9.80665;
+            case ForceUnits.Poundals: return this.value / 0.138254954376;
+            case ForceUnits.PoundsForce: return this.value / 4.4482216152605;
+            case ForceUnits.OunceForce: return this.value / (4.4482216152605 / 16);
+            case ForceUnits.ShortTonsForce: return this.value / (4.4482216152605 * 2000);
+            case ForceUnits.Micronewtons: return (this.value) / 0.000001;
+            case ForceUnits.Millinewtons: return (this.value) / 0.001;
+            case ForceUnits.Decanewtons: return (this.value) / 10;
+            case ForceUnits.Kilonewtons: return (this.value) / 1000;
+            case ForceUnits.Meganewtons: return (this.value) / 1000000;
+            case ForceUnits.KilopoundsForce: return (this.value / 4.4482216152605) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ForceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ForceUnits.Dyne: return super.internalDivide(value, 1e5);
+                case ForceUnits.KilogramsForce: return super.internalMultiply(value, 9.80665);
+                case ForceUnits.TonnesForce: {
+                    const value4 = super.internalMultiply(9.80665, 1000);
+                    return super.internalMultiply(value, value4);
+                }
+                case ForceUnits.Newtons: return value;
+                case ForceUnits.KiloPonds: return super.internalMultiply(value, 9.80665);
+                case ForceUnits.Poundals: return super.internalMultiply(value, 0.138254954376);
+                case ForceUnits.PoundsForce: return super.internalMultiply(value, 4.4482216152605);
+                case ForceUnits.OunceForce: {
+                    const value4 = super.internalDivide(4.4482216152605, 16);
+                    return super.internalMultiply(value, value4);
+                }
+                case ForceUnits.ShortTonsForce: {
+                    const value4 = super.internalMultiply(4.4482216152605, 2000);
+                    return super.internalMultiply(value, value4);
+                }
+                case ForceUnits.Micronewtons: return super.internalMultiply(value, 0.000001);
+                case ForceUnits.Millinewtons: return super.internalMultiply(value, 0.001);
+                case ForceUnits.Decanewtons: return super.internalMultiply(value, 10);
+                case ForceUnits.Kilonewtons: return super.internalMultiply(value, 1000);
+                case ForceUnits.Meganewtons: return super.internalMultiply(value, 1000000);
+                case ForceUnits.KilopoundsForce: {
+                    const value3 = super.internalMultiply(value, 4.4482216152605);
+                    return super.internalMultiply(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ForceUnits.Dyne:
-                return value / 1e5;
-            case ForceUnits.KilogramsForce:
-                return value * 9.80665;
-            case ForceUnits.TonnesForce:
-                return value * (9.80665 * 1000);
-            case ForceUnits.Newtons:
-                return value;
-            case ForceUnits.KiloPonds:
-                return value * 9.80665;
-            case ForceUnits.Poundals:
-                return value * 0.138254954376;
-            case ForceUnits.PoundsForce:
-                return value * 4.4482216152605;
-            case ForceUnits.OunceForce:
-                return value * (4.4482216152605 / 16);
-            case ForceUnits.ShortTonsForce:
-                return value * (4.4482216152605 * 2000);
-            case ForceUnits.Micronewtons:
-                return (value) * 0.000001;
-            case ForceUnits.Millinewtons:
-                return (value) * 0.001;
-            case ForceUnits.Decanewtons:
-                return (value) * 10;
-            case ForceUnits.Kilonewtons:
-                return (value) * 1000;
-            case ForceUnits.Meganewtons:
-                return (value) * 1000000;
-            case ForceUnits.KilopoundsForce:
-                return (value * 4.4482216152605) * 1000;
-            default:
-                break;
+            case ForceUnits.Dyne: return value / 1e5;
+            case ForceUnits.KilogramsForce: return value * 9.80665;
+            case ForceUnits.TonnesForce: return value * (9.80665 * 1000);
+            case ForceUnits.Newtons: return value;
+            case ForceUnits.KiloPonds: return value * 9.80665;
+            case ForceUnits.Poundals: return value * 0.138254954376;
+            case ForceUnits.PoundsForce: return value * 4.4482216152605;
+            case ForceUnits.OunceForce: return value * (4.4482216152605 / 16);
+            case ForceUnits.ShortTonsForce: return value * (4.4482216152605 * 2000);
+            case ForceUnits.Micronewtons: return (value) * 0.000001;
+            case ForceUnits.Millinewtons: return (value) * 0.001;
+            case ForceUnits.Decanewtons: return (value) * 10;
+            case ForceUnits.Kilonewtons: return (value) * 1000;
+            case ForceUnits.Meganewtons: return (value) * 1000000;
+            case ForceUnits.KilopoundsForce: return (value * 4.4482216152605) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ForcePerLength */
 export interface ForcePerLengthDto {
@@ -907,173 +907,271 @@ export class ForcePerLength extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ForcePerLengthUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ForcePerLengthUnits.NewtonsPerMeter: return this.value;
+                case ForcePerLengthUnits.NewtonsPerCentimeter: return super.internalDivide(this.value, 1e2);
+                case ForcePerLengthUnits.NewtonsPerMillimeter: return super.internalDivide(this.value, 1e3);
+                case ForcePerLengthUnits.KilogramsForcePerMeter: return super.internalDivide(this.value, 9.80665002864);
+                case ForcePerLengthUnits.KilogramsForcePerCentimeter: return super.internalDivide(this.value, 980.665002864);
+                case ForcePerLengthUnits.KilogramsForcePerMillimeter: return super.internalDivide(this.value, 9.80665002864e3);
+                case ForcePerLengthUnits.TonnesForcePerMeter: return super.internalDivide(this.value, 9.80665002864e3);
+                case ForcePerLengthUnits.TonnesForcePerCentimeter: return super.internalDivide(this.value, 9.80665002864e5);
+                case ForcePerLengthUnits.TonnesForcePerMillimeter: return super.internalDivide(this.value, 9.80665002864e6);
+                case ForcePerLengthUnits.PoundsForcePerFoot: return super.internalDivide(this.value, 14.59390292);
+                case ForcePerLengthUnits.PoundsForcePerInch: return super.internalDivide(this.value, 1.75126835e2);
+                case ForcePerLengthUnits.PoundsForcePerYard: return super.internalDivide(this.value, 4.864634307);
+                case ForcePerLengthUnits.KilopoundsForcePerFoot: return super.internalDivide(this.value, 14593.90292);
+                case ForcePerLengthUnits.KilopoundsForcePerInch: return super.internalDivide(this.value, 1.75126835e5);
+                case ForcePerLengthUnits.NanonewtonsPerMeter: return super.internalDivide(this.value, 1e-9);
+                case ForcePerLengthUnits.MicronewtonsPerMeter: return super.internalDivide(this.value, 0.000001);
+                case ForcePerLengthUnits.MillinewtonsPerMeter: return super.internalDivide(this.value, 0.001);
+                case ForcePerLengthUnits.CentinewtonsPerMeter: return super.internalDivide(this.value, 0.01);
+                case ForcePerLengthUnits.DecinewtonsPerMeter: return super.internalDivide(this.value, 0.1);
+                case ForcePerLengthUnits.DecanewtonsPerMeter: return super.internalDivide(this.value, 10);
+                case ForcePerLengthUnits.KilonewtonsPerMeter: return super.internalDivide(this.value, 1000);
+                case ForcePerLengthUnits.MeganewtonsPerMeter: return super.internalDivide(this.value, 1000000);
+                case ForcePerLengthUnits.NanonewtonsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case ForcePerLengthUnits.MicronewtonsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case ForcePerLengthUnits.MillinewtonsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case ForcePerLengthUnits.CentinewtonsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case ForcePerLengthUnits.DecinewtonsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 0.1);
+                }
+                case ForcePerLengthUnits.DecanewtonsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 10);
+                }
+                case ForcePerLengthUnits.KilonewtonsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 1000);
+                }
+                case ForcePerLengthUnits.MeganewtonsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case ForcePerLengthUnits.NanonewtonsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case ForcePerLengthUnits.MicronewtonsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case ForcePerLengthUnits.MillinewtonsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case ForcePerLengthUnits.CentinewtonsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case ForcePerLengthUnits.DecinewtonsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 0.1);
+                }
+                case ForcePerLengthUnits.DecanewtonsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 10);
+                }
+                case ForcePerLengthUnits.KilonewtonsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case ForcePerLengthUnits.MeganewtonsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ForcePerLengthUnits.NewtonsPerMeter:
-                return this.value;
-            case ForcePerLengthUnits.NewtonsPerCentimeter:
-                return this.value / 1e2;
-            case ForcePerLengthUnits.NewtonsPerMillimeter:
-                return this.value / 1e3;
-            case ForcePerLengthUnits.KilogramsForcePerMeter:
-                return this.value / 9.80665002864;
-            case ForcePerLengthUnits.KilogramsForcePerCentimeter:
-                return this.value / 980.665002864;
-            case ForcePerLengthUnits.KilogramsForcePerMillimeter:
-                return this.value / 9.80665002864e3;
-            case ForcePerLengthUnits.TonnesForcePerMeter:
-                return this.value / 9.80665002864e3;
-            case ForcePerLengthUnits.TonnesForcePerCentimeter:
-                return this.value / 9.80665002864e5;
-            case ForcePerLengthUnits.TonnesForcePerMillimeter:
-                return this.value / 9.80665002864e6;
-            case ForcePerLengthUnits.PoundsForcePerFoot:
-                return this.value / 14.59390292;
-            case ForcePerLengthUnits.PoundsForcePerInch:
-                return this.value / 1.75126835e2;
-            case ForcePerLengthUnits.PoundsForcePerYard:
-                return this.value / 4.864634307;
-            case ForcePerLengthUnits.KilopoundsForcePerFoot:
-                return this.value / 14593.90292;
-            case ForcePerLengthUnits.KilopoundsForcePerInch:
-                return this.value / 1.75126835e5;
-            case ForcePerLengthUnits.NanonewtonsPerMeter:
-                return (this.value) / 1e-9;
-            case ForcePerLengthUnits.MicronewtonsPerMeter:
-                return (this.value) / 0.000001;
-            case ForcePerLengthUnits.MillinewtonsPerMeter:
-                return (this.value) / 0.001;
-            case ForcePerLengthUnits.CentinewtonsPerMeter:
-                return (this.value) / 0.01;
-            case ForcePerLengthUnits.DecinewtonsPerMeter:
-                return (this.value) / 0.1;
-            case ForcePerLengthUnits.DecanewtonsPerMeter:
-                return (this.value) / 10;
-            case ForcePerLengthUnits.KilonewtonsPerMeter:
-                return (this.value) / 1000;
-            case ForcePerLengthUnits.MeganewtonsPerMeter:
-                return (this.value) / 1000000;
-            case ForcePerLengthUnits.NanonewtonsPerCentimeter:
-                return (this.value / 1e2) / 1e-9;
-            case ForcePerLengthUnits.MicronewtonsPerCentimeter:
-                return (this.value / 1e2) / 0.000001;
-            case ForcePerLengthUnits.MillinewtonsPerCentimeter:
-                return (this.value / 1e2) / 0.001;
-            case ForcePerLengthUnits.CentinewtonsPerCentimeter:
-                return (this.value / 1e2) / 0.01;
-            case ForcePerLengthUnits.DecinewtonsPerCentimeter:
-                return (this.value / 1e2) / 0.1;
-            case ForcePerLengthUnits.DecanewtonsPerCentimeter:
-                return (this.value / 1e2) / 10;
-            case ForcePerLengthUnits.KilonewtonsPerCentimeter:
-                return (this.value / 1e2) / 1000;
-            case ForcePerLengthUnits.MeganewtonsPerCentimeter:
-                return (this.value / 1e2) / 1000000;
-            case ForcePerLengthUnits.NanonewtonsPerMillimeter:
-                return (this.value / 1e3) / 1e-9;
-            case ForcePerLengthUnits.MicronewtonsPerMillimeter:
-                return (this.value / 1e3) / 0.000001;
-            case ForcePerLengthUnits.MillinewtonsPerMillimeter:
-                return (this.value / 1e3) / 0.001;
-            case ForcePerLengthUnits.CentinewtonsPerMillimeter:
-                return (this.value / 1e3) / 0.01;
-            case ForcePerLengthUnits.DecinewtonsPerMillimeter:
-                return (this.value / 1e3) / 0.1;
-            case ForcePerLengthUnits.DecanewtonsPerMillimeter:
-                return (this.value / 1e3) / 10;
-            case ForcePerLengthUnits.KilonewtonsPerMillimeter:
-                return (this.value / 1e3) / 1000;
-            case ForcePerLengthUnits.MeganewtonsPerMillimeter:
-                return (this.value / 1e3) / 1000000;
-            default:
-                break;
+            case ForcePerLengthUnits.NewtonsPerMeter: return this.value;
+            case ForcePerLengthUnits.NewtonsPerCentimeter: return this.value / 1e2;
+            case ForcePerLengthUnits.NewtonsPerMillimeter: return this.value / 1e3;
+            case ForcePerLengthUnits.KilogramsForcePerMeter: return this.value / 9.80665002864;
+            case ForcePerLengthUnits.KilogramsForcePerCentimeter: return this.value / 980.665002864;
+            case ForcePerLengthUnits.KilogramsForcePerMillimeter: return this.value / 9.80665002864e3;
+            case ForcePerLengthUnits.TonnesForcePerMeter: return this.value / 9.80665002864e3;
+            case ForcePerLengthUnits.TonnesForcePerCentimeter: return this.value / 9.80665002864e5;
+            case ForcePerLengthUnits.TonnesForcePerMillimeter: return this.value / 9.80665002864e6;
+            case ForcePerLengthUnits.PoundsForcePerFoot: return this.value / 14.59390292;
+            case ForcePerLengthUnits.PoundsForcePerInch: return this.value / 1.75126835e2;
+            case ForcePerLengthUnits.PoundsForcePerYard: return this.value / 4.864634307;
+            case ForcePerLengthUnits.KilopoundsForcePerFoot: return this.value / 14593.90292;
+            case ForcePerLengthUnits.KilopoundsForcePerInch: return this.value / 1.75126835e5;
+            case ForcePerLengthUnits.NanonewtonsPerMeter: return (this.value) / 1e-9;
+            case ForcePerLengthUnits.MicronewtonsPerMeter: return (this.value) / 0.000001;
+            case ForcePerLengthUnits.MillinewtonsPerMeter: return (this.value) / 0.001;
+            case ForcePerLengthUnits.CentinewtonsPerMeter: return (this.value) / 0.01;
+            case ForcePerLengthUnits.DecinewtonsPerMeter: return (this.value) / 0.1;
+            case ForcePerLengthUnits.DecanewtonsPerMeter: return (this.value) / 10;
+            case ForcePerLengthUnits.KilonewtonsPerMeter: return (this.value) / 1000;
+            case ForcePerLengthUnits.MeganewtonsPerMeter: return (this.value) / 1000000;
+            case ForcePerLengthUnits.NanonewtonsPerCentimeter: return (this.value / 1e2) / 1e-9;
+            case ForcePerLengthUnits.MicronewtonsPerCentimeter: return (this.value / 1e2) / 0.000001;
+            case ForcePerLengthUnits.MillinewtonsPerCentimeter: return (this.value / 1e2) / 0.001;
+            case ForcePerLengthUnits.CentinewtonsPerCentimeter: return (this.value / 1e2) / 0.01;
+            case ForcePerLengthUnits.DecinewtonsPerCentimeter: return (this.value / 1e2) / 0.1;
+            case ForcePerLengthUnits.DecanewtonsPerCentimeter: return (this.value / 1e2) / 10;
+            case ForcePerLengthUnits.KilonewtonsPerCentimeter: return (this.value / 1e2) / 1000;
+            case ForcePerLengthUnits.MeganewtonsPerCentimeter: return (this.value / 1e2) / 1000000;
+            case ForcePerLengthUnits.NanonewtonsPerMillimeter: return (this.value / 1e3) / 1e-9;
+            case ForcePerLengthUnits.MicronewtonsPerMillimeter: return (this.value / 1e3) / 0.000001;
+            case ForcePerLengthUnits.MillinewtonsPerMillimeter: return (this.value / 1e3) / 0.001;
+            case ForcePerLengthUnits.CentinewtonsPerMillimeter: return (this.value / 1e3) / 0.01;
+            case ForcePerLengthUnits.DecinewtonsPerMillimeter: return (this.value / 1e3) / 0.1;
+            case ForcePerLengthUnits.DecanewtonsPerMillimeter: return (this.value / 1e3) / 10;
+            case ForcePerLengthUnits.KilonewtonsPerMillimeter: return (this.value / 1e3) / 1000;
+            case ForcePerLengthUnits.MeganewtonsPerMillimeter: return (this.value / 1e3) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ForcePerLengthUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ForcePerLengthUnits.NewtonsPerMeter: return value;
+                case ForcePerLengthUnits.NewtonsPerCentimeter: return super.internalMultiply(value, 1e2);
+                case ForcePerLengthUnits.NewtonsPerMillimeter: return super.internalMultiply(value, 1e3);
+                case ForcePerLengthUnits.KilogramsForcePerMeter: return super.internalMultiply(value, 9.80665002864);
+                case ForcePerLengthUnits.KilogramsForcePerCentimeter: return super.internalMultiply(value, 980.665002864);
+                case ForcePerLengthUnits.KilogramsForcePerMillimeter: return super.internalMultiply(value, 9.80665002864e3);
+                case ForcePerLengthUnits.TonnesForcePerMeter: return super.internalMultiply(value, 9.80665002864e3);
+                case ForcePerLengthUnits.TonnesForcePerCentimeter: return super.internalMultiply(value, 9.80665002864e5);
+                case ForcePerLengthUnits.TonnesForcePerMillimeter: return super.internalMultiply(value, 9.80665002864e6);
+                case ForcePerLengthUnits.PoundsForcePerFoot: return super.internalMultiply(value, 14.59390292);
+                case ForcePerLengthUnits.PoundsForcePerInch: return super.internalMultiply(value, 1.75126835e2);
+                case ForcePerLengthUnits.PoundsForcePerYard: return super.internalMultiply(value, 4.864634307);
+                case ForcePerLengthUnits.KilopoundsForcePerFoot: return super.internalMultiply(value, 14593.90292);
+                case ForcePerLengthUnits.KilopoundsForcePerInch: return super.internalMultiply(value, 1.75126835e5);
+                case ForcePerLengthUnits.NanonewtonsPerMeter: return super.internalMultiply(value, 1e-9);
+                case ForcePerLengthUnits.MicronewtonsPerMeter: return super.internalMultiply(value, 0.000001);
+                case ForcePerLengthUnits.MillinewtonsPerMeter: return super.internalMultiply(value, 0.001);
+                case ForcePerLengthUnits.CentinewtonsPerMeter: return super.internalMultiply(value, 0.01);
+                case ForcePerLengthUnits.DecinewtonsPerMeter: return super.internalMultiply(value, 0.1);
+                case ForcePerLengthUnits.DecanewtonsPerMeter: return super.internalMultiply(value, 10);
+                case ForcePerLengthUnits.KilonewtonsPerMeter: return super.internalMultiply(value, 1000);
+                case ForcePerLengthUnits.MeganewtonsPerMeter: return super.internalMultiply(value, 1000000);
+                case ForcePerLengthUnits.NanonewtonsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case ForcePerLengthUnits.MicronewtonsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case ForcePerLengthUnits.MillinewtonsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case ForcePerLengthUnits.CentinewtonsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case ForcePerLengthUnits.DecinewtonsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                case ForcePerLengthUnits.DecanewtonsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 10);
+                }
+                case ForcePerLengthUnits.KilonewtonsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case ForcePerLengthUnits.MeganewtonsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case ForcePerLengthUnits.NanonewtonsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case ForcePerLengthUnits.MicronewtonsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case ForcePerLengthUnits.MillinewtonsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case ForcePerLengthUnits.CentinewtonsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case ForcePerLengthUnits.DecinewtonsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                case ForcePerLengthUnits.DecanewtonsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 10);
+                }
+                case ForcePerLengthUnits.KilonewtonsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case ForcePerLengthUnits.MeganewtonsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ForcePerLengthUnits.NewtonsPerMeter:
-                return value;
-            case ForcePerLengthUnits.NewtonsPerCentimeter:
-                return value * 1e2;
-            case ForcePerLengthUnits.NewtonsPerMillimeter:
-                return value * 1e3;
-            case ForcePerLengthUnits.KilogramsForcePerMeter:
-                return value * 9.80665002864;
-            case ForcePerLengthUnits.KilogramsForcePerCentimeter:
-                return value * 980.665002864;
-            case ForcePerLengthUnits.KilogramsForcePerMillimeter:
-                return value * 9.80665002864e3;
-            case ForcePerLengthUnits.TonnesForcePerMeter:
-                return value * 9.80665002864e3;
-            case ForcePerLengthUnits.TonnesForcePerCentimeter:
-                return value * 9.80665002864e5;
-            case ForcePerLengthUnits.TonnesForcePerMillimeter:
-                return value * 9.80665002864e6;
-            case ForcePerLengthUnits.PoundsForcePerFoot:
-                return value * 14.59390292;
-            case ForcePerLengthUnits.PoundsForcePerInch:
-                return value * 1.75126835e2;
-            case ForcePerLengthUnits.PoundsForcePerYard:
-                return value * 4.864634307;
-            case ForcePerLengthUnits.KilopoundsForcePerFoot:
-                return value * 14593.90292;
-            case ForcePerLengthUnits.KilopoundsForcePerInch:
-                return value * 1.75126835e5;
-            case ForcePerLengthUnits.NanonewtonsPerMeter:
-                return (value) * 1e-9;
-            case ForcePerLengthUnits.MicronewtonsPerMeter:
-                return (value) * 0.000001;
-            case ForcePerLengthUnits.MillinewtonsPerMeter:
-                return (value) * 0.001;
-            case ForcePerLengthUnits.CentinewtonsPerMeter:
-                return (value) * 0.01;
-            case ForcePerLengthUnits.DecinewtonsPerMeter:
-                return (value) * 0.1;
-            case ForcePerLengthUnits.DecanewtonsPerMeter:
-                return (value) * 10;
-            case ForcePerLengthUnits.KilonewtonsPerMeter:
-                return (value) * 1000;
-            case ForcePerLengthUnits.MeganewtonsPerMeter:
-                return (value) * 1000000;
-            case ForcePerLengthUnits.NanonewtonsPerCentimeter:
-                return (value * 1e2) * 1e-9;
-            case ForcePerLengthUnits.MicronewtonsPerCentimeter:
-                return (value * 1e2) * 0.000001;
-            case ForcePerLengthUnits.MillinewtonsPerCentimeter:
-                return (value * 1e2) * 0.001;
-            case ForcePerLengthUnits.CentinewtonsPerCentimeter:
-                return (value * 1e2) * 0.01;
-            case ForcePerLengthUnits.DecinewtonsPerCentimeter:
-                return (value * 1e2) * 0.1;
-            case ForcePerLengthUnits.DecanewtonsPerCentimeter:
-                return (value * 1e2) * 10;
-            case ForcePerLengthUnits.KilonewtonsPerCentimeter:
-                return (value * 1e2) * 1000;
-            case ForcePerLengthUnits.MeganewtonsPerCentimeter:
-                return (value * 1e2) * 1000000;
-            case ForcePerLengthUnits.NanonewtonsPerMillimeter:
-                return (value * 1e3) * 1e-9;
-            case ForcePerLengthUnits.MicronewtonsPerMillimeter:
-                return (value * 1e3) * 0.000001;
-            case ForcePerLengthUnits.MillinewtonsPerMillimeter:
-                return (value * 1e3) * 0.001;
-            case ForcePerLengthUnits.CentinewtonsPerMillimeter:
-                return (value * 1e3) * 0.01;
-            case ForcePerLengthUnits.DecinewtonsPerMillimeter:
-                return (value * 1e3) * 0.1;
-            case ForcePerLengthUnits.DecanewtonsPerMillimeter:
-                return (value * 1e3) * 10;
-            case ForcePerLengthUnits.KilonewtonsPerMillimeter:
-                return (value * 1e3) * 1000;
-            case ForcePerLengthUnits.MeganewtonsPerMillimeter:
-                return (value * 1e3) * 1000000;
-            default:
-                break;
+            case ForcePerLengthUnits.NewtonsPerMeter: return value;
+            case ForcePerLengthUnits.NewtonsPerCentimeter: return value * 1e2;
+            case ForcePerLengthUnits.NewtonsPerMillimeter: return value * 1e3;
+            case ForcePerLengthUnits.KilogramsForcePerMeter: return value * 9.80665002864;
+            case ForcePerLengthUnits.KilogramsForcePerCentimeter: return value * 980.665002864;
+            case ForcePerLengthUnits.KilogramsForcePerMillimeter: return value * 9.80665002864e3;
+            case ForcePerLengthUnits.TonnesForcePerMeter: return value * 9.80665002864e3;
+            case ForcePerLengthUnits.TonnesForcePerCentimeter: return value * 9.80665002864e5;
+            case ForcePerLengthUnits.TonnesForcePerMillimeter: return value * 9.80665002864e6;
+            case ForcePerLengthUnits.PoundsForcePerFoot: return value * 14.59390292;
+            case ForcePerLengthUnits.PoundsForcePerInch: return value * 1.75126835e2;
+            case ForcePerLengthUnits.PoundsForcePerYard: return value * 4.864634307;
+            case ForcePerLengthUnits.KilopoundsForcePerFoot: return value * 14593.90292;
+            case ForcePerLengthUnits.KilopoundsForcePerInch: return value * 1.75126835e5;
+            case ForcePerLengthUnits.NanonewtonsPerMeter: return (value) * 1e-9;
+            case ForcePerLengthUnits.MicronewtonsPerMeter: return (value) * 0.000001;
+            case ForcePerLengthUnits.MillinewtonsPerMeter: return (value) * 0.001;
+            case ForcePerLengthUnits.CentinewtonsPerMeter: return (value) * 0.01;
+            case ForcePerLengthUnits.DecinewtonsPerMeter: return (value) * 0.1;
+            case ForcePerLengthUnits.DecanewtonsPerMeter: return (value) * 10;
+            case ForcePerLengthUnits.KilonewtonsPerMeter: return (value) * 1000;
+            case ForcePerLengthUnits.MeganewtonsPerMeter: return (value) * 1000000;
+            case ForcePerLengthUnits.NanonewtonsPerCentimeter: return (value * 1e2) * 1e-9;
+            case ForcePerLengthUnits.MicronewtonsPerCentimeter: return (value * 1e2) * 0.000001;
+            case ForcePerLengthUnits.MillinewtonsPerCentimeter: return (value * 1e2) * 0.001;
+            case ForcePerLengthUnits.CentinewtonsPerCentimeter: return (value * 1e2) * 0.01;
+            case ForcePerLengthUnits.DecinewtonsPerCentimeter: return (value * 1e2) * 0.1;
+            case ForcePerLengthUnits.DecanewtonsPerCentimeter: return (value * 1e2) * 10;
+            case ForcePerLengthUnits.KilonewtonsPerCentimeter: return (value * 1e2) * 1000;
+            case ForcePerLengthUnits.MeganewtonsPerCentimeter: return (value * 1e2) * 1000000;
+            case ForcePerLengthUnits.NanonewtonsPerMillimeter: return (value * 1e3) * 1e-9;
+            case ForcePerLengthUnits.MicronewtonsPerMillimeter: return (value * 1e3) * 0.000001;
+            case ForcePerLengthUnits.MillinewtonsPerMillimeter: return (value * 1e3) * 0.001;
+            case ForcePerLengthUnits.CentinewtonsPerMillimeter: return (value * 1e3) * 0.01;
+            case ForcePerLengthUnits.DecinewtonsPerMillimeter: return (value * 1e3) * 0.1;
+            case ForcePerLengthUnits.DecanewtonsPerMillimeter: return (value * 1e3) * 10;
+            case ForcePerLengthUnits.KilonewtonsPerMillimeter: return (value * 1e3) * 1000;
+            case ForcePerLengthUnits.MeganewtonsPerMillimeter: return (value * 1e3) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

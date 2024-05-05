@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a RatioChangeRate */
 export interface RatioChangeRateDto {
@@ -115,29 +115,31 @@ export class RatioChangeRate extends BaseUnit {
     }
 
     private convertFromBase(toUnit: RatioChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RatioChangeRateUnits.PercentsPerSecond: return super.internalMultiply(this.value, 1e2);
+                case RatioChangeRateUnits.DecimalFractionsPerSecond: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RatioChangeRateUnits.PercentsPerSecond:
-                return this.value * 1e2;
-            case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                return this.value;
-            default:
-                break;
+            case RatioChangeRateUnits.PercentsPerSecond: return this.value * 1e2;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RatioChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RatioChangeRateUnits.PercentsPerSecond: return super.internalDivide(value, 1e2);
+                case RatioChangeRateUnits.DecimalFractionsPerSecond: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RatioChangeRateUnits.PercentsPerSecond:
-                return value / 1e2;
-            case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                return value;
-            default:
-                break;
+            case RatioChangeRateUnits.PercentsPerSecond: return value / 1e2;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

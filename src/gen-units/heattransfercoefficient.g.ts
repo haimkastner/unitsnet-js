@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a HeatTransferCoefficient */
 export interface HeatTransferCoefficientDto {
@@ -181,41 +181,57 @@ export class HeatTransferCoefficient extends BaseUnit {
     }
 
     private convertFromBase(toUnit: HeatTransferCoefficientUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin: return this.value;
+                case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return this.value;
+                case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return super.internalDivide(this.value, 5.6782633411134878);
+                case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: {
+                    const value3 = super.internalDivide(this.value, 4.1868);
+                    return super.internalMultiply(value3, 3600);
+                }
+                case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: {
+                    const value3 = super.internalDivide(this.value, 4.1868);
+                    const value5 = super.internalMultiply(value3, 3600);
+                    return super.internalDivide(value5, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
-                return this.value;
-            case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
-                return this.value;
-            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
-                return this.value / 5.6782633411134878;
-            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
-                return (this.value / 4.1868) * 3600;
-            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
-                return ((this.value / 4.1868) * 3600) / 1000;
-            default:
-                break;
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin: return this.value;
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return this.value;
+            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return this.value / 5.6782633411134878;
+            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: return (this.value / 4.1868) * 3600;
+            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: return ((this.value / 4.1868) * 3600) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: HeatTransferCoefficientUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin: return value;
+                case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return value;
+                case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return super.internalMultiply(value, 5.6782633411134878);
+                case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: {
+                    const value3 = super.internalMultiply(value, 4.1868);
+                    return super.internalDivide(value3, 3600);
+                }
+                case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: {
+                    const value3 = super.internalMultiply(value, 4.1868);
+                    const value5 = super.internalDivide(value3, 3600);
+                    return super.internalMultiply(value5, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
-                return value;
-            case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
-                return value;
-            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
-                return value * 5.6782633411134878;
-            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
-                return (value * 4.1868) / 3600;
-            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
-                return ((value * 4.1868) / 3600) * 1000;
-            default:
-                break;
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin: return value;
+            case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return value;
+            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return value * 5.6782633411134878;
+            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: return (value * 4.1868) / 3600;
+            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: return ((value * 4.1868) / 3600) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

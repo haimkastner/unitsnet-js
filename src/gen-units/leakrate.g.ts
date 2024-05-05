@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a LeakRate */
 export interface LeakRateDto {
@@ -137,33 +137,35 @@ export class LeakRate extends BaseUnit {
     }
 
     private convertFromBase(toUnit: LeakRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LeakRateUnits.PascalCubicMetersPerSecond: return this.value;
+                case LeakRateUnits.MillibarLitersPerSecond: return super.internalMultiply(this.value, 10);
+                case LeakRateUnits.TorrLitersPerSecond: return super.internalMultiply(this.value, 7.5);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LeakRateUnits.PascalCubicMetersPerSecond:
-                return this.value;
-            case LeakRateUnits.MillibarLitersPerSecond:
-                return this.value * 10;
-            case LeakRateUnits.TorrLitersPerSecond:
-                return this.value * 7.5;
-            default:
-                break;
+            case LeakRateUnits.PascalCubicMetersPerSecond: return this.value;
+            case LeakRateUnits.MillibarLitersPerSecond: return this.value * 10;
+            case LeakRateUnits.TorrLitersPerSecond: return this.value * 7.5;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LeakRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LeakRateUnits.PascalCubicMetersPerSecond: return value;
+                case LeakRateUnits.MillibarLitersPerSecond: return super.internalDivide(value, 10);
+                case LeakRateUnits.TorrLitersPerSecond: return super.internalDivide(value, 7.5);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LeakRateUnits.PascalCubicMetersPerSecond:
-                return value;
-            case LeakRateUnits.MillibarLitersPerSecond:
-                return value / 10;
-            case LeakRateUnits.TorrLitersPerSecond:
-                return value / 7.5;
-            default:
-                break;
+            case LeakRateUnits.PascalCubicMetersPerSecond: return value;
+            case LeakRateUnits.MillibarLitersPerSecond: return value / 10;
+            case LeakRateUnits.TorrLitersPerSecond: return value / 7.5;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

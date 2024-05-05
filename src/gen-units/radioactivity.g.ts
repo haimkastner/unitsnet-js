@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Radioactivity */
 export interface RadioactivityDto {
@@ -709,137 +709,235 @@ export class Radioactivity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: RadioactivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RadioactivityUnits.Becquerels: return this.value;
+                case RadioactivityUnits.Curies: return super.internalDivide(this.value, 3.7e10);
+                case RadioactivityUnits.Rutherfords: return super.internalDivide(this.value, 1e6);
+                case RadioactivityUnits.Picobecquerels: return super.internalDivide(this.value, 1e-12);
+                case RadioactivityUnits.Nanobecquerels: return super.internalDivide(this.value, 1e-9);
+                case RadioactivityUnits.Microbecquerels: return super.internalDivide(this.value, 0.000001);
+                case RadioactivityUnits.Millibecquerels: return super.internalDivide(this.value, 0.001);
+                case RadioactivityUnits.Kilobecquerels: return super.internalDivide(this.value, 1000);
+                case RadioactivityUnits.Megabecquerels: return super.internalDivide(this.value, 1000000);
+                case RadioactivityUnits.Gigabecquerels: return super.internalDivide(this.value, 1000000000);
+                case RadioactivityUnits.Terabecquerels: return super.internalDivide(this.value, 1000000000000);
+                case RadioactivityUnits.Petabecquerels: return super.internalDivide(this.value, 1000000000000000);
+                case RadioactivityUnits.Exabecquerels: return super.internalDivide(this.value, 1000000000000000000);
+                case RadioactivityUnits.Picocuries: {
+                    const value3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(value3, 1e-12);
+                }
+                case RadioactivityUnits.Nanocuries: {
+                    const value3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case RadioactivityUnits.Microcuries: {
+                    const value3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case RadioactivityUnits.Millicuries: {
+                    const value3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case RadioactivityUnits.Kilocuries: {
+                    const value3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(value3, 1000);
+                }
+                case RadioactivityUnits.Megacuries: {
+                    const value3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case RadioactivityUnits.Gigacuries: {
+                    const value3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case RadioactivityUnits.Teracuries: {
+                    const value3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(value3, 1000000000000);
+                }
+                case RadioactivityUnits.Picorutherfords: {
+                    const value3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(value3, 1e-12);
+                }
+                case RadioactivityUnits.Nanorutherfords: {
+                    const value3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case RadioactivityUnits.Microrutherfords: {
+                    const value3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case RadioactivityUnits.Millirutherfords: {
+                    const value3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case RadioactivityUnits.Kilorutherfords: {
+                    const value3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(value3, 1000);
+                }
+                case RadioactivityUnits.Megarutherfords: {
+                    const value3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case RadioactivityUnits.Gigarutherfords: {
+                    const value3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case RadioactivityUnits.Terarutherfords: {
+                    const value3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(value3, 1000000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RadioactivityUnits.Becquerels:
-                return this.value;
-            case RadioactivityUnits.Curies:
-                return this.value / 3.7e10;
-            case RadioactivityUnits.Rutherfords:
-                return this.value / 1e6;
-            case RadioactivityUnits.Picobecquerels:
-                return (this.value) / 1e-12;
-            case RadioactivityUnits.Nanobecquerels:
-                return (this.value) / 1e-9;
-            case RadioactivityUnits.Microbecquerels:
-                return (this.value) / 0.000001;
-            case RadioactivityUnits.Millibecquerels:
-                return (this.value) / 0.001;
-            case RadioactivityUnits.Kilobecquerels:
-                return (this.value) / 1000;
-            case RadioactivityUnits.Megabecquerels:
-                return (this.value) / 1000000;
-            case RadioactivityUnits.Gigabecquerels:
-                return (this.value) / 1000000000;
-            case RadioactivityUnits.Terabecquerels:
-                return (this.value) / 1000000000000;
-            case RadioactivityUnits.Petabecquerels:
-                return (this.value) / 1000000000000000;
-            case RadioactivityUnits.Exabecquerels:
-                return (this.value) / 1000000000000000000;
-            case RadioactivityUnits.Picocuries:
-                return (this.value / 3.7e10) / 1e-12;
-            case RadioactivityUnits.Nanocuries:
-                return (this.value / 3.7e10) / 1e-9;
-            case RadioactivityUnits.Microcuries:
-                return (this.value / 3.7e10) / 0.000001;
-            case RadioactivityUnits.Millicuries:
-                return (this.value / 3.7e10) / 0.001;
-            case RadioactivityUnits.Kilocuries:
-                return (this.value / 3.7e10) / 1000;
-            case RadioactivityUnits.Megacuries:
-                return (this.value / 3.7e10) / 1000000;
-            case RadioactivityUnits.Gigacuries:
-                return (this.value / 3.7e10) / 1000000000;
-            case RadioactivityUnits.Teracuries:
-                return (this.value / 3.7e10) / 1000000000000;
-            case RadioactivityUnits.Picorutherfords:
-                return (this.value / 1e6) / 1e-12;
-            case RadioactivityUnits.Nanorutherfords:
-                return (this.value / 1e6) / 1e-9;
-            case RadioactivityUnits.Microrutherfords:
-                return (this.value / 1e6) / 0.000001;
-            case RadioactivityUnits.Millirutherfords:
-                return (this.value / 1e6) / 0.001;
-            case RadioactivityUnits.Kilorutherfords:
-                return (this.value / 1e6) / 1000;
-            case RadioactivityUnits.Megarutherfords:
-                return (this.value / 1e6) / 1000000;
-            case RadioactivityUnits.Gigarutherfords:
-                return (this.value / 1e6) / 1000000000;
-            case RadioactivityUnits.Terarutherfords:
-                return (this.value / 1e6) / 1000000000000;
-            default:
-                break;
+            case RadioactivityUnits.Becquerels: return this.value;
+            case RadioactivityUnits.Curies: return this.value / 3.7e10;
+            case RadioactivityUnits.Rutherfords: return this.value / 1e6;
+            case RadioactivityUnits.Picobecquerels: return (this.value) / 1e-12;
+            case RadioactivityUnits.Nanobecquerels: return (this.value) / 1e-9;
+            case RadioactivityUnits.Microbecquerels: return (this.value) / 0.000001;
+            case RadioactivityUnits.Millibecquerels: return (this.value) / 0.001;
+            case RadioactivityUnits.Kilobecquerels: return (this.value) / 1000;
+            case RadioactivityUnits.Megabecquerels: return (this.value) / 1000000;
+            case RadioactivityUnits.Gigabecquerels: return (this.value) / 1000000000;
+            case RadioactivityUnits.Terabecquerels: return (this.value) / 1000000000000;
+            case RadioactivityUnits.Petabecquerels: return (this.value) / 1000000000000000;
+            case RadioactivityUnits.Exabecquerels: return (this.value) / 1000000000000000000;
+            case RadioactivityUnits.Picocuries: return (this.value / 3.7e10) / 1e-12;
+            case RadioactivityUnits.Nanocuries: return (this.value / 3.7e10) / 1e-9;
+            case RadioactivityUnits.Microcuries: return (this.value / 3.7e10) / 0.000001;
+            case RadioactivityUnits.Millicuries: return (this.value / 3.7e10) / 0.001;
+            case RadioactivityUnits.Kilocuries: return (this.value / 3.7e10) / 1000;
+            case RadioactivityUnits.Megacuries: return (this.value / 3.7e10) / 1000000;
+            case RadioactivityUnits.Gigacuries: return (this.value / 3.7e10) / 1000000000;
+            case RadioactivityUnits.Teracuries: return (this.value / 3.7e10) / 1000000000000;
+            case RadioactivityUnits.Picorutherfords: return (this.value / 1e6) / 1e-12;
+            case RadioactivityUnits.Nanorutherfords: return (this.value / 1e6) / 1e-9;
+            case RadioactivityUnits.Microrutherfords: return (this.value / 1e6) / 0.000001;
+            case RadioactivityUnits.Millirutherfords: return (this.value / 1e6) / 0.001;
+            case RadioactivityUnits.Kilorutherfords: return (this.value / 1e6) / 1000;
+            case RadioactivityUnits.Megarutherfords: return (this.value / 1e6) / 1000000;
+            case RadioactivityUnits.Gigarutherfords: return (this.value / 1e6) / 1000000000;
+            case RadioactivityUnits.Terarutherfords: return (this.value / 1e6) / 1000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RadioactivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RadioactivityUnits.Becquerels: return value;
+                case RadioactivityUnits.Curies: return super.internalMultiply(value, 3.7e10);
+                case RadioactivityUnits.Rutherfords: return super.internalMultiply(value, 1e6);
+                case RadioactivityUnits.Picobecquerels: return super.internalMultiply(value, 1e-12);
+                case RadioactivityUnits.Nanobecquerels: return super.internalMultiply(value, 1e-9);
+                case RadioactivityUnits.Microbecquerels: return super.internalMultiply(value, 0.000001);
+                case RadioactivityUnits.Millibecquerels: return super.internalMultiply(value, 0.001);
+                case RadioactivityUnits.Kilobecquerels: return super.internalMultiply(value, 1000);
+                case RadioactivityUnits.Megabecquerels: return super.internalMultiply(value, 1000000);
+                case RadioactivityUnits.Gigabecquerels: return super.internalMultiply(value, 1000000000);
+                case RadioactivityUnits.Terabecquerels: return super.internalMultiply(value, 1000000000000);
+                case RadioactivityUnits.Petabecquerels: return super.internalMultiply(value, 1000000000000000);
+                case RadioactivityUnits.Exabecquerels: return super.internalMultiply(value, 1000000000000000000);
+                case RadioactivityUnits.Picocuries: {
+                    const value3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(value3, 1e-12);
+                }
+                case RadioactivityUnits.Nanocuries: {
+                    const value3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case RadioactivityUnits.Microcuries: {
+                    const value3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case RadioactivityUnits.Millicuries: {
+                    const value3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case RadioactivityUnits.Kilocuries: {
+                    const value3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case RadioactivityUnits.Megacuries: {
+                    const value3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case RadioactivityUnits.Gigacuries: {
+                    const value3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case RadioactivityUnits.Teracuries: {
+                    const value3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(value3, 1000000000000);
+                }
+                case RadioactivityUnits.Picorutherfords: {
+                    const value3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(value3, 1e-12);
+                }
+                case RadioactivityUnits.Nanorutherfords: {
+                    const value3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case RadioactivityUnits.Microrutherfords: {
+                    const value3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case RadioactivityUnits.Millirutherfords: {
+                    const value3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case RadioactivityUnits.Kilorutherfords: {
+                    const value3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case RadioactivityUnits.Megarutherfords: {
+                    const value3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case RadioactivityUnits.Gigarutherfords: {
+                    const value3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case RadioactivityUnits.Terarutherfords: {
+                    const value3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(value3, 1000000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RadioactivityUnits.Becquerels:
-                return value;
-            case RadioactivityUnits.Curies:
-                return value * 3.7e10;
-            case RadioactivityUnits.Rutherfords:
-                return value * 1e6;
-            case RadioactivityUnits.Picobecquerels:
-                return (value) * 1e-12;
-            case RadioactivityUnits.Nanobecquerels:
-                return (value) * 1e-9;
-            case RadioactivityUnits.Microbecquerels:
-                return (value) * 0.000001;
-            case RadioactivityUnits.Millibecquerels:
-                return (value) * 0.001;
-            case RadioactivityUnits.Kilobecquerels:
-                return (value) * 1000;
-            case RadioactivityUnits.Megabecquerels:
-                return (value) * 1000000;
-            case RadioactivityUnits.Gigabecquerels:
-                return (value) * 1000000000;
-            case RadioactivityUnits.Terabecquerels:
-                return (value) * 1000000000000;
-            case RadioactivityUnits.Petabecquerels:
-                return (value) * 1000000000000000;
-            case RadioactivityUnits.Exabecquerels:
-                return (value) * 1000000000000000000;
-            case RadioactivityUnits.Picocuries:
-                return (value * 3.7e10) * 1e-12;
-            case RadioactivityUnits.Nanocuries:
-                return (value * 3.7e10) * 1e-9;
-            case RadioactivityUnits.Microcuries:
-                return (value * 3.7e10) * 0.000001;
-            case RadioactivityUnits.Millicuries:
-                return (value * 3.7e10) * 0.001;
-            case RadioactivityUnits.Kilocuries:
-                return (value * 3.7e10) * 1000;
-            case RadioactivityUnits.Megacuries:
-                return (value * 3.7e10) * 1000000;
-            case RadioactivityUnits.Gigacuries:
-                return (value * 3.7e10) * 1000000000;
-            case RadioactivityUnits.Teracuries:
-                return (value * 3.7e10) * 1000000000000;
-            case RadioactivityUnits.Picorutherfords:
-                return (value * 1e6) * 1e-12;
-            case RadioactivityUnits.Nanorutherfords:
-                return (value * 1e6) * 1e-9;
-            case RadioactivityUnits.Microrutherfords:
-                return (value * 1e6) * 0.000001;
-            case RadioactivityUnits.Millirutherfords:
-                return (value * 1e6) * 0.001;
-            case RadioactivityUnits.Kilorutherfords:
-                return (value * 1e6) * 1000;
-            case RadioactivityUnits.Megarutherfords:
-                return (value * 1e6) * 1000000;
-            case RadioactivityUnits.Gigarutherfords:
-                return (value * 1e6) * 1000000000;
-            case RadioactivityUnits.Terarutherfords:
-                return (value * 1e6) * 1000000000000;
-            default:
-                break;
+            case RadioactivityUnits.Becquerels: return value;
+            case RadioactivityUnits.Curies: return value * 3.7e10;
+            case RadioactivityUnits.Rutherfords: return value * 1e6;
+            case RadioactivityUnits.Picobecquerels: return (value) * 1e-12;
+            case RadioactivityUnits.Nanobecquerels: return (value) * 1e-9;
+            case RadioactivityUnits.Microbecquerels: return (value) * 0.000001;
+            case RadioactivityUnits.Millibecquerels: return (value) * 0.001;
+            case RadioactivityUnits.Kilobecquerels: return (value) * 1000;
+            case RadioactivityUnits.Megabecquerels: return (value) * 1000000;
+            case RadioactivityUnits.Gigabecquerels: return (value) * 1000000000;
+            case RadioactivityUnits.Terabecquerels: return (value) * 1000000000000;
+            case RadioactivityUnits.Petabecquerels: return (value) * 1000000000000000;
+            case RadioactivityUnits.Exabecquerels: return (value) * 1000000000000000000;
+            case RadioactivityUnits.Picocuries: return (value * 3.7e10) * 1e-12;
+            case RadioactivityUnits.Nanocuries: return (value * 3.7e10) * 1e-9;
+            case RadioactivityUnits.Microcuries: return (value * 3.7e10) * 0.000001;
+            case RadioactivityUnits.Millicuries: return (value * 3.7e10) * 0.001;
+            case RadioactivityUnits.Kilocuries: return (value * 3.7e10) * 1000;
+            case RadioactivityUnits.Megacuries: return (value * 3.7e10) * 1000000;
+            case RadioactivityUnits.Gigacuries: return (value * 3.7e10) * 1000000000;
+            case RadioactivityUnits.Teracuries: return (value * 3.7e10) * 1000000000000;
+            case RadioactivityUnits.Picorutherfords: return (value * 1e6) * 1e-12;
+            case RadioactivityUnits.Nanorutherfords: return (value * 1e6) * 1e-9;
+            case RadioactivityUnits.Microrutherfords: return (value * 1e6) * 0.000001;
+            case RadioactivityUnits.Millirutherfords: return (value * 1e6) * 0.001;
+            case RadioactivityUnits.Kilorutherfords: return (value * 1e6) * 1000;
+            case RadioactivityUnits.Megarutherfords: return (value * 1e6) * 1000000;
+            case RadioactivityUnits.Gigarutherfords: return (value * 1e6) * 1000000000;
+            case RadioactivityUnits.Terarutherfords: return (value * 1e6) * 1000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

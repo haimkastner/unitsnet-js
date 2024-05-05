@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ReactivePower */
 export interface ReactivePowerDto {
@@ -159,37 +159,39 @@ export class ReactivePower extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ReactivePowerUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ReactivePowerUnits.VoltamperesReactive: return this.value;
+                case ReactivePowerUnits.KilovoltamperesReactive: return super.internalDivide(this.value, 1000);
+                case ReactivePowerUnits.MegavoltamperesReactive: return super.internalDivide(this.value, 1000000);
+                case ReactivePowerUnits.GigavoltamperesReactive: return super.internalDivide(this.value, 1000000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ReactivePowerUnits.VoltamperesReactive:
-                return this.value;
-            case ReactivePowerUnits.KilovoltamperesReactive:
-                return (this.value) / 1000;
-            case ReactivePowerUnits.MegavoltamperesReactive:
-                return (this.value) / 1000000;
-            case ReactivePowerUnits.GigavoltamperesReactive:
-                return (this.value) / 1000000000;
-            default:
-                break;
+            case ReactivePowerUnits.VoltamperesReactive: return this.value;
+            case ReactivePowerUnits.KilovoltamperesReactive: return (this.value) / 1000;
+            case ReactivePowerUnits.MegavoltamperesReactive: return (this.value) / 1000000;
+            case ReactivePowerUnits.GigavoltamperesReactive: return (this.value) / 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ReactivePowerUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ReactivePowerUnits.VoltamperesReactive: return value;
+                case ReactivePowerUnits.KilovoltamperesReactive: return super.internalMultiply(value, 1000);
+                case ReactivePowerUnits.MegavoltamperesReactive: return super.internalMultiply(value, 1000000);
+                case ReactivePowerUnits.GigavoltamperesReactive: return super.internalMultiply(value, 1000000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ReactivePowerUnits.VoltamperesReactive:
-                return value;
-            case ReactivePowerUnits.KilovoltamperesReactive:
-                return (value) * 1000;
-            case ReactivePowerUnits.MegavoltamperesReactive:
-                return (value) * 1000000;
-            case ReactivePowerUnits.GigavoltamperesReactive:
-                return (value) * 1000000000;
-            default:
-                break;
+            case ReactivePowerUnits.VoltamperesReactive: return value;
+            case ReactivePowerUnits.KilovoltamperesReactive: return (value) * 1000;
+            case ReactivePowerUnits.MegavoltamperesReactive: return (value) * 1000000;
+            case ReactivePowerUnits.GigavoltamperesReactive: return (value) * 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

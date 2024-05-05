@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Magnetization */
 export interface MagnetizationDto {
@@ -93,25 +93,27 @@ export class Magnetization extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MagnetizationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MagnetizationUnits.AmperesPerMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MagnetizationUnits.AmperesPerMeter:
-                return this.value;
-            default:
-                break;
+            case MagnetizationUnits.AmperesPerMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MagnetizationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MagnetizationUnits.AmperesPerMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MagnetizationUnits.AmperesPerMeter:
-                return value;
-            default:
-                break;
+            case MagnetizationUnits.AmperesPerMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

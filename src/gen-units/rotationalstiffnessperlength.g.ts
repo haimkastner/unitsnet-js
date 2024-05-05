@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a RotationalStiffnessPerLength */
 export interface RotationalStiffnessPerLengthDto {
@@ -181,41 +181,43 @@ export class RotationalStiffnessPerLength extends BaseUnit {
     }
 
     private convertFromBase(toUnit: RotationalStiffnessPerLengthUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter: return this.value;
+                case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet: return super.internalDivide(this.value, 254.864324570);
+                case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet: return super.internalDivide(this.value, 254864.324570);
+                case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter: return super.internalDivide(this.value, 1000);
+                case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
-                return this.value;
-            case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet:
-                return this.value / 254.864324570;
-            case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
-                return this.value / 254864.324570;
-            case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
-                return (this.value) / 1000;
-            case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter: return this.value;
+            case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet: return this.value / 254.864324570;
+            case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet: return this.value / 254864.324570;
+            case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter: return (this.value) / 1000;
+            case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RotationalStiffnessPerLengthUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter: return value;
+                case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet: return super.internalMultiply(value, 254.864324570);
+                case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet: return super.internalMultiply(value, 254864.324570);
+                case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter: return super.internalMultiply(value, 1000);
+                case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter:
-                return value;
-            case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet:
-                return value * 254.864324570;
-            case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet:
-                return value * 254864.324570;
-            case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter:
-                return (value) * 1000;
-            case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter:
-                return (value) * 1000000;
-            default:
-                break;
+            case RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter: return value;
+            case RotationalStiffnessPerLengthUnits.PoundForceFeetPerDegreesPerFeet: return value * 254.864324570;
+            case RotationalStiffnessPerLengthUnits.KilopoundForceFeetPerDegreesPerFeet: return value * 254864.324570;
+            case RotationalStiffnessPerLengthUnits.KilonewtonMetersPerRadianPerMeter: return (value) * 1000;
+            case RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

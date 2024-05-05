@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricConductivity */
 export interface ElectricConductivityDto {
@@ -203,45 +203,59 @@ export class ElectricConductivity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ElectricConductivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricConductivityUnits.SiemensPerMeter: return this.value;
+                case ElectricConductivityUnits.SiemensPerInch: return super.internalDivide(this.value, 3.937007874015748e1);
+                case ElectricConductivityUnits.SiemensPerFoot: return super.internalDivide(this.value, 3.2808398950131234);
+                case ElectricConductivityUnits.SiemensPerCentimeter: return super.internalDivide(this.value, 1e2);
+                case ElectricConductivityUnits.MicrosiemensPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case ElectricConductivityUnits.MillisiemensPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricConductivityUnits.SiemensPerMeter:
-                return this.value;
-            case ElectricConductivityUnits.SiemensPerInch:
-                return this.value / 3.937007874015748e1;
-            case ElectricConductivityUnits.SiemensPerFoot:
-                return this.value / 3.2808398950131234;
-            case ElectricConductivityUnits.SiemensPerCentimeter:
-                return this.value / 1e2;
-            case ElectricConductivityUnits.MicrosiemensPerCentimeter:
-                return (this.value / 1e2) / 0.000001;
-            case ElectricConductivityUnits.MillisiemensPerCentimeter:
-                return (this.value / 1e2) / 0.001;
-            default:
-                break;
+            case ElectricConductivityUnits.SiemensPerMeter: return this.value;
+            case ElectricConductivityUnits.SiemensPerInch: return this.value / 3.937007874015748e1;
+            case ElectricConductivityUnits.SiemensPerFoot: return this.value / 3.2808398950131234;
+            case ElectricConductivityUnits.SiemensPerCentimeter: return this.value / 1e2;
+            case ElectricConductivityUnits.MicrosiemensPerCentimeter: return (this.value / 1e2) / 0.000001;
+            case ElectricConductivityUnits.MillisiemensPerCentimeter: return (this.value / 1e2) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricConductivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricConductivityUnits.SiemensPerMeter: return value;
+                case ElectricConductivityUnits.SiemensPerInch: return super.internalMultiply(value, 3.937007874015748e1);
+                case ElectricConductivityUnits.SiemensPerFoot: return super.internalMultiply(value, 3.2808398950131234);
+                case ElectricConductivityUnits.SiemensPerCentimeter: return super.internalMultiply(value, 1e2);
+                case ElectricConductivityUnits.MicrosiemensPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case ElectricConductivityUnits.MillisiemensPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricConductivityUnits.SiemensPerMeter:
-                return value;
-            case ElectricConductivityUnits.SiemensPerInch:
-                return value * 3.937007874015748e1;
-            case ElectricConductivityUnits.SiemensPerFoot:
-                return value * 3.2808398950131234;
-            case ElectricConductivityUnits.SiemensPerCentimeter:
-                return value * 1e2;
-            case ElectricConductivityUnits.MicrosiemensPerCentimeter:
-                return (value * 1e2) * 0.000001;
-            case ElectricConductivityUnits.MillisiemensPerCentimeter:
-                return (value * 1e2) * 0.001;
-            default:
-                break;
+            case ElectricConductivityUnits.SiemensPerMeter: return value;
+            case ElectricConductivityUnits.SiemensPerInch: return value * 3.937007874015748e1;
+            case ElectricConductivityUnits.SiemensPerFoot: return value * 3.2808398950131234;
+            case ElectricConductivityUnits.SiemensPerCentimeter: return value * 1e2;
+            case ElectricConductivityUnits.MicrosiemensPerCentimeter: return (value * 1e2) * 0.000001;
+            case ElectricConductivityUnits.MillisiemensPerCentimeter: return (value * 1e2) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

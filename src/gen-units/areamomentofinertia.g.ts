@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a AreaMomentOfInertia */
 export interface AreaMomentOfInertiaDto {
@@ -203,45 +203,59 @@ export class AreaMomentOfInertia extends BaseUnit {
     }
 
     private convertFromBase(toUnit: AreaMomentOfInertiaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case AreaMomentOfInertiaUnits.MetersToTheFourth: return this.value;
+                case AreaMomentOfInertiaUnits.DecimetersToTheFourth: return super.internalMultiply(this.value, 1e4);
+                case AreaMomentOfInertiaUnits.CentimetersToTheFourth: return super.internalMultiply(this.value, 1e8);
+                case AreaMomentOfInertiaUnits.MillimetersToTheFourth: return super.internalMultiply(this.value, 1e12);
+                case AreaMomentOfInertiaUnits.FeetToTheFourth: {
+                    const value4 = Math.pow(0.3048, 4);
+                    return super.internalDivide(this.value, value4);
+                }
+                case AreaMomentOfInertiaUnits.InchesToTheFourth: {
+                    const value4 = Math.pow(2.54e-2, 4);
+                    return super.internalDivide(this.value, value4);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case AreaMomentOfInertiaUnits.MetersToTheFourth:
-                return this.value;
-            case AreaMomentOfInertiaUnits.DecimetersToTheFourth:
-                return this.value * 1e4;
-            case AreaMomentOfInertiaUnits.CentimetersToTheFourth:
-                return this.value * 1e8;
-            case AreaMomentOfInertiaUnits.MillimetersToTheFourth:
-                return this.value * 1e12;
-            case AreaMomentOfInertiaUnits.FeetToTheFourth:
-                return this.value / Math.pow(0.3048, 4);
-            case AreaMomentOfInertiaUnits.InchesToTheFourth:
-                return this.value / Math.pow(2.54e-2, 4);
-            default:
-                break;
+            case AreaMomentOfInertiaUnits.MetersToTheFourth: return this.value;
+            case AreaMomentOfInertiaUnits.DecimetersToTheFourth: return this.value * 1e4;
+            case AreaMomentOfInertiaUnits.CentimetersToTheFourth: return this.value * 1e8;
+            case AreaMomentOfInertiaUnits.MillimetersToTheFourth: return this.value * 1e12;
+            case AreaMomentOfInertiaUnits.FeetToTheFourth: return this.value / Math.pow(0.3048, 4);
+            case AreaMomentOfInertiaUnits.InchesToTheFourth: return this.value / Math.pow(2.54e-2, 4);
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AreaMomentOfInertiaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case AreaMomentOfInertiaUnits.MetersToTheFourth: return value;
+                case AreaMomentOfInertiaUnits.DecimetersToTheFourth: return super.internalDivide(value, 1e4);
+                case AreaMomentOfInertiaUnits.CentimetersToTheFourth: return super.internalDivide(value, 1e8);
+                case AreaMomentOfInertiaUnits.MillimetersToTheFourth: return super.internalDivide(value, 1e12);
+                case AreaMomentOfInertiaUnits.FeetToTheFourth: {
+                    const value4 = Math.pow(0.3048, 4);
+                    return super.internalMultiply(value, value4);
+                }
+                case AreaMomentOfInertiaUnits.InchesToTheFourth: {
+                    const value4 = Math.pow(2.54e-2, 4);
+                    return super.internalMultiply(value, value4);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case AreaMomentOfInertiaUnits.MetersToTheFourth:
-                return value;
-            case AreaMomentOfInertiaUnits.DecimetersToTheFourth:
-                return value / 1e4;
-            case AreaMomentOfInertiaUnits.CentimetersToTheFourth:
-                return value / 1e8;
-            case AreaMomentOfInertiaUnits.MillimetersToTheFourth:
-                return value / 1e12;
-            case AreaMomentOfInertiaUnits.FeetToTheFourth:
-                return value * Math.pow(0.3048, 4);
-            case AreaMomentOfInertiaUnits.InchesToTheFourth:
-                return value * Math.pow(2.54e-2, 4);
-            default:
-                break;
+            case AreaMomentOfInertiaUnits.MetersToTheFourth: return value;
+            case AreaMomentOfInertiaUnits.DecimetersToTheFourth: return value / 1e4;
+            case AreaMomentOfInertiaUnits.CentimetersToTheFourth: return value / 1e8;
+            case AreaMomentOfInertiaUnits.MillimetersToTheFourth: return value / 1e12;
+            case AreaMomentOfInertiaUnits.FeetToTheFourth: return value * Math.pow(0.3048, 4);
+            case AreaMomentOfInertiaUnits.InchesToTheFourth: return value * Math.pow(2.54e-2, 4);
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

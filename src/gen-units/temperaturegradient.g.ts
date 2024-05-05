@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a TemperatureGradient */
 export interface TemperatureGradientDto {
@@ -159,37 +159,47 @@ export class TemperatureGradient extends BaseUnit {
     }
 
     private convertFromBase(toUnit: TemperatureGradientUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case TemperatureGradientUnits.KelvinsPerMeter: return this.value;
+                case TemperatureGradientUnits.DegreesCelciusPerMeter: return this.value;
+                case TemperatureGradientUnits.DegreesFahrenheitPerFoot: {
+                    const value3 = super.internalMultiply(this.value, 0.3048);
+                    const value5 = super.internalMultiply(value3, 9);
+                    return super.internalDivide(value5, 5);
+                }
+                case TemperatureGradientUnits.DegreesCelciusPerKilometer: return super.internalMultiply(this.value, 1e3);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case TemperatureGradientUnits.KelvinsPerMeter:
-                return this.value;
-            case TemperatureGradientUnits.DegreesCelciusPerMeter:
-                return this.value;
-            case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
-                return (this.value * 0.3048) * 9 / 5;
-            case TemperatureGradientUnits.DegreesCelciusPerKilometer:
-                return this.value * 1e3;
-            default:
-                break;
+            case TemperatureGradientUnits.KelvinsPerMeter: return this.value;
+            case TemperatureGradientUnits.DegreesCelciusPerMeter: return this.value;
+            case TemperatureGradientUnits.DegreesFahrenheitPerFoot: return (this.value * 0.3048) * 9 / 5;
+            case TemperatureGradientUnits.DegreesCelciusPerKilometer: return this.value * 1e3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: TemperatureGradientUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case TemperatureGradientUnits.KelvinsPerMeter: return value;
+                case TemperatureGradientUnits.DegreesCelciusPerMeter: return value;
+                case TemperatureGradientUnits.DegreesFahrenheitPerFoot: {
+                    const value3 = super.internalDivide(value, 0.3048);
+                    const value5 = super.internalMultiply(value3, 5);
+                    return super.internalDivide(value5, 9);
+                }
+                case TemperatureGradientUnits.DegreesCelciusPerKilometer: return super.internalDivide(value, 1e3);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case TemperatureGradientUnits.KelvinsPerMeter:
-                return value;
-            case TemperatureGradientUnits.DegreesCelciusPerMeter:
-                return value;
-            case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
-                return (value / 0.3048) * 5 / 9;
-            case TemperatureGradientUnits.DegreesCelciusPerKilometer:
-                return value / 1e3;
-            default:
-                break;
+            case TemperatureGradientUnits.KelvinsPerMeter: return value;
+            case TemperatureGradientUnits.DegreesCelciusPerMeter: return value;
+            case TemperatureGradientUnits.DegreesFahrenheitPerFoot: return (value / 0.3048) * 5 / 9;
+            case TemperatureGradientUnits.DegreesCelciusPerKilometer: return value / 1e3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

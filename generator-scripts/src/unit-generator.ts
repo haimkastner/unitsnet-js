@@ -208,7 +208,7 @@ function buildOverriddenFormulaCase(unitName: string, enumName: string, formulaD
 
 	return ts.createCaseClause(
 		ts.createPropertyAccess(ts.createIdentifier(enumName), unitName),
-		statements
+		statements.length > 1 ? [ts.createBlock(statements)] : statements,
 	);
 }
 

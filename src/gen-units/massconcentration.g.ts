@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MassConcentration */
 export interface MassConcentrationDto {
@@ -1149,217 +1149,369 @@ export class MassConcentration extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MassConcentrationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MassConcentrationUnits.GramsPerCubicMillimeter: return super.internalMultiply(this.value, 1e-6);
+                case MassConcentrationUnits.GramsPerCubicCentimeter: return super.internalMultiply(this.value, 1e-3);
+                case MassConcentrationUnits.GramsPerCubicMeter: return super.internalMultiply(this.value, 1e3);
+                case MassConcentrationUnits.GramsPerMicroliter: return super.internalMultiply(this.value, 1e-6);
+                case MassConcentrationUnits.GramsPerMilliliter: return super.internalMultiply(this.value, 1e-3);
+                case MassConcentrationUnits.GramsPerDeciliter: return super.internalMultiply(this.value, 1e-1);
+                case MassConcentrationUnits.GramsPerLiter: return this.value;
+                case MassConcentrationUnits.TonnesPerCubicMillimeter: return super.internalMultiply(this.value, 1e-12);
+                case MassConcentrationUnits.TonnesPerCubicCentimeter: return super.internalMultiply(this.value, 1e-9);
+                case MassConcentrationUnits.TonnesPerCubicMeter: return super.internalMultiply(this.value, 0.001);
+                case MassConcentrationUnits.PoundsPerCubicInch: return super.internalMultiply(this.value, 3.6127298147753e-5);
+                case MassConcentrationUnits.PoundsPerCubicFoot: return super.internalMultiply(this.value, 0.062427961);
+                case MassConcentrationUnits.SlugsPerCubicFoot: return super.internalMultiply(this.value, 0.00194032033);
+                case MassConcentrationUnits.PoundsPerUSGallon: return super.internalDivide(this.value, 1.19826427e2);
+                case MassConcentrationUnits.OuncesPerUSGallon: return super.internalMultiply(this.value, 0.1335264711843);
+                case MassConcentrationUnits.OuncesPerImperialGallon: return super.internalMultiply(this.value, 0.1603586720609);
+                case MassConcentrationUnits.PoundsPerImperialGallon: return super.internalDivide(this.value, 9.9776398e1);
+                case MassConcentrationUnits.KilogramsPerCubicMillimeter: {
+                    const value3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassConcentrationUnits.KilogramsPerCubicCentimeter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassConcentrationUnits.KilogramsPerCubicMeter: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassConcentrationUnits.MilligramsPerCubicMeter: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassConcentrationUnits.MicrogramsPerCubicMeter: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case MassConcentrationUnits.PicogramsPerMicroliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(value3, 1e-12);
+                }
+                case MassConcentrationUnits.NanogramsPerMicroliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case MassConcentrationUnits.MicrogramsPerMicroliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case MassConcentrationUnits.MilligramsPerMicroliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassConcentrationUnits.CentigramsPerMicroliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case MassConcentrationUnits.DecigramsPerMicroliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(value3, 0.1);
+                }
+                case MassConcentrationUnits.PicogramsPerMilliliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1e-12);
+                }
+                case MassConcentrationUnits.NanogramsPerMilliliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case MassConcentrationUnits.MicrogramsPerMilliliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case MassConcentrationUnits.MilligramsPerMilliliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassConcentrationUnits.CentigramsPerMilliliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case MassConcentrationUnits.DecigramsPerMilliliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.1);
+                }
+                case MassConcentrationUnits.PicogramsPerDeciliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(value3, 1e-12);
+                }
+                case MassConcentrationUnits.NanogramsPerDeciliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case MassConcentrationUnits.MicrogramsPerDeciliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case MassConcentrationUnits.MilligramsPerDeciliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassConcentrationUnits.CentigramsPerDeciliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case MassConcentrationUnits.DecigramsPerDeciliter: {
+                    const value3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(value3, 0.1);
+                }
+                case MassConcentrationUnits.PicogramsPerLiter: return super.internalDivide(this.value, 1e-12);
+                case MassConcentrationUnits.NanogramsPerLiter: return super.internalDivide(this.value, 1e-9);
+                case MassConcentrationUnits.MicrogramsPerLiter: return super.internalDivide(this.value, 0.000001);
+                case MassConcentrationUnits.MilligramsPerLiter: return super.internalDivide(this.value, 0.001);
+                case MassConcentrationUnits.CentigramsPerLiter: return super.internalDivide(this.value, 0.01);
+                case MassConcentrationUnits.DecigramsPerLiter: return super.internalDivide(this.value, 0.1);
+                case MassConcentrationUnits.KilogramsPerLiter: return super.internalDivide(this.value, 1000);
+                case MassConcentrationUnits.KilopoundsPerCubicInch: {
+                    const value3 = super.internalMultiply(this.value, 3.6127298147753e-5);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassConcentrationUnits.KilopoundsPerCubicFoot: {
+                    const value3 = super.internalMultiply(this.value, 0.062427961);
+                    return super.internalDivide(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MassConcentrationUnits.GramsPerCubicMillimeter:
-                return this.value * 1e-6;
-            case MassConcentrationUnits.GramsPerCubicCentimeter:
-                return this.value * 1e-3;
-            case MassConcentrationUnits.GramsPerCubicMeter:
-                return this.value * 1e3;
-            case MassConcentrationUnits.GramsPerMicroliter:
-                return this.value * 1e-6;
-            case MassConcentrationUnits.GramsPerMilliliter:
-                return this.value * 1e-3;
-            case MassConcentrationUnits.GramsPerDeciliter:
-                return this.value * 1e-1;
-            case MassConcentrationUnits.GramsPerLiter:
-                return this.value;
-            case MassConcentrationUnits.TonnesPerCubicMillimeter:
-                return this.value * 1e-12;
-            case MassConcentrationUnits.TonnesPerCubicCentimeter:
-                return this.value * 1e-9;
-            case MassConcentrationUnits.TonnesPerCubicMeter:
-                return this.value * 0.001;
-            case MassConcentrationUnits.PoundsPerCubicInch:
-                return this.value * 3.6127298147753e-5;
-            case MassConcentrationUnits.PoundsPerCubicFoot:
-                return this.value * 0.062427961;
-            case MassConcentrationUnits.SlugsPerCubicFoot:
-                return this.value * 0.00194032033;
-            case MassConcentrationUnits.PoundsPerUSGallon:
-                return this.value / 1.19826427e2;
-            case MassConcentrationUnits.OuncesPerUSGallon:
-                return this.value * 0.1335264711843;
-            case MassConcentrationUnits.OuncesPerImperialGallon:
-                return this.value * 0.1603586720609;
-            case MassConcentrationUnits.PoundsPerImperialGallon:
-                return this.value / 9.9776398e1;
-            case MassConcentrationUnits.KilogramsPerCubicMillimeter:
-                return (this.value * 1e-6) / 1000;
-            case MassConcentrationUnits.KilogramsPerCubicCentimeter:
-                return (this.value * 1e-3) / 1000;
-            case MassConcentrationUnits.KilogramsPerCubicMeter:
-                return (this.value * 1e3) / 1000;
-            case MassConcentrationUnits.MilligramsPerCubicMeter:
-                return (this.value * 1e3) / 0.001;
-            case MassConcentrationUnits.MicrogramsPerCubicMeter:
-                return (this.value * 1e3) / 0.000001;
-            case MassConcentrationUnits.PicogramsPerMicroliter:
-                return (this.value * 1e-6) / 1e-12;
-            case MassConcentrationUnits.NanogramsPerMicroliter:
-                return (this.value * 1e-6) / 1e-9;
-            case MassConcentrationUnits.MicrogramsPerMicroliter:
-                return (this.value * 1e-6) / 0.000001;
-            case MassConcentrationUnits.MilligramsPerMicroliter:
-                return (this.value * 1e-6) / 0.001;
-            case MassConcentrationUnits.CentigramsPerMicroliter:
-                return (this.value * 1e-6) / 0.01;
-            case MassConcentrationUnits.DecigramsPerMicroliter:
-                return (this.value * 1e-6) / 0.1;
-            case MassConcentrationUnits.PicogramsPerMilliliter:
-                return (this.value * 1e-3) / 1e-12;
-            case MassConcentrationUnits.NanogramsPerMilliliter:
-                return (this.value * 1e-3) / 1e-9;
-            case MassConcentrationUnits.MicrogramsPerMilliliter:
-                return (this.value * 1e-3) / 0.000001;
-            case MassConcentrationUnits.MilligramsPerMilliliter:
-                return (this.value * 1e-3) / 0.001;
-            case MassConcentrationUnits.CentigramsPerMilliliter:
-                return (this.value * 1e-3) / 0.01;
-            case MassConcentrationUnits.DecigramsPerMilliliter:
-                return (this.value * 1e-3) / 0.1;
-            case MassConcentrationUnits.PicogramsPerDeciliter:
-                return (this.value * 1e-1) / 1e-12;
-            case MassConcentrationUnits.NanogramsPerDeciliter:
-                return (this.value * 1e-1) / 1e-9;
-            case MassConcentrationUnits.MicrogramsPerDeciliter:
-                return (this.value * 1e-1) / 0.000001;
-            case MassConcentrationUnits.MilligramsPerDeciliter:
-                return (this.value * 1e-1) / 0.001;
-            case MassConcentrationUnits.CentigramsPerDeciliter:
-                return (this.value * 1e-1) / 0.01;
-            case MassConcentrationUnits.DecigramsPerDeciliter:
-                return (this.value * 1e-1) / 0.1;
-            case MassConcentrationUnits.PicogramsPerLiter:
-                return (this.value) / 1e-12;
-            case MassConcentrationUnits.NanogramsPerLiter:
-                return (this.value) / 1e-9;
-            case MassConcentrationUnits.MicrogramsPerLiter:
-                return (this.value) / 0.000001;
-            case MassConcentrationUnits.MilligramsPerLiter:
-                return (this.value) / 0.001;
-            case MassConcentrationUnits.CentigramsPerLiter:
-                return (this.value) / 0.01;
-            case MassConcentrationUnits.DecigramsPerLiter:
-                return (this.value) / 0.1;
-            case MassConcentrationUnits.KilogramsPerLiter:
-                return (this.value) / 1000;
-            case MassConcentrationUnits.KilopoundsPerCubicInch:
-                return (this.value * 3.6127298147753e-5) / 1000;
-            case MassConcentrationUnits.KilopoundsPerCubicFoot:
-                return (this.value * 0.062427961) / 1000;
-            default:
-                break;
+            case MassConcentrationUnits.GramsPerCubicMillimeter: return this.value * 1e-6;
+            case MassConcentrationUnits.GramsPerCubicCentimeter: return this.value * 1e-3;
+            case MassConcentrationUnits.GramsPerCubicMeter: return this.value * 1e3;
+            case MassConcentrationUnits.GramsPerMicroliter: return this.value * 1e-6;
+            case MassConcentrationUnits.GramsPerMilliliter: return this.value * 1e-3;
+            case MassConcentrationUnits.GramsPerDeciliter: return this.value * 1e-1;
+            case MassConcentrationUnits.GramsPerLiter: return this.value;
+            case MassConcentrationUnits.TonnesPerCubicMillimeter: return this.value * 1e-12;
+            case MassConcentrationUnits.TonnesPerCubicCentimeter: return this.value * 1e-9;
+            case MassConcentrationUnits.TonnesPerCubicMeter: return this.value * 0.001;
+            case MassConcentrationUnits.PoundsPerCubicInch: return this.value * 3.6127298147753e-5;
+            case MassConcentrationUnits.PoundsPerCubicFoot: return this.value * 0.062427961;
+            case MassConcentrationUnits.SlugsPerCubicFoot: return this.value * 0.00194032033;
+            case MassConcentrationUnits.PoundsPerUSGallon: return this.value / 1.19826427e2;
+            case MassConcentrationUnits.OuncesPerUSGallon: return this.value * 0.1335264711843;
+            case MassConcentrationUnits.OuncesPerImperialGallon: return this.value * 0.1603586720609;
+            case MassConcentrationUnits.PoundsPerImperialGallon: return this.value / 9.9776398e1;
+            case MassConcentrationUnits.KilogramsPerCubicMillimeter: return (this.value * 1e-6) / 1000;
+            case MassConcentrationUnits.KilogramsPerCubicCentimeter: return (this.value * 1e-3) / 1000;
+            case MassConcentrationUnits.KilogramsPerCubicMeter: return (this.value * 1e3) / 1000;
+            case MassConcentrationUnits.MilligramsPerCubicMeter: return (this.value * 1e3) / 0.001;
+            case MassConcentrationUnits.MicrogramsPerCubicMeter: return (this.value * 1e3) / 0.000001;
+            case MassConcentrationUnits.PicogramsPerMicroliter: return (this.value * 1e-6) / 1e-12;
+            case MassConcentrationUnits.NanogramsPerMicroliter: return (this.value * 1e-6) / 1e-9;
+            case MassConcentrationUnits.MicrogramsPerMicroliter: return (this.value * 1e-6) / 0.000001;
+            case MassConcentrationUnits.MilligramsPerMicroliter: return (this.value * 1e-6) / 0.001;
+            case MassConcentrationUnits.CentigramsPerMicroliter: return (this.value * 1e-6) / 0.01;
+            case MassConcentrationUnits.DecigramsPerMicroliter: return (this.value * 1e-6) / 0.1;
+            case MassConcentrationUnits.PicogramsPerMilliliter: return (this.value * 1e-3) / 1e-12;
+            case MassConcentrationUnits.NanogramsPerMilliliter: return (this.value * 1e-3) / 1e-9;
+            case MassConcentrationUnits.MicrogramsPerMilliliter: return (this.value * 1e-3) / 0.000001;
+            case MassConcentrationUnits.MilligramsPerMilliliter: return (this.value * 1e-3) / 0.001;
+            case MassConcentrationUnits.CentigramsPerMilliliter: return (this.value * 1e-3) / 0.01;
+            case MassConcentrationUnits.DecigramsPerMilliliter: return (this.value * 1e-3) / 0.1;
+            case MassConcentrationUnits.PicogramsPerDeciliter: return (this.value * 1e-1) / 1e-12;
+            case MassConcentrationUnits.NanogramsPerDeciliter: return (this.value * 1e-1) / 1e-9;
+            case MassConcentrationUnits.MicrogramsPerDeciliter: return (this.value * 1e-1) / 0.000001;
+            case MassConcentrationUnits.MilligramsPerDeciliter: return (this.value * 1e-1) / 0.001;
+            case MassConcentrationUnits.CentigramsPerDeciliter: return (this.value * 1e-1) / 0.01;
+            case MassConcentrationUnits.DecigramsPerDeciliter: return (this.value * 1e-1) / 0.1;
+            case MassConcentrationUnits.PicogramsPerLiter: return (this.value) / 1e-12;
+            case MassConcentrationUnits.NanogramsPerLiter: return (this.value) / 1e-9;
+            case MassConcentrationUnits.MicrogramsPerLiter: return (this.value) / 0.000001;
+            case MassConcentrationUnits.MilligramsPerLiter: return (this.value) / 0.001;
+            case MassConcentrationUnits.CentigramsPerLiter: return (this.value) / 0.01;
+            case MassConcentrationUnits.DecigramsPerLiter: return (this.value) / 0.1;
+            case MassConcentrationUnits.KilogramsPerLiter: return (this.value) / 1000;
+            case MassConcentrationUnits.KilopoundsPerCubicInch: return (this.value * 3.6127298147753e-5) / 1000;
+            case MassConcentrationUnits.KilopoundsPerCubicFoot: return (this.value * 0.062427961) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MassConcentrationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MassConcentrationUnits.GramsPerCubicMillimeter: return super.internalDivide(value, 1e-6);
+                case MassConcentrationUnits.GramsPerCubicCentimeter: return super.internalDivide(value, 1e-3);
+                case MassConcentrationUnits.GramsPerCubicMeter: return super.internalDivide(value, 1e3);
+                case MassConcentrationUnits.GramsPerMicroliter: return super.internalDivide(value, 1e-6);
+                case MassConcentrationUnits.GramsPerMilliliter: return super.internalDivide(value, 1e-3);
+                case MassConcentrationUnits.GramsPerDeciliter: return super.internalDivide(value, 1e-1);
+                case MassConcentrationUnits.GramsPerLiter: return value;
+                case MassConcentrationUnits.TonnesPerCubicMillimeter: return super.internalDivide(value, 1e-12);
+                case MassConcentrationUnits.TonnesPerCubicCentimeter: return super.internalDivide(value, 1e-9);
+                case MassConcentrationUnits.TonnesPerCubicMeter: return super.internalDivide(value, 0.001);
+                case MassConcentrationUnits.PoundsPerCubicInch: return super.internalDivide(value, 3.6127298147753e-5);
+                case MassConcentrationUnits.PoundsPerCubicFoot: return super.internalDivide(value, 0.062427961);
+                case MassConcentrationUnits.SlugsPerCubicFoot: return super.internalMultiply(value, 515.378818);
+                case MassConcentrationUnits.PoundsPerUSGallon: return super.internalMultiply(value, 1.19826427e2);
+                case MassConcentrationUnits.OuncesPerUSGallon: return super.internalDivide(value, 0.1335264711843);
+                case MassConcentrationUnits.OuncesPerImperialGallon: return super.internalDivide(value, 0.1603586720609);
+                case MassConcentrationUnits.PoundsPerImperialGallon: return super.internalMultiply(value, 9.9776398e1);
+                case MassConcentrationUnits.KilogramsPerCubicMillimeter: {
+                    const value3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassConcentrationUnits.KilogramsPerCubicCentimeter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassConcentrationUnits.KilogramsPerCubicMeter: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassConcentrationUnits.MilligramsPerCubicMeter: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassConcentrationUnits.MicrogramsPerCubicMeter: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case MassConcentrationUnits.PicogramsPerMicroliter: {
+                    const value3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(value3, 1e-12);
+                }
+                case MassConcentrationUnits.NanogramsPerMicroliter: {
+                    const value3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case MassConcentrationUnits.MicrogramsPerMicroliter: {
+                    const value3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case MassConcentrationUnits.MilligramsPerMicroliter: {
+                    const value3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassConcentrationUnits.CentigramsPerMicroliter: {
+                    const value3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case MassConcentrationUnits.DecigramsPerMicroliter: {
+                    const value3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                case MassConcentrationUnits.PicogramsPerMilliliter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1e-12);
+                }
+                case MassConcentrationUnits.NanogramsPerMilliliter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case MassConcentrationUnits.MicrogramsPerMilliliter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case MassConcentrationUnits.MilligramsPerMilliliter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassConcentrationUnits.CentigramsPerMilliliter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case MassConcentrationUnits.DecigramsPerMilliliter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                case MassConcentrationUnits.PicogramsPerDeciliter: {
+                    const value3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(value3, 1e-12);
+                }
+                case MassConcentrationUnits.NanogramsPerDeciliter: {
+                    const value3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case MassConcentrationUnits.MicrogramsPerDeciliter: {
+                    const value3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case MassConcentrationUnits.MilligramsPerDeciliter: {
+                    const value3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassConcentrationUnits.CentigramsPerDeciliter: {
+                    const value3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case MassConcentrationUnits.DecigramsPerDeciliter: {
+                    const value3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                case MassConcentrationUnits.PicogramsPerLiter: return super.internalMultiply(value, 1e-12);
+                case MassConcentrationUnits.NanogramsPerLiter: return super.internalMultiply(value, 1e-9);
+                case MassConcentrationUnits.MicrogramsPerLiter: return super.internalMultiply(value, 0.000001);
+                case MassConcentrationUnits.MilligramsPerLiter: return super.internalMultiply(value, 0.001);
+                case MassConcentrationUnits.CentigramsPerLiter: return super.internalMultiply(value, 0.01);
+                case MassConcentrationUnits.DecigramsPerLiter: return super.internalMultiply(value, 0.1);
+                case MassConcentrationUnits.KilogramsPerLiter: return super.internalMultiply(value, 1000);
+                case MassConcentrationUnits.KilopoundsPerCubicInch: {
+                    const value3 = super.internalDivide(value, 3.6127298147753e-5);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassConcentrationUnits.KilopoundsPerCubicFoot: {
+                    const value3 = super.internalDivide(value, 0.062427961);
+                    return super.internalMultiply(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MassConcentrationUnits.GramsPerCubicMillimeter:
-                return value / 1e-6;
-            case MassConcentrationUnits.GramsPerCubicCentimeter:
-                return value / 1e-3;
-            case MassConcentrationUnits.GramsPerCubicMeter:
-                return value / 1e3;
-            case MassConcentrationUnits.GramsPerMicroliter:
-                return value / 1e-6;
-            case MassConcentrationUnits.GramsPerMilliliter:
-                return value / 1e-3;
-            case MassConcentrationUnits.GramsPerDeciliter:
-                return value / 1e-1;
-            case MassConcentrationUnits.GramsPerLiter:
-                return value;
-            case MassConcentrationUnits.TonnesPerCubicMillimeter:
-                return value / 1e-12;
-            case MassConcentrationUnits.TonnesPerCubicCentimeter:
-                return value / 1e-9;
-            case MassConcentrationUnits.TonnesPerCubicMeter:
-                return value / 0.001;
-            case MassConcentrationUnits.PoundsPerCubicInch:
-                return value / 3.6127298147753e-5;
-            case MassConcentrationUnits.PoundsPerCubicFoot:
-                return value / 0.062427961;
-            case MassConcentrationUnits.SlugsPerCubicFoot:
-                return value * 515.378818;
-            case MassConcentrationUnits.PoundsPerUSGallon:
-                return value * 1.19826427e2;
-            case MassConcentrationUnits.OuncesPerUSGallon:
-                return  value / 0.1335264711843;
-            case MassConcentrationUnits.OuncesPerImperialGallon:
-                return  value / 0.1603586720609;
-            case MassConcentrationUnits.PoundsPerImperialGallon:
-                return value * 9.9776398e1;
-            case MassConcentrationUnits.KilogramsPerCubicMillimeter:
-                return (value / 1e-6) * 1000;
-            case MassConcentrationUnits.KilogramsPerCubicCentimeter:
-                return (value / 1e-3) * 1000;
-            case MassConcentrationUnits.KilogramsPerCubicMeter:
-                return (value / 1e3) * 1000;
-            case MassConcentrationUnits.MilligramsPerCubicMeter:
-                return (value / 1e3) * 0.001;
-            case MassConcentrationUnits.MicrogramsPerCubicMeter:
-                return (value / 1e3) * 0.000001;
-            case MassConcentrationUnits.PicogramsPerMicroliter:
-                return (value / 1e-6) * 1e-12;
-            case MassConcentrationUnits.NanogramsPerMicroliter:
-                return (value / 1e-6) * 1e-9;
-            case MassConcentrationUnits.MicrogramsPerMicroliter:
-                return (value / 1e-6) * 0.000001;
-            case MassConcentrationUnits.MilligramsPerMicroliter:
-                return (value / 1e-6) * 0.001;
-            case MassConcentrationUnits.CentigramsPerMicroliter:
-                return (value / 1e-6) * 0.01;
-            case MassConcentrationUnits.DecigramsPerMicroliter:
-                return (value / 1e-6) * 0.1;
-            case MassConcentrationUnits.PicogramsPerMilliliter:
-                return (value / 1e-3) * 1e-12;
-            case MassConcentrationUnits.NanogramsPerMilliliter:
-                return (value / 1e-3) * 1e-9;
-            case MassConcentrationUnits.MicrogramsPerMilliliter:
-                return (value / 1e-3) * 0.000001;
-            case MassConcentrationUnits.MilligramsPerMilliliter:
-                return (value / 1e-3) * 0.001;
-            case MassConcentrationUnits.CentigramsPerMilliliter:
-                return (value / 1e-3) * 0.01;
-            case MassConcentrationUnits.DecigramsPerMilliliter:
-                return (value / 1e-3) * 0.1;
-            case MassConcentrationUnits.PicogramsPerDeciliter:
-                return (value / 1e-1) * 1e-12;
-            case MassConcentrationUnits.NanogramsPerDeciliter:
-                return (value / 1e-1) * 1e-9;
-            case MassConcentrationUnits.MicrogramsPerDeciliter:
-                return (value / 1e-1) * 0.000001;
-            case MassConcentrationUnits.MilligramsPerDeciliter:
-                return (value / 1e-1) * 0.001;
-            case MassConcentrationUnits.CentigramsPerDeciliter:
-                return (value / 1e-1) * 0.01;
-            case MassConcentrationUnits.DecigramsPerDeciliter:
-                return (value / 1e-1) * 0.1;
-            case MassConcentrationUnits.PicogramsPerLiter:
-                return (value) * 1e-12;
-            case MassConcentrationUnits.NanogramsPerLiter:
-                return (value) * 1e-9;
-            case MassConcentrationUnits.MicrogramsPerLiter:
-                return (value) * 0.000001;
-            case MassConcentrationUnits.MilligramsPerLiter:
-                return (value) * 0.001;
-            case MassConcentrationUnits.CentigramsPerLiter:
-                return (value) * 0.01;
-            case MassConcentrationUnits.DecigramsPerLiter:
-                return (value) * 0.1;
-            case MassConcentrationUnits.KilogramsPerLiter:
-                return (value) * 1000;
-            case MassConcentrationUnits.KilopoundsPerCubicInch:
-                return (value / 3.6127298147753e-5) * 1000;
-            case MassConcentrationUnits.KilopoundsPerCubicFoot:
-                return (value / 0.062427961) * 1000;
-            default:
-                break;
+            case MassConcentrationUnits.GramsPerCubicMillimeter: return value / 1e-6;
+            case MassConcentrationUnits.GramsPerCubicCentimeter: return value / 1e-3;
+            case MassConcentrationUnits.GramsPerCubicMeter: return value / 1e3;
+            case MassConcentrationUnits.GramsPerMicroliter: return value / 1e-6;
+            case MassConcentrationUnits.GramsPerMilliliter: return value / 1e-3;
+            case MassConcentrationUnits.GramsPerDeciliter: return value / 1e-1;
+            case MassConcentrationUnits.GramsPerLiter: return value;
+            case MassConcentrationUnits.TonnesPerCubicMillimeter: return value / 1e-12;
+            case MassConcentrationUnits.TonnesPerCubicCentimeter: return value / 1e-9;
+            case MassConcentrationUnits.TonnesPerCubicMeter: return value / 0.001;
+            case MassConcentrationUnits.PoundsPerCubicInch: return value / 3.6127298147753e-5;
+            case MassConcentrationUnits.PoundsPerCubicFoot: return value / 0.062427961;
+            case MassConcentrationUnits.SlugsPerCubicFoot: return value * 515.378818;
+            case MassConcentrationUnits.PoundsPerUSGallon: return value * 1.19826427e2;
+            case MassConcentrationUnits.OuncesPerUSGallon: return  value / 0.1335264711843;
+            case MassConcentrationUnits.OuncesPerImperialGallon: return  value / 0.1603586720609;
+            case MassConcentrationUnits.PoundsPerImperialGallon: return value * 9.9776398e1;
+            case MassConcentrationUnits.KilogramsPerCubicMillimeter: return (value / 1e-6) * 1000;
+            case MassConcentrationUnits.KilogramsPerCubicCentimeter: return (value / 1e-3) * 1000;
+            case MassConcentrationUnits.KilogramsPerCubicMeter: return (value / 1e3) * 1000;
+            case MassConcentrationUnits.MilligramsPerCubicMeter: return (value / 1e3) * 0.001;
+            case MassConcentrationUnits.MicrogramsPerCubicMeter: return (value / 1e3) * 0.000001;
+            case MassConcentrationUnits.PicogramsPerMicroliter: return (value / 1e-6) * 1e-12;
+            case MassConcentrationUnits.NanogramsPerMicroliter: return (value / 1e-6) * 1e-9;
+            case MassConcentrationUnits.MicrogramsPerMicroliter: return (value / 1e-6) * 0.000001;
+            case MassConcentrationUnits.MilligramsPerMicroliter: return (value / 1e-6) * 0.001;
+            case MassConcentrationUnits.CentigramsPerMicroliter: return (value / 1e-6) * 0.01;
+            case MassConcentrationUnits.DecigramsPerMicroliter: return (value / 1e-6) * 0.1;
+            case MassConcentrationUnits.PicogramsPerMilliliter: return (value / 1e-3) * 1e-12;
+            case MassConcentrationUnits.NanogramsPerMilliliter: return (value / 1e-3) * 1e-9;
+            case MassConcentrationUnits.MicrogramsPerMilliliter: return (value / 1e-3) * 0.000001;
+            case MassConcentrationUnits.MilligramsPerMilliliter: return (value / 1e-3) * 0.001;
+            case MassConcentrationUnits.CentigramsPerMilliliter: return (value / 1e-3) * 0.01;
+            case MassConcentrationUnits.DecigramsPerMilliliter: return (value / 1e-3) * 0.1;
+            case MassConcentrationUnits.PicogramsPerDeciliter: return (value / 1e-1) * 1e-12;
+            case MassConcentrationUnits.NanogramsPerDeciliter: return (value / 1e-1) * 1e-9;
+            case MassConcentrationUnits.MicrogramsPerDeciliter: return (value / 1e-1) * 0.000001;
+            case MassConcentrationUnits.MilligramsPerDeciliter: return (value / 1e-1) * 0.001;
+            case MassConcentrationUnits.CentigramsPerDeciliter: return (value / 1e-1) * 0.01;
+            case MassConcentrationUnits.DecigramsPerDeciliter: return (value / 1e-1) * 0.1;
+            case MassConcentrationUnits.PicogramsPerLiter: return (value) * 1e-12;
+            case MassConcentrationUnits.NanogramsPerLiter: return (value) * 1e-9;
+            case MassConcentrationUnits.MicrogramsPerLiter: return (value) * 0.000001;
+            case MassConcentrationUnits.MilligramsPerLiter: return (value) * 0.001;
+            case MassConcentrationUnits.CentigramsPerLiter: return (value) * 0.01;
+            case MassConcentrationUnits.DecigramsPerLiter: return (value) * 0.1;
+            case MassConcentrationUnits.KilogramsPerLiter: return (value) * 1000;
+            case MassConcentrationUnits.KilopoundsPerCubicInch: return (value / 3.6127298147753e-5) * 1000;
+            case MassConcentrationUnits.KilopoundsPerCubicFoot: return (value / 0.062427961) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

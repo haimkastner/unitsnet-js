@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Permeability */
 export interface PermeabilityDto {
@@ -93,25 +93,27 @@ export class Permeability extends BaseUnit {
     }
 
     private convertFromBase(toUnit: PermeabilityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case PermeabilityUnits.HenriesPerMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case PermeabilityUnits.HenriesPerMeter:
-                return this.value;
-            default:
-                break;
+            case PermeabilityUnits.HenriesPerMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PermeabilityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case PermeabilityUnits.HenriesPerMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case PermeabilityUnits.HenriesPerMeter:
-                return value;
-            default:
-                break;
+            case PermeabilityUnits.HenriesPerMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

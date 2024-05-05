@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Torque */
 export interface TorqueDto {
@@ -621,121 +621,171 @@ export class Torque extends BaseUnit {
     }
 
     private convertFromBase(toUnit: TorqueUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case TorqueUnits.NewtonMillimeters: return super.internalMultiply(this.value, 1000);
+                case TorqueUnits.NewtonCentimeters: return super.internalMultiply(this.value, 100);
+                case TorqueUnits.NewtonMeters: return this.value;
+                case TorqueUnits.PoundalFeet: return super.internalDivide(this.value, 4.21401100938048e-2);
+                case TorqueUnits.PoundForceInches: return super.internalDivide(this.value, 1.129848290276167e-1);
+                case TorqueUnits.PoundForceFeet: return super.internalDivide(this.value, 1.3558179483314);
+                case TorqueUnits.GramForceMillimeters: return super.internalDivide(this.value, 9.80665e-6);
+                case TorqueUnits.GramForceCentimeters: return super.internalDivide(this.value, 9.80665e-5);
+                case TorqueUnits.GramForceMeters: return super.internalDivide(this.value, 9.80665e-3);
+                case TorqueUnits.KilogramForceMillimeters: return super.internalDivide(this.value, 9.80665e-3);
+                case TorqueUnits.KilogramForceCentimeters: return super.internalDivide(this.value, 9.80665e-2);
+                case TorqueUnits.KilogramForceMeters: return super.internalDivide(this.value, 9.80665);
+                case TorqueUnits.TonneForceMillimeters: return super.internalDivide(this.value, 9.80665);
+                case TorqueUnits.TonneForceCentimeters: return super.internalDivide(this.value, 9.80665e1);
+                case TorqueUnits.TonneForceMeters: return super.internalDivide(this.value, 9.80665e3);
+                case TorqueUnits.KilonewtonMillimeters: {
+                    const value3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(value3, 1000);
+                }
+                case TorqueUnits.MeganewtonMillimeters: {
+                    const value3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case TorqueUnits.KilonewtonCentimeters: {
+                    const value3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(value3, 1000);
+                }
+                case TorqueUnits.MeganewtonCentimeters: {
+                    const value3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case TorqueUnits.KilonewtonMeters: return super.internalDivide(this.value, 1000);
+                case TorqueUnits.MeganewtonMeters: return super.internalDivide(this.value, 1000000);
+                case TorqueUnits.KilopoundForceInches: {
+                    const value3 = super.internalDivide(this.value, 1.129848290276167e-1);
+                    return super.internalDivide(value3, 1000);
+                }
+                case TorqueUnits.MegapoundForceInches: {
+                    const value3 = super.internalDivide(this.value, 1.129848290276167e-1);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case TorqueUnits.KilopoundForceFeet: {
+                    const value3 = super.internalDivide(this.value, 1.3558179483314);
+                    return super.internalDivide(value3, 1000);
+                }
+                case TorqueUnits.MegapoundForceFeet: {
+                    const value3 = super.internalDivide(this.value, 1.3558179483314);
+                    return super.internalDivide(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case TorqueUnits.NewtonMillimeters:
-                return this.value * 1000;
-            case TorqueUnits.NewtonCentimeters:
-                return this.value * 100;
-            case TorqueUnits.NewtonMeters:
-                return this.value;
-            case TorqueUnits.PoundalFeet:
-                return this.value / 4.21401100938048e-2;
-            case TorqueUnits.PoundForceInches:
-                return this.value / 1.129848290276167e-1;
-            case TorqueUnits.PoundForceFeet:
-                return this.value / 1.3558179483314;
-            case TorqueUnits.GramForceMillimeters:
-                return this.value / 9.80665e-6;
-            case TorqueUnits.GramForceCentimeters:
-                return this.value / 9.80665e-5;
-            case TorqueUnits.GramForceMeters:
-                return this.value / 9.80665e-3;
-            case TorqueUnits.KilogramForceMillimeters:
-                return this.value / 9.80665e-3;
-            case TorqueUnits.KilogramForceCentimeters:
-                return this.value / 9.80665e-2;
-            case TorqueUnits.KilogramForceMeters:
-                return this.value / 9.80665;
-            case TorqueUnits.TonneForceMillimeters:
-                return this.value / 9.80665;
-            case TorqueUnits.TonneForceCentimeters:
-                return this.value / 9.80665e1;
-            case TorqueUnits.TonneForceMeters:
-                return this.value / 9.80665e3;
-            case TorqueUnits.KilonewtonMillimeters:
-                return (this.value * 1000) / 1000;
-            case TorqueUnits.MeganewtonMillimeters:
-                return (this.value * 1000) / 1000000;
-            case TorqueUnits.KilonewtonCentimeters:
-                return (this.value * 100) / 1000;
-            case TorqueUnits.MeganewtonCentimeters:
-                return (this.value * 100) / 1000000;
-            case TorqueUnits.KilonewtonMeters:
-                return (this.value) / 1000;
-            case TorqueUnits.MeganewtonMeters:
-                return (this.value) / 1000000;
-            case TorqueUnits.KilopoundForceInches:
-                return (this.value / 1.129848290276167e-1) / 1000;
-            case TorqueUnits.MegapoundForceInches:
-                return (this.value / 1.129848290276167e-1) / 1000000;
-            case TorqueUnits.KilopoundForceFeet:
-                return (this.value / 1.3558179483314) / 1000;
-            case TorqueUnits.MegapoundForceFeet:
-                return (this.value / 1.3558179483314) / 1000000;
-            default:
-                break;
+            case TorqueUnits.NewtonMillimeters: return this.value * 1000;
+            case TorqueUnits.NewtonCentimeters: return this.value * 100;
+            case TorqueUnits.NewtonMeters: return this.value;
+            case TorqueUnits.PoundalFeet: return this.value / 4.21401100938048e-2;
+            case TorqueUnits.PoundForceInches: return this.value / 1.129848290276167e-1;
+            case TorqueUnits.PoundForceFeet: return this.value / 1.3558179483314;
+            case TorqueUnits.GramForceMillimeters: return this.value / 9.80665e-6;
+            case TorqueUnits.GramForceCentimeters: return this.value / 9.80665e-5;
+            case TorqueUnits.GramForceMeters: return this.value / 9.80665e-3;
+            case TorqueUnits.KilogramForceMillimeters: return this.value / 9.80665e-3;
+            case TorqueUnits.KilogramForceCentimeters: return this.value / 9.80665e-2;
+            case TorqueUnits.KilogramForceMeters: return this.value / 9.80665;
+            case TorqueUnits.TonneForceMillimeters: return this.value / 9.80665;
+            case TorqueUnits.TonneForceCentimeters: return this.value / 9.80665e1;
+            case TorqueUnits.TonneForceMeters: return this.value / 9.80665e3;
+            case TorqueUnits.KilonewtonMillimeters: return (this.value * 1000) / 1000;
+            case TorqueUnits.MeganewtonMillimeters: return (this.value * 1000) / 1000000;
+            case TorqueUnits.KilonewtonCentimeters: return (this.value * 100) / 1000;
+            case TorqueUnits.MeganewtonCentimeters: return (this.value * 100) / 1000000;
+            case TorqueUnits.KilonewtonMeters: return (this.value) / 1000;
+            case TorqueUnits.MeganewtonMeters: return (this.value) / 1000000;
+            case TorqueUnits.KilopoundForceInches: return (this.value / 1.129848290276167e-1) / 1000;
+            case TorqueUnits.MegapoundForceInches: return (this.value / 1.129848290276167e-1) / 1000000;
+            case TorqueUnits.KilopoundForceFeet: return (this.value / 1.3558179483314) / 1000;
+            case TorqueUnits.MegapoundForceFeet: return (this.value / 1.3558179483314) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: TorqueUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case TorqueUnits.NewtonMillimeters: return super.internalMultiply(value, 0.001);
+                case TorqueUnits.NewtonCentimeters: return super.internalMultiply(value, 0.01);
+                case TorqueUnits.NewtonMeters: return value;
+                case TorqueUnits.PoundalFeet: return super.internalMultiply(value, 4.21401100938048e-2);
+                case TorqueUnits.PoundForceInches: return super.internalMultiply(value, 1.129848290276167e-1);
+                case TorqueUnits.PoundForceFeet: return super.internalMultiply(value, 1.3558179483314);
+                case TorqueUnits.GramForceMillimeters: return super.internalMultiply(value, 9.80665e-6);
+                case TorqueUnits.GramForceCentimeters: return super.internalMultiply(value, 9.80665e-5);
+                case TorqueUnits.GramForceMeters: return super.internalMultiply(value, 9.80665e-3);
+                case TorqueUnits.KilogramForceMillimeters: return super.internalMultiply(value, 9.80665e-3);
+                case TorqueUnits.KilogramForceCentimeters: return super.internalMultiply(value, 9.80665e-2);
+                case TorqueUnits.KilogramForceMeters: return super.internalMultiply(value, 9.80665);
+                case TorqueUnits.TonneForceMillimeters: return super.internalMultiply(value, 9.80665);
+                case TorqueUnits.TonneForceCentimeters: return super.internalMultiply(value, 9.80665e1);
+                case TorqueUnits.TonneForceMeters: return super.internalMultiply(value, 9.80665e3);
+                case TorqueUnits.KilonewtonMillimeters: {
+                    const value3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case TorqueUnits.MeganewtonMillimeters: {
+                    const value3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case TorqueUnits.KilonewtonCentimeters: {
+                    const value3 = super.internalMultiply(value, 0.01);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case TorqueUnits.MeganewtonCentimeters: {
+                    const value3 = super.internalMultiply(value, 0.01);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case TorqueUnits.KilonewtonMeters: return super.internalMultiply(value, 1000);
+                case TorqueUnits.MeganewtonMeters: return super.internalMultiply(value, 1000000);
+                case TorqueUnits.KilopoundForceInches: {
+                    const value3 = super.internalMultiply(value, 1.129848290276167e-1);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case TorqueUnits.MegapoundForceInches: {
+                    const value3 = super.internalMultiply(value, 1.129848290276167e-1);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case TorqueUnits.KilopoundForceFeet: {
+                    const value3 = super.internalMultiply(value, 1.3558179483314);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case TorqueUnits.MegapoundForceFeet: {
+                    const value3 = super.internalMultiply(value, 1.3558179483314);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case TorqueUnits.NewtonMillimeters:
-                return value * 0.001;
-            case TorqueUnits.NewtonCentimeters:
-                return value * 0.01;
-            case TorqueUnits.NewtonMeters:
-                return value;
-            case TorqueUnits.PoundalFeet:
-                return value * 4.21401100938048e-2;
-            case TorqueUnits.PoundForceInches:
-                return value * 1.129848290276167e-1;
-            case TorqueUnits.PoundForceFeet:
-                return value * 1.3558179483314;
-            case TorqueUnits.GramForceMillimeters:
-                return value * 9.80665e-6;
-            case TorqueUnits.GramForceCentimeters:
-                return value * 9.80665e-5;
-            case TorqueUnits.GramForceMeters:
-                return value * 9.80665e-3;
-            case TorqueUnits.KilogramForceMillimeters:
-                return value * 9.80665e-3;
-            case TorqueUnits.KilogramForceCentimeters:
-                return value * 9.80665e-2;
-            case TorqueUnits.KilogramForceMeters:
-                return value * 9.80665;
-            case TorqueUnits.TonneForceMillimeters:
-                return value * 9.80665;
-            case TorqueUnits.TonneForceCentimeters:
-                return value * 9.80665e1;
-            case TorqueUnits.TonneForceMeters:
-                return value * 9.80665e3;
-            case TorqueUnits.KilonewtonMillimeters:
-                return (value * 0.001) * 1000;
-            case TorqueUnits.MeganewtonMillimeters:
-                return (value * 0.001) * 1000000;
-            case TorqueUnits.KilonewtonCentimeters:
-                return (value * 0.01) * 1000;
-            case TorqueUnits.MeganewtonCentimeters:
-                return (value * 0.01) * 1000000;
-            case TorqueUnits.KilonewtonMeters:
-                return (value) * 1000;
-            case TorqueUnits.MeganewtonMeters:
-                return (value) * 1000000;
-            case TorqueUnits.KilopoundForceInches:
-                return (value * 1.129848290276167e-1) * 1000;
-            case TorqueUnits.MegapoundForceInches:
-                return (value * 1.129848290276167e-1) * 1000000;
-            case TorqueUnits.KilopoundForceFeet:
-                return (value * 1.3558179483314) * 1000;
-            case TorqueUnits.MegapoundForceFeet:
-                return (value * 1.3558179483314) * 1000000;
-            default:
-                break;
+            case TorqueUnits.NewtonMillimeters: return value * 0.001;
+            case TorqueUnits.NewtonCentimeters: return value * 0.01;
+            case TorqueUnits.NewtonMeters: return value;
+            case TorqueUnits.PoundalFeet: return value * 4.21401100938048e-2;
+            case TorqueUnits.PoundForceInches: return value * 1.129848290276167e-1;
+            case TorqueUnits.PoundForceFeet: return value * 1.3558179483314;
+            case TorqueUnits.GramForceMillimeters: return value * 9.80665e-6;
+            case TorqueUnits.GramForceCentimeters: return value * 9.80665e-5;
+            case TorqueUnits.GramForceMeters: return value * 9.80665e-3;
+            case TorqueUnits.KilogramForceMillimeters: return value * 9.80665e-3;
+            case TorqueUnits.KilogramForceCentimeters: return value * 9.80665e-2;
+            case TorqueUnits.KilogramForceMeters: return value * 9.80665;
+            case TorqueUnits.TonneForceMillimeters: return value * 9.80665;
+            case TorqueUnits.TonneForceCentimeters: return value * 9.80665e1;
+            case TorqueUnits.TonneForceMeters: return value * 9.80665e3;
+            case TorqueUnits.KilonewtonMillimeters: return (value * 0.001) * 1000;
+            case TorqueUnits.MeganewtonMillimeters: return (value * 0.001) * 1000000;
+            case TorqueUnits.KilonewtonCentimeters: return (value * 0.01) * 1000;
+            case TorqueUnits.MeganewtonCentimeters: return (value * 0.01) * 1000000;
+            case TorqueUnits.KilonewtonMeters: return (value) * 1000;
+            case TorqueUnits.MeganewtonMeters: return (value) * 1000000;
+            case TorqueUnits.KilopoundForceInches: return (value * 1.129848290276167e-1) * 1000;
+            case TorqueUnits.MegapoundForceInches: return (value * 1.129848290276167e-1) * 1000000;
+            case TorqueUnits.KilopoundForceFeet: return (value * 1.3558179483314) * 1000;
+            case TorqueUnits.MegapoundForceFeet: return (value * 1.3558179483314) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

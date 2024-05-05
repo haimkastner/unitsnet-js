@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a SpecificEnergy */
 export interface SpecificEnergyDto {
@@ -731,141 +731,319 @@ export class SpecificEnergy extends BaseUnit {
     }
 
     private convertFromBase(toUnit: SpecificEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case SpecificEnergyUnits.JoulesPerKilogram: return this.value;
+                case SpecificEnergyUnits.MegaJoulesPerTonne: return super.internalDivide(this.value, 1e3);
+                case SpecificEnergyUnits.CaloriesPerGram: return super.internalDivide(this.value, 4.184e3);
+                case SpecificEnergyUnits.WattHoursPerKilogram: return super.internalDivide(this.value, 3.6e3);
+                case SpecificEnergyUnits.WattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    return super.internalDivide(this.value, value4);
+                }
+                case SpecificEnergyUnits.WattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    return super.internalDivide(this.value, value6);
+                }
+                case SpecificEnergyUnits.WattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    return super.internalDivide(this.value, value6);
+                }
+                case SpecificEnergyUnits.WattHoursPerPound: return super.internalDivide(this.value, 7.93664e3);
+                case SpecificEnergyUnits.BtuPerPound: return super.internalDivide(this.value, 2326.000075362);
+                case SpecificEnergyUnits.KilojoulesPerKilogram: return super.internalDivide(this.value, 1000);
+                case SpecificEnergyUnits.MegajoulesPerKilogram: return super.internalDivide(this.value, 1000000);
+                case SpecificEnergyUnits.KilocaloriesPerGram: {
+                    const value3 = super.internalDivide(this.value, 4.184e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case SpecificEnergyUnits.KilowattHoursPerKilogram: {
+                    const value3 = super.internalDivide(this.value, 3.6e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case SpecificEnergyUnits.MegawattHoursPerKilogram: {
+                    const value3 = super.internalDivide(this.value, 3.6e3);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattHoursPerKilogram: {
+                    const value3 = super.internalDivide(this.value, 3.6e3);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case SpecificEnergyUnits.KilowattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000);
+                }
+                case SpecificEnergyUnits.MegawattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000000000);
+                }
+                case SpecificEnergyUnits.TerawattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000000000000);
+                }
+                case SpecificEnergyUnits.KilowattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    const value7 = super.internalDivide(this.value, value6);
+                    return super.internalDivide(value7, 1000);
+                }
+                case SpecificEnergyUnits.MegawattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    const value7 = super.internalDivide(this.value, value6);
+                    return super.internalDivide(value7, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    const value7 = super.internalDivide(this.value, value6);
+                    return super.internalDivide(value7, 1000000000);
+                }
+                case SpecificEnergyUnits.TerawattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    const value7 = super.internalDivide(this.value, value6);
+                    return super.internalDivide(value7, 1000000000000);
+                }
+                case SpecificEnergyUnits.KilowattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    const value7 = super.internalDivide(this.value, value6);
+                    return super.internalDivide(value7, 1000);
+                }
+                case SpecificEnergyUnits.MegawattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    const value7 = super.internalDivide(this.value, value6);
+                    return super.internalDivide(value7, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    const value7 = super.internalDivide(this.value, value6);
+                    return super.internalDivide(value7, 1000000000);
+                }
+                case SpecificEnergyUnits.TerawattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    const value7 = super.internalDivide(this.value, value6);
+                    return super.internalDivide(value7, 1000000000000);
+                }
+                case SpecificEnergyUnits.KilowattHoursPerPound: {
+                    const value3 = super.internalDivide(this.value, 7.93664e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case SpecificEnergyUnits.MegawattHoursPerPound: {
+                    const value3 = super.internalDivide(this.value, 7.93664e3);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattHoursPerPound: {
+                    const value3 = super.internalDivide(this.value, 7.93664e3);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case SpecificEnergyUnits.JoulesPerKilogram:
-                return this.value;
-            case SpecificEnergyUnits.MegaJoulesPerTonne:
-                return this.value / 1e3;
-            case SpecificEnergyUnits.CaloriesPerGram:
-                return this.value / 4.184e3;
-            case SpecificEnergyUnits.WattHoursPerKilogram:
-                return this.value / 3.6e3;
-            case SpecificEnergyUnits.WattDaysPerKilogram:
-                return this.value / (24 * 3.6e3);
-            case SpecificEnergyUnits.WattDaysPerTonne:
-                return this.value / ((24 * 3.6e3) / 1e3);
-            case SpecificEnergyUnits.WattDaysPerShortTon:
-                return this.value / ((24 * 3.6e3) / 9.0718474e2);
-            case SpecificEnergyUnits.WattHoursPerPound:
-                return this.value / 7.93664e3;
-            case SpecificEnergyUnits.BtuPerPound:
-                return this.value / 2326.000075362;
-            case SpecificEnergyUnits.KilojoulesPerKilogram:
-                return (this.value) / 1000;
-            case SpecificEnergyUnits.MegajoulesPerKilogram:
-                return (this.value) / 1000000;
-            case SpecificEnergyUnits.KilocaloriesPerGram:
-                return (this.value / 4.184e3) / 1000;
-            case SpecificEnergyUnits.KilowattHoursPerKilogram:
-                return (this.value / 3.6e3) / 1000;
-            case SpecificEnergyUnits.MegawattHoursPerKilogram:
-                return (this.value / 3.6e3) / 1000000;
-            case SpecificEnergyUnits.GigawattHoursPerKilogram:
-                return (this.value / 3.6e3) / 1000000000;
-            case SpecificEnergyUnits.KilowattDaysPerKilogram:
-                return (this.value / (24 * 3.6e3)) / 1000;
-            case SpecificEnergyUnits.MegawattDaysPerKilogram:
-                return (this.value / (24 * 3.6e3)) / 1000000;
-            case SpecificEnergyUnits.GigawattDaysPerKilogram:
-                return (this.value / (24 * 3.6e3)) / 1000000000;
-            case SpecificEnergyUnits.TerawattDaysPerKilogram:
-                return (this.value / (24 * 3.6e3)) / 1000000000000;
-            case SpecificEnergyUnits.KilowattDaysPerTonne:
-                return (this.value / ((24 * 3.6e3) / 1e3)) / 1000;
-            case SpecificEnergyUnits.MegawattDaysPerTonne:
-                return (this.value / ((24 * 3.6e3) / 1e3)) / 1000000;
-            case SpecificEnergyUnits.GigawattDaysPerTonne:
-                return (this.value / ((24 * 3.6e3) / 1e3)) / 1000000000;
-            case SpecificEnergyUnits.TerawattDaysPerTonne:
-                return (this.value / ((24 * 3.6e3) / 1e3)) / 1000000000000;
-            case SpecificEnergyUnits.KilowattDaysPerShortTon:
-                return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000;
-            case SpecificEnergyUnits.MegawattDaysPerShortTon:
-                return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000000;
-            case SpecificEnergyUnits.GigawattDaysPerShortTon:
-                return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000000000;
-            case SpecificEnergyUnits.TerawattDaysPerShortTon:
-                return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000000000000;
-            case SpecificEnergyUnits.KilowattHoursPerPound:
-                return (this.value / 7.93664e3) / 1000;
-            case SpecificEnergyUnits.MegawattHoursPerPound:
-                return (this.value / 7.93664e3) / 1000000;
-            case SpecificEnergyUnits.GigawattHoursPerPound:
-                return (this.value / 7.93664e3) / 1000000000;
-            default:
-                break;
+            case SpecificEnergyUnits.JoulesPerKilogram: return this.value;
+            case SpecificEnergyUnits.MegaJoulesPerTonne: return this.value / 1e3;
+            case SpecificEnergyUnits.CaloriesPerGram: return this.value / 4.184e3;
+            case SpecificEnergyUnits.WattHoursPerKilogram: return this.value / 3.6e3;
+            case SpecificEnergyUnits.WattDaysPerKilogram: return this.value / (24 * 3.6e3);
+            case SpecificEnergyUnits.WattDaysPerTonne: return this.value / ((24 * 3.6e3) / 1e3);
+            case SpecificEnergyUnits.WattDaysPerShortTon: return this.value / ((24 * 3.6e3) / 9.0718474e2);
+            case SpecificEnergyUnits.WattHoursPerPound: return this.value / 7.93664e3;
+            case SpecificEnergyUnits.BtuPerPound: return this.value / 2326.000075362;
+            case SpecificEnergyUnits.KilojoulesPerKilogram: return (this.value) / 1000;
+            case SpecificEnergyUnits.MegajoulesPerKilogram: return (this.value) / 1000000;
+            case SpecificEnergyUnits.KilocaloriesPerGram: return (this.value / 4.184e3) / 1000;
+            case SpecificEnergyUnits.KilowattHoursPerKilogram: return (this.value / 3.6e3) / 1000;
+            case SpecificEnergyUnits.MegawattHoursPerKilogram: return (this.value / 3.6e3) / 1000000;
+            case SpecificEnergyUnits.GigawattHoursPerKilogram: return (this.value / 3.6e3) / 1000000000;
+            case SpecificEnergyUnits.KilowattDaysPerKilogram: return (this.value / (24 * 3.6e3)) / 1000;
+            case SpecificEnergyUnits.MegawattDaysPerKilogram: return (this.value / (24 * 3.6e3)) / 1000000;
+            case SpecificEnergyUnits.GigawattDaysPerKilogram: return (this.value / (24 * 3.6e3)) / 1000000000;
+            case SpecificEnergyUnits.TerawattDaysPerKilogram: return (this.value / (24 * 3.6e3)) / 1000000000000;
+            case SpecificEnergyUnits.KilowattDaysPerTonne: return (this.value / ((24 * 3.6e3) / 1e3)) / 1000;
+            case SpecificEnergyUnits.MegawattDaysPerTonne: return (this.value / ((24 * 3.6e3) / 1e3)) / 1000000;
+            case SpecificEnergyUnits.GigawattDaysPerTonne: return (this.value / ((24 * 3.6e3) / 1e3)) / 1000000000;
+            case SpecificEnergyUnits.TerawattDaysPerTonne: return (this.value / ((24 * 3.6e3) / 1e3)) / 1000000000000;
+            case SpecificEnergyUnits.KilowattDaysPerShortTon: return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000;
+            case SpecificEnergyUnits.MegawattDaysPerShortTon: return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000000;
+            case SpecificEnergyUnits.GigawattDaysPerShortTon: return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000000000;
+            case SpecificEnergyUnits.TerawattDaysPerShortTon: return (this.value / ((24 * 3.6e3) / 9.0718474e2)) / 1000000000000;
+            case SpecificEnergyUnits.KilowattHoursPerPound: return (this.value / 7.93664e3) / 1000;
+            case SpecificEnergyUnits.MegawattHoursPerPound: return (this.value / 7.93664e3) / 1000000;
+            case SpecificEnergyUnits.GigawattHoursPerPound: return (this.value / 7.93664e3) / 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: SpecificEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case SpecificEnergyUnits.JoulesPerKilogram: return value;
+                case SpecificEnergyUnits.MegaJoulesPerTonne: return super.internalMultiply(value, 1e3);
+                case SpecificEnergyUnits.CaloriesPerGram: return super.internalMultiply(value, 4.184e3);
+                case SpecificEnergyUnits.WattHoursPerKilogram: return super.internalMultiply(value, 3.6e3);
+                case SpecificEnergyUnits.WattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    return super.internalMultiply(value, value4);
+                }
+                case SpecificEnergyUnits.WattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    return super.internalMultiply(value, value6);
+                }
+                case SpecificEnergyUnits.WattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    return super.internalMultiply(value, value6);
+                }
+                case SpecificEnergyUnits.WattHoursPerPound: return super.internalMultiply(value, 7.93664e3);
+                case SpecificEnergyUnits.BtuPerPound: return super.internalMultiply(value, 2326.000075362);
+                case SpecificEnergyUnits.KilojoulesPerKilogram: return super.internalMultiply(value, 1000);
+                case SpecificEnergyUnits.MegajoulesPerKilogram: return super.internalMultiply(value, 1000000);
+                case SpecificEnergyUnits.KilocaloriesPerGram: {
+                    const value3 = super.internalMultiply(value, 4.184e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case SpecificEnergyUnits.KilowattHoursPerKilogram: {
+                    const value3 = super.internalMultiply(value, 3.6e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case SpecificEnergyUnits.MegawattHoursPerKilogram: {
+                    const value3 = super.internalMultiply(value, 3.6e3);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattHoursPerKilogram: {
+                    const value3 = super.internalMultiply(value, 3.6e3);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case SpecificEnergyUnits.KilowattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value5 = super.internalMultiply(value, value4);
+                    return super.internalMultiply(value5, 1000);
+                }
+                case SpecificEnergyUnits.MegawattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value5 = super.internalMultiply(value, value4);
+                    return super.internalMultiply(value5, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value5 = super.internalMultiply(value, value4);
+                    return super.internalMultiply(value5, 1000000000);
+                }
+                case SpecificEnergyUnits.TerawattDaysPerKilogram: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value5 = super.internalMultiply(value, value4);
+                    return super.internalMultiply(value5, 1000000000000);
+                }
+                case SpecificEnergyUnits.KilowattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    const value7 = super.internalMultiply(value, value6);
+                    return super.internalMultiply(value7, 1000);
+                }
+                case SpecificEnergyUnits.MegawattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    const value7 = super.internalMultiply(value, value6);
+                    return super.internalMultiply(value7, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    const value7 = super.internalMultiply(value, value6);
+                    return super.internalMultiply(value7, 1000000000);
+                }
+                case SpecificEnergyUnits.TerawattDaysPerTonne: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 1e3);
+                    const value7 = super.internalMultiply(value, value6);
+                    return super.internalMultiply(value7, 1000000000000);
+                }
+                case SpecificEnergyUnits.KilowattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    const value7 = super.internalMultiply(value, value6);
+                    return super.internalMultiply(value7, 1000);
+                }
+                case SpecificEnergyUnits.MegawattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    const value7 = super.internalMultiply(value, value6);
+                    return super.internalMultiply(value7, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    const value7 = super.internalMultiply(value, value6);
+                    return super.internalMultiply(value7, 1000000000);
+                }
+                case SpecificEnergyUnits.TerawattDaysPerShortTon: {
+                    const value4 = super.internalMultiply(24, 3.6e3);
+                    const value6 = super.internalDivide(value4, 9.0718474e2);
+                    const value7 = super.internalMultiply(value, value6);
+                    return super.internalMultiply(value7, 1000000000000);
+                }
+                case SpecificEnergyUnits.KilowattHoursPerPound: {
+                    const value3 = super.internalMultiply(value, 7.93664e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case SpecificEnergyUnits.MegawattHoursPerPound: {
+                    const value3 = super.internalMultiply(value, 7.93664e3);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case SpecificEnergyUnits.GigawattHoursPerPound: {
+                    const value3 = super.internalMultiply(value, 7.93664e3);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case SpecificEnergyUnits.JoulesPerKilogram:
-                return value;
-            case SpecificEnergyUnits.MegaJoulesPerTonne:
-                return value * 1e3;
-            case SpecificEnergyUnits.CaloriesPerGram:
-                return value * 4.184e3;
-            case SpecificEnergyUnits.WattHoursPerKilogram:
-                return value * 3.6e3;
-            case SpecificEnergyUnits.WattDaysPerKilogram:
-                return value * (24 * 3.6e3);
-            case SpecificEnergyUnits.WattDaysPerTonne:
-                return value * ((24 * 3.6e3) / 1e3);
-            case SpecificEnergyUnits.WattDaysPerShortTon:
-                return value * ((24 * 3.6e3) / 9.0718474e2);
-            case SpecificEnergyUnits.WattHoursPerPound:
-                return value * 7.93664e3;
-            case SpecificEnergyUnits.BtuPerPound:
-                return value * 2326.000075362;
-            case SpecificEnergyUnits.KilojoulesPerKilogram:
-                return (value) * 1000;
-            case SpecificEnergyUnits.MegajoulesPerKilogram:
-                return (value) * 1000000;
-            case SpecificEnergyUnits.KilocaloriesPerGram:
-                return (value * 4.184e3) * 1000;
-            case SpecificEnergyUnits.KilowattHoursPerKilogram:
-                return (value * 3.6e3) * 1000;
-            case SpecificEnergyUnits.MegawattHoursPerKilogram:
-                return (value * 3.6e3) * 1000000;
-            case SpecificEnergyUnits.GigawattHoursPerKilogram:
-                return (value * 3.6e3) * 1000000000;
-            case SpecificEnergyUnits.KilowattDaysPerKilogram:
-                return (value * (24 * 3.6e3)) * 1000;
-            case SpecificEnergyUnits.MegawattDaysPerKilogram:
-                return (value * (24 * 3.6e3)) * 1000000;
-            case SpecificEnergyUnits.GigawattDaysPerKilogram:
-                return (value * (24 * 3.6e3)) * 1000000000;
-            case SpecificEnergyUnits.TerawattDaysPerKilogram:
-                return (value * (24 * 3.6e3)) * 1000000000000;
-            case SpecificEnergyUnits.KilowattDaysPerTonne:
-                return (value * ((24 * 3.6e3) / 1e3)) * 1000;
-            case SpecificEnergyUnits.MegawattDaysPerTonne:
-                return (value * ((24 * 3.6e3) / 1e3)) * 1000000;
-            case SpecificEnergyUnits.GigawattDaysPerTonne:
-                return (value * ((24 * 3.6e3) / 1e3)) * 1000000000;
-            case SpecificEnergyUnits.TerawattDaysPerTonne:
-                return (value * ((24 * 3.6e3) / 1e3)) * 1000000000000;
-            case SpecificEnergyUnits.KilowattDaysPerShortTon:
-                return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000;
-            case SpecificEnergyUnits.MegawattDaysPerShortTon:
-                return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000000;
-            case SpecificEnergyUnits.GigawattDaysPerShortTon:
-                return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000000000;
-            case SpecificEnergyUnits.TerawattDaysPerShortTon:
-                return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000000000000;
-            case SpecificEnergyUnits.KilowattHoursPerPound:
-                return (value * 7.93664e3) * 1000;
-            case SpecificEnergyUnits.MegawattHoursPerPound:
-                return (value * 7.93664e3) * 1000000;
-            case SpecificEnergyUnits.GigawattHoursPerPound:
-                return (value * 7.93664e3) * 1000000000;
-            default:
-                break;
+            case SpecificEnergyUnits.JoulesPerKilogram: return value;
+            case SpecificEnergyUnits.MegaJoulesPerTonne: return value * 1e3;
+            case SpecificEnergyUnits.CaloriesPerGram: return value * 4.184e3;
+            case SpecificEnergyUnits.WattHoursPerKilogram: return value * 3.6e3;
+            case SpecificEnergyUnits.WattDaysPerKilogram: return value * (24 * 3.6e3);
+            case SpecificEnergyUnits.WattDaysPerTonne: return value * ((24 * 3.6e3) / 1e3);
+            case SpecificEnergyUnits.WattDaysPerShortTon: return value * ((24 * 3.6e3) / 9.0718474e2);
+            case SpecificEnergyUnits.WattHoursPerPound: return value * 7.93664e3;
+            case SpecificEnergyUnits.BtuPerPound: return value * 2326.000075362;
+            case SpecificEnergyUnits.KilojoulesPerKilogram: return (value) * 1000;
+            case SpecificEnergyUnits.MegajoulesPerKilogram: return (value) * 1000000;
+            case SpecificEnergyUnits.KilocaloriesPerGram: return (value * 4.184e3) * 1000;
+            case SpecificEnergyUnits.KilowattHoursPerKilogram: return (value * 3.6e3) * 1000;
+            case SpecificEnergyUnits.MegawattHoursPerKilogram: return (value * 3.6e3) * 1000000;
+            case SpecificEnergyUnits.GigawattHoursPerKilogram: return (value * 3.6e3) * 1000000000;
+            case SpecificEnergyUnits.KilowattDaysPerKilogram: return (value * (24 * 3.6e3)) * 1000;
+            case SpecificEnergyUnits.MegawattDaysPerKilogram: return (value * (24 * 3.6e3)) * 1000000;
+            case SpecificEnergyUnits.GigawattDaysPerKilogram: return (value * (24 * 3.6e3)) * 1000000000;
+            case SpecificEnergyUnits.TerawattDaysPerKilogram: return (value * (24 * 3.6e3)) * 1000000000000;
+            case SpecificEnergyUnits.KilowattDaysPerTonne: return (value * ((24 * 3.6e3) / 1e3)) * 1000;
+            case SpecificEnergyUnits.MegawattDaysPerTonne: return (value * ((24 * 3.6e3) / 1e3)) * 1000000;
+            case SpecificEnergyUnits.GigawattDaysPerTonne: return (value * ((24 * 3.6e3) / 1e3)) * 1000000000;
+            case SpecificEnergyUnits.TerawattDaysPerTonne: return (value * ((24 * 3.6e3) / 1e3)) * 1000000000000;
+            case SpecificEnergyUnits.KilowattDaysPerShortTon: return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000;
+            case SpecificEnergyUnits.MegawattDaysPerShortTon: return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000000;
+            case SpecificEnergyUnits.GigawattDaysPerShortTon: return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000000000;
+            case SpecificEnergyUnits.TerawattDaysPerShortTon: return (value * ((24 * 3.6e3) / 9.0718474e2)) * 1000000000000;
+            case SpecificEnergyUnits.KilowattHoursPerPound: return (value * 7.93664e3) * 1000;
+            case SpecificEnergyUnits.MegawattHoursPerPound: return (value * 7.93664e3) * 1000000;
+            case SpecificEnergyUnits.GigawattHoursPerPound: return (value * 7.93664e3) * 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

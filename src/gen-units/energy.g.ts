@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Energy */
 export interface EnergyDto {
@@ -951,181 +951,317 @@ export class Energy extends BaseUnit {
     }
 
     private convertFromBase(toUnit: EnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case EnergyUnits.Joules: return this.value;
+                case EnergyUnits.Calories: return super.internalDivide(this.value, 4.184);
+                case EnergyUnits.BritishThermalUnits: return super.internalDivide(this.value, 1055.05585262);
+                case EnergyUnits.ElectronVolts: return super.internalDivide(this.value, 1.602176565e-19);
+                case EnergyUnits.FootPounds: return super.internalDivide(this.value, 1.355817948);
+                case EnergyUnits.Ergs: return super.internalDivide(this.value, 1e-7);
+                case EnergyUnits.WattHours: return super.internalDivide(this.value, 3600);
+                case EnergyUnits.WattDays: {
+                    const value4 = super.internalMultiply(24, 3600);
+                    return super.internalDivide(this.value, value4);
+                }
+                case EnergyUnits.ThermsEc: return super.internalDivide(this.value, 1.05505585262e8);
+                case EnergyUnits.ThermsUs: return super.internalDivide(this.value, 1.054804e8);
+                case EnergyUnits.ThermsImperial: return super.internalDivide(this.value, 1.05505585257348e8);
+                case EnergyUnits.HorsepowerHours: return super.internalDivide(this.value, 2.6845195377e6);
+                case EnergyUnits.Nanojoules: return super.internalDivide(this.value, 1e-9);
+                case EnergyUnits.Microjoules: return super.internalDivide(this.value, 0.000001);
+                case EnergyUnits.Millijoules: return super.internalDivide(this.value, 0.001);
+                case EnergyUnits.Kilojoules: return super.internalDivide(this.value, 1000);
+                case EnergyUnits.Megajoules: return super.internalDivide(this.value, 1000000);
+                case EnergyUnits.Gigajoules: return super.internalDivide(this.value, 1000000000);
+                case EnergyUnits.Terajoules: return super.internalDivide(this.value, 1000000000000);
+                case EnergyUnits.Petajoules: return super.internalDivide(this.value, 1000000000000000);
+                case EnergyUnits.Kilocalories: {
+                    const value3 = super.internalDivide(this.value, 4.184);
+                    return super.internalDivide(value3, 1000);
+                }
+                case EnergyUnits.Megacalories: {
+                    const value3 = super.internalDivide(this.value, 4.184);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case EnergyUnits.KilobritishThermalUnits: {
+                    const value3 = super.internalDivide(this.value, 1055.05585262);
+                    return super.internalDivide(value3, 1000);
+                }
+                case EnergyUnits.MegabritishThermalUnits: {
+                    const value3 = super.internalDivide(this.value, 1055.05585262);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case EnergyUnits.GigabritishThermalUnits: {
+                    const value3 = super.internalDivide(this.value, 1055.05585262);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case EnergyUnits.KiloelectronVolts: {
+                    const value3 = super.internalDivide(this.value, 1.602176565e-19);
+                    return super.internalDivide(value3, 1000);
+                }
+                case EnergyUnits.MegaelectronVolts: {
+                    const value3 = super.internalDivide(this.value, 1.602176565e-19);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case EnergyUnits.GigaelectronVolts: {
+                    const value3 = super.internalDivide(this.value, 1.602176565e-19);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case EnergyUnits.TeraelectronVolts: {
+                    const value3 = super.internalDivide(this.value, 1.602176565e-19);
+                    return super.internalDivide(value3, 1000000000000);
+                }
+                case EnergyUnits.KilowattHours: {
+                    const value3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(value3, 1000);
+                }
+                case EnergyUnits.MegawattHours: {
+                    const value3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case EnergyUnits.GigawattHours: {
+                    const value3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case EnergyUnits.TerawattHours: {
+                    const value3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(value3, 1000000000000);
+                }
+                case EnergyUnits.KilowattDays: {
+                    const value4 = super.internalMultiply(24, 3600);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000);
+                }
+                case EnergyUnits.MegawattDays: {
+                    const value4 = super.internalMultiply(24, 3600);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000000);
+                }
+                case EnergyUnits.GigawattDays: {
+                    const value4 = super.internalMultiply(24, 3600);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000000000);
+                }
+                case EnergyUnits.TerawattDays: {
+                    const value4 = super.internalMultiply(24, 3600);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000000000000);
+                }
+                case EnergyUnits.DecathermsEc: {
+                    const value3 = super.internalDivide(this.value, 1.05505585262e8);
+                    return super.internalDivide(value3, 10);
+                }
+                case EnergyUnits.DecathermsUs: {
+                    const value3 = super.internalDivide(this.value, 1.054804e8);
+                    return super.internalDivide(value3, 10);
+                }
+                case EnergyUnits.DecathermsImperial: {
+                    const value3 = super.internalDivide(this.value, 1.05505585257348e8);
+                    return super.internalDivide(value3, 10);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case EnergyUnits.Joules:
-                return this.value;
-            case EnergyUnits.Calories:
-                return this.value / 4.184;
-            case EnergyUnits.BritishThermalUnits:
-                return this.value / 1055.05585262;
-            case EnergyUnits.ElectronVolts:
-                return this.value / 1.602176565e-19;
-            case EnergyUnits.FootPounds:
-                return this.value / 1.355817948;
-            case EnergyUnits.Ergs:
-                return this.value / 1e-7;
-            case EnergyUnits.WattHours:
-                return this.value / 3600;
-            case EnergyUnits.WattDays:
-                return this.value / (24 * 3600);
-            case EnergyUnits.ThermsEc:
-                return this.value / 1.05505585262e8;
-            case EnergyUnits.ThermsUs:
-                return this.value / 1.054804e8;
-            case EnergyUnits.ThermsImperial:
-                return this.value / 1.05505585257348e8;
-            case EnergyUnits.HorsepowerHours:
-                return this.value / 2.6845195377e6;
-            case EnergyUnits.Nanojoules:
-                return (this.value) / 1e-9;
-            case EnergyUnits.Microjoules:
-                return (this.value) / 0.000001;
-            case EnergyUnits.Millijoules:
-                return (this.value) / 0.001;
-            case EnergyUnits.Kilojoules:
-                return (this.value) / 1000;
-            case EnergyUnits.Megajoules:
-                return (this.value) / 1000000;
-            case EnergyUnits.Gigajoules:
-                return (this.value) / 1000000000;
-            case EnergyUnits.Terajoules:
-                return (this.value) / 1000000000000;
-            case EnergyUnits.Petajoules:
-                return (this.value) / 1000000000000000;
-            case EnergyUnits.Kilocalories:
-                return (this.value / 4.184) / 1000;
-            case EnergyUnits.Megacalories:
-                return (this.value / 4.184) / 1000000;
-            case EnergyUnits.KilobritishThermalUnits:
-                return (this.value / 1055.05585262) / 1000;
-            case EnergyUnits.MegabritishThermalUnits:
-                return (this.value / 1055.05585262) / 1000000;
-            case EnergyUnits.GigabritishThermalUnits:
-                return (this.value / 1055.05585262) / 1000000000;
-            case EnergyUnits.KiloelectronVolts:
-                return (this.value / 1.602176565e-19) / 1000;
-            case EnergyUnits.MegaelectronVolts:
-                return (this.value / 1.602176565e-19) / 1000000;
-            case EnergyUnits.GigaelectronVolts:
-                return (this.value / 1.602176565e-19) / 1000000000;
-            case EnergyUnits.TeraelectronVolts:
-                return (this.value / 1.602176565e-19) / 1000000000000;
-            case EnergyUnits.KilowattHours:
-                return (this.value / 3600) / 1000;
-            case EnergyUnits.MegawattHours:
-                return (this.value / 3600) / 1000000;
-            case EnergyUnits.GigawattHours:
-                return (this.value / 3600) / 1000000000;
-            case EnergyUnits.TerawattHours:
-                return (this.value / 3600) / 1000000000000;
-            case EnergyUnits.KilowattDays:
-                return (this.value / (24 * 3600)) / 1000;
-            case EnergyUnits.MegawattDays:
-                return (this.value / (24 * 3600)) / 1000000;
-            case EnergyUnits.GigawattDays:
-                return (this.value / (24 * 3600)) / 1000000000;
-            case EnergyUnits.TerawattDays:
-                return (this.value / (24 * 3600)) / 1000000000000;
-            case EnergyUnits.DecathermsEc:
-                return (this.value / 1.05505585262e8) / 10;
-            case EnergyUnits.DecathermsUs:
-                return (this.value / 1.054804e8) / 10;
-            case EnergyUnits.DecathermsImperial:
-                return (this.value / 1.05505585257348e8) / 10;
-            default:
-                break;
+            case EnergyUnits.Joules: return this.value;
+            case EnergyUnits.Calories: return this.value / 4.184;
+            case EnergyUnits.BritishThermalUnits: return this.value / 1055.05585262;
+            case EnergyUnits.ElectronVolts: return this.value / 1.602176565e-19;
+            case EnergyUnits.FootPounds: return this.value / 1.355817948;
+            case EnergyUnits.Ergs: return this.value / 1e-7;
+            case EnergyUnits.WattHours: return this.value / 3600;
+            case EnergyUnits.WattDays: return this.value / (24 * 3600);
+            case EnergyUnits.ThermsEc: return this.value / 1.05505585262e8;
+            case EnergyUnits.ThermsUs: return this.value / 1.054804e8;
+            case EnergyUnits.ThermsImperial: return this.value / 1.05505585257348e8;
+            case EnergyUnits.HorsepowerHours: return this.value / 2.6845195377e6;
+            case EnergyUnits.Nanojoules: return (this.value) / 1e-9;
+            case EnergyUnits.Microjoules: return (this.value) / 0.000001;
+            case EnergyUnits.Millijoules: return (this.value) / 0.001;
+            case EnergyUnits.Kilojoules: return (this.value) / 1000;
+            case EnergyUnits.Megajoules: return (this.value) / 1000000;
+            case EnergyUnits.Gigajoules: return (this.value) / 1000000000;
+            case EnergyUnits.Terajoules: return (this.value) / 1000000000000;
+            case EnergyUnits.Petajoules: return (this.value) / 1000000000000000;
+            case EnergyUnits.Kilocalories: return (this.value / 4.184) / 1000;
+            case EnergyUnits.Megacalories: return (this.value / 4.184) / 1000000;
+            case EnergyUnits.KilobritishThermalUnits: return (this.value / 1055.05585262) / 1000;
+            case EnergyUnits.MegabritishThermalUnits: return (this.value / 1055.05585262) / 1000000;
+            case EnergyUnits.GigabritishThermalUnits: return (this.value / 1055.05585262) / 1000000000;
+            case EnergyUnits.KiloelectronVolts: return (this.value / 1.602176565e-19) / 1000;
+            case EnergyUnits.MegaelectronVolts: return (this.value / 1.602176565e-19) / 1000000;
+            case EnergyUnits.GigaelectronVolts: return (this.value / 1.602176565e-19) / 1000000000;
+            case EnergyUnits.TeraelectronVolts: return (this.value / 1.602176565e-19) / 1000000000000;
+            case EnergyUnits.KilowattHours: return (this.value / 3600) / 1000;
+            case EnergyUnits.MegawattHours: return (this.value / 3600) / 1000000;
+            case EnergyUnits.GigawattHours: return (this.value / 3600) / 1000000000;
+            case EnergyUnits.TerawattHours: return (this.value / 3600) / 1000000000000;
+            case EnergyUnits.KilowattDays: return (this.value / (24 * 3600)) / 1000;
+            case EnergyUnits.MegawattDays: return (this.value / (24 * 3600)) / 1000000;
+            case EnergyUnits.GigawattDays: return (this.value / (24 * 3600)) / 1000000000;
+            case EnergyUnits.TerawattDays: return (this.value / (24 * 3600)) / 1000000000000;
+            case EnergyUnits.DecathermsEc: return (this.value / 1.05505585262e8) / 10;
+            case EnergyUnits.DecathermsUs: return (this.value / 1.054804e8) / 10;
+            case EnergyUnits.DecathermsImperial: return (this.value / 1.05505585257348e8) / 10;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: EnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case EnergyUnits.Joules: return value;
+                case EnergyUnits.Calories: return super.internalMultiply(value, 4.184);
+                case EnergyUnits.BritishThermalUnits: return super.internalMultiply(value, 1055.05585262);
+                case EnergyUnits.ElectronVolts: return super.internalMultiply(value, 1.602176565e-19);
+                case EnergyUnits.FootPounds: return super.internalMultiply(value, 1.355817948);
+                case EnergyUnits.Ergs: return super.internalMultiply(value, 1e-7);
+                case EnergyUnits.WattHours: return super.internalMultiply(value, 3600);
+                case EnergyUnits.WattDays: {
+                    const value3 = super.internalMultiply(value, 24);
+                    return super.internalMultiply(value3, 3600);
+                }
+                case EnergyUnits.ThermsEc: return super.internalMultiply(value, 1.05505585262e8);
+                case EnergyUnits.ThermsUs: return super.internalMultiply(value, 1.054804e8);
+                case EnergyUnits.ThermsImperial: return super.internalMultiply(value, 1.05505585257348e8);
+                case EnergyUnits.HorsepowerHours: return super.internalMultiply(value, 2.6845195377e6);
+                case EnergyUnits.Nanojoules: return super.internalMultiply(value, 1e-9);
+                case EnergyUnits.Microjoules: return super.internalMultiply(value, 0.000001);
+                case EnergyUnits.Millijoules: return super.internalMultiply(value, 0.001);
+                case EnergyUnits.Kilojoules: return super.internalMultiply(value, 1000);
+                case EnergyUnits.Megajoules: return super.internalMultiply(value, 1000000);
+                case EnergyUnits.Gigajoules: return super.internalMultiply(value, 1000000000);
+                case EnergyUnits.Terajoules: return super.internalMultiply(value, 1000000000000);
+                case EnergyUnits.Petajoules: return super.internalMultiply(value, 1000000000000000);
+                case EnergyUnits.Kilocalories: {
+                    const value3 = super.internalMultiply(value, 4.184);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case EnergyUnits.Megacalories: {
+                    const value3 = super.internalMultiply(value, 4.184);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case EnergyUnits.KilobritishThermalUnits: {
+                    const value3 = super.internalMultiply(value, 1055.05585262);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case EnergyUnits.MegabritishThermalUnits: {
+                    const value3 = super.internalMultiply(value, 1055.05585262);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case EnergyUnits.GigabritishThermalUnits: {
+                    const value3 = super.internalMultiply(value, 1055.05585262);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case EnergyUnits.KiloelectronVolts: {
+                    const value3 = super.internalMultiply(value, 1.602176565e-19);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case EnergyUnits.MegaelectronVolts: {
+                    const value3 = super.internalMultiply(value, 1.602176565e-19);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case EnergyUnits.GigaelectronVolts: {
+                    const value3 = super.internalMultiply(value, 1.602176565e-19);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case EnergyUnits.TeraelectronVolts: {
+                    const value3 = super.internalMultiply(value, 1.602176565e-19);
+                    return super.internalMultiply(value3, 1000000000000);
+                }
+                case EnergyUnits.KilowattHours: {
+                    const value3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case EnergyUnits.MegawattHours: {
+                    const value3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case EnergyUnits.GigawattHours: {
+                    const value3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case EnergyUnits.TerawattHours: {
+                    const value3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(value3, 1000000000000);
+                }
+                case EnergyUnits.KilowattDays: {
+                    const value3 = super.internalMultiply(value, 24);
+                    const value5 = super.internalMultiply(value3, 3600);
+                    return super.internalMultiply(value5, 1000);
+                }
+                case EnergyUnits.MegawattDays: {
+                    const value3 = super.internalMultiply(value, 24);
+                    const value5 = super.internalMultiply(value3, 3600);
+                    return super.internalMultiply(value5, 1000000);
+                }
+                case EnergyUnits.GigawattDays: {
+                    const value3 = super.internalMultiply(value, 24);
+                    const value5 = super.internalMultiply(value3, 3600);
+                    return super.internalMultiply(value5, 1000000000);
+                }
+                case EnergyUnits.TerawattDays: {
+                    const value3 = super.internalMultiply(value, 24);
+                    const value5 = super.internalMultiply(value3, 3600);
+                    return super.internalMultiply(value5, 1000000000000);
+                }
+                case EnergyUnits.DecathermsEc: {
+                    const value3 = super.internalMultiply(value, 1.05505585262e8);
+                    return super.internalMultiply(value3, 10);
+                }
+                case EnergyUnits.DecathermsUs: {
+                    const value3 = super.internalMultiply(value, 1.054804e8);
+                    return super.internalMultiply(value3, 10);
+                }
+                case EnergyUnits.DecathermsImperial: {
+                    const value3 = super.internalMultiply(value, 1.05505585257348e8);
+                    return super.internalMultiply(value3, 10);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case EnergyUnits.Joules:
-                return value;
-            case EnergyUnits.Calories:
-                return value * 4.184;
-            case EnergyUnits.BritishThermalUnits:
-                return value * 1055.05585262;
-            case EnergyUnits.ElectronVolts:
-                return value * 1.602176565e-19;
-            case EnergyUnits.FootPounds:
-                return value * 1.355817948;
-            case EnergyUnits.Ergs:
-                return value * 1e-7;
-            case EnergyUnits.WattHours:
-                return value * 3600;
-            case EnergyUnits.WattDays:
-                return value * 24 * 3600;
-            case EnergyUnits.ThermsEc:
-                return value * 1.05505585262e8;
-            case EnergyUnits.ThermsUs:
-                return value * 1.054804e8;
-            case EnergyUnits.ThermsImperial:
-                return value * 1.05505585257348e8;
-            case EnergyUnits.HorsepowerHours:
-                return value * 2.6845195377e6;
-            case EnergyUnits.Nanojoules:
-                return (value) * 1e-9;
-            case EnergyUnits.Microjoules:
-                return (value) * 0.000001;
-            case EnergyUnits.Millijoules:
-                return (value) * 0.001;
-            case EnergyUnits.Kilojoules:
-                return (value) * 1000;
-            case EnergyUnits.Megajoules:
-                return (value) * 1000000;
-            case EnergyUnits.Gigajoules:
-                return (value) * 1000000000;
-            case EnergyUnits.Terajoules:
-                return (value) * 1000000000000;
-            case EnergyUnits.Petajoules:
-                return (value) * 1000000000000000;
-            case EnergyUnits.Kilocalories:
-                return (value * 4.184) * 1000;
-            case EnergyUnits.Megacalories:
-                return (value * 4.184) * 1000000;
-            case EnergyUnits.KilobritishThermalUnits:
-                return (value * 1055.05585262) * 1000;
-            case EnergyUnits.MegabritishThermalUnits:
-                return (value * 1055.05585262) * 1000000;
-            case EnergyUnits.GigabritishThermalUnits:
-                return (value * 1055.05585262) * 1000000000;
-            case EnergyUnits.KiloelectronVolts:
-                return (value * 1.602176565e-19) * 1000;
-            case EnergyUnits.MegaelectronVolts:
-                return (value * 1.602176565e-19) * 1000000;
-            case EnergyUnits.GigaelectronVolts:
-                return (value * 1.602176565e-19) * 1000000000;
-            case EnergyUnits.TeraelectronVolts:
-                return (value * 1.602176565e-19) * 1000000000000;
-            case EnergyUnits.KilowattHours:
-                return (value * 3600) * 1000;
-            case EnergyUnits.MegawattHours:
-                return (value * 3600) * 1000000;
-            case EnergyUnits.GigawattHours:
-                return (value * 3600) * 1000000000;
-            case EnergyUnits.TerawattHours:
-                return (value * 3600) * 1000000000000;
-            case EnergyUnits.KilowattDays:
-                return (value * 24 * 3600) * 1000;
-            case EnergyUnits.MegawattDays:
-                return (value * 24 * 3600) * 1000000;
-            case EnergyUnits.GigawattDays:
-                return (value * 24 * 3600) * 1000000000;
-            case EnergyUnits.TerawattDays:
-                return (value * 24 * 3600) * 1000000000000;
-            case EnergyUnits.DecathermsEc:
-                return (value * 1.05505585262e8) * 10;
-            case EnergyUnits.DecathermsUs:
-                return (value * 1.054804e8) * 10;
-            case EnergyUnits.DecathermsImperial:
-                return (value * 1.05505585257348e8) * 10;
-            default:
-                break;
+            case EnergyUnits.Joules: return value;
+            case EnergyUnits.Calories: return value * 4.184;
+            case EnergyUnits.BritishThermalUnits: return value * 1055.05585262;
+            case EnergyUnits.ElectronVolts: return value * 1.602176565e-19;
+            case EnergyUnits.FootPounds: return value * 1.355817948;
+            case EnergyUnits.Ergs: return value * 1e-7;
+            case EnergyUnits.WattHours: return value * 3600;
+            case EnergyUnits.WattDays: return value * 24 * 3600;
+            case EnergyUnits.ThermsEc: return value * 1.05505585262e8;
+            case EnergyUnits.ThermsUs: return value * 1.054804e8;
+            case EnergyUnits.ThermsImperial: return value * 1.05505585257348e8;
+            case EnergyUnits.HorsepowerHours: return value * 2.6845195377e6;
+            case EnergyUnits.Nanojoules: return (value) * 1e-9;
+            case EnergyUnits.Microjoules: return (value) * 0.000001;
+            case EnergyUnits.Millijoules: return (value) * 0.001;
+            case EnergyUnits.Kilojoules: return (value) * 1000;
+            case EnergyUnits.Megajoules: return (value) * 1000000;
+            case EnergyUnits.Gigajoules: return (value) * 1000000000;
+            case EnergyUnits.Terajoules: return (value) * 1000000000000;
+            case EnergyUnits.Petajoules: return (value) * 1000000000000000;
+            case EnergyUnits.Kilocalories: return (value * 4.184) * 1000;
+            case EnergyUnits.Megacalories: return (value * 4.184) * 1000000;
+            case EnergyUnits.KilobritishThermalUnits: return (value * 1055.05585262) * 1000;
+            case EnergyUnits.MegabritishThermalUnits: return (value * 1055.05585262) * 1000000;
+            case EnergyUnits.GigabritishThermalUnits: return (value * 1055.05585262) * 1000000000;
+            case EnergyUnits.KiloelectronVolts: return (value * 1.602176565e-19) * 1000;
+            case EnergyUnits.MegaelectronVolts: return (value * 1.602176565e-19) * 1000000;
+            case EnergyUnits.GigaelectronVolts: return (value * 1.602176565e-19) * 1000000000;
+            case EnergyUnits.TeraelectronVolts: return (value * 1.602176565e-19) * 1000000000000;
+            case EnergyUnits.KilowattHours: return (value * 3600) * 1000;
+            case EnergyUnits.MegawattHours: return (value * 3600) * 1000000;
+            case EnergyUnits.GigawattHours: return (value * 3600) * 1000000000;
+            case EnergyUnits.TerawattHours: return (value * 3600) * 1000000000000;
+            case EnergyUnits.KilowattDays: return (value * 24 * 3600) * 1000;
+            case EnergyUnits.MegawattDays: return (value * 24 * 3600) * 1000000;
+            case EnergyUnits.GigawattDays: return (value * 24 * 3600) * 1000000000;
+            case EnergyUnits.TerawattDays: return (value * 24 * 3600) * 1000000000000;
+            case EnergyUnits.DecathermsEc: return (value * 1.05505585262e8) * 10;
+            case EnergyUnits.DecathermsUs: return (value * 1.054804e8) * 10;
+            case EnergyUnits.DecathermsImperial: return (value * 1.05505585257348e8) * 10;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

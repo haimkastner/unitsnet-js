@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a VitaminA */
 export interface VitaminADto {
@@ -93,25 +93,27 @@ export class VitaminA extends BaseUnit {
     }
 
     private convertFromBase(toUnit: VitaminAUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case VitaminAUnits.InternationalUnits: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case VitaminAUnits.InternationalUnits:
-                return this.value;
-            default:
-                break;
+            case VitaminAUnits.InternationalUnits: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: VitaminAUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case VitaminAUnits.InternationalUnits: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case VitaminAUnits.InternationalUnits:
-                return value;
-            default:
-                break;
+            case VitaminAUnits.InternationalUnits: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

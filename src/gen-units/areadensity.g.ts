@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a AreaDensity */
 export interface AreaDensityDto {
@@ -137,33 +137,35 @@ export class AreaDensity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: AreaDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case AreaDensityUnits.KilogramsPerSquareMeter: return this.value;
+                case AreaDensityUnits.GramsPerSquareMeter: return super.internalMultiply(this.value, 1000);
+                case AreaDensityUnits.MilligramsPerSquareMeter: return super.internalMultiply(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case AreaDensityUnits.KilogramsPerSquareMeter:
-                return this.value;
-            case AreaDensityUnits.GramsPerSquareMeter:
-                return this.value * 1000;
-            case AreaDensityUnits.MilligramsPerSquareMeter:
-                return this.value * 1000000;
-            default:
-                break;
+            case AreaDensityUnits.KilogramsPerSquareMeter: return this.value;
+            case AreaDensityUnits.GramsPerSquareMeter: return this.value * 1000;
+            case AreaDensityUnits.MilligramsPerSquareMeter: return this.value * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AreaDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case AreaDensityUnits.KilogramsPerSquareMeter: return value;
+                case AreaDensityUnits.GramsPerSquareMeter: return super.internalDivide(value, 1000);
+                case AreaDensityUnits.MilligramsPerSquareMeter: return super.internalDivide(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case AreaDensityUnits.KilogramsPerSquareMeter:
-                return value;
-            case AreaDensityUnits.GramsPerSquareMeter:
-                return value / 1000;
-            case AreaDensityUnits.MilligramsPerSquareMeter:
-                return value / 1000000;
-            default:
-                break;
+            case AreaDensityUnits.KilogramsPerSquareMeter: return value;
+            case AreaDensityUnits.GramsPerSquareMeter: return value / 1000;
+            case AreaDensityUnits.MilligramsPerSquareMeter: return value / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

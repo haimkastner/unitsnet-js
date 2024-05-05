@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Duration */
 export interface DurationDto {
@@ -313,65 +313,105 @@ export class Duration extends BaseUnit {
     }
 
     private convertFromBase(toUnit: DurationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case DurationUnits.Years365: {
+                    const value4 = super.internalMultiply(365, 24);
+                    const value6 = super.internalMultiply(value4, 3600);
+                    return super.internalDivide(this.value, value6);
+                }
+                case DurationUnits.Months30: {
+                    const value4 = super.internalMultiply(30, 24);
+                    const value6 = super.internalMultiply(value4, 3600);
+                    return super.internalDivide(this.value, value6);
+                }
+                case DurationUnits.Weeks: {
+                    const value4 = super.internalMultiply(7, 24);
+                    const value6 = super.internalMultiply(value4, 3600);
+                    return super.internalDivide(this.value, value6);
+                }
+                case DurationUnits.Days: {
+                    const value4 = super.internalMultiply(24, 3600);
+                    return super.internalDivide(this.value, value4);
+                }
+                case DurationUnits.Hours: return super.internalDivide(this.value, 3600);
+                case DurationUnits.Minutes: return super.internalDivide(this.value, 60);
+                case DurationUnits.Seconds: return this.value;
+                case DurationUnits.JulianYears: {
+                    const value4 = super.internalMultiply(365.25, 24);
+                    const value6 = super.internalMultiply(value4, 3600);
+                    return super.internalDivide(this.value, value6);
+                }
+                case DurationUnits.Nanoseconds: return super.internalDivide(this.value, 1e-9);
+                case DurationUnits.Microseconds: return super.internalDivide(this.value, 0.000001);
+                case DurationUnits.Milliseconds: return super.internalDivide(this.value, 0.001);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case DurationUnits.Years365:
-                return this.value / (365 * 24 * 3600);
-            case DurationUnits.Months30:
-                return this.value / (30 * 24 * 3600);
-            case DurationUnits.Weeks:
-                return this.value / (7 * 24 * 3600);
-            case DurationUnits.Days:
-                return this.value / (24 * 3600);
-            case DurationUnits.Hours:
-                return this.value / 3600;
-            case DurationUnits.Minutes:
-                return this.value / 60;
-            case DurationUnits.Seconds:
-                return this.value;
-            case DurationUnits.JulianYears:
-                return this.value / (365.25 * 24 * 3600);
-            case DurationUnits.Nanoseconds:
-                return (this.value) / 1e-9;
-            case DurationUnits.Microseconds:
-                return (this.value) / 0.000001;
-            case DurationUnits.Milliseconds:
-                return (this.value) / 0.001;
-            default:
-                break;
+            case DurationUnits.Years365: return this.value / (365 * 24 * 3600);
+            case DurationUnits.Months30: return this.value / (30 * 24 * 3600);
+            case DurationUnits.Weeks: return this.value / (7 * 24 * 3600);
+            case DurationUnits.Days: return this.value / (24 * 3600);
+            case DurationUnits.Hours: return this.value / 3600;
+            case DurationUnits.Minutes: return this.value / 60;
+            case DurationUnits.Seconds: return this.value;
+            case DurationUnits.JulianYears: return this.value / (365.25 * 24 * 3600);
+            case DurationUnits.Nanoseconds: return (this.value) / 1e-9;
+            case DurationUnits.Microseconds: return (this.value) / 0.000001;
+            case DurationUnits.Milliseconds: return (this.value) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: DurationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case DurationUnits.Years365: {
+                    const value3 = super.internalMultiply(value, 365);
+                    const value5 = super.internalMultiply(value3, 24);
+                    return super.internalMultiply(value5, 3600);
+                }
+                case DurationUnits.Months30: {
+                    const value3 = super.internalMultiply(value, 30);
+                    const value5 = super.internalMultiply(value3, 24);
+                    return super.internalMultiply(value5, 3600);
+                }
+                case DurationUnits.Weeks: {
+                    const value3 = super.internalMultiply(value, 7);
+                    const value5 = super.internalMultiply(value3, 24);
+                    return super.internalMultiply(value5, 3600);
+                }
+                case DurationUnits.Days: {
+                    const value3 = super.internalMultiply(value, 24);
+                    return super.internalMultiply(value3, 3600);
+                }
+                case DurationUnits.Hours: return super.internalMultiply(value, 3600);
+                case DurationUnits.Minutes: return super.internalMultiply(value, 60);
+                case DurationUnits.Seconds: return value;
+                case DurationUnits.JulianYears: {
+                    const value3 = super.internalMultiply(value, 365.25);
+                    const value5 = super.internalMultiply(value3, 24);
+                    return super.internalMultiply(value5, 3600);
+                }
+                case DurationUnits.Nanoseconds: return super.internalMultiply(value, 1e-9);
+                case DurationUnits.Microseconds: return super.internalMultiply(value, 0.000001);
+                case DurationUnits.Milliseconds: return super.internalMultiply(value, 0.001);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case DurationUnits.Years365:
-                return value * 365 * 24 * 3600;
-            case DurationUnits.Months30:
-                return value * 30 * 24 * 3600;
-            case DurationUnits.Weeks:
-                return value * 7 * 24 * 3600;
-            case DurationUnits.Days:
-                return value * 24 * 3600;
-            case DurationUnits.Hours:
-                return value * 3600;
-            case DurationUnits.Minutes:
-                return value * 60;
-            case DurationUnits.Seconds:
-                return value;
-            case DurationUnits.JulianYears:
-                return value * 365.25 * 24 * 3600;
-            case DurationUnits.Nanoseconds:
-                return (value) * 1e-9;
-            case DurationUnits.Microseconds:
-                return (value) * 0.000001;
-            case DurationUnits.Milliseconds:
-                return (value) * 0.001;
-            default:
-                break;
+            case DurationUnits.Years365: return value * 365 * 24 * 3600;
+            case DurationUnits.Months30: return value * 30 * 24 * 3600;
+            case DurationUnits.Weeks: return value * 7 * 24 * 3600;
+            case DurationUnits.Days: return value * 24 * 3600;
+            case DurationUnits.Hours: return value * 3600;
+            case DurationUnits.Minutes: return value * 60;
+            case DurationUnits.Seconds: return value;
+            case DurationUnits.JulianYears: return value * 365.25 * 24 * 3600;
+            case DurationUnits.Nanoseconds: return (value) * 1e-9;
+            case DurationUnits.Microseconds: return (value) * 0.000001;
+            case DurationUnits.Milliseconds: return (value) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

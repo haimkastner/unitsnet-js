@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Illuminance */
 export interface IlluminanceDto {
@@ -159,37 +159,39 @@ export class Illuminance extends BaseUnit {
     }
 
     private convertFromBase(toUnit: IlluminanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case IlluminanceUnits.Lux: return this.value;
+                case IlluminanceUnits.Millilux: return super.internalDivide(this.value, 0.001);
+                case IlluminanceUnits.Kilolux: return super.internalDivide(this.value, 1000);
+                case IlluminanceUnits.Megalux: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case IlluminanceUnits.Lux:
-                return this.value;
-            case IlluminanceUnits.Millilux:
-                return (this.value) / 0.001;
-            case IlluminanceUnits.Kilolux:
-                return (this.value) / 1000;
-            case IlluminanceUnits.Megalux:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case IlluminanceUnits.Lux: return this.value;
+            case IlluminanceUnits.Millilux: return (this.value) / 0.001;
+            case IlluminanceUnits.Kilolux: return (this.value) / 1000;
+            case IlluminanceUnits.Megalux: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: IlluminanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case IlluminanceUnits.Lux: return value;
+                case IlluminanceUnits.Millilux: return super.internalMultiply(value, 0.001);
+                case IlluminanceUnits.Kilolux: return super.internalMultiply(value, 1000);
+                case IlluminanceUnits.Megalux: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case IlluminanceUnits.Lux:
-                return value;
-            case IlluminanceUnits.Millilux:
-                return (value) * 0.001;
-            case IlluminanceUnits.Kilolux:
-                return (value) * 1000;
-            case IlluminanceUnits.Megalux:
-                return (value) * 1000000;
-            default:
-                break;
+            case IlluminanceUnits.Lux: return value;
+            case IlluminanceUnits.Millilux: return (value) * 0.001;
+            case IlluminanceUnits.Kilolux: return (value) * 1000;
+            case IlluminanceUnits.Megalux: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

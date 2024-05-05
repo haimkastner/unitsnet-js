@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a AmplitudeRatio */
 export interface AmplitudeRatioDto {
@@ -159,37 +159,39 @@ export class AmplitudeRatio extends BaseUnit {
     }
 
     private convertFromBase(toUnit: AmplitudeRatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case AmplitudeRatioUnits.DecibelVolts: return this.value;
+                case AmplitudeRatioUnits.DecibelMicrovolts: return super.internalAdd(this.value, 120);
+                case AmplitudeRatioUnits.DecibelMillivolts: return super.internalAdd(this.value, 60);
+                case AmplitudeRatioUnits.DecibelsUnloaded: return super.internalAdd(this.value, 2.218487499);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case AmplitudeRatioUnits.DecibelVolts:
-                return this.value;
-            case AmplitudeRatioUnits.DecibelMicrovolts:
-                return this.value + 120;
-            case AmplitudeRatioUnits.DecibelMillivolts:
-                return this.value + 60;
-            case AmplitudeRatioUnits.DecibelsUnloaded:
-                return this.value + 2.218487499;
-            default:
-                break;
+            case AmplitudeRatioUnits.DecibelVolts: return this.value;
+            case AmplitudeRatioUnits.DecibelMicrovolts: return this.value + 120;
+            case AmplitudeRatioUnits.DecibelMillivolts: return this.value + 60;
+            case AmplitudeRatioUnits.DecibelsUnloaded: return this.value + 2.218487499;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AmplitudeRatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case AmplitudeRatioUnits.DecibelVolts: return value;
+                case AmplitudeRatioUnits.DecibelMicrovolts: return super.internalSubtract(value, 120);
+                case AmplitudeRatioUnits.DecibelMillivolts: return super.internalSubtract(value, 60);
+                case AmplitudeRatioUnits.DecibelsUnloaded: return super.internalSubtract(value, 2.218487499);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case AmplitudeRatioUnits.DecibelVolts:
-                return value;
-            case AmplitudeRatioUnits.DecibelMicrovolts:
-                return value - 120;
-            case AmplitudeRatioUnits.DecibelMillivolts:
-                return value - 60;
-            case AmplitudeRatioUnits.DecibelsUnloaded:
-                return value - 2.218487499;
-            default:
-                break;
+            case AmplitudeRatioUnits.DecibelVolts: return value;
+            case AmplitudeRatioUnits.DecibelMicrovolts: return value - 120;
+            case AmplitudeRatioUnits.DecibelMillivolts: return value - 60;
+            case AmplitudeRatioUnits.DecibelsUnloaded: return value - 2.218487499;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a SpecificVolume */
 export interface SpecificVolumeDto {
@@ -137,33 +137,35 @@ export class SpecificVolume extends BaseUnit {
     }
 
     private convertFromBase(toUnit: SpecificVolumeUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case SpecificVolumeUnits.CubicMetersPerKilogram: return this.value;
+                case SpecificVolumeUnits.CubicFeetPerPound: return super.internalMultiply(this.value, 16.01846353);
+                case SpecificVolumeUnits.MillicubicMetersPerKilogram: return super.internalDivide(this.value, 0.001);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case SpecificVolumeUnits.CubicMetersPerKilogram:
-                return this.value;
-            case SpecificVolumeUnits.CubicFeetPerPound:
-                return this.value * 16.01846353;
-            case SpecificVolumeUnits.MillicubicMetersPerKilogram:
-                return (this.value) / 0.001;
-            default:
-                break;
+            case SpecificVolumeUnits.CubicMetersPerKilogram: return this.value;
+            case SpecificVolumeUnits.CubicFeetPerPound: return this.value * 16.01846353;
+            case SpecificVolumeUnits.MillicubicMetersPerKilogram: return (this.value) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: SpecificVolumeUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case SpecificVolumeUnits.CubicMetersPerKilogram: return value;
+                case SpecificVolumeUnits.CubicFeetPerPound: return super.internalDivide(value, 16.01846353);
+                case SpecificVolumeUnits.MillicubicMetersPerKilogram: return super.internalMultiply(value, 0.001);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case SpecificVolumeUnits.CubicMetersPerKilogram:
-                return value;
-            case SpecificVolumeUnits.CubicFeetPerPound:
-                return value / 16.01846353;
-            case SpecificVolumeUnits.MillicubicMetersPerKilogram:
-                return (value) * 0.001;
-            default:
-                break;
+            case SpecificVolumeUnits.CubicMetersPerKilogram: return value;
+            case SpecificVolumeUnits.CubicFeetPerPound: return value / 16.01846353;
+            case SpecificVolumeUnits.MillicubicMetersPerKilogram: return (value) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

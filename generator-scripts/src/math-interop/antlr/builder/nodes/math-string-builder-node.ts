@@ -1,4 +1,4 @@
-import { HighLevelTsc } from '../high-level-tsc';
+import { IdGenerator } from '../../../../id-generator';
 import ts from 'typescript';
 
 export interface MathStringBuilderNode {
@@ -12,8 +12,8 @@ export abstract class BaseMathStringBuilderNode implements MathStringBuilderNode
 
 	public abstract readonly isPrimitive: boolean;
 
-	protected constructor() {
-		this.id = HighLevelTsc.getRandomVariableId();
+	protected constructor(idGenerator: IdGenerator) {
+		this.id = idGenerator.getNext();
 	}
 
 	public abstract execute(): ts.Statement[];

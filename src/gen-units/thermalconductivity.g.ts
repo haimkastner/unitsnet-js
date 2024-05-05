@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ThermalConductivity */
 export interface ThermalConductivityDto {
@@ -115,29 +115,31 @@ export class ThermalConductivity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ThermalConductivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ThermalConductivityUnits.WattsPerMeterKelvin: return this.value;
+                case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return super.internalDivide(this.value, 1.73073467);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ThermalConductivityUnits.WattsPerMeterKelvin:
-                return this.value;
-            case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                return this.value / 1.73073467;
-            default:
-                break;
+            case ThermalConductivityUnits.WattsPerMeterKelvin: return this.value;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return this.value / 1.73073467;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ThermalConductivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ThermalConductivityUnits.WattsPerMeterKelvin: return value;
+                case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return super.internalMultiply(value, 1.73073467);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ThermalConductivityUnits.WattsPerMeterKelvin:
-                return value;
-            case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                return value * 1.73073467;
-            default:
-                break;
+            case ThermalConductivityUnits.WattsPerMeterKelvin: return value;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return value * 1.73073467;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

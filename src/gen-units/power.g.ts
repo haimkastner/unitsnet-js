@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Power */
 export interface PowerDto {
@@ -643,125 +643,163 @@ export class Power extends BaseUnit {
     }
 
     private convertFromBase(toUnit: PowerUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case PowerUnits.Watts: return this.value;
+                case PowerUnits.MechanicalHorsepower: return super.internalDivide(this.value, 745.69);
+                case PowerUnits.MetricHorsepower: return super.internalDivide(this.value, 735.49875);
+                case PowerUnits.ElectricalHorsepower: return super.internalDivide(this.value, 746);
+                case PowerUnits.BoilerHorsepower: return super.internalDivide(this.value, 9812.5);
+                case PowerUnits.HydraulicHorsepower: return super.internalDivide(this.value, 745.69988145);
+                case PowerUnits.BritishThermalUnitsPerHour: return super.internalDivide(this.value, 0.29307107017);
+                case PowerUnits.JoulesPerHour: return super.internalMultiply(this.value, 3600);
+                case PowerUnits.Femtowatts: return super.internalDivide(this.value, 1e-15);
+                case PowerUnits.Picowatts: return super.internalDivide(this.value, 1e-12);
+                case PowerUnits.Nanowatts: return super.internalDivide(this.value, 1e-9);
+                case PowerUnits.Microwatts: return super.internalDivide(this.value, 0.000001);
+                case PowerUnits.Milliwatts: return super.internalDivide(this.value, 0.001);
+                case PowerUnits.Deciwatts: return super.internalDivide(this.value, 0.1);
+                case PowerUnits.Decawatts: return super.internalDivide(this.value, 10);
+                case PowerUnits.Kilowatts: return super.internalDivide(this.value, 1000);
+                case PowerUnits.Megawatts: return super.internalDivide(this.value, 1000000);
+                case PowerUnits.Gigawatts: return super.internalDivide(this.value, 1000000000);
+                case PowerUnits.Terawatts: return super.internalDivide(this.value, 1000000000000);
+                case PowerUnits.Petawatts: return super.internalDivide(this.value, 1000000000000000);
+                case PowerUnits.KilobritishThermalUnitsPerHour: {
+                    const value3 = super.internalDivide(this.value, 0.29307107017);
+                    return super.internalDivide(value3, 1000);
+                }
+                case PowerUnits.MegabritishThermalUnitsPerHour: {
+                    const value3 = super.internalDivide(this.value, 0.29307107017);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case PowerUnits.MillijoulesPerHour: {
+                    const value3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case PowerUnits.KilojoulesPerHour: {
+                    const value3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(value3, 1000);
+                }
+                case PowerUnits.MegajoulesPerHour: {
+                    const value3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case PowerUnits.GigajoulesPerHour: {
+                    const value3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case PowerUnits.Watts:
-                return this.value;
-            case PowerUnits.MechanicalHorsepower:
-                return this.value / 745.69;
-            case PowerUnits.MetricHorsepower:
-                return this.value / 735.49875;
-            case PowerUnits.ElectricalHorsepower:
-                return this.value / 746;
-            case PowerUnits.BoilerHorsepower:
-                return this.value / 9812.5;
-            case PowerUnits.HydraulicHorsepower:
-                return this.value / 745.69988145;
-            case PowerUnits.BritishThermalUnitsPerHour:
-                return this.value / 0.29307107017;
-            case PowerUnits.JoulesPerHour:
-                return this.value * 3600;
-            case PowerUnits.Femtowatts:
-                return (this.value) / 1e-15;
-            case PowerUnits.Picowatts:
-                return (this.value) / 1e-12;
-            case PowerUnits.Nanowatts:
-                return (this.value) / 1e-9;
-            case PowerUnits.Microwatts:
-                return (this.value) / 0.000001;
-            case PowerUnits.Milliwatts:
-                return (this.value) / 0.001;
-            case PowerUnits.Deciwatts:
-                return (this.value) / 0.1;
-            case PowerUnits.Decawatts:
-                return (this.value) / 10;
-            case PowerUnits.Kilowatts:
-                return (this.value) / 1000;
-            case PowerUnits.Megawatts:
-                return (this.value) / 1000000;
-            case PowerUnits.Gigawatts:
-                return (this.value) / 1000000000;
-            case PowerUnits.Terawatts:
-                return (this.value) / 1000000000000;
-            case PowerUnits.Petawatts:
-                return (this.value) / 1000000000000000;
-            case PowerUnits.KilobritishThermalUnitsPerHour:
-                return (this.value / 0.29307107017) / 1000;
-            case PowerUnits.MegabritishThermalUnitsPerHour:
-                return (this.value / 0.29307107017) / 1000000;
-            case PowerUnits.MillijoulesPerHour:
-                return (this.value * 3600) / 0.001;
-            case PowerUnits.KilojoulesPerHour:
-                return (this.value * 3600) / 1000;
-            case PowerUnits.MegajoulesPerHour:
-                return (this.value * 3600) / 1000000;
-            case PowerUnits.GigajoulesPerHour:
-                return (this.value * 3600) / 1000000000;
-            default:
-                break;
+            case PowerUnits.Watts: return this.value;
+            case PowerUnits.MechanicalHorsepower: return this.value / 745.69;
+            case PowerUnits.MetricHorsepower: return this.value / 735.49875;
+            case PowerUnits.ElectricalHorsepower: return this.value / 746;
+            case PowerUnits.BoilerHorsepower: return this.value / 9812.5;
+            case PowerUnits.HydraulicHorsepower: return this.value / 745.69988145;
+            case PowerUnits.BritishThermalUnitsPerHour: return this.value / 0.29307107017;
+            case PowerUnits.JoulesPerHour: return this.value * 3600;
+            case PowerUnits.Femtowatts: return (this.value) / 1e-15;
+            case PowerUnits.Picowatts: return (this.value) / 1e-12;
+            case PowerUnits.Nanowatts: return (this.value) / 1e-9;
+            case PowerUnits.Microwatts: return (this.value) / 0.000001;
+            case PowerUnits.Milliwatts: return (this.value) / 0.001;
+            case PowerUnits.Deciwatts: return (this.value) / 0.1;
+            case PowerUnits.Decawatts: return (this.value) / 10;
+            case PowerUnits.Kilowatts: return (this.value) / 1000;
+            case PowerUnits.Megawatts: return (this.value) / 1000000;
+            case PowerUnits.Gigawatts: return (this.value) / 1000000000;
+            case PowerUnits.Terawatts: return (this.value) / 1000000000000;
+            case PowerUnits.Petawatts: return (this.value) / 1000000000000000;
+            case PowerUnits.KilobritishThermalUnitsPerHour: return (this.value / 0.29307107017) / 1000;
+            case PowerUnits.MegabritishThermalUnitsPerHour: return (this.value / 0.29307107017) / 1000000;
+            case PowerUnits.MillijoulesPerHour: return (this.value * 3600) / 0.001;
+            case PowerUnits.KilojoulesPerHour: return (this.value * 3600) / 1000;
+            case PowerUnits.MegajoulesPerHour: return (this.value * 3600) / 1000000;
+            case PowerUnits.GigajoulesPerHour: return (this.value * 3600) / 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PowerUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case PowerUnits.Watts: return value;
+                case PowerUnits.MechanicalHorsepower: return super.internalMultiply(value, 745.69);
+                case PowerUnits.MetricHorsepower: return super.internalMultiply(value, 735.49875);
+                case PowerUnits.ElectricalHorsepower: return super.internalMultiply(value, 746);
+                case PowerUnits.BoilerHorsepower: return super.internalMultiply(value, 9812.5);
+                case PowerUnits.HydraulicHorsepower: return super.internalMultiply(value, 745.69988145);
+                case PowerUnits.BritishThermalUnitsPerHour: return super.internalMultiply(value, 0.29307107017);
+                case PowerUnits.JoulesPerHour: return super.internalDivide(value, 3600);
+                case PowerUnits.Femtowatts: return super.internalMultiply(value, 1e-15);
+                case PowerUnits.Picowatts: return super.internalMultiply(value, 1e-12);
+                case PowerUnits.Nanowatts: return super.internalMultiply(value, 1e-9);
+                case PowerUnits.Microwatts: return super.internalMultiply(value, 0.000001);
+                case PowerUnits.Milliwatts: return super.internalMultiply(value, 0.001);
+                case PowerUnits.Deciwatts: return super.internalMultiply(value, 0.1);
+                case PowerUnits.Decawatts: return super.internalMultiply(value, 10);
+                case PowerUnits.Kilowatts: return super.internalMultiply(value, 1000);
+                case PowerUnits.Megawatts: return super.internalMultiply(value, 1000000);
+                case PowerUnits.Gigawatts: return super.internalMultiply(value, 1000000000);
+                case PowerUnits.Terawatts: return super.internalMultiply(value, 1000000000000);
+                case PowerUnits.Petawatts: return super.internalMultiply(value, 1000000000000000);
+                case PowerUnits.KilobritishThermalUnitsPerHour: {
+                    const value3 = super.internalMultiply(value, 0.29307107017);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case PowerUnits.MegabritishThermalUnitsPerHour: {
+                    const value3 = super.internalMultiply(value, 0.29307107017);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case PowerUnits.MillijoulesPerHour: {
+                    const value3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case PowerUnits.KilojoulesPerHour: {
+                    const value3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case PowerUnits.MegajoulesPerHour: {
+                    const value3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case PowerUnits.GigajoulesPerHour: {
+                    const value3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case PowerUnits.Watts:
-                return value;
-            case PowerUnits.MechanicalHorsepower:
-                return value * 745.69;
-            case PowerUnits.MetricHorsepower:
-                return value * 735.49875;
-            case PowerUnits.ElectricalHorsepower:
-                return value * 746;
-            case PowerUnits.BoilerHorsepower:
-                return value * 9812.5;
-            case PowerUnits.HydraulicHorsepower:
-                return value * 745.69988145;
-            case PowerUnits.BritishThermalUnitsPerHour:
-                return value * 0.29307107017;
-            case PowerUnits.JoulesPerHour:
-                return value / 3600;
-            case PowerUnits.Femtowatts:
-                return (value) * 1e-15;
-            case PowerUnits.Picowatts:
-                return (value) * 1e-12;
-            case PowerUnits.Nanowatts:
-                return (value) * 1e-9;
-            case PowerUnits.Microwatts:
-                return (value) * 0.000001;
-            case PowerUnits.Milliwatts:
-                return (value) * 0.001;
-            case PowerUnits.Deciwatts:
-                return (value) * 0.1;
-            case PowerUnits.Decawatts:
-                return (value) * 10;
-            case PowerUnits.Kilowatts:
-                return (value) * 1000;
-            case PowerUnits.Megawatts:
-                return (value) * 1000000;
-            case PowerUnits.Gigawatts:
-                return (value) * 1000000000;
-            case PowerUnits.Terawatts:
-                return (value) * 1000000000000;
-            case PowerUnits.Petawatts:
-                return (value) * 1000000000000000;
-            case PowerUnits.KilobritishThermalUnitsPerHour:
-                return (value * 0.29307107017) * 1000;
-            case PowerUnits.MegabritishThermalUnitsPerHour:
-                return (value * 0.29307107017) * 1000000;
-            case PowerUnits.MillijoulesPerHour:
-                return (value / 3600) * 0.001;
-            case PowerUnits.KilojoulesPerHour:
-                return (value / 3600) * 1000;
-            case PowerUnits.MegajoulesPerHour:
-                return (value / 3600) * 1000000;
-            case PowerUnits.GigajoulesPerHour:
-                return (value / 3600) * 1000000000;
-            default:
-                break;
+            case PowerUnits.Watts: return value;
+            case PowerUnits.MechanicalHorsepower: return value * 745.69;
+            case PowerUnits.MetricHorsepower: return value * 735.49875;
+            case PowerUnits.ElectricalHorsepower: return value * 746;
+            case PowerUnits.BoilerHorsepower: return value * 9812.5;
+            case PowerUnits.HydraulicHorsepower: return value * 745.69988145;
+            case PowerUnits.BritishThermalUnitsPerHour: return value * 0.29307107017;
+            case PowerUnits.JoulesPerHour: return value / 3600;
+            case PowerUnits.Femtowatts: return (value) * 1e-15;
+            case PowerUnits.Picowatts: return (value) * 1e-12;
+            case PowerUnits.Nanowatts: return (value) * 1e-9;
+            case PowerUnits.Microwatts: return (value) * 0.000001;
+            case PowerUnits.Milliwatts: return (value) * 0.001;
+            case PowerUnits.Deciwatts: return (value) * 0.1;
+            case PowerUnits.Decawatts: return (value) * 10;
+            case PowerUnits.Kilowatts: return (value) * 1000;
+            case PowerUnits.Megawatts: return (value) * 1000000;
+            case PowerUnits.Gigawatts: return (value) * 1000000000;
+            case PowerUnits.Terawatts: return (value) * 1000000000000;
+            case PowerUnits.Petawatts: return (value) * 1000000000000000;
+            case PowerUnits.KilobritishThermalUnitsPerHour: return (value * 0.29307107017) * 1000;
+            case PowerUnits.MegabritishThermalUnitsPerHour: return (value * 0.29307107017) * 1000000;
+            case PowerUnits.MillijoulesPerHour: return (value / 3600) * 0.001;
+            case PowerUnits.KilojoulesPerHour: return (value / 3600) * 1000;
+            case PowerUnits.MegajoulesPerHour: return (value / 3600) * 1000000;
+            case PowerUnits.GigajoulesPerHour: return (value / 3600) * 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

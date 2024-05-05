@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a FuelEfficiency */
 export interface FuelEfficiencyDto {
@@ -159,37 +159,55 @@ export class FuelEfficiency extends BaseUnit {
     }
 
     private convertFromBase(toUnit: FuelEfficiencyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case FuelEfficiencyUnits.LitersPer100Kilometers: return this.value;
+                case FuelEfficiencyUnits.MilesPerUsGallon: {
+                    const value3 = super.internalMultiply(100, 3.785411784);
+                    const value6 = super.internalMultiply(1.609344, this.value);
+                    return super.internalDivide(value3, value6);
+                }
+                case FuelEfficiencyUnits.MilesPerUkGallon: {
+                    const value3 = super.internalMultiply(100, 4.54609188);
+                    const value6 = super.internalMultiply(1.609344, this.value);
+                    return super.internalDivide(value3, value6);
+                }
+                case FuelEfficiencyUnits.KilometersPerLiters: return super.internalDivide(100, this.value);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case FuelEfficiencyUnits.LitersPer100Kilometers:
-                return this.value;
-            case FuelEfficiencyUnits.MilesPerUsGallon:
-                return (100 * 3.785411784) / (1.609344 * this.value);
-            case FuelEfficiencyUnits.MilesPerUkGallon:
-                return (100 * 4.54609188) / (1.609344 * this.value);
-            case FuelEfficiencyUnits.KilometersPerLiters:
-                return 100 / this.value;
-            default:
-                break;
+            case FuelEfficiencyUnits.LitersPer100Kilometers: return this.value;
+            case FuelEfficiencyUnits.MilesPerUsGallon: return (100 * 3.785411784) / (1.609344 * this.value);
+            case FuelEfficiencyUnits.MilesPerUkGallon: return (100 * 4.54609188) / (1.609344 * this.value);
+            case FuelEfficiencyUnits.KilometersPerLiters: return 100 / this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: FuelEfficiencyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case FuelEfficiencyUnits.LitersPer100Kilometers: return value;
+                case FuelEfficiencyUnits.MilesPerUsGallon: {
+                    const value3 = super.internalMultiply(100, 3.785411784);
+                    const value6 = super.internalMultiply(1.609344, value);
+                    return super.internalDivide(value3, value6);
+                }
+                case FuelEfficiencyUnits.MilesPerUkGallon: {
+                    const value3 = super.internalMultiply(100, 4.54609188);
+                    const value6 = super.internalMultiply(1.609344, value);
+                    return super.internalDivide(value3, value6);
+                }
+                case FuelEfficiencyUnits.KilometersPerLiters: return super.internalDivide(100, value);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case FuelEfficiencyUnits.LitersPer100Kilometers:
-                return value;
-            case FuelEfficiencyUnits.MilesPerUsGallon:
-                return (100 * 3.785411784) / (1.609344 * value);
-            case FuelEfficiencyUnits.MilesPerUkGallon:
-                return (100 * 4.54609188) / (1.609344 * value);
-            case FuelEfficiencyUnits.KilometersPerLiters:
-                return 100 / value;
-            default:
-                break;
+            case FuelEfficiencyUnits.LitersPer100Kilometers: return value;
+            case FuelEfficiencyUnits.MilesPerUsGallon: return (100 * 3.785411784) / (1.609344 * value);
+            case FuelEfficiencyUnits.MilesPerUkGallon: return (100 * 4.54609188) / (1.609344 * value);
+            case FuelEfficiencyUnits.KilometersPerLiters: return 100 / value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Impulse */
 export interface ImpulseDto {
@@ -357,73 +357,75 @@ export class Impulse extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ImpulseUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ImpulseUnits.KilogramMetersPerSecond: return this.value;
+                case ImpulseUnits.NewtonSeconds: return this.value;
+                case ImpulseUnits.PoundFeetPerSecond: return super.internalMultiply(this.value, 7.230657989877);
+                case ImpulseUnits.PoundForceSeconds: return super.internalMultiply(this.value, 0.2248089430997);
+                case ImpulseUnits.SlugFeetPerSecond: return super.internalMultiply(this.value, 0.224735720691);
+                case ImpulseUnits.NanonewtonSeconds: return super.internalDivide(this.value, 1e-9);
+                case ImpulseUnits.MicronewtonSeconds: return super.internalDivide(this.value, 0.000001);
+                case ImpulseUnits.MillinewtonSeconds: return super.internalDivide(this.value, 0.001);
+                case ImpulseUnits.CentinewtonSeconds: return super.internalDivide(this.value, 0.01);
+                case ImpulseUnits.DecinewtonSeconds: return super.internalDivide(this.value, 0.1);
+                case ImpulseUnits.DecanewtonSeconds: return super.internalDivide(this.value, 10);
+                case ImpulseUnits.KilonewtonSeconds: return super.internalDivide(this.value, 1000);
+                case ImpulseUnits.MeganewtonSeconds: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ImpulseUnits.KilogramMetersPerSecond:
-                return this.value;
-            case ImpulseUnits.NewtonSeconds:
-                return this.value;
-            case ImpulseUnits.PoundFeetPerSecond:
-                return this.value * 7.230657989877;
-            case ImpulseUnits.PoundForceSeconds:
-                return this.value * 0.2248089430997;
-            case ImpulseUnits.SlugFeetPerSecond:
-                return this.value * 0.224735720691;
-            case ImpulseUnits.NanonewtonSeconds:
-                return (this.value) / 1e-9;
-            case ImpulseUnits.MicronewtonSeconds:
-                return (this.value) / 0.000001;
-            case ImpulseUnits.MillinewtonSeconds:
-                return (this.value) / 0.001;
-            case ImpulseUnits.CentinewtonSeconds:
-                return (this.value) / 0.01;
-            case ImpulseUnits.DecinewtonSeconds:
-                return (this.value) / 0.1;
-            case ImpulseUnits.DecanewtonSeconds:
-                return (this.value) / 10;
-            case ImpulseUnits.KilonewtonSeconds:
-                return (this.value) / 1000;
-            case ImpulseUnits.MeganewtonSeconds:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case ImpulseUnits.KilogramMetersPerSecond: return this.value;
+            case ImpulseUnits.NewtonSeconds: return this.value;
+            case ImpulseUnits.PoundFeetPerSecond: return this.value * 7.230657989877;
+            case ImpulseUnits.PoundForceSeconds: return this.value * 0.2248089430997;
+            case ImpulseUnits.SlugFeetPerSecond: return this.value * 0.224735720691;
+            case ImpulseUnits.NanonewtonSeconds: return (this.value) / 1e-9;
+            case ImpulseUnits.MicronewtonSeconds: return (this.value) / 0.000001;
+            case ImpulseUnits.MillinewtonSeconds: return (this.value) / 0.001;
+            case ImpulseUnits.CentinewtonSeconds: return (this.value) / 0.01;
+            case ImpulseUnits.DecinewtonSeconds: return (this.value) / 0.1;
+            case ImpulseUnits.DecanewtonSeconds: return (this.value) / 10;
+            case ImpulseUnits.KilonewtonSeconds: return (this.value) / 1000;
+            case ImpulseUnits.MeganewtonSeconds: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ImpulseUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ImpulseUnits.KilogramMetersPerSecond: return value;
+                case ImpulseUnits.NewtonSeconds: return value;
+                case ImpulseUnits.PoundFeetPerSecond: return super.internalDivide(value, 7.230657989877);
+                case ImpulseUnits.PoundForceSeconds: return super.internalDivide(value, 0.2248089430997);
+                case ImpulseUnits.SlugFeetPerSecond: return super.internalDivide(value, 0.224735720691);
+                case ImpulseUnits.NanonewtonSeconds: return super.internalMultiply(value, 1e-9);
+                case ImpulseUnits.MicronewtonSeconds: return super.internalMultiply(value, 0.000001);
+                case ImpulseUnits.MillinewtonSeconds: return super.internalMultiply(value, 0.001);
+                case ImpulseUnits.CentinewtonSeconds: return super.internalMultiply(value, 0.01);
+                case ImpulseUnits.DecinewtonSeconds: return super.internalMultiply(value, 0.1);
+                case ImpulseUnits.DecanewtonSeconds: return super.internalMultiply(value, 10);
+                case ImpulseUnits.KilonewtonSeconds: return super.internalMultiply(value, 1000);
+                case ImpulseUnits.MeganewtonSeconds: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ImpulseUnits.KilogramMetersPerSecond:
-                return value;
-            case ImpulseUnits.NewtonSeconds:
-                return value;
-            case ImpulseUnits.PoundFeetPerSecond:
-                return value / 7.230657989877;
-            case ImpulseUnits.PoundForceSeconds:
-                return value / 0.2248089430997;
-            case ImpulseUnits.SlugFeetPerSecond:
-                return value / 0.224735720691;
-            case ImpulseUnits.NanonewtonSeconds:
-                return (value) * 1e-9;
-            case ImpulseUnits.MicronewtonSeconds:
-                return (value) * 0.000001;
-            case ImpulseUnits.MillinewtonSeconds:
-                return (value) * 0.001;
-            case ImpulseUnits.CentinewtonSeconds:
-                return (value) * 0.01;
-            case ImpulseUnits.DecinewtonSeconds:
-                return (value) * 0.1;
-            case ImpulseUnits.DecanewtonSeconds:
-                return (value) * 10;
-            case ImpulseUnits.KilonewtonSeconds:
-                return (value) * 1000;
-            case ImpulseUnits.MeganewtonSeconds:
-                return (value) * 1000000;
-            default:
-                break;
+            case ImpulseUnits.KilogramMetersPerSecond: return value;
+            case ImpulseUnits.NewtonSeconds: return value;
+            case ImpulseUnits.PoundFeetPerSecond: return value / 7.230657989877;
+            case ImpulseUnits.PoundForceSeconds: return value / 0.2248089430997;
+            case ImpulseUnits.SlugFeetPerSecond: return value / 0.224735720691;
+            case ImpulseUnits.NanonewtonSeconds: return (value) * 1e-9;
+            case ImpulseUnits.MicronewtonSeconds: return (value) * 0.000001;
+            case ImpulseUnits.MillinewtonSeconds: return (value) * 0.001;
+            case ImpulseUnits.CentinewtonSeconds: return (value) * 0.01;
+            case ImpulseUnits.DecinewtonSeconds: return (value) * 0.1;
+            case ImpulseUnits.DecanewtonSeconds: return (value) * 10;
+            case ImpulseUnits.KilonewtonSeconds: return (value) * 1000;
+            case ImpulseUnits.MeganewtonSeconds: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

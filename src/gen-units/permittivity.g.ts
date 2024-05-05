@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Permittivity */
 export interface PermittivityDto {
@@ -93,25 +93,27 @@ export class Permittivity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: PermittivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case PermittivityUnits.FaradsPerMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case PermittivityUnits.FaradsPerMeter:
-                return this.value;
-            default:
-                break;
+            case PermittivityUnits.FaradsPerMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PermittivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case PermittivityUnits.FaradsPerMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case PermittivityUnits.FaradsPerMeter:
-                return value;
-            default:
-                break;
+            case PermittivityUnits.FaradsPerMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

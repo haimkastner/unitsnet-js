@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a AmountOfSubstance */
 export interface AmountOfSubstanceDto {
@@ -445,89 +445,127 @@ export class AmountOfSubstance extends BaseUnit {
     }
 
     private convertFromBase(toUnit: AmountOfSubstanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case AmountOfSubstanceUnits.Moles: return this.value;
+                case AmountOfSubstanceUnits.PoundMoles: return super.internalDivide(this.value, 453.59237);
+                case AmountOfSubstanceUnits.Femtomoles: return super.internalDivide(this.value, 1e-15);
+                case AmountOfSubstanceUnits.Picomoles: return super.internalDivide(this.value, 1e-12);
+                case AmountOfSubstanceUnits.Nanomoles: return super.internalDivide(this.value, 1e-9);
+                case AmountOfSubstanceUnits.Micromoles: return super.internalDivide(this.value, 0.000001);
+                case AmountOfSubstanceUnits.Millimoles: return super.internalDivide(this.value, 0.001);
+                case AmountOfSubstanceUnits.Centimoles: return super.internalDivide(this.value, 0.01);
+                case AmountOfSubstanceUnits.Decimoles: return super.internalDivide(this.value, 0.1);
+                case AmountOfSubstanceUnits.Kilomoles: return super.internalDivide(this.value, 1000);
+                case AmountOfSubstanceUnits.Megamoles: return super.internalDivide(this.value, 1000000);
+                case AmountOfSubstanceUnits.NanopoundMoles: {
+                    const value3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case AmountOfSubstanceUnits.MicropoundMoles: {
+                    const value3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case AmountOfSubstanceUnits.MillipoundMoles: {
+                    const value3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case AmountOfSubstanceUnits.CentipoundMoles: {
+                    const value3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case AmountOfSubstanceUnits.DecipoundMoles: {
+                    const value3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(value3, 0.1);
+                }
+                case AmountOfSubstanceUnits.KilopoundMoles: {
+                    const value3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case AmountOfSubstanceUnits.Moles:
-                return this.value;
-            case AmountOfSubstanceUnits.PoundMoles:
-                return this.value / 453.59237;
-            case AmountOfSubstanceUnits.Femtomoles:
-                return (this.value) / 1e-15;
-            case AmountOfSubstanceUnits.Picomoles:
-                return (this.value) / 1e-12;
-            case AmountOfSubstanceUnits.Nanomoles:
-                return (this.value) / 1e-9;
-            case AmountOfSubstanceUnits.Micromoles:
-                return (this.value) / 0.000001;
-            case AmountOfSubstanceUnits.Millimoles:
-                return (this.value) / 0.001;
-            case AmountOfSubstanceUnits.Centimoles:
-                return (this.value) / 0.01;
-            case AmountOfSubstanceUnits.Decimoles:
-                return (this.value) / 0.1;
-            case AmountOfSubstanceUnits.Kilomoles:
-                return (this.value) / 1000;
-            case AmountOfSubstanceUnits.Megamoles:
-                return (this.value) / 1000000;
-            case AmountOfSubstanceUnits.NanopoundMoles:
-                return (this.value / 453.59237) / 1e-9;
-            case AmountOfSubstanceUnits.MicropoundMoles:
-                return (this.value / 453.59237) / 0.000001;
-            case AmountOfSubstanceUnits.MillipoundMoles:
-                return (this.value / 453.59237) / 0.001;
-            case AmountOfSubstanceUnits.CentipoundMoles:
-                return (this.value / 453.59237) / 0.01;
-            case AmountOfSubstanceUnits.DecipoundMoles:
-                return (this.value / 453.59237) / 0.1;
-            case AmountOfSubstanceUnits.KilopoundMoles:
-                return (this.value / 453.59237) / 1000;
-            default:
-                break;
+            case AmountOfSubstanceUnits.Moles: return this.value;
+            case AmountOfSubstanceUnits.PoundMoles: return this.value / 453.59237;
+            case AmountOfSubstanceUnits.Femtomoles: return (this.value) / 1e-15;
+            case AmountOfSubstanceUnits.Picomoles: return (this.value) / 1e-12;
+            case AmountOfSubstanceUnits.Nanomoles: return (this.value) / 1e-9;
+            case AmountOfSubstanceUnits.Micromoles: return (this.value) / 0.000001;
+            case AmountOfSubstanceUnits.Millimoles: return (this.value) / 0.001;
+            case AmountOfSubstanceUnits.Centimoles: return (this.value) / 0.01;
+            case AmountOfSubstanceUnits.Decimoles: return (this.value) / 0.1;
+            case AmountOfSubstanceUnits.Kilomoles: return (this.value) / 1000;
+            case AmountOfSubstanceUnits.Megamoles: return (this.value) / 1000000;
+            case AmountOfSubstanceUnits.NanopoundMoles: return (this.value / 453.59237) / 1e-9;
+            case AmountOfSubstanceUnits.MicropoundMoles: return (this.value / 453.59237) / 0.000001;
+            case AmountOfSubstanceUnits.MillipoundMoles: return (this.value / 453.59237) / 0.001;
+            case AmountOfSubstanceUnits.CentipoundMoles: return (this.value / 453.59237) / 0.01;
+            case AmountOfSubstanceUnits.DecipoundMoles: return (this.value / 453.59237) / 0.1;
+            case AmountOfSubstanceUnits.KilopoundMoles: return (this.value / 453.59237) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AmountOfSubstanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case AmountOfSubstanceUnits.Moles: return value;
+                case AmountOfSubstanceUnits.PoundMoles: return super.internalMultiply(value, 453.59237);
+                case AmountOfSubstanceUnits.Femtomoles: return super.internalMultiply(value, 1e-15);
+                case AmountOfSubstanceUnits.Picomoles: return super.internalMultiply(value, 1e-12);
+                case AmountOfSubstanceUnits.Nanomoles: return super.internalMultiply(value, 1e-9);
+                case AmountOfSubstanceUnits.Micromoles: return super.internalMultiply(value, 0.000001);
+                case AmountOfSubstanceUnits.Millimoles: return super.internalMultiply(value, 0.001);
+                case AmountOfSubstanceUnits.Centimoles: return super.internalMultiply(value, 0.01);
+                case AmountOfSubstanceUnits.Decimoles: return super.internalMultiply(value, 0.1);
+                case AmountOfSubstanceUnits.Kilomoles: return super.internalMultiply(value, 1000);
+                case AmountOfSubstanceUnits.Megamoles: return super.internalMultiply(value, 1000000);
+                case AmountOfSubstanceUnits.NanopoundMoles: {
+                    const value3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case AmountOfSubstanceUnits.MicropoundMoles: {
+                    const value3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case AmountOfSubstanceUnits.MillipoundMoles: {
+                    const value3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case AmountOfSubstanceUnits.CentipoundMoles: {
+                    const value3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case AmountOfSubstanceUnits.DecipoundMoles: {
+                    const value3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                case AmountOfSubstanceUnits.KilopoundMoles: {
+                    const value3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case AmountOfSubstanceUnits.Moles:
-                return value;
-            case AmountOfSubstanceUnits.PoundMoles:
-                return value * 453.59237;
-            case AmountOfSubstanceUnits.Femtomoles:
-                return (value) * 1e-15;
-            case AmountOfSubstanceUnits.Picomoles:
-                return (value) * 1e-12;
-            case AmountOfSubstanceUnits.Nanomoles:
-                return (value) * 1e-9;
-            case AmountOfSubstanceUnits.Micromoles:
-                return (value) * 0.000001;
-            case AmountOfSubstanceUnits.Millimoles:
-                return (value) * 0.001;
-            case AmountOfSubstanceUnits.Centimoles:
-                return (value) * 0.01;
-            case AmountOfSubstanceUnits.Decimoles:
-                return (value) * 0.1;
-            case AmountOfSubstanceUnits.Kilomoles:
-                return (value) * 1000;
-            case AmountOfSubstanceUnits.Megamoles:
-                return (value) * 1000000;
-            case AmountOfSubstanceUnits.NanopoundMoles:
-                return (value * 453.59237) * 1e-9;
-            case AmountOfSubstanceUnits.MicropoundMoles:
-                return (value * 453.59237) * 0.000001;
-            case AmountOfSubstanceUnits.MillipoundMoles:
-                return (value * 453.59237) * 0.001;
-            case AmountOfSubstanceUnits.CentipoundMoles:
-                return (value * 453.59237) * 0.01;
-            case AmountOfSubstanceUnits.DecipoundMoles:
-                return (value * 453.59237) * 0.1;
-            case AmountOfSubstanceUnits.KilopoundMoles:
-                return (value * 453.59237) * 1000;
-            default:
-                break;
+            case AmountOfSubstanceUnits.Moles: return value;
+            case AmountOfSubstanceUnits.PoundMoles: return value * 453.59237;
+            case AmountOfSubstanceUnits.Femtomoles: return (value) * 1e-15;
+            case AmountOfSubstanceUnits.Picomoles: return (value) * 1e-12;
+            case AmountOfSubstanceUnits.Nanomoles: return (value) * 1e-9;
+            case AmountOfSubstanceUnits.Micromoles: return (value) * 0.000001;
+            case AmountOfSubstanceUnits.Millimoles: return (value) * 0.001;
+            case AmountOfSubstanceUnits.Centimoles: return (value) * 0.01;
+            case AmountOfSubstanceUnits.Decimoles: return (value) * 0.1;
+            case AmountOfSubstanceUnits.Kilomoles: return (value) * 1000;
+            case AmountOfSubstanceUnits.Megamoles: return (value) * 1000000;
+            case AmountOfSubstanceUnits.NanopoundMoles: return (value * 453.59237) * 1e-9;
+            case AmountOfSubstanceUnits.MicropoundMoles: return (value * 453.59237) * 0.000001;
+            case AmountOfSubstanceUnits.MillipoundMoles: return (value * 453.59237) * 0.001;
+            case AmountOfSubstanceUnits.CentipoundMoles: return (value * 453.59237) * 0.01;
+            case AmountOfSubstanceUnits.DecipoundMoles: return (value * 453.59237) * 0.1;
+            case AmountOfSubstanceUnits.KilopoundMoles: return (value * 453.59237) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricPotentialAc */
 export interface ElectricPotentialAcDto {
@@ -181,41 +181,43 @@ export class ElectricPotentialAc extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ElectricPotentialAcUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricPotentialAcUnits.VoltsAc: return this.value;
+                case ElectricPotentialAcUnits.MicrovoltsAc: return super.internalDivide(this.value, 0.000001);
+                case ElectricPotentialAcUnits.MillivoltsAc: return super.internalDivide(this.value, 0.001);
+                case ElectricPotentialAcUnits.KilovoltsAc: return super.internalDivide(this.value, 1000);
+                case ElectricPotentialAcUnits.MegavoltsAc: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricPotentialAcUnits.VoltsAc:
-                return this.value;
-            case ElectricPotentialAcUnits.MicrovoltsAc:
-                return (this.value) / 0.000001;
-            case ElectricPotentialAcUnits.MillivoltsAc:
-                return (this.value) / 0.001;
-            case ElectricPotentialAcUnits.KilovoltsAc:
-                return (this.value) / 1000;
-            case ElectricPotentialAcUnits.MegavoltsAc:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case ElectricPotentialAcUnits.VoltsAc: return this.value;
+            case ElectricPotentialAcUnits.MicrovoltsAc: return (this.value) / 0.000001;
+            case ElectricPotentialAcUnits.MillivoltsAc: return (this.value) / 0.001;
+            case ElectricPotentialAcUnits.KilovoltsAc: return (this.value) / 1000;
+            case ElectricPotentialAcUnits.MegavoltsAc: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricPotentialAcUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricPotentialAcUnits.VoltsAc: return value;
+                case ElectricPotentialAcUnits.MicrovoltsAc: return super.internalMultiply(value, 0.000001);
+                case ElectricPotentialAcUnits.MillivoltsAc: return super.internalMultiply(value, 0.001);
+                case ElectricPotentialAcUnits.KilovoltsAc: return super.internalMultiply(value, 1000);
+                case ElectricPotentialAcUnits.MegavoltsAc: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricPotentialAcUnits.VoltsAc:
-                return value;
-            case ElectricPotentialAcUnits.MicrovoltsAc:
-                return (value) * 0.000001;
-            case ElectricPotentialAcUnits.MillivoltsAc:
-                return (value) * 0.001;
-            case ElectricPotentialAcUnits.KilovoltsAc:
-                return (value) * 1000;
-            case ElectricPotentialAcUnits.MegavoltsAc:
-                return (value) * 1000000;
-            default:
-                break;
+            case ElectricPotentialAcUnits.VoltsAc: return value;
+            case ElectricPotentialAcUnits.MicrovoltsAc: return (value) * 0.000001;
+            case ElectricPotentialAcUnits.MillivoltsAc: return (value) * 0.001;
+            case ElectricPotentialAcUnits.KilovoltsAc: return (value) * 1000;
+            case ElectricPotentialAcUnits.MegavoltsAc: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

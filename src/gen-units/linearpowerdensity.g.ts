@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a LinearPowerDensity */
 export interface LinearPowerDensityDto {
@@ -621,121 +621,219 @@ export class LinearPowerDensity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: LinearPowerDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LinearPowerDensityUnits.WattsPerMeter: return this.value;
+                case LinearPowerDensityUnits.WattsPerCentimeter: return super.internalDivide(this.value, 1e2);
+                case LinearPowerDensityUnits.WattsPerMillimeter: return super.internalDivide(this.value, 1e3);
+                case LinearPowerDensityUnits.WattsPerInch: return super.internalDivide(this.value, 39.37007874);
+                case LinearPowerDensityUnits.WattsPerFoot: return super.internalDivide(this.value, 3.280839895);
+                case LinearPowerDensityUnits.MilliwattsPerMeter: return super.internalDivide(this.value, 0.001);
+                case LinearPowerDensityUnits.KilowattsPerMeter: return super.internalDivide(this.value, 1000);
+                case LinearPowerDensityUnits.MegawattsPerMeter: return super.internalDivide(this.value, 1000000);
+                case LinearPowerDensityUnits.GigawattsPerMeter: return super.internalDivide(this.value, 1000000000);
+                case LinearPowerDensityUnits.MilliwattsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case LinearPowerDensityUnits.KilowattsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 1000);
+                }
+                case LinearPowerDensityUnits.MegawattsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case LinearPowerDensityUnits.GigawattsPerCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case LinearPowerDensityUnits.MilliwattsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case LinearPowerDensityUnits.KilowattsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case LinearPowerDensityUnits.MegawattsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case LinearPowerDensityUnits.GigawattsPerMillimeter: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case LinearPowerDensityUnits.MilliwattsPerInch: {
+                    const value3 = super.internalDivide(this.value, 39.37007874);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case LinearPowerDensityUnits.KilowattsPerInch: {
+                    const value3 = super.internalDivide(this.value, 39.37007874);
+                    return super.internalDivide(value3, 1000);
+                }
+                case LinearPowerDensityUnits.MegawattsPerInch: {
+                    const value3 = super.internalDivide(this.value, 39.37007874);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case LinearPowerDensityUnits.GigawattsPerInch: {
+                    const value3 = super.internalDivide(this.value, 39.37007874);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case LinearPowerDensityUnits.MilliwattsPerFoot: {
+                    const value3 = super.internalDivide(this.value, 3.280839895);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case LinearPowerDensityUnits.KilowattsPerFoot: {
+                    const value3 = super.internalDivide(this.value, 3.280839895);
+                    return super.internalDivide(value3, 1000);
+                }
+                case LinearPowerDensityUnits.MegawattsPerFoot: {
+                    const value3 = super.internalDivide(this.value, 3.280839895);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case LinearPowerDensityUnits.GigawattsPerFoot: {
+                    const value3 = super.internalDivide(this.value, 3.280839895);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LinearPowerDensityUnits.WattsPerMeter:
-                return this.value;
-            case LinearPowerDensityUnits.WattsPerCentimeter:
-                return this.value / 1e2;
-            case LinearPowerDensityUnits.WattsPerMillimeter:
-                return this.value / 1e3;
-            case LinearPowerDensityUnits.WattsPerInch:
-                return this.value / 39.37007874;
-            case LinearPowerDensityUnits.WattsPerFoot:
-                return this.value / 3.280839895;
-            case LinearPowerDensityUnits.MilliwattsPerMeter:
-                return (this.value) / 0.001;
-            case LinearPowerDensityUnits.KilowattsPerMeter:
-                return (this.value) / 1000;
-            case LinearPowerDensityUnits.MegawattsPerMeter:
-                return (this.value) / 1000000;
-            case LinearPowerDensityUnits.GigawattsPerMeter:
-                return (this.value) / 1000000000;
-            case LinearPowerDensityUnits.MilliwattsPerCentimeter:
-                return (this.value / 1e2) / 0.001;
-            case LinearPowerDensityUnits.KilowattsPerCentimeter:
-                return (this.value / 1e2) / 1000;
-            case LinearPowerDensityUnits.MegawattsPerCentimeter:
-                return (this.value / 1e2) / 1000000;
-            case LinearPowerDensityUnits.GigawattsPerCentimeter:
-                return (this.value / 1e2) / 1000000000;
-            case LinearPowerDensityUnits.MilliwattsPerMillimeter:
-                return (this.value / 1e3) / 0.001;
-            case LinearPowerDensityUnits.KilowattsPerMillimeter:
-                return (this.value / 1e3) / 1000;
-            case LinearPowerDensityUnits.MegawattsPerMillimeter:
-                return (this.value / 1e3) / 1000000;
-            case LinearPowerDensityUnits.GigawattsPerMillimeter:
-                return (this.value / 1e3) / 1000000000;
-            case LinearPowerDensityUnits.MilliwattsPerInch:
-                return (this.value / 39.37007874) / 0.001;
-            case LinearPowerDensityUnits.KilowattsPerInch:
-                return (this.value / 39.37007874) / 1000;
-            case LinearPowerDensityUnits.MegawattsPerInch:
-                return (this.value / 39.37007874) / 1000000;
-            case LinearPowerDensityUnits.GigawattsPerInch:
-                return (this.value / 39.37007874) / 1000000000;
-            case LinearPowerDensityUnits.MilliwattsPerFoot:
-                return (this.value / 3.280839895) / 0.001;
-            case LinearPowerDensityUnits.KilowattsPerFoot:
-                return (this.value / 3.280839895) / 1000;
-            case LinearPowerDensityUnits.MegawattsPerFoot:
-                return (this.value / 3.280839895) / 1000000;
-            case LinearPowerDensityUnits.GigawattsPerFoot:
-                return (this.value / 3.280839895) / 1000000000;
-            default:
-                break;
+            case LinearPowerDensityUnits.WattsPerMeter: return this.value;
+            case LinearPowerDensityUnits.WattsPerCentimeter: return this.value / 1e2;
+            case LinearPowerDensityUnits.WattsPerMillimeter: return this.value / 1e3;
+            case LinearPowerDensityUnits.WattsPerInch: return this.value / 39.37007874;
+            case LinearPowerDensityUnits.WattsPerFoot: return this.value / 3.280839895;
+            case LinearPowerDensityUnits.MilliwattsPerMeter: return (this.value) / 0.001;
+            case LinearPowerDensityUnits.KilowattsPerMeter: return (this.value) / 1000;
+            case LinearPowerDensityUnits.MegawattsPerMeter: return (this.value) / 1000000;
+            case LinearPowerDensityUnits.GigawattsPerMeter: return (this.value) / 1000000000;
+            case LinearPowerDensityUnits.MilliwattsPerCentimeter: return (this.value / 1e2) / 0.001;
+            case LinearPowerDensityUnits.KilowattsPerCentimeter: return (this.value / 1e2) / 1000;
+            case LinearPowerDensityUnits.MegawattsPerCentimeter: return (this.value / 1e2) / 1000000;
+            case LinearPowerDensityUnits.GigawattsPerCentimeter: return (this.value / 1e2) / 1000000000;
+            case LinearPowerDensityUnits.MilliwattsPerMillimeter: return (this.value / 1e3) / 0.001;
+            case LinearPowerDensityUnits.KilowattsPerMillimeter: return (this.value / 1e3) / 1000;
+            case LinearPowerDensityUnits.MegawattsPerMillimeter: return (this.value / 1e3) / 1000000;
+            case LinearPowerDensityUnits.GigawattsPerMillimeter: return (this.value / 1e3) / 1000000000;
+            case LinearPowerDensityUnits.MilliwattsPerInch: return (this.value / 39.37007874) / 0.001;
+            case LinearPowerDensityUnits.KilowattsPerInch: return (this.value / 39.37007874) / 1000;
+            case LinearPowerDensityUnits.MegawattsPerInch: return (this.value / 39.37007874) / 1000000;
+            case LinearPowerDensityUnits.GigawattsPerInch: return (this.value / 39.37007874) / 1000000000;
+            case LinearPowerDensityUnits.MilliwattsPerFoot: return (this.value / 3.280839895) / 0.001;
+            case LinearPowerDensityUnits.KilowattsPerFoot: return (this.value / 3.280839895) / 1000;
+            case LinearPowerDensityUnits.MegawattsPerFoot: return (this.value / 3.280839895) / 1000000;
+            case LinearPowerDensityUnits.GigawattsPerFoot: return (this.value / 3.280839895) / 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LinearPowerDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LinearPowerDensityUnits.WattsPerMeter: return value;
+                case LinearPowerDensityUnits.WattsPerCentimeter: return super.internalMultiply(value, 1e2);
+                case LinearPowerDensityUnits.WattsPerMillimeter: return super.internalMultiply(value, 1e3);
+                case LinearPowerDensityUnits.WattsPerInch: return super.internalMultiply(value, 39.37007874);
+                case LinearPowerDensityUnits.WattsPerFoot: return super.internalMultiply(value, 3.280839895);
+                case LinearPowerDensityUnits.MilliwattsPerMeter: return super.internalMultiply(value, 0.001);
+                case LinearPowerDensityUnits.KilowattsPerMeter: return super.internalMultiply(value, 1000);
+                case LinearPowerDensityUnits.MegawattsPerMeter: return super.internalMultiply(value, 1000000);
+                case LinearPowerDensityUnits.GigawattsPerMeter: return super.internalMultiply(value, 1000000000);
+                case LinearPowerDensityUnits.MilliwattsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case LinearPowerDensityUnits.KilowattsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case LinearPowerDensityUnits.MegawattsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case LinearPowerDensityUnits.GigawattsPerCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case LinearPowerDensityUnits.MilliwattsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case LinearPowerDensityUnits.KilowattsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case LinearPowerDensityUnits.MegawattsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case LinearPowerDensityUnits.GigawattsPerMillimeter: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case LinearPowerDensityUnits.MilliwattsPerInch: {
+                    const value3 = super.internalMultiply(value, 39.37007874);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case LinearPowerDensityUnits.KilowattsPerInch: {
+                    const value3 = super.internalMultiply(value, 39.37007874);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case LinearPowerDensityUnits.MegawattsPerInch: {
+                    const value3 = super.internalMultiply(value, 39.37007874);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case LinearPowerDensityUnits.GigawattsPerInch: {
+                    const value3 = super.internalMultiply(value, 39.37007874);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case LinearPowerDensityUnits.MilliwattsPerFoot: {
+                    const value3 = super.internalMultiply(value, 3.280839895);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case LinearPowerDensityUnits.KilowattsPerFoot: {
+                    const value3 = super.internalMultiply(value, 3.280839895);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case LinearPowerDensityUnits.MegawattsPerFoot: {
+                    const value3 = super.internalMultiply(value, 3.280839895);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case LinearPowerDensityUnits.GigawattsPerFoot: {
+                    const value3 = super.internalMultiply(value, 3.280839895);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LinearPowerDensityUnits.WattsPerMeter:
-                return value;
-            case LinearPowerDensityUnits.WattsPerCentimeter:
-                return value * 1e2;
-            case LinearPowerDensityUnits.WattsPerMillimeter:
-                return value * 1e3;
-            case LinearPowerDensityUnits.WattsPerInch:
-                return value * 39.37007874;
-            case LinearPowerDensityUnits.WattsPerFoot:
-                return value * 3.280839895;
-            case LinearPowerDensityUnits.MilliwattsPerMeter:
-                return (value) * 0.001;
-            case LinearPowerDensityUnits.KilowattsPerMeter:
-                return (value) * 1000;
-            case LinearPowerDensityUnits.MegawattsPerMeter:
-                return (value) * 1000000;
-            case LinearPowerDensityUnits.GigawattsPerMeter:
-                return (value) * 1000000000;
-            case LinearPowerDensityUnits.MilliwattsPerCentimeter:
-                return (value * 1e2) * 0.001;
-            case LinearPowerDensityUnits.KilowattsPerCentimeter:
-                return (value * 1e2) * 1000;
-            case LinearPowerDensityUnits.MegawattsPerCentimeter:
-                return (value * 1e2) * 1000000;
-            case LinearPowerDensityUnits.GigawattsPerCentimeter:
-                return (value * 1e2) * 1000000000;
-            case LinearPowerDensityUnits.MilliwattsPerMillimeter:
-                return (value * 1e3) * 0.001;
-            case LinearPowerDensityUnits.KilowattsPerMillimeter:
-                return (value * 1e3) * 1000;
-            case LinearPowerDensityUnits.MegawattsPerMillimeter:
-                return (value * 1e3) * 1000000;
-            case LinearPowerDensityUnits.GigawattsPerMillimeter:
-                return (value * 1e3) * 1000000000;
-            case LinearPowerDensityUnits.MilliwattsPerInch:
-                return (value * 39.37007874) * 0.001;
-            case LinearPowerDensityUnits.KilowattsPerInch:
-                return (value * 39.37007874) * 1000;
-            case LinearPowerDensityUnits.MegawattsPerInch:
-                return (value * 39.37007874) * 1000000;
-            case LinearPowerDensityUnits.GigawattsPerInch:
-                return (value * 39.37007874) * 1000000000;
-            case LinearPowerDensityUnits.MilliwattsPerFoot:
-                return (value * 3.280839895) * 0.001;
-            case LinearPowerDensityUnits.KilowattsPerFoot:
-                return (value * 3.280839895) * 1000;
-            case LinearPowerDensityUnits.MegawattsPerFoot:
-                return (value * 3.280839895) * 1000000;
-            case LinearPowerDensityUnits.GigawattsPerFoot:
-                return (value * 3.280839895) * 1000000000;
-            default:
-                break;
+            case LinearPowerDensityUnits.WattsPerMeter: return value;
+            case LinearPowerDensityUnits.WattsPerCentimeter: return value * 1e2;
+            case LinearPowerDensityUnits.WattsPerMillimeter: return value * 1e3;
+            case LinearPowerDensityUnits.WattsPerInch: return value * 39.37007874;
+            case LinearPowerDensityUnits.WattsPerFoot: return value * 3.280839895;
+            case LinearPowerDensityUnits.MilliwattsPerMeter: return (value) * 0.001;
+            case LinearPowerDensityUnits.KilowattsPerMeter: return (value) * 1000;
+            case LinearPowerDensityUnits.MegawattsPerMeter: return (value) * 1000000;
+            case LinearPowerDensityUnits.GigawattsPerMeter: return (value) * 1000000000;
+            case LinearPowerDensityUnits.MilliwattsPerCentimeter: return (value * 1e2) * 0.001;
+            case LinearPowerDensityUnits.KilowattsPerCentimeter: return (value * 1e2) * 1000;
+            case LinearPowerDensityUnits.MegawattsPerCentimeter: return (value * 1e2) * 1000000;
+            case LinearPowerDensityUnits.GigawattsPerCentimeter: return (value * 1e2) * 1000000000;
+            case LinearPowerDensityUnits.MilliwattsPerMillimeter: return (value * 1e3) * 0.001;
+            case LinearPowerDensityUnits.KilowattsPerMillimeter: return (value * 1e3) * 1000;
+            case LinearPowerDensityUnits.MegawattsPerMillimeter: return (value * 1e3) * 1000000;
+            case LinearPowerDensityUnits.GigawattsPerMillimeter: return (value * 1e3) * 1000000000;
+            case LinearPowerDensityUnits.MilliwattsPerInch: return (value * 39.37007874) * 0.001;
+            case LinearPowerDensityUnits.KilowattsPerInch: return (value * 39.37007874) * 1000;
+            case LinearPowerDensityUnits.MegawattsPerInch: return (value * 39.37007874) * 1000000;
+            case LinearPowerDensityUnits.GigawattsPerInch: return (value * 39.37007874) * 1000000000;
+            case LinearPowerDensityUnits.MilliwattsPerFoot: return (value * 3.280839895) * 0.001;
+            case LinearPowerDensityUnits.KilowattsPerFoot: return (value * 3.280839895) * 1000;
+            case LinearPowerDensityUnits.MegawattsPerFoot: return (value * 3.280839895) * 1000000;
+            case LinearPowerDensityUnits.GigawattsPerFoot: return (value * 3.280839895) * 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Mass */
 export interface MassDto {
@@ -665,129 +665,215 @@ export class Mass extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MassUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MassUnits.Grams: return super.internalMultiply(this.value, 1e3);
+                case MassUnits.Tonnes: return super.internalDivide(this.value, 1e3);
+                case MassUnits.ShortTons: return super.internalDivide(this.value, 9.0718474e2);
+                case MassUnits.LongTons: return super.internalDivide(this.value, 1.0160469088e3);
+                case MassUnits.Pounds: return super.internalDivide(this.value, 0.45359237);
+                case MassUnits.Ounces: return super.internalDivide(this.value, 0.028349523125);
+                case MassUnits.Slugs: return super.internalMultiply(this.value, 6.852176556196105e-2);
+                case MassUnits.Stone: return super.internalMultiply(this.value, 0.1574731728702698);
+                case MassUnits.ShortHundredweight: return super.internalMultiply(this.value, 0.022046226218487758);
+                case MassUnits.LongHundredweight: return super.internalMultiply(this.value, 0.01968413055222121);
+                case MassUnits.Grains: return super.internalMultiply(this.value, 15432.358352941431);
+                case MassUnits.SolarMasses: return super.internalDivide(this.value, 1.98947e30);
+                case MassUnits.EarthMasses: return super.internalDivide(this.value, 5.9722E+24);
+                case MassUnits.Femtograms: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1e-15);
+                }
+                case MassUnits.Picograms: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1e-12);
+                }
+                case MassUnits.Nanograms: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case MassUnits.Micrograms: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case MassUnits.Milligrams: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassUnits.Centigrams: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case MassUnits.Decigrams: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.1);
+                }
+                case MassUnits.Decagrams: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 10);
+                }
+                case MassUnits.Hectograms: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 100);
+                }
+                case MassUnits.Kilograms: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassUnits.Kilotonnes: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassUnits.Megatonnes: {
+                    const value3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case MassUnits.Kilopounds: {
+                    const value3 = super.internalDivide(this.value, 0.45359237);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassUnits.Megapounds: {
+                    const value3 = super.internalDivide(this.value, 0.45359237);
+                    return super.internalDivide(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MassUnits.Grams:
-                return this.value * 1e3;
-            case MassUnits.Tonnes:
-                return this.value / 1e3;
-            case MassUnits.ShortTons:
-                return this.value / 9.0718474e2;
-            case MassUnits.LongTons:
-                return this.value / 1.0160469088e3;
-            case MassUnits.Pounds:
-                return this.value / 0.45359237;
-            case MassUnits.Ounces:
-                return this.value / 0.028349523125;
-            case MassUnits.Slugs:
-                return this.value * 6.852176556196105e-2;
-            case MassUnits.Stone:
-                return this.value * 0.1574731728702698;
-            case MassUnits.ShortHundredweight:
-                return this.value * 0.022046226218487758;
-            case MassUnits.LongHundredweight:
-                return this.value * 0.01968413055222121;
-            case MassUnits.Grains:
-                return this.value * 15432.358352941431;
-            case MassUnits.SolarMasses:
-                return this.value / 1.98947e30;
-            case MassUnits.EarthMasses:
-                return this.value / 5.9722E+24;
-            case MassUnits.Femtograms:
-                return (this.value * 1e3) / 1e-15;
-            case MassUnits.Picograms:
-                return (this.value * 1e3) / 1e-12;
-            case MassUnits.Nanograms:
-                return (this.value * 1e3) / 1e-9;
-            case MassUnits.Micrograms:
-                return (this.value * 1e3) / 0.000001;
-            case MassUnits.Milligrams:
-                return (this.value * 1e3) / 0.001;
-            case MassUnits.Centigrams:
-                return (this.value * 1e3) / 0.01;
-            case MassUnits.Decigrams:
-                return (this.value * 1e3) / 0.1;
-            case MassUnits.Decagrams:
-                return (this.value * 1e3) / 10;
-            case MassUnits.Hectograms:
-                return (this.value * 1e3) / 100;
-            case MassUnits.Kilograms:
-                return (this.value * 1e3) / 1000;
-            case MassUnits.Kilotonnes:
-                return (this.value / 1e3) / 1000;
-            case MassUnits.Megatonnes:
-                return (this.value / 1e3) / 1000000;
-            case MassUnits.Kilopounds:
-                return (this.value / 0.45359237) / 1000;
-            case MassUnits.Megapounds:
-                return (this.value / 0.45359237) / 1000000;
-            default:
-                break;
+            case MassUnits.Grams: return this.value * 1e3;
+            case MassUnits.Tonnes: return this.value / 1e3;
+            case MassUnits.ShortTons: return this.value / 9.0718474e2;
+            case MassUnits.LongTons: return this.value / 1.0160469088e3;
+            case MassUnits.Pounds: return this.value / 0.45359237;
+            case MassUnits.Ounces: return this.value / 0.028349523125;
+            case MassUnits.Slugs: return this.value * 6.852176556196105e-2;
+            case MassUnits.Stone: return this.value * 0.1574731728702698;
+            case MassUnits.ShortHundredweight: return this.value * 0.022046226218487758;
+            case MassUnits.LongHundredweight: return this.value * 0.01968413055222121;
+            case MassUnits.Grains: return this.value * 15432.358352941431;
+            case MassUnits.SolarMasses: return this.value / 1.98947e30;
+            case MassUnits.EarthMasses: return this.value / 5.9722E+24;
+            case MassUnits.Femtograms: return (this.value * 1e3) / 1e-15;
+            case MassUnits.Picograms: return (this.value * 1e3) / 1e-12;
+            case MassUnits.Nanograms: return (this.value * 1e3) / 1e-9;
+            case MassUnits.Micrograms: return (this.value * 1e3) / 0.000001;
+            case MassUnits.Milligrams: return (this.value * 1e3) / 0.001;
+            case MassUnits.Centigrams: return (this.value * 1e3) / 0.01;
+            case MassUnits.Decigrams: return (this.value * 1e3) / 0.1;
+            case MassUnits.Decagrams: return (this.value * 1e3) / 10;
+            case MassUnits.Hectograms: return (this.value * 1e3) / 100;
+            case MassUnits.Kilograms: return (this.value * 1e3) / 1000;
+            case MassUnits.Kilotonnes: return (this.value / 1e3) / 1000;
+            case MassUnits.Megatonnes: return (this.value / 1e3) / 1000000;
+            case MassUnits.Kilopounds: return (this.value / 0.45359237) / 1000;
+            case MassUnits.Megapounds: return (this.value / 0.45359237) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MassUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MassUnits.Grams: return super.internalDivide(value, 1e3);
+                case MassUnits.Tonnes: return super.internalMultiply(value, 1e3);
+                case MassUnits.ShortTons: return super.internalMultiply(value, 9.0718474e2);
+                case MassUnits.LongTons: return super.internalMultiply(value, 1.0160469088e3);
+                case MassUnits.Pounds: return super.internalMultiply(value, 0.45359237);
+                case MassUnits.Ounces: return super.internalMultiply(value, 0.028349523125);
+                case MassUnits.Slugs: return super.internalDivide(value, 6.852176556196105e-2);
+                case MassUnits.Stone: return super.internalDivide(value, 0.1574731728702698);
+                case MassUnits.ShortHundredweight: return super.internalDivide(value, 0.022046226218487758);
+                case MassUnits.LongHundredweight: return super.internalDivide(value, 0.01968413055222121);
+                case MassUnits.Grains: return super.internalDivide(value, 15432.358352941431);
+                case MassUnits.SolarMasses: return super.internalMultiply(value, 1.98947e30);
+                case MassUnits.EarthMasses: return super.internalMultiply(value, 5.9722E+24);
+                case MassUnits.Femtograms: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1e-15);
+                }
+                case MassUnits.Picograms: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1e-12);
+                }
+                case MassUnits.Nanograms: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case MassUnits.Micrograms: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case MassUnits.Milligrams: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassUnits.Centigrams: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case MassUnits.Decigrams: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                case MassUnits.Decagrams: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 10);
+                }
+                case MassUnits.Hectograms: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 100);
+                }
+                case MassUnits.Kilograms: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassUnits.Kilotonnes: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassUnits.Megatonnes: {
+                    const value3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case MassUnits.Kilopounds: {
+                    const value3 = super.internalMultiply(value, 0.45359237);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassUnits.Megapounds: {
+                    const value3 = super.internalMultiply(value, 0.45359237);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MassUnits.Grams:
-                return value / 1e3;
-            case MassUnits.Tonnes:
-                return value * 1e3;
-            case MassUnits.ShortTons:
-                return value * 9.0718474e2;
-            case MassUnits.LongTons:
-                return value * 1.0160469088e3;
-            case MassUnits.Pounds:
-                return value * 0.45359237;
-            case MassUnits.Ounces:
-                return value * 0.028349523125;
-            case MassUnits.Slugs:
-                return value / 6.852176556196105e-2;
-            case MassUnits.Stone:
-                return value / 0.1574731728702698;
-            case MassUnits.ShortHundredweight:
-                return value / 0.022046226218487758;
-            case MassUnits.LongHundredweight:
-                return value / 0.01968413055222121;
-            case MassUnits.Grains:
-                return value / 15432.358352941431;
-            case MassUnits.SolarMasses:
-                return value * 1.98947e30;
-            case MassUnits.EarthMasses:
-                return value * 5.9722E+24;
-            case MassUnits.Femtograms:
-                return (value / 1e3) * 1e-15;
-            case MassUnits.Picograms:
-                return (value / 1e3) * 1e-12;
-            case MassUnits.Nanograms:
-                return (value / 1e3) * 1e-9;
-            case MassUnits.Micrograms:
-                return (value / 1e3) * 0.000001;
-            case MassUnits.Milligrams:
-                return (value / 1e3) * 0.001;
-            case MassUnits.Centigrams:
-                return (value / 1e3) * 0.01;
-            case MassUnits.Decigrams:
-                return (value / 1e3) * 0.1;
-            case MassUnits.Decagrams:
-                return (value / 1e3) * 10;
-            case MassUnits.Hectograms:
-                return (value / 1e3) * 100;
-            case MassUnits.Kilograms:
-                return (value / 1e3) * 1000;
-            case MassUnits.Kilotonnes:
-                return (value * 1e3) * 1000;
-            case MassUnits.Megatonnes:
-                return (value * 1e3) * 1000000;
-            case MassUnits.Kilopounds:
-                return (value * 0.45359237) * 1000;
-            case MassUnits.Megapounds:
-                return (value * 0.45359237) * 1000000;
-            default:
-                break;
+            case MassUnits.Grams: return value / 1e3;
+            case MassUnits.Tonnes: return value * 1e3;
+            case MassUnits.ShortTons: return value * 9.0718474e2;
+            case MassUnits.LongTons: return value * 1.0160469088e3;
+            case MassUnits.Pounds: return value * 0.45359237;
+            case MassUnits.Ounces: return value * 0.028349523125;
+            case MassUnits.Slugs: return value / 6.852176556196105e-2;
+            case MassUnits.Stone: return value / 0.1574731728702698;
+            case MassUnits.ShortHundredweight: return value / 0.022046226218487758;
+            case MassUnits.LongHundredweight: return value / 0.01968413055222121;
+            case MassUnits.Grains: return value / 15432.358352941431;
+            case MassUnits.SolarMasses: return value * 1.98947e30;
+            case MassUnits.EarthMasses: return value * 5.9722E+24;
+            case MassUnits.Femtograms: return (value / 1e3) * 1e-15;
+            case MassUnits.Picograms: return (value / 1e3) * 1e-12;
+            case MassUnits.Nanograms: return (value / 1e3) * 1e-9;
+            case MassUnits.Micrograms: return (value / 1e3) * 0.000001;
+            case MassUnits.Milligrams: return (value / 1e3) * 0.001;
+            case MassUnits.Centigrams: return (value / 1e3) * 0.01;
+            case MassUnits.Decigrams: return (value / 1e3) * 0.1;
+            case MassUnits.Decagrams: return (value / 1e3) * 10;
+            case MassUnits.Hectograms: return (value / 1e3) * 100;
+            case MassUnits.Kilograms: return (value / 1e3) * 1000;
+            case MassUnits.Kilotonnes: return (value * 1e3) * 1000;
+            case MassUnits.Megatonnes: return (value * 1e3) * 1000000;
+            case MassUnits.Kilopounds: return (value * 0.45359237) * 1000;
+            case MassUnits.Megapounds: return (value * 0.45359237) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a VolumetricHeatCapacity */
 export interface VolumetricHeatCapacityDto {
@@ -269,57 +269,65 @@ export class VolumetricHeatCapacity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: VolumetricHeatCapacityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin: return this.value;
+                case VolumetricHeatCapacityUnits.JoulesPerCubicMeterDegreeCelsius: return this.value;
+                case VolumetricHeatCapacityUnits.CaloriesPerCubicCentimeterDegreeCelsius: return super.internalMultiply(this.value, 2.388459e-7);
+                case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit: return super.internalMultiply(this.value, 1.4910660e-5);
+                case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin: return super.internalDivide(this.value, 1000);
+                case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin: return super.internalDivide(this.value, 1000000);
+                case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius: return super.internalDivide(this.value, 1000);
+                case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius: return super.internalDivide(this.value, 1000000);
+                case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius: {
+                    const value3 = super.internalMultiply(this.value, 2.388459e-7);
+                    return super.internalDivide(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin:
-                return this.value;
-            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterDegreeCelsius:
-                return this.value;
-            case VolumetricHeatCapacityUnits.CaloriesPerCubicCentimeterDegreeCelsius:
-                return this.value * 2.388459e-7;
-            case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit:
-                return this.value * 1.4910660e-5;
-            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin:
-                return (this.value) / 1000;
-            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin:
-                return (this.value) / 1000000;
-            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius:
-                return (this.value) / 1000;
-            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius:
-                return (this.value) / 1000000;
-            case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius:
-                return (this.value * 2.388459e-7) / 1000;
-            default:
-                break;
+            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin: return this.value;
+            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterDegreeCelsius: return this.value;
+            case VolumetricHeatCapacityUnits.CaloriesPerCubicCentimeterDegreeCelsius: return this.value * 2.388459e-7;
+            case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit: return this.value * 1.4910660e-5;
+            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin: return (this.value) / 1000;
+            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin: return (this.value) / 1000000;
+            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius: return (this.value) / 1000;
+            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius: return (this.value) / 1000000;
+            case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius: return (this.value * 2.388459e-7) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: VolumetricHeatCapacityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin: return value;
+                case VolumetricHeatCapacityUnits.JoulesPerCubicMeterDegreeCelsius: return value;
+                case VolumetricHeatCapacityUnits.CaloriesPerCubicCentimeterDegreeCelsius: return super.internalDivide(value, 2.388459e-7);
+                case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit: return super.internalDivide(value, 1.4910660e-5);
+                case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin: return super.internalMultiply(value, 1000);
+                case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin: return super.internalMultiply(value, 1000000);
+                case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius: return super.internalMultiply(value, 1000);
+                case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius: return super.internalMultiply(value, 1000000);
+                case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius: {
+                    const value3 = super.internalDivide(value, 2.388459e-7);
+                    return super.internalMultiply(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin:
-                return value;
-            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterDegreeCelsius:
-                return value;
-            case VolumetricHeatCapacityUnits.CaloriesPerCubicCentimeterDegreeCelsius:
-                return value / 2.388459e-7;
-            case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit:
-                return value / 1.4910660e-5;
-            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin:
-                return (value) * 1000;
-            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin:
-                return (value) * 1000000;
-            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius:
-                return (value) * 1000;
-            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius:
-                return (value) * 1000000;
-            case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius:
-                return (value / 2.388459e-7) * 1000;
-            default:
-                break;
+            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin: return value;
+            case VolumetricHeatCapacityUnits.JoulesPerCubicMeterDegreeCelsius: return value;
+            case VolumetricHeatCapacityUnits.CaloriesPerCubicCentimeterDegreeCelsius: return value / 2.388459e-7;
+            case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit: return value / 1.4910660e-5;
+            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin: return (value) * 1000;
+            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin: return (value) * 1000000;
+            case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius: return (value) * 1000;
+            case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius: return (value) * 1000000;
+            case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius: return (value / 2.388459e-7) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

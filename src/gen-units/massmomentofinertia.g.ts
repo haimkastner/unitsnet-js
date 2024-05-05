@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MassMomentOfInertia */
 export interface MassMomentOfInertiaDto {
@@ -687,133 +687,231 @@ export class MassMomentOfInertia extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MassMomentOfInertiaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MassMomentOfInertiaUnits.GramSquareMeters: return super.internalMultiply(this.value, 1e3);
+                case MassMomentOfInertiaUnits.GramSquareDecimeters: return super.internalMultiply(this.value, 1e5);
+                case MassMomentOfInertiaUnits.GramSquareCentimeters: return super.internalMultiply(this.value, 1e7);
+                case MassMomentOfInertiaUnits.GramSquareMillimeters: return super.internalMultiply(this.value, 1e9);
+                case MassMomentOfInertiaUnits.TonneSquareMeters: return super.internalMultiply(this.value, 1e-3);
+                case MassMomentOfInertiaUnits.TonneSquareDecimeters: return super.internalMultiply(this.value, 1e-1);
+                case MassMomentOfInertiaUnits.TonneSquareCentimeters: return super.internalMultiply(this.value, 1e1);
+                case MassMomentOfInertiaUnits.TonneSquareMilimeters: return super.internalMultiply(this.value, 1e3);
+                case MassMomentOfInertiaUnits.PoundSquareFeet: return super.internalDivide(this.value, 4.21401101e-2);
+                case MassMomentOfInertiaUnits.PoundSquareInches: return super.internalDivide(this.value, 2.9263965e-4);
+                case MassMomentOfInertiaUnits.SlugSquareFeet: return super.internalDivide(this.value, 1.3558179619);
+                case MassMomentOfInertiaUnits.SlugSquareInches: return super.internalDivide(this.value, 9.41540242e-3);
+                case MassMomentOfInertiaUnits.MilligramSquareMeters: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassMomentOfInertiaUnits.KilogramSquareMeters: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MilligramSquareDecimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e5);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassMomentOfInertiaUnits.KilogramSquareDecimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e5);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MilligramSquareCentimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e7);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassMomentOfInertiaUnits.KilogramSquareCentimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e7);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MilligramSquareMillimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e9);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassMomentOfInertiaUnits.KilogramSquareMillimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e9);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.KilotonneSquareMeters: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MegatonneSquareMeters: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case MassMomentOfInertiaUnits.KilotonneSquareDecimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MegatonneSquareDecimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case MassMomentOfInertiaUnits.KilotonneSquareCentimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e1);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MegatonneSquareCentimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e1);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: {
+                    const value3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MassMomentOfInertiaUnits.GramSquareMeters:
-                return this.value * 1e3;
-            case MassMomentOfInertiaUnits.GramSquareDecimeters:
-                return this.value * 1e5;
-            case MassMomentOfInertiaUnits.GramSquareCentimeters:
-                return this.value * 1e7;
-            case MassMomentOfInertiaUnits.GramSquareMillimeters:
-                return this.value * 1e9;
-            case MassMomentOfInertiaUnits.TonneSquareMeters:
-                return this.value * 1e-3;
-            case MassMomentOfInertiaUnits.TonneSquareDecimeters:
-                return this.value * 1e-1;
-            case MassMomentOfInertiaUnits.TonneSquareCentimeters:
-                return this.value * 1e1;
-            case MassMomentOfInertiaUnits.TonneSquareMilimeters:
-                return this.value * 1e3;
-            case MassMomentOfInertiaUnits.PoundSquareFeet:
-                return this.value / 4.21401101e-2;
-            case MassMomentOfInertiaUnits.PoundSquareInches:
-                return this.value / 2.9263965e-4;
-            case MassMomentOfInertiaUnits.SlugSquareFeet:
-                return this.value / 1.3558179619;
-            case MassMomentOfInertiaUnits.SlugSquareInches:
-                return this.value / 9.41540242e-3;
-            case MassMomentOfInertiaUnits.MilligramSquareMeters:
-                return (this.value * 1e3) / 0.001;
-            case MassMomentOfInertiaUnits.KilogramSquareMeters:
-                return (this.value * 1e3) / 1000;
-            case MassMomentOfInertiaUnits.MilligramSquareDecimeters:
-                return (this.value * 1e5) / 0.001;
-            case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
-                return (this.value * 1e5) / 1000;
-            case MassMomentOfInertiaUnits.MilligramSquareCentimeters:
-                return (this.value * 1e7) / 0.001;
-            case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
-                return (this.value * 1e7) / 1000;
-            case MassMomentOfInertiaUnits.MilligramSquareMillimeters:
-                return (this.value * 1e9) / 0.001;
-            case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
-                return (this.value * 1e9) / 1000;
-            case MassMomentOfInertiaUnits.KilotonneSquareMeters:
-                return (this.value * 1e-3) / 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareMeters:
-                return (this.value * 1e-3) / 1000000;
-            case MassMomentOfInertiaUnits.KilotonneSquareDecimeters:
-                return (this.value * 1e-1) / 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareDecimeters:
-                return (this.value * 1e-1) / 1000000;
-            case MassMomentOfInertiaUnits.KilotonneSquareCentimeters:
-                return (this.value * 1e1) / 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareCentimeters:
-                return (this.value * 1e1) / 1000000;
-            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters:
-                return (this.value * 1e3) / 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters:
-                return (this.value * 1e3) / 1000000;
-            default:
-                break;
+            case MassMomentOfInertiaUnits.GramSquareMeters: return this.value * 1e3;
+            case MassMomentOfInertiaUnits.GramSquareDecimeters: return this.value * 1e5;
+            case MassMomentOfInertiaUnits.GramSquareCentimeters: return this.value * 1e7;
+            case MassMomentOfInertiaUnits.GramSquareMillimeters: return this.value * 1e9;
+            case MassMomentOfInertiaUnits.TonneSquareMeters: return this.value * 1e-3;
+            case MassMomentOfInertiaUnits.TonneSquareDecimeters: return this.value * 1e-1;
+            case MassMomentOfInertiaUnits.TonneSquareCentimeters: return this.value * 1e1;
+            case MassMomentOfInertiaUnits.TonneSquareMilimeters: return this.value * 1e3;
+            case MassMomentOfInertiaUnits.PoundSquareFeet: return this.value / 4.21401101e-2;
+            case MassMomentOfInertiaUnits.PoundSquareInches: return this.value / 2.9263965e-4;
+            case MassMomentOfInertiaUnits.SlugSquareFeet: return this.value / 1.3558179619;
+            case MassMomentOfInertiaUnits.SlugSquareInches: return this.value / 9.41540242e-3;
+            case MassMomentOfInertiaUnits.MilligramSquareMeters: return (this.value * 1e3) / 0.001;
+            case MassMomentOfInertiaUnits.KilogramSquareMeters: return (this.value * 1e3) / 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareDecimeters: return (this.value * 1e5) / 0.001;
+            case MassMomentOfInertiaUnits.KilogramSquareDecimeters: return (this.value * 1e5) / 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareCentimeters: return (this.value * 1e7) / 0.001;
+            case MassMomentOfInertiaUnits.KilogramSquareCentimeters: return (this.value * 1e7) / 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareMillimeters: return (this.value * 1e9) / 0.001;
+            case MassMomentOfInertiaUnits.KilogramSquareMillimeters: return (this.value * 1e9) / 1000;
+            case MassMomentOfInertiaUnits.KilotonneSquareMeters: return (this.value * 1e-3) / 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareMeters: return (this.value * 1e-3) / 1000000;
+            case MassMomentOfInertiaUnits.KilotonneSquareDecimeters: return (this.value * 1e-1) / 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareDecimeters: return (this.value * 1e-1) / 1000000;
+            case MassMomentOfInertiaUnits.KilotonneSquareCentimeters: return (this.value * 1e1) / 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareCentimeters: return (this.value * 1e1) / 1000000;
+            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: return (this.value * 1e3) / 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: return (this.value * 1e3) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MassMomentOfInertiaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MassMomentOfInertiaUnits.GramSquareMeters: return super.internalDivide(value, 1e3);
+                case MassMomentOfInertiaUnits.GramSquareDecimeters: return super.internalDivide(value, 1e5);
+                case MassMomentOfInertiaUnits.GramSquareCentimeters: return super.internalDivide(value, 1e7);
+                case MassMomentOfInertiaUnits.GramSquareMillimeters: return super.internalDivide(value, 1e9);
+                case MassMomentOfInertiaUnits.TonneSquareMeters: return super.internalDivide(value, 1e-3);
+                case MassMomentOfInertiaUnits.TonneSquareDecimeters: return super.internalDivide(value, 1e-1);
+                case MassMomentOfInertiaUnits.TonneSquareCentimeters: return super.internalDivide(value, 1e1);
+                case MassMomentOfInertiaUnits.TonneSquareMilimeters: return super.internalDivide(value, 1e3);
+                case MassMomentOfInertiaUnits.PoundSquareFeet: return super.internalMultiply(value, 4.21401101e-2);
+                case MassMomentOfInertiaUnits.PoundSquareInches: return super.internalMultiply(value, 2.9263965e-4);
+                case MassMomentOfInertiaUnits.SlugSquareFeet: return super.internalMultiply(value, 1.3558179619);
+                case MassMomentOfInertiaUnits.SlugSquareInches: return super.internalMultiply(value, 9.41540242e-3);
+                case MassMomentOfInertiaUnits.MilligramSquareMeters: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassMomentOfInertiaUnits.KilogramSquareMeters: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MilligramSquareDecimeters: {
+                    const value3 = super.internalDivide(value, 1e5);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassMomentOfInertiaUnits.KilogramSquareDecimeters: {
+                    const value3 = super.internalDivide(value, 1e5);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MilligramSquareCentimeters: {
+                    const value3 = super.internalDivide(value, 1e7);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassMomentOfInertiaUnits.KilogramSquareCentimeters: {
+                    const value3 = super.internalDivide(value, 1e7);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MilligramSquareMillimeters: {
+                    const value3 = super.internalDivide(value, 1e9);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassMomentOfInertiaUnits.KilogramSquareMillimeters: {
+                    const value3 = super.internalDivide(value, 1e9);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.KilotonneSquareMeters: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MegatonneSquareMeters: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case MassMomentOfInertiaUnits.KilotonneSquareDecimeters: {
+                    const value3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MegatonneSquareDecimeters: {
+                    const value3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case MassMomentOfInertiaUnits.KilotonneSquareCentimeters: {
+                    const value3 = super.internalDivide(value, 1e1);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MegatonneSquareCentimeters: {
+                    const value3 = super.internalDivide(value, 1e1);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: {
+                    const value3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MassMomentOfInertiaUnits.GramSquareMeters:
-                return value / 1e3;
-            case MassMomentOfInertiaUnits.GramSquareDecimeters:
-                return value / 1e5;
-            case MassMomentOfInertiaUnits.GramSquareCentimeters:
-                return value / 1e7;
-            case MassMomentOfInertiaUnits.GramSquareMillimeters:
-                return value / 1e9;
-            case MassMomentOfInertiaUnits.TonneSquareMeters:
-                return value / 1e-3;
-            case MassMomentOfInertiaUnits.TonneSquareDecimeters:
-                return value / 1e-1;
-            case MassMomentOfInertiaUnits.TonneSquareCentimeters:
-                return value / 1e1;
-            case MassMomentOfInertiaUnits.TonneSquareMilimeters:
-                return value / 1e3;
-            case MassMomentOfInertiaUnits.PoundSquareFeet:
-                return value * 4.21401101e-2;
-            case MassMomentOfInertiaUnits.PoundSquareInches:
-                return value * 2.9263965e-4;
-            case MassMomentOfInertiaUnits.SlugSquareFeet:
-                return value * 1.3558179619;
-            case MassMomentOfInertiaUnits.SlugSquareInches:
-                return value * 9.41540242e-3;
-            case MassMomentOfInertiaUnits.MilligramSquareMeters:
-                return (value / 1e3) * 0.001;
-            case MassMomentOfInertiaUnits.KilogramSquareMeters:
-                return (value / 1e3) * 1000;
-            case MassMomentOfInertiaUnits.MilligramSquareDecimeters:
-                return (value / 1e5) * 0.001;
-            case MassMomentOfInertiaUnits.KilogramSquareDecimeters:
-                return (value / 1e5) * 1000;
-            case MassMomentOfInertiaUnits.MilligramSquareCentimeters:
-                return (value / 1e7) * 0.001;
-            case MassMomentOfInertiaUnits.KilogramSquareCentimeters:
-                return (value / 1e7) * 1000;
-            case MassMomentOfInertiaUnits.MilligramSquareMillimeters:
-                return (value / 1e9) * 0.001;
-            case MassMomentOfInertiaUnits.KilogramSquareMillimeters:
-                return (value / 1e9) * 1000;
-            case MassMomentOfInertiaUnits.KilotonneSquareMeters:
-                return (value / 1e-3) * 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareMeters:
-                return (value / 1e-3) * 1000000;
-            case MassMomentOfInertiaUnits.KilotonneSquareDecimeters:
-                return (value / 1e-1) * 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareDecimeters:
-                return (value / 1e-1) * 1000000;
-            case MassMomentOfInertiaUnits.KilotonneSquareCentimeters:
-                return (value / 1e1) * 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareCentimeters:
-                return (value / 1e1) * 1000000;
-            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters:
-                return (value / 1e3) * 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters:
-                return (value / 1e3) * 1000000;
-            default:
-                break;
+            case MassMomentOfInertiaUnits.GramSquareMeters: return value / 1e3;
+            case MassMomentOfInertiaUnits.GramSquareDecimeters: return value / 1e5;
+            case MassMomentOfInertiaUnits.GramSquareCentimeters: return value / 1e7;
+            case MassMomentOfInertiaUnits.GramSquareMillimeters: return value / 1e9;
+            case MassMomentOfInertiaUnits.TonneSquareMeters: return value / 1e-3;
+            case MassMomentOfInertiaUnits.TonneSquareDecimeters: return value / 1e-1;
+            case MassMomentOfInertiaUnits.TonneSquareCentimeters: return value / 1e1;
+            case MassMomentOfInertiaUnits.TonneSquareMilimeters: return value / 1e3;
+            case MassMomentOfInertiaUnits.PoundSquareFeet: return value * 4.21401101e-2;
+            case MassMomentOfInertiaUnits.PoundSquareInches: return value * 2.9263965e-4;
+            case MassMomentOfInertiaUnits.SlugSquareFeet: return value * 1.3558179619;
+            case MassMomentOfInertiaUnits.SlugSquareInches: return value * 9.41540242e-3;
+            case MassMomentOfInertiaUnits.MilligramSquareMeters: return (value / 1e3) * 0.001;
+            case MassMomentOfInertiaUnits.KilogramSquareMeters: return (value / 1e3) * 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareDecimeters: return (value / 1e5) * 0.001;
+            case MassMomentOfInertiaUnits.KilogramSquareDecimeters: return (value / 1e5) * 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareCentimeters: return (value / 1e7) * 0.001;
+            case MassMomentOfInertiaUnits.KilogramSquareCentimeters: return (value / 1e7) * 1000;
+            case MassMomentOfInertiaUnits.MilligramSquareMillimeters: return (value / 1e9) * 0.001;
+            case MassMomentOfInertiaUnits.KilogramSquareMillimeters: return (value / 1e9) * 1000;
+            case MassMomentOfInertiaUnits.KilotonneSquareMeters: return (value / 1e-3) * 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareMeters: return (value / 1e-3) * 1000000;
+            case MassMomentOfInertiaUnits.KilotonneSquareDecimeters: return (value / 1e-1) * 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareDecimeters: return (value / 1e-1) * 1000000;
+            case MassMomentOfInertiaUnits.KilotonneSquareCentimeters: return (value / 1e1) * 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareCentimeters: return (value / 1e1) * 1000000;
+            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: return (value / 1e3) * 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: return (value / 1e3) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Level */
 export interface LevelDto {
@@ -115,29 +115,34 @@ export class Level extends BaseUnit {
     }
 
     private convertFromBase(toUnit: LevelUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LevelUnits.Decibels: return this.value;
+                case LevelUnits.Nepers: return super.internalMultiply(0.115129254, this.value);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LevelUnits.Decibels:
-                return this.value;
-            case LevelUnits.Nepers:
-                return 0.115129254 * this.value;
-            default:
-                break;
+            case LevelUnits.Decibels: return this.value;
+            case LevelUnits.Nepers: return 0.115129254 * this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LevelUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LevelUnits.Decibels: return value;
+                case LevelUnits.Nepers: {
+                    const value3 = super.internalDivide(1, 0.115129254);
+                    return super.internalMultiply(value3, value);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LevelUnits.Decibels:
-                return value;
-            case LevelUnits.Nepers:
-                return (1 / 0.115129254) * value;
-            default:
-                break;
+            case LevelUnits.Decibels: return value;
+            case LevelUnits.Nepers: return (1 / 0.115129254) * value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

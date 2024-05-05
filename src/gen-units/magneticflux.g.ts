@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MagneticFlux */
 export interface MagneticFluxDto {
@@ -93,25 +93,27 @@ export class MagneticFlux extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MagneticFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MagneticFluxUnits.Webers: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MagneticFluxUnits.Webers:
-                return this.value;
-            default:
-                break;
+            case MagneticFluxUnits.Webers: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MagneticFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MagneticFluxUnits.Webers: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MagneticFluxUnits.Webers:
-                return value;
-            default:
-                break;
+            case MagneticFluxUnits.Webers: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

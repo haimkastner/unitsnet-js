@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a BitRate */
 export interface BitRateDto {
@@ -379,77 +379,115 @@ export class BitRate extends BaseUnit {
     }
 
     private convertFromBase(toUnit: BitRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case BitRateUnits.BitsPerSecond: return this.value;
+                case BitRateUnits.BytesPerSecond: return super.internalDivide(this.value, 8);
+                case BitRateUnits.KilobitsPerSecond: return super.internalDivide(this.value, 1000);
+                case BitRateUnits.MegabitsPerSecond: return super.internalDivide(this.value, 1000000);
+                case BitRateUnits.GigabitsPerSecond: return super.internalDivide(this.value, 1000000000);
+                case BitRateUnits.TerabitsPerSecond: return super.internalDivide(this.value, 1000000000000);
+                case BitRateUnits.PetabitsPerSecond: return super.internalDivide(this.value, 1000000000000000);
+                case BitRateUnits.ExabitsPerSecond: return super.internalDivide(this.value, 1000000000000000000);
+                case BitRateUnits.KilobytesPerSecond: {
+                    const value3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(value3, 1000);
+                }
+                case BitRateUnits.MegabytesPerSecond: {
+                    const value3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case BitRateUnits.GigabytesPerSecond: {
+                    const value3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case BitRateUnits.TerabytesPerSecond: {
+                    const value3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(value3, 1000000000000);
+                }
+                case BitRateUnits.PetabytesPerSecond: {
+                    const value3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(value3, 1000000000000000);
+                }
+                case BitRateUnits.ExabytesPerSecond: {
+                    const value3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(value3, 1000000000000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case BitRateUnits.BitsPerSecond:
-                return this.value;
-            case BitRateUnits.BytesPerSecond:
-                return this.value / 8;
-            case BitRateUnits.KilobitsPerSecond:
-                return (this.value) / 1000;
-            case BitRateUnits.MegabitsPerSecond:
-                return (this.value) / 1000000;
-            case BitRateUnits.GigabitsPerSecond:
-                return (this.value) / 1000000000;
-            case BitRateUnits.TerabitsPerSecond:
-                return (this.value) / 1000000000000;
-            case BitRateUnits.PetabitsPerSecond:
-                return (this.value) / 1000000000000000;
-            case BitRateUnits.ExabitsPerSecond:
-                return (this.value) / 1000000000000000000;
-            case BitRateUnits.KilobytesPerSecond:
-                return (this.value / 8) / 1000;
-            case BitRateUnits.MegabytesPerSecond:
-                return (this.value / 8) / 1000000;
-            case BitRateUnits.GigabytesPerSecond:
-                return (this.value / 8) / 1000000000;
-            case BitRateUnits.TerabytesPerSecond:
-                return (this.value / 8) / 1000000000000;
-            case BitRateUnits.PetabytesPerSecond:
-                return (this.value / 8) / 1000000000000000;
-            case BitRateUnits.ExabytesPerSecond:
-                return (this.value / 8) / 1000000000000000000;
-            default:
-                break;
+            case BitRateUnits.BitsPerSecond: return this.value;
+            case BitRateUnits.BytesPerSecond: return this.value / 8;
+            case BitRateUnits.KilobitsPerSecond: return (this.value) / 1000;
+            case BitRateUnits.MegabitsPerSecond: return (this.value) / 1000000;
+            case BitRateUnits.GigabitsPerSecond: return (this.value) / 1000000000;
+            case BitRateUnits.TerabitsPerSecond: return (this.value) / 1000000000000;
+            case BitRateUnits.PetabitsPerSecond: return (this.value) / 1000000000000000;
+            case BitRateUnits.ExabitsPerSecond: return (this.value) / 1000000000000000000;
+            case BitRateUnits.KilobytesPerSecond: return (this.value / 8) / 1000;
+            case BitRateUnits.MegabytesPerSecond: return (this.value / 8) / 1000000;
+            case BitRateUnits.GigabytesPerSecond: return (this.value / 8) / 1000000000;
+            case BitRateUnits.TerabytesPerSecond: return (this.value / 8) / 1000000000000;
+            case BitRateUnits.PetabytesPerSecond: return (this.value / 8) / 1000000000000000;
+            case BitRateUnits.ExabytesPerSecond: return (this.value / 8) / 1000000000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: BitRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case BitRateUnits.BitsPerSecond: return value;
+                case BitRateUnits.BytesPerSecond: return super.internalMultiply(value, 8);
+                case BitRateUnits.KilobitsPerSecond: return super.internalMultiply(value, 1000);
+                case BitRateUnits.MegabitsPerSecond: return super.internalMultiply(value, 1000000);
+                case BitRateUnits.GigabitsPerSecond: return super.internalMultiply(value, 1000000000);
+                case BitRateUnits.TerabitsPerSecond: return super.internalMultiply(value, 1000000000000);
+                case BitRateUnits.PetabitsPerSecond: return super.internalMultiply(value, 1000000000000000);
+                case BitRateUnits.ExabitsPerSecond: return super.internalMultiply(value, 1000000000000000000);
+                case BitRateUnits.KilobytesPerSecond: {
+                    const value3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case BitRateUnits.MegabytesPerSecond: {
+                    const value3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case BitRateUnits.GigabytesPerSecond: {
+                    const value3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case BitRateUnits.TerabytesPerSecond: {
+                    const value3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(value3, 1000000000000);
+                }
+                case BitRateUnits.PetabytesPerSecond: {
+                    const value3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(value3, 1000000000000000);
+                }
+                case BitRateUnits.ExabytesPerSecond: {
+                    const value3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(value3, 1000000000000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case BitRateUnits.BitsPerSecond:
-                return value;
-            case BitRateUnits.BytesPerSecond:
-                return value * 8;
-            case BitRateUnits.KilobitsPerSecond:
-                return (value) * 1000;
-            case BitRateUnits.MegabitsPerSecond:
-                return (value) * 1000000;
-            case BitRateUnits.GigabitsPerSecond:
-                return (value) * 1000000000;
-            case BitRateUnits.TerabitsPerSecond:
-                return (value) * 1000000000000;
-            case BitRateUnits.PetabitsPerSecond:
-                return (value) * 1000000000000000;
-            case BitRateUnits.ExabitsPerSecond:
-                return (value) * 1000000000000000000;
-            case BitRateUnits.KilobytesPerSecond:
-                return (value * 8) * 1000;
-            case BitRateUnits.MegabytesPerSecond:
-                return (value * 8) * 1000000;
-            case BitRateUnits.GigabytesPerSecond:
-                return (value * 8) * 1000000000;
-            case BitRateUnits.TerabytesPerSecond:
-                return (value * 8) * 1000000000000;
-            case BitRateUnits.PetabytesPerSecond:
-                return (value * 8) * 1000000000000000;
-            case BitRateUnits.ExabytesPerSecond:
-                return (value * 8) * 1000000000000000000;
-            default:
-                break;
+            case BitRateUnits.BitsPerSecond: return value;
+            case BitRateUnits.BytesPerSecond: return value * 8;
+            case BitRateUnits.KilobitsPerSecond: return (value) * 1000;
+            case BitRateUnits.MegabitsPerSecond: return (value) * 1000000;
+            case BitRateUnits.GigabitsPerSecond: return (value) * 1000000000;
+            case BitRateUnits.TerabitsPerSecond: return (value) * 1000000000000;
+            case BitRateUnits.PetabitsPerSecond: return (value) * 1000000000000000;
+            case BitRateUnits.ExabitsPerSecond: return (value) * 1000000000000000000;
+            case BitRateUnits.KilobytesPerSecond: return (value * 8) * 1000;
+            case BitRateUnits.MegabytesPerSecond: return (value * 8) * 1000000;
+            case BitRateUnits.GigabytesPerSecond: return (value * 8) * 1000000000;
+            case BitRateUnits.TerabytesPerSecond: return (value * 8) * 1000000000000;
+            case BitRateUnits.PetabytesPerSecond: return (value * 8) * 1000000000000000;
+            case BitRateUnits.ExabytesPerSecond: return (value * 8) * 1000000000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

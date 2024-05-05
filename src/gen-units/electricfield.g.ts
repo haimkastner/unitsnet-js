@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricField */
 export interface ElectricFieldDto {
@@ -93,25 +93,27 @@ export class ElectricField extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ElectricFieldUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricFieldUnits.VoltsPerMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricFieldUnits.VoltsPerMeter:
-                return this.value;
-            default:
-                break;
+            case ElectricFieldUnits.VoltsPerMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricFieldUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricFieldUnits.VoltsPerMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricFieldUnits.VoltsPerMeter:
-                return value;
-            default:
-                break;
+            case ElectricFieldUnits.VoltsPerMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

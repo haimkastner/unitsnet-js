@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a PowerRatio */
 export interface PowerRatioDto {
@@ -115,29 +115,31 @@ export class PowerRatio extends BaseUnit {
     }
 
     private convertFromBase(toUnit: PowerRatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case PowerRatioUnits.DecibelWatts: return this.value;
+                case PowerRatioUnits.DecibelMilliwatts: return super.internalAdd(this.value, 30);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case PowerRatioUnits.DecibelWatts:
-                return this.value;
-            case PowerRatioUnits.DecibelMilliwatts:
-                return this.value + 30;
-            default:
-                break;
+            case PowerRatioUnits.DecibelWatts: return this.value;
+            case PowerRatioUnits.DecibelMilliwatts: return this.value + 30;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PowerRatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case PowerRatioUnits.DecibelWatts: return value;
+                case PowerRatioUnits.DecibelMilliwatts: return super.internalSubtract(value, 30);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case PowerRatioUnits.DecibelWatts:
-                return value;
-            case PowerRatioUnits.DecibelMilliwatts:
-                return value - 30;
-            default:
-                break;
+            case PowerRatioUnits.DecibelWatts: return value;
+            case PowerRatioUnits.DecibelMilliwatts: return value - 30;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

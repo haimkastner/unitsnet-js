@@ -15,8 +15,6 @@ export enum BinaryOperatorType {
 	Mod = 'mod',
 }
 
-type OverridableOperator = keyof OperatorOverrides;
-
 export namespace HighLevelTsc {
 	/**
 	 * Copied directly from nanoid at https://github.com/ai/nanoid/blob/main/non-secure/index.js

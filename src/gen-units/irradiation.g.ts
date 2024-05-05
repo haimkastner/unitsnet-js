@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Irradiation */
 export interface IrradiationDto {
@@ -269,57 +269,85 @@ export class Irradiation extends BaseUnit {
     }
 
     private convertFromBase(toUnit: IrradiationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case IrradiationUnits.JoulesPerSquareMeter: return this.value;
+                case IrradiationUnits.JoulesPerSquareCentimeter: return super.internalDivide(this.value, 1e4);
+                case IrradiationUnits.JoulesPerSquareMillimeter: return super.internalDivide(this.value, 1e6);
+                case IrradiationUnits.WattHoursPerSquareMeter: return super.internalDivide(this.value, 3600);
+                case IrradiationUnits.BtusPerSquareFoot: {
+                    const value4 = super.internalDivide(52752792631, 4645152);
+                    return super.internalDivide(this.value, value4);
+                }
+                case IrradiationUnits.KilojoulesPerSquareMeter: return super.internalDivide(this.value, 1000);
+                case IrradiationUnits.MillijoulesPerSquareCentimeter: {
+                    const value3 = super.internalDivide(this.value, 1e4);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case IrradiationUnits.KilowattHoursPerSquareMeter: {
+                    const value3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(value3, 1000);
+                }
+                case IrradiationUnits.KilobtusPerSquareFoot: {
+                    const value4 = super.internalDivide(52752792631, 4645152);
+                    const value5 = super.internalDivide(this.value, value4);
+                    return super.internalDivide(value5, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case IrradiationUnits.JoulesPerSquareMeter:
-                return this.value;
-            case IrradiationUnits.JoulesPerSquareCentimeter:
-                return this.value / 1e4;
-            case IrradiationUnits.JoulesPerSquareMillimeter:
-                return this.value / 1e6;
-            case IrradiationUnits.WattHoursPerSquareMeter:
-                return this.value / 3600;
-            case IrradiationUnits.BtusPerSquareFoot:
-                return this.value / (52752792631 / 4645152);
-            case IrradiationUnits.KilojoulesPerSquareMeter:
-                return (this.value) / 1000;
-            case IrradiationUnits.MillijoulesPerSquareCentimeter:
-                return (this.value / 1e4) / 0.001;
-            case IrradiationUnits.KilowattHoursPerSquareMeter:
-                return (this.value / 3600) / 1000;
-            case IrradiationUnits.KilobtusPerSquareFoot:
-                return (this.value / (52752792631 / 4645152)) / 1000;
-            default:
-                break;
+            case IrradiationUnits.JoulesPerSquareMeter: return this.value;
+            case IrradiationUnits.JoulesPerSquareCentimeter: return this.value / 1e4;
+            case IrradiationUnits.JoulesPerSquareMillimeter: return this.value / 1e6;
+            case IrradiationUnits.WattHoursPerSquareMeter: return this.value / 3600;
+            case IrradiationUnits.BtusPerSquareFoot: return this.value / (52752792631 / 4645152);
+            case IrradiationUnits.KilojoulesPerSquareMeter: return (this.value) / 1000;
+            case IrradiationUnits.MillijoulesPerSquareCentimeter: return (this.value / 1e4) / 0.001;
+            case IrradiationUnits.KilowattHoursPerSquareMeter: return (this.value / 3600) / 1000;
+            case IrradiationUnits.KilobtusPerSquareFoot: return (this.value / (52752792631 / 4645152)) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: IrradiationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case IrradiationUnits.JoulesPerSquareMeter: return value;
+                case IrradiationUnits.JoulesPerSquareCentimeter: return super.internalMultiply(value, 1e4);
+                case IrradiationUnits.JoulesPerSquareMillimeter: return super.internalMultiply(value, 1e6);
+                case IrradiationUnits.WattHoursPerSquareMeter: return super.internalMultiply(value, 3600);
+                case IrradiationUnits.BtusPerSquareFoot: {
+                    const value4 = super.internalDivide(52752792631, 4645152);
+                    return super.internalMultiply(value, value4);
+                }
+                case IrradiationUnits.KilojoulesPerSquareMeter: return super.internalMultiply(value, 1000);
+                case IrradiationUnits.MillijoulesPerSquareCentimeter: {
+                    const value3 = super.internalMultiply(value, 1e4);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case IrradiationUnits.KilowattHoursPerSquareMeter: {
+                    const value3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case IrradiationUnits.KilobtusPerSquareFoot: {
+                    const value4 = super.internalDivide(52752792631, 4645152);
+                    const value5 = super.internalMultiply(value, value4);
+                    return super.internalMultiply(value5, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case IrradiationUnits.JoulesPerSquareMeter:
-                return value;
-            case IrradiationUnits.JoulesPerSquareCentimeter:
-                return value * 1e4;
-            case IrradiationUnits.JoulesPerSquareMillimeter:
-                return value * 1e6;
-            case IrradiationUnits.WattHoursPerSquareMeter:
-                return value * 3600;
-            case IrradiationUnits.BtusPerSquareFoot:
-                return value * (52752792631 / 4645152);
-            case IrradiationUnits.KilojoulesPerSquareMeter:
-                return (value) * 1000;
-            case IrradiationUnits.MillijoulesPerSquareCentimeter:
-                return (value * 1e4) * 0.001;
-            case IrradiationUnits.KilowattHoursPerSquareMeter:
-                return (value * 3600) * 1000;
-            case IrradiationUnits.KilobtusPerSquareFoot:
-                return (value * (52752792631 / 4645152)) * 1000;
-            default:
-                break;
+            case IrradiationUnits.JoulesPerSquareMeter: return value;
+            case IrradiationUnits.JoulesPerSquareCentimeter: return value * 1e4;
+            case IrradiationUnits.JoulesPerSquareMillimeter: return value * 1e6;
+            case IrradiationUnits.WattHoursPerSquareMeter: return value * 3600;
+            case IrradiationUnits.BtusPerSquareFoot: return value * (52752792631 / 4645152);
+            case IrradiationUnits.KilojoulesPerSquareMeter: return (value) * 1000;
+            case IrradiationUnits.MillijoulesPerSquareCentimeter: return (value * 1e4) * 0.001;
+            case IrradiationUnits.KilowattHoursPerSquareMeter: return (value * 3600) * 1000;
+            case IrradiationUnits.KilobtusPerSquareFoot: return (value * (52752792631 / 4645152)) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

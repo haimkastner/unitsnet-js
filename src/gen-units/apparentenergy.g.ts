@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ApparentEnergy */
 export interface ApparentEnergyDto {
@@ -137,33 +137,35 @@ export class ApparentEnergy extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ApparentEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ApparentEnergyUnits.VoltampereHours: return this.value;
+                case ApparentEnergyUnits.KilovoltampereHours: return super.internalDivide(this.value, 1000);
+                case ApparentEnergyUnits.MegavoltampereHours: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ApparentEnergyUnits.VoltampereHours:
-                return this.value;
-            case ApparentEnergyUnits.KilovoltampereHours:
-                return (this.value) / 1000;
-            case ApparentEnergyUnits.MegavoltampereHours:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case ApparentEnergyUnits.VoltampereHours: return this.value;
+            case ApparentEnergyUnits.KilovoltampereHours: return (this.value) / 1000;
+            case ApparentEnergyUnits.MegavoltampereHours: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ApparentEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ApparentEnergyUnits.VoltampereHours: return value;
+                case ApparentEnergyUnits.KilovoltampereHours: return super.internalMultiply(value, 1000);
+                case ApparentEnergyUnits.MegavoltampereHours: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ApparentEnergyUnits.VoltampereHours:
-                return value;
-            case ApparentEnergyUnits.KilovoltampereHours:
-                return (value) * 1000;
-            case ApparentEnergyUnits.MegavoltampereHours:
-                return (value) * 1000000;
-            default:
-                break;
+            case ApparentEnergyUnits.VoltampereHours: return value;
+            case ApparentEnergyUnits.KilovoltampereHours: return (value) * 1000;
+            case ApparentEnergyUnits.MegavoltampereHours: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

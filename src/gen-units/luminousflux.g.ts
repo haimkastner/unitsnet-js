@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a LuminousFlux */
 export interface LuminousFluxDto {
@@ -93,25 +93,27 @@ export class LuminousFlux extends BaseUnit {
     }
 
     private convertFromBase(toUnit: LuminousFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LuminousFluxUnits.Lumens: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LuminousFluxUnits.Lumens:
-                return this.value;
-            default:
-                break;
+            case LuminousFluxUnits.Lumens: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LuminousFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LuminousFluxUnits.Lumens: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LuminousFluxUnits.Lumens:
-                return value;
-            default:
-                break;
+            case LuminousFluxUnits.Lumens: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

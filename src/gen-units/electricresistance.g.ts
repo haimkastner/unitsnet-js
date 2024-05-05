@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricResistance */
 export interface ElectricResistanceDto {
@@ -225,49 +225,51 @@ export class ElectricResistance extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ElectricResistanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricResistanceUnits.Ohms: return this.value;
+                case ElectricResistanceUnits.Microohms: return super.internalDivide(this.value, 0.000001);
+                case ElectricResistanceUnits.Milliohms: return super.internalDivide(this.value, 0.001);
+                case ElectricResistanceUnits.Kiloohms: return super.internalDivide(this.value, 1000);
+                case ElectricResistanceUnits.Megaohms: return super.internalDivide(this.value, 1000000);
+                case ElectricResistanceUnits.Gigaohms: return super.internalDivide(this.value, 1000000000);
+                case ElectricResistanceUnits.Teraohms: return super.internalDivide(this.value, 1000000000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricResistanceUnits.Ohms:
-                return this.value;
-            case ElectricResistanceUnits.Microohms:
-                return (this.value) / 0.000001;
-            case ElectricResistanceUnits.Milliohms:
-                return (this.value) / 0.001;
-            case ElectricResistanceUnits.Kiloohms:
-                return (this.value) / 1000;
-            case ElectricResistanceUnits.Megaohms:
-                return (this.value) / 1000000;
-            case ElectricResistanceUnits.Gigaohms:
-                return (this.value) / 1000000000;
-            case ElectricResistanceUnits.Teraohms:
-                return (this.value) / 1000000000000;
-            default:
-                break;
+            case ElectricResistanceUnits.Ohms: return this.value;
+            case ElectricResistanceUnits.Microohms: return (this.value) / 0.000001;
+            case ElectricResistanceUnits.Milliohms: return (this.value) / 0.001;
+            case ElectricResistanceUnits.Kiloohms: return (this.value) / 1000;
+            case ElectricResistanceUnits.Megaohms: return (this.value) / 1000000;
+            case ElectricResistanceUnits.Gigaohms: return (this.value) / 1000000000;
+            case ElectricResistanceUnits.Teraohms: return (this.value) / 1000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricResistanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricResistanceUnits.Ohms: return value;
+                case ElectricResistanceUnits.Microohms: return super.internalMultiply(value, 0.000001);
+                case ElectricResistanceUnits.Milliohms: return super.internalMultiply(value, 0.001);
+                case ElectricResistanceUnits.Kiloohms: return super.internalMultiply(value, 1000);
+                case ElectricResistanceUnits.Megaohms: return super.internalMultiply(value, 1000000);
+                case ElectricResistanceUnits.Gigaohms: return super.internalMultiply(value, 1000000000);
+                case ElectricResistanceUnits.Teraohms: return super.internalMultiply(value, 1000000000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricResistanceUnits.Ohms:
-                return value;
-            case ElectricResistanceUnits.Microohms:
-                return (value) * 0.000001;
-            case ElectricResistanceUnits.Milliohms:
-                return (value) * 0.001;
-            case ElectricResistanceUnits.Kiloohms:
-                return (value) * 1000;
-            case ElectricResistanceUnits.Megaohms:
-                return (value) * 1000000;
-            case ElectricResistanceUnits.Gigaohms:
-                return (value) * 1000000000;
-            case ElectricResistanceUnits.Teraohms:
-                return (value) * 1000000000000;
-            default:
-                break;
+            case ElectricResistanceUnits.Ohms: return value;
+            case ElectricResistanceUnits.Microohms: return (value) * 0.000001;
+            case ElectricResistanceUnits.Milliohms: return (value) * 0.001;
+            case ElectricResistanceUnits.Kiloohms: return (value) * 1000;
+            case ElectricResistanceUnits.Megaohms: return (value) * 1000000;
+            case ElectricResistanceUnits.Gigaohms: return (value) * 1000000000;
+            case ElectricResistanceUnits.Teraohms: return (value) * 1000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

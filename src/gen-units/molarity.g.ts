@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Molarity */
 export interface MolarityDto {
@@ -313,65 +313,109 @@ export class Molarity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MolarityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MolarityUnits.MolesPerCubicMeter: return this.value;
+                case MolarityUnits.MolesPerLiter: return super.internalMultiply(this.value, 1e-3);
+                case MolarityUnits.PoundMolesPerCubicFoot: return super.internalMultiply(this.value, 6.2427960576144611956325455827221e-5);
+                case MolarityUnits.KilomolesPerCubicMeter: return super.internalDivide(this.value, 1000);
+                case MolarityUnits.FemtomolesPerLiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1e-15);
+                }
+                case MolarityUnits.PicomolesPerLiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1e-12);
+                }
+                case MolarityUnits.NanomolesPerLiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case MolarityUnits.MicromolesPerLiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case MolarityUnits.MillimolesPerLiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MolarityUnits.CentimolesPerLiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case MolarityUnits.DecimolesPerLiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.1);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MolarityUnits.MolesPerCubicMeter:
-                return this.value;
-            case MolarityUnits.MolesPerLiter:
-                return this.value * 1e-3;
-            case MolarityUnits.PoundMolesPerCubicFoot:
-                return this.value * 6.2427960576144611956325455827221e-5;
-            case MolarityUnits.KilomolesPerCubicMeter:
-                return (this.value) / 1000;
-            case MolarityUnits.FemtomolesPerLiter:
-                return (this.value * 1e-3) / 1e-15;
-            case MolarityUnits.PicomolesPerLiter:
-                return (this.value * 1e-3) / 1e-12;
-            case MolarityUnits.NanomolesPerLiter:
-                return (this.value * 1e-3) / 1e-9;
-            case MolarityUnits.MicromolesPerLiter:
-                return (this.value * 1e-3) / 0.000001;
-            case MolarityUnits.MillimolesPerLiter:
-                return (this.value * 1e-3) / 0.001;
-            case MolarityUnits.CentimolesPerLiter:
-                return (this.value * 1e-3) / 0.01;
-            case MolarityUnits.DecimolesPerLiter:
-                return (this.value * 1e-3) / 0.1;
-            default:
-                break;
+            case MolarityUnits.MolesPerCubicMeter: return this.value;
+            case MolarityUnits.MolesPerLiter: return this.value * 1e-3;
+            case MolarityUnits.PoundMolesPerCubicFoot: return this.value * 6.2427960576144611956325455827221e-5;
+            case MolarityUnits.KilomolesPerCubicMeter: return (this.value) / 1000;
+            case MolarityUnits.FemtomolesPerLiter: return (this.value * 1e-3) / 1e-15;
+            case MolarityUnits.PicomolesPerLiter: return (this.value * 1e-3) / 1e-12;
+            case MolarityUnits.NanomolesPerLiter: return (this.value * 1e-3) / 1e-9;
+            case MolarityUnits.MicromolesPerLiter: return (this.value * 1e-3) / 0.000001;
+            case MolarityUnits.MillimolesPerLiter: return (this.value * 1e-3) / 0.001;
+            case MolarityUnits.CentimolesPerLiter: return (this.value * 1e-3) / 0.01;
+            case MolarityUnits.DecimolesPerLiter: return (this.value * 1e-3) / 0.1;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MolarityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MolarityUnits.MolesPerCubicMeter: return value;
+                case MolarityUnits.MolesPerLiter: return super.internalDivide(value, 1e-3);
+                case MolarityUnits.PoundMolesPerCubicFoot: return super.internalDivide(value, 6.2427960576144611956325455827221e-5);
+                case MolarityUnits.KilomolesPerCubicMeter: return super.internalMultiply(value, 1000);
+                case MolarityUnits.FemtomolesPerLiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1e-15);
+                }
+                case MolarityUnits.PicomolesPerLiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1e-12);
+                }
+                case MolarityUnits.NanomolesPerLiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case MolarityUnits.MicromolesPerLiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case MolarityUnits.MillimolesPerLiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MolarityUnits.CentimolesPerLiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case MolarityUnits.DecimolesPerLiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MolarityUnits.MolesPerCubicMeter:
-                return value;
-            case MolarityUnits.MolesPerLiter:
-                return value / 1e-3;
-            case MolarityUnits.PoundMolesPerCubicFoot:
-                return value / 6.2427960576144611956325455827221e-5;
-            case MolarityUnits.KilomolesPerCubicMeter:
-                return (value) * 1000;
-            case MolarityUnits.FemtomolesPerLiter:
-                return (value / 1e-3) * 1e-15;
-            case MolarityUnits.PicomolesPerLiter:
-                return (value / 1e-3) * 1e-12;
-            case MolarityUnits.NanomolesPerLiter:
-                return (value / 1e-3) * 1e-9;
-            case MolarityUnits.MicromolesPerLiter:
-                return (value / 1e-3) * 0.000001;
-            case MolarityUnits.MillimolesPerLiter:
-                return (value / 1e-3) * 0.001;
-            case MolarityUnits.CentimolesPerLiter:
-                return (value / 1e-3) * 0.01;
-            case MolarityUnits.DecimolesPerLiter:
-                return (value / 1e-3) * 0.1;
-            default:
-                break;
+            case MolarityUnits.MolesPerCubicMeter: return value;
+            case MolarityUnits.MolesPerLiter: return value / 1e-3;
+            case MolarityUnits.PoundMolesPerCubicFoot: return value / 6.2427960576144611956325455827221e-5;
+            case MolarityUnits.KilomolesPerCubicMeter: return (value) * 1000;
+            case MolarityUnits.FemtomolesPerLiter: return (value / 1e-3) * 1e-15;
+            case MolarityUnits.PicomolesPerLiter: return (value / 1e-3) * 1e-12;
+            case MolarityUnits.NanomolesPerLiter: return (value / 1e-3) * 1e-9;
+            case MolarityUnits.MicromolesPerLiter: return (value / 1e-3) * 0.000001;
+            case MolarityUnits.MillimolesPerLiter: return (value / 1e-3) * 0.001;
+            case MolarityUnits.CentimolesPerLiter: return (value / 1e-3) * 0.01;
+            case MolarityUnits.DecimolesPerLiter: return (value / 1e-3) * 0.1;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

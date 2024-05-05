@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Ratio */
 export interface RatioDto {
@@ -203,45 +203,47 @@ export class Ratio extends BaseUnit {
     }
 
     private convertFromBase(toUnit: RatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RatioUnits.DecimalFractions: return this.value;
+                case RatioUnits.Percent: return super.internalMultiply(this.value, 1e2);
+                case RatioUnits.PartsPerThousand: return super.internalMultiply(this.value, 1e3);
+                case RatioUnits.PartsPerMillion: return super.internalMultiply(this.value, 1e6);
+                case RatioUnits.PartsPerBillion: return super.internalMultiply(this.value, 1e9);
+                case RatioUnits.PartsPerTrillion: return super.internalMultiply(this.value, 1e12);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RatioUnits.DecimalFractions:
-                return this.value;
-            case RatioUnits.Percent:
-                return this.value * 1e2;
-            case RatioUnits.PartsPerThousand:
-                return this.value * 1e3;
-            case RatioUnits.PartsPerMillion:
-                return this.value * 1e6;
-            case RatioUnits.PartsPerBillion:
-                return this.value * 1e9;
-            case RatioUnits.PartsPerTrillion:
-                return this.value * 1e12;
-            default:
-                break;
+            case RatioUnits.DecimalFractions: return this.value;
+            case RatioUnits.Percent: return this.value * 1e2;
+            case RatioUnits.PartsPerThousand: return this.value * 1e3;
+            case RatioUnits.PartsPerMillion: return this.value * 1e6;
+            case RatioUnits.PartsPerBillion: return this.value * 1e9;
+            case RatioUnits.PartsPerTrillion: return this.value * 1e12;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RatioUnits.DecimalFractions: return value;
+                case RatioUnits.Percent: return super.internalDivide(value, 1e2);
+                case RatioUnits.PartsPerThousand: return super.internalDivide(value, 1e3);
+                case RatioUnits.PartsPerMillion: return super.internalDivide(value, 1e6);
+                case RatioUnits.PartsPerBillion: return super.internalDivide(value, 1e9);
+                case RatioUnits.PartsPerTrillion: return super.internalDivide(value, 1e12);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RatioUnits.DecimalFractions:
-                return value;
-            case RatioUnits.Percent:
-                return value / 1e2;
-            case RatioUnits.PartsPerThousand:
-                return value / 1e3;
-            case RatioUnits.PartsPerMillion:
-                return value / 1e6;
-            case RatioUnits.PartsPerBillion:
-                return value / 1e9;
-            case RatioUnits.PartsPerTrillion:
-                return value / 1e12;
-            default:
-                break;
+            case RatioUnits.DecimalFractions: return value;
+            case RatioUnits.Percent: return value / 1e2;
+            case RatioUnits.PartsPerThousand: return value / 1e3;
+            case RatioUnits.PartsPerMillion: return value / 1e6;
+            case RatioUnits.PartsPerBillion: return value / 1e9;
+            case RatioUnits.PartsPerTrillion: return value / 1e12;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

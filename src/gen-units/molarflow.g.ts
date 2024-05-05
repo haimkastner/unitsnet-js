@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MolarFlow */
 export interface MolarFlowDto {
@@ -269,57 +269,83 @@ export class MolarFlow extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MolarFlowUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MolarFlowUnits.MolesPerSecond: return this.value;
+                case MolarFlowUnits.MolesPerMinute: return super.internalMultiply(this.value, 60);
+                case MolarFlowUnits.MolesPerHour: return super.internalMultiply(this.value, 3600);
+                case MolarFlowUnits.PoundMolesPerSecond: return super.internalDivide(this.value, 453.59237);
+                case MolarFlowUnits.PoundMolesPerMinute: {
+                    const value3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalMultiply(value3, 60);
+                }
+                case MolarFlowUnits.PoundMolesPerHour: {
+                    const value3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalMultiply(value3, 3600);
+                }
+                case MolarFlowUnits.KilomolesPerSecond: return super.internalDivide(this.value, 1000);
+                case MolarFlowUnits.KilomolesPerMinute: {
+                    const value3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MolarFlowUnits.KilomolesPerHour: {
+                    const value3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MolarFlowUnits.MolesPerSecond:
-                return this.value;
-            case MolarFlowUnits.MolesPerMinute:
-                return this.value * 60;
-            case MolarFlowUnits.MolesPerHour:
-                return this.value * 3600;
-            case MolarFlowUnits.PoundMolesPerSecond:
-                return this.value / 453.59237;
-            case MolarFlowUnits.PoundMolesPerMinute:
-                return (this.value / 453.59237) * 60;
-            case MolarFlowUnits.PoundMolesPerHour:
-                return (this.value / 453.59237) * 3600;
-            case MolarFlowUnits.KilomolesPerSecond:
-                return (this.value) / 1000;
-            case MolarFlowUnits.KilomolesPerMinute:
-                return (this.value * 60) / 1000;
-            case MolarFlowUnits.KilomolesPerHour:
-                return (this.value * 3600) / 1000;
-            default:
-                break;
+            case MolarFlowUnits.MolesPerSecond: return this.value;
+            case MolarFlowUnits.MolesPerMinute: return this.value * 60;
+            case MolarFlowUnits.MolesPerHour: return this.value * 3600;
+            case MolarFlowUnits.PoundMolesPerSecond: return this.value / 453.59237;
+            case MolarFlowUnits.PoundMolesPerMinute: return (this.value / 453.59237) * 60;
+            case MolarFlowUnits.PoundMolesPerHour: return (this.value / 453.59237) * 3600;
+            case MolarFlowUnits.KilomolesPerSecond: return (this.value) / 1000;
+            case MolarFlowUnits.KilomolesPerMinute: return (this.value * 60) / 1000;
+            case MolarFlowUnits.KilomolesPerHour: return (this.value * 3600) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MolarFlowUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MolarFlowUnits.MolesPerSecond: return value;
+                case MolarFlowUnits.MolesPerMinute: return super.internalDivide(value, 60);
+                case MolarFlowUnits.MolesPerHour: return super.internalDivide(value, 3600);
+                case MolarFlowUnits.PoundMolesPerSecond: return super.internalMultiply(value, 453.59237);
+                case MolarFlowUnits.PoundMolesPerMinute: {
+                    const value3 = super.internalMultiply(value, 453.59237);
+                    return super.internalDivide(value3, 60);
+                }
+                case MolarFlowUnits.PoundMolesPerHour: {
+                    const value3 = super.internalMultiply(value, 453.59237);
+                    return super.internalDivide(value3, 3600);
+                }
+                case MolarFlowUnits.KilomolesPerSecond: return super.internalMultiply(value, 1000);
+                case MolarFlowUnits.KilomolesPerMinute: {
+                    const value3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MolarFlowUnits.KilomolesPerHour: {
+                    const value3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MolarFlowUnits.MolesPerSecond:
-                return value;
-            case MolarFlowUnits.MolesPerMinute:
-                return value / 60;
-            case MolarFlowUnits.MolesPerHour:
-                return value / 3600;
-            case MolarFlowUnits.PoundMolesPerSecond:
-                return value * 453.59237;
-            case MolarFlowUnits.PoundMolesPerMinute:
-                return (value * 453.59237) / 60;
-            case MolarFlowUnits.PoundMolesPerHour:
-                return (value * 453.59237) / 3600;
-            case MolarFlowUnits.KilomolesPerSecond:
-                return (value) * 1000;
-            case MolarFlowUnits.KilomolesPerMinute:
-                return (value / 60) * 1000;
-            case MolarFlowUnits.KilomolesPerHour:
-                return (value / 3600) * 1000;
-            default:
-                break;
+            case MolarFlowUnits.MolesPerSecond: return value;
+            case MolarFlowUnits.MolesPerMinute: return value / 60;
+            case MolarFlowUnits.MolesPerHour: return value / 3600;
+            case MolarFlowUnits.PoundMolesPerSecond: return value * 453.59237;
+            case MolarFlowUnits.PoundMolesPerMinute: return (value * 453.59237) / 60;
+            case MolarFlowUnits.PoundMolesPerHour: return (value * 453.59237) / 3600;
+            case MolarFlowUnits.KilomolesPerSecond: return (value) * 1000;
+            case MolarFlowUnits.KilomolesPerMinute: return (value / 60) * 1000;
+            case MolarFlowUnits.KilomolesPerHour: return (value / 3600) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricCharge */
 export interface ElectricChargeDto {
@@ -313,65 +313,85 @@ export class ElectricCharge extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ElectricChargeUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricChargeUnits.Coulombs: return this.value;
+                case ElectricChargeUnits.AmpereHours: return super.internalMultiply(this.value, 2.77777777777e-4);
+                case ElectricChargeUnits.Picocoulombs: return super.internalDivide(this.value, 1e-12);
+                case ElectricChargeUnits.Nanocoulombs: return super.internalDivide(this.value, 1e-9);
+                case ElectricChargeUnits.Microcoulombs: return super.internalDivide(this.value, 0.000001);
+                case ElectricChargeUnits.Millicoulombs: return super.internalDivide(this.value, 0.001);
+                case ElectricChargeUnits.Kilocoulombs: return super.internalDivide(this.value, 1000);
+                case ElectricChargeUnits.Megacoulombs: return super.internalDivide(this.value, 1000000);
+                case ElectricChargeUnits.MilliampereHours: {
+                    const value3 = super.internalMultiply(this.value, 2.77777777777e-4);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case ElectricChargeUnits.KiloampereHours: {
+                    const value3 = super.internalMultiply(this.value, 2.77777777777e-4);
+                    return super.internalDivide(value3, 1000);
+                }
+                case ElectricChargeUnits.MegaampereHours: {
+                    const value3 = super.internalMultiply(this.value, 2.77777777777e-4);
+                    return super.internalDivide(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricChargeUnits.Coulombs:
-                return this.value;
-            case ElectricChargeUnits.AmpereHours:
-                return this.value * 2.77777777777e-4;
-            case ElectricChargeUnits.Picocoulombs:
-                return (this.value) / 1e-12;
-            case ElectricChargeUnits.Nanocoulombs:
-                return (this.value) / 1e-9;
-            case ElectricChargeUnits.Microcoulombs:
-                return (this.value) / 0.000001;
-            case ElectricChargeUnits.Millicoulombs:
-                return (this.value) / 0.001;
-            case ElectricChargeUnits.Kilocoulombs:
-                return (this.value) / 1000;
-            case ElectricChargeUnits.Megacoulombs:
-                return (this.value) / 1000000;
-            case ElectricChargeUnits.MilliampereHours:
-                return (this.value * 2.77777777777e-4) / 0.001;
-            case ElectricChargeUnits.KiloampereHours:
-                return (this.value * 2.77777777777e-4) / 1000;
-            case ElectricChargeUnits.MegaampereHours:
-                return (this.value * 2.77777777777e-4) / 1000000;
-            default:
-                break;
+            case ElectricChargeUnits.Coulombs: return this.value;
+            case ElectricChargeUnits.AmpereHours: return this.value * 2.77777777777e-4;
+            case ElectricChargeUnits.Picocoulombs: return (this.value) / 1e-12;
+            case ElectricChargeUnits.Nanocoulombs: return (this.value) / 1e-9;
+            case ElectricChargeUnits.Microcoulombs: return (this.value) / 0.000001;
+            case ElectricChargeUnits.Millicoulombs: return (this.value) / 0.001;
+            case ElectricChargeUnits.Kilocoulombs: return (this.value) / 1000;
+            case ElectricChargeUnits.Megacoulombs: return (this.value) / 1000000;
+            case ElectricChargeUnits.MilliampereHours: return (this.value * 2.77777777777e-4) / 0.001;
+            case ElectricChargeUnits.KiloampereHours: return (this.value * 2.77777777777e-4) / 1000;
+            case ElectricChargeUnits.MegaampereHours: return (this.value * 2.77777777777e-4) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricChargeUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricChargeUnits.Coulombs: return value;
+                case ElectricChargeUnits.AmpereHours: return super.internalDivide(value, 2.77777777777e-4);
+                case ElectricChargeUnits.Picocoulombs: return super.internalMultiply(value, 1e-12);
+                case ElectricChargeUnits.Nanocoulombs: return super.internalMultiply(value, 1e-9);
+                case ElectricChargeUnits.Microcoulombs: return super.internalMultiply(value, 0.000001);
+                case ElectricChargeUnits.Millicoulombs: return super.internalMultiply(value, 0.001);
+                case ElectricChargeUnits.Kilocoulombs: return super.internalMultiply(value, 1000);
+                case ElectricChargeUnits.Megacoulombs: return super.internalMultiply(value, 1000000);
+                case ElectricChargeUnits.MilliampereHours: {
+                    const value3 = super.internalDivide(value, 2.77777777777e-4);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case ElectricChargeUnits.KiloampereHours: {
+                    const value3 = super.internalDivide(value, 2.77777777777e-4);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case ElectricChargeUnits.MegaampereHours: {
+                    const value3 = super.internalDivide(value, 2.77777777777e-4);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricChargeUnits.Coulombs:
-                return value;
-            case ElectricChargeUnits.AmpereHours:
-                return value / 2.77777777777e-4;
-            case ElectricChargeUnits.Picocoulombs:
-                return (value) * 1e-12;
-            case ElectricChargeUnits.Nanocoulombs:
-                return (value) * 1e-9;
-            case ElectricChargeUnits.Microcoulombs:
-                return (value) * 0.000001;
-            case ElectricChargeUnits.Millicoulombs:
-                return (value) * 0.001;
-            case ElectricChargeUnits.Kilocoulombs:
-                return (value) * 1000;
-            case ElectricChargeUnits.Megacoulombs:
-                return (value) * 1000000;
-            case ElectricChargeUnits.MilliampereHours:
-                return (value / 2.77777777777e-4) * 0.001;
-            case ElectricChargeUnits.KiloampereHours:
-                return (value / 2.77777777777e-4) * 1000;
-            case ElectricChargeUnits.MegaampereHours:
-                return (value / 2.77777777777e-4) * 1000000;
-            default:
-                break;
+            case ElectricChargeUnits.Coulombs: return value;
+            case ElectricChargeUnits.AmpereHours: return value / 2.77777777777e-4;
+            case ElectricChargeUnits.Picocoulombs: return (value) * 1e-12;
+            case ElectricChargeUnits.Nanocoulombs: return (value) * 1e-9;
+            case ElectricChargeUnits.Microcoulombs: return (value) * 0.000001;
+            case ElectricChargeUnits.Millicoulombs: return (value) * 0.001;
+            case ElectricChargeUnits.Kilocoulombs: return (value) * 1000;
+            case ElectricChargeUnits.Megacoulombs: return (value) * 1000000;
+            case ElectricChargeUnits.MilliampereHours: return (value / 2.77777777777e-4) * 0.001;
+            case ElectricChargeUnits.KiloampereHours: return (value / 2.77777777777e-4) * 1000;
+            case ElectricChargeUnits.MegaampereHours: return (value / 2.77777777777e-4) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

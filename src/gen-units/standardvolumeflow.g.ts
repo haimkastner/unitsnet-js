@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a StandardVolumeFlow */
 export interface StandardVolumeFlowDto {
@@ -269,57 +269,59 @@ export class StandardVolumeFlow extends BaseUnit {
     }
 
     private convertFromBase(toUnit: StandardVolumeFlowUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case StandardVolumeFlowUnits.StandardCubicMetersPerSecond: return this.value;
+                case StandardVolumeFlowUnits.StandardCubicMetersPerMinute: return super.internalMultiply(this.value, 60);
+                case StandardVolumeFlowUnits.StandardCubicMetersPerHour: return super.internalMultiply(this.value, 3600);
+                case StandardVolumeFlowUnits.StandardCubicMetersPerDay: return super.internalMultiply(this.value, 86400);
+                case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute: return super.internalMultiply(this.value, 6e7);
+                case StandardVolumeFlowUnits.StandardLitersPerMinute: return super.internalMultiply(this.value, 60000);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return super.internalMultiply(this.value, 35.314666721);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return super.internalMultiply(this.value, 2118.88000326);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return super.internalDivide(this.value, 7.8657907199999087346816086183876e-6);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case StandardVolumeFlowUnits.StandardCubicMetersPerSecond:
-                return this.value;
-            case StandardVolumeFlowUnits.StandardCubicMetersPerMinute:
-                return this.value * 60;
-            case StandardVolumeFlowUnits.StandardCubicMetersPerHour:
-                return this.value * 3600;
-            case StandardVolumeFlowUnits.StandardCubicMetersPerDay:
-                return this.value * 86400;
-            case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute:
-                return this.value * 6e7;
-            case StandardVolumeFlowUnits.StandardLitersPerMinute:
-                return this.value * 60000;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond:
-                return this.value * 35.314666721;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute:
-                return this.value * 2118.88000326;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerHour:
-                return this.value / 7.8657907199999087346816086183876e-6;
-            default:
-                break;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerSecond: return this.value;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerMinute: return this.value * 60;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerHour: return this.value * 3600;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerDay: return this.value * 86400;
+            case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute: return this.value * 6e7;
+            case StandardVolumeFlowUnits.StandardLitersPerMinute: return this.value * 60000;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return this.value * 35.314666721;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return this.value * 2118.88000326;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return this.value / 7.8657907199999087346816086183876e-6;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: StandardVolumeFlowUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case StandardVolumeFlowUnits.StandardCubicMetersPerSecond: return value;
+                case StandardVolumeFlowUnits.StandardCubicMetersPerMinute: return super.internalDivide(value, 60);
+                case StandardVolumeFlowUnits.StandardCubicMetersPerHour: return super.internalDivide(value, 3600);
+                case StandardVolumeFlowUnits.StandardCubicMetersPerDay: return super.internalDivide(value, 86400);
+                case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute: return super.internalDivide(value, 6e7);
+                case StandardVolumeFlowUnits.StandardLitersPerMinute: return super.internalDivide(value, 60000);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return super.internalDivide(value, 35.314666721);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return super.internalDivide(value, 2118.88000326);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return super.internalMultiply(value, 7.8657907199999087346816086183876e-6);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case StandardVolumeFlowUnits.StandardCubicMetersPerSecond:
-                return value;
-            case StandardVolumeFlowUnits.StandardCubicMetersPerMinute:
-                return value / 60;
-            case StandardVolumeFlowUnits.StandardCubicMetersPerHour:
-                return value / 3600;
-            case StandardVolumeFlowUnits.StandardCubicMetersPerDay:
-                return value / 86400;
-            case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute:
-                return value / 6e7;
-            case StandardVolumeFlowUnits.StandardLitersPerMinute:
-                return value / 60000;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond:
-                return value / 35.314666721;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute:
-                return value / 2118.88000326;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerHour:
-                return value * 7.8657907199999087346816086183876e-6;
-            default:
-                break;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerSecond: return value;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerMinute: return value / 60;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerHour: return value / 3600;
+            case StandardVolumeFlowUnits.StandardCubicMetersPerDay: return value / 86400;
+            case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute: return value / 6e7;
+            case StandardVolumeFlowUnits.StandardLitersPerMinute: return value / 60000;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return value / 35.314666721;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return value / 2118.88000326;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return value * 7.8657907199999087346816086183876e-6;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

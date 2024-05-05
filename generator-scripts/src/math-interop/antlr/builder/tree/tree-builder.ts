@@ -4,6 +4,7 @@ import { arithmeticParser as ArithmeticParser, EquationStringContext } from '../
 import { ArithmeticGrammarListener, IdentifierRemapping } from '../tree/arithmetic-grammar-listener';
 import { ParseTreeWalker } from 'antlr4ts/tree/ParseTreeWalker';
 import ts from 'typescript';
+import { IdGenerator } from '../../../../id-generator';
 
 // Read input expression
 const inputExpression = "150 % ((({x} * Math.Sqrt(9)) * Math.PI) - Math.Pow(5, 2))";
@@ -25,7 +26,7 @@ const tokenStream = new CommonTokenStream(lexer);
 const parser = new ArithmeticParser(tokenStream);
 const equation: EquationStringContext = parser.equationString();
 
-const listener = new ArithmeticGrammarListener();
+const listener = new ArithmeticGrammarListener(new IdGenerator());
 parser.addParseListener(listener);
 
 ParseTreeWalker.DEFAULT.walk(listener, equation);
@@ -47,7 +48,7 @@ export function getCodeForFormula(formula: string, variableIdentifierRemapping?:
 
 	const equationString: EquationStringContext = parser.equationString();
 
-	const listener = new ArithmeticGrammarListener(variableIdentifierRemapping);
+	const listener = new ArithmeticGrammarListener(new IdGenerator(), variableIdentifierRemapping);
 	parser.addParseListener(listener);
 
 	ParseTreeWalker.DEFAULT.walk(listener, equationString);

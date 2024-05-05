@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MassFlow */
 export interface MassFlowDto {
@@ -797,153 +797,239 @@ export class MassFlow extends BaseUnit {
     }
 
     private convertFromBase(toUnit: MassFlowUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MassFlowUnits.GramsPerSecond: return this.value;
+                case MassFlowUnits.GramsPerDay: return super.internalMultiply(this.value, 86400);
+                case MassFlowUnits.GramsPerHour: return super.internalMultiply(this.value, 3600);
+                case MassFlowUnits.KilogramsPerHour: return super.internalMultiply(this.value, 3.6);
+                case MassFlowUnits.KilogramsPerMinute: return super.internalMultiply(this.value, 0.06);
+                case MassFlowUnits.TonnesPerHour: {
+                    const value3 = super.internalMultiply(this.value, 3.6);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassFlowUnits.PoundsPerDay: return super.internalMultiply(this.value, 190.47936);
+                case MassFlowUnits.PoundsPerHour: return super.internalMultiply(this.value, 7.93664);
+                case MassFlowUnits.PoundsPerMinute: return super.internalMultiply(this.value, 0.132277);
+                case MassFlowUnits.PoundsPerSecond: return super.internalDivide(this.value, 453.59237);
+                case MassFlowUnits.TonnesPerDay: return super.internalMultiply(this.value, 0.0864000);
+                case MassFlowUnits.ShortTonsPerHour: return super.internalDivide(this.value, 251.9957611);
+                case MassFlowUnits.NanogramsPerSecond: return super.internalDivide(this.value, 1e-9);
+                case MassFlowUnits.MicrogramsPerSecond: return super.internalDivide(this.value, 0.000001);
+                case MassFlowUnits.MilligramsPerSecond: return super.internalDivide(this.value, 0.001);
+                case MassFlowUnits.CentigramsPerSecond: return super.internalDivide(this.value, 0.01);
+                case MassFlowUnits.DecigramsPerSecond: return super.internalDivide(this.value, 0.1);
+                case MassFlowUnits.DecagramsPerSecond: return super.internalDivide(this.value, 10);
+                case MassFlowUnits.HectogramsPerSecond: return super.internalDivide(this.value, 100);
+                case MassFlowUnits.KilogramsPerSecond: return super.internalDivide(this.value, 1000);
+                case MassFlowUnits.NanogramsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case MassFlowUnits.MicrogramsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case MassFlowUnits.MilligramsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case MassFlowUnits.CentigramsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case MassFlowUnits.DecigramsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(value3, 0.1);
+                }
+                case MassFlowUnits.DecagramsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(value3, 10);
+                }
+                case MassFlowUnits.HectogramsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(value3, 100);
+                }
+                case MassFlowUnits.KilogramsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(value3, 1000);
+                }
+                case MassFlowUnits.MegagramsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case MassFlowUnits.MegapoundsPerDay: {
+                    const value3 = super.internalMultiply(this.value, 190.47936);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case MassFlowUnits.MegapoundsPerHour: {
+                    const value3 = super.internalMultiply(this.value, 7.93664);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case MassFlowUnits.MegapoundsPerMinute: {
+                    const value3 = super.internalMultiply(this.value, 0.132277);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case MassFlowUnits.MegapoundsPerSecond: {
+                    const value3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MassFlowUnits.GramsPerSecond:
-                return this.value;
-            case MassFlowUnits.GramsPerDay:
-                return this.value * 86400;
-            case MassFlowUnits.GramsPerHour:
-                return this.value * 3600;
-            case MassFlowUnits.KilogramsPerHour:
-                return this.value * 3.6;
-            case MassFlowUnits.KilogramsPerMinute:
-                return this.value * 0.06;
-            case MassFlowUnits.TonnesPerHour:
-                return this.value * 3.6 / 1000;
-            case MassFlowUnits.PoundsPerDay:
-                return this.value * 190.47936;
-            case MassFlowUnits.PoundsPerHour:
-                return this.value * 7.93664;
-            case MassFlowUnits.PoundsPerMinute:
-                return this.value * 0.132277;
-            case MassFlowUnits.PoundsPerSecond:
-                return this.value / 453.59237;
-            case MassFlowUnits.TonnesPerDay:
-                return this.value * 0.0864000;
-            case MassFlowUnits.ShortTonsPerHour:
-                return this.value / 251.9957611;
-            case MassFlowUnits.NanogramsPerSecond:
-                return (this.value) / 1e-9;
-            case MassFlowUnits.MicrogramsPerSecond:
-                return (this.value) / 0.000001;
-            case MassFlowUnits.MilligramsPerSecond:
-                return (this.value) / 0.001;
-            case MassFlowUnits.CentigramsPerSecond:
-                return (this.value) / 0.01;
-            case MassFlowUnits.DecigramsPerSecond:
-                return (this.value) / 0.1;
-            case MassFlowUnits.DecagramsPerSecond:
-                return (this.value) / 10;
-            case MassFlowUnits.HectogramsPerSecond:
-                return (this.value) / 100;
-            case MassFlowUnits.KilogramsPerSecond:
-                return (this.value) / 1000;
-            case MassFlowUnits.NanogramsPerDay:
-                return (this.value * 86400) / 1e-9;
-            case MassFlowUnits.MicrogramsPerDay:
-                return (this.value * 86400) / 0.000001;
-            case MassFlowUnits.MilligramsPerDay:
-                return (this.value * 86400) / 0.001;
-            case MassFlowUnits.CentigramsPerDay:
-                return (this.value * 86400) / 0.01;
-            case MassFlowUnits.DecigramsPerDay:
-                return (this.value * 86400) / 0.1;
-            case MassFlowUnits.DecagramsPerDay:
-                return (this.value * 86400) / 10;
-            case MassFlowUnits.HectogramsPerDay:
-                return (this.value * 86400) / 100;
-            case MassFlowUnits.KilogramsPerDay:
-                return (this.value * 86400) / 1000;
-            case MassFlowUnits.MegagramsPerDay:
-                return (this.value * 86400) / 1000000;
-            case MassFlowUnits.MegapoundsPerDay:
-                return (this.value * 190.47936) / 1000000;
-            case MassFlowUnits.MegapoundsPerHour:
-                return (this.value * 7.93664) / 1000000;
-            case MassFlowUnits.MegapoundsPerMinute:
-                return (this.value * 0.132277) / 1000000;
-            case MassFlowUnits.MegapoundsPerSecond:
-                return (this.value / 453.59237) / 1000000;
-            default:
-                break;
+            case MassFlowUnits.GramsPerSecond: return this.value;
+            case MassFlowUnits.GramsPerDay: return this.value * 86400;
+            case MassFlowUnits.GramsPerHour: return this.value * 3600;
+            case MassFlowUnits.KilogramsPerHour: return this.value * 3.6;
+            case MassFlowUnits.KilogramsPerMinute: return this.value * 0.06;
+            case MassFlowUnits.TonnesPerHour: return this.value * 3.6 / 1000;
+            case MassFlowUnits.PoundsPerDay: return this.value * 190.47936;
+            case MassFlowUnits.PoundsPerHour: return this.value * 7.93664;
+            case MassFlowUnits.PoundsPerMinute: return this.value * 0.132277;
+            case MassFlowUnits.PoundsPerSecond: return this.value / 453.59237;
+            case MassFlowUnits.TonnesPerDay: return this.value * 0.0864000;
+            case MassFlowUnits.ShortTonsPerHour: return this.value / 251.9957611;
+            case MassFlowUnits.NanogramsPerSecond: return (this.value) / 1e-9;
+            case MassFlowUnits.MicrogramsPerSecond: return (this.value) / 0.000001;
+            case MassFlowUnits.MilligramsPerSecond: return (this.value) / 0.001;
+            case MassFlowUnits.CentigramsPerSecond: return (this.value) / 0.01;
+            case MassFlowUnits.DecigramsPerSecond: return (this.value) / 0.1;
+            case MassFlowUnits.DecagramsPerSecond: return (this.value) / 10;
+            case MassFlowUnits.HectogramsPerSecond: return (this.value) / 100;
+            case MassFlowUnits.KilogramsPerSecond: return (this.value) / 1000;
+            case MassFlowUnits.NanogramsPerDay: return (this.value * 86400) / 1e-9;
+            case MassFlowUnits.MicrogramsPerDay: return (this.value * 86400) / 0.000001;
+            case MassFlowUnits.MilligramsPerDay: return (this.value * 86400) / 0.001;
+            case MassFlowUnits.CentigramsPerDay: return (this.value * 86400) / 0.01;
+            case MassFlowUnits.DecigramsPerDay: return (this.value * 86400) / 0.1;
+            case MassFlowUnits.DecagramsPerDay: return (this.value * 86400) / 10;
+            case MassFlowUnits.HectogramsPerDay: return (this.value * 86400) / 100;
+            case MassFlowUnits.KilogramsPerDay: return (this.value * 86400) / 1000;
+            case MassFlowUnits.MegagramsPerDay: return (this.value * 86400) / 1000000;
+            case MassFlowUnits.MegapoundsPerDay: return (this.value * 190.47936) / 1000000;
+            case MassFlowUnits.MegapoundsPerHour: return (this.value * 7.93664) / 1000000;
+            case MassFlowUnits.MegapoundsPerMinute: return (this.value * 0.132277) / 1000000;
+            case MassFlowUnits.MegapoundsPerSecond: return (this.value / 453.59237) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MassFlowUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MassFlowUnits.GramsPerSecond: return value;
+                case MassFlowUnits.GramsPerDay: return super.internalDivide(value, 86400);
+                case MassFlowUnits.GramsPerHour: return super.internalDivide(value, 3600);
+                case MassFlowUnits.KilogramsPerHour: return super.internalDivide(value, 3.6);
+                case MassFlowUnits.KilogramsPerMinute: return super.internalDivide(value, 0.06);
+                case MassFlowUnits.TonnesPerHour: {
+                    const value3 = super.internalMultiply(1000, value);
+                    return super.internalDivide(value3, 3.6);
+                }
+                case MassFlowUnits.PoundsPerDay: return super.internalDivide(value, 190.47936);
+                case MassFlowUnits.PoundsPerHour: return super.internalDivide(value, 7.93664);
+                case MassFlowUnits.PoundsPerMinute: return super.internalDivide(value, 0.132277);
+                case MassFlowUnits.PoundsPerSecond: return super.internalMultiply(value, 453.59237);
+                case MassFlowUnits.TonnesPerDay: return super.internalDivide(value, 0.0864000);
+                case MassFlowUnits.ShortTonsPerHour: return super.internalMultiply(value, 251.9957611);
+                case MassFlowUnits.NanogramsPerSecond: return super.internalMultiply(value, 1e-9);
+                case MassFlowUnits.MicrogramsPerSecond: return super.internalMultiply(value, 0.000001);
+                case MassFlowUnits.MilligramsPerSecond: return super.internalMultiply(value, 0.001);
+                case MassFlowUnits.CentigramsPerSecond: return super.internalMultiply(value, 0.01);
+                case MassFlowUnits.DecigramsPerSecond: return super.internalMultiply(value, 0.1);
+                case MassFlowUnits.DecagramsPerSecond: return super.internalMultiply(value, 10);
+                case MassFlowUnits.HectogramsPerSecond: return super.internalMultiply(value, 100);
+                case MassFlowUnits.KilogramsPerSecond: return super.internalMultiply(value, 1000);
+                case MassFlowUnits.NanogramsPerDay: {
+                    const value3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case MassFlowUnits.MicrogramsPerDay: {
+                    const value3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case MassFlowUnits.MilligramsPerDay: {
+                    const value3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case MassFlowUnits.CentigramsPerDay: {
+                    const value3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case MassFlowUnits.DecigramsPerDay: {
+                    const value3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                case MassFlowUnits.DecagramsPerDay: {
+                    const value3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(value3, 10);
+                }
+                case MassFlowUnits.HectogramsPerDay: {
+                    const value3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(value3, 100);
+                }
+                case MassFlowUnits.KilogramsPerDay: {
+                    const value3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case MassFlowUnits.MegagramsPerDay: {
+                    const value3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case MassFlowUnits.MegapoundsPerDay: {
+                    const value3 = super.internalDivide(value, 190.47936);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case MassFlowUnits.MegapoundsPerHour: {
+                    const value3 = super.internalDivide(value, 7.93664);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case MassFlowUnits.MegapoundsPerMinute: {
+                    const value3 = super.internalDivide(value, 0.132277);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case MassFlowUnits.MegapoundsPerSecond: {
+                    const value3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MassFlowUnits.GramsPerSecond:
-                return value;
-            case MassFlowUnits.GramsPerDay:
-                return value / 86400;
-            case MassFlowUnits.GramsPerHour:
-                return value / 3600;
-            case MassFlowUnits.KilogramsPerHour:
-                return value / 3.6;
-            case MassFlowUnits.KilogramsPerMinute:
-                return value / 0.06;
-            case MassFlowUnits.TonnesPerHour:
-                return 1000 * value / 3.6;
-            case MassFlowUnits.PoundsPerDay:
-                return value / 190.47936;
-            case MassFlowUnits.PoundsPerHour:
-                return value / 7.93664;
-            case MassFlowUnits.PoundsPerMinute:
-                return value / 0.132277;
-            case MassFlowUnits.PoundsPerSecond:
-                return value * 453.59237;
-            case MassFlowUnits.TonnesPerDay:
-                return value / 0.0864000;
-            case MassFlowUnits.ShortTonsPerHour:
-                return value * 251.9957611;
-            case MassFlowUnits.NanogramsPerSecond:
-                return (value) * 1e-9;
-            case MassFlowUnits.MicrogramsPerSecond:
-                return (value) * 0.000001;
-            case MassFlowUnits.MilligramsPerSecond:
-                return (value) * 0.001;
-            case MassFlowUnits.CentigramsPerSecond:
-                return (value) * 0.01;
-            case MassFlowUnits.DecigramsPerSecond:
-                return (value) * 0.1;
-            case MassFlowUnits.DecagramsPerSecond:
-                return (value) * 10;
-            case MassFlowUnits.HectogramsPerSecond:
-                return (value) * 100;
-            case MassFlowUnits.KilogramsPerSecond:
-                return (value) * 1000;
-            case MassFlowUnits.NanogramsPerDay:
-                return (value / 86400) * 1e-9;
-            case MassFlowUnits.MicrogramsPerDay:
-                return (value / 86400) * 0.000001;
-            case MassFlowUnits.MilligramsPerDay:
-                return (value / 86400) * 0.001;
-            case MassFlowUnits.CentigramsPerDay:
-                return (value / 86400) * 0.01;
-            case MassFlowUnits.DecigramsPerDay:
-                return (value / 86400) * 0.1;
-            case MassFlowUnits.DecagramsPerDay:
-                return (value / 86400) * 10;
-            case MassFlowUnits.HectogramsPerDay:
-                return (value / 86400) * 100;
-            case MassFlowUnits.KilogramsPerDay:
-                return (value / 86400) * 1000;
-            case MassFlowUnits.MegagramsPerDay:
-                return (value / 86400) * 1000000;
-            case MassFlowUnits.MegapoundsPerDay:
-                return (value / 190.47936) * 1000000;
-            case MassFlowUnits.MegapoundsPerHour:
-                return (value / 7.93664) * 1000000;
-            case MassFlowUnits.MegapoundsPerMinute:
-                return (value / 0.132277) * 1000000;
-            case MassFlowUnits.MegapoundsPerSecond:
-                return (value * 453.59237) * 1000000;
-            default:
-                break;
+            case MassFlowUnits.GramsPerSecond: return value;
+            case MassFlowUnits.GramsPerDay: return value / 86400;
+            case MassFlowUnits.GramsPerHour: return value / 3600;
+            case MassFlowUnits.KilogramsPerHour: return value / 3.6;
+            case MassFlowUnits.KilogramsPerMinute: return value / 0.06;
+            case MassFlowUnits.TonnesPerHour: return 1000 * value / 3.6;
+            case MassFlowUnits.PoundsPerDay: return value / 190.47936;
+            case MassFlowUnits.PoundsPerHour: return value / 7.93664;
+            case MassFlowUnits.PoundsPerMinute: return value / 0.132277;
+            case MassFlowUnits.PoundsPerSecond: return value * 453.59237;
+            case MassFlowUnits.TonnesPerDay: return value / 0.0864000;
+            case MassFlowUnits.ShortTonsPerHour: return value * 251.9957611;
+            case MassFlowUnits.NanogramsPerSecond: return (value) * 1e-9;
+            case MassFlowUnits.MicrogramsPerSecond: return (value) * 0.000001;
+            case MassFlowUnits.MilligramsPerSecond: return (value) * 0.001;
+            case MassFlowUnits.CentigramsPerSecond: return (value) * 0.01;
+            case MassFlowUnits.DecigramsPerSecond: return (value) * 0.1;
+            case MassFlowUnits.DecagramsPerSecond: return (value) * 10;
+            case MassFlowUnits.HectogramsPerSecond: return (value) * 100;
+            case MassFlowUnits.KilogramsPerSecond: return (value) * 1000;
+            case MassFlowUnits.NanogramsPerDay: return (value / 86400) * 1e-9;
+            case MassFlowUnits.MicrogramsPerDay: return (value / 86400) * 0.000001;
+            case MassFlowUnits.MilligramsPerDay: return (value / 86400) * 0.001;
+            case MassFlowUnits.CentigramsPerDay: return (value / 86400) * 0.01;
+            case MassFlowUnits.DecigramsPerDay: return (value / 86400) * 0.1;
+            case MassFlowUnits.DecagramsPerDay: return (value / 86400) * 10;
+            case MassFlowUnits.HectogramsPerDay: return (value / 86400) * 100;
+            case MassFlowUnits.KilogramsPerDay: return (value / 86400) * 1000;
+            case MassFlowUnits.MegagramsPerDay: return (value / 86400) * 1000000;
+            case MassFlowUnits.MegapoundsPerDay: return (value / 190.47936) * 1000000;
+            case MassFlowUnits.MegapoundsPerHour: return (value / 7.93664) * 1000000;
+            case MassFlowUnits.MegapoundsPerMinute: return (value / 0.132277) * 1000000;
+            case MassFlowUnits.MegapoundsPerSecond: return (value * 453.59237) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

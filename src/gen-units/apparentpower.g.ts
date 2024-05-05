@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ApparentPower */
 export interface ApparentPowerDto {
@@ -203,45 +203,47 @@ export class ApparentPower extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ApparentPowerUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ApparentPowerUnits.Voltamperes: return this.value;
+                case ApparentPowerUnits.Microvoltamperes: return super.internalDivide(this.value, 0.000001);
+                case ApparentPowerUnits.Millivoltamperes: return super.internalDivide(this.value, 0.001);
+                case ApparentPowerUnits.Kilovoltamperes: return super.internalDivide(this.value, 1000);
+                case ApparentPowerUnits.Megavoltamperes: return super.internalDivide(this.value, 1000000);
+                case ApparentPowerUnits.Gigavoltamperes: return super.internalDivide(this.value, 1000000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ApparentPowerUnits.Voltamperes:
-                return this.value;
-            case ApparentPowerUnits.Microvoltamperes:
-                return (this.value) / 0.000001;
-            case ApparentPowerUnits.Millivoltamperes:
-                return (this.value) / 0.001;
-            case ApparentPowerUnits.Kilovoltamperes:
-                return (this.value) / 1000;
-            case ApparentPowerUnits.Megavoltamperes:
-                return (this.value) / 1000000;
-            case ApparentPowerUnits.Gigavoltamperes:
-                return (this.value) / 1000000000;
-            default:
-                break;
+            case ApparentPowerUnits.Voltamperes: return this.value;
+            case ApparentPowerUnits.Microvoltamperes: return (this.value) / 0.000001;
+            case ApparentPowerUnits.Millivoltamperes: return (this.value) / 0.001;
+            case ApparentPowerUnits.Kilovoltamperes: return (this.value) / 1000;
+            case ApparentPowerUnits.Megavoltamperes: return (this.value) / 1000000;
+            case ApparentPowerUnits.Gigavoltamperes: return (this.value) / 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ApparentPowerUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ApparentPowerUnits.Voltamperes: return value;
+                case ApparentPowerUnits.Microvoltamperes: return super.internalMultiply(value, 0.000001);
+                case ApparentPowerUnits.Millivoltamperes: return super.internalMultiply(value, 0.001);
+                case ApparentPowerUnits.Kilovoltamperes: return super.internalMultiply(value, 1000);
+                case ApparentPowerUnits.Megavoltamperes: return super.internalMultiply(value, 1000000);
+                case ApparentPowerUnits.Gigavoltamperes: return super.internalMultiply(value, 1000000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ApparentPowerUnits.Voltamperes:
-                return value;
-            case ApparentPowerUnits.Microvoltamperes:
-                return (value) * 0.000001;
-            case ApparentPowerUnits.Millivoltamperes:
-                return (value) * 0.001;
-            case ApparentPowerUnits.Kilovoltamperes:
-                return (value) * 1000;
-            case ApparentPowerUnits.Megavoltamperes:
-                return (value) * 1000000;
-            case ApparentPowerUnits.Gigavoltamperes:
-                return (value) * 1000000000;
-            default:
-                break;
+            case ApparentPowerUnits.Voltamperes: return value;
+            case ApparentPowerUnits.Microvoltamperes: return (value) * 0.000001;
+            case ApparentPowerUnits.Millivoltamperes: return (value) * 0.001;
+            case ApparentPowerUnits.Kilovoltamperes: return (value) * 1000;
+            case ApparentPowerUnits.Megavoltamperes: return (value) * 1000000;
+            case ApparentPowerUnits.Gigavoltamperes: return (value) * 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

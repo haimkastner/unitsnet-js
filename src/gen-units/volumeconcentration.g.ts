@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a VolumeConcentration */
 export interface VolumeConcentrationDto {
@@ -511,101 +511,139 @@ export class VolumeConcentration extends BaseUnit {
     }
 
     private convertFromBase(toUnit: VolumeConcentrationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case VolumeConcentrationUnits.DecimalFractions: return this.value;
+                case VolumeConcentrationUnits.LitersPerLiter: return this.value;
+                case VolumeConcentrationUnits.LitersPerMililiter: return super.internalMultiply(this.value, 1e-3);
+                case VolumeConcentrationUnits.Percent: return super.internalMultiply(this.value, 1e2);
+                case VolumeConcentrationUnits.PartsPerThousand: return super.internalMultiply(this.value, 1e3);
+                case VolumeConcentrationUnits.PartsPerMillion: return super.internalMultiply(this.value, 1e6);
+                case VolumeConcentrationUnits.PartsPerBillion: return super.internalMultiply(this.value, 1e9);
+                case VolumeConcentrationUnits.PartsPerTrillion: return super.internalMultiply(this.value, 1e12);
+                case VolumeConcentrationUnits.PicolitersPerLiter: return super.internalDivide(this.value, 1e-12);
+                case VolumeConcentrationUnits.NanolitersPerLiter: return super.internalDivide(this.value, 1e-9);
+                case VolumeConcentrationUnits.MicrolitersPerLiter: return super.internalDivide(this.value, 0.000001);
+                case VolumeConcentrationUnits.MillilitersPerLiter: return super.internalDivide(this.value, 0.001);
+                case VolumeConcentrationUnits.CentilitersPerLiter: return super.internalDivide(this.value, 0.01);
+                case VolumeConcentrationUnits.DecilitersPerLiter: return super.internalDivide(this.value, 0.1);
+                case VolumeConcentrationUnits.PicolitersPerMililiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1e-12);
+                }
+                case VolumeConcentrationUnits.NanolitersPerMililiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 1e-9);
+                }
+                case VolumeConcentrationUnits.MicrolitersPerMililiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.000001);
+                }
+                case VolumeConcentrationUnits.MillilitersPerMililiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.001);
+                }
+                case VolumeConcentrationUnits.CentilitersPerMililiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.01);
+                }
+                case VolumeConcentrationUnits.DecilitersPerMililiter: {
+                    const value3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(value3, 0.1);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case VolumeConcentrationUnits.DecimalFractions:
-                return this.value;
-            case VolumeConcentrationUnits.LitersPerLiter:
-                return this.value;
-            case VolumeConcentrationUnits.LitersPerMililiter:
-                return this.value * 1e-3;
-            case VolumeConcentrationUnits.Percent:
-                return this.value * 1e2;
-            case VolumeConcentrationUnits.PartsPerThousand:
-                return this.value * 1e3;
-            case VolumeConcentrationUnits.PartsPerMillion:
-                return this.value * 1e6;
-            case VolumeConcentrationUnits.PartsPerBillion:
-                return this.value * 1e9;
-            case VolumeConcentrationUnits.PartsPerTrillion:
-                return this.value * 1e12;
-            case VolumeConcentrationUnits.PicolitersPerLiter:
-                return (this.value) / 1e-12;
-            case VolumeConcentrationUnits.NanolitersPerLiter:
-                return (this.value) / 1e-9;
-            case VolumeConcentrationUnits.MicrolitersPerLiter:
-                return (this.value) / 0.000001;
-            case VolumeConcentrationUnits.MillilitersPerLiter:
-                return (this.value) / 0.001;
-            case VolumeConcentrationUnits.CentilitersPerLiter:
-                return (this.value) / 0.01;
-            case VolumeConcentrationUnits.DecilitersPerLiter:
-                return (this.value) / 0.1;
-            case VolumeConcentrationUnits.PicolitersPerMililiter:
-                return (this.value * 1e-3) / 1e-12;
-            case VolumeConcentrationUnits.NanolitersPerMililiter:
-                return (this.value * 1e-3) / 1e-9;
-            case VolumeConcentrationUnits.MicrolitersPerMililiter:
-                return (this.value * 1e-3) / 0.000001;
-            case VolumeConcentrationUnits.MillilitersPerMililiter:
-                return (this.value * 1e-3) / 0.001;
-            case VolumeConcentrationUnits.CentilitersPerMililiter:
-                return (this.value * 1e-3) / 0.01;
-            case VolumeConcentrationUnits.DecilitersPerMililiter:
-                return (this.value * 1e-3) / 0.1;
-            default:
-                break;
+            case VolumeConcentrationUnits.DecimalFractions: return this.value;
+            case VolumeConcentrationUnits.LitersPerLiter: return this.value;
+            case VolumeConcentrationUnits.LitersPerMililiter: return this.value * 1e-3;
+            case VolumeConcentrationUnits.Percent: return this.value * 1e2;
+            case VolumeConcentrationUnits.PartsPerThousand: return this.value * 1e3;
+            case VolumeConcentrationUnits.PartsPerMillion: return this.value * 1e6;
+            case VolumeConcentrationUnits.PartsPerBillion: return this.value * 1e9;
+            case VolumeConcentrationUnits.PartsPerTrillion: return this.value * 1e12;
+            case VolumeConcentrationUnits.PicolitersPerLiter: return (this.value) / 1e-12;
+            case VolumeConcentrationUnits.NanolitersPerLiter: return (this.value) / 1e-9;
+            case VolumeConcentrationUnits.MicrolitersPerLiter: return (this.value) / 0.000001;
+            case VolumeConcentrationUnits.MillilitersPerLiter: return (this.value) / 0.001;
+            case VolumeConcentrationUnits.CentilitersPerLiter: return (this.value) / 0.01;
+            case VolumeConcentrationUnits.DecilitersPerLiter: return (this.value) / 0.1;
+            case VolumeConcentrationUnits.PicolitersPerMililiter: return (this.value * 1e-3) / 1e-12;
+            case VolumeConcentrationUnits.NanolitersPerMililiter: return (this.value * 1e-3) / 1e-9;
+            case VolumeConcentrationUnits.MicrolitersPerMililiter: return (this.value * 1e-3) / 0.000001;
+            case VolumeConcentrationUnits.MillilitersPerMililiter: return (this.value * 1e-3) / 0.001;
+            case VolumeConcentrationUnits.CentilitersPerMililiter: return (this.value * 1e-3) / 0.01;
+            case VolumeConcentrationUnits.DecilitersPerMililiter: return (this.value * 1e-3) / 0.1;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: VolumeConcentrationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case VolumeConcentrationUnits.DecimalFractions: return value;
+                case VolumeConcentrationUnits.LitersPerLiter: return value;
+                case VolumeConcentrationUnits.LitersPerMililiter: return super.internalDivide(value, 1e-3);
+                case VolumeConcentrationUnits.Percent: return super.internalDivide(value, 1e2);
+                case VolumeConcentrationUnits.PartsPerThousand: return super.internalDivide(value, 1e3);
+                case VolumeConcentrationUnits.PartsPerMillion: return super.internalDivide(value, 1e6);
+                case VolumeConcentrationUnits.PartsPerBillion: return super.internalDivide(value, 1e9);
+                case VolumeConcentrationUnits.PartsPerTrillion: return super.internalDivide(value, 1e12);
+                case VolumeConcentrationUnits.PicolitersPerLiter: return super.internalMultiply(value, 1e-12);
+                case VolumeConcentrationUnits.NanolitersPerLiter: return super.internalMultiply(value, 1e-9);
+                case VolumeConcentrationUnits.MicrolitersPerLiter: return super.internalMultiply(value, 0.000001);
+                case VolumeConcentrationUnits.MillilitersPerLiter: return super.internalMultiply(value, 0.001);
+                case VolumeConcentrationUnits.CentilitersPerLiter: return super.internalMultiply(value, 0.01);
+                case VolumeConcentrationUnits.DecilitersPerLiter: return super.internalMultiply(value, 0.1);
+                case VolumeConcentrationUnits.PicolitersPerMililiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1e-12);
+                }
+                case VolumeConcentrationUnits.NanolitersPerMililiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 1e-9);
+                }
+                case VolumeConcentrationUnits.MicrolitersPerMililiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.000001);
+                }
+                case VolumeConcentrationUnits.MillilitersPerMililiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.001);
+                }
+                case VolumeConcentrationUnits.CentilitersPerMililiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.01);
+                }
+                case VolumeConcentrationUnits.DecilitersPerMililiter: {
+                    const value3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(value3, 0.1);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case VolumeConcentrationUnits.DecimalFractions:
-                return value;
-            case VolumeConcentrationUnits.LitersPerLiter:
-                return value;
-            case VolumeConcentrationUnits.LitersPerMililiter:
-                return value / 1e-3;
-            case VolumeConcentrationUnits.Percent:
-                return value / 1e2;
-            case VolumeConcentrationUnits.PartsPerThousand:
-                return value / 1e3;
-            case VolumeConcentrationUnits.PartsPerMillion:
-                return value / 1e6;
-            case VolumeConcentrationUnits.PartsPerBillion:
-                return value / 1e9;
-            case VolumeConcentrationUnits.PartsPerTrillion:
-                return value / 1e12;
-            case VolumeConcentrationUnits.PicolitersPerLiter:
-                return (value) * 1e-12;
-            case VolumeConcentrationUnits.NanolitersPerLiter:
-                return (value) * 1e-9;
-            case VolumeConcentrationUnits.MicrolitersPerLiter:
-                return (value) * 0.000001;
-            case VolumeConcentrationUnits.MillilitersPerLiter:
-                return (value) * 0.001;
-            case VolumeConcentrationUnits.CentilitersPerLiter:
-                return (value) * 0.01;
-            case VolumeConcentrationUnits.DecilitersPerLiter:
-                return (value) * 0.1;
-            case VolumeConcentrationUnits.PicolitersPerMililiter:
-                return (value / 1e-3) * 1e-12;
-            case VolumeConcentrationUnits.NanolitersPerMililiter:
-                return (value / 1e-3) * 1e-9;
-            case VolumeConcentrationUnits.MicrolitersPerMililiter:
-                return (value / 1e-3) * 0.000001;
-            case VolumeConcentrationUnits.MillilitersPerMililiter:
-                return (value / 1e-3) * 0.001;
-            case VolumeConcentrationUnits.CentilitersPerMililiter:
-                return (value / 1e-3) * 0.01;
-            case VolumeConcentrationUnits.DecilitersPerMililiter:
-                return (value / 1e-3) * 0.1;
-            default:
-                break;
+            case VolumeConcentrationUnits.DecimalFractions: return value;
+            case VolumeConcentrationUnits.LitersPerLiter: return value;
+            case VolumeConcentrationUnits.LitersPerMililiter: return value / 1e-3;
+            case VolumeConcentrationUnits.Percent: return value / 1e2;
+            case VolumeConcentrationUnits.PartsPerThousand: return value / 1e3;
+            case VolumeConcentrationUnits.PartsPerMillion: return value / 1e6;
+            case VolumeConcentrationUnits.PartsPerBillion: return value / 1e9;
+            case VolumeConcentrationUnits.PartsPerTrillion: return value / 1e12;
+            case VolumeConcentrationUnits.PicolitersPerLiter: return (value) * 1e-12;
+            case VolumeConcentrationUnits.NanolitersPerLiter: return (value) * 1e-9;
+            case VolumeConcentrationUnits.MicrolitersPerLiter: return (value) * 0.000001;
+            case VolumeConcentrationUnits.MillilitersPerLiter: return (value) * 0.001;
+            case VolumeConcentrationUnits.CentilitersPerLiter: return (value) * 0.01;
+            case VolumeConcentrationUnits.DecilitersPerLiter: return (value) * 0.1;
+            case VolumeConcentrationUnits.PicolitersPerMililiter: return (value / 1e-3) * 1e-12;
+            case VolumeConcentrationUnits.NanolitersPerMililiter: return (value / 1e-3) * 1e-9;
+            case VolumeConcentrationUnits.MicrolitersPerMililiter: return (value / 1e-3) * 0.000001;
+            case VolumeConcentrationUnits.MillilitersPerMililiter: return (value / 1e-3) * 0.001;
+            case VolumeConcentrationUnits.CentilitersPerMililiter: return (value / 1e-3) * 0.01;
+            case VolumeConcentrationUnits.DecilitersPerMililiter: return (value / 1e-3) * 0.1;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

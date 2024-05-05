@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ThermalResistance */
 export interface ThermalResistanceDto {
@@ -203,45 +203,47 @@ export class ThermalResistance extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ThermalResistanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt: return this.value;
+                case ThermalResistanceUnits.SquareMeterKelvinsPerWatt: return super.internalDivide(this.value, 1000);
+                case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt: return super.internalDivide(this.value, 1000.0);
+                case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt: return super.internalDivide(this.value, 0.1);
+                case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie: return super.internalDivide(this.value, 0.0859779507590433);
+                case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu: return super.internalDivide(this.value, 176.1121482159839);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
-                return this.value;
-            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
-                return this.value / 1000;
-            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                return this.value / 1000.0;
-            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                return this.value / 0.1;
-            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                return this.value / 0.0859779507590433;
-            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                return this.value / 176.1121482159839;
-            default:
-                break;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt: return this.value;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt: return this.value / 1000;
+            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt: return this.value / 1000.0;
+            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt: return this.value / 0.1;
+            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie: return this.value / 0.0859779507590433;
+            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu: return this.value / 176.1121482159839;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ThermalResistanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt: return value;
+                case ThermalResistanceUnits.SquareMeterKelvinsPerWatt: return super.internalMultiply(value, 1000);
+                case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt: return super.internalMultiply(value, 1000.0);
+                case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt: return super.internalMultiply(value, 0.1);
+                case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie: return super.internalMultiply(value, 0.0859779507590433);
+                case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu: return super.internalMultiply(value, 176.1121482159839);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
-                return value;
-            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
-                return value * 1000;
-            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                return value * 1000.0;
-            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                return value * 0.1;
-            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                return value * 0.0859779507590433;
-            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                return value * 176.1121482159839;
-            default:
-                break;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt: return value;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt: return value * 1000;
+            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt: return value * 1000.0;
+            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt: return value * 0.1;
+            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie: return value * 0.0859779507590433;
+            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu: return value * 176.1121482159839;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

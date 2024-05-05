@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a SolidAngle */
 export interface SolidAngleDto {
@@ -93,25 +93,27 @@ export class SolidAngle extends BaseUnit {
     }
 
     private convertFromBase(toUnit: SolidAngleUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case SolidAngleUnits.Steradians: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case SolidAngleUnits.Steradians:
-                return this.value;
-            default:
-                break;
+            case SolidAngleUnits.Steradians: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: SolidAngleUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case SolidAngleUnits.Steradians: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case SolidAngleUnits.Steradians:
-                return value;
-            default:
-                break;
+            case SolidAngleUnits.Steradians: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

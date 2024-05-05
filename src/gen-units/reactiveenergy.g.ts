@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ReactiveEnergy */
 export interface ReactiveEnergyDto {
@@ -137,33 +137,35 @@ export class ReactiveEnergy extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ReactiveEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ReactiveEnergyUnits.VoltampereReactiveHours: return this.value;
+                case ReactiveEnergyUnits.KilovoltampereReactiveHours: return super.internalDivide(this.value, 1000);
+                case ReactiveEnergyUnits.MegavoltampereReactiveHours: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ReactiveEnergyUnits.VoltampereReactiveHours:
-                return this.value;
-            case ReactiveEnergyUnits.KilovoltampereReactiveHours:
-                return (this.value) / 1000;
-            case ReactiveEnergyUnits.MegavoltampereReactiveHours:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case ReactiveEnergyUnits.VoltampereReactiveHours: return this.value;
+            case ReactiveEnergyUnits.KilovoltampereReactiveHours: return (this.value) / 1000;
+            case ReactiveEnergyUnits.MegavoltampereReactiveHours: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ReactiveEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ReactiveEnergyUnits.VoltampereReactiveHours: return value;
+                case ReactiveEnergyUnits.KilovoltampereReactiveHours: return super.internalMultiply(value, 1000);
+                case ReactiveEnergyUnits.MegavoltampereReactiveHours: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ReactiveEnergyUnits.VoltampereReactiveHours:
-                return value;
-            case ReactiveEnergyUnits.KilovoltampereReactiveHours:
-                return (value) * 1000;
-            case ReactiveEnergyUnits.MegavoltampereReactiveHours:
-                return (value) * 1000000;
-            default:
-                break;
+            case ReactiveEnergyUnits.VoltampereReactiveHours: return value;
+            case ReactiveEnergyUnits.KilovoltampereReactiveHours: return (value) * 1000;
+            case ReactiveEnergyUnits.MegavoltampereReactiveHours: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

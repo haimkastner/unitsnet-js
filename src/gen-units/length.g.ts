@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Length */
 export interface LengthDto {
@@ -995,189 +995,245 @@ export class Length extends BaseUnit {
     }
 
     private convertFromBase(toUnit: LengthUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LengthUnits.Meters: return this.value;
+                case LengthUnits.Miles: return super.internalDivide(this.value, 1609.344);
+                case LengthUnits.Yards: return super.internalDivide(this.value, 0.9144);
+                case LengthUnits.Feet: return super.internalDivide(this.value, 0.3048);
+                case LengthUnits.UsSurveyFeet: {
+                    const value3 = super.internalMultiply(this.value, 3937);
+                    return super.internalDivide(value3, 1200);
+                }
+                case LengthUnits.Inches: return super.internalDivide(this.value, 2.54e-2);
+                case LengthUnits.Mils: return super.internalDivide(this.value, 2.54e-5);
+                case LengthUnits.NauticalMiles: return super.internalDivide(this.value, 1852);
+                case LengthUnits.Fathoms: return super.internalDivide(this.value, 1.8288);
+                case LengthUnits.Shackles: return super.internalDivide(this.value, 27.432);
+                case LengthUnits.Microinches: return super.internalDivide(this.value, 2.54e-8);
+                case LengthUnits.PrinterPoints: {
+                    const value3 = super.internalDivide(this.value, 2.54e-2);
+                    return super.internalMultiply(value3, 72.27);
+                }
+                case LengthUnits.DtpPoints: {
+                    const value3 = super.internalDivide(this.value, 2.54e-2);
+                    return super.internalMultiply(value3, 72);
+                }
+                case LengthUnits.PrinterPicas: return super.internalMultiply(this.value, 237.106301584);
+                case LengthUnits.DtpPicas: return super.internalMultiply(this.value, 236.220472441);
+                case LengthUnits.Twips: return super.internalMultiply(this.value, 56692.913385826);
+                case LengthUnits.Hands: return super.internalDivide(this.value, 1.016e-1);
+                case LengthUnits.AstronomicalUnits: return super.internalDivide(this.value, 1.4959787070e11);
+                case LengthUnits.Parsecs: return super.internalDivide(this.value, 3.08567758128e16);
+                case LengthUnits.LightYears: return super.internalDivide(this.value, 9.46073047258e15);
+                case LengthUnits.SolarRadiuses: return super.internalDivide(this.value, 6.95510000E+08);
+                case LengthUnits.Chains: return super.internalDivide(this.value, 20.1168);
+                case LengthUnits.Angstroms: return super.internalDivide(this.value, 1e-10);
+                case LengthUnits.DataMiles: return super.internalDivide(this.value, 1828.8);
+                case LengthUnits.Femtometers: return super.internalDivide(this.value, 1e-15);
+                case LengthUnits.Picometers: return super.internalDivide(this.value, 1e-12);
+                case LengthUnits.Nanometers: return super.internalDivide(this.value, 1e-9);
+                case LengthUnits.Micrometers: return super.internalDivide(this.value, 0.000001);
+                case LengthUnits.Millimeters: return super.internalDivide(this.value, 0.001);
+                case LengthUnits.Centimeters: return super.internalDivide(this.value, 0.01);
+                case LengthUnits.Decimeters: return super.internalDivide(this.value, 0.1);
+                case LengthUnits.Decameters: return super.internalDivide(this.value, 10);
+                case LengthUnits.Hectometers: return super.internalDivide(this.value, 100);
+                case LengthUnits.Kilometers: return super.internalDivide(this.value, 1000);
+                case LengthUnits.Megameters: return super.internalDivide(this.value, 1000000);
+                case LengthUnits.Gigameters: return super.internalDivide(this.value, 1000000000);
+                case LengthUnits.Kiloyards: {
+                    const value3 = super.internalDivide(this.value, 0.9144);
+                    return super.internalDivide(value3, 1000);
+                }
+                case LengthUnits.Kilofeet: {
+                    const value3 = super.internalDivide(this.value, 0.3048);
+                    return super.internalDivide(value3, 1000);
+                }
+                case LengthUnits.Kiloparsecs: {
+                    const value3 = super.internalDivide(this.value, 3.08567758128e16);
+                    return super.internalDivide(value3, 1000);
+                }
+                case LengthUnits.Megaparsecs: {
+                    const value3 = super.internalDivide(this.value, 3.08567758128e16);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case LengthUnits.KilolightYears: {
+                    const value3 = super.internalDivide(this.value, 9.46073047258e15);
+                    return super.internalDivide(value3, 1000);
+                }
+                case LengthUnits.MegalightYears: {
+                    const value3 = super.internalDivide(this.value, 9.46073047258e15);
+                    return super.internalDivide(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LengthUnits.Meters:
-                return this.value;
-            case LengthUnits.Miles:
-                return this.value / 1609.344;
-            case LengthUnits.Yards:
-                return this.value / 0.9144;
-            case LengthUnits.Feet:
-                return this.value / 0.3048;
-            case LengthUnits.UsSurveyFeet:
-                return this.value * 3937 / 1200;
-            case LengthUnits.Inches:
-                return this.value / 2.54e-2;
-            case LengthUnits.Mils:
-                return this.value / 2.54e-5;
-            case LengthUnits.NauticalMiles:
-                return this.value / 1852;
-            case LengthUnits.Fathoms:
-                return this.value / 1.8288;
-            case LengthUnits.Shackles:
-                return this.value / 27.432;
-            case LengthUnits.Microinches:
-                return this.value / 2.54e-8;
-            case LengthUnits.PrinterPoints:
-                return (this.value / 2.54e-2) * 72.27;
-            case LengthUnits.DtpPoints:
-                return (this.value / 2.54e-2) * 72;
-            case LengthUnits.PrinterPicas:
-                return this.value * 237.106301584;
-            case LengthUnits.DtpPicas:
-                return this.value * 236.220472441;
-            case LengthUnits.Twips:
-                return this.value * 56692.913385826;
-            case LengthUnits.Hands:
-                return this.value / 1.016e-1;
-            case LengthUnits.AstronomicalUnits:
-                return this.value / 1.4959787070e11;
-            case LengthUnits.Parsecs:
-                return this.value / 3.08567758128e16;
-            case LengthUnits.LightYears:
-                return this.value / 9.46073047258e15;
-            case LengthUnits.SolarRadiuses:
-                return this.value / 6.95510000E+08;
-            case LengthUnits.Chains:
-                return this.value / 20.1168;
-            case LengthUnits.Angstroms:
-                return this.value / 1e-10;
-            case LengthUnits.DataMiles:
-                return this.value / 1828.8;
-            case LengthUnits.Femtometers:
-                return (this.value) / 1e-15;
-            case LengthUnits.Picometers:
-                return (this.value) / 1e-12;
-            case LengthUnits.Nanometers:
-                return (this.value) / 1e-9;
-            case LengthUnits.Micrometers:
-                return (this.value) / 0.000001;
-            case LengthUnits.Millimeters:
-                return (this.value) / 0.001;
-            case LengthUnits.Centimeters:
-                return (this.value) / 0.01;
-            case LengthUnits.Decimeters:
-                return (this.value) / 0.1;
-            case LengthUnits.Decameters:
-                return (this.value) / 10;
-            case LengthUnits.Hectometers:
-                return (this.value) / 100;
-            case LengthUnits.Kilometers:
-                return (this.value) / 1000;
-            case LengthUnits.Megameters:
-                return (this.value) / 1000000;
-            case LengthUnits.Gigameters:
-                return (this.value) / 1000000000;
-            case LengthUnits.Kiloyards:
-                return (this.value / 0.9144) / 1000;
-            case LengthUnits.Kilofeet:
-                return (this.value / 0.3048) / 1000;
-            case LengthUnits.Kiloparsecs:
-                return (this.value / 3.08567758128e16) / 1000;
-            case LengthUnits.Megaparsecs:
-                return (this.value / 3.08567758128e16) / 1000000;
-            case LengthUnits.KilolightYears:
-                return (this.value / 9.46073047258e15) / 1000;
-            case LengthUnits.MegalightYears:
-                return (this.value / 9.46073047258e15) / 1000000;
-            default:
-                break;
+            case LengthUnits.Meters: return this.value;
+            case LengthUnits.Miles: return this.value / 1609.344;
+            case LengthUnits.Yards: return this.value / 0.9144;
+            case LengthUnits.Feet: return this.value / 0.3048;
+            case LengthUnits.UsSurveyFeet: return this.value * 3937 / 1200;
+            case LengthUnits.Inches: return this.value / 2.54e-2;
+            case LengthUnits.Mils: return this.value / 2.54e-5;
+            case LengthUnits.NauticalMiles: return this.value / 1852;
+            case LengthUnits.Fathoms: return this.value / 1.8288;
+            case LengthUnits.Shackles: return this.value / 27.432;
+            case LengthUnits.Microinches: return this.value / 2.54e-8;
+            case LengthUnits.PrinterPoints: return (this.value / 2.54e-2) * 72.27;
+            case LengthUnits.DtpPoints: return (this.value / 2.54e-2) * 72;
+            case LengthUnits.PrinterPicas: return this.value * 237.106301584;
+            case LengthUnits.DtpPicas: return this.value * 236.220472441;
+            case LengthUnits.Twips: return this.value * 56692.913385826;
+            case LengthUnits.Hands: return this.value / 1.016e-1;
+            case LengthUnits.AstronomicalUnits: return this.value / 1.4959787070e11;
+            case LengthUnits.Parsecs: return this.value / 3.08567758128e16;
+            case LengthUnits.LightYears: return this.value / 9.46073047258e15;
+            case LengthUnits.SolarRadiuses: return this.value / 6.95510000E+08;
+            case LengthUnits.Chains: return this.value / 20.1168;
+            case LengthUnits.Angstroms: return this.value / 1e-10;
+            case LengthUnits.DataMiles: return this.value / 1828.8;
+            case LengthUnits.Femtometers: return (this.value) / 1e-15;
+            case LengthUnits.Picometers: return (this.value) / 1e-12;
+            case LengthUnits.Nanometers: return (this.value) / 1e-9;
+            case LengthUnits.Micrometers: return (this.value) / 0.000001;
+            case LengthUnits.Millimeters: return (this.value) / 0.001;
+            case LengthUnits.Centimeters: return (this.value) / 0.01;
+            case LengthUnits.Decimeters: return (this.value) / 0.1;
+            case LengthUnits.Decameters: return (this.value) / 10;
+            case LengthUnits.Hectometers: return (this.value) / 100;
+            case LengthUnits.Kilometers: return (this.value) / 1000;
+            case LengthUnits.Megameters: return (this.value) / 1000000;
+            case LengthUnits.Gigameters: return (this.value) / 1000000000;
+            case LengthUnits.Kiloyards: return (this.value / 0.9144) / 1000;
+            case LengthUnits.Kilofeet: return (this.value / 0.3048) / 1000;
+            case LengthUnits.Kiloparsecs: return (this.value / 3.08567758128e16) / 1000;
+            case LengthUnits.Megaparsecs: return (this.value / 3.08567758128e16) / 1000000;
+            case LengthUnits.KilolightYears: return (this.value / 9.46073047258e15) / 1000;
+            case LengthUnits.MegalightYears: return (this.value / 9.46073047258e15) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LengthUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LengthUnits.Meters: return value;
+                case LengthUnits.Miles: return super.internalMultiply(value, 1609.344);
+                case LengthUnits.Yards: return super.internalMultiply(value, 0.9144);
+                case LengthUnits.Feet: return super.internalMultiply(value, 0.3048);
+                case LengthUnits.UsSurveyFeet: {
+                    const value3 = super.internalMultiply(value, 1200);
+                    return super.internalDivide(value3, 3937);
+                }
+                case LengthUnits.Inches: return super.internalMultiply(value, 2.54e-2);
+                case LengthUnits.Mils: return super.internalMultiply(value, 2.54e-5);
+                case LengthUnits.NauticalMiles: return super.internalMultiply(value, 1852);
+                case LengthUnits.Fathoms: return super.internalMultiply(value, 1.8288);
+                case LengthUnits.Shackles: return super.internalMultiply(value, 27.432);
+                case LengthUnits.Microinches: return super.internalMultiply(value, 2.54e-8);
+                case LengthUnits.PrinterPoints: {
+                    const value3 = super.internalDivide(value, 72.27);
+                    return super.internalMultiply(value3, 2.54e-2);
+                }
+                case LengthUnits.DtpPoints: {
+                    const value3 = super.internalDivide(value, 72);
+                    return super.internalMultiply(value3, 2.54e-2);
+                }
+                case LengthUnits.PrinterPicas: return super.internalDivide(value, 237.106301584);
+                case LengthUnits.DtpPicas: return super.internalDivide(value, 236.220472441);
+                case LengthUnits.Twips: return super.internalDivide(value, 56692.913385826);
+                case LengthUnits.Hands: return super.internalMultiply(value, 1.016e-1);
+                case LengthUnits.AstronomicalUnits: return super.internalMultiply(value, 1.4959787070e11);
+                case LengthUnits.Parsecs: return super.internalMultiply(value, 3.08567758128e16);
+                case LengthUnits.LightYears: return super.internalMultiply(value, 9.46073047258e15);
+                case LengthUnits.SolarRadiuses: return super.internalMultiply(value, 6.95510000E+08);
+                case LengthUnits.Chains: return super.internalMultiply(value, 20.1168);
+                case LengthUnits.Angstroms: return super.internalMultiply(value, 1e-10);
+                case LengthUnits.DataMiles: return super.internalMultiply(value, 1828.8);
+                case LengthUnits.Femtometers: return super.internalMultiply(value, 1e-15);
+                case LengthUnits.Picometers: return super.internalMultiply(value, 1e-12);
+                case LengthUnits.Nanometers: return super.internalMultiply(value, 1e-9);
+                case LengthUnits.Micrometers: return super.internalMultiply(value, 0.000001);
+                case LengthUnits.Millimeters: return super.internalMultiply(value, 0.001);
+                case LengthUnits.Centimeters: return super.internalMultiply(value, 0.01);
+                case LengthUnits.Decimeters: return super.internalMultiply(value, 0.1);
+                case LengthUnits.Decameters: return super.internalMultiply(value, 10);
+                case LengthUnits.Hectometers: return super.internalMultiply(value, 100);
+                case LengthUnits.Kilometers: return super.internalMultiply(value, 1000);
+                case LengthUnits.Megameters: return super.internalMultiply(value, 1000000);
+                case LengthUnits.Gigameters: return super.internalMultiply(value, 1000000000);
+                case LengthUnits.Kiloyards: {
+                    const value3 = super.internalMultiply(value, 0.9144);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case LengthUnits.Kilofeet: {
+                    const value3 = super.internalMultiply(value, 0.3048);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case LengthUnits.Kiloparsecs: {
+                    const value3 = super.internalMultiply(value, 3.08567758128e16);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case LengthUnits.Megaparsecs: {
+                    const value3 = super.internalMultiply(value, 3.08567758128e16);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case LengthUnits.KilolightYears: {
+                    const value3 = super.internalMultiply(value, 9.46073047258e15);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case LengthUnits.MegalightYears: {
+                    const value3 = super.internalMultiply(value, 9.46073047258e15);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LengthUnits.Meters:
-                return value;
-            case LengthUnits.Miles:
-                return value * 1609.344;
-            case LengthUnits.Yards:
-                return value * 0.9144;
-            case LengthUnits.Feet:
-                return value * 0.3048;
-            case LengthUnits.UsSurveyFeet:
-                return value * 1200 / 3937;
-            case LengthUnits.Inches:
-                return value * 2.54e-2;
-            case LengthUnits.Mils:
-                return value * 2.54e-5;
-            case LengthUnits.NauticalMiles:
-                return value * 1852;
-            case LengthUnits.Fathoms:
-                return value * 1.8288;
-            case LengthUnits.Shackles:
-                return value * 27.432;
-            case LengthUnits.Microinches:
-                return value * 2.54e-8;
-            case LengthUnits.PrinterPoints:
-                return (value / 72.27) * 2.54e-2;
-            case LengthUnits.DtpPoints:
-                return (value / 72) * 2.54e-2;
-            case LengthUnits.PrinterPicas:
-                return value / 237.106301584;
-            case LengthUnits.DtpPicas:
-                return value / 236.220472441;
-            case LengthUnits.Twips:
-                return value / 56692.913385826;
-            case LengthUnits.Hands:
-                return value * 1.016e-1;
-            case LengthUnits.AstronomicalUnits:
-                return value * 1.4959787070e11;
-            case LengthUnits.Parsecs:
-                return value * 3.08567758128e16;
-            case LengthUnits.LightYears:
-                return value * 9.46073047258e15;
-            case LengthUnits.SolarRadiuses:
-                return value * 6.95510000E+08;
-            case LengthUnits.Chains:
-                return value * 20.1168;
-            case LengthUnits.Angstroms:
-                return value * 1e-10;
-            case LengthUnits.DataMiles:
-                return value * 1828.8;
-            case LengthUnits.Femtometers:
-                return (value) * 1e-15;
-            case LengthUnits.Picometers:
-                return (value) * 1e-12;
-            case LengthUnits.Nanometers:
-                return (value) * 1e-9;
-            case LengthUnits.Micrometers:
-                return (value) * 0.000001;
-            case LengthUnits.Millimeters:
-                return (value) * 0.001;
-            case LengthUnits.Centimeters:
-                return (value) * 0.01;
-            case LengthUnits.Decimeters:
-                return (value) * 0.1;
-            case LengthUnits.Decameters:
-                return (value) * 10;
-            case LengthUnits.Hectometers:
-                return (value) * 100;
-            case LengthUnits.Kilometers:
-                return (value) * 1000;
-            case LengthUnits.Megameters:
-                return (value) * 1000000;
-            case LengthUnits.Gigameters:
-                return (value) * 1000000000;
-            case LengthUnits.Kiloyards:
-                return (value * 0.9144) * 1000;
-            case LengthUnits.Kilofeet:
-                return (value * 0.3048) * 1000;
-            case LengthUnits.Kiloparsecs:
-                return (value * 3.08567758128e16) * 1000;
-            case LengthUnits.Megaparsecs:
-                return (value * 3.08567758128e16) * 1000000;
-            case LengthUnits.KilolightYears:
-                return (value * 9.46073047258e15) * 1000;
-            case LengthUnits.MegalightYears:
-                return (value * 9.46073047258e15) * 1000000;
-            default:
-                break;
+            case LengthUnits.Meters: return value;
+            case LengthUnits.Miles: return value * 1609.344;
+            case LengthUnits.Yards: return value * 0.9144;
+            case LengthUnits.Feet: return value * 0.3048;
+            case LengthUnits.UsSurveyFeet: return value * 1200 / 3937;
+            case LengthUnits.Inches: return value * 2.54e-2;
+            case LengthUnits.Mils: return value * 2.54e-5;
+            case LengthUnits.NauticalMiles: return value * 1852;
+            case LengthUnits.Fathoms: return value * 1.8288;
+            case LengthUnits.Shackles: return value * 27.432;
+            case LengthUnits.Microinches: return value * 2.54e-8;
+            case LengthUnits.PrinterPoints: return (value / 72.27) * 2.54e-2;
+            case LengthUnits.DtpPoints: return (value / 72) * 2.54e-2;
+            case LengthUnits.PrinterPicas: return value / 237.106301584;
+            case LengthUnits.DtpPicas: return value / 236.220472441;
+            case LengthUnits.Twips: return value / 56692.913385826;
+            case LengthUnits.Hands: return value * 1.016e-1;
+            case LengthUnits.AstronomicalUnits: return value * 1.4959787070e11;
+            case LengthUnits.Parsecs: return value * 3.08567758128e16;
+            case LengthUnits.LightYears: return value * 9.46073047258e15;
+            case LengthUnits.SolarRadiuses: return value * 6.95510000E+08;
+            case LengthUnits.Chains: return value * 20.1168;
+            case LengthUnits.Angstroms: return value * 1e-10;
+            case LengthUnits.DataMiles: return value * 1828.8;
+            case LengthUnits.Femtometers: return (value) * 1e-15;
+            case LengthUnits.Picometers: return (value) * 1e-12;
+            case LengthUnits.Nanometers: return (value) * 1e-9;
+            case LengthUnits.Micrometers: return (value) * 0.000001;
+            case LengthUnits.Millimeters: return (value) * 0.001;
+            case LengthUnits.Centimeters: return (value) * 0.01;
+            case LengthUnits.Decimeters: return (value) * 0.1;
+            case LengthUnits.Decameters: return (value) * 10;
+            case LengthUnits.Hectometers: return (value) * 100;
+            case LengthUnits.Kilometers: return (value) * 1000;
+            case LengthUnits.Megameters: return (value) * 1000000;
+            case LengthUnits.Gigameters: return (value) * 1000000000;
+            case LengthUnits.Kiloyards: return (value * 0.9144) * 1000;
+            case LengthUnits.Kilofeet: return (value * 0.3048) * 1000;
+            case LengthUnits.Kiloparsecs: return (value * 3.08567758128e16) * 1000;
+            case LengthUnits.Megaparsecs: return (value * 3.08567758128e16) * 1000000;
+            case LengthUnits.KilolightYears: return (value * 9.46073047258e15) * 1000;
+            case LengthUnits.MegalightYears: return (value * 9.46073047258e15) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

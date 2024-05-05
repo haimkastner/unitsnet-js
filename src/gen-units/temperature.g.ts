@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Temperature */
 export interface TemperatureDto {
@@ -291,61 +291,125 @@ export class Temperature extends BaseUnit {
     }
 
     private convertFromBase(toUnit: TemperatureUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case TemperatureUnits.Kelvins: return this.value;
+                case TemperatureUnits.DegreesCelsius: return super.internalSubtract(this.value, 273.15);
+                case TemperatureUnits.MillidegreesCelsius: {
+                    const value3 = super.internalSubtract(this.value, 273.15);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case TemperatureUnits.DegreesDelisle: {
+                    const value3 = super.internalSubtract(this.value, 373.15);
+                    const value5 = super.internalMultiply(value3, 3);
+                    return super.internalDivide(value5, 2);
+                }
+                case TemperatureUnits.DegreesFahrenheit: {
+                    const value4 = super.internalMultiply(459.67, 5);
+                    const value6 = super.internalDivide(value4, 9);
+                    const value7 = super.internalSubtract(this.value, value6);
+                    const value9 = super.internalMultiply(value7, 9);
+                    return super.internalDivide(value9, 5);
+                }
+                case TemperatureUnits.DegreesNewton: {
+                    const value3 = super.internalSubtract(this.value, 273.15);
+                    const value5 = super.internalMultiply(value3, 33);
+                    return super.internalDivide(value5, 100);
+                }
+                case TemperatureUnits.DegreesRankine: {
+                    const value3 = super.internalMultiply(this.value, 9);
+                    return super.internalDivide(value3, 5);
+                }
+                case TemperatureUnits.DegreesReaumur: {
+                    const value3 = super.internalSubtract(this.value, 273.15);
+                    const value5 = super.internalMultiply(value3, 4);
+                    return super.internalDivide(value5, 5);
+                }
+                case TemperatureUnits.DegreesRoemer: {
+                    const value5 = super.internalMultiply(7.5, 40);
+                    const value7 = super.internalDivide(value5, 21);
+                    const value8 = super.internalSubtract(273.15, value7);
+                    const value9 = super.internalSubtract(this.value, value8);
+                    const value11 = super.internalMultiply(value9, 21);
+                    return super.internalDivide(value11, 40);
+                }
+                case TemperatureUnits.SolarTemperatures: return super.internalDivide(this.value, 5778);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case TemperatureUnits.Kelvins:
-                return this.value;
-            case TemperatureUnits.DegreesCelsius:
-                return this.value - 273.15;
-            case TemperatureUnits.MillidegreesCelsius:
-                return (this.value - 273.15) * 1000;
-            case TemperatureUnits.DegreesDelisle:
-                return (this.value - 373.15) * -3 / 2;
-            case TemperatureUnits.DegreesFahrenheit:
-                return (this.value - 459.67 * 5 / 9) * 9 / 5;
-            case TemperatureUnits.DegreesNewton:
-                return (this.value - 273.15) * 33 / 100;
-            case TemperatureUnits.DegreesRankine:
-                return this.value * 9 / 5;
-            case TemperatureUnits.DegreesReaumur:
-                return (this.value - 273.15) * 4 / 5;
-            case TemperatureUnits.DegreesRoemer:
-                return (this.value - (273.15 - 7.5 * 40 / 21)) * 21 / 40;
-            case TemperatureUnits.SolarTemperatures:
-                return this.value / 5778;
-            default:
-                break;
+            case TemperatureUnits.Kelvins: return this.value;
+            case TemperatureUnits.DegreesCelsius: return this.value - 273.15;
+            case TemperatureUnits.MillidegreesCelsius: return (this.value - 273.15) * 1000;
+            case TemperatureUnits.DegreesDelisle: return (this.value - 373.15) * -3 / 2;
+            case TemperatureUnits.DegreesFahrenheit: return (this.value - 459.67 * 5 / 9) * 9 / 5;
+            case TemperatureUnits.DegreesNewton: return (this.value - 273.15) * 33 / 100;
+            case TemperatureUnits.DegreesRankine: return this.value * 9 / 5;
+            case TemperatureUnits.DegreesReaumur: return (this.value - 273.15) * 4 / 5;
+            case TemperatureUnits.DegreesRoemer: return (this.value - (273.15 - 7.5 * 40 / 21)) * 21 / 40;
+            case TemperatureUnits.SolarTemperatures: return this.value / 5778;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: TemperatureUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case TemperatureUnits.Kelvins: return value;
+                case TemperatureUnits.DegreesCelsius: return super.internalAdd(value, 273.15);
+                case TemperatureUnits.MillidegreesCelsius: {
+                    const value3 = super.internalDivide(value, 1000);
+                    return super.internalAdd(value3, 273.15);
+                }
+                case TemperatureUnits.DegreesDelisle: {
+                    const value3 = super.internalMultiply(value, 2);
+                    const value5 = super.internalDivide(value3, 3);
+                    return super.internalAdd(value5, 373.15);
+                }
+                case TemperatureUnits.DegreesFahrenheit: {
+                    const value3 = super.internalMultiply(value, 5);
+                    const value5 = super.internalDivide(value3, 9);
+                    const value8 = super.internalMultiply(459.67, 5);
+                    const value10 = super.internalDivide(value8, 9);
+                    return super.internalAdd(value5, value10);
+                }
+                case TemperatureUnits.DegreesNewton: {
+                    const value3 = super.internalMultiply(value, 100);
+                    const value5 = super.internalDivide(value3, 33);
+                    return super.internalAdd(value5, 273.15);
+                }
+                case TemperatureUnits.DegreesRankine: {
+                    const value3 = super.internalMultiply(value, 5);
+                    return super.internalDivide(value3, 9);
+                }
+                case TemperatureUnits.DegreesReaumur: {
+                    const value3 = super.internalMultiply(value, 5);
+                    const value5 = super.internalDivide(value3, 4);
+                    return super.internalAdd(value5, 273.15);
+                }
+                case TemperatureUnits.DegreesRoemer: {
+                    const value3 = super.internalMultiply(value, 40);
+                    const value5 = super.internalDivide(value3, 21);
+                    const value7 = super.internalAdd(value5, 273.15);
+                    const value10 = super.internalMultiply(7.5, 40);
+                    const value12 = super.internalDivide(value10, 21);
+                    return super.internalSubtract(value7, value12);
+                }
+                case TemperatureUnits.SolarTemperatures: return super.internalMultiply(value, 5778);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case TemperatureUnits.Kelvins:
-                return value;
-            case TemperatureUnits.DegreesCelsius:
-                return value + 273.15;
-            case TemperatureUnits.MillidegreesCelsius:
-                return value / 1000 + 273.15;
-            case TemperatureUnits.DegreesDelisle:
-                return value * -2 / 3 + 373.15;
-            case TemperatureUnits.DegreesFahrenheit:
-                return value * 5 / 9 + 459.67 * 5 / 9;
-            case TemperatureUnits.DegreesNewton:
-                return value * 100 / 33 + 273.15;
-            case TemperatureUnits.DegreesRankine:
-                return value * 5 / 9;
-            case TemperatureUnits.DegreesReaumur:
-                return value * 5 / 4 + 273.15;
-            case TemperatureUnits.DegreesRoemer:
-                return value * 40 / 21 + 273.15 - 7.5 * 40 / 21;
-            case TemperatureUnits.SolarTemperatures:
-                return value * 5778;
-            default:
-                break;
+            case TemperatureUnits.Kelvins: return value;
+            case TemperatureUnits.DegreesCelsius: return value + 273.15;
+            case TemperatureUnits.MillidegreesCelsius: return value / 1000 + 273.15;
+            case TemperatureUnits.DegreesDelisle: return value * -2 / 3 + 373.15;
+            case TemperatureUnits.DegreesFahrenheit: return value * 5 / 9 + 459.67 * 5 / 9;
+            case TemperatureUnits.DegreesNewton: return value * 100 / 33 + 273.15;
+            case TemperatureUnits.DegreesRankine: return value * 5 / 9;
+            case TemperatureUnits.DegreesReaumur: return value * 5 / 4 + 273.15;
+            case TemperatureUnits.DegreesRoemer: return value * 40 / 21 + 273.15 - 7.5 * 40 / 21;
+            case TemperatureUnits.SolarTemperatures: return value * 5778;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

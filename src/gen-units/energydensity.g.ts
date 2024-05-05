@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a EnergyDensity */
 export interface EnergyDensityDto {
@@ -335,69 +335,101 @@ export class EnergyDensity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: EnergyDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case EnergyDensityUnits.JoulesPerCubicMeter: return this.value;
+                case EnergyDensityUnits.WattHoursPerCubicMeter: return super.internalDivide(this.value, 3.6e+3);
+                case EnergyDensityUnits.KilojoulesPerCubicMeter: return super.internalDivide(this.value, 1000);
+                case EnergyDensityUnits.MegajoulesPerCubicMeter: return super.internalDivide(this.value, 1000000);
+                case EnergyDensityUnits.GigajoulesPerCubicMeter: return super.internalDivide(this.value, 1000000000);
+                case EnergyDensityUnits.TerajoulesPerCubicMeter: return super.internalDivide(this.value, 1000000000000);
+                case EnergyDensityUnits.PetajoulesPerCubicMeter: return super.internalDivide(this.value, 1000000000000000);
+                case EnergyDensityUnits.KilowattHoursPerCubicMeter: {
+                    const value3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(value3, 1000);
+                }
+                case EnergyDensityUnits.MegawattHoursPerCubicMeter: {
+                    const value3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(value3, 1000000);
+                }
+                case EnergyDensityUnits.GigawattHoursPerCubicMeter: {
+                    const value3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(value3, 1000000000);
+                }
+                case EnergyDensityUnits.TerawattHoursPerCubicMeter: {
+                    const value3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(value3, 1000000000000);
+                }
+                case EnergyDensityUnits.PetawattHoursPerCubicMeter: {
+                    const value3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(value3, 1000000000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case EnergyDensityUnits.JoulesPerCubicMeter:
-                return this.value;
-            case EnergyDensityUnits.WattHoursPerCubicMeter:
-                return this.value / 3.6e+3;
-            case EnergyDensityUnits.KilojoulesPerCubicMeter:
-                return (this.value) / 1000;
-            case EnergyDensityUnits.MegajoulesPerCubicMeter:
-                return (this.value) / 1000000;
-            case EnergyDensityUnits.GigajoulesPerCubicMeter:
-                return (this.value) / 1000000000;
-            case EnergyDensityUnits.TerajoulesPerCubicMeter:
-                return (this.value) / 1000000000000;
-            case EnergyDensityUnits.PetajoulesPerCubicMeter:
-                return (this.value) / 1000000000000000;
-            case EnergyDensityUnits.KilowattHoursPerCubicMeter:
-                return (this.value / 3.6e+3) / 1000;
-            case EnergyDensityUnits.MegawattHoursPerCubicMeter:
-                return (this.value / 3.6e+3) / 1000000;
-            case EnergyDensityUnits.GigawattHoursPerCubicMeter:
-                return (this.value / 3.6e+3) / 1000000000;
-            case EnergyDensityUnits.TerawattHoursPerCubicMeter:
-                return (this.value / 3.6e+3) / 1000000000000;
-            case EnergyDensityUnits.PetawattHoursPerCubicMeter:
-                return (this.value / 3.6e+3) / 1000000000000000;
-            default:
-                break;
+            case EnergyDensityUnits.JoulesPerCubicMeter: return this.value;
+            case EnergyDensityUnits.WattHoursPerCubicMeter: return this.value / 3.6e+3;
+            case EnergyDensityUnits.KilojoulesPerCubicMeter: return (this.value) / 1000;
+            case EnergyDensityUnits.MegajoulesPerCubicMeter: return (this.value) / 1000000;
+            case EnergyDensityUnits.GigajoulesPerCubicMeter: return (this.value) / 1000000000;
+            case EnergyDensityUnits.TerajoulesPerCubicMeter: return (this.value) / 1000000000000;
+            case EnergyDensityUnits.PetajoulesPerCubicMeter: return (this.value) / 1000000000000000;
+            case EnergyDensityUnits.KilowattHoursPerCubicMeter: return (this.value / 3.6e+3) / 1000;
+            case EnergyDensityUnits.MegawattHoursPerCubicMeter: return (this.value / 3.6e+3) / 1000000;
+            case EnergyDensityUnits.GigawattHoursPerCubicMeter: return (this.value / 3.6e+3) / 1000000000;
+            case EnergyDensityUnits.TerawattHoursPerCubicMeter: return (this.value / 3.6e+3) / 1000000000000;
+            case EnergyDensityUnits.PetawattHoursPerCubicMeter: return (this.value / 3.6e+3) / 1000000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: EnergyDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case EnergyDensityUnits.JoulesPerCubicMeter: return value;
+                case EnergyDensityUnits.WattHoursPerCubicMeter: return super.internalMultiply(value, 3.6e+3);
+                case EnergyDensityUnits.KilojoulesPerCubicMeter: return super.internalMultiply(value, 1000);
+                case EnergyDensityUnits.MegajoulesPerCubicMeter: return super.internalMultiply(value, 1000000);
+                case EnergyDensityUnits.GigajoulesPerCubicMeter: return super.internalMultiply(value, 1000000000);
+                case EnergyDensityUnits.TerajoulesPerCubicMeter: return super.internalMultiply(value, 1000000000000);
+                case EnergyDensityUnits.PetajoulesPerCubicMeter: return super.internalMultiply(value, 1000000000000000);
+                case EnergyDensityUnits.KilowattHoursPerCubicMeter: {
+                    const value3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                case EnergyDensityUnits.MegawattHoursPerCubicMeter: {
+                    const value3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(value3, 1000000);
+                }
+                case EnergyDensityUnits.GigawattHoursPerCubicMeter: {
+                    const value3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(value3, 1000000000);
+                }
+                case EnergyDensityUnits.TerawattHoursPerCubicMeter: {
+                    const value3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(value3, 1000000000000);
+                }
+                case EnergyDensityUnits.PetawattHoursPerCubicMeter: {
+                    const value3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(value3, 1000000000000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case EnergyDensityUnits.JoulesPerCubicMeter:
-                return value;
-            case EnergyDensityUnits.WattHoursPerCubicMeter:
-                return value * 3.6e+3;
-            case EnergyDensityUnits.KilojoulesPerCubicMeter:
-                return (value) * 1000;
-            case EnergyDensityUnits.MegajoulesPerCubicMeter:
-                return (value) * 1000000;
-            case EnergyDensityUnits.GigajoulesPerCubicMeter:
-                return (value) * 1000000000;
-            case EnergyDensityUnits.TerajoulesPerCubicMeter:
-                return (value) * 1000000000000;
-            case EnergyDensityUnits.PetajoulesPerCubicMeter:
-                return (value) * 1000000000000000;
-            case EnergyDensityUnits.KilowattHoursPerCubicMeter:
-                return (value * 3.6e+3) * 1000;
-            case EnergyDensityUnits.MegawattHoursPerCubicMeter:
-                return (value * 3.6e+3) * 1000000;
-            case EnergyDensityUnits.GigawattHoursPerCubicMeter:
-                return (value * 3.6e+3) * 1000000000;
-            case EnergyDensityUnits.TerawattHoursPerCubicMeter:
-                return (value * 3.6e+3) * 1000000000000;
-            case EnergyDensityUnits.PetawattHoursPerCubicMeter:
-                return (value * 3.6e+3) * 1000000000000000;
-            default:
-                break;
+            case EnergyDensityUnits.JoulesPerCubicMeter: return value;
+            case EnergyDensityUnits.WattHoursPerCubicMeter: return value * 3.6e+3;
+            case EnergyDensityUnits.KilojoulesPerCubicMeter: return (value) * 1000;
+            case EnergyDensityUnits.MegajoulesPerCubicMeter: return (value) * 1000000;
+            case EnergyDensityUnits.GigajoulesPerCubicMeter: return (value) * 1000000000;
+            case EnergyDensityUnits.TerajoulesPerCubicMeter: return (value) * 1000000000000;
+            case EnergyDensityUnits.PetajoulesPerCubicMeter: return (value) * 1000000000000000;
+            case EnergyDensityUnits.KilowattHoursPerCubicMeter: return (value * 3.6e+3) * 1000;
+            case EnergyDensityUnits.MegawattHoursPerCubicMeter: return (value * 3.6e+3) * 1000000;
+            case EnergyDensityUnits.GigawattHoursPerCubicMeter: return (value * 3.6e+3) * 1000000000;
+            case EnergyDensityUnits.TerawattHoursPerCubicMeter: return (value * 3.6e+3) * 1000000000000;
+            case EnergyDensityUnits.PetawattHoursPerCubicMeter: return (value * 3.6e+3) * 1000000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

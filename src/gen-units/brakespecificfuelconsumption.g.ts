@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a BrakeSpecificFuelConsumption */
 export interface BrakeSpecificFuelConsumptionDto {
@@ -137,33 +137,35 @@ export class BrakeSpecificFuelConsumption extends BaseUnit {
     }
 
     private convertFromBase(toUnit: BrakeSpecificFuelConsumptionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour: return super.internalMultiply(this.value, 3.6e9);
+                case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule: return this.value;
+                case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour: return super.internalDivide(this.value, 1.689659410672e-7);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                return this.value * 3.6e9;
-            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
-                return this.value;
-            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                return this.value / 1.689659410672e-7;
-            default:
-                break;
+            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour: return this.value * 3.6e9;
+            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule: return this.value;
+            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour: return this.value / 1.689659410672e-7;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour: return super.internalDivide(value, 3.6e9);
+                case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule: return value;
+                case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour: return super.internalMultiply(value, 1.689659410672e-7);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                return value / 3.6e9;
-            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
-                return value;
-            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                return value * 1.689659410672e-7;
-            default:
-                break;
+            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour: return value / 3.6e9;
+            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule: return value;
+            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour: return value * 1.689659410672e-7;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

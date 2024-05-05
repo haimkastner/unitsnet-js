@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricChargeDensity */
 export interface ElectricChargeDensityDto {
@@ -93,25 +93,27 @@ export class ElectricChargeDensity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ElectricChargeDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricChargeDensityUnits.CoulombsPerCubicMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                return this.value;
-            default:
-                break;
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricChargeDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricChargeDensityUnits.CoulombsPerCubicMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                return value;
-            default:
-                break;
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

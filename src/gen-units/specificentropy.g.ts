@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a SpecificEntropy */
 export interface SpecificEntropyDto {
@@ -269,57 +269,65 @@ export class SpecificEntropy extends BaseUnit {
     }
 
     private convertFromBase(toUnit: SpecificEntropyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case SpecificEntropyUnits.JoulesPerKilogramKelvin: return this.value;
+                case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius: return this.value;
+                case SpecificEntropyUnits.CaloriesPerGramKelvin: return super.internalDivide(this.value, 4.184e3);
+                case SpecificEntropyUnits.BtusPerPoundFahrenheit: return super.internalDivide(this.value, 4.1868e3);
+                case SpecificEntropyUnits.KilojoulesPerKilogramKelvin: return super.internalDivide(this.value, 1000);
+                case SpecificEntropyUnits.MegajoulesPerKilogramKelvin: return super.internalDivide(this.value, 1000000);
+                case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius: return super.internalDivide(this.value, 1000);
+                case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius: return super.internalDivide(this.value, 1000000);
+                case SpecificEntropyUnits.KilocaloriesPerGramKelvin: {
+                    const value3 = super.internalDivide(this.value, 4.184e3);
+                    return super.internalDivide(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case SpecificEntropyUnits.JoulesPerKilogramKelvin:
-                return this.value;
-            case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
-                return this.value;
-            case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return this.value / 4.184e3;
-            case SpecificEntropyUnits.BtusPerPoundFahrenheit:
-                return this.value / 4.1868e3;
-            case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
-                return (this.value) / 1000;
-            case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
-                return (this.value) / 1000000;
-            case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
-                return (this.value) / 1000;
-            case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
-                return (this.value) / 1000000;
-            case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return (this.value / 4.184e3) / 1000;
-            default:
-                break;
+            case SpecificEntropyUnits.JoulesPerKilogramKelvin: return this.value;
+            case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius: return this.value;
+            case SpecificEntropyUnits.CaloriesPerGramKelvin: return this.value / 4.184e3;
+            case SpecificEntropyUnits.BtusPerPoundFahrenheit: return this.value / 4.1868e3;
+            case SpecificEntropyUnits.KilojoulesPerKilogramKelvin: return (this.value) / 1000;
+            case SpecificEntropyUnits.MegajoulesPerKilogramKelvin: return (this.value) / 1000000;
+            case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius: return (this.value) / 1000;
+            case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius: return (this.value) / 1000000;
+            case SpecificEntropyUnits.KilocaloriesPerGramKelvin: return (this.value / 4.184e3) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: SpecificEntropyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case SpecificEntropyUnits.JoulesPerKilogramKelvin: return value;
+                case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius: return value;
+                case SpecificEntropyUnits.CaloriesPerGramKelvin: return super.internalMultiply(value, 4.184e3);
+                case SpecificEntropyUnits.BtusPerPoundFahrenheit: return super.internalMultiply(value, 4.1868e3);
+                case SpecificEntropyUnits.KilojoulesPerKilogramKelvin: return super.internalMultiply(value, 1000);
+                case SpecificEntropyUnits.MegajoulesPerKilogramKelvin: return super.internalMultiply(value, 1000000);
+                case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius: return super.internalMultiply(value, 1000);
+                case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius: return super.internalMultiply(value, 1000000);
+                case SpecificEntropyUnits.KilocaloriesPerGramKelvin: {
+                    const value3 = super.internalMultiply(value, 4.184e3);
+                    return super.internalMultiply(value3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case SpecificEntropyUnits.JoulesPerKilogramKelvin:
-                return value;
-            case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
-                return value;
-            case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return value * 4.184e3;
-            case SpecificEntropyUnits.BtusPerPoundFahrenheit:
-                return value * 4.1868e3;
-            case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
-                return (value) * 1000;
-            case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
-                return (value) * 1000000;
-            case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
-                return (value) * 1000;
-            case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
-                return (value) * 1000000;
-            case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return (value * 4.184e3) * 1000;
-            default:
-                break;
+            case SpecificEntropyUnits.JoulesPerKilogramKelvin: return value;
+            case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius: return value;
+            case SpecificEntropyUnits.CaloriesPerGramKelvin: return value * 4.184e3;
+            case SpecificEntropyUnits.BtusPerPoundFahrenheit: return value * 4.1868e3;
+            case SpecificEntropyUnits.KilojoulesPerKilogramKelvin: return (value) * 1000;
+            case SpecificEntropyUnits.MegajoulesPerKilogramKelvin: return (value) * 1000000;
+            case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius: return (value) * 1000;
+            case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius: return (value) * 1000000;
+            case SpecificEntropyUnits.KilocaloriesPerGramKelvin: return (value * 4.184e3) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

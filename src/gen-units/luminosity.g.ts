@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Luminosity */
 export interface LuminosityDto {
@@ -379,77 +379,79 @@ export class Luminosity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: LuminosityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LuminosityUnits.Watts: return this.value;
+                case LuminosityUnits.SolarLuminosities: return super.internalDivide(this.value, 3.846e26);
+                case LuminosityUnits.Femtowatts: return super.internalDivide(this.value, 1e-15);
+                case LuminosityUnits.Picowatts: return super.internalDivide(this.value, 1e-12);
+                case LuminosityUnits.Nanowatts: return super.internalDivide(this.value, 1e-9);
+                case LuminosityUnits.Microwatts: return super.internalDivide(this.value, 0.000001);
+                case LuminosityUnits.Milliwatts: return super.internalDivide(this.value, 0.001);
+                case LuminosityUnits.Deciwatts: return super.internalDivide(this.value, 0.1);
+                case LuminosityUnits.Decawatts: return super.internalDivide(this.value, 10);
+                case LuminosityUnits.Kilowatts: return super.internalDivide(this.value, 1000);
+                case LuminosityUnits.Megawatts: return super.internalDivide(this.value, 1000000);
+                case LuminosityUnits.Gigawatts: return super.internalDivide(this.value, 1000000000);
+                case LuminosityUnits.Terawatts: return super.internalDivide(this.value, 1000000000000);
+                case LuminosityUnits.Petawatts: return super.internalDivide(this.value, 1000000000000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LuminosityUnits.Watts:
-                return this.value;
-            case LuminosityUnits.SolarLuminosities:
-                return this.value / 3.846e26;
-            case LuminosityUnits.Femtowatts:
-                return (this.value) / 1e-15;
-            case LuminosityUnits.Picowatts:
-                return (this.value) / 1e-12;
-            case LuminosityUnits.Nanowatts:
-                return (this.value) / 1e-9;
-            case LuminosityUnits.Microwatts:
-                return (this.value) / 0.000001;
-            case LuminosityUnits.Milliwatts:
-                return (this.value) / 0.001;
-            case LuminosityUnits.Deciwatts:
-                return (this.value) / 0.1;
-            case LuminosityUnits.Decawatts:
-                return (this.value) / 10;
-            case LuminosityUnits.Kilowatts:
-                return (this.value) / 1000;
-            case LuminosityUnits.Megawatts:
-                return (this.value) / 1000000;
-            case LuminosityUnits.Gigawatts:
-                return (this.value) / 1000000000;
-            case LuminosityUnits.Terawatts:
-                return (this.value) / 1000000000000;
-            case LuminosityUnits.Petawatts:
-                return (this.value) / 1000000000000000;
-            default:
-                break;
+            case LuminosityUnits.Watts: return this.value;
+            case LuminosityUnits.SolarLuminosities: return this.value / 3.846e26;
+            case LuminosityUnits.Femtowatts: return (this.value) / 1e-15;
+            case LuminosityUnits.Picowatts: return (this.value) / 1e-12;
+            case LuminosityUnits.Nanowatts: return (this.value) / 1e-9;
+            case LuminosityUnits.Microwatts: return (this.value) / 0.000001;
+            case LuminosityUnits.Milliwatts: return (this.value) / 0.001;
+            case LuminosityUnits.Deciwatts: return (this.value) / 0.1;
+            case LuminosityUnits.Decawatts: return (this.value) / 10;
+            case LuminosityUnits.Kilowatts: return (this.value) / 1000;
+            case LuminosityUnits.Megawatts: return (this.value) / 1000000;
+            case LuminosityUnits.Gigawatts: return (this.value) / 1000000000;
+            case LuminosityUnits.Terawatts: return (this.value) / 1000000000000;
+            case LuminosityUnits.Petawatts: return (this.value) / 1000000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LuminosityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LuminosityUnits.Watts: return value;
+                case LuminosityUnits.SolarLuminosities: return super.internalMultiply(value, 3.846e26);
+                case LuminosityUnits.Femtowatts: return super.internalMultiply(value, 1e-15);
+                case LuminosityUnits.Picowatts: return super.internalMultiply(value, 1e-12);
+                case LuminosityUnits.Nanowatts: return super.internalMultiply(value, 1e-9);
+                case LuminosityUnits.Microwatts: return super.internalMultiply(value, 0.000001);
+                case LuminosityUnits.Milliwatts: return super.internalMultiply(value, 0.001);
+                case LuminosityUnits.Deciwatts: return super.internalMultiply(value, 0.1);
+                case LuminosityUnits.Decawatts: return super.internalMultiply(value, 10);
+                case LuminosityUnits.Kilowatts: return super.internalMultiply(value, 1000);
+                case LuminosityUnits.Megawatts: return super.internalMultiply(value, 1000000);
+                case LuminosityUnits.Gigawatts: return super.internalMultiply(value, 1000000000);
+                case LuminosityUnits.Terawatts: return super.internalMultiply(value, 1000000000000);
+                case LuminosityUnits.Petawatts: return super.internalMultiply(value, 1000000000000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LuminosityUnits.Watts:
-                return value;
-            case LuminosityUnits.SolarLuminosities:
-                return value * 3.846e26;
-            case LuminosityUnits.Femtowatts:
-                return (value) * 1e-15;
-            case LuminosityUnits.Picowatts:
-                return (value) * 1e-12;
-            case LuminosityUnits.Nanowatts:
-                return (value) * 1e-9;
-            case LuminosityUnits.Microwatts:
-                return (value) * 0.000001;
-            case LuminosityUnits.Milliwatts:
-                return (value) * 0.001;
-            case LuminosityUnits.Deciwatts:
-                return (value) * 0.1;
-            case LuminosityUnits.Decawatts:
-                return (value) * 10;
-            case LuminosityUnits.Kilowatts:
-                return (value) * 1000;
-            case LuminosityUnits.Megawatts:
-                return (value) * 1000000;
-            case LuminosityUnits.Gigawatts:
-                return (value) * 1000000000;
-            case LuminosityUnits.Terawatts:
-                return (value) * 1000000000000;
-            case LuminosityUnits.Petawatts:
-                return (value) * 1000000000000000;
-            default:
-                break;
+            case LuminosityUnits.Watts: return value;
+            case LuminosityUnits.SolarLuminosities: return value * 3.846e26;
+            case LuminosityUnits.Femtowatts: return (value) * 1e-15;
+            case LuminosityUnits.Picowatts: return (value) * 1e-12;
+            case LuminosityUnits.Nanowatts: return (value) * 1e-9;
+            case LuminosityUnits.Microwatts: return (value) * 0.000001;
+            case LuminosityUnits.Milliwatts: return (value) * 0.001;
+            case LuminosityUnits.Deciwatts: return (value) * 0.1;
+            case LuminosityUnits.Decawatts: return (value) * 10;
+            case LuminosityUnits.Kilowatts: return (value) * 1000;
+            case LuminosityUnits.Megawatts: return (value) * 1000000;
+            case LuminosityUnits.Gigawatts: return (value) * 1000000000;
+            case LuminosityUnits.Terawatts: return (value) * 1000000000000;
+            case LuminosityUnits.Petawatts: return (value) * 1000000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

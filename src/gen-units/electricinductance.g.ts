@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricInductance */
 export interface ElectricInductanceDto {
@@ -181,41 +181,43 @@ export class ElectricInductance extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ElectricInductanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricInductanceUnits.Henries: return this.value;
+                case ElectricInductanceUnits.Picohenries: return super.internalDivide(this.value, 1e-12);
+                case ElectricInductanceUnits.Nanohenries: return super.internalDivide(this.value, 1e-9);
+                case ElectricInductanceUnits.Microhenries: return super.internalDivide(this.value, 0.000001);
+                case ElectricInductanceUnits.Millihenries: return super.internalDivide(this.value, 0.001);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricInductanceUnits.Henries:
-                return this.value;
-            case ElectricInductanceUnits.Picohenries:
-                return (this.value) / 1e-12;
-            case ElectricInductanceUnits.Nanohenries:
-                return (this.value) / 1e-9;
-            case ElectricInductanceUnits.Microhenries:
-                return (this.value) / 0.000001;
-            case ElectricInductanceUnits.Millihenries:
-                return (this.value) / 0.001;
-            default:
-                break;
+            case ElectricInductanceUnits.Henries: return this.value;
+            case ElectricInductanceUnits.Picohenries: return (this.value) / 1e-12;
+            case ElectricInductanceUnits.Nanohenries: return (this.value) / 1e-9;
+            case ElectricInductanceUnits.Microhenries: return (this.value) / 0.000001;
+            case ElectricInductanceUnits.Millihenries: return (this.value) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricInductanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricInductanceUnits.Henries: return value;
+                case ElectricInductanceUnits.Picohenries: return super.internalMultiply(value, 1e-12);
+                case ElectricInductanceUnits.Nanohenries: return super.internalMultiply(value, 1e-9);
+                case ElectricInductanceUnits.Microhenries: return super.internalMultiply(value, 0.000001);
+                case ElectricInductanceUnits.Millihenries: return super.internalMultiply(value, 0.001);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricInductanceUnits.Henries:
-                return value;
-            case ElectricInductanceUnits.Picohenries:
-                return (value) * 1e-12;
-            case ElectricInductanceUnits.Nanohenries:
-                return (value) * 1e-9;
-            case ElectricInductanceUnits.Microhenries:
-                return (value) * 0.000001;
-            case ElectricInductanceUnits.Millihenries:
-                return (value) * 0.001;
-            default:
-                break;
+            case ElectricInductanceUnits.Henries: return value;
+            case ElectricInductanceUnits.Picohenries: return (value) * 1e-12;
+            case ElectricInductanceUnits.Nanohenries: return (value) * 1e-9;
+            case ElectricInductanceUnits.Microhenries: return (value) * 0.000001;
+            case ElectricInductanceUnits.Millihenries: return (value) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

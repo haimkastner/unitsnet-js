@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricConductance */
 export interface ElectricConductanceDto {
@@ -181,41 +181,43 @@ export class ElectricConductance extends BaseUnit {
     }
 
     private convertFromBase(toUnit: ElectricConductanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricConductanceUnits.Siemens: return this.value;
+                case ElectricConductanceUnits.Nanosiemens: return super.internalDivide(this.value, 1e-9);
+                case ElectricConductanceUnits.Microsiemens: return super.internalDivide(this.value, 0.000001);
+                case ElectricConductanceUnits.Millisiemens: return super.internalDivide(this.value, 0.001);
+                case ElectricConductanceUnits.Kilosiemens: return super.internalDivide(this.value, 1000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricConductanceUnits.Siemens:
-                return this.value;
-            case ElectricConductanceUnits.Nanosiemens:
-                return (this.value) / 1e-9;
-            case ElectricConductanceUnits.Microsiemens:
-                return (this.value) / 0.000001;
-            case ElectricConductanceUnits.Millisiemens:
-                return (this.value) / 0.001;
-            case ElectricConductanceUnits.Kilosiemens:
-                return (this.value) / 1000;
-            default:
-                break;
+            case ElectricConductanceUnits.Siemens: return this.value;
+            case ElectricConductanceUnits.Nanosiemens: return (this.value) / 1e-9;
+            case ElectricConductanceUnits.Microsiemens: return (this.value) / 0.000001;
+            case ElectricConductanceUnits.Millisiemens: return (this.value) / 0.001;
+            case ElectricConductanceUnits.Kilosiemens: return (this.value) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricConductanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricConductanceUnits.Siemens: return value;
+                case ElectricConductanceUnits.Nanosiemens: return super.internalMultiply(value, 1e-9);
+                case ElectricConductanceUnits.Microsiemens: return super.internalMultiply(value, 0.000001);
+                case ElectricConductanceUnits.Millisiemens: return super.internalMultiply(value, 0.001);
+                case ElectricConductanceUnits.Kilosiemens: return super.internalMultiply(value, 1000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricConductanceUnits.Siemens:
-                return value;
-            case ElectricConductanceUnits.Nanosiemens:
-                return (value) * 1e-9;
-            case ElectricConductanceUnits.Microsiemens:
-                return (value) * 0.000001;
-            case ElectricConductanceUnits.Millisiemens:
-                return (value) * 0.001;
-            case ElectricConductanceUnits.Kilosiemens:
-                return (value) * 1000;
-            default:
-                break;
+            case ElectricConductanceUnits.Siemens: return value;
+            case ElectricConductanceUnits.Nanosiemens: return (value) * 1e-9;
+            case ElectricConductanceUnits.Microsiemens: return (value) * 0.000001;
+            case ElectricConductanceUnits.Millisiemens: return (value) * 0.001;
+            case ElectricConductanceUnits.Kilosiemens: return (value) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

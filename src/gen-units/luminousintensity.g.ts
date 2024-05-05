@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a LuminousIntensity */
 export interface LuminousIntensityDto {
@@ -93,25 +93,27 @@ export class LuminousIntensity extends BaseUnit {
     }
 
     private convertFromBase(toUnit: LuminousIntensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LuminousIntensityUnits.Candela: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LuminousIntensityUnits.Candela:
-                return this.value;
-            default:
-                break;
+            case LuminousIntensityUnits.Candela: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LuminousIntensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LuminousIntensityUnits.Candela: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LuminousIntensityUnits.Candela:
-                return value;
-            default:
-                break;
+            case LuminousIntensityUnits.Candela: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

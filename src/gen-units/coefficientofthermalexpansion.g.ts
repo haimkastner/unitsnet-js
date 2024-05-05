@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a CoefficientOfThermalExpansion */
 export interface CoefficientOfThermalExpansionDto {
@@ -203,45 +203,59 @@ export class CoefficientOfThermalExpansion extends BaseUnit {
     }
 
     private convertFromBase(toUnit: CoefficientOfThermalExpansionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case CoefficientOfThermalExpansionUnits.PerKelvin: return this.value;
+                case CoefficientOfThermalExpansionUnits.PerDegreeCelsius: return this.value;
+                case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit: {
+                    const value3 = super.internalMultiply(this.value, 5);
+                    return super.internalDivide(value3, 9);
+                }
+                case CoefficientOfThermalExpansionUnits.PpmPerKelvin: return super.internalMultiply(this.value, 1e6);
+                case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius: return super.internalMultiply(this.value, 1e6);
+                case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit: {
+                    const value3 = super.internalMultiply(this.value, 5e6);
+                    return super.internalDivide(value3, 9);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case CoefficientOfThermalExpansionUnits.PerKelvin:
-                return this.value;
-            case CoefficientOfThermalExpansionUnits.PerDegreeCelsius:
-                return this.value;
-            case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit:
-                return this.value * 5 / 9;
-            case CoefficientOfThermalExpansionUnits.PpmPerKelvin:
-                return this.value * 1e6;
-            case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius:
-                return this.value * 1e6;
-            case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit:
-                return this.value * 5e6 / 9;
-            default:
-                break;
+            case CoefficientOfThermalExpansionUnits.PerKelvin: return this.value;
+            case CoefficientOfThermalExpansionUnits.PerDegreeCelsius: return this.value;
+            case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit: return this.value * 5 / 9;
+            case CoefficientOfThermalExpansionUnits.PpmPerKelvin: return this.value * 1e6;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius: return this.value * 1e6;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit: return this.value * 5e6 / 9;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: CoefficientOfThermalExpansionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case CoefficientOfThermalExpansionUnits.PerKelvin: return value;
+                case CoefficientOfThermalExpansionUnits.PerDegreeCelsius: return value;
+                case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit: {
+                    const value3 = super.internalMultiply(value, 9);
+                    return super.internalDivide(value3, 5);
+                }
+                case CoefficientOfThermalExpansionUnits.PpmPerKelvin: return super.internalDivide(value, 1e6);
+                case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius: return super.internalDivide(value, 1e6);
+                case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit: {
+                    const value3 = super.internalMultiply(value, 9);
+                    return super.internalDivide(value3, 5e6);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case CoefficientOfThermalExpansionUnits.PerKelvin:
-                return value;
-            case CoefficientOfThermalExpansionUnits.PerDegreeCelsius:
-                return value;
-            case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit:
-                return value * 9 / 5;
-            case CoefficientOfThermalExpansionUnits.PpmPerKelvin:
-                return value / 1e6;
-            case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius:
-                return value / 1e6;
-            case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit:
-                return value * 9 / 5e6;
-            default:
-                break;
+            case CoefficientOfThermalExpansionUnits.PerKelvin: return value;
+            case CoefficientOfThermalExpansionUnits.PerDegreeCelsius: return value;
+            case CoefficientOfThermalExpansionUnits.PerDegreeFahrenheit: return value * 9 / 5;
+            case CoefficientOfThermalExpansionUnits.PpmPerKelvin: return value / 1e6;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeCelsius: return value / 1e6;
+            case CoefficientOfThermalExpansionUnits.PpmPerDegreeFahrenheit: return value * 9 / 5e6;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**
