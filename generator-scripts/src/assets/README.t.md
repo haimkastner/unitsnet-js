@@ -162,7 +162,8 @@ The package provides support for the following units:
 
 Get the same strongly typed units on other platforms, based on the same [unit definitions](/Common/UnitDefinitions).
 
-| Language  | Name        | Package                                           | Repository                                           | Maintainers  |
-|-----------|-------------|---------------------------------------------------|------------------------------------------------------|--------------|
-| C#        | UnitsNet    | [nuget](https://www.nuget.org/packages/UnitsNet/) | [github](https://github.com/angularsen/UnitsNet)     | @angularsen  |
-| Python    | unitsnet-py | [pypi](https://pypi.org/project/unitsnet-py)      | [github](https://github.com/haimkastner/unitsnet-py) | @haimkastner |
+| Language                   | Name        | Package                                           | Repository                                           | Maintainers  |
+|----------------------------|-------------|---------------------------------------------------|------------------------------------------------------|--------------|
+| C#                         | UnitsNet    | [nuget](https://www.nuget.org/packages/UnitsNet/) | [github](https://github.com/angularsen/UnitsNet)     | @angularsen  |
+| JavaScript /<br>TypeScript | unitsnet-js | [npm](https://www.npmjs.com/package/unitsnet-js)  | [github](https://github.com/haimkastner/unitsnet-js) | @haimkastner |
+| Python                     | unitsnet-py | [pypi](https://pypi.org/project/unitsnet-py)      | [github](https://github.com/haimkastner/unitsnet-py) | @haimkastner |
