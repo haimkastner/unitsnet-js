@@ -1,12 +1,46 @@
 import { UnitTypeDefinition } from "./models/units-definition";
 import stripBom from "strip-bom";
 import request from 'sync-request';
+import fs from 'fs-extra';
+import path from 'path';
 
 const githubOptions = {
     headers: {
         'user-agent': 'PostmanRuntime/7.20.1',
     },
 };
+
+
+function loadDefinitionFile(fileName: string): any | undefined {
+    try {
+        const filePath = `${process.cwd()}/.cache/${fileName}`;
+        if (fs.existsSync(filePath)) {
+            console.info(`Loading ${filePath} cache ...`);
+            const data = fs.readFileSync(filePath, 'utf8');
+            return JSON.parse(data);
+        } else {
+            return undefined;
+        }
+    } catch (err) {
+        console.error('Error reading JSON file:', err);
+        return undefined;
+    }
+}
+
+function keepDefinitionFile(fileName: string, data: any): void {
+    try {
+        const filePath = `${process.cwd()}/.cache/${fileName}`;
+        const dirname = path.dirname(filePath);
+        if (!fs.existsSync(dirname)) {
+            fs.mkdirSync(dirname, { recursive: true });
+        }
+        const jsonData = JSON.stringify(data, null, 2);
+        fs.writeFileSync(filePath, jsonData, 'utf8');
+        console.log(`JSON data has been written to ${filePath}`);
+    } catch (err) {
+        console.error('Error writing JSON file:', err);
+    }
+}
 
 /**
  * 
@@ -22,22 +56,33 @@ export function fetchUnitsDefinitions(repoOwnerAndName: string): UnitTypeDefinit
 
     try {
 
-        const response = request('GET', directoryUrl, githubOptions);
+        let definitionFiles = loadDefinitionFile('files.json');
 
-        const body = JSON.parse(response.body.toString('utf-8')) as unknown as [];
+        if (!definitionFiles) {
+            const response = request('GET', directoryUrl, githubOptions);
 
-        const files = body.map((file: any) => file.name);
+            const body = JSON.parse(response.body.toString('utf-8')) as unknown as [];
+            definitionFiles = body.map((file: any) => file.name);
+            keepDefinitionFile('files.json', definitionFiles);
+        }
+
 
         const unitsDefinition: UnitTypeDefinition[] = [];
 
-        for (const file of files) {
-            try {
-                console.info(`Fetching ${file} file...`);
-                const response = request('GET', `${filesUrl}/${file}`, githubOptions);
-                // Stringify the payload to utf-8 (and remove the UTF BOM prefix if exists)
-                const rawBody = stripBom(response.body.toString('utf-8'));
+        for (const file of definitionFiles) {
 
-                const unitDefinition = JSON.parse(rawBody) as unknown as UnitTypeDefinition;
+            try {
+
+                let unitDefinition = loadDefinitionFile(file);
+
+                if (!unitDefinition) {
+                    console.info(`Fetching ${file} file...`);
+                    const response = request('GET', `${filesUrl}/${file}`, githubOptions);
+                    // Stringify the payload to utf-8 (and remove the UTF BOM prefix if exists)
+                    const rawBody = stripBom(response.body.toString('utf-8'));
+                    unitDefinition = JSON.parse(rawBody) as unknown as UnitTypeDefinition;
+                    keepDefinitionFile(file, unitDefinition);
+                }
 
                 // detect deprecated units definitions
                 for (const unit of unitDefinition.Units) {
