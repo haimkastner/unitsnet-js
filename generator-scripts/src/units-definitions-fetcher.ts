@@ -62,7 +62,7 @@ export function fetchUnitsDefinitions(repoOwnerAndName: string): UnitTypeDefinit
             const response = request('GET', directoryUrl, githubOptions);
 
             const body = JSON.parse(response.body.toString('utf-8')) as unknown as [];
-            const definitionFiles = body.map((file: any) => file.name);
+            definitionFiles = body.map((file: any) => file.name);
             keepDefinitionFile('files.json', definitionFiles);
         }
 
