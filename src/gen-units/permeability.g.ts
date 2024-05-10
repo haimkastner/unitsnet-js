@@ -16,7 +16,7 @@ export enum PermeabilityUnits {
 
 /** In electromagnetism, permeability is the measure of the ability of a material to support the formation of a magnetic field within itself. */
 export class Permeability extends BaseUnit {
-    private value: number;
+    protected value: number;
     private henriespermeterLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class Permeability extends BaseUnit {
     public constructor(value: number, fromUnit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class Permeability extends BaseUnit {
      */
     public static FromHenriesPerMeter(value: number): Permeability {
         return new Permeability(value, PermeabilityUnits.HenriesPerMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Permeability
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof PermeabilityUnits {
+        return PermeabilityUnits;
     }
 
     /**

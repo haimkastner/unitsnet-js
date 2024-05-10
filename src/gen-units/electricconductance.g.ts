@@ -24,7 +24,7 @@ export enum ElectricConductanceUnits {
 
 /** The electrical conductance of an electrical conductor is a measure of the easeness to pass an electric current through that conductor. */
 export class ElectricConductance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private siemensLazy: number | null = null;
     private nanosiemensLazy: number | null = null;
     private microsiemensLazy: number | null = null;
@@ -40,7 +40,7 @@ export class ElectricConductance extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricConductanceUnits = ElectricConductanceUnits.Siemens) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -140,6 +140,14 @@ export class ElectricConductance extends BaseUnit {
      */
     public static FromKilosiemens(value: number): ElectricConductance {
         return new ElectricConductance(value, ElectricConductanceUnits.Kilosiemens);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricConductance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricConductanceUnits {
+        return ElectricConductanceUnits;
     }
 
     /**

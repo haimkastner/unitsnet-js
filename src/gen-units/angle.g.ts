@@ -46,7 +46,7 @@ export enum AngleUnits {
 
 /** In geometry, an angle is the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex of the angle. */
 export class Angle extends BaseUnit {
-    private value: number;
+    protected value: number;
     private radiansLazy: number | null = null;
     private degreesLazy: number | null = null;
     private arcminutesLazy: number | null = null;
@@ -73,7 +73,7 @@ export class Angle extends BaseUnit {
     public constructor(value: number, fromUnit: AngleUnits = AngleUnits.Degrees) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -374,6 +374,14 @@ export class Angle extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Angle
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof AngleUnits {
+        return AngleUnits;
+    }
+
+    /**
      * Create API DTO represent a Angle unit.
      * @param holdInUnit The specific Angle unit to be used in the unit representation at the DTO
      */
@@ -426,46 +434,46 @@ export class Angle extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case AngleUnits.Radians: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    return super.internalDivide(this.value, value4);
+                    const v3 = super.internalDivide(this.value, 180);
+                    return super.internalMultiply(v3, Math.PI);
                 }
                 case AngleUnits.Degrees: return this.value;
                 case AngleUnits.Arcminutes: return super.internalMultiply(this.value, 60);
                 case AngleUnits.Arcseconds: return super.internalMultiply(this.value, 3600);
                 case AngleUnits.Gradians: return super.internalDivide(this.value, 0.9);
                 case AngleUnits.NatoMils: {
-                    const value3 = super.internalMultiply(this.value, 160);
-                    return super.internalDivide(value3, 9);
+                    const v4 = super.internalDivide(160, 9);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case AngleUnits.Revolutions: return super.internalDivide(this.value, 360);
                 case AngleUnits.Tilt: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    return super.internalDivide(this.value, value4);
+                    const v3 = super.internalDivide(this.value, 180);
+                    return super.internalMultiply(v3, Math.PI);
                 }
                 case AngleUnits.Nanoradians: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1e-9);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    return super.internalDivide(v5, 1e-9);
                 }
                 case AngleUnits.Microradians: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 0.000001);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    return super.internalDivide(v5, 0.000001);
                 }
                 case AngleUnits.Milliradians: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 0.001);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    return super.internalDivide(v5, 0.001);
                 }
                 case AngleUnits.Centiradians: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 0.01);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    return super.internalDivide(v5, 0.01);
                 }
                 case AngleUnits.Deciradians: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 0.1);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    return super.internalDivide(v5, 0.1);
                 }
                 case AngleUnits.Nanodegrees: return super.internalDivide(this.value, 1e-9);
                 case AngleUnits.Microdegrees: return super.internalDivide(this.value, 0.000001);
@@ -497,46 +505,46 @@ export class Angle extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case AngleUnits.Radians: {
-                    const value3 = super.internalMultiply(value, 180);
-                    return super.internalDivide(value3, Math.PI);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    return super.internalMultiply(value, v4);
                 }
                 case AngleUnits.Degrees: return value;
                 case AngleUnits.Arcminutes: return super.internalDivide(value, 60);
                 case AngleUnits.Arcseconds: return super.internalDivide(value, 3600);
                 case AngleUnits.Gradians: return super.internalMultiply(value, 0.9);
                 case AngleUnits.NatoMils: {
-                    const value3 = super.internalMultiply(value, 9);
-                    return super.internalDivide(value3, 160);
+                    const v4 = super.internalDivide(9, 160);
+                    return super.internalMultiply(value, v4);
                 }
                 case AngleUnits.Revolutions: return super.internalMultiply(value, 360);
                 case AngleUnits.Tilt: {
-                    const value3 = super.internalMultiply(value, 180);
-                    return super.internalDivide(value3, Math.PI);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    return super.internalMultiply(value, v4);
                 }
                 case AngleUnits.Nanoradians: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value5 = super.internalDivide(value3, Math.PI);
-                    return super.internalMultiply(value5, 1e-9);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1e-9);
                 }
                 case AngleUnits.Microradians: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value5 = super.internalDivide(value3, Math.PI);
-                    return super.internalMultiply(value5, 0.000001);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.000001);
                 }
                 case AngleUnits.Milliradians: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value5 = super.internalDivide(value3, Math.PI);
-                    return super.internalMultiply(value5, 0.001);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.001);
                 }
                 case AngleUnits.Centiradians: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value5 = super.internalDivide(value3, Math.PI);
-                    return super.internalMultiply(value5, 0.01);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.01);
                 }
                 case AngleUnits.Deciradians: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value5 = super.internalDivide(value3, Math.PI);
-                    return super.internalMultiply(value5, 0.1);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.1);
                 }
                 case AngleUnits.Nanodegrees: return super.internalMultiply(value, 1e-9);
                 case AngleUnits.Microdegrees: return super.internalMultiply(value, 0.000001);

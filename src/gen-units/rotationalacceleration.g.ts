@@ -22,7 +22,7 @@ export enum RotationalAccelerationUnits {
 
 /** Angular acceleration is the rate of change of rotational speed. */
 export class RotationalAcceleration extends BaseUnit {
-    private value: number;
+    protected value: number;
     private radianspersecondsquaredLazy: number | null = null;
     private degreespersecondsquaredLazy: number | null = null;
     private revolutionsperminutepersecondLazy: number | null = null;
@@ -37,7 +37,7 @@ export class RotationalAcceleration extends BaseUnit {
     public constructor(value: number, fromUnit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -122,6 +122,14 @@ export class RotationalAcceleration extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with RotationalAcceleration
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RotationalAccelerationUnits {
+        return RotationalAccelerationUnits;
+    }
+
+    /**
      * Create API DTO represent a RotationalAcceleration unit.
      * @param holdInUnit The specific RotationalAcceleration unit to be used in the unit representation at the DTO
      */
@@ -163,18 +171,18 @@ export class RotationalAcceleration extends BaseUnit {
             switch (toUnit) {
                 case RotationalAccelerationUnits.RadiansPerSecondSquared: return this.value;
                 case RotationalAccelerationUnits.DegreesPerSecondSquared: {
-                    const value3 = super.internalDivide(180, Math.PI);
-                    return super.internalMultiply(value3, this.value);
+                    const v3 = super.internalDivide(180, Math.PI);
+                    return super.internalMultiply(v3, this.value);
                 }
                 case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond: {
-                    const value4 = super.internalMultiply(2, Math.PI);
-                    const value5 = super.internalDivide(60, value4);
-                    return super.internalMultiply(value5, this.value);
+                    const v4 = super.internalMultiply(2, Math.PI);
+                    const v5 = super.internalDivide(60, v4);
+                    return super.internalMultiply(v5, this.value);
                 }
                 case RotationalAccelerationUnits.RevolutionsPerSecondSquared: {
-                    const value4 = super.internalMultiply(2, Math.PI);
-                    const value5 = super.internalDivide(1, value4);
-                    return super.internalMultiply(value5, this.value);
+                    const v4 = super.internalMultiply(2, Math.PI);
+                    const v5 = super.internalDivide(1, v4);
+                    return super.internalMultiply(v5, this.value);
                 }
                 default: return Number.NaN;
             }
@@ -192,17 +200,17 @@ export class RotationalAcceleration extends BaseUnit {
             switch (fromUnit) {
                 case RotationalAccelerationUnits.RadiansPerSecondSquared: return value;
                 case RotationalAccelerationUnits.DegreesPerSecondSquared: {
-                    const value3 = super.internalDivide(Math.PI, 180);
-                    return super.internalMultiply(value3, value);
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    return super.internalMultiply(v3, value);
                 }
                 case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond: {
-                    const value3 = super.internalMultiply(2, Math.PI);
-                    const value5 = super.internalDivide(value3, 60);
-                    return super.internalMultiply(value5, value);
+                    const v3 = super.internalMultiply(2, Math.PI);
+                    const v5 = super.internalDivide(v3, 60);
+                    return super.internalMultiply(v5, value);
                 }
                 case RotationalAccelerationUnits.RevolutionsPerSecondSquared: {
-                    const value3 = super.internalMultiply(2, Math.PI);
-                    return super.internalMultiply(value3, value);
+                    const v3 = super.internalMultiply(2, Math.PI);
+                    return super.internalMultiply(v3, value);
                 }
                 default: return Number.NaN;
             }

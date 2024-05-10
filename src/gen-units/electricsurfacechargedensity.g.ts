@@ -20,7 +20,7 @@ export enum ElectricSurfaceChargeDensityUnits {
 
 /** In electromagnetism, surface charge density is a measure of the amount of electric charge per surface area. */
 export class ElectricSurfaceChargeDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private coulombspersquaremeterLazy: number | null = null;
     private coulombspersquarecentimeterLazy: number | null = null;
     private coulombspersquareinchLazy: number | null = null;
@@ -34,7 +34,7 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -98,6 +98,14 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
      */
     public static FromCoulombsPerSquareInch(value: number): ElectricSurfaceChargeDensity {
         return new ElectricSurfaceChargeDensity(value, ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricSurfaceChargeDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricSurfaceChargeDensityUnits {
+        return ElectricSurfaceChargeDensityUnits;
     }
 
     /**

@@ -34,7 +34,7 @@ export enum ReciprocalLengthUnits {
 
 /** Reciprocal (Inverse) Length is used in various fields of science and mathematics. It is defined as the inverse value of a length unit. */
 export class ReciprocalLength extends BaseUnit {
-    private value: number;
+    protected value: number;
     private inversemetersLazy: number | null = null;
     private inversecentimetersLazy: number | null = null;
     private inversemillimetersLazy: number | null = null;
@@ -55,7 +55,7 @@ export class ReciprocalLength extends BaseUnit {
     public constructor(value: number, fromUnit: ReciprocalLengthUnits = ReciprocalLengthUnits.InverseMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -248,6 +248,14 @@ export class ReciprocalLength extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ReciprocalLength
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ReciprocalLengthUnits {
+        return ReciprocalLengthUnits;
+    }
+
+    /**
      * Create API DTO represent a ReciprocalLength unit.
      * @param holdInUnit The specific ReciprocalLength unit to be used in the unit representation at the DTO
      */
@@ -300,8 +308,8 @@ export class ReciprocalLength extends BaseUnit {
                 case ReciprocalLengthUnits.InverseYards: return super.internalMultiply(this.value, 0.9144);
                 case ReciprocalLengthUnits.InverseFeet: return super.internalMultiply(this.value, 0.3048);
                 case ReciprocalLengthUnits.InverseUsSurveyFeet: {
-                    const value3 = super.internalMultiply(this.value, 1200);
-                    return super.internalDivide(value3, 3937);
+                    const v4 = super.internalDivide(1200, 3937);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case ReciprocalLengthUnits.InverseInches: return super.internalMultiply(this.value, 2.54e-2);
                 case ReciprocalLengthUnits.InverseMils: return super.internalMultiply(this.value, 2.54e-5);
@@ -333,8 +341,8 @@ export class ReciprocalLength extends BaseUnit {
                 case ReciprocalLengthUnits.InverseYards: return super.internalDivide(value, 0.9144);
                 case ReciprocalLengthUnits.InverseFeet: return super.internalDivide(value, 0.3048);
                 case ReciprocalLengthUnits.InverseUsSurveyFeet: {
-                    const value3 = super.internalMultiply(value, 3937);
-                    return super.internalDivide(value3, 1200);
+                    const v4 = super.internalDivide(3937, 1200);
+                    return super.internalMultiply(value, v4);
                 }
                 case ReciprocalLengthUnits.InverseInches: return super.internalDivide(value, 2.54e-2);
                 case ReciprocalLengthUnits.InverseMils: return super.internalDivide(value, 2.54e-5);

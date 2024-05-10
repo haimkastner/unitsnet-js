@@ -26,7 +26,7 @@ export enum MagneticFieldUnits {
 
 /** A magnetic field is a force field that is created by moving electric charges (electric currents) and magnetic dipoles, and exerts a force on other nearby moving charges and magnetic dipoles. */
 export class MagneticField extends BaseUnit {
-    private value: number;
+    protected value: number;
     private teslasLazy: number | null = null;
     private gaussesLazy: number | null = null;
     private nanoteslasLazy: number | null = null;
@@ -43,7 +43,7 @@ export class MagneticField extends BaseUnit {
     public constructor(value: number, fromUnit: MagneticFieldUnits = MagneticFieldUnits.Teslas) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -164,6 +164,14 @@ export class MagneticField extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MagneticField
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MagneticFieldUnits {
+        return MagneticFieldUnits;
+    }
+
+    /**
      * Create API DTO represent a MagneticField unit.
      * @param holdInUnit The specific MagneticField unit to be used in the unit representation at the DTO
      */
@@ -211,8 +219,8 @@ export class MagneticField extends BaseUnit {
                 case MagneticFieldUnits.Microteslas: return super.internalDivide(this.value, 0.000001);
                 case MagneticFieldUnits.Milliteslas: return super.internalDivide(this.value, 0.001);
                 case MagneticFieldUnits.Milligausses: {
-                    const value3 = super.internalMultiply(this.value, 1e4);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.001);
                 }
                 default: return Number.NaN;
             }
@@ -236,8 +244,8 @@ export class MagneticField extends BaseUnit {
                 case MagneticFieldUnits.Microteslas: return super.internalMultiply(value, 0.000001);
                 case MagneticFieldUnits.Milliteslas: return super.internalMultiply(value, 0.001);
                 case MagneticFieldUnits.Milligausses: {
-                    const value3 = super.internalDivide(value, 1e4);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 default: return Number.NaN;
             }

@@ -20,7 +20,7 @@ export enum BrakeSpecificFuelConsumptionUnits {
 
 /** Brake specific fuel consumption (BSFC) is a measure of the fuel efficiency of any prime mover that burns fuel and produces rotational, or shaft, power. It is typically used for comparing the efficiency of internal combustion engines with a shaft output. */
 export class BrakeSpecificFuelConsumption extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramsperkilowatthourLazy: number | null = null;
     private kilogramsperjouleLazy: number | null = null;
     private poundspermechanicalhorsepowerhourLazy: number | null = null;
@@ -34,7 +34,7 @@ export class BrakeSpecificFuelConsumption extends BaseUnit {
     public constructor(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -98,6 +98,14 @@ export class BrakeSpecificFuelConsumption extends BaseUnit {
      */
     public static FromPoundsPerMechanicalHorsepowerHour(value: number): BrakeSpecificFuelConsumption {
         return new BrakeSpecificFuelConsumption(value, BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with BrakeSpecificFuelConsumption
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof BrakeSpecificFuelConsumptionUnits {
+        return BrakeSpecificFuelConsumptionUnits;
     }
 
     /**

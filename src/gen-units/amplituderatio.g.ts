@@ -22,7 +22,7 @@ export enum AmplitudeRatioUnits {
 
 /** The strength of a signal expressed in decibels (dB) relative to one volt RMS. */
 export class AmplitudeRatio extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decibelvoltsLazy: number | null = null;
     private decibelmicrovoltsLazy: number | null = null;
     private decibelmillivoltsLazy: number | null = null;
@@ -37,7 +37,7 @@ export class AmplitudeRatio extends BaseUnit {
     public constructor(value: number, fromUnit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -119,6 +119,14 @@ export class AmplitudeRatio extends BaseUnit {
      */
     public static FromDecibelsUnloaded(value: number): AmplitudeRatio {
         return new AmplitudeRatio(value, AmplitudeRatioUnits.DecibelsUnloaded);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with AmplitudeRatio
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof AmplitudeRatioUnits {
+        return AmplitudeRatioUnits;
     }
 
     /**

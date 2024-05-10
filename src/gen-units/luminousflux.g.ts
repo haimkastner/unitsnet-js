@@ -16,7 +16,7 @@ export enum LuminousFluxUnits {
 
 /** In photometry, luminous flux or luminous power is the measure of the perceived power of light. */
 export class LuminousFlux extends BaseUnit {
-    private value: number;
+    protected value: number;
     private lumensLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class LuminousFlux extends BaseUnit {
     public constructor(value: number, fromUnit: LuminousFluxUnits = LuminousFluxUnits.Lumens) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class LuminousFlux extends BaseUnit {
      */
     public static FromLumens(value: number): LuminousFlux {
         return new LuminousFlux(value, LuminousFluxUnits.Lumens);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with LuminousFlux
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof LuminousFluxUnits {
+        return LuminousFluxUnits;
     }
 
     /**

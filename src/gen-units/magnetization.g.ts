@@ -16,7 +16,7 @@ export enum MagnetizationUnits {
 
 /** In classical electromagnetism, magnetization is the vector field that expresses the density of permanent or induced magnetic dipole moments in a magnetic material. */
 export class Magnetization extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amperespermeterLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class Magnetization extends BaseUnit {
     public constructor(value: number, fromUnit: MagnetizationUnits = MagnetizationUnits.AmperesPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class Magnetization extends BaseUnit {
      */
     public static FromAmperesPerMeter(value: number): Magnetization {
         return new Magnetization(value, MagnetizationUnits.AmperesPerMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Magnetization
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MagnetizationUnits {
+        return MagnetizationUnits;
     }
 
     /**

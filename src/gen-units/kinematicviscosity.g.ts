@@ -32,7 +32,7 @@ export enum KinematicViscosityUnits {
 
 /** The viscosity of a fluid is a measure of its resistance to gradual deformation by shear stress or tensile stress. */
 export class KinematicViscosity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private squaremeterspersecondLazy: number | null = null;
     private stokesLazy: number | null = null;
     private squarefeetpersecondLazy: number | null = null;
@@ -52,7 +52,7 @@ export class KinematicViscosity extends BaseUnit {
     public constructor(value: number, fromUnit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -227,6 +227,14 @@ export class KinematicViscosity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with KinematicViscosity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof KinematicViscosityUnits {
+        return KinematicViscosityUnits;
+    }
+
+    /**
      * Create API DTO represent a KinematicViscosity unit.
      * @param holdInUnit The specific KinematicViscosity unit to be used in the unit representation at the DTO
      */
@@ -275,28 +283,28 @@ export class KinematicViscosity extends BaseUnit {
                 case KinematicViscosityUnits.Stokes: return super.internalMultiply(this.value, 1e4);
                 case KinematicViscosityUnits.SquareFeetPerSecond: return super.internalMultiply(this.value, 10.7639);
                 case KinematicViscosityUnits.Nanostokes: {
-                    const value3 = super.internalMultiply(this.value, 1e4);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case KinematicViscosityUnits.Microstokes: {
-                    const value3 = super.internalMultiply(this.value, 1e4);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case KinematicViscosityUnits.Millistokes: {
-                    const value3 = super.internalMultiply(this.value, 1e4);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case KinematicViscosityUnits.Centistokes: {
-                    const value3 = super.internalMultiply(this.value, 1e4);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case KinematicViscosityUnits.Decistokes: {
-                    const value3 = super.internalMultiply(this.value, 1e4);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case KinematicViscosityUnits.Kilostokes: {
-                    const value3 = super.internalMultiply(this.value, 1e4);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -321,28 +329,28 @@ export class KinematicViscosity extends BaseUnit {
                 case KinematicViscosityUnits.Stokes: return super.internalDivide(value, 1e4);
                 case KinematicViscosityUnits.SquareFeetPerSecond: return super.internalDivide(value, 10.7639);
                 case KinematicViscosityUnits.Nanostokes: {
-                    const value3 = super.internalDivide(value, 1e4);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case KinematicViscosityUnits.Microstokes: {
-                    const value3 = super.internalDivide(value, 1e4);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case KinematicViscosityUnits.Millistokes: {
-                    const value3 = super.internalDivide(value, 1e4);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case KinematicViscosityUnits.Centistokes: {
-                    const value3 = super.internalDivide(value, 1e4);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case KinematicViscosityUnits.Decistokes: {
-                    const value3 = super.internalDivide(value, 1e4);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case KinematicViscosityUnits.Kilostokes: {
-                    const value3 = super.internalDivide(value, 1e4);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }

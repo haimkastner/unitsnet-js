@@ -22,7 +22,7 @@ export enum IlluminanceUnits {
 
 /** In photometry, illuminance is the total luminous flux incident on a surface, per unit area. */
 export class Illuminance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private luxLazy: number | null = null;
     private milliluxLazy: number | null = null;
     private kiloluxLazy: number | null = null;
@@ -37,7 +37,7 @@ export class Illuminance extends BaseUnit {
     public constructor(value: number, fromUnit: IlluminanceUnits = IlluminanceUnits.Lux) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -119,6 +119,14 @@ export class Illuminance extends BaseUnit {
      */
     public static FromMegalux(value: number): Illuminance {
         return new Illuminance(value, IlluminanceUnits.Megalux);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Illuminance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof IlluminanceUnits {
+        return IlluminanceUnits;
     }
 
     /**

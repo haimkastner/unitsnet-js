@@ -16,7 +16,7 @@ export enum VitaminAUnits {
 
 /** Vitamin A: 1 IU is the biological equivalent of 0.3 µg retinol, or of 0.6 µg beta-carotene. */
 export class VitaminA extends BaseUnit {
-    private value: number;
+    protected value: number;
     private internationalunitsLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class VitaminA extends BaseUnit {
     public constructor(value: number, fromUnit: VitaminAUnits = VitaminAUnits.InternationalUnits) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class VitaminA extends BaseUnit {
      */
     public static FromInternationalUnits(value: number): VitaminA {
         return new VitaminA(value, VitaminAUnits.InternationalUnits);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with VitaminA
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof VitaminAUnits {
+        return VitaminAUnits;
     }
 
     /**

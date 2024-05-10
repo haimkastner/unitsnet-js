@@ -32,7 +32,7 @@ export enum VolumetricHeatCapacityUnits {
 
 /** The volumetric heat capacity is the amount of energy that must be added, in the form of heat, to one unit of volume of the material in order to cause an increase of one unit in its temperature. */
 export class VolumetricHeatCapacity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private joulespercubicmeterkelvinLazy: number | null = null;
     private joulespercubicmeterdegreecelsiusLazy: number | null = null;
     private caloriespercubiccentimeterdegreecelsiusLazy: number | null = null;
@@ -52,7 +52,7 @@ export class VolumetricHeatCapacity extends BaseUnit {
     public constructor(value: number, fromUnit: VolumetricHeatCapacityUnits = VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -227,6 +227,14 @@ export class VolumetricHeatCapacity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with VolumetricHeatCapacity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof VolumetricHeatCapacityUnits {
+        return VolumetricHeatCapacityUnits;
+    }
+
+    /**
      * Create API DTO represent a VolumetricHeatCapacity unit.
      * @param holdInUnit The specific VolumetricHeatCapacity unit to be used in the unit representation at the DTO
      */
@@ -280,8 +288,8 @@ export class VolumetricHeatCapacity extends BaseUnit {
                 case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius: return super.internalDivide(this.value, 1000);
                 case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius: return super.internalDivide(this.value, 1000000);
                 case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius: {
-                    const value3 = super.internalMultiply(this.value, 2.388459e-7);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 2.388459e-7);
+                    return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -311,8 +319,8 @@ export class VolumetricHeatCapacity extends BaseUnit {
                 case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius: return super.internalMultiply(value, 1000);
                 case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius: return super.internalMultiply(value, 1000000);
                 case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius: {
-                    const value3 = super.internalDivide(value, 2.388459e-7);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 2.388459e-7);
+                    return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }

@@ -34,7 +34,7 @@ export enum LuminanceUnits {
 
 /** Luminance is a photometric measure of the luminous intensity per unit area of light travelling in a given direction. */
 export class Luminance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private candelaspersquaremeterLazy: number | null = null;
     private candelaspersquarefootLazy: number | null = null;
     private candelaspersquareinchLazy: number | null = null;
@@ -55,7 +55,7 @@ export class Luminance extends BaseUnit {
     public constructor(value: number, fromUnit: LuminanceUnits = LuminanceUnits.CandelasPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -245,6 +245,14 @@ export class Luminance extends BaseUnit {
      */
     public static FromKilocandelasPerSquareMeter(value: number): Luminance {
         return new Luminance(value, LuminanceUnits.KilocandelasPerSquareMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Luminance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof LuminanceUnits {
+        return LuminanceUnits;
     }
 
     /**

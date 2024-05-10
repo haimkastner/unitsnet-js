@@ -54,7 +54,7 @@ export enum VolumeConcentrationUnits {
 
 /** The volume concentration (not to be confused with volume fraction) is defined as the volume of a constituent divided by the total volume of the mixture. */
 export class VolumeConcentration extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decimalfractionsLazy: number | null = null;
     private litersperliterLazy: number | null = null;
     private literspermililiterLazy: number | null = null;
@@ -85,7 +85,7 @@ export class VolumeConcentration extends BaseUnit {
     public constructor(value: number, fromUnit: VolumeConcentrationUnits = VolumeConcentrationUnits.DecimalFractions) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -458,6 +458,14 @@ export class VolumeConcentration extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with VolumeConcentration
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof VolumeConcentrationUnits {
+        return VolumeConcentrationUnits;
+    }
+
+    /**
      * Create API DTO represent a VolumeConcentration unit.
      * @param holdInUnit The specific VolumeConcentration unit to be used in the unit representation at the DTO
      */
@@ -528,28 +536,28 @@ export class VolumeConcentration extends BaseUnit {
                 case VolumeConcentrationUnits.CentilitersPerLiter: return super.internalDivide(this.value, 0.01);
                 case VolumeConcentrationUnits.DecilitersPerLiter: return super.internalDivide(this.value, 0.1);
                 case VolumeConcentrationUnits.PicolitersPerMililiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case VolumeConcentrationUnits.NanolitersPerMililiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case VolumeConcentrationUnits.MicrolitersPerMililiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case VolumeConcentrationUnits.MillilitersPerMililiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case VolumeConcentrationUnits.CentilitersPerMililiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case VolumeConcentrationUnits.DecilitersPerMililiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.1);
                 }
                 default: return Number.NaN;
             }
@@ -596,28 +604,28 @@ export class VolumeConcentration extends BaseUnit {
                 case VolumeConcentrationUnits.CentilitersPerLiter: return super.internalMultiply(value, 0.01);
                 case VolumeConcentrationUnits.DecilitersPerLiter: return super.internalMultiply(value, 0.1);
                 case VolumeConcentrationUnits.PicolitersPerMililiter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case VolumeConcentrationUnits.NanolitersPerMililiter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case VolumeConcentrationUnits.MicrolitersPerMililiter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case VolumeConcentrationUnits.MillilitersPerMililiter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case VolumeConcentrationUnits.CentilitersPerMililiter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case VolumeConcentrationUnits.DecilitersPerMililiter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 default: return Number.NaN;
             }

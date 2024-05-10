@@ -40,7 +40,7 @@ export enum ImpulseUnits {
 
 /** In classical mechanics, impulse is the integral of a force, F, over the time interval, t, for which it acts. Impulse applied to an object produces an equivalent vector change in its linear momentum, also in the resultant direction. */
 export class Impulse extends BaseUnit {
-    private value: number;
+    protected value: number;
     private kilogrammeterspersecondLazy: number | null = null;
     private newtonsecondsLazy: number | null = null;
     private poundfeetpersecondLazy: number | null = null;
@@ -64,7 +64,7 @@ export class Impulse extends BaseUnit {
     public constructor(value: number, fromUnit: ImpulseUnits = ImpulseUnits.NewtonSeconds) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -308,6 +308,14 @@ export class Impulse extends BaseUnit {
      */
     public static FromMeganewtonSeconds(value: number): Impulse {
         return new Impulse(value, ImpulseUnits.MeganewtonSeconds);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Impulse
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ImpulseUnits {
+        return ImpulseUnits;
     }
 
     /**

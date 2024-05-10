@@ -36,7 +36,7 @@ export enum ElectricChargeUnits {
 
 /** Electric charge is the physical property of matter that causes it to experience a force when placed in an electromagnetic field. */
 export class ElectricCharge extends BaseUnit {
-    private value: number;
+    protected value: number;
     private coulombsLazy: number | null = null;
     private amperehoursLazy: number | null = null;
     private picocoulombsLazy: number | null = null;
@@ -58,7 +58,7 @@ export class ElectricCharge extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricChargeUnits = ElectricChargeUnits.Coulombs) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -269,6 +269,14 @@ export class ElectricCharge extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricCharge
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricChargeUnits {
+        return ElectricChargeUnits;
+    }
+
+    /**
      * Create API DTO represent a ElectricCharge unit.
      * @param holdInUnit The specific ElectricCharge unit to be used in the unit representation at the DTO
      */
@@ -324,16 +332,16 @@ export class ElectricCharge extends BaseUnit {
                 case ElectricChargeUnits.Kilocoulombs: return super.internalDivide(this.value, 1000);
                 case ElectricChargeUnits.Megacoulombs: return super.internalDivide(this.value, 1000000);
                 case ElectricChargeUnits.MilliampereHours: {
-                    const value3 = super.internalMultiply(this.value, 2.77777777777e-4);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 2.77777777777e-4);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case ElectricChargeUnits.KiloampereHours: {
-                    const value3 = super.internalMultiply(this.value, 2.77777777777e-4);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 2.77777777777e-4);
+                    return super.internalDivide(v3, 1000);
                 }
                 case ElectricChargeUnits.MegaampereHours: {
-                    const value3 = super.internalMultiply(this.value, 2.77777777777e-4);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 2.77777777777e-4);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -365,16 +373,16 @@ export class ElectricCharge extends BaseUnit {
                 case ElectricChargeUnits.Kilocoulombs: return super.internalMultiply(value, 1000);
                 case ElectricChargeUnits.Megacoulombs: return super.internalMultiply(value, 1000000);
                 case ElectricChargeUnits.MilliampereHours: {
-                    const value3 = super.internalDivide(value, 2.77777777777e-4);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 2.77777777777e-4);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case ElectricChargeUnits.KiloampereHours: {
-                    const value3 = super.internalDivide(value, 2.77777777777e-4);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 2.77777777777e-4);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case ElectricChargeUnits.MegaampereHours: {
-                    const value3 = super.internalDivide(value, 2.77777777777e-4);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 2.77777777777e-4);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

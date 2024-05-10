@@ -20,7 +20,7 @@ export enum ApparentEnergyUnits {
 
 /** A unit for expressing the integral of apparent power over time, equal to the product of 1 volt-ampere and 1 hour, or to 3600 joules. */
 export class ApparentEnergy extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltamperehoursLazy: number | null = null;
     private kilovoltamperehoursLazy: number | null = null;
     private megavoltamperehoursLazy: number | null = null;
@@ -34,7 +34,7 @@ export class ApparentEnergy extends BaseUnit {
     public constructor(value: number, fromUnit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -98,6 +98,14 @@ export class ApparentEnergy extends BaseUnit {
      */
     public static FromMegavoltampereHours(value: number): ApparentEnergy {
         return new ApparentEnergy(value, ApparentEnergyUnits.MegavoltampereHours);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ApparentEnergy
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ApparentEnergyUnits {
+        return ApparentEnergyUnits;
     }
 
     /**

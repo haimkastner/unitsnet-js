@@ -18,7 +18,7 @@ export enum LevelUnits {
 
 /** Level is the logarithm of the ratio of a quantity Q to a reference value of that quantity, Q₀, expressed in dimensionless units. */
 export class Level extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decibelsLazy: number | null = null;
     private nepersLazy: number | null = null;
 
@@ -31,7 +31,7 @@ export class Level extends BaseUnit {
     public constructor(value: number, fromUnit: LevelUnits = LevelUnits.Decibels) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +77,14 @@ export class Level extends BaseUnit {
      */
     public static FromNepers(value: number): Level {
         return new Level(value, LevelUnits.Nepers);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Level
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof LevelUnits {
+        return LevelUnits;
     }
 
     /**
@@ -133,8 +141,8 @@ export class Level extends BaseUnit {
             switch (fromUnit) {
                 case LevelUnits.Decibels: return value;
                 case LevelUnits.Nepers: {
-                    const value3 = super.internalDivide(1, 0.115129254);
-                    return super.internalMultiply(value3, value);
+                    const v3 = super.internalDivide(1, 0.115129254);
+                    return super.internalMultiply(v3, value);
                 }
                 default: return Number.NaN;
             }

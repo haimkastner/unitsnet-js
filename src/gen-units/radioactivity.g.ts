@@ -72,7 +72,7 @@ export enum RadioactivityUnits {
 
 /** Amount of ionizing radiation released when an element spontaneously emits energy as a result of the radioactive decay of an unstable atom per unit time. */
 export class Radioactivity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private becquerelsLazy: number | null = null;
     private curiesLazy: number | null = null;
     private rutherfordsLazy: number | null = null;
@@ -112,7 +112,7 @@ export class Radioactivity extends BaseUnit {
     public constructor(value: number, fromUnit: RadioactivityUnits = RadioactivityUnits.Becquerels) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -647,6 +647,14 @@ export class Radioactivity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Radioactivity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RadioactivityUnits {
+        return RadioactivityUnits;
+    }
+
+    /**
      * Create API DTO represent a Radioactivity unit.
      * @param holdInUnit The specific Radioactivity unit to be used in the unit representation at the DTO
      */
@@ -725,68 +733,68 @@ export class Radioactivity extends BaseUnit {
                 case RadioactivityUnits.Petabecquerels: return super.internalDivide(this.value, 1000000000000000);
                 case RadioactivityUnits.Exabecquerels: return super.internalDivide(this.value, 1000000000000000000);
                 case RadioactivityUnits.Picocuries: {
-                    const value3 = super.internalDivide(this.value, 3.7e10);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case RadioactivityUnits.Nanocuries: {
-                    const value3 = super.internalDivide(this.value, 3.7e10);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case RadioactivityUnits.Microcuries: {
-                    const value3 = super.internalDivide(this.value, 3.7e10);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case RadioactivityUnits.Millicuries: {
-                    const value3 = super.internalDivide(this.value, 3.7e10);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case RadioactivityUnits.Kilocuries: {
-                    const value3 = super.internalDivide(this.value, 3.7e10);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(v3, 1000);
                 }
                 case RadioactivityUnits.Megacuries: {
-                    const value3 = super.internalDivide(this.value, 3.7e10);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case RadioactivityUnits.Gigacuries: {
-                    const value3 = super.internalDivide(this.value, 3.7e10);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case RadioactivityUnits.Teracuries: {
-                    const value3 = super.internalDivide(this.value, 3.7e10);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 3.7e10);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 case RadioactivityUnits.Picorutherfords: {
-                    const value3 = super.internalDivide(this.value, 1e6);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case RadioactivityUnits.Nanorutherfords: {
-                    const value3 = super.internalDivide(this.value, 1e6);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case RadioactivityUnits.Microrutherfords: {
-                    const value3 = super.internalDivide(this.value, 1e6);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case RadioactivityUnits.Millirutherfords: {
-                    const value3 = super.internalDivide(this.value, 1e6);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case RadioactivityUnits.Kilorutherfords: {
-                    const value3 = super.internalDivide(this.value, 1e6);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(v3, 1000);
                 }
                 case RadioactivityUnits.Megarutherfords: {
-                    const value3 = super.internalDivide(this.value, 1e6);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case RadioactivityUnits.Gigarutherfords: {
-                    const value3 = super.internalDivide(this.value, 1e6);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case RadioactivityUnits.Terarutherfords: {
-                    const value3 = super.internalDivide(this.value, 1e6);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 default: return Number.NaN;
             }
@@ -841,68 +849,68 @@ export class Radioactivity extends BaseUnit {
                 case RadioactivityUnits.Petabecquerels: return super.internalMultiply(value, 1000000000000000);
                 case RadioactivityUnits.Exabecquerels: return super.internalMultiply(value, 1000000000000000000);
                 case RadioactivityUnits.Picocuries: {
-                    const value3 = super.internalMultiply(value, 3.7e10);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case RadioactivityUnits.Nanocuries: {
-                    const value3 = super.internalMultiply(value, 3.7e10);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case RadioactivityUnits.Microcuries: {
-                    const value3 = super.internalMultiply(value, 3.7e10);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case RadioactivityUnits.Millicuries: {
-                    const value3 = super.internalMultiply(value, 3.7e10);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case RadioactivityUnits.Kilocuries: {
-                    const value3 = super.internalMultiply(value, 3.7e10);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case RadioactivityUnits.Megacuries: {
-                    const value3 = super.internalMultiply(value, 3.7e10);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case RadioactivityUnits.Gigacuries: {
-                    const value3 = super.internalMultiply(value, 3.7e10);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case RadioactivityUnits.Teracuries: {
-                    const value3 = super.internalMultiply(value, 3.7e10);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 3.7e10);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 case RadioactivityUnits.Picorutherfords: {
-                    const value3 = super.internalMultiply(value, 1e6);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case RadioactivityUnits.Nanorutherfords: {
-                    const value3 = super.internalMultiply(value, 1e6);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case RadioactivityUnits.Microrutherfords: {
-                    const value3 = super.internalMultiply(value, 1e6);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case RadioactivityUnits.Millirutherfords: {
-                    const value3 = super.internalMultiply(value, 1e6);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case RadioactivityUnits.Kilorutherfords: {
-                    const value3 = super.internalMultiply(value, 1e6);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case RadioactivityUnits.Megarutherfords: {
-                    const value3 = super.internalMultiply(value, 1e6);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case RadioactivityUnits.Gigarutherfords: {
-                    const value3 = super.internalMultiply(value, 1e6);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case RadioactivityUnits.Terarutherfords: {
-                    const value3 = super.internalMultiply(value, 1e6);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 default: return Number.NaN;
             }

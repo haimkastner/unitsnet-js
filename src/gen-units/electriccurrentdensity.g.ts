@@ -20,7 +20,7 @@ export enum ElectricCurrentDensityUnits {
 
 /** In electromagnetism, current density is the electric current per unit area of cross section. */
 export class ElectricCurrentDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amperespersquaremeterLazy: number | null = null;
     private amperespersquareinchLazy: number | null = null;
     private amperespersquarefootLazy: number | null = null;
@@ -34,7 +34,7 @@ export class ElectricCurrentDensity extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -98,6 +98,14 @@ export class ElectricCurrentDensity extends BaseUnit {
      */
     public static FromAmperesPerSquareFoot(value: number): ElectricCurrentDensity {
         return new ElectricCurrentDensity(value, ElectricCurrentDensityUnits.AmperesPerSquareFoot);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricCurrentDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricCurrentDensityUnits {
+        return ElectricCurrentDensityUnits;
     }
 
     /**

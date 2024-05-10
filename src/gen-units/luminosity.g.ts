@@ -42,7 +42,7 @@ export enum LuminosityUnits {
 
 /** Luminosity is an absolute measure of radiated electromagnetic power (light), the radiant power emitted by a light-emitting object. */
 export class Luminosity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private wattsLazy: number | null = null;
     private solarluminositiesLazy: number | null = null;
     private femtowattsLazy: number | null = null;
@@ -67,7 +67,7 @@ export class Luminosity extends BaseUnit {
     public constructor(value: number, fromUnit: LuminosityUnits = LuminosityUnits.Watts) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -329,6 +329,14 @@ export class Luminosity extends BaseUnit {
      */
     public static FromPetawatts(value: number): Luminosity {
         return new Luminosity(value, LuminosityUnits.Petawatts);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Luminosity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof LuminosityUnits {
+        return LuminosityUnits;
     }
 
     /**

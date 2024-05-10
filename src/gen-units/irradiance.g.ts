@@ -42,7 +42,7 @@ export enum IrradianceUnits {
 
 /** Irradiance is the intensity of ultraviolet (UV) or visible light incident on a surface. */
 export class Irradiance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private wattspersquaremeterLazy: number | null = null;
     private wattspersquarecentimeterLazy: number | null = null;
     private picowattspersquaremeterLazy: number | null = null;
@@ -67,7 +67,7 @@ export class Irradiance extends BaseUnit {
     public constructor(value: number, fromUnit: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -332,6 +332,14 @@ export class Irradiance extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Irradiance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof IrradianceUnits {
+        return IrradianceUnits;
+    }
+
+    /**
      * Create API DTO represent a Irradiance unit.
      * @param holdInUnit The specific Irradiance unit to be used in the unit representation at the DTO
      */
@@ -390,28 +398,28 @@ export class Irradiance extends BaseUnit {
                 case IrradianceUnits.KilowattsPerSquareMeter: return super.internalDivide(this.value, 1000);
                 case IrradianceUnits.MegawattsPerSquareMeter: return super.internalDivide(this.value, 1000000);
                 case IrradianceUnits.PicowattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 0.0001);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case IrradianceUnits.NanowattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 0.0001);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case IrradianceUnits.MicrowattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 0.0001);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case IrradianceUnits.MilliwattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 0.0001);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case IrradianceUnits.KilowattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 0.0001);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 1000);
                 }
                 case IrradianceUnits.MegawattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 0.0001);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -446,28 +454,28 @@ export class Irradiance extends BaseUnit {
                 case IrradianceUnits.KilowattsPerSquareMeter: return super.internalMultiply(value, 1000);
                 case IrradianceUnits.MegawattsPerSquareMeter: return super.internalMultiply(value, 1000000);
                 case IrradianceUnits.PicowattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(value, 10000);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case IrradianceUnits.NanowattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(value, 10000);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case IrradianceUnits.MicrowattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(value, 10000);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case IrradianceUnits.MilliwattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(value, 10000);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case IrradianceUnits.KilowattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(value, 10000);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case IrradianceUnits.MegawattsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(value, 10000);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

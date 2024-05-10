@@ -48,9 +48,10 @@ equationString
 // {x} / 180 * Math.PI
 
 expression
-    : expression POW_SIGN expression #opPow
+    : LPAREN expression RPAREN #parenExpr
+	| expression POW_SIGN expression #opPow
+	| expression DIV expression #opDiv
     | expression MUL expression #opMul
-    | expression DIV expression #opDiv
     | expression PLUS expression #opAdd
     | expression MINUS expression #opSub
     | expression MOD_SIGN expression #opMod
@@ -58,7 +59,6 @@ expression
     | SQRT_FUNC LPAREN expression RPAREN #opSqrt
     | SIN_FUNC LPAREN expression RPAREN #opSin
     | ASIN_FUNC LPAREN expression RPAREN #opAsin
-    | LPAREN expression RPAREN #parenExpr
     | (PLUS | MINUS)* atom #signedAtom
     ;
 

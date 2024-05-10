@@ -54,7 +54,7 @@ export enum ElectricPotentialChangeRateUnits {
 
 /** ElectricPotential change rate is the ratio of the electric potential change to the time during which the change occurred (value of electric potential changes per unit time). */
 export class ElectricPotentialChangeRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltspersecondsLazy: number | null = null;
     private voltspermicrosecondsLazy: number | null = null;
     private voltsperminutesLazy: number | null = null;
@@ -85,7 +85,7 @@ export class ElectricPotentialChangeRate extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricPotentialChangeRateUnits = ElectricPotentialChangeRateUnits.VoltsPerSeconds) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -458,6 +458,14 @@ export class ElectricPotentialChangeRate extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricPotentialChangeRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricPotentialChangeRateUnits {
+        return ElectricPotentialChangeRateUnits;
+    }
+
+    /**
      * Create API DTO represent a ElectricPotentialChangeRate unit.
      * @param holdInUnit The specific ElectricPotentialChangeRate unit to be used in the unit representation at the DTO
      */
@@ -522,52 +530,52 @@ export class ElectricPotentialChangeRate extends BaseUnit {
                 case ElectricPotentialChangeRateUnits.KilovoltsPerSeconds: return super.internalDivide(this.value, 1000);
                 case ElectricPotentialChangeRateUnits.MegavoltsPerSeconds: return super.internalDivide(this.value, 1000000);
                 case ElectricPotentialChangeRateUnits.MicrovoltsPerMicroseconds: {
-                    const value3 = super.internalDivide(this.value, 1E6);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 1E6);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case ElectricPotentialChangeRateUnits.MillivoltsPerMicroseconds: {
-                    const value3 = super.internalDivide(this.value, 1E6);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1E6);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case ElectricPotentialChangeRateUnits.KilovoltsPerMicroseconds: {
-                    const value3 = super.internalDivide(this.value, 1E6);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1E6);
+                    return super.internalDivide(v3, 1000);
                 }
                 case ElectricPotentialChangeRateUnits.MegavoltsPerMicroseconds: {
-                    const value3 = super.internalDivide(this.value, 1E6);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1E6);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case ElectricPotentialChangeRateUnits.MicrovoltsPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case ElectricPotentialChangeRateUnits.MillivoltsPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case ElectricPotentialChangeRateUnits.KilovoltsPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 1000);
                 }
                 case ElectricPotentialChangeRateUnits.MegavoltsPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case ElectricPotentialChangeRateUnits.MicrovoltsPerHours: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case ElectricPotentialChangeRateUnits.MillivoltsPerHours: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case ElectricPotentialChangeRateUnits.KilovoltsPerHours: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 1000);
                 }
                 case ElectricPotentialChangeRateUnits.MegavoltsPerHours: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -608,52 +616,52 @@ export class ElectricPotentialChangeRate extends BaseUnit {
                 case ElectricPotentialChangeRateUnits.KilovoltsPerSeconds: return super.internalMultiply(value, 1000);
                 case ElectricPotentialChangeRateUnits.MegavoltsPerSeconds: return super.internalMultiply(value, 1000000);
                 case ElectricPotentialChangeRateUnits.MicrovoltsPerMicroseconds: {
-                    const value3 = super.internalMultiply(value, 1E6);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 1E6);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case ElectricPotentialChangeRateUnits.MillivoltsPerMicroseconds: {
-                    const value3 = super.internalMultiply(value, 1E6);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1E6);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case ElectricPotentialChangeRateUnits.KilovoltsPerMicroseconds: {
-                    const value3 = super.internalMultiply(value, 1E6);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1E6);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case ElectricPotentialChangeRateUnits.MegavoltsPerMicroseconds: {
-                    const value3 = super.internalMultiply(value, 1E6);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1E6);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case ElectricPotentialChangeRateUnits.MicrovoltsPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case ElectricPotentialChangeRateUnits.MillivoltsPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case ElectricPotentialChangeRateUnits.KilovoltsPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case ElectricPotentialChangeRateUnits.MegavoltsPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case ElectricPotentialChangeRateUnits.MicrovoltsPerHours: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case ElectricPotentialChangeRateUnits.MillivoltsPerHours: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case ElectricPotentialChangeRateUnits.KilovoltsPerHours: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case ElectricPotentialChangeRateUnits.MegavoltsPerHours: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

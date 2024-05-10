@@ -44,7 +44,7 @@ export enum ForceUnits {
 
 /** In physics, a force is any influence that causes an object to undergo a certain change, either concerning its movement, direction, or geometrical construction. In other words, a force can cause an object with mass to change its velocity (which includes to begin moving from a state of rest), i.e., to accelerate, or a flexible object to deform, or both. Force can also be described by intuitive concepts such as a push or a pull. A force has both magnitude and direction, making it a vector quantity. It is measured in the SI unit of newtons and represented by the symbol F. */
 export class Force extends BaseUnit {
-    private value: number;
+    protected value: number;
     private dyneLazy: number | null = null;
     private kilogramsforceLazy: number | null = null;
     private tonnesforceLazy: number | null = null;
@@ -70,7 +70,7 @@ export class Force extends BaseUnit {
     public constructor(value: number, fromUnit: ForceUnits = ForceUnits.Newtons) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -353,6 +353,14 @@ export class Force extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Force
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ForceUnits {
+        return ForceUnits;
+    }
+
+    /**
      * Create API DTO represent a Force unit.
      * @param holdInUnit The specific Force unit to be used in the unit representation at the DTO
      */
@@ -406,20 +414,20 @@ export class Force extends BaseUnit {
                 case ForceUnits.Dyne: return super.internalMultiply(this.value, 1e5);
                 case ForceUnits.KilogramsForce: return super.internalDivide(this.value, 9.80665);
                 case ForceUnits.TonnesForce: {
-                    const value4 = super.internalMultiply(9.80665, 1000);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalMultiply(9.80665, 1000);
+                    return super.internalDivide(this.value, v4);
                 }
                 case ForceUnits.Newtons: return this.value;
                 case ForceUnits.KiloPonds: return super.internalDivide(this.value, 9.80665);
                 case ForceUnits.Poundals: return super.internalDivide(this.value, 0.138254954376);
                 case ForceUnits.PoundsForce: return super.internalDivide(this.value, 4.4482216152605);
                 case ForceUnits.OunceForce: {
-                    const value4 = super.internalDivide(4.4482216152605, 16);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalDivide(4.4482216152605, 16);
+                    return super.internalDivide(this.value, v4);
                 }
                 case ForceUnits.ShortTonsForce: {
-                    const value4 = super.internalMultiply(4.4482216152605, 2000);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalMultiply(4.4482216152605, 2000);
+                    return super.internalDivide(this.value, v4);
                 }
                 case ForceUnits.Micronewtons: return super.internalDivide(this.value, 0.000001);
                 case ForceUnits.Millinewtons: return super.internalDivide(this.value, 0.001);
@@ -427,8 +435,8 @@ export class Force extends BaseUnit {
                 case ForceUnits.Kilonewtons: return super.internalDivide(this.value, 1000);
                 case ForceUnits.Meganewtons: return super.internalDivide(this.value, 1000000);
                 case ForceUnits.KilopoundsForce: {
-                    const value3 = super.internalDivide(this.value, 4.4482216152605);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 4.4482216152605);
+                    return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -458,20 +466,20 @@ export class Force extends BaseUnit {
                 case ForceUnits.Dyne: return super.internalDivide(value, 1e5);
                 case ForceUnits.KilogramsForce: return super.internalMultiply(value, 9.80665);
                 case ForceUnits.TonnesForce: {
-                    const value4 = super.internalMultiply(9.80665, 1000);
-                    return super.internalMultiply(value, value4);
+                    const v4 = super.internalMultiply(9.80665, 1000);
+                    return super.internalMultiply(value, v4);
                 }
                 case ForceUnits.Newtons: return value;
                 case ForceUnits.KiloPonds: return super.internalMultiply(value, 9.80665);
                 case ForceUnits.Poundals: return super.internalMultiply(value, 0.138254954376);
                 case ForceUnits.PoundsForce: return super.internalMultiply(value, 4.4482216152605);
                 case ForceUnits.OunceForce: {
-                    const value4 = super.internalDivide(4.4482216152605, 16);
-                    return super.internalMultiply(value, value4);
+                    const v4 = super.internalDivide(4.4482216152605, 16);
+                    return super.internalMultiply(value, v4);
                 }
                 case ForceUnits.ShortTonsForce: {
-                    const value4 = super.internalMultiply(4.4482216152605, 2000);
-                    return super.internalMultiply(value, value4);
+                    const v4 = super.internalMultiply(4.4482216152605, 2000);
+                    return super.internalMultiply(value, v4);
                 }
                 case ForceUnits.Micronewtons: return super.internalMultiply(value, 0.000001);
                 case ForceUnits.Millinewtons: return super.internalMultiply(value, 0.001);
@@ -479,8 +487,8 @@ export class Force extends BaseUnit {
                 case ForceUnits.Kilonewtons: return super.internalMultiply(value, 1000);
                 case ForceUnits.Meganewtons: return super.internalMultiply(value, 1000000);
                 case ForceUnits.KilopoundsForce: {
-                    const value3 = super.internalMultiply(value, 4.4482216152605);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 4.4482216152605);
+                    return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }

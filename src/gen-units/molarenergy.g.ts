@@ -20,7 +20,7 @@ export enum MolarEnergyUnits {
 
 /** Molar energy is the amount of energy stored in 1 mole of a substance. */
 export class MolarEnergy extends BaseUnit {
-    private value: number;
+    protected value: number;
     private joulespermoleLazy: number | null = null;
     private kilojoulespermoleLazy: number | null = null;
     private megajoulespermoleLazy: number | null = null;
@@ -34,7 +34,7 @@ export class MolarEnergy extends BaseUnit {
     public constructor(value: number, fromUnit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -98,6 +98,14 @@ export class MolarEnergy extends BaseUnit {
      */
     public static FromMegajoulesPerMole(value: number): MolarEnergy {
         return new MolarEnergy(value, MolarEnergyUnits.MegajoulesPerMole);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with MolarEnergy
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MolarEnergyUnits {
+        return MolarEnergyUnits;
     }
 
     /**

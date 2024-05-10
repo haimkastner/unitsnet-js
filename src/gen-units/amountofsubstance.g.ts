@@ -48,7 +48,7 @@ export enum AmountOfSubstanceUnits {
 
 /** Mole is the amount of substance containing Avagadro's Number (6.02 x 10 ^ 23) of real particles such as molecules,atoms, ions or radicals. */
 export class AmountOfSubstance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private molesLazy: number | null = null;
     private poundmolesLazy: number | null = null;
     private femtomolesLazy: number | null = null;
@@ -76,7 +76,7 @@ export class AmountOfSubstance extends BaseUnit {
     public constructor(value: number, fromUnit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -395,6 +395,14 @@ export class AmountOfSubstance extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with AmountOfSubstance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof AmountOfSubstanceUnits {
+        return AmountOfSubstanceUnits;
+    }
+
+    /**
      * Create API DTO represent a AmountOfSubstance unit.
      * @param holdInUnit The specific AmountOfSubstance unit to be used in the unit representation at the DTO
      */
@@ -459,28 +467,28 @@ export class AmountOfSubstance extends BaseUnit {
                 case AmountOfSubstanceUnits.Kilomoles: return super.internalDivide(this.value, 1000);
                 case AmountOfSubstanceUnits.Megamoles: return super.internalDivide(this.value, 1000000);
                 case AmountOfSubstanceUnits.NanopoundMoles: {
-                    const value3 = super.internalDivide(this.value, 453.59237);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case AmountOfSubstanceUnits.MicropoundMoles: {
-                    const value3 = super.internalDivide(this.value, 453.59237);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case AmountOfSubstanceUnits.MillipoundMoles: {
-                    const value3 = super.internalDivide(this.value, 453.59237);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case AmountOfSubstanceUnits.CentipoundMoles: {
-                    const value3 = super.internalDivide(this.value, 453.59237);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case AmountOfSubstanceUnits.DecipoundMoles: {
-                    const value3 = super.internalDivide(this.value, 453.59237);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case AmountOfSubstanceUnits.KilopoundMoles: {
-                    const value3 = super.internalDivide(this.value, 453.59237);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -521,28 +529,28 @@ export class AmountOfSubstance extends BaseUnit {
                 case AmountOfSubstanceUnits.Kilomoles: return super.internalMultiply(value, 1000);
                 case AmountOfSubstanceUnits.Megamoles: return super.internalMultiply(value, 1000000);
                 case AmountOfSubstanceUnits.NanopoundMoles: {
-                    const value3 = super.internalMultiply(value, 453.59237);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case AmountOfSubstanceUnits.MicropoundMoles: {
-                    const value3 = super.internalMultiply(value, 453.59237);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case AmountOfSubstanceUnits.MillipoundMoles: {
-                    const value3 = super.internalMultiply(value, 453.59237);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case AmountOfSubstanceUnits.CentipoundMoles: {
-                    const value3 = super.internalMultiply(value, 453.59237);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case AmountOfSubstanceUnits.DecipoundMoles: {
-                    const value3 = super.internalMultiply(value, 453.59237);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case AmountOfSubstanceUnits.KilopoundMoles: {
-                    const value3 = super.internalMultiply(value, 453.59237);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }

@@ -32,7 +32,7 @@ export enum StandardVolumeFlowUnits {
 
 /** The molar flow rate of a gas corrected to standardized conditions of temperature and pressure thus representing a fixed number of moles of gas regardless of composition and actual flow conditions. */
 export class StandardVolumeFlow extends BaseUnit {
-    private value: number;
+    protected value: number;
     private standardcubicmeterspersecondLazy: number | null = null;
     private standardcubicmetersperminuteLazy: number | null = null;
     private standardcubicmetersperhourLazy: number | null = null;
@@ -52,7 +52,7 @@ export class StandardVolumeFlow extends BaseUnit {
     public constructor(value: number, fromUnit: StandardVolumeFlowUnits = StandardVolumeFlowUnits.StandardCubicMetersPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -224,6 +224,14 @@ export class StandardVolumeFlow extends BaseUnit {
      */
     public static FromStandardCubicFeetPerHour(value: number): StandardVolumeFlow {
         return new StandardVolumeFlow(value, StandardVolumeFlowUnits.StandardCubicFeetPerHour);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with StandardVolumeFlow
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof StandardVolumeFlowUnits {
+        return StandardVolumeFlowUnits;
     }
 
     /**

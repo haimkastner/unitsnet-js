@@ -102,7 +102,7 @@ export enum PowerDensityUnits {
 
 /** The amount of power in a volume. */
 export class PowerDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private wattspercubicmeterLazy: number | null = null;
     private wattspercubicinchLazy: number | null = null;
     private wattspercubicfootLazy: number | null = null;
@@ -157,7 +157,7 @@ export class PowerDensity extends BaseUnit {
     public constructor(value: number, fromUnit: PowerDensityUnits = PowerDensityUnits.WattsPerCubicMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -962,6 +962,14 @@ export class PowerDensity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with PowerDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof PowerDensityUnits {
+        return PowerDensityUnits;
+    }
+
+    /**
      * Create API DTO represent a PowerDensity unit.
      * @param holdInUnit The specific PowerDensity unit to be used in the unit representation at the DTO
      */
@@ -1056,124 +1064,124 @@ export class PowerDensity extends BaseUnit {
                 case PowerDensityUnits.GigawattsPerCubicMeter: return super.internalDivide(this.value, 1000000000);
                 case PowerDensityUnits.TerawattsPerCubicMeter: return super.internalDivide(this.value, 1000000000000);
                 case PowerDensityUnits.PicowattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 6.102374409473228e4);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 case PowerDensityUnits.PicowattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 3.531466672148859e1);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 case PowerDensityUnits.PicowattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerLiter: {
-                    const value3 = super.internalDivide(this.value, 1.0e3);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 1.0e3);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 default: return Number.NaN;
             }
@@ -1244,124 +1252,124 @@ export class PowerDensity extends BaseUnit {
                 case PowerDensityUnits.GigawattsPerCubicMeter: return super.internalMultiply(value, 1000000000);
                 case PowerDensityUnits.TerawattsPerCubicMeter: return super.internalMultiply(value, 1000000000000);
                 case PowerDensityUnits.PicowattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerCubicInch: {
-                    const value3 = super.internalMultiply(value, 6.102374409473228e4);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 case PowerDensityUnits.PicowattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 3.531466672148859e1);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 case PowerDensityUnits.PicowattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerLiter: {
-                    const value3 = super.internalMultiply(value, 1.0e3);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 1.0e3);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 default: return Number.NaN;
             }

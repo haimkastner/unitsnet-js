@@ -26,7 +26,7 @@ export enum RatioUnits {
 
 /** In mathematics, a ratio is a relationship between two numbers of the same kind (e.g., objects, persons, students, spoonfuls, units of whatever identical dimension), usually expressed as "a to b" or a:b, sometimes expressed arithmetically as a dimensionless quotient of the two that explicitly indicates how many times the first number contains the second (not necessarily an integer). */
 export class Ratio extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decimalfractionsLazy: number | null = null;
     private percentLazy: number | null = null;
     private partsperthousandLazy: number | null = null;
@@ -43,7 +43,7 @@ export class Ratio extends BaseUnit {
     public constructor(value: number, fromUnit: RatioUnits = RatioUnits.DecimalFractions) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -161,6 +161,14 @@ export class Ratio extends BaseUnit {
      */
     public static FromPartsPerTrillion(value: number): Ratio {
         return new Ratio(value, RatioUnits.PartsPerTrillion);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Ratio
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RatioUnits {
+        return RatioUnits;
     }
 
     /**

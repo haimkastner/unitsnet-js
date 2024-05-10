@@ -50,7 +50,7 @@ export enum PressureChangeRateUnits {
 
 /** Pressure change rate is the ratio of the pressure change to the time during which the change occurred (value of pressure changes per unit time). */
 export class PressureChangeRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private pascalspersecondLazy: number | null = null;
     private pascalsperminuteLazy: number | null = null;
     private millimetersofmercurypersecondLazy: number | null = null;
@@ -79,7 +79,7 @@ export class PressureChangeRate extends BaseUnit {
     public constructor(value: number, fromUnit: PressureChangeRateUnits = PressureChangeRateUnits.PascalsPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -416,6 +416,14 @@ export class PressureChangeRate extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with PressureChangeRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof PressureChangeRateUnits {
+        return PressureChangeRateUnits;
+    }
+
+    /**
      * Create API DTO represent a PressureChangeRate unit.
      * @param holdInUnit The specific PressureChangeRate unit to be used in the unit representation at the DTO
      */
@@ -473,55 +481,55 @@ export class PressureChangeRate extends BaseUnit {
                 case PressureChangeRateUnits.PascalsPerMinute: return super.internalMultiply(this.value, 60);
                 case PressureChangeRateUnits.MillimetersOfMercuryPerSecond: return super.internalDivide(this.value, 133.322);
                 case PressureChangeRateUnits.AtmospheresPerSecond: {
-                    const value4 = super.internalMultiply(1.01325, 1e5);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalMultiply(1.01325, 1e5);
+                    return super.internalDivide(this.value, v4);
                 }
                 case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond: return super.internalDivide(this.value, 6.894757293168361e3);
                 case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute: {
-                    const value4 = super.internalMultiply(6.894757293168361e3, 60);
-                    return super.internalDivide(this.value, value4);
+                    const v3 = super.internalDivide(this.value, 6.894757293168361e3);
+                    return super.internalMultiply(v3, 60);
                 }
                 case PressureChangeRateUnits.BarsPerSecond: return super.internalDivide(this.value, 1e5);
                 case PressureChangeRateUnits.BarsPerMinute: {
-                    const value4 = super.internalMultiply(1e5, 60);
-                    return super.internalDivide(this.value, value4);
+                    const v3 = super.internalDivide(this.value, 1e5);
+                    return super.internalMultiply(v3, 60);
                 }
                 case PressureChangeRateUnits.KilopascalsPerSecond: return super.internalDivide(this.value, 1000);
                 case PressureChangeRateUnits.MegapascalsPerSecond: return super.internalDivide(this.value, 1000000);
                 case PressureChangeRateUnits.KilopascalsPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PressureChangeRateUnits.MegapascalsPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond: {
-                    const value3 = super.internalDivide(this.value, 6.894757293168361e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 6.894757293168361e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond: {
-                    const value3 = super.internalDivide(this.value, 6.894757293168361e3);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 6.894757293168361e3);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute: {
-                    const value4 = super.internalMultiply(6.894757293168361e3, 60);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1000);
+                    const v3 = super.internalDivide(this.value, 6.894757293168361e3);
+                    const v5 = super.internalMultiply(v3, 60);
+                    return super.internalDivide(v5, 1000);
                 }
                 case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute: {
-                    const value4 = super.internalMultiply(6.894757293168361e3, 60);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1000000);
+                    const v3 = super.internalDivide(this.value, 6.894757293168361e3);
+                    const v5 = super.internalMultiply(v3, 60);
+                    return super.internalDivide(v5, 1000000);
                 }
                 case PressureChangeRateUnits.MillibarsPerSecond: {
-                    const value3 = super.internalDivide(this.value, 1e5);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e5);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case PressureChangeRateUnits.MillibarsPerMinute: {
-                    const value4 = super.internalMultiply(1e5, 60);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e5);
+                    const v5 = super.internalMultiply(v3, 60);
+                    return super.internalDivide(v5, 0.001);
                 }
                 default: return Number.NaN;
             }
@@ -555,55 +563,55 @@ export class PressureChangeRate extends BaseUnit {
                 case PressureChangeRateUnits.PascalsPerMinute: return super.internalDivide(value, 60);
                 case PressureChangeRateUnits.MillimetersOfMercuryPerSecond: return super.internalMultiply(value, 133.322);
                 case PressureChangeRateUnits.AtmospheresPerSecond: {
-                    const value3 = super.internalMultiply(value, 1.01325);
-                    return super.internalMultiply(value3, 1e5);
+                    const v3 = super.internalMultiply(value, 1.01325);
+                    return super.internalMultiply(v3, 1e5);
                 }
                 case PressureChangeRateUnits.PoundsForcePerSquareInchPerSecond: return super.internalMultiply(value, 6.894757293168361e3);
                 case PressureChangeRateUnits.PoundsForcePerSquareInchPerMinute: {
-                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
-                    return super.internalDivide(value3, 60);
+                    const v4 = super.internalDivide(6.894757293168361e3, 60);
+                    return super.internalMultiply(value, v4);
                 }
                 case PressureChangeRateUnits.BarsPerSecond: return super.internalMultiply(value, 1e5);
                 case PressureChangeRateUnits.BarsPerMinute: {
-                    const value3 = super.internalMultiply(value, 1e5);
-                    return super.internalDivide(value3, 60);
+                    const v4 = super.internalDivide(1e5, 60);
+                    return super.internalMultiply(value, v4);
                 }
                 case PressureChangeRateUnits.KilopascalsPerSecond: return super.internalMultiply(value, 1000);
                 case PressureChangeRateUnits.MegapascalsPerSecond: return super.internalMultiply(value, 1000000);
                 case PressureChangeRateUnits.KilopascalsPerMinute: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PressureChangeRateUnits.MegapascalsPerMinute: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerSecond: {
-                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 6.894757293168361e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerSecond: {
-                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 6.894757293168361e3);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case PressureChangeRateUnits.KilopoundsForcePerSquareInchPerMinute: {
-                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
-                    const value5 = super.internalDivide(value3, 60);
-                    return super.internalMultiply(value5, 1000);
+                    const v4 = super.internalDivide(6.894757293168361e3, 60);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000);
                 }
                 case PressureChangeRateUnits.MegapoundsForcePerSquareInchPerMinute: {
-                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
-                    const value5 = super.internalDivide(value3, 60);
-                    return super.internalMultiply(value5, 1000000);
+                    const v4 = super.internalDivide(6.894757293168361e3, 60);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000000);
                 }
                 case PressureChangeRateUnits.MillibarsPerSecond: {
-                    const value3 = super.internalMultiply(value, 1e5);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1e5);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case PressureChangeRateUnits.MillibarsPerMinute: {
-                    const value3 = super.internalMultiply(value, 1e5);
-                    const value5 = super.internalDivide(value3, 60);
-                    return super.internalMultiply(value5, 0.001);
+                    const v4 = super.internalDivide(1e5, 60);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.001);
                 }
                 default: return Number.NaN;
             }

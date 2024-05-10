@@ -32,7 +32,7 @@ export enum ElectricCurrentUnits {
 
 /** An electric current is a flow of electric charge. In electric circuits this charge is often carried by moving electrons in a wire. It can also be carried by ions in an electrolyte, or by both ions and electrons such as in a plasma. */
 export class ElectricCurrent extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amperesLazy: number | null = null;
     private femtoamperesLazy: number | null = null;
     private picoamperesLazy: number | null = null;
@@ -52,7 +52,7 @@ export class ElectricCurrent extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -224,6 +224,14 @@ export class ElectricCurrent extends BaseUnit {
      */
     public static FromMegaamperes(value: number): ElectricCurrent {
         return new ElectricCurrent(value, ElectricCurrentUnits.Megaamperes);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricCurrent
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricCurrentUnits {
+        return ElectricCurrentUnits;
     }
 
     /**

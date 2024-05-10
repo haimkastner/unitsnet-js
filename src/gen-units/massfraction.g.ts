@@ -62,7 +62,7 @@ export enum MassFractionUnits {
 
 /** The mass fraction is defined as the mass of a constituent divided by the total mass of the mixture. */
 export class MassFraction extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decimalfractionsLazy: number | null = null;
     private gramspergramLazy: number | null = null;
     private gramsperkilogramLazy: number | null = null;
@@ -97,7 +97,7 @@ export class MassFraction extends BaseUnit {
     public constructor(value: number, fromUnit: MassFractionUnits = MassFractionUnits.DecimalFractions) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -542,6 +542,14 @@ export class MassFraction extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MassFraction
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MassFractionUnits {
+        return MassFractionUnits;
+    }
+
+    /**
      * Create API DTO represent a MassFraction unit.
      * @param holdInUnit The specific MassFraction unit to be used in the unit representation at the DTO
      */
@@ -618,36 +626,36 @@ export class MassFraction extends BaseUnit {
                 case MassFractionUnits.HectogramsPerGram: return super.internalDivide(this.value, 100);
                 case MassFractionUnits.KilogramsPerGram: return super.internalDivide(this.value, 1000);
                 case MassFractionUnits.NanogramsPerKilogram: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case MassFractionUnits.MicrogramsPerKilogram: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case MassFractionUnits.MilligramsPerKilogram: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassFractionUnits.CentigramsPerKilogram: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case MassFractionUnits.DecigramsPerKilogram: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case MassFractionUnits.DecagramsPerKilogram: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 10);
                 }
                 case MassFractionUnits.HectogramsPerKilogram: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 100);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 100);
                 }
                 case MassFractionUnits.KilogramsPerKilogram: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -700,36 +708,36 @@ export class MassFraction extends BaseUnit {
                 case MassFractionUnits.HectogramsPerGram: return super.internalMultiply(value, 100);
                 case MassFractionUnits.KilogramsPerGram: return super.internalMultiply(value, 1000);
                 case MassFractionUnits.NanogramsPerKilogram: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case MassFractionUnits.MicrogramsPerKilogram: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case MassFractionUnits.MilligramsPerKilogram: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassFractionUnits.CentigramsPerKilogram: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case MassFractionUnits.DecigramsPerKilogram: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case MassFractionUnits.DecagramsPerKilogram: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 10);
                 }
                 case MassFractionUnits.HectogramsPerKilogram: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 100);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 100);
                 }
                 case MassFractionUnits.KilogramsPerKilogram: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }

@@ -90,7 +90,7 @@ export enum ForcePerLengthUnits {
 
 /** The magnitude of force per unit length. */
 export class ForcePerLength extends BaseUnit {
-    private value: number;
+    protected value: number;
     private newtonspermeterLazy: number | null = null;
     private newtonspercentimeterLazy: number | null = null;
     private newtonspermillimeterLazy: number | null = null;
@@ -139,7 +139,7 @@ export class ForcePerLength extends BaseUnit {
     public constructor(value: number, fromUnit: ForcePerLengthUnits = ForcePerLengthUnits.NewtonsPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -836,6 +836,14 @@ export class ForcePerLength extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ForcePerLength
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ForcePerLengthUnits {
+        return ForcePerLengthUnits;
+    }
+
+    /**
      * Create API DTO represent a ForcePerLength unit.
      * @param holdInUnit The specific ForcePerLength unit to be used in the unit representation at the DTO
      */
@@ -932,68 +940,68 @@ export class ForcePerLength extends BaseUnit {
                 case ForcePerLengthUnits.KilonewtonsPerMeter: return super.internalDivide(this.value, 1000);
                 case ForcePerLengthUnits.MeganewtonsPerMeter: return super.internalDivide(this.value, 1000000);
                 case ForcePerLengthUnits.NanonewtonsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case ForcePerLengthUnits.MicronewtonsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case ForcePerLengthUnits.MillinewtonsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case ForcePerLengthUnits.CentinewtonsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case ForcePerLengthUnits.DecinewtonsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case ForcePerLengthUnits.DecanewtonsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 10);
                 }
                 case ForcePerLengthUnits.KilonewtonsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 1000);
                 }
                 case ForcePerLengthUnits.MeganewtonsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case ForcePerLengthUnits.NanonewtonsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case ForcePerLengthUnits.MicronewtonsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case ForcePerLengthUnits.MillinewtonsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case ForcePerLengthUnits.CentinewtonsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case ForcePerLengthUnits.DecinewtonsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case ForcePerLengthUnits.DecanewtonsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 10);
                 }
                 case ForcePerLengthUnits.KilonewtonsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case ForcePerLengthUnits.MeganewtonsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -1066,68 +1074,68 @@ export class ForcePerLength extends BaseUnit {
                 case ForcePerLengthUnits.KilonewtonsPerMeter: return super.internalMultiply(value, 1000);
                 case ForcePerLengthUnits.MeganewtonsPerMeter: return super.internalMultiply(value, 1000000);
                 case ForcePerLengthUnits.NanonewtonsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case ForcePerLengthUnits.MicronewtonsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case ForcePerLengthUnits.MillinewtonsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case ForcePerLengthUnits.CentinewtonsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case ForcePerLengthUnits.DecinewtonsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case ForcePerLengthUnits.DecanewtonsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 10);
                 }
                 case ForcePerLengthUnits.KilonewtonsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case ForcePerLengthUnits.MeganewtonsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case ForcePerLengthUnits.NanonewtonsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case ForcePerLengthUnits.MicronewtonsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case ForcePerLengthUnits.MillinewtonsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case ForcePerLengthUnits.CentinewtonsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case ForcePerLengthUnits.DecinewtonsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case ForcePerLengthUnits.DecanewtonsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 10);
                 }
                 case ForcePerLengthUnits.KilonewtonsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case ForcePerLengthUnits.MeganewtonsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

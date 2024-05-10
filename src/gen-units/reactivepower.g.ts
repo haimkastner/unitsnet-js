@@ -22,7 +22,7 @@ export enum ReactivePowerUnits {
 
 /** Volt-ampere reactive (var) is a unit by which reactive power is expressed in an AC electric power system. Reactive power exists in an AC circuit when the current and voltage are not in phase. */
 export class ReactivePower extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltamperesreactiveLazy: number | null = null;
     private kilovoltamperesreactiveLazy: number | null = null;
     private megavoltamperesreactiveLazy: number | null = null;
@@ -37,7 +37,7 @@ export class ReactivePower extends BaseUnit {
     public constructor(value: number, fromUnit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -119,6 +119,14 @@ export class ReactivePower extends BaseUnit {
      */
     public static FromGigavoltamperesReactive(value: number): ReactivePower {
         return new ReactivePower(value, ReactivePowerUnits.GigavoltamperesReactive);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ReactivePower
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ReactivePowerUnits {
+        return ReactivePowerUnits;
     }
 
     /**

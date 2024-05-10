@@ -34,7 +34,7 @@ export enum DynamicViscosityUnits {
 
 /** The dynamic (shear) viscosity of a fluid expresses its resistance to shearing flows, where adjacent layers move parallel to each other with different speeds */
 export class DynamicViscosity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private newtonsecondspermetersquaredLazy: number | null = null;
     private pascalsecondsLazy: number | null = null;
     private poiseLazy: number | null = null;
@@ -55,7 +55,7 @@ export class DynamicViscosity extends BaseUnit {
     public constructor(value: number, fromUnit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -248,6 +248,14 @@ export class DynamicViscosity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with DynamicViscosity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof DynamicViscosityUnits {
+        return DynamicViscosityUnits;
+    }
+
+    /**
      * Create API DTO represent a DynamicViscosity unit.
      * @param holdInUnit The specific DynamicViscosity unit to be used in the unit representation at the DTO
      */
@@ -303,8 +311,8 @@ export class DynamicViscosity extends BaseUnit {
                 case DynamicViscosityUnits.MillipascalSeconds: return super.internalDivide(this.value, 0.001);
                 case DynamicViscosityUnits.MicropascalSeconds: return super.internalDivide(this.value, 0.000001);
                 case DynamicViscosityUnits.Centipoise: {
-                    const value3 = super.internalMultiply(this.value, 10);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 10);
+                    return super.internalDivide(v3, 0.01);
                 }
                 default: return Number.NaN;
             }
@@ -336,8 +344,8 @@ export class DynamicViscosity extends BaseUnit {
                 case DynamicViscosityUnits.MillipascalSeconds: return super.internalMultiply(value, 0.001);
                 case DynamicViscosityUnits.MicropascalSeconds: return super.internalMultiply(value, 0.000001);
                 case DynamicViscosityUnits.Centipoise: {
-                    const value3 = super.internalDivide(value, 10);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 10);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 default: return Number.NaN;
             }

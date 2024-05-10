@@ -18,7 +18,7 @@ export enum PowerRatioUnits {
 
 /** The strength of a signal expressed in decibels (dB) relative to one watt. */
 export class PowerRatio extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decibelwattsLazy: number | null = null;
     private decibelmilliwattsLazy: number | null = null;
 
@@ -31,7 +31,7 @@ export class PowerRatio extends BaseUnit {
     public constructor(value: number, fromUnit: PowerRatioUnits = PowerRatioUnits.DecibelWatts) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +77,14 @@ export class PowerRatio extends BaseUnit {
      */
     public static FromDecibelMilliwatts(value: number): PowerRatio {
         return new PowerRatio(value, PowerRatioUnits.DecibelMilliwatts);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with PowerRatio
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof PowerRatioUnits {
+        return PowerRatioUnits;
     }
 
     /**

@@ -80,7 +80,7 @@ export enum SpeedUnits {
 
 /** In everyday use and in kinematics, the speed of an object is the magnitude of its velocity (the rate of change of its position); it is thus a scalar quantity.[1] The average speed of an object in an interval of time is the distance travelled by the object divided by the duration of the interval;[2] the instantaneous speed is the limit of the average speed as the duration of the time interval approaches zero. */
 export class Speed extends BaseUnit {
-    private value: number;
+    protected value: number;
     private meterspersecondLazy: number | null = null;
     private metersperminutesLazy: number | null = null;
     private metersperhourLazy: number | null = null;
@@ -124,7 +124,7 @@ export class Speed extends BaseUnit {
     public constructor(value: number, fromUnit: SpeedUnits = SpeedUnits.MetersPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -731,6 +731,14 @@ export class Speed extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Speed
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof SpeedUnits {
+        return SpeedUnits;
+    }
+
+    /**
      * Create API DTO represent a Speed unit.
      * @param holdInUnit The specific Speed unit to be used in the unit representation at the DTO
      */
@@ -804,48 +812,48 @@ export class Speed extends BaseUnit {
                 case SpeedUnits.MetersPerHour: return super.internalMultiply(this.value, 3600);
                 case SpeedUnits.FeetPerSecond: return super.internalDivide(this.value, 0.3048);
                 case SpeedUnits.FeetPerMinute: {
-                    const value4 = super.internalMultiply(0.3048, 60);
-                    return super.internalDivide(this.value, value4);
+                    const v3 = super.internalDivide(this.value, 0.3048);
+                    return super.internalMultiply(v3, 60);
                 }
                 case SpeedUnits.FeetPerHour: {
-                    const value4 = super.internalMultiply(0.3048, 3600);
-                    return super.internalDivide(this.value, value4);
+                    const v3 = super.internalDivide(this.value, 0.3048);
+                    return super.internalMultiply(v3, 3600);
                 }
                 case SpeedUnits.UsSurveyFeetPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 3937);
-                    return super.internalDivide(value3, 1200);
+                    const v4 = super.internalDivide(3937, 1200);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case SpeedUnits.UsSurveyFeetPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 3937);
-                    const value5 = super.internalDivide(value3, 1200);
-                    return super.internalMultiply(value5, 60);
+                    const v4 = super.internalDivide(3937, 1200);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalMultiply(v5, 60);
                 }
                 case SpeedUnits.UsSurveyFeetPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3937);
-                    const value5 = super.internalDivide(value3, 1200);
-                    return super.internalMultiply(value5, 3600);
+                    const v4 = super.internalDivide(3937, 1200);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalMultiply(v5, 3600);
                 }
                 case SpeedUnits.InchesPerSecond: return super.internalDivide(this.value, 2.54e-2);
                 case SpeedUnits.InchesPerMinute: {
-                    const value3 = super.internalDivide(this.value, 2.54e-2);
-                    return super.internalMultiply(value3, 60);
+                    const v3 = super.internalDivide(this.value, 2.54e-2);
+                    return super.internalMultiply(v3, 60);
                 }
                 case SpeedUnits.InchesPerHour: {
-                    const value3 = super.internalDivide(this.value, 2.54e-2);
-                    return super.internalMultiply(value3, 3600);
+                    const v3 = super.internalDivide(this.value, 2.54e-2);
+                    return super.internalMultiply(v3, 3600);
                 }
                 case SpeedUnits.YardsPerSecond: return super.internalDivide(this.value, 0.9144);
                 case SpeedUnits.YardsPerMinute: {
-                    const value4 = super.internalMultiply(0.9144, 60);
-                    return super.internalDivide(this.value, value4);
+                    const v3 = super.internalDivide(this.value, 0.9144);
+                    return super.internalMultiply(v3, 60);
                 }
                 case SpeedUnits.YardsPerHour: {
-                    const value4 = super.internalMultiply(0.9144, 3600);
-                    return super.internalDivide(this.value, value4);
+                    const v3 = super.internalDivide(this.value, 0.9144);
+                    return super.internalMultiply(v3, 3600);
                 }
                 case SpeedUnits.Knots: {
-                    const value4 = super.internalDivide(1852.0, 3600.0);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalDivide(1852.0, 3600.0);
+                    return super.internalDivide(this.value, v4);
                 }
                 case SpeedUnits.MilesPerHour: return super.internalDivide(this.value, 0.44704);
                 case SpeedUnits.Mach: return super.internalDivide(this.value, 340.29);
@@ -856,40 +864,40 @@ export class Speed extends BaseUnit {
                 case SpeedUnits.DecimetersPerSecond: return super.internalDivide(this.value, 0.1);
                 case SpeedUnits.KilometersPerSecond: return super.internalDivide(this.value, 1000);
                 case SpeedUnits.NanometersPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case SpeedUnits.MicrometersPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case SpeedUnits.MillimetersPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case SpeedUnits.CentimetersPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case SpeedUnits.DecimetersPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case SpeedUnits.KilometersPerMinutes: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 1000);
                 }
                 case SpeedUnits.MillimetersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case SpeedUnits.CentimetersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case SpeedUnits.KilometersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -939,48 +947,48 @@ export class Speed extends BaseUnit {
                 case SpeedUnits.MetersPerHour: return super.internalDivide(value, 3600);
                 case SpeedUnits.FeetPerSecond: return super.internalMultiply(value, 0.3048);
                 case SpeedUnits.FeetPerMinute: {
-                    const value3 = super.internalMultiply(value, 0.3048);
-                    return super.internalDivide(value3, 60);
+                    const v4 = super.internalDivide(0.3048, 60);
+                    return super.internalMultiply(value, v4);
                 }
                 case SpeedUnits.FeetPerHour: {
-                    const value3 = super.internalMultiply(value, 0.3048);
-                    return super.internalDivide(value3, 3600);
+                    const v4 = super.internalDivide(0.3048, 3600);
+                    return super.internalMultiply(value, v4);
                 }
                 case SpeedUnits.UsSurveyFeetPerSecond: {
-                    const value3 = super.internalMultiply(value, 1200);
-                    return super.internalDivide(value3, 3937);
+                    const v4 = super.internalDivide(1200, 3937);
+                    return super.internalMultiply(value, v4);
                 }
                 case SpeedUnits.UsSurveyFeetPerMinute: {
-                    const value3 = super.internalMultiply(value, 1200);
-                    const value5 = super.internalDivide(value3, 3937);
-                    return super.internalDivide(value5, 60);
+                    const v4 = super.internalDivide(1200, 3937);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalDivide(v5, 60);
                 }
                 case SpeedUnits.UsSurveyFeetPerHour: {
-                    const value3 = super.internalMultiply(value, 1200);
-                    const value5 = super.internalDivide(value3, 3937);
-                    return super.internalDivide(value5, 3600);
+                    const v4 = super.internalDivide(1200, 3937);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalDivide(v5, 3600);
                 }
                 case SpeedUnits.InchesPerSecond: return super.internalMultiply(value, 2.54e-2);
                 case SpeedUnits.InchesPerMinute: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 2.54e-2);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 2.54e-2);
                 }
                 case SpeedUnits.InchesPerHour: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 2.54e-2);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 2.54e-2);
                 }
                 case SpeedUnits.YardsPerSecond: return super.internalMultiply(value, 0.9144);
                 case SpeedUnits.YardsPerMinute: {
-                    const value3 = super.internalMultiply(value, 0.9144);
-                    return super.internalDivide(value3, 60);
+                    const v4 = super.internalDivide(0.9144, 60);
+                    return super.internalMultiply(value, v4);
                 }
                 case SpeedUnits.YardsPerHour: {
-                    const value3 = super.internalMultiply(value, 0.9144);
-                    return super.internalDivide(value3, 3600);
+                    const v4 = super.internalDivide(0.9144, 3600);
+                    return super.internalMultiply(value, v4);
                 }
                 case SpeedUnits.Knots: {
-                    const value4 = super.internalDivide(1852.0, 3600.0);
-                    return super.internalMultiply(value, value4);
+                    const v4 = super.internalDivide(1852.0, 3600.0);
+                    return super.internalMultiply(value, v4);
                 }
                 case SpeedUnits.MilesPerHour: return super.internalMultiply(value, 0.44704);
                 case SpeedUnits.Mach: return super.internalMultiply(value, 340.29);
@@ -991,40 +999,40 @@ export class Speed extends BaseUnit {
                 case SpeedUnits.DecimetersPerSecond: return super.internalMultiply(value, 0.1);
                 case SpeedUnits.KilometersPerSecond: return super.internalMultiply(value, 1000);
                 case SpeedUnits.NanometersPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case SpeedUnits.MicrometersPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case SpeedUnits.MillimetersPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case SpeedUnits.CentimetersPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case SpeedUnits.DecimetersPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case SpeedUnits.KilometersPerMinutes: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case SpeedUnits.MillimetersPerHour: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case SpeedUnits.CentimetersPerHour: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case SpeedUnits.KilometersPerHour: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }

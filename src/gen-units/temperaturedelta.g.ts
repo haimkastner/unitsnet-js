@@ -32,7 +32,7 @@ export enum TemperatureDeltaUnits {
 
 /** Difference between two temperatures. The conversions are different than for Temperature. */
 export class TemperatureDelta extends BaseUnit {
-    private value: number;
+    protected value: number;
     private kelvinsLazy: number | null = null;
     private degreescelsiusLazy: number | null = null;
     private degreesdelisleLazy: number | null = null;
@@ -52,7 +52,7 @@ export class TemperatureDelta extends BaseUnit {
     public constructor(value: number, fromUnit: TemperatureDeltaUnits = TemperatureDeltaUnits.Kelvins) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -227,6 +227,14 @@ export class TemperatureDelta extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with TemperatureDelta
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof TemperatureDeltaUnits {
+        return TemperatureDeltaUnits;
+    }
+
+    /**
      * Create API DTO represent a TemperatureDelta unit.
      * @param holdInUnit The specific TemperatureDelta unit to be used in the unit representation at the DTO
      */
@@ -274,28 +282,28 @@ export class TemperatureDelta extends BaseUnit {
                 case TemperatureDeltaUnits.Kelvins: return this.value;
                 case TemperatureDeltaUnits.DegreesCelsius: return this.value;
                 case TemperatureDeltaUnits.DegreesDelisle: {
-                    const value3 = super.internalMultiply(this.value, 3);
-                    return super.internalDivide(value3, 2);
+                    const v4 = super.internalDivide(3, 2);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesFahrenheit: {
-                    const value3 = super.internalMultiply(this.value, 9);
-                    return super.internalDivide(value3, 5);
+                    const v4 = super.internalDivide(9, 5);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesNewton: {
-                    const value3 = super.internalMultiply(this.value, 33);
-                    return super.internalDivide(value3, 100);
+                    const v4 = super.internalDivide(33, 100);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesRankine: {
-                    const value3 = super.internalMultiply(this.value, 9);
-                    return super.internalDivide(value3, 5);
+                    const v4 = super.internalDivide(9, 5);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesReaumur: {
-                    const value3 = super.internalMultiply(this.value, 4);
-                    return super.internalDivide(value3, 5);
+                    const v4 = super.internalDivide(4, 5);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesRoemer: {
-                    const value3 = super.internalMultiply(this.value, 21);
-                    return super.internalDivide(value3, 40);
+                    const v4 = super.internalDivide(21, 40);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case TemperatureDeltaUnits.MillidegreesCelsius: return super.internalDivide(this.value, 0.001);
                 default: return Number.NaN;
@@ -320,28 +328,28 @@ export class TemperatureDelta extends BaseUnit {
                 case TemperatureDeltaUnits.Kelvins: return value;
                 case TemperatureDeltaUnits.DegreesCelsius: return value;
                 case TemperatureDeltaUnits.DegreesDelisle: {
-                    const value3 = super.internalMultiply(value, 2);
-                    return super.internalDivide(value3, 3);
+                    const v4 = super.internalDivide(2, 3);
+                    return super.internalMultiply(value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesFahrenheit: {
-                    const value3 = super.internalMultiply(value, 5);
-                    return super.internalDivide(value3, 9);
+                    const v4 = super.internalDivide(5, 9);
+                    return super.internalMultiply(value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesNewton: {
-                    const value3 = super.internalMultiply(value, 100);
-                    return super.internalDivide(value3, 33);
+                    const v4 = super.internalDivide(100, 33);
+                    return super.internalMultiply(value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesRankine: {
-                    const value3 = super.internalMultiply(value, 5);
-                    return super.internalDivide(value3, 9);
+                    const v4 = super.internalDivide(5, 9);
+                    return super.internalMultiply(value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesReaumur: {
-                    const value3 = super.internalMultiply(value, 5);
-                    return super.internalDivide(value3, 4);
+                    const v4 = super.internalDivide(5, 4);
+                    return super.internalMultiply(value, v4);
                 }
                 case TemperatureDeltaUnits.DegreesRoemer: {
-                    const value3 = super.internalMultiply(value, 40);
-                    return super.internalDivide(value3, 21);
+                    const v4 = super.internalDivide(40, 21);
+                    return super.internalMultiply(value, v4);
                 }
                 case TemperatureDeltaUnits.MillidegreesCelsius: return super.internalMultiply(value, 0.001);
                 default: return Number.NaN;

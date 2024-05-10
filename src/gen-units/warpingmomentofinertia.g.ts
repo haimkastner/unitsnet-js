@@ -26,7 +26,7 @@ export enum WarpingMomentOfInertiaUnits {
 
 /** A geometric property of an area that is used to determine the warping stress. */
 export class WarpingMomentOfInertia extends BaseUnit {
-    private value: number;
+    protected value: number;
     private meterstothesixthLazy: number | null = null;
     private decimeterstothesixthLazy: number | null = null;
     private centimeterstothesixthLazy: number | null = null;
@@ -43,7 +43,7 @@ export class WarpingMomentOfInertia extends BaseUnit {
     public constructor(value: number, fromUnit: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -164,6 +164,14 @@ export class WarpingMomentOfInertia extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with WarpingMomentOfInertia
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof WarpingMomentOfInertiaUnits {
+        return WarpingMomentOfInertiaUnits;
+    }
+
+    /**
      * Create API DTO represent a WarpingMomentOfInertia unit.
      * @param holdInUnit The specific WarpingMomentOfInertia unit to be used in the unit representation at the DTO
      */
@@ -210,12 +218,12 @@ export class WarpingMomentOfInertia extends BaseUnit {
                 case WarpingMomentOfInertiaUnits.CentimetersToTheSixth: return super.internalMultiply(this.value, 1e12);
                 case WarpingMomentOfInertiaUnits.MillimetersToTheSixth: return super.internalMultiply(this.value, 1e18);
                 case WarpingMomentOfInertiaUnits.FeetToTheSixth: {
-                    const value4 = Math.pow(0.3048, 6);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = Math.pow(0.3048, 6);
+                    return super.internalDivide(this.value, v4);
                 }
                 case WarpingMomentOfInertiaUnits.InchesToTheSixth: {
-                    const value4 = Math.pow(2.54e-2, 6);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = Math.pow(2.54e-2, 6);
+                    return super.internalDivide(this.value, v4);
                 }
                 default: return Number.NaN;
             }
@@ -238,12 +246,12 @@ export class WarpingMomentOfInertia extends BaseUnit {
                 case WarpingMomentOfInertiaUnits.CentimetersToTheSixth: return super.internalDivide(value, 1e12);
                 case WarpingMomentOfInertiaUnits.MillimetersToTheSixth: return super.internalDivide(value, 1e18);
                 case WarpingMomentOfInertiaUnits.FeetToTheSixth: {
-                    const value4 = Math.pow(0.3048, 6);
-                    return super.internalMultiply(value, value4);
+                    const v4 = Math.pow(0.3048, 6);
+                    return super.internalMultiply(value, v4);
                 }
                 case WarpingMomentOfInertiaUnits.InchesToTheSixth: {
-                    const value4 = Math.pow(2.54e-2, 6);
-                    return super.internalMultiply(value, value4);
+                    const v4 = Math.pow(2.54e-2, 6);
+                    return super.internalMultiply(value, v4);
                 }
                 default: return Number.NaN;
             }

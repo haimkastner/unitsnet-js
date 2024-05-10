@@ -36,7 +36,7 @@ export enum ReciprocalAreaUnits {
 
 /** Reciprocal area (Inverse-square) quantity is used to specify a physical quantity inversely proportional to the square of the distance. */
 export class ReciprocalArea extends BaseUnit {
-    private value: number;
+    protected value: number;
     private inversesquaremetersLazy: number | null = null;
     private inversesquarekilometersLazy: number | null = null;
     private inversesquaredecimetersLazy: number | null = null;
@@ -58,7 +58,7 @@ export class ReciprocalArea extends BaseUnit {
     public constructor(value: number, fromUnit: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -266,6 +266,14 @@ export class ReciprocalArea extends BaseUnit {
      */
     public static FromInverseSquareInches(value: number): ReciprocalArea {
         return new ReciprocalArea(value, ReciprocalAreaUnits.InverseSquareInches);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ReciprocalArea
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ReciprocalAreaUnits {
+        return ReciprocalAreaUnits;
     }
 
     /**

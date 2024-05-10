@@ -20,7 +20,7 @@ export enum ReactiveEnergyUnits {
 
 /** The Volt-ampere reactive hour (expressed as varh) is the reactive power of one Volt-ampere reactive produced in one hour. */
 export class ReactiveEnergy extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltamperereactivehoursLazy: number | null = null;
     private kilovoltamperereactivehoursLazy: number | null = null;
     private megavoltamperereactivehoursLazy: number | null = null;
@@ -34,7 +34,7 @@ export class ReactiveEnergy extends BaseUnit {
     public constructor(value: number, fromUnit: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -98,6 +98,14 @@ export class ReactiveEnergy extends BaseUnit {
      */
     public static FromMegavoltampereReactiveHours(value: number): ReactiveEnergy {
         return new ReactiveEnergy(value, ReactiveEnergyUnits.MegavoltampereReactiveHours);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ReactiveEnergy
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ReactiveEnergyUnits {
+        return ReactiveEnergyUnits;
     }
 
     /**

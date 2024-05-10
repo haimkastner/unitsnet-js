@@ -80,7 +80,7 @@ export enum RotationalStiffnessUnits {
 
 /** https://en.wikipedia.org/wiki/Stiffness#Rotational_stiffness */
 export class RotationalStiffness extends BaseUnit {
-    private value: number;
+    protected value: number;
     private newtonmetersperradianLazy: number | null = null;
     private poundforcefeetperdegreesLazy: number | null = null;
     private kilopoundforcefeetperdegreesLazy: number | null = null;
@@ -124,7 +124,7 @@ export class RotationalStiffness extends BaseUnit {
     public constructor(value: number, fromUnit: RotationalStiffnessUnits = RotationalStiffnessUnits.NewtonMetersPerRadian) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -731,6 +731,14 @@ export class RotationalStiffness extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with RotationalStiffness
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RotationalStiffnessUnits {
+        return RotationalStiffnessUnits;
+    }
+
+    /**
      * Create API DTO represent a RotationalStiffness unit.
      * @param holdInUnit The specific RotationalStiffness unit to be used in the unit representation at the DTO
      */
@@ -803,137 +811,137 @@ export class RotationalStiffness extends BaseUnit {
                 case RotationalStiffnessUnits.PoundForceFeetPerDegrees: return super.internalDivide(this.value, 77.6826);
                 case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: return super.internalDivide(this.value, 77682.6);
                 case RotationalStiffnessUnits.NewtonMillimetersPerDegree: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value6 = super.internalMultiply(value4, 1000);
-                    return super.internalDivide(this.value, value6);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    return super.internalMultiply(v5, 1000);
                 }
                 case RotationalStiffnessUnits.NewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    return super.internalDivide(this.value, v4);
                 }
                 case RotationalStiffnessUnits.NewtonMillimetersPerRadian: return super.internalMultiply(this.value, 1000);
                 case RotationalStiffnessUnits.PoundForceFeetPerRadian: return super.internalDivide(this.value, 1.3558179483314);
                 case RotationalStiffnessUnits.KilonewtonMetersPerRadian: return super.internalDivide(this.value, 1000);
                 case RotationalStiffnessUnits.MeganewtonMetersPerRadian: return super.internalDivide(this.value, 1000000);
                 case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value6 = super.internalMultiply(value4, 1000);
-                    const value7 = super.internalDivide(this.value, value6);
-                    return super.internalDivide(value7, 1e-9);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    const v7 = super.internalMultiply(v5, 1000);
+                    return super.internalDivide(v7, 1e-9);
                 }
                 case RotationalStiffnessUnits.MicronewtonMillimetersPerDegree: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value6 = super.internalMultiply(value4, 1000);
-                    const value7 = super.internalDivide(this.value, value6);
-                    return super.internalDivide(value7, 0.000001);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    const v7 = super.internalMultiply(v5, 1000);
+                    return super.internalDivide(v7, 0.000001);
                 }
                 case RotationalStiffnessUnits.MillinewtonMillimetersPerDegree: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value6 = super.internalMultiply(value4, 1000);
-                    const value7 = super.internalDivide(this.value, value6);
-                    return super.internalDivide(value7, 0.001);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    const v7 = super.internalMultiply(v5, 1000);
+                    return super.internalDivide(v7, 0.001);
                 }
                 case RotationalStiffnessUnits.CentinewtonMillimetersPerDegree: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value6 = super.internalMultiply(value4, 1000);
-                    const value7 = super.internalDivide(this.value, value6);
-                    return super.internalDivide(value7, 0.01);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    const v7 = super.internalMultiply(v5, 1000);
+                    return super.internalDivide(v7, 0.01);
                 }
                 case RotationalStiffnessUnits.DecinewtonMillimetersPerDegree: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value6 = super.internalMultiply(value4, 1000);
-                    const value7 = super.internalDivide(this.value, value6);
-                    return super.internalDivide(value7, 0.1);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    const v7 = super.internalMultiply(v5, 1000);
+                    return super.internalDivide(v7, 0.1);
                 }
                 case RotationalStiffnessUnits.DecanewtonMillimetersPerDegree: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value6 = super.internalMultiply(value4, 1000);
-                    const value7 = super.internalDivide(this.value, value6);
-                    return super.internalDivide(value7, 10);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    const v7 = super.internalMultiply(v5, 1000);
+                    return super.internalDivide(v7, 10);
                 }
                 case RotationalStiffnessUnits.KilonewtonMillimetersPerDegree: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value6 = super.internalMultiply(value4, 1000);
-                    const value7 = super.internalDivide(this.value, value6);
-                    return super.internalDivide(value7, 1000);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    const v7 = super.internalMultiply(v5, 1000);
+                    return super.internalDivide(v7, 1000);
                 }
                 case RotationalStiffnessUnits.MeganewtonMillimetersPerDegree: {
-                    const value4 = super.internalMultiply(180, Math.PI);
-                    const value6 = super.internalMultiply(value4, 1000);
-                    const value7 = super.internalDivide(this.value, value6);
-                    return super.internalDivide(value7, 1000000);
+                    const v3 = super.internalDivide(this.value, 180);
+                    const v5 = super.internalMultiply(v3, Math.PI);
+                    const v7 = super.internalMultiply(v5, 1000);
+                    return super.internalDivide(v7, 1000000);
                 }
                 case RotationalStiffnessUnits.NanonewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1e-9);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 1e-9);
                 }
                 case RotationalStiffnessUnits.MicronewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 0.000001);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 0.000001);
                 }
                 case RotationalStiffnessUnits.MillinewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 0.001);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 0.001);
                 }
                 case RotationalStiffnessUnits.CentinewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 0.01);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 0.01);
                 }
                 case RotationalStiffnessUnits.DecinewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 0.1);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 0.1);
                 }
                 case RotationalStiffnessUnits.DecanewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 10);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 10);
                 }
                 case RotationalStiffnessUnits.KilonewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1000);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 1000);
                 }
                 case RotationalStiffnessUnits.MeganewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1000000);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 1000000);
                 }
                 case RotationalStiffnessUnits.NanonewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case RotationalStiffnessUnits.MicronewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case RotationalStiffnessUnits.MillinewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case RotationalStiffnessUnits.CentinewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case RotationalStiffnessUnits.DecinewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case RotationalStiffnessUnits.DecanewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 10);
                 }
                 case RotationalStiffnessUnits.KilonewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 1000);
                 }
                 case RotationalStiffnessUnits.MeganewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -982,137 +990,137 @@ export class RotationalStiffness extends BaseUnit {
                 case RotationalStiffnessUnits.PoundForceFeetPerDegrees: return super.internalMultiply(value, 77.6826);
                 case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: return super.internalMultiply(value, 77682.6);
                 case RotationalStiffnessUnits.NewtonMillimetersPerDegree: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value6 = super.internalMultiply(Math.PI, 0.001);
-                    return super.internalDivide(value3, value6);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.001);
                 }
                 case RotationalStiffnessUnits.NewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    return super.internalMultiply(value, value4);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    return super.internalMultiply(value, v4);
                 }
                 case RotationalStiffnessUnits.NewtonMillimetersPerRadian: return super.internalMultiply(value, 0.001);
                 case RotationalStiffnessUnits.PoundForceFeetPerRadian: return super.internalMultiply(value, 1.3558179483314);
                 case RotationalStiffnessUnits.KilonewtonMetersPerRadian: return super.internalMultiply(value, 1000);
                 case RotationalStiffnessUnits.MeganewtonMetersPerRadian: return super.internalMultiply(value, 1000000);
                 case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value6 = super.internalMultiply(Math.PI, 0.001);
-                    const value7 = super.internalDivide(value3, value6);
-                    return super.internalMultiply(value7, 1e-9);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v7 = super.internalMultiply(v5, 0.001);
+                    return super.internalMultiply(v7, 1e-9);
                 }
                 case RotationalStiffnessUnits.MicronewtonMillimetersPerDegree: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value6 = super.internalMultiply(Math.PI, 0.001);
-                    const value7 = super.internalDivide(value3, value6);
-                    return super.internalMultiply(value7, 0.000001);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v7 = super.internalMultiply(v5, 0.001);
+                    return super.internalMultiply(v7, 0.000001);
                 }
                 case RotationalStiffnessUnits.MillinewtonMillimetersPerDegree: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value6 = super.internalMultiply(Math.PI, 0.001);
-                    const value7 = super.internalDivide(value3, value6);
-                    return super.internalMultiply(value7, 0.001);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v7 = super.internalMultiply(v5, 0.001);
+                    return super.internalMultiply(v7, 0.001);
                 }
                 case RotationalStiffnessUnits.CentinewtonMillimetersPerDegree: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value6 = super.internalMultiply(Math.PI, 0.001);
-                    const value7 = super.internalDivide(value3, value6);
-                    return super.internalMultiply(value7, 0.01);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v7 = super.internalMultiply(v5, 0.001);
+                    return super.internalMultiply(v7, 0.01);
                 }
                 case RotationalStiffnessUnits.DecinewtonMillimetersPerDegree: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value6 = super.internalMultiply(Math.PI, 0.001);
-                    const value7 = super.internalDivide(value3, value6);
-                    return super.internalMultiply(value7, 0.1);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v7 = super.internalMultiply(v5, 0.001);
+                    return super.internalMultiply(v7, 0.1);
                 }
                 case RotationalStiffnessUnits.DecanewtonMillimetersPerDegree: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value6 = super.internalMultiply(Math.PI, 0.001);
-                    const value7 = super.internalDivide(value3, value6);
-                    return super.internalMultiply(value7, 10);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v7 = super.internalMultiply(v5, 0.001);
+                    return super.internalMultiply(v7, 10);
                 }
                 case RotationalStiffnessUnits.KilonewtonMillimetersPerDegree: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value6 = super.internalMultiply(Math.PI, 0.001);
-                    const value7 = super.internalDivide(value3, value6);
-                    return super.internalMultiply(value7, 1000);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v7 = super.internalMultiply(v5, 0.001);
+                    return super.internalMultiply(v7, 1000);
                 }
                 case RotationalStiffnessUnits.MeganewtonMillimetersPerDegree: {
-                    const value3 = super.internalMultiply(value, 180);
-                    const value6 = super.internalMultiply(Math.PI, 0.001);
-                    const value7 = super.internalDivide(value3, value6);
-                    return super.internalMultiply(value7, 1000000);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v7 = super.internalMultiply(v5, 0.001);
+                    return super.internalMultiply(v7, 1000000);
                 }
                 case RotationalStiffnessUnits.NanonewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value, value4);
-                    return super.internalMultiply(value5, 1e-9);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1e-9);
                 }
                 case RotationalStiffnessUnits.MicronewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value, value4);
-                    return super.internalMultiply(value5, 0.000001);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.000001);
                 }
                 case RotationalStiffnessUnits.MillinewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value, value4);
-                    return super.internalMultiply(value5, 0.001);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.001);
                 }
                 case RotationalStiffnessUnits.CentinewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value, value4);
-                    return super.internalMultiply(value5, 0.01);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.01);
                 }
                 case RotationalStiffnessUnits.DecinewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value, value4);
-                    return super.internalMultiply(value5, 0.1);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.1);
                 }
                 case RotationalStiffnessUnits.DecanewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value, value4);
-                    return super.internalMultiply(value5, 10);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 10);
                 }
                 case RotationalStiffnessUnits.KilonewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value, value4);
-                    return super.internalMultiply(value5, 1000);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000);
                 }
                 case RotationalStiffnessUnits.MeganewtonMetersPerDegree: {
-                    const value4 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value, value4);
-                    return super.internalMultiply(value5, 1000000);
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000000);
                 }
                 case RotationalStiffnessUnits.NanonewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case RotationalStiffnessUnits.MicronewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case RotationalStiffnessUnits.MillinewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case RotationalStiffnessUnits.CentinewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case RotationalStiffnessUnits.DecinewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case RotationalStiffnessUnits.DecanewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 10);
                 }
                 case RotationalStiffnessUnits.KilonewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case RotationalStiffnessUnits.MeganewtonMillimetersPerRadian: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

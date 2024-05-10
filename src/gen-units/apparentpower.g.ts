@@ -26,7 +26,7 @@ export enum ApparentPowerUnits {
 
 /** Power engineers measure apparent power as the magnitude of the vector sum of active and reactive power. Apparent power is the product of the root-mean-square of voltage and current. */
 export class ApparentPower extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltamperesLazy: number | null = null;
     private microvoltamperesLazy: number | null = null;
     private millivoltamperesLazy: number | null = null;
@@ -43,7 +43,7 @@ export class ApparentPower extends BaseUnit {
     public constructor(value: number, fromUnit: ApparentPowerUnits = ApparentPowerUnits.Voltamperes) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -161,6 +161,14 @@ export class ApparentPower extends BaseUnit {
      */
     public static FromGigavoltamperes(value: number): ApparentPower {
         return new ApparentPower(value, ApparentPowerUnits.Gigavoltamperes);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ApparentPower
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ApparentPowerUnits {
+        return ApparentPowerUnits;
     }
 
     /**

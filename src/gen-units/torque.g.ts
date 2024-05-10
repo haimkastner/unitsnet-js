@@ -64,7 +64,7 @@ export enum TorqueUnits {
 
 /** Torque, moment or moment of force (see the terminology below), is the tendency of a force to rotate an object about an axis,[1] fulcrum, or pivot. Just as a force is a push or a pull, a torque can be thought of as a twist to an object. Mathematically, torque is defined as the cross product of the lever-arm distance and force, which tends to produce rotation. Loosely speaking, torque is a measure of the turning force on an object such as a bolt or a flywheel. For example, pushing or pulling the handle of a wrench connected to a nut or bolt produces a torque (turning force) that loosens or tightens the nut or bolt. */
 export class Torque extends BaseUnit {
-    private value: number;
+    protected value: number;
     private newtonmillimetersLazy: number | null = null;
     private newtoncentimetersLazy: number | null = null;
     private newtonmetersLazy: number | null = null;
@@ -100,7 +100,7 @@ export class Torque extends BaseUnit {
     public constructor(value: number, fromUnit: TorqueUnits = TorqueUnits.NewtonMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -563,6 +563,14 @@ export class Torque extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Torque
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof TorqueUnits {
+        return TorqueUnits;
+    }
+
+    /**
      * Create API DTO represent a Torque unit.
      * @param holdInUnit The specific Torque unit to be used in the unit representation at the DTO
      */
@@ -639,38 +647,38 @@ export class Torque extends BaseUnit {
                 case TorqueUnits.TonneForceCentimeters: return super.internalDivide(this.value, 9.80665e1);
                 case TorqueUnits.TonneForceMeters: return super.internalDivide(this.value, 9.80665e3);
                 case TorqueUnits.KilonewtonMillimeters: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 1000);
                 }
                 case TorqueUnits.MeganewtonMillimeters: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case TorqueUnits.KilonewtonCentimeters: {
-                    const value3 = super.internalMultiply(this.value, 100);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1000);
                 }
                 case TorqueUnits.MeganewtonCentimeters: {
-                    const value3 = super.internalMultiply(this.value, 100);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case TorqueUnits.KilonewtonMeters: return super.internalDivide(this.value, 1000);
                 case TorqueUnits.MeganewtonMeters: return super.internalDivide(this.value, 1000000);
                 case TorqueUnits.KilopoundForceInches: {
-                    const value3 = super.internalDivide(this.value, 1.129848290276167e-1);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1.129848290276167e-1);
+                    return super.internalDivide(v3, 1000);
                 }
                 case TorqueUnits.MegapoundForceInches: {
-                    const value3 = super.internalDivide(this.value, 1.129848290276167e-1);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1.129848290276167e-1);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case TorqueUnits.KilopoundForceFeet: {
-                    const value3 = super.internalDivide(this.value, 1.3558179483314);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1.3558179483314);
+                    return super.internalDivide(v3, 1000);
                 }
                 case TorqueUnits.MegapoundForceFeet: {
-                    const value3 = super.internalDivide(this.value, 1.3558179483314);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1.3558179483314);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -723,38 +731,38 @@ export class Torque extends BaseUnit {
                 case TorqueUnits.TonneForceCentimeters: return super.internalMultiply(value, 9.80665e1);
                 case TorqueUnits.TonneForceMeters: return super.internalMultiply(value, 9.80665e3);
                 case TorqueUnits.KilonewtonMillimeters: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case TorqueUnits.MeganewtonMillimeters: {
-                    const value3 = super.internalMultiply(value, 0.001);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 0.001);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case TorqueUnits.KilonewtonCentimeters: {
-                    const value3 = super.internalMultiply(value, 0.01);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 0.01);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case TorqueUnits.MeganewtonCentimeters: {
-                    const value3 = super.internalMultiply(value, 0.01);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 0.01);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case TorqueUnits.KilonewtonMeters: return super.internalMultiply(value, 1000);
                 case TorqueUnits.MeganewtonMeters: return super.internalMultiply(value, 1000000);
                 case TorqueUnits.KilopoundForceInches: {
-                    const value3 = super.internalMultiply(value, 1.129848290276167e-1);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1.129848290276167e-1);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case TorqueUnits.MegapoundForceInches: {
-                    const value3 = super.internalMultiply(value, 1.129848290276167e-1);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1.129848290276167e-1);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case TorqueUnits.KilopoundForceFeet: {
-                    const value3 = super.internalMultiply(value, 1.3558179483314);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1.3558179483314);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case TorqueUnits.MegapoundForceFeet: {
-                    const value3 = super.internalMultiply(value, 1.3558179483314);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1.3558179483314);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

@@ -28,7 +28,7 @@ export enum CapacitanceUnits {
 
 /** Capacitance is the ability of a body to store an electric charge. */
 export class Capacitance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private faradsLazy: number | null = null;
     private picofaradsLazy: number | null = null;
     private nanofaradsLazy: number | null = null;
@@ -46,7 +46,7 @@ export class Capacitance extends BaseUnit {
     public constructor(value: number, fromUnit: CapacitanceUnits = CapacitanceUnits.Farads) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -182,6 +182,14 @@ export class Capacitance extends BaseUnit {
      */
     public static FromMegafarads(value: number): Capacitance {
         return new Capacitance(value, CapacitanceUnits.Megafarads);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Capacitance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof CapacitanceUnits {
+        return CapacitanceUnits;
     }
 
     /**

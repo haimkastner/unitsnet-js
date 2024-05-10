@@ -24,7 +24,7 @@ export enum ElectricPotentialAcUnits {
 
 /** The Electric Potential of a system known to use Alternating Current. */
 export class ElectricPotentialAc extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltsacLazy: number | null = null;
     private microvoltsacLazy: number | null = null;
     private millivoltsacLazy: number | null = null;
@@ -40,7 +40,7 @@ export class ElectricPotentialAc extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricPotentialAcUnits = ElectricPotentialAcUnits.VoltsAc) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -140,6 +140,14 @@ export class ElectricPotentialAc extends BaseUnit {
      */
     public static FromMegavoltsAc(value: number): ElectricPotentialAc {
         return new ElectricPotentialAc(value, ElectricPotentialAcUnits.MegavoltsAc);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricPotentialAc
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricPotentialAcUnits {
+        return ElectricPotentialAcUnits;
     }
 
     /**

@@ -38,7 +38,7 @@ export enum EnergyDensityUnits {
 
 /** Energy density is the amount of energy stored in a substance per unit volume and is measured in J/m³. It is sometimes confused with energy per unit mass which is properly called specific energy. */
 export class EnergyDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private joulespercubicmeterLazy: number | null = null;
     private watthourspercubicmeterLazy: number | null = null;
     private kilojoulespercubicmeterLazy: number | null = null;
@@ -61,7 +61,7 @@ export class EnergyDensity extends BaseUnit {
     public constructor(value: number, fromUnit: EnergyDensityUnits = EnergyDensityUnits.JoulesPerCubicMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -290,6 +290,14 @@ export class EnergyDensity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with EnergyDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof EnergyDensityUnits {
+        return EnergyDensityUnits;
+    }
+
+    /**
      * Create API DTO represent a EnergyDensity unit.
      * @param holdInUnit The specific EnergyDensity unit to be used in the unit representation at the DTO
      */
@@ -345,24 +353,24 @@ export class EnergyDensity extends BaseUnit {
                 case EnergyDensityUnits.TerajoulesPerCubicMeter: return super.internalDivide(this.value, 1000000000000);
                 case EnergyDensityUnits.PetajoulesPerCubicMeter: return super.internalDivide(this.value, 1000000000000000);
                 case EnergyDensityUnits.KilowattHoursPerCubicMeter: {
-                    const value3 = super.internalDivide(this.value, 3.6e+3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case EnergyDensityUnits.MegawattHoursPerCubicMeter: {
-                    const value3 = super.internalDivide(this.value, 3.6e+3);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case EnergyDensityUnits.GigawattHoursPerCubicMeter: {
-                    const value3 = super.internalDivide(this.value, 3.6e+3);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case EnergyDensityUnits.TerawattHoursPerCubicMeter: {
-                    const value3 = super.internalDivide(this.value, 3.6e+3);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 case EnergyDensityUnits.PetawattHoursPerCubicMeter: {
-                    const value3 = super.internalDivide(this.value, 3.6e+3);
-                    return super.internalDivide(value3, 1000000000000000);
+                    const v3 = super.internalDivide(this.value, 3.6e+3);
+                    return super.internalDivide(v3, 1000000000000000);
                 }
                 default: return Number.NaN;
             }
@@ -394,24 +402,24 @@ export class EnergyDensity extends BaseUnit {
                 case EnergyDensityUnits.TerajoulesPerCubicMeter: return super.internalMultiply(value, 1000000000000);
                 case EnergyDensityUnits.PetajoulesPerCubicMeter: return super.internalMultiply(value, 1000000000000000);
                 case EnergyDensityUnits.KilowattHoursPerCubicMeter: {
-                    const value3 = super.internalMultiply(value, 3.6e+3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case EnergyDensityUnits.MegawattHoursPerCubicMeter: {
-                    const value3 = super.internalMultiply(value, 3.6e+3);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case EnergyDensityUnits.GigawattHoursPerCubicMeter: {
-                    const value3 = super.internalMultiply(value, 3.6e+3);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case EnergyDensityUnits.TerawattHoursPerCubicMeter: {
-                    const value3 = super.internalMultiply(value, 3.6e+3);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 case EnergyDensityUnits.PetawattHoursPerCubicMeter: {
-                    const value3 = super.internalMultiply(value, 3.6e+3);
-                    return super.internalMultiply(value3, 1000000000000000);
+                    const v3 = super.internalMultiply(value, 3.6e+3);
+                    return super.internalMultiply(v3, 1000000000000000);
                 }
                 default: return Number.NaN;
             }

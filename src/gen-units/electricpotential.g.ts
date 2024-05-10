@@ -26,7 +26,7 @@ export enum ElectricPotentialUnits {
 
 /** In classical electromagnetism, the electric potential (a scalar quantity denoted by Φ, ΦE or V and also called the electric field potential or the electrostatic potential) at a point is the amount of electric potential energy that a unitary point charge would have when located at that point. */
 export class ElectricPotential extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltsLazy: number | null = null;
     private nanovoltsLazy: number | null = null;
     private microvoltsLazy: number | null = null;
@@ -43,7 +43,7 @@ export class ElectricPotential extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricPotentialUnits = ElectricPotentialUnits.Volts) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -161,6 +161,14 @@ export class ElectricPotential extends BaseUnit {
      */
     public static FromMegavolts(value: number): ElectricPotential {
         return new ElectricPotential(value, ElectricPotentialUnits.Megavolts);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricPotential
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricPotentialUnits {
+        return ElectricPotentialUnits;
     }
 
     /**

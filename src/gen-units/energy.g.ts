@@ -94,7 +94,7 @@ export enum EnergyUnits {
 
 /** The joule, symbol J, is a derived unit of energy, work, or amount of heat in the International System of Units. It is equal to the energy transferred (or work done) when applying a force of one newton through a distance of one metre (1 newton metre or N·m), or in passing an electric current of one ampere through a resistance of one ohm for one second. Many other units of energy are included. Please do not confuse this definition of the calorie with the one colloquially used by the food industry, the large calorie, which is equivalent to 1 kcal. Thermochemical definition of the calorie is used. For BTU, the IT definition is used. */
 export class Energy extends BaseUnit {
-    private value: number;
+    protected value: number;
     private joulesLazy: number | null = null;
     private caloriesLazy: number | null = null;
     private britishthermalunitsLazy: number | null = null;
@@ -145,7 +145,7 @@ export class Energy extends BaseUnit {
     public constructor(value: number, fromUnit: EnergyUnits = EnergyUnits.Joules) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -878,6 +878,14 @@ export class Energy extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Energy
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof EnergyUnits {
+        return EnergyUnits;
+    }
+
+    /**
      * Create API DTO represent a Energy unit.
      * @param holdInUnit The specific Energy unit to be used in the unit representation at the DTO
      */
@@ -961,8 +969,8 @@ export class Energy extends BaseUnit {
                 case EnergyUnits.Ergs: return super.internalDivide(this.value, 1e-7);
                 case EnergyUnits.WattHours: return super.internalDivide(this.value, 3600);
                 case EnergyUnits.WattDays: {
-                    const value4 = super.internalMultiply(24, 3600);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalMultiply(24, 3600);
+                    return super.internalDivide(this.value, v4);
                 }
                 case EnergyUnits.ThermsEc: return super.internalDivide(this.value, 1.05505585262e8);
                 case EnergyUnits.ThermsUs: return super.internalDivide(this.value, 1.054804e8);
@@ -977,88 +985,88 @@ export class Energy extends BaseUnit {
                 case EnergyUnits.Terajoules: return super.internalDivide(this.value, 1000000000000);
                 case EnergyUnits.Petajoules: return super.internalDivide(this.value, 1000000000000000);
                 case EnergyUnits.Kilocalories: {
-                    const value3 = super.internalDivide(this.value, 4.184);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 4.184);
+                    return super.internalDivide(v3, 1000);
                 }
                 case EnergyUnits.Megacalories: {
-                    const value3 = super.internalDivide(this.value, 4.184);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 4.184);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case EnergyUnits.KilobritishThermalUnits: {
-                    const value3 = super.internalDivide(this.value, 1055.05585262);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1055.05585262);
+                    return super.internalDivide(v3, 1000);
                 }
                 case EnergyUnits.MegabritishThermalUnits: {
-                    const value3 = super.internalDivide(this.value, 1055.05585262);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1055.05585262);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case EnergyUnits.GigabritishThermalUnits: {
-                    const value3 = super.internalDivide(this.value, 1055.05585262);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 1055.05585262);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case EnergyUnits.KiloelectronVolts: {
-                    const value3 = super.internalDivide(this.value, 1.602176565e-19);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1.602176565e-19);
+                    return super.internalDivide(v3, 1000);
                 }
                 case EnergyUnits.MegaelectronVolts: {
-                    const value3 = super.internalDivide(this.value, 1.602176565e-19);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1.602176565e-19);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case EnergyUnits.GigaelectronVolts: {
-                    const value3 = super.internalDivide(this.value, 1.602176565e-19);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 1.602176565e-19);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case EnergyUnits.TeraelectronVolts: {
-                    const value3 = super.internalDivide(this.value, 1.602176565e-19);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 1.602176565e-19);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 case EnergyUnits.KilowattHours: {
-                    const value3 = super.internalDivide(this.value, 3600);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(v3, 1000);
                 }
                 case EnergyUnits.MegawattHours: {
-                    const value3 = super.internalDivide(this.value, 3600);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case EnergyUnits.GigawattHours: {
-                    const value3 = super.internalDivide(this.value, 3600);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case EnergyUnits.TerawattHours: {
-                    const value3 = super.internalDivide(this.value, 3600);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 case EnergyUnits.KilowattDays: {
-                    const value4 = super.internalMultiply(24, 3600);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1000);
+                    const v4 = super.internalMultiply(24, 3600);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 1000);
                 }
                 case EnergyUnits.MegawattDays: {
-                    const value4 = super.internalMultiply(24, 3600);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1000000);
+                    const v4 = super.internalMultiply(24, 3600);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 1000000);
                 }
                 case EnergyUnits.GigawattDays: {
-                    const value4 = super.internalMultiply(24, 3600);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1000000000);
+                    const v4 = super.internalMultiply(24, 3600);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 1000000000);
                 }
                 case EnergyUnits.TerawattDays: {
-                    const value4 = super.internalMultiply(24, 3600);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1000000000000);
+                    const v4 = super.internalMultiply(24, 3600);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 1000000000000);
                 }
                 case EnergyUnits.DecathermsEc: {
-                    const value3 = super.internalDivide(this.value, 1.05505585262e8);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalDivide(this.value, 1.05505585262e8);
+                    return super.internalDivide(v3, 10);
                 }
                 case EnergyUnits.DecathermsUs: {
-                    const value3 = super.internalDivide(this.value, 1.054804e8);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalDivide(this.value, 1.054804e8);
+                    return super.internalDivide(v3, 10);
                 }
                 case EnergyUnits.DecathermsImperial: {
-                    const value3 = super.internalDivide(this.value, 1.05505585257348e8);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalDivide(this.value, 1.05505585257348e8);
+                    return super.internalDivide(v3, 10);
                 }
                 default: return Number.NaN;
             }
@@ -1118,8 +1126,8 @@ export class Energy extends BaseUnit {
                 case EnergyUnits.Ergs: return super.internalMultiply(value, 1e-7);
                 case EnergyUnits.WattHours: return super.internalMultiply(value, 3600);
                 case EnergyUnits.WattDays: {
-                    const value3 = super.internalMultiply(value, 24);
-                    return super.internalMultiply(value3, 3600);
+                    const v3 = super.internalMultiply(value, 24);
+                    return super.internalMultiply(v3, 3600);
                 }
                 case EnergyUnits.ThermsEc: return super.internalMultiply(value, 1.05505585262e8);
                 case EnergyUnits.ThermsUs: return super.internalMultiply(value, 1.054804e8);
@@ -1134,88 +1142,88 @@ export class Energy extends BaseUnit {
                 case EnergyUnits.Terajoules: return super.internalMultiply(value, 1000000000000);
                 case EnergyUnits.Petajoules: return super.internalMultiply(value, 1000000000000000);
                 case EnergyUnits.Kilocalories: {
-                    const value3 = super.internalMultiply(value, 4.184);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 4.184);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case EnergyUnits.Megacalories: {
-                    const value3 = super.internalMultiply(value, 4.184);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 4.184);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case EnergyUnits.KilobritishThermalUnits: {
-                    const value3 = super.internalMultiply(value, 1055.05585262);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1055.05585262);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case EnergyUnits.MegabritishThermalUnits: {
-                    const value3 = super.internalMultiply(value, 1055.05585262);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1055.05585262);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case EnergyUnits.GigabritishThermalUnits: {
-                    const value3 = super.internalMultiply(value, 1055.05585262);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 1055.05585262);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case EnergyUnits.KiloelectronVolts: {
-                    const value3 = super.internalMultiply(value, 1.602176565e-19);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1.602176565e-19);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case EnergyUnits.MegaelectronVolts: {
-                    const value3 = super.internalMultiply(value, 1.602176565e-19);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1.602176565e-19);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case EnergyUnits.GigaelectronVolts: {
-                    const value3 = super.internalMultiply(value, 1.602176565e-19);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 1.602176565e-19);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case EnergyUnits.TeraelectronVolts: {
-                    const value3 = super.internalMultiply(value, 1.602176565e-19);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 1.602176565e-19);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 case EnergyUnits.KilowattHours: {
-                    const value3 = super.internalMultiply(value, 3600);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case EnergyUnits.MegawattHours: {
-                    const value3 = super.internalMultiply(value, 3600);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case EnergyUnits.GigawattHours: {
-                    const value3 = super.internalMultiply(value, 3600);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case EnergyUnits.TerawattHours: {
-                    const value3 = super.internalMultiply(value, 3600);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 case EnergyUnits.KilowattDays: {
-                    const value3 = super.internalMultiply(value, 24);
-                    const value5 = super.internalMultiply(value3, 3600);
-                    return super.internalMultiply(value5, 1000);
+                    const v3 = super.internalMultiply(value, 24);
+                    const v5 = super.internalMultiply(v3, 3600);
+                    return super.internalMultiply(v5, 1000);
                 }
                 case EnergyUnits.MegawattDays: {
-                    const value3 = super.internalMultiply(value, 24);
-                    const value5 = super.internalMultiply(value3, 3600);
-                    return super.internalMultiply(value5, 1000000);
+                    const v3 = super.internalMultiply(value, 24);
+                    const v5 = super.internalMultiply(v3, 3600);
+                    return super.internalMultiply(v5, 1000000);
                 }
                 case EnergyUnits.GigawattDays: {
-                    const value3 = super.internalMultiply(value, 24);
-                    const value5 = super.internalMultiply(value3, 3600);
-                    return super.internalMultiply(value5, 1000000000);
+                    const v3 = super.internalMultiply(value, 24);
+                    const v5 = super.internalMultiply(v3, 3600);
+                    return super.internalMultiply(v5, 1000000000);
                 }
                 case EnergyUnits.TerawattDays: {
-                    const value3 = super.internalMultiply(value, 24);
-                    const value5 = super.internalMultiply(value3, 3600);
-                    return super.internalMultiply(value5, 1000000000000);
+                    const v3 = super.internalMultiply(value, 24);
+                    const v5 = super.internalMultiply(v3, 3600);
+                    return super.internalMultiply(v5, 1000000000000);
                 }
                 case EnergyUnits.DecathermsEc: {
-                    const value3 = super.internalMultiply(value, 1.05505585262e8);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalMultiply(value, 1.05505585262e8);
+                    return super.internalMultiply(v3, 10);
                 }
                 case EnergyUnits.DecathermsUs: {
-                    const value3 = super.internalMultiply(value, 1.054804e8);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalMultiply(value, 1.054804e8);
+                    return super.internalMultiply(v3, 10);
                 }
                 case EnergyUnits.DecathermsImperial: {
-                    const value3 = super.internalMultiply(value, 1.05505585257348e8);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalMultiply(value, 1.05505585257348e8);
+                    return super.internalMultiply(v3, 10);
                 }
                 default: return Number.NaN;
             }

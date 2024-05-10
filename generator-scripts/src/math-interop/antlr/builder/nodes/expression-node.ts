@@ -1,4 +1,4 @@
-import { IdGenerator } from '../../../../id-generator';
+import { TwoByteIdGenerator } from '../../../../id-generator';
 import { MathStringBuilderNode, BaseMathStringBuilderNode } from './math-string-builder-node';
 
 import ts from 'typescript';
@@ -6,7 +6,7 @@ import ts from 'typescript';
 export class ExpressionNode extends BaseMathStringBuilderNode {
 	public readonly isPrimitive: boolean = false;
 
-	public constructor(idGenerator: IdGenerator, private readonly _child: MathStringBuilderNode) {
+	public constructor(idGenerator: TwoByteIdGenerator, private readonly _child: MathStringBuilderNode) {
 		super(idGenerator);
 	}
 

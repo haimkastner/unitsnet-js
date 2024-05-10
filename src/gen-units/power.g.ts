@@ -66,7 +66,7 @@ export enum PowerUnits {
 
 /** In physics, power is the rate of doing work. It is equivalent to an amount of energy consumed per unit time. */
 export class Power extends BaseUnit {
-    private value: number;
+    protected value: number;
     private wattsLazy: number | null = null;
     private mechanicalhorsepowerLazy: number | null = null;
     private metrichorsepowerLazy: number | null = null;
@@ -103,7 +103,7 @@ export class Power extends BaseUnit {
     public constructor(value: number, fromUnit: PowerUnits = PowerUnits.Watts) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -584,6 +584,14 @@ export class Power extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Power
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof PowerUnits {
+        return PowerUnits;
+    }
+
+    /**
      * Create API DTO represent a Power unit.
      * @param holdInUnit The specific Power unit to be used in the unit representation at the DTO
      */
@@ -666,28 +674,28 @@ export class Power extends BaseUnit {
                 case PowerUnits.Terawatts: return super.internalDivide(this.value, 1000000000000);
                 case PowerUnits.Petawatts: return super.internalDivide(this.value, 1000000000000000);
                 case PowerUnits.KilobritishThermalUnitsPerHour: {
-                    const value3 = super.internalDivide(this.value, 0.29307107017);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 0.29307107017);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PowerUnits.MegabritishThermalUnitsPerHour: {
-                    const value3 = super.internalDivide(this.value, 0.29307107017);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 0.29307107017);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case PowerUnits.MillijoulesPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case PowerUnits.KilojoulesPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PowerUnits.MegajoulesPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case PowerUnits.GigajoulesPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 default: return Number.NaN;
             }
@@ -746,28 +754,28 @@ export class Power extends BaseUnit {
                 case PowerUnits.Terawatts: return super.internalMultiply(value, 1000000000000);
                 case PowerUnits.Petawatts: return super.internalMultiply(value, 1000000000000000);
                 case PowerUnits.KilobritishThermalUnitsPerHour: {
-                    const value3 = super.internalMultiply(value, 0.29307107017);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 0.29307107017);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PowerUnits.MegabritishThermalUnitsPerHour: {
-                    const value3 = super.internalMultiply(value, 0.29307107017);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 0.29307107017);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case PowerUnits.MillijoulesPerHour: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case PowerUnits.KilojoulesPerHour: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PowerUnits.MegajoulesPerHour: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case PowerUnits.GigajoulesPerHour: {
-                    const value3 = super.internalDivide(value, 3600);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 default: return Number.NaN;
             }

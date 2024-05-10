@@ -3,9 +3,11 @@ import { arithmeticLexer as ArithmeticLexer } from '../../grammatical/arithmetic
 import { arithmeticParser as ArithmeticParser, EquationStringContext } from '../../grammatical/arithmeticParser';
 import { ArithmeticGrammarListener, IdentifierRemapping } from '../tree/arithmetic-grammar-listener';
 import { ParseTreeWalker } from 'antlr4ts/tree/ParseTreeWalker';
-import { IdGenerator } from '../../../../id-generator';
+import { TwoByteIdGenerator } from '../../../../id-generator';
 
 import ts from 'typescript';
+
+getCodeForFormula('{x} / 180 * Math.PI');
 
 export function getCodeForFormula(formula: string, variableIdentifierRemapping?: IdentifierRemapping): ts.Statement[] {
 	// Convert the input into a stream
@@ -22,7 +24,7 @@ export function getCodeForFormula(formula: string, variableIdentifierRemapping?:
 	const equationString: EquationStringContext = parser.equationString();
 
 	// Register the tree listener that'll take care of building the AST
-	const listener = new ArithmeticGrammarListener(new IdGenerator(), variableIdentifierRemapping);
+	const listener = new ArithmeticGrammarListener(new TwoByteIdGenerator(), variableIdentifierRemapping);
 	parser.addParseListener(listener);
 
 	ParseTreeWalker.DEFAULT.walk(listener, equationString);

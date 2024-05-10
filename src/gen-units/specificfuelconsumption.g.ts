@@ -22,7 +22,7 @@ export enum SpecificFuelConsumptionUnits {
 
 /** SFC is the fuel efficiency of an engine design with respect to thrust output */
 export class SpecificFuelConsumption extends BaseUnit {
-    private value: number;
+    protected value: number;
     private poundsmassperpoundforcehourLazy: number | null = null;
     private kilogramsperkilogramforcehourLazy: number | null = null;
     private gramsperkilonewtonsecondLazy: number | null = null;
@@ -37,7 +37,7 @@ export class SpecificFuelConsumption extends BaseUnit {
     public constructor(value: number, fromUnit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -119,6 +119,14 @@ export class SpecificFuelConsumption extends BaseUnit {
      */
     public static FromKilogramsPerKiloNewtonSecond(value: number): SpecificFuelConsumption {
         return new SpecificFuelConsumption(value, SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with SpecificFuelConsumption
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof SpecificFuelConsumptionUnits {
+        return SpecificFuelConsumptionUnits;
     }
 
     /**

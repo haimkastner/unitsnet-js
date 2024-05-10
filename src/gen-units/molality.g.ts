@@ -18,7 +18,7 @@ export enum MolalityUnits {
 
 /** Molality is a measure of the amount of solute in a solution relative to a given mass of solvent. */
 export class Molality extends BaseUnit {
-    private value: number;
+    protected value: number;
     private molesperkilogramLazy: number | null = null;
     private molespergramLazy: number | null = null;
 
@@ -31,7 +31,7 @@ export class Molality extends BaseUnit {
     public constructor(value: number, fromUnit: MolalityUnits = MolalityUnits.MolesPerKilogram) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +77,14 @@ export class Molality extends BaseUnit {
      */
     public static FromMolesPerGram(value: number): Molality {
         return new Molality(value, MolalityUnits.MolesPerGram);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Molality
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MolalityUnits {
+        return MolalityUnits;
     }
 
     /**

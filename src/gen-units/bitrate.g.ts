@@ -42,7 +42,7 @@ export enum BitRateUnits {
 
 /** In telecommunications and computing, bit rate is the number of bits that are conveyed or processed per unit of time. */
 export class BitRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private bitspersecondLazy: number | null = null;
     private bytespersecondLazy: number | null = null;
     private kilobitspersecondLazy: number | null = null;
@@ -67,7 +67,7 @@ export class BitRate extends BaseUnit {
     public constructor(value: number, fromUnit: BitRateUnits = BitRateUnits.BitsPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -332,6 +332,14 @@ export class BitRate extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with BitRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof BitRateUnits {
+        return BitRateUnits;
+    }
+
+    /**
      * Create API DTO represent a BitRate unit.
      * @param holdInUnit The specific BitRate unit to be used in the unit representation at the DTO
      */
@@ -390,28 +398,28 @@ export class BitRate extends BaseUnit {
                 case BitRateUnits.PetabitsPerSecond: return super.internalDivide(this.value, 1000000000000000);
                 case BitRateUnits.ExabitsPerSecond: return super.internalDivide(this.value, 1000000000000000000);
                 case BitRateUnits.KilobytesPerSecond: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000);
                 }
                 case BitRateUnits.MegabytesPerSecond: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case BitRateUnits.GigabytesPerSecond: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case BitRateUnits.TerabytesPerSecond: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 case BitRateUnits.PetabytesPerSecond: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000000000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000000);
                 }
                 case BitRateUnits.ExabytesPerSecond: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000000000000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000000000);
                 }
                 default: return Number.NaN;
             }
@@ -446,28 +454,28 @@ export class BitRate extends BaseUnit {
                 case BitRateUnits.PetabitsPerSecond: return super.internalMultiply(value, 1000000000000000);
                 case BitRateUnits.ExabitsPerSecond: return super.internalMultiply(value, 1000000000000000000);
                 case BitRateUnits.KilobytesPerSecond: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case BitRateUnits.MegabytesPerSecond: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case BitRateUnits.GigabytesPerSecond: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case BitRateUnits.TerabytesPerSecond: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 case BitRateUnits.PetabytesPerSecond: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000000000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000000);
                 }
                 case BitRateUnits.ExabytesPerSecond: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000000000000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000000000);
                 }
                 default: return Number.NaN;
             }

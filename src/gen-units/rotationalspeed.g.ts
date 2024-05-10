@@ -40,7 +40,7 @@ export enum RotationalSpeedUnits {
 
 /** Rotational speed (sometimes called speed of revolution) is the number of complete rotations, revolutions, cycles, or turns per time unit. Rotational speed is a cyclic frequency, measured in radians per second or in hertz in the SI System by scientists, or in revolutions per minute (rpm or min-1) or revolutions per second in everyday life. The symbol for rotational speed is ω (the Greek lowercase letter "omega"). */
 export class RotationalSpeed extends BaseUnit {
-    private value: number;
+    protected value: number;
     private radianspersecondLazy: number | null = null;
     private degreespersecondLazy: number | null = null;
     private degreesperminuteLazy: number | null = null;
@@ -64,7 +64,7 @@ export class RotationalSpeed extends BaseUnit {
     public constructor(value: number, fromUnit: RotationalSpeedUnits = RotationalSpeedUnits.RadiansPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -311,6 +311,14 @@ export class RotationalSpeed extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with RotationalSpeed
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RotationalSpeedUnits {
+        return RotationalSpeedUnits;
+    }
+
+    /**
      * Create API DTO represent a RotationalSpeed unit.
      * @param holdInUnit The specific RotationalSpeed unit to be used in the unit representation at the DTO
      */
@@ -361,18 +369,18 @@ export class RotationalSpeed extends BaseUnit {
             switch (toUnit) {
                 case RotationalSpeedUnits.RadiansPerSecond: return this.value;
                 case RotationalSpeedUnits.DegreesPerSecond: {
-                    const value3 = super.internalDivide(180, Math.PI);
-                    return super.internalMultiply(value3, this.value);
+                    const v3 = super.internalDivide(180, Math.PI);
+                    return super.internalMultiply(v3, this.value);
                 }
                 case RotationalSpeedUnits.DegreesPerMinute: {
-                    const value3 = super.internalMultiply(180, 60);
-                    const value5 = super.internalDivide(value3, Math.PI);
-                    return super.internalMultiply(value5, this.value);
+                    const v4 = super.internalDivide(60, Math.PI);
+                    const v5 = super.internalMultiply(180, v4);
+                    return super.internalMultiply(v5, this.value);
                 }
                 case RotationalSpeedUnits.RevolutionsPerSecond: return super.internalDivide(this.value, 6.2831853072);
                 case RotationalSpeedUnits.RevolutionsPerMinute: {
-                    const value3 = super.internalDivide(this.value, 6.2831853072);
-                    return super.internalMultiply(value3, 60);
+                    const v3 = super.internalDivide(this.value, 6.2831853072);
+                    return super.internalMultiply(v3, 60);
                 }
                 case RotationalSpeedUnits.NanoradiansPerSecond: return super.internalDivide(this.value, 1e-9);
                 case RotationalSpeedUnits.MicroradiansPerSecond: return super.internalDivide(this.value, 0.000001);
@@ -380,19 +388,19 @@ export class RotationalSpeed extends BaseUnit {
                 case RotationalSpeedUnits.CentiradiansPerSecond: return super.internalDivide(this.value, 0.01);
                 case RotationalSpeedUnits.DeciradiansPerSecond: return super.internalDivide(this.value, 0.1);
                 case RotationalSpeedUnits.NanodegreesPerSecond: {
-                    const value3 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value3, this.value);
-                    return super.internalDivide(value5, 1e-9);
+                    const v3 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(v3, this.value);
+                    return super.internalDivide(v5, 1e-9);
                 }
                 case RotationalSpeedUnits.MicrodegreesPerSecond: {
-                    const value3 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value3, this.value);
-                    return super.internalDivide(value5, 0.000001);
+                    const v3 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(v3, this.value);
+                    return super.internalDivide(v5, 0.000001);
                 }
                 case RotationalSpeedUnits.MillidegreesPerSecond: {
-                    const value3 = super.internalDivide(180, Math.PI);
-                    const value5 = super.internalMultiply(value3, this.value);
-                    return super.internalDivide(value5, 0.001);
+                    const v3 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(v3, this.value);
+                    return super.internalDivide(v5, 0.001);
                 }
                 default: return Number.NaN;
             }
@@ -419,18 +427,18 @@ export class RotationalSpeed extends BaseUnit {
             switch (fromUnit) {
                 case RotationalSpeedUnits.RadiansPerSecond: return value;
                 case RotationalSpeedUnits.DegreesPerSecond: {
-                    const value3 = super.internalDivide(Math.PI, 180);
-                    return super.internalMultiply(value3, value);
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    return super.internalMultiply(v3, value);
                 }
                 case RotationalSpeedUnits.DegreesPerMinute: {
-                    const value4 = super.internalMultiply(180, 60);
-                    const value5 = super.internalDivide(Math.PI, value4);
-                    return super.internalMultiply(value5, value);
+                    const v4 = super.internalMultiply(180, 60);
+                    const v5 = super.internalDivide(Math.PI, v4);
+                    return super.internalMultiply(v5, value);
                 }
                 case RotationalSpeedUnits.RevolutionsPerSecond: return super.internalMultiply(value, 6.2831853072);
                 case RotationalSpeedUnits.RevolutionsPerMinute: {
-                    const value3 = super.internalMultiply(value, 6.2831853072);
-                    return super.internalDivide(value3, 60);
+                    const v3 = super.internalMultiply(value, 6.2831853072);
+                    return super.internalDivide(v3, 60);
                 }
                 case RotationalSpeedUnits.NanoradiansPerSecond: return super.internalMultiply(value, 1e-9);
                 case RotationalSpeedUnits.MicroradiansPerSecond: return super.internalMultiply(value, 0.000001);
@@ -438,19 +446,19 @@ export class RotationalSpeed extends BaseUnit {
                 case RotationalSpeedUnits.CentiradiansPerSecond: return super.internalMultiply(value, 0.01);
                 case RotationalSpeedUnits.DeciradiansPerSecond: return super.internalMultiply(value, 0.1);
                 case RotationalSpeedUnits.NanodegreesPerSecond: {
-                    const value3 = super.internalDivide(Math.PI, 180);
-                    const value5 = super.internalMultiply(value3, value);
-                    return super.internalMultiply(value5, 1e-9);
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    const v5 = super.internalMultiply(v3, value);
+                    return super.internalMultiply(v5, 1e-9);
                 }
                 case RotationalSpeedUnits.MicrodegreesPerSecond: {
-                    const value3 = super.internalDivide(Math.PI, 180);
-                    const value5 = super.internalMultiply(value3, value);
-                    return super.internalMultiply(value5, 0.000001);
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    const v5 = super.internalMultiply(v3, value);
+                    return super.internalMultiply(v5, 0.000001);
                 }
                 case RotationalSpeedUnits.MillidegreesPerSecond: {
-                    const value3 = super.internalDivide(Math.PI, 180);
-                    const value5 = super.internalMultiply(value3, value);
-                    return super.internalMultiply(value5, 0.001);
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    const v5 = super.internalMultiply(v3, value);
+                    return super.internalMultiply(v5, 0.001);
                 }
                 default: return Number.NaN;
             }

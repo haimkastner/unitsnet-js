@@ -68,7 +68,7 @@ export enum MassUnits {
 
 /** In physics, mass (from Greek μᾶζα "barley cake, lump [of dough]") is a property of a physical system or body, giving rise to the phenomena of the body's resistance to being accelerated by a force and the strength of its mutual gravitational attraction with other bodies. Instruments such as mass balances or scales use those phenomena to measure mass. The SI unit of mass is the kilogram (kg). */
 export class Mass extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramsLazy: number | null = null;
     private tonnesLazy: number | null = null;
     private shorttonsLazy: number | null = null;
@@ -106,7 +106,7 @@ export class Mass extends BaseUnit {
     public constructor(value: number, fromUnit: MassUnits = MassUnits.Kilograms) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -605,6 +605,14 @@ export class Mass extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Mass
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MassUnits {
+        return MassUnits;
+    }
+
+    /**
      * Create API DTO represent a Mass unit.
      * @param holdInUnit The specific Mass unit to be used in the unit representation at the DTO
      */
@@ -681,60 +689,60 @@ export class Mass extends BaseUnit {
                 case MassUnits.SolarMasses: return super.internalDivide(this.value, 1.98947e30);
                 case MassUnits.EarthMasses: return super.internalDivide(this.value, 5.9722E+24);
                 case MassUnits.Femtograms: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1e-15);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1e-15);
                 }
                 case MassUnits.Picograms: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case MassUnits.Nanograms: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case MassUnits.Micrograms: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case MassUnits.Milligrams: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassUnits.Centigrams: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case MassUnits.Decigrams: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case MassUnits.Decagrams: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 10);
                 }
                 case MassUnits.Hectograms: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 100);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 100);
                 }
                 case MassUnits.Kilograms: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassUnits.Kilotonnes: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassUnits.Megatonnes: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case MassUnits.Kilopounds: {
-                    const value3 = super.internalDivide(this.value, 0.45359237);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 0.45359237);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassUnits.Megapounds: {
-                    const value3 = super.internalDivide(this.value, 0.45359237);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 0.45359237);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -787,60 +795,60 @@ export class Mass extends BaseUnit {
                 case MassUnits.SolarMasses: return super.internalMultiply(value, 1.98947e30);
                 case MassUnits.EarthMasses: return super.internalMultiply(value, 5.9722E+24);
                 case MassUnits.Femtograms: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1e-15);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1e-15);
                 }
                 case MassUnits.Picograms: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case MassUnits.Nanograms: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case MassUnits.Micrograms: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case MassUnits.Milligrams: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassUnits.Centigrams: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case MassUnits.Decigrams: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case MassUnits.Decagrams: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 10);
                 }
                 case MassUnits.Hectograms: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 100);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 100);
                 }
                 case MassUnits.Kilograms: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassUnits.Kilotonnes: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassUnits.Megatonnes: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case MassUnits.Kilopounds: {
-                    const value3 = super.internalMultiply(value, 0.45359237);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 0.45359237);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassUnits.Megapounds: {
-                    const value3 = super.internalMultiply(value, 0.45359237);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 0.45359237);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

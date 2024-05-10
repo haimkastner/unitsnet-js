@@ -22,7 +22,7 @@ export enum ElectricAdmittanceUnits {
 
 /** Electric admittance is a measure of how easily a circuit or device will allow a current to flow. It is defined as the inverse of impedance. The SI unit of admittance is the siemens (symbol S). */
 export class ElectricAdmittance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private siemensLazy: number | null = null;
     private nanosiemensLazy: number | null = null;
     private microsiemensLazy: number | null = null;
@@ -37,7 +37,7 @@ export class ElectricAdmittance extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -119,6 +119,14 @@ export class ElectricAdmittance extends BaseUnit {
      */
     public static FromMillisiemens(value: number): ElectricAdmittance {
         return new ElectricAdmittance(value, ElectricAdmittanceUnits.Millisiemens);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricAdmittance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricAdmittanceUnits {
+        return ElectricAdmittanceUnits;
     }
 
     /**

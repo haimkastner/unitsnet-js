@@ -1,4 +1,4 @@
-import { IdGenerator } from '../../../../id-generator';
+import { TwoByteIdGenerator } from '../../../../id-generator';
 import ts from 'typescript';
 
 export interface MathStringBuilderNode {
@@ -12,7 +12,7 @@ export abstract class BaseMathStringBuilderNode implements MathStringBuilderNode
 
 	public abstract readonly isPrimitive: boolean;
 
-	protected constructor(idGenerator: IdGenerator) {
+	protected constructor(idGenerator: TwoByteIdGenerator) {
 		this.id = idGenerator.getNext();
 	}
 

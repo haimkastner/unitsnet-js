@@ -24,7 +24,7 @@ export enum PorousMediumPermeabilityUnits {
 
 /** In fluid mechanics, permeability is the measure of the ability of a porous material to allow fluids to pass through it. */
 export class PorousMediumPermeability extends BaseUnit {
-    private value: number;
+    protected value: number;
     private darcysLazy: number | null = null;
     private squaremetersLazy: number | null = null;
     private squarecentimetersLazy: number | null = null;
@@ -40,7 +40,7 @@ export class PorousMediumPermeability extends BaseUnit {
     public constructor(value: number, fromUnit: PorousMediumPermeabilityUnits = PorousMediumPermeabilityUnits.SquareMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -143,6 +143,14 @@ export class PorousMediumPermeability extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with PorousMediumPermeability
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof PorousMediumPermeabilityUnits {
+        return PorousMediumPermeabilityUnits;
+    }
+
+    /**
      * Create API DTO represent a PorousMediumPermeability unit.
      * @param holdInUnit The specific PorousMediumPermeability unit to be used in the unit representation at the DTO
      */
@@ -187,12 +195,12 @@ export class PorousMediumPermeability extends BaseUnit {
                 case PorousMediumPermeabilityUnits.SquareMeters: return this.value;
                 case PorousMediumPermeabilityUnits.SquareCentimeters: return super.internalDivide(this.value, 1e-4);
                 case PorousMediumPermeabilityUnits.Microdarcys: {
-                    const value3 = super.internalDivide(this.value, 9.869233e-13);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 9.869233e-13);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case PorousMediumPermeabilityUnits.Millidarcys: {
-                    const value3 = super.internalDivide(this.value, 9.869233e-13);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 9.869233e-13);
+                    return super.internalDivide(v3, 0.001);
                 }
                 default: return Number.NaN;
             }
@@ -213,12 +221,12 @@ export class PorousMediumPermeability extends BaseUnit {
                 case PorousMediumPermeabilityUnits.SquareMeters: return value;
                 case PorousMediumPermeabilityUnits.SquareCentimeters: return super.internalMultiply(value, 1e-4);
                 case PorousMediumPermeabilityUnits.Microdarcys: {
-                    const value3 = super.internalMultiply(value, 9.869233e-13);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 9.869233e-13);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case PorousMediumPermeabilityUnits.Millidarcys: {
-                    const value3 = super.internalMultiply(value, 9.869233e-13);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 9.869233e-13);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 default: return Number.NaN;
             }

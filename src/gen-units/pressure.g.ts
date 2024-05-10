@@ -112,7 +112,7 @@ export enum PressureUnits {
 
 /** Pressure (symbol: P or p) is the ratio of force to the area over which that force is distributed. Pressure is force per unit area applied in a direction perpendicular to the surface of an object. Gauge pressure (also spelled gage pressure)[a] is the pressure relative to the local atmospheric or ambient pressure. Pressure is measured in any unit of force divided by any unit of area. The SI unit of pressure is the newton per square metre, which is called the pascal (Pa) after the seventeenth-century philosopher and scientist Blaise Pascal. A pressure of 1 Pa is small; it approximately equals the pressure exerted by a dollar bill resting flat on a table. Everyday pressures are often stated in kilopascals (1 kPa = 1000 Pa). */
 export class Pressure extends BaseUnit {
-    private value: number;
+    protected value: number;
     private pascalsLazy: number | null = null;
     private atmospheresLazy: number | null = null;
     private barsLazy: number | null = null;
@@ -172,7 +172,7 @@ export class Pressure extends BaseUnit {
     public constructor(value: number, fromUnit: PressureUnits = PressureUnits.Pascals) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -1067,6 +1067,14 @@ export class Pressure extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Pressure
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof PressureUnits {
+        return PressureUnits;
+    }
+
+    /**
      * Create API DTO represent a Pressure unit.
      * @param holdInUnit The specific Pressure unit to be used in the unit representation at the DTO
      */
@@ -1153,8 +1161,8 @@ export class Pressure extends BaseUnit {
             switch (toUnit) {
                 case PressureUnits.Pascals: return this.value;
                 case PressureUnits.Atmospheres: {
-                    const value4 = super.internalMultiply(1.01325, 1e5);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalMultiply(1.01325, 1e5);
+                    return super.internalDivide(this.value, v4);
                 }
                 case PressureUnits.Bars: return super.internalDivide(this.value, 1e5);
                 case PressureUnits.KilogramsForcePerSquareMeter: return super.internalMultiply(this.value, 0.101971619222242);
@@ -1164,12 +1172,12 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.NewtonsPerSquareCentimeter: return super.internalDivide(this.value, 1e4);
                 case PressureUnits.NewtonsPerSquareMillimeter: return super.internalDivide(this.value, 1e6);
                 case PressureUnits.TechnicalAtmospheres: {
-                    const value4 = super.internalMultiply(9.80680592331, 1e4);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalMultiply(9.80680592331, 1e4);
+                    return super.internalDivide(this.value, v4);
                 }
                 case PressureUnits.Torrs: {
-                    const value4 = super.internalMultiply(1.3332266752, 1e2);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalMultiply(1.3332266752, 1e2);
+                    return super.internalDivide(this.value, v4);
                 }
                 case PressureUnits.PoundsForcePerSquareInch: return super.internalDivide(this.value, 6.894757293168361e3);
                 case PressureUnits.PoundsForcePerSquareMil: return super.internalDivide(this.value, 6.894757293168361e9);
@@ -1186,16 +1194,16 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.MetersOfWaterColumn: return super.internalDivide(this.value, 9.806650000000272e3);
                 case PressureUnits.InchesOfWaterColumn: return super.internalDivide(this.value, 249.08890833333);
                 case PressureUnits.MetersOfElevation: {
-                    const value4 = super.internalDivide(this.value, 101325.0);
-                    const value6 = Math.pow(value4, 0.190284);
-                    const value7 = super.internalSubtract(1.0, value6);
-                    return super.internalMultiply(value7, 44307.69396);
+                    const v4 = super.internalDivide(this.value, 101325.0);
+                    const v6 = Math.pow(v4, 0.190284);
+                    const v7 = super.internalSubtract(1.0, v6);
+                    return super.internalMultiply(v7, 44307.69396);
                 }
                 case PressureUnits.FeetOfElevation: {
-                    const value4 = super.internalDivide(this.value, 101325.0);
-                    const value6 = Math.pow(value4, 0.190284);
-                    const value7 = super.internalSubtract(1.0, value6);
-                    return super.internalMultiply(value7, 145366.45);
+                    const v4 = super.internalDivide(this.value, 101325.0);
+                    const v6 = Math.pow(v4, 0.190284);
+                    const v7 = super.internalSubtract(1.0, v6);
+                    return super.internalMultiply(v7, 145366.45);
                 }
                 case PressureUnits.Micropascals: return super.internalDivide(this.value, 0.000001);
                 case PressureUnits.Millipascals: return super.internalDivide(this.value, 0.001);
@@ -1205,58 +1213,58 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.Megapascals: return super.internalDivide(this.value, 1000000);
                 case PressureUnits.Gigapascals: return super.internalDivide(this.value, 1000000000);
                 case PressureUnits.Microbars: {
-                    const value3 = super.internalDivide(this.value, 1e5);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 1e5);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case PressureUnits.Millibars: {
-                    const value3 = super.internalDivide(this.value, 1e5);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e5);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case PressureUnits.Centibars: {
-                    const value3 = super.internalDivide(this.value, 1e5);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalDivide(this.value, 1e5);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case PressureUnits.Decibars: {
-                    const value3 = super.internalDivide(this.value, 1e5);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalDivide(this.value, 1e5);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case PressureUnits.Kilobars: {
-                    const value3 = super.internalDivide(this.value, 1e5);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1e5);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PressureUnits.Megabars: {
-                    const value3 = super.internalDivide(this.value, 1e5);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1e5);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case PressureUnits.KilonewtonsPerSquareMeter: return super.internalDivide(this.value, 1000);
                 case PressureUnits.MeganewtonsPerSquareMeter: return super.internalDivide(this.value, 1000000);
                 case PressureUnits.KilonewtonsPerSquareCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e4);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1e4);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PressureUnits.KilonewtonsPerSquareMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e6);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1e6);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PressureUnits.KilopoundsForcePerSquareInch: {
-                    const value3 = super.internalDivide(this.value, 6.894757293168361e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 6.894757293168361e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PressureUnits.KilopoundsForcePerSquareMil: {
-                    const value3 = super.internalDivide(this.value, 6.894757293168361e9);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 6.894757293168361e9);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PressureUnits.KilopoundsForcePerSquareFoot: {
-                    const value3 = super.internalDivide(this.value, 4.788025898033584e1);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 4.788025898033584e1);
+                    return super.internalDivide(v3, 1000);
                 }
                 case PressureUnits.MillimetersOfWaterColumn: {
-                    const value3 = super.internalDivide(this.value, 9.806650000000272e3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 9.806650000000272e3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case PressureUnits.CentimetersOfWaterColumn: {
-                    const value3 = super.internalDivide(this.value, 9.806650000000272e3);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalDivide(this.value, 9.806650000000272e3);
+                    return super.internalDivide(v3, 0.01);
                 }
                 default: return Number.NaN;
             }
@@ -1319,8 +1327,8 @@ export class Pressure extends BaseUnit {
             switch (fromUnit) {
                 case PressureUnits.Pascals: return value;
                 case PressureUnits.Atmospheres: {
-                    const value3 = super.internalMultiply(value, 1.01325);
-                    return super.internalMultiply(value3, 1e5);
+                    const v3 = super.internalMultiply(value, 1.01325);
+                    return super.internalMultiply(v3, 1e5);
                 }
                 case PressureUnits.Bars: return super.internalMultiply(value, 1e5);
                 case PressureUnits.KilogramsForcePerSquareMeter: return super.internalMultiply(value, 9.80665019960652);
@@ -1330,12 +1338,12 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.NewtonsPerSquareCentimeter: return super.internalMultiply(value, 1e4);
                 case PressureUnits.NewtonsPerSquareMillimeter: return super.internalMultiply(value, 1e6);
                 case PressureUnits.TechnicalAtmospheres: {
-                    const value3 = super.internalMultiply(value, 9.80680592331);
-                    return super.internalMultiply(value3, 1e4);
+                    const v3 = super.internalMultiply(value, 9.80680592331);
+                    return super.internalMultiply(v3, 1e4);
                 }
                 case PressureUnits.Torrs: {
-                    const value3 = super.internalMultiply(value, 1.3332266752);
-                    return super.internalMultiply(value3, 1e2);
+                    const v3 = super.internalMultiply(value, 1.3332266752);
+                    return super.internalMultiply(v3, 1e2);
                 }
                 case PressureUnits.PoundsForcePerSquareInch: return super.internalMultiply(value, 6.894757293168361e3);
                 case PressureUnits.PoundsForcePerSquareMil: return super.internalMultiply(value, 6.894757293168361e9);
@@ -1352,16 +1360,16 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.MetersOfWaterColumn: return super.internalMultiply(value, 9.806650000000272e3);
                 case PressureUnits.InchesOfWaterColumn: return super.internalMultiply(value, 249.08890833333);
                 case PressureUnits.MetersOfElevation: {
-                    const value4 = super.internalDivide(value, 44307.69396);
-                    const value5 = super.internalSubtract(1.0, value4);
-                    const value7 = Math.pow(value5, 5.2553026003237266401799415610351);
-                    return super.internalMultiply(value7, 101325.0);
+                    const v4 = super.internalDivide(value, 44307.69396);
+                    const v5 = super.internalSubtract(1.0, v4);
+                    const v7 = Math.pow(v5, 5.2553026003237266401799415610351);
+                    return super.internalMultiply(v7, 101325.0);
                 }
                 case PressureUnits.FeetOfElevation: {
-                    const value4 = super.internalDivide(value, 145366.45);
-                    const value5 = super.internalSubtract(1.0, value4);
-                    const value7 = Math.pow(value5, 5.2553026003237266401799415610351);
-                    return super.internalMultiply(value7, 101325.0);
+                    const v4 = super.internalDivide(value, 145366.45);
+                    const v5 = super.internalSubtract(1.0, v4);
+                    const v7 = Math.pow(v5, 5.2553026003237266401799415610351);
+                    return super.internalMultiply(v7, 101325.0);
                 }
                 case PressureUnits.Micropascals: return super.internalMultiply(value, 0.000001);
                 case PressureUnits.Millipascals: return super.internalMultiply(value, 0.001);
@@ -1371,58 +1379,58 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.Megapascals: return super.internalMultiply(value, 1000000);
                 case PressureUnits.Gigapascals: return super.internalMultiply(value, 1000000000);
                 case PressureUnits.Microbars: {
-                    const value3 = super.internalMultiply(value, 1e5);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 1e5);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case PressureUnits.Millibars: {
-                    const value3 = super.internalMultiply(value, 1e5);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1e5);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case PressureUnits.Centibars: {
-                    const value3 = super.internalMultiply(value, 1e5);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalMultiply(value, 1e5);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case PressureUnits.Decibars: {
-                    const value3 = super.internalMultiply(value, 1e5);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalMultiply(value, 1e5);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case PressureUnits.Kilobars: {
-                    const value3 = super.internalMultiply(value, 1e5);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1e5);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PressureUnits.Megabars: {
-                    const value3 = super.internalMultiply(value, 1e5);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1e5);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case PressureUnits.KilonewtonsPerSquareMeter: return super.internalMultiply(value, 1000);
                 case PressureUnits.MeganewtonsPerSquareMeter: return super.internalMultiply(value, 1000000);
                 case PressureUnits.KilonewtonsPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e4);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1e4);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PressureUnits.KilonewtonsPerSquareMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e6);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1e6);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PressureUnits.KilopoundsForcePerSquareInch: {
-                    const value3 = super.internalMultiply(value, 6.894757293168361e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 6.894757293168361e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PressureUnits.KilopoundsForcePerSquareMil: {
-                    const value3 = super.internalMultiply(value, 6.894757293168361e9);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 6.894757293168361e9);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PressureUnits.KilopoundsForcePerSquareFoot: {
-                    const value3 = super.internalMultiply(value, 4.788025898033584e1);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 4.788025898033584e1);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case PressureUnits.MillimetersOfWaterColumn: {
-                    const value3 = super.internalMultiply(value, 9.806650000000272e3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 9.806650000000272e3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case PressureUnits.CentimetersOfWaterColumn: {
-                    const value3 = super.internalMultiply(value, 9.806650000000272e3);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalMultiply(value, 9.806650000000272e3);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 default: return Number.NaN;
             }

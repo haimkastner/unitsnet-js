@@ -16,7 +16,7 @@ export enum TurbidityUnits {
 
 /** Turbidity is the cloudiness or haziness of a fluid caused by large numbers of individual particles that are generally invisible to the naked eye, similar to smoke in air. The measurement of turbidity is a key test of water quality. */
 export class Turbidity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private ntuLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class Turbidity extends BaseUnit {
     public constructor(value: number, fromUnit: TurbidityUnits = TurbidityUnits.NTU) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class Turbidity extends BaseUnit {
      */
     public static FromNTU(value: number): Turbidity {
         return new Turbidity(value, TurbidityUnits.NTU);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Turbidity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof TurbidityUnits {
+        return TurbidityUnits;
     }
 
     /**

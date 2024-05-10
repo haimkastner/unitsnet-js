@@ -28,7 +28,7 @@ export enum CompressibilityUnits {
 
 /** Compressibility is the measure of the relative volume change of a fluid or solid in response to pressure changes. */
 export class Compressibility extends BaseUnit {
-    private value: number;
+    protected value: number;
     private inversepascalsLazy: number | null = null;
     private inversekilopascalsLazy: number | null = null;
     private inversemegapascalsLazy: number | null = null;
@@ -46,7 +46,7 @@ export class Compressibility extends BaseUnit {
     public constructor(value: number, fromUnit: CompressibilityUnits = CompressibilityUnits.InversePascals) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -182,6 +182,14 @@ export class Compressibility extends BaseUnit {
      */
     public static FromInversePoundsForcePerSquareInch(value: number): Compressibility {
         return new Compressibility(value, CompressibilityUnits.InversePoundsForcePerSquareInch);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Compressibility
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof CompressibilityUnits {
+        return CompressibilityUnits;
     }
 
     /**

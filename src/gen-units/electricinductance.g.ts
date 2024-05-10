@@ -24,7 +24,7 @@ export enum ElectricInductanceUnits {
 
 /** Inductance is a property of an electrical conductor which opposes a change in current. */
 export class ElectricInductance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private henriesLazy: number | null = null;
     private picohenriesLazy: number | null = null;
     private nanohenriesLazy: number | null = null;
@@ -40,7 +40,7 @@ export class ElectricInductance extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricInductanceUnits = ElectricInductanceUnits.Henries) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -140,6 +140,14 @@ export class ElectricInductance extends BaseUnit {
      */
     public static FromMillihenries(value: number): ElectricInductance {
         return new ElectricInductance(value, ElectricInductanceUnits.Millihenries);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricInductance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricInductanceUnits {
+        return ElectricInductanceUnits;
     }
 
     /**

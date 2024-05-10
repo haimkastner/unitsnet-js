@@ -22,7 +22,7 @@ export enum FuelEfficiencyUnits {
 
 /** Fuel efficiency is a form of thermal efficiency, meaning the ratio from effort to result of a process that converts chemical potential energy contained in a carrier (fuel) into kinetic energy or work. Fuel economy is stated as "fuel consumption" in liters per 100 kilometers (L/100 km). In countries using non-metric system, fuel economy is expressed in miles per gallon (mpg) (imperial galon or US galon). */
 export class FuelEfficiency extends BaseUnit {
-    private value: number;
+    protected value: number;
     private litersper100kilometersLazy: number | null = null;
     private milesperusgallonLazy: number | null = null;
     private milesperukgallonLazy: number | null = null;
@@ -37,7 +37,7 @@ export class FuelEfficiency extends BaseUnit {
     public constructor(value: number, fromUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -122,6 +122,14 @@ export class FuelEfficiency extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with FuelEfficiency
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof FuelEfficiencyUnits {
+        return FuelEfficiencyUnits;
+    }
+
+    /**
      * Create API DTO represent a FuelEfficiency unit.
      * @param holdInUnit The specific FuelEfficiency unit to be used in the unit representation at the DTO
      */
@@ -163,14 +171,14 @@ export class FuelEfficiency extends BaseUnit {
             switch (toUnit) {
                 case FuelEfficiencyUnits.LitersPer100Kilometers: return this.value;
                 case FuelEfficiencyUnits.MilesPerUsGallon: {
-                    const value3 = super.internalMultiply(100, 3.785411784);
-                    const value6 = super.internalMultiply(1.609344, this.value);
-                    return super.internalDivide(value3, value6);
+                    const v3 = super.internalMultiply(100, 3.785411784);
+                    const v6 = super.internalMultiply(1.609344, this.value);
+                    return super.internalDivide(v3, v6);
                 }
                 case FuelEfficiencyUnits.MilesPerUkGallon: {
-                    const value3 = super.internalMultiply(100, 4.54609188);
-                    const value6 = super.internalMultiply(1.609344, this.value);
-                    return super.internalDivide(value3, value6);
+                    const v3 = super.internalMultiply(100, 4.54609188);
+                    const v6 = super.internalMultiply(1.609344, this.value);
+                    return super.internalDivide(v3, v6);
                 }
                 case FuelEfficiencyUnits.KilometersPerLiters: return super.internalDivide(100, this.value);
                 default: return Number.NaN;
@@ -189,14 +197,14 @@ export class FuelEfficiency extends BaseUnit {
             switch (fromUnit) {
                 case FuelEfficiencyUnits.LitersPer100Kilometers: return value;
                 case FuelEfficiencyUnits.MilesPerUsGallon: {
-                    const value3 = super.internalMultiply(100, 3.785411784);
-                    const value6 = super.internalMultiply(1.609344, value);
-                    return super.internalDivide(value3, value6);
+                    const v3 = super.internalMultiply(100, 3.785411784);
+                    const v6 = super.internalMultiply(1.609344, value);
+                    return super.internalDivide(v3, v6);
                 }
                 case FuelEfficiencyUnits.MilesPerUkGallon: {
-                    const value3 = super.internalMultiply(100, 4.54609188);
-                    const value6 = super.internalMultiply(1.609344, value);
-                    return super.internalDivide(value3, value6);
+                    const v3 = super.internalMultiply(100, 4.54609188);
+                    const v6 = super.internalMultiply(1.609344, value);
+                    return super.internalDivide(v3, v6);
                 }
                 case FuelEfficiencyUnits.KilometersPerLiters: return super.internalDivide(100, value);
                 default: return Number.NaN;

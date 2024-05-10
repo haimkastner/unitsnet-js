@@ -112,7 +112,7 @@ export enum MassConcentrationUnits {
 
 /** In chemistry, the mass concentration ρi (or γi) is defined as the mass of a constituent mi divided by the volume of the mixture V */
 export class MassConcentration extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramspercubicmillimeterLazy: number | null = null;
     private gramspercubiccentimeterLazy: number | null = null;
     private gramspercubicmeterLazy: number | null = null;
@@ -172,7 +172,7 @@ export class MassConcentration extends BaseUnit {
     public constructor(value: number, fromUnit: MassConcentrationUnits = MassConcentrationUnits.KilogramsPerCubicMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -1067,6 +1067,14 @@ export class MassConcentration extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MassConcentration
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MassConcentrationUnits {
+        return MassConcentrationUnits;
+    }
+
+    /**
      * Create API DTO represent a MassConcentration unit.
      * @param holdInUnit The specific MassConcentration unit to be used in the unit representation at the DTO
      */
@@ -1169,96 +1177,96 @@ export class MassConcentration extends BaseUnit {
                 case MassConcentrationUnits.OuncesPerImperialGallon: return super.internalMultiply(this.value, 0.1603586720609);
                 case MassConcentrationUnits.PoundsPerImperialGallon: return super.internalDivide(this.value, 9.9776398e1);
                 case MassConcentrationUnits.KilogramsPerCubicMillimeter: {
-                    const value3 = super.internalMultiply(this.value, 1e-6);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassConcentrationUnits.KilogramsPerCubicCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassConcentrationUnits.KilogramsPerCubicMeter: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassConcentrationUnits.MilligramsPerCubicMeter: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassConcentrationUnits.MicrogramsPerCubicMeter: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case MassConcentrationUnits.PicogramsPerMicroliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-6);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case MassConcentrationUnits.NanogramsPerMicroliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-6);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case MassConcentrationUnits.MicrogramsPerMicroliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-6);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case MassConcentrationUnits.MilligramsPerMicroliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-6);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassConcentrationUnits.CentigramsPerMicroliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-6);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case MassConcentrationUnits.DecigramsPerMicroliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-6);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case MassConcentrationUnits.PicogramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case MassConcentrationUnits.NanogramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case MassConcentrationUnits.MicrogramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case MassConcentrationUnits.MilligramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassConcentrationUnits.CentigramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case MassConcentrationUnits.DecigramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case MassConcentrationUnits.PicogramsPerDeciliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case MassConcentrationUnits.NanogramsPerDeciliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case MassConcentrationUnits.MicrogramsPerDeciliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case MassConcentrationUnits.MilligramsPerDeciliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassConcentrationUnits.CentigramsPerDeciliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case MassConcentrationUnits.DecigramsPerDeciliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case MassConcentrationUnits.PicogramsPerLiter: return super.internalDivide(this.value, 1e-12);
                 case MassConcentrationUnits.NanogramsPerLiter: return super.internalDivide(this.value, 1e-9);
@@ -1268,12 +1276,12 @@ export class MassConcentration extends BaseUnit {
                 case MassConcentrationUnits.DecigramsPerLiter: return super.internalDivide(this.value, 0.1);
                 case MassConcentrationUnits.KilogramsPerLiter: return super.internalDivide(this.value, 1000);
                 case MassConcentrationUnits.KilopoundsPerCubicInch: {
-                    const value3 = super.internalMultiply(this.value, 3.6127298147753e-5);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 3.6127298147753e-5);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassConcentrationUnits.KilopoundsPerCubicFoot: {
-                    const value3 = super.internalMultiply(this.value, 0.062427961);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 0.062427961);
+                    return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -1352,96 +1360,96 @@ export class MassConcentration extends BaseUnit {
                 case MassConcentrationUnits.OuncesPerImperialGallon: return super.internalDivide(value, 0.1603586720609);
                 case MassConcentrationUnits.PoundsPerImperialGallon: return super.internalMultiply(value, 9.9776398e1);
                 case MassConcentrationUnits.KilogramsPerCubicMillimeter: {
-                    const value3 = super.internalDivide(value, 1e-6);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassConcentrationUnits.KilogramsPerCubicCentimeter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassConcentrationUnits.KilogramsPerCubicMeter: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassConcentrationUnits.MilligramsPerCubicMeter: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassConcentrationUnits.MicrogramsPerCubicMeter: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case MassConcentrationUnits.PicogramsPerMicroliter: {
-                    const value3 = super.internalDivide(value, 1e-6);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case MassConcentrationUnits.NanogramsPerMicroliter: {
-                    const value3 = super.internalDivide(value, 1e-6);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case MassConcentrationUnits.MicrogramsPerMicroliter: {
-                    const value3 = super.internalDivide(value, 1e-6);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case MassConcentrationUnits.MilligramsPerMicroliter: {
-                    const value3 = super.internalDivide(value, 1e-6);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassConcentrationUnits.CentigramsPerMicroliter: {
-                    const value3 = super.internalDivide(value, 1e-6);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case MassConcentrationUnits.DecigramsPerMicroliter: {
-                    const value3 = super.internalDivide(value, 1e-6);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case MassConcentrationUnits.PicogramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case MassConcentrationUnits.NanogramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case MassConcentrationUnits.MicrogramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case MassConcentrationUnits.MilligramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassConcentrationUnits.CentigramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case MassConcentrationUnits.DecigramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case MassConcentrationUnits.PicogramsPerDeciliter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case MassConcentrationUnits.NanogramsPerDeciliter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case MassConcentrationUnits.MicrogramsPerDeciliter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case MassConcentrationUnits.MilligramsPerDeciliter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassConcentrationUnits.CentigramsPerDeciliter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case MassConcentrationUnits.DecigramsPerDeciliter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case MassConcentrationUnits.PicogramsPerLiter: return super.internalMultiply(value, 1e-12);
                 case MassConcentrationUnits.NanogramsPerLiter: return super.internalMultiply(value, 1e-9);
@@ -1451,12 +1459,12 @@ export class MassConcentration extends BaseUnit {
                 case MassConcentrationUnits.DecigramsPerLiter: return super.internalMultiply(value, 0.1);
                 case MassConcentrationUnits.KilogramsPerLiter: return super.internalMultiply(value, 1000);
                 case MassConcentrationUnits.KilopoundsPerCubicInch: {
-                    const value3 = super.internalDivide(value, 3.6127298147753e-5);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 3.6127298147753e-5);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassConcentrationUnits.KilopoundsPerCubicFoot: {
-                    const value3 = super.internalDivide(value, 0.062427961);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 0.062427961);
+                    return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }

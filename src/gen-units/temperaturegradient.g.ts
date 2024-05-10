@@ -22,7 +22,7 @@ export enum TemperatureGradientUnits {
 
 /** The rate of change of temperature with displacement in a given direction (as with increase of height) */
 export class TemperatureGradient extends BaseUnit {
-    private value: number;
+    protected value: number;
     private kelvinspermeterLazy: number | null = null;
     private degreescelciuspermeterLazy: number | null = null;
     private degreesfahrenheitperfootLazy: number | null = null;
@@ -37,7 +37,7 @@ export class TemperatureGradient extends BaseUnit {
     public constructor(value: number, fromUnit: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -122,6 +122,14 @@ export class TemperatureGradient extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with TemperatureGradient
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof TemperatureGradientUnits {
+        return TemperatureGradientUnits;
+    }
+
+    /**
      * Create API DTO represent a TemperatureGradient unit.
      * @param holdInUnit The specific TemperatureGradient unit to be used in the unit representation at the DTO
      */
@@ -164,9 +172,9 @@ export class TemperatureGradient extends BaseUnit {
                 case TemperatureGradientUnits.KelvinsPerMeter: return this.value;
                 case TemperatureGradientUnits.DegreesCelciusPerMeter: return this.value;
                 case TemperatureGradientUnits.DegreesFahrenheitPerFoot: {
-                    const value3 = super.internalMultiply(this.value, 0.3048);
-                    const value5 = super.internalMultiply(value3, 9);
-                    return super.internalDivide(value5, 5);
+                    const v3 = super.internalMultiply(this.value, 0.3048);
+                    const v6 = super.internalDivide(9, 5);
+                    return super.internalMultiply(v3, v6);
                 }
                 case TemperatureGradientUnits.DegreesCelciusPerKilometer: return super.internalMultiply(this.value, 1e3);
                 default: return Number.NaN;
@@ -186,9 +194,9 @@ export class TemperatureGradient extends BaseUnit {
                 case TemperatureGradientUnits.KelvinsPerMeter: return value;
                 case TemperatureGradientUnits.DegreesCelciusPerMeter: return value;
                 case TemperatureGradientUnits.DegreesFahrenheitPerFoot: {
-                    const value3 = super.internalDivide(value, 0.3048);
-                    const value5 = super.internalMultiply(value3, 5);
-                    return super.internalDivide(value5, 9);
+                    const v3 = super.internalDivide(value, 0.3048);
+                    const v6 = super.internalDivide(5, 9);
+                    return super.internalMultiply(v3, v6);
                 }
                 case TemperatureGradientUnits.DegreesCelciusPerKilometer: return super.internalDivide(value, 1e3);
                 default: return Number.NaN;

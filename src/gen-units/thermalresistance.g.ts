@@ -26,7 +26,7 @@ export enum ThermalResistanceUnits {
 
 /** Heat Transfer Coefficient or Thermal conductivity - indicates a materials ability to conduct heat. */
 export class ThermalResistance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private squaremeterkelvinsperkilowattLazy: number | null = null;
     private squaremeterkelvinsperwattLazy: number | null = null;
     private squaremeterdegreescelsiusperwattLazy: number | null = null;
@@ -43,7 +43,7 @@ export class ThermalResistance extends BaseUnit {
     public constructor(value: number, fromUnit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -161,6 +161,14 @@ export class ThermalResistance extends BaseUnit {
      */
     public static FromHourSquareFeetDegreesFahrenheitPerBtu(value: number): ThermalResistance {
         return new ThermalResistance(value, ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ThermalResistance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ThermalResistanceUnits {
+        return ThermalResistanceUnits;
     }
 
     /**

@@ -32,7 +32,7 @@ export enum IrradiationUnits {
 
 /** Irradiation is the process by which an object is exposed to radiation. The exposure can originate from various sources, including natural sources. */
 export class Irradiation extends BaseUnit {
-    private value: number;
+    protected value: number;
     private joulespersquaremeterLazy: number | null = null;
     private joulespersquarecentimeterLazy: number | null = null;
     private joulespersquaremillimeterLazy: number | null = null;
@@ -52,7 +52,7 @@ export class Irradiation extends BaseUnit {
     public constructor(value: number, fromUnit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -227,6 +227,14 @@ export class Irradiation extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Irradiation
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof IrradiationUnits {
+        return IrradiationUnits;
+    }
+
+    /**
      * Create API DTO represent a Irradiation unit.
      * @param holdInUnit The specific Irradiation unit to be used in the unit representation at the DTO
      */
@@ -276,22 +284,22 @@ export class Irradiation extends BaseUnit {
                 case IrradiationUnits.JoulesPerSquareMillimeter: return super.internalDivide(this.value, 1e6);
                 case IrradiationUnits.WattHoursPerSquareMeter: return super.internalDivide(this.value, 3600);
                 case IrradiationUnits.BtusPerSquareFoot: {
-                    const value4 = super.internalDivide(52752792631, 4645152);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalDivide(52752792631, 4645152);
+                    return super.internalDivide(this.value, v4);
                 }
                 case IrradiationUnits.KilojoulesPerSquareMeter: return super.internalDivide(this.value, 1000);
                 case IrradiationUnits.MillijoulesPerSquareCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e4);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e4);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case IrradiationUnits.KilowattHoursPerSquareMeter: {
-                    const value3 = super.internalDivide(this.value, 3600);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 3600);
+                    return super.internalDivide(v3, 1000);
                 }
                 case IrradiationUnits.KilobtusPerSquareFoot: {
-                    const value4 = super.internalDivide(52752792631, 4645152);
-                    const value5 = super.internalDivide(this.value, value4);
-                    return super.internalDivide(value5, 1000);
+                    const v4 = super.internalDivide(52752792631, 4645152);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalDivide(v5, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -317,22 +325,22 @@ export class Irradiation extends BaseUnit {
                 case IrradiationUnits.JoulesPerSquareMillimeter: return super.internalMultiply(value, 1e6);
                 case IrradiationUnits.WattHoursPerSquareMeter: return super.internalMultiply(value, 3600);
                 case IrradiationUnits.BtusPerSquareFoot: {
-                    const value4 = super.internalDivide(52752792631, 4645152);
-                    return super.internalMultiply(value, value4);
+                    const v4 = super.internalDivide(52752792631, 4645152);
+                    return super.internalMultiply(value, v4);
                 }
                 case IrradiationUnits.KilojoulesPerSquareMeter: return super.internalMultiply(value, 1000);
                 case IrradiationUnits.MillijoulesPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e4);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1e4);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case IrradiationUnits.KilowattHoursPerSquareMeter: {
-                    const value3 = super.internalMultiply(value, 3600);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 3600);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case IrradiationUnits.KilobtusPerSquareFoot: {
-                    const value4 = super.internalDivide(52752792631, 4645152);
-                    const value5 = super.internalMultiply(value, value4);
-                    return super.internalMultiply(value5, 1000);
+                    const v4 = super.internalDivide(52752792631, 4645152);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000);
                 }
                 default: return Number.NaN;
             }

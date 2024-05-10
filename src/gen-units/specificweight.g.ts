@@ -48,7 +48,7 @@ export enum SpecificWeightUnits {
 
 /** The SpecificWeight, or more precisely, the volumetric weight density, of a substance is its weight per unit volume. */
 export class SpecificWeight extends BaseUnit {
-    private value: number;
+    protected value: number;
     private newtonspercubicmillimeterLazy: number | null = null;
     private newtonspercubiccentimeterLazy: number | null = null;
     private newtonspercubicmeterLazy: number | null = null;
@@ -76,7 +76,7 @@ export class SpecificWeight extends BaseUnit {
     public constructor(value: number, fromUnit: SpecificWeightUnits = SpecificWeightUnits.NewtonsPerCubicMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -395,6 +395,14 @@ export class SpecificWeight extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with SpecificWeight
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof SpecificWeightUnits {
+        return SpecificWeightUnits;
+    }
+
+    /**
      * Create API DTO represent a SpecificWeight unit.
      * @param holdInUnit The specific SpecificWeight unit to be used in the unit representation at the DTO
      */
@@ -459,22 +467,22 @@ export class SpecificWeight extends BaseUnit {
                 case SpecificWeightUnits.TonnesForcePerCubicCentimeter: return super.internalDivide(this.value, 9.80665e9);
                 case SpecificWeightUnits.TonnesForcePerCubicMeter: return super.internalDivide(this.value, 9.80665e3);
                 case SpecificWeightUnits.KilonewtonsPerCubicMillimeter: {
-                    const value3 = super.internalMultiply(this.value, 0.000000001);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 0.000000001);
+                    return super.internalDivide(v3, 1000);
                 }
                 case SpecificWeightUnits.KilonewtonsPerCubicCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 0.000001);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 0.000001);
+                    return super.internalDivide(v3, 1000);
                 }
                 case SpecificWeightUnits.KilonewtonsPerCubicMeter: return super.internalDivide(this.value, 1000);
                 case SpecificWeightUnits.MeganewtonsPerCubicMeter: return super.internalDivide(this.value, 1000000);
                 case SpecificWeightUnits.KilopoundsForcePerCubicInch: {
-                    const value3 = super.internalDivide(this.value, 2.714471375263134e5);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 2.714471375263134e5);
+                    return super.internalDivide(v3, 1000);
                 }
                 case SpecificWeightUnits.KilopoundsForcePerCubicFoot: {
-                    const value3 = super.internalDivide(this.value, 1.570874638462462e2);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1.570874638462462e2);
+                    return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -515,22 +523,22 @@ export class SpecificWeight extends BaseUnit {
                 case SpecificWeightUnits.TonnesForcePerCubicCentimeter: return super.internalMultiply(value, 9.80665e9);
                 case SpecificWeightUnits.TonnesForcePerCubicMeter: return super.internalMultiply(value, 9.80665e3);
                 case SpecificWeightUnits.KilonewtonsPerCubicMillimeter: {
-                    const value3 = super.internalMultiply(value, 1000000000);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1000000000);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case SpecificWeightUnits.KilonewtonsPerCubicCentimeter: {
-                    const value3 = super.internalMultiply(value, 1000000);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1000000);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case SpecificWeightUnits.KilonewtonsPerCubicMeter: return super.internalMultiply(value, 1000);
                 case SpecificWeightUnits.MeganewtonsPerCubicMeter: return super.internalMultiply(value, 1000000);
                 case SpecificWeightUnits.KilopoundsForcePerCubicInch: {
-                    const value3 = super.internalMultiply(value, 2.714471375263134e5);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 2.714471375263134e5);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case SpecificWeightUnits.KilopoundsForcePerCubicFoot: {
-                    const value3 = super.internalMultiply(value, 1.570874638462462e2);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1.570874638462462e2);
+                    return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }

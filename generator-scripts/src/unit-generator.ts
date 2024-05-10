@@ -141,6 +141,29 @@ function buildUnitCreatorsMethods(unitName: string, enumName: string, units: Uni
 	})
 }
 
+function buildGetUnitEnumStaticMethod(unitName: string, unitEnumName: string): MethodDeclarationStructure {
+	const docs: JSDocStructure = {
+		kind: StructureKind.JSDoc,
+		description: `Gets the base unit enumeration associated with ${unitName}`,
+		tags: [{
+			kind: StructureKind.JSDocTag,
+			tagName: 'returns',
+			text: `The unit enumeration that can be used to interact with this type`
+		}]
+	};
+
+	return {
+		kind: StructureKind.Method,
+		name: 'getUnitEnum',
+		scope: Scope.Public,
+		isStatic: true,
+		parameters: [],
+		docs: [docs],
+		returnType: `typeof ${unitEnumName}`,
+		statements: `return ${unitEnumName};`
+	}
+}
+
 /**
  * Build the case in a 'switch' with unit converting formula for the given unit.
  * @param unitName The specific unit name. (for example 'Degree' or 'Radian') 
@@ -741,7 +764,7 @@ function buildUnitCtor(unitName: string, enumName: string, baseUnitName: string)
 		docs: [docs],
 		statements: `
 super();
-if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
 this.value = this.convertToBase(value, fromUnit);`
 	}
 }
@@ -783,11 +806,11 @@ export function generateUnitClass(project: Project,
 	const valueMember: PropertyDeclarationStructure = {
 		kind: StructureKind.Property,
 		name: 'value',
-		scope: Scope.Private,
+		scope: Scope.Protected,
 		type: 'number'
 	};
 
-	// Build vars for loadzy load converted value 
+	// Build vars to lazy load converted value 
 	const lazyVars = buildLazyloadVars(units);
 
 	// Build base value accessor
@@ -813,6 +836,8 @@ export function generateUnitClass(project: Project,
 
 	// Build the static creator methods  
 	const unitCreators = buildUnitCreatorsMethods(unitName, enumName, units);
+
+	const getUnitsEnumMethod = buildGetUnitEnumStaticMethod(unitName, enumName);
 
 	// Build the convert from base to unit method
 	const convertFromBaseMethod = buildConvertFromBaseMethod(enumName, units);
@@ -848,6 +873,7 @@ export function generateUnitClass(project: Project,
 		ctors: [unitCtor],
 		methods: [
 			...unitCreators,
+			getUnitsEnumMethod,
 			convertToDtoMethod,
 			convertFromDtoMethod,
 			convertToUnitMethod,

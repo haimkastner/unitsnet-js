@@ -16,7 +16,7 @@ export enum ScalarUnits {
 
 /** A way of representing a number of items. */
 export class Scalar extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amountLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class Scalar extends BaseUnit {
     public constructor(value: number, fromUnit: ScalarUnits = ScalarUnits.Amount) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class Scalar extends BaseUnit {
      */
     public static FromAmount(value: number): Scalar {
         return new Scalar(value, ScalarUnits.Amount);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Scalar
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ScalarUnits {
+        return ScalarUnits;
     }
 
     /**

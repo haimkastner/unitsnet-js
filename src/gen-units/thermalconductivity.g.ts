@@ -18,7 +18,7 @@ export enum ThermalConductivityUnits {
 
 /** Thermal conductivity is the property of a material to conduct heat. */
 export class ThermalConductivity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private wattspermeterkelvinLazy: number | null = null;
     private btusperhourfootfahrenheitLazy: number | null = null;
 
@@ -31,7 +31,7 @@ export class ThermalConductivity extends BaseUnit {
     public constructor(value: number, fromUnit: ThermalConductivityUnits = ThermalConductivityUnits.WattsPerMeterKelvin) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +77,14 @@ export class ThermalConductivity extends BaseUnit {
      */
     public static FromBtusPerHourFootFahrenheit(value: number): ThermalConductivity {
         return new ThermalConductivity(value, ThermalConductivityUnits.BtusPerHourFootFahrenheit);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ThermalConductivity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ThermalConductivityUnits {
+        return ThermalConductivityUnits;
     }
 
     /**

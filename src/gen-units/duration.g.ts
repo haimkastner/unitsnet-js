@@ -36,7 +36,7 @@ export enum DurationUnits {
 
 /** Time is a dimension in which events can be ordered from the past through the present into the future, and also the measure of durations of events and the intervals between them. */
 export class Duration extends BaseUnit {
-    private value: number;
+    protected value: number;
     private years365Lazy: number | null = null;
     private months30Lazy: number | null = null;
     private weeksLazy: number | null = null;
@@ -58,7 +58,7 @@ export class Duration extends BaseUnit {
     public constructor(value: number, fromUnit: DurationUnits = DurationUnits.Seconds) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -269,6 +269,14 @@ export class Duration extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Duration
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof DurationUnits {
+        return DurationUnits;
+    }
+
+    /**
      * Create API DTO represent a Duration unit.
      * @param holdInUnit The specific Duration unit to be used in the unit representation at the DTO
      */
@@ -316,31 +324,31 @@ export class Duration extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case DurationUnits.Years365: {
-                    const value4 = super.internalMultiply(365, 24);
-                    const value6 = super.internalMultiply(value4, 3600);
-                    return super.internalDivide(this.value, value6);
+                    const v4 = super.internalMultiply(365, 24);
+                    const v6 = super.internalMultiply(v4, 3600);
+                    return super.internalDivide(this.value, v6);
                 }
                 case DurationUnits.Months30: {
-                    const value4 = super.internalMultiply(30, 24);
-                    const value6 = super.internalMultiply(value4, 3600);
-                    return super.internalDivide(this.value, value6);
+                    const v4 = super.internalMultiply(30, 24);
+                    const v6 = super.internalMultiply(v4, 3600);
+                    return super.internalDivide(this.value, v6);
                 }
                 case DurationUnits.Weeks: {
-                    const value4 = super.internalMultiply(7, 24);
-                    const value6 = super.internalMultiply(value4, 3600);
-                    return super.internalDivide(this.value, value6);
+                    const v4 = super.internalMultiply(7, 24);
+                    const v6 = super.internalMultiply(v4, 3600);
+                    return super.internalDivide(this.value, v6);
                 }
                 case DurationUnits.Days: {
-                    const value4 = super.internalMultiply(24, 3600);
-                    return super.internalDivide(this.value, value4);
+                    const v4 = super.internalMultiply(24, 3600);
+                    return super.internalDivide(this.value, v4);
                 }
                 case DurationUnits.Hours: return super.internalDivide(this.value, 3600);
                 case DurationUnits.Minutes: return super.internalDivide(this.value, 60);
                 case DurationUnits.Seconds: return this.value;
                 case DurationUnits.JulianYears: {
-                    const value4 = super.internalMultiply(365.25, 24);
-                    const value6 = super.internalMultiply(value4, 3600);
-                    return super.internalDivide(this.value, value6);
+                    const v4 = super.internalMultiply(365.25, 24);
+                    const v6 = super.internalMultiply(v4, 3600);
+                    return super.internalDivide(this.value, v6);
                 }
                 case DurationUnits.Nanoseconds: return super.internalDivide(this.value, 1e-9);
                 case DurationUnits.Microseconds: return super.internalDivide(this.value, 0.000001);
@@ -367,31 +375,31 @@ export class Duration extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case DurationUnits.Years365: {
-                    const value3 = super.internalMultiply(value, 365);
-                    const value5 = super.internalMultiply(value3, 24);
-                    return super.internalMultiply(value5, 3600);
+                    const v3 = super.internalMultiply(value, 365);
+                    const v5 = super.internalMultiply(v3, 24);
+                    return super.internalMultiply(v5, 3600);
                 }
                 case DurationUnits.Months30: {
-                    const value3 = super.internalMultiply(value, 30);
-                    const value5 = super.internalMultiply(value3, 24);
-                    return super.internalMultiply(value5, 3600);
+                    const v3 = super.internalMultiply(value, 30);
+                    const v5 = super.internalMultiply(v3, 24);
+                    return super.internalMultiply(v5, 3600);
                 }
                 case DurationUnits.Weeks: {
-                    const value3 = super.internalMultiply(value, 7);
-                    const value5 = super.internalMultiply(value3, 24);
-                    return super.internalMultiply(value5, 3600);
+                    const v3 = super.internalMultiply(value, 7);
+                    const v5 = super.internalMultiply(v3, 24);
+                    return super.internalMultiply(v5, 3600);
                 }
                 case DurationUnits.Days: {
-                    const value3 = super.internalMultiply(value, 24);
-                    return super.internalMultiply(value3, 3600);
+                    const v3 = super.internalMultiply(value, 24);
+                    return super.internalMultiply(v3, 3600);
                 }
                 case DurationUnits.Hours: return super.internalMultiply(value, 3600);
                 case DurationUnits.Minutes: return super.internalMultiply(value, 60);
                 case DurationUnits.Seconds: return value;
                 case DurationUnits.JulianYears: {
-                    const value3 = super.internalMultiply(value, 365.25);
-                    const value5 = super.internalMultiply(value3, 24);
-                    return super.internalMultiply(value5, 3600);
+                    const v3 = super.internalMultiply(value, 365.25);
+                    const v5 = super.internalMultiply(v3, 24);
+                    return super.internalMultiply(v5, 3600);
                 }
                 case DurationUnits.Nanoseconds: return super.internalMultiply(value, 1e-9);
                 case DurationUnits.Microseconds: return super.internalMultiply(value, 0.000001);

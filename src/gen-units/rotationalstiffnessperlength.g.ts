@@ -24,7 +24,7 @@ export enum RotationalStiffnessPerLengthUnits {
 
 /** https://en.wikipedia.org/wiki/Stiffness#Rotational_stiffness */
 export class RotationalStiffnessPerLength extends BaseUnit {
-    private value: number;
+    protected value: number;
     private newtonmetersperradianpermeterLazy: number | null = null;
     private poundforcefeetperdegreesperfeetLazy: number | null = null;
     private kilopoundforcefeetperdegreesperfeetLazy: number | null = null;
@@ -40,7 +40,7 @@ export class RotationalStiffnessPerLength extends BaseUnit {
     public constructor(value: number, fromUnit: RotationalStiffnessPerLengthUnits = RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -140,6 +140,14 @@ export class RotationalStiffnessPerLength extends BaseUnit {
      */
     public static FromMeganewtonMetersPerRadianPerMeter(value: number): RotationalStiffnessPerLength {
         return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnits.MeganewtonMetersPerRadianPerMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with RotationalStiffnessPerLength
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RotationalStiffnessPerLengthUnits {
+        return RotationalStiffnessPerLengthUnits;
     }
 
     /**

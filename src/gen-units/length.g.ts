@@ -98,7 +98,7 @@ export enum LengthUnits {
 
 /** Many different units of length have been used around the world. The main units in modern use are U.S. customary units in the United States and the Metric system elsewhere. British Imperial units are still used for some purposes in the United Kingdom and some other countries. The metric system is sub-divided into SI and non-SI units. */
 export class Length extends BaseUnit {
-    private value: number;
+    protected value: number;
     private metersLazy: number | null = null;
     private milesLazy: number | null = null;
     private yardsLazy: number | null = null;
@@ -151,7 +151,7 @@ export class Length extends BaseUnit {
     public constructor(value: number, fromUnit: LengthUnits = LengthUnits.Meters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -920,6 +920,14 @@ export class Length extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Length
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof LengthUnits {
+        return LengthUnits;
+    }
+
+    /**
      * Create API DTO represent a Length unit.
      * @param holdInUnit The specific Length unit to be used in the unit representation at the DTO
      */
@@ -1002,8 +1010,8 @@ export class Length extends BaseUnit {
                 case LengthUnits.Yards: return super.internalDivide(this.value, 0.9144);
                 case LengthUnits.Feet: return super.internalDivide(this.value, 0.3048);
                 case LengthUnits.UsSurveyFeet: {
-                    const value3 = super.internalMultiply(this.value, 3937);
-                    return super.internalDivide(value3, 1200);
+                    const v4 = super.internalDivide(3937, 1200);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case LengthUnits.Inches: return super.internalDivide(this.value, 2.54e-2);
                 case LengthUnits.Mils: return super.internalDivide(this.value, 2.54e-5);
@@ -1012,12 +1020,12 @@ export class Length extends BaseUnit {
                 case LengthUnits.Shackles: return super.internalDivide(this.value, 27.432);
                 case LengthUnits.Microinches: return super.internalDivide(this.value, 2.54e-8);
                 case LengthUnits.PrinterPoints: {
-                    const value3 = super.internalDivide(this.value, 2.54e-2);
-                    return super.internalMultiply(value3, 72.27);
+                    const v3 = super.internalDivide(this.value, 2.54e-2);
+                    return super.internalMultiply(v3, 72.27);
                 }
                 case LengthUnits.DtpPoints: {
-                    const value3 = super.internalDivide(this.value, 2.54e-2);
-                    return super.internalMultiply(value3, 72);
+                    const v3 = super.internalDivide(this.value, 2.54e-2);
+                    return super.internalMultiply(v3, 72);
                 }
                 case LengthUnits.PrinterPicas: return super.internalMultiply(this.value, 237.106301584);
                 case LengthUnits.DtpPicas: return super.internalMultiply(this.value, 236.220472441);
@@ -1043,28 +1051,28 @@ export class Length extends BaseUnit {
                 case LengthUnits.Megameters: return super.internalDivide(this.value, 1000000);
                 case LengthUnits.Gigameters: return super.internalDivide(this.value, 1000000000);
                 case LengthUnits.Kiloyards: {
-                    const value3 = super.internalDivide(this.value, 0.9144);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 0.9144);
+                    return super.internalDivide(v3, 1000);
                 }
                 case LengthUnits.Kilofeet: {
-                    const value3 = super.internalDivide(this.value, 0.3048);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 0.3048);
+                    return super.internalDivide(v3, 1000);
                 }
                 case LengthUnits.Kiloparsecs: {
-                    const value3 = super.internalDivide(this.value, 3.08567758128e16);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 3.08567758128e16);
+                    return super.internalDivide(v3, 1000);
                 }
                 case LengthUnits.Megaparsecs: {
-                    const value3 = super.internalDivide(this.value, 3.08567758128e16);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 3.08567758128e16);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case LengthUnits.KilolightYears: {
-                    const value3 = super.internalDivide(this.value, 9.46073047258e15);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 9.46073047258e15);
+                    return super.internalDivide(v3, 1000);
                 }
                 case LengthUnits.MegalightYears: {
-                    const value3 = super.internalDivide(this.value, 9.46073047258e15);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 9.46073047258e15);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -1123,8 +1131,8 @@ export class Length extends BaseUnit {
                 case LengthUnits.Yards: return super.internalMultiply(value, 0.9144);
                 case LengthUnits.Feet: return super.internalMultiply(value, 0.3048);
                 case LengthUnits.UsSurveyFeet: {
-                    const value3 = super.internalMultiply(value, 1200);
-                    return super.internalDivide(value3, 3937);
+                    const v4 = super.internalDivide(1200, 3937);
+                    return super.internalMultiply(value, v4);
                 }
                 case LengthUnits.Inches: return super.internalMultiply(value, 2.54e-2);
                 case LengthUnits.Mils: return super.internalMultiply(value, 2.54e-5);
@@ -1133,12 +1141,12 @@ export class Length extends BaseUnit {
                 case LengthUnits.Shackles: return super.internalMultiply(value, 27.432);
                 case LengthUnits.Microinches: return super.internalMultiply(value, 2.54e-8);
                 case LengthUnits.PrinterPoints: {
-                    const value3 = super.internalDivide(value, 72.27);
-                    return super.internalMultiply(value3, 2.54e-2);
+                    const v3 = super.internalDivide(value, 72.27);
+                    return super.internalMultiply(v3, 2.54e-2);
                 }
                 case LengthUnits.DtpPoints: {
-                    const value3 = super.internalDivide(value, 72);
-                    return super.internalMultiply(value3, 2.54e-2);
+                    const v3 = super.internalDivide(value, 72);
+                    return super.internalMultiply(v3, 2.54e-2);
                 }
                 case LengthUnits.PrinterPicas: return super.internalDivide(value, 237.106301584);
                 case LengthUnits.DtpPicas: return super.internalDivide(value, 236.220472441);
@@ -1164,28 +1172,28 @@ export class Length extends BaseUnit {
                 case LengthUnits.Megameters: return super.internalMultiply(value, 1000000);
                 case LengthUnits.Gigameters: return super.internalMultiply(value, 1000000000);
                 case LengthUnits.Kiloyards: {
-                    const value3 = super.internalMultiply(value, 0.9144);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 0.9144);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case LengthUnits.Kilofeet: {
-                    const value3 = super.internalMultiply(value, 0.3048);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 0.3048);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case LengthUnits.Kiloparsecs: {
-                    const value3 = super.internalMultiply(value, 3.08567758128e16);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 3.08567758128e16);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case LengthUnits.Megaparsecs: {
-                    const value3 = super.internalMultiply(value, 3.08567758128e16);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 3.08567758128e16);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case LengthUnits.KilolightYears: {
-                    const value3 = super.internalMultiply(value, 9.46073047258e15);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 9.46073047258e15);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case LengthUnits.MegalightYears: {
-                    const value3 = super.internalMultiply(value, 9.46073047258e15);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 9.46073047258e15);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

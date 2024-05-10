@@ -80,7 +80,7 @@ export enum MassFlowUnits {
 
 /** Mass flow is the ratio of the mass change to the time during which the change occurred (value of mass changes per unit time). */
 export class MassFlow extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramspersecondLazy: number | null = null;
     private gramsperdayLazy: number | null = null;
     private gramsperhourLazy: number | null = null;
@@ -124,7 +124,7 @@ export class MassFlow extends BaseUnit {
     public constructor(value: number, fromUnit: MassFlowUnits = MassFlowUnits.GramsPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -731,6 +731,14 @@ export class MassFlow extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MassFlow
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MassFlowUnits {
+        return MassFlowUnits;
+    }
+
+    /**
      * Create API DTO represent a MassFlow unit.
      * @param holdInUnit The specific MassFlow unit to be used in the unit representation at the DTO
      */
@@ -805,8 +813,8 @@ export class MassFlow extends BaseUnit {
                 case MassFlowUnits.KilogramsPerHour: return super.internalMultiply(this.value, 3.6);
                 case MassFlowUnits.KilogramsPerMinute: return super.internalMultiply(this.value, 0.06);
                 case MassFlowUnits.TonnesPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3.6);
-                    return super.internalDivide(value3, 1000);
+                    const v4 = super.internalDivide(3.6, 1000);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case MassFlowUnits.PoundsPerDay: return super.internalMultiply(this.value, 190.47936);
                 case MassFlowUnits.PoundsPerHour: return super.internalMultiply(this.value, 7.93664);
@@ -823,56 +831,56 @@ export class MassFlow extends BaseUnit {
                 case MassFlowUnits.HectogramsPerSecond: return super.internalDivide(this.value, 100);
                 case MassFlowUnits.KilogramsPerSecond: return super.internalDivide(this.value, 1000);
                 case MassFlowUnits.NanogramsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case MassFlowUnits.MicrogramsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case MassFlowUnits.MilligramsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassFlowUnits.CentigramsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case MassFlowUnits.DecigramsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case MassFlowUnits.DecagramsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(v3, 10);
                 }
                 case MassFlowUnits.HectogramsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400);
-                    return super.internalDivide(value3, 100);
+                    const v3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(v3, 100);
                 }
                 case MassFlowUnits.KilogramsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassFlowUnits.MegagramsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 86400);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 190.47936);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 190.47936);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerHour: {
-                    const value3 = super.internalMultiply(this.value, 7.93664);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 7.93664);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 0.132277);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 0.132277);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerSecond: {
-                    const value3 = super.internalDivide(this.value, 453.59237);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 453.59237);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -923,8 +931,8 @@ export class MassFlow extends BaseUnit {
                 case MassFlowUnits.KilogramsPerHour: return super.internalDivide(value, 3.6);
                 case MassFlowUnits.KilogramsPerMinute: return super.internalDivide(value, 0.06);
                 case MassFlowUnits.TonnesPerHour: {
-                    const value3 = super.internalMultiply(1000, value);
-                    return super.internalDivide(value3, 3.6);
+                    const v4 = super.internalDivide(value, 3.6);
+                    return super.internalMultiply(1000, v4);
                 }
                 case MassFlowUnits.PoundsPerDay: return super.internalDivide(value, 190.47936);
                 case MassFlowUnits.PoundsPerHour: return super.internalDivide(value, 7.93664);
@@ -941,56 +949,56 @@ export class MassFlow extends BaseUnit {
                 case MassFlowUnits.HectogramsPerSecond: return super.internalMultiply(value, 100);
                 case MassFlowUnits.KilogramsPerSecond: return super.internalMultiply(value, 1000);
                 case MassFlowUnits.NanogramsPerDay: {
-                    const value3 = super.internalDivide(value, 86400);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case MassFlowUnits.MicrogramsPerDay: {
-                    const value3 = super.internalDivide(value, 86400);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case MassFlowUnits.MilligramsPerDay: {
-                    const value3 = super.internalDivide(value, 86400);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassFlowUnits.CentigramsPerDay: {
-                    const value3 = super.internalDivide(value, 86400);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case MassFlowUnits.DecigramsPerDay: {
-                    const value3 = super.internalDivide(value, 86400);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case MassFlowUnits.DecagramsPerDay: {
-                    const value3 = super.internalDivide(value, 86400);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(v3, 10);
                 }
                 case MassFlowUnits.HectogramsPerDay: {
-                    const value3 = super.internalDivide(value, 86400);
-                    return super.internalMultiply(value3, 100);
+                    const v3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(v3, 100);
                 }
                 case MassFlowUnits.KilogramsPerDay: {
-                    const value3 = super.internalDivide(value, 86400);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassFlowUnits.MegagramsPerDay: {
-                    const value3 = super.internalDivide(value, 86400);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 86400);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerDay: {
-                    const value3 = super.internalDivide(value, 190.47936);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 190.47936);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerHour: {
-                    const value3 = super.internalDivide(value, 7.93664);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 7.93664);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerMinute: {
-                    const value3 = super.internalDivide(value, 0.132277);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 0.132277);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerSecond: {
-                    const value3 = super.internalMultiply(value, 453.59237);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 453.59237);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

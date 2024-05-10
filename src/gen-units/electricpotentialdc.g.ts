@@ -24,7 +24,7 @@ export enum ElectricPotentialDcUnits {
 
 /** The Electric Potential of a system known to use Direct Current. */
 export class ElectricPotentialDc extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltsdcLazy: number | null = null;
     private microvoltsdcLazy: number | null = null;
     private millivoltsdcLazy: number | null = null;
@@ -40,7 +40,7 @@ export class ElectricPotentialDc extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricPotentialDcUnits = ElectricPotentialDcUnits.VoltsDc) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -140,6 +140,14 @@ export class ElectricPotentialDc extends BaseUnit {
      */
     public static FromMegavoltsDc(value: number): ElectricPotentialDc {
         return new ElectricPotentialDc(value, ElectricPotentialDcUnits.MegavoltsDc);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricPotentialDc
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricPotentialDcUnits {
+        return ElectricPotentialDcUnits;
     }
 
     /**

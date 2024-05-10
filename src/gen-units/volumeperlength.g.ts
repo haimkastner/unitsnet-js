@@ -32,7 +32,7 @@ export enum VolumePerLengthUnits {
 
 /** Volume, typically of fluid, that a container can hold within a unit of length. */
 export class VolumePerLength extends BaseUnit {
-    private value: number;
+    protected value: number;
     private cubicmeterspermeterLazy: number | null = null;
     private literspermeterLazy: number | null = null;
     private litersperkilometerLazy: number | null = null;
@@ -52,7 +52,7 @@ export class VolumePerLength extends BaseUnit {
     public constructor(value: number, fromUnit: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -227,6 +227,14 @@ export class VolumePerLength extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with VolumePerLength
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof VolumePerLengthUnits {
+        return VolumePerLengthUnits;
+    }
+
+    /**
      * Create API DTO represent a VolumePerLength unit.
      * @param holdInUnit The specific VolumePerLength unit to be used in the unit representation at the DTO
      */
@@ -279,14 +287,14 @@ export class VolumePerLength extends BaseUnit {
                 case VolumePerLengthUnits.CubicYardsPerFoot: return super.internalDivide(this.value, 2.50838208);
                 case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: return super.internalDivide(this.value, 2.50837706323584);
                 case VolumePerLengthUnits.UsGallonsPerMile: {
-                    const value4 = super.internalMultiply(1000, 1609.344);
-                    const value6 = super.internalDivide(value4, 3.785411784);
-                    return super.internalMultiply(this.value, value6);
+                    const v5 = super.internalDivide(1609.344, 3.785411784);
+                    const v6 = super.internalMultiply(1000, v5);
+                    return super.internalMultiply(this.value, v6);
                 }
                 case VolumePerLengthUnits.ImperialGallonsPerMile: {
-                    const value4 = super.internalMultiply(1000, 1609.344);
-                    const value6 = super.internalDivide(value4, 4.54609);
-                    return super.internalMultiply(this.value, value6);
+                    const v5 = super.internalDivide(1609.344, 4.54609);
+                    const v6 = super.internalMultiply(1000, v5);
+                    return super.internalMultiply(this.value, v6);
                 }
                 default: return Number.NaN;
             }
@@ -315,14 +323,14 @@ export class VolumePerLength extends BaseUnit {
                 case VolumePerLengthUnits.CubicYardsPerFoot: return super.internalMultiply(value, 2.50838208);
                 case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: return super.internalMultiply(value, 2.50837706323584);
                 case VolumePerLengthUnits.UsGallonsPerMile: {
-                    const value4 = super.internalMultiply(1000, 1609.344);
-                    const value6 = super.internalDivide(value4, 3.785411784);
-                    return super.internalDivide(value, value6);
+                    const v5 = super.internalDivide(1609.344, 3.785411784);
+                    const v6 = super.internalMultiply(1000, v5);
+                    return super.internalDivide(value, v6);
                 }
                 case VolumePerLengthUnits.ImperialGallonsPerMile: {
-                    const value4 = super.internalMultiply(1000, 1609.344);
-                    const value6 = super.internalDivide(value4, 4.54609);
-                    return super.internalDivide(value, value6);
+                    const v5 = super.internalDivide(1609.344, 4.54609);
+                    const v6 = super.internalMultiply(1000, v5);
+                    return super.internalDivide(value, v6);
                 }
                 default: return Number.NaN;
             }

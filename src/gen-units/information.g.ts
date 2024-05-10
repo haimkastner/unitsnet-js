@@ -42,7 +42,7 @@ export enum InformationUnits {
 
 /** In computing and telecommunications, a unit of information is the capacity of some standard data storage system or communication channel, used to measure the capacities of other systems and channels. In information theory, units of information are also used to measure the information contents or entropy of random variables. */
 export class Information extends BaseUnit {
-    private value: number;
+    protected value: number;
     private bytesLazy: number | null = null;
     private bitsLazy: number | null = null;
     private kilobytesLazy: number | null = null;
@@ -67,7 +67,7 @@ export class Information extends BaseUnit {
     public constructor(value: number, fromUnit: InformationUnits = InformationUnits.Bits) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -332,6 +332,14 @@ export class Information extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Information
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof InformationUnits {
+        return InformationUnits;
+    }
+
+    /**
      * Create API DTO represent a Information unit.
      * @param holdInUnit The specific Information unit to be used in the unit representation at the DTO
      */
@@ -384,28 +392,28 @@ export class Information extends BaseUnit {
                 case InformationUnits.Bytes: return super.internalDivide(this.value, 8);
                 case InformationUnits.Bits: return this.value;
                 case InformationUnits.Kilobytes: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000);
                 }
                 case InformationUnits.Megabytes: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case InformationUnits.Gigabytes: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case InformationUnits.Terabytes: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000);
                 }
                 case InformationUnits.Petabytes: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000000000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000000);
                 }
                 case InformationUnits.Exabytes: {
-                    const value3 = super.internalDivide(this.value, 8);
-                    return super.internalDivide(value3, 1000000000000000000);
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000000000);
                 }
                 case InformationUnits.Kilobits: return super.internalDivide(this.value, 1000);
                 case InformationUnits.Megabits: return super.internalDivide(this.value, 1000000);
@@ -440,28 +448,28 @@ export class Information extends BaseUnit {
                 case InformationUnits.Bytes: return super.internalMultiply(value, 8);
                 case InformationUnits.Bits: return value;
                 case InformationUnits.Kilobytes: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case InformationUnits.Megabytes: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case InformationUnits.Gigabytes: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case InformationUnits.Terabytes: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000);
                 }
                 case InformationUnits.Petabytes: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000000000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000000);
                 }
                 case InformationUnits.Exabytes: {
-                    const value3 = super.internalMultiply(value, 8);
-                    return super.internalMultiply(value3, 1000000000000000000);
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000000000);
                 }
                 case InformationUnits.Kilobits: return super.internalMultiply(value, 1000);
                 case InformationUnits.Megabits: return super.internalMultiply(value, 1000000);

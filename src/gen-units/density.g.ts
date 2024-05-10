@@ -126,7 +126,7 @@ export enum DensityUnits {
 
 /** The density, or more precisely, the volumetric mass density, of a substance is its mass per unit volume. */
 export class Density extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramspercubicmillimeterLazy: number | null = null;
     private gramspercubiccentimeterLazy: number | null = null;
     private gramspercubicmeterLazy: number | null = null;
@@ -193,7 +193,7 @@ export class Density extends BaseUnit {
     public constructor(value: number, fromUnit: DensityUnits = DensityUnits.KilogramsPerCubicMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -1214,6 +1214,14 @@ export class Density extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Density
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof DensityUnits {
+        return DensityUnits;
+    }
+
+    /**
      * Create API DTO represent a Density unit.
      * @param holdInUnit The specific Density unit to be used in the unit representation at the DTO
      */
@@ -1311,10 +1319,10 @@ export class Density extends BaseUnit {
                 case DensityUnits.PoundsPerCubicInch: return super.internalMultiply(this.value, 3.6127298147753e-5);
                 case DensityUnits.PoundsPerCubicFoot: return super.internalMultiply(this.value, 0.062427961);
                 case DensityUnits.PoundsPerCubicYard: {
-                    const value4 = super.internalDivide(0.45359237, 0.9144);
-                    const value6 = super.internalDivide(value4, 0.9144);
-                    const value8 = super.internalDivide(value6, 0.9144);
-                    return super.internalDivide(this.value, value8);
+                    const v4 = super.internalDivide(0.45359237, 0.9144);
+                    const v6 = super.internalDivide(v4, 0.9144);
+                    const v8 = super.internalDivide(v6, 0.9144);
+                    return super.internalDivide(this.value, v8);
                 }
                 case DensityUnits.TonnesPerCubicMillimeter: return super.internalMultiply(this.value, 1e-12);
                 case DensityUnits.TonnesPerCubicCentimeter: return super.internalMultiply(this.value, 1e-9);
@@ -1338,123 +1346,123 @@ export class Density extends BaseUnit {
                 case DensityUnits.SlugsPerCubicMillimeter: return super.internalDivide(this.value, 14593903000);
                 case DensityUnits.SlugsPerCubicInch: return super.internalDivide(this.value, 890574.60201535);
                 case DensityUnits.KilogramsPerCubicMillimeter: {
-                    const value3 = super.internalMultiply(this.value, 1e-6);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e-6);
+                    return super.internalDivide(v3, 1000);
                 }
                 case DensityUnits.KilogramsPerCubicCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case DensityUnits.KilogramsPerCubicMeter: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case DensityUnits.MilligramsPerCubicMeter: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case DensityUnits.MicrogramsPerCubicMeter: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case DensityUnits.KilopoundsPerCubicInch: {
-                    const value3 = super.internalMultiply(this.value, 3.6127298147753e-5);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 3.6127298147753e-5);
+                    return super.internalDivide(v3, 1000);
                 }
                 case DensityUnits.KilopoundsPerCubicFoot: {
-                    const value3 = super.internalMultiply(this.value, 0.062427961);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 0.062427961);
+                    return super.internalDivide(v3, 1000);
                 }
                 case DensityUnits.KilopoundsPerCubicYard: {
-                    const value4 = super.internalDivide(0.45359237, 0.9144);
-                    const value6 = super.internalDivide(value4, 0.9144);
-                    const value8 = super.internalDivide(value6, 0.9144);
-                    const value9 = super.internalDivide(this.value, value8);
-                    return super.internalDivide(value9, 1000);
+                    const v4 = super.internalDivide(0.45359237, 0.9144);
+                    const v6 = super.internalDivide(v4, 0.9144);
+                    const v8 = super.internalDivide(v6, 0.9144);
+                    const v9 = super.internalDivide(this.value, v8);
+                    return super.internalDivide(v9, 1000);
                 }
                 case DensityUnits.FemtogramsPerLiter: {
-                    const value3 = super.internalMultiply(this.value, 1);
-                    return super.internalDivide(value3, 1e-15);
+                    const v3 = super.internalMultiply(this.value, 1);
+                    return super.internalDivide(v3, 1e-15);
                 }
                 case DensityUnits.PicogramsPerLiter: {
-                    const value3 = super.internalMultiply(this.value, 1);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 1);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case DensityUnits.NanogramsPerLiter: {
-                    const value3 = super.internalMultiply(this.value, 1);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case DensityUnits.MicrogramsPerLiter: {
-                    const value3 = super.internalMultiply(this.value, 1);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case DensityUnits.MilligramsPerLiter: {
-                    const value3 = super.internalMultiply(this.value, 1);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case DensityUnits.CentigramsPerLiter: {
-                    const value3 = super.internalMultiply(this.value, 1);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case DensityUnits.DecigramsPerLiter: {
-                    const value3 = super.internalMultiply(this.value, 1);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case DensityUnits.FemtogramsPerDeciLiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 1e-15);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 1e-15);
                 }
                 case DensityUnits.PicogramsPerDeciLiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case DensityUnits.NanogramsPerDeciLiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case DensityUnits.MicrogramsPerDeciLiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case DensityUnits.MilligramsPerDeciLiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case DensityUnits.CentigramsPerDeciLiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case DensityUnits.DecigramsPerDeciLiter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case DensityUnits.FemtogramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1e-15);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1e-15);
                 }
                 case DensityUnits.PicogramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case DensityUnits.NanogramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case DensityUnits.MicrogramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case DensityUnits.MilligramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case DensityUnits.CentigramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case DensityUnits.DecigramsPerMilliliter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.1);
                 }
                 default: return Number.NaN;
             }
@@ -1528,10 +1536,10 @@ export class Density extends BaseUnit {
                 case DensityUnits.PoundsPerCubicInch: return super.internalDivide(value, 3.6127298147753e-5);
                 case DensityUnits.PoundsPerCubicFoot: return super.internalDivide(value, 0.062427961);
                 case DensityUnits.PoundsPerCubicYard: {
-                    const value4 = super.internalDivide(0.45359237, 0.9144);
-                    const value6 = super.internalDivide(value4, 0.9144);
-                    const value8 = super.internalDivide(value6, 0.9144);
-                    return super.internalMultiply(value, value8);
+                    const v4 = super.internalDivide(0.45359237, 0.9144);
+                    const v6 = super.internalDivide(v4, 0.9144);
+                    const v8 = super.internalDivide(v6, 0.9144);
+                    return super.internalMultiply(value, v8);
                 }
                 case DensityUnits.TonnesPerCubicMillimeter: return super.internalDivide(value, 1e-12);
                 case DensityUnits.TonnesPerCubicCentimeter: return super.internalDivide(value, 1e-9);
@@ -1555,123 +1563,123 @@ export class Density extends BaseUnit {
                 case DensityUnits.SlugsPerCubicMillimeter: return super.internalMultiply(value, 14593903000);
                 case DensityUnits.SlugsPerCubicInch: return super.internalMultiply(value, 890574.60201535);
                 case DensityUnits.KilogramsPerCubicMillimeter: {
-                    const value3 = super.internalDivide(value, 1e-6);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e-6);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case DensityUnits.KilogramsPerCubicCentimeter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case DensityUnits.KilogramsPerCubicMeter: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case DensityUnits.MilligramsPerCubicMeter: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case DensityUnits.MicrogramsPerCubicMeter: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case DensityUnits.KilopoundsPerCubicInch: {
-                    const value3 = super.internalDivide(value, 3.6127298147753e-5);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 3.6127298147753e-5);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case DensityUnits.KilopoundsPerCubicFoot: {
-                    const value3 = super.internalDivide(value, 0.062427961);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 0.062427961);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case DensityUnits.KilopoundsPerCubicYard: {
-                    const value4 = super.internalDivide(0.45359237, 0.9144);
-                    const value6 = super.internalDivide(value4, 0.9144);
-                    const value8 = super.internalDivide(value6, 0.9144);
-                    const value9 = super.internalMultiply(value, value8);
-                    return super.internalMultiply(value9, 1000);
+                    const v4 = super.internalDivide(0.45359237, 0.9144);
+                    const v6 = super.internalDivide(v4, 0.9144);
+                    const v8 = super.internalDivide(v6, 0.9144);
+                    const v9 = super.internalMultiply(value, v8);
+                    return super.internalMultiply(v9, 1000);
                 }
                 case DensityUnits.FemtogramsPerLiter: {
-                    const value3 = super.internalDivide(value, 1);
-                    return super.internalMultiply(value3, 1e-15);
+                    const v3 = super.internalDivide(value, 1);
+                    return super.internalMultiply(v3, 1e-15);
                 }
                 case DensityUnits.PicogramsPerLiter: {
-                    const value3 = super.internalDivide(value, 1);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalDivide(value, 1);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case DensityUnits.NanogramsPerLiter: {
-                    const value3 = super.internalDivide(value, 1);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case DensityUnits.MicrogramsPerLiter: {
-                    const value3 = super.internalDivide(value, 1);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case DensityUnits.MilligramsPerLiter: {
-                    const value3 = super.internalDivide(value, 1);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case DensityUnits.CentigramsPerLiter: {
-                    const value3 = super.internalDivide(value, 1);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case DensityUnits.DecigramsPerLiter: {
-                    const value3 = super.internalDivide(value, 1);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case DensityUnits.FemtogramsPerDeciLiter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 1e-15);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 1e-15);
                 }
                 case DensityUnits.PicogramsPerDeciLiter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case DensityUnits.NanogramsPerDeciLiter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case DensityUnits.MicrogramsPerDeciLiter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case DensityUnits.MilligramsPerDeciLiter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case DensityUnits.CentigramsPerDeciLiter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case DensityUnits.DecigramsPerDeciLiter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case DensityUnits.FemtogramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1e-15);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1e-15);
                 }
                 case DensityUnits.PicogramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case DensityUnits.NanogramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case DensityUnits.MicrogramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case DensityUnits.MilligramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case DensityUnits.CentigramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case DensityUnits.DecigramsPerMilliliter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 default: return Number.NaN;
             }

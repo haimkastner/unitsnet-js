@@ -34,7 +34,7 @@ export enum TemperatureChangeRateUnits {
 
 /** Temperature change rate is the ratio of the temperature change to the time during which the change occurred (value of temperature changes per unit time). */
 export class TemperatureChangeRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private degreescelsiuspersecondLazy: number | null = null;
     private degreescelsiusperminuteLazy: number | null = null;
     private nanodegreescelsiuspersecondLazy: number | null = null;
@@ -55,7 +55,7 @@ export class TemperatureChangeRate extends BaseUnit {
     public constructor(value: number, fromUnit: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -245,6 +245,14 @@ export class TemperatureChangeRate extends BaseUnit {
      */
     public static FromKilodegreesCelsiusPerSecond(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with TemperatureChangeRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof TemperatureChangeRateUnits {
+        return TemperatureChangeRateUnits;
     }
 
     /**

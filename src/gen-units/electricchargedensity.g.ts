@@ -16,7 +16,7 @@ export enum ElectricChargeDensityUnits {
 
 /** In electromagnetism, charge density is a measure of the amount of electric charge per volume. */
 export class ElectricChargeDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private coulombspercubicmeterLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class ElectricChargeDensity extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class ElectricChargeDensity extends BaseUnit {
      */
     public static FromCoulombsPerCubicMeter(value: number): ElectricChargeDensity {
         return new ElectricChargeDensity(value, ElectricChargeDensityUnits.CoulombsPerCubicMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricChargeDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricChargeDensityUnits {
+        return ElectricChargeDensityUnits;
     }
 
     /**

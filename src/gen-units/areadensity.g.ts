@@ -20,7 +20,7 @@ export enum AreaDensityUnits {
 
 /** The area density of a two-dimensional object is calculated as the mass per unit area. For paper this is also called grammage. */
 export class AreaDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private kilogramspersquaremeterLazy: number | null = null;
     private gramspersquaremeterLazy: number | null = null;
     private milligramspersquaremeterLazy: number | null = null;
@@ -34,7 +34,7 @@ export class AreaDensity extends BaseUnit {
     public constructor(value: number, fromUnit: AreaDensityUnits = AreaDensityUnits.KilogramsPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -98,6 +98,14 @@ export class AreaDensity extends BaseUnit {
      */
     public static FromMilligramsPerSquareMeter(value: number): AreaDensity {
         return new AreaDensity(value, AreaDensityUnits.MilligramsPerSquareMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with AreaDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof AreaDensityUnits {
+        return AreaDensityUnits;
     }
 
     /**

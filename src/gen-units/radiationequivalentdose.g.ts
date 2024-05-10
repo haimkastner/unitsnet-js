@@ -26,7 +26,7 @@ export enum RadiationEquivalentDoseUnits {
 
 /** Equivalent dose is a dose quantity representing the stochastic health effects of low levels of ionizing radiation on the human body which represents the probability of radiation-induced cancer and genetic damage. */
 export class RadiationEquivalentDose extends BaseUnit {
-    private value: number;
+    protected value: number;
     private sievertsLazy: number | null = null;
     private roentgensequivalentmanLazy: number | null = null;
     private nanosievertsLazy: number | null = null;
@@ -43,7 +43,7 @@ export class RadiationEquivalentDose extends BaseUnit {
     public constructor(value: number, fromUnit: RadiationEquivalentDoseUnits = RadiationEquivalentDoseUnits.Sieverts) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -164,6 +164,14 @@ export class RadiationEquivalentDose extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with RadiationEquivalentDose
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RadiationEquivalentDoseUnits {
+        return RadiationEquivalentDoseUnits;
+    }
+
+    /**
      * Create API DTO represent a RadiationEquivalentDose unit.
      * @param holdInUnit The specific RadiationEquivalentDose unit to be used in the unit representation at the DTO
      */
@@ -211,8 +219,8 @@ export class RadiationEquivalentDose extends BaseUnit {
                 case RadiationEquivalentDoseUnits.Microsieverts: return super.internalDivide(this.value, 0.000001);
                 case RadiationEquivalentDoseUnits.Millisieverts: return super.internalDivide(this.value, 0.001);
                 case RadiationEquivalentDoseUnits.MilliroentgensEquivalentMan: {
-                    const value3 = super.internalMultiply(this.value, 100);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 0.001);
                 }
                 default: return Number.NaN;
             }
@@ -236,8 +244,8 @@ export class RadiationEquivalentDose extends BaseUnit {
                 case RadiationEquivalentDoseUnits.Microsieverts: return super.internalMultiply(value, 0.000001);
                 case RadiationEquivalentDoseUnits.Millisieverts: return super.internalMultiply(value, 0.001);
                 case RadiationEquivalentDoseUnits.MilliroentgensEquivalentMan: {
-                    const value3 = super.internalDivide(value, 100);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 default: return Number.NaN;
             }

@@ -42,7 +42,7 @@ export enum AreaUnits {
 
 /** Area is a quantity that expresses the extent of a two-dimensional surface or shape, or planar lamina, in the plane. Area can be understood as the amount of material with a given thickness that would be necessary to fashion a model of the shape, or the amount of paint necessary to cover the surface with a single coat.[1] It is the two-dimensional analog of the length of a curve (a one-dimensional concept) or the volume of a solid (a three-dimensional concept). */
 export class Area extends BaseUnit {
-    private value: number;
+    protected value: number;
     private squarekilometersLazy: number | null = null;
     private squaremetersLazy: number | null = null;
     private squaredecimetersLazy: number | null = null;
@@ -67,7 +67,7 @@ export class Area extends BaseUnit {
     public constructor(value: number, fromUnit: AreaUnits = AreaUnits.SquareMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -332,6 +332,14 @@ export class Area extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Area
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof AreaUnits {
+        return AreaUnits;
+    }
+
+    /**
      * Create API DTO represent a Area unit.
      * @param holdInUnit The specific Area unit to be used in the unit representation at the DTO
      */
@@ -388,19 +396,19 @@ export class Area extends BaseUnit {
                 case AreaUnits.SquareMillimeters: return super.internalDivide(this.value, 1e-6);
                 case AreaUnits.SquareMicrometers: return super.internalDivide(this.value, 1e-12);
                 case AreaUnits.SquareMiles: {
-                    const value3 = super.internalDivide(this.value, 1609.344);
-                    return super.internalDivide(value3, 1609.344);
+                    const v3 = super.internalDivide(this.value, 1609.344);
+                    return super.internalDivide(v3, 1609.344);
                 }
                 case AreaUnits.SquareYards: {
-                    const value3 = super.internalDivide(this.value, 0.9144);
-                    return super.internalDivide(value3, 0.9144);
+                    const v3 = super.internalDivide(this.value, 0.9144);
+                    return super.internalDivide(v3, 0.9144);
                 }
                 case AreaUnits.SquareFeet: return super.internalDivide(this.value, 9.290304e-2);
                 case AreaUnits.UsSurveySquareFeet: {
-                    const value4 = super.internalDivide(1200.0, 3937.0);
-                    const value5 = super.internalDivide(this.value, value4);
-                    const value8 = super.internalDivide(1200.0, 3937.0);
-                    return super.internalDivide(value5, value8);
+                    const v4 = super.internalDivide(1200.0, 3937.0);
+                    const v5 = super.internalDivide(this.value, v4);
+                    const v8 = super.internalDivide(1200.0, 3937.0);
+                    return super.internalDivide(v5, v8);
                 }
                 case AreaUnits.SquareInches: return super.internalDivide(this.value, 0.00064516);
                 case AreaUnits.Acres: return super.internalDivide(this.value, 4046.8564224);
@@ -437,19 +445,19 @@ export class Area extends BaseUnit {
                 case AreaUnits.SquareMillimeters: return super.internalMultiply(value, 1e-6);
                 case AreaUnits.SquareMicrometers: return super.internalMultiply(value, 1e-12);
                 case AreaUnits.SquareMiles: {
-                    const value3 = super.internalMultiply(value, 1609.344);
-                    return super.internalMultiply(value3, 1609.344);
+                    const v3 = super.internalMultiply(value, 1609.344);
+                    return super.internalMultiply(v3, 1609.344);
                 }
                 case AreaUnits.SquareYards: {
-                    const value3 = super.internalMultiply(value, 0.9144);
-                    return super.internalMultiply(value3, 0.9144);
+                    const v3 = super.internalMultiply(value, 0.9144);
+                    return super.internalMultiply(v3, 0.9144);
                 }
                 case AreaUnits.SquareFeet: return super.internalMultiply(value, 9.290304e-2);
                 case AreaUnits.UsSurveySquareFeet: {
-                    const value4 = super.internalDivide(1200.0, 3937.0);
-                    const value5 = super.internalMultiply(value, value4);
-                    const value8 = super.internalDivide(1200.0, 3937.0);
-                    return super.internalMultiply(value5, value8);
+                    const v4 = super.internalDivide(1200.0, 3937.0);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v8 = super.internalDivide(1200.0, 3937.0);
+                    return super.internalMultiply(v5, v8);
                 }
                 case AreaUnits.SquareInches: return super.internalMultiply(value, 0.00064516);
                 case AreaUnits.Acres: return super.internalMultiply(value, 4046.8564224);

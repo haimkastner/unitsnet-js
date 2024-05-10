@@ -164,7 +164,7 @@ export enum VolumeFlowUnits {
 
 /** In physics and engineering, in particular fluid dynamics and hydrometry, the volumetric flow rate, (also known as volume flow rate, rate of fluid flow or volume velocity) is the volume of fluid which passes through a given surface per unit time. The SI unit is m³/s (cubic meters per second). In US Customary Units and British Imperial Units, volumetric flow rate is often expressed as ft³/s (cubic feet per second). It is usually represented by the symbol Q. */
 export class VolumeFlow extends BaseUnit {
-    private value: number;
+    protected value: number;
     private cubicmeterspersecondLazy: number | null = null;
     private cubicmetersperminuteLazy: number | null = null;
     private cubicmetersperhourLazy: number | null = null;
@@ -250,7 +250,7 @@ export class VolumeFlow extends BaseUnit {
     public constructor(value: number, fromUnit: VolumeFlowUnits = VolumeFlowUnits.CubicMetersPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -1613,6 +1613,14 @@ export class VolumeFlow extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with VolumeFlow
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof VolumeFlowUnits {
+        return VolumeFlowUnits;
+    }
+
+    /**
      * Create API DTO represent a VolumeFlow unit.
      * @param holdInUnit The specific VolumeFlow unit to be used in the unit representation at the DTO
      */
@@ -1760,160 +1768,160 @@ export class VolumeFlow extends BaseUnit {
                 case VolumeFlowUnits.AcreFeetPerDay: return super.internalMultiply(this.value, 70.0457);
                 case VolumeFlowUnits.CubicCentimetersPerMinute: return super.internalDivide(this.value, 1.6666666666667e-8);
                 case VolumeFlowUnits.MegausGallonsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 22824465.227);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 22824465.227);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case VolumeFlowUnits.NanolitersPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case VolumeFlowUnits.MicrolitersPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case VolumeFlowUnits.MillilitersPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case VolumeFlowUnits.CentilitersPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case VolumeFlowUnits.DecilitersPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case VolumeFlowUnits.DecalitersPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 10);
                 }
                 case VolumeFlowUnits.HectolitersPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 100);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 100);
                 }
                 case VolumeFlowUnits.KilolitersPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 1000);
                 }
                 case VolumeFlowUnits.MegalitersPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 1000);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 1000);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case VolumeFlowUnits.NanolitersPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60000.00000);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 60000.00000);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case VolumeFlowUnits.MicrolitersPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60000.00000);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 60000.00000);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case VolumeFlowUnits.MillilitersPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60000.00000);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 60000.00000);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case VolumeFlowUnits.CentilitersPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60000.00000);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 60000.00000);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case VolumeFlowUnits.DecilitersPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60000.00000);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 60000.00000);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case VolumeFlowUnits.DecalitersPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60000.00000);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalMultiply(this.value, 60000.00000);
+                    return super.internalDivide(v3, 10);
                 }
                 case VolumeFlowUnits.HectolitersPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60000.00000);
-                    return super.internalDivide(value3, 100);
+                    const v3 = super.internalMultiply(this.value, 60000.00000);
+                    return super.internalDivide(v3, 100);
                 }
                 case VolumeFlowUnits.KilolitersPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60000.00000);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 60000.00000);
+                    return super.internalDivide(v3, 1000);
                 }
                 case VolumeFlowUnits.MegalitersPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60000.00000);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 60000.00000);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case VolumeFlowUnits.NanolitersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600000.000);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 3600000.000);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case VolumeFlowUnits.MicrolitersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600000.000);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 3600000.000);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case VolumeFlowUnits.MillilitersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600000.000);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 3600000.000);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case VolumeFlowUnits.CentilitersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600000.000);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 3600000.000);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case VolumeFlowUnits.DecilitersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600000.000);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 3600000.000);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case VolumeFlowUnits.DecalitersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600000.000);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalMultiply(this.value, 3600000.000);
+                    return super.internalDivide(v3, 10);
                 }
                 case VolumeFlowUnits.HectolitersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600000.000);
-                    return super.internalDivide(value3, 100);
+                    const v3 = super.internalMultiply(this.value, 3600000.000);
+                    return super.internalDivide(v3, 100);
                 }
                 case VolumeFlowUnits.KilolitersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600000.000);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 3600000.000);
+                    return super.internalDivide(v3, 1000);
                 }
                 case VolumeFlowUnits.MegalitersPerHour: {
-                    const value3 = super.internalMultiply(this.value, 3600000.000);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 3600000.000);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case VolumeFlowUnits.NanolitersPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400000);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 86400000);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case VolumeFlowUnits.MicrolitersPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400000);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 86400000);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case VolumeFlowUnits.MillilitersPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400000);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 86400000);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case VolumeFlowUnits.CentilitersPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400000);
-                    return super.internalDivide(value3, 0.01);
+                    const v3 = super.internalMultiply(this.value, 86400000);
+                    return super.internalDivide(v3, 0.01);
                 }
                 case VolumeFlowUnits.DecilitersPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400000);
-                    return super.internalDivide(value3, 0.1);
+                    const v3 = super.internalMultiply(this.value, 86400000);
+                    return super.internalDivide(v3, 0.1);
                 }
                 case VolumeFlowUnits.DecalitersPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400000);
-                    return super.internalDivide(value3, 10);
+                    const v3 = super.internalMultiply(this.value, 86400000);
+                    return super.internalDivide(v3, 10);
                 }
                 case VolumeFlowUnits.HectolitersPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400000);
-                    return super.internalDivide(value3, 100);
+                    const v3 = super.internalMultiply(this.value, 86400000);
+                    return super.internalDivide(v3, 100);
                 }
                 case VolumeFlowUnits.KilolitersPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400000);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 86400000);
+                    return super.internalDivide(v3, 1000);
                 }
                 case VolumeFlowUnits.MegalitersPerDay: {
-                    const value3 = super.internalMultiply(this.value, 86400000);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 86400000);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case VolumeFlowUnits.MegaukGallonsPerDay: {
-                    const value3 = super.internalMultiply(this.value, 19005304);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 19005304);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case VolumeFlowUnits.MegaukGallonsPerSecond: {
-                    const value3 = super.internalMultiply(this.value, 219.969);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 219.969);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -2037,160 +2045,160 @@ export class VolumeFlow extends BaseUnit {
                 case VolumeFlowUnits.AcreFeetPerDay: return super.internalDivide(value, 70.0457);
                 case VolumeFlowUnits.CubicCentimetersPerMinute: return super.internalMultiply(value, 1.6666666666667e-8);
                 case VolumeFlowUnits.MegausGallonsPerDay: {
-                    const value3 = super.internalDivide(value, 22824465.227);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 22824465.227);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case VolumeFlowUnits.NanolitersPerSecond: {
-                    const value3 = super.internalDivide(value, 1000);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 1000);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case VolumeFlowUnits.MicrolitersPerSecond: {
-                    const value3 = super.internalDivide(value, 1000);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 1000);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case VolumeFlowUnits.MillilitersPerSecond: {
-                    const value3 = super.internalDivide(value, 1000);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1000);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case VolumeFlowUnits.CentilitersPerSecond: {
-                    const value3 = super.internalDivide(value, 1000);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 1000);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case VolumeFlowUnits.DecilitersPerSecond: {
-                    const value3 = super.internalDivide(value, 1000);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 1000);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case VolumeFlowUnits.DecalitersPerSecond: {
-                    const value3 = super.internalDivide(value, 1000);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalDivide(value, 1000);
+                    return super.internalMultiply(v3, 10);
                 }
                 case VolumeFlowUnits.HectolitersPerSecond: {
-                    const value3 = super.internalDivide(value, 1000);
-                    return super.internalMultiply(value3, 100);
+                    const v3 = super.internalDivide(value, 1000);
+                    return super.internalMultiply(v3, 100);
                 }
                 case VolumeFlowUnits.KilolitersPerSecond: {
-                    const value3 = super.internalDivide(value, 1000);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1000);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case VolumeFlowUnits.MegalitersPerSecond: {
-                    const value3 = super.internalDivide(value, 1000);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 1000);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case VolumeFlowUnits.NanolitersPerMinute: {
-                    const value3 = super.internalDivide(value, 60000.00000);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 60000.00000);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case VolumeFlowUnits.MicrolitersPerMinute: {
-                    const value3 = super.internalDivide(value, 60000.00000);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 60000.00000);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case VolumeFlowUnits.MillilitersPerMinute: {
-                    const value3 = super.internalDivide(value, 60000.00000);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 60000.00000);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case VolumeFlowUnits.CentilitersPerMinute: {
-                    const value3 = super.internalDivide(value, 60000.00000);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 60000.00000);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case VolumeFlowUnits.DecilitersPerMinute: {
-                    const value3 = super.internalDivide(value, 60000.00000);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 60000.00000);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case VolumeFlowUnits.DecalitersPerMinute: {
-                    const value3 = super.internalDivide(value, 60000.00000);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalDivide(value, 60000.00000);
+                    return super.internalMultiply(v3, 10);
                 }
                 case VolumeFlowUnits.HectolitersPerMinute: {
-                    const value3 = super.internalDivide(value, 60000.00000);
-                    return super.internalMultiply(value3, 100);
+                    const v3 = super.internalDivide(value, 60000.00000);
+                    return super.internalMultiply(v3, 100);
                 }
                 case VolumeFlowUnits.KilolitersPerMinute: {
-                    const value3 = super.internalDivide(value, 60000.00000);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 60000.00000);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case VolumeFlowUnits.MegalitersPerMinute: {
-                    const value3 = super.internalDivide(value, 60000.00000);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 60000.00000);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case VolumeFlowUnits.NanolitersPerHour: {
-                    const value3 = super.internalDivide(value, 3600000.000);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 3600000.000);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case VolumeFlowUnits.MicrolitersPerHour: {
-                    const value3 = super.internalDivide(value, 3600000.000);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 3600000.000);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case VolumeFlowUnits.MillilitersPerHour: {
-                    const value3 = super.internalDivide(value, 3600000.000);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 3600000.000);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case VolumeFlowUnits.CentilitersPerHour: {
-                    const value3 = super.internalDivide(value, 3600000.000);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 3600000.000);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case VolumeFlowUnits.DecilitersPerHour: {
-                    const value3 = super.internalDivide(value, 3600000.000);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 3600000.000);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case VolumeFlowUnits.DecalitersPerHour: {
-                    const value3 = super.internalDivide(value, 3600000.000);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalDivide(value, 3600000.000);
+                    return super.internalMultiply(v3, 10);
                 }
                 case VolumeFlowUnits.HectolitersPerHour: {
-                    const value3 = super.internalDivide(value, 3600000.000);
-                    return super.internalMultiply(value3, 100);
+                    const v3 = super.internalDivide(value, 3600000.000);
+                    return super.internalMultiply(v3, 100);
                 }
                 case VolumeFlowUnits.KilolitersPerHour: {
-                    const value3 = super.internalDivide(value, 3600000.000);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 3600000.000);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case VolumeFlowUnits.MegalitersPerHour: {
-                    const value3 = super.internalDivide(value, 3600000.000);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 3600000.000);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case VolumeFlowUnits.NanolitersPerDay: {
-                    const value3 = super.internalDivide(value, 86400000);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 86400000);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case VolumeFlowUnits.MicrolitersPerDay: {
-                    const value3 = super.internalDivide(value, 86400000);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 86400000);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case VolumeFlowUnits.MillilitersPerDay: {
-                    const value3 = super.internalDivide(value, 86400000);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 86400000);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case VolumeFlowUnits.CentilitersPerDay: {
-                    const value3 = super.internalDivide(value, 86400000);
-                    return super.internalMultiply(value3, 0.01);
+                    const v3 = super.internalDivide(value, 86400000);
+                    return super.internalMultiply(v3, 0.01);
                 }
                 case VolumeFlowUnits.DecilitersPerDay: {
-                    const value3 = super.internalDivide(value, 86400000);
-                    return super.internalMultiply(value3, 0.1);
+                    const v3 = super.internalDivide(value, 86400000);
+                    return super.internalMultiply(v3, 0.1);
                 }
                 case VolumeFlowUnits.DecalitersPerDay: {
-                    const value3 = super.internalDivide(value, 86400000);
-                    return super.internalMultiply(value3, 10);
+                    const v3 = super.internalDivide(value, 86400000);
+                    return super.internalMultiply(v3, 10);
                 }
                 case VolumeFlowUnits.HectolitersPerDay: {
-                    const value3 = super.internalDivide(value, 86400000);
-                    return super.internalMultiply(value3, 100);
+                    const v3 = super.internalDivide(value, 86400000);
+                    return super.internalMultiply(v3, 100);
                 }
                 case VolumeFlowUnits.KilolitersPerDay: {
-                    const value3 = super.internalDivide(value, 86400000);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 86400000);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case VolumeFlowUnits.MegalitersPerDay: {
-                    const value3 = super.internalDivide(value, 86400000);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 86400000);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case VolumeFlowUnits.MegaukGallonsPerDay: {
-                    const value3 = super.internalDivide(value, 19005304);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 19005304);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case VolumeFlowUnits.MegaukGallonsPerSecond: {
-                    const value3 = super.internalDivide(value, 219.969);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 219.969);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

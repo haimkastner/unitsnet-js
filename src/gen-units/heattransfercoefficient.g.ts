@@ -24,7 +24,7 @@ export enum HeatTransferCoefficientUnits {
 
 /** The heat transfer coefficient or film coefficient, or film effectiveness, in thermodynamics and in mechanics is the proportionality constant between the heat flux and the thermodynamic driving force for the flow of heat (i.e., the temperature difference, ΔT) */
 export class HeatTransferCoefficient extends BaseUnit {
-    private value: number;
+    protected value: number;
     private wattspersquaremeterkelvinLazy: number | null = null;
     private wattspersquaremetercelsiusLazy: number | null = null;
     private btusperhoursquarefootdegreefahrenheitLazy: number | null = null;
@@ -40,7 +40,7 @@ export class HeatTransferCoefficient extends BaseUnit {
     public constructor(value: number, fromUnit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -143,6 +143,14 @@ export class HeatTransferCoefficient extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with HeatTransferCoefficient
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof HeatTransferCoefficientUnits {
+        return HeatTransferCoefficientUnits;
+    }
+
+    /**
      * Create API DTO represent a HeatTransferCoefficient unit.
      * @param holdInUnit The specific HeatTransferCoefficient unit to be used in the unit representation at the DTO
      */
@@ -187,13 +195,13 @@ export class HeatTransferCoefficient extends BaseUnit {
                 case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return this.value;
                 case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return super.internalDivide(this.value, 5.6782633411134878);
                 case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: {
-                    const value3 = super.internalDivide(this.value, 4.1868);
-                    return super.internalMultiply(value3, 3600);
+                    const v3 = super.internalDivide(this.value, 4.1868);
+                    return super.internalMultiply(v3, 3600);
                 }
                 case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: {
-                    const value3 = super.internalDivide(this.value, 4.1868);
-                    const value5 = super.internalMultiply(value3, 3600);
-                    return super.internalDivide(value5, 1000);
+                    const v3 = super.internalDivide(this.value, 4.1868);
+                    const v5 = super.internalMultiply(v3, 3600);
+                    return super.internalDivide(v5, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -214,13 +222,13 @@ export class HeatTransferCoefficient extends BaseUnit {
                 case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return value;
                 case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return super.internalMultiply(value, 5.6782633411134878);
                 case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: {
-                    const value3 = super.internalMultiply(value, 4.1868);
-                    return super.internalDivide(value3, 3600);
+                    const v3 = super.internalMultiply(value, 4.1868);
+                    return super.internalDivide(v3, 3600);
                 }
                 case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: {
-                    const value3 = super.internalMultiply(value, 4.1868);
-                    const value5 = super.internalDivide(value3, 3600);
-                    return super.internalMultiply(value5, 1000);
+                    const v3 = super.internalMultiply(value, 4.1868);
+                    const v5 = super.internalDivide(v3, 3600);
+                    return super.internalMultiply(v5, 1000);
                 }
                 default: return Number.NaN;
             }

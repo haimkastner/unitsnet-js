@@ -30,7 +30,7 @@ export enum RadiationExposureUnits {
 
 /** Radiation exposure is a measure of the ionization of air due to ionizing radiation from photons. */
 export class RadiationExposure extends BaseUnit {
-    private value: number;
+    protected value: number;
     private coulombsperkilogramLazy: number | null = null;
     private roentgensLazy: number | null = null;
     private picocoulombsperkilogramLazy: number | null = null;
@@ -49,7 +49,7 @@ export class RadiationExposure extends BaseUnit {
     public constructor(value: number, fromUnit: RadiationExposureUnits = RadiationExposureUnits.CoulombsPerKilogram) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -206,6 +206,14 @@ export class RadiationExposure extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with RadiationExposure
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RadiationExposureUnits {
+        return RadiationExposureUnits;
+    }
+
+    /**
      * Create API DTO represent a RadiationExposure unit.
      * @param holdInUnit The specific RadiationExposure unit to be used in the unit representation at the DTO
      */
@@ -256,12 +264,12 @@ export class RadiationExposure extends BaseUnit {
                 case RadiationExposureUnits.MicrocoulombsPerKilogram: return super.internalDivide(this.value, 0.000001);
                 case RadiationExposureUnits.MillicoulombsPerKilogram: return super.internalDivide(this.value, 0.001);
                 case RadiationExposureUnits.Microroentgens: {
-                    const value3 = super.internalDivide(this.value, 2.58e-4);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 2.58e-4);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case RadiationExposureUnits.Milliroentgens: {
-                    const value3 = super.internalDivide(this.value, 2.58e-4);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 2.58e-4);
+                    return super.internalDivide(v3, 0.001);
                 }
                 default: return Number.NaN;
             }
@@ -288,12 +296,12 @@ export class RadiationExposure extends BaseUnit {
                 case RadiationExposureUnits.MicrocoulombsPerKilogram: return super.internalMultiply(value, 0.000001);
                 case RadiationExposureUnits.MillicoulombsPerKilogram: return super.internalMultiply(value, 0.001);
                 case RadiationExposureUnits.Microroentgens: {
-                    const value3 = super.internalMultiply(value, 2.58e-4);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 2.58e-4);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case RadiationExposureUnits.Milliroentgens: {
-                    const value3 = super.internalMultiply(value, 2.58e-4);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 2.58e-4);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 default: return Number.NaN;
             }

@@ -20,7 +20,7 @@ export enum SpecificVolumeUnits {
 
 /** In thermodynamics, the specific volume of a substance is the ratio of the substance's volume to its mass. It is the reciprocal of density and an intrinsic property of matter as well. */
 export class SpecificVolume extends BaseUnit {
-    private value: number;
+    protected value: number;
     private cubicmetersperkilogramLazy: number | null = null;
     private cubicfeetperpoundLazy: number | null = null;
     private millicubicmetersperkilogramLazy: number | null = null;
@@ -34,7 +34,7 @@ export class SpecificVolume extends BaseUnit {
     public constructor(value: number, fromUnit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -98,6 +98,14 @@ export class SpecificVolume extends BaseUnit {
      */
     public static FromMillicubicMetersPerKilogram(value: number): SpecificVolume {
         return new SpecificVolume(value, SpecificVolumeUnits.MillicubicMetersPerKilogram);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with SpecificVolume
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof SpecificVolumeUnits {
+        return SpecificVolumeUnits;
     }
 
     /**

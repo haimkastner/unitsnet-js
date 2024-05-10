@@ -28,7 +28,7 @@ export enum ElectricCurrentGradientUnits {
 
 /** In electromagnetism, the current gradient describes how the current changes in time. */
 export class ElectricCurrentGradient extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amperespersecondLazy: number | null = null;
     private amperesperminuteLazy: number | null = null;
     private amperespermillisecondLazy: number | null = null;
@@ -46,7 +46,7 @@ export class ElectricCurrentGradient extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -185,6 +185,14 @@ export class ElectricCurrentGradient extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricCurrentGradient
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricCurrentGradientUnits {
+        return ElectricCurrentGradientUnits;
+    }
+
+    /**
      * Create API DTO represent a ElectricCurrentGradient unit.
      * @param holdInUnit The specific ElectricCurrentGradient unit to be used in the unit representation at the DTO
      */
@@ -234,8 +242,8 @@ export class ElectricCurrentGradient extends BaseUnit {
                 case ElectricCurrentGradientUnits.AmperesPerNanosecond: return super.internalDivide(this.value, 1E9);
                 case ElectricCurrentGradientUnits.MilliamperesPerSecond: return super.internalDivide(this.value, 0.001);
                 case ElectricCurrentGradientUnits.MilliamperesPerMinute: {
-                    const value3 = super.internalMultiply(this.value, 60);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.001);
                 }
                 default: return Number.NaN;
             }
@@ -261,8 +269,8 @@ export class ElectricCurrentGradient extends BaseUnit {
                 case ElectricCurrentGradientUnits.AmperesPerNanosecond: return super.internalMultiply(value, 1E9);
                 case ElectricCurrentGradientUnits.MilliamperesPerSecond: return super.internalMultiply(value, 0.001);
                 case ElectricCurrentGradientUnits.MilliamperesPerMinute: {
-                    const value3 = super.internalDivide(value, 60);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 default: return Number.NaN;
             }

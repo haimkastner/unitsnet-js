@@ -28,7 +28,7 @@ import { SqrtNode } from '../nodes/operators/sqrt-node';
 import { SubtractionNode } from '../nodes/operators/subtraction-node';
 import { VariableNode } from '../nodes/variable-node';
 import { ModulusNode } from '../nodes/operators/modulus-node';
-import { IdGenerator } from '../../../../id-generator';
+import { TwoByteIdGenerator } from '../../../../id-generator';
 
 export type IdentifierRemapping = { [identifier: string]: string };
 
@@ -38,7 +38,7 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 	private readonly _unconsumedNodes: MathStringBuilderNode[] = [];
 
 	public constructor(
-		private readonly _idGenerator: IdGenerator,
+		private readonly _idGenerator: TwoByteIdGenerator,
 		private readonly _remapping?: IdentifierRemapping,
 		public debug: boolean = false
 	) { }
@@ -150,9 +150,76 @@ export class ArithmeticGrammarListener implements ArithmeticListener, ParseTreeL
 
 	}
 
-	private logMessage(message: string): void {
-		if (this.debug) {
-			console.log(message);
+	//#region Debugs
+	public enterEquationString(ctx: EquationStringContext): void {
+		this.logMessage(`enter enterEquationString - ${ctx.text}`);
 		}
+	
+		/**
+		 * enter a parse tree produced by `arithmeticParser.expression`.
+		 * @param ctx the parse tree
+		 */
+		public enterExpression(ctx: ExpressionContext): void {
+			this.logMessage(`enter Expression - ${ctx.text}`);
+		}
+	
+		/**
+		 * enter a parse tree produced by `arithmeticParser.atom`.
+		 * @param ctx the parse tree
+		 */
+		public enterAtom(ctx: AtomContext): void {
+			this.logMessage(`enter Atom - ${ctx.text}`);
+		}
+	
+		/**
+		 * enter a parse tree produced by `arithmeticParser.scientific`.
+		 * @param ctx the parse tree
+		 */
+		public enterScientific(ctx: ScientificContext): void {
+			this.logMessage(`enter Scientific - ${ctx.text}`);
+		}
+	
+		/**
+		 * enter a parse tree produced by `arithmeticParser.variable`.
+		 * @param ctx the parse tree
+		 */
+		public enterVariable(ctx: VariableContext): void {
+			this.logMessage(`enter Variable - ${ctx.text}`);
+		}
+	
+	
+		public enterOpAdd(ctx: OpAddContext): void {
+			this.logMessage(`enter Add - ${ctx.text}`);
+		}
+	
+		public enterOpSub(ctx: OpSubContext): void {
+			this.logMessage(`enter Sub - ${ctx.text}`);
+		}
+	
+		public enterOpDiv(ctx: OpDivContext): void {
+			this.logMessage(`enter Div - ${ctx.text}`);
+		}
+	
+		public enterOpMod(ctx: OpModContext): void {
+			this.logMessage(`enter Mod - ${ctx.text}`);
+		}
+	
+		public enterOpMul(ctx: OpMulContext): void {
+			this.logMessage(`enter Mul - ${ctx.text}`);
+		}
+	
+		public enterOpPow(ctx: OpPowContext): void {
+			this.logMessage(`enter Pow - ${ctx.text}`);
+		}
+	
+		public enterOpSqrt(ctx: OpSqrtContext): void {
+			this.logMessage(`enter Sqrt - ${ctx.text}`);
+		}
+	//#endregion
+
+	private logMessage(message: string): void {
+		//if (this.debug) {
+			console.log(message);
+		//}
 	}
 }

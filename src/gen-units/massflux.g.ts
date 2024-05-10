@@ -38,7 +38,7 @@ export enum MassFluxUnits {
 
 /** Mass flux is the mass flow rate per unit area. */
 export class MassFlux extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramspersecondpersquaremeterLazy: number | null = null;
     private gramspersecondpersquarecentimeterLazy: number | null = null;
     private gramspersecondpersquaremillimeterLazy: number | null = null;
@@ -61,7 +61,7 @@ export class MassFlux extends BaseUnit {
     public constructor(value: number, fromUnit: MassFluxUnits = MassFluxUnits.KilogramsPerSecondPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -290,6 +290,14 @@ export class MassFlux extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MassFlux
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MassFluxUnits {
+        return MassFluxUnits;
+    }
+
+    /**
      * Create API DTO represent a MassFlux unit.
      * @param holdInUnit The specific MassFlux unit to be used in the unit representation at the DTO
      */
@@ -344,28 +352,28 @@ export class MassFlux extends BaseUnit {
                 case MassFluxUnits.GramsPerHourPerSquareCentimeter: return super.internalMultiply(this.value, 3.6e2);
                 case MassFluxUnits.GramsPerHourPerSquareMillimeter: return super.internalMultiply(this.value, 3.6e0);
                 case MassFluxUnits.KilogramsPerSecondPerSquareMeter: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerSecondPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerSecondPerSquareMillimeter: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerHourPerSquareMeter: {
-                    const value3 = super.internalMultiply(this.value, 3.6e6);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 3.6e6);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerHourPerSquareCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 3.6e2);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 3.6e2);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerHourPerSquareMillimeter: {
-                    const value3 = super.internalMultiply(this.value, 3.6e0);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 3.6e0);
+                    return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -396,28 +404,28 @@ export class MassFlux extends BaseUnit {
                 case MassFluxUnits.GramsPerHourPerSquareCentimeter: return super.internalDivide(value, 3.6e2);
                 case MassFluxUnits.GramsPerHourPerSquareMillimeter: return super.internalDivide(value, 3.6e0);
                 case MassFluxUnits.KilogramsPerSecondPerSquareMeter: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerSecondPerSquareCentimeter: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerSecondPerSquareMillimeter: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerHourPerSquareMeter: {
-                    const value3 = super.internalDivide(value, 3.6e6);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 3.6e6);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerHourPerSquareCentimeter: {
-                    const value3 = super.internalDivide(value, 3.6e2);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 3.6e2);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassFluxUnits.KilogramsPerHourPerSquareMillimeter: {
-                    const value3 = super.internalDivide(value, 3.6e0);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 3.6e0);
+                    return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }

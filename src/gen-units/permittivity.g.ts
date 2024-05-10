@@ -16,7 +16,7 @@ export enum PermittivityUnits {
 
 /** In electromagnetism, permittivity is the measure of resistance that is encountered when forming an electric field in a particular medium. */
 export class Permittivity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private faradspermeterLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class Permittivity extends BaseUnit {
     public constructor(value: number, fromUnit: PermittivityUnits = PermittivityUnits.FaradsPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class Permittivity extends BaseUnit {
      */
     public static FromFaradsPerMeter(value: number): Permittivity {
         return new Permittivity(value, PermittivityUnits.FaradsPerMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Permittivity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof PermittivityUnits {
+        return PermittivityUnits;
     }
 
     /**

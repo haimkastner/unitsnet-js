@@ -18,7 +18,7 @@ export enum VolumeFlowPerAreaUnits {
 
 /** The volumetric flow rate per area is the volume of fluid which passes through a given unit surface area per unit time. */
 export class VolumeFlowPerArea extends BaseUnit {
-    private value: number;
+    protected value: number;
     private cubicmeterspersecondpersquaremeterLazy: number | null = null;
     private cubicfeetperminutepersquarefootLazy: number | null = null;
 
@@ -31,7 +31,7 @@ export class VolumeFlowPerArea extends BaseUnit {
     public constructor(value: number, fromUnit: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +77,14 @@ export class VolumeFlowPerArea extends BaseUnit {
      */
     public static FromCubicFeetPerMinutePerSquareFoot(value: number): VolumeFlowPerArea {
         return new VolumeFlowPerArea(value, VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with VolumeFlowPerArea
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof VolumeFlowPerAreaUnits {
+        return VolumeFlowPerAreaUnits;
     }
 
     /**

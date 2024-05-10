@@ -70,7 +70,7 @@ export enum MassMomentOfInertiaUnits {
 
 /** A property of body reflects how its mass is distributed with regard to an axis. */
 export class MassMomentOfInertia extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramsquaremetersLazy: number | null = null;
     private gramsquaredecimetersLazy: number | null = null;
     private gramsquarecentimetersLazy: number | null = null;
@@ -109,7 +109,7 @@ export class MassMomentOfInertia extends BaseUnit {
     public constructor(value: number, fromUnit: MassMomentOfInertiaUnits = MassMomentOfInertiaUnits.KilogramSquareMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -626,6 +626,14 @@ export class MassMomentOfInertia extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MassMomentOfInertia
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MassMomentOfInertiaUnits {
+        return MassMomentOfInertiaUnits;
+    }
+
+    /**
      * Create API DTO represent a MassMomentOfInertia unit.
      * @param holdInUnit The specific MassMomentOfInertia unit to be used in the unit representation at the DTO
      */
@@ -702,68 +710,68 @@ export class MassMomentOfInertia extends BaseUnit {
                 case MassMomentOfInertiaUnits.SlugSquareFeet: return super.internalDivide(this.value, 1.3558179619);
                 case MassMomentOfInertiaUnits.SlugSquareInches: return super.internalDivide(this.value, 9.41540242e-3);
                 case MassMomentOfInertiaUnits.MilligramSquareMeters: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassMomentOfInertiaUnits.KilogramSquareMeters: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MilligramSquareDecimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e5);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e5);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassMomentOfInertiaUnits.KilogramSquareDecimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e5);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e5);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MilligramSquareCentimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e7);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e7);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassMomentOfInertiaUnits.KilogramSquareCentimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e7);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e7);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MilligramSquareMillimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e9);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 1e9);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case MassMomentOfInertiaUnits.KilogramSquareMillimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e9);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e9);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.KilotonneSquareMeters: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MegatonneSquareMeters: {
-                    const value3 = super.internalMultiply(this.value, 1e-3);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case MassMomentOfInertiaUnits.KilotonneSquareDecimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MegatonneSquareDecimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e-1);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case MassMomentOfInertiaUnits.KilotonneSquareCentimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e1);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e1);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MegatonneSquareCentimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e1);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 1e1);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: {
-                    const value3 = super.internalMultiply(this.value, 1e3);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -816,68 +824,68 @@ export class MassMomentOfInertia extends BaseUnit {
                 case MassMomentOfInertiaUnits.SlugSquareFeet: return super.internalMultiply(value, 1.3558179619);
                 case MassMomentOfInertiaUnits.SlugSquareInches: return super.internalMultiply(value, 9.41540242e-3);
                 case MassMomentOfInertiaUnits.MilligramSquareMeters: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassMomentOfInertiaUnits.KilogramSquareMeters: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MilligramSquareDecimeters: {
-                    const value3 = super.internalDivide(value, 1e5);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e5);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassMomentOfInertiaUnits.KilogramSquareDecimeters: {
-                    const value3 = super.internalDivide(value, 1e5);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e5);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MilligramSquareCentimeters: {
-                    const value3 = super.internalDivide(value, 1e7);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e7);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassMomentOfInertiaUnits.KilogramSquareCentimeters: {
-                    const value3 = super.internalDivide(value, 1e7);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e7);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MilligramSquareMillimeters: {
-                    const value3 = super.internalDivide(value, 1e9);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 1e9);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case MassMomentOfInertiaUnits.KilogramSquareMillimeters: {
-                    const value3 = super.internalDivide(value, 1e9);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e9);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.KilotonneSquareMeters: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MegatonneSquareMeters: {
-                    const value3 = super.internalDivide(value, 1e-3);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case MassMomentOfInertiaUnits.KilotonneSquareDecimeters: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MegatonneSquareDecimeters: {
-                    const value3 = super.internalDivide(value, 1e-1);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case MassMomentOfInertiaUnits.KilotonneSquareCentimeters: {
-                    const value3 = super.internalDivide(value, 1e1);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e1);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MegatonneSquareCentimeters: {
-                    const value3 = super.internalDivide(value, 1e1);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 1e1);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: {
-                    const value3 = super.internalDivide(value, 1e3);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

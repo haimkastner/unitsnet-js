@@ -20,7 +20,7 @@ export enum LeakRateUnits {
 
 /** A leakage rate of QL = 1 Pa-m³/s is given when the pressure in a closed, evacuated container with a volume of 1 m³ rises by 1 Pa per second or when the pressure in the container drops by 1 Pa in the event of overpressure. */
 export class LeakRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private pascalcubicmeterspersecondLazy: number | null = null;
     private millibarliterspersecondLazy: number | null = null;
     private torrliterspersecondLazy: number | null = null;
@@ -34,7 +34,7 @@ export class LeakRate extends BaseUnit {
     public constructor(value: number, fromUnit: LeakRateUnits = LeakRateUnits.PascalCubicMetersPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -98,6 +98,14 @@ export class LeakRate extends BaseUnit {
      */
     public static FromTorrLitersPerSecond(value: number): LeakRate {
         return new LeakRate(value, LeakRateUnits.TorrLitersPerSecond);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with LeakRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof LeakRateUnits {
+        return LeakRateUnits;
     }
 
     /**

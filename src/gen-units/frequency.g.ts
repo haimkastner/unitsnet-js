@@ -40,7 +40,7 @@ export enum FrequencyUnits {
 
 /** The number of occurrences of a repeating event per unit time. */
 export class Frequency extends BaseUnit {
-    private value: number;
+    protected value: number;
     private hertzLazy: number | null = null;
     private radianspersecondLazy: number | null = null;
     private cyclesperminuteLazy: number | null = null;
@@ -64,7 +64,7 @@ export class Frequency extends BaseUnit {
     public constructor(value: number, fromUnit: FrequencyUnits = FrequencyUnits.Hertz) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -311,6 +311,14 @@ export class Frequency extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Frequency
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof FrequencyUnits {
+        return FrequencyUnits;
+    }
+
+    /**
      * Create API DTO represent a Frequency unit.
      * @param holdInUnit The specific Frequency unit to be used in the unit representation at the DTO
      */
@@ -366,8 +374,8 @@ export class Frequency extends BaseUnit {
                 case FrequencyUnits.BeatsPerMinute: return super.internalMultiply(this.value, 60);
                 case FrequencyUnits.PerSecond: return this.value;
                 case FrequencyUnits.BUnits: {
-                    const value3 = super.internalMultiply(this.value, this.value);
-                    return super.internalMultiply(value3, 1e-3);
+                    const v3 = super.internalMultiply(this.value, this.value);
+                    return super.internalMultiply(v3, 1e-3);
                 }
                 case FrequencyUnits.Microhertz: return super.internalDivide(this.value, 0.000001);
                 case FrequencyUnits.Millihertz: return super.internalDivide(this.value, 0.001);
@@ -405,8 +413,8 @@ export class Frequency extends BaseUnit {
                 case FrequencyUnits.BeatsPerMinute: return super.internalDivide(value, 60);
                 case FrequencyUnits.PerSecond: return value;
                 case FrequencyUnits.BUnits: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return Math.sqrt(value3);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return Math.sqrt(v3);
                 }
                 case FrequencyUnits.Microhertz: return super.internalMultiply(value, 0.000001);
                 case FrequencyUnits.Millihertz: return super.internalMultiply(value, 0.001);

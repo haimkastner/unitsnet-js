@@ -16,7 +16,7 @@ export enum LuminousIntensityUnits {
 
 /** In photometry, luminous intensity is a measure of the wavelength-weighted power emitted by a light source in a particular direction per unit solid angle, based on the luminosity function, a standardized model of the sensitivity of the human eye. */
 export class LuminousIntensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private candelaLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class LuminousIntensity extends BaseUnit {
     public constructor(value: number, fromUnit: LuminousIntensityUnits = LuminousIntensityUnits.Candela) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class LuminousIntensity extends BaseUnit {
      */
     public static FromCandela(value: number): LuminousIntensity {
         return new LuminousIntensity(value, LuminousIntensityUnits.Candela);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with LuminousIntensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof LuminousIntensityUnits {
+        return LuminousIntensityUnits;
     }
 
     /**

@@ -42,7 +42,7 @@ export enum ElectricResistivityUnits {
 
 /** Electrical resistivity (also known as resistivity, specific electrical resistance, or volume resistivity) is a fundamental property that quantifies how strongly a given material opposes the flow of electric current. */
 export class ElectricResistivity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private ohmmetersLazy: number | null = null;
     private ohmscentimeterLazy: number | null = null;
     private picoohmmetersLazy: number | null = null;
@@ -67,7 +67,7 @@ export class ElectricResistivity extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -332,6 +332,14 @@ export class ElectricResistivity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricResistivity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricResistivityUnits {
+        return ElectricResistivityUnits;
+    }
+
+    /**
      * Create API DTO represent a ElectricResistivity unit.
      * @param holdInUnit The specific ElectricResistivity unit to be used in the unit representation at the DTO
      */
@@ -390,28 +398,28 @@ export class ElectricResistivity extends BaseUnit {
                 case ElectricResistivityUnits.KiloohmMeters: return super.internalDivide(this.value, 1000);
                 case ElectricResistivityUnits.MegaohmMeters: return super.internalDivide(this.value, 1000000);
                 case ElectricResistivityUnits.PicoohmsCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 100);
-                    return super.internalDivide(value3, 1e-12);
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1e-12);
                 }
                 case ElectricResistivityUnits.NanoohmsCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 100);
-                    return super.internalDivide(value3, 1e-9);
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1e-9);
                 }
                 case ElectricResistivityUnits.MicroohmsCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 100);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case ElectricResistivityUnits.MilliohmsCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 100);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case ElectricResistivityUnits.KiloohmsCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 100);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1000);
                 }
                 case ElectricResistivityUnits.MegaohmsCentimeter: {
-                    const value3 = super.internalMultiply(this.value, 100);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1000000);
                 }
                 default: return Number.NaN;
             }
@@ -446,28 +454,28 @@ export class ElectricResistivity extends BaseUnit {
                 case ElectricResistivityUnits.KiloohmMeters: return super.internalMultiply(value, 1000);
                 case ElectricResistivityUnits.MegaohmMeters: return super.internalMultiply(value, 1000000);
                 case ElectricResistivityUnits.PicoohmsCentimeter: {
-                    const value3 = super.internalDivide(value, 100);
-                    return super.internalMultiply(value3, 1e-12);
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1e-12);
                 }
                 case ElectricResistivityUnits.NanoohmsCentimeter: {
-                    const value3 = super.internalDivide(value, 100);
-                    return super.internalMultiply(value3, 1e-9);
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1e-9);
                 }
                 case ElectricResistivityUnits.MicroohmsCentimeter: {
-                    const value3 = super.internalDivide(value, 100);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case ElectricResistivityUnits.MilliohmsCentimeter: {
-                    const value3 = super.internalDivide(value, 100);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case ElectricResistivityUnits.KiloohmsCentimeter: {
-                    const value3 = super.internalDivide(value, 100);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case ElectricResistivityUnits.MegaohmsCentimeter: {
-                    const value3 = super.internalDivide(value, 100);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 default: return Number.NaN;
             }

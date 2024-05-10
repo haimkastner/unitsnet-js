@@ -36,7 +36,7 @@ export enum JerkUnits {
 
 /** Jerk or Jolt, in physics, is the rate at which the acceleration of an object changes over time. The SI unit for jerk is the Meter per second cubed (m/s³). Jerks are vector quantities (they have magnitude and direction) and add according to the parallelogram law. */
 export class Jerk extends BaseUnit {
-    private value: number;
+    protected value: number;
     private meterspersecondcubedLazy: number | null = null;
     private inchespersecondcubedLazy: number | null = null;
     private feetpersecondcubedLazy: number | null = null;
@@ -58,7 +58,7 @@ export class Jerk extends BaseUnit {
     public constructor(value: number, fromUnit: JerkUnits = JerkUnits.MetersPerSecondCubed) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -269,6 +269,14 @@ export class Jerk extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Jerk
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof JerkUnits {
+        return JerkUnits;
+    }
+
+    /**
      * Create API DTO represent a Jerk unit.
      * @param holdInUnit The specific Jerk unit to be used in the unit representation at the DTO
      */
@@ -326,8 +334,8 @@ export class Jerk extends BaseUnit {
                 case JerkUnits.DecimetersPerSecondCubed: return super.internalDivide(this.value, 0.1);
                 case JerkUnits.KilometersPerSecondCubed: return super.internalDivide(this.value, 1000);
                 case JerkUnits.MillistandardGravitiesPerSecond: {
-                    const value3 = super.internalDivide(this.value, 9.80665);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 9.80665);
+                    return super.internalDivide(v3, 0.001);
                 }
                 default: return Number.NaN;
             }
@@ -361,8 +369,8 @@ export class Jerk extends BaseUnit {
                 case JerkUnits.DecimetersPerSecondCubed: return super.internalMultiply(value, 0.1);
                 case JerkUnits.KilometersPerSecondCubed: return super.internalMultiply(value, 1000);
                 case JerkUnits.MillistandardGravitiesPerSecond: {
-                    const value3 = super.internalMultiply(value, 9.80665);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 9.80665);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 default: return Number.NaN;
             }

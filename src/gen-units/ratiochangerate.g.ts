@@ -18,7 +18,7 @@ export enum RatioChangeRateUnits {
 
 /** The change in ratio per unit of time. */
 export class RatioChangeRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private percentspersecondLazy: number | null = null;
     private decimalfractionspersecondLazy: number | null = null;
 
@@ -31,7 +31,7 @@ export class RatioChangeRate extends BaseUnit {
     public constructor(value: number, fromUnit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +77,14 @@ export class RatioChangeRate extends BaseUnit {
      */
     public static FromDecimalFractionsPerSecond(value: number): RatioChangeRate {
         return new RatioChangeRate(value, RatioChangeRateUnits.DecimalFractionsPerSecond);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with RatioChangeRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RatioChangeRateUnits {
+        return RatioChangeRateUnits;
     }
 
     /**

@@ -16,7 +16,7 @@ export enum MagneticFluxUnits {
 
 /** In physics, specifically electromagnetism, the magnetic flux through a surface is the surface integral of the normal component of the magnetic field B passing through that surface. */
 export class MagneticFlux extends BaseUnit {
-    private value: number;
+    protected value: number;
     private webersLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class MagneticFlux extends BaseUnit {
     public constructor(value: number, fromUnit: MagneticFluxUnits = MagneticFluxUnits.Webers) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class MagneticFlux extends BaseUnit {
      */
     public static FromWebers(value: number): MagneticFlux {
         return new MagneticFlux(value, MagneticFluxUnits.Webers);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with MagneticFlux
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof MagneticFluxUnits {
+        return MagneticFluxUnits;
     }
 
     /**

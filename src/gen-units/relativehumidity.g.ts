@@ -16,7 +16,7 @@ export enum RelativeHumidityUnits {
 
 /** Relative humidity is a ratio of the actual water vapor present in the air to the maximum water vapor in the air at the given temperature. */
 export class RelativeHumidity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private percentLazy: number | null = null;
 
     /**
@@ -28,7 +28,7 @@ export class RelativeHumidity extends BaseUnit {
     public constructor(value: number, fromUnit: RelativeHumidityUnits = RelativeHumidityUnits.Percent) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +56,14 @@ export class RelativeHumidity extends BaseUnit {
      */
     public static FromPercent(value: number): RelativeHumidity {
         return new RelativeHumidity(value, RelativeHumidityUnits.Percent);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with RelativeHumidity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof RelativeHumidityUnits {
+        return RelativeHumidityUnits;
     }
 
     /**

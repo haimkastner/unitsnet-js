@@ -26,7 +26,7 @@ export enum ElectricConductivityUnits {
 
 /** Electrical conductivity or specific conductance is the reciprocal of electrical resistivity, and measures a material's ability to conduct an electric current. */
 export class ElectricConductivity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private siemenspermeterLazy: number | null = null;
     private siemensperinchLazy: number | null = null;
     private siemensperfootLazy: number | null = null;
@@ -43,7 +43,7 @@ export class ElectricConductivity extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -164,6 +164,14 @@ export class ElectricConductivity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricConductivity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof ElectricConductivityUnits {
+        return ElectricConductivityUnits;
+    }
+
+    /**
      * Create API DTO represent a ElectricConductivity unit.
      * @param holdInUnit The specific ElectricConductivity unit to be used in the unit representation at the DTO
      */
@@ -210,12 +218,12 @@ export class ElectricConductivity extends BaseUnit {
                 case ElectricConductivityUnits.SiemensPerFoot: return super.internalDivide(this.value, 3.2808398950131234);
                 case ElectricConductivityUnits.SiemensPerCentimeter: return super.internalDivide(this.value, 1e2);
                 case ElectricConductivityUnits.MicrosiemensPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 0.000001);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 0.000001);
                 }
                 case ElectricConductivityUnits.MillisiemensPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 0.001);
                 }
                 default: return Number.NaN;
             }
@@ -238,12 +246,12 @@ export class ElectricConductivity extends BaseUnit {
                 case ElectricConductivityUnits.SiemensPerFoot: return super.internalMultiply(value, 3.2808398950131234);
                 case ElectricConductivityUnits.SiemensPerCentimeter: return super.internalMultiply(value, 1e2);
                 case ElectricConductivityUnits.MicrosiemensPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 0.000001);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 0.000001);
                 }
                 case ElectricConductivityUnits.MillisiemensPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 default: return Number.NaN;
             }

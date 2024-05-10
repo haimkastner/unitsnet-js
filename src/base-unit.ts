@@ -15,6 +15,16 @@ export enum ArithmeticOperation {
 	Sqrt = 'Sqrt'
 }
 
+export interface OperatorOverrides {
+	[ArithmeticOperation.Add]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Subtract]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Multiply]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Divide]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Modulo]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Pow]?: (a: number, b: number) => number;
+	[ArithmeticOperation.Sqrt]?: (a: number) => number;
+}
+
 /**
  * An binary arithmetic formula.
  * e.g. (valueA, ValueB) => { valueA + valueB } 
@@ -32,7 +42,7 @@ export type CompareToFormula = (valueA: number, valueB: number) => number;
  */
 export type EqualsFormula = (valueA: number, valueB: number) => boolean;
 
-const externalArithmeticFormulas: OperatorOverrides = {};
+let externalArithmeticFormulas: OperatorOverrides = {};
 
 let externalCompareToFormula: ArithmeticFormula | undefined;
 let externalEqualsFormula: EqualsFormula | undefined;
@@ -47,10 +57,24 @@ let numberOfOverwrittenOperators: number = 0;
  */
 export function setArithmeticFormula<TOperation extends ArithmeticOperation>(
 	arithmeticOperation: TOperation,
-	arithmeticFormula: OperatorOverrides[TOperation]
+	arithmeticFormula: OperatorOverrides[TOperation] | undefined
 ) {
 	externalArithmeticFormulas[arithmeticOperation] = arithmeticFormula;
 	numberOfOverwrittenOperators = Object.values(externalArithmeticFormulas).filter((value) => !!value).length;
+}
+
+export function unsetArithmeticFormula<TOperation extends ArithmeticOperation>(
+	arithmeticOperation: TOperation
+): void {
+	if (externalArithmeticFormulas[arithmeticOperation]) {
+		numberOfOverwrittenOperators--;
+	}
+	externalArithmeticFormulas[arithmeticOperation] = undefined;
+}
+
+export function unsetArithmeticFormulaOverrides(): void {
+	externalArithmeticFormulas = {};
+	numberOfOverwrittenOperators = 0;
 }
 
 export function areAnyOperatorsOverridden(): boolean {
@@ -74,6 +98,11 @@ export function setCompareToFormula(compareToFormula: CompareToFormula) {
 }
 
 export abstract class BaseUnit {
+	protected abstract value: number;
+
+	public get BaseValue(): number {
+		return this.value;
+	}
 
     /**
      * Truncates a number to a specified number of fractional digits.
@@ -93,6 +122,8 @@ export abstract class BaseUnit {
 
         return truncatedNum;
     }
+
+	public abstract convert(toUnit: string): number;
 
     protected internalEquals(valueA: number, valueB: number): boolean {
         return externalEqualsFormula?.(valueA, valueB) ?? valueA === valueB;
@@ -136,14 +167,4 @@ export abstract class BaseUnit {
 	protected internalSqrt(value: number): number {
 		return externalArithmeticFormulas.Sqrt?.(value) ?? Math.sqrt(value);
 	}
-}
-
-export interface OperatorOverrides {
-	[ArithmeticOperation.Add]?: (a: number, b: number) => number;
-	[ArithmeticOperation.Subtract]?: (a: number, b: number) => number;
-	[ArithmeticOperation.Multiply]?: (a: number, b: number) => number;
-	[ArithmeticOperation.Divide]?: (a: number, b: number) => number;
-	[ArithmeticOperation.Modulo]?: (a: number, b: number) => number;
-	[ArithmeticOperation.Pow]?: (a: number, b: number) => number;
-	[ArithmeticOperation.Sqrt]?: (a: number) => number;
 }

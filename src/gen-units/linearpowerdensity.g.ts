@@ -64,7 +64,7 @@ export enum LinearPowerDensityUnits {
 
 /** The Linear Power Density of a substance is its power per unit length.  The term linear density is most often used when describing the characteristics of one-dimensional objects, although linear density can also be used to describe the density of a three-dimensional quantity along one particular dimension. */
 export class LinearPowerDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private wattspermeterLazy: number | null = null;
     private wattspercentimeterLazy: number | null = null;
     private wattspermillimeterLazy: number | null = null;
@@ -100,7 +100,7 @@ export class LinearPowerDensity extends BaseUnit {
     public constructor(value: number, fromUnit: LinearPowerDensityUnits = LinearPowerDensityUnits.WattsPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -563,6 +563,14 @@ export class LinearPowerDensity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with LinearPowerDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    public static getUnitEnum(): typeof LinearPowerDensityUnits {
+        return LinearPowerDensityUnits;
+    }
+
+    /**
      * Create API DTO represent a LinearPowerDensity unit.
      * @param holdInUnit The specific LinearPowerDensity unit to be used in the unit representation at the DTO
      */
@@ -633,68 +641,68 @@ export class LinearPowerDensity extends BaseUnit {
                 case LinearPowerDensityUnits.MegawattsPerMeter: return super.internalDivide(this.value, 1000000);
                 case LinearPowerDensityUnits.GigawattsPerMeter: return super.internalDivide(this.value, 1000000000);
                 case LinearPowerDensityUnits.MilliwattsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case LinearPowerDensityUnits.KilowattsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 1000);
                 }
                 case LinearPowerDensityUnits.MegawattsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case LinearPowerDensityUnits.GigawattsPerCentimeter: {
-                    const value3 = super.internalDivide(this.value, 1e2);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 1e2);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case LinearPowerDensityUnits.MilliwattsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case LinearPowerDensityUnits.KilowattsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
                 }
                 case LinearPowerDensityUnits.MegawattsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case LinearPowerDensityUnits.GigawattsPerMillimeter: {
-                    const value3 = super.internalDivide(this.value, 1e3);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 1e3);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case LinearPowerDensityUnits.MilliwattsPerInch: {
-                    const value3 = super.internalDivide(this.value, 39.37007874);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 39.37007874);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case LinearPowerDensityUnits.KilowattsPerInch: {
-                    const value3 = super.internalDivide(this.value, 39.37007874);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 39.37007874);
+                    return super.internalDivide(v3, 1000);
                 }
                 case LinearPowerDensityUnits.MegawattsPerInch: {
-                    const value3 = super.internalDivide(this.value, 39.37007874);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 39.37007874);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case LinearPowerDensityUnits.GigawattsPerInch: {
-                    const value3 = super.internalDivide(this.value, 39.37007874);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 39.37007874);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 case LinearPowerDensityUnits.MilliwattsPerFoot: {
-                    const value3 = super.internalDivide(this.value, 3.280839895);
-                    return super.internalDivide(value3, 0.001);
+                    const v3 = super.internalDivide(this.value, 3.280839895);
+                    return super.internalDivide(v3, 0.001);
                 }
                 case LinearPowerDensityUnits.KilowattsPerFoot: {
-                    const value3 = super.internalDivide(this.value, 3.280839895);
-                    return super.internalDivide(value3, 1000);
+                    const v3 = super.internalDivide(this.value, 3.280839895);
+                    return super.internalDivide(v3, 1000);
                 }
                 case LinearPowerDensityUnits.MegawattsPerFoot: {
-                    const value3 = super.internalDivide(this.value, 3.280839895);
-                    return super.internalDivide(value3, 1000000);
+                    const v3 = super.internalDivide(this.value, 3.280839895);
+                    return super.internalDivide(v3, 1000000);
                 }
                 case LinearPowerDensityUnits.GigawattsPerFoot: {
-                    const value3 = super.internalDivide(this.value, 3.280839895);
-                    return super.internalDivide(value3, 1000000000);
+                    const v3 = super.internalDivide(this.value, 3.280839895);
+                    return super.internalDivide(v3, 1000000000);
                 }
                 default: return Number.NaN;
             }
@@ -741,68 +749,68 @@ export class LinearPowerDensity extends BaseUnit {
                 case LinearPowerDensityUnits.MegawattsPerMeter: return super.internalMultiply(value, 1000000);
                 case LinearPowerDensityUnits.GigawattsPerMeter: return super.internalMultiply(value, 1000000000);
                 case LinearPowerDensityUnits.MilliwattsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case LinearPowerDensityUnits.KilowattsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case LinearPowerDensityUnits.MegawattsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case LinearPowerDensityUnits.GigawattsPerCentimeter: {
-                    const value3 = super.internalMultiply(value, 1e2);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 1e2);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case LinearPowerDensityUnits.MilliwattsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case LinearPowerDensityUnits.KilowattsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case LinearPowerDensityUnits.MegawattsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case LinearPowerDensityUnits.GigawattsPerMillimeter: {
-                    const value3 = super.internalMultiply(value, 1e3);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 1e3);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case LinearPowerDensityUnits.MilliwattsPerInch: {
-                    const value3 = super.internalMultiply(value, 39.37007874);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 39.37007874);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case LinearPowerDensityUnits.KilowattsPerInch: {
-                    const value3 = super.internalMultiply(value, 39.37007874);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 39.37007874);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case LinearPowerDensityUnits.MegawattsPerInch: {
-                    const value3 = super.internalMultiply(value, 39.37007874);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 39.37007874);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case LinearPowerDensityUnits.GigawattsPerInch: {
-                    const value3 = super.internalMultiply(value, 39.37007874);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 39.37007874);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 case LinearPowerDensityUnits.MilliwattsPerFoot: {
-                    const value3 = super.internalMultiply(value, 3.280839895);
-                    return super.internalMultiply(value3, 0.001);
+                    const v3 = super.internalMultiply(value, 3.280839895);
+                    return super.internalMultiply(v3, 0.001);
                 }
                 case LinearPowerDensityUnits.KilowattsPerFoot: {
-                    const value3 = super.internalMultiply(value, 3.280839895);
-                    return super.internalMultiply(value3, 1000);
+                    const v3 = super.internalMultiply(value, 3.280839895);
+                    return super.internalMultiply(v3, 1000);
                 }
                 case LinearPowerDensityUnits.MegawattsPerFoot: {
-                    const value3 = super.internalMultiply(value, 3.280839895);
-                    return super.internalMultiply(value3, 1000000);
+                    const v3 = super.internalMultiply(value, 3.280839895);
+                    return super.internalMultiply(v3, 1000000);
                 }
                 case LinearPowerDensityUnits.GigawattsPerFoot: {
-                    const value3 = super.internalMultiply(value, 3.280839895);
-                    return super.internalMultiply(value3, 1000000000);
+                    const v3 = super.internalMultiply(value, 3.280839895);
+                    return super.internalMultiply(v3, 1000000000);
                 }
                 default: return Number.NaN;
             }
