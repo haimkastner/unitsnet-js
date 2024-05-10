@@ -83,7 +83,7 @@ describe('Unitsnet - tests', () => {
 
         it(`Should limit fractional digits to 1`, () => {
             const angle = Angle.FromDegrees(180);
-            expect(angle.toString(AngleUnits.Radians, 0)).equal('3.1 rad');
+            expect(angle.toString(AngleUnits.Radians, 1)).equal('3.1 rad');
         });
 
         it(`Should limit fractional digits to 2`, () => {
