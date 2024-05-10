@@ -32,9 +32,11 @@ export function generateUnitsModuleExport(project: Project, unitsDestinationDire
             'ArithmeticFormula',
             'CompareToFormula',
             'EqualsFormula',
-            'setArithmeticFormula',
             'setEqualsFormula',
             'setCompareToFormula',
+            'setOperatorOverride',
+            'unsetOperatorOverride',
+            'unsetAllOperatorOverrides'
         ]
     });
 

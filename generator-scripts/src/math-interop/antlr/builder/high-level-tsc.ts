@@ -1,10 +1,8 @@
 import ts from 'typescript';
-import { OperatorOverrides } from '../../operators-overrides';
 import { MathStringBuilderNode } from './nodes/math-string-builder-node';
 
-export enum MathOperatorType {
+export enum UnaryOperatorType {
 	Sqrt = 'sqrt',
-	Pow = 'pow',
 }
 
 export enum BinaryOperatorType {
@@ -13,49 +11,19 @@ export enum BinaryOperatorType {
 	Mul = 'mul',
 	Div = 'div',
 	Mod = 'mod',
+	Pow = 'pow',
 }
 
-export namespace HighLevelTsc {
-	/**
-	 * Copied directly from nanoid at https://github.com/ai/nanoid/blob/main/non-secure/index.js
-	 * to avoid ES import issues
-	 *
-	 * @export
-	 * @return {*}  {string}
-	 */
-	export function getRandomVariableId(): string {
-		const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-		let id = ''
-		// A compact alternative for `for (var i = 0; i < step; i++)`.
-		let i = 8;
-		while (i--) {
-			// `| 0` is more compact and faster than `Math.floor()`.
-			id += alphabet[(Math.random() * alphabet.length) | 0]
-		}
-		return id
-	}
+type OperatorType = UnaryOperatorType | BinaryOperatorType;
 
+export namespace HighLevelTsc {
 	export function buildMathCall(
 		resultConstantId: string,
-		operator: MathOperatorType,
+		operator: UnaryOperatorType,
 		values: MathStringBuilderNode[],
 	): ts.Statement[] {
-		const preRequisiteCode: ts.Statement[] = [];
-		const parameterExpressions: ts.Expression[] = [];
-
-		for (const value of values) {
-			const resolved = value.execute();
-			if (value.isPrimitive) {
-				const exprState = (resolved[0]) as ts.ExpressionStatement;
-				parameterExpressions.push(exprState.expression);
-			} else {
-				preRequisiteCode.push(...resolved);
-				parameterExpressions.push(ts.createIdentifier(value.id));
-			}
-		}
-
-		const call = createMathMethodCall(operator, parameterExpressions);
-
+		const { preRequisiteCode, callExpressions } = prepareVariables(values);
+		const call = createMathMethodCall(operator, callExpressions);
 		const resultVariable = createConstVariableStatement(resultConstantId, call);
 
 		return [
@@ -64,7 +32,7 @@ export namespace HighLevelTsc {
 		];
 	}
 
-	function createMathMethodCall(operator: MathOperatorType, paramIdentifiers: ts.Identifier[] | ts.Expression[]): ts.CallExpression {
+	function createMathMethodCall(operator: UnaryOperatorType, paramIdentifiers: ts.Identifier[] | ts.Expression[]): ts.CallExpression {
 		const mathIdentifier = ts.createIdentifier('Math');
 		const funcIdentifier = ts.createIdentifier(operator);
 
@@ -77,36 +45,48 @@ export namespace HighLevelTsc {
 		);
 	}
 
-	export function buildBinaryOperator(
-		resultConstantId: string,
-		valueA: MathStringBuilderNode,
-		valueB: MathStringBuilderNode,
-		operator: BinaryOperatorType
-	): ts.Statement[] {
-		const resolvedValueA = valueA.execute();
-		const resolvedValueB = valueB.execute();
-
+	function prepareVariables(values: MathStringBuilderNode[]): { preRequisiteCode: ts.Statement[], callExpressions: ts.Expression[] } {
 		const preRequisiteCode: ts.Statement[] = [];
 		const callExpressions: ts.Expression[] = [];
 
-		if (valueA.isPrimitive) {
-			const exprState = (resolvedValueA[0]) as ts.ExpressionStatement;
-			callExpressions.push(exprState.expression);
-		} else {
-			preRequisiteCode.push(...resolvedValueA);
-			callExpressions.push(ts.createIdentifier(valueA.id));
+		for (const value of values) {
+			const resolved = value.execute();
+			if (value.isPrimitive) {
+				const exprState = (resolved[0]) as ts.ExpressionStatement;
+				callExpressions.push(exprState.expression);
+			} else {
+				preRequisiteCode.push(...resolved);
+				callExpressions.push(ts.createIdentifier(value.id));
+			}
 		}
 
-		if (valueB.isPrimitive) {
-			const exprState = (resolvedValueB[0]) as ts.ExpressionStatement;
-			callExpressions.push(exprState.expression);
-		} else {
-			preRequisiteCode.push(...resolvedValueB);
-			callExpressions.push(ts.createIdentifier(valueB.id));
-		}
+		return { preRequisiteCode, callExpressions };
+	}
 
-		const call = getBinaryOperationCall(operator, callExpressions);
+	export function buildUnaryOperator(
+		resultConstantId: string,
+		operator: UnaryOperatorType,
+		value: MathStringBuilderNode
+	): ts.Statement[] {
+		return buildOperator(resultConstantId, [value], operator);
+	}
 
+	export function buildBinaryOperator(
+		resultConstantId: string,
+		operator: BinaryOperatorType,
+		valueA: MathStringBuilderNode,
+		valueB: MathStringBuilderNode
+	): ts.Statement[] {
+		return buildOperator(resultConstantId, [valueA, valueB], operator);
+	}
+
+	function buildOperator(
+		resultConstantId: string,
+		values: MathStringBuilderNode[],
+		operator: OperatorType
+	): ts.Statement[] {
+		const { preRequisiteCode, callExpressions } = prepareVariables(values);
+		const call = getInternalMathOperationCall(operator, callExpressions);
 		const resultVariable = createConstVariableStatement(resultConstantId, call);
 
 		return [
@@ -154,7 +134,7 @@ export namespace HighLevelTsc {
 		);
 	}
 
-	function getInternalBinaryOperatorImplName(operator: BinaryOperatorType): string {
+	function getInternalBinaryOperatorImplName(operator: OperatorType): string {
 		switch (operator) {
 			case BinaryOperatorType.Add:
 				return 'internalAdd';
@@ -166,16 +146,18 @@ export namespace HighLevelTsc {
 				return 'internalDivide';
 			case BinaryOperatorType.Mod:
 				return 'internalModulo';
+			case BinaryOperatorType.Pow:
+				return 'internalPow';
+			case UnaryOperatorType.Sqrt:
+				return 'internalSqrt';
 			default:
 				throw new Error(`Operator kind '${operator}' is unknown and not supported`);
 		}
 	}
 
-	function getBinaryOperationCall(operator: BinaryOperatorType, args: ts.Expression[]): ts.Expression {
+	function getInternalMathOperationCall(operator: OperatorType, args: ts.Expression[]): ts.Expression {
 		const methodName = getInternalBinaryOperatorImplName(operator);
-
 		const implAccess = ts.createPropertyAccess(ts.createSuper(), methodName);
-
 		return ts.createCall(implAccess, undefined, args);
 	}
 

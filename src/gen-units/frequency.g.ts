@@ -64,7 +64,9 @@ export class Frequency extends BaseUnit {
     public constructor(value: number, fromUnit: FrequencyUnits = FrequencyUnits.Hertz) {
 
         super();
-        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -414,7 +416,7 @@ export class Frequency extends BaseUnit {
                 case FrequencyUnits.PerSecond: return value;
                 case FrequencyUnits.BUnits: {
                     const v3 = super.internalMultiply(value, 1e3);
-                    return Math.sqrt(v3);
+                    return super.internalSqrt(v3);
                 }
                 case FrequencyUnits.Microhertz: return super.internalMultiply(value, 0.000001);
                 case FrequencyUnits.Millihertz: return super.internalMultiply(value, 0.001);

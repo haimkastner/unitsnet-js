@@ -52,7 +52,9 @@ export class MolarFlow extends BaseUnit {
     public constructor(value: number, fromUnit: MolarFlowUnits = MolarFlowUnits.MolesPerSecond) {
 
         super();
-        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 

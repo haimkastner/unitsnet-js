@@ -43,7 +43,9 @@ export class ApparentPower extends BaseUnit {
     public constructor(value: number, fromUnit: ApparentPowerUnits = ApparentPowerUnits.Voltamperes) {
 
         super();
-        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 

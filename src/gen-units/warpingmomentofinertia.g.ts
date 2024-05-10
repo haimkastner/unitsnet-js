@@ -43,7 +43,9 @@ export class WarpingMomentOfInertia extends BaseUnit {
     public constructor(value: number, fromUnit: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth) {
 
         super();
-        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -218,11 +220,11 @@ export class WarpingMomentOfInertia extends BaseUnit {
                 case WarpingMomentOfInertiaUnits.CentimetersToTheSixth: return super.internalMultiply(this.value, 1e12);
                 case WarpingMomentOfInertiaUnits.MillimetersToTheSixth: return super.internalMultiply(this.value, 1e18);
                 case WarpingMomentOfInertiaUnits.FeetToTheSixth: {
-                    const v4 = Math.pow(0.3048, 6);
+                    const v4 = super.internalPow(0.3048, 6);
                     return super.internalDivide(this.value, v4);
                 }
                 case WarpingMomentOfInertiaUnits.InchesToTheSixth: {
-                    const v4 = Math.pow(2.54e-2, 6);
+                    const v4 = super.internalPow(2.54e-2, 6);
                     return super.internalDivide(this.value, v4);
                 }
                 default: return Number.NaN;
@@ -246,11 +248,11 @@ export class WarpingMomentOfInertia extends BaseUnit {
                 case WarpingMomentOfInertiaUnits.CentimetersToTheSixth: return super.internalDivide(value, 1e12);
                 case WarpingMomentOfInertiaUnits.MillimetersToTheSixth: return super.internalDivide(value, 1e18);
                 case WarpingMomentOfInertiaUnits.FeetToTheSixth: {
-                    const v4 = Math.pow(0.3048, 6);
+                    const v4 = super.internalPow(0.3048, 6);
                     return super.internalMultiply(value, v4);
                 }
                 case WarpingMomentOfInertiaUnits.InchesToTheSixth: {
-                    const v4 = Math.pow(2.54e-2, 6);
+                    const v4 = super.internalPow(2.54e-2, 6);
                     return super.internalMultiply(value, v4);
                 }
                 default: return Number.NaN;

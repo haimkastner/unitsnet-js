@@ -43,7 +43,9 @@ export class AreaMomentOfInertia extends BaseUnit {
     public constructor(value: number, fromUnit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth) {
 
         super();
-        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -218,11 +220,11 @@ export class AreaMomentOfInertia extends BaseUnit {
                 case AreaMomentOfInertiaUnits.CentimetersToTheFourth: return super.internalMultiply(this.value, 1e8);
                 case AreaMomentOfInertiaUnits.MillimetersToTheFourth: return super.internalMultiply(this.value, 1e12);
                 case AreaMomentOfInertiaUnits.FeetToTheFourth: {
-                    const v4 = Math.pow(0.3048, 4);
+                    const v4 = super.internalPow(0.3048, 4);
                     return super.internalDivide(this.value, v4);
                 }
                 case AreaMomentOfInertiaUnits.InchesToTheFourth: {
-                    const v4 = Math.pow(2.54e-2, 4);
+                    const v4 = super.internalPow(2.54e-2, 4);
                     return super.internalDivide(this.value, v4);
                 }
                 default: return Number.NaN;
@@ -246,11 +248,11 @@ export class AreaMomentOfInertia extends BaseUnit {
                 case AreaMomentOfInertiaUnits.CentimetersToTheFourth: return super.internalDivide(value, 1e8);
                 case AreaMomentOfInertiaUnits.MillimetersToTheFourth: return super.internalDivide(value, 1e12);
                 case AreaMomentOfInertiaUnits.FeetToTheFourth: {
-                    const v4 = Math.pow(0.3048, 4);
+                    const v4 = super.internalPow(0.3048, 4);
                     return super.internalMultiply(value, v4);
                 }
                 case AreaMomentOfInertiaUnits.InchesToTheFourth: {
-                    const v4 = Math.pow(2.54e-2, 4);
+                    const v4 = super.internalPow(2.54e-2, 4);
                     return super.internalMultiply(value, v4);
                 }
                 default: return Number.NaN;

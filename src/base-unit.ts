@@ -53,26 +53,26 @@ let numberOfOverwrittenOperators: number = 0;
  * Set arithmetic formula to be used while calling this operation on two units (e.g. Length + Length) 
  * Instead of the JS default operation (+, -, * etc.)
  * @param arithmeticOperation The formula's operation 
- * @param arithmeticFormula The formula to used.
+ * @param replacementFunction The formula to used.
  */
-export function setArithmeticFormula<TOperation extends ArithmeticOperation>(
-	arithmeticOperation: TOperation,
-	arithmeticFormula: OperatorOverrides[TOperation] | undefined
+export function setOperatorOverride<TOperator extends ArithmeticOperation>(
+	arithmeticOperation: TOperator,
+	replacementFunction: OperatorOverrides[TOperator] | undefined
 ) {
-	externalArithmeticFormulas[arithmeticOperation] = arithmeticFormula;
+	externalArithmeticFormulas[arithmeticOperation] = replacementFunction;
 	numberOfOverwrittenOperators = Object.values(externalArithmeticFormulas).filter((value) => !!value).length;
 }
 
-export function unsetArithmeticFormula<TOperation extends ArithmeticOperation>(
-	arithmeticOperation: TOperation
+export function unsetOperatorOverride<TOperator extends ArithmeticOperation>(
+	arithmeticOperation: TOperator
 ): void {
 	if (externalArithmeticFormulas[arithmeticOperation]) {
 		numberOfOverwrittenOperators--;
+		externalArithmeticFormulas[arithmeticOperation] = undefined;
 	}
-	externalArithmeticFormulas[arithmeticOperation] = undefined;
 }
 
-export function unsetArithmeticFormulaOverrides(): void {
+export function unsetAllOperatorOverrides(): void {
 	externalArithmeticFormulas = {};
 	numberOfOverwrittenOperators = 0;
 }
@@ -100,9 +100,7 @@ export function setCompareToFormula(compareToFormula: CompareToFormula) {
 export abstract class BaseUnit {
 	protected abstract value: number;
 
-	public get BaseValue(): number {
-		return this.value;
-	}
+	public abstract get BaseValue(): number;
 
     /**
      * Truncates a number to a specified number of fractional digits.
@@ -124,6 +122,8 @@ export abstract class BaseUnit {
     }
 
 	public abstract convert(toUnit: string): number;
+
+	public abstract toString(unit?: string, fractionalDigits?: number): string;
 
     protected internalEquals(valueA: number, valueB: number): boolean {
         return externalEqualsFormula?.(valueA, valueB) ?? valueA === valueB;

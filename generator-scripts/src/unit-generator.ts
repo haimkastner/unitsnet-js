@@ -323,7 +323,7 @@ ${units.map(u => `    case ${enumName}.${u.pluralName}: return this.${u.pluralNa
     default:
         break;
 }
-return NaN;`
+return Number.NaN;`
 	};
 }
 
@@ -764,7 +764,9 @@ function buildUnitCtor(unitName: string, enumName: string, baseUnitName: string)
 		docs: [docs],
 		statements: `
 super();
-if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+if (value === undefined || value === null || Number.isNaN(value)) {
+    throw new TypeError('invalid unit value ‘' + value + '’');
+}
 this.value = this.convertToBase(value, fromUnit);`
 	}
 }

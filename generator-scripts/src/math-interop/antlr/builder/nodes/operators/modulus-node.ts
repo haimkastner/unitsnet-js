@@ -15,6 +15,6 @@ export class ModulusNode extends BaseMathStringBuilderNode {
 	}
 
 	public execute(): ts.Statement[] {
-		return HighLevelTsc.buildBinaryOperator(this.id, this._valueA, this._valueB, BinaryOperatorType.Mod);
+		return HighLevelTsc.buildBinaryOperator(this.id, BinaryOperatorType.Mod, this._valueA, this._valueB);
 	}
 }

@@ -172,7 +172,9 @@ export class Pressure extends BaseUnit {
     public constructor(value: number, fromUnit: PressureUnits = PressureUnits.Pascals) {
 
         super();
-        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -1195,13 +1197,13 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.InchesOfWaterColumn: return super.internalDivide(this.value, 249.08890833333);
                 case PressureUnits.MetersOfElevation: {
                     const v4 = super.internalDivide(this.value, 101325.0);
-                    const v6 = Math.pow(v4, 0.190284);
+                    const v6 = super.internalPow(v4, 0.190284);
                     const v7 = super.internalSubtract(1.0, v6);
                     return super.internalMultiply(v7, 44307.69396);
                 }
                 case PressureUnits.FeetOfElevation: {
                     const v4 = super.internalDivide(this.value, 101325.0);
-                    const v6 = Math.pow(v4, 0.190284);
+                    const v6 = super.internalPow(v4, 0.190284);
                     const v7 = super.internalSubtract(1.0, v6);
                     return super.internalMultiply(v7, 145366.45);
                 }
@@ -1362,13 +1364,13 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.MetersOfElevation: {
                     const v4 = super.internalDivide(value, 44307.69396);
                     const v5 = super.internalSubtract(1.0, v4);
-                    const v7 = Math.pow(v5, 5.2553026003237266401799415610351);
+                    const v7 = super.internalPow(v5, 5.2553026003237266401799415610351);
                     return super.internalMultiply(v7, 101325.0);
                 }
                 case PressureUnits.FeetOfElevation: {
                     const v4 = super.internalDivide(value, 145366.45);
                     const v5 = super.internalSubtract(1.0, v4);
-                    const v7 = Math.pow(v5, 5.2553026003237266401799415610351);
+                    const v7 = super.internalPow(v5, 5.2553026003237266401799415610351);
                     return super.internalMultiply(v7, 101325.0);
                 }
                 case PressureUnits.Micropascals: return super.internalMultiply(value, 0.000001);

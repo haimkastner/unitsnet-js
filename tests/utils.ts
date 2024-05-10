@@ -1,15 +1,15 @@
-import { setArithmeticFormula, ArithmeticOperation } from '../src';
+import { setOperatorOverride, ArithmeticOperation } from '../src';
 import * as AllUnits from '../src';
 import { BaseUnit } from '../src/base-unit';
 
 export function setAllArithmeticOverrides(): void {
-	setArithmeticFormula(ArithmeticOperation.Add, (a, b) => a + b);
-	setArithmeticFormula(ArithmeticOperation.Subtract, (a, b) => a - b);
-	setArithmeticFormula(ArithmeticOperation.Multiply, (a, b) => a * b);
-	setArithmeticFormula(ArithmeticOperation.Divide, (a, b) => a / b);
-	setArithmeticFormula(ArithmeticOperation.Modulo, (a, b) => a % b);
-	setArithmeticFormula(ArithmeticOperation.Pow, (a, b) => a ** b);
-	setArithmeticFormula(ArithmeticOperation.Sqrt, (a) => Math.sqrt(a));
+	setOperatorOverride(ArithmeticOperation.Add, (a, b) => a + b);
+	setOperatorOverride(ArithmeticOperation.Subtract, (a, b) => a - b);
+	setOperatorOverride(ArithmeticOperation.Multiply, (a, b) => a * b);
+	setOperatorOverride(ArithmeticOperation.Divide, (a, b) => a / b);
+	setOperatorOverride(ArithmeticOperation.Modulo, (a, b) => a % b);
+	setOperatorOverride(ArithmeticOperation.Pow, (a, b) => a ** b);
+	setOperatorOverride(ArithmeticOperation.Sqrt, (a) => Math.sqrt(a));
 }
 
 export function getAllUnitClasses(): BaseUnit[] {

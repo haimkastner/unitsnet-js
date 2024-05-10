@@ -15,6 +15,6 @@ export class AdditionNode extends BaseMathStringBuilderNode {
 	}
 
 	public execute(): ts.Statement[] {
-		return HighLevelTsc.buildBinaryOperator(this.id, this._valueA, this._valueB, BinaryOperatorType.Add);
+		return HighLevelTsc.buildBinaryOperator(this.id, BinaryOperatorType.Add, this._valueA, this._valueB);
 	}
 }

@@ -31,7 +31,9 @@ export class Molality extends BaseUnit {
     public constructor(value: number, fromUnit: MolalityUnits = MolalityUnits.MolesPerKilogram) {
 
         super();
-        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 

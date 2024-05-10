@@ -37,7 +37,9 @@ export class FuelEfficiency extends BaseUnit {
     public constructor(value: number, fromUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers) {
 
         super();
-        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 

@@ -1,5 +1,5 @@
 import { TwoByteIdGenerator } from '../../../../../id-generator';
-import { HighLevelTsc, MathOperatorType } from '../../high-level-tsc';
+import { HighLevelTsc, BinaryOperatorType } from '../../high-level-tsc';
 import { MathStringBuilderNode, BaseMathStringBuilderNode } from '../math-string-builder-node';
 import ts from 'typescript';
 
@@ -15,6 +15,6 @@ export class PowerNode extends BaseMathStringBuilderNode {
 	}
 
 	public execute(): ts.Statement[] {
-		return HighLevelTsc.buildMathCall(this.id, MathOperatorType.Pow, [this._valueA, this._valueB]);
+		return HighLevelTsc.buildBinaryOperator(this.id, BinaryOperatorType.Pow, this._valueA, this._valueB);
 	}
 }

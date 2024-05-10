@@ -1,7 +1,7 @@
-import { MathStringBuilderNode, BaseMathStringBuilderNode } from '../math-string-builder-node';
-import { HighLevelTsc, BinaryOperatorType } from '../../high-level-tsc';
-import ts from 'typescript';
 import { TwoByteIdGenerator } from '../../../../../id-generator';
+import { HighLevelTsc, BinaryOperatorType } from '../../high-level-tsc';
+import { MathStringBuilderNode, BaseMathStringBuilderNode } from '../math-string-builder-node';
+import ts from 'typescript';
 
 export class MultiplicationNode extends BaseMathStringBuilderNode {
 	public readonly isPrimitive: boolean = false;
@@ -15,6 +15,6 @@ export class MultiplicationNode extends BaseMathStringBuilderNode {
 	}
 
 	public execute(): ts.Statement[] {
-		return HighLevelTsc.buildBinaryOperator(this.id, this._valueA, this._valueB, BinaryOperatorType.Mul);
+		return HighLevelTsc.buildBinaryOperator(this.id, BinaryOperatorType.Mul, this._valueA, this._valueB);
 	}
 }

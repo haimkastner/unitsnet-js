@@ -15,6 +15,6 @@ export class DivisionNode extends BaseMathStringBuilderNode {
 	}
 
 	public execute(): ts.Statement[] {
-		return HighLevelTsc.buildBinaryOperator(this.id, this._valueA, this._valueB, BinaryOperatorType.Div);
+		return HighLevelTsc.buildBinaryOperator(this.id, BinaryOperatorType.Div, this._valueA, this._valueB);
 	}
 }

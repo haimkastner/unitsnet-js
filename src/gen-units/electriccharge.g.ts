@@ -58,7 +58,9 @@ export class ElectricCharge extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricChargeUnits = ElectricChargeUnits.Coulombs) {
 
         super();
-        if (Number.isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 

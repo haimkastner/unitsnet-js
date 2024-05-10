@@ -8,16 +8,18 @@ import {
 	Length,
 	LengthDto,
 	LengthUnits,
-	setArithmeticFormula,
 	setCompareToFormula,
-	setEqualsFormula
+	setEqualsFormula,
+	setOperatorOverride,
+	unsetAllOperatorOverrides,
+	unsetOperatorOverride
 } from '../src';
 
-import { BaseUnit, unsetArithmeticFormulaOverrides } from '../src/base-unit';
-import { forEachUnit, getAllUnitClasses, getRandomInt, instantiateUnit, setAllArithmeticOverrides } from './utils';
+import { BaseUnit, } from '../src/base-unit';
+import { forEachUnit, getRandomInt, instantiateUnit, setAllArithmeticOverrides } from './utils';
 
 describe('Unitsnet - tests', () => {
-	beforeEach(() => unsetArithmeticFormulaOverrides())
+	beforeEach(() => unsetAllOperatorOverrides())
 
 	describe('# Creations', () => {
 
@@ -25,6 +27,24 @@ describe('Unitsnet - tests', () => {
 			const angleCtorDriven = new Angle(180, AngleUnits.Degrees);
 			const angleFromDriven = Angle.FromDegrees(180);
 			expect(angleCtorDriven.BaseValue).equal(angleFromDriven.BaseValue);
+		});
+
+		it("Should throw when providing 'undefined' to constructor", () => {
+			forEachUnit((unit) => {
+				expect(() => instantiateUnit(unit, (undefined as any))).to.throw(TypeError);
+			});
+		});
+
+		it("Should throw when providing 'null' to constructor", () => {
+			forEachUnit((unit) => {
+				expect(() => instantiateUnit(unit, (null as any))).to.throw(TypeError);
+			});
+		});
+
+		it("Should throw when providing 'NaN' to constructor", () => {
+			forEachUnit((unit) => {
+				expect(() => instantiateUnit(unit, (Number.NaN as any))).to.throw(TypeError);
+			});
 		});
 	});
 
@@ -59,6 +79,51 @@ describe('Unitsnet - tests', () => {
 			const angle = Angle.FromMicroradians(3141592.65358979);
 			expect(angle.Degrees).above(179.9999).below(180.00001);
 		});
+
+		it("Should return 'NaN' when passing an invalid value to convert", () => {
+			forEachUnit((unit) => {
+				const instance = instantiateUnit(unit, 10);
+				const stdConvertedFromBase = (instance as any).convert('this-value-does-not-exist');
+				expect(stdConvertedFromBase).to.be.NaN;
+
+				setOperatorOverride(ArithmeticOperation.Add, (a, b) => a + b);
+				const overriddenConvertedFromBase = (instance as any).convert('this-value-does-not-exist');
+				expect(overriddenConvertedFromBase).to.be.NaN;
+			});
+		}).slow(500);
+
+		it("Should return 'NaN' when passing an invalid value to convertFromBase", () => {
+			forEachUnit((unit) => {
+				const instance = instantiateUnit(unit, 10);
+				const stdConvertedFromBase = (instance as any).convertFromBase('this-value-does-not-exist');
+				expect(stdConvertedFromBase).to.be.NaN;
+
+				setOperatorOverride(ArithmeticOperation.Add, (a, b) => a + b);
+				const overriddenConvertedFromBase = (instance as any).convertFromBase('this-value-does-not-exist');
+				expect(overriddenConvertedFromBase).to.be.NaN;
+			});
+		}).slow(500);
+
+		it("Should return 'NaN' when passing an invalid value to convertToBase", () => {
+			forEachUnit((unit) => {
+				const instance = instantiateUnit(unit, 10);
+				const stdConvertedFromBase = (instance as any).convertToBase('this-value-does-not-exist');
+				expect(stdConvertedFromBase).to.be.NaN;
+
+				setOperatorOverride(ArithmeticOperation.Add, (a, b) => a + b);
+				const overriddenConvertedFromBase = (instance as any).convertToBase('this-value-does-not-exist');
+				expect(overriddenConvertedFromBase).to.be.NaN;
+			});
+		}).slow(500);
+
+		it('Should return non-zero length strings for each toString unit type', () => {
+			forEachUnit((unitClass, unitsEnum) => {
+				const instance: BaseUnit = instantiateUnit(unitClass, 10);
+				for (const unitEnumValue of Object.values(unitsEnum)) {
+					expect(instance.toString(unitEnumValue)).to.be.a('string').and.have.length.greaterThan(0);
+				}
+			});
+		}).slow(500);
 	});
 
 	describe('# Converters with convert style', () => {
@@ -196,7 +261,7 @@ describe('Unitsnet - tests', () => {
 
 		it('Should output same value after construction when operators are overridden', () => {
 			const testValue = getRandomInt(1, 1000);
-	
+
 			const stdResults: number[] = [];
 			const overriddenOperatorResults: number[] = [];
 
@@ -215,11 +280,11 @@ describe('Unitsnet - tests', () => {
 
 				expect(stdResults).to.deep.equal(overriddenOperatorResults);
 			});
-		});
+		}).slow(500);
 
 		it('Should output same value after all base conversions when operators are overridden', () => {
 			const testValue = getRandomInt(1, 1000);
-	
+
 			const stdResults: number[] = [];
 			const overriddenOperatorResults: number[] = [];
 
@@ -244,6 +309,31 @@ describe('Unitsnet - tests', () => {
 
 				expect(stdResults).to.deep.equal(overriddenOperatorResults);
 			});
+		}).slow(1000);
+
+		it('Should unset all operator overrides using unsetAllOperatorOverrides', () => {
+			// Meter to Centimeters uses division instead of multiplication
+			setOperatorOverride(ArithmeticOperation.Divide, (_a, _b) => 1234);
+			expect(Length.FromMeters(1).Centimeters).to.equal(1234);
+
+			unsetAllOperatorOverrides();
+			expect(Length.FromMeters(1).Centimeters).to.equal(100);
+		});
+
+		it('Should unset specific operator override using unsetOperatorOverride', () => {
+			// Meter to Centimeters uses division instead of multiplication
+			setOperatorOverride(ArithmeticOperation.Divide, (_a, _b) => 1234);
+			expect(Length.FromMeters(1).Centimeters).to.equal(1234);
+
+			unsetOperatorOverride(ArithmeticOperation.Divide);
+			expect(Length.FromMeters(1).Centimeters).to.equal(100);
+		});
+
+		it('Should not throw when removing a non-existent override', () => {
+			// Meter to Centimeters uses division instead of multiplication
+			expect(Length.FromMeters(1).Centimeters).to.equal(100);
+			unsetOperatorOverride(ArithmeticOperation.Divide);
+			expect(Length.FromMeters(1).Centimeters).to.equal(100);
 		});
 	});
 
@@ -289,41 +379,41 @@ describe('Unitsnet - tests', () => {
 		it(`Should use external arithmetic formula`, () => {
 			const length1 = Length.FromMeters(0.1);
 			const length2 = Length.FromMeters(0.2);
-			setArithmeticFormula(ArithmeticOperation.Add, (a, b) => 10);
+			setOperatorOverride(ArithmeticOperation.Add, (a, b) => 10);
 			expect(length1.add(length2).Meters).equal(10);
-			setArithmeticFormula(ArithmeticOperation.Subtract, (a, b) => 10);
+			setOperatorOverride(ArithmeticOperation.Subtract, (a, b) => 10);
 			expect(length1.subtract(length2).Meters).equal(10);
-			setArithmeticFormula(ArithmeticOperation.Multiply, (a, b) => 10);
+			setOperatorOverride(ArithmeticOperation.Multiply, (a, b) => 10);
 			expect(length1.multiply(length2).Meters).equal(10);
-			setArithmeticFormula(ArithmeticOperation.Divide, (a, b) => 10);
+			setOperatorOverride(ArithmeticOperation.Divide, (a, b) => 10);
 			expect(length1.divide(length2).Meters).equal(10);
-			setArithmeticFormula(ArithmeticOperation.Modulo, (a, b) => 10);
+			setOperatorOverride(ArithmeticOperation.Modulo, (a, b) => 10);
 			expect(length1.modulo(length2).Meters).equal(10);
-			setArithmeticFormula(ArithmeticOperation.Pow, (a, b) => 10);
+			setOperatorOverride(ArithmeticOperation.Pow, (a, b) => 10);
 			expect(length1.pow(length2).Meters).equal(10);
 		});
 
 		it(`Should use external arithmetic formulas when it's 0`, () => {
 			const length1 = Length.FromMeters(0.1);
 			const length2 = Length.FromMeters(0.2);
-			setArithmeticFormula(ArithmeticOperation.Add, (a, b) => 0);
+			setOperatorOverride(ArithmeticOperation.Add, (a, b) => 0);
 			expect(length1.add(length2).Meters).equal(0);
-			setArithmeticFormula(ArithmeticOperation.Subtract, (a, b) => 0);
+			setOperatorOverride(ArithmeticOperation.Subtract, (a, b) => 0);
 			expect(length1.subtract(length2).Meters).equal(0);
-			setArithmeticFormula(ArithmeticOperation.Multiply, (a, b) => 0);
+			setOperatorOverride(ArithmeticOperation.Multiply, (a, b) => 0);
 			expect(length1.multiply(length2).Meters).equal(0);
-			setArithmeticFormula(ArithmeticOperation.Divide, (a, b) => 0);
+			setOperatorOverride(ArithmeticOperation.Divide, (a, b) => 0);
 			expect(length1.divide(length2).Meters).equal(0);
-			setArithmeticFormula(ArithmeticOperation.Modulo, (a, b) => 0);
+			setOperatorOverride(ArithmeticOperation.Modulo, (a, b) => 0);
 			expect(length1.modulo(length2).Meters).equal(0);
-			setArithmeticFormula(ArithmeticOperation.Pow, (a, b) => 0);
+			setOperatorOverride(ArithmeticOperation.Pow, (a, b) => 0);
 			expect(length1.pow(length2).Meters).equal(0);
 		});
 
 		it(`Should use external numeral library arithmetic formulas`, () => {
 			const lengthA = Length.FromMeters(0.1);
 			const lengthB = Length.FromMeters(0.2);
-			setArithmeticFormula(ArithmeticOperation.Add, (valueA: number, valueB: number) => {
+			setOperatorOverride(ArithmeticOperation.Add, (valueA: number, valueB: number) => {
 				return numeral(valueA).add(valueB).value() as number;
 			});
 			expect(lengthA.add(lengthB).Meters).equal(0.3);

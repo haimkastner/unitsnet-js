@@ -1,4 +1,3 @@
-
 import { TwoByteIdGenerator } from '../../../../../id-generator';
 import { HighLevelTsc, BinaryOperatorType } from '../../high-level-tsc';
 import { MathStringBuilderNode, BaseMathStringBuilderNode } from '../math-string-builder-node';
@@ -16,6 +15,6 @@ export class SubtractionNode extends BaseMathStringBuilderNode {
 	}
 
 	public execute(): ts.Statement[] {
-		return HighLevelTsc.buildBinaryOperator(this.id, this._valueA, this._valueB, BinaryOperatorType.Sub);
+		return HighLevelTsc.buildBinaryOperator(this.id, BinaryOperatorType.Sub, this._valueA, this._valueB);
 	}
 }
