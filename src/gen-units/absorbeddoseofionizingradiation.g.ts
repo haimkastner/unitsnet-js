@@ -87,6 +87,11 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): AbsorbedDoseOfIonizingRadiationUnits.Grays {
+        return AbsorbedDoseOfIonizingRadiationUnits.Grays
+    }
+
     /** The gray is the unit of ionizing radiation dose in the SI, defined as the absorption of one joule of radiation energy per kilogram of matter. */
     public get Grays(): number {
         if(this.graysLazy !== null){
@@ -379,8 +384,16 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
      * Gets the base unit enumeration associated with AbsorbedDoseOfIonizingRadiation
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof AbsorbedDoseOfIonizingRadiationUnits {
+    protected static getUnitEnum(): typeof AbsorbedDoseOfIonizingRadiationUnits {
         return AbsorbedDoseOfIonizingRadiationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AbsorbedDoseOfIonizingRadiationUnits.Grays {
+        return AbsorbedDoseOfIonizingRadiationUnits.Grays;
     }
 
     /**
@@ -429,7 +442,7 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AbsorbedDoseOfIonizingRadiationUnits): number {

@@ -66,6 +66,11 @@ export class KinematicViscosity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): KinematicViscosityUnits.SquareMetersPerSecond {
+        return KinematicViscosityUnits.SquareMetersPerSecond
+    }
+
     /** */
     public get SquareMetersPerSecond(): number {
         if(this.squaremeterspersecondLazy !== null){
@@ -232,8 +237,16 @@ export class KinematicViscosity extends BaseUnit {
      * Gets the base unit enumeration associated with KinematicViscosity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof KinematicViscosityUnits {
+    protected static getUnitEnum(): typeof KinematicViscosityUnits {
         return KinematicViscosityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): KinematicViscosityUnits.SquareMetersPerSecond {
+        return KinematicViscosityUnits.SquareMetersPerSecond;
     }
 
     /**
@@ -275,7 +288,7 @@ export class KinematicViscosity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: KinematicViscosityUnits): number {

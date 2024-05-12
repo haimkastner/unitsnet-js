@@ -186,6 +186,11 @@ export class MassConcentration extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MassConcentrationUnits.KilogramsPerCubicMeter {
+        return MassConcentrationUnits.KilogramsPerCubicMeter
+    }
+
     /** */
     public get GramsPerCubicMillimeter(): number {
         if(this.gramspercubicmillimeterLazy !== null){
@@ -1072,8 +1077,16 @@ export class MassConcentration extends BaseUnit {
      * Gets the base unit enumeration associated with MassConcentration
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MassConcentrationUnits {
+    protected static getUnitEnum(): typeof MassConcentrationUnits {
         return MassConcentrationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MassConcentrationUnits.KilogramsPerCubicMeter {
+        return MassConcentrationUnits.KilogramsPerCubicMeter;
     }
 
     /**
@@ -1155,7 +1168,7 @@ export class MassConcentration extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MassConcentrationUnits): number {

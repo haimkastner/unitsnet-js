@@ -186,6 +186,11 @@ export class Pressure extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): PressureUnits.Pascals {
+        return PressureUnits.Pascals
+    }
+
     /** */
     public get Pascals(): number {
         if(this.pascalsLazy !== null){
@@ -1072,8 +1077,16 @@ export class Pressure extends BaseUnit {
      * Gets the base unit enumeration associated with Pressure
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof PressureUnits {
+    protected static getUnitEnum(): typeof PressureUnits {
         return PressureUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): PressureUnits.Pascals {
+        return PressureUnits.Pascals;
     }
 
     /**
@@ -1155,7 +1168,7 @@ export class Pressure extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: PressureUnits): number {

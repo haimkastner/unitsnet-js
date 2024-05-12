@@ -123,6 +123,11 @@ export class MassMomentOfInertia extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MassMomentOfInertiaUnits.KilogramSquareMeters {
+        return MassMomentOfInertiaUnits.KilogramSquareMeters
+    }
+
     /** */
     public get GramSquareMeters(): number {
         if(this.gramsquaremetersLazy !== null){
@@ -631,8 +636,16 @@ export class MassMomentOfInertia extends BaseUnit {
      * Gets the base unit enumeration associated with MassMomentOfInertia
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MassMomentOfInertiaUnits {
+    protected static getUnitEnum(): typeof MassMomentOfInertiaUnits {
         return MassMomentOfInertiaUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MassMomentOfInertiaUnits.KilogramSquareMeters {
+        return MassMomentOfInertiaUnits.KilogramSquareMeters;
     }
 
     /**
@@ -693,7 +706,7 @@ export class MassMomentOfInertia extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MassMomentOfInertiaUnits): number {

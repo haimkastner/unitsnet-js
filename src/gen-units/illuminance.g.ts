@@ -51,6 +51,11 @@ export class Illuminance extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): IlluminanceUnits.Lux {
+        return IlluminanceUnits.Lux
+    }
+
     /** */
     public get Lux(): number {
         if(this.luxLazy !== null){
@@ -127,8 +132,16 @@ export class Illuminance extends BaseUnit {
      * Gets the base unit enumeration associated with Illuminance
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof IlluminanceUnits {
+    protected static getUnitEnum(): typeof IlluminanceUnits {
         return IlluminanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): IlluminanceUnits.Lux {
+        return IlluminanceUnits.Lux;
     }
 
     /**
@@ -165,7 +178,7 @@ export class Illuminance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: IlluminanceUnits): number {

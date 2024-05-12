@@ -54,6 +54,11 @@ export class RotationalStiffnessPerLength extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter {
+        return RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter
+    }
+
     /** */
     public get NewtonMetersPerRadianPerMeter(): number {
         if(this.newtonmetersperradianpermeterLazy !== null){
@@ -148,8 +153,16 @@ export class RotationalStiffnessPerLength extends BaseUnit {
      * Gets the base unit enumeration associated with RotationalStiffnessPerLength
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof RotationalStiffnessPerLengthUnits {
+    protected static getUnitEnum(): typeof RotationalStiffnessPerLengthUnits {
         return RotationalStiffnessPerLengthUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter {
+        return RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter;
     }
 
     /**
@@ -187,7 +200,7 @@ export class RotationalStiffnessPerLength extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RotationalStiffnessPerLengthUnits): number {

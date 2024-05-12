@@ -126,6 +126,11 @@ export class Radioactivity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): RadioactivityUnits.Becquerels {
+        return RadioactivityUnits.Becquerels
+    }
+
     /** Activity of a quantity of radioactive material in which one nucleus decays per second. */
     public get Becquerels(): number {
         if(this.becquerelsLazy !== null){
@@ -652,8 +657,16 @@ export class Radioactivity extends BaseUnit {
      * Gets the base unit enumeration associated with Radioactivity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof RadioactivityUnits {
+    protected static getUnitEnum(): typeof RadioactivityUnits {
         return RadioactivityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RadioactivityUnits.Becquerels {
+        return RadioactivityUnits.Becquerels;
     }
 
     /**
@@ -715,7 +728,7 @@ export class Radioactivity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RadioactivityUnits): number {

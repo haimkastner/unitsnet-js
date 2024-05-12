@@ -66,6 +66,11 @@ export class ElectricCurrent extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricCurrentUnits.Amperes {
+        return ElectricCurrentUnits.Amperes
+    }
+
     /** */
     public get Amperes(): number {
         if(this.amperesLazy !== null){
@@ -232,8 +237,16 @@ export class ElectricCurrent extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricCurrent
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricCurrentUnits {
+    protected static getUnitEnum(): typeof ElectricCurrentUnits {
         return ElectricCurrentUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricCurrentUnits.Amperes {
+        return ElectricCurrentUnits.Amperes;
     }
 
     /**
@@ -275,7 +288,7 @@ export class ElectricCurrent extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricCurrentUnits): number {

@@ -129,6 +129,11 @@ export class SpecificEnergy extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): SpecificEnergyUnits.JoulesPerKilogram {
+        return SpecificEnergyUnits.JoulesPerKilogram
+    }
+
     /** */
     public get JoulesPerKilogram(): number {
         if(this.joulesperkilogramLazy !== null){
@@ -673,8 +678,16 @@ export class SpecificEnergy extends BaseUnit {
      * Gets the base unit enumeration associated with SpecificEnergy
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof SpecificEnergyUnits {
+    protected static getUnitEnum(): typeof SpecificEnergyUnits {
         return SpecificEnergyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): SpecificEnergyUnits.JoulesPerKilogram {
+        return SpecificEnergyUnits.JoulesPerKilogram;
     }
 
     /**
@@ -737,7 +750,7 @@ export class SpecificEnergy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: SpecificEnergyUnits): number {

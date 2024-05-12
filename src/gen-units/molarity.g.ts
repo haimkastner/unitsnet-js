@@ -72,6 +72,11 @@ export class Molarity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MolarityUnits.MolesPerCubicMeter {
+        return MolarityUnits.MolesPerCubicMeter
+    }
+
     /** */
     public get MolesPerCubicMeter(): number {
         if(this.molespercubicmeterLazy !== null){
@@ -274,8 +279,16 @@ export class Molarity extends BaseUnit {
      * Gets the base unit enumeration associated with Molarity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MolarityUnits {
+    protected static getUnitEnum(): typeof MolarityUnits {
         return MolarityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MolarityUnits.MolesPerCubicMeter {
+        return MolarityUnits.MolesPerCubicMeter;
     }
 
     /**
@@ -319,7 +332,7 @@ export class Molarity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MolarityUnits): number {

@@ -78,6 +78,11 @@ export class Impulse extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ImpulseUnits.NewtonSeconds {
+        return ImpulseUnits.NewtonSeconds
+    }
+
     /** */
     public get KilogramMetersPerSecond(): number {
         if(this.kilogrammeterspersecondLazy !== null){
@@ -316,8 +321,16 @@ export class Impulse extends BaseUnit {
      * Gets the base unit enumeration associated with Impulse
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ImpulseUnits {
+    protected static getUnitEnum(): typeof ImpulseUnits {
         return ImpulseUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ImpulseUnits.NewtonSeconds {
+        return ImpulseUnits.NewtonSeconds;
     }
 
     /**
@@ -363,7 +376,7 @@ export class Impulse extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ImpulseUnits): number {

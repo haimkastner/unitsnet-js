@@ -48,6 +48,11 @@ export class ElectricCurrentDensity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricCurrentDensityUnits.AmperesPerSquareMeter {
+        return ElectricCurrentDensityUnits.AmperesPerSquareMeter
+    }
+
     /** */
     public get AmperesPerSquareMeter(): number {
         if(this.amperespersquaremeterLazy !== null){
@@ -106,8 +111,16 @@ export class ElectricCurrentDensity extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricCurrentDensity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricCurrentDensityUnits {
+    protected static getUnitEnum(): typeof ElectricCurrentDensityUnits {
         return ElectricCurrentDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricCurrentDensityUnits.AmperesPerSquareMeter {
+        return ElectricCurrentDensityUnits.AmperesPerSquareMeter;
     }
 
     /**
@@ -143,7 +156,7 @@ export class ElectricCurrentDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricCurrentDensityUnits): number {

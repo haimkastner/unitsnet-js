@@ -54,6 +54,11 @@ export class ElectricPotentialAc extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricPotentialAcUnits.VoltsAc {
+        return ElectricPotentialAcUnits.VoltsAc
+    }
+
     /** */
     public get VoltsAc(): number {
         if(this.voltsacLazy !== null){
@@ -148,8 +153,16 @@ export class ElectricPotentialAc extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricPotentialAc
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricPotentialAcUnits {
+    protected static getUnitEnum(): typeof ElectricPotentialAcUnits {
         return ElectricPotentialAcUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricPotentialAcUnits.VoltsAc {
+        return ElectricPotentialAcUnits.VoltsAc;
     }
 
     /**
@@ -187,7 +200,7 @@ export class ElectricPotentialAc extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricPotentialAcUnits): number {

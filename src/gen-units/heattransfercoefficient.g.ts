@@ -54,6 +54,11 @@ export class HeatTransferCoefficient extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin {
+        return HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin
+    }
+
     /** */
     public get WattsPerSquareMeterKelvin(): number {
         if(this.wattspersquaremeterkelvinLazy !== null){
@@ -148,8 +153,16 @@ export class HeatTransferCoefficient extends BaseUnit {
      * Gets the base unit enumeration associated with HeatTransferCoefficient
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof HeatTransferCoefficientUnits {
+    protected static getUnitEnum(): typeof HeatTransferCoefficientUnits {
         return HeatTransferCoefficientUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin {
+        return HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin;
     }
 
     /**
@@ -187,7 +200,7 @@ export class HeatTransferCoefficient extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: HeatTransferCoefficientUnits): number {

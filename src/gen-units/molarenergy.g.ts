@@ -48,6 +48,11 @@ export class MolarEnergy extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MolarEnergyUnits.JoulesPerMole {
+        return MolarEnergyUnits.JoulesPerMole
+    }
+
     /** */
     public get JoulesPerMole(): number {
         if(this.joulespermoleLazy !== null){
@@ -106,8 +111,16 @@ export class MolarEnergy extends BaseUnit {
      * Gets the base unit enumeration associated with MolarEnergy
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MolarEnergyUnits {
+    protected static getUnitEnum(): typeof MolarEnergyUnits {
         return MolarEnergyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MolarEnergyUnits.JoulesPerMole {
+        return MolarEnergyUnits.JoulesPerMole;
     }
 
     /**
@@ -143,7 +156,7 @@ export class MolarEnergy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MolarEnergyUnits): number {

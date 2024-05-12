@@ -138,6 +138,11 @@ export class MassFlow extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MassFlowUnits.GramsPerSecond {
+        return MassFlowUnits.GramsPerSecond
+    }
+
     /** */
     public get GramsPerSecond(): number {
         if(this.gramspersecondLazy !== null){
@@ -736,8 +741,16 @@ export class MassFlow extends BaseUnit {
      * Gets the base unit enumeration associated with MassFlow
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MassFlowUnits {
+    protected static getUnitEnum(): typeof MassFlowUnits {
         return MassFlowUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MassFlowUnits.GramsPerSecond {
+        return MassFlowUnits.GramsPerSecond;
     }
 
     /**
@@ -803,7 +816,7 @@ export class MassFlow extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MassFlowUnits): number {

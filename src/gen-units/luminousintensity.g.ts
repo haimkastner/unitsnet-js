@@ -42,6 +42,11 @@ export class LuminousIntensity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): LuminousIntensityUnits.Candela {
+        return LuminousIntensityUnits.Candela
+    }
+
     /** */
     public get Candela(): number {
         if(this.candelaLazy !== null){
@@ -64,8 +69,16 @@ export class LuminousIntensity extends BaseUnit {
      * Gets the base unit enumeration associated with LuminousIntensity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof LuminousIntensityUnits {
+    protected static getUnitEnum(): typeof LuminousIntensityUnits {
         return LuminousIntensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LuminousIntensityUnits.Candela {
+        return LuminousIntensityUnits.Candela;
     }
 
     /**
@@ -99,7 +112,7 @@ export class LuminousIntensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LuminousIntensityUnits): number {

@@ -54,6 +54,11 @@ export class ElectricInductance extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricInductanceUnits.Henries {
+        return ElectricInductanceUnits.Henries
+    }
+
     /** */
     public get Henries(): number {
         if(this.henriesLazy !== null){
@@ -148,8 +153,16 @@ export class ElectricInductance extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricInductance
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricInductanceUnits {
+    protected static getUnitEnum(): typeof ElectricInductanceUnits {
         return ElectricInductanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricInductanceUnits.Henries {
+        return ElectricInductanceUnits.Henries;
     }
 
     /**
@@ -187,7 +200,7 @@ export class ElectricInductance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricInductanceUnits): number {

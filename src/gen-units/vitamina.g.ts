@@ -42,6 +42,11 @@ export class VitaminA extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): VitaminAUnits.InternationalUnits {
+        return VitaminAUnits.InternationalUnits
+    }
+
     /** */
     public get InternationalUnits(): number {
         if(this.internationalunitsLazy !== null){
@@ -64,8 +69,16 @@ export class VitaminA extends BaseUnit {
      * Gets the base unit enumeration associated with VitaminA
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof VitaminAUnits {
+    protected static getUnitEnum(): typeof VitaminAUnits {
         return VitaminAUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): VitaminAUnits.InternationalUnits {
+        return VitaminAUnits.InternationalUnits;
     }
 
     /**
@@ -99,7 +112,7 @@ export class VitaminA extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: VitaminAUnits): number {

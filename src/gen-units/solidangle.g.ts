@@ -42,6 +42,11 @@ export class SolidAngle extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): SolidAngleUnits.Steradians {
+        return SolidAngleUnits.Steradians
+    }
+
     /** */
     public get Steradians(): number {
         if(this.steradiansLazy !== null){
@@ -64,8 +69,16 @@ export class SolidAngle extends BaseUnit {
      * Gets the base unit enumeration associated with SolidAngle
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof SolidAngleUnits {
+    protected static getUnitEnum(): typeof SolidAngleUnits {
         return SolidAngleUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): SolidAngleUnits.Steradians {
+        return SolidAngleUnits.Steradians;
     }
 
     /**
@@ -99,7 +112,7 @@ export class SolidAngle extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: SolidAngleUnits): number {

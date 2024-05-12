@@ -138,6 +138,11 @@ export class Speed extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): SpeedUnits.MetersPerSecond {
+        return SpeedUnits.MetersPerSecond
+    }
+
     /** */
     public get MetersPerSecond(): number {
         if(this.meterspersecondLazy !== null){
@@ -736,8 +741,16 @@ export class Speed extends BaseUnit {
      * Gets the base unit enumeration associated with Speed
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof SpeedUnits {
+    protected static getUnitEnum(): typeof SpeedUnits {
         return SpeedUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): SpeedUnits.MetersPerSecond {
+        return SpeedUnits.MetersPerSecond;
     }
 
     /**
@@ -803,7 +816,7 @@ export class Speed extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: SpeedUnits): number {

@@ -78,6 +78,11 @@ export class RotationalSpeed extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): RotationalSpeedUnits.RadiansPerSecond {
+        return RotationalSpeedUnits.RadiansPerSecond
+    }
+
     /** */
     public get RadiansPerSecond(): number {
         if(this.radianspersecondLazy !== null){
@@ -316,8 +321,16 @@ export class RotationalSpeed extends BaseUnit {
      * Gets the base unit enumeration associated with RotationalSpeed
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof RotationalSpeedUnits {
+    protected static getUnitEnum(): typeof RotationalSpeedUnits {
         return RotationalSpeedUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RotationalSpeedUnits.RadiansPerSecond {
+        return RotationalSpeedUnits.RadiansPerSecond;
     }
 
     /**
@@ -363,7 +376,7 @@ export class RotationalSpeed extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RotationalSpeedUnits): number {

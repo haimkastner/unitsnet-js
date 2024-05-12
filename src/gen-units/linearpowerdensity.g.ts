@@ -114,6 +114,11 @@ export class LinearPowerDensity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): LinearPowerDensityUnits.WattsPerMeter {
+        return LinearPowerDensityUnits.WattsPerMeter
+    }
+
     /** */
     public get WattsPerMeter(): number {
         if(this.wattspermeterLazy !== null){
@@ -568,8 +573,16 @@ export class LinearPowerDensity extends BaseUnit {
      * Gets the base unit enumeration associated with LinearPowerDensity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof LinearPowerDensityUnits {
+    protected static getUnitEnum(): typeof LinearPowerDensityUnits {
         return LinearPowerDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LinearPowerDensityUnits.WattsPerMeter {
+        return LinearPowerDensityUnits.WattsPerMeter;
     }
 
     /**
@@ -627,7 +640,7 @@ export class LinearPowerDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LinearPowerDensityUnits): number {

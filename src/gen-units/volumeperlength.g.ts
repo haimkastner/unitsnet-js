@@ -66,6 +66,11 @@ export class VolumePerLength extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): VolumePerLengthUnits.CubicMetersPerMeter {
+        return VolumePerLengthUnits.CubicMetersPerMeter
+    }
+
     /** */
     public get CubicMetersPerMeter(): number {
         if(this.cubicmeterspermeterLazy !== null){
@@ -232,8 +237,16 @@ export class VolumePerLength extends BaseUnit {
      * Gets the base unit enumeration associated with VolumePerLength
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof VolumePerLengthUnits {
+    protected static getUnitEnum(): typeof VolumePerLengthUnits {
         return VolumePerLengthUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): VolumePerLengthUnits.CubicMetersPerMeter {
+        return VolumePerLengthUnits.CubicMetersPerMeter;
     }
 
     /**
@@ -275,7 +288,7 @@ export class VolumePerLength extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: VolumePerLengthUnits): number {

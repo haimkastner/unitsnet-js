@@ -54,6 +54,11 @@ export class PorousMediumPermeability extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): PorousMediumPermeabilityUnits.SquareMeters {
+        return PorousMediumPermeabilityUnits.SquareMeters
+    }
+
     /** */
     public get Darcys(): number {
         if(this.darcysLazy !== null){
@@ -148,8 +153,16 @@ export class PorousMediumPermeability extends BaseUnit {
      * Gets the base unit enumeration associated with PorousMediumPermeability
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof PorousMediumPermeabilityUnits {
+    protected static getUnitEnum(): typeof PorousMediumPermeabilityUnits {
         return PorousMediumPermeabilityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): PorousMediumPermeabilityUnits.SquareMeters {
+        return PorousMediumPermeabilityUnits.SquareMeters;
     }
 
     /**
@@ -187,7 +200,7 @@ export class PorousMediumPermeability extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: PorousMediumPermeabilityUnits): number {

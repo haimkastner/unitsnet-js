@@ -51,6 +51,11 @@ export class ElectricAdmittance extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricAdmittanceUnits.Siemens {
+        return ElectricAdmittanceUnits.Siemens
+    }
+
     /** */
     public get Siemens(): number {
         if(this.siemensLazy !== null){
@@ -127,8 +132,16 @@ export class ElectricAdmittance extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricAdmittance
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricAdmittanceUnits {
+    protected static getUnitEnum(): typeof ElectricAdmittanceUnits {
         return ElectricAdmittanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricAdmittanceUnits.Siemens {
+        return ElectricAdmittanceUnits.Siemens;
     }
 
     /**
@@ -165,7 +178,7 @@ export class ElectricAdmittance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricAdmittanceUnits): number {

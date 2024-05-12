@@ -72,6 +72,11 @@ export class ElectricCharge extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricChargeUnits.Coulombs {
+        return ElectricChargeUnits.Coulombs
+    }
+
     /** */
     public get Coulombs(): number {
         if(this.coulombsLazy !== null){
@@ -274,8 +279,16 @@ export class ElectricCharge extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricCharge
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricChargeUnits {
+    protected static getUnitEnum(): typeof ElectricChargeUnits {
         return ElectricChargeUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricChargeUnits.Coulombs {
+        return ElectricChargeUnits.Coulombs;
     }
 
     /**
@@ -319,7 +332,7 @@ export class ElectricCharge extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricChargeUnits): number {

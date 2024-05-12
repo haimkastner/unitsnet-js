@@ -99,6 +99,11 @@ export class VolumeConcentration extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): VolumeConcentrationUnits.DecimalFractions {
+        return VolumeConcentrationUnits.DecimalFractions
+    }
+
     /** */
     public get DecimalFractions(): number {
         if(this.decimalfractionsLazy !== null){
@@ -463,8 +468,16 @@ export class VolumeConcentration extends BaseUnit {
      * Gets the base unit enumeration associated with VolumeConcentration
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof VolumeConcentrationUnits {
+    protected static getUnitEnum(): typeof VolumeConcentrationUnits {
         return VolumeConcentrationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): VolumeConcentrationUnits.DecimalFractions {
+        return VolumeConcentrationUnits.DecimalFractions;
     }
 
     /**
@@ -517,7 +530,7 @@ export class VolumeConcentration extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: VolumeConcentrationUnits): number {

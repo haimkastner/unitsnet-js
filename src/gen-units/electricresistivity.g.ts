@@ -81,6 +81,11 @@ export class ElectricResistivity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricResistivityUnits.OhmMeters {
+        return ElectricResistivityUnits.OhmMeters
+    }
+
     /** */
     public get OhmMeters(): number {
         if(this.ohmmetersLazy !== null){
@@ -337,8 +342,16 @@ export class ElectricResistivity extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricResistivity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricResistivityUnits {
+    protected static getUnitEnum(): typeof ElectricResistivityUnits {
         return ElectricResistivityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricResistivityUnits.OhmMeters {
+        return ElectricResistivityUnits.OhmMeters;
     }
 
     /**
@@ -385,7 +398,7 @@ export class ElectricResistivity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricResistivityUnits): number {

@@ -155,12 +155,50 @@ function buildGetUnitEnumStaticMethod(unitName: string, unitEnumName: string): M
 	return {
 		kind: StructureKind.Method,
 		name: 'getUnitEnum',
-		scope: Scope.Public,
+		scope: Scope.Protected,
 		isStatic: true,
 		parameters: [],
 		docs: [docs],
 		returnType: `typeof ${unitEnumName}`,
 		statements: `return ${unitEnumName};`
+	}
+}
+
+function buildGetBaseUnitProp(enumName: string, baseUnit: UnitProperties): GetAccessorDeclarationStructure {
+	const enumValueAccessStatement = `${enumName}.${baseUnit.pluralName}`;
+
+	return {
+		kind: StructureKind.GetAccessor,
+		name: 'getBaseUnit',
+		scope: Scope.Protected,
+		returnType: `${enumValueAccessStatement}`,
+		docs: ['Gets the default unit used when creating instances of the unit or its DTO'],
+		statements: `return ${enumValueAccessStatement}`
+	};
+}
+
+function buildGetBaseUnitStaticMethod(enumName: string, baseUnit: UnitProperties): MethodDeclarationStructure {
+	const enumValueAccessStatement = `${enumName}.${baseUnit.pluralName}`;
+
+	const docs: JSDocStructure = {
+		kind: StructureKind.JSDoc,
+		description: 'Gets the default unit used when creating instances of the unit or its DTO',
+		tags: [{
+			kind: StructureKind.JSDocTag,
+			tagName: 'returns',
+			text: `The unit enumeration value used as a default parameter in constructor and DTO methods`
+		}]
+	};
+
+	return {
+		kind: StructureKind.Method,
+		name: 'getBaseUnit',
+		scope: Scope.Protected,
+		isStatic: true,
+		parameters: [],
+		docs: [docs],
+		returnType: `${enumValueAccessStatement}`,
+		statements: `return ${enumValueAccessStatement};`
 	}
 }
 
@@ -840,6 +878,10 @@ export function generateUnitClass(project: Project,
 	const unitCreators = buildUnitCreatorsMethods(unitName, enumName, units);
 
 	const getUnitsEnumMethod = buildGetUnitEnumStaticMethod(unitName, enumName);
+	
+	const getBaseUnitEnumStaticMethod = buildGetBaseUnitStaticMethod(enumName, baseUnit);
+
+	const getBaseUnitEnumValueProp = buildGetBaseUnitProp(enumName, baseUnit);
 
 	// Build the convert from base to unit method
 	const convertFromBaseMethod = buildConvertFromBaseMethod(enumName, units);
@@ -871,11 +913,12 @@ export function generateUnitClass(project: Project,
 		name: unitProperties.unitName,
 		extends: 'BaseUnit',
 		properties: [valueMember, ...lazyVars],
-		getAccessors: [baseValueAccessor, ...unitGetters],
+		getAccessors: [baseValueAccessor, getBaseUnitEnumValueProp, ...unitGetters],
 		ctors: [unitCtor],
 		methods: [
 			...unitCreators,
 			getUnitsEnumMethod,
+			getBaseUnitEnumStaticMethod,
 			convertToDtoMethod,
 			convertFromDtoMethod,
 			convertToUnitMethod,

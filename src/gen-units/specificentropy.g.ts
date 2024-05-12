@@ -66,6 +66,11 @@ export class SpecificEntropy extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): SpecificEntropyUnits.JoulesPerKilogramKelvin {
+        return SpecificEntropyUnits.JoulesPerKilogramKelvin
+    }
+
     /** */
     public get JoulesPerKilogramKelvin(): number {
         if(this.joulesperkilogramkelvinLazy !== null){
@@ -232,8 +237,16 @@ export class SpecificEntropy extends BaseUnit {
      * Gets the base unit enumeration associated with SpecificEntropy
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof SpecificEntropyUnits {
+    protected static getUnitEnum(): typeof SpecificEntropyUnits {
         return SpecificEntropyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): SpecificEntropyUnits.JoulesPerKilogramKelvin {
+        return SpecificEntropyUnits.JoulesPerKilogramKelvin;
     }
 
     /**
@@ -275,7 +288,7 @@ export class SpecificEntropy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: SpecificEntropyUnits): number {

@@ -42,6 +42,11 @@ export class MagneticFlux extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MagneticFluxUnits.Webers {
+        return MagneticFluxUnits.Webers
+    }
+
     /** */
     public get Webers(): number {
         if(this.webersLazy !== null){
@@ -64,8 +69,16 @@ export class MagneticFlux extends BaseUnit {
      * Gets the base unit enumeration associated with MagneticFlux
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MagneticFluxUnits {
+    protected static getUnitEnum(): typeof MagneticFluxUnits {
         return MagneticFluxUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MagneticFluxUnits.Webers {
+        return MagneticFluxUnits.Webers;
     }
 
     /**
@@ -99,7 +112,7 @@ export class MagneticFlux extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MagneticFluxUnits): number {

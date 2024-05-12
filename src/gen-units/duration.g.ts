@@ -72,6 +72,11 @@ export class Duration extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): DurationUnits.Seconds {
+        return DurationUnits.Seconds
+    }
+
     /** */
     public get Years365(): number {
         if(this.years365Lazy !== null){
@@ -274,8 +279,16 @@ export class Duration extends BaseUnit {
      * Gets the base unit enumeration associated with Duration
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof DurationUnits {
+    protected static getUnitEnum(): typeof DurationUnits {
         return DurationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): DurationUnits.Seconds {
+        return DurationUnits.Seconds;
     }
 
     /**
@@ -319,7 +332,7 @@ export class Duration extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: DurationUnits): number {

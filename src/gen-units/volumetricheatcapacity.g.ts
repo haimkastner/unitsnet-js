@@ -66,6 +66,11 @@ export class VolumetricHeatCapacity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin {
+        return VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin
+    }
+
     /** */
     public get JoulesPerCubicMeterKelvin(): number {
         if(this.joulespercubicmeterkelvinLazy !== null){
@@ -232,8 +237,16 @@ export class VolumetricHeatCapacity extends BaseUnit {
      * Gets the base unit enumeration associated with VolumetricHeatCapacity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof VolumetricHeatCapacityUnits {
+    protected static getUnitEnum(): typeof VolumetricHeatCapacityUnits {
         return VolumetricHeatCapacityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin {
+        return VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin;
     }
 
     /**
@@ -275,7 +288,7 @@ export class VolumetricHeatCapacity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: VolumetricHeatCapacityUnits): number {

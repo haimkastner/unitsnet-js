@@ -90,6 +90,11 @@ export class AmountOfSubstance extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): AmountOfSubstanceUnits.Moles {
+        return AmountOfSubstanceUnits.Moles
+    }
+
     /** */
     public get Moles(): number {
         if(this.molesLazy !== null){
@@ -400,8 +405,16 @@ export class AmountOfSubstance extends BaseUnit {
      * Gets the base unit enumeration associated with AmountOfSubstance
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof AmountOfSubstanceUnits {
+    protected static getUnitEnum(): typeof AmountOfSubstanceUnits {
         return AmountOfSubstanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AmountOfSubstanceUnits.Moles {
+        return AmountOfSubstanceUnits.Moles;
     }
 
     /**
@@ -451,7 +464,7 @@ export class AmountOfSubstance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AmountOfSubstanceUnits): number {

@@ -78,6 +78,11 @@ export class MolarMass extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MolarMassUnits.KilogramsPerMole {
+        return MolarMassUnits.KilogramsPerMole
+    }
+
     /** */
     public get GramsPerMole(): number {
         if(this.gramspermoleLazy !== null){
@@ -316,8 +321,16 @@ export class MolarMass extends BaseUnit {
      * Gets the base unit enumeration associated with MolarMass
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MolarMassUnits {
+    protected static getUnitEnum(): typeof MolarMassUnits {
         return MolarMassUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MolarMassUnits.KilogramsPerMole {
+        return MolarMassUnits.KilogramsPerMole;
     }
 
     /**
@@ -363,7 +376,7 @@ export class MolarMass extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MolarMassUnits): number {

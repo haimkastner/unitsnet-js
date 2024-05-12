@@ -42,6 +42,11 @@ export class Scalar extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ScalarUnits.Amount {
+        return ScalarUnits.Amount
+    }
+
     /** */
     public get Amount(): number {
         if(this.amountLazy !== null){
@@ -64,8 +69,16 @@ export class Scalar extends BaseUnit {
      * Gets the base unit enumeration associated with Scalar
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ScalarUnits {
+    protected static getUnitEnum(): typeof ScalarUnits {
         return ScalarUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ScalarUnits.Amount {
+        return ScalarUnits.Amount;
     }
 
     /**
@@ -99,7 +112,7 @@ export class Scalar extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ScalarUnits): number {

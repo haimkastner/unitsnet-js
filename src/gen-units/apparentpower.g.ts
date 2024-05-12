@@ -57,6 +57,11 @@ export class ApparentPower extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ApparentPowerUnits.Voltamperes {
+        return ApparentPowerUnits.Voltamperes
+    }
+
     /** */
     public get Voltamperes(): number {
         if(this.voltamperesLazy !== null){
@@ -169,8 +174,16 @@ export class ApparentPower extends BaseUnit {
      * Gets the base unit enumeration associated with ApparentPower
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ApparentPowerUnits {
+    protected static getUnitEnum(): typeof ApparentPowerUnits {
         return ApparentPowerUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ApparentPowerUnits.Voltamperes {
+        return ApparentPowerUnits.Voltamperes;
     }
 
     /**
@@ -209,7 +222,7 @@ export class ApparentPower extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ApparentPowerUnits): number {

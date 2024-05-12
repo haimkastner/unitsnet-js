@@ -159,6 +159,11 @@ export class Energy extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): EnergyUnits.Joules {
+        return EnergyUnits.Joules
+    }
+
     /** */
     public get Joules(): number {
         if(this.joulesLazy !== null){
@@ -883,8 +888,16 @@ export class Energy extends BaseUnit {
      * Gets the base unit enumeration associated with Energy
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof EnergyUnits {
+    protected static getUnitEnum(): typeof EnergyUnits {
         return EnergyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): EnergyUnits.Joules {
+        return EnergyUnits.Joules;
     }
 
     /**
@@ -957,7 +970,7 @@ export class Energy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: EnergyUnits): number {

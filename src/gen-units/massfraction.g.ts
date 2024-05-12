@@ -111,6 +111,11 @@ export class MassFraction extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MassFractionUnits.DecimalFractions {
+        return MassFractionUnits.DecimalFractions
+    }
+
     /** */
     public get DecimalFractions(): number {
         if(this.decimalfractionsLazy !== null){
@@ -547,8 +552,16 @@ export class MassFraction extends BaseUnit {
      * Gets the base unit enumeration associated with MassFraction
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MassFractionUnits {
+    protected static getUnitEnum(): typeof MassFractionUnits {
         return MassFractionUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MassFractionUnits.DecimalFractions {
+        return MassFractionUnits.DecimalFractions;
     }
 
     /**
@@ -605,7 +618,7 @@ export class MassFraction extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MassFractionUnits): number {

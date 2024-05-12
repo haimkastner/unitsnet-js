@@ -84,6 +84,11 @@ export class ForceChangeRate extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ForceChangeRateUnits.NewtonsPerSecond {
+        return ForceChangeRateUnits.NewtonsPerSecond
+    }
+
     /** */
     public get NewtonsPerMinute(): number {
         if(this.newtonsperminuteLazy !== null){
@@ -358,8 +363,16 @@ export class ForceChangeRate extends BaseUnit {
      * Gets the base unit enumeration associated with ForceChangeRate
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ForceChangeRateUnits {
+    protected static getUnitEnum(): typeof ForceChangeRateUnits {
         return ForceChangeRateUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ForceChangeRateUnits.NewtonsPerSecond {
+        return ForceChangeRateUnits.NewtonsPerSecond;
     }
 
     /**
@@ -407,7 +420,7 @@ export class ForceChangeRate extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ForceChangeRateUnits): number {

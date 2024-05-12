@@ -84,6 +84,11 @@ export class Force extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ForceUnits.Newtons {
+        return ForceUnits.Newtons
+    }
+
     /** One dyne is equal to 10 micronewtons, 10e−5 N or to 10 nsn (nanosthenes) in the old metre–tonne–second system of units. */
     public get Dyne(): number {
         if(this.dyneLazy !== null){
@@ -358,8 +363,16 @@ export class Force extends BaseUnit {
      * Gets the base unit enumeration associated with Force
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ForceUnits {
+    protected static getUnitEnum(): typeof ForceUnits {
         return ForceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ForceUnits.Newtons {
+        return ForceUnits.Newtons;
     }
 
     /**
@@ -407,7 +420,7 @@ export class Force extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ForceUnits): number {

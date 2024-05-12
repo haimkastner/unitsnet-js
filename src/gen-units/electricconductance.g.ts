@@ -54,6 +54,11 @@ export class ElectricConductance extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricConductanceUnits.Siemens {
+        return ElectricConductanceUnits.Siemens
+    }
+
     /** */
     public get Siemens(): number {
         if(this.siemensLazy !== null){
@@ -148,8 +153,16 @@ export class ElectricConductance extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricConductance
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricConductanceUnits {
+    protected static getUnitEnum(): typeof ElectricConductanceUnits {
         return ElectricConductanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricConductanceUnits.Siemens {
+        return ElectricConductanceUnits.Siemens;
     }
 
     /**
@@ -187,7 +200,7 @@ export class ElectricConductance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricConductanceUnits): number {

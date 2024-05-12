@@ -51,6 +51,11 @@ export class RotationalAcceleration extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): RotationalAccelerationUnits.RadiansPerSecondSquared {
+        return RotationalAccelerationUnits.RadiansPerSecondSquared
+    }
+
     /** */
     public get RadiansPerSecondSquared(): number {
         if(this.radianspersecondsquaredLazy !== null){
@@ -127,8 +132,16 @@ export class RotationalAcceleration extends BaseUnit {
      * Gets the base unit enumeration associated with RotationalAcceleration
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof RotationalAccelerationUnits {
+    protected static getUnitEnum(): typeof RotationalAccelerationUnits {
         return RotationalAccelerationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RotationalAccelerationUnits.RadiansPerSecondSquared {
+        return RotationalAccelerationUnits.RadiansPerSecondSquared;
     }
 
     /**
@@ -165,7 +178,7 @@ export class RotationalAcceleration extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RotationalAccelerationUnits): number {

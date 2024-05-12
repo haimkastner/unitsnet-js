@@ -69,6 +69,11 @@ export class Temperature extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): TemperatureUnits.Kelvins {
+        return TemperatureUnits.Kelvins
+    }
+
     /** */
     public get Kelvins(): number {
         if(this.kelvinsLazy !== null){
@@ -253,8 +258,16 @@ export class Temperature extends BaseUnit {
      * Gets the base unit enumeration associated with Temperature
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof TemperatureUnits {
+    protected static getUnitEnum(): typeof TemperatureUnits {
         return TemperatureUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): TemperatureUnits.Kelvins {
+        return TemperatureUnits.Kelvins;
     }
 
     /**
@@ -297,7 +310,7 @@ export class Temperature extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: TemperatureUnits): number {

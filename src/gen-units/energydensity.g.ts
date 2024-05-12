@@ -75,6 +75,11 @@ export class EnergyDensity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): EnergyDensityUnits.JoulesPerCubicMeter {
+        return EnergyDensityUnits.JoulesPerCubicMeter
+    }
+
     /** */
     public get JoulesPerCubicMeter(): number {
         if(this.joulespercubicmeterLazy !== null){
@@ -295,8 +300,16 @@ export class EnergyDensity extends BaseUnit {
      * Gets the base unit enumeration associated with EnergyDensity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof EnergyDensityUnits {
+    protected static getUnitEnum(): typeof EnergyDensityUnits {
         return EnergyDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): EnergyDensityUnits.JoulesPerCubicMeter {
+        return EnergyDensityUnits.JoulesPerCubicMeter;
     }
 
     /**
@@ -341,7 +354,7 @@ export class EnergyDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: EnergyDensityUnits): number {

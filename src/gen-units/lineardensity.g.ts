@@ -81,6 +81,11 @@ export class LinearDensity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): LinearDensityUnits.KilogramsPerMeter {
+        return LinearDensityUnits.KilogramsPerMeter
+    }
+
     /** */
     public get GramsPerMillimeter(): number {
         if(this.gramspermillimeterLazy !== null){
@@ -337,8 +342,16 @@ export class LinearDensity extends BaseUnit {
      * Gets the base unit enumeration associated with LinearDensity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof LinearDensityUnits {
+    protected static getUnitEnum(): typeof LinearDensityUnits {
         return LinearDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LinearDensityUnits.KilogramsPerMeter {
+        return LinearDensityUnits.KilogramsPerMeter;
     }
 
     /**
@@ -385,7 +398,7 @@ export class LinearDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LinearDensityUnits): number {

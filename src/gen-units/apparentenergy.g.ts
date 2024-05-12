@@ -48,6 +48,11 @@ export class ApparentEnergy extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ApparentEnergyUnits.VoltampereHours {
+        return ApparentEnergyUnits.VoltampereHours
+    }
+
     /** */
     public get VoltampereHours(): number {
         if(this.voltamperehoursLazy !== null){
@@ -106,8 +111,16 @@ export class ApparentEnergy extends BaseUnit {
      * Gets the base unit enumeration associated with ApparentEnergy
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ApparentEnergyUnits {
+    protected static getUnitEnum(): typeof ApparentEnergyUnits {
         return ApparentEnergyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ApparentEnergyUnits.VoltampereHours {
+        return ApparentEnergyUnits.VoltampereHours;
     }
 
     /**
@@ -143,7 +156,7 @@ export class ApparentEnergy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ApparentEnergyUnits): number {

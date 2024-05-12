@@ -81,6 +81,11 @@ export class Acceleration extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): AccelerationUnits.MetersPerSecondSquared {
+        return AccelerationUnits.MetersPerSecondSquared
+    }
+
     /** */
     public get MetersPerSecondSquared(): number {
         if(this.meterspersecondsquaredLazy !== null){
@@ -337,8 +342,16 @@ export class Acceleration extends BaseUnit {
      * Gets the base unit enumeration associated with Acceleration
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof AccelerationUnits {
+    protected static getUnitEnum(): typeof AccelerationUnits {
         return AccelerationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AccelerationUnits.MetersPerSecondSquared {
+        return AccelerationUnits.MetersPerSecondSquared;
     }
 
     /**
@@ -385,7 +398,7 @@ export class Acceleration extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AccelerationUnits): number {

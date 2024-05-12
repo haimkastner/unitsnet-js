@@ -165,6 +165,11 @@ export class Length extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): LengthUnits.Meters {
+        return LengthUnits.Meters
+    }
+
     /** */
     public get Meters(): number {
         if(this.metersLazy !== null){
@@ -925,8 +930,16 @@ export class Length extends BaseUnit {
      * Gets the base unit enumeration associated with Length
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof LengthUnits {
+    protected static getUnitEnum(): typeof LengthUnits {
         return LengthUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LengthUnits.Meters {
+        return LengthUnits.Meters;
     }
 
     /**
@@ -1001,7 +1014,7 @@ export class Length extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LengthUnits): number {

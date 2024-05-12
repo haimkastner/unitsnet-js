@@ -57,6 +57,11 @@ export class ElectricConductivity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricConductivityUnits.SiemensPerMeter {
+        return ElectricConductivityUnits.SiemensPerMeter
+    }
+
     /** */
     public get SiemensPerMeter(): number {
         if(this.siemenspermeterLazy !== null){
@@ -169,8 +174,16 @@ export class ElectricConductivity extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricConductivity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricConductivityUnits {
+    protected static getUnitEnum(): typeof ElectricConductivityUnits {
         return ElectricConductivityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricConductivityUnits.SiemensPerMeter {
+        return ElectricConductivityUnits.SiemensPerMeter;
     }
 
     /**
@@ -209,7 +222,7 @@ export class ElectricConductivity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricConductivityUnits): number {

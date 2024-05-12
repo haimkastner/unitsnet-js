@@ -66,6 +66,11 @@ export class MolarFlow extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MolarFlowUnits.MolesPerSecond {
+        return MolarFlowUnits.MolesPerSecond
+    }
+
     /** */
     public get MolesPerSecond(): number {
         if(this.molespersecondLazy !== null){
@@ -232,8 +237,16 @@ export class MolarFlow extends BaseUnit {
      * Gets the base unit enumeration associated with MolarFlow
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MolarFlowUnits {
+    protected static getUnitEnum(): typeof MolarFlowUnits {
         return MolarFlowUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MolarFlowUnits.MolesPerSecond {
+        return MolarFlowUnits.MolesPerSecond;
     }
 
     /**
@@ -275,7 +288,7 @@ export class MolarFlow extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MolarFlowUnits): number {

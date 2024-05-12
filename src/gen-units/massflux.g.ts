@@ -75,6 +75,11 @@ export class MassFlux extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MassFluxUnits.KilogramsPerSecondPerSquareMeter {
+        return MassFluxUnits.KilogramsPerSecondPerSquareMeter
+    }
+
     /** */
     public get GramsPerSecondPerSquareMeter(): number {
         if(this.gramspersecondpersquaremeterLazy !== null){
@@ -295,8 +300,16 @@ export class MassFlux extends BaseUnit {
      * Gets the base unit enumeration associated with MassFlux
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MassFluxUnits {
+    protected static getUnitEnum(): typeof MassFluxUnits {
         return MassFluxUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MassFluxUnits.KilogramsPerSecondPerSquareMeter {
+        return MassFluxUnits.KilogramsPerSecondPerSquareMeter;
     }
 
     /**
@@ -341,7 +354,7 @@ export class MassFlux extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MassFluxUnits): number {

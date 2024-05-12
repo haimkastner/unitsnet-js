@@ -48,6 +48,11 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter {
+        return ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter
+    }
+
     /** */
     public get CoulombsPerSquareMeter(): number {
         if(this.coulombspersquaremeterLazy !== null){
@@ -106,8 +111,16 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricSurfaceChargeDensity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricSurfaceChargeDensityUnits {
+    protected static getUnitEnum(): typeof ElectricSurfaceChargeDensityUnits {
         return ElectricSurfaceChargeDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter {
+        return ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter;
     }
 
     /**
@@ -143,7 +156,7 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricSurfaceChargeDensityUnits): number {

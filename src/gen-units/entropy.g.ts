@@ -60,6 +60,11 @@ export class Entropy extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): EntropyUnits.JoulesPerKelvin {
+        return EntropyUnits.JoulesPerKelvin
+    }
+
     /** */
     public get JoulesPerKelvin(): number {
         if(this.joulesperkelvinLazy !== null){
@@ -190,8 +195,16 @@ export class Entropy extends BaseUnit {
      * Gets the base unit enumeration associated with Entropy
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof EntropyUnits {
+    protected static getUnitEnum(): typeof EntropyUnits {
         return EntropyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): EntropyUnits.JoulesPerKelvin {
+        return EntropyUnits.JoulesPerKelvin;
     }
 
     /**
@@ -231,7 +244,7 @@ export class Entropy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: EntropyUnits): number {

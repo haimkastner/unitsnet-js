@@ -69,6 +69,11 @@ export class DynamicViscosity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): DynamicViscosityUnits.NewtonSecondsPerMeterSquared {
+        return DynamicViscosityUnits.NewtonSecondsPerMeterSquared
+    }
+
     /** */
     public get NewtonSecondsPerMeterSquared(): number {
         if(this.newtonsecondspermetersquaredLazy !== null){
@@ -253,8 +258,16 @@ export class DynamicViscosity extends BaseUnit {
      * Gets the base unit enumeration associated with DynamicViscosity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof DynamicViscosityUnits {
+    protected static getUnitEnum(): typeof DynamicViscosityUnits {
         return DynamicViscosityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): DynamicViscosityUnits.NewtonSecondsPerMeterSquared {
+        return DynamicViscosityUnits.NewtonSecondsPerMeterSquared;
     }
 
     /**
@@ -297,7 +310,7 @@ export class DynamicViscosity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: DynamicViscosityUnits): number {

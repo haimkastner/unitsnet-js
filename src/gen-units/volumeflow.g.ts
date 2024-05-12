@@ -264,6 +264,11 @@ export class VolumeFlow extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): VolumeFlowUnits.CubicMetersPerSecond {
+        return VolumeFlowUnits.CubicMetersPerSecond
+    }
+
     /** */
     public get CubicMetersPerSecond(): number {
         if(this.cubicmeterspersecondLazy !== null){
@@ -1618,8 +1623,16 @@ export class VolumeFlow extends BaseUnit {
      * Gets the base unit enumeration associated with VolumeFlow
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof VolumeFlowUnits {
+    protected static getUnitEnum(): typeof VolumeFlowUnits {
         return VolumeFlowUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): VolumeFlowUnits.CubicMetersPerSecond {
+        return VolumeFlowUnits.CubicMetersPerSecond;
     }
 
     /**
@@ -1727,7 +1740,7 @@ export class VolumeFlow extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: VolumeFlowUnits): number {

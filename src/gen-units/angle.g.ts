@@ -87,6 +87,11 @@ export class Angle extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): AngleUnits.Degrees {
+        return AngleUnits.Degrees
+    }
+
     /** */
     public get Radians(): number {
         if(this.radiansLazy !== null){
@@ -379,8 +384,16 @@ export class Angle extends BaseUnit {
      * Gets the base unit enumeration associated with Angle
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof AngleUnits {
+    protected static getUnitEnum(): typeof AngleUnits {
         return AngleUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AngleUnits.Degrees {
+        return AngleUnits.Degrees;
     }
 
     /**
@@ -429,7 +442,7 @@ export class Angle extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AngleUnits): number {

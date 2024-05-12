@@ -42,6 +42,11 @@ export class Permittivity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): PermittivityUnits.FaradsPerMeter {
+        return PermittivityUnits.FaradsPerMeter
+    }
+
     /** */
     public get FaradsPerMeter(): number {
         if(this.faradspermeterLazy !== null){
@@ -64,8 +69,16 @@ export class Permittivity extends BaseUnit {
      * Gets the base unit enumeration associated with Permittivity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof PermittivityUnits {
+    protected static getUnitEnum(): typeof PermittivityUnits {
         return PermittivityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): PermittivityUnits.FaradsPerMeter {
+        return PermittivityUnits.FaradsPerMeter;
     }
 
     /**
@@ -99,7 +112,7 @@ export class Permittivity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: PermittivityUnits): number {

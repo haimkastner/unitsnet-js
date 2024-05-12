@@ -78,6 +78,11 @@ export class Frequency extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): FrequencyUnits.Hertz {
+        return FrequencyUnits.Hertz
+    }
+
     /** */
     public get Hertz(): number {
         if(this.hertzLazy !== null){
@@ -316,8 +321,16 @@ export class Frequency extends BaseUnit {
      * Gets the base unit enumeration associated with Frequency
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof FrequencyUnits {
+    protected static getUnitEnum(): typeof FrequencyUnits {
         return FrequencyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): FrequencyUnits.Hertz {
+        return FrequencyUnits.Hertz;
     }
 
     /**
@@ -363,7 +376,7 @@ export class Frequency extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: FrequencyUnits): number {

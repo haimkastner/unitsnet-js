@@ -51,6 +51,11 @@ export class FuelEfficiency extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): FuelEfficiencyUnits.LitersPer100Kilometers {
+        return FuelEfficiencyUnits.LitersPer100Kilometers
+    }
+
     /** */
     public get LitersPer100Kilometers(): number {
         if(this.litersper100kilometersLazy !== null){
@@ -127,8 +132,16 @@ export class FuelEfficiency extends BaseUnit {
      * Gets the base unit enumeration associated with FuelEfficiency
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof FuelEfficiencyUnits {
+    protected static getUnitEnum(): typeof FuelEfficiencyUnits {
         return FuelEfficiencyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): FuelEfficiencyUnits.LitersPer100Kilometers {
+        return FuelEfficiencyUnits.LitersPer100Kilometers;
     }
 
     /**
@@ -165,7 +178,7 @@ export class FuelEfficiency extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: FuelEfficiencyUnits): number {

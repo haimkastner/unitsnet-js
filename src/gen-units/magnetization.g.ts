@@ -42,6 +42,11 @@ export class Magnetization extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MagnetizationUnits.AmperesPerMeter {
+        return MagnetizationUnits.AmperesPerMeter
+    }
+
     /** */
     public get AmperesPerMeter(): number {
         if(this.amperespermeterLazy !== null){
@@ -64,8 +69,16 @@ export class Magnetization extends BaseUnit {
      * Gets the base unit enumeration associated with Magnetization
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MagnetizationUnits {
+    protected static getUnitEnum(): typeof MagnetizationUnits {
         return MagnetizationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MagnetizationUnits.AmperesPerMeter {
+        return MagnetizationUnits.AmperesPerMeter;
     }
 
     /**
@@ -99,7 +112,7 @@ export class Magnetization extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MagnetizationUnits): number {

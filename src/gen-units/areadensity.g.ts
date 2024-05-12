@@ -48,6 +48,11 @@ export class AreaDensity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): AreaDensityUnits.KilogramsPerSquareMeter {
+        return AreaDensityUnits.KilogramsPerSquareMeter
+    }
+
     /** */
     public get KilogramsPerSquareMeter(): number {
         if(this.kilogramspersquaremeterLazy !== null){
@@ -106,8 +111,16 @@ export class AreaDensity extends BaseUnit {
      * Gets the base unit enumeration associated with AreaDensity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof AreaDensityUnits {
+    protected static getUnitEnum(): typeof AreaDensityUnits {
         return AreaDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AreaDensityUnits.KilogramsPerSquareMeter {
+        return AreaDensityUnits.KilogramsPerSquareMeter;
     }
 
     /**
@@ -143,7 +156,7 @@ export class AreaDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AreaDensityUnits): number {

@@ -48,6 +48,11 @@ export class MolarEntropy extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): MolarEntropyUnits.JoulesPerMoleKelvin {
+        return MolarEntropyUnits.JoulesPerMoleKelvin
+    }
+
     /** */
     public get JoulesPerMoleKelvin(): number {
         if(this.joulespermolekelvinLazy !== null){
@@ -106,8 +111,16 @@ export class MolarEntropy extends BaseUnit {
      * Gets the base unit enumeration associated with MolarEntropy
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof MolarEntropyUnits {
+    protected static getUnitEnum(): typeof MolarEntropyUnits {
         return MolarEntropyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MolarEntropyUnits.JoulesPerMoleKelvin {
+        return MolarEntropyUnits.JoulesPerMoleKelvin;
     }
 
     /**
@@ -143,7 +156,7 @@ export class MolarEntropy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MolarEntropyUnits): number {

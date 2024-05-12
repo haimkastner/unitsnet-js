@@ -69,6 +69,11 @@ export class TemperatureChangeRate extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): TemperatureChangeRateUnits.DegreesCelsiusPerSecond {
+        return TemperatureChangeRateUnits.DegreesCelsiusPerSecond
+    }
+
     /** */
     public get DegreesCelsiusPerSecond(): number {
         if(this.degreescelsiuspersecondLazy !== null){
@@ -253,8 +258,16 @@ export class TemperatureChangeRate extends BaseUnit {
      * Gets the base unit enumeration associated with TemperatureChangeRate
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof TemperatureChangeRateUnits {
+    protected static getUnitEnum(): typeof TemperatureChangeRateUnits {
         return TemperatureChangeRateUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): TemperatureChangeRateUnits.DegreesCelsiusPerSecond {
+        return TemperatureChangeRateUnits.DegreesCelsiusPerSecond;
     }
 
     /**
@@ -297,7 +310,7 @@ export class TemperatureChangeRate extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: TemperatureChangeRateUnits): number {

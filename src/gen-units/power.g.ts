@@ -117,6 +117,11 @@ export class Power extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): PowerUnits.Watts {
+        return PowerUnits.Watts
+    }
+
     /** */
     public get Watts(): number {
         if(this.wattsLazy !== null){
@@ -589,8 +594,16 @@ export class Power extends BaseUnit {
      * Gets the base unit enumeration associated with Power
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof PowerUnits {
+    protected static getUnitEnum(): typeof PowerUnits {
         return PowerUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): PowerUnits.Watts {
+        return PowerUnits.Watts;
     }
 
     /**
@@ -649,7 +662,7 @@ export class Power extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: PowerUnits): number {

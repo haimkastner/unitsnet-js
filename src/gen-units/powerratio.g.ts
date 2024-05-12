@@ -45,6 +45,11 @@ export class PowerRatio extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): PowerRatioUnits.DecibelWatts {
+        return PowerRatioUnits.DecibelWatts
+    }
+
     /** */
     public get DecibelWatts(): number {
         if(this.decibelwattsLazy !== null){
@@ -85,8 +90,16 @@ export class PowerRatio extends BaseUnit {
      * Gets the base unit enumeration associated with PowerRatio
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof PowerRatioUnits {
+    protected static getUnitEnum(): typeof PowerRatioUnits {
         return PowerRatioUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): PowerRatioUnits.DecibelWatts {
+        return PowerRatioUnits.DecibelWatts;
     }
 
     /**
@@ -121,7 +134,7 @@ export class PowerRatio extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: PowerRatioUnits): number {

@@ -153,6 +153,11 @@ export class ForcePerLength extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ForcePerLengthUnits.NewtonsPerMeter {
+        return ForcePerLengthUnits.NewtonsPerMeter
+    }
+
     /** */
     public get NewtonsPerMeter(): number {
         if(this.newtonspermeterLazy !== null){
@@ -841,8 +846,16 @@ export class ForcePerLength extends BaseUnit {
      * Gets the base unit enumeration associated with ForcePerLength
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ForcePerLengthUnits {
+    protected static getUnitEnum(): typeof ForcePerLengthUnits {
         return ForcePerLengthUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ForcePerLengthUnits.NewtonsPerMeter {
+        return ForcePerLengthUnits.NewtonsPerMeter;
     }
 
     /**
@@ -913,7 +926,7 @@ export class ForcePerLength extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ForcePerLengthUnits): number {

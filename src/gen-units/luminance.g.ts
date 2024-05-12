@@ -69,6 +69,11 @@ export class Luminance extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): LuminanceUnits.CandelasPerSquareMeter {
+        return LuminanceUnits.CandelasPerSquareMeter
+    }
+
     /** */
     public get CandelasPerSquareMeter(): number {
         if(this.candelaspersquaremeterLazy !== null){
@@ -253,8 +258,16 @@ export class Luminance extends BaseUnit {
      * Gets the base unit enumeration associated with Luminance
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof LuminanceUnits {
+    protected static getUnitEnum(): typeof LuminanceUnits {
         return LuminanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LuminanceUnits.CandelasPerSquareMeter {
+        return LuminanceUnits.CandelasPerSquareMeter;
     }
 
     /**
@@ -297,7 +310,7 @@ export class Luminance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LuminanceUnits): number {

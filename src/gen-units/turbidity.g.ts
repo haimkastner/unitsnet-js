@@ -42,6 +42,11 @@ export class Turbidity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): TurbidityUnits.NTU {
+        return TurbidityUnits.NTU
+    }
+
     /** */
     public get NTU(): number {
         if(this.ntuLazy !== null){
@@ -64,8 +69,16 @@ export class Turbidity extends BaseUnit {
      * Gets the base unit enumeration associated with Turbidity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof TurbidityUnits {
+    protected static getUnitEnum(): typeof TurbidityUnits {
         return TurbidityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): TurbidityUnits.NTU {
+        return TurbidityUnits.NTU;
     }
 
     /**
@@ -99,7 +112,7 @@ export class Turbidity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: TurbidityUnits): number {

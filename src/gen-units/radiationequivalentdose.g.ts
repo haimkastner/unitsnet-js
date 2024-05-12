@@ -57,6 +57,11 @@ export class RadiationEquivalentDose extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): RadiationEquivalentDoseUnits.Sieverts {
+        return RadiationEquivalentDoseUnits.Sieverts
+    }
+
     /** The sievert is a unit in the International System of Units (SI) intended to represent the stochastic health risk of ionizing radiation, which is defined as the probability of causing radiation-induced cancer and genetic damage. */
     public get Sieverts(): number {
         if(this.sievertsLazy !== null){
@@ -169,8 +174,16 @@ export class RadiationEquivalentDose extends BaseUnit {
      * Gets the base unit enumeration associated with RadiationEquivalentDose
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof RadiationEquivalentDoseUnits {
+    protected static getUnitEnum(): typeof RadiationEquivalentDoseUnits {
         return RadiationEquivalentDoseUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RadiationEquivalentDoseUnits.Sieverts {
+        return RadiationEquivalentDoseUnits.Sieverts;
     }
 
     /**
@@ -209,7 +222,7 @@ export class RadiationEquivalentDose extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RadiationEquivalentDoseUnits): number {

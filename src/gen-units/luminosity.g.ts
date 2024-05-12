@@ -81,6 +81,11 @@ export class Luminosity extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): LuminosityUnits.Watts {
+        return LuminosityUnits.Watts
+    }
+
     /** */
     public get Watts(): number {
         if(this.wattsLazy !== null){
@@ -337,8 +342,16 @@ export class Luminosity extends BaseUnit {
      * Gets the base unit enumeration associated with Luminosity
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof LuminosityUnits {
+    protected static getUnitEnum(): typeof LuminosityUnits {
         return LuminosityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LuminosityUnits.Watts {
+        return LuminosityUnits.Watts;
     }
 
     /**
@@ -385,7 +398,7 @@ export class Luminosity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LuminosityUnits): number {

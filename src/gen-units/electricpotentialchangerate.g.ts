@@ -99,6 +99,11 @@ export class ElectricPotentialChangeRate extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricPotentialChangeRateUnits.VoltsPerSeconds {
+        return ElectricPotentialChangeRateUnits.VoltsPerSeconds
+    }
+
     /** */
     public get VoltsPerSeconds(): number {
         if(this.voltspersecondsLazy !== null){
@@ -463,8 +468,16 @@ export class ElectricPotentialChangeRate extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricPotentialChangeRate
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricPotentialChangeRateUnits {
+    protected static getUnitEnum(): typeof ElectricPotentialChangeRateUnits {
         return ElectricPotentialChangeRateUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricPotentialChangeRateUnits.VoltsPerSeconds {
+        return ElectricPotentialChangeRateUnits.VoltsPerSeconds;
     }
 
     /**
@@ -517,7 +530,7 @@ export class ElectricPotentialChangeRate extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricPotentialChangeRateUnits): number {

@@ -57,6 +57,11 @@ export class AreaMomentOfInertia extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): AreaMomentOfInertiaUnits.MetersToTheFourth {
+        return AreaMomentOfInertiaUnits.MetersToTheFourth
+    }
+
     /** */
     public get MetersToTheFourth(): number {
         if(this.meterstothefourthLazy !== null){
@@ -169,8 +174,16 @@ export class AreaMomentOfInertia extends BaseUnit {
      * Gets the base unit enumeration associated with AreaMomentOfInertia
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof AreaMomentOfInertiaUnits {
+    protected static getUnitEnum(): typeof AreaMomentOfInertiaUnits {
         return AreaMomentOfInertiaUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AreaMomentOfInertiaUnits.MetersToTheFourth {
+        return AreaMomentOfInertiaUnits.MetersToTheFourth;
     }
 
     /**
@@ -209,7 +222,7 @@ export class AreaMomentOfInertia extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AreaMomentOfInertiaUnits): number {

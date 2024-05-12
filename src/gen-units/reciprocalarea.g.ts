@@ -72,6 +72,11 @@ export class ReciprocalArea extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ReciprocalAreaUnits.InverseSquareMeters {
+        return ReciprocalAreaUnits.InverseSquareMeters
+    }
+
     /** */
     public get InverseSquareMeters(): number {
         if(this.inversesquaremetersLazy !== null){
@@ -274,8 +279,16 @@ export class ReciprocalArea extends BaseUnit {
      * Gets the base unit enumeration associated with ReciprocalArea
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ReciprocalAreaUnits {
+    protected static getUnitEnum(): typeof ReciprocalAreaUnits {
         return ReciprocalAreaUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ReciprocalAreaUnits.InverseSquareMeters {
+        return ReciprocalAreaUnits.InverseSquareMeters;
     }
 
     /**
@@ -319,7 +332,7 @@ export class ReciprocalArea extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ReciprocalAreaUnits): number {

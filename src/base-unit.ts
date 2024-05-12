@@ -85,7 +85,7 @@ export function areAnyOperatorsOverridden(): boolean {
  * Set formula to be used while checking is equals on two units (e.g. Length === Length) 
  * @param equalsFormula The equals formula to used.
  */
-export function setEqualsFormula(equalsFormula: EqualsFormula) {
+export function setEqualsFormula(equalsFormula: EqualsFormula | undefined): void {
 	externalEqualsFormula = equalsFormula;
 }
 
@@ -93,7 +93,7 @@ export function setEqualsFormula(equalsFormula: EqualsFormula) {
  * Set formula to be used while compering two units (e.g. Length > Length) 
  * @param compareToFormula The comparison formula to used.
  */
-export function setCompareToFormula(compareToFormula: CompareToFormula) {
+export function setCompareToFormula(compareToFormula: CompareToFormula | undefined): void {
     externalCompareToFormula = compareToFormula;
 }
 
@@ -101,6 +101,8 @@ export abstract class BaseUnit {
 	protected abstract value: number;
 
 	public abstract get BaseValue(): number;
+
+	protected abstract get getBaseUnit(): string;
 
     /**
      * Truncates a number to a specified number of fractional digits.
@@ -124,6 +126,26 @@ export abstract class BaseUnit {
 	public abstract convert(toUnit: string): number;
 
 	public abstract toString(unit?: string, fractionalDigits?: number): string;
+
+	public abstract getUnitAbbreviation(unitAbbreviation?: string): string;
+
+	public abstract equals(other: BaseUnit): boolean;
+
+    public abstract compareTo(other: BaseUnit): number;
+ 
+    public abstract add(other: BaseUnit): BaseUnit;
+
+    public abstract subtract(other: BaseUnit): BaseUnit;
+ 
+    public abstract multiply(other: BaseUnit): BaseUnit;
+
+    public abstract divide(other: BaseUnit): BaseUnit;
+
+    public abstract modulo(other: BaseUnit): BaseUnit;
+ 
+    public abstract pow(other: BaseUnit): BaseUnit;
+
+	public abstract toDto(holdInUnit?: string): { value: number, unit: string };
 
     protected internalEquals(valueA: number, valueB: number): boolean {
         return externalEqualsFormula?.(valueA, valueB) ?? valueA === valueB;

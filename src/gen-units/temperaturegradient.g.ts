@@ -51,6 +51,11 @@ export class TemperatureGradient extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): TemperatureGradientUnits.KelvinsPerMeter {
+        return TemperatureGradientUnits.KelvinsPerMeter
+    }
+
     /** */
     public get KelvinsPerMeter(): number {
         if(this.kelvinspermeterLazy !== null){
@@ -127,8 +132,16 @@ export class TemperatureGradient extends BaseUnit {
      * Gets the base unit enumeration associated with TemperatureGradient
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof TemperatureGradientUnits {
+    protected static getUnitEnum(): typeof TemperatureGradientUnits {
         return TemperatureGradientUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): TemperatureGradientUnits.KelvinsPerMeter {
+        return TemperatureGradientUnits.KelvinsPerMeter;
     }
 
     /**
@@ -165,7 +178,7 @@ export class TemperatureGradient extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: TemperatureGradientUnits): number {

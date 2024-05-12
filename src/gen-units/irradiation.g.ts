@@ -66,6 +66,11 @@ export class Irradiation extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): IrradiationUnits.JoulesPerSquareMeter {
+        return IrradiationUnits.JoulesPerSquareMeter
+    }
+
     /** */
     public get JoulesPerSquareMeter(): number {
         if(this.joulespersquaremeterLazy !== null){
@@ -232,8 +237,16 @@ export class Irradiation extends BaseUnit {
      * Gets the base unit enumeration associated with Irradiation
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof IrradiationUnits {
+    protected static getUnitEnum(): typeof IrradiationUnits {
         return IrradiationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): IrradiationUnits.JoulesPerSquareMeter {
+        return IrradiationUnits.JoulesPerSquareMeter;
     }
 
     /**
@@ -275,7 +288,7 @@ export class Irradiation extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: IrradiationUnits): number {

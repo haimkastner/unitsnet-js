@@ -51,6 +51,11 @@ export class AmplitudeRatio extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): AmplitudeRatioUnits.DecibelVolts {
+        return AmplitudeRatioUnits.DecibelVolts
+    }
+
     /** */
     public get DecibelVolts(): number {
         if(this.decibelvoltsLazy !== null){
@@ -127,8 +132,16 @@ export class AmplitudeRatio extends BaseUnit {
      * Gets the base unit enumeration associated with AmplitudeRatio
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof AmplitudeRatioUnits {
+    protected static getUnitEnum(): typeof AmplitudeRatioUnits {
         return AmplitudeRatioUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AmplitudeRatioUnits.DecibelVolts {
+        return AmplitudeRatioUnits.DecibelVolts;
     }
 
     /**
@@ -165,7 +178,7 @@ export class AmplitudeRatio extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AmplitudeRatioUnits): number {

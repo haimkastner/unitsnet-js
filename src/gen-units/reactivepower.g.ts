@@ -51,6 +51,11 @@ export class ReactivePower extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ReactivePowerUnits.VoltamperesReactive {
+        return ReactivePowerUnits.VoltamperesReactive
+    }
+
     /** */
     public get VoltamperesReactive(): number {
         if(this.voltamperesreactiveLazy !== null){
@@ -127,8 +132,16 @@ export class ReactivePower extends BaseUnit {
      * Gets the base unit enumeration associated with ReactivePower
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ReactivePowerUnits {
+    protected static getUnitEnum(): typeof ReactivePowerUnits {
         return ReactivePowerUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ReactivePowerUnits.VoltamperesReactive {
+        return ReactivePowerUnits.VoltamperesReactive;
     }
 
     /**
@@ -165,7 +178,7 @@ export class ReactivePower extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ReactivePowerUnits): number {

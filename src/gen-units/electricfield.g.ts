@@ -42,6 +42,11 @@ export class ElectricField extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ElectricFieldUnits.VoltsPerMeter {
+        return ElectricFieldUnits.VoltsPerMeter
+    }
+
     /** */
     public get VoltsPerMeter(): number {
         if(this.voltspermeterLazy !== null){
@@ -64,8 +69,16 @@ export class ElectricField extends BaseUnit {
      * Gets the base unit enumeration associated with ElectricField
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ElectricFieldUnits {
+    protected static getUnitEnum(): typeof ElectricFieldUnits {
         return ElectricFieldUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricFieldUnits.VoltsPerMeter {
+        return ElectricFieldUnits.VoltsPerMeter;
     }
 
     /**
@@ -99,7 +112,7 @@ export class ElectricField extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricFieldUnits): number {

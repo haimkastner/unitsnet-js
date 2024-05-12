@@ -45,6 +45,11 @@ export class RatioChangeRate extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): RatioChangeRateUnits.DecimalFractionsPerSecond {
+        return RatioChangeRateUnits.DecimalFractionsPerSecond
+    }
+
     /** */
     public get PercentsPerSecond(): number {
         if(this.percentspersecondLazy !== null){
@@ -85,8 +90,16 @@ export class RatioChangeRate extends BaseUnit {
      * Gets the base unit enumeration associated with RatioChangeRate
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof RatioChangeRateUnits {
+    protected static getUnitEnum(): typeof RatioChangeRateUnits {
         return RatioChangeRateUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RatioChangeRateUnits.DecimalFractionsPerSecond {
+        return RatioChangeRateUnits.DecimalFractionsPerSecond;
     }
 
     /**
@@ -121,7 +134,7 @@ export class RatioChangeRate extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RatioChangeRateUnits): number {

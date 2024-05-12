@@ -48,6 +48,11 @@ export class SpecificVolume extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): SpecificVolumeUnits.CubicMetersPerKilogram {
+        return SpecificVolumeUnits.CubicMetersPerKilogram
+    }
+
     /** */
     public get CubicMetersPerKilogram(): number {
         if(this.cubicmetersperkilogramLazy !== null){
@@ -106,8 +111,16 @@ export class SpecificVolume extends BaseUnit {
      * Gets the base unit enumeration associated with SpecificVolume
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof SpecificVolumeUnits {
+    protected static getUnitEnum(): typeof SpecificVolumeUnits {
         return SpecificVolumeUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): SpecificVolumeUnits.CubicMetersPerKilogram {
+        return SpecificVolumeUnits.CubicMetersPerKilogram;
     }
 
     /**
@@ -143,7 +156,7 @@ export class SpecificVolume extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: SpecificVolumeUnits): number {

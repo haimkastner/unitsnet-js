@@ -63,6 +63,11 @@ export class RadiationExposure extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): RadiationExposureUnits.CoulombsPerKilogram {
+        return RadiationExposureUnits.CoulombsPerKilogram
+    }
+
     /** */
     public get CoulombsPerKilogram(): number {
         if(this.coulombsperkilogramLazy !== null){
@@ -211,8 +216,16 @@ export class RadiationExposure extends BaseUnit {
      * Gets the base unit enumeration associated with RadiationExposure
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof RadiationExposureUnits {
+    protected static getUnitEnum(): typeof RadiationExposureUnits {
         return RadiationExposureUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RadiationExposureUnits.CoulombsPerKilogram {
+        return RadiationExposureUnits.CoulombsPerKilogram;
     }
 
     /**
@@ -253,7 +266,7 @@ export class RadiationExposure extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RadiationExposureUnits): number {

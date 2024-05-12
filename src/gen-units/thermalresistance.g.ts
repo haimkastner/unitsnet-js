@@ -57,6 +57,11 @@ export class ThermalResistance extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt {
+        return ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt
+    }
+
     /** */
     public get SquareMeterKelvinsPerKilowatt(): number {
         if(this.squaremeterkelvinsperkilowattLazy !== null){
@@ -169,8 +174,16 @@ export class ThermalResistance extends BaseUnit {
      * Gets the base unit enumeration associated with ThermalResistance
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ThermalResistanceUnits {
+    protected static getUnitEnum(): typeof ThermalResistanceUnits {
         return ThermalResistanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt {
+        return ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt;
     }
 
     /**
@@ -209,7 +222,7 @@ export class ThermalResistance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ThermalResistanceUnits): number {

@@ -69,6 +69,11 @@ export class ReciprocalLength extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): ReciprocalLengthUnits.InverseMeters {
+        return ReciprocalLengthUnits.InverseMeters
+    }
+
     /** */
     public get InverseMeters(): number {
         if(this.inversemetersLazy !== null){
@@ -253,8 +258,16 @@ export class ReciprocalLength extends BaseUnit {
      * Gets the base unit enumeration associated with ReciprocalLength
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof ReciprocalLengthUnits {
+    protected static getUnitEnum(): typeof ReciprocalLengthUnits {
         return ReciprocalLengthUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ReciprocalLengthUnits.InverseMeters {
+        return ReciprocalLengthUnits.InverseMeters;
     }
 
     /**
@@ -297,7 +310,7 @@ export class ReciprocalLength extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ReciprocalLengthUnits): number {

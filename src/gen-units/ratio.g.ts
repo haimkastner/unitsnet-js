@@ -57,6 +57,11 @@ export class Ratio extends BaseUnit {
         return this.value;
     }
 
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get getBaseUnit(): RatioUnits.DecimalFractions {
+        return RatioUnits.DecimalFractions
+    }
+
     /** */
     public get DecimalFractions(): number {
         if(this.decimalfractionsLazy !== null){
@@ -169,8 +174,16 @@ export class Ratio extends BaseUnit {
      * Gets the base unit enumeration associated with Ratio
      * @returns The unit enumeration that can be used to interact with this type
      */
-    public static getUnitEnum(): typeof RatioUnits {
+    protected static getUnitEnum(): typeof RatioUnits {
         return RatioUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RatioUnits.DecimalFractions {
+        return RatioUnits.DecimalFractions;
     }
 
     /**
@@ -209,7 +222,7 @@ export class Ratio extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RatioUnits): number {
