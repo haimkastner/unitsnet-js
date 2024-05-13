@@ -266,7 +266,7 @@ describe('Unitsnet - tests', () => {
 			forEachUnit((unitClass) => {
 				const instance = instantiateUnit(unitClass, 0.2);
 				const abbreviation = instance.getUnitAbbreviation();
-				const baseUnit = queryNonPublicGetter(instance, BaseUnitNonPublicGetterNames.GetBaseUnit);
+				const baseUnit = queryNonPublicGetter(instance, BaseUnitNonPublicGetterNames.BaseUnit);
 				if (isEmptyAbbreviationValidInContext(instance, baseUnit)) {
 					expect(abbreviation).to.be.a('string').and.equal('');
 				} else {
@@ -361,7 +361,7 @@ describe('Unitsnet - tests', () => {
 			forEachUnit((unitClass, unitEnum) => {
 				const enumValues = new Set(Object.values(unitEnum));
 				const instance = instantiateUnit(unitClass, 0.1);
-				const baseUnit = queryNonPublicGetter(instance, BaseUnitNonPublicGetterNames.GetBaseUnit);
+				const baseUnit = queryNonPublicGetter(instance, BaseUnitNonPublicGetterNames.BaseUnit);
 				expect(enumValues.has(baseUnit)).to.be.true;
 			});
 		});

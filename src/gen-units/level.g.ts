@@ -46,7 +46,7 @@ export class Level extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): LevelUnits.Decibels {
+    protected get baseUnit(): LevelUnits.Decibels {
         return LevelUnits.Decibels
     }
 

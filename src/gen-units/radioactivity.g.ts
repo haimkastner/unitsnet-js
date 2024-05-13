@@ -127,7 +127,7 @@ export class Radioactivity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): RadioactivityUnits.Becquerels {
+    protected get baseUnit(): RadioactivityUnits.Becquerels {
         return RadioactivityUnits.Becquerels
     }
 

@@ -52,7 +52,7 @@ export class AmplitudeRatio extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): AmplitudeRatioUnits.DecibelVolts {
+    protected get baseUnit(): AmplitudeRatioUnits.DecibelVolts {
         return AmplitudeRatioUnits.DecibelVolts
     }
 

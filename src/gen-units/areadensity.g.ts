@@ -49,7 +49,7 @@ export class AreaDensity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): AreaDensityUnits.KilogramsPerSquareMeter {
+    protected get baseUnit(): AreaDensityUnits.KilogramsPerSquareMeter {
         return AreaDensityUnits.KilogramsPerSquareMeter
     }
 

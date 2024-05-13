@@ -67,7 +67,7 @@ export class ElectricCurrent extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ElectricCurrentUnits.Amperes {
+    protected get baseUnit(): ElectricCurrentUnits.Amperes {
         return ElectricCurrentUnits.Amperes
     }
 

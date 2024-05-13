@@ -79,7 +79,7 @@ export class Impulse extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ImpulseUnits.NewtonSeconds {
+    protected get baseUnit(): ImpulseUnits.NewtonSeconds {
         return ImpulseUnits.NewtonSeconds
     }
 

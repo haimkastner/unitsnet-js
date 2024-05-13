@@ -73,7 +73,7 @@ export class ElectricCharge extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ElectricChargeUnits.Coulombs {
+    protected get baseUnit(): ElectricChargeUnits.Coulombs {
         return ElectricChargeUnits.Coulombs
     }
 

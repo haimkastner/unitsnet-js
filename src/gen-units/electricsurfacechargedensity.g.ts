@@ -49,7 +49,7 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter {
+    protected get baseUnit(): ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter {
         return ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter
     }
 

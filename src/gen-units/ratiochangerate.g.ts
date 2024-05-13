@@ -46,7 +46,7 @@ export class RatioChangeRate extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): RatioChangeRateUnits.DecimalFractionsPerSecond {
+    protected get baseUnit(): RatioChangeRateUnits.DecimalFractionsPerSecond {
         return RatioChangeRateUnits.DecimalFractionsPerSecond
     }
 

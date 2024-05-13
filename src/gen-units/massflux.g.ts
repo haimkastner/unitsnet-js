@@ -76,7 +76,7 @@ export class MassFlux extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MassFluxUnits.KilogramsPerSecondPerSquareMeter {
+    protected get baseUnit(): MassFluxUnits.KilogramsPerSecondPerSquareMeter {
         return MassFluxUnits.KilogramsPerSecondPerSquareMeter
     }
 

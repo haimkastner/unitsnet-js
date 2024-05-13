@@ -43,7 +43,7 @@ export class RelativeHumidity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): RelativeHumidityUnits.Percent {
+    protected get baseUnit(): RelativeHumidityUnits.Percent {
         return RelativeHumidityUnits.Percent
     }
 

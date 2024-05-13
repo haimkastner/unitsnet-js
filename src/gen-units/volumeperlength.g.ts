@@ -67,7 +67,7 @@ export class VolumePerLength extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): VolumePerLengthUnits.CubicMetersPerMeter {
+    protected get baseUnit(): VolumePerLengthUnits.CubicMetersPerMeter {
         return VolumePerLengthUnits.CubicMetersPerMeter
     }
 

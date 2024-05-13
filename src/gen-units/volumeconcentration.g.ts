@@ -100,7 +100,7 @@ export class VolumeConcentration extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): VolumeConcentrationUnits.DecimalFractions {
+    protected get baseUnit(): VolumeConcentrationUnits.DecimalFractions {
         return VolumeConcentrationUnits.DecimalFractions
     }
 

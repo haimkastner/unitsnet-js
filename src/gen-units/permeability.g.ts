@@ -43,7 +43,7 @@ export class Permeability extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): PermeabilityUnits.HenriesPerMeter {
+    protected get baseUnit(): PermeabilityUnits.HenriesPerMeter {
         return PermeabilityUnits.HenriesPerMeter
     }
 

@@ -169,7 +169,7 @@ function buildGetBaseUnitProp(enumName: string, baseUnit: UnitProperties): GetAc
 
 	return {
 		kind: StructureKind.GetAccessor,
-		name: 'getBaseUnit',
+		name: 'baseUnit',
 		scope: Scope.Protected,
 		returnType: `${enumValueAccessStatement}`,
 		docs: ['Gets the default unit used when creating instances of the unit or its DTO'],
@@ -877,10 +877,14 @@ export function generateUnitClass(project: Project,
 	// Build the static creator methods  
 	const unitCreators = buildUnitCreatorsMethods(unitName, enumName, units);
 
-	const getUnitsEnumMethod = buildGetUnitEnumStaticMethod(unitName, enumName);
+	// Build a protected static getUnitEnum() method.
+	// Used to get the relevant unit enum during testing and potentially useful down the road
+	const getUnitEnumMethod = buildGetUnitEnumStaticMethod(unitName, enumName);
 	
+	// Build a protected static getBaseUnit() method that gets the BaseUnit of the given class
 	const getBaseUnitEnumStaticMethod = buildGetBaseUnitStaticMethod(enumName, baseUnit);
 
+	// Build a protected get baseUnit that returns the BaseUnit of the given class
 	const getBaseUnitEnumValueProp = buildGetBaseUnitProp(enumName, baseUnit);
 
 	// Build the convert from base to unit method
@@ -917,7 +921,7 @@ export function generateUnitClass(project: Project,
 		ctors: [unitCtor],
 		methods: [
 			...unitCreators,
-			getUnitsEnumMethod,
+			getUnitEnumMethod,
 			getBaseUnitEnumStaticMethod,
 			convertToDtoMethod,
 			convertFromDtoMethod,

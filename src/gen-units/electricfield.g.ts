@@ -43,7 +43,7 @@ export class ElectricField extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ElectricFieldUnits.VoltsPerMeter {
+    protected get baseUnit(): ElectricFieldUnits.VoltsPerMeter {
         return ElectricFieldUnits.VoltsPerMeter
     }
 

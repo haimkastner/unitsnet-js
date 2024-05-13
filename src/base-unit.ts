@@ -55,6 +55,22 @@ let numberOfOverwrittenOperators: number = 0;
  * @param arithmeticOperation The formula's operation 
  * @param replacementFunction The formula to used.
  */
+/**
+ * Sets an arithmetic operator to use the given function.
+ * @description Certain use-cases require the use of high precision mathematics beyond what's defined in the ECMA specification.
+ * This function allows overriding of operators to to facilitate usage of specialized mathematic libraries.
+ * @example
+ * ```
+ * import NP from 'number-precision'
+ * 
+ * setOperatorOverride(ArithmeticOperation.Add, (a, b) => NP.plus(a, b))
+ * ```
+ *
+ * @export
+ * @template TOperator
+ * @param {TOperator} arithmeticOperation
+ * @param {(OperatorOverrides[TOperator] | undefined)} replacementFunction
+ */
 export function setOperatorOverride<TOperator extends ArithmeticOperation>(
 	arithmeticOperation: TOperator,
 	replacementFunction: OperatorOverrides[TOperator] | undefined
@@ -63,6 +79,13 @@ export function setOperatorOverride<TOperator extends ArithmeticOperation>(
 	numberOfOverwrittenOperators = Object.values(externalArithmeticFormulas).filter((value) => !!value).length;
 }
 
+/**
+ * Removes the given operator override (i.e., returns operator behavior to default JavaScript implementation)
+ *
+ * @export
+ * @template TOperator The operator to unset
+ * @param {TOperator} arithmeticOperation The operator to unset
+ */
 export function unsetOperatorOverride<TOperator extends ArithmeticOperation>(
 	arithmeticOperation: TOperator
 ): void {
@@ -72,11 +95,22 @@ export function unsetOperatorOverride<TOperator extends ArithmeticOperation>(
 	}
 }
 
+/**
+ * Removes all operator overrides (i.e., return all operator behaviors to default JavaScript implementation)
+ *
+ * @export
+ */
 export function unsetAllOperatorOverrides(): void {
 	externalArithmeticFormulas = {};
 	numberOfOverwrittenOperators = 0;
 }
 
+/**
+ * Gets a boolean indicating whether any operators are currently overridden
+ *
+ * @export
+ * @return {boolean}
+ */
 export function areAnyOperatorsOverridden(): boolean {
 	return numberOfOverwrittenOperators > 0;
 }
@@ -102,7 +136,7 @@ export abstract class BaseUnit {
 
 	public abstract get BaseValue(): number;
 
-	protected abstract get getBaseUnit(): string;
+	protected abstract get baseUnit(): string;
 
     /**
      * Truncates a number to a specified number of fractional digits.

@@ -118,7 +118,7 @@ export class Power extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): PowerUnits.Watts {
+    protected get baseUnit(): PowerUnits.Watts {
         return PowerUnits.Watts
     }
 

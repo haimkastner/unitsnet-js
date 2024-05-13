@@ -49,7 +49,7 @@ export class ApparentEnergy extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ApparentEnergyUnits.VoltampereHours {
+    protected get baseUnit(): ApparentEnergyUnits.VoltampereHours {
         return ApparentEnergyUnits.VoltampereHours
     }
 

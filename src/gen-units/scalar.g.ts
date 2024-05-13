@@ -43,7 +43,7 @@ export class Scalar extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ScalarUnits.Amount {
+    protected get baseUnit(): ScalarUnits.Amount {
         return ScalarUnits.Amount
     }
 

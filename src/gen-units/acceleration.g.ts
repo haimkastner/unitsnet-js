@@ -82,7 +82,7 @@ export class Acceleration extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): AccelerationUnits.MetersPerSecondSquared {
+    protected get baseUnit(): AccelerationUnits.MetersPerSecondSquared {
         return AccelerationUnits.MetersPerSecondSquared
     }
 

@@ -55,7 +55,7 @@ export class ElectricInductance extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ElectricInductanceUnits.Henries {
+    protected get baseUnit(): ElectricInductanceUnits.Henries {
         return ElectricInductanceUnits.Henries
     }
 

@@ -70,7 +70,7 @@ export class Temperature extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): TemperatureUnits.Kelvins {
+    protected get baseUnit(): TemperatureUnits.Kelvins {
         return TemperatureUnits.Kelvins
     }
 

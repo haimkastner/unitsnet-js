@@ -64,7 +64,7 @@ export class RadiationExposure extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): RadiationExposureUnits.CoulombsPerKilogram {
+    protected get baseUnit(): RadiationExposureUnits.CoulombsPerKilogram {
         return RadiationExposureUnits.CoulombsPerKilogram
     }
 

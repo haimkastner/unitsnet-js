@@ -85,7 +85,7 @@ export class ForceChangeRate extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ForceChangeRateUnits.NewtonsPerSecond {
+    protected get baseUnit(): ForceChangeRateUnits.NewtonsPerSecond {
         return ForceChangeRateUnits.NewtonsPerSecond
     }
 

@@ -73,7 +73,7 @@ export class Duration extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): DurationUnits.Seconds {
+    protected get baseUnit(): DurationUnits.Seconds {
         return DurationUnits.Seconds
     }
 

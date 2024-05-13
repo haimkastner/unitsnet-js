@@ -154,7 +154,7 @@ export class ForcePerLength extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ForcePerLengthUnits.NewtonsPerMeter {
+    protected get baseUnit(): ForcePerLengthUnits.NewtonsPerMeter {
         return ForcePerLengthUnits.NewtonsPerMeter
     }
 

@@ -43,7 +43,7 @@ export class MagneticFlux extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MagneticFluxUnits.Webers {
+    protected get baseUnit(): MagneticFluxUnits.Webers {
         return MagneticFluxUnits.Webers
     }
 

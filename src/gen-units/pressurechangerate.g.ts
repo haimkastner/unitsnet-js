@@ -94,7 +94,7 @@ export class PressureChangeRate extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): PressureChangeRateUnits.PascalsPerSecond {
+    protected get baseUnit(): PressureChangeRateUnits.PascalsPerSecond {
         return PressureChangeRateUnits.PascalsPerSecond
     }
 

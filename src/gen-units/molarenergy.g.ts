@@ -49,7 +49,7 @@ export class MolarEnergy extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MolarEnergyUnits.JoulesPerMole {
+    protected get baseUnit(): MolarEnergyUnits.JoulesPerMole {
         return MolarEnergyUnits.JoulesPerMole
     }
 

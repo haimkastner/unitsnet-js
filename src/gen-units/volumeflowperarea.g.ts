@@ -46,7 +46,7 @@ export class VolumeFlowPerArea extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter {
+    protected get baseUnit(): VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter {
         return VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter
     }
 

@@ -265,7 +265,7 @@ export class VolumeFlow extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): VolumeFlowUnits.CubicMetersPerSecond {
+    protected get baseUnit(): VolumeFlowUnits.CubicMetersPerSecond {
         return VolumeFlowUnits.CubicMetersPerSecond
     }
 

@@ -52,7 +52,7 @@ export class FuelEfficiency extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): FuelEfficiencyUnits.LitersPer100Kilometers {
+    protected get baseUnit(): FuelEfficiencyUnits.LitersPer100Kilometers {
         return FuelEfficiencyUnits.LitersPer100Kilometers
     }
 

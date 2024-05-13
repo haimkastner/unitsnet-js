@@ -46,7 +46,7 @@ export class Molality extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MolalityUnits.MolesPerKilogram {
+    protected get baseUnit(): MolalityUnits.MolesPerKilogram {
         return MolalityUnits.MolesPerKilogram
     }
 

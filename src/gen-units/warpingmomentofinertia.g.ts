@@ -58,7 +58,7 @@ export class WarpingMomentOfInertia extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): WarpingMomentOfInertiaUnits.MetersToTheSixth {
+    protected get baseUnit(): WarpingMomentOfInertiaUnits.MetersToTheSixth {
         return WarpingMomentOfInertiaUnits.MetersToTheSixth
     }
 

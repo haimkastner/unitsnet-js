@@ -82,7 +82,7 @@ export class Luminosity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): LuminosityUnits.Watts {
+    protected get baseUnit(): LuminosityUnits.Watts {
         return LuminosityUnits.Watts
     }
 

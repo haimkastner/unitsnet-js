@@ -76,7 +76,7 @@ export class EnergyDensity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): EnergyDensityUnits.JoulesPerCubicMeter {
+    protected get baseUnit(): EnergyDensityUnits.JoulesPerCubicMeter {
         return EnergyDensityUnits.JoulesPerCubicMeter
     }
 

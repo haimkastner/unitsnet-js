@@ -55,7 +55,7 @@ export class RotationalStiffnessPerLength extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter {
+    protected get baseUnit(): RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter {
         return RotationalStiffnessPerLengthUnits.NewtonMetersPerRadianPerMeter
     }
 

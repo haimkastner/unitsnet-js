@@ -115,7 +115,7 @@ export class Torque extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): TorqueUnits.NewtonMeters {
+    protected get baseUnit(): TorqueUnits.NewtonMeters {
         return TorqueUnits.NewtonMeters
     }
 

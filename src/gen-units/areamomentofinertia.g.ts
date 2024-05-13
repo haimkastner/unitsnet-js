@@ -58,7 +58,7 @@ export class AreaMomentOfInertia extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): AreaMomentOfInertiaUnits.MetersToTheFourth {
+    protected get baseUnit(): AreaMomentOfInertiaUnits.MetersToTheFourth {
         return AreaMomentOfInertiaUnits.MetersToTheFourth
     }
 

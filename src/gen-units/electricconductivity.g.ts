@@ -58,7 +58,7 @@ export class ElectricConductivity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ElectricConductivityUnits.SiemensPerMeter {
+    protected get baseUnit(): ElectricConductivityUnits.SiemensPerMeter {
         return ElectricConductivityUnits.SiemensPerMeter
     }
 

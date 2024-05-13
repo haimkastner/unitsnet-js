@@ -61,7 +61,7 @@ export class ElectricCurrentGradient extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ElectricCurrentGradientUnits.AmperesPerSecond {
+    protected get baseUnit(): ElectricCurrentGradientUnits.AmperesPerSecond {
         return ElectricCurrentGradientUnits.AmperesPerSecond
     }
 

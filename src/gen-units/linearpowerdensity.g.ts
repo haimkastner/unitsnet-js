@@ -115,7 +115,7 @@ export class LinearPowerDensity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): LinearPowerDensityUnits.WattsPerMeter {
+    protected get baseUnit(): LinearPowerDensityUnits.WattsPerMeter {
         return LinearPowerDensityUnits.WattsPerMeter
     }
 

@@ -82,7 +82,7 @@ export class Information extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): InformationUnits.Bits {
+    protected get baseUnit(): InformationUnits.Bits {
         return InformationUnits.Bits
     }
 

@@ -67,7 +67,7 @@ export class VolumetricHeatCapacity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin {
+    protected get baseUnit(): VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin {
         return VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin
     }
 

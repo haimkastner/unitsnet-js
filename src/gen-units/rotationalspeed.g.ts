@@ -79,7 +79,7 @@ export class RotationalSpeed extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): RotationalSpeedUnits.RadiansPerSecond {
+    protected get baseUnit(): RotationalSpeedUnits.RadiansPerSecond {
         return RotationalSpeedUnits.RadiansPerSecond
     }
 

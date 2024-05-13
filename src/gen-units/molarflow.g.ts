@@ -67,7 +67,7 @@ export class MolarFlow extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MolarFlowUnits.MolesPerSecond {
+    protected get baseUnit(): MolarFlowUnits.MolesPerSecond {
         return MolarFlowUnits.MolesPerSecond
     }
 

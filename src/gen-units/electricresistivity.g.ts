@@ -82,7 +82,7 @@ export class ElectricResistivity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ElectricResistivityUnits.OhmMeters {
+    protected get baseUnit(): ElectricResistivityUnits.OhmMeters {
         return ElectricResistivityUnits.OhmMeters
     }
 

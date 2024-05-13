@@ -43,7 +43,7 @@ export class LuminousFlux extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): LuminousFluxUnits.Lumens {
+    protected get baseUnit(): LuminousFluxUnits.Lumens {
         return LuminousFluxUnits.Lumens
     }
 

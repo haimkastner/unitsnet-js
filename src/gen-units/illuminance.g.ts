@@ -52,7 +52,7 @@ export class Illuminance extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): IlluminanceUnits.Lux {
+    protected get baseUnit(): IlluminanceUnits.Lux {
         return IlluminanceUnits.Lux
     }
 

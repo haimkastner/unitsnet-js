@@ -73,7 +73,7 @@ export class ReciprocalArea extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ReciprocalAreaUnits.InverseSquareMeters {
+    protected get baseUnit(): ReciprocalAreaUnits.InverseSquareMeters {
         return ReciprocalAreaUnits.InverseSquareMeters
     }
 

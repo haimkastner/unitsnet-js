@@ -46,7 +46,7 @@ export class ThermalConductivity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ThermalConductivityUnits.WattsPerMeterKelvin {
+    protected get baseUnit(): ThermalConductivityUnits.WattsPerMeterKelvin {
         return ThermalConductivityUnits.WattsPerMeterKelvin
     }
 

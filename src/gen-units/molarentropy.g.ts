@@ -49,7 +49,7 @@ export class MolarEntropy extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MolarEntropyUnits.JoulesPerMoleKelvin {
+    protected get baseUnit(): MolarEntropyUnits.JoulesPerMoleKelvin {
         return MolarEntropyUnits.JoulesPerMoleKelvin
     }
 

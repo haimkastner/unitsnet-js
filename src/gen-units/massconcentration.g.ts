@@ -187,7 +187,7 @@ export class MassConcentration extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MassConcentrationUnits.KilogramsPerCubicMeter {
+    protected get baseUnit(): MassConcentrationUnits.KilogramsPerCubicMeter {
         return MassConcentrationUnits.KilogramsPerCubicMeter
     }
 

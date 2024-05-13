@@ -55,7 +55,7 @@ export class HeatTransferCoefficient extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin {
+    protected get baseUnit(): HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin {
         return HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin
     }
 

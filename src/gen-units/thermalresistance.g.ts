@@ -58,7 +58,7 @@ export class ThermalResistance extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt {
+    protected get baseUnit(): ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt {
         return ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt
     }
 

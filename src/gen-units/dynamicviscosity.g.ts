@@ -70,7 +70,7 @@ export class DynamicViscosity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): DynamicViscosityUnits.NewtonSecondsPerMeterSquared {
+    protected get baseUnit(): DynamicViscosityUnits.NewtonSecondsPerMeterSquared {
         return DynamicViscosityUnits.NewtonSecondsPerMeterSquared
     }
 

@@ -43,7 +43,7 @@ export class VitaminA extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): VitaminAUnits.InternationalUnits {
+    protected get baseUnit(): VitaminAUnits.InternationalUnits {
         return VitaminAUnits.InternationalUnits
     }
 

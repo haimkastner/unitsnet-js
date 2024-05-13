@@ -46,7 +46,7 @@ export class PowerRatio extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): PowerRatioUnits.DecibelWatts {
+    protected get baseUnit(): PowerRatioUnits.DecibelWatts {
         return PowerRatioUnits.DecibelWatts
     }
 

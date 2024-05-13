@@ -79,7 +79,7 @@ export class MolarMass extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MolarMassUnits.KilogramsPerMole {
+    protected get baseUnit(): MolarMassUnits.KilogramsPerMole {
         return MolarMassUnits.KilogramsPerMole
     }
 

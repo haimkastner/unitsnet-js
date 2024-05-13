@@ -43,7 +43,7 @@ export class SolidAngle extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): SolidAngleUnits.Steradians {
+    protected get baseUnit(): SolidAngleUnits.Steradians {
         return SolidAngleUnits.Steradians
     }
 

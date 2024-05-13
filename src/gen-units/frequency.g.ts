@@ -79,7 +79,7 @@ export class Frequency extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): FrequencyUnits.Hertz {
+    protected get baseUnit(): FrequencyUnits.Hertz {
         return FrequencyUnits.Hertz
     }
 

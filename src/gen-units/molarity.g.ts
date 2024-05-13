@@ -73,7 +73,7 @@ export class Molarity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MolarityUnits.MolesPerCubicMeter {
+    protected get baseUnit(): MolarityUnits.MolesPerCubicMeter {
         return MolarityUnits.MolesPerCubicMeter
     }
 

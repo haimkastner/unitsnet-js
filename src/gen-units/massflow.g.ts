@@ -139,7 +139,7 @@ export class MassFlow extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MassFlowUnits.GramsPerSecond {
+    protected get baseUnit(): MassFlowUnits.GramsPerSecond {
         return MassFlowUnits.GramsPerSecond
     }
 

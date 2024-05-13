@@ -35,7 +35,7 @@ export function setAllArithmeticOverrides(): void {
  * Gets all BaseUnit-derived generated classes
  *
  * @export
- * @return {*} {BaseUnitClass[]}
+ * @return {BaseUnitClass[]}
  */
 export function getAllUnitClasses(): BaseUnitClass[] {
 	if (unitCache.length > 0) {
@@ -59,7 +59,7 @@ export function getAllUnitClasses(): BaseUnitClass[] {
  * @param {BaseUnitClass} unitClass The BaseUnit-derived class to instantiate
  * @param {number} value The value to instantiate with
  * @param {TUnitsEnum} [fromUnit] The unit enum value (e.g. `RadiationEquivalentDoseUnits.Sieverts`)
- * @return {*} {BaseUnit} The instantiated unit
+ * @return {BaseUnit} The instantiated unit
  */
 export function instantiateUnit<TUnitsEnum extends string = string>(
 	unitClass: BaseUnitClass,
@@ -88,7 +88,7 @@ export function getRandomInt(min: number, max: number): number {
  * @export
  * @template T The type of result
  * @param {(unit: BaseUnitClass, unitsEnum: { [Key: string]: string }) => T} lambda
- * @return {*}  {T[]}
+ * @return {T[]}
  */
 export function forEachUnit<T = any>(lambda: (unit: BaseUnitClass, unitsEnum: { [Key: string]: string }) => T): T[] {
 	const unitClasses = getAllUnitClasses();
@@ -108,7 +108,7 @@ export function forEachUnit<T = any>(lambda: (unit: BaseUnitClass, unitsEnum: { 
  *
  * @param {ts.Node} entry The AST head, usually a Source File
  * @param {string} className The class to find
- * @return {*} {(ts.ClassDeclaration | undefined)} The class declaration, if one was found, otherwise undefined
+ * @return {(ts.ClassDeclaration | undefined)} The class declaration, if one was found, otherwise undefined
  */
 function findClassInFile(entry: ts.Node, className: string): ts.ClassDeclaration | undefined {
 	function recurseFindClass(node: ts.Node): ts.ClassDeclaration | undefined {
@@ -161,7 +161,7 @@ export function getStaticMethodsOfUnitClass(classToEnumerate: BaseUnitClass): ts
  * @throws An error if a method's name could not be extracted
  *
  * @param {ts.MethodDeclaration} method The method to get the name of
- * @return {*} {string} The method's name
+ * @return {string} The method's name
  */
 function getMethodName(method: ts.MethodDeclaration): string {
 	const nameNode = method.name;

@@ -58,7 +58,7 @@ export class ElectricPotential extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ElectricPotentialUnits.Volts {
+    protected get baseUnit(): ElectricPotentialUnits.Volts {
         return ElectricPotentialUnits.Volts
     }
 

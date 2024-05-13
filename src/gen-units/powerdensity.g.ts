@@ -172,7 +172,7 @@ export class PowerDensity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): PowerDensityUnits.WattsPerCubicMeter {
+    protected get baseUnit(): PowerDensityUnits.WattsPerCubicMeter {
         return PowerDensityUnits.WattsPerCubicMeter
     }
 

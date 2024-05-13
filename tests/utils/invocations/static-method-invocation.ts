@@ -20,10 +20,20 @@ interface StaticMethodToParametersMap {
 }
 
 
+/**
+ * Invokes a static method on an amorphous BaseUnit class
+ *
+ * @export
+ * @template TMethodName The method name to invoke
+ * @param {BaseUnitClass} unitClass The BaseUnit-derived class to invoke the static method of
+ * @param {TMethodName} methodName The method name to invoke
+ * @param {StaticMethodToParametersMap[TMethodName]} parameters The parameters to pass to the method
+ * @return {StaticMethodToReturnTypeMap[TMethodName]} The value returned by the method
+ */
 export function invokeStaticMethod<TMethodName extends BaseUnitStaticMethodNames>(
-	unitsEnum: BaseUnitClass,
-	method: TMethodName,
+	unitClass: BaseUnitClass,
+	methodName: TMethodName,
 	parameters: StaticMethodToParametersMap[TMethodName]
 ): StaticMethodToReturnTypeMap[TMethodName] {
-	return (unitsEnum as any)[method](parameters);
+	return (unitClass as any)[methodName](parameters);
 }

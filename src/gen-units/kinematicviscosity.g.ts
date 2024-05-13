@@ -67,7 +67,7 @@ export class KinematicViscosity extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): KinematicViscosityUnits.SquareMetersPerSecond {
+    protected get baseUnit(): KinematicViscosityUnits.SquareMetersPerSecond {
         return KinematicViscosityUnits.SquareMetersPerSecond
     }
 

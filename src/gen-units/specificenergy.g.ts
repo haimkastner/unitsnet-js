@@ -130,7 +130,7 @@ export class SpecificEnergy extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): SpecificEnergyUnits.JoulesPerKilogram {
+    protected get baseUnit(): SpecificEnergyUnits.JoulesPerKilogram {
         return SpecificEnergyUnits.JoulesPerKilogram
     }
 

@@ -91,7 +91,7 @@ export class AmountOfSubstance extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): AmountOfSubstanceUnits.Moles {
+    protected get baseUnit(): AmountOfSubstanceUnits.Moles {
         return AmountOfSubstanceUnits.Moles
     }
 

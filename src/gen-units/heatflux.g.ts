@@ -94,7 +94,7 @@ export class HeatFlux extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): HeatFluxUnits.WattsPerSquareMeter {
+    protected get baseUnit(): HeatFluxUnits.WattsPerSquareMeter {
         return HeatFluxUnits.WattsPerSquareMeter
     }
 

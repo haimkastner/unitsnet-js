@@ -139,7 +139,7 @@ export class RotationalStiffness extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): RotationalStiffnessUnits.NewtonMetersPerRadian {
+    protected get baseUnit(): RotationalStiffnessUnits.NewtonMetersPerRadian {
         return RotationalStiffnessUnits.NewtonMetersPerRadian
     }
 

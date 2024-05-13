@@ -124,7 +124,7 @@ export class MassMomentOfInertia extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MassMomentOfInertiaUnits.KilogramSquareMeters {
+    protected get baseUnit(): MassMomentOfInertiaUnits.KilogramSquareMeters {
         return MassMomentOfInertiaUnits.KilogramSquareMeters
     }
 

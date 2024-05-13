@@ -43,7 +43,7 @@ export class Magnetization extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MagnetizationUnits.AmperesPerMeter {
+    protected get baseUnit(): MagnetizationUnits.AmperesPerMeter {
         return MagnetizationUnits.AmperesPerMeter
     }
 

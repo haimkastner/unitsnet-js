@@ -70,7 +70,7 @@ export class Luminance extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): LuminanceUnits.CandelasPerSquareMeter {
+    protected get baseUnit(): LuminanceUnits.CandelasPerSquareMeter {
         return LuminanceUnits.CandelasPerSquareMeter
     }
 

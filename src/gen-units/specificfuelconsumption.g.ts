@@ -52,7 +52,7 @@ export class SpecificFuelConsumption extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond {
+    protected get baseUnit(): SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond {
         return SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond
     }
 

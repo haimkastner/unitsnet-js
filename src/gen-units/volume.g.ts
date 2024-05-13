@@ -202,7 +202,7 @@ export class Volume extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): VolumeUnits.CubicMeters {
+    protected get baseUnit(): VolumeUnits.CubicMeters {
         return VolumeUnits.CubicMeters
     }
 

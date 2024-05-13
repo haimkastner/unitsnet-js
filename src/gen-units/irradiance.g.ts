@@ -82,7 +82,7 @@ export class Irradiance extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): IrradianceUnits.WattsPerSquareMeter {
+    protected get baseUnit(): IrradianceUnits.WattsPerSquareMeter {
         return IrradianceUnits.WattsPerSquareMeter
     }
 

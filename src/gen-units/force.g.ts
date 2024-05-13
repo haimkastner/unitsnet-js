@@ -85,7 +85,7 @@ export class Force extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ForceUnits.Newtons {
+    protected get baseUnit(): ForceUnits.Newtons {
         return ForceUnits.Newtons
     }
 

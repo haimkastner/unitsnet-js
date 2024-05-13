@@ -208,7 +208,7 @@ export class Density extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): DensityUnits.KilogramsPerCubicMeter {
+    protected get baseUnit(): DensityUnits.KilogramsPerCubicMeter {
         return DensityUnits.KilogramsPerCubicMeter
     }
 

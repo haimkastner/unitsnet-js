@@ -58,7 +58,7 @@ export class RadiationEquivalentDose extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): RadiationEquivalentDoseUnits.Sieverts {
+    protected get baseUnit(): RadiationEquivalentDoseUnits.Sieverts {
         return RadiationEquivalentDoseUnits.Sieverts
     }
 

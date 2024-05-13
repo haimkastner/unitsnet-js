@@ -139,7 +139,7 @@ export class Speed extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): SpeedUnits.MetersPerSecond {
+    protected get baseUnit(): SpeedUnits.MetersPerSecond {
         return SpeedUnits.MetersPerSecond
     }
 

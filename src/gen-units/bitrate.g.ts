@@ -82,7 +82,7 @@ export class BitRate extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): BitRateUnits.BitsPerSecond {
+    protected get baseUnit(): BitRateUnits.BitsPerSecond {
         return BitRateUnits.BitsPerSecond
     }
 

@@ -58,7 +58,7 @@ export class MagneticField extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MagneticFieldUnits.Teslas {
+    protected get baseUnit(): MagneticFieldUnits.Teslas {
         return MagneticFieldUnits.Teslas
     }
 

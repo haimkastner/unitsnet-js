@@ -70,7 +70,7 @@ export class ReciprocalLength extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ReciprocalLengthUnits.InverseMeters {
+    protected get baseUnit(): ReciprocalLengthUnits.InverseMeters {
         return ReciprocalLengthUnits.InverseMeters
     }
 

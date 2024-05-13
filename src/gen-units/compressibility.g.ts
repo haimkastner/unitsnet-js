@@ -61,7 +61,7 @@ export class Compressibility extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): CompressibilityUnits.InversePascals {
+    protected get baseUnit(): CompressibilityUnits.InversePascals {
         return CompressibilityUnits.InversePascals
     }
 

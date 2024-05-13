@@ -49,7 +49,7 @@ export class ReactiveEnergy extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): ReactiveEnergyUnits.VoltampereReactiveHours {
+    protected get baseUnit(): ReactiveEnergyUnits.VoltampereReactiveHours {
         return ReactiveEnergyUnits.VoltampereReactiveHours
     }
 

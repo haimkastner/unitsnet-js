@@ -61,7 +61,7 @@ export class Capacitance extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): CapacitanceUnits.Farads {
+    protected get baseUnit(): CapacitanceUnits.Farads {
         return CapacitanceUnits.Farads
     }
 

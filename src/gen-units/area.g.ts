@@ -82,7 +82,7 @@ export class Area extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): AreaUnits.SquareMeters {
+    protected get baseUnit(): AreaUnits.SquareMeters {
         return AreaUnits.SquareMeters
     }
 

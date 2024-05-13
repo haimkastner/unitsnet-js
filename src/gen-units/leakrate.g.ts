@@ -49,7 +49,7 @@ export class LeakRate extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): LeakRateUnits.PascalCubicMetersPerSecond {
+    protected get baseUnit(): LeakRateUnits.PascalCubicMetersPerSecond {
         return LeakRateUnits.PascalCubicMetersPerSecond
     }
 

@@ -52,7 +52,7 @@ export class TemperatureGradient extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): TemperatureGradientUnits.KelvinsPerMeter {
+    protected get baseUnit(): TemperatureGradientUnits.KelvinsPerMeter {
         return TemperatureGradientUnits.KelvinsPerMeter
     }
 

@@ -67,7 +67,7 @@ export class SpecificEntropy extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): SpecificEntropyUnits.JoulesPerKilogramKelvin {
+    protected get baseUnit(): SpecificEntropyUnits.JoulesPerKilogramKelvin {
         return SpecificEntropyUnits.JoulesPerKilogramKelvin
     }
 

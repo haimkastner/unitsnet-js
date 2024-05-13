@@ -121,7 +121,7 @@ export class Mass extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): MassUnits.Kilograms {
+    protected get baseUnit(): MassUnits.Kilograms {
         return MassUnits.Kilograms
     }
 

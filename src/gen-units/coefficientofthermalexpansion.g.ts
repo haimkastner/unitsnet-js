@@ -58,7 +58,7 @@ export class CoefficientOfThermalExpansion extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): CoefficientOfThermalExpansionUnits.PerKelvin {
+    protected get baseUnit(): CoefficientOfThermalExpansionUnits.PerKelvin {
         return CoefficientOfThermalExpansionUnits.PerKelvin
     }
 

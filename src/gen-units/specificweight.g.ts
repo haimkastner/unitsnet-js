@@ -91,7 +91,7 @@ export class SpecificWeight extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): SpecificWeightUnits.NewtonsPerCubicMeter {
+    protected get baseUnit(): SpecificWeightUnits.NewtonsPerCubicMeter {
         return SpecificWeightUnits.NewtonsPerCubicMeter
     }
 

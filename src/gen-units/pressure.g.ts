@@ -187,7 +187,7 @@ export class Pressure extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): PressureUnits.Pascals {
+    protected get baseUnit(): PressureUnits.Pascals {
         return PressureUnits.Pascals
     }
 

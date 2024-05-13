@@ -166,7 +166,7 @@ export class Length extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): LengthUnits.Meters {
+    protected get baseUnit(): LengthUnits.Meters {
         return LengthUnits.Meters
     }
 

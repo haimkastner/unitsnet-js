@@ -32,6 +32,15 @@ export const EMPTY_ABBREVIATION_LIST = [
 	},
 ];
 
+/**
+ * Gets a boolean indicating whether the given unit/enum combination should yield an empty
+ * string when calling `getUnitAbbreviation` on the unit
+ *
+ * @export
+ * @param {BaseUnit} unitInstance The unit instance in question
+ * @param {string} unitEnumValue The enum value being used to invoke getUnitAbbreviation
+ * @return {boolean} True if the unit/enum combination should return an empty string, false otherwise
+ */
 export function isEmptyAbbreviationValidInContext(unitInstance: BaseUnit, unitEnumValue: string): boolean {
 	const isAnIgnorableClass = EMPTY_ABBREVIATION_LIST.find(((ignore) => unitInstance instanceof ignore.classType));
 	const isAnIgnorableEnumValue = EMPTY_ABBREVIATION_LIST.find((ignore) => ignore.enumValue === unitEnumValue);

@@ -67,7 +67,7 @@ export class Irradiation extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get getBaseUnit(): IrradiationUnits.JoulesPerSquareMeter {
+    protected get baseUnit(): IrradiationUnits.JoulesPerSquareMeter {
         return IrradiationUnits.JoulesPerSquareMeter
     }
 

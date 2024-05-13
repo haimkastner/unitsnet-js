@@ -1,17 +1,26 @@
 import { BaseUnit } from '../../../src/base-unit';
 
 export enum BaseUnitNonPublicGetterNames {
-	GetBaseUnit = 'getBaseUnit',
+	BaseUnit = 'baseUnit',
 }
 
 interface NonPublicGetterToReturnTypeMap {
-	[BaseUnitNonPublicGetterNames.GetBaseUnit]: string;
+	[BaseUnitNonPublicGetterNames.BaseUnit]: string;
 }
 
 
-export function queryNonPublicGetter<TGetter extends BaseUnitNonPublicGetterNames>(
+/**
+ * Read a value from an instance's instance non-public getter
+ *
+ * @export
+ * @template TGetterName The name of the getter to read 
+ * @param {BaseUnit} instance The BaseUnit instance to read the getter of
+ * @param {TGetterName} getterName The name of the getter to read
+ * @return {NonPublicGetterToReturnTypeMap[TGetter]} The value returned by the getter
+ */
+export function queryNonPublicGetter<TGetterName extends BaseUnitNonPublicGetterNames>(
 	instance: BaseUnit,
-	getterName: TGetter,
-): NonPublicGetterToReturnTypeMap[TGetter] {
+	getterName: TGetterName,
+): NonPublicGetterToReturnTypeMap[TGetterName] {
 	return (instance as any)[getterName];
 }
