@@ -122,4 +122,4 @@ export * from "./gen-units/volumeflowperarea.g";
 export * from "./gen-units/volumeperlength.g";
 export * from "./gen-units/volumetricheatcapacity.g";
 export * from "./gen-units/warpingmomentofinertia.g";
-export { ArithmeticOperation, ArithmeticFormula, CompareToFormula, EqualsFormula, setEqualsFormula, setCompareToFormula, setOperatorOverride, unsetOperatorOverride, unsetAllOperatorOverrides } from "./base-unit";
+export { ArithmeticOperation, CompareOperation, OperatorOverrides, setOperatorOverride, unsetOperatorOverride, unsetAllOperatorOverrides, areAnyOperatorsOverridden } from "./base-unit";

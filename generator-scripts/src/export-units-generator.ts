@@ -1,5 +1,5 @@
-import { Project, StructureKind } from "ts-morph";
-import { UnitTypeDefinition } from "./models/units-definition";
+import { Project, StructureKind } from 'ts-morph';
+import { UnitTypeDefinition } from './models/units-definition';
 
 /**
  * Generate index file to export all generated unit classes 
@@ -29,14 +29,12 @@ export function generateUnitsModuleExport(project: Project, unitsDestinationDire
         moduleSpecifier: `./base-unit`,
         namedExports: [
             'ArithmeticOperation',
-            'ArithmeticFormula',
-            'CompareToFormula',
-            'EqualsFormula',
-            'setEqualsFormula',
-            'setCompareToFormula',
+			'CompareOperation',
+			'OperatorOverrides',
             'setOperatorOverride',
             'unsetOperatorOverride',
-            'unsetAllOperatorOverrides'
+            'unsetAllOperatorOverrides',
+			'areAnyOperatorsOverridden'
         ]
     });
 

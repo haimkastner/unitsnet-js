@@ -8,14 +8,12 @@ import {
 	Length,
 	LengthDto,
 	LengthUnits,
-	setCompareToFormula,
-	setEqualsFormula,
 	setOperatorOverride,
 	unsetAllOperatorOverrides,
 	unsetOperatorOverride
 } from '../src';
 
-import { BaseUnit, } from '../src/base-unit';
+import { BaseUnit, CompareOperation, } from '../src/base-unit';
 import {
 	forEachUnit,
 	getRandomInt,
@@ -33,8 +31,6 @@ describe('Unitsnet - tests', () => {
 	beforeEach(() => {
 		// Reset overrides between each test
 		unsetAllOperatorOverrides();
-		setCompareToFormula(undefined);
-		setEqualsFormula(undefined);
 	});
 
 	describe('# Creations', () => {
@@ -415,10 +411,10 @@ describe('Unitsnet - tests', () => {
 			const length1 = Length.FromMeters(0.1);
 			const length2 = Length.FromMeters(0.2);
 
-			setEqualsFormula((a, b) => true);
+			setOperatorOverride(CompareOperation.Equals, ((a, b) => true));
 			expect(length1.equals(length2)).equal(true);
 
-			setCompareToFormula((a, b) => 1);
+			setOperatorOverride(CompareOperation.CompareTo, ((a, b) => 1));
 			expect(length1.compareTo(length2)).equal(1);
 
 		});
@@ -427,7 +423,7 @@ describe('Unitsnet - tests', () => {
 			const length1 = Length.FromMeters(0.1);
 			const length2 = Length.FromMeters(0.1);
 
-			setEqualsFormula((a, b) => false);
+			setOperatorOverride(CompareOperation.Equals, ((a, b) => false));
 			expect(length1.equals(length2)).equal(false);
 
 		});
@@ -436,7 +432,7 @@ describe('Unitsnet - tests', () => {
 			const length1 = Length.FromMeters(0.1);
 			const length2 = Length.FromMeters(0.1);
 
-			setCompareToFormula((a, b) => 0);
+			setOperatorOverride(CompareOperation.CompareTo, ((a, b) => 0));
 			expect(length1.compareTo(length2)).equal(0);
 		});
 
@@ -520,6 +516,18 @@ describe('Unitsnet - tests', () => {
 		it('Should not throw when internalSqrt is called directly while an override is not present', () => {
 			expect(() =>
 				invokeNonPublicMethod(Length.FromMeters(1), BaseUnitNonPublicMethodNames.InternalSqrt, [9])
+			).to.not.throw;
+		});
+
+		it('Should not throw when internalEquals is called directly while an override is not present', () => {
+			expect(() =>
+				invokeNonPublicMethod(Length.FromMeters(1), BaseUnitNonPublicMethodNames.InternalEquals, [1, 1])
+			).to.not.throw;
+		});
+
+		it('Should not throw when internalCompareTo is called directly while an override is not present', () => {
+			expect(() =>
+				invokeNonPublicMethod(Length.FromMeters(1), BaseUnitNonPublicMethodNames.InternalCompareTo, [1, 2])
 			).to.not.throw;
 		});
 
