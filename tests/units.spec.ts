@@ -8,14 +8,6 @@ import {
 	Length,
 	LengthDto,
 	LengthUnits,
-	MassFraction,
-	MassFractionUnits,
-	Ratio,
-	RatioUnits,
-	Scalar,
-	ScalarUnits,
-	VolumeConcentration,
-	VolumeConcentrationUnits,
 	setCompareToFormula,
 	setEqualsFormula,
 	setOperatorOverride,
@@ -116,7 +108,7 @@ describe('Unitsnet - tests', () => {
 
 				unsetOperatorOverride(ArithmeticOperation.Add);
 			});
-		}).slow(500);
+		});
 
 		it("Should return 'NaN' when passing an invalid value to convertFromBase", () => {
 			forEachUnit((unit) => {
@@ -398,7 +390,7 @@ describe('Unitsnet - tests', () => {
 					expect(factoryInstance.BaseValue).to.equal(normalInstance.BaseValue);
 				}
 			});
-		});
+		}).slow(500);
 	});
 
 	describe('# External additional formulas', () => {

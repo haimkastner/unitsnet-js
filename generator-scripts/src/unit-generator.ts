@@ -15,7 +15,7 @@ import {
 } from 'ts-morph';
 import { getCodeForFormula } from './math-interop/antlr/builder/tree/tree-builder';
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
-import { pascalToCamelCase } from "./utiles";
+import { pascalToCamelCase } from "./utils";
 import ts from 'typescript';
 import { HighLevelTsc } from './math-interop/antlr/builder/high-level-tsc';
 
@@ -30,7 +30,7 @@ function unitLazyVarName(unit: string) {
 
 /**
  * Build the unit units Enum.
- * For example for 'Angle' unit generate 'AngleEnum' with 'Degrees' 'Radiand' etc.
+ * For example for 'Angle' unit generate 'AngleEnum' with 'Degrees' 'Radian' etc.
  * @param enumName The name for the enum.
  * @param units The units properties.
  * @returns The enum structure
@@ -76,7 +76,7 @@ function buildDto(Unit: UnitGenerateOptions, enumName: string): InterfaceDeclara
 
 /**
  * Build the unit properties get accessors.
- * For example for 'Angle' unit generate a get 'Degrees' get 'Radiand' etc.
+ * For example for 'Angle' unit generate a get 'Degrees' get 'Radian' etc.
  * @param enumName The unit enum name.
  * @param units The units properties.
  * @returns The accessors structure array.
@@ -100,7 +100,7 @@ return this.${unitLazyVarName(unit.pluralName)} = this.convertFromBase(${enumNam
 
 /**
  * Build the static unit creators.
- * For example for 'Angle' unit generate a 'FromDegrees(number)' get 'FromRadiand(number)' etc. 
+ * For example for 'Angle' unit generate a 'FromDegrees(number)' get 'FromRadian(number)' etc. 
  * @param unitName The unit name (for example 'Degree' or 'Radian') .
  * @param enumName The unit enum name.
  * @param units The units properties.

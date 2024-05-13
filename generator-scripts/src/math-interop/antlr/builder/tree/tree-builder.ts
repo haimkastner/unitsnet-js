@@ -7,8 +7,17 @@ import { TwoByteIdGenerator } from '../../../../id-generator';
 
 import ts from 'typescript';
 
-getCodeForFormula('{x} / 180 * Math.PI');
-
+/**
+ * Creates TypeScript code to represent the given formula
+ *
+ * @export
+ * @param {string} formula The formula to translate to code
+ * @param {IdentifierRemapping} [variableIdentifierRemapping] A map object used to re-name variables in a math function.
+ * For example, passing `{ x: 'myVar' }`
+ * would cause all `{x}` placeholders in the UnitsNet formula to be replaced with `myVar`
+ *
+ * @return {ts.Statement[]}
+ */
 export function getCodeForFormula(formula: string, variableIdentifierRemapping?: IdentifierRemapping): ts.Statement[] {
 	// Convert the input into a stream
 	const inputBuffer = Buffer.from(formula);
