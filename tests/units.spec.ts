@@ -96,6 +96,16 @@ describe('Unitsnet - tests', () => {
 			expect(angle.Degrees).above(179.9999).below(180.00001);
 		});
 
+		it(`Should limit fractional digits to 1`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.toString(AngleUnits.Radians, 1)).equal('3.1 rad');
+        });
+
+        it(`Should limit fractional digits to 2`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.toString(AngleUnits.Radians, 2)).equal('3.14 rad');
+        });
+
 		it("Should return 'NaN' when passing an invalid value to convert", () => {
 			forEachUnit((unit) => {
 				const instance = instantiateUnit(unit, 10);
