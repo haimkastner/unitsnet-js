@@ -29,12 +29,12 @@ export function generateUnitsModuleExport(project: Project, unitsDestinationDire
         moduleSpecifier: `./base-unit`,
         namedExports: [
             'ArithmeticOperation',
-			'CompareOperation',
-			'OperatorOverrides',
+            'CompareOperation',
+            'OperatorOverrides',
             'setOperatorOverride',
             'unsetOperatorOverride',
             'unsetAllOperatorOverrides',
-			'areAnyOperatorsOverridden'
+            'areAnyOperatorsOverridden'
         ]
     });
 

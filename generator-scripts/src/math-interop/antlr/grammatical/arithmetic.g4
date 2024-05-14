@@ -35,17 +35,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
-/////////////////////////////////////////
-// Various adjustments by yuval.pomer  //
-/////////////////////////////////////////
+//////////////////////////////////////////
+//  Various adjustments by yuval.pomer  //
+//////////////////////////////////////////
+
+// Designed to lex, parse and visit mathematical expressions such as '{x} / 180 * Math.PI'
 
 grammar arithmetic;
 
 equationString
     : expression EOF
     ;
-
-// {x} / 180 * Math.PI
 
 expression
     : LPAREN expression RPAREN #parenExpr

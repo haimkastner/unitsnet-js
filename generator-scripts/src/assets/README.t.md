@@ -175,7 +175,7 @@ setOperatorOverride(ArithmeticOperation.Add, (valueA: number,valueB: number) => 
 console.log(lengthA.add(lengthB).Meters); // 0.3
 ```
 
-Note that override functions are global and exported directly from the package index
+Note that override functions are global and exported directly from the package index.
 
 | Function                   | Purpose                                                  | Notes  |
 |----------------------------|----------------------------------------------------------|--------
