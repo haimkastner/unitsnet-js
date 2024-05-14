@@ -3,6 +3,13 @@ import { IdentifierRemapping } from '../tree/arithmetic-grammar-listener';
 import { BaseMathStringBuilderNode } from './math-string-builder-node';
 import ts from 'typescript';
 
+/**
+ * A node representing a formula variable such as `{x}`
+ *
+ * @export
+ * @class VariableNode
+ * @extends {BaseMathStringBuilderNode}
+ */
 export class VariableNode extends BaseMathStringBuilderNode {
     public readonly isPrimitive: boolean = true;
 

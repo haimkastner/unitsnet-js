@@ -3,6 +3,13 @@ import { HighLevelTsc, BinaryOperatorType } from '../../high-level-tsc';
 import { MathStringBuilderNode, BaseMathStringBuilderNode } from '../math-string-builder-node';
 import ts from 'typescript';
 
+/**
+ * A node representing a division operation (`/`)
+ *
+ * @export
+ * @class DivisionNode
+ * @extends {BaseMathStringBuilderNode}
+ */
 export class DivisionNode extends BaseMathStringBuilderNode {
     public readonly isPrimitive: boolean = false;
 

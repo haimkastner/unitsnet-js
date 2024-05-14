@@ -3,6 +3,13 @@ import { HighLevelTsc, UnaryOperatorType } from '../../high-level-tsc';
 import { MathStringBuilderNode, BaseMathStringBuilderNode } from '../math-string-builder-node';
 import ts from 'typescript';
 
+/**
+ * A node representing a square root operation (`Math.Sqrt`)
+ *
+ * @export
+ * @class SqrtNode
+ * @extends {BaseMathStringBuilderNode}
+ */
 export class SqrtNode extends BaseMathStringBuilderNode {
     public readonly isPrimitive: boolean = false;
 

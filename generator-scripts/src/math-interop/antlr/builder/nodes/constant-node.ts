@@ -3,6 +3,13 @@ import { HighLevelTsc } from '../high-level-tsc';
 import { BaseMathStringBuilderNode } from './math-string-builder-node';
 import ts from 'typescript';
 
+/**
+ * A node representing a constant value, such as `5` or `Math.PI`
+ *
+ * @export
+ * @class ConstantNode
+ * @extends {BaseMathStringBuilderNode}
+ */
 export class ConstantNode extends BaseMathStringBuilderNode {
     public readonly isPrimitive: boolean = true;
 

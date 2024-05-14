@@ -2,6 +2,13 @@ import { TwoByteIdGenerator } from '../../../../id-generator';
 import { MathStringBuilderNode, BaseMathStringBuilderNode } from './math-string-builder-node';
 import ts from 'typescript';
 
+/**
+ * A node representing a mathematical formula
+ *
+ * @export
+ * @class ExpressionNode
+ * @extends {BaseMathStringBuilderNode}
+ */
 export class ExpressionNode extends BaseMathStringBuilderNode {
     public readonly isPrimitive: boolean = false;
 

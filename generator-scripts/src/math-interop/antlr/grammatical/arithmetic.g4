@@ -120,6 +120,7 @@ COMMA
 
 POW_SIGN
     : '^'
+	| '**'
     ;
 
 MOD_SIGN

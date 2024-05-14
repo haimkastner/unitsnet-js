@@ -3,6 +3,13 @@ import { HighLevelTsc, BinaryOperatorType } from '../../high-level-tsc';
 import { MathStringBuilderNode, BaseMathStringBuilderNode } from '../math-string-builder-node';
 import ts from 'typescript';
 
+/**
+ * A node representing a modulus operation (`%`)
+ *
+ * @export
+ * @class ModulusNode
+ * @extends {BaseMathStringBuilderNode}
+ */
 export class ModulusNode extends BaseMathStringBuilderNode {
     public readonly isPrimitive: boolean = false;
 
