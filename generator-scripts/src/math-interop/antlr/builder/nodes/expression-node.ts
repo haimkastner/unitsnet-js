@@ -3,13 +3,13 @@ import { MathStringBuilderNode, BaseMathStringBuilderNode } from './math-string-
 import ts from 'typescript';
 
 export class ExpressionNode extends BaseMathStringBuilderNode {
-	public readonly isPrimitive: boolean = false;
+    public readonly isPrimitive: boolean = false;
 
-	public constructor(idGenerator: TwoByteIdGenerator, private readonly _child: MathStringBuilderNode) {
-		super(idGenerator);
-	}
+    public constructor(idGenerator: TwoByteIdGenerator, private readonly _child: MathStringBuilderNode) {
+        super(idGenerator);
+    }
 
-	public execute(): ts.Statement[] {
-		return this._child.execute();
-	}
+    public execute(): ts.Statement[] {
+        return this._child.execute();
+    }
 }

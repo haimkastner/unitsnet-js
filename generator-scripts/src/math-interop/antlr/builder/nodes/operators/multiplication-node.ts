@@ -4,17 +4,17 @@ import { MathStringBuilderNode, BaseMathStringBuilderNode } from '../math-string
 import ts from 'typescript';
 
 export class MultiplicationNode extends BaseMathStringBuilderNode {
-	public readonly isPrimitive: boolean = false;
+    public readonly isPrimitive: boolean = false;
 
-	public constructor(
-		idGenerator: TwoByteIdGenerator,
-		private readonly _valueA: MathStringBuilderNode,
-		private readonly _valueB: MathStringBuilderNode
-	) {
-		super(idGenerator)
-	}
+    public constructor(
+        idGenerator: TwoByteIdGenerator,
+        private readonly _valueA: MathStringBuilderNode,
+        private readonly _valueB: MathStringBuilderNode
+    ) {
+        super(idGenerator)
+    }
 
-	public execute(): ts.Statement[] {
-		return HighLevelTsc.buildBinaryOperator(this.id, BinaryOperatorType.Mul, this._valueA, this._valueB);
-	}
+    public execute(): ts.Statement[] {
+        return HighLevelTsc.buildBinaryOperator(this.id, BinaryOperatorType.Mul, this._valueA, this._valueB);
+    }
 }

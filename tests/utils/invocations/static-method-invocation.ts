@@ -2,21 +2,21 @@ import { BaseUnit } from '../../../src/base-unit';
 import { BaseUnitClass } from '../common';
 
 export enum BaseUnitStaticMethodNames {
-	GetBaseUnit = 'getBaseUnit',
-	GetUnitEnum = 'getUnitEnum',
-	FromDto = 'FromDto',
+    GetBaseUnit = 'getBaseUnit',
+    GetUnitEnum = 'getUnitEnum',
+    FromDto = 'FromDto',
 }
 
 interface StaticMethodToReturnTypeMap {
-	[BaseUnitStaticMethodNames.GetBaseUnit]: string;
-	[BaseUnitStaticMethodNames.GetUnitEnum]: { [Key: string]: string };
-	[BaseUnitStaticMethodNames.FromDto]: BaseUnit;
+    [BaseUnitStaticMethodNames.GetBaseUnit]: string;
+    [BaseUnitStaticMethodNames.GetUnitEnum]: { [Key: string]: string };
+    [BaseUnitStaticMethodNames.FromDto]: BaseUnit;
 }
 
 interface StaticMethodToParametersMap {
-	[BaseUnitStaticMethodNames.GetBaseUnit]: undefined;
-	[BaseUnitStaticMethodNames.GetUnitEnum]: undefined;
-	[BaseUnitStaticMethodNames.FromDto]: { value: number, unit: string };
+    [BaseUnitStaticMethodNames.GetBaseUnit]: undefined;
+    [BaseUnitStaticMethodNames.GetUnitEnum]: undefined;
+    [BaseUnitStaticMethodNames.FromDto]: { value: number, unit: string };
 }
 
 
@@ -31,9 +31,9 @@ interface StaticMethodToParametersMap {
  * @return {StaticMethodToReturnTypeMap[TMethodName]} The value returned by the method
  */
 export function invokeStaticMethod<TMethodName extends BaseUnitStaticMethodNames>(
-	unitClass: BaseUnitClass,
-	methodName: TMethodName,
-	parameters: StaticMethodToParametersMap[TMethodName]
+    unitClass: BaseUnitClass,
+    methodName: TMethodName,
+    parameters: StaticMethodToParametersMap[TMethodName]
 ): StaticMethodToReturnTypeMap[TMethodName] {
-	return (unitClass as any)[methodName](parameters);
+    return (unitClass as any)[methodName](parameters);
 }

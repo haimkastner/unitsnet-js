@@ -1,11 +1,11 @@
 import { BaseUnit } from '../../../src/base-unit';
 
 export enum BaseUnitNonPublicGetterNames {
-	BaseUnit = 'baseUnit',
+    BaseUnit = 'baseUnit',
 }
 
 interface NonPublicGetterToReturnTypeMap {
-	[BaseUnitNonPublicGetterNames.BaseUnit]: string;
+    [BaseUnitNonPublicGetterNames.BaseUnit]: string;
 }
 
 
@@ -19,8 +19,8 @@ interface NonPublicGetterToReturnTypeMap {
  * @return {NonPublicGetterToReturnTypeMap[TGetter]} The value returned by the getter
  */
 export function queryNonPublicGetter<TGetterName extends BaseUnitNonPublicGetterNames>(
-	instance: BaseUnit,
-	getterName: TGetterName,
+    instance: BaseUnit,
+    getterName: TGetterName,
 ): NonPublicGetterToReturnTypeMap[TGetterName] {
-	return (instance as any)[getterName];
+    return (instance as any)[getterName];
 }

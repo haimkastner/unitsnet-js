@@ -1,22 +1,22 @@
 import { BaseUnit } from '../../../src/base-unit';
 
 export enum BaseUnitNonPublicMethodNames {
-	InternalSqrt = 'internalSqrt',
-	InternalEquals = 'internalEquals',
-	InternalCompareTo = 'internalCompareTo',
+    InternalSqrt = 'internalSqrt',
+    InternalEquals = 'internalEquals',
+    InternalCompareTo = 'internalCompareTo',
 }
 
 interface NonPublicMethodToReturnTypeMap {
-	[BaseUnitNonPublicMethodNames.InternalSqrt]: number;
-	[BaseUnitNonPublicMethodNames.InternalEquals]: boolean;
-	[BaseUnitNonPublicMethodNames.InternalCompareTo]: number;
+    [BaseUnitNonPublicMethodNames.InternalSqrt]: number;
+    [BaseUnitNonPublicMethodNames.InternalEquals]: boolean;
+    [BaseUnitNonPublicMethodNames.InternalCompareTo]: number;
 }
 
 
 interface NonPublicMethodToParameterMap {
-	[BaseUnitNonPublicMethodNames.InternalSqrt]: [number];
-	[BaseUnitNonPublicMethodNames.InternalEquals]: [number, number],
-	[BaseUnitNonPublicMethodNames.InternalCompareTo]: [number, number],
+    [BaseUnitNonPublicMethodNames.InternalSqrt]: [number];
+    [BaseUnitNonPublicMethodNames.InternalEquals]: [number, number],
+    [BaseUnitNonPublicMethodNames.InternalCompareTo]: [number, number],
 }
 
 
@@ -31,9 +31,9 @@ interface NonPublicMethodToParameterMap {
  * @return {NonPublicMethodToReturnTypeMap[TMethodName]} The value returned by the method
  */
 export function invokeNonPublicMethod<TMethodName extends BaseUnitNonPublicMethodNames>(
-	instance: BaseUnit,
-	methodName: TMethodName,
-	parameters: NonPublicMethodToParameterMap[TMethodName]
+    instance: BaseUnit,
+    methodName: TMethodName,
+    parameters: NonPublicMethodToParameterMap[TMethodName]
 ): NonPublicMethodToReturnTypeMap[TMethodName] {
-	return (instance as any)[methodName](...parameters);
+    return (instance as any)[methodName](...parameters);
 }

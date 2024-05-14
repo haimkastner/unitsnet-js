@@ -4,13 +4,13 @@ import { MathStringBuilderNode, BaseMathStringBuilderNode } from '../math-string
 import ts from 'typescript';
 
 export class SqrtNode extends BaseMathStringBuilderNode {
-	public readonly isPrimitive: boolean = false;
+    public readonly isPrimitive: boolean = false;
 
-	public constructor(idGenerator: TwoByteIdGenerator, private readonly _value: MathStringBuilderNode) {
-		super(idGenerator);
-	}
+    public constructor(idGenerator: TwoByteIdGenerator, private readonly _value: MathStringBuilderNode) {
+        super(idGenerator);
+    }
 
-	public execute(): ts.Statement[] {
-		return HighLevelTsc.buildUnaryOperator(this.id, UnaryOperatorType.Sqrt, this._value);
-	}
+    public execute(): ts.Statement[] {
+        return HighLevelTsc.buildUnaryOperator(this.id, UnaryOperatorType.Sqrt, this._value);
+    }
 }
