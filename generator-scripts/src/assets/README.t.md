@@ -175,7 +175,14 @@ setOperatorOverride(ArithmeticOperation.Add, (valueA: number,valueB: number) => 
 console.log(lengthA.add(lengthB).Meters); // 0.3
 ```
 
+The override mechanism is designed with high performance in mind.
+While running in a test context, the overhead was observed to be roughly 1%.
+
+If your application requires real-time class performance, however, we recommend you verify this conforms to your specification.
+
 Note that override functions are global and exported directly from the package index.
+
+</br>
 
 | Function                   | Purpose                                                  | Notes  |
 |----------------------------|----------------------------------------------------------|--------
