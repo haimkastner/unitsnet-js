@@ -1,6 +1,7 @@
 # unitsnet-js
 
 [![Build & Test Status](https://github.com/haimkastner/unitsnet-js/workflows/unitsnet-js/badge.svg?branch=master)](https://github.com/haimkastner/unitsnet-js/actions)
+[![Coverage Status](https://coveralls.io/repos/github/haimkastner/unitsnet-js/badge.svg?branch=master&style=plastic)](https://coveralls.io/github/haimkastner/unitsnet-js?branch=master)
 
  [![Latest Release](https://img.shields.io/github/v/release/haimkastner/unitsnet-js?style=plastic)](https://github.com/haimkastner/unitsnet-js/releases) 
  [![npm version](https://img.shields.io/npm/v/unitsnet-js.svg?style=plastic&label=npm)](https://www.npmjs.com/package/unitsnet-js)
@@ -94,31 +95,6 @@ console.log(results3.toString(LengthUnits.Meters)) // 30 m
 console.log(results4.toString(LengthUnits.Meters)) // 3.3333333333333335 m
 console.log(results5.toString(LengthUnits.Meters)) // 1 m
 console.log(results6.toString(LengthUnits.Meters)) // 1000 m
-
-// External arithmetics methods
-
-// As a default, the arithmetic formula uses JavaScript default operations (e.g., +, -, etc.). 
-// However, JavaScript operations use floating-point math, which is not mathematically accurate in some cases. 
-// For instance, operating 0.1 + 0.2 results in 0.30000000000000004 instead of 0.3. 
-// You can read more about this issue at https://stackoverflow.com/q/1458633/8281649. 
-// UnitNet library allows you to replace the arithmetic formulas with your own, better formulas.
-
-// Example of loading https://www.npmjs.com/package/numeral library as the arithmetic formula
-import numeral from 'numeral';
-import { Length, setArithmeticFormula, ArithmeticOperation } from 'unitsnet-js';
-
-const lengthA = Length.FromMeters(0.1);
-const lengthB = Length.FromMeters(0.2);
-
-// The default formula results
-console.log(lengthA.add(lengthB).Meters); // 0.30000000000000004
-
-setArithmeticFormula(ArithmeticOperation.Add, (valueA: number, valueB: number) => {
-    return numeral(valueA).add(valueB).value() as number;
-});
-
-// The numeral formula results
-console.log(lengthA.add(lengthB).Meters); // 0.3
 ```
 
 ## DTO - Data Transfer Object
@@ -152,16 +128,20 @@ Check out the OpenAPI [unitsnet-openapi-spec](https://haimkastner.github.io/unit
 Also, refer to the detailed discussions on GitHub: [haimkastner/unitsnet-js#31](https://github.com/haimkastner/unitsnet-js/issues/31) & [angularsen/UnitsNet#1378](https://github.com/angularsen/UnitsNet/issues/1378).
 
 
-## Overriding operators
-Some use-cases require floating point arithmetic with precision surpassing JavaScript's default [IEEE 754](https://standards.ieee.org/ieee/754/6210/) based implementation.
+## External Arithmetics Methods
+
+As a default, the arithmetic formula uses JavaScript default operations (e.g., +, -, etc.)
+However, JavaScript operations use floating point arithmetic with precision surpassing JavaScript's default [IEEE 754](https://standards.ieee.org/ieee/754/6210/) based implementation.
 
 For example, you may want to perform arithmetics like the classic `0.1 + 0.2`.
-With the default implementation, this operation yields `0.30000000000000004`.
+With the default implementation, this operation yields `0.30000000000000004`. 
+Read more about this issue at https://stackoverflow.com/q/1458633/8281649 
 
 To cater to such cases, the library exposes an operator override mechanism, allowing for usage of dedicated, high precision mathematic libraries.
 
 ```typescript
 import numeral from 'numeral';
+import { Length, setOperatorOverride, ArithmeticOperation } from 'unitsnet-js';
 
 const lengthA = Length.FromMeters(0.1);
 const lengthB = Length.FromMeters(0.2);
@@ -195,7 +175,7 @@ Note that override functions are global and exported directly from the package i
 ## Migrating from 2.x.x to 3.x.x
 
 Version 3.0.0 consolidates some external interfaces and includes a brand new infrastructure for operator
-overriding (see [Overriding Operators](#overriding-operators) section).
+overriding (see [External arithmetics methods](#external-arithmetics-methods) section).
 
 As such, a few minor breaking changes have been introduced, specified below.
 
