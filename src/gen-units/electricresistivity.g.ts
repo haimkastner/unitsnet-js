@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricResistivity */
 export interface ElectricResistivityDto {
@@ -42,7 +42,7 @@ export enum ElectricResistivityUnits {
 
 /** Electrical resistivity (also known as resistivity, specific electrical resistance, or volume resistivity) is a fundamental property that quantifies how strongly a given material opposes the flow of electric current. */
 export class ElectricResistivity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private ohmmetersLazy: number | null = null;
     private ohmscentimeterLazy: number | null = null;
     private picoohmmetersLazy: number | null = null;
@@ -67,7 +67,9 @@ export class ElectricResistivity extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +79,11 @@ export class ElectricResistivity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricResistivityUnits.OhmMeters {
+        return ElectricResistivityUnits.OhmMeters
     }
 
     /** */
@@ -332,6 +339,22 @@ export class ElectricResistivity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricResistivity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricResistivityUnits {
+        return ElectricResistivityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricResistivityUnits.OhmMeters {
+        return ElectricResistivityUnits.OhmMeters;
+    }
+
+    /**
      * Create API DTO represent a ElectricResistivity unit.
      * @param holdInUnit The specific ElectricResistivity unit to be used in the unit representation at the DTO
      */
@@ -375,81 +398,119 @@ export class ElectricResistivity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricResistivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricResistivityUnits.OhmMeters: return this.value;
+                case ElectricResistivityUnits.OhmsCentimeter: return super.internalMultiply(this.value, 100);
+                case ElectricResistivityUnits.PicoohmMeters: return super.internalDivide(this.value, 1e-12);
+                case ElectricResistivityUnits.NanoohmMeters: return super.internalDivide(this.value, 1e-9);
+                case ElectricResistivityUnits.MicroohmMeters: return super.internalDivide(this.value, 0.000001);
+                case ElectricResistivityUnits.MilliohmMeters: return super.internalDivide(this.value, 0.001);
+                case ElectricResistivityUnits.KiloohmMeters: return super.internalDivide(this.value, 1000);
+                case ElectricResistivityUnits.MegaohmMeters: return super.internalDivide(this.value, 1000000);
+                case ElectricResistivityUnits.PicoohmsCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1e-12);
+                }
+                case ElectricResistivityUnits.NanoohmsCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1e-9);
+                }
+                case ElectricResistivityUnits.MicroohmsCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case ElectricResistivityUnits.MilliohmsCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case ElectricResistivityUnits.KiloohmsCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1000);
+                }
+                case ElectricResistivityUnits.MegaohmsCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricResistivityUnits.OhmMeters:
-                return this.value;
-            case ElectricResistivityUnits.OhmsCentimeter:
-                return this.value * 100;
-            case ElectricResistivityUnits.PicoohmMeters:
-                return (this.value) / 1e-12;
-            case ElectricResistivityUnits.NanoohmMeters:
-                return (this.value) / 1e-9;
-            case ElectricResistivityUnits.MicroohmMeters:
-                return (this.value) / 0.000001;
-            case ElectricResistivityUnits.MilliohmMeters:
-                return (this.value) / 0.001;
-            case ElectricResistivityUnits.KiloohmMeters:
-                return (this.value) / 1000;
-            case ElectricResistivityUnits.MegaohmMeters:
-                return (this.value) / 1000000;
-            case ElectricResistivityUnits.PicoohmsCentimeter:
-                return (this.value * 100) / 1e-12;
-            case ElectricResistivityUnits.NanoohmsCentimeter:
-                return (this.value * 100) / 1e-9;
-            case ElectricResistivityUnits.MicroohmsCentimeter:
-                return (this.value * 100) / 0.000001;
-            case ElectricResistivityUnits.MilliohmsCentimeter:
-                return (this.value * 100) / 0.001;
-            case ElectricResistivityUnits.KiloohmsCentimeter:
-                return (this.value * 100) / 1000;
-            case ElectricResistivityUnits.MegaohmsCentimeter:
-                return (this.value * 100) / 1000000;
-            default:
-                break;
+            case ElectricResistivityUnits.OhmMeters: return this.value;
+            case ElectricResistivityUnits.OhmsCentimeter: return this.value * 100;
+            case ElectricResistivityUnits.PicoohmMeters: return (this.value) / 1e-12;
+            case ElectricResistivityUnits.NanoohmMeters: return (this.value) / 1e-9;
+            case ElectricResistivityUnits.MicroohmMeters: return (this.value) / 0.000001;
+            case ElectricResistivityUnits.MilliohmMeters: return (this.value) / 0.001;
+            case ElectricResistivityUnits.KiloohmMeters: return (this.value) / 1000;
+            case ElectricResistivityUnits.MegaohmMeters: return (this.value) / 1000000;
+            case ElectricResistivityUnits.PicoohmsCentimeter: return (this.value * 100) / 1e-12;
+            case ElectricResistivityUnits.NanoohmsCentimeter: return (this.value * 100) / 1e-9;
+            case ElectricResistivityUnits.MicroohmsCentimeter: return (this.value * 100) / 0.000001;
+            case ElectricResistivityUnits.MilliohmsCentimeter: return (this.value * 100) / 0.001;
+            case ElectricResistivityUnits.KiloohmsCentimeter: return (this.value * 100) / 1000;
+            case ElectricResistivityUnits.MegaohmsCentimeter: return (this.value * 100) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricResistivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricResistivityUnits.OhmMeters: return value;
+                case ElectricResistivityUnits.OhmsCentimeter: return super.internalDivide(value, 100);
+                case ElectricResistivityUnits.PicoohmMeters: return super.internalMultiply(value, 1e-12);
+                case ElectricResistivityUnits.NanoohmMeters: return super.internalMultiply(value, 1e-9);
+                case ElectricResistivityUnits.MicroohmMeters: return super.internalMultiply(value, 0.000001);
+                case ElectricResistivityUnits.MilliohmMeters: return super.internalMultiply(value, 0.001);
+                case ElectricResistivityUnits.KiloohmMeters: return super.internalMultiply(value, 1000);
+                case ElectricResistivityUnits.MegaohmMeters: return super.internalMultiply(value, 1000000);
+                case ElectricResistivityUnits.PicoohmsCentimeter: {
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1e-12);
+                }
+                case ElectricResistivityUnits.NanoohmsCentimeter: {
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1e-9);
+                }
+                case ElectricResistivityUnits.MicroohmsCentimeter: {
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case ElectricResistivityUnits.MilliohmsCentimeter: {
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case ElectricResistivityUnits.KiloohmsCentimeter: {
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case ElectricResistivityUnits.MegaohmsCentimeter: {
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricResistivityUnits.OhmMeters:
-                return value;
-            case ElectricResistivityUnits.OhmsCentimeter:
-                return value / 100;
-            case ElectricResistivityUnits.PicoohmMeters:
-                return (value) * 1e-12;
-            case ElectricResistivityUnits.NanoohmMeters:
-                return (value) * 1e-9;
-            case ElectricResistivityUnits.MicroohmMeters:
-                return (value) * 0.000001;
-            case ElectricResistivityUnits.MilliohmMeters:
-                return (value) * 0.001;
-            case ElectricResistivityUnits.KiloohmMeters:
-                return (value) * 1000;
-            case ElectricResistivityUnits.MegaohmMeters:
-                return (value) * 1000000;
-            case ElectricResistivityUnits.PicoohmsCentimeter:
-                return (value / 100) * 1e-12;
-            case ElectricResistivityUnits.NanoohmsCentimeter:
-                return (value / 100) * 1e-9;
-            case ElectricResistivityUnits.MicroohmsCentimeter:
-                return (value / 100) * 0.000001;
-            case ElectricResistivityUnits.MilliohmsCentimeter:
-                return (value / 100) * 0.001;
-            case ElectricResistivityUnits.KiloohmsCentimeter:
-                return (value / 100) * 1000;
-            case ElectricResistivityUnits.MegaohmsCentimeter:
-                return (value / 100) * 1000000;
-            default:
-                break;
+            case ElectricResistivityUnits.OhmMeters: return value;
+            case ElectricResistivityUnits.OhmsCentimeter: return value / 100;
+            case ElectricResistivityUnits.PicoohmMeters: return (value) * 1e-12;
+            case ElectricResistivityUnits.NanoohmMeters: return (value) * 1e-9;
+            case ElectricResistivityUnits.MicroohmMeters: return (value) * 0.000001;
+            case ElectricResistivityUnits.MilliohmMeters: return (value) * 0.001;
+            case ElectricResistivityUnits.KiloohmMeters: return (value) * 1000;
+            case ElectricResistivityUnits.MegaohmMeters: return (value) * 1000000;
+            case ElectricResistivityUnits.PicoohmsCentimeter: return (value / 100) * 1e-12;
+            case ElectricResistivityUnits.NanoohmsCentimeter: return (value / 100) * 1e-9;
+            case ElectricResistivityUnits.MicroohmsCentimeter: return (value / 100) * 0.000001;
+            case ElectricResistivityUnits.MilliohmsCentimeter: return (value / 100) * 0.001;
+            case ElectricResistivityUnits.KiloohmsCentimeter: return (value / 100) * 1000;
+            case ElectricResistivityUnits.MegaohmsCentimeter: return (value / 100) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

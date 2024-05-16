@@ -5,62 +5,109 @@ export enum ArithmeticOperation {
     Subtract = 'Subtract',
     /** An multiply arithmetic operation (JS default "/") */
     Multiply = 'Multiply',
-    /** An devide arithmetic operation (JS default "*") */
+    /** An divide arithmetic operation (JS default "*") */
     Divide = 'Divide',
     /** An modulo arithmetic operation (JS default "%") */
     Modulo = 'Modulo',
     /** An power arithmetic operation (JS default "**") */
     Pow = 'Pow',
+    /** A Square root operation (JS Default "Math.sqrt") */
+    Sqrt = 'Sqrt'
 }
 
-/**
- * An binary arithmetic formula.
- * e.g. (valueA, ValueB) => { valueA + valueB } 
- */
-export type ArithmeticFormula = (valueA: number, valueB: number) => number;
+export enum CompareOperation {
+    Equals = 'Equals',
+    CompareTo = 'CompareTo'
+}
 
-/**
- * An binary copmration values formula.
- */
-export type CompareToFormula = (valueA: number, valueB: number) => number;
+export interface OperatorOverrides {
+    [ArithmeticOperation.Add]?: (a: number, b: number) => number;
+    [ArithmeticOperation.Subtract]?: (a: number, b: number) => number;
+    [ArithmeticOperation.Multiply]?: (a: number, b: number) => number;
+    [ArithmeticOperation.Divide]?: (a: number, b: number) => number;
+    [ArithmeticOperation.Modulo]?: (a: number, b: number) => number;
+    [ArithmeticOperation.Pow]?: (a: number, b: number) => number;
+    [ArithmeticOperation.Sqrt]?: (a: number) => number;
+    [CompareOperation.Equals]?: (valueA: number, valueB: number) => boolean;
+    [CompareOperation.CompareTo]?: (valueA: number, valueB: number) => number;
+}
 
-/**
- * An binary equals copmration values formula.
- * e.g. (valueA, ValueB) => { valueA === valueB } 
- */
-export type EqualsFormula = (valueA: number, valueB: number) => boolean;
+let operatorOverrides: OperatorOverrides = {};
 
-const externalArithmeticFurmulas: { [operation in ArithmeticOperation]?: ArithmeticFormula } = {};
-let externalCompareToFurmula: ArithmeticFormula | undefined;
-let externalEqualsFurmula: EqualsFormula | undefined;
+let numberOfOverwrittenOperators: number = 0;
 
 /**
  * Set arithmetic formula to be used while calling this operation on two units (e.g. Length + Length) 
  * Instead of the JS default operation (+, -, * etc.)
  * @param arithmeticOperation The formula's operation 
- * @param arithmeticFormula The formula to used.
+ * @param replacementFunction The formula to used.
  */
-export function setArithmeticFormula(arithmeticOperation: ArithmeticOperation, arithmeticFormula: ArithmeticFormula) {
-    externalArithmeticFurmulas[arithmeticOperation] = arithmeticFormula;
+/**
+ * Sets an arithmetic operator to use the given function.
+ * @description Certain use-cases require the use of high precision mathematics beyond what's defined in the ECMA specification.
+ * This function allows overriding of operators to to facilitate usage of specialized mathematic libraries.
+ * @example
+ * ```
+ * import NP from 'number-precision'
+ * 
+ * setOperatorOverride(ArithmeticOperation.Add, (a, b) => NP.plus(a, b))
+ * ```
+ *
+ * @export
+ * @template TOperator
+ * @param {TOperator} arithmeticOperation
+ * @param {(OperatorOverrides[TOperator] | undefined)} replacementFunction
+ */
+export function setOperatorOverride<TOperator extends ArithmeticOperation | CompareOperation>(
+    arithmeticOperation: TOperator,
+    replacementFunction: OperatorOverrides[TOperator] | undefined
+) {
+    operatorOverrides[arithmeticOperation] = replacementFunction;
+    numberOfOverwrittenOperators = Object.values(operatorOverrides).filter((value) => !!value).length;
 }
 
 /**
- * Set formula to be used while checking is equals on two units (e.g. Length === Length) 
- * @param equalsFormula The equals formula to used.
+ * Removes the given operator override (i.e., returns operator behavior to default JavaScript implementation)
+ *
+ * @export
+ * @template TOperator The operator to unset
+ * @param {TOperator} arithmeticOperation The operator to unset
  */
-export function setEqualsFormula(equalsFormula: EqualsFormula) {
-    externalEqualsFurmula = equalsFormula;
+export function unsetOperatorOverride<TOperator extends ArithmeticOperation | CompareOperation>(
+    arithmeticOperation: TOperator
+): void {
+    if (operatorOverrides[arithmeticOperation]) {
+        numberOfOverwrittenOperators--;
+        operatorOverrides[arithmeticOperation] = undefined;
+    }
 }
 
 /**
- * Set formula to be used while compering two units (e.g. Length > Length) 
- * @param compareToFurmula The compration formula to used.
+ * Removes all operator overrides (i.e., return all operator behaviors to default JavaScript implementation)
+ *
+ * @export
  */
-export function setCompareToFurmula(compareToFurmula: CompareToFormula) {
-    externalCompareToFurmula = compareToFurmula;
+export function unsetAllOperatorOverrides(): void {
+    operatorOverrides = {};
+    numberOfOverwrittenOperators = 0;
+}
+
+/**
+ * Gets a boolean indicating whether any operators are currently overridden
+ *
+ * @export
+ * @return {boolean}
+ */
+export function areAnyOperatorsOverridden(): boolean {
+    return numberOfOverwrittenOperators > 0;
 }
 
 export abstract class BaseUnit {
+    protected abstract value: number;
+
+    public abstract get BaseValue(): number;
+
+    protected abstract get baseUnit(): string;
 
     /**
      * Truncates a number to a specified number of fractional digits.
@@ -81,14 +128,39 @@ export abstract class BaseUnit {
         return truncatedNum;
     }
 
+    public abstract convert(toUnit: string): number;
+
+    public abstract toString(unit?: string, fractionalDigits?: number): string;
+
+    public abstract getUnitAbbreviation(unitAbbreviation?: string): string;
+
+    public abstract equals(other: BaseUnit): boolean;
+
+    public abstract compareTo(other: BaseUnit): number;
+
+    public abstract add(other: BaseUnit): BaseUnit;
+
+    public abstract subtract(other: BaseUnit): BaseUnit;
+
+    public abstract multiply(other: BaseUnit): BaseUnit;
+
+    public abstract divide(other: BaseUnit): BaseUnit;
+
+    public abstract modulo(other: BaseUnit): BaseUnit;
+
+    public abstract pow(other: BaseUnit): BaseUnit;
+
+    public abstract toDto(holdInUnit?: string): { value: number, unit: string };
+
     protected internalEquals(valueA: number, valueB: number): boolean {
-        return externalEqualsFurmula?.(valueA, valueB) ?? valueA === valueB;
+        return operatorOverrides.Equals?.(valueA, valueB) ?? valueA === valueB;
     }
 
     protected internalCompareTo(valueA: number, valueB: number): number {
-        if (externalCompareToFurmula) {
-            return externalCompareToFurmula(valueA, valueB);
+        if (operatorOverrides.CompareTo) {
+            return operatorOverrides.CompareTo(valueA, valueB);
         }
+
         if (valueA > valueB)
             return 1;
         if (valueA < valueB)
@@ -97,26 +169,30 @@ export abstract class BaseUnit {
     }
 
     protected internalAdd(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Add?.(valueA, valueB) ?? (valueA + valueB)
+        return operatorOverrides.Add?.(valueA, valueB) ?? (valueA + valueB)
     }
 
     protected internalSubtract(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Subtract?.(valueA, valueB) ?? (valueA - valueB)
+        return operatorOverrides.Subtract?.(valueA, valueB) ?? (valueA - valueB)
     }
 
     protected internalMultiply(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Multiply?.(valueA, valueB) ?? (valueA * valueB)
+        return operatorOverrides.Multiply?.(valueA, valueB) ?? (valueA * valueB)
     }
 
     protected internalDivide(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Divide?.(valueA, valueB) ?? (valueA / valueB)
+        return operatorOverrides.Divide?.(valueA, valueB) ?? (valueA / valueB)
     }
 
     protected internalModulo(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Modulo?.(valueA, valueB) ?? (valueA % valueB)
+        return operatorOverrides.Modulo?.(valueA, valueB) ?? (valueA % valueB)
     }
 
     protected internalPow(valueA: number, valueB: number): number {
-        return externalArithmeticFurmulas.Pow?.(valueA, valueB) ?? (valueA ** valueB)
+        return operatorOverrides.Pow?.(valueA, valueB) ?? (valueA ** valueB)
+    }
+
+    protected internalSqrt(value: number): number {
+        return operatorOverrides.Sqrt?.(value) ?? Math.sqrt(value);
     }
 }

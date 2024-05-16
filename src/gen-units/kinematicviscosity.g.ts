@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a KinematicViscosity */
 export interface KinematicViscosityDto {
@@ -32,7 +32,7 @@ export enum KinematicViscosityUnits {
 
 /** The viscosity of a fluid is a measure of its resistance to gradual deformation by shear stress or tensile stress. */
 export class KinematicViscosity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private squaremeterspersecondLazy: number | null = null;
     private stokesLazy: number | null = null;
     private squarefeetpersecondLazy: number | null = null;
@@ -52,7 +52,9 @@ export class KinematicViscosity extends BaseUnit {
     public constructor(value: number, fromUnit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -62,6 +64,11 @@ export class KinematicViscosity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): KinematicViscosityUnits.SquareMetersPerSecond {
+        return KinematicViscosityUnits.SquareMetersPerSecond
     }
 
     /** */
@@ -227,6 +234,22 @@ export class KinematicViscosity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with KinematicViscosity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof KinematicViscosityUnits {
+        return KinematicViscosityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): KinematicViscosityUnits.SquareMetersPerSecond {
+        return KinematicViscosityUnits.SquareMetersPerSecond;
+    }
+
+    /**
      * Create API DTO represent a KinematicViscosity unit.
      * @param holdInUnit The specific KinematicViscosity unit to be used in the unit representation at the DTO
      */
@@ -265,61 +288,99 @@ export class KinematicViscosity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: KinematicViscosityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case KinematicViscosityUnits.SquareMetersPerSecond: return this.value;
+                case KinematicViscosityUnits.Stokes: return super.internalMultiply(this.value, 1e4);
+                case KinematicViscosityUnits.SquareFeetPerSecond: return super.internalMultiply(this.value, 10.7639);
+                case KinematicViscosityUnits.Nanostokes: {
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 1e-9);
+                }
+                case KinematicViscosityUnits.Microstokes: {
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case KinematicViscosityUnits.Millistokes: {
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case KinematicViscosityUnits.Centistokes: {
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.01);
+                }
+                case KinematicViscosityUnits.Decistokes: {
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.1);
+                }
+                case KinematicViscosityUnits.Kilostokes: {
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case KinematicViscosityUnits.SquareMetersPerSecond:
-                return this.value;
-            case KinematicViscosityUnits.Stokes:
-                return this.value * 1e4;
-            case KinematicViscosityUnits.SquareFeetPerSecond:
-                return this.value * 10.7639;
-            case KinematicViscosityUnits.Nanostokes:
-                return (this.value * 1e4) / 1e-9;
-            case KinematicViscosityUnits.Microstokes:
-                return (this.value * 1e4) / 0.000001;
-            case KinematicViscosityUnits.Millistokes:
-                return (this.value * 1e4) / 0.001;
-            case KinematicViscosityUnits.Centistokes:
-                return (this.value * 1e4) / 0.01;
-            case KinematicViscosityUnits.Decistokes:
-                return (this.value * 1e4) / 0.1;
-            case KinematicViscosityUnits.Kilostokes:
-                return (this.value * 1e4) / 1000;
-            default:
-                break;
+            case KinematicViscosityUnits.SquareMetersPerSecond: return this.value;
+            case KinematicViscosityUnits.Stokes: return this.value * 1e4;
+            case KinematicViscosityUnits.SquareFeetPerSecond: return this.value * 10.7639;
+            case KinematicViscosityUnits.Nanostokes: return (this.value * 1e4) / 1e-9;
+            case KinematicViscosityUnits.Microstokes: return (this.value * 1e4) / 0.000001;
+            case KinematicViscosityUnits.Millistokes: return (this.value * 1e4) / 0.001;
+            case KinematicViscosityUnits.Centistokes: return (this.value * 1e4) / 0.01;
+            case KinematicViscosityUnits.Decistokes: return (this.value * 1e4) / 0.1;
+            case KinematicViscosityUnits.Kilostokes: return (this.value * 1e4) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: KinematicViscosityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case KinematicViscosityUnits.SquareMetersPerSecond: return value;
+                case KinematicViscosityUnits.Stokes: return super.internalDivide(value, 1e4);
+                case KinematicViscosityUnits.SquareFeetPerSecond: return super.internalDivide(value, 10.7639);
+                case KinematicViscosityUnits.Nanostokes: {
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 1e-9);
+                }
+                case KinematicViscosityUnits.Microstokes: {
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case KinematicViscosityUnits.Millistokes: {
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case KinematicViscosityUnits.Centistokes: {
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.01);
+                }
+                case KinematicViscosityUnits.Decistokes: {
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.1);
+                }
+                case KinematicViscosityUnits.Kilostokes: {
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case KinematicViscosityUnits.SquareMetersPerSecond:
-                return value;
-            case KinematicViscosityUnits.Stokes:
-                return value / 1e4;
-            case KinematicViscosityUnits.SquareFeetPerSecond:
-                return value / 10.7639;
-            case KinematicViscosityUnits.Nanostokes:
-                return (value / 1e4) * 1e-9;
-            case KinematicViscosityUnits.Microstokes:
-                return (value / 1e4) * 0.000001;
-            case KinematicViscosityUnits.Millistokes:
-                return (value / 1e4) * 0.001;
-            case KinematicViscosityUnits.Centistokes:
-                return (value / 1e4) * 0.01;
-            case KinematicViscosityUnits.Decistokes:
-                return (value / 1e4) * 0.1;
-            case KinematicViscosityUnits.Kilostokes:
-                return (value / 1e4) * 1000;
-            default:
-                break;
+            case KinematicViscosityUnits.SquareMetersPerSecond: return value;
+            case KinematicViscosityUnits.Stokes: return value / 1e4;
+            case KinematicViscosityUnits.SquareFeetPerSecond: return value / 10.7639;
+            case KinematicViscosityUnits.Nanostokes: return (value / 1e4) * 1e-9;
+            case KinematicViscosityUnits.Microstokes: return (value / 1e4) * 0.000001;
+            case KinematicViscosityUnits.Millistokes: return (value / 1e4) * 0.001;
+            case KinematicViscosityUnits.Centistokes: return (value / 1e4) * 0.01;
+            case KinematicViscosityUnits.Decistokes: return (value / 1e4) * 0.1;
+            case KinematicViscosityUnits.Kilostokes: return (value / 1e4) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

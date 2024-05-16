@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Permittivity */
 export interface PermittivityDto {
@@ -16,7 +16,7 @@ export enum PermittivityUnits {
 
 /** In electromagnetism, permittivity is the measure of resistance that is encountered when forming an electric field in a particular medium. */
 export class Permittivity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private faradspermeterLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class Permittivity extends BaseUnit {
     public constructor(value: number, fromUnit: PermittivityUnits = PermittivityUnits.FaradsPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class Permittivity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): PermittivityUnits.FaradsPerMeter {
+        return PermittivityUnits.FaradsPerMeter
     }
 
     /** */
@@ -56,6 +63,22 @@ export class Permittivity extends BaseUnit {
      */
     public static FromFaradsPerMeter(value: number): Permittivity {
         return new Permittivity(value, PermittivityUnits.FaradsPerMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Permittivity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof PermittivityUnits {
+        return PermittivityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): PermittivityUnits.FaradsPerMeter {
+        return PermittivityUnits.FaradsPerMeter;
     }
 
     /**
@@ -89,29 +112,31 @@ export class Permittivity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: PermittivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case PermittivityUnits.FaradsPerMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case PermittivityUnits.FaradsPerMeter:
-                return this.value;
-            default:
-                break;
+            case PermittivityUnits.FaradsPerMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PermittivityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case PermittivityUnits.FaradsPerMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case PermittivityUnits.FaradsPerMeter:
-                return value;
-            default:
-                break;
+            case PermittivityUnits.FaradsPerMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

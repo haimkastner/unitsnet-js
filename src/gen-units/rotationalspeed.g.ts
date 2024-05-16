@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a RotationalSpeed */
 export interface RotationalSpeedDto {
@@ -40,7 +40,7 @@ export enum RotationalSpeedUnits {
 
 /** Rotational speed (sometimes called speed of revolution) is the number of complete rotations, revolutions, cycles, or turns per time unit. Rotational speed is a cyclic frequency, measured in radians per second or in hertz in the SI System by scientists, or in revolutions per minute (rpm or min-1) or revolutions per second in everyday life. The symbol for rotational speed is ω (the Greek lowercase letter "omega"). */
 export class RotationalSpeed extends BaseUnit {
-    private value: number;
+    protected value: number;
     private radianspersecondLazy: number | null = null;
     private degreespersecondLazy: number | null = null;
     private degreesperminuteLazy: number | null = null;
@@ -64,7 +64,9 @@ export class RotationalSpeed extends BaseUnit {
     public constructor(value: number, fromUnit: RotationalSpeedUnits = RotationalSpeedUnits.RadiansPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -74,6 +76,11 @@ export class RotationalSpeed extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): RotationalSpeedUnits.RadiansPerSecond {
+        return RotationalSpeedUnits.RadiansPerSecond
     }
 
     /** */
@@ -311,6 +318,22 @@ export class RotationalSpeed extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with RotationalSpeed
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof RotationalSpeedUnits {
+        return RotationalSpeedUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RotationalSpeedUnits.RadiansPerSecond {
+        return RotationalSpeedUnits.RadiansPerSecond;
+    }
+
+    /**
      * Create API DTO represent a RotationalSpeed unit.
      * @param holdInUnit The specific RotationalSpeed unit to be used in the unit representation at the DTO
      */
@@ -353,77 +376,123 @@ export class RotationalSpeed extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RotationalSpeedUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RotationalSpeedUnits.RadiansPerSecond: return this.value;
+                case RotationalSpeedUnits.DegreesPerSecond: {
+                    const v3 = super.internalDivide(180, Math.PI);
+                    return super.internalMultiply(v3, this.value);
+                }
+                case RotationalSpeedUnits.DegreesPerMinute: {
+                    const v4 = super.internalDivide(60, Math.PI);
+                    const v5 = super.internalMultiply(180, v4);
+                    return super.internalMultiply(v5, this.value);
+                }
+                case RotationalSpeedUnits.RevolutionsPerSecond: return super.internalDivide(this.value, 6.2831853072);
+                case RotationalSpeedUnits.RevolutionsPerMinute: {
+                    const v3 = super.internalDivide(this.value, 6.2831853072);
+                    return super.internalMultiply(v3, 60);
+                }
+                case RotationalSpeedUnits.NanoradiansPerSecond: return super.internalDivide(this.value, 1e-9);
+                case RotationalSpeedUnits.MicroradiansPerSecond: return super.internalDivide(this.value, 0.000001);
+                case RotationalSpeedUnits.MilliradiansPerSecond: return super.internalDivide(this.value, 0.001);
+                case RotationalSpeedUnits.CentiradiansPerSecond: return super.internalDivide(this.value, 0.01);
+                case RotationalSpeedUnits.DeciradiansPerSecond: return super.internalDivide(this.value, 0.1);
+                case RotationalSpeedUnits.NanodegreesPerSecond: {
+                    const v3 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(v3, this.value);
+                    return super.internalDivide(v5, 1e-9);
+                }
+                case RotationalSpeedUnits.MicrodegreesPerSecond: {
+                    const v3 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(v3, this.value);
+                    return super.internalDivide(v5, 0.000001);
+                }
+                case RotationalSpeedUnits.MillidegreesPerSecond: {
+                    const v3 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(v3, this.value);
+                    return super.internalDivide(v5, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RotationalSpeedUnits.RadiansPerSecond:
-                return this.value;
-            case RotationalSpeedUnits.DegreesPerSecond:
-                return (180 / Math.PI) * this.value;
-            case RotationalSpeedUnits.DegreesPerMinute:
-                return (180 * 60 / Math.PI) * this.value;
-            case RotationalSpeedUnits.RevolutionsPerSecond:
-                return this.value / 6.2831853072;
-            case RotationalSpeedUnits.RevolutionsPerMinute:
-                return (this.value / 6.2831853072) * 60;
-            case RotationalSpeedUnits.NanoradiansPerSecond:
-                return (this.value) / 1e-9;
-            case RotationalSpeedUnits.MicroradiansPerSecond:
-                return (this.value) / 0.000001;
-            case RotationalSpeedUnits.MilliradiansPerSecond:
-                return (this.value) / 0.001;
-            case RotationalSpeedUnits.CentiradiansPerSecond:
-                return (this.value) / 0.01;
-            case RotationalSpeedUnits.DeciradiansPerSecond:
-                return (this.value) / 0.1;
-            case RotationalSpeedUnits.NanodegreesPerSecond:
-                return ((180 / Math.PI) * this.value) / 1e-9;
-            case RotationalSpeedUnits.MicrodegreesPerSecond:
-                return ((180 / Math.PI) * this.value) / 0.000001;
-            case RotationalSpeedUnits.MillidegreesPerSecond:
-                return ((180 / Math.PI) * this.value) / 0.001;
-            default:
-                break;
+            case RotationalSpeedUnits.RadiansPerSecond: return this.value;
+            case RotationalSpeedUnits.DegreesPerSecond: return (180 / Math.PI) * this.value;
+            case RotationalSpeedUnits.DegreesPerMinute: return (180 * 60 / Math.PI) * this.value;
+            case RotationalSpeedUnits.RevolutionsPerSecond: return this.value / 6.2831853072;
+            case RotationalSpeedUnits.RevolutionsPerMinute: return (this.value / 6.2831853072) * 60;
+            case RotationalSpeedUnits.NanoradiansPerSecond: return (this.value) / 1e-9;
+            case RotationalSpeedUnits.MicroradiansPerSecond: return (this.value) / 0.000001;
+            case RotationalSpeedUnits.MilliradiansPerSecond: return (this.value) / 0.001;
+            case RotationalSpeedUnits.CentiradiansPerSecond: return (this.value) / 0.01;
+            case RotationalSpeedUnits.DeciradiansPerSecond: return (this.value) / 0.1;
+            case RotationalSpeedUnits.NanodegreesPerSecond: return ((180 / Math.PI) * this.value) / 1e-9;
+            case RotationalSpeedUnits.MicrodegreesPerSecond: return ((180 / Math.PI) * this.value) / 0.000001;
+            case RotationalSpeedUnits.MillidegreesPerSecond: return ((180 / Math.PI) * this.value) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RotationalSpeedUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RotationalSpeedUnits.RadiansPerSecond: return value;
+                case RotationalSpeedUnits.DegreesPerSecond: {
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    return super.internalMultiply(v3, value);
+                }
+                case RotationalSpeedUnits.DegreesPerMinute: {
+                    const v4 = super.internalMultiply(180, 60);
+                    const v5 = super.internalDivide(Math.PI, v4);
+                    return super.internalMultiply(v5, value);
+                }
+                case RotationalSpeedUnits.RevolutionsPerSecond: return super.internalMultiply(value, 6.2831853072);
+                case RotationalSpeedUnits.RevolutionsPerMinute: {
+                    const v3 = super.internalMultiply(value, 6.2831853072);
+                    return super.internalDivide(v3, 60);
+                }
+                case RotationalSpeedUnits.NanoradiansPerSecond: return super.internalMultiply(value, 1e-9);
+                case RotationalSpeedUnits.MicroradiansPerSecond: return super.internalMultiply(value, 0.000001);
+                case RotationalSpeedUnits.MilliradiansPerSecond: return super.internalMultiply(value, 0.001);
+                case RotationalSpeedUnits.CentiradiansPerSecond: return super.internalMultiply(value, 0.01);
+                case RotationalSpeedUnits.DeciradiansPerSecond: return super.internalMultiply(value, 0.1);
+                case RotationalSpeedUnits.NanodegreesPerSecond: {
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    const v5 = super.internalMultiply(v3, value);
+                    return super.internalMultiply(v5, 1e-9);
+                }
+                case RotationalSpeedUnits.MicrodegreesPerSecond: {
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    const v5 = super.internalMultiply(v3, value);
+                    return super.internalMultiply(v5, 0.000001);
+                }
+                case RotationalSpeedUnits.MillidegreesPerSecond: {
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    const v5 = super.internalMultiply(v3, value);
+                    return super.internalMultiply(v5, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RotationalSpeedUnits.RadiansPerSecond:
-                return value;
-            case RotationalSpeedUnits.DegreesPerSecond:
-                return (Math.PI / 180) * value;
-            case RotationalSpeedUnits.DegreesPerMinute:
-                return (Math.PI / (180 * 60)) * value;
-            case RotationalSpeedUnits.RevolutionsPerSecond:
-                return value * 6.2831853072;
-            case RotationalSpeedUnits.RevolutionsPerMinute:
-                return (value * 6.2831853072) / 60;
-            case RotationalSpeedUnits.NanoradiansPerSecond:
-                return (value) * 1e-9;
-            case RotationalSpeedUnits.MicroradiansPerSecond:
-                return (value) * 0.000001;
-            case RotationalSpeedUnits.MilliradiansPerSecond:
-                return (value) * 0.001;
-            case RotationalSpeedUnits.CentiradiansPerSecond:
-                return (value) * 0.01;
-            case RotationalSpeedUnits.DeciradiansPerSecond:
-                return (value) * 0.1;
-            case RotationalSpeedUnits.NanodegreesPerSecond:
-                return ((Math.PI / 180) * value) * 1e-9;
-            case RotationalSpeedUnits.MicrodegreesPerSecond:
-                return ((Math.PI / 180) * value) * 0.000001;
-            case RotationalSpeedUnits.MillidegreesPerSecond:
-                return ((Math.PI / 180) * value) * 0.001;
-            default:
-                break;
+            case RotationalSpeedUnits.RadiansPerSecond: return value;
+            case RotationalSpeedUnits.DegreesPerSecond: return (Math.PI / 180) * value;
+            case RotationalSpeedUnits.DegreesPerMinute: return (Math.PI / (180 * 60)) * value;
+            case RotationalSpeedUnits.RevolutionsPerSecond: return value * 6.2831853072;
+            case RotationalSpeedUnits.RevolutionsPerMinute: return (value * 6.2831853072) / 60;
+            case RotationalSpeedUnits.NanoradiansPerSecond: return (value) * 1e-9;
+            case RotationalSpeedUnits.MicroradiansPerSecond: return (value) * 0.000001;
+            case RotationalSpeedUnits.MilliradiansPerSecond: return (value) * 0.001;
+            case RotationalSpeedUnits.CentiradiansPerSecond: return (value) * 0.01;
+            case RotationalSpeedUnits.DeciradiansPerSecond: return (value) * 0.1;
+            case RotationalSpeedUnits.NanodegreesPerSecond: return ((Math.PI / 180) * value) * 1e-9;
+            case RotationalSpeedUnits.MicrodegreesPerSecond: return ((Math.PI / 180) * value) * 0.000001;
+            case RotationalSpeedUnits.MillidegreesPerSecond: return ((Math.PI / 180) * value) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

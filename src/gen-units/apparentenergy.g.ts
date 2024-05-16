@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ApparentEnergy */
 export interface ApparentEnergyDto {
@@ -20,7 +20,7 @@ export enum ApparentEnergyUnits {
 
 /** A unit for expressing the integral of apparent power over time, equal to the product of 1 volt-ampere and 1 hour, or to 3600 joules. */
 export class ApparentEnergy extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltamperehoursLazy: number | null = null;
     private kilovoltamperehoursLazy: number | null = null;
     private megavoltamperehoursLazy: number | null = null;
@@ -34,7 +34,9 @@ export class ApparentEnergy extends BaseUnit {
     public constructor(value: number, fromUnit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -44,6 +46,11 @@ export class ApparentEnergy extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ApparentEnergyUnits.VoltampereHours {
+        return ApparentEnergyUnits.VoltampereHours
     }
 
     /** */
@@ -101,6 +108,22 @@ export class ApparentEnergy extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ApparentEnergy
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ApparentEnergyUnits {
+        return ApparentEnergyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ApparentEnergyUnits.VoltampereHours {
+        return ApparentEnergyUnits.VoltampereHours;
+    }
+
+    /**
      * Create API DTO represent a ApparentEnergy unit.
      * @param holdInUnit The specific ApparentEnergy unit to be used in the unit representation at the DTO
      */
@@ -133,37 +156,39 @@ export class ApparentEnergy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ApparentEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ApparentEnergyUnits.VoltampereHours: return this.value;
+                case ApparentEnergyUnits.KilovoltampereHours: return super.internalDivide(this.value, 1000);
+                case ApparentEnergyUnits.MegavoltampereHours: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ApparentEnergyUnits.VoltampereHours:
-                return this.value;
-            case ApparentEnergyUnits.KilovoltampereHours:
-                return (this.value) / 1000;
-            case ApparentEnergyUnits.MegavoltampereHours:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case ApparentEnergyUnits.VoltampereHours: return this.value;
+            case ApparentEnergyUnits.KilovoltampereHours: return (this.value) / 1000;
+            case ApparentEnergyUnits.MegavoltampereHours: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ApparentEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ApparentEnergyUnits.VoltampereHours: return value;
+                case ApparentEnergyUnits.KilovoltampereHours: return super.internalMultiply(value, 1000);
+                case ApparentEnergyUnits.MegavoltampereHours: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ApparentEnergyUnits.VoltampereHours:
-                return value;
-            case ApparentEnergyUnits.KilovoltampereHours:
-                return (value) * 1000;
-            case ApparentEnergyUnits.MegavoltampereHours:
-                return (value) * 1000000;
-            default:
-                break;
+            case ApparentEnergyUnits.VoltampereHours: return value;
+            case ApparentEnergyUnits.KilovoltampereHours: return (value) * 1000;
+            case ApparentEnergyUnits.MegavoltampereHours: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

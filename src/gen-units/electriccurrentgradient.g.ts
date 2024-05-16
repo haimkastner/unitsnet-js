@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricCurrentGradient */
 export interface ElectricCurrentGradientDto {
@@ -28,7 +28,7 @@ export enum ElectricCurrentGradientUnits {
 
 /** In electromagnetism, the current gradient describes how the current changes in time. */
 export class ElectricCurrentGradient extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amperespersecondLazy: number | null = null;
     private amperesperminuteLazy: number | null = null;
     private amperespermillisecondLazy: number | null = null;
@@ -46,7 +46,9 @@ export class ElectricCurrentGradient extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +58,11 @@ export class ElectricCurrentGradient extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricCurrentGradientUnits.AmperesPerSecond {
+        return ElectricCurrentGradientUnits.AmperesPerSecond
     }
 
     /** */
@@ -185,6 +192,22 @@ export class ElectricCurrentGradient extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricCurrentGradient
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricCurrentGradientUnits {
+        return ElectricCurrentGradientUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricCurrentGradientUnits.AmperesPerSecond {
+        return ElectricCurrentGradientUnits.AmperesPerSecond;
+    }
+
+    /**
      * Create API DTO represent a ElectricCurrentGradient unit.
      * @param holdInUnit The specific ElectricCurrentGradient unit to be used in the unit representation at the DTO
      */
@@ -221,53 +244,61 @@ export class ElectricCurrentGradient extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricCurrentGradientUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricCurrentGradientUnits.AmperesPerSecond: return this.value;
+                case ElectricCurrentGradientUnits.AmperesPerMinute: return super.internalMultiply(this.value, 60);
+                case ElectricCurrentGradientUnits.AmperesPerMillisecond: return super.internalDivide(this.value, 1E3);
+                case ElectricCurrentGradientUnits.AmperesPerMicrosecond: return super.internalDivide(this.value, 1E6);
+                case ElectricCurrentGradientUnits.AmperesPerNanosecond: return super.internalDivide(this.value, 1E9);
+                case ElectricCurrentGradientUnits.MilliamperesPerSecond: return super.internalDivide(this.value, 0.001);
+                case ElectricCurrentGradientUnits.MilliamperesPerMinute: {
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricCurrentGradientUnits.AmperesPerSecond:
-                return this.value;
-            case ElectricCurrentGradientUnits.AmperesPerMinute:
-                return this.value * 60;
-            case ElectricCurrentGradientUnits.AmperesPerMillisecond:
-                return this.value / 1E3;
-            case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
-                return this.value / 1E6;
-            case ElectricCurrentGradientUnits.AmperesPerNanosecond:
-                return this.value / 1E9;
-            case ElectricCurrentGradientUnits.MilliamperesPerSecond:
-                return (this.value) / 0.001;
-            case ElectricCurrentGradientUnits.MilliamperesPerMinute:
-                return (this.value * 60) / 0.001;
-            default:
-                break;
+            case ElectricCurrentGradientUnits.AmperesPerSecond: return this.value;
+            case ElectricCurrentGradientUnits.AmperesPerMinute: return this.value * 60;
+            case ElectricCurrentGradientUnits.AmperesPerMillisecond: return this.value / 1E3;
+            case ElectricCurrentGradientUnits.AmperesPerMicrosecond: return this.value / 1E6;
+            case ElectricCurrentGradientUnits.AmperesPerNanosecond: return this.value / 1E9;
+            case ElectricCurrentGradientUnits.MilliamperesPerSecond: return (this.value) / 0.001;
+            case ElectricCurrentGradientUnits.MilliamperesPerMinute: return (this.value * 60) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricCurrentGradientUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricCurrentGradientUnits.AmperesPerSecond: return value;
+                case ElectricCurrentGradientUnits.AmperesPerMinute: return super.internalDivide(value, 60);
+                case ElectricCurrentGradientUnits.AmperesPerMillisecond: return super.internalMultiply(value, 1E3);
+                case ElectricCurrentGradientUnits.AmperesPerMicrosecond: return super.internalMultiply(value, 1E6);
+                case ElectricCurrentGradientUnits.AmperesPerNanosecond: return super.internalMultiply(value, 1E9);
+                case ElectricCurrentGradientUnits.MilliamperesPerSecond: return super.internalMultiply(value, 0.001);
+                case ElectricCurrentGradientUnits.MilliamperesPerMinute: {
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricCurrentGradientUnits.AmperesPerSecond:
-                return value;
-            case ElectricCurrentGradientUnits.AmperesPerMinute:
-                return value / 60;
-            case ElectricCurrentGradientUnits.AmperesPerMillisecond:
-                return value * 1E3;
-            case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
-                return value * 1E6;
-            case ElectricCurrentGradientUnits.AmperesPerNanosecond:
-                return value * 1E9;
-            case ElectricCurrentGradientUnits.MilliamperesPerSecond:
-                return (value) * 0.001;
-            case ElectricCurrentGradientUnits.MilliamperesPerMinute:
-                return (value / 60) * 0.001;
-            default:
-                break;
+            case ElectricCurrentGradientUnits.AmperesPerSecond: return value;
+            case ElectricCurrentGradientUnits.AmperesPerMinute: return value / 60;
+            case ElectricCurrentGradientUnits.AmperesPerMillisecond: return value * 1E3;
+            case ElectricCurrentGradientUnits.AmperesPerMicrosecond: return value * 1E6;
+            case ElectricCurrentGradientUnits.AmperesPerNanosecond: return value * 1E9;
+            case ElectricCurrentGradientUnits.MilliamperesPerSecond: return (value) * 0.001;
+            case ElectricCurrentGradientUnits.MilliamperesPerMinute: return (value / 60) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

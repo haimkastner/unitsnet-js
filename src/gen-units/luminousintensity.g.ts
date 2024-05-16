@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a LuminousIntensity */
 export interface LuminousIntensityDto {
@@ -16,7 +16,7 @@ export enum LuminousIntensityUnits {
 
 /** In photometry, luminous intensity is a measure of the wavelength-weighted power emitted by a light source in a particular direction per unit solid angle, based on the luminosity function, a standardized model of the sensitivity of the human eye. */
 export class LuminousIntensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private candelaLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class LuminousIntensity extends BaseUnit {
     public constructor(value: number, fromUnit: LuminousIntensityUnits = LuminousIntensityUnits.Candela) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class LuminousIntensity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): LuminousIntensityUnits.Candela {
+        return LuminousIntensityUnits.Candela
     }
 
     /** */
@@ -56,6 +63,22 @@ export class LuminousIntensity extends BaseUnit {
      */
     public static FromCandela(value: number): LuminousIntensity {
         return new LuminousIntensity(value, LuminousIntensityUnits.Candela);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with LuminousIntensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof LuminousIntensityUnits {
+        return LuminousIntensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LuminousIntensityUnits.Candela {
+        return LuminousIntensityUnits.Candela;
     }
 
     /**
@@ -89,29 +112,31 @@ export class LuminousIntensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LuminousIntensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LuminousIntensityUnits.Candela: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LuminousIntensityUnits.Candela:
-                return this.value;
-            default:
-                break;
+            case LuminousIntensityUnits.Candela: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LuminousIntensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LuminousIntensityUnits.Candela: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LuminousIntensityUnits.Candela:
-                return value;
-            default:
-                break;
+            case LuminousIntensityUnits.Candela: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

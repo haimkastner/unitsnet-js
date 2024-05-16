@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Compressibility */
 export interface CompressibilityDto {
@@ -28,7 +28,7 @@ export enum CompressibilityUnits {
 
 /** Compressibility is the measure of the relative volume change of a fluid or solid in response to pressure changes. */
 export class Compressibility extends BaseUnit {
-    private value: number;
+    protected value: number;
     private inversepascalsLazy: number | null = null;
     private inversekilopascalsLazy: number | null = null;
     private inversemegapascalsLazy: number | null = null;
@@ -46,7 +46,9 @@ export class Compressibility extends BaseUnit {
     public constructor(value: number, fromUnit: CompressibilityUnits = CompressibilityUnits.InversePascals) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +58,11 @@ export class Compressibility extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): CompressibilityUnits.InversePascals {
+        return CompressibilityUnits.InversePascals
     }
 
     /** */
@@ -185,6 +192,22 @@ export class Compressibility extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Compressibility
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof CompressibilityUnits {
+        return CompressibilityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): CompressibilityUnits.InversePascals {
+        return CompressibilityUnits.InversePascals;
+    }
+
+    /**
      * Create API DTO represent a Compressibility unit.
      * @param holdInUnit The specific Compressibility unit to be used in the unit representation at the DTO
      */
@@ -221,53 +244,55 @@ export class Compressibility extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: CompressibilityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case CompressibilityUnits.InversePascals: return this.value;
+                case CompressibilityUnits.InverseKilopascals: return super.internalDivide(this.value, 1e3);
+                case CompressibilityUnits.InverseMegapascals: return super.internalDivide(this.value, 1e6);
+                case CompressibilityUnits.InverseAtmospheres: return super.internalDivide(this.value, 101325);
+                case CompressibilityUnits.InverseMillibars: return super.internalDivide(this.value, 100);
+                case CompressibilityUnits.InverseBars: return super.internalDivide(this.value, 1e5);
+                case CompressibilityUnits.InversePoundsForcePerSquareInch: return super.internalDivide(this.value, 6.894757293168361e3);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case CompressibilityUnits.InversePascals:
-                return this.value;
-            case CompressibilityUnits.InverseKilopascals:
-                return this.value / 1e3;
-            case CompressibilityUnits.InverseMegapascals:
-                return this.value / 1e6;
-            case CompressibilityUnits.InverseAtmospheres:
-                return this.value / 101325;
-            case CompressibilityUnits.InverseMillibars:
-                return this.value / 100;
-            case CompressibilityUnits.InverseBars:
-                return this.value / 1e5;
-            case CompressibilityUnits.InversePoundsForcePerSquareInch:
-                return this.value / 6.894757293168361e3;
-            default:
-                break;
+            case CompressibilityUnits.InversePascals: return this.value;
+            case CompressibilityUnits.InverseKilopascals: return this.value / 1e3;
+            case CompressibilityUnits.InverseMegapascals: return this.value / 1e6;
+            case CompressibilityUnits.InverseAtmospheres: return this.value / 101325;
+            case CompressibilityUnits.InverseMillibars: return this.value / 100;
+            case CompressibilityUnits.InverseBars: return this.value / 1e5;
+            case CompressibilityUnits.InversePoundsForcePerSquareInch: return this.value / 6.894757293168361e3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: CompressibilityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case CompressibilityUnits.InversePascals: return value;
+                case CompressibilityUnits.InverseKilopascals: return super.internalMultiply(value, 1e3);
+                case CompressibilityUnits.InverseMegapascals: return super.internalMultiply(value, 1e6);
+                case CompressibilityUnits.InverseAtmospheres: return super.internalMultiply(value, 101325);
+                case CompressibilityUnits.InverseMillibars: return super.internalMultiply(value, 100);
+                case CompressibilityUnits.InverseBars: return super.internalMultiply(value, 1e5);
+                case CompressibilityUnits.InversePoundsForcePerSquareInch: return super.internalMultiply(value, 6.894757293168361e3);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case CompressibilityUnits.InversePascals:
-                return value;
-            case CompressibilityUnits.InverseKilopascals:
-                return value * 1e3;
-            case CompressibilityUnits.InverseMegapascals:
-                return value * 1e6;
-            case CompressibilityUnits.InverseAtmospheres:
-                return value * 101325;
-            case CompressibilityUnits.InverseMillibars:
-                return value * 100;
-            case CompressibilityUnits.InverseBars:
-                return value * 1e5;
-            case CompressibilityUnits.InversePoundsForcePerSquareInch:
-                return value * 6.894757293168361e3;
-            default:
-                break;
+            case CompressibilityUnits.InversePascals: return value;
+            case CompressibilityUnits.InverseKilopascals: return value * 1e3;
+            case CompressibilityUnits.InverseMegapascals: return value * 1e6;
+            case CompressibilityUnits.InverseAtmospheres: return value * 101325;
+            case CompressibilityUnits.InverseMillibars: return value * 100;
+            case CompressibilityUnits.InverseBars: return value * 1e5;
+            case CompressibilityUnits.InversePoundsForcePerSquareInch: return value * 6.894757293168361e3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

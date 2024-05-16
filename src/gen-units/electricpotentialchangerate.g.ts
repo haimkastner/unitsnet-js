@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricPotentialChangeRate */
 export interface ElectricPotentialChangeRateDto {
@@ -54,7 +54,7 @@ export enum ElectricPotentialChangeRateUnits {
 
 /** ElectricPotential change rate is the ratio of the electric potential change to the time during which the change occurred (value of electric potential changes per unit time). */
 export class ElectricPotentialChangeRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltspersecondsLazy: number | null = null;
     private voltspermicrosecondsLazy: number | null = null;
     private voltsperminutesLazy: number | null = null;
@@ -85,7 +85,9 @@ export class ElectricPotentialChangeRate extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricPotentialChangeRateUnits = ElectricPotentialChangeRateUnits.VoltsPerSeconds) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -95,6 +97,11 @@ export class ElectricPotentialChangeRate extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricPotentialChangeRateUnits.VoltsPerSeconds {
+        return ElectricPotentialChangeRateUnits.VoltsPerSeconds
     }
 
     /** */
@@ -458,6 +465,22 @@ export class ElectricPotentialChangeRate extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricPotentialChangeRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricPotentialChangeRateUnits {
+        return ElectricPotentialChangeRateUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricPotentialChangeRateUnits.VoltsPerSeconds {
+        return ElectricPotentialChangeRateUnits.VoltsPerSeconds;
+    }
+
+    /**
      * Create API DTO represent a ElectricPotentialChangeRate unit.
      * @param holdInUnit The specific ElectricPotentialChangeRate unit to be used in the unit representation at the DTO
      */
@@ -507,105 +530,179 @@ export class ElectricPotentialChangeRate extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricPotentialChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricPotentialChangeRateUnits.VoltsPerSeconds: return this.value;
+                case ElectricPotentialChangeRateUnits.VoltsPerMicroseconds: return super.internalDivide(this.value, 1E6);
+                case ElectricPotentialChangeRateUnits.VoltsPerMinutes: return super.internalMultiply(this.value, 60);
+                case ElectricPotentialChangeRateUnits.VoltsPerHours: return super.internalMultiply(this.value, 3600);
+                case ElectricPotentialChangeRateUnits.MicrovoltsPerSeconds: return super.internalDivide(this.value, 0.000001);
+                case ElectricPotentialChangeRateUnits.MillivoltsPerSeconds: return super.internalDivide(this.value, 0.001);
+                case ElectricPotentialChangeRateUnits.KilovoltsPerSeconds: return super.internalDivide(this.value, 1000);
+                case ElectricPotentialChangeRateUnits.MegavoltsPerSeconds: return super.internalDivide(this.value, 1000000);
+                case ElectricPotentialChangeRateUnits.MicrovoltsPerMicroseconds: {
+                    const v3 = super.internalDivide(this.value, 1E6);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case ElectricPotentialChangeRateUnits.MillivoltsPerMicroseconds: {
+                    const v3 = super.internalDivide(this.value, 1E6);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case ElectricPotentialChangeRateUnits.KilovoltsPerMicroseconds: {
+                    const v3 = super.internalDivide(this.value, 1E6);
+                    return super.internalDivide(v3, 1000);
+                }
+                case ElectricPotentialChangeRateUnits.MegavoltsPerMicroseconds: {
+                    const v3 = super.internalDivide(this.value, 1E6);
+                    return super.internalDivide(v3, 1000000);
+                }
+                case ElectricPotentialChangeRateUnits.MicrovoltsPerMinutes: {
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case ElectricPotentialChangeRateUnits.MillivoltsPerMinutes: {
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case ElectricPotentialChangeRateUnits.KilovoltsPerMinutes: {
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 1000);
+                }
+                case ElectricPotentialChangeRateUnits.MegavoltsPerMinutes: {
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 1000000);
+                }
+                case ElectricPotentialChangeRateUnits.MicrovoltsPerHours: {
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case ElectricPotentialChangeRateUnits.MillivoltsPerHours: {
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case ElectricPotentialChangeRateUnits.KilovoltsPerHours: {
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 1000);
+                }
+                case ElectricPotentialChangeRateUnits.MegavoltsPerHours: {
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    return super.internalDivide(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricPotentialChangeRateUnits.VoltsPerSeconds:
-                return this.value;
-            case ElectricPotentialChangeRateUnits.VoltsPerMicroseconds:
-                return this.value / 1E6;
-            case ElectricPotentialChangeRateUnits.VoltsPerMinutes:
-                return this.value * 60;
-            case ElectricPotentialChangeRateUnits.VoltsPerHours:
-                return this.value * 3600;
-            case ElectricPotentialChangeRateUnits.MicrovoltsPerSeconds:
-                return (this.value) / 0.000001;
-            case ElectricPotentialChangeRateUnits.MillivoltsPerSeconds:
-                return (this.value) / 0.001;
-            case ElectricPotentialChangeRateUnits.KilovoltsPerSeconds:
-                return (this.value) / 1000;
-            case ElectricPotentialChangeRateUnits.MegavoltsPerSeconds:
-                return (this.value) / 1000000;
-            case ElectricPotentialChangeRateUnits.MicrovoltsPerMicroseconds:
-                return (this.value / 1E6) / 0.000001;
-            case ElectricPotentialChangeRateUnits.MillivoltsPerMicroseconds:
-                return (this.value / 1E6) / 0.001;
-            case ElectricPotentialChangeRateUnits.KilovoltsPerMicroseconds:
-                return (this.value / 1E6) / 1000;
-            case ElectricPotentialChangeRateUnits.MegavoltsPerMicroseconds:
-                return (this.value / 1E6) / 1000000;
-            case ElectricPotentialChangeRateUnits.MicrovoltsPerMinutes:
-                return (this.value * 60) / 0.000001;
-            case ElectricPotentialChangeRateUnits.MillivoltsPerMinutes:
-                return (this.value * 60) / 0.001;
-            case ElectricPotentialChangeRateUnits.KilovoltsPerMinutes:
-                return (this.value * 60) / 1000;
-            case ElectricPotentialChangeRateUnits.MegavoltsPerMinutes:
-                return (this.value * 60) / 1000000;
-            case ElectricPotentialChangeRateUnits.MicrovoltsPerHours:
-                return (this.value * 3600) / 0.000001;
-            case ElectricPotentialChangeRateUnits.MillivoltsPerHours:
-                return (this.value * 3600) / 0.001;
-            case ElectricPotentialChangeRateUnits.KilovoltsPerHours:
-                return (this.value * 3600) / 1000;
-            case ElectricPotentialChangeRateUnits.MegavoltsPerHours:
-                return (this.value * 3600) / 1000000;
-            default:
-                break;
+            case ElectricPotentialChangeRateUnits.VoltsPerSeconds: return this.value;
+            case ElectricPotentialChangeRateUnits.VoltsPerMicroseconds: return this.value / 1E6;
+            case ElectricPotentialChangeRateUnits.VoltsPerMinutes: return this.value * 60;
+            case ElectricPotentialChangeRateUnits.VoltsPerHours: return this.value * 3600;
+            case ElectricPotentialChangeRateUnits.MicrovoltsPerSeconds: return (this.value) / 0.000001;
+            case ElectricPotentialChangeRateUnits.MillivoltsPerSeconds: return (this.value) / 0.001;
+            case ElectricPotentialChangeRateUnits.KilovoltsPerSeconds: return (this.value) / 1000;
+            case ElectricPotentialChangeRateUnits.MegavoltsPerSeconds: return (this.value) / 1000000;
+            case ElectricPotentialChangeRateUnits.MicrovoltsPerMicroseconds: return (this.value / 1E6) / 0.000001;
+            case ElectricPotentialChangeRateUnits.MillivoltsPerMicroseconds: return (this.value / 1E6) / 0.001;
+            case ElectricPotentialChangeRateUnits.KilovoltsPerMicroseconds: return (this.value / 1E6) / 1000;
+            case ElectricPotentialChangeRateUnits.MegavoltsPerMicroseconds: return (this.value / 1E6) / 1000000;
+            case ElectricPotentialChangeRateUnits.MicrovoltsPerMinutes: return (this.value * 60) / 0.000001;
+            case ElectricPotentialChangeRateUnits.MillivoltsPerMinutes: return (this.value * 60) / 0.001;
+            case ElectricPotentialChangeRateUnits.KilovoltsPerMinutes: return (this.value * 60) / 1000;
+            case ElectricPotentialChangeRateUnits.MegavoltsPerMinutes: return (this.value * 60) / 1000000;
+            case ElectricPotentialChangeRateUnits.MicrovoltsPerHours: return (this.value * 3600) / 0.000001;
+            case ElectricPotentialChangeRateUnits.MillivoltsPerHours: return (this.value * 3600) / 0.001;
+            case ElectricPotentialChangeRateUnits.KilovoltsPerHours: return (this.value * 3600) / 1000;
+            case ElectricPotentialChangeRateUnits.MegavoltsPerHours: return (this.value * 3600) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricPotentialChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricPotentialChangeRateUnits.VoltsPerSeconds: return value;
+                case ElectricPotentialChangeRateUnits.VoltsPerMicroseconds: return super.internalMultiply(value, 1E6);
+                case ElectricPotentialChangeRateUnits.VoltsPerMinutes: return super.internalDivide(value, 60);
+                case ElectricPotentialChangeRateUnits.VoltsPerHours: return super.internalDivide(value, 3600);
+                case ElectricPotentialChangeRateUnits.MicrovoltsPerSeconds: return super.internalMultiply(value, 0.000001);
+                case ElectricPotentialChangeRateUnits.MillivoltsPerSeconds: return super.internalMultiply(value, 0.001);
+                case ElectricPotentialChangeRateUnits.KilovoltsPerSeconds: return super.internalMultiply(value, 1000);
+                case ElectricPotentialChangeRateUnits.MegavoltsPerSeconds: return super.internalMultiply(value, 1000000);
+                case ElectricPotentialChangeRateUnits.MicrovoltsPerMicroseconds: {
+                    const v3 = super.internalMultiply(value, 1E6);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case ElectricPotentialChangeRateUnits.MillivoltsPerMicroseconds: {
+                    const v3 = super.internalMultiply(value, 1E6);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case ElectricPotentialChangeRateUnits.KilovoltsPerMicroseconds: {
+                    const v3 = super.internalMultiply(value, 1E6);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case ElectricPotentialChangeRateUnits.MegavoltsPerMicroseconds: {
+                    const v3 = super.internalMultiply(value, 1E6);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                case ElectricPotentialChangeRateUnits.MicrovoltsPerMinutes: {
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case ElectricPotentialChangeRateUnits.MillivoltsPerMinutes: {
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case ElectricPotentialChangeRateUnits.KilovoltsPerMinutes: {
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case ElectricPotentialChangeRateUnits.MegavoltsPerMinutes: {
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                case ElectricPotentialChangeRateUnits.MicrovoltsPerHours: {
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case ElectricPotentialChangeRateUnits.MillivoltsPerHours: {
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case ElectricPotentialChangeRateUnits.KilovoltsPerHours: {
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case ElectricPotentialChangeRateUnits.MegavoltsPerHours: {
+                    const v3 = super.internalDivide(value, 3600);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricPotentialChangeRateUnits.VoltsPerSeconds:
-                return value;
-            case ElectricPotentialChangeRateUnits.VoltsPerMicroseconds:
-                return value * 1E6;
-            case ElectricPotentialChangeRateUnits.VoltsPerMinutes:
-                return value / 60;
-            case ElectricPotentialChangeRateUnits.VoltsPerHours:
-                return value / 3600;
-            case ElectricPotentialChangeRateUnits.MicrovoltsPerSeconds:
-                return (value) * 0.000001;
-            case ElectricPotentialChangeRateUnits.MillivoltsPerSeconds:
-                return (value) * 0.001;
-            case ElectricPotentialChangeRateUnits.KilovoltsPerSeconds:
-                return (value) * 1000;
-            case ElectricPotentialChangeRateUnits.MegavoltsPerSeconds:
-                return (value) * 1000000;
-            case ElectricPotentialChangeRateUnits.MicrovoltsPerMicroseconds:
-                return (value * 1E6) * 0.000001;
-            case ElectricPotentialChangeRateUnits.MillivoltsPerMicroseconds:
-                return (value * 1E6) * 0.001;
-            case ElectricPotentialChangeRateUnits.KilovoltsPerMicroseconds:
-                return (value * 1E6) * 1000;
-            case ElectricPotentialChangeRateUnits.MegavoltsPerMicroseconds:
-                return (value * 1E6) * 1000000;
-            case ElectricPotentialChangeRateUnits.MicrovoltsPerMinutes:
-                return (value / 60) * 0.000001;
-            case ElectricPotentialChangeRateUnits.MillivoltsPerMinutes:
-                return (value / 60) * 0.001;
-            case ElectricPotentialChangeRateUnits.KilovoltsPerMinutes:
-                return (value / 60) * 1000;
-            case ElectricPotentialChangeRateUnits.MegavoltsPerMinutes:
-                return (value / 60) * 1000000;
-            case ElectricPotentialChangeRateUnits.MicrovoltsPerHours:
-                return (value / 3600) * 0.000001;
-            case ElectricPotentialChangeRateUnits.MillivoltsPerHours:
-                return (value / 3600) * 0.001;
-            case ElectricPotentialChangeRateUnits.KilovoltsPerHours:
-                return (value / 3600) * 1000;
-            case ElectricPotentialChangeRateUnits.MegavoltsPerHours:
-                return (value / 3600) * 1000000;
-            default:
-                break;
+            case ElectricPotentialChangeRateUnits.VoltsPerSeconds: return value;
+            case ElectricPotentialChangeRateUnits.VoltsPerMicroseconds: return value * 1E6;
+            case ElectricPotentialChangeRateUnits.VoltsPerMinutes: return value / 60;
+            case ElectricPotentialChangeRateUnits.VoltsPerHours: return value / 3600;
+            case ElectricPotentialChangeRateUnits.MicrovoltsPerSeconds: return (value) * 0.000001;
+            case ElectricPotentialChangeRateUnits.MillivoltsPerSeconds: return (value) * 0.001;
+            case ElectricPotentialChangeRateUnits.KilovoltsPerSeconds: return (value) * 1000;
+            case ElectricPotentialChangeRateUnits.MegavoltsPerSeconds: return (value) * 1000000;
+            case ElectricPotentialChangeRateUnits.MicrovoltsPerMicroseconds: return (value * 1E6) * 0.000001;
+            case ElectricPotentialChangeRateUnits.MillivoltsPerMicroseconds: return (value * 1E6) * 0.001;
+            case ElectricPotentialChangeRateUnits.KilovoltsPerMicroseconds: return (value * 1E6) * 1000;
+            case ElectricPotentialChangeRateUnits.MegavoltsPerMicroseconds: return (value * 1E6) * 1000000;
+            case ElectricPotentialChangeRateUnits.MicrovoltsPerMinutes: return (value / 60) * 0.000001;
+            case ElectricPotentialChangeRateUnits.MillivoltsPerMinutes: return (value / 60) * 0.001;
+            case ElectricPotentialChangeRateUnits.KilovoltsPerMinutes: return (value / 60) * 1000;
+            case ElectricPotentialChangeRateUnits.MegavoltsPerMinutes: return (value / 60) * 1000000;
+            case ElectricPotentialChangeRateUnits.MicrovoltsPerHours: return (value / 3600) * 0.000001;
+            case ElectricPotentialChangeRateUnits.MillivoltsPerHours: return (value / 3600) * 0.001;
+            case ElectricPotentialChangeRateUnits.KilovoltsPerHours: return (value / 3600) * 1000;
+            case ElectricPotentialChangeRateUnits.MegavoltsPerHours: return (value / 3600) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

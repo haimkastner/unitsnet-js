@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricSurfaceChargeDensity */
 export interface ElectricSurfaceChargeDensityDto {
@@ -20,7 +20,7 @@ export enum ElectricSurfaceChargeDensityUnits {
 
 /** In electromagnetism, surface charge density is a measure of the amount of electric charge per surface area. */
 export class ElectricSurfaceChargeDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private coulombspersquaremeterLazy: number | null = null;
     private coulombspersquarecentimeterLazy: number | null = null;
     private coulombspersquareinchLazy: number | null = null;
@@ -34,7 +34,9 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -44,6 +46,11 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter {
+        return ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter
     }
 
     /** */
@@ -101,6 +108,22 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricSurfaceChargeDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricSurfaceChargeDensityUnits {
+        return ElectricSurfaceChargeDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter {
+        return ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter;
+    }
+
+    /**
      * Create API DTO represent a ElectricSurfaceChargeDensity unit.
      * @param holdInUnit The specific ElectricSurfaceChargeDensity unit to be used in the unit representation at the DTO
      */
@@ -133,37 +156,39 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricSurfaceChargeDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter: return this.value;
+                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter: return super.internalDivide(this.value, 1.0e4);
+                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return super.internalDivide(this.value, 1.5500031000062000e3);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
-                return this.value;
-            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
-                return this.value / 1.0e4;
-            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
-                return this.value / 1.5500031000062000e3;
-            default:
-                break;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter: return this.value;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter: return this.value / 1.0e4;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return this.value / 1.5500031000062000e3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricSurfaceChargeDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter: return value;
+                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter: return super.internalMultiply(value, 1.0e4);
+                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return super.internalMultiply(value, 1.5500031000062000e3);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
-                return value;
-            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
-                return value * 1.0e4;
-            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
-                return value * 1.5500031000062000e3;
-            default:
-                break;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter: return value;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter: return value * 1.0e4;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return value * 1.5500031000062000e3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ForceChangeRate */
 export interface ForceChangeRateDto {
@@ -44,7 +44,7 @@ export enum ForceChangeRateUnits {
 
 /** Force change rate is the ratio of the force change to the time during which the change occurred (value of force changes per unit time). */
 export class ForceChangeRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private newtonsperminuteLazy: number | null = null;
     private newtonspersecondLazy: number | null = null;
     private poundsforceperminuteLazy: number | null = null;
@@ -70,7 +70,9 @@ export class ForceChangeRate extends BaseUnit {
     public constructor(value: number, fromUnit: ForceChangeRateUnits = ForceChangeRateUnits.NewtonsPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -80,6 +82,11 @@ export class ForceChangeRate extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ForceChangeRateUnits.NewtonsPerSecond {
+        return ForceChangeRateUnits.NewtonsPerSecond
     }
 
     /** */
@@ -353,6 +360,22 @@ export class ForceChangeRate extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ForceChangeRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ForceChangeRateUnits {
+        return ForceChangeRateUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ForceChangeRateUnits.NewtonsPerSecond {
+        return ForceChangeRateUnits.NewtonsPerSecond;
+    }
+
+    /**
      * Create API DTO represent a ForceChangeRate unit.
      * @param holdInUnit The specific ForceChangeRate unit to be used in the unit representation at the DTO
      */
@@ -397,85 +420,119 @@ export class ForceChangeRate extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ForceChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ForceChangeRateUnits.NewtonsPerMinute: return super.internalMultiply(this.value, 60);
+                case ForceChangeRateUnits.NewtonsPerSecond: return this.value;
+                case ForceChangeRateUnits.PoundsForcePerMinute: {
+                    const v3 = super.internalDivide(this.value, 4.4482216152605095551842641431421);
+                    return super.internalMultiply(v3, 60);
+                }
+                case ForceChangeRateUnits.PoundsForcePerSecond: return super.internalDivide(this.value, 4.4482216152605095551842641431421);
+                case ForceChangeRateUnits.DecanewtonsPerMinute: {
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 10);
+                }
+                case ForceChangeRateUnits.KilonewtonsPerMinute: {
+                    const v3 = super.internalMultiply(this.value, 60);
+                    return super.internalDivide(v3, 1000);
+                }
+                case ForceChangeRateUnits.NanonewtonsPerSecond: return super.internalDivide(this.value, 1e-9);
+                case ForceChangeRateUnits.MicronewtonsPerSecond: return super.internalDivide(this.value, 0.000001);
+                case ForceChangeRateUnits.MillinewtonsPerSecond: return super.internalDivide(this.value, 0.001);
+                case ForceChangeRateUnits.CentinewtonsPerSecond: return super.internalDivide(this.value, 0.01);
+                case ForceChangeRateUnits.DecinewtonsPerSecond: return super.internalDivide(this.value, 0.1);
+                case ForceChangeRateUnits.DecanewtonsPerSecond: return super.internalDivide(this.value, 10);
+                case ForceChangeRateUnits.KilonewtonsPerSecond: return super.internalDivide(this.value, 1000);
+                case ForceChangeRateUnits.KilopoundsForcePerMinute: {
+                    const v3 = super.internalDivide(this.value, 4.4482216152605095551842641431421);
+                    const v5 = super.internalMultiply(v3, 60);
+                    return super.internalDivide(v5, 1000);
+                }
+                case ForceChangeRateUnits.KilopoundsForcePerSecond: {
+                    const v3 = super.internalDivide(this.value, 4.4482216152605095551842641431421);
+                    return super.internalDivide(v3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ForceChangeRateUnits.NewtonsPerMinute:
-                return this.value * 60;
-            case ForceChangeRateUnits.NewtonsPerSecond:
-                return this.value;
-            case ForceChangeRateUnits.PoundsForcePerMinute:
-                return this.value / 4.4482216152605095551842641431421 * 60;
-            case ForceChangeRateUnits.PoundsForcePerSecond:
-                return this.value / 4.4482216152605095551842641431421;
-            case ForceChangeRateUnits.DecanewtonsPerMinute:
-                return (this.value * 60) / 10;
-            case ForceChangeRateUnits.KilonewtonsPerMinute:
-                return (this.value * 60) / 1000;
-            case ForceChangeRateUnits.NanonewtonsPerSecond:
-                return (this.value) / 1e-9;
-            case ForceChangeRateUnits.MicronewtonsPerSecond:
-                return (this.value) / 0.000001;
-            case ForceChangeRateUnits.MillinewtonsPerSecond:
-                return (this.value) / 0.001;
-            case ForceChangeRateUnits.CentinewtonsPerSecond:
-                return (this.value) / 0.01;
-            case ForceChangeRateUnits.DecinewtonsPerSecond:
-                return (this.value) / 0.1;
-            case ForceChangeRateUnits.DecanewtonsPerSecond:
-                return (this.value) / 10;
-            case ForceChangeRateUnits.KilonewtonsPerSecond:
-                return (this.value) / 1000;
-            case ForceChangeRateUnits.KilopoundsForcePerMinute:
-                return (this.value / 4.4482216152605095551842641431421 * 60) / 1000;
-            case ForceChangeRateUnits.KilopoundsForcePerSecond:
-                return (this.value / 4.4482216152605095551842641431421) / 1000;
-            default:
-                break;
+            case ForceChangeRateUnits.NewtonsPerMinute: return this.value * 60;
+            case ForceChangeRateUnits.NewtonsPerSecond: return this.value;
+            case ForceChangeRateUnits.PoundsForcePerMinute: return this.value / 4.4482216152605095551842641431421 * 60;
+            case ForceChangeRateUnits.PoundsForcePerSecond: return this.value / 4.4482216152605095551842641431421;
+            case ForceChangeRateUnits.DecanewtonsPerMinute: return (this.value * 60) / 10;
+            case ForceChangeRateUnits.KilonewtonsPerMinute: return (this.value * 60) / 1000;
+            case ForceChangeRateUnits.NanonewtonsPerSecond: return (this.value) / 1e-9;
+            case ForceChangeRateUnits.MicronewtonsPerSecond: return (this.value) / 0.000001;
+            case ForceChangeRateUnits.MillinewtonsPerSecond: return (this.value) / 0.001;
+            case ForceChangeRateUnits.CentinewtonsPerSecond: return (this.value) / 0.01;
+            case ForceChangeRateUnits.DecinewtonsPerSecond: return (this.value) / 0.1;
+            case ForceChangeRateUnits.DecanewtonsPerSecond: return (this.value) / 10;
+            case ForceChangeRateUnits.KilonewtonsPerSecond: return (this.value) / 1000;
+            case ForceChangeRateUnits.KilopoundsForcePerMinute: return (this.value / 4.4482216152605095551842641431421 * 60) / 1000;
+            case ForceChangeRateUnits.KilopoundsForcePerSecond: return (this.value / 4.4482216152605095551842641431421) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ForceChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ForceChangeRateUnits.NewtonsPerMinute: return super.internalDivide(value, 60);
+                case ForceChangeRateUnits.NewtonsPerSecond: return value;
+                case ForceChangeRateUnits.PoundsForcePerMinute: {
+                    const v4 = super.internalDivide(4.4482216152605095551842641431421, 60);
+                    return super.internalMultiply(value, v4);
+                }
+                case ForceChangeRateUnits.PoundsForcePerSecond: return super.internalMultiply(value, 4.4482216152605095551842641431421);
+                case ForceChangeRateUnits.DecanewtonsPerMinute: {
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 10);
+                }
+                case ForceChangeRateUnits.KilonewtonsPerMinute: {
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case ForceChangeRateUnits.NanonewtonsPerSecond: return super.internalMultiply(value, 1e-9);
+                case ForceChangeRateUnits.MicronewtonsPerSecond: return super.internalMultiply(value, 0.000001);
+                case ForceChangeRateUnits.MillinewtonsPerSecond: return super.internalMultiply(value, 0.001);
+                case ForceChangeRateUnits.CentinewtonsPerSecond: return super.internalMultiply(value, 0.01);
+                case ForceChangeRateUnits.DecinewtonsPerSecond: return super.internalMultiply(value, 0.1);
+                case ForceChangeRateUnits.DecanewtonsPerSecond: return super.internalMultiply(value, 10);
+                case ForceChangeRateUnits.KilonewtonsPerSecond: return super.internalMultiply(value, 1000);
+                case ForceChangeRateUnits.KilopoundsForcePerMinute: {
+                    const v4 = super.internalDivide(4.4482216152605095551842641431421, 60);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000);
+                }
+                case ForceChangeRateUnits.KilopoundsForcePerSecond: {
+                    const v3 = super.internalMultiply(value, 4.4482216152605095551842641431421);
+                    return super.internalMultiply(v3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ForceChangeRateUnits.NewtonsPerMinute:
-                return value / 60;
-            case ForceChangeRateUnits.NewtonsPerSecond:
-                return value;
-            case ForceChangeRateUnits.PoundsForcePerMinute:
-                return value * 4.4482216152605095551842641431421 / 60;
-            case ForceChangeRateUnits.PoundsForcePerSecond:
-                return value * 4.4482216152605095551842641431421;
-            case ForceChangeRateUnits.DecanewtonsPerMinute:
-                return (value / 60) * 10;
-            case ForceChangeRateUnits.KilonewtonsPerMinute:
-                return (value / 60) * 1000;
-            case ForceChangeRateUnits.NanonewtonsPerSecond:
-                return (value) * 1e-9;
-            case ForceChangeRateUnits.MicronewtonsPerSecond:
-                return (value) * 0.000001;
-            case ForceChangeRateUnits.MillinewtonsPerSecond:
-                return (value) * 0.001;
-            case ForceChangeRateUnits.CentinewtonsPerSecond:
-                return (value) * 0.01;
-            case ForceChangeRateUnits.DecinewtonsPerSecond:
-                return (value) * 0.1;
-            case ForceChangeRateUnits.DecanewtonsPerSecond:
-                return (value) * 10;
-            case ForceChangeRateUnits.KilonewtonsPerSecond:
-                return (value) * 1000;
-            case ForceChangeRateUnits.KilopoundsForcePerMinute:
-                return (value * 4.4482216152605095551842641431421 / 60) * 1000;
-            case ForceChangeRateUnits.KilopoundsForcePerSecond:
-                return (value * 4.4482216152605095551842641431421) * 1000;
-            default:
-                break;
+            case ForceChangeRateUnits.NewtonsPerMinute: return value / 60;
+            case ForceChangeRateUnits.NewtonsPerSecond: return value;
+            case ForceChangeRateUnits.PoundsForcePerMinute: return value * 4.4482216152605095551842641431421 / 60;
+            case ForceChangeRateUnits.PoundsForcePerSecond: return value * 4.4482216152605095551842641431421;
+            case ForceChangeRateUnits.DecanewtonsPerMinute: return (value / 60) * 10;
+            case ForceChangeRateUnits.KilonewtonsPerMinute: return (value / 60) * 1000;
+            case ForceChangeRateUnits.NanonewtonsPerSecond: return (value) * 1e-9;
+            case ForceChangeRateUnits.MicronewtonsPerSecond: return (value) * 0.000001;
+            case ForceChangeRateUnits.MillinewtonsPerSecond: return (value) * 0.001;
+            case ForceChangeRateUnits.CentinewtonsPerSecond: return (value) * 0.01;
+            case ForceChangeRateUnits.DecinewtonsPerSecond: return (value) * 0.1;
+            case ForceChangeRateUnits.DecanewtonsPerSecond: return (value) * 10;
+            case ForceChangeRateUnits.KilonewtonsPerSecond: return (value) * 1000;
+            case ForceChangeRateUnits.KilopoundsForcePerMinute: return (value * 4.4482216152605095551842641431421 / 60) * 1000;
+            case ForceChangeRateUnits.KilopoundsForcePerSecond: return (value * 4.4482216152605095551842641431421) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

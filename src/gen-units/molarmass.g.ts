@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MolarMass */
 export interface MolarMassDto {
@@ -40,7 +40,7 @@ export enum MolarMassUnits {
 
 /** In chemistry, the molar mass M is a physical property defined as the mass of a given substance (chemical element or chemical compound) divided by the amount of substance. */
 export class MolarMass extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramspermoleLazy: number | null = null;
     private kilogramsperkilomoleLazy: number | null = null;
     private poundspermoleLazy: number | null = null;
@@ -64,7 +64,9 @@ export class MolarMass extends BaseUnit {
     public constructor(value: number, fromUnit: MolarMassUnits = MolarMassUnits.KilogramsPerMole) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -74,6 +76,11 @@ export class MolarMass extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): MolarMassUnits.KilogramsPerMole {
+        return MolarMassUnits.KilogramsPerMole
     }
 
     /** */
@@ -311,6 +318,22 @@ export class MolarMass extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MolarMass
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof MolarMassUnits {
+        return MolarMassUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MolarMassUnits.KilogramsPerMole {
+        return MolarMassUnits.KilogramsPerMole;
+    }
+
+    /**
      * Create API DTO represent a MolarMass unit.
      * @param holdInUnit The specific MolarMass unit to be used in the unit representation at the DTO
      */
@@ -353,77 +376,139 @@ export class MolarMass extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MolarMassUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MolarMassUnits.GramsPerMole: return super.internalMultiply(this.value, 1e3);
+                case MolarMassUnits.KilogramsPerKilomole: return super.internalMultiply(this.value, 1e3);
+                case MolarMassUnits.PoundsPerMole: return super.internalDivide(this.value, 0.45359237);
+                case MolarMassUnits.NanogramsPerMole: {
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1e-9);
+                }
+                case MolarMassUnits.MicrogramsPerMole: {
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case MolarMassUnits.MilligramsPerMole: {
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case MolarMassUnits.CentigramsPerMole: {
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.01);
+                }
+                case MolarMassUnits.DecigramsPerMole: {
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 0.1);
+                }
+                case MolarMassUnits.DecagramsPerMole: {
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 10);
+                }
+                case MolarMassUnits.HectogramsPerMole: {
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 100);
+                }
+                case MolarMassUnits.KilogramsPerMole: {
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
+                }
+                case MolarMassUnits.KilopoundsPerMole: {
+                    const v3 = super.internalDivide(this.value, 0.45359237);
+                    return super.internalDivide(v3, 1000);
+                }
+                case MolarMassUnits.MegapoundsPerMole: {
+                    const v3 = super.internalDivide(this.value, 0.45359237);
+                    return super.internalDivide(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MolarMassUnits.GramsPerMole:
-                return this.value * 1e3;
-            case MolarMassUnits.KilogramsPerKilomole:
-                return this.value * 1e3;
-            case MolarMassUnits.PoundsPerMole:
-                return this.value / 0.45359237;
-            case MolarMassUnits.NanogramsPerMole:
-                return (this.value * 1e3) / 1e-9;
-            case MolarMassUnits.MicrogramsPerMole:
-                return (this.value * 1e3) / 0.000001;
-            case MolarMassUnits.MilligramsPerMole:
-                return (this.value * 1e3) / 0.001;
-            case MolarMassUnits.CentigramsPerMole:
-                return (this.value * 1e3) / 0.01;
-            case MolarMassUnits.DecigramsPerMole:
-                return (this.value * 1e3) / 0.1;
-            case MolarMassUnits.DecagramsPerMole:
-                return (this.value * 1e3) / 10;
-            case MolarMassUnits.HectogramsPerMole:
-                return (this.value * 1e3) / 100;
-            case MolarMassUnits.KilogramsPerMole:
-                return (this.value * 1e3) / 1000;
-            case MolarMassUnits.KilopoundsPerMole:
-                return (this.value / 0.45359237) / 1000;
-            case MolarMassUnits.MegapoundsPerMole:
-                return (this.value / 0.45359237) / 1000000;
-            default:
-                break;
+            case MolarMassUnits.GramsPerMole: return this.value * 1e3;
+            case MolarMassUnits.KilogramsPerKilomole: return this.value * 1e3;
+            case MolarMassUnits.PoundsPerMole: return this.value / 0.45359237;
+            case MolarMassUnits.NanogramsPerMole: return (this.value * 1e3) / 1e-9;
+            case MolarMassUnits.MicrogramsPerMole: return (this.value * 1e3) / 0.000001;
+            case MolarMassUnits.MilligramsPerMole: return (this.value * 1e3) / 0.001;
+            case MolarMassUnits.CentigramsPerMole: return (this.value * 1e3) / 0.01;
+            case MolarMassUnits.DecigramsPerMole: return (this.value * 1e3) / 0.1;
+            case MolarMassUnits.DecagramsPerMole: return (this.value * 1e3) / 10;
+            case MolarMassUnits.HectogramsPerMole: return (this.value * 1e3) / 100;
+            case MolarMassUnits.KilogramsPerMole: return (this.value * 1e3) / 1000;
+            case MolarMassUnits.KilopoundsPerMole: return (this.value / 0.45359237) / 1000;
+            case MolarMassUnits.MegapoundsPerMole: return (this.value / 0.45359237) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MolarMassUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MolarMassUnits.GramsPerMole: return super.internalDivide(value, 1e3);
+                case MolarMassUnits.KilogramsPerKilomole: return super.internalDivide(value, 1e3);
+                case MolarMassUnits.PoundsPerMole: return super.internalMultiply(value, 0.45359237);
+                case MolarMassUnits.NanogramsPerMole: {
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1e-9);
+                }
+                case MolarMassUnits.MicrogramsPerMole: {
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case MolarMassUnits.MilligramsPerMole: {
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case MolarMassUnits.CentigramsPerMole: {
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.01);
+                }
+                case MolarMassUnits.DecigramsPerMole: {
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 0.1);
+                }
+                case MolarMassUnits.DecagramsPerMole: {
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 10);
+                }
+                case MolarMassUnits.HectogramsPerMole: {
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 100);
+                }
+                case MolarMassUnits.KilogramsPerMole: {
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case MolarMassUnits.KilopoundsPerMole: {
+                    const v3 = super.internalMultiply(value, 0.45359237);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case MolarMassUnits.MegapoundsPerMole: {
+                    const v3 = super.internalMultiply(value, 0.45359237);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MolarMassUnits.GramsPerMole:
-                return value / 1e3;
-            case MolarMassUnits.KilogramsPerKilomole:
-                return value / 1e3;
-            case MolarMassUnits.PoundsPerMole:
-                return value * 0.45359237;
-            case MolarMassUnits.NanogramsPerMole:
-                return (value / 1e3) * 1e-9;
-            case MolarMassUnits.MicrogramsPerMole:
-                return (value / 1e3) * 0.000001;
-            case MolarMassUnits.MilligramsPerMole:
-                return (value / 1e3) * 0.001;
-            case MolarMassUnits.CentigramsPerMole:
-                return (value / 1e3) * 0.01;
-            case MolarMassUnits.DecigramsPerMole:
-                return (value / 1e3) * 0.1;
-            case MolarMassUnits.DecagramsPerMole:
-                return (value / 1e3) * 10;
-            case MolarMassUnits.HectogramsPerMole:
-                return (value / 1e3) * 100;
-            case MolarMassUnits.KilogramsPerMole:
-                return (value / 1e3) * 1000;
-            case MolarMassUnits.KilopoundsPerMole:
-                return (value * 0.45359237) * 1000;
-            case MolarMassUnits.MegapoundsPerMole:
-                return (value * 0.45359237) * 1000000;
-            default:
-                break;
+            case MolarMassUnits.GramsPerMole: return value / 1e3;
+            case MolarMassUnits.KilogramsPerKilomole: return value / 1e3;
+            case MolarMassUnits.PoundsPerMole: return value * 0.45359237;
+            case MolarMassUnits.NanogramsPerMole: return (value / 1e3) * 1e-9;
+            case MolarMassUnits.MicrogramsPerMole: return (value / 1e3) * 0.000001;
+            case MolarMassUnits.MilligramsPerMole: return (value / 1e3) * 0.001;
+            case MolarMassUnits.CentigramsPerMole: return (value / 1e3) * 0.01;
+            case MolarMassUnits.DecigramsPerMole: return (value / 1e3) * 0.1;
+            case MolarMassUnits.DecagramsPerMole: return (value / 1e3) * 10;
+            case MolarMassUnits.HectogramsPerMole: return (value / 1e3) * 100;
+            case MolarMassUnits.KilogramsPerMole: return (value / 1e3) * 1000;
+            case MolarMassUnits.KilopoundsPerMole: return (value * 0.45359237) * 1000;
+            case MolarMassUnits.MegapoundsPerMole: return (value * 0.45359237) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

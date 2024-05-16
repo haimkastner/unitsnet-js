@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a AmplitudeRatio */
 export interface AmplitudeRatioDto {
@@ -22,7 +22,7 @@ export enum AmplitudeRatioUnits {
 
 /** The strength of a signal expressed in decibels (dB) relative to one volt RMS. */
 export class AmplitudeRatio extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decibelvoltsLazy: number | null = null;
     private decibelmicrovoltsLazy: number | null = null;
     private decibelmillivoltsLazy: number | null = null;
@@ -37,7 +37,9 @@ export class AmplitudeRatio extends BaseUnit {
     public constructor(value: number, fromUnit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -47,6 +49,11 @@ export class AmplitudeRatio extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): AmplitudeRatioUnits.DecibelVolts {
+        return AmplitudeRatioUnits.DecibelVolts
     }
 
     /** */
@@ -122,6 +129,22 @@ export class AmplitudeRatio extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with AmplitudeRatio
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof AmplitudeRatioUnits {
+        return AmplitudeRatioUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AmplitudeRatioUnits.DecibelVolts {
+        return AmplitudeRatioUnits.DecibelVolts;
+    }
+
+    /**
      * Create API DTO represent a AmplitudeRatio unit.
      * @param holdInUnit The specific AmplitudeRatio unit to be used in the unit representation at the DTO
      */
@@ -155,41 +178,43 @@ export class AmplitudeRatio extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AmplitudeRatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case AmplitudeRatioUnits.DecibelVolts: return this.value;
+                case AmplitudeRatioUnits.DecibelMicrovolts: return super.internalAdd(this.value, 120);
+                case AmplitudeRatioUnits.DecibelMillivolts: return super.internalAdd(this.value, 60);
+                case AmplitudeRatioUnits.DecibelsUnloaded: return super.internalAdd(this.value, 2.218487499);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case AmplitudeRatioUnits.DecibelVolts:
-                return this.value;
-            case AmplitudeRatioUnits.DecibelMicrovolts:
-                return this.value + 120;
-            case AmplitudeRatioUnits.DecibelMillivolts:
-                return this.value + 60;
-            case AmplitudeRatioUnits.DecibelsUnloaded:
-                return this.value + 2.218487499;
-            default:
-                break;
+            case AmplitudeRatioUnits.DecibelVolts: return this.value;
+            case AmplitudeRatioUnits.DecibelMicrovolts: return this.value + 120;
+            case AmplitudeRatioUnits.DecibelMillivolts: return this.value + 60;
+            case AmplitudeRatioUnits.DecibelsUnloaded: return this.value + 2.218487499;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AmplitudeRatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case AmplitudeRatioUnits.DecibelVolts: return value;
+                case AmplitudeRatioUnits.DecibelMicrovolts: return super.internalSubtract(value, 120);
+                case AmplitudeRatioUnits.DecibelMillivolts: return super.internalSubtract(value, 60);
+                case AmplitudeRatioUnits.DecibelsUnloaded: return super.internalSubtract(value, 2.218487499);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case AmplitudeRatioUnits.DecibelVolts:
-                return value;
-            case AmplitudeRatioUnits.DecibelMicrovolts:
-                return value - 120;
-            case AmplitudeRatioUnits.DecibelMillivolts:
-                return value - 60;
-            case AmplitudeRatioUnits.DecibelsUnloaded:
-                return value - 2.218487499;
-            default:
-                break;
+            case AmplitudeRatioUnits.DecibelVolts: return value;
+            case AmplitudeRatioUnits.DecibelMicrovolts: return value - 120;
+            case AmplitudeRatioUnits.DecibelMillivolts: return value - 60;
+            case AmplitudeRatioUnits.DecibelsUnloaded: return value - 2.218487499;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

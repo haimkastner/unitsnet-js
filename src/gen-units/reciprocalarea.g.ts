@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ReciprocalArea */
 export interface ReciprocalAreaDto {
@@ -36,7 +36,7 @@ export enum ReciprocalAreaUnits {
 
 /** Reciprocal area (Inverse-square) quantity is used to specify a physical quantity inversely proportional to the square of the distance. */
 export class ReciprocalArea extends BaseUnit {
-    private value: number;
+    protected value: number;
     private inversesquaremetersLazy: number | null = null;
     private inversesquarekilometersLazy: number | null = null;
     private inversesquaredecimetersLazy: number | null = null;
@@ -58,7 +58,9 @@ export class ReciprocalArea extends BaseUnit {
     public constructor(value: number, fromUnit: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -68,6 +70,11 @@ export class ReciprocalArea extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ReciprocalAreaUnits.InverseSquareMeters {
+        return ReciprocalAreaUnits.InverseSquareMeters
     }
 
     /** */
@@ -269,6 +276,22 @@ export class ReciprocalArea extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ReciprocalArea
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ReciprocalAreaUnits {
+        return ReciprocalAreaUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ReciprocalAreaUnits.InverseSquareMeters {
+        return ReciprocalAreaUnits.InverseSquareMeters;
+    }
+
+    /**
      * Create API DTO represent a ReciprocalArea unit.
      * @param holdInUnit The specific ReciprocalArea unit to be used in the unit representation at the DTO
      */
@@ -309,69 +332,71 @@ export class ReciprocalArea extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ReciprocalAreaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ReciprocalAreaUnits.InverseSquareMeters: return this.value;
+                case ReciprocalAreaUnits.InverseSquareKilometers: return super.internalMultiply(this.value, 1e6);
+                case ReciprocalAreaUnits.InverseSquareDecimeters: return super.internalMultiply(this.value, 1e-2);
+                case ReciprocalAreaUnits.InverseSquareCentimeters: return super.internalMultiply(this.value, 1e-4);
+                case ReciprocalAreaUnits.InverseSquareMillimeters: return super.internalMultiply(this.value, 1e-6);
+                case ReciprocalAreaUnits.InverseSquareMicrometers: return super.internalMultiply(this.value, 1e-12);
+                case ReciprocalAreaUnits.InverseSquareMiles: return super.internalMultiply(this.value, 2.59e6);
+                case ReciprocalAreaUnits.InverseSquareYards: return super.internalMultiply(this.value, 0.836127);
+                case ReciprocalAreaUnits.InverseSquareFeet: return super.internalMultiply(this.value, 0.092903);
+                case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return super.internalMultiply(this.value, 0.09290341161);
+                case ReciprocalAreaUnits.InverseSquareInches: return super.internalMultiply(this.value, 0.00064516);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ReciprocalAreaUnits.InverseSquareMeters:
-                return this.value;
-            case ReciprocalAreaUnits.InverseSquareKilometers:
-                return this.value * 1e6;
-            case ReciprocalAreaUnits.InverseSquareDecimeters:
-                return this.value * 1e-2;
-            case ReciprocalAreaUnits.InverseSquareCentimeters:
-                return this.value * 1e-4;
-            case ReciprocalAreaUnits.InverseSquareMillimeters:
-                return this.value * 1e-6;
-            case ReciprocalAreaUnits.InverseSquareMicrometers:
-                return this.value * 1e-12;
-            case ReciprocalAreaUnits.InverseSquareMiles:
-                return this.value * 2.59e6;
-            case ReciprocalAreaUnits.InverseSquareYards:
-                return this.value * 0.836127;
-            case ReciprocalAreaUnits.InverseSquareFeet:
-                return this.value * 0.092903;
-            case ReciprocalAreaUnits.InverseUsSurveySquareFeet:
-                return this.value * 0.09290341161;
-            case ReciprocalAreaUnits.InverseSquareInches:
-                return this.value * 0.00064516;
-            default:
-                break;
+            case ReciprocalAreaUnits.InverseSquareMeters: return this.value;
+            case ReciprocalAreaUnits.InverseSquareKilometers: return this.value * 1e6;
+            case ReciprocalAreaUnits.InverseSquareDecimeters: return this.value * 1e-2;
+            case ReciprocalAreaUnits.InverseSquareCentimeters: return this.value * 1e-4;
+            case ReciprocalAreaUnits.InverseSquareMillimeters: return this.value * 1e-6;
+            case ReciprocalAreaUnits.InverseSquareMicrometers: return this.value * 1e-12;
+            case ReciprocalAreaUnits.InverseSquareMiles: return this.value * 2.59e6;
+            case ReciprocalAreaUnits.InverseSquareYards: return this.value * 0.836127;
+            case ReciprocalAreaUnits.InverseSquareFeet: return this.value * 0.092903;
+            case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return this.value * 0.09290341161;
+            case ReciprocalAreaUnits.InverseSquareInches: return this.value * 0.00064516;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ReciprocalAreaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ReciprocalAreaUnits.InverseSquareMeters: return value;
+                case ReciprocalAreaUnits.InverseSquareKilometers: return super.internalDivide(value, 1e6);
+                case ReciprocalAreaUnits.InverseSquareDecimeters: return super.internalDivide(value, 1e-2);
+                case ReciprocalAreaUnits.InverseSquareCentimeters: return super.internalDivide(value, 1e-4);
+                case ReciprocalAreaUnits.InverseSquareMillimeters: return super.internalDivide(value, 1e-6);
+                case ReciprocalAreaUnits.InverseSquareMicrometers: return super.internalDivide(value, 1e-12);
+                case ReciprocalAreaUnits.InverseSquareMiles: return super.internalDivide(value, 2.59e6);
+                case ReciprocalAreaUnits.InverseSquareYards: return super.internalDivide(value, 0.836127);
+                case ReciprocalAreaUnits.InverseSquareFeet: return super.internalDivide(value, 0.092903);
+                case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return super.internalDivide(value, 0.09290341161);
+                case ReciprocalAreaUnits.InverseSquareInches: return super.internalDivide(value, 0.00064516);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ReciprocalAreaUnits.InverseSquareMeters:
-                return value;
-            case ReciprocalAreaUnits.InverseSquareKilometers:
-                return value / 1e6;
-            case ReciprocalAreaUnits.InverseSquareDecimeters:
-                return value / 1e-2;
-            case ReciprocalAreaUnits.InverseSquareCentimeters:
-                return value / 1e-4;
-            case ReciprocalAreaUnits.InverseSquareMillimeters:
-                return value / 1e-6;
-            case ReciprocalAreaUnits.InverseSquareMicrometers:
-                return value / 1e-12;
-            case ReciprocalAreaUnits.InverseSquareMiles:
-                return value / 2.59e6;
-            case ReciprocalAreaUnits.InverseSquareYards:
-                return value / 0.836127;
-            case ReciprocalAreaUnits.InverseSquareFeet:
-                return value / 0.092903;
-            case ReciprocalAreaUnits.InverseUsSurveySquareFeet:
-                return value / 0.09290341161;
-            case ReciprocalAreaUnits.InverseSquareInches:
-                return value / 0.00064516;
-            default:
-                break;
+            case ReciprocalAreaUnits.InverseSquareMeters: return value;
+            case ReciprocalAreaUnits.InverseSquareKilometers: return value / 1e6;
+            case ReciprocalAreaUnits.InverseSquareDecimeters: return value / 1e-2;
+            case ReciprocalAreaUnits.InverseSquareCentimeters: return value / 1e-4;
+            case ReciprocalAreaUnits.InverseSquareMillimeters: return value / 1e-6;
+            case ReciprocalAreaUnits.InverseSquareMicrometers: return value / 1e-12;
+            case ReciprocalAreaUnits.InverseSquareMiles: return value / 2.59e6;
+            case ReciprocalAreaUnits.InverseSquareYards: return value / 0.836127;
+            case ReciprocalAreaUnits.InverseSquareFeet: return value / 0.092903;
+            case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return value / 0.09290341161;
+            case ReciprocalAreaUnits.InverseSquareInches: return value / 0.00064516;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

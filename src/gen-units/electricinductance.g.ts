@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricInductance */
 export interface ElectricInductanceDto {
@@ -24,7 +24,7 @@ export enum ElectricInductanceUnits {
 
 /** Inductance is a property of an electrical conductor which opposes a change in current. */
 export class ElectricInductance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private henriesLazy: number | null = null;
     private picohenriesLazy: number | null = null;
     private nanohenriesLazy: number | null = null;
@@ -40,7 +40,9 @@ export class ElectricInductance extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricInductanceUnits = ElectricInductanceUnits.Henries) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -50,6 +52,11 @@ export class ElectricInductance extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricInductanceUnits.Henries {
+        return ElectricInductanceUnits.Henries
     }
 
     /** */
@@ -143,6 +150,22 @@ export class ElectricInductance extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricInductance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricInductanceUnits {
+        return ElectricInductanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricInductanceUnits.Henries {
+        return ElectricInductanceUnits.Henries;
+    }
+
+    /**
      * Create API DTO represent a ElectricInductance unit.
      * @param holdInUnit The specific ElectricInductance unit to be used in the unit representation at the DTO
      */
@@ -177,45 +200,47 @@ export class ElectricInductance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricInductanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricInductanceUnits.Henries: return this.value;
+                case ElectricInductanceUnits.Picohenries: return super.internalDivide(this.value, 1e-12);
+                case ElectricInductanceUnits.Nanohenries: return super.internalDivide(this.value, 1e-9);
+                case ElectricInductanceUnits.Microhenries: return super.internalDivide(this.value, 0.000001);
+                case ElectricInductanceUnits.Millihenries: return super.internalDivide(this.value, 0.001);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricInductanceUnits.Henries:
-                return this.value;
-            case ElectricInductanceUnits.Picohenries:
-                return (this.value) / 1e-12;
-            case ElectricInductanceUnits.Nanohenries:
-                return (this.value) / 1e-9;
-            case ElectricInductanceUnits.Microhenries:
-                return (this.value) / 0.000001;
-            case ElectricInductanceUnits.Millihenries:
-                return (this.value) / 0.001;
-            default:
-                break;
+            case ElectricInductanceUnits.Henries: return this.value;
+            case ElectricInductanceUnits.Picohenries: return (this.value) / 1e-12;
+            case ElectricInductanceUnits.Nanohenries: return (this.value) / 1e-9;
+            case ElectricInductanceUnits.Microhenries: return (this.value) / 0.000001;
+            case ElectricInductanceUnits.Millihenries: return (this.value) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricInductanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricInductanceUnits.Henries: return value;
+                case ElectricInductanceUnits.Picohenries: return super.internalMultiply(value, 1e-12);
+                case ElectricInductanceUnits.Nanohenries: return super.internalMultiply(value, 1e-9);
+                case ElectricInductanceUnits.Microhenries: return super.internalMultiply(value, 0.000001);
+                case ElectricInductanceUnits.Millihenries: return super.internalMultiply(value, 0.001);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricInductanceUnits.Henries:
-                return value;
-            case ElectricInductanceUnits.Picohenries:
-                return (value) * 1e-12;
-            case ElectricInductanceUnits.Nanohenries:
-                return (value) * 1e-9;
-            case ElectricInductanceUnits.Microhenries:
-                return (value) * 0.000001;
-            case ElectricInductanceUnits.Millihenries:
-                return (value) * 0.001;
-            default:
-                break;
+            case ElectricInductanceUnits.Henries: return value;
+            case ElectricInductanceUnits.Picohenries: return (value) * 1e-12;
+            case ElectricInductanceUnits.Nanohenries: return (value) * 1e-9;
+            case ElectricInductanceUnits.Microhenries: return (value) * 0.000001;
+            case ElectricInductanceUnits.Millihenries: return (value) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

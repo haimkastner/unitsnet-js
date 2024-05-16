@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Luminance */
 export interface LuminanceDto {
@@ -34,7 +34,7 @@ export enum LuminanceUnits {
 
 /** Luminance is a photometric measure of the luminous intensity per unit area of light travelling in a given direction. */
 export class Luminance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private candelaspersquaremeterLazy: number | null = null;
     private candelaspersquarefootLazy: number | null = null;
     private candelaspersquareinchLazy: number | null = null;
@@ -55,7 +55,9 @@ export class Luminance extends BaseUnit {
     public constructor(value: number, fromUnit: LuminanceUnits = LuminanceUnits.CandelasPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -65,6 +67,11 @@ export class Luminance extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): LuminanceUnits.CandelasPerSquareMeter {
+        return LuminanceUnits.CandelasPerSquareMeter
     }
 
     /** */
@@ -248,6 +255,22 @@ export class Luminance extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Luminance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof LuminanceUnits {
+        return LuminanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LuminanceUnits.CandelasPerSquareMeter {
+        return LuminanceUnits.CandelasPerSquareMeter;
+    }
+
+    /**
      * Create API DTO represent a Luminance unit.
      * @param holdInUnit The specific Luminance unit to be used in the unit representation at the DTO
      */
@@ -287,65 +310,67 @@ export class Luminance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LuminanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LuminanceUnits.CandelasPerSquareMeter: return this.value;
+                case LuminanceUnits.CandelasPerSquareFoot: return super.internalDivide(this.value, 1.07639e1);
+                case LuminanceUnits.CandelasPerSquareInch: return super.internalDivide(this.value, 1.5500031e3);
+                case LuminanceUnits.Nits: return this.value;
+                case LuminanceUnits.NanocandelasPerSquareMeter: return super.internalDivide(this.value, 1e-9);
+                case LuminanceUnits.MicrocandelasPerSquareMeter: return super.internalDivide(this.value, 0.000001);
+                case LuminanceUnits.MillicandelasPerSquareMeter: return super.internalDivide(this.value, 0.001);
+                case LuminanceUnits.CenticandelasPerSquareMeter: return super.internalDivide(this.value, 0.01);
+                case LuminanceUnits.DecicandelasPerSquareMeter: return super.internalDivide(this.value, 0.1);
+                case LuminanceUnits.KilocandelasPerSquareMeter: return super.internalDivide(this.value, 1000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LuminanceUnits.CandelasPerSquareMeter:
-                return this.value;
-            case LuminanceUnits.CandelasPerSquareFoot:
-                return this.value/ 1.07639e1;
-            case LuminanceUnits.CandelasPerSquareInch:
-                return this.value/ 1.5500031e3;
-            case LuminanceUnits.Nits:
-                return this.value;
-            case LuminanceUnits.NanocandelasPerSquareMeter:
-                return (this.value) / 1e-9;
-            case LuminanceUnits.MicrocandelasPerSquareMeter:
-                return (this.value) / 0.000001;
-            case LuminanceUnits.MillicandelasPerSquareMeter:
-                return (this.value) / 0.001;
-            case LuminanceUnits.CenticandelasPerSquareMeter:
-                return (this.value) / 0.01;
-            case LuminanceUnits.DecicandelasPerSquareMeter:
-                return (this.value) / 0.1;
-            case LuminanceUnits.KilocandelasPerSquareMeter:
-                return (this.value) / 1000;
-            default:
-                break;
+            case LuminanceUnits.CandelasPerSquareMeter: return this.value;
+            case LuminanceUnits.CandelasPerSquareFoot: return this.value/ 1.07639e1;
+            case LuminanceUnits.CandelasPerSquareInch: return this.value/ 1.5500031e3;
+            case LuminanceUnits.Nits: return this.value;
+            case LuminanceUnits.NanocandelasPerSquareMeter: return (this.value) / 1e-9;
+            case LuminanceUnits.MicrocandelasPerSquareMeter: return (this.value) / 0.000001;
+            case LuminanceUnits.MillicandelasPerSquareMeter: return (this.value) / 0.001;
+            case LuminanceUnits.CenticandelasPerSquareMeter: return (this.value) / 0.01;
+            case LuminanceUnits.DecicandelasPerSquareMeter: return (this.value) / 0.1;
+            case LuminanceUnits.KilocandelasPerSquareMeter: return (this.value) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LuminanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LuminanceUnits.CandelasPerSquareMeter: return value;
+                case LuminanceUnits.CandelasPerSquareFoot: return super.internalMultiply(value, 1.07639e1);
+                case LuminanceUnits.CandelasPerSquareInch: return super.internalMultiply(value, 1.5500031e3);
+                case LuminanceUnits.Nits: return value;
+                case LuminanceUnits.NanocandelasPerSquareMeter: return super.internalMultiply(value, 1e-9);
+                case LuminanceUnits.MicrocandelasPerSquareMeter: return super.internalMultiply(value, 0.000001);
+                case LuminanceUnits.MillicandelasPerSquareMeter: return super.internalMultiply(value, 0.001);
+                case LuminanceUnits.CenticandelasPerSquareMeter: return super.internalMultiply(value, 0.01);
+                case LuminanceUnits.DecicandelasPerSquareMeter: return super.internalMultiply(value, 0.1);
+                case LuminanceUnits.KilocandelasPerSquareMeter: return super.internalMultiply(value, 1000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LuminanceUnits.CandelasPerSquareMeter:
-                return value;
-            case LuminanceUnits.CandelasPerSquareFoot:
-                return value* 1.07639e1;
-            case LuminanceUnits.CandelasPerSquareInch:
-                return value* 1.5500031e3;
-            case LuminanceUnits.Nits:
-                return value;
-            case LuminanceUnits.NanocandelasPerSquareMeter:
-                return (value) * 1e-9;
-            case LuminanceUnits.MicrocandelasPerSquareMeter:
-                return (value) * 0.000001;
-            case LuminanceUnits.MillicandelasPerSquareMeter:
-                return (value) * 0.001;
-            case LuminanceUnits.CenticandelasPerSquareMeter:
-                return (value) * 0.01;
-            case LuminanceUnits.DecicandelasPerSquareMeter:
-                return (value) * 0.1;
-            case LuminanceUnits.KilocandelasPerSquareMeter:
-                return (value) * 1000;
-            default:
-                break;
+            case LuminanceUnits.CandelasPerSquareMeter: return value;
+            case LuminanceUnits.CandelasPerSquareFoot: return value* 1.07639e1;
+            case LuminanceUnits.CandelasPerSquareInch: return value* 1.5500031e3;
+            case LuminanceUnits.Nits: return value;
+            case LuminanceUnits.NanocandelasPerSquareMeter: return (value) * 1e-9;
+            case LuminanceUnits.MicrocandelasPerSquareMeter: return (value) * 0.000001;
+            case LuminanceUnits.MillicandelasPerSquareMeter: return (value) * 0.001;
+            case LuminanceUnits.CenticandelasPerSquareMeter: return (value) * 0.01;
+            case LuminanceUnits.DecicandelasPerSquareMeter: return (value) * 0.1;
+            case LuminanceUnits.KilocandelasPerSquareMeter: return (value) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

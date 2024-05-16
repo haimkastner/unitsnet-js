@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Molality */
 export interface MolalityDto {
@@ -18,7 +18,7 @@ export enum MolalityUnits {
 
 /** Molality is a measure of the amount of solute in a solution relative to a given mass of solvent. */
 export class Molality extends BaseUnit {
-    private value: number;
+    protected value: number;
     private molesperkilogramLazy: number | null = null;
     private molespergramLazy: number | null = null;
 
@@ -31,7 +31,9 @@ export class Molality extends BaseUnit {
     public constructor(value: number, fromUnit: MolalityUnits = MolalityUnits.MolesPerKilogram) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -41,6 +43,11 @@ export class Molality extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): MolalityUnits.MolesPerKilogram {
+        return MolalityUnits.MolesPerKilogram
     }
 
     /** */
@@ -80,6 +87,22 @@ export class Molality extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Molality
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof MolalityUnits {
+        return MolalityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MolalityUnits.MolesPerKilogram {
+        return MolalityUnits.MolesPerKilogram;
+    }
+
+    /**
      * Create API DTO represent a Molality unit.
      * @param holdInUnit The specific Molality unit to be used in the unit representation at the DTO
      */
@@ -111,33 +134,35 @@ export class Molality extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MolalityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MolalityUnits.MolesPerKilogram: return this.value;
+                case MolalityUnits.MolesPerGram: return super.internalMultiply(this.value, 1e-3);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MolalityUnits.MolesPerKilogram:
-                return this.value;
-            case MolalityUnits.MolesPerGram:
-                return this.value * 1e-3;
-            default:
-                break;
+            case MolalityUnits.MolesPerKilogram: return this.value;
+            case MolalityUnits.MolesPerGram: return this.value * 1e-3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MolalityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MolalityUnits.MolesPerKilogram: return value;
+                case MolalityUnits.MolesPerGram: return super.internalDivide(value, 1e-3);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MolalityUnits.MolesPerKilogram:
-                return value;
-            case MolalityUnits.MolesPerGram:
-                return value / 1e-3;
-            default:
-                break;
+            case MolalityUnits.MolesPerKilogram: return value;
+            case MolalityUnits.MolesPerGram: return value / 1e-3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

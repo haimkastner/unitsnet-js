@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Turbidity */
 export interface TurbidityDto {
@@ -16,7 +16,7 @@ export enum TurbidityUnits {
 
 /** Turbidity is the cloudiness or haziness of a fluid caused by large numbers of individual particles that are generally invisible to the naked eye, similar to smoke in air. The measurement of turbidity is a key test of water quality. */
 export class Turbidity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private ntuLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class Turbidity extends BaseUnit {
     public constructor(value: number, fromUnit: TurbidityUnits = TurbidityUnits.NTU) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class Turbidity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): TurbidityUnits.NTU {
+        return TurbidityUnits.NTU
     }
 
     /** */
@@ -56,6 +63,22 @@ export class Turbidity extends BaseUnit {
      */
     public static FromNTU(value: number): Turbidity {
         return new Turbidity(value, TurbidityUnits.NTU);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Turbidity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof TurbidityUnits {
+        return TurbidityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): TurbidityUnits.NTU {
+        return TurbidityUnits.NTU;
     }
 
     /**
@@ -89,29 +112,31 @@ export class Turbidity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: TurbidityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case TurbidityUnits.NTU: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case TurbidityUnits.NTU:
-                return this.value;
-            default:
-                break;
+            case TurbidityUnits.NTU: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: TurbidityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case TurbidityUnits.NTU: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case TurbidityUnits.NTU:
-                return value;
-            default:
-                break;
+            case TurbidityUnits.NTU: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

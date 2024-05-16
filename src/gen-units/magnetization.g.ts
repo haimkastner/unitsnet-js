@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Magnetization */
 export interface MagnetizationDto {
@@ -16,7 +16,7 @@ export enum MagnetizationUnits {
 
 /** In classical electromagnetism, magnetization is the vector field that expresses the density of permanent or induced magnetic dipole moments in a magnetic material. */
 export class Magnetization extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amperespermeterLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class Magnetization extends BaseUnit {
     public constructor(value: number, fromUnit: MagnetizationUnits = MagnetizationUnits.AmperesPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class Magnetization extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): MagnetizationUnits.AmperesPerMeter {
+        return MagnetizationUnits.AmperesPerMeter
     }
 
     /** */
@@ -56,6 +63,22 @@ export class Magnetization extends BaseUnit {
      */
     public static FromAmperesPerMeter(value: number): Magnetization {
         return new Magnetization(value, MagnetizationUnits.AmperesPerMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Magnetization
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof MagnetizationUnits {
+        return MagnetizationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MagnetizationUnits.AmperesPerMeter {
+        return MagnetizationUnits.AmperesPerMeter;
     }
 
     /**
@@ -89,29 +112,31 @@ export class Magnetization extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MagnetizationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MagnetizationUnits.AmperesPerMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MagnetizationUnits.AmperesPerMeter:
-                return this.value;
-            default:
-                break;
+            case MagnetizationUnits.AmperesPerMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MagnetizationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MagnetizationUnits.AmperesPerMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MagnetizationUnits.AmperesPerMeter:
-                return value;
-            default:
-                break;
+            case MagnetizationUnits.AmperesPerMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

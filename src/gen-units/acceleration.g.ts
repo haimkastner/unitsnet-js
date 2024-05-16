@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Acceleration */
 export interface AccelerationDto {
@@ -42,7 +42,7 @@ export enum AccelerationUnits {
 
 /** Acceleration, in physics, is the rate at which the velocity of an object changes over time. An object's acceleration is the net result of any and all forces acting on the object, as described by Newton's Second Law. The SI unit for acceleration is the Meter per second squared (m/s²). Accelerations are vector quantities (they have magnitude and direction) and add according to the parallelogram law. As a vector, the calculated net force is equal to the product of the object's mass (a scalar quantity) and the acceleration. */
 export class Acceleration extends BaseUnit {
-    private value: number;
+    protected value: number;
     private meterspersecondsquaredLazy: number | null = null;
     private inchespersecondsquaredLazy: number | null = null;
     private feetpersecondsquaredLazy: number | null = null;
@@ -67,7 +67,9 @@ export class Acceleration extends BaseUnit {
     public constructor(value: number, fromUnit: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +79,11 @@ export class Acceleration extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): AccelerationUnits.MetersPerSecondSquared {
+        return AccelerationUnits.MetersPerSecondSquared
     }
 
     /** */
@@ -332,6 +339,22 @@ export class Acceleration extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Acceleration
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof AccelerationUnits {
+        return AccelerationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AccelerationUnits.MetersPerSecondSquared {
+        return AccelerationUnits.MetersPerSecondSquared;
+    }
+
+    /**
      * Create API DTO represent a Acceleration unit.
      * @param holdInUnit The specific Acceleration unit to be used in the unit representation at the DTO
      */
@@ -375,81 +398,101 @@ export class Acceleration extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AccelerationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case AccelerationUnits.MetersPerSecondSquared: return this.value;
+                case AccelerationUnits.InchesPerSecondSquared: return super.internalDivide(this.value, 0.0254);
+                case AccelerationUnits.FeetPerSecondSquared: return super.internalDivide(this.value, 0.304800);
+                case AccelerationUnits.KnotsPerSecond: return super.internalDivide(this.value, 0.5144444444444);
+                case AccelerationUnits.KnotsPerMinute: {
+                    const v3 = super.internalDivide(this.value, 0.5144444444444);
+                    return super.internalMultiply(v3, 60);
+                }
+                case AccelerationUnits.KnotsPerHour: {
+                    const v3 = super.internalDivide(this.value, 0.5144444444444);
+                    return super.internalMultiply(v3, 3600);
+                }
+                case AccelerationUnits.StandardGravity: return super.internalDivide(this.value, 9.80665);
+                case AccelerationUnits.NanometersPerSecondSquared: return super.internalDivide(this.value, 1e-9);
+                case AccelerationUnits.MicrometersPerSecondSquared: return super.internalDivide(this.value, 0.000001);
+                case AccelerationUnits.MillimetersPerSecondSquared: return super.internalDivide(this.value, 0.001);
+                case AccelerationUnits.CentimetersPerSecondSquared: return super.internalDivide(this.value, 0.01);
+                case AccelerationUnits.DecimetersPerSecondSquared: return super.internalDivide(this.value, 0.1);
+                case AccelerationUnits.KilometersPerSecondSquared: return super.internalDivide(this.value, 1000);
+                case AccelerationUnits.MillistandardGravity: {
+                    const v3 = super.internalDivide(this.value, 9.80665);
+                    return super.internalDivide(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case AccelerationUnits.MetersPerSecondSquared:
-                return this.value;
-            case AccelerationUnits.InchesPerSecondSquared:
-                return this.value / 0.0254;
-            case AccelerationUnits.FeetPerSecondSquared:
-                return this.value / 0.304800;
-            case AccelerationUnits.KnotsPerSecond:
-                return this.value / 0.5144444444444;
-            case AccelerationUnits.KnotsPerMinute:
-                return this.value / 0.5144444444444 * 60;
-            case AccelerationUnits.KnotsPerHour:
-                return this.value / 0.5144444444444 * 3600;
-            case AccelerationUnits.StandardGravity:
-                return this.value / 9.80665;
-            case AccelerationUnits.NanometersPerSecondSquared:
-                return (this.value) / 1e-9;
-            case AccelerationUnits.MicrometersPerSecondSquared:
-                return (this.value) / 0.000001;
-            case AccelerationUnits.MillimetersPerSecondSquared:
-                return (this.value) / 0.001;
-            case AccelerationUnits.CentimetersPerSecondSquared:
-                return (this.value) / 0.01;
-            case AccelerationUnits.DecimetersPerSecondSquared:
-                return (this.value) / 0.1;
-            case AccelerationUnits.KilometersPerSecondSquared:
-                return (this.value) / 1000;
-            case AccelerationUnits.MillistandardGravity:
-                return (this.value / 9.80665) / 0.001;
-            default:
-                break;
+            case AccelerationUnits.MetersPerSecondSquared: return this.value;
+            case AccelerationUnits.InchesPerSecondSquared: return this.value / 0.0254;
+            case AccelerationUnits.FeetPerSecondSquared: return this.value / 0.304800;
+            case AccelerationUnits.KnotsPerSecond: return this.value / 0.5144444444444;
+            case AccelerationUnits.KnotsPerMinute: return this.value / 0.5144444444444 * 60;
+            case AccelerationUnits.KnotsPerHour: return this.value / 0.5144444444444 * 3600;
+            case AccelerationUnits.StandardGravity: return this.value / 9.80665;
+            case AccelerationUnits.NanometersPerSecondSquared: return (this.value) / 1e-9;
+            case AccelerationUnits.MicrometersPerSecondSquared: return (this.value) / 0.000001;
+            case AccelerationUnits.MillimetersPerSecondSquared: return (this.value) / 0.001;
+            case AccelerationUnits.CentimetersPerSecondSquared: return (this.value) / 0.01;
+            case AccelerationUnits.DecimetersPerSecondSquared: return (this.value) / 0.1;
+            case AccelerationUnits.KilometersPerSecondSquared: return (this.value) / 1000;
+            case AccelerationUnits.MillistandardGravity: return (this.value / 9.80665) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AccelerationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case AccelerationUnits.MetersPerSecondSquared: return value;
+                case AccelerationUnits.InchesPerSecondSquared: return super.internalMultiply(value, 0.0254);
+                case AccelerationUnits.FeetPerSecondSquared: return super.internalMultiply(value, 0.304800);
+                case AccelerationUnits.KnotsPerSecond: return super.internalMultiply(value, 0.5144444444444);
+                case AccelerationUnits.KnotsPerMinute: {
+                    const v4 = super.internalDivide(0.5144444444444, 60);
+                    return super.internalMultiply(value, v4);
+                }
+                case AccelerationUnits.KnotsPerHour: {
+                    const v4 = super.internalDivide(0.5144444444444, 3600);
+                    return super.internalMultiply(value, v4);
+                }
+                case AccelerationUnits.StandardGravity: return super.internalMultiply(value, 9.80665);
+                case AccelerationUnits.NanometersPerSecondSquared: return super.internalMultiply(value, 1e-9);
+                case AccelerationUnits.MicrometersPerSecondSquared: return super.internalMultiply(value, 0.000001);
+                case AccelerationUnits.MillimetersPerSecondSquared: return super.internalMultiply(value, 0.001);
+                case AccelerationUnits.CentimetersPerSecondSquared: return super.internalMultiply(value, 0.01);
+                case AccelerationUnits.DecimetersPerSecondSquared: return super.internalMultiply(value, 0.1);
+                case AccelerationUnits.KilometersPerSecondSquared: return super.internalMultiply(value, 1000);
+                case AccelerationUnits.MillistandardGravity: {
+                    const v3 = super.internalMultiply(value, 9.80665);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case AccelerationUnits.MetersPerSecondSquared:
-                return value;
-            case AccelerationUnits.InchesPerSecondSquared:
-                return value * 0.0254;
-            case AccelerationUnits.FeetPerSecondSquared:
-                return value * 0.304800;
-            case AccelerationUnits.KnotsPerSecond:
-                return value * 0.5144444444444;
-            case AccelerationUnits.KnotsPerMinute:
-                return value * 0.5144444444444 / 60;
-            case AccelerationUnits.KnotsPerHour:
-                return value * 0.5144444444444 / 3600;
-            case AccelerationUnits.StandardGravity:
-                return value * 9.80665;
-            case AccelerationUnits.NanometersPerSecondSquared:
-                return (value) * 1e-9;
-            case AccelerationUnits.MicrometersPerSecondSquared:
-                return (value) * 0.000001;
-            case AccelerationUnits.MillimetersPerSecondSquared:
-                return (value) * 0.001;
-            case AccelerationUnits.CentimetersPerSecondSquared:
-                return (value) * 0.01;
-            case AccelerationUnits.DecimetersPerSecondSquared:
-                return (value) * 0.1;
-            case AccelerationUnits.KilometersPerSecondSquared:
-                return (value) * 1000;
-            case AccelerationUnits.MillistandardGravity:
-                return (value * 9.80665) * 0.001;
-            default:
-                break;
+            case AccelerationUnits.MetersPerSecondSquared: return value;
+            case AccelerationUnits.InchesPerSecondSquared: return value * 0.0254;
+            case AccelerationUnits.FeetPerSecondSquared: return value * 0.304800;
+            case AccelerationUnits.KnotsPerSecond: return value * 0.5144444444444;
+            case AccelerationUnits.KnotsPerMinute: return value * 0.5144444444444 / 60;
+            case AccelerationUnits.KnotsPerHour: return value * 0.5144444444444 / 3600;
+            case AccelerationUnits.StandardGravity: return value * 9.80665;
+            case AccelerationUnits.NanometersPerSecondSquared: return (value) * 1e-9;
+            case AccelerationUnits.MicrometersPerSecondSquared: return (value) * 0.000001;
+            case AccelerationUnits.MillimetersPerSecondSquared: return (value) * 0.001;
+            case AccelerationUnits.CentimetersPerSecondSquared: return (value) * 0.01;
+            case AccelerationUnits.DecimetersPerSecondSquared: return (value) * 0.1;
+            case AccelerationUnits.KilometersPerSecondSquared: return (value) * 1000;
+            case AccelerationUnits.MillistandardGravity: return (value * 9.80665) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricCurrentDensity */
 export interface ElectricCurrentDensityDto {
@@ -20,7 +20,7 @@ export enum ElectricCurrentDensityUnits {
 
 /** In electromagnetism, current density is the electric current per unit area of cross section. */
 export class ElectricCurrentDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amperespersquaremeterLazy: number | null = null;
     private amperespersquareinchLazy: number | null = null;
     private amperespersquarefootLazy: number | null = null;
@@ -34,7 +34,9 @@ export class ElectricCurrentDensity extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -44,6 +46,11 @@ export class ElectricCurrentDensity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricCurrentDensityUnits.AmperesPerSquareMeter {
+        return ElectricCurrentDensityUnits.AmperesPerSquareMeter
     }
 
     /** */
@@ -101,6 +108,22 @@ export class ElectricCurrentDensity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricCurrentDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricCurrentDensityUnits {
+        return ElectricCurrentDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricCurrentDensityUnits.AmperesPerSquareMeter {
+        return ElectricCurrentDensityUnits.AmperesPerSquareMeter;
+    }
+
+    /**
      * Create API DTO represent a ElectricCurrentDensity unit.
      * @param holdInUnit The specific ElectricCurrentDensity unit to be used in the unit representation at the DTO
      */
@@ -133,37 +156,39 @@ export class ElectricCurrentDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricCurrentDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricCurrentDensityUnits.AmperesPerSquareMeter: return this.value;
+                case ElectricCurrentDensityUnits.AmperesPerSquareInch: return super.internalDivide(this.value, 1.5500031000062000e3);
+                case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return super.internalDivide(this.value, 1.0763910416709722e1);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
-                return this.value;
-            case ElectricCurrentDensityUnits.AmperesPerSquareInch:
-                return this.value / 1.5500031000062000e3;
-            case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
-                return this.value / 1.0763910416709722e1;
-            default:
-                break;
+            case ElectricCurrentDensityUnits.AmperesPerSquareMeter: return this.value;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch: return this.value / 1.5500031000062000e3;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return this.value / 1.0763910416709722e1;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricCurrentDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricCurrentDensityUnits.AmperesPerSquareMeter: return value;
+                case ElectricCurrentDensityUnits.AmperesPerSquareInch: return super.internalMultiply(value, 1.5500031000062000e3);
+                case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return super.internalMultiply(value, 1.0763910416709722e1);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
-                return value;
-            case ElectricCurrentDensityUnits.AmperesPerSquareInch:
-                return value * 1.5500031000062000e3;
-            case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
-                return value * 1.0763910416709722e1;
-            default:
-                break;
+            case ElectricCurrentDensityUnits.AmperesPerSquareMeter: return value;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch: return value * 1.5500031000062000e3;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return value * 1.0763910416709722e1;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

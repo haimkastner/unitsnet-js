@@ -3,7 +3,7 @@ import { UnitTypeDefinition } from './models/units-definition';
 import { Project } from 'ts-morph';
 import { generateUnitsModuleExport } from './export-units-generator';
 import { generateUnitsFromUnitsDefinitions } from './units-generator';
-import { generateDocumentation } from './documentation-generatoe';
+import { generateDocumentation } from './documentation-generator';
 import { fetchUnitsDefinitions } from './units-definitions-fetcher';
 
 const unitsJs = `
@@ -23,7 +23,7 @@ const unitsJs = `
 console.info(unitsJs);
 
 const unitsDocumentationDefinitionsDirectory = '..';
-const unitsTestinationDirectory = '../src'
+const unitsDestinationDirectory = '../src'
 
 // Fetch the latest units definitions from the unitsnet repo
 const unitsDefinitions: UnitTypeDefinition[] = fetchUnitsDefinitions('angularsen/UnitsNet');
@@ -35,12 +35,12 @@ const project = new Project({
 });
 
 // Generate the units classes
-generateUnitsFromUnitsDefinitions(project, unitsTestinationDirectory, unitsDefinitions);
+generateUnitsFromUnitsDefinitions(project, unitsDestinationDirectory, unitsDefinitions);
 
 console.info(`Generating Units Export Module ...`);
 
 // Generate the module exports file
-generateUnitsModuleExport(project, unitsTestinationDirectory, unitsDefinitions);
+generateUnitsModuleExport(project, unitsDestinationDirectory, unitsDefinitions);
 
 console.info(`Generating Units Documentation file ...`);
 

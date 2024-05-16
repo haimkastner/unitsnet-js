@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Irradiance */
 export interface IrradianceDto {
@@ -42,7 +42,7 @@ export enum IrradianceUnits {
 
 /** Irradiance is the intensity of ultraviolet (UV) or visible light incident on a surface. */
 export class Irradiance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private wattspersquaremeterLazy: number | null = null;
     private wattspersquarecentimeterLazy: number | null = null;
     private picowattspersquaremeterLazy: number | null = null;
@@ -67,7 +67,9 @@ export class Irradiance extends BaseUnit {
     public constructor(value: number, fromUnit: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +79,11 @@ export class Irradiance extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): IrradianceUnits.WattsPerSquareMeter {
+        return IrradianceUnits.WattsPerSquareMeter
     }
 
     /** */
@@ -332,6 +339,22 @@ export class Irradiance extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Irradiance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof IrradianceUnits {
+        return IrradianceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): IrradianceUnits.WattsPerSquareMeter {
+        return IrradianceUnits.WattsPerSquareMeter;
+    }
+
+    /**
      * Create API DTO represent a Irradiance unit.
      * @param holdInUnit The specific Irradiance unit to be used in the unit representation at the DTO
      */
@@ -375,81 +398,119 @@ export class Irradiance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: IrradianceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case IrradianceUnits.WattsPerSquareMeter: return this.value;
+                case IrradianceUnits.WattsPerSquareCentimeter: return super.internalMultiply(this.value, 0.0001);
+                case IrradianceUnits.PicowattsPerSquareMeter: return super.internalDivide(this.value, 1e-12);
+                case IrradianceUnits.NanowattsPerSquareMeter: return super.internalDivide(this.value, 1e-9);
+                case IrradianceUnits.MicrowattsPerSquareMeter: return super.internalDivide(this.value, 0.000001);
+                case IrradianceUnits.MilliwattsPerSquareMeter: return super.internalDivide(this.value, 0.001);
+                case IrradianceUnits.KilowattsPerSquareMeter: return super.internalDivide(this.value, 1000);
+                case IrradianceUnits.MegawattsPerSquareMeter: return super.internalDivide(this.value, 1000000);
+                case IrradianceUnits.PicowattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 1e-12);
+                }
+                case IrradianceUnits.NanowattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 1e-9);
+                }
+                case IrradianceUnits.MicrowattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case IrradianceUnits.MilliwattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case IrradianceUnits.KilowattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 1000);
+                }
+                case IrradianceUnits.MegawattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 0.0001);
+                    return super.internalDivide(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case IrradianceUnits.WattsPerSquareMeter:
-                return this.value;
-            case IrradianceUnits.WattsPerSquareCentimeter:
-                return this.value * 0.0001;
-            case IrradianceUnits.PicowattsPerSquareMeter:
-                return (this.value) / 1e-12;
-            case IrradianceUnits.NanowattsPerSquareMeter:
-                return (this.value) / 1e-9;
-            case IrradianceUnits.MicrowattsPerSquareMeter:
-                return (this.value) / 0.000001;
-            case IrradianceUnits.MilliwattsPerSquareMeter:
-                return (this.value) / 0.001;
-            case IrradianceUnits.KilowattsPerSquareMeter:
-                return (this.value) / 1000;
-            case IrradianceUnits.MegawattsPerSquareMeter:
-                return (this.value) / 1000000;
-            case IrradianceUnits.PicowattsPerSquareCentimeter:
-                return (this.value * 0.0001) / 1e-12;
-            case IrradianceUnits.NanowattsPerSquareCentimeter:
-                return (this.value * 0.0001) / 1e-9;
-            case IrradianceUnits.MicrowattsPerSquareCentimeter:
-                return (this.value * 0.0001) / 0.000001;
-            case IrradianceUnits.MilliwattsPerSquareCentimeter:
-                return (this.value * 0.0001) / 0.001;
-            case IrradianceUnits.KilowattsPerSquareCentimeter:
-                return (this.value * 0.0001) / 1000;
-            case IrradianceUnits.MegawattsPerSquareCentimeter:
-                return (this.value * 0.0001) / 1000000;
-            default:
-                break;
+            case IrradianceUnits.WattsPerSquareMeter: return this.value;
+            case IrradianceUnits.WattsPerSquareCentimeter: return this.value * 0.0001;
+            case IrradianceUnits.PicowattsPerSquareMeter: return (this.value) / 1e-12;
+            case IrradianceUnits.NanowattsPerSquareMeter: return (this.value) / 1e-9;
+            case IrradianceUnits.MicrowattsPerSquareMeter: return (this.value) / 0.000001;
+            case IrradianceUnits.MilliwattsPerSquareMeter: return (this.value) / 0.001;
+            case IrradianceUnits.KilowattsPerSquareMeter: return (this.value) / 1000;
+            case IrradianceUnits.MegawattsPerSquareMeter: return (this.value) / 1000000;
+            case IrradianceUnits.PicowattsPerSquareCentimeter: return (this.value * 0.0001) / 1e-12;
+            case IrradianceUnits.NanowattsPerSquareCentimeter: return (this.value * 0.0001) / 1e-9;
+            case IrradianceUnits.MicrowattsPerSquareCentimeter: return (this.value * 0.0001) / 0.000001;
+            case IrradianceUnits.MilliwattsPerSquareCentimeter: return (this.value * 0.0001) / 0.001;
+            case IrradianceUnits.KilowattsPerSquareCentimeter: return (this.value * 0.0001) / 1000;
+            case IrradianceUnits.MegawattsPerSquareCentimeter: return (this.value * 0.0001) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: IrradianceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case IrradianceUnits.WattsPerSquareMeter: return value;
+                case IrradianceUnits.WattsPerSquareCentimeter: return super.internalMultiply(value, 10000);
+                case IrradianceUnits.PicowattsPerSquareMeter: return super.internalMultiply(value, 1e-12);
+                case IrradianceUnits.NanowattsPerSquareMeter: return super.internalMultiply(value, 1e-9);
+                case IrradianceUnits.MicrowattsPerSquareMeter: return super.internalMultiply(value, 0.000001);
+                case IrradianceUnits.MilliwattsPerSquareMeter: return super.internalMultiply(value, 0.001);
+                case IrradianceUnits.KilowattsPerSquareMeter: return super.internalMultiply(value, 1000);
+                case IrradianceUnits.MegawattsPerSquareMeter: return super.internalMultiply(value, 1000000);
+                case IrradianceUnits.PicowattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 1e-12);
+                }
+                case IrradianceUnits.NanowattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 1e-9);
+                }
+                case IrradianceUnits.MicrowattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case IrradianceUnits.MilliwattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case IrradianceUnits.KilowattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case IrradianceUnits.MegawattsPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(value, 10000);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case IrradianceUnits.WattsPerSquareMeter:
-                return value;
-            case IrradianceUnits.WattsPerSquareCentimeter:
-                return value * 10000;
-            case IrradianceUnits.PicowattsPerSquareMeter:
-                return (value) * 1e-12;
-            case IrradianceUnits.NanowattsPerSquareMeter:
-                return (value) * 1e-9;
-            case IrradianceUnits.MicrowattsPerSquareMeter:
-                return (value) * 0.000001;
-            case IrradianceUnits.MilliwattsPerSquareMeter:
-                return (value) * 0.001;
-            case IrradianceUnits.KilowattsPerSquareMeter:
-                return (value) * 1000;
-            case IrradianceUnits.MegawattsPerSquareMeter:
-                return (value) * 1000000;
-            case IrradianceUnits.PicowattsPerSquareCentimeter:
-                return (value * 10000) * 1e-12;
-            case IrradianceUnits.NanowattsPerSquareCentimeter:
-                return (value * 10000) * 1e-9;
-            case IrradianceUnits.MicrowattsPerSquareCentimeter:
-                return (value * 10000) * 0.000001;
-            case IrradianceUnits.MilliwattsPerSquareCentimeter:
-                return (value * 10000) * 0.001;
-            case IrradianceUnits.KilowattsPerSquareCentimeter:
-                return (value * 10000) * 1000;
-            case IrradianceUnits.MegawattsPerSquareCentimeter:
-                return (value * 10000) * 1000000;
-            default:
-                break;
+            case IrradianceUnits.WattsPerSquareMeter: return value;
+            case IrradianceUnits.WattsPerSquareCentimeter: return value * 10000;
+            case IrradianceUnits.PicowattsPerSquareMeter: return (value) * 1e-12;
+            case IrradianceUnits.NanowattsPerSquareMeter: return (value) * 1e-9;
+            case IrradianceUnits.MicrowattsPerSquareMeter: return (value) * 0.000001;
+            case IrradianceUnits.MilliwattsPerSquareMeter: return (value) * 0.001;
+            case IrradianceUnits.KilowattsPerSquareMeter: return (value) * 1000;
+            case IrradianceUnits.MegawattsPerSquareMeter: return (value) * 1000000;
+            case IrradianceUnits.PicowattsPerSquareCentimeter: return (value * 10000) * 1e-12;
+            case IrradianceUnits.NanowattsPerSquareCentimeter: return (value * 10000) * 1e-9;
+            case IrradianceUnits.MicrowattsPerSquareCentimeter: return (value * 10000) * 0.000001;
+            case IrradianceUnits.MilliwattsPerSquareCentimeter: return (value * 10000) * 0.001;
+            case IrradianceUnits.KilowattsPerSquareCentimeter: return (value * 10000) * 1000;
+            case IrradianceUnits.MegawattsPerSquareCentimeter: return (value * 10000) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

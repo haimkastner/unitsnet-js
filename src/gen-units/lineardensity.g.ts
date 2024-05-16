@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a LinearDensity */
 export interface LinearDensityDto {
@@ -42,7 +42,7 @@ export enum LinearDensityUnits {
 
 /** The Linear Density, or more precisely, the linear mass density, of a substance is its mass per unit length.  The term linear density is most often used when describing the characteristics of one-dimensional objects, although linear density can also be used to describe the density of a three-dimensional quantity along one particular dimension. */
 export class LinearDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramspermillimeterLazy: number | null = null;
     private gramspercentimeterLazy: number | null = null;
     private gramspermeterLazy: number | null = null;
@@ -67,7 +67,9 @@ export class LinearDensity extends BaseUnit {
     public constructor(value: number, fromUnit: LinearDensityUnits = LinearDensityUnits.KilogramsPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +79,11 @@ export class LinearDensity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): LinearDensityUnits.KilogramsPerMeter {
+        return LinearDensityUnits.KilogramsPerMeter
     }
 
     /** */
@@ -332,6 +339,22 @@ export class LinearDensity extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with LinearDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof LinearDensityUnits {
+        return LinearDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LinearDensityUnits.KilogramsPerMeter {
+        return LinearDensityUnits.KilogramsPerMeter;
+    }
+
+    /**
      * Create API DTO represent a LinearDensity unit.
      * @param holdInUnit The specific LinearDensity unit to be used in the unit representation at the DTO
      */
@@ -375,81 +398,119 @@ export class LinearDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LinearDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LinearDensityUnits.GramsPerMillimeter: return this.value;
+                case LinearDensityUnits.GramsPerCentimeter: return super.internalDivide(this.value, 1e-1);
+                case LinearDensityUnits.GramsPerMeter: return super.internalDivide(this.value, 1e-3);
+                case LinearDensityUnits.PoundsPerInch: return super.internalMultiply(this.value, 5.5997415e-2);
+                case LinearDensityUnits.PoundsPerFoot: return super.internalDivide(this.value, 1.48816394);
+                case LinearDensityUnits.MicrogramsPerMillimeter: return super.internalDivide(this.value, 0.000001);
+                case LinearDensityUnits.MilligramsPerMillimeter: return super.internalDivide(this.value, 0.001);
+                case LinearDensityUnits.KilogramsPerMillimeter: return super.internalDivide(this.value, 1000);
+                case LinearDensityUnits.MicrogramsPerCentimeter: {
+                    const v3 = super.internalDivide(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case LinearDensityUnits.MilligramsPerCentimeter: {
+                    const v3 = super.internalDivide(this.value, 1e-1);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case LinearDensityUnits.KilogramsPerCentimeter: {
+                    const v3 = super.internalDivide(this.value, 1e-1);
+                    return super.internalDivide(v3, 1000);
+                }
+                case LinearDensityUnits.MicrogramsPerMeter: {
+                    const v3 = super.internalDivide(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case LinearDensityUnits.MilligramsPerMeter: {
+                    const v3 = super.internalDivide(this.value, 1e-3);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case LinearDensityUnits.KilogramsPerMeter: {
+                    const v3 = super.internalDivide(this.value, 1e-3);
+                    return super.internalDivide(v3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LinearDensityUnits.GramsPerMillimeter:
-                return this.value;
-            case LinearDensityUnits.GramsPerCentimeter:
-                return this.value / 1e-1;
-            case LinearDensityUnits.GramsPerMeter:
-                return this.value / 1e-3;
-            case LinearDensityUnits.PoundsPerInch:
-                return this.value * 5.5997415e-2;
-            case LinearDensityUnits.PoundsPerFoot:
-                return this.value / 1.48816394;
-            case LinearDensityUnits.MicrogramsPerMillimeter:
-                return (this.value) / 0.000001;
-            case LinearDensityUnits.MilligramsPerMillimeter:
-                return (this.value) / 0.001;
-            case LinearDensityUnits.KilogramsPerMillimeter:
-                return (this.value) / 1000;
-            case LinearDensityUnits.MicrogramsPerCentimeter:
-                return (this.value / 1e-1) / 0.000001;
-            case LinearDensityUnits.MilligramsPerCentimeter:
-                return (this.value / 1e-1) / 0.001;
-            case LinearDensityUnits.KilogramsPerCentimeter:
-                return (this.value / 1e-1) / 1000;
-            case LinearDensityUnits.MicrogramsPerMeter:
-                return (this.value / 1e-3) / 0.000001;
-            case LinearDensityUnits.MilligramsPerMeter:
-                return (this.value / 1e-3) / 0.001;
-            case LinearDensityUnits.KilogramsPerMeter:
-                return (this.value / 1e-3) / 1000;
-            default:
-                break;
+            case LinearDensityUnits.GramsPerMillimeter: return this.value;
+            case LinearDensityUnits.GramsPerCentimeter: return this.value / 1e-1;
+            case LinearDensityUnits.GramsPerMeter: return this.value / 1e-3;
+            case LinearDensityUnits.PoundsPerInch: return this.value * 5.5997415e-2;
+            case LinearDensityUnits.PoundsPerFoot: return this.value / 1.48816394;
+            case LinearDensityUnits.MicrogramsPerMillimeter: return (this.value) / 0.000001;
+            case LinearDensityUnits.MilligramsPerMillimeter: return (this.value) / 0.001;
+            case LinearDensityUnits.KilogramsPerMillimeter: return (this.value) / 1000;
+            case LinearDensityUnits.MicrogramsPerCentimeter: return (this.value / 1e-1) / 0.000001;
+            case LinearDensityUnits.MilligramsPerCentimeter: return (this.value / 1e-1) / 0.001;
+            case LinearDensityUnits.KilogramsPerCentimeter: return (this.value / 1e-1) / 1000;
+            case LinearDensityUnits.MicrogramsPerMeter: return (this.value / 1e-3) / 0.000001;
+            case LinearDensityUnits.MilligramsPerMeter: return (this.value / 1e-3) / 0.001;
+            case LinearDensityUnits.KilogramsPerMeter: return (this.value / 1e-3) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LinearDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LinearDensityUnits.GramsPerMillimeter: return value;
+                case LinearDensityUnits.GramsPerCentimeter: return super.internalMultiply(value, 1e-1);
+                case LinearDensityUnits.GramsPerMeter: return super.internalMultiply(value, 1e-3);
+                case LinearDensityUnits.PoundsPerInch: return super.internalDivide(value, 5.5997415e-2);
+                case LinearDensityUnits.PoundsPerFoot: return super.internalMultiply(value, 1.48816394);
+                case LinearDensityUnits.MicrogramsPerMillimeter: return super.internalMultiply(value, 0.000001);
+                case LinearDensityUnits.MilligramsPerMillimeter: return super.internalMultiply(value, 0.001);
+                case LinearDensityUnits.KilogramsPerMillimeter: return super.internalMultiply(value, 1000);
+                case LinearDensityUnits.MicrogramsPerCentimeter: {
+                    const v3 = super.internalMultiply(value, 1e-1);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case LinearDensityUnits.MilligramsPerCentimeter: {
+                    const v3 = super.internalMultiply(value, 1e-1);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case LinearDensityUnits.KilogramsPerCentimeter: {
+                    const v3 = super.internalMultiply(value, 1e-1);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case LinearDensityUnits.MicrogramsPerMeter: {
+                    const v3 = super.internalMultiply(value, 1e-3);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case LinearDensityUnits.MilligramsPerMeter: {
+                    const v3 = super.internalMultiply(value, 1e-3);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case LinearDensityUnits.KilogramsPerMeter: {
+                    const v3 = super.internalMultiply(value, 1e-3);
+                    return super.internalMultiply(v3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LinearDensityUnits.GramsPerMillimeter:
-                return value;
-            case LinearDensityUnits.GramsPerCentimeter:
-                return value * 1e-1;
-            case LinearDensityUnits.GramsPerMeter:
-                return value * 1e-3;
-            case LinearDensityUnits.PoundsPerInch:
-                return value / 5.5997415e-2;
-            case LinearDensityUnits.PoundsPerFoot:
-                return value * 1.48816394;
-            case LinearDensityUnits.MicrogramsPerMillimeter:
-                return (value) * 0.000001;
-            case LinearDensityUnits.MilligramsPerMillimeter:
-                return (value) * 0.001;
-            case LinearDensityUnits.KilogramsPerMillimeter:
-                return (value) * 1000;
-            case LinearDensityUnits.MicrogramsPerCentimeter:
-                return (value * 1e-1) * 0.000001;
-            case LinearDensityUnits.MilligramsPerCentimeter:
-                return (value * 1e-1) * 0.001;
-            case LinearDensityUnits.KilogramsPerCentimeter:
-                return (value * 1e-1) * 1000;
-            case LinearDensityUnits.MicrogramsPerMeter:
-                return (value * 1e-3) * 0.000001;
-            case LinearDensityUnits.MilligramsPerMeter:
-                return (value * 1e-3) * 0.001;
-            case LinearDensityUnits.KilogramsPerMeter:
-                return (value * 1e-3) * 1000;
-            default:
-                break;
+            case LinearDensityUnits.GramsPerMillimeter: return value;
+            case LinearDensityUnits.GramsPerCentimeter: return value * 1e-1;
+            case LinearDensityUnits.GramsPerMeter: return value * 1e-3;
+            case LinearDensityUnits.PoundsPerInch: return value / 5.5997415e-2;
+            case LinearDensityUnits.PoundsPerFoot: return value * 1.48816394;
+            case LinearDensityUnits.MicrogramsPerMillimeter: return (value) * 0.000001;
+            case LinearDensityUnits.MilligramsPerMillimeter: return (value) * 0.001;
+            case LinearDensityUnits.KilogramsPerMillimeter: return (value) * 1000;
+            case LinearDensityUnits.MicrogramsPerCentimeter: return (value * 1e-1) * 0.000001;
+            case LinearDensityUnits.MilligramsPerCentimeter: return (value * 1e-1) * 0.001;
+            case LinearDensityUnits.KilogramsPerCentimeter: return (value * 1e-1) * 1000;
+            case LinearDensityUnits.MicrogramsPerMeter: return (value * 1e-3) * 0.000001;
+            case LinearDensityUnits.MilligramsPerMeter: return (value * 1e-3) * 0.001;
+            case LinearDensityUnits.KilogramsPerMeter: return (value * 1e-3) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

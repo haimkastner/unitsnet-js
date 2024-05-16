@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ThermalResistance */
 export interface ThermalResistanceDto {
@@ -26,7 +26,7 @@ export enum ThermalResistanceUnits {
 
 /** Heat Transfer Coefficient or Thermal conductivity - indicates a materials ability to conduct heat. */
 export class ThermalResistance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private squaremeterkelvinsperkilowattLazy: number | null = null;
     private squaremeterkelvinsperwattLazy: number | null = null;
     private squaremeterdegreescelsiusperwattLazy: number | null = null;
@@ -43,7 +43,9 @@ export class ThermalResistance extends BaseUnit {
     public constructor(value: number, fromUnit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -53,6 +55,11 @@ export class ThermalResistance extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt {
+        return ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt
     }
 
     /** */
@@ -164,6 +171,22 @@ export class ThermalResistance extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ThermalResistance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ThermalResistanceUnits {
+        return ThermalResistanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt {
+        return ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt;
+    }
+
+    /**
      * Create API DTO represent a ThermalResistance unit.
      * @param holdInUnit The specific ThermalResistance unit to be used in the unit representation at the DTO
      */
@@ -199,49 +222,51 @@ export class ThermalResistance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ThermalResistanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt: return this.value;
+                case ThermalResistanceUnits.SquareMeterKelvinsPerWatt: return super.internalDivide(this.value, 1000);
+                case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt: return super.internalDivide(this.value, 1000.0);
+                case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt: return super.internalDivide(this.value, 0.1);
+                case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie: return super.internalDivide(this.value, 0.0859779507590433);
+                case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu: return super.internalDivide(this.value, 176.1121482159839);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
-                return this.value;
-            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
-                return this.value / 1000;
-            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                return this.value / 1000.0;
-            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                return this.value / 0.1;
-            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                return this.value / 0.0859779507590433;
-            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                return this.value / 176.1121482159839;
-            default:
-                break;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt: return this.value;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt: return this.value / 1000;
+            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt: return this.value / 1000.0;
+            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt: return this.value / 0.1;
+            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie: return this.value / 0.0859779507590433;
+            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu: return this.value / 176.1121482159839;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ThermalResistanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt: return value;
+                case ThermalResistanceUnits.SquareMeterKelvinsPerWatt: return super.internalMultiply(value, 1000);
+                case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt: return super.internalMultiply(value, 1000.0);
+                case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt: return super.internalMultiply(value, 0.1);
+                case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie: return super.internalMultiply(value, 0.0859779507590433);
+                case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu: return super.internalMultiply(value, 176.1121482159839);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
-                return value;
-            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
-                return value * 1000;
-            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                return value * 1000.0;
-            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                return value * 0.1;
-            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                return value * 0.0859779507590433;
-            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                return value * 176.1121482159839;
-            default:
-                break;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt: return value;
+            case ThermalResistanceUnits.SquareMeterKelvinsPerWatt: return value * 1000;
+            case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt: return value * 1000.0;
+            case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt: return value * 0.1;
+            case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie: return value * 0.0859779507590433;
+            case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu: return value * 176.1121482159839;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

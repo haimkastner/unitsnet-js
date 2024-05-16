@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a BrakeSpecificFuelConsumption */
 export interface BrakeSpecificFuelConsumptionDto {
@@ -20,7 +20,7 @@ export enum BrakeSpecificFuelConsumptionUnits {
 
 /** Brake specific fuel consumption (BSFC) is a measure of the fuel efficiency of any prime mover that burns fuel and produces rotational, or shaft, power. It is typically used for comparing the efficiency of internal combustion engines with a shaft output. */
 export class BrakeSpecificFuelConsumption extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramsperkilowatthourLazy: number | null = null;
     private kilogramsperjouleLazy: number | null = null;
     private poundspermechanicalhorsepowerhourLazy: number | null = null;
@@ -34,7 +34,9 @@ export class BrakeSpecificFuelConsumption extends BaseUnit {
     public constructor(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits = BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -44,6 +46,11 @@ export class BrakeSpecificFuelConsumption extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule {
+        return BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule
     }
 
     /** */
@@ -101,6 +108,22 @@ export class BrakeSpecificFuelConsumption extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with BrakeSpecificFuelConsumption
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof BrakeSpecificFuelConsumptionUnits {
+        return BrakeSpecificFuelConsumptionUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule {
+        return BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule;
+    }
+
+    /**
      * Create API DTO represent a BrakeSpecificFuelConsumption unit.
      * @param holdInUnit The specific BrakeSpecificFuelConsumption unit to be used in the unit representation at the DTO
      */
@@ -133,37 +156,39 @@ export class BrakeSpecificFuelConsumption extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: BrakeSpecificFuelConsumptionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour: return super.internalMultiply(this.value, 3.6e9);
+                case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule: return this.value;
+                case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour: return super.internalDivide(this.value, 1.689659410672e-7);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                return this.value * 3.6e9;
-            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
-                return this.value;
-            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                return this.value / 1.689659410672e-7;
-            default:
-                break;
+            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour: return this.value * 3.6e9;
+            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule: return this.value;
+            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour: return this.value / 1.689659410672e-7;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: BrakeSpecificFuelConsumptionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour: return super.internalDivide(value, 3.6e9);
+                case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule: return value;
+                case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour: return super.internalMultiply(value, 1.689659410672e-7);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour:
-                return value / 3.6e9;
-            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule:
-                return value;
-            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour:
-                return value * 1.689659410672e-7;
-            default:
-                break;
+            case BrakeSpecificFuelConsumptionUnits.GramsPerKiloWattHour: return value / 3.6e9;
+            case BrakeSpecificFuelConsumptionUnits.KilogramsPerJoule: return value;
+            case BrakeSpecificFuelConsumptionUnits.PoundsPerMechanicalHorsepowerHour: return value * 1.689659410672e-7;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

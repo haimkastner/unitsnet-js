@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Permeability */
 export interface PermeabilityDto {
@@ -16,7 +16,7 @@ export enum PermeabilityUnits {
 
 /** In electromagnetism, permeability is the measure of the ability of a material to support the formation of a magnetic field within itself. */
 export class Permeability extends BaseUnit {
-    private value: number;
+    protected value: number;
     private henriespermeterLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class Permeability extends BaseUnit {
     public constructor(value: number, fromUnit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class Permeability extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): PermeabilityUnits.HenriesPerMeter {
+        return PermeabilityUnits.HenriesPerMeter
     }
 
     /** */
@@ -56,6 +63,22 @@ export class Permeability extends BaseUnit {
      */
     public static FromHenriesPerMeter(value: number): Permeability {
         return new Permeability(value, PermeabilityUnits.HenriesPerMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Permeability
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof PermeabilityUnits {
+        return PermeabilityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): PermeabilityUnits.HenriesPerMeter {
+        return PermeabilityUnits.HenriesPerMeter;
     }
 
     /**
@@ -89,29 +112,31 @@ export class Permeability extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: PermeabilityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case PermeabilityUnits.HenriesPerMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case PermeabilityUnits.HenriesPerMeter:
-                return this.value;
-            default:
-                break;
+            case PermeabilityUnits.HenriesPerMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PermeabilityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case PermeabilityUnits.HenriesPerMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case PermeabilityUnits.HenriesPerMeter:
-                return value;
-            default:
-                break;
+            case PermeabilityUnits.HenriesPerMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

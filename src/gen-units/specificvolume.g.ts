@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a SpecificVolume */
 export interface SpecificVolumeDto {
@@ -20,7 +20,7 @@ export enum SpecificVolumeUnits {
 
 /** In thermodynamics, the specific volume of a substance is the ratio of the substance's volume to its mass. It is the reciprocal of density and an intrinsic property of matter as well. */
 export class SpecificVolume extends BaseUnit {
-    private value: number;
+    protected value: number;
     private cubicmetersperkilogramLazy: number | null = null;
     private cubicfeetperpoundLazy: number | null = null;
     private millicubicmetersperkilogramLazy: number | null = null;
@@ -34,7 +34,9 @@ export class SpecificVolume extends BaseUnit {
     public constructor(value: number, fromUnit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -44,6 +46,11 @@ export class SpecificVolume extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): SpecificVolumeUnits.CubicMetersPerKilogram {
+        return SpecificVolumeUnits.CubicMetersPerKilogram
     }
 
     /** */
@@ -101,6 +108,22 @@ export class SpecificVolume extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with SpecificVolume
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof SpecificVolumeUnits {
+        return SpecificVolumeUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): SpecificVolumeUnits.CubicMetersPerKilogram {
+        return SpecificVolumeUnits.CubicMetersPerKilogram;
+    }
+
+    /**
      * Create API DTO represent a SpecificVolume unit.
      * @param holdInUnit The specific SpecificVolume unit to be used in the unit representation at the DTO
      */
@@ -133,37 +156,39 @@ export class SpecificVolume extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: SpecificVolumeUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case SpecificVolumeUnits.CubicMetersPerKilogram: return this.value;
+                case SpecificVolumeUnits.CubicFeetPerPound: return super.internalMultiply(this.value, 16.01846353);
+                case SpecificVolumeUnits.MillicubicMetersPerKilogram: return super.internalDivide(this.value, 0.001);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case SpecificVolumeUnits.CubicMetersPerKilogram:
-                return this.value;
-            case SpecificVolumeUnits.CubicFeetPerPound:
-                return this.value * 16.01846353;
-            case SpecificVolumeUnits.MillicubicMetersPerKilogram:
-                return (this.value) / 0.001;
-            default:
-                break;
+            case SpecificVolumeUnits.CubicMetersPerKilogram: return this.value;
+            case SpecificVolumeUnits.CubicFeetPerPound: return this.value * 16.01846353;
+            case SpecificVolumeUnits.MillicubicMetersPerKilogram: return (this.value) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: SpecificVolumeUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case SpecificVolumeUnits.CubicMetersPerKilogram: return value;
+                case SpecificVolumeUnits.CubicFeetPerPound: return super.internalDivide(value, 16.01846353);
+                case SpecificVolumeUnits.MillicubicMetersPerKilogram: return super.internalMultiply(value, 0.001);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case SpecificVolumeUnits.CubicMetersPerKilogram:
-                return value;
-            case SpecificVolumeUnits.CubicFeetPerPound:
-                return value / 16.01846353;
-            case SpecificVolumeUnits.MillicubicMetersPerKilogram:
-                return (value) * 0.001;
-            default:
-                break;
+            case SpecificVolumeUnits.CubicMetersPerKilogram: return value;
+            case SpecificVolumeUnits.CubicFeetPerPound: return value / 16.01846353;
+            case SpecificVolumeUnits.MillicubicMetersPerKilogram: return (value) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

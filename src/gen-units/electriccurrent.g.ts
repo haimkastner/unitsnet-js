@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricCurrent */
 export interface ElectricCurrentDto {
@@ -32,7 +32,7 @@ export enum ElectricCurrentUnits {
 
 /** An electric current is a flow of electric charge. In electric circuits this charge is often carried by moving electrons in a wire. It can also be carried by ions in an electrolyte, or by both ions and electrons such as in a plasma. */
 export class ElectricCurrent extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amperesLazy: number | null = null;
     private femtoamperesLazy: number | null = null;
     private picoamperesLazy: number | null = null;
@@ -52,7 +52,9 @@ export class ElectricCurrent extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -62,6 +64,11 @@ export class ElectricCurrent extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricCurrentUnits.Amperes {
+        return ElectricCurrentUnits.Amperes
     }
 
     /** */
@@ -227,6 +234,22 @@ export class ElectricCurrent extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricCurrent
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricCurrentUnits {
+        return ElectricCurrentUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricCurrentUnits.Amperes {
+        return ElectricCurrentUnits.Amperes;
+    }
+
+    /**
      * Create API DTO represent a ElectricCurrent unit.
      * @param holdInUnit The specific ElectricCurrent unit to be used in the unit representation at the DTO
      */
@@ -265,61 +288,63 @@ export class ElectricCurrent extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricCurrentUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricCurrentUnits.Amperes: return this.value;
+                case ElectricCurrentUnits.Femtoamperes: return super.internalDivide(this.value, 1e-15);
+                case ElectricCurrentUnits.Picoamperes: return super.internalDivide(this.value, 1e-12);
+                case ElectricCurrentUnits.Nanoamperes: return super.internalDivide(this.value, 1e-9);
+                case ElectricCurrentUnits.Microamperes: return super.internalDivide(this.value, 0.000001);
+                case ElectricCurrentUnits.Milliamperes: return super.internalDivide(this.value, 0.001);
+                case ElectricCurrentUnits.Centiamperes: return super.internalDivide(this.value, 0.01);
+                case ElectricCurrentUnits.Kiloamperes: return super.internalDivide(this.value, 1000);
+                case ElectricCurrentUnits.Megaamperes: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricCurrentUnits.Amperes:
-                return this.value;
-            case ElectricCurrentUnits.Femtoamperes:
-                return (this.value) / 1e-15;
-            case ElectricCurrentUnits.Picoamperes:
-                return (this.value) / 1e-12;
-            case ElectricCurrentUnits.Nanoamperes:
-                return (this.value) / 1e-9;
-            case ElectricCurrentUnits.Microamperes:
-                return (this.value) / 0.000001;
-            case ElectricCurrentUnits.Milliamperes:
-                return (this.value) / 0.001;
-            case ElectricCurrentUnits.Centiamperes:
-                return (this.value) / 0.01;
-            case ElectricCurrentUnits.Kiloamperes:
-                return (this.value) / 1000;
-            case ElectricCurrentUnits.Megaamperes:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case ElectricCurrentUnits.Amperes: return this.value;
+            case ElectricCurrentUnits.Femtoamperes: return (this.value) / 1e-15;
+            case ElectricCurrentUnits.Picoamperes: return (this.value) / 1e-12;
+            case ElectricCurrentUnits.Nanoamperes: return (this.value) / 1e-9;
+            case ElectricCurrentUnits.Microamperes: return (this.value) / 0.000001;
+            case ElectricCurrentUnits.Milliamperes: return (this.value) / 0.001;
+            case ElectricCurrentUnits.Centiamperes: return (this.value) / 0.01;
+            case ElectricCurrentUnits.Kiloamperes: return (this.value) / 1000;
+            case ElectricCurrentUnits.Megaamperes: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricCurrentUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricCurrentUnits.Amperes: return value;
+                case ElectricCurrentUnits.Femtoamperes: return super.internalMultiply(value, 1e-15);
+                case ElectricCurrentUnits.Picoamperes: return super.internalMultiply(value, 1e-12);
+                case ElectricCurrentUnits.Nanoamperes: return super.internalMultiply(value, 1e-9);
+                case ElectricCurrentUnits.Microamperes: return super.internalMultiply(value, 0.000001);
+                case ElectricCurrentUnits.Milliamperes: return super.internalMultiply(value, 0.001);
+                case ElectricCurrentUnits.Centiamperes: return super.internalMultiply(value, 0.01);
+                case ElectricCurrentUnits.Kiloamperes: return super.internalMultiply(value, 1000);
+                case ElectricCurrentUnits.Megaamperes: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricCurrentUnits.Amperes:
-                return value;
-            case ElectricCurrentUnits.Femtoamperes:
-                return (value) * 1e-15;
-            case ElectricCurrentUnits.Picoamperes:
-                return (value) * 1e-12;
-            case ElectricCurrentUnits.Nanoamperes:
-                return (value) * 1e-9;
-            case ElectricCurrentUnits.Microamperes:
-                return (value) * 0.000001;
-            case ElectricCurrentUnits.Milliamperes:
-                return (value) * 0.001;
-            case ElectricCurrentUnits.Centiamperes:
-                return (value) * 0.01;
-            case ElectricCurrentUnits.Kiloamperes:
-                return (value) * 1000;
-            case ElectricCurrentUnits.Megaamperes:
-                return (value) * 1000000;
-            default:
-                break;
+            case ElectricCurrentUnits.Amperes: return value;
+            case ElectricCurrentUnits.Femtoamperes: return (value) * 1e-15;
+            case ElectricCurrentUnits.Picoamperes: return (value) * 1e-12;
+            case ElectricCurrentUnits.Nanoamperes: return (value) * 1e-9;
+            case ElectricCurrentUnits.Microamperes: return (value) * 0.000001;
+            case ElectricCurrentUnits.Milliamperes: return (value) * 0.001;
+            case ElectricCurrentUnits.Centiamperes: return (value) * 0.01;
+            case ElectricCurrentUnits.Kiloamperes: return (value) * 1000;
+            case ElectricCurrentUnits.Megaamperes: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

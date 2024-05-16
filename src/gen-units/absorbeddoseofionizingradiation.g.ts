@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a AbsorbedDoseOfIonizingRadiation */
 export interface AbsorbedDoseOfIonizingRadiationDto {
@@ -46,7 +46,7 @@ export enum AbsorbedDoseOfIonizingRadiationUnits {
 
 /** Absorbed dose is a dose quantity which is the measure of the energy deposited in matter by ionizing radiation per unit mass. */
 export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
-    private value: number;
+    protected value: number;
     private graysLazy: number | null = null;
     private radsLazy: number | null = null;
     private femtograysLazy: number | null = null;
@@ -73,7 +73,9 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
     public constructor(value: number, fromUnit: AbsorbedDoseOfIonizingRadiationUnits = AbsorbedDoseOfIonizingRadiationUnits.Grays) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -83,6 +85,11 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): AbsorbedDoseOfIonizingRadiationUnits.Grays {
+        return AbsorbedDoseOfIonizingRadiationUnits.Grays
     }
 
     /** The gray is the unit of ionizing radiation dose in the SI, defined as the absorption of one joule of radiation energy per kilogram of matter. */
@@ -374,6 +381,22 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with AbsorbedDoseOfIonizingRadiation
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof AbsorbedDoseOfIonizingRadiationUnits {
+        return AbsorbedDoseOfIonizingRadiationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AbsorbedDoseOfIonizingRadiationUnits.Grays {
+        return AbsorbedDoseOfIonizingRadiationUnits.Grays;
+    }
+
+    /**
      * Create API DTO represent a AbsorbedDoseOfIonizingRadiation unit.
      * @param holdInUnit The specific AbsorbedDoseOfIonizingRadiation unit to be used in the unit representation at the DTO
      */
@@ -419,89 +442,109 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AbsorbedDoseOfIonizingRadiationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case AbsorbedDoseOfIonizingRadiationUnits.Grays: return this.value;
+                case AbsorbedDoseOfIonizingRadiationUnits.Rads: return super.internalMultiply(this.value, 100);
+                case AbsorbedDoseOfIonizingRadiationUnits.Femtograys: return super.internalDivide(this.value, 1e-15);
+                case AbsorbedDoseOfIonizingRadiationUnits.Picograys: return super.internalDivide(this.value, 1e-12);
+                case AbsorbedDoseOfIonizingRadiationUnits.Nanograys: return super.internalDivide(this.value, 1e-9);
+                case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return super.internalDivide(this.value, 0.000001);
+                case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return super.internalDivide(this.value, 0.001);
+                case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return super.internalDivide(this.value, 0.01);
+                case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return super.internalDivide(this.value, 1000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return super.internalDivide(this.value, 1000000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return super.internalDivide(this.value, 1000000000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Teragrays: return super.internalDivide(this.value, 1000000000000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Petagrays: return super.internalDivide(this.value, 1000000000000000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Millirads: {
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case AbsorbedDoseOfIonizingRadiationUnits.Kilorads: {
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1000);
+                }
+                case AbsorbedDoseOfIonizingRadiationUnits.Megarads: {
+                    const v3 = super.internalMultiply(this.value, 100);
+                    return super.internalDivide(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case AbsorbedDoseOfIonizingRadiationUnits.Grays:
-                return this.value;
-            case AbsorbedDoseOfIonizingRadiationUnits.Rads:
-                return this.value * 100;
-            case AbsorbedDoseOfIonizingRadiationUnits.Femtograys:
-                return (this.value) / 1e-15;
-            case AbsorbedDoseOfIonizingRadiationUnits.Picograys:
-                return (this.value) / 1e-12;
-            case AbsorbedDoseOfIonizingRadiationUnits.Nanograys:
-                return (this.value) / 1e-9;
-            case AbsorbedDoseOfIonizingRadiationUnits.Micrograys:
-                return (this.value) / 0.000001;
-            case AbsorbedDoseOfIonizingRadiationUnits.Milligrays:
-                return (this.value) / 0.001;
-            case AbsorbedDoseOfIonizingRadiationUnits.Centigrays:
-                return (this.value) / 0.01;
-            case AbsorbedDoseOfIonizingRadiationUnits.Kilograys:
-                return (this.value) / 1000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Megagrays:
-                return (this.value) / 1000000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays:
-                return (this.value) / 1000000000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Teragrays:
-                return (this.value) / 1000000000000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Petagrays:
-                return (this.value) / 1000000000000000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Millirads:
-                return (this.value * 100) / 0.001;
-            case AbsorbedDoseOfIonizingRadiationUnits.Kilorads:
-                return (this.value * 100) / 1000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Megarads:
-                return (this.value * 100) / 1000000;
-            default:
-                break;
+            case AbsorbedDoseOfIonizingRadiationUnits.Grays: return this.value;
+            case AbsorbedDoseOfIonizingRadiationUnits.Rads: return this.value * 100;
+            case AbsorbedDoseOfIonizingRadiationUnits.Femtograys: return (this.value) / 1e-15;
+            case AbsorbedDoseOfIonizingRadiationUnits.Picograys: return (this.value) / 1e-12;
+            case AbsorbedDoseOfIonizingRadiationUnits.Nanograys: return (this.value) / 1e-9;
+            case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return (this.value) / 0.000001;
+            case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return (this.value) / 0.001;
+            case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return (this.value) / 0.01;
+            case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return (this.value) / 1000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return (this.value) / 1000000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return (this.value) / 1000000000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Teragrays: return (this.value) / 1000000000000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Petagrays: return (this.value) / 1000000000000000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Millirads: return (this.value * 100) / 0.001;
+            case AbsorbedDoseOfIonizingRadiationUnits.Kilorads: return (this.value * 100) / 1000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Megarads: return (this.value * 100) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AbsorbedDoseOfIonizingRadiationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case AbsorbedDoseOfIonizingRadiationUnits.Grays: return value;
+                case AbsorbedDoseOfIonizingRadiationUnits.Rads: return super.internalDivide(value, 100);
+                case AbsorbedDoseOfIonizingRadiationUnits.Femtograys: return super.internalMultiply(value, 1e-15);
+                case AbsorbedDoseOfIonizingRadiationUnits.Picograys: return super.internalMultiply(value, 1e-12);
+                case AbsorbedDoseOfIonizingRadiationUnits.Nanograys: return super.internalMultiply(value, 1e-9);
+                case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return super.internalMultiply(value, 0.000001);
+                case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return super.internalMultiply(value, 0.001);
+                case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return super.internalMultiply(value, 0.01);
+                case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return super.internalMultiply(value, 1000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return super.internalMultiply(value, 1000000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return super.internalMultiply(value, 1000000000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Teragrays: return super.internalMultiply(value, 1000000000000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Petagrays: return super.internalMultiply(value, 1000000000000000);
+                case AbsorbedDoseOfIonizingRadiationUnits.Millirads: {
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case AbsorbedDoseOfIonizingRadiationUnits.Kilorads: {
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case AbsorbedDoseOfIonizingRadiationUnits.Megarads: {
+                    const v3 = super.internalDivide(value, 100);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case AbsorbedDoseOfIonizingRadiationUnits.Grays:
-                return value;
-            case AbsorbedDoseOfIonizingRadiationUnits.Rads:
-                return value / 100;
-            case AbsorbedDoseOfIonizingRadiationUnits.Femtograys:
-                return (value) * 1e-15;
-            case AbsorbedDoseOfIonizingRadiationUnits.Picograys:
-                return (value) * 1e-12;
-            case AbsorbedDoseOfIonizingRadiationUnits.Nanograys:
-                return (value) * 1e-9;
-            case AbsorbedDoseOfIonizingRadiationUnits.Micrograys:
-                return (value) * 0.000001;
-            case AbsorbedDoseOfIonizingRadiationUnits.Milligrays:
-                return (value) * 0.001;
-            case AbsorbedDoseOfIonizingRadiationUnits.Centigrays:
-                return (value) * 0.01;
-            case AbsorbedDoseOfIonizingRadiationUnits.Kilograys:
-                return (value) * 1000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Megagrays:
-                return (value) * 1000000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays:
-                return (value) * 1000000000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Teragrays:
-                return (value) * 1000000000000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Petagrays:
-                return (value) * 1000000000000000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Millirads:
-                return (value / 100) * 0.001;
-            case AbsorbedDoseOfIonizingRadiationUnits.Kilorads:
-                return (value / 100) * 1000;
-            case AbsorbedDoseOfIonizingRadiationUnits.Megarads:
-                return (value / 100) * 1000000;
-            default:
-                break;
+            case AbsorbedDoseOfIonizingRadiationUnits.Grays: return value;
+            case AbsorbedDoseOfIonizingRadiationUnits.Rads: return value / 100;
+            case AbsorbedDoseOfIonizingRadiationUnits.Femtograys: return (value) * 1e-15;
+            case AbsorbedDoseOfIonizingRadiationUnits.Picograys: return (value) * 1e-12;
+            case AbsorbedDoseOfIonizingRadiationUnits.Nanograys: return (value) * 1e-9;
+            case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return (value) * 0.000001;
+            case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return (value) * 0.001;
+            case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return (value) * 0.01;
+            case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return (value) * 1000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return (value) * 1000000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return (value) * 1000000000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Teragrays: return (value) * 1000000000000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Petagrays: return (value) * 1000000000000000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Millirads: return (value / 100) * 0.001;
+            case AbsorbedDoseOfIonizingRadiationUnits.Kilorads: return (value / 100) * 1000;
+            case AbsorbedDoseOfIonizingRadiationUnits.Megarads: return (value / 100) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Level */
 export interface LevelDto {
@@ -18,7 +18,7 @@ export enum LevelUnits {
 
 /** Level is the logarithm of the ratio of a quantity Q to a reference value of that quantity, Q₀, expressed in dimensionless units. */
 export class Level extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decibelsLazy: number | null = null;
     private nepersLazy: number | null = null;
 
@@ -31,7 +31,9 @@ export class Level extends BaseUnit {
     public constructor(value: number, fromUnit: LevelUnits = LevelUnits.Decibels) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -41,6 +43,11 @@ export class Level extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): LevelUnits.Decibels {
+        return LevelUnits.Decibels
     }
 
     /** */
@@ -80,6 +87,22 @@ export class Level extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Level
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof LevelUnits {
+        return LevelUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LevelUnits.Decibels {
+        return LevelUnits.Decibels;
+    }
+
+    /**
      * Create API DTO represent a Level unit.
      * @param holdInUnit The specific Level unit to be used in the unit representation at the DTO
      */
@@ -111,33 +134,38 @@ export class Level extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LevelUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LevelUnits.Decibels: return this.value;
+                case LevelUnits.Nepers: return super.internalMultiply(0.115129254, this.value);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LevelUnits.Decibels:
-                return this.value;
-            case LevelUnits.Nepers:
-                return 0.115129254 * this.value;
-            default:
-                break;
+            case LevelUnits.Decibels: return this.value;
+            case LevelUnits.Nepers: return 0.115129254 * this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LevelUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LevelUnits.Decibels: return value;
+                case LevelUnits.Nepers: {
+                    const v3 = super.internalDivide(1, 0.115129254);
+                    return super.internalMultiply(v3, value);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LevelUnits.Decibels:
-                return value;
-            case LevelUnits.Nepers:
-                return (1 / 0.115129254) * value;
-            default:
-                break;
+            case LevelUnits.Decibels: return value;
+            case LevelUnits.Nepers: return (1 / 0.115129254) * value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

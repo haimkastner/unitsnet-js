@@ -2,7 +2,7 @@ import { UnitTypeDefinition, UnitDefinition, Prefix } from "./models/units-defin
 import { generateUnitClass } from './unit-generator';
 import { Project } from "ts-morph";
 import { UnitProperties } from "./models/units-properties";
-import { pascalToCamelCase } from './utiles';
+import { pascalToCamelCase } from './utils';
 /**
  * The factor between unit and his prefix.
  */

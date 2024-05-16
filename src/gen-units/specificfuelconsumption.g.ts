@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a SpecificFuelConsumption */
 export interface SpecificFuelConsumptionDto {
@@ -22,7 +22,7 @@ export enum SpecificFuelConsumptionUnits {
 
 /** SFC is the fuel efficiency of an engine design with respect to thrust output */
 export class SpecificFuelConsumption extends BaseUnit {
-    private value: number;
+    protected value: number;
     private poundsmassperpoundforcehourLazy: number | null = null;
     private kilogramsperkilogramforcehourLazy: number | null = null;
     private gramsperkilonewtonsecondLazy: number | null = null;
@@ -37,7 +37,9 @@ export class SpecificFuelConsumption extends BaseUnit {
     public constructor(value: number, fromUnit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -47,6 +49,11 @@ export class SpecificFuelConsumption extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond {
+        return SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond
     }
 
     /** */
@@ -122,6 +129,22 @@ export class SpecificFuelConsumption extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with SpecificFuelConsumption
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof SpecificFuelConsumptionUnits {
+        return SpecificFuelConsumptionUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond {
+        return SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond;
+    }
+
+    /**
      * Create API DTO represent a SpecificFuelConsumption unit.
      * @param holdInUnit The specific SpecificFuelConsumption unit to be used in the unit representation at the DTO
      */
@@ -155,41 +178,43 @@ export class SpecificFuelConsumption extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: SpecificFuelConsumptionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return super.internalDivide(this.value, 28.33);
+                case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return super.internalDivide(this.value, 28.33);
+                case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return this.value;
+                case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return super.internalDivide(this.value, 1000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
-                return this.value / 28.33;
-            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return this.value / 28.33;
-            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return this.value;
-            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
-                return (this.value) / 1000;
-            default:
-                break;
+            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return this.value / 28.33;
+            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return this.value / 28.33;
+            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return this.value;
+            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return (this.value) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: SpecificFuelConsumptionUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return super.internalMultiply(value, 28.33);
+                case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return super.internalMultiply(value, 28.33);
+                case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return value;
+                case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return super.internalMultiply(value, 1000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
-                return value * 28.33;
-            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return value * 28.33;
-            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return value;
-            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
-                return (value) * 1000;
-            default:
-                break;
+            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return value * 28.33;
+            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return value * 28.33;
+            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return value;
+            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return (value) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a RatioChangeRate */
 export interface RatioChangeRateDto {
@@ -18,7 +18,7 @@ export enum RatioChangeRateUnits {
 
 /** The change in ratio per unit of time. */
 export class RatioChangeRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private percentspersecondLazy: number | null = null;
     private decimalfractionspersecondLazy: number | null = null;
 
@@ -31,7 +31,9 @@ export class RatioChangeRate extends BaseUnit {
     public constructor(value: number, fromUnit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -41,6 +43,11 @@ export class RatioChangeRate extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): RatioChangeRateUnits.DecimalFractionsPerSecond {
+        return RatioChangeRateUnits.DecimalFractionsPerSecond
     }
 
     /** */
@@ -80,6 +87,22 @@ export class RatioChangeRate extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with RatioChangeRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof RatioChangeRateUnits {
+        return RatioChangeRateUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RatioChangeRateUnits.DecimalFractionsPerSecond {
+        return RatioChangeRateUnits.DecimalFractionsPerSecond;
+    }
+
+    /**
      * Create API DTO represent a RatioChangeRate unit.
      * @param holdInUnit The specific RatioChangeRate unit to be used in the unit representation at the DTO
      */
@@ -111,33 +134,35 @@ export class RatioChangeRate extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RatioChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RatioChangeRateUnits.PercentsPerSecond: return super.internalMultiply(this.value, 1e2);
+                case RatioChangeRateUnits.DecimalFractionsPerSecond: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RatioChangeRateUnits.PercentsPerSecond:
-                return this.value * 1e2;
-            case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                return this.value;
-            default:
-                break;
+            case RatioChangeRateUnits.PercentsPerSecond: return this.value * 1e2;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RatioChangeRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RatioChangeRateUnits.PercentsPerSecond: return super.internalDivide(value, 1e2);
+                case RatioChangeRateUnits.DecimalFractionsPerSecond: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RatioChangeRateUnits.PercentsPerSecond:
-                return value / 1e2;
-            case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                return value;
-            default:
-                break;
+            case RatioChangeRateUnits.PercentsPerSecond: return value / 1e2;
+            case RatioChangeRateUnits.DecimalFractionsPerSecond: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

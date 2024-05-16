@@ -152,6 +152,65 @@ Check out the OpenAPI [unitsnet-openapi-spec](https://haimkastner.github.io/unit
 Also, refer to the detailed discussions on GitHub: [haimkastner/unitsnet-js#31](https://github.com/haimkastner/unitsnet-js/issues/31) & [angularsen/UnitsNet#1378](https://github.com/angularsen/UnitsNet/issues/1378).
 
 
+## Overriding operators
+Some use-cases require floating point arithmetic with precision surpassing JavaScript's default [IEEE 754](https://standards.ieee.org/ieee/754/6210/) based implementation.
+
+For example, you may want to perform arithmetics like the classic `0.1 + 0.2`.
+With the default implementation, this operation yields `0.30000000000000004`.
+
+To cater to such cases, the library exposes an operator override mechanism, allowing for usage of dedicated, high precision mathematic libraries.
+
+```typescript
+import numeral from 'numeral';
+
+const lengthA = Length.FromMeters(0.1);
+const lengthB = Length.FromMeters(0.2);
+
+console.log(lengthA.add(lengthB).Meters); // 0.30000000000000004
+
+setOperatorOverride(ArithmeticOperation.Add, (valueA: number,valueB: number) => {
+	return numeral(valueA).add(valueB).value() as number;
+});
+
+console.log(lengthA.add(lengthB).Meters); // 0.3
+```
+
+The override mechanism is designed with high performance in mind.
+While running in a test context, the overhead was observed to be roughly 1%.
+
+If your application requires real-time class performance, however, we recommend you verify this conforms to your specification.
+
+Note that override functions are global and exported directly from the package index.
+
+</br>
+
+| Function                   | Purpose                                                  | Notes  |
+|----------------------------|----------------------------------------------------------|--------
+| `setOperatorOverride`      | Override a given operator                                |
+| `unsetOperatorOverride`    | Remove an operator override                              | Safe to call even when operator is not overridden
+| `unsetAllOperatorOverrides`| Removes all operator overrides                           | Safe to call even when there are no overridden operators
+| `areAnyOperatorsOverridden`| Determine whether any operators are currently overridden |
+
+
+## Migrating from 2.x.x to 3.x.x
+
+Version 3.0.0 consolidates some external interfaces and includes a brand new infrastructure for operator
+overriding (see [Overriding Operators](#overriding-operators) section).
+
+As such, a few minor breaking changes have been introduced, specified below.
+
+If your code does not use any of these types/functions, no change is required.
+
+
+| Type                       | Name                 | Status   | Migration Strategy                                                       | Notes |
+|----------------------------|----------------------|----------|--------------------|-----------------------------------------------------|
+| `type`                     | `ArithmeticFormula`  | Removed  | Use `OperatorOverrides` directly or alias the type in your code | Consolidated into new interface `OperatorOverrides`
+| `type`                     | `CompareToFormula`   | Removed  | Use `OperatorOverrides` directly or alias the type in your code | Consolidated into new interface `OperatorOverrides`
+| `type`                     | `EqualsFormula`      | Removed  | Use `OperatorOverrides` directly or alias the type in your code | Consolidated into new interface `OperatorOverrides`
+| `function`                 | `setEqualsFormula`   | Removed  | Use `OperatorOverrides` with `OperatorType.Equals`              | Consolidated into new function `setOperatorOverride`
+| `function`                 | `setCompareToFormula`| Removed  | Use `OperatorOverrides` with `OperatorType.CompareTo`           | Consolidated into new function `setOperatorOverride`
+
+
 ### Supported units
 
 The package provides support for the following units:

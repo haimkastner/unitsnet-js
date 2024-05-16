@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a RadiationExposure */
 export interface RadiationExposureDto {
@@ -30,7 +30,7 @@ export enum RadiationExposureUnits {
 
 /** Radiation exposure is a measure of the ionization of air due to ionizing radiation from photons. */
 export class RadiationExposure extends BaseUnit {
-    private value: number;
+    protected value: number;
     private coulombsperkilogramLazy: number | null = null;
     private roentgensLazy: number | null = null;
     private picocoulombsperkilogramLazy: number | null = null;
@@ -49,7 +49,9 @@ export class RadiationExposure extends BaseUnit {
     public constructor(value: number, fromUnit: RadiationExposureUnits = RadiationExposureUnits.CoulombsPerKilogram) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -59,6 +61,11 @@ export class RadiationExposure extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): RadiationExposureUnits.CoulombsPerKilogram {
+        return RadiationExposureUnits.CoulombsPerKilogram
     }
 
     /** */
@@ -206,6 +213,22 @@ export class RadiationExposure extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with RadiationExposure
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof RadiationExposureUnits {
+        return RadiationExposureUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RadiationExposureUnits.CoulombsPerKilogram {
+        return RadiationExposureUnits.CoulombsPerKilogram;
+    }
+
+    /**
      * Create API DTO represent a RadiationExposure unit.
      * @param holdInUnit The specific RadiationExposure unit to be used in the unit representation at the DTO
      */
@@ -243,57 +266,71 @@ export class RadiationExposure extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RadiationExposureUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RadiationExposureUnits.CoulombsPerKilogram: return this.value;
+                case RadiationExposureUnits.Roentgens: return super.internalDivide(this.value, 2.58e-4);
+                case RadiationExposureUnits.PicocoulombsPerKilogram: return super.internalDivide(this.value, 1e-12);
+                case RadiationExposureUnits.NanocoulombsPerKilogram: return super.internalDivide(this.value, 1e-9);
+                case RadiationExposureUnits.MicrocoulombsPerKilogram: return super.internalDivide(this.value, 0.000001);
+                case RadiationExposureUnits.MillicoulombsPerKilogram: return super.internalDivide(this.value, 0.001);
+                case RadiationExposureUnits.Microroentgens: {
+                    const v3 = super.internalDivide(this.value, 2.58e-4);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case RadiationExposureUnits.Milliroentgens: {
+                    const v3 = super.internalDivide(this.value, 2.58e-4);
+                    return super.internalDivide(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RadiationExposureUnits.CoulombsPerKilogram:
-                return this.value;
-            case RadiationExposureUnits.Roentgens:
-                return this.value / 2.58e-4;
-            case RadiationExposureUnits.PicocoulombsPerKilogram:
-                return (this.value) / 1e-12;
-            case RadiationExposureUnits.NanocoulombsPerKilogram:
-                return (this.value) / 1e-9;
-            case RadiationExposureUnits.MicrocoulombsPerKilogram:
-                return (this.value) / 0.000001;
-            case RadiationExposureUnits.MillicoulombsPerKilogram:
-                return (this.value) / 0.001;
-            case RadiationExposureUnits.Microroentgens:
-                return (this.value / 2.58e-4) / 0.000001;
-            case RadiationExposureUnits.Milliroentgens:
-                return (this.value / 2.58e-4) / 0.001;
-            default:
-                break;
+            case RadiationExposureUnits.CoulombsPerKilogram: return this.value;
+            case RadiationExposureUnits.Roentgens: return this.value / 2.58e-4;
+            case RadiationExposureUnits.PicocoulombsPerKilogram: return (this.value) / 1e-12;
+            case RadiationExposureUnits.NanocoulombsPerKilogram: return (this.value) / 1e-9;
+            case RadiationExposureUnits.MicrocoulombsPerKilogram: return (this.value) / 0.000001;
+            case RadiationExposureUnits.MillicoulombsPerKilogram: return (this.value) / 0.001;
+            case RadiationExposureUnits.Microroentgens: return (this.value / 2.58e-4) / 0.000001;
+            case RadiationExposureUnits.Milliroentgens: return (this.value / 2.58e-4) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RadiationExposureUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RadiationExposureUnits.CoulombsPerKilogram: return value;
+                case RadiationExposureUnits.Roentgens: return super.internalMultiply(value, 2.58e-4);
+                case RadiationExposureUnits.PicocoulombsPerKilogram: return super.internalMultiply(value, 1e-12);
+                case RadiationExposureUnits.NanocoulombsPerKilogram: return super.internalMultiply(value, 1e-9);
+                case RadiationExposureUnits.MicrocoulombsPerKilogram: return super.internalMultiply(value, 0.000001);
+                case RadiationExposureUnits.MillicoulombsPerKilogram: return super.internalMultiply(value, 0.001);
+                case RadiationExposureUnits.Microroentgens: {
+                    const v3 = super.internalMultiply(value, 2.58e-4);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case RadiationExposureUnits.Milliroentgens: {
+                    const v3 = super.internalMultiply(value, 2.58e-4);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RadiationExposureUnits.CoulombsPerKilogram:
-                return value;
-            case RadiationExposureUnits.Roentgens:
-                return value * 2.58e-4;
-            case RadiationExposureUnits.PicocoulombsPerKilogram:
-                return (value) * 1e-12;
-            case RadiationExposureUnits.NanocoulombsPerKilogram:
-                return (value) * 1e-9;
-            case RadiationExposureUnits.MicrocoulombsPerKilogram:
-                return (value) * 0.000001;
-            case RadiationExposureUnits.MillicoulombsPerKilogram:
-                return (value) * 0.001;
-            case RadiationExposureUnits.Microroentgens:
-                return (value * 2.58e-4) * 0.000001;
-            case RadiationExposureUnits.Milliroentgens:
-                return (value * 2.58e-4) * 0.001;
-            default:
-                break;
+            case RadiationExposureUnits.CoulombsPerKilogram: return value;
+            case RadiationExposureUnits.Roentgens: return value * 2.58e-4;
+            case RadiationExposureUnits.PicocoulombsPerKilogram: return (value) * 1e-12;
+            case RadiationExposureUnits.NanocoulombsPerKilogram: return (value) * 1e-9;
+            case RadiationExposureUnits.MicrocoulombsPerKilogram: return (value) * 0.000001;
+            case RadiationExposureUnits.MillicoulombsPerKilogram: return (value) * 0.001;
+            case RadiationExposureUnits.Microroentgens: return (value * 2.58e-4) * 0.000001;
+            case RadiationExposureUnits.Milliroentgens: return (value * 2.58e-4) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

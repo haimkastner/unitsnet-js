@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a RelativeHumidity */
 export interface RelativeHumidityDto {
@@ -16,7 +16,7 @@ export enum RelativeHumidityUnits {
 
 /** Relative humidity is a ratio of the actual water vapor present in the air to the maximum water vapor in the air at the given temperature. */
 export class RelativeHumidity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private percentLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class RelativeHumidity extends BaseUnit {
     public constructor(value: number, fromUnit: RelativeHumidityUnits = RelativeHumidityUnits.Percent) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class RelativeHumidity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): RelativeHumidityUnits.Percent {
+        return RelativeHumidityUnits.Percent
     }
 
     /** */
@@ -56,6 +63,22 @@ export class RelativeHumidity extends BaseUnit {
      */
     public static FromPercent(value: number): RelativeHumidity {
         return new RelativeHumidity(value, RelativeHumidityUnits.Percent);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with RelativeHumidity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof RelativeHumidityUnits {
+        return RelativeHumidityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RelativeHumidityUnits.Percent {
+        return RelativeHumidityUnits.Percent;
     }
 
     /**
@@ -89,29 +112,31 @@ export class RelativeHumidity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RelativeHumidityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RelativeHumidityUnits.Percent: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RelativeHumidityUnits.Percent:
-                return this.value;
-            default:
-                break;
+            case RelativeHumidityUnits.Percent: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RelativeHumidityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RelativeHumidityUnits.Percent: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RelativeHumidityUnits.Percent:
-                return value;
-            default:
-                break;
+            case RelativeHumidityUnits.Percent: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

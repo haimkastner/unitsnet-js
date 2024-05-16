@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ReactivePower */
 export interface ReactivePowerDto {
@@ -22,7 +22,7 @@ export enum ReactivePowerUnits {
 
 /** Volt-ampere reactive (var) is a unit by which reactive power is expressed in an AC electric power system. Reactive power exists in an AC circuit when the current and voltage are not in phase. */
 export class ReactivePower extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltamperesreactiveLazy: number | null = null;
     private kilovoltamperesreactiveLazy: number | null = null;
     private megavoltamperesreactiveLazy: number | null = null;
@@ -37,7 +37,9 @@ export class ReactivePower extends BaseUnit {
     public constructor(value: number, fromUnit: ReactivePowerUnits = ReactivePowerUnits.VoltamperesReactive) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -47,6 +49,11 @@ export class ReactivePower extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ReactivePowerUnits.VoltamperesReactive {
+        return ReactivePowerUnits.VoltamperesReactive
     }
 
     /** */
@@ -122,6 +129,22 @@ export class ReactivePower extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ReactivePower
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ReactivePowerUnits {
+        return ReactivePowerUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ReactivePowerUnits.VoltamperesReactive {
+        return ReactivePowerUnits.VoltamperesReactive;
+    }
+
+    /**
      * Create API DTO represent a ReactivePower unit.
      * @param holdInUnit The specific ReactivePower unit to be used in the unit representation at the DTO
      */
@@ -155,41 +178,43 @@ export class ReactivePower extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ReactivePowerUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ReactivePowerUnits.VoltamperesReactive: return this.value;
+                case ReactivePowerUnits.KilovoltamperesReactive: return super.internalDivide(this.value, 1000);
+                case ReactivePowerUnits.MegavoltamperesReactive: return super.internalDivide(this.value, 1000000);
+                case ReactivePowerUnits.GigavoltamperesReactive: return super.internalDivide(this.value, 1000000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ReactivePowerUnits.VoltamperesReactive:
-                return this.value;
-            case ReactivePowerUnits.KilovoltamperesReactive:
-                return (this.value) / 1000;
-            case ReactivePowerUnits.MegavoltamperesReactive:
-                return (this.value) / 1000000;
-            case ReactivePowerUnits.GigavoltamperesReactive:
-                return (this.value) / 1000000000;
-            default:
-                break;
+            case ReactivePowerUnits.VoltamperesReactive: return this.value;
+            case ReactivePowerUnits.KilovoltamperesReactive: return (this.value) / 1000;
+            case ReactivePowerUnits.MegavoltamperesReactive: return (this.value) / 1000000;
+            case ReactivePowerUnits.GigavoltamperesReactive: return (this.value) / 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ReactivePowerUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ReactivePowerUnits.VoltamperesReactive: return value;
+                case ReactivePowerUnits.KilovoltamperesReactive: return super.internalMultiply(value, 1000);
+                case ReactivePowerUnits.MegavoltamperesReactive: return super.internalMultiply(value, 1000000);
+                case ReactivePowerUnits.GigavoltamperesReactive: return super.internalMultiply(value, 1000000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ReactivePowerUnits.VoltamperesReactive:
-                return value;
-            case ReactivePowerUnits.KilovoltamperesReactive:
-                return (value) * 1000;
-            case ReactivePowerUnits.MegavoltamperesReactive:
-                return (value) * 1000000;
-            case ReactivePowerUnits.GigavoltamperesReactive:
-                return (value) * 1000000000;
-            default:
-                break;
+            case ReactivePowerUnits.VoltamperesReactive: return value;
+            case ReactivePowerUnits.KilovoltamperesReactive: return (value) * 1000;
+            case ReactivePowerUnits.MegavoltamperesReactive: return (value) * 1000000;
+            case ReactivePowerUnits.GigavoltamperesReactive: return (value) * 1000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

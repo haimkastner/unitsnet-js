@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ReactiveEnergy */
 export interface ReactiveEnergyDto {
@@ -20,7 +20,7 @@ export enum ReactiveEnergyUnits {
 
 /** The Volt-ampere reactive hour (expressed as varh) is the reactive power of one Volt-ampere reactive produced in one hour. */
 export class ReactiveEnergy extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltamperereactivehoursLazy: number | null = null;
     private kilovoltamperereactivehoursLazy: number | null = null;
     private megavoltamperereactivehoursLazy: number | null = null;
@@ -34,7 +34,9 @@ export class ReactiveEnergy extends BaseUnit {
     public constructor(value: number, fromUnit: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -44,6 +46,11 @@ export class ReactiveEnergy extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ReactiveEnergyUnits.VoltampereReactiveHours {
+        return ReactiveEnergyUnits.VoltampereReactiveHours
     }
 
     /** */
@@ -101,6 +108,22 @@ export class ReactiveEnergy extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ReactiveEnergy
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ReactiveEnergyUnits {
+        return ReactiveEnergyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ReactiveEnergyUnits.VoltampereReactiveHours {
+        return ReactiveEnergyUnits.VoltampereReactiveHours;
+    }
+
+    /**
      * Create API DTO represent a ReactiveEnergy unit.
      * @param holdInUnit The specific ReactiveEnergy unit to be used in the unit representation at the DTO
      */
@@ -133,37 +156,39 @@ export class ReactiveEnergy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ReactiveEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ReactiveEnergyUnits.VoltampereReactiveHours: return this.value;
+                case ReactiveEnergyUnits.KilovoltampereReactiveHours: return super.internalDivide(this.value, 1000);
+                case ReactiveEnergyUnits.MegavoltampereReactiveHours: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ReactiveEnergyUnits.VoltampereReactiveHours:
-                return this.value;
-            case ReactiveEnergyUnits.KilovoltampereReactiveHours:
-                return (this.value) / 1000;
-            case ReactiveEnergyUnits.MegavoltampereReactiveHours:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case ReactiveEnergyUnits.VoltampereReactiveHours: return this.value;
+            case ReactiveEnergyUnits.KilovoltampereReactiveHours: return (this.value) / 1000;
+            case ReactiveEnergyUnits.MegavoltampereReactiveHours: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ReactiveEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ReactiveEnergyUnits.VoltampereReactiveHours: return value;
+                case ReactiveEnergyUnits.KilovoltampereReactiveHours: return super.internalMultiply(value, 1000);
+                case ReactiveEnergyUnits.MegavoltampereReactiveHours: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ReactiveEnergyUnits.VoltampereReactiveHours:
-                return value;
-            case ReactiveEnergyUnits.KilovoltampereReactiveHours:
-                return (value) * 1000;
-            case ReactiveEnergyUnits.MegavoltampereReactiveHours:
-                return (value) * 1000000;
-            default:
-                break;
+            case ReactiveEnergyUnits.VoltampereReactiveHours: return value;
+            case ReactiveEnergyUnits.KilovoltampereReactiveHours: return (value) * 1000;
+            case ReactiveEnergyUnits.MegavoltampereReactiveHours: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Jerk */
 export interface JerkDto {
@@ -36,7 +36,7 @@ export enum JerkUnits {
 
 /** Jerk or Jolt, in physics, is the rate at which the acceleration of an object changes over time. The SI unit for jerk is the Meter per second cubed (m/s³). Jerks are vector quantities (they have magnitude and direction) and add according to the parallelogram law. */
 export class Jerk extends BaseUnit {
-    private value: number;
+    protected value: number;
     private meterspersecondcubedLazy: number | null = null;
     private inchespersecondcubedLazy: number | null = null;
     private feetpersecondcubedLazy: number | null = null;
@@ -58,7 +58,9 @@ export class Jerk extends BaseUnit {
     public constructor(value: number, fromUnit: JerkUnits = JerkUnits.MetersPerSecondCubed) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -68,6 +70,11 @@ export class Jerk extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): JerkUnits.MetersPerSecondCubed {
+        return JerkUnits.MetersPerSecondCubed
     }
 
     /** */
@@ -269,6 +276,22 @@ export class Jerk extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Jerk
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof JerkUnits {
+        return JerkUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): JerkUnits.MetersPerSecondCubed {
+        return JerkUnits.MetersPerSecondCubed;
+    }
+
+    /**
      * Create API DTO represent a Jerk unit.
      * @param holdInUnit The specific Jerk unit to be used in the unit representation at the DTO
      */
@@ -309,69 +332,77 @@ export class Jerk extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: JerkUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case JerkUnits.MetersPerSecondCubed: return this.value;
+                case JerkUnits.InchesPerSecondCubed: return super.internalDivide(this.value, 0.0254);
+                case JerkUnits.FeetPerSecondCubed: return super.internalDivide(this.value, 0.304800);
+                case JerkUnits.StandardGravitiesPerSecond: return super.internalDivide(this.value, 9.80665);
+                case JerkUnits.NanometersPerSecondCubed: return super.internalDivide(this.value, 1e-9);
+                case JerkUnits.MicrometersPerSecondCubed: return super.internalDivide(this.value, 0.000001);
+                case JerkUnits.MillimetersPerSecondCubed: return super.internalDivide(this.value, 0.001);
+                case JerkUnits.CentimetersPerSecondCubed: return super.internalDivide(this.value, 0.01);
+                case JerkUnits.DecimetersPerSecondCubed: return super.internalDivide(this.value, 0.1);
+                case JerkUnits.KilometersPerSecondCubed: return super.internalDivide(this.value, 1000);
+                case JerkUnits.MillistandardGravitiesPerSecond: {
+                    const v3 = super.internalDivide(this.value, 9.80665);
+                    return super.internalDivide(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case JerkUnits.MetersPerSecondCubed:
-                return this.value;
-            case JerkUnits.InchesPerSecondCubed:
-                return this.value / 0.0254;
-            case JerkUnits.FeetPerSecondCubed:
-                return this.value / 0.304800;
-            case JerkUnits.StandardGravitiesPerSecond:
-                return this.value / 9.80665;
-            case JerkUnits.NanometersPerSecondCubed:
-                return (this.value) / 1e-9;
-            case JerkUnits.MicrometersPerSecondCubed:
-                return (this.value) / 0.000001;
-            case JerkUnits.MillimetersPerSecondCubed:
-                return (this.value) / 0.001;
-            case JerkUnits.CentimetersPerSecondCubed:
-                return (this.value) / 0.01;
-            case JerkUnits.DecimetersPerSecondCubed:
-                return (this.value) / 0.1;
-            case JerkUnits.KilometersPerSecondCubed:
-                return (this.value) / 1000;
-            case JerkUnits.MillistandardGravitiesPerSecond:
-                return (this.value / 9.80665) / 0.001;
-            default:
-                break;
+            case JerkUnits.MetersPerSecondCubed: return this.value;
+            case JerkUnits.InchesPerSecondCubed: return this.value / 0.0254;
+            case JerkUnits.FeetPerSecondCubed: return this.value / 0.304800;
+            case JerkUnits.StandardGravitiesPerSecond: return this.value / 9.80665;
+            case JerkUnits.NanometersPerSecondCubed: return (this.value) / 1e-9;
+            case JerkUnits.MicrometersPerSecondCubed: return (this.value) / 0.000001;
+            case JerkUnits.MillimetersPerSecondCubed: return (this.value) / 0.001;
+            case JerkUnits.CentimetersPerSecondCubed: return (this.value) / 0.01;
+            case JerkUnits.DecimetersPerSecondCubed: return (this.value) / 0.1;
+            case JerkUnits.KilometersPerSecondCubed: return (this.value) / 1000;
+            case JerkUnits.MillistandardGravitiesPerSecond: return (this.value / 9.80665) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: JerkUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case JerkUnits.MetersPerSecondCubed: return value;
+                case JerkUnits.InchesPerSecondCubed: return super.internalMultiply(value, 0.0254);
+                case JerkUnits.FeetPerSecondCubed: return super.internalMultiply(value, 0.304800);
+                case JerkUnits.StandardGravitiesPerSecond: return super.internalMultiply(value, 9.80665);
+                case JerkUnits.NanometersPerSecondCubed: return super.internalMultiply(value, 1e-9);
+                case JerkUnits.MicrometersPerSecondCubed: return super.internalMultiply(value, 0.000001);
+                case JerkUnits.MillimetersPerSecondCubed: return super.internalMultiply(value, 0.001);
+                case JerkUnits.CentimetersPerSecondCubed: return super.internalMultiply(value, 0.01);
+                case JerkUnits.DecimetersPerSecondCubed: return super.internalMultiply(value, 0.1);
+                case JerkUnits.KilometersPerSecondCubed: return super.internalMultiply(value, 1000);
+                case JerkUnits.MillistandardGravitiesPerSecond: {
+                    const v3 = super.internalMultiply(value, 9.80665);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case JerkUnits.MetersPerSecondCubed:
-                return value;
-            case JerkUnits.InchesPerSecondCubed:
-                return value * 0.0254;
-            case JerkUnits.FeetPerSecondCubed:
-                return value * 0.304800;
-            case JerkUnits.StandardGravitiesPerSecond:
-                return value * 9.80665;
-            case JerkUnits.NanometersPerSecondCubed:
-                return (value) * 1e-9;
-            case JerkUnits.MicrometersPerSecondCubed:
-                return (value) * 0.000001;
-            case JerkUnits.MillimetersPerSecondCubed:
-                return (value) * 0.001;
-            case JerkUnits.CentimetersPerSecondCubed:
-                return (value) * 0.01;
-            case JerkUnits.DecimetersPerSecondCubed:
-                return (value) * 0.1;
-            case JerkUnits.KilometersPerSecondCubed:
-                return (value) * 1000;
-            case JerkUnits.MillistandardGravitiesPerSecond:
-                return (value * 9.80665) * 0.001;
-            default:
-                break;
+            case JerkUnits.MetersPerSecondCubed: return value;
+            case JerkUnits.InchesPerSecondCubed: return value * 0.0254;
+            case JerkUnits.FeetPerSecondCubed: return value * 0.304800;
+            case JerkUnits.StandardGravitiesPerSecond: return value * 9.80665;
+            case JerkUnits.NanometersPerSecondCubed: return (value) * 1e-9;
+            case JerkUnits.MicrometersPerSecondCubed: return (value) * 0.000001;
+            case JerkUnits.MillimetersPerSecondCubed: return (value) * 0.001;
+            case JerkUnits.CentimetersPerSecondCubed: return (value) * 0.01;
+            case JerkUnits.DecimetersPerSecondCubed: return (value) * 0.1;
+            case JerkUnits.KilometersPerSecondCubed: return (value) * 1000;
+            case JerkUnits.MillistandardGravitiesPerSecond: return (value * 9.80665) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

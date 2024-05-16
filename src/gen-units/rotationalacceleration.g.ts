@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a RotationalAcceleration */
 export interface RotationalAccelerationDto {
@@ -22,7 +22,7 @@ export enum RotationalAccelerationUnits {
 
 /** Angular acceleration is the rate of change of rotational speed. */
 export class RotationalAcceleration extends BaseUnit {
-    private value: number;
+    protected value: number;
     private radianspersecondsquaredLazy: number | null = null;
     private degreespersecondsquaredLazy: number | null = null;
     private revolutionsperminutepersecondLazy: number | null = null;
@@ -37,7 +37,9 @@ export class RotationalAcceleration extends BaseUnit {
     public constructor(value: number, fromUnit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -47,6 +49,11 @@ export class RotationalAcceleration extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): RotationalAccelerationUnits.RadiansPerSecondSquared {
+        return RotationalAccelerationUnits.RadiansPerSecondSquared
     }
 
     /** */
@@ -122,6 +129,22 @@ export class RotationalAcceleration extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with RotationalAcceleration
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof RotationalAccelerationUnits {
+        return RotationalAccelerationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RotationalAccelerationUnits.RadiansPerSecondSquared {
+        return RotationalAccelerationUnits.RadiansPerSecondSquared;
+    }
+
+    /**
      * Create API DTO represent a RotationalAcceleration unit.
      * @param holdInUnit The specific RotationalAcceleration unit to be used in the unit representation at the DTO
      */
@@ -155,41 +178,64 @@ export class RotationalAcceleration extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RotationalAccelerationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RotationalAccelerationUnits.RadiansPerSecondSquared: return this.value;
+                case RotationalAccelerationUnits.DegreesPerSecondSquared: {
+                    const v3 = super.internalDivide(180, Math.PI);
+                    return super.internalMultiply(v3, this.value);
+                }
+                case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond: {
+                    const v4 = super.internalMultiply(2, Math.PI);
+                    const v5 = super.internalDivide(60, v4);
+                    return super.internalMultiply(v5, this.value);
+                }
+                case RotationalAccelerationUnits.RevolutionsPerSecondSquared: {
+                    const v4 = super.internalMultiply(2, Math.PI);
+                    const v5 = super.internalDivide(1, v4);
+                    return super.internalMultiply(v5, this.value);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RotationalAccelerationUnits.RadiansPerSecondSquared:
-                return this.value;
-            case RotationalAccelerationUnits.DegreesPerSecondSquared:
-                return (180 / Math.PI) * this.value;
-            case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
-                return (60 / (2 * Math.PI)) * this.value;
-            case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
-                return (1 / (2 * Math.PI)) * this.value;
-            default:
-                break;
+            case RotationalAccelerationUnits.RadiansPerSecondSquared: return this.value;
+            case RotationalAccelerationUnits.DegreesPerSecondSquared: return (180 / Math.PI) * this.value;
+            case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond: return (60 / (2 * Math.PI)) * this.value;
+            case RotationalAccelerationUnits.RevolutionsPerSecondSquared: return (1 / (2 * Math.PI)) * this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RotationalAccelerationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RotationalAccelerationUnits.RadiansPerSecondSquared: return value;
+                case RotationalAccelerationUnits.DegreesPerSecondSquared: {
+                    const v3 = super.internalDivide(Math.PI, 180);
+                    return super.internalMultiply(v3, value);
+                }
+                case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond: {
+                    const v3 = super.internalMultiply(2, Math.PI);
+                    const v5 = super.internalDivide(v3, 60);
+                    return super.internalMultiply(v5, value);
+                }
+                case RotationalAccelerationUnits.RevolutionsPerSecondSquared: {
+                    const v3 = super.internalMultiply(2, Math.PI);
+                    return super.internalMultiply(v3, value);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RotationalAccelerationUnits.RadiansPerSecondSquared:
-                return value;
-            case RotationalAccelerationUnits.DegreesPerSecondSquared:
-                return (Math.PI / 180) * value;
-            case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
-                return ((2 * Math.PI) / 60) * value;
-            case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
-                return (2 * Math.PI) * value;
-            default:
-                break;
+            case RotationalAccelerationUnits.RadiansPerSecondSquared: return value;
+            case RotationalAccelerationUnits.DegreesPerSecondSquared: return (Math.PI / 180) * value;
+            case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond: return ((2 * Math.PI) / 60) * value;
+            case RotationalAccelerationUnits.RevolutionsPerSecondSquared: return (2 * Math.PI) * value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

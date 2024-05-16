@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a SolidAngle */
 export interface SolidAngleDto {
@@ -16,7 +16,7 @@ export enum SolidAngleUnits {
 
 /** In geometry, a solid angle is the two-dimensional angle in three-dimensional space that an object subtends at a point. */
 export class SolidAngle extends BaseUnit {
-    private value: number;
+    protected value: number;
     private steradiansLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class SolidAngle extends BaseUnit {
     public constructor(value: number, fromUnit: SolidAngleUnits = SolidAngleUnits.Steradians) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class SolidAngle extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): SolidAngleUnits.Steradians {
+        return SolidAngleUnits.Steradians
     }
 
     /** */
@@ -56,6 +63,22 @@ export class SolidAngle extends BaseUnit {
      */
     public static FromSteradians(value: number): SolidAngle {
         return new SolidAngle(value, SolidAngleUnits.Steradians);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with SolidAngle
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof SolidAngleUnits {
+        return SolidAngleUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): SolidAngleUnits.Steradians {
+        return SolidAngleUnits.Steradians;
     }
 
     /**
@@ -89,29 +112,31 @@ export class SolidAngle extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: SolidAngleUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case SolidAngleUnits.Steradians: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case SolidAngleUnits.Steradians:
-                return this.value;
-            default:
-                break;
+            case SolidAngleUnits.Steradians: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: SolidAngleUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case SolidAngleUnits.Steradians: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case SolidAngleUnits.Steradians:
-                return value;
-            default:
-                break;
+            case SolidAngleUnits.Steradians: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

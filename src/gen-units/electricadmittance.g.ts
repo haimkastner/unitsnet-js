@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricAdmittance */
 export interface ElectricAdmittanceDto {
@@ -22,7 +22,7 @@ export enum ElectricAdmittanceUnits {
 
 /** Electric admittance is a measure of how easily a circuit or device will allow a current to flow. It is defined as the inverse of impedance. The SI unit of admittance is the siemens (symbol S). */
 export class ElectricAdmittance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private siemensLazy: number | null = null;
     private nanosiemensLazy: number | null = null;
     private microsiemensLazy: number | null = null;
@@ -37,7 +37,9 @@ export class ElectricAdmittance extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -47,6 +49,11 @@ export class ElectricAdmittance extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricAdmittanceUnits.Siemens {
+        return ElectricAdmittanceUnits.Siemens
     }
 
     /** */
@@ -122,6 +129,22 @@ export class ElectricAdmittance extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricAdmittance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricAdmittanceUnits {
+        return ElectricAdmittanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricAdmittanceUnits.Siemens {
+        return ElectricAdmittanceUnits.Siemens;
+    }
+
+    /**
      * Create API DTO represent a ElectricAdmittance unit.
      * @param holdInUnit The specific ElectricAdmittance unit to be used in the unit representation at the DTO
      */
@@ -155,41 +178,43 @@ export class ElectricAdmittance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricAdmittanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricAdmittanceUnits.Siemens: return this.value;
+                case ElectricAdmittanceUnits.Nanosiemens: return super.internalDivide(this.value, 1e-9);
+                case ElectricAdmittanceUnits.Microsiemens: return super.internalDivide(this.value, 0.000001);
+                case ElectricAdmittanceUnits.Millisiemens: return super.internalDivide(this.value, 0.001);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricAdmittanceUnits.Siemens:
-                return this.value;
-            case ElectricAdmittanceUnits.Nanosiemens:
-                return (this.value) / 1e-9;
-            case ElectricAdmittanceUnits.Microsiemens:
-                return (this.value) / 0.000001;
-            case ElectricAdmittanceUnits.Millisiemens:
-                return (this.value) / 0.001;
-            default:
-                break;
+            case ElectricAdmittanceUnits.Siemens: return this.value;
+            case ElectricAdmittanceUnits.Nanosiemens: return (this.value) / 1e-9;
+            case ElectricAdmittanceUnits.Microsiemens: return (this.value) / 0.000001;
+            case ElectricAdmittanceUnits.Millisiemens: return (this.value) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricAdmittanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricAdmittanceUnits.Siemens: return value;
+                case ElectricAdmittanceUnits.Nanosiemens: return super.internalMultiply(value, 1e-9);
+                case ElectricAdmittanceUnits.Microsiemens: return super.internalMultiply(value, 0.000001);
+                case ElectricAdmittanceUnits.Millisiemens: return super.internalMultiply(value, 0.001);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricAdmittanceUnits.Siemens:
-                return value;
-            case ElectricAdmittanceUnits.Nanosiemens:
-                return (value) * 1e-9;
-            case ElectricAdmittanceUnits.Microsiemens:
-                return (value) * 0.000001;
-            case ElectricAdmittanceUnits.Millisiemens:
-                return (value) * 0.001;
-            default:
-                break;
+            case ElectricAdmittanceUnits.Siemens: return value;
+            case ElectricAdmittanceUnits.Nanosiemens: return (value) * 1e-9;
+            case ElectricAdmittanceUnits.Microsiemens: return (value) * 0.000001;
+            case ElectricAdmittanceUnits.Millisiemens: return (value) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

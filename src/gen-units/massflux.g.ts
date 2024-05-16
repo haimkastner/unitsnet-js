@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MassFlux */
 export interface MassFluxDto {
@@ -38,7 +38,7 @@ export enum MassFluxUnits {
 
 /** Mass flux is the mass flow rate per unit area. */
 export class MassFlux extends BaseUnit {
-    private value: number;
+    protected value: number;
     private gramspersecondpersquaremeterLazy: number | null = null;
     private gramspersecondpersquarecentimeterLazy: number | null = null;
     private gramspersecondpersquaremillimeterLazy: number | null = null;
@@ -61,7 +61,9 @@ export class MassFlux extends BaseUnit {
     public constructor(value: number, fromUnit: MassFluxUnits = MassFluxUnits.KilogramsPerSecondPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -71,6 +73,11 @@ export class MassFlux extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): MassFluxUnits.KilogramsPerSecondPerSquareMeter {
+        return MassFluxUnits.KilogramsPerSecondPerSquareMeter
     }
 
     /** */
@@ -290,6 +297,22 @@ export class MassFlux extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MassFlux
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof MassFluxUnits {
+        return MassFluxUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MassFluxUnits.KilogramsPerSecondPerSquareMeter {
+        return MassFluxUnits.KilogramsPerSecondPerSquareMeter;
+    }
+
+    /**
      * Create API DTO represent a MassFlux unit.
      * @param holdInUnit The specific MassFlux unit to be used in the unit representation at the DTO
      */
@@ -331,73 +354,111 @@ export class MassFlux extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MassFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MassFluxUnits.GramsPerSecondPerSquareMeter: return super.internalMultiply(this.value, 1e3);
+                case MassFluxUnits.GramsPerSecondPerSquareCentimeter: return super.internalMultiply(this.value, 1e-1);
+                case MassFluxUnits.GramsPerSecondPerSquareMillimeter: return super.internalMultiply(this.value, 1e-3);
+                case MassFluxUnits.GramsPerHourPerSquareMeter: return super.internalMultiply(this.value, 3.6e6);
+                case MassFluxUnits.GramsPerHourPerSquareCentimeter: return super.internalMultiply(this.value, 3.6e2);
+                case MassFluxUnits.GramsPerHourPerSquareMillimeter: return super.internalMultiply(this.value, 3.6e0);
+                case MassFluxUnits.KilogramsPerSecondPerSquareMeter: {
+                    const v3 = super.internalMultiply(this.value, 1e3);
+                    return super.internalDivide(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerSecondPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 1e-1);
+                    return super.internalDivide(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerSecondPerSquareMillimeter: {
+                    const v3 = super.internalMultiply(this.value, 1e-3);
+                    return super.internalDivide(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerHourPerSquareMeter: {
+                    const v3 = super.internalMultiply(this.value, 3.6e6);
+                    return super.internalDivide(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerHourPerSquareCentimeter: {
+                    const v3 = super.internalMultiply(this.value, 3.6e2);
+                    return super.internalDivide(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerHourPerSquareMillimeter: {
+                    const v3 = super.internalMultiply(this.value, 3.6e0);
+                    return super.internalDivide(v3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MassFluxUnits.GramsPerSecondPerSquareMeter:
-                return this.value * 1e3;
-            case MassFluxUnits.GramsPerSecondPerSquareCentimeter:
-                return this.value * 1e-1;
-            case MassFluxUnits.GramsPerSecondPerSquareMillimeter:
-                return this.value * 1e-3;
-            case MassFluxUnits.GramsPerHourPerSquareMeter:
-                return this.value * 3.6e6;
-            case MassFluxUnits.GramsPerHourPerSquareCentimeter:
-                return this.value * 3.6e2;
-            case MassFluxUnits.GramsPerHourPerSquareMillimeter:
-                return this.value * 3.6e0;
-            case MassFluxUnits.KilogramsPerSecondPerSquareMeter:
-                return (this.value * 1e3) / 1000;
-            case MassFluxUnits.KilogramsPerSecondPerSquareCentimeter:
-                return (this.value * 1e-1) / 1000;
-            case MassFluxUnits.KilogramsPerSecondPerSquareMillimeter:
-                return (this.value * 1e-3) / 1000;
-            case MassFluxUnits.KilogramsPerHourPerSquareMeter:
-                return (this.value * 3.6e6) / 1000;
-            case MassFluxUnits.KilogramsPerHourPerSquareCentimeter:
-                return (this.value * 3.6e2) / 1000;
-            case MassFluxUnits.KilogramsPerHourPerSquareMillimeter:
-                return (this.value * 3.6e0) / 1000;
-            default:
-                break;
+            case MassFluxUnits.GramsPerSecondPerSquareMeter: return this.value * 1e3;
+            case MassFluxUnits.GramsPerSecondPerSquareCentimeter: return this.value * 1e-1;
+            case MassFluxUnits.GramsPerSecondPerSquareMillimeter: return this.value * 1e-3;
+            case MassFluxUnits.GramsPerHourPerSquareMeter: return this.value * 3.6e6;
+            case MassFluxUnits.GramsPerHourPerSquareCentimeter: return this.value * 3.6e2;
+            case MassFluxUnits.GramsPerHourPerSquareMillimeter: return this.value * 3.6e0;
+            case MassFluxUnits.KilogramsPerSecondPerSquareMeter: return (this.value * 1e3) / 1000;
+            case MassFluxUnits.KilogramsPerSecondPerSquareCentimeter: return (this.value * 1e-1) / 1000;
+            case MassFluxUnits.KilogramsPerSecondPerSquareMillimeter: return (this.value * 1e-3) / 1000;
+            case MassFluxUnits.KilogramsPerHourPerSquareMeter: return (this.value * 3.6e6) / 1000;
+            case MassFluxUnits.KilogramsPerHourPerSquareCentimeter: return (this.value * 3.6e2) / 1000;
+            case MassFluxUnits.KilogramsPerHourPerSquareMillimeter: return (this.value * 3.6e0) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MassFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MassFluxUnits.GramsPerSecondPerSquareMeter: return super.internalDivide(value, 1e3);
+                case MassFluxUnits.GramsPerSecondPerSquareCentimeter: return super.internalDivide(value, 1e-1);
+                case MassFluxUnits.GramsPerSecondPerSquareMillimeter: return super.internalDivide(value, 1e-3);
+                case MassFluxUnits.GramsPerHourPerSquareMeter: return super.internalDivide(value, 3.6e6);
+                case MassFluxUnits.GramsPerHourPerSquareCentimeter: return super.internalDivide(value, 3.6e2);
+                case MassFluxUnits.GramsPerHourPerSquareMillimeter: return super.internalDivide(value, 3.6e0);
+                case MassFluxUnits.KilogramsPerSecondPerSquareMeter: {
+                    const v3 = super.internalDivide(value, 1e3);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerSecondPerSquareCentimeter: {
+                    const v3 = super.internalDivide(value, 1e-1);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerSecondPerSquareMillimeter: {
+                    const v3 = super.internalDivide(value, 1e-3);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerHourPerSquareMeter: {
+                    const v3 = super.internalDivide(value, 3.6e6);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerHourPerSquareCentimeter: {
+                    const v3 = super.internalDivide(value, 3.6e2);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case MassFluxUnits.KilogramsPerHourPerSquareMillimeter: {
+                    const v3 = super.internalDivide(value, 3.6e0);
+                    return super.internalMultiply(v3, 1000);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MassFluxUnits.GramsPerSecondPerSquareMeter:
-                return value / 1e3;
-            case MassFluxUnits.GramsPerSecondPerSquareCentimeter:
-                return value / 1e-1;
-            case MassFluxUnits.GramsPerSecondPerSquareMillimeter:
-                return value / 1e-3;
-            case MassFluxUnits.GramsPerHourPerSquareMeter:
-                return value / 3.6e6;
-            case MassFluxUnits.GramsPerHourPerSquareCentimeter:
-                return value / 3.6e2;
-            case MassFluxUnits.GramsPerHourPerSquareMillimeter:
-                return value / 3.6e0;
-            case MassFluxUnits.KilogramsPerSecondPerSquareMeter:
-                return (value / 1e3) * 1000;
-            case MassFluxUnits.KilogramsPerSecondPerSquareCentimeter:
-                return (value / 1e-1) * 1000;
-            case MassFluxUnits.KilogramsPerSecondPerSquareMillimeter:
-                return (value / 1e-3) * 1000;
-            case MassFluxUnits.KilogramsPerHourPerSquareMeter:
-                return (value / 3.6e6) * 1000;
-            case MassFluxUnits.KilogramsPerHourPerSquareCentimeter:
-                return (value / 3.6e2) * 1000;
-            case MassFluxUnits.KilogramsPerHourPerSquareMillimeter:
-                return (value / 3.6e0) * 1000;
-            default:
-                break;
+            case MassFluxUnits.GramsPerSecondPerSquareMeter: return value / 1e3;
+            case MassFluxUnits.GramsPerSecondPerSquareCentimeter: return value / 1e-1;
+            case MassFluxUnits.GramsPerSecondPerSquareMillimeter: return value / 1e-3;
+            case MassFluxUnits.GramsPerHourPerSquareMeter: return value / 3.6e6;
+            case MassFluxUnits.GramsPerHourPerSquareCentimeter: return value / 3.6e2;
+            case MassFluxUnits.GramsPerHourPerSquareMillimeter: return value / 3.6e0;
+            case MassFluxUnits.KilogramsPerSecondPerSquareMeter: return (value / 1e3) * 1000;
+            case MassFluxUnits.KilogramsPerSecondPerSquareCentimeter: return (value / 1e-1) * 1000;
+            case MassFluxUnits.KilogramsPerSecondPerSquareMillimeter: return (value / 1e-3) * 1000;
+            case MassFluxUnits.KilogramsPerHourPerSquareMeter: return (value / 3.6e6) * 1000;
+            case MassFluxUnits.KilogramsPerHourPerSquareCentimeter: return (value / 3.6e2) * 1000;
+            case MassFluxUnits.KilogramsPerHourPerSquareMillimeter: return (value / 3.6e0) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

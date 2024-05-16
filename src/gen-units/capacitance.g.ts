@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Capacitance */
 export interface CapacitanceDto {
@@ -28,7 +28,7 @@ export enum CapacitanceUnits {
 
 /** Capacitance is the ability of a body to store an electric charge. */
 export class Capacitance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private faradsLazy: number | null = null;
     private picofaradsLazy: number | null = null;
     private nanofaradsLazy: number | null = null;
@@ -46,7 +46,9 @@ export class Capacitance extends BaseUnit {
     public constructor(value: number, fromUnit: CapacitanceUnits = CapacitanceUnits.Farads) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -56,6 +58,11 @@ export class Capacitance extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): CapacitanceUnits.Farads {
+        return CapacitanceUnits.Farads
     }
 
     /** */
@@ -185,6 +192,22 @@ export class Capacitance extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Capacitance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof CapacitanceUnits {
+        return CapacitanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): CapacitanceUnits.Farads {
+        return CapacitanceUnits.Farads;
+    }
+
+    /**
      * Create API DTO represent a Capacitance unit.
      * @param holdInUnit The specific Capacitance unit to be used in the unit representation at the DTO
      */
@@ -221,53 +244,55 @@ export class Capacitance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: CapacitanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case CapacitanceUnits.Farads: return this.value;
+                case CapacitanceUnits.Picofarads: return super.internalDivide(this.value, 1e-12);
+                case CapacitanceUnits.Nanofarads: return super.internalDivide(this.value, 1e-9);
+                case CapacitanceUnits.Microfarads: return super.internalDivide(this.value, 0.000001);
+                case CapacitanceUnits.Millifarads: return super.internalDivide(this.value, 0.001);
+                case CapacitanceUnits.Kilofarads: return super.internalDivide(this.value, 1000);
+                case CapacitanceUnits.Megafarads: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case CapacitanceUnits.Farads:
-                return this.value;
-            case CapacitanceUnits.Picofarads:
-                return (this.value) / 1e-12;
-            case CapacitanceUnits.Nanofarads:
-                return (this.value) / 1e-9;
-            case CapacitanceUnits.Microfarads:
-                return (this.value) / 0.000001;
-            case CapacitanceUnits.Millifarads:
-                return (this.value) / 0.001;
-            case CapacitanceUnits.Kilofarads:
-                return (this.value) / 1000;
-            case CapacitanceUnits.Megafarads:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case CapacitanceUnits.Farads: return this.value;
+            case CapacitanceUnits.Picofarads: return (this.value) / 1e-12;
+            case CapacitanceUnits.Nanofarads: return (this.value) / 1e-9;
+            case CapacitanceUnits.Microfarads: return (this.value) / 0.000001;
+            case CapacitanceUnits.Millifarads: return (this.value) / 0.001;
+            case CapacitanceUnits.Kilofarads: return (this.value) / 1000;
+            case CapacitanceUnits.Megafarads: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: CapacitanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case CapacitanceUnits.Farads: return value;
+                case CapacitanceUnits.Picofarads: return super.internalMultiply(value, 1e-12);
+                case CapacitanceUnits.Nanofarads: return super.internalMultiply(value, 1e-9);
+                case CapacitanceUnits.Microfarads: return super.internalMultiply(value, 0.000001);
+                case CapacitanceUnits.Millifarads: return super.internalMultiply(value, 0.001);
+                case CapacitanceUnits.Kilofarads: return super.internalMultiply(value, 1000);
+                case CapacitanceUnits.Megafarads: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case CapacitanceUnits.Farads:
-                return value;
-            case CapacitanceUnits.Picofarads:
-                return (value) * 1e-12;
-            case CapacitanceUnits.Nanofarads:
-                return (value) * 1e-9;
-            case CapacitanceUnits.Microfarads:
-                return (value) * 0.000001;
-            case CapacitanceUnits.Millifarads:
-                return (value) * 0.001;
-            case CapacitanceUnits.Kilofarads:
-                return (value) * 1000;
-            case CapacitanceUnits.Megafarads:
-                return (value) * 1000000;
-            default:
-                break;
+            case CapacitanceUnits.Farads: return value;
+            case CapacitanceUnits.Picofarads: return (value) * 1e-12;
+            case CapacitanceUnits.Nanofarads: return (value) * 1e-9;
+            case CapacitanceUnits.Microfarads: return (value) * 0.000001;
+            case CapacitanceUnits.Millifarads: return (value) * 0.001;
+            case CapacitanceUnits.Kilofarads: return (value) * 1000;
+            case CapacitanceUnits.Megafarads: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

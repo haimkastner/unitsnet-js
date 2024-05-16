@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a TemperatureDelta */
 export interface TemperatureDeltaDto {
@@ -32,7 +32,7 @@ export enum TemperatureDeltaUnits {
 
 /** Difference between two temperatures. The conversions are different than for Temperature. */
 export class TemperatureDelta extends BaseUnit {
-    private value: number;
+    protected value: number;
     private kelvinsLazy: number | null = null;
     private degreescelsiusLazy: number | null = null;
     private degreesdelisleLazy: number | null = null;
@@ -52,7 +52,9 @@ export class TemperatureDelta extends BaseUnit {
     public constructor(value: number, fromUnit: TemperatureDeltaUnits = TemperatureDeltaUnits.Kelvins) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -62,6 +64,11 @@ export class TemperatureDelta extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): TemperatureDeltaUnits.Kelvins {
+        return TemperatureDeltaUnits.Kelvins
     }
 
     /** */
@@ -227,6 +234,22 @@ export class TemperatureDelta extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with TemperatureDelta
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof TemperatureDeltaUnits {
+        return TemperatureDeltaUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): TemperatureDeltaUnits.Kelvins {
+        return TemperatureDeltaUnits.Kelvins;
+    }
+
+    /**
      * Create API DTO represent a TemperatureDelta unit.
      * @param holdInUnit The specific TemperatureDelta unit to be used in the unit representation at the DTO
      */
@@ -265,61 +288,99 @@ export class TemperatureDelta extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: TemperatureDeltaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case TemperatureDeltaUnits.Kelvins: return this.value;
+                case TemperatureDeltaUnits.DegreesCelsius: return this.value;
+                case TemperatureDeltaUnits.DegreesDelisle: {
+                    const v4 = super.internalDivide(3, 2);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesFahrenheit: {
+                    const v4 = super.internalDivide(9, 5);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesNewton: {
+                    const v4 = super.internalDivide(33, 100);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesRankine: {
+                    const v4 = super.internalDivide(9, 5);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesReaumur: {
+                    const v4 = super.internalDivide(4, 5);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesRoemer: {
+                    const v4 = super.internalDivide(21, 40);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case TemperatureDeltaUnits.MillidegreesCelsius: return super.internalDivide(this.value, 0.001);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case TemperatureDeltaUnits.Kelvins:
-                return this.value;
-            case TemperatureDeltaUnits.DegreesCelsius:
-                return this.value;
-            case TemperatureDeltaUnits.DegreesDelisle:
-                return this.value * -3 / 2;
-            case TemperatureDeltaUnits.DegreesFahrenheit:
-                return this.value * 9 / 5;
-            case TemperatureDeltaUnits.DegreesNewton:
-                return this.value * 33 / 100;
-            case TemperatureDeltaUnits.DegreesRankine:
-                return this.value * 9 / 5;
-            case TemperatureDeltaUnits.DegreesReaumur:
-                return this.value * 4 / 5;
-            case TemperatureDeltaUnits.DegreesRoemer:
-                return this.value * 21 / 40;
-            case TemperatureDeltaUnits.MillidegreesCelsius:
-                return (this.value) / 0.001;
-            default:
-                break;
+            case TemperatureDeltaUnits.Kelvins: return this.value;
+            case TemperatureDeltaUnits.DegreesCelsius: return this.value;
+            case TemperatureDeltaUnits.DegreesDelisle: return this.value * -3 / 2;
+            case TemperatureDeltaUnits.DegreesFahrenheit: return this.value * 9 / 5;
+            case TemperatureDeltaUnits.DegreesNewton: return this.value * 33 / 100;
+            case TemperatureDeltaUnits.DegreesRankine: return this.value * 9 / 5;
+            case TemperatureDeltaUnits.DegreesReaumur: return this.value * 4 / 5;
+            case TemperatureDeltaUnits.DegreesRoemer: return this.value * 21 / 40;
+            case TemperatureDeltaUnits.MillidegreesCelsius: return (this.value) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: TemperatureDeltaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case TemperatureDeltaUnits.Kelvins: return value;
+                case TemperatureDeltaUnits.DegreesCelsius: return value;
+                case TemperatureDeltaUnits.DegreesDelisle: {
+                    const v4 = super.internalDivide(2, 3);
+                    return super.internalMultiply(value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesFahrenheit: {
+                    const v4 = super.internalDivide(5, 9);
+                    return super.internalMultiply(value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesNewton: {
+                    const v4 = super.internalDivide(100, 33);
+                    return super.internalMultiply(value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesRankine: {
+                    const v4 = super.internalDivide(5, 9);
+                    return super.internalMultiply(value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesReaumur: {
+                    const v4 = super.internalDivide(5, 4);
+                    return super.internalMultiply(value, v4);
+                }
+                case TemperatureDeltaUnits.DegreesRoemer: {
+                    const v4 = super.internalDivide(40, 21);
+                    return super.internalMultiply(value, v4);
+                }
+                case TemperatureDeltaUnits.MillidegreesCelsius: return super.internalMultiply(value, 0.001);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case TemperatureDeltaUnits.Kelvins:
-                return value;
-            case TemperatureDeltaUnits.DegreesCelsius:
-                return value;
-            case TemperatureDeltaUnits.DegreesDelisle:
-                return value * -2 / 3;
-            case TemperatureDeltaUnits.DegreesFahrenheit:
-                return value * 5 / 9;
-            case TemperatureDeltaUnits.DegreesNewton:
-                return value * 100 / 33;
-            case TemperatureDeltaUnits.DegreesRankine:
-                return value * 5 / 9;
-            case TemperatureDeltaUnits.DegreesReaumur:
-                return value * 5 / 4;
-            case TemperatureDeltaUnits.DegreesRoemer:
-                return value * 40 / 21;
-            case TemperatureDeltaUnits.MillidegreesCelsius:
-                return (value) * 0.001;
-            default:
-                break;
+            case TemperatureDeltaUnits.Kelvins: return value;
+            case TemperatureDeltaUnits.DegreesCelsius: return value;
+            case TemperatureDeltaUnits.DegreesDelisle: return value * -2 / 3;
+            case TemperatureDeltaUnits.DegreesFahrenheit: return value * 5 / 9;
+            case TemperatureDeltaUnits.DegreesNewton: return value * 100 / 33;
+            case TemperatureDeltaUnits.DegreesRankine: return value * 5 / 9;
+            case TemperatureDeltaUnits.DegreesReaumur: return value * 5 / 4;
+            case TemperatureDeltaUnits.DegreesRoemer: return value * 40 / 21;
+            case TemperatureDeltaUnits.MillidegreesCelsius: return (value) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

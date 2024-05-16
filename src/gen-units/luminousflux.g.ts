@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a LuminousFlux */
 export interface LuminousFluxDto {
@@ -16,7 +16,7 @@ export enum LuminousFluxUnits {
 
 /** In photometry, luminous flux or luminous power is the measure of the perceived power of light. */
 export class LuminousFlux extends BaseUnit {
-    private value: number;
+    protected value: number;
     private lumensLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class LuminousFlux extends BaseUnit {
     public constructor(value: number, fromUnit: LuminousFluxUnits = LuminousFluxUnits.Lumens) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class LuminousFlux extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): LuminousFluxUnits.Lumens {
+        return LuminousFluxUnits.Lumens
     }
 
     /** */
@@ -56,6 +63,22 @@ export class LuminousFlux extends BaseUnit {
      */
     public static FromLumens(value: number): LuminousFlux {
         return new LuminousFlux(value, LuminousFluxUnits.Lumens);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with LuminousFlux
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof LuminousFluxUnits {
+        return LuminousFluxUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LuminousFluxUnits.Lumens {
+        return LuminousFluxUnits.Lumens;
     }
 
     /**
@@ -89,29 +112,31 @@ export class LuminousFlux extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LuminousFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LuminousFluxUnits.Lumens: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LuminousFluxUnits.Lumens:
-                return this.value;
-            default:
-                break;
+            case LuminousFluxUnits.Lumens: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LuminousFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LuminousFluxUnits.Lumens: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LuminousFluxUnits.Lumens:
-                return value;
-            default:
-                break;
+            case LuminousFluxUnits.Lumens: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

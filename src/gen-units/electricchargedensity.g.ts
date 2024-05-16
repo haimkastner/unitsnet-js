@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricChargeDensity */
 export interface ElectricChargeDensityDto {
@@ -16,7 +16,7 @@ export enum ElectricChargeDensityUnits {
 
 /** In electromagnetism, charge density is a measure of the amount of electric charge per volume. */
 export class ElectricChargeDensity extends BaseUnit {
-    private value: number;
+    protected value: number;
     private coulombspercubicmeterLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class ElectricChargeDensity extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class ElectricChargeDensity extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricChargeDensityUnits.CoulombsPerCubicMeter {
+        return ElectricChargeDensityUnits.CoulombsPerCubicMeter
     }
 
     /** */
@@ -56,6 +63,22 @@ export class ElectricChargeDensity extends BaseUnit {
      */
     public static FromCoulombsPerCubicMeter(value: number): ElectricChargeDensity {
         return new ElectricChargeDensity(value, ElectricChargeDensityUnits.CoulombsPerCubicMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricChargeDensity
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricChargeDensityUnits {
+        return ElectricChargeDensityUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricChargeDensityUnits.CoulombsPerCubicMeter {
+        return ElectricChargeDensityUnits.CoulombsPerCubicMeter;
     }
 
     /**
@@ -89,29 +112,31 @@ export class ElectricChargeDensity extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricChargeDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricChargeDensityUnits.CoulombsPerCubicMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                return this.value;
-            default:
-                break;
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricChargeDensityUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricChargeDensityUnits.CoulombsPerCubicMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                return value;
-            default:
-                break;
+            case ElectricChargeDensityUnits.CoulombsPerCubicMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

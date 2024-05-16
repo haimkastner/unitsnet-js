@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Area */
 export interface AreaDto {
@@ -42,7 +42,7 @@ export enum AreaUnits {
 
 /** Area is a quantity that expresses the extent of a two-dimensional surface or shape, or planar lamina, in the plane. Area can be understood as the amount of material with a given thickness that would be necessary to fashion a model of the shape, or the amount of paint necessary to cover the surface with a single coat.[1] It is the two-dimensional analog of the length of a curve (a one-dimensional concept) or the volume of a solid (a three-dimensional concept). */
 export class Area extends BaseUnit {
-    private value: number;
+    protected value: number;
     private squarekilometersLazy: number | null = null;
     private squaremetersLazy: number | null = null;
     private squaredecimetersLazy: number | null = null;
@@ -67,7 +67,9 @@ export class Area extends BaseUnit {
     public constructor(value: number, fromUnit: AreaUnits = AreaUnits.SquareMeters) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +79,11 @@ export class Area extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): AreaUnits.SquareMeters {
+        return AreaUnits.SquareMeters
     }
 
     /** */
@@ -332,6 +339,22 @@ export class Area extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Area
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof AreaUnits {
+        return AreaUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): AreaUnits.SquareMeters {
+        return AreaUnits.SquareMeters;
+    }
+
+    /**
      * Create API DTO represent a Area unit.
      * @param holdInUnit The specific Area unit to be used in the unit representation at the DTO
      */
@@ -375,81 +398,105 @@ export class Area extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: AreaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case AreaUnits.SquareKilometers: return super.internalDivide(this.value, 1e6);
+                case AreaUnits.SquareMeters: return this.value;
+                case AreaUnits.SquareDecimeters: return super.internalDivide(this.value, 1e-2);
+                case AreaUnits.SquareCentimeters: return super.internalDivide(this.value, 1e-4);
+                case AreaUnits.SquareMillimeters: return super.internalDivide(this.value, 1e-6);
+                case AreaUnits.SquareMicrometers: return super.internalDivide(this.value, 1e-12);
+                case AreaUnits.SquareMiles: {
+                    const v3 = super.internalDivide(this.value, 1609.344);
+                    return super.internalDivide(v3, 1609.344);
+                }
+                case AreaUnits.SquareYards: {
+                    const v3 = super.internalDivide(this.value, 0.9144);
+                    return super.internalDivide(v3, 0.9144);
+                }
+                case AreaUnits.SquareFeet: return super.internalDivide(this.value, 9.290304e-2);
+                case AreaUnits.UsSurveySquareFeet: {
+                    const v4 = super.internalDivide(1200.0, 3937.0);
+                    const v5 = super.internalDivide(this.value, v4);
+                    const v8 = super.internalDivide(1200.0, 3937.0);
+                    return super.internalDivide(v5, v8);
+                }
+                case AreaUnits.SquareInches: return super.internalDivide(this.value, 0.00064516);
+                case AreaUnits.Acres: return super.internalDivide(this.value, 4046.8564224);
+                case AreaUnits.Hectares: return super.internalDivide(this.value, 1e4);
+                case AreaUnits.SquareNauticalMiles: return super.internalDivide(this.value, 3429904);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case AreaUnits.SquareKilometers:
-                return this.value / 1e6;
-            case AreaUnits.SquareMeters:
-                return this.value;
-            case AreaUnits.SquareDecimeters:
-                return this.value / 1e-2;
-            case AreaUnits.SquareCentimeters:
-                return this.value / 1e-4;
-            case AreaUnits.SquareMillimeters:
-                return this.value / 1e-6;
-            case AreaUnits.SquareMicrometers:
-                return this.value / 1e-12;
-            case AreaUnits.SquareMiles:
-                return this.value / 1609.344 / 1609.344;
-            case AreaUnits.SquareYards:
-                return this.value / 0.9144 / 0.9144;
-            case AreaUnits.SquareFeet:
-                return this.value / 9.290304e-2;
-            case AreaUnits.UsSurveySquareFeet:
-                return this.value / (1200.0 / 3937.0) / (1200.0 / 3937.0);
-            case AreaUnits.SquareInches:
-                return this.value / 0.00064516;
-            case AreaUnits.Acres:
-                return this.value / 4046.8564224;
-            case AreaUnits.Hectares:
-                return this.value / 1e4;
-            case AreaUnits.SquareNauticalMiles:
-                return this.value / 3429904;
-            default:
-                break;
+            case AreaUnits.SquareKilometers: return this.value / 1e6;
+            case AreaUnits.SquareMeters: return this.value;
+            case AreaUnits.SquareDecimeters: return this.value / 1e-2;
+            case AreaUnits.SquareCentimeters: return this.value / 1e-4;
+            case AreaUnits.SquareMillimeters: return this.value / 1e-6;
+            case AreaUnits.SquareMicrometers: return this.value / 1e-12;
+            case AreaUnits.SquareMiles: return this.value / 1609.344 / 1609.344;
+            case AreaUnits.SquareYards: return this.value / 0.9144 / 0.9144;
+            case AreaUnits.SquareFeet: return this.value / 9.290304e-2;
+            case AreaUnits.UsSurveySquareFeet: return this.value / (1200.0 / 3937.0) / (1200.0 / 3937.0);
+            case AreaUnits.SquareInches: return this.value / 0.00064516;
+            case AreaUnits.Acres: return this.value / 4046.8564224;
+            case AreaUnits.Hectares: return this.value / 1e4;
+            case AreaUnits.SquareNauticalMiles: return this.value / 3429904;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: AreaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case AreaUnits.SquareKilometers: return super.internalMultiply(value, 1e6);
+                case AreaUnits.SquareMeters: return value;
+                case AreaUnits.SquareDecimeters: return super.internalMultiply(value, 1e-2);
+                case AreaUnits.SquareCentimeters: return super.internalMultiply(value, 1e-4);
+                case AreaUnits.SquareMillimeters: return super.internalMultiply(value, 1e-6);
+                case AreaUnits.SquareMicrometers: return super.internalMultiply(value, 1e-12);
+                case AreaUnits.SquareMiles: {
+                    const v3 = super.internalMultiply(value, 1609.344);
+                    return super.internalMultiply(v3, 1609.344);
+                }
+                case AreaUnits.SquareYards: {
+                    const v3 = super.internalMultiply(value, 0.9144);
+                    return super.internalMultiply(v3, 0.9144);
+                }
+                case AreaUnits.SquareFeet: return super.internalMultiply(value, 9.290304e-2);
+                case AreaUnits.UsSurveySquareFeet: {
+                    const v4 = super.internalDivide(1200.0, 3937.0);
+                    const v5 = super.internalMultiply(value, v4);
+                    const v8 = super.internalDivide(1200.0, 3937.0);
+                    return super.internalMultiply(v5, v8);
+                }
+                case AreaUnits.SquareInches: return super.internalMultiply(value, 0.00064516);
+                case AreaUnits.Acres: return super.internalMultiply(value, 4046.8564224);
+                case AreaUnits.Hectares: return super.internalMultiply(value, 1e4);
+                case AreaUnits.SquareNauticalMiles: return super.internalMultiply(value, 3429904);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case AreaUnits.SquareKilometers:
-                return value * 1e6;
-            case AreaUnits.SquareMeters:
-                return value;
-            case AreaUnits.SquareDecimeters:
-                return value * 1e-2;
-            case AreaUnits.SquareCentimeters:
-                return value * 1e-4;
-            case AreaUnits.SquareMillimeters:
-                return value * 1e-6;
-            case AreaUnits.SquareMicrometers:
-                return value * 1e-12;
-            case AreaUnits.SquareMiles:
-                return value * 1609.344 * 1609.344;
-            case AreaUnits.SquareYards:
-                return value * 0.9144 * 0.9144;
-            case AreaUnits.SquareFeet:
-                return value * 9.290304e-2;
-            case AreaUnits.UsSurveySquareFeet:
-                return value * (1200.0 / 3937.0) * (1200.0 / 3937.0);
-            case AreaUnits.SquareInches:
-                return value * 0.00064516;
-            case AreaUnits.Acres:
-                return value * 4046.8564224;
-            case AreaUnits.Hectares:
-                return value * 1e4;
-            case AreaUnits.SquareNauticalMiles:
-                return value * 3429904;
-            default:
-                break;
+            case AreaUnits.SquareKilometers: return value * 1e6;
+            case AreaUnits.SquareMeters: return value;
+            case AreaUnits.SquareDecimeters: return value * 1e-2;
+            case AreaUnits.SquareCentimeters: return value * 1e-4;
+            case AreaUnits.SquareMillimeters: return value * 1e-6;
+            case AreaUnits.SquareMicrometers: return value * 1e-12;
+            case AreaUnits.SquareMiles: return value * 1609.344 * 1609.344;
+            case AreaUnits.SquareYards: return value * 0.9144 * 0.9144;
+            case AreaUnits.SquareFeet: return value * 9.290304e-2;
+            case AreaUnits.UsSurveySquareFeet: return value * (1200.0 / 3937.0) * (1200.0 / 3937.0);
+            case AreaUnits.SquareInches: return value * 0.00064516;
+            case AreaUnits.Acres: return value * 4046.8564224;
+            case AreaUnits.Hectares: return value * 1e4;
+            case AreaUnits.SquareNauticalMiles: return value * 3429904;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

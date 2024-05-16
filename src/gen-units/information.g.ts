@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Information */
 export interface InformationDto {
@@ -42,7 +42,7 @@ export enum InformationUnits {
 
 /** In computing and telecommunications, a unit of information is the capacity of some standard data storage system or communication channel, used to measure the capacities of other systems and channels. In information theory, units of information are also used to measure the information contents or entropy of random variables. */
 export class Information extends BaseUnit {
-    private value: number;
+    protected value: number;
     private bytesLazy: number | null = null;
     private bitsLazy: number | null = null;
     private kilobytesLazy: number | null = null;
@@ -67,7 +67,9 @@ export class Information extends BaseUnit {
     public constructor(value: number, fromUnit: InformationUnits = InformationUnits.Bits) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -77,6 +79,11 @@ export class Information extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): InformationUnits.Bits {
+        return InformationUnits.Bits
     }
 
     /** */
@@ -332,6 +339,22 @@ export class Information extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Information
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof InformationUnits {
+        return InformationUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): InformationUnits.Bits {
+        return InformationUnits.Bits;
+    }
+
+    /**
      * Create API DTO represent a Information unit.
      * @param holdInUnit The specific Information unit to be used in the unit representation at the DTO
      */
@@ -375,81 +398,119 @@ export class Information extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: InformationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case InformationUnits.Bytes: return super.internalDivide(this.value, 8);
+                case InformationUnits.Bits: return this.value;
+                case InformationUnits.Kilobytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000);
+                }
+                case InformationUnits.Megabytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000);
+                }
+                case InformationUnits.Gigabytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000);
+                }
+                case InformationUnits.Terabytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000);
+                }
+                case InformationUnits.Petabytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000000);
+                }
+                case InformationUnits.Exabytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000000000);
+                }
+                case InformationUnits.Kilobits: return super.internalDivide(this.value, 1000);
+                case InformationUnits.Megabits: return super.internalDivide(this.value, 1000000);
+                case InformationUnits.Gigabits: return super.internalDivide(this.value, 1000000000);
+                case InformationUnits.Terabits: return super.internalDivide(this.value, 1000000000000);
+                case InformationUnits.Petabits: return super.internalDivide(this.value, 1000000000000000);
+                case InformationUnits.Exabits: return super.internalDivide(this.value, 1000000000000000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case InformationUnits.Bytes:
-                return this.value / 8;
-            case InformationUnits.Bits:
-                return this.value;
-            case InformationUnits.Kilobytes:
-                return (this.value / 8) / 1000;
-            case InformationUnits.Megabytes:
-                return (this.value / 8) / 1000000;
-            case InformationUnits.Gigabytes:
-                return (this.value / 8) / 1000000000;
-            case InformationUnits.Terabytes:
-                return (this.value / 8) / 1000000000000;
-            case InformationUnits.Petabytes:
-                return (this.value / 8) / 1000000000000000;
-            case InformationUnits.Exabytes:
-                return (this.value / 8) / 1000000000000000000;
-            case InformationUnits.Kilobits:
-                return (this.value) / 1000;
-            case InformationUnits.Megabits:
-                return (this.value) / 1000000;
-            case InformationUnits.Gigabits:
-                return (this.value) / 1000000000;
-            case InformationUnits.Terabits:
-                return (this.value) / 1000000000000;
-            case InformationUnits.Petabits:
-                return (this.value) / 1000000000000000;
-            case InformationUnits.Exabits:
-                return (this.value) / 1000000000000000000;
-            default:
-                break;
+            case InformationUnits.Bytes: return this.value / 8;
+            case InformationUnits.Bits: return this.value;
+            case InformationUnits.Kilobytes: return (this.value / 8) / 1000;
+            case InformationUnits.Megabytes: return (this.value / 8) / 1000000;
+            case InformationUnits.Gigabytes: return (this.value / 8) / 1000000000;
+            case InformationUnits.Terabytes: return (this.value / 8) / 1000000000000;
+            case InformationUnits.Petabytes: return (this.value / 8) / 1000000000000000;
+            case InformationUnits.Exabytes: return (this.value / 8) / 1000000000000000000;
+            case InformationUnits.Kilobits: return (this.value) / 1000;
+            case InformationUnits.Megabits: return (this.value) / 1000000;
+            case InformationUnits.Gigabits: return (this.value) / 1000000000;
+            case InformationUnits.Terabits: return (this.value) / 1000000000000;
+            case InformationUnits.Petabits: return (this.value) / 1000000000000000;
+            case InformationUnits.Exabits: return (this.value) / 1000000000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: InformationUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case InformationUnits.Bytes: return super.internalMultiply(value, 8);
+                case InformationUnits.Bits: return value;
+                case InformationUnits.Kilobytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case InformationUnits.Megabytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                case InformationUnits.Gigabytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000);
+                }
+                case InformationUnits.Terabytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000);
+                }
+                case InformationUnits.Petabytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000000);
+                }
+                case InformationUnits.Exabytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000000000);
+                }
+                case InformationUnits.Kilobits: return super.internalMultiply(value, 1000);
+                case InformationUnits.Megabits: return super.internalMultiply(value, 1000000);
+                case InformationUnits.Gigabits: return super.internalMultiply(value, 1000000000);
+                case InformationUnits.Terabits: return super.internalMultiply(value, 1000000000000);
+                case InformationUnits.Petabits: return super.internalMultiply(value, 1000000000000000);
+                case InformationUnits.Exabits: return super.internalMultiply(value, 1000000000000000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case InformationUnits.Bytes:
-                return value * 8;
-            case InformationUnits.Bits:
-                return value;
-            case InformationUnits.Kilobytes:
-                return (value * 8) * 1000;
-            case InformationUnits.Megabytes:
-                return (value * 8) * 1000000;
-            case InformationUnits.Gigabytes:
-                return (value * 8) * 1000000000;
-            case InformationUnits.Terabytes:
-                return (value * 8) * 1000000000000;
-            case InformationUnits.Petabytes:
-                return (value * 8) * 1000000000000000;
-            case InformationUnits.Exabytes:
-                return (value * 8) * 1000000000000000000;
-            case InformationUnits.Kilobits:
-                return (value) * 1000;
-            case InformationUnits.Megabits:
-                return (value) * 1000000;
-            case InformationUnits.Gigabits:
-                return (value) * 1000000000;
-            case InformationUnits.Terabits:
-                return (value) * 1000000000000;
-            case InformationUnits.Petabits:
-                return (value) * 1000000000000000;
-            case InformationUnits.Exabits:
-                return (value) * 1000000000000000000;
-            default:
-                break;
+            case InformationUnits.Bytes: return value * 8;
+            case InformationUnits.Bits: return value;
+            case InformationUnits.Kilobytes: return (value * 8) * 1000;
+            case InformationUnits.Megabytes: return (value * 8) * 1000000;
+            case InformationUnits.Gigabytes: return (value * 8) * 1000000000;
+            case InformationUnits.Terabytes: return (value * 8) * 1000000000000;
+            case InformationUnits.Petabytes: return (value * 8) * 1000000000000000;
+            case InformationUnits.Exabytes: return (value * 8) * 1000000000000000000;
+            case InformationUnits.Kilobits: return (value) * 1000;
+            case InformationUnits.Megabits: return (value) * 1000000;
+            case InformationUnits.Gigabits: return (value) * 1000000000;
+            case InformationUnits.Terabits: return (value) * 1000000000000;
+            case InformationUnits.Petabits: return (value) * 1000000000000000;
+            case InformationUnits.Exabits: return (value) * 1000000000000000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

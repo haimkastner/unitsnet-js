@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a TemperatureGradient */
 export interface TemperatureGradientDto {
@@ -22,7 +22,7 @@ export enum TemperatureGradientUnits {
 
 /** The rate of change of temperature with displacement in a given direction (as with increase of height) */
 export class TemperatureGradient extends BaseUnit {
-    private value: number;
+    protected value: number;
     private kelvinspermeterLazy: number | null = null;
     private degreescelciuspermeterLazy: number | null = null;
     private degreesfahrenheitperfootLazy: number | null = null;
@@ -37,7 +37,9 @@ export class TemperatureGradient extends BaseUnit {
     public constructor(value: number, fromUnit: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -47,6 +49,11 @@ export class TemperatureGradient extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): TemperatureGradientUnits.KelvinsPerMeter {
+        return TemperatureGradientUnits.KelvinsPerMeter
     }
 
     /** */
@@ -122,6 +129,22 @@ export class TemperatureGradient extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with TemperatureGradient
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof TemperatureGradientUnits {
+        return TemperatureGradientUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): TemperatureGradientUnits.KelvinsPerMeter {
+        return TemperatureGradientUnits.KelvinsPerMeter;
+    }
+
+    /**
      * Create API DTO represent a TemperatureGradient unit.
      * @param holdInUnit The specific TemperatureGradient unit to be used in the unit representation at the DTO
      */
@@ -155,41 +178,51 @@ export class TemperatureGradient extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: TemperatureGradientUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case TemperatureGradientUnits.KelvinsPerMeter: return this.value;
+                case TemperatureGradientUnits.DegreesCelciusPerMeter: return this.value;
+                case TemperatureGradientUnits.DegreesFahrenheitPerFoot: {
+                    const v3 = super.internalMultiply(this.value, 0.3048);
+                    const v6 = super.internalDivide(9, 5);
+                    return super.internalMultiply(v3, v6);
+                }
+                case TemperatureGradientUnits.DegreesCelciusPerKilometer: return super.internalMultiply(this.value, 1e3);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case TemperatureGradientUnits.KelvinsPerMeter:
-                return this.value;
-            case TemperatureGradientUnits.DegreesCelciusPerMeter:
-                return this.value;
-            case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
-                return (this.value * 0.3048) * 9 / 5;
-            case TemperatureGradientUnits.DegreesCelciusPerKilometer:
-                return this.value * 1e3;
-            default:
-                break;
+            case TemperatureGradientUnits.KelvinsPerMeter: return this.value;
+            case TemperatureGradientUnits.DegreesCelciusPerMeter: return this.value;
+            case TemperatureGradientUnits.DegreesFahrenheitPerFoot: return (this.value * 0.3048) * 9 / 5;
+            case TemperatureGradientUnits.DegreesCelciusPerKilometer: return this.value * 1e3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: TemperatureGradientUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case TemperatureGradientUnits.KelvinsPerMeter: return value;
+                case TemperatureGradientUnits.DegreesCelciusPerMeter: return value;
+                case TemperatureGradientUnits.DegreesFahrenheitPerFoot: {
+                    const v3 = super.internalDivide(value, 0.3048);
+                    const v6 = super.internalDivide(5, 9);
+                    return super.internalMultiply(v3, v6);
+                }
+                case TemperatureGradientUnits.DegreesCelciusPerKilometer: return super.internalDivide(value, 1e3);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case TemperatureGradientUnits.KelvinsPerMeter:
-                return value;
-            case TemperatureGradientUnits.DegreesCelciusPerMeter:
-                return value;
-            case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
-                return (value / 0.3048) * 5 / 9;
-            case TemperatureGradientUnits.DegreesCelciusPerKilometer:
-                return value / 1e3;
-            default:
-                break;
+            case TemperatureGradientUnits.KelvinsPerMeter: return value;
+            case TemperatureGradientUnits.DegreesCelciusPerMeter: return value;
+            case TemperatureGradientUnits.DegreesFahrenheitPerFoot: return (value / 0.3048) * 5 / 9;
+            case TemperatureGradientUnits.DegreesCelciusPerKilometer: return value / 1e3;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a PowerRatio */
 export interface PowerRatioDto {
@@ -18,7 +18,7 @@ export enum PowerRatioUnits {
 
 /** The strength of a signal expressed in decibels (dB) relative to one watt. */
 export class PowerRatio extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decibelwattsLazy: number | null = null;
     private decibelmilliwattsLazy: number | null = null;
 
@@ -31,7 +31,9 @@ export class PowerRatio extends BaseUnit {
     public constructor(value: number, fromUnit: PowerRatioUnits = PowerRatioUnits.DecibelWatts) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -41,6 +43,11 @@ export class PowerRatio extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): PowerRatioUnits.DecibelWatts {
+        return PowerRatioUnits.DecibelWatts
     }
 
     /** */
@@ -80,6 +87,22 @@ export class PowerRatio extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with PowerRatio
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof PowerRatioUnits {
+        return PowerRatioUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): PowerRatioUnits.DecibelWatts {
+        return PowerRatioUnits.DecibelWatts;
+    }
+
+    /**
      * Create API DTO represent a PowerRatio unit.
      * @param holdInUnit The specific PowerRatio unit to be used in the unit representation at the DTO
      */
@@ -111,33 +134,35 @@ export class PowerRatio extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: PowerRatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case PowerRatioUnits.DecibelWatts: return this.value;
+                case PowerRatioUnits.DecibelMilliwatts: return super.internalAdd(this.value, 30);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case PowerRatioUnits.DecibelWatts:
-                return this.value;
-            case PowerRatioUnits.DecibelMilliwatts:
-                return this.value + 30;
-            default:
-                break;
+            case PowerRatioUnits.DecibelWatts: return this.value;
+            case PowerRatioUnits.DecibelMilliwatts: return this.value + 30;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: PowerRatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case PowerRatioUnits.DecibelWatts: return value;
+                case PowerRatioUnits.DecibelMilliwatts: return super.internalSubtract(value, 30);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case PowerRatioUnits.DecibelWatts:
-                return value;
-            case PowerRatioUnits.DecibelMilliwatts:
-                return value - 30;
-            default:
-                break;
+            case PowerRatioUnits.DecibelWatts: return value;
+            case PowerRatioUnits.DecibelMilliwatts: return value - 30;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Scalar */
 export interface ScalarDto {
@@ -16,7 +16,7 @@ export enum ScalarUnits {
 
 /** A way of representing a number of items. */
 export class Scalar extends BaseUnit {
-    private value: number;
+    protected value: number;
     private amountLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class Scalar extends BaseUnit {
     public constructor(value: number, fromUnit: ScalarUnits = ScalarUnits.Amount) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class Scalar extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ScalarUnits.Amount {
+        return ScalarUnits.Amount
     }
 
     /** */
@@ -56,6 +63,22 @@ export class Scalar extends BaseUnit {
      */
     public static FromAmount(value: number): Scalar {
         return new Scalar(value, ScalarUnits.Amount);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with Scalar
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ScalarUnits {
+        return ScalarUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ScalarUnits.Amount {
+        return ScalarUnits.Amount;
     }
 
     /**
@@ -89,29 +112,31 @@ export class Scalar extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ScalarUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ScalarUnits.Amount: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ScalarUnits.Amount:
-                return this.value;
-            default:
-                break;
+            case ScalarUnits.Amount: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ScalarUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ScalarUnits.Amount: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ScalarUnits.Amount:
-                return value;
-            default:
-                break;
+            case ScalarUnits.Amount: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a LeakRate */
 export interface LeakRateDto {
@@ -20,7 +20,7 @@ export enum LeakRateUnits {
 
 /** A leakage rate of QL = 1 Pa-m³/s is given when the pressure in a closed, evacuated container with a volume of 1 m³ rises by 1 Pa per second or when the pressure in the container drops by 1 Pa in the event of overpressure. */
 export class LeakRate extends BaseUnit {
-    private value: number;
+    protected value: number;
     private pascalcubicmeterspersecondLazy: number | null = null;
     private millibarliterspersecondLazy: number | null = null;
     private torrliterspersecondLazy: number | null = null;
@@ -34,7 +34,9 @@ export class LeakRate extends BaseUnit {
     public constructor(value: number, fromUnit: LeakRateUnits = LeakRateUnits.PascalCubicMetersPerSecond) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -44,6 +46,11 @@ export class LeakRate extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): LeakRateUnits.PascalCubicMetersPerSecond {
+        return LeakRateUnits.PascalCubicMetersPerSecond
     }
 
     /** */
@@ -101,6 +108,22 @@ export class LeakRate extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with LeakRate
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof LeakRateUnits {
+        return LeakRateUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): LeakRateUnits.PascalCubicMetersPerSecond {
+        return LeakRateUnits.PascalCubicMetersPerSecond;
+    }
+
+    /**
      * Create API DTO represent a LeakRate unit.
      * @param holdInUnit The specific LeakRate unit to be used in the unit representation at the DTO
      */
@@ -133,37 +156,39 @@ export class LeakRate extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: LeakRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case LeakRateUnits.PascalCubicMetersPerSecond: return this.value;
+                case LeakRateUnits.MillibarLitersPerSecond: return super.internalMultiply(this.value, 10);
+                case LeakRateUnits.TorrLitersPerSecond: return super.internalMultiply(this.value, 7.5);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case LeakRateUnits.PascalCubicMetersPerSecond:
-                return this.value;
-            case LeakRateUnits.MillibarLitersPerSecond:
-                return this.value * 10;
-            case LeakRateUnits.TorrLitersPerSecond:
-                return this.value * 7.5;
-            default:
-                break;
+            case LeakRateUnits.PascalCubicMetersPerSecond: return this.value;
+            case LeakRateUnits.MillibarLitersPerSecond: return this.value * 10;
+            case LeakRateUnits.TorrLitersPerSecond: return this.value * 7.5;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: LeakRateUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case LeakRateUnits.PascalCubicMetersPerSecond: return value;
+                case LeakRateUnits.MillibarLitersPerSecond: return super.internalDivide(value, 10);
+                case LeakRateUnits.TorrLitersPerSecond: return super.internalDivide(value, 7.5);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case LeakRateUnits.PascalCubicMetersPerSecond:
-                return value;
-            case LeakRateUnits.MillibarLitersPerSecond:
-                return value / 10;
-            case LeakRateUnits.TorrLitersPerSecond:
-                return value / 7.5;
-            default:
-                break;
+            case LeakRateUnits.PascalCubicMetersPerSecond: return value;
+            case LeakRateUnits.MillibarLitersPerSecond: return value / 10;
+            case LeakRateUnits.TorrLitersPerSecond: return value / 7.5;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a VitaminA */
 export interface VitaminADto {
@@ -16,7 +16,7 @@ export enum VitaminAUnits {
 
 /** Vitamin A: 1 IU is the biological equivalent of 0.3 µg retinol, or of 0.6 µg beta-carotene. */
 export class VitaminA extends BaseUnit {
-    private value: number;
+    protected value: number;
     private internationalunitsLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class VitaminA extends BaseUnit {
     public constructor(value: number, fromUnit: VitaminAUnits = VitaminAUnits.InternationalUnits) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class VitaminA extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): VitaminAUnits.InternationalUnits {
+        return VitaminAUnits.InternationalUnits
     }
 
     /** */
@@ -56,6 +63,22 @@ export class VitaminA extends BaseUnit {
      */
     public static FromInternationalUnits(value: number): VitaminA {
         return new VitaminA(value, VitaminAUnits.InternationalUnits);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with VitaminA
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof VitaminAUnits {
+        return VitaminAUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): VitaminAUnits.InternationalUnits {
+        return VitaminAUnits.InternationalUnits;
     }
 
     /**
@@ -89,29 +112,31 @@ export class VitaminA extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: VitaminAUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case VitaminAUnits.InternationalUnits: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case VitaminAUnits.InternationalUnits:
-                return this.value;
-            default:
-                break;
+            case VitaminAUnits.InternationalUnits: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: VitaminAUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case VitaminAUnits.InternationalUnits: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case VitaminAUnits.InternationalUnits:
-                return value;
-            default:
-                break;
+            case VitaminAUnits.InternationalUnits: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

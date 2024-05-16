@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MolarEnergy */
 export interface MolarEnergyDto {
@@ -20,7 +20,7 @@ export enum MolarEnergyUnits {
 
 /** Molar energy is the amount of energy stored in 1 mole of a substance. */
 export class MolarEnergy extends BaseUnit {
-    private value: number;
+    protected value: number;
     private joulespermoleLazy: number | null = null;
     private kilojoulespermoleLazy: number | null = null;
     private megajoulespermoleLazy: number | null = null;
@@ -34,7 +34,9 @@ export class MolarEnergy extends BaseUnit {
     public constructor(value: number, fromUnit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -44,6 +46,11 @@ export class MolarEnergy extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): MolarEnergyUnits.JoulesPerMole {
+        return MolarEnergyUnits.JoulesPerMole
     }
 
     /** */
@@ -101,6 +108,22 @@ export class MolarEnergy extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MolarEnergy
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof MolarEnergyUnits {
+        return MolarEnergyUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MolarEnergyUnits.JoulesPerMole {
+        return MolarEnergyUnits.JoulesPerMole;
+    }
+
+    /**
      * Create API DTO represent a MolarEnergy unit.
      * @param holdInUnit The specific MolarEnergy unit to be used in the unit representation at the DTO
      */
@@ -133,37 +156,39 @@ export class MolarEnergy extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MolarEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MolarEnergyUnits.JoulesPerMole: return this.value;
+                case MolarEnergyUnits.KilojoulesPerMole: return super.internalDivide(this.value, 1000);
+                case MolarEnergyUnits.MegajoulesPerMole: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MolarEnergyUnits.JoulesPerMole:
-                return this.value;
-            case MolarEnergyUnits.KilojoulesPerMole:
-                return (this.value) / 1000;
-            case MolarEnergyUnits.MegajoulesPerMole:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case MolarEnergyUnits.JoulesPerMole: return this.value;
+            case MolarEnergyUnits.KilojoulesPerMole: return (this.value) / 1000;
+            case MolarEnergyUnits.MegajoulesPerMole: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MolarEnergyUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MolarEnergyUnits.JoulesPerMole: return value;
+                case MolarEnergyUnits.KilojoulesPerMole: return super.internalMultiply(value, 1000);
+                case MolarEnergyUnits.MegajoulesPerMole: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MolarEnergyUnits.JoulesPerMole:
-                return value;
-            case MolarEnergyUnits.KilojoulesPerMole:
-                return (value) * 1000;
-            case MolarEnergyUnits.MegajoulesPerMole:
-                return (value) * 1000000;
-            default:
-                break;
+            case MolarEnergyUnits.JoulesPerMole: return value;
+            case MolarEnergyUnits.KilojoulesPerMole: return (value) * 1000;
+            case MolarEnergyUnits.MegajoulesPerMole: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

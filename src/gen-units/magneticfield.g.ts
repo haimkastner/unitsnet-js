@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MagneticField */
 export interface MagneticFieldDto {
@@ -26,7 +26,7 @@ export enum MagneticFieldUnits {
 
 /** A magnetic field is a force field that is created by moving electric charges (electric currents) and magnetic dipoles, and exerts a force on other nearby moving charges and magnetic dipoles. */
 export class MagneticField extends BaseUnit {
-    private value: number;
+    protected value: number;
     private teslasLazy: number | null = null;
     private gaussesLazy: number | null = null;
     private nanoteslasLazy: number | null = null;
@@ -43,7 +43,9 @@ export class MagneticField extends BaseUnit {
     public constructor(value: number, fromUnit: MagneticFieldUnits = MagneticFieldUnits.Teslas) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -53,6 +55,11 @@ export class MagneticField extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): MagneticFieldUnits.Teslas {
+        return MagneticFieldUnits.Teslas
     }
 
     /** */
@@ -164,6 +171,22 @@ export class MagneticField extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with MagneticField
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof MagneticFieldUnits {
+        return MagneticFieldUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MagneticFieldUnits.Teslas {
+        return MagneticFieldUnits.Teslas;
+    }
+
+    /**
      * Create API DTO represent a MagneticField unit.
      * @param holdInUnit The specific MagneticField unit to be used in the unit representation at the DTO
      */
@@ -199,49 +222,57 @@ export class MagneticField extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MagneticFieldUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MagneticFieldUnits.Teslas: return this.value;
+                case MagneticFieldUnits.Gausses: return super.internalMultiply(this.value, 1e4);
+                case MagneticFieldUnits.Nanoteslas: return super.internalDivide(this.value, 1e-9);
+                case MagneticFieldUnits.Microteslas: return super.internalDivide(this.value, 0.000001);
+                case MagneticFieldUnits.Milliteslas: return super.internalDivide(this.value, 0.001);
+                case MagneticFieldUnits.Milligausses: {
+                    const v3 = super.internalMultiply(this.value, 1e4);
+                    return super.internalDivide(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MagneticFieldUnits.Teslas:
-                return this.value;
-            case MagneticFieldUnits.Gausses:
-                return this.value * 1e4;
-            case MagneticFieldUnits.Nanoteslas:
-                return (this.value) / 1e-9;
-            case MagneticFieldUnits.Microteslas:
-                return (this.value) / 0.000001;
-            case MagneticFieldUnits.Milliteslas:
-                return (this.value) / 0.001;
-            case MagneticFieldUnits.Milligausses:
-                return (this.value * 1e4) / 0.001;
-            default:
-                break;
+            case MagneticFieldUnits.Teslas: return this.value;
+            case MagneticFieldUnits.Gausses: return this.value * 1e4;
+            case MagneticFieldUnits.Nanoteslas: return (this.value) / 1e-9;
+            case MagneticFieldUnits.Microteslas: return (this.value) / 0.000001;
+            case MagneticFieldUnits.Milliteslas: return (this.value) / 0.001;
+            case MagneticFieldUnits.Milligausses: return (this.value * 1e4) / 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MagneticFieldUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MagneticFieldUnits.Teslas: return value;
+                case MagneticFieldUnits.Gausses: return super.internalDivide(value, 1e4);
+                case MagneticFieldUnits.Nanoteslas: return super.internalMultiply(value, 1e-9);
+                case MagneticFieldUnits.Microteslas: return super.internalMultiply(value, 0.000001);
+                case MagneticFieldUnits.Milliteslas: return super.internalMultiply(value, 0.001);
+                case MagneticFieldUnits.Milligausses: {
+                    const v3 = super.internalDivide(value, 1e4);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MagneticFieldUnits.Teslas:
-                return value;
-            case MagneticFieldUnits.Gausses:
-                return value / 1e4;
-            case MagneticFieldUnits.Nanoteslas:
-                return (value) * 1e-9;
-            case MagneticFieldUnits.Microteslas:
-                return (value) * 0.000001;
-            case MagneticFieldUnits.Milliteslas:
-                return (value) * 0.001;
-            case MagneticFieldUnits.Milligausses:
-                return (value / 1e4) * 0.001;
-            default:
-                break;
+            case MagneticFieldUnits.Teslas: return value;
+            case MagneticFieldUnits.Gausses: return value / 1e4;
+            case MagneticFieldUnits.Nanoteslas: return (value) * 1e-9;
+            case MagneticFieldUnits.Microteslas: return (value) * 0.000001;
+            case MagneticFieldUnits.Milliteslas: return (value) * 0.001;
+            case MagneticFieldUnits.Milligausses: return (value / 1e4) * 0.001;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

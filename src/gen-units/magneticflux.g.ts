@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a MagneticFlux */
 export interface MagneticFluxDto {
@@ -16,7 +16,7 @@ export enum MagneticFluxUnits {
 
 /** In physics, specifically electromagnetism, the magnetic flux through a surface is the surface integral of the normal component of the magnetic field B passing through that surface. */
 export class MagneticFlux extends BaseUnit {
-    private value: number;
+    protected value: number;
     private webersLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class MagneticFlux extends BaseUnit {
     public constructor(value: number, fromUnit: MagneticFluxUnits = MagneticFluxUnits.Webers) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class MagneticFlux extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): MagneticFluxUnits.Webers {
+        return MagneticFluxUnits.Webers
     }
 
     /** */
@@ -56,6 +63,22 @@ export class MagneticFlux extends BaseUnit {
      */
     public static FromWebers(value: number): MagneticFlux {
         return new MagneticFlux(value, MagneticFluxUnits.Webers);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with MagneticFlux
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof MagneticFluxUnits {
+        return MagneticFluxUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): MagneticFluxUnits.Webers {
+        return MagneticFluxUnits.Webers;
     }
 
     /**
@@ -89,29 +112,31 @@ export class MagneticFlux extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: MagneticFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case MagneticFluxUnits.Webers: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case MagneticFluxUnits.Webers:
-                return this.value;
-            default:
-                break;
+            case MagneticFluxUnits.Webers: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: MagneticFluxUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case MagneticFluxUnits.Webers: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case MagneticFluxUnits.Webers:
-                return value;
-            default:
-                break;
+            case MagneticFluxUnits.Webers: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

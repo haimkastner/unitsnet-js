@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a VolumeFlowPerArea */
 export interface VolumeFlowPerAreaDto {
@@ -18,7 +18,7 @@ export enum VolumeFlowPerAreaUnits {
 
 /** The volumetric flow rate per area is the volume of fluid which passes through a given unit surface area per unit time. */
 export class VolumeFlowPerArea extends BaseUnit {
-    private value: number;
+    protected value: number;
     private cubicmeterspersecondpersquaremeterLazy: number | null = null;
     private cubicfeetperminutepersquarefootLazy: number | null = null;
 
@@ -31,7 +31,9 @@ export class VolumeFlowPerArea extends BaseUnit {
     public constructor(value: number, fromUnit: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -41,6 +43,11 @@ export class VolumeFlowPerArea extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter {
+        return VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter
     }
 
     /** */
@@ -80,6 +87,22 @@ export class VolumeFlowPerArea extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with VolumeFlowPerArea
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof VolumeFlowPerAreaUnits {
+        return VolumeFlowPerAreaUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter {
+        return VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter;
+    }
+
+    /**
      * Create API DTO represent a VolumeFlowPerArea unit.
      * @param holdInUnit The specific VolumeFlowPerArea unit to be used in the unit representation at the DTO
      */
@@ -111,33 +134,35 @@ export class VolumeFlowPerArea extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: VolumeFlowPerAreaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter: return this.value;
+                case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return super.internalMultiply(this.value, 196.850394);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter:
-                return this.value;
-            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot:
-                return this.value * 196.850394;
-            default:
-                break;
+            case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter: return this.value;
+            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return this.value * 196.850394;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: VolumeFlowPerAreaUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter: return value;
+                case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return super.internalDivide(value, 196.850394);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter:
-                return value;
-            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot:
-                return value / 196.850394;
-            default:
-                break;
+            case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter: return value;
+            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return value / 196.850394;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

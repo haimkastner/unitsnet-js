@@ -11,13 +11,16 @@ import {
     EnumMemberStructure,
     JSDocStructure,
     ImportDeclarationStructure,
-    InterfaceDeclarationStructure
-} from "ts-morph";
+    InterfaceDeclarationStructure,
+} from 'ts-morph';
+import { getCodeForFormula } from './math-interop/antlr/builder/tree/tree-builder';
 import { UnitProperties, UnitGenerateOptions } from "./models/units-properties";
-import { pascalToCamelCase } from "./utiles";
+import { pascalToCamelCase } from "./utils";
+import ts from 'typescript';
+import { HighLevelTsc } from './math-interop/antlr/builder/high-level-tsc';
 
 /**
- * Get the lazyload var name for the given unit.
+ * Get the lazy-load var name for the given unit.
  * @param unit The unit name 
  * @returns The var name
  */
@@ -27,7 +30,7 @@ function unitLazyVarName(unit: string) {
 
 /**
  * Build the unit units Enum.
- * For example for 'Angle' unit generate 'AngleEnum' with 'Degrees' 'Radiand' etc.
+ * For example for 'Angle' unit generate 'AngleEnum' with 'Degrees' 'Radian' etc.
  * @param enumName The name for the enum.
  * @param units The units properties.
  * @returns The enum structure
@@ -73,7 +76,7 @@ function buildDto(Unit: UnitGenerateOptions, enumName: string): InterfaceDeclara
 
 /**
  * Build the unit properties get accessors.
- * For example for 'Angle' unit generate a get 'Degrees' get 'Radiand' etc.
+ * For example for 'Angle' unit generate a get 'Degrees' get 'Radian' etc.
  * @param enumName The unit enum name.
  * @param units The units properties.
  * @returns The accessors structure array.
@@ -97,7 +100,7 @@ return this.${unitLazyVarName(unit.pluralName)} = this.convertFromBase(${enumNam
 
 /**
  * Build the static unit creators.
- * For example for 'Angle' unit generate a 'FromDegrees(number)' get 'FromRadiand(number)' etc. 
+ * For example for 'Angle' unit generate a 'FromDegrees(number)' get 'FromRadian(number)' etc. 
  * @param unitName The unit name (for example 'Degree' or 'Radian') .
  * @param enumName The unit enum name.
  * @param units The units properties.
@@ -138,6 +141,67 @@ function buildUnitCreatorsMethods(unitName: string, enumName: string, units: Uni
     })
 }
 
+function buildGetUnitEnumStaticMethod(unitName: string, unitEnumName: string): MethodDeclarationStructure {
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: `Gets the base unit enumeration associated with ${unitName}`,
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'returns',
+            text: `The unit enumeration that can be used to interact with this type`
+        }]
+    };
+
+    return {
+        kind: StructureKind.Method,
+        name: 'getUnitEnum',
+        scope: Scope.Protected,
+        isStatic: true,
+        parameters: [],
+        docs: [docs],
+        returnType: `typeof ${unitEnumName}`,
+        statements: `return ${unitEnumName};`
+    }
+}
+
+function buildGetBaseUnitProp(enumName: string, baseUnit: UnitProperties): GetAccessorDeclarationStructure {
+    const enumValueAccessStatement = `${enumName}.${baseUnit.pluralName}`;
+
+    return {
+        kind: StructureKind.GetAccessor,
+        name: 'baseUnit',
+        scope: Scope.Protected,
+        returnType: `${enumValueAccessStatement}`,
+        docs: ['Gets the default unit used when creating instances of the unit or its DTO'],
+        statements: `return ${enumValueAccessStatement}`
+    };
+}
+
+function buildGetBaseUnitStaticMethod(enumName: string, baseUnit: UnitProperties): MethodDeclarationStructure {
+    const enumValueAccessStatement = `${enumName}.${baseUnit.pluralName}`;
+
+    const docs: JSDocStructure = {
+        kind: StructureKind.JSDoc,
+        description: 'Gets the default unit used when creating instances of the unit or its DTO',
+        tags: [{
+            kind: StructureKind.JSDocTag,
+            tagName: 'returns',
+            text: `The unit enumeration value used as a default parameter in constructor and DTO methods`
+        }]
+    };
+
+    return {
+        kind: StructureKind.Method,
+        name: 'getBaseUnit',
+        scope: Scope.Protected,
+        isStatic: true,
+        parameters: [],
+        docs: [docs],
+        returnType: `${enumValueAccessStatement}`,
+        statements: `return ${enumValueAccessStatement};`
+    }
+}
+
 /**
  * Build the case in a 'switch' with unit converting formula for the given unit.
  * @param unitName The specific unit name. (for example 'Degree' or 'Radian') 
@@ -146,9 +210,10 @@ function buildUnitCreatorsMethods(unitName: string, enumName: string, units: Uni
  * @param valueVarName The variable name to replace th 'x' in the formula.
  * @returns The unit case as a string.
  */
-function buildFormulaCase(unitName: string, enumName: string, formulaDefinition: string, valueVarName: string): string {
+function buildFormulaCase(unitName: string, enumName: string, formulaDefinition: string, valueVarName: string): ts.CaseClause {
     // Remove C# number types
     formulaDefinition = formulaDefinition.replace('d', '').replace('m', '');
+
 
     // Convert C# math functions to the JS name
     formulaDefinition = formulaDefinition.replace(/\.Pow\(/g, '.pow(');
@@ -156,13 +221,56 @@ function buildFormulaCase(unitName: string, enumName: string, formulaDefinition:
     formulaDefinition = formulaDefinition.replace(/\.Asin\(/g, '.asin(');
     formulaDefinition = formulaDefinition.replace(/\.Sin\(/g, '.sin(');
 
-    // Remove all C# double signs, since they are not relavant to JS wheere all numbers are just "number" and not int. 
+    // Remove all C# double signs, since they are not relevant to JS where all numbers are just "number" and not int. 
     // see for example https://github.com/angularsen/UnitsNet/blob/master/Common/UnitDefinitions/Irradiation.json#L65
     formulaDefinition = formulaDefinition.replace(/\d+d/g, (match) => match.replace(/d$/, ''));
 
-    return `
-    case ${enumName}.${unitName}:
-        return ${formulaDefinition.replace(/{x}|x/g, valueVarName)};`;
+    // Unbrace variables and replace with references
+    formulaDefinition = formulaDefinition.replace(/{x}|x/g, valueVarName)
+
+    return ts.createCaseClause(
+        ts.createPropertyAccess(ts.createIdentifier(enumName), unitName),
+        [ts.createReturn(ts.createIdentifier(formulaDefinition))]
+    );
+}
+
+function buildOverriddenFormulaCase(unitName: string, enumName: string, formulaDefinition: string, valueVarName: string): ts.CaseClause {
+    // Remove C# number types. Could be done at grammar level but not really necessary
+    const formulaWithTypesRemoved = formulaDefinition.replace(/\d+[dm]/gi, (match) => match.slice(0, -1));
+
+    const code = getCodeForFormula(formulaWithTypesRemoved, { x: valueVarName });
+    const lastStatement = code[code.length - 1];
+
+    // This is a form of assertion. We expect the last statement in the generated code to be a result assignment
+    const resultIdentifier = HighLevelTsc.getIdentifierFromNode(lastStatement);
+    if (!resultIdentifier) {
+        throw new Error(`Could not get an identifier from statement '${lastStatement.getFullText()}'. This indicates a generator issue`);
+    }
+
+    // Create the case statements.
+    // If there's only one, we're looking at just a literal so we can directly convert to a return statement,
+    // otherwise, we insert all statements and append a return
+    const statements: ts.Statement[] = [];
+
+    for (let i = 0; i < code.length - 1; i++) {
+        statements.push(code[i]);
+    }
+
+    if (ts.isExpressionStatement(lastStatement) && ts.isIdentifier(lastStatement.expression)) {
+        statements.push(ts.createReturn(resultIdentifier));
+    } else {
+        const returnStatement = HighLevelTsc.tryConvertToReturnStatement(lastStatement);
+        if (!returnStatement) {
+            throw new Error(`Could not convert statement '${lastStatement.getFullText()}' to a ReturnStatement. This indicates a generator issue`);
+        }
+        statements.push(returnStatement);
+    }
+
+
+    return ts.createCaseClause(
+        ts.createPropertyAccess(ts.createIdentifier(enumName), unitName),
+        statements.length > 1 ? [ts.createBlock(statements)] : statements,
+    );
 }
 
 /**
@@ -172,22 +280,50 @@ function buildFormulaCase(unitName: string, enumName: string, formulaDefinition:
  * @param isBaseToUnit The direction of the conversion.
  * @returns The unit switch cases as a string.
  */
-function buildFormulaCases(enumName: string, units: UnitProperties[], isBaseToUnit: boolean): string {
-    let switchUnitsCode = '';
+function buildStandardFormulaCases(enumName: string, units: UnitProperties[], isBaseToUnit: boolean): ts.CaseBlock {
+    return buildUnitConversionSwitchCase(enumName, units, isBaseToUnit, buildFormulaCase);
+}
+
+function buildOverriddenFormulaCases(enumName: string, units: UnitProperties[], isBaseToUnit: boolean): ts.CaseBlock {
+    return buildUnitConversionSwitchCase(enumName, units, isBaseToUnit, buildOverriddenFormulaCase);
+}
+
+function buildUnitConversionSwitchCase(
+    enumName: string,
+    units: UnitProperties[],
+    isBaseToUnit: boolean,
+    builder: (unitName: string, enumName: string, formulaDefinition: string, valueVarName: string) => ts.CaseClause
+): ts.CaseBlock {
+    const switchClauses: ts.CaseOrDefaultClause[] = [];
 
     for (const unit of units) {
-        switchUnitsCode += buildFormulaCase(unit.pluralName,
-            enumName,
-            isBaseToUnit
-                ? unit.baseToUnitFormula
-                : unit.unitToBaseFormula,
-            isBaseToUnit
-                ? 'value'
-                : 'this.value');
+        switchClauses.push(
+            builder(
+                unit.pluralName,
+                enumName,
+                isBaseToUnit
+                    ? unit.baseToUnitFormula
+                    : unit.unitToBaseFormula,
+                isBaseToUnit
+                    ? 'value'
+                    : 'this.value'
+            )
+        )
     }
 
-    return switchUnitsCode;
+    switchClauses.push(ts.createDefaultClause([
+        ts.createReturn(
+            ts.createPropertyAccess(
+                ts.createIdentifier('Number'),
+                'NaN'
+            )
+        )
+    ]));
+
+
+    return ts.createCaseBlock(switchClauses);
 }
+
 
 /**
  * Build the convert style method
@@ -225,7 +361,7 @@ ${units.map(u => `    case ${enumName}.${u.pluralName}: return this.${u.pluralNa
     default:
         break;
 }
-return NaN;`
+return Number.NaN;`
     };
 }
 
@@ -297,25 +433,26 @@ function buildConvertFromDto(unitName: string): MethodDeclarationStructure {
  * @returns The convert method structure.
  */
 function buildConvertFromBaseMethod(enumName: string, units: UnitProperties[]): MethodDeclarationStructure {
+    const parameterName = 'toUnit';
+
     return {
         kind: StructureKind.Method,
         name: 'convertFromBase',
         scope: Scope.Private,
         parameters: [
             {
-                name: 'toUnit',
+                name: parameterName,
                 type: enumName
             }
         ],
         returnType: 'number',
-        statements:
-            `switch (toUnit) {
-        ${buildFormulaCases(enumName, units, false)}
-    default:
-        break;
-}
-return NaN;`
-    };
+        statements: emitSplitFormulaFlow(
+            enumName,
+            units,
+            false,
+            parameterName
+        ).map(HighLevelTsc.emitCode).join('\n')
+    }
 }
 
 /**
@@ -337,9 +474,11 @@ function buildLazyloadVars(units: UnitProperties[]): PropertyDeclarationStructur
  * Build from unit to base convert method. 
  * @param enumName The unit enum name.
  * @param units The units to convert from.
- * @returns The convert method strucure.
+ * @returns The convert method structure.
  */
 function buildConvertToBaseMethod(enumName: string, units: UnitProperties[]): MethodDeclarationStructure {
+    const parameterName = 'fromUnit';
+
     return {
         kind: StructureKind.Method,
         name: 'convertToBase',
@@ -350,19 +489,45 @@ function buildConvertToBaseMethod(enumName: string, units: UnitProperties[]): Me
                 type: 'number'
             },
             {
-                name: 'fromUnit',
+                name: parameterName,
                 type: enumName
-            }
+            },
         ],
         returnType: 'number',
-        statements:
-            `switch (fromUnit) {
-        ${buildFormulaCases(enumName, units, true)}
-    default:
-        break;
-}
-return NaN;`
+        statements: emitSplitFormulaFlow(
+            enumName,
+            units,
+            true,
+            parameterName
+        ).map(HighLevelTsc.emitCode)
+            .join('\n')
     };
+}
+
+function emitSplitFormulaFlow(
+    enumName: string,
+    units: UnitProperties[],
+    isBaseToUnit: boolean,
+    parameterName: string
+): ts.Statement[] {
+    const ifCondition = ts.createCall(ts.createIdentifier('areAnyOperatorsOverridden'), undefined, undefined);
+    const switchOperand = ts.createIdentifier(parameterName);
+
+    return [
+        ts.createIf(
+            ifCondition,
+            ts.createSwitch(
+                switchOperand,
+                buildOverriddenFormulaCases(enumName, units, isBaseToUnit)
+            )
+        ),
+
+
+        ts.createSwitch(
+            switchOperand,
+            buildStandardFormulaCases(enumName, units, isBaseToUnit)
+        )
+    ]
 }
 
 /**
@@ -637,7 +802,9 @@ function buildUnitCtor(unitName: string, enumName: string, baseUnitName: string)
         docs: [docs],
         statements: `
 super();
-if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+if (value === undefined || value === null || Number.isNaN(value)) {
+    throw new TypeError('invalid unit value ‘' + value + '’');
+}
 this.value = this.convertToBase(value, fromUnit);`
     }
 }
@@ -679,11 +846,11 @@ export function generateUnitClass(project: Project,
     const valueMember: PropertyDeclarationStructure = {
         kind: StructureKind.Property,
         name: 'value',
-        scope: Scope.Private,
+        scope: Scope.Protected,
         type: 'number'
     };
 
-    // Build vars for loadzy load converted value 
+    // Build vars to lazy load converted value 
     const lazyVars = buildLazyloadVars(units);
 
     // Build base value accessor
@@ -706,9 +873,19 @@ export function generateUnitClass(project: Project,
     const convertToDtoMethod = buildConvertToDto(unitName, enumName, baseUnit)
     const convertFromDtoMethod = buildConvertFromDto(unitName)
 
-    
+
     // Build the static creator methods  
     const unitCreators = buildUnitCreatorsMethods(unitName, enumName, units);
+
+    // Build a protected static getUnitEnum() method.
+    // Used to get the relevant unit enum during testing and potentially useful down the road
+    const getUnitEnumMethod = buildGetUnitEnumStaticMethod(unitName, enumName);
+    
+    // Build a protected static getBaseUnit() method that gets the BaseUnit of the given class
+    const getBaseUnitEnumStaticMethod = buildGetBaseUnitStaticMethod(enumName, baseUnit);
+
+    // Build a protected get baseUnit that returns the BaseUnit of the given class
+    const getBaseUnitEnumValueProp = buildGetBaseUnitProp(enumName, baseUnit);
 
     // Build the convert from base to unit method
     const convertFromBaseMethod = buildConvertFromBaseMethod(enumName, units);
@@ -740,10 +917,12 @@ export function generateUnitClass(project: Project,
         name: unitProperties.unitName,
         extends: 'BaseUnit',
         properties: [valueMember, ...lazyVars],
-        getAccessors: [baseValueAccessor, ...unitGetters],
+        getAccessors: [baseValueAccessor, getBaseUnitEnumValueProp, ...unitGetters],
         ctors: [unitCtor],
         methods: [
             ...unitCreators,
+            getUnitEnumMethod,
+            getBaseUnitEnumStaticMethod,
             convertToDtoMethod,
             convertFromDtoMethod,
             convertToUnitMethod,
@@ -761,7 +940,7 @@ export function generateUnitClass(project: Project,
 
     const importDeclaration: ImportDeclarationStructure = {
         moduleSpecifier: '../base-unit',
-        namedImports: ['BaseUnit'],
+        namedImports: ['BaseUnit', 'areAnyOperatorsOverridden'],
         kind: StructureKind.ImportDeclaration,
     }
 

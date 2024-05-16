@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricConductance */
 export interface ElectricConductanceDto {
@@ -24,7 +24,7 @@ export enum ElectricConductanceUnits {
 
 /** The electrical conductance of an electrical conductor is a measure of the easeness to pass an electric current through that conductor. */
 export class ElectricConductance extends BaseUnit {
-    private value: number;
+    protected value: number;
     private siemensLazy: number | null = null;
     private nanosiemensLazy: number | null = null;
     private microsiemensLazy: number | null = null;
@@ -40,7 +40,9 @@ export class ElectricConductance extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricConductanceUnits = ElectricConductanceUnits.Siemens) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -50,6 +52,11 @@ export class ElectricConductance extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricConductanceUnits.Siemens {
+        return ElectricConductanceUnits.Siemens
     }
 
     /** */
@@ -143,6 +150,22 @@ export class ElectricConductance extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricConductance
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricConductanceUnits {
+        return ElectricConductanceUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricConductanceUnits.Siemens {
+        return ElectricConductanceUnits.Siemens;
+    }
+
+    /**
      * Create API DTO represent a ElectricConductance unit.
      * @param holdInUnit The specific ElectricConductance unit to be used in the unit representation at the DTO
      */
@@ -177,45 +200,47 @@ export class ElectricConductance extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricConductanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricConductanceUnits.Siemens: return this.value;
+                case ElectricConductanceUnits.Nanosiemens: return super.internalDivide(this.value, 1e-9);
+                case ElectricConductanceUnits.Microsiemens: return super.internalDivide(this.value, 0.000001);
+                case ElectricConductanceUnits.Millisiemens: return super.internalDivide(this.value, 0.001);
+                case ElectricConductanceUnits.Kilosiemens: return super.internalDivide(this.value, 1000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricConductanceUnits.Siemens:
-                return this.value;
-            case ElectricConductanceUnits.Nanosiemens:
-                return (this.value) / 1e-9;
-            case ElectricConductanceUnits.Microsiemens:
-                return (this.value) / 0.000001;
-            case ElectricConductanceUnits.Millisiemens:
-                return (this.value) / 0.001;
-            case ElectricConductanceUnits.Kilosiemens:
-                return (this.value) / 1000;
-            default:
-                break;
+            case ElectricConductanceUnits.Siemens: return this.value;
+            case ElectricConductanceUnits.Nanosiemens: return (this.value) / 1e-9;
+            case ElectricConductanceUnits.Microsiemens: return (this.value) / 0.000001;
+            case ElectricConductanceUnits.Millisiemens: return (this.value) / 0.001;
+            case ElectricConductanceUnits.Kilosiemens: return (this.value) / 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricConductanceUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricConductanceUnits.Siemens: return value;
+                case ElectricConductanceUnits.Nanosiemens: return super.internalMultiply(value, 1e-9);
+                case ElectricConductanceUnits.Microsiemens: return super.internalMultiply(value, 0.000001);
+                case ElectricConductanceUnits.Millisiemens: return super.internalMultiply(value, 0.001);
+                case ElectricConductanceUnits.Kilosiemens: return super.internalMultiply(value, 1000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricConductanceUnits.Siemens:
-                return value;
-            case ElectricConductanceUnits.Nanosiemens:
-                return (value) * 1e-9;
-            case ElectricConductanceUnits.Microsiemens:
-                return (value) * 0.000001;
-            case ElectricConductanceUnits.Millisiemens:
-                return (value) * 0.001;
-            case ElectricConductanceUnits.Kilosiemens:
-                return (value) * 1000;
-            default:
-                break;
+            case ElectricConductanceUnits.Siemens: return value;
+            case ElectricConductanceUnits.Nanosiemens: return (value) * 1e-9;
+            case ElectricConductanceUnits.Microsiemens: return (value) * 0.000001;
+            case ElectricConductanceUnits.Millisiemens: return (value) * 0.001;
+            case ElectricConductanceUnits.Kilosiemens: return (value) * 1000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

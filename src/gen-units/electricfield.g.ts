@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricField */
 export interface ElectricFieldDto {
@@ -16,7 +16,7 @@ export enum ElectricFieldUnits {
 
 /** An electric field is a force field that surrounds electric charges that attracts or repels other electric charges. */
 export class ElectricField extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltspermeterLazy: number | null = null;
 
     /**
@@ -28,7 +28,9 @@ export class ElectricField extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricFieldUnits = ElectricFieldUnits.VoltsPerMeter) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -38,6 +40,11 @@ export class ElectricField extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricFieldUnits.VoltsPerMeter {
+        return ElectricFieldUnits.VoltsPerMeter
     }
 
     /** */
@@ -56,6 +63,22 @@ export class ElectricField extends BaseUnit {
      */
     public static FromVoltsPerMeter(value: number): ElectricField {
         return new ElectricField(value, ElectricFieldUnits.VoltsPerMeter);
+    }
+
+    /**
+     * Gets the base unit enumeration associated with ElectricField
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricFieldUnits {
+        return ElectricFieldUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricFieldUnits.VoltsPerMeter {
+        return ElectricFieldUnits.VoltsPerMeter;
     }
 
     /**
@@ -89,29 +112,31 @@ export class ElectricField extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricFieldUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricFieldUnits.VoltsPerMeter: return this.value;
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricFieldUnits.VoltsPerMeter:
-                return this.value;
-            default:
-                break;
+            case ElectricFieldUnits.VoltsPerMeter: return this.value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricFieldUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricFieldUnits.VoltsPerMeter: return value;
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricFieldUnits.VoltsPerMeter:
-                return value;
-            default:
-                break;
+            case ElectricFieldUnits.VoltsPerMeter: return value;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

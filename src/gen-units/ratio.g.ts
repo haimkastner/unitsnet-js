@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a Ratio */
 export interface RatioDto {
@@ -26,7 +26,7 @@ export enum RatioUnits {
 
 /** In mathematics, a ratio is a relationship between two numbers of the same kind (e.g., objects, persons, students, spoonfuls, units of whatever identical dimension), usually expressed as "a to b" or a:b, sometimes expressed arithmetically as a dimensionless quotient of the two that explicitly indicates how many times the first number contains the second (not necessarily an integer). */
 export class Ratio extends BaseUnit {
-    private value: number;
+    protected value: number;
     private decimalfractionsLazy: number | null = null;
     private percentLazy: number | null = null;
     private partsperthousandLazy: number | null = null;
@@ -43,7 +43,9 @@ export class Ratio extends BaseUnit {
     public constructor(value: number, fromUnit: RatioUnits = RatioUnits.DecimalFractions) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -53,6 +55,11 @@ export class Ratio extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): RatioUnits.DecimalFractions {
+        return RatioUnits.DecimalFractions
     }
 
     /** */
@@ -164,6 +171,22 @@ export class Ratio extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with Ratio
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof RatioUnits {
+        return RatioUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): RatioUnits.DecimalFractions {
+        return RatioUnits.DecimalFractions;
+    }
+
+    /**
      * Create API DTO represent a Ratio unit.
      * @param holdInUnit The specific Ratio unit to be used in the unit representation at the DTO
      */
@@ -199,49 +222,51 @@ export class Ratio extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: RatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case RatioUnits.DecimalFractions: return this.value;
+                case RatioUnits.Percent: return super.internalMultiply(this.value, 1e2);
+                case RatioUnits.PartsPerThousand: return super.internalMultiply(this.value, 1e3);
+                case RatioUnits.PartsPerMillion: return super.internalMultiply(this.value, 1e6);
+                case RatioUnits.PartsPerBillion: return super.internalMultiply(this.value, 1e9);
+                case RatioUnits.PartsPerTrillion: return super.internalMultiply(this.value, 1e12);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case RatioUnits.DecimalFractions:
-                return this.value;
-            case RatioUnits.Percent:
-                return this.value * 1e2;
-            case RatioUnits.PartsPerThousand:
-                return this.value * 1e3;
-            case RatioUnits.PartsPerMillion:
-                return this.value * 1e6;
-            case RatioUnits.PartsPerBillion:
-                return this.value * 1e9;
-            case RatioUnits.PartsPerTrillion:
-                return this.value * 1e12;
-            default:
-                break;
+            case RatioUnits.DecimalFractions: return this.value;
+            case RatioUnits.Percent: return this.value * 1e2;
+            case RatioUnits.PartsPerThousand: return this.value * 1e3;
+            case RatioUnits.PartsPerMillion: return this.value * 1e6;
+            case RatioUnits.PartsPerBillion: return this.value * 1e9;
+            case RatioUnits.PartsPerTrillion: return this.value * 1e12;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: RatioUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case RatioUnits.DecimalFractions: return value;
+                case RatioUnits.Percent: return super.internalDivide(value, 1e2);
+                case RatioUnits.PartsPerThousand: return super.internalDivide(value, 1e3);
+                case RatioUnits.PartsPerMillion: return super.internalDivide(value, 1e6);
+                case RatioUnits.PartsPerBillion: return super.internalDivide(value, 1e9);
+                case RatioUnits.PartsPerTrillion: return super.internalDivide(value, 1e12);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case RatioUnits.DecimalFractions:
-                return value;
-            case RatioUnits.Percent:
-                return value / 1e2;
-            case RatioUnits.PartsPerThousand:
-                return value / 1e3;
-            case RatioUnits.PartsPerMillion:
-                return value / 1e6;
-            case RatioUnits.PartsPerBillion:
-                return value / 1e9;
-            case RatioUnits.PartsPerTrillion:
-                return value / 1e12;
-            default:
-                break;
+            case RatioUnits.DecimalFractions: return value;
+            case RatioUnits.Percent: return value / 1e2;
+            case RatioUnits.PartsPerThousand: return value / 1e3;
+            case RatioUnits.PartsPerMillion: return value / 1e6;
+            case RatioUnits.PartsPerBillion: return value / 1e9;
+            case RatioUnits.PartsPerTrillion: return value / 1e12;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**

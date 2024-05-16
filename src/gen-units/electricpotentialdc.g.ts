@@ -1,4 +1,4 @@
-import { BaseUnit } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
 
 /** API DTO represents a ElectricPotentialDc */
 export interface ElectricPotentialDcDto {
@@ -24,7 +24,7 @@ export enum ElectricPotentialDcUnits {
 
 /** The Electric Potential of a system known to use Direct Current. */
 export class ElectricPotentialDc extends BaseUnit {
-    private value: number;
+    protected value: number;
     private voltsdcLazy: number | null = null;
     private microvoltsdcLazy: number | null = null;
     private millivoltsdcLazy: number | null = null;
@@ -40,7 +40,9 @@ export class ElectricPotentialDc extends BaseUnit {
     public constructor(value: number, fromUnit: ElectricPotentialDcUnits = ElectricPotentialDcUnits.VoltsDc) {
 
         super();
-        if (isNaN(value)) throw new TypeError('invalid unit value ‘' + value + '’');
+        if (value === undefined || value === null || Number.isNaN(value)) {
+            throw new TypeError('invalid unit value ‘' + value + '’');
+        }
         this.value = this.convertToBase(value, fromUnit);
     }
 
@@ -50,6 +52,11 @@ export class ElectricPotentialDc extends BaseUnit {
      */
     public get BaseValue(): number {
         return this.value;
+    }
+
+    /** Gets the default unit used when creating instances of the unit or its DTO */
+    protected get baseUnit(): ElectricPotentialDcUnits.VoltsDc {
+        return ElectricPotentialDcUnits.VoltsDc
     }
 
     /** */
@@ -143,6 +150,22 @@ export class ElectricPotentialDc extends BaseUnit {
     }
 
     /**
+     * Gets the base unit enumeration associated with ElectricPotentialDc
+     * @returns The unit enumeration that can be used to interact with this type
+     */
+    protected static getUnitEnum(): typeof ElectricPotentialDcUnits {
+        return ElectricPotentialDcUnits;
+    }
+
+    /**
+     * Gets the default unit used when creating instances of the unit or its DTO
+     * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
+     */
+    protected static getBaseUnit(): ElectricPotentialDcUnits.VoltsDc {
+        return ElectricPotentialDcUnits.VoltsDc;
+    }
+
+    /**
      * Create API DTO represent a ElectricPotentialDc unit.
      * @param holdInUnit The specific ElectricPotentialDc unit to be used in the unit representation at the DTO
      */
@@ -177,45 +200,47 @@ export class ElectricPotentialDc extends BaseUnit {
             default:
                 break;
         }
-        return NaN;
+        return Number.NaN;
     }
 
     private convertFromBase(toUnit: ElectricPotentialDcUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (toUnit) {
+                case ElectricPotentialDcUnits.VoltsDc: return this.value;
+                case ElectricPotentialDcUnits.MicrovoltsDc: return super.internalDivide(this.value, 0.000001);
+                case ElectricPotentialDcUnits.MillivoltsDc: return super.internalDivide(this.value, 0.001);
+                case ElectricPotentialDcUnits.KilovoltsDc: return super.internalDivide(this.value, 1000);
+                case ElectricPotentialDcUnits.MegavoltsDc: return super.internalDivide(this.value, 1000000);
+                default: return Number.NaN;
+            }
         switch (toUnit) {
-                
-            case ElectricPotentialDcUnits.VoltsDc:
-                return this.value;
-            case ElectricPotentialDcUnits.MicrovoltsDc:
-                return (this.value) / 0.000001;
-            case ElectricPotentialDcUnits.MillivoltsDc:
-                return (this.value) / 0.001;
-            case ElectricPotentialDcUnits.KilovoltsDc:
-                return (this.value) / 1000;
-            case ElectricPotentialDcUnits.MegavoltsDc:
-                return (this.value) / 1000000;
-            default:
-                break;
+            case ElectricPotentialDcUnits.VoltsDc: return this.value;
+            case ElectricPotentialDcUnits.MicrovoltsDc: return (this.value) / 0.000001;
+            case ElectricPotentialDcUnits.MillivoltsDc: return (this.value) / 0.001;
+            case ElectricPotentialDcUnits.KilovoltsDc: return (this.value) / 1000;
+            case ElectricPotentialDcUnits.MegavoltsDc: return (this.value) / 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     private convertToBase(value: number, fromUnit: ElectricPotentialDcUnits): number {
+        if (areAnyOperatorsOverridden())
+            switch (fromUnit) {
+                case ElectricPotentialDcUnits.VoltsDc: return value;
+                case ElectricPotentialDcUnits.MicrovoltsDc: return super.internalMultiply(value, 0.000001);
+                case ElectricPotentialDcUnits.MillivoltsDc: return super.internalMultiply(value, 0.001);
+                case ElectricPotentialDcUnits.KilovoltsDc: return super.internalMultiply(value, 1000);
+                case ElectricPotentialDcUnits.MegavoltsDc: return super.internalMultiply(value, 1000000);
+                default: return Number.NaN;
+            }
         switch (fromUnit) {
-                
-            case ElectricPotentialDcUnits.VoltsDc:
-                return value;
-            case ElectricPotentialDcUnits.MicrovoltsDc:
-                return (value) * 0.000001;
-            case ElectricPotentialDcUnits.MillivoltsDc:
-                return (value) * 0.001;
-            case ElectricPotentialDcUnits.KilovoltsDc:
-                return (value) * 1000;
-            case ElectricPotentialDcUnits.MegavoltsDc:
-                return (value) * 1000000;
-            default:
-                break;
+            case ElectricPotentialDcUnits.VoltsDc: return value;
+            case ElectricPotentialDcUnits.MicrovoltsDc: return (value) * 0.000001;
+            case ElectricPotentialDcUnits.MillivoltsDc: return (value) * 0.001;
+            case ElectricPotentialDcUnits.KilovoltsDc: return (value) * 1000;
+            case ElectricPotentialDcUnits.MegavoltsDc: return (value) * 1000000;
+            default: return Number.NaN;
         }
-        return NaN;
     }
 
     /**
