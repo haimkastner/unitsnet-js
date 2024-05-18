@@ -27,6 +27,18 @@ export enum InformationUnits {
     /** */
     Exabytes = "Exabyte",
     /** */
+    Kibibytes = "Kibibyte",
+    /** */
+    Mebibytes = "Mebibyte",
+    /** */
+    Gibibytes = "Gibibyte",
+    /** */
+    Tebibytes = "Tebibyte",
+    /** */
+    Pebibytes = "Pebibyte",
+    /** */
+    Exbibytes = "Exbibyte",
+    /** */
     Kilobits = "Kilobit",
     /** */
     Megabits = "Megabit",
@@ -37,7 +49,19 @@ export enum InformationUnits {
     /** */
     Petabits = "Petabit",
     /** */
-    Exabits = "Exabit"
+    Exabits = "Exabit",
+    /** */
+    Kibibits = "Kibibit",
+    /** */
+    Mebibits = "Mebibit",
+    /** */
+    Gibibits = "Gibibit",
+    /** */
+    Tebibits = "Tebibit",
+    /** */
+    Pebibits = "Pebibit",
+    /** */
+    Exbibits = "Exbibit"
 }
 
 /** In computing and telecommunications, a unit of information is the capacity of some standard data storage system or communication channel, used to measure the capacities of other systems and channels. In information theory, units of information are also used to measure the information contents or entropy of random variables. */
@@ -51,12 +75,24 @@ export class Information extends BaseUnit {
     private terabytesLazy: number | null = null;
     private petabytesLazy: number | null = null;
     private exabytesLazy: number | null = null;
+    private kibibytesLazy: number | null = null;
+    private mebibytesLazy: number | null = null;
+    private gibibytesLazy: number | null = null;
+    private tebibytesLazy: number | null = null;
+    private pebibytesLazy: number | null = null;
+    private exbibytesLazy: number | null = null;
     private kilobitsLazy: number | null = null;
     private megabitsLazy: number | null = null;
     private gigabitsLazy: number | null = null;
     private terabitsLazy: number | null = null;
     private petabitsLazy: number | null = null;
     private exabitsLazy: number | null = null;
+    private kibibitsLazy: number | null = null;
+    private mebibitsLazy: number | null = null;
+    private gibibitsLazy: number | null = null;
+    private tebibitsLazy: number | null = null;
+    private pebibitsLazy: number | null = null;
+    private exbibitsLazy: number | null = null;
 
     /**
      * Create a new Information.
@@ -151,6 +187,54 @@ export class Information extends BaseUnit {
     }
 
     /** */
+    public get Kibibytes(): number {
+        if(this.kibibytesLazy !== null){
+            return this.kibibytesLazy;
+        }
+        return this.kibibytesLazy = this.convertFromBase(InformationUnits.Kibibytes);
+    }
+
+    /** */
+    public get Mebibytes(): number {
+        if(this.mebibytesLazy !== null){
+            return this.mebibytesLazy;
+        }
+        return this.mebibytesLazy = this.convertFromBase(InformationUnits.Mebibytes);
+    }
+
+    /** */
+    public get Gibibytes(): number {
+        if(this.gibibytesLazy !== null){
+            return this.gibibytesLazy;
+        }
+        return this.gibibytesLazy = this.convertFromBase(InformationUnits.Gibibytes);
+    }
+
+    /** */
+    public get Tebibytes(): number {
+        if(this.tebibytesLazy !== null){
+            return this.tebibytesLazy;
+        }
+        return this.tebibytesLazy = this.convertFromBase(InformationUnits.Tebibytes);
+    }
+
+    /** */
+    public get Pebibytes(): number {
+        if(this.pebibytesLazy !== null){
+            return this.pebibytesLazy;
+        }
+        return this.pebibytesLazy = this.convertFromBase(InformationUnits.Pebibytes);
+    }
+
+    /** */
+    public get Exbibytes(): number {
+        if(this.exbibytesLazy !== null){
+            return this.exbibytesLazy;
+        }
+        return this.exbibytesLazy = this.convertFromBase(InformationUnits.Exbibytes);
+    }
+
+    /** */
     public get Kilobits(): number {
         if(this.kilobitsLazy !== null){
             return this.kilobitsLazy;
@@ -196,6 +280,54 @@ export class Information extends BaseUnit {
             return this.exabitsLazy;
         }
         return this.exabitsLazy = this.convertFromBase(InformationUnits.Exabits);
+    }
+
+    /** */
+    public get Kibibits(): number {
+        if(this.kibibitsLazy !== null){
+            return this.kibibitsLazy;
+        }
+        return this.kibibitsLazy = this.convertFromBase(InformationUnits.Kibibits);
+    }
+
+    /** */
+    public get Mebibits(): number {
+        if(this.mebibitsLazy !== null){
+            return this.mebibitsLazy;
+        }
+        return this.mebibitsLazy = this.convertFromBase(InformationUnits.Mebibits);
+    }
+
+    /** */
+    public get Gibibits(): number {
+        if(this.gibibitsLazy !== null){
+            return this.gibibitsLazy;
+        }
+        return this.gibibitsLazy = this.convertFromBase(InformationUnits.Gibibits);
+    }
+
+    /** */
+    public get Tebibits(): number {
+        if(this.tebibitsLazy !== null){
+            return this.tebibitsLazy;
+        }
+        return this.tebibitsLazy = this.convertFromBase(InformationUnits.Tebibits);
+    }
+
+    /** */
+    public get Pebibits(): number {
+        if(this.pebibitsLazy !== null){
+            return this.pebibitsLazy;
+        }
+        return this.pebibitsLazy = this.convertFromBase(InformationUnits.Pebibits);
+    }
+
+    /** */
+    public get Exbibits(): number {
+        if(this.exbibitsLazy !== null){
+            return this.exbibitsLazy;
+        }
+        return this.exbibitsLazy = this.convertFromBase(InformationUnits.Exbibits);
     }
 
     /**
@@ -279,6 +411,66 @@ export class Information extends BaseUnit {
     }
 
     /**
+     * Create a new Information instance from a Kibibytes
+     *
+     * @param value The unit as Kibibytes to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromKibibytes(value: number): Information {
+        return new Information(value, InformationUnits.Kibibytes);
+    }
+
+    /**
+     * Create a new Information instance from a Mebibytes
+     *
+     * @param value The unit as Mebibytes to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromMebibytes(value: number): Information {
+        return new Information(value, InformationUnits.Mebibytes);
+    }
+
+    /**
+     * Create a new Information instance from a Gibibytes
+     *
+     * @param value The unit as Gibibytes to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromGibibytes(value: number): Information {
+        return new Information(value, InformationUnits.Gibibytes);
+    }
+
+    /**
+     * Create a new Information instance from a Tebibytes
+     *
+     * @param value The unit as Tebibytes to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromTebibytes(value: number): Information {
+        return new Information(value, InformationUnits.Tebibytes);
+    }
+
+    /**
+     * Create a new Information instance from a Pebibytes
+     *
+     * @param value The unit as Pebibytes to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromPebibytes(value: number): Information {
+        return new Information(value, InformationUnits.Pebibytes);
+    }
+
+    /**
+     * Create a new Information instance from a Exbibytes
+     *
+     * @param value The unit as Exbibytes to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromExbibytes(value: number): Information {
+        return new Information(value, InformationUnits.Exbibytes);
+    }
+
+    /**
      * Create a new Information instance from a Kilobits
      *
      * @param value The unit as Kilobits to create a new Information from.
@@ -339,6 +531,66 @@ export class Information extends BaseUnit {
     }
 
     /**
+     * Create a new Information instance from a Kibibits
+     *
+     * @param value The unit as Kibibits to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromKibibits(value: number): Information {
+        return new Information(value, InformationUnits.Kibibits);
+    }
+
+    /**
+     * Create a new Information instance from a Mebibits
+     *
+     * @param value The unit as Mebibits to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromMebibits(value: number): Information {
+        return new Information(value, InformationUnits.Mebibits);
+    }
+
+    /**
+     * Create a new Information instance from a Gibibits
+     *
+     * @param value The unit as Gibibits to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromGibibits(value: number): Information {
+        return new Information(value, InformationUnits.Gibibits);
+    }
+
+    /**
+     * Create a new Information instance from a Tebibits
+     *
+     * @param value The unit as Tebibits to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromTebibits(value: number): Information {
+        return new Information(value, InformationUnits.Tebibits);
+    }
+
+    /**
+     * Create a new Information instance from a Pebibits
+     *
+     * @param value The unit as Pebibits to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromPebibits(value: number): Information {
+        return new Information(value, InformationUnits.Pebibits);
+    }
+
+    /**
+     * Create a new Information instance from a Exbibits
+     *
+     * @param value The unit as Exbibits to create a new Information from.
+     * @returns The new Information instance.
+     */
+    public static FromExbibits(value: number): Information {
+        return new Information(value, InformationUnits.Exbibits);
+    }
+
+    /**
      * Gets the base unit enumeration associated with Information
      * @returns The unit enumeration that can be used to interact with this type
      */
@@ -388,12 +640,24 @@ export class Information extends BaseUnit {
             case InformationUnits.Terabytes: return this.Terabytes;
             case InformationUnits.Petabytes: return this.Petabytes;
             case InformationUnits.Exabytes: return this.Exabytes;
+            case InformationUnits.Kibibytes: return this.Kibibytes;
+            case InformationUnits.Mebibytes: return this.Mebibytes;
+            case InformationUnits.Gibibytes: return this.Gibibytes;
+            case InformationUnits.Tebibytes: return this.Tebibytes;
+            case InformationUnits.Pebibytes: return this.Pebibytes;
+            case InformationUnits.Exbibytes: return this.Exbibytes;
             case InformationUnits.Kilobits: return this.Kilobits;
             case InformationUnits.Megabits: return this.Megabits;
             case InformationUnits.Gigabits: return this.Gigabits;
             case InformationUnits.Terabits: return this.Terabits;
             case InformationUnits.Petabits: return this.Petabits;
             case InformationUnits.Exabits: return this.Exabits;
+            case InformationUnits.Kibibits: return this.Kibibits;
+            case InformationUnits.Mebibits: return this.Mebibits;
+            case InformationUnits.Gibibits: return this.Gibibits;
+            case InformationUnits.Tebibits: return this.Tebibits;
+            case InformationUnits.Pebibits: return this.Pebibits;
+            case InformationUnits.Exbibits: return this.Exbibits;
 
             default:
                 break;
@@ -430,12 +694,42 @@ export class Information extends BaseUnit {
                     const v3 = super.internalDivide(this.value, 8);
                     return super.internalDivide(v3, 1000000000000000000);
                 }
+                case InformationUnits.Kibibytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1024);
+                }
+                case InformationUnits.Mebibytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1048576);
+                }
+                case InformationUnits.Gibibytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1073741824);
+                }
+                case InformationUnits.Tebibytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1099511627776);
+                }
+                case InformationUnits.Pebibytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1125899906842624);
+                }
+                case InformationUnits.Exbibytes: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1152921504606847000);
+                }
                 case InformationUnits.Kilobits: return super.internalDivide(this.value, 1000);
                 case InformationUnits.Megabits: return super.internalDivide(this.value, 1000000);
                 case InformationUnits.Gigabits: return super.internalDivide(this.value, 1000000000);
                 case InformationUnits.Terabits: return super.internalDivide(this.value, 1000000000000);
                 case InformationUnits.Petabits: return super.internalDivide(this.value, 1000000000000000);
                 case InformationUnits.Exabits: return super.internalDivide(this.value, 1000000000000000000);
+                case InformationUnits.Kibibits: return super.internalDivide(this.value, 1024);
+                case InformationUnits.Mebibits: return super.internalDivide(this.value, 1048576);
+                case InformationUnits.Gibibits: return super.internalDivide(this.value, 1073741824);
+                case InformationUnits.Tebibits: return super.internalDivide(this.value, 1099511627776);
+                case InformationUnits.Pebibits: return super.internalDivide(this.value, 1125899906842624);
+                case InformationUnits.Exbibits: return super.internalDivide(this.value, 1152921504606847000);
                 default: return Number.NaN;
             }
         switch (toUnit) {
@@ -447,12 +741,24 @@ export class Information extends BaseUnit {
             case InformationUnits.Terabytes: return (this.value / 8) / 1000000000000;
             case InformationUnits.Petabytes: return (this.value / 8) / 1000000000000000;
             case InformationUnits.Exabytes: return (this.value / 8) / 1000000000000000000;
+            case InformationUnits.Kibibytes: return (this.value / 8) / 1024;
+            case InformationUnits.Mebibytes: return (this.value / 8) / 1048576;
+            case InformationUnits.Gibibytes: return (this.value / 8) / 1073741824;
+            case InformationUnits.Tebibytes: return (this.value / 8) / 1099511627776;
+            case InformationUnits.Pebibytes: return (this.value / 8) / 1125899906842624;
+            case InformationUnits.Exbibytes: return (this.value / 8) / 1152921504606847000;
             case InformationUnits.Kilobits: return (this.value) / 1000;
             case InformationUnits.Megabits: return (this.value) / 1000000;
             case InformationUnits.Gigabits: return (this.value) / 1000000000;
             case InformationUnits.Terabits: return (this.value) / 1000000000000;
             case InformationUnits.Petabits: return (this.value) / 1000000000000000;
             case InformationUnits.Exabits: return (this.value) / 1000000000000000000;
+            case InformationUnits.Kibibits: return (this.value) / 1024;
+            case InformationUnits.Mebibits: return (this.value) / 1048576;
+            case InformationUnits.Gibibits: return (this.value) / 1073741824;
+            case InformationUnits.Tebibits: return (this.value) / 1099511627776;
+            case InformationUnits.Pebibits: return (this.value) / 1125899906842624;
+            case InformationUnits.Exbibits: return (this.value) / 1152921504606847000;
             default: return Number.NaN;
         }
     }
@@ -486,12 +792,42 @@ export class Information extends BaseUnit {
                     const v3 = super.internalMultiply(value, 8);
                     return super.internalMultiply(v3, 1000000000000000000);
                 }
+                case InformationUnits.Kibibytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1024);
+                }
+                case InformationUnits.Mebibytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1048576);
+                }
+                case InformationUnits.Gibibytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1073741824);
+                }
+                case InformationUnits.Tebibytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1099511627776);
+                }
+                case InformationUnits.Pebibytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1125899906842624);
+                }
+                case InformationUnits.Exbibytes: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1152921504606847000);
+                }
                 case InformationUnits.Kilobits: return super.internalMultiply(value, 1000);
                 case InformationUnits.Megabits: return super.internalMultiply(value, 1000000);
                 case InformationUnits.Gigabits: return super.internalMultiply(value, 1000000000);
                 case InformationUnits.Terabits: return super.internalMultiply(value, 1000000000000);
                 case InformationUnits.Petabits: return super.internalMultiply(value, 1000000000000000);
                 case InformationUnits.Exabits: return super.internalMultiply(value, 1000000000000000000);
+                case InformationUnits.Kibibits: return super.internalMultiply(value, 1024);
+                case InformationUnits.Mebibits: return super.internalMultiply(value, 1048576);
+                case InformationUnits.Gibibits: return super.internalMultiply(value, 1073741824);
+                case InformationUnits.Tebibits: return super.internalMultiply(value, 1099511627776);
+                case InformationUnits.Pebibits: return super.internalMultiply(value, 1125899906842624);
+                case InformationUnits.Exbibits: return super.internalMultiply(value, 1152921504606847000);
                 default: return Number.NaN;
             }
         switch (fromUnit) {
@@ -503,12 +839,24 @@ export class Information extends BaseUnit {
             case InformationUnits.Terabytes: return (value * 8) * 1000000000000;
             case InformationUnits.Petabytes: return (value * 8) * 1000000000000000;
             case InformationUnits.Exabytes: return (value * 8) * 1000000000000000000;
+            case InformationUnits.Kibibytes: return (value * 8) * 1024;
+            case InformationUnits.Mebibytes: return (value * 8) * 1048576;
+            case InformationUnits.Gibibytes: return (value * 8) * 1073741824;
+            case InformationUnits.Tebibytes: return (value * 8) * 1099511627776;
+            case InformationUnits.Pebibytes: return (value * 8) * 1125899906842624;
+            case InformationUnits.Exbibytes: return (value * 8) * 1152921504606847000;
             case InformationUnits.Kilobits: return (value) * 1000;
             case InformationUnits.Megabits: return (value) * 1000000;
             case InformationUnits.Gigabits: return (value) * 1000000000;
             case InformationUnits.Terabits: return (value) * 1000000000000;
             case InformationUnits.Petabits: return (value) * 1000000000000000;
             case InformationUnits.Exabits: return (value) * 1000000000000000000;
+            case InformationUnits.Kibibits: return (value) * 1024;
+            case InformationUnits.Mebibits: return (value) * 1048576;
+            case InformationUnits.Gibibits: return (value) * 1073741824;
+            case InformationUnits.Tebibits: return (value) * 1099511627776;
+            case InformationUnits.Pebibits: return (value) * 1125899906842624;
+            case InformationUnits.Exbibits: return (value) * 1152921504606847000;
             default: return Number.NaN;
         }
     }
@@ -541,6 +889,18 @@ export class Information extends BaseUnit {
                 return super.truncateFractionDigits(this.Petabytes, fractionalDigits) + ` PB`;
             case InformationUnits.Exabytes:
                 return super.truncateFractionDigits(this.Exabytes, fractionalDigits) + ` EB`;
+            case InformationUnits.Kibibytes:
+                return super.truncateFractionDigits(this.Kibibytes, fractionalDigits) + ` KiBB`;
+            case InformationUnits.Mebibytes:
+                return super.truncateFractionDigits(this.Mebibytes, fractionalDigits) + ` MiBB`;
+            case InformationUnits.Gibibytes:
+                return super.truncateFractionDigits(this.Gibibytes, fractionalDigits) + ` GiBB`;
+            case InformationUnits.Tebibytes:
+                return super.truncateFractionDigits(this.Tebibytes, fractionalDigits) + ` TiBB`;
+            case InformationUnits.Pebibytes:
+                return super.truncateFractionDigits(this.Pebibytes, fractionalDigits) + ` PiBB`;
+            case InformationUnits.Exbibytes:
+                return super.truncateFractionDigits(this.Exbibytes, fractionalDigits) + ` EiBB`;
             case InformationUnits.Kilobits:
                 return super.truncateFractionDigits(this.Kilobits, fractionalDigits) + ` kb`;
             case InformationUnits.Megabits:
@@ -553,6 +913,18 @@ export class Information extends BaseUnit {
                 return super.truncateFractionDigits(this.Petabits, fractionalDigits) + ` Pb`;
             case InformationUnits.Exabits:
                 return super.truncateFractionDigits(this.Exabits, fractionalDigits) + ` Eb`;
+            case InformationUnits.Kibibits:
+                return super.truncateFractionDigits(this.Kibibits, fractionalDigits) + ` KiBb`;
+            case InformationUnits.Mebibits:
+                return super.truncateFractionDigits(this.Mebibits, fractionalDigits) + ` MiBb`;
+            case InformationUnits.Gibibits:
+                return super.truncateFractionDigits(this.Gibibits, fractionalDigits) + ` GiBb`;
+            case InformationUnits.Tebibits:
+                return super.truncateFractionDigits(this.Tebibits, fractionalDigits) + ` TiBb`;
+            case InformationUnits.Pebibits:
+                return super.truncateFractionDigits(this.Pebibits, fractionalDigits) + ` PiBb`;
+            case InformationUnits.Exbibits:
+                return super.truncateFractionDigits(this.Exbibits, fractionalDigits) + ` EiBb`;
         default:
             break;
         }
@@ -586,6 +958,18 @@ export class Information extends BaseUnit {
                 return `PB`;
             case InformationUnits.Exabytes:
                 return `EB`;
+            case InformationUnits.Kibibytes:
+                return `KiBB`;
+            case InformationUnits.Mebibytes:
+                return `MiBB`;
+            case InformationUnits.Gibibytes:
+                return `GiBB`;
+            case InformationUnits.Tebibytes:
+                return `TiBB`;
+            case InformationUnits.Pebibytes:
+                return `PiBB`;
+            case InformationUnits.Exbibytes:
+                return `EiBB`;
             case InformationUnits.Kilobits:
                 return `kb`;
             case InformationUnits.Megabits:
@@ -598,6 +982,18 @@ export class Information extends BaseUnit {
                 return `Pb`;
             case InformationUnits.Exabits:
                 return `Eb`;
+            case InformationUnits.Kibibits:
+                return `KiBb`;
+            case InformationUnits.Mebibits:
+                return `MiBb`;
+            case InformationUnits.Gibibits:
+                return `GiBb`;
+            case InformationUnits.Tebibits:
+                return `TiBb`;
+            case InformationUnits.Pebibits:
+                return `PiBb`;
+            case InformationUnits.Exbibits:
+                return `EiBb`;
         default:
             break;
         }
