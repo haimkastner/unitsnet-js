@@ -5,6 +5,7 @@ import {
     Angle,
     AngleUnits,
     ArithmeticOperation,
+    Information,
     Length,
     LengthDto,
     LengthUnits,
@@ -90,6 +91,16 @@ describe('Unitsnet - tests', () => {
         it(`Should convert from any other unit prefix to the base value`, () => {
             const angle = Angle.FromMicroradians(3141592.65358979);
             expect(angle.Degrees).above(179.9999).below(180.00001);
+        });
+
+        it(`Should convert from any base-value bits prefix to the base value`, () => {
+            const data = Information.FromKibibits(1);
+            expect(data.Bits).equal(1024);
+        });
+
+        it(`Should convert from any other unit bits prefix to the base value`, () => {
+            const data = Information.FromBits(1024);
+            expect(data.Kibibits).equal(1);
         });
 
         it(`Should limit fractional digits to 1`, () => {
@@ -703,6 +714,25 @@ describe('Unitsnet - tests', () => {
                 const instance = invokeStaticMethod(unitClass, BaseUnitStaticMethodNames.FromDto, { value: sampleValue, unit: baseUnit });
                 expect(instance.BaseValue).to.equal(sampleValue);
             });
+        });
+    });
+
+    describe('# Use big numbers', () => {
+
+        it(`Should allow to "hack" library and use big numbers`, () => {
+            function toBigInt(num: any) {
+                if (typeof num === 'bigint') {
+                    return num;
+                }
+                return BigInt(num);
+            }
+
+            setOperatorOverride(ArithmeticOperation.Multiply, (valueA: any, valueB: any) => {
+                return toBigInt(valueA) * toBigInt(valueB) as any;
+            });
+            const lengthA = Length.FromMeters(BigInt(1000) as any);
+            const lengthB = Length.FromKilometers(BigInt(1) as any);
+            expect(lengthA.multiply(lengthB).Meters).equal(toBigInt(1e6));
         });
     });
 });

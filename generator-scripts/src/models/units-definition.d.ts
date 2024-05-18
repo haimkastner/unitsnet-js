@@ -1,4 +1,25 @@
-export declare type Prefix = 'Nano' | 'Micro' | 'Milli' | 'Centi' | 'Deci' | 'Deca' | 'Hecto' | 'Kilo' | 'Mega' | 'Giga' | 'Tera' | 'Peta' | 'Pico' | 'Exa' | 'Femto';
+export declare type Prefix =
+    'Nano'
+    | 'Micro'
+    | 'Milli'
+    | 'Centi'
+    | 'Deci'
+    | 'Deca'
+    | 'Hecto'
+    | 'Kilo'
+    | 'Mega'
+    | 'Giga'
+    | 'Tera'
+    | 'Peta'
+    | 'Pico'
+    | 'Exa'
+    | 'Femto'
+    | 'Kibi'
+    | 'Mebi'
+    | 'Gibi'
+    | 'Tebi'
+    | 'Pebi'
+    | 'Exbi';
 
 export declare interface Abbreviation {
     Culture: string;

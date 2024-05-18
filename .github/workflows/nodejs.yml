@@ -51,7 +51,7 @@ jobs:
         yarn run cover
 
     - name: Publish to Coveralls
-      uses: coverallsapp/github-action@v1.1.2 
+      uses: coverallsapp/github-action@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
