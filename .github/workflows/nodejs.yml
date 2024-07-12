@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
       - name: Install node
@@ -63,7 +63,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '22.x'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Prepare dependencies
@@ -74,13 +74,15 @@ jobs:
           cd ..
           yarn install --frozen-lockfile
 
-      - name: Bomb Version
+      - name: Increase Version
         id: update_version
         run: |
-          git pull
-          version=$(npm --no-git-tag-version --tag-version-prefix= version patch)
-          echo $version
-          echo "VERSION=$version" >> $GITHUB_OUTPUT
+          VERSION=$(node -p "require('./package.json').version")
+          DEFINITION_VERSION=$(node -p "require('./package.json').definitionVersion")
+          CURRENT_DEFINITION=$(node ./scripts/definition-version.js)
+          NEXT_VERSION=$(node ./scripts/next-package-version.js $VERSION $DEFINITION_VERSION $CURRENT_DEFINITION)
+          jq --arg next_version "$NEXT_VERSION" --arg current_definition "$CURRENT_DEFINITION" '.version = $next_version | .definitionVersion = $current_definition' package.json > tmp.json && mv tmp.json package.json
+          echo "VERSION=$NEXT_VERSION" >> $GITHUB_OUTPUT
 
       - name: Get version info
         id: version_info
