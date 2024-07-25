@@ -13,7 +13,9 @@ export enum MolalityUnits {
     /** */
     MolesPerKilogram = "MolePerKilogram",
     /** */
-    MolesPerGram = "MolePerGram"
+    MolesPerGram = "MolePerGram",
+    /** */
+    MillimolesPerKilogram = "MillimolePerKilogram"
 }
 
 /** Molality is a measure of the amount of solute in a solution relative to a given mass of solvent. */
@@ -21,6 +23,7 @@ export class Molality extends BaseUnit {
     protected value: number;
     private molesperkilogramLazy: number | null = null;
     private molespergramLazy: number | null = null;
+    private millimolesperkilogramLazy: number | null = null;
 
     /**
      * Create a new Molality.
@@ -66,6 +69,14 @@ export class Molality extends BaseUnit {
         return this.molespergramLazy = this.convertFromBase(MolalityUnits.MolesPerGram);
     }
 
+    /** */
+    public get MillimolesPerKilogram(): number {
+        if(this.millimolesperkilogramLazy !== null){
+            return this.millimolesperkilogramLazy;
+        }
+        return this.millimolesperkilogramLazy = this.convertFromBase(MolalityUnits.MillimolesPerKilogram);
+    }
+
     /**
      * Create a new Molality instance from a MolesPerKilogram
      *
@@ -84,6 +95,16 @@ export class Molality extends BaseUnit {
      */
     public static FromMolesPerGram(value: number): Molality {
         return new Molality(value, MolalityUnits.MolesPerGram);
+    }
+
+    /**
+     * Create a new Molality instance from a MillimolesPerKilogram
+     *
+     * @param value The unit as MillimolesPerKilogram to create a new Molality from.
+     * @returns The new Molality instance.
+     */
+    public static FromMillimolesPerKilogram(value: number): Molality {
+        return new Molality(value, MolalityUnits.MillimolesPerKilogram);
     }
 
     /**
@@ -130,6 +151,7 @@ export class Molality extends BaseUnit {
         switch (toUnit) {
             case MolalityUnits.MolesPerKilogram: return this.MolesPerKilogram;
             case MolalityUnits.MolesPerGram: return this.MolesPerGram;
+            case MolalityUnits.MillimolesPerKilogram: return this.MillimolesPerKilogram;
 
             default:
                 break;
@@ -142,11 +164,13 @@ export class Molality extends BaseUnit {
             switch (toUnit) {
                 case MolalityUnits.MolesPerKilogram: return this.value;
                 case MolalityUnits.MolesPerGram: return super.internalMultiply(this.value, 1e-3);
+                case MolalityUnits.MillimolesPerKilogram: return super.internalDivide(this.value, 0.001);
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case MolalityUnits.MolesPerKilogram: return this.value;
             case MolalityUnits.MolesPerGram: return this.value * 1e-3;
+            case MolalityUnits.MillimolesPerKilogram: return (this.value) / 0.001;
             default: return Number.NaN;
         }
     }
@@ -156,11 +180,13 @@ export class Molality extends BaseUnit {
             switch (fromUnit) {
                 case MolalityUnits.MolesPerKilogram: return value;
                 case MolalityUnits.MolesPerGram: return super.internalDivide(value, 1e-3);
+                case MolalityUnits.MillimolesPerKilogram: return super.internalMultiply(value, 0.001);
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case MolalityUnits.MolesPerKilogram: return value;
             case MolalityUnits.MolesPerGram: return value / 1e-3;
+            case MolalityUnits.MillimolesPerKilogram: return (value) * 0.001;
             default: return Number.NaN;
         }
     }
@@ -181,6 +207,8 @@ export class Molality extends BaseUnit {
                 return super.truncateFractionDigits(this.MolesPerKilogram, fractionalDigits) + ` mol/kg`;
             case MolalityUnits.MolesPerGram:
                 return super.truncateFractionDigits(this.MolesPerGram, fractionalDigits) + ` mol/g`;
+            case MolalityUnits.MillimolesPerKilogram:
+                return super.truncateFractionDigits(this.MillimolesPerKilogram, fractionalDigits) + ` mmol/kg`;
         default:
             break;
         }
@@ -202,6 +230,8 @@ export class Molality extends BaseUnit {
                 return `mol/kg`;
             case MolalityUnits.MolesPerGram:
                 return `mol/g`;
+            case MolalityUnits.MillimolesPerKilogram:
+                return `mmol/kg`;
         default:
             break;
         }
