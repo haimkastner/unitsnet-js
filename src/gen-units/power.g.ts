@@ -27,6 +27,8 @@ export enum PowerUnits {
     /** */
     JoulesPerHour = "JoulePerHour",
     /** */
+    TonsOfRefrigeration = "TonOfRefrigeration",
+    /** */
     Femtowatts = "Femtowatt",
     /** */
     Picowatts = "Picowatt",
@@ -75,6 +77,7 @@ export class Power extends BaseUnit {
     private hydraulichorsepowerLazy: number | null = null;
     private britishthermalunitsperhourLazy: number | null = null;
     private joulesperhourLazy: number | null = null;
+    private tonsofrefrigerationLazy: number | null = null;
     private femtowattsLazy: number | null = null;
     private picowattsLazy: number | null = null;
     private nanowattsLazy: number | null = null;
@@ -184,6 +187,14 @@ export class Power extends BaseUnit {
             return this.joulesperhourLazy;
         }
         return this.joulesperhourLazy = this.convertFromBase(PowerUnits.JoulesPerHour);
+    }
+
+    /** */
+    public get TonsOfRefrigeration(): number {
+        if(this.tonsofrefrigerationLazy !== null){
+            return this.tonsofrefrigerationLazy;
+        }
+        return this.tonsofrefrigerationLazy = this.convertFromBase(PowerUnits.TonsOfRefrigeration);
     }
 
     /** */
@@ -408,6 +419,16 @@ export class Power extends BaseUnit {
      */
     public static FromJoulesPerHour(value: number): Power {
         return new Power(value, PowerUnits.JoulesPerHour);
+    }
+
+    /**
+     * Create a new Power instance from a TonsOfRefrigeration
+     *
+     * @param value The unit as TonsOfRefrigeration to create a new Power from.
+     * @returns The new Power instance.
+     */
+    public static FromTonsOfRefrigeration(value: number): Power {
+        return new Power(value, PowerUnits.TonsOfRefrigeration);
     }
 
     /**
@@ -640,6 +661,7 @@ export class Power extends BaseUnit {
             case PowerUnits.HydraulicHorsepower: return this.HydraulicHorsepower;
             case PowerUnits.BritishThermalUnitsPerHour: return this.BritishThermalUnitsPerHour;
             case PowerUnits.JoulesPerHour: return this.JoulesPerHour;
+            case PowerUnits.TonsOfRefrigeration: return this.TonsOfRefrigeration;
             case PowerUnits.Femtowatts: return this.Femtowatts;
             case PowerUnits.Picowatts: return this.Picowatts;
             case PowerUnits.Nanowatts: return this.Nanowatts;
@@ -676,6 +698,7 @@ export class Power extends BaseUnit {
                 case PowerUnits.HydraulicHorsepower: return super.internalDivide(this.value, 745.69988145);
                 case PowerUnits.BritishThermalUnitsPerHour: return super.internalDivide(this.value, 0.29307107017);
                 case PowerUnits.JoulesPerHour: return super.internalMultiply(this.value, 3600);
+                case PowerUnits.TonsOfRefrigeration: return super.internalDivide(this.value, 3516.853);
                 case PowerUnits.Femtowatts: return super.internalDivide(this.value, 1e-15);
                 case PowerUnits.Picowatts: return super.internalDivide(this.value, 1e-12);
                 case PowerUnits.Nanowatts: return super.internalDivide(this.value, 1e-9);
@@ -723,6 +746,7 @@ export class Power extends BaseUnit {
             case PowerUnits.HydraulicHorsepower: return this.value / 745.69988145;
             case PowerUnits.BritishThermalUnitsPerHour: return this.value / 0.29307107017;
             case PowerUnits.JoulesPerHour: return this.value * 3600;
+            case PowerUnits.TonsOfRefrigeration: return this.value / 3516.853;
             case PowerUnits.Femtowatts: return (this.value) / 1e-15;
             case PowerUnits.Picowatts: return (this.value) / 1e-12;
             case PowerUnits.Nanowatts: return (this.value) / 1e-9;
@@ -756,6 +780,7 @@ export class Power extends BaseUnit {
                 case PowerUnits.HydraulicHorsepower: return super.internalMultiply(value, 745.69988145);
                 case PowerUnits.BritishThermalUnitsPerHour: return super.internalMultiply(value, 0.29307107017);
                 case PowerUnits.JoulesPerHour: return super.internalDivide(value, 3600);
+                case PowerUnits.TonsOfRefrigeration: return super.internalMultiply(value, 3516.853);
                 case PowerUnits.Femtowatts: return super.internalMultiply(value, 1e-15);
                 case PowerUnits.Picowatts: return super.internalMultiply(value, 1e-12);
                 case PowerUnits.Nanowatts: return super.internalMultiply(value, 1e-9);
@@ -803,6 +828,7 @@ export class Power extends BaseUnit {
             case PowerUnits.HydraulicHorsepower: return value * 745.69988145;
             case PowerUnits.BritishThermalUnitsPerHour: return value * 0.29307107017;
             case PowerUnits.JoulesPerHour: return value / 3600;
+            case PowerUnits.TonsOfRefrigeration: return value * 3516.853;
             case PowerUnits.Femtowatts: return (value) * 1e-15;
             case PowerUnits.Picowatts: return (value) * 1e-12;
             case PowerUnits.Nanowatts: return (value) * 1e-9;
@@ -853,6 +879,8 @@ export class Power extends BaseUnit {
                 return super.truncateFractionDigits(this.BritishThermalUnitsPerHour, fractionalDigits) + ` Btu/h`;
             case PowerUnits.JoulesPerHour:
                 return super.truncateFractionDigits(this.JoulesPerHour, fractionalDigits) + ` J/h`;
+            case PowerUnits.TonsOfRefrigeration:
+                return super.truncateFractionDigits(this.TonsOfRefrigeration, fractionalDigits) + ` TR`;
             case PowerUnits.Femtowatts:
                 return super.truncateFractionDigits(this.Femtowatts, fractionalDigits) + ` fW`;
             case PowerUnits.Picowatts:
@@ -922,6 +950,8 @@ export class Power extends BaseUnit {
                 return `Btu/h`;
             case PowerUnits.JoulesPerHour:
                 return `J/h`;
+            case PowerUnits.TonsOfRefrigeration:
+                return `TR`;
             case PowerUnits.Femtowatts:
                 return `fW`;
             case PowerUnits.Picowatts:
