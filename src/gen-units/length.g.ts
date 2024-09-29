@@ -1049,7 +1049,7 @@ export class Length extends BaseUnit {
                 case LengthUnits.AstronomicalUnits: return super.internalDivide(this.value, 1.4959787070e11);
                 case LengthUnits.Parsecs: return super.internalDivide(this.value, 3.08567758128e16);
                 case LengthUnits.LightYears: return super.internalDivide(this.value, 9.46073047258e15);
-                case LengthUnits.SolarRadiuses: return super.internalDivide(this.value, 6.95510000E+08);
+                case LengthUnits.SolarRadiuses: return super.internalDivide(this.value, 6.95700e8);
                 case LengthUnits.Chains: return super.internalDivide(this.value, 20.1168);
                 case LengthUnits.Angstroms: return super.internalDivide(this.value, 1e-10);
                 case LengthUnits.DataMiles: return super.internalDivide(this.value, 1828.8);
@@ -1112,7 +1112,7 @@ export class Length extends BaseUnit {
             case LengthUnits.AstronomicalUnits: return this.value / 1.4959787070e11;
             case LengthUnits.Parsecs: return this.value / 3.08567758128e16;
             case LengthUnits.LightYears: return this.value / 9.46073047258e15;
-            case LengthUnits.SolarRadiuses: return this.value / 6.95510000E+08;
+            case LengthUnits.SolarRadiuses: return this.value / 6.95700e8;
             case LengthUnits.Chains: return this.value / 20.1168;
             case LengthUnits.Angstroms: return this.value / 1e-10;
             case LengthUnits.DataMiles: return this.value / 1828.8;
@@ -1170,7 +1170,7 @@ export class Length extends BaseUnit {
                 case LengthUnits.AstronomicalUnits: return super.internalMultiply(value, 1.4959787070e11);
                 case LengthUnits.Parsecs: return super.internalMultiply(value, 3.08567758128e16);
                 case LengthUnits.LightYears: return super.internalMultiply(value, 9.46073047258e15);
-                case LengthUnits.SolarRadiuses: return super.internalMultiply(value, 6.95510000E+08);
+                case LengthUnits.SolarRadiuses: return super.internalMultiply(value, 6.95700e8);
                 case LengthUnits.Chains: return super.internalMultiply(value, 20.1168);
                 case LengthUnits.Angstroms: return super.internalMultiply(value, 1e-10);
                 case LengthUnits.DataMiles: return super.internalMultiply(value, 1828.8);
@@ -1233,7 +1233,7 @@ export class Length extends BaseUnit {
             case LengthUnits.AstronomicalUnits: return value * 1.4959787070e11;
             case LengthUnits.Parsecs: return value * 3.08567758128e16;
             case LengthUnits.LightYears: return value * 9.46073047258e15;
-            case LengthUnits.SolarRadiuses: return value * 6.95510000E+08;
+            case LengthUnits.SolarRadiuses: return value * 6.95700e8;
             case LengthUnits.Chains: return value * 20.1168;
             case LengthUnits.Angstroms: return value * 1e-10;
             case LengthUnits.DataMiles: return value * 1828.8;
