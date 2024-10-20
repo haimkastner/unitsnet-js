@@ -15,6 +15,8 @@ export enum TemperatureChangeRateUnits {
     /** */
     DegreesCelsiusPerMinute = "DegreeCelsiusPerMinute",
     /** */
+    DegreesKelvinPerMinute = "DegreeKelvinPerMinute",
+    /** */
     NanodegreesCelsiusPerSecond = "NanodegreeCelsiusPerSecond",
     /** */
     MicrodegreesCelsiusPerSecond = "MicrodegreeCelsiusPerSecond",
@@ -37,6 +39,7 @@ export class TemperatureChangeRate extends BaseUnit {
     protected value: number;
     private degreescelsiuspersecondLazy: number | null = null;
     private degreescelsiusperminuteLazy: number | null = null;
+    private degreeskelvinperminuteLazy: number | null = null;
     private nanodegreescelsiuspersecondLazy: number | null = null;
     private microdegreescelsiuspersecondLazy: number | null = null;
     private millidegreescelsiuspersecondLazy: number | null = null;
@@ -88,6 +91,14 @@ export class TemperatureChangeRate extends BaseUnit {
             return this.degreescelsiusperminuteLazy;
         }
         return this.degreescelsiusperminuteLazy = this.convertFromBase(TemperatureChangeRateUnits.DegreesCelsiusPerMinute);
+    }
+
+    /** */
+    public get DegreesKelvinPerMinute(): number {
+        if(this.degreeskelvinperminuteLazy !== null){
+            return this.degreeskelvinperminuteLazy;
+        }
+        return this.degreeskelvinperminuteLazy = this.convertFromBase(TemperatureChangeRateUnits.DegreesKelvinPerMinute);
     }
 
     /** */
@@ -172,6 +183,16 @@ export class TemperatureChangeRate extends BaseUnit {
      */
     public static FromDegreesCelsiusPerMinute(value: number): TemperatureChangeRate {
         return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DegreesCelsiusPerMinute);
+    }
+
+    /**
+     * Create a new TemperatureChangeRate instance from a DegreesKelvinPerMinute
+     *
+     * @param value The unit as DegreesKelvinPerMinute to create a new TemperatureChangeRate from.
+     * @returns The new TemperatureChangeRate instance.
+     */
+    public static FromDegreesKelvinPerMinute(value: number): TemperatureChangeRate {
+        return new TemperatureChangeRate(value, TemperatureChangeRateUnits.DegreesKelvinPerMinute);
     }
 
     /**
@@ -298,6 +319,7 @@ export class TemperatureChangeRate extends BaseUnit {
         switch (toUnit) {
             case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return this.DegreesCelsiusPerSecond;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return this.DegreesCelsiusPerMinute;
+            case TemperatureChangeRateUnits.DegreesKelvinPerMinute: return this.DegreesKelvinPerMinute;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return this.NanodegreesCelsiusPerSecond;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return this.MicrodegreesCelsiusPerSecond;
             case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return this.MillidegreesCelsiusPerSecond;
@@ -318,6 +340,10 @@ export class TemperatureChangeRate extends BaseUnit {
             switch (toUnit) {
                 case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return this.value;
                 case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return super.internalMultiply(this.value, 60);
+                case TemperatureChangeRateUnits.DegreesKelvinPerMinute: {
+                    const v3 = super.internalAdd(this.value, 273.15);
+                    return super.internalMultiply(v3, 60);
+                }
                 case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return super.internalDivide(this.value, 1e-9);
                 case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return super.internalDivide(this.value, 0.000001);
                 case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return super.internalDivide(this.value, 0.001);
@@ -331,6 +357,7 @@ export class TemperatureChangeRate extends BaseUnit {
         switch (toUnit) {
             case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return this.value;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return this.value * 60;
+            case TemperatureChangeRateUnits.DegreesKelvinPerMinute: return (this.value + 273.15) * 60;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return (this.value) / 1e-9;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return (this.value) / 0.000001;
             case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return (this.value) / 0.001;
@@ -348,6 +375,10 @@ export class TemperatureChangeRate extends BaseUnit {
             switch (fromUnit) {
                 case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return value;
                 case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return super.internalDivide(value, 60);
+                case TemperatureChangeRateUnits.DegreesKelvinPerMinute: {
+                    const v3 = super.internalDivide(value, 60);
+                    return super.internalSubtract(v3, 273.15);
+                }
                 case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return super.internalMultiply(value, 1e-9);
                 case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return super.internalMultiply(value, 0.000001);
                 case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return super.internalMultiply(value, 0.001);
@@ -361,6 +392,7 @@ export class TemperatureChangeRate extends BaseUnit {
         switch (fromUnit) {
             case TemperatureChangeRateUnits.DegreesCelsiusPerSecond: return value;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute: return value / 60;
+            case TemperatureChangeRateUnits.DegreesKelvinPerMinute: return (value / 60) - 273.15;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond: return (value) * 1e-9;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond: return (value) * 0.000001;
             case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond: return (value) * 0.001;
@@ -389,6 +421,8 @@ export class TemperatureChangeRate extends BaseUnit {
                 return super.truncateFractionDigits(this.DegreesCelsiusPerSecond, fractionalDigits) + ` °C/s`;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
                 return super.truncateFractionDigits(this.DegreesCelsiusPerMinute, fractionalDigits) + ` °C/min`;
+            case TemperatureChangeRateUnits.DegreesKelvinPerMinute:
+                return super.truncateFractionDigits(this.DegreesKelvinPerMinute, fractionalDigits) + ` K/min`;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
                 return super.truncateFractionDigits(this.NanodegreesCelsiusPerSecond, fractionalDigits) + ` n°C/s`;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
@@ -426,6 +460,8 @@ export class TemperatureChangeRate extends BaseUnit {
                 return `°C/s`;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
                 return `°C/min`;
+            case TemperatureChangeRateUnits.DegreesKelvinPerMinute:
+                return `K/min`;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
                 return `n°C/s`;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
