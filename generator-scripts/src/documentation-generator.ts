@@ -8,8 +8,12 @@ import { UnitTypeDefinition } from './models/units-definition';
  */
 export function generateDocumentation(documentationDestinationDirectory: string, rawUnitsDefinitions: UnitTypeDefinition[]) {
 
-    let documentationMarkdownTemplate =
-        fse.readFileSync(`./src/assets/README.t.md`).toString('utf-8');
+    const documentationMarkdownTemplate =
+        `
+### Supported units
+
+The package provides support for the following units:
+`;
 
     let unitsMarkdownList = '';
     // Add export all for each unit file.
@@ -17,8 +21,5 @@ export function generateDocumentation(documentationDestinationDirectory: string,
         unitsMarkdownList += `- **${unitDefinition.Name}**\n    -   *${(unitDefinition.XmlDoc || unitDefinition.XmlDocSummary || '').trim()}*\n`
     }
 
-    documentationMarkdownTemplate =
-        documentationMarkdownTemplate.replace('~SUPPORTED_UNITS~', unitsMarkdownList);
-
-    fse.writeFileSync(`${documentationDestinationDirectory}/README.md`, documentationMarkdownTemplate);
+    fse.writeFileSync(`${documentationDestinationDirectory}/Units.md`, documentationMarkdownTemplate + unitsMarkdownList);
 }
