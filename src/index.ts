@@ -83,6 +83,7 @@ export * from "./gen-units/powerratio.g";
 export * from "./gen-units/pressure.g";
 export * from "./gen-units/pressurechangerate.g";
 export * from "./gen-units/radiationequivalentdose.g";
+export * from "./gen-units/radiationequivalentdoserate.g";
 export * from "./gen-units/radiationexposure.g";
 export * from "./gen-units/radioactivity.g";
 export * from "./gen-units/ratio.g";
