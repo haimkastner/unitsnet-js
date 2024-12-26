@@ -14,6 +14,7 @@ export * from "./gen-units/capacitance.g";
 export * from "./gen-units/coefficientofthermalexpansion.g";
 export * from "./gen-units/compressibility.g";
 export * from "./gen-units/density.g";
+export * from "./gen-units/doseareaproduct.g";
 export * from "./gen-units/duration.g";
 export * from "./gen-units/dynamicviscosity.g";
 export * from "./gen-units/electricadmittance.g";

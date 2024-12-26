@@ -34,6 +34,8 @@ The package provides support for the following units:
     -   *Compressibility is the measure of the relative volume change of a fluid or solid in response to pressure changes.*
 - **Density**
     -   *The density, or more precisely, the volumetric mass density, of a substance is its mass per unit volume.*
+- **DoseAreaProduct**
+    -   *It is defined as the absorbed dose multiplied by the area irradiated.*
 - **Duration**
     -   *Time is a dimension in which events can be ordered from the past through the present into the future, and also the measure of durations of events and the intervals between them.*
 - **DynamicViscosity**
