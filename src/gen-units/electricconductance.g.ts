@@ -13,23 +13,56 @@ export enum ElectricConductanceUnits {
     /** */
     Siemens = "Siemens",
     /** */
+    Mhos = "Mho",
+    /** */
     Nanosiemens = "Nanosiemens",
     /** */
     Microsiemens = "Microsiemens",
     /** */
     Millisiemens = "Millisiemens",
     /** */
-    Kilosiemens = "Kilosiemens"
+    Kilosiemens = "Kilosiemens",
+    /** */
+    Megasiemens = "Megasiemens",
+    /** */
+    Gigasiemens = "Gigasiemens",
+    /** */
+    Terasiemens = "Terasiemens",
+    /** */
+    Nanomhos = "Nanomho",
+    /** */
+    Micromhos = "Micromho",
+    /** */
+    Millimhos = "Millimho",
+    /** */
+    Kilomhos = "Kilomho",
+    /** */
+    Megamhos = "Megamho",
+    /** */
+    Gigamhos = "Gigamho",
+    /** */
+    Teramhos = "Teramho"
 }
 
-/** The electrical conductance of an electrical conductor is a measure of the easeness to pass an electric current through that conductor. */
+/** The electrical conductance of an object is a measure of the ease with which an electric current passes. Along with susceptance, it is one of two elements of admittance. Its reciprocal quantity is electrical resistance. */
 export class ElectricConductance extends BaseUnit {
     protected value: number;
     private siemensLazy: number | null = null;
+    private mhosLazy: number | null = null;
     private nanosiemensLazy: number | null = null;
     private microsiemensLazy: number | null = null;
     private millisiemensLazy: number | null = null;
     private kilosiemensLazy: number | null = null;
+    private megasiemensLazy: number | null = null;
+    private gigasiemensLazy: number | null = null;
+    private terasiemensLazy: number | null = null;
+    private nanomhosLazy: number | null = null;
+    private micromhosLazy: number | null = null;
+    private millimhosLazy: number | null = null;
+    private kilomhosLazy: number | null = null;
+    private megamhosLazy: number | null = null;
+    private gigamhosLazy: number | null = null;
+    private teramhosLazy: number | null = null;
 
     /**
      * Create a new ElectricConductance.
@@ -68,6 +101,14 @@ export class ElectricConductance extends BaseUnit {
     }
 
     /** */
+    public get Mhos(): number {
+        if(this.mhosLazy !== null){
+            return this.mhosLazy;
+        }
+        return this.mhosLazy = this.convertFromBase(ElectricConductanceUnits.Mhos);
+    }
+
+    /** */
     public get Nanosiemens(): number {
         if(this.nanosiemensLazy !== null){
             return this.nanosiemensLazy;
@@ -99,6 +140,86 @@ export class ElectricConductance extends BaseUnit {
         return this.kilosiemensLazy = this.convertFromBase(ElectricConductanceUnits.Kilosiemens);
     }
 
+    /** */
+    public get Megasiemens(): number {
+        if(this.megasiemensLazy !== null){
+            return this.megasiemensLazy;
+        }
+        return this.megasiemensLazy = this.convertFromBase(ElectricConductanceUnits.Megasiemens);
+    }
+
+    /** */
+    public get Gigasiemens(): number {
+        if(this.gigasiemensLazy !== null){
+            return this.gigasiemensLazy;
+        }
+        return this.gigasiemensLazy = this.convertFromBase(ElectricConductanceUnits.Gigasiemens);
+    }
+
+    /** */
+    public get Terasiemens(): number {
+        if(this.terasiemensLazy !== null){
+            return this.terasiemensLazy;
+        }
+        return this.terasiemensLazy = this.convertFromBase(ElectricConductanceUnits.Terasiemens);
+    }
+
+    /** */
+    public get Nanomhos(): number {
+        if(this.nanomhosLazy !== null){
+            return this.nanomhosLazy;
+        }
+        return this.nanomhosLazy = this.convertFromBase(ElectricConductanceUnits.Nanomhos);
+    }
+
+    /** */
+    public get Micromhos(): number {
+        if(this.micromhosLazy !== null){
+            return this.micromhosLazy;
+        }
+        return this.micromhosLazy = this.convertFromBase(ElectricConductanceUnits.Micromhos);
+    }
+
+    /** */
+    public get Millimhos(): number {
+        if(this.millimhosLazy !== null){
+            return this.millimhosLazy;
+        }
+        return this.millimhosLazy = this.convertFromBase(ElectricConductanceUnits.Millimhos);
+    }
+
+    /** */
+    public get Kilomhos(): number {
+        if(this.kilomhosLazy !== null){
+            return this.kilomhosLazy;
+        }
+        return this.kilomhosLazy = this.convertFromBase(ElectricConductanceUnits.Kilomhos);
+    }
+
+    /** */
+    public get Megamhos(): number {
+        if(this.megamhosLazy !== null){
+            return this.megamhosLazy;
+        }
+        return this.megamhosLazy = this.convertFromBase(ElectricConductanceUnits.Megamhos);
+    }
+
+    /** */
+    public get Gigamhos(): number {
+        if(this.gigamhosLazy !== null){
+            return this.gigamhosLazy;
+        }
+        return this.gigamhosLazy = this.convertFromBase(ElectricConductanceUnits.Gigamhos);
+    }
+
+    /** */
+    public get Teramhos(): number {
+        if(this.teramhosLazy !== null){
+            return this.teramhosLazy;
+        }
+        return this.teramhosLazy = this.convertFromBase(ElectricConductanceUnits.Teramhos);
+    }
+
     /**
      * Create a new ElectricConductance instance from a Siemens
      *
@@ -107,6 +228,16 @@ export class ElectricConductance extends BaseUnit {
      */
     public static FromSiemens(value: number): ElectricConductance {
         return new ElectricConductance(value, ElectricConductanceUnits.Siemens);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Mhos
+     *
+     * @param value The unit as Mhos to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromMhos(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Mhos);
     }
 
     /**
@@ -147,6 +278,106 @@ export class ElectricConductance extends BaseUnit {
      */
     public static FromKilosiemens(value: number): ElectricConductance {
         return new ElectricConductance(value, ElectricConductanceUnits.Kilosiemens);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Megasiemens
+     *
+     * @param value The unit as Megasiemens to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromMegasiemens(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Megasiemens);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Gigasiemens
+     *
+     * @param value The unit as Gigasiemens to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromGigasiemens(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Gigasiemens);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Terasiemens
+     *
+     * @param value The unit as Terasiemens to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromTerasiemens(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Terasiemens);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Nanomhos
+     *
+     * @param value The unit as Nanomhos to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromNanomhos(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Nanomhos);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Micromhos
+     *
+     * @param value The unit as Micromhos to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromMicromhos(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Micromhos);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Millimhos
+     *
+     * @param value The unit as Millimhos to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromMillimhos(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Millimhos);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Kilomhos
+     *
+     * @param value The unit as Kilomhos to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromKilomhos(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Kilomhos);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Megamhos
+     *
+     * @param value The unit as Megamhos to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromMegamhos(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Megamhos);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Gigamhos
+     *
+     * @param value The unit as Gigamhos to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromGigamhos(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Gigamhos);
+    }
+
+    /**
+     * Create a new ElectricConductance instance from a Teramhos
+     *
+     * @param value The unit as Teramhos to create a new ElectricConductance from.
+     * @returns The new ElectricConductance instance.
+     */
+    public static FromTeramhos(value: number): ElectricConductance {
+        return new ElectricConductance(value, ElectricConductanceUnits.Teramhos);
     }
 
     /**
@@ -192,10 +423,21 @@ export class ElectricConductance extends BaseUnit {
     public convert(toUnit: ElectricConductanceUnits): number {
         switch (toUnit) {
             case ElectricConductanceUnits.Siemens: return this.Siemens;
+            case ElectricConductanceUnits.Mhos: return this.Mhos;
             case ElectricConductanceUnits.Nanosiemens: return this.Nanosiemens;
             case ElectricConductanceUnits.Microsiemens: return this.Microsiemens;
             case ElectricConductanceUnits.Millisiemens: return this.Millisiemens;
             case ElectricConductanceUnits.Kilosiemens: return this.Kilosiemens;
+            case ElectricConductanceUnits.Megasiemens: return this.Megasiemens;
+            case ElectricConductanceUnits.Gigasiemens: return this.Gigasiemens;
+            case ElectricConductanceUnits.Terasiemens: return this.Terasiemens;
+            case ElectricConductanceUnits.Nanomhos: return this.Nanomhos;
+            case ElectricConductanceUnits.Micromhos: return this.Micromhos;
+            case ElectricConductanceUnits.Millimhos: return this.Millimhos;
+            case ElectricConductanceUnits.Kilomhos: return this.Kilomhos;
+            case ElectricConductanceUnits.Megamhos: return this.Megamhos;
+            case ElectricConductanceUnits.Gigamhos: return this.Gigamhos;
+            case ElectricConductanceUnits.Teramhos: return this.Teramhos;
 
             default:
                 break;
@@ -207,18 +449,40 @@ export class ElectricConductance extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case ElectricConductanceUnits.Siemens: return this.value;
+                case ElectricConductanceUnits.Mhos: return this.value;
                 case ElectricConductanceUnits.Nanosiemens: return super.internalDivide(this.value, 1e-9);
                 case ElectricConductanceUnits.Microsiemens: return super.internalDivide(this.value, 0.000001);
                 case ElectricConductanceUnits.Millisiemens: return super.internalDivide(this.value, 0.001);
                 case ElectricConductanceUnits.Kilosiemens: return super.internalDivide(this.value, 1000);
+                case ElectricConductanceUnits.Megasiemens: return super.internalDivide(this.value, 1000000);
+                case ElectricConductanceUnits.Gigasiemens: return super.internalDivide(this.value, 1000000000);
+                case ElectricConductanceUnits.Terasiemens: return super.internalDivide(this.value, 1000000000000);
+                case ElectricConductanceUnits.Nanomhos: return super.internalDivide(this.value, 1e-9);
+                case ElectricConductanceUnits.Micromhos: return super.internalDivide(this.value, 0.000001);
+                case ElectricConductanceUnits.Millimhos: return super.internalDivide(this.value, 0.001);
+                case ElectricConductanceUnits.Kilomhos: return super.internalDivide(this.value, 1000);
+                case ElectricConductanceUnits.Megamhos: return super.internalDivide(this.value, 1000000);
+                case ElectricConductanceUnits.Gigamhos: return super.internalDivide(this.value, 1000000000);
+                case ElectricConductanceUnits.Teramhos: return super.internalDivide(this.value, 1000000000000);
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case ElectricConductanceUnits.Siemens: return this.value;
+            case ElectricConductanceUnits.Mhos: return this.value;
             case ElectricConductanceUnits.Nanosiemens: return (this.value) / 1e-9;
             case ElectricConductanceUnits.Microsiemens: return (this.value) / 0.000001;
             case ElectricConductanceUnits.Millisiemens: return (this.value) / 0.001;
             case ElectricConductanceUnits.Kilosiemens: return (this.value) / 1000;
+            case ElectricConductanceUnits.Megasiemens: return (this.value) / 1000000;
+            case ElectricConductanceUnits.Gigasiemens: return (this.value) / 1000000000;
+            case ElectricConductanceUnits.Terasiemens: return (this.value) / 1000000000000;
+            case ElectricConductanceUnits.Nanomhos: return (this.value) / 1e-9;
+            case ElectricConductanceUnits.Micromhos: return (this.value) / 0.000001;
+            case ElectricConductanceUnits.Millimhos: return (this.value) / 0.001;
+            case ElectricConductanceUnits.Kilomhos: return (this.value) / 1000;
+            case ElectricConductanceUnits.Megamhos: return (this.value) / 1000000;
+            case ElectricConductanceUnits.Gigamhos: return (this.value) / 1000000000;
+            case ElectricConductanceUnits.Teramhos: return (this.value) / 1000000000000;
             default: return Number.NaN;
         }
     }
@@ -227,18 +491,40 @@ export class ElectricConductance extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case ElectricConductanceUnits.Siemens: return value;
+                case ElectricConductanceUnits.Mhos: return value;
                 case ElectricConductanceUnits.Nanosiemens: return super.internalMultiply(value, 1e-9);
                 case ElectricConductanceUnits.Microsiemens: return super.internalMultiply(value, 0.000001);
                 case ElectricConductanceUnits.Millisiemens: return super.internalMultiply(value, 0.001);
                 case ElectricConductanceUnits.Kilosiemens: return super.internalMultiply(value, 1000);
+                case ElectricConductanceUnits.Megasiemens: return super.internalMultiply(value, 1000000);
+                case ElectricConductanceUnits.Gigasiemens: return super.internalMultiply(value, 1000000000);
+                case ElectricConductanceUnits.Terasiemens: return super.internalMultiply(value, 1000000000000);
+                case ElectricConductanceUnits.Nanomhos: return super.internalMultiply(value, 1e-9);
+                case ElectricConductanceUnits.Micromhos: return super.internalMultiply(value, 0.000001);
+                case ElectricConductanceUnits.Millimhos: return super.internalMultiply(value, 0.001);
+                case ElectricConductanceUnits.Kilomhos: return super.internalMultiply(value, 1000);
+                case ElectricConductanceUnits.Megamhos: return super.internalMultiply(value, 1000000);
+                case ElectricConductanceUnits.Gigamhos: return super.internalMultiply(value, 1000000000);
+                case ElectricConductanceUnits.Teramhos: return super.internalMultiply(value, 1000000000000);
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case ElectricConductanceUnits.Siemens: return value;
+            case ElectricConductanceUnits.Mhos: return value;
             case ElectricConductanceUnits.Nanosiemens: return (value) * 1e-9;
             case ElectricConductanceUnits.Microsiemens: return (value) * 0.000001;
             case ElectricConductanceUnits.Millisiemens: return (value) * 0.001;
             case ElectricConductanceUnits.Kilosiemens: return (value) * 1000;
+            case ElectricConductanceUnits.Megasiemens: return (value) * 1000000;
+            case ElectricConductanceUnits.Gigasiemens: return (value) * 1000000000;
+            case ElectricConductanceUnits.Terasiemens: return (value) * 1000000000000;
+            case ElectricConductanceUnits.Nanomhos: return (value) * 1e-9;
+            case ElectricConductanceUnits.Micromhos: return (value) * 0.000001;
+            case ElectricConductanceUnits.Millimhos: return (value) * 0.001;
+            case ElectricConductanceUnits.Kilomhos: return (value) * 1000;
+            case ElectricConductanceUnits.Megamhos: return (value) * 1000000;
+            case ElectricConductanceUnits.Gigamhos: return (value) * 1000000000;
+            case ElectricConductanceUnits.Teramhos: return (value) * 1000000000000;
             default: return Number.NaN;
         }
     }
@@ -257,6 +543,8 @@ export class ElectricConductance extends BaseUnit {
             
             case ElectricConductanceUnits.Siemens:
                 return super.truncateFractionDigits(this.Siemens, fractionalDigits) + ` S`;
+            case ElectricConductanceUnits.Mhos:
+                return super.truncateFractionDigits(this.Mhos, fractionalDigits) + ` ℧`;
             case ElectricConductanceUnits.Nanosiemens:
                 return super.truncateFractionDigits(this.Nanosiemens, fractionalDigits) + ` nS`;
             case ElectricConductanceUnits.Microsiemens:
@@ -265,6 +553,26 @@ export class ElectricConductance extends BaseUnit {
                 return super.truncateFractionDigits(this.Millisiemens, fractionalDigits) + ` mS`;
             case ElectricConductanceUnits.Kilosiemens:
                 return super.truncateFractionDigits(this.Kilosiemens, fractionalDigits) + ` kS`;
+            case ElectricConductanceUnits.Megasiemens:
+                return super.truncateFractionDigits(this.Megasiemens, fractionalDigits) + ` MS`;
+            case ElectricConductanceUnits.Gigasiemens:
+                return super.truncateFractionDigits(this.Gigasiemens, fractionalDigits) + ` GS`;
+            case ElectricConductanceUnits.Terasiemens:
+                return super.truncateFractionDigits(this.Terasiemens, fractionalDigits) + ` TS`;
+            case ElectricConductanceUnits.Nanomhos:
+                return super.truncateFractionDigits(this.Nanomhos, fractionalDigits) + ` n℧`;
+            case ElectricConductanceUnits.Micromhos:
+                return super.truncateFractionDigits(this.Micromhos, fractionalDigits) + ` μ℧`;
+            case ElectricConductanceUnits.Millimhos:
+                return super.truncateFractionDigits(this.Millimhos, fractionalDigits) + ` m℧`;
+            case ElectricConductanceUnits.Kilomhos:
+                return super.truncateFractionDigits(this.Kilomhos, fractionalDigits) + ` k℧`;
+            case ElectricConductanceUnits.Megamhos:
+                return super.truncateFractionDigits(this.Megamhos, fractionalDigits) + ` M℧`;
+            case ElectricConductanceUnits.Gigamhos:
+                return super.truncateFractionDigits(this.Gigamhos, fractionalDigits) + ` G℧`;
+            case ElectricConductanceUnits.Teramhos:
+                return super.truncateFractionDigits(this.Teramhos, fractionalDigits) + ` T℧`;
         default:
             break;
         }
@@ -284,6 +592,8 @@ export class ElectricConductance extends BaseUnit {
             
             case ElectricConductanceUnits.Siemens:
                 return `S`;
+            case ElectricConductanceUnits.Mhos:
+                return `℧`;
             case ElectricConductanceUnits.Nanosiemens:
                 return `nS`;
             case ElectricConductanceUnits.Microsiemens:
@@ -292,6 +602,26 @@ export class ElectricConductance extends BaseUnit {
                 return `mS`;
             case ElectricConductanceUnits.Kilosiemens:
                 return `kS`;
+            case ElectricConductanceUnits.Megasiemens:
+                return `MS`;
+            case ElectricConductanceUnits.Gigasiemens:
+                return `GS`;
+            case ElectricConductanceUnits.Terasiemens:
+                return `TS`;
+            case ElectricConductanceUnits.Nanomhos:
+                return `n℧`;
+            case ElectricConductanceUnits.Micromhos:
+                return `μ℧`;
+            case ElectricConductanceUnits.Millimhos:
+                return `m℧`;
+            case ElectricConductanceUnits.Kilomhos:
+                return `k℧`;
+            case ElectricConductanceUnits.Megamhos:
+                return `M℧`;
+            case ElectricConductanceUnits.Gigamhos:
+                return `G℧`;
+            case ElectricConductanceUnits.Teramhos:
+                return `T℧`;
         default:
             break;
         }

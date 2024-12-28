@@ -41,13 +41,19 @@ The package provides support for the following units:
 - **DynamicViscosity**
     -   *The dynamic (shear) viscosity of a fluid expresses its resistance to shearing flows, where adjacent layers move parallel to each other with different speeds*
 - **ElectricAdmittance**
-    -   *Electric admittance is a measure of how easily a circuit or device will allow a current to flow. It is defined as the inverse of impedance. The SI unit of admittance is the siemens (symbol S).*
+    -   *Electric admittance is a measure of how easily a circuit or device will allow a current to flow by the combined effect of conductance and susceptance in a circuit. It is defined as the inverse of impedance. The SI unit of admittance is the siemens (symbol S).*
+- **ElectricApparentEnergy**
+    -   *A unit for expressing the integral of apparent power over time, equal to the product of 1 volt-ampere and 1 hour, or to 3600 joules.*
+- **ElectricApparentPower**
+    -   *Power engineers measure apparent power as the magnitude of the vector sum of active and reactive power. It is the product of the root mean square voltage (in volts) and the root mean square current (in amperes).*
+- **ElectricCapacitance**
+    -   *Capacitance is the capacity of a material object or device to store electric charge.*
 - **ElectricCharge**
     -   *Electric charge is the physical property of matter that causes it to experience a force when placed in an electromagnetic field.*
 - **ElectricChargeDensity**
     -   *In electromagnetism, charge density is a measure of the amount of electric charge per volume.*
 - **ElectricConductance**
-    -   *The electrical conductance of an electrical conductor is a measure of the easeness to pass an electric current through that conductor.*
+    -   *The electrical conductance of an object is a measure of the ease with which an electric current passes. Along with susceptance, it is one of two elements of admittance. Its reciprocal quantity is electrical resistance.*
 - **ElectricConductivity**
     -   *Electrical conductivity or specific conductance is the reciprocal of electrical resistivity, and measures a material's ability to conduct an electric current.*
 - **ElectricCurrent**
@@ -58,6 +64,8 @@ The package provides support for the following units:
     -   *In electromagnetism, the current gradient describes how the current changes in time.*
 - **ElectricField**
     -   *An electric field is a force field that surrounds electric charges that attracts or repels other electric charges.*
+- **ElectricImpedance**
+    -   *Electric impedance is the opposition to alternating current presented by the combined effect of resistance and reactance in a circuit. It is defined as the inverse of admittance. The SI unit of impedance is the ohm (symbol Ω).*
 - **ElectricInductance**
     -   *Inductance is a property of an electrical conductor which opposes a change in current.*
 - **ElectricPotential**
@@ -68,12 +76,20 @@ The package provides support for the following units:
     -   *ElectricPotential change rate is the ratio of the electric potential change to the time during which the change occurred (value of electric potential changes per unit time).*
 - **ElectricPotentialDc**
     -   *The Electric Potential of a system known to use Direct Current.*
+- **ElectricReactance**
+    -   *In electrical circuits, reactance is the opposition presented to alternating current by inductance and capacitance. Along with resistance, it is one of two elements of impedance.*
+- **ElectricReactiveEnergy**
+    -   *The volt-ampere reactive hour (expressed as varh) is the reactive power of one Volt-ampere reactive produced in one hour.*
+- **ElectricReactivePower**
+    -   *In electric power transmission and distribution, volt-ampere reactive (var) is a unit of measurement of reactive power. Reactive power exists in an AC circuit when the current and voltage are not in phase.*
 - **ElectricResistance**
-    -   *The electrical resistance of an electrical conductor is the opposition to the passage of an electric current through that conductor.*
+    -   *The electrical resistance of an object is a measure of its opposition to the flow of electric current. Along with reactance, it is one of two elements of impedance. Its reciprocal quantity is electrical conductance.*
 - **ElectricResistivity**
     -   *Electrical resistivity (also known as resistivity, specific electrical resistance, or volume resistivity) is a fundamental property that quantifies how strongly a given material opposes the flow of electric current.*
 - **ElectricSurfaceChargeDensity**
     -   *In electromagnetism, surface charge density is a measure of the amount of electric charge per surface area.*
+- **ElectricSusceptance**
+    -   *Electrical susceptance is the imaginary part of admittance, where the real part is conductance.*
 - **Energy**
     -   *The joule, symbol J, is a derived unit of energy, work, or amount of heat in the International System of Units. It is equal to the energy transferred (or work done) when applying a force of one newton through a distance of one metre (1 newton metre or N·m), or in passing an electric current of one ampere through a resistance of one ohm for one second. Many other units of energy are included. Please do not confuse this definition of the calorie with the one colloquially used by the food industry, the large calorie, which is equivalent to 1 kcal. Thermochemical definition of the calorie is used. For BTU, the IT definition is used.*
 - **EnergyDensity**

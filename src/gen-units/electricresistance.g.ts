@@ -13,6 +13,8 @@ export enum ElectricResistanceUnits {
     /** */
     Ohms = "Ohm",
     /** */
+    Nanoohms = "Nanoohm",
+    /** */
     Microohms = "Microohm",
     /** */
     Milliohms = "Milliohm",
@@ -26,10 +28,11 @@ export enum ElectricResistanceUnits {
     Teraohms = "Teraohm"
 }
 
-/** The electrical resistance of an electrical conductor is the opposition to the passage of an electric current through that conductor. */
+/** The electrical resistance of an object is a measure of its opposition to the flow of electric current. Along with reactance, it is one of two elements of impedance. Its reciprocal quantity is electrical conductance. */
 export class ElectricResistance extends BaseUnit {
     protected value: number;
     private ohmsLazy: number | null = null;
+    private nanoohmsLazy: number | null = null;
     private microohmsLazy: number | null = null;
     private milliohmsLazy: number | null = null;
     private kiloohmsLazy: number | null = null;
@@ -71,6 +74,14 @@ export class ElectricResistance extends BaseUnit {
             return this.ohmsLazy;
         }
         return this.ohmsLazy = this.convertFromBase(ElectricResistanceUnits.Ohms);
+    }
+
+    /** */
+    public get Nanoohms(): number {
+        if(this.nanoohmsLazy !== null){
+            return this.nanoohmsLazy;
+        }
+        return this.nanoohmsLazy = this.convertFromBase(ElectricResistanceUnits.Nanoohms);
     }
 
     /** */
@@ -129,6 +140,16 @@ export class ElectricResistance extends BaseUnit {
      */
     public static FromOhms(value: number): ElectricResistance {
         return new ElectricResistance(value, ElectricResistanceUnits.Ohms);
+    }
+
+    /**
+     * Create a new ElectricResistance instance from a Nanoohms
+     *
+     * @param value The unit as Nanoohms to create a new ElectricResistance from.
+     * @returns The new ElectricResistance instance.
+     */
+    public static FromNanoohms(value: number): ElectricResistance {
+        return new ElectricResistance(value, ElectricResistanceUnits.Nanoohms);
     }
 
     /**
@@ -234,6 +255,7 @@ export class ElectricResistance extends BaseUnit {
     public convert(toUnit: ElectricResistanceUnits): number {
         switch (toUnit) {
             case ElectricResistanceUnits.Ohms: return this.Ohms;
+            case ElectricResistanceUnits.Nanoohms: return this.Nanoohms;
             case ElectricResistanceUnits.Microohms: return this.Microohms;
             case ElectricResistanceUnits.Milliohms: return this.Milliohms;
             case ElectricResistanceUnits.Kiloohms: return this.Kiloohms;
@@ -251,6 +273,7 @@ export class ElectricResistance extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case ElectricResistanceUnits.Ohms: return this.value;
+                case ElectricResistanceUnits.Nanoohms: return super.internalDivide(this.value, 1e-9);
                 case ElectricResistanceUnits.Microohms: return super.internalDivide(this.value, 0.000001);
                 case ElectricResistanceUnits.Milliohms: return super.internalDivide(this.value, 0.001);
                 case ElectricResistanceUnits.Kiloohms: return super.internalDivide(this.value, 1000);
@@ -261,6 +284,7 @@ export class ElectricResistance extends BaseUnit {
             }
         switch (toUnit) {
             case ElectricResistanceUnits.Ohms: return this.value;
+            case ElectricResistanceUnits.Nanoohms: return (this.value) / 1e-9;
             case ElectricResistanceUnits.Microohms: return (this.value) / 0.000001;
             case ElectricResistanceUnits.Milliohms: return (this.value) / 0.001;
             case ElectricResistanceUnits.Kiloohms: return (this.value) / 1000;
@@ -275,6 +299,7 @@ export class ElectricResistance extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case ElectricResistanceUnits.Ohms: return value;
+                case ElectricResistanceUnits.Nanoohms: return super.internalMultiply(value, 1e-9);
                 case ElectricResistanceUnits.Microohms: return super.internalMultiply(value, 0.000001);
                 case ElectricResistanceUnits.Milliohms: return super.internalMultiply(value, 0.001);
                 case ElectricResistanceUnits.Kiloohms: return super.internalMultiply(value, 1000);
@@ -285,6 +310,7 @@ export class ElectricResistance extends BaseUnit {
             }
         switch (fromUnit) {
             case ElectricResistanceUnits.Ohms: return value;
+            case ElectricResistanceUnits.Nanoohms: return (value) * 1e-9;
             case ElectricResistanceUnits.Microohms: return (value) * 0.000001;
             case ElectricResistanceUnits.Milliohms: return (value) * 0.001;
             case ElectricResistanceUnits.Kiloohms: return (value) * 1000;
@@ -309,6 +335,8 @@ export class ElectricResistance extends BaseUnit {
             
             case ElectricResistanceUnits.Ohms:
                 return super.truncateFractionDigits(this.Ohms, fractionalDigits) + ` Ω`;
+            case ElectricResistanceUnits.Nanoohms:
+                return super.truncateFractionDigits(this.Nanoohms, fractionalDigits) + ` nΩ`;
             case ElectricResistanceUnits.Microohms:
                 return super.truncateFractionDigits(this.Microohms, fractionalDigits) + ` μΩ`;
             case ElectricResistanceUnits.Milliohms:
@@ -340,6 +368,8 @@ export class ElectricResistance extends BaseUnit {
             
             case ElectricResistanceUnits.Ohms:
                 return `Ω`;
+            case ElectricResistanceUnits.Nanoohms:
+                return `nΩ`;
             case ElectricResistanceUnits.Microohms:
                 return `μΩ`;
             case ElectricResistanceUnits.Milliohms:
