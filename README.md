@@ -1,6 +1,6 @@
 # unitsnet-js
 
-[![Build & Test Status](https://github.com/haimkastner/unitsnet-js/workflows/unitsnet-js/badge.svg?branch=master)](https://github.com/haimkastner/unitsnet-js/actions)
+[![unitsnet-js](https://github.com/haimkastner/unitsnet-js/actions/workflows/nodejs.yml/badge.svg?branch=master)](https://github.com/haimkastner/unitsnet-js/actions/workflows/nodejs.yml)
 [![Coverage Status](https://coveralls.io/repos/github/haimkastner/unitsnet-js/badge.svg?branch=master&style=plastic)](https://coveralls.io/github/haimkastner/unitsnet-js?branch=master)
 
  [![Latest Release](https://img.shields.io/github/v/release/haimkastner/unitsnet-js?style=plastic)](https://github.com/haimkastner/unitsnet-js/releases) 

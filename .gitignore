@@ -106,3 +106,4 @@ dist
 generator-scripts/src/math-interop/antlr/grammatical/*
 !generator-scripts/src/math-interop/antlr/grammatical/arithmetic.g4
 
+.idea/
