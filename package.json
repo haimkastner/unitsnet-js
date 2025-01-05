@@ -1,6 +1,6 @@
 {
   "name": "unitsnet-js",
-  "version": "3.0.32",
+  "version": "3.0.33",
   "definitionVersion": "5.65.0",
   "description": "A better way to hold unit variables and easily convert to the destination unit",
   "scripts": {
