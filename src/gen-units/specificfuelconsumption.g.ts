@@ -232,11 +232,11 @@ export class SpecificFuelConsumption extends BaseUnit {
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
                 return super.truncateFractionDigits(this.PoundsMassPerPoundForceHour, fractionalDigits) + ` lb/(lbf·h)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return super.truncateFractionDigits(this.KilogramsPerKilogramForceHour, fractionalDigits) + ` kg/(kgf�h)`;
+                return super.truncateFractionDigits(this.KilogramsPerKilogramForceHour, fractionalDigits) + ` kg/(kgf·h)`;
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return super.truncateFractionDigits(this.GramsPerKiloNewtonSecond, fractionalDigits) + ` g/(kN�s)`;
+                return super.truncateFractionDigits(this.GramsPerKiloNewtonSecond, fractionalDigits) + ` g/(kN·s)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
-                return super.truncateFractionDigits(this.KilogramsPerKiloNewtonSecond, fractionalDigits) + ` kg/(kN�s)`;
+                return super.truncateFractionDigits(this.KilogramsPerKiloNewtonSecond, fractionalDigits) + ` kg/(kN·s)`;
         default:
             break;
         }
@@ -257,11 +257,11 @@ export class SpecificFuelConsumption extends BaseUnit {
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
                 return `lb/(lbf·h)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return `kg/(kgf�h)`;
+                return `kg/(kgf·h)`;
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return `g/(kN�s)`;
+                return `g/(kN·s)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
-                return `kg/(kN�s)`;
+                return `kg/(kN·s)`;
         default:
             break;
         }

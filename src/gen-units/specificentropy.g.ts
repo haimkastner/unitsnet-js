@@ -366,23 +366,23 @@ export class SpecificEntropy extends BaseUnit {
         switch (unit) {
             
             case SpecificEntropyUnits.JoulesPerKilogramKelvin:
-                return super.truncateFractionDigits(this.JoulesPerKilogramKelvin, fractionalDigits) + ` J/kg.K`;
+                return super.truncateFractionDigits(this.JoulesPerKilogramKelvin, fractionalDigits) + ` J/kg·K`;
             case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
-                return super.truncateFractionDigits(this.JoulesPerKilogramDegreeCelsius, fractionalDigits) + ` J/kg.C`;
+                return super.truncateFractionDigits(this.JoulesPerKilogramDegreeCelsius, fractionalDigits) + ` J/kg·°C`;
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return super.truncateFractionDigits(this.CaloriesPerGramKelvin, fractionalDigits) + ` cal/g.K`;
+                return super.truncateFractionDigits(this.CaloriesPerGramKelvin, fractionalDigits) + ` cal/g·K`;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return super.truncateFractionDigits(this.BtusPerPoundFahrenheit, fractionalDigits) + ` BTU/lb·°F`;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
-                return super.truncateFractionDigits(this.KilojoulesPerKilogramKelvin, fractionalDigits) + ` kJ/kg.K`;
+                return super.truncateFractionDigits(this.KilojoulesPerKilogramKelvin, fractionalDigits) + ` kJ/kg·K`;
             case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
-                return super.truncateFractionDigits(this.MegajoulesPerKilogramKelvin, fractionalDigits) + ` MJ/kg.K`;
+                return super.truncateFractionDigits(this.MegajoulesPerKilogramKelvin, fractionalDigits) + ` MJ/kg·K`;
             case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
-                return super.truncateFractionDigits(this.KilojoulesPerKilogramDegreeCelsius, fractionalDigits) + ` kJ/kg.C`;
+                return super.truncateFractionDigits(this.KilojoulesPerKilogramDegreeCelsius, fractionalDigits) + ` kJ/kg·°C`;
             case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
-                return super.truncateFractionDigits(this.MegajoulesPerKilogramDegreeCelsius, fractionalDigits) + ` MJ/kg.C`;
+                return super.truncateFractionDigits(this.MegajoulesPerKilogramDegreeCelsius, fractionalDigits) + ` MJ/kg·°C`;
             case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return super.truncateFractionDigits(this.KilocaloriesPerGramKelvin, fractionalDigits) + ` kcal/g.K`;
+                return super.truncateFractionDigits(this.KilocaloriesPerGramKelvin, fractionalDigits) + ` kcal/g·K`;
         default:
             break;
         }
@@ -401,23 +401,23 @@ export class SpecificEntropy extends BaseUnit {
         switch (unitAbbreviation) {
             
             case SpecificEntropyUnits.JoulesPerKilogramKelvin:
-                return `J/kg.K`;
+                return `J/kg·K`;
             case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
-                return `J/kg.C`;
+                return `J/kg·°C`;
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return `cal/g.K`;
+                return `cal/g·K`;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
                 return `BTU/lb·°F`;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
-                return `kJ/kg.K`;
+                return `kJ/kg·K`;
             case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
-                return `MJ/kg.K`;
+                return `MJ/kg·K`;
             case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
-                return `kJ/kg.C`;
+                return `kJ/kg·°C`;
             case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
-                return `MJ/kg.C`;
+                return `MJ/kg·°C`;
             case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return `kcal/g.K`;
+                return `kcal/g·K`;
         default:
             break;
         }

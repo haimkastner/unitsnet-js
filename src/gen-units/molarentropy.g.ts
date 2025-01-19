@@ -204,11 +204,11 @@ export class MolarEntropy extends BaseUnit {
         switch (unit) {
             
             case MolarEntropyUnits.JoulesPerMoleKelvin:
-                return super.truncateFractionDigits(this.JoulesPerMoleKelvin, fractionalDigits) + ` J/(mol*K)`;
+                return super.truncateFractionDigits(this.JoulesPerMoleKelvin, fractionalDigits) + ` J/(mol·K)`;
             case MolarEntropyUnits.KilojoulesPerMoleKelvin:
-                return super.truncateFractionDigits(this.KilojoulesPerMoleKelvin, fractionalDigits) + ` kJ/(mol*K)`;
+                return super.truncateFractionDigits(this.KilojoulesPerMoleKelvin, fractionalDigits) + ` kJ/(mol·K)`;
             case MolarEntropyUnits.MegajoulesPerMoleKelvin:
-                return super.truncateFractionDigits(this.MegajoulesPerMoleKelvin, fractionalDigits) + ` MJ/(mol*K)`;
+                return super.truncateFractionDigits(this.MegajoulesPerMoleKelvin, fractionalDigits) + ` MJ/(mol·K)`;
         default:
             break;
         }
@@ -227,11 +227,11 @@ export class MolarEntropy extends BaseUnit {
         switch (unitAbbreviation) {
             
             case MolarEntropyUnits.JoulesPerMoleKelvin:
-                return `J/(mol*K)`;
+                return `J/(mol·K)`;
             case MolarEntropyUnits.KilojoulesPerMoleKelvin:
-                return `kJ/(mol*K)`;
+                return `kJ/(mol·K)`;
             case MolarEntropyUnits.MegajoulesPerMoleKelvin:
-                return `MJ/(mol*K)`;
+                return `MJ/(mol·K)`;
         default:
             break;
         }

@@ -318,7 +318,7 @@ export class Entropy extends BaseUnit {
             case EntropyUnits.CaloriesPerKelvin:
                 return super.truncateFractionDigits(this.CaloriesPerKelvin, fractionalDigits) + ` cal/K`;
             case EntropyUnits.JoulesPerDegreeCelsius:
-                return super.truncateFractionDigits(this.JoulesPerDegreeCelsius, fractionalDigits) + ` J/C`;
+                return super.truncateFractionDigits(this.JoulesPerDegreeCelsius, fractionalDigits) + ` J/°C`;
             case EntropyUnits.KilojoulesPerKelvin:
                 return super.truncateFractionDigits(this.KilojoulesPerKelvin, fractionalDigits) + ` kJ/K`;
             case EntropyUnits.MegajoulesPerKelvin:
@@ -326,7 +326,7 @@ export class Entropy extends BaseUnit {
             case EntropyUnits.KilocaloriesPerKelvin:
                 return super.truncateFractionDigits(this.KilocaloriesPerKelvin, fractionalDigits) + ` kcal/K`;
             case EntropyUnits.KilojoulesPerDegreeCelsius:
-                return super.truncateFractionDigits(this.KilojoulesPerDegreeCelsius, fractionalDigits) + ` kJ/C`;
+                return super.truncateFractionDigits(this.KilojoulesPerDegreeCelsius, fractionalDigits) + ` kJ/°C`;
         default:
             break;
         }
@@ -349,7 +349,7 @@ export class Entropy extends BaseUnit {
             case EntropyUnits.CaloriesPerKelvin:
                 return `cal/K`;
             case EntropyUnits.JoulesPerDegreeCelsius:
-                return `J/C`;
+                return `J/°C`;
             case EntropyUnits.KilojoulesPerKelvin:
                 return `kJ/K`;
             case EntropyUnits.MegajoulesPerKelvin:
@@ -357,7 +357,7 @@ export class Entropy extends BaseUnit {
             case EntropyUnits.KilocaloriesPerKelvin:
                 return `kcal/K`;
             case EntropyUnits.KilojoulesPerDegreeCelsius:
-                return `kJ/C`;
+                return `kJ/°C`;
         default:
             break;
         }
