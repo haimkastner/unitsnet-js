@@ -45,6 +45,7 @@ export * from "./gen-units/electricsusceptance.g";
 export * from "./gen-units/energy.g";
 export * from "./gen-units/energydensity.g";
 export * from "./gen-units/entropy.g";
+export * from "./gen-units/fluidresistance.g";
 export * from "./gen-units/force.g";
 export * from "./gen-units/forcechangerate.g";
 export * from "./gen-units/forceperlength.g";
