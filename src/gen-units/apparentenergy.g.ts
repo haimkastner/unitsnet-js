@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ApparentEnergy */
 export interface ApparentEnergyDto {
@@ -196,19 +196,23 @@ export class ApparentEnergy extends BaseUnit {
      * Note! the default format for ApparentEnergy is VoltampereHours.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ApparentEnergy.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ApparentEnergy.
      */
-    public toString(unit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours, fractionalDigits?: number): string {
+    public toString(unit: ApparentEnergyUnits = ApparentEnergyUnits.VoltampereHours, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ApparentEnergyUnits.VoltampereHours:
-                return super.truncateFractionDigits(this.VoltampereHours, fractionalDigits) + ` VAh`;
+                return super.truncateFractionDigits(this.VoltampereHours, options as ToStringOptions) + ` VAh`;
             case ApparentEnergyUnits.KilovoltampereHours:
-                return super.truncateFractionDigits(this.KilovoltampereHours, fractionalDigits) + ` kVAh`;
+                return super.truncateFractionDigits(this.KilovoltampereHours, options as ToStringOptions) + ` kVAh`;
             case ApparentEnergyUnits.MegavoltampereHours:
-                return super.truncateFractionDigits(this.MegavoltampereHours, fractionalDigits) + ` MVAh`;
+                return super.truncateFractionDigits(this.MegavoltampereHours, options as ToStringOptions) + ` MVAh`;
         default:
             break;
         }

@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricChargeDensity */
 export interface ElectricChargeDensityDto {
@@ -144,15 +144,19 @@ export class ElectricChargeDensity extends BaseUnit {
      * Note! the default format for ElectricChargeDensity is CoulombsPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricChargeDensity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricChargeDensity.
      */
-    public toString(unit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter, fractionalDigits?: number): string {
+    public toString(unit: ElectricChargeDensityUnits = ElectricChargeDensityUnits.CoulombsPerCubicMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricChargeDensityUnits.CoulombsPerCubicMeter:
-                return super.truncateFractionDigits(this.CoulombsPerCubicMeter, fractionalDigits) + ` C/m³`;
+                return super.truncateFractionDigits(this.CoulombsPerCubicMeter, options as ToStringOptions) + ` C/m³`;
         default:
             break;
         }

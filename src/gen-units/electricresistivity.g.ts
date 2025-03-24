@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricResistivity */
 export interface ElectricResistivityDto {
@@ -518,41 +518,45 @@ export class ElectricResistivity extends BaseUnit {
      * Note! the default format for ElectricResistivity is OhmMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricResistivity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricResistivity.
      */
-    public toString(unit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters, fractionalDigits?: number): string {
+    public toString(unit: ElectricResistivityUnits = ElectricResistivityUnits.OhmMeters, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricResistivityUnits.OhmMeters:
-                return super.truncateFractionDigits(this.OhmMeters, fractionalDigits) + ` Ω·m`;
+                return super.truncateFractionDigits(this.OhmMeters, options as ToStringOptions) + ` Ω·m`;
             case ElectricResistivityUnits.OhmsCentimeter:
-                return super.truncateFractionDigits(this.OhmsCentimeter, fractionalDigits) + ` Ω·cm`;
+                return super.truncateFractionDigits(this.OhmsCentimeter, options as ToStringOptions) + ` Ω·cm`;
             case ElectricResistivityUnits.PicoohmMeters:
-                return super.truncateFractionDigits(this.PicoohmMeters, fractionalDigits) + ` pΩ·m`;
+                return super.truncateFractionDigits(this.PicoohmMeters, options as ToStringOptions) + ` pΩ·m`;
             case ElectricResistivityUnits.NanoohmMeters:
-                return super.truncateFractionDigits(this.NanoohmMeters, fractionalDigits) + ` nΩ·m`;
+                return super.truncateFractionDigits(this.NanoohmMeters, options as ToStringOptions) + ` nΩ·m`;
             case ElectricResistivityUnits.MicroohmMeters:
-                return super.truncateFractionDigits(this.MicroohmMeters, fractionalDigits) + ` μΩ·m`;
+                return super.truncateFractionDigits(this.MicroohmMeters, options as ToStringOptions) + ` μΩ·m`;
             case ElectricResistivityUnits.MilliohmMeters:
-                return super.truncateFractionDigits(this.MilliohmMeters, fractionalDigits) + ` mΩ·m`;
+                return super.truncateFractionDigits(this.MilliohmMeters, options as ToStringOptions) + ` mΩ·m`;
             case ElectricResistivityUnits.KiloohmMeters:
-                return super.truncateFractionDigits(this.KiloohmMeters, fractionalDigits) + ` kΩ·m`;
+                return super.truncateFractionDigits(this.KiloohmMeters, options as ToStringOptions) + ` kΩ·m`;
             case ElectricResistivityUnits.MegaohmMeters:
-                return super.truncateFractionDigits(this.MegaohmMeters, fractionalDigits) + ` MΩ·m`;
+                return super.truncateFractionDigits(this.MegaohmMeters, options as ToStringOptions) + ` MΩ·m`;
             case ElectricResistivityUnits.PicoohmsCentimeter:
-                return super.truncateFractionDigits(this.PicoohmsCentimeter, fractionalDigits) + ` pΩ·cm`;
+                return super.truncateFractionDigits(this.PicoohmsCentimeter, options as ToStringOptions) + ` pΩ·cm`;
             case ElectricResistivityUnits.NanoohmsCentimeter:
-                return super.truncateFractionDigits(this.NanoohmsCentimeter, fractionalDigits) + ` nΩ·cm`;
+                return super.truncateFractionDigits(this.NanoohmsCentimeter, options as ToStringOptions) + ` nΩ·cm`;
             case ElectricResistivityUnits.MicroohmsCentimeter:
-                return super.truncateFractionDigits(this.MicroohmsCentimeter, fractionalDigits) + ` μΩ·cm`;
+                return super.truncateFractionDigits(this.MicroohmsCentimeter, options as ToStringOptions) + ` μΩ·cm`;
             case ElectricResistivityUnits.MilliohmsCentimeter:
-                return super.truncateFractionDigits(this.MilliohmsCentimeter, fractionalDigits) + ` mΩ·cm`;
+                return super.truncateFractionDigits(this.MilliohmsCentimeter, options as ToStringOptions) + ` mΩ·cm`;
             case ElectricResistivityUnits.KiloohmsCentimeter:
-                return super.truncateFractionDigits(this.KiloohmsCentimeter, fractionalDigits) + ` kΩ·cm`;
+                return super.truncateFractionDigits(this.KiloohmsCentimeter, options as ToStringOptions) + ` kΩ·cm`;
             case ElectricResistivityUnits.MegaohmsCentimeter:
-                return super.truncateFractionDigits(this.MegaohmsCentimeter, fractionalDigits) + ` MΩ·cm`;
+                return super.truncateFractionDigits(this.MegaohmsCentimeter, options as ToStringOptions) + ` MΩ·cm`;
         default:
             break;
         }

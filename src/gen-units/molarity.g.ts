@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Molarity */
 export interface MolarityDto {
@@ -446,35 +446,39 @@ export class Molarity extends BaseUnit {
      * Note! the default format for Molarity is MolesPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Molarity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Molarity.
      */
-    public toString(unit: MolarityUnits = MolarityUnits.MolesPerCubicMeter, fractionalDigits?: number): string {
+    public toString(unit: MolarityUnits = MolarityUnits.MolesPerCubicMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case MolarityUnits.MolesPerCubicMeter:
-                return super.truncateFractionDigits(this.MolesPerCubicMeter, fractionalDigits) + ` mol/m³`;
+                return super.truncateFractionDigits(this.MolesPerCubicMeter, options as ToStringOptions) + ` mol/m³`;
             case MolarityUnits.MolesPerLiter:
-                return super.truncateFractionDigits(this.MolesPerLiter, fractionalDigits) + ` mol/L`;
+                return super.truncateFractionDigits(this.MolesPerLiter, options as ToStringOptions) + ` mol/L`;
             case MolarityUnits.PoundMolesPerCubicFoot:
-                return super.truncateFractionDigits(this.PoundMolesPerCubicFoot, fractionalDigits) + ` lbmol/ft³`;
+                return super.truncateFractionDigits(this.PoundMolesPerCubicFoot, options as ToStringOptions) + ` lbmol/ft³`;
             case MolarityUnits.KilomolesPerCubicMeter:
-                return super.truncateFractionDigits(this.KilomolesPerCubicMeter, fractionalDigits) + ` kmol/m³`;
+                return super.truncateFractionDigits(this.KilomolesPerCubicMeter, options as ToStringOptions) + ` kmol/m³`;
             case MolarityUnits.FemtomolesPerLiter:
-                return super.truncateFractionDigits(this.FemtomolesPerLiter, fractionalDigits) + ` fmol/L`;
+                return super.truncateFractionDigits(this.FemtomolesPerLiter, options as ToStringOptions) + ` fmol/L`;
             case MolarityUnits.PicomolesPerLiter:
-                return super.truncateFractionDigits(this.PicomolesPerLiter, fractionalDigits) + ` pmol/L`;
+                return super.truncateFractionDigits(this.PicomolesPerLiter, options as ToStringOptions) + ` pmol/L`;
             case MolarityUnits.NanomolesPerLiter:
-                return super.truncateFractionDigits(this.NanomolesPerLiter, fractionalDigits) + ` nmol/L`;
+                return super.truncateFractionDigits(this.NanomolesPerLiter, options as ToStringOptions) + ` nmol/L`;
             case MolarityUnits.MicromolesPerLiter:
-                return super.truncateFractionDigits(this.MicromolesPerLiter, fractionalDigits) + ` μmol/L`;
+                return super.truncateFractionDigits(this.MicromolesPerLiter, options as ToStringOptions) + ` μmol/L`;
             case MolarityUnits.MillimolesPerLiter:
-                return super.truncateFractionDigits(this.MillimolesPerLiter, fractionalDigits) + ` mmol/L`;
+                return super.truncateFractionDigits(this.MillimolesPerLiter, options as ToStringOptions) + ` mmol/L`;
             case MolarityUnits.CentimolesPerLiter:
-                return super.truncateFractionDigits(this.CentimolesPerLiter, fractionalDigits) + ` cmol/L`;
+                return super.truncateFractionDigits(this.CentimolesPerLiter, options as ToStringOptions) + ` cmol/L`;
             case MolarityUnits.DecimolesPerLiter:
-                return super.truncateFractionDigits(this.DecimolesPerLiter, fractionalDigits) + ` dmol/L`;
+                return super.truncateFractionDigits(this.DecimolesPerLiter, options as ToStringOptions) + ` dmol/L`;
         default:
             break;
         }

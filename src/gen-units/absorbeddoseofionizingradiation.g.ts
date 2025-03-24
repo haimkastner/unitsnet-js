@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a AbsorbedDoseOfIonizingRadiation */
 export interface AbsorbedDoseOfIonizingRadiationDto {
@@ -552,45 +552,49 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
      * Note! the default format for AbsorbedDoseOfIonizingRadiation is Grays.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the AbsorbedDoseOfIonizingRadiation.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the AbsorbedDoseOfIonizingRadiation.
      */
-    public toString(unit: AbsorbedDoseOfIonizingRadiationUnits = AbsorbedDoseOfIonizingRadiationUnits.Grays, fractionalDigits?: number): string {
+    public toString(unit: AbsorbedDoseOfIonizingRadiationUnits = AbsorbedDoseOfIonizingRadiationUnits.Grays, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case AbsorbedDoseOfIonizingRadiationUnits.Grays:
-                return super.truncateFractionDigits(this.Grays, fractionalDigits) + ` Gy`;
+                return super.truncateFractionDigits(this.Grays, options as ToStringOptions) + ` Gy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Rads:
-                return super.truncateFractionDigits(this.Rads, fractionalDigits) + ` rad`;
+                return super.truncateFractionDigits(this.Rads, options as ToStringOptions) + ` rad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Femtograys:
-                return super.truncateFractionDigits(this.Femtograys, fractionalDigits) + ` fGy`;
+                return super.truncateFractionDigits(this.Femtograys, options as ToStringOptions) + ` fGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Picograys:
-                return super.truncateFractionDigits(this.Picograys, fractionalDigits) + ` pGy`;
+                return super.truncateFractionDigits(this.Picograys, options as ToStringOptions) + ` pGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Nanograys:
-                return super.truncateFractionDigits(this.Nanograys, fractionalDigits) + ` nGy`;
+                return super.truncateFractionDigits(this.Nanograys, options as ToStringOptions) + ` nGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Micrograys:
-                return super.truncateFractionDigits(this.Micrograys, fractionalDigits) + ` μGy`;
+                return super.truncateFractionDigits(this.Micrograys, options as ToStringOptions) + ` μGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Milligrays:
-                return super.truncateFractionDigits(this.Milligrays, fractionalDigits) + ` mGy`;
+                return super.truncateFractionDigits(this.Milligrays, options as ToStringOptions) + ` mGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Centigrays:
-                return super.truncateFractionDigits(this.Centigrays, fractionalDigits) + ` cGy`;
+                return super.truncateFractionDigits(this.Centigrays, options as ToStringOptions) + ` cGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilograys:
-                return super.truncateFractionDigits(this.Kilograys, fractionalDigits) + ` kGy`;
+                return super.truncateFractionDigits(this.Kilograys, options as ToStringOptions) + ` kGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megagrays:
-                return super.truncateFractionDigits(this.Megagrays, fractionalDigits) + ` MGy`;
+                return super.truncateFractionDigits(this.Megagrays, options as ToStringOptions) + ` MGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays:
-                return super.truncateFractionDigits(this.Gigagrays, fractionalDigits) + ` GGy`;
+                return super.truncateFractionDigits(this.Gigagrays, options as ToStringOptions) + ` GGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Teragrays:
-                return super.truncateFractionDigits(this.Teragrays, fractionalDigits) + ` TGy`;
+                return super.truncateFractionDigits(this.Teragrays, options as ToStringOptions) + ` TGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Petagrays:
-                return super.truncateFractionDigits(this.Petagrays, fractionalDigits) + ` PGy`;
+                return super.truncateFractionDigits(this.Petagrays, options as ToStringOptions) + ` PGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Millirads:
-                return super.truncateFractionDigits(this.Millirads, fractionalDigits) + ` mrad`;
+                return super.truncateFractionDigits(this.Millirads, options as ToStringOptions) + ` mrad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilorads:
-                return super.truncateFractionDigits(this.Kilorads, fractionalDigits) + ` krad`;
+                return super.truncateFractionDigits(this.Kilorads, options as ToStringOptions) + ` krad`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megarads:
-                return super.truncateFractionDigits(this.Megarads, fractionalDigits) + ` Mrad`;
+                return super.truncateFractionDigits(this.Megarads, options as ToStringOptions) + ` Mrad`;
         default:
             break;
         }

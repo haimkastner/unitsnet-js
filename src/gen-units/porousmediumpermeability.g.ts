@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a PorousMediumPermeability */
 export interface PorousMediumPermeabilityDto {
@@ -260,23 +260,27 @@ export class PorousMediumPermeability extends BaseUnit {
      * Note! the default format for PorousMediumPermeability is SquareMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the PorousMediumPermeability.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the PorousMediumPermeability.
      */
-    public toString(unit: PorousMediumPermeabilityUnits = PorousMediumPermeabilityUnits.SquareMeters, fractionalDigits?: number): string {
+    public toString(unit: PorousMediumPermeabilityUnits = PorousMediumPermeabilityUnits.SquareMeters, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case PorousMediumPermeabilityUnits.Darcys:
-                return super.truncateFractionDigits(this.Darcys, fractionalDigits) + ` D`;
+                return super.truncateFractionDigits(this.Darcys, options as ToStringOptions) + ` D`;
             case PorousMediumPermeabilityUnits.SquareMeters:
-                return super.truncateFractionDigits(this.SquareMeters, fractionalDigits) + ` m²`;
+                return super.truncateFractionDigits(this.SquareMeters, options as ToStringOptions) + ` m²`;
             case PorousMediumPermeabilityUnits.SquareCentimeters:
-                return super.truncateFractionDigits(this.SquareCentimeters, fractionalDigits) + ` cm²`;
+                return super.truncateFractionDigits(this.SquareCentimeters, options as ToStringOptions) + ` cm²`;
             case PorousMediumPermeabilityUnits.Microdarcys:
-                return super.truncateFractionDigits(this.Microdarcys, fractionalDigits) + ` μD`;
+                return super.truncateFractionDigits(this.Microdarcys, options as ToStringOptions) + ` μD`;
             case PorousMediumPermeabilityUnits.Millidarcys:
-                return super.truncateFractionDigits(this.Millidarcys, fractionalDigits) + ` mD`;
+                return super.truncateFractionDigits(this.Millidarcys, options as ToStringOptions) + ` mD`;
         default:
             break;
         }

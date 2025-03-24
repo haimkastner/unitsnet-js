@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricCurrentGradient */
 export interface ElectricCurrentGradientDto {
@@ -306,27 +306,31 @@ export class ElectricCurrentGradient extends BaseUnit {
      * Note! the default format for ElectricCurrentGradient is AmperesPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricCurrentGradient.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricCurrentGradient.
      */
-    public toString(unit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond, fractionalDigits?: number): string {
+    public toString(unit: ElectricCurrentGradientUnits = ElectricCurrentGradientUnits.AmperesPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricCurrentGradientUnits.AmperesPerSecond:
-                return super.truncateFractionDigits(this.AmperesPerSecond, fractionalDigits) + ` A/s`;
+                return super.truncateFractionDigits(this.AmperesPerSecond, options as ToStringOptions) + ` A/s`;
             case ElectricCurrentGradientUnits.AmperesPerMinute:
-                return super.truncateFractionDigits(this.AmperesPerMinute, fractionalDigits) + ` A/min`;
+                return super.truncateFractionDigits(this.AmperesPerMinute, options as ToStringOptions) + ` A/min`;
             case ElectricCurrentGradientUnits.AmperesPerMillisecond:
-                return super.truncateFractionDigits(this.AmperesPerMillisecond, fractionalDigits) + ` A/ms`;
+                return super.truncateFractionDigits(this.AmperesPerMillisecond, options as ToStringOptions) + ` A/ms`;
             case ElectricCurrentGradientUnits.AmperesPerMicrosecond:
-                return super.truncateFractionDigits(this.AmperesPerMicrosecond, fractionalDigits) + ` A/μs`;
+                return super.truncateFractionDigits(this.AmperesPerMicrosecond, options as ToStringOptions) + ` A/μs`;
             case ElectricCurrentGradientUnits.AmperesPerNanosecond:
-                return super.truncateFractionDigits(this.AmperesPerNanosecond, fractionalDigits) + ` A/ns`;
+                return super.truncateFractionDigits(this.AmperesPerNanosecond, options as ToStringOptions) + ` A/ns`;
             case ElectricCurrentGradientUnits.MilliamperesPerSecond:
-                return super.truncateFractionDigits(this.MilliamperesPerSecond, fractionalDigits) + ` mA/s`;
+                return super.truncateFractionDigits(this.MilliamperesPerSecond, options as ToStringOptions) + ` mA/s`;
             case ElectricCurrentGradientUnits.MilliamperesPerMinute:
-                return super.truncateFractionDigits(this.MilliamperesPerMinute, fractionalDigits) + ` mA/min`;
+                return super.truncateFractionDigits(this.MilliamperesPerMinute, options as ToStringOptions) + ` mA/min`;
         default:
             break;
         }

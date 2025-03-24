@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a LinearPowerDensity */
 export interface LinearPowerDensityDto {
@@ -864,63 +864,67 @@ export class LinearPowerDensity extends BaseUnit {
      * Note! the default format for LinearPowerDensity is WattsPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the LinearPowerDensity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the LinearPowerDensity.
      */
-    public toString(unit: LinearPowerDensityUnits = LinearPowerDensityUnits.WattsPerMeter, fractionalDigits?: number): string {
+    public toString(unit: LinearPowerDensityUnits = LinearPowerDensityUnits.WattsPerMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case LinearPowerDensityUnits.WattsPerMeter:
-                return super.truncateFractionDigits(this.WattsPerMeter, fractionalDigits) + ` W/m`;
+                return super.truncateFractionDigits(this.WattsPerMeter, options as ToStringOptions) + ` W/m`;
             case LinearPowerDensityUnits.WattsPerCentimeter:
-                return super.truncateFractionDigits(this.WattsPerCentimeter, fractionalDigits) + ` W/cm`;
+                return super.truncateFractionDigits(this.WattsPerCentimeter, options as ToStringOptions) + ` W/cm`;
             case LinearPowerDensityUnits.WattsPerMillimeter:
-                return super.truncateFractionDigits(this.WattsPerMillimeter, fractionalDigits) + ` W/mm`;
+                return super.truncateFractionDigits(this.WattsPerMillimeter, options as ToStringOptions) + ` W/mm`;
             case LinearPowerDensityUnits.WattsPerInch:
-                return super.truncateFractionDigits(this.WattsPerInch, fractionalDigits) + ` W/in`;
+                return super.truncateFractionDigits(this.WattsPerInch, options as ToStringOptions) + ` W/in`;
             case LinearPowerDensityUnits.WattsPerFoot:
-                return super.truncateFractionDigits(this.WattsPerFoot, fractionalDigits) + ` W/ft`;
+                return super.truncateFractionDigits(this.WattsPerFoot, options as ToStringOptions) + ` W/ft`;
             case LinearPowerDensityUnits.MilliwattsPerMeter:
-                return super.truncateFractionDigits(this.MilliwattsPerMeter, fractionalDigits) + ` mW/m`;
+                return super.truncateFractionDigits(this.MilliwattsPerMeter, options as ToStringOptions) + ` mW/m`;
             case LinearPowerDensityUnits.KilowattsPerMeter:
-                return super.truncateFractionDigits(this.KilowattsPerMeter, fractionalDigits) + ` kW/m`;
+                return super.truncateFractionDigits(this.KilowattsPerMeter, options as ToStringOptions) + ` kW/m`;
             case LinearPowerDensityUnits.MegawattsPerMeter:
-                return super.truncateFractionDigits(this.MegawattsPerMeter, fractionalDigits) + ` MW/m`;
+                return super.truncateFractionDigits(this.MegawattsPerMeter, options as ToStringOptions) + ` MW/m`;
             case LinearPowerDensityUnits.GigawattsPerMeter:
-                return super.truncateFractionDigits(this.GigawattsPerMeter, fractionalDigits) + ` GW/m`;
+                return super.truncateFractionDigits(this.GigawattsPerMeter, options as ToStringOptions) + ` GW/m`;
             case LinearPowerDensityUnits.MilliwattsPerCentimeter:
-                return super.truncateFractionDigits(this.MilliwattsPerCentimeter, fractionalDigits) + ` mW/cm`;
+                return super.truncateFractionDigits(this.MilliwattsPerCentimeter, options as ToStringOptions) + ` mW/cm`;
             case LinearPowerDensityUnits.KilowattsPerCentimeter:
-                return super.truncateFractionDigits(this.KilowattsPerCentimeter, fractionalDigits) + ` kW/cm`;
+                return super.truncateFractionDigits(this.KilowattsPerCentimeter, options as ToStringOptions) + ` kW/cm`;
             case LinearPowerDensityUnits.MegawattsPerCentimeter:
-                return super.truncateFractionDigits(this.MegawattsPerCentimeter, fractionalDigits) + ` MW/cm`;
+                return super.truncateFractionDigits(this.MegawattsPerCentimeter, options as ToStringOptions) + ` MW/cm`;
             case LinearPowerDensityUnits.GigawattsPerCentimeter:
-                return super.truncateFractionDigits(this.GigawattsPerCentimeter, fractionalDigits) + ` GW/cm`;
+                return super.truncateFractionDigits(this.GigawattsPerCentimeter, options as ToStringOptions) + ` GW/cm`;
             case LinearPowerDensityUnits.MilliwattsPerMillimeter:
-                return super.truncateFractionDigits(this.MilliwattsPerMillimeter, fractionalDigits) + ` mW/mm`;
+                return super.truncateFractionDigits(this.MilliwattsPerMillimeter, options as ToStringOptions) + ` mW/mm`;
             case LinearPowerDensityUnits.KilowattsPerMillimeter:
-                return super.truncateFractionDigits(this.KilowattsPerMillimeter, fractionalDigits) + ` kW/mm`;
+                return super.truncateFractionDigits(this.KilowattsPerMillimeter, options as ToStringOptions) + ` kW/mm`;
             case LinearPowerDensityUnits.MegawattsPerMillimeter:
-                return super.truncateFractionDigits(this.MegawattsPerMillimeter, fractionalDigits) + ` MW/mm`;
+                return super.truncateFractionDigits(this.MegawattsPerMillimeter, options as ToStringOptions) + ` MW/mm`;
             case LinearPowerDensityUnits.GigawattsPerMillimeter:
-                return super.truncateFractionDigits(this.GigawattsPerMillimeter, fractionalDigits) + ` GW/mm`;
+                return super.truncateFractionDigits(this.GigawattsPerMillimeter, options as ToStringOptions) + ` GW/mm`;
             case LinearPowerDensityUnits.MilliwattsPerInch:
-                return super.truncateFractionDigits(this.MilliwattsPerInch, fractionalDigits) + ` mW/in`;
+                return super.truncateFractionDigits(this.MilliwattsPerInch, options as ToStringOptions) + ` mW/in`;
             case LinearPowerDensityUnits.KilowattsPerInch:
-                return super.truncateFractionDigits(this.KilowattsPerInch, fractionalDigits) + ` kW/in`;
+                return super.truncateFractionDigits(this.KilowattsPerInch, options as ToStringOptions) + ` kW/in`;
             case LinearPowerDensityUnits.MegawattsPerInch:
-                return super.truncateFractionDigits(this.MegawattsPerInch, fractionalDigits) + ` MW/in`;
+                return super.truncateFractionDigits(this.MegawattsPerInch, options as ToStringOptions) + ` MW/in`;
             case LinearPowerDensityUnits.GigawattsPerInch:
-                return super.truncateFractionDigits(this.GigawattsPerInch, fractionalDigits) + ` GW/in`;
+                return super.truncateFractionDigits(this.GigawattsPerInch, options as ToStringOptions) + ` GW/in`;
             case LinearPowerDensityUnits.MilliwattsPerFoot:
-                return super.truncateFractionDigits(this.MilliwattsPerFoot, fractionalDigits) + ` mW/ft`;
+                return super.truncateFractionDigits(this.MilliwattsPerFoot, options as ToStringOptions) + ` mW/ft`;
             case LinearPowerDensityUnits.KilowattsPerFoot:
-                return super.truncateFractionDigits(this.KilowattsPerFoot, fractionalDigits) + ` kW/ft`;
+                return super.truncateFractionDigits(this.KilowattsPerFoot, options as ToStringOptions) + ` kW/ft`;
             case LinearPowerDensityUnits.MegawattsPerFoot:
-                return super.truncateFractionDigits(this.MegawattsPerFoot, fractionalDigits) + ` MW/ft`;
+                return super.truncateFractionDigits(this.MegawattsPerFoot, options as ToStringOptions) + ` MW/ft`;
             case LinearPowerDensityUnits.GigawattsPerFoot:
-                return super.truncateFractionDigits(this.GigawattsPerFoot, fractionalDigits) + ` GW/ft`;
+                return super.truncateFractionDigits(this.GigawattsPerFoot, options as ToStringOptions) + ` GW/ft`;
         default:
             break;
         }

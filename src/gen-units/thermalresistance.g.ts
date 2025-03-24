@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ThermalResistance */
 export interface ThermalResistanceDto {
@@ -274,25 +274,29 @@ export class ThermalResistance extends BaseUnit {
      * Note! the default format for ThermalResistance is SquareMeterKelvinsPerKilowatt.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ThermalResistance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ThermalResistance.
      */
-    public toString(unit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt, fractionalDigits?: number): string {
+    public toString(unit: ThermalResistanceUnits = ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ThermalResistanceUnits.SquareMeterKelvinsPerKilowatt:
-                return super.truncateFractionDigits(this.SquareMeterKelvinsPerKilowatt, fractionalDigits) + ` m²K/kW`;
+                return super.truncateFractionDigits(this.SquareMeterKelvinsPerKilowatt, options as ToStringOptions) + ` m²K/kW`;
             case ThermalResistanceUnits.SquareMeterKelvinsPerWatt:
-                return super.truncateFractionDigits(this.SquareMeterKelvinsPerWatt, fractionalDigits) + ` m²K/W`;
+                return super.truncateFractionDigits(this.SquareMeterKelvinsPerWatt, options as ToStringOptions) + ` m²K/W`;
             case ThermalResistanceUnits.SquareMeterDegreesCelsiusPerWatt:
-                return super.truncateFractionDigits(this.SquareMeterDegreesCelsiusPerWatt, fractionalDigits) + ` m²°C/W`;
+                return super.truncateFractionDigits(this.SquareMeterDegreesCelsiusPerWatt, options as ToStringOptions) + ` m²°C/W`;
             case ThermalResistanceUnits.SquareCentimeterKelvinsPerWatt:
-                return super.truncateFractionDigits(this.SquareCentimeterKelvinsPerWatt, fractionalDigits) + ` cm²K/W`;
+                return super.truncateFractionDigits(this.SquareCentimeterKelvinsPerWatt, options as ToStringOptions) + ` cm²K/W`;
             case ThermalResistanceUnits.SquareCentimeterHourDegreesCelsiusPerKilocalorie:
-                return super.truncateFractionDigits(this.SquareCentimeterHourDegreesCelsiusPerKilocalorie, fractionalDigits) + ` cm²Hr°C/kcal`;
+                return super.truncateFractionDigits(this.SquareCentimeterHourDegreesCelsiusPerKilocalorie, options as ToStringOptions) + ` cm²Hr°C/kcal`;
             case ThermalResistanceUnits.HourSquareFeetDegreesFahrenheitPerBtu:
-                return super.truncateFractionDigits(this.HourSquareFeetDegreesFahrenheitPerBtu, fractionalDigits) + ` Hrft²°F/Btu`;
+                return super.truncateFractionDigits(this.HourSquareFeetDegreesFahrenheitPerBtu, options as ToStringOptions) + ` Hrft²°F/Btu`;
         default:
             break;
         }

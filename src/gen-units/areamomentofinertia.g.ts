@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a AreaMomentOfInertia */
 export interface AreaMomentOfInertiaDto {
@@ -286,25 +286,29 @@ export class AreaMomentOfInertia extends BaseUnit {
      * Note! the default format for AreaMomentOfInertia is MetersToTheFourth.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the AreaMomentOfInertia.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the AreaMomentOfInertia.
      */
-    public toString(unit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth, fractionalDigits?: number): string {
+    public toString(unit: AreaMomentOfInertiaUnits = AreaMomentOfInertiaUnits.MetersToTheFourth, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case AreaMomentOfInertiaUnits.MetersToTheFourth:
-                return super.truncateFractionDigits(this.MetersToTheFourth, fractionalDigits) + ` m⁴`;
+                return super.truncateFractionDigits(this.MetersToTheFourth, options as ToStringOptions) + ` m⁴`;
             case AreaMomentOfInertiaUnits.DecimetersToTheFourth:
-                return super.truncateFractionDigits(this.DecimetersToTheFourth, fractionalDigits) + ` dm⁴`;
+                return super.truncateFractionDigits(this.DecimetersToTheFourth, options as ToStringOptions) + ` dm⁴`;
             case AreaMomentOfInertiaUnits.CentimetersToTheFourth:
-                return super.truncateFractionDigits(this.CentimetersToTheFourth, fractionalDigits) + ` cm⁴`;
+                return super.truncateFractionDigits(this.CentimetersToTheFourth, options as ToStringOptions) + ` cm⁴`;
             case AreaMomentOfInertiaUnits.MillimetersToTheFourth:
-                return super.truncateFractionDigits(this.MillimetersToTheFourth, fractionalDigits) + ` mm⁴`;
+                return super.truncateFractionDigits(this.MillimetersToTheFourth, options as ToStringOptions) + ` mm⁴`;
             case AreaMomentOfInertiaUnits.FeetToTheFourth:
-                return super.truncateFractionDigits(this.FeetToTheFourth, fractionalDigits) + ` ft⁴`;
+                return super.truncateFractionDigits(this.FeetToTheFourth, options as ToStringOptions) + ` ft⁴`;
             case AreaMomentOfInertiaUnits.InchesToTheFourth:
-                return super.truncateFractionDigits(this.InchesToTheFourth, fractionalDigits) + ` in⁴`;
+                return super.truncateFractionDigits(this.InchesToTheFourth, options as ToStringOptions) + ` in⁴`;
         default:
             break;
         }

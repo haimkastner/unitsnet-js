@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a VolumeFlowPerArea */
 export interface VolumeFlowPerAreaDto {
@@ -170,17 +170,21 @@ export class VolumeFlowPerArea extends BaseUnit {
      * Note! the default format for VolumeFlowPerArea is CubicMetersPerSecondPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the VolumeFlowPerArea.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the VolumeFlowPerArea.
      */
-    public toString(unit: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter, fractionalDigits?: number): string {
+    public toString(unit: VolumeFlowPerAreaUnits = VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter:
-                return super.truncateFractionDigits(this.CubicMetersPerSecondPerSquareMeter, fractionalDigits) + ` m³/(s·m²)`;
+                return super.truncateFractionDigits(this.CubicMetersPerSecondPerSquareMeter, options as ToStringOptions) + ` m³/(s·m²)`;
             case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot:
-                return super.truncateFractionDigits(this.CubicFeetPerMinutePerSquareFoot, fractionalDigits) + ` CFM/ft²`;
+                return super.truncateFractionDigits(this.CubicFeetPerMinutePerSquareFoot, options as ToStringOptions) + ` CFM/ft²`;
         default:
             break;
         }

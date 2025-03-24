@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricConductivity */
 export interface ElectricConductivityDto {
@@ -286,25 +286,29 @@ export class ElectricConductivity extends BaseUnit {
      * Note! the default format for ElectricConductivity is SiemensPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricConductivity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricConductivity.
      */
-    public toString(unit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter, fractionalDigits?: number): string {
+    public toString(unit: ElectricConductivityUnits = ElectricConductivityUnits.SiemensPerMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricConductivityUnits.SiemensPerMeter:
-                return super.truncateFractionDigits(this.SiemensPerMeter, fractionalDigits) + ` S/m`;
+                return super.truncateFractionDigits(this.SiemensPerMeter, options as ToStringOptions) + ` S/m`;
             case ElectricConductivityUnits.SiemensPerInch:
-                return super.truncateFractionDigits(this.SiemensPerInch, fractionalDigits) + ` S/in`;
+                return super.truncateFractionDigits(this.SiemensPerInch, options as ToStringOptions) + ` S/in`;
             case ElectricConductivityUnits.SiemensPerFoot:
-                return super.truncateFractionDigits(this.SiemensPerFoot, fractionalDigits) + ` S/ft`;
+                return super.truncateFractionDigits(this.SiemensPerFoot, options as ToStringOptions) + ` S/ft`;
             case ElectricConductivityUnits.SiemensPerCentimeter:
-                return super.truncateFractionDigits(this.SiemensPerCentimeter, fractionalDigits) + ` S/cm`;
+                return super.truncateFractionDigits(this.SiemensPerCentimeter, options as ToStringOptions) + ` S/cm`;
             case ElectricConductivityUnits.MicrosiemensPerCentimeter:
-                return super.truncateFractionDigits(this.MicrosiemensPerCentimeter, fractionalDigits) + ` μS/cm`;
+                return super.truncateFractionDigits(this.MicrosiemensPerCentimeter, options as ToStringOptions) + ` μS/cm`;
             case ElectricConductivityUnits.MillisiemensPerCentimeter:
-                return super.truncateFractionDigits(this.MillisiemensPerCentimeter, fractionalDigits) + ` mS/cm`;
+                return super.truncateFractionDigits(this.MillisiemensPerCentimeter, options as ToStringOptions) + ` mS/cm`;
         default:
             break;
         }

@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a HeatFlux */
 export interface HeatFluxDto {
@@ -592,49 +592,53 @@ export class HeatFlux extends BaseUnit {
      * Note! the default format for HeatFlux is WattsPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the HeatFlux.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the HeatFlux.
      */
-    public toString(unit: HeatFluxUnits = HeatFluxUnits.WattsPerSquareMeter, fractionalDigits?: number): string {
+    public toString(unit: HeatFluxUnits = HeatFluxUnits.WattsPerSquareMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case HeatFluxUnits.WattsPerSquareMeter:
-                return super.truncateFractionDigits(this.WattsPerSquareMeter, fractionalDigits) + ` W/m²`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeter, options as ToStringOptions) + ` W/m²`;
             case HeatFluxUnits.WattsPerSquareInch:
-                return super.truncateFractionDigits(this.WattsPerSquareInch, fractionalDigits) + ` W/in²`;
+                return super.truncateFractionDigits(this.WattsPerSquareInch, options as ToStringOptions) + ` W/in²`;
             case HeatFluxUnits.WattsPerSquareFoot:
-                return super.truncateFractionDigits(this.WattsPerSquareFoot, fractionalDigits) + ` W/ft²`;
+                return super.truncateFractionDigits(this.WattsPerSquareFoot, options as ToStringOptions) + ` W/ft²`;
             case HeatFluxUnits.BtusPerSecondSquareInch:
-                return super.truncateFractionDigits(this.BtusPerSecondSquareInch, fractionalDigits) + ` BTU/s·in²`;
+                return super.truncateFractionDigits(this.BtusPerSecondSquareInch, options as ToStringOptions) + ` BTU/s·in²`;
             case HeatFluxUnits.BtusPerSecondSquareFoot:
-                return super.truncateFractionDigits(this.BtusPerSecondSquareFoot, fractionalDigits) + ` BTU/s·ft²`;
+                return super.truncateFractionDigits(this.BtusPerSecondSquareFoot, options as ToStringOptions) + ` BTU/s·ft²`;
             case HeatFluxUnits.BtusPerMinuteSquareFoot:
-                return super.truncateFractionDigits(this.BtusPerMinuteSquareFoot, fractionalDigits) + ` BTU/min·ft²`;
+                return super.truncateFractionDigits(this.BtusPerMinuteSquareFoot, options as ToStringOptions) + ` BTU/min·ft²`;
             case HeatFluxUnits.BtusPerHourSquareFoot:
-                return super.truncateFractionDigits(this.BtusPerHourSquareFoot, fractionalDigits) + ` BTU/h·ft²`;
+                return super.truncateFractionDigits(this.BtusPerHourSquareFoot, options as ToStringOptions) + ` BTU/h·ft²`;
             case HeatFluxUnits.CaloriesPerSecondSquareCentimeter:
-                return super.truncateFractionDigits(this.CaloriesPerSecondSquareCentimeter, fractionalDigits) + ` cal/s·cm²`;
+                return super.truncateFractionDigits(this.CaloriesPerSecondSquareCentimeter, options as ToStringOptions) + ` cal/s·cm²`;
             case HeatFluxUnits.KilocaloriesPerHourSquareMeter:
-                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeter, fractionalDigits) + ` kcal/h·m²`;
+                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeter, options as ToStringOptions) + ` kcal/h·m²`;
             case HeatFluxUnits.PoundsForcePerFootSecond:
-                return super.truncateFractionDigits(this.PoundsForcePerFootSecond, fractionalDigits) + ` lbf/(ft·s)`;
+                return super.truncateFractionDigits(this.PoundsForcePerFootSecond, options as ToStringOptions) + ` lbf/(ft·s)`;
             case HeatFluxUnits.PoundsPerSecondCubed:
-                return super.truncateFractionDigits(this.PoundsPerSecondCubed, fractionalDigits) + ` lb/s³`;
+                return super.truncateFractionDigits(this.PoundsPerSecondCubed, options as ToStringOptions) + ` lb/s³`;
             case HeatFluxUnits.NanowattsPerSquareMeter:
-                return super.truncateFractionDigits(this.NanowattsPerSquareMeter, fractionalDigits) + ` nW/m²`;
+                return super.truncateFractionDigits(this.NanowattsPerSquareMeter, options as ToStringOptions) + ` nW/m²`;
             case HeatFluxUnits.MicrowattsPerSquareMeter:
-                return super.truncateFractionDigits(this.MicrowattsPerSquareMeter, fractionalDigits) + ` μW/m²`;
+                return super.truncateFractionDigits(this.MicrowattsPerSquareMeter, options as ToStringOptions) + ` μW/m²`;
             case HeatFluxUnits.MilliwattsPerSquareMeter:
-                return super.truncateFractionDigits(this.MilliwattsPerSquareMeter, fractionalDigits) + ` mW/m²`;
+                return super.truncateFractionDigits(this.MilliwattsPerSquareMeter, options as ToStringOptions) + ` mW/m²`;
             case HeatFluxUnits.CentiwattsPerSquareMeter:
-                return super.truncateFractionDigits(this.CentiwattsPerSquareMeter, fractionalDigits) + ` cW/m²`;
+                return super.truncateFractionDigits(this.CentiwattsPerSquareMeter, options as ToStringOptions) + ` cW/m²`;
             case HeatFluxUnits.DeciwattsPerSquareMeter:
-                return super.truncateFractionDigits(this.DeciwattsPerSquareMeter, fractionalDigits) + ` dW/m²`;
+                return super.truncateFractionDigits(this.DeciwattsPerSquareMeter, options as ToStringOptions) + ` dW/m²`;
             case HeatFluxUnits.KilowattsPerSquareMeter:
-                return super.truncateFractionDigits(this.KilowattsPerSquareMeter, fractionalDigits) + ` kW/m²`;
+                return super.truncateFractionDigits(this.KilowattsPerSquareMeter, options as ToStringOptions) + ` kW/m²`;
             case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter:
-                return super.truncateFractionDigits(this.KilocaloriesPerSecondSquareCentimeter, fractionalDigits) + ` kcal/s·cm²`;
+                return super.truncateFractionDigits(this.KilocaloriesPerSecondSquareCentimeter, options as ToStringOptions) + ` kcal/s·cm²`;
         default:
             break;
         }

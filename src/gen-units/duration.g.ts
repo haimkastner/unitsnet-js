@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Duration */
 export interface DurationDto {
@@ -468,37 +468,41 @@ export class Duration extends BaseUnit {
      * Note! the default format for Duration is Seconds.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Duration.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Duration.
      */
-    public toString(unit: DurationUnits = DurationUnits.Seconds, fractionalDigits?: number): string {
+    public toString(unit: DurationUnits = DurationUnits.Seconds, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case DurationUnits.Years365:
-                return super.truncateFractionDigits(this.Years365, fractionalDigits) + ` yr`;
+                return super.truncateFractionDigits(this.Years365, options as ToStringOptions) + ` yr`;
             case DurationUnits.Months30:
-                return super.truncateFractionDigits(this.Months30, fractionalDigits) + ` mo`;
+                return super.truncateFractionDigits(this.Months30, options as ToStringOptions) + ` mo`;
             case DurationUnits.Weeks:
-                return super.truncateFractionDigits(this.Weeks, fractionalDigits) + ` wk`;
+                return super.truncateFractionDigits(this.Weeks, options as ToStringOptions) + ` wk`;
             case DurationUnits.Days:
-                return super.truncateFractionDigits(this.Days, fractionalDigits) + ` d`;
+                return super.truncateFractionDigits(this.Days, options as ToStringOptions) + ` d`;
             case DurationUnits.Hours:
-                return super.truncateFractionDigits(this.Hours, fractionalDigits) + ` h`;
+                return super.truncateFractionDigits(this.Hours, options as ToStringOptions) + ` h`;
             case DurationUnits.Minutes:
-                return super.truncateFractionDigits(this.Minutes, fractionalDigits) + ` m`;
+                return super.truncateFractionDigits(this.Minutes, options as ToStringOptions) + ` m`;
             case DurationUnits.Seconds:
-                return super.truncateFractionDigits(this.Seconds, fractionalDigits) + ` s`;
+                return super.truncateFractionDigits(this.Seconds, options as ToStringOptions) + ` s`;
             case DurationUnits.JulianYears:
-                return super.truncateFractionDigits(this.JulianYears, fractionalDigits) + ` jyr`;
+                return super.truncateFractionDigits(this.JulianYears, options as ToStringOptions) + ` jyr`;
             case DurationUnits.Sols:
-                return super.truncateFractionDigits(this.Sols, fractionalDigits) + ` sol`;
+                return super.truncateFractionDigits(this.Sols, options as ToStringOptions) + ` sol`;
             case DurationUnits.Nanoseconds:
-                return super.truncateFractionDigits(this.Nanoseconds, fractionalDigits) + ` ns`;
+                return super.truncateFractionDigits(this.Nanoseconds, options as ToStringOptions) + ` ns`;
             case DurationUnits.Microseconds:
-                return super.truncateFractionDigits(this.Microseconds, fractionalDigits) + ` μs`;
+                return super.truncateFractionDigits(this.Microseconds, options as ToStringOptions) + ` μs`;
             case DurationUnits.Milliseconds:
-                return super.truncateFractionDigits(this.Milliseconds, fractionalDigits) + ` ms`;
+                return super.truncateFractionDigits(this.Milliseconds, options as ToStringOptions) + ` ms`;
         default:
             break;
         }

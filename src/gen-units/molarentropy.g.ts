@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a MolarEntropy */
 export interface MolarEntropyDto {
@@ -196,19 +196,23 @@ export class MolarEntropy extends BaseUnit {
      * Note! the default format for MolarEntropy is JoulesPerMoleKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MolarEntropy.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the MolarEntropy.
      */
-    public toString(unit: MolarEntropyUnits = MolarEntropyUnits.JoulesPerMoleKelvin, fractionalDigits?: number): string {
+    public toString(unit: MolarEntropyUnits = MolarEntropyUnits.JoulesPerMoleKelvin, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case MolarEntropyUnits.JoulesPerMoleKelvin:
-                return super.truncateFractionDigits(this.JoulesPerMoleKelvin, fractionalDigits) + ` J/(mol·K)`;
+                return super.truncateFractionDigits(this.JoulesPerMoleKelvin, options as ToStringOptions) + ` J/(mol·K)`;
             case MolarEntropyUnits.KilojoulesPerMoleKelvin:
-                return super.truncateFractionDigits(this.KilojoulesPerMoleKelvin, fractionalDigits) + ` kJ/(mol·K)`;
+                return super.truncateFractionDigits(this.KilojoulesPerMoleKelvin, options as ToStringOptions) + ` kJ/(mol·K)`;
             case MolarEntropyUnits.MegajoulesPerMoleKelvin:
-                return super.truncateFractionDigits(this.MegajoulesPerMoleKelvin, fractionalDigits) + ` MJ/(mol·K)`;
+                return super.truncateFractionDigits(this.MegajoulesPerMoleKelvin, options as ToStringOptions) + ` MJ/(mol·K)`;
         default:
             break;
         }

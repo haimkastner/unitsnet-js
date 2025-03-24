@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a MassFlow */
 export interface MassFlowDto {
@@ -1060,79 +1060,83 @@ export class MassFlow extends BaseUnit {
      * Note! the default format for MassFlow is GramsPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MassFlow.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the MassFlow.
      */
-    public toString(unit: MassFlowUnits = MassFlowUnits.GramsPerSecond, fractionalDigits?: number): string {
+    public toString(unit: MassFlowUnits = MassFlowUnits.GramsPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case MassFlowUnits.GramsPerSecond:
-                return super.truncateFractionDigits(this.GramsPerSecond, fractionalDigits) + ` g/s`;
+                return super.truncateFractionDigits(this.GramsPerSecond, options as ToStringOptions) + ` g/s`;
             case MassFlowUnits.GramsPerDay:
-                return super.truncateFractionDigits(this.GramsPerDay, fractionalDigits) + ` g/d`;
+                return super.truncateFractionDigits(this.GramsPerDay, options as ToStringOptions) + ` g/d`;
             case MassFlowUnits.GramsPerHour:
-                return super.truncateFractionDigits(this.GramsPerHour, fractionalDigits) + ` g/h`;
+                return super.truncateFractionDigits(this.GramsPerHour, options as ToStringOptions) + ` g/h`;
             case MassFlowUnits.KilogramsPerHour:
-                return super.truncateFractionDigits(this.KilogramsPerHour, fractionalDigits) + ` kg/h`;
+                return super.truncateFractionDigits(this.KilogramsPerHour, options as ToStringOptions) + ` kg/h`;
             case MassFlowUnits.KilogramsPerMinute:
-                return super.truncateFractionDigits(this.KilogramsPerMinute, fractionalDigits) + ` kg/min`;
+                return super.truncateFractionDigits(this.KilogramsPerMinute, options as ToStringOptions) + ` kg/min`;
             case MassFlowUnits.TonnesPerHour:
-                return super.truncateFractionDigits(this.TonnesPerHour, fractionalDigits) + ` t/h`;
+                return super.truncateFractionDigits(this.TonnesPerHour, options as ToStringOptions) + ` t/h`;
             case MassFlowUnits.PoundsPerDay:
-                return super.truncateFractionDigits(this.PoundsPerDay, fractionalDigits) + ` lb/d`;
+                return super.truncateFractionDigits(this.PoundsPerDay, options as ToStringOptions) + ` lb/d`;
             case MassFlowUnits.PoundsPerHour:
-                return super.truncateFractionDigits(this.PoundsPerHour, fractionalDigits) + ` lb/h`;
+                return super.truncateFractionDigits(this.PoundsPerHour, options as ToStringOptions) + ` lb/h`;
             case MassFlowUnits.PoundsPerMinute:
-                return super.truncateFractionDigits(this.PoundsPerMinute, fractionalDigits) + ` lb/min`;
+                return super.truncateFractionDigits(this.PoundsPerMinute, options as ToStringOptions) + ` lb/min`;
             case MassFlowUnits.PoundsPerSecond:
-                return super.truncateFractionDigits(this.PoundsPerSecond, fractionalDigits) + ` lb/s`;
+                return super.truncateFractionDigits(this.PoundsPerSecond, options as ToStringOptions) + ` lb/s`;
             case MassFlowUnits.TonnesPerDay:
-                return super.truncateFractionDigits(this.TonnesPerDay, fractionalDigits) + ` t/d`;
+                return super.truncateFractionDigits(this.TonnesPerDay, options as ToStringOptions) + ` t/d`;
             case MassFlowUnits.ShortTonsPerHour:
-                return super.truncateFractionDigits(this.ShortTonsPerHour, fractionalDigits) + ` short tn/h`;
+                return super.truncateFractionDigits(this.ShortTonsPerHour, options as ToStringOptions) + ` short tn/h`;
             case MassFlowUnits.NanogramsPerSecond:
-                return super.truncateFractionDigits(this.NanogramsPerSecond, fractionalDigits) + ` ng/s`;
+                return super.truncateFractionDigits(this.NanogramsPerSecond, options as ToStringOptions) + ` ng/s`;
             case MassFlowUnits.MicrogramsPerSecond:
-                return super.truncateFractionDigits(this.MicrogramsPerSecond, fractionalDigits) + ` μg/s`;
+                return super.truncateFractionDigits(this.MicrogramsPerSecond, options as ToStringOptions) + ` μg/s`;
             case MassFlowUnits.MilligramsPerSecond:
-                return super.truncateFractionDigits(this.MilligramsPerSecond, fractionalDigits) + ` mg/s`;
+                return super.truncateFractionDigits(this.MilligramsPerSecond, options as ToStringOptions) + ` mg/s`;
             case MassFlowUnits.CentigramsPerSecond:
-                return super.truncateFractionDigits(this.CentigramsPerSecond, fractionalDigits) + ` cg/s`;
+                return super.truncateFractionDigits(this.CentigramsPerSecond, options as ToStringOptions) + ` cg/s`;
             case MassFlowUnits.DecigramsPerSecond:
-                return super.truncateFractionDigits(this.DecigramsPerSecond, fractionalDigits) + ` dg/s`;
+                return super.truncateFractionDigits(this.DecigramsPerSecond, options as ToStringOptions) + ` dg/s`;
             case MassFlowUnits.DecagramsPerSecond:
-                return super.truncateFractionDigits(this.DecagramsPerSecond, fractionalDigits) + ` dag/s`;
+                return super.truncateFractionDigits(this.DecagramsPerSecond, options as ToStringOptions) + ` dag/s`;
             case MassFlowUnits.HectogramsPerSecond:
-                return super.truncateFractionDigits(this.HectogramsPerSecond, fractionalDigits) + ` hg/s`;
+                return super.truncateFractionDigits(this.HectogramsPerSecond, options as ToStringOptions) + ` hg/s`;
             case MassFlowUnits.KilogramsPerSecond:
-                return super.truncateFractionDigits(this.KilogramsPerSecond, fractionalDigits) + ` kg/s`;
+                return super.truncateFractionDigits(this.KilogramsPerSecond, options as ToStringOptions) + ` kg/s`;
             case MassFlowUnits.NanogramsPerDay:
-                return super.truncateFractionDigits(this.NanogramsPerDay, fractionalDigits) + ` ng/d`;
+                return super.truncateFractionDigits(this.NanogramsPerDay, options as ToStringOptions) + ` ng/d`;
             case MassFlowUnits.MicrogramsPerDay:
-                return super.truncateFractionDigits(this.MicrogramsPerDay, fractionalDigits) + ` μg/d`;
+                return super.truncateFractionDigits(this.MicrogramsPerDay, options as ToStringOptions) + ` μg/d`;
             case MassFlowUnits.MilligramsPerDay:
-                return super.truncateFractionDigits(this.MilligramsPerDay, fractionalDigits) + ` mg/d`;
+                return super.truncateFractionDigits(this.MilligramsPerDay, options as ToStringOptions) + ` mg/d`;
             case MassFlowUnits.CentigramsPerDay:
-                return super.truncateFractionDigits(this.CentigramsPerDay, fractionalDigits) + ` cg/d`;
+                return super.truncateFractionDigits(this.CentigramsPerDay, options as ToStringOptions) + ` cg/d`;
             case MassFlowUnits.DecigramsPerDay:
-                return super.truncateFractionDigits(this.DecigramsPerDay, fractionalDigits) + ` dg/d`;
+                return super.truncateFractionDigits(this.DecigramsPerDay, options as ToStringOptions) + ` dg/d`;
             case MassFlowUnits.DecagramsPerDay:
-                return super.truncateFractionDigits(this.DecagramsPerDay, fractionalDigits) + ` dag/d`;
+                return super.truncateFractionDigits(this.DecagramsPerDay, options as ToStringOptions) + ` dag/d`;
             case MassFlowUnits.HectogramsPerDay:
-                return super.truncateFractionDigits(this.HectogramsPerDay, fractionalDigits) + ` hg/d`;
+                return super.truncateFractionDigits(this.HectogramsPerDay, options as ToStringOptions) + ` hg/d`;
             case MassFlowUnits.KilogramsPerDay:
-                return super.truncateFractionDigits(this.KilogramsPerDay, fractionalDigits) + ` kg/d`;
+                return super.truncateFractionDigits(this.KilogramsPerDay, options as ToStringOptions) + ` kg/d`;
             case MassFlowUnits.MegagramsPerDay:
-                return super.truncateFractionDigits(this.MegagramsPerDay, fractionalDigits) + ` Mg/d`;
+                return super.truncateFractionDigits(this.MegagramsPerDay, options as ToStringOptions) + ` Mg/d`;
             case MassFlowUnits.MegapoundsPerDay:
-                return super.truncateFractionDigits(this.MegapoundsPerDay, fractionalDigits) + ` Mlb/d`;
+                return super.truncateFractionDigits(this.MegapoundsPerDay, options as ToStringOptions) + ` Mlb/d`;
             case MassFlowUnits.MegapoundsPerHour:
-                return super.truncateFractionDigits(this.MegapoundsPerHour, fractionalDigits) + ` Mlb/h`;
+                return super.truncateFractionDigits(this.MegapoundsPerHour, options as ToStringOptions) + ` Mlb/h`;
             case MassFlowUnits.MegapoundsPerMinute:
-                return super.truncateFractionDigits(this.MegapoundsPerMinute, fractionalDigits) + ` Mlb/min`;
+                return super.truncateFractionDigits(this.MegapoundsPerMinute, options as ToStringOptions) + ` Mlb/min`;
             case MassFlowUnits.MegapoundsPerSecond:
-                return super.truncateFractionDigits(this.MegapoundsPerSecond, fractionalDigits) + ` Mlb/s`;
+                return super.truncateFractionDigits(this.MegapoundsPerSecond, options as ToStringOptions) + ` Mlb/s`;
         default:
             break;
         }

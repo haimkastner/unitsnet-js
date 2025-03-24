@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Jerk */
 export interface JerkDto {
@@ -410,35 +410,39 @@ export class Jerk extends BaseUnit {
      * Note! the default format for Jerk is MetersPerSecondCubed.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Jerk.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Jerk.
      */
-    public toString(unit: JerkUnits = JerkUnits.MetersPerSecondCubed, fractionalDigits?: number): string {
+    public toString(unit: JerkUnits = JerkUnits.MetersPerSecondCubed, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case JerkUnits.MetersPerSecondCubed:
-                return super.truncateFractionDigits(this.MetersPerSecondCubed, fractionalDigits) + ` m/s³`;
+                return super.truncateFractionDigits(this.MetersPerSecondCubed, options as ToStringOptions) + ` m/s³`;
             case JerkUnits.InchesPerSecondCubed:
-                return super.truncateFractionDigits(this.InchesPerSecondCubed, fractionalDigits) + ` in/s³`;
+                return super.truncateFractionDigits(this.InchesPerSecondCubed, options as ToStringOptions) + ` in/s³`;
             case JerkUnits.FeetPerSecondCubed:
-                return super.truncateFractionDigits(this.FeetPerSecondCubed, fractionalDigits) + ` ft/s³`;
+                return super.truncateFractionDigits(this.FeetPerSecondCubed, options as ToStringOptions) + ` ft/s³`;
             case JerkUnits.StandardGravitiesPerSecond:
-                return super.truncateFractionDigits(this.StandardGravitiesPerSecond, fractionalDigits) + ` g/s`;
+                return super.truncateFractionDigits(this.StandardGravitiesPerSecond, options as ToStringOptions) + ` g/s`;
             case JerkUnits.NanometersPerSecondCubed:
-                return super.truncateFractionDigits(this.NanometersPerSecondCubed, fractionalDigits) + ` nm/s³`;
+                return super.truncateFractionDigits(this.NanometersPerSecondCubed, options as ToStringOptions) + ` nm/s³`;
             case JerkUnits.MicrometersPerSecondCubed:
-                return super.truncateFractionDigits(this.MicrometersPerSecondCubed, fractionalDigits) + ` μm/s³`;
+                return super.truncateFractionDigits(this.MicrometersPerSecondCubed, options as ToStringOptions) + ` μm/s³`;
             case JerkUnits.MillimetersPerSecondCubed:
-                return super.truncateFractionDigits(this.MillimetersPerSecondCubed, fractionalDigits) + ` mm/s³`;
+                return super.truncateFractionDigits(this.MillimetersPerSecondCubed, options as ToStringOptions) + ` mm/s³`;
             case JerkUnits.CentimetersPerSecondCubed:
-                return super.truncateFractionDigits(this.CentimetersPerSecondCubed, fractionalDigits) + ` cm/s³`;
+                return super.truncateFractionDigits(this.CentimetersPerSecondCubed, options as ToStringOptions) + ` cm/s³`;
             case JerkUnits.DecimetersPerSecondCubed:
-                return super.truncateFractionDigits(this.DecimetersPerSecondCubed, fractionalDigits) + ` dm/s³`;
+                return super.truncateFractionDigits(this.DecimetersPerSecondCubed, options as ToStringOptions) + ` dm/s³`;
             case JerkUnits.KilometersPerSecondCubed:
-                return super.truncateFractionDigits(this.KilometersPerSecondCubed, fractionalDigits) + ` km/s³`;
+                return super.truncateFractionDigits(this.KilometersPerSecondCubed, options as ToStringOptions) + ` km/s³`;
             case JerkUnits.MillistandardGravitiesPerSecond:
-                return super.truncateFractionDigits(this.MillistandardGravitiesPerSecond, fractionalDigits) + ` mg/s`;
+                return super.truncateFractionDigits(this.MillistandardGravitiesPerSecond, options as ToStringOptions) + ` mg/s`;
         default:
             break;
         }

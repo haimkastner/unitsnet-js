@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Level */
 export interface LevelDto {
@@ -173,17 +173,21 @@ export class Level extends BaseUnit {
      * Note! the default format for Level is Decibels.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Level.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Level.
      */
-    public toString(unit: LevelUnits = LevelUnits.Decibels, fractionalDigits?: number): string {
+    public toString(unit: LevelUnits = LevelUnits.Decibels, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case LevelUnits.Decibels:
-                return super.truncateFractionDigits(this.Decibels, fractionalDigits) + ` dB`;
+                return super.truncateFractionDigits(this.Decibels, options as ToStringOptions) + ` dB`;
             case LevelUnits.Nepers:
-                return super.truncateFractionDigits(this.Nepers, fractionalDigits) + ` Np`;
+                return super.truncateFractionDigits(this.Nepers, options as ToStringOptions) + ` Np`;
         default:
             break;
         }

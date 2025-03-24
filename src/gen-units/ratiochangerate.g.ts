@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a RatioChangeRate */
 export interface RatioChangeRateDto {
@@ -170,17 +170,21 @@ export class RatioChangeRate extends BaseUnit {
      * Note! the default format for RatioChangeRate is DecimalFractionsPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RatioChangeRate.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the RatioChangeRate.
      */
-    public toString(unit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond, fractionalDigits?: number): string {
+    public toString(unit: RatioChangeRateUnits = RatioChangeRateUnits.DecimalFractionsPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case RatioChangeRateUnits.PercentsPerSecond:
-                return super.truncateFractionDigits(this.PercentsPerSecond, fractionalDigits) + ` %/s`;
+                return super.truncateFractionDigits(this.PercentsPerSecond, options as ToStringOptions) + ` %/s`;
             case RatioChangeRateUnits.DecimalFractionsPerSecond:
-                return super.truncateFractionDigits(this.DecimalFractionsPerSecond, fractionalDigits) + ` /s`;
+                return super.truncateFractionDigits(this.DecimalFractionsPerSecond, options as ToStringOptions) + ` /s`;
         default:
             break;
         }

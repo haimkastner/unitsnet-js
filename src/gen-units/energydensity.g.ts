@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a EnergyDensity */
 export interface EnergyDensityDto {
@@ -460,37 +460,41 @@ export class EnergyDensity extends BaseUnit {
      * Note! the default format for EnergyDensity is JoulesPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the EnergyDensity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the EnergyDensity.
      */
-    public toString(unit: EnergyDensityUnits = EnergyDensityUnits.JoulesPerCubicMeter, fractionalDigits?: number): string {
+    public toString(unit: EnergyDensityUnits = EnergyDensityUnits.JoulesPerCubicMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case EnergyDensityUnits.JoulesPerCubicMeter:
-                return super.truncateFractionDigits(this.JoulesPerCubicMeter, fractionalDigits) + ` J/m³`;
+                return super.truncateFractionDigits(this.JoulesPerCubicMeter, options as ToStringOptions) + ` J/m³`;
             case EnergyDensityUnits.WattHoursPerCubicMeter:
-                return super.truncateFractionDigits(this.WattHoursPerCubicMeter, fractionalDigits) + ` Wh/m³`;
+                return super.truncateFractionDigits(this.WattHoursPerCubicMeter, options as ToStringOptions) + ` Wh/m³`;
             case EnergyDensityUnits.KilojoulesPerCubicMeter:
-                return super.truncateFractionDigits(this.KilojoulesPerCubicMeter, fractionalDigits) + ` kJ/m³`;
+                return super.truncateFractionDigits(this.KilojoulesPerCubicMeter, options as ToStringOptions) + ` kJ/m³`;
             case EnergyDensityUnits.MegajoulesPerCubicMeter:
-                return super.truncateFractionDigits(this.MegajoulesPerCubicMeter, fractionalDigits) + ` MJ/m³`;
+                return super.truncateFractionDigits(this.MegajoulesPerCubicMeter, options as ToStringOptions) + ` MJ/m³`;
             case EnergyDensityUnits.GigajoulesPerCubicMeter:
-                return super.truncateFractionDigits(this.GigajoulesPerCubicMeter, fractionalDigits) + ` GJ/m³`;
+                return super.truncateFractionDigits(this.GigajoulesPerCubicMeter, options as ToStringOptions) + ` GJ/m³`;
             case EnergyDensityUnits.TerajoulesPerCubicMeter:
-                return super.truncateFractionDigits(this.TerajoulesPerCubicMeter, fractionalDigits) + ` TJ/m³`;
+                return super.truncateFractionDigits(this.TerajoulesPerCubicMeter, options as ToStringOptions) + ` TJ/m³`;
             case EnergyDensityUnits.PetajoulesPerCubicMeter:
-                return super.truncateFractionDigits(this.PetajoulesPerCubicMeter, fractionalDigits) + ` PJ/m³`;
+                return super.truncateFractionDigits(this.PetajoulesPerCubicMeter, options as ToStringOptions) + ` PJ/m³`;
             case EnergyDensityUnits.KilowattHoursPerCubicMeter:
-                return super.truncateFractionDigits(this.KilowattHoursPerCubicMeter, fractionalDigits) + ` kWh/m³`;
+                return super.truncateFractionDigits(this.KilowattHoursPerCubicMeter, options as ToStringOptions) + ` kWh/m³`;
             case EnergyDensityUnits.MegawattHoursPerCubicMeter:
-                return super.truncateFractionDigits(this.MegawattHoursPerCubicMeter, fractionalDigits) + ` MWh/m³`;
+                return super.truncateFractionDigits(this.MegawattHoursPerCubicMeter, options as ToStringOptions) + ` MWh/m³`;
             case EnergyDensityUnits.GigawattHoursPerCubicMeter:
-                return super.truncateFractionDigits(this.GigawattHoursPerCubicMeter, fractionalDigits) + ` GWh/m³`;
+                return super.truncateFractionDigits(this.GigawattHoursPerCubicMeter, options as ToStringOptions) + ` GWh/m³`;
             case EnergyDensityUnits.TerawattHoursPerCubicMeter:
-                return super.truncateFractionDigits(this.TerawattHoursPerCubicMeter, fractionalDigits) + ` TWh/m³`;
+                return super.truncateFractionDigits(this.TerawattHoursPerCubicMeter, options as ToStringOptions) + ` TWh/m³`;
             case EnergyDensityUnits.PetawattHoursPerCubicMeter:
-                return super.truncateFractionDigits(this.PetawattHoursPerCubicMeter, fractionalDigits) + ` PWh/m³`;
+                return super.truncateFractionDigits(this.PetawattHoursPerCubicMeter, options as ToStringOptions) + ` PWh/m³`;
         default:
             break;
         }

@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a KinematicViscosity */
 export interface KinematicViscosityDto {
@@ -388,31 +388,35 @@ export class KinematicViscosity extends BaseUnit {
      * Note! the default format for KinematicViscosity is SquareMetersPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the KinematicViscosity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the KinematicViscosity.
      */
-    public toString(unit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond, fractionalDigits?: number): string {
+    public toString(unit: KinematicViscosityUnits = KinematicViscosityUnits.SquareMetersPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case KinematicViscosityUnits.SquareMetersPerSecond:
-                return super.truncateFractionDigits(this.SquareMetersPerSecond, fractionalDigits) + ` m²/s`;
+                return super.truncateFractionDigits(this.SquareMetersPerSecond, options as ToStringOptions) + ` m²/s`;
             case KinematicViscosityUnits.Stokes:
-                return super.truncateFractionDigits(this.Stokes, fractionalDigits) + ` St`;
+                return super.truncateFractionDigits(this.Stokes, options as ToStringOptions) + ` St`;
             case KinematicViscosityUnits.SquareFeetPerSecond:
-                return super.truncateFractionDigits(this.SquareFeetPerSecond, fractionalDigits) + ` ft²/s`;
+                return super.truncateFractionDigits(this.SquareFeetPerSecond, options as ToStringOptions) + ` ft²/s`;
             case KinematicViscosityUnits.Nanostokes:
-                return super.truncateFractionDigits(this.Nanostokes, fractionalDigits) + ` nSt`;
+                return super.truncateFractionDigits(this.Nanostokes, options as ToStringOptions) + ` nSt`;
             case KinematicViscosityUnits.Microstokes:
-                return super.truncateFractionDigits(this.Microstokes, fractionalDigits) + ` μSt`;
+                return super.truncateFractionDigits(this.Microstokes, options as ToStringOptions) + ` μSt`;
             case KinematicViscosityUnits.Millistokes:
-                return super.truncateFractionDigits(this.Millistokes, fractionalDigits) + ` mSt`;
+                return super.truncateFractionDigits(this.Millistokes, options as ToStringOptions) + ` mSt`;
             case KinematicViscosityUnits.Centistokes:
-                return super.truncateFractionDigits(this.Centistokes, fractionalDigits) + ` cSt`;
+                return super.truncateFractionDigits(this.Centistokes, options as ToStringOptions) + ` cSt`;
             case KinematicViscosityUnits.Decistokes:
-                return super.truncateFractionDigits(this.Decistokes, fractionalDigits) + ` dSt`;
+                return super.truncateFractionDigits(this.Decistokes, options as ToStringOptions) + ` dSt`;
             case KinematicViscosityUnits.Kilostokes:
-                return super.truncateFractionDigits(this.Kilostokes, fractionalDigits) + ` kSt`;
+                return super.truncateFractionDigits(this.Kilostokes, options as ToStringOptions) + ` kSt`;
         default:
             break;
         }

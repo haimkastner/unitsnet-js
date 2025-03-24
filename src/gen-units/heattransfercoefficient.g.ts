@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a HeatTransferCoefficient */
 export interface HeatTransferCoefficientDto {
@@ -262,23 +262,27 @@ export class HeatTransferCoefficient extends BaseUnit {
      * Note! the default format for HeatTransferCoefficient is WattsPerSquareMeterKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the HeatTransferCoefficient.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the HeatTransferCoefficient.
      */
-    public toString(unit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin, fractionalDigits?: number): string {
+    public toString(unit: HeatTransferCoefficientUnits = HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
-                return super.truncateFractionDigits(this.WattsPerSquareMeterKelvin, fractionalDigits) + ` W/m²·K`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeterKelvin, options as ToStringOptions) + ` W/m²·K`;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
-                return super.truncateFractionDigits(this.WattsPerSquareMeterCelsius, fractionalDigits) + ` W/m²·°C`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeterCelsius, options as ToStringOptions) + ` W/m²·°C`;
             case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
-                return super.truncateFractionDigits(this.BtusPerHourSquareFootDegreeFahrenheit, fractionalDigits) + ` Btu/h·ft²·°F`;
+                return super.truncateFractionDigits(this.BtusPerHourSquareFootDegreeFahrenheit, options as ToStringOptions) + ` Btu/h·ft²·°F`;
             case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
-                return super.truncateFractionDigits(this.CaloriesPerHourSquareMeterDegreeCelsius, fractionalDigits) + ` kcal/h·m²·°C`;
+                return super.truncateFractionDigits(this.CaloriesPerHourSquareMeterDegreeCelsius, options as ToStringOptions) + ` kcal/h·m²·°C`;
             case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
-                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeterDegreeCelsius, fractionalDigits) + ` kkcal/h·m²·°C`;
+                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeterDegreeCelsius, options as ToStringOptions) + ` kkcal/h·m²·°C`;
         default:
             break;
         }

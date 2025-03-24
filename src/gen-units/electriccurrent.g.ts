@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricCurrent */
 export interface ElectricCurrentDto {
@@ -352,31 +352,35 @@ export class ElectricCurrent extends BaseUnit {
      * Note! the default format for ElectricCurrent is Amperes.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricCurrent.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricCurrent.
      */
-    public toString(unit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes, fractionalDigits?: number): string {
+    public toString(unit: ElectricCurrentUnits = ElectricCurrentUnits.Amperes, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricCurrentUnits.Amperes:
-                return super.truncateFractionDigits(this.Amperes, fractionalDigits) + ` A`;
+                return super.truncateFractionDigits(this.Amperes, options as ToStringOptions) + ` A`;
             case ElectricCurrentUnits.Femtoamperes:
-                return super.truncateFractionDigits(this.Femtoamperes, fractionalDigits) + ` fA`;
+                return super.truncateFractionDigits(this.Femtoamperes, options as ToStringOptions) + ` fA`;
             case ElectricCurrentUnits.Picoamperes:
-                return super.truncateFractionDigits(this.Picoamperes, fractionalDigits) + ` pA`;
+                return super.truncateFractionDigits(this.Picoamperes, options as ToStringOptions) + ` pA`;
             case ElectricCurrentUnits.Nanoamperes:
-                return super.truncateFractionDigits(this.Nanoamperes, fractionalDigits) + ` nA`;
+                return super.truncateFractionDigits(this.Nanoamperes, options as ToStringOptions) + ` nA`;
             case ElectricCurrentUnits.Microamperes:
-                return super.truncateFractionDigits(this.Microamperes, fractionalDigits) + ` μA`;
+                return super.truncateFractionDigits(this.Microamperes, options as ToStringOptions) + ` μA`;
             case ElectricCurrentUnits.Milliamperes:
-                return super.truncateFractionDigits(this.Milliamperes, fractionalDigits) + ` mA`;
+                return super.truncateFractionDigits(this.Milliamperes, options as ToStringOptions) + ` mA`;
             case ElectricCurrentUnits.Centiamperes:
-                return super.truncateFractionDigits(this.Centiamperes, fractionalDigits) + ` cA`;
+                return super.truncateFractionDigits(this.Centiamperes, options as ToStringOptions) + ` cA`;
             case ElectricCurrentUnits.Kiloamperes:
-                return super.truncateFractionDigits(this.Kiloamperes, fractionalDigits) + ` kA`;
+                return super.truncateFractionDigits(this.Kiloamperes, options as ToStringOptions) + ` kA`;
             case ElectricCurrentUnits.Megaamperes:
-                return super.truncateFractionDigits(this.Megaamperes, fractionalDigits) + ` MA`;
+                return super.truncateFractionDigits(this.Megaamperes, options as ToStringOptions) + ` MA`;
         default:
             break;
         }

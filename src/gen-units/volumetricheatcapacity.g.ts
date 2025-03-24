@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a VolumetricHeatCapacity */
 export interface VolumetricHeatCapacityDto {
@@ -358,31 +358,35 @@ export class VolumetricHeatCapacity extends BaseUnit {
      * Note! the default format for VolumetricHeatCapacity is JoulesPerCubicMeterKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the VolumetricHeatCapacity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the VolumetricHeatCapacity.
      */
-    public toString(unit: VolumetricHeatCapacityUnits = VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin, fractionalDigits?: number): string {
+    public toString(unit: VolumetricHeatCapacityUnits = VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case VolumetricHeatCapacityUnits.JoulesPerCubicMeterKelvin:
-                return super.truncateFractionDigits(this.JoulesPerCubicMeterKelvin, fractionalDigits) + ` J/m³·K`;
+                return super.truncateFractionDigits(this.JoulesPerCubicMeterKelvin, options as ToStringOptions) + ` J/m³·K`;
             case VolumetricHeatCapacityUnits.JoulesPerCubicMeterDegreeCelsius:
-                return super.truncateFractionDigits(this.JoulesPerCubicMeterDegreeCelsius, fractionalDigits) + ` J/m³·°C`;
+                return super.truncateFractionDigits(this.JoulesPerCubicMeterDegreeCelsius, options as ToStringOptions) + ` J/m³·°C`;
             case VolumetricHeatCapacityUnits.CaloriesPerCubicCentimeterDegreeCelsius:
-                return super.truncateFractionDigits(this.CaloriesPerCubicCentimeterDegreeCelsius, fractionalDigits) + ` cal/cm³·°C`;
+                return super.truncateFractionDigits(this.CaloriesPerCubicCentimeterDegreeCelsius, options as ToStringOptions) + ` cal/cm³·°C`;
             case VolumetricHeatCapacityUnits.BtusPerCubicFootDegreeFahrenheit:
-                return super.truncateFractionDigits(this.BtusPerCubicFootDegreeFahrenheit, fractionalDigits) + ` BTU/ft³·°F`;
+                return super.truncateFractionDigits(this.BtusPerCubicFootDegreeFahrenheit, options as ToStringOptions) + ` BTU/ft³·°F`;
             case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterKelvin:
-                return super.truncateFractionDigits(this.KilojoulesPerCubicMeterKelvin, fractionalDigits) + ` kJ/m³·K`;
+                return super.truncateFractionDigits(this.KilojoulesPerCubicMeterKelvin, options as ToStringOptions) + ` kJ/m³·K`;
             case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterKelvin:
-                return super.truncateFractionDigits(this.MegajoulesPerCubicMeterKelvin, fractionalDigits) + ` MJ/m³·K`;
+                return super.truncateFractionDigits(this.MegajoulesPerCubicMeterKelvin, options as ToStringOptions) + ` MJ/m³·K`;
             case VolumetricHeatCapacityUnits.KilojoulesPerCubicMeterDegreeCelsius:
-                return super.truncateFractionDigits(this.KilojoulesPerCubicMeterDegreeCelsius, fractionalDigits) + ` kJ/m³·°C`;
+                return super.truncateFractionDigits(this.KilojoulesPerCubicMeterDegreeCelsius, options as ToStringOptions) + ` kJ/m³·°C`;
             case VolumetricHeatCapacityUnits.MegajoulesPerCubicMeterDegreeCelsius:
-                return super.truncateFractionDigits(this.MegajoulesPerCubicMeterDegreeCelsius, fractionalDigits) + ` MJ/m³·°C`;
+                return super.truncateFractionDigits(this.MegajoulesPerCubicMeterDegreeCelsius, options as ToStringOptions) + ` MJ/m³·°C`;
             case VolumetricHeatCapacityUnits.KilocaloriesPerCubicCentimeterDegreeCelsius:
-                return super.truncateFractionDigits(this.KilocaloriesPerCubicCentimeterDegreeCelsius, fractionalDigits) + ` kcal/cm³·°C`;
+                return super.truncateFractionDigits(this.KilocaloriesPerCubicCentimeterDegreeCelsius, options as ToStringOptions) + ` kcal/cm³·°C`;
         default:
             break;
         }

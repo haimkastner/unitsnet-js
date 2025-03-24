@@ -103,14 +103,99 @@ describe('Unitsnet - tests', () => {
             expect(data.Kibibits).equal(1);
         });
 
-        it(`Should limit fractional digits to 1`, () => {
+        it(`Should limit fractional digits to 1 using deprecated number`, () => {
             const angle = Angle.FromDegrees(180);
             expect(angle.toString(AngleUnits.Radians, 1)).equal('3.1 rad');
         });
 
-        it(`Should limit fractional digits to 2`, () => {
+        it(`Should limit fractional digits to 2 using deprecated number`, () => {
             const angle = Angle.FromDegrees(180);
             expect(angle.toString(AngleUnits.Radians, 2)).equal('3.14 rad');
+        });
+
+        it(`Should limit fractional digits to 1 using options`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.toString(AngleUnits.Radians, { fractionalDigits: 1 })).equal('3.1 rad');
+        });
+
+        it(`Should limit fractional digits to 2 using options`, () => {
+            const angle = Angle.FromDegrees(180);
+            expect(angle.toString(AngleUnits.Radians, { fractionalDigits: 2 })).equal('3.14 rad');
+        });
+
+        // Tests for the extendDigitsToFirstFraction option
+        it(`Should extend to first non-zero digit beyond the fractional limit`, () => {
+            // Create an angle with value containing trailing zeros followed by significant digits
+            // π/6 radians is approximately 0.5235987755982988
+            const angle = Angle.FromRadians(Math.PI / 6);
+
+            // Without extension, should truncate to 2 decimal places
+            expect(angle.toString(AngleUnits.Radians, {
+                fractionalDigits: 2
+            })).equal('0.52 rad');
+
+            // With extension, should show digits until first non-zero (5235...)
+            expect(angle.toString(AngleUnits.Radians, {
+                fractionalDigits: 2,
+                extendDigitsToFirstFraction: true
+            })).equal('0.52 rad');
+
+            // Create an angle with zeros after decimal point
+            // 1.000012 radians
+            const angle2 = Angle.FromRadians(1.000012);
+
+            // Without extension, should truncate to 2 decimal places
+            expect(angle2.toString(AngleUnits.Radians, {
+                fractionalDigits: 2
+            })).equal('1 rad');
+
+            // With extension, should show digits until first non-zero (including it)
+            expect(angle2.toString(AngleUnits.Radians, {
+                fractionalDigits: 2,
+                extendDigitsToFirstFraction: true
+            })).equal('1.00001 rad');
+        });
+
+        it(`Should not extend when no significant digits exist beyond the limit`, () => {
+            // 1.1 radians has no significant digits beyond the first decimal place
+            const angle = Angle.FromRadians(1.1);
+
+            // Both calls should produce the same result
+            expect(angle.toString(AngleUnits.Radians, {
+                fractionalDigits: 2
+            })).equal('1.1 rad');
+
+            expect(angle.toString(AngleUnits.Radians, {
+                fractionalDigits: 2,
+                extendDigitsToFirstFraction: true
+            })).equal('1.1 rad');
+        });
+
+        it(`Should handle combination of very small angles with extension option`, () => {
+            // Create an angle with a very small value (requires many decimal places)
+            // 0.00000123 radians
+            const angle = Angle.FromRadians(0.00000123);
+
+            // Without extension, truncates to just zeros
+            expect(angle.toString(AngleUnits.Radians, {
+                fractionalDigits: 3
+            })).equal('0 rad');
+
+            // With extension, should show all zeros plus the significant digits
+            expect(angle.toString(AngleUnits.Radians, {
+                fractionalDigits: 3,
+                extendDigitsToFirstFraction: true
+            })).equal('0.000001 rad');
+        });
+
+        it(`Should ignore extendDigitsToFirstFraction when fractionalDigits not provided`, () => {
+            const angle = Angle.FromRadians(1.000012);
+
+            // Default behavior when only extendDigitsToFirstFraction is provided
+            const defaultString = angle.toString(AngleUnits.Radians);
+            expect(angle.toString(AngleUnits.Radians, {
+                extendDigitsToFirstFraction: true
+            })).equal(defaultString);
         });
 
         it("Should return 'NaN' when passing an invalid value to convert", () => {

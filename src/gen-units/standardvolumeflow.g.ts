@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a StandardVolumeFlow */
 export interface StandardVolumeFlowDto {
@@ -352,31 +352,35 @@ export class StandardVolumeFlow extends BaseUnit {
      * Note! the default format for StandardVolumeFlow is StandardCubicMetersPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the StandardVolumeFlow.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the StandardVolumeFlow.
      */
-    public toString(unit: StandardVolumeFlowUnits = StandardVolumeFlowUnits.StandardCubicMetersPerSecond, fractionalDigits?: number): string {
+    public toString(unit: StandardVolumeFlowUnits = StandardVolumeFlowUnits.StandardCubicMetersPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case StandardVolumeFlowUnits.StandardCubicMetersPerSecond:
-                return super.truncateFractionDigits(this.StandardCubicMetersPerSecond, fractionalDigits) + ` Sm³/s`;
+                return super.truncateFractionDigits(this.StandardCubicMetersPerSecond, options as ToStringOptions) + ` Sm³/s`;
             case StandardVolumeFlowUnits.StandardCubicMetersPerMinute:
-                return super.truncateFractionDigits(this.StandardCubicMetersPerMinute, fractionalDigits) + ` Sm³/min`;
+                return super.truncateFractionDigits(this.StandardCubicMetersPerMinute, options as ToStringOptions) + ` Sm³/min`;
             case StandardVolumeFlowUnits.StandardCubicMetersPerHour:
-                return super.truncateFractionDigits(this.StandardCubicMetersPerHour, fractionalDigits) + ` Sm³/h`;
+                return super.truncateFractionDigits(this.StandardCubicMetersPerHour, options as ToStringOptions) + ` Sm³/h`;
             case StandardVolumeFlowUnits.StandardCubicMetersPerDay:
-                return super.truncateFractionDigits(this.StandardCubicMetersPerDay, fractionalDigits) + ` Sm³/d`;
+                return super.truncateFractionDigits(this.StandardCubicMetersPerDay, options as ToStringOptions) + ` Sm³/d`;
             case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute:
-                return super.truncateFractionDigits(this.StandardCubicCentimetersPerMinute, fractionalDigits) + ` sccm`;
+                return super.truncateFractionDigits(this.StandardCubicCentimetersPerMinute, options as ToStringOptions) + ` sccm`;
             case StandardVolumeFlowUnits.StandardLitersPerMinute:
-                return super.truncateFractionDigits(this.StandardLitersPerMinute, fractionalDigits) + ` slm`;
+                return super.truncateFractionDigits(this.StandardLitersPerMinute, options as ToStringOptions) + ` slm`;
             case StandardVolumeFlowUnits.StandardCubicFeetPerSecond:
-                return super.truncateFractionDigits(this.StandardCubicFeetPerSecond, fractionalDigits) + ` Sft³/s`;
+                return super.truncateFractionDigits(this.StandardCubicFeetPerSecond, options as ToStringOptions) + ` Sft³/s`;
             case StandardVolumeFlowUnits.StandardCubicFeetPerMinute:
-                return super.truncateFractionDigits(this.StandardCubicFeetPerMinute, fractionalDigits) + ` scfm`;
+                return super.truncateFractionDigits(this.StandardCubicFeetPerMinute, options as ToStringOptions) + ` scfm`;
             case StandardVolumeFlowUnits.StandardCubicFeetPerHour:
-                return super.truncateFractionDigits(this.StandardCubicFeetPerHour, fractionalDigits) + ` scfh`;
+                return super.truncateFractionDigits(this.StandardCubicFeetPerHour, options as ToStringOptions) + ` scfh`;
         default:
             break;
         }

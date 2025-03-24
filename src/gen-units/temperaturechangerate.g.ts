@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a TemperatureChangeRate */
 export interface TemperatureChangeRateDto {
@@ -582,47 +582,51 @@ export class TemperatureChangeRate extends BaseUnit {
      * Note! the default format for TemperatureChangeRate is DegreesCelsiusPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the TemperatureChangeRate.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the TemperatureChangeRate.
      */
-    public toString(unit: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond, fractionalDigits?: number): string {
+    public toString(unit: TemperatureChangeRateUnits = TemperatureChangeRateUnits.DegreesCelsiusPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case TemperatureChangeRateUnits.DegreesCelsiusPerSecond:
-                return super.truncateFractionDigits(this.DegreesCelsiusPerSecond, fractionalDigits) + ` °C/s`;
+                return super.truncateFractionDigits(this.DegreesCelsiusPerSecond, options as ToStringOptions) + ` °C/s`;
             case TemperatureChangeRateUnits.DegreesCelsiusPerMinute:
-                return super.truncateFractionDigits(this.DegreesCelsiusPerMinute, fractionalDigits) + ` °C/min`;
+                return super.truncateFractionDigits(this.DegreesCelsiusPerMinute, options as ToStringOptions) + ` °C/min`;
             case TemperatureChangeRateUnits.DegreesKelvinPerMinute:
-                return super.truncateFractionDigits(this.DegreesKelvinPerMinute, fractionalDigits) + ` K/min`;
+                return super.truncateFractionDigits(this.DegreesKelvinPerMinute, options as ToStringOptions) + ` K/min`;
             case TemperatureChangeRateUnits.DegreesFahrenheitPerMinute:
-                return super.truncateFractionDigits(this.DegreesFahrenheitPerMinute, fractionalDigits) + ` °F/min`;
+                return super.truncateFractionDigits(this.DegreesFahrenheitPerMinute, options as ToStringOptions) + ` °F/min`;
             case TemperatureChangeRateUnits.DegreesFahrenheitPerSecond:
-                return super.truncateFractionDigits(this.DegreesFahrenheitPerSecond, fractionalDigits) + ` °F/s`;
+                return super.truncateFractionDigits(this.DegreesFahrenheitPerSecond, options as ToStringOptions) + ` °F/s`;
             case TemperatureChangeRateUnits.DegreesKelvinPerSecond:
-                return super.truncateFractionDigits(this.DegreesKelvinPerSecond, fractionalDigits) + ` K/s`;
+                return super.truncateFractionDigits(this.DegreesKelvinPerSecond, options as ToStringOptions) + ` K/s`;
             case TemperatureChangeRateUnits.DegreesCelsiusPerHour:
-                return super.truncateFractionDigits(this.DegreesCelsiusPerHour, fractionalDigits) + ` °C/h`;
+                return super.truncateFractionDigits(this.DegreesCelsiusPerHour, options as ToStringOptions) + ` °C/h`;
             case TemperatureChangeRateUnits.DegreesKelvinPerHour:
-                return super.truncateFractionDigits(this.DegreesKelvinPerHour, fractionalDigits) + ` K/h`;
+                return super.truncateFractionDigits(this.DegreesKelvinPerHour, options as ToStringOptions) + ` K/h`;
             case TemperatureChangeRateUnits.DegreesFahrenheitPerHour:
-                return super.truncateFractionDigits(this.DegreesFahrenheitPerHour, fractionalDigits) + ` °F/h`;
+                return super.truncateFractionDigits(this.DegreesFahrenheitPerHour, options as ToStringOptions) + ` °F/h`;
             case TemperatureChangeRateUnits.NanodegreesCelsiusPerSecond:
-                return super.truncateFractionDigits(this.NanodegreesCelsiusPerSecond, fractionalDigits) + ` n°C/s`;
+                return super.truncateFractionDigits(this.NanodegreesCelsiusPerSecond, options as ToStringOptions) + ` n°C/s`;
             case TemperatureChangeRateUnits.MicrodegreesCelsiusPerSecond:
-                return super.truncateFractionDigits(this.MicrodegreesCelsiusPerSecond, fractionalDigits) + ` μ°C/s`;
+                return super.truncateFractionDigits(this.MicrodegreesCelsiusPerSecond, options as ToStringOptions) + ` μ°C/s`;
             case TemperatureChangeRateUnits.MillidegreesCelsiusPerSecond:
-                return super.truncateFractionDigits(this.MillidegreesCelsiusPerSecond, fractionalDigits) + ` m°C/s`;
+                return super.truncateFractionDigits(this.MillidegreesCelsiusPerSecond, options as ToStringOptions) + ` m°C/s`;
             case TemperatureChangeRateUnits.CentidegreesCelsiusPerSecond:
-                return super.truncateFractionDigits(this.CentidegreesCelsiusPerSecond, fractionalDigits) + ` c°C/s`;
+                return super.truncateFractionDigits(this.CentidegreesCelsiusPerSecond, options as ToStringOptions) + ` c°C/s`;
             case TemperatureChangeRateUnits.DecidegreesCelsiusPerSecond:
-                return super.truncateFractionDigits(this.DecidegreesCelsiusPerSecond, fractionalDigits) + ` d°C/s`;
+                return super.truncateFractionDigits(this.DecidegreesCelsiusPerSecond, options as ToStringOptions) + ` d°C/s`;
             case TemperatureChangeRateUnits.DecadegreesCelsiusPerSecond:
-                return super.truncateFractionDigits(this.DecadegreesCelsiusPerSecond, fractionalDigits) + ` da°C/s`;
+                return super.truncateFractionDigits(this.DecadegreesCelsiusPerSecond, options as ToStringOptions) + ` da°C/s`;
             case TemperatureChangeRateUnits.HectodegreesCelsiusPerSecond:
-                return super.truncateFractionDigits(this.HectodegreesCelsiusPerSecond, fractionalDigits) + ` h°C/s`;
+                return super.truncateFractionDigits(this.HectodegreesCelsiusPerSecond, options as ToStringOptions) + ` h°C/s`;
             case TemperatureChangeRateUnits.KilodegreesCelsiusPerSecond:
-                return super.truncateFractionDigits(this.KilodegreesCelsiusPerSecond, fractionalDigits) + ` k°C/s`;
+                return super.truncateFractionDigits(this.KilodegreesCelsiusPerSecond, options as ToStringOptions) + ` k°C/s`;
         default:
             break;
         }

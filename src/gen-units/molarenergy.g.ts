@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a MolarEnergy */
 export interface MolarEnergyDto {
@@ -196,19 +196,23 @@ export class MolarEnergy extends BaseUnit {
      * Note! the default format for MolarEnergy is JoulesPerMole.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MolarEnergy.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the MolarEnergy.
      */
-    public toString(unit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole, fractionalDigits?: number): string {
+    public toString(unit: MolarEnergyUnits = MolarEnergyUnits.JoulesPerMole, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case MolarEnergyUnits.JoulesPerMole:
-                return super.truncateFractionDigits(this.JoulesPerMole, fractionalDigits) + ` J/mol`;
+                return super.truncateFractionDigits(this.JoulesPerMole, options as ToStringOptions) + ` J/mol`;
             case MolarEnergyUnits.KilojoulesPerMole:
-                return super.truncateFractionDigits(this.KilojoulesPerMole, fractionalDigits) + ` kJ/mol`;
+                return super.truncateFractionDigits(this.KilojoulesPerMole, options as ToStringOptions) + ` kJ/mol`;
             case MolarEnergyUnits.MegajoulesPerMole:
-                return super.truncateFractionDigits(this.MegajoulesPerMole, fractionalDigits) + ` MJ/mol`;
+                return super.truncateFractionDigits(this.MegajoulesPerMole, options as ToStringOptions) + ` MJ/mol`;
         default:
             break;
         }

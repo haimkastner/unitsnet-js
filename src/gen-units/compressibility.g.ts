@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Compressibility */
 export interface CompressibilityDto {
@@ -300,27 +300,31 @@ export class Compressibility extends BaseUnit {
      * Note! the default format for Compressibility is InversePascals.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Compressibility.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Compressibility.
      */
-    public toString(unit: CompressibilityUnits = CompressibilityUnits.InversePascals, fractionalDigits?: number): string {
+    public toString(unit: CompressibilityUnits = CompressibilityUnits.InversePascals, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case CompressibilityUnits.InversePascals:
-                return super.truncateFractionDigits(this.InversePascals, fractionalDigits) + ` Pa⁻¹`;
+                return super.truncateFractionDigits(this.InversePascals, options as ToStringOptions) + ` Pa⁻¹`;
             case CompressibilityUnits.InverseKilopascals:
-                return super.truncateFractionDigits(this.InverseKilopascals, fractionalDigits) + ` kPa⁻¹`;
+                return super.truncateFractionDigits(this.InverseKilopascals, options as ToStringOptions) + ` kPa⁻¹`;
             case CompressibilityUnits.InverseMegapascals:
-                return super.truncateFractionDigits(this.InverseMegapascals, fractionalDigits) + ` MPa⁻¹`;
+                return super.truncateFractionDigits(this.InverseMegapascals, options as ToStringOptions) + ` MPa⁻¹`;
             case CompressibilityUnits.InverseAtmospheres:
-                return super.truncateFractionDigits(this.InverseAtmospheres, fractionalDigits) + ` atm⁻¹`;
+                return super.truncateFractionDigits(this.InverseAtmospheres, options as ToStringOptions) + ` atm⁻¹`;
             case CompressibilityUnits.InverseMillibars:
-                return super.truncateFractionDigits(this.InverseMillibars, fractionalDigits) + ` mbar⁻¹`;
+                return super.truncateFractionDigits(this.InverseMillibars, options as ToStringOptions) + ` mbar⁻¹`;
             case CompressibilityUnits.InverseBars:
-                return super.truncateFractionDigits(this.InverseBars, fractionalDigits) + ` bar⁻¹`;
+                return super.truncateFractionDigits(this.InverseBars, options as ToStringOptions) + ` bar⁻¹`;
             case CompressibilityUnits.InversePoundsForcePerSquareInch:
-                return super.truncateFractionDigits(this.InversePoundsForcePerSquareInch, fractionalDigits) + ` psi⁻¹`;
+                return super.truncateFractionDigits(this.InversePoundsForcePerSquareInch, options as ToStringOptions) + ` psi⁻¹`;
         default:
             break;
         }

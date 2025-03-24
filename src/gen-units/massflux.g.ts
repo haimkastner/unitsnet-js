@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a MassFlux */
 export interface MassFluxDto {
@@ -466,37 +466,41 @@ export class MassFlux extends BaseUnit {
      * Note! the default format for MassFlux is KilogramsPerSecondPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MassFlux.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the MassFlux.
      */
-    public toString(unit: MassFluxUnits = MassFluxUnits.KilogramsPerSecondPerSquareMeter, fractionalDigits?: number): string {
+    public toString(unit: MassFluxUnits = MassFluxUnits.KilogramsPerSecondPerSquareMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case MassFluxUnits.GramsPerSecondPerSquareMeter:
-                return super.truncateFractionDigits(this.GramsPerSecondPerSquareMeter, fractionalDigits) + ` g·s⁻¹·m⁻²`;
+                return super.truncateFractionDigits(this.GramsPerSecondPerSquareMeter, options as ToStringOptions) + ` g·s⁻¹·m⁻²`;
             case MassFluxUnits.GramsPerSecondPerSquareCentimeter:
-                return super.truncateFractionDigits(this.GramsPerSecondPerSquareCentimeter, fractionalDigits) + ` g·s⁻¹·cm⁻²`;
+                return super.truncateFractionDigits(this.GramsPerSecondPerSquareCentimeter, options as ToStringOptions) + ` g·s⁻¹·cm⁻²`;
             case MassFluxUnits.GramsPerSecondPerSquareMillimeter:
-                return super.truncateFractionDigits(this.GramsPerSecondPerSquareMillimeter, fractionalDigits) + ` g·s⁻¹·mm⁻²`;
+                return super.truncateFractionDigits(this.GramsPerSecondPerSquareMillimeter, options as ToStringOptions) + ` g·s⁻¹·mm⁻²`;
             case MassFluxUnits.GramsPerHourPerSquareMeter:
-                return super.truncateFractionDigits(this.GramsPerHourPerSquareMeter, fractionalDigits) + ` g·h⁻¹·m⁻²`;
+                return super.truncateFractionDigits(this.GramsPerHourPerSquareMeter, options as ToStringOptions) + ` g·h⁻¹·m⁻²`;
             case MassFluxUnits.GramsPerHourPerSquareCentimeter:
-                return super.truncateFractionDigits(this.GramsPerHourPerSquareCentimeter, fractionalDigits) + ` g·h⁻¹·cm⁻²`;
+                return super.truncateFractionDigits(this.GramsPerHourPerSquareCentimeter, options as ToStringOptions) + ` g·h⁻¹·cm⁻²`;
             case MassFluxUnits.GramsPerHourPerSquareMillimeter:
-                return super.truncateFractionDigits(this.GramsPerHourPerSquareMillimeter, fractionalDigits) + ` g·h⁻¹·mm⁻²`;
+                return super.truncateFractionDigits(this.GramsPerHourPerSquareMillimeter, options as ToStringOptions) + ` g·h⁻¹·mm⁻²`;
             case MassFluxUnits.KilogramsPerSecondPerSquareMeter:
-                return super.truncateFractionDigits(this.KilogramsPerSecondPerSquareMeter, fractionalDigits) + ` kg·s⁻¹·m⁻²`;
+                return super.truncateFractionDigits(this.KilogramsPerSecondPerSquareMeter, options as ToStringOptions) + ` kg·s⁻¹·m⁻²`;
             case MassFluxUnits.KilogramsPerSecondPerSquareCentimeter:
-                return super.truncateFractionDigits(this.KilogramsPerSecondPerSquareCentimeter, fractionalDigits) + ` kg·s⁻¹·cm⁻²`;
+                return super.truncateFractionDigits(this.KilogramsPerSecondPerSquareCentimeter, options as ToStringOptions) + ` kg·s⁻¹·cm⁻²`;
             case MassFluxUnits.KilogramsPerSecondPerSquareMillimeter:
-                return super.truncateFractionDigits(this.KilogramsPerSecondPerSquareMillimeter, fractionalDigits) + ` kg·s⁻¹·mm⁻²`;
+                return super.truncateFractionDigits(this.KilogramsPerSecondPerSquareMillimeter, options as ToStringOptions) + ` kg·s⁻¹·mm⁻²`;
             case MassFluxUnits.KilogramsPerHourPerSquareMeter:
-                return super.truncateFractionDigits(this.KilogramsPerHourPerSquareMeter, fractionalDigits) + ` kg·h⁻¹·m⁻²`;
+                return super.truncateFractionDigits(this.KilogramsPerHourPerSquareMeter, options as ToStringOptions) + ` kg·h⁻¹·m⁻²`;
             case MassFluxUnits.KilogramsPerHourPerSquareCentimeter:
-                return super.truncateFractionDigits(this.KilogramsPerHourPerSquareCentimeter, fractionalDigits) + ` kg·h⁻¹·cm⁻²`;
+                return super.truncateFractionDigits(this.KilogramsPerHourPerSquareCentimeter, options as ToStringOptions) + ` kg·h⁻¹·cm⁻²`;
             case MassFluxUnits.KilogramsPerHourPerSquareMillimeter:
-                return super.truncateFractionDigits(this.KilogramsPerHourPerSquareMillimeter, fractionalDigits) + ` kg·h⁻¹·mm⁻²`;
+                return super.truncateFractionDigits(this.KilogramsPerHourPerSquareMillimeter, options as ToStringOptions) + ` kg·h⁻¹·mm⁻²`;
         default:
             break;
         }

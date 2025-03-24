@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a DynamicViscosity */
 export interface DynamicViscosityDto {
@@ -384,33 +384,37 @@ export class DynamicViscosity extends BaseUnit {
      * Note! the default format for DynamicViscosity is NewtonSecondsPerMeterSquared.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the DynamicViscosity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the DynamicViscosity.
      */
-    public toString(unit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared, fractionalDigits?: number): string {
+    public toString(unit: DynamicViscosityUnits = DynamicViscosityUnits.NewtonSecondsPerMeterSquared, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case DynamicViscosityUnits.NewtonSecondsPerMeterSquared:
-                return super.truncateFractionDigits(this.NewtonSecondsPerMeterSquared, fractionalDigits) + ` Ns/m²`;
+                return super.truncateFractionDigits(this.NewtonSecondsPerMeterSquared, options as ToStringOptions) + ` Ns/m²`;
             case DynamicViscosityUnits.PascalSeconds:
-                return super.truncateFractionDigits(this.PascalSeconds, fractionalDigits) + ` Pa·s`;
+                return super.truncateFractionDigits(this.PascalSeconds, options as ToStringOptions) + ` Pa·s`;
             case DynamicViscosityUnits.Poise:
-                return super.truncateFractionDigits(this.Poise, fractionalDigits) + ` P`;
+                return super.truncateFractionDigits(this.Poise, options as ToStringOptions) + ` P`;
             case DynamicViscosityUnits.Reyns:
-                return super.truncateFractionDigits(this.Reyns, fractionalDigits) + ` reyn`;
+                return super.truncateFractionDigits(this.Reyns, options as ToStringOptions) + ` reyn`;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareInch:
-                return super.truncateFractionDigits(this.PoundsForceSecondPerSquareInch, fractionalDigits) + ` lbf·s/in²`;
+                return super.truncateFractionDigits(this.PoundsForceSecondPerSquareInch, options as ToStringOptions) + ` lbf·s/in²`;
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
-                return super.truncateFractionDigits(this.PoundsForceSecondPerSquareFoot, fractionalDigits) + ` lbf·s/ft²`;
+                return super.truncateFractionDigits(this.PoundsForceSecondPerSquareFoot, options as ToStringOptions) + ` lbf·s/ft²`;
             case DynamicViscosityUnits.PoundsPerFootSecond:
-                return super.truncateFractionDigits(this.PoundsPerFootSecond, fractionalDigits) + ` lb/ft·s`;
+                return super.truncateFractionDigits(this.PoundsPerFootSecond, options as ToStringOptions) + ` lb/ft·s`;
             case DynamicViscosityUnits.MillipascalSeconds:
-                return super.truncateFractionDigits(this.MillipascalSeconds, fractionalDigits) + ` mPa·s`;
+                return super.truncateFractionDigits(this.MillipascalSeconds, options as ToStringOptions) + ` mPa·s`;
             case DynamicViscosityUnits.MicropascalSeconds:
-                return super.truncateFractionDigits(this.MicropascalSeconds, fractionalDigits) + ` μPa·s`;
+                return super.truncateFractionDigits(this.MicropascalSeconds, options as ToStringOptions) + ` μPa·s`;
             case DynamicViscosityUnits.Centipoise:
-                return super.truncateFractionDigits(this.Centipoise, fractionalDigits) + ` cP`;
+                return super.truncateFractionDigits(this.Centipoise, options as ToStringOptions) + ` cP`;
         default:
             break;
         }

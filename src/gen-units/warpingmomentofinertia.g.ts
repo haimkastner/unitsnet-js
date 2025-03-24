@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a WarpingMomentOfInertia */
 export interface WarpingMomentOfInertiaDto {
@@ -286,25 +286,29 @@ export class WarpingMomentOfInertia extends BaseUnit {
      * Note! the default format for WarpingMomentOfInertia is MetersToTheSixth.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the WarpingMomentOfInertia.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the WarpingMomentOfInertia.
      */
-    public toString(unit: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth, fractionalDigits?: number): string {
+    public toString(unit: WarpingMomentOfInertiaUnits = WarpingMomentOfInertiaUnits.MetersToTheSixth, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case WarpingMomentOfInertiaUnits.MetersToTheSixth:
-                return super.truncateFractionDigits(this.MetersToTheSixth, fractionalDigits) + ` m⁶`;
+                return super.truncateFractionDigits(this.MetersToTheSixth, options as ToStringOptions) + ` m⁶`;
             case WarpingMomentOfInertiaUnits.DecimetersToTheSixth:
-                return super.truncateFractionDigits(this.DecimetersToTheSixth, fractionalDigits) + ` dm⁶`;
+                return super.truncateFractionDigits(this.DecimetersToTheSixth, options as ToStringOptions) + ` dm⁶`;
             case WarpingMomentOfInertiaUnits.CentimetersToTheSixth:
-                return super.truncateFractionDigits(this.CentimetersToTheSixth, fractionalDigits) + ` cm⁶`;
+                return super.truncateFractionDigits(this.CentimetersToTheSixth, options as ToStringOptions) + ` cm⁶`;
             case WarpingMomentOfInertiaUnits.MillimetersToTheSixth:
-                return super.truncateFractionDigits(this.MillimetersToTheSixth, fractionalDigits) + ` mm⁶`;
+                return super.truncateFractionDigits(this.MillimetersToTheSixth, options as ToStringOptions) + ` mm⁶`;
             case WarpingMomentOfInertiaUnits.FeetToTheSixth:
-                return super.truncateFractionDigits(this.FeetToTheSixth, fractionalDigits) + ` ft⁶`;
+                return super.truncateFractionDigits(this.FeetToTheSixth, options as ToStringOptions) + ` ft⁶`;
             case WarpingMomentOfInertiaUnits.InchesToTheSixth:
-                return super.truncateFractionDigits(this.InchesToTheSixth, fractionalDigits) + ` in⁶`;
+                return super.truncateFractionDigits(this.InchesToTheSixth, options as ToStringOptions) + ` in⁶`;
         default:
             break;
         }

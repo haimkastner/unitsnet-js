@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Permeability */
 export interface PermeabilityDto {
@@ -144,15 +144,19 @@ export class Permeability extends BaseUnit {
      * Note! the default format for Permeability is HenriesPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Permeability.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Permeability.
      */
-    public toString(unit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter, fractionalDigits?: number): string {
+    public toString(unit: PermeabilityUnits = PermeabilityUnits.HenriesPerMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case PermeabilityUnits.HenriesPerMeter:
-                return super.truncateFractionDigits(this.HenriesPerMeter, fractionalDigits) + ` H/m`;
+                return super.truncateFractionDigits(this.HenriesPerMeter, options as ToStringOptions) + ` H/m`;
         default:
             break;
         }

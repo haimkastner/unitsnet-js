@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricPotential */
 export interface ElectricPotentialDto {
@@ -274,25 +274,29 @@ export class ElectricPotential extends BaseUnit {
      * Note! the default format for ElectricPotential is Volts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricPotential.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricPotential.
      */
-    public toString(unit: ElectricPotentialUnits = ElectricPotentialUnits.Volts, fractionalDigits?: number): string {
+    public toString(unit: ElectricPotentialUnits = ElectricPotentialUnits.Volts, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricPotentialUnits.Volts:
-                return super.truncateFractionDigits(this.Volts, fractionalDigits) + ` V`;
+                return super.truncateFractionDigits(this.Volts, options as ToStringOptions) + ` V`;
             case ElectricPotentialUnits.Nanovolts:
-                return super.truncateFractionDigits(this.Nanovolts, fractionalDigits) + ` nV`;
+                return super.truncateFractionDigits(this.Nanovolts, options as ToStringOptions) + ` nV`;
             case ElectricPotentialUnits.Microvolts:
-                return super.truncateFractionDigits(this.Microvolts, fractionalDigits) + ` μV`;
+                return super.truncateFractionDigits(this.Microvolts, options as ToStringOptions) + ` μV`;
             case ElectricPotentialUnits.Millivolts:
-                return super.truncateFractionDigits(this.Millivolts, fractionalDigits) + ` mV`;
+                return super.truncateFractionDigits(this.Millivolts, options as ToStringOptions) + ` mV`;
             case ElectricPotentialUnits.Kilovolts:
-                return super.truncateFractionDigits(this.Kilovolts, fractionalDigits) + ` kV`;
+                return super.truncateFractionDigits(this.Kilovolts, options as ToStringOptions) + ` kV`;
             case ElectricPotentialUnits.Megavolts:
-                return super.truncateFractionDigits(this.Megavolts, fractionalDigits) + ` MV`;
+                return super.truncateFractionDigits(this.Megavolts, options as ToStringOptions) + ` MV`;
         default:
             break;
         }

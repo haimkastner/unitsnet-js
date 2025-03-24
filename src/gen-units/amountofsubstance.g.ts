@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a AmountOfSubstance */
 export interface AmountOfSubstanceDto {
@@ -596,47 +596,51 @@ export class AmountOfSubstance extends BaseUnit {
      * Note! the default format for AmountOfSubstance is Moles.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the AmountOfSubstance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the AmountOfSubstance.
      */
-    public toString(unit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles, fractionalDigits?: number): string {
+    public toString(unit: AmountOfSubstanceUnits = AmountOfSubstanceUnits.Moles, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case AmountOfSubstanceUnits.Moles:
-                return super.truncateFractionDigits(this.Moles, fractionalDigits) + ` mol`;
+                return super.truncateFractionDigits(this.Moles, options as ToStringOptions) + ` mol`;
             case AmountOfSubstanceUnits.PoundMoles:
-                return super.truncateFractionDigits(this.PoundMoles, fractionalDigits) + ` lbmol`;
+                return super.truncateFractionDigits(this.PoundMoles, options as ToStringOptions) + ` lbmol`;
             case AmountOfSubstanceUnits.Femtomoles:
-                return super.truncateFractionDigits(this.Femtomoles, fractionalDigits) + ` fmol`;
+                return super.truncateFractionDigits(this.Femtomoles, options as ToStringOptions) + ` fmol`;
             case AmountOfSubstanceUnits.Picomoles:
-                return super.truncateFractionDigits(this.Picomoles, fractionalDigits) + ` pmol`;
+                return super.truncateFractionDigits(this.Picomoles, options as ToStringOptions) + ` pmol`;
             case AmountOfSubstanceUnits.Nanomoles:
-                return super.truncateFractionDigits(this.Nanomoles, fractionalDigits) + ` nmol`;
+                return super.truncateFractionDigits(this.Nanomoles, options as ToStringOptions) + ` nmol`;
             case AmountOfSubstanceUnits.Micromoles:
-                return super.truncateFractionDigits(this.Micromoles, fractionalDigits) + ` μmol`;
+                return super.truncateFractionDigits(this.Micromoles, options as ToStringOptions) + ` μmol`;
             case AmountOfSubstanceUnits.Millimoles:
-                return super.truncateFractionDigits(this.Millimoles, fractionalDigits) + ` mmol`;
+                return super.truncateFractionDigits(this.Millimoles, options as ToStringOptions) + ` mmol`;
             case AmountOfSubstanceUnits.Centimoles:
-                return super.truncateFractionDigits(this.Centimoles, fractionalDigits) + ` cmol`;
+                return super.truncateFractionDigits(this.Centimoles, options as ToStringOptions) + ` cmol`;
             case AmountOfSubstanceUnits.Decimoles:
-                return super.truncateFractionDigits(this.Decimoles, fractionalDigits) + ` dmol`;
+                return super.truncateFractionDigits(this.Decimoles, options as ToStringOptions) + ` dmol`;
             case AmountOfSubstanceUnits.Kilomoles:
-                return super.truncateFractionDigits(this.Kilomoles, fractionalDigits) + ` kmol`;
+                return super.truncateFractionDigits(this.Kilomoles, options as ToStringOptions) + ` kmol`;
             case AmountOfSubstanceUnits.Megamoles:
-                return super.truncateFractionDigits(this.Megamoles, fractionalDigits) + ` Mmol`;
+                return super.truncateFractionDigits(this.Megamoles, options as ToStringOptions) + ` Mmol`;
             case AmountOfSubstanceUnits.NanopoundMoles:
-                return super.truncateFractionDigits(this.NanopoundMoles, fractionalDigits) + ` nlbmol`;
+                return super.truncateFractionDigits(this.NanopoundMoles, options as ToStringOptions) + ` nlbmol`;
             case AmountOfSubstanceUnits.MicropoundMoles:
-                return super.truncateFractionDigits(this.MicropoundMoles, fractionalDigits) + ` μlbmol`;
+                return super.truncateFractionDigits(this.MicropoundMoles, options as ToStringOptions) + ` μlbmol`;
             case AmountOfSubstanceUnits.MillipoundMoles:
-                return super.truncateFractionDigits(this.MillipoundMoles, fractionalDigits) + ` mlbmol`;
+                return super.truncateFractionDigits(this.MillipoundMoles, options as ToStringOptions) + ` mlbmol`;
             case AmountOfSubstanceUnits.CentipoundMoles:
-                return super.truncateFractionDigits(this.CentipoundMoles, fractionalDigits) + ` clbmol`;
+                return super.truncateFractionDigits(this.CentipoundMoles, options as ToStringOptions) + ` clbmol`;
             case AmountOfSubstanceUnits.DecipoundMoles:
-                return super.truncateFractionDigits(this.DecipoundMoles, fractionalDigits) + ` dlbmol`;
+                return super.truncateFractionDigits(this.DecipoundMoles, options as ToStringOptions) + ` dlbmol`;
             case AmountOfSubstanceUnits.KilopoundMoles:
-                return super.truncateFractionDigits(this.KilopoundMoles, fractionalDigits) + ` klbmol`;
+                return super.truncateFractionDigits(this.KilopoundMoles, options as ToStringOptions) + ` klbmol`;
         default:
             break;
         }

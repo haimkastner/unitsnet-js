@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Area */
 export interface AreaDto {
@@ -504,41 +504,45 @@ export class Area extends BaseUnit {
      * Note! the default format for Area is SquareMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Area.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Area.
      */
-    public toString(unit: AreaUnits = AreaUnits.SquareMeters, fractionalDigits?: number): string {
+    public toString(unit: AreaUnits = AreaUnits.SquareMeters, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case AreaUnits.SquareKilometers:
-                return super.truncateFractionDigits(this.SquareKilometers, fractionalDigits) + ` km²`;
+                return super.truncateFractionDigits(this.SquareKilometers, options as ToStringOptions) + ` km²`;
             case AreaUnits.SquareMeters:
-                return super.truncateFractionDigits(this.SquareMeters, fractionalDigits) + ` m²`;
+                return super.truncateFractionDigits(this.SquareMeters, options as ToStringOptions) + ` m²`;
             case AreaUnits.SquareDecimeters:
-                return super.truncateFractionDigits(this.SquareDecimeters, fractionalDigits) + ` dm²`;
+                return super.truncateFractionDigits(this.SquareDecimeters, options as ToStringOptions) + ` dm²`;
             case AreaUnits.SquareCentimeters:
-                return super.truncateFractionDigits(this.SquareCentimeters, fractionalDigits) + ` cm²`;
+                return super.truncateFractionDigits(this.SquareCentimeters, options as ToStringOptions) + ` cm²`;
             case AreaUnits.SquareMillimeters:
-                return super.truncateFractionDigits(this.SquareMillimeters, fractionalDigits) + ` mm²`;
+                return super.truncateFractionDigits(this.SquareMillimeters, options as ToStringOptions) + ` mm²`;
             case AreaUnits.SquareMicrometers:
-                return super.truncateFractionDigits(this.SquareMicrometers, fractionalDigits) + ` µm²`;
+                return super.truncateFractionDigits(this.SquareMicrometers, options as ToStringOptions) + ` µm²`;
             case AreaUnits.SquareMiles:
-                return super.truncateFractionDigits(this.SquareMiles, fractionalDigits) + ` mi²`;
+                return super.truncateFractionDigits(this.SquareMiles, options as ToStringOptions) + ` mi²`;
             case AreaUnits.SquareYards:
-                return super.truncateFractionDigits(this.SquareYards, fractionalDigits) + ` yd²`;
+                return super.truncateFractionDigits(this.SquareYards, options as ToStringOptions) + ` yd²`;
             case AreaUnits.SquareFeet:
-                return super.truncateFractionDigits(this.SquareFeet, fractionalDigits) + ` ft²`;
+                return super.truncateFractionDigits(this.SquareFeet, options as ToStringOptions) + ` ft²`;
             case AreaUnits.UsSurveySquareFeet:
-                return super.truncateFractionDigits(this.UsSurveySquareFeet, fractionalDigits) + ` ft² (US)`;
+                return super.truncateFractionDigits(this.UsSurveySquareFeet, options as ToStringOptions) + ` ft² (US)`;
             case AreaUnits.SquareInches:
-                return super.truncateFractionDigits(this.SquareInches, fractionalDigits) + ` in²`;
+                return super.truncateFractionDigits(this.SquareInches, options as ToStringOptions) + ` in²`;
             case AreaUnits.Acres:
-                return super.truncateFractionDigits(this.Acres, fractionalDigits) + ` ac`;
+                return super.truncateFractionDigits(this.Acres, options as ToStringOptions) + ` ac`;
             case AreaUnits.Hectares:
-                return super.truncateFractionDigits(this.Hectares, fractionalDigits) + ` ha`;
+                return super.truncateFractionDigits(this.Hectares, options as ToStringOptions) + ` ha`;
             case AreaUnits.SquareNauticalMiles:
-                return super.truncateFractionDigits(this.SquareNauticalMiles, fractionalDigits) + ` nmi²`;
+                return super.truncateFractionDigits(this.SquareNauticalMiles, options as ToStringOptions) + ` nmi²`;
         default:
             break;
         }

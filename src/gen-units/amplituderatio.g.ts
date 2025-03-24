@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a AmplitudeRatio */
 export interface AmplitudeRatioDto {
@@ -222,21 +222,25 @@ export class AmplitudeRatio extends BaseUnit {
      * Note! the default format for AmplitudeRatio is DecibelVolts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the AmplitudeRatio.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the AmplitudeRatio.
      */
-    public toString(unit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts, fractionalDigits?: number): string {
+    public toString(unit: AmplitudeRatioUnits = AmplitudeRatioUnits.DecibelVolts, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case AmplitudeRatioUnits.DecibelVolts:
-                return super.truncateFractionDigits(this.DecibelVolts, fractionalDigits) + ` dBV`;
+                return super.truncateFractionDigits(this.DecibelVolts, options as ToStringOptions) + ` dBV`;
             case AmplitudeRatioUnits.DecibelMicrovolts:
-                return super.truncateFractionDigits(this.DecibelMicrovolts, fractionalDigits) + ` dBµV`;
+                return super.truncateFractionDigits(this.DecibelMicrovolts, options as ToStringOptions) + ` dBµV`;
             case AmplitudeRatioUnits.DecibelMillivolts:
-                return super.truncateFractionDigits(this.DecibelMillivolts, fractionalDigits) + ` dBmV`;
+                return super.truncateFractionDigits(this.DecibelMillivolts, options as ToStringOptions) + ` dBmV`;
             case AmplitudeRatioUnits.DecibelsUnloaded:
-                return super.truncateFractionDigits(this.DecibelsUnloaded, fractionalDigits) + ` dBu`;
+                return super.truncateFractionDigits(this.DecibelsUnloaded, options as ToStringOptions) + ` dBu`;
         default:
             break;
         }

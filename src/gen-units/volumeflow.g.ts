@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a VolumeFlow */
 export interface VolumeFlowDto {
@@ -2302,163 +2302,167 @@ export class VolumeFlow extends BaseUnit {
      * Note! the default format for VolumeFlow is CubicMetersPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the VolumeFlow.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the VolumeFlow.
      */
-    public toString(unit: VolumeFlowUnits = VolumeFlowUnits.CubicMetersPerSecond, fractionalDigits?: number): string {
+    public toString(unit: VolumeFlowUnits = VolumeFlowUnits.CubicMetersPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case VolumeFlowUnits.CubicMetersPerSecond:
-                return super.truncateFractionDigits(this.CubicMetersPerSecond, fractionalDigits) + ` m³/s`;
+                return super.truncateFractionDigits(this.CubicMetersPerSecond, options as ToStringOptions) + ` m³/s`;
             case VolumeFlowUnits.CubicMetersPerMinute:
-                return super.truncateFractionDigits(this.CubicMetersPerMinute, fractionalDigits) + ` m³/min`;
+                return super.truncateFractionDigits(this.CubicMetersPerMinute, options as ToStringOptions) + ` m³/min`;
             case VolumeFlowUnits.CubicMetersPerHour:
-                return super.truncateFractionDigits(this.CubicMetersPerHour, fractionalDigits) + ` m³/h`;
+                return super.truncateFractionDigits(this.CubicMetersPerHour, options as ToStringOptions) + ` m³/h`;
             case VolumeFlowUnits.CubicMetersPerDay:
-                return super.truncateFractionDigits(this.CubicMetersPerDay, fractionalDigits) + ` m³/d`;
+                return super.truncateFractionDigits(this.CubicMetersPerDay, options as ToStringOptions) + ` m³/d`;
             case VolumeFlowUnits.CubicFeetPerSecond:
-                return super.truncateFractionDigits(this.CubicFeetPerSecond, fractionalDigits) + ` ft³/s`;
+                return super.truncateFractionDigits(this.CubicFeetPerSecond, options as ToStringOptions) + ` ft³/s`;
             case VolumeFlowUnits.CubicFeetPerMinute:
-                return super.truncateFractionDigits(this.CubicFeetPerMinute, fractionalDigits) + ` ft³/min`;
+                return super.truncateFractionDigits(this.CubicFeetPerMinute, options as ToStringOptions) + ` ft³/min`;
             case VolumeFlowUnits.CubicFeetPerHour:
-                return super.truncateFractionDigits(this.CubicFeetPerHour, fractionalDigits) + ` ft³/h`;
+                return super.truncateFractionDigits(this.CubicFeetPerHour, options as ToStringOptions) + ` ft³/h`;
             case VolumeFlowUnits.CubicYardsPerSecond:
-                return super.truncateFractionDigits(this.CubicYardsPerSecond, fractionalDigits) + ` yd³/s`;
+                return super.truncateFractionDigits(this.CubicYardsPerSecond, options as ToStringOptions) + ` yd³/s`;
             case VolumeFlowUnits.CubicYardsPerMinute:
-                return super.truncateFractionDigits(this.CubicYardsPerMinute, fractionalDigits) + ` yd³/min`;
+                return super.truncateFractionDigits(this.CubicYardsPerMinute, options as ToStringOptions) + ` yd³/min`;
             case VolumeFlowUnits.CubicYardsPerHour:
-                return super.truncateFractionDigits(this.CubicYardsPerHour, fractionalDigits) + ` yd³/h`;
+                return super.truncateFractionDigits(this.CubicYardsPerHour, options as ToStringOptions) + ` yd³/h`;
             case VolumeFlowUnits.CubicYardsPerDay:
-                return super.truncateFractionDigits(this.CubicYardsPerDay, fractionalDigits) + ` cy/day`;
+                return super.truncateFractionDigits(this.CubicYardsPerDay, options as ToStringOptions) + ` cy/day`;
             case VolumeFlowUnits.MillionUsGallonsPerDay:
-                return super.truncateFractionDigits(this.MillionUsGallonsPerDay, fractionalDigits) + ` MGD`;
+                return super.truncateFractionDigits(this.MillionUsGallonsPerDay, options as ToStringOptions) + ` MGD`;
             case VolumeFlowUnits.UsGallonsPerDay:
-                return super.truncateFractionDigits(this.UsGallonsPerDay, fractionalDigits) + ` gpd`;
+                return super.truncateFractionDigits(this.UsGallonsPerDay, options as ToStringOptions) + ` gpd`;
             case VolumeFlowUnits.LitersPerSecond:
-                return super.truncateFractionDigits(this.LitersPerSecond, fractionalDigits) + ` L/s`;
+                return super.truncateFractionDigits(this.LitersPerSecond, options as ToStringOptions) + ` L/s`;
             case VolumeFlowUnits.LitersPerMinute:
-                return super.truncateFractionDigits(this.LitersPerMinute, fractionalDigits) + ` L/min`;
+                return super.truncateFractionDigits(this.LitersPerMinute, options as ToStringOptions) + ` L/min`;
             case VolumeFlowUnits.LitersPerHour:
-                return super.truncateFractionDigits(this.LitersPerHour, fractionalDigits) + ` L/h`;
+                return super.truncateFractionDigits(this.LitersPerHour, options as ToStringOptions) + ` L/h`;
             case VolumeFlowUnits.LitersPerDay:
-                return super.truncateFractionDigits(this.LitersPerDay, fractionalDigits) + ` l/day`;
+                return super.truncateFractionDigits(this.LitersPerDay, options as ToStringOptions) + ` l/day`;
             case VolumeFlowUnits.UsGallonsPerSecond:
-                return super.truncateFractionDigits(this.UsGallonsPerSecond, fractionalDigits) + ` gal (U.S.)/s`;
+                return super.truncateFractionDigits(this.UsGallonsPerSecond, options as ToStringOptions) + ` gal (U.S.)/s`;
             case VolumeFlowUnits.UsGallonsPerMinute:
-                return super.truncateFractionDigits(this.UsGallonsPerMinute, fractionalDigits) + ` gal (U.S.)/min`;
+                return super.truncateFractionDigits(this.UsGallonsPerMinute, options as ToStringOptions) + ` gal (U.S.)/min`;
             case VolumeFlowUnits.UkGallonsPerDay:
-                return super.truncateFractionDigits(this.UkGallonsPerDay, fractionalDigits) + ` gal (U. K.)/d`;
+                return super.truncateFractionDigits(this.UkGallonsPerDay, options as ToStringOptions) + ` gal (U. K.)/d`;
             case VolumeFlowUnits.UkGallonsPerHour:
-                return super.truncateFractionDigits(this.UkGallonsPerHour, fractionalDigits) + ` gal (imp.)/h`;
+                return super.truncateFractionDigits(this.UkGallonsPerHour, options as ToStringOptions) + ` gal (imp.)/h`;
             case VolumeFlowUnits.UkGallonsPerMinute:
-                return super.truncateFractionDigits(this.UkGallonsPerMinute, fractionalDigits) + ` gal (imp.)/min`;
+                return super.truncateFractionDigits(this.UkGallonsPerMinute, options as ToStringOptions) + ` gal (imp.)/min`;
             case VolumeFlowUnits.UkGallonsPerSecond:
-                return super.truncateFractionDigits(this.UkGallonsPerSecond, fractionalDigits) + ` gal (imp.)/s`;
+                return super.truncateFractionDigits(this.UkGallonsPerSecond, options as ToStringOptions) + ` gal (imp.)/s`;
             case VolumeFlowUnits.KilousGallonsPerMinute:
-                return super.truncateFractionDigits(this.KilousGallonsPerMinute, fractionalDigits) + ` kgal (U.S.)/min`;
+                return super.truncateFractionDigits(this.KilousGallonsPerMinute, options as ToStringOptions) + ` kgal (U.S.)/min`;
             case VolumeFlowUnits.UsGallonsPerHour:
-                return super.truncateFractionDigits(this.UsGallonsPerHour, fractionalDigits) + ` gal (U.S.)/h`;
+                return super.truncateFractionDigits(this.UsGallonsPerHour, options as ToStringOptions) + ` gal (U.S.)/h`;
             case VolumeFlowUnits.CubicDecimetersPerMinute:
-                return super.truncateFractionDigits(this.CubicDecimetersPerMinute, fractionalDigits) + ` dm³/min`;
+                return super.truncateFractionDigits(this.CubicDecimetersPerMinute, options as ToStringOptions) + ` dm³/min`;
             case VolumeFlowUnits.OilBarrelsPerDay:
-                return super.truncateFractionDigits(this.OilBarrelsPerDay, fractionalDigits) + ` bbl/d`;
+                return super.truncateFractionDigits(this.OilBarrelsPerDay, options as ToStringOptions) + ` bbl/d`;
             case VolumeFlowUnits.OilBarrelsPerMinute:
-                return super.truncateFractionDigits(this.OilBarrelsPerMinute, fractionalDigits) + ` bbl/min`;
+                return super.truncateFractionDigits(this.OilBarrelsPerMinute, options as ToStringOptions) + ` bbl/min`;
             case VolumeFlowUnits.OilBarrelsPerHour:
-                return super.truncateFractionDigits(this.OilBarrelsPerHour, fractionalDigits) + ` bbl/hr`;
+                return super.truncateFractionDigits(this.OilBarrelsPerHour, options as ToStringOptions) + ` bbl/hr`;
             case VolumeFlowUnits.OilBarrelsPerSecond:
-                return super.truncateFractionDigits(this.OilBarrelsPerSecond, fractionalDigits) + ` bbl/s`;
+                return super.truncateFractionDigits(this.OilBarrelsPerSecond, options as ToStringOptions) + ` bbl/s`;
             case VolumeFlowUnits.CubicMillimetersPerSecond:
-                return super.truncateFractionDigits(this.CubicMillimetersPerSecond, fractionalDigits) + ` mm³/s`;
+                return super.truncateFractionDigits(this.CubicMillimetersPerSecond, options as ToStringOptions) + ` mm³/s`;
             case VolumeFlowUnits.AcreFeetPerSecond:
-                return super.truncateFractionDigits(this.AcreFeetPerSecond, fractionalDigits) + ` af/s`;
+                return super.truncateFractionDigits(this.AcreFeetPerSecond, options as ToStringOptions) + ` af/s`;
             case VolumeFlowUnits.AcreFeetPerMinute:
-                return super.truncateFractionDigits(this.AcreFeetPerMinute, fractionalDigits) + ` af/m`;
+                return super.truncateFractionDigits(this.AcreFeetPerMinute, options as ToStringOptions) + ` af/m`;
             case VolumeFlowUnits.AcreFeetPerHour:
-                return super.truncateFractionDigits(this.AcreFeetPerHour, fractionalDigits) + ` af/h`;
+                return super.truncateFractionDigits(this.AcreFeetPerHour, options as ToStringOptions) + ` af/h`;
             case VolumeFlowUnits.AcreFeetPerDay:
-                return super.truncateFractionDigits(this.AcreFeetPerDay, fractionalDigits) + ` af/d`;
+                return super.truncateFractionDigits(this.AcreFeetPerDay, options as ToStringOptions) + ` af/d`;
             case VolumeFlowUnits.CubicCentimetersPerMinute:
-                return super.truncateFractionDigits(this.CubicCentimetersPerMinute, fractionalDigits) + ` cm³/min`;
+                return super.truncateFractionDigits(this.CubicCentimetersPerMinute, options as ToStringOptions) + ` cm³/min`;
             case VolumeFlowUnits.MegausGallonsPerDay:
-                return super.truncateFractionDigits(this.MegausGallonsPerDay, fractionalDigits) + ` Mgpd`;
+                return super.truncateFractionDigits(this.MegausGallonsPerDay, options as ToStringOptions) + ` Mgpd`;
             case VolumeFlowUnits.NanolitersPerSecond:
-                return super.truncateFractionDigits(this.NanolitersPerSecond, fractionalDigits) + ` nL/s`;
+                return super.truncateFractionDigits(this.NanolitersPerSecond, options as ToStringOptions) + ` nL/s`;
             case VolumeFlowUnits.MicrolitersPerSecond:
-                return super.truncateFractionDigits(this.MicrolitersPerSecond, fractionalDigits) + ` μL/s`;
+                return super.truncateFractionDigits(this.MicrolitersPerSecond, options as ToStringOptions) + ` μL/s`;
             case VolumeFlowUnits.MillilitersPerSecond:
-                return super.truncateFractionDigits(this.MillilitersPerSecond, fractionalDigits) + ` mL/s`;
+                return super.truncateFractionDigits(this.MillilitersPerSecond, options as ToStringOptions) + ` mL/s`;
             case VolumeFlowUnits.CentilitersPerSecond:
-                return super.truncateFractionDigits(this.CentilitersPerSecond, fractionalDigits) + ` cL/s`;
+                return super.truncateFractionDigits(this.CentilitersPerSecond, options as ToStringOptions) + ` cL/s`;
             case VolumeFlowUnits.DecilitersPerSecond:
-                return super.truncateFractionDigits(this.DecilitersPerSecond, fractionalDigits) + ` dL/s`;
+                return super.truncateFractionDigits(this.DecilitersPerSecond, options as ToStringOptions) + ` dL/s`;
             case VolumeFlowUnits.DecalitersPerSecond:
-                return super.truncateFractionDigits(this.DecalitersPerSecond, fractionalDigits) + ` daL/s`;
+                return super.truncateFractionDigits(this.DecalitersPerSecond, options as ToStringOptions) + ` daL/s`;
             case VolumeFlowUnits.HectolitersPerSecond:
-                return super.truncateFractionDigits(this.HectolitersPerSecond, fractionalDigits) + ` hL/s`;
+                return super.truncateFractionDigits(this.HectolitersPerSecond, options as ToStringOptions) + ` hL/s`;
             case VolumeFlowUnits.KilolitersPerSecond:
-                return super.truncateFractionDigits(this.KilolitersPerSecond, fractionalDigits) + ` kL/s`;
+                return super.truncateFractionDigits(this.KilolitersPerSecond, options as ToStringOptions) + ` kL/s`;
             case VolumeFlowUnits.MegalitersPerSecond:
-                return super.truncateFractionDigits(this.MegalitersPerSecond, fractionalDigits) + ` ML/s`;
+                return super.truncateFractionDigits(this.MegalitersPerSecond, options as ToStringOptions) + ` ML/s`;
             case VolumeFlowUnits.NanolitersPerMinute:
-                return super.truncateFractionDigits(this.NanolitersPerMinute, fractionalDigits) + ` nL/min`;
+                return super.truncateFractionDigits(this.NanolitersPerMinute, options as ToStringOptions) + ` nL/min`;
             case VolumeFlowUnits.MicrolitersPerMinute:
-                return super.truncateFractionDigits(this.MicrolitersPerMinute, fractionalDigits) + ` μL/min`;
+                return super.truncateFractionDigits(this.MicrolitersPerMinute, options as ToStringOptions) + ` μL/min`;
             case VolumeFlowUnits.MillilitersPerMinute:
-                return super.truncateFractionDigits(this.MillilitersPerMinute, fractionalDigits) + ` mL/min`;
+                return super.truncateFractionDigits(this.MillilitersPerMinute, options as ToStringOptions) + ` mL/min`;
             case VolumeFlowUnits.CentilitersPerMinute:
-                return super.truncateFractionDigits(this.CentilitersPerMinute, fractionalDigits) + ` cL/min`;
+                return super.truncateFractionDigits(this.CentilitersPerMinute, options as ToStringOptions) + ` cL/min`;
             case VolumeFlowUnits.DecilitersPerMinute:
-                return super.truncateFractionDigits(this.DecilitersPerMinute, fractionalDigits) + ` dL/min`;
+                return super.truncateFractionDigits(this.DecilitersPerMinute, options as ToStringOptions) + ` dL/min`;
             case VolumeFlowUnits.DecalitersPerMinute:
-                return super.truncateFractionDigits(this.DecalitersPerMinute, fractionalDigits) + ` daL/min`;
+                return super.truncateFractionDigits(this.DecalitersPerMinute, options as ToStringOptions) + ` daL/min`;
             case VolumeFlowUnits.HectolitersPerMinute:
-                return super.truncateFractionDigits(this.HectolitersPerMinute, fractionalDigits) + ` hL/min`;
+                return super.truncateFractionDigits(this.HectolitersPerMinute, options as ToStringOptions) + ` hL/min`;
             case VolumeFlowUnits.KilolitersPerMinute:
-                return super.truncateFractionDigits(this.KilolitersPerMinute, fractionalDigits) + ` kL/min`;
+                return super.truncateFractionDigits(this.KilolitersPerMinute, options as ToStringOptions) + ` kL/min`;
             case VolumeFlowUnits.MegalitersPerMinute:
-                return super.truncateFractionDigits(this.MegalitersPerMinute, fractionalDigits) + ` ML/min`;
+                return super.truncateFractionDigits(this.MegalitersPerMinute, options as ToStringOptions) + ` ML/min`;
             case VolumeFlowUnits.NanolitersPerHour:
-                return super.truncateFractionDigits(this.NanolitersPerHour, fractionalDigits) + ` nL/h`;
+                return super.truncateFractionDigits(this.NanolitersPerHour, options as ToStringOptions) + ` nL/h`;
             case VolumeFlowUnits.MicrolitersPerHour:
-                return super.truncateFractionDigits(this.MicrolitersPerHour, fractionalDigits) + ` μL/h`;
+                return super.truncateFractionDigits(this.MicrolitersPerHour, options as ToStringOptions) + ` μL/h`;
             case VolumeFlowUnits.MillilitersPerHour:
-                return super.truncateFractionDigits(this.MillilitersPerHour, fractionalDigits) + ` mL/h`;
+                return super.truncateFractionDigits(this.MillilitersPerHour, options as ToStringOptions) + ` mL/h`;
             case VolumeFlowUnits.CentilitersPerHour:
-                return super.truncateFractionDigits(this.CentilitersPerHour, fractionalDigits) + ` cL/h`;
+                return super.truncateFractionDigits(this.CentilitersPerHour, options as ToStringOptions) + ` cL/h`;
             case VolumeFlowUnits.DecilitersPerHour:
-                return super.truncateFractionDigits(this.DecilitersPerHour, fractionalDigits) + ` dL/h`;
+                return super.truncateFractionDigits(this.DecilitersPerHour, options as ToStringOptions) + ` dL/h`;
             case VolumeFlowUnits.DecalitersPerHour:
-                return super.truncateFractionDigits(this.DecalitersPerHour, fractionalDigits) + ` daL/h`;
+                return super.truncateFractionDigits(this.DecalitersPerHour, options as ToStringOptions) + ` daL/h`;
             case VolumeFlowUnits.HectolitersPerHour:
-                return super.truncateFractionDigits(this.HectolitersPerHour, fractionalDigits) + ` hL/h`;
+                return super.truncateFractionDigits(this.HectolitersPerHour, options as ToStringOptions) + ` hL/h`;
             case VolumeFlowUnits.KilolitersPerHour:
-                return super.truncateFractionDigits(this.KilolitersPerHour, fractionalDigits) + ` kL/h`;
+                return super.truncateFractionDigits(this.KilolitersPerHour, options as ToStringOptions) + ` kL/h`;
             case VolumeFlowUnits.MegalitersPerHour:
-                return super.truncateFractionDigits(this.MegalitersPerHour, fractionalDigits) + ` ML/h`;
+                return super.truncateFractionDigits(this.MegalitersPerHour, options as ToStringOptions) + ` ML/h`;
             case VolumeFlowUnits.NanolitersPerDay:
-                return super.truncateFractionDigits(this.NanolitersPerDay, fractionalDigits) + ` nl/day`;
+                return super.truncateFractionDigits(this.NanolitersPerDay, options as ToStringOptions) + ` nl/day`;
             case VolumeFlowUnits.MicrolitersPerDay:
-                return super.truncateFractionDigits(this.MicrolitersPerDay, fractionalDigits) + ` μl/day`;
+                return super.truncateFractionDigits(this.MicrolitersPerDay, options as ToStringOptions) + ` μl/day`;
             case VolumeFlowUnits.MillilitersPerDay:
-                return super.truncateFractionDigits(this.MillilitersPerDay, fractionalDigits) + ` ml/day`;
+                return super.truncateFractionDigits(this.MillilitersPerDay, options as ToStringOptions) + ` ml/day`;
             case VolumeFlowUnits.CentilitersPerDay:
-                return super.truncateFractionDigits(this.CentilitersPerDay, fractionalDigits) + ` cl/day`;
+                return super.truncateFractionDigits(this.CentilitersPerDay, options as ToStringOptions) + ` cl/day`;
             case VolumeFlowUnits.DecilitersPerDay:
-                return super.truncateFractionDigits(this.DecilitersPerDay, fractionalDigits) + ` dl/day`;
+                return super.truncateFractionDigits(this.DecilitersPerDay, options as ToStringOptions) + ` dl/day`;
             case VolumeFlowUnits.DecalitersPerDay:
-                return super.truncateFractionDigits(this.DecalitersPerDay, fractionalDigits) + ` dal/day`;
+                return super.truncateFractionDigits(this.DecalitersPerDay, options as ToStringOptions) + ` dal/day`;
             case VolumeFlowUnits.HectolitersPerDay:
-                return super.truncateFractionDigits(this.HectolitersPerDay, fractionalDigits) + ` hl/day`;
+                return super.truncateFractionDigits(this.HectolitersPerDay, options as ToStringOptions) + ` hl/day`;
             case VolumeFlowUnits.KilolitersPerDay:
-                return super.truncateFractionDigits(this.KilolitersPerDay, fractionalDigits) + ` kl/day`;
+                return super.truncateFractionDigits(this.KilolitersPerDay, options as ToStringOptions) + ` kl/day`;
             case VolumeFlowUnits.MegalitersPerDay:
-                return super.truncateFractionDigits(this.MegalitersPerDay, fractionalDigits) + ` Ml/day`;
+                return super.truncateFractionDigits(this.MegalitersPerDay, options as ToStringOptions) + ` Ml/day`;
             case VolumeFlowUnits.MegaukGallonsPerDay:
-                return super.truncateFractionDigits(this.MegaukGallonsPerDay, fractionalDigits) + ` Mgal (U. K.)/d`;
+                return super.truncateFractionDigits(this.MegaukGallonsPerDay, options as ToStringOptions) + ` Mgal (U. K.)/d`;
             case VolumeFlowUnits.MegaukGallonsPerSecond:
-                return super.truncateFractionDigits(this.MegaukGallonsPerSecond, fractionalDigits) + ` Mgal (imp.)/s`;
+                return super.truncateFractionDigits(this.MegaukGallonsPerSecond, options as ToStringOptions) + ` Mgal (imp.)/s`;
         default:
             break;
         }

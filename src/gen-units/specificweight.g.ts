@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a SpecificWeight */
 export interface SpecificWeightDto {
@@ -584,47 +584,51 @@ export class SpecificWeight extends BaseUnit {
      * Note! the default format for SpecificWeight is NewtonsPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificWeight.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the SpecificWeight.
      */
-    public toString(unit: SpecificWeightUnits = SpecificWeightUnits.NewtonsPerCubicMeter, fractionalDigits?: number): string {
+    public toString(unit: SpecificWeightUnits = SpecificWeightUnits.NewtonsPerCubicMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case SpecificWeightUnits.NewtonsPerCubicMillimeter:
-                return super.truncateFractionDigits(this.NewtonsPerCubicMillimeter, fractionalDigits) + ` N/mm³`;
+                return super.truncateFractionDigits(this.NewtonsPerCubicMillimeter, options as ToStringOptions) + ` N/mm³`;
             case SpecificWeightUnits.NewtonsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.NewtonsPerCubicCentimeter, fractionalDigits) + ` N/cm³`;
+                return super.truncateFractionDigits(this.NewtonsPerCubicCentimeter, options as ToStringOptions) + ` N/cm³`;
             case SpecificWeightUnits.NewtonsPerCubicMeter:
-                return super.truncateFractionDigits(this.NewtonsPerCubicMeter, fractionalDigits) + ` N/m³`;
+                return super.truncateFractionDigits(this.NewtonsPerCubicMeter, options as ToStringOptions) + ` N/m³`;
             case SpecificWeightUnits.KilogramsForcePerCubicMillimeter:
-                return super.truncateFractionDigits(this.KilogramsForcePerCubicMillimeter, fractionalDigits) + ` kgf/mm³`;
+                return super.truncateFractionDigits(this.KilogramsForcePerCubicMillimeter, options as ToStringOptions) + ` kgf/mm³`;
             case SpecificWeightUnits.KilogramsForcePerCubicCentimeter:
-                return super.truncateFractionDigits(this.KilogramsForcePerCubicCentimeter, fractionalDigits) + ` kgf/cm³`;
+                return super.truncateFractionDigits(this.KilogramsForcePerCubicCentimeter, options as ToStringOptions) + ` kgf/cm³`;
             case SpecificWeightUnits.KilogramsForcePerCubicMeter:
-                return super.truncateFractionDigits(this.KilogramsForcePerCubicMeter, fractionalDigits) + ` kgf/m³`;
+                return super.truncateFractionDigits(this.KilogramsForcePerCubicMeter, options as ToStringOptions) + ` kgf/m³`;
             case SpecificWeightUnits.PoundsForcePerCubicInch:
-                return super.truncateFractionDigits(this.PoundsForcePerCubicInch, fractionalDigits) + ` lbf/in³`;
+                return super.truncateFractionDigits(this.PoundsForcePerCubicInch, options as ToStringOptions) + ` lbf/in³`;
             case SpecificWeightUnits.PoundsForcePerCubicFoot:
-                return super.truncateFractionDigits(this.PoundsForcePerCubicFoot, fractionalDigits) + ` lbf/ft³`;
+                return super.truncateFractionDigits(this.PoundsForcePerCubicFoot, options as ToStringOptions) + ` lbf/ft³`;
             case SpecificWeightUnits.TonnesForcePerCubicMillimeter:
-                return super.truncateFractionDigits(this.TonnesForcePerCubicMillimeter, fractionalDigits) + ` tf/mm³`;
+                return super.truncateFractionDigits(this.TonnesForcePerCubicMillimeter, options as ToStringOptions) + ` tf/mm³`;
             case SpecificWeightUnits.TonnesForcePerCubicCentimeter:
-                return super.truncateFractionDigits(this.TonnesForcePerCubicCentimeter, fractionalDigits) + ` tf/cm³`;
+                return super.truncateFractionDigits(this.TonnesForcePerCubicCentimeter, options as ToStringOptions) + ` tf/cm³`;
             case SpecificWeightUnits.TonnesForcePerCubicMeter:
-                return super.truncateFractionDigits(this.TonnesForcePerCubicMeter, fractionalDigits) + ` tf/m³`;
+                return super.truncateFractionDigits(this.TonnesForcePerCubicMeter, options as ToStringOptions) + ` tf/m³`;
             case SpecificWeightUnits.KilonewtonsPerCubicMillimeter:
-                return super.truncateFractionDigits(this.KilonewtonsPerCubicMillimeter, fractionalDigits) + ` kN/mm³`;
+                return super.truncateFractionDigits(this.KilonewtonsPerCubicMillimeter, options as ToStringOptions) + ` kN/mm³`;
             case SpecificWeightUnits.KilonewtonsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.KilonewtonsPerCubicCentimeter, fractionalDigits) + ` kN/cm³`;
+                return super.truncateFractionDigits(this.KilonewtonsPerCubicCentimeter, options as ToStringOptions) + ` kN/cm³`;
             case SpecificWeightUnits.KilonewtonsPerCubicMeter:
-                return super.truncateFractionDigits(this.KilonewtonsPerCubicMeter, fractionalDigits) + ` kN/m³`;
+                return super.truncateFractionDigits(this.KilonewtonsPerCubicMeter, options as ToStringOptions) + ` kN/m³`;
             case SpecificWeightUnits.MeganewtonsPerCubicMeter:
-                return super.truncateFractionDigits(this.MeganewtonsPerCubicMeter, fractionalDigits) + ` MN/m³`;
+                return super.truncateFractionDigits(this.MeganewtonsPerCubicMeter, options as ToStringOptions) + ` MN/m³`;
             case SpecificWeightUnits.KilopoundsForcePerCubicInch:
-                return super.truncateFractionDigits(this.KilopoundsForcePerCubicInch, fractionalDigits) + ` klbf/in³`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerCubicInch, options as ToStringOptions) + ` klbf/in³`;
             case SpecificWeightUnits.KilopoundsForcePerCubicFoot:
-                return super.truncateFractionDigits(this.KilopoundsForcePerCubicFoot, fractionalDigits) + ` klbf/ft³`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerCubicFoot, options as ToStringOptions) + ` klbf/ft³`;
         default:
             break;
         }
