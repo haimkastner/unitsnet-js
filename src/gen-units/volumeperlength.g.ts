@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a VolumePerLength */
 export interface VolumePerLengthDto {
@@ -368,31 +368,35 @@ export class VolumePerLength extends BaseUnit {
      * Note! the default format for VolumePerLength is CubicMetersPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the VolumePerLength.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the VolumePerLength.
      */
-    public toString(unit: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter, fractionalDigits?: number): string {
+    public toString(unit: VolumePerLengthUnits = VolumePerLengthUnits.CubicMetersPerMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case VolumePerLengthUnits.CubicMetersPerMeter:
-                return super.truncateFractionDigits(this.CubicMetersPerMeter, fractionalDigits) + ` m³/m`;
+                return super.truncateFractionDigits(this.CubicMetersPerMeter, options as ToStringOptions) + ` m³/m`;
             case VolumePerLengthUnits.LitersPerMeter:
-                return super.truncateFractionDigits(this.LitersPerMeter, fractionalDigits) + ` l/m`;
+                return super.truncateFractionDigits(this.LitersPerMeter, options as ToStringOptions) + ` l/m`;
             case VolumePerLengthUnits.LitersPerKilometer:
-                return super.truncateFractionDigits(this.LitersPerKilometer, fractionalDigits) + ` l/km`;
+                return super.truncateFractionDigits(this.LitersPerKilometer, options as ToStringOptions) + ` l/km`;
             case VolumePerLengthUnits.LitersPerMillimeter:
-                return super.truncateFractionDigits(this.LitersPerMillimeter, fractionalDigits) + ` l/mm`;
+                return super.truncateFractionDigits(this.LitersPerMillimeter, options as ToStringOptions) + ` l/mm`;
             case VolumePerLengthUnits.OilBarrelsPerFoot:
-                return super.truncateFractionDigits(this.OilBarrelsPerFoot, fractionalDigits) + ` bbl/ft`;
+                return super.truncateFractionDigits(this.OilBarrelsPerFoot, options as ToStringOptions) + ` bbl/ft`;
             case VolumePerLengthUnits.CubicYardsPerFoot:
-                return super.truncateFractionDigits(this.CubicYardsPerFoot, fractionalDigits) + ` yd³/ft`;
+                return super.truncateFractionDigits(this.CubicYardsPerFoot, options as ToStringOptions) + ` yd³/ft`;
             case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot:
-                return super.truncateFractionDigits(this.CubicYardsPerUsSurveyFoot, fractionalDigits) + ` yd³/ftUS`;
+                return super.truncateFractionDigits(this.CubicYardsPerUsSurveyFoot, options as ToStringOptions) + ` yd³/ftUS`;
             case VolumePerLengthUnits.UsGallonsPerMile:
-                return super.truncateFractionDigits(this.UsGallonsPerMile, fractionalDigits) + ` gal (U.S.)/mi`;
+                return super.truncateFractionDigits(this.UsGallonsPerMile, options as ToStringOptions) + ` gal (U.S.)/mi`;
             case VolumePerLengthUnits.ImperialGallonsPerMile:
-                return super.truncateFractionDigits(this.ImperialGallonsPerMile, fractionalDigits) + ` gal (imp.)/mi`;
+                return super.truncateFractionDigits(this.ImperialGallonsPerMile, options as ToStringOptions) + ` gal (imp.)/mi`;
         default:
             break;
         }

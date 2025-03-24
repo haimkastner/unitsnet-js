@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Luminosity */
 export interface LuminosityDto {
@@ -482,41 +482,45 @@ export class Luminosity extends BaseUnit {
      * Note! the default format for Luminosity is Watts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Luminosity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Luminosity.
      */
-    public toString(unit: LuminosityUnits = LuminosityUnits.Watts, fractionalDigits?: number): string {
+    public toString(unit: LuminosityUnits = LuminosityUnits.Watts, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case LuminosityUnits.Watts:
-                return super.truncateFractionDigits(this.Watts, fractionalDigits) + ` W`;
+                return super.truncateFractionDigits(this.Watts, options as ToStringOptions) + ` W`;
             case LuminosityUnits.SolarLuminosities:
-                return super.truncateFractionDigits(this.SolarLuminosities, fractionalDigits) + ` L⊙`;
+                return super.truncateFractionDigits(this.SolarLuminosities, options as ToStringOptions) + ` L⊙`;
             case LuminosityUnits.Femtowatts:
-                return super.truncateFractionDigits(this.Femtowatts, fractionalDigits) + ` fW`;
+                return super.truncateFractionDigits(this.Femtowatts, options as ToStringOptions) + ` fW`;
             case LuminosityUnits.Picowatts:
-                return super.truncateFractionDigits(this.Picowatts, fractionalDigits) + ` pW`;
+                return super.truncateFractionDigits(this.Picowatts, options as ToStringOptions) + ` pW`;
             case LuminosityUnits.Nanowatts:
-                return super.truncateFractionDigits(this.Nanowatts, fractionalDigits) + ` nW`;
+                return super.truncateFractionDigits(this.Nanowatts, options as ToStringOptions) + ` nW`;
             case LuminosityUnits.Microwatts:
-                return super.truncateFractionDigits(this.Microwatts, fractionalDigits) + ` μW`;
+                return super.truncateFractionDigits(this.Microwatts, options as ToStringOptions) + ` μW`;
             case LuminosityUnits.Milliwatts:
-                return super.truncateFractionDigits(this.Milliwatts, fractionalDigits) + ` mW`;
+                return super.truncateFractionDigits(this.Milliwatts, options as ToStringOptions) + ` mW`;
             case LuminosityUnits.Deciwatts:
-                return super.truncateFractionDigits(this.Deciwatts, fractionalDigits) + ` dW`;
+                return super.truncateFractionDigits(this.Deciwatts, options as ToStringOptions) + ` dW`;
             case LuminosityUnits.Decawatts:
-                return super.truncateFractionDigits(this.Decawatts, fractionalDigits) + ` daW`;
+                return super.truncateFractionDigits(this.Decawatts, options as ToStringOptions) + ` daW`;
             case LuminosityUnits.Kilowatts:
-                return super.truncateFractionDigits(this.Kilowatts, fractionalDigits) + ` kW`;
+                return super.truncateFractionDigits(this.Kilowatts, options as ToStringOptions) + ` kW`;
             case LuminosityUnits.Megawatts:
-                return super.truncateFractionDigits(this.Megawatts, fractionalDigits) + ` MW`;
+                return super.truncateFractionDigits(this.Megawatts, options as ToStringOptions) + ` MW`;
             case LuminosityUnits.Gigawatts:
-                return super.truncateFractionDigits(this.Gigawatts, fractionalDigits) + ` GW`;
+                return super.truncateFractionDigits(this.Gigawatts, options as ToStringOptions) + ` GW`;
             case LuminosityUnits.Terawatts:
-                return super.truncateFractionDigits(this.Terawatts, fractionalDigits) + ` TW`;
+                return super.truncateFractionDigits(this.Terawatts, options as ToStringOptions) + ` TW`;
             case LuminosityUnits.Petawatts:
-                return super.truncateFractionDigits(this.Petawatts, fractionalDigits) + ` PW`;
+                return super.truncateFractionDigits(this.Petawatts, options as ToStringOptions) + ` PW`;
         default:
             break;
         }

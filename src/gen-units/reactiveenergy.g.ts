@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ReactiveEnergy */
 export interface ReactiveEnergyDto {
@@ -196,19 +196,23 @@ export class ReactiveEnergy extends BaseUnit {
      * Note! the default format for ReactiveEnergy is VoltampereReactiveHours.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ReactiveEnergy.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ReactiveEnergy.
      */
-    public toString(unit: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours, fractionalDigits?: number): string {
+    public toString(unit: ReactiveEnergyUnits = ReactiveEnergyUnits.VoltampereReactiveHours, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ReactiveEnergyUnits.VoltampereReactiveHours:
-                return super.truncateFractionDigits(this.VoltampereReactiveHours, fractionalDigits) + ` varh`;
+                return super.truncateFractionDigits(this.VoltampereReactiveHours, options as ToStringOptions) + ` varh`;
             case ReactiveEnergyUnits.KilovoltampereReactiveHours:
-                return super.truncateFractionDigits(this.KilovoltampereReactiveHours, fractionalDigits) + ` kvarh`;
+                return super.truncateFractionDigits(this.KilovoltampereReactiveHours, options as ToStringOptions) + ` kvarh`;
             case ReactiveEnergyUnits.MegavoltampereReactiveHours:
-                return super.truncateFractionDigits(this.MegavoltampereReactiveHours, fractionalDigits) + ` Mvarh`;
+                return super.truncateFractionDigits(this.MegavoltampereReactiveHours, options as ToStringOptions) + ` Mvarh`;
         default:
             break;
         }

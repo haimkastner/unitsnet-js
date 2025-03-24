@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a RelativeHumidity */
 export interface RelativeHumidityDto {
@@ -144,15 +144,19 @@ export class RelativeHumidity extends BaseUnit {
      * Note! the default format for RelativeHumidity is Percent.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RelativeHumidity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the RelativeHumidity.
      */
-    public toString(unit: RelativeHumidityUnits = RelativeHumidityUnits.Percent, fractionalDigits?: number): string {
+    public toString(unit: RelativeHumidityUnits = RelativeHumidityUnits.Percent, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case RelativeHumidityUnits.Percent:
-                return super.truncateFractionDigits(this.Percent, fractionalDigits) + ` %RH`;
+                return super.truncateFractionDigits(this.Percent, options as ToStringOptions) + ` %RH`;
         default:
             break;
         }

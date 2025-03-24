@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ReciprocalLength */
 export interface ReciprocalLengthDto {
@@ -384,33 +384,37 @@ export class ReciprocalLength extends BaseUnit {
      * Note! the default format for ReciprocalLength is InverseMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ReciprocalLength.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ReciprocalLength.
      */
-    public toString(unit: ReciprocalLengthUnits = ReciprocalLengthUnits.InverseMeters, fractionalDigits?: number): string {
+    public toString(unit: ReciprocalLengthUnits = ReciprocalLengthUnits.InverseMeters, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ReciprocalLengthUnits.InverseMeters:
-                return super.truncateFractionDigits(this.InverseMeters, fractionalDigits) + ` m⁻¹`;
+                return super.truncateFractionDigits(this.InverseMeters, options as ToStringOptions) + ` m⁻¹`;
             case ReciprocalLengthUnits.InverseCentimeters:
-                return super.truncateFractionDigits(this.InverseCentimeters, fractionalDigits) + ` cm⁻¹`;
+                return super.truncateFractionDigits(this.InverseCentimeters, options as ToStringOptions) + ` cm⁻¹`;
             case ReciprocalLengthUnits.InverseMillimeters:
-                return super.truncateFractionDigits(this.InverseMillimeters, fractionalDigits) + ` mm⁻¹`;
+                return super.truncateFractionDigits(this.InverseMillimeters, options as ToStringOptions) + ` mm⁻¹`;
             case ReciprocalLengthUnits.InverseMiles:
-                return super.truncateFractionDigits(this.InverseMiles, fractionalDigits) + ` mi⁻¹`;
+                return super.truncateFractionDigits(this.InverseMiles, options as ToStringOptions) + ` mi⁻¹`;
             case ReciprocalLengthUnits.InverseYards:
-                return super.truncateFractionDigits(this.InverseYards, fractionalDigits) + ` yd⁻¹`;
+                return super.truncateFractionDigits(this.InverseYards, options as ToStringOptions) + ` yd⁻¹`;
             case ReciprocalLengthUnits.InverseFeet:
-                return super.truncateFractionDigits(this.InverseFeet, fractionalDigits) + ` ft⁻¹`;
+                return super.truncateFractionDigits(this.InverseFeet, options as ToStringOptions) + ` ft⁻¹`;
             case ReciprocalLengthUnits.InverseUsSurveyFeet:
-                return super.truncateFractionDigits(this.InverseUsSurveyFeet, fractionalDigits) + ` ftUS⁻¹`;
+                return super.truncateFractionDigits(this.InverseUsSurveyFeet, options as ToStringOptions) + ` ftUS⁻¹`;
             case ReciprocalLengthUnits.InverseInches:
-                return super.truncateFractionDigits(this.InverseInches, fractionalDigits) + ` in⁻¹`;
+                return super.truncateFractionDigits(this.InverseInches, options as ToStringOptions) + ` in⁻¹`;
             case ReciprocalLengthUnits.InverseMils:
-                return super.truncateFractionDigits(this.InverseMils, fractionalDigits) + ` mil⁻¹`;
+                return super.truncateFractionDigits(this.InverseMils, options as ToStringOptions) + ` mil⁻¹`;
             case ReciprocalLengthUnits.InverseMicroinches:
-                return super.truncateFractionDigits(this.InverseMicroinches, fractionalDigits) + ` µin⁻¹`;
+                return super.truncateFractionDigits(this.InverseMicroinches, options as ToStringOptions) + ` µin⁻¹`;
         default:
             break;
         }

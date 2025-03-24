@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Angle */
 export interface AngleDto {
@@ -592,45 +592,49 @@ export class Angle extends BaseUnit {
      * Note! the default format for Angle is Degrees.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Angle.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Angle.
      */
-    public toString(unit: AngleUnits = AngleUnits.Degrees, fractionalDigits?: number): string {
+    public toString(unit: AngleUnits = AngleUnits.Degrees, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case AngleUnits.Radians:
-                return super.truncateFractionDigits(this.Radians, fractionalDigits) + ` rad`;
+                return super.truncateFractionDigits(this.Radians, options as ToStringOptions) + ` rad`;
             case AngleUnits.Degrees:
-                return super.truncateFractionDigits(this.Degrees, fractionalDigits) + ` °`;
+                return super.truncateFractionDigits(this.Degrees, options as ToStringOptions) + ` °`;
             case AngleUnits.Arcminutes:
-                return super.truncateFractionDigits(this.Arcminutes, fractionalDigits) + ` '`;
+                return super.truncateFractionDigits(this.Arcminutes, options as ToStringOptions) + ` '`;
             case AngleUnits.Arcseconds:
-                return super.truncateFractionDigits(this.Arcseconds, fractionalDigits) + ` ″`;
+                return super.truncateFractionDigits(this.Arcseconds, options as ToStringOptions) + ` ″`;
             case AngleUnits.Gradians:
-                return super.truncateFractionDigits(this.Gradians, fractionalDigits) + ` g`;
+                return super.truncateFractionDigits(this.Gradians, options as ToStringOptions) + ` g`;
             case AngleUnits.NatoMils:
-                return super.truncateFractionDigits(this.NatoMils, fractionalDigits) + ` mil`;
+                return super.truncateFractionDigits(this.NatoMils, options as ToStringOptions) + ` mil`;
             case AngleUnits.Revolutions:
-                return super.truncateFractionDigits(this.Revolutions, fractionalDigits) + ` r`;
+                return super.truncateFractionDigits(this.Revolutions, options as ToStringOptions) + ` r`;
             case AngleUnits.Tilt:
-                return super.truncateFractionDigits(this.Tilt, fractionalDigits) + ` sin(θ)`;
+                return super.truncateFractionDigits(this.Tilt, options as ToStringOptions) + ` sin(θ)`;
             case AngleUnits.Nanoradians:
-                return super.truncateFractionDigits(this.Nanoradians, fractionalDigits) + ` nrad`;
+                return super.truncateFractionDigits(this.Nanoradians, options as ToStringOptions) + ` nrad`;
             case AngleUnits.Microradians:
-                return super.truncateFractionDigits(this.Microradians, fractionalDigits) + ` μrad`;
+                return super.truncateFractionDigits(this.Microradians, options as ToStringOptions) + ` μrad`;
             case AngleUnits.Milliradians:
-                return super.truncateFractionDigits(this.Milliradians, fractionalDigits) + ` mrad`;
+                return super.truncateFractionDigits(this.Milliradians, options as ToStringOptions) + ` mrad`;
             case AngleUnits.Centiradians:
-                return super.truncateFractionDigits(this.Centiradians, fractionalDigits) + ` crad`;
+                return super.truncateFractionDigits(this.Centiradians, options as ToStringOptions) + ` crad`;
             case AngleUnits.Deciradians:
-                return super.truncateFractionDigits(this.Deciradians, fractionalDigits) + ` drad`;
+                return super.truncateFractionDigits(this.Deciradians, options as ToStringOptions) + ` drad`;
             case AngleUnits.Nanodegrees:
-                return super.truncateFractionDigits(this.Nanodegrees, fractionalDigits) + ` n°`;
+                return super.truncateFractionDigits(this.Nanodegrees, options as ToStringOptions) + ` n°`;
             case AngleUnits.Microdegrees:
-                return super.truncateFractionDigits(this.Microdegrees, fractionalDigits) + ` μ°`;
+                return super.truncateFractionDigits(this.Microdegrees, options as ToStringOptions) + ` μ°`;
             case AngleUnits.Millidegrees:
-                return super.truncateFractionDigits(this.Millidegrees, fractionalDigits) + ` m°`;
+                return super.truncateFractionDigits(this.Millidegrees, options as ToStringOptions) + ` m°`;
         default:
             break;
         }

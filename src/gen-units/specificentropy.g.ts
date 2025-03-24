@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a SpecificEntropy */
 export interface SpecificEntropyDto {
@@ -358,31 +358,35 @@ export class SpecificEntropy extends BaseUnit {
      * Note! the default format for SpecificEntropy is JoulesPerKilogramKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificEntropy.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the SpecificEntropy.
      */
-    public toString(unit: SpecificEntropyUnits = SpecificEntropyUnits.JoulesPerKilogramKelvin, fractionalDigits?: number): string {
+    public toString(unit: SpecificEntropyUnits = SpecificEntropyUnits.JoulesPerKilogramKelvin, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case SpecificEntropyUnits.JoulesPerKilogramKelvin:
-                return super.truncateFractionDigits(this.JoulesPerKilogramKelvin, fractionalDigits) + ` J/kg·K`;
+                return super.truncateFractionDigits(this.JoulesPerKilogramKelvin, options as ToStringOptions) + ` J/kg·K`;
             case SpecificEntropyUnits.JoulesPerKilogramDegreeCelsius:
-                return super.truncateFractionDigits(this.JoulesPerKilogramDegreeCelsius, fractionalDigits) + ` J/kg·°C`;
+                return super.truncateFractionDigits(this.JoulesPerKilogramDegreeCelsius, options as ToStringOptions) + ` J/kg·°C`;
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
-                return super.truncateFractionDigits(this.CaloriesPerGramKelvin, fractionalDigits) + ` cal/g·K`;
+                return super.truncateFractionDigits(this.CaloriesPerGramKelvin, options as ToStringOptions) + ` cal/g·K`;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
-                return super.truncateFractionDigits(this.BtusPerPoundFahrenheit, fractionalDigits) + ` BTU/lb·°F`;
+                return super.truncateFractionDigits(this.BtusPerPoundFahrenheit, options as ToStringOptions) + ` BTU/lb·°F`;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
-                return super.truncateFractionDigits(this.KilojoulesPerKilogramKelvin, fractionalDigits) + ` kJ/kg·K`;
+                return super.truncateFractionDigits(this.KilojoulesPerKilogramKelvin, options as ToStringOptions) + ` kJ/kg·K`;
             case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
-                return super.truncateFractionDigits(this.MegajoulesPerKilogramKelvin, fractionalDigits) + ` MJ/kg·K`;
+                return super.truncateFractionDigits(this.MegajoulesPerKilogramKelvin, options as ToStringOptions) + ` MJ/kg·K`;
             case SpecificEntropyUnits.KilojoulesPerKilogramDegreeCelsius:
-                return super.truncateFractionDigits(this.KilojoulesPerKilogramDegreeCelsius, fractionalDigits) + ` kJ/kg·°C`;
+                return super.truncateFractionDigits(this.KilojoulesPerKilogramDegreeCelsius, options as ToStringOptions) + ` kJ/kg·°C`;
             case SpecificEntropyUnits.MegajoulesPerKilogramDegreeCelsius:
-                return super.truncateFractionDigits(this.MegajoulesPerKilogramDegreeCelsius, fractionalDigits) + ` MJ/kg·°C`;
+                return super.truncateFractionDigits(this.MegajoulesPerKilogramDegreeCelsius, options as ToStringOptions) + ` MJ/kg·°C`;
             case SpecificEntropyUnits.KilocaloriesPerGramKelvin:
-                return super.truncateFractionDigits(this.KilocaloriesPerGramKelvin, fractionalDigits) + ` kcal/g·K`;
+                return super.truncateFractionDigits(this.KilocaloriesPerGramKelvin, options as ToStringOptions) + ` kcal/g·K`;
         default:
             break;
         }

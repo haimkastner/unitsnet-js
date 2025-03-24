@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a TemperatureGradient */
 export interface TemperatureGradientDto {
@@ -230,21 +230,25 @@ export class TemperatureGradient extends BaseUnit {
      * Note! the default format for TemperatureGradient is KelvinsPerMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the TemperatureGradient.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the TemperatureGradient.
      */
-    public toString(unit: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter, fractionalDigits?: number): string {
+    public toString(unit: TemperatureGradientUnits = TemperatureGradientUnits.KelvinsPerMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case TemperatureGradientUnits.KelvinsPerMeter:
-                return super.truncateFractionDigits(this.KelvinsPerMeter, fractionalDigits) + ` ∆°K/m`;
+                return super.truncateFractionDigits(this.KelvinsPerMeter, options as ToStringOptions) + ` ∆°K/m`;
             case TemperatureGradientUnits.DegreesCelciusPerMeter:
-                return super.truncateFractionDigits(this.DegreesCelciusPerMeter, fractionalDigits) + ` ∆°C/m`;
+                return super.truncateFractionDigits(this.DegreesCelciusPerMeter, options as ToStringOptions) + ` ∆°C/m`;
             case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
-                return super.truncateFractionDigits(this.DegreesFahrenheitPerFoot, fractionalDigits) + ` ∆°F/ft`;
+                return super.truncateFractionDigits(this.DegreesFahrenheitPerFoot, options as ToStringOptions) + ` ∆°F/ft`;
             case TemperatureGradientUnits.DegreesCelciusPerKilometer:
-                return super.truncateFractionDigits(this.DegreesCelciusPerKilometer, fractionalDigits) + ` ∆°C/km`;
+                return super.truncateFractionDigits(this.DegreesCelciusPerKilometer, options as ToStringOptions) + ` ∆°C/km`;
         default:
             break;
         }

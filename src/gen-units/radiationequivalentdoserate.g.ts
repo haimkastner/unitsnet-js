@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a RadiationEquivalentDoseRate */
 export interface RadiationEquivalentDoseRateDto {
@@ -410,33 +410,37 @@ export class RadiationEquivalentDoseRate extends BaseUnit {
      * Note! the default format for RadiationEquivalentDoseRate is SievertsPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RadiationEquivalentDoseRate.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the RadiationEquivalentDoseRate.
      */
-    public toString(unit: RadiationEquivalentDoseRateUnits = RadiationEquivalentDoseRateUnits.SievertsPerSecond, fractionalDigits?: number): string {
+    public toString(unit: RadiationEquivalentDoseRateUnits = RadiationEquivalentDoseRateUnits.SievertsPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case RadiationEquivalentDoseRateUnits.SievertsPerHour:
-                return super.truncateFractionDigits(this.SievertsPerHour, fractionalDigits) + ` Sv/h`;
+                return super.truncateFractionDigits(this.SievertsPerHour, options as ToStringOptions) + ` Sv/h`;
             case RadiationEquivalentDoseRateUnits.SievertsPerSecond:
-                return super.truncateFractionDigits(this.SievertsPerSecond, fractionalDigits) + ` Sv/s`;
+                return super.truncateFractionDigits(this.SievertsPerSecond, options as ToStringOptions) + ` Sv/s`;
             case RadiationEquivalentDoseRateUnits.RoentgensEquivalentManPerHour:
-                return super.truncateFractionDigits(this.RoentgensEquivalentManPerHour, fractionalDigits) + ` rem/h`;
+                return super.truncateFractionDigits(this.RoentgensEquivalentManPerHour, options as ToStringOptions) + ` rem/h`;
             case RadiationEquivalentDoseRateUnits.NanosievertsPerHour:
-                return super.truncateFractionDigits(this.NanosievertsPerHour, fractionalDigits) + ` nSv/h`;
+                return super.truncateFractionDigits(this.NanosievertsPerHour, options as ToStringOptions) + ` nSv/h`;
             case RadiationEquivalentDoseRateUnits.MicrosievertsPerHour:
-                return super.truncateFractionDigits(this.MicrosievertsPerHour, fractionalDigits) + ` μSv/h`;
+                return super.truncateFractionDigits(this.MicrosievertsPerHour, options as ToStringOptions) + ` μSv/h`;
             case RadiationEquivalentDoseRateUnits.MillisievertsPerHour:
-                return super.truncateFractionDigits(this.MillisievertsPerHour, fractionalDigits) + ` mSv/h`;
+                return super.truncateFractionDigits(this.MillisievertsPerHour, options as ToStringOptions) + ` mSv/h`;
             case RadiationEquivalentDoseRateUnits.NanosievertsPerSecond:
-                return super.truncateFractionDigits(this.NanosievertsPerSecond, fractionalDigits) + ` nSv/s`;
+                return super.truncateFractionDigits(this.NanosievertsPerSecond, options as ToStringOptions) + ` nSv/s`;
             case RadiationEquivalentDoseRateUnits.MicrosievertsPerSecond:
-                return super.truncateFractionDigits(this.MicrosievertsPerSecond, fractionalDigits) + ` μSv/s`;
+                return super.truncateFractionDigits(this.MicrosievertsPerSecond, options as ToStringOptions) + ` μSv/s`;
             case RadiationEquivalentDoseRateUnits.MillisievertsPerSecond:
-                return super.truncateFractionDigits(this.MillisievertsPerSecond, fractionalDigits) + ` mSv/s`;
+                return super.truncateFractionDigits(this.MillisievertsPerSecond, options as ToStringOptions) + ` mSv/s`;
             case RadiationEquivalentDoseRateUnits.MilliroentgensEquivalentManPerHour:
-                return super.truncateFractionDigits(this.MilliroentgensEquivalentManPerHour, fractionalDigits) + ` mrem/h`;
+                return super.truncateFractionDigits(this.MilliroentgensEquivalentManPerHour, options as ToStringOptions) + ` mrem/h`;
         default:
             break;
         }

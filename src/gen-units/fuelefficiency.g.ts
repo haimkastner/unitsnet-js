@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a FuelEfficiency */
 export interface FuelEfficiencyDto {
@@ -238,21 +238,25 @@ export class FuelEfficiency extends BaseUnit {
      * Note! the default format for FuelEfficiency is LitersPer100Kilometers.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the FuelEfficiency.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the FuelEfficiency.
      */
-    public toString(unit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers, fractionalDigits?: number): string {
+    public toString(unit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case FuelEfficiencyUnits.LitersPer100Kilometers:
-                return super.truncateFractionDigits(this.LitersPer100Kilometers, fractionalDigits) + ` L/100km`;
+                return super.truncateFractionDigits(this.LitersPer100Kilometers, options as ToStringOptions) + ` L/100km`;
             case FuelEfficiencyUnits.MilesPerUsGallon:
-                return super.truncateFractionDigits(this.MilesPerUsGallon, fractionalDigits) + ` mpg (U.S.)`;
+                return super.truncateFractionDigits(this.MilesPerUsGallon, options as ToStringOptions) + ` mpg (U.S.)`;
             case FuelEfficiencyUnits.MilesPerUkGallon:
-                return super.truncateFractionDigits(this.MilesPerUkGallon, fractionalDigits) + ` mpg (imp.)`;
+                return super.truncateFractionDigits(this.MilesPerUkGallon, options as ToStringOptions) + ` mpg (imp.)`;
             case FuelEfficiencyUnits.KilometersPerLiters:
-                return super.truncateFractionDigits(this.KilometersPerLiters, fractionalDigits) + ` km/L`;
+                return super.truncateFractionDigits(this.KilometersPerLiters, options as ToStringOptions) + ` km/L`;
         default:
             break;
         }

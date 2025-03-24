@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Illuminance */
 export interface IlluminanceDto {
@@ -222,21 +222,25 @@ export class Illuminance extends BaseUnit {
      * Note! the default format for Illuminance is Lux.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Illuminance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Illuminance.
      */
-    public toString(unit: IlluminanceUnits = IlluminanceUnits.Lux, fractionalDigits?: number): string {
+    public toString(unit: IlluminanceUnits = IlluminanceUnits.Lux, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case IlluminanceUnits.Lux:
-                return super.truncateFractionDigits(this.Lux, fractionalDigits) + ` lx`;
+                return super.truncateFractionDigits(this.Lux, options as ToStringOptions) + ` lx`;
             case IlluminanceUnits.Millilux:
-                return super.truncateFractionDigits(this.Millilux, fractionalDigits) + ` mlx`;
+                return super.truncateFractionDigits(this.Millilux, options as ToStringOptions) + ` mlx`;
             case IlluminanceUnits.Kilolux:
-                return super.truncateFractionDigits(this.Kilolux, fractionalDigits) + ` klx`;
+                return super.truncateFractionDigits(this.Kilolux, options as ToStringOptions) + ` klx`;
             case IlluminanceUnits.Megalux:
-                return super.truncateFractionDigits(this.Megalux, fractionalDigits) + ` Mlx`;
+                return super.truncateFractionDigits(this.Megalux, options as ToStringOptions) + ` Mlx`;
         default:
             break;
         }

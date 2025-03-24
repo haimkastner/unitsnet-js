@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a MassConcentration */
 export interface MassConcentrationDto {
@@ -1542,111 +1542,115 @@ export class MassConcentration extends BaseUnit {
      * Note! the default format for MassConcentration is KilogramsPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MassConcentration.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the MassConcentration.
      */
-    public toString(unit: MassConcentrationUnits = MassConcentrationUnits.KilogramsPerCubicMeter, fractionalDigits?: number): string {
+    public toString(unit: MassConcentrationUnits = MassConcentrationUnits.KilogramsPerCubicMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case MassConcentrationUnits.GramsPerCubicMillimeter:
-                return super.truncateFractionDigits(this.GramsPerCubicMillimeter, fractionalDigits) + ` g/mm³`;
+                return super.truncateFractionDigits(this.GramsPerCubicMillimeter, options as ToStringOptions) + ` g/mm³`;
             case MassConcentrationUnits.GramsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.GramsPerCubicCentimeter, fractionalDigits) + ` g/cm³`;
+                return super.truncateFractionDigits(this.GramsPerCubicCentimeter, options as ToStringOptions) + ` g/cm³`;
             case MassConcentrationUnits.GramsPerCubicMeter:
-                return super.truncateFractionDigits(this.GramsPerCubicMeter, fractionalDigits) + ` g/m³`;
+                return super.truncateFractionDigits(this.GramsPerCubicMeter, options as ToStringOptions) + ` g/m³`;
             case MassConcentrationUnits.GramsPerMicroliter:
-                return super.truncateFractionDigits(this.GramsPerMicroliter, fractionalDigits) + ` g/μL`;
+                return super.truncateFractionDigits(this.GramsPerMicroliter, options as ToStringOptions) + ` g/μL`;
             case MassConcentrationUnits.GramsPerMilliliter:
-                return super.truncateFractionDigits(this.GramsPerMilliliter, fractionalDigits) + ` g/mL`;
+                return super.truncateFractionDigits(this.GramsPerMilliliter, options as ToStringOptions) + ` g/mL`;
             case MassConcentrationUnits.GramsPerDeciliter:
-                return super.truncateFractionDigits(this.GramsPerDeciliter, fractionalDigits) + ` g/dL`;
+                return super.truncateFractionDigits(this.GramsPerDeciliter, options as ToStringOptions) + ` g/dL`;
             case MassConcentrationUnits.GramsPerLiter:
-                return super.truncateFractionDigits(this.GramsPerLiter, fractionalDigits) + ` g/L`;
+                return super.truncateFractionDigits(this.GramsPerLiter, options as ToStringOptions) + ` g/L`;
             case MassConcentrationUnits.TonnesPerCubicMillimeter:
-                return super.truncateFractionDigits(this.TonnesPerCubicMillimeter, fractionalDigits) + ` t/mm³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicMillimeter, options as ToStringOptions) + ` t/mm³`;
             case MassConcentrationUnits.TonnesPerCubicCentimeter:
-                return super.truncateFractionDigits(this.TonnesPerCubicCentimeter, fractionalDigits) + ` t/cm³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicCentimeter, options as ToStringOptions) + ` t/cm³`;
             case MassConcentrationUnits.TonnesPerCubicMeter:
-                return super.truncateFractionDigits(this.TonnesPerCubicMeter, fractionalDigits) + ` t/m³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicMeter, options as ToStringOptions) + ` t/m³`;
             case MassConcentrationUnits.PoundsPerCubicInch:
-                return super.truncateFractionDigits(this.PoundsPerCubicInch, fractionalDigits) + ` lb/in³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicInch, options as ToStringOptions) + ` lb/in³`;
             case MassConcentrationUnits.PoundsPerCubicFoot:
-                return super.truncateFractionDigits(this.PoundsPerCubicFoot, fractionalDigits) + ` lb/ft³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicFoot, options as ToStringOptions) + ` lb/ft³`;
             case MassConcentrationUnits.SlugsPerCubicFoot:
-                return super.truncateFractionDigits(this.SlugsPerCubicFoot, fractionalDigits) + ` slug/ft³`;
+                return super.truncateFractionDigits(this.SlugsPerCubicFoot, options as ToStringOptions) + ` slug/ft³`;
             case MassConcentrationUnits.PoundsPerUSGallon:
-                return super.truncateFractionDigits(this.PoundsPerUSGallon, fractionalDigits) + ` ppg (U.S.)`;
+                return super.truncateFractionDigits(this.PoundsPerUSGallon, options as ToStringOptions) + ` ppg (U.S.)`;
             case MassConcentrationUnits.OuncesPerUSGallon:
-                return super.truncateFractionDigits(this.OuncesPerUSGallon, fractionalDigits) + ` oz/gal (U.S.)`;
+                return super.truncateFractionDigits(this.OuncesPerUSGallon, options as ToStringOptions) + ` oz/gal (U.S.)`;
             case MassConcentrationUnits.OuncesPerImperialGallon:
-                return super.truncateFractionDigits(this.OuncesPerImperialGallon, fractionalDigits) + ` oz/gal (imp.)`;
+                return super.truncateFractionDigits(this.OuncesPerImperialGallon, options as ToStringOptions) + ` oz/gal (imp.)`;
             case MassConcentrationUnits.PoundsPerImperialGallon:
-                return super.truncateFractionDigits(this.PoundsPerImperialGallon, fractionalDigits) + ` ppg (imp.)`;
+                return super.truncateFractionDigits(this.PoundsPerImperialGallon, options as ToStringOptions) + ` ppg (imp.)`;
             case MassConcentrationUnits.KilogramsPerCubicMillimeter:
-                return super.truncateFractionDigits(this.KilogramsPerCubicMillimeter, fractionalDigits) + ` kg/mm³`;
+                return super.truncateFractionDigits(this.KilogramsPerCubicMillimeter, options as ToStringOptions) + ` kg/mm³`;
             case MassConcentrationUnits.KilogramsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.KilogramsPerCubicCentimeter, fractionalDigits) + ` kg/cm³`;
+                return super.truncateFractionDigits(this.KilogramsPerCubicCentimeter, options as ToStringOptions) + ` kg/cm³`;
             case MassConcentrationUnits.KilogramsPerCubicMeter:
-                return super.truncateFractionDigits(this.KilogramsPerCubicMeter, fractionalDigits) + ` kg/m³`;
+                return super.truncateFractionDigits(this.KilogramsPerCubicMeter, options as ToStringOptions) + ` kg/m³`;
             case MassConcentrationUnits.MilligramsPerCubicMeter:
-                return super.truncateFractionDigits(this.MilligramsPerCubicMeter, fractionalDigits) + ` mg/m³`;
+                return super.truncateFractionDigits(this.MilligramsPerCubicMeter, options as ToStringOptions) + ` mg/m³`;
             case MassConcentrationUnits.MicrogramsPerCubicMeter:
-                return super.truncateFractionDigits(this.MicrogramsPerCubicMeter, fractionalDigits) + ` μg/m³`;
+                return super.truncateFractionDigits(this.MicrogramsPerCubicMeter, options as ToStringOptions) + ` μg/m³`;
             case MassConcentrationUnits.PicogramsPerMicroliter:
-                return super.truncateFractionDigits(this.PicogramsPerMicroliter, fractionalDigits) + ` pg/μL`;
+                return super.truncateFractionDigits(this.PicogramsPerMicroliter, options as ToStringOptions) + ` pg/μL`;
             case MassConcentrationUnits.NanogramsPerMicroliter:
-                return super.truncateFractionDigits(this.NanogramsPerMicroliter, fractionalDigits) + ` ng/μL`;
+                return super.truncateFractionDigits(this.NanogramsPerMicroliter, options as ToStringOptions) + ` ng/μL`;
             case MassConcentrationUnits.MicrogramsPerMicroliter:
-                return super.truncateFractionDigits(this.MicrogramsPerMicroliter, fractionalDigits) + ` μg/μL`;
+                return super.truncateFractionDigits(this.MicrogramsPerMicroliter, options as ToStringOptions) + ` μg/μL`;
             case MassConcentrationUnits.MilligramsPerMicroliter:
-                return super.truncateFractionDigits(this.MilligramsPerMicroliter, fractionalDigits) + ` mg/μL`;
+                return super.truncateFractionDigits(this.MilligramsPerMicroliter, options as ToStringOptions) + ` mg/μL`;
             case MassConcentrationUnits.CentigramsPerMicroliter:
-                return super.truncateFractionDigits(this.CentigramsPerMicroliter, fractionalDigits) + ` cg/μL`;
+                return super.truncateFractionDigits(this.CentigramsPerMicroliter, options as ToStringOptions) + ` cg/μL`;
             case MassConcentrationUnits.DecigramsPerMicroliter:
-                return super.truncateFractionDigits(this.DecigramsPerMicroliter, fractionalDigits) + ` dg/μL`;
+                return super.truncateFractionDigits(this.DecigramsPerMicroliter, options as ToStringOptions) + ` dg/μL`;
             case MassConcentrationUnits.PicogramsPerMilliliter:
-                return super.truncateFractionDigits(this.PicogramsPerMilliliter, fractionalDigits) + ` pg/mL`;
+                return super.truncateFractionDigits(this.PicogramsPerMilliliter, options as ToStringOptions) + ` pg/mL`;
             case MassConcentrationUnits.NanogramsPerMilliliter:
-                return super.truncateFractionDigits(this.NanogramsPerMilliliter, fractionalDigits) + ` ng/mL`;
+                return super.truncateFractionDigits(this.NanogramsPerMilliliter, options as ToStringOptions) + ` ng/mL`;
             case MassConcentrationUnits.MicrogramsPerMilliliter:
-                return super.truncateFractionDigits(this.MicrogramsPerMilliliter, fractionalDigits) + ` μg/mL`;
+                return super.truncateFractionDigits(this.MicrogramsPerMilliliter, options as ToStringOptions) + ` μg/mL`;
             case MassConcentrationUnits.MilligramsPerMilliliter:
-                return super.truncateFractionDigits(this.MilligramsPerMilliliter, fractionalDigits) + ` mg/mL`;
+                return super.truncateFractionDigits(this.MilligramsPerMilliliter, options as ToStringOptions) + ` mg/mL`;
             case MassConcentrationUnits.CentigramsPerMilliliter:
-                return super.truncateFractionDigits(this.CentigramsPerMilliliter, fractionalDigits) + ` cg/mL`;
+                return super.truncateFractionDigits(this.CentigramsPerMilliliter, options as ToStringOptions) + ` cg/mL`;
             case MassConcentrationUnits.DecigramsPerMilliliter:
-                return super.truncateFractionDigits(this.DecigramsPerMilliliter, fractionalDigits) + ` dg/mL`;
+                return super.truncateFractionDigits(this.DecigramsPerMilliliter, options as ToStringOptions) + ` dg/mL`;
             case MassConcentrationUnits.PicogramsPerDeciliter:
-                return super.truncateFractionDigits(this.PicogramsPerDeciliter, fractionalDigits) + ` pg/dL`;
+                return super.truncateFractionDigits(this.PicogramsPerDeciliter, options as ToStringOptions) + ` pg/dL`;
             case MassConcentrationUnits.NanogramsPerDeciliter:
-                return super.truncateFractionDigits(this.NanogramsPerDeciliter, fractionalDigits) + ` ng/dL`;
+                return super.truncateFractionDigits(this.NanogramsPerDeciliter, options as ToStringOptions) + ` ng/dL`;
             case MassConcentrationUnits.MicrogramsPerDeciliter:
-                return super.truncateFractionDigits(this.MicrogramsPerDeciliter, fractionalDigits) + ` μg/dL`;
+                return super.truncateFractionDigits(this.MicrogramsPerDeciliter, options as ToStringOptions) + ` μg/dL`;
             case MassConcentrationUnits.MilligramsPerDeciliter:
-                return super.truncateFractionDigits(this.MilligramsPerDeciliter, fractionalDigits) + ` mg/dL`;
+                return super.truncateFractionDigits(this.MilligramsPerDeciliter, options as ToStringOptions) + ` mg/dL`;
             case MassConcentrationUnits.CentigramsPerDeciliter:
-                return super.truncateFractionDigits(this.CentigramsPerDeciliter, fractionalDigits) + ` cg/dL`;
+                return super.truncateFractionDigits(this.CentigramsPerDeciliter, options as ToStringOptions) + ` cg/dL`;
             case MassConcentrationUnits.DecigramsPerDeciliter:
-                return super.truncateFractionDigits(this.DecigramsPerDeciliter, fractionalDigits) + ` dg/dL`;
+                return super.truncateFractionDigits(this.DecigramsPerDeciliter, options as ToStringOptions) + ` dg/dL`;
             case MassConcentrationUnits.PicogramsPerLiter:
-                return super.truncateFractionDigits(this.PicogramsPerLiter, fractionalDigits) + ` pg/L`;
+                return super.truncateFractionDigits(this.PicogramsPerLiter, options as ToStringOptions) + ` pg/L`;
             case MassConcentrationUnits.NanogramsPerLiter:
-                return super.truncateFractionDigits(this.NanogramsPerLiter, fractionalDigits) + ` ng/L`;
+                return super.truncateFractionDigits(this.NanogramsPerLiter, options as ToStringOptions) + ` ng/L`;
             case MassConcentrationUnits.MicrogramsPerLiter:
-                return super.truncateFractionDigits(this.MicrogramsPerLiter, fractionalDigits) + ` μg/L`;
+                return super.truncateFractionDigits(this.MicrogramsPerLiter, options as ToStringOptions) + ` μg/L`;
             case MassConcentrationUnits.MilligramsPerLiter:
-                return super.truncateFractionDigits(this.MilligramsPerLiter, fractionalDigits) + ` mg/L`;
+                return super.truncateFractionDigits(this.MilligramsPerLiter, options as ToStringOptions) + ` mg/L`;
             case MassConcentrationUnits.CentigramsPerLiter:
-                return super.truncateFractionDigits(this.CentigramsPerLiter, fractionalDigits) + ` cg/L`;
+                return super.truncateFractionDigits(this.CentigramsPerLiter, options as ToStringOptions) + ` cg/L`;
             case MassConcentrationUnits.DecigramsPerLiter:
-                return super.truncateFractionDigits(this.DecigramsPerLiter, fractionalDigits) + ` dg/L`;
+                return super.truncateFractionDigits(this.DecigramsPerLiter, options as ToStringOptions) + ` dg/L`;
             case MassConcentrationUnits.KilogramsPerLiter:
-                return super.truncateFractionDigits(this.KilogramsPerLiter, fractionalDigits) + ` kg/L`;
+                return super.truncateFractionDigits(this.KilogramsPerLiter, options as ToStringOptions) + ` kg/L`;
             case MassConcentrationUnits.KilopoundsPerCubicInch:
-                return super.truncateFractionDigits(this.KilopoundsPerCubicInch, fractionalDigits) + ` klb/in³`;
+                return super.truncateFractionDigits(this.KilopoundsPerCubicInch, options as ToStringOptions) + ` klb/in³`;
             case MassConcentrationUnits.KilopoundsPerCubicFoot:
-                return super.truncateFractionDigits(this.KilopoundsPerCubicFoot, fractionalDigits) + ` klb/ft³`;
+                return super.truncateFractionDigits(this.KilopoundsPerCubicFoot, options as ToStringOptions) + ` klb/ft³`;
         default:
             break;
         }

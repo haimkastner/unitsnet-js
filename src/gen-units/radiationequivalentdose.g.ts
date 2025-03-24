@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a RadiationEquivalentDose */
 export interface RadiationEquivalentDoseDto {
@@ -280,25 +280,29 @@ export class RadiationEquivalentDose extends BaseUnit {
      * Note! the default format for RadiationEquivalentDose is Sieverts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RadiationEquivalentDose.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the RadiationEquivalentDose.
      */
-    public toString(unit: RadiationEquivalentDoseUnits = RadiationEquivalentDoseUnits.Sieverts, fractionalDigits?: number): string {
+    public toString(unit: RadiationEquivalentDoseUnits = RadiationEquivalentDoseUnits.Sieverts, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case RadiationEquivalentDoseUnits.Sieverts:
-                return super.truncateFractionDigits(this.Sieverts, fractionalDigits) + ` Sv`;
+                return super.truncateFractionDigits(this.Sieverts, options as ToStringOptions) + ` Sv`;
             case RadiationEquivalentDoseUnits.RoentgensEquivalentMan:
-                return super.truncateFractionDigits(this.RoentgensEquivalentMan, fractionalDigits) + ` rem`;
+                return super.truncateFractionDigits(this.RoentgensEquivalentMan, options as ToStringOptions) + ` rem`;
             case RadiationEquivalentDoseUnits.Nanosieverts:
-                return super.truncateFractionDigits(this.Nanosieverts, fractionalDigits) + ` nSv`;
+                return super.truncateFractionDigits(this.Nanosieverts, options as ToStringOptions) + ` nSv`;
             case RadiationEquivalentDoseUnits.Microsieverts:
-                return super.truncateFractionDigits(this.Microsieverts, fractionalDigits) + ` μSv`;
+                return super.truncateFractionDigits(this.Microsieverts, options as ToStringOptions) + ` μSv`;
             case RadiationEquivalentDoseUnits.Millisieverts:
-                return super.truncateFractionDigits(this.Millisieverts, fractionalDigits) + ` mSv`;
+                return super.truncateFractionDigits(this.Millisieverts, options as ToStringOptions) + ` mSv`;
             case RadiationEquivalentDoseUnits.MilliroentgensEquivalentMan:
-                return super.truncateFractionDigits(this.MilliroentgensEquivalentMan, fractionalDigits) + ` mrem`;
+                return super.truncateFractionDigits(this.MilliroentgensEquivalentMan, options as ToStringOptions) + ` mrem`;
         default:
             break;
         }

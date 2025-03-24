@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Force */
 export interface ForceDto {
@@ -532,43 +532,47 @@ export class Force extends BaseUnit {
      * Note! the default format for Force is Newtons.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Force.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Force.
      */
-    public toString(unit: ForceUnits = ForceUnits.Newtons, fractionalDigits?: number): string {
+    public toString(unit: ForceUnits = ForceUnits.Newtons, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ForceUnits.Dyne:
-                return super.truncateFractionDigits(this.Dyne, fractionalDigits) + ` dyn`;
+                return super.truncateFractionDigits(this.Dyne, options as ToStringOptions) + ` dyn`;
             case ForceUnits.KilogramsForce:
-                return super.truncateFractionDigits(this.KilogramsForce, fractionalDigits) + ` kgf`;
+                return super.truncateFractionDigits(this.KilogramsForce, options as ToStringOptions) + ` kgf`;
             case ForceUnits.TonnesForce:
-                return super.truncateFractionDigits(this.TonnesForce, fractionalDigits) + ` tf`;
+                return super.truncateFractionDigits(this.TonnesForce, options as ToStringOptions) + ` tf`;
             case ForceUnits.Newtons:
-                return super.truncateFractionDigits(this.Newtons, fractionalDigits) + ` N`;
+                return super.truncateFractionDigits(this.Newtons, options as ToStringOptions) + ` N`;
             case ForceUnits.KiloPonds:
-                return super.truncateFractionDigits(this.KiloPonds, fractionalDigits) + ` kp`;
+                return super.truncateFractionDigits(this.KiloPonds, options as ToStringOptions) + ` kp`;
             case ForceUnits.Poundals:
-                return super.truncateFractionDigits(this.Poundals, fractionalDigits) + ` pdl`;
+                return super.truncateFractionDigits(this.Poundals, options as ToStringOptions) + ` pdl`;
             case ForceUnits.PoundsForce:
-                return super.truncateFractionDigits(this.PoundsForce, fractionalDigits) + ` lbf`;
+                return super.truncateFractionDigits(this.PoundsForce, options as ToStringOptions) + ` lbf`;
             case ForceUnits.OunceForce:
-                return super.truncateFractionDigits(this.OunceForce, fractionalDigits) + ` ozf`;
+                return super.truncateFractionDigits(this.OunceForce, options as ToStringOptions) + ` ozf`;
             case ForceUnits.ShortTonsForce:
-                return super.truncateFractionDigits(this.ShortTonsForce, fractionalDigits) + ` tf (short)`;
+                return super.truncateFractionDigits(this.ShortTonsForce, options as ToStringOptions) + ` tf (short)`;
             case ForceUnits.Micronewtons:
-                return super.truncateFractionDigits(this.Micronewtons, fractionalDigits) + ` μN`;
+                return super.truncateFractionDigits(this.Micronewtons, options as ToStringOptions) + ` μN`;
             case ForceUnits.Millinewtons:
-                return super.truncateFractionDigits(this.Millinewtons, fractionalDigits) + ` mN`;
+                return super.truncateFractionDigits(this.Millinewtons, options as ToStringOptions) + ` mN`;
             case ForceUnits.Decanewtons:
-                return super.truncateFractionDigits(this.Decanewtons, fractionalDigits) + ` daN`;
+                return super.truncateFractionDigits(this.Decanewtons, options as ToStringOptions) + ` daN`;
             case ForceUnits.Kilonewtons:
-                return super.truncateFractionDigits(this.Kilonewtons, fractionalDigits) + ` kN`;
+                return super.truncateFractionDigits(this.Kilonewtons, options as ToStringOptions) + ` kN`;
             case ForceUnits.Meganewtons:
-                return super.truncateFractionDigits(this.Meganewtons, fractionalDigits) + ` MN`;
+                return super.truncateFractionDigits(this.Meganewtons, options as ToStringOptions) + ` MN`;
             case ForceUnits.KilopoundsForce:
-                return super.truncateFractionDigits(this.KilopoundsForce, fractionalDigits) + ` klbf`;
+                return super.truncateFractionDigits(this.KilopoundsForce, options as ToStringOptions) + ` klbf`;
         default:
             break;
         }

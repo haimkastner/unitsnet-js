@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricCurrentDensity */
 export interface ElectricCurrentDensityDto {
@@ -196,19 +196,23 @@ export class ElectricCurrentDensity extends BaseUnit {
      * Note! the default format for ElectricCurrentDensity is AmperesPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricCurrentDensity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricCurrentDensity.
      */
-    public toString(unit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter, fractionalDigits?: number): string {
+    public toString(unit: ElectricCurrentDensityUnits = ElectricCurrentDensityUnits.AmperesPerSquareMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricCurrentDensityUnits.AmperesPerSquareMeter:
-                return super.truncateFractionDigits(this.AmperesPerSquareMeter, fractionalDigits) + ` A/m²`;
+                return super.truncateFractionDigits(this.AmperesPerSquareMeter, options as ToStringOptions) + ` A/m²`;
             case ElectricCurrentDensityUnits.AmperesPerSquareInch:
-                return super.truncateFractionDigits(this.AmperesPerSquareInch, fractionalDigits) + ` A/in²`;
+                return super.truncateFractionDigits(this.AmperesPerSquareInch, options as ToStringOptions) + ` A/in²`;
             case ElectricCurrentDensityUnits.AmperesPerSquareFoot:
-                return super.truncateFractionDigits(this.AmperesPerSquareFoot, fractionalDigits) + ` A/ft²`;
+                return super.truncateFractionDigits(this.AmperesPerSquareFoot, options as ToStringOptions) + ` A/ft²`;
         default:
             break;
         }

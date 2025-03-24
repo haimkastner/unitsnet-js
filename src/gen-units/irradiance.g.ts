@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Irradiance */
 export interface IrradianceDto {
@@ -518,41 +518,45 @@ export class Irradiance extends BaseUnit {
      * Note! the default format for Irradiance is WattsPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Irradiance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Irradiance.
      */
-    public toString(unit: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter, fractionalDigits?: number): string {
+    public toString(unit: IrradianceUnits = IrradianceUnits.WattsPerSquareMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case IrradianceUnits.WattsPerSquareMeter:
-                return super.truncateFractionDigits(this.WattsPerSquareMeter, fractionalDigits) + ` W/m²`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeter, options as ToStringOptions) + ` W/m²`;
             case IrradianceUnits.WattsPerSquareCentimeter:
-                return super.truncateFractionDigits(this.WattsPerSquareCentimeter, fractionalDigits) + ` W/cm²`;
+                return super.truncateFractionDigits(this.WattsPerSquareCentimeter, options as ToStringOptions) + ` W/cm²`;
             case IrradianceUnits.PicowattsPerSquareMeter:
-                return super.truncateFractionDigits(this.PicowattsPerSquareMeter, fractionalDigits) + ` pW/m²`;
+                return super.truncateFractionDigits(this.PicowattsPerSquareMeter, options as ToStringOptions) + ` pW/m²`;
             case IrradianceUnits.NanowattsPerSquareMeter:
-                return super.truncateFractionDigits(this.NanowattsPerSquareMeter, fractionalDigits) + ` nW/m²`;
+                return super.truncateFractionDigits(this.NanowattsPerSquareMeter, options as ToStringOptions) + ` nW/m²`;
             case IrradianceUnits.MicrowattsPerSquareMeter:
-                return super.truncateFractionDigits(this.MicrowattsPerSquareMeter, fractionalDigits) + ` μW/m²`;
+                return super.truncateFractionDigits(this.MicrowattsPerSquareMeter, options as ToStringOptions) + ` μW/m²`;
             case IrradianceUnits.MilliwattsPerSquareMeter:
-                return super.truncateFractionDigits(this.MilliwattsPerSquareMeter, fractionalDigits) + ` mW/m²`;
+                return super.truncateFractionDigits(this.MilliwattsPerSquareMeter, options as ToStringOptions) + ` mW/m²`;
             case IrradianceUnits.KilowattsPerSquareMeter:
-                return super.truncateFractionDigits(this.KilowattsPerSquareMeter, fractionalDigits) + ` kW/m²`;
+                return super.truncateFractionDigits(this.KilowattsPerSquareMeter, options as ToStringOptions) + ` kW/m²`;
             case IrradianceUnits.MegawattsPerSquareMeter:
-                return super.truncateFractionDigits(this.MegawattsPerSquareMeter, fractionalDigits) + ` MW/m²`;
+                return super.truncateFractionDigits(this.MegawattsPerSquareMeter, options as ToStringOptions) + ` MW/m²`;
             case IrradianceUnits.PicowattsPerSquareCentimeter:
-                return super.truncateFractionDigits(this.PicowattsPerSquareCentimeter, fractionalDigits) + ` pW/cm²`;
+                return super.truncateFractionDigits(this.PicowattsPerSquareCentimeter, options as ToStringOptions) + ` pW/cm²`;
             case IrradianceUnits.NanowattsPerSquareCentimeter:
-                return super.truncateFractionDigits(this.NanowattsPerSquareCentimeter, fractionalDigits) + ` nW/cm²`;
+                return super.truncateFractionDigits(this.NanowattsPerSquareCentimeter, options as ToStringOptions) + ` nW/cm²`;
             case IrradianceUnits.MicrowattsPerSquareCentimeter:
-                return super.truncateFractionDigits(this.MicrowattsPerSquareCentimeter, fractionalDigits) + ` μW/cm²`;
+                return super.truncateFractionDigits(this.MicrowattsPerSquareCentimeter, options as ToStringOptions) + ` μW/cm²`;
             case IrradianceUnits.MilliwattsPerSquareCentimeter:
-                return super.truncateFractionDigits(this.MilliwattsPerSquareCentimeter, fractionalDigits) + ` mW/cm²`;
+                return super.truncateFractionDigits(this.MilliwattsPerSquareCentimeter, options as ToStringOptions) + ` mW/cm²`;
             case IrradianceUnits.KilowattsPerSquareCentimeter:
-                return super.truncateFractionDigits(this.KilowattsPerSquareCentimeter, fractionalDigits) + ` kW/cm²`;
+                return super.truncateFractionDigits(this.KilowattsPerSquareCentimeter, options as ToStringOptions) + ` kW/cm²`;
             case IrradianceUnits.MegawattsPerSquareCentimeter:
-                return super.truncateFractionDigits(this.MegawattsPerSquareCentimeter, fractionalDigits) + ` MW/cm²`;
+                return super.truncateFractionDigits(this.MegawattsPerSquareCentimeter, options as ToStringOptions) + ` MW/cm²`;
         default:
             break;
         }

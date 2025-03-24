@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a RadiationExposure */
 export interface RadiationExposureDto {
@@ -338,29 +338,33 @@ export class RadiationExposure extends BaseUnit {
      * Note! the default format for RadiationExposure is CoulombsPerKilogram.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RadiationExposure.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the RadiationExposure.
      */
-    public toString(unit: RadiationExposureUnits = RadiationExposureUnits.CoulombsPerKilogram, fractionalDigits?: number): string {
+    public toString(unit: RadiationExposureUnits = RadiationExposureUnits.CoulombsPerKilogram, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case RadiationExposureUnits.CoulombsPerKilogram:
-                return super.truncateFractionDigits(this.CoulombsPerKilogram, fractionalDigits) + ` C/kg`;
+                return super.truncateFractionDigits(this.CoulombsPerKilogram, options as ToStringOptions) + ` C/kg`;
             case RadiationExposureUnits.Roentgens:
-                return super.truncateFractionDigits(this.Roentgens, fractionalDigits) + ` R`;
+                return super.truncateFractionDigits(this.Roentgens, options as ToStringOptions) + ` R`;
             case RadiationExposureUnits.PicocoulombsPerKilogram:
-                return super.truncateFractionDigits(this.PicocoulombsPerKilogram, fractionalDigits) + ` pC/kg`;
+                return super.truncateFractionDigits(this.PicocoulombsPerKilogram, options as ToStringOptions) + ` pC/kg`;
             case RadiationExposureUnits.NanocoulombsPerKilogram:
-                return super.truncateFractionDigits(this.NanocoulombsPerKilogram, fractionalDigits) + ` nC/kg`;
+                return super.truncateFractionDigits(this.NanocoulombsPerKilogram, options as ToStringOptions) + ` nC/kg`;
             case RadiationExposureUnits.MicrocoulombsPerKilogram:
-                return super.truncateFractionDigits(this.MicrocoulombsPerKilogram, fractionalDigits) + ` μC/kg`;
+                return super.truncateFractionDigits(this.MicrocoulombsPerKilogram, options as ToStringOptions) + ` μC/kg`;
             case RadiationExposureUnits.MillicoulombsPerKilogram:
-                return super.truncateFractionDigits(this.MillicoulombsPerKilogram, fractionalDigits) + ` mC/kg`;
+                return super.truncateFractionDigits(this.MillicoulombsPerKilogram, options as ToStringOptions) + ` mC/kg`;
             case RadiationExposureUnits.Microroentgens:
-                return super.truncateFractionDigits(this.Microroentgens, fractionalDigits) + ` μR`;
+                return super.truncateFractionDigits(this.Microroentgens, options as ToStringOptions) + ` μR`;
             case RadiationExposureUnits.Milliroentgens:
-                return super.truncateFractionDigits(this.Milliroentgens, fractionalDigits) + ` mR`;
+                return super.truncateFractionDigits(this.Milliroentgens, options as ToStringOptions) + ` mR`;
         default:
             break;
         }

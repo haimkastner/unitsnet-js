@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Frequency */
 export interface FrequencyDto {
@@ -462,39 +462,43 @@ export class Frequency extends BaseUnit {
      * Note! the default format for Frequency is Hertz.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Frequency.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Frequency.
      */
-    public toString(unit: FrequencyUnits = FrequencyUnits.Hertz, fractionalDigits?: number): string {
+    public toString(unit: FrequencyUnits = FrequencyUnits.Hertz, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case FrequencyUnits.Hertz:
-                return super.truncateFractionDigits(this.Hertz, fractionalDigits) + ` Hz`;
+                return super.truncateFractionDigits(this.Hertz, options as ToStringOptions) + ` Hz`;
             case FrequencyUnits.RadiansPerSecond:
-                return super.truncateFractionDigits(this.RadiansPerSecond, fractionalDigits) + ` rad/s`;
+                return super.truncateFractionDigits(this.RadiansPerSecond, options as ToStringOptions) + ` rad/s`;
             case FrequencyUnits.CyclesPerMinute:
-                return super.truncateFractionDigits(this.CyclesPerMinute, fractionalDigits) + ` cpm`;
+                return super.truncateFractionDigits(this.CyclesPerMinute, options as ToStringOptions) + ` cpm`;
             case FrequencyUnits.CyclesPerHour:
-                return super.truncateFractionDigits(this.CyclesPerHour, fractionalDigits) + ` cph`;
+                return super.truncateFractionDigits(this.CyclesPerHour, options as ToStringOptions) + ` cph`;
             case FrequencyUnits.BeatsPerMinute:
-                return super.truncateFractionDigits(this.BeatsPerMinute, fractionalDigits) + ` bpm`;
+                return super.truncateFractionDigits(this.BeatsPerMinute, options as ToStringOptions) + ` bpm`;
             case FrequencyUnits.PerSecond:
-                return super.truncateFractionDigits(this.PerSecond, fractionalDigits) + ` s⁻¹`;
+                return super.truncateFractionDigits(this.PerSecond, options as ToStringOptions) + ` s⁻¹`;
             case FrequencyUnits.BUnits:
-                return super.truncateFractionDigits(this.BUnits, fractionalDigits) + ` B Units`;
+                return super.truncateFractionDigits(this.BUnits, options as ToStringOptions) + ` B Units`;
             case FrequencyUnits.Microhertz:
-                return super.truncateFractionDigits(this.Microhertz, fractionalDigits) + ` μHz`;
+                return super.truncateFractionDigits(this.Microhertz, options as ToStringOptions) + ` μHz`;
             case FrequencyUnits.Millihertz:
-                return super.truncateFractionDigits(this.Millihertz, fractionalDigits) + ` mHz`;
+                return super.truncateFractionDigits(this.Millihertz, options as ToStringOptions) + ` mHz`;
             case FrequencyUnits.Kilohertz:
-                return super.truncateFractionDigits(this.Kilohertz, fractionalDigits) + ` kHz`;
+                return super.truncateFractionDigits(this.Kilohertz, options as ToStringOptions) + ` kHz`;
             case FrequencyUnits.Megahertz:
-                return super.truncateFractionDigits(this.Megahertz, fractionalDigits) + ` MHz`;
+                return super.truncateFractionDigits(this.Megahertz, options as ToStringOptions) + ` MHz`;
             case FrequencyUnits.Gigahertz:
-                return super.truncateFractionDigits(this.Gigahertz, fractionalDigits) + ` GHz`;
+                return super.truncateFractionDigits(this.Gigahertz, options as ToStringOptions) + ` GHz`;
             case FrequencyUnits.Terahertz:
-                return super.truncateFractionDigits(this.Terahertz, fractionalDigits) + ` THz`;
+                return super.truncateFractionDigits(this.Terahertz, options as ToStringOptions) + ` THz`;
         default:
             break;
         }

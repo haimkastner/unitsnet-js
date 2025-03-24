@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricCapacitance */
 export interface ElectricCapacitanceDto {
@@ -300,27 +300,31 @@ export class ElectricCapacitance extends BaseUnit {
      * Note! the default format for ElectricCapacitance is Farads.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricCapacitance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricCapacitance.
      */
-    public toString(unit: ElectricCapacitanceUnits = ElectricCapacitanceUnits.Farads, fractionalDigits?: number): string {
+    public toString(unit: ElectricCapacitanceUnits = ElectricCapacitanceUnits.Farads, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricCapacitanceUnits.Farads:
-                return super.truncateFractionDigits(this.Farads, fractionalDigits) + ` F`;
+                return super.truncateFractionDigits(this.Farads, options as ToStringOptions) + ` F`;
             case ElectricCapacitanceUnits.Picofarads:
-                return super.truncateFractionDigits(this.Picofarads, fractionalDigits) + ` pF`;
+                return super.truncateFractionDigits(this.Picofarads, options as ToStringOptions) + ` pF`;
             case ElectricCapacitanceUnits.Nanofarads:
-                return super.truncateFractionDigits(this.Nanofarads, fractionalDigits) + ` nF`;
+                return super.truncateFractionDigits(this.Nanofarads, options as ToStringOptions) + ` nF`;
             case ElectricCapacitanceUnits.Microfarads:
-                return super.truncateFractionDigits(this.Microfarads, fractionalDigits) + ` μF`;
+                return super.truncateFractionDigits(this.Microfarads, options as ToStringOptions) + ` μF`;
             case ElectricCapacitanceUnits.Millifarads:
-                return super.truncateFractionDigits(this.Millifarads, fractionalDigits) + ` mF`;
+                return super.truncateFractionDigits(this.Millifarads, options as ToStringOptions) + ` mF`;
             case ElectricCapacitanceUnits.Kilofarads:
-                return super.truncateFractionDigits(this.Kilofarads, fractionalDigits) + ` kF`;
+                return super.truncateFractionDigits(this.Kilofarads, options as ToStringOptions) + ` kF`;
             case ElectricCapacitanceUnits.Megafarads:
-                return super.truncateFractionDigits(this.Megafarads, fractionalDigits) + ` MF`;
+                return super.truncateFractionDigits(this.Megafarads, options as ToStringOptions) + ` MF`;
         default:
             break;
         }

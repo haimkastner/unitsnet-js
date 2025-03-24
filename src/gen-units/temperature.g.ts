@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Temperature */
 export interface TemperatureDto {
@@ -440,33 +440,37 @@ export class Temperature extends BaseUnit {
      * Note! the default format for Temperature is Kelvins.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Temperature.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Temperature.
      */
-    public toString(unit: TemperatureUnits = TemperatureUnits.Kelvins, fractionalDigits?: number): string {
+    public toString(unit: TemperatureUnits = TemperatureUnits.Kelvins, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case TemperatureUnits.Kelvins:
-                return super.truncateFractionDigits(this.Kelvins, fractionalDigits) + ` K`;
+                return super.truncateFractionDigits(this.Kelvins, options as ToStringOptions) + ` K`;
             case TemperatureUnits.DegreesCelsius:
-                return super.truncateFractionDigits(this.DegreesCelsius, fractionalDigits) + ` °C`;
+                return super.truncateFractionDigits(this.DegreesCelsius, options as ToStringOptions) + ` °C`;
             case TemperatureUnits.MillidegreesCelsius:
-                return super.truncateFractionDigits(this.MillidegreesCelsius, fractionalDigits) + ` m°C`;
+                return super.truncateFractionDigits(this.MillidegreesCelsius, options as ToStringOptions) + ` m°C`;
             case TemperatureUnits.DegreesDelisle:
-                return super.truncateFractionDigits(this.DegreesDelisle, fractionalDigits) + ` °De`;
+                return super.truncateFractionDigits(this.DegreesDelisle, options as ToStringOptions) + ` °De`;
             case TemperatureUnits.DegreesFahrenheit:
-                return super.truncateFractionDigits(this.DegreesFahrenheit, fractionalDigits) + ` °F`;
+                return super.truncateFractionDigits(this.DegreesFahrenheit, options as ToStringOptions) + ` °F`;
             case TemperatureUnits.DegreesNewton:
-                return super.truncateFractionDigits(this.DegreesNewton, fractionalDigits) + ` °N`;
+                return super.truncateFractionDigits(this.DegreesNewton, options as ToStringOptions) + ` °N`;
             case TemperatureUnits.DegreesRankine:
-                return super.truncateFractionDigits(this.DegreesRankine, fractionalDigits) + ` °R`;
+                return super.truncateFractionDigits(this.DegreesRankine, options as ToStringOptions) + ` °R`;
             case TemperatureUnits.DegreesReaumur:
-                return super.truncateFractionDigits(this.DegreesReaumur, fractionalDigits) + ` °Ré`;
+                return super.truncateFractionDigits(this.DegreesReaumur, options as ToStringOptions) + ` °Ré`;
             case TemperatureUnits.DegreesRoemer:
-                return super.truncateFractionDigits(this.DegreesRoemer, fractionalDigits) + ` °Rø`;
+                return super.truncateFractionDigits(this.DegreesRoemer, options as ToStringOptions) + ` °Rø`;
             case TemperatureUnits.SolarTemperatures:
-                return super.truncateFractionDigits(this.SolarTemperatures, fractionalDigits) + ` T⊙`;
+                return super.truncateFractionDigits(this.SolarTemperatures, options as ToStringOptions) + ` T⊙`;
         default:
             break;
         }

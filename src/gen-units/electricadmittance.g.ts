@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricAdmittance */
 export interface ElectricAdmittanceDto {
@@ -534,45 +534,49 @@ export class ElectricAdmittance extends BaseUnit {
      * Note! the default format for ElectricAdmittance is Siemens.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricAdmittance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricAdmittance.
      */
-    public toString(unit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens, fractionalDigits?: number): string {
+    public toString(unit: ElectricAdmittanceUnits = ElectricAdmittanceUnits.Siemens, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricAdmittanceUnits.Siemens:
-                return super.truncateFractionDigits(this.Siemens, fractionalDigits) + ` S`;
+                return super.truncateFractionDigits(this.Siemens, options as ToStringOptions) + ` S`;
             case ElectricAdmittanceUnits.Mhos:
-                return super.truncateFractionDigits(this.Mhos, fractionalDigits) + ` ℧`;
+                return super.truncateFractionDigits(this.Mhos, options as ToStringOptions) + ` ℧`;
             case ElectricAdmittanceUnits.Nanosiemens:
-                return super.truncateFractionDigits(this.Nanosiemens, fractionalDigits) + ` nS`;
+                return super.truncateFractionDigits(this.Nanosiemens, options as ToStringOptions) + ` nS`;
             case ElectricAdmittanceUnits.Microsiemens:
-                return super.truncateFractionDigits(this.Microsiemens, fractionalDigits) + ` μS`;
+                return super.truncateFractionDigits(this.Microsiemens, options as ToStringOptions) + ` μS`;
             case ElectricAdmittanceUnits.Millisiemens:
-                return super.truncateFractionDigits(this.Millisiemens, fractionalDigits) + ` mS`;
+                return super.truncateFractionDigits(this.Millisiemens, options as ToStringOptions) + ` mS`;
             case ElectricAdmittanceUnits.Kilosiemens:
-                return super.truncateFractionDigits(this.Kilosiemens, fractionalDigits) + ` kS`;
+                return super.truncateFractionDigits(this.Kilosiemens, options as ToStringOptions) + ` kS`;
             case ElectricAdmittanceUnits.Megasiemens:
-                return super.truncateFractionDigits(this.Megasiemens, fractionalDigits) + ` MS`;
+                return super.truncateFractionDigits(this.Megasiemens, options as ToStringOptions) + ` MS`;
             case ElectricAdmittanceUnits.Gigasiemens:
-                return super.truncateFractionDigits(this.Gigasiemens, fractionalDigits) + ` GS`;
+                return super.truncateFractionDigits(this.Gigasiemens, options as ToStringOptions) + ` GS`;
             case ElectricAdmittanceUnits.Terasiemens:
-                return super.truncateFractionDigits(this.Terasiemens, fractionalDigits) + ` TS`;
+                return super.truncateFractionDigits(this.Terasiemens, options as ToStringOptions) + ` TS`;
             case ElectricAdmittanceUnits.Nanomhos:
-                return super.truncateFractionDigits(this.Nanomhos, fractionalDigits) + ` n℧`;
+                return super.truncateFractionDigits(this.Nanomhos, options as ToStringOptions) + ` n℧`;
             case ElectricAdmittanceUnits.Micromhos:
-                return super.truncateFractionDigits(this.Micromhos, fractionalDigits) + ` μ℧`;
+                return super.truncateFractionDigits(this.Micromhos, options as ToStringOptions) + ` μ℧`;
             case ElectricAdmittanceUnits.Millimhos:
-                return super.truncateFractionDigits(this.Millimhos, fractionalDigits) + ` m℧`;
+                return super.truncateFractionDigits(this.Millimhos, options as ToStringOptions) + ` m℧`;
             case ElectricAdmittanceUnits.Kilomhos:
-                return super.truncateFractionDigits(this.Kilomhos, fractionalDigits) + ` k℧`;
+                return super.truncateFractionDigits(this.Kilomhos, options as ToStringOptions) + ` k℧`;
             case ElectricAdmittanceUnits.Megamhos:
-                return super.truncateFractionDigits(this.Megamhos, fractionalDigits) + ` M℧`;
+                return super.truncateFractionDigits(this.Megamhos, options as ToStringOptions) + ` M℧`;
             case ElectricAdmittanceUnits.Gigamhos:
-                return super.truncateFractionDigits(this.Gigamhos, fractionalDigits) + ` G℧`;
+                return super.truncateFractionDigits(this.Gigamhos, options as ToStringOptions) + ` G℧`;
             case ElectricAdmittanceUnits.Teramhos:
-                return super.truncateFractionDigits(this.Teramhos, fractionalDigits) + ` T℧`;
+                return super.truncateFractionDigits(this.Teramhos, options as ToStringOptions) + ` T℧`;
         default:
             break;
         }

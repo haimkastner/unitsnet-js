@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ForceChangeRate */
 export interface ForceChangeRateDto {
@@ -540,43 +540,47 @@ export class ForceChangeRate extends BaseUnit {
      * Note! the default format for ForceChangeRate is NewtonsPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ForceChangeRate.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ForceChangeRate.
      */
-    public toString(unit: ForceChangeRateUnits = ForceChangeRateUnits.NewtonsPerSecond, fractionalDigits?: number): string {
+    public toString(unit: ForceChangeRateUnits = ForceChangeRateUnits.NewtonsPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ForceChangeRateUnits.NewtonsPerMinute:
-                return super.truncateFractionDigits(this.NewtonsPerMinute, fractionalDigits) + ` N/min`;
+                return super.truncateFractionDigits(this.NewtonsPerMinute, options as ToStringOptions) + ` N/min`;
             case ForceChangeRateUnits.NewtonsPerSecond:
-                return super.truncateFractionDigits(this.NewtonsPerSecond, fractionalDigits) + ` N/s`;
+                return super.truncateFractionDigits(this.NewtonsPerSecond, options as ToStringOptions) + ` N/s`;
             case ForceChangeRateUnits.PoundsForcePerMinute:
-                return super.truncateFractionDigits(this.PoundsForcePerMinute, fractionalDigits) + ` lbf/min`;
+                return super.truncateFractionDigits(this.PoundsForcePerMinute, options as ToStringOptions) + ` lbf/min`;
             case ForceChangeRateUnits.PoundsForcePerSecond:
-                return super.truncateFractionDigits(this.PoundsForcePerSecond, fractionalDigits) + ` lbf/s`;
+                return super.truncateFractionDigits(this.PoundsForcePerSecond, options as ToStringOptions) + ` lbf/s`;
             case ForceChangeRateUnits.DecanewtonsPerMinute:
-                return super.truncateFractionDigits(this.DecanewtonsPerMinute, fractionalDigits) + ` daN/min`;
+                return super.truncateFractionDigits(this.DecanewtonsPerMinute, options as ToStringOptions) + ` daN/min`;
             case ForceChangeRateUnits.KilonewtonsPerMinute:
-                return super.truncateFractionDigits(this.KilonewtonsPerMinute, fractionalDigits) + ` kN/min`;
+                return super.truncateFractionDigits(this.KilonewtonsPerMinute, options as ToStringOptions) + ` kN/min`;
             case ForceChangeRateUnits.NanonewtonsPerSecond:
-                return super.truncateFractionDigits(this.NanonewtonsPerSecond, fractionalDigits) + ` nN/s`;
+                return super.truncateFractionDigits(this.NanonewtonsPerSecond, options as ToStringOptions) + ` nN/s`;
             case ForceChangeRateUnits.MicronewtonsPerSecond:
-                return super.truncateFractionDigits(this.MicronewtonsPerSecond, fractionalDigits) + ` μN/s`;
+                return super.truncateFractionDigits(this.MicronewtonsPerSecond, options as ToStringOptions) + ` μN/s`;
             case ForceChangeRateUnits.MillinewtonsPerSecond:
-                return super.truncateFractionDigits(this.MillinewtonsPerSecond, fractionalDigits) + ` mN/s`;
+                return super.truncateFractionDigits(this.MillinewtonsPerSecond, options as ToStringOptions) + ` mN/s`;
             case ForceChangeRateUnits.CentinewtonsPerSecond:
-                return super.truncateFractionDigits(this.CentinewtonsPerSecond, fractionalDigits) + ` cN/s`;
+                return super.truncateFractionDigits(this.CentinewtonsPerSecond, options as ToStringOptions) + ` cN/s`;
             case ForceChangeRateUnits.DecinewtonsPerSecond:
-                return super.truncateFractionDigits(this.DecinewtonsPerSecond, fractionalDigits) + ` dN/s`;
+                return super.truncateFractionDigits(this.DecinewtonsPerSecond, options as ToStringOptions) + ` dN/s`;
             case ForceChangeRateUnits.DecanewtonsPerSecond:
-                return super.truncateFractionDigits(this.DecanewtonsPerSecond, fractionalDigits) + ` daN/s`;
+                return super.truncateFractionDigits(this.DecanewtonsPerSecond, options as ToStringOptions) + ` daN/s`;
             case ForceChangeRateUnits.KilonewtonsPerSecond:
-                return super.truncateFractionDigits(this.KilonewtonsPerSecond, fractionalDigits) + ` kN/s`;
+                return super.truncateFractionDigits(this.KilonewtonsPerSecond, options as ToStringOptions) + ` kN/s`;
             case ForceChangeRateUnits.KilopoundsForcePerMinute:
-                return super.truncateFractionDigits(this.KilopoundsForcePerMinute, fractionalDigits) + ` klbf/min`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerMinute, options as ToStringOptions) + ` klbf/min`;
             case ForceChangeRateUnits.KilopoundsForcePerSecond:
-                return super.truncateFractionDigits(this.KilopoundsForcePerSecond, fractionalDigits) + ` klbf/s`;
+                return super.truncateFractionDigits(this.KilopoundsForcePerSecond, options as ToStringOptions) + ` klbf/s`;
         default:
             break;
         }

@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Luminance */
 export interface LuminanceDto {
@@ -378,33 +378,37 @@ export class Luminance extends BaseUnit {
      * Note! the default format for Luminance is CandelasPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Luminance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Luminance.
      */
-    public toString(unit: LuminanceUnits = LuminanceUnits.CandelasPerSquareMeter, fractionalDigits?: number): string {
+    public toString(unit: LuminanceUnits = LuminanceUnits.CandelasPerSquareMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case LuminanceUnits.CandelasPerSquareMeter:
-                return super.truncateFractionDigits(this.CandelasPerSquareMeter, fractionalDigits) + ` Cd/m²`;
+                return super.truncateFractionDigits(this.CandelasPerSquareMeter, options as ToStringOptions) + ` Cd/m²`;
             case LuminanceUnits.CandelasPerSquareFoot:
-                return super.truncateFractionDigits(this.CandelasPerSquareFoot, fractionalDigits) + ` Cd/ft²`;
+                return super.truncateFractionDigits(this.CandelasPerSquareFoot, options as ToStringOptions) + ` Cd/ft²`;
             case LuminanceUnits.CandelasPerSquareInch:
-                return super.truncateFractionDigits(this.CandelasPerSquareInch, fractionalDigits) + ` Cd/in²`;
+                return super.truncateFractionDigits(this.CandelasPerSquareInch, options as ToStringOptions) + ` Cd/in²`;
             case LuminanceUnits.Nits:
-                return super.truncateFractionDigits(this.Nits, fractionalDigits) + ` nt`;
+                return super.truncateFractionDigits(this.Nits, options as ToStringOptions) + ` nt`;
             case LuminanceUnits.NanocandelasPerSquareMeter:
-                return super.truncateFractionDigits(this.NanocandelasPerSquareMeter, fractionalDigits) + ` nCd/m²`;
+                return super.truncateFractionDigits(this.NanocandelasPerSquareMeter, options as ToStringOptions) + ` nCd/m²`;
             case LuminanceUnits.MicrocandelasPerSquareMeter:
-                return super.truncateFractionDigits(this.MicrocandelasPerSquareMeter, fractionalDigits) + ` μCd/m²`;
+                return super.truncateFractionDigits(this.MicrocandelasPerSquareMeter, options as ToStringOptions) + ` μCd/m²`;
             case LuminanceUnits.MillicandelasPerSquareMeter:
-                return super.truncateFractionDigits(this.MillicandelasPerSquareMeter, fractionalDigits) + ` mCd/m²`;
+                return super.truncateFractionDigits(this.MillicandelasPerSquareMeter, options as ToStringOptions) + ` mCd/m²`;
             case LuminanceUnits.CenticandelasPerSquareMeter:
-                return super.truncateFractionDigits(this.CenticandelasPerSquareMeter, fractionalDigits) + ` cCd/m²`;
+                return super.truncateFractionDigits(this.CenticandelasPerSquareMeter, options as ToStringOptions) + ` cCd/m²`;
             case LuminanceUnits.DecicandelasPerSquareMeter:
-                return super.truncateFractionDigits(this.DecicandelasPerSquareMeter, fractionalDigits) + ` dCd/m²`;
+                return super.truncateFractionDigits(this.DecicandelasPerSquareMeter, options as ToStringOptions) + ` dCd/m²`;
             case LuminanceUnits.KilocandelasPerSquareMeter:
-                return super.truncateFractionDigits(this.KilocandelasPerSquareMeter, fractionalDigits) + ` kCd/m²`;
+                return super.truncateFractionDigits(this.KilocandelasPerSquareMeter, options as ToStringOptions) + ` kCd/m²`;
         default:
             break;
         }

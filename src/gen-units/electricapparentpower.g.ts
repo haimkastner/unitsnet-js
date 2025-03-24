@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricApparentPower */
 export interface ElectricApparentPowerDto {
@@ -274,25 +274,29 @@ export class ElectricApparentPower extends BaseUnit {
      * Note! the default format for ElectricApparentPower is Voltamperes.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricApparentPower.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricApparentPower.
      */
-    public toString(unit: ElectricApparentPowerUnits = ElectricApparentPowerUnits.Voltamperes, fractionalDigits?: number): string {
+    public toString(unit: ElectricApparentPowerUnits = ElectricApparentPowerUnits.Voltamperes, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricApparentPowerUnits.Voltamperes:
-                return super.truncateFractionDigits(this.Voltamperes, fractionalDigits) + ` VA`;
+                return super.truncateFractionDigits(this.Voltamperes, options as ToStringOptions) + ` VA`;
             case ElectricApparentPowerUnits.Microvoltamperes:
-                return super.truncateFractionDigits(this.Microvoltamperes, fractionalDigits) + ` μVA`;
+                return super.truncateFractionDigits(this.Microvoltamperes, options as ToStringOptions) + ` μVA`;
             case ElectricApparentPowerUnits.Millivoltamperes:
-                return super.truncateFractionDigits(this.Millivoltamperes, fractionalDigits) + ` mVA`;
+                return super.truncateFractionDigits(this.Millivoltamperes, options as ToStringOptions) + ` mVA`;
             case ElectricApparentPowerUnits.Kilovoltamperes:
-                return super.truncateFractionDigits(this.Kilovoltamperes, fractionalDigits) + ` kVA`;
+                return super.truncateFractionDigits(this.Kilovoltamperes, options as ToStringOptions) + ` kVA`;
             case ElectricApparentPowerUnits.Megavoltamperes:
-                return super.truncateFractionDigits(this.Megavoltamperes, fractionalDigits) + ` MVA`;
+                return super.truncateFractionDigits(this.Megavoltamperes, options as ToStringOptions) + ` MVA`;
             case ElectricApparentPowerUnits.Gigavoltamperes:
-                return super.truncateFractionDigits(this.Gigavoltamperes, fractionalDigits) + ` GVA`;
+                return super.truncateFractionDigits(this.Gigavoltamperes, options as ToStringOptions) + ` GVA`;
         default:
             break;
         }

@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Information */
 export interface InformationDto {
@@ -866,65 +866,69 @@ export class Information extends BaseUnit {
      * Note! the default format for Information is Bits.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Information.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Information.
      */
-    public toString(unit: InformationUnits = InformationUnits.Bits, fractionalDigits?: number): string {
+    public toString(unit: InformationUnits = InformationUnits.Bits, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case InformationUnits.Bytes:
-                return super.truncateFractionDigits(this.Bytes, fractionalDigits) + ` B`;
+                return super.truncateFractionDigits(this.Bytes, options as ToStringOptions) + ` B`;
             case InformationUnits.Bits:
-                return super.truncateFractionDigits(this.Bits, fractionalDigits) + ` b`;
+                return super.truncateFractionDigits(this.Bits, options as ToStringOptions) + ` b`;
             case InformationUnits.Kilobytes:
-                return super.truncateFractionDigits(this.Kilobytes, fractionalDigits) + ` kB`;
+                return super.truncateFractionDigits(this.Kilobytes, options as ToStringOptions) + ` kB`;
             case InformationUnits.Megabytes:
-                return super.truncateFractionDigits(this.Megabytes, fractionalDigits) + ` MB`;
+                return super.truncateFractionDigits(this.Megabytes, options as ToStringOptions) + ` MB`;
             case InformationUnits.Gigabytes:
-                return super.truncateFractionDigits(this.Gigabytes, fractionalDigits) + ` GB`;
+                return super.truncateFractionDigits(this.Gigabytes, options as ToStringOptions) + ` GB`;
             case InformationUnits.Terabytes:
-                return super.truncateFractionDigits(this.Terabytes, fractionalDigits) + ` TB`;
+                return super.truncateFractionDigits(this.Terabytes, options as ToStringOptions) + ` TB`;
             case InformationUnits.Petabytes:
-                return super.truncateFractionDigits(this.Petabytes, fractionalDigits) + ` PB`;
+                return super.truncateFractionDigits(this.Petabytes, options as ToStringOptions) + ` PB`;
             case InformationUnits.Exabytes:
-                return super.truncateFractionDigits(this.Exabytes, fractionalDigits) + ` EB`;
+                return super.truncateFractionDigits(this.Exabytes, options as ToStringOptions) + ` EB`;
             case InformationUnits.Kibibytes:
-                return super.truncateFractionDigits(this.Kibibytes, fractionalDigits) + ` KiBB`;
+                return super.truncateFractionDigits(this.Kibibytes, options as ToStringOptions) + ` KiBB`;
             case InformationUnits.Mebibytes:
-                return super.truncateFractionDigits(this.Mebibytes, fractionalDigits) + ` MiBB`;
+                return super.truncateFractionDigits(this.Mebibytes, options as ToStringOptions) + ` MiBB`;
             case InformationUnits.Gibibytes:
-                return super.truncateFractionDigits(this.Gibibytes, fractionalDigits) + ` GiBB`;
+                return super.truncateFractionDigits(this.Gibibytes, options as ToStringOptions) + ` GiBB`;
             case InformationUnits.Tebibytes:
-                return super.truncateFractionDigits(this.Tebibytes, fractionalDigits) + ` TiBB`;
+                return super.truncateFractionDigits(this.Tebibytes, options as ToStringOptions) + ` TiBB`;
             case InformationUnits.Pebibytes:
-                return super.truncateFractionDigits(this.Pebibytes, fractionalDigits) + ` PiBB`;
+                return super.truncateFractionDigits(this.Pebibytes, options as ToStringOptions) + ` PiBB`;
             case InformationUnits.Exbibytes:
-                return super.truncateFractionDigits(this.Exbibytes, fractionalDigits) + ` EiBB`;
+                return super.truncateFractionDigits(this.Exbibytes, options as ToStringOptions) + ` EiBB`;
             case InformationUnits.Kilobits:
-                return super.truncateFractionDigits(this.Kilobits, fractionalDigits) + ` kb`;
+                return super.truncateFractionDigits(this.Kilobits, options as ToStringOptions) + ` kb`;
             case InformationUnits.Megabits:
-                return super.truncateFractionDigits(this.Megabits, fractionalDigits) + ` Mb`;
+                return super.truncateFractionDigits(this.Megabits, options as ToStringOptions) + ` Mb`;
             case InformationUnits.Gigabits:
-                return super.truncateFractionDigits(this.Gigabits, fractionalDigits) + ` Gb`;
+                return super.truncateFractionDigits(this.Gigabits, options as ToStringOptions) + ` Gb`;
             case InformationUnits.Terabits:
-                return super.truncateFractionDigits(this.Terabits, fractionalDigits) + ` Tb`;
+                return super.truncateFractionDigits(this.Terabits, options as ToStringOptions) + ` Tb`;
             case InformationUnits.Petabits:
-                return super.truncateFractionDigits(this.Petabits, fractionalDigits) + ` Pb`;
+                return super.truncateFractionDigits(this.Petabits, options as ToStringOptions) + ` Pb`;
             case InformationUnits.Exabits:
-                return super.truncateFractionDigits(this.Exabits, fractionalDigits) + ` Eb`;
+                return super.truncateFractionDigits(this.Exabits, options as ToStringOptions) + ` Eb`;
             case InformationUnits.Kibibits:
-                return super.truncateFractionDigits(this.Kibibits, fractionalDigits) + ` KiBb`;
+                return super.truncateFractionDigits(this.Kibibits, options as ToStringOptions) + ` KiBb`;
             case InformationUnits.Mebibits:
-                return super.truncateFractionDigits(this.Mebibits, fractionalDigits) + ` MiBb`;
+                return super.truncateFractionDigits(this.Mebibits, options as ToStringOptions) + ` MiBb`;
             case InformationUnits.Gibibits:
-                return super.truncateFractionDigits(this.Gibibits, fractionalDigits) + ` GiBb`;
+                return super.truncateFractionDigits(this.Gibibits, options as ToStringOptions) + ` GiBb`;
             case InformationUnits.Tebibits:
-                return super.truncateFractionDigits(this.Tebibits, fractionalDigits) + ` TiBb`;
+                return super.truncateFractionDigits(this.Tebibits, options as ToStringOptions) + ` TiBb`;
             case InformationUnits.Pebibits:
-                return super.truncateFractionDigits(this.Pebibits, fractionalDigits) + ` PiBb`;
+                return super.truncateFractionDigits(this.Pebibits, options as ToStringOptions) + ` PiBb`;
             case InformationUnits.Exbibits:
-                return super.truncateFractionDigits(this.Exbibits, fractionalDigits) + ` EiBb`;
+                return super.truncateFractionDigits(this.Exbibits, options as ToStringOptions) + ` EiBb`;
         default:
             break;
         }

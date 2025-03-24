@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a MassFraction */
 export interface MassFractionDto {
@@ -790,61 +790,65 @@ export class MassFraction extends BaseUnit {
      * Note! the default format for MassFraction is DecimalFractions.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MassFraction.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the MassFraction.
      */
-    public toString(unit: MassFractionUnits = MassFractionUnits.DecimalFractions, fractionalDigits?: number): string {
+    public toString(unit: MassFractionUnits = MassFractionUnits.DecimalFractions, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case MassFractionUnits.DecimalFractions:
-                return super.truncateFractionDigits(this.DecimalFractions, fractionalDigits) + ` `;
+                return super.truncateFractionDigits(this.DecimalFractions, options as ToStringOptions) + ` `;
             case MassFractionUnits.GramsPerGram:
-                return super.truncateFractionDigits(this.GramsPerGram, fractionalDigits) + ` g/g`;
+                return super.truncateFractionDigits(this.GramsPerGram, options as ToStringOptions) + ` g/g`;
             case MassFractionUnits.GramsPerKilogram:
-                return super.truncateFractionDigits(this.GramsPerKilogram, fractionalDigits) + ` g/kg`;
+                return super.truncateFractionDigits(this.GramsPerKilogram, options as ToStringOptions) + ` g/kg`;
             case MassFractionUnits.Percent:
-                return super.truncateFractionDigits(this.Percent, fractionalDigits) + ` %`;
+                return super.truncateFractionDigits(this.Percent, options as ToStringOptions) + ` %`;
             case MassFractionUnits.PartsPerThousand:
-                return super.truncateFractionDigits(this.PartsPerThousand, fractionalDigits) + ` ‰`;
+                return super.truncateFractionDigits(this.PartsPerThousand, options as ToStringOptions) + ` ‰`;
             case MassFractionUnits.PartsPerMillion:
-                return super.truncateFractionDigits(this.PartsPerMillion, fractionalDigits) + ` ppm`;
+                return super.truncateFractionDigits(this.PartsPerMillion, options as ToStringOptions) + ` ppm`;
             case MassFractionUnits.PartsPerBillion:
-                return super.truncateFractionDigits(this.PartsPerBillion, fractionalDigits) + ` ppb`;
+                return super.truncateFractionDigits(this.PartsPerBillion, options as ToStringOptions) + ` ppb`;
             case MassFractionUnits.PartsPerTrillion:
-                return super.truncateFractionDigits(this.PartsPerTrillion, fractionalDigits) + ` ppt`;
+                return super.truncateFractionDigits(this.PartsPerTrillion, options as ToStringOptions) + ` ppt`;
             case MassFractionUnits.NanogramsPerGram:
-                return super.truncateFractionDigits(this.NanogramsPerGram, fractionalDigits) + ` ng/g`;
+                return super.truncateFractionDigits(this.NanogramsPerGram, options as ToStringOptions) + ` ng/g`;
             case MassFractionUnits.MicrogramsPerGram:
-                return super.truncateFractionDigits(this.MicrogramsPerGram, fractionalDigits) + ` μg/g`;
+                return super.truncateFractionDigits(this.MicrogramsPerGram, options as ToStringOptions) + ` μg/g`;
             case MassFractionUnits.MilligramsPerGram:
-                return super.truncateFractionDigits(this.MilligramsPerGram, fractionalDigits) + ` mg/g`;
+                return super.truncateFractionDigits(this.MilligramsPerGram, options as ToStringOptions) + ` mg/g`;
             case MassFractionUnits.CentigramsPerGram:
-                return super.truncateFractionDigits(this.CentigramsPerGram, fractionalDigits) + ` cg/g`;
+                return super.truncateFractionDigits(this.CentigramsPerGram, options as ToStringOptions) + ` cg/g`;
             case MassFractionUnits.DecigramsPerGram:
-                return super.truncateFractionDigits(this.DecigramsPerGram, fractionalDigits) + ` dg/g`;
+                return super.truncateFractionDigits(this.DecigramsPerGram, options as ToStringOptions) + ` dg/g`;
             case MassFractionUnits.DecagramsPerGram:
-                return super.truncateFractionDigits(this.DecagramsPerGram, fractionalDigits) + ` dag/g`;
+                return super.truncateFractionDigits(this.DecagramsPerGram, options as ToStringOptions) + ` dag/g`;
             case MassFractionUnits.HectogramsPerGram:
-                return super.truncateFractionDigits(this.HectogramsPerGram, fractionalDigits) + ` hg/g`;
+                return super.truncateFractionDigits(this.HectogramsPerGram, options as ToStringOptions) + ` hg/g`;
             case MassFractionUnits.KilogramsPerGram:
-                return super.truncateFractionDigits(this.KilogramsPerGram, fractionalDigits) + ` kg/g`;
+                return super.truncateFractionDigits(this.KilogramsPerGram, options as ToStringOptions) + ` kg/g`;
             case MassFractionUnits.NanogramsPerKilogram:
-                return super.truncateFractionDigits(this.NanogramsPerKilogram, fractionalDigits) + ` ng/kg`;
+                return super.truncateFractionDigits(this.NanogramsPerKilogram, options as ToStringOptions) + ` ng/kg`;
             case MassFractionUnits.MicrogramsPerKilogram:
-                return super.truncateFractionDigits(this.MicrogramsPerKilogram, fractionalDigits) + ` μg/kg`;
+                return super.truncateFractionDigits(this.MicrogramsPerKilogram, options as ToStringOptions) + ` μg/kg`;
             case MassFractionUnits.MilligramsPerKilogram:
-                return super.truncateFractionDigits(this.MilligramsPerKilogram, fractionalDigits) + ` mg/kg`;
+                return super.truncateFractionDigits(this.MilligramsPerKilogram, options as ToStringOptions) + ` mg/kg`;
             case MassFractionUnits.CentigramsPerKilogram:
-                return super.truncateFractionDigits(this.CentigramsPerKilogram, fractionalDigits) + ` cg/kg`;
+                return super.truncateFractionDigits(this.CentigramsPerKilogram, options as ToStringOptions) + ` cg/kg`;
             case MassFractionUnits.DecigramsPerKilogram:
-                return super.truncateFractionDigits(this.DecigramsPerKilogram, fractionalDigits) + ` dg/kg`;
+                return super.truncateFractionDigits(this.DecigramsPerKilogram, options as ToStringOptions) + ` dg/kg`;
             case MassFractionUnits.DecagramsPerKilogram:
-                return super.truncateFractionDigits(this.DecagramsPerKilogram, fractionalDigits) + ` dag/kg`;
+                return super.truncateFractionDigits(this.DecagramsPerKilogram, options as ToStringOptions) + ` dag/kg`;
             case MassFractionUnits.HectogramsPerKilogram:
-                return super.truncateFractionDigits(this.HectogramsPerKilogram, fractionalDigits) + ` hg/kg`;
+                return super.truncateFractionDigits(this.HectogramsPerKilogram, options as ToStringOptions) + ` hg/kg`;
             case MassFractionUnits.KilogramsPerKilogram:
-                return super.truncateFractionDigits(this.KilogramsPerKilogram, fractionalDigits) + ` kg/kg`;
+                return super.truncateFractionDigits(this.KilogramsPerKilogram, options as ToStringOptions) + ` kg/kg`;
         default:
             break;
         }

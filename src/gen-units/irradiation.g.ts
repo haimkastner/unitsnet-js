@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Irradiation */
 export interface IrradiationDto {
@@ -378,31 +378,35 @@ export class Irradiation extends BaseUnit {
      * Note! the default format for Irradiation is JoulesPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Irradiation.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Irradiation.
      */
-    public toString(unit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter, fractionalDigits?: number): string {
+    public toString(unit: IrradiationUnits = IrradiationUnits.JoulesPerSquareMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case IrradiationUnits.JoulesPerSquareMeter:
-                return super.truncateFractionDigits(this.JoulesPerSquareMeter, fractionalDigits) + ` J/m²`;
+                return super.truncateFractionDigits(this.JoulesPerSquareMeter, options as ToStringOptions) + ` J/m²`;
             case IrradiationUnits.JoulesPerSquareCentimeter:
-                return super.truncateFractionDigits(this.JoulesPerSquareCentimeter, fractionalDigits) + ` J/cm²`;
+                return super.truncateFractionDigits(this.JoulesPerSquareCentimeter, options as ToStringOptions) + ` J/cm²`;
             case IrradiationUnits.JoulesPerSquareMillimeter:
-                return super.truncateFractionDigits(this.JoulesPerSquareMillimeter, fractionalDigits) + ` J/mm²`;
+                return super.truncateFractionDigits(this.JoulesPerSquareMillimeter, options as ToStringOptions) + ` J/mm²`;
             case IrradiationUnits.WattHoursPerSquareMeter:
-                return super.truncateFractionDigits(this.WattHoursPerSquareMeter, fractionalDigits) + ` Wh/m²`;
+                return super.truncateFractionDigits(this.WattHoursPerSquareMeter, options as ToStringOptions) + ` Wh/m²`;
             case IrradiationUnits.BtusPerSquareFoot:
-                return super.truncateFractionDigits(this.BtusPerSquareFoot, fractionalDigits) + ` Btu/ft²`;
+                return super.truncateFractionDigits(this.BtusPerSquareFoot, options as ToStringOptions) + ` Btu/ft²`;
             case IrradiationUnits.KilojoulesPerSquareMeter:
-                return super.truncateFractionDigits(this.KilojoulesPerSquareMeter, fractionalDigits) + ` kJ/m²`;
+                return super.truncateFractionDigits(this.KilojoulesPerSquareMeter, options as ToStringOptions) + ` kJ/m²`;
             case IrradiationUnits.MillijoulesPerSquareCentimeter:
-                return super.truncateFractionDigits(this.MillijoulesPerSquareCentimeter, fractionalDigits) + ` mJ/cm²`;
+                return super.truncateFractionDigits(this.MillijoulesPerSquareCentimeter, options as ToStringOptions) + ` mJ/cm²`;
             case IrradiationUnits.KilowattHoursPerSquareMeter:
-                return super.truncateFractionDigits(this.KilowattHoursPerSquareMeter, fractionalDigits) + ` kWh/m²`;
+                return super.truncateFractionDigits(this.KilowattHoursPerSquareMeter, options as ToStringOptions) + ` kWh/m²`;
             case IrradiationUnits.KilobtusPerSquareFoot:
-                return super.truncateFractionDigits(this.KilobtusPerSquareFoot, fractionalDigits) + ` kBtu/ft²`;
+                return super.truncateFractionDigits(this.KilobtusPerSquareFoot, options as ToStringOptions) + ` kBtu/ft²`;
         default:
             break;
         }

@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a DoseAreaProduct */
 export interface DoseAreaProductDto {
@@ -710,53 +710,57 @@ export class DoseAreaProduct extends BaseUnit {
      * Note! the default format for DoseAreaProduct is GraySquareMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the DoseAreaProduct.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the DoseAreaProduct.
      */
-    public toString(unit: DoseAreaProductUnits = DoseAreaProductUnits.GraySquareMeters, fractionalDigits?: number): string {
+    public toString(unit: DoseAreaProductUnits = DoseAreaProductUnits.GraySquareMeters, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case DoseAreaProductUnits.GraySquareMeters:
-                return super.truncateFractionDigits(this.GraySquareMeters, fractionalDigits) + ` Gy·m²`;
+                return super.truncateFractionDigits(this.GraySquareMeters, options as ToStringOptions) + ` Gy·m²`;
             case DoseAreaProductUnits.GraySquareDecimeters:
-                return super.truncateFractionDigits(this.GraySquareDecimeters, fractionalDigits) + ` Gy·dm²`;
+                return super.truncateFractionDigits(this.GraySquareDecimeters, options as ToStringOptions) + ` Gy·dm²`;
             case DoseAreaProductUnits.GraySquareCentimeters:
-                return super.truncateFractionDigits(this.GraySquareCentimeters, fractionalDigits) + ` Gy·cm²`;
+                return super.truncateFractionDigits(this.GraySquareCentimeters, options as ToStringOptions) + ` Gy·cm²`;
             case DoseAreaProductUnits.GraySquareMillimeters:
-                return super.truncateFractionDigits(this.GraySquareMillimeters, fractionalDigits) + ` Gy·mm²`;
+                return super.truncateFractionDigits(this.GraySquareMillimeters, options as ToStringOptions) + ` Gy·mm²`;
             case DoseAreaProductUnits.MicrograySquareMeters:
-                return super.truncateFractionDigits(this.MicrograySquareMeters, fractionalDigits) + ` μGy·m²`;
+                return super.truncateFractionDigits(this.MicrograySquareMeters, options as ToStringOptions) + ` μGy·m²`;
             case DoseAreaProductUnits.MilligraySquareMeters:
-                return super.truncateFractionDigits(this.MilligraySquareMeters, fractionalDigits) + ` mGy·m²`;
+                return super.truncateFractionDigits(this.MilligraySquareMeters, options as ToStringOptions) + ` mGy·m²`;
             case DoseAreaProductUnits.CentigraySquareMeters:
-                return super.truncateFractionDigits(this.CentigraySquareMeters, fractionalDigits) + ` cGy·m²`;
+                return super.truncateFractionDigits(this.CentigraySquareMeters, options as ToStringOptions) + ` cGy·m²`;
             case DoseAreaProductUnits.DecigraySquareMeters:
-                return super.truncateFractionDigits(this.DecigraySquareMeters, fractionalDigits) + ` dGy·m²`;
+                return super.truncateFractionDigits(this.DecigraySquareMeters, options as ToStringOptions) + ` dGy·m²`;
             case DoseAreaProductUnits.MicrograySquareDecimeters:
-                return super.truncateFractionDigits(this.MicrograySquareDecimeters, fractionalDigits) + ` μGy·dm²`;
+                return super.truncateFractionDigits(this.MicrograySquareDecimeters, options as ToStringOptions) + ` μGy·dm²`;
             case DoseAreaProductUnits.MilligraySquareDecimeters:
-                return super.truncateFractionDigits(this.MilligraySquareDecimeters, fractionalDigits) + ` mGy·dm²`;
+                return super.truncateFractionDigits(this.MilligraySquareDecimeters, options as ToStringOptions) + ` mGy·dm²`;
             case DoseAreaProductUnits.CentigraySquareDecimeters:
-                return super.truncateFractionDigits(this.CentigraySquareDecimeters, fractionalDigits) + ` cGy·dm²`;
+                return super.truncateFractionDigits(this.CentigraySquareDecimeters, options as ToStringOptions) + ` cGy·dm²`;
             case DoseAreaProductUnits.DecigraySquareDecimeters:
-                return super.truncateFractionDigits(this.DecigraySquareDecimeters, fractionalDigits) + ` dGy·dm²`;
+                return super.truncateFractionDigits(this.DecigraySquareDecimeters, options as ToStringOptions) + ` dGy·dm²`;
             case DoseAreaProductUnits.MicrograySquareCentimeters:
-                return super.truncateFractionDigits(this.MicrograySquareCentimeters, fractionalDigits) + ` μGy·cm²`;
+                return super.truncateFractionDigits(this.MicrograySquareCentimeters, options as ToStringOptions) + ` μGy·cm²`;
             case DoseAreaProductUnits.MilligraySquareCentimeters:
-                return super.truncateFractionDigits(this.MilligraySquareCentimeters, fractionalDigits) + ` mGy·cm²`;
+                return super.truncateFractionDigits(this.MilligraySquareCentimeters, options as ToStringOptions) + ` mGy·cm²`;
             case DoseAreaProductUnits.CentigraySquareCentimeters:
-                return super.truncateFractionDigits(this.CentigraySquareCentimeters, fractionalDigits) + ` cGy·cm²`;
+                return super.truncateFractionDigits(this.CentigraySquareCentimeters, options as ToStringOptions) + ` cGy·cm²`;
             case DoseAreaProductUnits.DecigraySquareCentimeters:
-                return super.truncateFractionDigits(this.DecigraySquareCentimeters, fractionalDigits) + ` dGy·cm²`;
+                return super.truncateFractionDigits(this.DecigraySquareCentimeters, options as ToStringOptions) + ` dGy·cm²`;
             case DoseAreaProductUnits.MicrograySquareMillimeters:
-                return super.truncateFractionDigits(this.MicrograySquareMillimeters, fractionalDigits) + ` μGy·mm²`;
+                return super.truncateFractionDigits(this.MicrograySquareMillimeters, options as ToStringOptions) + ` μGy·mm²`;
             case DoseAreaProductUnits.MilligraySquareMillimeters:
-                return super.truncateFractionDigits(this.MilligraySquareMillimeters, fractionalDigits) + ` mGy·mm²`;
+                return super.truncateFractionDigits(this.MilligraySquareMillimeters, options as ToStringOptions) + ` mGy·mm²`;
             case DoseAreaProductUnits.CentigraySquareMillimeters:
-                return super.truncateFractionDigits(this.CentigraySquareMillimeters, fractionalDigits) + ` cGy·mm²`;
+                return super.truncateFractionDigits(this.CentigraySquareMillimeters, options as ToStringOptions) + ` cGy·mm²`;
             case DoseAreaProductUnits.DecigraySquareMillimeters:
-                return super.truncateFractionDigits(this.DecigraySquareMillimeters, fractionalDigits) + ` dGy·mm²`;
+                return super.truncateFractionDigits(this.DecigraySquareMillimeters, options as ToStringOptions) + ` dGy·mm²`;
         default:
             break;
         }

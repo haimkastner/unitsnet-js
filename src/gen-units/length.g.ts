@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Length */
 export interface LengthDto {
@@ -1264,97 +1264,101 @@ export class Length extends BaseUnit {
      * Note! the default format for Length is Meters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Length.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Length.
      */
-    public toString(unit: LengthUnits = LengthUnits.Meters, fractionalDigits?: number): string {
+    public toString(unit: LengthUnits = LengthUnits.Meters, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case LengthUnits.Meters:
-                return super.truncateFractionDigits(this.Meters, fractionalDigits) + ` m`;
+                return super.truncateFractionDigits(this.Meters, options as ToStringOptions) + ` m`;
             case LengthUnits.Miles:
-                return super.truncateFractionDigits(this.Miles, fractionalDigits) + ` mi`;
+                return super.truncateFractionDigits(this.Miles, options as ToStringOptions) + ` mi`;
             case LengthUnits.Yards:
-                return super.truncateFractionDigits(this.Yards, fractionalDigits) + ` yd`;
+                return super.truncateFractionDigits(this.Yards, options as ToStringOptions) + ` yd`;
             case LengthUnits.Feet:
-                return super.truncateFractionDigits(this.Feet, fractionalDigits) + ` ft`;
+                return super.truncateFractionDigits(this.Feet, options as ToStringOptions) + ` ft`;
             case LengthUnits.UsSurveyFeet:
-                return super.truncateFractionDigits(this.UsSurveyFeet, fractionalDigits) + ` ftUS`;
+                return super.truncateFractionDigits(this.UsSurveyFeet, options as ToStringOptions) + ` ftUS`;
             case LengthUnits.Inches:
-                return super.truncateFractionDigits(this.Inches, fractionalDigits) + ` in`;
+                return super.truncateFractionDigits(this.Inches, options as ToStringOptions) + ` in`;
             case LengthUnits.Mils:
-                return super.truncateFractionDigits(this.Mils, fractionalDigits) + ` mil`;
+                return super.truncateFractionDigits(this.Mils, options as ToStringOptions) + ` mil`;
             case LengthUnits.NauticalMiles:
-                return super.truncateFractionDigits(this.NauticalMiles, fractionalDigits) + ` NM`;
+                return super.truncateFractionDigits(this.NauticalMiles, options as ToStringOptions) + ` NM`;
             case LengthUnits.Fathoms:
-                return super.truncateFractionDigits(this.Fathoms, fractionalDigits) + ` fathom`;
+                return super.truncateFractionDigits(this.Fathoms, options as ToStringOptions) + ` fathom`;
             case LengthUnits.Shackles:
-                return super.truncateFractionDigits(this.Shackles, fractionalDigits) + ` shackle`;
+                return super.truncateFractionDigits(this.Shackles, options as ToStringOptions) + ` shackle`;
             case LengthUnits.Microinches:
-                return super.truncateFractionDigits(this.Microinches, fractionalDigits) + ` µin`;
+                return super.truncateFractionDigits(this.Microinches, options as ToStringOptions) + ` µin`;
             case LengthUnits.PrinterPoints:
-                return super.truncateFractionDigits(this.PrinterPoints, fractionalDigits) + ` pt`;
+                return super.truncateFractionDigits(this.PrinterPoints, options as ToStringOptions) + ` pt`;
             case LengthUnits.DtpPoints:
-                return super.truncateFractionDigits(this.DtpPoints, fractionalDigits) + ` pt`;
+                return super.truncateFractionDigits(this.DtpPoints, options as ToStringOptions) + ` pt`;
             case LengthUnits.PrinterPicas:
-                return super.truncateFractionDigits(this.PrinterPicas, fractionalDigits) + ` pica`;
+                return super.truncateFractionDigits(this.PrinterPicas, options as ToStringOptions) + ` pica`;
             case LengthUnits.DtpPicas:
-                return super.truncateFractionDigits(this.DtpPicas, fractionalDigits) + ` pica`;
+                return super.truncateFractionDigits(this.DtpPicas, options as ToStringOptions) + ` pica`;
             case LengthUnits.Twips:
-                return super.truncateFractionDigits(this.Twips, fractionalDigits) + ` twip`;
+                return super.truncateFractionDigits(this.Twips, options as ToStringOptions) + ` twip`;
             case LengthUnits.Hands:
-                return super.truncateFractionDigits(this.Hands, fractionalDigits) + ` h`;
+                return super.truncateFractionDigits(this.Hands, options as ToStringOptions) + ` h`;
             case LengthUnits.AstronomicalUnits:
-                return super.truncateFractionDigits(this.AstronomicalUnits, fractionalDigits) + ` au`;
+                return super.truncateFractionDigits(this.AstronomicalUnits, options as ToStringOptions) + ` au`;
             case LengthUnits.Parsecs:
-                return super.truncateFractionDigits(this.Parsecs, fractionalDigits) + ` pc`;
+                return super.truncateFractionDigits(this.Parsecs, options as ToStringOptions) + ` pc`;
             case LengthUnits.LightYears:
-                return super.truncateFractionDigits(this.LightYears, fractionalDigits) + ` ly`;
+                return super.truncateFractionDigits(this.LightYears, options as ToStringOptions) + ` ly`;
             case LengthUnits.SolarRadiuses:
-                return super.truncateFractionDigits(this.SolarRadiuses, fractionalDigits) + ` R⊙`;
+                return super.truncateFractionDigits(this.SolarRadiuses, options as ToStringOptions) + ` R⊙`;
             case LengthUnits.Chains:
-                return super.truncateFractionDigits(this.Chains, fractionalDigits) + ` ch`;
+                return super.truncateFractionDigits(this.Chains, options as ToStringOptions) + ` ch`;
             case LengthUnits.Angstroms:
-                return super.truncateFractionDigits(this.Angstroms, fractionalDigits) + ` Å`;
+                return super.truncateFractionDigits(this.Angstroms, options as ToStringOptions) + ` Å`;
             case LengthUnits.DataMiles:
-                return super.truncateFractionDigits(this.DataMiles, fractionalDigits) + ` DM`;
+                return super.truncateFractionDigits(this.DataMiles, options as ToStringOptions) + ` DM`;
             case LengthUnits.Femtometers:
-                return super.truncateFractionDigits(this.Femtometers, fractionalDigits) + ` fm`;
+                return super.truncateFractionDigits(this.Femtometers, options as ToStringOptions) + ` fm`;
             case LengthUnits.Picometers:
-                return super.truncateFractionDigits(this.Picometers, fractionalDigits) + ` pm`;
+                return super.truncateFractionDigits(this.Picometers, options as ToStringOptions) + ` pm`;
             case LengthUnits.Nanometers:
-                return super.truncateFractionDigits(this.Nanometers, fractionalDigits) + ` nm`;
+                return super.truncateFractionDigits(this.Nanometers, options as ToStringOptions) + ` nm`;
             case LengthUnits.Micrometers:
-                return super.truncateFractionDigits(this.Micrometers, fractionalDigits) + ` μm`;
+                return super.truncateFractionDigits(this.Micrometers, options as ToStringOptions) + ` μm`;
             case LengthUnits.Millimeters:
-                return super.truncateFractionDigits(this.Millimeters, fractionalDigits) + ` mm`;
+                return super.truncateFractionDigits(this.Millimeters, options as ToStringOptions) + ` mm`;
             case LengthUnits.Centimeters:
-                return super.truncateFractionDigits(this.Centimeters, fractionalDigits) + ` cm`;
+                return super.truncateFractionDigits(this.Centimeters, options as ToStringOptions) + ` cm`;
             case LengthUnits.Decimeters:
-                return super.truncateFractionDigits(this.Decimeters, fractionalDigits) + ` dm`;
+                return super.truncateFractionDigits(this.Decimeters, options as ToStringOptions) + ` dm`;
             case LengthUnits.Decameters:
-                return super.truncateFractionDigits(this.Decameters, fractionalDigits) + ` dam`;
+                return super.truncateFractionDigits(this.Decameters, options as ToStringOptions) + ` dam`;
             case LengthUnits.Hectometers:
-                return super.truncateFractionDigits(this.Hectometers, fractionalDigits) + ` hm`;
+                return super.truncateFractionDigits(this.Hectometers, options as ToStringOptions) + ` hm`;
             case LengthUnits.Kilometers:
-                return super.truncateFractionDigits(this.Kilometers, fractionalDigits) + ` km`;
+                return super.truncateFractionDigits(this.Kilometers, options as ToStringOptions) + ` km`;
             case LengthUnits.Megameters:
-                return super.truncateFractionDigits(this.Megameters, fractionalDigits) + ` Mm`;
+                return super.truncateFractionDigits(this.Megameters, options as ToStringOptions) + ` Mm`;
             case LengthUnits.Gigameters:
-                return super.truncateFractionDigits(this.Gigameters, fractionalDigits) + ` Gm`;
+                return super.truncateFractionDigits(this.Gigameters, options as ToStringOptions) + ` Gm`;
             case LengthUnits.Kiloyards:
-                return super.truncateFractionDigits(this.Kiloyards, fractionalDigits) + ` kyd`;
+                return super.truncateFractionDigits(this.Kiloyards, options as ToStringOptions) + ` kyd`;
             case LengthUnits.Kilofeet:
-                return super.truncateFractionDigits(this.Kilofeet, fractionalDigits) + ` kft`;
+                return super.truncateFractionDigits(this.Kilofeet, options as ToStringOptions) + ` kft`;
             case LengthUnits.Kiloparsecs:
-                return super.truncateFractionDigits(this.Kiloparsecs, fractionalDigits) + ` kpc`;
+                return super.truncateFractionDigits(this.Kiloparsecs, options as ToStringOptions) + ` kpc`;
             case LengthUnits.Megaparsecs:
-                return super.truncateFractionDigits(this.Megaparsecs, fractionalDigits) + ` Mpc`;
+                return super.truncateFractionDigits(this.Megaparsecs, options as ToStringOptions) + ` Mpc`;
             case LengthUnits.KilolightYears:
-                return super.truncateFractionDigits(this.KilolightYears, fractionalDigits) + ` kly`;
+                return super.truncateFractionDigits(this.KilolightYears, options as ToStringOptions) + ` kly`;
             case LengthUnits.MegalightYears:
-                return super.truncateFractionDigits(this.MegalightYears, fractionalDigits) + ` Mly`;
+                return super.truncateFractionDigits(this.MegalightYears, options as ToStringOptions) + ` Mly`;
         default:
             break;
         }

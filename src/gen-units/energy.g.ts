@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Energy */
 export interface EnergyDto {
@@ -1292,93 +1292,97 @@ export class Energy extends BaseUnit {
      * Note! the default format for Energy is Joules.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Energy.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Energy.
      */
-    public toString(unit: EnergyUnits = EnergyUnits.Joules, fractionalDigits?: number): string {
+    public toString(unit: EnergyUnits = EnergyUnits.Joules, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case EnergyUnits.Joules:
-                return super.truncateFractionDigits(this.Joules, fractionalDigits) + ` J`;
+                return super.truncateFractionDigits(this.Joules, options as ToStringOptions) + ` J`;
             case EnergyUnits.Calories:
-                return super.truncateFractionDigits(this.Calories, fractionalDigits) + ` cal`;
+                return super.truncateFractionDigits(this.Calories, options as ToStringOptions) + ` cal`;
             case EnergyUnits.BritishThermalUnits:
-                return super.truncateFractionDigits(this.BritishThermalUnits, fractionalDigits) + ` BTU`;
+                return super.truncateFractionDigits(this.BritishThermalUnits, options as ToStringOptions) + ` BTU`;
             case EnergyUnits.ElectronVolts:
-                return super.truncateFractionDigits(this.ElectronVolts, fractionalDigits) + ` eV`;
+                return super.truncateFractionDigits(this.ElectronVolts, options as ToStringOptions) + ` eV`;
             case EnergyUnits.FootPounds:
-                return super.truncateFractionDigits(this.FootPounds, fractionalDigits) + ` ft·lb`;
+                return super.truncateFractionDigits(this.FootPounds, options as ToStringOptions) + ` ft·lb`;
             case EnergyUnits.Ergs:
-                return super.truncateFractionDigits(this.Ergs, fractionalDigits) + ` erg`;
+                return super.truncateFractionDigits(this.Ergs, options as ToStringOptions) + ` erg`;
             case EnergyUnits.WattHours:
-                return super.truncateFractionDigits(this.WattHours, fractionalDigits) + ` Wh`;
+                return super.truncateFractionDigits(this.WattHours, options as ToStringOptions) + ` Wh`;
             case EnergyUnits.WattDays:
-                return super.truncateFractionDigits(this.WattDays, fractionalDigits) + ` Wd`;
+                return super.truncateFractionDigits(this.WattDays, options as ToStringOptions) + ` Wd`;
             case EnergyUnits.ThermsEc:
-                return super.truncateFractionDigits(this.ThermsEc, fractionalDigits) + ` th (E.C.)`;
+                return super.truncateFractionDigits(this.ThermsEc, options as ToStringOptions) + ` th (E.C.)`;
             case EnergyUnits.ThermsUs:
-                return super.truncateFractionDigits(this.ThermsUs, fractionalDigits) + ` th (U.S.)`;
+                return super.truncateFractionDigits(this.ThermsUs, options as ToStringOptions) + ` th (U.S.)`;
             case EnergyUnits.ThermsImperial:
-                return super.truncateFractionDigits(this.ThermsImperial, fractionalDigits) + ` th (imp.)`;
+                return super.truncateFractionDigits(this.ThermsImperial, options as ToStringOptions) + ` th (imp.)`;
             case EnergyUnits.HorsepowerHours:
-                return super.truncateFractionDigits(this.HorsepowerHours, fractionalDigits) + ` hp·h`;
+                return super.truncateFractionDigits(this.HorsepowerHours, options as ToStringOptions) + ` hp·h`;
             case EnergyUnits.Nanojoules:
-                return super.truncateFractionDigits(this.Nanojoules, fractionalDigits) + ` nJ`;
+                return super.truncateFractionDigits(this.Nanojoules, options as ToStringOptions) + ` nJ`;
             case EnergyUnits.Microjoules:
-                return super.truncateFractionDigits(this.Microjoules, fractionalDigits) + ` μJ`;
+                return super.truncateFractionDigits(this.Microjoules, options as ToStringOptions) + ` μJ`;
             case EnergyUnits.Millijoules:
-                return super.truncateFractionDigits(this.Millijoules, fractionalDigits) + ` mJ`;
+                return super.truncateFractionDigits(this.Millijoules, options as ToStringOptions) + ` mJ`;
             case EnergyUnits.Kilojoules:
-                return super.truncateFractionDigits(this.Kilojoules, fractionalDigits) + ` kJ`;
+                return super.truncateFractionDigits(this.Kilojoules, options as ToStringOptions) + ` kJ`;
             case EnergyUnits.Megajoules:
-                return super.truncateFractionDigits(this.Megajoules, fractionalDigits) + ` MJ`;
+                return super.truncateFractionDigits(this.Megajoules, options as ToStringOptions) + ` MJ`;
             case EnergyUnits.Gigajoules:
-                return super.truncateFractionDigits(this.Gigajoules, fractionalDigits) + ` GJ`;
+                return super.truncateFractionDigits(this.Gigajoules, options as ToStringOptions) + ` GJ`;
             case EnergyUnits.Terajoules:
-                return super.truncateFractionDigits(this.Terajoules, fractionalDigits) + ` TJ`;
+                return super.truncateFractionDigits(this.Terajoules, options as ToStringOptions) + ` TJ`;
             case EnergyUnits.Petajoules:
-                return super.truncateFractionDigits(this.Petajoules, fractionalDigits) + ` PJ`;
+                return super.truncateFractionDigits(this.Petajoules, options as ToStringOptions) + ` PJ`;
             case EnergyUnits.Kilocalories:
-                return super.truncateFractionDigits(this.Kilocalories, fractionalDigits) + ` kcal`;
+                return super.truncateFractionDigits(this.Kilocalories, options as ToStringOptions) + ` kcal`;
             case EnergyUnits.Megacalories:
-                return super.truncateFractionDigits(this.Megacalories, fractionalDigits) + ` Mcal`;
+                return super.truncateFractionDigits(this.Megacalories, options as ToStringOptions) + ` Mcal`;
             case EnergyUnits.KilobritishThermalUnits:
-                return super.truncateFractionDigits(this.KilobritishThermalUnits, fractionalDigits) + ` kBTU`;
+                return super.truncateFractionDigits(this.KilobritishThermalUnits, options as ToStringOptions) + ` kBTU`;
             case EnergyUnits.MegabritishThermalUnits:
-                return super.truncateFractionDigits(this.MegabritishThermalUnits, fractionalDigits) + ` MBTU`;
+                return super.truncateFractionDigits(this.MegabritishThermalUnits, options as ToStringOptions) + ` MBTU`;
             case EnergyUnits.GigabritishThermalUnits:
-                return super.truncateFractionDigits(this.GigabritishThermalUnits, fractionalDigits) + ` GBTU`;
+                return super.truncateFractionDigits(this.GigabritishThermalUnits, options as ToStringOptions) + ` GBTU`;
             case EnergyUnits.KiloelectronVolts:
-                return super.truncateFractionDigits(this.KiloelectronVolts, fractionalDigits) + ` keV`;
+                return super.truncateFractionDigits(this.KiloelectronVolts, options as ToStringOptions) + ` keV`;
             case EnergyUnits.MegaelectronVolts:
-                return super.truncateFractionDigits(this.MegaelectronVolts, fractionalDigits) + ` MeV`;
+                return super.truncateFractionDigits(this.MegaelectronVolts, options as ToStringOptions) + ` MeV`;
             case EnergyUnits.GigaelectronVolts:
-                return super.truncateFractionDigits(this.GigaelectronVolts, fractionalDigits) + ` GeV`;
+                return super.truncateFractionDigits(this.GigaelectronVolts, options as ToStringOptions) + ` GeV`;
             case EnergyUnits.TeraelectronVolts:
-                return super.truncateFractionDigits(this.TeraelectronVolts, fractionalDigits) + ` TeV`;
+                return super.truncateFractionDigits(this.TeraelectronVolts, options as ToStringOptions) + ` TeV`;
             case EnergyUnits.KilowattHours:
-                return super.truncateFractionDigits(this.KilowattHours, fractionalDigits) + ` kWh`;
+                return super.truncateFractionDigits(this.KilowattHours, options as ToStringOptions) + ` kWh`;
             case EnergyUnits.MegawattHours:
-                return super.truncateFractionDigits(this.MegawattHours, fractionalDigits) + ` MWh`;
+                return super.truncateFractionDigits(this.MegawattHours, options as ToStringOptions) + ` MWh`;
             case EnergyUnits.GigawattHours:
-                return super.truncateFractionDigits(this.GigawattHours, fractionalDigits) + ` GWh`;
+                return super.truncateFractionDigits(this.GigawattHours, options as ToStringOptions) + ` GWh`;
             case EnergyUnits.TerawattHours:
-                return super.truncateFractionDigits(this.TerawattHours, fractionalDigits) + ` TWh`;
+                return super.truncateFractionDigits(this.TerawattHours, options as ToStringOptions) + ` TWh`;
             case EnergyUnits.KilowattDays:
-                return super.truncateFractionDigits(this.KilowattDays, fractionalDigits) + ` kWd`;
+                return super.truncateFractionDigits(this.KilowattDays, options as ToStringOptions) + ` kWd`;
             case EnergyUnits.MegawattDays:
-                return super.truncateFractionDigits(this.MegawattDays, fractionalDigits) + ` MWd`;
+                return super.truncateFractionDigits(this.MegawattDays, options as ToStringOptions) + ` MWd`;
             case EnergyUnits.GigawattDays:
-                return super.truncateFractionDigits(this.GigawattDays, fractionalDigits) + ` GWd`;
+                return super.truncateFractionDigits(this.GigawattDays, options as ToStringOptions) + ` GWd`;
             case EnergyUnits.TerawattDays:
-                return super.truncateFractionDigits(this.TerawattDays, fractionalDigits) + ` TWd`;
+                return super.truncateFractionDigits(this.TerawattDays, options as ToStringOptions) + ` TWd`;
             case EnergyUnits.DecathermsEc:
-                return super.truncateFractionDigits(this.DecathermsEc, fractionalDigits) + ` dath (E.C.)`;
+                return super.truncateFractionDigits(this.DecathermsEc, options as ToStringOptions) + ` dath (E.C.)`;
             case EnergyUnits.DecathermsUs:
-                return super.truncateFractionDigits(this.DecathermsUs, fractionalDigits) + ` dath (U.S.)`;
+                return super.truncateFractionDigits(this.DecathermsUs, options as ToStringOptions) + ` dath (U.S.)`;
             case EnergyUnits.DecathermsImperial:
-                return super.truncateFractionDigits(this.DecathermsImperial, fractionalDigits) + ` dath (imp.)`;
+                return super.truncateFractionDigits(this.DecathermsImperial, options as ToStringOptions) + ` dath (imp.)`;
         default:
             break;
         }

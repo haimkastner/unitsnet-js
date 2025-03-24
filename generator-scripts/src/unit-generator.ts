@@ -550,7 +550,7 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
         }, {
             kind: StructureKind.JSDocTag,
             tagName: 'param',
-            text: `fractionalDigits The number of fractional digits to keep.`
+            text: `options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.`
         }, {
             kind: StructureKind.JSDocTag,
             tagName: 'returns',
@@ -563,7 +563,7 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
         toStringCases +=
             `
     case ${enumName}.${unit.pluralName}:
-        return super.truncateFractionDigits(this.${unit.pluralName}, fractionalDigits) + ` + '` ' + unit.Abbreviation + '`;';
+        return super.truncateFractionDigits(this.${unit.pluralName}, options as ToStringOptions) + ` + '` ' + unit.Abbreviation + '`;';
     }
 
     return {
@@ -575,13 +575,17 @@ function buildToStringMethod(unitName: string, enumName: string, units: UnitProp
             type: enumName,
             initializer: `${enumName}.${baseUnit.pluralName}`
         }, {
-            name: 'fractionalDigits',
-            type: 'number',
+            name: 'options',
+            type: 'number | ToStringOptions',
             hasQuestionToken: true
         }],
         returnType: 'string',
         docs: [docs],
         statements: `
+if (typeof options === 'number') {
+    console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+    options = { fractionalDigits: options as number };
+}
 switch (unit) {
     ${toStringCases}
 default:
@@ -940,7 +944,7 @@ export function generateUnitClass(project: Project,
 
     const importDeclaration: ImportDeclarationStructure = {
         moduleSpecifier: '../base-unit',
-        namedImports: ['BaseUnit', 'areAnyOperatorsOverridden'],
+        namedImports: ['BaseUnit', 'areAnyOperatorsOverridden', 'ToStringOptions'],
         kind: StructureKind.ImportDeclaration,
     }
 

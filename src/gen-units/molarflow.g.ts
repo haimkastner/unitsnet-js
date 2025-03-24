@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a MolarFlow */
 export interface MolarFlowDto {
@@ -376,31 +376,35 @@ export class MolarFlow extends BaseUnit {
      * Note! the default format for MolarFlow is MolesPerSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the MolarFlow.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the MolarFlow.
      */
-    public toString(unit: MolarFlowUnits = MolarFlowUnits.MolesPerSecond, fractionalDigits?: number): string {
+    public toString(unit: MolarFlowUnits = MolarFlowUnits.MolesPerSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case MolarFlowUnits.MolesPerSecond:
-                return super.truncateFractionDigits(this.MolesPerSecond, fractionalDigits) + ` mol/s`;
+                return super.truncateFractionDigits(this.MolesPerSecond, options as ToStringOptions) + ` mol/s`;
             case MolarFlowUnits.MolesPerMinute:
-                return super.truncateFractionDigits(this.MolesPerMinute, fractionalDigits) + ` mol/min`;
+                return super.truncateFractionDigits(this.MolesPerMinute, options as ToStringOptions) + ` mol/min`;
             case MolarFlowUnits.MolesPerHour:
-                return super.truncateFractionDigits(this.MolesPerHour, fractionalDigits) + ` kmol/h`;
+                return super.truncateFractionDigits(this.MolesPerHour, options as ToStringOptions) + ` kmol/h`;
             case MolarFlowUnits.PoundMolesPerSecond:
-                return super.truncateFractionDigits(this.PoundMolesPerSecond, fractionalDigits) + ` lbmol/s`;
+                return super.truncateFractionDigits(this.PoundMolesPerSecond, options as ToStringOptions) + ` lbmol/s`;
             case MolarFlowUnits.PoundMolesPerMinute:
-                return super.truncateFractionDigits(this.PoundMolesPerMinute, fractionalDigits) + ` lbmol/min`;
+                return super.truncateFractionDigits(this.PoundMolesPerMinute, options as ToStringOptions) + ` lbmol/min`;
             case MolarFlowUnits.PoundMolesPerHour:
-                return super.truncateFractionDigits(this.PoundMolesPerHour, fractionalDigits) + ` lbmol/h`;
+                return super.truncateFractionDigits(this.PoundMolesPerHour, options as ToStringOptions) + ` lbmol/h`;
             case MolarFlowUnits.KilomolesPerSecond:
-                return super.truncateFractionDigits(this.KilomolesPerSecond, fractionalDigits) + ` kmol/s`;
+                return super.truncateFractionDigits(this.KilomolesPerSecond, options as ToStringOptions) + ` kmol/s`;
             case MolarFlowUnits.KilomolesPerMinute:
-                return super.truncateFractionDigits(this.KilomolesPerMinute, fractionalDigits) + ` kmol/min`;
+                return super.truncateFractionDigits(this.KilomolesPerMinute, options as ToStringOptions) + ` kmol/min`;
             case MolarFlowUnits.KilomolesPerHour:
-                return super.truncateFractionDigits(this.KilomolesPerHour, fractionalDigits) + ` kkmol/h`;
+                return super.truncateFractionDigits(this.KilomolesPerHour, options as ToStringOptions) + ` kkmol/h`;
         default:
             break;
         }

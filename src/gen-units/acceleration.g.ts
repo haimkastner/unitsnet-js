@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Acceleration */
 export interface AccelerationDto {
@@ -500,41 +500,45 @@ export class Acceleration extends BaseUnit {
      * Note! the default format for Acceleration is MetersPerSecondSquared.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Acceleration.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Acceleration.
      */
-    public toString(unit: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared, fractionalDigits?: number): string {
+    public toString(unit: AccelerationUnits = AccelerationUnits.MetersPerSecondSquared, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case AccelerationUnits.MetersPerSecondSquared:
-                return super.truncateFractionDigits(this.MetersPerSecondSquared, fractionalDigits) + ` m/s²`;
+                return super.truncateFractionDigits(this.MetersPerSecondSquared, options as ToStringOptions) + ` m/s²`;
             case AccelerationUnits.InchesPerSecondSquared:
-                return super.truncateFractionDigits(this.InchesPerSecondSquared, fractionalDigits) + ` in/s²`;
+                return super.truncateFractionDigits(this.InchesPerSecondSquared, options as ToStringOptions) + ` in/s²`;
             case AccelerationUnits.FeetPerSecondSquared:
-                return super.truncateFractionDigits(this.FeetPerSecondSquared, fractionalDigits) + ` ft/s²`;
+                return super.truncateFractionDigits(this.FeetPerSecondSquared, options as ToStringOptions) + ` ft/s²`;
             case AccelerationUnits.KnotsPerSecond:
-                return super.truncateFractionDigits(this.KnotsPerSecond, fractionalDigits) + ` kn/s`;
+                return super.truncateFractionDigits(this.KnotsPerSecond, options as ToStringOptions) + ` kn/s`;
             case AccelerationUnits.KnotsPerMinute:
-                return super.truncateFractionDigits(this.KnotsPerMinute, fractionalDigits) + ` kn/min`;
+                return super.truncateFractionDigits(this.KnotsPerMinute, options as ToStringOptions) + ` kn/min`;
             case AccelerationUnits.KnotsPerHour:
-                return super.truncateFractionDigits(this.KnotsPerHour, fractionalDigits) + ` kn/h`;
+                return super.truncateFractionDigits(this.KnotsPerHour, options as ToStringOptions) + ` kn/h`;
             case AccelerationUnits.StandardGravity:
-                return super.truncateFractionDigits(this.StandardGravity, fractionalDigits) + ` g`;
+                return super.truncateFractionDigits(this.StandardGravity, options as ToStringOptions) + ` g`;
             case AccelerationUnits.NanometersPerSecondSquared:
-                return super.truncateFractionDigits(this.NanometersPerSecondSquared, fractionalDigits) + ` nm/s²`;
+                return super.truncateFractionDigits(this.NanometersPerSecondSquared, options as ToStringOptions) + ` nm/s²`;
             case AccelerationUnits.MicrometersPerSecondSquared:
-                return super.truncateFractionDigits(this.MicrometersPerSecondSquared, fractionalDigits) + ` μm/s²`;
+                return super.truncateFractionDigits(this.MicrometersPerSecondSquared, options as ToStringOptions) + ` μm/s²`;
             case AccelerationUnits.MillimetersPerSecondSquared:
-                return super.truncateFractionDigits(this.MillimetersPerSecondSquared, fractionalDigits) + ` mm/s²`;
+                return super.truncateFractionDigits(this.MillimetersPerSecondSquared, options as ToStringOptions) + ` mm/s²`;
             case AccelerationUnits.CentimetersPerSecondSquared:
-                return super.truncateFractionDigits(this.CentimetersPerSecondSquared, fractionalDigits) + ` cm/s²`;
+                return super.truncateFractionDigits(this.CentimetersPerSecondSquared, options as ToStringOptions) + ` cm/s²`;
             case AccelerationUnits.DecimetersPerSecondSquared:
-                return super.truncateFractionDigits(this.DecimetersPerSecondSquared, fractionalDigits) + ` dm/s²`;
+                return super.truncateFractionDigits(this.DecimetersPerSecondSquared, options as ToStringOptions) + ` dm/s²`;
             case AccelerationUnits.KilometersPerSecondSquared:
-                return super.truncateFractionDigits(this.KilometersPerSecondSquared, fractionalDigits) + ` km/s²`;
+                return super.truncateFractionDigits(this.KilometersPerSecondSquared, options as ToStringOptions) + ` km/s²`;
             case AccelerationUnits.MillistandardGravity:
-                return super.truncateFractionDigits(this.MillistandardGravity, fractionalDigits) + ` mg`;
+                return super.truncateFractionDigits(this.MillistandardGravity, options as ToStringOptions) + ` mg`;
         default:
             break;
         }

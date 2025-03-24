@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a RotationalStiffness */
 export interface RotationalStiffnessDto {
@@ -1182,79 +1182,83 @@ export class RotationalStiffness extends BaseUnit {
      * Note! the default format for RotationalStiffness is NewtonMetersPerRadian.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RotationalStiffness.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the RotationalStiffness.
      */
-    public toString(unit: RotationalStiffnessUnits = RotationalStiffnessUnits.NewtonMetersPerRadian, fractionalDigits?: number): string {
+    public toString(unit: RotationalStiffnessUnits = RotationalStiffnessUnits.NewtonMetersPerRadian, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case RotationalStiffnessUnits.NewtonMetersPerRadian:
-                return super.truncateFractionDigits(this.NewtonMetersPerRadian, fractionalDigits) + ` N·m/rad`;
+                return super.truncateFractionDigits(this.NewtonMetersPerRadian, options as ToStringOptions) + ` N·m/rad`;
             case RotationalStiffnessUnits.PoundForceFeetPerDegrees:
-                return super.truncateFractionDigits(this.PoundForceFeetPerDegrees, fractionalDigits) + ` lbf·ft/deg`;
+                return super.truncateFractionDigits(this.PoundForceFeetPerDegrees, options as ToStringOptions) + ` lbf·ft/deg`;
             case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees:
-                return super.truncateFractionDigits(this.KilopoundForceFeetPerDegrees, fractionalDigits) + ` kipf·ft/°`;
+                return super.truncateFractionDigits(this.KilopoundForceFeetPerDegrees, options as ToStringOptions) + ` kipf·ft/°`;
             case RotationalStiffnessUnits.NewtonMillimetersPerDegree:
-                return super.truncateFractionDigits(this.NewtonMillimetersPerDegree, fractionalDigits) + ` N·mm/deg`;
+                return super.truncateFractionDigits(this.NewtonMillimetersPerDegree, options as ToStringOptions) + ` N·mm/deg`;
             case RotationalStiffnessUnits.NewtonMetersPerDegree:
-                return super.truncateFractionDigits(this.NewtonMetersPerDegree, fractionalDigits) + ` N·m/deg`;
+                return super.truncateFractionDigits(this.NewtonMetersPerDegree, options as ToStringOptions) + ` N·m/deg`;
             case RotationalStiffnessUnits.NewtonMillimetersPerRadian:
-                return super.truncateFractionDigits(this.NewtonMillimetersPerRadian, fractionalDigits) + ` N·mm/rad`;
+                return super.truncateFractionDigits(this.NewtonMillimetersPerRadian, options as ToStringOptions) + ` N·mm/rad`;
             case RotationalStiffnessUnits.PoundForceFeetPerRadian:
-                return super.truncateFractionDigits(this.PoundForceFeetPerRadian, fractionalDigits) + ` lbf·ft/rad`;
+                return super.truncateFractionDigits(this.PoundForceFeetPerRadian, options as ToStringOptions) + ` lbf·ft/rad`;
             case RotationalStiffnessUnits.KilonewtonMetersPerRadian:
-                return super.truncateFractionDigits(this.KilonewtonMetersPerRadian, fractionalDigits) + ` kN·m/rad`;
+                return super.truncateFractionDigits(this.KilonewtonMetersPerRadian, options as ToStringOptions) + ` kN·m/rad`;
             case RotationalStiffnessUnits.MeganewtonMetersPerRadian:
-                return super.truncateFractionDigits(this.MeganewtonMetersPerRadian, fractionalDigits) + ` MN·m/rad`;
+                return super.truncateFractionDigits(this.MeganewtonMetersPerRadian, options as ToStringOptions) + ` MN·m/rad`;
             case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree:
-                return super.truncateFractionDigits(this.NanonewtonMillimetersPerDegree, fractionalDigits) + ` nN·mm/deg`;
+                return super.truncateFractionDigits(this.NanonewtonMillimetersPerDegree, options as ToStringOptions) + ` nN·mm/deg`;
             case RotationalStiffnessUnits.MicronewtonMillimetersPerDegree:
-                return super.truncateFractionDigits(this.MicronewtonMillimetersPerDegree, fractionalDigits) + ` μN·mm/deg`;
+                return super.truncateFractionDigits(this.MicronewtonMillimetersPerDegree, options as ToStringOptions) + ` μN·mm/deg`;
             case RotationalStiffnessUnits.MillinewtonMillimetersPerDegree:
-                return super.truncateFractionDigits(this.MillinewtonMillimetersPerDegree, fractionalDigits) + ` mN·mm/deg`;
+                return super.truncateFractionDigits(this.MillinewtonMillimetersPerDegree, options as ToStringOptions) + ` mN·mm/deg`;
             case RotationalStiffnessUnits.CentinewtonMillimetersPerDegree:
-                return super.truncateFractionDigits(this.CentinewtonMillimetersPerDegree, fractionalDigits) + ` cN·mm/deg`;
+                return super.truncateFractionDigits(this.CentinewtonMillimetersPerDegree, options as ToStringOptions) + ` cN·mm/deg`;
             case RotationalStiffnessUnits.DecinewtonMillimetersPerDegree:
-                return super.truncateFractionDigits(this.DecinewtonMillimetersPerDegree, fractionalDigits) + ` dN·mm/deg`;
+                return super.truncateFractionDigits(this.DecinewtonMillimetersPerDegree, options as ToStringOptions) + ` dN·mm/deg`;
             case RotationalStiffnessUnits.DecanewtonMillimetersPerDegree:
-                return super.truncateFractionDigits(this.DecanewtonMillimetersPerDegree, fractionalDigits) + ` daN·mm/deg`;
+                return super.truncateFractionDigits(this.DecanewtonMillimetersPerDegree, options as ToStringOptions) + ` daN·mm/deg`;
             case RotationalStiffnessUnits.KilonewtonMillimetersPerDegree:
-                return super.truncateFractionDigits(this.KilonewtonMillimetersPerDegree, fractionalDigits) + ` kN·mm/deg`;
+                return super.truncateFractionDigits(this.KilonewtonMillimetersPerDegree, options as ToStringOptions) + ` kN·mm/deg`;
             case RotationalStiffnessUnits.MeganewtonMillimetersPerDegree:
-                return super.truncateFractionDigits(this.MeganewtonMillimetersPerDegree, fractionalDigits) + ` MN·mm/deg`;
+                return super.truncateFractionDigits(this.MeganewtonMillimetersPerDegree, options as ToStringOptions) + ` MN·mm/deg`;
             case RotationalStiffnessUnits.NanonewtonMetersPerDegree:
-                return super.truncateFractionDigits(this.NanonewtonMetersPerDegree, fractionalDigits) + ` nN·m/deg`;
+                return super.truncateFractionDigits(this.NanonewtonMetersPerDegree, options as ToStringOptions) + ` nN·m/deg`;
             case RotationalStiffnessUnits.MicronewtonMetersPerDegree:
-                return super.truncateFractionDigits(this.MicronewtonMetersPerDegree, fractionalDigits) + ` μN·m/deg`;
+                return super.truncateFractionDigits(this.MicronewtonMetersPerDegree, options as ToStringOptions) + ` μN·m/deg`;
             case RotationalStiffnessUnits.MillinewtonMetersPerDegree:
-                return super.truncateFractionDigits(this.MillinewtonMetersPerDegree, fractionalDigits) + ` mN·m/deg`;
+                return super.truncateFractionDigits(this.MillinewtonMetersPerDegree, options as ToStringOptions) + ` mN·m/deg`;
             case RotationalStiffnessUnits.CentinewtonMetersPerDegree:
-                return super.truncateFractionDigits(this.CentinewtonMetersPerDegree, fractionalDigits) + ` cN·m/deg`;
+                return super.truncateFractionDigits(this.CentinewtonMetersPerDegree, options as ToStringOptions) + ` cN·m/deg`;
             case RotationalStiffnessUnits.DecinewtonMetersPerDegree:
-                return super.truncateFractionDigits(this.DecinewtonMetersPerDegree, fractionalDigits) + ` dN·m/deg`;
+                return super.truncateFractionDigits(this.DecinewtonMetersPerDegree, options as ToStringOptions) + ` dN·m/deg`;
             case RotationalStiffnessUnits.DecanewtonMetersPerDegree:
-                return super.truncateFractionDigits(this.DecanewtonMetersPerDegree, fractionalDigits) + ` daN·m/deg`;
+                return super.truncateFractionDigits(this.DecanewtonMetersPerDegree, options as ToStringOptions) + ` daN·m/deg`;
             case RotationalStiffnessUnits.KilonewtonMetersPerDegree:
-                return super.truncateFractionDigits(this.KilonewtonMetersPerDegree, fractionalDigits) + ` kN·m/deg`;
+                return super.truncateFractionDigits(this.KilonewtonMetersPerDegree, options as ToStringOptions) + ` kN·m/deg`;
             case RotationalStiffnessUnits.MeganewtonMetersPerDegree:
-                return super.truncateFractionDigits(this.MeganewtonMetersPerDegree, fractionalDigits) + ` MN·m/deg`;
+                return super.truncateFractionDigits(this.MeganewtonMetersPerDegree, options as ToStringOptions) + ` MN·m/deg`;
             case RotationalStiffnessUnits.NanonewtonMillimetersPerRadian:
-                return super.truncateFractionDigits(this.NanonewtonMillimetersPerRadian, fractionalDigits) + ` nN·mm/rad`;
+                return super.truncateFractionDigits(this.NanonewtonMillimetersPerRadian, options as ToStringOptions) + ` nN·mm/rad`;
             case RotationalStiffnessUnits.MicronewtonMillimetersPerRadian:
-                return super.truncateFractionDigits(this.MicronewtonMillimetersPerRadian, fractionalDigits) + ` μN·mm/rad`;
+                return super.truncateFractionDigits(this.MicronewtonMillimetersPerRadian, options as ToStringOptions) + ` μN·mm/rad`;
             case RotationalStiffnessUnits.MillinewtonMillimetersPerRadian:
-                return super.truncateFractionDigits(this.MillinewtonMillimetersPerRadian, fractionalDigits) + ` mN·mm/rad`;
+                return super.truncateFractionDigits(this.MillinewtonMillimetersPerRadian, options as ToStringOptions) + ` mN·mm/rad`;
             case RotationalStiffnessUnits.CentinewtonMillimetersPerRadian:
-                return super.truncateFractionDigits(this.CentinewtonMillimetersPerRadian, fractionalDigits) + ` cN·mm/rad`;
+                return super.truncateFractionDigits(this.CentinewtonMillimetersPerRadian, options as ToStringOptions) + ` cN·mm/rad`;
             case RotationalStiffnessUnits.DecinewtonMillimetersPerRadian:
-                return super.truncateFractionDigits(this.DecinewtonMillimetersPerRadian, fractionalDigits) + ` dN·mm/rad`;
+                return super.truncateFractionDigits(this.DecinewtonMillimetersPerRadian, options as ToStringOptions) + ` dN·mm/rad`;
             case RotationalStiffnessUnits.DecanewtonMillimetersPerRadian:
-                return super.truncateFractionDigits(this.DecanewtonMillimetersPerRadian, fractionalDigits) + ` daN·mm/rad`;
+                return super.truncateFractionDigits(this.DecanewtonMillimetersPerRadian, options as ToStringOptions) + ` daN·mm/rad`;
             case RotationalStiffnessUnits.KilonewtonMillimetersPerRadian:
-                return super.truncateFractionDigits(this.KilonewtonMillimetersPerRadian, fractionalDigits) + ` kN·mm/rad`;
+                return super.truncateFractionDigits(this.KilonewtonMillimetersPerRadian, options as ToStringOptions) + ` kN·mm/rad`;
             case RotationalStiffnessUnits.MeganewtonMillimetersPerRadian:
-                return super.truncateFractionDigits(this.MeganewtonMillimetersPerRadian, fractionalDigits) + ` MN·mm/rad`;
+                return super.truncateFractionDigits(this.MeganewtonMillimetersPerRadian, options as ToStringOptions) + ` MN·mm/rad`;
         default:
             break;
         }

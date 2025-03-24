@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Impulse */
 export interface ImpulseDto {
@@ -456,39 +456,43 @@ export class Impulse extends BaseUnit {
      * Note! the default format for Impulse is NewtonSeconds.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Impulse.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Impulse.
      */
-    public toString(unit: ImpulseUnits = ImpulseUnits.NewtonSeconds, fractionalDigits?: number): string {
+    public toString(unit: ImpulseUnits = ImpulseUnits.NewtonSeconds, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ImpulseUnits.KilogramMetersPerSecond:
-                return super.truncateFractionDigits(this.KilogramMetersPerSecond, fractionalDigits) + ` kg·m/s`;
+                return super.truncateFractionDigits(this.KilogramMetersPerSecond, options as ToStringOptions) + ` kg·m/s`;
             case ImpulseUnits.NewtonSeconds:
-                return super.truncateFractionDigits(this.NewtonSeconds, fractionalDigits) + ` N·s`;
+                return super.truncateFractionDigits(this.NewtonSeconds, options as ToStringOptions) + ` N·s`;
             case ImpulseUnits.PoundFeetPerSecond:
-                return super.truncateFractionDigits(this.PoundFeetPerSecond, fractionalDigits) + ` lb·ft/s`;
+                return super.truncateFractionDigits(this.PoundFeetPerSecond, options as ToStringOptions) + ` lb·ft/s`;
             case ImpulseUnits.PoundForceSeconds:
-                return super.truncateFractionDigits(this.PoundForceSeconds, fractionalDigits) + ` lbf·s`;
+                return super.truncateFractionDigits(this.PoundForceSeconds, options as ToStringOptions) + ` lbf·s`;
             case ImpulseUnits.SlugFeetPerSecond:
-                return super.truncateFractionDigits(this.SlugFeetPerSecond, fractionalDigits) + ` slug·ft/s`;
+                return super.truncateFractionDigits(this.SlugFeetPerSecond, options as ToStringOptions) + ` slug·ft/s`;
             case ImpulseUnits.NanonewtonSeconds:
-                return super.truncateFractionDigits(this.NanonewtonSeconds, fractionalDigits) + ` nN·s`;
+                return super.truncateFractionDigits(this.NanonewtonSeconds, options as ToStringOptions) + ` nN·s`;
             case ImpulseUnits.MicronewtonSeconds:
-                return super.truncateFractionDigits(this.MicronewtonSeconds, fractionalDigits) + ` μN·s`;
+                return super.truncateFractionDigits(this.MicronewtonSeconds, options as ToStringOptions) + ` μN·s`;
             case ImpulseUnits.MillinewtonSeconds:
-                return super.truncateFractionDigits(this.MillinewtonSeconds, fractionalDigits) + ` mN·s`;
+                return super.truncateFractionDigits(this.MillinewtonSeconds, options as ToStringOptions) + ` mN·s`;
             case ImpulseUnits.CentinewtonSeconds:
-                return super.truncateFractionDigits(this.CentinewtonSeconds, fractionalDigits) + ` cN·s`;
+                return super.truncateFractionDigits(this.CentinewtonSeconds, options as ToStringOptions) + ` cN·s`;
             case ImpulseUnits.DecinewtonSeconds:
-                return super.truncateFractionDigits(this.DecinewtonSeconds, fractionalDigits) + ` dN·s`;
+                return super.truncateFractionDigits(this.DecinewtonSeconds, options as ToStringOptions) + ` dN·s`;
             case ImpulseUnits.DecanewtonSeconds:
-                return super.truncateFractionDigits(this.DecanewtonSeconds, fractionalDigits) + ` daN·s`;
+                return super.truncateFractionDigits(this.DecanewtonSeconds, options as ToStringOptions) + ` daN·s`;
             case ImpulseUnits.KilonewtonSeconds:
-                return super.truncateFractionDigits(this.KilonewtonSeconds, fractionalDigits) + ` kN·s`;
+                return super.truncateFractionDigits(this.KilonewtonSeconds, options as ToStringOptions) + ` kN·s`;
             case ImpulseUnits.MeganewtonSeconds:
-                return super.truncateFractionDigits(this.MeganewtonSeconds, fractionalDigits) + ` MN·s`;
+                return super.truncateFractionDigits(this.MeganewtonSeconds, options as ToStringOptions) + ` MN·s`;
         default:
             break;
         }

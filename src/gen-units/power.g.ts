@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Power */
 export interface PowerDto {
@@ -856,67 +856,71 @@ export class Power extends BaseUnit {
      * Note! the default format for Power is Watts.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Power.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Power.
      */
-    public toString(unit: PowerUnits = PowerUnits.Watts, fractionalDigits?: number): string {
+    public toString(unit: PowerUnits = PowerUnits.Watts, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case PowerUnits.Watts:
-                return super.truncateFractionDigits(this.Watts, fractionalDigits) + ` W`;
+                return super.truncateFractionDigits(this.Watts, options as ToStringOptions) + ` W`;
             case PowerUnits.MechanicalHorsepower:
-                return super.truncateFractionDigits(this.MechanicalHorsepower, fractionalDigits) + ` hp(I)`;
+                return super.truncateFractionDigits(this.MechanicalHorsepower, options as ToStringOptions) + ` hp(I)`;
             case PowerUnits.MetricHorsepower:
-                return super.truncateFractionDigits(this.MetricHorsepower, fractionalDigits) + ` hp(M)`;
+                return super.truncateFractionDigits(this.MetricHorsepower, options as ToStringOptions) + ` hp(M)`;
             case PowerUnits.ElectricalHorsepower:
-                return super.truncateFractionDigits(this.ElectricalHorsepower, fractionalDigits) + ` hp(E)`;
+                return super.truncateFractionDigits(this.ElectricalHorsepower, options as ToStringOptions) + ` hp(E)`;
             case PowerUnits.BoilerHorsepower:
-                return super.truncateFractionDigits(this.BoilerHorsepower, fractionalDigits) + ` hp(S)`;
+                return super.truncateFractionDigits(this.BoilerHorsepower, options as ToStringOptions) + ` hp(S)`;
             case PowerUnits.HydraulicHorsepower:
-                return super.truncateFractionDigits(this.HydraulicHorsepower, fractionalDigits) + ` hp(H)`;
+                return super.truncateFractionDigits(this.HydraulicHorsepower, options as ToStringOptions) + ` hp(H)`;
             case PowerUnits.BritishThermalUnitsPerHour:
-                return super.truncateFractionDigits(this.BritishThermalUnitsPerHour, fractionalDigits) + ` Btu/h`;
+                return super.truncateFractionDigits(this.BritishThermalUnitsPerHour, options as ToStringOptions) + ` Btu/h`;
             case PowerUnits.JoulesPerHour:
-                return super.truncateFractionDigits(this.JoulesPerHour, fractionalDigits) + ` J/h`;
+                return super.truncateFractionDigits(this.JoulesPerHour, options as ToStringOptions) + ` J/h`;
             case PowerUnits.TonsOfRefrigeration:
-                return super.truncateFractionDigits(this.TonsOfRefrigeration, fractionalDigits) + ` TR`;
+                return super.truncateFractionDigits(this.TonsOfRefrigeration, options as ToStringOptions) + ` TR`;
             case PowerUnits.Femtowatts:
-                return super.truncateFractionDigits(this.Femtowatts, fractionalDigits) + ` fW`;
+                return super.truncateFractionDigits(this.Femtowatts, options as ToStringOptions) + ` fW`;
             case PowerUnits.Picowatts:
-                return super.truncateFractionDigits(this.Picowatts, fractionalDigits) + ` pW`;
+                return super.truncateFractionDigits(this.Picowatts, options as ToStringOptions) + ` pW`;
             case PowerUnits.Nanowatts:
-                return super.truncateFractionDigits(this.Nanowatts, fractionalDigits) + ` nW`;
+                return super.truncateFractionDigits(this.Nanowatts, options as ToStringOptions) + ` nW`;
             case PowerUnits.Microwatts:
-                return super.truncateFractionDigits(this.Microwatts, fractionalDigits) + ` μW`;
+                return super.truncateFractionDigits(this.Microwatts, options as ToStringOptions) + ` μW`;
             case PowerUnits.Milliwatts:
-                return super.truncateFractionDigits(this.Milliwatts, fractionalDigits) + ` mW`;
+                return super.truncateFractionDigits(this.Milliwatts, options as ToStringOptions) + ` mW`;
             case PowerUnits.Deciwatts:
-                return super.truncateFractionDigits(this.Deciwatts, fractionalDigits) + ` dW`;
+                return super.truncateFractionDigits(this.Deciwatts, options as ToStringOptions) + ` dW`;
             case PowerUnits.Decawatts:
-                return super.truncateFractionDigits(this.Decawatts, fractionalDigits) + ` daW`;
+                return super.truncateFractionDigits(this.Decawatts, options as ToStringOptions) + ` daW`;
             case PowerUnits.Kilowatts:
-                return super.truncateFractionDigits(this.Kilowatts, fractionalDigits) + ` kW`;
+                return super.truncateFractionDigits(this.Kilowatts, options as ToStringOptions) + ` kW`;
             case PowerUnits.Megawatts:
-                return super.truncateFractionDigits(this.Megawatts, fractionalDigits) + ` MW`;
+                return super.truncateFractionDigits(this.Megawatts, options as ToStringOptions) + ` MW`;
             case PowerUnits.Gigawatts:
-                return super.truncateFractionDigits(this.Gigawatts, fractionalDigits) + ` GW`;
+                return super.truncateFractionDigits(this.Gigawatts, options as ToStringOptions) + ` GW`;
             case PowerUnits.Terawatts:
-                return super.truncateFractionDigits(this.Terawatts, fractionalDigits) + ` TW`;
+                return super.truncateFractionDigits(this.Terawatts, options as ToStringOptions) + ` TW`;
             case PowerUnits.Petawatts:
-                return super.truncateFractionDigits(this.Petawatts, fractionalDigits) + ` PW`;
+                return super.truncateFractionDigits(this.Petawatts, options as ToStringOptions) + ` PW`;
             case PowerUnits.KilobritishThermalUnitsPerHour:
-                return super.truncateFractionDigits(this.KilobritishThermalUnitsPerHour, fractionalDigits) + ` kBtu/h`;
+                return super.truncateFractionDigits(this.KilobritishThermalUnitsPerHour, options as ToStringOptions) + ` kBtu/h`;
             case PowerUnits.MegabritishThermalUnitsPerHour:
-                return super.truncateFractionDigits(this.MegabritishThermalUnitsPerHour, fractionalDigits) + ` MBtu/h`;
+                return super.truncateFractionDigits(this.MegabritishThermalUnitsPerHour, options as ToStringOptions) + ` MBtu/h`;
             case PowerUnits.MillijoulesPerHour:
-                return super.truncateFractionDigits(this.MillijoulesPerHour, fractionalDigits) + ` mJ/h`;
+                return super.truncateFractionDigits(this.MillijoulesPerHour, options as ToStringOptions) + ` mJ/h`;
             case PowerUnits.KilojoulesPerHour:
-                return super.truncateFractionDigits(this.KilojoulesPerHour, fractionalDigits) + ` kJ/h`;
+                return super.truncateFractionDigits(this.KilojoulesPerHour, options as ToStringOptions) + ` kJ/h`;
             case PowerUnits.MegajoulesPerHour:
-                return super.truncateFractionDigits(this.MegajoulesPerHour, fractionalDigits) + ` MJ/h`;
+                return super.truncateFractionDigits(this.MegajoulesPerHour, options as ToStringOptions) + ` MJ/h`;
             case PowerUnits.GigajoulesPerHour:
-                return super.truncateFractionDigits(this.GigajoulesPerHour, fractionalDigits) + ` GJ/h`;
+                return super.truncateFractionDigits(this.GigajoulesPerHour, options as ToStringOptions) + ` GJ/h`;
         default:
             break;
         }

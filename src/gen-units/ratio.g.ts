@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Ratio */
 export interface RatioDto {
@@ -274,25 +274,29 @@ export class Ratio extends BaseUnit {
      * Note! the default format for Ratio is DecimalFractions.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Ratio.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Ratio.
      */
-    public toString(unit: RatioUnits = RatioUnits.DecimalFractions, fractionalDigits?: number): string {
+    public toString(unit: RatioUnits = RatioUnits.DecimalFractions, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case RatioUnits.DecimalFractions:
-                return super.truncateFractionDigits(this.DecimalFractions, fractionalDigits) + ` `;
+                return super.truncateFractionDigits(this.DecimalFractions, options as ToStringOptions) + ` `;
             case RatioUnits.Percent:
-                return super.truncateFractionDigits(this.Percent, fractionalDigits) + ` %`;
+                return super.truncateFractionDigits(this.Percent, options as ToStringOptions) + ` %`;
             case RatioUnits.PartsPerThousand:
-                return super.truncateFractionDigits(this.PartsPerThousand, fractionalDigits) + ` ‰`;
+                return super.truncateFractionDigits(this.PartsPerThousand, options as ToStringOptions) + ` ‰`;
             case RatioUnits.PartsPerMillion:
-                return super.truncateFractionDigits(this.PartsPerMillion, fractionalDigits) + ` ppm`;
+                return super.truncateFractionDigits(this.PartsPerMillion, options as ToStringOptions) + ` ppm`;
             case RatioUnits.PartsPerBillion:
-                return super.truncateFractionDigits(this.PartsPerBillion, fractionalDigits) + ` ppb`;
+                return super.truncateFractionDigits(this.PartsPerBillion, options as ToStringOptions) + ` ppb`;
             case RatioUnits.PartsPerTrillion:
-                return super.truncateFractionDigits(this.PartsPerTrillion, fractionalDigits) + ` ppt`;
+                return super.truncateFractionDigits(this.PartsPerTrillion, options as ToStringOptions) + ` ppt`;
         default:
             break;
         }

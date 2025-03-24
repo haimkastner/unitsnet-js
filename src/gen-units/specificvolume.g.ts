@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a SpecificVolume */
 export interface SpecificVolumeDto {
@@ -196,19 +196,23 @@ export class SpecificVolume extends BaseUnit {
      * Note! the default format for SpecificVolume is CubicMetersPerKilogram.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificVolume.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the SpecificVolume.
      */
-    public toString(unit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram, fractionalDigits?: number): string {
+    public toString(unit: SpecificVolumeUnits = SpecificVolumeUnits.CubicMetersPerKilogram, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case SpecificVolumeUnits.CubicMetersPerKilogram:
-                return super.truncateFractionDigits(this.CubicMetersPerKilogram, fractionalDigits) + ` m³/kg`;
+                return super.truncateFractionDigits(this.CubicMetersPerKilogram, options as ToStringOptions) + ` m³/kg`;
             case SpecificVolumeUnits.CubicFeetPerPound:
-                return super.truncateFractionDigits(this.CubicFeetPerPound, fractionalDigits) + ` ft³/lb`;
+                return super.truncateFractionDigits(this.CubicFeetPerPound, options as ToStringOptions) + ` ft³/lb`;
             case SpecificVolumeUnits.MillicubicMetersPerKilogram:
-                return super.truncateFractionDigits(this.MillicubicMetersPerKilogram, fractionalDigits) + ` mm³/kg`;
+                return super.truncateFractionDigits(this.MillicubicMetersPerKilogram, options as ToStringOptions) + ` mm³/kg`;
         default:
             break;
         }

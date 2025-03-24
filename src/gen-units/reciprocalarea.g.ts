@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ReciprocalArea */
 export interface ReciprocalAreaDto {
@@ -404,35 +404,39 @@ export class ReciprocalArea extends BaseUnit {
      * Note! the default format for ReciprocalArea is InverseSquareMeters.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ReciprocalArea.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ReciprocalArea.
      */
-    public toString(unit: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters, fractionalDigits?: number): string {
+    public toString(unit: ReciprocalAreaUnits = ReciprocalAreaUnits.InverseSquareMeters, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ReciprocalAreaUnits.InverseSquareMeters:
-                return super.truncateFractionDigits(this.InverseSquareMeters, fractionalDigits) + ` m⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareMeters, options as ToStringOptions) + ` m⁻²`;
             case ReciprocalAreaUnits.InverseSquareKilometers:
-                return super.truncateFractionDigits(this.InverseSquareKilometers, fractionalDigits) + ` km⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareKilometers, options as ToStringOptions) + ` km⁻²`;
             case ReciprocalAreaUnits.InverseSquareDecimeters:
-                return super.truncateFractionDigits(this.InverseSquareDecimeters, fractionalDigits) + ` dm⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareDecimeters, options as ToStringOptions) + ` dm⁻²`;
             case ReciprocalAreaUnits.InverseSquareCentimeters:
-                return super.truncateFractionDigits(this.InverseSquareCentimeters, fractionalDigits) + ` cm⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareCentimeters, options as ToStringOptions) + ` cm⁻²`;
             case ReciprocalAreaUnits.InverseSquareMillimeters:
-                return super.truncateFractionDigits(this.InverseSquareMillimeters, fractionalDigits) + ` mm⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareMillimeters, options as ToStringOptions) + ` mm⁻²`;
             case ReciprocalAreaUnits.InverseSquareMicrometers:
-                return super.truncateFractionDigits(this.InverseSquareMicrometers, fractionalDigits) + ` µm⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareMicrometers, options as ToStringOptions) + ` µm⁻²`;
             case ReciprocalAreaUnits.InverseSquareMiles:
-                return super.truncateFractionDigits(this.InverseSquareMiles, fractionalDigits) + ` mi⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareMiles, options as ToStringOptions) + ` mi⁻²`;
             case ReciprocalAreaUnits.InverseSquareYards:
-                return super.truncateFractionDigits(this.InverseSquareYards, fractionalDigits) + ` yd⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareYards, options as ToStringOptions) + ` yd⁻²`;
             case ReciprocalAreaUnits.InverseSquareFeet:
-                return super.truncateFractionDigits(this.InverseSquareFeet, fractionalDigits) + ` ft⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareFeet, options as ToStringOptions) + ` ft⁻²`;
             case ReciprocalAreaUnits.InverseUsSurveySquareFeet:
-                return super.truncateFractionDigits(this.InverseUsSurveySquareFeet, fractionalDigits) + ` ft⁻² (US)`;
+                return super.truncateFractionDigits(this.InverseUsSurveySquareFeet, options as ToStringOptions) + ` ft⁻² (US)`;
             case ReciprocalAreaUnits.InverseSquareInches:
-                return super.truncateFractionDigits(this.InverseSquareInches, fractionalDigits) + ` in⁻²`;
+                return super.truncateFractionDigits(this.InverseSquareInches, options as ToStringOptions) + ` in⁻²`;
         default:
             break;
         }

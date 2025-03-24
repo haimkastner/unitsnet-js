@@ -61,7 +61,7 @@ console.info(angle.toString(AngleUnits.Degrees)); // 180 °
 console.info(angle.toString(AngleUnits.Radians)); // 3.141592653589793 rad
 
 // Specify fraction digits max length
-console.info(angle.toString(AngleUnits.Radians, 2)); // 3.14 rad
+console.info(angle.toString(AngleUnits.Radians, { fractionalDigits: 2 })); // 3.14 rad
 ```
 
 ## Additional methods

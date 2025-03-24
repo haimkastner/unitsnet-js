@@ -34,7 +34,8 @@ export function generateUnitsModuleExport(project: Project, unitsDestinationDire
             'setOperatorOverride',
             'unsetOperatorOverride',
             'unsetAllOperatorOverrides',
-            'areAnyOperatorsOverridden'
+            'areAnyOperatorsOverridden',
+            'ToStringOptions',
         ]
     });
 

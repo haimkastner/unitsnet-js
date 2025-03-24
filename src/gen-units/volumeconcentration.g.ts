@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a VolumeConcentration */
 export interface VolumeConcentrationDto {
@@ -674,53 +674,57 @@ export class VolumeConcentration extends BaseUnit {
      * Note! the default format for VolumeConcentration is DecimalFractions.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the VolumeConcentration.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the VolumeConcentration.
      */
-    public toString(unit: VolumeConcentrationUnits = VolumeConcentrationUnits.DecimalFractions, fractionalDigits?: number): string {
+    public toString(unit: VolumeConcentrationUnits = VolumeConcentrationUnits.DecimalFractions, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case VolumeConcentrationUnits.DecimalFractions:
-                return super.truncateFractionDigits(this.DecimalFractions, fractionalDigits) + ` `;
+                return super.truncateFractionDigits(this.DecimalFractions, options as ToStringOptions) + ` `;
             case VolumeConcentrationUnits.LitersPerLiter:
-                return super.truncateFractionDigits(this.LitersPerLiter, fractionalDigits) + ` L/L`;
+                return super.truncateFractionDigits(this.LitersPerLiter, options as ToStringOptions) + ` L/L`;
             case VolumeConcentrationUnits.LitersPerMililiter:
-                return super.truncateFractionDigits(this.LitersPerMililiter, fractionalDigits) + ` L/mL`;
+                return super.truncateFractionDigits(this.LitersPerMililiter, options as ToStringOptions) + ` L/mL`;
             case VolumeConcentrationUnits.Percent:
-                return super.truncateFractionDigits(this.Percent, fractionalDigits) + ` %`;
+                return super.truncateFractionDigits(this.Percent, options as ToStringOptions) + ` %`;
             case VolumeConcentrationUnits.PartsPerThousand:
-                return super.truncateFractionDigits(this.PartsPerThousand, fractionalDigits) + ` ‰`;
+                return super.truncateFractionDigits(this.PartsPerThousand, options as ToStringOptions) + ` ‰`;
             case VolumeConcentrationUnits.PartsPerMillion:
-                return super.truncateFractionDigits(this.PartsPerMillion, fractionalDigits) + ` ppm`;
+                return super.truncateFractionDigits(this.PartsPerMillion, options as ToStringOptions) + ` ppm`;
             case VolumeConcentrationUnits.PartsPerBillion:
-                return super.truncateFractionDigits(this.PartsPerBillion, fractionalDigits) + ` ppb`;
+                return super.truncateFractionDigits(this.PartsPerBillion, options as ToStringOptions) + ` ppb`;
             case VolumeConcentrationUnits.PartsPerTrillion:
-                return super.truncateFractionDigits(this.PartsPerTrillion, fractionalDigits) + ` ppt`;
+                return super.truncateFractionDigits(this.PartsPerTrillion, options as ToStringOptions) + ` ppt`;
             case VolumeConcentrationUnits.PicolitersPerLiter:
-                return super.truncateFractionDigits(this.PicolitersPerLiter, fractionalDigits) + ` pL/L`;
+                return super.truncateFractionDigits(this.PicolitersPerLiter, options as ToStringOptions) + ` pL/L`;
             case VolumeConcentrationUnits.NanolitersPerLiter:
-                return super.truncateFractionDigits(this.NanolitersPerLiter, fractionalDigits) + ` nL/L`;
+                return super.truncateFractionDigits(this.NanolitersPerLiter, options as ToStringOptions) + ` nL/L`;
             case VolumeConcentrationUnits.MicrolitersPerLiter:
-                return super.truncateFractionDigits(this.MicrolitersPerLiter, fractionalDigits) + ` μL/L`;
+                return super.truncateFractionDigits(this.MicrolitersPerLiter, options as ToStringOptions) + ` μL/L`;
             case VolumeConcentrationUnits.MillilitersPerLiter:
-                return super.truncateFractionDigits(this.MillilitersPerLiter, fractionalDigits) + ` mL/L`;
+                return super.truncateFractionDigits(this.MillilitersPerLiter, options as ToStringOptions) + ` mL/L`;
             case VolumeConcentrationUnits.CentilitersPerLiter:
-                return super.truncateFractionDigits(this.CentilitersPerLiter, fractionalDigits) + ` cL/L`;
+                return super.truncateFractionDigits(this.CentilitersPerLiter, options as ToStringOptions) + ` cL/L`;
             case VolumeConcentrationUnits.DecilitersPerLiter:
-                return super.truncateFractionDigits(this.DecilitersPerLiter, fractionalDigits) + ` dL/L`;
+                return super.truncateFractionDigits(this.DecilitersPerLiter, options as ToStringOptions) + ` dL/L`;
             case VolumeConcentrationUnits.PicolitersPerMililiter:
-                return super.truncateFractionDigits(this.PicolitersPerMililiter, fractionalDigits) + ` pL/mL`;
+                return super.truncateFractionDigits(this.PicolitersPerMililiter, options as ToStringOptions) + ` pL/mL`;
             case VolumeConcentrationUnits.NanolitersPerMililiter:
-                return super.truncateFractionDigits(this.NanolitersPerMililiter, fractionalDigits) + ` nL/mL`;
+                return super.truncateFractionDigits(this.NanolitersPerMililiter, options as ToStringOptions) + ` nL/mL`;
             case VolumeConcentrationUnits.MicrolitersPerMililiter:
-                return super.truncateFractionDigits(this.MicrolitersPerMililiter, fractionalDigits) + ` μL/mL`;
+                return super.truncateFractionDigits(this.MicrolitersPerMililiter, options as ToStringOptions) + ` μL/mL`;
             case VolumeConcentrationUnits.MillilitersPerMililiter:
-                return super.truncateFractionDigits(this.MillilitersPerMililiter, fractionalDigits) + ` mL/mL`;
+                return super.truncateFractionDigits(this.MillilitersPerMililiter, options as ToStringOptions) + ` mL/mL`;
             case VolumeConcentrationUnits.CentilitersPerMililiter:
-                return super.truncateFractionDigits(this.CentilitersPerMililiter, fractionalDigits) + ` cL/mL`;
+                return super.truncateFractionDigits(this.CentilitersPerMililiter, options as ToStringOptions) + ` cL/mL`;
             case VolumeConcentrationUnits.DecilitersPerMililiter:
-                return super.truncateFractionDigits(this.DecilitersPerMililiter, fractionalDigits) + ` dL/mL`;
+                return super.truncateFractionDigits(this.DecilitersPerMililiter, options as ToStringOptions) + ` dL/mL`;
         default:
             break;
         }

@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a RotationalAcceleration */
 export interface RotationalAccelerationDto {
@@ -243,21 +243,25 @@ export class RotationalAcceleration extends BaseUnit {
      * Note! the default format for RotationalAcceleration is RadiansPerSecondSquared.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the RotationalAcceleration.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the RotationalAcceleration.
      */
-    public toString(unit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared, fractionalDigits?: number): string {
+    public toString(unit: RotationalAccelerationUnits = RotationalAccelerationUnits.RadiansPerSecondSquared, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case RotationalAccelerationUnits.RadiansPerSecondSquared:
-                return super.truncateFractionDigits(this.RadiansPerSecondSquared, fractionalDigits) + ` rad/s²`;
+                return super.truncateFractionDigits(this.RadiansPerSecondSquared, options as ToStringOptions) + ` rad/s²`;
             case RotationalAccelerationUnits.DegreesPerSecondSquared:
-                return super.truncateFractionDigits(this.DegreesPerSecondSquared, fractionalDigits) + ` °/s²`;
+                return super.truncateFractionDigits(this.DegreesPerSecondSquared, options as ToStringOptions) + ` °/s²`;
             case RotationalAccelerationUnits.RevolutionsPerMinutePerSecond:
-                return super.truncateFractionDigits(this.RevolutionsPerMinutePerSecond, fractionalDigits) + ` rpm/s`;
+                return super.truncateFractionDigits(this.RevolutionsPerMinutePerSecond, options as ToStringOptions) + ` rpm/s`;
             case RotationalAccelerationUnits.RevolutionsPerSecondSquared:
-                return super.truncateFractionDigits(this.RevolutionsPerSecondSquared, fractionalDigits) + ` r/s²`;
+                return super.truncateFractionDigits(this.RevolutionsPerSecondSquared, options as ToStringOptions) + ` r/s²`;
         default:
             break;
         }

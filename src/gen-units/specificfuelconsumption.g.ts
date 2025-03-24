@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a SpecificFuelConsumption */
 export interface SpecificFuelConsumptionDto {
@@ -222,21 +222,25 @@ export class SpecificFuelConsumption extends BaseUnit {
      * Note! the default format for SpecificFuelConsumption is GramsPerKiloNewtonSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificFuelConsumption.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the SpecificFuelConsumption.
      */
-    public toString(unit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond, fractionalDigits?: number): string {
+    public toString(unit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour:
-                return super.truncateFractionDigits(this.PoundsMassPerPoundForceHour, fractionalDigits) + ` lb/(lbf·h)`;
+                return super.truncateFractionDigits(this.PoundsMassPerPoundForceHour, options as ToStringOptions) + ` lb/(lbf·h)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
-                return super.truncateFractionDigits(this.KilogramsPerKilogramForceHour, fractionalDigits) + ` kg/(kgf·h)`;
+                return super.truncateFractionDigits(this.KilogramsPerKilogramForceHour, options as ToStringOptions) + ` kg/(kgf·h)`;
             case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return super.truncateFractionDigits(this.GramsPerKiloNewtonSecond, fractionalDigits) + ` g/(kN·s)`;
+                return super.truncateFractionDigits(this.GramsPerKiloNewtonSecond, options as ToStringOptions) + ` g/(kN·s)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
-                return super.truncateFractionDigits(this.KilogramsPerKiloNewtonSecond, fractionalDigits) + ` kg/(kN·s)`;
+                return super.truncateFractionDigits(this.KilogramsPerKiloNewtonSecond, options as ToStringOptions) + ` kg/(kN·s)`;
         default:
             break;
         }

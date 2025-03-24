@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Density */
 export interface DensityDto {
@@ -1764,125 +1764,129 @@ export class Density extends BaseUnit {
      * Note! the default format for Density is KilogramsPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Density.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Density.
      */
-    public toString(unit: DensityUnits = DensityUnits.KilogramsPerCubicMeter, fractionalDigits?: number): string {
+    public toString(unit: DensityUnits = DensityUnits.KilogramsPerCubicMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case DensityUnits.GramsPerCubicMillimeter:
-                return super.truncateFractionDigits(this.GramsPerCubicMillimeter, fractionalDigits) + ` g/mm³`;
+                return super.truncateFractionDigits(this.GramsPerCubicMillimeter, options as ToStringOptions) + ` g/mm³`;
             case DensityUnits.GramsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.GramsPerCubicCentimeter, fractionalDigits) + ` g/cm³`;
+                return super.truncateFractionDigits(this.GramsPerCubicCentimeter, options as ToStringOptions) + ` g/cm³`;
             case DensityUnits.GramsPerCubicMeter:
-                return super.truncateFractionDigits(this.GramsPerCubicMeter, fractionalDigits) + ` g/m³`;
+                return super.truncateFractionDigits(this.GramsPerCubicMeter, options as ToStringOptions) + ` g/m³`;
             case DensityUnits.PoundsPerCubicInch:
-                return super.truncateFractionDigits(this.PoundsPerCubicInch, fractionalDigits) + ` lb/in³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicInch, options as ToStringOptions) + ` lb/in³`;
             case DensityUnits.PoundsPerCubicFoot:
-                return super.truncateFractionDigits(this.PoundsPerCubicFoot, fractionalDigits) + ` lb/ft³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicFoot, options as ToStringOptions) + ` lb/ft³`;
             case DensityUnits.PoundsPerCubicYard:
-                return super.truncateFractionDigits(this.PoundsPerCubicYard, fractionalDigits) + ` lb/yd³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicYard, options as ToStringOptions) + ` lb/yd³`;
             case DensityUnits.TonnesPerCubicMillimeter:
-                return super.truncateFractionDigits(this.TonnesPerCubicMillimeter, fractionalDigits) + ` t/mm³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicMillimeter, options as ToStringOptions) + ` t/mm³`;
             case DensityUnits.TonnesPerCubicCentimeter:
-                return super.truncateFractionDigits(this.TonnesPerCubicCentimeter, fractionalDigits) + ` t/cm³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicCentimeter, options as ToStringOptions) + ` t/cm³`;
             case DensityUnits.TonnesPerCubicMeter:
-                return super.truncateFractionDigits(this.TonnesPerCubicMeter, fractionalDigits) + ` t/m³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicMeter, options as ToStringOptions) + ` t/m³`;
             case DensityUnits.SlugsPerCubicFoot:
-                return super.truncateFractionDigits(this.SlugsPerCubicFoot, fractionalDigits) + ` slug/ft³`;
+                return super.truncateFractionDigits(this.SlugsPerCubicFoot, options as ToStringOptions) + ` slug/ft³`;
             case DensityUnits.GramsPerLiter:
-                return super.truncateFractionDigits(this.GramsPerLiter, fractionalDigits) + ` g/L`;
+                return super.truncateFractionDigits(this.GramsPerLiter, options as ToStringOptions) + ` g/L`;
             case DensityUnits.GramsPerDeciLiter:
-                return super.truncateFractionDigits(this.GramsPerDeciLiter, fractionalDigits) + ` g/dl`;
+                return super.truncateFractionDigits(this.GramsPerDeciLiter, options as ToStringOptions) + ` g/dl`;
             case DensityUnits.GramsPerMilliliter:
-                return super.truncateFractionDigits(this.GramsPerMilliliter, fractionalDigits) + ` g/ml`;
+                return super.truncateFractionDigits(this.GramsPerMilliliter, options as ToStringOptions) + ` g/ml`;
             case DensityUnits.PoundsPerUSGallon:
-                return super.truncateFractionDigits(this.PoundsPerUSGallon, fractionalDigits) + ` ppg (U.S.)`;
+                return super.truncateFractionDigits(this.PoundsPerUSGallon, options as ToStringOptions) + ` ppg (U.S.)`;
             case DensityUnits.PoundsPerImperialGallon:
-                return super.truncateFractionDigits(this.PoundsPerImperialGallon, fractionalDigits) + ` ppg (imp.)`;
+                return super.truncateFractionDigits(this.PoundsPerImperialGallon, options as ToStringOptions) + ` ppg (imp.)`;
             case DensityUnits.KilogramsPerLiter:
-                return super.truncateFractionDigits(this.KilogramsPerLiter, fractionalDigits) + ` kg/l`;
+                return super.truncateFractionDigits(this.KilogramsPerLiter, options as ToStringOptions) + ` kg/l`;
             case DensityUnits.TonnesPerCubicFoot:
-                return super.truncateFractionDigits(this.TonnesPerCubicFoot, fractionalDigits) + ` t/ft³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicFoot, options as ToStringOptions) + ` t/ft³`;
             case DensityUnits.TonnesPerCubicInch:
-                return super.truncateFractionDigits(this.TonnesPerCubicInch, fractionalDigits) + ` t/in³`;
+                return super.truncateFractionDigits(this.TonnesPerCubicInch, options as ToStringOptions) + ` t/in³`;
             case DensityUnits.GramsPerCubicFoot:
-                return super.truncateFractionDigits(this.GramsPerCubicFoot, fractionalDigits) + ` g/ft³`;
+                return super.truncateFractionDigits(this.GramsPerCubicFoot, options as ToStringOptions) + ` g/ft³`;
             case DensityUnits.GramsPerCubicInch:
-                return super.truncateFractionDigits(this.GramsPerCubicInch, fractionalDigits) + ` g/in³`;
+                return super.truncateFractionDigits(this.GramsPerCubicInch, options as ToStringOptions) + ` g/in³`;
             case DensityUnits.PoundsPerCubicMeter:
-                return super.truncateFractionDigits(this.PoundsPerCubicMeter, fractionalDigits) + ` lb/m³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicMeter, options as ToStringOptions) + ` lb/m³`;
             case DensityUnits.PoundsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.PoundsPerCubicCentimeter, fractionalDigits) + ` lb/cm³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicCentimeter, options as ToStringOptions) + ` lb/cm³`;
             case DensityUnits.PoundsPerCubicMillimeter:
-                return super.truncateFractionDigits(this.PoundsPerCubicMillimeter, fractionalDigits) + ` lb/mm³`;
+                return super.truncateFractionDigits(this.PoundsPerCubicMillimeter, options as ToStringOptions) + ` lb/mm³`;
             case DensityUnits.SlugsPerCubicMeter:
-                return super.truncateFractionDigits(this.SlugsPerCubicMeter, fractionalDigits) + ` slug/m³`;
+                return super.truncateFractionDigits(this.SlugsPerCubicMeter, options as ToStringOptions) + ` slug/m³`;
             case DensityUnits.SlugsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.SlugsPerCubicCentimeter, fractionalDigits) + ` slug/cm³`;
+                return super.truncateFractionDigits(this.SlugsPerCubicCentimeter, options as ToStringOptions) + ` slug/cm³`;
             case DensityUnits.SlugsPerCubicMillimeter:
-                return super.truncateFractionDigits(this.SlugsPerCubicMillimeter, fractionalDigits) + ` slug/mm³`;
+                return super.truncateFractionDigits(this.SlugsPerCubicMillimeter, options as ToStringOptions) + ` slug/mm³`;
             case DensityUnits.SlugsPerCubicInch:
-                return super.truncateFractionDigits(this.SlugsPerCubicInch, fractionalDigits) + ` slug/in³`;
+                return super.truncateFractionDigits(this.SlugsPerCubicInch, options as ToStringOptions) + ` slug/in³`;
             case DensityUnits.KilogramsPerCubicMillimeter:
-                return super.truncateFractionDigits(this.KilogramsPerCubicMillimeter, fractionalDigits) + ` kg/mm³`;
+                return super.truncateFractionDigits(this.KilogramsPerCubicMillimeter, options as ToStringOptions) + ` kg/mm³`;
             case DensityUnits.KilogramsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.KilogramsPerCubicCentimeter, fractionalDigits) + ` kg/cm³`;
+                return super.truncateFractionDigits(this.KilogramsPerCubicCentimeter, options as ToStringOptions) + ` kg/cm³`;
             case DensityUnits.KilogramsPerCubicMeter:
-                return super.truncateFractionDigits(this.KilogramsPerCubicMeter, fractionalDigits) + ` kg/m³`;
+                return super.truncateFractionDigits(this.KilogramsPerCubicMeter, options as ToStringOptions) + ` kg/m³`;
             case DensityUnits.MilligramsPerCubicMeter:
-                return super.truncateFractionDigits(this.MilligramsPerCubicMeter, fractionalDigits) + ` mg/m³`;
+                return super.truncateFractionDigits(this.MilligramsPerCubicMeter, options as ToStringOptions) + ` mg/m³`;
             case DensityUnits.MicrogramsPerCubicMeter:
-                return super.truncateFractionDigits(this.MicrogramsPerCubicMeter, fractionalDigits) + ` μg/m³`;
+                return super.truncateFractionDigits(this.MicrogramsPerCubicMeter, options as ToStringOptions) + ` μg/m³`;
             case DensityUnits.KilopoundsPerCubicInch:
-                return super.truncateFractionDigits(this.KilopoundsPerCubicInch, fractionalDigits) + ` klb/in³`;
+                return super.truncateFractionDigits(this.KilopoundsPerCubicInch, options as ToStringOptions) + ` klb/in³`;
             case DensityUnits.KilopoundsPerCubicFoot:
-                return super.truncateFractionDigits(this.KilopoundsPerCubicFoot, fractionalDigits) + ` klb/ft³`;
+                return super.truncateFractionDigits(this.KilopoundsPerCubicFoot, options as ToStringOptions) + ` klb/ft³`;
             case DensityUnits.KilopoundsPerCubicYard:
-                return super.truncateFractionDigits(this.KilopoundsPerCubicYard, fractionalDigits) + ` klb/yd³`;
+                return super.truncateFractionDigits(this.KilopoundsPerCubicYard, options as ToStringOptions) + ` klb/yd³`;
             case DensityUnits.FemtogramsPerLiter:
-                return super.truncateFractionDigits(this.FemtogramsPerLiter, fractionalDigits) + ` fg/L`;
+                return super.truncateFractionDigits(this.FemtogramsPerLiter, options as ToStringOptions) + ` fg/L`;
             case DensityUnits.PicogramsPerLiter:
-                return super.truncateFractionDigits(this.PicogramsPerLiter, fractionalDigits) + ` pg/L`;
+                return super.truncateFractionDigits(this.PicogramsPerLiter, options as ToStringOptions) + ` pg/L`;
             case DensityUnits.NanogramsPerLiter:
-                return super.truncateFractionDigits(this.NanogramsPerLiter, fractionalDigits) + ` ng/L`;
+                return super.truncateFractionDigits(this.NanogramsPerLiter, options as ToStringOptions) + ` ng/L`;
             case DensityUnits.MicrogramsPerLiter:
-                return super.truncateFractionDigits(this.MicrogramsPerLiter, fractionalDigits) + ` μg/L`;
+                return super.truncateFractionDigits(this.MicrogramsPerLiter, options as ToStringOptions) + ` μg/L`;
             case DensityUnits.MilligramsPerLiter:
-                return super.truncateFractionDigits(this.MilligramsPerLiter, fractionalDigits) + ` mg/L`;
+                return super.truncateFractionDigits(this.MilligramsPerLiter, options as ToStringOptions) + ` mg/L`;
             case DensityUnits.CentigramsPerLiter:
-                return super.truncateFractionDigits(this.CentigramsPerLiter, fractionalDigits) + ` cg/L`;
+                return super.truncateFractionDigits(this.CentigramsPerLiter, options as ToStringOptions) + ` cg/L`;
             case DensityUnits.DecigramsPerLiter:
-                return super.truncateFractionDigits(this.DecigramsPerLiter, fractionalDigits) + ` dg/L`;
+                return super.truncateFractionDigits(this.DecigramsPerLiter, options as ToStringOptions) + ` dg/L`;
             case DensityUnits.FemtogramsPerDeciLiter:
-                return super.truncateFractionDigits(this.FemtogramsPerDeciLiter, fractionalDigits) + ` fg/dl`;
+                return super.truncateFractionDigits(this.FemtogramsPerDeciLiter, options as ToStringOptions) + ` fg/dl`;
             case DensityUnits.PicogramsPerDeciLiter:
-                return super.truncateFractionDigits(this.PicogramsPerDeciLiter, fractionalDigits) + ` pg/dl`;
+                return super.truncateFractionDigits(this.PicogramsPerDeciLiter, options as ToStringOptions) + ` pg/dl`;
             case DensityUnits.NanogramsPerDeciLiter:
-                return super.truncateFractionDigits(this.NanogramsPerDeciLiter, fractionalDigits) + ` ng/dl`;
+                return super.truncateFractionDigits(this.NanogramsPerDeciLiter, options as ToStringOptions) + ` ng/dl`;
             case DensityUnits.MicrogramsPerDeciLiter:
-                return super.truncateFractionDigits(this.MicrogramsPerDeciLiter, fractionalDigits) + ` μg/dl`;
+                return super.truncateFractionDigits(this.MicrogramsPerDeciLiter, options as ToStringOptions) + ` μg/dl`;
             case DensityUnits.MilligramsPerDeciLiter:
-                return super.truncateFractionDigits(this.MilligramsPerDeciLiter, fractionalDigits) + ` mg/dl`;
+                return super.truncateFractionDigits(this.MilligramsPerDeciLiter, options as ToStringOptions) + ` mg/dl`;
             case DensityUnits.CentigramsPerDeciLiter:
-                return super.truncateFractionDigits(this.CentigramsPerDeciLiter, fractionalDigits) + ` cg/dl`;
+                return super.truncateFractionDigits(this.CentigramsPerDeciLiter, options as ToStringOptions) + ` cg/dl`;
             case DensityUnits.DecigramsPerDeciLiter:
-                return super.truncateFractionDigits(this.DecigramsPerDeciLiter, fractionalDigits) + ` dg/dl`;
+                return super.truncateFractionDigits(this.DecigramsPerDeciLiter, options as ToStringOptions) + ` dg/dl`;
             case DensityUnits.FemtogramsPerMilliliter:
-                return super.truncateFractionDigits(this.FemtogramsPerMilliliter, fractionalDigits) + ` fg/ml`;
+                return super.truncateFractionDigits(this.FemtogramsPerMilliliter, options as ToStringOptions) + ` fg/ml`;
             case DensityUnits.PicogramsPerMilliliter:
-                return super.truncateFractionDigits(this.PicogramsPerMilliliter, fractionalDigits) + ` pg/ml`;
+                return super.truncateFractionDigits(this.PicogramsPerMilliliter, options as ToStringOptions) + ` pg/ml`;
             case DensityUnits.NanogramsPerMilliliter:
-                return super.truncateFractionDigits(this.NanogramsPerMilliliter, fractionalDigits) + ` ng/ml`;
+                return super.truncateFractionDigits(this.NanogramsPerMilliliter, options as ToStringOptions) + ` ng/ml`;
             case DensityUnits.MicrogramsPerMilliliter:
-                return super.truncateFractionDigits(this.MicrogramsPerMilliliter, fractionalDigits) + ` μg/ml`;
+                return super.truncateFractionDigits(this.MicrogramsPerMilliliter, options as ToStringOptions) + ` μg/ml`;
             case DensityUnits.MilligramsPerMilliliter:
-                return super.truncateFractionDigits(this.MilligramsPerMilliliter, fractionalDigits) + ` mg/ml`;
+                return super.truncateFractionDigits(this.MilligramsPerMilliliter, options as ToStringOptions) + ` mg/ml`;
             case DensityUnits.CentigramsPerMilliliter:
-                return super.truncateFractionDigits(this.CentigramsPerMilliliter, fractionalDigits) + ` cg/ml`;
+                return super.truncateFractionDigits(this.CentigramsPerMilliliter, options as ToStringOptions) + ` cg/ml`;
             case DensityUnits.DecigramsPerMilliliter:
-                return super.truncateFractionDigits(this.DecigramsPerMilliliter, fractionalDigits) + ` dg/ml`;
+                return super.truncateFractionDigits(this.DecigramsPerMilliliter, options as ToStringOptions) + ` dg/ml`;
         default:
             break;
         }

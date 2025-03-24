@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a Entropy */
 export interface EntropyDto {
@@ -306,27 +306,31 @@ export class Entropy extends BaseUnit {
      * Note! the default format for Entropy is JoulesPerKelvin.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Entropy.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Entropy.
      */
-    public toString(unit: EntropyUnits = EntropyUnits.JoulesPerKelvin, fractionalDigits?: number): string {
+    public toString(unit: EntropyUnits = EntropyUnits.JoulesPerKelvin, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case EntropyUnits.JoulesPerKelvin:
-                return super.truncateFractionDigits(this.JoulesPerKelvin, fractionalDigits) + ` J/K`;
+                return super.truncateFractionDigits(this.JoulesPerKelvin, options as ToStringOptions) + ` J/K`;
             case EntropyUnits.CaloriesPerKelvin:
-                return super.truncateFractionDigits(this.CaloriesPerKelvin, fractionalDigits) + ` cal/K`;
+                return super.truncateFractionDigits(this.CaloriesPerKelvin, options as ToStringOptions) + ` cal/K`;
             case EntropyUnits.JoulesPerDegreeCelsius:
-                return super.truncateFractionDigits(this.JoulesPerDegreeCelsius, fractionalDigits) + ` J/°C`;
+                return super.truncateFractionDigits(this.JoulesPerDegreeCelsius, options as ToStringOptions) + ` J/°C`;
             case EntropyUnits.KilojoulesPerKelvin:
-                return super.truncateFractionDigits(this.KilojoulesPerKelvin, fractionalDigits) + ` kJ/K`;
+                return super.truncateFractionDigits(this.KilojoulesPerKelvin, options as ToStringOptions) + ` kJ/K`;
             case EntropyUnits.MegajoulesPerKelvin:
-                return super.truncateFractionDigits(this.MegajoulesPerKelvin, fractionalDigits) + ` MJ/K`;
+                return super.truncateFractionDigits(this.MegajoulesPerKelvin, options as ToStringOptions) + ` MJ/K`;
             case EntropyUnits.KilocaloriesPerKelvin:
-                return super.truncateFractionDigits(this.KilocaloriesPerKelvin, fractionalDigits) + ` kcal/K`;
+                return super.truncateFractionDigits(this.KilocaloriesPerKelvin, options as ToStringOptions) + ` kcal/K`;
             case EntropyUnits.KilojoulesPerDegreeCelsius:
-                return super.truncateFractionDigits(this.KilojoulesPerDegreeCelsius, fractionalDigits) + ` kJ/°C`;
+                return super.truncateFractionDigits(this.KilojoulesPerDegreeCelsius, options as ToStringOptions) + ` kJ/°C`;
         default:
             break;
         }

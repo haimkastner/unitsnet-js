@@ -1,3 +1,27 @@
+export interface ToStringOptions {
+    /**
+     * The maximum number of fractional digits to include in the output string.
+     * 
+     * @example
+     * // With fractionalDigits: 2, "1.23456" becomes "1.23"
+     * // With fractionalDigits: 4, "1.23456" becomes "1.2346"
+     */
+    fractionalDigits?: number;
+
+    /**
+     * When true, displays digits up to the first non-zero decimal place, even if it 
+     * exceeds the specified `fractionalDigits` limit.
+     * 
+     * This option only has an effect when `fractionalDigits` is also provided.
+     * 
+     * @example
+     * // For number 1.000012:
+     * // With fractionalDigits: 2 and extendDigitsToFirstFraction: false → "1.00"
+     * // With fractionalDigits: 2 and extendDigitsToFirstFraction: true → "1.00001"
+     */
+    extendDigitsToFirstFraction?: boolean;
+}
+
 export enum ArithmeticOperation {
     /** An plus arithmetic operation (JS default "+") */
     Add = 'Add',
@@ -112,20 +136,45 @@ export abstract class BaseUnit {
     /**
      * Truncates a number to a specified number of fractional digits.
      * @param num - The number to truncate.
-     * @param fractionalDigits - The number of fractional digits to keep.
+     * @param options - The options to use when truncating the number.
      * @returns The truncated number.
      */
-    protected truncateFractionDigits(num: number, fractionalDigits?: number): number {
-        if (typeof fractionalDigits !== "number") {
+    protected truncateFractionDigits(num: number, options?: ToStringOptions): number {
+        if (typeof options?.fractionalDigits !== "number") {
             return num;
         }
-        // Convert the number to a string with the desired precision
-        const numString = num.toFixed(fractionalDigits);
-
-        // Parse the string back to a number
-        const truncatedNum = parseFloat(numString);
-
-        return truncatedNum;
+    
+        // If we need to extend to first non-zero fraction and fractionalDigits is provided
+        if (options.extendDigitsToFirstFraction) {
+            // Convert to string to analyze the decimal part
+            const numStr = num.toString();
+            const decimalIndex = numStr.indexOf('.');
+            
+            // If we have a decimal part
+            if (decimalIndex !== -1) {
+                // Find the first non-zero digit after decimal
+                let firstNonZeroIndex = -1;
+                for (let i = decimalIndex + 1; i < numStr.length; i++) {
+                    if (numStr[i] !== '0') {
+                        firstNonZeroIndex = i;
+                        break;
+                    }
+                }
+                
+                // If we found a non-zero digit and it's beyond fractionalDigits
+                if (firstNonZeroIndex !== -1) {
+                    const digitsAfterDecimal = firstNonZeroIndex - decimalIndex;
+                    if (digitsAfterDecimal > options.fractionalDigits) {
+                        // Extend precision to include the first non-zero digit
+                        return parseFloat(num.toFixed(digitsAfterDecimal));
+                    }
+                }
+            }
+        }
+        
+        // Default behavior - use the specified precision
+        const numString = num.toFixed(options.fractionalDigits);
+        return parseFloat(numString);
     }
 
     public abstract convert(toUnit: string): number;

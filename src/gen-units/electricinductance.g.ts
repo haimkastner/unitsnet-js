@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricInductance */
 export interface ElectricInductanceDto {
@@ -248,23 +248,27 @@ export class ElectricInductance extends BaseUnit {
      * Note! the default format for ElectricInductance is Henries.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricInductance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricInductance.
      */
-    public toString(unit: ElectricInductanceUnits = ElectricInductanceUnits.Henries, fractionalDigits?: number): string {
+    public toString(unit: ElectricInductanceUnits = ElectricInductanceUnits.Henries, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricInductanceUnits.Henries:
-                return super.truncateFractionDigits(this.Henries, fractionalDigits) + ` H`;
+                return super.truncateFractionDigits(this.Henries, options as ToStringOptions) + ` H`;
             case ElectricInductanceUnits.Picohenries:
-                return super.truncateFractionDigits(this.Picohenries, fractionalDigits) + ` pH`;
+                return super.truncateFractionDigits(this.Picohenries, options as ToStringOptions) + ` pH`;
             case ElectricInductanceUnits.Nanohenries:
-                return super.truncateFractionDigits(this.Nanohenries, fractionalDigits) + ` nH`;
+                return super.truncateFractionDigits(this.Nanohenries, options as ToStringOptions) + ` nH`;
             case ElectricInductanceUnits.Microhenries:
-                return super.truncateFractionDigits(this.Microhenries, fractionalDigits) + ` μH`;
+                return super.truncateFractionDigits(this.Microhenries, options as ToStringOptions) + ` μH`;
             case ElectricInductanceUnits.Millihenries:
-                return super.truncateFractionDigits(this.Millihenries, fractionalDigits) + ` mH`;
+                return super.truncateFractionDigits(this.Millihenries, options as ToStringOptions) + ` mH`;
         default:
             break;
         }

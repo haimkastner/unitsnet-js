@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a FluidResistance */
 export interface FluidResistanceDto {
@@ -612,51 +612,55 @@ export class FluidResistance extends BaseUnit {
      * Note! the default format for FluidResistance is PascalSecondsPerCubicMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the FluidResistance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the FluidResistance.
      */
-    public toString(unit: FluidResistanceUnits = FluidResistanceUnits.PascalSecondsPerCubicMeter, fractionalDigits?: number): string {
+    public toString(unit: FluidResistanceUnits = FluidResistanceUnits.PascalSecondsPerCubicMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case FluidResistanceUnits.PascalSecondsPerLiter:
-                return super.truncateFractionDigits(this.PascalSecondsPerLiter, fractionalDigits) + ` Pa·s/l`;
+                return super.truncateFractionDigits(this.PascalSecondsPerLiter, options as ToStringOptions) + ` Pa·s/l`;
             case FluidResistanceUnits.PascalMinutesPerLiter:
-                return super.truncateFractionDigits(this.PascalMinutesPerLiter, fractionalDigits) + ` Pa·min/l`;
+                return super.truncateFractionDigits(this.PascalMinutesPerLiter, options as ToStringOptions) + ` Pa·min/l`;
             case FluidResistanceUnits.PascalSecondsPerMilliliter:
-                return super.truncateFractionDigits(this.PascalSecondsPerMilliliter, fractionalDigits) + ` Pa·s/ml`;
+                return super.truncateFractionDigits(this.PascalSecondsPerMilliliter, options as ToStringOptions) + ` Pa·s/ml`;
             case FluidResistanceUnits.PascalMinutesPerMilliliter:
-                return super.truncateFractionDigits(this.PascalMinutesPerMilliliter, fractionalDigits) + ` Pa·min/ml`;
+                return super.truncateFractionDigits(this.PascalMinutesPerMilliliter, options as ToStringOptions) + ` Pa·min/ml`;
             case FluidResistanceUnits.PascalSecondsPerCubicMeter:
-                return super.truncateFractionDigits(this.PascalSecondsPerCubicMeter, fractionalDigits) + ` Pa·s/m³`;
+                return super.truncateFractionDigits(this.PascalSecondsPerCubicMeter, options as ToStringOptions) + ` Pa·s/m³`;
             case FluidResistanceUnits.PascalMinutesPerCubicMeter:
-                return super.truncateFractionDigits(this.PascalMinutesPerCubicMeter, fractionalDigits) + ` Pa·min/m³`;
+                return super.truncateFractionDigits(this.PascalMinutesPerCubicMeter, options as ToStringOptions) + ` Pa·min/m³`;
             case FluidResistanceUnits.PascalSecondsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.PascalSecondsPerCubicCentimeter, fractionalDigits) + ` Pa·s/cm³`;
+                return super.truncateFractionDigits(this.PascalSecondsPerCubicCentimeter, options as ToStringOptions) + ` Pa·s/cm³`;
             case FluidResistanceUnits.PascalMinutesPerCubicCentimeter:
-                return super.truncateFractionDigits(this.PascalMinutesPerCubicCentimeter, fractionalDigits) + ` Pa·min/cm³`;
+                return super.truncateFractionDigits(this.PascalMinutesPerCubicCentimeter, options as ToStringOptions) + ` Pa·min/cm³`;
             case FluidResistanceUnits.DyneSecondsPerCentimeterToTheFifth:
-                return super.truncateFractionDigits(this.DyneSecondsPerCentimeterToTheFifth, fractionalDigits) + ` dyn·s/cm⁵`;
+                return super.truncateFractionDigits(this.DyneSecondsPerCentimeterToTheFifth, options as ToStringOptions) + ` dyn·s/cm⁵`;
             case FluidResistanceUnits.MillimeterMercurySecondsPerLiter:
-                return super.truncateFractionDigits(this.MillimeterMercurySecondsPerLiter, fractionalDigits) + ` mmHg·s/l`;
+                return super.truncateFractionDigits(this.MillimeterMercurySecondsPerLiter, options as ToStringOptions) + ` mmHg·s/l`;
             case FluidResistanceUnits.MillimeterMercuryMinutesPerLiter:
-                return super.truncateFractionDigits(this.MillimeterMercuryMinutesPerLiter, fractionalDigits) + ` mmHg·min/l`;
+                return super.truncateFractionDigits(this.MillimeterMercuryMinutesPerLiter, options as ToStringOptions) + ` mmHg·min/l`;
             case FluidResistanceUnits.MillimeterMercurySecondsPerMilliliter:
-                return super.truncateFractionDigits(this.MillimeterMercurySecondsPerMilliliter, fractionalDigits) + ` mmHg·s/ml`;
+                return super.truncateFractionDigits(this.MillimeterMercurySecondsPerMilliliter, options as ToStringOptions) + ` mmHg·s/ml`;
             case FluidResistanceUnits.MillimeterMercuryMinutesPerMilliliter:
-                return super.truncateFractionDigits(this.MillimeterMercuryMinutesPerMilliliter, fractionalDigits) + ` mmHg·min/ml`;
+                return super.truncateFractionDigits(this.MillimeterMercuryMinutesPerMilliliter, options as ToStringOptions) + ` mmHg·min/ml`;
             case FluidResistanceUnits.MillimeterMercurySecondsPerCubicCentimeter:
-                return super.truncateFractionDigits(this.MillimeterMercurySecondsPerCubicCentimeter, fractionalDigits) + ` mmHg·s/cm³`;
+                return super.truncateFractionDigits(this.MillimeterMercurySecondsPerCubicCentimeter, options as ToStringOptions) + ` mmHg·s/cm³`;
             case FluidResistanceUnits.MillimeterMercuryMinutesPerCubicCentimeter:
-                return super.truncateFractionDigits(this.MillimeterMercuryMinutesPerCubicCentimeter, fractionalDigits) + ` mmHg·min/cm³`;
+                return super.truncateFractionDigits(this.MillimeterMercuryMinutesPerCubicCentimeter, options as ToStringOptions) + ` mmHg·min/cm³`;
             case FluidResistanceUnits.MillimeterMercurySecondsPerCubicMeter:
-                return super.truncateFractionDigits(this.MillimeterMercurySecondsPerCubicMeter, fractionalDigits) + ` mmHg·s/m³`;
+                return super.truncateFractionDigits(this.MillimeterMercurySecondsPerCubicMeter, options as ToStringOptions) + ` mmHg·s/m³`;
             case FluidResistanceUnits.MillimeterMercuryMinutesPerCubicMeter:
-                return super.truncateFractionDigits(this.MillimeterMercuryMinutesPerCubicMeter, fractionalDigits) + ` mmHg·min/m³`;
+                return super.truncateFractionDigits(this.MillimeterMercuryMinutesPerCubicMeter, options as ToStringOptions) + ` mmHg·min/m³`;
             case FluidResistanceUnits.WoodUnits:
-                return super.truncateFractionDigits(this.WoodUnits, fractionalDigits) + ` WU`;
+                return super.truncateFractionDigits(this.WoodUnits, options as ToStringOptions) + ` WU`;
             case FluidResistanceUnits.MegapascalSecondsPerCubicMeter:
-                return super.truncateFractionDigits(this.MegapascalSecondsPerCubicMeter, fractionalDigits) + ` MPa·s/m³`;
+                return super.truncateFractionDigits(this.MegapascalSecondsPerCubicMeter, options as ToStringOptions) + ` MPa·s/m³`;
         default:
             break;
         }

@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricReactivePower */
 export interface ElectricReactivePowerDto {
@@ -222,21 +222,25 @@ export class ElectricReactivePower extends BaseUnit {
      * Note! the default format for ElectricReactivePower is VoltamperesReactive.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricReactivePower.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricReactivePower.
      */
-    public toString(unit: ElectricReactivePowerUnits = ElectricReactivePowerUnits.VoltamperesReactive, fractionalDigits?: number): string {
+    public toString(unit: ElectricReactivePowerUnits = ElectricReactivePowerUnits.VoltamperesReactive, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricReactivePowerUnits.VoltamperesReactive:
-                return super.truncateFractionDigits(this.VoltamperesReactive, fractionalDigits) + ` var`;
+                return super.truncateFractionDigits(this.VoltamperesReactive, options as ToStringOptions) + ` var`;
             case ElectricReactivePowerUnits.KilovoltamperesReactive:
-                return super.truncateFractionDigits(this.KilovoltamperesReactive, fractionalDigits) + ` kvar`;
+                return super.truncateFractionDigits(this.KilovoltamperesReactive, options as ToStringOptions) + ` kvar`;
             case ElectricReactivePowerUnits.MegavoltamperesReactive:
-                return super.truncateFractionDigits(this.MegavoltamperesReactive, fractionalDigits) + ` Mvar`;
+                return super.truncateFractionDigits(this.MegavoltamperesReactive, options as ToStringOptions) + ` Mvar`;
             case ElectricReactivePowerUnits.GigavoltamperesReactive:
-                return super.truncateFractionDigits(this.GigavoltamperesReactive, fractionalDigits) + ` Gvar`;
+                return super.truncateFractionDigits(this.GigavoltamperesReactive, options as ToStringOptions) + ` Gvar`;
         default:
             break;
         }

@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricCharge */
 export interface ElectricChargeDto {
@@ -422,35 +422,39 @@ export class ElectricCharge extends BaseUnit {
      * Note! the default format for ElectricCharge is Coulombs.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricCharge.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricCharge.
      */
-    public toString(unit: ElectricChargeUnits = ElectricChargeUnits.Coulombs, fractionalDigits?: number): string {
+    public toString(unit: ElectricChargeUnits = ElectricChargeUnits.Coulombs, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricChargeUnits.Coulombs:
-                return super.truncateFractionDigits(this.Coulombs, fractionalDigits) + ` C`;
+                return super.truncateFractionDigits(this.Coulombs, options as ToStringOptions) + ` C`;
             case ElectricChargeUnits.AmpereHours:
-                return super.truncateFractionDigits(this.AmpereHours, fractionalDigits) + ` A-h`;
+                return super.truncateFractionDigits(this.AmpereHours, options as ToStringOptions) + ` A-h`;
             case ElectricChargeUnits.Picocoulombs:
-                return super.truncateFractionDigits(this.Picocoulombs, fractionalDigits) + ` pC`;
+                return super.truncateFractionDigits(this.Picocoulombs, options as ToStringOptions) + ` pC`;
             case ElectricChargeUnits.Nanocoulombs:
-                return super.truncateFractionDigits(this.Nanocoulombs, fractionalDigits) + ` nC`;
+                return super.truncateFractionDigits(this.Nanocoulombs, options as ToStringOptions) + ` nC`;
             case ElectricChargeUnits.Microcoulombs:
-                return super.truncateFractionDigits(this.Microcoulombs, fractionalDigits) + ` μC`;
+                return super.truncateFractionDigits(this.Microcoulombs, options as ToStringOptions) + ` μC`;
             case ElectricChargeUnits.Millicoulombs:
-                return super.truncateFractionDigits(this.Millicoulombs, fractionalDigits) + ` mC`;
+                return super.truncateFractionDigits(this.Millicoulombs, options as ToStringOptions) + ` mC`;
             case ElectricChargeUnits.Kilocoulombs:
-                return super.truncateFractionDigits(this.Kilocoulombs, fractionalDigits) + ` kC`;
+                return super.truncateFractionDigits(this.Kilocoulombs, options as ToStringOptions) + ` kC`;
             case ElectricChargeUnits.Megacoulombs:
-                return super.truncateFractionDigits(this.Megacoulombs, fractionalDigits) + ` MC`;
+                return super.truncateFractionDigits(this.Megacoulombs, options as ToStringOptions) + ` MC`;
             case ElectricChargeUnits.MilliampereHours:
-                return super.truncateFractionDigits(this.MilliampereHours, fractionalDigits) + ` mA-h`;
+                return super.truncateFractionDigits(this.MilliampereHours, options as ToStringOptions) + ` mA-h`;
             case ElectricChargeUnits.KiloampereHours:
-                return super.truncateFractionDigits(this.KiloampereHours, fractionalDigits) + ` kA-h`;
+                return super.truncateFractionDigits(this.KiloampereHours, options as ToStringOptions) + ` kA-h`;
             case ElectricChargeUnits.MegaampereHours:
-                return super.truncateFractionDigits(this.MegaampereHours, fractionalDigits) + ` MA-h`;
+                return super.truncateFractionDigits(this.MegaampereHours, options as ToStringOptions) + ` MA-h`;
         default:
             break;
         }

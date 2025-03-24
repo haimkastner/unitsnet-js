@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricSurfaceChargeDensity */
 export interface ElectricSurfaceChargeDensityDto {
@@ -196,19 +196,23 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
      * Note! the default format for ElectricSurfaceChargeDensity is CoulombsPerSquareMeter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricSurfaceChargeDensity.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricSurfaceChargeDensity.
      */
-    public toString(unit: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter, fractionalDigits?: number): string {
+    public toString(unit: ElectricSurfaceChargeDensityUnits = ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter:
-                return super.truncateFractionDigits(this.CoulombsPerSquareMeter, fractionalDigits) + ` C/m²`;
+                return super.truncateFractionDigits(this.CoulombsPerSquareMeter, options as ToStringOptions) + ` C/m²`;
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter:
-                return super.truncateFractionDigits(this.CoulombsPerSquareCentimeter, fractionalDigits) + ` C/cm²`;
+                return super.truncateFractionDigits(this.CoulombsPerSquareCentimeter, options as ToStringOptions) + ` C/cm²`;
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch:
-                return super.truncateFractionDigits(this.CoulombsPerSquareInch, fractionalDigits) + ` C/in²`;
+                return super.truncateFractionDigits(this.CoulombsPerSquareInch, options as ToStringOptions) + ` C/in²`;
         default:
             break;
         }

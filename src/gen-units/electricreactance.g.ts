@@ -1,4 +1,4 @@
-import { BaseUnit, areAnyOperatorsOverridden } from "../base-unit";
+import { BaseUnit, areAnyOperatorsOverridden, ToStringOptions } from "../base-unit";
 
 /** API DTO represents a ElectricReactance */
 export interface ElectricReactanceDto {
@@ -326,29 +326,33 @@ export class ElectricReactance extends BaseUnit {
      * Note! the default format for ElectricReactance is Ohms.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the ElectricReactance.
-     * @param fractionalDigits The number of fractional digits to keep.
+     * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the ElectricReactance.
      */
-    public toString(unit: ElectricReactanceUnits = ElectricReactanceUnits.Ohms, fractionalDigits?: number): string {
+    public toString(unit: ElectricReactanceUnits = ElectricReactanceUnits.Ohms, options?: number | ToStringOptions): string {
 
+        if (typeof options === 'number') {
+            console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
+            options = { fractionalDigits: options as number };
+        }
         switch (unit) {
             
             case ElectricReactanceUnits.Ohms:
-                return super.truncateFractionDigits(this.Ohms, fractionalDigits) + ` Ω`;
+                return super.truncateFractionDigits(this.Ohms, options as ToStringOptions) + ` Ω`;
             case ElectricReactanceUnits.Nanoohms:
-                return super.truncateFractionDigits(this.Nanoohms, fractionalDigits) + ` nΩ`;
+                return super.truncateFractionDigits(this.Nanoohms, options as ToStringOptions) + ` nΩ`;
             case ElectricReactanceUnits.Microohms:
-                return super.truncateFractionDigits(this.Microohms, fractionalDigits) + ` μΩ`;
+                return super.truncateFractionDigits(this.Microohms, options as ToStringOptions) + ` μΩ`;
             case ElectricReactanceUnits.Milliohms:
-                return super.truncateFractionDigits(this.Milliohms, fractionalDigits) + ` mΩ`;
+                return super.truncateFractionDigits(this.Milliohms, options as ToStringOptions) + ` mΩ`;
             case ElectricReactanceUnits.Kiloohms:
-                return super.truncateFractionDigits(this.Kiloohms, fractionalDigits) + ` kΩ`;
+                return super.truncateFractionDigits(this.Kiloohms, options as ToStringOptions) + ` kΩ`;
             case ElectricReactanceUnits.Megaohms:
-                return super.truncateFractionDigits(this.Megaohms, fractionalDigits) + ` MΩ`;
+                return super.truncateFractionDigits(this.Megaohms, options as ToStringOptions) + ` MΩ`;
             case ElectricReactanceUnits.Gigaohms:
-                return super.truncateFractionDigits(this.Gigaohms, fractionalDigits) + ` GΩ`;
+                return super.truncateFractionDigits(this.Gigaohms, options as ToStringOptions) + ` GΩ`;
             case ElectricReactanceUnits.Teraohms:
-                return super.truncateFractionDigits(this.Teraohms, fractionalDigits) + ` TΩ`;
+                return super.truncateFractionDigits(this.Teraohms, options as ToStringOptions) + ` TΩ`;
         default:
             break;
         }
