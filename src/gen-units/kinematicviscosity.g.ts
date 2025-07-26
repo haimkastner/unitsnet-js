@@ -296,7 +296,7 @@ export class KinematicViscosity extends BaseUnit {
             switch (toUnit) {
                 case KinematicViscosityUnits.SquareMetersPerSecond: return this.value;
                 case KinematicViscosityUnits.Stokes: return super.internalMultiply(this.value, 1e4);
-                case KinematicViscosityUnits.SquareFeetPerSecond: return super.internalMultiply(this.value, 10.7639);
+                case KinematicViscosityUnits.SquareFeetPerSecond: return super.internalDivide(this.value, 9.290304e-2);
                 case KinematicViscosityUnits.Nanostokes: {
                     const v3 = super.internalMultiply(this.value, 1e4);
                     return super.internalDivide(v3, 1e-9);
@@ -326,7 +326,7 @@ export class KinematicViscosity extends BaseUnit {
         switch (toUnit) {
             case KinematicViscosityUnits.SquareMetersPerSecond: return this.value;
             case KinematicViscosityUnits.Stokes: return this.value * 1e4;
-            case KinematicViscosityUnits.SquareFeetPerSecond: return this.value * 10.7639;
+            case KinematicViscosityUnits.SquareFeetPerSecond: return this.value / 9.290304e-2;
             case KinematicViscosityUnits.Nanostokes: return (this.value * 1e4) / 1e-9;
             case KinematicViscosityUnits.Microstokes: return (this.value * 1e4) / 0.000001;
             case KinematicViscosityUnits.Millistokes: return (this.value * 1e4) / 0.001;
@@ -342,7 +342,7 @@ export class KinematicViscosity extends BaseUnit {
             switch (fromUnit) {
                 case KinematicViscosityUnits.SquareMetersPerSecond: return value;
                 case KinematicViscosityUnits.Stokes: return super.internalDivide(value, 1e4);
-                case KinematicViscosityUnits.SquareFeetPerSecond: return super.internalDivide(value, 10.7639);
+                case KinematicViscosityUnits.SquareFeetPerSecond: return super.internalMultiply(value, 9.290304e-2);
                 case KinematicViscosityUnits.Nanostokes: {
                     const v3 = super.internalDivide(value, 1e4);
                     return super.internalMultiply(v3, 1e-9);
@@ -372,7 +372,7 @@ export class KinematicViscosity extends BaseUnit {
         switch (fromUnit) {
             case KinematicViscosityUnits.SquareMetersPerSecond: return value;
             case KinematicViscosityUnits.Stokes: return value / 1e4;
-            case KinematicViscosityUnits.SquareFeetPerSecond: return value / 10.7639;
+            case KinematicViscosityUnits.SquareFeetPerSecond: return value * 9.290304e-2;
             case KinematicViscosityUnits.Nanostokes: return (value / 1e4) * 1e-9;
             case KinematicViscosityUnits.Microstokes: return (value / 1e4) * 0.000001;
             case KinematicViscosityUnits.Millistokes: return (value / 1e4) * 0.001;

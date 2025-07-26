@@ -19,6 +19,8 @@ export enum DoseAreaProductUnits {
     /** */
     GraySquareMillimeters = "GraySquareMillimeter",
     /** */
+    GraySquareMicrometers = "GraySquareMicrometer",
+    /** */
     MicrograySquareMeters = "MicrograySquareMeter",
     /** */
     MilligraySquareMeters = "MilligraySquareMeter",
@@ -49,7 +51,15 @@ export enum DoseAreaProductUnits {
     /** */
     CentigraySquareMillimeters = "CentigraySquareMillimeter",
     /** */
-    DecigraySquareMillimeters = "DecigraySquareMillimeter"
+    DecigraySquareMillimeters = "DecigraySquareMillimeter",
+    /** */
+    MicrograySquareMicrometers = "MicrograySquareMicrometer",
+    /** */
+    MilligraySquareMicrometers = "MilligraySquareMicrometer",
+    /** */
+    CentigraySquareMicrometers = "CentigraySquareMicrometer",
+    /** */
+    DecigraySquareMicrometers = "DecigraySquareMicrometer"
 }
 
 /** It is defined as the absorbed dose multiplied by the area irradiated. */
@@ -59,6 +69,7 @@ export class DoseAreaProduct extends BaseUnit {
     private graysquaredecimetersLazy: number | null = null;
     private graysquarecentimetersLazy: number | null = null;
     private graysquaremillimetersLazy: number | null = null;
+    private graysquaremicrometersLazy: number | null = null;
     private micrograysquaremetersLazy: number | null = null;
     private milligraysquaremetersLazy: number | null = null;
     private centigraysquaremetersLazy: number | null = null;
@@ -75,6 +86,10 @@ export class DoseAreaProduct extends BaseUnit {
     private milligraysquaremillimetersLazy: number | null = null;
     private centigraysquaremillimetersLazy: number | null = null;
     private decigraysquaremillimetersLazy: number | null = null;
+    private micrograysquaremicrometersLazy: number | null = null;
+    private milligraysquaremicrometersLazy: number | null = null;
+    private centigraysquaremicrometersLazy: number | null = null;
+    private decigraysquaremicrometersLazy: number | null = null;
 
     /**
      * Create a new DoseAreaProduct.
@@ -134,6 +149,14 @@ export class DoseAreaProduct extends BaseUnit {
             return this.graysquaremillimetersLazy;
         }
         return this.graysquaremillimetersLazy = this.convertFromBase(DoseAreaProductUnits.GraySquareMillimeters);
+    }
+
+    /** */
+    public get GraySquareMicrometers(): number {
+        if(this.graysquaremicrometersLazy !== null){
+            return this.graysquaremicrometersLazy;
+        }
+        return this.graysquaremicrometersLazy = this.convertFromBase(DoseAreaProductUnits.GraySquareMicrometers);
     }
 
     /** */
@@ -264,6 +287,38 @@ export class DoseAreaProduct extends BaseUnit {
         return this.decigraysquaremillimetersLazy = this.convertFromBase(DoseAreaProductUnits.DecigraySquareMillimeters);
     }
 
+    /** */
+    public get MicrograySquareMicrometers(): number {
+        if(this.micrograysquaremicrometersLazy !== null){
+            return this.micrograysquaremicrometersLazy;
+        }
+        return this.micrograysquaremicrometersLazy = this.convertFromBase(DoseAreaProductUnits.MicrograySquareMicrometers);
+    }
+
+    /** */
+    public get MilligraySquareMicrometers(): number {
+        if(this.milligraysquaremicrometersLazy !== null){
+            return this.milligraysquaremicrometersLazy;
+        }
+        return this.milligraysquaremicrometersLazy = this.convertFromBase(DoseAreaProductUnits.MilligraySquareMicrometers);
+    }
+
+    /** */
+    public get CentigraySquareMicrometers(): number {
+        if(this.centigraysquaremicrometersLazy !== null){
+            return this.centigraysquaremicrometersLazy;
+        }
+        return this.centigraysquaremicrometersLazy = this.convertFromBase(DoseAreaProductUnits.CentigraySquareMicrometers);
+    }
+
+    /** */
+    public get DecigraySquareMicrometers(): number {
+        if(this.decigraysquaremicrometersLazy !== null){
+            return this.decigraysquaremicrometersLazy;
+        }
+        return this.decigraysquaremicrometersLazy = this.convertFromBase(DoseAreaProductUnits.DecigraySquareMicrometers);
+    }
+
     /**
      * Create a new DoseAreaProduct instance from a GraySquareMeters
      *
@@ -302,6 +357,16 @@ export class DoseAreaProduct extends BaseUnit {
      */
     public static FromGraySquareMillimeters(value: number): DoseAreaProduct {
         return new DoseAreaProduct(value, DoseAreaProductUnits.GraySquareMillimeters);
+    }
+
+    /**
+     * Create a new DoseAreaProduct instance from a GraySquareMicrometers
+     *
+     * @param value The unit as GraySquareMicrometers to create a new DoseAreaProduct from.
+     * @returns The new DoseAreaProduct instance.
+     */
+    public static FromGraySquareMicrometers(value: number): DoseAreaProduct {
+        return new DoseAreaProduct(value, DoseAreaProductUnits.GraySquareMicrometers);
     }
 
     /**
@@ -465,6 +530,46 @@ export class DoseAreaProduct extends BaseUnit {
     }
 
     /**
+     * Create a new DoseAreaProduct instance from a MicrograySquareMicrometers
+     *
+     * @param value The unit as MicrograySquareMicrometers to create a new DoseAreaProduct from.
+     * @returns The new DoseAreaProduct instance.
+     */
+    public static FromMicrograySquareMicrometers(value: number): DoseAreaProduct {
+        return new DoseAreaProduct(value, DoseAreaProductUnits.MicrograySquareMicrometers);
+    }
+
+    /**
+     * Create a new DoseAreaProduct instance from a MilligraySquareMicrometers
+     *
+     * @param value The unit as MilligraySquareMicrometers to create a new DoseAreaProduct from.
+     * @returns The new DoseAreaProduct instance.
+     */
+    public static FromMilligraySquareMicrometers(value: number): DoseAreaProduct {
+        return new DoseAreaProduct(value, DoseAreaProductUnits.MilligraySquareMicrometers);
+    }
+
+    /**
+     * Create a new DoseAreaProduct instance from a CentigraySquareMicrometers
+     *
+     * @param value The unit as CentigraySquareMicrometers to create a new DoseAreaProduct from.
+     * @returns The new DoseAreaProduct instance.
+     */
+    public static FromCentigraySquareMicrometers(value: number): DoseAreaProduct {
+        return new DoseAreaProduct(value, DoseAreaProductUnits.CentigraySquareMicrometers);
+    }
+
+    /**
+     * Create a new DoseAreaProduct instance from a DecigraySquareMicrometers
+     *
+     * @param value The unit as DecigraySquareMicrometers to create a new DoseAreaProduct from.
+     * @returns The new DoseAreaProduct instance.
+     */
+    public static FromDecigraySquareMicrometers(value: number): DoseAreaProduct {
+        return new DoseAreaProduct(value, DoseAreaProductUnits.DecigraySquareMicrometers);
+    }
+
+    /**
      * Gets the base unit enumeration associated with DoseAreaProduct
      * @returns The unit enumeration that can be used to interact with this type
      */
@@ -510,6 +615,7 @@ export class DoseAreaProduct extends BaseUnit {
             case DoseAreaProductUnits.GraySquareDecimeters: return this.GraySquareDecimeters;
             case DoseAreaProductUnits.GraySquareCentimeters: return this.GraySquareCentimeters;
             case DoseAreaProductUnits.GraySquareMillimeters: return this.GraySquareMillimeters;
+            case DoseAreaProductUnits.GraySquareMicrometers: return this.GraySquareMicrometers;
             case DoseAreaProductUnits.MicrograySquareMeters: return this.MicrograySquareMeters;
             case DoseAreaProductUnits.MilligraySquareMeters: return this.MilligraySquareMeters;
             case DoseAreaProductUnits.CentigraySquareMeters: return this.CentigraySquareMeters;
@@ -526,6 +632,10 @@ export class DoseAreaProduct extends BaseUnit {
             case DoseAreaProductUnits.MilligraySquareMillimeters: return this.MilligraySquareMillimeters;
             case DoseAreaProductUnits.CentigraySquareMillimeters: return this.CentigraySquareMillimeters;
             case DoseAreaProductUnits.DecigraySquareMillimeters: return this.DecigraySquareMillimeters;
+            case DoseAreaProductUnits.MicrograySquareMicrometers: return this.MicrograySquareMicrometers;
+            case DoseAreaProductUnits.MilligraySquareMicrometers: return this.MilligraySquareMicrometers;
+            case DoseAreaProductUnits.CentigraySquareMicrometers: return this.CentigraySquareMicrometers;
+            case DoseAreaProductUnits.DecigraySquareMicrometers: return this.DecigraySquareMicrometers;
 
             default:
                 break;
@@ -540,6 +650,7 @@ export class DoseAreaProduct extends BaseUnit {
                 case DoseAreaProductUnits.GraySquareDecimeters: return super.internalMultiply(this.value, 100);
                 case DoseAreaProductUnits.GraySquareCentimeters: return super.internalMultiply(this.value, 10000);
                 case DoseAreaProductUnits.GraySquareMillimeters: return super.internalMultiply(this.value, 1000000);
+                case DoseAreaProductUnits.GraySquareMicrometers: return super.internalMultiply(this.value, 1000000000000);
                 case DoseAreaProductUnits.MicrograySquareMeters: return super.internalDivide(this.value, 0.000001);
                 case DoseAreaProductUnits.MilligraySquareMeters: return super.internalDivide(this.value, 0.001);
                 case DoseAreaProductUnits.CentigraySquareMeters: return super.internalDivide(this.value, 0.01);
@@ -592,6 +703,22 @@ export class DoseAreaProduct extends BaseUnit {
                     const v3 = super.internalMultiply(this.value, 1000000);
                     return super.internalDivide(v3, 0.1);
                 }
+                case DoseAreaProductUnits.MicrograySquareMicrometers: {
+                    const v3 = super.internalMultiply(this.value, 1000000000000);
+                    return super.internalDivide(v3, 0.000001);
+                }
+                case DoseAreaProductUnits.MilligraySquareMicrometers: {
+                    const v3 = super.internalMultiply(this.value, 1000000000000);
+                    return super.internalDivide(v3, 0.001);
+                }
+                case DoseAreaProductUnits.CentigraySquareMicrometers: {
+                    const v3 = super.internalMultiply(this.value, 1000000000000);
+                    return super.internalDivide(v3, 0.01);
+                }
+                case DoseAreaProductUnits.DecigraySquareMicrometers: {
+                    const v3 = super.internalMultiply(this.value, 1000000000000);
+                    return super.internalDivide(v3, 0.1);
+                }
                 default: return Number.NaN;
             }
         switch (toUnit) {
@@ -599,6 +726,7 @@ export class DoseAreaProduct extends BaseUnit {
             case DoseAreaProductUnits.GraySquareDecimeters: return this.value * 100;
             case DoseAreaProductUnits.GraySquareCentimeters: return this.value * 10000;
             case DoseAreaProductUnits.GraySquareMillimeters: return this.value * 1000000;
+            case DoseAreaProductUnits.GraySquareMicrometers: return this.value * 1000000000000;
             case DoseAreaProductUnits.MicrograySquareMeters: return (this.value) / 0.000001;
             case DoseAreaProductUnits.MilligraySquareMeters: return (this.value) / 0.001;
             case DoseAreaProductUnits.CentigraySquareMeters: return (this.value) / 0.01;
@@ -615,6 +743,10 @@ export class DoseAreaProduct extends BaseUnit {
             case DoseAreaProductUnits.MilligraySquareMillimeters: return (this.value * 1000000) / 0.001;
             case DoseAreaProductUnits.CentigraySquareMillimeters: return (this.value * 1000000) / 0.01;
             case DoseAreaProductUnits.DecigraySquareMillimeters: return (this.value * 1000000) / 0.1;
+            case DoseAreaProductUnits.MicrograySquareMicrometers: return (this.value * 1000000000000) / 0.000001;
+            case DoseAreaProductUnits.MilligraySquareMicrometers: return (this.value * 1000000000000) / 0.001;
+            case DoseAreaProductUnits.CentigraySquareMicrometers: return (this.value * 1000000000000) / 0.01;
+            case DoseAreaProductUnits.DecigraySquareMicrometers: return (this.value * 1000000000000) / 0.1;
             default: return Number.NaN;
         }
     }
@@ -626,6 +758,7 @@ export class DoseAreaProduct extends BaseUnit {
                 case DoseAreaProductUnits.GraySquareDecimeters: return super.internalDivide(value, 100);
                 case DoseAreaProductUnits.GraySquareCentimeters: return super.internalDivide(value, 10000);
                 case DoseAreaProductUnits.GraySquareMillimeters: return super.internalDivide(value, 1000000);
+                case DoseAreaProductUnits.GraySquareMicrometers: return super.internalDivide(value, 1000000000000);
                 case DoseAreaProductUnits.MicrograySquareMeters: return super.internalMultiply(value, 0.000001);
                 case DoseAreaProductUnits.MilligraySquareMeters: return super.internalMultiply(value, 0.001);
                 case DoseAreaProductUnits.CentigraySquareMeters: return super.internalMultiply(value, 0.01);
@@ -678,6 +811,22 @@ export class DoseAreaProduct extends BaseUnit {
                     const v3 = super.internalDivide(value, 1000000);
                     return super.internalMultiply(v3, 0.1);
                 }
+                case DoseAreaProductUnits.MicrograySquareMicrometers: {
+                    const v3 = super.internalDivide(value, 1000000000000);
+                    return super.internalMultiply(v3, 0.000001);
+                }
+                case DoseAreaProductUnits.MilligraySquareMicrometers: {
+                    const v3 = super.internalDivide(value, 1000000000000);
+                    return super.internalMultiply(v3, 0.001);
+                }
+                case DoseAreaProductUnits.CentigraySquareMicrometers: {
+                    const v3 = super.internalDivide(value, 1000000000000);
+                    return super.internalMultiply(v3, 0.01);
+                }
+                case DoseAreaProductUnits.DecigraySquareMicrometers: {
+                    const v3 = super.internalDivide(value, 1000000000000);
+                    return super.internalMultiply(v3, 0.1);
+                }
                 default: return Number.NaN;
             }
         switch (fromUnit) {
@@ -685,6 +834,7 @@ export class DoseAreaProduct extends BaseUnit {
             case DoseAreaProductUnits.GraySquareDecimeters: return value / 100;
             case DoseAreaProductUnits.GraySquareCentimeters: return value / 10000;
             case DoseAreaProductUnits.GraySquareMillimeters: return value / 1000000;
+            case DoseAreaProductUnits.GraySquareMicrometers: return value / 1000000000000;
             case DoseAreaProductUnits.MicrograySquareMeters: return (value) * 0.000001;
             case DoseAreaProductUnits.MilligraySquareMeters: return (value) * 0.001;
             case DoseAreaProductUnits.CentigraySquareMeters: return (value) * 0.01;
@@ -701,6 +851,10 @@ export class DoseAreaProduct extends BaseUnit {
             case DoseAreaProductUnits.MilligraySquareMillimeters: return (value / 1000000) * 0.001;
             case DoseAreaProductUnits.CentigraySquareMillimeters: return (value / 1000000) * 0.01;
             case DoseAreaProductUnits.DecigraySquareMillimeters: return (value / 1000000) * 0.1;
+            case DoseAreaProductUnits.MicrograySquareMicrometers: return (value / 1000000000000) * 0.000001;
+            case DoseAreaProductUnits.MilligraySquareMicrometers: return (value / 1000000000000) * 0.001;
+            case DoseAreaProductUnits.CentigraySquareMicrometers: return (value / 1000000000000) * 0.01;
+            case DoseAreaProductUnits.DecigraySquareMicrometers: return (value / 1000000000000) * 0.1;
             default: return Number.NaN;
         }
     }
@@ -729,6 +883,8 @@ export class DoseAreaProduct extends BaseUnit {
                 return super.truncateFractionDigits(this.GraySquareCentimeters, options as ToStringOptions) + ` Gy·cm²`;
             case DoseAreaProductUnits.GraySquareMillimeters:
                 return super.truncateFractionDigits(this.GraySquareMillimeters, options as ToStringOptions) + ` Gy·mm²`;
+            case DoseAreaProductUnits.GraySquareMicrometers:
+                return super.truncateFractionDigits(this.GraySquareMicrometers, options as ToStringOptions) + ` Gy·μm²`;
             case DoseAreaProductUnits.MicrograySquareMeters:
                 return super.truncateFractionDigits(this.MicrograySquareMeters, options as ToStringOptions) + ` μGy·m²`;
             case DoseAreaProductUnits.MilligraySquareMeters:
@@ -761,6 +917,14 @@ export class DoseAreaProduct extends BaseUnit {
                 return super.truncateFractionDigits(this.CentigraySquareMillimeters, options as ToStringOptions) + ` cGy·mm²`;
             case DoseAreaProductUnits.DecigraySquareMillimeters:
                 return super.truncateFractionDigits(this.DecigraySquareMillimeters, options as ToStringOptions) + ` dGy·mm²`;
+            case DoseAreaProductUnits.MicrograySquareMicrometers:
+                return super.truncateFractionDigits(this.MicrograySquareMicrometers, options as ToStringOptions) + ` μGy·μm²`;
+            case DoseAreaProductUnits.MilligraySquareMicrometers:
+                return super.truncateFractionDigits(this.MilligraySquareMicrometers, options as ToStringOptions) + ` mGy·μm²`;
+            case DoseAreaProductUnits.CentigraySquareMicrometers:
+                return super.truncateFractionDigits(this.CentigraySquareMicrometers, options as ToStringOptions) + ` cGy·μm²`;
+            case DoseAreaProductUnits.DecigraySquareMicrometers:
+                return super.truncateFractionDigits(this.DecigraySquareMicrometers, options as ToStringOptions) + ` dGy·μm²`;
         default:
             break;
         }
@@ -786,6 +950,8 @@ export class DoseAreaProduct extends BaseUnit {
                 return `Gy·cm²`;
             case DoseAreaProductUnits.GraySquareMillimeters:
                 return `Gy·mm²`;
+            case DoseAreaProductUnits.GraySquareMicrometers:
+                return `Gy·μm²`;
             case DoseAreaProductUnits.MicrograySquareMeters:
                 return `μGy·m²`;
             case DoseAreaProductUnits.MilligraySquareMeters:
@@ -818,6 +984,14 @@ export class DoseAreaProduct extends BaseUnit {
                 return `cGy·mm²`;
             case DoseAreaProductUnits.DecigraySquareMillimeters:
                 return `dGy·mm²`;
+            case DoseAreaProductUnits.MicrograySquareMicrometers:
+                return `μGy·μm²`;
+            case DoseAreaProductUnits.MilligraySquareMicrometers:
+                return `mGy·μm²`;
+            case DoseAreaProductUnits.CentigraySquareMicrometers:
+                return `cGy·μm²`;
+            case DoseAreaProductUnits.DecigraySquareMicrometers:
+                return `dGy·μm²`;
         default:
             break;
         }

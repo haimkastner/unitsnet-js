@@ -298,18 +298,26 @@ export class VolumePerLength extends BaseUnit {
                 case VolumePerLengthUnits.LitersPerMeter: return super.internalMultiply(this.value, 1000);
                 case VolumePerLengthUnits.LitersPerKilometer: return super.internalMultiply(this.value, 1e6);
                 case VolumePerLengthUnits.LitersPerMillimeter: return this.value;
-                case VolumePerLengthUnits.OilBarrelsPerFoot: return super.internalMultiply(this.value, 1.91713408);
-                case VolumePerLengthUnits.CubicYardsPerFoot: return super.internalDivide(this.value, 2.50838208);
-                case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: return super.internalDivide(this.value, 2.50837706323584);
-                case VolumePerLengthUnits.UsGallonsPerMile: {
-                    const v5 = super.internalDivide(1609.344, 3.785411784);
-                    const v6 = super.internalMultiply(1000, v5);
+                case VolumePerLengthUnits.OilBarrelsPerFoot: {
+                    const v4 = super.internalDivide(0.3048, 0.158987294928);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case VolumePerLengthUnits.CubicYardsPerFoot: {
+                    const v4 = super.internalDivide(0.3048, 0.764554857984);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: {
+                    const v5 = super.internalMultiply(0.764554857984, 3937);
+                    const v6 = super.internalDivide(1200, v5);
                     return super.internalMultiply(this.value, v6);
                 }
+                case VolumePerLengthUnits.UsGallonsPerMile: {
+                    const v4 = super.internalDivide(1609.344, 0.003785411784);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case VolumePerLengthUnits.ImperialGallonsPerMile: {
-                    const v5 = super.internalDivide(1609.344, 4.54609);
-                    const v6 = super.internalMultiply(1000, v5);
-                    return super.internalMultiply(this.value, v6);
+                    const v4 = super.internalDivide(1609.344, 0.00454609);
+                    return super.internalMultiply(this.value, v4);
                 }
                 default: return Number.NaN;
             }
@@ -318,11 +326,11 @@ export class VolumePerLength extends BaseUnit {
             case VolumePerLengthUnits.LitersPerMeter: return this.value * 1000;
             case VolumePerLengthUnits.LitersPerKilometer: return this.value * 1e6;
             case VolumePerLengthUnits.LitersPerMillimeter: return this.value;
-            case VolumePerLengthUnits.OilBarrelsPerFoot: return this.value * 1.91713408;
-            case VolumePerLengthUnits.CubicYardsPerFoot: return this.value / 2.50838208;
-            case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: return this.value / 2.50837706323584;
-            case VolumePerLengthUnits.UsGallonsPerMile: return this.value * (1000 * 1609.344 / 3.785411784);
-            case VolumePerLengthUnits.ImperialGallonsPerMile: return this.value * (1000 * 1609.344 / 4.54609);
+            case VolumePerLengthUnits.OilBarrelsPerFoot: return this.value * 0.3048 / 0.158987294928;
+            case VolumePerLengthUnits.CubicYardsPerFoot: return this.value * 0.3048 / 0.764554857984;
+            case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: return this.value * 1200 / (0.764554857984 * 3937);
+            case VolumePerLengthUnits.UsGallonsPerMile: return this.value * 1609.344 / 0.003785411784;
+            case VolumePerLengthUnits.ImperialGallonsPerMile: return this.value * 1609.344 / 0.00454609;
             default: return Number.NaN;
         }
     }
@@ -334,18 +342,26 @@ export class VolumePerLength extends BaseUnit {
                 case VolumePerLengthUnits.LitersPerMeter: return super.internalDivide(value, 1000);
                 case VolumePerLengthUnits.LitersPerKilometer: return super.internalDivide(value, 1e6);
                 case VolumePerLengthUnits.LitersPerMillimeter: return value;
-                case VolumePerLengthUnits.OilBarrelsPerFoot: return super.internalDivide(value, 1.91713408);
-                case VolumePerLengthUnits.CubicYardsPerFoot: return super.internalMultiply(value, 2.50838208);
-                case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: return super.internalMultiply(value, 2.50837706323584);
+                case VolumePerLengthUnits.OilBarrelsPerFoot: {
+                    const v4 = super.internalDivide(0.158987294928, 0.3048);
+                    return super.internalMultiply(value, v4);
+                }
+                case VolumePerLengthUnits.CubicYardsPerFoot: {
+                    const v4 = super.internalDivide(0.764554857984, 0.3048);
+                    return super.internalMultiply(value, v4);
+                }
+                case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: {
+                    const v3 = super.internalMultiply(value, 0.764554857984);
+                    const v6 = super.internalDivide(3937, 1200);
+                    return super.internalMultiply(v3, v6);
+                }
                 case VolumePerLengthUnits.UsGallonsPerMile: {
-                    const v5 = super.internalDivide(1609.344, 3.785411784);
-                    const v6 = super.internalMultiply(1000, v5);
-                    return super.internalDivide(value, v6);
+                    const v4 = super.internalDivide(0.003785411784, 1609.344);
+                    return super.internalMultiply(value, v4);
                 }
                 case VolumePerLengthUnits.ImperialGallonsPerMile: {
-                    const v5 = super.internalDivide(1609.344, 4.54609);
-                    const v6 = super.internalMultiply(1000, v5);
-                    return super.internalDivide(value, v6);
+                    const v4 = super.internalDivide(0.00454609, 1609.344);
+                    return super.internalMultiply(value, v4);
                 }
                 default: return Number.NaN;
             }
@@ -354,11 +370,11 @@ export class VolumePerLength extends BaseUnit {
             case VolumePerLengthUnits.LitersPerMeter: return value / 1000;
             case VolumePerLengthUnits.LitersPerKilometer: return value / 1e6;
             case VolumePerLengthUnits.LitersPerMillimeter: return value;
-            case VolumePerLengthUnits.OilBarrelsPerFoot: return value / 1.91713408;
-            case VolumePerLengthUnits.CubicYardsPerFoot: return value * 2.50838208;
-            case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: return value * 2.50837706323584;
-            case VolumePerLengthUnits.UsGallonsPerMile: return value / (1000 * 1609.344 / 3.785411784);
-            case VolumePerLengthUnits.ImperialGallonsPerMile: return value / (1000 * 1609.344 / 4.54609);
+            case VolumePerLengthUnits.OilBarrelsPerFoot: return value * 0.158987294928 / 0.3048;
+            case VolumePerLengthUnits.CubicYardsPerFoot: return value * 0.764554857984 / 0.3048;
+            case VolumePerLengthUnits.CubicYardsPerUsSurveyFoot: return value * 0.764554857984 * 3937 / 1200;
+            case VolumePerLengthUnits.UsGallonsPerMile: return value * 0.003785411784 / 1609.344;
+            case VolumePerLengthUnits.ImperialGallonsPerMile: return value * 0.00454609 / 1609.344;
             default: return Number.NaN;
         }
     }

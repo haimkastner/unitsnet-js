@@ -17,24 +17,24 @@ export enum FuelEfficiencyUnits {
     /** */
     MilesPerUkGallon = "MilePerUkGallon",
     /** */
-    KilometersPerLiters = "KilometerPerLiter"
+    KilometersPerLiter = "KilometerPerLiter"
 }
 
-/** Fuel efficiency is a form of thermal efficiency, meaning the ratio from effort to result of a process that converts chemical potential energy contained in a carrier (fuel) into kinetic energy or work. Fuel economy is stated as "fuel consumption" in liters per 100 kilometers (L/100 km). In countries using non-metric system, fuel economy is expressed in miles per gallon (mpg) (imperial galon or US galon). */
+/** In the context of transport, fuel economy is the energy efficiency of a particular vehicle, given as a ratio of distance traveled per unit of fuel consumed. In most countries, using the metric system, fuel economy is stated as "fuel consumption" in liters per 100 kilometers (L/100 km) or kilometers per liter (km/L or kmpl). In countries using non-metric system, fuel economy is expressed in miles per gallon (mpg) (imperial galon or US galon). */
 export class FuelEfficiency extends BaseUnit {
     protected value: number;
     private litersper100kilometersLazy: number | null = null;
     private milesperusgallonLazy: number | null = null;
     private milesperukgallonLazy: number | null = null;
-    private kilometersperlitersLazy: number | null = null;
+    private kilometersperliterLazy: number | null = null;
 
     /**
      * Create a new FuelEfficiency.
      * @param value The value.
      * @param fromUnit The ‘FuelEfficiency’ unit to create from.
-     * The default unit is LitersPer100Kilometers
+     * The default unit is KilometersPerLiter
      */
-    public constructor(value: number, fromUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers) {
+    public constructor(value: number, fromUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.KilometersPerLiter) {
 
         super();
         if (value === undefined || value === null || Number.isNaN(value)) {
@@ -44,7 +44,7 @@ export class FuelEfficiency extends BaseUnit {
     }
 
     /**
-     * The base value of FuelEfficiency is LitersPer100Kilometers.
+     * The base value of FuelEfficiency is KilometersPerLiter.
      * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
@@ -52,8 +52,8 @@ export class FuelEfficiency extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get baseUnit(): FuelEfficiencyUnits.LitersPer100Kilometers {
-        return FuelEfficiencyUnits.LitersPer100Kilometers
+    protected get baseUnit(): FuelEfficiencyUnits.KilometersPerLiter {
+        return FuelEfficiencyUnits.KilometersPerLiter
     }
 
     /** */
@@ -81,11 +81,11 @@ export class FuelEfficiency extends BaseUnit {
     }
 
     /** */
-    public get KilometersPerLiters(): number {
-        if(this.kilometersperlitersLazy !== null){
-            return this.kilometersperlitersLazy;
+    public get KilometersPerLiter(): number {
+        if(this.kilometersperliterLazy !== null){
+            return this.kilometersperliterLazy;
         }
-        return this.kilometersperlitersLazy = this.convertFromBase(FuelEfficiencyUnits.KilometersPerLiters);
+        return this.kilometersperliterLazy = this.convertFromBase(FuelEfficiencyUnits.KilometersPerLiter);
     }
 
     /**
@@ -119,13 +119,13 @@ export class FuelEfficiency extends BaseUnit {
     }
 
     /**
-     * Create a new FuelEfficiency instance from a KilometersPerLiters
+     * Create a new FuelEfficiency instance from a KilometersPerLiter
      *
-     * @param value The unit as KilometersPerLiters to create a new FuelEfficiency from.
+     * @param value The unit as KilometersPerLiter to create a new FuelEfficiency from.
      * @returns The new FuelEfficiency instance.
      */
-    public static FromKilometersPerLiters(value: number): FuelEfficiency {
-        return new FuelEfficiency(value, FuelEfficiencyUnits.KilometersPerLiters);
+    public static FromKilometersPerLiter(value: number): FuelEfficiency {
+        return new FuelEfficiency(value, FuelEfficiencyUnits.KilometersPerLiter);
     }
 
     /**
@@ -140,15 +140,15 @@ export class FuelEfficiency extends BaseUnit {
      * Gets the default unit used when creating instances of the unit or its DTO
      * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
      */
-    protected static getBaseUnit(): FuelEfficiencyUnits.LitersPer100Kilometers {
-        return FuelEfficiencyUnits.LitersPer100Kilometers;
+    protected static getBaseUnit(): FuelEfficiencyUnits.KilometersPerLiter {
+        return FuelEfficiencyUnits.KilometersPerLiter;
     }
 
     /**
      * Create API DTO represent a FuelEfficiency unit.
      * @param holdInUnit The specific FuelEfficiency unit to be used in the unit representation at the DTO
      */
-    public toDto(holdInUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers): FuelEfficiencyDto {
+    public toDto(holdInUnit: FuelEfficiencyUnits = FuelEfficiencyUnits.KilometersPerLiter): FuelEfficiencyDto {
         return {
             value: this.convert(holdInUnit),
             unit: holdInUnit
@@ -173,7 +173,7 @@ export class FuelEfficiency extends BaseUnit {
             case FuelEfficiencyUnits.LitersPer100Kilometers: return this.LitersPer100Kilometers;
             case FuelEfficiencyUnits.MilesPerUsGallon: return this.MilesPerUsGallon;
             case FuelEfficiencyUnits.MilesPerUkGallon: return this.MilesPerUkGallon;
-            case FuelEfficiencyUnits.KilometersPerLiters: return this.KilometersPerLiters;
+            case FuelEfficiencyUnits.KilometersPerLiter: return this.KilometersPerLiter;
 
             default:
                 break;
@@ -184,25 +184,23 @@ export class FuelEfficiency extends BaseUnit {
     private convertFromBase(toUnit: FuelEfficiencyUnits): number {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
-                case FuelEfficiencyUnits.LitersPer100Kilometers: return this.value;
+                case FuelEfficiencyUnits.LitersPer100Kilometers: return super.internalDivide(100, this.value);
                 case FuelEfficiencyUnits.MilesPerUsGallon: {
-                    const v3 = super.internalMultiply(100, 3.785411784);
-                    const v6 = super.internalMultiply(1.609344, this.value);
-                    return super.internalDivide(v3, v6);
+                    const v4 = super.internalDivide(3.785411784, 1.609344);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case FuelEfficiencyUnits.MilesPerUkGallon: {
-                    const v3 = super.internalMultiply(100, 4.54609188);
-                    const v6 = super.internalMultiply(1.609344, this.value);
-                    return super.internalDivide(v3, v6);
+                    const v4 = super.internalDivide(4.54609, 1.609344);
+                    return super.internalMultiply(this.value, v4);
                 }
-                case FuelEfficiencyUnits.KilometersPerLiters: return super.internalDivide(100, this.value);
+                case FuelEfficiencyUnits.KilometersPerLiter: return this.value;
                 default: return Number.NaN;
             }
         switch (toUnit) {
-            case FuelEfficiencyUnits.LitersPer100Kilometers: return this.value;
-            case FuelEfficiencyUnits.MilesPerUsGallon: return (100 * 3.785411784) / (1.609344 * this.value);
-            case FuelEfficiencyUnits.MilesPerUkGallon: return (100 * 4.54609188) / (1.609344 * this.value);
-            case FuelEfficiencyUnits.KilometersPerLiters: return 100 / this.value;
+            case FuelEfficiencyUnits.LitersPer100Kilometers: return 100 / this.value;
+            case FuelEfficiencyUnits.MilesPerUsGallon: return this.value * 3.785411784 / 1.609344;
+            case FuelEfficiencyUnits.MilesPerUkGallon: return this.value * 4.54609 / 1.609344;
+            case FuelEfficiencyUnits.KilometersPerLiter: return this.value;
             default: return Number.NaN;
         }
     }
@@ -210,38 +208,36 @@ export class FuelEfficiency extends BaseUnit {
     private convertToBase(value: number, fromUnit: FuelEfficiencyUnits): number {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
-                case FuelEfficiencyUnits.LitersPer100Kilometers: return value;
+                case FuelEfficiencyUnits.LitersPer100Kilometers: return super.internalDivide(100, value);
                 case FuelEfficiencyUnits.MilesPerUsGallon: {
-                    const v3 = super.internalMultiply(100, 3.785411784);
-                    const v6 = super.internalMultiply(1.609344, value);
-                    return super.internalDivide(v3, v6);
+                    const v4 = super.internalDivide(1.609344, 3.785411784);
+                    return super.internalMultiply(value, v4);
                 }
                 case FuelEfficiencyUnits.MilesPerUkGallon: {
-                    const v3 = super.internalMultiply(100, 4.54609188);
-                    const v6 = super.internalMultiply(1.609344, value);
-                    return super.internalDivide(v3, v6);
+                    const v4 = super.internalDivide(1.609344, 4.54609);
+                    return super.internalMultiply(value, v4);
                 }
-                case FuelEfficiencyUnits.KilometersPerLiters: return super.internalDivide(100, value);
+                case FuelEfficiencyUnits.KilometersPerLiter: return value;
                 default: return Number.NaN;
             }
         switch (fromUnit) {
-            case FuelEfficiencyUnits.LitersPer100Kilometers: return value;
-            case FuelEfficiencyUnits.MilesPerUsGallon: return (100 * 3.785411784) / (1.609344 * value);
-            case FuelEfficiencyUnits.MilesPerUkGallon: return (100 * 4.54609188) / (1.609344 * value);
-            case FuelEfficiencyUnits.KilometersPerLiters: return 100 / value;
+            case FuelEfficiencyUnits.LitersPer100Kilometers: return 100 / value;
+            case FuelEfficiencyUnits.MilesPerUsGallon: return value * 1.609344 / 3.785411784;
+            case FuelEfficiencyUnits.MilesPerUkGallon: return value * 1.609344 / 4.54609;
+            case FuelEfficiencyUnits.KilometersPerLiter: return value;
             default: return Number.NaN;
         }
     }
 
     /**
      * Format the FuelEfficiency to string.
-     * Note! the default format for FuelEfficiency is LitersPer100Kilometers.
+     * Note! the default format for FuelEfficiency is KilometersPerLiter.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the FuelEfficiency.
      * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the FuelEfficiency.
      */
-    public toString(unit: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers, options?: number | ToStringOptions): string {
+    public toString(unit: FuelEfficiencyUnits = FuelEfficiencyUnits.KilometersPerLiter, options?: number | ToStringOptions): string {
 
         if (typeof options === 'number') {
             console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
@@ -250,13 +246,13 @@ export class FuelEfficiency extends BaseUnit {
         switch (unit) {
             
             case FuelEfficiencyUnits.LitersPer100Kilometers:
-                return super.truncateFractionDigits(this.LitersPer100Kilometers, options as ToStringOptions) + ` L/100km`;
+                return super.truncateFractionDigits(this.LitersPer100Kilometers, options as ToStringOptions) + ` l/100km`;
             case FuelEfficiencyUnits.MilesPerUsGallon:
                 return super.truncateFractionDigits(this.MilesPerUsGallon, options as ToStringOptions) + ` mpg (U.S.)`;
             case FuelEfficiencyUnits.MilesPerUkGallon:
                 return super.truncateFractionDigits(this.MilesPerUkGallon, options as ToStringOptions) + ` mpg (imp.)`;
-            case FuelEfficiencyUnits.KilometersPerLiters:
-                return super.truncateFractionDigits(this.KilometersPerLiters, options as ToStringOptions) + ` km/L`;
+            case FuelEfficiencyUnits.KilometersPerLiter:
+                return super.truncateFractionDigits(this.KilometersPerLiter, options as ToStringOptions) + ` km/l`;
         default:
             break;
         }
@@ -265,23 +261,23 @@ export class FuelEfficiency extends BaseUnit {
 
     /**
      * Get FuelEfficiency unit abbreviation.
-     * Note! the default abbreviation for FuelEfficiency is LitersPer100Kilometers.
+     * Note! the default abbreviation for FuelEfficiency is KilometersPerLiter.
      * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
      * @param unitAbbreviation The unit abbreviation of the FuelEfficiency.
      * @returns The abbreviation string of FuelEfficiency.
      */
-    public getUnitAbbreviation(unitAbbreviation: FuelEfficiencyUnits = FuelEfficiencyUnits.LitersPer100Kilometers): string {
+    public getUnitAbbreviation(unitAbbreviation: FuelEfficiencyUnits = FuelEfficiencyUnits.KilometersPerLiter): string {
 
         switch (unitAbbreviation) {
             
             case FuelEfficiencyUnits.LitersPer100Kilometers:
-                return `L/100km`;
+                return `l/100km`;
             case FuelEfficiencyUnits.MilesPerUsGallon:
                 return `mpg (U.S.)`;
             case FuelEfficiencyUnits.MilesPerUkGallon:
                 return `mpg (imp.)`;
-            case FuelEfficiencyUnits.KilometersPerLiters:
-                return `km/L`;
+            case FuelEfficiencyUnits.KilometersPerLiter:
+                return `km/l`;
         default:
             break;
         }

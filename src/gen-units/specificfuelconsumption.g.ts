@@ -15,9 +15,9 @@ export enum SpecificFuelConsumptionUnits {
     /** */
     KilogramsPerKilogramForceHour = "KilogramPerKilogramForceHour",
     /** */
-    GramsPerKiloNewtonSecond = "GramPerKiloNewtonSecond",
+    GramsPerKilonewtonSecond = "GramPerKilonewtonSecond",
     /** */
-    KilogramsPerKiloNewtonSecond = "KilogramPerKiloNewtonSecond"
+    KilogramsPerKilonewtonSecond = "KilogramPerKilonewtonSecond"
 }
 
 /** SFC is the fuel efficiency of an engine design with respect to thrust output */
@@ -32,9 +32,9 @@ export class SpecificFuelConsumption extends BaseUnit {
      * Create a new SpecificFuelConsumption.
      * @param value The value.
      * @param fromUnit The ‘SpecificFuelConsumption’ unit to create from.
-     * The default unit is GramsPerKiloNewtonSecond
+     * The default unit is GramsPerKilonewtonSecond
      */
-    public constructor(value: number, fromUnit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond) {
+    public constructor(value: number, fromUnit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond) {
 
         super();
         if (value === undefined || value === null || Number.isNaN(value)) {
@@ -44,7 +44,7 @@ export class SpecificFuelConsumption extends BaseUnit {
     }
 
     /**
-     * The base value of SpecificFuelConsumption is GramsPerKiloNewtonSecond.
+     * The base value of SpecificFuelConsumption is GramsPerKilonewtonSecond.
      * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
@@ -52,8 +52,8 @@ export class SpecificFuelConsumption extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get baseUnit(): SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond {
-        return SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond
+    protected get baseUnit(): SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond {
+        return SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond
     }
 
     /** */
@@ -73,19 +73,19 @@ export class SpecificFuelConsumption extends BaseUnit {
     }
 
     /** */
-    public get GramsPerKiloNewtonSecond(): number {
+    public get GramsPerKilonewtonSecond(): number {
         if(this.gramsperkilonewtonsecondLazy !== null){
             return this.gramsperkilonewtonsecondLazy;
         }
-        return this.gramsperkilonewtonsecondLazy = this.convertFromBase(SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond);
+        return this.gramsperkilonewtonsecondLazy = this.convertFromBase(SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond);
     }
 
     /** */
-    public get KilogramsPerKiloNewtonSecond(): number {
+    public get KilogramsPerKilonewtonSecond(): number {
         if(this.kilogramsperkilonewtonsecondLazy !== null){
             return this.kilogramsperkilonewtonsecondLazy;
         }
-        return this.kilogramsperkilonewtonsecondLazy = this.convertFromBase(SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond);
+        return this.kilogramsperkilonewtonsecondLazy = this.convertFromBase(SpecificFuelConsumptionUnits.KilogramsPerKilonewtonSecond);
     }
 
     /**
@@ -109,23 +109,23 @@ export class SpecificFuelConsumption extends BaseUnit {
     }
 
     /**
-     * Create a new SpecificFuelConsumption instance from a GramsPerKiloNewtonSecond
+     * Create a new SpecificFuelConsumption instance from a GramsPerKilonewtonSecond
      *
-     * @param value The unit as GramsPerKiloNewtonSecond to create a new SpecificFuelConsumption from.
+     * @param value The unit as GramsPerKilonewtonSecond to create a new SpecificFuelConsumption from.
      * @returns The new SpecificFuelConsumption instance.
      */
-    public static FromGramsPerKiloNewtonSecond(value: number): SpecificFuelConsumption {
-        return new SpecificFuelConsumption(value, SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond);
+    public static FromGramsPerKilonewtonSecond(value: number): SpecificFuelConsumption {
+        return new SpecificFuelConsumption(value, SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond);
     }
 
     /**
-     * Create a new SpecificFuelConsumption instance from a KilogramsPerKiloNewtonSecond
+     * Create a new SpecificFuelConsumption instance from a KilogramsPerKilonewtonSecond
      *
-     * @param value The unit as KilogramsPerKiloNewtonSecond to create a new SpecificFuelConsumption from.
+     * @param value The unit as KilogramsPerKilonewtonSecond to create a new SpecificFuelConsumption from.
      * @returns The new SpecificFuelConsumption instance.
      */
-    public static FromKilogramsPerKiloNewtonSecond(value: number): SpecificFuelConsumption {
-        return new SpecificFuelConsumption(value, SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond);
+    public static FromKilogramsPerKilonewtonSecond(value: number): SpecificFuelConsumption {
+        return new SpecificFuelConsumption(value, SpecificFuelConsumptionUnits.KilogramsPerKilonewtonSecond);
     }
 
     /**
@@ -140,15 +140,15 @@ export class SpecificFuelConsumption extends BaseUnit {
      * Gets the default unit used when creating instances of the unit or its DTO
      * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
      */
-    protected static getBaseUnit(): SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond {
-        return SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond;
+    protected static getBaseUnit(): SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond {
+        return SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond;
     }
 
     /**
      * Create API DTO represent a SpecificFuelConsumption unit.
      * @param holdInUnit The specific SpecificFuelConsumption unit to be used in the unit representation at the DTO
      */
-    public toDto(holdInUnit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond): SpecificFuelConsumptionDto {
+    public toDto(holdInUnit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond): SpecificFuelConsumptionDto {
         return {
             value: this.convert(holdInUnit),
             unit: holdInUnit
@@ -172,8 +172,8 @@ export class SpecificFuelConsumption extends BaseUnit {
         switch (toUnit) {
             case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return this.PoundsMassPerPoundForceHour;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return this.KilogramsPerKilogramForceHour;
-            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return this.GramsPerKiloNewtonSecond;
-            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return this.KilogramsPerKiloNewtonSecond;
+            case SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond: return this.GramsPerKilonewtonSecond;
+            case SpecificFuelConsumptionUnits.KilogramsPerKilonewtonSecond: return this.KilogramsPerKilonewtonSecond;
 
             default:
                 break;
@@ -184,17 +184,25 @@ export class SpecificFuelConsumption extends BaseUnit {
     private convertFromBase(toUnit: SpecificFuelConsumptionUnits): number {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
-                case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return super.internalDivide(this.value, 28.33);
-                case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return super.internalDivide(this.value, 28.33);
-                case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return this.value;
-                case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return super.internalDivide(this.value, 1000);
+                case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: {
+                    const v3 = super.internalMultiply(this.value, 9.80665e-3);
+                    const v6 = super.internalDivide(3600, 1000);
+                    return super.internalMultiply(v3, v6);
+                }
+                case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: {
+                    const v3 = super.internalMultiply(this.value, 9.80665e-3);
+                    const v6 = super.internalDivide(3600, 1000);
+                    return super.internalMultiply(v3, v6);
+                }
+                case SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond: return this.value;
+                case SpecificFuelConsumptionUnits.KilogramsPerKilonewtonSecond: return super.internalDivide(this.value, 1000);
                 default: return Number.NaN;
             }
         switch (toUnit) {
-            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return this.value / 28.33;
-            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return this.value / 28.33;
-            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return this.value;
-            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return (this.value) / 1000;
+            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return this.value * 9.80665e-3 * 3600 / 1000;
+            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return this.value * 9.80665e-3 * 3600 / 1000;
+            case SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond: return this.value;
+            case SpecificFuelConsumptionUnits.KilogramsPerKilonewtonSecond: return (this.value) / 1000;
             default: return Number.NaN;
         }
     }
@@ -202,30 +210,38 @@ export class SpecificFuelConsumption extends BaseUnit {
     private convertToBase(value: number, fromUnit: SpecificFuelConsumptionUnits): number {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
-                case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return super.internalMultiply(value, 28.33);
-                case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return super.internalMultiply(value, 28.33);
-                case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return value;
-                case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return super.internalMultiply(value, 1000);
+                case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: {
+                    const v5 = super.internalMultiply(9.80665e-3, 3600);
+                    const v6 = super.internalDivide(1000, v5);
+                    return super.internalMultiply(value, v6);
+                }
+                case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: {
+                    const v5 = super.internalMultiply(9.80665e-3, 3600);
+                    const v6 = super.internalDivide(1000, v5);
+                    return super.internalMultiply(value, v6);
+                }
+                case SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond: return value;
+                case SpecificFuelConsumptionUnits.KilogramsPerKilonewtonSecond: return super.internalMultiply(value, 1000);
                 default: return Number.NaN;
             }
         switch (fromUnit) {
-            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return value * 28.33;
-            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return value * 28.33;
-            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond: return value;
-            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond: return (value) * 1000;
+            case SpecificFuelConsumptionUnits.PoundsMassPerPoundForceHour: return value * 1000 / (9.80665e-3 * 3600);
+            case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour: return value * 1000 / (9.80665e-3 * 3600);
+            case SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond: return value;
+            case SpecificFuelConsumptionUnits.KilogramsPerKilonewtonSecond: return (value) * 1000;
             default: return Number.NaN;
         }
     }
 
     /**
      * Format the SpecificFuelConsumption to string.
-     * Note! the default format for SpecificFuelConsumption is GramsPerKiloNewtonSecond.
+     * Note! the default format for SpecificFuelConsumption is GramsPerKilonewtonSecond.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the SpecificFuelConsumption.
      * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the SpecificFuelConsumption.
      */
-    public toString(unit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond, options?: number | ToStringOptions): string {
+    public toString(unit: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond, options?: number | ToStringOptions): string {
 
         if (typeof options === 'number') {
             console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
@@ -237,10 +253,10 @@ export class SpecificFuelConsumption extends BaseUnit {
                 return super.truncateFractionDigits(this.PoundsMassPerPoundForceHour, options as ToStringOptions) + ` lb/(lbf·h)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
                 return super.truncateFractionDigits(this.KilogramsPerKilogramForceHour, options as ToStringOptions) + ` kg/(kgf·h)`;
-            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
-                return super.truncateFractionDigits(this.GramsPerKiloNewtonSecond, options as ToStringOptions) + ` g/(kN·s)`;
-            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
-                return super.truncateFractionDigits(this.KilogramsPerKiloNewtonSecond, options as ToStringOptions) + ` kg/(kN·s)`;
+            case SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond:
+                return super.truncateFractionDigits(this.GramsPerKilonewtonSecond, options as ToStringOptions) + ` g/(kN·s)`;
+            case SpecificFuelConsumptionUnits.KilogramsPerKilonewtonSecond:
+                return super.truncateFractionDigits(this.KilogramsPerKilonewtonSecond, options as ToStringOptions) + ` kg/(kN·s)`;
         default:
             break;
         }
@@ -249,12 +265,12 @@ export class SpecificFuelConsumption extends BaseUnit {
 
     /**
      * Get SpecificFuelConsumption unit abbreviation.
-     * Note! the default abbreviation for SpecificFuelConsumption is GramsPerKiloNewtonSecond.
+     * Note! the default abbreviation for SpecificFuelConsumption is GramsPerKilonewtonSecond.
      * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
      * @param unitAbbreviation The unit abbreviation of the SpecificFuelConsumption.
      * @returns The abbreviation string of SpecificFuelConsumption.
      */
-    public getUnitAbbreviation(unitAbbreviation: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond): string {
+    public getUnitAbbreviation(unitAbbreviation: SpecificFuelConsumptionUnits = SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond): string {
 
         switch (unitAbbreviation) {
             
@@ -262,9 +278,9 @@ export class SpecificFuelConsumption extends BaseUnit {
                 return `lb/(lbf·h)`;
             case SpecificFuelConsumptionUnits.KilogramsPerKilogramForceHour:
                 return `kg/(kgf·h)`;
-            case SpecificFuelConsumptionUnits.GramsPerKiloNewtonSecond:
+            case SpecificFuelConsumptionUnits.GramsPerKilonewtonSecond:
                 return `g/(kN·s)`;
-            case SpecificFuelConsumptionUnits.KilogramsPerKiloNewtonSecond:
+            case SpecificFuelConsumptionUnits.KilogramsPerKilonewtonSecond:
                 return `kg/(kN·s)`;
         default:
             break;

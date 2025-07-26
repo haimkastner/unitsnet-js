@@ -340,7 +340,11 @@ export class Molarity extends BaseUnit {
             switch (toUnit) {
                 case MolarityUnits.MolesPerCubicMeter: return this.value;
                 case MolarityUnits.MolesPerLiter: return super.internalMultiply(this.value, 1e-3);
-                case MolarityUnits.PoundMolesPerCubicFoot: return super.internalMultiply(this.value, 6.2427960576144611956325455827221e-5);
+                case MolarityUnits.PoundMolesPerCubicFoot: {
+                    const v5 = super.internalDivide(0.45359237, 0.028316846592);
+                    const v6 = super.internalMultiply(1000, v5);
+                    return super.internalDivide(this.value, v6);
+                }
                 case MolarityUnits.KilomolesPerCubicMeter: return super.internalDivide(this.value, 1000);
                 case MolarityUnits.FemtomolesPerLiter: {
                     const v3 = super.internalMultiply(this.value, 1e-3);
@@ -375,7 +379,7 @@ export class Molarity extends BaseUnit {
         switch (toUnit) {
             case MolarityUnits.MolesPerCubicMeter: return this.value;
             case MolarityUnits.MolesPerLiter: return this.value * 1e-3;
-            case MolarityUnits.PoundMolesPerCubicFoot: return this.value * 6.2427960576144611956325455827221e-5;
+            case MolarityUnits.PoundMolesPerCubicFoot: return this.value / (1000 * 0.45359237 / 0.028316846592);
             case MolarityUnits.KilomolesPerCubicMeter: return (this.value) / 1000;
             case MolarityUnits.FemtomolesPerLiter: return (this.value * 1e-3) / 1e-15;
             case MolarityUnits.PicomolesPerLiter: return (this.value * 1e-3) / 1e-12;
@@ -393,7 +397,11 @@ export class Molarity extends BaseUnit {
             switch (fromUnit) {
                 case MolarityUnits.MolesPerCubicMeter: return value;
                 case MolarityUnits.MolesPerLiter: return super.internalDivide(value, 1e-3);
-                case MolarityUnits.PoundMolesPerCubicFoot: return super.internalDivide(value, 6.2427960576144611956325455827221e-5);
+                case MolarityUnits.PoundMolesPerCubicFoot: {
+                    const v3 = super.internalMultiply(value, 1000);
+                    const v6 = super.internalDivide(0.45359237, 0.028316846592);
+                    return super.internalMultiply(v3, v6);
+                }
                 case MolarityUnits.KilomolesPerCubicMeter: return super.internalMultiply(value, 1000);
                 case MolarityUnits.FemtomolesPerLiter: {
                     const v3 = super.internalDivide(value, 1e-3);
@@ -428,7 +436,7 @@ export class Molarity extends BaseUnit {
         switch (fromUnit) {
             case MolarityUnits.MolesPerCubicMeter: return value;
             case MolarityUnits.MolesPerLiter: return value / 1e-3;
-            case MolarityUnits.PoundMolesPerCubicFoot: return value / 6.2427960576144611956325455827221e-5;
+            case MolarityUnits.PoundMolesPerCubicFoot: return value * 1000 * 0.45359237 / 0.028316846592;
             case MolarityUnits.KilomolesPerCubicMeter: return (value) * 1000;
             case MolarityUnits.FemtomolesPerLiter: return (value / 1e-3) * 1e-15;
             case MolarityUnits.PicomolesPerLiter: return (value / 1e-3) * 1e-12;
@@ -460,25 +468,25 @@ export class Molarity extends BaseUnit {
             case MolarityUnits.MolesPerCubicMeter:
                 return super.truncateFractionDigits(this.MolesPerCubicMeter, options as ToStringOptions) + ` mol/m³`;
             case MolarityUnits.MolesPerLiter:
-                return super.truncateFractionDigits(this.MolesPerLiter, options as ToStringOptions) + ` mol/L`;
+                return super.truncateFractionDigits(this.MolesPerLiter, options as ToStringOptions) + ` mol/l`;
             case MolarityUnits.PoundMolesPerCubicFoot:
                 return super.truncateFractionDigits(this.PoundMolesPerCubicFoot, options as ToStringOptions) + ` lbmol/ft³`;
             case MolarityUnits.KilomolesPerCubicMeter:
                 return super.truncateFractionDigits(this.KilomolesPerCubicMeter, options as ToStringOptions) + ` kmol/m³`;
             case MolarityUnits.FemtomolesPerLiter:
-                return super.truncateFractionDigits(this.FemtomolesPerLiter, options as ToStringOptions) + ` fmol/L`;
+                return super.truncateFractionDigits(this.FemtomolesPerLiter, options as ToStringOptions) + ` fmol/l`;
             case MolarityUnits.PicomolesPerLiter:
-                return super.truncateFractionDigits(this.PicomolesPerLiter, options as ToStringOptions) + ` pmol/L`;
+                return super.truncateFractionDigits(this.PicomolesPerLiter, options as ToStringOptions) + ` pmol/l`;
             case MolarityUnits.NanomolesPerLiter:
-                return super.truncateFractionDigits(this.NanomolesPerLiter, options as ToStringOptions) + ` nmol/L`;
+                return super.truncateFractionDigits(this.NanomolesPerLiter, options as ToStringOptions) + ` nmol/l`;
             case MolarityUnits.MicromolesPerLiter:
-                return super.truncateFractionDigits(this.MicromolesPerLiter, options as ToStringOptions) + ` μmol/L`;
+                return super.truncateFractionDigits(this.MicromolesPerLiter, options as ToStringOptions) + ` μmol/l`;
             case MolarityUnits.MillimolesPerLiter:
-                return super.truncateFractionDigits(this.MillimolesPerLiter, options as ToStringOptions) + ` mmol/L`;
+                return super.truncateFractionDigits(this.MillimolesPerLiter, options as ToStringOptions) + ` mmol/l`;
             case MolarityUnits.CentimolesPerLiter:
-                return super.truncateFractionDigits(this.CentimolesPerLiter, options as ToStringOptions) + ` cmol/L`;
+                return super.truncateFractionDigits(this.CentimolesPerLiter, options as ToStringOptions) + ` cmol/l`;
             case MolarityUnits.DecimolesPerLiter:
-                return super.truncateFractionDigits(this.DecimolesPerLiter, options as ToStringOptions) + ` dmol/L`;
+                return super.truncateFractionDigits(this.DecimolesPerLiter, options as ToStringOptions) + ` dmol/l`;
         default:
             break;
         }
@@ -499,25 +507,25 @@ export class Molarity extends BaseUnit {
             case MolarityUnits.MolesPerCubicMeter:
                 return `mol/m³`;
             case MolarityUnits.MolesPerLiter:
-                return `mol/L`;
+                return `mol/l`;
             case MolarityUnits.PoundMolesPerCubicFoot:
                 return `lbmol/ft³`;
             case MolarityUnits.KilomolesPerCubicMeter:
                 return `kmol/m³`;
             case MolarityUnits.FemtomolesPerLiter:
-                return `fmol/L`;
+                return `fmol/l`;
             case MolarityUnits.PicomolesPerLiter:
-                return `pmol/L`;
+                return `pmol/l`;
             case MolarityUnits.NanomolesPerLiter:
-                return `nmol/L`;
+                return `nmol/l`;
             case MolarityUnits.MicromolesPerLiter:
-                return `μmol/L`;
+                return `μmol/l`;
             case MolarityUnits.MillimolesPerLiter:
-                return `mmol/L`;
+                return `mmol/l`;
             case MolarityUnits.CentimolesPerLiter:
-                return `cmol/L`;
+                return `cmol/l`;
             case MolarityUnits.DecimolesPerLiter:
-                return `dmol/L`;
+                return `dmol/l`;
         default:
             break;
         }

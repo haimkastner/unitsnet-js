@@ -208,13 +208,19 @@ export class HeatTransferCoefficient extends BaseUnit {
             switch (toUnit) {
                 case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin: return this.value;
                 case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return this.value;
-                case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return super.internalDivide(this.value, 5.6782633411134878);
+                case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: {
+                    const v5 = super.internalMultiply(0.3048, 0.3048);
+                    const v7 = super.internalMultiply(v5, 3600);
+                    const v8 = super.internalDivide(1055.05585262, v7);
+                    const v10 = super.internalMultiply(v8, 1.8);
+                    return super.internalDivide(this.value, v10);
+                }
                 case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: {
-                    const v3 = super.internalDivide(this.value, 4.1868);
+                    const v3 = super.internalDivide(this.value, 4.184);
                     return super.internalMultiply(v3, 3600);
                 }
                 case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: {
-                    const v3 = super.internalDivide(this.value, 4.1868);
+                    const v3 = super.internalDivide(this.value, 4.184);
                     const v5 = super.internalMultiply(v3, 3600);
                     return super.internalDivide(v5, 1000);
                 }
@@ -223,9 +229,9 @@ export class HeatTransferCoefficient extends BaseUnit {
         switch (toUnit) {
             case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin: return this.value;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return this.value;
-            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return this.value / 5.6782633411134878;
-            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: return (this.value / 4.1868) * 3600;
-            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: return ((this.value / 4.1868) * 3600) / 1000;
+            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return this.value / ((1055.05585262 / (0.3048 * 0.3048 * 3600)) * 1.8);
+            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: return (this.value / 4.184) * 3600;
+            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: return ((this.value / 4.184) * 3600) / 1000;
             default: return Number.NaN;
         }
     }
@@ -235,13 +241,19 @@ export class HeatTransferCoefficient extends BaseUnit {
             switch (fromUnit) {
                 case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin: return value;
                 case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return value;
-                case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return super.internalMultiply(value, 5.6782633411134878);
+                case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: {
+                    const v5 = super.internalMultiply(0.3048, 0.3048);
+                    const v7 = super.internalMultiply(v5, 3600);
+                    const v8 = super.internalDivide(1055.05585262, v7);
+                    const v10 = super.internalMultiply(v8, 1.8);
+                    return super.internalMultiply(value, v10);
+                }
                 case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: {
-                    const v3 = super.internalMultiply(value, 4.1868);
+                    const v3 = super.internalMultiply(value, 4.184);
                     return super.internalDivide(v3, 3600);
                 }
                 case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: {
-                    const v3 = super.internalMultiply(value, 4.1868);
+                    const v3 = super.internalMultiply(value, 4.184);
                     const v5 = super.internalDivide(v3, 3600);
                     return super.internalMultiply(v5, 1000);
                 }
@@ -250,9 +262,9 @@ export class HeatTransferCoefficient extends BaseUnit {
         switch (fromUnit) {
             case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin: return value;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius: return value;
-            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return value * 5.6782633411134878;
-            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: return (value * 4.1868) / 3600;
-            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: return ((value * 4.1868) / 3600) * 1000;
+            case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit: return value * ((1055.05585262 / (0.3048 * 0.3048 * 3600)) * 1.8);
+            case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius: return (value * 4.184) / 3600;
+            case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius: return ((value * 4.184) / 3600) * 1000;
             default: return Number.NaN;
         }
     }
@@ -274,15 +286,15 @@ export class HeatTransferCoefficient extends BaseUnit {
         switch (unit) {
             
             case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
-                return super.truncateFractionDigits(this.WattsPerSquareMeterKelvin, options as ToStringOptions) + ` W/m²·K`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeterKelvin, options as ToStringOptions) + ` W/(m²·K)`;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
-                return super.truncateFractionDigits(this.WattsPerSquareMeterCelsius, options as ToStringOptions) + ` W/m²·°C`;
+                return super.truncateFractionDigits(this.WattsPerSquareMeterCelsius, options as ToStringOptions) + ` W/(m²·°C)`;
             case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
-                return super.truncateFractionDigits(this.BtusPerHourSquareFootDegreeFahrenheit, options as ToStringOptions) + ` Btu/h·ft²·°F`;
+                return super.truncateFractionDigits(this.BtusPerHourSquareFootDegreeFahrenheit, options as ToStringOptions) + ` Btu/(h·ft²·°F)`;
             case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
-                return super.truncateFractionDigits(this.CaloriesPerHourSquareMeterDegreeCelsius, options as ToStringOptions) + ` kcal/h·m²·°C`;
+                return super.truncateFractionDigits(this.CaloriesPerHourSquareMeterDegreeCelsius, options as ToStringOptions) + ` kcal/(h·m²·°C)`;
             case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
-                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeterDegreeCelsius, options as ToStringOptions) + ` kkcal/h·m²·°C`;
+                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeterDegreeCelsius, options as ToStringOptions) + ` kkcal/(h·m²·°C)`;
         default:
             break;
         }
@@ -301,15 +313,15 @@ export class HeatTransferCoefficient extends BaseUnit {
         switch (unitAbbreviation) {
             
             case HeatTransferCoefficientUnits.WattsPerSquareMeterKelvin:
-                return `W/m²·K`;
+                return `W/(m²·K)`;
             case HeatTransferCoefficientUnits.WattsPerSquareMeterCelsius:
-                return `W/m²·°C`;
+                return `W/(m²·°C)`;
             case HeatTransferCoefficientUnits.BtusPerHourSquareFootDegreeFahrenheit:
-                return `Btu/h·ft²·°F`;
+                return `Btu/(h·ft²·°F)`;
             case HeatTransferCoefficientUnits.CaloriesPerHourSquareMeterDegreeCelsius:
-                return `kcal/h·m²·°C`;
+                return `kcal/(h·m²·°C)`;
             case HeatTransferCoefficientUnits.KilocaloriesPerHourSquareMeterDegreeCelsius:
-                return `kkcal/h·m²·°C`;
+                return `kkcal/(h·m²·°C)`;
         default:
             break;
         }

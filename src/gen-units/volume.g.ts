@@ -26,55 +26,55 @@ export enum VolumeUnits {
     CubicMillimeters = "CubicMillimeter",
     /** */
     CubicMicrometers = "CubicMicrometer",
-    /** */
+    /** A cubic mile (abbreviation: cu mi or mi3) is an imperial and US customary (non-SI non-metric) unit of volume, used in the United States, Canada and the United Kingdom. It is defined as the volume of a cube with sides of 1 mile (63360 inches, 5280 feet, 1760 yards or ~1.609 kilometres) in length. */
     CubicMiles = "CubicMile",
-    /** */
+    /** A cubic yard is an Imperial / U.S. customary (non-SI non-metric) unit of volume, used in Canada and the United States. It is defined as the volume of a cube with sides of 1 yard (3 feet, 36 inches, 0.9144 meters) in length. */
     CubicYards = "CubicYard",
-    /** */
+    /** The cubic foot (symbol ft3 or cu ft) is an imperial and US customary (non-metric) unit of volume, used in the United States and the United Kingdom. It is defined as the volume of a cube with sides of one foot (0.3048 m) in length. */
     CubicFeet = "CubicFoot",
-    /** */
+    /** The cubic inch (symbol in3) is a unit of volume in the Imperial units and United States customary units systems. It is the volume of a cube with each of its three dimensions (length, width, and height) being one inch long which is equivalent to 1/231 of a US gallon. */
     CubicInches = "CubicInch",
     /** The British imperial gallon (frequently called simply "gallon") is defined as exactly 4.54609 litres. */
     ImperialGallons = "ImperialGallon",
-    /** */
+    /** An imperial fluid ounce is 1⁄20 of an imperial pint, 1⁄160 of an imperial gallon or exactly 28.4130625 mL. */
     ImperialOunces = "ImperialOunce",
     /** The US liquid gallon (frequently called simply "gallon") is legally defined as 231 cubic inches, which is exactly 3.785411784 litres. */
     UsGallons = "UsGallon",
-    /** */
+    /** A US customary fluid ounce is 1⁄16 of a US liquid pint and 1⁄128 of a US liquid gallon or exactly 29.5735295625 mL, making it about 4.08% larger than the imperial fluid ounce. */
     UsOunces = "UsOunce",
-    /** */
+    /** The traditional U.S. interpretation of the tablespoon as a unit of volume is: 1 US tablespoon = 4 fluid drams, or 3 teaspoons or 1/2 US fluid ounce (≈ 14.8 ml) */
     UsTablespoons = "UsTablespoon",
-    /** */
+    /** In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz). */
     AuTablespoons = "AuTablespoon",
-    /** */
+    /** In nutrition labeling in the U.S. and the U.K., a tablespoon is defined as 15 ml (0.51 US fl oz). In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz). */
     UkTablespoons = "UkTablespoon",
-    /** */
+    /** The metric teaspoon as a unit of culinary measure is 5 ml (0.18 imp fl oz; 0.17 US fl oz),[17] equal to 5 cm3, 1⁄3 UK/Canadian metric tablespoon, or 1⁄4 Australian metric tablespoon. */
     MetricTeaspoons = "MetricTeaspoon",
-    /** */
+    /** As a unit of culinary measure, one teaspoon in the United States is 1⁄3 tablespoon, exactly 4.92892159375 ml, 1 1⁄3 US fluid drams, 1⁄6 US fl oz, 1⁄48 US cup, 1⁄768 US liquid gallon, or 77⁄256 (0.30078125) cubic inches. */
     UsTeaspoons = "UsTeaspoon",
-    /** */
+    /** Australia, Canada, New Zealand, and some other members of the Commonwealth of Nations, being former British colonies that have since metricated, employ a metric cup of 250 millilitres. Although derived from the metric system, it is not an SI unit. */
     MetricCups = "MetricCup",
-    /** */
+    /** In the United States, the customary cup is half of a liquid pint or 1⁄16 US customary gallon which is 236.5882365 milliliters exactly. */
     UsCustomaryCups = "UsCustomaryCup",
-    /** */
+    /** The cup currently used in the United States for nutrition labelling is defined in United States law as 240 ml. */
     UsLegalCups = "UsLegalCup",
-    /** */
+    /** In the oil industry, one barrel (unit symbol bbl) is a unit of volume used for measuring oil defined as exactly 42 US gallons, approximately 159 liters, or 35 imperial gallons. */
     OilBarrels = "OilBarrel",
-    /** */
+    /** Fluid barrels vary depending on what is being measured and where. In the US most fluid barrels (apart from oil) are 31.5 US gallons (26 imp gal; 119 L) (half a hogshead), but a beer barrel is 31 US gallons (26 imp gal; 117 L). */
     UsBeerBarrels = "UsBeerBarrel",
-    /** */
+    /** Fluid barrels vary depending on what is being measured and where. In the UK a beer barrel is 36 imperial gallons (43 US gal; ~164 L). */
     ImperialBeerBarrels = "ImperialBeerBarrel",
-    /** */
+    /** The US liquid quart equals 57.75 cubic inches, which is exactly equal to 0.946352946 L. */
     UsQuarts = "UsQuart",
-    /** */
+    /** The imperial quart, which is used for both liquid and dry capacity, is equal to one quarter of an imperial gallon, or exactly 1.1365225 liters. */
     ImperialQuarts = "ImperialQuart",
-    /** */
+    /** The pint is a unit of volume or capacity in both the imperial and United States customary measurement systems. In both of those systems it is traditionally one eighth of a gallon. The British imperial pint is about 20% larger than the American pint because the two systems are defined differently. */
     UsPints = "UsPint",
-    /** */
+    /** An acre-foot is 43,560 cubic feet (~1,233.5 m3). */
     AcreFeet = "AcreFoot",
-    /** */
+    /** The pint is a unit of volume or capacity in both the imperial and United States customary measurement systems. In both of those systems it is traditionally one eighth of a gallon. The British imperial pint is about 20% larger than the American pint because the two systems are defined differently. */
     ImperialPints = "ImperialPint",
-    /** */
+    /** The board foot or board-foot is a unit of measurement for the volume of lumber in the United States and Canada. It equals the volume of a board that is one-foot (305 mm) in length, one-foot (305 mm) in width, and one-inch (25.4 mm) in thickness. */
     BoardFeet = "BoardFoot",
     /** */
     Nanoliters = "Nanoliter",
@@ -270,7 +270,7 @@ export class Volume extends BaseUnit {
         return this.cubicmicrometersLazy = this.convertFromBase(VolumeUnits.CubicMicrometers);
     }
 
-    /** */
+    /** A cubic mile (abbreviation: cu mi or mi3) is an imperial and US customary (non-SI non-metric) unit of volume, used in the United States, Canada and the United Kingdom. It is defined as the volume of a cube with sides of 1 mile (63360 inches, 5280 feet, 1760 yards or ~1.609 kilometres) in length. */
     public get CubicMiles(): number {
         if(this.cubicmilesLazy !== null){
             return this.cubicmilesLazy;
@@ -278,7 +278,7 @@ export class Volume extends BaseUnit {
         return this.cubicmilesLazy = this.convertFromBase(VolumeUnits.CubicMiles);
     }
 
-    /** */
+    /** A cubic yard is an Imperial / U.S. customary (non-SI non-metric) unit of volume, used in Canada and the United States. It is defined as the volume of a cube with sides of 1 yard (3 feet, 36 inches, 0.9144 meters) in length. */
     public get CubicYards(): number {
         if(this.cubicyardsLazy !== null){
             return this.cubicyardsLazy;
@@ -286,7 +286,7 @@ export class Volume extends BaseUnit {
         return this.cubicyardsLazy = this.convertFromBase(VolumeUnits.CubicYards);
     }
 
-    /** */
+    /** The cubic foot (symbol ft3 or cu ft) is an imperial and US customary (non-metric) unit of volume, used in the United States and the United Kingdom. It is defined as the volume of a cube with sides of one foot (0.3048 m) in length. */
     public get CubicFeet(): number {
         if(this.cubicfeetLazy !== null){
             return this.cubicfeetLazy;
@@ -294,7 +294,7 @@ export class Volume extends BaseUnit {
         return this.cubicfeetLazy = this.convertFromBase(VolumeUnits.CubicFeet);
     }
 
-    /** */
+    /** The cubic inch (symbol in3) is a unit of volume in the Imperial units and United States customary units systems. It is the volume of a cube with each of its three dimensions (length, width, and height) being one inch long which is equivalent to 1/231 of a US gallon. */
     public get CubicInches(): number {
         if(this.cubicinchesLazy !== null){
             return this.cubicinchesLazy;
@@ -310,7 +310,7 @@ export class Volume extends BaseUnit {
         return this.imperialgallonsLazy = this.convertFromBase(VolumeUnits.ImperialGallons);
     }
 
-    /** */
+    /** An imperial fluid ounce is 1⁄20 of an imperial pint, 1⁄160 of an imperial gallon or exactly 28.4130625 mL. */
     public get ImperialOunces(): number {
         if(this.imperialouncesLazy !== null){
             return this.imperialouncesLazy;
@@ -326,7 +326,7 @@ export class Volume extends BaseUnit {
         return this.usgallonsLazy = this.convertFromBase(VolumeUnits.UsGallons);
     }
 
-    /** */
+    /** A US customary fluid ounce is 1⁄16 of a US liquid pint and 1⁄128 of a US liquid gallon or exactly 29.5735295625 mL, making it about 4.08% larger than the imperial fluid ounce. */
     public get UsOunces(): number {
         if(this.usouncesLazy !== null){
             return this.usouncesLazy;
@@ -334,7 +334,7 @@ export class Volume extends BaseUnit {
         return this.usouncesLazy = this.convertFromBase(VolumeUnits.UsOunces);
     }
 
-    /** */
+    /** The traditional U.S. interpretation of the tablespoon as a unit of volume is: 1 US tablespoon = 4 fluid drams, or 3 teaspoons or 1/2 US fluid ounce (≈ 14.8 ml) */
     public get UsTablespoons(): number {
         if(this.ustablespoonsLazy !== null){
             return this.ustablespoonsLazy;
@@ -342,7 +342,7 @@ export class Volume extends BaseUnit {
         return this.ustablespoonsLazy = this.convertFromBase(VolumeUnits.UsTablespoons);
     }
 
-    /** */
+    /** In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz). */
     public get AuTablespoons(): number {
         if(this.autablespoonsLazy !== null){
             return this.autablespoonsLazy;
@@ -350,7 +350,7 @@ export class Volume extends BaseUnit {
         return this.autablespoonsLazy = this.convertFromBase(VolumeUnits.AuTablespoons);
     }
 
-    /** */
+    /** In nutrition labeling in the U.S. and the U.K., a tablespoon is defined as 15 ml (0.51 US fl oz). In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz). */
     public get UkTablespoons(): number {
         if(this.uktablespoonsLazy !== null){
             return this.uktablespoonsLazy;
@@ -358,7 +358,7 @@ export class Volume extends BaseUnit {
         return this.uktablespoonsLazy = this.convertFromBase(VolumeUnits.UkTablespoons);
     }
 
-    /** */
+    /** The metric teaspoon as a unit of culinary measure is 5 ml (0.18 imp fl oz; 0.17 US fl oz),[17] equal to 5 cm3, 1⁄3 UK/Canadian metric tablespoon, or 1⁄4 Australian metric tablespoon. */
     public get MetricTeaspoons(): number {
         if(this.metricteaspoonsLazy !== null){
             return this.metricteaspoonsLazy;
@@ -366,7 +366,7 @@ export class Volume extends BaseUnit {
         return this.metricteaspoonsLazy = this.convertFromBase(VolumeUnits.MetricTeaspoons);
     }
 
-    /** */
+    /** As a unit of culinary measure, one teaspoon in the United States is 1⁄3 tablespoon, exactly 4.92892159375 ml, 1 1⁄3 US fluid drams, 1⁄6 US fl oz, 1⁄48 US cup, 1⁄768 US liquid gallon, or 77⁄256 (0.30078125) cubic inches. */
     public get UsTeaspoons(): number {
         if(this.usteaspoonsLazy !== null){
             return this.usteaspoonsLazy;
@@ -374,7 +374,7 @@ export class Volume extends BaseUnit {
         return this.usteaspoonsLazy = this.convertFromBase(VolumeUnits.UsTeaspoons);
     }
 
-    /** */
+    /** Australia, Canada, New Zealand, and some other members of the Commonwealth of Nations, being former British colonies that have since metricated, employ a metric cup of 250 millilitres. Although derived from the metric system, it is not an SI unit. */
     public get MetricCups(): number {
         if(this.metriccupsLazy !== null){
             return this.metriccupsLazy;
@@ -382,7 +382,7 @@ export class Volume extends BaseUnit {
         return this.metriccupsLazy = this.convertFromBase(VolumeUnits.MetricCups);
     }
 
-    /** */
+    /** In the United States, the customary cup is half of a liquid pint or 1⁄16 US customary gallon which is 236.5882365 milliliters exactly. */
     public get UsCustomaryCups(): number {
         if(this.uscustomarycupsLazy !== null){
             return this.uscustomarycupsLazy;
@@ -390,7 +390,7 @@ export class Volume extends BaseUnit {
         return this.uscustomarycupsLazy = this.convertFromBase(VolumeUnits.UsCustomaryCups);
     }
 
-    /** */
+    /** The cup currently used in the United States for nutrition labelling is defined in United States law as 240 ml. */
     public get UsLegalCups(): number {
         if(this.uslegalcupsLazy !== null){
             return this.uslegalcupsLazy;
@@ -398,7 +398,7 @@ export class Volume extends BaseUnit {
         return this.uslegalcupsLazy = this.convertFromBase(VolumeUnits.UsLegalCups);
     }
 
-    /** */
+    /** In the oil industry, one barrel (unit symbol bbl) is a unit of volume used for measuring oil defined as exactly 42 US gallons, approximately 159 liters, or 35 imperial gallons. */
     public get OilBarrels(): number {
         if(this.oilbarrelsLazy !== null){
             return this.oilbarrelsLazy;
@@ -406,7 +406,7 @@ export class Volume extends BaseUnit {
         return this.oilbarrelsLazy = this.convertFromBase(VolumeUnits.OilBarrels);
     }
 
-    /** */
+    /** Fluid barrels vary depending on what is being measured and where. In the US most fluid barrels (apart from oil) are 31.5 US gallons (26 imp gal; 119 L) (half a hogshead), but a beer barrel is 31 US gallons (26 imp gal; 117 L). */
     public get UsBeerBarrels(): number {
         if(this.usbeerbarrelsLazy !== null){
             return this.usbeerbarrelsLazy;
@@ -414,7 +414,7 @@ export class Volume extends BaseUnit {
         return this.usbeerbarrelsLazy = this.convertFromBase(VolumeUnits.UsBeerBarrels);
     }
 
-    /** */
+    /** Fluid barrels vary depending on what is being measured and where. In the UK a beer barrel is 36 imperial gallons (43 US gal; ~164 L). */
     public get ImperialBeerBarrels(): number {
         if(this.imperialbeerbarrelsLazy !== null){
             return this.imperialbeerbarrelsLazy;
@@ -422,7 +422,7 @@ export class Volume extends BaseUnit {
         return this.imperialbeerbarrelsLazy = this.convertFromBase(VolumeUnits.ImperialBeerBarrels);
     }
 
-    /** */
+    /** The US liquid quart equals 57.75 cubic inches, which is exactly equal to 0.946352946 L. */
     public get UsQuarts(): number {
         if(this.usquartsLazy !== null){
             return this.usquartsLazy;
@@ -430,7 +430,7 @@ export class Volume extends BaseUnit {
         return this.usquartsLazy = this.convertFromBase(VolumeUnits.UsQuarts);
     }
 
-    /** */
+    /** The imperial quart, which is used for both liquid and dry capacity, is equal to one quarter of an imperial gallon, or exactly 1.1365225 liters. */
     public get ImperialQuarts(): number {
         if(this.imperialquartsLazy !== null){
             return this.imperialquartsLazy;
@@ -438,7 +438,7 @@ export class Volume extends BaseUnit {
         return this.imperialquartsLazy = this.convertFromBase(VolumeUnits.ImperialQuarts);
     }
 
-    /** */
+    /** The pint is a unit of volume or capacity in both the imperial and United States customary measurement systems. In both of those systems it is traditionally one eighth of a gallon. The British imperial pint is about 20% larger than the American pint because the two systems are defined differently. */
     public get UsPints(): number {
         if(this.uspintsLazy !== null){
             return this.uspintsLazy;
@@ -446,7 +446,7 @@ export class Volume extends BaseUnit {
         return this.uspintsLazy = this.convertFromBase(VolumeUnits.UsPints);
     }
 
-    /** */
+    /** An acre-foot is 43,560 cubic feet (~1,233.5 m3). */
     public get AcreFeet(): number {
         if(this.acrefeetLazy !== null){
             return this.acrefeetLazy;
@@ -454,7 +454,7 @@ export class Volume extends BaseUnit {
         return this.acrefeetLazy = this.convertFromBase(VolumeUnits.AcreFeet);
     }
 
-    /** */
+    /** The pint is a unit of volume or capacity in both the imperial and United States customary measurement systems. In both of those systems it is traditionally one eighth of a gallon. The British imperial pint is about 20% larger than the American pint because the two systems are defined differently. */
     public get ImperialPints(): number {
         if(this.imperialpintsLazy !== null){
             return this.imperialpintsLazy;
@@ -462,7 +462,7 @@ export class Volume extends BaseUnit {
         return this.imperialpintsLazy = this.convertFromBase(VolumeUnits.ImperialPints);
     }
 
-    /** */
+    /** The board foot or board-foot is a unit of measurement for the volume of lumber in the United States and Canada. It equals the volume of a board that is one-foot (305 mm) in length, one-foot (305 mm) in width, and one-inch (25.4 mm) in thickness. */
     public get BoardFeet(): number {
         if(this.boardfeetLazy !== null){
             return this.boardfeetLazy;
@@ -720,7 +720,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a CubicMiles
-     *
+     * A cubic mile (abbreviation: cu mi or mi3) is an imperial and US customary (non-SI non-metric) unit of volume, used in the United States, Canada and the United Kingdom. It is defined as the volume of a cube with sides of 1 mile (63360 inches, 5280 feet, 1760 yards or ~1.609 kilometres) in length.
      * @param value The unit as CubicMiles to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -730,7 +730,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a CubicYards
-     *
+     * A cubic yard is an Imperial / U.S. customary (non-SI non-metric) unit of volume, used in Canada and the United States. It is defined as the volume of a cube with sides of 1 yard (3 feet, 36 inches, 0.9144 meters) in length.
      * @param value The unit as CubicYards to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -740,7 +740,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a CubicFeet
-     *
+     * The cubic foot (symbol ft3 or cu ft) is an imperial and US customary (non-metric) unit of volume, used in the United States and the United Kingdom. It is defined as the volume of a cube with sides of one foot (0.3048 m) in length.
      * @param value The unit as CubicFeet to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -750,7 +750,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a CubicInches
-     *
+     * The cubic inch (symbol in3) is a unit of volume in the Imperial units and United States customary units systems. It is the volume of a cube with each of its three dimensions (length, width, and height) being one inch long which is equivalent to 1/231 of a US gallon.
      * @param value The unit as CubicInches to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -770,7 +770,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a ImperialOunces
-     *
+     * An imperial fluid ounce is 1⁄20 of an imperial pint, 1⁄160 of an imperial gallon or exactly 28.4130625 mL.
      * @param value The unit as ImperialOunces to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -790,7 +790,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a UsOunces
-     *
+     * A US customary fluid ounce is 1⁄16 of a US liquid pint and 1⁄128 of a US liquid gallon or exactly 29.5735295625 mL, making it about 4.08% larger than the imperial fluid ounce.
      * @param value The unit as UsOunces to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -800,7 +800,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a UsTablespoons
-     *
+     * The traditional U.S. interpretation of the tablespoon as a unit of volume is: 1 US tablespoon = 4 fluid drams, or 3 teaspoons or 1/2 US fluid ounce (≈ 14.8 ml)
      * @param value The unit as UsTablespoons to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -810,7 +810,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a AuTablespoons
-     *
+     * In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz).
      * @param value The unit as AuTablespoons to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -820,7 +820,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a UkTablespoons
-     *
+     * In nutrition labeling in the U.S. and the U.K., a tablespoon is defined as 15 ml (0.51 US fl oz). In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz).
      * @param value The unit as UkTablespoons to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -830,7 +830,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a MetricTeaspoons
-     *
+     * The metric teaspoon as a unit of culinary measure is 5 ml (0.18 imp fl oz; 0.17 US fl oz),[17] equal to 5 cm3, 1⁄3 UK/Canadian metric tablespoon, or 1⁄4 Australian metric tablespoon.
      * @param value The unit as MetricTeaspoons to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -840,7 +840,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a UsTeaspoons
-     *
+     * As a unit of culinary measure, one teaspoon in the United States is 1⁄3 tablespoon, exactly 4.92892159375 ml, 1 1⁄3 US fluid drams, 1⁄6 US fl oz, 1⁄48 US cup, 1⁄768 US liquid gallon, or 77⁄256 (0.30078125) cubic inches.
      * @param value The unit as UsTeaspoons to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -850,7 +850,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a MetricCups
-     *
+     * Australia, Canada, New Zealand, and some other members of the Commonwealth of Nations, being former British colonies that have since metricated, employ a metric cup of 250 millilitres. Although derived from the metric system, it is not an SI unit.
      * @param value The unit as MetricCups to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -860,7 +860,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a UsCustomaryCups
-     *
+     * In the United States, the customary cup is half of a liquid pint or 1⁄16 US customary gallon which is 236.5882365 milliliters exactly.
      * @param value The unit as UsCustomaryCups to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -870,7 +870,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a UsLegalCups
-     *
+     * The cup currently used in the United States for nutrition labelling is defined in United States law as 240 ml.
      * @param value The unit as UsLegalCups to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -880,7 +880,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a OilBarrels
-     *
+     * In the oil industry, one barrel (unit symbol bbl) is a unit of volume used for measuring oil defined as exactly 42 US gallons, approximately 159 liters, or 35 imperial gallons.
      * @param value The unit as OilBarrels to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -890,7 +890,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a UsBeerBarrels
-     *
+     * Fluid barrels vary depending on what is being measured and where. In the US most fluid barrels (apart from oil) are 31.5 US gallons (26 imp gal; 119 L) (half a hogshead), but a beer barrel is 31 US gallons (26 imp gal; 117 L).
      * @param value The unit as UsBeerBarrels to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -900,7 +900,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a ImperialBeerBarrels
-     *
+     * Fluid barrels vary depending on what is being measured and where. In the UK a beer barrel is 36 imperial gallons (43 US gal; ~164 L).
      * @param value The unit as ImperialBeerBarrels to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -910,7 +910,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a UsQuarts
-     *
+     * The US liquid quart equals 57.75 cubic inches, which is exactly equal to 0.946352946 L.
      * @param value The unit as UsQuarts to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -920,7 +920,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a ImperialQuarts
-     *
+     * The imperial quart, which is used for both liquid and dry capacity, is equal to one quarter of an imperial gallon, or exactly 1.1365225 liters.
      * @param value The unit as ImperialQuarts to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -930,7 +930,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a UsPints
-     *
+     * The pint is a unit of volume or capacity in both the imperial and United States customary measurement systems. In both of those systems it is traditionally one eighth of a gallon. The British imperial pint is about 20% larger than the American pint because the two systems are defined differently.
      * @param value The unit as UsPints to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -940,7 +940,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a AcreFeet
-     *
+     * An acre-foot is 43,560 cubic feet (~1,233.5 m3).
      * @param value The unit as AcreFeet to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -950,7 +950,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a ImperialPints
-     *
+     * The pint is a unit of volume or capacity in both the imperial and United States customary measurement systems. In both of those systems it is traditionally one eighth of a gallon. The British imperial pint is about 20% larger than the American pint because the two systems are defined differently.
      * @param value The unit as ImperialPints to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -960,7 +960,7 @@ export class Volume extends BaseUnit {
 
     /**
      * Create a new Volume instance from a BoardFeet
-     *
+     * The board foot or board-foot is a unit of measurement for the volume of lumber in the United States and Canada. It equals the volume of a board that is one-foot (305 mm) in length, one-foot (305 mm) in width, and one-inch (25.4 mm) in thickness.
      * @param value The unit as BoardFeet to create a new Volume from.
      * @returns The new Volume instance.
      */
@@ -1292,14 +1292,14 @@ export class Volume extends BaseUnit {
                 case VolumeUnits.CubicCentimeters: return super.internalMultiply(this.value, 1e6);
                 case VolumeUnits.CubicMillimeters: return super.internalMultiply(this.value, 1e9);
                 case VolumeUnits.CubicMicrometers: return super.internalMultiply(this.value, 1e18);
-                case VolumeUnits.CubicMiles: return super.internalDivide(this.value, 4.16818182544058e9);
-                case VolumeUnits.CubicYards: return super.internalDivide(this.value, 0.764554858);
-                case VolumeUnits.CubicFeet: return super.internalDivide(this.value, 2.8316846592e-2);
+                case VolumeUnits.CubicMiles: return super.internalDivide(this.value, 4.168181825440579584e9);
+                case VolumeUnits.CubicYards: return super.internalDivide(this.value, 0.764554857984);
+                case VolumeUnits.CubicFeet: return super.internalDivide(this.value, 0.028316846592);
                 case VolumeUnits.CubicInches: return super.internalDivide(this.value, 1.6387064e-5);
                 case VolumeUnits.ImperialGallons: return super.internalDivide(this.value, 0.00454609);
-                case VolumeUnits.ImperialOunces: return super.internalDivide(this.value, 2.8413062499962901241875439064617e-5);
+                case VolumeUnits.ImperialOunces: return super.internalDivide(this.value, 2.84130625e-5);
                 case VolumeUnits.UsGallons: return super.internalDivide(this.value, 0.003785411784);
-                case VolumeUnits.UsOunces: return super.internalDivide(this.value, 2.957352956253760505068307980135e-5);
+                case VolumeUnits.UsOunces: return super.internalDivide(this.value, 2.95735295625e-5);
                 case VolumeUnits.UsTablespoons: return super.internalDivide(this.value, 1.478676478125e-5);
                 case VolumeUnits.AuTablespoons: return super.internalDivide(this.value, 2e-5);
                 case VolumeUnits.UkTablespoons: return super.internalDivide(this.value, 1.5e-5);
@@ -1309,14 +1309,17 @@ export class Volume extends BaseUnit {
                 case VolumeUnits.UsCustomaryCups: return super.internalDivide(this.value, 0.0002365882365);
                 case VolumeUnits.UsLegalCups: return super.internalDivide(this.value, 0.00024);
                 case VolumeUnits.OilBarrels: return super.internalDivide(this.value, 0.158987294928);
-                case VolumeUnits.UsBeerBarrels: return super.internalDivide(this.value, 0.1173477658);
+                case VolumeUnits.UsBeerBarrels: return super.internalDivide(this.value, 0.117347765304);
                 case VolumeUnits.ImperialBeerBarrels: return super.internalDivide(this.value, 0.16365924);
                 case VolumeUnits.UsQuarts: return super.internalDivide(this.value, 9.46352946e-4);
                 case VolumeUnits.ImperialQuarts: return super.internalDivide(this.value, 1.1365225e-3);
                 case VolumeUnits.UsPints: return super.internalDivide(this.value, 4.73176473e-4);
-                case VolumeUnits.AcreFeet: return super.internalMultiply(this.value, 0.000810714);
+                case VolumeUnits.AcreFeet: return super.internalDivide(this.value, 1233.48183754752);
                 case VolumeUnits.ImperialPints: return super.internalDivide(this.value, 5.6826125e-4);
-                case VolumeUnits.BoardFeet: return super.internalDivide(this.value, 2.3597372158e-3);
+                case VolumeUnits.BoardFeet: {
+                    const v4 = super.internalDivide(0.028316846592, 12);
+                    return super.internalDivide(this.value, v4);
+                }
                 case VolumeUnits.Nanoliters: {
                     const v3 = super.internalMultiply(this.value, 1e3);
                     return super.internalDivide(v3, 1e-9);
@@ -1356,15 +1359,15 @@ export class Volume extends BaseUnit {
                 case VolumeUnits.HectocubicMeters: return super.internalDivide(this.value, 100);
                 case VolumeUnits.KilocubicMeters: return super.internalDivide(this.value, 1000);
                 case VolumeUnits.HectocubicFeet: {
-                    const v3 = super.internalDivide(this.value, 2.8316846592e-2);
+                    const v3 = super.internalDivide(this.value, 0.028316846592);
                     return super.internalDivide(v3, 100);
                 }
                 case VolumeUnits.KilocubicFeet: {
-                    const v3 = super.internalDivide(this.value, 2.8316846592e-2);
+                    const v3 = super.internalDivide(this.value, 0.028316846592);
                     return super.internalDivide(v3, 1000);
                 }
                 case VolumeUnits.MegacubicFeet: {
-                    const v3 = super.internalDivide(this.value, 2.8316846592e-2);
+                    const v3 = super.internalDivide(this.value, 0.028316846592);
                     return super.internalDivide(v3, 1000000);
                 }
                 case VolumeUnits.KiloimperialGallons: {
@@ -1406,14 +1409,14 @@ export class Volume extends BaseUnit {
             case VolumeUnits.CubicCentimeters: return this.value * 1e6;
             case VolumeUnits.CubicMillimeters: return this.value * 1e9;
             case VolumeUnits.CubicMicrometers: return this.value * 1e18;
-            case VolumeUnits.CubicMiles: return this.value / 4.16818182544058e9;
-            case VolumeUnits.CubicYards: return this.value / 0.764554858;
-            case VolumeUnits.CubicFeet: return this.value / 2.8316846592e-2;
+            case VolumeUnits.CubicMiles: return this.value / 4.168181825440579584e9;
+            case VolumeUnits.CubicYards: return this.value / 0.764554857984;
+            case VolumeUnits.CubicFeet: return this.value / 0.028316846592;
             case VolumeUnits.CubicInches: return this.value / 1.6387064e-5;
             case VolumeUnits.ImperialGallons: return this.value / 0.00454609;
-            case VolumeUnits.ImperialOunces: return this.value / 2.8413062499962901241875439064617e-5;
+            case VolumeUnits.ImperialOunces: return this.value / 2.84130625e-5;
             case VolumeUnits.UsGallons: return this.value / 0.003785411784;
-            case VolumeUnits.UsOunces: return this.value / 2.957352956253760505068307980135e-5;
+            case VolumeUnits.UsOunces: return this.value / 2.95735295625e-5;
             case VolumeUnits.UsTablespoons: return this.value / 1.478676478125e-5;
             case VolumeUnits.AuTablespoons: return this.value / 2e-5;
             case VolumeUnits.UkTablespoons: return this.value / 1.5e-5;
@@ -1423,14 +1426,14 @@ export class Volume extends BaseUnit {
             case VolumeUnits.UsCustomaryCups: return this.value / 0.0002365882365;
             case VolumeUnits.UsLegalCups: return this.value / 0.00024;
             case VolumeUnits.OilBarrels: return this.value / 0.158987294928;
-            case VolumeUnits.UsBeerBarrels: return this.value / 0.1173477658;
+            case VolumeUnits.UsBeerBarrels: return this.value / 0.117347765304;
             case VolumeUnits.ImperialBeerBarrels: return this.value / 0.16365924;
             case VolumeUnits.UsQuarts: return this.value / 9.46352946e-4;
             case VolumeUnits.ImperialQuarts: return this.value / 1.1365225e-3;
             case VolumeUnits.UsPints: return this.value / 4.73176473e-4;
-            case VolumeUnits.AcreFeet: return this.value * 0.000810714;
+            case VolumeUnits.AcreFeet: return this.value / 1233.48183754752;
             case VolumeUnits.ImperialPints: return this.value / 5.6826125e-4;
-            case VolumeUnits.BoardFeet: return this.value / 2.3597372158e-3;
+            case VolumeUnits.BoardFeet: return this.value / (0.028316846592 / 12);
             case VolumeUnits.Nanoliters: return (this.value * 1e3) / 1e-9;
             case VolumeUnits.Microliters: return (this.value * 1e3) / 0.000001;
             case VolumeUnits.Milliliters: return (this.value * 1e3) / 0.001;
@@ -1442,9 +1445,9 @@ export class Volume extends BaseUnit {
             case VolumeUnits.Megaliters: return (this.value * 1e3) / 1000000;
             case VolumeUnits.HectocubicMeters: return (this.value) / 100;
             case VolumeUnits.KilocubicMeters: return (this.value) / 1000;
-            case VolumeUnits.HectocubicFeet: return (this.value / 2.8316846592e-2) / 100;
-            case VolumeUnits.KilocubicFeet: return (this.value / 2.8316846592e-2) / 1000;
-            case VolumeUnits.MegacubicFeet: return (this.value / 2.8316846592e-2) / 1000000;
+            case VolumeUnits.HectocubicFeet: return (this.value / 0.028316846592) / 100;
+            case VolumeUnits.KilocubicFeet: return (this.value / 0.028316846592) / 1000;
+            case VolumeUnits.MegacubicFeet: return (this.value / 0.028316846592) / 1000000;
             case VolumeUnits.KiloimperialGallons: return (this.value / 0.00454609) / 1000;
             case VolumeUnits.MegaimperialGallons: return (this.value / 0.00454609) / 1000000;
             case VolumeUnits.DecausGallons: return (this.value / 0.003785411784) / 10;
@@ -1467,14 +1470,14 @@ export class Volume extends BaseUnit {
                 case VolumeUnits.CubicCentimeters: return super.internalDivide(value, 1e6);
                 case VolumeUnits.CubicMillimeters: return super.internalDivide(value, 1e9);
                 case VolumeUnits.CubicMicrometers: return super.internalDivide(value, 1e18);
-                case VolumeUnits.CubicMiles: return super.internalMultiply(value, 4.16818182544058e9);
-                case VolumeUnits.CubicYards: return super.internalMultiply(value, 0.764554858);
-                case VolumeUnits.CubicFeet: return super.internalMultiply(value, 2.8316846592e-2);
+                case VolumeUnits.CubicMiles: return super.internalMultiply(value, 4.168181825440579584e9);
+                case VolumeUnits.CubicYards: return super.internalMultiply(value, 0.764554857984);
+                case VolumeUnits.CubicFeet: return super.internalMultiply(value, 0.028316846592);
                 case VolumeUnits.CubicInches: return super.internalMultiply(value, 1.6387064e-5);
                 case VolumeUnits.ImperialGallons: return super.internalMultiply(value, 0.00454609);
-                case VolumeUnits.ImperialOunces: return super.internalMultiply(value, 2.8413062499962901241875439064617e-5);
+                case VolumeUnits.ImperialOunces: return super.internalMultiply(value, 2.84130625e-5);
                 case VolumeUnits.UsGallons: return super.internalMultiply(value, 0.003785411784);
-                case VolumeUnits.UsOunces: return super.internalMultiply(value, 2.957352956253760505068307980135e-5);
+                case VolumeUnits.UsOunces: return super.internalMultiply(value, 2.95735295625e-5);
                 case VolumeUnits.UsTablespoons: return super.internalMultiply(value, 1.478676478125e-5);
                 case VolumeUnits.AuTablespoons: return super.internalMultiply(value, 2e-5);
                 case VolumeUnits.UkTablespoons: return super.internalMultiply(value, 1.5e-5);
@@ -1484,14 +1487,17 @@ export class Volume extends BaseUnit {
                 case VolumeUnits.UsCustomaryCups: return super.internalMultiply(value, 0.0002365882365);
                 case VolumeUnits.UsLegalCups: return super.internalMultiply(value, 0.00024);
                 case VolumeUnits.OilBarrels: return super.internalMultiply(value, 0.158987294928);
-                case VolumeUnits.UsBeerBarrels: return super.internalMultiply(value, 0.1173477658);
+                case VolumeUnits.UsBeerBarrels: return super.internalMultiply(value, 0.117347765304);
                 case VolumeUnits.ImperialBeerBarrels: return super.internalMultiply(value, 0.16365924);
                 case VolumeUnits.UsQuarts: return super.internalMultiply(value, 9.46352946e-4);
                 case VolumeUnits.ImperialQuarts: return super.internalMultiply(value, 1.1365225e-3);
                 case VolumeUnits.UsPints: return super.internalMultiply(value, 4.73176473e-4);
-                case VolumeUnits.AcreFeet: return super.internalDivide(value, 0.000810714);
+                case VolumeUnits.AcreFeet: return super.internalMultiply(value, 1233.48183754752);
                 case VolumeUnits.ImperialPints: return super.internalMultiply(value, 5.6826125e-4);
-                case VolumeUnits.BoardFeet: return super.internalMultiply(value, 2.3597372158e-3);
+                case VolumeUnits.BoardFeet: {
+                    const v4 = super.internalDivide(0.028316846592, 12);
+                    return super.internalMultiply(value, v4);
+                }
                 case VolumeUnits.Nanoliters: {
                     const v3 = super.internalDivide(value, 1e3);
                     return super.internalMultiply(v3, 1e-9);
@@ -1531,15 +1537,15 @@ export class Volume extends BaseUnit {
                 case VolumeUnits.HectocubicMeters: return super.internalMultiply(value, 100);
                 case VolumeUnits.KilocubicMeters: return super.internalMultiply(value, 1000);
                 case VolumeUnits.HectocubicFeet: {
-                    const v3 = super.internalMultiply(value, 2.8316846592e-2);
+                    const v3 = super.internalMultiply(value, 0.028316846592);
                     return super.internalMultiply(v3, 100);
                 }
                 case VolumeUnits.KilocubicFeet: {
-                    const v3 = super.internalMultiply(value, 2.8316846592e-2);
+                    const v3 = super.internalMultiply(value, 0.028316846592);
                     return super.internalMultiply(v3, 1000);
                 }
                 case VolumeUnits.MegacubicFeet: {
-                    const v3 = super.internalMultiply(value, 2.8316846592e-2);
+                    const v3 = super.internalMultiply(value, 0.028316846592);
                     return super.internalMultiply(v3, 1000000);
                 }
                 case VolumeUnits.KiloimperialGallons: {
@@ -1581,14 +1587,14 @@ export class Volume extends BaseUnit {
             case VolumeUnits.CubicCentimeters: return value / 1e6;
             case VolumeUnits.CubicMillimeters: return value / 1e9;
             case VolumeUnits.CubicMicrometers: return value / 1e18;
-            case VolumeUnits.CubicMiles: return value * 4.16818182544058e9;
-            case VolumeUnits.CubicYards: return value * 0.764554858;
-            case VolumeUnits.CubicFeet: return value * 2.8316846592e-2;
+            case VolumeUnits.CubicMiles: return value * 4.168181825440579584e9;
+            case VolumeUnits.CubicYards: return value * 0.764554857984;
+            case VolumeUnits.CubicFeet: return value * 0.028316846592;
             case VolumeUnits.CubicInches: return value * 1.6387064e-5;
             case VolumeUnits.ImperialGallons: return value * 0.00454609;
-            case VolumeUnits.ImperialOunces: return value * 2.8413062499962901241875439064617e-5;
+            case VolumeUnits.ImperialOunces: return value * 2.84130625e-5;
             case VolumeUnits.UsGallons: return value * 0.003785411784;
-            case VolumeUnits.UsOunces: return value * 2.957352956253760505068307980135e-5;
+            case VolumeUnits.UsOunces: return value * 2.95735295625e-5;
             case VolumeUnits.UsTablespoons: return value * 1.478676478125e-5;
             case VolumeUnits.AuTablespoons: return value * 2e-5;
             case VolumeUnits.UkTablespoons: return value * 1.5e-5;
@@ -1598,14 +1604,14 @@ export class Volume extends BaseUnit {
             case VolumeUnits.UsCustomaryCups: return value * 0.0002365882365;
             case VolumeUnits.UsLegalCups: return value * 0.00024;
             case VolumeUnits.OilBarrels: return value * 0.158987294928;
-            case VolumeUnits.UsBeerBarrels: return value * 0.1173477658;
+            case VolumeUnits.UsBeerBarrels: return value * 0.117347765304;
             case VolumeUnits.ImperialBeerBarrels: return value * 0.16365924;
             case VolumeUnits.UsQuarts: return value * 9.46352946e-4;
             case VolumeUnits.ImperialQuarts: return value * 1.1365225e-3;
             case VolumeUnits.UsPints: return value * 4.73176473e-4;
-            case VolumeUnits.AcreFeet: return value / 0.000810714;
+            case VolumeUnits.AcreFeet: return value * 1233.48183754752;
             case VolumeUnits.ImperialPints: return value * 5.6826125e-4;
-            case VolumeUnits.BoardFeet: return value * 2.3597372158e-3;
+            case VolumeUnits.BoardFeet: return value * (0.028316846592 / 12);
             case VolumeUnits.Nanoliters: return (value / 1e3) * 1e-9;
             case VolumeUnits.Microliters: return (value / 1e3) * 0.000001;
             case VolumeUnits.Milliliters: return (value / 1e3) * 0.001;
@@ -1617,9 +1623,9 @@ export class Volume extends BaseUnit {
             case VolumeUnits.Megaliters: return (value / 1e3) * 1000000;
             case VolumeUnits.HectocubicMeters: return (value) * 100;
             case VolumeUnits.KilocubicMeters: return (value) * 1000;
-            case VolumeUnits.HectocubicFeet: return (value * 2.8316846592e-2) * 100;
-            case VolumeUnits.KilocubicFeet: return (value * 2.8316846592e-2) * 1000;
-            case VolumeUnits.MegacubicFeet: return (value * 2.8316846592e-2) * 1000000;
+            case VolumeUnits.HectocubicFeet: return (value * 0.028316846592) * 100;
+            case VolumeUnits.KilocubicFeet: return (value * 0.028316846592) * 1000;
+            case VolumeUnits.MegacubicFeet: return (value * 0.028316846592) * 1000000;
             case VolumeUnits.KiloimperialGallons: return (value * 0.00454609) * 1000;
             case VolumeUnits.MegaimperialGallons: return (value * 0.00454609) * 1000000;
             case VolumeUnits.DecausGallons: return (value * 0.003785411784) * 10;
@@ -1680,21 +1686,21 @@ export class Volume extends BaseUnit {
             case VolumeUnits.UsOunces:
                 return super.truncateFractionDigits(this.UsOunces, options as ToStringOptions) + ` oz (U.S.)`;
             case VolumeUnits.UsTablespoons:
-                return super.truncateFractionDigits(this.UsTablespoons, options as ToStringOptions) + ` undefined`;
+                return super.truncateFractionDigits(this.UsTablespoons, options as ToStringOptions) + ` tablespoon (U.S.)`;
             case VolumeUnits.AuTablespoons:
-                return super.truncateFractionDigits(this.AuTablespoons, options as ToStringOptions) + ` undefined`;
+                return super.truncateFractionDigits(this.AuTablespoons, options as ToStringOptions) + ` tablespoon (A.U.)`;
             case VolumeUnits.UkTablespoons:
-                return super.truncateFractionDigits(this.UkTablespoons, options as ToStringOptions) + ` undefined`;
+                return super.truncateFractionDigits(this.UkTablespoons, options as ToStringOptions) + ` tablespoon (U.K.)`;
             case VolumeUnits.MetricTeaspoons:
                 return super.truncateFractionDigits(this.MetricTeaspoons, options as ToStringOptions) + ` tsp`;
             case VolumeUnits.UsTeaspoons:
-                return super.truncateFractionDigits(this.UsTeaspoons, options as ToStringOptions) + ` undefined`;
+                return super.truncateFractionDigits(this.UsTeaspoons, options as ToStringOptions) + ` teaspoon (U.S.)`;
             case VolumeUnits.MetricCups:
-                return super.truncateFractionDigits(this.MetricCups, options as ToStringOptions) + ` undefined`;
+                return super.truncateFractionDigits(this.MetricCups, options as ToStringOptions) + ` metric cup`;
             case VolumeUnits.UsCustomaryCups:
-                return super.truncateFractionDigits(this.UsCustomaryCups, options as ToStringOptions) + ` undefined`;
+                return super.truncateFractionDigits(this.UsCustomaryCups, options as ToStringOptions) + ` cup (U.S. customary)`;
             case VolumeUnits.UsLegalCups:
-                return super.truncateFractionDigits(this.UsLegalCups, options as ToStringOptions) + ` undefined`;
+                return super.truncateFractionDigits(this.UsLegalCups, options as ToStringOptions) + ` cup (U.S.)`;
             case VolumeUnits.OilBarrels:
                 return super.truncateFractionDigits(this.OilBarrels, options as ToStringOptions) + ` bbl`;
             case VolumeUnits.UsBeerBarrels:
@@ -1805,21 +1811,21 @@ export class Volume extends BaseUnit {
             case VolumeUnits.UsOunces:
                 return `oz (U.S.)`;
             case VolumeUnits.UsTablespoons:
-                return `undefined`;
+                return `tablespoon (U.S.)`;
             case VolumeUnits.AuTablespoons:
-                return `undefined`;
+                return `tablespoon (A.U.)`;
             case VolumeUnits.UkTablespoons:
-                return `undefined`;
+                return `tablespoon (U.K.)`;
             case VolumeUnits.MetricTeaspoons:
                 return `tsp`;
             case VolumeUnits.UsTeaspoons:
-                return `undefined`;
+                return `teaspoon (U.S.)`;
             case VolumeUnits.MetricCups:
-                return `undefined`;
+                return `metric cup`;
             case VolumeUnits.UsCustomaryCups:
-                return `undefined`;
+                return `cup (U.S. customary)`;
             case VolumeUnits.UsLegalCups:
-                return `undefined`;
+                return `cup (U.S.)`;
             case VolumeUnits.OilBarrels:
                 return `bbl`;
             case VolumeUnits.UsBeerBarrels:

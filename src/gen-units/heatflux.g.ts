@@ -493,15 +493,45 @@ export class HeatFlux extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case HeatFluxUnits.WattsPerSquareMeter: return this.value;
-                case HeatFluxUnits.WattsPerSquareInch: return super.internalDivide(this.value, 1.5500031e3);
-                case HeatFluxUnits.WattsPerSquareFoot: return super.internalDivide(this.value, 1.07639e1);
-                case HeatFluxUnits.BtusPerSecondSquareInch: return super.internalDivide(this.value, 1.63533984e6);
-                case HeatFluxUnits.BtusPerSecondSquareFoot: return super.internalDivide(this.value, 1.13565267e4);
-                case HeatFluxUnits.BtusPerMinuteSquareFoot: return super.internalDivide(this.value, 1.89275445e2);
-                case HeatFluxUnits.BtusPerHourSquareFoot: return super.internalDivide(this.value, 3.15459075);
-                case HeatFluxUnits.CaloriesPerSecondSquareCentimeter: return super.internalDivide(this.value, 4.1868e4);
-                case HeatFluxUnits.KilocaloriesPerHourSquareMeter: return super.internalDivide(this.value, 1.163);
-                case HeatFluxUnits.PoundsForcePerFootSecond: return super.internalDivide(this.value, 1.459390293720636e1);
+                case HeatFluxUnits.WattsPerSquareInch: {
+                    const v4 = super.internalMultiply(2.54e-2, 2.54e-2);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case HeatFluxUnits.WattsPerSquareFoot: {
+                    const v4 = super.internalMultiply(0.3048, 0.3048);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case HeatFluxUnits.BtusPerSecondSquareInch: {
+                    const v4 = super.internalMultiply(2.54e-2, 2.54e-2);
+                    const v6 = super.internalDivide(v4, 1055.05585262);
+                    return super.internalMultiply(this.value, v6);
+                }
+                case HeatFluxUnits.BtusPerSecondSquareFoot: {
+                    const v4 = super.internalMultiply(0.3048, 0.3048);
+                    const v6 = super.internalDivide(v4, 1055.05585262);
+                    return super.internalMultiply(this.value, v6);
+                }
+                case HeatFluxUnits.BtusPerMinuteSquareFoot: {
+                    const v4 = super.internalMultiply(0.3048, 0.3048);
+                    const v6 = super.internalMultiply(v4, 60);
+                    const v8 = super.internalDivide(v6, 1055.05585262);
+                    return super.internalMultiply(this.value, v8);
+                }
+                case HeatFluxUnits.BtusPerHourSquareFoot: {
+                    const v4 = super.internalMultiply(0.3048, 0.3048);
+                    const v6 = super.internalMultiply(v4, 3600);
+                    const v8 = super.internalDivide(v6, 1055.05585262);
+                    return super.internalMultiply(this.value, v8);
+                }
+                case HeatFluxUnits.CaloriesPerSecondSquareCentimeter: return super.internalDivide(this.value, 4.184e4);
+                case HeatFluxUnits.KilocaloriesPerHourSquareMeter: {
+                    const v4 = super.internalDivide(3600, 4.184e3);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case HeatFluxUnits.PoundsForcePerFootSecond: {
+                    const v4 = super.internalDivide(9.290304e-2, 1.3558179483314004);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case HeatFluxUnits.PoundsPerSecondCubed: return super.internalDivide(this.value, 4.5359237e-1);
                 case HeatFluxUnits.NanowattsPerSquareMeter: return super.internalDivide(this.value, 1e-9);
                 case HeatFluxUnits.MicrowattsPerSquareMeter: return super.internalDivide(this.value, 0.000001);
@@ -510,22 +540,22 @@ export class HeatFlux extends BaseUnit {
                 case HeatFluxUnits.DeciwattsPerSquareMeter: return super.internalDivide(this.value, 0.1);
                 case HeatFluxUnits.KilowattsPerSquareMeter: return super.internalDivide(this.value, 1000);
                 case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter: {
-                    const v3 = super.internalDivide(this.value, 4.1868e4);
+                    const v3 = super.internalDivide(this.value, 4.184e4);
                     return super.internalDivide(v3, 1000);
                 }
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case HeatFluxUnits.WattsPerSquareMeter: return this.value;
-            case HeatFluxUnits.WattsPerSquareInch: return this.value / 1.5500031e3;
-            case HeatFluxUnits.WattsPerSquareFoot: return this.value / 1.07639e1;
-            case HeatFluxUnits.BtusPerSecondSquareInch: return this.value / 1.63533984e6;
-            case HeatFluxUnits.BtusPerSecondSquareFoot: return this.value / 1.13565267e4;
-            case HeatFluxUnits.BtusPerMinuteSquareFoot: return this.value / 1.89275445e2;
-            case HeatFluxUnits.BtusPerHourSquareFoot: return this.value / 3.15459075;
-            case HeatFluxUnits.CaloriesPerSecondSquareCentimeter: return this.value / 4.1868e4;
-            case HeatFluxUnits.KilocaloriesPerHourSquareMeter: return this.value / 1.163;
-            case HeatFluxUnits.PoundsForcePerFootSecond: return this.value / 1.459390293720636e1;
+            case HeatFluxUnits.WattsPerSquareInch: return this.value * (2.54e-2 * 2.54e-2);
+            case HeatFluxUnits.WattsPerSquareFoot: return this.value * (0.3048 * 0.3048);
+            case HeatFluxUnits.BtusPerSecondSquareInch: return this.value * (2.54e-2 * 2.54e-2) / 1055.05585262;
+            case HeatFluxUnits.BtusPerSecondSquareFoot: return this.value * (0.3048 * 0.3048) / 1055.05585262;
+            case HeatFluxUnits.BtusPerMinuteSquareFoot: return this.value * (0.3048 * 0.3048 * 60) / 1055.05585262;
+            case HeatFluxUnits.BtusPerHourSquareFoot: return this.value * (0.3048 * 0.3048 * 3600) / 1055.05585262;
+            case HeatFluxUnits.CaloriesPerSecondSquareCentimeter: return this.value / 4.184e4;
+            case HeatFluxUnits.KilocaloriesPerHourSquareMeter: return this.value * 3600 / 4.184e3;
+            case HeatFluxUnits.PoundsForcePerFootSecond: return this.value * 9.290304e-2 / 1.3558179483314004;
             case HeatFluxUnits.PoundsPerSecondCubed: return this.value / 4.5359237e-1;
             case HeatFluxUnits.NanowattsPerSquareMeter: return (this.value) / 1e-9;
             case HeatFluxUnits.MicrowattsPerSquareMeter: return (this.value) / 0.000001;
@@ -533,7 +563,7 @@ export class HeatFlux extends BaseUnit {
             case HeatFluxUnits.CentiwattsPerSquareMeter: return (this.value) / 0.01;
             case HeatFluxUnits.DeciwattsPerSquareMeter: return (this.value) / 0.1;
             case HeatFluxUnits.KilowattsPerSquareMeter: return (this.value) / 1000;
-            case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter: return (this.value / 4.1868e4) / 1000;
+            case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter: return (this.value / 4.184e4) / 1000;
             default: return Number.NaN;
         }
     }
@@ -542,15 +572,45 @@ export class HeatFlux extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case HeatFluxUnits.WattsPerSquareMeter: return value;
-                case HeatFluxUnits.WattsPerSquareInch: return super.internalMultiply(value, 1.5500031e3);
-                case HeatFluxUnits.WattsPerSquareFoot: return super.internalMultiply(value, 1.07639e1);
-                case HeatFluxUnits.BtusPerSecondSquareInch: return super.internalMultiply(value, 1.63533984e6);
-                case HeatFluxUnits.BtusPerSecondSquareFoot: return super.internalMultiply(value, 1.13565267e4);
-                case HeatFluxUnits.BtusPerMinuteSquareFoot: return super.internalMultiply(value, 1.89275445e2);
-                case HeatFluxUnits.BtusPerHourSquareFoot: return super.internalMultiply(value, 3.15459075);
-                case HeatFluxUnits.CaloriesPerSecondSquareCentimeter: return super.internalMultiply(value, 4.1868e4);
-                case HeatFluxUnits.KilocaloriesPerHourSquareMeter: return super.internalMultiply(value, 1.163);
-                case HeatFluxUnits.PoundsForcePerFootSecond: return super.internalMultiply(value, 1.459390293720636e1);
+                case HeatFluxUnits.WattsPerSquareInch: {
+                    const v4 = super.internalMultiply(2.54e-2, 2.54e-2);
+                    return super.internalDivide(value, v4);
+                }
+                case HeatFluxUnits.WattsPerSquareFoot: {
+                    const v4 = super.internalMultiply(0.3048, 0.3048);
+                    return super.internalDivide(value, v4);
+                }
+                case HeatFluxUnits.BtusPerSecondSquareInch: {
+                    const v5 = super.internalMultiply(2.54e-2, 2.54e-2);
+                    const v6 = super.internalDivide(1055.05585262, v5);
+                    return super.internalMultiply(value, v6);
+                }
+                case HeatFluxUnits.BtusPerSecondSquareFoot: {
+                    const v5 = super.internalMultiply(0.3048, 0.3048);
+                    const v6 = super.internalDivide(1055.05585262, v5);
+                    return super.internalMultiply(value, v6);
+                }
+                case HeatFluxUnits.BtusPerMinuteSquareFoot: {
+                    const v5 = super.internalMultiply(0.3048, 0.3048);
+                    const v7 = super.internalMultiply(v5, 60);
+                    const v8 = super.internalDivide(1055.05585262, v7);
+                    return super.internalMultiply(value, v8);
+                }
+                case HeatFluxUnits.BtusPerHourSquareFoot: {
+                    const v5 = super.internalMultiply(0.3048, 0.3048);
+                    const v7 = super.internalMultiply(v5, 3600);
+                    const v8 = super.internalDivide(1055.05585262, v7);
+                    return super.internalMultiply(value, v8);
+                }
+                case HeatFluxUnits.CaloriesPerSecondSquareCentimeter: return super.internalMultiply(value, 4.184e4);
+                case HeatFluxUnits.KilocaloriesPerHourSquareMeter: {
+                    const v4 = super.internalDivide(4.184e3, 3600);
+                    return super.internalMultiply(value, v4);
+                }
+                case HeatFluxUnits.PoundsForcePerFootSecond: {
+                    const v4 = super.internalDivide(1.3558179483314004, 9.290304e-2);
+                    return super.internalMultiply(value, v4);
+                }
                 case HeatFluxUnits.PoundsPerSecondCubed: return super.internalMultiply(value, 4.5359237e-1);
                 case HeatFluxUnits.NanowattsPerSquareMeter: return super.internalMultiply(value, 1e-9);
                 case HeatFluxUnits.MicrowattsPerSquareMeter: return super.internalMultiply(value, 0.000001);
@@ -559,22 +619,22 @@ export class HeatFlux extends BaseUnit {
                 case HeatFluxUnits.DeciwattsPerSquareMeter: return super.internalMultiply(value, 0.1);
                 case HeatFluxUnits.KilowattsPerSquareMeter: return super.internalMultiply(value, 1000);
                 case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter: {
-                    const v3 = super.internalMultiply(value, 4.1868e4);
+                    const v3 = super.internalMultiply(value, 4.184e4);
                     return super.internalMultiply(v3, 1000);
                 }
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case HeatFluxUnits.WattsPerSquareMeter: return value;
-            case HeatFluxUnits.WattsPerSquareInch: return value * 1.5500031e3;
-            case HeatFluxUnits.WattsPerSquareFoot: return value * 1.07639e1;
-            case HeatFluxUnits.BtusPerSecondSquareInch: return value * 1.63533984e6;
-            case HeatFluxUnits.BtusPerSecondSquareFoot: return value * 1.13565267e4;
-            case HeatFluxUnits.BtusPerMinuteSquareFoot: return value * 1.89275445e2;
-            case HeatFluxUnits.BtusPerHourSquareFoot: return value * 3.15459075;
-            case HeatFluxUnits.CaloriesPerSecondSquareCentimeter: return value * 4.1868e4;
-            case HeatFluxUnits.KilocaloriesPerHourSquareMeter: return value * 1.163;
-            case HeatFluxUnits.PoundsForcePerFootSecond: return value * 1.459390293720636e1;
+            case HeatFluxUnits.WattsPerSquareInch: return value / (2.54e-2 * 2.54e-2);
+            case HeatFluxUnits.WattsPerSquareFoot: return value / (0.3048 * 0.3048);
+            case HeatFluxUnits.BtusPerSecondSquareInch: return value * 1055.05585262 / (2.54e-2 * 2.54e-2);
+            case HeatFluxUnits.BtusPerSecondSquareFoot: return value * 1055.05585262 / (0.3048 * 0.3048);
+            case HeatFluxUnits.BtusPerMinuteSquareFoot: return value * 1055.05585262 / (0.3048 * 0.3048 * 60);
+            case HeatFluxUnits.BtusPerHourSquareFoot: return value * 1055.05585262 / (0.3048 * 0.3048 * 3600);
+            case HeatFluxUnits.CaloriesPerSecondSquareCentimeter: return value * 4.184e4;
+            case HeatFluxUnits.KilocaloriesPerHourSquareMeter: return value * 4.184e3 / 3600;
+            case HeatFluxUnits.PoundsForcePerFootSecond: return value * 1.3558179483314004 / 9.290304e-2;
             case HeatFluxUnits.PoundsPerSecondCubed: return value * 4.5359237e-1;
             case HeatFluxUnits.NanowattsPerSquareMeter: return (value) * 1e-9;
             case HeatFluxUnits.MicrowattsPerSquareMeter: return (value) * 0.000001;
@@ -582,7 +642,7 @@ export class HeatFlux extends BaseUnit {
             case HeatFluxUnits.CentiwattsPerSquareMeter: return (value) * 0.01;
             case HeatFluxUnits.DeciwattsPerSquareMeter: return (value) * 0.1;
             case HeatFluxUnits.KilowattsPerSquareMeter: return (value) * 1000;
-            case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter: return (value * 4.1868e4) * 1000;
+            case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter: return (value * 4.184e4) * 1000;
             default: return Number.NaN;
         }
     }
@@ -610,17 +670,17 @@ export class HeatFlux extends BaseUnit {
             case HeatFluxUnits.WattsPerSquareFoot:
                 return super.truncateFractionDigits(this.WattsPerSquareFoot, options as ToStringOptions) + ` W/ft²`;
             case HeatFluxUnits.BtusPerSecondSquareInch:
-                return super.truncateFractionDigits(this.BtusPerSecondSquareInch, options as ToStringOptions) + ` BTU/s·in²`;
+                return super.truncateFractionDigits(this.BtusPerSecondSquareInch, options as ToStringOptions) + ` BTU/(s·in²)`;
             case HeatFluxUnits.BtusPerSecondSquareFoot:
-                return super.truncateFractionDigits(this.BtusPerSecondSquareFoot, options as ToStringOptions) + ` BTU/s·ft²`;
+                return super.truncateFractionDigits(this.BtusPerSecondSquareFoot, options as ToStringOptions) + ` BTU/(s·ft²)`;
             case HeatFluxUnits.BtusPerMinuteSquareFoot:
-                return super.truncateFractionDigits(this.BtusPerMinuteSquareFoot, options as ToStringOptions) + ` BTU/min·ft²`;
+                return super.truncateFractionDigits(this.BtusPerMinuteSquareFoot, options as ToStringOptions) + ` BTU/(min·ft²)`;
             case HeatFluxUnits.BtusPerHourSquareFoot:
-                return super.truncateFractionDigits(this.BtusPerHourSquareFoot, options as ToStringOptions) + ` BTU/h·ft²`;
+                return super.truncateFractionDigits(this.BtusPerHourSquareFoot, options as ToStringOptions) + ` BTU/(h·ft²)`;
             case HeatFluxUnits.CaloriesPerSecondSquareCentimeter:
-                return super.truncateFractionDigits(this.CaloriesPerSecondSquareCentimeter, options as ToStringOptions) + ` cal/s·cm²`;
+                return super.truncateFractionDigits(this.CaloriesPerSecondSquareCentimeter, options as ToStringOptions) + ` cal/(s·cm²)`;
             case HeatFluxUnits.KilocaloriesPerHourSquareMeter:
-                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeter, options as ToStringOptions) + ` kcal/h·m²`;
+                return super.truncateFractionDigits(this.KilocaloriesPerHourSquareMeter, options as ToStringOptions) + ` kcal/(h·m²)`;
             case HeatFluxUnits.PoundsForcePerFootSecond:
                 return super.truncateFractionDigits(this.PoundsForcePerFootSecond, options as ToStringOptions) + ` lbf/(ft·s)`;
             case HeatFluxUnits.PoundsPerSecondCubed:
@@ -638,7 +698,7 @@ export class HeatFlux extends BaseUnit {
             case HeatFluxUnits.KilowattsPerSquareMeter:
                 return super.truncateFractionDigits(this.KilowattsPerSquareMeter, options as ToStringOptions) + ` kW/m²`;
             case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter:
-                return super.truncateFractionDigits(this.KilocaloriesPerSecondSquareCentimeter, options as ToStringOptions) + ` kcal/s·cm²`;
+                return super.truncateFractionDigits(this.KilocaloriesPerSecondSquareCentimeter, options as ToStringOptions) + ` kcal/(s·cm²)`;
         default:
             break;
         }
@@ -663,17 +723,17 @@ export class HeatFlux extends BaseUnit {
             case HeatFluxUnits.WattsPerSquareFoot:
                 return `W/ft²`;
             case HeatFluxUnits.BtusPerSecondSquareInch:
-                return `BTU/s·in²`;
+                return `BTU/(s·in²)`;
             case HeatFluxUnits.BtusPerSecondSquareFoot:
-                return `BTU/s·ft²`;
+                return `BTU/(s·ft²)`;
             case HeatFluxUnits.BtusPerMinuteSquareFoot:
-                return `BTU/min·ft²`;
+                return `BTU/(min·ft²)`;
             case HeatFluxUnits.BtusPerHourSquareFoot:
-                return `BTU/h·ft²`;
+                return `BTU/(h·ft²)`;
             case HeatFluxUnits.CaloriesPerSecondSquareCentimeter:
-                return `cal/s·cm²`;
+                return `cal/(s·cm²)`;
             case HeatFluxUnits.KilocaloriesPerHourSquareMeter:
-                return `kcal/h·m²`;
+                return `kcal/(h·m²)`;
             case HeatFluxUnits.PoundsForcePerFootSecond:
                 return `lbf/(ft·s)`;
             case HeatFluxUnits.PoundsPerSecondCubed:
@@ -691,7 +751,7 @@ export class HeatFlux extends BaseUnit {
             case HeatFluxUnits.KilowattsPerSquareMeter:
                 return `kW/m²`;
             case HeatFluxUnits.KilocaloriesPerSecondSquareCentimeter:
-                return `kcal/s·cm²`;
+                return `kcal/(s·cm²)`;
         default:
             break;
         }

@@ -12,7 +12,7 @@ export interface FrequencyDto {
 export enum FrequencyUnits {
     /** */
     Hertz = "Hertz",
-    /** */
+    /** In SI units, angular frequency is normally presented with the unit radian per second, and need not express a rotational value. The unit hertz (Hz) is dimensionally equivalent, but by convention it is only used for frequency f, never for angular frequency ω. This convention is used to help avoid the confusion that arises when dealing with quantities such as frequency and angular quantities because the units of measure (such as cycle or radian) are considered to be one and hence may be omitted when expressing quantities in terms of SI units. */
     RadiansPerSecond = "RadianPerSecond",
     /** */
     CyclesPerMinute = "CyclePerMinute",
@@ -22,8 +22,6 @@ export enum FrequencyUnits {
     BeatsPerMinute = "BeatPerMinute",
     /** */
     PerSecond = "PerSecond",
-    /** */
-    BUnits = "BUnit",
     /** */
     Microhertz = "Microhertz",
     /** */
@@ -47,7 +45,6 @@ export class Frequency extends BaseUnit {
     private cyclesperhourLazy: number | null = null;
     private beatsperminuteLazy: number | null = null;
     private persecondLazy: number | null = null;
-    private bunitsLazy: number | null = null;
     private microhertzLazy: number | null = null;
     private millihertzLazy: number | null = null;
     private kilohertzLazy: number | null = null;
@@ -91,7 +88,7 @@ export class Frequency extends BaseUnit {
         return this.hertzLazy = this.convertFromBase(FrequencyUnits.Hertz);
     }
 
-    /** */
+    /** In SI units, angular frequency is normally presented with the unit radian per second, and need not express a rotational value. The unit hertz (Hz) is dimensionally equivalent, but by convention it is only used for frequency f, never for angular frequency ω. This convention is used to help avoid the confusion that arises when dealing with quantities such as frequency and angular quantities because the units of measure (such as cycle or radian) are considered to be one and hence may be omitted when expressing quantities in terms of SI units. */
     public get RadiansPerSecond(): number {
         if(this.radianspersecondLazy !== null){
             return this.radianspersecondLazy;
@@ -129,14 +126,6 @@ export class Frequency extends BaseUnit {
             return this.persecondLazy;
         }
         return this.persecondLazy = this.convertFromBase(FrequencyUnits.PerSecond);
-    }
-
-    /** */
-    public get BUnits(): number {
-        if(this.bunitsLazy !== null){
-            return this.bunitsLazy;
-        }
-        return this.bunitsLazy = this.convertFromBase(FrequencyUnits.BUnits);
     }
 
     /** */
@@ -199,7 +188,7 @@ export class Frequency extends BaseUnit {
 
     /**
      * Create a new Frequency instance from a RadiansPerSecond
-     *
+     * In SI units, angular frequency is normally presented with the unit radian per second, and need not express a rotational value. The unit hertz (Hz) is dimensionally equivalent, but by convention it is only used for frequency f, never for angular frequency ω. This convention is used to help avoid the confusion that arises when dealing with quantities such as frequency and angular quantities because the units of measure (such as cycle or radian) are considered to be one and hence may be omitted when expressing quantities in terms of SI units.
      * @param value The unit as RadiansPerSecond to create a new Frequency from.
      * @returns The new Frequency instance.
      */
@@ -245,16 +234,6 @@ export class Frequency extends BaseUnit {
      */
     public static FromPerSecond(value: number): Frequency {
         return new Frequency(value, FrequencyUnits.PerSecond);
-    }
-
-    /**
-     * Create a new Frequency instance from a BUnits
-     *
-     * @param value The unit as BUnits to create a new Frequency from.
-     * @returns The new Frequency instance.
-     */
-    public static FromBUnits(value: number): Frequency {
-        return new Frequency(value, FrequencyUnits.BUnits);
     }
 
     /**
@@ -365,7 +344,6 @@ export class Frequency extends BaseUnit {
             case FrequencyUnits.CyclesPerHour: return this.CyclesPerHour;
             case FrequencyUnits.BeatsPerMinute: return this.BeatsPerMinute;
             case FrequencyUnits.PerSecond: return this.PerSecond;
-            case FrequencyUnits.BUnits: return this.BUnits;
             case FrequencyUnits.Microhertz: return this.Microhertz;
             case FrequencyUnits.Millihertz: return this.Millihertz;
             case FrequencyUnits.Kilohertz: return this.Kilohertz;
@@ -383,15 +361,14 @@ export class Frequency extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case FrequencyUnits.Hertz: return this.value;
-                case FrequencyUnits.RadiansPerSecond: return super.internalMultiply(this.value, 6.2831853072);
+                case FrequencyUnits.RadiansPerSecond: {
+                    const v4 = super.internalMultiply(2, Math.PI);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case FrequencyUnits.CyclesPerMinute: return super.internalMultiply(this.value, 60);
                 case FrequencyUnits.CyclesPerHour: return super.internalMultiply(this.value, 3600);
                 case FrequencyUnits.BeatsPerMinute: return super.internalMultiply(this.value, 60);
                 case FrequencyUnits.PerSecond: return this.value;
-                case FrequencyUnits.BUnits: {
-                    const v3 = super.internalMultiply(this.value, this.value);
-                    return super.internalMultiply(v3, 1e-3);
-                }
                 case FrequencyUnits.Microhertz: return super.internalDivide(this.value, 0.000001);
                 case FrequencyUnits.Millihertz: return super.internalDivide(this.value, 0.001);
                 case FrequencyUnits.Kilohertz: return super.internalDivide(this.value, 1000);
@@ -402,12 +379,11 @@ export class Frequency extends BaseUnit {
             }
         switch (toUnit) {
             case FrequencyUnits.Hertz: return this.value;
-            case FrequencyUnits.RadiansPerSecond: return this.value * 6.2831853072;
+            case FrequencyUnits.RadiansPerSecond: return this.value * (2 * Math.PI);
             case FrequencyUnits.CyclesPerMinute: return this.value * 60;
             case FrequencyUnits.CyclesPerHour: return this.value * 3600;
             case FrequencyUnits.BeatsPerMinute: return this.value * 60;
             case FrequencyUnits.PerSecond: return this.value;
-            case FrequencyUnits.BUnits: return this.value * this.value * 1e-3;
             case FrequencyUnits.Microhertz: return (this.value) / 0.000001;
             case FrequencyUnits.Millihertz: return (this.value) / 0.001;
             case FrequencyUnits.Kilohertz: return (this.value) / 1000;
@@ -422,15 +398,14 @@ export class Frequency extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case FrequencyUnits.Hertz: return value;
-                case FrequencyUnits.RadiansPerSecond: return super.internalDivide(value, 6.2831853072);
+                case FrequencyUnits.RadiansPerSecond: {
+                    const v4 = super.internalMultiply(2, Math.PI);
+                    return super.internalDivide(value, v4);
+                }
                 case FrequencyUnits.CyclesPerMinute: return super.internalDivide(value, 60);
                 case FrequencyUnits.CyclesPerHour: return super.internalDivide(value, 3600);
                 case FrequencyUnits.BeatsPerMinute: return super.internalDivide(value, 60);
                 case FrequencyUnits.PerSecond: return value;
-                case FrequencyUnits.BUnits: {
-                    const v3 = super.internalMultiply(value, 1e3);
-                    return super.internalSqrt(v3);
-                }
                 case FrequencyUnits.Microhertz: return super.internalMultiply(value, 0.000001);
                 case FrequencyUnits.Millihertz: return super.internalMultiply(value, 0.001);
                 case FrequencyUnits.Kilohertz: return super.internalMultiply(value, 1000);
@@ -441,12 +416,11 @@ export class Frequency extends BaseUnit {
             }
         switch (fromUnit) {
             case FrequencyUnits.Hertz: return value;
-            case FrequencyUnits.RadiansPerSecond: return value / 6.2831853072;
+            case FrequencyUnits.RadiansPerSecond: return value / (2 * Math.PI);
             case FrequencyUnits.CyclesPerMinute: return value / 60;
             case FrequencyUnits.CyclesPerHour: return value / 3600;
             case FrequencyUnits.BeatsPerMinute: return value / 60;
             case FrequencyUnits.PerSecond: return value;
-            case FrequencyUnits.BUnits: return Math.sqrt(value * 1e3);
             case FrequencyUnits.Microhertz: return (value) * 0.000001;
             case FrequencyUnits.Millihertz: return (value) * 0.001;
             case FrequencyUnits.Kilohertz: return (value) * 1000;
@@ -485,8 +459,6 @@ export class Frequency extends BaseUnit {
                 return super.truncateFractionDigits(this.BeatsPerMinute, options as ToStringOptions) + ` bpm`;
             case FrequencyUnits.PerSecond:
                 return super.truncateFractionDigits(this.PerSecond, options as ToStringOptions) + ` s⁻¹`;
-            case FrequencyUnits.BUnits:
-                return super.truncateFractionDigits(this.BUnits, options as ToStringOptions) + ` B Units`;
             case FrequencyUnits.Microhertz:
                 return super.truncateFractionDigits(this.Microhertz, options as ToStringOptions) + ` μHz`;
             case FrequencyUnits.Millihertz:
@@ -528,8 +500,6 @@ export class Frequency extends BaseUnit {
                 return `bpm`;
             case FrequencyUnits.PerSecond:
                 return `s⁻¹`;
-            case FrequencyUnits.BUnits:
-                return `B Units`;
             case FrequencyUnits.Microhertz:
                 return `μHz`;
             case FrequencyUnits.Millihertz:

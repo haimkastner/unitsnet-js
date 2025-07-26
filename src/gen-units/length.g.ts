@@ -16,11 +16,11 @@ export enum LengthUnits {
     Miles = "Mile",
     /** The yard (symbol: yd) is an English unit of length in both the British imperial and US customary systems of measurement equalling 3 feet (or 36 inches). Since 1959 the yard has been by international agreement standardized as exactly 0.9144 meter. A distance of 1,760 yards is equal to 1 mile. */
     Yards = "Yard",
-    /** */
+    /** The foot (pl. feet; standard symbol: ft) is a unit of length in the British imperial and United States customary systems of measurement. The prime symbol, ′, is commonly used to represent the foot. In both customary and imperial units, one foot comprises 12 inches, and one yard comprises three feet. Since an international agreement in 1959, the foot is defined as equal to exactly 0.3048 meters. */
     Feet = "Foot",
     /** In the United States, the foot was defined as 12 inches, with the inch being defined by the Mendenhall Order of 1893 as 39.37 inches = 1 m. This makes a U.S. survey foot exactly 1200/3937 meters. */
     UsSurveyFeet = "UsSurveyFoot",
-    /** */
+    /** The inch (symbol: in or ″) is a unit of length in the British Imperial and the United States customary systems of measurement. It is equal to 1/36 yard or 1/12 of a foot. Derived from the Roman uncia ("twelfth"), the word inch is also sometimes used to translate similar units in other measurement systems, usually understood as deriving from the width of the human thumb. */
     Inches = "Inch",
     /** */
     Mils = "Mil",
@@ -32,17 +32,17 @@ export enum LengthUnits {
     Shackles = "Shackle",
     /** */
     Microinches = "Microinch",
-    /** */
+    /** In typography, the point is the smallest unit of measure. It is used for measuring font size, leading, and other items on a printed page. In modern times this size of the point has been approximated as exactly 1⁄72.27 (0.01383700013837) of the inch by Donald Knuth for the default unit of his TeX computer typesetting system and is thus sometimes known as the TeX point. */
     PrinterPoints = "PrinterPoint",
-    /** */
+    /** The desktop publishing point (DTP) is defined as 1⁄72 of an inch (1/72 × 25.4 mm ≈ 0.353 mm) and, as with earlier American point sizes, is considered to be 1⁄12 of a pica. */
     DtpPoints = "DtpPoint",
-    /** */
+    /** The American pica of 0.16604 inches (~4.217 mm) was established by the United States Type Founders' Association in 1886. In TeX one pica is 400⁄2409 of an inch. */
     PrinterPicas = "PrinterPica",
-    /** */
+    /** The pica is a typographic unit of measure corresponding to approximately 1⁄6 of an inch, or from 1⁄68 to 1⁄73 of a foot. One pica is further divided into 12 points. */
     DtpPicas = "DtpPica",
-    /** */
+    /** A twip (abbreviating "twentieth of a point" or "twentieth of an inch point") is a typographical measurement, defined as 1⁄20 of a typographical point. One twip is 1⁄1440 inch, or ~17.64 μm. */
     Twips = "Twip",
-    /** */
+    /** The hand is a non-SI unit of measurement of length standardized to 4 in (101.6 mm). It is used to measure the height of horses in many English-speaking countries, including Australia, Canada, Ireland, the United Kingdom, and the United States. It was originally based on the breadth of a human hand. */
     Hands = "Hand",
     /** One Astronomical Unit is the distance from the solar system Star, the sun, to planet Earth. */
     AstronomicalUnits = "AstronomicalUnit",
@@ -52,7 +52,7 @@ export enum LengthUnits {
     LightYears = "LightYear",
     /** Solar radius is a ratio unit to the radius of the solar system star, the sun. */
     SolarRadiuses = "SolarRadius",
-    /** */
+    /** The chain (abbreviated ch) is a unit of length equal to 66 feet (22 yards), used in both the US customary and Imperial unit systems. It is subdivided into 100 links. There are 10 chains in a furlong, and 80 chains in one statute mile. In metric terms, it is 20.1168 m long. */
     Chains = "Chain",
     /** Angstrom is a metric unit of length equal to 1e-10 meter */
     Angstroms = "Angstrom",
@@ -194,7 +194,7 @@ export class Length extends BaseUnit {
         return this.yardsLazy = this.convertFromBase(LengthUnits.Yards);
     }
 
-    /** */
+    /** The foot (pl. feet; standard symbol: ft) is a unit of length in the British imperial and United States customary systems of measurement. The prime symbol, ′, is commonly used to represent the foot. In both customary and imperial units, one foot comprises 12 inches, and one yard comprises three feet. Since an international agreement in 1959, the foot is defined as equal to exactly 0.3048 meters. */
     public get Feet(): number {
         if(this.feetLazy !== null){
             return this.feetLazy;
@@ -210,7 +210,7 @@ export class Length extends BaseUnit {
         return this.ussurveyfeetLazy = this.convertFromBase(LengthUnits.UsSurveyFeet);
     }
 
-    /** */
+    /** The inch (symbol: in or ″) is a unit of length in the British Imperial and the United States customary systems of measurement. It is equal to 1/36 yard or 1/12 of a foot. Derived from the Roman uncia ("twelfth"), the word inch is also sometimes used to translate similar units in other measurement systems, usually understood as deriving from the width of the human thumb. */
     public get Inches(): number {
         if(this.inchesLazy !== null){
             return this.inchesLazy;
@@ -258,7 +258,7 @@ export class Length extends BaseUnit {
         return this.microinchesLazy = this.convertFromBase(LengthUnits.Microinches);
     }
 
-    /** */
+    /** In typography, the point is the smallest unit of measure. It is used for measuring font size, leading, and other items on a printed page. In modern times this size of the point has been approximated as exactly 1⁄72.27 (0.01383700013837) of the inch by Donald Knuth for the default unit of his TeX computer typesetting system and is thus sometimes known as the TeX point. */
     public get PrinterPoints(): number {
         if(this.printerpointsLazy !== null){
             return this.printerpointsLazy;
@@ -266,7 +266,7 @@ export class Length extends BaseUnit {
         return this.printerpointsLazy = this.convertFromBase(LengthUnits.PrinterPoints);
     }
 
-    /** */
+    /** The desktop publishing point (DTP) is defined as 1⁄72 of an inch (1/72 × 25.4 mm ≈ 0.353 mm) and, as with earlier American point sizes, is considered to be 1⁄12 of a pica. */
     public get DtpPoints(): number {
         if(this.dtppointsLazy !== null){
             return this.dtppointsLazy;
@@ -274,7 +274,7 @@ export class Length extends BaseUnit {
         return this.dtppointsLazy = this.convertFromBase(LengthUnits.DtpPoints);
     }
 
-    /** */
+    /** The American pica of 0.16604 inches (~4.217 mm) was established by the United States Type Founders' Association in 1886. In TeX one pica is 400⁄2409 of an inch. */
     public get PrinterPicas(): number {
         if(this.printerpicasLazy !== null){
             return this.printerpicasLazy;
@@ -282,7 +282,7 @@ export class Length extends BaseUnit {
         return this.printerpicasLazy = this.convertFromBase(LengthUnits.PrinterPicas);
     }
 
-    /** */
+    /** The pica is a typographic unit of measure corresponding to approximately 1⁄6 of an inch, or from 1⁄68 to 1⁄73 of a foot. One pica is further divided into 12 points. */
     public get DtpPicas(): number {
         if(this.dtppicasLazy !== null){
             return this.dtppicasLazy;
@@ -290,7 +290,7 @@ export class Length extends BaseUnit {
         return this.dtppicasLazy = this.convertFromBase(LengthUnits.DtpPicas);
     }
 
-    /** */
+    /** A twip (abbreviating "twentieth of a point" or "twentieth of an inch point") is a typographical measurement, defined as 1⁄20 of a typographical point. One twip is 1⁄1440 inch, or ~17.64 μm. */
     public get Twips(): number {
         if(this.twipsLazy !== null){
             return this.twipsLazy;
@@ -298,7 +298,7 @@ export class Length extends BaseUnit {
         return this.twipsLazy = this.convertFromBase(LengthUnits.Twips);
     }
 
-    /** */
+    /** The hand is a non-SI unit of measurement of length standardized to 4 in (101.6 mm). It is used to measure the height of horses in many English-speaking countries, including Australia, Canada, Ireland, the United Kingdom, and the United States. It was originally based on the breadth of a human hand. */
     public get Hands(): number {
         if(this.handsLazy !== null){
             return this.handsLazy;
@@ -338,7 +338,7 @@ export class Length extends BaseUnit {
         return this.solarradiusesLazy = this.convertFromBase(LengthUnits.SolarRadiuses);
     }
 
-    /** */
+    /** The chain (abbreviated ch) is a unit of length equal to 66 feet (22 yards), used in both the US customary and Imperial unit systems. It is subdivided into 100 links. There are 10 chains in a furlong, and 80 chains in one statute mile. In metric terms, it is 20.1168 m long. */
     public get Chains(): number {
         if(this.chainsLazy !== null){
             return this.chainsLazy;
@@ -538,7 +538,7 @@ export class Length extends BaseUnit {
 
     /**
      * Create a new Length instance from a Feet
-     *
+     * The foot (pl. feet; standard symbol: ft) is a unit of length in the British imperial and United States customary systems of measurement. The prime symbol, ′, is commonly used to represent the foot. In both customary and imperial units, one foot comprises 12 inches, and one yard comprises three feet. Since an international agreement in 1959, the foot is defined as equal to exactly 0.3048 meters.
      * @param value The unit as Feet to create a new Length from.
      * @returns The new Length instance.
      */
@@ -558,7 +558,7 @@ export class Length extends BaseUnit {
 
     /**
      * Create a new Length instance from a Inches
-     *
+     * The inch (symbol: in or ″) is a unit of length in the British Imperial and the United States customary systems of measurement. It is equal to 1/36 yard or 1/12 of a foot. Derived from the Roman uncia ("twelfth"), the word inch is also sometimes used to translate similar units in other measurement systems, usually understood as deriving from the width of the human thumb.
      * @param value The unit as Inches to create a new Length from.
      * @returns The new Length instance.
      */
@@ -618,7 +618,7 @@ export class Length extends BaseUnit {
 
     /**
      * Create a new Length instance from a PrinterPoints
-     *
+     * In typography, the point is the smallest unit of measure. It is used for measuring font size, leading, and other items on a printed page. In modern times this size of the point has been approximated as exactly 1⁄72.27 (0.01383700013837) of the inch by Donald Knuth for the default unit of his TeX computer typesetting system and is thus sometimes known as the TeX point.
      * @param value The unit as PrinterPoints to create a new Length from.
      * @returns The new Length instance.
      */
@@ -628,7 +628,7 @@ export class Length extends BaseUnit {
 
     /**
      * Create a new Length instance from a DtpPoints
-     *
+     * The desktop publishing point (DTP) is defined as 1⁄72 of an inch (1/72 × 25.4 mm ≈ 0.353 mm) and, as with earlier American point sizes, is considered to be 1⁄12 of a pica.
      * @param value The unit as DtpPoints to create a new Length from.
      * @returns The new Length instance.
      */
@@ -638,7 +638,7 @@ export class Length extends BaseUnit {
 
     /**
      * Create a new Length instance from a PrinterPicas
-     *
+     * The American pica of 0.16604 inches (~4.217 mm) was established by the United States Type Founders' Association in 1886. In TeX one pica is 400⁄2409 of an inch.
      * @param value The unit as PrinterPicas to create a new Length from.
      * @returns The new Length instance.
      */
@@ -648,7 +648,7 @@ export class Length extends BaseUnit {
 
     /**
      * Create a new Length instance from a DtpPicas
-     *
+     * The pica is a typographic unit of measure corresponding to approximately 1⁄6 of an inch, or from 1⁄68 to 1⁄73 of a foot. One pica is further divided into 12 points.
      * @param value The unit as DtpPicas to create a new Length from.
      * @returns The new Length instance.
      */
@@ -658,7 +658,7 @@ export class Length extends BaseUnit {
 
     /**
      * Create a new Length instance from a Twips
-     *
+     * A twip (abbreviating "twentieth of a point" or "twentieth of an inch point") is a typographical measurement, defined as 1⁄20 of a typographical point. One twip is 1⁄1440 inch, or ~17.64 μm.
      * @param value The unit as Twips to create a new Length from.
      * @returns The new Length instance.
      */
@@ -668,7 +668,7 @@ export class Length extends BaseUnit {
 
     /**
      * Create a new Length instance from a Hands
-     *
+     * The hand is a non-SI unit of measurement of length standardized to 4 in (101.6 mm). It is used to measure the height of horses in many English-speaking countries, including Australia, Canada, Ireland, the United Kingdom, and the United States. It was originally based on the breadth of a human hand.
      * @param value The unit as Hands to create a new Length from.
      * @returns The new Length instance.
      */
@@ -718,7 +718,7 @@ export class Length extends BaseUnit {
 
     /**
      * Create a new Length instance from a Chains
-     *
+     * The chain (abbreviated ch) is a unit of length equal to 66 feet (22 yards), used in both the US customary and Imperial unit systems. It is subdivided into 100 links. There are 10 chains in a furlong, and 80 chains in one statute mile. In metric terms, it is 20.1168 m long.
      * @param value The unit as Chains to create a new Length from.
      * @returns The new Length instance.
      */
@@ -1035,16 +1035,26 @@ export class Length extends BaseUnit {
                 case LengthUnits.Shackles: return super.internalDivide(this.value, 27.432);
                 case LengthUnits.Microinches: return super.internalDivide(this.value, 2.54e-8);
                 case LengthUnits.PrinterPoints: {
-                    const v3 = super.internalDivide(this.value, 2.54e-2);
-                    return super.internalMultiply(v3, 72.27);
+                    const v4 = super.internalDivide(72.27, 2.54e-2);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case LengthUnits.DtpPoints: {
-                    const v3 = super.internalDivide(this.value, 2.54e-2);
-                    return super.internalMultiply(v3, 72);
+                    const v4 = super.internalDivide(72, 2.54e-2);
+                    return super.internalMultiply(this.value, v4);
                 }
-                case LengthUnits.PrinterPicas: return super.internalMultiply(this.value, 237.106301584);
-                case LengthUnits.DtpPicas: return super.internalMultiply(this.value, 236.220472441);
-                case LengthUnits.Twips: return super.internalMultiply(this.value, 56692.913385826);
+                case LengthUnits.PrinterPicas: {
+                    const v5 = super.internalDivide(400, 2409);
+                    const v6 = super.internalMultiply(2.54e-2, v5);
+                    return super.internalDivide(this.value, v6);
+                }
+                case LengthUnits.DtpPicas: {
+                    const v4 = super.internalDivide(6, 2.54e-2);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case LengthUnits.Twips: {
+                    const v4 = super.internalDivide(1440, 2.54e-2);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case LengthUnits.Hands: return super.internalDivide(this.value, 1.016e-1);
                 case LengthUnits.AstronomicalUnits: return super.internalDivide(this.value, 1.4959787070e11);
                 case LengthUnits.Parsecs: return super.internalDivide(this.value, 3.08567758128e16);
@@ -1103,11 +1113,11 @@ export class Length extends BaseUnit {
             case LengthUnits.Fathoms: return this.value / 1.8288;
             case LengthUnits.Shackles: return this.value / 27.432;
             case LengthUnits.Microinches: return this.value / 2.54e-8;
-            case LengthUnits.PrinterPoints: return (this.value / 2.54e-2) * 72.27;
-            case LengthUnits.DtpPoints: return (this.value / 2.54e-2) * 72;
-            case LengthUnits.PrinterPicas: return this.value * 237.106301584;
-            case LengthUnits.DtpPicas: return this.value * 236.220472441;
-            case LengthUnits.Twips: return this.value * 56692.913385826;
+            case LengthUnits.PrinterPoints: return this.value * 72.27 / 2.54e-2;
+            case LengthUnits.DtpPoints: return this.value * 72 / 2.54e-2;
+            case LengthUnits.PrinterPicas: return this.value / (2.54e-2 * 400 / 2409);
+            case LengthUnits.DtpPicas: return this.value * 6 / 2.54e-2;
+            case LengthUnits.Twips: return this.value * 1440 / 2.54e-2;
             case LengthUnits.Hands: return this.value / 1.016e-1;
             case LengthUnits.AstronomicalUnits: return this.value / 1.4959787070e11;
             case LengthUnits.Parsecs: return this.value / 3.08567758128e16;
@@ -1156,16 +1166,26 @@ export class Length extends BaseUnit {
                 case LengthUnits.Shackles: return super.internalMultiply(value, 27.432);
                 case LengthUnits.Microinches: return super.internalMultiply(value, 2.54e-8);
                 case LengthUnits.PrinterPoints: {
-                    const v3 = super.internalDivide(value, 72.27);
-                    return super.internalMultiply(v3, 2.54e-2);
+                    const v4 = super.internalDivide(2.54e-2, 72.27);
+                    return super.internalMultiply(value, v4);
                 }
                 case LengthUnits.DtpPoints: {
-                    const v3 = super.internalDivide(value, 72);
-                    return super.internalMultiply(v3, 2.54e-2);
+                    const v4 = super.internalDivide(2.54e-2, 72);
+                    return super.internalMultiply(value, v4);
                 }
-                case LengthUnits.PrinterPicas: return super.internalDivide(value, 237.106301584);
-                case LengthUnits.DtpPicas: return super.internalDivide(value, 236.220472441);
-                case LengthUnits.Twips: return super.internalDivide(value, 56692.913385826);
+                case LengthUnits.PrinterPicas: {
+                    const v3 = super.internalMultiply(value, 2.54e-2);
+                    const v6 = super.internalDivide(400, 2409);
+                    return super.internalMultiply(v3, v6);
+                }
+                case LengthUnits.DtpPicas: {
+                    const v4 = super.internalDivide(2.54e-2, 6);
+                    return super.internalMultiply(value, v4);
+                }
+                case LengthUnits.Twips: {
+                    const v4 = super.internalDivide(2.54e-2, 1440);
+                    return super.internalMultiply(value, v4);
+                }
                 case LengthUnits.Hands: return super.internalMultiply(value, 1.016e-1);
                 case LengthUnits.AstronomicalUnits: return super.internalMultiply(value, 1.4959787070e11);
                 case LengthUnits.Parsecs: return super.internalMultiply(value, 3.08567758128e16);
@@ -1224,11 +1244,11 @@ export class Length extends BaseUnit {
             case LengthUnits.Fathoms: return value * 1.8288;
             case LengthUnits.Shackles: return value * 27.432;
             case LengthUnits.Microinches: return value * 2.54e-8;
-            case LengthUnits.PrinterPoints: return (value / 72.27) * 2.54e-2;
-            case LengthUnits.DtpPoints: return (value / 72) * 2.54e-2;
-            case LengthUnits.PrinterPicas: return value / 237.106301584;
-            case LengthUnits.DtpPicas: return value / 236.220472441;
-            case LengthUnits.Twips: return value / 56692.913385826;
+            case LengthUnits.PrinterPoints: return value * 2.54e-2 / 72.27 ;
+            case LengthUnits.DtpPoints: return value * 2.54e-2 / 72;
+            case LengthUnits.PrinterPicas: return value * 2.54e-2 * 400 / 2409;
+            case LengthUnits.DtpPicas: return value * 2.54e-2 / 6;
+            case LengthUnits.Twips: return value * 2.54e-2 / 1440;
             case LengthUnits.Hands: return value * 1.016e-1;
             case LengthUnits.AstronomicalUnits: return value * 1.4959787070e11;
             case LengthUnits.Parsecs: return value * 3.08567758128e16;

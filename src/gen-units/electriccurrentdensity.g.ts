@@ -163,14 +163,14 @@ export class ElectricCurrentDensity extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case ElectricCurrentDensityUnits.AmperesPerSquareMeter: return this.value;
-                case ElectricCurrentDensityUnits.AmperesPerSquareInch: return super.internalDivide(this.value, 1.5500031000062000e3);
-                case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return super.internalDivide(this.value, 1.0763910416709722e1);
+                case ElectricCurrentDensityUnits.AmperesPerSquareInch: return super.internalMultiply(this.value, 0.00064516);
+                case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return super.internalMultiply(this.value, 9.290304e-2);
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case ElectricCurrentDensityUnits.AmperesPerSquareMeter: return this.value;
-            case ElectricCurrentDensityUnits.AmperesPerSquareInch: return this.value / 1.5500031000062000e3;
-            case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return this.value / 1.0763910416709722e1;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch: return this.value * 0.00064516;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return this.value * 9.290304e-2;
             default: return Number.NaN;
         }
     }
@@ -179,14 +179,14 @@ export class ElectricCurrentDensity extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case ElectricCurrentDensityUnits.AmperesPerSquareMeter: return value;
-                case ElectricCurrentDensityUnits.AmperesPerSquareInch: return super.internalMultiply(value, 1.5500031000062000e3);
-                case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return super.internalMultiply(value, 1.0763910416709722e1);
+                case ElectricCurrentDensityUnits.AmperesPerSquareInch: return super.internalDivide(value, 0.00064516);
+                case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return super.internalDivide(value, 9.290304e-2);
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case ElectricCurrentDensityUnits.AmperesPerSquareMeter: return value;
-            case ElectricCurrentDensityUnits.AmperesPerSquareInch: return value * 1.5500031000062000e3;
-            case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return value * 1.0763910416709722e1;
+            case ElectricCurrentDensityUnits.AmperesPerSquareInch: return value / 0.00064516;
+            case ElectricCurrentDensityUnits.AmperesPerSquareFoot: return value / 9.290304e-2;
             default: return Number.NaN;
         }
     }

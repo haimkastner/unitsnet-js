@@ -164,13 +164,13 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
             switch (toUnit) {
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter: return this.value;
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter: return super.internalDivide(this.value, 1.0e4);
-                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return super.internalDivide(this.value, 1.5500031000062000e3);
+                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return super.internalMultiply(this.value, 0.00064516);
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter: return this.value;
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter: return this.value / 1.0e4;
-            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return this.value / 1.5500031000062000e3;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return this.value * 0.00064516;
             default: return Number.NaN;
         }
     }
@@ -180,13 +180,13 @@ export class ElectricSurfaceChargeDensity extends BaseUnit {
             switch (fromUnit) {
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter: return value;
                 case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter: return super.internalMultiply(value, 1.0e4);
-                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return super.internalMultiply(value, 1.5500031000062000e3);
+                case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return super.internalDivide(value, 0.00064516);
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareMeter: return value;
             case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareCentimeter: return value * 1.0e4;
-            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return value * 1.5500031000062000e3;
+            case ElectricSurfaceChargeDensityUnits.CoulombsPerSquareInch: return value / 0.00064516;
             default: return Number.NaN;
         }
     }

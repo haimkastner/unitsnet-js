@@ -831,12 +831,24 @@ export class MassFlow extends BaseUnit {
                     const v4 = super.internalDivide(3.6, 1000);
                     return super.internalMultiply(this.value, v4);
                 }
-                case MassFlowUnits.PoundsPerDay: return super.internalMultiply(this.value, 190.47936);
-                case MassFlowUnits.PoundsPerHour: return super.internalMultiply(this.value, 7.93664);
-                case MassFlowUnits.PoundsPerMinute: return super.internalMultiply(this.value, 0.132277);
+                case MassFlowUnits.PoundsPerDay: {
+                    const v4 = super.internalDivide(86400, 453.59237);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case MassFlowUnits.PoundsPerHour: {
+                    const v4 = super.internalDivide(3600, 453.59237);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case MassFlowUnits.PoundsPerMinute: {
+                    const v4 = super.internalDivide(60, 453.59237);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case MassFlowUnits.PoundsPerSecond: return super.internalDivide(this.value, 453.59237);
                 case MassFlowUnits.TonnesPerDay: return super.internalMultiply(this.value, 0.0864000);
-                case MassFlowUnits.ShortTonsPerHour: return super.internalDivide(this.value, 251.9957611);
+                case MassFlowUnits.ShortTonsPerHour: {
+                    const v4 = super.internalDivide(3.6, 907.18474);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case MassFlowUnits.NanogramsPerSecond: return super.internalDivide(this.value, 1e-9);
                 case MassFlowUnits.MicrogramsPerSecond: return super.internalDivide(this.value, 0.000001);
                 case MassFlowUnits.MilligramsPerSecond: return super.internalDivide(this.value, 0.001);
@@ -882,16 +894,19 @@ export class MassFlow extends BaseUnit {
                     return super.internalDivide(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerDay: {
-                    const v3 = super.internalMultiply(this.value, 190.47936);
-                    return super.internalDivide(v3, 1000000);
+                    const v4 = super.internalDivide(86400, 453.59237);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalDivide(v5, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerHour: {
-                    const v3 = super.internalMultiply(this.value, 7.93664);
-                    return super.internalDivide(v3, 1000000);
+                    const v4 = super.internalDivide(3600, 453.59237);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalDivide(v5, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerMinute: {
-                    const v3 = super.internalMultiply(this.value, 0.132277);
-                    return super.internalDivide(v3, 1000000);
+                    const v4 = super.internalDivide(60, 453.59237);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalDivide(v5, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerSecond: {
                     const v3 = super.internalDivide(this.value, 453.59237);
@@ -906,12 +921,12 @@ export class MassFlow extends BaseUnit {
             case MassFlowUnits.KilogramsPerHour: return this.value * 3.6;
             case MassFlowUnits.KilogramsPerMinute: return this.value * 0.06;
             case MassFlowUnits.TonnesPerHour: return this.value * 3.6 / 1000;
-            case MassFlowUnits.PoundsPerDay: return this.value * 190.47936;
-            case MassFlowUnits.PoundsPerHour: return this.value * 7.93664;
-            case MassFlowUnits.PoundsPerMinute: return this.value * 0.132277;
+            case MassFlowUnits.PoundsPerDay: return this.value * 86400 / 453.59237;
+            case MassFlowUnits.PoundsPerHour: return this.value * 3600 / 453.59237;
+            case MassFlowUnits.PoundsPerMinute: return this.value * 60 / 453.59237;
             case MassFlowUnits.PoundsPerSecond: return this.value / 453.59237;
             case MassFlowUnits.TonnesPerDay: return this.value * 0.0864000;
-            case MassFlowUnits.ShortTonsPerHour: return this.value / 251.9957611;
+            case MassFlowUnits.ShortTonsPerHour: return this.value * 3.6 / 907.18474;
             case MassFlowUnits.NanogramsPerSecond: return (this.value) / 1e-9;
             case MassFlowUnits.MicrogramsPerSecond: return (this.value) / 0.000001;
             case MassFlowUnits.MilligramsPerSecond: return (this.value) / 0.001;
@@ -929,9 +944,9 @@ export class MassFlow extends BaseUnit {
             case MassFlowUnits.HectogramsPerDay: return (this.value * 86400) / 100;
             case MassFlowUnits.KilogramsPerDay: return (this.value * 86400) / 1000;
             case MassFlowUnits.MegagramsPerDay: return (this.value * 86400) / 1000000;
-            case MassFlowUnits.MegapoundsPerDay: return (this.value * 190.47936) / 1000000;
-            case MassFlowUnits.MegapoundsPerHour: return (this.value * 7.93664) / 1000000;
-            case MassFlowUnits.MegapoundsPerMinute: return (this.value * 0.132277) / 1000000;
+            case MassFlowUnits.MegapoundsPerDay: return (this.value * 86400 / 453.59237) / 1000000;
+            case MassFlowUnits.MegapoundsPerHour: return (this.value * 3600 / 453.59237) / 1000000;
+            case MassFlowUnits.MegapoundsPerMinute: return (this.value * 60 / 453.59237) / 1000000;
             case MassFlowUnits.MegapoundsPerSecond: return (this.value / 453.59237) / 1000000;
             default: return Number.NaN;
         }
@@ -946,15 +961,27 @@ export class MassFlow extends BaseUnit {
                 case MassFlowUnits.KilogramsPerHour: return super.internalDivide(value, 3.6);
                 case MassFlowUnits.KilogramsPerMinute: return super.internalDivide(value, 0.06);
                 case MassFlowUnits.TonnesPerHour: {
-                    const v4 = super.internalDivide(value, 3.6);
-                    return super.internalMultiply(1000, v4);
+                    const v4 = super.internalDivide(1000, 3.6);
+                    return super.internalMultiply(value, v4);
                 }
-                case MassFlowUnits.PoundsPerDay: return super.internalDivide(value, 190.47936);
-                case MassFlowUnits.PoundsPerHour: return super.internalDivide(value, 7.93664);
-                case MassFlowUnits.PoundsPerMinute: return super.internalDivide(value, 0.132277);
+                case MassFlowUnits.PoundsPerDay: {
+                    const v4 = super.internalDivide(453.59237, 86400);
+                    return super.internalMultiply(value, v4);
+                }
+                case MassFlowUnits.PoundsPerHour: {
+                    const v4 = super.internalDivide(453.59237, 3600);
+                    return super.internalMultiply(value, v4);
+                }
+                case MassFlowUnits.PoundsPerMinute: {
+                    const v4 = super.internalDivide(453.59237, 60);
+                    return super.internalMultiply(value, v4);
+                }
                 case MassFlowUnits.PoundsPerSecond: return super.internalMultiply(value, 453.59237);
                 case MassFlowUnits.TonnesPerDay: return super.internalDivide(value, 0.0864000);
-                case MassFlowUnits.ShortTonsPerHour: return super.internalMultiply(value, 251.9957611);
+                case MassFlowUnits.ShortTonsPerHour: {
+                    const v4 = super.internalDivide(907.18474, 3.6);
+                    return super.internalMultiply(value, v4);
+                }
                 case MassFlowUnits.NanogramsPerSecond: return super.internalMultiply(value, 1e-9);
                 case MassFlowUnits.MicrogramsPerSecond: return super.internalMultiply(value, 0.000001);
                 case MassFlowUnits.MilligramsPerSecond: return super.internalMultiply(value, 0.001);
@@ -1000,16 +1027,19 @@ export class MassFlow extends BaseUnit {
                     return super.internalMultiply(v3, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerDay: {
-                    const v3 = super.internalDivide(value, 190.47936);
-                    return super.internalMultiply(v3, 1000000);
+                    const v4 = super.internalDivide(453.59237, 86400);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerHour: {
-                    const v3 = super.internalDivide(value, 7.93664);
-                    return super.internalMultiply(v3, 1000000);
+                    const v4 = super.internalDivide(453.59237, 3600);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerMinute: {
-                    const v3 = super.internalDivide(value, 0.132277);
-                    return super.internalMultiply(v3, 1000000);
+                    const v4 = super.internalDivide(453.59237, 60);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000000);
                 }
                 case MassFlowUnits.MegapoundsPerSecond: {
                     const v3 = super.internalMultiply(value, 453.59237);
@@ -1023,13 +1053,13 @@ export class MassFlow extends BaseUnit {
             case MassFlowUnits.GramsPerHour: return value / 3600;
             case MassFlowUnits.KilogramsPerHour: return value / 3.6;
             case MassFlowUnits.KilogramsPerMinute: return value / 0.06;
-            case MassFlowUnits.TonnesPerHour: return 1000 * value / 3.6;
-            case MassFlowUnits.PoundsPerDay: return value / 190.47936;
-            case MassFlowUnits.PoundsPerHour: return value / 7.93664;
-            case MassFlowUnits.PoundsPerMinute: return value / 0.132277;
+            case MassFlowUnits.TonnesPerHour: return value * 1000 / 3.6;
+            case MassFlowUnits.PoundsPerDay: return value * 453.59237 / 86400;
+            case MassFlowUnits.PoundsPerHour: return value * 453.59237 / 3600;
+            case MassFlowUnits.PoundsPerMinute: return value * 453.59237 / 60;
             case MassFlowUnits.PoundsPerSecond: return value * 453.59237;
             case MassFlowUnits.TonnesPerDay: return value / 0.0864000;
-            case MassFlowUnits.ShortTonsPerHour: return value * 251.9957611;
+            case MassFlowUnits.ShortTonsPerHour: return value * 907.18474 / 3.6;
             case MassFlowUnits.NanogramsPerSecond: return (value) * 1e-9;
             case MassFlowUnits.MicrogramsPerSecond: return (value) * 0.000001;
             case MassFlowUnits.MilligramsPerSecond: return (value) * 0.001;
@@ -1047,9 +1077,9 @@ export class MassFlow extends BaseUnit {
             case MassFlowUnits.HectogramsPerDay: return (value / 86400) * 100;
             case MassFlowUnits.KilogramsPerDay: return (value / 86400) * 1000;
             case MassFlowUnits.MegagramsPerDay: return (value / 86400) * 1000000;
-            case MassFlowUnits.MegapoundsPerDay: return (value / 190.47936) * 1000000;
-            case MassFlowUnits.MegapoundsPerHour: return (value / 7.93664) * 1000000;
-            case MassFlowUnits.MegapoundsPerMinute: return (value / 0.132277) * 1000000;
+            case MassFlowUnits.MegapoundsPerDay: return (value * 453.59237 / 86400) * 1000000;
+            case MassFlowUnits.MegapoundsPerHour: return (value * 453.59237 / 3600) * 1000000;
+            case MassFlowUnits.MegapoundsPerMinute: return (value * 453.59237 / 60) * 1000000;
             case MassFlowUnits.MegapoundsPerSecond: return (value * 453.59237) * 1000000;
             default: return Number.NaN;
         }

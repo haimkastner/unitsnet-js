@@ -10,7 +10,7 @@ export interface PorousMediumPermeabilityDto {
 
 /** PorousMediumPermeabilityUnits enumeration */
 export enum PorousMediumPermeabilityUnits {
-    /** */
+    /** The darcy (or darcy unit) and millidarcy (md or mD) are units of permeability, named after Henry Darcy. They are not SI units, but they are widely used in petroleum engineering and geology. */
     Darcys = "Darcy",
     /** */
     SquareMeters = "SquareMeter",
@@ -59,7 +59,7 @@ export class PorousMediumPermeability extends BaseUnit {
         return PorousMediumPermeabilityUnits.SquareMeters
     }
 
-    /** */
+    /** The darcy (or darcy unit) and millidarcy (md or mD) are units of permeability, named after Henry Darcy. They are not SI units, but they are widely used in petroleum engineering and geology. */
     public get Darcys(): number {
         if(this.darcysLazy !== null){
             return this.darcysLazy;
@@ -101,7 +101,7 @@ export class PorousMediumPermeability extends BaseUnit {
 
     /**
      * Create a new PorousMediumPermeability instance from a Darcys
-     *
+     * The darcy (or darcy unit) and millidarcy (md or mD) are units of permeability, named after Henry Darcy. They are not SI units, but they are widely used in petroleum engineering and geology.
      * @param value The unit as Darcys to create a new PorousMediumPermeability from.
      * @returns The new PorousMediumPermeability instance.
      */

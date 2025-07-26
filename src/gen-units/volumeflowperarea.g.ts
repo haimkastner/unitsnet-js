@@ -141,12 +141,16 @@ export class VolumeFlowPerArea extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter: return this.value;
-                case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return super.internalMultiply(this.value, 196.850394);
+                case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: {
+                    const v5 = super.internalDivide(0.028316846592, 60);
+                    const v6 = super.internalDivide(9.290304e-2, v5);
+                    return super.internalMultiply(this.value, v6);
+                }
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter: return this.value;
-            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return this.value * 196.850394;
+            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return this.value * 9.290304e-2 / (0.028316846592 / 60);
             default: return Number.NaN;
         }
     }
@@ -155,12 +159,16 @@ export class VolumeFlowPerArea extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter: return value;
-                case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return super.internalDivide(value, 196.850394);
+                case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: {
+                    const v4 = super.internalDivide(0.028316846592, 60);
+                    const v6 = super.internalDivide(v4, 9.290304e-2);
+                    return super.internalMultiply(value, v6);
+                }
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case VolumeFlowPerAreaUnits.CubicMetersPerSecondPerSquareMeter: return value;
-            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return value / 196.850394;
+            case VolumeFlowPerAreaUnits.CubicFeetPerMinutePerSquareFoot: return value * (0.028316846592 / 60) / 9.290304e-2;
             default: return Number.NaN;
         }
     }

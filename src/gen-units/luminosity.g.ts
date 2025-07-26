@@ -12,7 +12,7 @@ export interface LuminosityDto {
 export enum LuminosityUnits {
     /** */
     Watts = "Watt",
-    /** */
+    /** The IAU has defined a nominal solar luminosity of 3.828×10^26 W to promote publication of consistent and comparable values in units of the solar luminosity. */
     SolarLuminosities = "SolarLuminosity",
     /** */
     Femtowatts = "Femtowatt",
@@ -94,7 +94,7 @@ export class Luminosity extends BaseUnit {
         return this.wattsLazy = this.convertFromBase(LuminosityUnits.Watts);
     }
 
-    /** */
+    /** The IAU has defined a nominal solar luminosity of 3.828×10^26 W to promote publication of consistent and comparable values in units of the solar luminosity. */
     public get SolarLuminosities(): number {
         if(this.solarluminositiesLazy !== null){
             return this.solarluminositiesLazy;
@@ -210,7 +210,7 @@ export class Luminosity extends BaseUnit {
 
     /**
      * Create a new Luminosity instance from a SolarLuminosities
-     *
+     * The IAU has defined a nominal solar luminosity of 3.828×10^26 W to promote publication of consistent and comparable values in units of the solar luminosity.
      * @param value The unit as SolarLuminosities to create a new Luminosity from.
      * @returns The new Luminosity instance.
      */
@@ -405,7 +405,7 @@ export class Luminosity extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case LuminosityUnits.Watts: return this.value;
-                case LuminosityUnits.SolarLuminosities: return super.internalDivide(this.value, 3.846e26);
+                case LuminosityUnits.SolarLuminosities: return super.internalDivide(this.value, 3.828e26);
                 case LuminosityUnits.Femtowatts: return super.internalDivide(this.value, 1e-15);
                 case LuminosityUnits.Picowatts: return super.internalDivide(this.value, 1e-12);
                 case LuminosityUnits.Nanowatts: return super.internalDivide(this.value, 1e-9);
@@ -422,7 +422,7 @@ export class Luminosity extends BaseUnit {
             }
         switch (toUnit) {
             case LuminosityUnits.Watts: return this.value;
-            case LuminosityUnits.SolarLuminosities: return this.value / 3.846e26;
+            case LuminosityUnits.SolarLuminosities: return this.value / 3.828e26;
             case LuminosityUnits.Femtowatts: return (this.value) / 1e-15;
             case LuminosityUnits.Picowatts: return (this.value) / 1e-12;
             case LuminosityUnits.Nanowatts: return (this.value) / 1e-9;
@@ -443,7 +443,7 @@ export class Luminosity extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case LuminosityUnits.Watts: return value;
-                case LuminosityUnits.SolarLuminosities: return super.internalMultiply(value, 3.846e26);
+                case LuminosityUnits.SolarLuminosities: return super.internalMultiply(value, 3.828e26);
                 case LuminosityUnits.Femtowatts: return super.internalMultiply(value, 1e-15);
                 case LuminosityUnits.Picowatts: return super.internalMultiply(value, 1e-12);
                 case LuminosityUnits.Nanowatts: return super.internalMultiply(value, 1e-9);
@@ -460,7 +460,7 @@ export class Luminosity extends BaseUnit {
             }
         switch (fromUnit) {
             case LuminosityUnits.Watts: return value;
-            case LuminosityUnits.SolarLuminosities: return value * 3.846e26;
+            case LuminosityUnits.SolarLuminosities: return value * 3.828e26;
             case LuminosityUnits.Femtowatts: return (value) * 1e-15;
             case LuminosityUnits.Picowatts: return (value) * 1e-12;
             case LuminosityUnits.Nanowatts: return (value) * 1e-9;

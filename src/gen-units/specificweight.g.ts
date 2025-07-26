@@ -476,8 +476,14 @@ export class SpecificWeight extends BaseUnit {
                 case SpecificWeightUnits.KilogramsForcePerCubicMillimeter: return super.internalDivide(this.value, 9.80665e9);
                 case SpecificWeightUnits.KilogramsForcePerCubicCentimeter: return super.internalDivide(this.value, 9.80665e6);
                 case SpecificWeightUnits.KilogramsForcePerCubicMeter: return super.internalDivide(this.value, 9.80665);
-                case SpecificWeightUnits.PoundsForcePerCubicInch: return super.internalDivide(this.value, 2.714471375263134e5);
-                case SpecificWeightUnits.PoundsForcePerCubicFoot: return super.internalDivide(this.value, 1.570874638462462e2);
+                case SpecificWeightUnits.PoundsForcePerCubicInch: {
+                    const v4 = super.internalDivide(1.6387064e-5, 4.4482216152605);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case SpecificWeightUnits.PoundsForcePerCubicFoot: {
+                    const v4 = super.internalDivide(0.028316846592, 4.4482216152605);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case SpecificWeightUnits.TonnesForcePerCubicMillimeter: return super.internalDivide(this.value, 9.80665e12);
                 case SpecificWeightUnits.TonnesForcePerCubicCentimeter: return super.internalDivide(this.value, 9.80665e9);
                 case SpecificWeightUnits.TonnesForcePerCubicMeter: return super.internalDivide(this.value, 9.80665e3);
@@ -492,12 +498,14 @@ export class SpecificWeight extends BaseUnit {
                 case SpecificWeightUnits.KilonewtonsPerCubicMeter: return super.internalDivide(this.value, 1000);
                 case SpecificWeightUnits.MeganewtonsPerCubicMeter: return super.internalDivide(this.value, 1000000);
                 case SpecificWeightUnits.KilopoundsForcePerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 2.714471375263134e5);
-                    return super.internalDivide(v3, 1000);
+                    const v4 = super.internalDivide(1.6387064e-5, 4.4482216152605);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalDivide(v5, 1000);
                 }
                 case SpecificWeightUnits.KilopoundsForcePerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 1.570874638462462e2);
-                    return super.internalDivide(v3, 1000);
+                    const v4 = super.internalDivide(0.028316846592, 4.4482216152605);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalDivide(v5, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -508,8 +516,8 @@ export class SpecificWeight extends BaseUnit {
             case SpecificWeightUnits.KilogramsForcePerCubicMillimeter: return this.value / 9.80665e9;
             case SpecificWeightUnits.KilogramsForcePerCubicCentimeter: return this.value / 9.80665e6;
             case SpecificWeightUnits.KilogramsForcePerCubicMeter: return this.value / 9.80665;
-            case SpecificWeightUnits.PoundsForcePerCubicInch: return this.value / 2.714471375263134e5;
-            case SpecificWeightUnits.PoundsForcePerCubicFoot: return this.value / 1.570874638462462e2;
+            case SpecificWeightUnits.PoundsForcePerCubicInch: return this.value * 1.6387064e-5 / 4.4482216152605;
+            case SpecificWeightUnits.PoundsForcePerCubicFoot: return this.value * 0.028316846592 / 4.4482216152605;
             case SpecificWeightUnits.TonnesForcePerCubicMillimeter: return this.value / 9.80665e12;
             case SpecificWeightUnits.TonnesForcePerCubicCentimeter: return this.value / 9.80665e9;
             case SpecificWeightUnits.TonnesForcePerCubicMeter: return this.value / 9.80665e3;
@@ -517,8 +525,8 @@ export class SpecificWeight extends BaseUnit {
             case SpecificWeightUnits.KilonewtonsPerCubicCentimeter: return (this.value * 0.000001) / 1000;
             case SpecificWeightUnits.KilonewtonsPerCubicMeter: return (this.value) / 1000;
             case SpecificWeightUnits.MeganewtonsPerCubicMeter: return (this.value) / 1000000;
-            case SpecificWeightUnits.KilopoundsForcePerCubicInch: return (this.value / 2.714471375263134e5) / 1000;
-            case SpecificWeightUnits.KilopoundsForcePerCubicFoot: return (this.value / 1.570874638462462e2) / 1000;
+            case SpecificWeightUnits.KilopoundsForcePerCubicInch: return (this.value * 1.6387064e-5 / 4.4482216152605) / 1000;
+            case SpecificWeightUnits.KilopoundsForcePerCubicFoot: return (this.value * 0.028316846592 / 4.4482216152605) / 1000;
             default: return Number.NaN;
         }
     }
@@ -532,8 +540,14 @@ export class SpecificWeight extends BaseUnit {
                 case SpecificWeightUnits.KilogramsForcePerCubicMillimeter: return super.internalMultiply(value, 9.80665e9);
                 case SpecificWeightUnits.KilogramsForcePerCubicCentimeter: return super.internalMultiply(value, 9.80665e6);
                 case SpecificWeightUnits.KilogramsForcePerCubicMeter: return super.internalMultiply(value, 9.80665);
-                case SpecificWeightUnits.PoundsForcePerCubicInch: return super.internalMultiply(value, 2.714471375263134e5);
-                case SpecificWeightUnits.PoundsForcePerCubicFoot: return super.internalMultiply(value, 1.570874638462462e2);
+                case SpecificWeightUnits.PoundsForcePerCubicInch: {
+                    const v4 = super.internalDivide(4.4482216152605, 1.6387064e-5);
+                    return super.internalMultiply(value, v4);
+                }
+                case SpecificWeightUnits.PoundsForcePerCubicFoot: {
+                    const v4 = super.internalDivide(4.4482216152605, 0.028316846592);
+                    return super.internalMultiply(value, v4);
+                }
                 case SpecificWeightUnits.TonnesForcePerCubicMillimeter: return super.internalMultiply(value, 9.80665e12);
                 case SpecificWeightUnits.TonnesForcePerCubicCentimeter: return super.internalMultiply(value, 9.80665e9);
                 case SpecificWeightUnits.TonnesForcePerCubicMeter: return super.internalMultiply(value, 9.80665e3);
@@ -548,12 +562,14 @@ export class SpecificWeight extends BaseUnit {
                 case SpecificWeightUnits.KilonewtonsPerCubicMeter: return super.internalMultiply(value, 1000);
                 case SpecificWeightUnits.MeganewtonsPerCubicMeter: return super.internalMultiply(value, 1000000);
                 case SpecificWeightUnits.KilopoundsForcePerCubicInch: {
-                    const v3 = super.internalMultiply(value, 2.714471375263134e5);
-                    return super.internalMultiply(v3, 1000);
+                    const v4 = super.internalDivide(4.4482216152605, 1.6387064e-5);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000);
                 }
                 case SpecificWeightUnits.KilopoundsForcePerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 1.570874638462462e2);
-                    return super.internalMultiply(v3, 1000);
+                    const v4 = super.internalDivide(4.4482216152605, 0.028316846592);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000);
                 }
                 default: return Number.NaN;
             }
@@ -564,8 +580,8 @@ export class SpecificWeight extends BaseUnit {
             case SpecificWeightUnits.KilogramsForcePerCubicMillimeter: return value * 9.80665e9;
             case SpecificWeightUnits.KilogramsForcePerCubicCentimeter: return value * 9.80665e6;
             case SpecificWeightUnits.KilogramsForcePerCubicMeter: return value * 9.80665;
-            case SpecificWeightUnits.PoundsForcePerCubicInch: return value * 2.714471375263134e5;
-            case SpecificWeightUnits.PoundsForcePerCubicFoot: return value * 1.570874638462462e2;
+            case SpecificWeightUnits.PoundsForcePerCubicInch: return value * 4.4482216152605 / 1.6387064e-5;
+            case SpecificWeightUnits.PoundsForcePerCubicFoot: return value * 4.4482216152605 / 0.028316846592;
             case SpecificWeightUnits.TonnesForcePerCubicMillimeter: return value * 9.80665e12;
             case SpecificWeightUnits.TonnesForcePerCubicCentimeter: return value * 9.80665e9;
             case SpecificWeightUnits.TonnesForcePerCubicMeter: return value * 9.80665e3;
@@ -573,8 +589,8 @@ export class SpecificWeight extends BaseUnit {
             case SpecificWeightUnits.KilonewtonsPerCubicCentimeter: return (value * 1000000) * 1000;
             case SpecificWeightUnits.KilonewtonsPerCubicMeter: return (value) * 1000;
             case SpecificWeightUnits.MeganewtonsPerCubicMeter: return (value) * 1000000;
-            case SpecificWeightUnits.KilopoundsForcePerCubicInch: return (value * 2.714471375263134e5) * 1000;
-            case SpecificWeightUnits.KilopoundsForcePerCubicFoot: return (value * 1.570874638462462e2) * 1000;
+            case SpecificWeightUnits.KilopoundsForcePerCubicInch: return (value * 4.4482216152605 / 1.6387064e-5) * 1000;
+            case SpecificWeightUnits.KilopoundsForcePerCubicFoot: return (value * 4.4482216152605 / 0.028316846592) * 1000;
             default: return Number.NaN;
         }
     }

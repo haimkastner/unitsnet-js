@@ -232,14 +232,8 @@ export class WarpingMomentOfInertia extends BaseUnit {
                 case WarpingMomentOfInertiaUnits.DecimetersToTheSixth: return super.internalMultiply(this.value, 1e6);
                 case WarpingMomentOfInertiaUnits.CentimetersToTheSixth: return super.internalMultiply(this.value, 1e12);
                 case WarpingMomentOfInertiaUnits.MillimetersToTheSixth: return super.internalMultiply(this.value, 1e18);
-                case WarpingMomentOfInertiaUnits.FeetToTheSixth: {
-                    const v4 = super.internalPow(0.3048, 6);
-                    return super.internalDivide(this.value, v4);
-                }
-                case WarpingMomentOfInertiaUnits.InchesToTheSixth: {
-                    const v4 = super.internalPow(2.54e-2, 6);
-                    return super.internalDivide(this.value, v4);
-                }
+                case WarpingMomentOfInertiaUnits.FeetToTheSixth: return super.internalDivide(this.value, 0.000801843800914862014464);
+                case WarpingMomentOfInertiaUnits.InchesToTheSixth: return super.internalDivide(this.value, 0.000000000268535866540096);
                 default: return Number.NaN;
             }
         switch (toUnit) {
@@ -247,8 +241,8 @@ export class WarpingMomentOfInertia extends BaseUnit {
             case WarpingMomentOfInertiaUnits.DecimetersToTheSixth: return this.value * 1e6;
             case WarpingMomentOfInertiaUnits.CentimetersToTheSixth: return this.value * 1e12;
             case WarpingMomentOfInertiaUnits.MillimetersToTheSixth: return this.value * 1e18;
-            case WarpingMomentOfInertiaUnits.FeetToTheSixth: return this.value / Math.pow(0.3048, 6);
-            case WarpingMomentOfInertiaUnits.InchesToTheSixth: return this.value / Math.pow(2.54e-2, 6);
+            case WarpingMomentOfInertiaUnits.FeetToTheSixth: return this.value / 0.000801843800914862014464;
+            case WarpingMomentOfInertiaUnits.InchesToTheSixth: return this.value / 0.000000000268535866540096;
             default: return Number.NaN;
         }
     }
@@ -260,14 +254,8 @@ export class WarpingMomentOfInertia extends BaseUnit {
                 case WarpingMomentOfInertiaUnits.DecimetersToTheSixth: return super.internalDivide(value, 1e6);
                 case WarpingMomentOfInertiaUnits.CentimetersToTheSixth: return super.internalDivide(value, 1e12);
                 case WarpingMomentOfInertiaUnits.MillimetersToTheSixth: return super.internalDivide(value, 1e18);
-                case WarpingMomentOfInertiaUnits.FeetToTheSixth: {
-                    const v4 = super.internalPow(0.3048, 6);
-                    return super.internalMultiply(value, v4);
-                }
-                case WarpingMomentOfInertiaUnits.InchesToTheSixth: {
-                    const v4 = super.internalPow(2.54e-2, 6);
-                    return super.internalMultiply(value, v4);
-                }
+                case WarpingMomentOfInertiaUnits.FeetToTheSixth: return super.internalMultiply(value, 0.000801843800914862014464);
+                case WarpingMomentOfInertiaUnits.InchesToTheSixth: return super.internalMultiply(value, 0.000000000268535866540096);
                 default: return Number.NaN;
             }
         switch (fromUnit) {
@@ -275,8 +263,8 @@ export class WarpingMomentOfInertia extends BaseUnit {
             case WarpingMomentOfInertiaUnits.DecimetersToTheSixth: return value / 1e6;
             case WarpingMomentOfInertiaUnits.CentimetersToTheSixth: return value / 1e12;
             case WarpingMomentOfInertiaUnits.MillimetersToTheSixth: return value / 1e18;
-            case WarpingMomentOfInertiaUnits.FeetToTheSixth: return value * Math.pow(0.3048, 6);
-            case WarpingMomentOfInertiaUnits.InchesToTheSixth: return value * Math.pow(2.54e-2, 6);
+            case WarpingMomentOfInertiaUnits.FeetToTheSixth: return value * 0.000801843800914862014464;
+            case WarpingMomentOfInertiaUnits.InchesToTheSixth: return value * 0.000000000268535866540096;
             default: return Number.NaN;
         }
     }

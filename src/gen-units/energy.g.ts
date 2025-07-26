@@ -16,23 +16,23 @@ export enum EnergyUnits {
     Calories = "Calorie",
     /** */
     BritishThermalUnits = "BritishThermalUnit",
-    /** */
+    /** In physics, an electronvolt (symbol eV, also written electron-volt and electron volt) is the measure of an amount of kinetic energy gained by a single electron accelerating from rest through an electric potential difference of one volt in vacuum. When used as a unit of energy, the numerical value of 1 eV in joules (symbol J) is equivalent to the numerical value of the charge of an electron in coulombs (symbol C). Under the 2019 redefinition of the SI base units, this sets 1 eV equal to the exact value 1.602176634×10−19 J. */
     ElectronVolts = "ElectronVolt",
-    /** */
+    /** A pound-foot (lb⋅ft), abbreviated from pound-force foot (lbf · ft), is a unit of torque representing one pound of force acting at a perpendicular distance of one foot from a pivot point. Conversely one foot pound-force (ft · lbf) is the moment about an axis that applies one pound-force at a radius of one foot. */
     FootPounds = "FootPound",
-    /** */
+    /** The erg is a unit of energy equal to 10−7 joules (100 nJ). It originated in the Centimetre–gram–second system of units (CGS). It has the symbol erg. The erg is not an SI unit. Its name is derived from ergon (ἔργον), a Greek word meaning 'work' or 'task'. */
     Ergs = "Erg",
     /** */
     WattHours = "WattHour",
     /** */
     WattDays = "WattDay",
-    /** */
+    /** The therm (symbol, thm) is a non-SI unit of heat energy equal to 100,000 British thermal units (BTU), and approximately 105 megajoules, 29.3 kilowatt-hours, 25,200 kilocalories and 25.2 thermies. One therm is the energy content of approximately 100 cubic feet (2.83 cubic metres) of natural gas at standard temperature and pressure. However, the BTU is not standardised worldwide, with slightly different values in the EU, UK, and United States, meaning that the energy content of the therm also varies by territory. */
     ThermsEc = "ThermEc",
-    /** */
+    /** The therm (symbol, thm) is a non-SI unit of heat energy equal to 100,000 British thermal units (BTU), and approximately 105 megajoules, 29.3 kilowatt-hours, 25,200 kilocalories and 25.2 thermies. One therm is the energy content of approximately 100 cubic feet (2.83 cubic metres) of natural gas at standard temperature and pressure. However, the BTU is not standardised worldwide, with slightly different values in the EU, UK, and United States, meaning that the energy content of the therm also varies by territory. */
     ThermsUs = "ThermUs",
-    /** */
+    /** The therm (symbol, thm) is a non-SI unit of heat energy equal to 100,000 British thermal units (BTU), and approximately 105 megajoules, 29.3 kilowatt-hours, 25,200 kilocalories and 25.2 thermies. One therm is the energy content of approximately 100 cubic feet (2.83 cubic metres) of natural gas at standard temperature and pressure. However, the BTU is not standardised worldwide, with slightly different values in the EU, UK, and United States, meaning that the energy content of the therm also varies by territory. */
     ThermsImperial = "ThermImperial",
-    /** */
+    /** A horsepower-hour (symbol: hp⋅h) is an outdated unit of energy, not used in the International System of Units. The unit represents an amount of work a horse is supposed capable of delivering during an hour (1 horsepower integrated over a time interval of an hour). */
     HorsepowerHours = "HorsepowerHour",
     /** */
     Nanojoules = "Nanojoule",
@@ -188,7 +188,7 @@ export class Energy extends BaseUnit {
         return this.britishthermalunitsLazy = this.convertFromBase(EnergyUnits.BritishThermalUnits);
     }
 
-    /** */
+    /** In physics, an electronvolt (symbol eV, also written electron-volt and electron volt) is the measure of an amount of kinetic energy gained by a single electron accelerating from rest through an electric potential difference of one volt in vacuum. When used as a unit of energy, the numerical value of 1 eV in joules (symbol J) is equivalent to the numerical value of the charge of an electron in coulombs (symbol C). Under the 2019 redefinition of the SI base units, this sets 1 eV equal to the exact value 1.602176634×10−19 J. */
     public get ElectronVolts(): number {
         if(this.electronvoltsLazy !== null){
             return this.electronvoltsLazy;
@@ -196,7 +196,7 @@ export class Energy extends BaseUnit {
         return this.electronvoltsLazy = this.convertFromBase(EnergyUnits.ElectronVolts);
     }
 
-    /** */
+    /** A pound-foot (lb⋅ft), abbreviated from pound-force foot (lbf · ft), is a unit of torque representing one pound of force acting at a perpendicular distance of one foot from a pivot point. Conversely one foot pound-force (ft · lbf) is the moment about an axis that applies one pound-force at a radius of one foot. */
     public get FootPounds(): number {
         if(this.footpoundsLazy !== null){
             return this.footpoundsLazy;
@@ -204,7 +204,7 @@ export class Energy extends BaseUnit {
         return this.footpoundsLazy = this.convertFromBase(EnergyUnits.FootPounds);
     }
 
-    /** */
+    /** The erg is a unit of energy equal to 10−7 joules (100 nJ). It originated in the Centimetre–gram–second system of units (CGS). It has the symbol erg. The erg is not an SI unit. Its name is derived from ergon (ἔργον), a Greek word meaning 'work' or 'task'. */
     public get Ergs(): number {
         if(this.ergsLazy !== null){
             return this.ergsLazy;
@@ -228,7 +228,7 @@ export class Energy extends BaseUnit {
         return this.wattdaysLazy = this.convertFromBase(EnergyUnits.WattDays);
     }
 
-    /** */
+    /** The therm (symbol, thm) is a non-SI unit of heat energy equal to 100,000 British thermal units (BTU), and approximately 105 megajoules, 29.3 kilowatt-hours, 25,200 kilocalories and 25.2 thermies. One therm is the energy content of approximately 100 cubic feet (2.83 cubic metres) of natural gas at standard temperature and pressure. However, the BTU is not standardised worldwide, with slightly different values in the EU, UK, and United States, meaning that the energy content of the therm also varies by territory. */
     public get ThermsEc(): number {
         if(this.thermsecLazy !== null){
             return this.thermsecLazy;
@@ -236,7 +236,7 @@ export class Energy extends BaseUnit {
         return this.thermsecLazy = this.convertFromBase(EnergyUnits.ThermsEc);
     }
 
-    /** */
+    /** The therm (symbol, thm) is a non-SI unit of heat energy equal to 100,000 British thermal units (BTU), and approximately 105 megajoules, 29.3 kilowatt-hours, 25,200 kilocalories and 25.2 thermies. One therm is the energy content of approximately 100 cubic feet (2.83 cubic metres) of natural gas at standard temperature and pressure. However, the BTU is not standardised worldwide, with slightly different values in the EU, UK, and United States, meaning that the energy content of the therm also varies by territory. */
     public get ThermsUs(): number {
         if(this.thermsusLazy !== null){
             return this.thermsusLazy;
@@ -244,7 +244,7 @@ export class Energy extends BaseUnit {
         return this.thermsusLazy = this.convertFromBase(EnergyUnits.ThermsUs);
     }
 
-    /** */
+    /** The therm (symbol, thm) is a non-SI unit of heat energy equal to 100,000 British thermal units (BTU), and approximately 105 megajoules, 29.3 kilowatt-hours, 25,200 kilocalories and 25.2 thermies. One therm is the energy content of approximately 100 cubic feet (2.83 cubic metres) of natural gas at standard temperature and pressure. However, the BTU is not standardised worldwide, with slightly different values in the EU, UK, and United States, meaning that the energy content of the therm also varies by territory. */
     public get ThermsImperial(): number {
         if(this.thermsimperialLazy !== null){
             return this.thermsimperialLazy;
@@ -252,7 +252,7 @@ export class Energy extends BaseUnit {
         return this.thermsimperialLazy = this.convertFromBase(EnergyUnits.ThermsImperial);
     }
 
-    /** */
+    /** A horsepower-hour (symbol: hp⋅h) is an outdated unit of energy, not used in the International System of Units. The unit represents an amount of work a horse is supposed capable of delivering during an hour (1 horsepower integrated over a time interval of an hour). */
     public get HorsepowerHours(): number {
         if(this.horsepowerhoursLazy !== null){
             return this.horsepowerhoursLazy;
@@ -516,7 +516,7 @@ export class Energy extends BaseUnit {
 
     /**
      * Create a new Energy instance from a ElectronVolts
-     *
+     * In physics, an electronvolt (symbol eV, also written electron-volt and electron volt) is the measure of an amount of kinetic energy gained by a single electron accelerating from rest through an electric potential difference of one volt in vacuum. When used as a unit of energy, the numerical value of 1 eV in joules (symbol J) is equivalent to the numerical value of the charge of an electron in coulombs (symbol C). Under the 2019 redefinition of the SI base units, this sets 1 eV equal to the exact value 1.602176634×10−19 J.
      * @param value The unit as ElectronVolts to create a new Energy from.
      * @returns The new Energy instance.
      */
@@ -526,7 +526,7 @@ export class Energy extends BaseUnit {
 
     /**
      * Create a new Energy instance from a FootPounds
-     *
+     * A pound-foot (lb⋅ft), abbreviated from pound-force foot (lbf · ft), is a unit of torque representing one pound of force acting at a perpendicular distance of one foot from a pivot point. Conversely one foot pound-force (ft · lbf) is the moment about an axis that applies one pound-force at a radius of one foot.
      * @param value The unit as FootPounds to create a new Energy from.
      * @returns The new Energy instance.
      */
@@ -536,7 +536,7 @@ export class Energy extends BaseUnit {
 
     /**
      * Create a new Energy instance from a Ergs
-     *
+     * The erg is a unit of energy equal to 10−7 joules (100 nJ). It originated in the Centimetre–gram–second system of units (CGS). It has the symbol erg. The erg is not an SI unit. Its name is derived from ergon (ἔργον), a Greek word meaning 'work' or 'task'.
      * @param value The unit as Ergs to create a new Energy from.
      * @returns The new Energy instance.
      */
@@ -566,7 +566,7 @@ export class Energy extends BaseUnit {
 
     /**
      * Create a new Energy instance from a ThermsEc
-     *
+     * The therm (symbol, thm) is a non-SI unit of heat energy equal to 100,000 British thermal units (BTU), and approximately 105 megajoules, 29.3 kilowatt-hours, 25,200 kilocalories and 25.2 thermies. One therm is the energy content of approximately 100 cubic feet (2.83 cubic metres) of natural gas at standard temperature and pressure. However, the BTU is not standardised worldwide, with slightly different values in the EU, UK, and United States, meaning that the energy content of the therm also varies by territory.
      * @param value The unit as ThermsEc to create a new Energy from.
      * @returns The new Energy instance.
      */
@@ -576,7 +576,7 @@ export class Energy extends BaseUnit {
 
     /**
      * Create a new Energy instance from a ThermsUs
-     *
+     * The therm (symbol, thm) is a non-SI unit of heat energy equal to 100,000 British thermal units (BTU), and approximately 105 megajoules, 29.3 kilowatt-hours, 25,200 kilocalories and 25.2 thermies. One therm is the energy content of approximately 100 cubic feet (2.83 cubic metres) of natural gas at standard temperature and pressure. However, the BTU is not standardised worldwide, with slightly different values in the EU, UK, and United States, meaning that the energy content of the therm also varies by territory.
      * @param value The unit as ThermsUs to create a new Energy from.
      * @returns The new Energy instance.
      */
@@ -586,7 +586,7 @@ export class Energy extends BaseUnit {
 
     /**
      * Create a new Energy instance from a ThermsImperial
-     *
+     * The therm (symbol, thm) is a non-SI unit of heat energy equal to 100,000 British thermal units (BTU), and approximately 105 megajoules, 29.3 kilowatt-hours, 25,200 kilocalories and 25.2 thermies. One therm is the energy content of approximately 100 cubic feet (2.83 cubic metres) of natural gas at standard temperature and pressure. However, the BTU is not standardised worldwide, with slightly different values in the EU, UK, and United States, meaning that the energy content of the therm also varies by territory.
      * @param value The unit as ThermsImperial to create a new Energy from.
      * @returns The new Energy instance.
      */
@@ -596,7 +596,7 @@ export class Energy extends BaseUnit {
 
     /**
      * Create a new Energy instance from a HorsepowerHours
-     *
+     * A horsepower-hour (symbol: hp⋅h) is an outdated unit of energy, not used in the International System of Units. The unit represents an amount of work a horse is supposed capable of delivering during an hour (1 horsepower integrated over a time interval of an hour).
      * @param value The unit as HorsepowerHours to create a new Energy from.
      * @returns The new Energy instance.
      */
@@ -979,8 +979,8 @@ export class Energy extends BaseUnit {
                 case EnergyUnits.Joules: return this.value;
                 case EnergyUnits.Calories: return super.internalDivide(this.value, 4.184);
                 case EnergyUnits.BritishThermalUnits: return super.internalDivide(this.value, 1055.05585262);
-                case EnergyUnits.ElectronVolts: return super.internalDivide(this.value, 1.602176565e-19);
-                case EnergyUnits.FootPounds: return super.internalDivide(this.value, 1.355817948);
+                case EnergyUnits.ElectronVolts: return super.internalDivide(this.value, 1.602176634e-19);
+                case EnergyUnits.FootPounds: return super.internalDivide(this.value, 1.3558179483314004);
                 case EnergyUnits.Ergs: return super.internalDivide(this.value, 1e-7);
                 case EnergyUnits.WattHours: return super.internalDivide(this.value, 3600);
                 case EnergyUnits.WattDays: {
@@ -990,7 +990,11 @@ export class Energy extends BaseUnit {
                 case EnergyUnits.ThermsEc: return super.internalDivide(this.value, 1.05505585262e8);
                 case EnergyUnits.ThermsUs: return super.internalDivide(this.value, 1.054804e8);
                 case EnergyUnits.ThermsImperial: return super.internalDivide(this.value, 1.05505585257348e8);
-                case EnergyUnits.HorsepowerHours: return super.internalDivide(this.value, 2.6845195377e6);
+                case EnergyUnits.HorsepowerHours: {
+                    const v4 = super.internalMultiply(76.0402249, 9.80665);
+                    const v6 = super.internalMultiply(v4, 3600);
+                    return super.internalDivide(this.value, v6);
+                }
                 case EnergyUnits.Nanojoules: return super.internalDivide(this.value, 1e-9);
                 case EnergyUnits.Microjoules: return super.internalDivide(this.value, 0.000001);
                 case EnergyUnits.Millijoules: return super.internalDivide(this.value, 0.001);
@@ -1020,19 +1024,19 @@ export class Energy extends BaseUnit {
                     return super.internalDivide(v3, 1000000000);
                 }
                 case EnergyUnits.KiloelectronVolts: {
-                    const v3 = super.internalDivide(this.value, 1.602176565e-19);
+                    const v3 = super.internalDivide(this.value, 1.602176634e-19);
                     return super.internalDivide(v3, 1000);
                 }
                 case EnergyUnits.MegaelectronVolts: {
-                    const v3 = super.internalDivide(this.value, 1.602176565e-19);
+                    const v3 = super.internalDivide(this.value, 1.602176634e-19);
                     return super.internalDivide(v3, 1000000);
                 }
                 case EnergyUnits.GigaelectronVolts: {
-                    const v3 = super.internalDivide(this.value, 1.602176565e-19);
+                    const v3 = super.internalDivide(this.value, 1.602176634e-19);
                     return super.internalDivide(v3, 1000000000);
                 }
                 case EnergyUnits.TeraelectronVolts: {
-                    const v3 = super.internalDivide(this.value, 1.602176565e-19);
+                    const v3 = super.internalDivide(this.value, 1.602176634e-19);
                     return super.internalDivide(v3, 1000000000000);
                 }
                 case EnergyUnits.KilowattHours: {
@@ -1089,15 +1093,15 @@ export class Energy extends BaseUnit {
             case EnergyUnits.Joules: return this.value;
             case EnergyUnits.Calories: return this.value / 4.184;
             case EnergyUnits.BritishThermalUnits: return this.value / 1055.05585262;
-            case EnergyUnits.ElectronVolts: return this.value / 1.602176565e-19;
-            case EnergyUnits.FootPounds: return this.value / 1.355817948;
+            case EnergyUnits.ElectronVolts: return this.value / 1.602176634e-19;
+            case EnergyUnits.FootPounds: return this.value / 1.3558179483314004;
             case EnergyUnits.Ergs: return this.value / 1e-7;
             case EnergyUnits.WattHours: return this.value / 3600;
             case EnergyUnits.WattDays: return this.value / (24 * 3600);
             case EnergyUnits.ThermsEc: return this.value / 1.05505585262e8;
             case EnergyUnits.ThermsUs: return this.value / 1.054804e8;
             case EnergyUnits.ThermsImperial: return this.value / 1.05505585257348e8;
-            case EnergyUnits.HorsepowerHours: return this.value / 2.6845195377e6;
+            case EnergyUnits.HorsepowerHours: return this.value / (76.0402249 * 9.80665 * 3600);
             case EnergyUnits.Nanojoules: return (this.value) / 1e-9;
             case EnergyUnits.Microjoules: return (this.value) / 0.000001;
             case EnergyUnits.Millijoules: return (this.value) / 0.001;
@@ -1111,10 +1115,10 @@ export class Energy extends BaseUnit {
             case EnergyUnits.KilobritishThermalUnits: return (this.value / 1055.05585262) / 1000;
             case EnergyUnits.MegabritishThermalUnits: return (this.value / 1055.05585262) / 1000000;
             case EnergyUnits.GigabritishThermalUnits: return (this.value / 1055.05585262) / 1000000000;
-            case EnergyUnits.KiloelectronVolts: return (this.value / 1.602176565e-19) / 1000;
-            case EnergyUnits.MegaelectronVolts: return (this.value / 1.602176565e-19) / 1000000;
-            case EnergyUnits.GigaelectronVolts: return (this.value / 1.602176565e-19) / 1000000000;
-            case EnergyUnits.TeraelectronVolts: return (this.value / 1.602176565e-19) / 1000000000000;
+            case EnergyUnits.KiloelectronVolts: return (this.value / 1.602176634e-19) / 1000;
+            case EnergyUnits.MegaelectronVolts: return (this.value / 1.602176634e-19) / 1000000;
+            case EnergyUnits.GigaelectronVolts: return (this.value / 1.602176634e-19) / 1000000000;
+            case EnergyUnits.TeraelectronVolts: return (this.value / 1.602176634e-19) / 1000000000000;
             case EnergyUnits.KilowattHours: return (this.value / 3600) / 1000;
             case EnergyUnits.MegawattHours: return (this.value / 3600) / 1000000;
             case EnergyUnits.GigawattHours: return (this.value / 3600) / 1000000000;
@@ -1136,8 +1140,8 @@ export class Energy extends BaseUnit {
                 case EnergyUnits.Joules: return value;
                 case EnergyUnits.Calories: return super.internalMultiply(value, 4.184);
                 case EnergyUnits.BritishThermalUnits: return super.internalMultiply(value, 1055.05585262);
-                case EnergyUnits.ElectronVolts: return super.internalMultiply(value, 1.602176565e-19);
-                case EnergyUnits.FootPounds: return super.internalMultiply(value, 1.355817948);
+                case EnergyUnits.ElectronVolts: return super.internalMultiply(value, 1.602176634e-19);
+                case EnergyUnits.FootPounds: return super.internalMultiply(value, 1.3558179483314004);
                 case EnergyUnits.Ergs: return super.internalMultiply(value, 1e-7);
                 case EnergyUnits.WattHours: return super.internalMultiply(value, 3600);
                 case EnergyUnits.WattDays: {
@@ -1147,7 +1151,11 @@ export class Energy extends BaseUnit {
                 case EnergyUnits.ThermsEc: return super.internalMultiply(value, 1.05505585262e8);
                 case EnergyUnits.ThermsUs: return super.internalMultiply(value, 1.054804e8);
                 case EnergyUnits.ThermsImperial: return super.internalMultiply(value, 1.05505585257348e8);
-                case EnergyUnits.HorsepowerHours: return super.internalMultiply(value, 2.6845195377e6);
+                case EnergyUnits.HorsepowerHours: {
+                    const v3 = super.internalMultiply(value, 76.0402249);
+                    const v5 = super.internalMultiply(v3, 9.80665);
+                    return super.internalMultiply(v5, 3600);
+                }
                 case EnergyUnits.Nanojoules: return super.internalMultiply(value, 1e-9);
                 case EnergyUnits.Microjoules: return super.internalMultiply(value, 0.000001);
                 case EnergyUnits.Millijoules: return super.internalMultiply(value, 0.001);
@@ -1177,19 +1185,19 @@ export class Energy extends BaseUnit {
                     return super.internalMultiply(v3, 1000000000);
                 }
                 case EnergyUnits.KiloelectronVolts: {
-                    const v3 = super.internalMultiply(value, 1.602176565e-19);
+                    const v3 = super.internalMultiply(value, 1.602176634e-19);
                     return super.internalMultiply(v3, 1000);
                 }
                 case EnergyUnits.MegaelectronVolts: {
-                    const v3 = super.internalMultiply(value, 1.602176565e-19);
+                    const v3 = super.internalMultiply(value, 1.602176634e-19);
                     return super.internalMultiply(v3, 1000000);
                 }
                 case EnergyUnits.GigaelectronVolts: {
-                    const v3 = super.internalMultiply(value, 1.602176565e-19);
+                    const v3 = super.internalMultiply(value, 1.602176634e-19);
                     return super.internalMultiply(v3, 1000000000);
                 }
                 case EnergyUnits.TeraelectronVolts: {
-                    const v3 = super.internalMultiply(value, 1.602176565e-19);
+                    const v3 = super.internalMultiply(value, 1.602176634e-19);
                     return super.internalMultiply(v3, 1000000000000);
                 }
                 case EnergyUnits.KilowattHours: {
@@ -1246,15 +1254,15 @@ export class Energy extends BaseUnit {
             case EnergyUnits.Joules: return value;
             case EnergyUnits.Calories: return value * 4.184;
             case EnergyUnits.BritishThermalUnits: return value * 1055.05585262;
-            case EnergyUnits.ElectronVolts: return value * 1.602176565e-19;
-            case EnergyUnits.FootPounds: return value * 1.355817948;
+            case EnergyUnits.ElectronVolts: return value * 1.602176634e-19;
+            case EnergyUnits.FootPounds: return value * 1.3558179483314004;
             case EnergyUnits.Ergs: return value * 1e-7;
             case EnergyUnits.WattHours: return value * 3600;
             case EnergyUnits.WattDays: return value * 24 * 3600;
             case EnergyUnits.ThermsEc: return value * 1.05505585262e8;
             case EnergyUnits.ThermsUs: return value * 1.054804e8;
             case EnergyUnits.ThermsImperial: return value * 1.05505585257348e8;
-            case EnergyUnits.HorsepowerHours: return value * 2.6845195377e6;
+            case EnergyUnits.HorsepowerHours: return value * 76.0402249 * 9.80665 * 3600;
             case EnergyUnits.Nanojoules: return (value) * 1e-9;
             case EnergyUnits.Microjoules: return (value) * 0.000001;
             case EnergyUnits.Millijoules: return (value) * 0.001;
@@ -1268,10 +1276,10 @@ export class Energy extends BaseUnit {
             case EnergyUnits.KilobritishThermalUnits: return (value * 1055.05585262) * 1000;
             case EnergyUnits.MegabritishThermalUnits: return (value * 1055.05585262) * 1000000;
             case EnergyUnits.GigabritishThermalUnits: return (value * 1055.05585262) * 1000000000;
-            case EnergyUnits.KiloelectronVolts: return (value * 1.602176565e-19) * 1000;
-            case EnergyUnits.MegaelectronVolts: return (value * 1.602176565e-19) * 1000000;
-            case EnergyUnits.GigaelectronVolts: return (value * 1.602176565e-19) * 1000000000;
-            case EnergyUnits.TeraelectronVolts: return (value * 1.602176565e-19) * 1000000000000;
+            case EnergyUnits.KiloelectronVolts: return (value * 1.602176634e-19) * 1000;
+            case EnergyUnits.MegaelectronVolts: return (value * 1.602176634e-19) * 1000000;
+            case EnergyUnits.GigaelectronVolts: return (value * 1.602176634e-19) * 1000000000;
+            case EnergyUnits.TeraelectronVolts: return (value * 1.602176634e-19) * 1000000000000;
             case EnergyUnits.KilowattHours: return (value * 3600) * 1000;
             case EnergyUnits.MegawattHours: return (value * 3600) * 1000000;
             case EnergyUnits.GigawattHours: return (value * 3600) * 1000000000;
