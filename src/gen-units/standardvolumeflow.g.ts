@@ -300,9 +300,15 @@ export class StandardVolumeFlow extends BaseUnit {
                 case StandardVolumeFlowUnits.StandardCubicMetersPerDay: return super.internalMultiply(this.value, 86400);
                 case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute: return super.internalMultiply(this.value, 6e7);
                 case StandardVolumeFlowUnits.StandardLitersPerMinute: return super.internalMultiply(this.value, 60000);
-                case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return super.internalMultiply(this.value, 35.314666721);
-                case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return super.internalMultiply(this.value, 2118.88000326);
-                case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return super.internalDivide(this.value, 7.8657907199999087346816086183876e-6);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return super.internalDivide(this.value, 0.028316846592);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: {
+                    const v4 = super.internalDivide(0.028316846592, 60);
+                    return super.internalDivide(this.value, v4);
+                }
+                case StandardVolumeFlowUnits.StandardCubicFeetPerHour: {
+                    const v4 = super.internalDivide(0.028316846592, 3600);
+                    return super.internalDivide(this.value, v4);
+                }
                 default: return Number.NaN;
             }
         switch (toUnit) {
@@ -312,9 +318,9 @@ export class StandardVolumeFlow extends BaseUnit {
             case StandardVolumeFlowUnits.StandardCubicMetersPerDay: return this.value * 86400;
             case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute: return this.value * 6e7;
             case StandardVolumeFlowUnits.StandardLitersPerMinute: return this.value * 60000;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return this.value * 35.314666721;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return this.value * 2118.88000326;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return this.value / 7.8657907199999087346816086183876e-6;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return this.value / 0.028316846592;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return this.value / (0.028316846592 / 60);
+            case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return this.value / (0.028316846592 / 3600);
             default: return Number.NaN;
         }
     }
@@ -328,9 +334,15 @@ export class StandardVolumeFlow extends BaseUnit {
                 case StandardVolumeFlowUnits.StandardCubicMetersPerDay: return super.internalDivide(value, 86400);
                 case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute: return super.internalDivide(value, 6e7);
                 case StandardVolumeFlowUnits.StandardLitersPerMinute: return super.internalDivide(value, 60000);
-                case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return super.internalDivide(value, 35.314666721);
-                case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return super.internalDivide(value, 2118.88000326);
-                case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return super.internalMultiply(value, 7.8657907199999087346816086183876e-6);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return super.internalMultiply(value, 0.028316846592);
+                case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: {
+                    const v4 = super.internalDivide(0.028316846592, 60);
+                    return super.internalMultiply(value, v4);
+                }
+                case StandardVolumeFlowUnits.StandardCubicFeetPerHour: {
+                    const v4 = super.internalDivide(0.028316846592, 3600);
+                    return super.internalMultiply(value, v4);
+                }
                 default: return Number.NaN;
             }
         switch (fromUnit) {
@@ -340,9 +352,9 @@ export class StandardVolumeFlow extends BaseUnit {
             case StandardVolumeFlowUnits.StandardCubicMetersPerDay: return value / 86400;
             case StandardVolumeFlowUnits.StandardCubicCentimetersPerMinute: return value / 6e7;
             case StandardVolumeFlowUnits.StandardLitersPerMinute: return value / 60000;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return value / 35.314666721;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return value / 2118.88000326;
-            case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return value * 7.8657907199999087346816086183876e-6;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerSecond: return value * 0.028316846592;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerMinute: return value * 0.028316846592 / 60;
+            case StandardVolumeFlowUnits.StandardCubicFeetPerHour: return value * 0.028316846592 / 3600;
             default: return Number.NaN;
         }
     }

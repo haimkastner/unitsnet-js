@@ -1065,8 +1065,8 @@ export class PowerDensity extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case PowerDensityUnits.WattsPerCubicMeter: return this.value;
-                case PowerDensityUnits.WattsPerCubicInch: return super.internalDivide(this.value, 6.102374409473228e4);
-                case PowerDensityUnits.WattsPerCubicFoot: return super.internalDivide(this.value, 3.531466672148859e1);
+                case PowerDensityUnits.WattsPerCubicInch: return super.internalMultiply(this.value, 1.6387064e-5);
+                case PowerDensityUnits.WattsPerCubicFoot: return super.internalMultiply(this.value, 0.028316846592);
                 case PowerDensityUnits.WattsPerLiter: return super.internalDivide(this.value, 1.0e3);
                 case PowerDensityUnits.PicowattsPerCubicMeter: return super.internalDivide(this.value, 1e-12);
                 case PowerDensityUnits.NanowattsPerCubicMeter: return super.internalDivide(this.value, 1e-9);
@@ -1079,83 +1079,83 @@ export class PowerDensity extends BaseUnit {
                 case PowerDensityUnits.GigawattsPerCubicMeter: return super.internalDivide(this.value, 1000000000);
                 case PowerDensityUnits.TerawattsPerCubicMeter: return super.internalDivide(this.value, 1000000000000);
                 case PowerDensityUnits.PicowattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerCubicInch: {
-                    const v3 = super.internalDivide(this.value, 6.102374409473228e4);
+                    const v3 = super.internalMultiply(this.value, 1.6387064e-5);
                     return super.internalDivide(v3, 1000000000000);
                 }
                 case PowerDensityUnits.PicowattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerCubicFoot: {
-                    const v3 = super.internalDivide(this.value, 3.531466672148859e1);
+                    const v3 = super.internalMultiply(this.value, 0.028316846592);
                     return super.internalDivide(v3, 1000000000000);
                 }
                 case PowerDensityUnits.PicowattsPerLiter: {
@@ -1202,8 +1202,8 @@ export class PowerDensity extends BaseUnit {
             }
         switch (toUnit) {
             case PowerDensityUnits.WattsPerCubicMeter: return this.value;
-            case PowerDensityUnits.WattsPerCubicInch: return this.value / 6.102374409473228e4;
-            case PowerDensityUnits.WattsPerCubicFoot: return this.value / 3.531466672148859e1;
+            case PowerDensityUnits.WattsPerCubicInch: return this.value * 1.6387064e-5;
+            case PowerDensityUnits.WattsPerCubicFoot: return this.value * 0.028316846592;
             case PowerDensityUnits.WattsPerLiter: return this.value / 1.0e3;
             case PowerDensityUnits.PicowattsPerCubicMeter: return (this.value) / 1e-12;
             case PowerDensityUnits.NanowattsPerCubicMeter: return (this.value) / 1e-9;
@@ -1215,26 +1215,26 @@ export class PowerDensity extends BaseUnit {
             case PowerDensityUnits.MegawattsPerCubicMeter: return (this.value) / 1000000;
             case PowerDensityUnits.GigawattsPerCubicMeter: return (this.value) / 1000000000;
             case PowerDensityUnits.TerawattsPerCubicMeter: return (this.value) / 1000000000000;
-            case PowerDensityUnits.PicowattsPerCubicInch: return (this.value / 6.102374409473228e4) / 1e-12;
-            case PowerDensityUnits.NanowattsPerCubicInch: return (this.value / 6.102374409473228e4) / 1e-9;
-            case PowerDensityUnits.MicrowattsPerCubicInch: return (this.value / 6.102374409473228e4) / 0.000001;
-            case PowerDensityUnits.MilliwattsPerCubicInch: return (this.value / 6.102374409473228e4) / 0.001;
-            case PowerDensityUnits.DeciwattsPerCubicInch: return (this.value / 6.102374409473228e4) / 0.1;
-            case PowerDensityUnits.DecawattsPerCubicInch: return (this.value / 6.102374409473228e4) / 10;
-            case PowerDensityUnits.KilowattsPerCubicInch: return (this.value / 6.102374409473228e4) / 1000;
-            case PowerDensityUnits.MegawattsPerCubicInch: return (this.value / 6.102374409473228e4) / 1000000;
-            case PowerDensityUnits.GigawattsPerCubicInch: return (this.value / 6.102374409473228e4) / 1000000000;
-            case PowerDensityUnits.TerawattsPerCubicInch: return (this.value / 6.102374409473228e4) / 1000000000000;
-            case PowerDensityUnits.PicowattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 1e-12;
-            case PowerDensityUnits.NanowattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 1e-9;
-            case PowerDensityUnits.MicrowattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 0.000001;
-            case PowerDensityUnits.MilliwattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 0.001;
-            case PowerDensityUnits.DeciwattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 0.1;
-            case PowerDensityUnits.DecawattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 10;
-            case PowerDensityUnits.KilowattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 1000;
-            case PowerDensityUnits.MegawattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 1000000;
-            case PowerDensityUnits.GigawattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 1000000000;
-            case PowerDensityUnits.TerawattsPerCubicFoot: return (this.value / 3.531466672148859e1) / 1000000000000;
+            case PowerDensityUnits.PicowattsPerCubicInch: return (this.value * 1.6387064e-5) / 1e-12;
+            case PowerDensityUnits.NanowattsPerCubicInch: return (this.value * 1.6387064e-5) / 1e-9;
+            case PowerDensityUnits.MicrowattsPerCubicInch: return (this.value * 1.6387064e-5) / 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicInch: return (this.value * 1.6387064e-5) / 0.001;
+            case PowerDensityUnits.DeciwattsPerCubicInch: return (this.value * 1.6387064e-5) / 0.1;
+            case PowerDensityUnits.DecawattsPerCubicInch: return (this.value * 1.6387064e-5) / 10;
+            case PowerDensityUnits.KilowattsPerCubicInch: return (this.value * 1.6387064e-5) / 1000;
+            case PowerDensityUnits.MegawattsPerCubicInch: return (this.value * 1.6387064e-5) / 1000000;
+            case PowerDensityUnits.GigawattsPerCubicInch: return (this.value * 1.6387064e-5) / 1000000000;
+            case PowerDensityUnits.TerawattsPerCubicInch: return (this.value * 1.6387064e-5) / 1000000000000;
+            case PowerDensityUnits.PicowattsPerCubicFoot: return (this.value * 0.028316846592) / 1e-12;
+            case PowerDensityUnits.NanowattsPerCubicFoot: return (this.value * 0.028316846592) / 1e-9;
+            case PowerDensityUnits.MicrowattsPerCubicFoot: return (this.value * 0.028316846592) / 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicFoot: return (this.value * 0.028316846592) / 0.001;
+            case PowerDensityUnits.DeciwattsPerCubicFoot: return (this.value * 0.028316846592) / 0.1;
+            case PowerDensityUnits.DecawattsPerCubicFoot: return (this.value * 0.028316846592) / 10;
+            case PowerDensityUnits.KilowattsPerCubicFoot: return (this.value * 0.028316846592) / 1000;
+            case PowerDensityUnits.MegawattsPerCubicFoot: return (this.value * 0.028316846592) / 1000000;
+            case PowerDensityUnits.GigawattsPerCubicFoot: return (this.value * 0.028316846592) / 1000000000;
+            case PowerDensityUnits.TerawattsPerCubicFoot: return (this.value * 0.028316846592) / 1000000000000;
             case PowerDensityUnits.PicowattsPerLiter: return (this.value / 1.0e3) / 1e-12;
             case PowerDensityUnits.NanowattsPerLiter: return (this.value / 1.0e3) / 1e-9;
             case PowerDensityUnits.MicrowattsPerLiter: return (this.value / 1.0e3) / 0.000001;
@@ -1253,8 +1253,8 @@ export class PowerDensity extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case PowerDensityUnits.WattsPerCubicMeter: return value;
-                case PowerDensityUnits.WattsPerCubicInch: return super.internalMultiply(value, 6.102374409473228e4);
-                case PowerDensityUnits.WattsPerCubicFoot: return super.internalMultiply(value, 3.531466672148859e1);
+                case PowerDensityUnits.WattsPerCubicInch: return super.internalDivide(value, 1.6387064e-5);
+                case PowerDensityUnits.WattsPerCubicFoot: return super.internalDivide(value, 0.028316846592);
                 case PowerDensityUnits.WattsPerLiter: return super.internalMultiply(value, 1.0e3);
                 case PowerDensityUnits.PicowattsPerCubicMeter: return super.internalMultiply(value, 1e-12);
                 case PowerDensityUnits.NanowattsPerCubicMeter: return super.internalMultiply(value, 1e-9);
@@ -1267,83 +1267,83 @@ export class PowerDensity extends BaseUnit {
                 case PowerDensityUnits.GigawattsPerCubicMeter: return super.internalMultiply(value, 1000000000);
                 case PowerDensityUnits.TerawattsPerCubicMeter: return super.internalMultiply(value, 1000000000000);
                 case PowerDensityUnits.PicowattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerCubicInch: {
-                    const v3 = super.internalMultiply(value, 6.102374409473228e4);
+                    const v3 = super.internalDivide(value, 1.6387064e-5);
                     return super.internalMultiply(v3, 1000000000000);
                 }
                 case PowerDensityUnits.PicowattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 1e-12);
                 }
                 case PowerDensityUnits.NanowattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 1e-9);
                 }
                 case PowerDensityUnits.MicrowattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 0.000001);
                 }
                 case PowerDensityUnits.MilliwattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 0.001);
                 }
                 case PowerDensityUnits.DeciwattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 0.1);
                 }
                 case PowerDensityUnits.DecawattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 10);
                 }
                 case PowerDensityUnits.KilowattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 1000);
                 }
                 case PowerDensityUnits.MegawattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 1000000);
                 }
                 case PowerDensityUnits.GigawattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 1000000000);
                 }
                 case PowerDensityUnits.TerawattsPerCubicFoot: {
-                    const v3 = super.internalMultiply(value, 3.531466672148859e1);
+                    const v3 = super.internalDivide(value, 0.028316846592);
                     return super.internalMultiply(v3, 1000000000000);
                 }
                 case PowerDensityUnits.PicowattsPerLiter: {
@@ -1390,8 +1390,8 @@ export class PowerDensity extends BaseUnit {
             }
         switch (fromUnit) {
             case PowerDensityUnits.WattsPerCubicMeter: return value;
-            case PowerDensityUnits.WattsPerCubicInch: return value * 6.102374409473228e4;
-            case PowerDensityUnits.WattsPerCubicFoot: return value * 3.531466672148859e1;
+            case PowerDensityUnits.WattsPerCubicInch: return value / 1.6387064e-5;
+            case PowerDensityUnits.WattsPerCubicFoot: return value / 0.028316846592;
             case PowerDensityUnits.WattsPerLiter: return value * 1.0e3;
             case PowerDensityUnits.PicowattsPerCubicMeter: return (value) * 1e-12;
             case PowerDensityUnits.NanowattsPerCubicMeter: return (value) * 1e-9;
@@ -1403,26 +1403,26 @@ export class PowerDensity extends BaseUnit {
             case PowerDensityUnits.MegawattsPerCubicMeter: return (value) * 1000000;
             case PowerDensityUnits.GigawattsPerCubicMeter: return (value) * 1000000000;
             case PowerDensityUnits.TerawattsPerCubicMeter: return (value) * 1000000000000;
-            case PowerDensityUnits.PicowattsPerCubicInch: return (value * 6.102374409473228e4) * 1e-12;
-            case PowerDensityUnits.NanowattsPerCubicInch: return (value * 6.102374409473228e4) * 1e-9;
-            case PowerDensityUnits.MicrowattsPerCubicInch: return (value * 6.102374409473228e4) * 0.000001;
-            case PowerDensityUnits.MilliwattsPerCubicInch: return (value * 6.102374409473228e4) * 0.001;
-            case PowerDensityUnits.DeciwattsPerCubicInch: return (value * 6.102374409473228e4) * 0.1;
-            case PowerDensityUnits.DecawattsPerCubicInch: return (value * 6.102374409473228e4) * 10;
-            case PowerDensityUnits.KilowattsPerCubicInch: return (value * 6.102374409473228e4) * 1000;
-            case PowerDensityUnits.MegawattsPerCubicInch: return (value * 6.102374409473228e4) * 1000000;
-            case PowerDensityUnits.GigawattsPerCubicInch: return (value * 6.102374409473228e4) * 1000000000;
-            case PowerDensityUnits.TerawattsPerCubicInch: return (value * 6.102374409473228e4) * 1000000000000;
-            case PowerDensityUnits.PicowattsPerCubicFoot: return (value * 3.531466672148859e1) * 1e-12;
-            case PowerDensityUnits.NanowattsPerCubicFoot: return (value * 3.531466672148859e1) * 1e-9;
-            case PowerDensityUnits.MicrowattsPerCubicFoot: return (value * 3.531466672148859e1) * 0.000001;
-            case PowerDensityUnits.MilliwattsPerCubicFoot: return (value * 3.531466672148859e1) * 0.001;
-            case PowerDensityUnits.DeciwattsPerCubicFoot: return (value * 3.531466672148859e1) * 0.1;
-            case PowerDensityUnits.DecawattsPerCubicFoot: return (value * 3.531466672148859e1) * 10;
-            case PowerDensityUnits.KilowattsPerCubicFoot: return (value * 3.531466672148859e1) * 1000;
-            case PowerDensityUnits.MegawattsPerCubicFoot: return (value * 3.531466672148859e1) * 1000000;
-            case PowerDensityUnits.GigawattsPerCubicFoot: return (value * 3.531466672148859e1) * 1000000000;
-            case PowerDensityUnits.TerawattsPerCubicFoot: return (value * 3.531466672148859e1) * 1000000000000;
+            case PowerDensityUnits.PicowattsPerCubicInch: return (value / 1.6387064e-5) * 1e-12;
+            case PowerDensityUnits.NanowattsPerCubicInch: return (value / 1.6387064e-5) * 1e-9;
+            case PowerDensityUnits.MicrowattsPerCubicInch: return (value / 1.6387064e-5) * 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicInch: return (value / 1.6387064e-5) * 0.001;
+            case PowerDensityUnits.DeciwattsPerCubicInch: return (value / 1.6387064e-5) * 0.1;
+            case PowerDensityUnits.DecawattsPerCubicInch: return (value / 1.6387064e-5) * 10;
+            case PowerDensityUnits.KilowattsPerCubicInch: return (value / 1.6387064e-5) * 1000;
+            case PowerDensityUnits.MegawattsPerCubicInch: return (value / 1.6387064e-5) * 1000000;
+            case PowerDensityUnits.GigawattsPerCubicInch: return (value / 1.6387064e-5) * 1000000000;
+            case PowerDensityUnits.TerawattsPerCubicInch: return (value / 1.6387064e-5) * 1000000000000;
+            case PowerDensityUnits.PicowattsPerCubicFoot: return (value / 0.028316846592) * 1e-12;
+            case PowerDensityUnits.NanowattsPerCubicFoot: return (value / 0.028316846592) * 1e-9;
+            case PowerDensityUnits.MicrowattsPerCubicFoot: return (value / 0.028316846592) * 0.000001;
+            case PowerDensityUnits.MilliwattsPerCubicFoot: return (value / 0.028316846592) * 0.001;
+            case PowerDensityUnits.DeciwattsPerCubicFoot: return (value / 0.028316846592) * 0.1;
+            case PowerDensityUnits.DecawattsPerCubicFoot: return (value / 0.028316846592) * 10;
+            case PowerDensityUnits.KilowattsPerCubicFoot: return (value / 0.028316846592) * 1000;
+            case PowerDensityUnits.MegawattsPerCubicFoot: return (value / 0.028316846592) * 1000000;
+            case PowerDensityUnits.GigawattsPerCubicFoot: return (value / 0.028316846592) * 1000000000;
+            case PowerDensityUnits.TerawattsPerCubicFoot: return (value / 0.028316846592) * 1000000000000;
             case PowerDensityUnits.PicowattsPerLiter: return (value * 1.0e3) * 1e-12;
             case PowerDensityUnits.NanowattsPerLiter: return (value * 1.0e3) * 1e-9;
             case PowerDensityUnits.MicrowattsPerLiter: return (value * 1.0e3) * 0.000001;

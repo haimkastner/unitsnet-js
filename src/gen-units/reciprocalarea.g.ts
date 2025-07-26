@@ -344,10 +344,21 @@ export class ReciprocalArea extends BaseUnit {
                 case ReciprocalAreaUnits.InverseSquareCentimeters: return super.internalMultiply(this.value, 1e-4);
                 case ReciprocalAreaUnits.InverseSquareMillimeters: return super.internalMultiply(this.value, 1e-6);
                 case ReciprocalAreaUnits.InverseSquareMicrometers: return super.internalMultiply(this.value, 1e-12);
-                case ReciprocalAreaUnits.InverseSquareMiles: return super.internalMultiply(this.value, 2.59e6);
-                case ReciprocalAreaUnits.InverseSquareYards: return super.internalMultiply(this.value, 0.836127);
-                case ReciprocalAreaUnits.InverseSquareFeet: return super.internalMultiply(this.value, 0.092903);
-                case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return super.internalMultiply(this.value, 0.09290341161);
+                case ReciprocalAreaUnits.InverseSquareMiles: {
+                    const v4 = super.internalMultiply(1609.344, 1609.344);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case ReciprocalAreaUnits.InverseSquareYards: {
+                    const v4 = super.internalMultiply(0.9144, 0.9144);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case ReciprocalAreaUnits.InverseSquareFeet: return super.internalMultiply(this.value, 9.290304e-2);
+                case ReciprocalAreaUnits.InverseUsSurveySquareFeet: {
+                    const v4 = super.internalDivide(1200.0, 3937.0);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    const v8 = super.internalDivide(1200.0, 3937.0);
+                    return super.internalMultiply(v5, v8);
+                }
                 case ReciprocalAreaUnits.InverseSquareInches: return super.internalMultiply(this.value, 0.00064516);
                 default: return Number.NaN;
             }
@@ -358,10 +369,10 @@ export class ReciprocalArea extends BaseUnit {
             case ReciprocalAreaUnits.InverseSquareCentimeters: return this.value * 1e-4;
             case ReciprocalAreaUnits.InverseSquareMillimeters: return this.value * 1e-6;
             case ReciprocalAreaUnits.InverseSquareMicrometers: return this.value * 1e-12;
-            case ReciprocalAreaUnits.InverseSquareMiles: return this.value * 2.59e6;
-            case ReciprocalAreaUnits.InverseSquareYards: return this.value * 0.836127;
-            case ReciprocalAreaUnits.InverseSquareFeet: return this.value * 0.092903;
-            case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return this.value * 0.09290341161;
+            case ReciprocalAreaUnits.InverseSquareMiles: return this.value * (1609.344 * 1609.344);
+            case ReciprocalAreaUnits.InverseSquareYards: return this.value * (0.9144 * 0.9144);
+            case ReciprocalAreaUnits.InverseSquareFeet: return this.value * 9.290304e-2;
+            case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return this.value * (1200.0 / 3937.0) * (1200.0 / 3937.0);
             case ReciprocalAreaUnits.InverseSquareInches: return this.value * 0.00064516;
             default: return Number.NaN;
         }
@@ -376,10 +387,21 @@ export class ReciprocalArea extends BaseUnit {
                 case ReciprocalAreaUnits.InverseSquareCentimeters: return super.internalDivide(value, 1e-4);
                 case ReciprocalAreaUnits.InverseSquareMillimeters: return super.internalDivide(value, 1e-6);
                 case ReciprocalAreaUnits.InverseSquareMicrometers: return super.internalDivide(value, 1e-12);
-                case ReciprocalAreaUnits.InverseSquareMiles: return super.internalDivide(value, 2.59e6);
-                case ReciprocalAreaUnits.InverseSquareYards: return super.internalDivide(value, 0.836127);
-                case ReciprocalAreaUnits.InverseSquareFeet: return super.internalDivide(value, 0.092903);
-                case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return super.internalDivide(value, 0.09290341161);
+                case ReciprocalAreaUnits.InverseSquareMiles: {
+                    const v4 = super.internalMultiply(1609.344, 1609.344);
+                    return super.internalDivide(value, v4);
+                }
+                case ReciprocalAreaUnits.InverseSquareYards: {
+                    const v4 = super.internalMultiply(0.9144, 0.9144);
+                    return super.internalDivide(value, v4);
+                }
+                case ReciprocalAreaUnits.InverseSquareFeet: return super.internalDivide(value, 9.290304e-2);
+                case ReciprocalAreaUnits.InverseUsSurveySquareFeet: {
+                    const v4 = super.internalDivide(1200.0, 3937.0);
+                    const v5 = super.internalDivide(value, v4);
+                    const v8 = super.internalDivide(1200.0, 3937.0);
+                    return super.internalDivide(v5, v8);
+                }
                 case ReciprocalAreaUnits.InverseSquareInches: return super.internalDivide(value, 0.00064516);
                 default: return Number.NaN;
             }
@@ -390,10 +412,10 @@ export class ReciprocalArea extends BaseUnit {
             case ReciprocalAreaUnits.InverseSquareCentimeters: return value / 1e-4;
             case ReciprocalAreaUnits.InverseSquareMillimeters: return value / 1e-6;
             case ReciprocalAreaUnits.InverseSquareMicrometers: return value / 1e-12;
-            case ReciprocalAreaUnits.InverseSquareMiles: return value / 2.59e6;
-            case ReciprocalAreaUnits.InverseSquareYards: return value / 0.836127;
-            case ReciprocalAreaUnits.InverseSquareFeet: return value / 0.092903;
-            case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return value / 0.09290341161;
+            case ReciprocalAreaUnits.InverseSquareMiles: return value / (1609.344 * 1609.344);
+            case ReciprocalAreaUnits.InverseSquareYards: return value / (0.9144 * 0.9144);
+            case ReciprocalAreaUnits.InverseSquareFeet: return value / 9.290304e-2;
+            case ReciprocalAreaUnits.InverseUsSurveySquareFeet: return value / (1200.0 / 3937.0) / (1200.0 / 3937.0);
             case ReciprocalAreaUnits.InverseSquareInches: return value / 0.00064516;
             default: return Number.NaN;
         }

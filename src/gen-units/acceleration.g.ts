@@ -18,9 +18,9 @@ export enum AccelerationUnits {
     FeetPerSecondSquared = "FootPerSecondSquared",
     /** */
     KnotsPerSecond = "KnotPerSecond",
-    /** */
+    /** The knot (/nɒt/) is a unit of speed equal to one nautical mile per hour, exactly 1.852 km/h (approximately 1.151 mph or 0.514 m/s). */
     KnotsPerMinute = "KnotPerMinute",
-    /** */
+    /** The knot (/nɒt/) is a unit of speed equal to one nautical mile per hour, exactly 1.852 km/h (approximately 1.151 mph or 0.514 m/s). */
     KnotsPerHour = "KnotPerHour",
     /** */
     StandardGravity = "StandardGravity",
@@ -118,7 +118,7 @@ export class Acceleration extends BaseUnit {
         return this.knotspersecondLazy = this.convertFromBase(AccelerationUnits.KnotsPerSecond);
     }
 
-    /** */
+    /** The knot (/nɒt/) is a unit of speed equal to one nautical mile per hour, exactly 1.852 km/h (approximately 1.151 mph or 0.514 m/s). */
     public get KnotsPerMinute(): number {
         if(this.knotsperminuteLazy !== null){
             return this.knotsperminuteLazy;
@@ -126,7 +126,7 @@ export class Acceleration extends BaseUnit {
         return this.knotsperminuteLazy = this.convertFromBase(AccelerationUnits.KnotsPerMinute);
     }
 
-    /** */
+    /** The knot (/nɒt/) is a unit of speed equal to one nautical mile per hour, exactly 1.852 km/h (approximately 1.151 mph or 0.514 m/s). */
     public get KnotsPerHour(): number {
         if(this.knotsperhourLazy !== null){
             return this.knotsperhourLazy;
@@ -240,7 +240,7 @@ export class Acceleration extends BaseUnit {
 
     /**
      * Create a new Acceleration instance from a KnotsPerMinute
-     *
+     * The knot (/nɒt/) is a unit of speed equal to one nautical mile per hour, exactly 1.852 km/h (approximately 1.151 mph or 0.514 m/s).
      * @param value The unit as KnotsPerMinute to create a new Acceleration from.
      * @returns The new Acceleration instance.
      */
@@ -250,7 +250,7 @@ export class Acceleration extends BaseUnit {
 
     /**
      * Create a new Acceleration instance from a KnotsPerHour
-     *
+     * The knot (/nɒt/) is a unit of speed equal to one nautical mile per hour, exactly 1.852 km/h (approximately 1.151 mph or 0.514 m/s).
      * @param value The unit as KnotsPerHour to create a new Acceleration from.
      * @returns The new Acceleration instance.
      */
@@ -407,14 +407,19 @@ export class Acceleration extends BaseUnit {
                 case AccelerationUnits.MetersPerSecondSquared: return this.value;
                 case AccelerationUnits.InchesPerSecondSquared: return super.internalDivide(this.value, 0.0254);
                 case AccelerationUnits.FeetPerSecondSquared: return super.internalDivide(this.value, 0.304800);
-                case AccelerationUnits.KnotsPerSecond: return super.internalDivide(this.value, 0.5144444444444);
+                case AccelerationUnits.KnotsPerSecond: {
+                    const v4 = super.internalDivide(1852.0, 3600.0);
+                    return super.internalDivide(this.value, v4);
+                }
                 case AccelerationUnits.KnotsPerMinute: {
-                    const v3 = super.internalDivide(this.value, 0.5144444444444);
-                    return super.internalMultiply(v3, 60);
+                    const v5 = super.internalDivide(1852.0, 3600.0);
+                    const v6 = super.internalDivide(60, v5);
+                    return super.internalMultiply(this.value, v6);
                 }
                 case AccelerationUnits.KnotsPerHour: {
-                    const v3 = super.internalDivide(this.value, 0.5144444444444);
-                    return super.internalMultiply(v3, 3600);
+                    const v5 = super.internalDivide(1852.0, 3600.0);
+                    const v6 = super.internalDivide(3600, v5);
+                    return super.internalMultiply(this.value, v6);
                 }
                 case AccelerationUnits.StandardGravity: return super.internalDivide(this.value, 9.80665);
                 case AccelerationUnits.NanometersPerSecondSquared: return super.internalDivide(this.value, 1e-9);
@@ -433,9 +438,9 @@ export class Acceleration extends BaseUnit {
             case AccelerationUnits.MetersPerSecondSquared: return this.value;
             case AccelerationUnits.InchesPerSecondSquared: return this.value / 0.0254;
             case AccelerationUnits.FeetPerSecondSquared: return this.value / 0.304800;
-            case AccelerationUnits.KnotsPerSecond: return this.value / 0.5144444444444;
-            case AccelerationUnits.KnotsPerMinute: return this.value / 0.5144444444444 * 60;
-            case AccelerationUnits.KnotsPerHour: return this.value / 0.5144444444444 * 3600;
+            case AccelerationUnits.KnotsPerSecond: return this.value / (1852.0 / 3600.0);
+            case AccelerationUnits.KnotsPerMinute: return this.value * 60 / (1852.0 / 3600.0);
+            case AccelerationUnits.KnotsPerHour: return this.value * 3600 / (1852.0 / 3600.0);
             case AccelerationUnits.StandardGravity: return this.value / 9.80665;
             case AccelerationUnits.NanometersPerSecondSquared: return (this.value) / 1e-9;
             case AccelerationUnits.MicrometersPerSecondSquared: return (this.value) / 0.000001;
@@ -454,14 +459,19 @@ export class Acceleration extends BaseUnit {
                 case AccelerationUnits.MetersPerSecondSquared: return value;
                 case AccelerationUnits.InchesPerSecondSquared: return super.internalMultiply(value, 0.0254);
                 case AccelerationUnits.FeetPerSecondSquared: return super.internalMultiply(value, 0.304800);
-                case AccelerationUnits.KnotsPerSecond: return super.internalMultiply(value, 0.5144444444444);
-                case AccelerationUnits.KnotsPerMinute: {
-                    const v4 = super.internalDivide(0.5144444444444, 60);
+                case AccelerationUnits.KnotsPerSecond: {
+                    const v4 = super.internalDivide(1852.0, 3600.0);
                     return super.internalMultiply(value, v4);
                 }
+                case AccelerationUnits.KnotsPerMinute: {
+                    const v4 = super.internalDivide(1852.0, 3600.0);
+                    const v6 = super.internalDivide(v4, 60);
+                    return super.internalMultiply(value, v6);
+                }
                 case AccelerationUnits.KnotsPerHour: {
-                    const v4 = super.internalDivide(0.5144444444444, 3600);
-                    return super.internalMultiply(value, v4);
+                    const v4 = super.internalDivide(1852.0, 3600.0);
+                    const v6 = super.internalDivide(v4, 3600);
+                    return super.internalMultiply(value, v6);
                 }
                 case AccelerationUnits.StandardGravity: return super.internalMultiply(value, 9.80665);
                 case AccelerationUnits.NanometersPerSecondSquared: return super.internalMultiply(value, 1e-9);
@@ -480,9 +490,9 @@ export class Acceleration extends BaseUnit {
             case AccelerationUnits.MetersPerSecondSquared: return value;
             case AccelerationUnits.InchesPerSecondSquared: return value * 0.0254;
             case AccelerationUnits.FeetPerSecondSquared: return value * 0.304800;
-            case AccelerationUnits.KnotsPerSecond: return value * 0.5144444444444;
-            case AccelerationUnits.KnotsPerMinute: return value * 0.5144444444444 / 60;
-            case AccelerationUnits.KnotsPerHour: return value * 0.5144444444444 / 3600;
+            case AccelerationUnits.KnotsPerSecond: return value * (1852.0 / 3600.0);
+            case AccelerationUnits.KnotsPerMinute: return value * (1852.0 / 3600.0) / 60;
+            case AccelerationUnits.KnotsPerHour: return value * (1852.0 / 3600.0) / 3600;
             case AccelerationUnits.StandardGravity: return value * 9.80665;
             case AccelerationUnits.NanometersPerSecondSquared: return (value) * 1e-9;
             case AccelerationUnits.MicrometersPerSecondSquared: return (value) * 0.000001;

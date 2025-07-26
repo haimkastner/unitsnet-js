@@ -12,7 +12,7 @@ export interface MassDto {
 export enum MassUnits {
     /** */
     Grams = "Gram",
-    /** */
+    /** The tonne is a unit of mass equal to 1,000 kilograms. It is a non-SI unit accepted for use with SI. It is also referred to as a metric ton in the United States to distinguish it from the non-metric units of the short ton (United States customary units) and the long ton (British imperial units). It is equivalent to approximately 2,204.6 pounds, 1.102 short tons, and 0.984 long tons. */
     Tonnes = "Tonne",
     /** The short ton is a unit of mass equal to 2,000 pounds (907.18474 kg), that is most commonly used in the United States – known there simply as the ton. */
     ShortTons = "ShortTon",
@@ -133,7 +133,7 @@ export class Mass extends BaseUnit {
         return this.gramsLazy = this.convertFromBase(MassUnits.Grams);
     }
 
-    /** */
+    /** The tonne is a unit of mass equal to 1,000 kilograms. It is a non-SI unit accepted for use with SI. It is also referred to as a metric ton in the United States to distinguish it from the non-metric units of the short ton (United States customary units) and the long ton (British imperial units). It is equivalent to approximately 2,204.6 pounds, 1.102 short tons, and 0.984 long tons. */
     public get Tonnes(): number {
         if(this.tonnesLazy !== null){
             return this.tonnesLazy;
@@ -353,7 +353,7 @@ export class Mass extends BaseUnit {
 
     /**
      * Create a new Mass instance from a Tonnes
-     *
+     * The tonne is a unit of mass equal to 1,000 kilograms. It is a non-SI unit accepted for use with SI. It is also referred to as a metric ton in the United States to distinguish it from the non-metric units of the short ton (United States customary units) and the long ton (British imperial units). It is equivalent to approximately 2,204.6 pounds, 1.102 short tons, and 0.984 long tons.
      * @param value The unit as Tonnes to create a new Mass from.
      * @returns The new Mass instance.
      */
@@ -692,15 +692,19 @@ export class Mass extends BaseUnit {
             switch (toUnit) {
                 case MassUnits.Grams: return super.internalMultiply(this.value, 1e3);
                 case MassUnits.Tonnes: return super.internalDivide(this.value, 1e3);
-                case MassUnits.ShortTons: return super.internalDivide(this.value, 9.0718474e2);
-                case MassUnits.LongTons: return super.internalDivide(this.value, 1.0160469088e3);
+                case MassUnits.ShortTons: return super.internalDivide(this.value, 907.18474);
+                case MassUnits.LongTons: return super.internalDivide(this.value, 1016.0469088);
                 case MassUnits.Pounds: return super.internalDivide(this.value, 0.45359237);
                 case MassUnits.Ounces: return super.internalDivide(this.value, 0.028349523125);
-                case MassUnits.Slugs: return super.internalMultiply(this.value, 6.852176556196105e-2);
-                case MassUnits.Stone: return super.internalMultiply(this.value, 0.1574731728702698);
-                case MassUnits.ShortHundredweight: return super.internalMultiply(this.value, 0.022046226218487758);
-                case MassUnits.LongHundredweight: return super.internalMultiply(this.value, 0.01968413055222121);
-                case MassUnits.Grains: return super.internalMultiply(this.value, 15432.358352941431);
+                case MassUnits.Slugs: {
+                    const v5 = super.internalMultiply(0.45359237, 9.80665);
+                    const v6 = super.internalDivide(0.3048, v5);
+                    return super.internalMultiply(this.value, v6);
+                }
+                case MassUnits.Stone: return super.internalDivide(this.value, 6.35029318);
+                case MassUnits.ShortHundredweight: return super.internalDivide(this.value, 45.359237);
+                case MassUnits.LongHundredweight: return super.internalDivide(this.value, 50.80234544);
+                case MassUnits.Grains: return super.internalDivide(this.value, 64.79891e-6);
                 case MassUnits.SolarMasses: return super.internalDivide(this.value, 1.98947e30);
                 case MassUnits.EarthMasses: return super.internalDivide(this.value, 5.9722E+24);
                 case MassUnits.Femtograms: {
@@ -764,15 +768,15 @@ export class Mass extends BaseUnit {
         switch (toUnit) {
             case MassUnits.Grams: return this.value * 1e3;
             case MassUnits.Tonnes: return this.value / 1e3;
-            case MassUnits.ShortTons: return this.value / 9.0718474e2;
-            case MassUnits.LongTons: return this.value / 1.0160469088e3;
+            case MassUnits.ShortTons: return this.value / 907.18474;
+            case MassUnits.LongTons: return this.value / 1016.0469088;
             case MassUnits.Pounds: return this.value / 0.45359237;
             case MassUnits.Ounces: return this.value / 0.028349523125;
-            case MassUnits.Slugs: return this.value * 6.852176556196105e-2;
-            case MassUnits.Stone: return this.value * 0.1574731728702698;
-            case MassUnits.ShortHundredweight: return this.value * 0.022046226218487758;
-            case MassUnits.LongHundredweight: return this.value * 0.01968413055222121;
-            case MassUnits.Grains: return this.value * 15432.358352941431;
+            case MassUnits.Slugs: return this.value * 0.3048 / (0.45359237 * 9.80665);
+            case MassUnits.Stone: return this.value / 6.35029318;
+            case MassUnits.ShortHundredweight: return this.value / 45.359237;
+            case MassUnits.LongHundredweight: return this.value / 50.80234544;
+            case MassUnits.Grains: return this.value / 64.79891e-6;
             case MassUnits.SolarMasses: return this.value / 1.98947e30;
             case MassUnits.EarthMasses: return this.value / 5.9722E+24;
             case MassUnits.Femtograms: return (this.value * 1e3) / 1e-15;
@@ -798,15 +802,19 @@ export class Mass extends BaseUnit {
             switch (fromUnit) {
                 case MassUnits.Grams: return super.internalDivide(value, 1e3);
                 case MassUnits.Tonnes: return super.internalMultiply(value, 1e3);
-                case MassUnits.ShortTons: return super.internalMultiply(value, 9.0718474e2);
-                case MassUnits.LongTons: return super.internalMultiply(value, 1.0160469088e3);
+                case MassUnits.ShortTons: return super.internalMultiply(value, 907.18474);
+                case MassUnits.LongTons: return super.internalMultiply(value, 1016.0469088);
                 case MassUnits.Pounds: return super.internalMultiply(value, 0.45359237);
                 case MassUnits.Ounces: return super.internalMultiply(value, 0.028349523125);
-                case MassUnits.Slugs: return super.internalDivide(value, 6.852176556196105e-2);
-                case MassUnits.Stone: return super.internalDivide(value, 0.1574731728702698);
-                case MassUnits.ShortHundredweight: return super.internalDivide(value, 0.022046226218487758);
-                case MassUnits.LongHundredweight: return super.internalDivide(value, 0.01968413055222121);
-                case MassUnits.Grains: return super.internalDivide(value, 15432.358352941431);
+                case MassUnits.Slugs: {
+                    const v3 = super.internalMultiply(value, 0.45359237);
+                    const v6 = super.internalDivide(9.80665, 0.3048);
+                    return super.internalMultiply(v3, v6);
+                }
+                case MassUnits.Stone: return super.internalMultiply(value, 6.35029318);
+                case MassUnits.ShortHundredweight: return super.internalMultiply(value, 45.359237);
+                case MassUnits.LongHundredweight: return super.internalMultiply(value, 50.80234544);
+                case MassUnits.Grains: return super.internalMultiply(value, 64.79891e-6);
                 case MassUnits.SolarMasses: return super.internalMultiply(value, 1.98947e30);
                 case MassUnits.EarthMasses: return super.internalMultiply(value, 5.9722E+24);
                 case MassUnits.Femtograms: {
@@ -870,15 +878,15 @@ export class Mass extends BaseUnit {
         switch (fromUnit) {
             case MassUnits.Grams: return value / 1e3;
             case MassUnits.Tonnes: return value * 1e3;
-            case MassUnits.ShortTons: return value * 9.0718474e2;
-            case MassUnits.LongTons: return value * 1.0160469088e3;
+            case MassUnits.ShortTons: return value * 907.18474;
+            case MassUnits.LongTons: return value * 1016.0469088;
             case MassUnits.Pounds: return value * 0.45359237;
             case MassUnits.Ounces: return value * 0.028349523125;
-            case MassUnits.Slugs: return value / 6.852176556196105e-2;
-            case MassUnits.Stone: return value / 0.1574731728702698;
-            case MassUnits.ShortHundredweight: return value / 0.022046226218487758;
-            case MassUnits.LongHundredweight: return value / 0.01968413055222121;
-            case MassUnits.Grains: return value / 15432.358352941431;
+            case MassUnits.Slugs: return value * 0.45359237 * 9.80665 / 0.3048;
+            case MassUnits.Stone: return value * 6.35029318;
+            case MassUnits.ShortHundredweight: return value * 45.359237;
+            case MassUnits.LongHundredweight: return value * 50.80234544;
+            case MassUnits.Grains: return value * 64.79891e-6;
             case MassUnits.SolarMasses: return value * 1.98947e30;
             case MassUnits.EarthMasses: return value * 5.9722E+24;
             case MassUnits.Femtograms: return (value / 1e3) * 1e-15;

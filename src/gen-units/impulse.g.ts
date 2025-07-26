@@ -384,9 +384,18 @@ export class Impulse extends BaseUnit {
             switch (toUnit) {
                 case ImpulseUnits.KilogramMetersPerSecond: return this.value;
                 case ImpulseUnits.NewtonSeconds: return this.value;
-                case ImpulseUnits.PoundFeetPerSecond: return super.internalMultiply(this.value, 7.230657989877);
-                case ImpulseUnits.PoundForceSeconds: return super.internalMultiply(this.value, 0.2248089430997);
-                case ImpulseUnits.SlugFeetPerSecond: return super.internalMultiply(this.value, 0.224735720691);
+                case ImpulseUnits.PoundFeetPerSecond: {
+                    const v4 = super.internalMultiply(0.45359237, 0.3048);
+                    return super.internalDivide(this.value, v4);
+                }
+                case ImpulseUnits.PoundForceSeconds: {
+                    const v4 = super.internalMultiply(0.45359237, 9.80665);
+                    return super.internalDivide(this.value, v4);
+                }
+                case ImpulseUnits.SlugFeetPerSecond: {
+                    const v4 = super.internalMultiply(0.45359237, 9.80665);
+                    return super.internalDivide(this.value, v4);
+                }
                 case ImpulseUnits.NanonewtonSeconds: return super.internalDivide(this.value, 1e-9);
                 case ImpulseUnits.MicronewtonSeconds: return super.internalDivide(this.value, 0.000001);
                 case ImpulseUnits.MillinewtonSeconds: return super.internalDivide(this.value, 0.001);
@@ -400,9 +409,9 @@ export class Impulse extends BaseUnit {
         switch (toUnit) {
             case ImpulseUnits.KilogramMetersPerSecond: return this.value;
             case ImpulseUnits.NewtonSeconds: return this.value;
-            case ImpulseUnits.PoundFeetPerSecond: return this.value * 7.230657989877;
-            case ImpulseUnits.PoundForceSeconds: return this.value * 0.2248089430997;
-            case ImpulseUnits.SlugFeetPerSecond: return this.value * 0.224735720691;
+            case ImpulseUnits.PoundFeetPerSecond: return this.value / (0.45359237 * 0.3048);
+            case ImpulseUnits.PoundForceSeconds: return this.value / (0.45359237 * 9.80665);
+            case ImpulseUnits.SlugFeetPerSecond: return this.value / (0.45359237 * 9.80665);
             case ImpulseUnits.NanonewtonSeconds: return (this.value) / 1e-9;
             case ImpulseUnits.MicronewtonSeconds: return (this.value) / 0.000001;
             case ImpulseUnits.MillinewtonSeconds: return (this.value) / 0.001;
@@ -420,9 +429,18 @@ export class Impulse extends BaseUnit {
             switch (fromUnit) {
                 case ImpulseUnits.KilogramMetersPerSecond: return value;
                 case ImpulseUnits.NewtonSeconds: return value;
-                case ImpulseUnits.PoundFeetPerSecond: return super.internalDivide(value, 7.230657989877);
-                case ImpulseUnits.PoundForceSeconds: return super.internalDivide(value, 0.2248089430997);
-                case ImpulseUnits.SlugFeetPerSecond: return super.internalDivide(value, 0.224735720691);
+                case ImpulseUnits.PoundFeetPerSecond: {
+                    const v4 = super.internalMultiply(0.45359237, 0.3048);
+                    return super.internalMultiply(value, v4);
+                }
+                case ImpulseUnits.PoundForceSeconds: {
+                    const v3 = super.internalMultiply(value, 0.45359237);
+                    return super.internalMultiply(v3, 9.80665);
+                }
+                case ImpulseUnits.SlugFeetPerSecond: {
+                    const v4 = super.internalMultiply(0.45359237, 9.80665);
+                    return super.internalMultiply(value, v4);
+                }
                 case ImpulseUnits.NanonewtonSeconds: return super.internalMultiply(value, 1e-9);
                 case ImpulseUnits.MicronewtonSeconds: return super.internalMultiply(value, 0.000001);
                 case ImpulseUnits.MillinewtonSeconds: return super.internalMultiply(value, 0.001);
@@ -436,9 +454,9 @@ export class Impulse extends BaseUnit {
         switch (fromUnit) {
             case ImpulseUnits.KilogramMetersPerSecond: return value;
             case ImpulseUnits.NewtonSeconds: return value;
-            case ImpulseUnits.PoundFeetPerSecond: return value / 7.230657989877;
-            case ImpulseUnits.PoundForceSeconds: return value / 0.2248089430997;
-            case ImpulseUnits.SlugFeetPerSecond: return value / 0.224735720691;
+            case ImpulseUnits.PoundFeetPerSecond: return value * (0.45359237 * 0.3048);
+            case ImpulseUnits.PoundForceSeconds: return value * 0.45359237 * 9.80665;
+            case ImpulseUnits.SlugFeetPerSecond: return value * (0.45359237 * 9.80665);
             case ImpulseUnits.NanonewtonSeconds: return (value) * 1e-9;
             case ImpulseUnits.MicronewtonSeconds: return (value) * 0.000001;
             case ImpulseUnits.MillinewtonSeconds: return (value) * 0.001;

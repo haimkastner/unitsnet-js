@@ -775,7 +775,10 @@ export class SpecificEnergy extends BaseUnit {
                     return super.internalDivide(this.value, v6);
                 }
                 case SpecificEnergyUnits.WattHoursPerPound: return super.internalDivide(this.value, 7.93664e3);
-                case SpecificEnergyUnits.BtuPerPound: return super.internalDivide(this.value, 2326.000075362);
+                case SpecificEnergyUnits.BtuPerPound: {
+                    const v4 = super.internalDivide(0.45359237, 1055.05585262);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case SpecificEnergyUnits.KilojoulesPerKilogram: return super.internalDivide(this.value, 1000);
                 case SpecificEnergyUnits.MegajoulesPerKilogram: return super.internalDivide(this.value, 1000000);
                 case SpecificEnergyUnits.KilocaloriesPerGram: {
@@ -885,7 +888,7 @@ export class SpecificEnergy extends BaseUnit {
             case SpecificEnergyUnits.WattDaysPerTonne: return this.value / ((24 * 3.6e3) / 1e3);
             case SpecificEnergyUnits.WattDaysPerShortTon: return this.value / ((24 * 3.6e3) / 9.0718474e2);
             case SpecificEnergyUnits.WattHoursPerPound: return this.value / 7.93664e3;
-            case SpecificEnergyUnits.BtuPerPound: return this.value / 2326.000075362;
+            case SpecificEnergyUnits.BtuPerPound: return this.value * 0.45359237 / 1055.05585262;
             case SpecificEnergyUnits.KilojoulesPerKilogram: return (this.value) / 1000;
             case SpecificEnergyUnits.MegajoulesPerKilogram: return (this.value) / 1000000;
             case SpecificEnergyUnits.KilocaloriesPerGram: return (this.value / 4.184e3) / 1000;
@@ -933,7 +936,10 @@ export class SpecificEnergy extends BaseUnit {
                     return super.internalMultiply(value, v6);
                 }
                 case SpecificEnergyUnits.WattHoursPerPound: return super.internalMultiply(value, 7.93664e3);
-                case SpecificEnergyUnits.BtuPerPound: return super.internalMultiply(value, 2326.000075362);
+                case SpecificEnergyUnits.BtuPerPound: {
+                    const v4 = super.internalDivide(1055.05585262, 0.45359237);
+                    return super.internalMultiply(value, v4);
+                }
                 case SpecificEnergyUnits.KilojoulesPerKilogram: return super.internalMultiply(value, 1000);
                 case SpecificEnergyUnits.MegajoulesPerKilogram: return super.internalMultiply(value, 1000000);
                 case SpecificEnergyUnits.KilocaloriesPerGram: {
@@ -1043,7 +1049,7 @@ export class SpecificEnergy extends BaseUnit {
             case SpecificEnergyUnits.WattDaysPerTonne: return value * ((24 * 3.6e3) / 1e3);
             case SpecificEnergyUnits.WattDaysPerShortTon: return value * ((24 * 3.6e3) / 9.0718474e2);
             case SpecificEnergyUnits.WattHoursPerPound: return value * 7.93664e3;
-            case SpecificEnergyUnits.BtuPerPound: return value * 2326.000075362;
+            case SpecificEnergyUnits.BtuPerPound: return value * 1055.05585262 / 0.45359237;
             case SpecificEnergyUnits.KilojoulesPerKilogram: return (value) * 1000;
             case SpecificEnergyUnits.MegajoulesPerKilogram: return (value) * 1000000;
             case SpecificEnergyUnits.KilocaloriesPerGram: return (value * 4.184e3) * 1000;

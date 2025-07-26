@@ -319,10 +319,22 @@ export class DynamicViscosity extends BaseUnit {
                 case DynamicViscosityUnits.NewtonSecondsPerMeterSquared: return this.value;
                 case DynamicViscosityUnits.PascalSeconds: return this.value;
                 case DynamicViscosityUnits.Poise: return super.internalMultiply(this.value, 10);
-                case DynamicViscosityUnits.Reyns: return super.internalDivide(this.value, 6.8947572931683613e3);
-                case DynamicViscosityUnits.PoundsForceSecondPerSquareInch: return super.internalDivide(this.value, 6.8947572931683613e3);
-                case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot: return super.internalDivide(this.value, 4.7880258980335843e1);
-                case DynamicViscosityUnits.PoundsPerFootSecond: return super.internalDivide(this.value, 1.4881639);
+                case DynamicViscosityUnits.Reyns: {
+                    const v4 = super.internalDivide(0.00064516, 4.4482216152605);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case DynamicViscosityUnits.PoundsForceSecondPerSquareInch: {
+                    const v4 = super.internalDivide(0.00064516, 4.4482216152605);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot: {
+                    const v4 = super.internalDivide(9.290304e-2, 4.4482216152605);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case DynamicViscosityUnits.PoundsPerFootSecond: {
+                    const v4 = super.internalDivide(0.3048, 0.45359237);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case DynamicViscosityUnits.MillipascalSeconds: return super.internalDivide(this.value, 0.001);
                 case DynamicViscosityUnits.MicropascalSeconds: return super.internalDivide(this.value, 0.000001);
                 case DynamicViscosityUnits.Centipoise: {
@@ -335,10 +347,10 @@ export class DynamicViscosity extends BaseUnit {
             case DynamicViscosityUnits.NewtonSecondsPerMeterSquared: return this.value;
             case DynamicViscosityUnits.PascalSeconds: return this.value;
             case DynamicViscosityUnits.Poise: return this.value * 10;
-            case DynamicViscosityUnits.Reyns: return this.value / 6.8947572931683613e3;
-            case DynamicViscosityUnits.PoundsForceSecondPerSquareInch: return this.value / 6.8947572931683613e3;
-            case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot: return this.value / 4.7880258980335843e1;
-            case DynamicViscosityUnits.PoundsPerFootSecond: return this.value / 1.4881639;
+            case DynamicViscosityUnits.Reyns: return this.value * 0.00064516 / 4.4482216152605;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareInch: return this.value * 0.00064516 / 4.4482216152605;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot: return this.value * 9.290304e-2 / 4.4482216152605;
+            case DynamicViscosityUnits.PoundsPerFootSecond: return this.value * 0.3048 / 0.45359237;
             case DynamicViscosityUnits.MillipascalSeconds: return (this.value) / 0.001;
             case DynamicViscosityUnits.MicropascalSeconds: return (this.value) / 0.000001;
             case DynamicViscosityUnits.Centipoise: return (this.value * 10) / 0.01;
@@ -352,10 +364,22 @@ export class DynamicViscosity extends BaseUnit {
                 case DynamicViscosityUnits.NewtonSecondsPerMeterSquared: return value;
                 case DynamicViscosityUnits.PascalSeconds: return value;
                 case DynamicViscosityUnits.Poise: return super.internalDivide(value, 10);
-                case DynamicViscosityUnits.Reyns: return super.internalMultiply(value, 6.8947572931683613e3);
-                case DynamicViscosityUnits.PoundsForceSecondPerSquareInch: return super.internalMultiply(value, 6.8947572931683613e3);
-                case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot: return super.internalMultiply(value, 4.7880258980335843e1);
-                case DynamicViscosityUnits.PoundsPerFootSecond: return super.internalMultiply(value, 1.4881639);
+                case DynamicViscosityUnits.Reyns: {
+                    const v4 = super.internalDivide(4.4482216152605, 0.00064516);
+                    return super.internalMultiply(value, v4);
+                }
+                case DynamicViscosityUnits.PoundsForceSecondPerSquareInch: {
+                    const v4 = super.internalDivide(4.4482216152605, 0.00064516);
+                    return super.internalMultiply(value, v4);
+                }
+                case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot: {
+                    const v4 = super.internalDivide(4.4482216152605, 9.290304e-2);
+                    return super.internalMultiply(value, v4);
+                }
+                case DynamicViscosityUnits.PoundsPerFootSecond: {
+                    const v4 = super.internalDivide(0.45359237, 0.3048);
+                    return super.internalMultiply(value, v4);
+                }
                 case DynamicViscosityUnits.MillipascalSeconds: return super.internalMultiply(value, 0.001);
                 case DynamicViscosityUnits.MicropascalSeconds: return super.internalMultiply(value, 0.000001);
                 case DynamicViscosityUnits.Centipoise: {
@@ -368,10 +392,10 @@ export class DynamicViscosity extends BaseUnit {
             case DynamicViscosityUnits.NewtonSecondsPerMeterSquared: return value;
             case DynamicViscosityUnits.PascalSeconds: return value;
             case DynamicViscosityUnits.Poise: return value / 10;
-            case DynamicViscosityUnits.Reyns: return value * 6.8947572931683613e3;
-            case DynamicViscosityUnits.PoundsForceSecondPerSquareInch: return value * 6.8947572931683613e3;
-            case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot: return value * 4.7880258980335843e1;
-            case DynamicViscosityUnits.PoundsPerFootSecond: return value * 1.4881639;
+            case DynamicViscosityUnits.Reyns: return value * 4.4482216152605 / 0.00064516;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareInch: return value * 4.4482216152605 / 0.00064516;
+            case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot: return value * 4.4482216152605 / 9.290304e-2;
+            case DynamicViscosityUnits.PoundsPerFootSecond: return value * 0.45359237 / 0.3048;
             case DynamicViscosityUnits.MillipascalSeconds: return (value) * 0.001;
             case DynamicViscosityUnits.MicropascalSeconds: return (value) * 0.000001;
             case DynamicViscosityUnits.Centipoise: return (value / 10) * 0.01;
@@ -408,7 +432,7 @@ export class DynamicViscosity extends BaseUnit {
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return super.truncateFractionDigits(this.PoundsForceSecondPerSquareFoot, options as ToStringOptions) + ` lbf·s/ft²`;
             case DynamicViscosityUnits.PoundsPerFootSecond:
-                return super.truncateFractionDigits(this.PoundsPerFootSecond, options as ToStringOptions) + ` lb/ft·s`;
+                return super.truncateFractionDigits(this.PoundsPerFootSecond, options as ToStringOptions) + ` lb/(ft·s)`;
             case DynamicViscosityUnits.MillipascalSeconds:
                 return super.truncateFractionDigits(this.MillipascalSeconds, options as ToStringOptions) + ` mPa·s`;
             case DynamicViscosityUnits.MicropascalSeconds:
@@ -445,7 +469,7 @@ export class DynamicViscosity extends BaseUnit {
             case DynamicViscosityUnits.PoundsForceSecondPerSquareFoot:
                 return `lbf·s/ft²`;
             case DynamicViscosityUnits.PoundsPerFootSecond:
-                return `lb/ft·s`;
+                return `lb/(ft·s)`;
             case DynamicViscosityUnits.MillipascalSeconds:
                 return `mPa·s`;
             case DynamicViscosityUnits.MicropascalSeconds:

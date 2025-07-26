@@ -317,8 +317,8 @@ export class Luminance extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case LuminanceUnits.CandelasPerSquareMeter: return this.value;
-                case LuminanceUnits.CandelasPerSquareFoot: return super.internalDivide(this.value, 1.07639e1);
-                case LuminanceUnits.CandelasPerSquareInch: return super.internalDivide(this.value, 1.5500031e3);
+                case LuminanceUnits.CandelasPerSquareFoot: return super.internalMultiply(this.value, 9.290304e-2);
+                case LuminanceUnits.CandelasPerSquareInch: return super.internalMultiply(this.value, 0.00064516);
                 case LuminanceUnits.Nits: return this.value;
                 case LuminanceUnits.NanocandelasPerSquareMeter: return super.internalDivide(this.value, 1e-9);
                 case LuminanceUnits.MicrocandelasPerSquareMeter: return super.internalDivide(this.value, 0.000001);
@@ -330,8 +330,8 @@ export class Luminance extends BaseUnit {
             }
         switch (toUnit) {
             case LuminanceUnits.CandelasPerSquareMeter: return this.value;
-            case LuminanceUnits.CandelasPerSquareFoot: return this.value/ 1.07639e1;
-            case LuminanceUnits.CandelasPerSquareInch: return this.value/ 1.5500031e3;
+            case LuminanceUnits.CandelasPerSquareFoot: return this.value * 9.290304e-2;
+            case LuminanceUnits.CandelasPerSquareInch: return this.value * 0.00064516;
             case LuminanceUnits.Nits: return this.value;
             case LuminanceUnits.NanocandelasPerSquareMeter: return (this.value) / 1e-9;
             case LuminanceUnits.MicrocandelasPerSquareMeter: return (this.value) / 0.000001;
@@ -347,8 +347,8 @@ export class Luminance extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case LuminanceUnits.CandelasPerSquareMeter: return value;
-                case LuminanceUnits.CandelasPerSquareFoot: return super.internalMultiply(value, 1.07639e1);
-                case LuminanceUnits.CandelasPerSquareInch: return super.internalMultiply(value, 1.5500031e3);
+                case LuminanceUnits.CandelasPerSquareFoot: return super.internalDivide(value, 9.290304e-2);
+                case LuminanceUnits.CandelasPerSquareInch: return super.internalDivide(value, 0.00064516);
                 case LuminanceUnits.Nits: return value;
                 case LuminanceUnits.NanocandelasPerSquareMeter: return super.internalMultiply(value, 1e-9);
                 case LuminanceUnits.MicrocandelasPerSquareMeter: return super.internalMultiply(value, 0.000001);
@@ -360,8 +360,8 @@ export class Luminance extends BaseUnit {
             }
         switch (fromUnit) {
             case LuminanceUnits.CandelasPerSquareMeter: return value;
-            case LuminanceUnits.CandelasPerSquareFoot: return value* 1.07639e1;
-            case LuminanceUnits.CandelasPerSquareInch: return value* 1.5500031e3;
+            case LuminanceUnits.CandelasPerSquareFoot: return value / 9.290304e-2;
+            case LuminanceUnits.CandelasPerSquareInch: return value / 0.00064516;
             case LuminanceUnits.Nits: return value;
             case LuminanceUnits.NanocandelasPerSquareMeter: return (value) * 1e-9;
             case LuminanceUnits.MicrocandelasPerSquareMeter: return (value) * 0.000001;

@@ -376,7 +376,7 @@ export class SpecificEntropy extends BaseUnit {
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
                 return super.truncateFractionDigits(this.CaloriesPerGramKelvin, options as ToStringOptions) + ` cal/g·K`;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
-                return super.truncateFractionDigits(this.BtusPerPoundFahrenheit, options as ToStringOptions) + ` BTU/lb·°F`;
+                return super.truncateFractionDigits(this.BtusPerPoundFahrenheit, options as ToStringOptions) + ` BTU/(lb·°F)`;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
                 return super.truncateFractionDigits(this.KilojoulesPerKilogramKelvin, options as ToStringOptions) + ` kJ/kg·K`;
             case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:
@@ -411,7 +411,7 @@ export class SpecificEntropy extends BaseUnit {
             case SpecificEntropyUnits.CaloriesPerGramKelvin:
                 return `cal/g·K`;
             case SpecificEntropyUnits.BtusPerPoundFahrenheit:
-                return `BTU/lb·°F`;
+                return `BTU/(lb·°F)`;
             case SpecificEntropyUnits.KilojoulesPerKilogramKelvin:
                 return `kJ/kg·K`;
             case SpecificEntropyUnits.MegajoulesPerKilogramKelvin:

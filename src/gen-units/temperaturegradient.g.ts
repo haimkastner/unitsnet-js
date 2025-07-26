@@ -13,20 +13,20 @@ export enum TemperatureGradientUnits {
     /** */
     KelvinsPerMeter = "KelvinPerMeter",
     /** */
-    DegreesCelciusPerMeter = "DegreeCelsiusPerMeter",
+    DegreesCelsiusPerMeter = "DegreeCelsiusPerMeter",
     /** */
     DegreesFahrenheitPerFoot = "DegreeFahrenheitPerFoot",
     /** */
-    DegreesCelciusPerKilometer = "DegreeCelsiusPerKilometer"
+    DegreesCelsiusPerKilometer = "DegreeCelsiusPerKilometer"
 }
 
 /** The rate of change of temperature with displacement in a given direction (as with increase of height) */
 export class TemperatureGradient extends BaseUnit {
     protected value: number;
     private kelvinspermeterLazy: number | null = null;
-    private degreescelciuspermeterLazy: number | null = null;
+    private degreescelsiuspermeterLazy: number | null = null;
     private degreesfahrenheitperfootLazy: number | null = null;
-    private degreescelciusperkilometerLazy: number | null = null;
+    private degreescelsiusperkilometerLazy: number | null = null;
 
     /**
      * Create a new TemperatureGradient.
@@ -65,11 +65,11 @@ export class TemperatureGradient extends BaseUnit {
     }
 
     /** */
-    public get DegreesCelciusPerMeter(): number {
-        if(this.degreescelciuspermeterLazy !== null){
-            return this.degreescelciuspermeterLazy;
+    public get DegreesCelsiusPerMeter(): number {
+        if(this.degreescelsiuspermeterLazy !== null){
+            return this.degreescelsiuspermeterLazy;
         }
-        return this.degreescelciuspermeterLazy = this.convertFromBase(TemperatureGradientUnits.DegreesCelciusPerMeter);
+        return this.degreescelsiuspermeterLazy = this.convertFromBase(TemperatureGradientUnits.DegreesCelsiusPerMeter);
     }
 
     /** */
@@ -81,11 +81,11 @@ export class TemperatureGradient extends BaseUnit {
     }
 
     /** */
-    public get DegreesCelciusPerKilometer(): number {
-        if(this.degreescelciusperkilometerLazy !== null){
-            return this.degreescelciusperkilometerLazy;
+    public get DegreesCelsiusPerKilometer(): number {
+        if(this.degreescelsiusperkilometerLazy !== null){
+            return this.degreescelsiusperkilometerLazy;
         }
-        return this.degreescelciusperkilometerLazy = this.convertFromBase(TemperatureGradientUnits.DegreesCelciusPerKilometer);
+        return this.degreescelsiusperkilometerLazy = this.convertFromBase(TemperatureGradientUnits.DegreesCelsiusPerKilometer);
     }
 
     /**
@@ -99,13 +99,13 @@ export class TemperatureGradient extends BaseUnit {
     }
 
     /**
-     * Create a new TemperatureGradient instance from a DegreesCelciusPerMeter
+     * Create a new TemperatureGradient instance from a DegreesCelsiusPerMeter
      *
-     * @param value The unit as DegreesCelciusPerMeter to create a new TemperatureGradient from.
+     * @param value The unit as DegreesCelsiusPerMeter to create a new TemperatureGradient from.
      * @returns The new TemperatureGradient instance.
      */
-    public static FromDegreesCelciusPerMeter(value: number): TemperatureGradient {
-        return new TemperatureGradient(value, TemperatureGradientUnits.DegreesCelciusPerMeter);
+    public static FromDegreesCelsiusPerMeter(value: number): TemperatureGradient {
+        return new TemperatureGradient(value, TemperatureGradientUnits.DegreesCelsiusPerMeter);
     }
 
     /**
@@ -119,13 +119,13 @@ export class TemperatureGradient extends BaseUnit {
     }
 
     /**
-     * Create a new TemperatureGradient instance from a DegreesCelciusPerKilometer
+     * Create a new TemperatureGradient instance from a DegreesCelsiusPerKilometer
      *
-     * @param value The unit as DegreesCelciusPerKilometer to create a new TemperatureGradient from.
+     * @param value The unit as DegreesCelsiusPerKilometer to create a new TemperatureGradient from.
      * @returns The new TemperatureGradient instance.
      */
-    public static FromDegreesCelciusPerKilometer(value: number): TemperatureGradient {
-        return new TemperatureGradient(value, TemperatureGradientUnits.DegreesCelciusPerKilometer);
+    public static FromDegreesCelsiusPerKilometer(value: number): TemperatureGradient {
+        return new TemperatureGradient(value, TemperatureGradientUnits.DegreesCelsiusPerKilometer);
     }
 
     /**
@@ -171,9 +171,9 @@ export class TemperatureGradient extends BaseUnit {
     public convert(toUnit: TemperatureGradientUnits): number {
         switch (toUnit) {
             case TemperatureGradientUnits.KelvinsPerMeter: return this.KelvinsPerMeter;
-            case TemperatureGradientUnits.DegreesCelciusPerMeter: return this.DegreesCelciusPerMeter;
+            case TemperatureGradientUnits.DegreesCelsiusPerMeter: return this.DegreesCelsiusPerMeter;
             case TemperatureGradientUnits.DegreesFahrenheitPerFoot: return this.DegreesFahrenheitPerFoot;
-            case TemperatureGradientUnits.DegreesCelciusPerKilometer: return this.DegreesCelciusPerKilometer;
+            case TemperatureGradientUnits.DegreesCelsiusPerKilometer: return this.DegreesCelsiusPerKilometer;
 
             default:
                 break;
@@ -185,20 +185,20 @@ export class TemperatureGradient extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case TemperatureGradientUnits.KelvinsPerMeter: return this.value;
-                case TemperatureGradientUnits.DegreesCelciusPerMeter: return this.value;
+                case TemperatureGradientUnits.DegreesCelsiusPerMeter: return this.value;
                 case TemperatureGradientUnits.DegreesFahrenheitPerFoot: {
                     const v3 = super.internalMultiply(this.value, 0.3048);
                     const v6 = super.internalDivide(9, 5);
                     return super.internalMultiply(v3, v6);
                 }
-                case TemperatureGradientUnits.DegreesCelciusPerKilometer: return super.internalMultiply(this.value, 1e3);
+                case TemperatureGradientUnits.DegreesCelsiusPerKilometer: return super.internalMultiply(this.value, 1e3);
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case TemperatureGradientUnits.KelvinsPerMeter: return this.value;
-            case TemperatureGradientUnits.DegreesCelciusPerMeter: return this.value;
+            case TemperatureGradientUnits.DegreesCelsiusPerMeter: return this.value;
             case TemperatureGradientUnits.DegreesFahrenheitPerFoot: return (this.value * 0.3048) * 9 / 5;
-            case TemperatureGradientUnits.DegreesCelciusPerKilometer: return this.value * 1e3;
+            case TemperatureGradientUnits.DegreesCelsiusPerKilometer: return this.value * 1e3;
             default: return Number.NaN;
         }
     }
@@ -207,20 +207,20 @@ export class TemperatureGradient extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case TemperatureGradientUnits.KelvinsPerMeter: return value;
-                case TemperatureGradientUnits.DegreesCelciusPerMeter: return value;
+                case TemperatureGradientUnits.DegreesCelsiusPerMeter: return value;
                 case TemperatureGradientUnits.DegreesFahrenheitPerFoot: {
                     const v3 = super.internalDivide(value, 0.3048);
                     const v6 = super.internalDivide(5, 9);
                     return super.internalMultiply(v3, v6);
                 }
-                case TemperatureGradientUnits.DegreesCelciusPerKilometer: return super.internalDivide(value, 1e3);
+                case TemperatureGradientUnits.DegreesCelsiusPerKilometer: return super.internalDivide(value, 1e3);
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case TemperatureGradientUnits.KelvinsPerMeter: return value;
-            case TemperatureGradientUnits.DegreesCelciusPerMeter: return value;
+            case TemperatureGradientUnits.DegreesCelsiusPerMeter: return value;
             case TemperatureGradientUnits.DegreesFahrenheitPerFoot: return (value / 0.3048) * 5 / 9;
-            case TemperatureGradientUnits.DegreesCelciusPerKilometer: return value / 1e3;
+            case TemperatureGradientUnits.DegreesCelsiusPerKilometer: return value / 1e3;
             default: return Number.NaN;
         }
     }
@@ -243,12 +243,12 @@ export class TemperatureGradient extends BaseUnit {
             
             case TemperatureGradientUnits.KelvinsPerMeter:
                 return super.truncateFractionDigits(this.KelvinsPerMeter, options as ToStringOptions) + ` ∆°K/m`;
-            case TemperatureGradientUnits.DegreesCelciusPerMeter:
-                return super.truncateFractionDigits(this.DegreesCelciusPerMeter, options as ToStringOptions) + ` ∆°C/m`;
+            case TemperatureGradientUnits.DegreesCelsiusPerMeter:
+                return super.truncateFractionDigits(this.DegreesCelsiusPerMeter, options as ToStringOptions) + ` ∆°C/m`;
             case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
                 return super.truncateFractionDigits(this.DegreesFahrenheitPerFoot, options as ToStringOptions) + ` ∆°F/ft`;
-            case TemperatureGradientUnits.DegreesCelciusPerKilometer:
-                return super.truncateFractionDigits(this.DegreesCelciusPerKilometer, options as ToStringOptions) + ` ∆°C/km`;
+            case TemperatureGradientUnits.DegreesCelsiusPerKilometer:
+                return super.truncateFractionDigits(this.DegreesCelsiusPerKilometer, options as ToStringOptions) + ` ∆°C/km`;
         default:
             break;
         }
@@ -268,11 +268,11 @@ export class TemperatureGradient extends BaseUnit {
             
             case TemperatureGradientUnits.KelvinsPerMeter:
                 return `∆°K/m`;
-            case TemperatureGradientUnits.DegreesCelciusPerMeter:
+            case TemperatureGradientUnits.DegreesCelsiusPerMeter:
                 return `∆°C/m`;
             case TemperatureGradientUnits.DegreesFahrenheitPerFoot:
                 return `∆°F/ft`;
-            case TemperatureGradientUnits.DegreesCelciusPerKilometer:
+            case TemperatureGradientUnits.DegreesCelsiusPerKilometer:
                 return `∆°C/km`;
         default:
             break;

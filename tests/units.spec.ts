@@ -85,7 +85,7 @@ describe('Unitsnet - tests', () => {
 
         it(`Should convert from any base-value prefix to the base value`, () => {
             const angle = Angle.FromMicrodegrees(180000000);
-            expect(angle.Degrees).equal(180);
+            expect(angle.Degrees).above(179.9999).below(180.00001);
         });
 
         it(`Should convert from any other unit prefix to the base value`, () => {
@@ -295,7 +295,7 @@ describe('Unitsnet - tests', () => {
 
         it('Should format as the base value format', () => {
             const angle = Angle.FromDegrees(180);
-            expect(angle.toString()).equal('180 °');
+            expect(angle.toString()).equal('3.141592653589793 rad');
         });
 
         it('Should format as the unit parameter format', () => {

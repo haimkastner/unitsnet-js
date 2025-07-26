@@ -25,8 +25,6 @@ export enum AngleUnits {
     /** */
     Revolutions = "Revolution",
     /** */
-    Tilt = "Tilt",
-    /** */
     Nanoradians = "Nanoradian",
     /** */
     Microradians = "Microradian",
@@ -54,7 +52,6 @@ export class Angle extends BaseUnit {
     private gradiansLazy: number | null = null;
     private natomilsLazy: number | null = null;
     private revolutionsLazy: number | null = null;
-    private tiltLazy: number | null = null;
     private nanoradiansLazy: number | null = null;
     private microradiansLazy: number | null = null;
     private milliradiansLazy: number | null = null;
@@ -68,9 +65,9 @@ export class Angle extends BaseUnit {
      * Create a new Angle.
      * @param value The value.
      * @param fromUnit The ‘Angle’ unit to create from.
-     * The default unit is Degrees
+     * The default unit is Radians
      */
-    public constructor(value: number, fromUnit: AngleUnits = AngleUnits.Degrees) {
+    public constructor(value: number, fromUnit: AngleUnits = AngleUnits.Radians) {
 
         super();
         if (value === undefined || value === null || Number.isNaN(value)) {
@@ -80,7 +77,7 @@ export class Angle extends BaseUnit {
     }
 
     /**
-     * The base value of Angle is Degrees.
+     * The base value of Angle is Radians.
      * This accessor used when needs a value for calculations and it's better to use directly the base value
      */
     public get BaseValue(): number {
@@ -88,8 +85,8 @@ export class Angle extends BaseUnit {
     }
 
     /** Gets the default unit used when creating instances of the unit or its DTO */
-    protected get baseUnit(): AngleUnits.Degrees {
-        return AngleUnits.Degrees
+    protected get baseUnit(): AngleUnits.Radians {
+        return AngleUnits.Radians
     }
 
     /** */
@@ -146,14 +143,6 @@ export class Angle extends BaseUnit {
             return this.revolutionsLazy;
         }
         return this.revolutionsLazy = this.convertFromBase(AngleUnits.Revolutions);
-    }
-
-    /** */
-    public get Tilt(): number {
-        if(this.tiltLazy !== null){
-            return this.tiltLazy;
-        }
-        return this.tiltLazy = this.convertFromBase(AngleUnits.Tilt);
     }
 
     /** */
@@ -291,16 +280,6 @@ export class Angle extends BaseUnit {
     }
 
     /**
-     * Create a new Angle instance from a Tilt
-     *
-     * @param value The unit as Tilt to create a new Angle from.
-     * @returns The new Angle instance.
-     */
-    public static FromTilt(value: number): Angle {
-        return new Angle(value, AngleUnits.Tilt);
-    }
-
-    /**
      * Create a new Angle instance from a Nanoradians
      *
      * @param value The unit as Nanoradians to create a new Angle from.
@@ -392,15 +371,15 @@ export class Angle extends BaseUnit {
      * Gets the default unit used when creating instances of the unit or its DTO
      * @returns The unit enumeration value used as a default parameter in constructor and DTO methods
      */
-    protected static getBaseUnit(): AngleUnits.Degrees {
-        return AngleUnits.Degrees;
+    protected static getBaseUnit(): AngleUnits.Radians {
+        return AngleUnits.Radians;
     }
 
     /**
      * Create API DTO represent a Angle unit.
      * @param holdInUnit The specific Angle unit to be used in the unit representation at the DTO
      */
-    public toDto(holdInUnit: AngleUnits = AngleUnits.Degrees): AngleDto {
+    public toDto(holdInUnit: AngleUnits = AngleUnits.Radians): AngleDto {
         return {
             value: this.convert(holdInUnit),
             unit: holdInUnit
@@ -429,7 +408,6 @@ export class Angle extends BaseUnit {
             case AngleUnits.Gradians: return this.Gradians;
             case AngleUnits.NatoMils: return this.NatoMils;
             case AngleUnits.Revolutions: return this.Revolutions;
-            case AngleUnits.Tilt: return this.Tilt;
             case AngleUnits.Nanoradians: return this.Nanoradians;
             case AngleUnits.Microradians: return this.Microradians;
             case AngleUnits.Milliradians: return this.Milliradians;
@@ -448,70 +426,71 @@ export class Angle extends BaseUnit {
     private convertFromBase(toUnit: AngleUnits): number {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
-                case AngleUnits.Radians: {
-                    const v3 = super.internalDivide(this.value, 180);
-                    return super.internalMultiply(v3, Math.PI);
-                }
-                case AngleUnits.Degrees: return this.value;
-                case AngleUnits.Arcminutes: return super.internalMultiply(this.value, 60);
-                case AngleUnits.Arcseconds: return super.internalMultiply(this.value, 3600);
-                case AngleUnits.Gradians: return super.internalDivide(this.value, 0.9);
-                case AngleUnits.NatoMils: {
-                    const v4 = super.internalDivide(160, 9);
+                case AngleUnits.Radians: return this.value;
+                case AngleUnits.Degrees: {
+                    const v4 = super.internalDivide(180, Math.PI);
                     return super.internalMultiply(this.value, v4);
                 }
-                case AngleUnits.Revolutions: return super.internalDivide(this.value, 360);
-                case AngleUnits.Tilt: {
-                    const v3 = super.internalDivide(this.value, 180);
-                    return super.internalMultiply(v3, Math.PI);
+                case AngleUnits.Arcminutes: {
+                    const v3 = super.internalMultiply(this.value, 60);
+                    const v6 = super.internalDivide(180, Math.PI);
+                    return super.internalMultiply(v3, v6);
                 }
-                case AngleUnits.Nanoradians: {
-                    const v3 = super.internalDivide(this.value, 180);
-                    const v5 = super.internalMultiply(v3, Math.PI);
+                case AngleUnits.Arcseconds: {
+                    const v3 = super.internalMultiply(this.value, 3600);
+                    const v6 = super.internalDivide(180, Math.PI);
+                    return super.internalMultiply(v3, v6);
+                }
+                case AngleUnits.Gradians: {
+                    const v4 = super.internalDivide(200, Math.PI);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case AngleUnits.NatoMils: {
+                    const v4 = super.internalDivide(3200, Math.PI);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case AngleUnits.Revolutions: {
+                    const v4 = super.internalMultiply(2, Math.PI);
+                    return super.internalDivide(this.value, v4);
+                }
+                case AngleUnits.Nanoradians: return super.internalDivide(this.value, 1e-9);
+                case AngleUnits.Microradians: return super.internalDivide(this.value, 0.000001);
+                case AngleUnits.Milliradians: return super.internalDivide(this.value, 0.001);
+                case AngleUnits.Centiradians: return super.internalDivide(this.value, 0.01);
+                case AngleUnits.Deciradians: return super.internalDivide(this.value, 0.1);
+                case AngleUnits.Nanodegrees: {
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(this.value, v4);
                     return super.internalDivide(v5, 1e-9);
                 }
-                case AngleUnits.Microradians: {
-                    const v3 = super.internalDivide(this.value, 180);
-                    const v5 = super.internalMultiply(v3, Math.PI);
+                case AngleUnits.Microdegrees: {
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(this.value, v4);
                     return super.internalDivide(v5, 0.000001);
                 }
-                case AngleUnits.Milliradians: {
-                    const v3 = super.internalDivide(this.value, 180);
-                    const v5 = super.internalMultiply(v3, Math.PI);
+                case AngleUnits.Millidegrees: {
+                    const v4 = super.internalDivide(180, Math.PI);
+                    const v5 = super.internalMultiply(this.value, v4);
                     return super.internalDivide(v5, 0.001);
                 }
-                case AngleUnits.Centiradians: {
-                    const v3 = super.internalDivide(this.value, 180);
-                    const v5 = super.internalMultiply(v3, Math.PI);
-                    return super.internalDivide(v5, 0.01);
-                }
-                case AngleUnits.Deciradians: {
-                    const v3 = super.internalDivide(this.value, 180);
-                    const v5 = super.internalMultiply(v3, Math.PI);
-                    return super.internalDivide(v5, 0.1);
-                }
-                case AngleUnits.Nanodegrees: return super.internalDivide(this.value, 1e-9);
-                case AngleUnits.Microdegrees: return super.internalDivide(this.value, 0.000001);
-                case AngleUnits.Millidegrees: return super.internalDivide(this.value, 0.001);
                 default: return Number.NaN;
             }
         switch (toUnit) {
-            case AngleUnits.Radians: return this.value / 180 * Math.PI;
-            case AngleUnits.Degrees: return this.value;
-            case AngleUnits.Arcminutes: return this.value * 60;
-            case AngleUnits.Arcseconds: return this.value * 3600;
-            case AngleUnits.Gradians: return this.value / 0.9;
-            case AngleUnits.NatoMils: return this.value * 160 / 9;
-            case AngleUnits.Revolutions: return this.value / 360;
-            case AngleUnits.Tilt: return Math.sin(this.value / 180 * Math.PI);
-            case AngleUnits.Nanoradians: return (this.value / 180 * Math.PI) / 1e-9;
-            case AngleUnits.Microradians: return (this.value / 180 * Math.PI) / 0.000001;
-            case AngleUnits.Milliradians: return (this.value / 180 * Math.PI) / 0.001;
-            case AngleUnits.Centiradians: return (this.value / 180 * Math.PI) / 0.01;
-            case AngleUnits.Deciradians: return (this.value / 180 * Math.PI) / 0.1;
-            case AngleUnits.Nanodegrees: return (this.value) / 1e-9;
-            case AngleUnits.Microdegrees: return (this.value) / 0.000001;
-            case AngleUnits.Millidegrees: return (this.value) / 0.001;
+            case AngleUnits.Radians: return this.value;
+            case AngleUnits.Degrees: return this.value * 180 / Math.PI;
+            case AngleUnits.Arcminutes: return this.value * 60 * 180 / Math.PI;
+            case AngleUnits.Arcseconds: return this.value * 3600 * 180 / Math.PI;
+            case AngleUnits.Gradians: return this.value * 200 / Math.PI;
+            case AngleUnits.NatoMils: return this.value * 3200 / Math.PI;
+            case AngleUnits.Revolutions: return this.value / (2 * Math.PI);
+            case AngleUnits.Nanoradians: return (this.value) / 1e-9;
+            case AngleUnits.Microradians: return (this.value) / 0.000001;
+            case AngleUnits.Milliradians: return (this.value) / 0.001;
+            case AngleUnits.Centiradians: return (this.value) / 0.01;
+            case AngleUnits.Deciradians: return (this.value) / 0.1;
+            case AngleUnits.Nanodegrees: return (this.value * 180 / Math.PI) / 1e-9;
+            case AngleUnits.Microdegrees: return (this.value * 180 / Math.PI) / 0.000001;
+            case AngleUnits.Millidegrees: return (this.value * 180 / Math.PI) / 0.001;
             default: return Number.NaN;
         }
     }
@@ -519,83 +498,84 @@ export class Angle extends BaseUnit {
     private convertToBase(value: number, fromUnit: AngleUnits): number {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
-                case AngleUnits.Radians: {
-                    const v4 = super.internalDivide(180, Math.PI);
+                case AngleUnits.Radians: return value;
+                case AngleUnits.Degrees: {
+                    const v4 = super.internalDivide(Math.PI, 180);
                     return super.internalMultiply(value, v4);
                 }
-                case AngleUnits.Degrees: return value;
-                case AngleUnits.Arcminutes: return super.internalDivide(value, 60);
-                case AngleUnits.Arcseconds: return super.internalDivide(value, 3600);
-                case AngleUnits.Gradians: return super.internalMultiply(value, 0.9);
+                case AngleUnits.Arcminutes: {
+                    const v5 = super.internalMultiply(60, 180);
+                    const v6 = super.internalDivide(Math.PI, v5);
+                    return super.internalMultiply(value, v6);
+                }
+                case AngleUnits.Arcseconds: {
+                    const v5 = super.internalMultiply(3600, 180);
+                    const v6 = super.internalDivide(Math.PI, v5);
+                    return super.internalMultiply(value, v6);
+                }
+                case AngleUnits.Gradians: {
+                    const v4 = super.internalDivide(Math.PI, 200);
+                    return super.internalMultiply(value, v4);
+                }
                 case AngleUnits.NatoMils: {
-                    const v4 = super.internalDivide(9, 160);
+                    const v4 = super.internalDivide(Math.PI, 3200);
                     return super.internalMultiply(value, v4);
                 }
-                case AngleUnits.Revolutions: return super.internalMultiply(value, 360);
-                case AngleUnits.Tilt: {
-                    const v4 = super.internalDivide(180, Math.PI);
-                    return super.internalMultiply(value, v4);
+                case AngleUnits.Revolutions: {
+                    const v3 = super.internalMultiply(value, 2);
+                    return super.internalMultiply(v3, Math.PI);
                 }
-                case AngleUnits.Nanoradians: {
-                    const v4 = super.internalDivide(180, Math.PI);
+                case AngleUnits.Nanoradians: return super.internalMultiply(value, 1e-9);
+                case AngleUnits.Microradians: return super.internalMultiply(value, 0.000001);
+                case AngleUnits.Milliradians: return super.internalMultiply(value, 0.001);
+                case AngleUnits.Centiradians: return super.internalMultiply(value, 0.01);
+                case AngleUnits.Deciradians: return super.internalMultiply(value, 0.1);
+                case AngleUnits.Nanodegrees: {
+                    const v4 = super.internalDivide(Math.PI, 180);
                     const v5 = super.internalMultiply(value, v4);
                     return super.internalMultiply(v5, 1e-9);
                 }
-                case AngleUnits.Microradians: {
-                    const v4 = super.internalDivide(180, Math.PI);
+                case AngleUnits.Microdegrees: {
+                    const v4 = super.internalDivide(Math.PI, 180);
                     const v5 = super.internalMultiply(value, v4);
                     return super.internalMultiply(v5, 0.000001);
                 }
-                case AngleUnits.Milliradians: {
-                    const v4 = super.internalDivide(180, Math.PI);
+                case AngleUnits.Millidegrees: {
+                    const v4 = super.internalDivide(Math.PI, 180);
                     const v5 = super.internalMultiply(value, v4);
                     return super.internalMultiply(v5, 0.001);
                 }
-                case AngleUnits.Centiradians: {
-                    const v4 = super.internalDivide(180, Math.PI);
-                    const v5 = super.internalMultiply(value, v4);
-                    return super.internalMultiply(v5, 0.01);
-                }
-                case AngleUnits.Deciradians: {
-                    const v4 = super.internalDivide(180, Math.PI);
-                    const v5 = super.internalMultiply(value, v4);
-                    return super.internalMultiply(v5, 0.1);
-                }
-                case AngleUnits.Nanodegrees: return super.internalMultiply(value, 1e-9);
-                case AngleUnits.Microdegrees: return super.internalMultiply(value, 0.000001);
-                case AngleUnits.Millidegrees: return super.internalMultiply(value, 0.001);
                 default: return Number.NaN;
             }
         switch (fromUnit) {
-            case AngleUnits.Radians: return value * 180 / Math.PI;
-            case AngleUnits.Degrees: return value;
-            case AngleUnits.Arcminutes: return value / 60;
-            case AngleUnits.Arcseconds: return value / 3600;
-            case AngleUnits.Gradians: return value * 0.9;
-            case AngleUnits.NatoMils: return value * 9 / 160;
-            case AngleUnits.Revolutions: return value * 360;
-            case AngleUnits.Tilt: return Math.asin(value) * 180 / Math.PI;
-            case AngleUnits.Nanoradians: return (value * 180 / Math.PI) * 1e-9;
-            case AngleUnits.Microradians: return (value * 180 / Math.PI) * 0.000001;
-            case AngleUnits.Milliradians: return (value * 180 / Math.PI) * 0.001;
-            case AngleUnits.Centiradians: return (value * 180 / Math.PI) * 0.01;
-            case AngleUnits.Deciradians: return (value * 180 / Math.PI) * 0.1;
-            case AngleUnits.Nanodegrees: return (value) * 1e-9;
-            case AngleUnits.Microdegrees: return (value) * 0.000001;
-            case AngleUnits.Millidegrees: return (value) * 0.001;
+            case AngleUnits.Radians: return value;
+            case AngleUnits.Degrees: return value * Math.PI / 180;
+            case AngleUnits.Arcminutes: return value * Math.PI / (60 * 180);
+            case AngleUnits.Arcseconds: return value * Math.PI / (3600 * 180);
+            case AngleUnits.Gradians: return value * Math.PI / 200;
+            case AngleUnits.NatoMils: return value * Math.PI / 3200;
+            case AngleUnits.Revolutions: return value * 2 * Math.PI;
+            case AngleUnits.Nanoradians: return (value) * 1e-9;
+            case AngleUnits.Microradians: return (value) * 0.000001;
+            case AngleUnits.Milliradians: return (value) * 0.001;
+            case AngleUnits.Centiradians: return (value) * 0.01;
+            case AngleUnits.Deciradians: return (value) * 0.1;
+            case AngleUnits.Nanodegrees: return (value * Math.PI / 180) * 1e-9;
+            case AngleUnits.Microdegrees: return (value * Math.PI / 180) * 0.000001;
+            case AngleUnits.Millidegrees: return (value * Math.PI / 180) * 0.001;
             default: return Number.NaN;
         }
     }
 
     /**
      * Format the Angle to string.
-     * Note! the default format for Angle is Degrees.
+     * Note! the default format for Angle is Radians.
      * To specify the unit format set the 'unit' parameter.
      * @param unit The unit to format the Angle.
      * @param options The ToString options, it also can be the number of fractional digits to keep that deprecated and moved to the options object. support in number will be dropped in the upcoming versions.
      * @returns The string format of the Angle.
      */
-    public toString(unit: AngleUnits = AngleUnits.Degrees, options?: number | ToStringOptions): string {
+    public toString(unit: AngleUnits = AngleUnits.Radians, options?: number | ToStringOptions): string {
 
         if (typeof options === 'number') {
             console.warn('The number parameter is deprecated and moved to the options object. support in number will be dropped in the upcoming versions.');
@@ -617,8 +597,6 @@ export class Angle extends BaseUnit {
                 return super.truncateFractionDigits(this.NatoMils, options as ToStringOptions) + ` mil`;
             case AngleUnits.Revolutions:
                 return super.truncateFractionDigits(this.Revolutions, options as ToStringOptions) + ` r`;
-            case AngleUnits.Tilt:
-                return super.truncateFractionDigits(this.Tilt, options as ToStringOptions) + ` sin(θ)`;
             case AngleUnits.Nanoradians:
                 return super.truncateFractionDigits(this.Nanoradians, options as ToStringOptions) + ` nrad`;
             case AngleUnits.Microradians:
@@ -643,12 +621,12 @@ export class Angle extends BaseUnit {
 
     /**
      * Get Angle unit abbreviation.
-     * Note! the default abbreviation for Angle is Degrees.
+     * Note! the default abbreviation for Angle is Radians.
      * To specify the unit abbreviation set the 'unitAbbreviation' parameter.
      * @param unitAbbreviation The unit abbreviation of the Angle.
      * @returns The abbreviation string of Angle.
      */
-    public getUnitAbbreviation(unitAbbreviation: AngleUnits = AngleUnits.Degrees): string {
+    public getUnitAbbreviation(unitAbbreviation: AngleUnits = AngleUnits.Radians): string {
 
         switch (unitAbbreviation) {
             
@@ -666,8 +644,6 @@ export class Angle extends BaseUnit {
                 return `mil`;
             case AngleUnits.Revolutions:
                 return `r`;
-            case AngleUnits.Tilt:
-                return `sin(θ)`;
             case AngleUnits.Nanoradians:
                 return `nrad`;
             case AngleUnits.Microradians:

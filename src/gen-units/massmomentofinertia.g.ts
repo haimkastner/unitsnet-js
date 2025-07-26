@@ -25,7 +25,7 @@ export enum MassMomentOfInertiaUnits {
     /** */
     TonneSquareCentimeters = "TonneSquareCentimeter",
     /** */
-    TonneSquareMilimeters = "TonneSquareMilimeter",
+    TonneSquareMillimeters = "TonneSquareMillimeter",
     /** */
     PoundSquareFeet = "PoundSquareFoot",
     /** */
@@ -63,9 +63,9 @@ export enum MassMomentOfInertiaUnits {
     /** */
     MegatonneSquareCentimeters = "MegatonneSquareCentimeter",
     /** */
-    KilotonneSquareMilimeters = "KilotonneSquareMilimeter",
+    KilotonneSquareMillimeters = "KilotonneSquareMillimeter",
     /** */
-    MegatonneSquareMilimeters = "MegatonneSquareMilimeter"
+    MegatonneSquareMillimeters = "MegatonneSquareMillimeter"
 }
 
 /** A property of body reflects how its mass is distributed with regard to an axis. */
@@ -78,7 +78,7 @@ export class MassMomentOfInertia extends BaseUnit {
     private tonnesquaremetersLazy: number | null = null;
     private tonnesquaredecimetersLazy: number | null = null;
     private tonnesquarecentimetersLazy: number | null = null;
-    private tonnesquaremilimetersLazy: number | null = null;
+    private tonnesquaremillimetersLazy: number | null = null;
     private poundsquarefeetLazy: number | null = null;
     private poundsquareinchesLazy: number | null = null;
     private slugsquarefeetLazy: number | null = null;
@@ -97,8 +97,8 @@ export class MassMomentOfInertia extends BaseUnit {
     private megatonnesquaredecimetersLazy: number | null = null;
     private kilotonnesquarecentimetersLazy: number | null = null;
     private megatonnesquarecentimetersLazy: number | null = null;
-    private kilotonnesquaremilimetersLazy: number | null = null;
-    private megatonnesquaremilimetersLazy: number | null = null;
+    private kilotonnesquaremillimetersLazy: number | null = null;
+    private megatonnesquaremillimetersLazy: number | null = null;
 
     /**
      * Create a new MassMomentOfInertia.
@@ -185,11 +185,11 @@ export class MassMomentOfInertia extends BaseUnit {
     }
 
     /** */
-    public get TonneSquareMilimeters(): number {
-        if(this.tonnesquaremilimetersLazy !== null){
-            return this.tonnesquaremilimetersLazy;
+    public get TonneSquareMillimeters(): number {
+        if(this.tonnesquaremillimetersLazy !== null){
+            return this.tonnesquaremillimetersLazy;
         }
-        return this.tonnesquaremilimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.TonneSquareMilimeters);
+        return this.tonnesquaremillimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.TonneSquareMillimeters);
     }
 
     /** */
@@ -337,19 +337,19 @@ export class MassMomentOfInertia extends BaseUnit {
     }
 
     /** */
-    public get KilotonneSquareMilimeters(): number {
-        if(this.kilotonnesquaremilimetersLazy !== null){
-            return this.kilotonnesquaremilimetersLazy;
+    public get KilotonneSquareMillimeters(): number {
+        if(this.kilotonnesquaremillimetersLazy !== null){
+            return this.kilotonnesquaremillimetersLazy;
         }
-        return this.kilotonnesquaremilimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilotonneSquareMilimeters);
+        return this.kilotonnesquaremillimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.KilotonneSquareMillimeters);
     }
 
     /** */
-    public get MegatonneSquareMilimeters(): number {
-        if(this.megatonnesquaremilimetersLazy !== null){
-            return this.megatonnesquaremilimetersLazy;
+    public get MegatonneSquareMillimeters(): number {
+        if(this.megatonnesquaremillimetersLazy !== null){
+            return this.megatonnesquaremillimetersLazy;
         }
-        return this.megatonnesquaremilimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MegatonneSquareMilimeters);
+        return this.megatonnesquaremillimetersLazy = this.convertFromBase(MassMomentOfInertiaUnits.MegatonneSquareMillimeters);
     }
 
     /**
@@ -423,13 +423,13 @@ export class MassMomentOfInertia extends BaseUnit {
     }
 
     /**
-     * Create a new MassMomentOfInertia instance from a TonneSquareMilimeters
+     * Create a new MassMomentOfInertia instance from a TonneSquareMillimeters
      *
-     * @param value The unit as TonneSquareMilimeters to create a new MassMomentOfInertia from.
+     * @param value The unit as TonneSquareMillimeters to create a new MassMomentOfInertia from.
      * @returns The new MassMomentOfInertia instance.
      */
-    public static FromTonneSquareMilimeters(value: number): MassMomentOfInertia {
-        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.TonneSquareMilimeters);
+    public static FromTonneSquareMillimeters(value: number): MassMomentOfInertia {
+        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.TonneSquareMillimeters);
     }
 
     /**
@@ -613,23 +613,23 @@ export class MassMomentOfInertia extends BaseUnit {
     }
 
     /**
-     * Create a new MassMomentOfInertia instance from a KilotonneSquareMilimeters
+     * Create a new MassMomentOfInertia instance from a KilotonneSquareMillimeters
      *
-     * @param value The unit as KilotonneSquareMilimeters to create a new MassMomentOfInertia from.
+     * @param value The unit as KilotonneSquareMillimeters to create a new MassMomentOfInertia from.
      * @returns The new MassMomentOfInertia instance.
      */
-    public static FromKilotonneSquareMilimeters(value: number): MassMomentOfInertia {
-        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilotonneSquareMilimeters);
+    public static FromKilotonneSquareMillimeters(value: number): MassMomentOfInertia {
+        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.KilotonneSquareMillimeters);
     }
 
     /**
-     * Create a new MassMomentOfInertia instance from a MegatonneSquareMilimeters
+     * Create a new MassMomentOfInertia instance from a MegatonneSquareMillimeters
      *
-     * @param value The unit as MegatonneSquareMilimeters to create a new MassMomentOfInertia from.
+     * @param value The unit as MegatonneSquareMillimeters to create a new MassMomentOfInertia from.
      * @returns The new MassMomentOfInertia instance.
      */
-    public static FromMegatonneSquareMilimeters(value: number): MassMomentOfInertia {
-        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MegatonneSquareMilimeters);
+    public static FromMegatonneSquareMillimeters(value: number): MassMomentOfInertia {
+        return new MassMomentOfInertia(value, MassMomentOfInertiaUnits.MegatonneSquareMillimeters);
     }
 
     /**
@@ -681,7 +681,7 @@ export class MassMomentOfInertia extends BaseUnit {
             case MassMomentOfInertiaUnits.TonneSquareMeters: return this.TonneSquareMeters;
             case MassMomentOfInertiaUnits.TonneSquareDecimeters: return this.TonneSquareDecimeters;
             case MassMomentOfInertiaUnits.TonneSquareCentimeters: return this.TonneSquareCentimeters;
-            case MassMomentOfInertiaUnits.TonneSquareMilimeters: return this.TonneSquareMilimeters;
+            case MassMomentOfInertiaUnits.TonneSquareMillimeters: return this.TonneSquareMillimeters;
             case MassMomentOfInertiaUnits.PoundSquareFeet: return this.PoundSquareFeet;
             case MassMomentOfInertiaUnits.PoundSquareInches: return this.PoundSquareInches;
             case MassMomentOfInertiaUnits.SlugSquareFeet: return this.SlugSquareFeet;
@@ -700,8 +700,8 @@ export class MassMomentOfInertia extends BaseUnit {
             case MassMomentOfInertiaUnits.MegatonneSquareDecimeters: return this.MegatonneSquareDecimeters;
             case MassMomentOfInertiaUnits.KilotonneSquareCentimeters: return this.KilotonneSquareCentimeters;
             case MassMomentOfInertiaUnits.MegatonneSquareCentimeters: return this.MegatonneSquareCentimeters;
-            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: return this.KilotonneSquareMilimeters;
-            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: return this.MegatonneSquareMilimeters;
+            case MassMomentOfInertiaUnits.KilotonneSquareMillimeters: return this.KilotonneSquareMillimeters;
+            case MassMomentOfInertiaUnits.MegatonneSquareMillimeters: return this.MegatonneSquareMillimeters;
 
             default:
                 break;
@@ -719,11 +719,27 @@ export class MassMomentOfInertia extends BaseUnit {
                 case MassMomentOfInertiaUnits.TonneSquareMeters: return super.internalMultiply(this.value, 1e-3);
                 case MassMomentOfInertiaUnits.TonneSquareDecimeters: return super.internalMultiply(this.value, 1e-1);
                 case MassMomentOfInertiaUnits.TonneSquareCentimeters: return super.internalMultiply(this.value, 1e1);
-                case MassMomentOfInertiaUnits.TonneSquareMilimeters: return super.internalMultiply(this.value, 1e3);
-                case MassMomentOfInertiaUnits.PoundSquareFeet: return super.internalDivide(this.value, 4.21401101e-2);
-                case MassMomentOfInertiaUnits.PoundSquareInches: return super.internalDivide(this.value, 2.9263965e-4);
-                case MassMomentOfInertiaUnits.SlugSquareFeet: return super.internalDivide(this.value, 1.3558179619);
-                case MassMomentOfInertiaUnits.SlugSquareInches: return super.internalDivide(this.value, 9.41540242e-3);
+                case MassMomentOfInertiaUnits.TonneSquareMillimeters: return super.internalMultiply(this.value, 1e3);
+                case MassMomentOfInertiaUnits.PoundSquareFeet: {
+                    const v4 = super.internalMultiply(0.45359237, 9.290304e-2);
+                    return super.internalDivide(this.value, v4);
+                }
+                case MassMomentOfInertiaUnits.PoundSquareInches: {
+                    const v4 = super.internalMultiply(0.45359237, 0.00064516);
+                    return super.internalDivide(this.value, v4);
+                }
+                case MassMomentOfInertiaUnits.SlugSquareFeet: {
+                    const v5 = super.internalMultiply(0.45359237, 9.290304e-2);
+                    const v7 = super.internalMultiply(v5, 9.80665);
+                    const v8 = super.internalDivide(0.3048, v7);
+                    return super.internalMultiply(this.value, v8);
+                }
+                case MassMomentOfInertiaUnits.SlugSquareInches: {
+                    const v5 = super.internalMultiply(0.45359237, 0.00064516);
+                    const v7 = super.internalMultiply(v5, 9.80665);
+                    const v8 = super.internalDivide(0.3048, v7);
+                    return super.internalMultiply(this.value, v8);
+                }
                 case MassMomentOfInertiaUnits.MilligramSquareMeters: {
                     const v3 = super.internalMultiply(this.value, 1e3);
                     return super.internalDivide(v3, 0.001);
@@ -780,11 +796,11 @@ export class MassMomentOfInertia extends BaseUnit {
                     const v3 = super.internalMultiply(this.value, 1e1);
                     return super.internalDivide(v3, 1000000);
                 }
-                case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: {
+                case MassMomentOfInertiaUnits.KilotonneSquareMillimeters: {
                     const v3 = super.internalMultiply(this.value, 1e3);
                     return super.internalDivide(v3, 1000);
                 }
-                case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: {
+                case MassMomentOfInertiaUnits.MegatonneSquareMillimeters: {
                     const v3 = super.internalMultiply(this.value, 1e3);
                     return super.internalDivide(v3, 1000000);
                 }
@@ -798,11 +814,11 @@ export class MassMomentOfInertia extends BaseUnit {
             case MassMomentOfInertiaUnits.TonneSquareMeters: return this.value * 1e-3;
             case MassMomentOfInertiaUnits.TonneSquareDecimeters: return this.value * 1e-1;
             case MassMomentOfInertiaUnits.TonneSquareCentimeters: return this.value * 1e1;
-            case MassMomentOfInertiaUnits.TonneSquareMilimeters: return this.value * 1e3;
-            case MassMomentOfInertiaUnits.PoundSquareFeet: return this.value / 4.21401101e-2;
-            case MassMomentOfInertiaUnits.PoundSquareInches: return this.value / 2.9263965e-4;
-            case MassMomentOfInertiaUnits.SlugSquareFeet: return this.value / 1.3558179619;
-            case MassMomentOfInertiaUnits.SlugSquareInches: return this.value / 9.41540242e-3;
+            case MassMomentOfInertiaUnits.TonneSquareMillimeters: return this.value * 1e3;
+            case MassMomentOfInertiaUnits.PoundSquareFeet: return this.value / (0.45359237 * 9.290304e-2);
+            case MassMomentOfInertiaUnits.PoundSquareInches: return this.value / (0.45359237 * 0.00064516);
+            case MassMomentOfInertiaUnits.SlugSquareFeet: return this.value * 0.3048 / (0.45359237 * 9.290304e-2 * 9.80665);
+            case MassMomentOfInertiaUnits.SlugSquareInches: return this.value * 0.3048 / (0.45359237 * 0.00064516 * 9.80665);
             case MassMomentOfInertiaUnits.MilligramSquareMeters: return (this.value * 1e3) / 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMeters: return (this.value * 1e3) / 1000;
             case MassMomentOfInertiaUnits.MilligramSquareDecimeters: return (this.value * 1e5) / 0.001;
@@ -817,8 +833,8 @@ export class MassMomentOfInertia extends BaseUnit {
             case MassMomentOfInertiaUnits.MegatonneSquareDecimeters: return (this.value * 1e-1) / 1000000;
             case MassMomentOfInertiaUnits.KilotonneSquareCentimeters: return (this.value * 1e1) / 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareCentimeters: return (this.value * 1e1) / 1000000;
-            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: return (this.value * 1e3) / 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: return (this.value * 1e3) / 1000000;
+            case MassMomentOfInertiaUnits.KilotonneSquareMillimeters: return (this.value * 1e3) / 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareMillimeters: return (this.value * 1e3) / 1000000;
             default: return Number.NaN;
         }
     }
@@ -833,11 +849,27 @@ export class MassMomentOfInertia extends BaseUnit {
                 case MassMomentOfInertiaUnits.TonneSquareMeters: return super.internalDivide(value, 1e-3);
                 case MassMomentOfInertiaUnits.TonneSquareDecimeters: return super.internalDivide(value, 1e-1);
                 case MassMomentOfInertiaUnits.TonneSquareCentimeters: return super.internalDivide(value, 1e1);
-                case MassMomentOfInertiaUnits.TonneSquareMilimeters: return super.internalDivide(value, 1e3);
-                case MassMomentOfInertiaUnits.PoundSquareFeet: return super.internalMultiply(value, 4.21401101e-2);
-                case MassMomentOfInertiaUnits.PoundSquareInches: return super.internalMultiply(value, 2.9263965e-4);
-                case MassMomentOfInertiaUnits.SlugSquareFeet: return super.internalMultiply(value, 1.3558179619);
-                case MassMomentOfInertiaUnits.SlugSquareInches: return super.internalMultiply(value, 9.41540242e-3);
+                case MassMomentOfInertiaUnits.TonneSquareMillimeters: return super.internalDivide(value, 1e3);
+                case MassMomentOfInertiaUnits.PoundSquareFeet: {
+                    const v4 = super.internalMultiply(0.45359237, 9.290304e-2);
+                    return super.internalMultiply(value, v4);
+                }
+                case MassMomentOfInertiaUnits.PoundSquareInches: {
+                    const v4 = super.internalMultiply(0.45359237, 0.00064516);
+                    return super.internalMultiply(value, v4);
+                }
+                case MassMomentOfInertiaUnits.SlugSquareFeet: {
+                    const v3 = super.internalMultiply(value, 0.45359237);
+                    const v5 = super.internalMultiply(v3, 9.290304e-2);
+                    const v8 = super.internalDivide(9.80665, 0.3048);
+                    return super.internalMultiply(v5, v8);
+                }
+                case MassMomentOfInertiaUnits.SlugSquareInches: {
+                    const v3 = super.internalMultiply(value, 0.45359237);
+                    const v5 = super.internalMultiply(v3, 0.00064516);
+                    const v8 = super.internalDivide(9.80665, 0.3048);
+                    return super.internalMultiply(v5, v8);
+                }
                 case MassMomentOfInertiaUnits.MilligramSquareMeters: {
                     const v3 = super.internalDivide(value, 1e3);
                     return super.internalMultiply(v3, 0.001);
@@ -894,11 +926,11 @@ export class MassMomentOfInertia extends BaseUnit {
                     const v3 = super.internalDivide(value, 1e1);
                     return super.internalMultiply(v3, 1000000);
                 }
-                case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: {
+                case MassMomentOfInertiaUnits.KilotonneSquareMillimeters: {
                     const v3 = super.internalDivide(value, 1e3);
                     return super.internalMultiply(v3, 1000);
                 }
-                case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: {
+                case MassMomentOfInertiaUnits.MegatonneSquareMillimeters: {
                     const v3 = super.internalDivide(value, 1e3);
                     return super.internalMultiply(v3, 1000000);
                 }
@@ -912,11 +944,11 @@ export class MassMomentOfInertia extends BaseUnit {
             case MassMomentOfInertiaUnits.TonneSquareMeters: return value / 1e-3;
             case MassMomentOfInertiaUnits.TonneSquareDecimeters: return value / 1e-1;
             case MassMomentOfInertiaUnits.TonneSquareCentimeters: return value / 1e1;
-            case MassMomentOfInertiaUnits.TonneSquareMilimeters: return value / 1e3;
-            case MassMomentOfInertiaUnits.PoundSquareFeet: return value * 4.21401101e-2;
-            case MassMomentOfInertiaUnits.PoundSquareInches: return value * 2.9263965e-4;
-            case MassMomentOfInertiaUnits.SlugSquareFeet: return value * 1.3558179619;
-            case MassMomentOfInertiaUnits.SlugSquareInches: return value * 9.41540242e-3;
+            case MassMomentOfInertiaUnits.TonneSquareMillimeters: return value / 1e3;
+            case MassMomentOfInertiaUnits.PoundSquareFeet: return value * (0.45359237 * 9.290304e-2);
+            case MassMomentOfInertiaUnits.PoundSquareInches: return value * (0.45359237 * 0.00064516);
+            case MassMomentOfInertiaUnits.SlugSquareFeet: return value * 0.45359237 * 9.290304e-2 * 9.80665 / 0.3048;
+            case MassMomentOfInertiaUnits.SlugSquareInches: return value * 0.45359237 * 0.00064516 * 9.80665 / 0.3048;
             case MassMomentOfInertiaUnits.MilligramSquareMeters: return (value / 1e3) * 0.001;
             case MassMomentOfInertiaUnits.KilogramSquareMeters: return (value / 1e3) * 1000;
             case MassMomentOfInertiaUnits.MilligramSquareDecimeters: return (value / 1e5) * 0.001;
@@ -931,8 +963,8 @@ export class MassMomentOfInertia extends BaseUnit {
             case MassMomentOfInertiaUnits.MegatonneSquareDecimeters: return (value / 1e-1) * 1000000;
             case MassMomentOfInertiaUnits.KilotonneSquareCentimeters: return (value / 1e1) * 1000;
             case MassMomentOfInertiaUnits.MegatonneSquareCentimeters: return (value / 1e1) * 1000000;
-            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters: return (value / 1e3) * 1000;
-            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters: return (value / 1e3) * 1000000;
+            case MassMomentOfInertiaUnits.KilotonneSquareMillimeters: return (value / 1e3) * 1000;
+            case MassMomentOfInertiaUnits.MegatonneSquareMillimeters: return (value / 1e3) * 1000000;
             default: return Number.NaN;
         }
     }
@@ -967,8 +999,8 @@ export class MassMomentOfInertia extends BaseUnit {
                 return super.truncateFractionDigits(this.TonneSquareDecimeters, options as ToStringOptions) + ` t·dm²`;
             case MassMomentOfInertiaUnits.TonneSquareCentimeters:
                 return super.truncateFractionDigits(this.TonneSquareCentimeters, options as ToStringOptions) + ` t·cm²`;
-            case MassMomentOfInertiaUnits.TonneSquareMilimeters:
-                return super.truncateFractionDigits(this.TonneSquareMilimeters, options as ToStringOptions) + ` t·mm²`;
+            case MassMomentOfInertiaUnits.TonneSquareMillimeters:
+                return super.truncateFractionDigits(this.TonneSquareMillimeters, options as ToStringOptions) + ` t·mm²`;
             case MassMomentOfInertiaUnits.PoundSquareFeet:
                 return super.truncateFractionDigits(this.PoundSquareFeet, options as ToStringOptions) + ` lb·ft²`;
             case MassMomentOfInertiaUnits.PoundSquareInches:
@@ -1005,10 +1037,10 @@ export class MassMomentOfInertia extends BaseUnit {
                 return super.truncateFractionDigits(this.KilotonneSquareCentimeters, options as ToStringOptions) + ` kt·cm²`;
             case MassMomentOfInertiaUnits.MegatonneSquareCentimeters:
                 return super.truncateFractionDigits(this.MegatonneSquareCentimeters, options as ToStringOptions) + ` Mt·cm²`;
-            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters:
-                return super.truncateFractionDigits(this.KilotonneSquareMilimeters, options as ToStringOptions) + ` kt·mm²`;
-            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters:
-                return super.truncateFractionDigits(this.MegatonneSquareMilimeters, options as ToStringOptions) + ` Mt·mm²`;
+            case MassMomentOfInertiaUnits.KilotonneSquareMillimeters:
+                return super.truncateFractionDigits(this.KilotonneSquareMillimeters, options as ToStringOptions) + ` kt·mm²`;
+            case MassMomentOfInertiaUnits.MegatonneSquareMillimeters:
+                return super.truncateFractionDigits(this.MegatonneSquareMillimeters, options as ToStringOptions) + ` Mt·mm²`;
         default:
             break;
         }
@@ -1040,7 +1072,7 @@ export class MassMomentOfInertia extends BaseUnit {
                 return `t·dm²`;
             case MassMomentOfInertiaUnits.TonneSquareCentimeters:
                 return `t·cm²`;
-            case MassMomentOfInertiaUnits.TonneSquareMilimeters:
+            case MassMomentOfInertiaUnits.TonneSquareMillimeters:
                 return `t·mm²`;
             case MassMomentOfInertiaUnits.PoundSquareFeet:
                 return `lb·ft²`;
@@ -1078,9 +1110,9 @@ export class MassMomentOfInertia extends BaseUnit {
                 return `kt·cm²`;
             case MassMomentOfInertiaUnits.MegatonneSquareCentimeters:
                 return `Mt·cm²`;
-            case MassMomentOfInertiaUnits.KilotonneSquareMilimeters:
+            case MassMomentOfInertiaUnits.KilotonneSquareMillimeters:
                 return `kt·mm²`;
-            case MassMomentOfInertiaUnits.MegatonneSquareMilimeters:
+            case MassMomentOfInertiaUnits.MegatonneSquareMillimeters:
                 return `Mt·mm²`;
         default:
             break;

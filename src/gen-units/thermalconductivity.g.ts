@@ -141,12 +141,17 @@ export class ThermalConductivity extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case ThermalConductivityUnits.WattsPerMeterKelvin: return this.value;
-                case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return super.internalDivide(this.value, 1.73073467);
+                case ThermalConductivityUnits.BtusPerHourFootFahrenheit: {
+                    const v5 = super.internalMultiply(0.3048, 3600);
+                    const v6 = super.internalDivide(1055.05585262, v5);
+                    const v8 = super.internalMultiply(v6, 1.8);
+                    return super.internalDivide(this.value, v8);
+                }
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case ThermalConductivityUnits.WattsPerMeterKelvin: return this.value;
-            case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return this.value / 1.73073467;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return this.value / ((1055.05585262 / (0.3048 * 3600)) * 1.8);
             default: return Number.NaN;
         }
     }
@@ -155,12 +160,17 @@ export class ThermalConductivity extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case ThermalConductivityUnits.WattsPerMeterKelvin: return value;
-                case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return super.internalMultiply(value, 1.73073467);
+                case ThermalConductivityUnits.BtusPerHourFootFahrenheit: {
+                    const v5 = super.internalMultiply(0.3048, 3600);
+                    const v6 = super.internalDivide(1055.05585262, v5);
+                    const v8 = super.internalMultiply(v6, 1.8);
+                    return super.internalMultiply(value, v8);
+                }
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case ThermalConductivityUnits.WattsPerMeterKelvin: return value;
-            case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return value * 1.73073467;
+            case ThermalConductivityUnits.BtusPerHourFootFahrenheit: return value * ((1055.05585262 / (0.3048 * 3600)) * 1.8);
             default: return Number.NaN;
         }
     }
@@ -182,9 +192,9 @@ export class ThermalConductivity extends BaseUnit {
         switch (unit) {
             
             case ThermalConductivityUnits.WattsPerMeterKelvin:
-                return super.truncateFractionDigits(this.WattsPerMeterKelvin, options as ToStringOptions) + ` W/m·K`;
+                return super.truncateFractionDigits(this.WattsPerMeterKelvin, options as ToStringOptions) + ` W/(m·K)`;
             case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                return super.truncateFractionDigits(this.BtusPerHourFootFahrenheit, options as ToStringOptions) + ` BTU/h·ft·°F`;
+                return super.truncateFractionDigits(this.BtusPerHourFootFahrenheit, options as ToStringOptions) + ` BTU/(h·ft·°F)`;
         default:
             break;
         }
@@ -203,9 +213,9 @@ export class ThermalConductivity extends BaseUnit {
         switch (unitAbbreviation) {
             
             case ThermalConductivityUnits.WattsPerMeterKelvin:
-                return `W/m·K`;
+                return `W/(m·K)`;
             case ThermalConductivityUnits.BtusPerHourFootFahrenheit:
-                return `BTU/h·ft·°F`;
+                return `BTU/(h·ft·°F)`;
         default:
             break;
         }

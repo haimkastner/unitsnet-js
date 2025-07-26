@@ -12,15 +12,15 @@ export interface PowerDto {
 export enum PowerUnits {
     /** */
     Watts = "Watt",
-    /** */
+    /** Assuming the third CGPM (1901, CR 70) definition of standard gravity, gn = 9.80665 m/s2, is used to define the pound-force as well as the kilogram force, and the international avoirdupois pound (1959), one imperial horsepower is: 76.0402249 × 9.80665 kg⋅m2/s3 */
     MechanicalHorsepower = "MechanicalHorsepower",
-    /** */
+    /** DIN 66036 defines one metric horsepower as the power to raise a mass of 75 kilograms against the Earth's gravitational force over a distance of one metre in one second:[18] 75 kg × 9.80665 m/s2 × 1 m / 1 s = 75 kgf⋅m/s = 1 PS. This is equivalent to 735.49875 W, or 98.6% of an imperial horsepower. */
     MetricHorsepower = "MetricHorsepower",
-    /** */
+    /** Nameplates on electrical motors show their power output, not the power input (the power delivered at the shaft, not the power consumed to drive the motor). This power output is ordinarily stated in watts or kilowatts. In the United States, the power output is stated in horsepower, which for this purpose is defined as exactly 746 W. */
     ElectricalHorsepower = "ElectricalHorsepower",
-    /** */
+    /** Boiler horsepower is a boiler's capacity to deliver steam to a steam engine and is not the same unit of power as the 550 ft lb/s definition. One boiler horsepower is equal to the thermal energy rate required to evaporate 34.5 pounds (15.6 kg) of fresh water at 212 °F (100 °C) in one hour. */
     BoilerHorsepower = "BoilerHorsepower",
-    /** */
+    /** Hydraulic horsepower can represent the power available within hydraulic machinery, power through the down-hole nozzle of a drilling rig, or can be used to estimate the mechanical power needed to generate a known hydraulic flow rate. */
     HydraulicHorsepower = "HydraulicHorsepower",
     /** */
     BritishThermalUnitsPerHour = "BritishThermalUnitPerHour",
@@ -133,7 +133,7 @@ export class Power extends BaseUnit {
         return this.wattsLazy = this.convertFromBase(PowerUnits.Watts);
     }
 
-    /** */
+    /** Assuming the third CGPM (1901, CR 70) definition of standard gravity, gn = 9.80665 m/s2, is used to define the pound-force as well as the kilogram force, and the international avoirdupois pound (1959), one imperial horsepower is: 76.0402249 × 9.80665 kg⋅m2/s3 */
     public get MechanicalHorsepower(): number {
         if(this.mechanicalhorsepowerLazy !== null){
             return this.mechanicalhorsepowerLazy;
@@ -141,7 +141,7 @@ export class Power extends BaseUnit {
         return this.mechanicalhorsepowerLazy = this.convertFromBase(PowerUnits.MechanicalHorsepower);
     }
 
-    /** */
+    /** DIN 66036 defines one metric horsepower as the power to raise a mass of 75 kilograms against the Earth's gravitational force over a distance of one metre in one second:[18] 75 kg × 9.80665 m/s2 × 1 m / 1 s = 75 kgf⋅m/s = 1 PS. This is equivalent to 735.49875 W, or 98.6% of an imperial horsepower. */
     public get MetricHorsepower(): number {
         if(this.metrichorsepowerLazy !== null){
             return this.metrichorsepowerLazy;
@@ -149,7 +149,7 @@ export class Power extends BaseUnit {
         return this.metrichorsepowerLazy = this.convertFromBase(PowerUnits.MetricHorsepower);
     }
 
-    /** */
+    /** Nameplates on electrical motors show their power output, not the power input (the power delivered at the shaft, not the power consumed to drive the motor). This power output is ordinarily stated in watts or kilowatts. In the United States, the power output is stated in horsepower, which for this purpose is defined as exactly 746 W. */
     public get ElectricalHorsepower(): number {
         if(this.electricalhorsepowerLazy !== null){
             return this.electricalhorsepowerLazy;
@@ -157,7 +157,7 @@ export class Power extends BaseUnit {
         return this.electricalhorsepowerLazy = this.convertFromBase(PowerUnits.ElectricalHorsepower);
     }
 
-    /** */
+    /** Boiler horsepower is a boiler's capacity to deliver steam to a steam engine and is not the same unit of power as the 550 ft lb/s definition. One boiler horsepower is equal to the thermal energy rate required to evaporate 34.5 pounds (15.6 kg) of fresh water at 212 °F (100 °C) in one hour. */
     public get BoilerHorsepower(): number {
         if(this.boilerhorsepowerLazy !== null){
             return this.boilerhorsepowerLazy;
@@ -165,7 +165,7 @@ export class Power extends BaseUnit {
         return this.boilerhorsepowerLazy = this.convertFromBase(PowerUnits.BoilerHorsepower);
     }
 
-    /** */
+    /** Hydraulic horsepower can represent the power available within hydraulic machinery, power through the down-hole nozzle of a drilling rig, or can be used to estimate the mechanical power needed to generate a known hydraulic flow rate. */
     public get HydraulicHorsepower(): number {
         if(this.hydraulichorsepowerLazy !== null){
             return this.hydraulichorsepowerLazy;
@@ -353,7 +353,7 @@ export class Power extends BaseUnit {
 
     /**
      * Create a new Power instance from a MechanicalHorsepower
-     *
+     * Assuming the third CGPM (1901, CR 70) definition of standard gravity, gn = 9.80665 m/s2, is used to define the pound-force as well as the kilogram force, and the international avoirdupois pound (1959), one imperial horsepower is: 76.0402249 × 9.80665 kg⋅m2/s3
      * @param value The unit as MechanicalHorsepower to create a new Power from.
      * @returns The new Power instance.
      */
@@ -363,7 +363,7 @@ export class Power extends BaseUnit {
 
     /**
      * Create a new Power instance from a MetricHorsepower
-     *
+     * DIN 66036 defines one metric horsepower as the power to raise a mass of 75 kilograms against the Earth's gravitational force over a distance of one metre in one second:[18] 75 kg × 9.80665 m/s2 × 1 m / 1 s = 75 kgf⋅m/s = 1 PS. This is equivalent to 735.49875 W, or 98.6% of an imperial horsepower.
      * @param value The unit as MetricHorsepower to create a new Power from.
      * @returns The new Power instance.
      */
@@ -373,7 +373,7 @@ export class Power extends BaseUnit {
 
     /**
      * Create a new Power instance from a ElectricalHorsepower
-     *
+     * Nameplates on electrical motors show their power output, not the power input (the power delivered at the shaft, not the power consumed to drive the motor). This power output is ordinarily stated in watts or kilowatts. In the United States, the power output is stated in horsepower, which for this purpose is defined as exactly 746 W.
      * @param value The unit as ElectricalHorsepower to create a new Power from.
      * @returns The new Power instance.
      */
@@ -383,7 +383,7 @@ export class Power extends BaseUnit {
 
     /**
      * Create a new Power instance from a BoilerHorsepower
-     *
+     * Boiler horsepower is a boiler's capacity to deliver steam to a steam engine and is not the same unit of power as the 550 ft lb/s definition. One boiler horsepower is equal to the thermal energy rate required to evaporate 34.5 pounds (15.6 kg) of fresh water at 212 °F (100 °C) in one hour.
      * @param value The unit as BoilerHorsepower to create a new Power from.
      * @returns The new Power instance.
      */
@@ -393,7 +393,7 @@ export class Power extends BaseUnit {
 
     /**
      * Create a new Power instance from a HydraulicHorsepower
-     *
+     * Hydraulic horsepower can represent the power available within hydraulic machinery, power through the down-hole nozzle of a drilling rig, or can be used to estimate the mechanical power needed to generate a known hydraulic flow rate.
      * @param value The unit as HydraulicHorsepower to create a new Power from.
      * @returns The new Power instance.
      */
@@ -691,12 +691,21 @@ export class Power extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case PowerUnits.Watts: return this.value;
-                case PowerUnits.MechanicalHorsepower: return super.internalDivide(this.value, 745.69);
-                case PowerUnits.MetricHorsepower: return super.internalDivide(this.value, 735.49875);
+                case PowerUnits.MechanicalHorsepower: {
+                    const v4 = super.internalMultiply(76.0402249, 9.80665);
+                    return super.internalDivide(this.value, v4);
+                }
+                case PowerUnits.MetricHorsepower: {
+                    const v4 = super.internalMultiply(75, 9.80665);
+                    return super.internalDivide(this.value, v4);
+                }
                 case PowerUnits.ElectricalHorsepower: return super.internalDivide(this.value, 746);
                 case PowerUnits.BoilerHorsepower: return super.internalDivide(this.value, 9812.5);
-                case PowerUnits.HydraulicHorsepower: return super.internalDivide(this.value, 745.69988145);
-                case PowerUnits.BritishThermalUnitsPerHour: return super.internalDivide(this.value, 0.29307107017);
+                case PowerUnits.HydraulicHorsepower: return super.internalDivide(this.value, 745.69987158227022);
+                case PowerUnits.BritishThermalUnitsPerHour: {
+                    const v4 = super.internalDivide(3600, 1055.05585262);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case PowerUnits.JoulesPerHour: return super.internalMultiply(this.value, 3600);
                 case PowerUnits.TonsOfRefrigeration: return super.internalDivide(this.value, 3516.853);
                 case PowerUnits.Femtowatts: return super.internalDivide(this.value, 1e-15);
@@ -712,12 +721,14 @@ export class Power extends BaseUnit {
                 case PowerUnits.Terawatts: return super.internalDivide(this.value, 1000000000000);
                 case PowerUnits.Petawatts: return super.internalDivide(this.value, 1000000000000000);
                 case PowerUnits.KilobritishThermalUnitsPerHour: {
-                    const v3 = super.internalDivide(this.value, 0.29307107017);
-                    return super.internalDivide(v3, 1000);
+                    const v4 = super.internalDivide(3600, 1055.05585262);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalDivide(v5, 1000);
                 }
                 case PowerUnits.MegabritishThermalUnitsPerHour: {
-                    const v3 = super.internalDivide(this.value, 0.29307107017);
-                    return super.internalDivide(v3, 1000000);
+                    const v4 = super.internalDivide(3600, 1055.05585262);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalDivide(v5, 1000000);
                 }
                 case PowerUnits.MillijoulesPerHour: {
                     const v3 = super.internalMultiply(this.value, 3600);
@@ -739,12 +750,12 @@ export class Power extends BaseUnit {
             }
         switch (toUnit) {
             case PowerUnits.Watts: return this.value;
-            case PowerUnits.MechanicalHorsepower: return this.value / 745.69;
-            case PowerUnits.MetricHorsepower: return this.value / 735.49875;
+            case PowerUnits.MechanicalHorsepower: return this.value / (76.0402249 * 9.80665);
+            case PowerUnits.MetricHorsepower: return this.value / (75 * 9.80665);
             case PowerUnits.ElectricalHorsepower: return this.value / 746;
             case PowerUnits.BoilerHorsepower: return this.value / 9812.5;
-            case PowerUnits.HydraulicHorsepower: return this.value / 745.69988145;
-            case PowerUnits.BritishThermalUnitsPerHour: return this.value / 0.29307107017;
+            case PowerUnits.HydraulicHorsepower: return this.value / 745.69987158227022;
+            case PowerUnits.BritishThermalUnitsPerHour: return this.value * 3600 / 1055.05585262;
             case PowerUnits.JoulesPerHour: return this.value * 3600;
             case PowerUnits.TonsOfRefrigeration: return this.value / 3516.853;
             case PowerUnits.Femtowatts: return (this.value) / 1e-15;
@@ -759,8 +770,8 @@ export class Power extends BaseUnit {
             case PowerUnits.Gigawatts: return (this.value) / 1000000000;
             case PowerUnits.Terawatts: return (this.value) / 1000000000000;
             case PowerUnits.Petawatts: return (this.value) / 1000000000000000;
-            case PowerUnits.KilobritishThermalUnitsPerHour: return (this.value / 0.29307107017) / 1000;
-            case PowerUnits.MegabritishThermalUnitsPerHour: return (this.value / 0.29307107017) / 1000000;
+            case PowerUnits.KilobritishThermalUnitsPerHour: return (this.value * 3600 / 1055.05585262) / 1000;
+            case PowerUnits.MegabritishThermalUnitsPerHour: return (this.value * 3600 / 1055.05585262) / 1000000;
             case PowerUnits.MillijoulesPerHour: return (this.value * 3600) / 0.001;
             case PowerUnits.KilojoulesPerHour: return (this.value * 3600) / 1000;
             case PowerUnits.MegajoulesPerHour: return (this.value * 3600) / 1000000;
@@ -773,12 +784,21 @@ export class Power extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case PowerUnits.Watts: return value;
-                case PowerUnits.MechanicalHorsepower: return super.internalMultiply(value, 745.69);
-                case PowerUnits.MetricHorsepower: return super.internalMultiply(value, 735.49875);
+                case PowerUnits.MechanicalHorsepower: {
+                    const v3 = super.internalMultiply(value, 76.0402249);
+                    return super.internalMultiply(v3, 9.80665);
+                }
+                case PowerUnits.MetricHorsepower: {
+                    const v3 = super.internalMultiply(value, 75);
+                    return super.internalMultiply(v3, 9.80665);
+                }
                 case PowerUnits.ElectricalHorsepower: return super.internalMultiply(value, 746);
                 case PowerUnits.BoilerHorsepower: return super.internalMultiply(value, 9812.5);
-                case PowerUnits.HydraulicHorsepower: return super.internalMultiply(value, 745.69988145);
-                case PowerUnits.BritishThermalUnitsPerHour: return super.internalMultiply(value, 0.29307107017);
+                case PowerUnits.HydraulicHorsepower: return super.internalMultiply(value, 745.69987158227022);
+                case PowerUnits.BritishThermalUnitsPerHour: {
+                    const v4 = super.internalDivide(1055.05585262, 3600);
+                    return super.internalMultiply(value, v4);
+                }
                 case PowerUnits.JoulesPerHour: return super.internalDivide(value, 3600);
                 case PowerUnits.TonsOfRefrigeration: return super.internalMultiply(value, 3516.853);
                 case PowerUnits.Femtowatts: return super.internalMultiply(value, 1e-15);
@@ -794,12 +814,14 @@ export class Power extends BaseUnit {
                 case PowerUnits.Terawatts: return super.internalMultiply(value, 1000000000000);
                 case PowerUnits.Petawatts: return super.internalMultiply(value, 1000000000000000);
                 case PowerUnits.KilobritishThermalUnitsPerHour: {
-                    const v3 = super.internalMultiply(value, 0.29307107017);
-                    return super.internalMultiply(v3, 1000);
+                    const v4 = super.internalDivide(1055.05585262, 3600);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000);
                 }
                 case PowerUnits.MegabritishThermalUnitsPerHour: {
-                    const v3 = super.internalMultiply(value, 0.29307107017);
-                    return super.internalMultiply(v3, 1000000);
+                    const v4 = super.internalDivide(1055.05585262, 3600);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 1000000);
                 }
                 case PowerUnits.MillijoulesPerHour: {
                     const v3 = super.internalDivide(value, 3600);
@@ -821,12 +843,12 @@ export class Power extends BaseUnit {
             }
         switch (fromUnit) {
             case PowerUnits.Watts: return value;
-            case PowerUnits.MechanicalHorsepower: return value * 745.69;
-            case PowerUnits.MetricHorsepower: return value * 735.49875;
+            case PowerUnits.MechanicalHorsepower: return value * 76.0402249 * 9.80665;
+            case PowerUnits.MetricHorsepower: return value * 75 * 9.80665;
             case PowerUnits.ElectricalHorsepower: return value * 746;
             case PowerUnits.BoilerHorsepower: return value * 9812.5;
-            case PowerUnits.HydraulicHorsepower: return value * 745.69988145;
-            case PowerUnits.BritishThermalUnitsPerHour: return value * 0.29307107017;
+            case PowerUnits.HydraulicHorsepower: return value * 745.69987158227022;
+            case PowerUnits.BritishThermalUnitsPerHour: return value * 1055.05585262 / 3600;
             case PowerUnits.JoulesPerHour: return value / 3600;
             case PowerUnits.TonsOfRefrigeration: return value * 3516.853;
             case PowerUnits.Femtowatts: return (value) * 1e-15;
@@ -841,8 +863,8 @@ export class Power extends BaseUnit {
             case PowerUnits.Gigawatts: return (value) * 1000000000;
             case PowerUnits.Terawatts: return (value) * 1000000000000;
             case PowerUnits.Petawatts: return (value) * 1000000000000000;
-            case PowerUnits.KilobritishThermalUnitsPerHour: return (value * 0.29307107017) * 1000;
-            case PowerUnits.MegabritishThermalUnitsPerHour: return (value * 0.29307107017) * 1000000;
+            case PowerUnits.KilobritishThermalUnitsPerHour: return (value * 1055.05585262 / 3600) * 1000;
+            case PowerUnits.MegabritishThermalUnitsPerHour: return (value * 1055.05585262 / 3600) * 1000000;
             case PowerUnits.MillijoulesPerHour: return (value / 3600) * 0.001;
             case PowerUnits.KilojoulesPerHour: return (value / 3600) * 1000;
             case PowerUnits.MegajoulesPerHour: return (value / 3600) * 1000000;

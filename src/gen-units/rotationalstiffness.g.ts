@@ -823,8 +823,18 @@ export class RotationalStiffness extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case RotationalStiffnessUnits.NewtonMetersPerRadian: return this.value;
-                case RotationalStiffnessUnits.PoundForceFeetPerDegrees: return super.internalDivide(this.value, 77.6826);
-                case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: return super.internalDivide(this.value, 77682.6);
+                case RotationalStiffnessUnits.PoundForceFeetPerDegrees: {
+                    const v4 = super.internalMultiply(4.4482216152605, 0.3048);
+                    const v7 = super.internalDivide(180, Math.PI);
+                    const v8 = super.internalMultiply(v4, v7);
+                    return super.internalDivide(this.value, v8);
+                }
+                case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: {
+                    const v4 = super.internalMultiply(4.4482216152605e3, 0.3048);
+                    const v7 = super.internalDivide(180, Math.PI);
+                    const v8 = super.internalMultiply(v4, v7);
+                    return super.internalDivide(this.value, v8);
+                }
                 case RotationalStiffnessUnits.NewtonMillimetersPerDegree: {
                     const v3 = super.internalDivide(this.value, 180);
                     const v5 = super.internalMultiply(v3, Math.PI);
@@ -835,7 +845,10 @@ export class RotationalStiffness extends BaseUnit {
                     return super.internalDivide(this.value, v4);
                 }
                 case RotationalStiffnessUnits.NewtonMillimetersPerRadian: return super.internalMultiply(this.value, 1000);
-                case RotationalStiffnessUnits.PoundForceFeetPerRadian: return super.internalDivide(this.value, 1.3558179483314);
+                case RotationalStiffnessUnits.PoundForceFeetPerRadian: {
+                    const v4 = super.internalMultiply(4.4482216152605, 0.3048);
+                    return super.internalDivide(this.value, v4);
+                }
                 case RotationalStiffnessUnits.KilonewtonMetersPerRadian: return super.internalDivide(this.value, 1000);
                 case RotationalStiffnessUnits.MeganewtonMetersPerRadian: return super.internalDivide(this.value, 1000000);
                 case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree: {
@@ -962,12 +975,12 @@ export class RotationalStiffness extends BaseUnit {
             }
         switch (toUnit) {
             case RotationalStiffnessUnits.NewtonMetersPerRadian: return this.value;
-            case RotationalStiffnessUnits.PoundForceFeetPerDegrees: return this.value / 77.6826;
-            case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: return this.value / 77682.6;
+            case RotationalStiffnessUnits.PoundForceFeetPerDegrees: return this.value / (4.4482216152605 * 0.3048 * 180 / Math.PI);
+            case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: return this.value / (4.4482216152605e3 * 0.3048 * 180 / Math.PI);
             case RotationalStiffnessUnits.NewtonMillimetersPerDegree: return this.value / 180 * Math.PI * 1000;
             case RotationalStiffnessUnits.NewtonMetersPerDegree: return this.value / (180 / Math.PI);
             case RotationalStiffnessUnits.NewtonMillimetersPerRadian: return this.value * 1000;
-            case RotationalStiffnessUnits.PoundForceFeetPerRadian: return this.value / 1.3558179483314;
+            case RotationalStiffnessUnits.PoundForceFeetPerRadian: return this.value / (4.4482216152605 * 0.3048);
             case RotationalStiffnessUnits.KilonewtonMetersPerRadian: return (this.value) / 1000;
             case RotationalStiffnessUnits.MeganewtonMetersPerRadian: return (this.value) / 1000000;
             case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree: return (this.value / 180 * Math.PI * 1000) / 1e-9;
@@ -1002,8 +1015,18 @@ export class RotationalStiffness extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case RotationalStiffnessUnits.NewtonMetersPerRadian: return value;
-                case RotationalStiffnessUnits.PoundForceFeetPerDegrees: return super.internalMultiply(value, 77.6826);
-                case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: return super.internalMultiply(value, 77682.6);
+                case RotationalStiffnessUnits.PoundForceFeetPerDegrees: {
+                    const v4 = super.internalMultiply(4.4482216152605, 0.3048);
+                    const v7 = super.internalDivide(180, Math.PI);
+                    const v8 = super.internalMultiply(v4, v7);
+                    return super.internalMultiply(value, v8);
+                }
+                case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: {
+                    const v4 = super.internalMultiply(4.4482216152605e3, 0.3048);
+                    const v7 = super.internalDivide(180, Math.PI);
+                    const v8 = super.internalMultiply(v4, v7);
+                    return super.internalMultiply(value, v8);
+                }
                 case RotationalStiffnessUnits.NewtonMillimetersPerDegree: {
                     const v4 = super.internalDivide(180, Math.PI);
                     const v5 = super.internalMultiply(value, v4);
@@ -1014,7 +1037,10 @@ export class RotationalStiffness extends BaseUnit {
                     return super.internalMultiply(value, v4);
                 }
                 case RotationalStiffnessUnits.NewtonMillimetersPerRadian: return super.internalMultiply(value, 0.001);
-                case RotationalStiffnessUnits.PoundForceFeetPerRadian: return super.internalMultiply(value, 1.3558179483314);
+                case RotationalStiffnessUnits.PoundForceFeetPerRadian: {
+                    const v3 = super.internalMultiply(value, 4.4482216152605);
+                    return super.internalMultiply(v3, 0.3048);
+                }
                 case RotationalStiffnessUnits.KilonewtonMetersPerRadian: return super.internalMultiply(value, 1000);
                 case RotationalStiffnessUnits.MeganewtonMetersPerRadian: return super.internalMultiply(value, 1000000);
                 case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree: {
@@ -1141,12 +1167,12 @@ export class RotationalStiffness extends BaseUnit {
             }
         switch (fromUnit) {
             case RotationalStiffnessUnits.NewtonMetersPerRadian: return value;
-            case RotationalStiffnessUnits.PoundForceFeetPerDegrees: return value * 77.6826;
-            case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: return value * 77682.6;
+            case RotationalStiffnessUnits.PoundForceFeetPerDegrees: return value * (4.4482216152605 * 0.3048 * 180 / Math.PI);
+            case RotationalStiffnessUnits.KilopoundForceFeetPerDegrees: return value * (4.4482216152605e3 * 0.3048 * 180 / Math.PI);
             case RotationalStiffnessUnits.NewtonMillimetersPerDegree: return value * 180 / Math.PI * 0.001;
             case RotationalStiffnessUnits.NewtonMetersPerDegree: return value * (180 / Math.PI);
             case RotationalStiffnessUnits.NewtonMillimetersPerRadian: return value * 0.001;
-            case RotationalStiffnessUnits.PoundForceFeetPerRadian: return value * 1.3558179483314;
+            case RotationalStiffnessUnits.PoundForceFeetPerRadian: return value * 4.4482216152605 * 0.3048;
             case RotationalStiffnessUnits.KilonewtonMetersPerRadian: return (value) * 1000;
             case RotationalStiffnessUnits.MeganewtonMetersPerRadian: return (value) * 1000000;
             case RotationalStiffnessUnits.NanonewtonMillimetersPerDegree: return (value * 180 / Math.PI * 0.001) * 1e-9;

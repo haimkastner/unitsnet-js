@@ -495,8 +495,14 @@ export class LinearDensity extends BaseUnit {
                 case LinearDensityUnits.GramsPerMillimeter: return this.value;
                 case LinearDensityUnits.GramsPerCentimeter: return super.internalDivide(this.value, 1e-1);
                 case LinearDensityUnits.GramsPerMeter: return super.internalDivide(this.value, 1e-3);
-                case LinearDensityUnits.PoundsPerInch: return super.internalMultiply(this.value, 5.5997415e-2);
-                case LinearDensityUnits.PoundsPerFoot: return super.internalDivide(this.value, 1.48816394);
+                case LinearDensityUnits.PoundsPerInch: {
+                    const v4 = super.internalDivide(2.54e-2, 0.45359237);
+                    return super.internalMultiply(this.value, v4);
+                }
+                case LinearDensityUnits.PoundsPerFoot: {
+                    const v4 = super.internalDivide(0.3048, 0.45359237);
+                    return super.internalMultiply(this.value, v4);
+                }
                 case LinearDensityUnits.GramsPerFoot: {
                     const v4 = super.internalDivide(1e-3, 0.3048);
                     return super.internalDivide(this.value, v4);
@@ -549,8 +555,8 @@ export class LinearDensity extends BaseUnit {
             case LinearDensityUnits.GramsPerMillimeter: return this.value;
             case LinearDensityUnits.GramsPerCentimeter: return this.value / 1e-1;
             case LinearDensityUnits.GramsPerMeter: return this.value / 1e-3;
-            case LinearDensityUnits.PoundsPerInch: return this.value * 5.5997415e-2;
-            case LinearDensityUnits.PoundsPerFoot: return this.value / 1.48816394;
+            case LinearDensityUnits.PoundsPerInch: return this.value * 2.54e-2 / 0.45359237;
+            case LinearDensityUnits.PoundsPerFoot: return this.value * 0.3048 / 0.45359237;
             case LinearDensityUnits.GramsPerFoot: return this.value / ( 1e-3 / 0.3048 );
             case LinearDensityUnits.MicrogramsPerMillimeter: return (this.value) / 0.000001;
             case LinearDensityUnits.MilligramsPerMillimeter: return (this.value) / 0.001;
@@ -574,8 +580,14 @@ export class LinearDensity extends BaseUnit {
                 case LinearDensityUnits.GramsPerMillimeter: return value;
                 case LinearDensityUnits.GramsPerCentimeter: return super.internalMultiply(value, 1e-1);
                 case LinearDensityUnits.GramsPerMeter: return super.internalMultiply(value, 1e-3);
-                case LinearDensityUnits.PoundsPerInch: return super.internalDivide(value, 5.5997415e-2);
-                case LinearDensityUnits.PoundsPerFoot: return super.internalMultiply(value, 1.48816394);
+                case LinearDensityUnits.PoundsPerInch: {
+                    const v4 = super.internalDivide(0.45359237, 2.54e-2);
+                    return super.internalMultiply(value, v4);
+                }
+                case LinearDensityUnits.PoundsPerFoot: {
+                    const v4 = super.internalDivide(0.45359237, 0.3048);
+                    return super.internalMultiply(value, v4);
+                }
                 case LinearDensityUnits.GramsPerFoot: {
                     const v4 = super.internalDivide(1e-3, 0.3048);
                     return super.internalMultiply(value, v4);
@@ -628,8 +640,8 @@ export class LinearDensity extends BaseUnit {
             case LinearDensityUnits.GramsPerMillimeter: return value;
             case LinearDensityUnits.GramsPerCentimeter: return value * 1e-1;
             case LinearDensityUnits.GramsPerMeter: return value * 1e-3;
-            case LinearDensityUnits.PoundsPerInch: return value / 5.5997415e-2;
-            case LinearDensityUnits.PoundsPerFoot: return value * 1.48816394;
+            case LinearDensityUnits.PoundsPerInch: return value * 0.45359237 / 2.54e-2;
+            case LinearDensityUnits.PoundsPerFoot: return value * 0.45359237 / 0.3048;
             case LinearDensityUnits.GramsPerFoot: return value * ( 1e-3 / 0.3048 );
             case LinearDensityUnits.MicrogramsPerMillimeter: return (value) * 0.000001;
             case LinearDensityUnits.MilligramsPerMillimeter: return (value) * 0.001;

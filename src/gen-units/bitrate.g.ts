@@ -15,6 +15,8 @@ export enum BitRateUnits {
     /** */
     BytesPerSecond = "BytePerSecond",
     /** */
+    OctetsPerSecond = "OctetPerSecond",
+    /** */
     KilobitsPerSecond = "KilobitPerSecond",
     /** */
     MegabitsPerSecond = "MegabitPerSecond",
@@ -61,7 +63,31 @@ export enum BitRateUnits {
     /** */
     PebibytesPerSecond = "PebibytePerSecond",
     /** */
-    ExbibytesPerSecond = "ExbibytePerSecond"
+    ExbibytesPerSecond = "ExbibytePerSecond",
+    /** */
+    KilooctetsPerSecond = "KilooctetPerSecond",
+    /** */
+    MegaoctetsPerSecond = "MegaoctetPerSecond",
+    /** */
+    GigaoctetsPerSecond = "GigaoctetPerSecond",
+    /** */
+    TeraoctetsPerSecond = "TeraoctetPerSecond",
+    /** */
+    PetaoctetsPerSecond = "PetaoctetPerSecond",
+    /** */
+    ExaoctetsPerSecond = "ExaoctetPerSecond",
+    /** */
+    KibioctetsPerSecond = "KibioctetPerSecond",
+    /** */
+    MebioctetsPerSecond = "MebioctetPerSecond",
+    /** */
+    GibioctetsPerSecond = "GibioctetPerSecond",
+    /** */
+    TebioctetsPerSecond = "TebioctetPerSecond",
+    /** */
+    PebioctetsPerSecond = "PebioctetPerSecond",
+    /** */
+    ExbioctetsPerSecond = "ExbioctetPerSecond"
 }
 
 /** In telecommunications and computing, bit rate is the number of bits that are conveyed or processed per unit of time. */
@@ -69,6 +95,7 @@ export class BitRate extends BaseUnit {
     protected value: number;
     private bitspersecondLazy: number | null = null;
     private bytespersecondLazy: number | null = null;
+    private octetspersecondLazy: number | null = null;
     private kilobitspersecondLazy: number | null = null;
     private megabitspersecondLazy: number | null = null;
     private gigabitspersecondLazy: number | null = null;
@@ -93,6 +120,18 @@ export class BitRate extends BaseUnit {
     private tebibytespersecondLazy: number | null = null;
     private pebibytespersecondLazy: number | null = null;
     private exbibytespersecondLazy: number | null = null;
+    private kilooctetspersecondLazy: number | null = null;
+    private megaoctetspersecondLazy: number | null = null;
+    private gigaoctetspersecondLazy: number | null = null;
+    private teraoctetspersecondLazy: number | null = null;
+    private petaoctetspersecondLazy: number | null = null;
+    private exaoctetspersecondLazy: number | null = null;
+    private kibioctetspersecondLazy: number | null = null;
+    private mebioctetspersecondLazy: number | null = null;
+    private gibioctetspersecondLazy: number | null = null;
+    private tebioctetspersecondLazy: number | null = null;
+    private pebioctetspersecondLazy: number | null = null;
+    private exbioctetspersecondLazy: number | null = null;
 
     /**
      * Create a new BitRate.
@@ -136,6 +175,14 @@ export class BitRate extends BaseUnit {
             return this.bytespersecondLazy;
         }
         return this.bytespersecondLazy = this.convertFromBase(BitRateUnits.BytesPerSecond);
+    }
+
+    /** */
+    public get OctetsPerSecond(): number {
+        if(this.octetspersecondLazy !== null){
+            return this.octetspersecondLazy;
+        }
+        return this.octetspersecondLazy = this.convertFromBase(BitRateUnits.OctetsPerSecond);
     }
 
     /** */
@@ -330,6 +377,102 @@ export class BitRate extends BaseUnit {
         return this.exbibytespersecondLazy = this.convertFromBase(BitRateUnits.ExbibytesPerSecond);
     }
 
+    /** */
+    public get KilooctetsPerSecond(): number {
+        if(this.kilooctetspersecondLazy !== null){
+            return this.kilooctetspersecondLazy;
+        }
+        return this.kilooctetspersecondLazy = this.convertFromBase(BitRateUnits.KilooctetsPerSecond);
+    }
+
+    /** */
+    public get MegaoctetsPerSecond(): number {
+        if(this.megaoctetspersecondLazy !== null){
+            return this.megaoctetspersecondLazy;
+        }
+        return this.megaoctetspersecondLazy = this.convertFromBase(BitRateUnits.MegaoctetsPerSecond);
+    }
+
+    /** */
+    public get GigaoctetsPerSecond(): number {
+        if(this.gigaoctetspersecondLazy !== null){
+            return this.gigaoctetspersecondLazy;
+        }
+        return this.gigaoctetspersecondLazy = this.convertFromBase(BitRateUnits.GigaoctetsPerSecond);
+    }
+
+    /** */
+    public get TeraoctetsPerSecond(): number {
+        if(this.teraoctetspersecondLazy !== null){
+            return this.teraoctetspersecondLazy;
+        }
+        return this.teraoctetspersecondLazy = this.convertFromBase(BitRateUnits.TeraoctetsPerSecond);
+    }
+
+    /** */
+    public get PetaoctetsPerSecond(): number {
+        if(this.petaoctetspersecondLazy !== null){
+            return this.petaoctetspersecondLazy;
+        }
+        return this.petaoctetspersecondLazy = this.convertFromBase(BitRateUnits.PetaoctetsPerSecond);
+    }
+
+    /** */
+    public get ExaoctetsPerSecond(): number {
+        if(this.exaoctetspersecondLazy !== null){
+            return this.exaoctetspersecondLazy;
+        }
+        return this.exaoctetspersecondLazy = this.convertFromBase(BitRateUnits.ExaoctetsPerSecond);
+    }
+
+    /** */
+    public get KibioctetsPerSecond(): number {
+        if(this.kibioctetspersecondLazy !== null){
+            return this.kibioctetspersecondLazy;
+        }
+        return this.kibioctetspersecondLazy = this.convertFromBase(BitRateUnits.KibioctetsPerSecond);
+    }
+
+    /** */
+    public get MebioctetsPerSecond(): number {
+        if(this.mebioctetspersecondLazy !== null){
+            return this.mebioctetspersecondLazy;
+        }
+        return this.mebioctetspersecondLazy = this.convertFromBase(BitRateUnits.MebioctetsPerSecond);
+    }
+
+    /** */
+    public get GibioctetsPerSecond(): number {
+        if(this.gibioctetspersecondLazy !== null){
+            return this.gibioctetspersecondLazy;
+        }
+        return this.gibioctetspersecondLazy = this.convertFromBase(BitRateUnits.GibioctetsPerSecond);
+    }
+
+    /** */
+    public get TebioctetsPerSecond(): number {
+        if(this.tebioctetspersecondLazy !== null){
+            return this.tebioctetspersecondLazy;
+        }
+        return this.tebioctetspersecondLazy = this.convertFromBase(BitRateUnits.TebioctetsPerSecond);
+    }
+
+    /** */
+    public get PebioctetsPerSecond(): number {
+        if(this.pebioctetspersecondLazy !== null){
+            return this.pebioctetspersecondLazy;
+        }
+        return this.pebioctetspersecondLazy = this.convertFromBase(BitRateUnits.PebioctetsPerSecond);
+    }
+
+    /** */
+    public get ExbioctetsPerSecond(): number {
+        if(this.exbioctetspersecondLazy !== null){
+            return this.exbioctetspersecondLazy;
+        }
+        return this.exbioctetspersecondLazy = this.convertFromBase(BitRateUnits.ExbioctetsPerSecond);
+    }
+
     /**
      * Create a new BitRate instance from a BitsPerSecond
      *
@@ -348,6 +491,16 @@ export class BitRate extends BaseUnit {
      */
     public static FromBytesPerSecond(value: number): BitRate {
         return new BitRate(value, BitRateUnits.BytesPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a OctetsPerSecond
+     *
+     * @param value The unit as OctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromOctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.OctetsPerSecond);
     }
 
     /**
@@ -591,6 +744,126 @@ export class BitRate extends BaseUnit {
     }
 
     /**
+     * Create a new BitRate instance from a KilooctetsPerSecond
+     *
+     * @param value The unit as KilooctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromKilooctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.KilooctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a MegaoctetsPerSecond
+     *
+     * @param value The unit as MegaoctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromMegaoctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.MegaoctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a GigaoctetsPerSecond
+     *
+     * @param value The unit as GigaoctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromGigaoctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.GigaoctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a TeraoctetsPerSecond
+     *
+     * @param value The unit as TeraoctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromTeraoctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.TeraoctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a PetaoctetsPerSecond
+     *
+     * @param value The unit as PetaoctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromPetaoctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.PetaoctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a ExaoctetsPerSecond
+     *
+     * @param value The unit as ExaoctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromExaoctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.ExaoctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a KibioctetsPerSecond
+     *
+     * @param value The unit as KibioctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromKibioctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.KibioctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a MebioctetsPerSecond
+     *
+     * @param value The unit as MebioctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromMebioctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.MebioctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a GibioctetsPerSecond
+     *
+     * @param value The unit as GibioctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromGibioctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.GibioctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a TebioctetsPerSecond
+     *
+     * @param value The unit as TebioctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromTebioctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.TebioctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a PebioctetsPerSecond
+     *
+     * @param value The unit as PebioctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromPebioctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.PebioctetsPerSecond);
+    }
+
+    /**
+     * Create a new BitRate instance from a ExbioctetsPerSecond
+     *
+     * @param value The unit as ExbioctetsPerSecond to create a new BitRate from.
+     * @returns The new BitRate instance.
+     */
+    public static FromExbioctetsPerSecond(value: number): BitRate {
+        return new BitRate(value, BitRateUnits.ExbioctetsPerSecond);
+    }
+
+    /**
      * Gets the base unit enumeration associated with BitRate
      * @returns The unit enumeration that can be used to interact with this type
      */
@@ -634,6 +907,7 @@ export class BitRate extends BaseUnit {
         switch (toUnit) {
             case BitRateUnits.BitsPerSecond: return this.BitsPerSecond;
             case BitRateUnits.BytesPerSecond: return this.BytesPerSecond;
+            case BitRateUnits.OctetsPerSecond: return this.OctetsPerSecond;
             case BitRateUnits.KilobitsPerSecond: return this.KilobitsPerSecond;
             case BitRateUnits.MegabitsPerSecond: return this.MegabitsPerSecond;
             case BitRateUnits.GigabitsPerSecond: return this.GigabitsPerSecond;
@@ -658,6 +932,18 @@ export class BitRate extends BaseUnit {
             case BitRateUnits.TebibytesPerSecond: return this.TebibytesPerSecond;
             case BitRateUnits.PebibytesPerSecond: return this.PebibytesPerSecond;
             case BitRateUnits.ExbibytesPerSecond: return this.ExbibytesPerSecond;
+            case BitRateUnits.KilooctetsPerSecond: return this.KilooctetsPerSecond;
+            case BitRateUnits.MegaoctetsPerSecond: return this.MegaoctetsPerSecond;
+            case BitRateUnits.GigaoctetsPerSecond: return this.GigaoctetsPerSecond;
+            case BitRateUnits.TeraoctetsPerSecond: return this.TeraoctetsPerSecond;
+            case BitRateUnits.PetaoctetsPerSecond: return this.PetaoctetsPerSecond;
+            case BitRateUnits.ExaoctetsPerSecond: return this.ExaoctetsPerSecond;
+            case BitRateUnits.KibioctetsPerSecond: return this.KibioctetsPerSecond;
+            case BitRateUnits.MebioctetsPerSecond: return this.MebioctetsPerSecond;
+            case BitRateUnits.GibioctetsPerSecond: return this.GibioctetsPerSecond;
+            case BitRateUnits.TebioctetsPerSecond: return this.TebioctetsPerSecond;
+            case BitRateUnits.PebioctetsPerSecond: return this.PebioctetsPerSecond;
+            case BitRateUnits.ExbioctetsPerSecond: return this.ExbioctetsPerSecond;
 
             default:
                 break;
@@ -670,6 +956,7 @@ export class BitRate extends BaseUnit {
             switch (toUnit) {
                 case BitRateUnits.BitsPerSecond: return this.value;
                 case BitRateUnits.BytesPerSecond: return super.internalDivide(this.value, 8);
+                case BitRateUnits.OctetsPerSecond: return super.internalDivide(this.value, 8);
                 case BitRateUnits.KilobitsPerSecond: return super.internalDivide(this.value, 1000);
                 case BitRateUnits.MegabitsPerSecond: return super.internalDivide(this.value, 1000000);
                 case BitRateUnits.GigabitsPerSecond: return super.internalDivide(this.value, 1000000000);
@@ -730,11 +1017,60 @@ export class BitRate extends BaseUnit {
                     const v3 = super.internalDivide(this.value, 8);
                     return super.internalDivide(v3, 1152921504606847000);
                 }
+                case BitRateUnits.KilooctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000);
+                }
+                case BitRateUnits.MegaoctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000);
+                }
+                case BitRateUnits.GigaoctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000);
+                }
+                case BitRateUnits.TeraoctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000);
+                }
+                case BitRateUnits.PetaoctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000000);
+                }
+                case BitRateUnits.ExaoctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1000000000000000000);
+                }
+                case BitRateUnits.KibioctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1024);
+                }
+                case BitRateUnits.MebioctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1048576);
+                }
+                case BitRateUnits.GibioctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1073741824);
+                }
+                case BitRateUnits.TebioctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1099511627776);
+                }
+                case BitRateUnits.PebioctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1125899906842624);
+                }
+                case BitRateUnits.ExbioctetsPerSecond: {
+                    const v3 = super.internalDivide(this.value, 8);
+                    return super.internalDivide(v3, 1152921504606847000);
+                }
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case BitRateUnits.BitsPerSecond: return this.value;
             case BitRateUnits.BytesPerSecond: return this.value / 8;
+            case BitRateUnits.OctetsPerSecond: return this.value / 8;
             case BitRateUnits.KilobitsPerSecond: return (this.value) / 1000;
             case BitRateUnits.MegabitsPerSecond: return (this.value) / 1000000;
             case BitRateUnits.GigabitsPerSecond: return (this.value) / 1000000000;
@@ -759,6 +1095,18 @@ export class BitRate extends BaseUnit {
             case BitRateUnits.TebibytesPerSecond: return (this.value / 8) / 1099511627776;
             case BitRateUnits.PebibytesPerSecond: return (this.value / 8) / 1125899906842624;
             case BitRateUnits.ExbibytesPerSecond: return (this.value / 8) / 1152921504606847000;
+            case BitRateUnits.KilooctetsPerSecond: return (this.value / 8) / 1000;
+            case BitRateUnits.MegaoctetsPerSecond: return (this.value / 8) / 1000000;
+            case BitRateUnits.GigaoctetsPerSecond: return (this.value / 8) / 1000000000;
+            case BitRateUnits.TeraoctetsPerSecond: return (this.value / 8) / 1000000000000;
+            case BitRateUnits.PetaoctetsPerSecond: return (this.value / 8) / 1000000000000000;
+            case BitRateUnits.ExaoctetsPerSecond: return (this.value / 8) / 1000000000000000000;
+            case BitRateUnits.KibioctetsPerSecond: return (this.value / 8) / 1024;
+            case BitRateUnits.MebioctetsPerSecond: return (this.value / 8) / 1048576;
+            case BitRateUnits.GibioctetsPerSecond: return (this.value / 8) / 1073741824;
+            case BitRateUnits.TebioctetsPerSecond: return (this.value / 8) / 1099511627776;
+            case BitRateUnits.PebioctetsPerSecond: return (this.value / 8) / 1125899906842624;
+            case BitRateUnits.ExbioctetsPerSecond: return (this.value / 8) / 1152921504606847000;
             default: return Number.NaN;
         }
     }
@@ -768,6 +1116,7 @@ export class BitRate extends BaseUnit {
             switch (fromUnit) {
                 case BitRateUnits.BitsPerSecond: return value;
                 case BitRateUnits.BytesPerSecond: return super.internalMultiply(value, 8);
+                case BitRateUnits.OctetsPerSecond: return super.internalMultiply(value, 8);
                 case BitRateUnits.KilobitsPerSecond: return super.internalMultiply(value, 1000);
                 case BitRateUnits.MegabitsPerSecond: return super.internalMultiply(value, 1000000);
                 case BitRateUnits.GigabitsPerSecond: return super.internalMultiply(value, 1000000000);
@@ -828,11 +1177,60 @@ export class BitRate extends BaseUnit {
                     const v3 = super.internalMultiply(value, 8);
                     return super.internalMultiply(v3, 1152921504606847000);
                 }
+                case BitRateUnits.KilooctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case BitRateUnits.MegaoctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                case BitRateUnits.GigaoctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000);
+                }
+                case BitRateUnits.TeraoctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000);
+                }
+                case BitRateUnits.PetaoctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000000);
+                }
+                case BitRateUnits.ExaoctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1000000000000000000);
+                }
+                case BitRateUnits.KibioctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1024);
+                }
+                case BitRateUnits.MebioctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1048576);
+                }
+                case BitRateUnits.GibioctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1073741824);
+                }
+                case BitRateUnits.TebioctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1099511627776);
+                }
+                case BitRateUnits.PebioctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1125899906842624);
+                }
+                case BitRateUnits.ExbioctetsPerSecond: {
+                    const v3 = super.internalMultiply(value, 8);
+                    return super.internalMultiply(v3, 1152921504606847000);
+                }
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case BitRateUnits.BitsPerSecond: return value;
             case BitRateUnits.BytesPerSecond: return value * 8;
+            case BitRateUnits.OctetsPerSecond: return value * 8;
             case BitRateUnits.KilobitsPerSecond: return (value) * 1000;
             case BitRateUnits.MegabitsPerSecond: return (value) * 1000000;
             case BitRateUnits.GigabitsPerSecond: return (value) * 1000000000;
@@ -857,6 +1255,18 @@ export class BitRate extends BaseUnit {
             case BitRateUnits.TebibytesPerSecond: return (value * 8) * 1099511627776;
             case BitRateUnits.PebibytesPerSecond: return (value * 8) * 1125899906842624;
             case BitRateUnits.ExbibytesPerSecond: return (value * 8) * 1152921504606847000;
+            case BitRateUnits.KilooctetsPerSecond: return (value * 8) * 1000;
+            case BitRateUnits.MegaoctetsPerSecond: return (value * 8) * 1000000;
+            case BitRateUnits.GigaoctetsPerSecond: return (value * 8) * 1000000000;
+            case BitRateUnits.TeraoctetsPerSecond: return (value * 8) * 1000000000000;
+            case BitRateUnits.PetaoctetsPerSecond: return (value * 8) * 1000000000000000;
+            case BitRateUnits.ExaoctetsPerSecond: return (value * 8) * 1000000000000000000;
+            case BitRateUnits.KibioctetsPerSecond: return (value * 8) * 1024;
+            case BitRateUnits.MebioctetsPerSecond: return (value * 8) * 1048576;
+            case BitRateUnits.GibioctetsPerSecond: return (value * 8) * 1073741824;
+            case BitRateUnits.TebioctetsPerSecond: return (value * 8) * 1099511627776;
+            case BitRateUnits.PebioctetsPerSecond: return (value * 8) * 1125899906842624;
+            case BitRateUnits.ExbioctetsPerSecond: return (value * 8) * 1152921504606847000;
             default: return Number.NaN;
         }
     }
@@ -881,6 +1291,8 @@ export class BitRate extends BaseUnit {
                 return super.truncateFractionDigits(this.BitsPerSecond, options as ToStringOptions) + ` bit/s`;
             case BitRateUnits.BytesPerSecond:
                 return super.truncateFractionDigits(this.BytesPerSecond, options as ToStringOptions) + ` B/s`;
+            case BitRateUnits.OctetsPerSecond:
+                return super.truncateFractionDigits(this.OctetsPerSecond, options as ToStringOptions) + ` o/s`;
             case BitRateUnits.KilobitsPerSecond:
                 return super.truncateFractionDigits(this.KilobitsPerSecond, options as ToStringOptions) + ` kbit/s`;
             case BitRateUnits.MegabitsPerSecond:
@@ -929,6 +1341,30 @@ export class BitRate extends BaseUnit {
                 return super.truncateFractionDigits(this.PebibytesPerSecond, options as ToStringOptions) + ` PiBB/s`;
             case BitRateUnits.ExbibytesPerSecond:
                 return super.truncateFractionDigits(this.ExbibytesPerSecond, options as ToStringOptions) + ` EiBB/s`;
+            case BitRateUnits.KilooctetsPerSecond:
+                return super.truncateFractionDigits(this.KilooctetsPerSecond, options as ToStringOptions) + ` ko/s`;
+            case BitRateUnits.MegaoctetsPerSecond:
+                return super.truncateFractionDigits(this.MegaoctetsPerSecond, options as ToStringOptions) + ` Mo/s`;
+            case BitRateUnits.GigaoctetsPerSecond:
+                return super.truncateFractionDigits(this.GigaoctetsPerSecond, options as ToStringOptions) + ` Go/s`;
+            case BitRateUnits.TeraoctetsPerSecond:
+                return super.truncateFractionDigits(this.TeraoctetsPerSecond, options as ToStringOptions) + ` To/s`;
+            case BitRateUnits.PetaoctetsPerSecond:
+                return super.truncateFractionDigits(this.PetaoctetsPerSecond, options as ToStringOptions) + ` Po/s`;
+            case BitRateUnits.ExaoctetsPerSecond:
+                return super.truncateFractionDigits(this.ExaoctetsPerSecond, options as ToStringOptions) + ` Eo/s`;
+            case BitRateUnits.KibioctetsPerSecond:
+                return super.truncateFractionDigits(this.KibioctetsPerSecond, options as ToStringOptions) + ` KiBo/s`;
+            case BitRateUnits.MebioctetsPerSecond:
+                return super.truncateFractionDigits(this.MebioctetsPerSecond, options as ToStringOptions) + ` MiBo/s`;
+            case BitRateUnits.GibioctetsPerSecond:
+                return super.truncateFractionDigits(this.GibioctetsPerSecond, options as ToStringOptions) + ` GiBo/s`;
+            case BitRateUnits.TebioctetsPerSecond:
+                return super.truncateFractionDigits(this.TebioctetsPerSecond, options as ToStringOptions) + ` TiBo/s`;
+            case BitRateUnits.PebioctetsPerSecond:
+                return super.truncateFractionDigits(this.PebioctetsPerSecond, options as ToStringOptions) + ` PiBo/s`;
+            case BitRateUnits.ExbioctetsPerSecond:
+                return super.truncateFractionDigits(this.ExbioctetsPerSecond, options as ToStringOptions) + ` EiBo/s`;
         default:
             break;
         }
@@ -950,6 +1386,8 @@ export class BitRate extends BaseUnit {
                 return `bit/s`;
             case BitRateUnits.BytesPerSecond:
                 return `B/s`;
+            case BitRateUnits.OctetsPerSecond:
+                return `o/s`;
             case BitRateUnits.KilobitsPerSecond:
                 return `kbit/s`;
             case BitRateUnits.MegabitsPerSecond:
@@ -998,6 +1436,30 @@ export class BitRate extends BaseUnit {
                 return `PiBB/s`;
             case BitRateUnits.ExbibytesPerSecond:
                 return `EiBB/s`;
+            case BitRateUnits.KilooctetsPerSecond:
+                return `ko/s`;
+            case BitRateUnits.MegaoctetsPerSecond:
+                return `Mo/s`;
+            case BitRateUnits.GigaoctetsPerSecond:
+                return `Go/s`;
+            case BitRateUnits.TeraoctetsPerSecond:
+                return `To/s`;
+            case BitRateUnits.PetaoctetsPerSecond:
+                return `Po/s`;
+            case BitRateUnits.ExaoctetsPerSecond:
+                return `Eo/s`;
+            case BitRateUnits.KibioctetsPerSecond:
+                return `KiBo/s`;
+            case BitRateUnits.MebioctetsPerSecond:
+                return `MiBo/s`;
+            case BitRateUnits.GibioctetsPerSecond:
+                return `GiBo/s`;
+            case BitRateUnits.TebioctetsPerSecond:
+                return `TiBo/s`;
+            case BitRateUnits.PebioctetsPerSecond:
+                return `PiBo/s`;
+            case BitRateUnits.ExbioctetsPerSecond:
+                return `EiBo/s`;
         default:
             break;
         }

@@ -12,10 +12,6 @@ The package provides support for the following units:
     -   *The strength of a signal expressed in decibels (dB) relative to one volt RMS.*
 - **Angle**
     -   *In geometry, an angle is the figure formed by two rays, called the sides of the angle, sharing a common endpoint, called the vertex of the angle.*
-- **ApparentEnergy**
-    -   *A unit for expressing the integral of apparent power over time, equal to the product of 1 volt-ampere and 1 hour, or to 3600 joules.*
-- **ApparentPower**
-    -   *Power engineers measure apparent power as the magnitude of the vector sum of active and reactive power. Apparent power is the product of the root-mean-square of voltage and current.*
 - **Area**
     -   *Area is a quantity that expresses the extent of a two-dimensional surface or shape, or planar lamina, in the plane. Area can be understood as the amount of material with a given thickness that would be necessary to fashion a model of the shape, or the amount of paint necessary to cover the surface with a single coat.[1] It is the two-dimensional analog of the length of a curve (a one-dimensional concept) or the volume of a solid (a three-dimensional concept).*
 - **AreaDensity**
@@ -26,8 +22,6 @@ The package provides support for the following units:
     -   *In telecommunications and computing, bit rate is the number of bits that are conveyed or processed per unit of time.*
 - **BrakeSpecificFuelConsumption**
     -   *Brake specific fuel consumption (BSFC) is a measure of the fuel efficiency of any prime mover that burns fuel and produces rotational, or shaft, power. It is typically used for comparing the efficiency of internal combustion engines with a shaft output.*
-- **Capacitance**
-    -   *Capacitance is the ability of a body to store an electric charge.*
 - **CoefficientOfThermalExpansion**
     -   *A unit that represents a fractional change in size in response to a change in temperature.*
 - **Compressibility**
@@ -70,12 +64,8 @@ The package provides support for the following units:
     -   *Inductance is a property of an electrical conductor which opposes a change in current.*
 - **ElectricPotential**
     -   *In classical electromagnetism, the electric potential (a scalar quantity denoted by Φ, ΦE or V and also called the electric field potential or the electrostatic potential) at a point is the amount of electric potential energy that a unitary point charge would have when located at that point.*
-- **ElectricPotentialAc**
-    -   *The Electric Potential of a system known to use Alternating Current.*
 - **ElectricPotentialChangeRate**
     -   *ElectricPotential change rate is the ratio of the electric potential change to the time during which the change occurred (value of electric potential changes per unit time).*
-- **ElectricPotentialDc**
-    -   *The Electric Potential of a system known to use Direct Current.*
 - **ElectricReactance**
     -   *In electrical circuits, reactance is the opposition presented to alternating current by inductance and capacitance. Along with resistance, it is one of two elements of impedance.*
 - **ElectricReactiveEnergy**
@@ -107,7 +97,7 @@ The package provides support for the following units:
 - **Frequency**
     -   *The number of occurrences of a repeating event per unit time.*
 - **FuelEfficiency**
-    -   *Fuel efficiency is a form of thermal efficiency, meaning the ratio from effort to result of a process that converts chemical potential energy contained in a carrier (fuel) into kinetic energy or work. Fuel economy is stated as "fuel consumption" in liters per 100 kilometers (L/100 km). In countries using non-metric system, fuel economy is expressed in miles per gallon (mpg) (imperial galon or US galon).*
+    -   *In the context of transport, fuel economy is the energy efficiency of a particular vehicle, given as a ratio of distance traveled per unit of fuel consumed. In most countries, using the metric system, fuel economy is stated as "fuel consumption" in liters per 100 kilometers (L/100 km) or kilometers per liter (km/L or kmpl). In countries using non-metric system, fuel economy is expressed in miles per gallon (mpg) (imperial galon or US galon).*
 - **HeatFlux**
     -   *Heat flux is the flow of energy per unit of area per unit of time*
 - **HeatTransferCoefficient**
@@ -202,10 +192,6 @@ The package provides support for the following units:
     -   *In mathematics, a ratio is a relationship between two numbers of the same kind (e.g., objects, persons, students, spoonfuls, units of whatever identical dimension), usually expressed as "a to b" or a:b, sometimes expressed arithmetically as a dimensionless quotient of the two that explicitly indicates how many times the first number contains the second (not necessarily an integer).*
 - **RatioChangeRate**
     -   *The change in ratio per unit of time.*
-- **ReactiveEnergy**
-    -   *The Volt-ampere reactive hour (expressed as varh) is the reactive power of one Volt-ampere reactive produced in one hour.*
-- **ReactivePower**
-    -   *Volt-ampere reactive (var) is a unit by which reactive power is expressed in an AC electric power system. Reactive power exists in an AC circuit when the current and voltage are not in phase.*
 - **ReciprocalArea**
     -   *Reciprocal area (Inverse-square) quantity is used to specify a physical quantity inversely proportional to the square of the distance.*
 - **ReciprocalLength**
@@ -248,12 +234,12 @@ The package provides support for the following units:
     -   *The rate of change of temperature with displacement in a given direction (as with increase of height)*
 - **ThermalConductivity**
     -   *Thermal conductivity is the property of a material to conduct heat.*
+- **ThermalInsulance**
+    -   *Thermal insulance (R-value) is a measure of a material's resistance to the heat current. It quantifies how effectively a material can resist the transfer of heat through conduction, convection, and radiation. It has the units square metre kelvins per watt (m2⋅K/W) in SI units or square foot degree Fahrenheit–hours per British thermal unit (ft2⋅°F⋅h/Btu) in imperial units. The higher the thermal insulance, the better a material insulates against heat transfer. It is commonly used in construction to assess the insulation properties of materials such as walls, roofs, and insulation products.*
 - **ThermalResistance**
-    -   *Heat Transfer Coefficient or Thermal conductivity - indicates a materials ability to conduct heat.*
+    -   *Thermal resistance (R) measures the opposition to the heat current in a material or system. It is measured in units of kelvins per watt (K/W) and indicates how much temperature difference (in kelvins) is required to transfer a unit of heat current (in watts) through the material or object. It is essential to optimize the building insulation, evaluate the efficiency of electronic devices, and enhance the performance of heat sinks in various applications.*
 - **Torque**
     -   *Torque, moment or moment of force (see the terminology below), is the tendency of a force to rotate an object about an axis,[1] fulcrum, or pivot. Just as a force is a push or a pull, a torque can be thought of as a twist to an object. Mathematically, torque is defined as the cross product of the lever-arm distance and force, which tends to produce rotation. Loosely speaking, torque is a measure of the turning force on an object such as a bolt or a flywheel. For example, pushing or pulling the handle of a wrench connected to a nut or bolt produces a torque (turning force) that loosens or tightens the nut or bolt.*
-- **TorquePerLength**
-    -   *The magnitude of torque per unit length.*
 - **Turbidity**
     -   *Turbidity is the cloudiness or haziness of a fluid caused by large numbers of individual particles that are generally invisible to the naked eye, similar to smoke in air. The measurement of turbidity is a key test of water quality.*
 - **VitaminA**

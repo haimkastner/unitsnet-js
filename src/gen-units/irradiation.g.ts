@@ -299,8 +299,8 @@ export class Irradiation extends BaseUnit {
                 case IrradiationUnits.JoulesPerSquareMillimeter: return super.internalDivide(this.value, 1e6);
                 case IrradiationUnits.WattHoursPerSquareMeter: return super.internalDivide(this.value, 3600);
                 case IrradiationUnits.BtusPerSquareFoot: {
-                    const v4 = super.internalDivide(52752792631, 4645152);
-                    return super.internalDivide(this.value, v4);
+                    const v4 = super.internalDivide(9.290304e-2, 1055.05585262);
+                    return super.internalMultiply(this.value, v4);
                 }
                 case IrradiationUnits.KilojoulesPerSquareMeter: return super.internalDivide(this.value, 1000);
                 case IrradiationUnits.MillijoulesPerSquareCentimeter: {
@@ -312,8 +312,8 @@ export class Irradiation extends BaseUnit {
                     return super.internalDivide(v3, 1000);
                 }
                 case IrradiationUnits.KilobtusPerSquareFoot: {
-                    const v4 = super.internalDivide(52752792631, 4645152);
-                    const v5 = super.internalDivide(this.value, v4);
+                    const v4 = super.internalDivide(9.290304e-2, 1055.05585262);
+                    const v5 = super.internalMultiply(this.value, v4);
                     return super.internalDivide(v5, 1000);
                 }
                 default: return Number.NaN;
@@ -323,11 +323,11 @@ export class Irradiation extends BaseUnit {
             case IrradiationUnits.JoulesPerSquareCentimeter: return this.value / 1e4;
             case IrradiationUnits.JoulesPerSquareMillimeter: return this.value / 1e6;
             case IrradiationUnits.WattHoursPerSquareMeter: return this.value / 3600;
-            case IrradiationUnits.BtusPerSquareFoot: return this.value / (52752792631 / 4645152);
+            case IrradiationUnits.BtusPerSquareFoot: return this.value * 9.290304e-2 / 1055.05585262;
             case IrradiationUnits.KilojoulesPerSquareMeter: return (this.value) / 1000;
             case IrradiationUnits.MillijoulesPerSquareCentimeter: return (this.value / 1e4) / 0.001;
             case IrradiationUnits.KilowattHoursPerSquareMeter: return (this.value / 3600) / 1000;
-            case IrradiationUnits.KilobtusPerSquareFoot: return (this.value / (52752792631 / 4645152)) / 1000;
+            case IrradiationUnits.KilobtusPerSquareFoot: return (this.value * 9.290304e-2 / 1055.05585262) / 1000;
             default: return Number.NaN;
         }
     }
@@ -340,7 +340,7 @@ export class Irradiation extends BaseUnit {
                 case IrradiationUnits.JoulesPerSquareMillimeter: return super.internalMultiply(value, 1e6);
                 case IrradiationUnits.WattHoursPerSquareMeter: return super.internalMultiply(value, 3600);
                 case IrradiationUnits.BtusPerSquareFoot: {
-                    const v4 = super.internalDivide(52752792631, 4645152);
+                    const v4 = super.internalDivide(1055.05585262, 9.290304e-2);
                     return super.internalMultiply(value, v4);
                 }
                 case IrradiationUnits.KilojoulesPerSquareMeter: return super.internalMultiply(value, 1000);
@@ -353,7 +353,7 @@ export class Irradiation extends BaseUnit {
                     return super.internalMultiply(v3, 1000);
                 }
                 case IrradiationUnits.KilobtusPerSquareFoot: {
-                    const v4 = super.internalDivide(52752792631, 4645152);
+                    const v4 = super.internalDivide(1055.05585262, 9.290304e-2);
                     const v5 = super.internalMultiply(value, v4);
                     return super.internalMultiply(v5, 1000);
                 }
@@ -364,11 +364,11 @@ export class Irradiation extends BaseUnit {
             case IrradiationUnits.JoulesPerSquareCentimeter: return value * 1e4;
             case IrradiationUnits.JoulesPerSquareMillimeter: return value * 1e6;
             case IrradiationUnits.WattHoursPerSquareMeter: return value * 3600;
-            case IrradiationUnits.BtusPerSquareFoot: return value * (52752792631 / 4645152);
+            case IrradiationUnits.BtusPerSquareFoot: return value * 1055.05585262 / 9.290304e-2;
             case IrradiationUnits.KilojoulesPerSquareMeter: return (value) * 1000;
             case IrradiationUnits.MillijoulesPerSquareCentimeter: return (value * 1e4) * 0.001;
             case IrradiationUnits.KilowattHoursPerSquareMeter: return (value * 3600) * 1000;
-            case IrradiationUnits.KilobtusPerSquareFoot: return (value * (52752792631 / 4645152)) * 1000;
+            case IrradiationUnits.KilobtusPerSquareFoot: return (value * 1055.05585262 / 9.290304e-2) * 1000;
             default: return Number.NaN;
         }
     }

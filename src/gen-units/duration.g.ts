@@ -29,6 +29,8 @@ export enum DurationUnits {
     /** */
     Sols = "Sol",
     /** */
+    Picoseconds = "Picosecond",
+    /** */
     Nanoseconds = "Nanosecond",
     /** */
     Microseconds = "Microsecond",
@@ -48,6 +50,7 @@ export class Duration extends BaseUnit {
     private secondsLazy: number | null = null;
     private julianyearsLazy: number | null = null;
     private solsLazy: number | null = null;
+    private picosecondsLazy: number | null = null;
     private nanosecondsLazy: number | null = null;
     private microsecondsLazy: number | null = null;
     private millisecondsLazy: number | null = null;
@@ -150,6 +153,14 @@ export class Duration extends BaseUnit {
             return this.solsLazy;
         }
         return this.solsLazy = this.convertFromBase(DurationUnits.Sols);
+    }
+
+    /** */
+    public get Picoseconds(): number {
+        if(this.picosecondsLazy !== null){
+            return this.picosecondsLazy;
+        }
+        return this.picosecondsLazy = this.convertFromBase(DurationUnits.Picoseconds);
     }
 
     /** */
@@ -267,6 +278,16 @@ export class Duration extends BaseUnit {
     }
 
     /**
+     * Create a new Duration instance from a Picoseconds
+     *
+     * @param value The unit as Picoseconds to create a new Duration from.
+     * @returns The new Duration instance.
+     */
+    public static FromPicoseconds(value: number): Duration {
+        return new Duration(value, DurationUnits.Picoseconds);
+    }
+
+    /**
      * Create a new Duration instance from a Nanoseconds
      *
      * @param value The unit as Nanoseconds to create a new Duration from.
@@ -347,6 +368,7 @@ export class Duration extends BaseUnit {
             case DurationUnits.Seconds: return this.Seconds;
             case DurationUnits.JulianYears: return this.JulianYears;
             case DurationUnits.Sols: return this.Sols;
+            case DurationUnits.Picoseconds: return this.Picoseconds;
             case DurationUnits.Nanoseconds: return this.Nanoseconds;
             case DurationUnits.Microseconds: return this.Microseconds;
             case DurationUnits.Milliseconds: return this.Milliseconds;
@@ -388,6 +410,7 @@ export class Duration extends BaseUnit {
                     return super.internalDivide(this.value, v6);
                 }
                 case DurationUnits.Sols: return super.internalDivide(this.value, 88775.244);
+                case DurationUnits.Picoseconds: return super.internalDivide(this.value, 1e-12);
                 case DurationUnits.Nanoseconds: return super.internalDivide(this.value, 1e-9);
                 case DurationUnits.Microseconds: return super.internalDivide(this.value, 0.000001);
                 case DurationUnits.Milliseconds: return super.internalDivide(this.value, 0.001);
@@ -403,6 +426,7 @@ export class Duration extends BaseUnit {
             case DurationUnits.Seconds: return this.value;
             case DurationUnits.JulianYears: return this.value / (365.25 * 24 * 3600);
             case DurationUnits.Sols: return this.value / 88775.244;
+            case DurationUnits.Picoseconds: return (this.value) / 1e-12;
             case DurationUnits.Nanoseconds: return (this.value) / 1e-9;
             case DurationUnits.Microseconds: return (this.value) / 0.000001;
             case DurationUnits.Milliseconds: return (this.value) / 0.001;
@@ -441,6 +465,7 @@ export class Duration extends BaseUnit {
                     return super.internalMultiply(v5, 3600);
                 }
                 case DurationUnits.Sols: return super.internalMultiply(value, 88775.244);
+                case DurationUnits.Picoseconds: return super.internalMultiply(value, 1e-12);
                 case DurationUnits.Nanoseconds: return super.internalMultiply(value, 1e-9);
                 case DurationUnits.Microseconds: return super.internalMultiply(value, 0.000001);
                 case DurationUnits.Milliseconds: return super.internalMultiply(value, 0.001);
@@ -456,6 +481,7 @@ export class Duration extends BaseUnit {
             case DurationUnits.Seconds: return value;
             case DurationUnits.JulianYears: return value * 365.25 * 24 * 3600;
             case DurationUnits.Sols: return value * 88775.244;
+            case DurationUnits.Picoseconds: return (value) * 1e-12;
             case DurationUnits.Nanoseconds: return (value) * 1e-9;
             case DurationUnits.Microseconds: return (value) * 0.000001;
             case DurationUnits.Milliseconds: return (value) * 0.001;
@@ -497,6 +523,8 @@ export class Duration extends BaseUnit {
                 return super.truncateFractionDigits(this.JulianYears, options as ToStringOptions) + ` jyr`;
             case DurationUnits.Sols:
                 return super.truncateFractionDigits(this.Sols, options as ToStringOptions) + ` sol`;
+            case DurationUnits.Picoseconds:
+                return super.truncateFractionDigits(this.Picoseconds, options as ToStringOptions) + ` ps`;
             case DurationUnits.Nanoseconds:
                 return super.truncateFractionDigits(this.Nanoseconds, options as ToStringOptions) + ` ns`;
             case DurationUnits.Microseconds:
@@ -538,6 +566,8 @@ export class Duration extends BaseUnit {
                 return `jyr`;
             case DurationUnits.Sols:
                 return `sol`;
+            case DurationUnits.Picoseconds:
+                return `ps`;
             case DurationUnits.Nanoseconds:
                 return `ns`;
             case DurationUnits.Microseconds:

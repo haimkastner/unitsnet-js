@@ -27,6 +27,8 @@ export enum AbsorbedDoseOfIonizingRadiationUnits {
     /** */
     Centigrays = "Centigray",
     /** */
+    Decigrays = "Decigray",
+    /** */
     Kilograys = "Kilogray",
     /** */
     Megagrays = "Megagray",
@@ -55,6 +57,7 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
     private micrograysLazy: number | null = null;
     private milligraysLazy: number | null = null;
     private centigraysLazy: number | null = null;
+    private decigraysLazy: number | null = null;
     private kilograysLazy: number | null = null;
     private megagraysLazy: number | null = null;
     private gigagraysLazy: number | null = null;
@@ -154,6 +157,14 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
             return this.centigraysLazy;
         }
         return this.centigraysLazy = this.convertFromBase(AbsorbedDoseOfIonizingRadiationUnits.Centigrays);
+    }
+
+    /** */
+    public get Decigrays(): number {
+        if(this.decigraysLazy !== null){
+            return this.decigraysLazy;
+        }
+        return this.decigraysLazy = this.convertFromBase(AbsorbedDoseOfIonizingRadiationUnits.Decigrays);
     }
 
     /** */
@@ -301,6 +312,16 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
     }
 
     /**
+     * Create a new AbsorbedDoseOfIonizingRadiation instance from a Decigrays
+     *
+     * @param value The unit as Decigrays to create a new AbsorbedDoseOfIonizingRadiation from.
+     * @returns The new AbsorbedDoseOfIonizingRadiation instance.
+     */
+    public static FromDecigrays(value: number): AbsorbedDoseOfIonizingRadiation {
+        return new AbsorbedDoseOfIonizingRadiation(value, AbsorbedDoseOfIonizingRadiationUnits.Decigrays);
+    }
+
+    /**
      * Create a new AbsorbedDoseOfIonizingRadiation instance from a Kilograys
      *
      * @param value The unit as Kilograys to create a new AbsorbedDoseOfIonizingRadiation from.
@@ -430,6 +451,7 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
             case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return this.Micrograys;
             case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return this.Milligrays;
             case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return this.Centigrays;
+            case AbsorbedDoseOfIonizingRadiationUnits.Decigrays: return this.Decigrays;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return this.Kilograys;
             case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return this.Megagrays;
             case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return this.Gigagrays;
@@ -456,6 +478,7 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
                 case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return super.internalDivide(this.value, 0.000001);
                 case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return super.internalDivide(this.value, 0.001);
                 case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return super.internalDivide(this.value, 0.01);
+                case AbsorbedDoseOfIonizingRadiationUnits.Decigrays: return super.internalDivide(this.value, 0.1);
                 case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return super.internalDivide(this.value, 1000);
                 case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return super.internalDivide(this.value, 1000000);
                 case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return super.internalDivide(this.value, 1000000000);
@@ -484,6 +507,7 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
             case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return (this.value) / 0.000001;
             case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return (this.value) / 0.001;
             case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return (this.value) / 0.01;
+            case AbsorbedDoseOfIonizingRadiationUnits.Decigrays: return (this.value) / 0.1;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return (this.value) / 1000;
             case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return (this.value) / 1000000;
             case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return (this.value) / 1000000000;
@@ -507,6 +531,7 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
                 case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return super.internalMultiply(value, 0.000001);
                 case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return super.internalMultiply(value, 0.001);
                 case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return super.internalMultiply(value, 0.01);
+                case AbsorbedDoseOfIonizingRadiationUnits.Decigrays: return super.internalMultiply(value, 0.1);
                 case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return super.internalMultiply(value, 1000);
                 case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return super.internalMultiply(value, 1000000);
                 case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return super.internalMultiply(value, 1000000000);
@@ -535,6 +560,7 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
             case AbsorbedDoseOfIonizingRadiationUnits.Micrograys: return (value) * 0.000001;
             case AbsorbedDoseOfIonizingRadiationUnits.Milligrays: return (value) * 0.001;
             case AbsorbedDoseOfIonizingRadiationUnits.Centigrays: return (value) * 0.01;
+            case AbsorbedDoseOfIonizingRadiationUnits.Decigrays: return (value) * 0.1;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilograys: return (value) * 1000;
             case AbsorbedDoseOfIonizingRadiationUnits.Megagrays: return (value) * 1000000;
             case AbsorbedDoseOfIonizingRadiationUnits.Gigagrays: return (value) * 1000000000;
@@ -579,6 +605,8 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
                 return super.truncateFractionDigits(this.Milligrays, options as ToStringOptions) + ` mGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Centigrays:
                 return super.truncateFractionDigits(this.Centigrays, options as ToStringOptions) + ` cGy`;
+            case AbsorbedDoseOfIonizingRadiationUnits.Decigrays:
+                return super.truncateFractionDigits(this.Decigrays, options as ToStringOptions) + ` dGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilograys:
                 return super.truncateFractionDigits(this.Kilograys, options as ToStringOptions) + ` kGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megagrays:
@@ -628,6 +656,8 @@ export class AbsorbedDoseOfIonizingRadiation extends BaseUnit {
                 return `mGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Centigrays:
                 return `cGy`;
+            case AbsorbedDoseOfIonizingRadiationUnits.Decigrays:
+                return `dGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Kilograys:
                 return `kGy`;
             case AbsorbedDoseOfIonizingRadiationUnits.Megagrays:
