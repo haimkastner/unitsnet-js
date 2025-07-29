@@ -15,7 +15,9 @@ export enum LeakRateUnits {
     /** */
     MillibarLitersPerSecond = "MillibarLiterPerSecond",
     /** */
-    TorrLitersPerSecond = "TorrLiterPerSecond"
+    TorrLitersPerSecond = "TorrLiterPerSecond",
+    /** */
+    AtmCubicCentimetersPerSecond = "AtmCubicCentimeterPerSecond"
 }
 
 /** A leakage rate of QL = 1 Pa-m³/s is given when the pressure in a closed, evacuated container with a volume of 1 m³ rises by 1 Pa per second or when the pressure in the container drops by 1 Pa in the event of overpressure. */
@@ -24,6 +26,7 @@ export class LeakRate extends BaseUnit {
     private pascalcubicmeterspersecondLazy: number | null = null;
     private millibarliterspersecondLazy: number | null = null;
     private torrliterspersecondLazy: number | null = null;
+    private atmcubiccentimeterspersecondLazy: number | null = null;
 
     /**
      * Create a new LeakRate.
@@ -77,6 +80,14 @@ export class LeakRate extends BaseUnit {
         return this.torrliterspersecondLazy = this.convertFromBase(LeakRateUnits.TorrLitersPerSecond);
     }
 
+    /** */
+    public get AtmCubicCentimetersPerSecond(): number {
+        if(this.atmcubiccentimeterspersecondLazy !== null){
+            return this.atmcubiccentimeterspersecondLazy;
+        }
+        return this.atmcubiccentimeterspersecondLazy = this.convertFromBase(LeakRateUnits.AtmCubicCentimetersPerSecond);
+    }
+
     /**
      * Create a new LeakRate instance from a PascalCubicMetersPerSecond
      *
@@ -105,6 +116,16 @@ export class LeakRate extends BaseUnit {
      */
     public static FromTorrLitersPerSecond(value: number): LeakRate {
         return new LeakRate(value, LeakRateUnits.TorrLitersPerSecond);
+    }
+
+    /**
+     * Create a new LeakRate instance from a AtmCubicCentimetersPerSecond
+     *
+     * @param value The unit as AtmCubicCentimetersPerSecond to create a new LeakRate from.
+     * @returns The new LeakRate instance.
+     */
+    public static FromAtmCubicCentimetersPerSecond(value: number): LeakRate {
+        return new LeakRate(value, LeakRateUnits.AtmCubicCentimetersPerSecond);
     }
 
     /**
@@ -152,6 +173,7 @@ export class LeakRate extends BaseUnit {
             case LeakRateUnits.PascalCubicMetersPerSecond: return this.PascalCubicMetersPerSecond;
             case LeakRateUnits.MillibarLitersPerSecond: return this.MillibarLitersPerSecond;
             case LeakRateUnits.TorrLitersPerSecond: return this.TorrLitersPerSecond;
+            case LeakRateUnits.AtmCubicCentimetersPerSecond: return this.AtmCubicCentimetersPerSecond;
 
             default:
                 break;
@@ -165,12 +187,17 @@ export class LeakRate extends BaseUnit {
                 case LeakRateUnits.PascalCubicMetersPerSecond: return this.value;
                 case LeakRateUnits.MillibarLitersPerSecond: return super.internalMultiply(this.value, 10);
                 case LeakRateUnits.TorrLitersPerSecond: return super.internalMultiply(this.value, 7.5);
+                case LeakRateUnits.AtmCubicCentimetersPerSecond: {
+                    const v4 = super.internalDivide(1e6, 101325);
+                    return super.internalMultiply(this.value, v4);
+                }
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case LeakRateUnits.PascalCubicMetersPerSecond: return this.value;
             case LeakRateUnits.MillibarLitersPerSecond: return this.value * 10;
             case LeakRateUnits.TorrLitersPerSecond: return this.value * 7.5;
+            case LeakRateUnits.AtmCubicCentimetersPerSecond: return this.value * (1e6 / 101325);
             default: return Number.NaN;
         }
     }
@@ -181,12 +208,17 @@ export class LeakRate extends BaseUnit {
                 case LeakRateUnits.PascalCubicMetersPerSecond: return value;
                 case LeakRateUnits.MillibarLitersPerSecond: return super.internalDivide(value, 10);
                 case LeakRateUnits.TorrLitersPerSecond: return super.internalDivide(value, 7.5);
+                case LeakRateUnits.AtmCubicCentimetersPerSecond: {
+                    const v4 = super.internalDivide(1e6, 101325);
+                    return super.internalDivide(value, v4);
+                }
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case LeakRateUnits.PascalCubicMetersPerSecond: return value;
             case LeakRateUnits.MillibarLitersPerSecond: return value / 10;
             case LeakRateUnits.TorrLitersPerSecond: return value / 7.5;
+            case LeakRateUnits.AtmCubicCentimetersPerSecond: return value / (1e6 / 101325);
             default: return Number.NaN;
         }
     }
@@ -213,6 +245,8 @@ export class LeakRate extends BaseUnit {
                 return super.truncateFractionDigits(this.MillibarLitersPerSecond, options as ToStringOptions) + ` mbar·l/s`;
             case LeakRateUnits.TorrLitersPerSecond:
                 return super.truncateFractionDigits(this.TorrLitersPerSecond, options as ToStringOptions) + ` Torr·l/s`;
+            case LeakRateUnits.AtmCubicCentimetersPerSecond:
+                return super.truncateFractionDigits(this.AtmCubicCentimetersPerSecond, options as ToStringOptions) + ` atm·cm³/s`;
         default:
             break;
         }
@@ -236,6 +270,8 @@ export class LeakRate extends BaseUnit {
                 return `mbar·l/s`;
             case LeakRateUnits.TorrLitersPerSecond:
                 return `Torr·l/s`;
+            case LeakRateUnits.AtmCubicCentimetersPerSecond:
+                return `atm·cm³/s`;
         default:
             break;
         }
