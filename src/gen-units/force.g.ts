@@ -19,7 +19,7 @@ export enum ForceUnits {
     /** The newton (symbol: N) is the unit of force in the International System of Units (SI). It is defined as 1 kg⋅m/s2, the force which gives a mass of 1 kilogram an acceleration of 1 metre per second per second. */
     Newtons = "Newton",
     /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
-    KiloPonds = "KiloPond",
+    Kiloponds = "Kilopond",
     /** The poundal is defined as the force necessary to accelerate 1 pound-mass at 1 foot per second per second. 1 pdl = 0.138254954376 N exactly. */
     Poundals = "Poundal",
     /** The standard values of acceleration of the standard gravitational field (gn) and the international avoirdupois pound (lb) result in a pound-force equal to 4.4482216152605 N. */
@@ -122,11 +122,11 @@ export class Force extends BaseUnit {
     }
 
     /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
-    public get KiloPonds(): number {
+    public get Kiloponds(): number {
         if(this.kilopondsLazy !== null){
             return this.kilopondsLazy;
         }
-        return this.kilopondsLazy = this.convertFromBase(ForceUnits.KiloPonds);
+        return this.kilopondsLazy = this.convertFromBase(ForceUnits.Kiloponds);
     }
 
     /** The poundal is defined as the force necessary to accelerate 1 pound-mass at 1 foot per second per second. 1 pdl = 0.138254954376 N exactly. */
@@ -250,13 +250,13 @@ export class Force extends BaseUnit {
     }
 
     /**
-     * Create a new Force instance from a KiloPonds
+     * Create a new Force instance from a Kiloponds
      * The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N.
-     * @param value The unit as KiloPonds to create a new Force from.
+     * @param value The unit as Kiloponds to create a new Force from.
      * @returns The new Force instance.
      */
-    public static FromKiloPonds(value: number): Force {
-        return new Force(value, ForceUnits.KiloPonds);
+    public static FromKiloponds(value: number): Force {
+        return new Force(value, ForceUnits.Kiloponds);
     }
 
     /**
@@ -405,7 +405,7 @@ export class Force extends BaseUnit {
             case ForceUnits.KilogramsForce: return this.KilogramsForce;
             case ForceUnits.TonnesForce: return this.TonnesForce;
             case ForceUnits.Newtons: return this.Newtons;
-            case ForceUnits.KiloPonds: return this.KiloPonds;
+            case ForceUnits.Kiloponds: return this.Kiloponds;
             case ForceUnits.Poundals: return this.Poundals;
             case ForceUnits.PoundsForce: return this.PoundsForce;
             case ForceUnits.OunceForce: return this.OunceForce;
@@ -433,7 +433,7 @@ export class Force extends BaseUnit {
                     return super.internalDivide(this.value, v4);
                 }
                 case ForceUnits.Newtons: return this.value;
-                case ForceUnits.KiloPonds: return super.internalDivide(this.value, 9.80665);
+                case ForceUnits.Kiloponds: return super.internalDivide(this.value, 9.80665);
                 case ForceUnits.Poundals: return super.internalDivide(this.value, 0.138254954376);
                 case ForceUnits.PoundsForce: return super.internalDivide(this.value, 4.4482216152605);
                 case ForceUnits.OunceForce: {
@@ -460,7 +460,7 @@ export class Force extends BaseUnit {
             case ForceUnits.KilogramsForce: return this.value / 9.80665;
             case ForceUnits.TonnesForce: return this.value / (9.80665 * 1000);
             case ForceUnits.Newtons: return this.value;
-            case ForceUnits.KiloPonds: return this.value / 9.80665;
+            case ForceUnits.Kiloponds: return this.value / 9.80665;
             case ForceUnits.Poundals: return this.value / 0.138254954376;
             case ForceUnits.PoundsForce: return this.value / 4.4482216152605;
             case ForceUnits.OunceForce: return this.value / (4.4482216152605 / 16);
@@ -485,7 +485,7 @@ export class Force extends BaseUnit {
                     return super.internalMultiply(value, v4);
                 }
                 case ForceUnits.Newtons: return value;
-                case ForceUnits.KiloPonds: return super.internalMultiply(value, 9.80665);
+                case ForceUnits.Kiloponds: return super.internalMultiply(value, 9.80665);
                 case ForceUnits.Poundals: return super.internalMultiply(value, 0.138254954376);
                 case ForceUnits.PoundsForce: return super.internalMultiply(value, 4.4482216152605);
                 case ForceUnits.OunceForce: {
@@ -512,7 +512,7 @@ export class Force extends BaseUnit {
             case ForceUnits.KilogramsForce: return value * 9.80665;
             case ForceUnits.TonnesForce: return value * (9.80665 * 1000);
             case ForceUnits.Newtons: return value;
-            case ForceUnits.KiloPonds: return value * 9.80665;
+            case ForceUnits.Kiloponds: return value * 9.80665;
             case ForceUnits.Poundals: return value * 0.138254954376;
             case ForceUnits.PoundsForce: return value * 4.4482216152605;
             case ForceUnits.OunceForce: return value * (4.4482216152605 / 16);
@@ -551,8 +551,8 @@ export class Force extends BaseUnit {
                 return super.truncateFractionDigits(this.TonnesForce, options as ToStringOptions) + ` tf`;
             case ForceUnits.Newtons:
                 return super.truncateFractionDigits(this.Newtons, options as ToStringOptions) + ` N`;
-            case ForceUnits.KiloPonds:
-                return super.truncateFractionDigits(this.KiloPonds, options as ToStringOptions) + ` kp`;
+            case ForceUnits.Kiloponds:
+                return super.truncateFractionDigits(this.Kiloponds, options as ToStringOptions) + ` kp`;
             case ForceUnits.Poundals:
                 return super.truncateFractionDigits(this.Poundals, options as ToStringOptions) + ` pdl`;
             case ForceUnits.PoundsForce:
@@ -598,7 +598,7 @@ export class Force extends BaseUnit {
                 return `tf`;
             case ForceUnits.Newtons:
                 return `N`;
-            case ForceUnits.KiloPonds:
+            case ForceUnits.Kiloponds:
                 return `kp`;
             case ForceUnits.Poundals:
                 return `pdl`;

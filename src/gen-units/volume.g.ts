@@ -46,6 +46,8 @@ export enum VolumeUnits {
     UsTablespoons = "UsTablespoon",
     /** In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz). */
     AuTablespoons = "AuTablespoon",
+    /** An international metric tablespoon is exactly equal to 15 mL. It is the equivalence of 1⁠ 1/2 metric dessert spoons or 3 metric teaspoons. */
+    MetricTablespoons = "MetricTablespoon",
     /** In nutrition labeling in the U.S. and the U.K., a tablespoon is defined as 15 ml (0.51 US fl oz). In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz). */
     UkTablespoons = "UkTablespoon",
     /** The metric teaspoon as a unit of culinary measure is 5 ml (0.18 imp fl oz; 0.17 US fl oz),[17] equal to 5 cm3, 1⁄3 UK/Canadian metric tablespoon, or 1⁄4 Australian metric tablespoon. */
@@ -141,6 +143,7 @@ export class Volume extends BaseUnit {
     private usouncesLazy: number | null = null;
     private ustablespoonsLazy: number | null = null;
     private autablespoonsLazy: number | null = null;
+    private metrictablespoonsLazy: number | null = null;
     private uktablespoonsLazy: number | null = null;
     private metricteaspoonsLazy: number | null = null;
     private usteaspoonsLazy: number | null = null;
@@ -348,6 +351,14 @@ export class Volume extends BaseUnit {
             return this.autablespoonsLazy;
         }
         return this.autablespoonsLazy = this.convertFromBase(VolumeUnits.AuTablespoons);
+    }
+
+    /** An international metric tablespoon is exactly equal to 15 mL. It is the equivalence of 1⁠ 1/2 metric dessert spoons or 3 metric teaspoons. */
+    public get MetricTablespoons(): number {
+        if(this.metrictablespoonsLazy !== null){
+            return this.metrictablespoonsLazy;
+        }
+        return this.metrictablespoonsLazy = this.convertFromBase(VolumeUnits.MetricTablespoons);
     }
 
     /** In nutrition labeling in the U.S. and the U.K., a tablespoon is defined as 15 ml (0.51 US fl oz). In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz). */
@@ -819,6 +830,16 @@ export class Volume extends BaseUnit {
     }
 
     /**
+     * Create a new Volume instance from a MetricTablespoons
+     * An international metric tablespoon is exactly equal to 15 mL. It is the equivalence of 1⁠ 1/2 metric dessert spoons or 3 metric teaspoons.
+     * @param value The unit as MetricTablespoons to create a new Volume from.
+     * @returns The new Volume instance.
+     */
+    public static FromMetricTablespoons(value: number): Volume {
+        return new Volume(value, VolumeUnits.MetricTablespoons);
+    }
+
+    /**
      * Create a new Volume instance from a UkTablespoons
      * In nutrition labeling in the U.S. and the U.K., a tablespoon is defined as 15 ml (0.51 US fl oz). In Australia, the definition of the tablespoon is 20 ml (0.70 imp fl oz).
      * @param value The unit as UkTablespoons to create a new Volume from.
@@ -1238,6 +1259,7 @@ export class Volume extends BaseUnit {
             case VolumeUnits.UsOunces: return this.UsOunces;
             case VolumeUnits.UsTablespoons: return this.UsTablespoons;
             case VolumeUnits.AuTablespoons: return this.AuTablespoons;
+            case VolumeUnits.MetricTablespoons: return this.MetricTablespoons;
             case VolumeUnits.UkTablespoons: return this.UkTablespoons;
             case VolumeUnits.MetricTeaspoons: return this.MetricTeaspoons;
             case VolumeUnits.UsTeaspoons: return this.UsTeaspoons;
@@ -1302,6 +1324,7 @@ export class Volume extends BaseUnit {
                 case VolumeUnits.UsOunces: return super.internalDivide(this.value, 2.95735295625e-5);
                 case VolumeUnits.UsTablespoons: return super.internalDivide(this.value, 1.478676478125e-5);
                 case VolumeUnits.AuTablespoons: return super.internalDivide(this.value, 2e-5);
+                case VolumeUnits.MetricTablespoons: return super.internalDivide(this.value, 1.5e-5);
                 case VolumeUnits.UkTablespoons: return super.internalDivide(this.value, 1.5e-5);
                 case VolumeUnits.MetricTeaspoons: return super.internalDivide(this.value, 0.5e-5);
                 case VolumeUnits.UsTeaspoons: return super.internalDivide(this.value, 4.92892159375e-6);
@@ -1419,6 +1442,7 @@ export class Volume extends BaseUnit {
             case VolumeUnits.UsOunces: return this.value / 2.95735295625e-5;
             case VolumeUnits.UsTablespoons: return this.value / 1.478676478125e-5;
             case VolumeUnits.AuTablespoons: return this.value / 2e-5;
+            case VolumeUnits.MetricTablespoons: return this.value / 1.5e-5;
             case VolumeUnits.UkTablespoons: return this.value / 1.5e-5;
             case VolumeUnits.MetricTeaspoons: return this.value / 0.5e-5;
             case VolumeUnits.UsTeaspoons: return this.value / 4.92892159375e-6;
@@ -1480,6 +1504,7 @@ export class Volume extends BaseUnit {
                 case VolumeUnits.UsOunces: return super.internalMultiply(value, 2.95735295625e-5);
                 case VolumeUnits.UsTablespoons: return super.internalMultiply(value, 1.478676478125e-5);
                 case VolumeUnits.AuTablespoons: return super.internalMultiply(value, 2e-5);
+                case VolumeUnits.MetricTablespoons: return super.internalMultiply(value, 1.5e-5);
                 case VolumeUnits.UkTablespoons: return super.internalMultiply(value, 1.5e-5);
                 case VolumeUnits.MetricTeaspoons: return super.internalMultiply(value, 0.5e-5);
                 case VolumeUnits.UsTeaspoons: return super.internalMultiply(value, 4.92892159375e-6);
@@ -1597,6 +1622,7 @@ export class Volume extends BaseUnit {
             case VolumeUnits.UsOunces: return value * 2.95735295625e-5;
             case VolumeUnits.UsTablespoons: return value * 1.478676478125e-5;
             case VolumeUnits.AuTablespoons: return value * 2e-5;
+            case VolumeUnits.MetricTablespoons: return value * 1.5e-5;
             case VolumeUnits.UkTablespoons: return value * 1.5e-5;
             case VolumeUnits.MetricTeaspoons: return value * 0.5e-5;
             case VolumeUnits.UsTeaspoons: return value * 4.92892159375e-6;
@@ -1689,6 +1715,8 @@ export class Volume extends BaseUnit {
                 return super.truncateFractionDigits(this.UsTablespoons, options as ToStringOptions) + ` tablespoon (U.S.)`;
             case VolumeUnits.AuTablespoons:
                 return super.truncateFractionDigits(this.AuTablespoons, options as ToStringOptions) + ` tablespoon (A.U.)`;
+            case VolumeUnits.MetricTablespoons:
+                return super.truncateFractionDigits(this.MetricTablespoons, options as ToStringOptions) + ` tablespoon`;
             case VolumeUnits.UkTablespoons:
                 return super.truncateFractionDigits(this.UkTablespoons, options as ToStringOptions) + ` tablespoon (U.K.)`;
             case VolumeUnits.MetricTeaspoons:
@@ -1814,6 +1842,8 @@ export class Volume extends BaseUnit {
                 return `tablespoon (U.S.)`;
             case VolumeUnits.AuTablespoons:
                 return `tablespoon (A.U.)`;
+            case VolumeUnits.MetricTablespoons:
+                return `tablespoon`;
             case VolumeUnits.UkTablespoons:
                 return `tablespoon (U.K.)`;
             case VolumeUnits.MetricTeaspoons:

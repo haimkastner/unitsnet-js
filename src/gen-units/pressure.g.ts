@@ -95,6 +95,8 @@ export enum PressureUnits {
     /** */
     KilonewtonsPerSquareMillimeter = "KilonewtonPerSquareMillimeter",
     /** */
+    Millitorrs = "Millitorr",
+    /** */
     KilopoundsForcePerSquareInch = "KilopoundForcePerSquareInch",
     /** */
     KilopoundsForcePerSquareMil = "KilopoundForcePerSquareMil",
@@ -151,6 +153,7 @@ export class Pressure extends BaseUnit {
     private meganewtonspersquaremeterLazy: number | null = null;
     private kilonewtonspersquarecentimeterLazy: number | null = null;
     private kilonewtonspersquaremillimeterLazy: number | null = null;
+    private millitorrsLazy: number | null = null;
     private kilopoundsforcepersquareinchLazy: number | null = null;
     private kilopoundsforcepersquaremilLazy: number | null = null;
     private kilopoundsforcepersquarefootLazy: number | null = null;
@@ -519,6 +522,14 @@ export class Pressure extends BaseUnit {
             return this.kilonewtonspersquaremillimeterLazy;
         }
         return this.kilonewtonspersquaremillimeterLazy = this.convertFromBase(PressureUnits.KilonewtonsPerSquareMillimeter);
+    }
+
+    /** */
+    public get Millitorrs(): number {
+        if(this.millitorrsLazy !== null){
+            return this.millitorrsLazy;
+        }
+        return this.millitorrsLazy = this.convertFromBase(PressureUnits.Millitorrs);
     }
 
     /** */
@@ -982,6 +993,16 @@ export class Pressure extends BaseUnit {
     }
 
     /**
+     * Create a new Pressure instance from a Millitorrs
+     *
+     * @param value The unit as Millitorrs to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromMillitorrs(value: number): Pressure {
+        return new Pressure(value, PressureUnits.Millitorrs);
+    }
+
+    /**
      * Create a new Pressure instance from a KilopoundsForcePerSquareInch
      *
      * @param value The unit as KilopoundsForcePerSquareInch to create a new Pressure from.
@@ -1115,6 +1136,7 @@ export class Pressure extends BaseUnit {
             case PressureUnits.MeganewtonsPerSquareMeter: return this.MeganewtonsPerSquareMeter;
             case PressureUnits.KilonewtonsPerSquareCentimeter: return this.KilonewtonsPerSquareCentimeter;
             case PressureUnits.KilonewtonsPerSquareMillimeter: return this.KilonewtonsPerSquareMillimeter;
+            case PressureUnits.Millitorrs: return this.Millitorrs;
             case PressureUnits.KilopoundsForcePerSquareInch: return this.KilopoundsForcePerSquareInch;
             case PressureUnits.KilopoundsForcePerSquareMil: return this.KilopoundsForcePerSquareMil;
             case PressureUnits.KilopoundsForcePerSquareFoot: return this.KilopoundsForcePerSquareFoot;
@@ -1225,6 +1247,11 @@ export class Pressure extends BaseUnit {
                     const v3 = super.internalDivide(this.value, 1e6);
                     return super.internalDivide(v3, 1000);
                 }
+                case PressureUnits.Millitorrs: {
+                    const v4 = super.internalDivide(760, 101325);
+                    const v5 = super.internalMultiply(this.value, v4);
+                    return super.internalDivide(v5, 0.001);
+                }
                 case PressureUnits.KilopoundsForcePerSquareInch: {
                     const v4 = super.internalDivide(0.00064516, 4.4482216152605);
                     const v5 = super.internalMultiply(this.value, v4);
@@ -1294,6 +1321,7 @@ export class Pressure extends BaseUnit {
             case PressureUnits.MeganewtonsPerSquareMeter: return (this.value) / 1000000;
             case PressureUnits.KilonewtonsPerSquareCentimeter: return (this.value / 1e4) / 1000;
             case PressureUnits.KilonewtonsPerSquareMillimeter: return (this.value / 1e6) / 1000;
+            case PressureUnits.Millitorrs: return (this.value * 760 / 101325) / 0.001;
             case PressureUnits.KilopoundsForcePerSquareInch: return (this.value * 0.00064516 / 4.4482216152605) / 1000;
             case PressureUnits.KilopoundsForcePerSquareMil: return (this.value * (2.54e-5 * 2.54e-5) / 4.4482216152605) / 1000;
             case PressureUnits.KilopoundsForcePerSquareFoot: return (this.value * 9.290304e-2 / 4.4482216152605) / 1000;
@@ -1401,6 +1429,11 @@ export class Pressure extends BaseUnit {
                     const v3 = super.internalMultiply(value, 1e6);
                     return super.internalMultiply(v3, 1000);
                 }
+                case PressureUnits.Millitorrs: {
+                    const v4 = super.internalDivide(101325, 760);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.001);
+                }
                 case PressureUnits.KilopoundsForcePerSquareInch: {
                     const v4 = super.internalDivide(4.4482216152605, 0.00064516);
                     const v5 = super.internalMultiply(value, v4);
@@ -1470,6 +1503,7 @@ export class Pressure extends BaseUnit {
             case PressureUnits.MeganewtonsPerSquareMeter: return (value) * 1000000;
             case PressureUnits.KilonewtonsPerSquareCentimeter: return (value * 1e4) * 1000;
             case PressureUnits.KilonewtonsPerSquareMillimeter: return (value * 1e6) * 1000;
+            case PressureUnits.Millitorrs: return (value * 101325 / 760) * 0.001;
             case PressureUnits.KilopoundsForcePerSquareInch: return (value * 4.4482216152605 / 0.00064516) * 1000;
             case PressureUnits.KilopoundsForcePerSquareMil: return (value * 4.4482216152605 / (2.54e-5 * 2.54e-5)) * 1000;
             case PressureUnits.KilopoundsForcePerSquareFoot: return (value * 4.4482216152605 / 9.290304e-2) * 1000;
@@ -1579,6 +1613,8 @@ export class Pressure extends BaseUnit {
                 return super.truncateFractionDigits(this.KilonewtonsPerSquareCentimeter, options as ToStringOptions) + ` kN/cm²`;
             case PressureUnits.KilonewtonsPerSquareMillimeter:
                 return super.truncateFractionDigits(this.KilonewtonsPerSquareMillimeter, options as ToStringOptions) + ` kN/mm²`;
+            case PressureUnits.Millitorrs:
+                return super.truncateFractionDigits(this.Millitorrs, options as ToStringOptions) + ` mtorr`;
             case PressureUnits.KilopoundsForcePerSquareInch:
                 return super.truncateFractionDigits(this.KilopoundsForcePerSquareInch, options as ToStringOptions) + ` kpsi`;
             case PressureUnits.KilopoundsForcePerSquareMil:
@@ -1690,6 +1726,8 @@ export class Pressure extends BaseUnit {
                 return `kN/cm²`;
             case PressureUnits.KilonewtonsPerSquareMillimeter:
                 return `kN/mm²`;
+            case PressureUnits.Millitorrs:
+                return `mtorr`;
             case PressureUnits.KilopoundsForcePerSquareInch:
                 return `kpsi`;
             case PressureUnits.KilopoundsForcePerSquareMil:

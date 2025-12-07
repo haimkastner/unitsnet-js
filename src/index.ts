@@ -67,7 +67,6 @@ export * from "./gen-units/luminousintensity.g";
 export * from "./gen-units/magneticfield.g";
 export * from "./gen-units/magneticflux.g";
 export * from "./gen-units/magnetization.g";
-export * from "./gen-units/mass.g";
 export * from "./gen-units/massconcentration.g";
 export * from "./gen-units/massflow.g";
 export * from "./gen-units/massflux.g";

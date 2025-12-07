@@ -13,7 +13,7 @@ export enum SpecificEnergyUnits {
     /** */
     JoulesPerKilogram = "JoulePerKilogram",
     /** */
-    MegaJoulesPerTonne = "MegaJoulePerTonne",
+    MegajoulesPerTonne = "MegajoulePerTonne",
     /** */
     CaloriesPerGram = "CaloriePerGram",
     /** */
@@ -143,11 +143,11 @@ export class SpecificEnergy extends BaseUnit {
     }
 
     /** */
-    public get MegaJoulesPerTonne(): number {
+    public get MegajoulesPerTonne(): number {
         if(this.megajoulespertonneLazy !== null){
             return this.megajoulespertonneLazy;
         }
-        return this.megajoulespertonneLazy = this.convertFromBase(SpecificEnergyUnits.MegaJoulesPerTonne);
+        return this.megajoulespertonneLazy = this.convertFromBase(SpecificEnergyUnits.MegajoulesPerTonne);
     }
 
     /** */
@@ -385,13 +385,13 @@ export class SpecificEnergy extends BaseUnit {
     }
 
     /**
-     * Create a new SpecificEnergy instance from a MegaJoulesPerTonne
+     * Create a new SpecificEnergy instance from a MegajoulesPerTonne
      *
-     * @param value The unit as MegaJoulesPerTonne to create a new SpecificEnergy from.
+     * @param value The unit as MegajoulesPerTonne to create a new SpecificEnergy from.
      * @returns The new SpecificEnergy instance.
      */
-    public static FromMegaJoulesPerTonne(value: number): SpecificEnergy {
-        return new SpecificEnergy(value, SpecificEnergyUnits.MegaJoulesPerTonne);
+    public static FromMegajoulesPerTonne(value: number): SpecificEnergy {
+        return new SpecificEnergy(value, SpecificEnergyUnits.MegajoulesPerTonne);
     }
 
     /**
@@ -717,7 +717,7 @@ export class SpecificEnergy extends BaseUnit {
     public convert(toUnit: SpecificEnergyUnits): number {
         switch (toUnit) {
             case SpecificEnergyUnits.JoulesPerKilogram: return this.JoulesPerKilogram;
-            case SpecificEnergyUnits.MegaJoulesPerTonne: return this.MegaJoulesPerTonne;
+            case SpecificEnergyUnits.MegajoulesPerTonne: return this.MegajoulesPerTonne;
             case SpecificEnergyUnits.CaloriesPerGram: return this.CaloriesPerGram;
             case SpecificEnergyUnits.WattHoursPerKilogram: return this.WattHoursPerKilogram;
             case SpecificEnergyUnits.WattDaysPerKilogram: return this.WattDaysPerKilogram;
@@ -757,7 +757,7 @@ export class SpecificEnergy extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case SpecificEnergyUnits.JoulesPerKilogram: return this.value;
-                case SpecificEnergyUnits.MegaJoulesPerTonne: return super.internalDivide(this.value, 1e3);
+                case SpecificEnergyUnits.MegajoulesPerTonne: return super.internalDivide(this.value, 1e3);
                 case SpecificEnergyUnits.CaloriesPerGram: return super.internalDivide(this.value, 4.184e3);
                 case SpecificEnergyUnits.WattHoursPerKilogram: return super.internalDivide(this.value, 3.6e3);
                 case SpecificEnergyUnits.WattDaysPerKilogram: {
@@ -881,7 +881,7 @@ export class SpecificEnergy extends BaseUnit {
             }
         switch (toUnit) {
             case SpecificEnergyUnits.JoulesPerKilogram: return this.value;
-            case SpecificEnergyUnits.MegaJoulesPerTonne: return this.value / 1e3;
+            case SpecificEnergyUnits.MegajoulesPerTonne: return this.value / 1e3;
             case SpecificEnergyUnits.CaloriesPerGram: return this.value / 4.184e3;
             case SpecificEnergyUnits.WattHoursPerKilogram: return this.value / 3.6e3;
             case SpecificEnergyUnits.WattDaysPerKilogram: return this.value / (24 * 3.6e3);
@@ -918,7 +918,7 @@ export class SpecificEnergy extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case SpecificEnergyUnits.JoulesPerKilogram: return value;
-                case SpecificEnergyUnits.MegaJoulesPerTonne: return super.internalMultiply(value, 1e3);
+                case SpecificEnergyUnits.MegajoulesPerTonne: return super.internalMultiply(value, 1e3);
                 case SpecificEnergyUnits.CaloriesPerGram: return super.internalMultiply(value, 4.184e3);
                 case SpecificEnergyUnits.WattHoursPerKilogram: return super.internalMultiply(value, 3.6e3);
                 case SpecificEnergyUnits.WattDaysPerKilogram: {
@@ -1042,7 +1042,7 @@ export class SpecificEnergy extends BaseUnit {
             }
         switch (fromUnit) {
             case SpecificEnergyUnits.JoulesPerKilogram: return value;
-            case SpecificEnergyUnits.MegaJoulesPerTonne: return value * 1e3;
+            case SpecificEnergyUnits.MegajoulesPerTonne: return value * 1e3;
             case SpecificEnergyUnits.CaloriesPerGram: return value * 4.184e3;
             case SpecificEnergyUnits.WattHoursPerKilogram: return value * 3.6e3;
             case SpecificEnergyUnits.WattDaysPerKilogram: return value * (24 * 3.6e3);
@@ -1093,8 +1093,8 @@ export class SpecificEnergy extends BaseUnit {
             
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return super.truncateFractionDigits(this.JoulesPerKilogram, options as ToStringOptions) + ` J/kg`;
-            case SpecificEnergyUnits.MegaJoulesPerTonne:
-                return super.truncateFractionDigits(this.MegaJoulesPerTonne, options as ToStringOptions) + ` MJ/t`;
+            case SpecificEnergyUnits.MegajoulesPerTonne:
+                return super.truncateFractionDigits(this.MegajoulesPerTonne, options as ToStringOptions) + ` MJ/t`;
             case SpecificEnergyUnits.CaloriesPerGram:
                 return super.truncateFractionDigits(this.CaloriesPerGram, options as ToStringOptions) + ` cal/g`;
             case SpecificEnergyUnits.WattHoursPerKilogram:
@@ -1170,7 +1170,7 @@ export class SpecificEnergy extends BaseUnit {
             
             case SpecificEnergyUnits.JoulesPerKilogram:
                 return `J/kg`;
-            case SpecificEnergyUnits.MegaJoulesPerTonne:
+            case SpecificEnergyUnits.MegajoulesPerTonne:
                 return `MJ/t`;
             case SpecificEnergyUnits.CaloriesPerGram:
                 return `cal/g`;
