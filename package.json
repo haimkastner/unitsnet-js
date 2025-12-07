@@ -1,7 +1,7 @@
 {
   "name": "unitsnet-js",
-  "version": "4.0.3",
-  "definitionVersion": "6.0.0-pre017",
+  "version": "4.0.4",
+  "definitionVersion": "6.0.0-pre019",
   "description": "A better way to hold unit variables and easily convert to the destination unit",
   "scripts": {
     "prepublishOnly": "npm run generate && npm run test",
