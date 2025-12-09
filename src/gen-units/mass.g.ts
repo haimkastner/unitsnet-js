@@ -36,6 +36,8 @@ export enum MassUnits {
     SolarMasses = "SolarMass",
     /** Earth mass is a ratio unit to the mass of planet Earth. */
     EarthMasses = "EarthMass",
+    /** The Dalton or unified atomic mass unit (abbreviation Da or u) is a unit of mass defined as 1/12 of the mass of an unbound neutral atom of carbon-12 in its nuclear and electronic ground state and at rest. */
+    Daltons = "Dalton",
     /** */
     Femtograms = "Femtogram",
     /** */
@@ -63,7 +65,13 @@ export enum MassUnits {
     /** */
     Kilopounds = "Kilopound",
     /** */
-    Megapounds = "Megapound"
+    Megapounds = "Megapound",
+    /** */
+    Kilodaltons = "Kilodalton",
+    /** */
+    Megadaltons = "Megadalton",
+    /** */
+    Gigadaltons = "Gigadalton"
 }
 
 /** In physics, mass (from Greek μᾶζα "barley cake, lump [of dough]") is a property of a physical system or body, giving rise to the phenomena of the body's resistance to being accelerated by a force and the strength of its mutual gravitational attraction with other bodies. Instruments such as mass balances or scales use those phenomena to measure mass. The SI unit of mass is the kilogram (kg). */
@@ -82,6 +90,7 @@ export class Mass extends BaseUnit {
     private grainsLazy: number | null = null;
     private solarmassesLazy: number | null = null;
     private earthmassesLazy: number | null = null;
+    private daltonsLazy: number | null = null;
     private femtogramsLazy: number | null = null;
     private picogramsLazy: number | null = null;
     private nanogramsLazy: number | null = null;
@@ -96,6 +105,9 @@ export class Mass extends BaseUnit {
     private megatonnesLazy: number | null = null;
     private kilopoundsLazy: number | null = null;
     private megapoundsLazy: number | null = null;
+    private kilodaltonsLazy: number | null = null;
+    private megadaltonsLazy: number | null = null;
+    private gigadaltonsLazy: number | null = null;
 
     /**
      * Create a new Mass.
@@ -229,6 +241,14 @@ export class Mass extends BaseUnit {
         return this.earthmassesLazy = this.convertFromBase(MassUnits.EarthMasses);
     }
 
+    /** The Dalton or unified atomic mass unit (abbreviation Da or u) is a unit of mass defined as 1/12 of the mass of an unbound neutral atom of carbon-12 in its nuclear and electronic ground state and at rest. */
+    public get Daltons(): number {
+        if(this.daltonsLazy !== null){
+            return this.daltonsLazy;
+        }
+        return this.daltonsLazy = this.convertFromBase(MassUnits.Daltons);
+    }
+
     /** */
     public get Femtograms(): number {
         if(this.femtogramsLazy !== null){
@@ -339,6 +359,30 @@ export class Mass extends BaseUnit {
             return this.megapoundsLazy;
         }
         return this.megapoundsLazy = this.convertFromBase(MassUnits.Megapounds);
+    }
+
+    /** */
+    public get Kilodaltons(): number {
+        if(this.kilodaltonsLazy !== null){
+            return this.kilodaltonsLazy;
+        }
+        return this.kilodaltonsLazy = this.convertFromBase(MassUnits.Kilodaltons);
+    }
+
+    /** */
+    public get Megadaltons(): number {
+        if(this.megadaltonsLazy !== null){
+            return this.megadaltonsLazy;
+        }
+        return this.megadaltonsLazy = this.convertFromBase(MassUnits.Megadaltons);
+    }
+
+    /** */
+    public get Gigadaltons(): number {
+        if(this.gigadaltonsLazy !== null){
+            return this.gigadaltonsLazy;
+        }
+        return this.gigadaltonsLazy = this.convertFromBase(MassUnits.Gigadaltons);
     }
 
     /**
@@ -469,6 +513,16 @@ export class Mass extends BaseUnit {
      */
     public static FromEarthMasses(value: number): Mass {
         return new Mass(value, MassUnits.EarthMasses);
+    }
+
+    /**
+     * Create a new Mass instance from a Daltons
+     * The Dalton or unified atomic mass unit (abbreviation Da or u) is a unit of mass defined as 1/12 of the mass of an unbound neutral atom of carbon-12 in its nuclear and electronic ground state and at rest.
+     * @param value The unit as Daltons to create a new Mass from.
+     * @returns The new Mass instance.
+     */
+    public static FromDaltons(value: number): Mass {
+        return new Mass(value, MassUnits.Daltons);
     }
 
     /**
@@ -612,6 +666,36 @@ export class Mass extends BaseUnit {
     }
 
     /**
+     * Create a new Mass instance from a Kilodaltons
+     *
+     * @param value The unit as Kilodaltons to create a new Mass from.
+     * @returns The new Mass instance.
+     */
+    public static FromKilodaltons(value: number): Mass {
+        return new Mass(value, MassUnits.Kilodaltons);
+    }
+
+    /**
+     * Create a new Mass instance from a Megadaltons
+     *
+     * @param value The unit as Megadaltons to create a new Mass from.
+     * @returns The new Mass instance.
+     */
+    public static FromMegadaltons(value: number): Mass {
+        return new Mass(value, MassUnits.Megadaltons);
+    }
+
+    /**
+     * Create a new Mass instance from a Gigadaltons
+     *
+     * @param value The unit as Gigadaltons to create a new Mass from.
+     * @returns The new Mass instance.
+     */
+    public static FromGigadaltons(value: number): Mass {
+        return new Mass(value, MassUnits.Gigadaltons);
+    }
+
+    /**
      * Gets the base unit enumeration associated with Mass
      * @returns The unit enumeration that can be used to interact with this type
      */
@@ -666,6 +750,7 @@ export class Mass extends BaseUnit {
             case MassUnits.Grains: return this.Grains;
             case MassUnits.SolarMasses: return this.SolarMasses;
             case MassUnits.EarthMasses: return this.EarthMasses;
+            case MassUnits.Daltons: return this.Daltons;
             case MassUnits.Femtograms: return this.Femtograms;
             case MassUnits.Picograms: return this.Picograms;
             case MassUnits.Nanograms: return this.Nanograms;
@@ -680,6 +765,9 @@ export class Mass extends BaseUnit {
             case MassUnits.Megatonnes: return this.Megatonnes;
             case MassUnits.Kilopounds: return this.Kilopounds;
             case MassUnits.Megapounds: return this.Megapounds;
+            case MassUnits.Kilodaltons: return this.Kilodaltons;
+            case MassUnits.Megadaltons: return this.Megadaltons;
+            case MassUnits.Gigadaltons: return this.Gigadaltons;
 
             default:
                 break;
@@ -707,6 +795,7 @@ export class Mass extends BaseUnit {
                 case MassUnits.Grains: return super.internalDivide(this.value, 64.79891e-6);
                 case MassUnits.SolarMasses: return super.internalDivide(this.value, 1.98947e30);
                 case MassUnits.EarthMasses: return super.internalDivide(this.value, 5.9722E+24);
+                case MassUnits.Daltons: return super.internalDivide(this.value, 1.66053906660e-27);
                 case MassUnits.Femtograms: {
                     const v3 = super.internalMultiply(this.value, 1e3);
                     return super.internalDivide(v3, 1e-15);
@@ -763,6 +852,18 @@ export class Mass extends BaseUnit {
                     const v3 = super.internalDivide(this.value, 0.45359237);
                     return super.internalDivide(v3, 1000000);
                 }
+                case MassUnits.Kilodaltons: {
+                    const v3 = super.internalDivide(this.value, 1.66053906660e-27);
+                    return super.internalDivide(v3, 1000);
+                }
+                case MassUnits.Megadaltons: {
+                    const v3 = super.internalDivide(this.value, 1.66053906660e-27);
+                    return super.internalDivide(v3, 1000000);
+                }
+                case MassUnits.Gigadaltons: {
+                    const v3 = super.internalDivide(this.value, 1.66053906660e-27);
+                    return super.internalDivide(v3, 1000000000);
+                }
                 default: return Number.NaN;
             }
         switch (toUnit) {
@@ -779,6 +880,7 @@ export class Mass extends BaseUnit {
             case MassUnits.Grains: return this.value / 64.79891e-6;
             case MassUnits.SolarMasses: return this.value / 1.98947e30;
             case MassUnits.EarthMasses: return this.value / 5.9722E+24;
+            case MassUnits.Daltons: return this.value /  1.66053906660e-27;
             case MassUnits.Femtograms: return (this.value * 1e3) / 1e-15;
             case MassUnits.Picograms: return (this.value * 1e3) / 1e-12;
             case MassUnits.Nanograms: return (this.value * 1e3) / 1e-9;
@@ -793,6 +895,9 @@ export class Mass extends BaseUnit {
             case MassUnits.Megatonnes: return (this.value / 1e3) / 1000000;
             case MassUnits.Kilopounds: return (this.value / 0.45359237) / 1000;
             case MassUnits.Megapounds: return (this.value / 0.45359237) / 1000000;
+            case MassUnits.Kilodaltons: return (this.value /  1.66053906660e-27) / 1000;
+            case MassUnits.Megadaltons: return (this.value /  1.66053906660e-27) / 1000000;
+            case MassUnits.Gigadaltons: return (this.value /  1.66053906660e-27) / 1000000000;
             default: return Number.NaN;
         }
     }
@@ -817,6 +922,7 @@ export class Mass extends BaseUnit {
                 case MassUnits.Grains: return super.internalMultiply(value, 64.79891e-6);
                 case MassUnits.SolarMasses: return super.internalMultiply(value, 1.98947e30);
                 case MassUnits.EarthMasses: return super.internalMultiply(value, 5.9722E+24);
+                case MassUnits.Daltons: return super.internalMultiply(value, 1.66053906660e-27);
                 case MassUnits.Femtograms: {
                     const v3 = super.internalDivide(value, 1e3);
                     return super.internalMultiply(v3, 1e-15);
@@ -873,6 +979,18 @@ export class Mass extends BaseUnit {
                     const v3 = super.internalMultiply(value, 0.45359237);
                     return super.internalMultiply(v3, 1000000);
                 }
+                case MassUnits.Kilodaltons: {
+                    const v3 = super.internalMultiply(value, 1.66053906660e-27);
+                    return super.internalMultiply(v3, 1000);
+                }
+                case MassUnits.Megadaltons: {
+                    const v3 = super.internalMultiply(value, 1.66053906660e-27);
+                    return super.internalMultiply(v3, 1000000);
+                }
+                case MassUnits.Gigadaltons: {
+                    const v3 = super.internalMultiply(value, 1.66053906660e-27);
+                    return super.internalMultiply(v3, 1000000000);
+                }
                 default: return Number.NaN;
             }
         switch (fromUnit) {
@@ -889,6 +1007,7 @@ export class Mass extends BaseUnit {
             case MassUnits.Grains: return value * 64.79891e-6;
             case MassUnits.SolarMasses: return value * 1.98947e30;
             case MassUnits.EarthMasses: return value * 5.9722E+24;
+            case MassUnits.Daltons: return value *  1.66053906660e-27;
             case MassUnits.Femtograms: return (value / 1e3) * 1e-15;
             case MassUnits.Picograms: return (value / 1e3) * 1e-12;
             case MassUnits.Nanograms: return (value / 1e3) * 1e-9;
@@ -903,6 +1022,9 @@ export class Mass extends BaseUnit {
             case MassUnits.Megatonnes: return (value * 1e3) * 1000000;
             case MassUnits.Kilopounds: return (value * 0.45359237) * 1000;
             case MassUnits.Megapounds: return (value * 0.45359237) * 1000000;
+            case MassUnits.Kilodaltons: return (value *  1.66053906660e-27) * 1000;
+            case MassUnits.Megadaltons: return (value *  1.66053906660e-27) * 1000000;
+            case MassUnits.Gigadaltons: return (value *  1.66053906660e-27) * 1000000000;
             default: return Number.NaN;
         }
     }
@@ -949,6 +1071,8 @@ export class Mass extends BaseUnit {
                 return super.truncateFractionDigits(this.SolarMasses, options as ToStringOptions) + ` M☉`;
             case MassUnits.EarthMasses:
                 return super.truncateFractionDigits(this.EarthMasses, options as ToStringOptions) + ` em`;
+            case MassUnits.Daltons:
+                return super.truncateFractionDigits(this.Daltons, options as ToStringOptions) + ` Da`;
             case MassUnits.Femtograms:
                 return super.truncateFractionDigits(this.Femtograms, options as ToStringOptions) + ` fg`;
             case MassUnits.Picograms:
@@ -977,6 +1101,12 @@ export class Mass extends BaseUnit {
                 return super.truncateFractionDigits(this.Kilopounds, options as ToStringOptions) + ` klb`;
             case MassUnits.Megapounds:
                 return super.truncateFractionDigits(this.Megapounds, options as ToStringOptions) + ` Mlb`;
+            case MassUnits.Kilodaltons:
+                return super.truncateFractionDigits(this.Kilodaltons, options as ToStringOptions) + ` kDa`;
+            case MassUnits.Megadaltons:
+                return super.truncateFractionDigits(this.Megadaltons, options as ToStringOptions) + ` MDa`;
+            case MassUnits.Gigadaltons:
+                return super.truncateFractionDigits(this.Gigadaltons, options as ToStringOptions) + ` GDa`;
         default:
             break;
         }
@@ -1020,6 +1150,8 @@ export class Mass extends BaseUnit {
                 return `M☉`;
             case MassUnits.EarthMasses:
                 return `em`;
+            case MassUnits.Daltons:
+                return `Da`;
             case MassUnits.Femtograms:
                 return `fg`;
             case MassUnits.Picograms:
@@ -1048,6 +1180,12 @@ export class Mass extends BaseUnit {
                 return `klb`;
             case MassUnits.Megapounds:
                 return `Mlb`;
+            case MassUnits.Kilodaltons:
+                return `kDa`;
+            case MassUnits.Megadaltons:
+                return `MDa`;
+            case MassUnits.Gigadaltons:
+                return `GDa`;
         default:
             break;
         }

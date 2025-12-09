@@ -24,6 +24,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "json5": "^2.2.3",
     "strip-bom": "^4.0.0",
     "sync-request": "^6.1.0"
   }
