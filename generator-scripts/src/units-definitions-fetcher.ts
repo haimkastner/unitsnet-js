@@ -3,6 +3,7 @@ import stripBom from "strip-bom";
 import request from 'sync-request';
 import fs from 'fs-extra';
 import path from 'path';
+import JSON5 from 'json5';
 
 const githubOptions = {
     headers: {
@@ -80,7 +81,7 @@ export function fetchUnitsDefinitions(repoOwnerAndName: string): UnitTypeDefinit
                     const response = request('GET', `${filesUrl}/${file}`, githubOptions);
                     // Stringify the payload to utf-8 (and remove the UTF BOM prefix if exists)
                     const rawBody = stripBom(response.body.toString('utf-8'));
-                    unitDefinition = JSON.parse(rawBody) as unknown as UnitTypeDefinition;
+                    unitDefinition = JSON5.parse(rawBody) as unknown as UnitTypeDefinition;
                     keepDefinitionFile(file, unitDefinition);
                 }
 
