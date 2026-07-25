@@ -5,9 +5,12 @@ import fs from 'fs-extra';
 import path from 'path';
 import JSON5 from 'json5';
 
+const githubToken = process.env.GITHUB_TOKEN;
+
 const githubOptions = {
     headers: {
         'user-agent': 'PostmanRuntime/7.20.1',
+        ...(githubToken ? { 'Authorization': `token ${githubToken}` } : {}),
     },
 };
 
@@ -62,7 +65,10 @@ export function fetchUnitsDefinitions(repoOwnerAndName: string): UnitTypeDefinit
         if (!definitionFiles) {
             const response = request('GET', directoryUrl, githubOptions);
 
-            const body = JSON.parse(response.body.toString('utf-8')) as unknown as [];
+            const body = JSON.parse(response.body.toString('utf-8'));
+            if (!Array.isArray(body)) {
+                throw new Error(`Unexpected response from GitHub API: ${JSON.stringify(body)}`);
+            }
             definitionFiles = body.map((file: any) => file.name);
             keepDefinitionFile('files.json', definitionFiles);
         }
