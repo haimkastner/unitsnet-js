@@ -19,6 +19,10 @@ export enum PowerDensityUnits {
     /** */
     WattsPerLiter = "WattPerLiter",
     /** */
+    BtusPerSecondCubicInch = "BtuPerSecondCubicInch",
+    /** */
+    BtusPerSecondCubicFoot = "BtuPerSecondCubicFoot",
+    /** */
     PicowattsPerCubicMeter = "PicowattPerCubicMeter",
     /** */
     NanowattsPerCubicMeter = "NanowattPerCubicMeter",
@@ -107,6 +111,8 @@ export class PowerDensity extends BaseUnit {
     private wattspercubicinchLazy: number | null = null;
     private wattspercubicfootLazy: number | null = null;
     private wattsperliterLazy: number | null = null;
+    private btuspersecondcubicinchLazy: number | null = null;
+    private btuspersecondcubicfootLazy: number | null = null;
     private picowattspercubicmeterLazy: number | null = null;
     private nanowattspercubicmeterLazy: number | null = null;
     private microwattspercubicmeterLazy: number | null = null;
@@ -206,6 +212,22 @@ export class PowerDensity extends BaseUnit {
             return this.wattsperliterLazy;
         }
         return this.wattsperliterLazy = this.convertFromBase(PowerDensityUnits.WattsPerLiter);
+    }
+
+    /** */
+    public get BtusPerSecondCubicInch(): number {
+        if(this.btuspersecondcubicinchLazy !== null){
+            return this.btuspersecondcubicinchLazy;
+        }
+        return this.btuspersecondcubicinchLazy = this.convertFromBase(PowerDensityUnits.BtusPerSecondCubicInch);
+    }
+
+    /** */
+    public get BtusPerSecondCubicFoot(): number {
+        if(this.btuspersecondcubicfootLazy !== null){
+            return this.btuspersecondcubicfootLazy;
+        }
+        return this.btuspersecondcubicfootLazy = this.convertFromBase(PowerDensityUnits.BtusPerSecondCubicFoot);
     }
 
     /** */
@@ -566,6 +588,26 @@ export class PowerDensity extends BaseUnit {
      */
     public static FromWattsPerLiter(value: number): PowerDensity {
         return new PowerDensity(value, PowerDensityUnits.WattsPerLiter);
+    }
+
+    /**
+     * Create a new PowerDensity instance from a BtusPerSecondCubicInch
+     *
+     * @param value The unit as BtusPerSecondCubicInch to create a new PowerDensity from.
+     * @returns The new PowerDensity instance.
+     */
+    public static FromBtusPerSecondCubicInch(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.BtusPerSecondCubicInch);
+    }
+
+    /**
+     * Create a new PowerDensity instance from a BtusPerSecondCubicFoot
+     *
+     * @param value The unit as BtusPerSecondCubicFoot to create a new PowerDensity from.
+     * @returns The new PowerDensity instance.
+     */
+    public static FromBtusPerSecondCubicFoot(value: number): PowerDensity {
+        return new PowerDensity(value, PowerDensityUnits.BtusPerSecondCubicFoot);
     }
 
     /**
@@ -1014,6 +1056,8 @@ export class PowerDensity extends BaseUnit {
             case PowerDensityUnits.WattsPerCubicInch: return this.WattsPerCubicInch;
             case PowerDensityUnits.WattsPerCubicFoot: return this.WattsPerCubicFoot;
             case PowerDensityUnits.WattsPerLiter: return this.WattsPerLiter;
+            case PowerDensityUnits.BtusPerSecondCubicInch: return this.BtusPerSecondCubicInch;
+            case PowerDensityUnits.BtusPerSecondCubicFoot: return this.BtusPerSecondCubicFoot;
             case PowerDensityUnits.PicowattsPerCubicMeter: return this.PicowattsPerCubicMeter;
             case PowerDensityUnits.NanowattsPerCubicMeter: return this.NanowattsPerCubicMeter;
             case PowerDensityUnits.MicrowattsPerCubicMeter: return this.MicrowattsPerCubicMeter;
@@ -1068,6 +1112,18 @@ export class PowerDensity extends BaseUnit {
                 case PowerDensityUnits.WattsPerCubicInch: return super.internalMultiply(this.value, 1.6387064e-5);
                 case PowerDensityUnits.WattsPerCubicFoot: return super.internalMultiply(this.value, 0.028316846592);
                 case PowerDensityUnits.WattsPerLiter: return super.internalDivide(this.value, 1.0e3);
+                case PowerDensityUnits.BtusPerSecondCubicInch: {
+                    const v3 = super.internalDivide(this.value, 1055.05585262);
+                    const v6 = super.internalMultiply(2.54e-2, 2.54e-2);
+                    const v8 = super.internalMultiply(v6, 2.54e-2);
+                    return super.internalMultiply(v3, v8);
+                }
+                case PowerDensityUnits.BtusPerSecondCubicFoot: {
+                    const v3 = super.internalDivide(this.value, 1055.05585262);
+                    const v6 = super.internalMultiply(0.3048, 0.3048);
+                    const v8 = super.internalMultiply(v6, 0.3048);
+                    return super.internalMultiply(v3, v8);
+                }
                 case PowerDensityUnits.PicowattsPerCubicMeter: return super.internalDivide(this.value, 1e-12);
                 case PowerDensityUnits.NanowattsPerCubicMeter: return super.internalDivide(this.value, 1e-9);
                 case PowerDensityUnits.MicrowattsPerCubicMeter: return super.internalDivide(this.value, 0.000001);
@@ -1205,6 +1261,8 @@ export class PowerDensity extends BaseUnit {
             case PowerDensityUnits.WattsPerCubicInch: return this.value * 1.6387064e-5;
             case PowerDensityUnits.WattsPerCubicFoot: return this.value * 0.028316846592;
             case PowerDensityUnits.WattsPerLiter: return this.value / 1.0e3;
+            case PowerDensityUnits.BtusPerSecondCubicInch: return this.value / 1055.05585262 * (2.54e-2 * 2.54e-2 * 2.54e-2);
+            case PowerDensityUnits.BtusPerSecondCubicFoot: return this.value / 1055.05585262 * (0.3048 * 0.3048 * 0.3048);
             case PowerDensityUnits.PicowattsPerCubicMeter: return (this.value) / 1e-12;
             case PowerDensityUnits.NanowattsPerCubicMeter: return (this.value) / 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicMeter: return (this.value) / 0.000001;
@@ -1256,6 +1314,18 @@ export class PowerDensity extends BaseUnit {
                 case PowerDensityUnits.WattsPerCubicInch: return super.internalDivide(value, 1.6387064e-5);
                 case PowerDensityUnits.WattsPerCubicFoot: return super.internalDivide(value, 0.028316846592);
                 case PowerDensityUnits.WattsPerLiter: return super.internalMultiply(value, 1.0e3);
+                case PowerDensityUnits.BtusPerSecondCubicInch: {
+                    const v5 = super.internalMultiply(2.54e-2, 2.54e-2);
+                    const v7 = super.internalMultiply(v5, 2.54e-2);
+                    const v8 = super.internalDivide(1055.05585262, v7);
+                    return super.internalMultiply(value, v8);
+                }
+                case PowerDensityUnits.BtusPerSecondCubicFoot: {
+                    const v5 = super.internalMultiply(0.3048, 0.3048);
+                    const v7 = super.internalMultiply(v5, 0.3048);
+                    const v8 = super.internalDivide(1055.05585262, v7);
+                    return super.internalMultiply(value, v8);
+                }
                 case PowerDensityUnits.PicowattsPerCubicMeter: return super.internalMultiply(value, 1e-12);
                 case PowerDensityUnits.NanowattsPerCubicMeter: return super.internalMultiply(value, 1e-9);
                 case PowerDensityUnits.MicrowattsPerCubicMeter: return super.internalMultiply(value, 0.000001);
@@ -1393,6 +1463,8 @@ export class PowerDensity extends BaseUnit {
             case PowerDensityUnits.WattsPerCubicInch: return value / 1.6387064e-5;
             case PowerDensityUnits.WattsPerCubicFoot: return value / 0.028316846592;
             case PowerDensityUnits.WattsPerLiter: return value * 1.0e3;
+            case PowerDensityUnits.BtusPerSecondCubicInch: return value * 1055.05585262 / (2.54e-2 * 2.54e-2 * 2.54e-2);
+            case PowerDensityUnits.BtusPerSecondCubicFoot: return value * 1055.05585262 / (0.3048 * 0.3048 * 0.3048);
             case PowerDensityUnits.PicowattsPerCubicMeter: return (value) * 1e-12;
             case PowerDensityUnits.NanowattsPerCubicMeter: return (value) * 1e-9;
             case PowerDensityUnits.MicrowattsPerCubicMeter: return (value) * 0.000001;
@@ -1461,6 +1533,10 @@ export class PowerDensity extends BaseUnit {
                 return super.truncateFractionDigits(this.WattsPerCubicFoot, options as ToStringOptions) + ` W/ft³`;
             case PowerDensityUnits.WattsPerLiter:
                 return super.truncateFractionDigits(this.WattsPerLiter, options as ToStringOptions) + ` W/l`;
+            case PowerDensityUnits.BtusPerSecondCubicInch:
+                return super.truncateFractionDigits(this.BtusPerSecondCubicInch, options as ToStringOptions) + ` BTU/(s·in³)`;
+            case PowerDensityUnits.BtusPerSecondCubicFoot:
+                return super.truncateFractionDigits(this.BtusPerSecondCubicFoot, options as ToStringOptions) + ` BTU/(s·ft³)`;
             case PowerDensityUnits.PicowattsPerCubicMeter:
                 return super.truncateFractionDigits(this.PicowattsPerCubicMeter, options as ToStringOptions) + ` pW/m³`;
             case PowerDensityUnits.NanowattsPerCubicMeter:
@@ -1566,6 +1642,10 @@ export class PowerDensity extends BaseUnit {
                 return `W/ft³`;
             case PowerDensityUnits.WattsPerLiter:
                 return `W/l`;
+            case PowerDensityUnits.BtusPerSecondCubicInch:
+                return `BTU/(s·in³)`;
+            case PowerDensityUnits.BtusPerSecondCubicFoot:
+                return `BTU/(s·ft³)`;
             case PowerDensityUnits.PicowattsPerCubicMeter:
                 return `pW/m³`;
             case PowerDensityUnits.NanowattsPerCubicMeter:

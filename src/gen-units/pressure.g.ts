@@ -61,6 +61,10 @@ export enum PressureUnits {
     /** Inches of water is a non-SI unit for pressure. It is defined as the pressure exerted by a column of water of 1 inch in height at defined conditions. At a temperature of 4 °C (39.2 °F) pure water has its highest density (1000 kg/m3). At that temperature and assuming the standard acceleration of gravity, 1 inAq is approximately 249.082 pascals (0.0361263 psi). */
     InchesOfWaterColumn = "InchOfWaterColumn",
     /** */
+    MilligramsForcePerSquareMeter = "MilligramForcePerSquareMeter",
+    /** */
+    MilligramsForcePerSquareFoot = "MilligramForcePerSquareFoot",
+    /** */
     Micropascals = "Micropascal",
     /** */
     Millipascals = "Millipascal",
@@ -136,6 +140,8 @@ export class Pressure extends BaseUnit {
     private poundsperinchsecondsquaredLazy: number | null = null;
     private metersofwatercolumnLazy: number | null = null;
     private inchesofwatercolumnLazy: number | null = null;
+    private milligramsforcepersquaremeterLazy: number | null = null;
+    private milligramsforcepersquarefootLazy: number | null = null;
     private micropascalsLazy: number | null = null;
     private millipascalsLazy: number | null = null;
     private decapascalsLazy: number | null = null;
@@ -386,6 +392,22 @@ export class Pressure extends BaseUnit {
             return this.inchesofwatercolumnLazy;
         }
         return this.inchesofwatercolumnLazy = this.convertFromBase(PressureUnits.InchesOfWaterColumn);
+    }
+
+    /** */
+    public get MilligramsForcePerSquareMeter(): number {
+        if(this.milligramsforcepersquaremeterLazy !== null){
+            return this.milligramsforcepersquaremeterLazy;
+        }
+        return this.milligramsforcepersquaremeterLazy = this.convertFromBase(PressureUnits.MilligramsForcePerSquareMeter);
+    }
+
+    /** */
+    public get MilligramsForcePerSquareFoot(): number {
+        if(this.milligramsforcepersquarefootLazy !== null){
+            return this.milligramsforcepersquarefootLazy;
+        }
+        return this.milligramsforcepersquarefootLazy = this.convertFromBase(PressureUnits.MilligramsForcePerSquareFoot);
     }
 
     /** */
@@ -823,6 +845,26 @@ export class Pressure extends BaseUnit {
     }
 
     /**
+     * Create a new Pressure instance from a MilligramsForcePerSquareMeter
+     *
+     * @param value The unit as MilligramsForcePerSquareMeter to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromMilligramsForcePerSquareMeter(value: number): Pressure {
+        return new Pressure(value, PressureUnits.MilligramsForcePerSquareMeter);
+    }
+
+    /**
+     * Create a new Pressure instance from a MilligramsForcePerSquareFoot
+     *
+     * @param value The unit as MilligramsForcePerSquareFoot to create a new Pressure from.
+     * @returns The new Pressure instance.
+     */
+    public static FromMilligramsForcePerSquareFoot(value: number): Pressure {
+        return new Pressure(value, PressureUnits.MilligramsForcePerSquareFoot);
+    }
+
+    /**
      * Create a new Pressure instance from a Micropascals
      *
      * @param value The unit as Micropascals to create a new Pressure from.
@@ -1119,6 +1161,8 @@ export class Pressure extends BaseUnit {
             case PressureUnits.PoundsPerInchSecondSquared: return this.PoundsPerInchSecondSquared;
             case PressureUnits.MetersOfWaterColumn: return this.MetersOfWaterColumn;
             case PressureUnits.InchesOfWaterColumn: return this.InchesOfWaterColumn;
+            case PressureUnits.MilligramsForcePerSquareMeter: return this.MilligramsForcePerSquareMeter;
+            case PressureUnits.MilligramsForcePerSquareFoot: return this.MilligramsForcePerSquareFoot;
             case PressureUnits.Micropascals: return this.Micropascals;
             case PressureUnits.Millipascals: return this.Millipascals;
             case PressureUnits.Decapascals: return this.Decapascals;
@@ -1205,6 +1249,11 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.InchesOfWaterColumn: {
                     const v4 = super.internalMultiply(2.54e-2, 9.80665e3);
                     return super.internalDivide(this.value, v4);
+                }
+                case PressureUnits.MilligramsForcePerSquareMeter: return super.internalDivide(this.value, 9.80665e-6);
+                case PressureUnits.MilligramsForcePerSquareFoot: {
+                    const v3 = super.internalDivide(this.value, 9.80665e-6);
+                    return super.internalMultiply(v3, 9.290304e-2);
                 }
                 case PressureUnits.Micropascals: return super.internalDivide(this.value, 0.000001);
                 case PressureUnits.Millipascals: return super.internalDivide(this.value, 0.001);
@@ -1304,6 +1353,8 @@ export class Pressure extends BaseUnit {
             case PressureUnits.PoundsPerInchSecondSquared: return this.value * 386.0886 / (4.4482216152605 / 0.00064516);
             case PressureUnits.MetersOfWaterColumn: return this.value / 9.80665e3;
             case PressureUnits.InchesOfWaterColumn: return this.value / (2.54e-2 * 9.80665e3);
+            case PressureUnits.MilligramsForcePerSquareMeter: return this.value / 9.80665e-6;
+            case PressureUnits.MilligramsForcePerSquareFoot: return this.value / 9.80665e-6 * 9.290304e-2;
             case PressureUnits.Micropascals: return (this.value) / 0.000001;
             case PressureUnits.Millipascals: return (this.value) / 0.001;
             case PressureUnits.Decapascals: return (this.value) / 10;
@@ -1387,6 +1438,11 @@ export class Pressure extends BaseUnit {
                 case PressureUnits.InchesOfWaterColumn: {
                     const v3 = super.internalMultiply(value, 2.54e-2);
                     return super.internalMultiply(v3, 9.80665e3);
+                }
+                case PressureUnits.MilligramsForcePerSquareMeter: return super.internalMultiply(value, 9.80665e-6);
+                case PressureUnits.MilligramsForcePerSquareFoot: {
+                    const v4 = super.internalDivide(9.80665e-6, 9.290304e-2);
+                    return super.internalMultiply(value, v4);
                 }
                 case PressureUnits.Micropascals: return super.internalMultiply(value, 0.000001);
                 case PressureUnits.Millipascals: return super.internalMultiply(value, 0.001);
@@ -1486,6 +1542,8 @@ export class Pressure extends BaseUnit {
             case PressureUnits.PoundsPerInchSecondSquared: return value * (4.4482216152605 / 0.00064516) / 386.0886;
             case PressureUnits.MetersOfWaterColumn: return value * 9.80665e3;
             case PressureUnits.InchesOfWaterColumn: return value * 2.54e-2 * 9.80665e3;
+            case PressureUnits.MilligramsForcePerSquareMeter: return value * 9.80665e-6;
+            case PressureUnits.MilligramsForcePerSquareFoot: return value * 9.80665e-6 / 9.290304e-2;
             case PressureUnits.Micropascals: return (value) * 0.000001;
             case PressureUnits.Millipascals: return (value) * 0.001;
             case PressureUnits.Decapascals: return (value) * 10;
@@ -1579,6 +1637,10 @@ export class Pressure extends BaseUnit {
                 return super.truncateFractionDigits(this.MetersOfWaterColumn, options as ToStringOptions) + ` mH₂O`;
             case PressureUnits.InchesOfWaterColumn:
                 return super.truncateFractionDigits(this.InchesOfWaterColumn, options as ToStringOptions) + ` inH2O`;
+            case PressureUnits.MilligramsForcePerSquareMeter:
+                return super.truncateFractionDigits(this.MilligramsForcePerSquareMeter, options as ToStringOptions) + ` mgf/m²`;
+            case PressureUnits.MilligramsForcePerSquareFoot:
+                return super.truncateFractionDigits(this.MilligramsForcePerSquareFoot, options as ToStringOptions) + ` mgf/ft²`;
             case PressureUnits.Micropascals:
                 return super.truncateFractionDigits(this.Micropascals, options as ToStringOptions) + ` μPa`;
             case PressureUnits.Millipascals:
@@ -1692,6 +1754,10 @@ export class Pressure extends BaseUnit {
                 return `mH₂O`;
             case PressureUnits.InchesOfWaterColumn:
                 return `inH2O`;
+            case PressureUnits.MilligramsForcePerSquareMeter:
+                return `mgf/m²`;
+            case PressureUnits.MilligramsForcePerSquareFoot:
+                return `mgf/ft²`;
             case PressureUnits.Micropascals:
                 return `μPa`;
             case PressureUnits.Millipascals:

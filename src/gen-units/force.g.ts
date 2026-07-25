@@ -12,6 +12,8 @@ export interface ForceDto {
 export enum ForceUnits {
     /** One dyne is equal to 10 micronewtons, 10e−5 N or to 10 nsn (nanosthenes) in the old metre–tonne–second system of units. */
     Dyne = "Dyn",
+    /** The gram-force is a unit of force equal to the magnitude of force exerted by a gram of mass in standard gravity (9.80665 m/s²). It is equal to 9.80665 × 10⁻³ N. */
+    GramsForce = "GramForce",
     /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
     KilogramsForce = "KilogramForce",
     /** The tonne-force, metric ton-force, megagram-force, and megapond (Mp) are each 1000 kilograms-force. */
@@ -46,6 +48,7 @@ export enum ForceUnits {
 export class Force extends BaseUnit {
     protected value: number;
     private dyneLazy: number | null = null;
+    private gramsforceLazy: number | null = null;
     private kilogramsforceLazy: number | null = null;
     private tonnesforceLazy: number | null = null;
     private newtonsLazy: number | null = null;
@@ -95,6 +98,14 @@ export class Force extends BaseUnit {
             return this.dyneLazy;
         }
         return this.dyneLazy = this.convertFromBase(ForceUnits.Dyne);
+    }
+
+    /** The gram-force is a unit of force equal to the magnitude of force exerted by a gram of mass in standard gravity (9.80665 m/s²). It is equal to 9.80665 × 10⁻³ N. */
+    public get GramsForce(): number {
+        if(this.gramsforceLazy !== null){
+            return this.gramsforceLazy;
+        }
+        return this.gramsforceLazy = this.convertFromBase(ForceUnits.GramsForce);
     }
 
     /** The kilogram-force, or kilopond, is equal to the magnitude of the force exerted on one kilogram of mass in a 9.80665 m/s2 gravitational field (standard gravity). Therefore, one kilogram-force is by definition equal to 9.80665 N. */
@@ -217,6 +228,16 @@ export class Force extends BaseUnit {
      */
     public static FromDyne(value: number): Force {
         return new Force(value, ForceUnits.Dyne);
+    }
+
+    /**
+     * Create a new Force instance from a GramsForce
+     * The gram-force is a unit of force equal to the magnitude of force exerted by a gram of mass in standard gravity (9.80665 m/s²). It is equal to 9.80665 × 10⁻³ N.
+     * @param value The unit as GramsForce to create a new Force from.
+     * @returns The new Force instance.
+     */
+    public static FromGramsForce(value: number): Force {
+        return new Force(value, ForceUnits.GramsForce);
     }
 
     /**
@@ -402,6 +423,7 @@ export class Force extends BaseUnit {
     public convert(toUnit: ForceUnits): number {
         switch (toUnit) {
             case ForceUnits.Dyne: return this.Dyne;
+            case ForceUnits.GramsForce: return this.GramsForce;
             case ForceUnits.KilogramsForce: return this.KilogramsForce;
             case ForceUnits.TonnesForce: return this.TonnesForce;
             case ForceUnits.Newtons: return this.Newtons;
@@ -427,6 +449,7 @@ export class Force extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (toUnit) {
                 case ForceUnits.Dyne: return super.internalMultiply(this.value, 1e5);
+                case ForceUnits.GramsForce: return super.internalDivide(this.value, 9.80665e-3);
                 case ForceUnits.KilogramsForce: return super.internalDivide(this.value, 9.80665);
                 case ForceUnits.TonnesForce: {
                     const v4 = super.internalMultiply(9.80665, 1000);
@@ -457,6 +480,7 @@ export class Force extends BaseUnit {
             }
         switch (toUnit) {
             case ForceUnits.Dyne: return this.value * 1e5;
+            case ForceUnits.GramsForce: return this.value / 9.80665e-3;
             case ForceUnits.KilogramsForce: return this.value / 9.80665;
             case ForceUnits.TonnesForce: return this.value / (9.80665 * 1000);
             case ForceUnits.Newtons: return this.value;
@@ -479,6 +503,7 @@ export class Force extends BaseUnit {
         if (areAnyOperatorsOverridden())
             switch (fromUnit) {
                 case ForceUnits.Dyne: return super.internalDivide(value, 1e5);
+                case ForceUnits.GramsForce: return super.internalMultiply(value, 9.80665e-3);
                 case ForceUnits.KilogramsForce: return super.internalMultiply(value, 9.80665);
                 case ForceUnits.TonnesForce: {
                     const v4 = super.internalMultiply(9.80665, 1000);
@@ -509,6 +534,7 @@ export class Force extends BaseUnit {
             }
         switch (fromUnit) {
             case ForceUnits.Dyne: return value / 1e5;
+            case ForceUnits.GramsForce: return value * 9.80665e-3;
             case ForceUnits.KilogramsForce: return value * 9.80665;
             case ForceUnits.TonnesForce: return value * (9.80665 * 1000);
             case ForceUnits.Newtons: return value;
@@ -545,6 +571,8 @@ export class Force extends BaseUnit {
             
             case ForceUnits.Dyne:
                 return super.truncateFractionDigits(this.Dyne, options as ToStringOptions) + ` dyn`;
+            case ForceUnits.GramsForce:
+                return super.truncateFractionDigits(this.GramsForce, options as ToStringOptions) + ` gf`;
             case ForceUnits.KilogramsForce:
                 return super.truncateFractionDigits(this.KilogramsForce, options as ToStringOptions) + ` kgf`;
             case ForceUnits.TonnesForce:
@@ -592,6 +620,8 @@ export class Force extends BaseUnit {
             
             case ForceUnits.Dyne:
                 return `dyn`;
+            case ForceUnits.GramsForce:
+                return `gf`;
             case ForceUnits.KilogramsForce:
                 return `kgf`;
             case ForceUnits.TonnesForce:

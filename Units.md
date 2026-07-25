@@ -18,6 +18,8 @@ The package provides support for the following units:
     -   *The area density of a two-dimensional object is calculated as the mass per unit area. For paper this is also called grammage.*
 - **AreaMomentOfInertia**
     -   *A geometric property of an area that reflects how its points are distributed with regard to an axis.*
+- **AreaPerLength**
+    -   *The magnitude of area per unit length, typically used in structural engineering to specify distributed reinforcement.*
 - **BitRate**
     -   *In telecommunications and computing, bit rate is the number of bits that are conveyed or processed per unit of time.*
 - **BrakeSpecificFuelConsumption**

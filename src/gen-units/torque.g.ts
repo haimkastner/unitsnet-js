@@ -17,6 +17,10 @@ export enum TorqueUnits {
     /** */
     NewtonMeters = "NewtonMeter",
     /** */
+    OunceForceFeet = "OunceForceFoot",
+    /** */
+    OunceForceInches = "OunceForceInch",
+    /** */
     PoundalFeet = "PoundalFoot",
     /** */
     PoundForceInches = "PoundForceInch",
@@ -68,6 +72,8 @@ export class Torque extends BaseUnit {
     private newtonmillimetersLazy: number | null = null;
     private newtoncentimetersLazy: number | null = null;
     private newtonmetersLazy: number | null = null;
+    private ounceforcefeetLazy: number | null = null;
+    private ounceforceinchesLazy: number | null = null;
     private poundalfeetLazy: number | null = null;
     private poundforceinchesLazy: number | null = null;
     private poundforcefeetLazy: number | null = null;
@@ -141,6 +147,22 @@ export class Torque extends BaseUnit {
             return this.newtonmetersLazy;
         }
         return this.newtonmetersLazy = this.convertFromBase(TorqueUnits.NewtonMeters);
+    }
+
+    /** */
+    public get OunceForceFeet(): number {
+        if(this.ounceforcefeetLazy !== null){
+            return this.ounceforcefeetLazy;
+        }
+        return this.ounceforcefeetLazy = this.convertFromBase(TorqueUnits.OunceForceFeet);
+    }
+
+    /** */
+    public get OunceForceInches(): number {
+        if(this.ounceforceinchesLazy !== null){
+            return this.ounceforceinchesLazy;
+        }
+        return this.ounceforceinchesLazy = this.convertFromBase(TorqueUnits.OunceForceInches);
     }
 
     /** */
@@ -347,6 +369,26 @@ export class Torque extends BaseUnit {
      */
     public static FromNewtonMeters(value: number): Torque {
         return new Torque(value, TorqueUnits.NewtonMeters);
+    }
+
+    /**
+     * Create a new Torque instance from a OunceForceFeet
+     *
+     * @param value The unit as OunceForceFeet to create a new Torque from.
+     * @returns The new Torque instance.
+     */
+    public static FromOunceForceFeet(value: number): Torque {
+        return new Torque(value, TorqueUnits.OunceForceFeet);
+    }
+
+    /**
+     * Create a new Torque instance from a OunceForceInches
+     *
+     * @param value The unit as OunceForceInches to create a new Torque from.
+     * @returns The new Torque instance.
+     */
+    public static FromOunceForceInches(value: number): Torque {
+        return new Torque(value, TorqueUnits.OunceForceInches);
     }
 
     /**
@@ -614,6 +656,8 @@ export class Torque extends BaseUnit {
             case TorqueUnits.NewtonMillimeters: return this.NewtonMillimeters;
             case TorqueUnits.NewtonCentimeters: return this.NewtonCentimeters;
             case TorqueUnits.NewtonMeters: return this.NewtonMeters;
+            case TorqueUnits.OunceForceFeet: return this.OunceForceFeet;
+            case TorqueUnits.OunceForceInches: return this.OunceForceInches;
             case TorqueUnits.PoundalFeet: return this.PoundalFeet;
             case TorqueUnits.PoundForceInches: return this.PoundForceInches;
             case TorqueUnits.PoundForceFeet: return this.PoundForceFeet;
@@ -649,6 +693,16 @@ export class Torque extends BaseUnit {
                 case TorqueUnits.NewtonMillimeters: return super.internalMultiply(this.value, 1000);
                 case TorqueUnits.NewtonCentimeters: return super.internalMultiply(this.value, 100);
                 case TorqueUnits.NewtonMeters: return this.value;
+                case TorqueUnits.OunceForceFeet: {
+                    const v4 = super.internalDivide(4.4482216152605, 16);
+                    const v6 = super.internalMultiply(v4, 0.3048);
+                    return super.internalDivide(this.value, v6);
+                }
+                case TorqueUnits.OunceForceInches: {
+                    const v4 = super.internalDivide(4.4482216152605, 16);
+                    const v6 = super.internalMultiply(v4, 2.54e-2);
+                    return super.internalDivide(this.value, v6);
+                }
                 case TorqueUnits.PoundalFeet: {
                     const v4 = super.internalMultiply(0.138254954376, 0.3048);
                     return super.internalDivide(this.value, v4);
@@ -714,6 +768,8 @@ export class Torque extends BaseUnit {
             case TorqueUnits.NewtonMillimeters: return this.value * 1000;
             case TorqueUnits.NewtonCentimeters: return this.value * 100;
             case TorqueUnits.NewtonMeters: return this.value;
+            case TorqueUnits.OunceForceFeet: return this.value / ((4.4482216152605 / 16) * 0.3048);
+            case TorqueUnits.OunceForceInches: return this.value / ((4.4482216152605 / 16) * 2.54e-2);
             case TorqueUnits.PoundalFeet: return this.value / (0.138254954376 * 0.3048);
             case TorqueUnits.PoundForceInches: return this.value / (4.4482216152605 * 2.54e-2);
             case TorqueUnits.PoundForceFeet: return this.value / (4.4482216152605 * 0.3048);
@@ -746,6 +802,16 @@ export class Torque extends BaseUnit {
                 case TorqueUnits.NewtonMillimeters: return super.internalMultiply(value, 0.001);
                 case TorqueUnits.NewtonCentimeters: return super.internalMultiply(value, 0.01);
                 case TorqueUnits.NewtonMeters: return value;
+                case TorqueUnits.OunceForceFeet: {
+                    const v4 = super.internalDivide(4.4482216152605, 16);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 0.3048);
+                }
+                case TorqueUnits.OunceForceInches: {
+                    const v4 = super.internalDivide(4.4482216152605, 16);
+                    const v5 = super.internalMultiply(value, v4);
+                    return super.internalMultiply(v5, 2.54e-2);
+                }
                 case TorqueUnits.PoundalFeet: {
                     const v3 = super.internalMultiply(value, 0.138254954376);
                     return super.internalMultiply(v3, 0.3048);
@@ -811,6 +877,8 @@ export class Torque extends BaseUnit {
             case TorqueUnits.NewtonMillimeters: return value * 0.001;
             case TorqueUnits.NewtonCentimeters: return value * 0.01;
             case TorqueUnits.NewtonMeters: return value;
+            case TorqueUnits.OunceForceFeet: return value * (4.4482216152605 / 16) * 0.3048;
+            case TorqueUnits.OunceForceInches: return value * (4.4482216152605 / 16) * 2.54e-2;
             case TorqueUnits.PoundalFeet: return value * 0.138254954376 * 0.3048;
             case TorqueUnits.PoundForceInches: return value * 4.4482216152605 * 2.54e-2;
             case TorqueUnits.PoundForceFeet: return value * 4.4482216152605 * 0.3048;
@@ -859,6 +927,10 @@ export class Torque extends BaseUnit {
                 return super.truncateFractionDigits(this.NewtonCentimeters, options as ToStringOptions) + ` N·cm`;
             case TorqueUnits.NewtonMeters:
                 return super.truncateFractionDigits(this.NewtonMeters, options as ToStringOptions) + ` N·m`;
+            case TorqueUnits.OunceForceFeet:
+                return super.truncateFractionDigits(this.OunceForceFeet, options as ToStringOptions) + ` ozf·ft`;
+            case TorqueUnits.OunceForceInches:
+                return super.truncateFractionDigits(this.OunceForceInches, options as ToStringOptions) + ` ozf·in`;
             case TorqueUnits.PoundalFeet:
                 return super.truncateFractionDigits(this.PoundalFeet, options as ToStringOptions) + ` pdl·ft`;
             case TorqueUnits.PoundForceInches:
@@ -926,6 +998,10 @@ export class Torque extends BaseUnit {
                 return `N·cm`;
             case TorqueUnits.NewtonMeters:
                 return `N·m`;
+            case TorqueUnits.OunceForceFeet:
+                return `ozf·ft`;
+            case TorqueUnits.OunceForceInches:
+                return `ozf·in`;
             case TorqueUnits.PoundalFeet:
                 return `pdl·ft`;
             case TorqueUnits.PoundForceInches:

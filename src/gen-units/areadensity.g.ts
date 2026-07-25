@@ -15,7 +15,11 @@ export enum AreaDensityUnits {
     /** Also known as grammage for paper industry. In fiber industry used with abbreviation 'gsm'. */
     GramsPerSquareMeter = "GramPerSquareMeter",
     /** */
-    MilligramsPerSquareMeter = "MilligramPerSquareMeter"
+    MilligramsPerSquareMeter = "MilligramPerSquareMeter",
+    /** */
+    PoundsPerSquareFoot = "PoundPerSquareFoot",
+    /** */
+    PoundsPerThousandSquareFeet = "PoundPerThousandSquareFeet"
 }
 
 /** The area density of a two-dimensional object is calculated as the mass per unit area. For paper this is also called grammage. */
@@ -24,6 +28,8 @@ export class AreaDensity extends BaseUnit {
     private kilogramspersquaremeterLazy: number | null = null;
     private gramspersquaremeterLazy: number | null = null;
     private milligramspersquaremeterLazy: number | null = null;
+    private poundspersquarefootLazy: number | null = null;
+    private poundsperthousandsquarefeetLazy: number | null = null;
 
     /**
      * Create a new AreaDensity.
@@ -77,6 +83,22 @@ export class AreaDensity extends BaseUnit {
         return this.milligramspersquaremeterLazy = this.convertFromBase(AreaDensityUnits.MilligramsPerSquareMeter);
     }
 
+    /** */
+    public get PoundsPerSquareFoot(): number {
+        if(this.poundspersquarefootLazy !== null){
+            return this.poundspersquarefootLazy;
+        }
+        return this.poundspersquarefootLazy = this.convertFromBase(AreaDensityUnits.PoundsPerSquareFoot);
+    }
+
+    /** */
+    public get PoundsPerThousandSquareFeet(): number {
+        if(this.poundsperthousandsquarefeetLazy !== null){
+            return this.poundsperthousandsquarefeetLazy;
+        }
+        return this.poundsperthousandsquarefeetLazy = this.convertFromBase(AreaDensityUnits.PoundsPerThousandSquareFeet);
+    }
+
     /**
      * Create a new AreaDensity instance from a KilogramsPerSquareMeter
      *
@@ -105,6 +127,26 @@ export class AreaDensity extends BaseUnit {
      */
     public static FromMilligramsPerSquareMeter(value: number): AreaDensity {
         return new AreaDensity(value, AreaDensityUnits.MilligramsPerSquareMeter);
+    }
+
+    /**
+     * Create a new AreaDensity instance from a PoundsPerSquareFoot
+     *
+     * @param value The unit as PoundsPerSquareFoot to create a new AreaDensity from.
+     * @returns The new AreaDensity instance.
+     */
+    public static FromPoundsPerSquareFoot(value: number): AreaDensity {
+        return new AreaDensity(value, AreaDensityUnits.PoundsPerSquareFoot);
+    }
+
+    /**
+     * Create a new AreaDensity instance from a PoundsPerThousandSquareFeet
+     *
+     * @param value The unit as PoundsPerThousandSquareFeet to create a new AreaDensity from.
+     * @returns The new AreaDensity instance.
+     */
+    public static FromPoundsPerThousandSquareFeet(value: number): AreaDensity {
+        return new AreaDensity(value, AreaDensityUnits.PoundsPerThousandSquareFeet);
     }
 
     /**
@@ -152,6 +194,8 @@ export class AreaDensity extends BaseUnit {
             case AreaDensityUnits.KilogramsPerSquareMeter: return this.KilogramsPerSquareMeter;
             case AreaDensityUnits.GramsPerSquareMeter: return this.GramsPerSquareMeter;
             case AreaDensityUnits.MilligramsPerSquareMeter: return this.MilligramsPerSquareMeter;
+            case AreaDensityUnits.PoundsPerSquareFoot: return this.PoundsPerSquareFoot;
+            case AreaDensityUnits.PoundsPerThousandSquareFeet: return this.PoundsPerThousandSquareFeet;
 
             default:
                 break;
@@ -165,12 +209,23 @@ export class AreaDensity extends BaseUnit {
                 case AreaDensityUnits.KilogramsPerSquareMeter: return this.value;
                 case AreaDensityUnits.GramsPerSquareMeter: return super.internalMultiply(this.value, 1000);
                 case AreaDensityUnits.MilligramsPerSquareMeter: return super.internalMultiply(this.value, 1000000);
+                case AreaDensityUnits.PoundsPerSquareFoot: {
+                    const v4 = super.internalDivide(0.45359237, 0.09290304);
+                    return super.internalDivide(this.value, v4);
+                }
+                case AreaDensityUnits.PoundsPerThousandSquareFeet: {
+                    const v4 = super.internalDivide(0.45359237, 0.09290304);
+                    const v5 = super.internalDivide(this.value, v4);
+                    return super.internalMultiply(v5, 1000);
+                }
                 default: return Number.NaN;
             }
         switch (toUnit) {
             case AreaDensityUnits.KilogramsPerSquareMeter: return this.value;
             case AreaDensityUnits.GramsPerSquareMeter: return this.value * 1000;
             case AreaDensityUnits.MilligramsPerSquareMeter: return this.value * 1000000;
+            case AreaDensityUnits.PoundsPerSquareFoot: return this.value / (0.45359237 / 0.09290304);
+            case AreaDensityUnits.PoundsPerThousandSquareFeet: return this.value / (0.45359237 / 0.09290304) * 1000;
             default: return Number.NaN;
         }
     }
@@ -181,12 +236,23 @@ export class AreaDensity extends BaseUnit {
                 case AreaDensityUnits.KilogramsPerSquareMeter: return value;
                 case AreaDensityUnits.GramsPerSquareMeter: return super.internalDivide(value, 1000);
                 case AreaDensityUnits.MilligramsPerSquareMeter: return super.internalDivide(value, 1000000);
+                case AreaDensityUnits.PoundsPerSquareFoot: {
+                    const v4 = super.internalDivide(0.45359237, 0.09290304);
+                    return super.internalMultiply(value, v4);
+                }
+                case AreaDensityUnits.PoundsPerThousandSquareFeet: {
+                    const v4 = super.internalDivide(0.45359237, 0.09290304);
+                    const v6 = super.internalDivide(v4, 1000);
+                    return super.internalMultiply(value, v6);
+                }
                 default: return Number.NaN;
             }
         switch (fromUnit) {
             case AreaDensityUnits.KilogramsPerSquareMeter: return value;
             case AreaDensityUnits.GramsPerSquareMeter: return value / 1000;
             case AreaDensityUnits.MilligramsPerSquareMeter: return value / 1000000;
+            case AreaDensityUnits.PoundsPerSquareFoot: return value * (0.45359237 / 0.09290304);
+            case AreaDensityUnits.PoundsPerThousandSquareFeet: return value * (0.45359237 / 0.09290304) / 1000;
             default: return Number.NaN;
         }
     }
@@ -213,6 +279,10 @@ export class AreaDensity extends BaseUnit {
                 return super.truncateFractionDigits(this.GramsPerSquareMeter, options as ToStringOptions) + ` g/m²`;
             case AreaDensityUnits.MilligramsPerSquareMeter:
                 return super.truncateFractionDigits(this.MilligramsPerSquareMeter, options as ToStringOptions) + ` mg/m²`;
+            case AreaDensityUnits.PoundsPerSquareFoot:
+                return super.truncateFractionDigits(this.PoundsPerSquareFoot, options as ToStringOptions) + ` lb/ft²`;
+            case AreaDensityUnits.PoundsPerThousandSquareFeet:
+                return super.truncateFractionDigits(this.PoundsPerThousandSquareFeet, options as ToStringOptions) + ` lb/MSF`;
         default:
             break;
         }
@@ -236,6 +306,10 @@ export class AreaDensity extends BaseUnit {
                 return `g/m²`;
             case AreaDensityUnits.MilligramsPerSquareMeter:
                 return `mg/m²`;
+            case AreaDensityUnits.PoundsPerSquareFoot:
+                return `lb/ft²`;
+            case AreaDensityUnits.PoundsPerThousandSquareFeet:
+                return `lb/MSF`;
         default:
             break;
         }

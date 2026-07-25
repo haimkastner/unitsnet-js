@@ -392,7 +392,7 @@ export class MolarFlow extends BaseUnit {
             case MolarFlowUnits.MolesPerMinute:
                 return super.truncateFractionDigits(this.MolesPerMinute, options as ToStringOptions) + ` mol/min`;
             case MolarFlowUnits.MolesPerHour:
-                return super.truncateFractionDigits(this.MolesPerHour, options as ToStringOptions) + ` kmol/h`;
+                return super.truncateFractionDigits(this.MolesPerHour, options as ToStringOptions) + ` mol/h`;
             case MolarFlowUnits.PoundMolesPerSecond:
                 return super.truncateFractionDigits(this.PoundMolesPerSecond, options as ToStringOptions) + ` lbmol/s`;
             case MolarFlowUnits.PoundMolesPerMinute:
@@ -404,7 +404,7 @@ export class MolarFlow extends BaseUnit {
             case MolarFlowUnits.KilomolesPerMinute:
                 return super.truncateFractionDigits(this.KilomolesPerMinute, options as ToStringOptions) + ` kmol/min`;
             case MolarFlowUnits.KilomolesPerHour:
-                return super.truncateFractionDigits(this.KilomolesPerHour, options as ToStringOptions) + ` kkmol/h`;
+                return super.truncateFractionDigits(this.KilomolesPerHour, options as ToStringOptions) + ` kmol/h`;
         default:
             break;
         }
@@ -427,7 +427,7 @@ export class MolarFlow extends BaseUnit {
             case MolarFlowUnits.MolesPerMinute:
                 return `mol/min`;
             case MolarFlowUnits.MolesPerHour:
-                return `kmol/h`;
+                return `mol/h`;
             case MolarFlowUnits.PoundMolesPerSecond:
                 return `lbmol/s`;
             case MolarFlowUnits.PoundMolesPerMinute:
@@ -439,7 +439,7 @@ export class MolarFlow extends BaseUnit {
             case MolarFlowUnits.KilomolesPerMinute:
                 return `kmol/min`;
             case MolarFlowUnits.KilomolesPerHour:
-                return `kkmol/h`;
+                return `kmol/h`;
         default:
             break;
         }

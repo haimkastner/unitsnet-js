@@ -6,6 +6,7 @@ export * from "./gen-units/angle.g";
 export * from "./gen-units/area.g";
 export * from "./gen-units/areadensity.g";
 export * from "./gen-units/areamomentofinertia.g";
+export * from "./gen-units/areaperlength.g";
 export * from "./gen-units/bitrate.g";
 export * from "./gen-units/brakespecificfuelconsumption.g";
 export * from "./gen-units/coefficientofthermalexpansion.g";
