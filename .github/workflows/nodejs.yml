@@ -66,9 +66,10 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '22.x'
+          # Node 24 ships npm >= 11.5.1, required for OIDC trusted publishing
+          node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Prepare dependencies
